@@ -4,24 +4,28 @@
 
 version: 2.1
 
+orbs:
+  ruby: circleci/ruby@1.4.0
+  browser-tools: circleci/browser-tools@1.2.4
+
 executors:
   test_executor:
     working_directory: ~/search-gov
 
     docker:
-      # using custom image, see .circleci/images/primary/Dockerfile
-      - image: searchgov/circleci:20190417
+      # using custom images, see .circleci/images/primary/
+      - image: searchgov/ruby:${RUBY_VERSION}
         environment:
           RAILS_ENV: test
 
-      - image: circleci/mysql:5.6
+      - image: circleci/mysql:5.7
         environment:
           MYSQL_ALLOW_EMPTY_PASSWORD: true
           MYSQL_ROOT_HOST: "%"
 
       - image: redis:3.2
 
-      - image: docker.elastic.co/elasticsearch/elasticsearch:6.8.11
+      - image: docker.elastic.co/elasticsearch/elasticsearch:6.8.15
         environment:
           bootstrap.memory_lock: true
           cluster.name: es68
@@ -47,16 +51,29 @@ executors:
 
 
 commands:
+  install_chrome:
+    description: 'Install latest Chrome and ChromeDriver'
+    steps:
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
+      - run:
+          command: |
+            google-chrome --version
+            chromedriver --version
+          name: Check install
   prepare_database:
     description: 'Prepare the test database'
     steps:
-      - run: bundle exec rake db:create
-      # Configure MySQL 5.6 for ROW_FORMAT=DYNAMIC storage
-      - run: cat .circleci/database-configuration.sql | bundle exec rails db
-      - run: bundle exec rake db:structure:load
+      - run: bundle exec rake db:setup
 
 jobs:
   checkout_code:
+    environment:
+      RUBY_VERSION: << parameters.ruby_version >>
+    parameters:
+      ruby_version:
+        type: string
+
     executor: test_executor
 
     steps:
@@ -82,39 +99,25 @@ jobs:
           paths:
             - ~/search-gov
 
-  bundle_install:
-    executor: test_executor
-
-    steps:
-      - restore_cache:
-          key: repo-{{ .Environment.CIRCLE_SHA1 }}
-
-      - restore_cache:
-          key: search-gov-{{ checksum "Gemfile.lock" }}
-
-      - run:
-          name: Install Dependencies
-          command: |
-            bundle install --without development --jobs=4 --retry=3 --path vendor/bundle
-
-      - save_cache:
-          key: search-gov-{{ checksum "Gemfile.lock" }}
-          paths:
-            - vendor/bundle
-
   rspec:
+    environment:
+      RUBY_VERSION: << parameters.ruby_version >>
+    parameters:
+      ruby_version:
+        type: string
+
     executor: test_executor
 
-    parallelism: 2
+    parallelism: 6
 
     steps:
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
-      - restore_cache:
-          key: search-gov-{{ checksum "Gemfile.lock" }}
+      - ruby/install-deps:
+          key: gems-ruby-<< parameters.ruby_version >>-v{{ .Environment.CACHE_VERSION }}
 
-      - run: bundle --path vendor/bundle
+      - install_chrome
 
       - prepare_database
 
@@ -133,7 +136,7 @@ jobs:
                               --format progress \
                               $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
 
-            ./cc-test-reporter format-coverage --output coverage/codeclimate.rspec.$CIRCLE_NODE_INDEX.json
+            ./cc-test-reporter format-coverage --output coverage/codeclimate.rspec.$CIRCLE_NODE_INDEX.$RUBY_VERSION.json
 
       - persist_to_workspace:
           root: ~/search-gov/coverage
@@ -148,18 +151,24 @@ jobs:
           destination: test-results
 
   cucumber:
+    environment:
+      RUBY_VERSION: << parameters.ruby_version >>
+    parameters:
+      ruby_version:
+        type: string
+
     executor: test_executor
 
-    parallelism: 6
+    parallelism: 10
 
     steps:
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
-      - restore_cache:
-          key: search-gov-{{ checksum "Gemfile.lock" }}
-
-      - run: bundle --path vendor/bundle
+      - ruby/install-deps:
+          key: gems-ruby-<< parameters.ruby_version >>-v{{ .Environment.CACHE_VERSION }}
+      
+      - install_chrome
 
       - prepare_database
 
@@ -180,7 +189,7 @@ jobs:
                                 --format progress \
                                 -- $(circleci tests glob "features/*.feature" | circleci tests split --split-by=timings)
 
-            ./cc-test-reporter format-coverage --output coverage/codeclimate.cucumber.$CIRCLE_NODE_INDEX.json
+            ./cc-test-reporter format-coverage --output coverage/codeclimate.cucumber.$CIRCLE_NODE_INDEX.$RUBY_VERSION.json
 
       - persist_to_workspace:
           root: ~/search-gov/coverage
@@ -195,16 +204,17 @@ jobs:
           destination: test-results
 
   report_coverage:
+    environment:
+      RUBY_VERSION: << parameters.ruby_version >>
+    parameters:
+      ruby_version:
+        type: string
+
     executor: test_executor
 
     steps:
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
-
-      - restore_cache:
-          key: search-gov-{{ checksum "Gemfile.lock" }}
-
-      - run: bundle --path vendor/bundle
 
       - attach_workspace:
           at: ~/search-gov/coverage
@@ -212,7 +222,7 @@ jobs:
       - run:
           name: Report coverage to Code Climate
           command: |
-            ./cc-test-reporter sum-coverage --parts 8 coverage/codeclimate.*.json --output coverage/codeclimate_full_report.json
+            ./cc-test-reporter sum-coverage --parts 16 coverage/codeclimate.*.$RUBY_VERSION.json --output coverage/codeclimate_full_report.json
             ./cc-test-reporter upload-coverage --input coverage/codeclimate_full_report.json
 
             ruby scripts/check_coverage.rb ${PWD}/coverage/codeclimate_full_report.json
@@ -221,21 +231,37 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - checkout_code
-
-      - bundle_install:
-          requires:
-          - checkout_code
+      - checkout_code:
+          name: "checkout code: Ruby << matrix.ruby_version >>"
+          matrix:
+            parameters:
+              ruby_version:
+                - 2.7.5
 
       - rspec:
           requires:
-            - bundle_install
+            - checkout_code
+          name: "rspec: Ruby << matrix.ruby_version >>"
+          matrix:
+            parameters:
+              ruby_version:
+                - 2.7.5
 
       - cucumber:
           requires:
-            - bundle_install
+            - checkout_code
+          name: "cucumber: Ruby << matrix.ruby_version >>"
+          matrix:
+            parameters:
+              ruby_version:
+                - 2.7.5
 
       - report_coverage:
           requires:
             - rspec
             - cucumber
+          name: "report coverage: Ruby << matrix.ruby_version >>"
+          matrix:
+            parameters:
+              ruby_version:
+                - 2.7.5

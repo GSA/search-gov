@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ModuleBreakdownQuery do
-  let(:query) { ModuleBreakdownQuery.new('affiliate_name') }
+  let(:query) { described_class.new('affiliate_name') }
   let(:expected_body) do
     {
       "query": {
@@ -9,18 +9,18 @@ describe ModuleBreakdownQuery do
           "filter": [
             {
               "term": {
-                "params.affiliate": "affiliate_name"
+                "params.affiliate": 'affiliate_name'
               }
             },
             {
               "terms": {
-                "type": ["search","click"]
+                "type": ['search','click']
               }
             }
           ],
           "must_not": {
             "term": {
-              "useragent.device": "Spider"
+              "useragent.device": 'Spider'
             }
           }
         }
@@ -28,13 +28,13 @@ describe ModuleBreakdownQuery do
       "aggs": {
         "agg": {
           "terms": {
-            "field": "modules",
+            "field": 'modules',
             "size": 100
           },
           "aggs": {
             "type": {
               "terms": {
-                "field": "type"
+                "field": 'type'
               }
             }
           }
@@ -46,7 +46,7 @@ describe ModuleBreakdownQuery do
   it_behaves_like 'a logstash query'
 
   context 'when the affiliate_name is missing' do
-    let(:query) { ModuleBreakdownQuery.new }
+    let(:query) { described_class.new }
     let(:expected_body) do
       {
         "query": {
@@ -54,13 +54,13 @@ describe ModuleBreakdownQuery do
             "filter": [
               {
                 "terms": {
-                  "type": ["search","click"]
+                  "type": ['search','click']
                 }
               }
             ],
             "must_not": {
               "term": {
-                "useragent.device": "Spider"
+                "useragent.device": 'Spider'
               }
             }
           }
@@ -68,13 +68,13 @@ describe ModuleBreakdownQuery do
         "aggs": {
           "agg": {
             "terms": {
-              "field": "modules",
+              "field": 'modules',
               "size": 100
             },
             "aggs": {
               "type": {
                 "terms": {
-                  "field": "type"
+                  "field": 'type'
                 }
               }
             }

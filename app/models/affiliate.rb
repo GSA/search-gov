@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'digest'
 require 'sass/css'
 
@@ -5,18 +7,17 @@ class Affiliate < ApplicationRecord
   extend HumanAttributeName
   extend HashColumnsAccessible
   include Dupable
-  include XmlProcessor
   include LogstashPrefix
 
   MAXIMUM_IMAGE_SIZE_IN_KB = 512
-  MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB = 64.freeze
-  MAXIMUM_HEADER_TAGLINE_LOGO_IMAGE_SIZE_IN_KB = 16.freeze
-  VALID_IMAGE_CONTENT_TYPES = %w(image/gif image/jpeg image/pjpeg image/png image/x-png).freeze
-  INVALID_CONTENT_TYPE_MESSAGE = 'must be GIF, JPG, or PNG'.freeze
-  INVALID_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB".freeze
-  INVALID_MOBILE_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB} KB".freeze
-  INVALID_HEADER_TAGLINE_LOGO_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_HEADER_TAGLINE_LOGO_IMAGE_SIZE_IN_KB} KB".freeze
-  MAX_NAME_LENGTH = 33.freeze
+  MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB = 64
+  MAXIMUM_HEADER_TAGLINE_LOGO_IMAGE_SIZE_IN_KB = 16
+  VALID_IMAGE_CONTENT_TYPES = %w[image/gif image/jpeg image/pjpeg image/png image/x-png].freeze
+  INVALID_CONTENT_TYPE_MESSAGE = 'must be GIF, JPG, or PNG'
+  INVALID_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB"
+  INVALID_MOBILE_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB} KB"
+  INVALID_HEADER_TAGLINE_LOGO_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_HEADER_TAGLINE_LOGO_IMAGE_SIZE_IN_KB} KB"
+  MAX_NAME_LENGTH = 33
 
   with_options dependent: :destroy do |assoc|
     assoc.has_many :affiliate_feature_addition
@@ -26,7 +27,6 @@ class Affiliate < ApplicationRecord
                    inverse_of: :affiliate
     assoc.has_many :connected_connections,
                    foreign_key: :connected_affiliate_id,
-                   source: :connections,
                    class_name: 'Connection',
                    inverse_of: :connected_affiliate
     assoc.has_many :document_collections,
@@ -48,7 +48,7 @@ class Affiliate < ApplicationRecord
                    -> { order 'navigations.position ASC, navigations.id ASC' },
                    inverse_of: :affiliate
     assoc.has_many :routed_queries
-    assoc.has_many :rss_feeds, -> { order 'rss_feeds.name ASC, rss_feeds.id ASC' },
+    assoc.has_many :rss_feeds,
                    as: :owner,
                    inverse_of: :owner
     assoc.has_many :sayt_suggestions
@@ -60,18 +60,6 @@ class Affiliate < ApplicationRecord
     assoc.has_many :tag_filters, -> { order 'tag ASC' }, inverse_of: :affiliate
   end
 
-  has_many :affiliate_templates, dependent: :destroy do
-    def make_available(template_ids)
-      template_ids.each { |id| find_or_create_by(template_id: id) }
-      true
-    end
-
-    def make_unavailable(template_ids)
-      where('template_id in (?)', template_ids).delete_all
-    end
-  end
-
-  has_many :available_templates, through: :affiliate_templates, source: :template
   has_many :users, -> { order 'first_name' }, through: :memberships
 
   has_many :default_users,
@@ -81,7 +69,7 @@ class Affiliate < ApplicationRecord
            inverse_of: :default_affiliate
 
   has_many :rss_feed_urls, -> { distinct }, through: :rss_feeds
-  has_many :url_prefixes, :through => :document_collections
+  has_many :url_prefixes, through: :document_collections
   has_many :twitter_profiles, -> { order 'twitter_profiles.screen_name ASC' }, through: :affiliate_twitter_settings
   has_and_belongs_to_many :instagram_profiles, -> { order 'instagram_profiles.username ASC' }
   has_and_belongs_to_many :youtube_profiles, -> { order 'youtube_profiles.title ASC' }
@@ -89,26 +77,25 @@ class Affiliate < ApplicationRecord
   has_many :routed_query_keywords, -> { order 'keyword' }, through: :routed_queries
   belongs_to :agency
   belongs_to :language, foreign_key: :locale, primary_key: :code, inverse_of: :affiliates
-  belongs_to :template, inverse_of: :affiliates
 
-  AWS_IMAGE_SETTINGS = { styles: { :large => "300x150>" },
-                         storage: :s3,
-                         s3_credentials: Rails.application.secrets.aws_image_bucket,
-                         url: ':s3_alias_url',
-                         s3_host_alias: Rails.application.secrets.aws_image_bucket[:s3_host_alias],
-                         s3_protocol: 'https',
-                         s3_region: Rails.application.secrets.aws_image_bucket[:s3_region]
-                       }
+  AWS_IMAGE_SETTINGS = {
+    styles: { large: '300x150>' },
+    storage: :s3,
+    s3_credentials: Rails.application.secrets.aws_image_bucket,
+    url: ':s3_alias_url',
+    s3_host_alias: Rails.application.secrets.aws_image_bucket[:s3_host_alias],
+    s3_protocol: 'https',
+    s3_region: Rails.application.secrets.aws_image_bucket[:s3_region]
+  }.freeze
 
-  has_attached_file :page_background_image,
-                    AWS_IMAGE_SETTINGS.merge(path: "#{Rails.env}/site/:id/page_background_image/:updated_at/:style/:filename")
-  has_attached_file :header_image,
-                    AWS_IMAGE_SETTINGS.merge(path: "#{Rails.env}/site/:id/header_image/:updated_at/:style/:filename")
+  # The "mobile_" and "managed_" prefixes in "mobile_logo", "managed_header", etc.,
+  # are remnants from the days of the "legacy" SERP. We have left the prefixes as-is
+  # to avoid extensive renaming. So when you see "mobile_whatever", or "managed_whatever",
+  # just think "whatever".
   has_attached_file :mobile_logo,
                     AWS_IMAGE_SETTINGS.merge(path: "#{Rails.env}/site/:id/mobile_logo/:updated_at/:style/:filename")
   has_attached_file :header_tagline_logo,
                     AWS_IMAGE_SETTINGS.merge(path: "#{Rails.env}/site/:id/header_tagline_logo/:updated_at/:style/:filename")
-
 
   before_validation :set_default_fields, on: :create
   before_validation :downcase_name
@@ -118,41 +105,26 @@ class Affiliate < ApplicationRecord
   before_validation :strip_bing_v5_key
 
   before_validation do |record|
-    AttributeProcessor.squish_attributes record,
+    AttributeProcessor.squish_attributes(record,
                                          :ga_web_property_id,
                                          :header_tagline_font_size,
                                          :logo_alt_text,
                                          :navigation_dropdown_label,
                                          :related_sites_dropdown_label,
-                                         assign_nil_on_blank: true
-    AttributeProcessor.prepend_attributes_with_http record,
+                                         assign_nil_on_blank: true)
+    AttributeProcessor.prepend_attributes_with_http(record,
                                                     :favicon_url,
-                                                    :external_css_url,
-                                                    :website
+                                                    :website)
   end
 
   before_validation :set_api_access_key, unless: :api_access_key?
   validates_presence_of :display_name, :name, :locale, :theme
-  validates_uniqueness_of :api_access_key, :name, :case_sensitive => false
-  validates_length_of :name, :within => (2..MAX_NAME_LENGTH)
-  validates_format_of :name, :with => /\A[a-z0-9._-]+\z/
-  validates_format_of :bing_v5_key, :with => /\A[0-9a-f]{32}\z/i, allow_nil: true
+  validates_uniqueness_of :api_access_key, :name, case_sensitive: false
+  validates_length_of :name, within: (2..MAX_NAME_LENGTH)
+  validates_format_of :name, with: /\A[a-z0-9._-]+\z/
+  validates_format_of :bing_v5_key, with: /\A[0-9a-f]{32}\z/i, allow_nil: true
   validates_inclusion_of :search_engine, in: SEARCH_ENGINES
   validates_url :header_tagline_url, allow_blank: true
-
-  validates_attachment_content_type :page_background_image,
-                                    content_type: VALID_IMAGE_CONTENT_TYPES,
-                                    message: INVALID_CONTENT_TYPE_MESSAGE
-  validates_attachment_size :page_background_image,
-                            in: (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes),
-                            message: INVALID_IMAGE_SIZE_MESSAGE
-
-  validates_attachment_content_type :header_image,
-                                    content_type: VALID_IMAGE_CONTENT_TYPES,
-                                    message: INVALID_CONTENT_TYPE_MESSAGE
-  validates_attachment_size :header_image,
-                            in: (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes),
-                            message: INVALID_IMAGE_SIZE_MESSAGE
 
   validates_attachment_content_type :mobile_logo,
                                     content_type: VALID_IMAGE_CONTENT_TYPES,
@@ -173,47 +145,42 @@ class Affiliate < ApplicationRecord
            :validate_managed_footer_links,
            :validate_managed_header_links,
            :validate_managed_no_results_pages_alt_links,
-           :validate_staged_header_footer,
-           :validate_staged_header_footer_css,
            :language_valid,
            :validate_managed_no_results_pages_guidance_text
 
   after_validation :update_error_keys
-  before_save :set_css_properties, :generate_look_and_feel_css, :sanitize_staged_header_footer, :set_json_fields, :set_search_labels
+  before_save :set_css_properties, :generate_look_and_feel_css, :set_json_fields, :set_search_labels
   before_update :clear_existing_attachments
   after_commit :normalize_site_domains,             on: :create
   after_commit :remove_boosted_contents_from_index, on: :destroy
 
-  scope :ordered, -> { order 'display_name ASC' }
+  scope :ordered, -> { order('display_name ASC') }
   scope :active, -> { where(active: true) }
 
   attr_writer :css_property_hash
-  attr_accessor :mark_page_background_image_for_deletion, :mark_header_image_for_deletion, :mark_mobile_logo_for_deletion, :mark_header_tagline_logo_for_deletion
-  attr_accessor :is_validate_staged_header_footer
-  attr_accessor :managed_header_links_attributes, :managed_footer_links_attributes
-  attr_accessor :managed_no_results_pages_alt_links_attributes
+  attr_accessor :mark_mobile_logo_for_deletion,
+                :mark_header_tagline_logo_for_deletion,
+                :managed_header_links_attributes,
+                :managed_footer_links_attributes,
+                :managed_no_results_pages_alt_links_attributes
 
-  accepts_nested_attributes_for :site_domains, :reject_if => :all_blank
+  accepts_nested_attributes_for :site_domains, reject_if: :all_blank
   accepts_nested_attributes_for :image_search_label
   accepts_nested_attributes_for :rss_feeds
-  accepts_nested_attributes_for :document_collections, :reject_if => :all_blank
-  accepts_nested_attributes_for :connections, :allow_destroy => true, :reject_if => proc { |a| a[:affiliate_name].blank? and a[:label].blank? }
-  accepts_nested_attributes_for :flickr_profiles, :allow_destroy => true
-  accepts_nested_attributes_for :twitter_profiles, :allow_destroy => false
+  accepts_nested_attributes_for :document_collections, reject_if: :all_blank
+  accepts_nested_attributes_for :connections, allow_destroy: true, reject_if: proc { |a| a[:affiliate_name].blank? and a[:label].blank? }
+  accepts_nested_attributes_for :flickr_profiles, allow_destroy: true
+  accepts_nested_attributes_for :twitter_profiles, allow_destroy: false
 
   USAGOV_AFFILIATE_NAME = 'usagov'
   GOBIERNO_AFFILIATE_NAME = 'gobiernousa'
 
-  DEFAULT_SEARCH_RESULTS_PAGE_TITLE = "{Query} - {SiteName} Search Results"
-  BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER = %w(form script style link)
-
-  BACKGROUND_REPEAT_VALUES = %w(no-repeat repeat repeat-x repeat-y)
+  DEFAULT_SEARCH_RESULTS_PAGE_TITLE = '{Query} - {SiteName} Search Results'
+  BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER = %w[form script style link].freeze
 
   THEMES = ActiveSupport::OrderedHash.new
   THEMES[:default] = {
     content_background_color: '#FFFFFF',
-    content_border_color: '#CACACA',
-    content_box_shadow_color: '#555555',
     description_text_color: '#000000',
     footer_background_color: '#DFDFDF',
     footer_links_text_color: '#000000',
@@ -231,69 +198,61 @@ class Affiliate < ApplicationRecord
     page_background_color: '#DFDFDF',
     title_link_color: '#2200CC',
     url_link_color: '#006800',
-    visited_title_link_color: '#800080' }
+    visited_title_link_color: '#800080'
+  }
 
-  THEMES[:custom] = { :display_name => 'Custom' }
+  THEMES[:custom] = { display_name: 'Custom' }
 
   DEFAULT_CSS_PROPERTIES = {
     font_family: FontFamily::DEFAULT,
     header_tagline_font_family: HeaderTaglineFontFamily::DEFAULT,
     header_tagline_font_size: '1.3em',
     header_tagline_font_style: 'italic',
-    logo_alignment: LogoAlignment::DEFAULT,
-    show_content_border: '0',
-    show_content_box_shadow: '0',
-    page_background_image_repeat: BACKGROUND_REPEAT_VALUES[0] }.merge(THEMES[:default])
+    logo_alignment: LogoAlignment::DEFAULT
+  }.merge(THEMES[:default])
 
-  ATTRIBUTES_WITH_STAGED_AND_LIVE = %w(header footer header_footer_css nested_header_footer_css uses_managed_header_footer)
-
-  CUSTOM_INDEXING_LANGUAGES = %w(en es)
+  CUSTOM_INDEXING_LANGUAGES = %w[en es].freeze
 
   COMMON_INDEXING_LANGUAGE = 'babel'
 
   def indexing_locale
-    CUSTOM_INDEXING_LANGUAGES.include?(self.locale) ? self.locale : COMMON_INDEXING_LANGUAGE
+    CUSTOM_INDEXING_LANGUAGES.include?(locale) ? locale : COMMON_INDEXING_LANGUAGE
   end
 
-  define_hash_columns_accessors column_name_method: :previous_fields, fields: [:previous_header, :previous_footer]
   define_hash_columns_accessors column_name_method: :live_fields,
-                                fields: [:header, :footer,
-                                         :header_footer_css, :nested_header_footer_css,
-                                         :managed_header_links, :managed_footer_links,
-                                         :external_tracking_code, :submitted_external_tracking_code,
-                                         :look_and_feel_css, :mobile_look_and_feel_css,
-                                         :logo_alt_text, :sitelink_generator_names,
-                                         :header_tagline,
-                                         :header_tagline_url,
-                                         :page_one_more_results_pointer, :no_results_pointer,
-                                         :footer_fragment,
-                                         :navigation_dropdown_label, :related_sites_dropdown_label,
-                                         :additional_guidance_text,
-                                         :managed_no_results_pages_alt_links]
-  define_hash_columns_accessors column_name_method: :staged_fields,
-                                fields: [:staged_header, :staged_footer,
-                                         :staged_header_footer_css, :staged_nested_header_footer_css]
-
-  serialize :dublin_core_mappings, Hash
-  define_hash_columns_accessors column_name_method: :dublin_core_mappings,
-                                fields: [:dc_contributor, :dc_publisher, :dc_subject]
+                                fields: %i[managed_header_links
+                                           managed_footer_links
+                                           external_tracking_code
+                                           submitted_external_tracking_code
+                                           mobile_look_and_feel_css
+                                           logo_alt_text
+                                           header_tagline
+                                           header_tagline_url
+                                           page_one_more_results_pointer
+                                           no_results_pointer
+                                           footer_fragment
+                                           navigation_dropdown_label
+                                           related_sites_dropdown_label
+                                           additional_guidance_text
+                                           managed_no_results_pages_alt_links]
 
   define_hash_columns_accessors column_name_method: :css_property_hash,
-                                fields: %i(header_tagline_font_family header_tagline_font_size header_tagline_font_style)
+                                fields: %i[header_tagline_font_family
+                                           header_tagline_font_size
+                                           header_tagline_font_style]
 
   model_name.class_eval do
     def singular_route_key
-      "site"
+      'site'
     end
   end
 
   def self.do_not_dup_attributes
     @@do_not_dup_attributes ||= begin
       logo_attrs = column_names.select do |column_name|
-        column_name =~ /\A(header_tagline_logo|page_background_image|mobile_logo)/
+        column_name =~ /\A(header_tagline_logo|mobile_logo)/
       end
-      %w(api_access_key
-         name).push(*logo_attrs).freeze
+      %w[api_access_key name].push(*logo_attrs).freeze
     end
   end
 
@@ -301,67 +260,21 @@ class Affiliate < ApplicationRecord
     @@human_attribute_name_hash ||= {
       display_name: 'Display name',
       name: 'Site Handle (visible to searchers in the URL)',
-      header_image_file_size: 'Legacy Logo file size',
       mobile_logo_file_size: 'Logo file size',
-      mobile_header_tagline_logo_file_size: 'Header Tagline Logo file size',
-      page_background_image_file_size: 'Page Background Image file size'
+      mobile_header_tagline_logo_file_size: 'Header Tagline Logo file size'
     }
   end
 
   def scope_ids_as_array
-    @scope_ids_as_array ||= (self.scope_ids.nil? ? [] : self.scope_ids.split(',').each { |scope| scope.strip! })
+    @scope_ids_as_array ||= (scope_ids.nil? ? [] : scope_ids.split(',').each(&:strip!))
   end
 
   def has_multiple_domains?
     site_domains.count > 1
   end
 
-  def update_attributes_for_staging(attributes)
-    set_is_validate_staged_header_footer attributes
-    attributes[:has_staged_content] = true
-    self.update_attributes(attributes)
-  end
-
   def recent_user_activity
     users.collect(&:last_request_at).compact.max
-  end
-
-  def update_attributes_for_live(attributes)
-    set_is_validate_staged_header_footer attributes
-    transaction do
-      if self.update_attributes(attributes)
-        self.previous_header = header
-        self.previous_footer = footer
-        set_attributes_from_staged_to_live
-        self.has_staged_content = false
-        self.save!
-        true
-      else
-        false
-      end
-    end
-  end
-
-  def push_staged_changes
-    self.previous_header = header
-    self.previous_footer = footer
-    set_attributes_from_staged_to_live
-    self.has_staged_content = false
-    save!
-  end
-
-  def cancel_staged_changes
-    set_attributes_from_live_to_staged
-    self.has_staged_content = false
-    save!
-  end
-
-  def sync_staged_attributes
-    self.cancel_staged_changes unless self.has_staged_content?
-  end
-
-  def has_changed_header_or_footer
-    self.header != self.previous_header or self.footer != self.previous_footer
   end
 
   def css_property_hash(reload = false)
@@ -386,7 +299,7 @@ class Affiliate < ApplicationRecord
 
   def update_site_domain(site_domain, site_domain_attributes)
     transaction do
-      normalize_site_domains if site_domain.update_attributes(site_domain_attributes)
+      normalize_site_domains if site_domain.update(site_domain_attributes)
     end
   end
 
@@ -397,48 +310,14 @@ class Affiliate < ApplicationRecord
     all_site_domains.each { |domain| domain.destroy unless domain.valid? }
   end
 
-  def show_content_border?
-    css_property_hash[:show_content_border] == '1'
-  end
-
-  def show_content_box_shadow?
-    css_property_hash[:show_content_box_shadow] == '1'
-  end
-
-  def set_attributes_from_live_to_staged
-    ATTRIBUTES_WITH_STAGED_AND_LIVE.each do |field|
-      self.send("staged_#{field}=", self.send("#{field}"))
-    end
-  end
-
-  def set_attributes_from_staged_to_live
-    ATTRIBUTES_WITH_STAGED_AND_LIVE.each do |field|
-      self.send("#{field}=", self.send("staged_#{field}"))
-    end
-  end
-
   def refresh_indexed_documents(scope)
-    indexed_documents.select(:id).send(scope.to_sym).find_in_batches(:batch_size => batch_size(scope)) do |batch|
+    indexed_documents.select(:id).send(scope.to_sym).find_in_batches(batch_size: batch_size(scope)) do |batch|
       Resque.enqueue_with_priority(:low, AffiliateIndexedDocumentFetcher, id, batch.first.id, batch.last.id, scope)
     end
   end
 
-  def sanitized_header
-    sanitize_html header
-  end
-
-  def sanitized_footer
-    sanitize_html footer
-  end
-
-  def use_strictui
-    self.header = sanitized_header
-    self.footer = sanitized_footer
-    self.external_css_url = nil
-  end
-
   def unused_features
-    features.any? ? Feature.where('id not in (?)', features.collect(&:id)) : Feature.all
+    features.any? ? Feature.where.not(id: features.collect(&:id)) : Feature.all
   end
 
   def has_organization_codes?
@@ -447,14 +326,14 @@ class Affiliate < ApplicationRecord
 
   def should_show_job_organization_name?
     agency.blank? || agency.agency_organization_codes.empty? ||
-      agency.agency_organization_codes.all? { |organization_code| organization_code.is_department_level? }
+      agency.agency_organization_codes.all?(&:is_department_level?)
   end
 
   def default_autodiscovery_url
     if website.present?
       website
     elsif site_domains.count == 1
-      "http://#{site_domains.pluck(:domain).first}"
+      "http://#{site_domains.pick(:domain)}"
     end
   end
 
@@ -477,7 +356,7 @@ class Affiliate < ApplicationRecord
 
   def destroy_and_update_attributes(params)
     destroy_on_blank(params[:connections_attributes], :affiliate_name, :label) if params[:connections_attributes]
-    update_attributes(params)
+    update(params)
   end
 
   def enable_video_govbox!
@@ -491,7 +370,7 @@ class Affiliate < ApplicationRecord
   def disable_video_govbox!
     transaction do
       rss_feed = rss_feeds.managed.first
-      rss_feed.destroy if rss_feed
+      rss_feed&.destroy
       update_column(:is_video_govbox_enabled, false)
     end
   end
@@ -502,10 +381,6 @@ class Affiliate < ApplicationRecord
 
   def mobile_logo_url
     mobile_logo.url rescue 'unable to retrieve mobile logo url' if mobile_logo_file_name.present?
-  end
-
-  def header_image_url
-    header_image.url rescue 'unable to retrieve header image url' if header_image_file_name.present?
   end
 
   def last_month_query_count
@@ -519,108 +394,14 @@ class Affiliate < ApplicationRecord
     users.map(&:to_label).join(',')
   end
 
-  def assign_sitelink_generator_names!
-    self.sitelink_generator_names = SitelinkGeneratorUtils.matching_generator_names site_domains.pluck(:domain)
-    save!
-  end
-
   def to_label
     "##{id} #{display_name} (#{display_name}) [#{status}]"
   end
 
   def dup
     dup_instance = super
-    dup_instance.css_property_hash = self.css_property_hash
+    dup_instance.css_property_hash = css_property_hash
     dup_instance
-  end
-
-  def load_template_schema
-    return Hashie::Mash.new(template.schema) if self.template_schema.blank?
-    Hashie::Mash.new(JSON.parse(template_schema))
-  end
-
-  def save_template_schema(saved_template_schema)
-    merged_template_schema =
-      if template_schema.blank?
-        (Template.default.schema).deep_merge(saved_template_schema.to_h)
-      else
-        (JSON.parse(template_schema)).deep_merge(saved_template_schema)
-      end
-
-    update(template_schema: merged_template_schema.to_json)
-  end
-
-  def reset_template_schema
-    self.update_attribute(:template_schema, Template.default.schema.to_json)
-    return Hashie::Mash.new(JSON.parse(template_schema))
-  end
-
-  def port_classic_theme
-    new_hash = {}
-
-    if css_property_hash[:font_family] || css_property_hash[:font_family] != "Default"
-      new_hash.merge!({
-        "font" => {
-          "default_font" => css_property_hash[:font_family]
-        }
-      })
-    end
-
-    new_hash.merge!({
-      "colors" => {
-        "template" => {
-          "page_background" => css_property_hash[:page_background_color]
-        },
-        "header" => {
-          "header_background_color" => css_property_hash[:header_background_color],
-          "header_text_color" => css_property_hash[:header_text_color],
-        },
-        "facets" => {
-          "facets_background_color" => css_property_hash[:navigation_background_color],
-          "active_facet_link_color" => css_property_hash[:left_tab_text_color],
-          "facet_link_color" => css_property_hash[:navigation_link_color]
-        },
-        "footer" => {
-          "footer_background_color" => css_property_hash[:footer_background_color],
-          "footer_links_text_color" => css_property_hash[:footer_links_text_color]
-        },
-        "header_links" => {
-          "header_links_background_color" => css_property_hash[:header_links_background_color],
-          "header_links_text_color" => css_property_hash[:header_links_text_color]
-        },
-        "results_container" => {
-          "title_link_color" => css_property_hash[:title_link_color],
-          "visited_title_link_color" => css_property_hash[:visited_title_link_color],
-          "result_url_color" => css_property_hash[:url_link_color],
-          "description_text_color" => css_property_hash[:description_text_color]
-        },
-        "search_bar" => {
-          "search_button_background_color" => css_property_hash[:search_button_background_color]
-        },
-        "tagline" => {
-          "header_tagline_color" => css_property_hash[:header_tagline_color],
-          "header_tagline_background_color" => css_property_hash[:header_tagline_background_color]
-        }
-      }
-    })
-
-    save_template_schema({"css" => new_hash})
-  end
-
-  def template
-    super || Template.default
-  end
-
-  def update_templates(selected_template_id, selected_template_ids)
-    transaction do
-      affiliate_templates.make_available(selected_template_ids)
-      affiliate_templates.make_unavailable(Template.pluck(:id) - selected_template_ids)
-      self.update_attributes(template_id: selected_template_id)
-    end
-  end
-
-  def sc_search_engine
-    (search_engine =~ %r{BingV\d+}) ? 'Bing' : search_engine
   end
 
   def status
@@ -628,7 +409,7 @@ class Affiliate < ApplicationRecord
   end
 
   def excluded_urls_set
-    @excluded_urls_set ||= self.excluded_urls.pluck(:url).map do |url|
+    @excluded_urls_set ||= excluded_urls.pluck(:url).map do |url|
       UrlParser.strip_http_protocols(url)
     end.uniq
   end
@@ -640,7 +421,7 @@ class Affiliate < ApplicationRecord
   end
 
   def remove_boosted_contents_from_index
-    boosted_contents.each { |bs| bs.remove_from_index }
+    boosted_contents.each(&:remove_from_index)
   end
 
   def downcase_name
@@ -656,58 +437,63 @@ class Affiliate < ApplicationRecord
   end
 
   def validate_css_property_hash
-    unless @css_property_hash.blank?
-      validate_font_family @css_property_hash
-      validate_logo_alignment @css_property_hash
-      validate_color_in_css_property_hash @css_property_hash
-    end
+    return if @css_property_hash.blank?
+
+    validate_font_family(@css_property_hash)
+    validate_logo_alignment(@css_property_hash)
+    validate_color_in_css_property_hash(@css_property_hash)
   end
 
   def validate_font_family(hash)
-    errors.add(:base, "Font family selection is invalid") if hash['font_family'].present? and !FontFamily.valid?(hash['font_family'])
+    errors.add(:base, 'Font family selection is invalid') if hash['font_family'].present? && !FontFamily.valid?(hash['font_family'])
   end
 
   def validate_logo_alignment(hash)
-    errors.add(:base, 'Logo alignment is invalid') if hash['logo_alignment'].present? and !LogoAlignment.valid?(hash['logo_alignment'])
+    errors.add(:base, 'Logo alignment is invalid') if hash['logo_alignment'].present? && !LogoAlignment.valid?(hash['logo_alignment'])
   end
 
   def validate_color_in_css_property_hash(hash)
-    unless hash.blank?
-      DEFAULT_CSS_PROPERTIES.keys.each do |key|
-        validate_color_property(key, hash[key])
-      end
+    return if hash.blank?
+
+    DEFAULT_CSS_PROPERTIES.each_key do |key|
+      validate_color_property(key, hash[key])
     end
   end
 
   def validate_color_property(key, value)
-    return unless key.to_s =~ /color$/ and value.present?
+    return unless key.to_s =~ /color$/ && value.present?
+
     errors.add(:base, "#{key.to_s.humanize} should consist of a # character followed by 3 or 6 hexadecimal digits") unless value =~ /^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/
   end
 
   def set_managed_header_links
     return if @managed_header_links_attributes.nil?
+
     self.managed_header_links = []
     set_managed_links(@managed_header_links_attributes, managed_header_links)
   end
 
   def set_managed_footer_links
     return if @managed_footer_links_attributes.nil?
+
     self.managed_footer_links = []
     set_managed_links(@managed_footer_links_attributes, managed_footer_links)
   end
 
   def set_managed_no_results_pages_alt_links
     return if @managed_no_results_pages_alt_links_attributes.nil?
+
     self.managed_no_results_pages_alt_links = []
     set_managed_links(@managed_no_results_pages_alt_links_attributes, managed_no_results_pages_alt_links)
   end
 
   def set_managed_links(managed_links_attributes, managed_links)
     managed_links_attributes.values.sort_by { |link| link[:position].to_i }.each do |link|
-      next if link[:title].blank? and link[:url].blank?
+      next if link[:title].blank? && link[:url].blank?
+
       url = link[:url]
-      url = "http://#{url}" if url.present? and url !~ %r{^(http(s?)://|mailto:)}i
-      managed_links << { :position => link[:position].to_i, :title => link[:title], :url => url }
+      url = "http://#{url}" if url.present? && url !~ %r{^(http(s?)://|mailto:)}i
+      managed_links << { position: link[:position].to_i, title: link[:title], url: url }
     end
   end
 
@@ -725,11 +511,12 @@ class Affiliate < ApplicationRecord
 
   def validate_managed_links(links, link_type)
     return if links.blank?
+
     add_blank_link_title_error = false
     add_blank_link_url_error = false
     links.each do |link|
-      add_blank_link_title_error = true if link[:title].blank? and link[:url].present?
-      add_blank_link_url_error = true if link[:title].present? and link[:url].blank?
+      add_blank_link_title_error = true if link[:title].blank? && link[:url].present?
+      add_blank_link_url_error = true if link[:title].present? && link[:url].blank?
     end
     errors.add(:base, "#{link_type.to_s.humanize} link title can't be blank") if add_blank_link_title_error
     errors.add(:base, "#{link_type.to_s.humanize} link URL can't be blank") if add_blank_link_url_error
@@ -737,70 +524,27 @@ class Affiliate < ApplicationRecord
 
   def set_default_fields
     self.theme = THEMES.keys.first.to_s if theme.blank?
-    self.uses_managed_header_footer = true if uses_managed_header_footer.nil?
-    self.staged_uses_managed_header_footer = true if staged_uses_managed_header_footer.nil?
     @css_property_hash = ActiveSupport::OrderedHash.new if @css_property_hash.nil?
     true
   end
 
   def set_css_properties
-    self.css_properties = @css_property_hash.to_json unless @css_property_hash.blank?
-  end
-
-  def validate_staged_header_footer_css
-    return unless is_validate_staged_header_footer
-    begin
-      self.staged_nested_header_footer_css = generate_nested_css(staged_header_footer_css)
-    rescue Sass::SyntaxError => err
-      errors.add(:base, "CSS for the top and bottom of your search results page: #{err}")
-    end
+    self.css_properties = @css_property_hash.to_json if @css_property_hash.present?
   end
 
   def language_valid
-    errors.add(:base, "Locale must be valid") unless Language.exists?(code: self.locale)
-  end
-
-  def generate_nested_css(css)
-    Renderers::CssToNestedCss.new('.header-footer', css).render if css.present?
-  end
-
-  def validate_staged_header_footer
-    return unless is_validate_staged_header_footer
-    validate_header_results = validate_html staged_header
-    if validate_header_results[:has_malformed_html]
-      errors.add(:base, malformed_html_error_message(:top))
-    end
-
-    if validate_header_results[:has_banned_elements]
-      errors.add(:base, "HTML to customize the top of your search results page must not contain #{BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER.join(', ')} elements.")
-    end
-
-    if validate_header_results[:has_banned_attributes]
-      errors.add(:base, "HTML to customize the top of your search results page must not contain the onload attribute.")
-    end
-
-    validate_footer_results = validate_html staged_footer
-    if validate_footer_results[:has_malformed_html]
-      errors.add(:base, malformed_html_error_message(:bottom))
-    end
-
-    if validate_footer_results[:has_banned_elements]
-      errors.add(:base, "HTML to customize the bottom of your search results page must not contain #{BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER.join(', ')} elements.")
-    end
-
-    if validate_footer_results[:has_banned_attributes]
-      errors.add(:base, "HTML to customize the bottom of your search results page must not contain the onload attribute.")
-    end
+    errors.add(:base, 'Locale must be valid') unless Language.exists?(code: locale)
   end
 
   def html_columns_cannot_be_malformed
-    %i(external_tracking_code footer_fragment).each do |field_name_symbol|
-      value = self.send field_name_symbol
+    %i[external_tracking_code footer_fragment].each do |field_name_symbol|
+      value = send(field_name_symbol)
       next if value.blank?
 
-      validation_results = validate_html value
+      validation_results = validate_html(value)
       if validation_results[:has_malformed_html]
-        errors.add(:base, "#{field_name_symbol.to_s.humanize} is invalid: #{validation_results[:error_message]}")
+        error_message = "#{field_name_symbol.to_s.humanize} is invalid: #{validation_results[:error_message]}"
+        errors.add(:base, error_message)
       end
     end
   end
@@ -809,32 +553,18 @@ class Affiliate < ApplicationRecord
     validate_html_results = {}
     has_banned_elements = false
     has_banned_attributes = false
-    unless html.blank?
-      html_doc = Nokogiri::HTML::DocumentFragment.parse html
+    if html.present?
+      html_doc = Nokogiri::HTML::DocumentFragment.parse(html)
       unless html_doc.errors.empty?
         validate_html_results[:has_malformed_html] = true
-        validate_html_results[:error_message] = html_doc.errors.join('. ') + '.' unless html_doc.errors.blank?
+        validate_html_results[:error_message] = "#{html_doc.errors.join('. ')}." if html_doc.errors.present?
       end
-      has_banned_elements = true unless html_doc.css(BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER.join(',')).blank?
-      has_banned_attributes = true unless html_doc.xpath('*[@onload]').blank?
+      has_banned_elements = true if html_doc.css(BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER.join(',')).present?
+      has_banned_attributes = true if html_doc.xpath('*[@onload]').present?
     end
     validate_html_results[:has_banned_elements] = has_banned_elements
     validate_html_results[:has_banned_attributes] = has_banned_attributes
     validate_html_results
-  end
-
-  def malformed_html_error_message(field_name)
-    sea = Rails.application.secrets.organization[:support_email_address]
-    email_link = %Q{<a href="mailto:#{sea}">#{sea}</a>}
-    "HTML to customize the #{field_name} of your search results is invalid. Click on the validate link below or email us at #{email_link}".html_safe
-  end
-
-  def sanitize_html(html)
-    unless html.blank?
-      doc = Nokogiri::HTML::DocumentFragment.parse html
-      doc.css("#{BANNED_HTML_ELEMENTS_FROM_HEADER_AND_FOOTER.join(',')}").each(&:remove)
-      doc.to_html
-    end
   end
 
   def update_error_keys
@@ -842,47 +572,28 @@ class Affiliate < ApplicationRecord
     swap_error_key(:"site_domains.domain", :domain)
     swap_error_key(:"connections.connected_affiliate_id", :related_site_handle)
     swap_error_key(:"connections.label", :related_site_label)
-    swap_error_key(:staged_page_background_image_file_size, :page_background_image_file_size)
-    swap_error_key(:staged_header_image_file_size, :header_image_file_size)
-  end
-
-  def previous_fields
-    @previous_fields ||= previous_fields_json.blank? ? {} : JSON.parse(previous_fields_json, :symbolize_names => true)
   end
 
   def live_fields
-    @live_fields ||= live_fields_json.blank? ? {} : JSON.parse(live_fields_json, :symbolize_names => true)
-  end
-
-  def staged_fields
-    @staged_fields ||= staged_fields_json.blank? ? {} : JSON.parse(staged_fields_json, :symbolize_names => true)
+    @live_fields ||= live_fields_json.blank? ? {} : JSON.parse(live_fields_json, symbolize_names: true)
   end
 
   def set_json_fields
-    self.previous_fields_json = ActiveSupport::OrderedHash[previous_fields.sort].to_json
     self.live_fields_json = ActiveSupport::OrderedHash[live_fields.sort].to_json
-    self.staged_fields_json = ActiveSupport::OrderedHash[staged_fields.sort].to_json
   end
 
   def load_css_properties
     return {} if css_properties.blank?
-    JSON.parse(css_properties, :symbolize_names => true)
+
+    JSON.parse(css_properties, symbolize_names: true)
   end
 
   def clear_existing_attachments
-    if page_background_image? and !page_background_image.dirty? and mark_page_background_image_for_deletion == '1'
-      page_background_image.clear
-    end
-
-    if header_image? and !header_image.dirty? and mark_header_image_for_deletion == '1'
-      header_image.clear
-    end
-
-    if mobile_logo? and !mobile_logo.dirty? and mark_mobile_logo_for_deletion == '1'
+    if mobile_logo? && !mobile_logo.dirty? && mark_mobile_logo_for_deletion == '1'
       mobile_logo.clear
     end
 
-    if header_tagline_logo? and !header_tagline_logo.dirty? and mark_header_tagline_logo_for_deletion == '1'
+    if header_tagline_logo? && !header_tagline_logo.dirty? && mark_header_tagline_logo_for_deletion == '1'
       header_tagline_logo.clear
     end
   end
@@ -895,18 +606,8 @@ class Affiliate < ApplicationRecord
     self.api_access_key = Digest::SHA256.base64digest("#{name}:#{Time.current.to_i}:#{rand}").tr('+/', '-_')
   end
 
-  def sanitize_staged_header_footer
-    self.staged_header = strip_comments(staged_header) unless staged_header.blank?
-    self.staged_footer = strip_comments(staged_footer) unless staged_footer.blank?
-  end
-
-  def set_is_validate_staged_header_footer(attributes)
-    self.is_validate_staged_header_footer = attributes[:staged_uses_managed_header_footer] == '0'
-  end
-
   def generate_look_and_feel_css
-    renderer = Renderers::AffiliateCss.new(build_css_hash)
-    self.look_and_feel_css = renderer.render_desktop_css
+    renderer = AffiliateCss.new(build_css_hash)
     self.mobile_look_and_feel_css = renderer.render_mobile_css
   end
 
@@ -921,8 +622,8 @@ class Affiliate < ApplicationRecord
   end
 
   def validate_managed_no_results_pages_guidance_text
-    if managed_no_results_pages_alt_links.present? && additional_guidance_text.blank?
-      errors.add(:base, "Additional guidance text is required when links are present.")
-    end
+    return unless managed_no_results_pages_alt_links.present? && additional_guidance_text.blank?
+
+    errors.add(:base, 'Additional guidance text is required when links are present.')
   end
 end

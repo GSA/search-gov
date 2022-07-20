@@ -2,456 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=60&q=social%20security%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '3440'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Thu, 26 Apr 2018 23:28:10 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=29A3DBED9E8167792AE1D0309F166620; path=/; expires=Tue, 21-May-2019 23:29:10
-        GMT; domain=bingapis.com
-      - MUIDB=29A3DBED9E8167792AE1D0309F166620; path=/; httponly; expires=Tue, 21-May-2019
-        23:29:10 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 26-Apr-2020 23:29:10 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=AA9E9C3F214643B2B6699F4742CD23AF&dmnchg=1; domain=.bingapis.com;
-        expires=Sun, 26-Apr-2020 23:29:10 GMT; path=/
-      - SRCHUSR=DOB=20180426; domain=.bingapis.com; expires=Sun, 26-Apr-2020 23:29:10
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=01876D4CF35367163E5F6691F2C4668A; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 21-May-2019 23:29:10 GMT; domain=bingapis.com
-      - _SS=SID=01876D4CF35367163E5F6691F2C4668A; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - 2A57D29D2FDA44DDA98CA0FAA5B6E3EA
-      X-Msedge-Clientid:
-      - 29A3DBED9E8167792AE1D0309F166620
-      X-Msapi-Userstate:
-      - 98e8
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: 2A57D29D2FDA44DDA98CA0FAA5B6E3EA Ref B: CO1EDGE0307 Ref C: 2018-04-26T23:29:10Z'
-      Date:
-      - Thu, 26 Apr 2018 23:29:09 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=5F0813E32E8445AB9A4A09A0244FE953&CID=29A3DBED9E8167792AE1D0309F166620&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=5F0813E32E8445AB9A4A09A0244FE953&CID=29A3DBED9E8167792AE1D0309F166620&Type=Event.CPT&DATA=0"},
-        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=social+security+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5497.1", "totalEstimatedMatches": 958000,
-        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Benefits For Children With Disabilities", "url": "https:\/\/www.ssa.gov\/pubs\/EN-05-10026.pdf",
-        "urlPingSuffix": "DevEx,5077.1", "displayUrl": "https:\/\/www.ssa.gov\/pubs\/EN-05-10026.pdf",
-        "snippet": "your own Social Security number with you, or the Social Security
-        number of the retired, disabled, or deceased parent on whose record the SSDI
-        claim is being", "dateLastCrawled": "2018-04-23T02:42:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "The Work Site
-        - Social Security Administration", "url": "https:\/\/www.ssa.gov\/work\/",
-        "urlPingSuffix": "DevEx,5092.1", "displayUrl": "https:\/\/www.ssa.gov\/work",
-        "snippet": "Welcome to the Ticket to Work Program! The Ticket to Work
-        (Ticket) program is a free and voluntary program that can help Social Security
-        beneficiaries go to work, get a good job that may lead to a career, and become
-        financially independent, all while they keep their Medicare or Medicaid.",
-        "dateLastCrawled": "2018-04-21T22:56:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "Manage Your Benefits With A my Social Security Account ...", "url":
-        "https:\/\/www.ssa.gov\/myaccount\/lp\/landing-page-rome.html", "urlPingSuffix":
-        "DevEx,5108.1", "about": [{"name": "Social Security Administration"}], "displayUrl":
-        "https:\/\/www.ssa.gov\/myaccount\/lp\/landing-page-rome.html", "snippet":
-        "Estimates of your future retirement, disability, and survivors benefits;
-        Your earnings once a year to verify the amounts we posted are correct; and
-        The estimated Social Security and Medicare taxes you’ve paid. Get a benefit
-        verification letter stating that: You never received Social Security ...",
-        "dateLastCrawled": "2018-04-21T20:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "Benefits Planner | Life Expectancy | Social Security ...", "url":
-        "https:\/\/www.ssa.gov\/planners\/lifeexpectancy.html", "urlPingSuffix": "DevEx,5124.1",
-        "about": [{"name": "Life expectancy"}], "displayUrl": "https:\/\/www.ssa.gov\/planners\/lifeexpectancy.htm",
-        "snippet": "This Social Security web page explains why one of the important
-        factors to take into account when you consider when to start collecting benefits,
-        is how long you may live.", "dateLastCrawled": "2018-04-20T09:51:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Retirement
-        Estimator | Social Security Administration", "url": "https:\/\/www.ssa.gov\/benefits\/retirement\/estimator.html",
-        "urlPingSuffix": "DevEx,5137.1", "displayUrl": "https:\/\/www.ssa.gov\/benefits\/retirement\/estimator.html",
-        "snippet": "The Retirement Estimator produces estimates that are based on
-        your actual Social Security earnings record.", "dateLastCrawled": "2018-04-26T06:56:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Social
-        Security: Protecting Your Investment | Social ...", "url": "https:\/\/www.ssa.gov\/antifraudfacts\/",
-        "urlPingSuffix": "DevEx,5153.1", "displayUrl": "https:\/\/www.ssa.gov\/antifraudfacts",
-        "snippet": "A Message from Social Security. One of our biggest and most
-        important responsibilities to you, the American public, is protecting your
-        investment while continuing to provide world-class service.", "dateLastCrawled":
-        "2018-04-22T03:33:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "Social Security Matters | The Official Blog of Social Security",
-        "url": "https:\/\/blog.ssa.gov\/", "urlPingSuffix": "DevEx,5169.1", "about":
-        [{"name": "Social Security Administration"}], "displayUrl": "https:\/\/blog.ssa.gov",
-        "snippet": "National Social Security Month is celebrated in April and is
-        dedicated to educating you about Social Security programs and services.
-        From programs that help support you through life’s journey, to services that
-        help put you in control, to systems that help protect what’s important to
-        you, Social Security is committed to helping secure today ...", "dateLastCrawled":
-        "2018-04-21T23:20:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
-        "name": "Social Security Update | Social Security Administration", "url":
-        "https:\/\/www.ssa.gov\/news\/newsletter\/", "urlPingSuffix": "DevEx,5185.1",
-        "about": [{"name": "Social Security Administration"}], "displayUrl": "https:\/\/www.ssa.gov\/news\/newsletter",
-        "snippet": "In the 21st century, more women work, pay Social Security taxes,
-        and earn credits toward monthly retirement income than at any other time in
-        our nation’s history.", "dateLastCrawled": "2018-04-23T00:49:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Benefits
-        Planner | Income Taxes And Your Social Security ...", "url": "https:\/\/www.ssa.gov\/planners\/taxes.html",
-        "urlPingSuffix": "DevEx,5199.1", "about": [{"name": "Social Security Administration"}],
-        "displayUrl": "https:\/\/www.ssa.gov\/planners\/taxes.htm", "snippet": "This
-        Social Security planner page explains when you may have to pay income taxes
-        on your Social Security benefits.", "dateLastCrawled": "2018-04-19T15:16:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "SSA New
-        York Region Home Page", "url": "https:\/\/www.ssa.gov\/ny\/", "urlPingSuffix":
-        "DevEx,5215.1", "about": [{"name": "Social Security Administration"}], "displayUrl":
-        "https:\/\/www.ssa.gov\/ny", "snippet": "Social Security''s New York
-        Region proudly serves the states of New Jersey and New York, the Commonwealth
-        of Puerto Rico and the U.S. Virgin Islands. Virtually every resident in the
-        New York Region will interact with Social Security during his or her life
-        and we know how important our services are to ...", "dateLastCrawled": "2018-04-21T05:20:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Email
-        Our Support Team - Social Security Administration", "url": "https:\/\/faq.ssa.gov\/ics\/support\/ticketnewwizard.asp?style=classic",
-        "urlPingSuffix": "DevEx,5230.1", "about": [{"name": "Social Security Administration"}],
-        "displayUrl": "https:\/\/faq.ssa.gov\/ics\/support\/ticketnewwizard.asp?style=classic",
-        "snippet": "Follow: This website is produced and published at U.S. taxpayer
-        expense.", "dateLastCrawled": "2018-04-20T12:27:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
-        "name": "U.S. Social Security Administration | Benefits.gov", "url": "https:\/\/www.benefits.gov\/benefits\/browse-by-agency\/agency\/9",
-        "urlPingSuffix": "DevEx,5246.1", "displayUrl": "https:\/\/www.benefits.gov\/benefits\/browse-by-agency\/agency\/9",
-        "snippet": "Benefits.gov provides information on government assistance programs.
-        Learn more about the programs of the U.S. Social Security Administration
-        here.", "dateLastCrawled": "2018-04-20T18:21:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
-        "name": "What is the eligibility for Social Security spouse’s ...", "url":
-        "https:\/\/faq.ssa.gov\/link\/portal\/34011\/34019\/Article\/3754\/What-is-the-eligibility-for-Social-Security-spouse-s-benefits-and-my-own-retirement-benefits",
-        "urlPingSuffix": "DevEx,5265.1", "about": [{"name": "Social Security Administration"}],
-        "displayUrl": "https:\/\/faq.ssa.gov\/link\/portal\/34011\/34019\/Article\/3754\/What-is...",
-        "snippet": "If you have not worked or do not have enough Social Security
-        credits to qualify for your own Social Security benefits, you may be able
-        to receive spouse’s benefits.", "dateLastCrawled": "2018-04-22T08:29:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Selected
-        Topic - Social Security Administration", "url": "https:\/\/www.ssa.gov\/medicarecard\/",
-        "urlPingSuffix": "DevEx,5285.1", "about": [{"name": "Social Security Administration"}],
-        "displayUrl": "https:\/\/www.ssa.gov\/medicarecard", "snippet": "Your
-        Medicare card is proof of your Medicare insurance. If your Medicare card
-        was lost, stolen, or destroyed, you can ask for a replacement by using your
-        online my Social Security account.", "dateLastCrawled": "2018-04-21T13:48:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Withholding
-        Income Tax From Your Social Security Benefits", "url": "https:\/\/www.ssa.gov\/planners\/taxwithold.html",
-        "urlPingSuffix": "DevEx,5299.1", "about": [{"name": "Social Security Administration"}],
-        "displayUrl": "https:\/\/www.ssa.gov\/planners\/taxwithold.htm", "snippet":
-        "This page explains how to have estimated income taxes withheld from your
-        Social Security benefits.", "dateLastCrawled": "2018-04-22T18:12:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Glossary
-        of Social Security Terms | Social Security ...", "url": "https:\/\/www.ssa.gov\/agency\/glossary\/",
-        "urlPingSuffix": "DevEx,5315.1", "about": [{"name": "Social Security Administration"}],
-        "displayUrl": "https:\/\/www.ssa.gov\/agency\/glossary", "snippet": "The
-        dollar amount used to calculate your Social Security benefit if you attained
-        age 62 or became disabled (or died) after 1978. To arrive at your AIME, we
-        adjust your actual past earnings using an \"average wage index,\" so you won’t
-        lose the value of your past earnings (when money was worth more ...", "dateLastCrawled":
-        "2018-04-20T13:02:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
-        "name": "Benefits Planner: Retirement - Social Security Administration",
-        "url": "https:\/\/www.ssa.gov\/planners\/retire\/ageincrease.html", "urlPingSuffix":
-        "DevEx,5330.1", "displayUrl": "https:\/\/www.ssa.gov\/planners\/retire\/ageincrease.html",
-        "snippet": "This page describes how the full retirement age to receive Social
-        Security benefits is increasing.", "dateLastCrawled": "2018-04-20T09:53:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Benefits
-        Planner: Disability | How You Qualify | Social ...", "url": "https:\/\/www.ssa.gov\/planners\/disability\/qualify.html",
-        "urlPingSuffix": "DevEx,5344.1", "displayUrl": "https:\/\/www.ssa.gov\/planners\/disability\/qualify.html",
-        "snippet": "What We Mean By Disability. The definition of disability under
-        Social Security is different than other programs. Social Security pays
-        only for total disability.", "dateLastCrawled": "2018-04-21T12:54:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "How Social
-        Security Can Help You When a Family Member Dies", "url": "https:\/\/www.ssa.gov\/pubs\/EN-05-10008.pdf",
-        "urlPingSuffix": "DevEx,5357.1", "about": [{"name": "Social Security Administration"}],
-        "displayUrl": "https:\/\/www.ssa.gov\/pubs\/EN-05-10008.pdf", "snippet":
-        "How Social Security Can Help You When a Family Member Dies You should let
-        Social Security know as soon as possible when a person in your family dies.",
-        "dateLastCrawled": "2018-04-21T00:23:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
-        "name": "Business Services | Social Security Administration", "url": "https:\/\/www.ssa.gov\/thirdparty\/business.html",
-        "urlPingSuffix": "DevEx,5371.1", "about": [{"name": "Social Security Administration"}],
-        "displayUrl": "https:\/\/www.ssa.gov\/thirdparty\/business.html", "snippet":
-        "Learn about issues such as reporting wages, verifying Social Security numbers
-        and doing business with the Social Security Administration.", "dateLastCrawled":
-        "2018-04-22T18:31:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
-        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
-    http_version: 
-  recorded_at: Thu, 26 Apr 2018 23:29:10 GMT
-- request:
-    method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=60&q=social%20security%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '3467'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Mon, 27 Aug 2018 00:06:08 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=1ABABC154DF6677B0085B04D4CF966E3; path=/; expires=Sat, 21-Sep-2019 00:07:09
-        GMT; domain=bingapis.com
-      - MUIDB=1ABABC154DF6677B0085B04D4CF966E3; path=/; httponly; expires=Sat, 21-Sep-2019
-        00:07:09 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:07:08 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=1AB30217E0B34FBBAF571863FEFB595D&dmnchg=1; domain=.bingapis.com;
-        expires=Thu, 27-Aug-2020 00:07:08 GMT; path=/
-      - SRCHUSR=DOB=20180827; domain=.bingapis.com; expires=Thu, 27-Aug-2020 00:07:08
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=18794D9246CD631632AE41CA47C26264; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 21-Sep-2019 00:07:09 GMT; domain=bingapis.com
-      - _SS=SID=18794D9246CD631632AE41CA47C26264; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - AA7130B13D9F4198BCDE41E2FBBE6802
-      X-Msedge-Clientid:
-      - 1ABABC154DF6677B0085B04D4CF966E3
-      X-Msapi-Userstate:
-      - f53f
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: AA7130B13D9F4198BCDE41E2FBBE6802 Ref B: BAYEDGE0106 Ref C: 2018-08-27T00:07:09Z'
-      Date:
-      - Mon, 27 Aug 2018 00:07:08 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=DF5C734D3AA24247B5BB6739A905C9A7&CID=1ABABC154DF6677B0085B04D4CF966E3&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=DF5C734D3AA24247B5BB6739A905C9A7&CID=1ABABC154DF6677B0085B04D4CF966E3&Type=Event.CPT&DATA=0"},
-        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=social+security+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5414.1", "totalEstimatedMatches": 682000,
-        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Form SSA-1 - Social Security Administration", "url": "https:\/\/www.ssa.gov\/forms\/ssa-1.html",
-        "urlPingSuffix": "DevEx,5059.1", "about": [{"name": "Social Security Administration"}],
-        "displayUrl": "https:\/\/www.ssa.gov\/forms\/ssa-1.html", "snippet": "If
-        you are outside the U.S., we may need to know if you worked or will be working
-        over 45 hours a month outside the United States. Documents You May Need To
-        Provide We may need to see certain documents in order to pay benefits. If
-        you apply online, a list of documents we need to see will appear at ...",
-        "dateLastCrawled": "2018-08-18T04:16:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
-        "name": "Services for people currently receiving benefits | Social ...",
-        "url": "https:\/\/www.ssa.gov\/onlineservices\/current.htm", "urlPingSuffix":
-        "DevEx,5071.1", "about": [{"name": "Social Security Administration"}], "displayUrl":
-        "https:\/\/www.ssa.gov\/onlineservices\/current.htm", "snippet": "This Social
-        Security web page contains information about services for people currently
-        receiving benefits.", "dateLastCrawled": "2018-08-01T22:42:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Social
-        Security History - ssa.gov", "url": "https:\/\/www.ssa.gov\/history\/35act.html",
-        "urlPingSuffix": "DevEx,5084.1", "about": [{"name": "Social Security Administration"}],
-        "displayUrl": "https:\/\/www.ssa.gov\/history\/35act.html", "snippet": "The
-        Social Security Act (Act of August 14, 1935) [H. R. 7260] An act to provide
-        for the general welfare by establishing a system of Federal old-age benefits,
-        and by enabling the several States to make more adequate provision for aged
-        persons, blind persons, dependent and crippled children, maternal and child
-        welfare, public health, and the ...", "dateLastCrawled": "2018-08-17T19:44:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "ROME Survey
-        Page | Social Security Administration", "url": "https:\/\/www.ssa.gov\/myaccount\/lp\/landing-page-rome.html",
-        "urlPingSuffix": "DevEx,5098.1", "about": [{"name": "Social Security Administration"}],
-        "displayUrl": "https:\/\/www.ssa.gov\/myaccount\/lp\/landing-page-rome.html",
-        "snippet": "Thank you for using my Social Security.... We hope you enjoyed
-        your online service experience with us today. We look forward to your next
-        visit. Remember, if you receive benefits or have Medicare, you can use your
-        my Social Security online account to:", "dateLastCrawled": "2018-08-21T00:36:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "About
-        Social Security | Social Security Administration", "url": "https:\/\/www.ssa.gov\/agency\/",
-        "urlPingSuffix": "DevEx,5111.1", "about": [{"name": "Social Security Administration"}],
-        "displayUrl": "https:\/\/www.ssa.gov\/agency", "snippet": "Learn more about
-        the Social Security Administration - here with you through life''s journey.",
-        "dateLastCrawled": "2018-08-18T13:43:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
-        "name": "Benefits Planner: Retirement - Social Security Administration",
-        "url": "https:\/\/www.ssa.gov\/planners\/retire\/ageincrease.html", "urlPingSuffix":
-        "DevEx,5124.1", "displayUrl": "https:\/\/www.ssa.gov\/planners\/retire\/ageincrease.html",
-        "snippet": "This page describes how the full retirement age to receive Social
-        Security benefits is increasing.", "dateLastCrawled": "2018-08-09T17:37:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Benefits
-        Planner: Retirement - Social Security Administration", "url": "https:\/\/www.ssa.gov\/planners\/retire\/applying6.html",
-        "urlPingSuffix": "DevEx,5137.1", "about": [{"name": "Social Security Administration"}],
-        "displayUrl": "https:\/\/www.ssa.gov\/planners\/retire\/applying6.html",
-        "snippet": "This retirement planner page explains what happens if you qualify
-        for Social Security benefits on someone else''s record.", "dateLastCrawled":
-        "2018-08-19T08:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
-        "name": "Social Security - Representative Payee Program - When ...", "url":
-        "https:\/\/www.ssa.gov\/payee\/", "urlPingSuffix": "DevEx,5150.1", "about":
-        [{"name": "Representative payee"}, {"name": "Representative payee"}], "displayUrl":
-        "https:\/\/www.ssa.gov\/payee", "snippet": "The page contains information
-        on financial management for Social Security and SSI payments when beneficiaries
-        incapable of managing their benefits.", "dateLastCrawled": "2018-08-21T11:23:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Social
-        Security Quick Calculator - The United States ...", "url": "https:\/\/www.ssa.gov\/OACT\/quickcalc\/index.html",
-        "urlPingSuffix": "DevEx,5164.1", "about": [{"name": "Social Security Administration"}],
-        "displayUrl": "https:\/\/www.ssa.gov\/OACT\/quickcalc\/index.html", "snippet":
-        "Benefit estimates depend on your date of birth and on your earnings history.
-        For security, the \"Quick Calculator\" does not access your earnings record;
-        instead, it will estimate your earnings based on information you provide.
-        So benefit estimates made by the Quick Calculator are rough. Although the
-        ...", "dateLastCrawled": "2018-08-20T18:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
-        "name": "Benefits Planner | Income Taxes And Your Social Security ...",
-        "url": "https:\/\/www.ssa.gov\/planners\/taxes.html", "urlPingSuffix": "DevEx,5176.1",
-        "about": [{"name": "Social Security Administration"}], "displayUrl": "https:\/\/www.ssa.gov\/planners\/taxes.htm",
-        "snippet": "This Social Security planner page explains when you may have
-        to pay income taxes on your Social Security benefits.", "dateLastCrawled":
-        "2018-08-17T20:43:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
-        "name": "The Work Site - Social Security Administration", "url": "https:\/\/www.ssa.gov\/work\/",
-        "urlPingSuffix": "DevEx,5190.1", "displayUrl": "https:\/\/www.ssa.gov\/work",
-        "snippet": "Welcome to the Ticket to Work Program! The Ticket to Work
-        (Ticket) program is a free and voluntary program that can help Social Security
-        beneficiaries go to work, get a good job that may lead to a career, and become
-        financially independent, all while they keep their Medicare or Medicaid.",
-        "dateLastCrawled": "2018-08-18T19:06:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
-        "name": "Log In to Online Services", "url": "https:\/\/www.ssa.gov\/ere\/ere_demo_public\/html\/EREMEREF\/eFolder\/efLogin.html",
-        "urlPingSuffix": "DevEx,5204.1", "about": [{"name": "Social Security Administration"}],
-        "displayUrl": "https:\/\/www.ssa.gov\/ere\/ere_demo_public\/html\/EREMEREF\/eFolder\/ef...",
-        "snippet": "I understand that the Social Security Administration (SSA) will
-        validate the information I provide against the information in SSA''s files.
-        I certify that: I understand that I may be subject to penalties if I submit
-        fraudulent information. I understand that SSA may prevent me from using these
-        ...", "dateLastCrawled": "2018-08-15T21:11:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
-        "name": "2018 SOCIAL SECURITY CHANGES", "url": "https:\/\/www.ssa.gov\/news\/press\/factsheets\/colafacts2018.pdf",
-        "urlPingSuffix": "DevEx,5216.1", "displayUrl": "https:\/\/www.ssa.gov\/news\/press\/factsheets\/colafacts2018.pdf",
-        "snippet": "The 7.65% tax rate is the combined rate for Social Security
-        and Medicare. The Social Security portion (OASDI) is 6.20% on earnings up
-        to the applicable", "dateLastCrawled": "2018-08-17T17:09:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Benefits Planner:
-        Disability | Social Security Administration", "url": "https:\/\/www.ssa.gov\/planners\/disability\/",
-        "urlPingSuffix": "DevEx,5228.1", "about": [{"name": "Social Security Administration"}],
-        "displayUrl": "https:\/\/www.ssa.gov\/planners\/disability", "snippet":
-        "This page describes Social Security benefits for people who become disabled.",
-        "dateLastCrawled": "2018-08-17T20:02:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "Social Security Office Locator, Social Security", "url": "https:\/\/secure.ssa.gov\/ICON\/msg012View.do",
-        "urlPingSuffix": "DevEx,5240.1", "displayUrl": "https:\/\/secure.ssa.gov\/ICON\/msg012View.do",
-        "snippet": "The Social Security Administration (SSA) website contains links
-        to certain websites that are not affiliated with the United States government.",
-        "dateLastCrawled": "2018-07-31T12:45:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
-        "name": "Social Security Matters | The Official Blog of Social Security",
-        "url": "https:\/\/blog.ssa.gov\/", "urlPingSuffix": "DevEx,5253.1", "about":
-        [{"name": "Social Security Administration"}], "displayUrl": "https:\/\/blog.ssa.gov",
-        "snippet": "While it may be best known for retirement, Social Security is
-        also here to help you get back to work if you are disabled. For millions of
-        people, work isn’t just a source of income, it’s a vital part of who they
-        are — it gives them purpose and pride — it’s a connection to community.",
-        "dateLastCrawled": "2018-08-19T00:01:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
-        "name": "Social Security for Women | Social Security Administration",
-        "url": "https:\/\/www.ssa.gov\/people\/women\/", "urlPingSuffix": "DevEx,5267.1",
-        "about": [{"name": "Social Security Administration"}], "displayUrl": "https:\/\/www.ssa.gov\/people\/women",
-        "snippet": "We are with you from day one, when your parents named you and
-        when you named your children — beginning a lifetime of security. Most parents
-        apply for their child’s Social Security number at birth, usually through
-        the hospital. When the time comes for your kid’s first job, the number is
-        already ...", "dateLastCrawled": "2018-08-20T05:13:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
-        "name": "FICA & SECA Tax Rates - Social Security Administration", "url":
-        "https:\/\/www.ssa.gov\/OACT\/ProgData\/taxRates.html", "urlPingSuffix": "DevEx,5281.1",
-        "displayUrl": "https:\/\/www.ssa.gov\/OACT\/ProgData\/taxRates.html", "snippet":
-        "Social Security''s Old-Age, Survivors, and Disability Insurance (OASDI)
-        program and Medicare''s Hospital Insurance (HI) program are financed primarily
-        by employment taxes.", "dateLastCrawled": "2018-08-11T03:47:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Social
-        Security | City of New York - nyc.gov", "url": "https:\/\/www1.nyc.gov\/nyc-resources\/service\/1254\/social-security",
-        "urlPingSuffix": "DevEx,5292.1", "about": [{"name": "Social Security Administration"}],
-        "displayUrl": "https:\/\/www1.nyc.gov\/nyc-resources\/service\/1254\/social-security",
-        "snippet": "Get information and assistance with Social Security, Disability,
-        and Supplemental Security Income (SSI).", "dateLastCrawled": "2018-08-20T06:50:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Business
-        Services | Social Security Administration", "url": "https:\/\/www.ssa.gov\/thirdparty\/business.html",
-        "urlPingSuffix": "DevEx,5305.1", "displayUrl": "https:\/\/www.ssa.gov\/thirdparty\/business.html",
-        "snippet": "Learn about issues such as reporting wages, verifying Social
-        Security numbers and doing business with the Social Security Administration.",
-        "dateLastCrawled": "2018-08-18T00:24:00.0000000Z"}]}, "rankingResponse": {"mainline":
-        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
-    http_version: 
-  recorded_at: Mon, 27 Aug 2018 00:07:09 GMT
-- request:
-    method: get
     uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=60&q=social%20security%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
@@ -481,207 +31,215 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Tue, 05 Feb 2019 21:33:42 GMT
+      - Tue, 31 Aug 2021 20:32:09 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
       Bingapis-Traceid:
-      - 3D6FC28E8A464C3987ECB3F98AAD455B
+      - D25D9B409EA340D6AEA27E5D47395C0A
       Bingapis-Sessionid:
-      - E8D15EC1CB334182A5405848F37F8D53
+      - 3F1EC019C85A45C7AEADD45BEE13DB0D
       X-Msedge-Clientid:
-      - 11DC63FEC2566D990A7D6F04C31A6CE5
+      - 0155275C02B16503392C37F803576442
       X-Msapi-Userstate:
-      - '9944'
+      - bd17
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=247,MSDatacenter=CO4
+      - InternalResponseTime=283,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
       X-Msedge-Ref:
-      - 'Ref A: 3D6FC28E8A464C3987ECB3F98AAD455B Ref B: BY3EDGE0406 Ref C: 2019-02-05T21:34:42Z'
+      - 'Ref A: D25D9B409EA340D6AEA27E5D47395C0A Ref B: DM2EDGE1006 Ref C: 2021-08-31T20:33:09Z'
       Apim-Request-Id:
-      - 5e914549-4101-4f70-97c0-8e38c4b8e7ab
+      - 580d6c2a-9e23-4397-b4c7-333e54d64197
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
       - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Tue, 05 Feb 2019 21:34:41 GMT
+      - Tue, 31 Aug 2021 20:33:09 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "social
         security (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=social+security+(site%3agov+OR+site%3amil)",
-        "totalEstimatedMatches": 537000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "Benefits Planner: Disability | How You Qualify | Social ...", "url":
-        "https:\/\/www.ssa.gov\/planners\/disability\/qualify.html", "about": [{"name":
-        "Social Security Administration"}], "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.ssa.gov\/planners\/disability\/qualify.html", "snippet":
-        "Social Security program rules assume that working families have access
-        to other resources to provide support during periods of short-term disabilities,
-        including workers'' compensation, insurance, savings, and investments.", "dateLastCrawled":
-        "2019-02-01T16:00:00.0000000Z", "language": "en", "isNavigational": false},
+        "totalEstimatedMatches": 408000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Veterans | SSA - Social Security Administration", "url": "http:\/\/www.ssa.gov\/woundedwarriors\/",
+        "isFamilyFriendly": true, "displayUrl": "www.ssa.gov\/woundedwarriors",
+        "snippet": "The Supplemental Security Income (SSI) program is a program
+        that provides income support to people with disabilities, people age 65 or
+        older, or blind, who have low income and resources. U.S. Treasury general
+        funds, not the Social Security trust funds, pay for SSI. If you or someone
+        you know may be eligible for SSI, visit SSI Benefits to learn ...", "dateLastCrawled":
+        "2021-08-24T00:39:00.0000000Z", "language": "en", "isNavigational": false},
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1", "name":
-        "Benefits Planner: Retirement | Social Security Administration", "url":
-        "https:\/\/www.ssa.gov\/planners\/retire\/", "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.ssa.gov\/planners\/retire", "snippet": "The three major elements
-        of your retirement portfolio are benefits from pensions, savings and investments,
-        and Social Security benefits. This planner provides detailed information
-        about your Social Security retirement benefits under current law.", "dateLastCrawled":
-        "2019-02-03T13:09:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
-        "Social Security Administration | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/social-security-administration",
-        "about": [{"name": "Social Security Administration"}], "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/social-security-administration",
-        "snippet": "The Social Security Administration assigns Social Security
-        numbers, and administers the Social Security retirement, survivors, and
-        disability insurance programs. They also administer the Supplemental Security
-        Income program for the aged, blind, and disabled. Agency Details Acronym:
-        SSA.", "dateLastCrawled": "2019-01-28T23:52:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
-        "name": "Apply for Social Security Benefits | Social Security ...", "url":
-        "https:\/\/www.ssa.gov\/benefits\/forms\/", "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.ssa.gov\/benefits\/forms", "snippet": "Visit your local Social
-        Security office. An appointment is not required, but if you call ahead and
-        schedule one, it may reduce the time you spend waiting to apply. If you live
-        outside the U.S. you can contact the nearest U.S. Social Security office,
-        U.S. Embassy or consulate. Retirement or Spouse''s Benefits", "dateLastCrawled":
-        "2019-02-03T13:22:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4", "name":
-        "Social Security Income | Internal Revenue Service", "url": "https:\/\/www.irs.gov\/faqs\/social-security-income",
-        "about": [{"name": "Social Security"}], "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.irs.gov\/faqs\/social-security-income", "snippet": "If
-        the total of (1) one half of the child''s social security benefits and (2)
-        all the child''s other income is greater than the base amount that applies
-        to the child''s filing status, part of the child''s social security benefits
-        may be taxable.", "dateLastCrawled": "2018-12-19T07:32:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
-        "name": "Social Security", "url": "https:\/\/secure.ssa.gov\/RIR\/finish",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/secure.ssa.gov\/RIR\/finish",
-        "snippet": "With your my Social Security account, you can immediately view,
-        download, or print your Statement. Your online Statement contains the most
-        up-to-date information in our records about your earnings and benefit.", "dateLastCrawled":
-        "2019-01-30T22:57:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
-        "Benefits Planner: Retirement - Social Security Administration", "url":
-        "https:\/\/www.ssa.gov\/planners\/retire\/ageincrease.html", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.ssa.gov\/planners\/retire\/ageincrease.html",
-        "snippet": "The 1983 Social Security Amendments included a provision for
-        raising the full retirement age beginning with people born in 1938 or later.
-        Congress cited improvements in the health of older people and increases in
-        average life expectancy as primary reasons for increasing the normal retirement
-        age.", "dateLastCrawled": "2019-01-29T01:44:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
-        "name": "Supplemental Security Income - Social Security Administration",
-        "url": "http:\/\/www.ssa.gov\/ssi\/", "about": [{"name": "Social Security
-        Administration"}], "isFamilyFriendly": true, "displayUrl": "www.ssa.gov\/ssi",
-        "snippet": "Social Security Handbook: This is a link to Chapter 21 of the
-        Social Security Handbook which contains material about SSI organized in
-        question and answer format so that you can find the information you need quickly
-        and easily. SSI Law and Regulations", "dateLastCrawled": "2019-02-01T02:03:00.0000000Z",
+        "Retirement Estimator | SSA - Social Security Administration", "url":
+        "https:\/\/www.ssa.gov\/benefits\/retirement\/estimator.html", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ssa.gov\/benefits\/retirement\/estimator.html",
+        "snippet": "Social Security annual cost-of-living adjustments. Changes to
+        U.S. laws and policies. Your military service, railroad employment, or pensions
+        earned through work for which you did not pay Social Security tax. Who Can
+        Use the Retirement Estimator.", "dateLastCrawled": "2021-08-27T21:08:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "U.S. Department of the Treasury Releases Social Security ...",
+        "url": "https:\/\/home.treasury.gov\/news\/press-releases\/jy0338", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/home.treasury.gov\/news\/press-releases\/jy0338",
+        "snippet": "Yet, Social Security will continue to play a critical role in
+        the lives of 65 million beneficiaries and 176 million workers and their families
+        during 2021.” The Social Security and Medicare Trustees Reports are available
+        here. ####", "dateLastCrawled": "2021-08-31T18:45:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Your Options: Working, Applying for Retirement Benefits ...", "url":
+        "https:\/\/www.ssa.gov\/benefits\/retirement\/matrix.html", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ssa.gov\/benefits\/retirement\/matrix.html",
+        "snippet": "Choosing when to start receiving your Social Security retirement
+        benefits is an important decision. There’s no one choice that works for everyone
+        because your lifestyle, finances, and goals are not the same as others. Do
+        you want to retire early, stay on the job, or work beyond retirement age ...",
+        "dateLastCrawled": "2021-08-28T02:21:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Verifying Social Security Numbers", "url": "https:\/\/www.ssa.gov\/employer\/verifySSN.htm?__utma=176294311.520325920.1358963253.1373912401.1375392359.6&__utmb=176294311.11.9.1375392581190&__utmc=176294311&__utmx=-&__utmz=176294311.1373912401.5.5.utmcsr=bing%7Cutmccn=(organic)%7Cutmcmd=organic%7Cutmctr=How%20to%20file%20corrected%20w2&__utmv=-&__utmk=185945705",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/employer\/verifySSN.htm?__utma=176294311.520325920.1358963253...",
+        "snippet": "The Consent Based Social Security Number Verification Service
+        - This fee-based Social Security number verification service is available
+        to enrolled private companies, state and local government agencies to provide
+        instant automated verification and can handle large volume requests. Verifying
+        Social Security Numbers ...", "dateLastCrawled": "2021-08-31T03:09:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Publications | SSA - Social Security Administration", "url":
+        "https:\/\/www.ssa.gov\/pubs\/", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/pubs",
+        "snippet": "Social Security Coverage For Employees Of Foreign Governments
+        And Instrumentalities Of Foreign Governments Working In The United States.
+        05-10566, Learn if your earnings are covered by Social Security if you work
+        in the United States for a foreign government or an instrumentality of a foreign
+        government. PDF", "dateLastCrawled": "2021-08-28T01:21:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "SSI Eligibility - Social Security Administration", "url": "https:\/\/www.ssa.gov\/ssi\/text-eligibility-ussi.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/ssi\/text-eligibility-ussi.htm",
+        "snippet": "Compassionate Allowances (CAL) are a way to quickly identify diseases
+        and other medical conditions that, by definition, meet Social Security’s
+        standards for disability benefits. These conditions primarily include certain
+        cancers, adult brain disorders, and a number of rare disorders that affect
+        children.", "dateLastCrawled": "2021-08-28T00:35:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Social Security Office Locator, SSA Office Locator Social
+        ...", "url": "https:\/\/secure.ssa.gov\/ICON\/main.jsp", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/secure.ssa.gov\/ICON\/main.jsp", "snippet":
+        "Social Security Office Locator We are OPEN to receive your calls On Tuesday,
+        March 17, 2020, we suspended face-to-face service to the public in our field
+        offices and hearings offices nationwide until further notice. However, we
+        are still able to provide critical services via phone, fax and online. Find
+        the Office for this ZIP Code. ...", "dateLastCrawled": "2021-08-27T22:30:00.0000000Z",
         "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
-        "name": "Benefits Planner: Disability | Social Security Administration",
-        "url": "https:\/\/www.ssa.gov\/planners\/disability\/", "about": [{"name":
-        "Social Security Administration"}], "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.ssa.gov\/planners\/disability", "snippet": "The Social Security
-        disability insurance program pays benefits to you and certain family members
-        if you worked long enough and paid Social Security taxes. (Your adult child
-        also may qualify for benefits on your earnings record if he or she has a disability
-        that started before age 22.)", "dateLastCrawled": "2019-01-29T08:55:00.0000000Z",
+        "name": "Identity Theft and Your Social Security Number", "url": "https:\/\/www.ssa.gov\/pubs\/EN-05-10064.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/pubs\/EN-05-10064.pdf",
+        "snippet": "Contacting Social Security. The most convenient way to contact
+        us anytime, anywhere is to visit . www.socialsecurity.gov. There, you can:
+        apply for benefits; open a . my. Social Security account, which you can
+        use to review your . Social Security Statement, verify your earnings, print
+        a benefit verification letter, change your", "dateLastCrawled": "2021-08-28T00:25:00.0000000Z",
         "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
-        "name": "Benefits For Your Family - Social Security Administration", "url":
-        "https:\/\/www.ssa.gov\/planners\/retire\/applying7.html", "about": [{"name":
-        "Social Security Administration"}], "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.ssa.gov\/planners\/retire\/applying7.html", "snippet": "Benefits
-        For Your Family When you start receiving Social Security retirement benefits,
-        some members of your family may also qualify to receive benefits on your record.
-        If they qualify, your spouse or child may receive a monthly payment of up
-        to one-half of your full retirement benefit amount.", "dateLastCrawled": "2019-01-31T10:23:00.0000000Z",
+        "name": "Quick Calculator - Social Security Administration", "url": "https:\/\/www.ssa.gov\/OACT\/quickcalc\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/OACT\/quickcalc",
+        "snippet": "Social Security Quick Calculator: Benefit Calculators. Frequently
+        Asked Questions. Benefit estimates depend on your date of birth and on your
+        earnings history. For security, the \"Quick Calculator\" does not access
+        your earnings record; instead, it will estimate your earnings based on information
+        you provide. So benefit estimates made by the ...", "dateLastCrawled": "2021-08-27T21:20:00.0000000Z",
         "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
-        "name": "Appeal A Decision | Social Security Administration", "url": "https:\/\/www.ssa.gov\/benefits\/disability\/appeal.html",
-        "about": [{"name": "Social Security Administration"}], "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.ssa.gov\/benefits\/disability\/appeal.html",
-        "snippet": "Appeal A Decision If you were recently denied Social Security
-        benefits or Supplemental Security Income (SSI), you may request an appeal.
-        Generally, you have 60 days after you receive the notice of our decision to
-        ask for any type of appeal.", "dateLastCrawled": "2019-01-31T07:41:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
-        "name": "Getting Benefits While Working", "url": "https:\/\/www.ssa.gov\/planners\/retire\/whileworking.html",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/planners\/retire\/whileworking.html",
-        "snippet": "Your Social Security benefits would be reduced through July
-        by $706 ($1 for every $3 you earned over the limit). You would still receive
-        $4,894 out of your $5,600 benefits for the first 7 months ($800 a month January
-        through July).", "dateLastCrawled": "2019-01-31T17:25:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
-        "name": "Veterans | Social Security Administration", "url": "http:\/\/www.ssa.gov\/people\/veterans\/",
-        "isFamilyFriendly": true, "displayUrl": "www.ssa.gov\/people\/veterans",
-        "snippet": "Social Security has always changed to meet the needs of the
-        people we serve and will continue to help support you and your family. Whether
-        you are about to retire, become a full time grandparent, or start a new chapter,
-        Social Security can help you secure today and tomorrow.", "dateLastCrawled":
-        "2019-02-03T13:10:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13", "name":
-        "Benefits Planner: Retirement - Social Security Administration", "url":
-        "https:\/\/www.ssa.gov\/planners\/retire\/agereduction.html", "about": [{"name":
-        "Social Security Administration"}], "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.ssa.gov\/planners\/retire\/agereduction.html", "snippet":
-        "to contact Social Security before you decide when to retire. If you decide
-        to delay your benefits until after age 65, you should still apply for Medicare
-        benefits within three months of your 65th birthday.", "dateLastCrawled": "2019-01-29T23:55:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
-        "name": "Social Security Matters | The Official Blog of Social Security",
-        "url": "https:\/\/blog.ssa.gov\/", "about": [{"name": "Social Security Administration"}],
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.ssa.gov", "snippet":
-        "Social Security is here with information, tools, and benefits to help you
-        secure today and tomorrow. Our journey together begins when you’re born and
-        get your Social Security card. It continues when you get your first job
-        and follows you through your entire career, marriage, and retirement.", "dateLastCrawled":
-        "2019-01-31T18:38:00.0000000Z", "language": "en", "isNavigational": false},
+        "name": "Apply Online for Disability Benefits", "url": "https:\/\/www.ssa.gov\/applyfordisability\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/applyfordisability",
+        "snippet": "Social Security offers an online disability application you
+        can complete at your convenience. Apply from the comfort of your home or any
+        location at a time most convenient for you. You do not need to drive to your
+        local Social Security office or wait for an appointment with a Social Security
+        ...", "dateLastCrawled": "2021-08-27T21:30:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Military Service and Social Security 2021", "url": "https:\/\/www.ssa.gov\/pubs\/EN-05-10017.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/pubs\/EN-05-10017.pdf",
+        "snippet": "Social Security has covered inactive duty service in the armed
+        forces reserves (such as weekend drills) since 1988. If you served in the
+        military before 1957, you didn’t pay Social Security taxes, but we gave
+        you special credit for some of your service. You can get both Social Security
+        benefits and military retirement.", "dateLastCrawled": "2021-08-28T05:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Social Security Administration | Overpayments - Pay an ...", "url":
+        "https:\/\/best.ssa.gov\/overpayments\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/best.ssa.gov\/overpayments", "snippet": "Enter ‘Social Security’
+        in the search box. Click on “Continue” under the Repay Your Social Security
+        Overpayment Online section. Follow the instructions on the following page
+        and click “Continue to the Form.”. Enter the Remittance ID number found on
+        your billing notice and repayment amount. Enter your name, address, and phone
+        number ...", "dateLastCrawled": "2021-08-31T20:08:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Social Security 2021 Trustees Report - Social Security ...",
+        "url": "https:\/\/blog.ssa.gov\/social-security-2021-trustees-report\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/blog.ssa.gov\/social-security-2021-trustees-report",
+        "snippet": "Today, the Social Security Board of Trustees released its annual
+        report on the long-term financial status of the Old-Age and Survivors Insurance
+        and Disability Insurance Trust Funds. Want to learn more? Read our press release.
+        Join us on Facebook Live on Wednesday, September 15, at 7 p.m. ET as we chat
+        about the report.", "dateLastCrawled": "2021-08-31T19:06:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Benefits Planner: Retirement - Social Security Administration",
+        "url": "https:\/\/www.ssa.gov\/benefits\/retirement\/planner\/gpo-calc.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/benefits\/retirement\/planner\/gpo-calc.html",
+        "snippet": "Create a my Social Security Account. Choosing when to retire
+        is an important and personal decision. The best way to start planning for
+        your future is by creating a my Social Security account. With my Social
+        Security, you can verify your earnings, get your Social Security Statement,
+        and much more – all from the comfort of your home or office.", "dateLastCrawled":
+        "2021-08-27T05:11:00.0000000Z", "language": "en", "isNavigational": false},
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15", "name":
-        "How Social Security Can Help You When a Family Member Dies", "url": "https:\/\/www.ssa.gov\/pubs\/EN-05-10008.pdf",
-        "about": [{"name": "Social Security Administration"}], "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.ssa.gov\/pubs\/EN-05-10008.pdf", "snippet":
-        "How Social Security Can Help You When a Family Member Dies You should let
-        Social Security know as soon as possible when a person in your family dies.
-        Usually, the funeral director will report the person’s death to Social Security.
-        You’ll need to give the deceased’s Social Security number to the funeral
-        director so they can make the report.", "dateLastCrawled": "2019-01-30T12:00:00.0000000Z",
+        "SSAB Will Host Virtual Public Session on Social Security’s ...", "url":
+        "https:\/\/www.ssab.gov\/announcements\/ssab-will-host-virtual-public-session-on-social-securitys-financial-outlook\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssab.gov\/announcements\/ssab-will-host-virtual-public-session-on-social...",
+        "snippet": "Washington, DC – Today, Social Security’s Board of Trustees
+        issued its annual report to Congress outlining the financial outlook for the
+        Old-Age, Survivors, and Disability Insurance Trust Funds. The 2021 OASDI Trustees
+        Report is the first to reflect the potential effects of the COVID pandemic.
+        The report projects the combined reserves to become depleted in 2034, one
+        year sooner than than ...", "dateLastCrawled": "2021-08-31T20:03:00.0000000Z",
         "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
-        "name": "Understanding the Benefits - ssa.gov", "url": "https:\/\/www.ssa.gov\/pubs\/EN-05-10024.pdf",
-        "about": [{"name": "Social Security Administration"}], "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.ssa.gov\/pubs\/EN-05-10024.pdf", "snippet":
-        "Social Security helps older Americans, workers who become disabled, and
-        families in which a spouse or parent dies. As of June 2018, about 175 million
-        people worked and paid Social Security taxes and about 62 million people
-        received monthly Social Security benefits.", "dateLastCrawled": "2019-01-31T00:36:00.0000000Z",
+        "name": "Coronavirus Disease (COVID-19) | SSA", "url": "https:\/\/www.ssa.gov\/coronavirus\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/coronavirus",
+        "snippet": "A Social Security number (SSN) is important because you need
+        it to get a job, collect Social Security benefits, and get some other government
+        services. However, please note that you may not need the physical SSN card
+        for many of these services.", "dateLastCrawled": "2021-08-28T03:28:00.0000000Z",
         "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
-        "name": "Planning For Your Survivors - Social Security Administration",
-        "url": "https:\/\/www.ssa.gov\/planners\/survivors\/onyourown.html", "about":
-        [{"name": "Social Security Administration"}], "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.ssa.gov\/planners\/survivors\/onyourown.html", "snippet":
-        "Social Security can help your family if you have earned enough Social
-        Security credits through your work. You can earn up to four credits each
-        year . In 2019, for example, you earn one credit for each $1,360 of wages
-        or self-employment income.", "dateLastCrawled": "2019-01-31T15:58:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
-        "name": "Email Our Support Team, Comments And Questions, Social ...", "url":
-        "https:\/\/secure.ssa.gov\/emailus\/", "about": [{"name": "Questions"}], "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/secure.ssa.gov\/emailus", "snippet": "Many
-        of our services are now available online, like applying for Social Security
-        benefits, requesting a replacement Social Security card, getting your Social
-        Security Statement, and benefit verification letter. You can also look for
-        answers to your questions on our Frequently Asked Questions page.", "dateLastCrawled":
-        "2019-01-31T16:27:00.0000000Z", "language": "en", "isNavigational": false},
+        "name": "Social Security - Representative Payee Program - Payee and ...",
+        "url": "https:\/\/www.ssa.gov\/payee\/able_accounts.htm?_escaped_fragment_=&_escaped_fragment_=&_escaped_fragment_=&_escaped_fragment_=&_escaped_fragment_=&_escaped_fragment_=&_escaped_fragment_=&_escaped_fragment_=&_escaped_fragment_=&_escaped_fragment_=&_escaped_fragment_=&_escaped_fragment_=&_escaped_fragment_=&_escaped_fragment_=&_escaped_fragment_=&_escaped_fragment_=#!",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/payee\/able_accounts.htm?_escaped_fragment_=&_escaped_fragment...",
+        "snippet": "More than eight million people who get monthly Social Security
+        or Supplemental Security Income (SSI) benefits need help managing their
+        money. In these cases, we appoint a relative, friend, or other interested
+        party to serve as the representative payee (payee). A payee must use the benefits
+        received ...", "dateLastCrawled": "2021-08-30T14:16:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Fact Sheet: 2021 Social Security and Medicare Trustees Reports",
+        "url": "https:\/\/home.treasury.gov\/system\/files\/136\/Fact-Sheet-2021-Social-Security-and-Medicare-Trustees-Reports.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/home.treasury.gov\/system\/files\/136\/Fact-Sheet-2021-Social-Security-and...",
+        "snippet": "Social Security and Medicare both face long-term financing shortfalls
+        under currently scheduled benefits and financing. Both programs will experience
+        cost growth substantially in excess of GDP growth through the mid-2030s due
+        to rapid population aging. Medicare also sees its share of GDP grow", "dateLastCrawled":
+        "2021-08-31T20:10:00.0000000Z", "language": "en", "isNavigational": false},
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19", "name":
-        "Glossary of Social Security Terms | Social Security ...", "url": "https:\/\/www.ssa.gov\/agency\/glossary\/",
-        "about": [{"name": "Social Security Administration"}], "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.ssa.gov\/agency\/glossary", "snippet":
-        "Social Security is based on a simple concept: While you work, you pay taxes
-        into the Social Security system, and when you retire or become disabled,
-        you, your spouse, and your dependent children receive monthly benefits that
-        are based on your reported earnings.", "dateLastCrawled": "2019-01-30T05:35:00.0000000Z",
-        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
-        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        "Choose Work! - Ticket to Work - Social Security", "url": "https:\/\/choosework.ssa.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/choosework.ssa.gov", "snippet":
+        "Ticket to work is a free and voluntary Social Security program that helps
+        people who receive disability benefits return to work or work for the first
+        time. The call refers eligible beneficiaries to Ticket to Work''s Help line
+        at 1-866-968-7842 or 1-866-833-2967 (TTY) and to https:\/\/choosework.ssa.gov\/mycall\/.",
+        "dateLastCrawled": "2021-08-28T08:44:00.0000000Z", "language": "en", "isNavigational":
+        false}]}, "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages",
+        "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
         {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
@@ -701,6 +259,261 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-    http_version: 
-  recorded_at: Tue, 05 Feb 2019 21:34:42 GMT
-recorded_with: VCR 4.0.0
+  recorded_at: Tue, 31 Aug 2021 20:33:09 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=60&q=social%20security%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 10:43:55 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 46CBA843BF6B4793A1F8069E5C7515C3
+      Bingapis-Sessionid:
+      - 5C2BEE7AFD644F4A8D7FFC31D2F83894
+      X-Msedge-Clientid:
+      - 186713BEFD286557108D0376FC9864FA
+      X-Msapi-Userstate:
+      - a6b4
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=249,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 46CBA843BF6B4793A1F8069E5C7515C3 Ref B: BLUEDGE1419 Ref C: 2021-10-06T10:44:55Z'
+      Apim-Request-Id:
+      - d63fa689-d58f-4148-aeca-fe93cff511b1
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 10:44:55 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "social
+        security (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=social+security+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 414000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Access Your New Social Security Statement OnlineSocial ...", "url":
+        "https:\/\/blog.ssa.gov\/access-your-new-social-security-statement-online\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.ssa.gov\/access-your-new-social-security-statement-online",
+        "snippet": "The best way to access your new Statement at any time is by using
+        your personal my Social Security account. If you don’t have an account,
+        be sure to create one today. Your account also lets you access other services
+        online, such as requesting a replacement Social Security card and getting
+        a letter proving you do not receive Social Security ...", "dateLastCrawled":
+        "2021-10-05T20:14:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1", "name": "Explore
+        The Benefits You May Be Due", "url": "https:\/\/www.ssa.gov\/potentialentitlement\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/potentialentitlement",
+        "snippet": "Contacting Social Security . Our website is a valuable resource
+        for information about all of Social Security''s programs. There are a number
+        of things you can do online.. In addition to using our website, you can call
+        us toll-free at 1-800-772-1213.We treat all calls confidentially.", "dateLastCrawled":
+        "2021-10-02T13:06:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2", "name": "SOCIAL
+        SECURITY - ssa.gov", "url": "https:\/\/www.ssa.gov\/agency\/shutdown\/materials\/contingency-plan-09-24-21.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/agency\/shutdown\/materials\/contingency-plan-09-24-21.pdf",
+        "snippet": "SOCIAL SECURITY Office of Budget, Finance, and Management SOCIAL
+        SECURITY ADMINISTRATION BALTIMORE MD 21235-0001 September 24, 2021 Ms. Shalanda
+        Young Acting Director Office of Management and Budget 725 17th Street, NW
+        Washington, DC 20503 Dear Ms. Young: This letter sets forth the contingency
+        plan of the Social Security Administration (SSA) to", "dateLastCrawled":
+        "2021-10-04T03:21:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3", "name": "Application
+        for Social Security Card", "url": "https:\/\/www.ssa.gov\/forms\/ss-5.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/forms\/ss-5.pdf",
+        "snippet": "Sections 205(c) and 702 of the Social Security Act, as amended,
+        allow us to collect this information. Furnishing us this information is voluntary.
+        However, failing to provide all or part of the information may prevent us
+        from assigning you a Social Security number (SSN) and issuing you a new
+        or replacement Social Security card.", "dateLastCrawled": "2021-10-03T10:05:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Social Security History", "url": "https:\/\/www.ssa.gov\/history\/orghist.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/history\/orghist.html",
+        "snippet": "The Social Security Administration (SSA) began life as the Social
+        Security Board (SSB). The SSB was created at the moment President Roosevelt
+        inked his signature on the Social Security Act (August 14, 1935 at 3:30
+        p.m.). The SSB was an entirely new entity, with no staff, no facilities and
+        no budget. The initial personnel were donated from ...", "dateLastCrawled":
+        "2021-10-03T08:10:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5", "name": "Social
+        Security History", "url": "https:\/\/www.ssa.gov\/history\/hfaq.html", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ssa.gov\/history\/hfaq.html", "snippet":
+        "A: The Social Security Act was signed by FDR on 8\/14\/35. Taxes were collected
+        for the first time in January 1937 and the first one-time, lump-sum payments
+        were made that same month. Regular ongoing monthly benefits started in January
+        1940. Q2: What is the origin of the term \"Social Security?\"", "dateLastCrawled":
+        "2021-10-03T22:10:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6", "name": "2021
+        Social Security Changes", "url": "https:\/\/www.ssa.gov\/news\/press\/factsheets\/colafacts2021.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/news\/press\/factsheets\/colafacts2021.pdf",
+        "snippet": "SOCIAL SECURITY Social Security National Press Office Baltimore,
+        MD . 2021 SOCIAL SECURITY CHANGES . Cost-of-Living Adjustment (COLA): Based
+        on the increase in the Consumer Price Index (CPI-W) from the third quarter
+        of 2019 through the third quarter of 2020, Social Security and Supplemental
+        Security Income (SSI) beneficiaries will receive a 1.3 ...", "dateLastCrawled":
+        "2021-10-03T09:12:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7", "name": "Application
+        Status | SSA", "url": "https:\/\/www.ssa.gov\/myaccount\/application-status.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/myaccount\/application-status.html",
+        "snippet": "If you have questions or need help understanding how to check
+        the status of your Social Security application online, call our toll-free
+        number at 1-800-772-1213 or visit your Social Security office. If you are
+        deaf or hard of hearing, call our toll-free TTY number, 1-800-325-0778, between
+        8:00 a.m. and 5:30 p.m. Monday through Friday.", "dateLastCrawled": "2021-10-03T13:08:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Philadelphia Home Page - Social Security Administration", "url":
+        "https:\/\/www.ssa.gov\/phila\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.ssa.gov\/phila", "snippet": "Social Security is with you
+        through life’s journey, helping you secure today and tomorrow. If you have
+        questions, need information or want to apply for benefits, visit www.socialsecurity.gov,
+        visit your local office or call 1-800-772-1213. This is the official web page
+        of the Philadelphia Region, U.S. Social Security Administration.", "dateLastCrawled":
+        "2021-10-03T03:05:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9", "name": "Protect
+        Yourself from Social Security Scams | SSA", "url": "https:\/\/www.ssa.gov\/scam\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/scam", "snippet":
+        "The caller or sender says there is a problem with your Social Security
+        number or account. Any call, text, or email asking you to pay a fine or debt
+        with retail gift cards, wire transfers, pre-paid debit cards, internet currency,
+        or by mailing cash. Scammers pretend they are from Social Security or another
+        government agency.", "dateLastCrawled": "2021-10-02T02:15:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Social Security: A Program and Policy History", "url": "https:\/\/www.ssa.gov\/policy\/docs\/ssb\/v66n1\/v66n1p1.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/policy\/docs\/ssb\/v66n1\/v66n1p1.html",
+        "snippet": "The original Social Security Act assessed—on both employees
+        and employers—a 1 percent payroll tax on the first $3,000 of annual earnings,
+        starting in 1937. Beginning in 1940, the tax was scheduled to increase, reaching
+        an ultimate rate in 1949 of 3 percent each on workers and employers (or a
+        6 percent combined rate).", "dateLastCrawled": "2021-09-30T12:10:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Disability Benefits - Social Security Administration", "url":
+        "https:\/\/www.ssa.gov\/pubs\/EN-05-10029.pdf", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.ssa.gov\/pubs\/EN-05-10029.pdf", "snippet":
+        "Social Security pays benefits to people who can’t work because they have
+        a medical condition that’s expected to last at least one year or result in
+        death. Federal law requires this very strict definition of disability. While
+        some programs give money to people with partial disability or", "dateLastCrawled":
+        "2021-10-03T09:02:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "EN-05-10008 - How Social Security Can Help You When a ...", "url": "https:\/\/www.ssa.gov\/pubs\/EN-05-10008.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/pubs\/EN-05-10008.pdf",
+        "snippet": "Social Security Administration. Publication No. 05-10008. June
+        2021 (May 2017 edition may be used) How Social Security Can Help You When
+        a Family Member Dies. Produced and published at U.S. taxpayer expense. You
+        should let us know as soon as possible when a person in your family dies.
+        You should also give the deceased’s Social Security", "dateLastCrawled":
+        "2021-10-03T06:06:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "Comments And Questions - Social Security Administration", "url": "https:\/\/secure.ssa.gov\/emailus\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/secure.ssa.gov\/emailus",
+        "snippet": "Social Security cannot answer questions about economic impact
+        payments under the recently enacted law, the Coronavirus Aid, Relief, and
+        Economic Security Act, or CARES Act. Treasury, not Social Security, will
+        be making direct payments to eligible people. For more information ...", "dateLastCrawled":
+        "2021-10-03T12:05:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "Social Security History", "url": "https:\/\/wwwtest.ssa.gov\/history\/1930.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/wwwtest.ssa.gov\/history\/1930.html",
+        "snippet": "March 30, 1937 The Social Security Board, through the Bureau
+        of Unemployment Compensation, the Department of labor and the United States
+        Employment Service, agreed to act as a single agency in all matters affecting
+        a State employment service. April 12, 1937 The Wagner Labor Act was ...",
+        "dateLastCrawled": "2021-10-04T10:45:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Social Security History", "url": "https:\/\/wwwtest.ssa.gov\/history\/ssa\/ssa2000chapter5ex.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/wwwtest.ssa.gov\/history\/ssa\/ssa2000chapter5ex.html",
+        "snippet": "Agreement on Social Security, with Final Protocol : Jan. 7,
+        1976 : Dec. 1, 1979 : 30 UST 6099, TIAS 9542 : Administrative Agreement for
+        the Implementation of the Agreement on Social Security ...", "dateLastCrawled":
+        "2021-10-04T18:23:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "Services - Field Offices - Social Security Administration", "url": "https:\/\/www.ssa.gov\/ny\/services-fo.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/ny\/services-fo.htm",
+        "snippet": "Social Security''s New York Region operates more than 100 local
+        field offices in New York, New Jersey, Puerto Rico and the U.S. Virgin Islands.
+        Representatives in our field offices can assist you with all issues related
+        to programs administered by Social Security.", "dateLastCrawled": "2021-10-01T05:10:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "SOCIAL SECURITY", "url": "https:\/\/wwwtest.ssa.gov\/history\/pdf\/1984.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/wwwtest.ssa.gov\/history\/pdf\/1984.pdf",
+        "snippet": "The Social Security program is financed essentially on a pay-as-you-go
+        basis. That is, taxes paid into the program are used to pay benefits to current
+        beneficiar-ies. However, Social Security does maintain trust funds that
+        hold all assets not needed currently to pay benefits and administrative expenses.
+        Social Security funds may", "dateLastCrawled": "2021-10-04T08:25:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Press Releases | Press Office | SSA", "url": "https:\/\/www.ssa.gov\/news\/press\/releases\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/news\/press\/releases",
+        "snippet": "April 15, 2021. Social Security’s Business Services Online Portal
+        Key to Accurate Earnings Records for Workers. March 25, 2021. Statement from
+        Andrew Saul, Commissioner of Social Security, about Economic Impact Payments.
+        March 24, 2021. Outreach to Vulnerable Populations During the COVID-19 Pandemic.
+        March 17, 2021.", "dateLastCrawled": "2021-10-03T10:06:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "SOCIAL SECURITY", "url": "https:\/\/wwwtest.ssa.gov\/legislation\/2021COLA.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/wwwtest.ssa.gov\/legislation\/2021COLA.pdf",
+        "snippet": "Social Security and Supplemental Security Income (SSI) benefits
+        for approximately 70 million Americans will increase 1.3 percent in 2021,
+        the Social Security Administration announced today. The 1.3 percent cost-of-living
+        adjustment (COLA) will begin with benefits payable to more than 64 million
+        Social Security beneficiaries in January 2021.", "dateLastCrawled": "2021-10-05T23:27:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 04:42:13 GMT
+recorded_with: VCR 6.0.0

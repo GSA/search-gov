@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe SearchEngineResponse do
   let(:search_engine_response) do
-    SearchEngineResponse.new do |search_response|
+    described_class.new do |search_response|
       search_response.total = 10
       search_response.start_record = 11
       search_response.results = %w(a b c)

@@ -17,7 +17,7 @@ describe RssFeedData do
       end
 
       it 'reflect that feed looks empty in last_crawl_status' do
-        RssFeedData.new(rss_feed_url).import
+        described_class.new(rss_feed_url).import
         expect(rss_feed_url.reload.last_crawl_status).to eq 'Feed looks empty'
       end
     end
@@ -40,7 +40,7 @@ describe RssFeedData do
           { arg => status_code }
         end
         rss_feed_url.news_items.destroy_all
-        RssFeedData.new(rss_feed_url).import
+        described_class.new(rss_feed_url).import
       end
 
       it 'should populate and index just the news items that are valid' do
@@ -60,7 +60,7 @@ describe RssFeedData do
       before do
         stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
         rss_feed_url.news_items.destroy_all
-        RssFeedData.new(rss_feed_url).import
+        described_class.new(rss_feed_url).import
       end
 
       it 'should populate and index just the news items that are valid' do
@@ -79,7 +79,7 @@ describe RssFeedData do
       before do
         stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
         rss_feed_url.news_items.destroy_all
-        RssFeedData.new(rss_feed_url).import
+        described_class.new(rss_feed_url).import
       end
 
       it 'should populate and index just the news items that are valid' do
@@ -96,7 +96,7 @@ describe RssFeedData do
         rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_2titles_1pubdate.xml').read
         stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
         rss_feed_url.news_items.destroy_all
-        RssFeedData.new(rss_feed_url).import
+        described_class.new(rss_feed_url).import
       end
 
       it 'should reflect the most common problem in the last_crawl_status field' do
@@ -112,7 +112,7 @@ describe RssFeedData do
       end
 
       it 'should create a single comma-separated list' do
-        RssFeedData.new(rss_feed_url).import
+        described_class.new(rss_feed_url).import
         u = RssFeedUrl.find rss_feed_url.id
         newest = u.news_items.first
         expect(newest.subject).to eq('Counterterrorism, Cybersecurity, Global Development, Global Economy, Human Rights, Multilateral Affairs, Nonproliferation, Sub Saharan Africa Middle East and North Africa, East Asia Pacific Europe and Eurasia, South and Central Asia, Western Hemisphere Foreign Policy')
@@ -129,7 +129,7 @@ describe RssFeedData do
         before { rss_feed_url.news_items.destroy_all }
 
         it 'should populate news items from the RSS feed source with HTML stripped from the description' do
-          RssFeedData.new(rss_feed_url).import
+          described_class.new(rss_feed_url).import
           u = RssFeedUrl.find rss_feed_url.id
           expect(u.last_crawl_status).to eq('OK')
           expect(u.news_items.count).to eq(3)
@@ -140,9 +140,9 @@ describe RssFeedData do
           expect(newest.published_at).to eq(DateTime.parse('26 Sep 2011 21:33:05 +0000'))
           expect(newest.description[0, 40]).to eq('Dr. Biden and David Letterman refer to a')
           expect(newest.title).to eq('Famine in the Horn of Africa: Be a Part of the Solution')
-          expect(newest.contributor).to eq("The President")
+          expect(newest.contributor).to eq('The President')
           expect(newest.subject).to eq('jobs')
-          expect(newest.publisher).to eq("Statements and Releases")
+          expect(newest.publisher).to eq('Statements and Releases')
 
           oldest = u.news_items.last
           expect(oldest.guid).to eq('http://www.whitehouse.gov/blog/2011/09/26/supporting-scientists-lab-bench-and-bedtime-0')
@@ -152,7 +152,7 @@ describe RssFeedData do
 
       context 'when some news items are newer and some are older than the most recent published_at time for the feed' do
         before do
-          rss_feed_url.update_attributes(last_crawl_status: RssFeedUrl::OK_STATUS)
+          rss_feed_url.update(last_crawl_status: RssFeedUrl::OK_STATUS)
           NewsItem.destroy_all
           rss_feed_url.news_items.create!(
             link: 'http://www.whitehouse.gov/latest_story.html',
@@ -164,7 +164,7 @@ describe RssFeedData do
 
         context 'when ignore_older_items set to true (default)' do
           it 'should populate news items with only the new ones from the RSS feed source based on the pubDate' do
-            RssFeedData.new(rss_feed_url, true).import
+            described_class.new(rss_feed_url, true).import
             rss_feed_url.reload
             expect(rss_feed_url.last_crawl_status).to eq('OK')
             expect(rss_feed_url.news_items.count).to eq(3)
@@ -173,7 +173,7 @@ describe RssFeedData do
 
         context 'when ignore_older_items set to false' do
           it 'should populate news items with both the new and old ones from the RSS feed source based on the pubDate' do
-            RssFeedData.new(rss_feed_url, false).import
+            described_class.new(rss_feed_url, false).import
             rss_feed_url.reload
             expect(rss_feed_url.last_crawl_status).to eq('OK')
             expect(rss_feed_url.news_items.count).to eq(4)
@@ -193,7 +193,7 @@ describe RssFeedData do
         end
 
         it 'should ignore them' do
-          RssFeedData.new(rss_feed_url, true).import
+          described_class.new(rss_feed_url, true).import
           rss_feed_url.reload
           expect(rss_feed_url.last_crawl_status).to eq('OK')
           expect(rss_feed_url.news_items.count).to eq(3)
@@ -209,7 +209,7 @@ describe RssFeedData do
           end
 
           it 'should ignore them' do
-            RssFeedData.new(rss_feed_url, true).import
+            described_class.new(rss_feed_url, true).import
             rss_feed_url.reload
             expect(rss_feed_url.news_items.count).to eq(1)
           end
@@ -224,7 +224,7 @@ describe RssFeedData do
 
       it 'should log it and move on' do
         expect(Rails.logger).to receive(:warn).once.with(an_instance_of(StandardError))
-        RssFeedData.new(rss_feed_url, true).import
+        described_class.new(rss_feed_url, true).import
         rss_feed_url.reload
         expect(rss_feed_url.last_crawl_status).to eq('Error Message!')
       end
@@ -240,7 +240,7 @@ describe RssFeedData do
       end
 
       it 'creates news item with body' do
-        RssFeedData.new(rss_feed_url).import
+        described_class.new(rss_feed_url).import
         u = RssFeedUrl.find rss_feed_url.id
         expect(u.last_crawl_status).to eq('OK')
         expect(u.news_items.count).to eq(2)
@@ -260,7 +260,7 @@ describe RssFeedData do
       end
 
       it 'should use the media:text for the body' do
-        RssFeedData.new(rss_feed_url).import
+        described_class.new(rss_feed_url).import
         u = RssFeedUrl.find rss_feed_url.id
         expect(u.last_crawl_status).to eq('OK')
         expect(u.news_items.count).to eq(2)
@@ -279,7 +279,7 @@ describe RssFeedData do
       end
 
       it 'imports news items' do
-        RssFeedData.new(rss_feed_url).import
+        described_class.new(rss_feed_url).import
         rss_feed_url.reload
         expect(rss_feed_url.last_crawl_status).to eq('OK')
         expect(rss_feed_url.news_items.count).to eq(30)
@@ -299,7 +299,7 @@ describe RssFeedData do
       end
 
       it 'should persist media thumbnail and media content properties' do
-        RssFeedData.new(media_rss_url).import
+        described_class.new(media_rss_url).import
         expect(media_rss_url.news_items.reload.count).to eq(3)
         item_with_media_props = media_rss_url.news_items.find_by_link 'http://www.flickr.com/photos/usgeologicalsurvey/8594929349/'
 
@@ -330,7 +330,7 @@ describe RssFeedData do
       end
 
       it 'should persist media thumbnail and media content properties' do
-        RssFeedData.new(media_rss_url).import
+        described_class.new(media_rss_url).import
         expect(media_rss_url.news_items.reload.count).to eq(3)
         link = 'http://www.usgs.gov/blogs/features/usgs_top_story/national-groundwater-awareness-week-2/'
         item_with_media_props = media_rss_url.news_items.find_by_link link
@@ -346,7 +346,7 @@ describe RssFeedData do
     end
 
     context 'when the feed is in the Atom format' do
-      let(:atom_feed_url) { rss_feed_urls(:atom_feed_url)}
+      let(:atom_feed_url) { rss_feed_urls(:atom_feed_url) }
       let(:url) { 'http://www.icpsr.umich.edu/icpsrweb/ICPSR/feeds/studies?fundingAgency=United+States+Department+of+Justice.+Office+of+Justice+Programs.+National+Institute+of+Justice' }
       let(:rss_feed_content) do
         File.open(Rails.root.to_s + '/spec/fixtures/rss/atom_feed.xml')
@@ -358,7 +358,7 @@ describe RssFeedData do
 
       context 'when there are no news items associated with the source' do
         it 'should populate news items from the RSS feed source with HTML stripped from the description' do
-          RssFeedData.new(atom_feed_url, true).import
+          described_class.new(atom_feed_url, true).import
           atom_feed_url.reload
           expect(atom_feed_url.news_items.count).to eq(25)
           newest = atom_feed_url.news_items.first
@@ -372,7 +372,7 @@ describe RssFeedData do
     end
 
     context 'when the Atom feed uses atom:summary instead of atom:content' do
-      let(:atom_feed_url) { rss_feed_urls(:atom_feed_url)}
+      let(:atom_feed_url) { rss_feed_urls(:atom_feed_url) }
       let(:url) { 'http://www.icpsr.umich.edu/icpsrweb/ICPSR/feeds/studies?fundingAgency=United+States+Department+of+Justice.+Office+of+Justice+Programs.+National+Institute+of+Justice' }
 
       before do
@@ -381,7 +381,7 @@ describe RssFeedData do
       end
 
       it 'saves atom:summary as description' do
-        RssFeedData.new(atom_feed_url, true).import
+        described_class.new(atom_feed_url, true).import
         atom_feed_url.reload
         expect(atom_feed_url.news_items.count).to eq(2)
         newest = atom_feed_url.news_items.first
@@ -403,7 +403,7 @@ describe RssFeedData do
       end
 
       it 'should not change the number of news items, and update the crawl status' do
-        importer = RssFeedData.new(rss_feed_url, true)
+        importer = described_class.new(rss_feed_url, true)
         importer.import
         rss_feed_url.reload
         expect(rss_feed_url.news_items.count).to eq(0)
@@ -420,17 +420,17 @@ describe RssFeedData do
       context 'when the redirection is for a protocol change' do
         before do
           rss_feed_url.news_items.destroy_all
-          allow(DocumentFetcher).to receive(:fetch).with(rss_feed_url.url, an_instance_of(Hash)).and_return({ status: "301", body: rss_feed_content, last_effective_url: "https://www.whitehouse.gov/feed/blog/white-house" })
+          allow(DocumentFetcher).to receive(:fetch).with(rss_feed_url.url, an_instance_of(Hash)).and_return({ status: '301', body: rss_feed_content, last_effective_url: 'https://www.whitehouse.gov/feed/blog/white-house' })
         end
 
         it 'updates the url' do
-           expect{ RssFeedData.new(rss_feed_url, true).import }.to change{ rss_feed_url.reload.url }.
-             from("http://www.whitehouse.gov/feed/blog/white-house").
-             to("https://www.whitehouse.gov/feed/blog/white-house")
+           expect{ described_class.new(rss_feed_url, true).import }.to change{ rss_feed_url.reload.url }.
+             from('http://www.whitehouse.gov/feed/blog/white-house').
+             to('https://www.whitehouse.gov/feed/blog/white-house')
         end
 
         it 'creates news items' do
-          expect{ RssFeedData.new(rss_feed_url, true).import }.to change{ rss_feed_url.news_items.count }.
+          expect{ described_class.new(rss_feed_url, true).import }.to change{ rss_feed_url.news_items.count }.
              from(0).to(3)
         end
       end
@@ -439,12 +439,12 @@ describe RssFeedData do
         before do
           rss_feed_url.news_items.destroy_all
           allow(DocumentFetcher).to receive(:fetch).with(rss_feed_url.url, an_instance_of(Hash)).
-            and_return({ status: "301", body: rss_feed_content, last_effective_url: "http://naughtyponies.com" })
-          RssFeedData.new(rss_feed_url, true).import
+            and_return({ status: '301', body: rss_feed_content, last_effective_url: 'http://naughtyponies.com' })
+          described_class.new(rss_feed_url, true).import
         end
 
         it 'does not update the url' do
-          expect(rss_feed_url.reload.url).to eq("http://www.whitehouse.gov/feed/blog/white-house")
+          expect(rss_feed_url.reload.url).to eq('http://www.whitehouse.gov/feed/blog/white-house')
         end
 
         it 'does not create any news items' do
@@ -452,7 +452,7 @@ describe RssFeedData do
         end
 
         it 'reports the redirection' do
-          expect(rss_feed_url.last_crawl_status).to eq "redirection forbidden: http://www.whitehouse.gov/feed/blog/white-house -> http://naughtyponies.com"
+          expect(rss_feed_url.last_crawl_status).to eq 'redirection forbidden: http://www.whitehouse.gov/feed/blog/white-house -> http://naughtyponies.com'
         end
       end
     end

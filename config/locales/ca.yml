@@ -1,0 +1,135 @@
+ca:
+
+# Search.gov localizations for: Catalan (ca)
+
+# Default page title of search results page
+  default_serp_title: '%{query} - %{site_name} Resultats de la cerca'
+
+# Labels for the search box
+  search: "Cerca"
+  search_label: 'Introduïu la vostra cerca'
+
+# Labels for the navigation bar
+  everything: "Resultats"
+  images: "Imatges"
+  videos: "videos"
+  show_more: 'Més'
+
+# Labels to change the sort order by date or relevance
+  by_date: 'Més recent'
+  by_relevance: 'Millor opció'
+
+# Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  refine_your_search:
+  all_time: "Tot el temps"
+  last_hour: "Darrera hora"
+  last_day: "Darrer dia"
+  last_week: "Darrera setmana"
+  last_month: "Darrer mes"
+  last_year: "Darrer any"
+  custom_range: 'Categoria personalitzada'
+  from: 'Des de'
+  to: 'A'
+  cdr_format: '%m/%d/%Y'
+  before: 'Abans'
+  clear: 'Treure'
+
+# Prompts for spelling, spelling overrides, and did you mean suggestions
+  showing_results_for: Mostra resultats per %{corrected_query}
+  search_instead_for: Cerqueu en lloc de %{original_query}
+
+# Prompts for searchers to revise or refine search
+  no_results_for_and_try: "Ho sentim, no s'han trobat resultats per '%{query}'. Proveu d'introduir termes de cerca més o menys amplis."
+  too_long: "El vostre terme de cerca és massa llarg. Proveu de nou utilitzant una paraula o frase més curta:"
+  empty_query: "Si us plau, introduïu un terme de cerca a la caixa de sobre."
+
+# Labels for inline best bets, news, and related searches modules
+  recommended: "Recomanat"
+  default_rss_govbox_label: 'Notícies'
+  related_searches: "Cerques relacionades"
+
+# Labels for paging through results
+  page: 'Pàgina'
+  prev_label: "Previ"
+  next_label: "Següent"
+  
+  searches:
+    by: a
+# Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
+    skip_to_main_content: Saltar al contingut principal
+# Labels for navigation bar "sections" (most easily seen on mobile dimension)
+    menu: Menu
+    browse_site: Navegar el lloc web
+    related_sites: Vegeu tema
+    results_count: '%{count}'
+    search_results: Resultats de la cerca
+# Prompts for searchers to view more results from Bing/Google after reaching page n of DigitalGov Search results
+    commercial_results:
+      find_what_looking_for:
+      see_more_web_results: "%{link} Per veure més resultats"
+      see_more_image_results: "Els resultats anteriors són de les nostres xarxes socials i galeries %{link} per veure els resultats des de la nostra web (Potser veurà alguns resultats que ja ha vist prèviament)"
+      search_again: Proveu de fer la vostra cerca un altre vegaga
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+    site_limits:
+      including_results_for_query_from_matching_sites: Introduïm resultats per %{query} Des de %{matching_sites} Només.
+      do_you_want_to_see_results_for: Voleu veure resultats només per %{query_from_all_sites}?
+      query_from_all_sites: '%{query} de tots els llocs'
+# Label for inline news module and prompt to see more news on news vertical
+    more_news_about_query: 'Més %{news_label} Больш %{query}'
+    news_about_query: '%{news_label} sobre %{query}'
+    news_search_options:
+      date_format: 'm/d/yyyy'
+
+# Label for attributing results to Bing, DigitalGov Search, or Google
+  powered_by: 'Impulsat per'
+
+# Prompts for searchers to expand/collapse the number of best bets visible on the results page
+  show_more_label: 'Mostrar més'
+  show_less_label: 'Mostrar menys'
+
+# Date format used in custom date range picker and other places
+  date:
+    formats:
+      slashes: "%-m/%-d/%Y"
+
+# Labels for news-based results indicating how long ago they were published
+  datetime:
+    time_ago_in_words:
+      half_a_minute: "Fa mig minut"
+      less_than_x_seconds:
+        one:   "Fa menys d'un segon"
+        other: "Menys de %{count} Fa uns segons"
+      x_seconds:
+        one:   "Fa 1 segon"
+        other: "%{count} Fa uns segons"
+      less_than_x_minutes:
+        one:   "Fa menys d'un minut"
+        other: "Menys de %{count} Fa uns minuts"
+      x_minutes:
+        one:   "Fa 1 minut"
+        other: "%{count} Fa uns minuts"
+      about_x_hours:
+        one:   "Fa sobre una hora"
+        other: "sobre %{count}  Fa unes hores"
+      x_days:
+        one:   "Fa 1 dia"
+        other: "%{count} Fa uns dies"
+      about_x_months:
+        one:   "Fa al voltant d'un"
+        other: "sobre %{count} Fa uns mesos"
+      x_months:
+        one:   "Fa 1 mes"
+        other: "%{count} Fa uns mesos"
+      about_x_years:
+        one:   "Fa al voltant d'un any"
+        other: "sobre %{count} Fa uns anys"
+      over_x_years:
+        one:   "Fa més d'un any"
+        other: "més %{count} Fa uns anys"
+      almost_x_years:
+        one:   "Fa gairebé 1 any"
+        other: "gairebé %{count} Fa uns anys"
+
+# Text for page captcha challenge, which is shown if bot-like search patterns are detected
+  are_you_human:
+  captcha_requires_javascript:

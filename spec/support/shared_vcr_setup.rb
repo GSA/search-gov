@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'yaml'
 
 PAPERCLIP_MATCHERS = {
@@ -9,7 +11,10 @@ PAPERCLIP_MATCHERS = {
     regex: /^\/(?<env>[^\/]+)\/featured_collection\/(?<id>\d*)\/image\/(?<updated_at>[^\/]+)\/(?<style>[^\/]+)\/(?<filename>[^\/]+)/,
     fields_to_match: %w[env style filename]
   }
-}.freeze
+}
+
+# https://github.com/titusfortner/webdrivers/wiki/Using-with-VCR-or-WebMock
+DRIVER_HOSTS = Webdrivers::Common.subclasses.map { |driver| URI(driver.base_url).host }
 
 VCR.configure do |config|
   config.hook_into :webmock
@@ -28,16 +33,16 @@ VCR.configure do |config|
   config.default_cassette_options = {
     record: :new_episodes,
     match_requests_on: [:method, :uri_with_paperclip_normalization],
-    clean_outdated_http_interactions: true,
+    clean_outdated_http_interactions: true
   }
 
-  config.ignore_hosts 'example.com', 'codeclimate.com'
+  config.ignore_hosts 'example.com', 'codeclimate.com', '127.0.0.1'
+  config.ignore_hosts *DRIVER_HOSTS
   config.ignore_request do |request|
     /codeclimate.com/ ===  URI(request.uri).host
   end
 
   config.ignore_request { |request| URI(request.uri).port.between?(9200,9299) } #Elasticsearch
-  config.ignore_request { |request| URI(request.uri).port == 9515 } # Selenium Webdriver
   config.ignore_request { |request| URI(request.uri).port == 9998 } # Tika
 
   secrets = YAML.load(ERB.new(File.read(Rails.root.join('config', 'secrets.yml'))).result)
@@ -53,7 +58,7 @@ VCR.configure do |config|
 
   #Capybara: http://stackoverflow.com/a/6120205/1020168
   config.ignore_request do |request|
-    URI(request.uri).request_uri == "/__identify__"
+    URI(request.uri).request_uri == '/__identify__'
   end
 
   #For future debugging reference:

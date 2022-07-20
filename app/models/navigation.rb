@@ -10,8 +10,4 @@ class Navigation < ApplicationRecord
   def navigable_facet_type
     navigable.respond_to?(:navigable_facet_type) ? navigable.navigable_facet_type : navigable.class.name
   end
-
-  def navigable_facet_id
-    navigable.id
-  end
 end

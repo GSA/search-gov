@@ -97,7 +97,7 @@ Feature: Dashboard
     When I fill in "New Site Handle" with "usagov_copy"
     And I submit the form by pressing "Submit"
     Then I should see "Site 'origin_site' has been cloned as 'usagov_copy'"
-    And I should land on the usagov_copy's Dashboard page
+    And I should be on the usagov_copy's Dashboard page
 
   @javascript
   Scenario: Clicking on help link on Admin Center
@@ -148,7 +148,7 @@ Feature: Dashboard
     When I fill in "Email" with "admin@email.gov"
     And I submit the form by pressing "Add"
     Then I should see "notified admin@email.gov on how to login and to access this site"
-    When I press "Remove" within the first table body row
+    When I press "Remove" within the first table body row and confirm "Are you sure you wish to remove admin@email.gov from this site?"
     Then I should see "You have removed admin@email.gov from this site"
 
   @javascript
@@ -190,16 +190,9 @@ Feature: Dashboard
   @javascript
   Scenario: Preview
     Given the following Affiliates exist:
-      | display_name | name              | contact_email   | first_name | last_name | has_staged_content | uses_managed_header_footer | staged_uses_managed_header_footer | header           | staged_header      | website               | force_mobile_format |
-      | agency site  | legacy.agency.gov | john@agency.gov | John       | Bar       | true               | false                      | false                             | live header text | staged header text | http://www.agency.gov | false               |
-      | agency site  | www.agency.gov    | john@agency.gov | John       | Bar       | true               | false                      | false                             | live header text | staged header text | http://www.agency.gov | true                |
+      | display_name | name              | contact_email   | first_name | last_name | website               |
+      | agency site  | www.agency.gov    | john@agency.gov | John       | Bar       | http://www.agency.gov |
     And I am logged in with email "john@agency.gov"
-    When I go to the legacy.agency.gov's Dashboard page
-    And I follow "Preview" within the Admin Center main navigation list
-    Then I should find "View Staged Page" in the Preview modal
-    And I should find "View Current Page" in the Preview modal
-    And I should find "View Redesigned Page" in the Preview modal
-
     When I go to the www.agency.gov's Dashboard page
     And I follow "Preview"
     Then I should see a link to "Preview" with url that ends with "/search?affiliate=www.agency.gov"
@@ -219,25 +212,25 @@ Feature: Dashboard
     And the "Homepage URL" field should contain "http://awesome.gov"
 
     When I fill in the following:
-      | Homepage URL | https://search.gov/ |
-      | Display Name | Agency Gov                     |
-      | Site Handle  | agencygov                      |
+      | Homepage URL | https://www.nih.gov/ |
+      | Display Name | Agency Gov           |
+      | Site Handle  | agencygov            |
     And I select "Arabic" from "Site Language"
     And I submit the form by pressing "Add"
     Then I should see "You have added 'Agency Gov' as a site."
-    And I should land on the agencygov's Dashboard page
+    And I should be on the agencygov's Dashboard page
     And "affiliate_manager@fixtures.org" should receive an email
 
     When I follow "Settings"
-    Then the "Homepage URL" field should contain "https://search.gov"
+    Then the "Homepage URL" field should contain "https://www.nih.gov/"
     And I should see "Arabic"
 
     When I follow "Content"
-    Then the "Discover and add the RSS feeds and social media accounts listed on the following page:" field should contain "https://search.gov"
+    Then the "Discover and add the RSS feeds and social media accounts listed on the following page:" field should contain "https://www.nih.gov"
 
     When I follow "Display"
     And I follow "Image Assets"
-    Then the "Favicon URL" field should contain "https://d3qcdigd1fhos0.cloudfront.net/blog/img/favicon.ico"
+    Then the "Favicon URL" field should contain "https://www.nih.gov/favicon.ico"
 
     When I open the email
     Then I should see "Your new site: Agency Gov" in the email subject
@@ -247,8 +240,8 @@ Feature: Dashboard
 
   Scenario: Performing site autodiscovery
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | has_staged_content | uses_managed_header_footer | staged_uses_managed_header_footer | header           | staged_header      | force_mobile_format |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar     | true               | false                      | false                             | live header text | staged header text | false               |
+      | display_name | name       | contact_email   | first_name | last_name |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     Then the "Discover and add the RSS feeds and social media accounts listed on the following page:" field should be empty
@@ -271,7 +264,7 @@ Feature: Dashboard
     When I go to the usagov's Dashboard page
     And I follow "Settings"
     And I press "Delete"
-    Then I should land on the new site page
+    Then I should be on the new site page
     And I should see "Scheduled site 'USA.gov' for deletion. This could take several hours to complete."
 
   @javascript

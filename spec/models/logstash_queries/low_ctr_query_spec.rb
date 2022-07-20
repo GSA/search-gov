@@ -1,17 +1,17 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe LowCtrQuery do
   let(:query) do
-    LowCtrQuery.new('affiliate_name',
-                    Date.new(2019,11,1),
-                    Date.new(2019,11,18),
-                    field: 'params.query.raw')
+    described_class.new('affiliate_name',
+                        Date.new(2019, 11, 1),
+                        Date.new(2019, 11, 18),
+                        field: 'params.query.raw')
   end
   let(:reduce_script) do
     <<~SCRIPT.strip
       int clicks = 0;
       int searches = 0;
-      for (agg in params._aggs){
+      for (agg in states){
         clicks += agg.click ;
         searches += agg.search
       }
@@ -30,7 +30,10 @@ describe LowCtrQuery do
             },
             {
               "terms": {
-                "type": ["search","click"]
+                "type": [
+                  "search",
+                  "click"
+                ]
               }
             },
             {
@@ -66,7 +69,7 @@ describe LowCtrQuery do
           ]
         }
       },
-     "aggs": {
+      "aggs": {
         "agg": {
           "terms": {
             "min_doc_count": 20,
@@ -77,14 +80,15 @@ describe LowCtrQuery do
             "ctr": {
               "scripted_metric": {
                 "init_script": {
-                  "source": "params._agg['click'] = params._agg['search'] = 0"
+                  "source": "state['click'] = state['search'] = 0"
                 },
                 "map_script": {
-                  "source": "params._agg[doc['type'].value] += 1"
+                  "source": "state[doc['type'].value] += 1"
                 },
                 "reduce_script": {
                   "source": reduce_script
-                }
+                },
+                "combine_script": "return state"
               }
             }
           }

@@ -5,7 +5,7 @@ describe FederalRegisterDocumentApiParser do
 
   describe '#each_document' do
     let(:fr_agency) { federal_register_agencies(:fr_irs) }
-    let(:parser) { parser = FederalRegisterDocumentApiParser.new(federal_register_agency_ids: [fr_agency.id]) }
+    let(:parser) { parser = described_class.new(federal_register_agency_ids: [fr_agency.id]) }
     let(:results) { double('results', next: nil) }
 
     before { expect(FederalRegister::Article).to receive(:search).and_return(results) }

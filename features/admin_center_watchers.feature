@@ -84,7 +84,7 @@ Feature: Watchers (aka Analytics Alerts)
     And I submit the form by pressing "Save"
     Then I should see "This watcher has been updated."
 
-    When I press "Remove" within the first table body row
+    When I press "Remove" within the first table body row and confirm "Are you sure you wish to delete this watcher?"
     Then I should see "You have removed the watcher"
     And I should see "You don't have any Analytics Alerts defined yet"
     And we want observers to run during the rest of these cucumber scenarios

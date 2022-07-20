@@ -1,0 +1,9 @@
+en:
+  dynamic_form:
+    errors:
+      dynamic_format: "%{message}"
+    error_messages:
+      header:
+        one: "1 error prohibited this %{record_name} from being saved"
+        other: "%{count} errors prohibited this %{record_name} from being saved"
+      body: "There were problems with the following fields:"

@@ -13,36 +13,8 @@ describe 'Search.gov tasks' do
   before { $stdout = StringIO.new }
   after { $stdout = STDOUT }
 
-  describe 'searchgov:bulk_index' do
-    let(:file_path) { File.join(Rails.root.to_s, "spec", "fixtures", "csv", "searchgov_urls.csv") }
-    let(:task_name) { 'searchgov:bulk_index' }
-    let(:url) { 'https://www.consumerfinance.gov/consumer-tools/auto-loans/' }
-    let(:index_urls) do
-      @rake[task_name].reenable
-      @rake[task_name].invoke(file_path, 0)
-    end
-
-    it "should have 'environment' as a prereq" do
-      expect(@rake[task_name].prerequisites).to include("environment")
-    end
-
-    it 'creates a SearchgovUrl record' do
-      expect{ index_urls }.to change{ SearchgovUrl.count }.by(1)
-      expect(SearchgovUrl.find_by_url(
-        'https://www.consumerfinance.gov/consumer-tools/auto-loans/'
-      )).not_to be_nil
-    end
-
-    context 'when a url has already been indexed' do
-      it 'reports the url as a dupe' do
-        index_urls
-        expect($stdout.string).to match(/Url has already been taken/)
-      end
-    end
-  end
-
   describe 'searchgov:promote' do
-    let(:file_path) { File.join(Rails.root.to_s, "spec", "fixtures", "csv", "searchgov_urls.csv") }
+    let(:file_path) { File.join(Rails.root.to_s, 'spec', 'fixtures', 'csv', 'searchgov_urls.csv') }
     let(:task_name) { 'searchgov:promote' }
     let(:url) { 'https://www.consumerfinance.gov/consumer-tools/auto-loans/' }
     let(:doc_id) { SearchgovUrl.new(url: url).document_id }

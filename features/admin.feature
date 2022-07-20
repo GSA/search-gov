@@ -13,12 +13,6 @@ Feature:  Administration
     When I follow "Super Admin" in the main navigation bar
     Then I should be on the admin home page
 
-    # SRCH-1552
-    # Commented out until we figure out how to get login.gov out of
-    # the loop during testing.
-    # When I follow "Sign Out"
-    # Then I should be on the login page
-
   Scenario: Visiting the admin home page as an admin who is also an affiliate
     Given "affiliate_admin@fixtures.org" is an affiliate
     When I go to the admin home page
@@ -60,8 +54,6 @@ Feature:  Administration
     And I should see "Enable/disable Settings (Show)"
     And I should see "Display Settings (Show)"
     And I should see "Analytics-Tracking Code (Show)"
-    And I should see "Dublin Core Mappings (Show)"
-    And I should see "Legacy Display Settings (Show)"
     When I follow "Show" within the first subsection row
     And I fill in "Display name" with "New Name"
     And I press "Update"
@@ -95,36 +87,6 @@ Feature:  Administration
     And I should not see "Our Emergency Page"
     When I follow "Show"
     Then I should see "safety"
-
-  Scenario: Comparing Search Results
-    Given the following Affiliates exist:
-      | display_name  | name     | contact_email | first_name   | last_name |
-      | agency site   | aff.gov  | one@foo.gov   | One          | Foo       |
-      | agency site 2 | aff2.gov | two@foo.gov   | Two          | Foo       |
-    And the following "site domains" exist for the affiliate aff.gov:
-      | domain               | site_name      |
-      | aff.gov              | Agency Website |
-    And the following "site domains" exist for the affiliate aff2.gov:
-      | domain              | site_name      |
-      | aff.gov             | Agency2 Website |
-    And the following IndexedDocuments exist:
-      | title                   | description                     | url                          | affiliate | last_crawled_at | last_crawl_status |
-      | Space Suit America      | description for space suit item | http://aff.gov//space-suit1  | aff.gov   | 11/02/2011      | OK                |
-      | America Suit Evolution  | description for space suit item | http://aff.gov//space-suit2  | aff.gov   | 11/02/2011      | OK                |
-      | Space America Evolution | description for space suit item | http://aff.gov//space-suit3  | aff.gov   | 11/02/2011      | OK                |
-      | America IN SPACE        | description for space suit item | http://aff.gov//space-suit1  | aff2.gov  | 11/02/2011      | OK                |
-    When I go to the admin home page
-    And I follow "Compare Search Results"
-    Then I should not see "BingV7 Results"
-    And I should not see "ODIE Results"
-
-    When I fill in "query" with "america"
-    When I select "aff.gov" from "Affiliate"
-    And I press "Search"
-    Then I should see "BingV7 Results"
-    And I should see "ODIE Results"
-    And I should see "Space Suit America"
-    And I should not see "America IN SPACE"
 
   Scenario: Visiting the active scaffold pages
     When I go to the admin home page
@@ -257,7 +219,7 @@ Feature:  Administration
     And I press "Create"
     Then I should see "www.state.gov has been created"
 
-    When I follow "Reindex" within the first scaffold row and confirm "Are you sure you want to reindex this domain?"
+    When I follow "Reindex" within the first scaffold row and confirm "Are you sure you want to reindex this entire domain?"
     And I wait for ajax
     Then I should see "Reindexing has been enqueued for www.state.gov"
 

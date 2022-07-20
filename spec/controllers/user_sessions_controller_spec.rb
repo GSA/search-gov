@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
-
 describe UserSessionsController do
-  fixtures :users
+  before { activate_authlogic }
 
   describe '#security_notification' do
     context 'when a user is not logged in' do
@@ -13,13 +11,39 @@ describe UserSessionsController do
     end
 
     context 'when a user is already logged in' do
-      before { activate_authlogic }
-
       include_context 'approved user logged in'
 
       before { get :security_notification }
 
-      it { is_expected.to redirect_to(account_path) }
+      let(:expected_site_path) { site_path(id: current_user.affiliates.first.id) }
+
+      it { is_expected.to redirect_to(expected_site_path) }
     end
+  end
+
+  describe '#destroy' do
+    subject(:destroy) { delete :destroy }
+
+    let(:login_uri) do
+      "#{request.protocol}#{request.host_with_port}/login"
+    end
+    let(:id_token) { 'fake_id_token' }
+    let(:expected_login_dot_gov_logout_uri) do
+      URI::HTTPS.build(
+        host: 'idp.int.identitysandbox.gov',
+        path: '/openid_connect/logout',
+        query: {
+          id_token_hint: id_token,
+          post_logout_redirect_uri: login_uri,
+          state: '1234567890123456789012'
+        }.to_query
+      ).to_s
+    end
+
+    include_context 'approved user logged in'
+
+    before { session[:id_token] = id_token }
+
+    it { is_expected.to redirect_to(expected_login_dot_gov_logout_uri) }
   end
 end

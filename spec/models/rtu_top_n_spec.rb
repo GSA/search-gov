@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe RtuTopN do
   let(:rtu_top_n) do
-    RtuTopN.new('an ES query body', false, Date.new(2019, 1, 1))
+    described_class.new('an ES query body', false, Date.new(2019, 1, 1))
   end
 
   describe '#top_n' do
@@ -16,14 +16,14 @@ describe RtuTopN do
     end
 
     it 'queries Elasticsearch with the expected args' do
-      expect(ES::ELK.client_reader).to receive(:search).
+      expect(Es::ELK.client_reader).to receive(:search).
         with(query_args).and_return({})
       top_n
     end
 
     context 'when the search fails' do
       before do
-        allow(ES::ELK.client_reader).to receive(:search).
+        allow(Es::ELK.client_reader).to receive(:search).
           and_raise(StandardError, 'search failure')
       end
 

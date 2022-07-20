@@ -3,7 +3,7 @@ class Sites::FontAndColorsController < Sites::SetupSiteController
   end
 
   def update
-    if @site.update_attributes(site_params)
+    if @site.update(site_params)
       redirect_to edit_site_font_and_colors_path(@site),
                   flash: { success: 'You have updated your font & colors.' }
     else
@@ -18,8 +18,6 @@ class Sites::FontAndColorsController < Sites::SetupSiteController
       {
         css_property_hash: %i[
           content_background_color
-          content_border_color
-          content_box_shadow_color
           description_text_color
           font_family
           footer_background_color
@@ -37,8 +35,6 @@ class Sites::FontAndColorsController < Sites::SetupSiteController
           page_background_color
           search_button_background_color
           search_button_text_color
-          show_content_border
-          show_content_box_shadow
           title_link_color
           url_link_color
           visited_title_link_color

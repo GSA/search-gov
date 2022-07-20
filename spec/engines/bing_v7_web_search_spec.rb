@@ -1,8 +1,31 @@
+# frozen_string_literal: true
+
 describe BingV7WebSearch do
   subject { described_class.new(options) }
 
   it_behaves_like 'a Bing search'
   it_behaves_like 'a web search engine'
+
+  it 'uses the correct host' do
+    expect(described_class.api_host).to eq('https://api.bing.microsoft.com')
+  end
+
+  it 'uses the correct endpoint' do
+    expect(described_class.api_endpoint).to eq('/v7.0/search')
+  end
+
+  describe '#hosted_subscription_key' do
+    let(:options) { {} }
+
+    before do
+      allow(Rails.application.secrets).to receive(:bing_v7).
+        and_return({ web_subscription_id: 'web key' })
+    end
+
+    it 'uses the web search key' do
+      expect(subject.hosted_subscription_key).to eq('web key')
+    end
+  end
 
   # This was an edge-case bug on Bing's side:
   # https://www.pivotaltracker.com/story/show/160807845

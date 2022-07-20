@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 shared_examples_for 'a record that sanitizes attributes' do |attributes|
   let(:unsanitized_string) { '<b>foo</b><script>script</script>' }
   let(:params) do
-    attributes.map{ |attribute| [attribute, unsanitized_string] }.to_h
+    attributes.index_with { |_attribute| unsanitized_string }
   end
   let(:record) { described_class.new(params) }
 

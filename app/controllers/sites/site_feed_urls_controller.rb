@@ -10,7 +10,7 @@ class Sites::SiteFeedUrlsController < Sites::SetupSiteController
   end
 
   def update
-    if @site_feed_url.update_attributes site_feed_url_params
+    if @site_feed_url.update(site_feed_url_params)
       Resque.enqueue_with_priority(:high, SiteFeedUrlFetcher, @site_feed_url.id)
       redirect_to edit_site_supplemental_feed_path(@site),
                   flash: { success: 'You have updated your supplemental feed for this site.' }

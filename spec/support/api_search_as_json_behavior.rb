@@ -94,7 +94,7 @@ shared_examples 'an API search as_json' do
                            'Mesa Verde National Park, CO'
                          ],
                          url: 'https://www.usajobs.gov/GetJob/ViewDetails/390049600',
-                         org_codes: "XX00"),
+                         org_codes: 'XX00'),
         Hashie::Mash.new(id: 'ng:tabc:1018446',
                          position_title: 'Clerk II-License and Permit Specialist Intern',
                          organization_name: 'Texas Alcoholic Beverage Commission',
@@ -107,7 +107,7 @@ shared_examples 'an API search as_json' do
                            'Arlington, TX'
                          ],
                          url: 'http://agency.governmentjobs.com/tabc/default.cfm?action=viewjob&jobid=1018446',
-                         org_codes: "XX00")
+                         org_codes: 'XX00')
       ]
 
       allow(search).to receive(:jobs) { job_openings }
@@ -126,7 +126,7 @@ shared_examples 'an API search as_json' do
                                  'Mesa Verde National Park, CO'
                                ],
                                url: 'https://www.usajobs.gov/GetJob/ViewDetails/390049600',
-                               org_codes: "XX00")
+                               org_codes: 'XX00')
 
       expect(jobs.last).to eq(position_title: 'Clerk II-License and Permit Specialist Intern',
                               organization_name: 'Texas Alcoholic Beverage Commission',
@@ -139,7 +139,7 @@ shared_examples 'an API search as_json' do
                                 'Arlington, TX'
                               ],
                               url: 'http://agency.governmentjobs.com/tabc/default.cfm?action=viewjob&jobid=1018446',
-                              org_codes: "XX00")
+                              org_codes: 'XX00')
     end
   end
 
@@ -152,7 +152,7 @@ shared_examples 'an API search as_json' do
       health_topics = search_rash.health_topics.collect(&:deep_symbolize_keys)
       expect(health_topics.first).to eq(title: 'Cancer',
                                         url: 'https://www.nlm.nih.gov/medlineplus/cancer.html',
-                                        snippet: "Cancer begins in your cells, which are the building blocks of your body. Normally, your body forms new cells as you need them, replacing old cells that die. Sometimes this process goes wrong.",
+                                        snippet: 'Cancer begins in your cells, which are the building blocks of your body. Normally, your body forms new cells as you need them, replacing old cells that die. Sometimes this process goes wrong.',
                                         related_topics: [{ title: 'Cancer Alternative Therapies',
                                                            url: 'https://www.nlm.nih.gov/medlineplus/canceralternativetherapies.html' },
                                                          { title: 'Cancer and Pregnancy',

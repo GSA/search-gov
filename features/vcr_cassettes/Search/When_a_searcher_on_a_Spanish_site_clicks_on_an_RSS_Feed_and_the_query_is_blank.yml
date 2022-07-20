@@ -1,0 +1,524 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=noticia%20uno%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 07 Sep 2021 16:18:10 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 8D0127733D204BC8B455EDA19EEC8255
+      Bingapis-Sessionid:
+      - 2226C21E84D44FB3AEB4505177E59509
+      X-Msedge-Clientid:
+      - 249848B134A760740532581A35E8614F
+      X-Msapi-Userstate:
+      - beeb
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=224,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 8D0127733D204BC8B455EDA19EEC8255 Ref B: BLUEDGE2007 Ref C: 2021-09-07T16:19:10Z'
+      Apim-Request-Id:
+      - ddf3c465-44ef-4653-8e1c-290500312dc6
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Tue, 07 Sep 2021 16:19:10 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "noticia
+        uno (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=noticia+uno+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 69100, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Bioterrorismo | El ántrax | CDC", "url": "https:\/\/www.cdc.gov\/anthrax\/es\/bioterrorismo\/bioterrorismo.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/anthrax\/es\/bioterrorismo\/bioterrorismo.html",
+        "snippet": "Bioterrorismo. Un ataque biológico, o bioterrorismo, es la
+        liberación intencional de virus, bacterias u otros gérmenes que pueden infectar
+        o matar a las personas, los ganados o los cultivos. Bacillus anthracis, la
+        bacteria que causa el ántrax (o carbunco), es uno de los agentes que se
+        utilizaría con más probabilidad en un ataque biológico.", "dateLastCrawled":
+        "2021-09-03T23:12:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1", "name":
+        "Comunicados de Prensa | Oficina de Prensa | Administración ...", "url":
+        "https:\/\/www.ssa.gov\/espanol\/noticias\/prensa\/comunicados\/2020\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ssa.gov\/espanol\/noticias\/prensa\/comunicados\/2020",
+        "snippet": "Cada uno de los proveedores de servicios seleccionados puede
+        darle servicio hasta 20 entidades autorizadas, y con las instituciones financieras
+        existe el potencial de hasta 124 entidades autorizadas participar en la implementación
+        inicial. Este nuevo servicio no afecta el servicio existente de Verificación
+        de SSN basado en consentimiento.", "dateLastCrawled": "2021-09-05T15:05:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Procesamiento de Visas de Inmigrante - Preguntas Generales ...",
+        "url": "https:\/\/travel.state.gov\/content\/travel\/en\/us-visas\/inmigracion\/procesamiento-de-visas-de-inmigrante---preguntas-generales-frecuentes.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/travel.state.gov\/content\/travel\/en\/us-visas\/inmigracion\/procesamiento-de-visas...",
+        "snippet": "El procesamiento de visas de inmigrante se rige por la Ley
+        de Inmigración y Nacionalidad de 1952, enmendada, que controla la disponibilidad
+        de visas. No hay ninguna disposición dentro de la ley que permita al Departamento
+        de Estado emitir una visa a alguien para quien la visa no está disponible.
+        Mi pariente fue a su entrevista para una visa ...", "dateLastCrawled": "2021-09-05T05:08:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Noticias Archivo | Embajada de los Estados Unidos en la ...", "url":
+        "https:\/\/do.usembassy.gov\/es\/category\/noticias\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/do.usembassy.gov\/es\/category\/noticias",
+        "snippet": "1 de mayo del 2020 Santo Domingo D.N. – El Gobierno de los Estados
+        Unidos anunció una asistencia adicional de 2 millones de dólares para un total
+        de 3,4 millones de dólares para mitigar los efectos de la epidemia del COVID-19
+        en la República Dominicana. Los fondos serán administrados a través de la
+        Agencia de los ….", "dateLastCrawled": "2021-09-05T05:19:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Tiempos de Procesamiento - Processing Times", "url": "https:\/\/egov.uscis.gov\/processing-times\/es",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/egov.uscis.gov\/processing-times\/es",
+        "snippet": "Seleccione su número de formulario y la oficina que está procesando
+        su caso. Para obtener más información sobre los tiempos de procesamiento de
+        casos y leer su aviso de recibo, visite la página Tiempos de Procesamiento
+        de Casos..", "dateLastCrawled": "2021-09-03T14:24:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Entendiendo el uso de drogas y la adicción – DrugFacts ...", "url":
+        "https:\/\/www.drugabuse.gov\/es\/publicaciones\/drugfacts\/entendiendo-el-uso-de-drogas-y-la-adiccion",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.drugabuse.gov\/es\/publicaciones\/drugfacts\/entendiendo-el-uso-de-drogas-y-la...",
+        "snippet": "Otra buena noticia es que el uso de drogas y la adicción son
+        prevenibles. Los resultados de las investigaciones patrocinadas por NIDA han
+        demostrado que los programas de prevención involucrando familias, escuelas,
+        comunidades y medios de comunicación son eficaces para prevenir o reducir
+        el uso de drogas y la adicción.", "dateLastCrawled": "2021-09-05T07:11:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "El Gran Engaño del Aterrizaje en la Luna | Ciencia de la NASA",
+        "url": "https:\/\/ciencia.nasa.gov\/science-at-nasa\/2001\/ast23feb_2\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/ciencia.nasa.gov\/science-at-nasa\/2001\/ast23feb_2",
+        "snippet": "El astronauta Buzz Aldrin en la superficie de la Luna en 1969.
+        [más información] Todos los rumores sobre el aterrizaje en la Luna se desataron
+        el 15 de febrero, cuando el canal Fox de televisión transmitió un programa
+        llamado Teoría de la conspiración", "dateLastCrawled": "2021-09-05T16:22:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Información para la prensa | Oficina de Prensa ...", "url": "https:\/\/www.ssa.gov\/espanol\/noticias\/prensa\/comunicados\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/espanol\/noticias\/prensa\/comunicados",
+        "snippet": "Noticias de última hora acerca del fallo de la Corte Suprema
+        referente a la Ley en Defensa del Matrimonio. 31 de mayo de 2013. ... El Seguro
+        Social es calificado como uno de los mejores sitios para trabajar dentro
+        del gobierno federal. 1 de septiembre de 2010. Los cheques de Seguro Social
+        llegarán temprano a lo largo de la costa del ...", "dateLastCrawled": "2021-09-05T13:37:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Víctimas de Actos Criminales: Estatus U de No Inmigrante ...",
+        "url": "https:\/\/www.uscis.gov\/es\/programas-humanitarios\/victimas-de-la-trata-de-personas-y-de-otros-crimenes\/victimas-de-actos-criminales-estatus-u-de-no-inmigrante",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uscis.gov\/es\/programas-humanitarios\/victimas-de-la-trata-de-personas-y-de...",
+        "snippet": "Víctimas de Actos Criminales: Estatus U de No Inmigrante.
+        El estatus No Inmigrante U (Visa U) está reservado para las víctimas de
+        ciertos crímenes, que han sufrido abuso físico o mental y brindan ayuda a
+        las agencias de orden público y oficiales gubernamentales en la investigación
+        o prosecución de actividades criminales.", "dateLastCrawled": "2021-09-03T17:13:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "El robo de identidad y su número de Seguro Social", "url": "https:\/\/www.ssa.gov\/pubs\/ES-05-10964.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/pubs\/ES-05-10964.pdf",
+        "snippet": "El robo de identidad es uno de los crímenes de mayor crecimiento
+        en los EE. UU. Una persona deshonesta quien se apropia de su número de Seguro
+        Social puede usarlo para conseguir otra información personal sobre usted.
+        Los ladrones de identidad pueden usar su número y su buen historial crediticio
+        para solicitar más crédito bajo su nombre.", "dateLastCrawled": "2021-09-05T12:07:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Información sobre la diabetes | Información Básica ...", "url":
+        "https:\/\/www.cdc.gov\/diabetes\/spanish\/basics\/diabetes.html", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.cdc.gov\/diabetes\/spanish\/basics\/diabetes.html",
+        "snippet": "Información sobre la diabetes. La diabetes es una enfermedad
+        crónica (de larga duración) que afecta la forma en que el cuerpo convierte
+        los alimentos en energía. La mayoría de los alimentos que come se convierten
+        en azúcar (también llamada glucosa) que se libera en el torrente sanguíneo.
+        El páncreas produce una hormona llamada insulina ...", "dateLastCrawled":
+        "2021-09-04T15:14:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "Jóvenes de 16 y 17 Años de Edad - Travel", "url": "https:\/\/travel.state.gov\/content\/travel\/es\/pasaportes\/tramite-mi-pasaporte\/jovenes-de-16-y-17-anos.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/travel.state.gov\/content\/travel\/es\/pasaportes\/tramite-mi-pasaporte\/jovenes-de...",
+        "snippet": "Certificado de ciudadanía. 3. Presentar consentimiento de los
+        progenitores: Los solicitantes de 16 ó 17 años de edad con identificación
+        propia pueden solicitar pasaporte en nombre propio. Se recomienda que por
+        lo menos uno de los progenitores se presente con el menor para identificarlo
+        y para dejar constancia de su conocimiento de la ...", "dateLastCrawled":
+        "2021-09-04T01:28:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "Familiares de Residentes Permanentes | USCIS", "url": "https:\/\/www.uscis.gov\/es\/familia\/familiares-de-residentes-permanentes",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uscis.gov\/es\/familia\/familiares-de-residentes-permanentes",
+        "snippet": "Trámite. Para obtener la tarjeta verde para un familiar, usted
+        debe: Presentar el Formulario I-130. Presentar un comprobante que demuestre
+        que usted es Residente Permanente. Presentar un documento que demuestre su
+        parentesco, como un certificado de nacimiento, de matrimonio, de divorcio,
+        etc. Vea las instrucciones para los formularios, para ...", "dateLastCrawled":
+        "2021-09-05T06:03:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "Noticias & Eventos | Embajada de EE.UU. en Colombia", "url": "https:\/\/co.usembassy.gov\/es\/news-events-es\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/co.usembassy.gov\/es\/news-events-es",
+        "snippet": "La Embajada de los Estados Unidos de América en Bogotá, Colombia,
+        anuncia la donación del Gobierno de Estados Unidos de 3,5 millones de dosis
+        de la vacuna Moderna al Gobierno de Colombia como parte de los esfuerzos mundiales
+        de la Administración Biden-Harris para combatir la pandemia de COVID-19. Las
+        vacunas donadas llegarán a Bogotá el ...", "dateLastCrawled": "2021-09-03T15:01:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Discriminación por Religión | Comisión para la Igualdad de ...",
+        "url": "https:\/\/www.eeoc.gov\/es\/discriminacion-por-religion", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.eeoc.gov\/es\/discriminacion-por-religion",
+        "snippet": "Discriminación por religión y situaciones laborales. La ley
+        prohíbe la discriminación cuando se trata de cualquier aspecto del empleo,
+        como la contratación, el despido, la remuneración, las asignaciones laborales,
+        los ascensos, el despido temporal, la capacitación, los beneficios complementarios
+        y cualquier otro término o condición de ...", "dateLastCrawled": "2021-09-05T12:37:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Guía Para Pedir una Copia de Su Expediente de USCIS", "url": "https:\/\/www.uscis.gov\/sites\/default\/files\/USCIS-ES\/Acerca%20de%20nosotros%20%28About%20Us%29\/GuiaFOIASPA.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uscis.gov\/sites\/default\/files\/USCIS-ES\/Acerca
+        de nosotros (About Us...", "snippet": "acelerado, se debe incluir uno de
+        los siguientes documentos con la solicitud: • Formulario I-862, Notificación
+        de Comparecencia (Notice to Appear), con documentación de la fecha futura
+        de la audición del individuo ante el juez", "dateLastCrawled": "2021-09-03T11:05:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Vacuna contra el coronavirus :: Washington State ...", "url": "https:\/\/www.doh.wa.gov\/Emergencies\/COVID19\/VaccineInformation\/Vacunacontraelcoronavirus",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.doh.wa.gov\/Emergencies\/COVID19\/VaccineInformation\/Vacunacontraelcoronavirus",
+        "snippet": "La vacuna contra la COVID-19 está disponible para todas las personas
+        mayores de 12 años. Visite el localizador de vacunas para encontrar y programar
+        una cita. Para comunicarse con la línea directa de información sobre la COVID-19,
+        marque1-800-525-0127y, luego, presione 7.", "dateLastCrawled": "2021-09-04T12:09:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Reactivar una solicitud de beneficios del Seguro de ...", "url":
+        "https:\/\/www.edd.ca.gov\/unemployment\/Reopen-A-Claim-Espanol.htm", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.edd.ca.gov\/unemployment\/Reopen-A-Claim-Espanol.htm",
+        "snippet": "Para reactivar su solicitud, llame a uno de los siguientes números
+        de teléfonos gratuitos, los siete días de la semana, de 8 a.m. a 8 p.m. (hora
+        del Pacífico) excepto los días festivos del estado (solamente en inglés).",
+        "dateLastCrawled": "2021-09-02T04:59:00.0000000Z", "language": "es", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Blog de la NTA: No solo los avisos de errores matemáticos ...", "url":
+        "https:\/\/www.taxpayeradvocate.irs.gov\/news\/blog-de-la-nta-no-solo-los-avisos-de-errores-matematicos-son-confusos-tambien-millones-de-avisos-que-ajustan-el-credito-de-recuperacion-de-reembolso-omitieron-informacion-critica\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.taxpayeradvocate.irs.gov\/news\/blog-de-la-nta-no-solo-los-avisos-de-errores...",
+        "snippet": "Buenas noticias – en vista de que el TAS planteó este problema,
+        el IRS acordó, a partir del 22 de julio de 2021, que todos los avisos de errores
+        matemáticos futuros en los que se realizó un ajuste del RRC, incluirán el
+        lenguaje del período de reducción de 60 días.", "dateLastCrawled": "2021-09-04T23:15:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Nueva técnica de estudio de agujeros negros distantes con ...", "url":
+        "https:\/\/www.mdscc.nasa.gov\/index.php\/2021\/09\/03\/nueva-tecnica-de-estudio-de-agujeros-negros-distantes-con-chandra\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.mdscc.nasa.gov\/index.php\/2021\/09\/03\/nueva-tecnica-de-estudio-de-agujeros...",
+        "snippet": "El Observatorio de rayos X Chandra de la NASA, utiliza una nueva
+        técnica que ha permitido a los astrónomos obtener una visión, sin precedentes,
+        de un sistema de agujeros negros en el Universo temprano. Esta, proporciona
+        un método para que los astrónomos observen objetos de rayos X débiles y distantes,
+        con más detalle de lo que había sido posible anteriormente.", "dateLastCrawled":
+        "2021-09-03T18:21:00.0000000Z", "language": "es", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Tue, 07 Sep 2021 16:19:10 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=noticia%20uno%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 15:38:08 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - BAC4F515E04746758951BD3069CD1735
+      Bingapis-Sessionid:
+      - AAC1E3CCEEC44299964DDB131AA9216A
+      X-Msedge-Clientid:
+      - 356E783906A965E5251A68F10754644D
+      X-Msapi-Userstate:
+      - 3cef
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=240,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: BAC4F515E04746758951BD3069CD1735 Ref B: BLUEDGE0211 Ref C: 2021-10-06T15:39:08Z'
+      Apim-Request-Id:
+      - 1115ca19-db0a-4fad-99e5-0e9bbc66253b
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 15:39:08 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "noticia
+        uno (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=noticia+uno+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 65700, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Manejo de los sentimientos - al vivir con una enfermedad ...",
+        "url": "https:\/\/medlineplus.gov\/spanish\/ency\/patientinstructions\/000601.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/medlineplus.gov\/spanish\/ency\/patientinstructions\/000601.htm",
+        "snippet": "Conozca más sobre la politica editorial, el proceso editorial
+        y la poliza de privacidad de A.D.A.M. A.D.A.M. es también uno de los miembros
+        fundadores de la Junta Ética de Salud en Internet (Health Internet Ethics,
+        o Hi-Ethics) y cumple con los principios de la Fundación de Salud en la Red
+        (Health on the Net Foundation: www.hon.ch).", "dateLastCrawled": "2021-10-03T08:13:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Preguntas y respuestas sobre la tuberculosis", "url": "https:\/\/www.cdc.gov\/tb\/esp\/publications\/faqs\/TBQASp.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/tb\/esp\/publications\/faqs\/TBQASp.pdf",
+        "snippet": "La buena noticia es que las personas con la enfermedad de tuberculosis
+        pueden recibir tratamiento si consultan a un proveedor de atención médica.
+        Es más, la mayoría de las personas que tienen la infección de tuberculosis
+        latente pueden tomar medicamentos para que no se les desarrolle la enfermedad
+        de tuberculosis.", "dateLastCrawled": "2021-10-02T13:14:00.0000000Z", "language":
+        "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Procesamiento de Visas de Inmigrante - Preguntas Generales ...",
+        "url": "https:\/\/travel.state.gov\/content\/travel\/en\/us-visas\/inmigracion\/procesamiento-de-visas-de-inmigrante---preguntas-generales-frecuentes.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/travel.state.gov\/content\/travel\/en\/us-visas\/inmigracion\/procesamiento-de-visas...",
+        "snippet": "El procesamiento de visas de inmigrante se rige por la Ley
+        de Inmigración y Nacionalidad de 1952, enmendada, que controla la disponibilidad
+        de visas. No hay ninguna disposición dentro de la ley que permita al Departamento
+        de Estado emitir una visa a alguien para quien la visa no está disponible.
+        Mi pariente fue a su entrevista para una visa ...", "dateLastCrawled": "2021-10-02T23:11:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Cheques del gobierno | FTC Información para consumidores", "url":
+        "https:\/\/www.consumidor.ftc.gov\/blog\/2020\/03\/cheques-del-gobierno",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.consumidor.ftc.gov\/blog\/2020\/03\/cheques-del-gobierno",
+        "snippet": "Cheques del gobierno. Con el creciente impacto del Coronavirus
+        en los bolsillos de la gente, se están publicando noticias que reseñan que
+        próximamente el gobierno nos enviará dinero por medio de un cheque o depósito
+        directo a cada uno de nosotros. Los detalles aún están bajo estudio, pero
+        hay algunas pocas cosas importantes que hay que ...", "dateLastCrawled": "2021-10-01T22:15:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Los efectos del cambio climático – Climate Change: Vital ...",
+        "url": "https:\/\/climate.nasa.gov\/efectos\/", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/climate.nasa.gov\/efectos", "snippet": "Los efectos
+        del calentamiento global causado por el hombre están ocurriendo ahora, son
+        irreversibles en la escala de tiempo de las personas que viven hoy en día
+        y empeorará durante las próximas décadas. El cambio climático global ya tiene
+        efectos que se pueden observar en el medio ambiente ...", "dateLastCrawled":
+        "2021-10-03T04:04:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5", "name": "Beneficios
+        del ejercicio: MedlinePlus en español", "url": "https:\/\/medlineplus.gov\/spanish\/benefitsofexercise.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/medlineplus.gov\/spanish\/benefitsofexercise.html",
+        "snippet": "La buena noticia es que nunca es demasiado tarde para empezar.
+        Usted puede comenzar de a poco y encontrar maneras de hacer más actividad
+        física en su vida. Para obtener el mayor beneficio, usted debe tratar de realizar
+        la cantidad recomendada de ejercicio para su edad. Si usted lo logra, se sentirá
+        mejor, ayudará a prevenir o controlar ...", "dateLastCrawled": "2021-10-02T02:17:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Suicidio y comportamiento suicida: MedlinePlus ...", "url": "https:\/\/medlineplus.gov\/spanish\/ency\/article\/001554.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/medlineplus.gov\/spanish\/ency\/article\/001554.htm",
+        "snippet": "Conozca más sobre la politica editorial, el proceso editorial
+        y la poliza de privacidad de A.D.A.M. A.D.A.M. es también uno de los miembros
+        fundadores de la Junta Ética de Salud en Internet (Health Internet Ethics,
+        o Hi-Ethics) y cumple con los principios de la Fundación de Salud en la Red
+        (Health on the Net Foundation: www.hon.ch).", "dateLastCrawled": "2021-10-02T23:15:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "NASA - New NASA Online Science Resource Available for ...", "url":
+        "https:\/\/www.nasa.gov\/home\/hqnews\/2012\/oct\/HQ_12-379_Online_Science_Resource.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nasa.gov\/home\/hqnews\/2012\/oct\/HQ_12-379_Online_Science_Resource.html",
+        "snippet": "NASA has a new online science resource for teachers and students
+        to help bring Earth, the solar system, and the universe into their schools
+        and homes.", "dateLastCrawled": "2021-09-20T17:29:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Comparative Effectiveness of Moderna, Pfizer-BioNTech, and ...",
+        "url": "https:\/\/www.cdc.gov\/mmwr\/volumes\/70\/wr\/mm7038e1.htm", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.cdc.gov\/mmwr\/volumes\/70\/wr\/mm7038e1.htm",
+        "snippet": "Three COVID-19 vaccines are authorized or approved for use among
+        adults in the United States (1,2).Two 2-dose mRNA vaccines, mRNA-1273 from
+        Moderna and BNT162b2 from Pfizer-BioNTech, received Emergency Use Authorization
+        (EUA) by the Food and Drug Administration (FDA) in December 2020 for persons
+        aged ≥18 years and aged ≥16 years, respectively.", "dateLastCrawled": "2021-10-02T20:23:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "NIMH » Depresión", "url": "https:\/\/www.nimh.nih.gov\/health\/publications\/espanol\/depresion-sp",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nimh.nih.gov\/health\/publications\/espanol\/depresion-sp",
+        "snippet": "Uno de los síntomas debe ser un estado de ánimo depresivo o
+        la pérdida de interés o placer en casi todas las actividades. Es posible que
+        los niños y los adolescentes se muestren irritables en lugar de tristes. Si
+        cree que es posible que usted tenga depresión, hable con su proveedor de
+        atención médica. ...", "dateLastCrawled": "2021-10-03T12:20:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Mortalidad infantil: Información sobre el problema | NICHD ...",
+        "url": "https:\/\/espanol.nichd.nih.gov\/salud\/temas\/infant-mortality\/informacion",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/espanol.nichd.nih.gov\/salud\/temas\/infant-mortality\/informacion",
+        "snippet": "La mortalidad infantil es un término usado para describir la
+        muerte de un bebé que ocurre entre el nacimiento y el primer año de edad.
+        Si el bebé muere antes de los 28 días, la muerte también se puede clasificar
+        como mortalidad neonatal. La tasa de mortalidad infantil—es decir, la cantidad
+        de muertes por cada 1.000 nacimientos vivos ...", "dateLastCrawled": "2021-09-29T04:18:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Información sobre la diabetes | Información Básica ...", "url":
+        "https:\/\/www.cdc.gov\/diabetes\/spanish\/basics\/diabetes.html", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.cdc.gov\/diabetes\/spanish\/basics\/diabetes.html",
+        "snippet": "Información sobre la diabetes. La diabetes es una enfermedad
+        crónica (de larga duración) que afecta la forma en que el cuerpo convierte
+        los alimentos en energía. La mayoría de los alimentos que come se convierten
+        en azúcar (también llamada glucosa) que se libera en el torrente sanguíneo.
+        El páncreas produce una hormona llamada insulina ...", "dateLastCrawled":
+        "2021-10-03T01:22:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "Noticias & Eventos | Embajada de EE.UU. en Colombia", "url": "https:\/\/co.usembassy.gov\/es\/news-events-es\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/co.usembassy.gov\/es\/news-events-es",
+        "snippet": "Noticias & Eventos. Noticias. Delegación de EE. UU. viaja
+        a Colombia para gira informativa del programa “Reconstruir un mundo mejor”
+        (B3W) Declaración conjunta de la II Reunión del Grupo de Trabajo Bilateral
+        Antinarcóticos de Colombia y Estados Unidos", "dateLastCrawled": "2021-10-02T07:18:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Acondroplasia | Genetic and Rare Diseases Information ...", "url":
+        "https:\/\/rarediseases.info.nih.gov\/espanol\/12001\/acondroplasia", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/rarediseases.info.nih.gov\/espanol\/12001\/acondroplasia",
+        "snippet": "Si uno de los padres presenta acondroplasia, el bebé tiene
+        un 50% de probabilidad de heredar el trastorno. Si ambos padres tienen la
+        enfermedad, las probabilidades de que el bebé resulte afectado aumentan al
+        75%. La acondroplasia aparece como una mutación espontánea, que ocurre por
+        azar en cada veinte mil nacimientos aproximadamente.", "dateLastCrawled":
+        "2021-10-03T06:08:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "Información general sobre la culebrilla (herpes zóster) | CDC", "url": "https:\/\/www.cdc.gov\/shingles\/about\/overview-sp.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/shingles\/about\/overview-sp.html",
+        "snippet": "Información general. Casi 1 de cada 3 personas en los Estados
+        Unidos presentará culebrilla, también conocida como herpes zóster, en algún
+        momento de su vida. Se estima que en este país se presentan un millón de casos
+        anualmente. A cualquier persona que se haya recuperado de la varicela le puede
+        dar culebrilla, incluso los niños pueden ...", "dateLastCrawled": "2021-10-03T07:08:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Bioterrorismo | El ántrax | CDC", "url": "https:\/\/www.cdc.gov\/anthrax\/es\/bioterrorismo\/bioterrorismo.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/anthrax\/es\/bioterrorismo\/bioterrorismo.html",
+        "snippet": "Bioterrorismo. Un ataque biológico, o bioterrorismo, es la
+        liberación intencional de virus, bacterias u otros gérmenes que pueden infectar
+        o matar a las personas, los ganados o los cultivos. Bacillus anthracis, la
+        bacteria que causa el ántrax (o carbunco), es uno de los agentes que se
+        utilizaría con más probabilidad en un ataque biológico.", "dateLastCrawled":
+        "2021-10-02T23:10:00.0000000Z", "language": "es", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "A la búsqueda del Playero Rojizo (Calidris canutus) en el ...", "url": "https:\/\/nj.gov\/dep\/fgw\/\/\/\/\/\/\/ensp\/7032kes.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/nj.gov\/dep\/fgw\/\/\/\/\/\/\/ensp\/7032kes.htm",
+        "snippet": "Esto es en realidad una buena noticia porque nos indica que
+        el transmisor aún permanece adosado al ave. Seguiremos buscándola mañana cuando
+        continuemos nuestro relevamiento aéreo. Mientras viajábamos vimos más de 50
+        caribúes, 2 lechuzas de las nieves (Nyctea scandiaca) y 5 parejas de salteador
+        coludo (Stercorarius longicaudus).", "dateLastCrawled": "2021-10-02T19:56:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "La sepsis - NIGMS Home", "url": "https:\/\/www.nigms.nih.gov\/education\/fact-sheets\/Pages\/sepsis-spanish.aspx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nigms.nih.gov\/education\/fact-sheets\/Pages\/sepsis-spanish.aspx",
+        "snippet": "La sepsis es uno de los mayores desafíos en los hospitales,
+        en donde es una de las principales causas de muerte. También es uno de los
+        principales motivos por los que las personas deben reingresar en el hospital.
+        La sepsis se presenta de modo imprevisible y puede avanzar rápidamente.",
+        "dateLastCrawled": "2021-10-02T14:13:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Tiempo de pantalla y los niños: MedlinePlus enciclopedia ...",
+        "url": "https:\/\/medlineplus.gov\/spanish\/ency\/patientinstructions\/000355.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/medlineplus.gov\/spanish\/ency\/patientinstructions\/000355.htm",
+        "snippet": "Tiempo de pantalla y los niños. \"El tiempo de pantalla\"
+        es un término usado para actividades realizadas frente a una pantalla, como
+        ver televisión, trabajar en una computadora o jugar con videojuegos. El tiempo
+        de pantalla es una actividad sedentaria, lo cual significa que usted está
+        físicamente inactivo mientras está sentado.", "dateLastCrawled": "2021-10-03T11:09:00.0000000Z",
+        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "October 1, 2021 Update | County of San Bernardino – CountyWire",
+        "url": "https:\/\/wp.sbcounty.gov\/cao\/countywire\/?p=12988", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/wp.sbcounty.gov\/cao\/countywire\/?p=12988",
+        "snippet": "Vaccinating San Bernardino County (as of September 29, 2021) To
+        schedule an appointment, please visit the County vaccination page or call
+        the COVID-19 helpline at (909) 387-3911, Monday through Friday from 9 a.m.
+        to 5 p.m.", "dateLastCrawled": "2021-10-04T01:25:00.0000000Z", "language":
+        "en", "isNavigational": false}], "someResultsRemoved": true}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 15:39:09 GMT
+recorded_with: VCR 6.0.0

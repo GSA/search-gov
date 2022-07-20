@@ -24,15 +24,15 @@ describe LogstashDeduper do
       end
 
       before do
-        allow(ES::ELK.client_reader).to receive(:search).
+        allow(Es::ELK.client_reader).to receive(:search).
           with(search_args).and_return cursor
-        allow(ES::ELK.client_reader).to receive(:scroll).
+        allow(Es::ELK.client_reader).to receive(:scroll).
           with(scroll_id: scroll_id, scroll: '5m').
           and_return(scroll_1, scroll_2, scroll_3)
       end
 
       it 'deletes the dupes' do
-        expect(ES::ELK.client_reader).to receive(:bulk).
+        expect(Es::ELK.client_reader).to receive(:bulk).
           with(
             body: [
               { delete: { _index: 'logstash-2015.08.26', _type: 'search', _id: 'abcde' } },
@@ -43,13 +43,13 @@ describe LogstashDeduper do
               { delete: { _index: 'logstash-2015.08.26', _type: 'search', _id: 'copy5' } }
           ]
         )
-        LogstashDeduper.perform('2015.08.26')
+        described_class.perform('2015.08.26')
       end
     end
 
     it 'does not raise an error' do
       expect {
-        LogstashDeduper.perform(Date.today.strftime('%Y.%m.%d'))
+        described_class.perform(Date.today.strftime('%Y.%m.%d'))
       }.not_to raise_error
     end
   end

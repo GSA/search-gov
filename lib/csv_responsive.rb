@@ -1,4 +1,6 @@
-module CSVResponsive
+# frozen_string_literal: true
+
+module CsvResponsive
   def csv_response(filename, header, arr)
     respond_to do |format|
       format.csv { export_csv(filename, header, arr) }
@@ -11,6 +13,14 @@ module CSVResponsive
       rows.each { |row| csv << row }
     end
 
-    send_data file, type: 'text/csv; charset=utf-8; header=present', disposition: "attachment;filename=#{filename}.csv"
+    send_data(
+      file,
+      type: 'text/csv; charset=utf-8; header=present',
+      disposition: "attachment;filename=#{filename}.csv"
+    )
+  end
+
+  def format_modules(modules)
+    Array(modules).join(' ')
   end
 end

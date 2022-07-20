@@ -13,25 +13,20 @@ class ApplicationController < ActionController::Base
   DUBLIN_CORE_PARAM_KEYS = %i(contributor publisher subject).freeze
   FILTER_PARAM_KEYS = %i(since_date sort_by tbs until_date).freeze
 
-  PERMITTED_PARAM_KEYS = %i(
+  PERMITTED_PARAM_KEYS = %i[
     affiliate
     autodiscovery_url
     channel
     commit
     cr
     dc
-    email_to_verify
-    form
     hl
-    m
     page
     query
-    staged
-    strictui
     siteexclude
     sitelimit
     utf8
-  ).concat(ADVANCED_PARAM_KEYS).
+  ].concat(ADVANCED_PARAM_KEYS).
     concat(DUBLIN_CORE_PARAM_KEYS).
     concat(FILTER_PARAM_KEYS).freeze
 
@@ -50,17 +45,6 @@ class ApplicationController < ActionController::Base
     unless @affiliate
       redirect_to(PAGE_NOT_FOUND) and return
     end
-  end
-
-  def set_header_footer_fields
-    if @affiliate && permitted_params['staged']
-      @affiliate.nested_header_footer_css = @affiliate.staged_nested_header_footer_css
-      @affiliate.header = @affiliate.staged_header
-      @affiliate.footer = @affiliate.staged_footer
-      @affiliate.uses_managed_header_footer = @affiliate.staged_uses_managed_header_footer
-    end
-
-    @affiliate.use_strictui if permitted_params[:strictui]
   end
 
   def set_locale_based_on_affiliate_locale
@@ -134,11 +118,7 @@ class ApplicationController < ActionController::Base
   def force_request_format
     return if request.format && request.format.json?
 
-    if @affiliate.force_mobile_format? || permitted_params[:m] == 'true'
-      request.format = :mobile
-    elsif permitted_params[:m] == 'false' or permitted_params[:m] == 'override'
-      request.format = :html
-    end
+    request.format = :html
   end
 
   def set_search_params

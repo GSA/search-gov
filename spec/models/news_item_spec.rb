@@ -7,19 +7,19 @@ describe NewsItem do
 
   before do
     @valid_attributes = {
-      :link => 'http://www.whitehouse.gov/latest_story.html',
-      :title => "Big story here",
-      :description => "Corps volunteers have promoted blah blah blah.",
-      :published_at => DateTime.parse("2011-09-26 21:33:05"),
-      :guid => '80798 at www.whitehouse.gov',
-      :rss_feed_url_id => rss_feed_urls(:white_house_blog_url).id,
-      :contributor => "President",
-      :publisher => "Briefing Room",
-      :subject => "Economy"
+      link: 'http://www.whitehouse.gov/latest_story.html',
+      title: 'Big story here',
+      description: 'Corps volunteers have promoted blah blah blah.',
+      published_at: DateTime.parse('2011-09-26 21:33:05'),
+      guid: '80798 at www.whitehouse.gov',
+      rss_feed_url_id: rss_feed_urls(:white_house_blog_url).id,
+      contributor: 'President',
+      publisher: 'Briefing Room',
+      subject: 'Economy'
     }
   end
 
-  describe "creating a new NewsItem" do
+  describe 'creating a new NewsItem' do
     it { is_expected.to validate_presence_of :link }
     it { is_expected.to validate_presence_of :title }
     it { is_expected.to validate_presence_of :description }
@@ -29,26 +29,26 @@ describe NewsItem do
     it { is_expected.to validate_uniqueness_of(:link).case_insensitive.scoped_to(:rss_feed_url_id) }
     it { is_expected.to validate_presence_of :rss_feed_url_id }
 
-    it "should create a new instance given valid attributes" do
-      NewsItem.create!(@valid_attributes)
+    it 'should create a new instance given valid attributes' do
+      described_class.create!(@valid_attributes)
     end
 
     it 'should allow blank description for YouTube video' do
-      NewsItem.create!(@valid_attributes.merge(:link => 'HTTPs://www.youtube.com/watch?v=q3GjT4zvUkk',
-                                               :description => nil))
+      described_class.create!(@valid_attributes.merge(link: 'HTTPs://www.youtube.com/watch?v=q3GjT4zvUkk',
+                                               description: nil))
     end
 
     it 'allows blank description when body is present' do
-      NewsItem.create!(@valid_attributes.merge(body: 'content body',
+      described_class.create!(@valid_attributes.merge(body: 'content body',
                                                description: '   '))
     end
 
-    it "should scrub out extra whitespace, tabs, newlines from fields" do
-      news_item = NewsItem.create!(
+    it 'should scrub out extra whitespace, tabs, newlines from fields' do
+      news_item = described_class.create!(
         @valid_attributes.merge(title: " \nDOD \tMarks Growth\r in Spouses’ \u00a0 Employment Program \n     ",
                                 description: " \nSome     description \n     ",
                                 link: "\t\t\t\n http://www.foo.gov/1.html\t\n",
-                                guid: "\t\t\t\nhttp://www.foo.gov/1.html \t\n",
+                                guid: "\t\t\t\nhttp://www.foo.gov/1.html \t\n"
         ))
       expect(news_item.title).to eq('DOD Marks Growth in Spouses’ Employment Program')
       expect(news_item.description).to eq('Some description')
@@ -63,25 +63,25 @@ describe NewsItem do
         media_content: {
           url: 'http://farm9.staticflickr.com/8381/8594929349_f6d8163c36_b.jpg', type: 'image/jpeg', height: '819', width: '1024' }
       }
-      news_item = NewsItem.create!(@valid_attributes.merge properties: properties)
-      expect(NewsItem.find(news_item.id).tags).to eq(%w(image))
+      news_item = described_class.create!(@valid_attributes.merge properties: properties)
+      expect(described_class.find(news_item.id).tags).to eq(%w(image))
     end
 
     it 'should validate link URL is a well-formed absolute URL' do
-      news_item = NewsItem.new(@valid_attributes.merge(link: '/relative/url'))
+      news_item = described_class.new(@valid_attributes.merge(link: '/relative/url'))
       expect(news_item.valid?).to be false
     end
 
     it 'requires unique urls, regardless of protocol' do
-      NewsItem.create!(@valid_attributes.merge(link: 'http://foo.com'))
-      news_item = NewsItem.new(@valid_attributes.merge(link: 'https://foo.com', guid: 'some other guid'))
+      described_class.create!(@valid_attributes.merge(link: 'http://foo.com'))
+      news_item = described_class.new(@valid_attributes.merge(link: 'https://foo.com', guid: 'some other guid'))
       expect(news_item.valid?).to be false
       expect(news_item.errors[:link]).to include('has already been taken')
     end
   end
 
-  describe "#language" do
-    let(:news_item) { NewsItem.new(@valid_attributes) }
+  describe '#language' do
+    let(:news_item) { described_class.new(@valid_attributes) }
 
     context 'when RSS feed URL does not have language specified' do
       context 'when owner is an Affiliate' do
@@ -126,17 +126,17 @@ describe NewsItem do
     it 'delete from mysql and elasticsearch' do
       ids = [news_items(:item1).id, news_items(:item2).id].freeze
       expect(ElasticNewsItem).to receive(:delete).with(ids)
-      NewsItem.fast_delete(ids)
-      expect(NewsItem.where(id: ids)).to be_empty
+      described_class.fast_delete(ids)
+      expect(described_class.where(id: ids)).to be_empty
     end
   end
 
   describe '#duration=' do
     it 'sets duration' do
-      news_item = NewsItem.create!(@valid_attributes)
+      news_item = described_class.create!(@valid_attributes)
       news_item.duration = '1:00'
       news_item.save!
-      expect(NewsItem.find(news_item.id).duration).to eq('1:00')
+      expect(described_class.find(news_item.id).duration).to eq('1:00')
     end
   end
 end

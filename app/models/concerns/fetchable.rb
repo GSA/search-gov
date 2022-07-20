@@ -103,7 +103,7 @@ module Fetchable
   end
 
   def set_searchgov_domain
-    self.searchgov_domain = SearchgovDomain.find_or_create_by(domain: URI(url).host)
+    self.searchgov_domain = SearchgovDomain.find_by(domain: URI(url).host)
   end
 
   def escape_url

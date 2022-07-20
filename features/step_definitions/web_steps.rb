@@ -37,8 +37,8 @@ When /^(.*) within ([^:]+)$/ do |step, parent|
 end
 
 # Multi-line step scoper
-When /^(.*) within ([^:]+):$/ do |step, parent, table_or_string|
-  with_scope(parent) { step "#{step}:", table_or_string }
+When /^(.*) within ([^:]+) and ([^:]+)$/ do |first_step, parent, second_step|
+  with_scope(parent) { step "#{first_step} and #{second_step}" }
 end
 
 Given /^(?:|I )am on (.+)$/ do |page_name|
@@ -51,11 +51,6 @@ end
 
 When /^(?:|I )press "([^"]*)"$/ do |button|
   click_button(button)
-end
-
-#Alternative method to click_button(button), used when button can not be found
-When /^(?:|I )find and click the "([^"]*)" button$/ do |button|
-  find_button(button).trigger('click')
 end
 
 When /^(?:|I )follow "([^"]*)"$/ do |link|
@@ -108,13 +103,18 @@ When /^(?:|I )choose "([^"]*)"$/ do |field|
   choose(field)
 end
 
+# Intentionally empty; here to make the features read better.
+When /^(?:|I )do not attach a file to "([^"]*)"$/ do |field|
+end
+
 When /^(?:|I )attach the file "([^"]*)" to "([^"]*)"$/ do |path, field|
   attach_file(field, File.expand_path(path))
 end
 
 Then /^(?:|I )should see "([^"]*)"$/ do |text|
   if page.respond_to? :should
-    page.should have_content(text)
+    page.should have_content(text,
+                             normalize_ws: true)
   else
     assert page.has_content?(text)
   end
@@ -150,7 +150,7 @@ end
 
 Then /^the "([^"]*)" field(?: within (.*))? should contain "(.*)"$/ do |field, parent, value|
   with_scope(parent) do
-    field = find_field(field)
+    field = find_field(field) || find_field(field, visible: false)
     field_value = (field.tag_name == 'textarea') ? field.text : field.value
     if field_value.respond_to? :should
       field_value.should =~ /#{value}/
@@ -203,19 +203,6 @@ Then /^(?:|I )should be on (.+)$/ do |page_name|
   end
 end
 
-Then /^(?:|I )should have the following query string:$/ do |expected_pairs|
-  query = URI.parse(current_url).query
-  actual_params = query ? CGI.parse(query) : {}
-  expected_params = {}
-  expected_pairs.rows_hash.each_pair{|k,v| expected_params[k] = v.split(',')}
-
-  if actual_params.respond_to? :should
-    actual_params.should == expected_params
-  else
-    assert_equal expected_params, actual_params
-  end
-end
-
 When /^(?:|I )press "([^"]*)" and confirm "([^"]*)"$/ do |button, msg|
   accept_confirm msg do
     click_button(button)
@@ -229,10 +216,18 @@ When /^(?:|I )follow "([^"]*)" and confirm "([^"]*)"$/ do |link, msg|
 end
 
 Then "I wait for ajax"  do
-  Timeout.timeout(Capybara.default_wait_time) do
+  Timeout.timeout(Capybara.default_max_wait_time) do
     loop do
       active = page.evaluate_script('jQuery.active')
       break if active == 0
     end
   end
+end
+
+Then /^I should get a ([^\"]*) download$/ do |type|
+  page.driver.response.headers['Content-Type'].should match type.downcase
+end
+
+Then /^the downloaded file should include "([^\"]*)"$/ do |content|
+  page.driver.response.body.should match content
 end

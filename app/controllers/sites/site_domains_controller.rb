@@ -28,7 +28,7 @@ class Sites::SiteDomainsController < Sites::SetupSiteController
   end
 
   def update
-    if @site_domain.update_attributes site_domain_params
+    if @site_domain.update(site_domain_params)
       update_site_after_save
       redirect_to site_domains_path(@site),
                   flash: { success: "You have updated #{@site_domain.domain}." }
@@ -40,7 +40,6 @@ class Sites::SiteDomainsController < Sites::SetupSiteController
 
   def destroy
     @site_domain.destroy
-    @site.assign_sitelink_generator_names!
     redirect_to site_domains_path(@site),
                 flash: { success: "You have removed #{@site_domain.domain} from this site." }
   end
@@ -58,6 +57,5 @@ class Sites::SiteDomainsController < Sites::SetupSiteController
 
   def update_site_after_save
     @site.normalize_site_domains
-    @site.assign_sitelink_generator_names!
   end
 end

@@ -1,13 +1,3 @@
-Given /^the following Boosted Content Keywords exist for the entry titled "([^\"]*)"$/ do |title, table|
-  boosted_content = BoostedContent.find_by_title title
-  boosted_content.boosted_content_keywords.delete_all
-  table.hashes.each do |hash|
-    boosted_content.boosted_content_keywords.build(:value => hash['value'])
-  end
-  boosted_content.save!
-  ElasticBoostedContent.commit
-end
-
 Given /^the following Boosted Content entries exist for the affiliate "([^\"]*)"$/ do |aff_name, table|
   affiliate = Affiliate.find_by_name aff_name
   table.hashes.collect do |hash|
@@ -34,14 +24,6 @@ Given /^the following Boosted Content entries exist for the affiliate "([^\"]*)"
   ElasticBoostedContent.commit
 end
 
-When /^I press "([^\"]*)" on the (\d+)(?:st|nd|rd|th) boosted content entry$/ do |button, pos|
-  within(".boosted-content-list table tbody tr.row-item:nth-child(#{pos.to_i + 1})") { click_button(button) }
-end
-
 Then /^I should see (\d+) Best Bets Texts?$/ do |count|
   page.should have_selector('#best-bets .boosted-content', count: count)
-end
-
-And /^I should see boosted content keyword "([^\"]*)"$/ do |keyword|
-  page.should have_selector(".keywords span", :text => keyword)
 end

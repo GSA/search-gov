@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api
   module V2
     class SearchesController < ApplicationController
@@ -32,12 +34,7 @@ module Api
         respond_with(@search)
       end
 
-      def bing
-        @search = ApiBingSearch.new(@search_options.attributes)
-        @search.run
-        respond_with(@search)
-      end
-
+      # Deprecated - will be removed in https://cm-jira.usa.gov/browse/SRCH-1429
       def gss
         @search = ApiGssSearch.new(@search_options.attributes)
         @search.run
@@ -56,6 +53,8 @@ module Api
         respond_with(@search)
       end
 
+      # This endpoint is currently unused, but may be re-enabled in the future:
+      # https://cm-jira.usa.gov/browse/SFL-46
       def docs
         @document_collection = (DocumentCollection.find(@search_options.dc) rescue nil)
         @search = if @document_collection&.too_deep_for_bing?
@@ -71,8 +70,6 @@ module Api
 
       def affiliate_docs_search_class
         case @search_options.site.search_engine
-        when %r{BingV\d+}
-          ApiBingDocsSearch
         when 'Google'
           ApiGoogleDocsSearch
         end
@@ -105,7 +102,6 @@ module Api
                                          :offset,
                                          :query,
                                          :sort_by,
-                                         :sc_access_key,
                                          :routed,
                                          :query_not,
                                          :query_quote,
@@ -119,7 +115,6 @@ module Api
       def validate_search_options
         @search_options = search_options_validator_klass.new(search_params)
         unless @search_options.valid? && @search_options.valid?(:affiliate)
-          obfuscate_sc_access_key_error if sc_access_key_error.present?
           respond_with({ errors: @search_options.errors.full_messages }, { status: 400 })
         end
       end
@@ -129,20 +124,10 @@ module Api
         when :azure then Api::CommercialSearchOptions
         when :azure_web then Api::AzureCompositeWebSearchOptions
         when :azure_image then Api::AzureCompositeImageSearchOptions
-        when :bing then Api::SecretAPISearchOptions
         when :blended, :i14y, :video then Api::NonCommercialSearchOptions
         when :gss then Api::GssSearchOptions
         when :docs then Api::DocsSearchOptions
         end
-      end
-
-      def sc_access_key_error
-        @search_options.errors[:sc_access_key]
-      end
-
-      def obfuscate_sc_access_key_error
-        @search_options.errors.delete(:sc_access_key)
-        @search_options.errors.add(:hidden_key, 'is required')
       end
 
       def log_search_impression

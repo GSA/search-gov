@@ -1,30 +1,25 @@
-module Renderers
-  class AffiliateCss
-    include AffiliateCssHelper
+# frozen_string_literal: true
 
-    DESKTOP_LOOK_AND_FEEL_TEMPLATE = File.open("#{Rails.root}/lib/renderers/templates/_look_and_feel.css.sass.erb").read.freeze
-    MOBILE_LOOK_AND_FEEL_TEMPLATE = File.open("#{Rails.root}/lib/renderers/templates/_mobile_look_and_feel.css.sass.erb").read.freeze
+class AffiliateCss
+  include AffiliateCssHelper
 
-    def initialize(css_hash)
-      @css_hash = css_hash.freeze
-    end
+  MOBILE_LOOK_AND_FEEL_TEMPLATE = File.open("#{Rails.root}/lib/renderers/templates/_mobile_look_and_feel.css.sass.erb").read.freeze
 
-    def render_desktop_css
-      render_css render_sass_template(ERB.new DESKTOP_LOOK_AND_FEEL_TEMPLATE, nil, '<>')
-    end
+  def initialize(css_hash)
+    @css_hash = css_hash.freeze
+  end
 
-    def render_mobile_css
-      render_css render_sass_template(ERB.new MOBILE_LOOK_AND_FEEL_TEMPLATE, nil, '<>')
-    end
+  def render_mobile_css
+    render_css render_sass_template(ERB.new MOBILE_LOOK_AND_FEEL_TEMPLATE, nil, '<>')
+  end
 
-    private
+  private
 
-    def render_sass_template(template)
-      template.result binding
-    end
+  def render_sass_template(template)
+    template.result binding
+  end
 
-    def render_css(sass_template)
-      Renderers::Sass.new(sass_template).render
-    end
+  def render_css(sass_template)
+    SassTemplate.new(sass_template).render
   end
 end

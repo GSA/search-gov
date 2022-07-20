@@ -1,9 +1,0 @@
-- if @search && @search.has_related_searches?
-  = render_govbox do
-    #related_searches
-      %h3.alt= related_topics_header(@affiliate, @search.query)
-      %ul
-        - @search.related_search.each_with_index do |related_term, index|
-          - options = {:query=>strip_tags(related_term)}
-          - options[:affiliate] = @affiliate.name if @affiliate
-          %li= tracked_click_link(search_path(options),related_term.html_safe.downcase, @search, @affiliate, index, 'SREL', @search_vertical)

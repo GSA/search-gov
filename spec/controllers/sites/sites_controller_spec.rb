@@ -106,15 +106,15 @@ describe Sites::SitesController do
     end
   end
 
-  describe "#create" do
+  describe '#create' do
     it_should_behave_like 'restricted to approved user', :post, :create, id: 100
 
-    context "when logged in" do
+    context 'when logged in' do
       include_context 'approved user logged in to a site'
 
-      context "when the affiliate saves successfully" do
-        let(:site) { mock_model(Affiliate, :users => []) }
-        let(:emailer) { double(Emailer, :deliver_now => true) }
+      context 'when the affiliate saves successfully' do
+        let(:site) { mock_model(Affiliate, users: []) }
+        let(:emailer) { double(Emailer, deliver_now: true) }
 
         before do
           expect(Affiliate).to receive(:new).with(
@@ -123,8 +123,6 @@ describe Sites::SitesController do
               'name' => 'newaff',
               'site_domains_attributes' => { '0' => { 'domain' => 'http://www.brandnew.gov' } }).and_return(site)
           expect(site).to receive(:save).and_return(true)
-          expect(site).to receive(:push_staged_changes)
-          expect(site).to receive(:assign_sitelink_generator_names!)
 
           autodiscoverer = double(SiteAutodiscoverer)
           expect(SiteAutodiscoverer).to receive(:new).with(site).and_return(autodiscoverer)
@@ -159,7 +157,7 @@ describe Sites::SitesController do
 
       before do
         request.env['HTTP_REFERER'] = site_path(site)
-        expect(current_user).to receive(:update_attributes!).with(default_affiliate: site)
+        expect(current_user).to receive(:update!).with(default_affiliate: site)
         put :pin, params: { id: site.id }
       end
 
@@ -169,7 +167,7 @@ describe Sites::SitesController do
     end
   end
 
-  describe "#destroy" do
+  describe '#destroy' do
     it_should_behave_like 'restricted to approved user', :delete, :destroy, id: 100
 
     context 'when logged in as affiliate' do
@@ -181,7 +179,7 @@ describe Sites::SitesController do
       end
 
       it 'deactivates the site' do
-        expect(site).to receive(:update_attributes!).with(active: false)
+        expect(site).to receive(:update!).with(active: false)
         expect(site).to receive(:user_ids=).with([])
         delete :destroy, params: { id: site.id }
       end

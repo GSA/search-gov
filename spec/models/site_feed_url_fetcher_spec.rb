@@ -11,7 +11,7 @@ describe SiteFeedUrlFetcher do
       site_feed_url_data = double(SiteFeedUrlData)
       expect(SiteFeedUrlData).to receive(:new).with(site_feed_url).and_return(site_feed_url_data)
       expect(site_feed_url_data).to receive :import
-      SiteFeedUrlFetcher.perform(100)
+      described_class.perform(100)
     end
   end
 

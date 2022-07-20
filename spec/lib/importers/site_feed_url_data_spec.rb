@@ -17,18 +17,18 @@ describe SiteFeedUrlData do
 
       it 'should update last_checked_at' do
         expect {
-          SiteFeedUrlData.new(site_feed_url).import
+          described_class.new(site_feed_url).import
         }.to change(site_feed_url, :last_checked_at)
       end
 
       it 'should update the last_fetch_status' do
-        SiteFeedUrlData.new(site_feed_url).import
+        described_class.new(site_feed_url).import
         expect(site_feed_url.last_fetch_status).to eq('OK')
       end
 
       it 'should queue up the fetching of the full URL' do
         expect(site_feed_url.affiliate).to receive(:refresh_indexed_documents).with(IndexedDocument::SUMMARIZED_STATUS)
-        SiteFeedUrlData.new(site_feed_url).import
+        described_class.new(site_feed_url).import
       end
 
       it 'should delete any RSS-sourced indexed documents that are not in the feed' do
@@ -37,11 +37,11 @@ describe SiteFeedUrlData do
                                                title: 'obsolete document title',
                                                description: 'obsolete document description')
         expect(IndexedDocument).to receive(:fast_delete).with([obsolete_doc.id])
-        SiteFeedUrlData.new(site_feed_url).import
+        described_class.new(site_feed_url).import
       end
 
       it 'should try to create {quota} indexed documents with link, title, desc and summarized status, but not body' do
-        SiteFeedUrlData.new(site_feed_url).import
+        described_class.new(site_feed_url).import
         idocs = IndexedDocument.last(3)
         expect(idocs.first.url).to eq('http://www.whitehouse.gov/blog/2011/09/26/famine-horn-africa-be-part-solution')
         expect(idocs.first.title).to eq('Famine in the Horn of Africa: Be a Part of the Solution')
@@ -72,10 +72,10 @@ describe SiteFeedUrlData do
       end
 
       it 'updates only documents with newer pubDate' do
-        SiteFeedUrlData.new(site_feed_url).import
+        described_class.new(site_feed_url).import
         site_feed_url.affiliate.indexed_documents.where(source: 'rss').update_all(last_crawl_status: IndexedDocument::OK_STATUS)
 
-        SiteFeedUrlData.new(site_feed_url).import
+        described_class.new(site_feed_url).import
 
         idocs = IndexedDocument.last(3)
         expect(idocs.first.url).to eq('http://www.whitehouse.gov/blog/2011/09/26/famine-horn-africa-be-part-solution')
@@ -103,11 +103,11 @@ describe SiteFeedUrlData do
       end
 
       it 'updates only documents with newer pubDate' do
-        SiteFeedUrlData.new(site_feed_url).import
+        described_class.new(site_feed_url).import
 
         obsolete_ids = IndexedDocument.order(:id).pluck(:id)
         expect(IndexedDocument).to receive(:fast_delete).with(obsolete_ids)
-        SiteFeedUrlData.new(site_feed_url).import
+        described_class.new(site_feed_url).import
       end
     end
 
@@ -117,7 +117,7 @@ describe SiteFeedUrlData do
       end
 
       it 'should update the last_fetch_status with the error message' do
-        SiteFeedUrlData.new(site_feed_url).import
+        described_class.new(site_feed_url).import
         expect(site_feed_url.last_fetch_status).to eq('bad!')
       end
     end
@@ -129,7 +129,7 @@ describe SiteFeedUrlData do
       end
 
       it 'should just parse within the quota' do
-        SiteFeedUrlData.new(site_feed_url).import
+        described_class.new(site_feed_url).import
         expect(IndexedDocument.count).to eq(2)
       end
     end
@@ -141,7 +141,7 @@ describe SiteFeedUrlData do
       end
 
       it 'should just parse what is there' do
-        SiteFeedUrlData.new(site_feed_url).import
+        described_class.new(site_feed_url).import
         expect(IndexedDocument.count).to eq(3)
       end
     end

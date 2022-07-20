@@ -1,13 +1,13 @@
 require 'spec_helper'
 
 describe RequestDrilldown do
-  subject(:drilldown) { RequestDrilldown.new(true, '') }
+  subject(:drilldown) { described_class.new(true, '') }
 
   describe '#docs' do
     subject(:docs) { drilldown.docs }
 
     it 'queries Elasticsearch with the expected options' do
-      expect(ES::ELK.client_reader).to receive(:search).with(
+      expect(Es::ELK.client_reader).to receive(:search).with(
         index: 'human-logstash-*',
         body: '',
         size: 10_000,
@@ -22,7 +22,7 @@ describe RequestDrilldown do
       end
 
       before do
-        allow(ES::ELK.client_reader).to receive(:search).
+        allow(Es::ELK.client_reader).to receive(:search).
           and_return(drilldown_queries_response)
       end
 
@@ -34,7 +34,7 @@ describe RequestDrilldown do
 
     context 'when something goes wrong' do
       before do
-        allow(ES::ELK.client_reader).to receive(:search).
+        allow(Es::ELK.client_reader).to receive(:search).
           and_raise(StandardError, 'failure')
       end
 

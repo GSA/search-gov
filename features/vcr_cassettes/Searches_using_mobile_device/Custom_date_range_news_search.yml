@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=item%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=item%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
@@ -10,7 +10,7 @@ http_interactions:
       User-Agent:
       - USASearch
       Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
+      - "<BING_V7_SUBSCRIPTION_ID>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -26,860 +26,232 @@ http_interactions:
     headers:
       Cache-Control:
       - private, max-age=0
-      Content-Length:
-      - '3858'
+      Transfer-Encoding:
+      - chunked
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Thu, 22 Feb 2018 07:16:37 GMT
+      - Tue, 07 Sep 2021 16:16:07 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=161D909C343A6A693F2D9B0235DF6BE0; path=/; expires=Tue, 19-Mar-2019 07:17:38
-        GMT; domain=bingapis.com
-      - MUIDB=161D909C343A6A693F2D9B0235DF6BE0; path=/; httponly; expires=Tue, 19-Mar-2019
-        07:17:38 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:17:37 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=4D686A10831A47F1A5637A1EE27A77CF&dmnchg=1; domain=.bingapis.com;
-        expires=Sat, 22-Feb-2020 07:17:37 GMT; path=/
-      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:17:37
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=2A7276D15CB667FE12567D4F5D5366B8; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 07:17:38 GMT; domain=bingapis.com
-      - _SS=SID=2A7276D15CB667FE12567D4F5D5366B8; domain=.bingapis.com; path=/
+      X-Snr-Routing:
+      - '1'
       Bingapis-Traceid:
-      - 6868A21A12D14566B42733F5179945FE
+      - 5FC6DB4DD71B469F91910B5681A82B48
+      Bingapis-Sessionid:
+      - 1BFEF325507A42518580B40F5C8242D3
       X-Msedge-Clientid:
-      - 161D909C343A6A693F2D9B0235DF6BE0
+      - 21C6B5C0CCFA68431DE6A56BCD4A69D5
       X-Msapi-Userstate:
-      - 891f
+      - a22a
       Bingapis-Market:
       - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=264,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
       X-Msedge-Ref:
-      - 'Ref A: 6868A21A12D14566B42733F5179945FE Ref B: SG2EDGE0510 Ref C: 2018-02-22T07:17:38Z'
+      - 'Ref A: 5FC6DB4DD71B469F91910B5681A82B48 Ref B: BLUEDGE1408 Ref C: 2021-09-07T16:17:07Z'
+      Apim-Request-Id:
+      - 1a4febfc-c8b4-467d-94be-e1842d2c02d6
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Thu, 22 Feb 2018 07:17:37 GMT
+      - Tue, 07 Sep 2021 16:17:07 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=1C5CA967E3184118B895C7D30D8FAEC8&CID=161D909C343A6A693F2D9B0235DF6BE0&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=1C5CA967E3184118B895C7D30D8FAEC8&CID=161D909C343A6A693F2D9B0235DF6BE0&Type=Event.CPT&DATA=0"},
-        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=item+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5490.1", "totalEstimatedMatches": 8280000,
-        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "CARE Item Set and B-CARE - Centers for Medicare & Medicaid ...", "url":
-        "https:\/\/www.cms.gov\/Medicare\/Quality-Initiatives-Patient-Assessment-Instruments\/Post-Acute-Care-Quality-Initiatives\/CARE-Item-Set-and-B-CARE.html",
-        "urlPingSuffix": "DevEx,5094.1", "displayUrl": "https:\/\/www.cms.gov\/...\/CARE-Item-Set-and-B-CARE.html",
-        "snippet": "The Development and Testing of the Continuity Assessment Record
-        and Evaluation (CARE) Item Set: Final Report on the Development of the CARE
-        Item Set.", "dateLastCrawled": "2018-02-09T20:38:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
-        "name": "Pay Item Catalog - New York State Department of Transportation",
-        "url": "https:\/\/www.dot.ny.gov\/pic?nd=nysdot", "urlPingSuffix": "DevEx,5109.1",
-        "displayUrl": "https:\/\/www.dot.ny.gov\/pic?nd=nysdot", "snippet": "New
-        York State Department of Transportation coordinates operation of transportation
-        facilities and services including highway, bridges, railroad, mass transit,
-        port ...", "dateLastCrawled": "2018-02-10T11:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "Form 8-K - Official Site", "url": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
-        "urlPingSuffix": "DevEx,5123.1", "displayUrl": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
-        "snippet": "If a report on Form 8-K contains disclosures under Item 2.02
-        or Item 7.01, whether or not the report contains disclosures regarding other
-        items, ...", "dateLastCrawled": "2018-02-15T10:56:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "PNO Guidance on Item 4(d) | Federal Trade Commission", "url":
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "item
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=item+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 9650000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Department of Defense Guidebook for Acquiring Commercial Items",
+        "url": "https:\/\/www.acq.osd.mil\/dpap\/cpic\/cp\/docs\/Guidebook_Part_A_Commercial_Item_Determination_07_10_2019.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.acq.osd.mil\/dpap\/cpic\/cp\/docs\/Guidebook_Part_A_Commercial_Item...",
+        "snippet": "item meets the criteria to be deemed a commercial item. Making
+        a determination for of a type items that are similar to, but not identical
+        to, items that have been sold in the commercial marketplace can be particularly
+        challenging. Part A of this guide is intended to assist with making timely
+        CIDs. 5 .", "dateLastCrawled": "2021-09-05T12:20:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "How to Classify Your Item", "url": "https:\/\/www.bis.doc.gov\/index.php\/documents\/compliance-training\/export-administration-regulations-training\/247-howtoclassifyitem-pdf\/file",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.bis.doc.gov\/...\/247-howtoclassifyitem-pdf\/file",
+        "snippet": "Read ECCN “Item” heading under “List of Items Controlled” Match
+        particular characteristics, functions, and applications to a specific ECCN
+        Pay attention to Related Controls and Related Definitions with the ECCN Entry!
+        Bureau of Industry and Security –How To Classify Your Item Other Useful
+        Guidance when Classifying your Item ...", "dateLastCrawled": "2021-09-03T05:04:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Commercial Item Determination", "url": "https:\/\/www.acq.osd.mil\/dpap\/ccap\/cc\/jcchb\/Files\/Topical\/Commercial\/checklist\/commercial_item_determination_checklist_feb2010_usmc.docx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.acq.osd.mil\/...\/commercial_item_determination_checklist_feb2010_usmc.docx",
+        "snippet": "Yes____ No ____ If yes, describe the original item, how it has
+        evolved and when it is anticipated to be available in the commercial marketplace.
+        This is a commercial supply item. You may stop now and put your commercial
+        item determination\/", "dateLastCrawled": "2021-09-05T10:48:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Subpart 4.10—Uniform Use of Line Items - Acquisition", "url": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html\/Subpart%204_10.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html\/Subpart
+        4_10.html", "snippet": "This type of subline item identifies information
+        that relates directly to the line item and is an integral part of it (e.g.,
+        parts of an assembly or parts of a kit). (2) Position informational subline
+        items within the line item description, not in the quantity or price fields.
+        4.1005 Data elements for line items and subline items.", "dateLastCrawled":
+        "2021-09-05T08:39:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4", "name":
+        "Part 12 - Acquisition of Commercial Items | Acquisition.GOV", "url": "https:\/\/www.acquisition.gov\/far\/part-12",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.acquisition.gov\/far\/part-12",
+        "snippet": "Commercial item prices are affected by factors that include,
+        but are not limited to, speed of delivery, length and extent of warranty,
+        limitations of seller’s liability, quantities ordered, length of the performance
+        period, and specific performance requirements. The contracting officer must
+        ensure that contract terms, conditions, and prices ...", "dateLastCrawled":
+        "2021-09-05T09:45:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5", "name":
+        "ITEM UNIQUE IDENTIFICATION (IUID)", "url": "http:\/\/www.acq.osd.mil\/dpap\/pdi\/uid\/index.html",
+        "isFamilyFriendly": true, "displayUrl": "www.acq.osd.mil\/dpap\/pdi\/uid\/index.html",
+        "snippet": "Item: Description: DoD Instructions: DoDI 4140.01: DoD Supply
+        Chain Materiel Management Policy Requires unique item level traceability
+        for all DoD serially managed items that are also sensitive or pilferable,
+        all DoD serially managed CSI, all NWRM, depot level reparables, and any item
+        that the DoD materiel manager decides requires unique item level traceability
+        using a unique item identifier ...", "dateLastCrawled": "2021-09-03T03:23:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "STANDARD ITEM - Naval Sea Systems Command", "url": "https:\/\/www.navsea.navy.mil\/Portals\/103\/Documents\/SSRAC\/NSI\/FY21\/FY21%20NSI%20Finals\/009-04_FY21_pkg.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.navsea.navy.mil\/Portals\/103\/Documents\/SSRAC\/NSI\/FY21\/FY21
+        NSI Finals\/009-04...", "snippet": "Item number and Work Item paragraph
+        number, including Standard Item paragraph number, and must include inspection
+        symbols (I)(Q) and (V), and the government notification (G) Point symbol where
+        applicable. 3.10.2.3 Provide identification of the item to be inspected
+        by name, number, and location (e.g., number 3 main feed pump, 5-180-0-E).",
+        "dateLastCrawled": "2021-09-05T11:33:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "What Can I Bring? | Transportation Security Administration", "url":
+        "https:\/\/www.tsa.gov\/travel\/security-screening\/whatcanibring\/all", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.tsa.gov\/travel\/security-screening\/whatcanibring",
+        "snippet": "Planning ahead and packing properly can facilitate the screening
+        process and ease your travel experience at the airport. Know what you can
+        pack in your carry-on and checked baggage before arriving at the airport by
+        reviewing the lists below. Even if an item is generally permitted, it may
+        be subject ...", "dateLastCrawled": "2021-09-05T06:15:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Bulky Item Pickup - Milwaukee", "url": "https:\/\/city.milwaukee.gov\/sanitation\/Bulky-Item-Pickup",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/city.milwaukee.gov\/sanitation\/Bulky-Item-Pickup",
+        "snippet": "Bulky Item Pickup Guidelines Bulky items are items that are
+        too large to be placed in your garbage cart, such as broken furniture, a queen
+        mattress, or large, broken toys. Yard waste , electronics and TVs , appliances,
+        and tires are not considered bulky waste and must be disposed of by taking
+        to a Drop Off Center .", "dateLastCrawled": "2021-09-03T09:59:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Bulky Item Collection | City of Glendale, CA", "url": "https:\/\/www.glendaleca.gov\/government\/departments\/public-works\/integrated-waste-management\/homes-apartment-complexes\/bulky-item-collection",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.glendaleca.gov\/...\/homes-apartment-complexes\/bulky-item-collection",
+        "snippet": "If an item is not listed above it is NOT accepted for Bulky
+        Item Pickup. Not accepted: Cardboard, hazardous waste, bags of trash\/recycling,
+        construction materials, lumber, glass\/mirrors. See where to donate or recycle
+        items locally at earth911.com", "dateLastCrawled": "2021-09-05T04:06:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Item response theory: A basic concept", "url": "https:\/\/files.eric.ed.gov\/fulltext\/EJ1133065.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/files.eric.ed.gov\/fulltext\/EJ1133065.pdf",
+        "snippet": "Item curve of single parameter logistic model (Hambleton et
+        al., 1991c). three parameters that is, b i, a i and c i. Single parameter
+        logistic model The description of single parameter model in an item characteristics
+        curve, b i parameter is a parameter location shown in ability scale, named
+        item difficulty level. ...", "dateLastCrawled": "2021-09-02T17:47:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Form 20-F - SEC", "url": "https:\/\/www.sec.gov\/files\/form20-f.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/files\/form20-f.pdf",
+        "snippet": "Item 18 If this is an annual report, indicate by check mark
+        whether the registrant is a shell company (as defined in Rule 12b-2 of the
+        Exchange Act). Yes . No (APPLICABLE ONLYTO ISSUERS INVOLVED IN BANKRUPTCY
+        PROCEEDINGS DURING THE PAST FIVE YEARS)", "dateLastCrawled": "2021-09-05T10:02:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Bulk Item Collection Program | City of Mesa", "url": "https:\/\/www.mesaaz.gov\/residents\/trash-recycling\/trash-recycling-for-single-family-homes\/bulk-item-collection-program",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.mesaaz.gov\/...\/bulk-item-collection-program",
+        "snippet": "Bulk item collection charges vary, depending on the amount of
+        material to be picked up, and start at $25.00 per load (load size is approximately
+        4''x8''x4''). To schedule a bulk item pickup or for more information, please
+        call Solid Waste at (480) 644-6789.", "dateLastCrawled": "2021-09-02T03:03:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "PAM: Section 2 - PAR Items, Lines 8 - 9", "url": "https:\/\/www.sco.ca.gov\/Files-PPSD\/pam_section_2_par_items_lines_8-9.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sco.ca.gov\/Files-PPSD\/pam_section_2_par_items_lines_8-9.pdf",
+        "snippet": "Section 2.103: ITEM 851 – ALTERNATE SALARY RANGE CRITERIA (Revised
+        11\/92) Description: Indicates the alphabetic or numeric code of the specific
+        alternate range", "dateLastCrawled": "2021-09-03T08:43:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Item 4(c) Tip Sheet (04\/26\/12) - Federal Trade Commission",
+        "url": "https:\/\/www.ftc.gov\/sites\/default\/files\/attachments\/hsr-resources\/4ctipsheet.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ftc.gov\/sites\/default\/files\/attachments\/hsr-resources\/4ctipsheet.pdf",
+        "snippet": "Item 4(c) also contemplates receiving presentations made by
+        the parties to the transaction, such as management presentations. These kinds
+        of presentation documents may be responsive if the 4(c) criteria are met.
+        Ordinary course documents Two questions frequently arise about ordinary course
+        documents. The first is whether a party’s", "dateLastCrawled": "2021-09-03T06:21:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Bulk Item Disposal · NYC311", "url": "https:\/\/portal.311.nyc.gov\/article\/?kanumber=KA-01969",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/portal.311.nyc.gov\/article\/?kanumber=KA-01969",
+        "snippet": "A bulk item is something that is too large to fit into a trash
+        bin or bag. You can get free curbside removal of bulk items from residential
+        buildings. Bulk metal and rigid plastic items are collected on recycling collection
+        days. Non-recyclable bulk items are collected on trash collection days and
+        may require an appointment depending on the size:", "dateLastCrawled": "2021-09-05T10:50:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "2021 400NG Change 1 - Move", "url": "https:\/\/move.mil\/sites\/default\/files\/2021-06\/2021%20400NG%20Change%201.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/move.mil\/sites\/default\/files\/2021-06\/2021
+        400NG Change 1.pdf", "snippet": "- Item 125 - Clarified truck to truck transfer
+        “only” - Item 125 - Added language to support payment - Item 130 - Added
+        riding lawnmowers (including stand-on) - Item 130 - Clarified what is a
+        Bulky Article Change 1 :", "dateLastCrawled": "2021-09-05T16:17:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Special Item Collections - Utilities | seattle.gov", "url": "http:\/\/www.seattle.gov\/utilities\/your-services\/collection-and-disposal\/garbage\/special-item-collections",
+        "isFamilyFriendly": true, "displayUrl": "www.seattle.gov\/utilities\/your-services\/collection-and-disposal\/garbage\/special-item...",
+        "snippet": "Schedule a Special Item Collection. To request the collection
+        of large or hard to dispose of items at your home, schedule online or call
+        Seattle Public Utilities Customer Service at (206) 684-3000. We will pick
+        up items such as large furniture and appliances, TVs, computers, small appliances,
+        and small recyclable items that cannot go in the mixed recycling (compact
+        fluorescent lightbulbs (CFLs ...", "dateLastCrawled": "2021-09-05T07:06:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "PNO Guidance on Item 4(d) | Federal Trade Commission", "url":
         "https:\/\/www.ftc.gov\/enforcement\/premerger-notification-program\/hsr-resources\/pno-guidance-item-4d",
-        "urlPingSuffix": "DevEx,5142.1", "displayUrl": "https:\/\/www.ftc.gov\/...\/hsr-resources\/pno-guidance-item-4d",
-        "snippet": "Item 4(d) targets confidential information memoranda (CIMs),
-        bankers’ books and other third party consultants’ materials, and synergies
-        documents. When gathering ...", "dateLastCrawled": "2018-02-15T15:37:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "What
-        Can I Bring? | Transportation Security Administration", "url": "https:\/\/www.tsa.gov\/travel\/security-screening\/whatcanibring",
-        "urlPingSuffix": "DevEx,5160.1", "displayUrl": "https:\/\/www.tsa.gov\/travel\/security-screening\/whatcanibring",
-        "snippet": "What Can I Bring? Planning ahead and ... can pack in your carry-on
-        and checked baggage before arriving at the airport by reviewing the lists
-        below. Even if an item is ...", "dateLastCrawled": "2018-02-11T18:40:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Required
-        Items - DOB", "url": "http:\/\/www1.nyc.gov\/site\/buildings\/industry\/required-items.page",
-        "urlPingSuffix": "DevEx,5175.1", "displayUrl": "www1.nyc.gov\/site\/buildings\/industry\/required-items.page",
-        "snippet": "Required Items . Required Items indicate what requirements apply
-        to a specific job, and when they must be satisfied. Every job filing is unique.",
-        "dateLastCrawled": "2018-02-16T09:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "Hospice Item Set (HIS) - Centers for Medicare & Medicaid ...",
-        "url": "https:\/\/www.cms.gov\/Medicare\/Quality-Initiatives-Patient-Assessment-Instruments\/Hospice-Quality-Reporting\/Hospice-Item-Set-HIS.html",
-        "urlPingSuffix": "DevEx,5193.1", "displayUrl": "https:\/\/www.cms.gov\/...\/Hospice-Item-Set-HIS.html",
-        "snippet": "About this Page. The Hospice Item Set (HIS) web page provides
-        updates, announcements, and resources specific to the HIS. On this page you
-        will find direct links to ...", "dateLastCrawled": "2018-02-13T02:33:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "FAQ Regarding
-        Items Prohibited from Federal Property ...", "url": "https:\/\/www.dhs.gov\/faq-regarding-items-prohibited-federal-property",
-        "urlPingSuffix": "DevEx,5211.1", "displayUrl": "https:\/\/www.dhs.gov\/faq-regarding-items-prohibited-federal-property",
-        "snippet": "Official website of the Department of Homeland Security. ... FAQ
-        Regarding Items Prohibited from ... to mitigate prohibited item entry at
-        ...", "dateLastCrawled": "2018-02-12T17:35:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "Taxable and Non-Taxable Items (tax)", "url": "https:\/\/files.medi-cal.ca.gov\/pubsdoco\/publications\/masters-mtp\/part2\/tax_a02a04a06p00.doc",
-        "urlPingSuffix": "DevEx,5224.1", "displayUrl": "https:\/\/files.medi-cal.ca.gov\/pubsdoco\/publications\/masters-mtp\/...",
-        "snippet": "Combine the item’s purchase or rental price with any applicable
-        sales tax and bill the total on the same line. ... Taxable and Non-Taxable
-        Items (tax) ...", "dateLastCrawled": "2018-02-15T09:45:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "African American
-        Spirituals | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/ihas.200197495\/",
-        "urlPingSuffix": "DevEx,5241.1", "displayUrl": "https:\/\/www.loc.gov\/item\/ihas.200197495",
-        "snippet": "The Fisk University Jubilee Singers helped to raise awareness
-        of African American spirituals ... Responsibility for making an independent
-        legal assessment of an item ...", "dateLastCrawled": "2018-01-17T20:41:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "NAVSEA
-        STANDARD ITEM DATE: 12 MAY 2016", "url": "http:\/\/www.navsea.navy.mil\/Portals\/103\/Documents\/SSRAC\/NSI\/FY17\/009-32_FY17-CH1.pdf",
-        "urlPingSuffix": "DevEx,5254.1", "displayUrl": "www.navsea.navy.mil\/Portals\/103\/Documents\/SSRAC\/NSI\/FY17\/009-32_FY...",
-        "snippet": "3 of 96 ITEM NO: 009-32 FY-17(CH-1) potable water, reserve feedwater,
-        or freshwater drain collection tanks, they shall be blasted and coated at
-        a maximum 50 percent ...", "dateLastCrawled": "2018-02-11T10:35:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Home
-        Inventory Checklist", "url": "http:\/\/www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
-        "urlPingSuffix": "DevEx,5265.1", "displayUrl": "www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
-        "snippet": "HOME INVENTORY CHECKLIST Household Inventory Checklist | 2 Number
-        Of Items Item Year Bought Cost Living Room Air Conditioner Window Units",
-        "dateLastCrawled": "2018-02-11T20:16:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
-        "name": "NAVSEA STANDARD ITEM", "url": "http:\/\/www.navsea.navy.mil\/Portals\/103\/Documents\/SSRAC\/NSI\/FY16\/009-04_FY16.pdf",
-        "urlPingSuffix": "DevEx,5277.1", "displayUrl": "www.navsea.navy.mil\/Portals\/103\/Documents\/SSRAC\/NSI\/FY16\/009-04_FY...",
-        "snippet": "1 of 10 ITEM NO: 009-04 FY-16 NAVSEA STANDARD ITEM . FY-16
-        . ITEM NO: 009-04 DATE: 18 JUL 2014 . CATEGORY: I . 1. SCOPE: 1.1 Title:
-        Quality Management ...", "dateLastCrawled": "2018-02-13T18:10:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "NUMERICAL
-        MICHIGAN DEPARTMENT OF TRANSPORTATION 4\/21\/2014", "url": "http:\/\/www.michigan.gov\/documents\/mdot\/MDOT_2012_Pay_Item_Code_Numeric_348268_7.pdf",
-        "urlPingSuffix": "DevEx,5289.1", "displayUrl": "www.michigan.gov\/documents\/mdot\/MDOT_2012_Pay_Item_Code_Numeric...",
-        "snippet": "numerical michigan department of transportation 4\/21\/2014 item
-        units long description (part 1) (part 2) ss\/sp required 2080030 ft erosion
-        control, sand fence sp208a", "dateLastCrawled": "2018-02-08T08:01:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Pages
-        - Search", "url": "http:\/\/www.njconsumeraffairs.gov\/search\/pages\/results.aspx?k=renew+license",
-        "urlPingSuffix": "DevEx,5301.1", "displayUrl": "www.njconsumeraffairs.gov\/search\/pages\/results.aspx?k=renew+license",
-        "snippet": "~sitecollection\/_catalogs\/masterpage\/Display Templates\/Search\/Item_PDF.js:
-        Division Division Home ...", "dateLastCrawled": "2018-02-16T14:26:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "[Suffragists
-        Protest Woodrow Wilson''s Opposition to Woman ...", "url": "https:\/\/www.loc.gov\/item\/mnwp000288",
-        "urlPingSuffix": "DevEx,5317.1", "displayUrl": "https:\/\/www.loc.gov\/item\/mnwp000288",
-        "snippet": "[Suffragists Protest Woodrow Wilson''s ... - Title transcribed
-        from item with editorial addition ... [Suffragists Protest Woodrow Wilson''s
-        Opposition ...", "dateLastCrawled": "2018-01-31T20:24:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Default Standard
-        Item List", "url": "http:\/\/www.dot.ri.gov\/documents\/doingbusiness\/DefaultStdItemsList%20011415.pdf",
-        "urlPingSuffix": "DevEx,5330.1", "displayUrl": "www.dot.ri.gov\/documents\/doingbusiness\/DefaultStdItemsList
-        011415.pdf", "snippet": "Default Standard Item List Effective Date - 01\/14\/2015
-        Dataset Name - Standard Item Codes 2014 Page 2 of 50 Date: 1\/14\/2015 201.0613
-        REMOVE AND STOCKPILE LIGHT ...", "dateLastCrawled": "2018-02-12T15:01:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Bulky
-        Item Collection - San Antonio", "url": "http:\/\/www.sanantonio.gov\/swmd\/Bulky",
-        "urlPingSuffix": "DevEx,5345.1", "displayUrl": "www.sanantonio.gov\/swmd\/Bulky",
-        "snippet": "Provides information about the twice-a-year residential bulky
-        item collection program.", "dateLastCrawled": "2018-02-10T09:18:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Weighted
-        Average Item Price Report - Michigan - SOM", "url": "http:\/\/www.michigan.gov\/documents\/mdot\/MDOT_2012_Weighted_Average_Item_Price_Report_371243_7.pdf",
-        "urlPingSuffix": "DevEx,5358.1", "displayUrl": "www.michigan.gov\/...Weighted_Average_Item_Price_Report_371243_7.pdf",
-        "snippet": "Weighted Average Item Price Report Report v1 Sorted By: Item,
-        Region and Quarter Average Price. Weighted Average Item Price Report Report
-        v1", "dateLastCrawled": "2018-02-06T16:52:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
-        "name": "IN.gov Logo", "url": "http:\/\/in.gov\/dot\/div\/contracts\/pay\/",
-        "urlPingSuffix": "DevEx,5373.1", "displayUrl": "in.gov\/dot\/div\/contracts\/pay",
-        "snippet": "If you have any questions regarding unit prices or if you need
-        a unit prices for any item not included in these catalogs please contact:",
-        "dateLastCrawled": "2018-02-07T11:43:00.0000000Z"}]}, "rankingResponse": {"mainline":
-        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
-    http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:17:38 GMT
-- request:
-    method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=item%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V6_APP_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '3858'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Thu, 22 Feb 2018 07:16:39 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=2C629D72852E622F18B796EC84CB6355; path=/; expires=Tue, 19-Mar-2019 07:17:39
-        GMT; domain=bingapis.com
-      - MUIDB=2C629D72852E622F18B796EC84CB6355; path=/; httponly; expires=Tue, 19-Mar-2019
-        07:17:39 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:17:39 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=97E7162A0858482D8F60650E28E41D74&dmnchg=1; domain=.bingapis.com;
-        expires=Sat, 22-Feb-2020 07:17:39 GMT; path=/
-      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:17:39
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=0859D81F3FF0635A0DBBD3813E1562E1; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 07:17:39 GMT; domain=bingapis.com
-      - _SS=SID=0859D81F3FF0635A0DBBD3813E1562E1; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - 34E49A465F0D42168E8FA93D7D844E44
-      X-Msedge-Clientid:
-      - 2C629D72852E622F18B796EC84CB6355
-      X-Msapi-Userstate:
-      - 96ee
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: 34E49A465F0D42168E8FA93D7D844E44 Ref B: SG2EDGE0808 Ref C: 2018-02-22T07:17:39Z'
-      Date:
-      - Thu, 22 Feb 2018 07:17:38 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=7AE8099D930E4FCFBA9D5F726066A9D0&CID=2C629D72852E622F18B796EC84CB6355&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=7AE8099D930E4FCFBA9D5F726066A9D0&CID=2C629D72852E622F18B796EC84CB6355&Type=Event.CPT&DATA=0"},
-        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=item+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5490.1", "totalEstimatedMatches": 8280000,
-        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "CARE Item Set and B-CARE - Centers for Medicare & Medicaid ...", "url":
-        "https:\/\/www.cms.gov\/Medicare\/Quality-Initiatives-Patient-Assessment-Instruments\/Post-Acute-Care-Quality-Initiatives\/CARE-Item-Set-and-B-CARE.html",
-        "urlPingSuffix": "DevEx,5094.1", "displayUrl": "https:\/\/www.cms.gov\/...\/CARE-Item-Set-and-B-CARE.html",
-        "snippet": "The Development and Testing of the Continuity Assessment Record
-        and Evaluation (CARE) Item Set: Final Report on the Development of the CARE
-        Item Set.", "dateLastCrawled": "2018-02-09T20:38:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
-        "name": "Pay Item Catalog - New York State Department of Transportation",
-        "url": "https:\/\/www.dot.ny.gov\/pic?nd=nysdot", "urlPingSuffix": "DevEx,5109.1",
-        "displayUrl": "https:\/\/www.dot.ny.gov\/pic?nd=nysdot", "snippet": "New
-        York State Department of Transportation coordinates operation of transportation
-        facilities and services including highway, bridges, railroad, mass transit,
-        port ...", "dateLastCrawled": "2018-02-10T11:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "Form 8-K - Official Site", "url": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
-        "urlPingSuffix": "DevEx,5123.1", "displayUrl": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
-        "snippet": "If a report on Form 8-K contains disclosures under Item 2.02
-        or Item 7.01, whether or not the report contains disclosures regarding other
-        items, ...", "dateLastCrawled": "2018-02-15T10:56:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "PNO Guidance on Item 4(d) | Federal Trade Commission", "url":
-        "https:\/\/www.ftc.gov\/enforcement\/premerger-notification-program\/hsr-resources\/pno-guidance-item-4d",
-        "urlPingSuffix": "DevEx,5142.1", "displayUrl": "https:\/\/www.ftc.gov\/...\/hsr-resources\/pno-guidance-item-4d",
-        "snippet": "Item 4(d) targets confidential information memoranda (CIMs),
-        bankers’ books and other third party consultants’ materials, and synergies
-        documents. When gathering ...", "dateLastCrawled": "2018-02-15T15:37:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "What
-        Can I Bring? | Transportation Security Administration", "url": "https:\/\/www.tsa.gov\/travel\/security-screening\/whatcanibring",
-        "urlPingSuffix": "DevEx,5160.1", "displayUrl": "https:\/\/www.tsa.gov\/travel\/security-screening\/whatcanibring",
-        "snippet": "What Can I Bring? Planning ahead and ... can pack in your carry-on
-        and checked baggage before arriving at the airport by reviewing the lists
-        below. Even if an item is ...", "dateLastCrawled": "2018-02-11T18:40:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Required
-        Items - DOB", "url": "http:\/\/www1.nyc.gov\/site\/buildings\/industry\/required-items.page",
-        "urlPingSuffix": "DevEx,5175.1", "displayUrl": "www1.nyc.gov\/site\/buildings\/industry\/required-items.page",
-        "snippet": "Required Items . Required Items indicate what requirements apply
-        to a specific job, and when they must be satisfied. Every job filing is unique.",
-        "dateLastCrawled": "2018-02-16T09:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "Hospice Item Set (HIS) - Centers for Medicare & Medicaid ...",
-        "url": "https:\/\/www.cms.gov\/Medicare\/Quality-Initiatives-Patient-Assessment-Instruments\/Hospice-Quality-Reporting\/Hospice-Item-Set-HIS.html",
-        "urlPingSuffix": "DevEx,5193.1", "displayUrl": "https:\/\/www.cms.gov\/...\/Hospice-Item-Set-HIS.html",
-        "snippet": "About this Page. The Hospice Item Set (HIS) web page provides
-        updates, announcements, and resources specific to the HIS. On this page you
-        will find direct links to ...", "dateLastCrawled": "2018-02-13T02:33:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "FAQ Regarding
-        Items Prohibited from Federal Property ...", "url": "https:\/\/www.dhs.gov\/faq-regarding-items-prohibited-federal-property",
-        "urlPingSuffix": "DevEx,5211.1", "displayUrl": "https:\/\/www.dhs.gov\/faq-regarding-items-prohibited-federal-property",
-        "snippet": "Official website of the Department of Homeland Security. ... FAQ
-        Regarding Items Prohibited from ... to mitigate prohibited item entry at
-        ...", "dateLastCrawled": "2018-02-12T17:35:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "Taxable and Non-Taxable Items (tax)", "url": "https:\/\/files.medi-cal.ca.gov\/pubsdoco\/publications\/masters-mtp\/part2\/tax_a02a04a06p00.doc",
-        "urlPingSuffix": "DevEx,5224.1", "displayUrl": "https:\/\/files.medi-cal.ca.gov\/pubsdoco\/publications\/masters-mtp\/...",
-        "snippet": "Combine the item’s purchase or rental price with any applicable
-        sales tax and bill the total on the same line. ... Taxable and Non-Taxable
-        Items (tax) ...", "dateLastCrawled": "2018-02-15T09:45:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "African American
-        Spirituals | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/ihas.200197495\/",
-        "urlPingSuffix": "DevEx,5241.1", "displayUrl": "https:\/\/www.loc.gov\/item\/ihas.200197495",
-        "snippet": "The Fisk University Jubilee Singers helped to raise awareness
-        of African American spirituals ... Responsibility for making an independent
-        legal assessment of an item ...", "dateLastCrawled": "2018-01-17T20:41:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "NAVSEA
-        STANDARD ITEM DATE: 12 MAY 2016", "url": "http:\/\/www.navsea.navy.mil\/Portals\/103\/Documents\/SSRAC\/NSI\/FY17\/009-32_FY17-CH1.pdf",
-        "urlPingSuffix": "DevEx,5254.1", "displayUrl": "www.navsea.navy.mil\/Portals\/103\/Documents\/SSRAC\/NSI\/FY17\/009-32_FY...",
-        "snippet": "3 of 96 ITEM NO: 009-32 FY-17(CH-1) potable water, reserve feedwater,
-        or freshwater drain collection tanks, they shall be blasted and coated at
-        a maximum 50 percent ...", "dateLastCrawled": "2018-02-11T10:35:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Home
-        Inventory Checklist", "url": "http:\/\/www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
-        "urlPingSuffix": "DevEx,5265.1", "displayUrl": "www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
-        "snippet": "HOME INVENTORY CHECKLIST Household Inventory Checklist | 2 Number
-        Of Items Item Year Bought Cost Living Room Air Conditioner Window Units",
-        "dateLastCrawled": "2018-02-11T20:16:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
-        "name": "NAVSEA STANDARD ITEM", "url": "http:\/\/www.navsea.navy.mil\/Portals\/103\/Documents\/SSRAC\/NSI\/FY16\/009-04_FY16.pdf",
-        "urlPingSuffix": "DevEx,5277.1", "displayUrl": "www.navsea.navy.mil\/Portals\/103\/Documents\/SSRAC\/NSI\/FY16\/009-04_FY...",
-        "snippet": "1 of 10 ITEM NO: 009-04 FY-16 NAVSEA STANDARD ITEM . FY-16
-        . ITEM NO: 009-04 DATE: 18 JUL 2014 . CATEGORY: I . 1. SCOPE: 1.1 Title:
-        Quality Management ...", "dateLastCrawled": "2018-02-13T18:10:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "NUMERICAL
-        MICHIGAN DEPARTMENT OF TRANSPORTATION 4\/21\/2014", "url": "http:\/\/www.michigan.gov\/documents\/mdot\/MDOT_2012_Pay_Item_Code_Numeric_348268_7.pdf",
-        "urlPingSuffix": "DevEx,5289.1", "displayUrl": "www.michigan.gov\/documents\/mdot\/MDOT_2012_Pay_Item_Code_Numeric...",
-        "snippet": "numerical michigan department of transportation 4\/21\/2014 item
-        units long description (part 1) (part 2) ss\/sp required 2080030 ft erosion
-        control, sand fence sp208a", "dateLastCrawled": "2018-02-08T08:01:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Pages
-        - Search", "url": "http:\/\/www.njconsumeraffairs.gov\/search\/pages\/results.aspx?k=renew+license",
-        "urlPingSuffix": "DevEx,5301.1", "displayUrl": "www.njconsumeraffairs.gov\/search\/pages\/results.aspx?k=renew+license",
-        "snippet": "~sitecollection\/_catalogs\/masterpage\/Display Templates\/Search\/Item_PDF.js:
-        Division Division Home ...", "dateLastCrawled": "2018-02-16T14:26:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "[Suffragists
-        Protest Woodrow Wilson''s Opposition to Woman ...", "url": "https:\/\/www.loc.gov\/item\/mnwp000288",
-        "urlPingSuffix": "DevEx,5317.1", "displayUrl": "https:\/\/www.loc.gov\/item\/mnwp000288",
-        "snippet": "[Suffragists Protest Woodrow Wilson''s ... - Title transcribed
-        from item with editorial addition ... [Suffragists Protest Woodrow Wilson''s
-        Opposition ...", "dateLastCrawled": "2018-01-31T20:24:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Default Standard
-        Item List", "url": "http:\/\/www.dot.ri.gov\/documents\/doingbusiness\/DefaultStdItemsList%20011415.pdf",
-        "urlPingSuffix": "DevEx,5330.1", "displayUrl": "www.dot.ri.gov\/documents\/doingbusiness\/DefaultStdItemsList
-        011415.pdf", "snippet": "Default Standard Item List Effective Date - 01\/14\/2015
-        Dataset Name - Standard Item Codes 2014 Page 2 of 50 Date: 1\/14\/2015 201.0613
-        REMOVE AND STOCKPILE LIGHT ...", "dateLastCrawled": "2018-02-12T15:01:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Bulky
-        Item Collection - San Antonio", "url": "http:\/\/www.sanantonio.gov\/swmd\/Bulky",
-        "urlPingSuffix": "DevEx,5345.1", "displayUrl": "www.sanantonio.gov\/swmd\/Bulky",
-        "snippet": "Provides information about the twice-a-year residential bulky
-        item collection program.", "dateLastCrawled": "2018-02-10T09:18:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Weighted
-        Average Item Price Report - Michigan - SOM", "url": "http:\/\/www.michigan.gov\/documents\/mdot\/MDOT_2012_Weighted_Average_Item_Price_Report_371243_7.pdf",
-        "urlPingSuffix": "DevEx,5358.1", "displayUrl": "www.michigan.gov\/...Weighted_Average_Item_Price_Report_371243_7.pdf",
-        "snippet": "Weighted Average Item Price Report Report v1 Sorted By: Item,
-        Region and Quarter Average Price. Weighted Average Item Price Report Report
-        v1", "dateLastCrawled": "2018-02-06T16:52:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
-        "name": "IN.gov Logo", "url": "http:\/\/in.gov\/dot\/div\/contracts\/pay\/",
-        "urlPingSuffix": "DevEx,5373.1", "displayUrl": "in.gov\/dot\/div\/contracts\/pay",
-        "snippet": "If you have any questions regarding unit prices or if you need
-        a unit prices for any item not included in these catalogs please contact:",
-        "dateLastCrawled": "2018-02-07T11:43:00.0000000Z"}]}, "rankingResponse": {"mainline":
-        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
-    http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:17:39 GMT
-- request:
-    method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=item%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '4769'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Mon, 19 Nov 2018 22:40:16 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=3F3D315BC1F7616C360D3DF7C020603B; path=/; expires=Sat, 14-Dec-2019 22:41:16
-        GMT; domain=bingapis.com
-      - MUIDB=3F3D315BC1F7616C360D3DF7C020603B; path=/; httponly; expires=Sat, 14-Dec-2019
-        22:41:16 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:41:16 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=8085D113E82248AFAE8152124D259E68&dmnchg=1; domain=.bingapis.com;
-        expires=Thu, 19-Nov-2020 22:41:16 GMT; path=/
-      - SRCHUSR=DOB=20181119; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:41:16
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=37629EEADC576D2F29509246DD806CFE; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 14-Dec-2019 22:41:16 GMT; domain=bingapis.com
-      - _SS=SID=37629EEADC576D2F29509246DD806CFE; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - C6D52A4526534C66AEDDF177B5556F86
-      X-Msedge-Clientid:
-      - 3F3D315BC1F7616C360D3DF7C020603B
-      X-Msapi-Userstate:
-      - 2bcf
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: C6D52A4526534C66AEDDF177B5556F86 Ref B: CO1EDGE0408 Ref C: 2018-11-19T22:41:16Z'
-      Date:
-      - Mon, 19 Nov 2018 22:41:15 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=867A73593EBB421B9E6E5BBFE4815390&CID=3F3D315BC1F7616C360D3DF7C020603B&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=867A73593EBB421B9E6E5BBFE4815390&CID=3F3D315BC1F7616C360D3DF7C020603B&Type=Event.CPT&DATA=0"},
-        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=item+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5394.1", "totalEstimatedMatches": 15200000,
-        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Is your test, item, or service covered? | Medicare", "url": "https:\/\/www.medicare.gov\/coverage\/is-your-test-item-or-service-covered",
-        "urlPingSuffix": "DevEx,5059.1", "displayUrl": "https:\/\/www.medicare.gov\/coverage\/is-your-test-item-or-service-covered",
-        "snippet": "Find out if your test, item or service is covered. Medicare
-        coverage for many tests, items, and services depends on where you live. This
-        list includes tests, items, and services (covered and non-covered) if coverage
-        is the same no matter where you live.", "dateLastCrawled": "2018-11-15T20:09:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "ITEM
-        I - EXCAVATION", "url": "https:\/\/www.cityofcayce-sc.gov\/files\/engineering\/Specifications\/Excavation%20City%20of%20Cayce.pdf",
-        "urlPingSuffix": "DevEx,5070.1", "displayUrl": "https:\/\/www.cityofcayce-sc.gov\/files\/engineering\/Specifications...",
-        "snippet": "Section VI - Technical Specifications ITEM I – EXCAVATION VI
-        – I Page 1 ITEM I - EXCAVATION 1.01 Shoring and Shielding (a) The Contractor
-        shall comply with OSHA trenching and excavation regulations as", "dateLastCrawled":
-        "2018-11-14T05:58:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "NPIS - Item Screen", "url": "https:\/\/www.npis.pa.gov\/Screens\/Admin\/Item",
-        "urlPingSuffix": "DevEx,5082.1", "displayUrl": "https:\/\/www.npis.pa.gov\/Screens\/Admin\/Item",
-        "snippet": "Item Screen : Search Items: Hint: Search using part of the name
-        for best results: Item Name: Vendor Name: ISBN #: Item #: Item Eligibility
-        Status: Vendor Item Availability: Item Type: No Charge Items: ...", "dateLastCrawled":
-        "2018-11-15T19:39:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "Conference on Cause and Cure for War at W.H., 1\/24\/25 ...", "url":
-        "https:\/\/www.loc.gov\/item\/2016839132\/", "urlPingSuffix": "DevEx,5093.1",
-        "displayUrl": "https:\/\/www.loc.gov\/item\/2016839132", "snippet": "Yes,
-        the item is digitized. Please use the digital image in preference to requesting
-        the original. All images can be viewed at a large size when you are in any
-        reading room at the Library of Congress. In some cases, only thumbnail (small)
-        images are available when you are outside the Library of Congress because
-        the item is rights restricted or ...", "dateLastCrawled": "2018-11-14T03:31:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "CURRENT
-        Agenda Item A - crc.nv.gov", "url": "http:\/\/www.crc.nv.gov\/files.php\/meetings\/b0e17582bb7fe55195c6ceb7e691e744\/CRC-Additional-Documents-Supporting%20Material%20Item%20A%20to%20K-November-2018",
-        "urlPingSuffix": "DevEx,5104.1", "displayUrl": "www.crc.nv.gov\/files.php\/meetings\/b0e17582bb7fe55195c6ceb7e691e744...",
-        "snippet": "COLORADO RIVER COMMISSION OF NEVADA AGENDA ITEM B FOR MEETING
-        OF NOVEMBER 13, 2018 SUBJECT: Comments from the public. (No action may be
-        taken on a matter raised under this item of the agenda", "dateLastCrawled":
-        "2018-11-14T13:44:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
-        "name": "Fiscal Note and Budget Item Follow-Up Report - 2018 Interim", "url":
-        "https:\/\/le.utah.gov\/interim\/2018\/pdf\/00002986.pdf", "urlPingSuffix":
-        "DevEx,5114.1", "displayUrl": "https:\/\/le.utah.gov\/interim\/2018\/pdf\/00002986.pdf",
-        "snippet": "through line item; or 2) beginning in FY 2020 moving the $3.0
-        million ongoing appropriation out of the Capital Budget ‐ Pass‐through line
-        item and into the \"Winter Sports Venues Grant Fund\".", "dateLastCrawled":
-        "2018-11-14T10:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "ITEM NO. 1: MAYOR AND COUNCIL CONSENT ITEM QUESTIONS * * * *",
-        "url": "https:\/\/charlottenc.gov\/CityClerk\/Minutes\/October%208,%202018.pdf",
-        "urlPingSuffix": "DevEx,5124.1", "displayUrl": "https:\/\/charlottenc.gov\/CityClerk\/Minutes\/October
-        8, 2018.pdf", "snippet": "item no. 3: charlotte chamber campaign update
-        on bond referendum Phil Reiger, Strategy and Budget Director said it is a
-        distinct pleasure of m ine to introduce Bob Morgan, President and CEO of the
-        Charlotte Chamber.", "dateLastCrawled": "2018-11-06T03:57:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Pay Item Catalog",
-        "url": "https:\/\/www.dot.ny.gov\/pic", "urlPingSuffix": "DevEx,5137.1", "displayUrl":
-        "https:\/\/www.dot.ny.gov\/pic", "snippet": "New York State Department
-        of Transportation coordinates operation of transportation facilities and
-        services including highway, bridges, railroad, mass transit, port, waterway
-        and aviation facilities", "dateLastCrawled": "2018-11-12T03:31:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Items",
-        "url": "https:\/\/www.dol.gov\/oasam\/LearningLink\/AssigningWorkingItems.pdf",
-        "urlPingSuffix": "DevEx,5149.1", "displayUrl": "https:\/\/www.dol.gov\/oasam\/LearningLink\/AssigningWorkingItems.pdf",
-        "snippet": "An item is an assignable unit that can be tracked in the SuccessFactors
-        Learning system. It may be a learning or non- learning activity. Items are
-        usually thought of as “courses”; however, they can be much more. For example:
-        reading a standard operating procedure or attending a", "dateLastCrawled":
-        "2018-11-12T03:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
-        "name": "hours per response7.71 FORM 8-K", "url": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
-        "urlPingSuffix": "DevEx,5160.1", "about": [{"name": "Form 8-K"}, {"name":
-        "Form 8-K"}], "displayUrl": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
-        "snippet": "If a report on Form 8-K contains disclosures under Item 2.02
-        or Item 7.01, whether or not the report contains disclosures regarding other
-        items, all exhibits to such report relating to Item 2.02 or Item 7.01
-        will be deemed furnished, and not ﬁled, unless the registrant speci ﬁes, under
-        Item 9.01 (Financial Statements and ...", "dateLastCrawled": "2018-11-11T09:32:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "What
-        Can I Bring? | Transportation Security Administration", "url": "https:\/\/www.tsa.gov\/travel\/security-screening\/whatcanibring\/all",
-        "urlPingSuffix": "DevEx,5176.1", "about": [{"name": "Baggage allowance"},
-        {"name": "Transportation Security Administration"}], "displayUrl": "https:\/\/www.tsa.gov\/travel\/security-screening\/whatcanibring",
-        "snippet": "You may transport this item in carry-on or checked bags. For
-        items you wish to carry on, you should check with the airline to ensure that
-        the item will fit in the overhead bin or underneath the seat of the airplane.",
-        "dateLastCrawled": "2018-11-15T09:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
-        "name": "KCMO.gov » Bulky Item Collection", "url": "http:\/\/kcmo.gov\/neighborhoods\/trash\/bulky\/",
-        "urlPingSuffix": "DevEx,5188.1", "displayUrl": "kcmo.gov\/neighborhoods\/trash\/bulky",
-        "snippet": "Residents of the City of Kansas City, Missouri now have the option
-        of using the City’s no-charge Bulky Item Collection (Pick-up) Appointment
-        System, or for a fee, can access additional bulky collection options that
-        provide greater flexibility.", "dateLastCrawled": "2018-11-15T11:47:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Integrated
-        Logistics Support Center (ILSC)", "url": "https:\/\/www.tacom.army.mil\/ilsc\/tulsa\/",
-        "urlPingSuffix": "DevEx,5202.1", "displayUrl": "https:\/\/www.tacom.army.mil\/ilsc\/tulsa",
-        "snippet": "Provides item managers with pertinent information to determine
-        disposition, as well as, generate the desired transactions into CCSS per their
-        instructions. A productivity tool. IMA Europe Excess Items Redistribution
-        (Retrograde)", "dateLastCrawled": "2018-11-16T13:16:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Bulky Item
-        Collection Overview - San Antonio", "url": "https:\/\/www.sanantonio.gov\/swmd\/Bulky",
-        "urlPingSuffix": "DevEx,5218.1", "displayUrl": "https:\/\/www.sanantonio.gov\/swmd\/Bulky",
-        "snippet": "Bulky Item Collection Overview. Bulky item collection is provided
-        to all City residential solid waste ratepayers. To find out if you are a solid
-        waste customer, check your CPS Energy bill. If it lists a Solid Waste Fee,
-        you are a customer and you are eligible to receive bulky item collection.",
-        "dateLastCrawled": "2018-11-03T23:20:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "Pack mule of U.S. Army Signal Corps, used for carrying ...", "url":
-        "https:\/\/www.loc.gov\/item\/2014683309", "urlPingSuffix": "DevEx,5230.1",
-        "displayUrl": "https:\/\/www.loc.gov\/item\/2014683309", "snippet": "Yes,
-        the item is digitized. Please use the digital image in preference to requesting
-        the original. All images can be viewed at a large size when you are in any
-        reading room at the Library of Congress.", "dateLastCrawled": "2018-11-15T19:48:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Average
-        Low Bid Unit Prices - Texas Department of ...", "url": "http:\/\/www.txdot.gov\/business\/letting-bids\/average-low-bid-unit-prices.html",
-        "urlPingSuffix": "DevEx,5244.1", "about": [{"name": "Texas Department of Transportation"}],
-        "displayUrl": "www.txdot.gov\/business\/letting-bids\/average-low-bid-unit-prices.html",
-        "snippet": "Average Low Bid Unit Prices. Texas Department of Transportation;
-        Business; Letting & Bids; Three-Month Statewide Item Average. August 2018
-        - October 2018 (Text Version) July 2018 - September 2018 (Text Version) June
-        2018 - August 2018 (Text Version) May 2018 - July 2018 (Text Version)", "dateLastCrawled":
-        "2018-11-13T16:48:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
-        "name": "Management Army Major Item Systems Management", "url": "http:\/\/www.dtic.mil\/dtic\/tr\/fulltext\/u2\/a401934.pdf",
-        "urlPingSuffix": "DevEx,5257.1", "displayUrl": "www.dtic.mil\/dtic\/tr\/fulltext\/u2\/a401934.pdf",
-        "snippet": "The Army Item Management Study by the Concepts Analysis Agency
-        recommended that the Major Item System Map (MISM) be expanded to interface
-        with all phases of the Planning, Programming,", "dateLastCrawled": "2018-11-11T07:16:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "PNO Guidance
-        on Item 4(d) | Federal Trade Commission", "url": "https:\/\/www.ftc.gov\/enforcement\/premerger-notification-program\/hsr-resources\/pno-guidance-item-4d",
-        "urlPingSuffix": "DevEx,5274.1", "displayUrl": "https:\/\/www.ftc.gov\/...\/hsr-resources\/pno-guidance-item-4d",
-        "snippet": "The number generated by the electronic form for an attachment
-        has no bearing on the number assigned to Item 4(c) and Item 4(d) documents.
-        The first Item 4(c) document should be labeled 4(c)-1, even if the form
-        assigns attachment number 3 to it.", "dateLastCrawled": "2018-11-16T10:17:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Bulk
-        Item Pick Up Appointment | City of New York", "url": "https:\/\/www1.nyc.gov\/nyc-resources\/service\/7044\/bulk-item-pick-up-appointment",
-        "urlPingSuffix": "DevEx,5286.1", "displayUrl": "https:\/\/www1.nyc.gov\/nyc-resources\/service\/7044\/bulk-item-pick-up...",
-        "snippet": "If the item you are throwing out is 4 feet by 3 feet or smaller,
-        you do not have to schedule an appointment. You can place the item out according
-        to your normal garbage schedule. If the item you are throwing out is recyclable
-        (made of metal or rigid plastic), you do not have to schedule an appointment,
-        regardless of size.", "dateLastCrawled": "2018-11-16T02:42:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Pennsylvania
-        System of School Assessment (PSSA)", "url": "http:\/\/www.education.pa.gov\/K-12\/Assessment%20and%20Accountability\/PSSA\/Pages\/default.aspx",
-        "urlPingSuffix": "DevEx,5300.1", "about": [{"name": "Pennsylvania System of
-        School Assessment"}], "displayUrl": "www.education.pa.gov\/K-12\/Assessment
-        and Accountability\/PSSA\/Pages...", "snippet": "The annual Pennsylvania System
-        School Assessment is a standards-based, criterion-referenced assessment
-        which provides students, parents, educators and citizens with an understanding
-        of student and school performance related to the attainment of proficiency
-        of the academic standards.", "dateLastCrawled": "2018-11-07T09:11:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
-    http_version: 
-  recorded_at: Mon, 19 Nov 2018 22:41:16 GMT
-- request:
-    method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=item%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '4770'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Mon, 19 Nov 2018 22:40:17 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=3064A7D768726B870BECAB7B69A56AB5; path=/; expires=Sat, 14-Dec-2019 22:41:17
-        GMT; domain=bingapis.com
-      - MUIDB=3064A7D768726B870BECAB7B69A56AB5; path=/; httponly; expires=Sat, 14-Dec-2019
-        22:41:17 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:41:17 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=65A05C8E21D74E0D8D823CD26C4DD29F&dmnchg=1; domain=.bingapis.com;
-        expires=Thu, 19-Nov-2020 22:41:17 GMT; path=/
-      - SRCHUSR=DOB=20181119; domain=.bingapis.com; expires=Thu, 19-Nov-2020 22:41:17
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=20EDF4C00CE4640B163CF86C0D3365B3; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 14-Dec-2019 22:41:17 GMT; domain=bingapis.com
-      - _SS=SID=20EDF4C00CE4640B163CF86C0D3365B3; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - 125AB9CDFFA244918EFFB99D4DE72B06
-      X-Msedge-Clientid:
-      - 3064A7D768726B870BECAB7B69A56AB5
-      X-Msapi-Userstate:
-      - bb11
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: 125AB9CDFFA244918EFFB99D4DE72B06 Ref B: CO1EDGE0216 Ref C: 2018-11-19T22:41:17Z'
-      Date:
-      - Mon, 19 Nov 2018 22:41:16 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=A938E380B6B142D0BF933C9CD2B08DAF&CID=3064A7D768726B870BECAB7B69A56AB5&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=A938E380B6B142D0BF933C9CD2B08DAF&CID=3064A7D768726B870BECAB7B69A56AB5&Type=Event.CPT&DATA=0"},
-        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=item+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5394.1", "totalEstimatedMatches": 15200000,
-        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Is your test, item, or service covered? | Medicare", "url": "https:\/\/www.medicare.gov\/coverage\/is-your-test-item-or-service-covered",
-        "urlPingSuffix": "DevEx,5059.1", "displayUrl": "https:\/\/www.medicare.gov\/coverage\/is-your-test-item-or-service-covered",
-        "snippet": "Find out if your test, item or service is covered. Medicare
-        coverage for many tests, items, and services depends on where you live. This
-        list includes tests, items, and services (covered and non-covered) if coverage
-        is the same no matter where you live.", "dateLastCrawled": "2018-11-15T20:09:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "ITEM
-        I - EXCAVATION", "url": "https:\/\/www.cityofcayce-sc.gov\/files\/engineering\/Specifications\/Excavation%20City%20of%20Cayce.pdf",
-        "urlPingSuffix": "DevEx,5070.1", "displayUrl": "https:\/\/www.cityofcayce-sc.gov\/files\/engineering\/Specifications...",
-        "snippet": "Section VI - Technical Specifications ITEM I – EXCAVATION VI
-        – I Page 1 ITEM I - EXCAVATION 1.01 Shoring and Shielding (a) The Contractor
-        shall comply with OSHA trenching and excavation regulations as", "dateLastCrawled":
-        "2018-11-14T05:58:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "NPIS - Item Screen", "url": "https:\/\/www.npis.pa.gov\/Screens\/Admin\/Item",
-        "urlPingSuffix": "DevEx,5082.1", "displayUrl": "https:\/\/www.npis.pa.gov\/Screens\/Admin\/Item",
-        "snippet": "Item Screen : Search Items: Hint: Search using part of the name
-        for best results: Item Name: Vendor Name: ISBN #: Item #: Item Eligibility
-        Status: Vendor Item Availability: Item Type: No Charge Items: ...", "dateLastCrawled":
-        "2018-11-15T19:39:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "Conference on Cause and Cure for War at W.H., 1\/24\/25 ...", "url":
-        "https:\/\/www.loc.gov\/item\/2016839132\/", "urlPingSuffix": "DevEx,5093.1",
-        "displayUrl": "https:\/\/www.loc.gov\/item\/2016839132", "snippet": "Yes,
-        the item is digitized. Please use the digital image in preference to requesting
-        the original. All images can be viewed at a large size when you are in any
-        reading room at the Library of Congress. In some cases, only thumbnail (small)
-        images are available when you are outside the Library of Congress because
-        the item is rights restricted or ...", "dateLastCrawled": "2018-11-14T03:31:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "CURRENT
-        Agenda Item A - crc.nv.gov", "url": "http:\/\/www.crc.nv.gov\/files.php\/meetings\/b0e17582bb7fe55195c6ceb7e691e744\/CRC-Additional-Documents-Supporting%20Material%20Item%20A%20to%20K-November-2018",
-        "urlPingSuffix": "DevEx,5104.1", "displayUrl": "www.crc.nv.gov\/files.php\/meetings\/b0e17582bb7fe55195c6ceb7e691e744...",
-        "snippet": "COLORADO RIVER COMMISSION OF NEVADA AGENDA ITEM B FOR MEETING
-        OF NOVEMBER 13, 2018 SUBJECT: Comments from the public. (No action may be
-        taken on a matter raised under this item of the agenda", "dateLastCrawled":
-        "2018-11-14T13:44:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
-        "name": "Fiscal Note and Budget Item Follow-Up Report - 2018 Interim", "url":
-        "https:\/\/le.utah.gov\/interim\/2018\/pdf\/00002986.pdf", "urlPingSuffix":
-        "DevEx,5114.1", "displayUrl": "https:\/\/le.utah.gov\/interim\/2018\/pdf\/00002986.pdf",
-        "snippet": "through line item; or 2) beginning in FY 2020 moving the $3.0
-        million ongoing appropriation out of the Capital Budget ‐ Pass‐through line
-        item and into the \"Winter Sports Venues Grant Fund\".", "dateLastCrawled":
-        "2018-11-14T10:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "ITEM NO. 1: MAYOR AND COUNCIL CONSENT ITEM QUESTIONS * * * *",
-        "url": "https:\/\/charlottenc.gov\/CityClerk\/Minutes\/October%208,%202018.pdf",
-        "urlPingSuffix": "DevEx,5124.1", "displayUrl": "https:\/\/charlottenc.gov\/CityClerk\/Minutes\/October
-        8, 2018.pdf", "snippet": "item no. 3: charlotte chamber campaign update
-        on bond referendum Phil Reiger, Strategy and Budget Director said it is a
-        distinct pleasure of m ine to introduce Bob Morgan, President and CEO of the
-        Charlotte Chamber.", "dateLastCrawled": "2018-11-06T03:57:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Pay Item Catalog",
-        "url": "https:\/\/www.dot.ny.gov\/pic", "urlPingSuffix": "DevEx,5137.1", "displayUrl":
-        "https:\/\/www.dot.ny.gov\/pic", "snippet": "New York State Department
-        of Transportation coordinates operation of transportation facilities and
-        services including highway, bridges, railroad, mass transit, port, waterway
-        and aviation facilities", "dateLastCrawled": "2018-11-12T03:31:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Items",
-        "url": "https:\/\/www.dol.gov\/oasam\/LearningLink\/AssigningWorkingItems.pdf",
-        "urlPingSuffix": "DevEx,5149.1", "displayUrl": "https:\/\/www.dol.gov\/oasam\/LearningLink\/AssigningWorkingItems.pdf",
-        "snippet": "An item is an assignable unit that can be tracked in the SuccessFactors
-        Learning system. It may be a learning or non- learning activity. Items are
-        usually thought of as “courses”; however, they can be much more. For example:
-        reading a standard operating procedure or attending a", "dateLastCrawled":
-        "2018-11-12T03:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
-        "name": "hours per response7.71 FORM 8-K", "url": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
-        "urlPingSuffix": "DevEx,5160.1", "about": [{"name": "Form 8-K"}, {"name":
-        "Form 8-K"}], "displayUrl": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
-        "snippet": "If a report on Form 8-K contains disclosures under Item 2.02
-        or Item 7.01, whether or not the report contains disclosures regarding other
-        items, all exhibits to such report relating to Item 2.02 or Item 7.01
-        will be deemed furnished, and not ﬁled, unless the registrant speci ﬁes, under
-        Item 9.01 (Financial Statements and ...", "dateLastCrawled": "2018-11-11T09:32:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "What
-        Can I Bring? | Transportation Security Administration", "url": "https:\/\/www.tsa.gov\/travel\/security-screening\/whatcanibring\/all",
-        "urlPingSuffix": "DevEx,5176.1", "about": [{"name": "Baggage allowance"},
-        {"name": "Transportation Security Administration"}], "displayUrl": "https:\/\/www.tsa.gov\/travel\/security-screening\/whatcanibring",
-        "snippet": "You may transport this item in carry-on or checked bags. For
-        items you wish to carry on, you should check with the airline to ensure that
-        the item will fit in the overhead bin or underneath the seat of the airplane.",
-        "dateLastCrawled": "2018-11-15T09:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
-        "name": "KCMO.gov » Bulky Item Collection", "url": "http:\/\/kcmo.gov\/neighborhoods\/trash\/bulky\/",
-        "urlPingSuffix": "DevEx,5188.1", "displayUrl": "kcmo.gov\/neighborhoods\/trash\/bulky",
-        "snippet": "Residents of the City of Kansas City, Missouri now have the option
-        of using the City’s no-charge Bulky Item Collection (Pick-up) Appointment
-        System, or for a fee, can access additional bulky collection options that
-        provide greater flexibility.", "dateLastCrawled": "2018-11-15T11:47:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Integrated
-        Logistics Support Center (ILSC)", "url": "https:\/\/www.tacom.army.mil\/ilsc\/tulsa\/",
-        "urlPingSuffix": "DevEx,5202.1", "displayUrl": "https:\/\/www.tacom.army.mil\/ilsc\/tulsa",
-        "snippet": "Provides item managers with pertinent information to determine
-        disposition, as well as, generate the desired transactions into CCSS per their
-        instructions. A productivity tool. IMA Europe Excess Items Redistribution
-        (Retrograde)", "dateLastCrawled": "2018-11-16T13:16:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Bulky Item
-        Collection Overview - San Antonio", "url": "https:\/\/www.sanantonio.gov\/swmd\/Bulky",
-        "urlPingSuffix": "DevEx,5218.1", "displayUrl": "https:\/\/www.sanantonio.gov\/swmd\/Bulky",
-        "snippet": "Bulky Item Collection Overview. Bulky item collection is provided
-        to all City residential solid waste ratepayers. To find out if you are a solid
-        waste customer, check your CPS Energy bill. If it lists a Solid Waste Fee,
-        you are a customer and you are eligible to receive bulky item collection.",
-        "dateLastCrawled": "2018-11-03T23:20:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "Pack mule of U.S. Army Signal Corps, used for carrying ...", "url":
-        "https:\/\/www.loc.gov\/item\/2014683309", "urlPingSuffix": "DevEx,5230.1",
-        "displayUrl": "https:\/\/www.loc.gov\/item\/2014683309", "snippet": "Yes,
-        the item is digitized. Please use the digital image in preference to requesting
-        the original. All images can be viewed at a large size when you are in any
-        reading room at the Library of Congress.", "dateLastCrawled": "2018-11-15T19:48:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Average
-        Low Bid Unit Prices - Texas Department of ...", "url": "http:\/\/www.txdot.gov\/business\/letting-bids\/average-low-bid-unit-prices.html",
-        "urlPingSuffix": "DevEx,5244.1", "about": [{"name": "Texas Department of Transportation"}],
-        "displayUrl": "www.txdot.gov\/business\/letting-bids\/average-low-bid-unit-prices.html",
-        "snippet": "Average Low Bid Unit Prices. Texas Department of Transportation;
-        Business; Letting & Bids; Three-Month Statewide Item Average. August 2018
-        - October 2018 (Text Version) July 2018 - September 2018 (Text Version) June
-        2018 - August 2018 (Text Version) May 2018 - July 2018 (Text Version)", "dateLastCrawled":
-        "2018-11-13T16:48:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
-        "name": "Management Army Major Item Systems Management", "url": "http:\/\/www.dtic.mil\/dtic\/tr\/fulltext\/u2\/a401934.pdf",
-        "urlPingSuffix": "DevEx,5257.1", "displayUrl": "www.dtic.mil\/dtic\/tr\/fulltext\/u2\/a401934.pdf",
-        "snippet": "The Army Item Management Study by the Concepts Analysis Agency
-        recommended that the Major Item System Map (MISM) be expanded to interface
-        with all phases of the Planning, Programming,", "dateLastCrawled": "2018-11-11T07:16:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "PNO Guidance
-        on Item 4(d) | Federal Trade Commission", "url": "https:\/\/www.ftc.gov\/enforcement\/premerger-notification-program\/hsr-resources\/pno-guidance-item-4d",
-        "urlPingSuffix": "DevEx,5274.1", "displayUrl": "https:\/\/www.ftc.gov\/...\/hsr-resources\/pno-guidance-item-4d",
-        "snippet": "The number generated by the electronic form for an attachment
-        has no bearing on the number assigned to Item 4(c) and Item 4(d) documents.
-        The first Item 4(c) document should be labeled 4(c)-1, even if the form
-        assigns attachment number 3 to it.", "dateLastCrawled": "2018-11-16T10:17:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Bulk
-        Item Pick Up Appointment | City of New York", "url": "https:\/\/www1.nyc.gov\/nyc-resources\/service\/7044\/bulk-item-pick-up-appointment",
-        "urlPingSuffix": "DevEx,5286.1", "displayUrl": "https:\/\/www1.nyc.gov\/nyc-resources\/service\/7044\/bulk-item-pick-up...",
-        "snippet": "If the item you are throwing out is 4 feet by 3 feet or smaller,
-        you do not have to schedule an appointment. You can place the item out according
-        to your normal garbage schedule. If the item you are throwing out is recyclable
-        (made of metal or rigid plastic), you do not have to schedule an appointment,
-        regardless of size.", "dateLastCrawled": "2018-11-16T02:42:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Pennsylvania
-        System of School Assessment (PSSA)", "url": "http:\/\/www.education.pa.gov\/K-12\/Assessment%20and%20Accountability\/PSSA\/Pages\/default.aspx",
-        "urlPingSuffix": "DevEx,5300.1", "about": [{"name": "Pennsylvania System of
-        School Assessment"}], "displayUrl": "www.education.pa.gov\/K-12\/Assessment
-        and Accountability\/PSSA\/Pages...", "snippet": "The annual Pennsylvania System
-        School Assessment is a standards-based, criterion-referenced assessment
-        which provides students, parents, educators and citizens with an understanding
-        of student and school performance related to the attainment of proficiency
-        of the academic standards.", "dateLastCrawled": "2018-11-07T09:11:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
-    http_version: 
-  recorded_at: Mon, 19 Nov 2018 22:41:17 GMT
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ftc.gov\/...\/premerger-notification-program\/hsr-resources\/pno-guidance-item-4d",
+        "snippet": "Items responsive to Item 4(d) should be labeled 4(d)-1, 4(d)-2,
+        etc. There is no need to include the subparts of Item 4(d) in labeling documents.
+        If a portion of a document responsive to Item 4(d) is withheld or redacted
+        on the basis of privilege, provide a privilege log that conforms with 16 CFR
+        803.3(d).", "dateLastCrawled": "2021-09-03T02:40:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Mathematics Item Specifications", "url": "https:\/\/www.azed.gov\/sites\/default\/files\/2016\/11\/AzMERIT%20Math%20Item%20Specs%20Grade%204_Final.pdf?id=583ca678aadebe13d87d436c",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.azed.gov\/sites\/default\/files\/2016\/11\/AzMERIT
+        Math Item Specs Grade 4_Final...", "snippet": "This AzMERIT Item Specifications
+        is a resource document that defines the content and format of the test and
+        test items for item writers and reviewers. Each Item Specifications document
+        indicates the alignment of items with the Arizona Mathematics Standards. It
+        also serves to", "dateLastCrawled": "2021-09-01T08:12:00.0000000Z", "language":
+        "en", "isNavigational": false}]}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Tue, 07 Sep 2021 16:17:07 GMT
 - request:
     method: get
     uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=item%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
@@ -911,193 +283,207 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 19 Nov 2018 22:41:25 GMT
+      - Tue, 07 Sep 2021 16:16:08 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
       Bingapis-Traceid:
-      - CC671E67713D4CD4947C87611B2222CB
+      - B6EDBC40DC2F4295B99B6F3407EA4ABA
       Bingapis-Sessionid:
-      - BC2E4EF5B8B74264BBA09EA69BAF3CD8
+      - 5BC71E304064463A872C83D8E1FB49B0
       X-Msedge-Clientid:
-      - 334A64C8FAD76BFB0F156864FB9B6A7A
+      - '08CAB0C3FF1A62131FE6A068FEE763C3'
       X-Msapi-Userstate:
-      - 0ef8
+      - ae25
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=228,MSDatacenter=CO4
+      - InternalResponseTime=278,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
       X-Msedge-Ref:
-      - 'Ref A: CC671E67713D4CD4947C87611B2222CB Ref B: BY3EDGE0316 Ref C: 2018-11-19T22:42:26Z'
+      - 'Ref A: B6EDBC40DC2F4295B99B6F3407EA4ABA Ref B: BLUEDGE0921 Ref C: 2021-09-07T16:17:08Z'
       Apim-Request-Id:
-      - f24c213e-95c5-45e1-80c3-73264f884ca6
+      - ff7015a5-26ae-4e8a-989d-3c74a95b5fda
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
       - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Mon, 19 Nov 2018 22:42:25 GMT
+      - Tue, 07 Sep 2021 16:17:08 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "item
         (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=item+(site%3agov+OR+site%3amil)",
-        "totalEstimatedMatches": 15200000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "Is your test, item, or service covered? | Medicare", "url": "https:\/\/www.medicare.gov\/coverage\/is-your-test-item-or-service-covered",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.medicare.gov\/coverage\/is-your-test-item-or-service-covered",
-        "snippet": "Find out if your test, item or service is covered. Medicare
-        coverage for many tests, items, and services depends on where you live. This
-        list includes tests, items, and services (covered and non-covered) if coverage
-        is the same no matter where you live.", "dateLastCrawled": "2018-11-15T20:09:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "ITEM I - EXCAVATION", "url": "https:\/\/www.cityofcayce-sc.gov\/files\/engineering\/Specifications\/Excavation%20City%20of%20Cayce.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cityofcayce-sc.gov\/files\/engineering\/Specifications...",
-        "snippet": "Section VI - Technical Specifications ITEM I – EXCAVATION VI
-        – I Page 1 ITEM I - EXCAVATION 1.01 Shoring and Shielding (a) The Contractor
-        shall comply with OSHA trenching and excavation regulations as", "dateLastCrawled":
-        "2018-11-14T05:58:00.0000000Z", "language": "en", "isNavigational": false},
+        "totalEstimatedMatches": 9670000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Department of Defense Guidebook for Acquiring Commercial Items",
+        "url": "https:\/\/www.acq.osd.mil\/dpap\/cpic\/cp\/docs\/Guidebook_Part_A_Commercial_Item_Determination_07_10_2019.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.acq.osd.mil\/dpap\/cpic\/cp\/docs\/Guidebook_Part_A_Commercial_Item...",
+        "snippet": "item meets the criteria to be deemed a commercial item. Making
+        a determination for of a type items that are similar to, but not identical
+        to, items that have been sold in the commercial marketplace can be particularly
+        challenging. Part A of this guide is intended to assist with making timely
+        CIDs. 5 .", "dateLastCrawled": "2021-09-05T12:20:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Subpart 4.10—Uniform Use of Line Items - Acquisition", "url": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html\/Subpart%204_10.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html\/Subpart
+        4_10.html", "snippet": "This type of subline item identifies information
+        that relates directly to the line item and is an integral part of it (e.g.,
+        parts of an assembly or parts of a kit). (2) Position informational subline
+        items within the line item description, not in the quantity or price fields.
+        4.1005 Data elements for line items and subline items.", "dateLastCrawled":
+        "2021-09-05T08:39:00.0000000Z", "language": "en", "isNavigational": false},
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
-        "NPIS - Item Screen", "url": "https:\/\/www.npis.pa.gov\/Screens\/Admin\/Item",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.npis.pa.gov\/Screens\/Admin\/Item",
-        "snippet": "Item Screen : Search Items: Hint: Search using part of the name
-        for best results: Item Name: Vendor Name: ISBN #: Item #: Item Eligibility
-        Status: Vendor Item Availability: Item Type: No Charge Items: ...", "dateLastCrawled":
-        "2018-11-15T19:39:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3", "name":
-        "Conference on Cause and Cure for War at W.H., 1\/24\/25 ...", "url": "https:\/\/www.loc.gov\/item\/2016839132\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2016839132",
-        "snippet": "Yes, the item is digitized. Please use the digital image in
-        preference to requesting the original. All images can be viewed at a large
-        size when you are in any reading room at the Library of Congress. In some
-        cases, only thumbnail (small) images are available when you are outside the
-        Library of Congress because the item is rights restricted or ...", "dateLastCrawled":
-        "2018-11-14T03:31:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4", "name":
-        "CURRENT Agenda Item A - crc.nv.gov", "url": "http:\/\/www.crc.nv.gov\/files.php\/meetings\/b0e17582bb7fe55195c6ceb7e691e744\/CRC-Additional-Documents-Supporting%20Material%20Item%20A%20to%20K-November-2018",
-        "isFamilyFriendly": true, "displayUrl": "www.crc.nv.gov\/files.php\/meetings\/b0e17582bb7fe55195c6ceb7e691e744...",
-        "snippet": "COLORADO RIVER COMMISSION OF NEVADA AGENDA ITEM B FOR MEETING
-        OF NOVEMBER 13, 2018 SUBJECT: Comments from the public. (No action may be
-        taken on a matter raised under this item of the agenda", "dateLastCrawled":
-        "2018-11-14T13:44:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5", "name":
-        "Fiscal Note and Budget Item Follow-Up Report - 2018 Interim", "url": "https:\/\/le.utah.gov\/interim\/2018\/pdf\/00002986.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/le.utah.gov\/interim\/2018\/pdf\/00002986.pdf",
-        "snippet": "through line item; or 2) beginning in FY 2020 moving the $3.0
-        million ongoing appropriation out of the Capital Budget ‐ Pass‐through line
-        item and into the \"Winter Sports Venues Grant Fund\".", "dateLastCrawled":
-        "2018-11-14T10:18:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
-        "ITEM NO. 1: MAYOR AND COUNCIL CONSENT ITEM QUESTIONS * * * *", "url":
-        "https:\/\/charlottenc.gov\/CityClerk\/Minutes\/October%208,%202018.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/charlottenc.gov\/CityClerk\/Minutes\/October
-        8, 2018.pdf", "snippet": "item no. 3: charlotte chamber campaign update
-        on bond referendum Phil Reiger, Strategy and Budget Director said it is a
-        distinct pleasure of m ine to introduce Bob Morgan, President and CEO of the
-        Charlotte Chamber.", "dateLastCrawled": "2018-11-06T03:57:00.0000000Z", "language":
+        "How to Classify Your Item", "url": "https:\/\/www.bis.doc.gov\/index.php\/documents\/compliance-training\/export-administration-regulations-training\/247-howtoclassifyitem-pdf\/file",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.bis.doc.gov\/...\/247-howtoclassifyitem-pdf\/file",
+        "snippet": "Read ECCN “Item” heading under “List of Items Controlled” Match
+        particular characteristics, functions, and applications to a specific ECCN
+        Pay attention to Related Controls and Related Definitions with the ECCN Entry!
+        Bureau of Industry and Security –How To Classify Your Item Other Useful
+        Guidance when Classifying your Item ...", "dateLastCrawled": "2021-09-03T05:04:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Part 12 - Acquisition of Commercial Items | Acquisition.GOV", "url":
+        "https:\/\/www.acquisition.gov\/far\/part-12", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.acquisition.gov\/far\/part-12", "snippet": "Commercial item
+        prices are affected by factors that include, but are not limited to, speed
+        of delivery, length and extent of warranty, limitations of seller’s liability,
+        quantities ordered, length of the performance period, and specific performance
+        requirements. The contracting officer must ensure that contract terms, conditions,
+        and prices ...", "dateLastCrawled": "2021-09-05T09:45:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Commercial Item Determination", "url": "https:\/\/www.acq.osd.mil\/dpap\/ccap\/cc\/jcchb\/Files\/Topical\/Commercial\/checklist\/commercial_item_determination_checklist_feb2010_usmc.docx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.acq.osd.mil\/...\/commercial_item_determination_checklist_feb2010_usmc.docx",
+        "snippet": "Yes____ No ____ If yes, describe the original item, how it has
+        evolved and when it is anticipated to be available in the commercial marketplace.
+        This is a commercial supply item. You may stop now and put your commercial
+        item determination\/", "dateLastCrawled": "2021-09-05T10:48:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "ITEM UNIQUE IDENTIFICATION (IUID)", "url": "http:\/\/www.acq.osd.mil\/dpap\/pdi\/uid\/index.html",
+        "isFamilyFriendly": true, "displayUrl": "www.acq.osd.mil\/dpap\/pdi\/uid\/index.html",
+        "snippet": "Item: Description: DoD Instructions: DoDI 4140.01: DoD Supply
+        Chain Materiel Management Policy Requires unique item level traceability
+        for all DoD serially managed items that are also sensitive or pilferable,
+        all DoD serially managed CSI, all NWRM, depot level reparables, and any item
+        that the DoD materiel manager decides requires unique item level traceability
+        using a unique item identifier ...", "dateLastCrawled": "2021-09-03T03:23:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "PAM: Section 2 - PAR Items, Lines 8 - 9", "url": "https:\/\/www.sco.ca.gov\/Files-PPSD\/pam_section_2_par_items_lines_8-9.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sco.ca.gov\/Files-PPSD\/pam_section_2_par_items_lines_8-9.pdf",
+        "snippet": "Section 2.103: ITEM 851 – ALTERNATE SALARY RANGE CRITERIA (Revised
+        11\/92) Description: Indicates the alphabetic or numeric code of the specific
+        alternate range", "dateLastCrawled": "2021-09-03T08:43:00.0000000Z", "language":
         "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
-        "name": "Pay Item Catalog", "url": "https:\/\/www.dot.ny.gov\/pic", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.dot.ny.gov\/pic", "snippet": "New York
-        State Department of Transportation coordinates operation of transportation
-        facilities and services including highway, bridges, railroad, mass transit,
-        port, waterway and aviation facilities", "dateLastCrawled": "2018-11-12T03:31:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
-        "name": "Items", "url": "https:\/\/www.dol.gov\/oasam\/LearningLink\/AssigningWorkingItems.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.dol.gov\/oasam\/LearningLink\/AssigningWorkingItems.pdf",
-        "snippet": "An item is an assignable unit that can be tracked in the SuccessFactors
-        Learning system. It may be a learning or non- learning activity. Items are
-        usually thought of as “courses”; however, they can be much more. For example:
-        reading a standard operating procedure or attending a", "dateLastCrawled":
-        "2018-11-12T03:42:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9", "name":
-        "hours per response7.71 FORM 8-K", "url": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
-        "about": [{"name": "Form 8-K"}, {"name": "Form 8-K"}], "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
-        "snippet": "If a report on Form 8-K contains disclosures under Item 2.02
-        or Item 7.01, whether or not the report contains disclosures regarding other
-        items, all exhibits to such report relating to Item 2.02 or Item 7.01
-        will be deemed furnished, and not ﬁled, unless the registrant speci ﬁes, under
-        Item 9.01 (Financial Statements and ...", "dateLastCrawled": "2018-11-11T09:32:00.0000000Z",
+        "name": "STANDARD ITEM - Naval Sea Systems Command", "url": "https:\/\/www.navsea.navy.mil\/Portals\/103\/Documents\/SSRAC\/NSI\/FY21\/FY21%20NSI%20Finals\/009-04_FY21_pkg.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.navsea.navy.mil\/Portals\/103\/Documents\/SSRAC\/NSI\/FY21\/FY21
+        NSI Finals\/009-04...", "snippet": "Item number and Work Item paragraph
+        number, including Standard Item paragraph number, and must include inspection
+        symbols (I)(Q) and (V), and the government notification (G) Point symbol where
+        applicable. 3.10.2.3 Provide identification of the item to be inspected
+        by name, number, and location (e.g., number 3 main feed pump, 5-180-0-E).",
+        "dateLastCrawled": "2021-09-05T11:33:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Bulky Item Pickup - Milwaukee", "url": "https:\/\/city.milwaukee.gov\/sanitation\/Bulky-Item-Pickup",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/city.milwaukee.gov\/sanitation\/Bulky-Item-Pickup",
+        "snippet": "Bulky Item Pickup Guidelines Bulky items are items that are
+        too large to be placed in your garbage cart, such as broken furniture, a queen
+        mattress, or large, broken toys. Yard waste , electronics and TVs , appliances,
+        and tires are not considered bulky waste and must be disposed of by taking
+        to a Drop Off Center .", "dateLastCrawled": "2021-09-03T09:59:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Bulk Item Collection Program | City of Mesa", "url": "https:\/\/www.mesaaz.gov\/residents\/trash-recycling\/trash-recycling-for-single-family-homes\/bulk-item-collection-program",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.mesaaz.gov\/...\/bulk-item-collection-program",
+        "snippet": "Bulk item collection charges vary, depending on the amount of
+        material to be picked up, and start at $25.00 per load (load size is approximately
+        4''x8''x4''). To schedule a bulk item pickup or for more information, please
+        call Solid Waste at (480) 644-6789.", "dateLastCrawled": "2021-09-02T03:03:00.0000000Z",
         "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
-        "name": "What Can I Bring? | Transportation Security Administration",
-        "url": "https:\/\/www.tsa.gov\/travel\/security-screening\/whatcanibring\/all",
-        "about": [{"name": "Baggage allowance"}, {"name": "Transportation Security
-        Administration"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.tsa.gov\/travel\/security-screening\/whatcanibring",
-        "snippet": "You may transport this item in carry-on or checked bags. For
-        items you wish to carry on, you should check with the airline to ensure that
-        the item will fit in the overhead bin or underneath the seat of the airplane.",
-        "dateLastCrawled": "2018-11-15T09:07:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
-        "name": "KCMO.gov » Bulky Item Collection", "url": "http:\/\/kcmo.gov\/neighborhoods\/trash\/bulky\/",
-        "isFamilyFriendly": true, "displayUrl": "kcmo.gov\/neighborhoods\/trash\/bulky",
-        "snippet": "Residents of the City of Kansas City, Missouri now have the option
-        of using the City’s no-charge Bulky Item Collection (Pick-up) Appointment
-        System, or for a fee, can access additional bulky collection options that
-        provide greater flexibility.", "dateLastCrawled": "2018-11-15T11:47:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
-        "name": "Integrated Logistics Support Center (ILSC)", "url": "https:\/\/www.tacom.army.mil\/ilsc\/tulsa\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.tacom.army.mil\/ilsc\/tulsa",
-        "snippet": "Provides item managers with pertinent information to determine
-        disposition, as well as, generate the desired transactions into CCSS per their
-        instructions. A productivity tool. IMA Europe Excess Items Redistribution
-        (Retrograde)", "dateLastCrawled": "2018-11-16T13:16:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
-        "name": "Bulky Item Collection Overview - San Antonio", "url": "https:\/\/www.sanantonio.gov\/swmd\/Bulky",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sanantonio.gov\/swmd\/Bulky",
-        "snippet": "Bulky Item Collection Overview. Bulky item collection is provided
-        to all City residential solid waste ratepayers. To find out if you are a solid
-        waste customer, check your CPS Energy bill. If it lists a Solid Waste Fee,
-        you are a customer and you are eligible to receive bulky item collection.",
-        "dateLastCrawled": "2018-11-03T23:20:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
-        "name": "Pack mule of U.S. Army Signal Corps, used for carrying ...", "url":
-        "https:\/\/www.loc.gov\/item\/2014683309", "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.loc.gov\/item\/2014683309", "snippet": "Yes, the item
-        is digitized. Please use the digital image in preference to requesting the
-        original. All images can be viewed at a large size when you are in any reading
-        room at the Library of Congress.", "dateLastCrawled": "2018-11-15T19:48:00.0000000Z",
+        "name": "Item response theory: A basic concept", "url": "https:\/\/files.eric.ed.gov\/fulltext\/EJ1133065.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/files.eric.ed.gov\/fulltext\/EJ1133065.pdf",
+        "snippet": "Item curve of single parameter logistic model (Hambleton et
+        al., 1991c). three parameters that is, b i, a i and c i. Single parameter
+        logistic model The description of single parameter model in an item characteristics
+        curve, b i parameter is a parameter location shown in ability scale, named
+        item difficulty level. ...", "dateLastCrawled": "2021-09-02T17:47:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "What Can I Bring? | Transportation Security Administration", "url":
+        "https:\/\/www.tsa.gov\/travel\/security-screening\/whatcanibring\/all", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.tsa.gov\/travel\/security-screening\/whatcanibring",
+        "snippet": "Planning ahead and packing properly can facilitate the screening
+        process and ease your travel experience at the airport. Know what you can
+        pack in your carry-on and checked baggage before arriving at the airport by
+        reviewing the lists below. Even if an item is generally permitted, it may
+        be subject ...", "dateLastCrawled": "2021-09-05T06:15:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Form 20-F - SEC", "url": "https:\/\/www.sec.gov\/files\/form20-f.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/files\/form20-f.pdf",
+        "snippet": "Item 18 If this is an annual report, indicate by check mark
+        whether the registrant is a shell company (as defined in Rule 12b-2 of the
+        Exchange Act). Yes . No (APPLICABLE ONLYTO ISSUERS INVOLVED IN BANKRUPTCY
+        PROCEEDINGS DURING THE PAST FIVE YEARS)", "dateLastCrawled": "2021-09-05T10:02:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Bulky Item Collection | City of Glendale, CA", "url": "https:\/\/www.glendaleca.gov\/government\/departments\/public-works\/integrated-waste-management\/homes-apartment-complexes\/bulky-item-collection",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.glendaleca.gov\/...\/homes-apartment-complexes\/bulky-item-collection",
+        "snippet": "If an item is not listed above it is NOT accepted for Bulky
+        Item Pickup. Not accepted: Cardboard, hazardous waste, bags of trash\/recycling,
+        construction materials, lumber, glass\/mirrors. See where to donate or recycle
+        items locally at earth911.com", "dateLastCrawled": "2021-09-05T04:06:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "2021 400NG Change 1 - Move", "url": "https:\/\/move.mil\/sites\/default\/files\/2021-06\/2021%20400NG%20Change%201.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/move.mil\/sites\/default\/files\/2021-06\/2021
+        400NG Change 1.pdf", "snippet": "- Item 125 - Clarified truck to truck transfer
+        “only” - Item 125 - Added language to support payment - Item 130 - Added
+        riding lawnmowers (including stand-on) - Item 130 - Clarified what is a
+        Bulky Article Change 1 :", "dateLastCrawled": "2021-09-05T16:17:00.0000000Z",
         "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
-        "name": "Average Low Bid Unit Prices - Texas Department of ...", "url":
-        "http:\/\/www.txdot.gov\/business\/letting-bids\/average-low-bid-unit-prices.html",
-        "about": [{"name": "Texas Department of Transportation"}], "isFamilyFriendly":
-        true, "displayUrl": "www.txdot.gov\/business\/letting-bids\/average-low-bid-unit-prices.html",
-        "snippet": "Average Low Bid Unit Prices. Texas Department of Transportation;
-        Business; Letting & Bids; Three-Month Statewide Item Average. August 2018
-        - October 2018 (Text Version) July 2018 - September 2018 (Text Version) June
-        2018 - August 2018 (Text Version) May 2018 - July 2018 (Text Version)", "dateLastCrawled":
-        "2018-11-13T16:48:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16", "name":
-        "Management Army Major Item Systems Management", "url": "http:\/\/www.dtic.mil\/dtic\/tr\/fulltext\/u2\/a401934.pdf",
-        "isFamilyFriendly": true, "displayUrl": "www.dtic.mil\/dtic\/tr\/fulltext\/u2\/a401934.pdf",
-        "snippet": "The Army Item Management Study by the Concepts Analysis Agency
-        recommended that the Major Item System Map (MISM) be expanded to interface
-        with all phases of the Planning, Programming,", "dateLastCrawled": "2018-11-11T07:16:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
-        "name": "PNO Guidance on Item 4(d) | Federal Trade Commission", "url":
-        "https:\/\/www.ftc.gov\/enforcement\/premerger-notification-program\/hsr-resources\/pno-guidance-item-4d",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ftc.gov\/...\/hsr-resources\/pno-guidance-item-4d",
-        "snippet": "The number generated by the electronic form for an attachment
-        has no bearing on the number assigned to Item 4(c) and Item 4(d) documents.
-        The first Item 4(c) document should be labeled 4(c)-1, even if the form
-        assigns attachment number 3 to it.", "dateLastCrawled": "2018-11-16T10:17:00.0000000Z",
+        "name": "Item 4(c) Tip Sheet (04\/26\/12) - Federal Trade Commission",
+        "url": "https:\/\/www.ftc.gov\/sites\/default\/files\/attachments\/hsr-resources\/4ctipsheet.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ftc.gov\/sites\/default\/files\/attachments\/hsr-resources\/4ctipsheet.pdf",
+        "snippet": "Item 4(c) also contemplates receiving presentations made by
+        the parties to the transaction, such as management presentations. These kinds
+        of presentation documents may be responsive if the 4(c) criteria are met.
+        Ordinary course documents Two questions frequently arise about ordinary course
+        documents. The first is whether a party’s", "dateLastCrawled": "2021-09-03T06:21:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Mathematics Item Specifications", "url": "https:\/\/www.azed.gov\/sites\/default\/files\/2016\/11\/AzMERIT%20Math%20Item%20Specs%20Grade%204_Final.pdf?id=583ca678aadebe13d87d436c",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.azed.gov\/sites\/default\/files\/2016\/11\/AzMERIT
+        Math Item Specs Grade 4_Final...", "snippet": "This AzMERIT Item Specifications
+        is a resource document that defines the content and format of the test and
+        test items for item writers and reviewers. Each Item Specifications document
+        indicates the alignment of items with the Arizona Mathematics Standards. It
+        also serves to", "dateLastCrawled": "2021-09-01T08:12:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Bulk Item Disposal · NYC311", "url": "https:\/\/portal.311.nyc.gov\/article\/?kanumber=KA-01969",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/portal.311.nyc.gov\/article\/?kanumber=KA-01969",
+        "snippet": "A bulk item is something that is too large to fit into a trash
+        bin or bag. You can get free curbside removal of bulk items from residential
+        buildings. Bulk metal and rigid plastic items are collected on recycling collection
+        days. Non-recyclable bulk items are collected on trash collection days and
+        may require an appointment depending on the size:", "dateLastCrawled": "2021-09-05T10:50:00.0000000Z",
         "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
-        "name": "Bulk Item Pick Up Appointment | City of New York", "url": "https:\/\/www1.nyc.gov\/nyc-resources\/service\/7044\/bulk-item-pick-up-appointment",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www1.nyc.gov\/nyc-resources\/service\/7044\/bulk-item-pick-up...",
-        "snippet": "If the item you are throwing out is 4 feet by 3 feet or smaller,
-        you do not have to schedule an appointment. You can place the item out according
-        to your normal garbage schedule. If the item you are throwing out is recyclable
-        (made of metal or rigid plastic), you do not have to schedule an appointment,
-        regardless of size.", "dateLastCrawled": "2018-11-16T02:42:00.0000000Z", "language":
+        "name": "PNO Guidance on Item 4(d) | Federal Trade Commission", "url":
+        "https:\/\/www.ftc.gov\/enforcement\/premerger-notification-program\/hsr-resources\/pno-guidance-item-4d",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ftc.gov\/...\/premerger-notification-program\/hsr-resources\/pno-guidance-item-4d",
+        "snippet": "Items responsive to Item 4(d) should be labeled 4(d)-1, 4(d)-2,
+        etc. There is no need to include the subparts of Item 4(d) in labeling documents.
+        If a portion of a document responsive to Item 4(d) is withheld or redacted
+        on the basis of privilege, provide a privilege log that conforms with 16 CFR
+        803.3(d).", "dateLastCrawled": "2021-09-03T02:40:00.0000000Z", "language":
         "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
-        "name": "Pennsylvania System of School Assessment (PSSA)", "url": "http:\/\/www.education.pa.gov\/K-12\/Assessment%20and%20Accountability\/PSSA\/Pages\/default.aspx",
-        "about": [{"name": "Pennsylvania System of School Assessment"}], "isFamilyFriendly":
-        true, "displayUrl": "www.education.pa.gov\/K-12\/Assessment and Accountability\/PSSA\/Pages...",
-        "snippet": "The annual Pennsylvania System School Assessment is a standards-based,
-        criterion-referenced assessment which provides students, parents, educators
-        and citizens with an understanding of student and school performance related
-        to the attainment of proficiency of the academic standards.", "dateLastCrawled":
-        "2018-11-07T09:11:00.0000000Z", "language": "en", "isNavigational": false}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        "name": "Special Item Collections - Utilities | seattle.gov", "url": "http:\/\/www.seattle.gov\/utilities\/your-services\/collection-and-disposal\/garbage\/special-item-collections",
+        "isFamilyFriendly": true, "displayUrl": "www.seattle.gov\/utilities\/your-services\/collection-and-disposal\/garbage\/special-item...",
+        "snippet": "Schedule a Special Item Collection. To request the collection
+        of large or hard to dispose of items at your home, schedule online or call
+        Seattle Public Utilities Customer Service at (206) 684-3000. We will pick
+        up items such as large furniture and appliances, TVs, computers, small appliances,
+        and small recyclable items that cannot go in the mixed recycling (compact
+        fluorescent lightbulbs (CFLs ...", "dateLastCrawled": "2021-09-05T07:06:00.0000000Z",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
         {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
@@ -1117,11 +503,10 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-    http_version: 
-  recorded_at: Mon, 19 Nov 2018 22:42:26 GMT
+  recorded_at: Tue, 07 Sep 2021 16:17:08 GMT
 - request:
     method: get
-    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=item%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=item%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
@@ -1129,7 +514,7 @@ http_interactions:
       User-Agent:
       - USASearch
       Ocp-Apim-Subscription-Key:
-      - "<BING_V7_SUBSCRIPTION_ID>"
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -1150,212 +535,467 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 19 Nov 2018 22:41:27 GMT
+      - Wed, 06 Oct 2021 15:35:46 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
       Bingapis-Traceid:
-      - 01E9DD9F442F4E9FACAE8FC9B13234FA
+      - 8FBB85ADD485476CAA6484AC045FA643
       Bingapis-Sessionid:
-      - 5F263743441C4B42A8AEB95D714666D4
+      - 7B5460FDC55C477B98C8C21501A6C7E8
       X-Msedge-Clientid:
-      - 3A52EA34C6BE66B12CC3E698C7F26743
+      - 3BB5C6CE70616FA72131D606712E6E95
       X-Msapi-Userstate:
-      - 6da6
+      - f1c2
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=322,MSDatacenter=CO4
+      - InternalResponseTime=283,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
       X-Msedge-Ref:
-      - 'Ref A: 01E9DD9F442F4E9FACAE8FC9B13234FA Ref B: BY3EDGE0206 Ref C: 2018-11-19T22:42:27Z'
+      - 'Ref A: 8FBB85ADD485476CAA6484AC045FA643 Ref B: BLUEDGE2021 Ref C: 2021-10-06T15:36:46Z'
       Apim-Request-Id:
-      - 428f94ae-e027-4156-8b81-09fa5e3dd369
+      - 07656354-2e6e-4044-98d2-db3049378cb0
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
       - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Mon, 19 Nov 2018 22:42:27 GMT
+      - Wed, 06 Oct 2021 15:36:46 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "item
         (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=item+(site%3agov+OR+site%3amil)",
-        "totalEstimatedMatches": 14800000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "Is your test, item, or service covered? | Medicare", "url": "https:\/\/www.medicare.gov\/coverage\/is-your-test-item-or-service-covered",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.medicare.gov\/coverage\/is-your-test-item-or-service-covered",
-        "snippet": "Find out if your test, item or service is covered. Medicare
-        coverage for many tests, items, and services depends on where you live. This
-        list includes tests, items, and services (covered and non-covered) if coverage
-        is the same no matter where you live.", "dateLastCrawled": "2018-11-15T20:09:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "ITEM I - EXCAVATION", "url": "https:\/\/www.cityofcayce-sc.gov\/files\/engineering\/Specifications\/Excavation%20City%20of%20Cayce.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cityofcayce-sc.gov\/files\/engineering\/Specifications...",
-        "snippet": "Section VI - Technical Specifications ITEM I – EXCAVATION VI
-        – I Page 1 ITEM I - EXCAVATION 1.01 Shoring and Shielding (a) The Contractor
-        shall comply with OSHA trenching and excavation regulations as", "dateLastCrawled":
-        "2018-11-14T05:58:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
-        "NPIS - Item Screen", "url": "https:\/\/www.npis.pa.gov\/Screens\/Admin\/Item",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.npis.pa.gov\/Screens\/Admin\/Item",
-        "snippet": "Item Screen : Search Items: Hint: Search using part of the name
-        for best results: Item Name: Vendor Name: ISBN #: Item #: Item Eligibility
-        Status: Vendor Item Availability: Item Type: No Charge Items: ...", "dateLastCrawled":
-        "2018-11-15T19:39:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3", "name":
-        "Conference on Cause and Cure for War at W.H., 1\/24\/25 ...", "url": "https:\/\/www.loc.gov\/item\/2016839132\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2016839132",
-        "snippet": "Yes, the item is digitized. Please use the digital image in
+        "totalEstimatedMatches": 10300000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Frame a Special Item | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/webcast-9175\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/webcast-9175",
+        "snippet": "Cite This Item Citations are generated automatically from bibliographic
+        data as a convenience, and may not be complete or accurate. Chicago citation
+        style:", "dateLastCrawled": "2021-05-16T16:01:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "PAM: Section 2 - PAR Items, Lines 8 - 9", "url": "https:\/\/www.sco.ca.gov\/Files-PPSD\/pam_section_2_par_items_lines_8-9.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sco.ca.gov\/Files-PPSD\/pam_section_2_par_items_lines_8-9.pdf",
+        "snippet": "Section 2.103: ITEM 851 – ALTERNATE SALARY RANGE CRITERIA (Revised
+        11\/92) Description: Indicates the alphabetic or numeric code of the specific
+        alternate range", "dateLastCrawled": "2021-10-01T14:37:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "[Theater commercial--Flash cleaner] | Library of Congress", "url":
+        "https:\/\/www.loc.gov\/item\/97516794\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.loc.gov\/item\/97516794", "snippet": "About this Item.
+        Film advertisement for Flash Cleaner, \"cleans the hands and homes of millions.\"
+        Features triple-exposure shots appealing to both the factory mechanic and
+        the housewife. United States : [s.n., 192-?] - Duration: 1:00 at 16 fps. -
+        On reel with: [Theater commercial--Onward flour].", "dateLastCrawled": "2021-09-14T14:29:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Demonstrating the Difference between Classical Test Theory ...",
+        "url": "https:\/\/files.eric.ed.gov\/fulltext\/ED506058.pdf", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/files.eric.ed.gov\/fulltext\/ED506058.pdf",
+        "snippet": "Item 3 Ability Scale 100 90 80 70 60 50 40 30 20 10 0 The item
+        difficulty parameter (b1, b2, b3) corresponds to the location on the ability
+        axis at which the probability of a correct response is .50. It is shown in
+        the curve that item 1 is easier and item 2 and 3 have the same difficulty
+        at .50 probability of correct response. Estimates of item ...", "dateLastCrawled":
+        "2021-10-01T10:12:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4", "name": "[Trademark
+        registration by M. S. Valentine for Valentine''s ...", "url": "https:\/\/www.loc.gov\/item\/2020747990\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2020747990",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
         preference to requesting the original. All images can be viewed at a large
-        size when you are in any reading room at the Library of Congress. In some
-        cases, only thumbnail (small) images are available when you are outside the
-        Library of Congress because the item is rights restricted or ...", "dateLastCrawled":
-        "2018-11-14T03:31:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4", "name":
-        "CURRENT Agenda Item A - crc.nv.gov", "url": "http:\/\/www.crc.nv.gov\/files.php\/meetings\/b0e17582bb7fe55195c6ceb7e691e744\/CRC-Additional-Documents-Supporting%20Material%20Item%20A%20to%20K-November-2018",
-        "isFamilyFriendly": true, "displayUrl": "www.crc.nv.gov\/files.php\/meetings\/b0e17582bb7fe55195c6ceb7e691e744...",
-        "snippet": "COLORADO RIVER COMMISSION OF NEVADA AGENDA ITEM B FOR MEETING
-        OF NOVEMBER 13, 2018 SUBJECT: Comments from the public. (No action may be
-        taken on a matter raised under this item of the agenda", "dateLastCrawled":
-        "2018-11-14T13:44:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5", "name":
-        "Fiscal Note and Budget Item Follow-Up Report - 2018 Interim", "url": "https:\/\/le.utah.gov\/interim\/2018\/pdf\/00002986.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/le.utah.gov\/interim\/2018\/pdf\/00002986.pdf",
-        "snippet": "through line item; or 2) beginning in FY 2020 moving the $3.0
-        million ongoing appropriation out of the Capital Budget ‐ Pass‐through line
-        item and into the \"Winter Sports Venues Grant Fund\".", "dateLastCrawled":
-        "2018-11-14T10:18:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
-        "ITEM NO. 1: MAYOR AND COUNCIL CONSENT ITEM QUESTIONS * * * *", "url":
-        "https:\/\/charlottenc.gov\/CityClerk\/Minutes\/October%208,%202018.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/charlottenc.gov\/CityClerk\/Minutes\/October
-        8, 2018.pdf", "snippet": "item no. 3: charlotte chamber campaign update
-        on bond referendum Phil Reiger, Strategy and Budget Director said it is a
-        distinct pleasure of m ine to introduce Bob Morgan, President and CEO of the
-        Charlotte Chamber.", "dateLastCrawled": "2018-11-06T03:57:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
-        "name": "Pay Item Catalog", "url": "https:\/\/www.dot.ny.gov\/pic", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.dot.ny.gov\/pic", "snippet": "New York
-        State Department of Transportation coordinates operation of transportation
-        facilities and services including highway, bridges, railroad, mass transit,
-        port, waterway and aviation facilities", "dateLastCrawled": "2018-11-12T03:31:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
-        "name": "Items", "url": "https:\/\/www.dol.gov\/oasam\/LearningLink\/AssigningWorkingItems.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.dol.gov\/oasam\/LearningLink\/AssigningWorkingItems.pdf",
-        "snippet": "An item is an assignable unit that can be tracked in the SuccessFactors
-        Learning system. It may be a learning or non- learning activity. Items are
-        usually thought of as “courses”; however, they can be much more. For example:
-        reading a standard operating procedure or attending a", "dateLastCrawled":
-        "2018-11-12T03:42:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9", "name":
-        "hours per response7.71 FORM 8-K", "url": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
-        "about": [{"name": "Form 8-K"}, {"name": "Form 8-K"}], "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
-        "snippet": "If a report on Form 8-K contains disclosures under Item 2.02
-        or Item 7.01, whether or not the report contains disclosures regarding other
-        items, all exhibits to such report relating to Item 2.02 or Item 7.01
-        will be deemed furnished, and not ﬁled, unless the registrant speci ﬁes, under
-        Item 9.01 (Financial Statements and ...", "dateLastCrawled": "2018-11-11T09:32:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
-        "name": "What Can I Bring? | Transportation Security Administration",
-        "url": "https:\/\/www.tsa.gov\/travel\/security-screening\/whatcanibring\/all",
-        "about": [{"name": "Baggage allowance"}, {"name": "Transportation Security
-        Administration"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.tsa.gov\/travel\/security-screening\/whatcanibring",
-        "snippet": "You may transport this item in carry-on or checked bags. For
-        items you wish to carry on, you should check with the airline to ensure that
-        the item will fit in the overhead bin or underneath the seat of the airplane.",
-        "dateLastCrawled": "2018-11-15T09:07:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
-        "name": "KCMO.gov » Bulky Item Collection", "url": "http:\/\/kcmo.gov\/neighborhoods\/trash\/bulky\/",
-        "isFamilyFriendly": true, "displayUrl": "kcmo.gov\/neighborhoods\/trash\/bulky",
-        "snippet": "Residents of the City of Kansas City, Missouri now have the option
-        of using the City’s no-charge Bulky Item Collection (Pick-up) Appointment
-        System, or for a fee, can access additional bulky collection options that
-        provide greater flexibility.", "dateLastCrawled": "2018-11-15T11:47:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
-        "name": "Integrated Logistics Support Center (ILSC)", "url": "https:\/\/www.tacom.army.mil\/ilsc\/tulsa\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.tacom.army.mil\/ilsc\/tulsa",
-        "snippet": "Provides item managers with pertinent information to determine
-        disposition, as well as, generate the desired transactions into CCSS per their
-        instructions. A productivity tool. IMA Europe Excess Items Redistribution
-        (Retrograde)", "dateLastCrawled": "2018-11-16T13:16:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
-        "name": "Bulky Item Collection Overview - San Antonio", "url": "https:\/\/www.sanantonio.gov\/swmd\/Bulky",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sanantonio.gov\/swmd\/Bulky",
-        "snippet": "Bulky Item Collection Overview. Bulky item collection is provided
-        to all City residential solid waste ratepayers. To find out if you are a solid
-        waste customer, check your CPS Energy bill. If it lists a Solid Waste Fee,
-        you are a customer and you are eligible to receive bulky item collection.",
-        "dateLastCrawled": "2018-11-03T23:20:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
-        "name": "Pack mule of U.S. Army Signal Corps, used for carrying ...", "url":
-        "https:\/\/www.loc.gov\/item\/2014683309", "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.loc.gov\/item\/2014683309", "snippet": "Yes, the item
-        is digitized. Please use the digital image in preference to requesting the
-        original. All images can be viewed at a large size when you are in any reading
-        room at the Library of Congress.", "dateLastCrawled": "2018-11-15T19:48:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
-        "name": "Average Low Bid Unit Prices - Texas Department of ...", "url":
-        "http:\/\/www.txdot.gov\/business\/letting-bids\/average-low-bid-unit-prices.html",
-        "about": [{"name": "Texas Department of Transportation"}], "isFamilyFriendly":
-        true, "displayUrl": "www.txdot.gov\/business\/letting-bids\/average-low-bid-unit-prices.html",
-        "snippet": "Average Low Bid Unit Prices. Texas Department of Transportation;
-        Business; Letting & Bids; Three-Month Statewide Item Average. August 2018
-        - October 2018 (Text Version) July 2018 - September 2018 (Text Version) June
-        2018 - August 2018 (Text Version) May 2018 - July 2018 (Text Version)", "dateLastCrawled":
-        "2018-11-13T16:48:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16", "name":
-        "Management Army Major Item Systems Management", "url": "http:\/\/www.dtic.mil\/dtic\/tr\/fulltext\/u2\/a401934.pdf",
-        "isFamilyFriendly": true, "displayUrl": "www.dtic.mil\/dtic\/tr\/fulltext\/u2\/a401934.pdf",
-        "snippet": "The Army Item Management Study by the Concepts Analysis Agency
-        recommended that the Major Item System Map (MISM) be expanded to interface
-        with all phases of the Planning, Programming,", "dateLastCrawled": "2018-11-11T07:16:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
-        "name": "PNO Guidance on Item 4(d) | Federal Trade Commission", "url":
-        "https:\/\/www.ftc.gov\/enforcement\/premerger-notification-program\/hsr-resources\/pno-guidance-item-4d",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ftc.gov\/...\/hsr-resources\/pno-guidance-item-4d",
-        "snippet": "The number generated by the electronic form for an attachment
-        has no bearing on the number assigned to Item 4(c) and Item 4(d) documents.
-        The first Item 4(c) document should be labeled 4(c)-1, even if the form
-        assigns attachment number 3 to it.", "dateLastCrawled": "2018-11-16T10:17:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
-        "name": "Bulk Item Pick Up Appointment | City of New York", "url": "https:\/\/www1.nyc.gov\/nyc-resources\/service\/7044\/bulk-item-pick-up-appointment",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www1.nyc.gov\/nyc-resources\/service\/7044\/bulk-item-pick-up...",
-        "snippet": "If the item you are throwing out is 4 feet by 3 feet or smaller,
-        you do not have to schedule an appointment. You can place the item out according
-        to your normal garbage schedule. If the item you are throwing out is recyclable
-        (made of metal or rigid plastic), you do not have to schedule an appointment,
-        regardless of size.", "dateLastCrawled": "2018-11-16T02:42:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
-        "name": "Pennsylvania System of School Assessment (PSSA)", "url": "http:\/\/www.education.pa.gov\/K-12\/Assessment%20and%20Accountability\/PSSA\/Pages\/default.aspx",
-        "about": [{"name": "Pennsylvania System of School Assessment"}], "isFamilyFriendly":
-        true, "displayUrl": "www.education.pa.gov\/K-12\/Assessment and Accountability\/PSSA\/Pages...",
-        "snippet": "The annual Pennsylvania System School Assessment is a standards-based,
-        criterion-referenced assessment which provides students, parents, educators
-        and citizens with an understanding of student and school performance related
-        to the attainment of proficiency of the academic standards.", "dateLastCrawled":
-        "2018-11-07T09:11:00.0000000Z", "language": "en", "isNavigational": false}]},
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2021-10-05T04:19:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5", "name": "[Untitled]
+        | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/2017698522\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2017698522",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2021-10-05T05:04:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6", "name": "Olive
+        Kline | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/2014703284\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2014703284",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2021-10-05T17:32:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7", "name": "[Untitled
+        photo, possibly related to: Crater Lake National ...", "url": "https:\/\/www.loc.gov\/item\/2017818937\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2017818937",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2021-10-04T06:09:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8", "name": "[Untitled
+        photo, possibly related to: Daughter of Rural ...", "url": "https:\/\/www.loc.gov\/item\/2017767307\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2017767307",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2021-10-06T14:37:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9", "name": "A.
+        Stanley | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/2014711674\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2014711674",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2021-10-06T08:25:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "PRESIDENT SIGNING BANKING BILL | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/2016883406\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2016883406",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2021-10-05T04:00:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "Mohonk trail, New Paltz, New York | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/2017713210\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2017713210",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2021-10-06T08:52:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "[Untitled photo, possibly realted to: Sheep being driven ...", "url": "https:\/\/www.loc.gov\/item\/2017807941\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2017807941",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2021-10-04T10:29:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "NO CAPTION | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/2017677182\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2017677182",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2021-10-05T04:19:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "Bridge Canyon | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/2017652331\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2017652331",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2021-10-03T18:04:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "[Untitled photo, possibly related to: Railroad workers ...", "url": "https:\/\/www.loc.gov\/item\/2017811809\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2017811809",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2021-10-03T21:19:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "[Untitled photo, possibly related to: Meat in cold storage ...", "url": "https:\/\/www.loc.gov\/item\/2017812451\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2017812451",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2021-10-05T04:52:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "www.loc.gov", "url": "https:\/\/www.loc.gov\/item\/ihas.200216098\/manifest.json",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/ihas.200216098\/manifest.json",
+        "snippet": "{\"@context\": \"http:\/\/iiif.io\/api\/presentation\/2\/context.json\",
+        \"@id\": \"https:\/\/www.loc.gov\/item\/ihas.200216098\/manifest.json\",
+        \"@type\": \"sc:Manifest\", \"attribution ...", "dateLastCrawled": "2021-10-06T14:58:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Lord Byron | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/2018652290\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2018652290",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2021-10-05T20:37:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19", "name":
+        "Farmers at produce market, Benton Harbor, Michigan", "url": "https:\/\/www.loc.gov\/pictures\/item\/2017720451\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/pictures\/item\/2017720451",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2021-10-06T12:48:00.0000000Z", "language": "en", "isNavigational": false}]},
         "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-    http_version: 
-  recorded_at: Mon, 19 Nov 2018 22:42:28 GMT
-recorded_with: VCR 4.0.0
+        0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 15:36:47 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=item%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 15:35:48 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 3646CAFF4249479A843F531AE2B0C87D
+      Bingapis-Sessionid:
+      - 8EFACB92BB1D441584DB98242C3049C2
+      X-Msedge-Clientid:
+      - 0CF25A8C84AA6A5E378F4A44854C6B0C
+      X-Msapi-Userstate:
+      - cdd5
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=254,MSDatacenter=CH1B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 3646CAFF4249479A843F531AE2B0C87D Ref B: DM2EDGE0706 Ref C: 2021-10-06T15:36:48Z'
+      Apim-Request-Id:
+      - '0907671c-7dd2-4de8-9b41-557be5eaad53'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 15:36:47 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "item
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=item+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 10500000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "[Trademark registration by M. S. Valentine for Valentine''s ...",
+        "url": "https:\/\/www.loc.gov\/item\/2020747990\/", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.loc.gov\/item\/2020747990", "snippet": "Is
+        the item digitized? (A thumbnail (small) image will be visible on the left.)
+        Yes, the item is digitized. Please use the digital image in preference to
+        requesting the original. All images can be viewed at a large size when you
+        are in any reading room at the Library of Congress.", "dateLastCrawled": "2021-10-05T04:19:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "[Untitled photo, possibly realted to: Sheep being driven ...", "url":
+        "https:\/\/www.loc.gov\/item\/2017807941\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.loc.gov\/item\/2017807941", "snippet": "Is the item digitized?
+        (A thumbnail (small) image will be visible on the left.) Yes, the item is
+        digitized. Please use the digital image in preference to requesting the original.
+        All images can be viewed at a large size when you are in any reading room
+        at the Library of Congress.", "dateLastCrawled": "2021-10-04T10:29:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "[Untitled photo, possibly related to: Daughter of Rural ...", "url":
+        "https:\/\/www.loc.gov\/item\/2017767307\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.loc.gov\/item\/2017767307", "snippet": "Is the item digitized?
+        (A thumbnail (small) image will be visible on the left.) Yes, the item is
+        digitized. Please use the digital image in preference to requesting the original.
+        All images can be viewed at a large size when you are in any reading room
+        at the Library of Congress.", "dateLastCrawled": "2021-10-06T14:37:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Mohonk trail, New Paltz, New York | Library of Congress", "url":
+        "https:\/\/www.loc.gov\/item\/2017713210\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.loc.gov\/item\/2017713210", "snippet": "Is the item digitized?
+        (A thumbnail (small) image will be visible on the left.) Yes, the item is
+        digitized. Please use the digital image in preference to requesting the original.
+        All images can be viewed at a large size when you are in any reading room
+        at the Library of Congress.", "dateLastCrawled": "2021-10-06T08:52:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Olive Kline | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/2014703284\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2014703284",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2021-10-05T17:32:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5", "name": "[Untitled
+        photo, possibly related to: Butter at Fulton ...", "url": "https:\/\/www.loc.gov\/item\/2017812445\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2017812445",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2021-10-06T02:43:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6", "name": "A.
+        Stanley | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/2014711674\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2014711674",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2021-10-06T08:25:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7", "name": "[Untitled
+        photo, possibly related to: Meat in cold storage ...", "url": "https:\/\/www.loc.gov\/item\/2017812451\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2017812451",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2021-10-05T04:52:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8", "name": "[City
+        Walls and Aerial Views, Aigues-Mortes, France ...", "url": "https:\/\/www.loc.gov\/item\/2020714969\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2020714969",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2021-10-05T04:19:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9", "name": "PAM:
+        Section 2 - PAR Items, Lines 8 - 9", "url": "https:\/\/www.sco.ca.gov\/Files-PPSD\/pam_section_2_par_items_lines_8-9.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sco.ca.gov\/Files-PPSD\/pam_section_2_par_items_lines_8-9.pdf",
+        "snippet": "Section 2.103: ITEM 851 – ALTERNATE SALARY RANGE CRITERIA (Revised
+        11\/92) Description: Indicates the alphabetic or numeric code of the specific
+        alternate range", "dateLastCrawled": "2021-10-01T14:37:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "[Untitled photo, possibly related to: Crater Lake National ...",
+        "url": "https:\/\/www.loc.gov\/item\/2017818937\/", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.loc.gov\/item\/2017818937", "snippet": "Is
+        the item digitized? (A thumbnail (small) image will be visible on the left.)
+        Yes, the item is digitized. Please use the digital image in preference to
+        requesting the original. All images can be viewed at a large size when you
+        are in any reading room at the Library of Congress.", "dateLastCrawled": "2021-10-04T06:09:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "[Untitled] | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/2017698522\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2017698522",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2021-10-05T05:04:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "NO CAPTION | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/2017677182\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2017677182",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2021-10-05T04:19:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "[Untitled photo, possibly related to: Railroad workers ...", "url": "https:\/\/www.loc.gov\/item\/2017811809\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2017811809",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2021-10-03T21:19:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "Lord Byron | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/2018652290\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2018652290",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2021-10-05T20:37:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "[Unidentified Union officer, half-length portrait, facing ...", "url": "https:\/\/www.loc.gov\/pictures\/item\/2003679632\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/pictures\/item\/2003679632",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2021-10-03T17:51:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "McPherson Bridge, Spanning Candies Creek at County Road ...", "url": "https:\/\/loc.gov\/pictures\/item\/tn0183\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/loc.gov\/pictures\/item\/tn0183",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2021-10-05T02:12:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "Rainbow Natural Bridge. Looking up Bridge Canyon. The ...", "url": "https:\/\/www.loc.gov\/item\/2017652332\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2017652332",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2021-10-03T18:03:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "Farmers at produce market, Benton Harbor, Michigan", "url": "https:\/\/www.loc.gov\/pictures\/item\/2017720451\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/pictures\/item\/2017720451",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2021-10-06T12:48:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19", "name":
+        "[Image from LOOK - Job 55-3900 titled Bozo the clown ...", "url": "https:\/\/www.loc.gov\/item\/2021682207\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2021682207",
+        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
+        on the left.) Yes, the item is digitized. Please use the digital image in
+        preference to requesting the original. All images can be viewed at a large
+        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2021-10-03T17:40:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 15:36:48 GMT
+recorded_with: VCR 6.0.0

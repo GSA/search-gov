@@ -31,180 +31,187 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 31 Aug 2018 20:57:09 GMT
+      - Tue, 31 Aug 2021 20:31:44 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
       Bingapis-Traceid:
-      - 99E28E7C8DEF4D7A957EDBDE2D447042
+      - 982E9853B0A24ADF9244EDE5F5F5E75B
       Bingapis-Sessionid:
-      - B2B21792D6F34795A96BF78021C51170
+      - C438A71550C644C0B532E93431F1637C
       X-Msedge-Clientid:
-      - 35C1502A94696ACB07EC5C7695056B1C
+      - 16D4A14392AC63C326A8B1E7934A62B9
       X-Msapi-Userstate:
-      - 3d6b
+      - b7ca
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=165,MSDatacenter=BN2
+      - InternalResponseTime=326,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
       X-Msedge-Ref:
-      - 'Ref A: 99E28E7C8DEF4D7A957EDBDE2D447042 Ref B: SN1EDGE0709 Ref C: 2018-08-31T20:58:09Z'
+      - 'Ref A: 982E9853B0A24ADF9244EDE5F5F5E75B Ref B: DM2EDGE0514 Ref C: 2021-08-31T20:32:44Z'
       Apim-Request-Id:
-      - 0d9d198e-a17f-4414-8f8d-b5019e6ca469
+      - a2ae3ddf-3c20-4287-9201-8efa3924d949
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
       - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Fri, 31 Aug 2018 20:58:08 GMT
+      - Tue, 31 Aug 2021 20:32:45 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "white
         house"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=white+house",
-        "totalEstimatedMatches": 268000000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "The White House", "url": "https:\/\/www.whitehouse.gov\/", "about":
-        [{"name": "The White House"}, {"name": "whitehouse.gov"}, {"name": "White
-        House"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov",
-        "snippet": "History of The White House. Our first president, George Washington,
-        selected the site for the White House in 1791. Every president since John
-        Adams has occupied the White House, and the history of this building extends
-        far beyond the construction of its walls.", "dateLastCrawled": "2018-08-24T00:53:00.0000000Z",
+        "totalEstimatedMatches": 148000000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "The White House", "url": "https:\/\/www.whitehouse.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.whitehouse.gov", "snippet": "The White
+        House 1600 Pennsylvania Ave NW Washington, DC 20500 To search this site, enter
+        a search term Search. We’re investing in the American people. The Build Back
+        Better Agenda The Build Back ...", "dateLastCrawled": "2021-08-28T21:13:00.0000000Z",
         "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "White House - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/White_House",
-        "about": [{"name": "White House"}, {"name": "White House"}], "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/White_House", "snippet":
-        "The White House is the official residence and workplace of the President
-        of the United States.It is located at 1600 Pennsylvania Avenue NW in Washington,
-        D.C. and has been the residence of every U.S. President since John Adams in
-        1800.", "snippetAttribution": {"license": {"name": "CC-BY-SA", "url": "http:\/\/creativecommons.org\/licenses\/by-sa\/3.0\/"},
-        "licenseNotice": "Text under CC-BY-SA license"}, "dateLastCrawled": "2018-08-19T15:03:00.0000000Z",
+        "name": "Contact Us | The White House", "url": "https:\/\/www.whitehouse.gov\/contact\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/contact",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        WH.gov. Scroll to Top. Top ...", "dateLastCrawled": "2021-08-29T09:01:00.0000000Z",
         "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
-        "name": "TRUMP® WHITE HOUSE | WHITEHOUSE.ORG", "url": "https:\/\/whitehouse.org\/",
-        "about": [{"name": "WHITEHOUSE.ORG"}, {"name": "whitehouse.org"}], "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/whitehouse.org", "snippet": "100% OFFICIOUS
-        website of the White House & President Donald J. Trump", "dateLastCrawled":
-        "2018-08-23T20:10:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3", "name":
-        "The White House - YouTube", "url": "https:\/\/www.youtube.com\/whitehouse",
-        "about": [{"name": "White House"}, {"name": "White House"}], "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.youtube.com\/whitehouse", "snippet": "Official
-        White House Youtube channel. Vice President Pence Delivers Remarks at the
-        37th Annual National Peace Officers'' Memorial Service - Duration: 6 minutes,
-        32 seconds.", "dateLastCrawled": "2018-08-23T14:25:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
-        "name": "The White House (@WhiteHouse) | Twitter", "url": "https:\/\/twitter.com\/WhiteHouse",
-        "about": [{"name": "White House"}, {"name": "White House"}], "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/twitter.com\/WhiteHouse", "snippet": "The latest
-        Tweets from The White House (@WhiteHouse). Welcome to @WhiteHouse! Follow
-        for the latest from President @realDonaldTrump and his Administration. Tweets
-        may be archived: https:\/\/t.co\/IURuMIrzxb.", "dateLastCrawled": "2018-08-24T16:14:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
-        "name": "The White House - Home | Facebook", "url": "http:\/\/www.facebook.com\/WhiteHouse",
-        "isFamilyFriendly": true, "displayUrl": "www.facebook.com\/WhiteHouse", "snippet":
-        "The White House. 8.4M likes. Welcome to the official White House Facebook
-        page for the Trump Administration. Comments posted on and messages received...",
-        "dateLastCrawled": "2018-08-19T14:01:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
-        "name": "White House - Facts & Summary - HISTORY.com", "url": "https:\/\/www.history.com\/topics\/white-house",
-        "about": [{"name": "White House"}], "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.history.com\/topics\/white-house", "snippet": "Find out more
-        about the history of White House, including videos, interesting articles,
-        pictures, historical features and more. Get all the facts on HISTORY.com",
-        "dateLastCrawled": "2018-08-24T00:33:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
-        "name": "Headlines from the White House", "url": "https:\/\/www.cnbc.com\/white-house\/",
-        "about": [{"name": "White House"}], "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.cnbc.com\/white-house", "snippet": "Latest news from the White
-        House, including video, commentary, and in-depth analysis coverage.", "dateLastCrawled":
-        "2018-08-24T16:50:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
-        "Petition the White House on the Issues that Matter to You ...", "url": "https:\/\/petitions.whitehouse.gov\/",
-        "about": [{"name": "We the People"}, {"name": "White House"}], "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/petitions.whitehouse.gov", "snippet": "Create
-        a Petition. Call on the White House to take action on the issue that matters
-        to you.", "dateLastCrawled": "2018-08-24T20:02:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
-        "name": "Contact the White House", "url": "https:\/\/www.whitehouse.gov\/contact\/",
-        "about": [{"name": "White House"}], "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.whitehouse.gov\/contact", "snippet": "Keep me posted with regular
-        updates from the White House. required ...", "dateLastCrawled": "2018-08-21T14:57:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
-        "name": "Women''s Clothing, Dresses, Tops, Pants, Petite & Plus Size ...",
-        "url": "https:\/\/www.whitehouseblackmarket.com\/store\/", "about": [{"name":
-        "White House Black Market"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouseblackmarket.com",
-        "snippet": "White House Black Market offers polished black and white women''s
-        clothing with pops of color and patterns. Shop tailored dresses, tops, pants
-        and accessories.", "dateLastCrawled": "2018-08-23T04:54:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
-        "name": "President''s Park (White House) (U.S. National Park Service)", "url":
-        "https:\/\/www.nps.gov\/whho\/index.htm", "about": [{"name": "President''s
-        Park (White House)"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/whho",
-        "snippet": "Every president except George Washington has called the White
-        House and its surrounding grounds his place of work, rest, and solitude. Recognizable
-        around the world, the White House stands as a symbol of democracy. The White
-        House and its park grounds serve not only as the seat of the executive ...",
-        "dateLastCrawled": "2018-08-06T23:55:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
-        "name": "Homepage - White House Historical Association", "url": "https:\/\/whitehousehistory.org\/",
-        "about": [{"name": "White House"}, {"name": "Decatur House"}, {"name": "White
-        House Historical Association"}, {"name": "White House Historical Association"},
-        {"name": "White House Learning Center"}, {"name": "White House"}], "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/whitehousehistory.org", "snippet": "The White
-        House Historical Association is a non-profit organization enhancing understanding
-        of the White House and is supported by official White House Christma...",
-        "dateLastCrawled": "2018-08-24T12:46:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
-        "name": "The White House | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/",
-        "about": [{"name": "whitehouse.gov"}, {"name": "Barack Obama"}, {"name": "Barack
-        Obama"}, {"name": "White House"}], "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/obamawhitehouse.archives.gov", "snippet": "See the President''s
-        daily schedule, explore behind-the-scenes photos from inside the White House,
-        and find out all the ways you can engage with the most interactive administration
-        in our country''s history.", "dateLastCrawled": "2018-08-20T15:42:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
-        "name": "The White House — Google Arts & Culture", "url": "https:\/\/artsandculture.google.com\/partner\/the-white-house",
-        "about": [{"name": "White House"}], "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/artsandculture.google.com\/partner\/the-white-house", "snippet":
-        "For more than 200 years, the White House has been more than just the home
-        of the Presidents and their families. Throughout the world, it is recognized
-        as t...", "dateLastCrawled": "2018-08-21T22:39:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
-        "name": "White House | History, Location, & Facts | Britannica.com", "url":
-        "https:\/\/www.britannica.com\/topic\/White-House-Washington-DC", "about":
-        [{"name": "White House"}], "isFamilyFriendly": true, "displayUrl": "https:\/\/www.britannica.com\/topic\/White-House-Washington-DC",
-        "snippet": "White House: White House, the office and residence of the president
-        of the United States at 1600 Pennsylvania Avenue N.W. in Washington, D.C.
-        Since the administration of George Washington (1789–97), who occupied presidential
-        residences in New York and Philadelphia, every American president has resided
-        at the White House.", "dateLastCrawled": "2018-08-23T09:52:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
-        "name": "A look inside the White House - POLITICO", "url": "https:\/\/www.politico.com\/gallery\/a-look-inside-the-white-house",
-        "about": [{"name": "White House"}], "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.politico.com\/gallery\/a-look-inside-the-white-house", "snippet":
-        "Designed by James Hoban, the White House has 132 rooms, 35 bathrooms and
-        6 levels in the residence. This includes 412 doors, 147 windows, 28 fireplaces,
-        8 staircases and 3 elevators.", "dateLastCrawled": "2018-08-19T21:37:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
-        "name": "White House: Government News, Videos & Updates - NBC News", "url":
+        "contractualRules": [{"_type": "ContractualRules\/LicenseAttribution", "targetPropertyName":
+        "snippet", "targetPropertyIndex": 2, "mustBeCloseToContent": true, "license":
+        {"name": "CC-BY-SA", "url": "http:\/\/creativecommons.org\/licenses\/by-sa\/3.0\/"},
+        "licenseNotice": "Text under CC-BY-SA license"}], "name": "White House - Wikipedia",
+        "url": "https:\/\/en.wikipedia.org\/wiki\/White_House", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/White_House", "snippet":
+        "The White House is the official residence and workplace of the president
+        of the United States.It is located at 1600 Pennsylvania Avenue NW in Washington,
+        D.C., and has been the residence of every U.S. president since John Adams
+        in 1800. The term \"White House\" is often used as a metonym for the president
+        and their advisers.. The residence was designed by Irish-born architect James
+        Hoban in the ...", "dateLastCrawled": "2021-08-28T22:14:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "About The White House | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house",
+        "snippet": "The White House is where the President and First Family of the
+        United States live and work — but it’s also the People’s House, where we hope
+        all Americans feel a sense of inclusion and ...", "dateLastCrawled": "2021-08-29T16:01:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "White House: Government News, Videos & Updates - NBC News ...", "url":
         "https:\/\/www.nbcnews.com\/politics\/white-house", "isFamilyFriendly": true,
         "displayUrl": "https:\/\/www.nbcnews.com\/politics\/white-house", "snippet":
-        "Find the latest White House news, videos and photos on http:\/\/www.nbcnews.com.
-        Read headlines covering White House statements, releases, conferences & more.",
-        "dateLastCrawled": "2018-08-22T15:07:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
-        "name": "The White House", "url": "https:\/\/apply.whitehouse.gov\/", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/apply.whitehouse.gov", "snippet": "Thank you
-        for your interest in serving in the Trump Administration. This website is
-        designed for applicants interested in non-career positions within the Trump
-        Administration.", "dateLastCrawled": "2018-08-23T06:17:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
-        "name": "White House | Fox News", "url": "http:\/\/www.foxnews.com\/category\/politics\/executive\/white-house.html",
-        "isFamilyFriendly": true, "displayUrl": "www.foxnews.com\/category\/politics\/executive\/white-house.html",
-        "snippet": "White House stories and articles from Fox News Politics", "dateLastCrawled":
-        "2018-08-21T02:45:00.0000000Z", "language": "en", "isNavigational": false}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
+        "Angela Weiss \/ AFP via Getty Images file. White House. Biden administration
+        planning to require foreign visitors be fully vaccinated. Erik McGregor \/
+        LightRocket via Getty Images file.", "dateLastCrawled": "2021-08-29T12:19:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Press Briefing by White House COVID-19 Response Team and ...", "url":
+        "https:\/\/www.whitehouse.gov\/briefing-room\/press-briefings\/2021\/08\/24\/press-briefing-by-white-house-covid-19-response-team-and-public-health-officials-51\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/press-briefings\/2021\/08\/24\/press-briefing-by...",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. Briefing Room Press Briefing
+        by White House COVID- ...", "dateLastCrawled": "2021-08-27T09:09:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "White House ditched talks with Anti-Taliban resistance: report",
+        "url": "https:\/\/nypost.com\/2021\/08\/27\/white-house-ditched-talks-with-anti-taliban-resistance-report\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/nypost.com\/2021\/08\/27\/white-house-ditched-talks-with-anti-taliban-resistance...",
+        "snippet": "The White House did not immediately respond to The Post’s request
+        for comment. Filed under. afghanistan joe biden taliban 8\/27\/21; Read Next
+        ''Kindness is free ...", "dateLastCrawled": "2021-08-31T15:21:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Kabul airport attack: Biden to address nation at 5 p.m.", "url":
+        "https:\/\/www.cnbc.com\/2021\/08\/26\/kabul-airport-attack-white-house-clears-bidens-schedule.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cnbc.com\/2021\/08\/26\/kabul-airport-attack-white-house-clears-bidens...",
+        "snippet": "The White House took the unusual step of clearing Biden''s schedule
+        on Thursday following the attack. Biden moved a planned meeting with Israeli
+        Prime Minister Naftali Bennett to Friday and ...", "dateLastCrawled": "2021-08-30T03:45:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "White House cuts off audio feed before Biden''s response to ...",
+        "url": "https:\/\/www.foxnews.com\/media\/white-house-audio-feed-bidens-response-on-afghanistan",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.foxnews.com\/media\/white-house-audio-feed-bidens-response-on-afghanistan",
+        "snippet": "The White House cut off the audio feed for President Joe Biden
+        after he was posed a question Wednesday on stranded Americans in Afghanistan.
+        As he wrapped up a meeting on cybersecurity in the ...", "dateLastCrawled":
+        "2021-08-30T10:11:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9", "name":
+        "Biden hails US ‘heroes’ killed in Afghan blasts and vows ...", "url": "https:\/\/www.theguardian.com\/us-news\/live\/2021\/aug\/26\/us-politics-biden-harris-afghanistan-covid-latest-news",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.theguardian.com\/us-news\/live\/2021\/aug\/26\/us-politics-biden-harris...",
+        "snippet": "Jen Psaki, White House press secretary, speaks at the White House
+        on Thursday. Photograph: Susan Walsh\/AP Psaki clarified Biden’s message to
+        Isis-K that the US would “hunt you down and make ...", "dateLastCrawled":
+        "2021-08-28T02:44:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "Google, Amazon, Microsoft unveil massive cybersecurity ...", "url": "https:\/\/www.cnet.com\/tech\/services-and-software\/apple-google-amazon-ceos-head-to-white-house-for-cybersecurity-meeting\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cnet.com\/tech\/services-and-software\/apple-google-amazon-ceos-head-to-white...",
+        "snippet": "Google, Amazon, Microsoft unveil massive cybersecurity initiatives
+        after White House meeting. CEOs including Apple''s Tim Cook, IBM''s Arvind
+        Krishna and Amazon''s Andy Jassy were in attendance.", "dateLastCrawled":
+        "2021-08-31T08:30:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "White House - Architect, Facts & Layout - HISTORY", "url": "https:\/\/www.history.com\/topics\/landmarks\/white-house",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.history.com\/topics\/landmarks\/white-house",
+        "snippet": "White House. The official home for the U.S. president was designed
+        by Irish-born architect James Hoban in the 1790s. Rebuilt after a British
+        attack in 1814, the “President’s House” evolved ...", "dateLastCrawled": "2021-08-29T11:19:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "White House Bashes Erik Prince’s $6,500 Evacuation Flights ...",
+        "url": "https:\/\/www.forbes.com\/sites\/andrewsolender\/2021\/08\/25\/white-house-bashes-erik-princes-6500-evacuation-flights-efforts-to-profit-off-peoples-agony-and-pain\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.forbes.com\/sites\/andrewsolender\/2021\/08\/25\/white-house-bashes-erik-princes...",
+        "snippet": "Topline. White House press secretary Jen Psaki on Wednesday laid
+        into Erik Prince, the controversial defense contractor who says he is charging
+        $6,500-a-head for flights out of Afghanistan, noting ...", "dateLastCrawled":
+        "2021-08-29T21:25:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "The White House", "url": "https:\/\/twitter.com\/WhiteHouse", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/twitter.com\/WhiteHouse", "snippet": "We would
+        like to show you a description here but the site won’t allow us.", "dateLastCrawled":
+        "2021-03-31T15:11:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "White House: Biden told commanders to ''stop at nothing'' to ...", "url":
+        "https:\/\/thehill.com\/policy\/defense\/570049-white-house-biden-told-commanders-to-stop-at-nothing-to-go-after-isis",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/thehill.com\/policy\/defense\/570049-white-house-biden-told-commanders-to-stop-at...",
+        "snippet": "President Biden has told his top generals that they should “stop
+        at nothing” to make Afghanistan’s ISIS affiliate pay for the 13 U.S. service
+        members’ deaths in Kabul last week, White ...", "dateLastCrawled": "2021-08-31T05:08:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Homepage - White House Historical Association", "url": "https:\/\/www.whitehousehistory.org\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehousehistory.org",
+        "snippet": "The White House Historical Association is a private, nonprofit
+        organization founded in 1961 by First Lady Jacqueline Kennedy with a mission
+        to protect, preserve, and provide public access to the rich history of America’s
+        Executive Mansion. Become a Member.", "dateLastCrawled": "2021-08-29T01:24:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Write or Call the White House | The White House", "url": "https:\/\/www.whitehouse.gov\/get-involved\/write-or-call\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/get-involved\/write-or-call",
+        "snippet": "This is the fastest way to reach the White House. If you write
+        a letter, please consider typing it on an 8 1\/2 by 11 inch sheet of paper.
+        If you hand-write your letter, please write as neatly as ...", "dateLastCrawled":
+        "2021-08-27T20:29:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "The White House - Home | Facebook", "url": "https:\/\/www.facebook.com\/WhiteHouse",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.facebook.com\/WhiteHouse",
+        "snippet": "The White House was live. Happening Now: President Biden delivers
+        remarks and signs H.R.1652, the VOCA Fix to Sustain the Crime Victims Fund
+        Act of 2021 into law. Donal Jones, Doug Croft, Kimberly Jenkins Coffman and
+        1,600 others like this. Happy Fourth of July!", "dateLastCrawled": "2021-08-28T06:02:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "White House: U.S. combing lists, rooting out remaining ...", "url":
+        "https:\/\/www.washingtontimes.com\/news\/2021\/aug\/30\/white-house-us-combing-lists-rooting-out-remaining\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.washingtontimes.com\/news\/2021\/aug\/30\/white-house-us-combing-lists-rooting...",
+        "snippet": "The White House said it thinks a \"small number\" of Americans
+        remain in Afghanistan and want to leave, but it was unable to provide a concrete
+        figure as a Tuesday deadline nears to leave the ...", "dateLastCrawled": "2021-08-31T09:00:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "White House | History, Location, & Facts | Britannica", "url": "https:\/\/www.britannica.com\/topic\/White-House-Washington-DC",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.britannica.com\/topic\/White-House-Washington-DC",
+        "snippet": "White House, the office and residence of the president of the
+        United States at 1600 Pennsylvania Avenue N.W. in Washington, D.C. Since the
+        administration of George Washington (1789–97), who occupied presidential residences
+        in New York and Philadelphia, every American president has resided at the
+        White House.", "dateLastCrawled": "2021-08-29T12:12:00.0000000Z", "language":
+        "en", "isNavigational": false}]}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
         {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
@@ -224,6 +231,247 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-    http_version: 
-  recorded_at: Fri, 31 Aug 2018 20:58:09 GMT
-recorded_with: VCR 4.0.0
+  recorded_at: Tue, 31 Aug 2021 20:32:45 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=white%20house&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 10:40:46 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - FD8A580BD624420F87864C977367D7F4
+      Bingapis-Sessionid:
+      - 9BC64074F0DA4173BDAB4794A88B031E
+      X-Msedge-Clientid:
+      - 1BAD9C0E47CE62570E208CC6463363EE
+      X-Msapi-Userstate:
+      - c456
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=249,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: FD8A580BD624420F87864C977367D7F4 Ref B: BLUEDGE1020 Ref C: 2021-10-06T10:41:46Z'
+      Apim-Request-Id:
+      - 03b64d39-6b4e-4b04-90f9-333bbf1f548d
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 10:41:47 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "white
+        house"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=white+house",
+        "totalEstimatedMatches": 117000000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "The White House", "url": "https:\/\/www.whitehouse.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.whitehouse.gov", "snippet": "The White
+        House. To search this site, enter a search term. Search. We’re investing in
+        the American people. A Path out of the Pandemic. Read President Biden''s COVID-19
+        Action Plan. The Build Back ...", "dateLastCrawled": "2021-10-03T07:10:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Contact Us | The White House", "url": "https:\/\/www.whitehouse.gov\/contact\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/contact",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. Contact Us Message Type *
+        Required Prefix. First Name * ...", "dateLastCrawled": "2021-10-03T07:13:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Live | The White House", "url": "https:\/\/www.whitehouse.gov\/live\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/live",
+        "snippet": "LIVE White House events and press briefings with President Joe
+        Biden, Vice President Kamala Harris and other administration officials.",
+        "dateLastCrawled": "2021-10-03T10:19:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3", "name":
+        "White House | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/white-house",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/white-house",
+        "snippet": "White House. The White House houses the executive office of the
+        President, and serves as the President''s residence. Agency Details Website:
+        White House . Contact: Contact the White House . Main Address: 1600 Pennsylvania
+        Ave., NW Washington, DC 20500. Phone Number: 1-202-456-1414 (Switchboard)
+        1-202-456-1111 (Comments) TTY:", "dateLastCrawled": "2021-10-03T04:08:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "contractualRules": [{"_type": "ContractualRules\/LicenseAttribution", "targetPropertyName":
+        "snippet", "targetPropertyIndex": 4, "mustBeCloseToContent": true, "license":
+        {"name": "CC-BY-SA", "url": "http:\/\/creativecommons.org\/licenses\/by-sa\/3.0\/"},
+        "licenseNotice": "Text under CC-BY-SA license"}], "name": "White House - Wikipedia",
+        "url": "https:\/\/en.wikipedia.org\/wiki\/White_House", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/White_House", "snippet":
+        "The White House is the official residence and workplace of the president
+        of the United States.It is located at 1600 Pennsylvania Avenue NW in Washington,
+        D.C., and has been the residence of every U.S. president since John Adams
+        in 1800. The term \"White House\" is often used as a metonym for the president
+        and their advisers.. The residence was designed by Irish-born architect James
+        Hoban in the ...", "dateLastCrawled": "2021-09-27T20:16:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "President Biden''s COVID-19 Plan | The White House", "url": "https:\/\/www.whitehouse.gov\/covidplan\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/covidplan",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. Path out of the Pandemic
+        PRESIDENT BIDEN''S COVID-19 ACTION PLAN President Biden is ...", "dateLastCrawled":
+        "2021-09-30T04:25:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6", "name": "White
+        House | Fox News", "url": "https:\/\/www.foxnews.com\/category\/politics\/executive\/white-house",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.foxnews.com\/category\/politics\/executive\/white-house",
+        "snippet": "White House Press Secretary Jen Psaki Friday referred to President
+        Biden’s announcement that companies with over 100 employees must force workers
+        to be vaccinated or tested is a means of ...", "dateLastCrawled": "2021-10-03T13:13:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "- White House Black Market", "url": "https:\/\/www.whitehouseblackmarket.com\/store\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouseblackmarket.com",
+        "snippet": "White House Black Market offers polished black and white women''s
+        clothing with pops of color and patterns. Shop tailored dresses, tops, pants
+        and accessories.", "dateLastCrawled": "2021-10-06T10:28:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "White House digs in on negotiations over Biden''s agenda", "url":
+        "https:\/\/www.usatoday.com\/story\/news\/politics\/2021\/10\/02\/white-house-digs-negotiations-over-bidens-agenda\/5968109001\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usatoday.com\/story\/news\/politics\/2021\/10\/02\/white-house-digs-negotiations...",
+        "snippet": "The White House was gearing up for another round of negotiations,
+        and Biden himself is expected to wade further into talks this coming week,
+        wooing lawmakers and acting as a peacemaker in the party.", "dateLastCrawled":
+        "2021-10-04T23:22:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9", "name": "White
+        House digs at GOP, says ‘no real courage’ from House ...", "url": "https:\/\/www.foxnews.com\/politics\/white-house-gop-no-real-courage-infrastructure-bill",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.foxnews.com\/politics\/white-house-gop-no-real-courage-infrastructure-bill",
+        "snippet": "The White House took digs at congressional Republicans, saying
+        there is \"no real courage\" from House members to support the bipartisan
+        infrastructure bill. During the White House’s daily press ...", "dateLastCrawled":
+        "2021-10-04T22:30:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "White House | History, Location, & Facts | Britannica", "url": "https:\/\/www.britannica.com\/topic\/White-House-Washington-DC",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.britannica.com\/topic\/White-House-Washington-DC",
+        "snippet": "White House, the office and residence of the president of the
+        United States at 1600 Pennsylvania Avenue N.W. in Washington, D.C. Since the
+        administration of George Washington (1789–97), who occupied presidential residences
+        in New York and Philadelphia, every American president has resided at the
+        White House.", "dateLastCrawled": "2021-10-03T04:15:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "White House: Biden to hold meeting with progressives ...", "url":
+        "https:\/\/news.yahoo.com\/white-house-biden-hold-meeting-191033921.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/news.yahoo.com\/white-house-biden-hold-meeting-191033921.html",
+        "snippet": "President Joe Biden will hold a virtual meeting with left-leaning
+        progressive lawmakers from the House of Representatives on Monday afternoon
+        to discuss a social spending bill, which he plans to make clear will be smaller
+        than they hoped, the White House said. White House spokesperson Jen Psaki
+        said Biden would discuss a \"path forward, which includes the recognition
+        that this package is going ...", "dateLastCrawled": "2021-10-06T01:23:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Sources: White House, top Democrats reach carbon capture ...", "url":
+        "https:\/\/www.cnbc.com\/2021\/10\/01\/sources-white-house-top-democrats-reach-carbon-capture-credit-deal.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cnbc.com\/2021\/10\/01\/sources-white-house-top-democrats-reach-carbon-capture...",
+        "snippet": "The White House and top Democratic lawmakers have agreed to boost
+        a tax credit for industrial carbon capture projects in a deal that could help
+        solidify support for the budget reconciliation bill ...", "dateLastCrawled":
+        "2021-10-04T21:31:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "White House: Government News, Videos & Updates - NBC News", "url": "https:\/\/www.nbcnews.com\/politics\/white-house",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nbcnews.com\/politics\/white-house",
+        "snippet": "White House. Biden outlines ''a fair shot'' for the middle class
+        in economic speech. Anna Moneymaker \/ The New York Times\/Bloomberg via Getty
+        Images file. White House. Biden announces security pact ...", "dateLastCrawled":
+        "2021-10-03T06:19:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "Debt ceiling review at White House concluded that there ...", "url": "https:\/\/www.washingtonpost.com\/us-policy\/2021\/10\/01\/white-house-debt-ceiling\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.washingtonpost.com\/us-policy\/2021\/10\/01\/white-house-debt-ceiling",
+        "snippet": "A senior official familiar with the matter said it was the administration’s
+        responsibility to review all possible options. Still, White House officials
+        have reached the conclusion that ...", "dateLastCrawled": "2021-10-05T16:22:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Democrats will be ''disappointed'' as party pares agenda ...", "url":
+        "https:\/\/www.reuters.com\/world\/us\/democrats-will-be-disappointed-party-pares-agenda-white-house-2021-10-03\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.reuters.com\/world\/us\/democrats-will-be-disappointed-party-pares-agenda...",
+        "snippet": "Democrats will be disappointed as the party is forced to scale
+        back President Joe Biden''s sweeping infrastructure and social agenda amid
+        opposition from Republicans and some moderate members of ...", "dateLastCrawled":
+        "2021-10-03T18:04:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "White House Facts", "url": "https:\/\/georgewbush-whitehouse.archives.gov\/history\/facts.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/georgewbush-whitehouse.archives.gov\/history\/facts.html",
+        "snippet": "The White House is, after all, the President’s private home. It
+        is also the only private residence of a head of state that is open to the
+        public, free of charge. The White House has a unique and fascinating history.
+        It survived a fire at the hands of the British in 1814 (during the war of
+        1812) and another fire in the West Wing in 1929, while ...", "dateLastCrawled":
+        "2021-10-03T03:24:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "Write or Call the White House | The White House", "url": "https:\/\/www.whitehouse.gov\/get-involved\/write-or-call\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/get-involved\/write-or-call",
+        "snippet": "This is the fastest way to reach the White House. If you write
+        a letter, please consider typing it on an 8 1\/2 by 11 inch sheet of paper.
+        If you hand-write your letter, please write as neatly as ...", "dateLastCrawled":
+        "2021-10-03T20:26:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "White House | house.gov", "url": "https:\/\/www.house.gov\/visitors\/white-house",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.house.gov\/visitors\/white-house",
+        "snippet": "White House. Public tours of the White House. (link is external)
+        remain temporarily suspended until further notice. White House Address: 1600
+        Pennsylvania Avenue, NW. Metro: McPherson Square. For the most up-to-date
+        information about touring and visiting the White House, call the 24-hour Visitors
+        Office Information Line at 202-456-7041.", "dateLastCrawled": "2021-10-02T21:03:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "White House: Biden still supports federal abortion funding ...",
+        "url": "https:\/\/www.washingtonexaminer.com\/politics\/white-house-abortion-funding-hyde-amendment",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.washingtonexaminer.com\/politics\/white-house-abortion-funding-hyde-amendment",
+        "snippet": "The White House defended its assertion that the true cost of the
+        Democrats’ $3.5 trillion package to most taxpayers is zero in an at times
+        tense exchange with reporters at Monday’s press briefing.", "dateLastCrawled":
+        "2021-10-04T20:51:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 04:38:53 GMT
+recorded_with: VCR 6.0.0

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe SearchgovDomainDestroyerJob do
-  subject(:perform) { SearchgovDomainDestroyerJob.perform_now(args) }
+  subject(:perform) { described_class.perform_now(args) }
   let(:domain) { 'www.archive.gov' }
   let!(:searchgov_domain) {
     SearchgovDomain.create!(domain: domain, status: 200)
@@ -12,8 +12,8 @@ describe SearchgovDomainDestroyerJob do
 
   describe '#perform' do
     it 'requires a searchgov_domain as an argument' do
-      expect{ SearchgovDomainDestroyerJob.perform_now }.
-        to raise_error(ArgumentError, 'missing keyword: searchgov_domain')
+      expect{ described_class.perform_now }.
+        to raise_error(ArgumentError, /missing keyword: :?searchgov_domain/)
     end
 
     it 'destroys the searchgov domain' do

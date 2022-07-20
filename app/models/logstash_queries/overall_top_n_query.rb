@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class OverallTopNQuery
-  include AnalyticsDSL
+  include AnalyticsDsl
 
   def initialize(since, agg_options = {})
     @since = since

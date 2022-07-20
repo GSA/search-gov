@@ -26,8 +26,6 @@ class Sites::SitesController < Sites::BaseController
     @site = Affiliate.new(site_params)
     @site.users << current_user
     if @site.save
-      @site.push_staged_changes
-      @site.assign_sitelink_generator_names!
       Emailer.new_affiliate_site(@site, current_user).deliver_now
       SiteAutodiscoverer.new(@site).run
       redirect_to(
@@ -44,7 +42,7 @@ class Sites::SitesController < Sites::BaseController
   end
 
   def destroy
-    @site.update_attributes!(active: false)
+    @site.update!(active: false)
     @site.user_ids = []
     Resque.enqueue_with_priority(:low, SiteDestroyer, @site.id)
     redirect_to(
@@ -57,7 +55,7 @@ class Sites::SitesController < Sites::BaseController
   end
 
   def pin
-    current_user.update_attributes!(default_affiliate: @site)
+    current_user.update!(default_affiliate: @site)
     redirect_back(
       fallback_location: root_path,
       flash: { success: "You have set #{@site.display_name} as your default site." }

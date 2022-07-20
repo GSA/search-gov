@@ -5,7 +5,7 @@ describe Sites::BoostedContentsBulkUploadsController do
   before { activate_authlogic }
   let(:site) { mock_model(Affiliate) }
   let(:success_message) do
-    "Bulk upload is complete.<br/>You have added 3 Text Best Bets.<br/>You have updated 2 Text Best Bets.<br/>1 Text Best Bet was not uploaded. Please ensure the URLs are properly formatted, including the http:// or https:// prefix."
+    'Bulk upload is complete.<br/>You have added 3 Text Best Bets.<br/>You have updated 2 Text Best Bets.<br/>1 Text Best Bet was not uploaded. Please ensure the URLs are properly formatted, including the http:// or https:// prefix.'
   end
 
   describe '#create' do

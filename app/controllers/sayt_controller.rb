@@ -1,15 +1,11 @@
-require 'airbrake/rails/action_controller'
+# frozen_string_literal: true
 
 class SaytController < ActionController::Metal
-  include Airbrake::Rails::ActionController
   include NewRelic::Agent::Instrumentation::ControllerInstrumentation
 
   SAYT_SUGGESTION_SIZE = 5
 
   def index
-    original_logger_level = Rails.logger.level
-    Rails.logger.level = 7
-
     query = sayt_params[:q] || ''
     sanitized_query = query.gsub('\\', '').squish
     if sanitized_query.empty?
@@ -36,7 +32,6 @@ class SaytController < ActionController::Metal
         self.response_body = ''
       end
     end
-    Rails.logger.level = original_logger_level
   end
 
   private

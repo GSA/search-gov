@@ -13,8 +13,8 @@ describe Admin::QueryCtrsController do
 
   describe "GET 'show'" do
 
-    context "when not logged in" do
-      it "should redirect to the home page" do
+    context 'when not logged in' do
+      it 'should redirect to the home page' do
         get :show, params: { module_tag: 'BOOS', site_name: 'usagov' }
         expect(response).to redirect_to login_path
       end
@@ -27,8 +27,8 @@ describe Admin::QueryCtrsController do
         get :show, params: { module_tag: 'BOOS', site_name: 'usagov' }
       end
 
-      it "should allow the admin to see query CTRs for some search module on a given site" do
-        expect(response).to be_success
+      it 'should allow the admin to see query CTRs for some search module on a given site' do
+        expect(response).to be_successful
       end
 
       it { is_expected.to assign_to(:query_ctrs).with(%w(first second)) }

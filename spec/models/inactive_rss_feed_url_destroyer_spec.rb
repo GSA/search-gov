@@ -13,7 +13,7 @@ describe InactiveRssFeedUrlDestroyer do
         expect(rss_feed_url).to receive(:rss_feeds).and_return([])
         expect(rss_feed_url).to receive(:destroy)
 
-        InactiveRssFeedUrlDestroyer.perform 100
+        described_class.perform 100
       end
     end
   end

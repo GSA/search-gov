@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe OverallTopNQuery do
   let(:query) do
-    OverallTopNQuery.new(Date.parse('2014-06-28'),
+    described_class.new(Date.parse('2014-06-28'),
                          { field: 'params.query.raw', size: 1234 })
   end
   let(:expected_body) do
@@ -11,13 +11,13 @@ describe OverallTopNQuery do
         "bool": {
           "must_not": {
             "term": {
-              "tags": "api"
+              "tags": 'api'
             }
           },
           "filter": {
             "range": {
               "@timestamp": {
-                "gte": "2014-06-28"
+                "gte": '2014-06-28'
               }
             }
           }
@@ -26,7 +26,7 @@ describe OverallTopNQuery do
       "aggs": {
         "agg": {
           "terms": {
-            "field": "params.query.raw",
+            "field": 'params.query.raw',
             "size": 1234
           }
         }

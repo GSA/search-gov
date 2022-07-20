@@ -12,10 +12,10 @@ describe FederalRegisterDocumentData do
 
       expect(fr_agency).to receive(:touch).with(:last_load_documents_requested_at)
 
-      expect(FederalRegisterDocumentData).to receive(:load_documents).
+      expect(described_class).to receive(:load_documents).
         with(fr_agency, { load_all: false }).and_return []
 
-      FederalRegisterDocumentData.import
+      described_class.import
     end
   end
 
@@ -50,23 +50,23 @@ describe FederalRegisterDocumentData do
         and_yield(document_1_attributes).
         and_yield(document_2_attributes)
 
-      expect(FederalRegisterDocumentData).to receive(:load_document).
+      expect(described_class).to receive(:load_document).
         with(document_1_attributes)
-      expect(FederalRegisterDocumentData).to receive(:load_document).
+      expect(described_class).to receive(:load_document).
         with(document_2_attributes)
 
       expect(fr_agency).to receive(:touch).with(:last_successful_load_documents_at)
 
-      FederalRegisterDocumentData.load_documents fr_agency, load_documents_options
+      described_class.load_documents fr_agency, load_documents_options
     end
 
     context 'when FederalRegisterDocumentApiParser raises an error' do
       it 'puts error message' do
         expect(parser).to receive(:each_document).and_raise
-        expect(FederalRegisterDocumentData).to receive(:puts).
+        expect(described_class).to receive(:puts).
           with(/Failed to load documents for FederalRegisterAgency #{fr_agency.id}/)
 
-        FederalRegisterDocumentData.load_documents fr_agency, load_documents_options
+        described_class.load_documents fr_agency, load_documents_options
       end
     end
   end
@@ -78,10 +78,10 @@ describe FederalRegisterDocumentData do
     let!(:document) do
       doc = FederalRegisterDocument.new(document_number: '2012-14970',
                                         document_type: 'Proposed Rule',
-                                        end_page: 36726,
+                                        end_page: 36_726,
                                         page_length: 1,
                                         publication_date: Date.parse('2012-06-20'),
-                                        start_page: 36726,
+                                        start_page: 36_726,
                                         title: 'Open Meeting Original Title',
                                         html_url: 'https://www.federalregister.gov/articles/2012/06/20/2012-14970/original')
       doc.federal_register_agency_ids = [fr_irs.id]
@@ -93,15 +93,15 @@ describe FederalRegisterDocumentData do
       it 'updates document attributes' do
         doc_attributes = { document_number: '2012-14970',
                            document_type: 'Rule',
-                           end_page: 36726,
+                           end_page: 36_726,
                            page_length: 1,
                            publication_date: Date.parse('2012-06-26'),
-                           start_page: 36726,
+                           start_page: 36_726,
                            title: 'Updated title',
                            html_url: 'https://www.federalregister.gov/articles/2012/06/20/2012-14970/updated',
                            federal_register_agency_ids: [fr_noaa.id] }.freeze
 
-        loaded_doc = FederalRegisterDocumentData.load_document doc_attributes
+        loaded_doc = described_class.load_document doc_attributes
         loaded_doc = FederalRegisterDocument.find loaded_doc.id
 
         expect(loaded_doc.attributes.symbolize_keys).to include(doc_attributes.except(:federal_register_agency_ids))
@@ -112,7 +112,7 @@ describe FederalRegisterDocumentData do
     context 'when the document is missing required attributes' do
       it 'returns nil' do
         doc_attributes = { document_type: 'Rule' }
-        loaded_doc = FederalRegisterDocumentData.load_document doc_attributes
+        loaded_doc = described_class.load_document doc_attributes
 
         expect(loaded_doc).to be_nil
       end

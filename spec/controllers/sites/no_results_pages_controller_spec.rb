@@ -12,13 +12,13 @@ describe Sites::NoResultsPagesController do
 
       context 'when site alternative links are not valid' do
         before do
-          expect(site).to receive(:update_attributes).
-              with(hash_including("additional_guidance_text"=>"Testadfaf",
+          expect(site).to receive(:update).
+              with(hash_including('additional_guidance_text'=>'Testadfaf',
               'managed_no_results_pages_alt_links_attributes' => {
-                "0"=>
-                  {"title"=>"test",
-                    "position"=>"0",
-                    "url"=>"http://google.com"
+                '0'=>
+                  {'title'=>'test',
+                    'position'=>'0',
+                    'url'=>'http://google.com'
                     }
                 }
               )).

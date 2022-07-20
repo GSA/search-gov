@@ -12,7 +12,7 @@ describe TwitterData do
     end
 
     it 'should create profile' do
-      TwitterData.import_profile(user)
+      described_class.import_profile(user)
       expect(TwitterProfile.find_by_twitter_id(user.id)).to be_present
     end
   end
@@ -30,9 +30,9 @@ describe TwitterData do
 
       expect(status).to receive(:created_at).and_return(100.hours.ago)
       allow(Tweet).to receive_message_chain(:where, :first_or_initialize) { tweet }
-      expect(tweet).not_to receive(:update_attributes!)
+      expect(tweet).not_to receive(:update!)
 
-      TwitterData.import_tweet(status)
+      described_class.import_tweet(status)
     end
   end
 
@@ -41,8 +41,8 @@ describe TwitterData do
       profile = mock_model(TwitterProfile)
       allow(TwitterProfile).to receive_message_chain(:show_lists_enabled, :limit).and_return([profile])
       expect(profile).to receive(:touch)
-      expect(TwitterData).to receive(:import_twitter_profile_lists).with(profile)
-      TwitterData.refresh_lists
+      expect(described_class).to receive(:import_twitter_profile_lists).with(profile)
+      described_class.refresh_lists
     end
   end
 
@@ -54,14 +54,14 @@ describe TwitterData do
     before do
       expect(TwitterClient).to receive(:instance).and_return(client)
       expect(client).to receive(:lists).with(100).and_return([list])
-      expect(TwitterData).to receive(:import_list).with(8).and_return(ar_list)
+      expect(described_class).to receive(:import_list).with(8).and_return(ar_list)
     end
 
     context 'when the profile twitter lists does not include the imported list' do
       it 'should append the imported lists to the profile' do
         allow(profile).to receive_message_chain(:twitter_lists, :exists?).with(id: ar_list.id).and_return(false)
         expect(profile.twitter_lists).to receive(:push).with(ar_list)
-        TwitterData.import_twitter_profile_lists(profile)
+        described_class.import_twitter_profile_lists(profile)
       end
     end
 
@@ -69,7 +69,7 @@ describe TwitterData do
       it 'should not append the imported lists to the profile' do
         allow(profile).to receive_message_chain(:twitter_lists, :exists?).with(id: ar_list.id).and_return(true)
         expect(profile.twitter_lists).not_to receive(:push).with(ar_list)
-        TwitterData.import_twitter_profile_lists(profile)
+        described_class.import_twitter_profile_lists(profile)
       end
     end
   end
@@ -77,11 +77,11 @@ describe TwitterData do
   describe '#import_list' do
     it 'should create the list' do
       member_ids = [2, 3, 5, 7, 11].freeze
-      expect(TwitterData).to receive(:get_list_member_ids).with(100).and_return(member_ids)
+      expect(described_class).to receive(:get_list_member_ids).with(100).and_return(member_ids)
       ar_list = mock_model(TwitterList)
       allow(TwitterList).to receive_message_chain(:where, :first_or_initialize).and_return(ar_list)
-      expect(ar_list).to receive(:update_attributes!).with(member_ids: member_ids)
-      TwitterData.import_list(100)
+      expect(ar_list).to receive(:update!).with(member_ids: member_ids)
+      described_class.import_list(100)
     end
   end
 
@@ -99,7 +99,7 @@ describe TwitterData do
 
       allow(cursor_attrs).to receive_message_chain(:[], :map).and_return(member_ids[0], member_ids[1])
       expect(cursor_attrs).to receive(:[]).with(:next_cursor).and_return(5, 0)
-      expect(TwitterData.get_list_member_ids(100)).to eq(member_ids.flatten)
+      expect(described_class.get_list_member_ids(100)).to eq(member_ids.flatten)
     end
 
     context 'when the twitter api responds with a 404' do
@@ -109,7 +109,7 @@ describe TwitterData do
       end
 
       it 'should return an empty list' do
-        expect(TwitterData.get_list_member_ids(100)).to eq([])
+        expect(described_class.get_list_member_ids(100)).to eq([])
       end
     end
   end
@@ -120,8 +120,8 @@ describe TwitterData do
         list = mock_model(TwitterList)
         allow(TwitterList).to receive_message_chain(:active, :statuses_updated_before).and_return([list])
         expect(list).to receive(:update_column).with(:statuses_updated_at, a_kind_of(Time))
-        expect(TwitterData).to receive(:import_list_members_and_tweets).with(list)
-        TwitterData.refresh_lists_statuses
+        expect(described_class).to receive(:import_list_members_and_tweets).with(list)
+        described_class.refresh_lists_statuses
       end
     end
   end
@@ -142,7 +142,7 @@ describe TwitterData do
           and_return(statuses)
 
       expect(statuses).to receive(:each).and_yield(status)
-      expect(TwitterData).to receive(:import_tweet).with(status)
+      expect(described_class).to receive(:import_tweet).with(status)
 
       allow(statuses).to receive_message_chain(:first, :id).and_return(1000)
       allow(statuses).to receive_message_chain(:last, :id).and_return(500)
@@ -154,7 +154,7 @@ describe TwitterData do
           and_return([])
       expect(list).to receive(:update_column).with(:last_status_id, 1000)
 
-      TwitterData.import_list_members_and_tweets(list)
+      described_class.import_list_members_and_tweets(list)
     end
   end
 
@@ -162,7 +162,7 @@ describe TwitterData do
     it 'should return an empty array if the list is not found' do
       expect(TwitterClient).to receive(:instance).and_return(client)
       expect(client).to receive(:list_timeline).and_raise(Twitter::Error::NotFound)
-      expect(TwitterData.get_list_statuses(1, {})).to be_empty
+      expect(described_class.get_list_statuses(1, {})).to be_empty
     end
   end
 end

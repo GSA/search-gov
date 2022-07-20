@@ -1,8 +1,8 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe I14yCollections do
   describe '.cached_connection' do
-    subject(:cached_connection) { I14yCollections.cached_connection }
+    subject(:cached_connection) { described_class.cached_connection }
 
     it 'returns a cached connection' do
       expect(cached_connection).to be_an_instance_of(CachedSearchApiConnection)
@@ -10,10 +10,14 @@ describe I14yCollections do
   end
 
   describe '.search' do
-    subject(:search) { I14yCollections.search(params) }
+    subject(:search) { described_class.search(params) }
 
     let(:params) do
       { handles: 'testing' }
+    end
+
+    before do
+      stub_request(:get, /#{I14yCollections::API_ENDPOINT}/)
     end
 
     it 'uses a cached connection' do

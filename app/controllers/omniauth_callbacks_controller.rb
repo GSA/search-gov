@@ -1,37 +1,52 @@
 # frozen_string_literal: true
 
 class OmniauthCallbacksController < ApplicationController
-  class LoginError < StandardError
+  class OmniauthError < StandardError
   end
 
   def login_dot_gov
-    reset_session
-    set_id_token
-    set_user_session
-    redirect_to(admin_home_page_path)
-  rescue LoginError => e
-    flash[:error] = "login internal error: #{e.message}"
+    try_to_login
+  rescue LandingPageFinder::Error => e
+    flash[:error] = e.message
+    redirect_to('/login')
+  rescue OmniauthError => e
+    Rails.logger.error e.message
+    flash[:error] = 'Error logging in. Please reach out to' \
+                    ' search@support.digitalgov.gov if the problem persists'
     redirect_to('/login')
   end
 
+  private
+
+  def try_to_login
+    @return_to = session[:return_to]
+    reset_session
+    set_id_token
+    set_user_session
+    redirect_to(destination)
+  end
+
+  def destination
+    LandingPageFinder.new(user, @return_to).landing_page
+  end
+
   def user
-    @user ||= User.from_omniauth(omniauth_data)
+    return @user if @user
 
-    raise LoginError, "can't find user #{omniauth_data.info.email}" unless @user
-
-    raise LoginError, "login not allowed for #{@user.email}" unless @user.login_allowed?
+    @user = User.from_omniauth(omniauth_data)
+    raise OmniauthError, 'db error creating user' unless @user.persisted?
 
     @user
   end
 
   def omniauth_data
-    raise LoginError, 'no omniauth data' unless request.env['omniauth.auth']
+    raise OmniauthError, 'no omniauth data' unless request.env['omniauth.auth']
 
     request.env['omniauth.auth']
   end
 
   def credentials
-    raise LoginError, 'no user credentials' unless omniauth_data['credentials']
+    raise OmniauthError, 'no user credentials' unless omniauth_data['credentials']
 
     omniauth_data['credentials']
   end

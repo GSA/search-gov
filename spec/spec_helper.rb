@@ -5,7 +5,6 @@ SimpleCov.command_name 'RSpec'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
-require 'rspec/json_expectations'
 require 'email_spec'
 require 'authlogic/test_case'
 require 'paperclip/matchers'
@@ -56,6 +55,7 @@ RSpec.configure do |config|
 
   config.mock_with :rspec
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.file_fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true
   config.include Paperclip::Shoulda::Matchers
   config.include ActiveSupport::Testing::TimeHelpers
@@ -76,13 +76,15 @@ RSpec.configure do |config|
     OutboundRateLimit.load_defaults
     TestServices::delete_es_indexes
     TestServices::create_es_indexes
-    require "#{Rails.root}/db/seeds/template.rb"
   end
 
   config.before(:each) do
     i14y_api_url = "#{I14y.host}#{I14yCollections::API_ENDPOINT}/search?"
     i14y_web_result = Rails.root.join('spec/fixtures/json/i14y/web_search/marketplace.json').read
     i14y_search_params = { handles: 'one,two', language: 'en', offset: 0, query: 'marketplase', size: 20 }
+    # Avoid making unnecessary requests to test domains
+    stub_request(:get, /(agency|foo|searchgov)\.gov/).
+      to_return(body: 'a stubbed web page')
     stub_request(:get, "#{i14y_api_url}#{i14y_search_params.to_param}").
       to_return( status: 200, body: i14y_web_result )
     OmniAuth.config.mock_auth[:default] = OmniAuth::AuthHash.new({})
@@ -90,6 +92,7 @@ RSpec.configure do |config|
 
   config.after(:each) do
     ApplicationJob.queue_adapter.enqueued_jobs.clear
+    ActiveJob::Uniqueness.unlock!
   end
 
   config.after(:suite) do
@@ -122,3 +125,5 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+RSpec::Matchers.define_negated_matcher :have_not_enqueued_job, :have_enqueued_job

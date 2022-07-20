@@ -11,7 +11,7 @@ describe HostedAzureImageEngine do
     { language: 'en',
       offset: 20,
       per_page: 10,
-      query: 'agncy (site:nasa.gov)',
+      query: 'agncy (site:nasa.gov)'
     }
   end
 
@@ -36,7 +36,7 @@ describe HostedAzureImageEngine do
         expect(search_response.spelling_suggestion).to eq('agency')
       end
 
-      it_should_behave_like "an image search"
+      it_should_behave_like 'an image search'
     end
 
     context 'when next page results are not present' do

@@ -1,0 +1,135 @@
+pa:
+
+# Search.gov localizations for: Punjabi (pa)
+
+# Default page title of search results page
+  default_serp_title: '%{query} - %{site_name} ਖੋਜ ਦੇ ਨਤੀਜੇ'
+
+# Labels for the search box
+  search: "ਖੋਜ"
+  search_label: 'ਆਪਣੇ ਖੋਜ ਸ਼ਬਦ ਇੱਥੇ ਦਰਜ ਕਰੋ'
+
+# Labels for the navigation bar
+  everything: "ਸਾਈਟ ਦੇ ਨਤੀਜੇ"
+  images: "ਤਸਵੀਰਾਂ"
+  videos: "ਵੀਡੀਓ"
+  show_more: 'ਹੋਰ'
+
+# Labels to change the sort order by date or relevance
+  by_date: 'ਸਭ ਤੋਂ ਹਾਲ ਦੇ'
+  by_relevance: 'ਸਭ ਤੋਂ ਵਧੀਆ ਮੇਲ ਖਾਂਦਾ'
+
+# Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  refine_your_search:
+  all_time: "ਹਰ ਵੇਲੇ"
+  last_hour: "ਪਿਛਲੇ ਘੰਟੇ"
+  last_day: "ਪਿਛਲੇ ਦਿਨ"
+  last_week: "ਪਿਛਲੇ ਹਫ਼ਤੇ"
+  last_month: "ਪਿਛਲੇ ਮਹੀਨੇ"
+  last_year: "ਪਿਛਲੇ ਸਾਲ"
+  custom_range: 'ਪੱਧਤੀ ਦੀ ਦਰ'
+  from: 'ਤੋਂ'
+  to: 'ਤੱਕ'
+  cdr_format: '%d/%m/%Y'
+  before: 'ਪਹਿਲੇ'
+  clear: 'ਸਾਫ਼ ਕਰੋ'
+
+# Prompts for spelling, spelling overrides, and did you mean suggestions
+  showing_results_for: ਲਈ ਨਤੀਜੇ ਦਿਖਾ ਰਿਹਾ ਹੈ %{corrected_query}
+  search_instead_for: ਬਜਾਇ ਇਸ ਦੀ ਤਲਾਸ਼ ਕਰੋ %{original_query}
+
+# Prompts for searchers to revise or refine search
+  no_results_for_and_try: "ਮਾਫ਼ ਕਰੋ,            ਲਈ ਕੋਈ ਨਤੀਜੇ ਨਹੀਂ ਮਿਲੇ '%{query}'. ਘੱਟ ਜਾਂ ਵਿਆਪਕ ਸਵਾਲ ਸ਼ਬਦ ਦਾਖਲ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰੋ"
+  too_long: "ਤੁਹਾਡੇ ਖੋਜ ਸ਼ਬਦ ਬਹੁਤ ਲੰਮੇ ਹਨ। ਇੱਕ ਛੋਟੇ ਸ਼ਬਦ ਜਾਂ ਵਾਕੰਸ਼ ਨਾਲ ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ"
+  empty_query: "ਕਿਰਪਾ ਕਰਕੇ ਉੱਤੇ ਦਿੱਤੇ ਬਾਕਸ ਵਿੱਚ ਇੱਕ ਖੋਜ ਸ਼ਬਦ ਦਰਜ ਕਰੋ।."
+
+# Labels for inline best bets, news, and related searches modules
+  recommended: "ਸ਼ਿਫ਼ਾਰਿਸ਼ ਕੀਤੀ ਜਾਂਦੀ ਹੈ"
+  default_rss_govbox_label: 'ਖ਼ਬਰਾਂ'
+  related_searches: "ਸੰਬੰਧਤ ਖੋਜਾਂ"
+
+# Labels for paging through results
+  page: 'ਪੰਨਾ'
+  prev_label: "ਪਿਛਲਾ"
+  next_label: "ਅਗਲਾ"
+  
+  searches:
+    by: ਰਾਹੀਂ
+# Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
+    skip_to_main_content: ਮੁੱਖ ਸਮੱਗਰੀ ਤੇ ਚਲੇ ਜਾਓ
+# Labels for navigation bar "sections" (most easily seen on mobile dimension)
+    menu: ਮੇਨੂ
+    browse_site: ਸਾਈਟ ਵਿੱਚ ਬ੍ਰਾਉਜ਼ ਕਰੋ
+    related_sites: ਵਿਸ਼ਾ ਵੇਖੋ
+    results_count: '%{count}'
+    search_results: ਖੋਜ ਦੇ ਨਤੀਜੇ
+# Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
+    commercial_results:
+      find_what_looking_for:
+      see_more_web_results: "%{link} ਹੋਰ ਨਤੀਜੇ ਵੇਖਣ ਲਈ"
+      see_more_image_results: "ਉੱਤੇ ਦਿੱਤੇ ਨਤੀਜੇ ਸਾਡੇ ਸੋਸ਼ਲ ਮੀਡਿਆ ਖਾਤਿਆਂ ਅਤੇ ਗੈਲਰੀਆਂ ਤੋਂ ਆਏ ਹਨ %{link} ਸਾਡੀ ਵੈਬਸਾਈਟ ਤੋਂ ਨਤੀਜੇ ਵੇਖਣ ਲਈ. (ਤੁਸੀਂ ਅਜਿਹੇ ਕੁਝ ਨਤੀਜੇ ਵੇਖ ਸਕਦੇ ਹੋ ਜੋ ਤੁਸੀਂ ਪਹਿਲਾਂ ਵੀ ਦੇਖ ਚੁਕੇ ਹੋਵੋ।)"
+      search_again: Կրկնել որոնումը
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+    site_limits:
+      including_results_for_query_from_matching_sites: ਅਸੀਂ ਲਈ ਨਤੀਜੇ ਸ਼ਾਮਲ ਕਰ ਰਹੇ ਹਾਂ %{query} ਸਬੰਧਤ ਵਿਸ਼ੇ %{matching_sites} ਸਬੰਧਤ ਵਿਸ਼ੇ.
+      do_you_want_to_see_results_for: ਸਾਰੀਆਂ ਸਾਈਟਾਂ ਤੋਂ %{query_from_all_sites}?
+      query_from_all_sites: '%{query} ਸਾਰੀਆਂ ਸਾਈਟਾਂ ਤੋਂ'
+# Label for inline news module and prompt to see more news on news vertical
+    more_news_about_query: 'ਹੋਰ %{news_label} ਖ਼ਬਰਾਂ %{query}'
+    news_about_query: '%{news_label} ਖ਼ਬਰਾਂ %{query}'
+    news_search_options:
+      date_format: 'm/d/yyyy'
+
+# Label for attributing results to Bing, Search.gov, or Google
+  powered_by: 'ਦੁਆਰਾ ਸੰਚਾਲਿਤ'
+
+# Prompts for searchers to expand/collapse the number of best bets visible on the results page
+  show_more_label: 'ਹੋਰ ਦਿਖਾਓ'
+  show_less_label: 'ਘੱਟ ਦਿਖਾਓ'
+
+# Date format used in custom date range picker and other places
+  date:
+    formats:
+      slashes: "%-d/%-m/%Y"
+
+# Labels for news-based results indicating how long ago they were published
+  datetime:
+    time_ago_in_words:
+      half_a_minute: "ਅੱਧੇ ਮਿਨਟ ਪਹਿਲਾਂ"
+      less_than_x_seconds:
+        one:   "1 ਸਕਿੰਟ ਤੋ ਵੀ ਘੱਟ ਪਹਿਲਾਂ"
+        other: "%{count} ਸਕਿੰਟਾਂ ਪਹਿਲਾਂ"
+      x_seconds:
+        one:   "1 ਸਕਿੰਟ ਪਹਿਲਾਂ"
+        other: "%{count} ਸਕਿੰਟਾਂ ਪਹਿਲਾਂ"
+      less_than_x_minutes:
+        one:   "1 ਮਿੰਟ ਤੋ ਵੀ ਘੱਟ ਪਹਿਲਾਂ"
+        other: "%{count} ਮਿੰਟ ਪਹਿਲਾਂ"
+      x_minutes:
+        one:   "1 ਮਿੰਟ ਤੋ ਵੀ ਘੱਟ ਪਹਿਲਾਂ"
+        other: "%{count} ਮਿੰਟ ਪਹਿਲਾਂ"
+      about_x_hours:
+        one:   "1 ਘੰਟਾ ਪਹਿਲਾਂ"
+        other: "%{count} ਘੰਟੇ ਪਹਿਲਾਂ"
+      x_days:
+        one:   "1 ਦਿਨ ਪਹਿਲਾਂ"
+        other: "%{count} ਦਿਨਾਂ ਪਹਿਲਾਂ"
+      about_x_months:
+        one:   "ਲਗਭਗ 1 ਮਹੀਨਾ ਪਹਿਲਾਂ"
+        other: "%{count} ਮਹੀਨੇ ਪਹਿਲਾਂ"
+      x_months:
+        one:   "1 ਮਹੀਨਾ ਪਹਿਲਾਂ"
+        other: "%{count} ਮਹੀਨੇ ਪਹਿਲਾਂ"
+      about_x_years:
+        one:   "ਲਗਭਗ 1 ਸਾਲ ਪਹਿਲਾਂ"
+        other: "%{count} ਸਾਲਾਂ ਪਹਿਲਾਂ"
+      over_x_years:
+        one:   "1 ਸਾਲ ਤੋ ਵੱਧ ਪਹਿਲਾਂ"
+        other: "%{count} ਸਾਲਾਂ ਪਹਿਲਾਂ"
+      almost_x_years:
+        one:   "ਤਕਰੀਬਨ 1 ਸਾਲ ਪਹਿਲਾਂ"
+        other: "%{count} ਸਾਲਾਂ ਪਹਿਲਾਂ"
+
+# Text for page captcha challenge, which is shown if bot-like search patterns are detected
+  are_you_human:
+  captcha_requires_javascript:

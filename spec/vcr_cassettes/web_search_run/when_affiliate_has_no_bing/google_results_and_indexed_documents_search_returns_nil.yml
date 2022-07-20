@@ -68,7 +68,6 @@ http_interactions:
       string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=A9134CB938F942E1A08F72572F15F6CD&CID=152522EC8A1769233C752EB48B186840&ID=",
         "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=A9134CB938F942E1A08F72572F15F6CD&CID=152522EC8A1769233C752EB48B186840&Type=Event.CPT&DATA=0"},
         "rankingResponse": {}}'
-    http_version: 
   recorded_at: Mon, 27 Aug 2018 00:04:37 GMT
 - request:
     method: get
@@ -132,6 +131,74 @@ http_interactions:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "no_results
         (site:nonsense.gov)"}, "rankingResponse": {}}'
-    http_version: 
   recorded_at: Tue, 05 Feb 2019 21:28:56 GMT
-recorded_with: VCR 4.0.0
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=no_results%20(site:nonsense.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 10:37:52 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 5BF0A3495AF0412ABAF8C415B1CED234
+      Bingapis-Sessionid:
+      - B95C2B83F54940DEA92D5723773DF66D
+      X-Msedge-Clientid:
+      - 01CA9795BF3161961330875DBECC6057
+      X-Msapi-Userstate:
+      - 56df
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=159,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 5BF0A3495AF0412ABAF8C415B1CED234 Ref B: BLUEDGE0511 Ref C: 2021-10-06T10:38:52Z'
+      Apim-Request-Id:
+      - 7d8e4c29-86e2-47dc-a534-3bd17f9734fe
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 10:38:52 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "no_results
+        (site:nonsense.gov)"}, "rankingResponse": {}}'
+  recorded_at: Wed, 06 Oct 2021 04:35:49 GMT
+recorded_with: VCR 6.0.0

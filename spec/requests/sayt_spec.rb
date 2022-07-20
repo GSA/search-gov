@@ -9,6 +9,18 @@ describe 'sayt' do
   let(:phrases_with_section_and_label_in_json) do
     phrases.collect { |p| { section: 'default', label: p } }.to_json.freeze
   end
+  let(:valid_params) do
+    {
+      name: affiliate.name,
+      q: 'lorem \\ ipsum',
+      callback: 'jsonp1234'
+    }
+  end
+  let(:endpoint) { '/sayt' }
+  let(:req_headers) { {} }
+  let(:make_request) do
+    get endpoint, params: valid_params, headers: req_headers
+  end
 
   before do
     SaytController.class_eval {
@@ -18,9 +30,11 @@ describe 'sayt' do
 
     SaytSuggestion.destroy_all
     phrases.each do |p|
-      SaytSuggestion.create!(:phrase => p, :affiliate => affiliate)
+      SaytSuggestion.create!(phrase: p, affiliate: affiliate)
     end
   end
+
+  it_behaves_like 'a request with CORS support', 'GET'
 
   context 'when name and query are present' do
     it 'returns an array of suggestions' do
@@ -39,7 +53,7 @@ describe 'sayt' do
 
     it 'does not completely melt down when strange characters are present' do
       expect do
-        get '/sayt', params: { q: "foo\\", callback: 'jsonp1276290049647', aid: affiliate.id }
+        get '/sayt', params: { q: 'foo\\', callback: 'jsonp1276290049647', aid: affiliate.id }
       end.not_to raise_error
       expect do
         get '/sayt', params: { q: "foo's", callback: 'jsonp1276290049647', aid: affiliate.id }

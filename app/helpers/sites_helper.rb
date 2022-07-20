@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SitesHelper
   def site_data
     {
@@ -22,7 +24,7 @@ module SitesHelper
     return if membership.nil?
     description_class = 'description label off-screen-text'
     if membership.gets_daily_snapshot_email?
-      description_class << ' label-warning'
+      description_class += ' label-warning'
       verb = 'Stop sending'
     else
       verb = 'Send'
@@ -94,18 +96,13 @@ module SitesHelper
     nav_controllers.include?(controller_name) ? {class: 'active'} : {}
   end
 
-  def preview_main_nav_item(site, title)
-    if site.search_consumer_search_enabled
-      main_nav_item title, search_consumer_search_url(affiliate: site.name), 'fa-eye', [], target: '_blank'
-    elsif site.force_mobile_format?
-      main_nav_item title, search_url(affiliate: site.name), 'fa-eye', [], target: '_blank'
-    else
-      main_nav_item title, site_preview_path(site), 'fa-eye', [], preview_serp_link_options
-    end
-  end
-
   def site_activate_search_controllers
-    %w(api_access_keys api_instructions embed_codes i14y_api_instructions type_ahead_api_instructions)
+    %w[api_access_keys
+       api_instructions
+       embed_codes
+       i14y_api_instructions
+       type_ahead_api_instructions
+       click_tracking_api_instructions]
   end
 
   def site_analytics_controllers
@@ -121,7 +118,7 @@ module SitesHelper
   end
 
   def site_manage_display_controllers
-    %w( displays templates templated_font_and_colors font_and_colors image_assets header_and_footers no_results_pages alerts )
+    %w[displays font_and_colors image_assets header_and_footers no_results_pages alerts]
   end
 
   def list_item_with_link_to_current_help_page
@@ -147,28 +144,12 @@ module SitesHelper
     special_treatment + others
   end
 
-  def list_item_with_link_to_preview_serp(title, site, options = {})
-    return if options[:staged].present? and !site.has_staged_content?
-
-    content_tag :li do
-      link_options = { affiliate: site.name, query: 'gov' }.merge options
-      link_to title, search_url(link_options), target: '_blank'
-    end
-  end
-
   def link_to_add_new_boosted_content_keyword(title, site, boosted_content)
     instrumented_link_to title, new_keyword_site_best_bets_texts_path(site), boosted_content.boosted_content_keywords.length, 'keyword'
   end
 
   def link_to_add_new_featured_collection_keyword(title, site, featured_collection)
     instrumented_link_to title, new_keyword_site_best_bets_graphics_path(site), featured_collection.featured_collection_keywords.length, 'keyword'
-  end
-
-  def preview_serp_link_options
-    { class: 'modal-page-viewer-link',
-      'data-modal-container' => '#preview-container',
-      'data-modal-content-selector' => '#preview',
-      'data-modal-title' => content_tag(:h1, 'Preview Search Results') }
   end
 
   def query_times(top_query, sees_filtered_totals)
@@ -186,11 +167,5 @@ module SitesHelper
                   nil
                 end
     row_class ? { class: row_class } : {}
-  end
-
-  def generate_jwt(site)
-    expiration = Time.now.to_i  + 4 * 3600
-    payload = {affiliateName: site.name, :expiration => expiration }
-    JWT.encode payload, SC_ACCESS_KEY, 'HS256'
   end
 end

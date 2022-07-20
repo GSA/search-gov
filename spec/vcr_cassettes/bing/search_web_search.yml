@@ -1,0 +1,245 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=building&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 06 Oct 2021 10:39:57 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - B35617D8FC01491D868E7FC98E9D42D9
+      Bingapis-Sessionid:
+      - CB3B8CDAB7FD4EDCAB6BF795DF5802FB
+      X-Msedge-Clientid:
+      - 370651A18F236AC337F641698E936B4B
+      X-Msapi-Userstate:
+      - 6cb9
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=178,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: B35617D8FC01491D868E7FC98E9D42D9 Ref B: BLUEDGE1419 Ref C: 2021-10-06T10:40:57Z'
+      Apim-Request-Id:
+      - 49a29483-65ad-4843-8a33-84fb91b55d50
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 06 Oct 2021 10:40:57 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "building"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=building",
+        "totalEstimatedMatches": 119000000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Building | Definition of Building by Merriam-Webster", "url": "https:\/\/www.merriam-webster.com\/dictionary\/building",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.merriam-webster.com\/dictionary\/building",
+        "snippet": "Building definition is - a usually roofed and walled structure
+        built for permanent use (as for a dwelling). How to use building in a sentence.",
+        "dateLastCrawled": "2021-10-03T16:24:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1", "name":
+        "Building - definition of building by The Free Dictionary", "url": "https:\/\/www.thefreedictionary.com\/building",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.thefreedictionary.com\/building",
+        "snippet": "Define building. building synonyms, building pronunciation, building
+        translation, English dictionary definition of building. n. 1. Something that
+        is built, as for human habitation; a structure. 2. The act, process, art,
+        or occupation of constructing. American Heritage® Dictionary...", "dateLastCrawled":
+        "2021-10-03T08:06:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2", "name": "Building
+        Synonyms, Building Antonyms | Merriam-Webster ...", "url": "https:\/\/www.merriam-webster.com\/thesaurus\/building",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.merriam-webster.com\/thesaurus\/building",
+        "snippet": "14 synonyms of building from the Merriam-Webster Thesaurus, plus
+        71 related words, definitions, and antonyms. Find another word for building.
+        Building: something built as a dwelling, shelter, or place for human activity.",
+        "dateLastCrawled": "2021-10-02T13:13:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3", "contractualRules":
+        [{"_type": "ContractualRules\/LicenseAttribution", "targetPropertyName": "snippet",
+        "targetPropertyIndex": 3, "mustBeCloseToContent": true, "license": {"name":
+        "CC-BY-SA", "url": "http:\/\/creativecommons.org\/licenses\/by-sa\/3.0\/"},
+        "licenseNotice": "Text under CC-BY-SA license"}], "name": "Building - Wikipedia",
+        "url": "https:\/\/en.wikipedia.org\/wiki\/Building", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/Building", "snippet": "A
+        building, or edifice, is a structure with a roof and walls standing more or
+        less permanently in one place, such as a house or factory. Buildings come
+        in a variety of sizes, shapes, and functions, and have been adapted throughout
+        history for a wide number of factors, from building materials available, to
+        weather conditions, land prices, ground conditions, specific uses, and aesthetic
+        reasons.", "dateLastCrawled": "2021-10-03T01:05:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "NYC Department of Buildings", "url": "https:\/\/www1.nyc.gov\/site\/buildings\/index.page",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www1.nyc.gov\/site\/buildings\/index.page",
+        "snippet": "Register to attend a live Q&A Session or Industry Meeting. Join
+        us at one of our bi-weekly online Q&A Sessions for property owners, RDPs,
+        licensees, filing representatives and other registrants to ask job specific
+        questions about DOB NOW and BIS filings, or general questions about permits,
+        Codes, sign offs, certificates of occupancy, etc. Industry Meetings are for
+        Registered Design ...", "dateLastCrawled": "2021-10-03T10:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Building Definition & Meaning | Dictionary.com", "url": "https:\/\/www.dictionary.com\/browse\/building",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.dictionary.com\/browse\/building",
+        "snippet": "Building definition, a relatively permanent enclosed construction
+        over a plot of land, having a roof and usually windows and often more than
+        one level, used for any of a wide variety of activities, as living, entertaining,
+        or manufacturing. See more.", "dateLastCrawled": "2021-10-02T23:08:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Building & Construction - Miami-Dade County", "url": "http:\/\/www.miamidade.gov\/building\/home.asp",
+        "isFamilyFriendly": true, "displayUrl": "www.miamidade.gov\/building\/home.asp",
+        "snippet": "Building. ATTENTION PERMITTING CUSTOMERS The following inspections
+        and permit requirement procedures will become effective for permits issued
+        on or after October 1, 2021. Inspections and Permit Requirement Procedures;
+        Homeowners General Permit Information", "dateLastCrawled": "2021-10-02T09:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "90,000+ Best Building Photos · 100% Free Download · Pexels ...",
+        "url": "https:\/\/www.pexels.com\/search\/building\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.pexels.com\/search\/building", "snippet":
+        "Download and use 90,000+ building stock photos for free. Thousands of new
+        images every day Completely Free to Use High-quality videos and images from
+        Pexels", "dateLastCrawled": "2021-10-02T23:19:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Metal Buildings For Sale | Buy Steel Buildings at Best Price", "url":
+        "https:\/\/www.vikingsteelstructures.com\/metal-buildings-for-sale", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.vikingsteelstructures.com\/metal-buildings-for-sale",
+        "snippet": "Our objective is to help you build a metal building that exceeds
+        your expectations during every phase of your project. So, buy a metal building
+        quicker and easier with Viking Steel Structures, precisely; the way you dream
+        it. To know more about metal frame buildings for sale, call us at 877-801-3263.",
+        "dateLastCrawled": "2021-10-03T11:22:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9", "name":
+        "Burlington, NC Commercial Real Estate | 49 Listings", "url": "https:\/\/www.point2homes.com\/cre\/commercial-real-estate\/us\/nc\/burlington\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.point2homes.com\/cre\/commercial-real-estate\/us\/nc\/burlington",
+        "snippet": "There is currently a total of 618,307 square feet of commercial
+        space for lease or for sale in Burlington, NC across 49 listings and 40 unique
+        spaces. Vacancies on the market span all property types and building classes,
+        and offer great variety in location-specific advantages.", "dateLastCrawled":
+        "2021-10-01T01:05:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "Affordable Building Materials | Building 9", "url": "https:\/\/building9.biz\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/building9.biz", "snippet":
+        "Semi loads of random brand name building materials from suppliers around
+        the country. Products such as light fixtures, designer bath accessories, cabinet
+        hardware, door lock sets, sinks, faucets, counter tops, and composite decking.
+        Fast forward to 2021 and we are still here, but with A LOT more options!",
+        "dateLastCrawled": "2021-10-03T06:07:00.0000000Z", "language": "en", "isNavigational":
+        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Building Technologies Office | Department of Energy", "url": "https:\/\/www.energy.gov\/eere\/buildings\/building-technologies-office",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.energy.gov\/eere\/buildings",
+        "snippet": "The Building Technologies Office develops, demonstrates, and accelerates
+        the adoption of cost-effective technologies, techniques, tools and services
+        that enable high-performing, energy-efficient and demand-flexible residential
+        and commercial buildings in both the new & existing buildings markets, in
+        support of an equitable transition to a decarbonized energy system by 2050,
+        starting with a ...", "dateLastCrawled": "2021-10-02T00:10:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "BUILDING | meaning in the Cambridge English Dictionary", "url": "https:\/\/dictionary.cambridge.org\/dictionary\/english\/building",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/dictionary.cambridge.org\/dictionary\/english\/building",
+        "snippet": "building definition: 1. a structure with walls and a roof, such
+        as a house or factory: 2. the process or business of…. Learn more.", "dateLastCrawled":
+        "2021-09-30T01:38:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "WELL Certified | International WELL Building Institute | IWBI", "url": "https:\/\/www.wellcertified.com\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.wellcertified.com",
+        "snippet": "WELL Certification. WELL is the leading tool for advancing health
+        and well-being in buildings globally. Register your office, building or other
+        space to leverage WELL’s flexible framework for improving health and human
+        experience through design. Learn more.", "dateLastCrawled": "2021-10-03T12:11:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Building and Environment - Journal - Elsevier", "url": "https:\/\/www.journals.elsevier.com\/building-and-environment",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.journals.elsevier.com\/building-and-environment",
+        "snippet": "Building and Environment is an international journal that publishes
+        original research papers and review articles related to building science,
+        urban physics, and human interaction with the indoor and outdoor built environment..
+        The Journal invites research articles conveying robust, tested knowledge on:
+        •technologies, especially smart technologies, and integrated systems for high
+        performance ...", "dateLastCrawled": "2021-10-02T23:18:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Building Abbreviation - 12 Forms to Abbreviate Building", "url":
+        "https:\/\/www.allacronyms.com\/building\/abbreviated", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.allacronyms.com\/building\/abbreviated",
+        "snippet": "Need abbreviation of Building? Short forms to Abbreviate Building.
+        12 popular forms of Abbreviation for Building updated in 2021", "dateLastCrawled":
+        "2021-10-02T03:41:00.0000000Z", "language": "en", "isNavigational": false},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "Crafting and Building - Apps on Google Play", "url": "https:\/\/play.google.com\/store\/apps\/details?id=com.mmircil.cnb2&hl=en_US&gl=US",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/play.google.com\/store\/apps\/details?id=com.mmircil.cnb2",
+        "snippet": "Crafting and Building is a free game for the whole family: from
+        kids, boys and girls, to adults. Learn how to build your house in a castle
+        or in a mine. Decorate your house with your mates '' furniture and your own
+        eyes. Learn more and more, and you will never be able to build massive castles
+        and temples!", "dateLastCrawled": "2021-10-03T07:11:00.0000000Z", "language":
+        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "buildingSMART - The International Home of BIM", "url": "https:\/\/www.buildingsmart.org\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.buildingsmart.org",
+        "snippet": "buildingSMART is the worldwide industry body driving the digital
+        transformation of the built asset industry. buildingSMART is committed to
+        delivering improvement by the creation and adoption of open, international
+        standards and solutions for infrastructure and buildings. buildingSMART is
+        the community for visionaries working to transform the design, construction,
+        operation and maintenance of ...", "dateLastCrawled": "2021-10-02T15:11:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Building Games - Play Building Games Online on Agame", "url": "https:\/\/www.agame.com\/games\/building-games",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.agame.com\/games\/building-games",
+        "snippet": "Calling all architects! It''s time to break ground in our building
+        games.You’ll get to construct everything from guard towers to shopping malls.
+        Help busy consumers shop until they drop and fearless soldiers fight to the
+        bitter end in these challenging management games.. Wizards and warriors alike
+        will definitely be depending on you in the tower defense games.", "dateLastCrawled":
+        "2021-10-03T12:21:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}}]}}}'
+  recorded_at: Wed, 06 Oct 2021 04:38:01 GMT
+recorded_with: VCR 6.0.0

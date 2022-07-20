@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ClickCounter do
-  let(:counter) { ClickCounter.new(domain: 'agency.gov') }
+  let(:counter) { described_class.new(domain: 'agency.gov') }
 
   describe '#update_click_counts' do
     subject(:update_click_counts) { counter.update_click_counts }
@@ -68,7 +68,7 @@ describe ClickCounter do
              Time.now,
              'click_domain',
              'agency.gov',
-             { field: 'params.url', size: 100000 }).
+             { field: 'params.url', size: 100_000 }).
         and_call_original
       clicks
     end
@@ -79,7 +79,7 @@ describe ClickCounter do
       end
 
       before do
-        allow(ES::ELK.client_reader).to receive(:search).and_return json
+        allow(Es::ELK.client_reader).to receive(:search).and_return json
       end
 
       it 'returns the statistically significant clicks' do

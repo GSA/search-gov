@@ -12,22 +12,22 @@ describe Admin::SiteCtrsController do
 
   describe "GET 'show'" do
 
-    context "when not logged in" do
-      it "should redirect to the home page" do
+    context 'when not logged in' do
+      it 'should redirect to the home page' do
         get :show, params: { module_tag: 'BOOS' }
         expect(response).to redirect_to login_path
       end
     end
 
-    context "when logged in as an admin" do
+    context 'when logged in as an admin' do
       before do
-        @user = users("affiliate_admin")
+        @user = users('affiliate_admin')
         UserSession.create(@user)
         get :show, params: { module_tag: 'BOOS' }
       end
 
-      it "should allow the admin to see site CTRs for some search module" do
-        expect(response).to be_success
+      it 'should allow the admin to see site CTRs for some search module' do
+        expect(response).to be_successful
       end
 
       it { is_expected.to assign_to(:site_ctrs).with(%w(first second)) }

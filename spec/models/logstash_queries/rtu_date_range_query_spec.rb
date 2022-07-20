@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe RtuDateRangeQuery do
-  let(:query) { RtuDateRangeQuery.new('affiliate_name', 'search') }
+  let(:query) { described_class.new('affiliate_name', 'search') }
   let(:expected_body) do
     {
       "query": {
@@ -9,18 +9,18 @@ describe RtuDateRangeQuery do
           "filter": [
             {
               "term": {
-                "params.affiliate": "affiliate_name"
+                "params.affiliate": 'affiliate_name'
               }
             },
             {
               "terms": {
-                "type": ["search"]
+                "type": ['search']
               }
             }
           ],
           "must_not": {
             "term": {
-              "useragent.device": "Spider"
+              "useragent.device": 'Spider'
             }
           }
         }
@@ -28,7 +28,7 @@ describe RtuDateRangeQuery do
       "aggs": {
         "stats": {
           "stats": {
-            "field": "@timestamp"
+            "field": '@timestamp'
           }
         }
       }

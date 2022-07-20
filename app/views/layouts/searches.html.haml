@@ -1,40 +1,54 @@
-!!! XML
-!!!
-%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => @affiliate.locale.to_sym, :lang => @affiliate.locale.to_sym }
+!!!strict
+%html{ html_class_hash(@search.affiliate.language) }
   %head
-    = attribution
-    = favicon_link_tag @affiliate.favicon_url.blank? ? '/favicon_affiliate.ico' : @affiliate.favicon_url
+    %meta{ charset: 'UTF-8' }
+    %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
+    %meta{ 'http-equiv' => 'X-UA-Compatible', :content => 'IE=edge' }
     = render_robots_meta_tag
-    = stylesheet_link_tag 'searches'
-    - unless @affiliate.nested_header_footer_css.blank?
-      :css
-        #{sanitize @affiliate.nested_header_footer_css}
-    :css
-      #{sanitize @affiliate.look_and_feel_css}
-    /[if IE 7]
-      = stylesheet_link_tag 'searches_ie7'
-    = stylesheet_link_tag "#{@affiliate.external_css_url}" unless @affiliate.external_css_url.blank?
-    %title= @page_title
-  %body{ :class => render_affiliate_body_class(@affiliate), :style => render_affiliate_body_style(@affiliate) }
-    #skiplink
-      %a{:href => "#main_content"} Skip to Main Content
-    #container
-      = render_affiliate_header(@affiliate)
-      #search
-        %h1 Search
-        - unless @affiliate.connections.blank?
-          .connections-wrapper
-            .connections
-              = render_connected_affiliate_links @affiliate, @search ? @search.query : ''
-        = yield
-      #usasearch_footer_container
-        %a#usasearch_footer_button{ title: t(:show_footer) } &#9660;
-        = render_affiliate_footer(@affiliate)
+    = attribution
+    != "<!-- aid: #{@search.affiliate.id} handle: #{@search.affiliate.name} -->"
+    = favicon_link_tag @search.affiliate.favicon_url.blank? ? '/favicon_affiliate.ico' : @search.affiliate.favicon_url
 
-    - if @affiliate.is_sayt_enabled?
-      = javascript_tag "var usagov_sayt_url = \"#{sayt_url(aid: @affiliate.id, extras: true)}&\";"
-    = javascript_include_tag 'searches'
-    :javascript
-      jQuery('#usasearch_footer_button').data('tooltip', { showText: '#{t :show_footer}', hideText: '#{t :hide_footer}' });
-    = render :partial => '/shared/analytics'
+    %title #{@page_title}
+
+    = font_stylesheet_link_tag @search.affiliate
+    = stylesheet_link_tag 'searches_mobile'
+    /[if IE]
+      = stylesheet_link_tag 'searches_mobile_ie'
+    ! <style>#{@search.affiliate.mobile_look_and_feel_css}</style>
+    /[if lt IE 9]
+      = stylesheet_link_tag 'searches_mobile_ie_lt9'
+      = javascript_include_tag 'searches_ie_lt9'
+
+  %body{ body_class_hash(@search.affiliate) }
+    - if $git_info.show_header
+      #git-info-header= render partial: 'shared/git_info_header'
+    %a#skiplink{ href: '#main-content', tabindex: 1 }= t 'searches.skip_to_main_content'
+    = render partial: 'searches/header_tagline', locals: { affiliate: @search.affiliate } if @search.affiliate.header_tagline.present?
+    #header-wrapper
+      - navigations = renderable_navigations @search
+      - has_menu = has_menu_items? @search, navigations
+      #menu-button-wrapper= render partial: 'searches/nav_button', locals: { search: @search } if has_menu
+      #header-logo-wrapper= mobile_header @search.affiliate
+    #main-menu-wrapper= main_menu @search, @search_params, navigations if has_menu
+
+    #navs-filters-facets.navbar-default
+      = navigations_and_related_sites(@search, @search_params, navigations)
+      = search_filters_and_results_count @search, @search_params
+    #search-bar-nav-wrapper
+      = render partial: 'searches/form', locals: { search: @search } unless advanced_search?
+
+    = render partial: 'searches/custom_date_search_form_modal',
+      locals: { search: @search, search_params: @search_params } if @search.is_a?(FilterableSearch)
+
+    #main-content{ tabindex: -1 }= yield
+
+    = render partial: 'searches/footer', locals: { affiliate: @search.affiliate }
+
+    #main-menu-backdrop{ onclick: 'void(0)' }
+
+    = javascript_include_tag 'searches_mobile'
+
+    = render partial: 'searches/usasearch_serp_analytics' if @affiliate.dap_enabled?
+    = render partial: 'shared/analytics'
     = render partial: '/shared/tracking'

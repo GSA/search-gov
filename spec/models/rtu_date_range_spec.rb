@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe RtuDateRange do
-  let(:rtu_date_range) { RtuDateRange.new('some affiliate', 'search or click type here') }
+  let(:rtu_date_range) { described_class.new('some affiliate', 'search or click type here') }
 
   shared_context 'when dates are available' do
     let(:json_response) do
@@ -21,14 +21,14 @@ describe RtuDateRange do
       allow(RtuDateRangeQuery).to receive(:new).
         with('some affiliate', 'search or click type here').
         and_return(instance_double(RtuDateRangeQuery, body: 'query_body'))
-      allow(ES::ELK.client_reader).to receive(:search).
+      allow(Es::ELK.client_reader).to receive(:search).
         with(search_opts).and_return json_response
     end
   end
 
 
-  describe "#available_dates_range" do
-    context "when dates are available" do
+  describe '#available_dates_range' do
+    context 'when dates are available' do
       include_context 'when dates are available'
 
       it 'should return the range of available dates' do
@@ -36,13 +36,13 @@ describe RtuDateRange do
       end
     end
 
-    context "when no dates are available" do
+    context 'when no dates are available' do
       let(:json_response) do
         JSON.parse(read_fixture_file('/json/rtu_dashboard/rtu_date_range_no_stats.json'))
       end
 
       before do
-        allow(ES::ELK.client_reader).to receive(:search).and_return json_response
+        allow(Es::ELK.client_reader).to receive(:search).and_return json_response
       end
 
       it 'should return the range of available dates bounded by current day' do
@@ -50,9 +50,9 @@ describe RtuDateRange do
       end
     end
 
-    context "when there is a problem getting the data" do
+    context 'when there is a problem getting the data' do
       before do
-        allow(ES::ELK.client_reader).to receive(:search).and_raise StandardError
+        allow(Es::ELK.client_reader).to receive(:search).and_raise StandardError
       end
 
       it 'should return the range of available dates bounded by current day' do

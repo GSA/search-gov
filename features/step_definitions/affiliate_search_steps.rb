@@ -13,7 +13,7 @@ Given /^affiliate "([^\"]*)" has the following RSS feeds:$/ do |affiliate_name, 
 
     if is_managed
       rss_feed = affiliate.rss_feeds.where(is_managed: true).first_or_initialize
-      rss_feed.update_attributes!(name: hash[:name],
+      rss_feed.update!(name: hash[:name],
                                   show_only_media_content: show_only_media_content,
                                   rss_feed_urls: [rss_feed_url])
     else
@@ -22,7 +22,7 @@ Given /^affiliate "([^\"]*)" has the following RSS feeds:$/ do |affiliate_name, 
                                              show_only_media_content: show_only_media_content,
                                              rss_feed_urls: [rss_feed_url])
     end
-    rss_feed.navigation.update_attributes!(is_active: hash[:is_navigable] || false,
+    rss_feed.navigation.update!(is_active: hash[:is_navigable] || false,
                                            position: hash[:position] || 100)
   end
   NewsItem.destroy_all
@@ -93,19 +93,8 @@ Then /^I should see "([^\"]*)" in bold font$/ do |text|
   page.should have_selector("strong", :text => text)
 end
 
-Then /^I should not see the indexed documents section$/ do
-  page.should_not have_selector("#indexed_documents")
-end
-
 Given /^the following Medline Topics exist:$/ do |table|
   table.hashes.each { |hash| MedTopic.create! hash }
-end
-
-Given /^the following Medline Sites exist:$/ do |table|
-  table.hashes.each do |hash|
-    med_topic = MedTopic.where(hash.slice('medline_title', 'locale')).first
-    med_topic.med_sites.create!(hash.slice('title', 'url'))
-  end
 end
 
 Given /^the following Related Medline Topics for "([^\"]*)" in (English|Spanish) exist:$/ do |medline_title, language, table|
@@ -118,22 +107,8 @@ Given /^the following Related Medline Topics for "([^\"]*)" in (English|Spanish)
   end
 end
 
-Then /^I should see (.+)\'s date in the (English|Spanish) search results$/ do |duration, locale|
-  date = Date.current.send(duration.to_sym)
-  date_string = locale == 'Spanish' ? date.strftime("%-d/%-m/%Y") : date.strftime("%-m/%-d/%Y")
-  page.should have_content(date_string)
-end
-
 Then /^I should see (\d+) search result title links? with url for "([^"]*)"$/ do |count, url|
   page.should have_selector(".title a[href='#{url}']", count: count)
-end
-
-Then /^I should see (\d+) news results?$/ do |count|
-  page.should have_selector(".newsitem", :count => count)
-end
-
-Then /^I should see (\d+) (image|video) news results$/ do |count, media_type|
-  page.should have_selector(".newsitem.#{media_type}", count: count)
 end
 
 Given /^the following Twitter Profiles exist:$/ do |table|
@@ -162,37 +137,6 @@ Given /^the following Tweets exist:$/ do |table|
   ElasticTweet.commit
 end
 
-Then /^I should see (\d+) collapsible facet values?$/ do |count|
-  page.should have_selector('.collapsible', :count => count)
-end
-
-Then /^I should not see collapsible facet value$/ do
-  page.should_not have_selector('.collapsible')
-end
-
-Then /^I should see the left column options expanded$/ do
-  page.should have_selector('#left_column .options-wrapper.expanded')
-end
-
-Then /^I should not see the left column options expanded$/ do
-  page.should_not have_selector('#left_column .options-wrapper.expanded')
-end
-
-Then /^I should see a link to "(.*?)" with sanitized "(.*?)" query$/ do |link_title, query|
-  path_and_query = page.find(:xpath, "//a[text()='Images']")[:href]
-  parsed_url = URI.parse("http://localhost#{path_and_query}")
-  query_hash = CGI::parse(parsed_url.query)
-  query_hash['query'].should == ["#{query}"]
-end
-
 Then /^I should see a link to "([^"]*)" with text "([^"]*)"$/ do |url, text|
   page.should have_link(text, :href => url)
-end
-
-Then /^a Tweet click should be logged/ do
-  Rails.logger.should_receive(:info).with("[Click] ")
-end
-
-Then /^I should not see legacy results count$/ do
-  page.should_not have_selector('#summary')
 end

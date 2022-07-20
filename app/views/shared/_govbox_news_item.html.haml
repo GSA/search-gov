@@ -1,6 +1,0 @@
-.newsitem.searchresult{:id => "newsitem#{index+1}"}
-  - module_name = instance.is_video? ? 'VIDS' : 'NEWS'
-  = link_with_click_tracking(truncate_html(translate_bing_highlights(h(instance.title))), instance.link, @affiliate, @search.query, index, module_name, @search_vertical, instance.id)
-  %h4
-    = render_feed_name_in_govbox @affiliate, instance.rss_feed_url_id
-    = news_item_time_ago_in_words(instance.published_at)

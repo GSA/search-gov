@@ -1,0 +1,134 @@
+ps:
+
+# Search.gov localizations for: Pashto (ps)
+
+# Default page title of search results page
+  default_serp_title: '%{query} - %{site_name} د پلټنې پايلې'
+
+# Labels for the search box
+  search: "پلټنه"
+  search_label: 'د پلټنې وړ عبارت ولیکئ'
+
+# Labels for the navigation bar
+  everything: "د سایت پایلې"
+  images: "انځورونه"
+  videos: "ویدیو"
+  show_more: 'نور'
+
+# Labels to change the sort order by date or relevance
+  by_date: 'تر ټولو وروستی'
+  by_relevance: 'تر ټولو غوره سمون'
+
+# Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  refine_your_search:
+  all_time: "تل"
+  last_hour: "مخکینی ګړۍ"
+  last_day: "مخکینی ورځ"
+  last_week: "مخکینی اونۍ"
+  last_month: "مخکینی مياشت"
+  last_year: "مخکینی کال"
+  custom_range: 'دوديزه محدوده'
+  from: 'د '
+  to: 'ته'
+  cdr_format: '%m/%d/%Y'
+  before: 'مخکې'
+  clear: 'پاک'
+
+# Prompts for spelling, spelling overrides, and did you mean suggestions
+  showing_results_for: "د پايلو ښودنه لپاره د %{corrected_query}"
+  search_instead_for: بديله پلټنه لپاره "د %{original_query}"
+
+# Prompts for searchers to revise or refine search
+  no_results_for_and_try: "په بښنه، پايلې ونه موندل شوې لپاره د '%{query}'. د پلټونکو لږو يا پراخو اصطلاحاتو د ننه کول وازمويئ"
+  too_long: "د پلټنې عبارت ډېر اوږد دی. د يوې لنډې اصطلاح په کارلو سره يې بيا وازمويئ"
+  empty_query: "د مهربانۍ له مخې د پلټنې وړ اصطلاح په پورتني تش بکس کې وليکئ."
+
+# Labels for inline best bets, news, and related searches modules
+  recommended: "وړانديز شوې"
+  default_rss_govbox_label: 'خبرونه'
+  related_searches: "اړونده پلټنې"
+
+# Labels for paging through results
+  page: 'پاڼه'
+  prev_label: "مخکينی"
+  next_label: "وروستی "
+
+  searches:
+    by: by
+# Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
+    skip_to_main_content: اصلي منځ پانګې ته تښل
+# Labels for navigation bar "sections" (most easily seen on mobile dimension)
+    menu: غورنۍ
+    browse_site: د سایت لټول
+    related_sites: د سرليک لیدل
+    results_count: '%{count}'
+    search_results: د پلټنې پايلې
+# Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
+    commercial_results:
+      find_what_looking_for:
+      see_more_web_results: "%{link} د نورو پايلو کتل"
+      see_more_image_results: "پورتنۍ پايلې د ټولنيزو رسنيو او زمونږ د انځورغالي څخه دي  %{link} زمونږ د وېبپاڼې څخه د پايلو د کتنې لپاره. (زمونږ د وېبپاڼې څخه د پايلو د کتنې لپاره)"
+      search_again: خپله پلټنه يو ځل بيا وازمويی
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+    site_limits:
+      including_results_for_query_from_matching_sites: مونږ پايلې شاملوو لپاره د %{query} د %{matching_sites} يواځې.
+      do_you_want_to_see_results_for: آيا تاسو غواړئ پايلې وګوری لپاره د %{query_from_all_sites}?
+      query_from_all_sites: '%{query} د ټولو سايټونو څخه'
+# Label for inline news module and prompt to see more news on news vertical
+    more_news_about_query: 'نور %{news_label} په اړه %{query}'
+    news_about_query: '%{news_label} په اړه %{query}'
+    news_search_options:
+      date_format: 'm/d/yyyy'
+# Label for attributing results to Bing, Search.gov, or Google
+  powered_by: 'جوړ شوی په وسیله د'
+
+# Prompts for searchers to expand/collapse the number of best bets visible on the results page
+  show_more_label: 'د نورو کتل'
+  show_less_label: 'د نورو کتل'
+
+# Date format used in custom date range picker and other places
+  date:
+    formats:
+      slashes: "%-m/%-d/%Y"
+
+# Labels for news-based results indicating how long ago they were published
+  datetime:
+    time_ago_in_words:
+      half_a_minute: "نيمه دقیقه مخکې"
+      less_than_x_seconds:
+        one: "د يوې ثانيې څخه لږ مخکې"
+        other: "لږ تر %{count} څو ثانيې مخکې"
+      x_seconds:
+        one: "يوه ثانيه مخکې"
+        other: "%{count} څو ثانيې مخکې"
+      less_than_x_minutes:
+        one: "د يوې دقیقې څخه لږ مخکې"
+        other: "لږ تر %{count} څو دقیقې مخکې"
+      x_minutes:
+        one: "يوه دقیقه مخکې"
+        other: "%{count} څو دقیقې مخکې "
+      about_x_hours:
+        one: "نږدې يوه ګړۍ مخکې"
+        other: "څو ګړۍ مخکې %{count} څو ګړۍ مخکې"
+      x_days:
+        one: "يوه ورځ مخکې"
+        other: "%{count} څو ورځې مخکې"
+      about_x_months:
+        one: "نږدې يوه مياشت مخکې"
+        other: "څو مياشتې مخکې %{count} څو مياشتې مخکې"
+      x_months:
+        one: "يوه مياشت مخکې"
+        other: "%{count} TRANSLATION"
+      about_x_years:
+        one: "نږدې يو کال مخکې"
+        other: "څو کاله مخکې %{count} څو کاله مخکې"
+      over_x_years:
+        one: "د يوه کال څخه زيات مخکې"
+        other: "څو کاله مخکې %{count} څو کاله مخکې"
+      almost_x_years:
+        one: "نږدې يو کال مخکې 1 نږدې يو کال مخکې"
+        other: "څو کاله مخکې %{count} څو کاله مخکې"
+
+# Text for page captcha challenge, which is shown if bot-like search patterns are detected
+  are_you_human:
+  captcha_requires_javascript:

@@ -1,6 +1,5 @@
 Feature: Users
 
-  @javascript
   Scenario: Logged-in, approved non-developer user visits account page
     Given I am logged in with email "affiliate_admin@fixtures.org"
     When I go to the user account page
@@ -11,53 +10,40 @@ Feature: Users
     And I should see "Agency"
     And I should see "Email"
 
-  @javascript
   Scenario: User goes to login page and is directed to the security notification first
     Given I go to the login page
     Then I should see "Security Notification"
     And I should see "This is a U.S. General Services Administration Federal Government computer system"
 
-  # to be updated in SRCH-1237 for login.gov
-  @wip
   @javascript
   Scenario: Registering as a new affiliate user who is a government employee or contractor with .gov email address
-    Given I am on the sign up page
+    Given I log in with email "lorem.ipsum@agency.gov"
+    Then I should be on the user edit account page
     When I fill in the following:
-      | Your first name | Lorem                  |
-      | Your last name  | Ipsum                  |
-      | Email           | lorem.ipsum@agency.gov |
-    And I press "Sign up"
-    And I should see "Federal government agency can't be blank"
-    When I fill in the following:
-      | Your first name           | Lorem                  |
-      | Your last name            | Ipsum                  |
-      | Email                     | lorem.ipsum@agency.gov |
-      | Federal government agency | Agency                 |
-    And I press "Sign up"
-    Then I should be on the user account page
-    When I sign out
-    Then I should be on the login page
+      | First name        | Lorem                  |
+      | Last name         | Ipsum                  |
+      | Government agency | Agency                 |
+    And I press "Save"
+    Then I should see "Account updated!"
     And "lorem.ipsum@agency.gov" should receive an email
     When I open the email
     Then I should see "Welcome to Search.gov" in the email subject
 
-  @javascript
   Scenario: Registering as a new affiliate user without government affiliated email address
     Given the following Users exist:
       | first_name   | last_name         | email             |
       | Joe          | Schno             | jschmo@random.com |
     And I am logged in with email "jschmo@random.com"
-    Then I should be on the user account page
+    Then I should be on the user edit account page
     And I should see "Because you don't have a .gov or .mil email address, we need additional information."
 
-  @javascript
   Scenario: Logging in as a new approved affiliate user without government affiliated email address
     Given the following Users exist:
       | first_name | last_name         | email             | approval_status |
       | Joe        | Schmo             | jschmo@random.com | approved        |
 
     And I am logged in with email "jschmo@random.com"
-    Then I should be on the user account page
+    Then I should be on the new site page
     And I should not see "Because you don't have a .gov or .mil email address, we need additional information."
 
   @javascript
@@ -101,7 +87,7 @@ Feature: Users
     And I should see "Because you don't have a .gov or .mil email address, your account is pending approval."
     And I should be on the user account page
 
-   Scenario: Logging in as a developer user
+  Scenario: Logging in as a developer user
     Given I am logged in with email "developer@fixtures.org"
     When I go to the user account page
     Then I should see "Our Recalls API Has Moved"

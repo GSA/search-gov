@@ -1,15 +1,18 @@
 Rails.application.routes.draw do
-
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   concern :active_scaffold_association, ActiveScaffold::Routing::Association.new
   concern :active_scaffold, ActiveScaffold::Routing::Basic.new(association: true)
   get '/search' => 'searches#index', as: :search
-  get '/api/search' => 'api#search', as: :api_search
   get '/search/advanced' => 'searches#advanced', as: :advanced_search
   get '/search/images' => 'image_searches#index', as: :image_search
   get '/search/docs' => 'searches#docs', as: :docs_search
   get '/search/news' => 'searches#news', as: :news_search
-  get '/search/news/videos' => 'searches#video_news', as: :video_news_search
+  # Provide some backward compatibility for searchers using the legacy video news search URL
+  get '/search/news/videos', to: redirect(path: '/search')
   get '/auth/logindotgov/callback', to: 'omniauth_callbacks#login_dot_gov'
+
+  # Deprecated
+  get '/api/search' => 'api/v1/search#search', as: :api_search
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
@@ -27,13 +30,12 @@ Rails.application.routes.draw do
       get '/search/video' => 'searches#video'
       get '/search/docs' => 'searches#docs'
       get '/agencies/search' => 'agencies#search'
+      post '/click' => 'click#create'
     end
   end
 
-  mount SearchConsumer::API => '/api/c'
-
   get '/sayt' => 'sayt#index'
-  get '/clicked' => 'clicked#index'
+  post '/clicked' => 'clicked#create'
   get '/healthcheck' => 'health_checks#new'
   get '/login' => 'user_sessions#security_notification', as: :login
   get '/signup' => 'user_sessions#security_notification', as: :signup
@@ -67,6 +69,7 @@ Rails.application.routes.draw do
       end
       resource :i14y_api_instructions, only: [:show]
       resource :type_ahead_api_instructions, only: [:show]
+      resource :click_tracking_api_instructions, only: [:show]
       resource :clicks, only: [:new, :create]
       resource :query_clicks, only: [:show]
       resource :query_referrers, only: [:show]
@@ -83,9 +86,7 @@ Rails.application.routes.draw do
         collection { get :new_connection }
       end
       resource :embed_code, only: [:show]
-      resource :template, only: [:edit, :update]
       resource :font_and_colors, only: [:edit, :update]
-      resource :templated_font_and_colors, only: [:edit, :update]
       resource :header_and_footer, only: [:edit, :update] do
         collection do
           get :new_footer_link
@@ -99,7 +100,6 @@ Rails.application.routes.draw do
         end
       end
       resource :monthly_reports, only: [:show]
-      resource :preview, only: [:show]
       resource :setting, only: [:edit, :update]
       resource :clone, only: [:new, :create]
       resource :supplemental_feed,
@@ -171,8 +171,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :affiliates, concerns: :active_scaffold
-    resources :affiliate_notes, concerns: :active_scaffold
-    resources :affiliate_templates, concerns: :active_scaffold
     resources :users, concerns: :active_scaffold
     resources :sayt_filters, concerns: :active_scaffold
     resources :sayt_suggestions, concerns: :active_scaffold
@@ -184,6 +182,11 @@ Rails.application.routes.draw do
     resources :site_feed_urls, concerns: :active_scaffold
     resources :superfresh_urls, concerns: :active_scaffold
     resources :superfresh_urls_bulk_upload, only: :index do
+      collection do
+        post :upload
+      end
+    end
+    resources :bulk_url_upload, only: :index do
       collection do
         post :upload
       end
@@ -203,7 +206,6 @@ Rails.application.routes.draw do
     resources :features, concerns: :active_scaffold
     resources :affiliate_feature_additions, concerns: :active_scaffold
     resources :help_links, concerns: :active_scaffold
-    resources :compare_search_results, only: :index
     resources :bing_urls, concerns: :active_scaffold
     resources :statuses, concerns: :active_scaffold
     resources :system_alerts, concerns: :active_scaffold
@@ -221,7 +223,6 @@ Rails.application.routes.draw do
     resource :search_module_ctrs, only: [:show]
     resource :site_ctrs, only: [:show]
     resource :query_ctrs, only: [:show]
-    resources :whitelisted_v1_api_handles, concerns: :active_scaffold
     resources :hints, concerns: :active_scaffold do
       collection { get 'reload_hints' }
     end
@@ -245,6 +246,9 @@ Rails.application.routes.draw do
         end
       end
     end
+
+    mount Resque::Server.new, at: '/resque', constraints: AffiliateAdminConstraint
+    get '/resque/(*all)', to: redirect(path: '/login')
   end
 
   match '/admin/affiliates/:id/analytics' => 'admin/affiliates#analytics', :as => :affiliate_analytics_redirect, via: :get
@@ -264,9 +268,4 @@ Rails.application.routes.draw do
     Rails.application.secrets.organization[:page_not_found_url],
     status: 302
   )
-
-  get "/c/search" => 'dev#null', :as => :search_consumer_search
-  get "/c/admin/:site_name" => 'dev#null', :as => :search_consumer_admin
-  get "/c/search/rss" => 'dev#null', :as => :search_consumer_news_search
-  get "/c/search/docs" => 'dev#null', :as => :search_consumer_docs_search
 end

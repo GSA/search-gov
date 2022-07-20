@@ -8,7 +8,6 @@
   %li=link_to('Rss Feed Urls', admin_rss_feed_urls_path)
   %li=link_to("System Alerts", admin_system_alerts_path)
   %li=link_to("Outbound Rate Limits", admin_outbound_rate_limits_path)
-  %li=link_to("Whitelisted V1 API Handles", admin_whitelisted_v1_api_handles_path)
   %li=link_to("Excluded Domains", admin_excluded_domains_path)
   %li=link_to("Search.gov Domains", admin_searchgov_domains_path)
 
@@ -56,6 +55,6 @@
 
 %h2 URL Management
 %ul
-  %li=link_to("Compare Search Results", admin_compare_search_results_path)
   %li=link_to("Superfresh Urls", admin_superfresh_urls_path)
   %li=link_to("Superfresh Bulk Upload", admin_superfresh_urls_bulk_upload_index_path)
+  %li=link_to("Bulk Search.gov URL Upload", admin_bulk_url_upload_index_path)

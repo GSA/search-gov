@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Api::V1::AgenciesController do
 
-  describe "#search" do
+  describe '#search' do
 
     context 'when results are available' do
       before do
@@ -18,7 +18,7 @@ describe Api::V1::AgenciesController do
               query: 'the nps'
             },
             format: 'json'
-        expect(response).to be_success
+        expect(response).to be_successful
         expect(response.body).to eq({name: @agency.name, abbreviation: @agency.abbreviation,
                                  organization_code: @agency.agency_organization_codes.first.organization_code }.to_json)
       end
@@ -31,7 +31,7 @@ describe Api::V1::AgenciesController do
               query: 'error',
               format: 'json'
             }
-        expect(response).not_to be_success
+        expect(response).not_to be_successful
         expect(response.body).to match(/No matching agency could be found./)
       end
     end

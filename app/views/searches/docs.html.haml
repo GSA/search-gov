@@ -1,15 +1,11 @@
-#search_box
-  = render 'docs_search_form'
-  .left-nav-label-wrapper= left_nav_label(@affiliate.left_nav_label)
-  .summary-wrapper
-    - if @search.results.present?
-      = results_summary(@search)
-      .advancedsearch
-        = advanced_search_link(@search_options, @affiliate)
-    - else
-      = render 'shared/blank_search_results', :search => @search
-#left_column
-  = render "shared/affiliate_vertical_navigation"
-%div#main_content{:name => 'main_content'}
-#results
-  = render :partial => "shared/searchresults", :locals => { :search => @search }
+#search{ search_data(@search, @search_vertical) }
+  - if @search.commercial_results?
+    = spelling_suggestion(@search, @search_options)
+  -else
+    = search_suggestion(@search, 'SPEL')
+
+  - if @search.results.present?
+    = render partial: 'organic_results', locals: { search: @search }
+    = render partial: 'pagination', locals: { search: @search }
+  - else
+    = render partial: 'no_results', locals: { search: @search }

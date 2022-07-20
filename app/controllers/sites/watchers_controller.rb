@@ -27,7 +27,7 @@ class Sites::WatchersController < Sites::SetupSiteController
   end
 
   def update
-    if @watcher.update_attributes(watcher_params)
+    if @watcher.update(watcher_params)
       redirect_to site_watchers_path(@site), flash: { success: 'This watcher has been updated.' }
     else
       load_hints

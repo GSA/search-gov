@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SearchgovUrl < ApplicationRecord
   include Fetchable
   include RobotsTaggable
@@ -18,7 +20,10 @@ class SearchgovUrl < ApplicationRecord
   attr_readonly :url
 
   validates_associated :searchgov_domain, on: :create
-  validates_presence_of :searchgov_domain, on: :create
+  validates(:searchgov_domain,
+            presence: { message: 'is not a valid SearchgovDomain' },
+            on: :create
+            )
 
   validates :url, uniqueness: true
   validates :url_extension,
@@ -94,7 +99,6 @@ class SearchgovUrl < ApplicationRecord
 
   def download
     @tempfile ||= begin
-                    
       file = Tempfile.open("SearchgovUrl:#{Time.now.to_i}", Rails.root.join('tmp'))
       file.binmode
       body = response.body

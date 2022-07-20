@@ -2,19 +2,19 @@ require 'spec_helper'
 
 describe QueryCtr do
 
-  let(:query_ctr) { QueryCtr.new(7, 'BOOS', 'usagov') }
+  let(:query_ctr) { described_class.new(7, 'BOOS', 'usagov') }
 
-  describe "#query_ctrs" do
-    context "when stats are available for the range" do
+  describe '#query_ctrs' do
+    context 'when stats are available for the range' do
       let(:historical_query_json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/historical_query_ctr.json")) }
       let(:query_json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/rtu_queries_request.json")) }
 
       before do
-        expect(ES::ELK.client_reader).to receive(:search).
+        expect(Es::ELK.client_reader).to receive(:search).
           and_return(historical_query_json_response, query_json_response)
       end
 
-      it "should return collection of QueryCtrStat instances ordered by decr search+click count" do
+      it 'should return collection of QueryCtrStat instances ordered by decr search+click count' do
         stats = query_ctr.query_ctrs
         expect(stats.first.query).to eq('petition for marine held in mexico')
         expect(stats.first.historical.impressions).to eq(17)
@@ -31,16 +31,16 @@ describe QueryCtr do
 
     end
 
-    context "when stats are available for the historical range but not for the current day" do
+    context 'when stats are available for the historical range but not for the current day' do
       let(:historical_query_json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/historical_query_ctr.json")) }
       let(:query_json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/recent_ctr_empty.json")) }
 
       before do
-        expect(ES::ELK.client_reader).to receive(:search).
+        expect(Es::ELK.client_reader).to receive(:search).
           and_return(historical_query_json_response, query_json_response)
       end
 
-      it "should return collection of QueryCtrStat instances ordered by decr search+click count" do
+      it 'should return collection of QueryCtrStat instances ordered by decr search+click count' do
         stats = query_ctr.query_ctrs
         expect(stats.first.query).to eq('petition for marine held in mexico')
         expect(stats.first.historical.impressions).to eq(17)
@@ -57,12 +57,12 @@ describe QueryCtr do
 
     end
 
-    context "when no stats are available for the daterange" do
+    context 'when no stats are available for the daterange' do
       before do
-        expect(ES::ELK.client_reader).to receive(:search).twice.and_return nil
+        expect(Es::ELK.client_reader).to receive(:search).twice.and_return nil
       end
 
-      it "should return an empty array" do
+      it 'should return an empty array' do
         stats = query_ctr.query_ctrs
         expect(stats).to eq([])
       end

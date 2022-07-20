@@ -5,6 +5,18 @@ DEFAULTS: &DEFAULTS
   default_search_label: search
   api_access_key: <%= SecureRandom.hex(8) %>
 
+searchgov_affiliate:
+  <<: *DEFAULTS
+  search_engine: SearchGov
+  display_name: SearchGov Affiliate
+  name: searchgovaffiliate
+
+bing_v7_affiliate:
+  <<: *DEFAULTS
+  search_engine: BingV7
+  display_name: Bing V7 Affiliate
+  name: bingV7affiliate
+
 usagov_affiliate:
   <<: *DEFAULTS
   display_name: USA.gov
@@ -36,7 +48,6 @@ basic_affiliate:
   name: nps.gov
   website: http://www.nps.gov
   is_sayt_enabled: false
-  search_engine: Google
   youtube_profiles: nps
   api_access_key: basic_key
 
@@ -68,18 +79,9 @@ spanish_affiliate:
   locale: es
   api_access_key: spanish_key
 
-legacy_affiliate:
-  <<: *DEFAULTS
-  display_name: Legacy
-  name: legacy.noaa.gov
-  website: http://www.noaa.gov
-  force_mobile_format: false
-  api_access_key: legacy_key
-
 bing_image_search_enabled_affiliate:
   <<: *DEFAULTS
   display_name: USA.gov with commercial image results
-  force_mobile_format: true
   is_bing_image_search_enabled: true
   name: cr.images.gov
   website: https://www.usa.gov
@@ -88,21 +90,10 @@ bing_image_search_enabled_affiliate:
 site_with_one_user:
   <<: *DEFAULTS
   display_name: site with one user
-  force_mobile_format: true
   is_bing_image_search_enabled: true
   name: site_with_one_user
   website: https://www.usa.gov
   api_access_key: one_user_key
-
-search_consumer_affiliate:
-  <<: *DEFAULTS
-  display_name: site that uses search consumer app
-  force_mobile_format: true
-  is_bing_image_search_enabled: true
-  name: search_consumer_affiliate
-  website: https://www.usa.gov
-  api_access_key: search_consumer_key
-  search_consumer_search_enabled: true
 
 dcv_affiliate:
   <<: *DEFAULTS
@@ -124,3 +115,14 @@ i14y_affiliate:
   display_name: I14y Affiliate
   name: i14y_affiliate
   gets_i14y_results: true
+
+affiliate_for_user_with_default_site:
+  <<: *DEFAULTS
+  display_name: Default Site
+  name: default_site
+
+russian_affiliate:
+  <<: *DEFAULTS
+  display_name: Russian Affiliate
+  name: russian_affiliate
+  locale: ru

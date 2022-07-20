@@ -1,5 +1,5 @@
-Then /^I should see (\d+) job postings?$/ do |num_results|
-  page.should have_selector('.content-block-item.job.result')
+Then /^I should see at least (\d+) job postings?$/ do |num_results|
+  page.should have_selector('.content-block-item.job.result', minimum: num_results)
 end
 
 Then /I should see an annual salary/ do

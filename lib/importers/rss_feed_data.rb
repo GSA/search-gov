@@ -32,35 +32,35 @@ class RssFeedData
     detect_namespaces
     validation_errors = extract_news_items
     last_crawl_status = generate_last_crawl_status(validation_errors)
-    rss_feed_url.update_attributes!(last_crawl_status: last_crawl_status)
+    rss_feed_url.update!(last_crawl_status: last_crawl_status)
   rescue => e
     Rails.logger.warn(e)
-    rss_feed_url.update_attributes!(last_crawl_status: e.message)
+    rss_feed_url.update!(last_crawl_status: e.message)
   end
 
   private
 
   def validate_document
-    if !(document && document.valid?)
-      rss_feed_url.update_attributes!(last_crawl_status: 'Unknown feed type.')
-      false
-    else
+    if document&.valid?
       true
+    else
+      rss_feed_url.update!(last_crawl_status: 'Unknown feed type.')
+      false
     end
   end
 
   def validate_redirection
     if rss_feed_url.protocol_redirect?
-      rss_feed_url.update_attributes(url: current_url)
+      rss_feed_url.update(url: current_url)
     else
-      rss_feed_url.update_attributes!(last_crawl_status: "redirection forbidden: #{url} -> #{current_url}")
+      rss_feed_url.update!(last_crawl_status: "redirection forbidden: #{url} -> #{current_url}")
       false
     end
   end
 
   def validate_rss_items
     if rss_items.blank?
-      rss_feed_url.update_attributes!(last_crawl_status: "Feed looks empty")
+      rss_feed_url.update!(last_crawl_status: "Feed looks empty")
       false
     else
       true
@@ -213,7 +213,7 @@ class RssFeedData
   end
 
   def extract_elements(item, *elements)
-    Hash[elements.map { |element| [element, extract_element(item, element)] }]
+    elements.index_with { |element| extract_element(item, element) }
   end
 
   def extract_element(parent, element)

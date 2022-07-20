@@ -3,7 +3,7 @@ When /^(?:|I )add the following RSS Feed URLs:$/ do |table|
   table.hashes.each_with_index do |hash, index|
     click_link 'Add Another URL'
     url_label = "URL #{url_fields_count + index + 1}"
-    find 'label', text: "#{url_label}"
+    find('label', text: url_label, visible: false)
     fill_in url_label, with: hash[:url]
   end
 end

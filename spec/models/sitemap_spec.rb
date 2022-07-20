@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Sitemap do
@@ -15,14 +17,14 @@ describe Sitemap do
 
   describe 'validations' do
     context 'when validating url uniqueness' do
-      let!(:original) { Sitemap.create!(valid_attributes) }
+      before { described_class.create!(valid_attributes) }
 
       it 'rejects duplicate urls' do
-        expect(Sitemap.new(valid_attributes)).to_not be_valid
+        expect(described_class.new(valid_attributes)).not_to be_valid
       end
 
       it 'is not case-sensitive' do
-        expect(Sitemap.create!(url: url.upcase)).to be_valid
+        expect(described_class.new(url: url.upcase)).not_to be_valid
       end
     end
   end
@@ -31,7 +33,7 @@ describe Sitemap do
     describe 'on create' do
       it 'is automatically indexed' do
         expect(SitemapIndexerJob).to receive(:perform_later).with(sitemap_url: url)
-        Sitemap.create!(url: url)
+        described_class.create!(url: url)
       end
     end
   end

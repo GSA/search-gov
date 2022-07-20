@@ -9,14 +9,14 @@ http_interactions:
     headers:
       User-Agent:
       - |-
-        DGSearch/0.0.0 google-api-ruby-client/0.19.5 Mac OS X/10.11.6
+        DGSearch/0.0.0 google-api-ruby-client/0.19.8 Mac OS X/10.15.7
          (gzip)
       Accept:
       - "*/*"
       Accept-Encoding:
       - gzip,deflate
       Date:
-      - Thu, 22 Feb 2018 07:12:44 GMT
+      - Tue, 07 Sep 2021 16:54:22 GMT
       Content-Type:
       - application/x-www-form-urlencoded
   response:
@@ -24,54 +24,51 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Expires:
-      - Thu, 22 Feb 2018 07:12:45 GMT
-      Date:
-      - Thu, 22 Feb 2018 07:12:45 GMT
-      Cache-Control:
-      - private, max-age=0, must-revalidate, no-transform
-      Etag:
-      - '"_gJQceDMxJ8gP-8T2HLXUoURK8c/sUxIm45xENxrd0pOCl3gcHVvDVw"'
-      Vary:
-      - Origin
-      - X-Origin
       Content-Type:
       - application/json; charset=UTF-8
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
       Content-Encoding:
       - gzip
-      X-Content-Type-Options:
-      - nosniff
+      Date:
+      - Tue, 07 Sep 2021 16:54:22 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
       X-Frame-Options:
       - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      Server:
-      - GSE
+      X-Content-Type-Options:
+      - nosniff
       Alt-Svc:
-      - hq=":443"; ma=2592000; quic=51303431; quic=51303339; quic=51303338; quic=51303337;
-        quic=51303335,quic=":443"; ma=2592000; v="41,39,38,37,35"
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443";
+        ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
+        ma=2592000; v="46,43"
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
       string: |
         {
-         "kind": "youtube#channelListResponse",
-         "etag": "\"_gJQceDMxJ8gP-8T2HLXUoURK8c/sUxIm45xENxrd0pOCl3gcHVvDVw\"",
-         "pageInfo": {
-          "totalResults": 1,
-          "resultsPerPage": 5
-         },
-         "items": [
-          {
-           "kind": "youtube#channel",
-           "etag": "\"_gJQceDMxJ8gP-8T2HLXUoURK8c/rbIeBRfsPhK0KAzdoTAu4EBvTRc\"",
-           "id": "UCWjkPmmzCdPZEKtGciLf1mg"
-          }
-         ]
+          "kind": "youtube#channelListResponse",
+          "etag": "g0fetdYJMBb-YZs4-tAfrN62x9s",
+          "pageInfo": {
+            "totalResults": 1,
+            "resultsPerPage": 5
+          },
+          "items": [
+            {
+              "kind": "youtube#channel",
+              "etag": "BKBzzlg_Luqla1E6_6ISrJscWMU",
+              "id": "UCWjkPmmzCdPZEKtGciLf1mg"
+            }
+          ]
         }
-    http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:12:45 GMT
+  recorded_at: Tue, 07 Sep 2021 16:54:22 GMT
 - request:
     method: get
     uri: https://www.googleapis.com/youtube/v3/channels?forUsername=usasearch&key=<YOUTUBE_KEY>&part=id
@@ -81,14 +78,14 @@ http_interactions:
     headers:
       User-Agent:
       - |-
-        DGSearch/0.0.0 google-api-ruby-client/0.19.5 Mac OS X/10.11.6
+        DGSearch/0.0.0 google-api-ruby-client/0.19.8 Mac OS X/10.15.7
          (gzip)
       Accept:
       - "*/*"
       Accept-Encoding:
       - gzip,deflate
       Date:
-      - Thu, 22 Feb 2018 07:12:46 GMT
+      - Tue, 07 Sep 2021 16:54:24 GMT
       Content-Type:
       - application/x-www-form-urlencoded
   response:
@@ -96,46 +93,42 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Expires:
-      - Thu, 22 Feb 2018 07:12:46 GMT
-      Date:
-      - Thu, 22 Feb 2018 07:12:46 GMT
-      Cache-Control:
-      - private, max-age=0, must-revalidate, no-transform
-      Etag:
-      - '"_gJQceDMxJ8gP-8T2HLXUoURK8c/6uvK8IjShzZ17Ahyr1FaURwOhkM"'
-      Vary:
-      - Origin
-      - X-Origin
       Content-Type:
       - application/json; charset=UTF-8
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
       Content-Encoding:
       - gzip
-      X-Content-Type-Options:
-      - nosniff
+      Date:
+      - Tue, 07 Sep 2021 16:54:24 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
       X-Frame-Options:
       - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      Server:
-      - GSE
+      X-Content-Type-Options:
+      - nosniff
       Alt-Svc:
-      - hq=":443"; ma=2592000; quic=51303431; quic=51303339; quic=51303338; quic=51303337;
-        quic=51303335,quic=":443"; ma=2592000; v="41,39,38,37,35"
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443";
+        ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
+        ma=2592000; v="46,43"
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
       string: |
         {
-         "kind": "youtube#channelListResponse",
-         "etag": "\"_gJQceDMxJ8gP-8T2HLXUoURK8c/6uvK8IjShzZ17Ahyr1FaURwOhkM\"",
-         "pageInfo": {
-          "totalResults": 0,
-          "resultsPerPage": 5
-         },
-         "items": []
+          "kind": "youtube#channelListResponse",
+          "etag": "RuuXzTIr0OoDqI4S0RU6n4FqKEM",
+          "pageInfo": {
+            "totalResults": 0,
+            "resultsPerPage": 5
+          }
         }
-    http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:12:46 GMT
-recorded_with: VCR 4.0.0
+  recorded_at: Tue, 07 Sep 2021 16:54:24 GMT
+recorded_with: VCR 6.0.0

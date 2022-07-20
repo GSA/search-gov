@@ -4,6 +4,20 @@ describe '/api/v2/search' do
   fixtures :affiliates
 
   let(:affiliate) { affiliates(:usagov_affiliate) }
+  let(:valid_params) do
+    {
+      access_key: 'usagov_key',
+      affiliate: 'usagov',
+      query: 'api'
+    }
+  end
+  let(:endpoint) { '/api/v2/search' }
+  let(:req_headers) { {} }
+  let(:make_request) do
+    get endpoint, params: valid_params, headers: req_headers
+  end
+
+  it_behaves_like 'a request with CORS support', 'GET'
 
   context 'when there are matching results' do
     before do
@@ -14,9 +28,9 @@ describe '/api/v2/search' do
       affiliate.boosted_contents.delete_all
 
       attributes = {
-        title: "api v2 title manual-1",
-        description: "api v2 description manual-1",
-        url: "https://search.gov/manual-1",
+        title: 'api v2 title manual-1',
+        description: 'api v2 description manual-1',
+        url: 'https://search.gov/manual-1',
         status: 'active',
         publish_start_on: current_date
       }
@@ -360,5 +374,29 @@ describe '/api/v2/search' do
       get '/api/v2/search', params: advanced_search_params
       expect(hash_response[:query]).to eq 'taxes site:irs.gov "exact phrase" -exclude (alternative) filetype:pdf'
     end
+  end
+
+  describe '#azure' do
+    let(:endpoint) { '/api/v2/search/azure' }
+
+    it_behaves_like 'a request with CORS support', 'GET'
+  end
+
+  describe '#docs' do
+    let(:endpoint) { '/api/v2/search/docs' }
+
+    it_behaves_like 'a request with CORS support', 'GET'
+  end
+
+  describe '#i14y' do
+    let(:endpoint) { '/api/v2/search/i14y' }
+
+    it_behaves_like 'a request with CORS support', 'GET'
+  end
+
+  describe '#video' do
+    let(:endpoint) { '/api/v2/search/video' }
+
+    it_behaves_like 'a request with CORS support', 'GET'
   end
 end

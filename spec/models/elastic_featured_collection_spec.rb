@@ -1,4 +1,3 @@
-# coding: utf-8
 require 'spec_helper'
 
 describe ElasticFeaturedCollection do
@@ -13,13 +12,13 @@ describe ElasticFeaturedCollection do
   end
 
   before do
-    ElasticFeaturedCollection.recreate_index
+    described_class.recreate_index
     affiliate.featured_collections.delete_all
     affiliate.locale = 'en'
   end
 
-  describe ".search_for" do
-    describe "results structure" do
+  describe '.search_for' do
+    describe 'results structure' do
       context 'when there are results' do
         before do
           affiliate.featured_collections.create!(title: 'Tropical Hurricane Names',
@@ -28,11 +27,11 @@ describe ElasticFeaturedCollection do
           affiliate.featured_collections.create!(title: 'More Hurricane names involving tropical',
                                                  status: 'active',
                                                  publish_start_on: Date.current)
-          ElasticFeaturedCollection.commit
+          described_class.commit
         end
 
         it 'should return results in an easy to access structure' do
-          search = ElasticFeaturedCollection.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 1, offset: 1, language: affiliate.indexing_locale)
+          search = described_class.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 1, offset: 1, language: affiliate.indexing_locale)
           expect(search.total).to eq(2)
           expect(search.results.size).to eq(1)
           expect(search.results.first).to be_instance_of(FeaturedCollection)
@@ -42,11 +41,11 @@ describe ElasticFeaturedCollection do
         context 'when those results get deleted' do
           before do
             affiliate.featured_collections.destroy_all
-            ElasticFeaturedCollection.commit
+            described_class.commit
           end
 
           it 'should return zero results' do
-            search = ElasticFeaturedCollection.search_for(q: 'hurricane', affiliate_id: affiliate.id, size: 1, offset: 1, language: affiliate.indexing_locale)
+            search = described_class.search_for(q: 'hurricane', affiliate_id: affiliate.id, size: 1, offset: 1, language: affiliate.indexing_locale)
             expect(search.total).to be_zero
             expect(search.results.size).to be_zero
           end
@@ -68,14 +67,14 @@ describe ElasticFeaturedCollection do
                                                           url: 'http://www.nhc.noaa.gov/aboutnames2.shtml',
                                                           position: '1')
       featured_collection.save!
-      ElasticFeaturedCollection.commit
+      described_class.commit
     end
 
     context 'when no highlight param is sent in' do
       it 'should highlight appropriate fields with <strong> by default' do
-        search = ElasticFeaturedCollection.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
+        search = described_class.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
         first = search.results.first
-        expect(first.title).to eq("<strong>Tropical</strong> Hurricane Names")
+        expect(first.title).to eq('<strong>Tropical</strong> Hurricane Names')
         first.featured_collection_links.each do |fcl|
           expect(fcl.title).to match(%r(Worldwide <strong>Tropical</strong>))
         end
@@ -91,24 +90,24 @@ describe ElasticFeaturedCollection do
                                                             url: 'http://www.nhc.noaa.gov/aboutnames.shtml',
                                                             position: '0')
         featured_collection.save!
-        ElasticFeaturedCollection.commit
+        described_class.commit
       end
 
       it 'should escape the entity but show the highlight' do
-        search = ElasticFeaturedCollection.search_for(search_params.merge(q: 'carrots'))
+        search = described_class.search_for(search_params.merge(q: 'carrots'))
         first = search.results.first
-        expect(first.title).to eq("Peas &amp; <strong>Carrots</strong>")
-        search = ElasticFeaturedCollection.search_for(search_params.merge(q: 'entities'))
+        expect(first.title).to eq('Peas &amp; <strong>Carrots</strong>')
+        search = described_class.search_for(search_params.merge(q: 'entities'))
         first = search.results.first
-        expect(first.title).to eq("Peas &amp; Carrots")
+        expect(first.title).to eq('Peas &amp; Carrots')
       end
     end
 
     context 'when highlight is turned off' do
       it 'should not highlight matches' do
-        search = ElasticFeaturedCollection.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale, highlighting: false)
+        search = described_class.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale, highlighting: false)
         first = search.results.first
-        expect(first.title).to eq("Tropical Hurricane Names")
+        expect(first.title).to eq('Tropical Hurricane Names')
         first.featured_collection_links.each do |fcl|
           expect(fcl.title).to match(%r(Worldwide Tropical Cyclone))
         end
@@ -117,31 +116,31 @@ describe ElasticFeaturedCollection do
 
     context 'when title is really long' do
       before do
-        long_title = "President Obama overcame furious lobbying by big banks to pass Dodd-Frank Wall Street Reform, to prevent the excessive risk-taking that led to a financial crisis while providing protections to American families for their mortgages and credit cards."
+        long_title = 'President Obama overcame furious lobbying by big banks to pass Dodd-Frank Wall Street Reform, to prevent the excessive risk-taking that led to a financial crisis while providing protections to American families for their mortgages and credit cards.'
         affiliate.featured_collections.create!(title: long_title, status: 'active', publish_start_on: Date.current)
-        ElasticFeaturedCollection.commit
+        described_class.commit
       end
 
       it 'should show everything in a single fragment' do
-        search = ElasticFeaturedCollection.search_for(q: 'president credit cards', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
+        search = described_class.search_for(q: 'president credit cards', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
         first = search.results.first
-        expect(first.title).to eq("<strong>President</strong> Obama overcame furious lobbying by big banks to pass Dodd-Frank Wall Street Reform, to prevent the excessive risk-taking that led to a financial crisis while providing protections to American families for their mortgages and <strong>credit</strong> <strong>cards</strong>.")
+        expect(first.title).to eq('<strong>President</strong> Obama overcame furious lobbying by big banks to pass Dodd-Frank Wall Street Reform, to prevent the excessive risk-taking that led to a financial crisis while providing protections to American families for their mortgages and <strong>credit</strong> <strong>cards</strong>.')
       end
     end
   end
 
-  describe "filters" do
-    context "when there are active and inactive featured collections" do
+  describe 'filters' do
+    context 'when there are active and inactive featured collections' do
       before do
         affiliate.featured_collections.create!(title: 'Tropical Hurricane Names', status: 'active',
                                                publish_start_on: Date.current)
         affiliate.featured_collections.create!(title: 'Retired Tropical Hurricane names', status: 'inactive',
                                                publish_start_on: Date.current)
-        ElasticFeaturedCollection.commit
+        described_class.commit
       end
 
-      it "should return only active Featured Collections" do
-        search = ElasticFeaturedCollection.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 2, language: affiliate.indexing_locale)
+      it 'should return only active Featured Collections' do
+        search = described_class.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 2, language: affiliate.indexing_locale)
         expect(search.total).to eq(1)
         expect(search.results.first.is_active?).to be true
       end
@@ -156,11 +155,11 @@ describe ElasticFeaturedCollection do
         affiliate.featured_collections.create!(values)
         other_affiliate.featured_collections.create!(values)
 
-        ElasticFeaturedCollection.commit
+        described_class.commit
       end
 
-      it "should return only matches for the given affiliate" do
-        search = ElasticFeaturedCollection.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
+      it 'should return only matches for the given affiliate' do
+        search = described_class.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
         expect(search.total).to eq(1)
         expect(search.results.first.affiliate.name).to eq(affiliate.name)
       end
@@ -172,11 +171,11 @@ describe ElasticFeaturedCollection do
                                                publish_start_on: Date.current)
         affiliate.featured_collections.create!(title: 'Future Tropical Hurricane names', status: 'active',
                                                publish_start_on: Date.tomorrow)
-        ElasticFeaturedCollection.commit
+        described_class.commit
       end
 
       it 'should omit those results' do
-        search = ElasticFeaturedCollection.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 2, language: affiliate.indexing_locale)
+        search = described_class.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 2, language: affiliate.indexing_locale)
         expect(search.total).to eq(1)
         expect(search.results.first.title).to match(/^Current/)
       end
@@ -188,11 +187,11 @@ describe ElasticFeaturedCollection do
                                                publish_start_on: Date.current)
         affiliate.featured_collections.create!(title: 'Expired Tropical Hurricane names', status: 'active',
                                                publish_start_on: 1.week.ago.to_date, publish_end_on: Date.current)
-        ElasticFeaturedCollection.commit
+        described_class.commit
       end
 
       it 'should omit those results' do
-        search = ElasticFeaturedCollection.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 2, language: affiliate.indexing_locale)
+        search = described_class.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 2, language: affiliate.indexing_locale)
         expect(search.total).to eq(1)
         expect(search.results.first.title).to match(/^Current/)
       end
@@ -204,7 +203,7 @@ describe ElasticFeaturedCollection do
       {
         title: 'Obamå',
         status: 'active',
-        publish_start_on: Date.current,
+        publish_start_on: Date.current
       }
     end
     let(:fc_params) { valid_fc_params }
@@ -226,11 +225,11 @@ describe ElasticFeaturedCollection do
       featured_collection.featured_collection_keywords.build(value: 'Corazón')
       featured_collection.featured_collection_keywords.build(value: 'fair pay act')
       featured_collection.save!
-      ElasticFeaturedCollection.commit
+      described_class.commit
     end
 
     context 'when I search on terms that are only present in the title or description' do
-      let(:search) { ElasticFeaturedCollection.search_for(q: 'Obama', affiliate_id: affiliate.id, language: affiliate.indexing_locale) }
+      let(:search) { described_class.search_for(q: 'Obama', affiliate_id: affiliate.id, language: affiliate.indexing_locale) }
 
       it 'should return the matches from the title or description' do
         expect(search.total).to eq(1)
@@ -248,37 +247,37 @@ describe ElasticFeaturedCollection do
 
     describe 'keywords' do
       it 'should be case insensitive' do
-        expect(ElasticFeaturedCollection.search_for(q: 'cORAzon', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+        expect(described_class.search_for(q: 'cORAzon', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
       end
 
       it 'should perform ASCII folding' do
-        expect(ElasticFeaturedCollection.search_for(q: 'coràzon', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+        expect(described_class.search_for(q: 'coràzon', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
       end
 
       it 'should only match full keyword phrase' do
-        expect(ElasticFeaturedCollection.search_for(q: 'fair pay act', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
-        expect(ElasticFeaturedCollection.search_for(q: 'fair pay', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to be_zero
+        expect(described_class.search_for(q: 'fair pay act', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+        expect(described_class.search_for(q: 'fair pay', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to be_zero
       end
     end
 
-    describe "title and link titles" do
+    describe 'title and link titles' do
       it 'should be case insentitive' do
-        expect(ElasticFeaturedCollection.search_for(q: 'OBAMA', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
-        expect(ElasticFeaturedCollection.search_for(q: 'BIDEN', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+        expect(described_class.search_for(q: 'OBAMA', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+        expect(described_class.search_for(q: 'BIDEN', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
       end
 
       it 'should perform ASCII folding' do
-        expect(ElasticFeaturedCollection.search_for(q: 'øbåmà', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
-        expect(ElasticFeaturedCollection.search_for(q: 'bîdéÑ', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+        expect(described_class.search_for(q: 'øbåmà', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+        expect(described_class.search_for(q: 'bîdéÑ', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
       end
 
-      context "when query contains problem characters" do
+      context 'when query contains problem characters' do
         ['"   ', '   "       ', '+++', '+-', '-+'].each do |query|
-          specify { expect(ElasticFeaturedCollection.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to be_zero }
+          specify { expect(described_class.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to be_zero }
         end
 
         %w(+++obama --obama +-obama).each do |query|
-          specify { expect(ElasticFeaturedCollection.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1) }
+          specify { expect(described_class.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1) }
         end
       end
 
@@ -291,13 +290,13 @@ describe ElasticFeaturedCollection do
                                                               url: 'http://www.nhc.noaa.gov/aboutnames2.shtml',
                                                               position: 0)
           featured_collection.save!
-          ElasticFeaturedCollection.commit
+          described_class.commit
         end
 
         it 'should do standard English stemming with basic stopwords' do
           appropriate_stemming = ['The computer with an internal and affiliates', 'Organics symbolizes a the view']
           appropriate_stemming.each do |query|
-            expect(ElasticFeaturedCollection.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+            expect(described_class.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
           end
         end
       end
@@ -315,17 +314,17 @@ describe ElasticFeaturedCollection do
                                                               url: 'http://www.nhc.noaa.gov/aboutnames3.shtml',
                                                               position: 1)
           featured_collection.save!
-          ElasticFeaturedCollection.commit
+          described_class.commit
         end
 
         it 'should do minimal Spanish stemming with basic stopwords' do
           appropriate_stemming = ['ley con reyes', 'financieros']
           appropriate_stemming.each do |query|
-            expect(ElasticFeaturedCollection.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+            expect(described_class.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
           end
           overstemmed_queries = %w{verificar finanzas}
           overstemmed_queries.each do |query|
-            expect(ElasticFeaturedCollection.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to be_zero
+            expect(described_class.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to be_zero
           end
         end
       end
@@ -340,13 +339,13 @@ describe ElasticFeaturedCollection do
                                                               url: 'http://el.wikipedia.org/wiki/Είναι',
                                                               position: 0)
           featured_collection.save!
-          ElasticFeaturedCollection.commit
+          described_class.commit
         end
 
         it 'should do downcasing and ASCII folding only' do
           appropriate_stemming = ['superknuller', 'Gultig']
           appropriate_stemming.each do |query|
-            expect(ElasticFeaturedCollection.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+            expect(described_class.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
           end
         end
       end
@@ -354,6 +353,6 @@ describe ElasticFeaturedCollection do
     end
   end
 
-  it_behaves_like "an indexable"
+  it_behaves_like 'an indexable'
 
 end

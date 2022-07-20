@@ -1,60 +1,72 @@
+# frozen_string_literal: true
+
 module Indexable
   attr_accessor :default_sort, :mappings, :settings
 
   DELIMTER = '-'
-  NO_HITS = { 'hits' => { 'total' => 0, 'offset' => 0, 'hits' => [] } }
+  NO_HITS = { 'hits' => { 'total' => 0, 'offset' => 0, 'hits' => [] } }.freeze
 
   def index_name
-    @index_name ||= [base_index_name, Time.now.strftime("%Y%m%d%H%M%S%L")].join(DELIMTER)
+    @index_name ||= [base_index_name, Time.now.strftime('%Y%m%d%H%M%S%L')].join(DELIMTER)
   end
 
   def reader_alias
-    self.index_alias :reader
+    index_alias(:reader)
   end
 
   def writer_alias
-    self.index_alias :writer
+    index_alias(:writer)
   end
 
   def index_alias(type)
-    [self.base_index_name, type].join(DELIMTER)
+    [base_index_name, type].join(DELIMTER)
   end
 
   def index_type
-    @index_type ||= self.name.underscore
+    @index_type ||= name.underscore
   end
 
   def base_index_name
-    [ES::INDEX_PREFIX, self.name.tableize].join(DELIMTER)
+    [Es::INDEX_PREFIX, name.tableize].join(DELIMTER)
   end
 
   def delete_index
-    ES::CustomIndices.client_writers.each { |client| client.indices.delete(index: "#{base_index_name}#{DELIMTER}*") }
+    Es::CustomIndices.client_writers.each { |client| client.indices.delete(index: "#{base_index_name}#{DELIMTER}*") }
   end
 
   def create_index
-    ES::CustomIndices.client_writers.each do |client|
-      client.indices.create(index: index_name, body: { settings: settings, mappings: mappings })
-      client.indices.put_alias index: index_name, name: writer_alias
-      client.indices.put_alias index: index_name, name: reader_alias
+    Es::CustomIndices.client_writers.each do |client|
+      client.indices.create(
+        index: index_name,
+        body: { settings: settings, mappings: mappings },
+        include_type_name: true
+      )
+      client.indices.put_alias(index: index_name, name: writer_alias)
+      client.indices.put_alias(index: index_name, name: reader_alias)
     end
   end
 
   def migrate_writer
     @index_name = nil
-    ES::CustomIndices.client_writers.each { |client| client.indices.create(index: index_name, body: { settings: settings, mappings: mappings }) }
+    Es::CustomIndices.client_writers.each do |client|
+      client.indices.create(
+        index: index_name,
+        body: { settings: settings, mappings: mappings },
+        include_type_name: true
+      )
+    end
     update_alias(writer_alias)
   end
 
   def migrate_reader
-    old_index = ES::CustomIndices.client_reader.indices.get_alias(name: reader_alias).keys.first
-    new_index = ES::CustomIndices.client_reader.indices.get_alias(name: writer_alias).keys.first
+    old_index = Es::CustomIndices.client_reader.indices.get_alias(name: reader_alias).keys.first
+    new_index = Es::CustomIndices.client_reader.indices.get_alias(name: writer_alias).keys.first
     update_alias(reader_alias, new_index)
-    ES::CustomIndices.client_writers.each { |client| client.indices.delete(index: old_index) }
+    Es::CustomIndices.client_writers.each { |client| client.indices.delete(index: old_index) }
   end
 
   def index_exists?
-    ES::CustomIndices.client_reader.indices.get_alias(name: writer_alias)
+    Es::CustomIndices.client_reader.indices.get_alias(name: writer_alias)
     true
   rescue Elasticsearch::Transport::Transport::Errors::NotFound
     false
@@ -78,7 +90,7 @@ module Indexable
 
   def delete_by_query(options)
     query = options.collect { |key, value| [key, value].join(':') }.join(' ')
-    ES::CustomIndices.client_writers.each { |client| client.delete_by_query index: writer_alias, q: query, default_operator: "AND" }
+    Es::CustomIndices.client_writers.each { |client| client.delete_by_query(index: writer_alias, q: query, default_operator: 'AND') }
   end
 
   def bulkify(records)
@@ -97,25 +109,25 @@ module Indexable
   end
 
   def search_for(options)
-    query = "#{self.name}Query".constantize.new options
-    ActiveSupport::Notifications.instrument("elastic_search.usasearch", query: query.body, index: self.name) do
+    query = "#{name}Query".constantize.new(options)
+    ActiveSupport::Notifications.instrument('elastic_search.usasearch', query: query.body, index: name) do
       search(query)
     end
-  rescue Exception => e
-    Rails.logger.error "Problem in #{self.name}#search_for(): #{e}"
-    "#{self.name}Results".constantize.new(NO_HITS)
+  rescue StandardError => e
+    Rails.logger.error "Problem in #{name}#search_for(): #{e}"
+    "#{name}Results".constantize.new(NO_HITS)
   end
 
   def commit
-    ES::CustomIndices.client_writers.each { |client| client.indices.refresh index: writer_alias }
+    Es::CustomIndices.client_writers.each { |client| client.indices.refresh(index: writer_alias) }
   end
 
   def bulk(body)
-    ES::CustomIndices.client_writers.each { |client| client_bulk(client, body) }
+    Es::CustomIndices.client_writers.each { |client| client_bulk(client, body) }
   end
 
   def optimize
-    ES::CustomIndices.client_writers.each { |client| client.indices.optimize }
+    Es::CustomIndices.client_writers.each { |client| client.indices.optimize }
   end
 
   private
@@ -126,37 +138,42 @@ module Indexable
                type: index_type,
                body: query.body,
                from: query.offset,
-               size: query.size }
+               size: query.size,
+               # For compatibility with ES 6. This parameter will be removed in ES 8.
+               # https://www.elastic.co/guide/en/elasticsearch/reference/current/breaking-changes-7.0.html#hits-total-now-object-search-response
+               rest_total_hits_as_int: true }
     params[:sort] = query.sort if query.sort.present?
 
-    result = ES::CustomIndices.client_reader.search(params)
+    result = Es::CustomIndices.client_reader.search(params)
     result['hits']['offset'] = query.offset
     "#{name}Results".constantize.new(result)
   end
 
   def update_alias(alias_name, new_index = index_name)
-    old_index = ES::CustomIndices.client_reader.indices.get_alias(name: alias_name).keys.first
-    ES::CustomIndices.client_writers.each do |client|
-      client.indices.update_aliases body: {
-        actions: [
-          { remove: { index: old_index, alias: alias_name } },
-          { add: { index: new_index, alias: alias_name } }
-        ]
-      }
+    old_index = Es::CustomIndices.client_reader.indices.get_alias(name: alias_name).keys.first
+    Es::CustomIndices.client_writers.each do |client|
+      client.indices.update_aliases(
+        body: {
+          actions: [
+            { remove: { index: old_index, alias: alias_name } },
+            { add: { index: new_index, alias: alias_name } }
+          ]
+        }
+      )
     end
   end
 
   def client_bulk(client, body)
     response = client.bulk(body: body)
     handle_bulk_errors(client, response) if response['errors']
-  rescue Exception => e
-    Rails.logger.error "#{Time.now} Client error in #{self.name}#client_bulk(): #{e}; host: #{host_list(client) }; body: #{body}"
+  rescue StandardError => e
+    Rails.logger.error "#{Time.now} Client error in #{name}#client_bulk(): #{e}; host: #{host_list(client) }; body: #{body}"
     nil
   end
 
   def handle_bulk_errors(client, response)
     errors = response['items'].select { |item| item.values.first['status'] >= 400 }
-    Rails.logger.error "#{Time.now} Bulk API error in #{self.name}#client_bulk(): #{errors}; host: #{host_list(client) }"
+    Rails.logger.error "#{Time.now} Bulk API error in #{name}#client_bulk(): #{errors}; host: #{host_list(client) }"
   end
 
   def host_list(client)

@@ -1,0 +1,7 @@
+.content-block-item.result.collapsible-item{ id: "job-#{position}", class: 'job' }
+  %h4.title= link_to_result_title(job.position_title, job_url(job), position, 'JOBS')
+  - if affiliate.should_show_job_organization_name?
+    .job-organization= job.organization_name
+  .job-locations-money
+    = locations_and_salary(job)
+  .job-dates= job_application_deadline(job.application_close_date)

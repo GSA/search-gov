@@ -5,8 +5,8 @@ Feature: SearchGov search
 
   Background:
     Given the following SearchGov Affiliates exist:
-      | display_name | name | contact_email | first_name | last_name | header         | domains                     | youtube_handles |
-      | EPA          | epa  | aff@epa.gov   | Jane       | Bar       | EPA.gov Header | www.epa.gov,archive.epa.gov | usgovernment    |
+      | display_name | name | contact_email | first_name | last_name | domains                     | youtube_handles |
+      | EPA          | epa  | aff@epa.gov   | Jane       | Bar       | www.epa.gov,archive.epa.gov | usgovernment    |
 
   Scenario: Everything search
     When I am on epa's search page
@@ -39,7 +39,7 @@ Feature: SearchGov search
     When I am on epa's search page
     And I search for "exciting"
     Then I should see "exciting news"
-    When I am on epa's "Press" mobile news search page
+    When I am on epa's "Press" news search page
     Then I should see "Refine your search"
 
   Scenario: Display an Alert on search page

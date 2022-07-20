@@ -1,16 +1,31 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  # Shamelessly ganked from the authlogic gem. Ruby's
+  # Uri::MailTo::EMAIL_REGEXP is not picky enough, so we use this
+  # instead. See SRCH-2251 for discussion.
+  EMAIL = /
+    \A
+    [A-Z0-9_.&%+\-']+   # mailbox
+    @
+    (?:[A-Z0-9\-]+\.)+  # subdomains
+    (?:[A-Z]{2,25})     # TLD
+    \z
+  /ix.freeze
+
   APPROVAL_STATUSES = %w[pending_approval approved not_approved].freeze
 
-  validates :email, presence: true
   validates :approval_status, inclusion: APPROVAL_STATUSES
   validates :first_name, presence: true, on: :update_account
   validates :last_name, presence: true, on: :update_account
   validates :organization_name, presence: true, on: :update_account
+  validates :email,
+            presence: true,
+            uniqueness: { case_sensitive: false },
+            format: { with: EMAIL, message: 'must be an email address' }
   has_many :memberships, dependent: :destroy
   has_many :affiliates, lambda {
-                          order 'affiliates.display_name, affiliates.ID ASC'
+                          order('affiliates.display_name, affiliates.ID ASC')
                         },
            through: :memberships
   has_many :watchers, dependent: :destroy
@@ -21,9 +36,9 @@ class User < ApplicationRecord
   after_validation :set_default_flags, on: :create
 
   after_create :deliver_welcome_to_new_user_added_by_affiliate, if: :invited
+  after_create :ping_admin
 
   before_update :detect_deliver_welcome_email
-  after_create :ping_admin
   after_update :send_welcome_to_new_user_email, if: :deliver_welcome_email_on_update
 
   attr_accessor :invited, :skip_welcome_email, :inviter
@@ -48,11 +63,6 @@ class User < ApplicationRecord
         }
 
   acts_as_authentic do |c|
-    c.login_field = :email
-    c.validate_email_field = true
-    c.validate_login_field = false
-    c.ignore_blank_passwords  = true
-    c.validate_password_field = false
     c.logged_in_timeout = 1.hour
   end
 
@@ -107,7 +117,7 @@ class User < ApplicationRecord
   end
 
   def affiliate_names
-    affiliates.collect(&:name).join(',')
+    affiliates.pluck(:name).join(', ')
   end
 
   def send_new_affiliate_user_email(affiliate, inviter_user)
@@ -125,7 +135,7 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth(auth)
-    find_or_create_by(email: auth.info.email).tap do |user|
+    User.default_scoped.find_or_create_by(email: auth.info.email).tap do |user|
       user.update(uid: auth.uid)
     end
   end
@@ -161,7 +171,7 @@ class User < ApplicationRecord
   end
 
   def downcase_email
-    self.email = self.email.downcase if self.email.present?
+    self.email = email.downcase if email.present?
   end
 
   def set_default_flags

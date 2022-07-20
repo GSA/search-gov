@@ -1,3 +1,4 @@
+# deprecated: SRCH-1574
 module Api
   module V1
     class AgenciesController < ApplicationController

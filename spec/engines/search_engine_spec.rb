@@ -21,7 +21,7 @@ describe SearchEngine do
   let(:options) { {} }
   let(:api_connection) { double(:api_connection, get: cached_response) }
   let(:cached_response) { CachedSearchApiConnectionResponse.new(:response, cache_name) }
-  let(:parsed_response) { double(SearchEngineResponse, results: [:foo, :bar, :baz], :'diagnostics=' => nil, :'tracking_information' => 'trackery') }
+  let(:parsed_response) { double(SearchEngineResponse, results: [:foo, :bar, :baz], 'diagnostics=': nil, 'tracking_information': 'trackery') }
   let(:statsd) { double(Datadog::Statsd, decrement: nil, gauge: nil, increment: nil) }
   let(:cache_name) { 'some_cache' }
 
@@ -49,7 +49,7 @@ describe SearchEngine do
           from_cache: 'some_cache',
           retry_count: 0,
           elapsed_time_ms: 2000,
-          tracking_information: 'trackery',
+          tracking_information: 'trackery'
         })
         subject.execute_query
       end
@@ -142,7 +142,7 @@ describe SearchEngine do
           from_cache: 'none',
           retry_count: 1,
           elapsed_time_ms: 4000,
-          tracking_information: 'trackery',
+          tracking_information: 'trackery'
         })
         subject.execute_query
       end

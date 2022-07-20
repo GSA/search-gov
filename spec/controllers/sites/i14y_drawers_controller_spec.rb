@@ -37,7 +37,7 @@ describe Sites::I14yDrawersController do
           size: 100,
           include: 'title,path,created,changed,updated_at',
           sort_by_date: true,
-          language: 'en',
+          language: 'en'
         }
       end
 

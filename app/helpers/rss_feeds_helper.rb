@@ -29,7 +29,7 @@ module RssFeedsHelper
 
   def link_to_preview_rss_feed(site, rss_feed)
     params = { affiliate: site.name, channel: rss_feed.id }
-    url = site.search_consumer_search_enabled? ? search_consumer_news_search_url(params) : news_search_url(params)
+    url = news_search_url(params)
     link_to 'Preview', url, target: '_blank'
   end
 
@@ -39,17 +39,5 @@ module RssFeedsHelper
     data = { confirm: "Are you sure you wish to remove #{rss_feed.name} from this site?" }
     button = button_to 'Remove', path, method: :delete, data: data, class: 'btn btn-small'
     content_tag :li, button
-  end
-
-  def rss_govbox_title(search)
-    site = search.affiliate
-    title = I18n.t(:news_results,
-                   rss_govbox_label: site.rss_govbox_label,
-                   query: search.query,
-                   affiliate: site.display_name)
-
-    link_to_unless(search.affiliate.rss_feeds.non_managed.navigable_only.empty?,
-                   title,
-                   news_search_path(query: search.query, affiliate: site.name))
   end
 end

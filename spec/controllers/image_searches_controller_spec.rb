@@ -1,68 +1,53 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe ImageSearchesController do
   fixtures :affiliates, :instagram_profiles, :languages
   let(:affiliate) { affiliates(:usagov_affiliate) }
 
   describe '#index' do
-    context 'when searching on legacy affiliate and the query is present' do
+    context 'when the query is present' do
       let(:affiliate) { affiliates(:basic_affiliate) }
       let(:query) { '<b>thunder & lightning</b>' }
       let(:image_search) do
-        double(LegacyImageSearch,
-               query: 'thunder & lightning',
-               modules: [],
-               diagnostics: {})
+        instance_double(ImageSearch,
+                        query: 'thunder & lightning',
+                        modules: [],
+                        diagnostics: {})
       end
 
       before do
-        allow(affiliate).to receive(:force_mobile_format?).and_return(false)
-        expect(Affiliate).to receive(:find_by_name).with('nps.gov').and_return(affiliate)
-        expect(LegacyImageSearch).to receive(:new).
+        allow(Affiliate).to receive(:find_by_name).with('nps.gov').and_return(affiliate)
+        allow(ImageSearch).to receive(:new).
           with(hash_including(affiliate: affiliate, query: 'thunder & lightning')).
           and_return(image_search)
-        expect(image_search).to receive(:run)
+        allow(image_search).to receive(:run)
+        get :index, params: { affiliate: affiliate.name,
+                              query: query }
       end
 
-      context 'for a live search' do
-        before do
-          get :index, params: { affiliate: 'nps.gov',
-                                query: query }
-        end
+      it { is_expected.to assign_to(:search).with(image_search) }
+      it { is_expected.to assign_to :affiliate }
 
-        it { is_expected.to assign_to(:search).with(image_search) }
-        it { is_expected.to assign_to :affiliate }
-        it do
-          is_expected.to assign_to(:page_title).
-            with('thunder & lightning - NPS Site Search Results')
-        end
-        it do
-          is_expected.to assign_to(:search_params).
-            with(hash_including(affiliate: affiliate.name, query: 'thunder & lightning'))
-        end
-        it { is_expected.to render_template 'image_searches/index' }
-
-        it 'should render the template' do
-          expect(response).to render_template 'image_searches/index'
-          expect(response).to render_template 'layouts/searches'
-        end
+      it do
+        is_expected.to assign_to(:page_title).
+          with('thunder & lightning - NPS Site Search Results')
       end
 
-      context 'for a staged search' do
-        before do
-          get :index, params: { affiliate: 'nps.gov',
-                                query: query,
-                                staged: 'true' }
-        end
-
-        it do
-          is_expected.to assign_to(:page_title).
-            with('thunder & lightning - NPS Site Search Results')
-        end
+      it do
+        is_expected.to assign_to(:search_params).
+          with(hash_including(affiliate: affiliate.name, query: 'thunder & lightning'))
       end
 
-      context 'via the JSON API' do
+      it { is_expected.to render_template 'image_searches/index' }
+
+      it 'renders the template' do
+        expect(response).to render_template 'image_searches/index'
+        expect(response).to render_template 'layouts/searches'
+      end
+
+      context 'when searching via the JSON API' do
         let(:search_results_json) { 'search results json' }
+
         before do
           expect(image_search).to receive(:to_json).and_return(search_results_json)
           get :index,
@@ -73,24 +58,24 @@ describe ImageSearchesController do
 
         it { is_expected.to respond_with :success }
 
-        it 'should render the results in json' do
-          expect(response.content_type). to eq 'application/json'
+        it 'renders the results in json' do
+          expect(response.media_type).to eq 'application/json'
           expect(response.body).to eq(search_results_json)
         end
       end
     end
 
-    context 'when searching on legacy affiliate and the query is blank' do
-      let(:affiliate) { mock_model(Affiliate, :locale => 'en', force_mobile_format?: false) }
-      let(:image_search) { double(LegacyImageSearch, :query => nil, :modules => [], :diagnostics => {}) }
+    context 'when the query is blank' do
+      let(:image_search) do
+        instance_double(ImageSearch, query: nil, modules: [], diagnostics: {})
+      end
 
       before do
-        expect(Affiliate).to receive(:find_by_name).with('agency100').and_return(affiliate)
-        expect(LegacyImageSearch).to receive(:new).
+        expect(ImageSearch).to receive(:new).
           with(hash_including(affiliate: affiliate,
                               query: '')).and_return(image_search)
         expect(image_search).to receive(:run)
-        get :index, params: { affiliate: 'agency100' }
+        get :index, params: { affiliate: affiliate.name }
       end
 
       it { is_expected.to respond_with :success }
@@ -102,13 +87,8 @@ describe ImageSearchesController do
       it { is_expected.to redirect_to 'https://www.usa.gov/search-error' }
     end
 
-    context 'when searching on legacy affiliate via the API' do
-      fixtures :image_search_labels
+    context 'when searching via the API' do
       render_views
-
-      before do
-        affiliates(:usagov_affiliate).update!(force_mobile_format: false)
-      end
 
       context 'when searching normally' do
         before do
@@ -119,15 +99,15 @@ describe ImageSearchesController do
           @search = assigns[:search]
         end
 
-        it 'should set the format to json' do
-          expect(response.content_type).to eq('application/json')
+        it 'sets the format to json' do
+          expect(response.media_type).to eq('application/json')
         end
 
-        it 'should sanitize the query term' do
+        it 'sanitizes the query term' do
           expect(@search.query).to eq('weather')
         end
 
-        it 'should serialize the results into JSON' do
+        it 'serializes the results into JSON' do
           expect(response.body).to match(/total/)
           expect(response.body).to match(/startrecord/)
           expect(response.body).to match(/endrecord/)
@@ -136,36 +116,14 @@ describe ImageSearchesController do
 
       context 'when some error is returned' do
         before do
-          get :index, params: { query: 'a' * 1001, format: 'json', affiliate: 'usagov' }
+          get :index, params: { query: '', format: 'json', affiliate: 'usagov' }
           @search = assigns[:search]
         end
 
-        it 'should serialize an error into JSON' do
-          expect(response.body).to match(/error/)
-          expect(response.body).to match(/#{I18n.translate :too_long}/)
+        it 'serializes an error into JSON' do
+          parsed_response = JSON.parse(response.body)
+          expect(parsed_response['error']).to match(/Please enter a search term/)
         end
-      end
-    end
-
-    context 'when searching in mobile mode' do
-      before do
-        affiliate.instagram_profiles << instagram_profiles(:whitehouse)
-        get :index, params: { query: 'obama', m: 'true', affiliate: 'usagov' }
-      end
-
-      it 'should show the mobile version of the page' do
-        expect(response).to be_success
-      end
-    end
-
-    context 'when searching in desktop mode' do
-      before do
-        affiliate.instagram_profiles << instagram_profiles(:whitehouse)
-        get :index, params: { query: 'obama', affiliate: 'usagov' }
-      end
-
-      it 'assigns @page_title' do
-        expect(assigns[:page_title]).not_to be_blank
       end
     end
 
@@ -174,8 +132,8 @@ describe ImageSearchesController do
         get :index, params: { affiliate: 'usagov' }
       end
 
-      it 'should treat it as an empty string' do
-        expect(response).to be_success
+      it 'treats it as an empty string' do
+        expect(response).to be_successful
       end
     end
   end

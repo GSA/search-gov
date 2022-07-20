@@ -40,7 +40,6 @@ describe Sites::SiteDomainsController do
 
           expect(site_domain).to receive(:save).and_return(true)
           expect(site).to receive(:normalize_site_domains)
-          expect(site).to receive(:assign_sitelink_generator_names!)
 
           post :create,
                params: {
@@ -96,7 +95,7 @@ describe Sites::SiteDomainsController do
           expect(site_domains_arel).to receive(:find_by_id).with('100').
             and_return(site_domain)
 
-          expect(site_domain).to receive(:update_attributes).
+          expect(site_domain).to receive(:update).
               with('domain' => 'gov').
               and_return(false)
 

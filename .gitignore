@@ -4,6 +4,8 @@
 .byebug_history
 .idea
 .rspec-local
+# Ignore the rubocop YAML file that is downloaded when running `rubocop` locally
+.rubocop*default-yml
 Procfile
 TAGS
 config/logindotgov.pem

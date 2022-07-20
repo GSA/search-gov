@@ -9,8 +9,4 @@ class Membership < ApplicationRecord
       joins(:user).where(users: { approval_status: 'approved' }).
       joins(:affiliate).merge(Affiliate.active)
   }
-
-  def label
-    "#{affiliate.name}:#{user.email}"
-  end
 end

@@ -1,12 +1,10 @@
 require 'spec_helper'
 
 describe SearchgovUrl do
-  fixtures :searchgov_urls
-
   let(:url) { 'http://www.agency.gov/boring.html' }
-  let(:html) { read_fixture_file("/html/page_with_og_metadata.html") }
+  let(:html) { read_fixture_file('/html/page_with_og_metadata.html') }
   let(:valid_attributes) { { url: url } }
-  let(:searchgov_url) { SearchgovUrl.new(valid_attributes) }
+  let(:searchgov_url) { described_class.new(valid_attributes) }
   let(:i14y_document) { I14yDocument.new }
 
   it { is_expected.to have_readonly_attribute(:url) }
@@ -29,42 +27,47 @@ describe SearchgovUrl do
     describe '.fetch_required' do
 
       it 'includes urls that have never been crawled and outdated urls' do
-        expect(SearchgovUrl.fetch_required.pluck(:url)).
+        expect(described_class.fetch_required.pluck(:url)).
           to include('http://www.agency.gov/new', 'http://www.agency.gov/outdated')
       end
 
       it 'does not include current, crawled and not enqueued urls' do
-        expect(SearchgovUrl.fetch_required.pluck(:url)).
+        expect(described_class.fetch_required.pluck(:url)).
           not_to include('http://www.agency.gov/current')
       end
 
       it 'includes urls that have been enqueued for reindexing' do
-        expect(SearchgovUrl.fetch_required.pluck(:url)).
+        expect(described_class.fetch_required.pluck(:url)).
           to include 'http://www.agency.gov/enqueued'
       end
 
       it 'includes urls last crawled more than 30 days and crawl status is ok' do
-        expect(SearchgovUrl.fetch_required.pluck(:url)).
+        expect(described_class.fetch_required.pluck(:url)).
           to include 'http://www.agency.gov/crawled_more_than_month'
       end
     end
   end
 
   describe 'validations' do
-    it 'requires a valid domain' do
-      searchgov_url = SearchgovUrl.new(url: 'https://foo/bar')
-      expect(searchgov_url).not_to be_valid
-      expect(searchgov_url.errors.messages[:searchgov_domain]).
-        to include 'is invalid'
+    context 'when the URL domain does not already exist in our database' do
+      let(:url) { 'https://new-agency.com/index.html' }
+
+      it { is_expected.not_to be_valid }
+
+      it 'generates a helpful error message' do
+        searchgov_url.valid?
+        expect(searchgov_url.errors.messages[:searchgov_domain]).
+          to include 'is not a valid SearchgovDomain'
+      end
     end
 
     describe 'validating url uniqueness' do
-      let!(:existing) { SearchgovUrl.create!(valid_attributes) }
+      let!(:existing) { described_class.create!(valid_attributes) }
 
       it { is_expected.to validate_uniqueness_of(:url).on(:create) }
 
       it 'is case-sensitive' do
-        expect(SearchgovUrl.new(url: 'https://www.agency.gov/BORING.html')).to be_valid
+        expect(described_class.new(url: 'https://www.agency.gov/BORING.html')).to be_valid
       end
     end
   end
@@ -78,7 +81,7 @@ describe SearchgovUrl do
       end
 
       context 'when the document cannot be deleted' do
-        let!(:searchgov_url) { SearchgovUrl.create!(valid_attributes) }
+        let!(:searchgov_url) { described_class.create!(valid_attributes) }
 
         before do
           allow(I14yDocument).to receive(:delete).
@@ -87,7 +90,7 @@ describe SearchgovUrl do
         end
 
         it 'deletes the Searchgov Url' do
-          expect { searchgov_url.destroy }.to change{ SearchgovUrl.count }.by(-1)
+          expect { searchgov_url.destroy }.to change{ described_class.count }.by(-1)
         end
       end
     end
@@ -95,14 +98,14 @@ describe SearchgovUrl do
 
   describe '#document_id' do
     it 'returns the hashed url' do
-      expect(searchgov_url.document_id).to eq "1ff7dfd3cf763d08bee3546e2538cf0315578fbd7b1d3f28f014915983d4d7ef"
+      expect(searchgov_url.document_id).to eq '1ff7dfd3cf763d08bee3546e2538cf0315578fbd7b1d3f28f014915983d4d7ef'
     end
   end
 
   describe '#fetch' do
-    let!(:searchgov_url) { SearchgovUrl.create!(valid_attributes) }
+    let!(:searchgov_url) { described_class.create!(valid_attributes) }
     let(:searchgov_domain) do
-      instance_double(SearchgovDomain, check_status: '200 OK', :available? => true)
+      instance_double(SearchgovDomain, check_status: '200 OK', available?: true)
     end
 
     subject(:fetch) { searchgov_url.fetch }
@@ -114,11 +117,11 @@ describe SearchgovUrl do
 
     context 'when the fetch is successful' do
       let(:success_hash) do
-        { status: 200, body: html, headers: { content_type: "text/html" } }
+        { status: 200, body: html, headers: { content_type: 'text/html' } }
       end
       before do
         stub_request(:get, url).with(headers: { user_agent: DEFAULT_USER_AGENT }).
-          to_return({ status: 200, body: html, headers: { content_type: "text/html" } })
+          to_return({ status: 200, body: html, headers: { content_type: 'text/html' } })
         stub_request(:get, url).with(headers: { 'User-Agent' => DEFAULT_USER_AGENT }).
           to_return(success_hash)
       end
@@ -135,14 +138,14 @@ describe SearchgovUrl do
             language: 'en',
             tags: 'this, that',
             created: '2015-07-02T10:12:32-04:00',
-            changed: '2017-03-30T13:18:28-04:00',
+            changed: '2017-03-30T13:18:28-04:00'
         ))
         fetch
       end
 
       context 'when the record is enqueued for reindex' do
         let(:searchgov_url) do
-          SearchgovUrl.create!(valid_attributes.merge(enqueued_for_reindex: true))
+          described_class.create!(valid_attributes.merge(enqueued_for_reindex: true))
         end
 
         it 'sets enqueued_for_reindex to false' do
@@ -190,7 +193,7 @@ describe SearchgovUrl do
               language: 'en',
               tags: 'this, that',
               created: '2015-07-02T10:12:32-04:00',
-              changed: '2017-03-30T13:18:28-04:00',
+              changed: '2017-03-30T13:18:28-04:00'
           ))
           fetch
         end
@@ -232,13 +235,13 @@ describe SearchgovUrl do
 
       context 'when the fetch successfully returns...an error page' do #Because that's a thing.
         let(:fail_html) do
-          "<html><head><title>My 404 error page</title></head><body>Epic fail!</body></html>"
+          '<html><head><title>My 404 error page</title></head><body>Epic fail!</body></html>'
         end
         before do
           stub_request(:get, url).
             to_return({ status: 200,
                         body: fail_html,
-                        headers: { content_type: "text/html" } })
+                        headers: { content_type: 'text/html' } })
         end
 
         it 'reports the 404' do
@@ -277,13 +280,13 @@ describe SearchgovUrl do
 
         context 'when the file is too large' do
           before do
-            stub_request(:get, url).to_return(status: 200, headers: {  content_type: "application/pdf",
+            stub_request(:get, url).to_return(status: 200, headers: {  content_type: 'application/pdf',
                                                                        content_length:  18.megabytes })
           end
 
           it 'reports the error' do
             fetch
-            expect(searchgov_url.last_crawl_status).to eq "Document is over 15 MB limit"
+            expect(searchgov_url.last_crawl_status).to eq 'Document is over 15 MB limit'
           end
         end
       end
@@ -303,13 +306,13 @@ describe SearchgovUrl do
     end
 
     context 'when the url points to a pdf' do
-      let(:url) { 'https://www.irs.gov/test.pdf' }
-      let(:pdf) { read_fixture_file("/pdf/test.pdf") }
+      let(:url) { 'https://agency.gov/test.pdf' }
+      let(:pdf) { read_fixture_file('/pdf/test.pdf') }
       before do
         stub_request(:get, url).
           to_return({ status: 200,
                       body: pdf,
-                      headers: { content_type: "application/pdf" } })
+                      headers: { content_type: 'application/pdf' } })
       end
 
       it 'fetches and indexes the document' do
@@ -321,7 +324,7 @@ describe SearchgovUrl do
             description: 'My description',
             language: 'en',
             tags: 'this, that',
-            created: '2018-06-09T17:42:11Z',
+            created: '2018-06-09T17:42:11Z'
         ))
         fetch
       end
@@ -333,13 +336,13 @@ describe SearchgovUrl do
     end
 
     context 'when the url points to a Word doc (.doc)' do
-      let(:url) { 'https://www.irs.gov/test.doc' }
-      let(:doc) { read_fixture_file("/word/test.doc") }
+      let(:url) { 'https://agency.gov/test.doc' }
+      let(:doc) { read_fixture_file('/word/test.doc') }
       before do
         stub_request(:get, url).
           to_return({ status: 200,
                       body: doc,
-                      headers: { content_type: "application/msword" } })
+                      headers: { content_type: 'application/msword' } })
       end
 
       it 'fetches and indexes the document' do
@@ -350,15 +353,15 @@ describe SearchgovUrl do
             title: 'My Word Doc',
             description: 'My Word doc description',
             language: 'en',
-            tags: 'word',
+            tags: 'word'
         ))
         fetch
       end
     end
 
     context 'when the url points to a Word doc (.docx)' do
-      let(:url) { 'https://www.irs.gov/test.docx' }
-      let(:doc) { read_fixture_file("/word/test.docx") }
+      let(:url) { 'https://agency.gov/test.docx' }
+      let(:doc) { read_fixture_file('/word/test.docx') }
       before do
         stub_request(:get, url).
           to_return({ status: 200,
@@ -374,15 +377,15 @@ describe SearchgovUrl do
             title: 'My Word Doc',
             description: 'My Word doc description',
             language: 'en',
-            tags: 'word',
+            tags: 'word'
         ))
         fetch
       end
     end
 
     context 'when the url points to an Excel doc (.xlsx)' do
-      let(:url) { 'https://www.irs.gov/test.xlsx' }
-      let(:doc) { read_fixture_file("/excel/test.xlsx") }
+      let(:url) { 'https://agency.gov/test.xlsx' }
+      let(:doc) { read_fixture_file('/excel/test.xlsx') }
       before do
         stub_request(:get, url).
           to_return({ status: 200,
@@ -398,15 +401,15 @@ describe SearchgovUrl do
             title: 'My Excel Doc',
             description: 'My Excel doc description',
             language: 'en',
-            tags: 'excel',
+            tags: 'excel'
         ))
         fetch
       end
     end
 
     context 'when the url points to an Excel doc (.xls)' do
-      let(:url) { 'https://www.irs.gov/test.xls' }
-      let(:doc) { read_fixture_file("/excel/test.xls") }
+      let(:url) { 'https://agency.gov/test.xls' }
+      let(:doc) { read_fixture_file('/excel/test.xls') }
       before do
         stub_request(:get, url).
           to_return({ status: 200,
@@ -422,14 +425,14 @@ describe SearchgovUrl do
             title: 'My Excel Doc',
             description: 'My Excel doc description',
             language: 'en',
-            tags: 'excel',
+            tags: 'excel'
         ))
         fetch
       end
     end
 
     context 'when the url points to a TXT doc (.txt)' do
-      let(:url) { 'https://www.irs.gov/test.txt' }
+      let(:url) { 'https://agency.gov/test.txt' }
 
       before do
         stub_request(:get, url).
@@ -442,7 +445,7 @@ describe SearchgovUrl do
         expect(I14yDocument).to receive(:create).
           with(hash_including(
             handle: 'searchgov',
-            path: 'https://www.irs.gov/test.txt',
+            path: 'https://agency.gov/test.txt',
             title: 'test.txt',
             description: nil,
             content: 'This is my text content.',
@@ -491,7 +494,7 @@ describe SearchgovUrl do
       end
 
       it 'creates a url' do
-        expect(SearchgovUrl).to receive(:create).with(url: new_url)
+        expect(described_class).to receive(:create).with(url: new_url)
         fetch
       end
 
@@ -514,7 +517,7 @@ describe SearchgovUrl do
         end
 
         it 'does not create a new url' do
-          expect(SearchgovUrl).not_to receive(:create).with(url: new_url)
+          expect(described_class).not_to receive(:create).with(url: new_url)
           fetch
         end
       end
@@ -529,7 +532,7 @@ describe SearchgovUrl do
         end
 
         it 'creates a url' do
-          expect(SearchgovUrl).to receive(:create).
+          expect(described_class).to receive(:create).
             with(url: 'http://www.agency.gov/client_side.html')
           fetch
         end
@@ -573,7 +576,7 @@ describe SearchgovUrl do
           let!(:searchgov_domain) { searchgov_url.searchgov_domain }
           before do
             stub_request(:get, 'http://www.agency.gov/').to_return(status: 403)
-            searchgov_domain.update_attributes!(scheme: 'http', status: '200 OK')
+            searchgov_domain.update!(scheme: 'http', status: '200 OK')
           end
 
           it 'does not delete the document' do
@@ -587,7 +590,7 @@ describe SearchgovUrl do
     context 'when the domain is unavailable' do
       let(:unavailable_domain) do
         instance_double(
-          SearchgovDomain, domain: 'unavailable.gov', :available? => false, status: '403'
+          SearchgovDomain, domain: 'unavailable.gov', available?: false, status: '403'
         )
       end
       before do
@@ -595,11 +598,11 @@ describe SearchgovUrl do
       end
 
       it 'raises an error, including the domain' do
-        expect{ fetch }.to raise_error(SearchgovUrl::DomainError, 'unavailable.gov: 403')
+        expect{ fetch }.to raise_error(described_class::DomainError, 'unavailable.gov: 403')
       end
 
       it 'does not fetch the url' do
-        expect{ fetch }.to raise_error(SearchgovUrl::DomainError, 'unavailable.gov: 403')
+        expect{ fetch }.to raise_error(described_class::DomainError, 'unavailable.gov: 403')
         expect(stub_request(:get, url)).not_to have_been_requested
       end
     end
