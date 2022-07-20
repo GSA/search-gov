@@ -8,6 +8,7 @@ describe SearchgovDomainIndexerJob do
   let!(:searchgov_domain) do
     searchgov_domain = SearchgovDomain.find_by(domain: 'agency.gov')
     searchgov_domain.update(status: '200 OK', activity: 'indexing')
+
     searchgov_domain
   end
 
