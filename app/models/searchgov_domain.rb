@@ -42,7 +42,7 @@ class SearchgovDomain < ApplicationRecord
   end
 
   def available?
-    !!((status || check_status) =~ /^200\b/)
+    (status || check_status) == OK_STATUS
   end
 
   def check_status
@@ -90,7 +90,7 @@ class SearchgovDomain < ApplicationRecord
 
   def failed_response(err)
     update(status: err.message.strip)
-    Rails.logger.warn "#{domain} response error url: #{url} error: #{status}"
+    Rails.logger.error "#{domain} response error url: #{url} error: #{status}"
     nil
   end
 

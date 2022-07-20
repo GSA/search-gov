@@ -262,7 +262,7 @@ describe SearchgovDomain do
     end
 
     context 'when the status is 200' do
-      let(:searchgov_domain) { described_class.new(domain: domain, status: '200') }
+      let(:searchgov_domain) { described_class.new(domain: domain, status: '200 OK') }
 
       it { is_expected.to eq true }
     end
@@ -310,9 +310,9 @@ describe SearchgovDomain do
       end
 
       it 'logs a message containing that error' do
-        allow(Rails.logger).to receive(:warn)
+        allow(Rails.logger).to receive(:error)
         check_status
-        expect(Rails.logger).to have_received(:warn).with(/kaboom/)
+        expect(Rails.logger).to have_received(:error).with(/kaboom/)
       end
 
       context 'when the error is transient' do
