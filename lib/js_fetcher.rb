@@ -1,3 +1,5 @@
+require 'selenium-webdriver'
+
 module JsFetcher
   def self.fetch(url)
     options = Selenium::WebDriver::Chrome::Options.new(args: ['headless'])
