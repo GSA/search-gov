@@ -1,4 +1,6 @@
-if Rails.env.development? || ENV["SEED"]
+should_seed_staging = !ENV["SHOULD_SEED_STAGING_DB"].nil? && Language.count == 0
+
+if Rails.env.development? || should_seed_staging
   require_relative 'seeds/agency.rb'
   require_relative 'seeds/language.rb'
   require_relative 'seeds/affiliate.rb'
