@@ -10,7 +10,7 @@
 # whose current version conflicted with the dependencies in a now-removed instagram gem...
 # which was deprecated in 2015.
 # Fully removing this custom middleware will require some additional work
-# and has been put off until a later date.
+# and has been put off until a later date: https://cm-jira.usa.gov/browse/SRCH-3228
 
 module FaradayMiddleware
   # Public: Converts parsed response bodies to a Hashie::Rash if they were of
