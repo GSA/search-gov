@@ -112,7 +112,7 @@ module SitesHelper
   def site_manage_content_controllers
     %w(boosted_contents boosted_contents_bulk_uploads
        contents document_collections routed_queries excluded_urls
-       flickr_profiles indexed_documents instagram_profiles rss_feeds
+       flickr_profiles indexed_documents rss_feeds
        site_domains site_feed_urls i14y_drawers
        twitter_profiles youtube_profiles featured_collections)
   end

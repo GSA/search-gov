@@ -44,7 +44,7 @@ describe OdieImageSearch do
 
       it 'should create an OasisSearch with the MRSS feed names' do
         expect(OasisSearch).to receive(:new).with(query: 'element', per_page: 10, offset: 0, mrss_names: ['13'],
-                                              flickr_users: [], flickr_groups: [], instagram_profiles: [])
+                                              flickr_users: [], flickr_groups: [])
         described_class.new(query: 'element', affiliate: affiliate)
       end
     end
