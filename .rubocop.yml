@@ -8,11 +8,6 @@ inherit_mode:
     - Exclude
     - IgnoredMethods
 
-AllCops:
-  Exclude:
-    # All Instagram-related code is deprecated and will be removed
-    - /**/**/instagram*
-
 Layout/FirstHashElementIndentation:
   Exclude:
     # These files use Kibana's JSON style for easier side-to-side comparison, copy/pasting, etc.

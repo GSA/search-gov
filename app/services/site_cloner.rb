@@ -23,7 +23,6 @@ class SiteCloner
     clone_site_feed_url(cloned_site)
     clone_images(cloned_site)
 
-    cloned_site.instagram_profile_ids = @origin_site.instagram_profile_ids
     cloned_site.youtube_profile_ids = @origin_site.youtube_profile_ids
 
     clone_memberships(cloned_site)
