@@ -43,19 +43,21 @@ describe Sites::IndexedDocumentsController do
               and_return(indexed_document)
 
           expect(indexed_document).to receive(:save).and_return(true)
-          expect(Resque).to receive(:enqueue_with_priority).
-              with(:high, IndexedDocumentFetcher, indexed_document.id)
 
-          post :create,
-               params: {
-                 site_id: site.id,
-                 indexed_document: {
-                   url: 'http://search.gov/developer/jobs.html',
-                   title: 'Jobs API',
-                   description: 'Helping job seekers land a job with the government.',
-                   not_allowed_key: 'not allowed value'
+          expect do
+            post :create,
+                 params: {
+                   site_id: site.id,
+                   indexed_document: {
+                     url: 'http://search.gov/developer/jobs.html',
+                     title: 'Jobs API',
+                     description: 'Helping job seekers land a job with the government.',
+                     not_allowed_key: 'not allowed value'
+                   }
                  }
-               }
+          end.to have_enqueued_job(IndexedDocumentFetcherJob).
+            on_queue('searchgov').
+            with(indexed_document_id: indexed_document.id)
         end
 
         it { is_expected.to assign_to(:indexed_document).with(indexed_document) }

@@ -14,7 +14,7 @@ class Sites::IndexedDocumentsController < Sites::SetupSiteController
   def create
     @indexed_document = @site.indexed_documents.build indexed_document_params
     if @indexed_document.save
-      Resque.enqueue_with_priority(:high, IndexedDocumentFetcher, @indexed_document.id)
+      IndexedDocumentFetcherJob.perform_later(indexed_document_id: @indexed_document.id)
       redirect_to site_supplemental_urls_path(@site),
                   flash: { success: "You have added #{UrlParser.strip_http_protocols(@indexed_document.url)} to this site." }
     else
