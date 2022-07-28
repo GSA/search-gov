@@ -298,6 +298,17 @@ describe SearchgovDomain do
       end
     end
 
+    context 'when the domain is being indexed' do
+      subject(:done_indexing) { searchgov_domain.done_indexing }
+
+      let(:searchgov_domain) { described_class.create!(domain: domain, activity: 'indexing') }
+
+      it 'changes the activity to "idle"' do
+        expect { done_indexing }.to change { searchgov_domain.activity }.
+          from('indexing').to('idle')
+      end
+    end
+
     context 'when the request raises an error' do
       before do
         allow(searchgov_domain).to receive(:delay).and_return(0)

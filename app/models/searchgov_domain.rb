@@ -84,6 +84,7 @@ class SearchgovDomain < ApplicationRecord
           timeout(connect: 20, read: 60).follow.get(url)
       end
     rescue StandardError => e
+      done_indexing! if activity == 'indexing'
       failed_response(e)
     end
   end
