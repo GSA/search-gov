@@ -79,7 +79,6 @@ class SearchgovDomain < ApplicationRecord
   def fetch_response
     @response = begin
       Retriable.retriable(base_interval: delay) do
-        binding.pry
         DocumentFetchLogger.new(url, 'searchgov_domain').log
         HTTP.headers(user_agent: DEFAULT_USER_AGENT).
           timeout(connect: 20, read: 60).follow.get(url)
