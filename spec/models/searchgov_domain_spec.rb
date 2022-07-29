@@ -299,13 +299,13 @@ describe SearchgovDomain do
     end
 
     context 'when the domain is being indexed' do
-      subject(:done_indexing) { searchgov_domain.done_indexing }
+      let(:searchgov_domain) do
+        described_class.create!(domain: 'test.gov', activity: 'indexing')
+      end
 
-      let(:searchgov_domain) { described_class.create!(domain: domain, activity: 'indexing') }
-
-      it 'changes the activity to "idle"' do
-        expect { done_indexing }.to change { searchgov_domain.activity }.
-          from('indexing').to('idle')
+      it "sets the state to 'idle'" do
+        expect { check_status }.
+          to change { searchgov_domain.reload.activity }.from('indexing').to('idle')
       end
     end
 

@@ -47,7 +47,7 @@ class SearchgovDomain < ApplicationRecord
 
   def check_status
     fetch_response
-    record_response if response
+    validate_response
     status
   end
 
@@ -79,12 +79,12 @@ class SearchgovDomain < ApplicationRecord
   def fetch_response
     @response = begin
       Retriable.retriable(base_interval: delay) do
+        binding.pry
         DocumentFetchLogger.new(url, 'searchgov_domain').log
         HTTP.headers(user_agent: DEFAULT_USER_AGENT).
           timeout(connect: 20, read: 60).follow.get(url)
       end
     rescue StandardError => e
-      done_indexing! if activity == 'indexing'
       failed_response(e)
     end
   end
@@ -93,6 +93,14 @@ class SearchgovDomain < ApplicationRecord
     update(status: err.message.strip)
     Rails.logger.error "#{domain} response error url: #{url} error: #{status}"
     nil
+  end
+
+  def validate_response
+    if response
+      record_response
+    elsif activity == 'indexing'
+      done_indexing!
+    end
   end
 
   def record_response
