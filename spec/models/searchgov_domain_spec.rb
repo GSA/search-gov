@@ -299,11 +299,11 @@ describe SearchgovDomain do
     end
 
     context 'when the domain is being indexed' do
+      subject(:check_status_test) { searchgov_test_domain.check_status }
+
       let(:searchgov_test_domain) do
         described_class.create!(domain: 'test.gov', activity: 'indexing')
       end
-
-      subject(:check_status_test) { searchgov_test_domain.check_status }
 
       it "sets the state to 'idle'" do
         expect { check_status_test }.
