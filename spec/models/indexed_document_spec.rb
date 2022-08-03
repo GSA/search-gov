@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'tika'
 
 describe IndexedDocument do
   fixtures :affiliates, :superfresh_urls, :site_domains, :features
@@ -278,18 +277,18 @@ describe IndexedDocument do
         allow(indexed_document).to receive(:parse_file).and_return ''
       end
 
-      it 'should raise an IndexedDocumentError' do
-        expect { indexed_document.index_application_file(Rails.root.to_s + '/spec/fixtures/pdf/test.pdf', 'pdf') }.to raise_error(IndexedDocument::IndexedDocumentError)
+      it 'raises an IndexedDocumentError' do
+        expect { indexed_document.index_application_file(Rails.root.join('/spec/fixtures/pdf/test.pdf'), 'pdf') }.to raise_error(IndexedDocument::IndexedDocumentError, 'No content found in document')
       end
     end
 
     context 'when IndexedDocument#parse_file raises an exception' do
       before do
-        allow(indexed_document).to receive(:parse_file).and_raise(TikaError.new('boom'))
+        allow(indexed_document).to receive(:parse_file).and_raise('any_error')
       end
 
       it 'raises an IndexedDocument::IndexedDocumentError' do
-        expect { indexed_document.index_application_file(Rails.root.join('/spec/fixtures/pdf/test.pdf'), 'pdf') }.to raise_error(IndexedDocument::IndexedDocumentError)
+        expect { indexed_document.index_application_file(Rails.root.join('/spec/fixtures/pdf/test.pdf'), 'pdf') }.to raise_error(IndexedDocument::IndexedDocumentError, 'No content found in document')
       end
     end
   end
