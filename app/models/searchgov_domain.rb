@@ -47,7 +47,7 @@ class SearchgovDomain < ApplicationRecord
 
   def check_status
     fetch_response
-    record_response if response
+    validate_response
     status
   end
 
@@ -92,6 +92,14 @@ class SearchgovDomain < ApplicationRecord
     update(status: err.message.strip)
     Rails.logger.error "#{domain} response error url: #{url} error: #{status}"
     nil
+  end
+
+  def validate_response
+    if response
+      record_response
+    elsif activity == 'indexing'
+      done_indexing!
+    end
   end
 
   def record_response
