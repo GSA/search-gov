@@ -36,11 +36,6 @@ module NavigationsHelper
       append_navigation_label labels,
                               link_to('Flickr', site_flickr_urls_path(site))
     end
-    if site.instagram_profiles.exists?
-      append_navigation_label labels,
-                              link_to('Instagram',
-                                      site_instagram_usernames_path(site))
-    end
     if site.rss_feeds.mrss.exists?
       append_navigation_label labels,
                               link_to('MRSS', site_rss_feeds_path(site))

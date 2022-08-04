@@ -10,7 +10,6 @@ describe SiteCloner do
            :i14y_drawers,
            :i14y_memberships,
            :image_search_labels,
-           :instagram_profiles,
            :languages,
            :memberships,
            :navigations,
@@ -268,17 +267,6 @@ describe SiteCloner do
         expect(cloned_doc.description).to eq('This is a document.')
         expect(cloned_doc.title).to eq('Some Title')
         expect(cloned_doc.url).to eq('http://min.foo.gov/link.html')
-      end
-    end
-
-    context 'when the origin site has instagram profiles' do
-      before do
-        origin_site.instagram_profiles << instagram_profiles(:whitehouse)
-      end
-
-      it 'copies the instagram profiles' do
-        expect(cloned_site.instagram_profile_ids.count).to eq(1)
-        expect(cloned_site.instagram_profile_ids).to eq(origin_site.instagram_profile_ids)
       end
     end
 

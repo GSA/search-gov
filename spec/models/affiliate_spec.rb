@@ -107,7 +107,6 @@ describe Affiliate do
       is_expected.to have_many(:tag_filters).dependent(:destroy).inverse_of(:affiliate)
     end
 
-    it { is_expected.to have_and_belong_to_many :instagram_profiles }
     it { is_expected.to have_and_belong_to_many :youtube_profiles }
     it { is_expected.to belong_to :agency }
     it { is_expected.to belong_to(:language).inverse_of(:affiliates) }
@@ -556,7 +555,6 @@ describe Affiliate do
     context 'when affiliate has no ASIS profiles' do
       before do
         affiliate.flickr_profiles.delete_all
-        affiliate.instagram_profiles.delete_all
         affiliate.rss_feeds.mrss.delete_all
       end
       specify { expect(affiliate).to have_no_social_image_feeds }
@@ -565,7 +563,6 @@ describe Affiliate do
     context 'when affiliate has MRSS feed but the RSS feed URL has no Oasis MRSS name' do
       before do
         affiliate.flickr_profiles.delete_all
-        affiliate.instagram_profiles.delete_all
         affiliate.rss_feeds.mrss.delete_all
         feed = affiliate.rss_feeds.build(name: 'mrss', show_only_media_content: true)
         feed.rss_feed_urls.build(url: 'http://www.defense.gov/news/mrss_leadphotos.xml', last_crawl_status: 'OK',

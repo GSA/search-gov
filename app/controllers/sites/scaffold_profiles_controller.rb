@@ -68,10 +68,6 @@ module Sites::ScaffoldProfilesController
     site_profiles << @profile
   end
 
-  def human_profile_name
-    @profile.send primary_attribute_name
-  end
-
   def destroy_params
     params.permit(:id).to_h
   end

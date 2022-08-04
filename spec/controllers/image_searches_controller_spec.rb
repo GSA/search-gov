@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 describe ImageSearchesController do
-  fixtures :affiliates, :instagram_profiles, :languages
+  fixtures :affiliates, :languages
   let(:affiliate) { affiliates(:usagov_affiliate) }
 
   describe '#index' do

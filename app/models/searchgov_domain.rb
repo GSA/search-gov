@@ -21,14 +21,13 @@ class SearchgovDomain < ApplicationRecord
   has_many :sitemaps, dependent: :destroy
 
   attr_readonly :domain
+  attr_reader :response
 
   scope :ok, -> { where(status: OK_STATUS) }
   scope :not_ok, -> { where.not(status: OK_STATUS) }
 
   def delay
-    @delay ||= begin
-      robotex.delay("http://#{domain}/") || 1
-    end
+    @delay ||= (robotex.delay("http://#{domain}/") || 1)
   end
 
   def index_urls
@@ -43,15 +42,12 @@ class SearchgovDomain < ApplicationRecord
   end
 
   def available?
-    /^200\b/ === (status || check_status)
+    (status || check_status) == OK_STATUS
   end
 
   def check_status
-    self.status = response.status
-    self.scheme = response.uri.scheme
-    self.canonical_domain = host unless domain == host
-
-    save if changed?
+    fetch_response
+    validate_response
     status
   end
 
@@ -80,17 +76,38 @@ class SearchgovDomain < ApplicationRecord
     @robotex ||= Robotex.new('usasearch')
   end
 
-  def response
-    @response ||= begin
+  def fetch_response
+    @response = begin
       Retriable.retriable(base_interval: delay) do
         DocumentFetchLogger.new(url, 'searchgov_domain').log
         HTTP.headers(user_agent: DEFAULT_USER_AGENT).
           timeout(connect: 20, read: 60).follow.get(url)
       end
-    rescue StandardError => error
-      update(status: error.message.strip)
-      raise DomainError.new("#{domain}: #{error}")
+    rescue StandardError => e
+      failed_response(e)
     end
+  end
+
+  def failed_response(err)
+    update(status: err.message.strip)
+    Rails.logger.error "#{domain} response error url: #{url} error: #{status}"
+    nil
+  end
+
+  def validate_response
+    if response
+      record_response
+    elsif activity == 'indexing'
+      done_indexing!
+    end
+  end
+
+  def record_response
+    self.status = response.status
+    self.scheme = response.uri.scheme
+    self.canonical_domain = host unless domain == host
+
+    save if changed?
   end
 
   def url
