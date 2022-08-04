@@ -71,7 +71,6 @@ class Affiliate < ApplicationRecord
   has_many :rss_feed_urls, -> { distinct }, through: :rss_feeds
   has_many :url_prefixes, through: :document_collections
   has_many :twitter_profiles, -> { order 'twitter_profiles.screen_name ASC' }, through: :affiliate_twitter_settings
-  has_and_belongs_to_many :instagram_profiles, -> { order 'instagram_profiles.username ASC' }
   has_and_belongs_to_many :youtube_profiles, -> { order 'youtube_profiles.title ASC' }
   has_many :i14y_drawers, -> { order 'handle' }, through: :i14y_memberships
   has_many :routed_query_keywords, -> { order 'keyword' }, through: :routed_queries
@@ -338,7 +337,7 @@ class Affiliate < ApplicationRecord
   end
 
   def has_no_social_image_feeds?
-    flickr_profiles.empty? && instagram_profiles.empty? &&
+    flickr_profiles.empty? &&
       (rss_feeds.mrss.empty? || rss_feeds.mrss.collect(&:rss_feed_urls).flatten.collect(&:oasis_mrss_name).compact.empty?)
   end
 

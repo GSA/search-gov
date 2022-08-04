@@ -43,11 +43,6 @@
     = link_to site_flickr_urls_path(@site) do
       = image_tag 'sites/flickr_logo.png', alt: 'Flickr logo'
       %div.name Flickr
-  %li.content-item.instagram
-    - if @site.instagram_profiles.any?
-      = link_to site_instagram_usernames_path(@site) do
-        = image_tag 'sites/instagram_logo.png', alt: 'Instagram logo'
-        %div.name Instagram
 
 = form_tag site_autodiscovery_path(@site), id: 'autodiscovery'
 = label_tag :autodiscovery_url, 'Discover and add the RSS feeds and social media accounts listed on the following page:'

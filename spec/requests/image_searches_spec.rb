@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe '/search/images' do
-  fixtures :affiliates, :instagram_profiles
+  fixtures :affiliates, :flickr_profiles
 
   context 'when site is not bing image search enabled' do
     let(:affiliate) { affiliates(:usagov_affiliate) }
@@ -15,7 +15,7 @@ describe '/search/images' do
     end
 
     before do
-      affiliate.instagram_profiles << instagram_profiles(:whitehouse)
+      affiliate.flickr_profiles << flickr_profiles(:user)
       oasis_search = double(OasisSearch)
       allow(OasisSearch).to receive(:new).and_return oasis_search
       allow(oasis_search).to receive(:execute_query).and_return search_engine_response
