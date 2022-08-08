@@ -1,7 +1,7 @@
 module TwitterProfilesHelper
   def tweet_text(tweet, position)
     inject_tweet_links(tweet) do |entity_url|
-      link_to_tweet_link(tweet, entity_url.display_url.html_safe, entity_url.url, position, url: entity_url.expanded_url)
+      link_to_tweet_link(tweet, entity_url['display_url'].html_safe, entity_url['url'], position, url: entity_url['expanded_url'])
     end
   end
 
@@ -10,10 +10,10 @@ module TwitterProfilesHelper
     if tweet.urls.present?
       processed_urls = []
       tweet.urls.each do |entity_url|
-        next if processed_urls.include?(entity_url.url)
-        processed_urls << entity_url.url
+        next if processed_urls.include?(entity_url['url'])
+        processed_urls << entity_url['url']
         link = yield entity_url
-        html.gsub!(/#{Regexp.escape(entity_url.url)}/, link)
+        html.gsub!(/#{Regexp.escape(entity_url['url'])}/, link)
       end
     end
     html.html_safe

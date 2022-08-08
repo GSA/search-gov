@@ -2,8 +2,10 @@
 
 class LowQueryCtrWatcher < Watcher
   WATCHER_DEFAULTS = { search_click_total: 100, low_ctr_threshold: 15 }
-  define_hash_columns_accessors column_name_method: :conditions,
-                                fields: [:search_click_total, :low_ctr_threshold]
+  include AttrJson::Record
+
+  attr_json :search_click_total, :string, container_attribute: "conditions"
+  attr_json :low_ctr_threshold, :string, container_attribute: "conditions"
 
   validates_numericality_of :search_click_total, greater_than_or_equal_to: 20, only_integer: true
   validates_numericality_of :low_ctr_threshold, greater_than: 0.0, less_than: 100.0

@@ -79,10 +79,5 @@ module Usasearch
     # Require `belongs_to` associations by default. Versions before
     # Rails 5.0 had false.
     config.active_record.belongs_to_required_by_default = false
-
-    # Temporary workaround for:
-    # https://discuss.rubyonrails.org/t/cve-2022-32224-possible-rce-escalation-bug-with-serialized-columns-in-active-record/81017
-    # A permanent solution will be implemented in https://cm-jira.usa.gov/browse/SRCH-3206
-    config.active_record.use_yaml_unsafe_load = true
   end
 end
