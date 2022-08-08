@@ -97,9 +97,9 @@ class HtmlDocument < WebDocument
     [dublin_core_data['dc.subject'],
      dcterms_data['dcterms.subject'],
      dcterms_data['dcterms.keywords'],
-     metadata['keywords']&.join(', '),
-     metadata['article:tag']&.join(', '),
-     metadata['article:section']&.join(', ')]
+     metadata['keywords'],
+     metadata['article:tag'],
+     metadata['article:section']].map { |k| k&.join(', ') }
   end
 
   def extract_language
@@ -107,7 +107,7 @@ class HtmlDocument < WebDocument
   end
 
   def extract_created
-    metadata['article:published_time']&.first  || dublin_core_date || dcterms_date
+    metadata['article:published_time']&.first || dublin_core_date || dcterms_date
   end
 
   def extract_changed

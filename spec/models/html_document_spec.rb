@@ -412,11 +412,48 @@ describe HtmlDocument do
     context 'when meta keywords and article keywords are available' do
       let(:raw_document) { read_fixture_file('/html/page_with_og_metadata.html') }
 
-      it { puts html_document.keywords }
       it { is_expected.to include('this') }
       it { is_expected.to include('that') }
       it { is_expected.to include('the other') }
       it { is_expected.to include('thing') }
+    end
+
+    context 'when parallel keywords duplicate a list of keywords' do
+      let(:raw_document) do
+        <<~HTML
+          <html lang="en">
+            <head>
+              <title>My Title</title>
+              <meta name="keywords" content="tag 1, tag 2, tag 3">
+              <meta property="article:section" content="tag 1" />
+              <meta property="article:section" content="tag 2" />
+              <meta property="article:section" content="tag 3" />
+            </head>
+          </html>
+        HTML
+      end
+
+      it { is_expected.to eq 'tag 1, tag 2, tag 3' }
+    end
+
+    context 'when all keywords are duplicates' do
+      let(:raw_document) do
+        <<~HTML
+          <html lang="en">
+            <head>
+              <title>My Title</title>
+              <meta name="dc.subject" content="tag 1, tag 2, tag 3">
+              <meta name="dcterms.subject" content="tag 1, tag 2, tag 3">
+              <meta name="dcterms.keywords" content="tag 1, tag 2, tag 3">
+              <meta name="keywords" content="tag 1, tag 2, tag 3">
+              <meta property="article:tag" content="tag 1, tag 2, tag 3" />
+              <meta property="article:section" content="tag 1, tag 2, tag 3" />
+            </head>
+          </html>
+        HTML
+      end
+
+      it { is_expected.to eq 'tag 1, tag 2, tag 3' }
     end
   end
 
