@@ -10,6 +10,7 @@ class SearchgovDomainIndexerJob < ApplicationJob
       SearchgovDomainIndexerJob.set(wait: delay.seconds).
         perform_later(searchgov_domain: searchgov_domain, delay: delay)
     else
+      Rails.logger.info("Done indexing #{searchgov_domain.domain}")
       searchgov_domain.done_indexing!
     end
   end
