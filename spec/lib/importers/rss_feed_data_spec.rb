@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe RssFeedData do
@@ -5,12 +7,14 @@ describe RssFeedData do
 
   describe '#import' do
     let(:rss_feed_url) { rss_feed_urls(:basic_url) }
-    before { allow(UrlStatusCodeFetcher).to receive(:fetch) { '200 OK' } }
+
+    before { allow(UrlStatusCodeFetcher).to receive(:fetch).and_return('200 OK') }
 
     context 'when the feed is empty' do
       let(:rss_feed_content) do
         File.open(Rails.root.to_s + '/spec/fixtures/rss/empty.xml').read
       end
+
       before do
         stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
         rss_feed_url.news_items.destroy_all
@@ -31,23 +35,23 @@ describe RssFeedData do
         stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
         allow(UrlStatusCodeFetcher).to receive(:fetch) do |arg|
           status_code =
-              case arg
-                when 'http://www.whitehouse.gov/blog/2011/09/26/famine-horn-africa-be-part-solution'
-                  '404 Not Found'
-                else
-                  '200 OK'
-              end
+            case arg
+            when 'http://www.whitehouse.gov/blog/2011/09/26/famine-horn-africa-be-part-solution'
+              '404 Not Found'
+            else
+              '200 OK'
+            end
           { arg => status_code }
         end
         rss_feed_url.news_items.destroy_all
         described_class.new(rss_feed_url).import
       end
 
-      it 'should populate and index just the news items that are valid' do
+      it 'populates and index just the news items that are valid' do
         expect(rss_feed_url.news_items.count).to eq(1)
       end
 
-      it 'should reflect that 404 in the feed status' do
+      it 'reflects that 404 in the feed status' do
         expect(rss_feed_url.last_crawl_status).to eq('Linked URL does not exist (HTTP 404)')
       end
     end
@@ -63,11 +67,11 @@ describe RssFeedData do
         described_class.new(rss_feed_url).import
       end
 
-      it 'should populate and index just the news items that are valid' do
+      it 'populates and index just the news items that are valid' do
         expect(rss_feed_url.news_items.count).to eq(2)
       end
 
-      it 'should reflect the missing pubDate in the last_crawl_status field' do
+      it 'reflects the missing pubDate in the last_crawl_status field' do
         expect(rss_feed_url.last_crawl_status).to eq('Missing pubDate field')
       end
     end
@@ -76,17 +80,18 @@ describe RssFeedData do
       let(:rss_feed_content) do
         File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_missing_link.xml').read
       end
+
       before do
         stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
         rss_feed_url.news_items.destroy_all
         described_class.new(rss_feed_url).import
       end
 
-      it 'should populate and index just the news items that are valid' do
+      it 'populates and index just the news items that are valid' do
         expect(rss_feed_url.news_items.count).to eq(2)
       end
 
-      it 'should reflect the missing link field in the last_crawl_status field' do
+      it 'reflects the missing link field in the last_crawl_status field' do
         expect(rss_feed_url.last_crawl_status).to eq('Missing link field')
       end
     end
@@ -99,7 +104,7 @@ describe RssFeedData do
         described_class.new(rss_feed_url).import
       end
 
-      it 'should reflect the most common problem in the last_crawl_status field' do
+      it 'reflects the most common problem in the last_crawl_status field' do
         expect(rss_feed_url.last_crawl_status).to eq("Title can't be blank")
       end
     end
@@ -111,7 +116,7 @@ describe RssFeedData do
         rss_feed_url.news_items.destroy_all
       end
 
-      it 'should create a single comma-separated list' do
+      it 'creates a single comma-separated list' do
         described_class.new(rss_feed_url).import
         u = RssFeedUrl.find rss_feed_url.id
         newest = u.news_items.first
@@ -128,7 +133,7 @@ describe RssFeedData do
       context 'when there are no news items associated with the source' do
         before { rss_feed_url.news_items.destroy_all }
 
-        it 'should populate news items from the RSS feed source with HTML stripped from the description' do
+        it 'populates news items from the RSS feed source with HTML stripped from the description' do
           described_class.new(rss_feed_url).import
           u = RssFeedUrl.find rss_feed_url.id
           expect(u.last_crawl_status).to eq('OK')
@@ -159,11 +164,12 @@ describe RssFeedData do
             title: 'Big story here',
             description: 'Corps volunteers have promoted blah blah blah.',
             published_at: DateTime.parse('26 Sep 2011 18:31:23 +0000'),
-            guid: 'unique')
+            guid: 'unique'
+          )
         end
 
         context 'when ignore_older_items set to true (default)' do
-          it 'should populate news items with only the new ones from the RSS feed source based on the pubDate' do
+          it 'populates news items with only the new ones from the RSS feed source based on the pubDate' do
             described_class.new(rss_feed_url, true).import
             rss_feed_url.reload
             expect(rss_feed_url.last_crawl_status).to eq('OK')
@@ -172,7 +178,7 @@ describe RssFeedData do
         end
 
         context 'when ignore_older_items set to false' do
-          it 'should populate news items with both the new and old ones from the RSS feed source based on the pubDate' do
+          it 'populates news items with both the new and old ones from the RSS feed source based on the pubDate' do
             described_class.new(rss_feed_url, false).import
             rss_feed_url.reload
             expect(rss_feed_url.last_crawl_status).to eq('OK')
@@ -189,10 +195,11 @@ describe RssFeedData do
             title: 'Big story here',
             description: 'Corps volunteers have promoted blah blah blah.',
             published_at: DateTime.parse('26 Sep 2011 18:31:21 +0000'),
-            guid: '80671 at http://www.whitehouse.gov')
+            guid: '80671 at http://www.whitehouse.gov'
+          )
         end
 
-        it 'should ignore them' do
+        it 'ignores them' do
           described_class.new(rss_feed_url, true).import
           rss_feed_url.reload
           expect(rss_feed_url.last_crawl_status).to eq('OK')
@@ -203,12 +210,13 @@ describe RssFeedData do
           let(:rss_feed_content) do
             File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_diff_protocol.xml').read
           end
+
           before do
             stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
             NewsItem.destroy_all
           end
 
-          it 'should ignore them' do
+          it 'ignores them' do
             described_class.new(rss_feed_url, true).import
             rss_feed_url.reload
             expect(rss_feed_url.news_items.count).to eq(1)
@@ -222,7 +230,7 @@ describe RssFeedData do
         expect(rss_feed_url).to receive(:touch).with(:last_crawled_at).and_raise StandardError.new('Error Message!')
       end
 
-      it 'should log it and move on' do
+      it 'logs it and move on' do
         expect(Rails.logger).to receive(:warn).once.with(an_instance_of(StandardError))
         described_class.new(rss_feed_url, true).import
         rss_feed_url.reload
@@ -234,6 +242,7 @@ describe RssFeedData do
       let(:rss_feed_content) do
         File.open(Rails.root.to_s + '/spec/fixtures/rss/rss_with_content_module.xml').read
       end
+
       before do
         stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
         rss_feed_url.news_items.destroy_all
@@ -259,7 +268,7 @@ describe RssFeedData do
         rss_feed_url.news_items.destroy_all
       end
 
-      it 'should use the media:text for the body' do
+      it 'uses the media:text for the body' do
         described_class.new(rss_feed_url).import
         u = RssFeedUrl.find rss_feed_url.id
         expect(u.last_crawl_status).to eq('OK')
@@ -353,7 +362,7 @@ describe RssFeedData do
       end
 
       context 'when there are no news items associated with the source' do
-        it 'should populate news items from the RSS feed source with HTML stripped from the description' do
+        it 'populates news items from the RSS feed source with HTML stripped from the description' do
           described_class.new(atom_feed_url, true).import
           atom_feed_url.reload
           expect(atom_feed_url.news_items.count).to eq(25)
@@ -398,7 +407,7 @@ describe RssFeedData do
         stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
       end
 
-      it 'should not change the number of news items, and update the crawl status' do
+      it 'does not change the number of news items, and update the crawl status' do
         importer = described_class.new(rss_feed_url, true)
         importer.import
         rss_feed_url.reload
@@ -420,13 +429,13 @@ describe RssFeedData do
         end
 
         it 'updates the url' do
-           expect{ described_class.new(rss_feed_url, true).import }.to change{ rss_feed_url.reload.url }.
+          expect { described_class.new(rss_feed_url, true).import }.to change { rss_feed_url.reload.url }.
             from('http://www.whitehouse.gov/feed/blog/white-house').
             to('https://www.whitehouse.gov/feed/blog/white-house')
         end
 
         it 'creates news items' do
-          expect{ described_class.new(rss_feed_url, true).import }.to change{ rss_feed_url.news_items.count }.
+          expect { described_class.new(rss_feed_url, true).import }.to change { rss_feed_url.news_items.count }.
             from(0).to(3)
         end
       end
