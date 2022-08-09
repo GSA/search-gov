@@ -180,7 +180,7 @@ describe 'Twitter rake tasks' do
           expect(Tweet.count).to eq(1)
           tweet = Tweet.first
           expect(tweet.tweet_text).to eq('Fast. Relevant. Free. Features: http://t.co/l8VhWiZH http://t.co/y5YSDq7M')
-          expect(tweet.urls.map{ |url| url['display_url'] }).to eq(%w(search.gov/features pic.twitter.com/y5YSDq7M))
+          expect(tweet.urls.map { |url| url['display_url'] }).to eq(%w[search.gov/features pic.twitter.com/y5YSDq7M])
         end
 
         it 'persists urls with complete data' do
@@ -194,7 +194,7 @@ describe 'Twitter rake tasks' do
           expect(tweet.twitter_profile_id).to eq(123)
           expect(tweet.tweet_id).to eq(258289885373423617)
           expect(tweet.tweet_text).to eq('Fast. Relevant. Free. Features: http://t.co/l8VhWiZH http://t.co/y5YSDq7M')
-          expect(tweet.urls.map{ |url| url['display_url'] }).to eq(%w(pic.twitter.com/y5YSDq7M))
+          expect(tweet.urls.map { |url| url['display_url'] }).to eq(%w[pic.twitter.com/y5YSDq7M])
         end
 
         it 'handles retweet' do
@@ -208,7 +208,7 @@ describe 'Twitter rake tasks' do
           expect(tweet.twitter_profile_id).to eq(123)
           expect(tweet.tweet_id).to eq(263164794574626816)
           expect(tweet.tweet_text).to eq("RT @femaregion1: East Coast accounts giving specific #Sandy safety tips @femaregion1 @femaregion2 @FEMAregion3 @femaregion4 http://t.co/odIp5fl7\u2026")
-          expect(tweet.urls.map{ |url| url['display_url'] }).to eq(%w(fema.gov/colorbox/node/))
+          expect(tweet.urls.map { |url| url['display_url'] }).to eq(%w[fema.gov/colorbox/node/])
         end
 
         it 'logs an error if something goes wrong in creating a Tweet' do
