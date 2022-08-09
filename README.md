@@ -119,11 +119,17 @@ If you want it to run in parallel using Resque workers, call it like this:
 
     $ rake usasearch:elasticsearch:resque_index_all[FeaturedCollection+BoostedContent]
 
-Note that indexing everything uses whatever index/mapping/setting is in place. If you need to change the Elasticsearch schema first, do this:
+Note that indexing everything uses whatever index/mapping/setting is in place. If you need to change the Elasticsearch schema first, you can 'recreate' or 'migrate' the index:
+
+**Recreate an index (for development/test environments)**
+
+:warning: The `recreate_index` task should only be used in development or test environments, as it deletes and then recreates the index from scratch:
 
     $ rake usasearch:elasticsearch:recreate_index[FeaturedCollection]
 
-If you are changing a schema and want to migrate the index without having it be unavailable, do this:
+**Migrate an index (safe for production use)**
+
+In production, if you are changing a schema and want to migrate the index without having it be unavailable while the new index is being populated, do this:
 
     $ rake usasearch:elasticsearch:migrate[FeaturedCollection]
 
