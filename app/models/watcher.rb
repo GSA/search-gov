@@ -16,6 +16,10 @@ class Watcher < ApplicationRecord
   validates :query_blocklist, length: { maximum: 150, allow_nil: true }
   validates :time_window, format: INTERVAL_REGEXP, time_window: true
 
+  # SRCH-3206 update: In the future, we may wish to transition to using a json db data type for the conditions column,
+  # but deferring for now.
+  store :conditions, coder: JSON
+
   def body
     Jbuilder.encode do |json|
       trigger(json)

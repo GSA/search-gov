@@ -5,6 +5,7 @@ class Tweet < ApplicationRecord
   belongs_to :twitter_profile, primary_key: :twitter_id
   validates :tweet_id, :tweet_text, :published_at, :twitter_profile_id, presence: true
   validates :tweet_id, uniqueness: true
+  serialize :urls, JSON
 
   def sanitize_tweet_text
     self.tweet_text = Sanitizer.sanitize(tweet_text).squish if tweet_text

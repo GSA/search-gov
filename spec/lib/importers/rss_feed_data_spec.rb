@@ -310,15 +310,19 @@ describe RssFeedData do
       it 'persists media thumbnail and media content properties' do
         described_class.new(media_rss_url).import
         expect(media_rss_url.news_items.reload.count).to eq(3)
-        item_with_media_props = media_rss_url.news_items.find_by link: 'http://www.flickr.com/photos/usgeologicalsurvey/8594929349/'
+        item_with_media_props = media_rss_url.news_items.find_by_link 'http://www.flickr.com/photos/usgeologicalsurvey/8594929349/'
 
-        expect(item_with_media_props.media_content['url']).to eq('http://farm9.staticflickr.com/8381/8594929349_f6d8163c36_b.jpg')
-        expect(item_with_media_props.media_content['type']).to eq('image/jpeg')
+        media_content = item_with_media_props.properties[:media_content]
+        expect(media_content).to eq(
+          'url' => 'http://farm9.staticflickr.com/8381/8594929349_f6d8163c36_b.jpg',
+          'type' => 'image/jpeg'
+        )
 
-        expect(item_with_media_props.media_thumbnail['url']).to eq('http://farm9.staticflickr.com/8381/8594929349_f6d8163c36_s.jpg')
-        expect(item_with_media_props.tags).to eq(%w[image])
+        media_thumbnail = item_with_media_props.properties[:media_thumbnail]
+        expect(media_thumbnail).to eq({ 'url' => 'http://farm9.staticflickr.com/8381/8594929349_f6d8163c36_s.jpg' })
+        expect(item_with_media_props.tags).to eq(%w(image))
 
-        no_media_content_url_item = media_rss_url.news_items.find_by link: 'http://www.flickr.com/photos/usgeologicalsurvey/8547777933/'
+        no_media_content_url_item = media_rss_url.news_items.find_by_link 'http://www.flickr.com/photos/usgeologicalsurvey/8547777933/'
         expect(no_media_content_url_item.properties).to be_empty
         expect(no_media_content_url_item.tags).to be_empty
       end
@@ -340,13 +344,17 @@ describe RssFeedData do
         described_class.new(media_rss_url).import
         expect(media_rss_url.news_items.reload.count).to eq(3)
         link = 'http://www.usgs.gov/blogs/features/usgs_top_story/national-groundwater-awareness-week-2/'
-        item_with_media_props = media_rss_url.news_items.find_by link: link
+        item_with_media_props = media_rss_url.news_items.find_by_link link
 
-        expect(item_with_media_props.media_content['url']).to eq('http://www.usgs.gov/blogs/features/files/2014/03/crosssec.jpg')
-        expect(item_with_media_props.media_content['type']).to eq('image/jpeg')
+        media_content = item_with_media_props.properties[:media_content]
+        expect(media_content).to eq(
+          'url' => 'http://www.usgs.gov/blogs/features/files/2014/03/crosssec.jpg',
+          'type' => 'image/jpeg'
+        )
 
-        expect(item_with_media_props.media_thumbnail['url']).to eq('http://www.usgs.gov/blogs/features/files/2014/03/crosssec-150x150.jpg')
-        expect(item_with_media_props.tags).to eq(%w[image])
+        media_thumbnail = item_with_media_props.properties[:media_thumbnail]
+        expect(media_thumbnail).to eq('url' => 'http://www.usgs.gov/blogs/features/files/2014/03/crosssec-150x150.jpg')
+        expect(item_with_media_props.tags).to eq(%w(image))
       end
     end
 

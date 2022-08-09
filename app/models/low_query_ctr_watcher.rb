@@ -2,10 +2,11 @@
 
 class LowQueryCtrWatcher < Watcher
   WATCHER_DEFAULTS = { search_click_total: 100, low_ctr_threshold: 15 }.freeze
-  include AttrJson::Record
 
-  attr_json :search_click_total, :string, container_attribute: 'conditions'
-  attr_json :low_ctr_threshold, :string, container_attribute: 'conditions'
+  # SRCH-3206 update: In the future, we may wish to transition to using a json db data type for the conditions column,
+  # but deferring for now.
+  store_accessor :conditions, :search_click_total
+  store_accessor :conditions, :low_ctr_threshold
 
   validates :search_click_total, numericality: { greater_than_or_equal_to: 20, only_integer: true }
   validates :low_ctr_threshold, numericality: { greater_than: 0.0, less_than: 100.0 }

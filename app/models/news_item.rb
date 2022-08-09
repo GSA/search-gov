@@ -2,11 +2,6 @@
 
 class NewsItem < ApplicationRecord
   include FastDeleteFromDbAndEs
-  include AttrJson::Record
-
-  attr_json :media_content, ActiveModel::Type::Value.new, container_attribute: 'properties'
-  attr_json :media_thumbnail, ActiveModel::Type::Value.new, container_attribute: 'properties'
-  attr_json :duration, :string, container_attribute: 'properties'
 
   before_validation do |record|
     AttributeProcessor.squish_attributes(record,
@@ -36,6 +31,10 @@ class NewsItem < ApplicationRecord
   validate :unique_link
   belongs_to :rss_feed_url
 
+  # SRCH-3206 update: In the future, we may wish to transition to using a json db data type for the properties column,
+  # but deferring for now.
+  store :properties, accessors: [:media_thumbnail, :media_content], coder: JSON
+
   alias_attribute :url, :link
 
   def is_video?
@@ -43,10 +42,10 @@ class NewsItem < ApplicationRecord
   end
 
   def tags
-    if media_content.present? &&
-       media_content['url'] &&
-       media_thumbnail.present? &&
-       media_thumbnail['url']
+    if properties.key?(:media_content) &&
+       properties[:media_content][:url].present? &&
+       properties.key?(:media_thumbnail) &&
+       properties[:media_thumbnail][:url].present?
       %w[image]
     else
       []
@@ -54,7 +53,15 @@ class NewsItem < ApplicationRecord
   end
 
   def thumbnail_url
-    media_thumbnail['url']
+    properties[:media_thumbnail][:url] if properties[:media_thumbnail]
+  end
+
+  def duration
+    properties[:duration]
+  end
+
+  def duration=(duration_str)
+    properties[:duration] = duration_str
   end
 
   def language

@@ -2,6 +2,7 @@
 
 class TwitterList < ApplicationRecord
   self.primary_key = 'id'
+  serialize :member_ids, JSON
   validates :id, numericality: { only_integer: true, greater_than: 0 }
   has_and_belongs_to_many :twitter_profiles, join_table: :twitter_lists_twitter_profiles
   scope :active, lambda {

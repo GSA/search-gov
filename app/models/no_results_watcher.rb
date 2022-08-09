@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class NoResultsWatcher < Watcher
-  include AttrJson::Record
-
-  attr_json :distinct_user_total, :string, container_attribute: 'conditions'
   WATCHER_DEFAULTS = { distinct_user_total: 50 }.freeze
+
+  # SRCH-3206 update: In the future, we may wish to transition to using a json db data type for the conditions column,
+  # but deferring for now.
+  store_accessor :conditions, :distinct_user_total
 
   validates :distinct_user_total, numericality: { greater_than_or_equal_to: 1, only_integer: true }
 
