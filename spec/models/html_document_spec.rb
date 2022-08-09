@@ -101,7 +101,7 @@ describe HtmlDocument do
   describe '#created' do
     subject(:created) { html_document.created }
 
-    it { is_expected.to eq nil }
+    it { is_expected.to be nil }
 
     context 'when the Open Graph publication date is available' do
       let(:raw_document) { read_fixture_file('/html/page_with_og_metadata.html') }
@@ -115,12 +115,60 @@ describe HtmlDocument do
       it { is_expected.to eq Time.parse('02/16/2018 7:48 AM') }
     end
 
+    context 'when the Dublin Core date created is available' do
+      let(:raw_document) do
+        <<~HTML
+          <html lang="en">
+            <head>
+              <title>My Title</title>
+              <meta name="dc.date.created" content="01/01/2020 12:01 AM"/>
+            </head>
+          </html>
+        HTML
+      end
+
+      it { is_expected.to eq Time.parse('01/01/2020 12:01 AM') }
+    end
+
+    context 'when the Dublin Core Terms created is available' do
+      let(:raw_document) do
+        <<~HTML
+          <html lang="en">
+            <head>
+              <title>My Title</title>
+              <meta name="dcterms.created" content="01/01/2021 12:01 PM"/>
+            </head>
+          </html>
+        HTML
+      end
+
+      it { is_expected.to eq Time.parse('01/01/2021 12:01 PM') }
+    end
+
+    context 'when all date created sources are present, Open Graph publication date wins' do
+      let(:raw_document) do
+        <<~HTML
+          <html lang="en">
+            <head>
+              <title>My Title</title>
+              <meta property="article:published_time" content="2015-07-02T10:12:32-04:00" />
+              <meta name="dc.date" content="02/16/2018 7:48 AM"/>
+              <meta name="dc.date.created" content="01/01/2020 12:01 AM"/>
+              <meta name="dcterms.created" content="01/01/2021 12:01 PM"/>
+            </head>
+          </html>
+        HTML
+      end
+
+      it { is_expected.to eq Time.zone.parse('2015-07-02T10:12:32-04:00') }
+    end
+
     context 'when the Dublin Core date is a year' do
       let(:raw_document) do
         '<html><head><meta name="DC.date" content="2018"/></head></html>'
       end
 
-      it { is_expected.to eq nil }
+      it { is_expected.to be nil }
     end
   end
 

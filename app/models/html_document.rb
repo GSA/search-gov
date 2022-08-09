@@ -98,7 +98,7 @@ class HtmlDocument < WebDocument
   end
 
   def extract_created
-    metadata['article:published_time'] || dublin_core_date
+    metadata['article:published_time'] || dublin_core_date || dcterms_date
   end
 
   def extract_changed
@@ -116,7 +116,11 @@ class HtmlDocument < WebDocument
   end
 
   def dublin_core_date
-    dublin_core_data['dc.date']
+    dublin_core_data['dc.date'] || dublin_core_data['dc.date.created']
+  end
+
+  def dcterms_date
+    dcterms_data['dcterms.created']
   end
 
   def dublin_core_data
