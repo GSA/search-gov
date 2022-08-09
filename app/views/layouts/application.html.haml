@@ -6,14 +6,16 @@
     %title
       = yield :title
     = favicon_link_tag
-
     = stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Maven+Pro:400,700'
     = stylesheet_link_tag 'application'
     /[if lte IE 9]
       = stylesheet_link_tag 'application_ie_lte9'
+    = stylesheet_link_tag 'uswds'
+    
 
   %body
     %a#skiplink{ href: '#main-content' } Skip to Main Content
+    = render 'sites/shared/banner_uswds'
     #navbar.navbar
       - if $git_info.show_header
         #git-info-header= render partial: 'shared/git_info_header'
@@ -27,3 +29,5 @@
     = javascript_include_tag 'application'
     /[if lte IE 9]
       = javascript_include_tag 'application_ie_lte9'
+    = javascript_include_tag 'uswds-init'
+    = javascript_include_tag 'uswds'
