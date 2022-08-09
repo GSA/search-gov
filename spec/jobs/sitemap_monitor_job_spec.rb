@@ -16,4 +16,15 @@ describe SitemapMonitorJob do
       perform
     end
   end
+
+  context 're-check failing domains' do
+    before do
+      allow(SearchgovDomain).to receive(:not_ok).and_return([searchgov_domain])
+    end
+
+    it 'indexes sitemaps' do
+      expect(searchgov_domain).to receive(:check_status)
+      perform
+    end
+  end
 end
