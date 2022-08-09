@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe SitemapMonitorJob do
-  let(:searchgov_domain) { instance_double(SearchgovDomain) }
   subject(:perform) { described_class.perform_now }
+
+  let(:searchgov_domain) { instance_double(SearchgovDomain) }
 
   it_behaves_like 'a sitemap job'
 
@@ -17,12 +20,12 @@ describe SitemapMonitorJob do
     end
   end
 
-  context 're-check failing domains' do
+  context 'when domains can be checked status' do
     before do
       allow(SearchgovDomain).to receive(:not_ok).and_return([searchgov_domain])
     end
 
-    it 'indexes sitemaps' do
+    it 're-check failed domains' do
       expect(searchgov_domain).to receive(:check_status)
       perform
     end
