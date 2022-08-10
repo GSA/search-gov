@@ -101,12 +101,12 @@ describe HtmlDocument do
   describe '#created' do
     subject(:created) { html_document.created }
 
-    it { is_expected.to be nil }
+    it { is_expected.to be_nil }
 
     context 'when the Open Graph publication date is available' do
       let(:raw_document) { read_fixture_file('/html/page_with_og_metadata.html') }
 
-      it { is_expected.to eq Time.parse('2015-07-02T10:12:32-04:00') }
+      it { is_expected.to eq Time.zone.parse('2015-07-02T10:12:32-04:00') }
     end
 
     context 'when the Dublin Core date is available' do
@@ -168,7 +168,7 @@ describe HtmlDocument do
         '<html><head><meta name="DC.date" content="2018"/></head></html>'
       end
 
-      it { is_expected.to be nil }
+      it { is_expected.to be_nil }
     end
   end
 
@@ -184,14 +184,14 @@ describe HtmlDocument do
       end
 
       it 'defaults to the created date' do
-        expect(changed).to eq Time.parse('2013-09-17T05:59:00+01:00')
+        expect(changed).to eq Time.zone.parse('2013-09-17T05:59:00+01:00')
       end
     end
 
     context 'when the modification date is available' do
       let(:raw_document) { read_fixture_file('/html/page_with_og_metadata.html') }
 
-      it { is_expected.to eq Time.parse('2017-03-30T13:18:28-04:00') }
+      it { is_expected.to eq Time.zone.parse('2017-03-30T13:18:28-04:00') }
     end
   end
 
@@ -332,7 +332,7 @@ describe HtmlDocument do
         '<html><head><title>...</title><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW"></head></html>'
       end
 
-      it { is_expected.to eq true }
+      it { is_expected.to be true }
     end
 
     context 'when NONE is specified' do
@@ -340,7 +340,7 @@ describe HtmlDocument do
         '<html><head><title>...</title><META NAME="ROBOTS" CONTENT="NONE"></head></html>'
       end
 
-      it { is_expected.to eq true }
+      it { is_expected.to be true }
     end
 
     context 'when NOINDEX is not specified' do
@@ -348,7 +348,7 @@ describe HtmlDocument do
         '<html><head><title>...</title><META NAME="ROBOTS" CONTENT="NOFOLLOW"></head></html>'
       end
 
-      it { is_expected.to eq false }
+      it { is_expected.to be false }
     end
   end
 
@@ -484,7 +484,7 @@ describe HtmlDocument do
       end
     end
 
-    context 'when the main element is empty' do #https://www.pivotaltracker.com/story/show/154144112
+    context 'when the main element is empty' do # https://www.pivotaltracker.com/story/show/154144112
       let(:raw_document) do
         "<html><body>Body Content<div id='main' role='main'></div></body></html>"
       end
@@ -530,7 +530,7 @@ describe HtmlDocument do
   describe '#redirect_url' do
     subject(:redirect_url) { html_document.redirect_url }
 
-    it { is_expected.to eq nil }
+    it { is_expected.to be_nil }
 
     context 'when the HTML sets a redirection' do
       let(:raw_document) do
