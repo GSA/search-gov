@@ -47,7 +47,7 @@ describe RssFeedData do
         described_class.new(rss_feed_url).import
       end
 
-      it 'populates and index just the news items that are valid' do
+      it 'populates and indexes just the news items that are valid' do
         expect(rss_feed_url.news_items.count).to eq(1)
       end
 
@@ -67,7 +67,7 @@ describe RssFeedData do
         described_class.new(rss_feed_url).import
       end
 
-      it 'populates and index just the news items that are valid' do
+      it 'populates and indexes just the news items that are valid' do
         expect(rss_feed_url.news_items.count).to eq(2)
       end
 
@@ -87,7 +87,7 @@ describe RssFeedData do
         described_class.new(rss_feed_url).import
       end
 
-      it 'populates and index just the news items that are valid' do
+      it 'populates and indexes just the news items that are valid' do
         expect(rss_feed_url.news_items.count).to eq(2)
       end
 
@@ -230,7 +230,7 @@ describe RssFeedData do
         expect(rss_feed_url).to receive(:touch).with(:last_crawled_at).and_raise StandardError.new('Error Message!')
       end
 
-      it 'logs it and move on' do
+      it 'logs it and moves on' do
         expect(Rails.logger).to receive(:warn).once.with(an_instance_of(StandardError))
         described_class.new(rss_feed_url, true).import
         rss_feed_url.reload
@@ -415,7 +415,7 @@ describe RssFeedData do
         stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
       end
 
-      it 'does not change the number of news items, and update the crawl status' do
+      it 'does not change the number of news items, and updates the crawl status' do
         importer = described_class.new(rss_feed_url, true)
         importer.import
         rss_feed_url.reload

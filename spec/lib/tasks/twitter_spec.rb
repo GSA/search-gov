@@ -221,7 +221,7 @@ describe 'Twitter rake tasks' do
           expect(Tweet.count).to eq(0)
         end
 
-        it 'onlies create a new tweet if the user id matches a TwitterProfile' do
+        it 'only creates a new tweet if the user id matches a TwitterProfile' do
           allow(@stream).to receive(:each).and_yield(@other_status)
           expect(@logger).to receive(:info).with("[#{now}] [TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
           expect(@logger).to receive(:info).with("[#{now}] [TWITTER] [FOLLOW] New tweet received: @Im_Smokee_BITCH: 2o piece nugget I just KILLED EM")
