@@ -20,12 +20,12 @@ describe SitemapMonitorJob do
     end
   end
 
-  context 'when domains can be checked status' do
+  context 'when a domain had failed previously' do
     before do
       allow(SearchgovDomain).to receive(:not_ok).and_return([searchgov_domain])
     end
 
-    it 're-check failed domains' do
+    it 're-checks failed domains' do
       expect(searchgov_domain).to receive(:check_status)
       perform
     end
