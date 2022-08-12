@@ -11,9 +11,11 @@
     /[if lte IE 9]
       = stylesheet_link_tag 'application_ie_lte9'
     = stylesheet_link_tag 'uswds'
-    
+    = stylesheet_link_tag 'uswds_override'
+    = javascript_include_tag 'uswds-init'
 
   %body
+    = javascript_include_tag 'uswds'
     %a#skiplink{ href: '#main-content' } Skip to Main Content
     = render 'sites/shared/banner_uswds'
     #navbar.navbar
@@ -26,8 +28,7 @@
     .l-main-container
       #main-content.l-content.l-content-without-site
         = yield
+    = render 'sites/shared/footer'
     = javascript_include_tag 'application'
     /[if lte IE 9]
       = javascript_include_tag 'application_ie_lte9'
-    = javascript_include_tag 'uswds-init'
-    = javascript_include_tag 'uswds'

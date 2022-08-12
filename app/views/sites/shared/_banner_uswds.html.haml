@@ -1,10 +1,9 @@
-%h3.site-preview-heading .gov domains
 %section.usa-banner{"aria-label" => "Official government website"}
   .usa-accordion
     %header.usa-banner__header
       .usa-banner__inner
         .grid-col-auto
-          %img.usa-banner__header-flag{:alt => "U.S. flag", :src => "assets/img/us_flag_small.png"}/
+          = image_tag 'uswds/us_flag_small.png', alt: 'U.S. flag', class: 'usa-banner__header-flag'
         .grid-col-fill.tablet:grid-col-auto
           %p.usa-banner__header-text
             An official website of the United States government
@@ -15,7 +14,7 @@
     #gov-banner-default-default.usa-banner__content.usa-accordion__content
       .grid-row.grid-gap-lg
         .usa-banner__guidance.tablet:grid-col-6
-          %img.usa-banner__icon.usa-media-block__img{:alt => "", "aria-hidden" => "true", :role => "img", :src => "assets/img/icon-dot-gov.svg"}/
+          = image_tag 'uswds/icon-dot-gov.svg', role: "img", class: 'usa-banner__icon usa-media-block__img', "aria-hidden": true, alt: ""
           .usa-media-block__body
             %p
               %strong Official websites use .gov
@@ -25,7 +24,8 @@
               website belongs to an official government
               organization in the United States.
         .usa-banner__guidance.tablet:grid-col-6
-          %img.usa-banner__icon.usa-media-block__img{:alt => "", "aria-hidden" => "true", :role => "img", :src => "assets/img/icon-https.svg"}/
+          = image_tag 'uswds/icon-https.svg', role: "img", class: 'usa-banner__icon usa-media-block__img', "aria-hidden": true, alt: ""
+          -# %img.usa-banner__icon.usa-media-block__img{:alt => "", "aria-hidden" => "true", :role => "img", :src => "assets/img/icon-https.svg"}/
           .usa-media-block__body
             %p
               %strong Secure .gov websites use HTTPS
