@@ -23,3 +23,7 @@ Rails.application.config.assets.precompile += %w(*.png *.gif)
 Rails.application.config.assets.precompile += %w( application.css )
 Rails.application.config.assets.precompile += Dir.entries("#{Rails.root}/app/assets/javascripts/").select { |e| e =~ /^(?!application\.js).+\.js$/ }
 Rails.application.config.assets.precompile += Dir.entries("#{Rails.root}/app/assets/stylesheets/").select { |e| e =~ /^(?!application\.css).+\.css$/ }
+# Added CSS and JS for USWDS banner and footer
+Rails.application.config.assets.precompile += %w( uswds.css )
+Rails.application.config.assets.precompile += %w( uswds_override.css )
+Rails.application.config.assets.precompile += %w( uswds.js )
