@@ -30,6 +30,12 @@ describe SearchgovDomainIndexerJob do
         from('indexing').to('idle')
     end
 
+    it 'logs the completion' do
+      allow(Rails.logger).to receive(:info)
+      perform
+      expect(Rails.logger).to have_received(:info).with('Done indexing agency.gov')
+    end
+
     context 'when the domain has multiple unfetched urls' do
       let!(:another_searchgov_url) { SearchgovUrl.create(url: 'https://agency.gov/another') }
 
