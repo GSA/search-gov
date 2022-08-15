@@ -9,9 +9,9 @@
             An official website of the United States government
           %p.usa-banner__header-action{"aria-hidden" => "true"}
             Here’s how you know
-        %button.usa-accordion__button.usa-banner__button{"aria-controls" => "gov-banner-default-default", "aria-expanded" => "false"}
+        %button.usa-banner__button.usa-banner__button{"aria-controls" => "gov-banner-default-default", "aria-expanded" => "false"}
           %span.usa-banner__button-text Here’s how you know
-    #gov-banner-default-default.usa-banner__content.usa-accordion__content
+    #gov-banner-default-default.usa-banner__content.usa-accordion__content{"hidden" => "true"}
       .grid-row.grid-gap-lg
         .usa-banner__guidance.tablet:grid-col-6
           = image_tag 'uswds/icon-dot-gov.svg', role: "img", class: 'usa-banner__icon usa-media-block__img', "aria-hidden": true, alt: ""
@@ -25,7 +25,6 @@
               organization in the United States.
         .usa-banner__guidance.tablet:grid-col-6
           = image_tag 'uswds/icon-https.svg', role: "img", class: 'usa-banner__icon usa-media-block__img', "aria-hidden": true, alt: ""
-          -# %img.usa-banner__icon.usa-media-block__img{:alt => "", "aria-hidden" => "true", :role => "img", :src => "assets/img/icon-https.svg"}/
           .usa-media-block__body
             %p
               %strong Secure .gov websites use HTTPS
