@@ -18,6 +18,7 @@ describe SearchgovUrl do
            of_type(:boolean).
            with_options(default: false, null: false) }
 
+    it { is_expected.to have_db_index(:last_crawl_status) }
     it { is_expected.to have_db_index(:url) }
     it { is_expected.to have_db_index([:searchgov_domain_id, :last_crawl_status]) }
     it { is_expected.to have_db_index([:searchgov_domain_id, :last_crawled_at]) }
