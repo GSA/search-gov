@@ -610,7 +610,7 @@ describe SearchgovUrl do
     end
   end
 
-  it_should_behave_like 'a record with a fetchable url'
-  it_should_behave_like 'a record with an indexable url'
-  it_should_behave_like 'a record that belongs to a searchgov_domain'
+  it_behaves_like 'a record with a fetchable url'
+  it_behaves_like 'a record with an indexable url'
+  it_behaves_like 'a record that belongs to a searchgov_domain'
 end
