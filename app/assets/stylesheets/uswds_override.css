@@ -1,0 +1,42 @@
+.usa-banner + .navbar{
+  position: relative;
+}
+
+.usa-banner + .navbar + .l-main-container .l-content.l-content-without-site{
+  padding-top: 1.25rem;
+}
+
+.l-main-container{
+  height: auto;
+  padding-bottom: 6rem;
+}
+
+.usa-footer__primary-section > .grid-container{
+  padding-bottom: 4rem;
+  padding-top: 4rem;
+}
+
+.usa-footer--big .usa-footer__primary-link{
+  font-size: 1.5em;
+  font-family: inherit;
+}
+
+.usa-footer__secondary-link a,
+.usa-footer__secondary-link a:visited{
+  color: #1b1b1b;
+  padding: 0.01em;
+  font-size: 1.06rem;
+}
+
+.usa-footer__secondary-link a:hover{
+   text-decoration: none;
+   color: #1b1b1b;
+}
+
+.usa-footer--big .usa-footer__primary-content--collapsible .usa-list--unstyled{
+  margin: auto;
+}
+
+.usa-footer--big .usa-identifier__required-links-list{
+  margin-left: 0;
+}

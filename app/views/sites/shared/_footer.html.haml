@@ -1,0 +1,96 @@
+%footer.usa-footer.usa-footer--big
+  .usa-footer__primary-section
+    .grid-container
+      .grid-row.grid-gap
+        .tablet:grid-col-12
+          %nav.usa-footer__nav{"aria-label" => "Footer navigation,,"}
+            .grid-row.grid-gap-4
+              .mobile-lg:grid-col-6.desktop:grid-col-3
+                %section.usa-footer__primary-content.usa-footer__primary-content--collapsible
+                  %h4.usa-footer__primary-link Our Service
+                  %ul.usa-list.usa-list--unstyled
+                    %li.usa-footer__secondary-link
+                      %a{:href => "https://search.gov/about/"} About Us
+                    %li.usa-footer__secondary-link
+                      %a{:href => "https://search.gov/about/customers.html"} Customers
+                    %li.usa-footer__secondary-link
+                      %a{:href => "https://search.gov/about/policy/"}
+                        Search.gov in Policy
+                    %li.usa-footer__secondary-link
+                      %a{:href => "https://search.gov/about/feedback.html"} Submit Feature Requests
+              .mobile-lg:grid-col-6.desktop:grid-col-3
+                %section.usa-footer__primary-content.usa-footer__primary-content--collapsible
+                  %h4.usa-footer__primary-link Our System
+                  %ul.usa-list.usa-list--unstyled
+                    %li.usa-footer__secondary-link
+                      %a{:href => "https://search.gov/about/updates/releases/"} Release Notes
+                    %li.usa-footer__secondary-link
+                      %a{:href => "https://search.gov/about/updates/roadmap/"} Product Roadmap
+                    %li.usa-footer__secondary-link
+                      %a{:href => "https://search.gov/about/security.html"} Security and Compliance
+                    %li.usa-footer__secondary-link
+                      %a{:href => "https://search.gov/developer/"} For Developers
+                    %li.usa-footer__secondary-link
+                      %a{:href => "https://search.gov/about/policy/tos.html"} Terms of Service
+              .mobile-lg:grid-col-6.desktop:grid-col-3
+                %section.usa-footer__primary-content.usa-footer__primary-content--collapsible
+                  %h4.usa-footer__primary-link Contact Us
+                  %ul.usa-list.usa-list--unstyled
+                    %li.usa-footer__secondary-link
+                      %a{:href => "mailto:search@gsa.gov"} Email
+                    %li.usa-footer__secondary-link
+                      %a{:href => "https://search.gov/tel:(202)-969-7426"} Phone
+              .mobile-lg:grid-col-6.desktop:grid-col-3
+                %section.usa-footer__primary-content.usa-footer__primary-content--collapsible
+                  %h4.usa-footer__primary-link More TTS Services
+                  %ul.usa-list.usa-list--unstyled
+                    %li.usa-footer__secondary-link
+                      %a{:href => "https://digital.gov/guides/dap/"} Digital Analytics Program
+                    %li.usa-footer__secondary-link
+                      %a{:href => "https://federalist.18f.gov/"} Federalist
+                    %li.usa-footer__secondary-link
+                      %a{:href => "https://cloud.gov/"} Cloud.gov
+                    %li.usa-footer__secondary-link
+                      %a{:href => "https://login.gov/"} Login.gov
+                    %li.usa-footer__secondary-link
+                      %a{:href => "https://www.gsa.gov/about-us/organization/federal-acquisition-service/technology-transformation-services/tts-solutions"} More TTS Solutions
+  
+  .usa-identifier
+    %section.usa-identifier__section.usa-identifier__section--masthead{"aria-label" => "Agency identifier"}
+      .usa-identifier__container
+        .usa-identifier__logos
+          %a.usa-identifier__logo{:href => "https://www.gsa.gov"}
+            = image_tag 'sites/gsa-logo.svg', role: "img", class: 'usa-identifier__logo-img', alt: "GSA logo"
+        .usa-identifier__identity{"aria-label" => "Agency description"}
+          %p.usa-identifier__identity-domain search.gov
+          %p.usa-identifier__identity-disclaimer
+            An official website of the GSA's
+            %a{:href => "https://gsa.gov/tts"} Technology Transformation Services
+    %nav.usa-identifier__section.usa-identifier__section--required-links{"aria-label" => "Important links"}
+      .usa-identifier__container
+        %ul.usa-identifier__required-links-list
+          %li.usa-identifier__required-links-item
+            %a.usa-identifier__required-link{:href => "https://www.gsa.gov/about-us"}
+              About GSA
+          %li.usa-identifier__required-links-item
+            %a.usa-identifier__required-link{:href => "https://www.gsa.gov/website-information/accessibility-aids"}
+              Accessibility support
+          %li.usa-identifier__required-links-item
+            %a.usa-identifier__required-link.usa-link{:href => "https://www.gsa.gov/reference/freedom-of-information-act-foia"}
+              FOIA requests
+          %li.usa-identifier__required-links-item
+            %a.usa-identifier__required-link.usa-link{:href => "https://www.gsa.gov/reference/civil-rights-programs/notification-and-federal-employee-antidiscrimination-and-retaliation-act-of-2002"}
+              No FEAR Act data
+          %li.usa-identifier__required-links-item
+            %a.usa-identifier__required-link.usa-link{:href => "https://www.gsaig.gov/"}
+              Office of the Inspector General
+          %li.usa-identifier__required-links-item
+            %a.usa-identifier__required-link.usa-link{:href => "https://www.gsa.gov/reference/reports/budget-performance"}
+              Performance reports
+          %li.usa-identifier__required-links-item
+            %a.usa-identifier__required-link.usa-link{:href => "https://www.gsa.gov/website-information/website-policies"}
+              Website policies
+    %section.usa-identifier__section.usa-identifier__section--usagov{"aria-label" => "Government information and services"}
+      .usa-identifier__container
+        .usa-identifier__usagov-description Looking for U.S. government information and services?
+        %a.usa-link{:href => "https://www.usa.gov/"} Visit USA.gov

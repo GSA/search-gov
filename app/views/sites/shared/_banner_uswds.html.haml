@@ -1,0 +1,44 @@
+%section.usa-banner{"aria-label" => "Official government website"}
+  .usa-accordion
+    %header.usa-banner__header
+      .usa-banner__inner
+        .grid-col-auto
+          = image_tag 'uswds/us_flag_small.png', alt: 'U.S. flag', class: 'usa-banner__header-flag'
+        .grid-col-fill.tablet:grid-col-auto
+          %p.usa-banner__header-text
+            An official website of the United States government
+          %p.usa-banner__header-action{"aria-hidden" => "true"}
+            Here’s how you know
+        %button.usa-banner__button.usa-banner__button{"aria-controls" => "gov-banner-default-default", "aria-expanded" => "false"}
+          %span.usa-banner__button-text Here’s how you know
+    #gov-banner-default-default.usa-banner__content.usa-accordion__content{"hidden" => "true"}
+      .grid-row.grid-gap-lg
+        .usa-banner__guidance.tablet:grid-col-6
+          = image_tag 'uswds/icon-dot-gov.svg', role: "img", class: 'usa-banner__icon usa-media-block__img', "aria-hidden": true, alt: ""
+          .usa-media-block__body
+            %p
+              %strong Official websites use .gov
+              = succeed "A" do
+                %br/
+              %strong .gov
+              website belongs to an official government
+              organization in the United States.
+        .usa-banner__guidance.tablet:grid-col-6
+          = image_tag 'uswds/icon-https.svg', role: "img", class: 'usa-banner__icon usa-media-block__img', "aria-hidden": true, alt: ""
+          .usa-media-block__body
+            %p
+              %strong Secure .gov websites use HTTPS
+              = succeed "A" do
+                %br/
+              %strong lock
+              (
+              = succeed ")" do
+                %span.icon-lock
+                  %svg.usa-banner__lock-image{"aria-labelledby" => "banner-lock-title-default banner-lock-description-default", :focusable => "false", :height => "64", :role => "img", :viewbox => "0 0 52 64", :width => "52", :xmlns => "http://www.w3.org/2000/svg"}
+                    %title#banner-lock-title-default Lock
+                    %desc#banner-lock-description-default A locked padlock
+                    %path{:d => "M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z", :fill => "#000000", "fill-rule" => "evenodd"}
+              %strong https://
+              means you’ve safely connected to
+              the .gov website. Share sensitive information only on official,
+              secure websites.
