@@ -5,7 +5,6 @@ describe SearchgovUrl do
   let(:html) { read_fixture_file('/html/page_with_og_metadata.html') }
   let(:valid_attributes) { { url: url } }
   let(:searchgov_url) { described_class.new(valid_attributes) }
-  let(:i14y_document) { I14yDocument.new }
 
   it { is_expected.to have_readonly_attribute(:url) }
 
@@ -203,7 +202,7 @@ describe SearchgovUrl do
 
       context 'when the document is successfully indexed' do
         before do
-          allow(I14yDocument).to receive(:create).with(anything).and_return(i14y_document)
+          allow(I14yDocument).to receive(:create).with(anything).and_return(I14yDocument.new)
         end
 
         it 'records the load time' do
