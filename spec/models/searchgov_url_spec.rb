@@ -119,6 +119,7 @@ describe SearchgovUrl do
       let(:success_hash) do
         { status: 200, body: html, headers: { content_type: 'text/html' } }
       end
+
       before do
         stub_request(:get, url).with(headers: { user_agent: DEFAULT_USER_AGENT }).
           to_return({ status: 200, body: html, headers: { content_type: 'text/html' } })
@@ -238,6 +239,7 @@ describe SearchgovUrl do
         let(:fail_html) do
           '<html><head><title>My 404 error page</title></head><body>Epic fail!</body></html>'
         end
+
         before do
           stub_request(:get, url).
             to_return({ status: 200,
@@ -309,6 +311,7 @@ describe SearchgovUrl do
     context 'when the url points to a pdf' do
       let(:url) { 'https://agency.gov/test.pdf' }
       let(:pdf) { read_fixture_file('/pdf/test.pdf') }
+
       before do
         stub_request(:get, url).
           to_return({ status: 200,
@@ -339,6 +342,7 @@ describe SearchgovUrl do
     context 'when the url points to a Word doc (.doc)' do
       let(:url) { 'https://agency.gov/test.doc' }
       let(:doc) { read_fixture_file('/word/test.doc') }
+
       before do
         stub_request(:get, url).
           to_return({ status: 200,
@@ -363,6 +367,7 @@ describe SearchgovUrl do
     context 'when the url points to a Word doc (.docx)' do
       let(:url) { 'https://agency.gov/test.docx' }
       let(:doc) { read_fixture_file('/word/test.docx') }
+
       before do
         stub_request(:get, url).
           to_return({ status: 200,
@@ -387,6 +392,7 @@ describe SearchgovUrl do
     context 'when the url points to an Excel doc (.xlsx)' do
       let(:url) { 'https://agency.gov/test.xlsx' }
       let(:doc) { read_fixture_file('/excel/test.xlsx') }
+
       before do
         stub_request(:get, url).
           to_return({ status: 200,
@@ -411,6 +417,7 @@ describe SearchgovUrl do
     context 'when the url points to an Excel doc (.xls)' do
       let(:url) { 'https://agency.gov/test.xls' }
       let(:doc) { read_fixture_file('/excel/test.xls') }
+
       before do
         stub_request(:get, url).
           to_return({ status: 200,
@@ -527,6 +534,7 @@ describe SearchgovUrl do
         let(:html) do
           "<header><meta http-equiv=\"refresh\" content=\"0; URL='/client_side.html'\"/></header>"
         end
+
         before do
           stub_request(:get, url).
             to_return(status: 200, body: html, headers: { content_type: 'text/html' })
@@ -575,6 +583,7 @@ describe SearchgovUrl do
 
         context 'when the domain is unavailable' do
           let!(:searchgov_domain) { searchgov_url.searchgov_domain }
+
           before do
             stub_request(:get, 'http://www.agency.gov/').to_return(status: 403)
             searchgov_domain.update!(scheme: 'http', status: '200 OK')
@@ -594,6 +603,7 @@ describe SearchgovUrl do
           SearchgovDomain, domain: 'unavailable.gov', available?: false, status: '403'
         )
       end
+
       before do
         allow(searchgov_url).to receive(:searchgov_domain).and_return(unavailable_domain)
       end
