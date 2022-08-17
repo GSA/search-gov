@@ -90,7 +90,7 @@ describe SearchgovUrl do
         end
 
         it 'deletes the Searchgov Url' do
-          expect { searchgov_url.destroy }.to change{ described_class.count }.by(-1)
+          expect { searchgov_url.destroy }.to change { described_class.count }.by(-1)
         end
       end
     end
@@ -145,7 +145,7 @@ describe SearchgovUrl do
         end
 
         it 'sets enqueued_for_reindex to false' do
-          expect { fetch }.to change{ searchgov_url.enqueued_for_reindex }.
+          expect { fetch }.to change { searchgov_url.enqueued_for_reindex }.
             from(true).to(false)
         end
       end
@@ -201,21 +201,21 @@ describe SearchgovUrl do
         end
 
         it 'records the load time' do
-          expect{ fetch }.
-            to change{ searchgov_url.reload.load_time.class }
+          expect { fetch }.
+            to change { searchgov_url.reload.load_time.class }
             .from(NilClass).to(Fixnum)
         end
 
         it 'records the success status' do
-          expect{ fetch }.
-            to change{ searchgov_url.reload.last_crawl_status }
+          expect { fetch }.
+            to change { searchgov_url.reload.last_crawl_status }
             .from(NilClass).to('OK')
 
         end
 
         it 'records the last crawl time' do
-          expect{ fetch }.
-            to change{ searchgov_url.reload.last_crawled_at }
+          expect { fetch }.
+            to change { searchgov_url.reload.last_crawled_at }
             .from(NilClass).to(Time)
         end
       end
@@ -224,7 +224,7 @@ describe SearchgovUrl do
         before { allow(I14yDocument).to receive(:create).and_raise(StandardError.new('Kaboom')) }
 
         it 'records the error' do
-          expect{ fetch }.not_to raise_error
+          expect { fetch }.not_to raise_error
           expect(searchgov_url.last_crawl_status).to match(/Kaboom/)
         end
       end
@@ -292,7 +292,7 @@ describe SearchgovUrl do
           end
 
           it 'truncates too-long crawl statuses' do
-            expect{ fetch }.not_to raise_error
+            expect { fetch }.not_to raise_error
             expect(searchgov_url.last_crawl_status).to eq 'x' * 255
           end
         end
@@ -455,7 +455,7 @@ describe SearchgovUrl do
       end
 
       it 'records the error' do
-        expect{ fetch }.not_to raise_error
+        expect { fetch }.not_to raise_error
         expect(searchgov_url.last_crawl_status).to match(/faaaaail/)
       end
 
@@ -493,7 +493,7 @@ describe SearchgovUrl do
       end
 
       it 'reports the redirect' do
-        expect{ fetch }.to change{ searchgov_url.last_crawl_status }.
+        expect { fetch }.to change { searchgov_url.last_crawl_status }.
           from(nil).to('Redirected to https://www.agency.gov/new.html')
       end
 
@@ -595,11 +595,11 @@ describe SearchgovUrl do
       end
 
       it 'raises an error, including the domain' do
-        expect{ fetch }.to raise_error(described_class::DomainError, 'unavailable.gov: 403')
+        expect { fetch }.to raise_error(described_class::DomainError, 'unavailable.gov: 403')
       end
 
       it 'does not fetch the url' do
-        expect{ fetch }.to raise_error(described_class::DomainError, 'unavailable.gov: 403')
+        expect { fetch }.to raise_error(described_class::DomainError, 'unavailable.gov: 403')
         expect(stub_request(:get, url)).not_to have_been_requested
       end
     end
