@@ -11,7 +11,8 @@ describe SitemapMonitorJob do
 
   context 'when domains can be indexed' do
     before do
-      allow(SearchgovDomain).to receive(:ok).and_return([searchgov_domain])
+      allow(SearchgovDomain).to receive(:where).with(status: '200 OK').and_return([searchgov_domain])
+      allow([searchgov_domain]).to receive(:find_each).and_yield(searchgov_domain)
     end
 
     it 'indexes sitemaps' do
@@ -22,7 +23,8 @@ describe SitemapMonitorJob do
 
   context 'when a domain had failed previously' do
     before do
-      allow(SearchgovDomain).to receive(:not_ok).and_return([searchgov_domain])
+      allow(SearchgovDomain).to receive(:where).with(status: '').and_return([searchgov_domain])
+      allow([searchgov_domain]).to receive(:find_each).and_yield(searchgov_domain)
     end
 
     it 're-checks failed domains' do
