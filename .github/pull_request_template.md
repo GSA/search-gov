@@ -10,9 +10,7 @@ Please ensure you have addressed all concerns below before marking a PR "ready f
 - [ ] You have run `bundle update` and committed your changes to Gemfile.lock.
  
 - [ ] You have merged the latest changes from the target branch (usually `main`) into your branch.
- 
-- [ ] You have squashed your commits into a single commit (exceptions: your PR includes commits with formatting-only changes, such as required by Rubocop or Cookstyle, or if this is a feature branch that includes multiple commits).
- 
+  
 - [ ] Your primary commit message is of the format **SRCH-#### \<description\>** matching the associated Jira ticket.
 
 - [ ] PR title is either of the format **SRCH-#### \<description\>** matching the associated Jira ticket (i.e. "SRCH-123 implement feature X"), or **Release - SRCH-####, SRCH-####, SRCH-####** matching the Jira ticket numbers in the release.
