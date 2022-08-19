@@ -3,6 +3,7 @@ require 'selenium-webdriver'
 module JsFetcher
   def self.fetch(url)
     options = Selenium::WebDriver::Chrome::Options.new(args: ['headless'])
+    options.add_argument("user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36")
     driver = Selenium::WebDriver.for(:chrome, options: options)
     wait = Selenium::WebDriver::Wait.new(:timeout => 5)
 
