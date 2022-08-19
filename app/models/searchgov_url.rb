@@ -181,7 +181,8 @@ class SearchgovUrl < ApplicationRecord
     if /^application|text\/plain/ === response.content_type.mime_type
       ApplicationDocument.new(document: download.open, url: url)
     else
-      HtmlDocument.new(document: response.to_s, url: url)
+      response = JsFetcher.fetch(url)
+      HtmlDocument.new(document: response, url: url)
     end
   end
 
