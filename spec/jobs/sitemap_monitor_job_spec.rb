@@ -5,31 +5,27 @@ require 'spec_helper'
 describe SitemapMonitorJob do
   subject(:perform) { described_class.perform_now }
 
-  let(:searchgov_domain) { instance_double(SearchgovDomain) }
+  before do 
+    SearchgovDomain.all.map(&:delete)
+  end
+
+  let(:searchgov_domain) { SearchgovDomain.find_or_create_by!(domain: 'agency.gov', status: '200 OK') }
+  # let(:searchgov_domain2) { SearchgovDomain.find_or_create_by!(domain: 'searchgov.gov') }
+  # subject(:check_status) { searchgov_domain2.check_status }
 
   it_behaves_like 'a sitemap job'
 
   context 'when domains can be indexed' do
-    before do
-      allow(SearchgovDomain).to receive(:where).with(status: '200 OK').and_return([searchgov_domain])
-      allow([searchgov_domain]).to receive(:find_each).and_yield(searchgov_domain)
-    end
-
     it 'indexes sitemaps' do
-      expect(searchgov_domain).to receive(:index_sitemaps)
-      perform
+      searchgov_domain
+      expect { perform }.to have_enqueued_job(SitemapIndexerJob)
     end
   end
 
-  context 'when a domain had failed previously' do
-    before do
-      allow(SearchgovDomain).to receive(:where).with(status: '').and_return([searchgov_domain])
-      allow([searchgov_domain]).to receive(:find_each).and_yield(searchgov_domain)
-    end
-
-    it 're-checks failed domains' do
-      expect(searchgov_domain).to receive(:check_status)
-      perform
-    end
-  end
+  # context 'when a domain had failed previously' do
+  #   it 're-checks failed domains' do
+  #     expect(searchgov_domain2).to receive(check_status)
+  #     perform
+  #   end
+  # end
 end
