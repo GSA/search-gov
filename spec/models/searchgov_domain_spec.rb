@@ -128,7 +128,7 @@ describe SearchgovDomain do
 
       describe '.not_ok' do
         it 'includes inaccessible domains' do
-          expect(described_class.not_ok).to match_array [not_ok_domain]
+          expect(described_class.not_ok).to include not_ok_domain
         end
       end
     end

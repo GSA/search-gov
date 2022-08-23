@@ -5,7 +5,7 @@ require 'spec_helper'
 describe SitemapMonitorJob do
   subject(:perform) { described_class.perform_now }
 
-  before do 
+  before do
     SearchgovDomain.all.map(&:delete)
   end
 
