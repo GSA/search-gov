@@ -318,9 +318,142 @@ describe HtmlDocument do
     subject(:keywords) { html_document.keywords }
 
     context 'when a Dublin Core subject is available' do
+      let(:raw_document) do
+        <<~HTML
+          <html lang="en">
+            <head>
+              <title>My Title</title>
+              <meta name="dc.subject" content="One DC Subject, Another DC Subject"/>
+            </head>
+          </html>
+        HTML
+      end
+
+      it { is_expected.to eq 'One DC Subject, Another DC Subject' }
+    end
+
+    context 'when a dcterms subject is available' do
+      let(:raw_document) do
+        <<~HTML
+          <html lang="en">
+            <head>
+              <title>My Title</title>
+              <meta name="dcterms.subject" content="One DCTerms Subject, Another DCTerms Subject"/>
+            </head>
+          </html>
+        HTML
+      end
+
+      it { is_expected.to eq 'One DCTerms Subject, Another DCTerms Subject' }
+    end
+
+    context 'when a dcterms keywords is available' do
+      let(:raw_document) do
+        <<~HTML
+          <html lang="en">
+            <head>
+              <title>My Title</title>
+              <meta name="dcterms.keywords" content="One DCTerms Keyword, Another DCTerms Keyword"/>
+            </head>
+          </html>
+        HTML
+      end
+
+      it { is_expected.to eq 'One DCTerms Keyword, Another DCTerms Keyword' }
+    end
+
+    context 'when all dc keyword sources are available' do
       let(:raw_document) { doc_with_dc_data }
 
-      it { is_expected.to eq 'One Subject, Another Subject' }
+      it { is_expected.to include('One DC Subject') }
+      it { is_expected.to include('One DCTerms Subject') }
+      it { is_expected.to include('One DCTerms Keyword') }
+      it { is_expected.to include('Another DC Subject') }
+      it { is_expected.to include('Another DCTerms Subject') }
+      it { is_expected.to include('Another DCTerms Keyword') }
+    end
+
+    context 'when a meta keywords is available' do
+      it { is_expected.to eq 'this, that' }
+    end
+
+    context 'when parallel article:tags are available' do
+      let(:raw_document) do
+        <<~HTML
+          <html lang="en">
+            <head>
+              <title>My Title</title>
+              <meta property="article:tag" content="article tag 1" />
+              <meta property="article:tag" content="article tag 2" />
+              <meta property="article:tag" content="article tag 3" />
+            </head>
+          </html>
+        HTML
+      end
+
+      it { is_expected.to eq 'article tag 1, article tag 2, article tag 3' }
+    end
+
+    context 'when an article:section is available' do
+      let(:raw_document) do
+        <<~HTML
+          <html lang="en">
+            <head>
+              <title>My Title</title>
+              <meta property="article:section" content="article section">
+            </head>
+          </html>
+        HTML
+      end
+
+      it { is_expected.to eq 'article section' }
+    end
+
+    context 'when meta keywords and article keywords are available' do
+      let(:raw_document) { read_fixture_file('/html/page_with_og_metadata.html') }
+
+      it { is_expected.to include('this') }
+      it { is_expected.to include('that') }
+      it { is_expected.to include('the other') }
+      it { is_expected.to include('thing') }
+    end
+
+    context 'when parallel keywords duplicate a list of keywords' do
+      let(:raw_document) do
+        <<~HTML
+          <html lang="en">
+            <head>
+              <title>My Title</title>
+              <meta name="keywords" content="tag 1, tag 2, tag 3">
+              <meta property="article:section" content="tag 1" />
+              <meta property="article:section" content="tag 2" />
+              <meta property="article:section" content="tag 3" />
+            </head>
+          </html>
+        HTML
+      end
+
+      it { is_expected.to eq 'tag 1, tag 2, tag 3' }
+    end
+
+    context 'when all keywords are duplicates' do
+      let(:raw_document) do
+        <<~HTML
+          <html lang="en">
+            <head>
+              <title>My Title</title>
+              <meta name="dc.subject" content="tag 1, tag 2, tag 3">
+              <meta name="dcterms.subject" content="tag 1, tag 2, tag 3">
+              <meta name="dcterms.keywords" content="tag 1, tag 2, tag 3">
+              <meta name="keywords" content="tag 1, tag 2, tag 3">
+              <meta property="article:tag" content="tag 1, tag 2, tag 3" />
+              <meta property="article:section" content="tag 1, tag 2, tag 3" />
+            </head>
+          </html>
+        HTML
+      end
+
+      it { is_expected.to eq 'tag 1, tag 2, tag 3' }
     end
   end
 

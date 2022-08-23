@@ -4,25 +4,25 @@ class HtmlDocument < WebDocument
   include RobotsTaggable
 
   def title
-    titles = [metadata['og:title'], html.title.try(:strip)]
+    titles = [metadata['og:title']&.first, html.title.try(:strip)]
     titles.compact_blank!
     titles.blank? ? url : titles.max_by(&:length)
   end
 
   def description
-    metadata['og:description'] || metadata['description'] || dublin_core_data['dc.description']
+    metadata['og:description']&.first || metadata['description']&.first || dublin_core_data['dc.description']&.first
   end
 
   def keywords
-    metadata['keywords'] || dublin_core_data['dc.subject']
+    extract_keywords.uniq.compact.join(', ')
   end
 
   def audience
-    dcterms_data['dcterms.audience']
+    dcterms_data['dcterms.audience']&.first
   end
 
   def image_url
-    metadata['og:image']
+    metadata['og:image']&.first
   end
 
   def content_type
@@ -32,7 +32,7 @@ class HtmlDocument < WebDocument
   def searchgov_custom(number)
     return if !number.is_a?(Integer) || !number.between?(1, 3)
 
-    metadata["searchgov_custom#{number}"]
+    metadata["searchgov_custom#{number}"]&.first
   end
 
   # Returns client-side redirect url
@@ -87,10 +87,19 @@ class HtmlDocument < WebDocument
     metadata = {}
     meta_nodes = html.xpath('//meta')
     meta_nodes.each do |node|
-      (metadata[node['name'].downcase] = node['content']) if node['name']
-      (metadata[node['property'].downcase] = node['content']) if node['property']
+      property = node['name'] || node['property']
+      (metadata[property.downcase] ||= []) << node['content'] unless property.nil?
     end
     metadata
+  end
+
+  def extract_keywords
+    [dublin_core_data['dc.subject'],
+     dcterms_data['dcterms.subject'],
+     dcterms_data['dcterms.keywords'],
+     metadata['keywords'],
+     metadata['article:tag'],
+     metadata['article:section']].map { |k| k&.join(', ') }
   end
 
   def extract_language
@@ -98,15 +107,15 @@ class HtmlDocument < WebDocument
   end
 
   def extract_created
-    metadata['article:published_time'] || dublin_core_date || dcterms_date
+    metadata['article:published_time']&.first || dublin_core_date || dcterms_date
   end
 
   def extract_changed
-    metadata['article:modified_time']
+    metadata['article:modified_time']&.first
   end
 
   def robots_directives
-    (metadata['robots'] || '').downcase.split(',').map(&:strip)
+    (metadata['robots']&.first || '').downcase.split(',').map(&:strip)
   end
 
   def main_html
@@ -116,11 +125,11 @@ class HtmlDocument < WebDocument
   end
 
   def dublin_core_date
-    dublin_core_data['dc.date'] || dublin_core_data['dc.date.created']
+    dublin_core_data['dc.date']&.first || dublin_core_data['dc.date.created']&.first
   end
 
   def dcterms_date
-    dcterms_data['dcterms.created']
+    dcterms_data['dcterms.created']&.first
   end
 
   def dublin_core_data
