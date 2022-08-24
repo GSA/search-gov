@@ -126,8 +126,10 @@ module Searches::FiltersHelper
 
   def results_count_html(search)
     content_tag :li, id: 'results-count' do
+      count = search.total
       result_count_str = I18n.t(:'searches.results_count',
-                                count: number_with_delimiter(search.total))
+                                count: count,
+                                formatted_count: number_with_delimiter(count))
       content_tag :span, result_count_str
     end if search.results.present?
   end
