@@ -112,6 +112,7 @@ describe SearchgovUrl do
   describe '#fetch' do
     subject(:fetch) { searchgov_url.fetch }
 
+    let!(:searchgov_url) { described_class.create!(valid_attributes) }
     let(:searchgov_domain) do
       instance_double(SearchgovDomain, check_status: '200 OK', available?: true)
     end
@@ -203,8 +204,6 @@ describe SearchgovUrl do
       end
 
       context 'when the document is successfully indexed' do
-        let(:i14y_document) { I14yDocument.new }
-
         before do
           allow(I14yDocument).to receive(:create).with(anything).and_return(I14yDocument.new)
         end
