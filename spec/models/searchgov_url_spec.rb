@@ -142,7 +142,7 @@ describe SearchgovUrl do
             created: '2015-07-02T10:12:32-04:00',
             changed: '2017-03-30T13:18:28-04:00',
             mime_type: 'text/html'
-        ))
+          ))
         fetch
       end
 
@@ -211,7 +211,7 @@ describe SearchgovUrl do
         it 'records the load time' do
           expect { fetch }.
             to change { searchgov_url.reload.load_time.class }.
-            from(NilClass).to(Fixnum)
+            from(NilClass).to(Integer)
         end
 
         it 'records the success status' do
@@ -236,7 +236,7 @@ describe SearchgovUrl do
         end
       end
 
-      context 'when the fetch successfully returns...an error page' do #Because that's a thing.
+      context 'when the fetch successfully returns...an error page' do # Because that's a thing.
         before do
           fail_html = '<html><head><title>My 404 error page</title></head><body>Epic fail!</body></html>'
           stub_request(:get, url).
