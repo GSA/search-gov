@@ -710,14 +710,12 @@ describe HtmlDocument do
         end
       end
 
-      context 'when content does not have URL' do
+      context 'when the content parameter does not include a URL' do
         let(:raw_document) do
           '<html><meta http-equiv="refresh" content="43200"></html>'
         end
 
-        it 'encodes the characters' do
-          expect(redirect_url).to eq nil
-        end
+        it { is_expected.to be_nil }
       end
     end
   end
