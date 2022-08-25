@@ -125,7 +125,7 @@ module Searches::FiltersHelper
   end
 
   def results_count_html(search)
-    (return unless search.results.present)
+    (return unless search.results.present?)
 
     content_tag :li, id: 'results-count' do
       count = search.total
