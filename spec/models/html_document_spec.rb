@@ -709,6 +709,16 @@ describe HtmlDocument do
           expect(redirect_url).to eq 'https://www.foo.gov/my%7Curl%E2%80%99s_weird?!'
         end
       end
+
+      context 'when content does not have URL' do
+        let(:raw_document) do
+          '<html><meta http-equiv="refresh" content="43200"></html>'
+        end
+
+        it 'encodes the characters' do
+          expect(redirect_url).to eq nil
+        end
+      end
     end
   end
 
