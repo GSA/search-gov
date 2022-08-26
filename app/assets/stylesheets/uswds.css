@@ -527,17 +527,17 @@
     vertical-align:middle;
     margin-left:2px;
   }
-  @supports ((-webkit-mask: url("")) or (mask: url(""))){
-    .usa-banner__button[aria-expanded=true]::after{
-      background:none;
-      background-color:#005ea2;
-      -webkit-mask:url("uswds/usa-icons/expand_less.svg") no-repeat center/contain;
-              mask:url("uswds/usa-icons/expand_less.svg") no-repeat center/contain;
-    }
-    .usa-banner__button[aria-expanded=true]::after:hover{
-      background-color:#1a4480;
-    }
+  /* @supports ((-webkit-mask: url("")) or (mask: url(""))){ */
+  .usa-banner__button[aria-expanded=true]::after{
+    background:none;
+    background-color:#005ea2;
+    -webkit-mask:url("uswds/usa-icons/expand_less.svg") no-repeat center/contain;
+            mask:url("uswds/usa-icons/expand_less.svg") no-repeat center/contain;
   }
+  .usa-banner__button[aria-expanded=true]::after:hover{
+    background-color:#1a4480;
+  }
+  /* } */
   .usa-banner__button[aria-expanded=true]:hover::after{
     content:"";
     background-color:#1a4480;
