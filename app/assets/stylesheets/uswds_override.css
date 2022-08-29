@@ -42,6 +42,12 @@
 }
 
 /* banner offset fix to match to Search.gov */
+.usa-banner,
+.usa-footer{
+  min-width: 1170px;
+  width: 100%;
+}
+
 .usa-banner__inner{
   margin-left: 20px;
   padding-left: 0;
