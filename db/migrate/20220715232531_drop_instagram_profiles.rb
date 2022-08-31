@@ -4,5 +4,6 @@ class DropInstagramProfiles < ActiveRecord::Migration[6.1]
       t.string "username", null: false
       t.datetime "created_at", null: false
       t.datetime "updated_at", null: false
+    end
   end
 end
