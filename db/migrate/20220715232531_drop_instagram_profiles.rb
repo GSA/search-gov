@@ -1,5 +1,8 @@
 class DropInstagramProfiles < ActiveRecord::Migration[6.1]
   def change
-    drop_table :instagram_profiles
+    drop_table :instagram_profiles do |t|
+      t.string "username", null: false
+      t.datetime "created_at", null: false
+      t.datetime "updated_at", null: false
   end
 end
