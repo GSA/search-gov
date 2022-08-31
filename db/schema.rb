@@ -580,6 +580,7 @@ ActiveRecord::Schema.define(version: 2022_07_15_232531) do
     t.integer "searchgov_domain_id"
     t.datetime "lastmod"
     t.boolean "enqueued_for_reindex", default: false, null: false
+    t.index ["last_crawl_status"], name: "index_searchgov_urls_on_last_crawl_status"
     t.index ["searchgov_domain_id", "last_crawl_status"], name: "index_by_searchgov_domain_id_and_last_crawl_status"
     t.index ["searchgov_domain_id", "last_crawled_at"], name: "index_searchgov_urls_on_searchgov_domain_id_and_last_crawled_at"
     t.index ["searchgov_domain_id"], name: "index_searchgov_urls_on_searchgov_domain_id"
@@ -768,6 +769,7 @@ ActiveRecord::Schema.define(version: 2022_07_15_232531) do
     t.index ["id", "imported_at"], name: "index_youtube_profiles_on_id_and_imported_at"
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "searchgov_urls", "searchgov_domains"
 end
