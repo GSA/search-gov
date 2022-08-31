@@ -115,6 +115,9 @@ describe SearchgovDomain do
       let!(:not_ok_domain) do
         described_class.create!(domain: 'notok.gov', status: '403 Forbidden')
       end
+      let!(:nil_domain) do
+        described_class.create!(domain: 'nil.gov', status: nil)
+      end
 
       describe '.ok' do
         it 'includes domains returning 200' do
@@ -127,8 +130,16 @@ describe SearchgovDomain do
       end
 
       describe '.not_ok' do
+        it 'does not include domains returning 200' do
+          expect(described_class.not_ok).not_to include ok_domain
+        end
+
         it 'includes inaccessible domains' do
-          expect(described_class.not_ok).to match_array [not_ok_domain]
+          expect(described_class.not_ok).to include not_ok_domain
+        end
+
+        it 'includes domains with nil status' do
+          expect(described_class.not_ok).to include nil_domain
         end
       end
     end
@@ -295,6 +306,19 @@ describe SearchgovDomain do
 
       it 'sets the status to the error code'  do
        expect { check_status }.to change{ searchgov_domain.reload.status }.from(nil).to('403 Forbidden')
+      end
+    end
+
+    context 'when the domain is being indexed' do
+      subject(:check_status_test) { searchgov_test_domain.check_status }
+
+      let(:searchgov_test_domain) do
+        described_class.create!(domain: 'test.gov', activity: 'indexing')
+      end
+
+      it "sets the state to 'idle'" do
+        expect { check_status_test }.
+          to change { searchgov_test_domain.reload.activity }.from('indexing').to('idle')
       end
     end
 

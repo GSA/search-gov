@@ -260,7 +260,7 @@ describe IndexedDocument do
 
       it 'should update the body of the indexed document, leaving title field and description intact' do
         expect(indexed_document.id).not_to be_nil
-        expect(indexed_document.body).to eq('This is my headline. This is my content. This is a test PDF file, we are use it to test our PDF parsing technology. We want it to be at least 250 characters long so that we can test the description generator and see that it cuts off the description, meaning truncates it, in the right location. It should truncate the text and cut off the following: truncate me. It includes some special characters to test our parsing: m–dash, “curly quotes”, a’postrophe, paragraph: ¶')
+        expect(indexed_document.body).to eq('My Title This is my headline. This is my content. This is a test PDF file, we are use it to test our PDF parsing technology. We want it to be at least 250 characters long so that we can test the description generator and see that it cuts off the description, meaning truncates it, in the right location. It should truncate the text and cut off the following: truncate me. It includes some special characters to test our parsing: m–dash, “curly quotes”, a’postrophe, paragraph: ¶')
         expect(indexed_document.description).to eq('preset description')
         expect(indexed_document.title).to eq('preset title')
         expect(indexed_document.url).to eq(@min_valid_attributes[:url])
@@ -277,8 +277,18 @@ describe IndexedDocument do
         allow(indexed_document).to receive(:parse_file).and_return ''
       end
 
-      it 'should raise an IndexedDocumentError' do
-        expect { indexed_document.index_application_file(Rails.root.to_s + '/spec/fixtures/pdf/test.pdf', 'pdf') }.to raise_error(IndexedDocument::IndexedDocumentError)
+      it 'raises an IndexedDocumentError' do
+        expect { indexed_document.index_application_file(Rails.root.join('/spec/fixtures/pdf/test.pdf'), 'pdf') }.to raise_error(IndexedDocument::IndexedDocumentError, 'No content found in document')
+      end
+    end
+
+    context 'when IndexedDocument#parse_file raises an exception' do
+      before do
+        allow(indexed_document).to receive(:parse_file).and_raise('any_error')
+      end
+
+      it 'raises an IndexedDocument::IndexedDocumentError' do
+        expect { indexed_document.index_application_file(Rails.root.join('/spec/fixtures/pdf/test.pdf'), 'pdf') }.to raise_error(IndexedDocument::IndexedDocumentError, 'No content found in document')
       end
     end
   end

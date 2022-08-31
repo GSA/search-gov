@@ -103,9 +103,14 @@ class IndexedDocument < ApplicationRecord
   end
 
   def index_application_file(file_path, doctype)
-    document_text = parse_file(file_path, 't').strip rescue nil
-    raise IndexedDocumentError.new(EMPTY_BODY_STATUS) if document_text.blank?
-    self.attributes = { :body => scrub_inner_text(document_text), :doctype => doctype, :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS }
+    document_text = begin
+      parse_file(file_path).strip
+    rescue
+      nil
+    end
+    raise IndexedDocumentError, EMPTY_BODY_STATUS if document_text.blank?
+
+    self.attributes = { body: scrub_inner_text(document_text), doctype: doctype, last_crawled_at: Time.zone.now, last_crawl_status: OK_STATUS }
   end
 
   def extract_body_from(nokogiri_doc)
@@ -128,8 +133,8 @@ class IndexedDocument < ApplicationRecord
 
   private
 
-  def parse_file(file_path, option)
-    %x[java -Xmx512m -jar #{Rails.root.to_s}/vendor/jars/tika-app-1.16.jar --encoding=UTF-8 -#{option} #{file_path}]
+  def parse_file(file_path)
+    Tika.get_recursive_metadata(File.open(file_path)).first['X-TIKA:content']
   end
 
   def extension_ok
@@ -150,5 +155,4 @@ class IndexedDocument < ApplicationRecord
         e.message
     end
   end
-
 end

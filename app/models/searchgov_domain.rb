@@ -24,7 +24,7 @@ class SearchgovDomain < ApplicationRecord
   attr_reader :response
 
   scope :ok, -> { where(status: OK_STATUS) }
-  scope :not_ok, -> { where.not(status: OK_STATUS) }
+  scope :not_ok, -> { where.not(status: OK_STATUS).or(where(status: nil)) }
 
   def delay
     @delay ||= (robotex.delay("http://#{domain}/") || 1)
@@ -47,7 +47,7 @@ class SearchgovDomain < ApplicationRecord
 
   def check_status
     fetch_response
-    record_response if response
+    validate_response
     status
   end
 
@@ -92,6 +92,14 @@ class SearchgovDomain < ApplicationRecord
     update(status: err.message.strip)
     Rails.logger.error "#{domain} response error url: #{url} error: #{status}"
     nil
+  end
+
+  def validate_response
+    if response
+      record_response
+    elsif activity == 'indexing'
+      done_indexing!
+    end
   end
 
   def record_response

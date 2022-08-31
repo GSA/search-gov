@@ -101,12 +101,12 @@ describe HtmlDocument do
   describe '#created' do
     subject(:created) { html_document.created }
 
-    it { is_expected.to eq nil }
+    it { is_expected.to be_nil }
 
     context 'when the Open Graph publication date is available' do
       let(:raw_document) { read_fixture_file('/html/page_with_og_metadata.html') }
 
-      it { is_expected.to eq Time.parse('2015-07-02T10:12:32-04:00') }
+      it { is_expected.to eq Time.zone.parse('2015-07-02T10:12:32-04:00') }
     end
 
     context 'when the Dublin Core date is available' do
@@ -115,12 +115,60 @@ describe HtmlDocument do
       it { is_expected.to eq Time.parse('02/16/2018 7:48 AM') }
     end
 
+    context 'when the Dublin Core date created is available' do
+      let(:raw_document) do
+        <<~HTML
+          <html lang="en">
+            <head>
+              <title>My Title</title>
+              <meta name="dc.date.created" content="01/01/2020 12:01 AM"/>
+            </head>
+          </html>
+        HTML
+      end
+
+      it { is_expected.to eq Time.parse('01/01/2020 12:01 AM') }
+    end
+
+    context 'when the Dublin Core Terms created is available' do
+      let(:raw_document) do
+        <<~HTML
+          <html lang="en">
+            <head>
+              <title>My Title</title>
+              <meta name="dcterms.created" content="01/01/2021 12:01 PM"/>
+            </head>
+          </html>
+        HTML
+      end
+
+      it { is_expected.to eq Time.parse('01/01/2021 12:01 PM') }
+    end
+
+    context 'when all date created sources are present, Open Graph publication date wins' do
+      let(:raw_document) do
+        <<~HTML
+          <html lang="en">
+            <head>
+              <title>My Title</title>
+              <meta property="article:published_time" content="2015-07-02T10:12:32-04:00" />
+              <meta name="dc.date" content="02/16/2018 7:48 AM"/>
+              <meta name="dc.date.created" content="01/01/2020 12:01 AM"/>
+              <meta name="dcterms.created" content="01/01/2021 12:01 PM"/>
+            </head>
+          </html>
+        HTML
+      end
+
+      it { is_expected.to eq Time.zone.parse('2015-07-02T10:12:32-04:00') }
+    end
+
     context 'when the Dublin Core date is a year' do
       let(:raw_document) do
         '<html><head><meta name="DC.date" content="2018"/></head></html>'
       end
 
-      it { is_expected.to eq nil }
+      it { is_expected.to be_nil }
     end
   end
 
@@ -136,14 +184,14 @@ describe HtmlDocument do
       end
 
       it 'defaults to the created date' do
-        expect(changed).to eq Time.parse('2013-09-17T05:59:00+01:00')
+        expect(changed).to eq Time.zone.parse('2013-09-17T05:59:00+01:00')
       end
     end
 
     context 'when the modification date is available' do
       let(:raw_document) { read_fixture_file('/html/page_with_og_metadata.html') }
 
-      it { is_expected.to eq Time.parse('2017-03-30T13:18:28-04:00') }
+      it { is_expected.to eq Time.zone.parse('2017-03-30T13:18:28-04:00') }
     end
   end
 
@@ -270,9 +318,142 @@ describe HtmlDocument do
     subject(:keywords) { html_document.keywords }
 
     context 'when a Dublin Core subject is available' do
+      let(:raw_document) do
+        <<~HTML
+          <html lang="en">
+            <head>
+              <title>My Title</title>
+              <meta name="dc.subject" content="One DC Subject, Another DC Subject"/>
+            </head>
+          </html>
+        HTML
+      end
+
+      it { is_expected.to eq 'One DC Subject, Another DC Subject' }
+    end
+
+    context 'when a dcterms subject is available' do
+      let(:raw_document) do
+        <<~HTML
+          <html lang="en">
+            <head>
+              <title>My Title</title>
+              <meta name="dcterms.subject" content="One DCTerms Subject, Another DCTerms Subject"/>
+            </head>
+          </html>
+        HTML
+      end
+
+      it { is_expected.to eq 'One DCTerms Subject, Another DCTerms Subject' }
+    end
+
+    context 'when a dcterms keywords is available' do
+      let(:raw_document) do
+        <<~HTML
+          <html lang="en">
+            <head>
+              <title>My Title</title>
+              <meta name="dcterms.keywords" content="One DCTerms Keyword, Another DCTerms Keyword"/>
+            </head>
+          </html>
+        HTML
+      end
+
+      it { is_expected.to eq 'One DCTerms Keyword, Another DCTerms Keyword' }
+    end
+
+    context 'when all dc keyword sources are available' do
       let(:raw_document) { doc_with_dc_data }
 
-      it { is_expected.to eq 'One Subject, Another Subject' }
+      it { is_expected.to include('One DC Subject') }
+      it { is_expected.to include('One DCTerms Subject') }
+      it { is_expected.to include('One DCTerms Keyword') }
+      it { is_expected.to include('Another DC Subject') }
+      it { is_expected.to include('Another DCTerms Subject') }
+      it { is_expected.to include('Another DCTerms Keyword') }
+    end
+
+    context 'when a meta keywords is available' do
+      it { is_expected.to eq 'this, that' }
+    end
+
+    context 'when parallel article:tags are available' do
+      let(:raw_document) do
+        <<~HTML
+          <html lang="en">
+            <head>
+              <title>My Title</title>
+              <meta property="article:tag" content="article tag 1" />
+              <meta property="article:tag" content="article tag 2" />
+              <meta property="article:tag" content="article tag 3" />
+            </head>
+          </html>
+        HTML
+      end
+
+      it { is_expected.to eq 'article tag 1, article tag 2, article tag 3' }
+    end
+
+    context 'when an article:section is available' do
+      let(:raw_document) do
+        <<~HTML
+          <html lang="en">
+            <head>
+              <title>My Title</title>
+              <meta property="article:section" content="article section">
+            </head>
+          </html>
+        HTML
+      end
+
+      it { is_expected.to eq 'article section' }
+    end
+
+    context 'when meta keywords and article keywords are available' do
+      let(:raw_document) { read_fixture_file('/html/page_with_og_metadata.html') }
+
+      it { is_expected.to include('this') }
+      it { is_expected.to include('that') }
+      it { is_expected.to include('the other') }
+      it { is_expected.to include('thing') }
+    end
+
+    context 'when parallel keywords duplicate a list of keywords' do
+      let(:raw_document) do
+        <<~HTML
+          <html lang="en">
+            <head>
+              <title>My Title</title>
+              <meta name="keywords" content="tag 1, tag 2, tag 3">
+              <meta property="article:section" content="tag 1" />
+              <meta property="article:section" content="tag 2" />
+              <meta property="article:section" content="tag 3" />
+            </head>
+          </html>
+        HTML
+      end
+
+      it { is_expected.to eq 'tag 1, tag 2, tag 3' }
+    end
+
+    context 'when all keywords are duplicates' do
+      let(:raw_document) do
+        <<~HTML
+          <html lang="en">
+            <head>
+              <title>My Title</title>
+              <meta name="dc.subject" content="tag 1, tag 2, tag 3">
+              <meta name="dcterms.subject" content="tag 1, tag 2, tag 3">
+              <meta name="dcterms.keywords" content="tag 1, tag 2, tag 3">
+              <meta name="keywords" content="tag 1, tag 2, tag 3">
+              <meta property="article:tag" content="tag 1, tag 2, tag 3" />
+              <meta property="article:section" content="tag 1, tag 2, tag 3" />
+            </head>
+          </html>
+        HTML
+      end
+
+      it { is_expected.to eq 'tag 1, tag 2, tag 3' }
     end
   end
 
@@ -284,7 +465,7 @@ describe HtmlDocument do
         '<html><head><title>...</title><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW"></head></html>'
       end
 
-      it { is_expected.to eq true }
+      it { is_expected.to be true }
     end
 
     context 'when NONE is specified' do
@@ -292,7 +473,7 @@ describe HtmlDocument do
         '<html><head><title>...</title><META NAME="ROBOTS" CONTENT="NONE"></head></html>'
       end
 
-      it { is_expected.to eq true }
+      it { is_expected.to be true }
     end
 
     context 'when NOINDEX is not specified' do
@@ -300,7 +481,7 @@ describe HtmlDocument do
         '<html><head><title>...</title><META NAME="ROBOTS" CONTENT="NOFOLLOW"></head></html>'
       end
 
-      it { is_expected.to eq false }
+      it { is_expected.to be false }
     end
   end
 
@@ -436,7 +617,7 @@ describe HtmlDocument do
       end
     end
 
-    context 'when the main element is empty' do #https://www.pivotaltracker.com/story/show/154144112
+    context 'when the main element is empty' do # https://www.pivotaltracker.com/story/show/154144112
       let(:raw_document) do
         "<html><body>Body Content<div id='main' role='main'></div></body></html>"
       end
@@ -482,7 +663,7 @@ describe HtmlDocument do
   describe '#redirect_url' do
     subject(:redirect_url) { html_document.redirect_url }
 
-    it { is_expected.to eq nil }
+    it { is_expected.to be_nil }
 
     context 'when the HTML sets a redirection' do
       let(:raw_document) do
@@ -527,6 +708,14 @@ describe HtmlDocument do
         it 'encodes the characters' do
           expect(redirect_url).to eq 'https://www.foo.gov/my%7Curl%E2%80%99s_weird?!'
         end
+      end
+
+      context 'when the content parameter does not include a URL' do
+        let(:raw_document) do
+          '<html><meta http-equiv="refresh" content="43200"></html>'
+        end
+
+        it { is_expected.to be_nil }
       end
     end
   end

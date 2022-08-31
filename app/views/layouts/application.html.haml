@@ -11,9 +11,12 @@
     = stylesheet_link_tag 'application'
     /[if lte IE 9]
       = stylesheet_link_tag 'application_ie_lte9'
+    = stylesheet_link_tag 'uswds'
+    = stylesheet_link_tag 'uswds_override'
 
   %body
     %a#skiplink{ href: '#main-content' } Skip to Main Content
+    = render 'sites/shared/banner_uswds'
     #navbar.navbar
       - if $git_info.show_header
         #git-info-header= render partial: 'shared/git_info_header'
@@ -24,6 +27,8 @@
     .l-main-container
       #main-content.l-content.l-content-without-site
         = yield
+    = render 'sites/shared/footer'
     = javascript_include_tag 'application'
     /[if lte IE 9]
       = javascript_include_tag 'application_ie_lte9'
+    = javascript_include_tag 'uswds'
