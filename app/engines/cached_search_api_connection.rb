@@ -6,7 +6,7 @@ class CachedSearchApiConnection
   def initialize(namespace, site, cache_duration = DEFAULT_CACHE_DURATION)
     @connection = Faraday.new site do |conn|
       conn.request :json
-      conn.response :mrashify
+      conn.response :rashify
       conn.response :json
       conn.headers[:user_agent] = 'USASearch'
       ExternalFaraday.configure_connection namespace, conn

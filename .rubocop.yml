@@ -33,6 +33,11 @@ RSpec/DescribeClass:
   Exclude:
     - spec/internationalization/**/*
 
+RSpec/InstanceVariable:
+  Exclude:
+    # 'let's do not work for the setting & resetting of config values
+    - spec/requests/omniauth-rails_csrf_protection_spec.rb
+
 Style/ClassAndModuleChildren:
   Enabled: false
 
