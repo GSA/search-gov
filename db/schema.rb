@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_16_160655) do
+ActiveRecord::Schema.define(version: 2022_09_02_163554) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -572,6 +572,7 @@ ActiveRecord::Schema.define(version: 2022_08_16_160655) do
     t.integer "searchgov_url_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "tika_version"
     t.index ["searchgov_url_id"], name: "fk_rails_6b5b744afa"
   end
 

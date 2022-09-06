@@ -392,6 +392,7 @@ describe SearchgovUrl do
     context 'when the url points to a pdf' do
       let(:url) { 'https://agency.gov/test.pdf' }
       let(:pdf) { read_fixture_file('/pdf/test.pdf') }
+
       before do
         stub_request(:get, url).
           with(headers: { user_agent: DEFAULT_USER_AGENT }).
@@ -417,6 +418,42 @@ describe SearchgovUrl do
       it 'removes downloaded files' do
         expect_any_instance_of(Tempfile).to receive(:close!)
         fetch
+      end
+
+      context 'when a searchgov_document application document was parsed by the current version of tika' do
+        before do
+          SearchgovDocument.create!(
+            body: 'An existing body',
+            searchgov_url_id: searchgov_url.id,
+            tika_version: Tika.tika_version
+          )
+        end
+
+        it 'does not save a new document to searchgov_documents' do
+          expect { fetch }.not_to change { SearchgovDocument.count }
+        end
+
+        it 'does not update the existing document' do
+          expect { fetch }.not_to change { SearchgovDocument.find_by(searchgov_url_id: searchgov_url.id).updated_at }
+        end
+      end
+
+      context 'when a searchgov_document application document was parsed by an older version of tika' do
+        before do
+          SearchgovDocument.create!(
+            body: 'An existing body',
+            searchgov_url_id: searchgov_url.id,
+            tika_version: 'Apache Tika 0.0.0'
+          )
+        end
+
+        it 'does not save a new document to searchgov_documents' do
+          expect { fetch }.not_to change { SearchgovDocument.count }
+        end
+
+        it 'updates the existing document' do
+          expect { fetch }.to change { SearchgovDocument.find_by(searchgov_url_id: searchgov_url.id).updated_at }
+        end
       end
 
       it 'saves pdf content in searchgov_documents' do

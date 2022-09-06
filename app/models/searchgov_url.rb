@@ -142,11 +142,14 @@ class SearchgovUrl < ApplicationRecord
 
   def save_document
     doc = SearchgovDocument.find_or_initialize_by(searchgov_url_id: id)
-    # If there have been no changes to the existing document according to the header entity tag, don't update it
-    return if doc.Etag && (doc.Etag == response.headers.to_hash['Etag'])
 
-    body = parse_body
-    doc.update(body: body, header: response.headers.to_hash)
+    return if skip_save?(doc)
+
+    if application_document?
+      doc.update(body: @document.metadata, header: response.headers.to_hash, tika_version: Tika.tika_version)
+    else
+      doc.update(body: @document.document, header: response.headers.to_hash)
+    end
   end
 
   def validate_size
@@ -192,19 +195,26 @@ class SearchgovUrl < ApplicationRecord
 
   def parse_document
     Rails.logger.info "[SearchgovUrl] Parsing document for #{url}"
-    if /^application|text\/plain/ === response.content_type.mime_type
+    if application_document?
       ApplicationDocument.new(document: download.open, url: url)
     else
       HtmlDocument.new(document: response.to_s, url: url)
     end
   end
 
-  def parse_body
-    if %r{^application|text/plain}.match?(response.content_type.mime_type)
-      @document.metadata
+  def skip_save?(doc)
+    if application_document?
+      # If an application document, skip if that document's entity tag is unchanged and if
+      # the document was parsed with our current Tika version
+      (doc&.Etag == response.headers.to_hash['Etag']) && (doc&.tika_version == Tika.tika_version)
     else
-      @document.document
+      # If not an application document, skip if that document's entity tag is unchanged
+      doc&.Etag == response.headers.to_hash['Etag']
     end
+  end
+
+  def application_document?
+    %r{^application|text/plain}.match?(response.content_type.mime_type)
   end
 
   def redirected_outside_domain?(new_url)

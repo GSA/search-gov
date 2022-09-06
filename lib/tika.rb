@@ -16,6 +16,12 @@ module Tika
     JSON.parse(body)
   end
 
+  def self.tika_version
+    response = client.get('/version')
+
+    response.to_s
+  end
+
   def self.host
     Rails.application.secrets.tika[:host]
   end
