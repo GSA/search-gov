@@ -41,3 +41,6 @@ exclude_patterns:
 -  "**/vendor/**/*"
 -  "**/vcr_cassettes/**/*"
 - app/assets/images/
+# These files were downloaded from https://designsystem.digital.gov/
+- app/assets/stylesheets/uswds.css
+- app/assets/stylesheets/uswds_override.css

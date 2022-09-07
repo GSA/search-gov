@@ -1,14 +1,14 @@
 GIT
   remote: https://github.com/18f/omniauth_login_dot_gov
-  revision: 08ce9b5322efb2d82b2df3f6d774308c4028ee6c
-  ref: 08ce9b5322efb2d82b2df3f6d774308c4028ee6c
+  revision: 756300d4a3e0c234d5596f16671f36851d409c54
+  ref: 756300d4a3e0c234d5596f16671f36851d409c54
   specs:
-    omniauth_login_dot_gov (0.0.1)
-      faraday
-      json-jwt
-      jwt
-      multi_json
-      omniauth
+    omniauth_login_dot_gov (0.1.2)
+      faraday (~> 0.17)
+      json-jwt (~> 1.11)
+      jwt (~> 2.2)
+      multi_json (~> 1.14)
+      omniauth (~> 2.0)
 
 GIT
   remote: https://github.com/GSA/elasticsearch-ruby
@@ -57,27 +57,19 @@ GIT
 
 GIT
   remote: https://github.com/GSA/twitter.git
-  revision: a1379f0bbaf37e92a1ba65bb4c7c11eeb7995877
+  revision: 04c5584141102177f1cb8834a42aca81da8aa7af
   branch: 5-stable
   specs:
     twitter (5.17.0)
       addressable (~> 2.3)
       buftok (~> 0.2.0)
       equalizer (= 0.0.10)
-      faraday (~> 0.9.0)
+      faraday (>= 0.9.0, < 1.0)
       http (~> 4.0)
       http_parser.rb (~> 0.7.0)
       memoizable (~> 0.4.0)
       naught (~> 1.0)
       simple_oauth (~> 0.3.0)
-
-GIT
-  remote: https://github.com/MothOnMars/rash_alt
-  revision: bbd107061fbb066709523c68de4a217a76a8a945
-  ref: bbd107061fbb066709523c68de4a217a76a8a945
-  specs:
-    rash_alt (0.4.3)
-      hashie (>= 2.0.0, < 4.0)
 
 GIT
   remote: https://github.com/MothOnMars/robotex
@@ -192,8 +184,8 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
-    addressable (2.8.0)
-      public_suffix (>= 2.0.2, < 5.0)
+    addressable (2.8.1)
+      public_suffix (>= 2.0.2, < 6.0)
     aes_key_wrap (1.1.0)
     after_commit_action (1.1.0)
       activerecord (>= 3.0.0)
@@ -207,8 +199,8 @@ GEM
       request_store (~> 1.0)
     awesome_print (1.9.2)
     aws-eventstream (1.2.0)
-    aws-partitions (1.619.0)
-    aws-sdk-core (3.132.0)
+    aws-partitions (1.625.0)
+    aws-sdk-core (3.139.0)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.525.0)
       aws-sigv4 (~> 1.1)
@@ -369,7 +361,7 @@ GEM
     execjs (2.7.0)
     faker (1.9.6)
       i18n (>= 0.7)
-    faraday (0.9.2)
+    faraday (0.17.5)
       multipart-post (>= 1.2, < 3)
     faraday_middleware (0.12.2)
       faraday (>= 0.7.4, < 1.0)
@@ -382,7 +374,7 @@ GEM
     flickraw (0.9.10)
     font-awesome-rails (4.7.0.8)
       railties (>= 3.2, < 8.0)
-    fugit (1.5.3)
+    fugit (1.6.0)
       et-orbi (~> 1, >= 1.2.7)
       raabro (~> 1.4)
     geoip (1.6.4)
@@ -396,20 +388,19 @@ GEM
       mime-types (~> 3.0)
       representable (~> 3.0)
       retriable (>= 2.0, < 4.0)
-    googleauth (0.5.1)
-      faraday (~> 0.9)
-      jwt (~> 1.4)
-      logging (~> 2.0)
-      memoist (~> 0.12)
+    googleauth (0.6.7)
+      faraday (~> 0.12)
+      jwt (>= 1.4, < 3.0)
+      memoist (~> 0.16)
       multi_json (~> 1.11)
-      os (~> 0.9)
+      os (>= 0.9, < 2.0)
       signet (~> 0.7)
     googlecharts (1.6.12)
     haml (5.2.2)
       temple (>= 0.8.0)
       tilt
     hashdiff (1.0.1)
-    hashie (3.3.2)
+    hashie (5.0.0)
     highline (2.0.3)
     html_truncator (0.4.2)
       nokogiri (~> 1.5)
@@ -459,7 +450,7 @@ GEM
       aes_key_wrap
       bindata
       httpclient
-    jwt (1.5.6)
+    jwt (2.5.0)
     kt-paperclip (7.0.1)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
@@ -478,10 +469,6 @@ GEM
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    little-plugger (1.1.4)
-    logging (2.3.1)
-      little-plugger (~> 1.1)
-      multi_json (~> 1.14)
     loofah (2.13.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -515,14 +502,15 @@ GEM
     nokogiri (1.13.8)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
-    omniauth (1.4.3)
-      hashie (>= 1.2, < 4)
-      rack (>= 1.6.2, < 3)
-    omniauth-rails_csrf_protection (0.1.2)
+    omniauth (2.1.0)
+      hashie (>= 3.4.6)
+      rack (>= 2.2.3)
+      rack-protection
+    omniauth-rails_csrf_protection (1.0.1)
       actionpack (>= 4.2)
-      omniauth (>= 1.3.1)
+      omniauth (~> 2.0)
     open_uri_redirections (0.2.1)
-    os (0.9.6)
+    os (1.1.4)
     parallel (1.22.1)
     parser (3.1.2.1)
       ast (~> 2.4.1)
@@ -534,8 +522,8 @@ GEM
       pry (>= 0.13, < 0.15)
     pry-rails (0.3.9)
       pry (>= 0.10.4)
-    public_suffix (4.0.7)
-    puma (5.6.4)
+    public_suffix (5.0.0)
+    puma (5.6.5)
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.6.0)
@@ -585,7 +573,9 @@ GEM
       thor (~> 1.0)
     rainbow (3.1.1)
     rake (13.0.6)
-    rb-fsevent (0.11.1)
+    rash_alt (0.4.12)
+      hashie (>= 3.4)
+    rb-fsevent (0.11.2)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     recaptcha (4.6.6)
@@ -722,9 +712,9 @@ GEM
       shoulda-matchers (>= 2.1.0)
     shoulda-matchers (5.1.0)
       activesupport (>= 5.2.0)
-    signet (0.12.0)
-      addressable (~> 2.3)
-      faraday (~> 0.9)
+    signet (0.17.0)
+      addressable (~> 2.8)
+      faraday (>= 0.17.5, < 3.a)
       jwt (>= 1.5, < 3.0)
       multi_json (~> 1.10)
     simple_oauth (0.3.1)
@@ -857,7 +847,7 @@ DEPENDENCIES
   google_visualr!
   googlecharts (~> 1.6.12)
   haml (~> 5.2.1)
-  hashie (~> 3.3.0)
+  hashie (~> 5.0.0)
   html_truncator (~> 0.4.2)
   htmlentities (~> 4.3.4)
   http (~> 4.0)
@@ -876,7 +866,8 @@ DEPENDENCIES
   net-http-persistent (~> 2.9.3)
   newrelic_rpm (~> 6.15.0)
   nokogiri (~> 1.13.4)
-  omniauth-rails_csrf_protection (~> 0.1.2)
+  omniauth (~> 2.1.0)
+  omniauth-rails_csrf_protection (~> 1.0.1)
   omniauth_login_dot_gov!
   pry-byebug (~> 3.5)
   pry-rails (~> 0.3.6)
@@ -887,7 +878,7 @@ DEPENDENCIES
   rails-controller-testing (~> 1.0)
   rails-observers (~> 0.1.5)
   rake (~> 13.0.6)
-  rash_alt!
+  rash_alt (~> 0.4.12)
   recaptcha (~> 4.6.3)
   redis (~> 4.0.1)
   redis-namespace (~> 1.6.0)
