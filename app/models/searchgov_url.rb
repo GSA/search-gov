@@ -31,6 +31,7 @@ class SearchgovUrl < ApplicationRecord
     allow_blank: true
 
   before_validation :set_searchgov_domain, on: :create
+  before_validation(on: :create) { self.document_id = document_id }
   before_destroy :delete_document
 
   belongs_to :searchgov_domain

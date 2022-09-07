@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_09_182927) do
+ActiveRecord::Schema.define(version: 2022_09_07_032053) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -577,6 +577,7 @@ ActiveRecord::Schema.define(version: 2022_08_09_182927) do
     t.string "scheme", limit: 5, default: "http", null: false
     t.string "activity", limit: 100, default: "idle", null: false
     t.string "canonical_domain"
+    t.boolean "js_renderer", default: false
     t.index ["activity"], name: "index_searchgov_domains_on_activity"
     t.index ["domain"], name: "index_searchgov_domains_on_domain", unique: true, length: 100
     t.index ["status"], name: "index_searchgov_domains_on_status", length: 100
@@ -592,6 +593,8 @@ ActiveRecord::Schema.define(version: 2022_08_09_182927) do
     t.integer "searchgov_domain_id"
     t.datetime "lastmod"
     t.boolean "enqueued_for_reindex", default: false, null: false
+    t.string "document_id"
+    t.index ["document_id"], name: "index_searchgov_urls_on_document_id", unique: true
     t.index ["last_crawl_status"], name: "index_searchgov_urls_on_last_crawl_status"
     t.index ["searchgov_domain_id", "last_crawl_status"], name: "index_by_searchgov_domain_id_and_last_crawl_status"
     t.index ["searchgov_domain_id", "last_crawled_at"], name: "index_searchgov_urls_on_searchgov_domain_id_and_last_crawled_at"
