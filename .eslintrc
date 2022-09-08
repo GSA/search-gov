@@ -137,7 +137,7 @@ rules:
   consistent-this: 0
   eol-last: 0
   func-names: 0
-  func-style: 0
+  func-style: [2, expression]
   id-length: 0
   id-match: 0
   indent: 0
@@ -153,7 +153,9 @@ rules:
   new-cap: 0
   new-parens: 0
   newline-after-var: 0
-  no-array-constructor: 0
+  no-array-constructor: 2
+  array-callback-return: 2
+  prefer-destructuring: 2
   no-bitwise: 0
   no-continue: 0
   no-inline-comments: 0
@@ -175,15 +177,15 @@ rules:
   operator-assignment: 0
   operator-linebreak: 0
   padded-blocks: 0
-  quote-props: 2
-  quotes: 0
+  quote-props: [2, as-needed]
+  quotes: 2
   require-jsdoc: 0
   semi-spacing: 0
   semi: 0
   sort-vars: 0
   space-after-keywords: 0
-  space-before-blocks: 0
-  space-before-function-paren: 0
+  space-before-blocks: 2
+  space-before-function-paren: [2, always]
   space-before-keywords: 0
   space-in-parens: 0
   space-infix-ops: 0
@@ -194,20 +196,23 @@ rules:
 
   # ECMAScript 6
   arrow-body-style: 0
-  arrow-parens: 0
-  arrow-spacing: 0
+  arrow-parens: 2
+  arrow-spacing: 2
   constructor-super: 0
   generator-star-spacing: 0
   no-arrow-condition: 0
   no-class-assign: 0
   no-const-assign: 1
-  no-dupe-class-members: 0
+  no-dupe-class-members: 2
   no-this-before-super: 0
   no-var: 1
   object-shorthand: 1
-  prefer-arrow-callback: 0
+  prefer-arrow-callback: 2
   prefer-const: 1
   prefer-reflect: 0
-  prefer-spread: 0
-  prefer-template: 0
+  prefer-spread: 2
+  prefer-template: 2
+  prefer-rest-params: 2
+  no-param-reassign: 2
   require-yield: 0
+  no-useless-constructor: 2
