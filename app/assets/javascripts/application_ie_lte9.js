@@ -1,2 +1,2 @@
-//= require jquery_extensions/jquery.placeholder
-//= require shared/placeholder
+// = require jquery_extensions/jquery.placeholder
+// = require shared/placeholder
