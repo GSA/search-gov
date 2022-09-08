@@ -577,7 +577,6 @@ ActiveRecord::Schema.define(version: 2022_09_07_032053) do
     t.string "scheme", limit: 5, default: "http", null: false
     t.string "activity", limit: 100, default: "idle", null: false
     t.string "canonical_domain"
-    t.boolean "js_renderer", default: false
     t.index ["activity"], name: "index_searchgov_domains_on_activity"
     t.index ["domain"], name: "index_searchgov_domains_on_domain", unique: true, length: 100
     t.index ["status"], name: "index_searchgov_domains_on_status", length: 100
