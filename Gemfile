@@ -12,10 +12,13 @@ gem 'haml', '~> 5.2.1'
 gem 'will_paginate', '~> 3.3.0'
 gem 'nokogiri', '~> 1.13.4'
 gem 'authlogic', '~> 6.4.1'
-# Temporarily locking gem to specific ref. Newer versions include incompatible gems
 gem 'omniauth_login_dot_gov', git: 'https://github.com/18f/omniauth_login_dot_gov',
-                              ref: '08ce9b5322efb2d82b2df3f6d774308c4028ee6c'
-gem 'omniauth-rails_csrf_protection', '~> 0.1.2'
+                              ref: '756300d4a3e0c234d5596f16671f36851d409c54'
+# It's not clear that this gem is still required. I'm leaving it for the time being,
+# but we may be able to remove it in the future:
+# https://github.com/omniauth/omniauth/issues/1031
+gem 'omniauth-rails_csrf_protection', '~> 1.0.1'
+gem 'omniauth', '~> 2.1.0'
 gem 'redis', '~> 4.0.1'
 gem 'redis-namespace', '~> 1.6.0'
 gem 'redis-rails', '~> 5.0.2'
@@ -47,7 +50,7 @@ gem 'google_visualr',
     ref: '17b97114a345baadd011e7b442b9a6c91a2b7ab5'
 gem 'faraday_middleware', '~> 0.12.2'
 gem 'net-http-persistent', '~> 2.9.3'
-gem 'rash_alt', git: 'https://github.com/MothOnMars/rash_alt', ref: 'bbd107061fbb066709523c68de4a217a76a8a945', require: 'rash'
+gem 'rash_alt', '~> 0.4.12', require: 'rash'
 gem 'geoip', '~> 1.6.3'
 gem 'htmlentities', '~> 4.3.4' # deprecated - only used in Google web search
 gem 'html_truncator', '~> 0.4.2'
@@ -76,8 +79,7 @@ gem 'activerecord-validate_unique_child_attribute',
     require: 'active_record/validate_unique_child_attribute'
 
 gem 'rack-cors', '~> 1.1.0', :require => 'rack/cors'
-# Hashie >= 3.4 will require code changes
-gem 'hashie', '~> 3.3.0'
+gem 'hashie', '~> 5.0.0'
 # retry_block is unsupported - consider replacing with retriable
 gem 'retry_block', '~> 1.2.0'
 gem 'colorize', '~> 0.8.1'

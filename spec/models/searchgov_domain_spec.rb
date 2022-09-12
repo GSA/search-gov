@@ -115,6 +115,9 @@ describe SearchgovDomain do
       let!(:not_ok_domain) do
         described_class.create!(domain: 'notok.gov', status: '403 Forbidden')
       end
+      let!(:nil_domain) do
+        described_class.create!(domain: 'nil.gov', status: nil)
+      end
 
       describe '.ok' do
         it 'includes domains returning 200' do
@@ -127,8 +130,16 @@ describe SearchgovDomain do
       end
 
       describe '.not_ok' do
+        it 'does not include domains returning 200' do
+          expect(described_class.not_ok).not_to include ok_domain
+        end
+
         it 'includes inaccessible domains' do
-          expect(described_class.not_ok).to match_array [not_ok_domain]
+          expect(described_class.not_ok).to include not_ok_domain
+        end
+
+        it 'includes domains with nil status' do
+          expect(described_class.not_ok).to include nil_domain
         end
       end
     end
