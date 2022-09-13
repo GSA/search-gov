@@ -6,7 +6,7 @@ describe SearchgovUrl do
   let(:url) { 'http://www.agency.gov/boring.html' }
   let(:html) { read_fixture_file('/html/page_with_og_metadata.html') }
   let(:valid_attributes) { { url: url } }
-  let(:searchgov_url) { described_class.create!(valid_attributes) }
+  let(:searchgov_url) { described_class.new(valid_attributes) }
 
   it { is_expected.to have_readonly_attribute(:url) }
 
@@ -112,6 +112,7 @@ describe SearchgovUrl do
   describe '#fetch' do
     subject(:fetch) { searchgov_url.fetch }
 
+    let!(:searchgov_url) { described_class.create!(valid_attributes) }
     let(:searchgov_domain) do
       instance_double(SearchgovDomain, check_status: '200 OK', available?: true)
     end
@@ -122,15 +123,9 @@ describe SearchgovUrl do
     end
 
     context 'when the fetch is successful' do
-      let(:success_hash) do
-        { status: 200, body: html, headers: { content_type: 'text/html' } }
-      end
-
       before do
         stub_request(:get, url).with(headers: { user_agent: DEFAULT_USER_AGENT }).
-          to_return({ status: 200, body: html, headers: { content_type: 'text/html' } })
-        stub_request(:get, url).with(headers: { 'User-Agent' => DEFAULT_USER_AGENT }).
-          to_return(success_hash)
+          to_return(status: 200, body: html, headers: { content_type: 'text/html' })
       end
 
       it 'fetches and indexes the document' do
@@ -145,7 +140,8 @@ describe SearchgovUrl do
             language: 'en',
             tags: 'this, that, the other, thing',
             created: '2015-07-02T10:12:32-04:00',
-            changed: '2017-03-30T13:18:28-04:00'
+            changed: '2017-03-30T13:18:28-04:00',
+            mime_type: 'text/html'
           ))
         fetch
       end
@@ -208,10 +204,8 @@ describe SearchgovUrl do
       end
 
       context 'when the document is successfully indexed' do
-        let(:i14y_document) { I14yDocument.new }
-
         before do
-          allow(I14yDocument).to receive(:create).with(anything).and_return(i14y_document)
+          allow(I14yDocument).to receive(:create).with(anything).and_return(I14yDocument.new)
         end
 
         it 'records the load time' do
@@ -243,11 +237,8 @@ describe SearchgovUrl do
       end
 
       context 'when the fetch successfully returns...an error page' do # Because that's a thing.
-        let(:fail_html) do
-          '<html><head><title>My 404 error page</title></head><body>Epic fail!</body></html>'
-        end
-
         before do
+          fail_html = '<html><head><title>My 404 error page</title></head><body>Epic fail!</body></html>'
           stub_request(:get, url).
             to_return({ status: 200,
                         body: fail_html,
@@ -317,12 +308,11 @@ describe SearchgovUrl do
 
     context 'when the url points to a pdf' do
       let(:url) { 'https://agency.gov/test.pdf' }
-      let(:pdf) { read_fixture_file('/pdf/test.pdf') }
 
       before do
         stub_request(:get, url).
           to_return({ status: 200,
-                      body: pdf,
+                      body: read_fixture_file('/pdf/test.pdf'),
                       headers: { content_type: 'application/pdf' } })
       end
 
@@ -348,12 +338,11 @@ describe SearchgovUrl do
 
     context 'when the url points to a Word doc (.doc)' do
       let(:url) { 'https://agency.gov/test.doc' }
-      let(:doc) { read_fixture_file('/word/test.doc') }
 
       before do
         stub_request(:get, url).
           to_return({ status: 200,
-                      body: doc,
+                      body: read_fixture_file('/word/test.doc'),
                       headers: { content_type: 'application/msword' } })
       end
 
@@ -373,12 +362,11 @@ describe SearchgovUrl do
 
     context 'when the url points to a Word doc (.docx)' do
       let(:url) { 'https://agency.gov/test.docx' }
-      let(:doc) { read_fixture_file('/word/test.docx') }
 
       before do
         stub_request(:get, url).
           to_return({ status: 200,
-                      body: doc,
+                      body: read_fixture_file('/word/test.docx'),
                       headers: { content_type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' } })
       end
 
@@ -398,12 +386,11 @@ describe SearchgovUrl do
 
     context 'when the url points to an Excel doc (.xlsx)' do
       let(:url) { 'https://agency.gov/test.xlsx' }
-      let(:doc) { read_fixture_file('/excel/test.xlsx') }
 
       before do
         stub_request(:get, url).
           to_return({ status: 200,
-                      body: doc,
+                      body: read_fixture_file('/excel/test.xlsx'),
                       headers: { content_type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' } })
       end
 
@@ -423,12 +410,11 @@ describe SearchgovUrl do
 
     context 'when the url points to an Excel doc (.xls)' do
       let(:url) { 'https://agency.gov/test.xls' }
-      let(:doc) { read_fixture_file('/excel/test.xls') }
 
       before do
         stub_request(:get, url).
           to_return({ status: 200,
-                      body: doc,
+                      body: read_fixture_file('/excel/test.xls'),
                       headers: { content_type: 'application/vnd.ms-excel' } })
       end
 
