@@ -1,7 +1,7 @@
 #search{ search_data(@search, @search_vertical) }
   %h2= t 'searches.search_results'
   = render partial: 'alert', locals: { affiliate: @affiliate } if @affiliate.alert && @affiliate.alert.renderable?
-  - if @search.results.blank?
+  - if @search.results.blank? && !@search.has_best_bets?
     = render partial: 'no_results', locals: { search: @search }
   - else
     = search_suggestion(@search, 'ISPEL')
