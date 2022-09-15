@@ -12,7 +12,8 @@ describe I14yDocument do
       created: Time.now.to_s,
       description: 'My fascinating document',
       handle: 'searchgov',
-      click_count: 1000
+      click_count: 1000,
+      mime_type: 'text/html'
     }
   end
   let(:document) { described_class.new(valid_attributes) }

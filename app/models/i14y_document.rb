@@ -12,7 +12,7 @@ class I14yDocument
   delegate :i14y_connection, to: :i14y_drawer
 
   attr_accessor :document_id, :title, :path, :created, :description, :content,
-                :changed, :promote, :language, :tags, :handle, :click_count
+                :changed, :promote, :language, :tags, :handle, :click_count, :mime_type
 
   validates_presence_of :document_id, :path, :handle, :title
 
@@ -51,7 +51,7 @@ class I14yDocument
   def attributes
     attributes = {}
     %i[document_id title path created description content
-       changed promote language tags click_count].each do |attribute|
+       changed promote language tags click_count mime_type].each do |attribute|
         attributes[attribute] = send(attribute)
     end
     attributes

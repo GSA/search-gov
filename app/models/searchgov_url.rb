@@ -185,7 +185,8 @@ class SearchgovUrl < ApplicationRecord
       language: document.language,
       tags: document.keywords,
       created: document.created&.iso8601,
-      changed: [lastmod, document.changed].compact.max&.iso8601
+      changed: [lastmod, document.changed].compact.max&.iso8601,
+      mime_type: response.content_type.mime_type
     }
   end
 
