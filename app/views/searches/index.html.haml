@@ -2,7 +2,7 @@
   %h2= t 'searches.search_results'
   = render partial: 'alert', locals: { affiliate: @affiliate } if @affiliate.alert && @affiliate.alert.renderable?
 
-  - is_not_module_present = !@search.has_best_bets? && !@search.med_topic.present? && !@search.jobs.present? && !@search.has_tweets? && !@search.has_video_news_items? && !@search.has_fresh_news_items?
+  - is_not_module_present = !@search.has_best_bets? && !@search.med_topic.present? && @search.modules.exclude? 'JOBS' && !@search.has_tweets? && !@search.has_video_news_items? && !@search.has_fresh_news_items?
 
   - if @search.results.blank? && is_not_module_present
     = render partial: 'no_results', locals: { search: @search }
