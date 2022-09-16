@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_02_163554) do
+ActiveRecord::Schema.define(version: 2022_08_16_160655) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -555,13 +555,13 @@ ActiveRecord::Schema.define(version: 2022_09_02_163554) do
   end
 
   create_table "searchgov_documents", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.text "body", size: :long
-    t.json "header"
-    t.integer "searchgov_url_id"
+    t.text "web_document", size: :long, null: false
+    t.json "headers", null: false
+    t.decimal "tika_version", precision: 10, scale: 4
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "tika_version"
-    t.index ["searchgov_url_id"], name: "fk_rails_6b5b744afa"
+    t.integer "searchgov_url_id"
+    t.index ["searchgov_url_id"], name: "index_searchgov_documents_on_searchgov_url_id"
   end
 
   create_table "searchgov_domains", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|

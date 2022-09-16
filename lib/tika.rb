@@ -11,15 +11,16 @@ module Tika
     # Ensure we consume the response before making a new request
     # https://github.com/httprb/http/wiki/Persistent-Connections-(keep-alive)#note-using-persistent-requests-correctly
     body = response.to_s
-    raise TikaError.new("Parsing failure: #{response.status}") unless response.status == 200
+    raise TikaError, "Parsing failure: #{response.status}" unless response.status == 200
 
     JSON.parse(body)
   end
 
   def self.tika_version
     response = client.get('/version')
+    raise TikaError, "Tika API failure: #{response.status}" unless response.status == 200
 
-    response.to_s
+    response.to_s.split.last.to_f
   end
 
   def self.host

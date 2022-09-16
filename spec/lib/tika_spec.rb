@@ -11,11 +11,28 @@ describe Tika do
 
     context 'when something goes boom' do
       before do
-        stub_request(:post, %r(rmeta)).to_return(status: 422)
+        stub_request(:post, /rmeta/).to_return(status: 422)
       end
 
       it 'raises an error' do
-        expect{ described_class.get_recursive_metadata(file) }.
+        expect { described_class.get_recursive_metadata(file) }.
+          to raise_error(TikaError)
+      end
+    end
+  end
+
+  describe '#tika_version' do
+    it 'returns the current tika version' do
+      expect(described_class.tika_version).to be_a(Float)
+    end
+
+    context 'when something goes boom' do
+      before do
+        stub_request(:get, /version/).to_return(status: 404)
+      end
+
+      it 'raises an error' do
+        expect { described_class.tika_version }.
           to raise_error(TikaError)
       end
     end

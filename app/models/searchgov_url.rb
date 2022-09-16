@@ -66,9 +66,9 @@ class SearchgovUrl < ApplicationRecord
 
         @document = parse_document
         validate_document
-        unless ENV['SEARCHGOV_DOCUMENT_NO_SAVE'] == 'true'
-          save_document
-        end
+        # SRCH-3134 Temporarily adding save/no save logic until we have documented how this functionality
+        # behaves in production setting.
+        save_document if ENV['SAVE_SEARCHGOV_DOCUMENT'] == 'true'
         index_document
 
         self.last_crawl_status = OK_STATUS
@@ -141,14 +141,17 @@ class SearchgovUrl < ApplicationRecord
   end
 
   def save_document
-    doc = SearchgovDocument.find_or_initialize_by(searchgov_url_id: id)
+    doc = searchgov_document || build_searchgov_document
 
     return if skip_save?(doc)
 
     if application_document?
-      doc.update(body: @document.metadata, header: response.headers.to_hash, tika_version: Tika.tika_version)
+      doc.update(web_document: @document.metadata,
+                 headers: response.headers.to_hash,
+                 tika_version: Tika.tika_version)
     else
-      doc.update(body: @document.document, header: response.headers.to_hash)
+      doc.update(web_document: @document.document,
+                 headers: response.headers.to_hash)
     end
   end
 
@@ -207,10 +210,10 @@ class SearchgovUrl < ApplicationRecord
     if application_document?
       # If an application document, skip if that document's entity tag is unchanged and if
       # the document was parsed with our current Tika version
-      (doc&.Etag == response.headers.to_hash['Etag']) && (doc&.tika_version == Tika.tika_version)
+      (doc&.etag == response.headers[:etag]) && (doc&.tika_version == Tika.tika_version)
     else
       # If not an application document, skip if that document's entity tag is unchanged
-      doc&.Etag == response.headers.to_hash['Etag']
+      doc&.etag == response.headers[:etag]
     end
   end
 
