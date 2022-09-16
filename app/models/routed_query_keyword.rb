@@ -33,9 +33,11 @@ class RoutedQueryKeyword < ApplicationRecord
   def keyword_unique_to_affiliate
     return unless routed_query&.affiliate
     return unless relation.any?
-
-    errors[:keyword] <<
-      "The keyword '#{keyword}' is already in use for a different routed query"
+    errors.add(
+      :keyword,
+      :taken,
+      message: "The keyword '#{keyword}' is already in use for a different routed query"
+    )
   end
 
   def relation
