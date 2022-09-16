@@ -1,3 +1,4 @@
+/* eslint-disable */
 if (usagov_sayt_url === undefined) {
     var usagov_sayt_url = '';
 }
