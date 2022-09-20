@@ -147,11 +147,11 @@ class SearchgovUrl < ApplicationRecord
 
     if application_document?
       doc.update(web_document: @document.metadata,
-                 headers: response.headers.to_hash,
+                 headers: response.headers.to_hash.transform_keys(&:downcase),
                  tika_version: Tika.tika_version)
     else
       doc.update(web_document: @document.document,
-                 headers: response.headers.to_hash)
+                 headers: response.headers.to_hash.transform_keys(&:downcase))
     end
   end
 

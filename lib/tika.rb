@@ -18,7 +18,7 @@ module Tika
 
   def self.tika_version
     response = client.get('/version')
-    raise TikaError, "Tika API failure: #{response.status}" unless response.status == 200
+    raise TikaError, "Failed to retrieve version: #{response.status}" unless response.status == 200
 
     response.to_s.split.last.to_f
   end

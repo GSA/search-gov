@@ -16,7 +16,7 @@ describe Tika do
 
       it 'raises an error' do
         expect { described_class.get_recursive_metadata(file) }.
-          to raise_error(TikaError)
+          to raise_error(TikaError, 'Parsing failure: 422 Unprocessable Entity')
       end
     end
   end
@@ -33,7 +33,7 @@ describe Tika do
 
       it 'raises an error' do
         expect { described_class.tika_version }.
-          to raise_error(TikaError)
+          to raise_error(TikaError, 'Failed to retrieve version: 404 Not Found')
       end
     end
   end
