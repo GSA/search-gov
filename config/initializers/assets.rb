@@ -9,7 +9,7 @@ Rails.application.config.assets.version = '1.0'
 
 # These are our compressors
 Rails.application.config.assets.css_compressor = :yui
-Rails.application.config.assets.js_compressor = :uglifier
+Rails.application.config.assets.js_compressor = Uglifier.new(harmony: true)
 
 # Add additional assets to the asset load path.
 # Rails.application.config.assets.paths << Emoji.images_path

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'shared/_autodiscovery.html.haml' do
+describe 'shared/_autodiscovery.html.haml', pending: 'SRCH-3404' do
   before do
     allow(view).to receive(:autodiscovery_url).and_return 'https://www.usa.gov/'
     allow(view).to receive(:discovered_resources)
