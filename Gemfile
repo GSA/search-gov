@@ -44,6 +44,7 @@ gem "recaptcha", '~> 4.6.3', :require => "recaptcha/rails"
 gem 'newrelic_rpm', '~> 7.2.0' #NEED TICKET
 gem 'american_date', '~> 1.1.1'
 gem 'sass-rails', '~> 5.0.7'
+# gem 'sassc-rails' replace?
 # Gem no longer being maintained. See https://cm-jira.usa.gov/browse/SRCH-694
 gem 'google_visualr',
     git: 'https://github.com/winston/google_visualr',
