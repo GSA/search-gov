@@ -72,6 +72,7 @@ RSpec.configure do |config|
 
     require 'test_services'
 
+    TestServices::verify_xpack_license
     EmailTemplate.load_default_templates
     OutboundRateLimit.load_defaults
     TestServices::delete_es_indexes
