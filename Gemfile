@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 6.1.0'
+gem 'rails', '~> 7.0.0'
 
 gem 'rake', '~> 13.0.6'
 gem 'rack-contrib', '~> 2.1.0'
@@ -29,7 +29,7 @@ gem 'resque-lock-timeout', '~> 0.4.5'
 gem 'resque-scheduler', '~> 4.3.1'
 # Paperclip is deprecated: https://cm-jira.usa.gov/browse/SRCH-702
 # Using a third-party fork as an interim measure.
-gem 'kt-paperclip', '~> 7.0.0'
+gem 'kt-paperclip', '~> 7.1.0'
 gem 'aws-sdk-s3', '~> 1.102.0'
 gem 'googlecharts', '~> 1.6.12'
 # Using custom fork of tweetstream until vulnerability is resolved
@@ -38,10 +38,10 @@ gem 'googlecharts', '~> 1.6.12'
 gem 'tweetstream', git: 'https://github.com/GSA/tweetstream'
 gem 'twitter', git: 'https://github.com/GSA/twitter.git', branch: '5-stable'
 gem 'flickraw', '~> 0.9.9'
-gem 'active_scaffold', '~> 3.6.2'
+gem 'active_scaffold', '~> 3.6.0'
 gem 'active_scaffold_export', '~> 3.4.0'
 gem "recaptcha", '~> 4.6.3', :require => "recaptcha/rails"
-gem 'newrelic_rpm', '~> 6.15.0'
+gem 'newrelic_rpm', '~> 7.2.0' #NEED TICKET
 gem 'american_date', '~> 1.1.1'
 gem 'sass-rails', '~> 5.0.7'
 # Gem no longer being maintained. See https://cm-jira.usa.gov/browse/SRCH-694
