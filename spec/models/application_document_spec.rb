@@ -45,6 +45,22 @@ describe ApplicationDocument do
     end
   end
 
+  describe '#description' do
+    subject(:description) { application_document.description }
+
+    context 'when the document is a .docx file' do
+      let(:raw_document) { open_fixture_file('/word/test.docx') }
+
+      it { is_expected.to eq 'My Word doc description' }
+
+      context 'when the dc:subject is a string' do
+        let(:raw_document) { open_fixture_file('/word/string_subject.docx') }
+
+        it { is_expected.to be_nil }
+      end
+    end
+  end
+
   describe '#created' do
     subject(:created) { application_document.created }
 
@@ -63,9 +79,10 @@ describe ApplicationDocument do
     end
 
     context 'when the document has been modified' do
-      let(:raw_document) { open_fixture_file('/pdf/test.pdf') }
+      let(:raw_document) { open_fixture_file('/pdf/modified.pdf') }
 
-      it { is_expected.to eq Time.parse('2018-06-09T17:42:11Z') }
+      it { is_expected.to eq Time.parse('2022-09-23T15:13:38Z') }
+      it { is_expected.to be > application_document.created }
     end
   end
 
@@ -95,6 +112,12 @@ describe ApplicationDocument do
         expect(keywords).to eq 'this, that'
       end
     end
+
+    context 'when the document is a .docx file' do
+      let(:raw_document) { open_fixture_file('/word/test.docx') }
+
+      it { is_expected.to eq 'word' }
+    end
   end
 
   describe '#parsed_content' do
@@ -114,6 +137,12 @@ describe ApplicationDocument do
       it 'parses the content' do
         expect(parsed_content).to match(/Chicago/)
       end
+    end
+
+    context 'when the file contains no parseable text' do
+      let(:raw_document) { open_fixture_file('/pdf/image_only.pdf') }
+
+      it { is_expected.to eq '' }
     end
   end
 
