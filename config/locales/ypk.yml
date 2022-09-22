@@ -1,5 +1,7 @@
 ﻿ypk:
 
+# Search.gov localizations for: Yup'ik (ypk)
+
 # Default page title of search results page
   default_serp_title: "%{query} - %{site_name} Ivaghillghem pillghi"
 
@@ -18,6 +20,7 @@
   by_relevance: "Itagnallgha naalkegkam"
 
 # Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  refine_your_search: "Peqigtaghaghhu ivaghnaqegkan"
   all_time: "Alngunak qakun"
   last_hour: "Kingulighmi awami"
   last_day: "Kinguliq aghneq"
@@ -41,7 +44,7 @@
   too_long: "Ivaqan aghsaan taakepigtuq. Allameng nanghiqwaa takitkughmelngughmeng akuzitmeng nalighmeng salleghmeng."
   empty_query: "Kanaghtiighten akuzitmeng ivaghyaghqameng pikegkumi kanaghfigmi."
 
-  # Labels for inline best bets, news, and related searches modules
+# Labels for inline best bets, news, and related searches modules
   recommended: "Una pisqesugaat"
   default_rss_govbox_label: "Ungpat"
   related_searches: "Ilangi tawatelnguut ivaqam"
@@ -59,7 +62,10 @@
     menu: "Nakmiksaghqat"
     browse_site: "Yuvghiighhu una"
     related_sites: "Esghaghhu pikaq"
-    results_count: "%{count} naalkegkat"
+    results_count:
+      zero: "0 naalkegkat"
+      one: "1 naalkegkat"
+      other: "%{formatted_count} naalkegkat"
     search_results: "Ivaghillghem pillghi"
 # Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
     commercial_results:
@@ -67,7 +73,7 @@
       see_more_web_results: "%{link}-mun pi wata esghaghyukufki ilangi pim. (Esghaghlleqenghisiki ilangi siingenllu esghaqaghten.)"
       see_more_image_results: "Paagkut naalkegkat social media-mta pikii ama imiitneng. %{link} esghaghnaluki naalkegkat website-eghpigamnneng. (Esghaghlleqenghisiki ilangi siingenllu esghaqaghten.)"
       search_again: "Ivaghnaqegkan allameng nanghiqugu."
-    # Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
     site_limits:
       including_results_for_query_from_matching_sites: "Ilataput naalkegkatlu %{query}-mun %{matching_sites}-menginaq."
       do_you_want_to_see_results_for: "Esghaghyugsiki naalkegkat %{query_from_all_sites}-meng?"
