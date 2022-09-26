@@ -205,7 +205,7 @@ describe SiteAutodiscoverer do
       end
     end
 
-    context 'when default favicon.ico exists' do
+    context 'when default favicon.ico exists', pending: 'SRCH-3405' do
       it "should update the affiliate's favicon_url attribute" do
         page_with_no_links = Rails.root.join('spec/fixtures/html/page_with_no_links.html').read
         expect(DocumentFetcher).to receive(:fetch).with(url).and_return(body: page_with_no_links)
@@ -221,7 +221,7 @@ describe SiteAutodiscoverer do
       end
     end
 
-    context 'when default favicon.ico does not exist' do
+    context 'when default favicon.ico does not exist', pending: 'SRCH-3405' do
       it "should not update the affiliate's favicon_url attribute" do
         page_with_no_links = Rails.root.join('spec/fixtures/html/page_with_no_links.html').read
         expect(DocumentFetcher).to receive(:fetch).with(url).and_return(body: page_with_no_links)
