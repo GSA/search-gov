@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'admin/search_module_ctrs/show.html.haml' do
+describe 'admin/search_module_ctrs/show.html.haml', pending: 'SRCH-3404' do
   fixtures :users
   let(:module1) { SearchModuleCtrStat.new('Module 1', 'MOD1', ImpressionClickStat.new(456, 123), ImpressionClickStat.new(45, 12)) }
   let(:module2) { SearchModuleCtrStat.new('Module 2', 'MOD2', ImpressionClickStat.new(1000, 500), ImpressionClickStat.new(105, 17)) }
