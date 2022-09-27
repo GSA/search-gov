@@ -86,8 +86,8 @@ shared_examples 'an API search as_json' do
                          position_title: 'Archeological Technician',
                          organization_name: 'National Park Service',
                          rate_interval_code: 'PH',
-                         minimum: 18,
-                         maximum: 18,
+                         minimum_pay: 18,
+                         maximum_pay: 18,
                          start_date: '2014-12-23',
                          end_date: '2014-12-31',
                          locations: [
@@ -99,8 +99,8 @@ shared_examples 'an API search as_json' do
                          position_title: 'Clerk II-License and Permit Specialist Intern',
                          organization_name: 'Texas Alcoholic Beverage Commission',
                          rate_interval_code: 'PH',
-                         minimum: 11,
-                         maximum: nil,
+                         minimum_pay: 11,
+                         maximum_pay: nil,
                          start_date: '2014-12-03',
                          end_date: '2014-12-29',
                          locations: [
@@ -118,8 +118,8 @@ shared_examples 'an API search as_json' do
       expect(jobs.first).to eq(position_title: 'Archeological Technician',
                                organization_name: 'National Park Service',
                                rate_interval_code: 'PH',
-                               minimum: 18,
-                               maximum: 18,
+                               minimum_pay: 18,
+                               maximum_pay: 18,
                                start_date: '2014-12-23',
                                end_date: '2014-12-31',
                                locations: [
@@ -131,8 +131,8 @@ shared_examples 'an API search as_json' do
       expect(jobs.last).to eq(position_title: 'Clerk II-License and Permit Specialist Intern',
                               organization_name: 'Texas Alcoholic Beverage Commission',
                               rate_interval_code: 'PH',
-                              minimum: 11,
-                              maximum: nil,
+                              minimum_pay: 11,
+                              maximum_pay: nil,
                               start_date: '2014-12-03',
                               end_date: '2014-12-29',
                               locations: [

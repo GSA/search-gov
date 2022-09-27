@@ -557,8 +557,8 @@ describe WebSearch do
           position_title: 'Physician  (Primary Care - Women Clinic)',
           organization_name: 'Veterans Affairs, Veterans Health Administration',
           rate_interval_code: 'PA',
-          minimum: 60_000,
-          maximum: 70_000,
+          minimum_pay: 60_000,
+          maximum_pay: 70_000,
           start_date: '2012-10-05',
           end_date: '2023-10-04',
           locations: [
@@ -571,8 +571,8 @@ describe WebSearch do
           position_title: 'PHYSICAL THERAPIST',
           organization_name: 'Veterans Affairs, Veterans Health Administration',
           rate_interval_code: 'PA',
-          minimum: 40_000,
-          maximum: 50_000,
+          minimum_pay: 40_000,
+          maximum_pay: 50_000,
           start_date: '2012-10-05',
           end_date: '2023-10-04',
           locations: [

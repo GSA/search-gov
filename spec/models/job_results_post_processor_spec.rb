@@ -19,7 +19,7 @@ describe JobResultsPostProcessor do
   end
 
   it 'converts the salary ranges to floats' do
-    expect(result.minimum).to eq 19.54
-    expect(result.maximum).to eq 26.23
+    expect(result.minimum_pay).to eq 19.54
+    expect(result.maximum_pay).to eq 26.23
   end
 end
