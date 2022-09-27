@@ -4,10 +4,10 @@ class RoutedQueryKeyword < ApplicationRecord
   include Dupable
 
   before_validation do |record|
-    AttributeProcessor.sanitize_attributes record, :keyword
-    AttributeProcessor.squish_attributes record,
+    AttributeProcessor.sanitize_attributes(record, :keyword)
+    AttributeProcessor.squish_attributes(record,
                                          :keyword,
-                                         assign_nil_on_blank: true
+                                         assign_nil_on_blank: true)
     record.keyword.downcase! if record.keyword.present?
   end
 
@@ -34,8 +34,11 @@ class RoutedQueryKeyword < ApplicationRecord
     return unless routed_query&.affiliate
     return unless relation.any?
 
-    errors[:keyword] <<
-      "The keyword '#{keyword}' is already in use for a different routed query"
+    errors.add(
+      :keyword,
+      :taken,
+      message: "The keyword '#{keyword}' is already in use for a different routed query"
+    )
   end
 
   def relation
