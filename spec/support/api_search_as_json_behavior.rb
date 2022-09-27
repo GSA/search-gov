@@ -28,7 +28,7 @@ shared_examples 'an API search as_json' do
     end
 
     it 'includes recent_tweets' do
-      tweet = search_rash.recent_tweets.first.to_hash.symbolize_keys
+      tweet = search_rash.recent_tweets.first.to_hash.deep_symbolize_keys
        expect(tweet).to eq(created_at: current_time.to_time.iso8601,
                           name: 'USA.gov',
                           profile_image_url: 'http://a0.twimg.com/profile_images/1155238675/usagov_normal.jpg',
@@ -52,7 +52,7 @@ shared_examples 'an API search as_json' do
     end
 
     it 'includes federal register documents' do
-      docs = search_rash.federal_register_documents.collect { |doc| doc.to_hash.symbolize_keys }
+      docs = search_rash.federal_register_documents.collect { |doc| doc.to_hash.deep_symbolize_keys }
       expect(docs.first).to eq(id: 804670240,
                                document_number: '2014-15238',
                                document_type: 'Notice',
@@ -114,7 +114,7 @@ shared_examples 'an API search as_json' do
     end
 
     it 'includes job openings' do
-      jobs = search_rash.job_openings.collect { |job| job.to_hash.symbolize_keys }
+      jobs = search_rash.job_openings.collect { |job| job.to_hash.deep_symbolize_keys }
       expect(jobs.first).to eq(position_title: 'Archeological Technician',
                                organization_name: 'National Park Service',
                                rate_interval_code: 'PH',
@@ -149,7 +149,7 @@ shared_examples 'an API search as_json' do
     before { allow(search).to receive(:med_topic) { med_topics(:cancer) } }
 
     it 'includes health_topics' do
-      health_topics = search_rash.health_topics.collect { |topic| topic.to_hash.symbolize_keys }
+      health_topics = search_rash.health_topics.collect { |topic| topic.to_hash.deep_symbolize_keys }
 
       expect(health_topics.first).to eq(title: 'Cancer',
                                         url: 'https://www.nlm.nih.gov/medlineplus/cancer.html',
