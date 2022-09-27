@@ -4,10 +4,10 @@ class RoutedQueryKeyword < ApplicationRecord
   include Dupable
 
   before_validation do |record|
-    AttributeProcessor.sanitize_attributes record, :keyword
-    AttributeProcessor.squish_attributes record,
+    AttributeProcessor.sanitize_attributes(record, :keyword)
+    AttributeProcessor.squish_attributes(record,
                                          :keyword,
-                                         assign_nil_on_blank: true
+                                         assign_nil_on_blank: true)
     record.keyword.downcase! if record.keyword.present?
   end
 
@@ -33,6 +33,7 @@ class RoutedQueryKeyword < ApplicationRecord
   def keyword_unique_to_affiliate
     return unless routed_query&.affiliate
     return unless relation.any?
+
     errors.add(
       :keyword,
       :taken,
