@@ -53,7 +53,7 @@ shared_context 'approved user logged in to a site' do
 
   before do
     UserSession.create current_user
-    expect(User).to receive(:find_by_id).and_return(current_user)
+    allow(User).to receive(:find_by_id).and_return(current_user)
     allow(current_user).to receive_message_chain(:affiliates, :active, :find).and_return(site)
   end
 end
