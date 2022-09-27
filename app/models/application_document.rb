@@ -24,8 +24,8 @@ class ApplicationDocument < WebDocument
   end
 
   def parse_content
-    content = metadata['X-TIKA:content'] || +''
-    return '' unless content.match?(/([a-zA-Z])|\d/)
+    content = metadata['X-TIKA:content']
+    return '' unless content&.match?(/([a-zA-Z])|\d/)
 
     content.tr("\uFFFD", ' ')&.squish
   end
