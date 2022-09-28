@@ -114,7 +114,7 @@
 # If you're upgrading and haven't set `cookies_serializer` previously, your cookie serializer
 # is `:marshal`. The default for new apps is `:json`.
 #
-# Rails.application.config.action_dispatch.cookies_serializer = :json
+Rails.application.config.action_dispatch.cookies_serializer = :json
 #
 #
 # To migrate an existing application to the `:json` serializer, use the `:hybrid` option.
