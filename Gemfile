@@ -43,8 +43,8 @@ gem 'active_scaffold_export', '~> 3.4.0'
 gem "recaptcha", '~> 4.6.3', :require => "recaptcha/rails"
 gem 'newrelic_rpm', '~> 7.2.0' #NEED TICKET
 gem 'american_date', '~> 1.1.1'
-gem 'sass-rails', '~> 5.0.7'
 # gem 'sassc-rails' replace?
+gem 'sass-rails', '~> 5.0.7'
 # Gem no longer being maintained. See https://cm-jira.usa.gov/browse/SRCH-694
 gem 'google_visualr',
     git: 'https://github.com/winston/google_visualr',
@@ -139,12 +139,16 @@ gem 'execjs', '~> 2.7.0'
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development do
+  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   gem 'spring', '~> 3.1'
-  gem 'listen', '~> 3.7'
   # Bumping searchgov_style? Be sure to update rubocop, if possible,
   # and the Rubocop channel in .codeclimate.yml to match the updated rubocop version
   gem 'searchgov_style', '~> 0.1', require: false
   gem 'rubocop', '1.23.0', require: false
+  # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem 'web-console'
+  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
+  # gem "rack-mini-profiler"
 end
 
 group :development, :test do
@@ -160,6 +164,8 @@ group :development, :test do
   gem 'pry-rails', '~> 0.3.6'
   gem 'awesome_print'
   gem 'puma', '~> 5.3'
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'debug', platforms: %i[ mri mingw x64_mingw ]
 end
 
 group :test do
