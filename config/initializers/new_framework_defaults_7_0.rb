@@ -99,6 +99,7 @@
 
 
 # ** Please read carefully, this must be configured in config/application.rb **
+# https://guides.rubyonrails.org/upgrading_ruby_on_rails.html#new-activesupport-cache-serialization-format
 # Change the format of the cache entry.
 # Changing this default means that all new cache entries added to the cache
 # will have a different format that is not supported by Rails 6.1 applications.
