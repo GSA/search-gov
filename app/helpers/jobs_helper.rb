@@ -19,6 +19,7 @@ module JobsHelper
 
   def format_salary(job)
     return if job.minimum_pay.nil? || job.minimum_pay.zero?
+
     max = job.maximum_pay || 0
     min_str = number_to_currency(job.minimum_pay)
     max_str = number_to_currency(job.maximum_pay)
