@@ -110,7 +110,7 @@ class SiteAutodiscoverer
 
   def detect_default_favicon
     default_favicon_url = "#{website_host_with_scheme}/favicon.ico"
-    default_favicon_url unless (timeout(10) { open(default_favicon_url) } rescue nil).nil?
+    default_favicon_url unless (Timeout.timeout(10) { open(default_favicon_url) } rescue nil).nil?
   end
 
   def extract_title_and_valid_url_from_rss_feed_link(link_element)
