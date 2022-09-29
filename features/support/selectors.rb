@@ -1,3 +1,6 @@
+# These should eventually be consolidated with those in
+# features/step_definitions/within_steps.rb
+
 module HtmlSelectorsHelpers
   # Maps a name to a selector. Used primarily by the
   #
