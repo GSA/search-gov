@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_09_182927) do
+ActiveRecord::Schema.define(version: 2022_08_31_184226) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -577,6 +577,7 @@ ActiveRecord::Schema.define(version: 2022_08_09_182927) do
     t.string "scheme", limit: 5, default: "http", null: false
     t.string "activity", limit: 100, default: "idle", null: false
     t.string "canonical_domain"
+    t.boolean "js_renderer", default: false
     t.index ["activity"], name: "index_searchgov_domains_on_activity"
     t.index ["domain"], name: "index_searchgov_domains_on_domain", unique: true, length: 100
     t.index ["status"], name: "index_searchgov_domains_on_status", length: 100
