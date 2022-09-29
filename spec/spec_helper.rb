@@ -72,11 +72,11 @@ RSpec.configure do |config|
 
     require 'test_services'
 
-    TestServices::verify_xpack_license
+    TestServices.verify_xpack_license
     EmailTemplate.load_default_templates
     OutboundRateLimit.load_defaults
-    TestServices::delete_es_indexes
-    TestServices::create_es_indexes
+    TestServices.delete_es_indexes
+    TestServices.create_es_indexes
   end
 
   config.before(:each) do
@@ -97,7 +97,7 @@ RSpec.configure do |config|
   end
 
   config.after(:suite) do
-    TestServices::delete_es_indexes
+    TestServices.delete_es_indexes
   end
 
   # Add VCR to all tests
