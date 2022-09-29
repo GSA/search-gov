@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'hashie/mash'
 
 shared_examples 'an API search as_json' do
@@ -8,8 +10,6 @@ shared_examples 'an API search as_json' do
   end
 
   context 'when tweets are present' do
-    fixtures :twitter_profiles
-
     let(:current_time) { DateTime.current }
 
     before do
@@ -39,8 +39,6 @@ shared_examples 'an API search as_json' do
   end
 
   context 'when federal register documents are present' do
-    fixtures :federal_register_agencies, :federal_register_documents
-
     before do
       docs = [
         federal_register_documents(:'2014-15238'),
@@ -144,8 +142,6 @@ shared_examples 'an API search as_json' do
   end
 
   context 'when health topics are present' do
-    fixtures :med_topics, :med_related_topics, :med_sites
-
     before { allow(search).to receive(:med_topic) { med_topics(:cancer) } }
 
     it 'includes health_topics' do

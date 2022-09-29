@@ -79,6 +79,10 @@ describe SearchgovUrl do
     end
   end
 
+  describe 'associations' do
+    it { is_expected.to have_one(:searchgov_document).dependent(:destroy) }
+  end
+
   describe 'callbacks' do
     context 'when destroying' do
       it 'deletes the document' do
@@ -116,6 +120,7 @@ describe SearchgovUrl do
     let(:searchgov_domain) do
       instance_double(SearchgovDomain, check_status: '200 OK', available?: true)
     end
+    let(:searchgov_document) { searchgov_url.searchgov_document }
 
     before do
       allow(searchgov_url).to receive(:searchgov_domain).and_return(searchgov_domain)
@@ -125,7 +130,10 @@ describe SearchgovUrl do
     context 'when the fetch is successful' do
       before do
         stub_request(:get, url).with(headers: { user_agent: DEFAULT_USER_AGENT }).
-          to_return(status: 200, body: html, headers: { content_type: 'text/html' })
+          to_return(status: 200,
+                    body: html,
+                    headers: { content_type: 'text/html',
+                               etag: '123' })
       end
 
       it 'fetches and indexes the document' do
@@ -146,161 +154,227 @@ describe SearchgovUrl do
         fetch
       end
 
-      context 'when the record is enqueued for reindex' do
-        let(:searchgov_url) do
-          described_class.create!(valid_attributes.merge(enqueued_for_reindex: true))
+      context 'when searchgov_document save functionality is flagged off' do
+        before do
+          ENV['SAVE_SEARCHGOV_DOCUMENT'] = 'false'
         end
 
-        it 'sets enqueued_for_reindex to false' do
-          expect { fetch }.to change { searchgov_url.enqueued_for_reindex }.
-            from(true).to(false)
+        it 'does not save a document to searchgov_documents' do
+          expect { fetch }.not_to change { SearchgovDocument.count }
         end
       end
 
-      context 'when the record includes a lastmod value' do
-        let(:valid_attributes) { { url: url, lastmod: '2018-01-01' } }
-
-        it 'passes that as the changed value' do
-          expect(I14yDocument).to receive(:create).
-            with(hash_including(changed: '2018-01-01T00:00:00Z'))
-          fetch
+      context 'when searchgov_document save functionality is flagged on' do
+        before do
+          ENV['SAVE_SEARCHGOV_DOCUMENT'] = 'true'
         end
 
-        context 'when the document includes a modified value' do
-          before do
-            allow_any_instance_of(HtmlDocument).
-              to receive(:modified).and_return('2018-03-30T01:00:00-04:00')
+        context 'when no searchgov_document exists' do
+          it 'saves the document to searchgov_documents' do
+            expect { fetch }.to change { SearchgovDocument.count }.
+              from(0).to(1)
           end
 
+          it 'saves html content in searchgov_documents' do
+            fetch
+            expect(searchgov_document.web_document).to include('<p>This is my content.</p>')
+          end
+        end
+
+        context 'when a searchgov_document with the same searchgov_url_id and entity tag exists' do
+          before do
+            SearchgovDocument.create!(
+              web_document: 'An existing body',
+              headers: { etag: '123' },
+              searchgov_url_id: searchgov_url.id
+            )
+          end
+
+          it 'does not save a new document to searchgov_documents' do
+            expect { fetch }.not_to change { SearchgovDocument.count }
+          end
+
+          it 'does not update the existing document' do
+            expect { fetch }.not_to change { searchgov_document.updated_at }
+          end
+        end
+
+        context 'when a searchgov_document with the same searchgov_url_id but a different entity tag exists' do
+          before do
+            SearchgovDocument.create!(
+              web_document: 'An existing body',
+              headers: { etag: '456' },
+              searchgov_url_id: searchgov_url.id
+            )
+          end
+
+          it 'does not save a new document to searchgov_documents' do
+            expect { fetch }.not_to change { SearchgovDocument.count }
+          end
+
+          it 'updates the existing document' do
+            expect { fetch }.to change { searchgov_document.updated_at }
+          end
+        end
+
+        context 'when the record is enqueued for reindex' do
+          let(:searchgov_url) do
+            described_class.create!(valid_attributes.merge(enqueued_for_reindex: true))
+          end
+
+          it 'sets enqueued_for_reindex to false' do
+            expect { fetch }.to change { searchgov_url.enqueued_for_reindex }.
+              from(true).to(false)
+          end
+        end
+
+        context 'when the record includes a lastmod value' do
           let(:valid_attributes) { { url: url, lastmod: '2018-01-01' } }
 
-          it 'passes whichever value is more recent' do
+          it 'passes that as the changed value' do
             expect(I14yDocument).to receive(:create).
               with(hash_including(changed: '2018-01-01T00:00:00Z'))
             fetch
           end
-        end
-      end
 
-      context 'when the document has already been indexed' do
-        before { allow(searchgov_url).to receive(:indexed?).and_return(true) }
+          context 'when the document includes a modified value' do
+            before do
+              allow_any_instance_of(HtmlDocument).
+                to receive(:modified).and_return('2018-03-30T01:00:00-04:00')
+            end
 
-        it 'updates the document' do
-          expect(I14yDocument).to receive(:update).
-            with(hash_including(
-              document_id: '1ff7dfd3cf763d08bee3546e2538cf0315578fbd7b1d3f28f014915983d4d7ef',
-              handle: 'searchgov',
-              path: url,
-              title: 'My OG Title',
-              description: 'My OG Description',
-              content: "This is my headline.\nThis is my content.",
-              language: 'en',
-              tags: 'this, that, the other, thing',
-              created: '2015-07-02T10:12:32-04:00',
-              changed: '2017-03-30T13:18:28-04:00'
-            ))
-          fetch
-        end
-      end
+            let(:valid_attributes) { { url: url, lastmod: '2018-01-01' } }
 
-      context 'when the document is successfully indexed' do
-        before do
-          allow(I14yDocument).to receive(:create).with(anything).and_return(I14yDocument.new)
-        end
-
-        it 'records the load time' do
-          expect { fetch }.
-            to change { searchgov_url.reload.load_time.class }.
-            from(NilClass).to(Integer)
-        end
-
-        it 'records the success status' do
-          expect { fetch }.
-            to change { searchgov_url.reload.last_crawl_status }.
-            from(NilClass).to('OK')
-        end
-
-        it 'records the last crawl time' do
-          expect { fetch }.
-            to change { searchgov_url.reload.last_crawled_at }.
-            from(NilClass).to(Time)
-        end
-      end
-
-      context 'when the indexing fails' do
-        before { allow(I14yDocument).to receive(:create).and_raise(StandardError.new('Kaboom')) }
-
-        it 'records the error' do
-          expect { fetch }.not_to raise_error
-          expect(searchgov_url.last_crawl_status).to match(/Kaboom/)
-        end
-      end
-
-      context 'when the fetch successfully returns...an error page' do # Because that's a thing.
-        before do
-          fail_html = '<html><head><title>My 404 error page</title></head><body>Epic fail!</body></html>'
-          stub_request(:get, url).
-            to_return({ status: 200,
-                        body: fail_html,
-                        headers: { content_type: 'text/html' } })
-        end
-
-        it 'reports the 404' do
-          fetch
-          expect(searchgov_url.last_crawl_status).to eq '404'
-        end
-      end
-
-      context 'when the page should not be indexed' do
-        before do
-          expect(I14yDocument).not_to receive(:create)
-        end
-
-        context 'when noindex is specified in the page' do
-          let(:html) do
-            '<html><head><title>foo</title><META NAME="ROBOTS" CONTENT="NOINDEX"></head></html>'
+            it 'passes whichever value is more recent' do
+              expect(I14yDocument).to receive(:create).
+                with(hash_including(changed: '2018-01-01T00:00:00Z'))
+              fetch
+            end
           end
+        end
+
+        context 'when the document has already been indexed' do
+          before { allow(searchgov_url).to receive(:indexed?).and_return(true) }
+
+          it 'updates the document' do
+            expect(I14yDocument).to receive(:update).
+              with(hash_including(
+                document_id: '1ff7dfd3cf763d08bee3546e2538cf0315578fbd7b1d3f28f014915983d4d7ef',
+                handle: 'searchgov',
+                path: url,
+                title: 'My OG Title',
+                description: 'My OG Description',
+                content: "This is my headline.\nThis is my content.",
+                language: 'en',
+                tags: 'this, that, the other, thing',
+                created: '2015-07-02T10:12:32-04:00',
+                changed: '2017-03-30T13:18:28-04:00'
+              ))
+            fetch
+          end
+        end
+
+        context 'when the document is successfully indexed' do
+          before do
+            allow(I14yDocument).to receive(:create).with(anything).and_return(I14yDocument.new)
+          end
+
+          it 'records the load time' do
+            expect { fetch }.
+              to change { searchgov_url.reload.load_time.class }.
+              from(NilClass).to(Integer)
+          end
+
+          it 'records the success status' do
+            expect { fetch }.
+              to change { searchgov_url.reload.last_crawl_status }.
+              from(NilClass).to('OK')
+          end
+
+          it 'records the last crawl time' do
+            expect { fetch }.
+              to change { searchgov_url.reload.last_crawled_at }.
+              from(NilClass).to(Time)
+          end
+        end
+
+        context 'when the indexing fails' do
+          before { allow(I14yDocument).to receive(:create).and_raise(StandardError.new('Kaboom')) }
 
           it 'records the error' do
-            fetch
-            expect(searchgov_url.last_crawl_status).to eq 'Noindex per HTML metadata'
-          end
-        end
-
-        context 'when noindex is specified in the header' do
-          before do
-            stub_request(:get, url).
-              to_return({ status: 200, headers: { 'X-Robots-Tag' => 'noindex,nofollow' } })
-          end
-
-          it 'records the error' do
-            fetch
-            expect(searchgov_url.last_crawl_status).to eq 'Noindex per X-Robots-Tag header'
-          end
-        end
-
-        context 'when the file is too large' do
-          before do
-            stub_request(:get, url).to_return(status: 200, headers: {  content_type: 'application/pdf',
-                                                                       content_length: 18.megabytes })
-          end
-
-          it 'reports the error' do
-            fetch
-            expect(searchgov_url.last_crawl_status).to eq 'Document is over 15 MB limit'
-          end
-        end
-      end
-
-      describe 'setting the last_crawl_status' do
-        context 'when an error message is very long' do
-          before do
-            allow(searchgov_url).to receive(:index_document).and_raise(StandardError.new('x' * 256))
-          end
-
-          it 'truncates too-long crawl statuses' do
             expect { fetch }.not_to raise_error
-            expect(searchgov_url.last_crawl_status).to eq 'x' * 255
+            expect(searchgov_url.last_crawl_status).to match(/Kaboom/)
+          end
+        end
+
+        context 'when the fetch successfully returns...an error page' do # Because that's a thing.
+          before do
+            fail_html = '<html><head><title>My 404 error page</title></head><body>Epic fail!</body></html>'
+            stub_request(:get, url).
+              to_return(status: 200,
+                        body: fail_html,
+                        headers: { content_type: 'text/html' })
+          end
+
+          it 'reports the 404' do
+            fetch
+            expect(searchgov_url.last_crawl_status).to eq '404'
+          end
+        end
+
+        context 'when the page should not be indexed' do
+          before do
+            expect(I14yDocument).not_to receive(:create)
+          end
+
+          context 'when noindex is specified in the page' do
+            let(:html) do
+              '<html><head><title>foo</title><META NAME="ROBOTS" CONTENT="NOINDEX"></head></html>'
+            end
+
+            it 'records the error' do
+              fetch
+              expect(searchgov_url.last_crawl_status).to eq 'Noindex per HTML metadata'
+            end
+          end
+
+          context 'when noindex is specified in the header' do
+            before do
+              stub_request(:get, url).
+                to_return(status: 200,
+                          headers: { 'X-Robots-Tag' => 'noindex,nofollow' })
+            end
+
+            it 'records the error' do
+              fetch
+              expect(searchgov_url.last_crawl_status).to eq 'Noindex per X-Robots-Tag header'
+            end
+          end
+
+          context 'when the file is too large' do
+            before do
+              stub_request(:get, url).to_return(status: 200,
+                                                headers: { content_type: 'application/pdf',
+                                                           content_length: 18.megabytes })
+            end
+
+            it 'reports the error' do
+              fetch
+              expect(searchgov_url.last_crawl_status).to eq 'Document is over 15 MB limit'
+            end
+          end
+        end
+
+        describe 'setting the last_crawl_status' do
+          context 'when an error message is very long' do
+            before do
+              allow(searchgov_url).to receive(:index_document).and_raise(StandardError.new('x' * 256))
+            end
+
+            it 'truncates too-long crawl statuses' do
+              expect { fetch }.not_to raise_error
+              expect(searchgov_url.last_crawl_status).to eq 'x' * 255
+            end
           end
         end
       end
@@ -311,9 +385,11 @@ describe SearchgovUrl do
 
       before do
         stub_request(:get, url).
-          to_return({ status: 200,
-                      body: read_fixture_file('/pdf/test.pdf'),
-                      headers: { content_type: 'application/pdf' } })
+          with(headers: { user_agent: DEFAULT_USER_AGENT }).
+          to_return(status: 200,
+                    body: read_fixture_file('/pdf/test.pdf'),
+                    headers: { content_type: 'application/pdf',
+                               etag: '123' })
       end
 
       it 'fetches and indexes the document' do
@@ -334,6 +410,62 @@ describe SearchgovUrl do
         expect_any_instance_of(Tempfile).to receive(:close!)
         fetch
       end
+
+      context 'when searchgov_document save functionality is flagged on' do
+        before do
+          ENV['SAVE_SEARCHGOV_DOCUMENT'] = 'true'
+        end
+
+        it 'saves pdf content in searchgov_documents' do
+          fetch
+          parsed_body = JSON.parse searchgov_document.web_document.gsub('=>', ':')
+          expect(parsed_body['X-TIKA:content']).to include('This is a test PDF file')
+        end
+
+        it 'saves pdf metadata in searchgov_documents' do
+          fetch
+          parsed_body = JSON.parse searchgov_document.web_document.gsub('=>', ':')
+          expect(parsed_body['Creation-Date']).to eq('2018-06-09T17:42:11Z')
+        end
+
+        context 'when a searchgov_document application document was parsed by the current version of tika' do
+          before do
+            SearchgovDocument.create!(
+              web_document: 'An existing body',
+              headers: { etag: '123' },
+              tika_version: 1.24,
+              searchgov_url_id: searchgov_url.id
+            )
+          end
+
+          it 'does not save a new document to searchgov_documents' do
+            expect { fetch }.not_to change { SearchgovDocument.count }
+          end
+
+          it 'does not update the existing document' do
+            expect { fetch }.not_to change { searchgov_document.updated_at }
+          end
+        end
+
+        context 'when a searchgov_document application document was parsed by an older version of tika' do
+          before do
+            SearchgovDocument.create!(
+              web_document: 'An existing body',
+              headers: { content_type: 'text/html' },
+              tika_version: 0.0,
+              searchgov_url_id: searchgov_url.id
+            )
+          end
+
+          it 'does not save a new document to searchgov_documents' do
+            expect { fetch }.not_to change { SearchgovDocument.count }
+          end
+
+          it 'updates the existing document' do
+            expect { fetch }.to change { searchgov_document.updated_at }
+          end
+        end
+      end
     end
 
     context 'when the url points to a Word doc (.doc)' do
@@ -341,9 +473,10 @@ describe SearchgovUrl do
 
       before do
         stub_request(:get, url).
-          to_return({ status: 200,
-                      body: read_fixture_file('/word/test.doc'),
-                      headers: { content_type: 'application/msword' } })
+          with(headers: { user_agent: DEFAULT_USER_AGENT }).
+          to_return(status: 200,
+                    body: read_fixture_file('/word/test.doc'),
+                    headers: { content_type: 'application/msword' })
       end
 
       it 'fetches and indexes the document' do
@@ -357,6 +490,24 @@ describe SearchgovUrl do
             tags: 'word'
           ))
         fetch
+      end
+
+      context 'when searchgov_document save functionality is flagged on' do
+        before do
+          ENV['SAVE_SEARCHGOV_DOCUMENT'] = 'true'
+        end
+
+        it 'saves .doc content in searchgov_documents' do
+          fetch
+          parsed_body = JSON.parse searchgov_document.web_document.gsub('=>', ':')
+          expect(parsed_body['X-TIKA:content']).to include('This is a Word Doc.')
+        end
+
+        it 'saves .doc metadata in searchgov_documents' do
+          fetch
+          parsed_body = JSON.parse searchgov_document.web_document.gsub('=>', ':')
+          expect(parsed_body['Creation-Date']).to eq('2017-09-26T23:17:27Z')
+        end
       end
     end
 
@@ -365,9 +516,10 @@ describe SearchgovUrl do
 
       before do
         stub_request(:get, url).
-          to_return({ status: 200,
-                      body: read_fixture_file('/word/test.docx'),
-                      headers: { content_type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' } })
+          with(headers: { user_agent: DEFAULT_USER_AGENT }).
+          to_return(status: 200,
+                    body: read_fixture_file('/word/test.docx'),
+                    headers: { content_type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' })
       end
 
       it 'fetches and indexes the document' do
@@ -382,6 +534,24 @@ describe SearchgovUrl do
           ))
         fetch
       end
+
+      context 'when searchgov_document save functionality is flagged on' do
+        before do
+          ENV['SAVE_SEARCHGOV_DOCUMENT'] = 'true'
+        end
+
+        it 'saves .docx content in searchgov_documents' do
+          fetch
+          parsed_body = JSON.parse searchgov_document.web_document.gsub('=>', ':')
+          expect(parsed_body['X-TIKA:content']).to include('This is a Word Doc.')
+        end
+
+        it 'saves .docx metadata in searchgov_documents' do
+          fetch
+          parsed_body = JSON.parse searchgov_document.web_document.gsub('=>', ':')
+          expect(parsed_body['Creation-Date']).to eq('2017-09-26T15:17:27Z')
+        end
+      end
     end
 
     context 'when the url points to an Excel doc (.xlsx)' do
@@ -389,9 +559,10 @@ describe SearchgovUrl do
 
       before do
         stub_request(:get, url).
-          to_return({ status: 200,
-                      body: read_fixture_file('/excel/test.xlsx'),
-                      headers: { content_type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' } })
+          with(headers: { user_agent: DEFAULT_USER_AGENT }).
+          to_return(status: 200,
+                    body: read_fixture_file('/excel/test.xlsx'),
+                    headers: { content_type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' })
       end
 
       it 'fetches and indexes the document' do
@@ -405,6 +576,24 @@ describe SearchgovUrl do
             tags: 'excel'
           ))
         fetch
+      end
+
+      context 'when searchgov_document save functionality is flagged on' do
+        before do
+          ENV['SAVE_SEARCHGOV_DOCUMENT'] = 'true'
+        end
+
+        it 'saves .xlsx content in searchgov_documents' do
+          fetch
+          parsed_body = JSON.parse searchgov_document.web_document.gsub('=>', ':')
+          expect(parsed_body['X-TIKA:content']).to include('This is an Excel doc.')
+        end
+
+        it 'saves .xlsx metadata in searchgov_documents' do
+          fetch
+          parsed_body = JSON.parse searchgov_document.web_document.gsub('=>', ':')
+          expect(parsed_body['Creation-Date']).to eq('2017-10-05T11:24:38Z')
+        end
       end
     end
 
@@ -413,9 +602,10 @@ describe SearchgovUrl do
 
       before do
         stub_request(:get, url).
-          to_return({ status: 200,
-                      body: read_fixture_file('/excel/test.xls'),
-                      headers: { content_type: 'application/vnd.ms-excel' } })
+          with(headers: { user_agent: DEFAULT_USER_AGENT }).
+          to_return(status: 200,
+                    body: read_fixture_file('/excel/test.xls'),
+                    headers: { content_type: 'application/vnd.ms-excel' })
       end
 
       it 'fetches and indexes the document' do
@@ -430,6 +620,24 @@ describe SearchgovUrl do
           ))
         fetch
       end
+
+      context 'when searchgov_document save functionality is flagged on' do
+        before do
+          ENV['SAVE_SEARCHGOV_DOCUMENT'] = 'true'
+        end
+
+        it 'saves .xls content in searchgov_documents' do
+          fetch
+          parsed_body = JSON.parse searchgov_document.web_document.gsub('=>', ':')
+          expect(parsed_body['X-TIKA:content']).to include('This is an Excel doc.')
+        end
+
+        it 'saves .xls metadata in searchgov_documents' do
+          fetch
+          parsed_body = JSON.parse searchgov_document.web_document.gsub('=>', ':')
+          expect(parsed_body['Creation-Date']).to eq('2017-10-05T19:24:38Z')
+        end
+      end
     end
 
     context 'when the url points to a TXT doc (.txt)' do
@@ -437,6 +645,7 @@ describe SearchgovUrl do
 
       before do
         stub_request(:get, url).
+          with(headers: { user_agent: DEFAULT_USER_AGENT }).
           to_return(status: 200,
                     body: 'This is my text content.',
                     headers: { content_type: 'text/plain' })
@@ -453,6 +662,24 @@ describe SearchgovUrl do
             language: 'en'
           ))
         fetch
+      end
+
+      context 'when searchgov_document save functionality is flagged on' do
+        before do
+          ENV['SAVE_SEARCHGOV_DOCUMENT'] = 'true'
+        end
+
+        it 'saves .txt content in searchgov_documents' do
+          fetch
+          parsed_body = JSON.parse searchgov_document.web_document.gsub('=>', ':')
+          expect(parsed_body['X-TIKA:content']).to include('This is my text content.')
+        end
+
+        it 'saves .txt metadata in searchgov_documents' do
+          fetch
+          parsed_body = JSON.parse searchgov_document.web_document.gsub('=>', ':')
+          expect(parsed_body['Content-Encoding']).to eq('ISO-8859-1')
+        end
       end
     end
 
@@ -489,9 +716,13 @@ describe SearchgovUrl do
         expect(I14yDocument).not_to receive(:create).
           with(hash_including(title: 'My Title', description: 'My description'))
         stub_request(:get, url).
-          to_return({ status: 301, body: html, headers: { location: new_url } })
+          to_return(status: 301,
+                    body: html,
+                    headers: { location: new_url })
         stub_request(:get, new_url).
-          to_return({ status: 200, body: html, headers: { content_type: 'text/html' } })
+          to_return(status: 200,
+                    body: html,
+                    headers: { content_type: 'text/html' })
       end
 
       it 'creates a url' do
@@ -530,7 +761,9 @@ describe SearchgovUrl do
 
         before do
           stub_request(:get, url).
-            to_return(status: 200, body: html, headers: { content_type: 'text/html' })
+            to_return(status: 200,
+                      body: html,
+                      headers: { content_type: 'text/html' })
         end
 
         it 'creates a url' do
@@ -554,7 +787,8 @@ describe SearchgovUrl do
     context 'when the content type is unsupported' do
       before do
         stub_request(:get, url).
-          to_return({ status: 200, headers: { content_type: 'foo/bar' } })
+          to_return(status: 200,
+                    headers: { content_type: 'foo/bar' })
       end
 
       it 'reports the error' do
