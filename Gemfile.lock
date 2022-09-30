@@ -721,14 +721,6 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    sassc (2.4.0)
-      ffi (~> 1.9)
-    sassc-rails (2.1.2)
-      railties (>= 4.0.0)
-      sassc (>= 2.0)
-      sprockets (> 3.0)
-      sprockets-rails
-      tilt
     saxerator (0.9.9)
     searchgov_style (0.1.19)
       rubocop (= 1.23.0)
@@ -934,7 +926,7 @@ DEPENDENCIES
   rspec-rails (~> 5.0)
   rspec_junit_formatter (~> 0.4)
   rubocop (= 1.23.0)
-  sassc-rails
+  sass-rails (~> 5.0.7)
   saxerator (~> 0.9.9)
   searchgov_style (~> 0.1)
   select2-rails (~> 4.0.3)
