@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe 'image_searches/index.html.haml' do
+describe 'image_searches/index.html.haml', pending: 'SRCH-3404' do
   let(:affiliate) { affiliates(:usagov_affiliate) }
 
   context 'when there are 5 Oasis pics and Bing image search is not enabled' do

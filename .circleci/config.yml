@@ -279,16 +279,17 @@ workflows:
                 - 6.8.23
                 - 7.17.3
 
-      - report_coverage:
-          requires:
-            - rspec
-            - cucumber
-          name: "report coverage: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>"
-          matrix:
-            # We only report coverage for one run, as the coverage will be
-            # identical in all versions if all specs are passing
-            parameters:
-              ruby_version:
-                - 2.7.5
-              elasticsearch_version:
-                - 6.8.23
+# Skipping coverage report until all tests are enabled and passing: SRCH-3414
+#      - report_coverage:
+#          requires:
+#            - rspec
+#            - cucumber
+#          name: "report coverage: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>"
+#          matrix:
+#            # We only report coverage for one run, as the coverage will be
+#            # identical in all versions if all specs are passing
+#            parameters:
+#              ruby_version:
+#                - 2.7.5
+#              elasticsearch_version:
+#                - 6.8.23

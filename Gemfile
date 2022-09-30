@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 6.1.0'
+gem 'rails', '~> 7.0.0'
 
 gem 'rake', '~> 13.0.6'
 gem 'rack-contrib', '~> 2.1.0'
@@ -29,7 +29,7 @@ gem 'resque-lock-timeout', '~> 0.4.5'
 gem 'resque-scheduler', '~> 4.3.1'
 # Paperclip is deprecated: https://cm-jira.usa.gov/browse/SRCH-702
 # Using a third-party fork as an interim measure.
-gem 'kt-paperclip', '~> 7.0.0'
+gem 'kt-paperclip', '~> 7.1.0'
 gem 'aws-sdk-s3', '~> 1.102.0'
 gem 'googlecharts', '~> 1.6.12'
 # Using custom fork of tweetstream until vulnerability is resolved
@@ -38,11 +38,15 @@ gem 'googlecharts', '~> 1.6.12'
 gem 'tweetstream', git: 'https://github.com/GSA/tweetstream'
 gem 'twitter', git: 'https://github.com/GSA/twitter.git', branch: '5-stable'
 gem 'flickraw', '~> 0.9.9'
-gem 'active_scaffold', '~> 3.6.2'
+gem 'active_scaffold', '~> 3.6.0'
 gem 'active_scaffold_export', '~> 3.4.0'
 gem "recaptcha", '~> 4.6.3', :require => "recaptcha/rails"
-gem 'newrelic_rpm', '~> 6.15.0'
+# We may need to make config changes for newrelic_rpm:
+# https://cm-jira.usa.gov/browse/SRCH-3422
+gem 'newrelic_rpm', '~> 7.2.0'
 gem 'american_date', '~> 1.1.1'
+# sassc-rails is now the Rails default. Consider replacing:
+# https://guides.rubyonrails.org/asset_pipeline.html
 gem 'sass-rails', '~> 5.0.7'
 # Gem no longer being maintained. See https://cm-jira.usa.gov/browse/SRCH-694
 gem 'google_visualr',
@@ -138,12 +142,16 @@ gem 'execjs', '~> 2.7.0'
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development do
-  gem 'spring', '~> 3.1'
-  gem 'listen', '~> 3.7'
+  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
+  # gem 'spring', '~> 3.1'
   # Bumping searchgov_style? Be sure to update rubocop, if possible,
   # and the Rubocop channel in .codeclimate.yml to match the updated rubocop version
   gem 'searchgov_style', '~> 0.1', require: false
   gem 'rubocop', '1.23.0', require: false
+  # Use console on exceptions pages [https://github.com/rails/web-console]
+  # gem 'web-console'
+  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
+  # gem "rack-mini-profiler"
 end
 
 group :development, :test do
@@ -159,6 +167,9 @@ group :development, :test do
   gem 'pry-rails', '~> 0.3.6'
   gem 'awesome_print'
   gem 'puma', '~> 5.3'
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  # We may eventually remove the pry-* gems in favor of 'debug'
+  gem 'debug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :test do
