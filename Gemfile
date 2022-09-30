@@ -45,7 +45,8 @@ gem "recaptcha", '~> 4.6.3', :require => "recaptcha/rails"
 # https://cm-jira.usa.gov/browse/SRCH-3422
 gem 'newrelic_rpm', '~> 7.2.0'
 gem 'american_date', '~> 1.1.1'
-# gem 'sassc-rails' replace?
+# sassc-rails is now the Rails default. Consider replacing:
+# https://guides.rubyonrails.org/asset_pipeline.html
 gem 'sass-rails', '~> 5.0.7'
 # Gem no longer being maintained. See https://cm-jira.usa.gov/browse/SRCH-694
 gem 'google_visualr',
