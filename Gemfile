@@ -41,7 +41,9 @@ gem 'flickraw', '~> 0.9.9'
 gem 'active_scaffold', '~> 3.6.0'
 gem 'active_scaffold_export', '~> 3.4.0'
 gem "recaptcha", '~> 4.6.3', :require => "recaptcha/rails"
-gem 'newrelic_rpm', '~> 7.2.0' #NEED TICKET
+# We may need to make config changes for newrelic_rpm:
+# https://cm-jira.usa.gov/browse/SRCH-3422
+# gem 'newrelic_rpm', '~> 7.2.0'
 gem 'american_date', '~> 1.1.1'
 # gem 'sassc-rails' replace?
 gem 'sass-rails', '~> 5.0.7'
