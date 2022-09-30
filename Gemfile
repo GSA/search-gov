@@ -159,7 +159,6 @@ group :development, :test do
   gem 'pry-rails', '~> 0.3.6'
   gem 'awesome_print'
   gem 'puma', '~> 5.3'
-  gem 'debug'
 end
 
 group :test do
