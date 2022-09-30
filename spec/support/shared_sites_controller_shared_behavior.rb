@@ -27,7 +27,7 @@ shared_examples 'restricted to approved user' do |request_method, action, parame
   end
 end
 
-shared_context 'when an approved user is logged in' do
+shared_context 'approved user logged in' do
   let(:current_user) { users(:affiliate_manager) }
 
   before do
@@ -36,7 +36,7 @@ shared_context 'when an approved user is logged in' do
   end
 end
 
-shared_context 'when a super admin is logged in' do
+shared_context 'super admin logged in' do
   fixtures :users
   let(:current_user) { users(:affiliate_admin) }
 
@@ -47,7 +47,7 @@ shared_context 'when a super admin is logged in' do
   end
 end
 
-shared_context 'when an approved user is logged into a site' do
+shared_context 'approved user logged in to a site' do
   let(:current_user) { users(:affiliate_manager) }
   let(:site) { affiliates(:basic_affiliate) }
 
@@ -58,7 +58,7 @@ shared_context 'when an approved user is logged into a site' do
   end
 end
 
-shared_context 'when a super admin is logged into a site' do
+shared_context 'super admin logged in to a site' do
   let(:current_user) { users(:affiliate_admin) }
   let!(:site) { affiliates(:basic_affiliate) }
 
