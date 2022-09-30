@@ -140,7 +140,7 @@ gem 'execjs', '~> 2.7.0'
 # and rake tasks are available in development mode:
 group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  gem 'spring', '~> 3.1'
+  # gem 'spring', '~> 3.1'
   # Bumping searchgov_style? Be sure to update rubocop, if possible,
   # and the Rubocop channel in .codeclimate.yml to match the updated rubocop version
   gem 'searchgov_style', '~> 0.1', require: false
@@ -164,6 +164,9 @@ group :development, :test do
   gem 'pry-rails', '~> 0.3.6'
   gem 'awesome_print'
   gem 'puma', '~> 5.3'
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  # We may eventually remove the pry-* gems in favor of 'debug'
+  gem "debug", platforms: %i[ mri mingw x64_mingw ]
 end
 
 group :test do
