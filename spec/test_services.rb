@@ -29,4 +29,17 @@ module TestServices
     start_date = end_date - 10.days
     start_date..end_date
   end
+
+  def verify_xpack_license
+    # An active trial license is required for the Watcher specs to pass.
+    license = Es::ELK.client_reader.xpack.license.get['license']
+    active_trial_license = (license['type'] == 'trial' && license['status'] == 'active')
+    return if active_trial_license
+
+    message = <<~MESSAGE
+      You do not have an active Elasticsearch X-Pack trial license.
+      Refer to https://github.com/GSA/search-services/wiki/Docker-Command-Reference#recreate-an-elasticsearch-cluster
+    MESSAGE
+    abort(message.red)
+  end
 end

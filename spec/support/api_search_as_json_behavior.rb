@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'hashie/mash'
 
 shared_examples 'an API search as_json' do
@@ -8,8 +10,6 @@ shared_examples 'an API search as_json' do
   end
 
   context 'when tweets are present' do
-    fixtures :twitter_profiles
-
     let(:current_time) { DateTime.current }
 
     before do
@@ -28,7 +28,7 @@ shared_examples 'an API search as_json' do
     end
 
     it 'includes recent_tweets' do
-      tweet = search_rash.recent_tweets.first.deep_symbolize_keys
+      tweet = search_rash.recent_tweets.first.to_hash.deep_symbolize_keys
        expect(tweet).to eq(created_at: current_time.to_time.iso8601,
                           name: 'USA.gov',
                           profile_image_url: 'http://a0.twimg.com/profile_images/1155238675/usagov_normal.jpg',
@@ -39,8 +39,6 @@ shared_examples 'an API search as_json' do
   end
 
   context 'when federal register documents are present' do
-    fixtures :federal_register_agencies, :federal_register_documents
-
     before do
       docs = [
         federal_register_documents(:'2014-15238'),
@@ -52,7 +50,7 @@ shared_examples 'an API search as_json' do
     end
 
     it 'includes federal register documents' do
-      docs = search_rash.federal_register_documents.collect(&:deep_symbolize_keys)
+      docs = search_rash.federal_register_documents.collect { |doc| doc.to_hash.deep_symbolize_keys }
       expect(docs.first).to eq(id: 804670240,
                                document_number: '2014-15238',
                                document_type: 'Notice',
@@ -86,8 +84,8 @@ shared_examples 'an API search as_json' do
                          position_title: 'Archeological Technician',
                          organization_name: 'National Park Service',
                          rate_interval_code: 'PH',
-                         minimum: 18,
-                         maximum: 18,
+                         minimum_pay: 18,
+                         maximum_pay: 18,
                          start_date: '2014-12-23',
                          end_date: '2014-12-31',
                          locations: [
@@ -99,8 +97,8 @@ shared_examples 'an API search as_json' do
                          position_title: 'Clerk II-License and Permit Specialist Intern',
                          organization_name: 'Texas Alcoholic Beverage Commission',
                          rate_interval_code: 'PH',
-                         minimum: 11,
-                         maximum: nil,
+                         minimum_pay: 11,
+                         maximum_pay: nil,
                          start_date: '2014-12-03',
                          end_date: '2014-12-29',
                          locations: [
@@ -114,12 +112,12 @@ shared_examples 'an API search as_json' do
     end
 
     it 'includes job openings' do
-      jobs = search_rash.job_openings.collect(&:deep_symbolize_keys)
+      jobs = search_rash.job_openings.collect { |job| job.to_hash.deep_symbolize_keys }
       expect(jobs.first).to eq(position_title: 'Archeological Technician',
                                organization_name: 'National Park Service',
                                rate_interval_code: 'PH',
-                               minimum: 18,
-                               maximum: 18,
+                               minimum_pay: 18,
+                               maximum_pay: 18,
                                start_date: '2014-12-23',
                                end_date: '2014-12-31',
                                locations: [
@@ -131,8 +129,8 @@ shared_examples 'an API search as_json' do
       expect(jobs.last).to eq(position_title: 'Clerk II-License and Permit Specialist Intern',
                               organization_name: 'Texas Alcoholic Beverage Commission',
                               rate_interval_code: 'PH',
-                              minimum: 11,
-                              maximum: nil,
+                              minimum_pay: 11,
+                              maximum_pay: nil,
                               start_date: '2014-12-03',
                               end_date: '2014-12-29',
                               locations: [
@@ -144,12 +142,11 @@ shared_examples 'an API search as_json' do
   end
 
   context 'when health topics are present' do
-    fixtures :med_topics, :med_related_topics, :med_sites
-
     before { allow(search).to receive(:med_topic) { med_topics(:cancer) } }
 
     it 'includes health_topics' do
-      health_topics = search_rash.health_topics.collect(&:deep_symbolize_keys)
+      health_topics = search_rash.health_topics.collect { |topic| topic.to_hash.deep_symbolize_keys }
+
       expect(health_topics.first).to eq(title: 'Cancer',
                                         url: 'https://www.nlm.nih.gov/medlineplus/cancer.html',
                                         snippet: 'Cancer begins in your cells, which are the building blocks of your body. Normally, your body forms new cells as you need them, replacing old cells that die. Sometimes this process goes wrong.',
