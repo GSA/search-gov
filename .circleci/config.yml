@@ -134,7 +134,6 @@ jobs:
 
             # Run Rspec tests
             bundle exec rspec --format progress \
-                              --seed 18250 \
                               --format RspecJunitFormatter \
                               --out /tmp/test-results/rspec.xml \
                               --format progress \
