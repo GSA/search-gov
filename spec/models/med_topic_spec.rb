@@ -260,6 +260,8 @@ describe MedTopic do
       let(:response) { double('http response') }
 
       before do
+        allow(File).to receive(:exist?)
+        allow(File).to receive(:exist?).with(/#{xml_file_path}$/).and_return(false)
         expect(File).to receive(:exist?).with(/#{xml_file_path}$/).and_return(false)
         expect(File).to receive(:open).
             with(/#{staging_xml_file_path}$/, 'w+', encoding: Encoding::BINARY).
@@ -283,6 +285,8 @@ describe MedTopic do
       let(:xml_file_path) { 'tmp/medline/mplus_topics_2012-07-21.xml' }
 
       before do
+        allow(File).to receive(:exist?)
+        allow(File).to receive(:exist?).with(/#{xml_file_path}$/).and_return(true)
         expect(File).to receive(:exist?).with(/#{xml_file_path}$/).and_return(true)
         expect(Net::HTTP).not_to receive(:get_response)
       end
