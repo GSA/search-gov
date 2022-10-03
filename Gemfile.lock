@@ -316,7 +316,7 @@ GEM
     cucumber-wire (6.2.1)
       cucumber-core (~> 10.1, >= 10.1.0)
       cucumber-cucumber-expressions (~> 14.0, >= 14.0.0)
-    curb (0.9.11)
+    curb (1.0.1)
     daemons (1.4.1)
     database_cleaner (2.0.1)
       database_cleaner-active_record (~> 2.0.0)
@@ -835,7 +835,7 @@ DEPENDENCIES
   counter_culture (~> 2.9.0)
   cucumber (~> 7.1)
   cucumber-rails (~> 2.4)
-  curb (~> 0.9.4)
+  curb (~> 1.0.1)
   database_cleaner (~> 2.0)
   debug
   dogstatsd-ruby (~> 3.2.0)
