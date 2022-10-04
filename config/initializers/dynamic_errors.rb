@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'active_model'
 
 # Stolen from https://raw.githubusercontent.com/joelmoss/dynamic_form
@@ -18,8 +20,10 @@ module ActiveModel
     def full_messages
       full_messages = []
 
-      each do |attribute, messages|
-        messages = Array.wrap(messages)
+      each do |error|
+        attribute = error.attribute
+        messages = Array.wrap(error.message)
+
         next if messages.empty?
 
         if attribute == :base
@@ -43,7 +47,7 @@ module ActiveModel
         end
       end
 
-      full_messages
+      full_messages.sort
     end
   end
 end
