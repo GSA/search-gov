@@ -250,6 +250,7 @@ describe MedTopic do
   end
 
   describe '.download_medline_xml' do
+    before { allow(File).to receive(:exist?) }
     context 'when file is not present in the tmp/medline directory' do
       let(:xml_content) { 'xml content' }
       let(:xml_file_name) { 'mplus_topics_2012-07-21.xml' }
@@ -260,9 +261,7 @@ describe MedTopic do
       let(:response) { double('http response') }
 
       before do
-        allow(File).to receive(:exist?)
-        allow(File).to receive(:exist?).with(/#{xml_file_path}$/)
-        expect(File).to receive(:exist?).with(/#{xml_file_path}$/).and_return(false)
+        allow(File).to receive(:exist?).with(/#{xml_file_path}$/).and_return(false)
         expect(File).to receive(:open).
             with(/#{staging_xml_file_path}$/, 'w+', encoding: Encoding::BINARY).
             and_yield(staging_file)
@@ -285,9 +284,7 @@ describe MedTopic do
       let(:xml_file_path) { 'tmp/medline/mplus_topics_2012-07-21.xml' }
 
       before do
-        allow(File).to receive(:exist?)
-        allow(File).to receive(:exist?).with(/#{xml_file_path}$/)
-        expect(File).to receive(:exist?).with(/#{xml_file_path}$/).and_return(true)
+        allow(File).to receive(:exist?).with(/#{xml_file_path}$/).and_return(true)
         expect(Net::HTTP).not_to receive(:get_response)
       end
 
