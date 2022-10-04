@@ -251,6 +251,7 @@ describe MedTopic do
 
   describe '.download_medline_xml' do
     before { allow(File).to receive(:exist?) }
+
     context 'when file is not present in the tmp/medline directory' do
       let(:xml_content) { 'xml content' }
       let(:xml_file_name) { 'mplus_topics_2012-07-21.xml' }
