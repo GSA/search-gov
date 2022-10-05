@@ -103,6 +103,7 @@ gem 'active_scheduler', '~> 0.7.0'
 gem 'retriable', '~> 3.1'
 gem 'cld3', '~> 3.4.3'
 gem 'activejob-uniqueness', '~> 0.2.1'
+gem 'selenium-webdriver'
 
 # Assets-related gems
 gem 'coffee-rails', '~> 5.0.0'
