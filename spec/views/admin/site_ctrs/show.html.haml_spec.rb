@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'admin/site_ctrs/show.html.haml' do
+describe 'admin/site_ctrs/show.html.haml', pending: 'SRCH-3404' do
   fixtures :users, :affiliates, :search_modules
   let(:aff1) { affiliates(:usagov_affiliate) }
   let(:aff2) { affiliates(:basic_affiliate) }

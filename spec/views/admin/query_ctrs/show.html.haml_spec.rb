@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'admin/query_ctrs/show.html.haml' do
+describe 'admin/query_ctrs/show.html.haml', pending: 'SRCH-3404' do
   fixtures :users, :affiliates, :search_modules
   let(:query_ctr1) { QueryCtrStat.new('query 1', ImpressionClickStat.new(456, 123), ImpressionClickStat.new(45, 12)) }
   let(:query_ctr2) { QueryCtrStat.new('query 2', ImpressionClickStat.new(1000, 500), ImpressionClickStat.new(105, 17)) }

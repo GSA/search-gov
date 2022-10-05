@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'sites/sites/show.html.haml' do
+describe 'sites/sites/show.html.haml', pending: 'SRCH-3404' do
   fixtures :affiliates, :users
   let(:site) { affiliates(:basic_affiliate) }
 
