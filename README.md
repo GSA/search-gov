@@ -161,18 +161,21 @@ We use [CircleCI](https://circleci.com/gh/GSA/usasearch) for continuous integrat
 We use [Rubocop](https://rubocop.org/) for static code analysis. Settings specific to search-gov are configured via [.rubocop.yml](.rubocop.yml). Settings that can be shared among all Search.gov repos should be configured via the [searchgov_style](https://github.com/GSA/searchgov_style) gem.
 
 # Running the app
-
-Fire up a server and try it all out:
-
-    $ rails server
-    
-Visit <http://localhost:3000>
-
-# Main areas of functionality
-
 ## Search
 
-To run test searches, you will need a working Bing API key. You can request one from Bing, or ask a friendly coworker. Add the key to `config/secrets.yml`
+To run test searches, you will need a working Bing API key. You can request one from Bing, or ask a friendly coworker.
+
+1. Add the Bing `web_subscription_id` to `config/secrets.yml`:
+```yaml
+  bing_v7:
+    web_subscription_id: *****
+```
+2. Start your local rails server:
+```
+rails server
+```
+3. A test search should return results:
+http://localhost:3000/search?affiliate=usagov&query=government
 
 ## Creating a new local admin account
 [Login.gov](https://login.gov) is used for authentication.
@@ -186,7 +189,7 @@ To create a new local admin account we will need to:
 [Create an account](https://idp.int.identitysandbox.gov/sign_up/enter_email) on Login's sandbox environment. This will need to be a valid email address that you can get emails at. You'll receive a validation email to set a password and secondary authentication method.
 
 #### 2. Get the Login sandbox private key
-Ask your team members for the current `config/logindotgov.pem` file. This private key will let your local app complete the handshake with the Login sandbox servers.
+Ask your team members for the current `config/logindotgov.pem` file. This private key will let your local app complete the handshake with the Login sandbox servers. After adding the PEM file, start or restart your local Rails server.
 
 #### 3. Add a new admin user to your local app
 Open the rails console, add a new user with the matching email.
@@ -251,7 +254,7 @@ Example:
 
 1. Run the resque-scheduler rake task:
 
-    `$ rake resque-scheduler`
+    `$ rake resque:scheduler`
 
 1. Check the 'Delayed' tab in [Resque web](http://localhost:3000/admin/resque/delayed) to see your job.
 
