@@ -1,5 +1,7 @@
 kk:
 
+# Search.gov localizations for: Kazakh (kk)
+
 # Default page title of search results page
   default_serp_title: '%{query} - %{site_name} Нәтижелерді көрсету'
 
@@ -60,7 +62,10 @@ kk:
     menu: мәзір
     browse_site: Сайттан іздеу
     related_sites: тақырыпты көру
-    results_count: '%{formatted_count} нәтижелері'
+    results_count: 
+      zero: '0 нәтиже'
+      one: '1 нәтиже'
+      other: '%{formatted_count} нәтижелері'
     search_results: Іздеу нәтижелері
 # Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
     commercial_results:
@@ -134,3 +139,6 @@ kk:
 # Text for page captcha challenge, which is shown if bot-like search patterns are detected
   are_you_human:
   captcha_requires_javascript:
+
+# Label for text best bet when it appears in suggestions via the type-ahead API
+  recommended_pages:
