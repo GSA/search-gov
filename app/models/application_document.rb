@@ -1,14 +1,20 @@
+# frozen_string_literal: true
+
 class ApplicationDocument < WebDocument
   def title
-    metadata['title'].presence ? [metadata['title']].flatten.max_by(&:length) : File.basename(url)
+    if metadata['dc:title'].presence
+      [metadata['dc:title']].flatten.max_by(&:length)
+    else
+      File.basename(url)
+    end
   end
 
   def description
-    metadata['subject']
+    metadata['pdf:docinfo:subject'] || parse_description
   end
 
   def keywords
-    metadata['Keywords']
+    metadata['pdf:docinfo:keywords'] || metadata['meta:keyword']
   end
 
   private
@@ -18,8 +24,9 @@ class ApplicationDocument < WebDocument
   end
 
   def parse_content
-    content = metadata['X-TIKA:content'] || ''
-    content.gsub!(/\n+/, "\n")
+    content = metadata['X-TIKA:content']
+    return '' unless content&.match?(/([a-zA-Z])|\d/)
+
     content.tr("\uFFFD", ' ')&.squish
   end
 
@@ -28,10 +35,19 @@ class ApplicationDocument < WebDocument
   end
 
   def extract_created
-    metadata['Creation-Date']
+    metadata['dcterms:created']
   end
 
   def extract_changed
-    metadata['Last-Modified']
+    metadata['dcterms:modified']
+  end
+
+  def parse_description
+    # We may be able to clean this up once Tika has updated their
+    # metadata parsing: https://issues.apache.org/jira/browse/TIKA-3629
+    return unless metadata['dc:subject'] && metadata['meta:keyword']
+
+    description = [metadata['dc:subject']].flatten - [metadata['meta:keyword']]
+    description.first
   end
 end
