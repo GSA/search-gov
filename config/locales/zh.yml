@@ -30,6 +30,7 @@ zh:
   custom_range: '限定范围'
   from: '从'
   to: '至'
+# It's safe to modify the order of these (e.g., '%m/%d/%Y'), but do not localize the Latin letters 'd', 'm', or 'Y'. Do not change the case of the letters.
   cdr_format: '%m/%d/%Y'
   before: '之前'
   clear: '清除'
@@ -61,7 +62,10 @@ zh:
     menu: 菜单
     browse_site: 浏览网站
     related_sites: 查阅专题
-    results_count: '%{formatted_count}'
+    results_count: 
+      zero: '0 个结果'
+      one: '1 个结果'
+      other: '%{formatted_count} 个结果'
     search_results: 搜索结果
 # Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
     commercial_results:
@@ -132,3 +136,6 @@ zh:
 # Text for page captcha challenge, which is shown if bot-like search patterns are detected
   are_you_human:
   captcha_requires_javascript:
+
+# Label for text best bet when it appears in suggestions via the type-ahead API
+  recommended_pages:
