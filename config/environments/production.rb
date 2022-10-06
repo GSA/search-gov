@@ -101,6 +101,13 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  config.middleware.use ExceptionNotification::Rack,
+  email: {
+    email_prefix: '[TEST] ',
+    sender_address: %{"notifier" <dariusz.dzien@gsa.gov>},
+    exception_recipients: %w{dariusz.dzien@gsa.gov}
+  }
+
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector
   # middleware. The `delay` is used to determine how long to wait after a write
