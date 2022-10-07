@@ -134,6 +134,7 @@ gem 'font-awesome-grunticon-rails',
 # Locking the version to 2.7.x until we remove or replace therubyracer
 gem 'execjs', '~> 2.7.0'
 gem 'exception_notification'
+gem 'dogapi'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators

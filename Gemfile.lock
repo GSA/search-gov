@@ -329,6 +329,8 @@ GEM
       thread_safe (~> 0.3, >= 0.3.1)
     diff-lcs (1.5.0)
     docile (1.4.0)
+    dogapi (1.45.0)
+      multi_json
     dogstatsd-ruby (3.2.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
@@ -832,6 +834,7 @@ DEPENDENCIES
   cucumber-rails (~> 2.4)
   curb (~> 1.0.1)
   database_cleaner (~> 2.0)
+  dogapi
   dogstatsd-ruby (~> 3.2.0)
   elasticsearch!
   elasticsearch-xpack (~> 7.4.0)

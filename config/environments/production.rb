@@ -101,11 +101,11 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  client = Dogapi::Client.new(Rails.application.secrets.datadog[:api_key], Rails.application.secrets.datadog[:application_key])
   config.middleware.use ExceptionNotification::Rack,
-  email: {
-    email_prefix: '[TEST] ',
-    sender_address: %{"notifier" <dariusz.dzien@gsa.gov>},
-    exception_recipients: %w{dariusz.dzien@gsa.gov}
+  datadog: {
+    client: client,
+    title_prefix: '[TESTING NOTIFICATIONS - PLEASE IGNORE]'
   }
 
   # Inserts middleware to perform automatic connection switching.
