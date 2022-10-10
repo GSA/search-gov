@@ -75,15 +75,6 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   config.ssl_options[:secure_cookies] = false
-
-  # client = Dogapi::Client.new(Rails.application.secrets.datadog[:api_key], Rails.application.secrets.datadog[:application_key])
-  client = Dogapi::Client.new('test', 'test')
-  config.middleware.use ExceptionNotification::Rack,
-  ignore_if: ->(env, exception) { p env["HTTP_HOST"]; exception.message =~ /^Couldn't find Page with ID=/ },
-  datadog: {
-    client: client,
-    title_prefix: '[TESTING NOTIFICATIONS - PLEASE IGNORE]'
-  }
 end
 
 ADDITIONAL_BING_PARAMS = { 'traffictype' => 'test' }

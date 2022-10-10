@@ -101,10 +101,11 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  # client = Dogapi::Client.new(Rails.application.secrets.datadog[:api_key], Rails.application.secrets.datadog[:application_key])
-  client = Dogapi::Client.new('test', 'test')
+  # Datadog API client used to send exception data to Datadog.
+  client = Dogapi::Client.new(Rails.application.secrets.datadog[:api_key], Rails.application.secrets.datadog[:application_key])
+
   config.middleware.use ExceptionNotification::Rack,
-  ignore_if: ->(env, exception) { p env["HTTP_HOST"]; exception.message =~ /^Couldn't find Page with ID=/ },
+  ignore_if: ->(env, exception) { env["HTTP_HOST"].include? "staging.search.usa.gov" },
   datadog: {
     client: client,
     title_prefix: '[TESTING NOTIFICATIONS - PLEASE IGNORE]'
