@@ -108,7 +108,6 @@ Rails.application.configure do
   ignore_if: ->(env, exception) { env["HTTP_HOST"].include? "staging.search.usa.gov" },
   datadog: {
     client: client,
-    title_prefix: '[TESTING NOTIFICATIONS - PLEASE IGNORE]'
   }
 
   # Inserts middleware to perform automatic connection switching.
