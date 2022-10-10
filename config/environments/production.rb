@@ -105,7 +105,6 @@ Rails.application.configure do
   client = Dogapi::Client.new(Rails.application.secrets.datadog[:api_key], Rails.application.secrets.datadog[:application_key])
 
   config.middleware.use ExceptionNotification::Rack,
-  ignore_if: -> (env, exception) { env["HTTP_HOST"].include? "staging.search.usa.gov" },
   datadog: {
     client: client,
   }
