@@ -145,6 +145,7 @@ describe SearchgovUrl do
             title: 'My OG Title',
             description: 'My OG Description',
             content: "This is my headline.\nThis is my content.",
+            content_type: 'video.movie',
             language: 'en',
             tags: 'this, that, the other, thing',
             created: '2015-07-02T10:12:32-04:00',
@@ -425,7 +426,7 @@ describe SearchgovUrl do
         it 'saves pdf metadata in searchgov_documents' do
           fetch
           parsed_body = JSON.parse searchgov_document.web_document.gsub('=>', ':')
-          expect(parsed_body['Creation-Date']).to eq('2018-06-09T17:42:11Z')
+          expect(parsed_body['dcterms:created']).to eq('2018-06-09T17:42:11Z')
         end
 
         context 'when a searchgov_document application document was parsed by the current version of tika' do
@@ -433,7 +434,7 @@ describe SearchgovUrl do
             SearchgovDocument.create!(
               web_document: 'An existing body',
               headers: { etag: '123' },
-              tika_version: 1.24,
+              tika_version: 2.4,
               searchgov_url_id: searchgov_url.id
             )
           end
@@ -506,7 +507,7 @@ describe SearchgovUrl do
         it 'saves .doc metadata in searchgov_documents' do
           fetch
           parsed_body = JSON.parse searchgov_document.web_document.gsub('=>', ':')
-          expect(parsed_body['Creation-Date']).to eq('2017-09-26T23:17:27Z')
+          expect(parsed_body['dcterms:created']).to eq('2017-09-26T23:17:27Z')
         end
       end
     end
@@ -549,7 +550,7 @@ describe SearchgovUrl do
         it 'saves .docx metadata in searchgov_documents' do
           fetch
           parsed_body = JSON.parse searchgov_document.web_document.gsub('=>', ':')
-          expect(parsed_body['Creation-Date']).to eq('2017-09-26T15:17:27Z')
+          expect(parsed_body['dcterms:created']).to eq('2017-09-26T15:17:27Z')
         end
       end
     end
@@ -592,7 +593,7 @@ describe SearchgovUrl do
         it 'saves .xlsx metadata in searchgov_documents' do
           fetch
           parsed_body = JSON.parse searchgov_document.web_document.gsub('=>', ':')
-          expect(parsed_body['Creation-Date']).to eq('2017-10-05T11:24:38Z')
+          expect(parsed_body['dcterms:created']).to eq('2017-10-05T11:24:38Z')
         end
       end
     end
@@ -635,7 +636,7 @@ describe SearchgovUrl do
         it 'saves .xls metadata in searchgov_documents' do
           fetch
           parsed_body = JSON.parse searchgov_document.web_document.gsub('=>', ':')
-          expect(parsed_body['Creation-Date']).to eq('2017-10-05T19:24:38Z')
+          expect(parsed_body['dcterms:created']).to eq('2017-10-05T19:24:38Z')
         end
       end
     end
