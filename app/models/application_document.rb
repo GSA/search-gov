@@ -17,6 +17,18 @@ class ApplicationDocument < WebDocument
     metadata['pdf:docinfo:keywords'] || metadata['meta:keyword']
   end
 
+  def audience
+    nil
+  end
+
+  def content_type
+    nil
+  end
+
+  def searchgov_custom(_number)
+    nil
+  end
+
   private
 
   def extract_metadata
