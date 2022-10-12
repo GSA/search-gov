@@ -203,6 +203,7 @@ jobs:
 
       - run:
           name: WIP
+          when: on_fail
           command: |
             pwd
             ls
