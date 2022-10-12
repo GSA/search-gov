@@ -51,6 +51,8 @@ end
 
 When /^(?:|I )press "([^"]*)"$/ do |button|
   click_button(button)
+  page.execute_script "window.scrollTo(0,0)"
+  screenshot_and_save_page
 end
 
 When /^(?:|I )follow "([^"]*)"$/ do |link|
@@ -64,6 +66,8 @@ end
 
 When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
   fill_in(field, :with => value)
+  page.execute_script "window.scrollTo(0,0)"
+  screenshot_and_save_page
 end
 
 When /^(?:|I )fill in "([^"]*)" for "([^"]*)"$/ do |value, field|
