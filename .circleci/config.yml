@@ -211,7 +211,6 @@ jobs:
           path: /tmp/capybara
       - store_artifacts:
           path: /tmp/capybara
-          destination: capybara
 
   report_coverage:
     parameters:
