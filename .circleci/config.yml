@@ -188,6 +188,7 @@ jobs:
             bundle exec rake tmp:create
 
             mkdir /tmp/test-results
+            mkdir /tmp/capybara
             ./cc-test-reporter before-build
 
             # Run cucumber tests
@@ -207,10 +208,10 @@ jobs:
 
       # collect reports
       - store_test_results:
-          path: /tmp/test-results
+          path: /tmp/capybara
       - store_artifacts:
-          path: /tmp/test-results
-          destination: test-results
+          path: /tmp/capybara
+          destination: capybara
 
   report_coverage:
     parameters:
