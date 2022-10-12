@@ -46,8 +46,8 @@ Feature:  Administration
   @javascript
   Scenario: Editing an affiliate as an admin
     Given the following Affiliates exist:
-      | display_name | name       | contact_email | first_name | last_name | website                |
-      | agency site  | agency.gov | one@foo.gov   | One        | Foo       | http://beta.agency.gov |
+      | display_name | name       | contact_email | first_name | last_name | website                | locale |
+      | agency site  | agency.gov | one@foo.gov   | One        | Foo       | http://beta.agency.gov | en     |
     When I go to the admin sites page
     When I follow "Edit" within the first scaffold row
     Then I should see "Settings (Show)"
