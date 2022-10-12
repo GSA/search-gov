@@ -201,6 +201,16 @@ jobs:
             ./cc-test-reporter format-coverage \
               --output coverage/codeclimate.cucumber.$CIRCLE_NODE_INDEX.<< parameters.ruby_version >>_<< parameters.elasticsearch_version >>.json
 
+      - run:
+          name: WIP
+          command: |
+            pwd
+            ls
+            cd tmp
+            ls
+            cd capybara
+            ls
+
       - persist_to_workspace:
           root: ~/search-gov/coverage
           paths:
