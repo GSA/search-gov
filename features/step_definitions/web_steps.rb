@@ -51,7 +51,7 @@ end
 
 When /^(?:|I )press "([^"]*)"$/ do |button|
   click_button(button)
-  find('.header').scroll_to(:top)
+  page.find('.header').scroll_to(:top)
   screenshot_and_save_page
 end
 
@@ -66,7 +66,7 @@ end
 
 When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
   fill_in(field, :with => value)
-  find('.header').scroll_to(:top)
+  page.find('.header').scroll_to(:top)
   screenshot_and_save_page
 end
 
