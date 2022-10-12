@@ -150,7 +150,7 @@ jobs:
 
       # collect reports
       - store_test_results:
-          path: /tmp/test-results
+          path: /tmp/capybara
       - store_artifacts:
           path: /tmp/capybara
           destination: test-results
