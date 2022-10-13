@@ -179,17 +179,22 @@ class SearchgovUrl < ApplicationRecord
 
   def i14y_params
     {
+      audience: document.audience,
+      changed: [lastmod, document.changed].compact.max&.iso8601,
+      content: document.parsed_content,
+      content_type: document.content_type,
+      created: document.created&.iso8601,
+      description: document.description,
       document_id: document_id,
       handle: 'searchgov',
-      path: url,
-      title: document.title,
-      content: document.parsed_content,
-      description: document.description,
       language: document.language,
+      mime_type: response.content_type.mime_type,
+      path: url,
+      searchgov_custom1: document.searchgov_custom(1),
+      searchgov_custom2: document.searchgov_custom(2),
+      searchgov_custom3: document.searchgov_custom(3),
       tags: document.keywords,
-      created: document.created&.iso8601,
-      changed: [lastmod, document.changed].compact.max&.iso8601,
-      mime_type: response.content_type.mime_type
+      title: document.title
     }
   end
 
