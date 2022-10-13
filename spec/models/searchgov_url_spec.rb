@@ -381,7 +381,7 @@ describe SearchgovUrl do
     end
 
     context 'when the searchgov domain has js renderer enabled' do
-      let(:js_searchgov_url) { SearchgovUrl.create!(url: 'https://www.medicare.gov/sign-up-change-plans') }
+      let(:js_searchgov_url) { described_class.create!(url: 'https://www.medicare.gov/sign-up-change-plans') }
       let(:domain_with_js_renderer) do
         instance_double(SearchgovDomain, check_status: '200 OK', js_renderer: true)
       end
@@ -397,7 +397,7 @@ describe SearchgovUrl do
     end
 
     context 'when the searchgov domain has js renderer disabled' do
-      let(:js_searchgov_url) { SearchgovUrl.create!(url: 'https://www.medicare.gov/sign-up-change-plans') }
+      let(:js_searchgov_url) { described_class.create!(url: 'https://www.medicare.gov/sign-up-change-plans') }
       let(:domain_without_js_renderer) do
         instance_double(SearchgovDomain, check_status: '200 OK', js_renderer: false)
       end
