@@ -107,6 +107,7 @@ Rails.application.configure do
   config.middleware.use ExceptionNotification::Rack,
   datadog: {
     client: client,
+    title_prefix: '[TESTING NOTIFICATIONS - PLEASE IGNORE] '
   }
 
   # Inserts middleware to perform automatic connection switching.
