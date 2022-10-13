@@ -207,11 +207,11 @@ class SearchgovUrl < ApplicationRecord
     if application_document?
       ApplicationDocument.new(document: download.open, url: url)
     else
-      update_document
+      parse_html_document
     end
   end
 
-  def update_document
+  def parse_html_document
     if searchgov_domain.js_renderer
       js_response = JsFetcher.fetch(url)
       HtmlDocument.new(document: js_response, url: url)

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'selenium-webdriver'
-# require 'webdrivers/chromedriver'
 
 module JsFetcher
   def self.fetch(url)

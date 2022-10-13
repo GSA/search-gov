@@ -50,6 +50,11 @@ describe SearchgovDomain do
         with_options(null: true)
     end
 
+    it do
+      is_expected.to have_db_column(:js_renderer).of_type(:boolean).
+        with_options(default: false)
+    end
+
     describe 'indices' do
       it { is_expected.to have_db_index(:domain).unique(true) }
       it { is_expected.to have_db_index(:status) }
