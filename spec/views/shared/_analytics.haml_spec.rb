@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'shared/_analytics.haml', pending: 'SRCH-3404' do
+describe 'shared/_analytics' do
   fixtures :affiliates
   let(:affiliate) { affiliates(:basic_affiliate) }
 
