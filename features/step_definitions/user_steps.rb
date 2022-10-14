@@ -1,7 +1,6 @@
 Given /^I (?:log in|am logged in) with email "([^"]*)"$/ do |email|
   mock_user_auth(email)
   visit '/auth/logindotgov/callback'
-  binding.pry
 end
 
 When /^I sign out$/ do
