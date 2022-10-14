@@ -34,6 +34,32 @@ describe Tweet do
     is_expected.to validate_uniqueness_of :tweet_id
   end
 
+  describe '.urls' do
+    subject(:urls) { tweet.urls }
+
+    context 'when the tweet includes URLs' do
+      let(:tweet) do
+        urls = [
+          Struct.new(:display_url, :expanded_url, :url).new(
+            "twitter.com/i/web/status/1…",
+            "https://twitter.com/i/web/status/123",
+            "https://t.co/abc")
+        ]
+
+        described_class.new(valid_attributes.merge(urls: urls))
+      end
+
+      it { is_expected.to be_an Array }
+
+      it 'provides accessors to the URLs' do
+        url = tweet.urls.first
+        expect(url.display_url).to eq('twitter.com/i/web/status/1…')
+        expect(url.expanded_url).to eq('https://twitter.com/i/web/status/123')
+        expect(url.url).to eq('https://t.co/abc')
+      end
+    end
+  end
+
   it 'sanitizes tweet text' do
     tweet = described_class.create!(tweet_text: "A <b>tweet</b> with \n http://t.co/h5vNlSdL and http://t.co/YQQSs9bb",
                           tweet_id: 123456,
