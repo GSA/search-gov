@@ -27,45 +27,47 @@ describe NewsItem do
     it { is_expected.to validate_uniqueness_of(:link).case_insensitive.scoped_to(:rss_feed_url_id) }
     it { is_expected.to validate_presence_of :rss_feed_url_id }
 
-    it 'should create a new instance given valid attributes' do
+    it 'creates a new instance given valid attributes' do
       described_class.create!(valid_attributes)
     end
 
-    it 'should allow blank description for YouTube video' do
+    it 'allows blank description for YouTube video' do
       described_class.create!(valid_attributes.merge(link: 'HTTPs://www.youtube.com/watch?v=q3GjT4zvUkk',
-                                               description: nil))
+                                                     description: nil))
     end
 
     it 'allows blank description when body is present' do
       described_class.create!(valid_attributes.merge(body: 'content body',
-                                               description: '   '))
+                                                     description: '   '))
     end
 
-    it 'should scrub out extra whitespace, tabs, newlines from fields' do
+    it 'scrubs out extra whitespace, tabs, newlines from fields' do
       news_item = described_class.create!(
         valid_attributes.merge(title: " \nDOD \tMarks Growth\r in Spouses’ \u00a0 Employment Program \n     ",
-                                description: " \nSome     description \n     ",
-                                link: "\t\t\t\n http://www.foo.gov/1.html\t\n",
-                                guid: "\t\t\t\nhttp://www.foo.gov/1.html \t\n"
-        ))
+                               description: " \nSome     description \n     ",
+                               link: "\t\t\t\n http://www.foo.gov/1.html\t\n",
+                               guid: "\t\t\t\nhttp://www.foo.gov/1.html \t\n")
+      )
       expect(news_item.title).to eq('DOD Marks Growth in Spouses’ Employment Program')
       expect(news_item.description).to eq('Some description')
       expect(news_item.link).to eq('http://www.foo.gov/1.html')
       expect(news_item.guid).to eq('http://www.foo.gov/1.html')
     end
 
-    it 'should set tags to image if media_thumbnail_url and media_content_url are present' do
+    it 'sets tags to image if media_thumbnail_url and media_content_url are present' do
       properties = {
         media_thumbnail: {
-          url: 'http://farm9.staticflickr.com/8381/8594929349_f6d8163c36_s.jpg', height: '75', width: '75' },
+          url: 'http://farm9.staticflickr.com/8381/8594929349_f6d8163c36_s.jpg', height: '75', width: '75'
+        },
         media_content: {
-          url: 'http://farm9.staticflickr.com/8381/8594929349_f6d8163c36_b.jpg', type: 'image/jpeg', height: '819', width: '1024' }
+          url: 'http://farm9.staticflickr.com/8381/8594929349_f6d8163c36_b.jpg', type: 'image/jpeg', height: '819', width: '1024'
+        }
       }
-      news_item = described_class.create!(valid_attributes.merge properties: properties)
-      expect(described_class.find(news_item.id).tags).to eq(%w(image))
+      news_item = described_class.create!(valid_attributes.merge(properties: properties))
+      expect(described_class.find(news_item.id).tags).to eq(%w[image])
     end
 
-    it 'should validate link URL is a well-formed absolute URL' do
+    it 'validates link URL is a well-formed absolute URL' do
       news_item = described_class.new(valid_attributes.merge(link: '/relative/url'))
       expect(news_item.valid?).to be false
     end
@@ -79,10 +81,9 @@ describe NewsItem do
   end
 
   describe '#language' do
-
     context 'when RSS feed URL does not have language specified' do
       context 'when owner is an Affiliate' do
-        it 'should use locale of first affiliate associated with feed URL' do
+        it 'uses locale of first affiliate associated with feed URL' do
           expect(news_item.language).to eq('en')
         end
       end
@@ -92,7 +93,7 @@ describe NewsItem do
           news_item.update_attribute(:rss_feed_url_id, rss_feed_urls(:whitehouse_youtube_url).id)
         end
 
-        it 'should use locale of first affiliate associated with feed URL youtube profile' do
+        it 'uses locale of first affiliate associated with feed URL youtube profile' do
           expect(news_item.language).to eq('en')
         end
       end
@@ -103,7 +104,7 @@ describe NewsItem do
         news_item.rss_feed_url.language = 'es'
       end
 
-      it 'should use it' do
+      it 'uses it' do
         expect(news_item.language).to eq('es')
       end
     end
@@ -113,7 +114,7 @@ describe NewsItem do
         news_item.rss_feed_url.rss_feeds.delete_all
       end
 
-      it 'should default to English' do
+      it 'defaults to English' do
         expect(news_item.language).to eq('en')
       end
     end
