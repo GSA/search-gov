@@ -15,8 +15,11 @@ class NewsItem < ApplicationRecord
   end
 
   before_validation :downcase_scheme
-  validates_presence_of :title, :link, :published_at, :guid, :rss_feed_url_id
-  validates_presence_of :description, unless: :description_not_required?
+  # temporary code to keep properties/safe_properties in sync until
+  # we've migrated the data and swapped columns: https://cm-jira.usa.gov/browse/SRCH-3465
+  before_save { self.safe_properties = properties.presence }
+  validates :title, :link, :published_at, :guid, :rss_feed_url_id, presence: true
+  validates :description, presence: { unless: :description_not_required? }
   validates_url :link
   validates :guid, uniqueness: {
     scope: :rss_feed_url_id,

@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 describe Watcher do
+  describe 'schema' do
+    it { is_expected.to have_db_column(:safe_conditions).of_type(:json) }
+  end
+
   let(:watcher) { described_class.new }
 
   before do

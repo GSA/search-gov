@@ -2,6 +2,9 @@
 
 class Tweet < ApplicationRecord
   before_save :sanitize_tweet_text
+  # temporary code to keep urls/safe_urls in sync until
+  # we've migrated the data and swapped columns: https://cm-jira.usa.gov/browse/SRCH-3465
+  before_save { self.safe_urls = urls.presence }
   belongs_to :twitter_profile, primary_key: :twitter_id
   validates :tweet_id, :tweet_text, :published_at, :twitter_profile_id, presence: true
   validates :tweet_id, uniqueness: true
