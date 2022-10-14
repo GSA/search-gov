@@ -150,6 +150,7 @@ class Admin::AffiliatesController < Admin::AdminController
     config.columns[:header_tagline_font_style].form_ui = :select
     config.columns[:header_tagline_font_style].options = { options: %w[italic normal] }
 
+    binding.pry
     config.columns[:locale].form_ui = :select
     config.columns[:locale].options = { options: Language.order(:name).pluck(:code) }
 

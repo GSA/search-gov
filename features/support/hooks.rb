@@ -14,6 +14,7 @@ end
 
 Before do |scenario|
   ActiveRecord::FixtureSet.reset_cache
+  binding.pry
   ActiveRecord::FixtureSet.create_fixtures('spec/fixtures', %w(users federal_register_agencies agencies affiliates twitter_profiles memberships rss_feeds rss_feed_urls hints languages))
 end
 

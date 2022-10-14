@@ -17,7 +17,7 @@ require 'capybara-screenshot/cucumber'
 # prefer to use XPath just remove this line and adjust any selectors in your
 # steps to use the XPath syntax.
 Capybara.default_max_wait_time = 10
-Capybara::Screenshot.autosave_on_failure = true
+Capybara::Screenshot.autosave_on_failure = false
 
 Capybara.register_driver :selenium_chrome_headless do |app|
   options = Selenium::WebDriver::Chrome::Options.new

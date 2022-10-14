@@ -56,7 +56,6 @@ Feature:  Administration
     And I should see "Analytics-Tracking Code (Show)"
     When I follow "Show" within the first subsection row
     And I fill in "Display name" with "New Name"
-    And I select "en" from "Locale"
     And I press "Update"
     Then I should see "New Name"
 
