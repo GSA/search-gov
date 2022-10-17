@@ -133,6 +133,10 @@ gem 'font-awesome-grunticon-rails',
 # https://github.com/rails/execjs/releases/tag/v2.8.0
 # Locking the version to 2.7.x until we remove or replace therubyracer
 gem 'execjs', '~> 2.7.0'
+# Temporary fix to remove warnings seen in Rails 7:
+# https://github.com/ruby/net-protocol/issues/10
+# This gem can be removed once we upgrade to Ruby 3.1,
+gem 'net-http'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators

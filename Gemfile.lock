@@ -502,6 +502,8 @@ GEM
       ruby2_keywords (~> 0.0.1)
     mysql2 (0.5.4)
     naught (1.1.0)
+    net-http (0.2.2)
+      uri
     net-http-persistent (2.9.4)
     newrelic_rpm (6.15.0)
     nio4r (2.5.8)
@@ -778,6 +780,7 @@ GEM
       unf_ext
     unf_ext (0.0.8.2)
     unicode-display_width (2.3.0)
+    uri (0.11.0)
     validate_url (0.2.0)
       activemodel (>= 3.0.0)
     vcr (6.1.0)
@@ -872,6 +875,7 @@ DEPENDENCIES
   loofah (~> 2.13.0)
   medusa!
   mysql2 (~> 0.5.0)
+  net-http
   net-http-persistent (~> 2.9.3)
   newrelic_rpm (~> 6.15.0)
   nokogiri (~> 1.13.4)
