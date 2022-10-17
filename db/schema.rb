@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_09_182927) do
+ActiveRecord::Schema.define(version: 2022_08_16_160655) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -107,12 +107,6 @@ ActiveRecord::Schema.define(version: 2022_08_09_182927) do
     t.string "bing_v5_key", limit: 32
     t.boolean "active", default: true, null: false
     t.index ["name"], name: "index_affiliates_on_name", unique: true
-  end
-
-  create_table "affiliates_instagram_profiles", id: false, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.integer "affiliate_id", null: false
-    t.bigint "instagram_profile_id", null: false
-    t.index ["affiliate_id", "instagram_profile_id"], name: "index_affiliates_instagram_profiles", unique: true
   end
 
   create_table "affiliates_youtube_profiles", id: false, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
@@ -370,12 +364,6 @@ ActiveRecord::Schema.define(version: 2022_08_09_182927) do
     t.index ["affiliate_id", "url"], name: "by_aid_url", length: { url: 50 }
   end
 
-  create_table "instagram_profiles", id: :bigint, default: nil, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.string "username", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "languages", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "code", null: false
@@ -564,6 +552,16 @@ ActiveRecord::Schema.define(version: 2022_08_09_182927) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["tag"], name: "index_search_modules_on_tag", unique: true
+  end
+
+  create_table "searchgov_documents", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+    t.text "web_document", size: :long, null: false
+    t.json "headers", null: false
+    t.decimal "tika_version", precision: 10, scale: 4
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "searchgov_url_id"
+    t.index ["searchgov_url_id"], name: "index_searchgov_documents_on_searchgov_url_id"
   end
 
   create_table "searchgov_domains", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
@@ -783,5 +781,6 @@ ActiveRecord::Schema.define(version: 2022_08_09_182927) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "searchgov_documents", "searchgov_urls"
   add_foreign_key "searchgov_urls", "searchgov_domains"
 end

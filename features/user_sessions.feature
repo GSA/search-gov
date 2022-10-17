@@ -46,3 +46,21 @@ Feature: User sessions
     When I sign out
     And I go to the usagov's Dashboard page
     Then I should see "Security Notification"
+  
+  @javascript
+  Scenario: User sees the header with USWDS banner
+    When I go to the login page
+    Then I should see "An official website of the United States government"
+    And I should not see "Official websites use .gov"
+    When I press "Here’s how you know"
+    Then I should see "Official websites use .gov"
+  
+  Scenario: User sees the Search.gov footer site links
+    When I go to the login page
+    Then I should see "Our Service"
+    And I should see a link to "https://search.gov/about/" with text "About Us"
+
+  Scenario: User sees the GSA footer links
+    When I go to the login page
+    And I should see "An official website of the GSA's"
+    And I should see a link to "https://gsa.gov/tts" with text "Technology Transformation Services"

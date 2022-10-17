@@ -40,6 +40,8 @@ class SearchgovUrl < ApplicationRecord
                   column_names: { ['searchgov_urls.last_crawled_at IS NULL'] => 'unfetched_urls_count' },
                   execute_after_commit: true
 
+  has_one :searchgov_document, dependent: :destroy
+
   scope :fetch_required, -> do
     where('last_crawled_at IS NULL
            OR lastmod > last_crawled_at
@@ -64,6 +66,9 @@ class SearchgovUrl < ApplicationRecord
 
         @document = parse_document
         validate_document
+        # SRCH-3134 Temporarily adding save/no save logic until we have documented how this functionality
+        # behaves in production setting.
+        save_document if ENV['SAVE_SEARCHGOV_DOCUMENT'] == 'true'
         index_document
 
         self.last_crawl_status = OK_STATUS
@@ -135,6 +140,21 @@ class SearchgovUrl < ApplicationRecord
     raise SearchgovUrlError.new('Noindex per HTML metadata') if document.noindex?
   end
 
+  def save_document
+    doc = searchgov_document || build_searchgov_document
+
+    return if skip_save?(doc)
+
+    if application_document?
+      doc.update(web_document: @document.metadata,
+                 headers: response.headers.to_hash.transform_keys(&:downcase),
+                 tika_version: Tika.tika_version)
+    else
+      doc.update(web_document: @document.document,
+                 headers: response.headers.to_hash.transform_keys(&:downcase))
+    end
+  end
+
   def validate_size
     size = response.headers['Content-Length']
     if size.present? && size.to_i > MAX_DOC_SIZE
@@ -159,16 +179,22 @@ class SearchgovUrl < ApplicationRecord
 
   def i14y_params
     {
+      audience: document.audience,
+      changed: [lastmod, document.changed].compact.max&.iso8601,
+      content: document.parsed_content,
+      content_type: document.content_type,
+      created: document.created&.iso8601,
+      description: document.description,
       document_id: document_id,
       handle: 'searchgov',
-      path: url,
-      title: document.title,
-      content: document.parsed_content,
-      description: document.description,
       language: document.language,
+      mime_type: response.content_type.mime_type,
+      path: url,
+      searchgov_custom1: document.searchgov_custom(1),
+      searchgov_custom2: document.searchgov_custom(2),
+      searchgov_custom3: document.searchgov_custom(3),
       tags: document.keywords,
-      created: document.created&.iso8601,
-      changed: [lastmod, document.changed].compact.max&.iso8601
+      title: document.title
     }
   end
 
@@ -178,11 +204,26 @@ class SearchgovUrl < ApplicationRecord
 
   def parse_document
     Rails.logger.info "[SearchgovUrl] Parsing document for #{url}"
-    if /^application|text\/plain/ === response.content_type.mime_type
+    if application_document?
       ApplicationDocument.new(document: download.open, url: url)
     else
       HtmlDocument.new(document: response.to_s, url: url)
     end
+  end
+
+  def skip_save?(doc)
+    if application_document?
+      # If an application document, skip if that document's entity tag is unchanged and if
+      # the document was parsed with our current Tika version
+      (doc&.etag == response.headers[:etag]) && (doc&.tika_version == Tika.tika_version)
+    else
+      # If not an application document, skip if that document's entity tag is unchanged
+      doc&.etag == response.headers[:etag]
+    end
+  end
+
+  def application_document?
+    %r{^application|text/plain}.match?(response.content_type.mime_type)
   end
 
   def redirected_outside_domain?(new_url)

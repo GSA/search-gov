@@ -1,6 +1,6 @@
 kl:
 
-# Search.gov localizations for: Kalaallisut (kl)
+# Search.gov localizations for: Greenlandic (kl)
 
 # Default page title of search results page
   default_serp_title: '%{query} - %{site_name} Ujarlernerup inerneri'
@@ -62,7 +62,10 @@ kl:
     menu: Qinigassiivik
     browse_site: Quppernerit misissukkit
     related_sites: Pineqartoq takuuk
-    results_count: '%{count}'
+    results_count: 
+      zero: '0'
+      one: '1'
+      other: '%{formatted_count}'
     search_results: Ujakkat inerneri
 # Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
     commercial_results:
@@ -135,3 +138,6 @@ kl:
 # Text for page captcha challenge, which is shown if bot-like search patterns are detected
   are_you_human:
   captcha_requires_javascript:
+
+# Label for text best bet when it appears in suggestions via the type-ahead API
+  recommended_pages:

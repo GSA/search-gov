@@ -1,5 +1,7 @@
 ﻿lo:
 
+# Search.gov localizations for: Lao (lo)
+
 # Default page title of search results page
   default_serp_title: '%{query} - %{site_name} ຜົນການຄົ້ນຫາ'
 
@@ -60,7 +62,10 @@
     menu: ລາຍການ
     browse_site: ໝວດເວັບໄຊ
     related_sites: ຫົວຂໍ້ທີ່ກ່ຽວຂ້ອງ
-    results_count: '%{count} ຜົນການຄົ້ນຫາ'
+    results_count: 
+      zero: '0 ຜົນການຄົ້ນຫາ'
+      one: '1 ຜົນການຄົ້ນຫາ'
+      other: '%{formatted_count} ຜົນການຄົ້ນຫາ'
     search_results: ຜົນການຄົ້ນຫາ
 # Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
     commercial_results:
@@ -134,3 +139,6 @@
 # Text for page captcha challenge, which is shown if bot-like search patterns are detected
   are_you_human:
   captcha_requires_javascript:
+
+# Label for text best bet when it appears in suggestions via the type-ahead API
+  recommended_pages:

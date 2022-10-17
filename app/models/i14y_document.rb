@@ -11,10 +11,26 @@ class I14yDocument
 
   delegate :i14y_connection, to: :i14y_drawer
 
-  attr_accessor :document_id, :title, :path, :created, :description, :content,
-                :changed, :promote, :language, :tags, :handle, :click_count
+  attr_accessor :audience,
+                :changed,
+                :click_count,
+                :content,
+                :content_type,
+                :created,
+                :description,
+                :document_id,
+                :handle,
+                :language,
+                :mime_type,
+                :path,
+                :promote,
+                :searchgov_custom1,
+                :searchgov_custom2,
+                :searchgov_custom3,
+                :tags,
+                :title
 
-  validates_presence_of :document_id, :path, :handle, :title
+  validates :document_id, :path, :handle, :title, presence: true
 
   def initialize(attributes = {})
     attributes.each do |name, value|
@@ -29,10 +45,10 @@ class I14yDocument
   end
 
   def save
-    run_callbacks :save do
+    run_callbacks(:save) do
       params = attributes.reject { |_k, v| v.blank? }
-      response = i14y_connection.post self.class.api_endpoint, params
-      raise I14yDocumentError.new(response.body.developer_message) unless response.status == 201
+      response = i14y_connection.post(self.class.api_endpoint, params)
+      raise I14yDocumentError, response.body.developer_message unless response.status == 201
 
       true
     end
@@ -44,15 +60,30 @@ class I14yDocument
   end
 
   def i14y_drawer
-    @i14y_drawer ||= I14yDrawer.find_by_handle(handle)
+    @i14y_drawer ||= I14yDrawer.find_by(handle: handle)
   end
-  alias_method :drawer, :i14y_drawer
+  alias drawer i14y_drawer
 
   def attributes
     attributes = {}
-    %i[document_id title path created description content
-       changed promote language tags click_count].each do |attribute|
-        attributes[attribute] = send(attribute)
+    %i[audience
+       changed
+       click_count
+       content
+       content_type
+       created
+       description
+       document_id
+       language
+       mime_type
+       path
+       promote
+       searchgov_custom1
+       searchgov_custom2
+       searchgov_custom3
+       tags
+       title].each do |attribute|
+      attributes[attribute] = send(attribute)
     end
     attributes
   end
@@ -63,8 +94,8 @@ class I14yDocument
 
   def update
     params = attributes.except(:document_id).reject { |_k, v| v.blank? }
-    response = i14y_connection.put "#{self.class.api_endpoint}/#{document_id}", params
-    raise I14yDocumentError.new(response.body.developer_message) unless response.status == 200
+    response = i14y_connection.put("#{self.class.api_endpoint}/#{document_id}", params)
+    raise I14yDocumentError, response.body.developer_message unless response.status == 200
 
     true
   end
@@ -75,8 +106,8 @@ class I14yDocument
   end
 
   def delete
-    response = i14y_connection.delete "#{self.class.api_endpoint}/#{document_id}"
-    raise I14yDocumentError.new(response.body.developer_message) unless response.status == 200
+    response = i14y_connection.delete("#{self.class.api_endpoint}/#{document_id}")
+    raise I14yDocumentError, response.body.developer_message unless response.status == 200
 
     true
   end

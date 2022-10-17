@@ -49,6 +49,9 @@ module Usasearch
     config.autoload_paths += Dir[config.root.join('lib', 'parsers').to_s]
     config.autoload_paths += Dir[config.root.join('lib', 'renderers').to_s]
 
+    # Our legacy, Resque-based jobs that should be refactored to inherit from ActiveJob
+    config.autoload_paths += Dir[config.root.join('app', 'jobs', 'legacy').to_s]
+
     config.autoload_paths += Dir[config.root.join('app', 'models', 'custom_index_queries').to_s]
     config.autoload_paths += Dir[config.root.join('app', 'models', 'elastic_data').to_s]
     config.autoload_paths += Dir[config.root.join('app', 'models', 'logstash_queries').to_s]

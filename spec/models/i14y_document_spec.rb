@@ -1,24 +1,29 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe I14yDocument do
-  fixtures :i14y_drawers
-
   let(:drawer) { i14y_drawers(:searchgov) }
   let(:url) { "http://www.foo.gov/#{Time.now.to_i}/bar.html" }
   let(:valid_attributes) do
     { document_id: 'abc123',
       title: 'My document title',
       path: url,
-      created: Time.now.to_s,
+      audience: 'Everyone',
+      content_type: 'article',
+      created: Time.zone.now.to_s,
       description: 'My fascinating document',
       handle: 'searchgov',
-      click_count: 1000
-    }
+      click_count: 1000,
+      mime_type: 'text/html',
+      searchgov_custom1: 'some, custom, content',
+      searchgov_custom3: 'more custom content' }
   end
   let(:document) { described_class.new(valid_attributes) }
   let(:i14y_connection) { double(Faraday::Connection) }
+
   before do
-    stub_request(:post, %r(api/v1/documents)).
+    stub_request(:post, %r{api/v1/documents}).
       to_return({ status: 201, body: { user_message: 'success', status: 200 }.to_json })
   end
 
@@ -31,7 +36,18 @@ describe I14yDocument do
 
   describe '#attributes' do
     it 'returns a hash of the attributes' do
-      expect(document.attributes).to include({ document_id: 'abc123' })
+      expect(document.attributes).to include({ document_id: 'abc123',
+                                               title: 'My document title',
+                                               path: url,
+                                               audience: 'Everyone',
+                                               click_count: 1000,
+                                               content_type: 'article',
+                                               created: Time.zone.now.to_s,
+                                               description: 'My fascinating document',
+                                               mime_type: 'text/html',
+                                               searchgov_custom1: 'some, custom, content',
+                                               searchgov_custom2: nil,
+                                               searchgov_custom3: 'more custom content' })
     end
   end
 
@@ -59,15 +75,15 @@ describe I14yDocument do
       end
 
       it 'raises an error' do
-        expect{ document.save }.to raise_error
+        expect { document.save }.to raise_error
       end
     end
   end
 
   describe '.create' do
     it 'returns the document' do
-      expect(described_class.create(valid_attributes))
-        .to be_an_instance_of(described_class)
+      expect(described_class.create(valid_attributes)).
+        to be_an_instance_of(described_class)
     end
   end
 
@@ -75,6 +91,7 @@ describe I14yDocument do
     let(:update) do
       { document_id: 'update_me', title: 'My New Title', handle: 'searchgov' }
     end
+
     before do
       allow_any_instance_of(described_class).to receive(:i14y_connection).and_return(i14y_connection)
     end
@@ -94,7 +111,7 @@ describe I14yDocument do
       end
 
       it 'raises an error' do
-        expect{ described_class.update(document_id: 'nonexistent', title: 'fail') }.
+        expect { described_class.update(document_id: 'nonexistent', title: 'fail') }.
           to raise_error(I14yDocument::I14yDocumentError)
       end
     end
@@ -106,7 +123,7 @@ describe I14yDocument do
     let(:drawer) { mock_model(I14yDrawer) }
 
     before do
-      allow(I14yDrawer).to receive(:find_by_handle).with('my_drawer').and_return(drawer)
+      allow(I14yDrawer).to receive(:find_by).with(handle: 'my_drawer').and_return(drawer)
       allow(drawer).to receive(:i14y_connection).and_return(i14y_connection)
     end
 
@@ -124,7 +141,7 @@ describe I14yDocument do
       end
 
       it 'raises an error' do
-        expect{ delete }.to raise_error(I14yDocument::I14yDocumentError)
+        expect { delete }.to raise_error(I14yDocument::I14yDocumentError)
       end
     end
   end
