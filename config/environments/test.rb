@@ -11,9 +11,12 @@ Rails.application.configure do
   # Turn false under Spring and add config.action_view.cache_template_loading = true.
   config.cache_classes = true
 
-  # Do not eager load code on boot. This avoids loading your whole application
-  # just for the purpose of running a single test. If you are using a tool that
-  # preloads Rails for running tests, you may have to set it to true.
+  # Eager loading loads your whole application. When running a single test locally,
+  # this probably isn't necessary. It's a good idea to do in a continuous integration
+  # system, or in some way before deploying your code.
+  #
+  # We're disabling it in all test environments to ensure the database includes
+  # the necessary fixture data before the application code is loaded.
   config.eager_load = false
 
   # Configure public file server for tests with Cache-Control for performance.
