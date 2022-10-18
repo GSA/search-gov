@@ -1,4 +1,4 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe NoResultsWatcher do
   let(:affiliate) { affiliates(:basic_affiliate) }
@@ -22,6 +22,12 @@ describe NoResultsWatcher do
   subject(:watcher) { described_class.new(watcher_args) }
 
   it { is_expected.to validate_numericality_of(:distinct_user_total).only_integer }
+
+  describe '.conditions' do
+    subject(:conditions) { watcher.conditions }
+
+    it { is_expected.to eq({ distinct_user_total: 34 }) }
+  end
 
   describe 'humanized_alert_threshold' do
     subject(:watcher) { described_class.new(distinct_user_total: 34) }
