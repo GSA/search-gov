@@ -1,7 +1,11 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe TwitterList do
-  fixtures :affiliates, :twitter_profiles
+  let(:twitter_profile1) { twitter_profiles(:usagov) }
+  let(:twitter_profile2) { twitter_profiles(:usasearch) }
+  let(:twitter_list) do
+    twitter_profile1.twitter_lists.create(member_ids: [twitter_profile2.twitter_id])
+  end
 
   it { is_expected.to validate_numericality_of(:id).only_integer }
   it 'should not allow id = 0' do
@@ -9,18 +13,24 @@ describe TwitterList do
   end
   it { is_expected.to have_and_belong_to_many :twitter_profiles }
 
+  describe '.member_ids' do
+    subject(:member_ids) { twitter_list.member_ids }
+
+    it 'returns an array of Twitter profile twitter_ids' do
+      expect(member_ids).to eq [260266634]
+    end
+  end
+
   describe '.active' do
-    let(:tp1) { twitter_profiles(:usagov) }
-    let(:tp2) { twitter_profiles(:usasearch) }
     let(:a1) { affiliates(:usagov_affiliate) }
     let(:a2) { affiliates(:basic_affiliate) }
     let(:tl1) { described_class.create(id: 1) }
     let(:tl2) { described_class.create(id: 2) }
     before do
-      tp1.twitter_lists << tl1; tp1.save!
-      tp2.twitter_lists << tl2; tp2.save!
-      AffiliateTwitterSetting.create(affiliate: a1, twitter_profile: tp1, show_lists: 1)
-      AffiliateTwitterSetting.create(affiliate: a2, twitter_profile: tp2, show_lists: 0)
+      twitter_profile1.twitter_lists << tl1; twitter_profile1.save!
+      twitter_profile2.twitter_lists << tl2; twitter_profile2.save!
+      AffiliateTwitterSetting.create(affiliate: a1, twitter_profile: twitter_profile1, show_lists: 1)
+      AffiliateTwitterSetting.create(affiliate: a2, twitter_profile: twitter_profile2, show_lists: 0)
     end
 
     it 'returns only the lists belonging to affiliates whose twitter settings indicate that lists should be shown' do

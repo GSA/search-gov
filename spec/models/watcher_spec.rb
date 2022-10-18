@@ -1,6 +1,8 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe Watcher do
+  let(:watcher) { described_class.new }
+
   before do
     allow_any_instance_of(WatcherObserver).to receive(:after_save)
     allow_any_instance_of(WatcherObserver).to receive(:after_destroy)
@@ -18,4 +20,9 @@ describe Watcher do
     it { is_expected.not_to allow_value(value).for(:time_window) }
   end
 
+  describe '.conditions' do
+    subject(:conditions) { watcher.conditions }
+
+    it { is_expected.to be_a Hash }
+  end
 end
