@@ -44,8 +44,6 @@ Feature:  Administration
     Then I should see "Agency Website"
 
   @javascript
-  # Temporarily disabling until this scenario passes on Rails 7: SRCH-3409
-  @wip
   Scenario: Editing an affiliate as an admin
     Given the following Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | website                |
