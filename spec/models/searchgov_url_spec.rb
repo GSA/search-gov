@@ -382,33 +382,36 @@ describe SearchgovUrl do
     end
 
     context 'when the searchgov domain has js renderer enabled' do
-      let(:js_searchgov_url) { described_class.create!(url: 'https://www.medicare.gov/sign-up-change-plans') }
-      let(:domain_with_js_renderer) do
-        instance_double(SearchgovDomain, check_status: '200 OK', js_renderer: true)
+      before do
+        allow(searchgov_url).to receive(:searchgov_domain).and_return(domain_with_js_renderer)
+        allow(JsFetcher).to receive(:fetch)
       end
 
-      it 'fetches page with javascript response' do
-        allow(js_searchgov_url).to receive(:searchgov_domain).and_return(domain_with_js_renderer)
-        allow(js_searchgov_url).to receive(:application_document?).and_return(false)
+      let(:url) { 'https://www.medicare.gov/sign-up-change-plans' }
+      let(:domain_with_js_renderer) do
+        instance_double(SearchgovDomain, check_status: '200 OK', available?: true, js_renderer: true)
+      end
 
-        js_response = js_searchgov_url.send(:parse_document)
-        expect(js_response.document).not_to be_nil
-        expect(js_response.document).to start_with('<head>')
+      it 'fetches page with javascript fetcher' do
+        fetch
+        expect(JsFetcher).to have_received(:fetch).with(url)
       end
     end
 
     context 'when the searchgov domain has js renderer disabled' do
-      let(:js_searchgov_url) { described_class.create!(url: 'https://www.medicare.gov/sign-up-change-plans') }
-      let(:domain_without_js_renderer) do
-        instance_double(SearchgovDomain, check_status: '200 OK', js_renderer: false)
+      before do
+        allow(searchgov_url).to receive(:searchgov_domain).and_return(domain_without_js_renderer)
+        allow(JsFetcher).to receive(:fetch)
       end
 
-      it 'fetches page without javascript response' do
-        allow(js_searchgov_url).to receive(:searchgov_domain).and_return(domain_without_js_renderer)
-        allow(js_searchgov_url).to receive(:application_document?).and_return(false)
+      let(:url) { 'https://www.medicare.gov/sign-up-change-plans' }
+      let(:domain_without_js_renderer) do
+        instance_double(SearchgovDomain, check_status: '200 OK', available?: true, js_renderer: false)
+      end
 
-        response = js_searchgov_url.send(:parse_document)
-        expect(response.document).not_to be_nil
+      it 'fetches page without javascript fetcher' do
+        fetch
+        expect(JsFetcher).not_to have_received(:fetch).with(url)
       end
     end
 

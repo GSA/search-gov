@@ -104,6 +104,7 @@ gem 'retriable', '~> 3.1'
 gem 'cld3', '~> 3.4.3'
 gem 'activejob-uniqueness', '~> 0.2.1'
 gem 'selenium-webdriver'
+gem 'webdrivers', '~> 5.0'
 
 # Assets-related gems
 gem 'coffee-rails', '~> 5.0.0'
@@ -134,7 +135,6 @@ gem 'font-awesome-grunticon-rails',
 # https://github.com/rails/execjs/releases/tag/v2.8.0
 # Locking the version to 2.7.x until we remove or replace therubyracer
 gem 'execjs', '~> 2.7.0'
-gem 'webdrivers', '~> 5.0'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
