@@ -135,6 +135,10 @@ gem 'font-awesome-grunticon-rails',
 gem 'execjs', '~> 2.7.0'
 gem 'exception_notification'
 gem 'dogapi'
+# Temporary fix to remove warnings seen in Rails 7:
+# https://github.com/ruby/net-protocol/issues/10
+# This gem can be removed once we upgrade to Ruby 3.1.
+gem 'net-http'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
