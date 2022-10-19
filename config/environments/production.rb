@@ -102,13 +102,13 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Datadog API client used to send exception data to Datadog.
-  client = Dogapi::Client.new(Rails.application.secrets.datadog[:api_key], Rails.application.secrets.datadog[:application_key])
-
-  config.middleware.use ExceptionNotification::Rack,
-  datadog: {
-    client: client,
-    title_prefix: '[TESTING NOTIFICATIONS - PLEASE IGNORE] '
-  }
+  if !!Rails.application.secrets.datadog[:api_enabled]
+    client = Dogapi::Client.new(Rails.application.secrets.datadog[:api_key], Rails.application.secrets.datadog[:application_key])
+    config.middleware.use ExceptionNotification::Rack,
+    datadog: {
+      client: client
+    }
+  end
 
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector
