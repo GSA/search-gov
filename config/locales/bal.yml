@@ -61,7 +61,10 @@ bal:
     menu: سائٹ آر پھولت
     browse_site: موضوع چارت
     related_sites: نتیجہ پھولت
-    results_count: '%{formatted_count}'
+    results_count: 
+      zero: '0'
+      one: '1'
+      other: '%{formatted_count}'
     search_results: دگا نتیجہ چارت
 # Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
     commercial_results:
@@ -133,3 +136,6 @@ bal:
 # Text for page captcha challenge, which is shown if bot-like search patterns are detected
   are_you_human:
   captcha_requires_javascript:
+
+# Label for text best bet when it appears in suggestions via the type-ahead API
+  recommended_pages:

@@ -61,7 +61,10 @@ pa:
     menu: ਮੇਨੂ
     browse_site: ਸਾਈਟ ਵਿੱਚ ਬ੍ਰਾਉਜ਼ ਕਰੋ
     related_sites: ਵਿਸ਼ਾ ਵੇਖੋ
-    results_count: '%{formatted_count}'
+    results_count: 
+      zero: '0'
+      one: '1'
+      other: '%{formatted_count}'
     search_results: ਖੋਜ ਦੇ ਨਤੀਜੇ
 # Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
     commercial_results:
@@ -133,3 +136,6 @@ pa:
 # Text for page captcha challenge, which is shown if bot-like search patterns are detected
   are_you_human:
   captcha_requires_javascript:
+
+# Label for text best bet when it appears in suggestions via the type-ahead API
+  recommended_pages:

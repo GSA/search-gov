@@ -61,6 +61,11 @@ ja:
     menu: メニュー
     browse_site: サイトを閲覧
     related_sites: 関連サイト
+    results_count: 
+      zero: '結果0件'
+      one: '結果1件'
+      other: '結果%{formatted_count}件'
+
     results_count: '結果%{formatted_count}件'
     search_results: 検索結果
 # Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
@@ -133,3 +138,6 @@ ja:
 # Text for page captcha challenge, which is shown if bot-like search patterns are detected
   are_you_human:
   captcha_requires_javascript:
+
+# Label for text best bet when it appears in suggestions via the type-ahead API
+  recommended_pages:

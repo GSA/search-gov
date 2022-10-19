@@ -259,6 +259,7 @@ Feature: Manage Content
     When I follow "Edit"
     Then the "URL Prefix 1" field should contain "blog.agency4.gov"
     When I follow "View All"
+    Then I should see "News and Blog"
     When I press "Remove" and confirm "Are you sure you wish to remove News and Blog from this site?"
     Then I should see "You have removed News and Blog from this site"
 
