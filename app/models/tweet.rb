@@ -21,7 +21,7 @@ class Tweet < ApplicationRecord
   def language
     twitter_profile.affiliates.first.indexing_locale
   rescue
-    Rails.logger.warn "Found Tweet with no affiliate, so defaulting to English locale"
+    Rails.logger.warn 'Found Tweet with no affiliate, so defaulting to English locale'
     'en'
   end
 
