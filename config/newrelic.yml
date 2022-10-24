@@ -3,9 +3,9 @@
   license_key: <%= Rails.application.secrets.newrelic[:license_key] %>
   log_level: <%= Rails.application.secrets.newrelic[:log_level] || 'info' %>
   monitor_mode: <%= Rails.application.secrets.newrelic[:enabled] ? 'true' : 'false' %>
-  apdex_t: <%= Rails.application.secrets.newrelic[:apdex_t] || 0.5 %>
   capture_params: false
-  disable_curb: true
+  instrumentation:
+    curb: disabled
   backport_fast_active_record_connection_lookup: true
   transaction_tracer:
     enabled: true
@@ -17,6 +17,6 @@
   error_collector:
     enabled: true
     capture_source: true
-    ignore_errors: ActionController::RoutingError
+    ignore_classes: ActionController::RoutingError
   common: &default_settings
     host: <%= Rails.application.secrets.newrelic[:endpoint] %>
