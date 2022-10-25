@@ -1,4 +1,4 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe LowQueryCtrWatcher do
   let(:affiliate) { affiliates(:basic_affiliate) }
@@ -23,6 +23,12 @@ describe LowQueryCtrWatcher do
 
   it { is_expected.to validate_numericality_of(:search_click_total).only_integer }
   it { is_expected.to validate_numericality_of(:low_ctr_threshold) }
+
+  describe '.conditions' do
+    subject(:conditions) { watcher.conditions }
+
+    it { is_expected.to eq({ low_ctr_threshold: 15.5, search_click_total: 101 }) }
+  end
 
   describe 'humanized_alert_threshold' do
     subject(:watcher) { described_class.new(search_click_total: 101, low_ctr_threshold: 15.5 ) }
