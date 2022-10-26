@@ -14,7 +14,7 @@ class UserSessionsController < ApplicationController
     id_token = session[:id_token]
     reset_session
     current_user_session.destroy
-    redirect_to(LoginDotGovSettings.logout_redirect_uri(id_token, login_uri))
+    redirect_to(LoginDotGovSettings.logout_redirect_uri(id_token, login_uri), allow_other_host: true)
   end
 
   def login_uri
