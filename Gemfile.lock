@@ -224,7 +224,7 @@ GEM
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
-    bindata (2.4.12)
+    bindata (2.4.13)
     buftok (0.2.0)
     builder (3.2.4)
     byebug (11.1.3)
@@ -338,6 +338,8 @@ GEM
       thread_safe (~> 0.3, >= 0.3.1)
     diff-lcs (1.5.0)
     docile (1.4.0)
+    dogapi (1.45.0)
+      multi_json
     dogstatsd-ruby (3.2.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
@@ -367,6 +369,9 @@ GEM
     ethon (0.15.0)
       ffi (>= 1.15.0)
     eventmachine (1.2.7)
+    exception_notification (4.5.0)
+      actionmailer (>= 5.2, < 8)
+      activesupport (>= 5.2, < 8)
     execjs (2.7.0)
     faker (1.9.6)
       i18n (>= 0.7)
@@ -505,6 +510,8 @@ GEM
       ruby2_keywords (~> 0.0.1)
     mysql2 (0.5.4)
     naught (1.1.0)
+    net-http (0.2.2)
+      uri
     net-http-persistent (2.9.4)
     net-imap (0.3.1)
       net-protocol
@@ -616,7 +623,7 @@ GEM
       redis-store (>= 1.2, < 2)
     redis-store (1.9.1)
       redis (>= 4, < 5)
-    redlock (1.3.1)
+    redlock (1.3.2)
       redis (>= 3.0.0, < 6.0)
     ref (2.0.0)
     regexp_parser (2.6.0)
@@ -789,6 +796,7 @@ GEM
       unf_ext
     unf_ext (0.0.8.2)
     unicode-display_width (2.3.0)
+    uri (0.11.0)
     validate_url (0.2.0)
       activemodel (>= 3.0.0)
     vcr (6.1.0)
@@ -849,11 +857,13 @@ DEPENDENCIES
   curb (~> 1.0.1)
   database_cleaner (~> 2.0)
   debug
+  dogapi (~> 1.45)
   dogstatsd-ruby (~> 3.2.0)
   elasticsearch!
   elasticsearch-xpack (~> 7.4.0)
   em-http-request (~> 1.1.5)
   email_spec (~> 2.2)
+  exception_notification (~> 4.5)
   execjs (~> 2.7.0)
   faker (~> 1.8)
   faraday_middleware (~> 0.12.2)
@@ -882,6 +892,7 @@ DEPENDENCIES
   loofah (~> 2.13.0)
   medusa!
   mysql2 (~> 0.5.0)
+  net-http
   net-http-persistent (~> 2.9.3)
   newrelic_rpm (~> 7.2.0)
   nokogiri (~> 1.13.4)
