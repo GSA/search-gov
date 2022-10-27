@@ -1,10 +1,12 @@
+common: &default_settings
+  host: <%= Rails.application.secrets.newrelic[:endpoint] %>
+
 <%= Rails.env %>:
+  <<: *default_settings
   app_name: <%= Rails.application.secrets.newrelic[:app_name] %>
   license_key: <%= Rails.application.secrets.newrelic[:license_key] %>
   log_level: <%= Rails.application.secrets.newrelic[:log_level] || 'info' %>
   monitor_mode: <%= Rails.application.secrets.newrelic[:enabled] ? 'true' : 'false' %>
-  # deprecated: https://docs.newrelic.com/docs/apm/agents/ruby-agent/configuration/ruby-agent-configuration/#apdex_t
-  # apdex_t: <%= Rails.application.secrets.newrelic[:apdex_t] || 0.5 %>
   capture_params: false
   instrumentation:
     curb: disabled
@@ -26,5 +28,3 @@
       enabled: false
   distributed_tracing:
     enabled: false
-  common: &default_settings
-    host: <%= Rails.application.secrets.newrelic[:endpoint] %>
