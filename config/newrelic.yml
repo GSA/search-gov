@@ -3,6 +3,8 @@
   license_key: <%= Rails.application.secrets.newrelic[:license_key] %>
   log_level: <%= Rails.application.secrets.newrelic[:log_level] || 'info' %>
   monitor_mode: <%= Rails.application.secrets.newrelic[:enabled] ? 'true' : 'false' %>
+  # deprecated: https://docs.newrelic.com/docs/apm/agents/ruby-agent/configuration/ruby-agent-configuration/#apdex_t
+  # apdex_t: <%= Rails.application.secrets.newrelic[:apdex_t] || 0.5 %>
   capture_params: false
   instrumentation:
     curb: disabled
@@ -16,6 +18,7 @@
     explain_threshold: 0.5
   error_collector:
     enabled: true
+    # capture_source is not documented anywhere
     capture_source: true
     ignore_classes: ActionController::RoutingError
   application_logging:
