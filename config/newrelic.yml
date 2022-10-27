@@ -18,5 +18,10 @@
     enabled: true
     capture_source: true
     ignore_classes: ActionController::RoutingError
+  application_logging:
+    forwarding:
+      enabled: false
+  distributed_tracing:
+    enabled: false
   common: &default_settings
     host: <%= Rails.application.secrets.newrelic[:endpoint] %>
