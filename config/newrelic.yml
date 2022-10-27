@@ -20,8 +20,6 @@ common: &default_settings
     explain_threshold: 0.5
   error_collector:
     enabled: true
-    # capture_source is not documented anywhere
-    capture_source: true
     ignore_classes: ['ActionController::RoutingError']
   application_logging:
     forwarding:
