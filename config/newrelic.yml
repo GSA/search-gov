@@ -22,7 +22,7 @@ common: &default_settings
     enabled: true
     # capture_source is not documented anywhere
     capture_source: true
-    ignore_classes: [ActionController::RoutingError]
+    ignore_classes: ['ActionController::RoutingError']
   application_logging:
     forwarding:
       enabled: false
