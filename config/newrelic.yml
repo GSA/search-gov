@@ -1,5 +1,4 @@
 <%= Rails.env %>:
-  <<: *default_settings
   app_name: <%= Rails.application.secrets.newrelic[:app_name] %>
   host: <%= Rails.application.secrets.newrelic[:endpoint] %>
   license_key: <%= Rails.application.secrets.newrelic[:license_key] %>
