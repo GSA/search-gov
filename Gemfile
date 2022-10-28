@@ -166,7 +166,7 @@ group :development, :test do
   gem 'awesome_print'
   gem 'puma', '~> 5.3'
   gem 'debug'
-  gem 'bootsnap', '~> 1.13.0', require: false
+  gem 'bootsnap', '~> 1.13.0', require: 'bootsnap/setup'
 end
 
 group :test do
