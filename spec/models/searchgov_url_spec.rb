@@ -387,7 +387,7 @@ describe SearchgovUrl do
         allow(JsFetcher).to receive(:fetch)
       end
 
-      let(:url) { 'https://www.medicare.gov/sign-up-change-plans' }
+      let(:url) { 'https://search.gov/javascript-test.html' }
       let(:domain_with_js_renderer) do
         instance_double(SearchgovDomain, check_status: '200 OK', available?: true, js_renderer: true)
       end
@@ -404,7 +404,7 @@ describe SearchgovUrl do
         allow(JsFetcher).to receive(:fetch)
       end
 
-      let(:url) { 'https://www.medicare.gov/sign-up-change-plans' }
+      let(:url) { 'https://search.gov/javascript-test.html' }
       let(:domain_without_js_renderer) do
         instance_double(SearchgovDomain, check_status: '200 OK', available?: true, js_renderer: false)
       end

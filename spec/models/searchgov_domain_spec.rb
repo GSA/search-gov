@@ -71,7 +71,7 @@ describe SearchgovDomain do
     it { is_expected.to validate_presence_of :domain }
 
     context 'when the domain is valid' do
-      let(:valid_domains) { %w[search.gov foo.bar.gov foo.bar.baz.museum] }
+      let(:valid_domains) { %w[fooo.gov foo.bar.gov foo.bar.baz.museum] }
 
       it 'is valid' do
         valid_domains.each do |domain|
