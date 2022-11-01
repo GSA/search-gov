@@ -20,7 +20,7 @@ module QueryRoutableController
        !matching_urls_for(routed_query.url).include?(request.referer)
       RoutedQueryImpressionLogger.log(@search_options[:affiliate],
                                       @search_options[:query], request)
-      redirect_to(routed_query.url)
+      redirect_to(routed_query.url, allow_other_host: true)
     end
   end
 
