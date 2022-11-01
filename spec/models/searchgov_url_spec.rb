@@ -387,7 +387,7 @@ describe SearchgovUrl do
         allow(JsFetcher).to receive(:fetch)
       end
 
-      # Below live site will pinged on each test run, should be handled with VCR cassette config.
+      # Follow-on story (SRCH-3522) to handle VCR cassette config.
       let(:url) { 'https://search.gov/javascript-test.html' }
       let(:domain_with_js_renderer) do
         instance_double(SearchgovDomain, check_status: '200 OK', available?: true, js_renderer: true)
@@ -405,7 +405,7 @@ describe SearchgovUrl do
         allow(JsFetcher).to receive(:fetch)
       end
 
-      # Below live site will pinged on each test run, should be handled with VCR cassette config.
+      # Follow-on story (SRCH-3522) to handle VCR cassette config.
       let(:url) { 'https://search.gov/javascript-test.html' }
       let(:domain_without_js_renderer) do
         instance_double(SearchgovDomain, check_status: '200 OK', available?: true, js_renderer: false)
