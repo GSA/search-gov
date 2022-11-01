@@ -7,6 +7,10 @@ describe TwitterList do
     twitter_profile1.twitter_lists.create(member_ids: [twitter_profile2.twitter_id])
   end
 
+  describe 'schema' do
+    it { is_expected.to have_db_column(:safe_member_ids).of_type(:json) }
+  end
+
   it { is_expected.to validate_numericality_of(:id).only_integer }
   it 'should not allow id = 0' do
     expect(described_class.new(id: 0)).not_to be_valid

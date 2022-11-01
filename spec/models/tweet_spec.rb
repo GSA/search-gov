@@ -24,6 +24,7 @@ describe Tweet do
 
   describe 'schema' do
     it { is_expected.to have_db_index(:published_at) }
+    it { is_expected.to have_db_column(:safe_urls).of_type(:json) }
   end
 
   it 'creates new instance given valid attributes' do
@@ -57,6 +58,25 @@ describe Tweet do
         expect(url.display_url).to eq('twitter.com/i/web/status/1…')
         expect(url.expanded_url).to eq('https://twitter.com/i/web/status/123')
         expect(url.url).to eq('https://t.co/abc')
+      end
+
+      it 'saves the urls to the safe_urls column' do
+        expect { tweet.save! }.to change { tweet.safe_urls }.
+          from(nil).to(
+            [{ 'display_url' => 'twitter.com/i/web/status/1…',
+               'expanded_url' => 'https://twitter.com/i/web/status/123',
+               'url' => 'https://t.co/abc' }]
+          )
+      end
+    end
+
+    context 'when the tweet does not include URLs' do
+      let(:tweet) { described_class.new(valid_attributes.merge(urls: nil)) }
+
+      # ensure we don't save an empty array
+      it 'returns nil' do
+        tweet.save!
+        expect(tweet.safe_urls).to be_nil
       end
     end
   end
