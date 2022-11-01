@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 describe JsFetcher do
+  # Below live site will pinged on each test run, should be handled with VCR cassette config.
   let(:url) { 'https://search.gov/javascript-test.html' }
 
   it 'fetches page with javascript response' do
