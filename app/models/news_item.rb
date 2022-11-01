@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class NewsItem < ApplicationRecord
   include FastDeleteFromDbAndEs
 
   before_validation do |record|
-    AttributeProcessor.squish_attributes record,
+    AttributeProcessor.squish_attributes(record,
                                          :body,
                                          :contributor,
                                          :description,
@@ -11,12 +13,15 @@ class NewsItem < ApplicationRecord
                                          :publisher,
                                          :subject,
                                          :title,
-                                         assign_nil_on_blank: true
+                                         assign_nil_on_blank: true)
   end
 
   before_validation :downcase_scheme
-  validates_presence_of :title, :link, :published_at, :guid, :rss_feed_url_id
-  validates_presence_of :description, unless: :description_not_required?
+  # temporary code to keep properties/safe_properties in sync until
+  # we've migrated the data and swapped columns: https://cm-jira.usa.gov/browse/SRCH-3465
+  before_save { self.safe_properties = properties.presence }
+  validates :title, :link, :published_at, :guid, :rss_feed_url_id, presence: true
+  validates :description, presence: { unless: :description_not_required? }
   validates_url :link
   validates :guid, uniqueness: {
     scope: :rss_feed_url_id,
@@ -33,15 +38,15 @@ class NewsItem < ApplicationRecord
   alias_attribute :url, :link
 
   def is_video?
-    link =~ %r[\Ahttps?://www\.youtube\.com/watch\?v=]
+    link =~ %r{\Ahttps?://www\.youtube\.com/watch\?v=}
   end
 
   def tags
     if properties.key?(:media_content) and
-        properties[:media_content][:url].present? and
-        properties.key?(:media_thumbnail) and
-        properties[:media_thumbnail][:url].present?
-      %w(image)
+       properties[:media_content][:url].present? and
+       properties.key?(:media_thumbnail) and
+       properties[:media_thumbnail][:url].present?
+      %w[image]
     else
       []
     end
@@ -83,7 +88,7 @@ class NewsItem < ApplicationRecord
     conditions = ['((link = ? OR link = ?))',
                   "http://#{link_without_protocol}",
                   "https://#{link_without_protocol}"]
-    id_conditions = persisted? ? ['id != ?',id] : []
+    id_conditions = persisted? ? ['id != ?', id] : []
     if rss_feed_url && rss_feed_url.news_items.where(conditions).where(id_conditions).any?
       errors.add(:link, 'has already been taken')
     end
@@ -94,6 +99,6 @@ class NewsItem < ApplicationRecord
   end
 
   def downcase_scheme
-    self.link = link.sub('HTTP','http').sub('httpS','https') if link.present?
+    self.link = link.sub('HTTP', 'http').sub('httpS', 'https') if link.present?
   end
 end

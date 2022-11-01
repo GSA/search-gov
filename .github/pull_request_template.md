@@ -6,8 +6,6 @@
 Please ensure you have addressed all concerns below before marking a PR "ready for review" or before requesting a re-review. If you cannot complete an item below, replace the checkbox with the ⚠️ `:warning:` emoji and explain why the step was not completed.
  
 #### Functionality Checks
-
-- [ ] You have run `bundle update` and committed your changes to Gemfile.lock.
  
 - [ ] You have merged the latest changes from the target branch (usually `main`) into your branch.
   

@@ -6,7 +6,7 @@ describe Tweet do
     {
       tweet_id: 18700887835,
       tweet_text: 'this is a tweet',
-      published_at: Time.now,
+      published_at: Time.current,
       twitter_profile_id: twitter_profile.id
     }
   end
@@ -24,6 +24,7 @@ describe Tweet do
 
   describe 'schema' do
     it { is_expected.to have_db_index(:published_at) }
+    it { is_expected.to have_db_column(:safe_urls).of_type(:json) }
   end
 
   it 'creates new instance given valid attributes' do
@@ -34,11 +35,57 @@ describe Tweet do
     is_expected.to validate_uniqueness_of :tweet_id
   end
 
+  describe '.urls' do
+    subject(:urls) { tweet.urls }
+
+    context 'when the tweet includes URLs' do
+      let(:tweet) do
+        urls = [
+          Struct.new(:display_url, :expanded_url, :url).new(
+            'twitter.com/i/web/status/1…',
+            'https://twitter.com/i/web/status/123',
+            'https://t.co/abc'
+          )
+        ]
+
+        described_class.new(valid_attributes.merge(urls: urls))
+      end
+
+      it { is_expected.to be_an Array }
+
+      it 'provides accessors to the URLs' do
+        url = tweet.urls.first
+        expect(url.display_url).to eq('twitter.com/i/web/status/1…')
+        expect(url.expanded_url).to eq('https://twitter.com/i/web/status/123')
+        expect(url.url).to eq('https://t.co/abc')
+      end
+
+      it 'saves the urls to the safe_urls column' do
+        expect { tweet.save! }.to change { tweet.safe_urls }.
+          from(nil).to(
+            [{ 'display_url' => 'twitter.com/i/web/status/1…',
+               'expanded_url' => 'https://twitter.com/i/web/status/123',
+               'url' => 'https://t.co/abc' }]
+          )
+      end
+    end
+
+    context 'when the tweet does not include URLs' do
+      let(:tweet) { described_class.new(valid_attributes.merge(urls: nil)) }
+
+      # ensure we don't save an empty array
+      it 'returns nil' do
+        tweet.save!
+        expect(tweet.safe_urls).to be_nil
+      end
+    end
+  end
+
   it 'sanitizes tweet text' do
     tweet = described_class.create!(tweet_text: "A <b>tweet</b> with \n http://t.co/h5vNlSdL and http://t.co/YQQSs9bb",
-                          tweet_id: 123456,
-                          published_at: Time.now,
-                          twitter_profile_id: 12345)
+                                    tweet_id: 123456,
+                                    published_at: Time.current,
+                                    twitter_profile_id: 12345)
     expect(described_class.find(tweet.id).tweet_text).to eq('A tweet with http://t.co/h5vNlSdL and http://t.co/YQQSs9bb')
   end
 
@@ -71,7 +118,7 @@ describe Tweet do
                              screen_name: 'USASearch',
                              name: 'USASearch',
                              profile_image_url: 'http://a0.twimg.com/profile_images/1879738641/USASearch_avatar_normal.png')
-      @tweet = described_class.create!(tweet_text: 'USA', tweet_id: 123456, published_at: Time.now, twitter_profile_id: 12345)
+      @tweet = described_class.create!(tweet_text: 'USA', tweet_id: 123456, published_at: Time.current, twitter_profile_id: 12345)
     end
 
     it 'outputs a properly formatted link to the tweet' do
