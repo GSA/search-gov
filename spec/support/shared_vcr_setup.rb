@@ -36,7 +36,6 @@ VCR.configure do |config|
     clean_outdated_http_interactions: true
   }
 
-  config.ignore_hosts 'example.com', 'codeclimate.com', '127.0.0.1'
   config.ignore_hosts *DRIVER_HOSTS
   config.ignore_request do |request|
     /codeclimate.com/ ===  URI(request.uri).host
