@@ -17,6 +17,10 @@ describe NewsItem do
   end
   let(:news_item) { described_class.new(valid_attributes) }
 
+  describe 'schema' do
+    it { is_expected.to have_db_column(:safe_properties).of_type(:json) }
+  end
+
   describe 'creating a new NewsItem' do
     it { is_expected.to validate_presence_of :link }
     it { is_expected.to validate_presence_of :title }
@@ -129,6 +133,29 @@ describe NewsItem do
       let(:news_item) { described_class.new(properties: { duration: '0:39' }) }
 
       it { is_expected.to eq({ duration: '0:39' }) }
+    end
+
+    context 'when saving' do
+      let(:news_item) do
+        described_class.new(valid_attributes.merge(properties: { foo: 'bar' }))
+      end
+
+      it 'saves the properties to the safe_properties column' do
+        expect { news_item.save! }.to change { news_item.safe_properties }.
+          from(nil).to({ 'foo' => 'bar' })
+      end
+
+      context 'when the item has no properties' do
+        let(:news_item) do
+          described_class.new(valid_attributes.merge(properties: nil))
+        end
+
+        # ensure we don't save an empty hash
+        it 'returns nil' do
+          news_item.save!
+          expect(news_item.safe_properties).to be_nil
+        end
+      end
     end
   end
 

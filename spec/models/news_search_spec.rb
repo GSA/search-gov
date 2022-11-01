@@ -348,8 +348,8 @@ describe NewsSearch do
 
   describe '#as_json' do
     let(:expected_keys) do
-      %w(body contributor created_at description guid id link properties
-         published_at publisher rss_feed_url_id subject title updated_at)
+      %w[body contributor created_at description guid id link properties
+         published_at publisher rss_feed_url_id subject title updated_at safe_properties]
     end
 
     it 'contains all attributes' do
