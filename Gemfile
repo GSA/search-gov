@@ -193,3 +193,6 @@ group :test do
   gem 'rspec_junit_formatter', '~> 0.4'
   gem 'rails-controller-testing', '~> 1.0'
 end
+
+gem 'react-rails'
+gem 'webpacker'
