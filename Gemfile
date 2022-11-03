@@ -195,4 +195,4 @@ group :test do
 end
 
 gem 'react-rails'
-gem 'webpacker'
+gem 'shakapacker', '~> 6.5.2'

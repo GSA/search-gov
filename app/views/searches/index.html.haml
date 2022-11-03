@@ -1,3 +1,4 @@
+= javascript_pack_tag 'application'
 #search{ search_data(@search, @search_vertical) }
   %h2= t 'searches.search_results'
   = render partial: 'alert', locals: { affiliate: @affiliate } if @affiliate.alert && @affiliate.alert.renderable?
@@ -11,7 +12,7 @@
   = render partial: 'tweets', locals: { search:  @search } if @search.has_tweets?
   = render partial: 'govbox_video_news_items', locals: { search:  @search, search_params: @search_params } if @search.has_video_news_items?
   = render partial: 'govbox_news_items', locals: { search:  @search } if @search.has_fresh_news_items?
-
+  = react_component("HelloWorld", { greeting: @search.results.to_json })
   - if @search.results.present?
     = render partial: 'organic_results', locals: { search: @search }
     = render partial: 'offer_other_web_results', locals: { search:  @search }

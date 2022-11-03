@@ -1,5 +1,10 @@
-process.env.NODE_ENV = process.env.NODE_ENV || 'development'
+// The source code including full typescript support is available at: 
+// https://github.com/shakacode/react_on_rails_demo_ssr_hmr/blob/master/config/webpack/test.js
 
-const environment = require('./environment')
+const webpackConfig = require('./webpackConfig')
 
-module.exports = environment.toWebpackConfig()
+const testOnly = (_clientWebpackConfig, _serverWebpackConfig) => {
+  // place any code here that is for test only
+}
+
+module.exports = webpackConfig(testOnly)
