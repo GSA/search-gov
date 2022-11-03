@@ -196,3 +196,4 @@ end
 
 gem 'react-rails'
 gem 'shakapacker', '~> 6.5.2'
+gem 'listen'

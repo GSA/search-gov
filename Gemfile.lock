@@ -490,6 +490,9 @@ GEM
       less (~> 2.6.0)
       sprockets (~> 3.0)
     libv8 (3.16.14.19)
+    listen (3.7.1)
+      rb-fsevent (~> 0.10, >= 0.10.3)
+      rb-inotify (~> 0.9, >= 0.9.10)
     loofah (2.13.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -912,6 +915,7 @@ DEPENDENCIES
   kt-paperclip (~> 7.1.0)
   launchy (~> 2.5)
   less-rails-bootstrap!
+  listen
   loofah (~> 2.13.0)
   medusa!
   mysql2 (~> 0.5.0)
