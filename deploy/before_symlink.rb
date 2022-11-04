@@ -7,6 +7,12 @@ dgsearch_rails_database :usasearch do
   group 'www-data'
 end
 
+execute 'yarrnnn & webpack' do
+  cwd  release_path
+  environment 'NODE_ENV': 'production', 'YARN_CACHE_FOLDER': 'tmp/cache/'
+  command "sudo su deploy -c 'yarn'"
+end
+
 # Pre-compile assets. Also, a very small subset of the assets
 # need to be available without digest fingerprints in their
 # filenames - assets that live "in the wild" and can't be
