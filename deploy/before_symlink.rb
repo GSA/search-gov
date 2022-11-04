@@ -13,6 +13,9 @@ end
 # updated whenever our asset fingerprints change.
 run <<COMPILE
   cd #{release_path} && \
+  who && \
+  whoami && \
+  echo $USER && \
   YARN_CACHE_FOLDER=.cache/yarn RAILS_ENV=#{rails_env} bundle exec rake assets:precompile && \
   cd #{release_path}/public/assets && \
   for js in sayt_loader_libs sayt_loader stats; do cp ${js}-*.js ${js}.js && cp ${js}-*.js.gz ${js}.js.gz; done && \
