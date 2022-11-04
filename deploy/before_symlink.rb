@@ -12,9 +12,8 @@ end
 # filenames - assets that live "in the wild" and can't be
 # updated whenever our asset fingerprints change.
 run <<COMPILE
-  export PATH="/usr/local/nodejs-binary-8.12.0/bin:$PATH"
   cd #{release_path} && \
-  RAILS_ENV=#{rails_env} bundle exec rake assets:precompile && \
+  YARN_CACHE_FOLDER=.cache/yarn RAILS_ENV=#{rails_env} bundle exec rake assets:precompile && \
   cd #{release_path}/public/assets && \
   for js in sayt_loader_libs sayt_loader stats; do cp ${js}-*.js ${js}.js && cp ${js}-*.js.gz ${js}.js.gz; done && \
   for css in sayt; do cp ${css}-*.css ${css}.css && cp ${css}-*.css.gz ${css}.css.gz; done && \
