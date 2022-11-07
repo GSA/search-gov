@@ -9,12 +9,14 @@ describe I14ySearch do
   context 'when results are available' do
     let(:i14y_search) { described_class.new(affiliate: affiliate, query: 'marketplase', per_page: 20) }
 
-    it 'should return a response' do
+    it 'returns a response' do
       i14y_search.run
       expect(i14y_search.startrecord).to eq(1)
       expect(i14y_search.endrecord).to eq(20)
       expect(i14y_search.total).to eq(270)
       expect(i14y_search.spelling_suggestion).to eq('marketplace')
+      expect(i14y_search.aggregations).to match(array_including(hash_including('content_type')))
+      expect(i14y_search.aggregations).to match(array_including(hash_including('changed')))
       first = i14y_search.results.first
       expect(first.title).to eq('Marketplace')
       expect(first.link).to eq('https://www.healthcare.gov/glossary/marketplace')
@@ -35,7 +37,7 @@ describe I14ySearch do
     end
   end
 
-  context 'tag filters are present' do
+  context 'when tag filters are present' do
     let(:affiliate_with_filter_tags) { affiliates(:basic_affiliate) }
     let(:i14y_search) { described_class.new(affiliate: affiliate_with_filter_tags,
                                        per_page: 20,

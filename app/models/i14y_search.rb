@@ -2,7 +2,9 @@ class I14ySearch < FilterableSearch
   include SearchInitializer
   include Govboxable
   I14Y_SUCCESS = 200
-  attr_reader :collection, :matching_site_limits
+  attr_reader :aggregations,
+              :collection,
+              :matching_site_limits
 
   def initialize(options = {})
     super
@@ -59,16 +61,17 @@ class I14ySearch < FilterableSearch
   end
 
   def handle_response(response)
-    if response && response.status == I14Y_SUCCESS
-      @total = response.metadata.total
-      I14yPostProcessor.new(@enable_highlighting,
-                            response.results,
-                            @affiliate.excluded_urls_set).post_process_results
-      @results = paginate(response.results)
-      @startrecord = ((@page - 1) * @per_page) + 1
-      @endrecord = @startrecord + @results.size - 1
-      @spelling_suggestion = response.metadata.suggestion.text if response.metadata.suggestion.present?
-    end
+    return unless response && response.status == I14Y_SUCCESS
+
+    @total = response.metadata.total
+    I14yPostProcessor.new(@enable_highlighting,
+                          response.results,
+                          @affiliate.excluded_urls_set).post_process_results
+    @results = paginate(response.results)
+    @startrecord = ((@page - 1) * @per_page) + 1
+    @endrecord = @startrecord + @results.size - 1
+    @spelling_suggestion = response.metadata.suggestion.text if response.metadata.suggestion.present?
+    @aggregations = response.metadata.aggregations if response.metadata.aggregations.present?
   end
 
   def populate_additional_results
