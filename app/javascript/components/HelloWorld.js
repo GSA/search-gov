@@ -3,8 +3,8 @@ import PropTypes from "prop-types"
 
 import { GovBanner } from '@trussworks/react-uswds';
 // import 'uswds.css';
-import '@trussworks/react-uswds/lib/index.css';
 import '@trussworks/react-uswds/lib/uswds.css';
+import '@trussworks/react-uswds/lib/index.css';
 
 //import '../../../node_modules/@trussworks/react-uswds/lib/uswds.css';
 
