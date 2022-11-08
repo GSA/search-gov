@@ -118,7 +118,7 @@ describe SearchgovUrl do
 
     let!(:searchgov_url) { described_class.create!(valid_attributes) }
     let(:searchgov_domain) do
-      instance_double(SearchgovDomain, check_status: '200 OK', available?: true, js_renderer: false)
+      instance_double(SearchgovDomain, check_status: '200 OK', available?: true)
     end
     let(:searchgov_document) { searchgov_url.searchgov_document }
 
@@ -378,40 +378,6 @@ describe SearchgovUrl do
             end
           end
         end
-      end
-    end
-
-    context 'when the searchgov domain has js renderer enabled' do
-      before do
-        allow(searchgov_url).to receive(:searchgov_domain).and_return(domain_with_js_renderer)
-        allow(JsFetcher).to receive(:fetch)
-      end
-
-      let(:url) { 'https://search.gov/javascript-test.html' }
-      let(:domain_with_js_renderer) do
-        instance_double(SearchgovDomain, check_status: '200 OK', available?: true, js_renderer: true)
-      end
-
-      it 'fetches page with javascript fetcher' do
-        fetch
-        expect(JsFetcher).to have_received(:fetch).with(url)
-      end
-    end
-
-    context 'when the searchgov domain has js renderer disabled' do
-      before do
-        allow(searchgov_url).to receive(:searchgov_domain).and_return(domain_without_js_renderer)
-        allow(JsFetcher).to receive(:fetch)
-      end
-
-      let(:url) { 'https://search.gov/javascript-test.html' }
-      let(:domain_without_js_renderer) do
-        instance_double(SearchgovDomain, check_status: '200 OK', available?: true, js_renderer: false)
-      end
-
-      it 'fetches page without javascript fetcher' do
-        fetch
-        expect(JsFetcher).not_to have_received(:fetch).with(url)
       end
     end
 
