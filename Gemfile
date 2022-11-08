@@ -103,8 +103,6 @@ gem 'active_scheduler', '~> 0.7.0'
 gem 'retriable', '~> 3.1'
 gem 'cld3', '~> 3.4.3'
 gem 'activejob-uniqueness', '~> 0.2.1'
-gem 'selenium-webdriver'
-gem 'webdrivers', '~> 5.0'
 
 # Assets-related gems
 gem 'coffee-rails', '~> 5.0.0'
@@ -186,4 +184,5 @@ group :test do
   gem 'rspec-activemodel-mocks', '~> 1.1'
   gem 'rspec_junit_formatter', '~> 0.4'
   gem 'rails-controller-testing', '~> 1.0'
+  gem 'webdrivers', '~> 5.0'
 end
