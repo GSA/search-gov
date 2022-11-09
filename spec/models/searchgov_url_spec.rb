@@ -118,7 +118,7 @@ describe SearchgovUrl do
 
     let!(:searchgov_url) { described_class.create!(valid_attributes) }
     let(:searchgov_domain) do
-      instance_double(SearchgovDomain, check_status: '200 OK', available?: true)
+      instance_double(SearchgovDomain, check_status: '200 OK', available?: true, js_renderer: false)
     end
     let(:searchgov_document) { searchgov_url.searchgov_document }
 
@@ -378,6 +378,35 @@ describe SearchgovUrl do
             end
           end
         end
+      end
+    end
+
+    context 'when the searchgov domain has js renderer enabled' do
+      let(:domain_with_js_renderer) do
+        instance_double(SearchgovDomain, check_status: '200 OK', js_renderer: true)
+      end
+
+      it 'fetches page with javascript response' do
+        allow(searchgov_url).to receive(:searchgov_domain).and_return(domain_with_js_renderer)
+        allow(searchgov_url).to receive(:application_document?).and_return(false)
+
+        js_response = searchgov_url.send(:parse_document)
+        expect(js_response.document).not_to be_nil
+        expect(js_response.document).to start_with('<head>')
+      end
+    end
+
+    context 'when the searchgov domain has js renderer disabled' do
+      let(:domain_without_js_renderer) do
+        instance_double(SearchgovDomain, check_status: '200 OK', js_renderer: false)
+      end
+
+      it 'fetches page without javascript response' do
+        allow(searchgov_url).to receive(:searchgov_domain).and_return(domain_without_js_renderer)
+        allow(searchgov_url).to receive(:application_document?).and_return(false)
+
+        response = searchgov_url.send(:parse_document)
+        expect(response.document).not_to be_nil
       end
     end
 

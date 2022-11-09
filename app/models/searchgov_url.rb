@@ -206,6 +206,9 @@ class SearchgovUrl < ApplicationRecord
     Rails.logger.info "[SearchgovUrl] Parsing document for #{url}"
     if application_document?
       ApplicationDocument.new(document: download.open, url: url)
+    elsif searchgov_domain.js_renderer
+      js_response = JsFetcher.fetch(url)
+      HtmlDocument.new(document: js_response, url: url)
     else
       HtmlDocument.new(document: response.to_s, url: url)
     end
