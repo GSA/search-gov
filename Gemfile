@@ -143,6 +143,9 @@ gem 'dogapi', '~> 1.45'
 # https://github.com/ruby/net-protocol/issues/10
 # This gem can be removed once we upgrade to Ruby 3.1.
 gem 'net-http'
+gem 'react-rails', '~> 2.6.2'
+gem 'shakapacker', '~> 6.5.2'
+gem 'listen'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
@@ -193,7 +196,3 @@ group :test do
   gem 'rspec_junit_formatter', '~> 0.4'
   gem 'rails-controller-testing', '~> 1.0'
 end
-
-gem 'react-rails'
-gem 'shakapacker', '~> 6.5.2'
-gem 'listen'
