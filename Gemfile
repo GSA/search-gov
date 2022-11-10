@@ -41,7 +41,7 @@ gem 'flickraw', '~> 0.9.9'
 gem 'active_scaffold', '~> 3.6.2'
 gem 'active_scaffold_export', '~> 3.4.0'
 gem "recaptcha", '~> 4.6.3', :require => "recaptcha/rails"
-gem 'newrelic_rpm', '~> 6.15.0'
+gem 'newrelic_rpm', '~> 8.12.0'
 gem 'american_date', '~> 1.1.1'
 gem 'sass-rails', '~> 5.0.7'
 # Gem no longer being maintained. See https://cm-jira.usa.gov/browse/SRCH-694
