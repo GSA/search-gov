@@ -7,7 +7,7 @@ dgsearch_rails_database :usasearch do
   group 'www-data'
 end
 
-execute 'yarrnnn & webpack' do
+execute 'Install JS depdendencies, bundle JS, and pre-compile assets' do
   cwd release_path
   environment 'NODE_ENV': 'production', 'YARN_CACHE_FOLDER': 'tmp/cache/'
   command "sudo su search -c 'yarn && ./bin/webpacker && RAILS_ENV=production bundle exec rake assets:precompile'"
