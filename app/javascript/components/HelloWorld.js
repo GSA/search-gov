@@ -1,12 +1,10 @@
-import React, { useState } from "react"
+import React from "react"
 import PropTypes from "prop-types"
 
 import { GovBanner, Header, Title, NavMenuButton, ExtendedNav, NavDropDownButton, Menu, Search, GridContainer, Grid } from '@trussworks/react-uswds';
-// import 'uswds.css';
+
 import '@trussworks/react-uswds/lib/uswds.css';
 import '@trussworks/react-uswds/lib/index.css';
-
-//import '../../../node_modules/@trussworks/react-uswds/lib/uswds.css';
 
 class HelloWorld extends React.Component {
   render () {
