@@ -144,7 +144,7 @@ gem 'dogapi', '~> 1.45'
 # This gem can be removed once we upgrade to Ruby 3.1.
 gem 'net-http'
 gem 'react-rails', '~> 2.6.2'
-gem 'shakapacker', '~> 6.5.2'
+gem 'shakapacker', '~> 6.5.4'
 gem 'listen'
 
 # Bundle gems for the local environment. Make sure to
