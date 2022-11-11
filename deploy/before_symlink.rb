@@ -10,7 +10,7 @@ end
 execute 'Install JS depdendencies, bundle JS, and pre-compile assets' do
   cwd release_path
   environment 'NODE_ENV': 'production', 'YARN_CACHE_FOLDER': 'tmp/cache/'
-  command "sudo su search -c 'yarn && ./bin/webpacker && RAILS_ENV=production bundle exec rake assets:precompile'"
+  command "sudo su search -c 'yarn && RAILS_ENV=production bundle exec rake assets:precompile'"
 end
 
 # Pre-compile assets. Also, a very small subset of the assets
