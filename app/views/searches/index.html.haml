@@ -1,5 +1,5 @@
 - if @search_params.has_key?('v2')
-  = react_component("HelloWorld", { greeting: @search.results })
+  = react_component("HelloWorld", { results: @search.results })
 - else
   #search{ search_data(@search, @search_vertical) }
     %h2= t 'searches.search_results'

@@ -94,61 +94,61 @@ class HelloWorld extends React.Component {
     </GridContainer>
     <GridContainer>
     <Grid row>
-      <Grid tablet={{ col: true }}><a href= "#"><h4>{this.props.greeting[0]['title']}</h4></a></Grid>
+      <Grid tablet={{ col: true }}><a href= "#"><h4>{this.props.results[0]['title']}</h4></a></Grid>
     </Grid>
     <Grid row>
-      <Grid tablet={{ col: true }}><a href= "#">{this.props.greeting[0]['unescapedUrl']}</a></Grid>
+      <Grid tablet={{ col: true }}><a href= "#">{this.props.results[0]['unescapedUrl']}</a></Grid>
     </Grid>
     <Grid row>
-      <Grid tablet={{ col: true }}><p>{this.props.greeting[0]['content']}</p></Grid>
+      <Grid tablet={{ col: true }}><p>{this.props.results[0]['content']}</p></Grid>
     </Grid>
   </GridContainer>
   <br></br>
   <GridContainer>
   <Grid row>
-      <Grid tablet={{ col: true }}><a href= "#"><h4>{this.props.greeting[1]['title']}</h4></a></Grid>
+      <Grid tablet={{ col: true }}><a href= "#"><h4>{this.props.results[1]['title']}</h4></a></Grid>
     </Grid>
     <Grid row>
-      <Grid tablet={{ col: true }}><a href= "#">{this.props.greeting[1]['unescapedUrl']}</a></Grid>
+      <Grid tablet={{ col: true }}><a href= "#">{this.props.results[1]['unescapedUrl']}</a></Grid>
     </Grid>
     <Grid row>
-      <Grid tablet={{ col: true }}><p>{this.props.greeting[1]['content']}</p></Grid>
+      <Grid tablet={{ col: true }}><p>{this.props.results[1]['content']}</p></Grid>
     </Grid>
   </GridContainer>
   <br></br>
   <GridContainer>
   <Grid row>
-      <Grid tablet={{ col: true }}><a href= "#"><h4>{this.props.greeting[2]['title']}</h4></a></Grid>
+      <Grid tablet={{ col: true }}><a href= "#"><h4>{this.props.results[2]['title']}</h4></a></Grid>
     </Grid>
     <Grid row>
-      <Grid tablet={{ col: true }}><a href= "#">{this.props.greeting[2]['unescapedUrl']}</a></Grid>
+      <Grid tablet={{ col: true }}><a href= "#">{this.props.results[2]['unescapedUrl']}</a></Grid>
     </Grid>
     <Grid row>
-      <Grid tablet={{ col: true }}><p>{this.props.greeting[2]['content']}</p></Grid>
+      <Grid tablet={{ col: true }}><p>{this.props.results[2]['content']}</p></Grid>
     </Grid>
   </GridContainer>
   <br></br>
   <GridContainer>
   <Grid row>
-      <Grid tablet={{ col: true }}><a href= "#"><h4>{this.props.greeting[3]['title']}</h4></a></Grid>
+      <Grid tablet={{ col: true }}><a href= "#"><h4>{this.props.results[3]['title']}</h4></a></Grid>
     </Grid>
     <Grid row>
-      <Grid tablet={{ col: true }}><a href= "#">{this.props.greeting[3]['unescapedUrl']}</a></Grid>
+      <Grid tablet={{ col: true }}><a href= "#">{this.props.results[3]['unescapedUrl']}</a></Grid>
     </Grid>
     <Grid row>
-      <Grid tablet={{ col: true }}><p>{this.props.greeting[3]['content']}</p></Grid>
+      <Grid tablet={{ col: true }}><p>{this.props.results[3]['content']}</p></Grid>
     </Grid>
   </GridContainer>
   <br></br>
   <GridContainer>
   <Grid row>
-      <Grid tablet={{ col: true }}><a href= "#"><h4>{this.props.greeting[4]['title']}</h4></a></Grid>
+      <Grid tablet={{ col: true }}><a href= "#"><h4>{this.props.results[4]['title']}</h4></a></Grid>
     </Grid>
     <Grid row>
-      <Grid tablet={{ col: true }}><a href= "#">{this.props.greeting[4]['unescapedUrl']}</a></Grid>
+      <Grid tablet={{ col: true }}><a href= "#">{this.props.results[4]['unescapedUrl']}</a></Grid>
     </Grid>
     <Grid row>
-      <Grid tablet={{ col: true }}><p>{this.props.greeting[4]['content']}</p></Grid>
+      <Grid tablet={{ col: true }}><p>{this.props.results[4]['content']}</p></Grid>
     </Grid>
   </GridContainer>
       </React.Fragment>
@@ -157,6 +157,6 @@ class HelloWorld extends React.Component {
 }
 
 HelloWorld.propTypes = {
-  greeting: PropTypes.string
+  results: PropTypes.string
 };
 export default HelloWorld
