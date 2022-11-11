@@ -1,4 +1,4 @@
-- if @search_params['v2'] == 'true'
+- if @search_params.has_key?('v2')
   = react_component("HelloWorld", { greeting: @search.results })
 - else
   #search{ search_data(@search, @search_vertical) }

@@ -11,7 +11,7 @@
 
     %title #{@page_title}
 
-    - if @search_params['v2'] == 'true'
+    - if @search_params.has_key?('v2')
       = javascript_pack_tag 'application'
       = stylesheet_pack_tag 'application'
     - else
@@ -25,7 +25,7 @@
         = javascript_include_tag 'searches_ie_lt9'
 
   %body{ body_class_hash(@search.affiliate) }
-    - if @search_params['v2'] != 'true'
+    - if !@search_params.has_key?('v2')
       - if $git_info.show_header
         #git-info-header= render partial: 'shared/git_info_header'
       %a#skiplink{ href: '#main-content', tabindex: 1 }= t 'searches.skip_to_main_content'
