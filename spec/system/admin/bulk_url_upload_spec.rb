@@ -16,9 +16,10 @@ describe 'Bulk URL upload' do
   include ActiveJob::TestHelper
 
   subject(:do_bulk_upload) do
-    perform_enqueued_jobs do
+    perform_enqueued_jobs except: SearchgovDomainIndexerJob do
       visit url
       attach_file('bulk_upload_urls', upload_file)
+      check 'Reindex existing URLs?' if reindex
       click_button('Upload')
     end
   end
@@ -27,6 +28,7 @@ describe 'Bulk URL upload' do
   let(:upload_file) { file_fixture("txt/#{upload_filename}") }
   let(:urls) { File.open(upload_file).readlines.map(&:strip) }
   let(:searchgov_domain) { searchgov_domains(:agency_gov) }
+  let(:reindex) { false }
 
   before { allow(searchgov_domain).to receive(:index_urls) }
 
@@ -65,6 +67,23 @@ describe 'Bulk URL upload' do
         end
         do_bulk_upload
         expect(reindexed_domains).to eq(Set[searchgov_domain])
+      end
+
+      context 'when reindexing existing URLs' do
+        let(:reindex) { true }
+        let!(:existing_url) do
+          SearchgovUrl.create!(
+            url: 'https://agency.gov/',
+            last_crawled_at: 1.week.ago,
+            last_crawl_status: 'OK'
+          )
+        end
+
+        it 'reindexes the URLs' do
+          expect { do_bulk_upload }.
+            to change { existing_url.reload.enqueued_for_reindex }.
+            from(false).to(true)
+        end
       end
     end
 
