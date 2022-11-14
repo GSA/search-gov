@@ -3,6 +3,10 @@
 describe YoutubePlaylist do
   let(:youtube_playlist) { described_class.new }
 
+  describe 'schema' do
+    it { is_expected.to have_db_column(:safe_news_item_ids).of_type(:json) }
+  end
+
   it { is_expected.to belong_to :youtube_profile }
   it { is_expected.to validate_uniqueness_of(:playlist_id).
                 scoped_to(:youtube_profile_id) }

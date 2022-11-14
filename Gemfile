@@ -41,9 +41,7 @@ gem 'flickraw', '~> 0.9.9'
 gem 'active_scaffold', '~> 3.6.0'
 gem 'active_scaffold_export', '~> 3.4.0'
 gem "recaptcha", '~> 4.6.3', :require => "recaptcha/rails"
-# We may need to make config changes for newrelic_rpm:
-# https://cm-jira.usa.gov/browse/SRCH-3422
-gem 'newrelic_rpm', '~> 7.2.0'
+gem 'newrelic_rpm', '~> 8.12.0'
 gem 'american_date', '~> 1.1.1'
 # sassc-rails is now the Rails default. Consider replacing:
 # https://guides.rubyonrails.org/asset_pipeline.html
@@ -107,6 +105,8 @@ gem 'active_scheduler', '~> 0.7.0'
 gem 'retriable', '~> 3.1'
 gem 'cld3', '~> 3.4.3'
 gem 'activejob-uniqueness', '~> 0.2.1'
+gem 'selenium-webdriver'
+gem 'webdrivers', '~> 5.0'
 
 # Assets-related gems
 gem 'coffee-rails', '~> 5.0.0'
@@ -174,6 +174,7 @@ group :development, :test do
   gem 'awesome_print'
   gem 'puma', '~> 5.3'
   gem 'debug'
+  gem 'bootsnap', '~> 1.13', require: 'bootsnap/setup'
 end
 
 group :test do
@@ -191,5 +192,4 @@ group :test do
   gem 'rspec-activemodel-mocks', '~> 1.1'
   gem 'rspec_junit_formatter', '~> 0.4'
   gem 'rails-controller-testing', '~> 1.0'
-  gem 'webdrivers', '~> 5.0'
 end
