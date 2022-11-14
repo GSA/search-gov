@@ -3,7 +3,7 @@
 class Admin::SearchgovDomainsController < Admin::AdminController
   active_scaffold :searchgov_domain do |config|
     config.label = 'Search.gov Domains'
-    config.actions = %i[create list search export nested]
+    config.actions = %i[create update list search export nested]
     config.create.columns = [:domain]
     config.columns = %i[
       id domain canonical_domain status activity
@@ -21,6 +21,16 @@ class Admin::SearchgovDomainsController < Admin::AdminController
       inline: true,
       confirm: 'Are you sure you want to reindex this entire domain?'
     )
+
+    update_columns = %i[
+      js_renderer
+    ]
+    config.update.columns = []
+    enable_disable_column_regex = /^(is_|js_renderer)/.freeze
+    config.update.columns.add_subgroup 'Enable/Disable Settings' do |name_group|
+      name_group.add *update_columns.select { |column| column =~ enable_disable_column_regex }
+      name_group.collapsed = true
+    end
   end
 
   def after_create_save(record)
