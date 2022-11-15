@@ -2,7 +2,9 @@ class I14ySearch < FilterableSearch
   include SearchInitializer
   include Govboxable
   I14Y_SUCCESS = 200
-  attr_reader :collection, :matching_site_limits
+  attr_reader :aggregations,
+              :collection,
+              :matching_site_limits
 
   def initialize(options = {})
     super
@@ -18,7 +20,7 @@ class I14ySearch < FilterableSearch
       language: @affiliate.locale,
       query: formatted_query,
       size: detect_size,
-      offset: detect_offset,
+      offset: detect_offset
     }.merge!(filter_options)
 
     I14yCollections.search(search_options)
@@ -28,7 +30,7 @@ class I14ySearch < FilterableSearch
   end
 
   def filter_options
-    filter_options = { }
+    filter_options = {}
     filter_options[:sort_by_date] = 1 if @sort_by == 'date'
     filter_options[:min_timestamp] = @since if @since
     filter_options[:max_timestamp] = @until if @until
@@ -38,11 +40,11 @@ class I14ySearch < FilterableSearch
   end
 
   def detect_size
-    @limit ? @limit : @per_page
+    @limit || @per_page
   end
 
   def detect_offset
-    @offset ? @offset : ((@page - 1) * @per_page)
+    @offset || ((@page - 1) * @per_page)
   end
 
   def first_page?
@@ -54,31 +56,31 @@ class I14ySearch < FilterableSearch
   def handles
     handles = []
     handles += @affiliate.i14y_drawers.pluck(:handle) if @affiliate.gets_i14y_results
-    handles << 'searchgov' if affiliate.search_engine == 'SearchGov' || !(@affiliate.gets_i14y_results)
+    handles << 'searchgov' if affiliate.search_engine == 'SearchGov' || !@affiliate.gets_i14y_results
     handles.join(',')
   end
 
   def handle_response(response)
-    if response && response.status == I14Y_SUCCESS
-      @total = response.metadata.total
-      I14yPostProcessor.new(@enable_highlighting,
-                            response.results,
-                            @affiliate.excluded_urls_set).post_process_results
-      @results = paginate(response.results)
-      @startrecord = ((@page - 1) * @per_page) + 1
-      @endrecord = @startrecord + @results.size - 1
-      @spelling_suggestion = response.metadata.suggestion.text if response.metadata.suggestion.present?
-    end
+    return unless response && response.status == I14Y_SUCCESS
+
+    @total = response.metadata.total
+    I14yPostProcessor.new(@enable_highlighting,
+                          response.results,
+                          @affiliate.excluded_urls_set).post_process_results
+    @results = paginate(response.results)
+    @startrecord = ((@page - 1) * @per_page) + 1
+    @endrecord = @startrecord + @results.size - 1
+    @spelling_suggestion = response.metadata.suggestion.text if response.metadata.suggestion.present?
+    @aggregations = response.metadata.aggregations if response.metadata.aggregations.present?
   end
 
   def populate_additional_results
     @govbox_set = GovboxSet.new(query, affiliate, @options[:geoip_info], @highlight_options) if first_page?
   end
 
-
   def log_serp_impressions
     @modules |= @govbox_set.modules if @govbox_set
-    @modules << 'I14Y' if @total > 0
+    @modules << 'I14Y' if @total.positive?
   end
 
   def domains_scope_options
