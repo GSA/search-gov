@@ -9,12 +9,14 @@ describe I14ySearch do
   context 'when results are available' do
     let(:i14y_search) { described_class.new(affiliate: affiliate, query: 'marketplase', per_page: 20) }
 
-    it 'should return a response' do
+    it 'returns a response' do
       i14y_search.run
       expect(i14y_search.startrecord).to eq(1)
       expect(i14y_search.endrecord).to eq(20)
       expect(i14y_search.total).to eq(270)
       expect(i14y_search.spelling_suggestion).to eq('marketplace')
+      expect(i14y_search.aggregations).to match(array_including(hash_including('content_type')))
+      expect(i14y_search.aggregations).to match(array_including(hash_including('changed')))
       first = i14y_search.results.first
       expect(first.title).to eq('Marketplace')
       expect(first.link).to eq('https://www.healthcare.gov/glossary/marketplace')
@@ -24,10 +26,11 @@ describe I14ySearch do
   end
 
   context 'when sort_by=date' do
-    let(:i14y_search) { described_class.new(affiliate: affiliate,
-                                       sort_by: 'date',
-                                       per_page: 20,
-                                       query: 'marketplase') }
+    let(:i14y_search) {
+      described_class.new(affiliate: affiliate,
+                          sort_by: 'date',
+                          per_page: 20,
+                          query: 'marketplase') }
 
     it 'searches I14y with the appropriate params' do
       expect(I14yCollections).to receive(:search).with(hash_including(sort_by_date: 1))
@@ -35,11 +38,12 @@ describe I14ySearch do
     end
   end
 
-  context 'tag filters are present' do
+  context 'when tag filters are present' do
     let(:affiliate_with_filter_tags) { affiliates(:basic_affiliate) }
-    let(:i14y_search) { described_class.new(affiliate: affiliate_with_filter_tags,
-                                       per_page: 20,
-                                       query: 'testing tag filters') }
+    let(:i14y_search) {
+      described_class.new(affiliate: affiliate_with_filter_tags,
+                          per_page: 20,
+                          query: 'testing tag filters') }
 
     it 'searches I14y with the appropriate params' do
       expect(I14yCollections).to receive(:search).with(hash_including(ignore_tags: 'no way,nope', tags: 'important,must have'))
@@ -48,11 +52,12 @@ describe I14ySearch do
   end
 
   context 'when sort_by=date and tbs is specified' do
-    let(:i14y_search) { described_class.new(affiliate: affiliate,
-                                       sort_by: 'date',
-                                       tbs: 'm',
-                                       per_page: 20,
-                                       query: 'marketplase') }
+    let(:i14y_search) {
+      described_class.new(affiliate: affiliate,
+                          sort_by: 'date',
+                          tbs: 'm',
+                          per_page: 20,
+                          query: 'marketplase') }
 
     it 'searches I14y with the appropriate params' do
       expect(I14yCollections).to receive(:search).
@@ -62,16 +67,17 @@ describe I14ySearch do
   end
 
   context 'when sort_by=date and since_date and until_date are specified' do
-    let(:i14y_search) { described_class.new(affiliate: affiliate,
-                                       sort_by: 'date',
-                                       since_date: '07/28/2015',
-                                       until_date: '09/28/2015',
-                                       per_page: 20,
-                                       query: 'marketplase') }
+    let(:i14y_search) {
+      described_class.new(affiliate: affiliate,
+                          sort_by: 'date',
+                          since_date: '07/28/2015',
+                          until_date: '09/28/2015',
+                          per_page: 20,
+                          query: 'marketplase') }
 
     it 'searches I14y with the appropriate params' do
       expect(I14yCollections).to receive(:search).
-        with(hash_including(sort_by_date: 1, 
+        with(hash_including(sort_by_date: 1,
                             min_timestamp: DateTime.parse('07/28/2015').beginning_of_day,
                             max_timestamp: DateTime.parse('09/28/2015T23:59:59.999999999Z')))
       i14y_search.run
@@ -79,10 +85,11 @@ describe I14ySearch do
   end
 
   context 'when enable_highlighting is false' do
-    let(:i14y_search) { described_class.new(affiliate: affiliate,
-                                       enable_highlighting: false,
-                                       per_page: 20,
-                                       query: 'marketplase') }
+    let(:i14y_search) {
+      described_class.new(affiliate: affiliate,
+                          enable_highlighting: false,
+                          per_page: 20,
+                          query: 'marketplase') }
 
     it 'returns non highlighted results' do
       i14y_search.run
@@ -98,8 +105,8 @@ describe I14ySearch do
     let!(:site_domains) { affiliate.site_domains.create!(domain: 'nih.gov') }
     let(:i14y_search) do
       described_class.new(affiliate: affiliate,
-                     site_limits: 'http://nih.gov/foo',
-                     query: 'marketplase')
+                          site_limits: 'http://nih.gov/foo',
+                          query: 'marketplase')
     end
 
     it 'passes the sitelimits to i14y with out http/https' do
@@ -146,7 +153,7 @@ describe I14ySearch do
 
     it 'searches within those domains' do
       expect(I14yCollections).to receive(:search).
-        with(hash_including(query: 'marketplase site:nps.gov') )
+        with(hash_including(query: 'marketplase site:nps.gov'))
       i14y_search.run
     end
   end
@@ -157,7 +164,7 @@ describe I14ySearch do
 
     it 'excludes those domains' do
       expect(I14yCollections).to receive(:search).
-        with(hash_including(query: 'marketplase -site:excluded.gov') )
+        with(hash_including(query: 'marketplase -site:excluded.gov'))
       i14y_search.run
     end
   end
@@ -169,8 +176,8 @@ describe I14ySearch do
       context 'when they have existing I14y drawers' do
         it 'searches the searchgov drawer plus their existing drawers' do
           expect(I14yCollections).to receive(:search).
-            with(hash_including(handles: 'one,two,searchgov') )
-            i14y_search.run
+            with(hash_including(handles: 'one,two,searchgov'))
+          i14y_search.run
         end
 
         context 'when they do not receive i14y results' do
@@ -178,8 +185,8 @@ describe I14ySearch do
 
           it 'searches only the searchgov drawer' do
             expect(I14yCollections).to receive(:search).
-              with(hash_including(handles: 'searchgov') )
-              i14y_search.run
+              with(hash_including(handles: 'searchgov'))
+            i14y_search.run
           end
         end
       end
@@ -189,8 +196,8 @@ describe I14ySearch do
 
         it 'searches just the searchgov drawer' do
           expect(I14yCollections).to receive(:search).
-            with(hash_including(handles: 'searchgov') )
-            i14y_search.run
+            with(hash_including(handles: 'searchgov'))
+          i14y_search.run
         end
       end
     end
@@ -206,8 +213,8 @@ describe I14ySearch do
 
           it 'searches the searchgov drawer' do
             expect(I14yCollections).to receive(:search).
-              with(hash_including(handles: 'searchgov') )
-              i14y_search.run
+              with(hash_including(handles: 'searchgov'))
+            i14y_search.run
           end
         end
       end
