@@ -22,7 +22,7 @@ describe ImageSearch do
       described_class.new(affiliate: affiliate, query: 'corgis', cr: use_commercial_results)
     end
     let(:use_commercial_results) { nil }
-    let(:affiliate) { affiliates(:bing_image_search_enabled_affiliate) }
+    let(:affiliate) { affiliates(:basic_affiliate) }
     let(:search_engine) { nil }
     before do
       allow(affiliate).to receive(:search_engine).and_return(search_engine)
@@ -129,6 +129,7 @@ describe ImageSearch do
     subject(:image_search) { described_class.new(affiliate: affiliate, query: 'lsdkjflskjflskjdf') }
     let(:search_engine_adapter) { double(SearchEngineAdapter, default_module_tag: 'module_tag', results: [], spelling_suggestion: 'spel') }
     before do
+      affiliate.update_attribute(:is_bing_image_search_enabled, true)
       allow(SuggestionBlock).to receive(:exists?).and_return(suggestion_block_exists)
       allow(SearchEngineAdapter).to receive(:new).and_return(search_engine_adapter)
       allow(search_engine_adapter).to receive(:run)
