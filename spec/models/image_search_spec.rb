@@ -22,7 +22,7 @@ describe ImageSearch do
       described_class.new(affiliate: affiliate, query: 'corgis', cr: use_commercial_results)
     end
     let(:use_commercial_results) { nil }
-    let(:affiliate) { affiliates(:basic_affiliate) }
+    let(:affiliate) { affiliates(:bing_image_search_enabled_affiliate) }
     let(:search_engine) { nil }
     before do
       allow(affiliate).to receive(:search_engine).and_return(search_engine)
