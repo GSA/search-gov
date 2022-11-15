@@ -21,16 +21,7 @@ class Admin::SearchgovDomainsController < Admin::AdminController
       inline: true,
       confirm: 'Are you sure you want to reindex this entire domain?'
     )
-
-    update_columns = %i[
-      js_renderer
-    ]
-    config.update.columns = []
-    enable_disable_column_regex = /^(is_|js_renderer)/.freeze
-    config.update.columns.add_subgroup 'Enable/Disable Settings' do |name_group|
-      name_group.add *update_columns.select { |column| column =~ enable_disable_column_regex }
-      name_group.collapsed = true
-    end
+    config.update.columns = %I[js_renderer]
   end
 
   def after_create_save(record)
