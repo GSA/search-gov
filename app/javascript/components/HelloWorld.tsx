@@ -1,12 +1,18 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from "react";
 
 import { GovBanner, Header, Title, NavMenuButton, ExtendedNav, NavDropDownButton, Menu, Search, GridContainer, Grid } from '@trussworks/react-uswds';
 
 import '@trussworks/react-uswds/lib/uswds.css';
 import '@trussworks/react-uswds/lib/index.css';
 
-class HelloWorld extends React.Component {
+interface HelloWorldProps {
+  results: any;
+  params: any;
+};
+
+interface Nothing {};
+
+class HelloWorld extends React.Component<HelloWorldProps, Nothing> {
   render () {
     const testMenuItems = [
       <a href="#linkOne" key="one">
@@ -151,12 +157,10 @@ class HelloWorld extends React.Component {
       <Grid tablet={{ col: true }}><p>{this.props.results[4]['content']}</p></Grid>
     </Grid>
   </GridContainer>
+  <a href={`/search?${new URLSearchParams(this.props.params).toString()}`}>{JSON.stringify(this.props.params)}</a>
       </React.Fragment>
     );
   }
 }
 
-HelloWorld.propTypes = {
-  results: PropTypes.string
-};
-export default HelloWorld
+export default HelloWorld;
