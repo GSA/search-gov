@@ -12,10 +12,7 @@ describe Admin::SearchgovDomainsController do
 
     context 'when configuring Active Scaffold' do
       let(:update_columns) { config.update.columns }
-
-      let(:enable_disable_columns) do
-        %i[js_renderer]
-      end
+      let(:enable_disable_columns) { %i[js_renderer] }
 
       it 'contains the specified columns' do
         expect(update_columns.to_a).to match_array(enable_disable_columns)

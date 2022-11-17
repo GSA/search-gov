@@ -21,7 +21,8 @@ class Admin::SearchgovDomainsController < Admin::AdminController
       inline: true,
       confirm: 'Are you sure you want to reindex this entire domain?'
     )
-    config.update.columns = %I[js_renderer]
+    config.update.columns = %i[js_renderer]
+    config.columns[:js_renderer].label = 'Render Javascript'
   end
 
   def after_create_save(record)

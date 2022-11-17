@@ -224,10 +224,11 @@ Feature:  Administration
     Then I should see "Reindexing has been enqueued for www.state.gov"
 
     When I follow "Edit" within the first scaffold row
-    Then I should see "Js renderer"
-    When I check "Js renderer"
-    Then the "Js renderer" checkbox should be checked
+    Then I should see "Render Javascript"
+    When I check "Render Javascript"
+    Then the "Render Javascript" checkbox should be checked
     And I press "Update"
+    Then I should see "www.state.gov"
 
   @javascript
   Scenario: Adding a system alert
