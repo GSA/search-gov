@@ -3,7 +3,7 @@
 class Admin::SearchgovDomainsController < Admin::AdminController
   active_scaffold :searchgov_domain do |config|
     config.label = 'Search.gov Domains'
-    config.actions = %i[create list search export nested]
+    config.actions = %i[create update list search export nested]
     config.create.columns = [:domain]
     config.columns = %i[
       id domain canonical_domain status activity
@@ -21,6 +21,8 @@ class Admin::SearchgovDomainsController < Admin::AdminController
       inline: true,
       confirm: 'Are you sure you want to reindex this entire domain?'
     )
+    config.update.columns = %i[js_renderer]
+    config.columns[:js_renderer].label = 'Render Javascript'
   end
 
   def after_create_save(record)
