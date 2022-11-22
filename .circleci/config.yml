@@ -29,7 +29,7 @@ executors:
           MYSQL_ALLOW_EMPTY_PASSWORD: true
           MYSQL_ROOT_HOST: "%"
 
-      - image: redis:3.2
+      - image: redis:6.2
 
       - image: docker.elastic.co/elasticsearch/elasticsearch:<< parameters.elasticsearch_version >>
         environment:

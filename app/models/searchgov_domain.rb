@@ -26,6 +26,10 @@ class SearchgovDomain < ApplicationRecord
   scope :ok, -> { where(status: OK_STATUS) }
   scope :not_ok, -> { where.not(status: OK_STATUS).or(where(status: nil)) }
 
+  def to_label
+    domain
+  end
+
   def delay
     @delay ||= (robotex.delay("http://#{domain}/") || 1)
   end
