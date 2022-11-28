@@ -58,14 +58,18 @@ commands:
             google-chrome --version
             chromedriver --version
           name: Check install
-  prepare_database:
-    description: 'Prepare the test database'
-    steps:
-      - run: bundle exec rake db:setup
   install_js_dependencies:
     description: 'Install JavaScript dependencies'
     steps:
       - run: yarn install
+  prepare_database:
+    description: 'Prepare the test database'
+    steps:
+      - run: bundle exec rake db:setup
+  precompile_assets:
+    description: 'Pre-compile assets'
+    steps:
+      - run: bin/rails assets:precompile
 
 jobs:
   checkout_code:
@@ -185,14 +189,14 @@ jobs:
 
       - prepare_database
 
+      - precompile_assets
+
       - run:
           name: Run Tests
           command: |
             bundle exec rake usasearch:elasticsearch:create_indexes
 
             bundle exec rake tmp:create
-
-            bin/rails assets:precompile
 
             mkdir /tmp/test-results
             ./cc-test-reporter before-build
