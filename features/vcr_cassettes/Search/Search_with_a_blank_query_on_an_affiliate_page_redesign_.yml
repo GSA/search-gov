@@ -1,0 +1,523 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=popular%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 28 Nov 2022 20:16:16 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 6385174cb6084b76bb8722632c634983
+      Bingapis-Sessionid:
+      - BC3327C5113E4C679FBD9E3EAADAB57F
+      X-Msedge-Clientid:
+      - 299EF0CA5EBD6E821244E2A05F6D6F6D
+      X-Msapi-Userstate:
+      - fd36
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=252,MSDatacenter=CH1B
+      X-Cache:
+      - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      X-Msedge-Ref:
+      - 'Ref A: E30599A6F7BC42ECB64C500744B663D6 Ref B: CH1EDGE1418 Ref C: 2022-11-28T20:17:16Z'
+      Apim-Request-Id:
+      - 20856d73-e8e9-4060-9dbd-572bb9c43fac
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Mon, 28 Nov 2022 20:17:16 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "popular
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=popular+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 2980000000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "POPULAR NAME TOOL - House", "url": "https:\/\/uscode.house.gov\/popularnames\/popularnames.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/uscode.house.gov\/popularnames\/popularnames.htm",
+        "snippet": "The Popular Name Tool enables you to search or browse the United
+        States Code Table of Acts Cited by Popular Name. For printing purposes,
+        the PDF file is recommended. A detailed explanation of the Table is located
+        here. _____Act of_____ Pub. L. 111-226, Aug. 10, 2010,124 Stat. 2389. Short
+        title ...", "dateLastCrawled": "2022-11-25T07:27:00.0000000Z", "language":
+        "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Popular Baby Names by Decade - Social Security Administration",
+        "url": "https:\/\/www.ssa.gov\/oact\/babynames\/decades\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ssa.gov\/oact\/babynames\/decades", "snippet":
+        "Select Decade. Popular names by decade are determined the same way we determine
+        the popularity of a name during a single year. We count the number of occurrences
+        of each name during the decade, and then rank them in order of decreasing
+        frequency. Rank 1 is assigned to the name with the highest number of occurrences,
+        rank 2 to the name with the ...", "dateLastCrawled": "2022-11-27T07:15:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Top Names Over the Last 100 Years - Social Security Administration",
+        "url": "https:\/\/www.ssa.gov\/OACT\/babynames\/decades\/century.html", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ssa.gov\/OACT\/babynames\/decades\/century.html",
+        "snippet": "The following table shows the 100 most popular given names for
+        male and female babies born during the last 100 years, 1922-2021. For each
+        rank and sex, the table shows the name and the number of occurrences of that
+        name. These time-tested popular names were taken from a universe that includes
+        177,238,032 male births and 172,053,794 female births.", "dateLastCrawled":
+        "2022-11-26T15:12:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3", "name": "Popular
+        Baby Names - Social Security Administration", "url": "https:\/\/www.ssa.gov\/OACT\/babynames\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/OACT\/babynames",
+        "snippet": "Popular Names by Birth Year. Enter the Year and Popularity for
+        a List of the Most Popular Names. Any year after 1879. Birth Year. Popularity.
+        Name rankings may include: Percent of total births Number of births. Popularity
+        of a Name. See How the Popularity of a Name has Changed Over Time! ...", "dateLastCrawled":
+        "2022-11-25T10:32:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4", "name": "Fast
+        Facts: Most popular majors (37) - National Center for Education ...", "url":
+        "https:\/\/nces.ed.gov\/fastfacts\/display.asp?id=37", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/nces.ed.gov\/fastfacts\/display.asp?id=37",
+        "snippet": "In 2019–20, females earned 58 percent (1.2 million degrees) and
+        males earned 42 percent (861,300 degrees) of all bachelor’s degrees conferred.
+        Of the six fields in which the most bachelor’s degrees were conferred in 2019–20,
+        females earned the majority of degrees in four: health professions and related
+        programs (85 percent), psychology ...", "dateLastCrawled": "2022-11-26T04:48:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Popular Baby Names by Decade - Social Security Administration",
+        "url": "https:\/\/www.ssa.gov\/oact\/babynames\/decades\/index.html", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ssa.gov\/oact\/babynames\/decades\/index.html",
+        "snippet": "Select Decade. Popular names by decade are determined the
+        same way we determine the popularity of a name during a single year. We count
+        the number of occurrences of each name during the decade, and then rank them
+        in order of decreasing frequency. Rank 1 is assigned to the name with the
+        highest number of occurrences, rank 2 to the name with the ...", "dateLastCrawled":
+        "2022-11-25T09:51:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6", "name": "Popular
+        Names by State - Social Security Administration", "url": "https:\/\/www.ssa.gov\/OACT\/babynames\/state\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/OACT\/babynames\/state",
+        "snippet": "Popular Names in U.S. Territories. Popular Names by Decade.
+        Background information. We provide the top 100 names for a selected State
+        and year of birth, and we also provide the top 5 names by State, for all
+        States, for a selected year of birth.", "dateLastCrawled": "2022-11-26T14:44:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Popular Switch-On Ceremony Returning to Festival of Lights in Riverside",
+        "url": "https:\/\/riversideca.gov\/press\/popular-switch-ceremony-returning-festival-lights-riverside",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/riversideca.gov\/press\/popular-switch-ceremony-returning-festival-lights-riverside",
+        "snippet": "Popular Switch-On Ceremony Returning to Festival of Lights in
+        Riverside. Fireworks and festivities the day after Thanksgiving kick off celebration
+        of holiday cheer. RIVERSIDE, Calif. – The Festival of Lights will once again
+        kick off with fireworks and an exciting switch-on ceremony at the Mission
+        Inn Hotel & Spa at 4:30 p.m. on Nov. 25 to ...", "dateLastCrawled": "2022-11-26T08:15:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Top names of the 1880s - Social Security Administration", "url":
+        "https:\/\/www.ssa.gov\/OACT\/babynames\/decades\/names1880s.html", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ssa.gov\/OACT\/babynames\/decades\/names1880s.html",
+        "snippet": "The following table shows the 200 most popular given names for
+        male and female babies born during the 1880s. For each rank and sex, the table
+        shows the name and the number of occurrences of that name. The 200 most popular
+        names were taken from a universe that includes 1,177,157 male births and 1,399,566
+        female births", "dateLastCrawled": "2022-11-26T02:28:00.0000000Z", "language":
+        "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "POPULAR NAME INDEX A1", "url": "https:\/\/www.govinfo.gov\/content\/pkg\/STATUTE-125\/pdf\/STATUTE-125-BackMatter-1-Pg2177.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.govinfo.gov\/content\/pkg\/STATUTE-125\/pdf\/STATUTE-125-BackMatter-1-Pg2177.pdf",
+        "snippet": "POPULAR NAME INDEX A1 NOTE: Part 1 contains pages 1–1274; Part
+        2 contains pages 1275–2176. Each part contains entire Popular Name and Subject
+        Indexes. Page Page A Additional Continuing Appropriations Amendments, 2011.....
+        23 Agriculture, Rural Development, Food and Drug Administration,", "dateLastCrawled":
+        "2022-11-21T18:06:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "Top names of the 1950s - Social Security Administration", "url": "https:\/\/www.ssa.gov\/oact\/babynames\/decades\/names1950s.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/oact\/babynames\/decades\/names1950s.html",
+        "snippet": "The following table shows the 200 most popular given names for
+        male and female babies born during the 1950s. For each rank and sex, the table
+        shows the name and the number of occurrences of that name. The 200 most popular
+        names were taken from a universe that includes 20,520,492 male births and
+        19,734,680 female births", "dateLastCrawled": "2022-11-26T11:52:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "News Releases - Office of Public and Intergovernmental Affairs",
+        "url": "https:\/\/www.va.gov\/OPA\/PRESSREL\/pressrelease.cfm?id=5840", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.va.gov\/OPA\/PRESSREL\/pressrelease.cfm?id=5840",
+        "snippet": "WASHINGTON — Today, the Department of Veterans Affairs announced
+        that twelve VA senior leaders will receive 2022 Presidential Rank Awards (PRA)
+        – one of the most prestigious awards in the federal career civil service –
+        for their extraordinary service to Veterans, their families, caregivers, and
+        survivors. Chosen by President Biden, the ...", "dateLastCrawled": "2022-11-27T22:02:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Popular Medicare publications | Medicare", "url": "https:\/\/www.medicare.gov\/pub\/popular-medicare-publications",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.medicare.gov\/pub\/popular-medicare-publications",
+        "snippet": "Popular Medicare publications. General Information. Medicare
+        and You [PDF, 3394 KB] Revised: December 2021 Publication ID: 10050. Health
+        care choices. Your Guide to Choosing a Nursing Home [PDF, 11135 KB] Revised:
+        October 2019 Publication ID: 02174. Guide to Choosing a Hospital [PDF, 615
+        KB]", "dateLastCrawled": "2022-11-25T13:53:00.0000000Z", "language": "en",
+        "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Most Popular Services - ct", "url": "https:\/\/portal.ct.gov\/Most-Popular-Services",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/portal.ct.gov\/Most-Popular-Services",
+        "snippet": "Education Most Popular The Connecticut Education Bureau of Certification.
+        New teachers and potential teachers seeking certification can search for forms,
+        course requirements, teacher preparation and alternate routes to certification
+        programs. Agency: State Department of Education; COVID-19 Resources for Families
+        and Educators", "dateLastCrawled": "2022-11-26T21:23:00.0000000Z", "language":
+        "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Resources - U.S. Department of Defense", "url": "https:\/\/www.defense.gov\/Resources\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.defense.gov\/Resources",
+        "snippet": "Resources. Check out the resources available to service members
+        and their families, veterans, DOD civilians and the general public. Try FAQs
+        for answers to popular topics or submit a question.", "dateLastCrawled":
+        "2022-11-26T09:39:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "Veterans benefits 2020: Most popular state benefit - VA News", "url": "https:\/\/news.va.gov\/76439\/veterans-benefits-2020-popular-state-benefit\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/news.va.gov\/76439\/veterans-benefits-2020-popular-state-benefit",
+        "snippet": "The most popular state benefit available to New Mexico’s 154,000
+        Veterans, according to the New Mexico Department of Veterans Services, is
+        the Veterans State Property Tax Exemption. This is an exemption of up to a
+        $4,000 reduction in the taxable value of a Veteran’s primary residence for
+        county property taxation purposes. This benefit is ...", "dateLastCrawled":
+        "2022-11-24T20:52:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "Top names of the 1890s - Social Security Administration", "url": "https:\/\/www.ssa.gov\/oact\/babynames\/decades\/names1890s.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/oact\/babynames\/decades\/names1890s.html",
+        "snippet": "The following table shows the 200 most popular given names for
+        male and female babies born during the 1890s. For each rank and sex, the table
+        shows the name and the number of occurrences of that name. The 200 most popular
+        names were taken from a universe that includes 1,231,299 male births and 2,353,353
+        female births", "dateLastCrawled": "2022-11-25T17:12:00.0000000Z", "language":
+        "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Geologic History - Utah Geological Survey", "url": "https:\/\/geology.utah.gov\/popular\/geologic-history\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/geology.utah.gov\/popular\/geologic-history",
+        "snippet": "Geologic History. Today, Utah is a land of great geologic diversity
+        and scenery. Many factors have determined the evolution the state has undergone
+        through time. In a sense, it could be said that Utah has had many different
+        faces. Through geologic time, what is now Utah has been covered by oceans
+        and inland seas as well as completely dry land.", "dateLastCrawled": "2022-11-26T07:18:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Dinosaurs & Fossils - Utah Geological Survey", "url": "https:\/\/geology.utah.gov\/popular\/dinosaurs-fossils\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/geology.utah.gov\/popular\/dinosaurs-fossils",
+        "snippet": "Dinosaurs lived only during the Mesozoic Era, which is often called
+        the “Age of Dinosaurs.”. Utah has perhaps the best Mesozoic rock record in
+        the world. Other Mesozoic fossils found in Utah include remnants of marine
+        and land plants and animals. Utah is also home to Ice Age fossils, tracks
+        and tracksites, petrified wood, and trilobites.", "dateLastCrawled": "2022-11-26T04:13:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Top names of the 1960s - Social Security Administration", "url":
+        "https:\/\/www.ssa.gov\/OACT\/babynames\/decades\/names1960s.html", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ssa.gov\/OACT\/babynames\/decades\/names1960s.html",
+        "snippet": "The following table shows the 200 most popular given names for
+        male and female babies born during the 1960s. For each rank and sex, the table
+        shows the name and the number of occurrences of that name. The 200 most popular
+        names were taken from a universe that includes 19,613,744 male births and
+        18,901,349 female births", "dateLastCrawled": "2022-11-27T02:07:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Mon, 28 Nov 2022 20:17:17 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=popular%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 28 Nov 2022 20:16:17 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 6385174daf0346218ff84204335b0737
+      Bingapis-Sessionid:
+      - 4FEC1B751ACA4C41AC585B2D29BCEEF4
+      X-Msedge-Clientid:
+      - 1737BCCC039265C4291EAEA60242648D
+      X-Msapi-Userstate:
+      - ff99
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=162,MSDatacenter=CH1B
+      X-Cache:
+      - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      X-Msedge-Ref:
+      - 'Ref A: 2B75CF3926C74C68BE9216AAA1EFD6A2 Ref B: CH1EDGE1418 Ref C: 2022-11-28T20:17:17Z'
+      Apim-Request-Id:
+      - ee241b60-f031-4cb7-b9f3-4e697fd98780
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Mon, 28 Nov 2022 20:17:17 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "popular
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=popular+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 2980000000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "POPULAR NAME TOOL - House", "url": "https:\/\/uscode.house.gov\/popularnames\/popularnames.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/uscode.house.gov\/popularnames\/popularnames.htm",
+        "snippet": "The Popular Name Tool enables you to search or browse the United
+        States Code Table of Acts Cited by Popular Name. For printing purposes,
+        the PDF file is recommended. A detailed explanation of the Table is located
+        here. _____Act of_____ Pub. L. 111-226, Aug. 10, 2010,124 Stat. 2389. Short
+        title ...", "dateLastCrawled": "2022-11-25T07:27:00.0000000Z", "language":
+        "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Popular Baby Names by Decade - Social Security Administration",
+        "url": "https:\/\/www.ssa.gov\/oact\/babynames\/decades\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ssa.gov\/oact\/babynames\/decades", "snippet":
+        "Select Decade. Popular names by decade are determined the same way we determine
+        the popularity of a name during a single year. We count the number of occurrences
+        of each name during the decade, and then rank them in order of decreasing
+        frequency. Rank 1 is assigned to the name with the highest number of occurrences,
+        rank 2 to the name with the ...", "dateLastCrawled": "2022-11-27T07:15:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Popular Baby Names - Social Security Administration", "url":
+        "https:\/\/www.ssa.gov\/OACT\/babynames\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.ssa.gov\/OACT\/babynames", "snippet": "Popular Names by
+        Birth Year. Enter the Year and Popularity for a List of the Most Popular
+        Names. Any year after 1879. Birth Year. Popularity. Name rankings may include:
+        Percent of total births Number of births. Popularity of a Name. See How the
+        Popularity of a Name has Changed Over Time! ...", "dateLastCrawled": "2022-11-25T10:32:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Top Names Over the Last 100 Years - Social Security Administration",
+        "url": "https:\/\/www.ssa.gov\/OACT\/babynames\/decades\/century.html", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ssa.gov\/OACT\/babynames\/decades\/century.html",
+        "snippet": "The following table shows the 100 most popular given names for
+        male and female babies born during the last 100 years, 1922-2021. For each
+        rank and sex, the table shows the name and the number of occurrences of that
+        name. These time-tested popular names were taken from a universe that includes
+        177,238,032 male births and 172,053,794 female births.", "dateLastCrawled":
+        "2022-11-26T15:12:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4", "name": "Fast
+        Facts: Most popular majors (37) - National Center for Education ...", "url":
+        "https:\/\/nces.ed.gov\/fastfacts\/display.asp?id=37", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/nces.ed.gov\/fastfacts\/display.asp?id=37",
+        "snippet": "In 2019–20, females earned 58 percent (1.2 million degrees) and
+        males earned 42 percent (861,300 degrees) of all bachelor’s degrees conferred.
+        Of the six fields in which the most bachelor’s degrees were conferred in 2019–20,
+        females earned the majority of degrees in four: health professions and related
+        programs (85 percent), psychology ...", "dateLastCrawled": "2022-11-26T04:48:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Popular Baby Names by Decade - Social Security Administration",
+        "url": "https:\/\/www.ssa.gov\/oact\/babynames\/decades\/index.html", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ssa.gov\/oact\/babynames\/decades\/index.html",
+        "snippet": "Select Decade. Popular names by decade are determined the
+        same way we determine the popularity of a name during a single year. We count
+        the number of occurrences of each name during the decade, and then rank them
+        in order of decreasing frequency. Rank 1 is assigned to the name with the
+        highest number of occurrences, rank 2 to the name with the ...", "dateLastCrawled":
+        "2022-11-25T09:51:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6", "name": "Popular
+        Names by State - Social Security Administration", "url": "https:\/\/www.ssa.gov\/OACT\/babynames\/state\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/OACT\/babynames\/state",
+        "snippet": "Popular Names in U.S. Territories. Popular Names by Decade.
+        Background information. We provide the top 100 names for a selected State
+        and year of birth, and we also provide the top 5 names by State, for all
+        States, for a selected year of birth.", "dateLastCrawled": "2022-11-26T14:44:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Popular Switch-On Ceremony Returning to Festival of Lights in Riverside",
+        "url": "https:\/\/riversideca.gov\/press\/popular-switch-ceremony-returning-festival-lights-riverside",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/riversideca.gov\/press\/popular-switch-ceremony-returning-festival-lights-riverside",
+        "snippet": "Popular Switch-On Ceremony Returning to Festival of Lights in
+        Riverside. Fireworks and festivities the day after Thanksgiving kick off celebration
+        of holiday cheer. RIVERSIDE, Calif. – The Festival of Lights will once again
+        kick off with fireworks and an exciting switch-on ceremony at the Mission
+        Inn Hotel & Spa at 4:30 p.m. on Nov. 25 to ...", "dateLastCrawled": "2022-11-26T08:15:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Top names of the 1880s - Social Security Administration", "url":
+        "https:\/\/www.ssa.gov\/OACT\/babynames\/decades\/names1880s.html", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ssa.gov\/OACT\/babynames\/decades\/names1880s.html",
+        "snippet": "The following table shows the 200 most popular given names for
+        male and female babies born during the 1880s. For each rank and sex, the table
+        shows the name and the number of occurrences of that name. The 200 most popular
+        names were taken from a universe that includes 1,177,157 male births and 1,399,566
+        female births", "dateLastCrawled": "2022-11-26T02:28:00.0000000Z", "language":
+        "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "POPULAR NAME INDEX A1", "url": "https:\/\/www.govinfo.gov\/content\/pkg\/STATUTE-125\/pdf\/STATUTE-125-BackMatter-1-Pg2177.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.govinfo.gov\/content\/pkg\/STATUTE-125\/pdf\/STATUTE-125-BackMatter-1-Pg2177.pdf",
+        "snippet": "POPULAR NAME INDEX A1 NOTE: Part 1 contains pages 1–1274; Part
+        2 contains pages 1275–2176.Each part contains entire Popular Name and Subject
+        Indexes. Page Page A Additional Continuing Appropriations Amendments, 2011.....
+        23 Agriculture, Rural Development,", "dateLastCrawled": "2022-11-21T18:06:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Top names of the 1950s - Social Security Administration", "url":
+        "https:\/\/www.ssa.gov\/oact\/babynames\/decades\/names1950s.html", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ssa.gov\/oact\/babynames\/decades\/names1950s.html",
+        "snippet": "The following table shows the 200 most popular given names for
+        male and female babies born during the 1950s. For each rank and sex, the table
+        shows the name and the number of occurrences of that name. The 200 most popular
+        names were taken from a universe that includes 20,520,492 male births and
+        19,734,680 female births", "dateLastCrawled": "2022-11-26T11:52:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "News Releases - Office of Public and Intergovernmental Affairs",
+        "url": "https:\/\/www.va.gov\/OPA\/PRESSREL\/pressrelease.cfm?id=5840", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.va.gov\/OPA\/PRESSREL\/pressrelease.cfm?id=5840",
+        "snippet": "WASHINGTON — Today, the Department of Veterans Affairs announced
+        that twelve VA senior leaders will receive 2022 Presidential Rank Awards (PRA)
+        – one of the most prestigious awards in the federal career civil service –
+        for their extraordinary service to Veterans, their families, caregivers, and
+        survivors. Chosen by President Biden, the ...", "dateLastCrawled": "2022-11-27T22:02:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Popular Medicare publications | Medicare", "url": "https:\/\/www.medicare.gov\/pub\/popular-medicare-publications",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.medicare.gov\/pub\/popular-medicare-publications",
+        "snippet": "Popular Medicare publications. General Information. Medicare
+        and You [PDF, 3394 KB] Revised: December 2021 Publication ID: 10050. Health
+        care choices. Your Guide to Choosing a Nursing Home [PDF, 11135 KB] Revised:
+        October 2019 Publication ID: 02174. Guide to Choosing a Hospital [PDF, 615
+        KB]", "dateLastCrawled": "2022-11-25T13:53:00.0000000Z", "language": "en",
+        "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Most Popular Services - ct", "url": "https:\/\/portal.ct.gov\/Most-Popular-Services",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/portal.ct.gov\/Most-Popular-Services",
+        "snippet": "Education Most Popular The Connecticut Education Bureau of Certification.
+        New teachers and potential teachers seeking certification can search for forms,
+        course requirements, teacher preparation and alternate routes to certification
+        programs. Agency: State Department of Education; COVID-19 Resources for Families
+        and Educators", "dateLastCrawled": "2022-11-26T21:23:00.0000000Z", "language":
+        "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Resources - U.S. Department of Defense", "url": "https:\/\/www.defense.gov\/Resources\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.defense.gov\/Resources",
+        "snippet": "Resources. Check out the resources available to service members
+        and their families, veterans, DOD civilians and the general public. Try FAQs
+        for answers to popular topics or submit a question.", "dateLastCrawled":
+        "2022-11-26T09:39:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "Veterans benefits 2020: Most popular state benefit - VA News", "url": "https:\/\/news.va.gov\/76439\/veterans-benefits-2020-popular-state-benefit\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/news.va.gov\/76439\/veterans-benefits-2020-popular-state-benefit",
+        "snippet": "The most popular state benefit available to New Mexico’s 154,000
+        Veterans, according to the New Mexico Department of Veterans Services, is
+        the Veterans State Property Tax Exemption. This is an exemption of up to a
+        $4,000 reduction in the taxable value of a Veteran’s primary residence for
+        county property taxation purposes. This benefit is ...", "dateLastCrawled":
+        "2022-11-24T20:52:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "Top names of the 1890s - Social Security Administration", "url": "https:\/\/www.ssa.gov\/oact\/babynames\/decades\/names1890s.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/oact\/babynames\/decades\/names1890s.html",
+        "snippet": "The following table shows the 200 most popular given names for
+        male and female babies born during the 1890s. For each rank and sex, the table
+        shows the name and the number of occurrences of that name. The 200 most popular
+        names were taken from a universe that includes 1,231,299 male births and 2,353,353
+        female births", "dateLastCrawled": "2022-11-25T17:12:00.0000000Z", "language":
+        "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Geologic History - Utah Geological Survey", "url": "https:\/\/geology.utah.gov\/popular\/geologic-history\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/geology.utah.gov\/popular\/geologic-history",
+        "snippet": "Geologic History. Today, Utah is a land of great geologic diversity
+        and scenery. Many factors have determined the evolution the state has undergone
+        through time. In a sense, it could be said that Utah has had many different
+        faces. Through geologic time, what is now Utah has been covered by oceans
+        and inland seas as well as completely dry land.", "dateLastCrawled": "2022-11-26T07:18:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Dinosaurs & Fossils - Utah Geological Survey", "url": "https:\/\/geology.utah.gov\/popular\/dinosaurs-fossils\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/geology.utah.gov\/popular\/dinosaurs-fossils",
+        "snippet": "Dinosaurs lived only during the Mesozoic Era, which is often called
+        the “Age of Dinosaurs.”. Utah has perhaps the best Mesozoic rock record in
+        the world. Other Mesozoic fossils found in Utah include remnants of marine
+        and land plants and animals. Utah is also home to Ice Age fossils, tracks
+        and tracksites, petrified wood, and trilobites.", "dateLastCrawled": "2022-11-26T04:13:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Top names of the 1960s - Social Security Administration", "url":
+        "https:\/\/www.ssa.gov\/OACT\/babynames\/decades\/names1960s.html", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ssa.gov\/OACT\/babynames\/decades\/names1960s.html",
+        "snippet": "The following table shows the 200 most popular given names for
+        male and female babies born during the 1960s. For each rank and sex, the table
+        shows the name and the number of occurrences of that name. The 200 most popular
+        names were taken from a universe that includes 19,613,744 male births and
+        18,901,349 female births", "dateLastCrawled": "2022-11-27T02:07:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Mon, 28 Nov 2022 20:17:17 GMT
+recorded_with: VCR 6.1.0
