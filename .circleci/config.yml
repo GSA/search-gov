@@ -120,6 +120,10 @@ jobs:
       - ruby/install-deps:
           key: gems-ruby-<< parameters.ruby_version >>-v{{ .Environment.CACHE_VERSION }}
 
+      - run:
+          name: Install JavaScript dependencies
+          command: yarn install
+
       - install_chrome
 
       - prepare_database
@@ -185,6 +189,8 @@ jobs:
             bundle exec rake usasearch:elasticsearch:create_indexes
 
             bundle exec rake tmp:create
+
+            bin/rails assets:precompile
 
             mkdir /tmp/test-results
             ./cc-test-reporter before-build
