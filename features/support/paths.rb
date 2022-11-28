@@ -12,6 +12,8 @@ module NavigationHelpers
       search_path
     when /^(.*)'s search page$/
       search_path(:affiliate => $1)
+    when /^(.*)'s redesigned search page with "([^\"]*)" query$/
+      search_path(:affiliate => $1, :query => $2) + "&v2=true"
     when /^(.*)'s advanced search page$/
       advanced_search_path(:affiliate => $1)
     when /^(.*)'s search page with unsanitized "([^\"]*)" query$/
