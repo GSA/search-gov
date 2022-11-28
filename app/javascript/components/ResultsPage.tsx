@@ -74,51 +74,56 @@ class ResultsPage extends React.Component<ResultsPageProps, Nothing> {
               />
             </Grid>
           </Grid>
-      {this.props.results.length === 0 && <Grid row>
-        <Grid tablet={{ col: true }}><h4>Please enter a search term in the box above.</h4></Grid>
-      </Grid>}
+          {this.props.results.length === 0 &&
+            <Grid row>
+              <Grid tablet={{ col: true }}><h4>Please enter a search term in the box above.</h4></Grid>
+          </Grid>}
         </GridContainer>
         <GridContainer>
           <Grid row>
             <Grid col></Grid>
           </Grid>
           <Grid row>
-      <Grid col={4}><ExtendedNav
-          primaryItems={[
-            <a href="#two" key="two" className="usa-nav__link">
-              <span>Everything</span>
-            </a>,
-            <a href="#three" key="three" className="usa-nav__link">
-              <span>News</span>
-            </a>,
-            <a href="#three" key="three" className="usa-nav__link">
-            <span>Images</span>
-          </a>,
-            <a href="#three" key="three" className="usa-nav__link">
-            <span>Videos</span>
-          </a>,
-          ]}
-          secondaryItems={[]}
-          mobileExpanded={false}
-          onToggleMobileNav={() => {}}>
-        </ExtendedNav></Grid>
-    </Grid>
-    </GridContainer>
-    {this.props.results.map(result => {
-      return (
-        <GridContainer>
-          <Grid row>
-            <Grid tablet={{ col: true }}><a href= "#"><h4>{result['title']}</h4></a></Grid>
-          </Grid>
-          <Grid row>
-            <Grid tablet={{ col: true }}><a href= "#">{result['unescapedUrl']}</a></Grid>
-          </Grid>
-          <Grid row>
-            <Grid tablet={{ col: true }}><p>{result['content']}</p></Grid>
+            <Grid col={4}>
+              <ExtendedNav
+                primaryItems={[
+                  <a href="#two" key="two" className="usa-nav__link">
+                    <span>Everything</span>
+                  </a>,
+                  <a href="#three" key="three" className="usa-nav__link">
+                    <span>News</span>
+                  </a>,
+                  <a href="#three" key="three" className="usa-nav__link">
+                  <span>Images</span>
+                </a>,
+                  <a href="#three" key="three" className="usa-nav__link">
+                  <span>Videos</span>
+                </a>,
+                ]}
+                secondaryItems={[]}
+                mobileExpanded={false}
+                onToggleMobileNav={() => {}}
+              >
+              </ExtendedNav>
+            </Grid>
           </Grid>
         </GridContainer>
-      )
-    })}
+        {this.props.results.map(result => {
+          return (
+            <GridContainer>
+              <Grid row>
+                <Grid tablet={{ col: true }}><a href= "#"><h4>{result['title']}</h4></a></Grid>
+              </Grid>
+              <Grid row>
+                <Grid tablet={{ col: true }}><a href= "#">{result['unescapedUrl']}</a></Grid>
+              </Grid>
+              <Grid row>
+                <Grid tablet={{ col: true }}><p>{result['content']}</p></Grid>
+              </Grid>
+            </GridContainer>
+            )
+          }
+        )}
       </React.Fragment>
     );
   }
