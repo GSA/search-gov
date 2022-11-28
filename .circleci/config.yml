@@ -62,6 +62,10 @@ commands:
     description: 'Prepare the test database'
     steps:
       - run: bundle exec rake db:setup
+  install_js_dependencies:
+    description: 'Install JavaScript dependencies'
+    steps:
+      - run: yarn install
 
 jobs:
   checkout_code:
@@ -120,10 +124,6 @@ jobs:
       - ruby/install-deps:
           key: gems-ruby-<< parameters.ruby_version >>-v{{ .Environment.CACHE_VERSION }}
 
-      - run:
-          name: Install JavaScript dependencies
-          command: yarn install
-
       - install_chrome
 
       - prepare_database
@@ -178,6 +178,8 @@ jobs:
 
       - ruby/install-deps:
           key: gems-ruby-<< parameters.ruby_version >>-v{{ .Environment.CACHE_VERSION }}
+
+      - install_js_dependencies
 
       - install_chrome
 
