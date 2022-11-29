@@ -128,9 +128,13 @@ jobs:
       - ruby/install-deps:
           key: gems-ruby-<< parameters.ruby_version >>-v{{ .Environment.CACHE_VERSION }}
 
+      - install_js_dependencies
+
       - install_chrome
 
       - prepare_database
+
+      - precompile_assets
 
       - run:
           name: Run Tests
