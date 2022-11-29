@@ -83,6 +83,10 @@ class User < ApplicationRecord
   #   end
   # end
 
+  def foo
+    'foo'
+  end
+
   def complete?
     last_name.present? && first_name.present? && organization_name.present?
   end
