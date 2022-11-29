@@ -62,14 +62,14 @@ commands:
     description: 'Install JavaScript dependencies'
     steps:
       - run: yarn install
-  prepare_database:
-    description: 'Prepare the test database'
-    steps:
-      - run: bundle exec rake db:setup
   precompile_assets:
     description: 'Pre-compile assets'
     steps:
       - run: bin/rails assets:precompile
+  prepare_database:
+    description: 'Prepare the test database'
+    steps:
+      - run: bundle exec rake db:setup
 
 jobs:
   checkout_code:
