@@ -1,0 +1,18 @@
+!!!strict
+%html{ html_class_hash(@search.affiliate.language) }
+  %head
+    %meta{ charset: 'UTF-8' }
+    %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
+    %meta{ 'http-equiv' => 'X-UA-Compatible', :content => 'IE=edge' }
+    = render_robots_meta_tag
+    = attribution
+    != "<!-- aid: #{@search.affiliate.id} handle: #{@search.affiliate.name} -->"
+    = favicon_link_tag @search.affiliate.favicon_url.blank? ? '/favicon_affiliate.ico' : @search.affiliate.favicon_url
+
+    %title #{@page_title}
+
+    = javascript_pack_tag 'application'
+    = stylesheet_pack_tag 'application'
+
+  %body{ body_class_hash(@search.affiliate) }
+    #main-content{ tabindex: -1 }= yield

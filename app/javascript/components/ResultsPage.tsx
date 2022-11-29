@@ -79,6 +79,7 @@ class ResultsPage extends React.Component<ResultsPageProps, Nothing> {
               <Grid tablet={{ col: true }}><h4>Please enter a search term in the box above.</h4></Grid>
           </Grid>}
         </GridContainer>
+
         <GridContainer>
           <Grid row>
             <Grid col></Grid>
@@ -108,6 +109,7 @@ class ResultsPage extends React.Component<ResultsPageProps, Nothing> {
             </Grid>
           </Grid>
         </GridContainer>
+
         {this.props.results.map(result => {
           return (
             <GridContainer>

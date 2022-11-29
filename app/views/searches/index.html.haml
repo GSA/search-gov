@@ -1,24 +1,21 @@
-- if @search_params.has_key?('v2')
-  = react_component("ResultsPage", { results: @search.results, params: @search_params })
-- else
-  #search{ search_data(@search, @search_vertical) }
-    %h2= t 'searches.search_results'
-    = render partial: 'alert', locals: { affiliate: @affiliate } if @affiliate.alert && @affiliate.alert.renderable?
-    - if @search.results.blank?
-      = render partial: 'no_results', locals: { search: @search }
-    = spelling_suggestion(@search, @search_options)
-    = matching_site_limits @search, @search_params if @search.results.present?
-    = render partial: 'best_bets', locals: { search: @search } if @search.has_best_bets?
-    = render partial: 'med_topic', locals: { search: @search } if @search.med_topic.present?
-    = render partial: 'jobs', locals: { search: @search } if @search.modules.include? 'JOBS'
-    = render partial: 'tweets', locals: { search:  @search } if @search.has_tweets?
-    = render partial: 'govbox_video_news_items', locals: { search:  @search, search_params: @search_params } if @search.has_video_news_items?
-    = render partial: 'govbox_news_items', locals: { search:  @search } if @search.has_fresh_news_items?
+#search{ search_data(@search, @search_vertical) }
+  %h2= t 'searches.search_results'
+  = render partial: 'alert', locals: { affiliate: @affiliate } if @affiliate.alert && @affiliate.alert.renderable?
+  - if @search.results.blank?
+    = render partial: 'no_results', locals: { search: @search }
+  = spelling_suggestion(@search, @search_options)
+  = matching_site_limits @search, @search_params if @search.results.present?
+  = render partial: 'best_bets', locals: { search: @search } if @search.has_best_bets?
+  = render partial: 'med_topic', locals: { search: @search } if @search.med_topic.present?
+  = render partial: 'jobs', locals: { search: @search } if @search.modules.include? 'JOBS'
+  = render partial: 'tweets', locals: { search:  @search } if @search.has_tweets?
+  = render partial: 'govbox_video_news_items', locals: { search:  @search, search_params: @search_params } if @search.has_video_news_items?
+  = render partial: 'govbox_news_items', locals: { search:  @search } if @search.has_fresh_news_items?
 
-    - if @search.results.present?
-      = render partial: 'organic_results', locals: { search: @search }
-      = render partial: 'offer_other_web_results', locals: { search:  @search }
-      = render partial: 'federal_register_documents', locals: { search: @search } if @search.has_federal_register_documents?
-      = render partial: 'govbox_news_items', locals: { search:  @search } if @search.has_news_items? and !@search.has_fresh_news_items?
-      = render(partial: 'related_searches', locals: { search: @search }) if @search.related_search.present?
-      = render partial: 'pagination', locals: { search: @search }
+  - if @search.results.present?
+    = render partial: 'organic_results', locals: { search: @search }
+    = render partial: 'offer_other_web_results', locals: { search:  @search }
+    = render partial: 'federal_register_documents', locals: { search: @search } if @search.has_federal_register_documents?
+    = render partial: 'govbox_news_items', locals: { search:  @search } if @search.has_news_items? and !@search.has_fresh_news_items?
+    = render(partial: 'related_searches', locals: { search: @search }) if @search.related_search.present?
+    = render partial: 'pagination', locals: { search: @search }

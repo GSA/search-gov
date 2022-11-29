@@ -50,6 +50,17 @@ describe SearchesController do
                       hash_including(affiliate: affiliate.name, query: 'social security')) }
     end
 
+    context 'when searching in English (redesign)' do
+      before do
+        get :index, params: { query: 'social security', affiliate: 'usagov', cr: 'true', v2: 'true' }
+      end
+
+      it 'renders the React templates' do
+        expect(response).to render_template 'index_v2'
+        expect(response).to render_template 'layouts/searches_v2'
+      end
+    end
+
     context 'when searching on a Spanish site' do
       it 'assigns locale to :es' do
         expect(I18n).to receive(:locale=).with(:es)

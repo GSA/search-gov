@@ -126,7 +126,7 @@ class ApplicationController < ActionController::Base
     @search_params = ActiveSupport::HashWithIndifferentAccess.new(query: @search.query, affiliate: @affiliate.name)
     @search_params.merge!(sitelimit: permitted_params[:sitelimit]) if permitted_params[:sitelimit].present?
     @search_params.merge!(dc: permitted_params[:dc]) if permitted_params[:dc].present?
-    @search_params.merge!(v2: true) if permitted_params[:v2].present?
+    @search_params.merge!(v2: permitted_params[:v2]) if permitted_params[:v2].present?
     if @search.is_a? FilterableSearch
       @search_params.merge!(channel: @search.rss_feed.id) if @search.is_a?(NewsSearch) && @search.rss_feed
       @search_params.merge!(tbs: @search.tbs) if @search.tbs

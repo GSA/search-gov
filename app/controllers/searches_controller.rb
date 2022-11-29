@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class SearchesController < ApplicationController
+  layout :searches_layout
+
   skip_before_action :verify_authenticity_token, :set_default_locale
 
   before_action :set_affiliate, :set_locale_based_on_affiliate_locale
@@ -40,7 +42,6 @@ class SearchesController < ApplicationController
     respond_to { |format| format.html { render template } }
   end
 
-
   def news
     @search = NewsSearch.new(@search_options)
     @search.run
@@ -65,7 +66,9 @@ class SearchesController < ApplicationController
   private
 
   def pick_klass_vertical_template
-    if get_commercial_results?
+    if v2? && get_commercial_results?
+      [WebSearch, :web, :index_v2]
+    elsif get_commercial_results?
       [WebSearch, :web, :index]
     elsif gets_i14y_results?
       [I14ySearch, :i14y, :i14y]
@@ -132,5 +135,17 @@ class SearchesController < ApplicationController
   def docs_search_klass
     return I14ySearch if gets_i14y_results?
     @search_options[:document_collection] ? SiteSearch : WebSearch
+  end
+
+  def v2?
+    permitted_params[:v2] == 'true'
+  end
+
+  def searches_layout
+    if permitted_params[:v2] == 'true'
+      'searches_v2'
+    else
+      'searches'
+    end
   end
 end
