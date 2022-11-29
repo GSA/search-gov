@@ -66,14 +66,14 @@ class SearchesController < ApplicationController
   private
 
   def pick_klass_vertical_template
-    if v2? && get_commercial_results?
-      [WebSearch, :web, :index_v2]
-    elsif get_commercial_results?
+    if get_commercial_results?
       [WebSearch, :web, :index]
     elsif gets_i14y_results?
       [I14ySearch, :i14y, :i14y]
     elsif @affiliate.gets_blended_results
       [BlendedSearch, :blended, :blended]
+    elsif v2?
+      [WebSearch, :web, :index_v2]
     else
       [WebSearch, :web, :index]
     end
@@ -142,10 +142,6 @@ class SearchesController < ApplicationController
   end
 
   def searches_layout
-    if permitted_params[:v2] == 'true'
-      'searches_v2'
-    else
-      'searches'
-    end
+    v2? ? 'searches_v2' : 'searches'
   end
 end
