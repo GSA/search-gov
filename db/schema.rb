@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_10_143533) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_11_205138) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -86,7 +86,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_10_143533) do
     t.boolean "dap_enabled", default: true, null: false
     t.text "dublin_core_mappings", size: :medium
     t.boolean "gets_blended_results", default: false, null: false
-    t.boolean "is_bing_image_search_enabled", default: true, null: false
+    t.boolean "is_bing_image_search_enabled", default: false, null: false
     t.boolean "is_federal_register_document_govbox_enabled", default: false, null: false
     t.string "google_cx"
     t.string "google_key"
