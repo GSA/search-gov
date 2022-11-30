@@ -119,8 +119,8 @@ Feature: Search
 
   Scenario: Visiting Spanish affiliate search with multiple domains
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | first_name | last_name | domains                | locale | is_image_search_navigable |
-      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | whitehouse.gov,usa.gov | es     | true                      |
+      | display_name | name    | contact_email | first_name | last_name | domains                | locale | is_image_search_navigable | is_bing_image_search_enabled |
+      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | whitehouse.gov,usa.gov | es     | true                      | true                         |
     When I am on bar.gov's search page
     And I fill in "Ingrese su búsqueda" with "president"
     And I press "Buscar" within the search box
@@ -342,8 +342,8 @@ Feature: Search
 
   Scenario: Searching with malformed query
     Given the following Affiliates exist:
-      | display_name | name       | contact_email | first_name | last_name | is_image_search_navigable |
-      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | true                      |
+      | display_name | name       | contact_email | first_name | last_name | is_image_search_navigable | is_bing_image_search_enabled |
+      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | true                      | true                         |
     When I am on agency.gov's search page
     And I search for "<b>hello</b><script>script</script>"
     Then I should see "hello"

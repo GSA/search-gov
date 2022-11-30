@@ -1,8 +1,8 @@
 Feature: Manage Display
   Scenario: Editing Sidebar Settings on a new site
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
+      | display_name | name       | contact_email   | first_name | last_name | is_bing_image_search_enabled |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | true                         |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Display page
     Then I should see "Image Search Label 0"

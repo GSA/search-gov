@@ -223,6 +223,13 @@ Feature:  Administration
     And I wait for ajax
     Then I should see "Reindexing has been enqueued for www.state.gov"
 
+    When I follow "Edit" within the first scaffold row
+    Then I should see "Render Javascript"
+    When I check "Render Javascript"
+    Then the "Render Javascript" checkbox should be checked
+    And I press "Update"
+    Then I should see "www.state.gov"
+
   @javascript
   Scenario: Adding a system alert
     When I go to the admin home page
