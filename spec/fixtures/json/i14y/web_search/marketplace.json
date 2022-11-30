@@ -7,7 +7,29 @@
     "suggestion": {
       "text": "marketplace",
       "highlighted": "marketplace"
-    }
+    },
+    "aggregations": [
+      {
+          "content_type": [
+              {
+                  "agg_key": "article",
+                  "doc_count": 1
+              }
+          ]
+      },
+      {
+          "changed": [
+              {
+                  "agg_key": "Last Year",
+                  "doc_count": 1,
+                  "to": 1664582400000.0,
+                  "from": 1635724800000.0,
+                  "to_as_string": "10/1/2022",
+                  "from_as_string": "11/1/2021"
+              }
+          ]
+      }
+    ]
   },
   "results": [
     {
