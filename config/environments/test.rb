@@ -8,18 +8,21 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # Turn false under Spring and add config.action_view.cache_template_loading = true.
   config.cache_classes = true
 
-  # Do not eager load code on boot. This avoids loading your whole application
-  # just for the purpose of running a single test. If you are using a tool that
-  # preloads Rails for running tests, you may have to set it to true.
+  # Eager loading loads your whole application. When running a single test locally,
+  # this probably isn't necessary. It's a good idea to do in a continuous integration
+  # system, or in some way before deploying your code.
+  #
+  # We're disabling it in all test environments to ensure the database includes
+  # the necessary fixture data before the application code is loaded.
   config.eager_load = false
-  config.enable_dependency_loading = true
 
   # Configure public file server for tests with Cache-Control for performance.
   config.public_file_server.enabled = true
   config.public_file_server.headers = {
-    'Cache-Control' => "public, max-age=#{1.hour.to_i}"
+    "Cache-Control" => "public, max-age=#{1.hour.to_i}"
   }
 
   # Show full error reports and disable caching.
@@ -38,20 +41,13 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.perform_deliveries = true
-
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
 
   # Print deprecation notices to the stderr.
-  # config.active_support.deprecation = :stderr
-
-  # Temporarily raising errors until we are on Rails 7, to ensure we don't
-  # introduce any more incompatible code:
-  config.active_support.deprecation = :raise
-
+  config.active_support.deprecation = :stderr
 
   # Raise exceptions for disallowed deprecations.
   config.active_support.disallowed_deprecation = :raise
