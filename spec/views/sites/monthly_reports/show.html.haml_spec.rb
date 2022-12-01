@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'sites/monthly_reports/show.html.haml' do
+describe 'sites/monthly_reports/show' do
   fixtures :affiliates, :users, :search_modules
   let(:site) { affiliates(:basic_affiliate) }
 

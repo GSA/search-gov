@@ -21,7 +21,7 @@ class HumanSessionsController < ApplicationController
       record_captcha_activity('failure')
     end
 
-    redirect_to(redirect_destination)
+    redirect_to(redirect_destination, allow_other_host: true)
   end
 
   private

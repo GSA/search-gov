@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
 
   def redirect_unless_affiliate
     unless @affiliate
-      redirect_to(PAGE_NOT_FOUND) and return
+      redirect_to(PAGE_NOT_FOUND, allow_other_host: true) and return
     end
   end
 
