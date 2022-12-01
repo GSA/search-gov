@@ -56,6 +56,8 @@ module Usasearch
     config.autoload_paths += Dir[config.root.join('app', 'models', 'elastic_data').to_s]
     config.autoload_paths += Dir[config.root.join('app', 'models', 'logstash_queries').to_s]
 
+    config.autoload_paths += Dir[config.root.join('app', 'mailers').to_s]
+
     config.middleware.use RejectInvalidRequestUri
     config.middleware.use DowncaseRoute
     config.middleware.use AdjustClientIp
