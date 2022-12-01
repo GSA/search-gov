@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class SearchesController < ApplicationController
-  layout :searches_layout
-
   skip_before_action :verify_authenticity_token, :set_default_locale
 
   before_action :set_affiliate, :set_locale_based_on_affiliate_locale
@@ -23,8 +21,9 @@ class SearchesController < ApplicationController
     @page_title = @search.query
     set_search_page_title
     set_search_params
+    layout = template == :index_v2 ? 'searches_v2' : 'searches'
     respond_to do |format|
-      format.html { render template }
+      format.html { render template, layout: layout }
       format.json { render :json => @search }
     end
   end
@@ -139,9 +138,5 @@ class SearchesController < ApplicationController
 
   def v2?
     permitted_params[:v2] == 'true'
-  end
-
-  def searches_layout
-    v2? ? 'searches_v2' : 'searches'
   end
 end
