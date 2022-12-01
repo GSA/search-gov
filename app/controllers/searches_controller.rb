@@ -14,14 +14,13 @@ class SearchesController < ApplicationController
   include QueryRoutableController
 
   def index
-    search_klass, @search_vertical, template = pick_klass_vertical_template
+    search_klass, @search_vertical, template, layout = pick_klass_vertical_template
     @search = search_klass.new(@search_options.merge(geoip_info: GeoipLookup.lookup(request.remote_ip)))
     @search.run
     @form_path = search_path
     @page_title = @search.query
     set_search_page_title
     set_search_params
-    layout = template == :index_v2 ? 'searches_v2' : 'searches'
     respond_to do |format|
       format.html { render template, layout: layout }
       format.json { render :json => @search }
@@ -66,15 +65,15 @@ class SearchesController < ApplicationController
 
   def pick_klass_vertical_template
     if get_commercial_results?
-      [WebSearch, :web, :index]
+      [WebSearch, :web, :index, 'searches']
     elsif gets_i14y_results?
-      [I14ySearch, :i14y, :i14y]
+      [I14ySearch, :i14y, :i14y, 'searches']
     elsif @affiliate.gets_blended_results
-      [BlendedSearch, :blended, :blended]
+      [BlendedSearch, :blended, :blended, 'searches']
     elsif v2?
-      [WebSearch, :web, :index_v2]
+      [WebSearch, :web, :index_v2, 'searches_v2']
     else
-      [WebSearch, :web, :index]
+      [WebSearch, :web, :index, 'searches']
     end
   end
 
