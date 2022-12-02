@@ -52,12 +52,12 @@ describe SearchesController do
 
     context 'when searching in English (redesign)' do
       before do
-        get :index, params: { query: 'social security', affiliate: 'usagov', v2: 'true' }
+        get :index, params: { query: 'social security', affiliate: 'usagov', redesign: 'true' }
       end
 
       it 'renders the React templates' do
-        expect(response).to render_template 'index_v2'
-        expect(response).to render_template 'layouts/searches_v2'
+        expect(response).to render_template 'index_redesign'
+        expect(response).to render_template 'layouts/searches_redesign'
       end
     end
 

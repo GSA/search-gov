@@ -70,8 +70,8 @@ class SearchesController < ApplicationController
       [I14ySearch, :i14y, :i14y, 'searches']
     elsif @affiliate.gets_blended_results
       [BlendedSearch, :blended, :blended, 'searches']
-    elsif v2?
-      [WebSearch, :web, :index_v2, 'searches_v2']
+    elsif redesign?
+      [WebSearch, :web, :index_redesign, 'searches_redesign']
     else
       [WebSearch, :web, :index, 'searches']
     end
@@ -135,7 +135,7 @@ class SearchesController < ApplicationController
     @search_options[:document_collection] ? SiteSearch : WebSearch
   end
 
-  def v2?
-    permitted_params[:v2] == 'true'
+  def redesign?
+    permitted_params[:redesign] == 'true'
   end
 end
