@@ -7,11 +7,10 @@ dgsearch_rails_database :usasearch do
   group 'www-data'
 end
 
-# Install JavaScript dependencies and pre-compile assets.
-execute 'Install JavaScript dependencies and pre-compile assets' do
+execute 'Pre-compile assets' do
   cwd release_path
   environment NODE_ENV: 'production'
-  command "sudo su search -c 'yarn install && RAILS_ENV=#{rails_env} bundle exec rake assets:precompile'"
+  command "sudo su search -c 'RAILS_ENV=#{rails_env} bundle exec rake assets:precompile'"
 end
 
 # A very small subset of the assets need to be available
