@@ -1,5 +1,3 @@
-/* eslint-disable global-require semi */
-
 module.exports = {
   plugins: [
     require('postcss-import'),

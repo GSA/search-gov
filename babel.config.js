@@ -4,6 +4,7 @@ module.exports = function (api) {
   const isDevelopmentEnv = api.env('development');
   const isProductionEnv = api.env('production');
   const isTestEnv = api.env('test');
+
   const changesOnDefault = {
     presets: [
       [
@@ -21,9 +22,11 @@ module.exports = function (api) {
         }
       ],
       process.env.WEBPACK_SERVE && 'react-refresh/babel'
-    ].filter(Boolean),
+    ].filter(Boolean)
   };
+
   resultConfig.presets = [...resultConfig.presets, ...changesOnDefault.presets];
-  resultConfig.plugins = [...resultConfig.plugins, ...changesOnDefault.plugins]; 
+  resultConfig.plugins = [...resultConfig.plugins, ...changesOnDefault.plugins];
+
   return resultConfig;
 };
