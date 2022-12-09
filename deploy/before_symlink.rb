@@ -7,6 +7,7 @@ dgsearch_rails_database :usasearch do
   group 'www-data'
 end
 
+# JavaScript dependency management will be moved to usasearch-cookbooks in https://cm-jira.usa.gov/browse/SRCH-3631
 execute 'Install JavaScript dependencies and pre-compile assets' do
   cwd release_path
   environment NODE_ENV: 'production'
