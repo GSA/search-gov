@@ -451,11 +451,3 @@ Feature: Search
     And I search for "qeury"
     Then I should see "Showing results for query"
     And I should see "Search instead for qeury"
-
-  @javascript
-  Scenario: Search with a blank query on an affiliate page (redesign)
-    Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | first_name | last_name |
-      | bar site         | bar.gov          | aff@bar.gov           | John       | Bar       |
-    When I am on bar.gov's redesigned search page with "" query
-    Then I should see "Please enter a search term in the box above."

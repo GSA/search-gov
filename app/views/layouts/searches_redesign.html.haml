@@ -7,7 +7,7 @@
     = render_robots_meta_tag
     = attribution
     != "<!-- aid: #{@search.affiliate.id} handle: #{@search.affiliate.name} -->"
-    = favicon_link_tag @search.affiliate.favicon_url.blank? ? '/favicon_affiliate.ico' : @search.affiliate.favicon_url
+    = favicon_link_tag favicon_url(@search.affiliate.favicon_url)
 
     %title #{@page_title}
 
