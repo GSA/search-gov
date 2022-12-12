@@ -16,7 +16,6 @@ Use [RVM](https://rvm.io/) to install the version of Ruby specified in [.ruby-ve
 
 ### NodeJS
 
-
 Use [NVM](https://github.com/nvm-sh/nvm#installing-and-updating) to install the version of NodeJS specified in the [.nvmrc](/.nvmrc). 
 
 ### Docker Services
