@@ -5,7 +5,7 @@ require 'spec_helper'
 describe AffiliateHelper do
   describe '#favicon_url' do
     context 'when a favicon URL is passed in' do
-      let(:url) { '/custon_favicon.ico' }
+      let(:url) { '/custom_favicon.ico' }
 
       it 'returns the URL' do
         expect(favicon_url(url)).to eq(url)
