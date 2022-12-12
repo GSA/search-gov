@@ -1,5 +1,5 @@
 module.exports = function (api) {
-  // eslint-disable-line global-require
+  // eslint-disable-next-line global-require
   const defaultConfigFunc = require('shakapacker/package/babel/preset.js');
   const resultConfig = defaultConfigFunc(api);
   const isDevelopmentEnv = api.env('development');
