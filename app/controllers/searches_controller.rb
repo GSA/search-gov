@@ -14,7 +14,7 @@ class SearchesController < ApplicationController
   include QueryRoutableController
 
   def index
-    search_klass, @search_vertical, template, layout = pick_klass_vertical_template
+    search_klass, @search_vertical, template, layout = pick_klass_vertical_template_layout
     @search = search_klass.new(@search_options.merge(geoip_info: GeoipLookup.lookup(request.remote_ip)))
     @search.run
     @form_path = search_path
@@ -66,7 +66,7 @@ class SearchesController < ApplicationController
   # Temporarily disabling this cop until this method is refactored in
   # upcoming changes for the SERP redesign.
   # rubocop:disable Metrics/MethodLength
-  def pick_klass_vertical_template
+  def pick_klass_vertical_template_layout
     if get_commercial_results?
       [WebSearch, :web, :index, 'searches']
     elsif gets_i14y_results?
