@@ -1,8 +1,8 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe NewsSearch do
-  fixtures :affiliates, :rss_feed_urls, :rss_feeds, :navigations, :news_items, :youtube_profiles
-
   let(:affiliate) { affiliates(:basic_affiliate) }
 
   before(:each) do
@@ -14,16 +14,18 @@ describe NewsSearch do
   describe '#initialize(options)' do
     let(:feed) { affiliate.rss_feeds.first }
 
-    def filterable_search_options
-      { affiliate: affiliate, channel: feed.id }
+    let(:filterable_search_options) do
+      { affiliate: affiliate,
+        channel: feed.id }
     end
 
     it_behaves_like 'an initialized filterable search'
 
     context 'when options does not include sort_by' do
       subject(:search) { described_class.new filterable_search_options }
-      its(:sort_by_relevance?) { should be false }
-      its(:sort) { should eq('published_at:desc') }
+
+      its(:sort_by_relevance?) { is_expected.to be false }
+      its(:sort) { is_expected.to eq('published_at:desc') }
     end
 
     context 'when a valid RSS feed is specified' do

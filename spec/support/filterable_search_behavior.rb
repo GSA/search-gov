@@ -125,6 +125,25 @@ shared_examples 'an initialized filterable search' do
     end
     its(:since) { should be_nil }
   end
+
+  context 'when facet filters are present' do
+    subject(:test_search) do
+      described_class.new filterable_search_options.
+        merge(audience: 'everyone',
+              content_type: 'article',
+              mime_type: 'application/pdf',
+              searchgov_custom1: 'custom1',
+              searchgov_custom2: 'custom2',
+              searchgov_custom3: 'custom3')
+    end
+
+    its(:audience) { is_expected.to eq('everyone') }
+    its(:content_type) { is_expected.to eq('article') }
+    its(:mime_type) { is_expected.to eq('application/pdf') }
+    its(:searchgov_custom1) { is_expected.to eq('custom1') }
+    its(:searchgov_custom2) { is_expected.to eq('custom2') }
+    its(:searchgov_custom3) { is_expected.to eq('custom3') }
+  end
 end
 
 shared_examples 'a runnable filterable search' do

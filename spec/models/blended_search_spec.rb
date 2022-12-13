@@ -1,11 +1,11 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe BlendedSearch do
-  fixtures :affiliates
-
   let(:affiliate) { affiliates(:usagov_affiliate) }
 
-  def filterable_search_options
+  let(:filterable_search_options) do
     { affiliate: affiliate,
       enable_highlighting: true,
       limit: 20,
@@ -18,6 +18,7 @@ describe BlendedSearch do
 
     context 'when options does not include sort_by' do
       subject(:search) { described_class.new filterable_search_options }
+
       its(:sort_by_relevance?) { should be true }
       its(:sort) { should be_nil }
     end

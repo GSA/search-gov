@@ -5,7 +5,13 @@ class FilterableSearch < Search
   class_attribute :default_sort_by
   self.default_sort_by = 'r'.freeze
 
-  attr_reader :since,
+  attr_reader :audience,
+              :content_type,
+              :mime_type,
+              :searchgov_custom1,
+              :searchgov_custom2,
+              :searchgov_custom3,
+              :since,
               :sort,
               :sort_by,
               :tbs,
@@ -13,7 +19,8 @@ class FilterableSearch < Search
 
   def initialize(options)
     super
-    initialize_date_attributes options
+    initialize_date_attributes(options)
+    initialize_facet_attributes(options)
     @sort_by = options[:sort_by] if %w(date r).include?(options[:sort_by])
     @sort = 'published_at:desc' unless sort_by_relevance?
   end
@@ -45,6 +52,15 @@ class FilterableSearch < Search
       @tbs = options[:tbs]
       @since = since_when extent
     end
+  end
+
+  def initialize_facet_attributes(options)
+    @audience = options[:audience]
+    @content_type = options[:content_type]
+    @mime_type = options[:mime_type]
+    @searchgov_custom1 = options[:searchgov_custom1]
+    @searchgov_custom2 = options[:searchgov_custom2]
+    @searchgov_custom3 = options[:searchgov_custom3]
   end
 
   def parse_until_ts(until_date_str)

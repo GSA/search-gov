@@ -29,15 +29,18 @@ class I14ySearch < FilterableSearch
     false
   end
 
+  # SRCH-3615: Disabling cop temporarily as facets work is ongoing and will continue to involve
+  # modifications to this method.
+  # rubocop:disable Metrics/AbcSize
   def filter_options
     filter_options = {}
-    filter_options[:sort_by_date] = 1 if @sort_by == 'date'
-    filter_options[:min_timestamp] = @since if @since
-    filter_options[:max_timestamp] = @until if @until
+    date_filter_options(filter_options)
+    facet_filter_options(filter_options)
     filter_options[:ignore_tags] = @affiliate.tag_filters.excluded.pluck(:tag).sort.join(',') if @affiliate.tag_filters.excluded.present?
     filter_options[:tags] = @affiliate.tag_filters.required.pluck(:tag).sort.join(',') if @affiliate.tag_filters.required.present?
     filter_options
   end
+  # rubocop:enable Metrics/AbcSize
 
   def detect_size
     @limit || @per_page
@@ -52,6 +55,21 @@ class I14ySearch < FilterableSearch
   end
 
   protected
+
+  def date_filter_options(filter_options)
+    filter_options[:sort_by_date] = 1 if @sort_by == 'date'
+    filter_options[:min_timestamp] = @since if @since
+    filter_options[:max_timestamp] = @until if @until
+  end
+
+  def facet_filter_options(filter_options)
+    filter_options[:audience] = @audience if @audience
+    filter_options[:content_type] = @content_type if @content_type
+    filter_options[:mime_type] = @mime_type if @mime_type
+    filter_options[:searchgov_custom1] = @searchgov_custom1 if @searchgov_custom1
+    filter_options[:searchgov_custom2] = @searchgov_custom2 if @searchgov_custom2
+    filter_options[:searchgov_custom3] = @searchgov_custom3 if @searchgov_custom3
+  end
 
   def handles
     handles = []
