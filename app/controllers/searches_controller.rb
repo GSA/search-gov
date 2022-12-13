@@ -63,6 +63,9 @@ class SearchesController < ApplicationController
 
   private
 
+  # Temporarily disabling this cop until this method is refactored in
+  # upcoming changes for the SERP redesign.
+  # rubocop:disable Metrics/MethodLength
   def pick_klass_vertical_template
     if get_commercial_results?
       [WebSearch, :web, :index, 'searches']
@@ -76,6 +79,7 @@ class SearchesController < ApplicationController
       [WebSearch, :web, :index, 'searches']
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   def set_news_search_page_title
     if permitted_params[:query].present?
