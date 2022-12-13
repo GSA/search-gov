@@ -31,11 +31,9 @@ class I14ySearch < FilterableSearch
 
   def filter_options
     filter_options = {}
-    filter_options[:sort_by_date] = 1 if @sort_by == 'date'
-    filter_options[:min_timestamp] = @since if @since
-    filter_options[:max_timestamp] = @until if @until
+    date_filter_options(filter_options)
     filter_options[:ignore_tags] = @affiliate.tag_filters.excluded.pluck(:tag).sort.join(',') if @affiliate.tag_filters.excluded.present?
-    filter_options[:tags] = @affiliate.tag_filters.required.pluck(:tag).sort.join(',') if @affiliate.tag_filters.required.present?
+    filter_options[:tags] = included_tags if @tags || @affiliate.tag_filters.required.present?
     filter_options
   end
 
@@ -52,6 +50,19 @@ class I14ySearch < FilterableSearch
   end
 
   protected
+
+  def date_filter_options(filter_options)
+    filter_options[:sort_by_date] = 1 if @sort_by == 'date'
+    filter_options[:min_timestamp] = @since if @since
+    filter_options[:max_timestamp] = @until if @until
+  end
+
+  def included_tags
+    tags = []
+    tags << @affiliate.tag_filters.required.pluck(:tag).sort.join(',') if @affiliate.tag_filters.required.present?
+    tags << @tags if @tags
+    tags.join(',')
+  end
 
   def handles
     handles = []

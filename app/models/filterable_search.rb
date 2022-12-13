@@ -8,12 +8,14 @@ class FilterableSearch < Search
   attr_reader :since,
               :sort,
               :sort_by,
+              :tags,
               :tbs,
               :until
 
   def initialize(options)
     super
-    initialize_date_attributes options
+    initialize_date_attributes(options)
+    initialize_facet_attributes(options)
     @sort_by = options[:sort_by] if %w(date r).include?(options[:sort_by])
     @sort = 'published_at:desc' unless sort_by_relevance?
   end
@@ -45,6 +47,10 @@ class FilterableSearch < Search
       @tbs = options[:tbs]
       @since = since_when extent
     end
+  end
+
+  def initialize_facet_attributes(options)
+    @tags = options[:tags]
   end
 
   def parse_until_ts(until_date_str)
