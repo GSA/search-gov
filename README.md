@@ -12,7 +12,6 @@ Read our [contributing guidelines](./CONTRIBUTING.md).
 
 ### Ruby
 
-
 Use [RVM](https://rvm.io/) to install the version of Ruby specified in [.ruby-version](/.ruby-version). 
 
 ### NodeJS
