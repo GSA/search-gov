@@ -79,7 +79,7 @@ describe 'Bulk URL upload' do
           )
         end
 
-        it 'reindexes the URLs' do
+        it 'enqueues the URLs to be reindexed' do
           expect { do_bulk_upload }.
             to change { existing_url.reload.enqueued_for_reindex }.
             from(false).to(true)
