@@ -88,7 +88,7 @@ gem 'colorize', '~> 0.8.1'
 gem 'dogstatsd-ruby', '~> 3.2.0'
 gem 'http', '~> 4.0'
 gem 'robots_tag_parser', '~> 0.1.0', git: 'https://github.com/GSA/robots_tag_parser'
-gem 'loofah', '~> 2.13.0'
+gem 'loofah', '~> 2.19.1'
 # Locking ref, as later versions (after being renamed & released as "medusa-crawler")
 # include breaking changes
 gem 'medusa', git: 'https://github.com/brutuscat/medusa-crawler',
