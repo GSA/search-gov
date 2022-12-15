@@ -83,18 +83,10 @@ class BulkUrlUploader
     end
   end
 
-  def initialize(name, urls)
+  def initialize(name, urls, reindex: false)
     @urls = urls
     @name = name
-  end
-
-  def self.create_job(uploaded_file, user)
-    BulkUrlUploader::UrlFileValidator.new(uploaded_file).validate!
-    SearchgovUrlBulkUploaderJob.perform_later(
-      user,
-      uploaded_file.original_filename,
-      uploaded_file.tempfile.set_encoding('UTF-8').readlines
-    )
+    @reindex = reindex
   end
 
   def upload_and_index
@@ -107,7 +99,7 @@ class BulkUrlUploader
 
   def upload_urls
     @urls.each do |raw_url|
-      add_url(raw_url)
+      process_url(raw_url)
     end
   end
 
@@ -118,9 +110,11 @@ class BulkUrlUploader
     end
   end
 
-  def add_url(raw_url)
-    url = SearchgovUrl.create!(url: raw_url.strip)
-    @results.add_ok(url)
+  def process_url(raw_url)
+    searchgov_url = SearchgovUrl.find_or_initialize_by(url: raw_url.strip)
+    searchgov_url.enqueued_for_reindex = true if searchgov_url.persisted? && @reindex
+    searchgov_url.save!
+    @results.add_ok(searchgov_url)
   rescue StandardError => e
     @results.add_error(e.message, raw_url)
   end

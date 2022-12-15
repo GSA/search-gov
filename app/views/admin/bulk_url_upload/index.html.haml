@@ -30,4 +30,8 @@
         http://www.sample.gov/3.html
     = form_tag upload_admin_bulk_url_upload_index_path, :multipart => true do
       = file_field_tag 'bulk_upload_urls', :accept => 'text/plain', :class => 'file'
+      %p
+      = check_box_tag :reindex
+      = label_tag :reindex, 'Reindex existing URLs?'
+      %p
       = submit_tag "Upload", :class => 'submit btn-upload'

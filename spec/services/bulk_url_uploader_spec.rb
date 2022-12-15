@@ -6,9 +6,7 @@ describe BulkUrlUploader do
   let(:uploader) { described_class.new('the-uploader', urls) }
 
   describe '#upload_and_index' do
-    before { uploader.upload_and_index }
-
-    describe 'happy path with two good URls' do
+    context 'with two good URls' do
       let(:raw_urls) do
         [
           'https://agency.gov/a-url',
@@ -16,12 +14,14 @@ describe BulkUrlUploader do
         ]
       end
 
+      before { uploader.upload_and_index }
+
       it 'creates the first SearchgovUrl' do
-        expect(SearchgovUrl.find_by(url: raw_urls.first)).not_to be(nil)
+        expect(SearchgovUrl.find_by(url: raw_urls.first)).not_to be_nil
       end
 
       it 'creates the second SearchgovUrl' do
-        expect(SearchgovUrl.find_by(url: raw_urls.second)).not_to be(nil)
+        expect(SearchgovUrl.find_by(url: raw_urls.second)).not_to be_nil
       end
 
       it 'reports the number of URLs processed' do
@@ -41,8 +41,39 @@ describe BulkUrlUploader do
       end
     end
 
+    context 'when reindexing URLs' do
+      let(:uploader) { described_class.new('uploader', urls, reindex: true) }
+      let(:raw_urls) do
+        [
+          'https://agency.gov/new',
+          'https://agency.gov/existing'
+        ]
+      end
+
+      before do
+        SearchgovUrl.create!(url: 'https://agency.gov/existing')
+        uploader.upload_and_index
+      end
+
+      it 'creates new URLs' do
+        expect(SearchgovUrl.exists?(url: 'https://agency.gov/new')).to be true
+      end
+
+      it 'enqueues existing urls to be reindexed' do
+        searchgov_url = SearchgovUrl.find_by(url: 'https://agency.gov/existing')
+        expect(searchgov_url.enqueued_for_reindex).to be true
+      end
+
+      it 'does not enqueue new URLs' do
+        searchgov_url = SearchgovUrl.find_by(url: 'https://agency.gov/new')
+        expect(searchgov_url.enqueued_for_reindex).to be false
+      end
+    end
+
     describe 'with a URL that is for a bad domain' do
       let(:raw_urls) { ['https://bad-agency.gov/a-url'] }
+
+      before { uploader.upload_and_index }
 
       it 'does not create the SearchgovUrl' do
         expect(SearchgovUrl.find_by(url: raw_urls.first)).to be(nil)

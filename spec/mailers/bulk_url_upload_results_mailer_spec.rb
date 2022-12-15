@@ -62,7 +62,9 @@ RSpec.describe BulkUrlUploadResultsMailer, type: :mailer do
       it_behaves_like 'a bulk upload notification email'
 
       it 'reports the correct number of OK URLs' do
-        expect(mail_body).to match(/#{results.ok_count} URLs were created successfully/)
+        expect(mail_body).to match(
+          /#{results.ok_count} URLs were created or enqueued successfully/
+        )
       end
 
       it 'reports the correct number of URLs with problems' do
