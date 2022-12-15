@@ -30,5 +30,19 @@ describe SearchgovUrlBulkUploaderJob do
         expect { perform }.to change { ActionMailer::Base.deliveries.count }.by(1)
       end
     end
+
+    context 'when reindexing URLs' do
+      let(:perform) do
+        subject.perform(user, 'some-file.txt', urls, reindex: true)
+      end
+
+      before { allow(BulkUrlUploader).to receive(:new).and_call_original }
+
+      it 'runs the uploader with reindexing flagged on' do
+        perform
+        expect(BulkUrlUploader).to have_received(:new).
+          with('some-file.txt', urls, reindex: true)
+      end
+    end
   end
 end

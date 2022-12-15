@@ -13,7 +13,7 @@ gem 'will_paginate', '~> 3.3.0'
 gem 'nokogiri', '~> 1.13.4'
 gem 'authlogic', '~> 6.4.1'
 gem 'omniauth_login_dot_gov', git: 'https://github.com/18f/omniauth_login_dot_gov',
-                              ref: '756300d4a3e0c234d5596f16671f36851d409c54'
+                              ref: '6e117a9c68b19a1fbc70533613b74b0d8affd641'
 # It's not clear that this gem is still required. I'm leaving it for the time being,
 # but we may be able to remove it in the future:
 # https://github.com/omniauth/omniauth/issues/1031
@@ -145,6 +145,9 @@ gem 'font-awesome-grunticon-rails',
 gem 'execjs', '~> 2.7.0'
 gem 'react-rails', '~> 2.6.2'
 gem 'shakapacker', '~> 6.5.4'
+# Temporarily locking the 'mail' version until the next version of Rails is released
+# https://github.com/rails/rails/pull/46650
+gem 'mail', '~> 2.7.1'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
