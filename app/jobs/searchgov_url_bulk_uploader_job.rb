@@ -5,9 +5,9 @@ class SearchgovUrlBulkUploaderJob < ApplicationJob
 
   delegate :upload_and_index, to: :@uploader
 
-  def perform(user, filename, urls)
+  def perform(user, filename, urls, reindex: false)
     @user = user
-    @uploader = BulkUrlUploader.new(filename, urls)
+    @uploader = BulkUrlUploader.new(filename, urls, reindex: reindex)
 
     upload_and_index
     report_results
