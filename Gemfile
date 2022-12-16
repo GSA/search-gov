@@ -107,6 +107,12 @@ gem 'cld3', '~> 3.4.3'
 gem 'activejob-uniqueness', '~> 0.2.1'
 gem 'selenium-webdriver'
 gem 'webdrivers', '~> 5.0'
+gem 'exception_notification', '~> 4.5'
+gem 'dogapi', '~> 1.45'
+# Temporary fix to remove warnings seen in Rails 7:
+# https://github.com/ruby/net-protocol/issues/10
+# This gem can be removed once we upgrade to Ruby 3.1.
+gem 'net-http'
 
 # Assets-related gems
 gem 'coffee-rails', '~> 5.0.0'
@@ -137,12 +143,8 @@ gem 'font-awesome-grunticon-rails',
 # https://github.com/rails/execjs/releases/tag/v2.8.0
 # Locking the version to 2.7.x until we remove or replace therubyracer
 gem 'execjs', '~> 2.7.0'
-gem 'exception_notification', '~> 4.5'
-gem 'dogapi', '~> 1.45'
-# Temporary fix to remove warnings seen in Rails 7:
-# https://github.com/ruby/net-protocol/issues/10
-# This gem can be removed once we upgrade to Ruby 3.1.
-gem 'net-http'
+gem 'react-rails', '~> 2.6.2'
+gem 'shakapacker', '~> 6.5.4'
 # Temporarily locking the 'mail' version until the next version of Rails is released
 # https://github.com/rails/rails/pull/46650
 gem 'mail', '~> 2.7.1'

@@ -5,6 +5,9 @@ prepare:
   fetch:
     - url: https://raw.githubusercontent.com/GSA/searchgov_style/main/.default.yml
       path: .rubocop-https---raw-githubusercontent-com-GSA-searchgov-style-main--default-yml
+checks:
+  method-lines:
+    enabled: false
 plugins:
   brakeman:
     enabled: true
@@ -25,10 +28,12 @@ plugins:
       languages:
       - ruby
       - javascript
+  # ESLint is configured in .eslintrc and .eslintignore
   eslint:
     enabled: true
   fixme:
     enabled: true
+  # Rubocop is configured in .rubocop.yml
   rubocop:
     enabled: true
     channel: rubocop-1-23-0
