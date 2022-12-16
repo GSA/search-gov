@@ -284,7 +284,7 @@ describe Api::V2::SearchesController do
                                                       hash_including('query'),
                                                       be_a_kind_of(ActionDispatch::Request))
 
-        get :i14y, params: search_params.merge(tags: 'tag from params')
+        get :i14y, params: search_params
       end
 
       it { is_expected.to respond_with :success }
@@ -302,8 +302,16 @@ describe Api::V2::SearchesController do
                                                                  query_not: 'excluded',
                                                                  query_or: 'alternative',
                                                                  query_quote: 'barack obama',
-                                                                 sort_by: 'date',
-                                                                 tags: 'tag from params' })
+                                                                 sort_by: 'date' })
+      end
+
+      context 'when a tags filter is present' do
+        let(:params_with_tags) { search_params.merge(tags: 'tag from params') }
+
+        it 'passes the tags filter to its ApiI4ySearch object' do
+          get :i14y, params: params_with_tags
+          expect(assigns(:search_options).attributes).to include({ tags: 'tag from params' })
+        end
       end
     end
 
