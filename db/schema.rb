@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_11_205138) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_13_161648) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -592,6 +592,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_11_205138) do
     t.datetime "lastmod", precision: nil
     t.boolean "enqueued_for_reindex", default: false, null: false
     t.index ["last_crawl_status"], name: "index_searchgov_urls_on_last_crawl_status"
+    t.index ["searchgov_domain_id", "enqueued_for_reindex"], name: "searchgov_urls_on_searchgov_domain_id_and_enqueued_for_reindex"
     t.index ["searchgov_domain_id", "last_crawl_status"], name: "index_by_searchgov_domain_id_and_last_crawl_status"
     t.index ["searchgov_domain_id", "last_crawled_at"], name: "index_searchgov_urls_on_searchgov_domain_id_and_last_crawled_at"
     t.index ["searchgov_domain_id"], name: "index_searchgov_urls_on_searchgov_domain_id"

@@ -177,9 +177,6 @@ Feature:  Administration
       | domain     | status | canonical_domain |
       | search.gov | 200 OK |                  |
       | old.gov    | 200 OK | new.gov          |
-    And the following "searchgov urls" exist:
-      | url                     |
-      | https://search.gov/oops |
     And the following "sitemaps" exist:
       | url                             |
       | https://search.gov/sitemap.xml  |
@@ -204,16 +201,7 @@ Feature:  Administration
     And I fill in "Url" with "search.gov/sitemap.txt"
     And I press "Create"
     Then I should see "search.gov/sitemap.txt"
-    When I follow "Close"
-    And I follow "URLs" within the first scaffold row
-    Then I should see "search.gov/oops"
-    And I follow "Fetch"
-    And I wait for ajax
-    Then I should see "Your URL has been added to the fetching queue"
-    And I follow "Close" in the SearchgovDomain URLs table
-    And I follow "Delete" and confirm "Are you sure"
     And I follow "Close"
-
     When I follow "Create New"
     And I fill in "Domain" with "www.state.gov"
     And I press "Create"
@@ -229,6 +217,31 @@ Feature:  Administration
     Then the "Render Javascript" checkbox should be checked
     And I press "Update"
     Then I should see "www.state.gov"
+
+  @javascript
+  Scenario: Managing Search.gov URLs
+    Given the following "searchgov domains" exist:
+      | domain     | status |
+      | search.gov | 200 OK |
+    And the following "searchgov urls" exist:
+      | url                      |
+      | https://search.gov/page1 |
+    When I go to the admin home page
+    And I follow "Search.gov Domains"
+    And I follow "URLs" within the first scaffold row
+    Then I should see "search.gov/page1"
+    And I should see "Enqueued for reindex"
+
+    When I follow "Fetch"
+    And I wait for ajax
+    Then I should see "Your URL has been added to the fetching queue"
+
+    When I follow "Close" in the SearchgovDomain URLs table
+    And I follow "Delete" and confirm "Are you sure"
+    Then I should not see "https://search.gov/page1"
+
+    When I follow "Search" in the SearchgovDomain URLs table
+    Then I should see "Enqueued for reindex" in the super admin search form
 
   @javascript
   Scenario: Adding a system alert

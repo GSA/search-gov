@@ -26,6 +26,7 @@ class ApplicationController < ActionController::Base
     siteexclude
     sitelimit
     utf8
+    redesign
   ].concat(ADVANCED_PARAM_KEYS).
     concat(DUBLIN_CORE_PARAM_KEYS).
     concat(FILTER_PARAM_KEYS).freeze
@@ -123,13 +124,14 @@ class ApplicationController < ActionController::Base
 
   def set_search_params
     @search_params = ActiveSupport::HashWithIndifferentAccess.new(query: @search.query, affiliate: @affiliate.name)
-    @search_params.merge!(sitelimit: permitted_params[:sitelimit]) if permitted_params[:sitelimit].present?
-    @search_params.merge!(dc: permitted_params[:dc]) if permitted_params[:dc].present?
+    @search_params[:sitelimit] = permitted_params[:sitelimit] if permitted_params[:sitelimit].present?
+    @search_params[:dc] = permitted_params[:dc] if permitted_params[:dc].present?
+    @search_params[:redesign] = permitted_params[:redesign] if permitted_params[:redesign].present?
     if @search.is_a? FilterableSearch
-      @search_params.merge!(channel: @search.rss_feed.id) if @search.is_a?(NewsSearch) && @search.rss_feed
-      @search_params.merge!(tbs: @search.tbs) if @search.tbs
-      @search_params.merge!(since_date: @search.since.strftime(I18n.t(:cdr_format))) if permitted_params[:since_date].present? && @search.since
-      @search_params.merge!(until_date: @search.until.strftime(I18n.t(:cdr_format))) if permitted_params[:until_date].present? && @search.until
+      @search_params[:channel] = @search.rss_feed.id if @search.is_a?(NewsSearch) && @search.rss_feed
+      @search_params[:tbs] = @search.tbs if @search.tbs
+      @search_params[:since_date] = @search.since.strftime(I18n.t(:cdr_format)) if permitted_params[:since_date].present? && @search.since
+      @search_params[:until_date] = @search.until.strftime(I18n.t(:cdr_format)) if permitted_params[:until_date].present? && @search.until
       @search_params.merge!(permitted_params.slice(:contributor, :publisher, :sort_by, :subject))
     end
   end

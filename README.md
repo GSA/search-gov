@@ -14,6 +14,10 @@ Read our [contributing guidelines](./CONTRIBUTING.md).
 
 Use [RVM](https://rvm.io/) to install the version of Ruby specified in [.ruby-version](/.ruby-version). 
 
+### NodeJS
+
+Use [NVM](https://github.com/nvm-sh/nvm#installing-and-updating) to install the version of NodeJS specified in the [.nvmrc](/.nvmrc). 
+
 ### Docker Services
 
 The required services (MySQL, Elasticsearch, etc.) can be run using Docker. Please refer to [searchgov-services](https://github.com/GSA/search-services) for detailed instructions on centralized configuration for services.
@@ -83,6 +87,13 @@ Use [Bundler](https://bundler.io/) 2.3.8 to install the required gems:
 
     $ gem install bundler -v 2.3.8
     $ bundle install
+
+### JavaScript dependencies
+
+Use [Yarn](https://classic.yarnpkg.com/en/) to install the required JavaScript dependencies:
+
+    $ npm install --global yarn
+    $ yarn install
 
 Refer to [the wiki](https://github.com/GSA/search-gov/wiki/Gem-Installation-gotchas-and-solutions) to troubleshoot gem installation errors.
 

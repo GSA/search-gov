@@ -58,6 +58,14 @@ commands:
             google-chrome --version
             chromedriver --version
           name: Check install
+  install_js_dependencies:
+    description: 'Install JavaScript dependencies'
+    steps:
+      - run: yarn install
+  precompile_assets:
+    description: 'Pre-compile assets'
+    steps:
+      - run: bin/rails assets:precompile
   prepare_database:
     description: 'Prepare the test database'
     steps:
@@ -120,9 +128,13 @@ jobs:
       - ruby/install-deps:
           key: gems-ruby-<< parameters.ruby_version >>-v{{ .Environment.CACHE_VERSION }}
 
+      - install_js_dependencies
+
       - install_chrome
 
       - prepare_database
+
+      - precompile_assets
 
       - run:
           name: Run Tests
@@ -175,9 +187,13 @@ jobs:
       - ruby/install-deps:
           key: gems-ruby-<< parameters.ruby_version >>-v{{ .Environment.CACHE_VERSION }}
 
+      - install_js_dependencies
+
       - install_chrome
 
       - prepare_database
+
+      - precompile_assets
 
       - run:
           name: Run Tests
