@@ -14,7 +14,7 @@ class SearchesController < ApplicationController
   include QueryRoutableController
 
   def index
-    search_klass, @search_vertical, template = pick_klass_vertical_template
+    search_klass, @search_vertical, template, layout = pick_klass_vertical_template_layout
     @search = search_klass.new(@search_options.merge(geoip_info: GeoipLookup.lookup(request.remote_ip)))
     @search.run
     @form_path = search_path
@@ -22,7 +22,7 @@ class SearchesController < ApplicationController
     set_search_page_title
     set_search_params
     respond_to do |format|
-      format.html { render template }
+      format.html { render template, layout: layout }
       format.json { render :json => @search }
     end
   end
@@ -39,7 +39,6 @@ class SearchesController < ApplicationController
     template = search_klass == I14ySearch ? :i14y : :docs
     respond_to { |format| format.html { render template } }
   end
-
 
   def news
     @search = NewsSearch.new(@search_options)
@@ -64,17 +63,23 @@ class SearchesController < ApplicationController
 
   private
 
-  def pick_klass_vertical_template
+  # Temporarily disabling this cop until this method is refactored in
+  # upcoming changes for the SERP redesign.
+  # rubocop:disable Metrics/MethodLength
+  def pick_klass_vertical_template_layout
     if get_commercial_results?
-      [WebSearch, :web, :index]
+      [WebSearch, :web, :index, 'searches']
     elsif gets_i14y_results?
-      [I14ySearch, :i14y, :i14y]
+      [I14ySearch, :i14y, :i14y, 'searches']
     elsif @affiliate.gets_blended_results
-      [BlendedSearch, :blended, :blended]
+      [BlendedSearch, :blended, :blended, 'searches']
+    elsif redesign?
+      [WebSearch, :web, :index_redesign, 'searches_redesign']
     else
-      [WebSearch, :web, :index]
+      [WebSearch, :web, :index, 'searches']
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   def set_news_search_page_title
     if permitted_params[:query].present?
@@ -132,5 +137,9 @@ class SearchesController < ApplicationController
   def docs_search_klass
     return I14ySearch if gets_i14y_results?
     @search_options[:document_collection] ? SiteSearch : WebSearch
+  end
+
+  def redesign?
+    permitted_params[:redesign] == 'true'
   end
 end
