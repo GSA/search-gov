@@ -268,7 +268,6 @@ workflows:
               ruby_version:
                 - 2.7.5
               elasticsearch_version:
-                - 6.8.23
                 - 7.17.3
 
       - rspec:
@@ -280,7 +279,6 @@ workflows:
               ruby_version:
                 - 2.7.5
               elasticsearch_version:
-                - 6.8.23
                 - 7.17.3
 
       - cucumber:
@@ -292,7 +290,6 @@ workflows:
               ruby_version:
                 - 2.7.5
               elasticsearch_version:
-                - 6.8.23
                 - 7.17.3
 
       - report_coverage:
@@ -307,4 +304,4 @@ workflows:
               ruby_version:
                 - 2.7.5
               elasticsearch_version:
-                - 6.8.23
+                - 7.17.3
