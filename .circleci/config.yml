@@ -269,7 +269,7 @@ workflows:
                 - 2.7.5
               elasticsearch_version:
                 - 7.17.3
-                - 8.5.3
+                # not yet compatible with Elasticsearch 8
 
       - rspec:
           requires:
@@ -281,7 +281,6 @@ workflows:
                 - 2.7.5
               elasticsearch_version:
                 - 7.17.3
-                - 8.5.3
 
       - cucumber:
           requires:
@@ -293,7 +292,6 @@ workflows:
                 - 2.7.5
               elasticsearch_version:
                 - 7.17.3
-                - 8.5.3
 
       - report_coverage:
           requires:
