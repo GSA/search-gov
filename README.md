@@ -26,24 +26,24 @@ The Elasticsearch service provided by `searchgov-services` is configured to run 
 
     ES_HOSTS=localhost:9207 bundle exec rspec spec
 
-Verify that Elasticsearch 6.8.x is running on the expected port (port 9200 by default):
+Verify that Elasticsearch 7.17.x is running on the expected port (port 9200 by default):
 
 ```bash
 $ curl localhost:9200
 {
-  "name" : "wp9TsCe",
-  "cluster_name" : "docker-cluster",
-  "cluster_uuid" : "WGf_peYTTZarT49AtEgc3g",
+  "name" : "5de7e4b93c66",
+  "cluster_name" : "es7-docker-cluster",
+  "cluster_uuid" : "DHM6yefJS6qH7OQrSptUdw",
   "version" : {
-    "number" : "6.8.7",
+    "number" : "7.17.3",
     "build_flavor" : "default",
     "build_type" : "docker",
-    "build_hash" : "c63e621",
-    "build_date" : "2020-02-26T14:38:01.193138Z",
+    "build_hash" : "5ad023604c8d7416c9eb6c0eadb62b14e766caff",
+    "build_date" : "2022-04-19T08:11:19.070913226Z",
     "build_snapshot" : false,
-    "lucene_version" : "7.7.2",
-    "minimum_wire_compatibility_version" : "5.6.0",
-    "minimum_index_compatibility_version" : "5.0.0"
+    "lucene_version" : "8.11.1",
+    "minimum_wire_compatibility_version" : "6.8.0",
+    "minimum_index_compatibility_version" : "6.0.0-beta1"
   },
   "tagline" : "You Know, for Search"
 }
@@ -88,14 +88,14 @@ Use [Bundler](https://bundler.io/) 2.3.8 to install the required gems:
     $ gem install bundler -v 2.3.8
     $ bundle install
 
+Refer to [the wiki](https://github.com/GSA/search-gov/wiki/Gem-Installation-gotchas-and-solutions) to troubleshoot gem installation errors.
+
 ### JavaScript dependencies
 
 Use [Yarn](https://classic.yarnpkg.com/en/) to install the required JavaScript dependencies:
 
     $ npm install --global yarn
     $ yarn install
-
-Refer to [the wiki](https://github.com/GSA/search-gov/wiki/Gem-Installation-gotchas-and-solutions) to troubleshoot gem installation errors.
 
 ## Service credentials; how we protect secrets
 
