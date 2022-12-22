@@ -11,6 +11,7 @@
   = render_error_messages(@profile)
   = f.label :screen_name, 'Twitter Handle', class: 'required'
   = f.text_field :screen_name, class: 'required input-primary'
-  = label_tag nil, class: 'checkbox' do
-    = check_box_tag :show_lists
-    Show tweets from my lists
+  / Temporarily disabling checkbox as per JIRA ticket #SRCH-3556
+  / = label_tag nil, class: 'checkbox' do
+  /   = check_box_tag :show_lists
+  /   Show tweets from my lists
