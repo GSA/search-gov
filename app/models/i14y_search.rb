@@ -32,7 +32,7 @@ class I14ySearch < FilterableSearch
   def filter_options
     filter_options = {}
     date_filter_options(filter_options)
-    filter_options[:ignore_tags] = @affiliate.tag_filters.excluded.pluck(:tag).sort.join(',') if @affiliate.tag_filters.excluded.present?
+    filter_options[:ignore_tags] = @affiliate.tag_filters.excluded.pluck(:tag).join(',') if @affiliate.tag_filters.excluded.present?
     filter_options[:tags] = included_tags if @tags || @affiliate.tag_filters.required.present?
     filter_options
   end
@@ -59,7 +59,7 @@ class I14ySearch < FilterableSearch
 
   def included_tags
     tags = []
-    tags << @affiliate.tag_filters.required.pluck(:tag).sort.join(',') if @affiliate.tag_filters.required.present?
+    tags << @affiliate.tag_filters.required.pluck(:tag) if @affiliate.tag_filters.required.present?
     tags << @tags if @tags
     tags.join(',')
   end
