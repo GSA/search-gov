@@ -10,7 +10,8 @@ class FilterableSearch < Search
               :sort_by,
               :tags,
               :tbs,
-              :until
+              :until,
+              :site_limits
 
   def initialize(options)
     super
@@ -18,6 +19,7 @@ class FilterableSearch < Search
     initialize_facet_attributes(options)
     @sort_by = options[:sort_by] if %w(date r).include?(options[:sort_by])
     @sort = 'published_at:desc' unless sort_by_relevance?
+    @site_limits = options[:site_limits]
   end
 
   def sort_by_relevance?

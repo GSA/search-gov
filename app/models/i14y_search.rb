@@ -34,6 +34,7 @@ class I14ySearch < FilterableSearch
     date_filter_options(filter_options)
     filter_options[:ignore_tags] = @affiliate.tag_filters.excluded.pluck(:tag).join(',') if @affiliate.tag_filters.excluded.present?
     filter_options[:tags] = included_tags if @tags || @affiliate.tag_filters.required.present?
+    filter_options[:site_limits] = @site_limits if @site_limits
     filter_options
   end
 

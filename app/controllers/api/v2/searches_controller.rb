@@ -107,6 +107,7 @@ module Api
                                          :query_quote,
                                          :query,
                                          :routed,
+                                         :site_limits,
                                          :sort_by,
                                          :tags
                                        ).to_h
