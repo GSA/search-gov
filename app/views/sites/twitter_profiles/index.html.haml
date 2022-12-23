@@ -13,7 +13,7 @@
       %tr
         %td
           = link_to_twitter_handle twitter_profile
-          = twitter_profile_properties @site, twitter_profile
+          / = twitter_profile_properties @site, twitter_profile
         %td.actions
           %ul
             %li= button_to 'Remove', site_twitter_handle_path(@site, twitter_profile.id), method: :delete, data: { confirm: "Are you sure you wish to remove @#{twitter_profile.screen_name} from this site?" }, class: 'btn btn-small'
