@@ -9,6 +9,9 @@ class Api::NonCommercialSearchOptions < Api::SearchOptions
                 :sort_by,
                 :tags
 
+  # SRCH-3615: Disabling cop temporarily as facets work is ongoing and will continue to involve
+  # modifications to this method.
+  # rubocop:disable Metrics/AbcSize
   def initialize(params = {})
     super
     self.audience = params[:audience]
@@ -20,6 +23,7 @@ class Api::NonCommercialSearchOptions < Api::SearchOptions
     self.sort_by = params[:sort_by]
     self.tags = params[:tags]
   end
+  # rubocop:enable Metrics/AbcSize
 
   def attributes
     super.merge({ audience: audience,
