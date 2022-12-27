@@ -2,7 +2,14 @@ class Admin::SearchgovUrlsController < Admin::AdminController
   active_scaffold :searchgov_url do |config|
     config.label = 'Search.gov URLs'
     config.actions = %i[create list delete export field_search]
-    config.columns = %i[id url last_crawl_status last_crawled_at created_at]
+    config.columns = %i[
+      id
+      url
+      last_crawl_status
+      last_crawled_at
+      enqueued_for_reindex
+      created_at
+    ]
     config.create.columns = [:url]
     config.action_links.add 'fetch',
       label: 'Fetch',
@@ -12,7 +19,11 @@ class Admin::SearchgovUrlsController < Admin::AdminController
       position: false,
       inline: true
     config.delete.link.confirm = "This will remove this URL from the Search.gov index. Are you sure you want to do this?"
-    config.field_search.columns = %i[url last_crawl_status]
+    config.field_search.columns = %i[
+      url
+      last_crawl_status
+      enqueued_for_reindex
+    ]
   end
 
   def fetch

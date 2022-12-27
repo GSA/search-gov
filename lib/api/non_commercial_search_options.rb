@@ -6,7 +6,8 @@ class Api::NonCommercialSearchOptions < Api::SearchOptions
                 :searchgov_custom1,
                 :searchgov_custom2,
                 :searchgov_custom3,
-                :sort_by
+                :sort_by,
+                :tags
 
   def initialize(params = {})
     super
@@ -17,15 +18,17 @@ class Api::NonCommercialSearchOptions < Api::SearchOptions
     self.searchgov_custom2 = params[:searchgov_custom2]
     self.searchgov_custom3 = params[:searchgov_custom3]
     self.sort_by = params[:sort_by]
+    self.tags = params[:tags]
   end
 
   def attributes
-    super.merge(audience: audience,
-                content_type: content_type,
-                mime_type: mime_type,
-                searchgov_custom1: searchgov_custom1,
-                searchgov_custom2: searchgov_custom2,
-                searchgov_custom3: searchgov_custom3,
-                sort_by: sort_by)
+    super.merge({ audience: audience,
+                  content_type: content_type,
+                  mime_type: mime_type,
+                  searchgov_custom1: searchgov_custom1,
+                  searchgov_custom2: searchgov_custom2,
+                  searchgov_custom3: searchgov_custom3,
+                  sort_by: sort_by,
+                  tags: tags })
   end
 end

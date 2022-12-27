@@ -28,6 +28,20 @@ describe NewsSearch do
       its(:sort) { is_expected.to eq('published_at:desc') }
     end
 
+    context 'when show_only_media_content is false' do
+      subject(:search) { described_class.new(filterable_search_options) }
+
+      its(:tags) { is_expected.to eq([]) }
+    end
+
+    context 'when show_only_media_content is true' do
+      subject(:search) { described_class.new(filterable_search_options) }
+
+      let(:feed) { affiliate.rss_feeds.find_by(name: 'USGS Media RSS') }
+
+      its(:tags) { is_expected.to eq(['image']) }
+    end
+
     context 'when a valid RSS feed is specified' do
       it 'should set the rss_feed member' do
         expect(described_class.new(query: 'element', channel: feed.id, affiliate: affiliate).rss_feed).to eq(feed)

@@ -22,6 +22,17 @@ describe BlendedSearch do
       its(:sort_by_relevance?) { should be true }
       its(:sort) { should be_nil }
     end
+
+    # NOTE: While this confirms that these params are passed on to BlendedSearch by FilterableSearch, but, at present,
+    # BlendedSearch does not do anything with these params.
+    context 'when facet filters are present' do
+      subject(:test_search) do
+        described_class.new filterable_search_options.
+          merge(tags: 'tag from params')
+      end
+
+      its(:tags) { is_expected.to eq('tag from params') }
+    end
   end
 
   describe '#run' do

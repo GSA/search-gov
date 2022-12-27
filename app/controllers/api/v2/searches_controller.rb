@@ -101,11 +101,14 @@ module Api
                                          :enable_highlighting,
                                          :filetype,
                                          :filter, # Advanced search "safe search" param
+                                         :filetype,
+                                         :filter, # Advanced search "safe search" param
                                          :format,
                                          :limit,
                                          :mime_type,
                                          :offset,
                                          :query_not,
+                                         :query_or,
                                          :query_or,
                                          :query_quote,
                                          :query,
@@ -113,7 +116,8 @@ module Api
                                          :searchgov_custom1,
                                          :searchgov_custom2,
                                          :searchgov_custom3,
-                                         :sort_by
+                                         :sort_by,
+                                         :tags
                                        ).to_h
 
       end

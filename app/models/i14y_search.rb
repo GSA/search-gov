@@ -37,7 +37,7 @@ class I14ySearch < FilterableSearch
     date_filter_options(filter_options)
     facet_filter_options(filter_options)
     filter_options[:ignore_tags] = @affiliate.tag_filters.excluded.pluck(:tag).sort.join(',') if @affiliate.tag_filters.excluded.present?
-    filter_options[:tags] = @affiliate.tag_filters.required.pluck(:tag).sort.join(',') if @affiliate.tag_filters.required.present?
+    filter_options[:tags] = included_tags if @tags || @affiliate.tag_filters.required.present?
     filter_options
   end
   # rubocop:enable Metrics/AbcSize
@@ -69,6 +69,13 @@ class I14ySearch < FilterableSearch
     filter_options[:searchgov_custom1] = @searchgov_custom1 if @searchgov_custom1
     filter_options[:searchgov_custom2] = @searchgov_custom2 if @searchgov_custom2
     filter_options[:searchgov_custom3] = @searchgov_custom3 if @searchgov_custom3
+  end
+
+  def included_tags
+    tags = []
+    tags << @affiliate.tag_filters.required.pluck(:tag) if @affiliate.tag_filters.required.present?
+    tags << @tags if @tags
+    tags.join(',')
   end
 
   def handles

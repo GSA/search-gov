@@ -14,11 +14,14 @@ class FilterableSearch < Search
               :since,
               :sort,
               :sort_by,
+              :tags,
               :tbs,
               :until
 
   def initialize(options)
     super
+    initialize_date_attributes(options)
+    initialize_facet_attributes(options)
     initialize_date_attributes(options)
     initialize_facet_attributes(options)
     @sort_by = options[:sort_by] if %w(date r).include?(options[:sort_by])
@@ -61,6 +64,7 @@ class FilterableSearch < Search
     @searchgov_custom1 = options[:searchgov_custom1]
     @searchgov_custom2 = options[:searchgov_custom2]
     @searchgov_custom3 = options[:searchgov_custom3]
+    @tags = options[:tags]
   end
 
   def parse_until_ts(until_date_str)

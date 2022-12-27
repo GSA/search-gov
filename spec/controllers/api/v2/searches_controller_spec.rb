@@ -135,7 +135,6 @@ describe Api::V2::SearchesController do
         expect(RoutedQueryImpressionLogger).to receive(:log).
           with(affiliate, 'moar unclaimed money', an_instance_of(ActionController::TestRequest))
 
-
         get :azure_web, params: search_params.merge(query: 'moar unclaimed money')
       end
 
@@ -299,23 +298,26 @@ describe Api::V2::SearchesController do
       it 'passes the correct options to its ApiI4ySearch object' do
         expect(assigns(:search_options).attributes).to include({ access_key: 'basic_key',
                                                                  affiliate: affiliate,
-                                                                 audience: 'everyone',
-                                                                 content_type: 'article',
                                                                  enable_highlighting: true,
                                                                  file_type: 'pdf',
                                                                  filter: '2',
                                                                  limit: 20,
-                                                                 mime_type: 'application/pdf',
                                                                  next_offset_within_limit: true,
                                                                  offset: 0,
                                                                  query: 'api',
                                                                  query_not: 'excluded',
                                                                  query_or: 'alternative',
                                                                  query_quote: 'barack obama',
-                                                                 searchgov_custom1: 'custom1',
-                                                                 searchgov_custom2: 'custom2, customtwo',
-                                                                 searchgov_custom3: 'custom3',
                                                                  sort_by: 'date' })
+      end
+
+      context 'when a tags filter is present' do
+        let(:params_with_tags) { search_params.merge(tags: 'tag from params') }
+
+        it 'passes the tags filter to its ApiI4ySearch object' do
+          get :i14y, params: params_with_tags
+          expect(assigns(:search_options).attributes).to include({ tags: 'tag from params' })
+        end
       end
     end
 
