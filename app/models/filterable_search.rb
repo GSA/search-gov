@@ -22,8 +22,6 @@ class FilterableSearch < Search
     super
     initialize_date_attributes(options)
     initialize_facet_attributes(options)
-    initialize_date_attributes(options)
-    initialize_facet_attributes(options)
     @sort_by = options[:sort_by] if %w(date r).include?(options[:sort_by])
     @sort = 'published_at:desc' unless sort_by_relevance?
   end

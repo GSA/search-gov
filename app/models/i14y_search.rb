@@ -36,7 +36,7 @@ class I14ySearch < FilterableSearch
     filter_options = {}
     date_filter_options(filter_options)
     facet_filter_options(filter_options)
-    filter_options[:ignore_tags] = @affiliate.tag_filters.excluded.pluck(:tag).sort.join(',') if @affiliate.tag_filters.excluded.present?
+    filter_options[:ignore_tags] = @affiliate.tag_filters.excluded.pluck(:tag).join(',') if @affiliate.tag_filters.excluded.present?
     filter_options[:tags] = included_tags if @tags || @affiliate.tag_filters.required.present?
     filter_options
   end

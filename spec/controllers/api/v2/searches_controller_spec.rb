@@ -277,7 +277,6 @@ describe Api::V2::SearchesController do
 
       before do
         allow(Affiliate).to receive(:find_by_name).and_return(affiliate)
-
         allow(ApiI14ySearch).to receive(:new).with(hash_including(query: 'api')).and_return(search)
         allow(search).to receive(:run)
         allow(SearchImpression).to receive(:log).with(search,
@@ -452,9 +451,9 @@ describe Api::V2::SearchesController do
         expect(ApiI14ySearch).to receive(:new).with(hash_including(query_params)).and_return(search)
         expect(search).to receive(:run)
         expect(SearchImpression).to receive(:log).with(search,
-                                                      'docs',
-                                                      hash_including('query'),
-                                                      be_a_kind_of(ActionDispatch::Request))
+                                                       'docs',
+                                                       hash_including('query'),
+                                                       be_a_kind_of(ActionDispatch::Request))
 
         get :docs, params: docs_params
       end
@@ -476,9 +475,9 @@ describe Api::V2::SearchesController do
         expect(ApiGoogleDocsSearch).to receive(:new).with(hash_including(query_params)).and_return(search)
         expect(search).to receive(:run)
         expect(SearchImpression).to receive(:log).with(search,
-                                                      'docs',
-                                                      hash_including('query'),
-                                                      be_a_kind_of(ActionDispatch::Request))
+                                                       'docs',
+                                                       hash_including('query'),
+                                                       be_a_kind_of(ActionDispatch::Request))
 
         get :docs, params: docs_params
       end
