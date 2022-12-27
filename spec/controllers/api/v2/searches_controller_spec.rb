@@ -13,8 +13,7 @@ describe Api::V2::SearchesController do
       query_quote: 'barack obama',
       filetype: 'pdf',
       filter: '2',
-      sort_by: 'date'
-    }
+      sort_by: 'date' }
   end
   let(:query_params) do
     { query: 'api',
@@ -22,8 +21,7 @@ describe Api::V2::SearchesController do
       query_or: 'alternative',
       query_quote: 'barack obama',
       file_type: 'pdf',
-      filter: '2'
-    }
+      filter: '2' }
   end
 
   describe '#blended' do
@@ -33,9 +31,9 @@ describe Api::V2::SearchesController do
       expect(ApiBlendedSearch).to receive(:new).with(hash_including(query_params)).and_return(search)
       expect(search).to receive(:run)
       expect(SearchImpression).to receive(:log).with(search,
-                                                 'blended',
-                                                 hash_including('query'),
-                                                 be_a_kind_of(ActionDispatch::Request))
+                                                     'blended',
+                                                     hash_including('query'),
+                                                     be_a_kind_of(ActionDispatch::Request))
 
       get :blended, params: search_params
     end
@@ -67,9 +65,9 @@ describe Api::V2::SearchesController do
         expect(ApiAzureSearch).to receive(:new).with(hash_including(query_params)).and_return(search)
         expect(search).to receive(:run)
         expect(SearchImpression).to receive(:log).with(search,
-                                                   'azure',
-                                                   hash_including('query'),
-                                                   be_a_kind_of(ActionDispatch::Request))
+                                                       'azure',
+                                                       hash_including('query'),
+                                                       be_a_kind_of(ActionDispatch::Request))
 
         get :azure, params: search_params
       end
@@ -118,9 +116,9 @@ describe Api::V2::SearchesController do
           with(hash_including(query_params)).and_return(search)
         expect(search).to receive(:run)
         expect(SearchImpression).to receive(:log).with(search,
-                                                   'azure_web',
-                                                   hash_including('query'),
-                                                   be_a_kind_of(ActionDispatch::Request))
+                                                       'azure_web',
+                                                       hash_including('query'),
+                                                       be_a_kind_of(ActionDispatch::Request))
 
         get :azure_web, params: search_params
       end
@@ -136,7 +134,6 @@ describe Api::V2::SearchesController do
       before do
         expect(RoutedQueryImpressionLogger).to receive(:log).
           with(affiliate, 'moar unclaimed money', an_instance_of(ActionController::TestRequest))
-
 
         get :azure_web, params: search_params.merge(query: 'moar unclaimed money')
       end
@@ -170,9 +167,9 @@ describe Api::V2::SearchesController do
           with(hash_including(query_params)).and_return(search)
         expect(search).to receive(:run)
         expect(SearchImpression).to receive(:log).with(search,
-                                                   'azure_image',
-                                                   hash_including('query'),
-                                                   be_a_kind_of(ActionDispatch::Request))
+                                                       'azure_image',
+                                                       hash_including('query'),
+                                                       be_a_kind_of(ActionDispatch::Request))
 
         get :azure_image, params: search_params
       end
@@ -226,9 +223,9 @@ describe Api::V2::SearchesController do
         expect(ApiGssSearch).to receive(:new).with(hash_including(query: 'api')).and_return(search)
         expect(search).to receive(:run)
         expect(SearchImpression).to receive(:log).with(search,
-                                                   'gss',
-                                                   hash_including('query'),
-                                                   be_a_kind_of(ActionDispatch::Request))
+                                                       'gss',
+                                                       hash_including('query'),
+                                                       be_a_kind_of(ActionDispatch::Request))
 
         get :gss, params: gss_params
       end
@@ -276,17 +273,16 @@ describe Api::V2::SearchesController do
     end
 
     context 'when the search options are valid' do
-      let!(:search) { double(ApiI14ySearch, as_json: { foo: 'bar'}, modules: %w(I14Y)) }
+      let!(:search) { instance_double(ApiI14ySearch, as_json: { foo: 'bar' }, modules: %w[I14Y]) }
 
       before do
-        expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
-
-        expect(ApiI14ySearch).to receive(:new).with(hash_including(query: 'api')).and_return(search)
-        expect(search).to receive(:run)
-        expect(SearchImpression).to receive(:log).with(search,
-                                                   'i14y',
-                                                   hash_including('query'),
-                                                   be_a_kind_of(ActionDispatch::Request))
+        allow(Affiliate).to receive(:find_by_name).and_return(affiliate)
+        allow(ApiI14ySearch).to receive(:new).with(hash_including(query: 'api')).and_return(search)
+        allow(search).to receive(:run)
+        allow(SearchImpression).to receive(:log).with(search,
+                                                      'i14y',
+                                                      hash_including('query'),
+                                                      be_a_kind_of(ActionDispatch::Request))
 
         get :i14y, params: search_params
       end
@@ -294,27 +290,34 @@ describe Api::V2::SearchesController do
       it { is_expected.to respond_with :success }
 
       it 'passes the correct options to its ApiI4ySearch object' do
-        expect(assigns(:search_options).attributes).to include({
-          access_key: 'basic_key',
-          affiliate: affiliate,
-          enable_highlighting: true,
-          file_type: 'pdf',
-          filter: '2',
-          limit: 20,
-          next_offset_within_limit: true,
-          offset: 0,
-          query: 'api',
-          query_not: 'excluded',
-          query_or: 'alternative',
-          query_quote: 'barack obama',
-          sort_by: 'date'
-        })
+        expect(assigns(:search_options).attributes).to include({ access_key: 'basic_key',
+                                                                 affiliate: affiliate,
+                                                                 enable_highlighting: true,
+                                                                 file_type: 'pdf',
+                                                                 filter: '2',
+                                                                 limit: 20,
+                                                                 next_offset_within_limit: true,
+                                                                 offset: 0,
+                                                                 query: 'api',
+                                                                 query_not: 'excluded',
+                                                                 query_or: 'alternative',
+                                                                 query_quote: 'barack obama',
+                                                                 sort_by: 'date' })
+      end
+
+      context 'when a tags filter is present' do
+        let(:params_with_tags) { search_params.merge(tags: 'tag from params') }
+
+        it 'passes the tags filter to its ApiI4ySearch object' do
+          get :i14y, params: params_with_tags
+          expect(assigns(:search_options).attributes).to include({ tags: 'tag from params' })
+        end
       end
     end
 
     context 'when a routed query term is matched' do
       before do
-        expect(RoutedQueryImpressionLogger).to receive(:log).
+        allow(RoutedQueryImpressionLogger).to receive(:log).
           with(affiliate, 'moar unclaimed money', an_instance_of(ActionController::TestRequest))
 
         get :i14y, params: search_params.merge(query: 'moar unclaimed money')
@@ -356,9 +359,9 @@ describe Api::V2::SearchesController do
         expect(ApiVideoSearch).to receive(:new).with(hash_including(query_params)).and_return(search)
         expect(search).to receive(:run)
         expect(SearchImpression).to receive(:log).with(search,
-                                                   'video',
-                                                   hash_including('query'),
-                                                   be_a_kind_of(ActionDispatch::Request))
+                                                       'video',
+                                                       hash_including('query'),
+                                                       be_a_kind_of(ActionDispatch::Request))
 
         get :video, params: search_params
       end
@@ -391,6 +394,7 @@ describe Api::V2::SearchesController do
 
     context 'when the search options are not valid' do
       before { get :docs, params: docs_params.except(:dc) }
+
       it { is_expected.to respond_with :bad_request }
 
       it 'returns errors in JSON' do
@@ -411,16 +415,16 @@ describe Api::V2::SearchesController do
         expect(ApiI14ySearch).to receive(:new).with(hash_including(query_params)).and_return(search)
         expect(search).to receive(:run)
         expect(SearchImpression).to receive(:log).with(search,
-                                                   'docs',
-                                                   hash_including('query'),
-                                                   be_a_kind_of(ActionDispatch::Request))
+                                                       'docs',
+                                                       hash_including('query'),
+                                                       be_a_kind_of(ActionDispatch::Request))
 
         get :docs, params: docs_params
       end
 
       it { is_expected.to respond_with :success }
 
-      it 'should use I14y' do
+      it 'uses I14y' do
         expect(JSON.parse(response.body)['foo']).to eq('bar')
       end
     end
@@ -435,9 +439,9 @@ describe Api::V2::SearchesController do
         expect(ApiGoogleDocsSearch).to receive(:new).with(hash_including(query_params)).and_return(search)
         expect(search).to receive(:run)
         expect(SearchImpression).to receive(:log).with(search,
-                                                   'docs',
-                                                   hash_including('query'),
-                                                   be_a_kind_of(ActionDispatch::Request))
+                                                       'docs',
+                                                       hash_including('query'),
+                                                       be_a_kind_of(ActionDispatch::Request))
 
         get :docs, params: docs_params
       end
