@@ -6,6 +6,7 @@ class RssDocument
   attr_reader :xml
 
   def initialize(document)
+    # This is very old code that could eventually be refactored to use Feedjira
     @xml = Nokogiri.XML(document)
   end
 
