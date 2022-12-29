@@ -3,21 +3,21 @@ new:
 
 outdated:
   url: http://www.agency.gov/outdated
-  last_crawled_at: <%= 1.week.ago.to_s(:db) %>
-  lastmod: <%= 1.day.ago.to_s(:db) %>
+  last_crawled_at: <%= 1.week.ago.to_fs(:db) %>
+  lastmod: <%= 1.day.ago.to_fs(:db) %>
 
 current:
   url: http://www.agency.gov/current
-  last_crawled_at: <%= 1.day.ago.to_s(:db) %>
-  lastmod: <%= 1.week.ago.to_s(:db) %>
+  last_crawled_at: <%= 1.day.ago.to_fs(:db) %>
+  lastmod: <%= 1.week.ago.to_fs(:db) %>
 
 enqueued:
   url: http://www.agency.gov/enqueued
-  last_crawled_at: <%= 1.day.ago.to_s(:db) %>
-  lastmod: <%= 1.week.ago.to_s(:db) %>
+  last_crawled_at: <%= 1.day.ago.to_fs(:db) %>
+  lastmod: <%= 1.week.ago.to_fs(:db) %>
   enqueued_for_reindex: true
 
 crawled_more_than_month:
   url: http://www.agency.gov/crawled_more_than_month
-  last_crawled_at: <%= 45.days.ago.to_s(:db) %>
+  last_crawled_at: <%= 45.days.ago.to_fs(:db) %>
   last_crawl_status: 'OK'

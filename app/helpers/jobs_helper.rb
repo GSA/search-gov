@@ -6,7 +6,7 @@ module JobsHelper
   def job_application_deadline(yyyy_mm_dd)
     if yyyy_mm_dd
       html = content_tag(:span, '&nbsp;&nbsp;&bull;&nbsp;&nbsp;'.html_safe, class: 'field-separator')
-      html << "Apply by #{Date.parse(yyyy_mm_dd).to_s(:long)}"
+      html << "Apply by #{Date.parse(yyyy_mm_dd).to_fs(:long)}"
     end
   end
 
