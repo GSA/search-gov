@@ -1,5 +1,6 @@
-class Api::NonCommercialSearchOptions < Api::SearchOptions
+# frozen_string_literal: true
 
+class Api::NonCommercialSearchOptions < Api::SearchOptions
   attr_accessor :sort_by,
                 :site_limits,
                 :tags

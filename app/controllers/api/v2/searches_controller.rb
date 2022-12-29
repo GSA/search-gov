@@ -77,10 +77,10 @@ module Api
 
       def handle_query_routing
         affiliate = @search_options.site
-        routed_query = affiliate.routed_queries
-          .joins(:routed_query_keywords)
-          .where(routed_query_keywords:{keyword: search_params[:query]})
-          .first
+        routed_query = affiliate.routed_queries.
+          joins(:routed_query_keywords).
+          where(routed_query_keywords: { keyword: search_params[:query] }).
+          first
 
         return unless routed_query
 
@@ -109,9 +109,7 @@ module Api
                                          :routed,
                                          :site_limits,
                                          :sort_by,
-                                         :tags
-                                       ).to_h
-
+                                         :tags).to_h
       end
 
       def validate_search_options
