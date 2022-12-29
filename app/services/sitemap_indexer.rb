@@ -32,8 +32,18 @@ class SitemapIndexer
   end
 
   def sitemap_entries_stream
-    @sitemap_entries_stream ||= Saxerator.parser(sitemap).
-      within('urlset').for_tag('url')
+    @sitemap_entries_stream ||=
+      xml_sitemap_entries.any? ? xml_sitemap_entries : rss_entries
+  end
+
+  def xml_sitemap_entries
+    Saxerator.parser(sitemap).within('urlset').for_tag('url')
+  end
+
+  def rss_entries
+    Feedjira.parse(sitemap).entries.map do |entry|
+      { 'loc' => entry.url, 'lastmod' => entry.last_modified }
+    end
   end
 
   def enqueue_sitemaps

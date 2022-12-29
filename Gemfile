@@ -148,6 +148,7 @@ gem 'shakapacker', '~> 6.5.4'
 # Temporarily locking the 'mail' version until the next version of Rails is released
 # https://github.com/rails/rails/pull/46650
 gem 'mail', '~> 2.7.1'
+gem 'feedjira', '~> 3.2'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
