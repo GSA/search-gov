@@ -28,7 +28,7 @@ module FederalRegisterDocumentsHelper
     else
       date_delta = (document.comments_close_on - today).to_i
       date_delta_span = content_tag :span, pluralize(date_delta, 'day')
-      comments_close_on_span = content_tag :span, document.comments_close_on.to_fs(:long)
+      comments_close_on_span = content_tag(:span, document.comments_close_on.to_fs(:long))
       "Comment period ends in #{date_delta_span} (#{comments_close_on_span})".html_safe
     end
   end
