@@ -8,7 +8,7 @@
   end_page: 36702
   page_length: 4
   publication_date: 2014-06-30
-  comments_close_on: <%= Date.current.advance(days: 2).to_s(:db) %>
+  comments_close_on: <%= Date.current.advance(days: 2).to_fs(:db) %>
   significant: false
 
 '2014-15266':
@@ -21,7 +21,7 @@
   end_page: 36726
   page_length: 1
   publication_date: 2014-06-30
-  comments_close_on: <%= Date.current.advance(days: 1).to_s(:db) %>
+  comments_close_on: <%= Date.current.advance(days: 1).to_fs(:db) %>
   significant: false
 
 '2014-15170':
@@ -45,8 +45,8 @@
   start_page: 36728
   end_page: 36729
   page_length: 2
-  publication_date: <%= Date.current.advance(days: -90).to_s(:db) %>
-  comments_close_on: <%= Date.current.advance(days: -1).to_s(:db) %>
+  publication_date: <%= Date.current.advance(days: -90).to_fs(:db) %>
+  comments_close_on: <%= Date.current.advance(days: -1).to_fs(:db) %>
   significant: false
 
 '2014-25269':
@@ -58,7 +58,7 @@
   start_page: 36728
   end_page: 36729
   page_length: 2
-  publication_date: <%= Date.current.advance(days: -95).to_s(:db) %>
+  publication_date: <%= Date.current.advance(days: -95).to_fs(:db) %>
   significant: false
 
 '2014-15238':
@@ -145,7 +145,7 @@
   end_page: 8889
   page_length: 1
   publication_date: 2013-02-01
-  comments_close_on: <%= Date.current.advance(days: 2).to_s(:db) %>
+  comments_close_on: <%= Date.current.advance(days: 2).to_fs(:db) %>
   significant: false
 
 '2022-12345':

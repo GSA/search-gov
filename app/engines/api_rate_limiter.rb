@@ -36,7 +36,7 @@ class ApiRateLimiter
   end
 
   def current_used_count_key
-    d = outbound_limit ? outbound_limit.current_interval : Date.current.to_s(:db)
+    d = outbound_limit ? outbound_limit.current_interval : Date.current.to_fs(:db)
     "#{@namespace}:#{d}:used_count"
   end
 
