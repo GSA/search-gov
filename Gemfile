@@ -144,7 +144,9 @@ gem 'font-awesome-grunticon-rails',
 # Locking the version to 2.7.x until we remove or replace therubyracer
 gem 'execjs', '~> 2.7.0'
 gem 'react-rails', '~> 2.6.2'
-gem 'shakapacker', '~> 6.5.4'
+# Locking to prevent a version mismatch between the gem and the NPM package version
+# See https://github.com/shakacode/shakapacker#upgrading
+gem 'shakapacker', '6.5.4'
 # Temporarily locking the 'mail' version until the next version of Rails is released
 # https://github.com/rails/rails/pull/46650
 gem 'mail', '~> 2.7.1'
