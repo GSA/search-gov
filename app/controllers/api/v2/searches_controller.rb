@@ -107,9 +107,12 @@ module Api
                                          :query_quote,
                                          :query,
                                          :routed,
-                                         :site_limits,
+                                         :sitelimit,
                                          :sort_by,
                                          :tags).to_h
+
+        @search_params[:site_limits] = @search_params.delete(:sitelimit)
+        @search_params
       end
 
       def validate_search_options

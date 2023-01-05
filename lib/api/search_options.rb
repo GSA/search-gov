@@ -18,15 +18,16 @@ class Api::SearchOptions
   attr_accessor :access_key,
                 :affiliate,
                 :enable_highlighting,
+                :file_type,
+                :filter,
                 :limit,
                 :offset,
-                :query,
-                :site,
                 :query_not,
-                :query_quote,
                 :query_or,
-                :file_type,
-                :filter
+                :query_quote,
+                :query,
+                :site_limits,
+                :site
 
   validates_presence_of :access_key,
                         :affiliate,
@@ -66,6 +67,7 @@ class Api::SearchOptions
     self.offset = offset.present? ? offset.to_i : DEFAULT_OFFSET
     self.file_type = params[:filetype]
     self.filter = params[:filter]
+    self.site_limits = params[:site_limits]
 
     QUERY_PARAMS.each do |param|
       self.send("#{param}=", Sanitizer.sanitize(params[param], encode: false))
@@ -76,15 +78,16 @@ class Api::SearchOptions
     { access_key: access_key,
       affiliate: site,
       enable_highlighting: enable_highlighting,
+      file_type: file_type,
+      filter: filter,
       limit: limit,
       next_offset_within_limit: next_offset_within_limit?,
       offset: offset,
-      query: query,
       query_not: query_not,
-      query_quote: query_quote,
       query_or: query_or,
-      file_type: file_type,
-      filter: filter }
+      query_quote: query_quote,
+      query: query,
+      site_limits: site_limits }
   end
 
   def next_offset_within_limit?

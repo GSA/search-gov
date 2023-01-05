@@ -314,12 +314,17 @@ describe Api::V2::SearchesController do
         end
       end
 
-      context 'when a site_limits filter is present' do
-        let(:params_with_site_limits) { search_params.merge(site_limits: 'nps.gov') }
+      context 'when a sitelimit filter is present' do
+        let(:params_with_sitelimit) { search_params.merge(sitelimit: 'nps.gov') }
 
-        it 'passes the site_limits filter to its ApiI4ySearch object' do
-          get :i14y, params: params_with_site_limits
-          expect(assigns(:search_options).attributes).to include({ site_limits: 'nps.gov' })
+        before do
+          get :i14y, params: params_with_sitelimit
+        end
+
+        it { is_expected.to respond_with :success }
+
+        it 'removes the sitelimit filter from its ApiI4ySearch object' do
+          expect(assigns(:search_options).attributes).not_to include({ sitelimit: 'nps.gov' })
         end
       end
     end

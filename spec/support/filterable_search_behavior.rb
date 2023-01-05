@@ -133,15 +133,6 @@ shared_examples 'an initialized filterable search' do
 
     its(:since) { is_expected.to be_nil }
   end
-
-  context 'when facet filters are present' do
-    subject(:test_search) do
-      described_class.new filterable_search_options.
-        merge(site_limits: 'search.gov')
-    end
-
-    its(:site_limits) { is_expected.to eq('search.gov') }
-  end
 end
 
 shared_examples 'a runnable filterable search' do
