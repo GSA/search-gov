@@ -31,15 +31,15 @@ Verify that Elasticsearch 7.17.x is running on the expected port (port 9200 by d
 ```bash
 $ curl localhost:9200
 {
-  "name" : "5de7e4b93c66",
+  "name" : "002410188f61",
   "cluster_name" : "es7-docker-cluster",
-  "cluster_uuid" : "DHM6yefJS6qH7OQrSptUdw",
+  "cluster_uuid" : "l3cAhBd4Sqa3B4SkpUilPQ",
   "version" : {
-    "number" : "7.17.3",
+    "number" : "7.17.7",
     "build_flavor" : "default",
     "build_type" : "docker",
-    "build_hash" : "5ad023604c8d7416c9eb6c0eadb62b14e766caff",
-    "build_date" : "2022-04-19T08:11:19.070913226Z",
+    "build_hash" : "78dcaaa8cee33438b91eca7f5c7f56a70fec9e80",
+    "build_date" : "2022-10-17T15:29:54.167373105Z",
     "build_snapshot" : false,
     "lucene_version" : "8.11.1",
     "minimum_wire_compatibility_version" : "6.8.0",
