@@ -289,7 +289,7 @@ describe Api::V2::SearchesController do
 
       it { is_expected.to respond_with :success }
 
-      it 'passes the correct options to its ApiI4ySearch object' do
+      it 'passes the correct options to its ApiI14ySearch object' do
         expect(assigns(:search_options).attributes).to include({ access_key: 'basic_key',
                                                                  affiliate: affiliate,
                                                                  enable_highlighting: true,
@@ -305,10 +305,46 @@ describe Api::V2::SearchesController do
                                                                  sort_by: 'date' })
       end
 
+      context 'when an audience filter is present' do
+        let(:params_with_audience) { search_params.merge(audience: 'everyone') }
+
+        it 'passes the audience filter to its ApiI14ySearch object' do
+          get :i14y, params: params_with_audience
+          expect(assigns(:search_options).attributes).to include({ audience: 'everyone' })
+        end
+      end
+
+      context 'when a content_type filter is present' do
+        let(:params_with_content_type) { search_params.merge(content_type: 'article') }
+
+        it 'passes the content_type filter to its ApiI14ySearch object' do
+          get :i14y, params: params_with_content_type
+          expect(assigns(:search_options).attributes).to include({ content_type: 'article' })
+        end
+      end
+
+      context 'when a mime_type filter is present' do
+        let(:params_with_mime_type) { search_params.merge(mime_type: 'application/pdf') }
+
+        it 'passes the mime_type filter to its ApiI14ySearch object' do
+          get :i14y, params: params_with_mime_type
+          expect(assigns(:search_options).attributes).to include({ mime_type: 'application/pdf' })
+        end
+      end
+
+      context 'when a searchgov_custom filter is present' do
+        let(:params_with_searchgov_custom) { search_params.merge(searchgov_custom1: 'customOne, customTwo') }
+
+        it 'passes the searchgov_custom filter to its ApiI14ySearch object' do
+          get :i14y, params: params_with_searchgov_custom
+          expect(assigns(:search_options).attributes).to include({ searchgov_custom1: 'customOne, customTwo' })
+        end
+      end
+
       context 'when a tags filter is present' do
         let(:params_with_tags) { search_params.merge(tags: 'tag from params') }
 
-        it 'passes the tags filter to its ApiI4ySearch object' do
+        it 'passes the tags filter to its ApiI14ySearch object' do
           get :i14y, params: params_with_tags
           expect(assigns(:search_options).attributes).to include({ tags: 'tag from params' })
         end

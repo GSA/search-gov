@@ -4,7 +4,7 @@ namespace :usasearch do
     desc 'generate top X SAYT suggestions from human Logstash searches
       for given YYYYMMDD date (defaults to 1000 for yesterday)'.squish
     task :compute, [:day, :limit] => [:environment] do |t, args|
-      args.with_defaults(:day => Date.yesterday.to_s(:number))
+      args.with_defaults(:day => Date.yesterday.to_fs(:number))
       yyyymmdd = args.day.to_i
       limit = args.limit.nil? ? 1000 : args.limit.to_i
       SaytSuggestion.populate_for(yyyymmdd, limit)

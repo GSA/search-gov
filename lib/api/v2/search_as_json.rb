@@ -69,13 +69,13 @@ module Api::V2::SearchAsJson
     { title: news_item.title,
       url: news_item.link,
       snippet: news_item.description,
-      publication_date: news_item.published_at.to_date.to_s(:db),
+      publication_date: news_item.published_at.to_date.to_fs(:db),
       source: source }
   end
 
   def as_json_federal_register_documents
     federal_register_documents.results.collect do |document|
-      comments_close_on = document.comments_close_on ? document.comments_close_on.to_s(:db) : nil
+      comments_close_on = document.comments_close_on ? document.comments_close_on.to_fs(:db) : nil
       { id: document.id,
         document_number: document.document_number,
         document_type: document.document_type,
@@ -85,7 +85,7 @@ module Api::V2::SearchAsJson
         page_length: document.page_length,
         start_page: document.start_page,
         end_page: document.end_page,
-        publication_date: document.publication_date.to_s(:db),
+        publication_date: document.publication_date.to_fs(:db),
         comments_close_date: comments_close_on }
     end
   end

@@ -19,9 +19,15 @@ class SitemapIndexer
 
   private
 
+  def sitemap_parser(sitemap)
+    # Saxerator is used to stream entries, rather than load all the data into memory.
+    # If this is refactored in the future, be sure to test with very large sitemaps to
+    # avoid blowing out server memory: https://cm-jira.usa.gov/browse/SRCH-1524
+    Saxerator.parser(sitemap, &:symbolize_keys!)
+  end
+
   def sitemaps_stream
-    @sitemaps_stream ||= Saxerator.parser(sitemap).
-      within('sitemapindex').for_tag('sitemap')
+    @sitemaps_stream ||= sitemap_parser(sitemap).within('sitemapindex').for_tag('sitemap')
   end
 
   def sitemap_index?
@@ -32,13 +38,26 @@ class SitemapIndexer
   end
 
   def sitemap_entries_stream
-    @sitemap_entries_stream ||= Saxerator.parser(sitemap).
-      within('urlset').for_tag('url')
+    @sitemap_entries_stream ||=
+      xml_sitemap_entries.any? ? xml_sitemap_entries : rss_entries
+  end
+
+  def xml_sitemap_entries
+    sitemap_parser(sitemap).within('urlset').for_tag('url')
+  end
+
+  def rss_entries
+    Feedjira.parse(sitemap).entries.map do |entry|
+      {
+        loc: entry.url,
+        lastmod: entry.last_modified
+      }
+    end
   end
 
   def enqueue_sitemaps
     sitemaps_stream.each do |sitemap|
-      SitemapIndexerJob.perform_later(sitemap_url: sitemap['loc'].to_s, domain: domain)
+      SitemapIndexerJob.perform_later(sitemap_url: sitemap[:loc].to_s, domain: domain)
     end
   end
 
@@ -55,9 +74,9 @@ class SitemapIndexer
   end
 
   def process_entry(entry)
-    sitemap_url = UrlParser.update_scheme(entry['loc'].strip, scheme)
+    sitemap_url = UrlParser.update_scheme(entry[:loc].strip, scheme)
     searchgov_url = SearchgovUrl.find_or_initialize_by(url: sitemap_url)
-    searchgov_url.update!(lastmod: entry['lastmod'])
+    searchgov_url.update!(lastmod: entry[:lastmod])
   rescue => e
     error_info = log_info.merge(sitemap_entry_failed: sitemap_url, error: e.message)
     log_line = "[Searchgov SitemapIndexer] #{error_info.to_json}"
@@ -69,7 +88,7 @@ class SitemapIndexer
     # strictly adhering to the sitemap protocol,
     # but matching the domain should suffice for now.
     # https://www.pivotaltracker.com/story/show/157485118
-    url = entry['loc'].strip
+    url = entry[:loc].strip
     URI(url).host == domain
   rescue URI::InvalidURIError
     Rails.logger.error("Error processing sitemap entry. Invalid URL: #{url}")

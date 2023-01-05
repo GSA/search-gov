@@ -4,11 +4,11 @@ item1:
   title: News element 1
   description: News element 1 has a description
   guid: This is a unique string per RSS feed and we are requiring it to be present
-  published_at: <%= 5.day.ago.to_s(:db) %>
+  published_at: <%= 5.day.ago.to_fs(:db) %>
 item2:
   rss_feed_url: :es_white_house_blog_url
   link: http://es.some.agency.gov/news/1
   title: Spanish news element 1
   description: Spanish news element 1 has a description
   guid: This is a unique string per RSS feed and we are requiring it to be present
-  published_at: <%= 5.day.ago.to_s(:db) %>
+  published_at: <%= 5.day.ago.to_fs(:db) %>

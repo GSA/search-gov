@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe SitemapIndexer do
   let(:sitemap_url) { 'http://agency.gov/sitemap.xml' }
-  let!(:searchgov_domain) { SearchgovDomain.find_or_create_by!(domain: 'agency.gov') }
+  let(:searchgov_domain) { searchgov_domains(:agency_gov) }
   let(:sitemap_entries) { '<url><loc>http://agency.gov/doc1</loc></url>' }
   let(:sitemap_content) do
     <<~SITEMAP
@@ -14,13 +14,17 @@ describe SitemapIndexer do
       </urlset>
     SITEMAP
   end
-  let(:indexer) { described_class.new(sitemap_url: sitemap_url, domain: 'agency.gov') }
+  let(:indexer) do
+    described_class.new(
+      sitemap_url: sitemap_url,
+      domain: searchgov_domain.domain
+    )
+  end
 
   before do
     stub_request(:get, sitemap_url).
       with(headers: { 'User-Agent' => DEFAULT_USER_AGENT }).
       to_return(body: sitemap_content)
-    allow(searchgov_domain).to receive_message_chain(:reload, :index_urls)
   end
 
   describe '#index' do
@@ -208,6 +212,21 @@ describe SitemapIndexer do
       it 'logs the error' do
         expect(Rails.logger).to receive(:error).with(/Invalid URL/)
         index
+      end
+    end
+
+    context 'when the sitemap is an rss 2.0 feed' do
+      let(:searchgov_domain) { searchgov_domains(:www_whitehouse_gov) }
+      let(:sitemap_content) { read_fixture_file('/rss/wh_blog.xml') }
+
+      it 'creates searchgov_url records' do
+        expect { index }.to change { SearchgovUrl.count }.by(3)
+      end
+
+      it 'extracts the lastmod timestamp for the rss items' do
+        index
+        expect(searchgov_domain.searchgov_urls.first.lastmod).
+          to eq(Time.zone.parse('Mon, 26 Sep 2011 21:33:05 +0000'))
       end
     end
   end

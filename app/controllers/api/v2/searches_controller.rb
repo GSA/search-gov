@@ -94,6 +94,8 @@ module Api
         @search_params ||= params.permit(:access_key,
                                          :affiliate,
                                          :api_key,
+                                         :audience,
+                                         :content_type,
                                          :cx, # SRCH-1429 This will be removed as GSS is deprecated
                                          :dc,
                                          :enable_highlighting,
@@ -101,12 +103,16 @@ module Api
                                          :filter, # Advanced search "safe search" param
                                          :format,
                                          :limit,
+                                         :mime_type,
                                          :offset,
                                          :query_not,
                                          :query_or,
                                          :query_quote,
                                          :query,
                                          :routed,
+                                         :searchgov_custom1,
+                                         :searchgov_custom2,
+                                         :searchgov_custom3,
                                          :sort_by,
                                          :tags
                                        ).to_h
