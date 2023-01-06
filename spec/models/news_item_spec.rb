@@ -18,7 +18,9 @@ describe NewsItem do
   let(:news_item) { described_class.new(valid_attributes) }
 
   describe 'schema' do
-    it { is_expected.to have_db_column(:safe_properties).of_type(:json) }
+    it { is_expected.to have_db_column(:properties).of_type(:json) }
+    # temporary backup column - will be removed per SRCH-3465
+    it { is_expected.to have_db_column(:unsafe_properties).of_type(:text) }
   end
 
   describe 'creating a new NewsItem' do
@@ -124,38 +126,25 @@ describe NewsItem do
     end
   end
 
+  # Historically, "properties" included a hash of image-related values for
+  # images from MRSS feeds. That was deprecated when ASIS was released, but we still need
+  # to switch one admin center preview to ASIS: https://cm-jira.usa.gov/browse/SRCH-2615.
+  # When that is done, we can remove any code related to image properties.
+  # The 'duration' property is still used to support API video searches.
   describe '#properties' do
     subject(:properties) { news_item.properties }
 
     it { is_expected.to be_a Hash }
 
+    it 'raises an error for non-hash values' do
+      expect { news_item.properties = 'not a hash' }.
+        to raise_error(ActiveRecord::SerializationTypeMismatch)
+    end
+
     context 'when the news item is a video' do
       let(:news_item) { described_class.new(properties: { duration: '0:39' }) }
 
       it { is_expected.to eq({ duration: '0:39' }) }
-    end
-
-    context 'when saving' do
-      let(:news_item) do
-        described_class.new(valid_attributes.merge(properties: { foo: 'bar' }))
-      end
-
-      it 'saves the properties to the safe_properties column' do
-        expect { news_item.save! }.to change { news_item.safe_properties }.
-          from(nil).to({ 'foo' => 'bar' })
-      end
-
-      context 'when the item has no properties' do
-        let(:news_item) do
-          described_class.new(valid_attributes.merge(properties: nil))
-        end
-
-        # ensure we don't save an empty hash
-        it 'returns nil' do
-          news_item.save!
-          expect(news_item.safe_properties).to be_nil
-        end
-      end
     end
   end
 
