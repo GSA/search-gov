@@ -17,9 +17,6 @@ class NewsItem < ApplicationRecord
   end
 
   before_validation :downcase_scheme
-  # temporary code to keep properties/safe_properties in sync until
-  # we've migrated the data and swapped columns: https://cm-jira.usa.gov/browse/SRCH-3465
-  before_save { self.safe_properties = properties.presence }
   validates :title, :link, :published_at, :guid, :rss_feed_url_id, presence: true
   validates :description, presence: { unless: :description_not_required? }
   validates_url :link
@@ -34,6 +31,7 @@ class NewsItem < ApplicationRecord
   validate :unique_link
   belongs_to :rss_feed_url
   serialize :properties, Hash
+  store_accessor :properties, :duration
 
   alias_attribute :url, :link
 
@@ -41,6 +39,11 @@ class NewsItem < ApplicationRecord
     link =~ %r{\Ahttps?://www\.youtube\.com/watch\?v=}
   end
 
+  # Historically, the image-related "properties" supported images from MRSS feeds.
+  # That was deprecated when ASIS was released, but we still need
+  # to switch one admin center preview to ASIS: https://cm-jira.usa.gov/browse/SRCH-2615.
+  # When that is done, we can remove any code related to image properties.
+  # The 'duration' property is still used for videos.
   def tags
     if properties.key?(:media_content) and
        properties[:media_content][:url].present? and
@@ -56,12 +59,14 @@ class NewsItem < ApplicationRecord
     properties[:media_thumbnail][:url] if properties[:media_thumbnail]
   end
 
+  # This method should be removed entirely per SRCH-3465. It is temporary
+  # code to prevent video searches from failing during deployment of SRCH-3718.
   def duration
-    properties[:duration]
-  end
-
-  def duration=(duration_str)
-    properties[:duration] = duration_str
+    if properties.is_a?(String)
+      JSON.parse(properties)['duration']
+    else
+      properties.with_indifferent_access[:duration]
+    end
   end
 
   def language
