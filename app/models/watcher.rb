@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Watcher < ApplicationRecord
-  extend HashColumnsAccessible
   include ActionView::Helpers::NumberHelper
   include LogstashPrefix
   include WatcherDsl
@@ -16,8 +15,6 @@ class Watcher < ApplicationRecord
   validates_format_of :throttle_period, with: INTERVAL_REGEXP
   validates_length_of :query_blocklist, maximum: 150, allow_nil: true
   validates :time_window, format: INTERVAL_REGEXP, time_window: true
-
-  serialize :conditions, Hash
 
   def body
     Jbuilder.encode do |json|

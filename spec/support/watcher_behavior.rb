@@ -41,4 +41,19 @@ shared_examples_for 'a watcher' do
       expect(execute_watcher['watch_record'].keys).not_to include('exception')
     end
   end
+
+  # The conditions column is a JSON column that will return a hash with string keys:
+  # https://api.rubyonrails.org/classes/ActiveRecord/Store.html
+  # However, the conditions should be accessed via the methods provided by `store_accessor`
+  # in each subclass, rather than directly via the hash. These specs exist mostly as
+  # signposts to help future debuggers.
+  describe '.conditions' do
+    subject(:conditions) { watcher.conditions }
+
+    it { is_expected.to be_a Hash }
+
+    it 'uses string keys' do
+      expect(watcher.conditions.keys).to all be_a(String)
+    end
+  end
 end

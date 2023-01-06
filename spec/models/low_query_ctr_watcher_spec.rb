@@ -24,10 +24,18 @@ describe LowQueryCtrWatcher do
   it { is_expected.to validate_numericality_of(:search_click_total).only_integer }
   it { is_expected.to validate_numericality_of(:low_ctr_threshold) }
 
-  describe '.conditions' do
-    subject(:conditions) { watcher.conditions }
+  describe 'conditions column accessors' do
+    describe '#low_ctr_threshold' do
+      subject(:low_ctr_threshold) { watcher.low_ctr_threshold }
 
-    it { is_expected.to eq({ low_ctr_threshold: 15.5, search_click_total: 101 }) }
+      it { is_expected.to eq(15.5) }
+    end
+
+    describe '#search_click_total' do
+      subject(:search_click_total) { watcher.search_click_total }
+
+      it { is_expected.to eq(101) }
+    end
   end
 
   describe 'humanized_alert_threshold' do

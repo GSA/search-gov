@@ -2,8 +2,8 @@
 
 class NoResultsWatcher < Watcher
   WATCHER_DEFAULTS = { distinct_user_total: 50 }
-  define_hash_columns_accessors column_name_method: :conditions,
-                                fields: [:distinct_user_total]
+
+  store_accessor :conditions, :distinct_user_total
 
   validates_numericality_of :distinct_user_total, greater_than_or_equal_to: 1, only_integer: true
 

@@ -23,10 +23,12 @@ describe NoResultsWatcher do
 
   it { is_expected.to validate_numericality_of(:distinct_user_total).only_integer }
 
-  describe '.conditions' do
-    subject(:conditions) { watcher.conditions }
+  describe 'conditions column accessors' do
+    describe '#distinct_user_total' do
+      subject(:distinct_user_total) { watcher.distinct_user_total }
 
-    it { is_expected.to eq({ distinct_user_total: 34 }) }
+      it { is_expected.to eq(34) }
+    end
   end
 
   describe 'humanized_alert_threshold' do
