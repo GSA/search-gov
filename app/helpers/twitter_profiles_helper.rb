@@ -34,10 +34,11 @@ module TwitterProfilesHelper
             target: '_blank'
   end
 
-  def twitter_profile_properties(site, twitter_profile)
-    if site.affiliate_twitter_settings.
-        exists?(twitter_profile_id: twitter_profile.id, show_lists: 1)
-      content_tag :span, '(show lists)', class: 'properties'
-    end
-  end
+  # Temporarily disabling show lists as per JIRA ticket #SRCH-3556
+  # def twitter_profile_properties(site, twitter_profile)
+  #   if site.affiliate_twitter_settings.
+  #       exists?(twitter_profile_id: twitter_profile.id, show_lists: 1)
+  #     content_tag :span, '(show lists)', class: 'properties'
+  #   end
+  # end
 end

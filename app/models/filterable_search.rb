@@ -5,7 +5,13 @@ class FilterableSearch < Search
   class_attribute :default_sort_by
   self.default_sort_by = 'r'.freeze
 
-  attr_reader :since,
+  attr_reader :audience,
+              :content_type,
+              :mime_type,
+              :searchgov_custom1,
+              :searchgov_custom2,
+              :searchgov_custom3,
+              :since,
               :sort,
               :sort_by,
               :tags,
@@ -50,6 +56,12 @@ class FilterableSearch < Search
   end
 
   def initialize_facet_attributes(options)
+    @audience = options[:audience]
+    @content_type = options[:content_type]
+    @mime_type = options[:mime_type]
+    @searchgov_custom1 = options[:searchgov_custom1]
+    @searchgov_custom2 = options[:searchgov_custom2]
+    @searchgov_custom3 = options[:searchgov_custom3]
     @tags = options[:tags]
   end
 

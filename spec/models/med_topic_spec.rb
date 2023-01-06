@@ -250,7 +250,7 @@ describe MedTopic do
   end
 
   describe '.download_medline_xml' do
-    before { allow(File).to receive(:exist?) }
+    before { allow(File).to receive(:exist?).and_call_original }
 
     context 'when file is not present in the tmp/medline directory' do
       let(:xml_content) { 'xml content' }

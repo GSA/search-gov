@@ -20,7 +20,7 @@ describe 'SAYT suggestions rake tasks' do
 
       context 'when target day is specified' do
         it 'should populate sayt_suggestions for that given day' do
-          day = Date.current.to_s(:number).to_i
+          day = Date.current.to_fs(:number).to_i
           expect(SaytSuggestion).to receive(:populate_for).with(day, 1000)
           @rake[task_name].invoke(day)
         end
@@ -28,7 +28,7 @@ describe 'SAYT suggestions rake tasks' do
 
       context 'when target day is not specified' do
         it 'should default to yesterday' do
-          day = Date.yesterday.to_s(:number).to_i
+          day = Date.yesterday.to_fs(:number).to_i
           expect(SaytSuggestion).to receive(:populate_for).with(day, 1000)
           @rake[task_name].invoke
         end
@@ -36,7 +36,7 @@ describe 'SAYT suggestions rake tasks' do
 
       context 'when limit is specified' do
         it 'should pass that along to #populate_for' do
-          day = Date.current.to_s(:number).to_i
+          day = Date.current.to_fs(:number).to_i
           limit = '20'
           expect(SaytSuggestion).to receive(:populate_for).with(day, limit.to_i)
           @rake[task_name].invoke(day, limit)
@@ -45,7 +45,7 @@ describe 'SAYT suggestions rake tasks' do
 
       context 'when limit is not specified' do
         it 'should pass 1000 to #populate_for' do
-          day = Date.current.to_s(:number).to_i
+          day = Date.current.to_fs(:number).to_i
           expect(SaytSuggestion).to receive(:populate_for).with(day, 1000)
           @rake[task_name].invoke(day)
         end

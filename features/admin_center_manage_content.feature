@@ -674,11 +674,11 @@ Feature: Manage Content
     And I follow "Twitter" within the Admin Center content
     And I follow "Add Twitter Handle"
     When I fill in "Twitter Handle" with "NIH"
-    And I check "Show tweets from my lists"
+    # And I check "Show tweets from my lists"
     And I submit the form by pressing "Add"
     Then I should see "You have added @NIH to this site"
     And I should see a link to "@NIH" with url for "https://twitter.com/NIH"
-    And I should see "@NIH (show lists)"
+    # And I should see "@NIH (show lists)"
     When I press "Remove" and confirm "Are you sure you wish to remove @NIH from this site?"
     Then I should see "You have removed @NIH from this site"
     When I follow "Add Twitter Handle"
