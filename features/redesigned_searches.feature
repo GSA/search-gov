@@ -14,7 +14,7 @@ Feature: Search - redesign
     Then I should see "Please enter a search term in the box above."
 
   @javascript
-  Scenario: Search with a blank query on an affiliate page
+  Scenario: Searching a domain with Bing results
     When I am on bar.gov's redesigned search page with "white house" query
     Then I should see exactly "20" web search results
     And I should see "Remarks by President Biden"
