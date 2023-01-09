@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::NonCommercialSearchOptions < Api::SearchOptions
 
   attr_accessor :audience,

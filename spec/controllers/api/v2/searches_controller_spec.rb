@@ -349,6 +349,26 @@ describe Api::V2::SearchesController do
           expect(assigns(:search_options).attributes).to include({ tags: 'tag from params' })
         end
       end
+
+      context 'when a sitelimit filter is present' do
+        let(:params_with_sitelimit) { search_params.merge(sitelimit: 'nps.gov') }
+
+        before do
+          get :i14y, params: params_with_sitelimit
+        end
+
+        it { is_expected.to respond_with :success }
+
+        it 'removes the sitelimit filter from its ApiI4ySearch object' do
+          expect(assigns(:search_options).attributes).
+            not_to include({ sitelimit: 'nps.gov' })
+        end
+
+        it 'adds a site_limits search param to the ApiI14ySearch' do
+          expect(ApiI14ySearch).to have_received(:new).
+            with(hash_including(site_limits: 'nps.gov'))
+        end
+      end
     end
 
     context 'when a routed query term is matched' do
