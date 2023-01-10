@@ -5,10 +5,10 @@ class NoResultsWatcher < Watcher
 
   store_accessor :conditions, :distinct_user_total
 
-  validates_numericality_of :distinct_user_total, greater_than_or_equal_to: 1, only_integer: true
+  validates :distinct_user_total, numericality: { greater_than_or_equal_to: 1, only_integer: true }
 
   def humanized_alert_threshold
-    "#{number_with_delimiter distinct_user_total} Queries"
+    "#{number_with_delimiter(distinct_user_total)} Queries"
   end
 
   def input(json)

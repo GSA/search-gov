@@ -9,11 +9,11 @@ class Watcher < ApplicationRecord
   belongs_to :user
   belongs_to :affiliate
 
-  validates_presence_of :name, :conditions, :type
-  validates_uniqueness_of :name, case_sensitive: false
-  validates_format_of :check_interval, with: INTERVAL_REGEXP
-  validates_format_of :throttle_period, with: INTERVAL_REGEXP
-  validates_length_of :query_blocklist, maximum: 150, allow_nil: true
+  validates :name, :conditions, :type, presence: true
+  validates :name, uniqueness: { case_sensitive: false }
+  validates :check_interval, format: { with: INTERVAL_REGEXP }
+  validates :throttle_period, format: { with: INTERVAL_REGEXP }
+  validates :query_blocklist, length: { maximum: 150, allow_nil: true }
   validates :time_window, format: INTERVAL_REGEXP, time_window: true
 
   def body
@@ -41,7 +41,7 @@ class Watcher < ApplicationRecord
   def trigger(json)
     json.trigger do
       json.schedule do
-        json.interval self.check_interval
+        json.interval check_interval
       end
     end
   end

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 describe NoResultsWatcher do
+  subject(:watcher) { described_class.new(watcher_args) }
+
   let(:affiliate) { affiliates(:basic_affiliate) }
   let(:user) { affiliate.users.first }
   let(:watcher_args) do
@@ -19,8 +21,6 @@ describe NoResultsWatcher do
     JSON.parse(read_fixture_file('/json/watcher/no_results_watcher_body.json')).to_json
   end
 
-  subject(:watcher) { described_class.new(watcher_args) }
-
   it { is_expected.to validate_numericality_of(:distinct_user_total).only_integer }
 
   describe 'conditions column accessors' do
@@ -33,6 +33,7 @@ describe NoResultsWatcher do
 
   describe 'humanized_alert_threshold' do
     subject(:watcher) { described_class.new(distinct_user_total: 34) }
+
     it 'returns a human-readable version of the alert threshold(s)' do
       expect(watcher.humanized_alert_threshold).to eq('34 Queries')
     end
