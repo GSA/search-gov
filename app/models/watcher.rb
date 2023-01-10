@@ -10,7 +10,14 @@ class Watcher < ApplicationRecord
   belongs_to :affiliate
 
   validates :name, :conditions, :type, presence: true
+  # Disabling the Rubocop check for a unique index to back up a uniquness validation.
+  # This validation is as old as the class, but I'm not sure it is correct/needed.
+  # It may make sense to enforce unique names per user/affiliate, but I doubt that
+  # the name needs to be universally unique, unless it affects something on the Elasticsearch
+  # side. Until that is determined, I'm leaving this as-is.
+  # rubocop:disable Rails/UniqueValidationWithoutIndex
   validates :name, uniqueness: { case_sensitive: false }
+  # rubocop:enable Rails/UniqueValidationWithoutIndex
   validates :check_interval, format: { with: INTERVAL_REGEXP }
   validates :throttle_period, format: { with: INTERVAL_REGEXP }
   validates :query_blocklist, length: { maximum: 150, allow_nil: true }
