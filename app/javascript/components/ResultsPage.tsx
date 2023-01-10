@@ -110,22 +110,26 @@ class ResultsPage extends React.Component<ResultsPageProps, Nothing> {
           </Grid>
         </GridContainer>
 
-        {this.props.results.map(result => {
-          return (
-            <GridContainer>
-              <Grid row>
-                <Grid tablet={{ col: true }}><a href= "#"><h4>{result['title']}</h4></a></Grid>
-              </Grid>
-              <Grid row>
-                <Grid tablet={{ col: true }}><a href= "#">{result['unescapedUrl']}</a></Grid>
-              </Grid>
-              <Grid row>
-                <Grid tablet={{ col: true }}><p>{result['content']}</p></Grid>
-              </Grid>
-            </GridContainer>
-            )
-          }
-        )}
+        <div id='results'>
+          {this.props.results.map(result => {
+            return (
+              <div className='result'>
+                <GridContainer>
+                  <Grid row>
+                    <Grid tablet={{ col: true }}><a href= "#" ><h4>{result['title']}</h4></a></Grid>
+                  </Grid>
+                  <Grid row>
+                    <Grid tablet={{ col: true }}><a href= "#">{result['unescapedUrl']}</a></Grid>
+                  </Grid>
+                  <Grid row>
+                    <Grid tablet={{ col: true }}><p>{result['content']}</p></Grid>
+                  </Grid>
+                </GridContainer>
+              </div>
+              )
+            }
+          )}
+        </div>
       </React.Fragment>
     );
   }
