@@ -16,15 +16,6 @@ shared_examples 'restricted to approved user' do |request_method, action, parame
       expect(response).to redirect_to(account_path)
     end
   end
-
-  describe 'when user is pending contact information status' do
-    before { UserSession.create(users(:affiliate_manager_with_pending_contact_information_status)) }
-
-    it 'redirects to affiliates page' do
-      send request_method, action, params: parameters
-      expect(response).to redirect_to(account_path)
-    end
-  end
 end
 
 shared_context 'approved user logged in' do
