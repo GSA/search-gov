@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_13_161648) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_06_201846) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -756,12 +756,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_13_161648) do
     t.string "name"
     t.string "check_interval"
     t.string "throttle_period"
-    t.string "conditions"
+    t.string "unsafe_conditions"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.string "time_window"
     t.string "query_blocklist"
-    t.json "safe_conditions"
+    t.json "conditions"
   end
 
   create_table "youtube_playlists", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
