@@ -1,5 +1,5 @@
 class FilterableSearch < Search
-  TIME_FILTER_PARAMS = %i(hour day week month year)
+  TIME_FILTER_PARAMS = %i[hour day week month year].freeze
   TIME_BASED_SEARCH_OPTIONS = Hash[TIME_FILTER_PARAMS.collect { |p| [p.to_s[0], p] }]
 
   class_attribute :default_sort_by
@@ -22,12 +22,12 @@ class FilterableSearch < Search
     super
     initialize_date_attributes(options)
     initialize_facet_attributes(options)
-    @sort_by = options[:sort_by] if %w(date r).include?(options[:sort_by])
+    @sort_by = options[:sort_by] if %w[date r].include?(options[:sort_by])
     @sort = 'published_at:desc' unless sort_by_relevance?
   end
 
   def sort_by_relevance?
-    sort_by.nil? || 'r' == sort_by
+    sort_by.nil? || sort_by == 'r'
   end
 
   def custom_filter_params?
@@ -41,18 +41,18 @@ class FilterableSearch < Search
   protected
 
   def initialize_date_attributes(options)
-    @until = parse_until_ts options[:until_date]
-    @since = parse_since_ts options[:since_date]
+    @until = parse_until_ts(options[:until_date])
+    @since = parse_since_ts(options[:since_date])
 
-    if @since and @until and @since > @until
+    if @since && @until && @since > @until
       @since, @until = @until.beginning_of_day, @since.end_of_day
     end
 
     extent = TIME_BASED_SEARCH_OPTIONS[options[:tbs]]
-    if extent && @since.nil? && @until.nil?
-      @tbs = options[:tbs]
-      @since = since_when extent
-    end
+    return unless extent && @since.nil? && @until.nil?
+
+    @tbs = options[:tbs]
+    @since = since_when(extent)
   end
 
   def initialize_facet_attributes(options)
@@ -66,7 +66,8 @@ class FilterableSearch < Search
   end
 
   def parse_until_ts(until_date_str)
-    return unless until_date_str.present?
+    return if until_date_str.blank?
+
     parse_date_str(until_date_str).end_of_day
   rescue
     DateTime.current.end_of_day

@@ -120,13 +120,6 @@ never_active_76_days:
   <<: *DEFAULTS
   created_at: <%= 76.days.ago.to_fs(:db) %>
 
-affiliate_manager_with_pending_contact_information_status:
-  <<: *DEFAULTS
-  first_name: Pending Contact Information Affiliate Manager
-  last_name: Smith
-  approval_status: pending_contact_information
-  requires_manual_approval: true
-
 affiliate_manager_with_pending_approval_status:
   <<: *DEFAULTS
   first_name: Pending Approval Affiliate Manager

@@ -4,6 +4,7 @@ describe Api::SearchOptions, type: :model do
   subject(:options) do
     described_class.new(params)
   end
+
   let(:params) do
     {}
   end
