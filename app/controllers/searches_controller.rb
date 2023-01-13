@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SearchesController < ApplicationController
-  layout :set_layout
+  layout :set_layout, only: [:index]
 
   skip_before_action :verify_authenticity_token, :set_default_locale
 
