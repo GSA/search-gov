@@ -2,14 +2,15 @@
 
 class LowQueryCtrWatcher < Watcher
   WATCHER_DEFAULTS = { search_click_total: 100, low_ctr_threshold: 15 }
-  define_hash_columns_accessors column_name_method: :conditions,
-                                fields: [:search_click_total, :low_ctr_threshold]
 
-  validates_numericality_of :search_click_total, greater_than_or_equal_to: 20, only_integer: true
-  validates_numericality_of :low_ctr_threshold, greater_than: 0.0, less_than: 100.0
+  store_accessor :conditions, :search_click_total
+  store_accessor :conditions, :low_ctr_threshold
+
+  validates :search_click_total, numericality: { greater_than_or_equal_to: 20, only_integer: true }
+  validates :low_ctr_threshold, numericality: { greater_than: 0.0, less_than: 100.0 }
 
   def humanized_alert_threshold
-    "#{low_ctr_threshold}% CTR on #{number_with_delimiter search_click_total} Queries & Clicks"
+    "#{low_ctr_threshold}% CTR on #{number_with_delimiter(search_click_total)} Queries & Clicks"
   end
 
   def label

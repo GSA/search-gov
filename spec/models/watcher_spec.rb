@@ -9,7 +9,9 @@ describe Watcher do
   end
 
   describe 'schema' do
-    it { is_expected.to have_db_column(:safe_conditions).of_type(:json) }
+    it { is_expected.to have_db_column(:conditions).of_type(:json) }
+    # temporary backup column - will be removed per SRCH-3465
+    it { is_expected.to have_db_column(:unsafe_conditions).of_type(:string) }
   end
 
   it { is_expected.to validate_presence_of :name }
@@ -24,11 +26,5 @@ describe Watcher do
 
   %w[5w 30d 800h].each do |value|
     it { is_expected.not_to allow_value(value).for(:time_window) }
-  end
-
-  describe '.conditions' do
-    subject(:conditions) { watcher.conditions }
-
-    it { is_expected.to be_a Hash }
   end
 end

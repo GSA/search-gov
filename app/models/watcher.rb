@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Watcher < ApplicationRecord
-  extend HashColumnsAccessible
   include ActionView::Helpers::NumberHelper
   include LogstashPrefix
   include WatcherDsl
@@ -10,14 +9,19 @@ class Watcher < ApplicationRecord
   belongs_to :user
   belongs_to :affiliate
 
-  validates_presence_of :name, :conditions, :type
-  validates_uniqueness_of :name, case_sensitive: false
-  validates_format_of :check_interval, with: INTERVAL_REGEXP
-  validates_format_of :throttle_period, with: INTERVAL_REGEXP
-  validates_length_of :query_blocklist, maximum: 150, allow_nil: true
+  validates :name, :conditions, :type, presence: true
+  # Disabling the Rubocop check for a unique index to back up a uniquness validation.
+  # This validation is as old as the class, but I'm not sure it is correct/needed.
+  # It may make sense to enforce unique names per user/affiliate, but I doubt that
+  # the name needs to be universally unique, unless it affects something on the Elasticsearch
+  # side. Until that is determined, I'm leaving this as-is.
+  # rubocop:disable Rails/UniqueValidationWithoutIndex
+  validates :name, uniqueness: { case_sensitive: false }
+  # rubocop:enable Rails/UniqueValidationWithoutIndex
+  validates :check_interval, format: { with: INTERVAL_REGEXP }
+  validates :throttle_period, format: { with: INTERVAL_REGEXP }
+  validates :query_blocklist, length: { maximum: 150, allow_nil: true }
   validates :time_window, format: INTERVAL_REGEXP, time_window: true
-
-  serialize :conditions, Hash
 
   def body
     Jbuilder.encode do |json|
@@ -44,7 +48,7 @@ class Watcher < ApplicationRecord
   def trigger(json)
     json.trigger do
       json.schedule do
-        json.interval self.check_interval
+        json.interval check_interval
       end
     end
   end
