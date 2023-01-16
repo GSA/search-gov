@@ -1,6 +1,10 @@
 {
   "name": "Search.gov",
   "private": true,
+  "scripts": {
+    "test": "jest",
+    "coverage": "jest --coverage"
+  },
   "dependencies": {
     "@babel/core": "^7.19.6",
     "@babel/plugin-transform-runtime": "^7.19.6",
@@ -50,7 +54,14 @@
     "defaults"
   ],
   "devDependencies": {
+    "@jest/globals": "^29.3.1",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.8",
-    "react-refresh": "^0.14.0"
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^29.3.1",
+    "jest-environment-jsdom": "^29.3.1",
+    "react-refresh": "^0.14.0",
+    "ts-jest": "^29.0.5"
   }
 }
