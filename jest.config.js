@@ -10,6 +10,6 @@ module.exports = {
     '\\.(css|less|scss)$': 'identity-obj-proxy'
   },
   testMatch: [
-    '<rootDir>/app/javascript/components/**/*test.{ts,tsx}'
+    '<rootDir>/app/javascript/test/**/*test.{ts,tsx}'
   ]
 };
