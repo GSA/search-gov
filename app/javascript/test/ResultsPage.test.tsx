@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import * as React from 'react';
-import ResultsPage from '../ResultsPage';
+import ResultsPage from '../components/ResultsPage';
 
 describe('ResultsPage', () => {
   it('shows a message when there are no results', () => {
