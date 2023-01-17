@@ -16,6 +16,6 @@
       "*": ["node_modules/*", "app/javascript/*"]
     },
   },
-  "exclude": ["app/javascript/test/*", "node_modules", "vendor", "public"],
+  "exclude": ["**/*.test.ts", "**/*.test.tsx", "node_modules", "vendor", "public"],
   "compileOnSave": false
 }
