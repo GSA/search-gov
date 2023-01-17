@@ -157,6 +157,9 @@ Make sure the unit tests, functional and integration tests run:
     
     # Run the Cucumber integration tests
     $ cucumber features/
+
+    # Run the JavaScript tests
+    $ yarn test
     
 ## Code Coverage
 
