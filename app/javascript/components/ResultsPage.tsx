@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 import { GovBanner, Header, Title, NavMenuButton, ExtendedNav, NavDropDownButton, Menu, Search, GridContainer, Grid } from '@trussworks/react-uswds';
 
@@ -111,9 +111,9 @@ class ResultsPage extends React.Component<ResultsPageProps, Nothing> {
         </GridContainer>
 
         <div id='results'>
-          {this.props.results.map(result => {
+          {this.props.results.map((result, index) => {
             return (
-              <div className='result'>
+              <div className='result' key={index}>
                 <GridContainer>
                   <Grid row>
                     <Grid tablet={{ col: true }}><a href= "#" ><h4>{result['title']}</h4></a></Grid>
