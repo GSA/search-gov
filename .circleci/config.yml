@@ -250,6 +250,8 @@ jobs:
           install-yarn: true
           node-version: << parameters.node_version >>
 
+      - install_js_dependencies
+
       - run:
           name: Run Tests
           command: |
@@ -260,7 +262,7 @@ jobs:
             yarn test:coverage
 
             ./cc-test-reporter format-coverage \
-              --output coverage/codeclimate.jest.$CIRCLE_NODE_INDEX.<< parameters.node_version >>.json
+              --output coverage/codeclimate.jest.<< parameters.node_version >>.json
 
       - persist_to_workspace:
           root: ~/search-gov/coverage
