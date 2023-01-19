@@ -7,6 +7,7 @@ version: 2.1
 orbs:
   ruby: circleci/ruby@1.6.0
   browser-tools: circleci/browser-tools@1.2.5
+  nodejs: circleci/node@5.1.0
 
 executors:
   test_executor:
@@ -227,6 +228,49 @@ jobs:
           path: /tmp/test-results
           destination: test-results
 
+  jest:
+    parameters:
+      node_version:
+        type: string
+
+    # executor: 
+    #   name: test_executor
+    #   node_version: << parameters.node_version >>
+
+    # parallelism: 10
+
+    steps:
+      - restore_cache:
+          key: repo-{{ .Environment.CIRCLE_SHA1 }}
+
+      - node/install:
+          install-yarn: true
+          node-version: << parameters.node_version >>
+
+      - run:
+          name: Run Tests
+          command: |
+            mkdir /tmp/test-results
+            ./cc-test-reporter before-build
+
+            # Run jest tests
+            yarn test:coverage
+
+            ./cc-test-reporter format-coverage \
+              --output coverage/codeclimate.jest.$CIRCLE_NODE_INDEX.<< parameters.node_version >>.json
+
+      - persist_to_workspace:
+          root: ~/search-gov/coverage
+          paths:
+          - codeclimate.jest.*.json
+
+      # collect reports
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
+
   report_coverage:
     parameters:
       ruby_version:
@@ -293,10 +337,24 @@ workflows:
               elasticsearch_version:
                 - 7.17.7
 
+      - jest:
+          requires:
+            - checkout_code
+          name: "jest: NodeJS << matrix.node_version >>"
+          matrix:
+            parameters:
+              ruby_version:
+                - 2.7.5
+              elasticsearch_version:
+                - 7.17.7
+              node_version:
+                - 16.18.1
+
       - report_coverage:
           requires:
             - rspec
             - cucumber
+            - jest
           name: "report coverage: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>"
           matrix:
             # We only report coverage for one run, as the coverage will be
