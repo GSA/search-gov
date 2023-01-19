@@ -62,7 +62,7 @@ commands:
   install_js_dependencies:
     description: 'Install JavaScript dependencies'
     steps:
-      - run: yarn install
+      - run: yarn install --frozen-lockfile
   precompile_assets:
     description: 'Pre-compile assets'
     steps:
@@ -299,7 +299,7 @@ jobs:
           name: Report coverage to Code Climate
           command: |
             ./cc-test-reporter sum-coverage --parts 16 \
-              coverage/codeclimate.*.<< parameters.ruby_version >>_<< parameters.elasticsearch_version >>.json \
+              coverage/codeclimate.*.json \
               --output coverage/codeclimate_full_report.json
 
             ./cc-test-reporter upload-coverage --input coverage/codeclimate_full_report.json
