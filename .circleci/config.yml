@@ -298,7 +298,7 @@ jobs:
       - run:
           name: Report coverage to Code Climate
           command: |
-            ./cc-test-reporter sum-coverage --parts 16 \
+            ./cc-test-reporter sum-coverage --parts 17 \
               coverage/codeclimate.*.json \
               --output coverage/codeclimate_full_report.json
 
