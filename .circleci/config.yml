@@ -230,20 +230,23 @@ jobs:
 
   jest:
     parameters:
+      ruby_version:
+        type: string
+      elasticsearch_version:
+        type: string
       node_version:
         type: string
 
-    # executor: 
-    #   name: test_executor
-    #   node_version: << parameters.node_version >>
-
-    # parallelism: 10
+    executor: 
+      name: test_executor
+      ruby_version: << parameters.ruby_version >>
+      elasticsearch_version: << parameters.elasticsearch_version >>
 
     steps:
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
-      - node/install:
+      - nodejs/install:
           install-yarn: true
           node-version: << parameters.node_version >>
 
