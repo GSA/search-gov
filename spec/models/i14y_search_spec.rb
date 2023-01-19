@@ -69,6 +69,21 @@ describe I14ySearch do
     end
   end
 
+  context 'when include_facets is true' do
+    let(:search_params) { { affiliate: affiliate, per_page: 20, query: 'testing tag filters', include_facets: 'true' } }
+    let(:i14y_search) { described_class.new(search_params) }
+
+    before { allow(I14yCollections).to receive(:search) }
+
+    it 'requests facet fields be included in the search' do
+      i14y_search.run
+      expect(I14yCollections).to have_received(:search).
+        with(hash_including(include: 'title,path,audience,changed,content_type,'\
+                                     'created,mime_type,searchgov_custom1,'\
+                                     'searchgov_custom2,searchgov_custom3,tags'))
+    end
+  end
+
   context 'when tag filters are present' do
     let(:search_params) { { affiliate: affiliate, per_page: 20, query: 'testing tag filters' } }
     let(:i14y_search) { described_class.new(search_params) }

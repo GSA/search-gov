@@ -305,6 +305,15 @@ describe Api::V2::SearchesController do
                                                                  sort_by: 'date' })
       end
 
+      context 'when include_facets is true' do
+        let(:params_with_facets) { search_params.merge(include_facets: 'true') }
+
+        it 'passes the include_facets value to its ApiI14ySearch object' do
+          get :i14y, params: params_with_facets
+          expect(assigns(:search_options).attributes).to include({ include_facets: 'true' })
+        end
+      end
+
       context 'when an audience filter is present' do
         let(:params_with_audience) { search_params.merge(audience: 'everyone') }
 
