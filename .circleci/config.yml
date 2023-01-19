@@ -269,13 +269,6 @@ jobs:
           paths:
           - codeclimate.jest.*.json
 
-      # collect reports
-      - store_test_results:
-          path: /tmp/test-results
-      - store_artifacts:
-          path: /tmp/test-results
-          destination: test-results
-
   report_coverage:
     parameters:
       ruby_version:
