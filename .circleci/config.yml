@@ -255,7 +255,6 @@ jobs:
       - run:
           name: Run Tests
           command: |
-            mkdir /tmp/test-results
             ./cc-test-reporter before-build
 
             # Run jest tests
