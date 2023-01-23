@@ -117,7 +117,7 @@ describe '/api/v2/search' do
         get '/api/v2/search', params: { access_key: 'usagov_key',
                                         affiliate: 'usagov',
                                         query: 'api' }
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(:ok)
 
         hash_response = JSON.parse response.body, symbolize_names: true
         expect(hash_response[:web][:total]).to eq(4)
@@ -150,7 +150,7 @@ describe '/api/v2/search' do
                                         affiliate: 'usagov',
                                         query: 'api',
                                         enable_highlighting: 'false' }
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(:ok)
 
         hash_response = JSON.parse response.body, symbolize_names: true
         expect(hash_response[:web][:total]).to eq(4)
@@ -182,7 +182,7 @@ describe '/api/v2/search' do
                                         affiliate: 'usagov',
                                         query: 'api',
                                         limit: '1' }
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(:ok)
 
         hash_response = JSON.parse response.body, symbolize_names: true
         expect(hash_response[:web][:total]).to eq(4)
@@ -210,7 +210,7 @@ describe '/api/v2/search' do
                                         affiliate: 'usagov',
                                         query: 'api',
                                         offset: '2' }
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(:ok)
 
         hash_response = JSON.parse response.body, symbolize_names: true
         expect(hash_response[:web][:total]).to eq(4)
@@ -232,7 +232,7 @@ describe '/api/v2/search' do
                                         affiliate: 'usagov',
                                         query: 'api',
                                         sort_by: 'date' }
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(:ok)
 
         hash_response = JSON.parse response.body, symbolize_names: true
         expect(hash_response[:web][:total]).to eq(4)
@@ -259,7 +259,7 @@ describe '/api/v2/search' do
                                         affiliate: 'usagov',
                                         query: 'descripton',
                                         sort_by: 'date' }
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(:ok)
 
         hash_response = JSON.parse response.body, symbolize_names: true
         expect(hash_response[:web][:spelling_correction]).to eq('description')
@@ -273,7 +273,7 @@ describe '/api/v2/search' do
                                           affiliate: 'usagov',
                                           query: 'descripton',
                                           sort_by: 'date' }
-          expect(response).to have_http_status(200)
+          expect(response).to have_http_status(:ok)
 
           hash_response = JSON.parse response.body, symbolize_names: true
           expect(hash_response[:web][:spelling_correction]).to be_nil
@@ -286,7 +286,7 @@ describe '/api/v2/search' do
     context 'when access_key is not present' do
       it 'returns errors' do
         get '/api/v2/search', params: { affiliate: 'not-usagov', query: 'api' }
-        expect(response).to have_http_status(400)
+        expect(response).to have_http_status(:bad_request)
 
         hash_response = JSON.parse response.body, symbolize_names: true
         expect(hash_response[:errors].first).to eq('access_key must be present')
@@ -298,7 +298,7 @@ describe '/api/v2/search' do
         get '/api/v2/search', params: { access_key: 'not_usagov_key',
                                         affiliate: 'usagov',
                                         query: 'api' }
-        expect(response).to have_http_status(400)
+        expect(response).to have_http_status(:bad_request)
 
         hash_response = JSON.parse response.body, symbolize_names: true
         expect(hash_response[:errors].first).to eq('access_key is invalid')
@@ -310,7 +310,7 @@ describe '/api/v2/search' do
         get '/api/v2/search', params: { access_key: 'usagov_key',
                                         affiliate: 'not-usagov',
                                         query: 'api' }
-        expect(response).to have_http_status(400)
+        expect(response).to have_http_status(:bad_request)
 
         hash_response = JSON.parse response.body, symbolize_names: true
         expect(hash_response[:errors].first).to eq('affiliate not found')
@@ -323,7 +323,7 @@ describe '/api/v2/search' do
                                         affiliate: 'usagov',
                                         limit: '5000',
                                         query: 'api' }
-        expect(response).to have_http_status(400)
+        expect(response).to have_http_status(:bad_request)
 
         hash_response = JSON.parse response.body, symbolize_names: true
         expect(hash_response[:errors].first).to eq('limit must be between 1 and 50')
@@ -336,7 +336,7 @@ describe '/api/v2/search' do
                                         affiliate: 'usagov',
                                         offset: '5000',
                                         query: 'api' }
-        expect(response).to have_http_status(400)
+        expect(response).to have_http_status(:bad_request)
 
         hash_response = JSON.parse response.body, symbolize_names: true
         expect(hash_response[:errors]).to include('offset must be between 0 and 1000')
@@ -348,7 +348,7 @@ describe '/api/v2/search' do
         get '/api/v2/search', params: { access_key: 'usagov_key',
                                         affiliate: 'usagov',
                                         query: '' }
-        expect(response).to have_http_status(400)
+        expect(response).to have_http_status(:bad_request)
 
         hash_response = JSON.parse response.body, symbolize_names: true
         expect(hash_response[:errors]).to include('a search term must be present')

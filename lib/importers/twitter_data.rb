@@ -98,7 +98,7 @@ module TwitterData
       TwitterApiRunner.run do
         begin
           cursor = TwitterClient.instance.list_members(list_id, cursor: next_cursor)
-          member_ids.push(*cursor.attrs[:users].map { |u| u[:id] })
+          member_ids.push(*cursor.attrs[:users].pluck(:id))
           next_cursor = cursor.attrs[:next_cursor]
         rescue Twitter::Error::NotFound
           next_cursor = 0

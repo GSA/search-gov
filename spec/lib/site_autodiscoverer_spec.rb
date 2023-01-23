@@ -8,7 +8,7 @@ describe SiteAutodiscoverer do
   describe '#initialize' do
     context 'when autodiscovery_url is not present' do
       it 'should initialize correctly' do
-        expect(autodiscoverer).to be_kind_of(described_class)
+        expect(autodiscoverer).to be_a(described_class)
       end
     end
 
@@ -16,7 +16,7 @@ describe SiteAutodiscoverer do
       let(:autodiscovery_url) { 'https://www.usa.gov' }
 
       it 'should initialize correctly' do
-        expect(autodiscoverer).to be_kind_of(described_class)
+        expect(autodiscoverer).to be_a(described_class)
       end
     end
 

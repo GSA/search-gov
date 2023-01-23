@@ -171,7 +171,7 @@ describe RssFeed do
     subject { affiliate.rss_feeds.find_existing_or_initialize(name, url) }
 
     context 'when there are no rss_feeds records' do
-      it { is_expected.to be_kind_of(described_class) }
+      it { is_expected.to be_a(described_class) }
       it { is_expected.to be_new_record }
       its(:name) { should eq(name) }
     end
@@ -186,7 +186,7 @@ describe RssFeed do
 
       context 'when the RSS feed has the same name but no matching URLs' do
         let(:rfu) { [rss_feed_urls(:white_house_blog_url)] }
-        it { is_expected.to be_kind_of(described_class) }
+        it { is_expected.to be_a(described_class) }
         it { is_expected.to be_new_record }
         its(:name) { should eq(name) }
       end
@@ -194,7 +194,7 @@ describe RssFeed do
       context 'when the RSS feed has a different name but matching URLs' do
         let(:created_name) { 'other name' }
         let(:rfu) { [rss_feed_urls(:white_house_press_gallery_url)] }
-        it { is_expected.to be_kind_of(described_class) }
+        it { is_expected.to be_a(described_class) }
         it { is_expected.to be_new_record }
         its(:name) { should eq(name) }
       end

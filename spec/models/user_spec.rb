@@ -463,7 +463,7 @@ describe User do
 
     let(:auth) { mock_user_auth('foo@gsa.gov', '55555') }
 
-    it { is_expected.to be_a_kind_of(described_class) }
+    it { is_expected.to be_a(described_class) }
 
     context 'when the user is new' do
       it 'sets the uid' do

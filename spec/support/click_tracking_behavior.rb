@@ -39,7 +39,7 @@ shared_examples_for 'an unsuccessful click request' do
   it 'returns a 400' do
     post endpoint, params: invalid_params
 
-    expect(response).to have_http_status 400
+    expect(response).to have_http_status :bad_request
   end
 
   it 'has the expected error message' do
@@ -64,7 +64,7 @@ shared_examples_for 'does not accept GET requests' do
   it 'returns a redirect' do
     get endpoint, params: valid_params
 
-    expect(response).to have_http_status 302
+    expect(response).to have_http_status :found
   end
 end
 

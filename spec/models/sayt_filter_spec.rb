@@ -133,7 +133,7 @@ describe SaytFilter do
 
     context 'when no key is passed in' do
       it 'should operate on raw strings' do
-        expect(described_class.filter(@queries)).to eq(described_class.filter(@results, 'somekey').collect { |ft| ft['somekey'] })
+        expect(described_class.filter(@queries)).to eq(described_class.filter(@results, 'somekey').pluck('somekey'))
       end
     end
 
