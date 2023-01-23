@@ -46,7 +46,7 @@ describe Sites::AutodiscoveriesController do
       context 'when no autodiscovery_url is provided' do
         it 'raises a 400 error' do
           post :create, params: { site_id: site.id }
-          expect(response.status).to eq(400)
+          expect(response).to have_http_status(400)
         end
       end
     end

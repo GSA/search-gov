@@ -11,7 +11,7 @@ module SearchDomain
     validates :domain,
               uniqueness: { scope: :affiliate_id, case_sensitive: true },
               format: {
-                with: %r{\A([a-z0-9]+)?([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(\/[^?.]*)?\z}ix
+                with: %r{\A([a-z0-9]+)?([\-.]{1}[a-z0-9]+)*\.[a-z]{2,5}(/[^?.]*)?\z}ix
               },
               allow_blank: true
 
@@ -26,7 +26,7 @@ module SearchDomain
     protected
 
     def normalize_domain
-      self.domain = domain.gsub(%r{(^https?:\/\/| |\/$)}, '').downcase if domain.present?
+      self.domain = domain.gsub(%r{(^https?://| |/$)}, '').downcase if domain.present?
     end
   end
 end

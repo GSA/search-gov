@@ -355,7 +355,7 @@ describe Emailer do
 
     it { is_expected.to deliver_to(ADMIN_EMAIL_ADDRESS) }
     it { is_expected.to have_subject('[Search.gov] Missing Email template') }
-    it { is_expected.to have_body_text(/Someone tried to send an email via the affiliate_monthly_report method, but we don\'t have a template for that method.  Please create one.  Thanks!/) }
+    it { is_expected.to have_body_text(/Someone tried to send an email via the affiliate_monthly_report method, but we don't have a template for that method.  Please create one.  Thanks!/) }
 
     after { EmailTemplate.load_default_templates }
   end

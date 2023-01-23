@@ -15,7 +15,7 @@ describe SearchesController do
     end
 
     it 'responds sucessfully' do
-      expect(response.status).to eq(200)
+      expect(response).to have_http_status(200)
     end
   end
 
@@ -30,7 +30,7 @@ describe SearchesController do
     end
 
     it 'responds with success' do
-      expect(response.status).to eq(200)
+      expect(response).to have_http_status(200)
     end
   end
 

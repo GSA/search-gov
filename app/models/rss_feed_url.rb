@@ -131,7 +131,7 @@ class RssFeedUrl < ApplicationRecord
   def url_must_point_to_a_feed
     return true if is_video?
 
-    if url =~ /(\A\z)|(\A(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/].*)?\z)/ix
+    if url =~ /(\A\z)|(\A(http|https):\/\/[a-z0-9]+([-.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/].*)?\z)/ix
       begin
         document.valid? ? self.language = document.language : errors.add(:url, "does not appear to be a valid RSS feed.")
       rescue Exception => e

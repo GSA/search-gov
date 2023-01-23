@@ -224,10 +224,10 @@ Then "I wait for ajax"  do
   end
 end
 
-Then /^I should get a ([^\"]*) download$/ do |type|
+Then /^I should get a ([^"]*) download$/ do |type|
   page.driver.response.headers['Content-Type'].should match type.downcase
 end
 
-Then /^the downloaded file should include "([^\"]*)"$/ do |content|
+Then /^the downloaded file should include "([^"]*)"$/ do |content|
   page.driver.response.body.should match content
 end

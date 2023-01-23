@@ -1,4 +1,4 @@
-Given /^affiliate "([^\"]*)" has the following RSS feeds:$/ do |affiliate_name, table|
+Given /^affiliate "([^"]*)" has the following RSS feeds:$/ do |affiliate_name, table|
   affiliate = Affiliate.find_by_name affiliate_name
   table.hashes.each do |hash|
     rss_feed_url = RssFeedUrl.where(rss_feed_owner_type: 'Affiliate',
@@ -28,7 +28,7 @@ Given /^affiliate "([^\"]*)" has the following RSS feeds:$/ do |affiliate_name, 
   NewsItem.destroy_all
 end
 
-Given /^feed "([^\"]*)" has the following news items:$/ do |feed_name, table|
+Given /^feed "([^"]*)" has the following news items:$/ do |feed_name, table|
   rss_feed = RssFeed.find_by_name feed_name
   rss_feed_url = rss_feed.rss_feed_urls.first
   table.hashes.each do |hash|
@@ -52,7 +52,7 @@ Given /^feed "([^\"]*)" has the following news items:$/ do |feed_name, table|
   ElasticNewsItem.commit
 end
 
-Given /^there are (\d+)( image| video)? news items for "([^\"]*)"$/ do |count, is_image_or_video, feed_name|
+Given /^there are (\d+)( image| video)? news items for "([^"]*)"$/ do |count, is_image_or_video, feed_name|
   rss_feed = RssFeed.find_by_name "#{feed_name}"
   rss_feed_url = rss_feed.rss_feed_urls.first
   now = Time.current.to_i
@@ -85,11 +85,11 @@ Given /^there are (\d+)( image| video)? news items for "([^\"]*)"$/ do |count, i
   ElasticNewsItem.commit
 end
 
-Then /^I should not see "([^\"]*)" in bold font$/ do |text|
+Then /^I should not see "([^"]*)" in bold font$/ do |text|
   page.should_not have_selector("strong", :text => text)
 end
 
-Then /^I should see "([^\"]*)" in bold font$/ do |text|
+Then /^I should see "([^"]*)" in bold font$/ do |text|
   page.should have_selector("strong", :text => text)
 end
 
@@ -97,7 +97,7 @@ Given /^the following Medline Topics exist:$/ do |table|
   table.hashes.each { |hash| MedTopic.create! hash }
 end
 
-Given /^the following Related Medline Topics for "([^\"]*)" in (English|Spanish) exist:$/ do |medline_title, language, table|
+Given /^the following Related Medline Topics for "([^"]*)" in (English|Spanish) exist:$/ do |medline_title, language, table|
   locale = language == 'English' ? 'en' : 'es'
   topic = MedTopic.where(:medline_title => medline_title, :locale => locale).first
   table.hashes.each do |hash|

@@ -1,4 +1,4 @@
-When /^I fill in the following within "([^\"]*)":$/ do |selector, fields|
+When /^I fill in the following within "([^"]*)":$/ do |selector, fields|
   within(selector) do
     fields.rows_hash.each do |name, value|
       When %{I fill in "#{name}" with "#{value}"}
@@ -46,7 +46,7 @@ Then /^I should not see an image link to "([^"]*)" with url for "([^"]*)"$/ do |
   page.should_not have_selector("a[href='#{url}'] img[alt='#{name}']")
 end
 
-Then /^I should see the browser page titled "([^\"]*)"$/ do |title|
+Then /^I should see the browser page titled "([^"]*)"$/ do |title|
   page.should have_title title
 end
 
@@ -72,11 +72,11 @@ And /^the "([^"]*)" field should be blank$/ do |field|
   field_value.should be_blank
 end
 
-Then /^the "([^\"]*)" radio button should be checked$/ do |label|
+Then /^the "([^"]*)" radio button should be checked$/ do |label|
   find_field(label)['checked'].should be_truthy
 end
 
-Then /^the "([^\"]*)" radio button should not be checked$/ do |label|
+Then /^the "([^"]*)" radio button should not be checked$/ do |label|
   field_labeled(label)['checked'].should_not be_true
 end
 
@@ -110,7 +110,7 @@ Then /^I should see the following:$/ do |fields|
   end
 end
 
-And /^the "([^\"]*)" input should( not)? be required$/ do |id, negate|
+And /^the "([^"]*)" input should( not)? be required$/ do |id, negate|
   sel = "input##{id}"
   page.should have_selector(sel)
   page.find(sel)[:required].should eq(negate ? nil : 'required')

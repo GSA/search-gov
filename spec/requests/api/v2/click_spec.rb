@@ -42,7 +42,7 @@ describe '/api/v2/click' do
 
       post endpoint, params: valid_params
 
-      expect(response.status).to eq 401
+      expect(response).to have_http_status 401
       expect(response.body).to eq('["Access key is invalid"]')
     end
   end

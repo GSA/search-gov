@@ -12,25 +12,25 @@ module NavigationHelpers
       search_path
     when /^(.*)'s search page$/
       search_path(:affiliate => $1)
-    when /^(.*)'s redesigned search page with "([^\"]*)" query$/
+    when /^(.*)'s redesigned search page with "([^"]*)" query$/
       search_path(:affiliate => $1, :query => $2, :redesign => 'true')
     when /^(.*)'s advanced search page$/
       advanced_search_path(:affiliate => $1)
-    when /^(.*)'s search page with unsanitized "([^\"]*)" query$/
+    when /^(.*)'s search page with unsanitized "([^"]*)" query$/
       search_path(:affiliate => $1, :query => "<b>#{$2}</b><script>script</script>")
-    when /^(.*)'s search page with site limited to "([^\"]*)"$/
+    when /^(.*)'s search page with site limited to "([^"]*)"$/
       search_path(:affiliate => $1, :sitelimit => $2)
     when /^(.*)'s image search page$/
       image_search_path(:affiliate => $1)
     when /^(.*)'s news search page$/
       news_search_path(:affiliate => $1)
-    when /^(.*)'s "([^\"]*)" news search page$/
+    when /^(.*)'s "([^"]*)" news search page$/
       news_search_path(:affiliate => $1, :channel => Affiliate.find_by_name($1).rss_feeds.find_by_name($2))
     when /^(.*)'s docs search page$/
       docs_search_path(:affiliate => $1)
-    when /^(.*)'s "([^\"]*)" docs search page$/
+    when /^(.*)'s "([^"]*)" docs search page$/
       docs_search_path(:affiliate => $1, :dc => Affiliate.find_by_name($1).document_collections.find_by_name($2))
-    when /the timeline page for "([^\"]*)"$/
+    when /the timeline page for "([^"]*)"$/
       query_timeline_path($1)
     when /^the (.*)'s admin edit affiliate page$/
       edit_admin_affiliate_path(Affiliate.find_by_name($1))
@@ -56,21 +56,21 @@ module NavigationHelpers
       query_search_affiliate_analytics_path
     when /the boosted contents admin page/
       admin_boosted_contents_path
-    when /the affiliate admin page with "([^\"]*)" selected$/
+    when /the affiliate admin page with "([^"]*)" selected$/
       sites_path(:said => Affiliate.find_by_name($1).id)
     when /the affiliate admin page/
       sites_path
-    when /the "([^\"]*)" affiliate page$/
+    when /the "([^"]*)" affiliate page$/
       site_path(Affiliate.find_by_display_name($1))
-    when /the "([^\"]*)" affiliate users page$/
+    when /the "([^"]*)" affiliate users page$/
       affiliate_users_path(Affiliate.find_by_display_name($1))
     when /the (.*)'s featured collections page$/
       affiliate_featured_collections_path(Affiliate.find_by_name($1))
     when /the (.*)'s boosted contents page$/
       affiliate_boosted_contents_path(Affiliate.find_by_name($1))
-    when /the new affiliate boosted content page for "([^\"]*)"/
+    when /the new affiliate boosted content page for "([^"]*)"/
       new_affiliate_boosted_content_path(Affiliate.find_by_name($1))
-    when /the edit affiliate boosted content page for "([^\"]*)"/
+    when /the edit affiliate boosted content page for "([^"]*)"/
       edit_affiliate_boosted_content_path(Affiliate.find_by_name($1), Affiliate.find_by_name($1).boosted_contents.first)
     when /the superfresh bulk upload admin page/
       admin_superfresh_urls_bulk_upload_index_path
@@ -98,7 +98,7 @@ module NavigationHelpers
       site_best_bets_graphics_path(Affiliate.find_by_name($1))
     when /^the (.*)'s Best Bets Texts page$/
       site_best_bets_texts_path(Affiliate.find_by_name($1))
-    when /^the (.*)'s "([^\"]*)" RSS feed page$/
+    when /^the (.*)'s "([^"]*)" RSS feed page$/
       site_rss_feed_path(Affiliate.find_by_name($1), Affiliate.find_by_name($1).rss_feeds.find_by_name($2))
     when /^the (.*)'s Analytics page$/
       new_site_queries_path(Affiliate.find_by_name($1))

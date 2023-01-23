@@ -6,7 +6,7 @@ describe '/api/search' do
   before { get endpoint }
 
   it 'returns a 404' do
-    expect(response.status).to eq 404
+    expect(response).to have_http_status 404
   end
 
   it 'provides a useful message' do
