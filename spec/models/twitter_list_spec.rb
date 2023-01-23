@@ -45,6 +45,7 @@ describe TwitterList do
 
   describe '.statuses_updated_before' do
     subject(:sub) { described_class.statuses_updated_before(Time.zone.now - 1.hour) }
+
     let!(:tl_updated_yesterday) { described_class.create(id: 1, statuses_updated_at: Time.zone.now - 1.day) }
     let!(:tl_not_updated) { described_class.create(id: 2, statuses_updated_at: nil) }
     let!(:tl_just_updated) { described_class.create(id: 3, statuses_updated_at: Time.zone.now) }

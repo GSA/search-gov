@@ -3,10 +3,10 @@ require 'spec_helper'
 describe BoostedContentBulkUploader do
   fixtures :affiliates
   subject(:results) { uploader.upload }
+
   let(:affiliate) { affiliates(:basic_affiliate) }
   let(:file) { fixture_file_upload('/csv/boosted_content/bulk_upload.csv', 'text/csv') }
   let(:uploader) { described_class.new(affiliate, file) }
-
 
   before do
     ElasticBoostedContent.recreate_index

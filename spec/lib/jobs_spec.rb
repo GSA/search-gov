@@ -8,6 +8,7 @@ describe Jobs do
                     location_name: 'Baltimore, MD, USA',
                     results_per_page: 10 })
     end
+
     let(:usajobs_url) { 'https://data.usajobs.gov/api/search' }
 
     it 'returns results' do

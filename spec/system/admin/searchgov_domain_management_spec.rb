@@ -10,8 +10,8 @@ describe 'Searchgov Domain Management' do
       visit url
       click_link('Reindex', match: :first)
     end
-    include_context 'log in super admin'
 
+    include_context 'log in super admin'
 
     it 'triggers a reindex of the domain' do
        expect { reindex }.to have_enqueued_job(SearchgovDomainReindexerJob).

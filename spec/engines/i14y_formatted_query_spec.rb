@@ -3,10 +3,10 @@ require 'spec_helper'
 describe I14yFormattedQuery do
   describe '#query' do
     subject { described_class.new(query, options).query }
+
     let(:query) { 'rutabaga' }
     let(:included_domains) { %w(included1.gov included2.gov) }
     let(:excluded_domains) { %w(excluded1.gov excluded2.gov) }
-
 
     context 'when included domains are present' do
       let(:options) { { included_domains: included_domains } }

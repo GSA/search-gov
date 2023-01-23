@@ -18,6 +18,7 @@ describe SearchOnCommercialEngine do
   fixtures :affiliates
 
   subject(:search) { DummySearch.new }
+
   let(:search_engine) { double(:search_engine, execute_query: search_result, query: nil) }
   let(:search_result) { double(:search_result, diagnostics: result_diagnostics) }
   let(:result_diagnostics) { :result_diagnostics }

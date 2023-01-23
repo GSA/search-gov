@@ -31,6 +31,7 @@ describe SiteAutodiscoverer do
 
   describe '#autodiscovery_url' do
     subject { autodiscoverer.autodiscovery_url }
+
     context 'when no autodiscovery_url is provided to the constructor' do
       context 'when the site has no default_autodiscovery_url' do
         before do

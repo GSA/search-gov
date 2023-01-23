@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe ApiCache do
   subject(:cache) { described_class.new('my_api', cache_duration) }
+
   let(:cache_store) { double(ActiveSupport::Cache::FileStore) }
   let(:endpoint) { '/search.json' }
   let(:params) { { query: 'gov' } }

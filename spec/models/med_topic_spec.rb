@@ -18,7 +18,6 @@ describe MedTopic do
   it { is_expected.to have_many(:med_sites).dependent(:destroy).inverse_of(:med_topic) }
   it { is_expected.to have_many(:synonyms).dependent(:destroy).inverse_of(:topic) }
 
-
   it 'should create a new instance given valid attributes' do
     described_class.create!(valid_attributes)
   end
@@ -359,6 +358,7 @@ describe MedTopic do
 
   describe '#truncated_summary' do
     subject(:truncated_summary) { med_topic.truncated_summary }
+
     let(:summary_html) { '<h3>Lorem ipsum dolor sit amet.</h3>' }
     let(:med_topic) { described_class.new(summary_html: summary_html) }
 

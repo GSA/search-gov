@@ -264,7 +264,6 @@ describe Affiliate do
       expect(affiliate.related_sites_dropdown_label).to eq('More related sites')
     end
 
-
     it 'should set default RSS govbox label if the value is blank' do
       en_affiliate = described_class.create!(valid_create_attributes.merge(locale: 'en'))
       expect(en_affiliate.rss_govbox_label).to eq('News')
@@ -387,6 +386,7 @@ describe Affiliate do
 
     describe 'bing v5 key stripping' do
       subject { described_class.new(valid_create_attributes.merge(bing_v5_key: bing_v5_key)) }
+
       before { subject.save }
 
       [
@@ -889,10 +889,10 @@ describe Affiliate do
       }).reject { |k,v| v.nil? }
       described_class.create!(attrs)
     end
+
     let(:site_domains_attributes) { nil }
     let(:single_domain) { { '0' => { domain: 'usa.gov' } } }
     let(:multiple_domains) { single_domain.merge({ '1' => { domain: 'navy.mil' } }) }
-
 
     context 'when the website is empty' do
       let(:website) { nil }

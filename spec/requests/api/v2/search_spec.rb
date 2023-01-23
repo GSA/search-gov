@@ -100,7 +100,6 @@ describe '/api/v2/search' do
       ElasticSaytSuggestion.recreate_index
       affiliate.sayt_suggestions.delete_all
 
-
       affiliate.sayt_suggestions.create!(phrase: 'api endpoint')
       affiliate.sayt_suggestions.create!(phrase: 'api instruction')
 

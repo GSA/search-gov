@@ -15,8 +15,8 @@ describe ApiClick do
                         access_key: 'basic_key',
                         referrer: 'http://www.fda.gov/referrer')
   end
-  let(:affiliate) { 'nps.gov' }
 
+  let(:affiliate) { 'nps.gov' }
 
   context 'with required params' do
     describe '#valid?' do

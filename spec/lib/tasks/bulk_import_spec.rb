@@ -49,12 +49,12 @@ describe 'Bulk Import rake tasks' do
 
       fixtures :affiliates
       subject(:import_affiliates) { @rake[task_name].invoke(csv_file_path, user.email) }
+
       let(:task_name) { 'usasearch:bulk_import:affiliate_csv' }
       let!(:user) { users(:non_affiliate_admin) }
       let(:csv_file_path) { File.join(Rails.root.to_s, 'spec', 'fixtures', 'csv', 'affiliates.csv') }
       let(:site) { affiliates(:usagov_affiliate) }
       let(:message) { /A script added/ }
-
 
       before do
         @rake[task_name].reenable

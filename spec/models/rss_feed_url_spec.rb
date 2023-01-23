@@ -383,6 +383,7 @@ describe RssFeedUrl do
 
   describe 'redirected?' do
     subject(:redirected) { rss_feed_url.redirected? }
+
     context 'when the url has been redirected' do
       before do
         allow(rss_feed_url).to receive(:url).and_return('http://www.new.com')
@@ -406,6 +407,7 @@ describe RssFeedUrl do
 
   describe '#protocol_redirect?' do
     subject(:protocol_redirect) { rss_feed_url.protocol_redirect? }
+
     context 'when the redirection is for a protocol change' do
       before do
         allow(rss_feed_url).to receive(:url).and_return('http://www.new.com')

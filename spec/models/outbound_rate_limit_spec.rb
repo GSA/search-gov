@@ -8,6 +8,7 @@ describe OutboundRateLimit do
 
   describe '#current_interval' do
     subject(:outbound_rate_limit) { described_class.new(name: 'rate_limited_api', limit: 1000, interval: interval).current_interval }
+
     context 'when the interval is "day"' do
       let(:interval) { 'day' }
 

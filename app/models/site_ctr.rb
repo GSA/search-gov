@@ -24,5 +24,4 @@ class SiteCtr
     end
   end
 
-
 end

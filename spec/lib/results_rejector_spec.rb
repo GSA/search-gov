@@ -9,6 +9,7 @@ describe ResultsRejector do
 
   describe '#url_is_excluded' do
     subject(:url_is_excluded) { processor.send(:url_is_excluded?, url) }
+
     let(:excluded_urls) { ['www.excluded.com'] }
 
     before do

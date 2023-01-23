@@ -41,6 +41,7 @@ describe HostedAzureImageEngine do
 
     context 'when next page results are not present' do
       subject(:response) { engine.execute_query }
+
       let(:engine) do
         described_class.new language: 'en',
                             offset: 998,
@@ -53,7 +54,6 @@ describe HostedAzureImageEngine do
         stub_request(:get, /#{azure_image_url}.*azure image no next/).
           to_return( status: 200, body: no_next_result )
       end
-
 
       it 'populates results' do
         expect(response.results.count).to eq(2)
@@ -68,13 +68,13 @@ describe HostedAzureImageEngine do
 
     context 'when image results are not present' do
       subject(:response) { engine.execute_query }
+
       let(:engine) do
         described_class.new language: 'en',
                             offset: 0,
                             per_page: 5,
                             query: 'agency (site:noresults.nasa.gov)'
       end
-
 
       it 'sets total' do
         expect(response.total).to eq(0)

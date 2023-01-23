@@ -6,10 +6,10 @@ describe Membership do
   describe 'scopes' do
     describe '.daily_snapshot_receivers' do
       subject(:receivers) { described_class.daily_snapshot_receivers }
+
       let!(:membership) { memberships(:four) }
       let!(:affiliate) { membership.affiliate }
       let!(:user) { membership.user }
-
 
       it { is_expected.to include(membership) }
 
@@ -35,6 +35,7 @@ describe Membership do
 
   describe '#dup' do
     subject(:original_instance) { memberships(:four) }
+
     include_examples 'site dupable'
   end
 end

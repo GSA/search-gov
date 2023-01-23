@@ -38,6 +38,7 @@ describe SiteCloner do
 
       context 'existing site name is ridiculously long' do
         subject(:cloner) { described_class.new(affiliates(:basic_affiliate)) }
+
         before do
           affiliates(:basic_affiliate).update_attribute(:name, 'washingtonstateofficeofattorneyge')
         end
@@ -47,6 +48,7 @@ describe SiteCloner do
 
       context 'prior copy exists' do
         subject(:cloner) { described_class.new(affiliates(:basic_affiliate)) }
+
         before do
           Affiliate.create!(
             display_name: 'My Awesome Site',
@@ -55,7 +57,6 @@ describe SiteCloner do
             locale: 'es'
           )
         end
-
 
         its(:target_handle) { should eq("#{affiliates(:basic_affiliate).name}2") }
       end
@@ -74,6 +75,7 @@ describe SiteCloner do
       cloned_instance = site_cloner.clone
       Affiliate.find cloned_instance.id
     end
+
     let(:origin_site) do
       affiliate = affiliates(:basic_affiliate)
       affiliate.agency = agencies(:irs)
@@ -90,7 +92,6 @@ describe SiteCloner do
     end
 
     let(:nav_attr_keys) { %w(is_active position).freeze }
-
 
     %i(agency
        css_property_hash

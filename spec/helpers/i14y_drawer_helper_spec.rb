@@ -46,6 +46,7 @@ describe I14yDrawerHelper do
 
   describe '#deletion_confirmation' do
     subject(:deletion_confirmation) { helper.deletion_confirmation(drawer) }
+
     let(:confirmation_for_one_affiliate) do
       'Removing this drawer from this site will delete it from the system. Are you sure you want to delete it?'
     end

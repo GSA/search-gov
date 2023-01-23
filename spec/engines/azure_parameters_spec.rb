@@ -3,6 +3,7 @@ require 'spec_helper'
 describe AzureParameters do
   describe '#to_hash' do
     subject { described_class.new(options).to_hash }
+
     let(:options) do
       {
         language: language_code,

@@ -7,6 +7,7 @@ describe GovboxSet do
     subject(:govbox_set) do
       described_class.new('foo', affiliate, geoip_info, highlighting_options)
     end
+
     let(:affiliate) { affiliates(:basic_affiliate) }
     let(:agency) { agencies(:irs) }
     let(:geoip_info) do

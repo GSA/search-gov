@@ -5,9 +5,8 @@ describe DomainScopeOptionsBuilder do
 
   describe '.build' do
     subject(:build) { described_class.build(args) }
+
     let(:affiliate) { affiliates(:basic_affiliate) }
-
-
 
     it 'includes the site domains' do
       expect(described_class.build(site: affiliate)).to eq(

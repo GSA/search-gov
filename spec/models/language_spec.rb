@@ -9,6 +9,7 @@ describe Language do
 
   describe '.bing_market_for_code' do
     subject(:get_market) { described_class.bing_market_for_code(code) }
+
     let(:code) { 'tlh' }
     let(:language) { mock_model(described_class, is_azure_supported: is_azure_supported, inferred_country_code: inferred_country_code) }
     let(:is_azure_supported) { true }

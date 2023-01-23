@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe ApiRateLimiter do
   subject(:rate_limiter) { described_class.new(namespace) }
+
   let(:namespace) { 'my_api' }
   let!(:today) { Date.new(2014, 1, 1) }
   let(:key) { 'my_api:2014-01-01:used_count'.freeze }
-
 
   before do
     described_class.redis.flushdb
@@ -54,6 +54,7 @@ describe ApiRateLimiter do
 
       context 'when soft limiting is enabled' do
         subject(:rate_limiter) { described_class.new(namespace, true) }
+
         let(:allowed_calls) { 3 }
 
         it 'yields to the block and increments used count' do
