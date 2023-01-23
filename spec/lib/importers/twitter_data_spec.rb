@@ -97,7 +97,7 @@ describe TwitterData do
       cursor_attrs = double('cursor attributes')
       allow(cursor).to receive(:attrs).and_return(cursor_attrs)
 
-      allow(cursor_attrs).to receive_message_chain(:[], :map).and_return(member_ids[0], member_ids[1])
+      allow(cursor_attrs).to receive_message_chain(:[], :pluck).and_return(member_ids[0], member_ids[1])
       expect(cursor_attrs).to receive(:[]).with(:next_cursor).and_return(5, 0)
       expect(described_class.get_list_member_ids(100)).to eq(member_ids.flatten)
     end
