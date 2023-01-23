@@ -7,7 +7,7 @@ module JsFetcher
     options = Selenium::WebDriver::Chrome::Options.new
     options.add_argument('--headless')
     driver = Selenium::WebDriver.for(:chrome, options: options)
-    driver.manage.timeouts.implicit_wait = 5
+    driver.manage.timeouts.implicit_wait = 60
 
     begin
       driver.get(url)
