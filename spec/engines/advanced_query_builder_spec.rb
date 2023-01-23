@@ -101,8 +101,6 @@ describe AdvancedQueryBuilder do
       it 'should construct a query string with site exlcusions for each of the sites' do
         expect(subject.build).to eq('government -site:whitehouse.gov -site:omb.gov')
       end
-
     end
   end
-
 end

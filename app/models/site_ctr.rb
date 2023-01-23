@@ -23,5 +23,4 @@ class SiteCtr
       SiteCtrStat.new(site, historical_ics, recent_ics)
     end
   end
-
 end
