@@ -398,7 +398,7 @@ describe Affiliate do
           let(:bing_v5_key) { blank_key }
 
           it 'sets it to nil' do
-            expect(subject.bing_v5_key).to be nil
+            expect(subject.bing_v5_key).to be_nil
           end
         end
       end
@@ -789,7 +789,7 @@ describe Affiliate do
       affiliate = affiliates(:non_existent_affiliate)
       expect(affiliate.user_emails).
         to eq('Another Manager Smith <another_affiliate_manager@fixtures.org>,' \
-              'Requires Manual Approval Affiliate Manager Smith '\
+              'Requires Manual Approval Affiliate Manager Smith ' \
               '<affiliate_manager_requires_manual_approval@fixtures.org>')
     end
   end

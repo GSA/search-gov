@@ -62,7 +62,7 @@ class BoostedContentBulkUploader
 
   def extract_keywords(keywords_string)
     return [] if keywords_string.blank?
-    keywords_string.split(',').reject { |k| k.blank? }.map { |k| k.squish }
+    keywords_string.split(',').compact_blank.map(&:squish)
   end
 
   def extract_bool(bool)

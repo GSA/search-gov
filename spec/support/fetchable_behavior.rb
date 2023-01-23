@@ -174,7 +174,7 @@ shared_examples_for 'a record with a fetchable url' do
     context 'when the record is new' do
       let(:record) { described_class.new(valid_attributes) }
 
-      it { is_expected.to eq false }
+      it { is_expected.to be false }
     end
 
     context 'when the record has been fetched' do
@@ -182,7 +182,7 @@ shared_examples_for 'a record with a fetchable url' do
         described_class.new(valid_attributes.merge(last_crawled_at: 1.week.ago))
       end
 
-      it { is_expected.to eq true }
+      it { is_expected.to be true }
     end
   end
 
@@ -194,7 +194,7 @@ shared_examples_for 'a record with a fetchable url' do
         described_class.new(valid_attributes.merge(last_crawl_status: 'OK'))
       end
 
-      it { is_expected.to eq true }
+      it { is_expected.to be true }
     end
 
     context 'when the last_crawl_status != "OK"' do
@@ -202,7 +202,7 @@ shared_examples_for 'a record with a fetchable url' do
         described_class.new(valid_attributes.merge(last_crawl_status: 'Womp womp'))
       end
 
-      it { is_expected.to eq false }
+      it { is_expected.to be false }
     end
   end
 end

@@ -29,8 +29,8 @@ describe ResultsHelper do
     end
 
     it 'makes a link with the added data-click attribute' do
-      expected_output = '<a data-click="{&quot;position&quot;:&quot;2&quot;,'\
-                        '&quot;module_code&quot;:&quot;BOOS&quot;}"'\
+      expected_output = '<a data-click="{&quot;position&quot;:&quot;2&quot;,' \
+                        '&quot;module_code&quot;:&quot;BOOS&quot;}"' \
                         ' href="https://test.gov">test title</a>'
 
       expect(link_to_result_title).to eq expected_output
@@ -47,8 +47,8 @@ describe ResultsHelper do
     end
 
     it 'makes a web result title with the added data-click attribute' do
-      expected_output = '<a data-click="{&quot;position&quot;:&quot;2&quot;,'\
-                        '&quot;module_code&quot;:&quot;BWEB&quot;}"'\
+      expected_output = '<a data-click="{&quot;position&quot;:&quot;2&quot;,' \
+                        '&quot;module_code&quot;:&quot;BWEB&quot;}"' \
                         ' href="https://test.gov">test title</a>'
 
       expect(link_to_web_result_title).to eq expected_output
@@ -65,8 +65,8 @@ describe ResultsHelper do
     end
 
     it 'makes a federal register document title with the added data-click attribute' do
-      expected_output = '<a data-click="{&quot;position&quot;:&quot;2&quot;,'\
-                        '&quot;module_code&quot;:&quot;FRDOC&quot;}"'\
+      expected_output = '<a data-click="{&quot;position&quot;:&quot;2&quot;,' \
+                        '&quot;module_code&quot;:&quot;FRDOC&quot;}"' \
                         ' href="https://test.gov">test title</a>'
 
       expect(link_to_federal_register_document_title).to eq expected_output
@@ -86,8 +86,8 @@ describe ResultsHelper do
     end
 
     it 'adds a hidden image result title with click tracking attributes' do
-      expected_output = '<a data-click="{&quot;position&quot;:&quot;2&quot;,'\
-                        '&quot;module_code&quot;:&quot;IMAG&quot;}"'\
+      expected_output = '<a data-click="{&quot;position&quot;:&quot;2&quot;,' \
+                        '&quot;module_code&quot;:&quot;IMAG&quot;}"' \
                         ' tabindex="-1" href="https://test.gov">test title</a>'
 
       expect(link_to_image_result_title).to eq expected_output
@@ -107,9 +107,9 @@ describe ResultsHelper do
     end
 
     it 'shows an image thumbnail with click tracking attributes' do
-      expected_output = '<a data-click="{&quot;position&quot;:&quot;2&quot;,'\
-                        '&quot;module_code&quot;:&quot;IMAG&quot;}" '\
-                        'href="https://test.gov">'\
+      expected_output = '<a data-click="{&quot;position&quot;:&quot;2&quot;,' \
+                        '&quot;module_code&quot;:&quot;IMAG&quot;}" ' \
+                        'href="https://test.gov">' \
                         '<img alt="test title" src="https://test.gov" /></a>'
 
       expect(link_to_image_thumbnail).to eq expected_output
@@ -126,8 +126,8 @@ describe ResultsHelper do
     end
 
     it 'shows an indexed document title with click tracking attributes' do
-      expected_output = '<a data-click="{&quot;position&quot;:&quot;2&quot;,'\
-                        '&quot;module_code&quot;:&quot;AIDOC&quot;}" '\
+      expected_output = '<a data-click="{&quot;position&quot;:&quot;2&quot;,' \
+                        '&quot;module_code&quot;:&quot;AIDOC&quot;}" ' \
                         'href="https://test.gov">test title</a>'
 
       expect(link_to_indexed_document_title).to eq expected_output
@@ -142,8 +142,8 @@ describe ResultsHelper do
     subject(:link_to_news_item_title) { helper.link_to_news_item_title(instance, '2') }
 
     it 'adds a news item title with click tracking attributes' do
-      expected_output = '<a data-click="{&quot;position&quot;:&quot;2&quot;,'\
-                        '&quot;module_code&quot;:&quot;NEWS&quot;}"'\
+      expected_output = '<a data-click="{&quot;position&quot;:&quot;2&quot;,' \
+                        '&quot;module_code&quot;:&quot;NEWS&quot;}"' \
                         ' href="https://test.gov">test title</a>'
 
       expect(link_to_news_item_title).to eq expected_output
@@ -166,9 +166,9 @@ describe ResultsHelper do
       let(:module_code) { 'NIMAG' }
 
       it 'adds a news item thumbnail with click tracking attributes' do
-        expected_output = '<a data-click="{&quot;position&quot;:&quot;2&quot;,'\
-                          '&quot;module_code&quot;:&quot;NIMAG&quot;}"'\
-                          ' href="https://test.gov?v=test-video-id">'\
+        expected_output = '<a data-click="{&quot;position&quot;:&quot;2&quot;,' \
+                          '&quot;module_code&quot;:&quot;NIMAG&quot;}"' \
+                          ' href="https://test.gov?v=test-video-id">' \
                           '<img alt="test title" src="https://test.gov" /></a>'
 
         expect(link_to_news_item_thumbnail).to eq expected_output
@@ -179,11 +179,11 @@ describe ResultsHelper do
       let(:module_code) { 'VIDS' }
 
       it 'adds a news item thumbnail with click tracking attributes' do
-        expected_output = '<a data-click="{&quot;position&quot;:&quot;2&quot;,'\
-                          '&quot;module_code&quot;:&quot;VIDS&quot;}" '\
-                          'href="https://test.gov?v=test-video-id">'\
-                          '<img alt="test title" '\
-                          'src="https://i.ytimg.com/vi/uwUt1fVLb3E/default.jpg" />'\
+        expected_output = '<a data-click="{&quot;position&quot;:&quot;2&quot;,' \
+                          '&quot;module_code&quot;:&quot;VIDS&quot;}" ' \
+                          'href="https://test.gov?v=test-video-id">' \
+                          '<img alt="test title" ' \
+                          'src="https://i.ytimg.com/vi/uwUt1fVLb3E/default.jpg" />' \
                           '<span><span class="icon icon-play"></span></span></a>'
 
         expect(link_to_news_item_thumbnail).to eq expected_output
@@ -205,9 +205,9 @@ describe ResultsHelper do
     end
 
     it 'adds a tweet link with click tracking attributes' do
-      expected_output = '<a data-click="{&quot;position&quot;:2,'\
-                        '&quot;module_code&quot;:&quot;TWEET&quot;}"'\
-                        ' href="https://twitter.com/USASearch/status/123456">'\
+      expected_output = '<a data-click="{&quot;position&quot;:2,' \
+                        '&quot;module_code&quot;:&quot;TWEET&quot;}"' \
+                        ' href="https://twitter.com/USASearch/status/123456">' \
                         'tweet title</a>'
 
       expect(link_to_tweet_link).to eq expected_output
@@ -223,10 +223,10 @@ describe ResultsHelper do
     end
 
     it 'adds a related search with click tracking attributes' do
-      expected_output = '<a data-click="{&quot;position&quot;:&quot;2&quot;,'\
-                        '&quot;module_code&quot;:&quot;SREL&quot;}" '\
-                        'href="/search?affiliate=nps.gov'\
-                        '&amp;query=president+inauguration">'\
+      expected_output = '<a data-click="{&quot;position&quot;:&quot;2&quot;,' \
+                        '&quot;module_code&quot;:&quot;SREL&quot;}" ' \
+                        'href="/search?affiliate=nps.gov' \
+                        '&amp;query=president+inauguration">' \
                         '<strong>president</strong> inauguration</a>'
 
       expect(link_to_related_search).to eq expected_output

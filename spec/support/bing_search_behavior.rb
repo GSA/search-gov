@@ -97,7 +97,7 @@ shared_examples 'a Bing search' do
     describe 'textDecorations' do
       context 'when enable_highlighting is not provided in the options' do
         it 'uses false' do
-          expect(subject.params[:textDecorations]).to eq(false)
+          expect(subject.params[:textDecorations]).to be(false)
         end
       end
 
@@ -105,7 +105,7 @@ shared_examples 'a Bing search' do
         let(:enable_highlighting) { true }
 
         it 'uses true' do
-          expect(subject.params[:textDecorations]).to eq(true)
+          expect(subject.params[:textDecorations]).to be(true)
         end
       end
 
@@ -113,7 +113,7 @@ shared_examples 'a Bing search' do
         let(:enable_highlighting) { false }
 
         it 'uses true' do
-          expect(subject.params[:textDecorations]).to eq(false)
+          expect(subject.params[:textDecorations]).to be(false)
         end
       end
     end

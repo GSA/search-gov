@@ -156,25 +156,25 @@ describe User do
     context 'when the user first name is empty' do
       let(:user) { users(:no_first_name) }
 
-      it { is_expected.to eq(false) }
+      it { is_expected.to be(false) }
     end
 
     context 'when the user last name is empty' do
       let(:user) { users(:no_last_name) }
 
-      it { is_expected.to eq(false) }
+      it { is_expected.to be(false) }
     end
 
     context 'when the user organization name is empty' do
       let(:user) { users(:no_organization_name) }
 
-      it { is_expected.to eq(false) }
+      it { is_expected.to be(false) }
     end
 
     context 'when the user contact name and organization name are not empty' do
       let(:user) { users(:affiliate_manager) }
 
-      it { is_expected.to eq(true) }
+      it { is_expected.to be(true) }
     end
   end
 

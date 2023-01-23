@@ -18,12 +18,12 @@ describe SearchgovUrlBulkUploaderJob do
     describe 'when there is a valid url list' do
       it 'uploads the first url' do
         perform
-        expect(SearchgovUrl.find_by(url: urls[0])).not_to be(nil)
+        expect(SearchgovUrl.find_by(url: urls[0])).not_to be_nil
       end
 
       it 'uploads the second url' do
         perform
-        expect(SearchgovUrl.find_by(url: urls[1])).not_to be(nil)
+        expect(SearchgovUrl.find_by(url: urls[1])).not_to be_nil
       end
 
       it 'sends the notification email' do

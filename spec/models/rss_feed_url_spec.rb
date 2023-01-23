@@ -334,7 +334,7 @@ describe RssFeedUrl do
         end
 
         it 'returns nil' do
-          expect(rss_feed_url.document).to be nil
+          expect(rss_feed_url.document).to be_nil
         end
       end
 

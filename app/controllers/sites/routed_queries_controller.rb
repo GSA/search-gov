@@ -18,6 +18,10 @@ class Sites::RoutedQueriesController < Sites::SetupSiteController
     respond_to { |format| format.js }
   end
 
+  def edit
+    build_routed_query_keyword
+  end
+
   def create
     @routed_query = @site.routed_queries.build routed_query_params
     if @routed_query.save
@@ -26,10 +30,6 @@ class Sites::RoutedQueriesController < Sites::SetupSiteController
       build_routed_query_keyword
       render action: :new
     end
-  end
-
-  def edit
-    build_routed_query_keyword
   end
 
   def update

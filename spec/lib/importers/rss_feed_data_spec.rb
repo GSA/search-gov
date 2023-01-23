@@ -9,7 +9,7 @@ describe RssFeedData do
 
     context 'when the feed is empty' do
       let(:rss_feed_content) do
-        File.open(Rails.root.to_s + '/spec/fixtures/rss/empty.xml').read
+        File.read(Rails.root.to_s + '/spec/fixtures/rss/empty.xml')
       end
       before do
         stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
@@ -24,7 +24,7 @@ describe RssFeedData do
 
     context 'when the feed has an item that fails HTTP HEAD validation' do
       let(:rss_feed_content) do
-        File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_missing_description.xml').read
+        File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_missing_description.xml')
       end
 
       before do
@@ -54,7 +54,7 @@ describe RssFeedData do
 
     context 'when the feed has an item that is missing the pubDate field' do
       let(:rss_feed_content) do
-        File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_missing_pubdate.xml').read
+        File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_missing_pubdate.xml')
       end
 
       before do
@@ -74,7 +74,7 @@ describe RssFeedData do
 
     context 'when the feed has an item that is missing the link field' do
       let(:rss_feed_content) do
-        File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_missing_link.xml').read
+        File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_missing_link.xml')
       end
       before do
         stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
@@ -93,7 +93,7 @@ describe RssFeedData do
 
     context 'when the feed items have multiple types of problems' do
       before do
-        rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_2titles_1pubdate.xml').read
+        rss_feed_content = File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_2titles_1pubdate.xml')
         stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
         rss_feed_url.news_items.destroy_all
         described_class.new(rss_feed_url).import
@@ -106,7 +106,7 @@ describe RssFeedData do
 
     context 'when a dublin core element is specified multiple times' do
       before do
-        rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_multiple_dublin_core.xml').read
+        rss_feed_content = File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_multiple_dublin_core.xml')
         stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
         rss_feed_url.news_items.destroy_all
       end
@@ -121,7 +121,7 @@ describe RssFeedData do
 
     context 'when the feed is in the RSS 2.0 format' do
       before do
-        rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml').read
+        rss_feed_content = File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')
         stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
       end
 
@@ -201,7 +201,7 @@ describe RssFeedData do
 
         context 'when the item links differ only in protocol' do
           let(:rss_feed_content) do
-            File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_diff_protocol.xml').read
+            File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_diff_protocol.xml')
           end
           before do
             stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
@@ -232,7 +232,7 @@ describe RssFeedData do
 
     context 'when the feed uses RSS content module' do
       let(:rss_feed_content) do
-        File.open(Rails.root.to_s + '/spec/fixtures/rss/rss_with_content_module.xml').read
+        File.read(Rails.root.to_s + '/spec/fixtures/rss/rss_with_content_module.xml')
       end
       before do
         stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
@@ -254,7 +254,7 @@ describe RssFeedData do
 
     context 'when the feed uses media:text and not content:encoded' do
       before do
-        rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/video_rss.xml').read
+        rss_feed_content = File.read(Rails.root.to_s + '/spec/fixtures/rss/video_rss.xml')
         stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
         rss_feed_url.news_items.destroy_all
       end
@@ -274,7 +274,7 @@ describe RssFeedData do
 
     context 'when the feed does not contain dublin core namespace' do
       before do
-        rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/rss_without_dublin_core_ns.xml').read
+        rss_feed_content = File.read(Rails.root.to_s + '/spec/fixtures/rss/rss_without_dublin_core_ns.xml')
         stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
       end
 
@@ -414,7 +414,7 @@ describe RssFeedData do
     context 'when the url has been redirected' do
       let(:rss_feed_url) { rss_feed_urls(:white_house_blog_url) }
       let(:rss_feed_content) do
-        File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml').read
+        File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')
       end
 
       context 'when the redirection is for a protocol change' do

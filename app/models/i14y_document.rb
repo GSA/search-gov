@@ -46,7 +46,7 @@ class I14yDocument
 
   def save
     run_callbacks(:save) do
-      params = attributes.reject { |_k, v| v.blank? }
+      params = attributes.compact_blank
       response = i14y_connection.post(self.class.api_endpoint, params)
       raise I14yDocumentError, response.body.developer_message unless response.status == 201
 
@@ -93,7 +93,7 @@ class I14yDocument
   end
 
   def update
-    params = attributes.except(:document_id).reject { |_k, v| v.blank? }
+    params = attributes.except(:document_id).compact_blank
     response = i14y_connection.put("#{self.class.api_endpoint}/#{document_id}", params)
     raise I14yDocumentError, response.body.developer_message unless response.status == 200
 

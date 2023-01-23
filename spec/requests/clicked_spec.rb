@@ -43,7 +43,7 @@ describe '/clicked' do
       }
     end
     let(:expected_error_msg) do
-      "[\"Module code can't be blank\",\"Position can't be blank\","\
+      "[\"Module code can't be blank\",\"Position can't be blank\"," \
       "\"Query can't be blank\",\"Url can't be blank\"]"
     end
 

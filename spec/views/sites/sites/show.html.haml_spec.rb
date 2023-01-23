@@ -220,8 +220,8 @@ describe 'sites/sites/show' do
     end
 
     context 'when showing month-to-date usage totals' do
-      let(:formatted_beginning_of_month) { Date.current.beginning_of_month.to_formatted_s(:long).squish }
-      let(:formatted_today) { Date.current.to_formatted_s(:long).squish }
+      let(:formatted_beginning_of_month) { Date.current.beginning_of_month.to_fs(:long).squish }
+      let(:formatted_today) { Date.current.to_fs(:long).squish }
 
       before do
         assign :dashboard, double('RtuDashboard', monthly_queries_to_date: 12_345, monthly_clicks_to_date: 5678).as_null_object

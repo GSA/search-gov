@@ -18,6 +18,9 @@ class Sites::DocumentCollectionsController < Sites::SetupSiteController
     respond_to { |format| format.js }
   end
 
+  def show
+  end
+
   def create
     @document_collection = @site.document_collections.build(collection_params)
     if @document_collection.save
@@ -29,9 +32,6 @@ class Sites::DocumentCollectionsController < Sites::SetupSiteController
       load_hints
       render action: :new
     end
-  end
-
-  def show
   end
 
   def edit
