@@ -52,6 +52,7 @@ describe Agency do
     context 'when the agency belongs to a federal register agency' do
       fixtures :federal_register_agencies
       let(:agency) { described_class.create!(@valid_attributes.merge(federal_register_agency: federal_register_agencies(:fr_irs))) }
+
       before do
         AgencyOrganizationCode.create!(organization_code: 'XX00', agency: agency)
       end

@@ -291,8 +291,9 @@ describe SearchgovDomain do
   end
 
   describe '#check_status' do
-    let(:searchgov_domain) { described_class.create!(domain: domain) }
     subject(:check_status) { searchgov_domain.check_status }
+    let(:searchgov_domain) { described_class.create!(domain: domain) }
+
 
     context 'when the domain is available' do
       before { stub_request(:get, 'http://searchgov.gov').to_return(status: 200) }

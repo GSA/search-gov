@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe ApiCache do
+  subject(:cache) { described_class.new('my_api', cache_duration) }
   let(:cache_store) { double(ActiveSupport::Cache::FileStore) }
   let(:endpoint) { '/search.json' }
   let(:params) { { query: 'gov' } }
@@ -13,7 +14,6 @@ describe ApiCache do
     expect(ActiveSupport::Cache::FileStore).to receive(:new).and_return(cache_store)
   end
 
-  subject(:cache) { described_class.new('my_api', cache_duration) }
   let(:cache_duration) { 600 }
 
   describe '#read', vcr: { record: :skip } do

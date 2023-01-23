@@ -11,6 +11,7 @@ describe 'SaytFilters-related rake tasks' do
 
   describe 'usasearch:sayt_filters:filtered_popular_terms' do
     let(:task_name) { 'usasearch:sayt_filters:filtered_popular_terms' }
+
     after(:each) { @rake[task_name].reenable }
 
     it "should have 'environment' as a prereq" do

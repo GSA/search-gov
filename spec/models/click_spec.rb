@@ -3,6 +3,7 @@
 require 'spec_helper'
 
 describe Click do
+  subject(:click) { described_class.new(params) }
   let(:url) { 'http://www.fda.gov/foo.html' }
   let(:ip) { '0.0.0.0' }
   let(:position) { '7' }
@@ -22,7 +23,6 @@ describe Click do
     }
   end
 
-  subject(:click) { described_class.new(params) }
 
   context 'with required params' do
     describe '#valid?' do

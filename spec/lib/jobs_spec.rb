@@ -9,6 +9,7 @@ describe Jobs do
                     results_per_page: 10 })
     end
     let(:usajobs_url) { 'https://data.usajobs.gov/api/search' }
+
     it 'returns results' do
       expect(search.search_result.search_result_count).to be > 0
     end
@@ -16,11 +17,11 @@ describe Jobs do
     it 'searches USAJOBS with the correct params' do
       search
       expect(a_request(:get, usajobs_url).with(
-        query: { Keyword:        'Nursing',
-                 Organization:   'HE38',
-                 LocationName:   'Baltimore, MD, USA',
-                 ResultsPerPage: 10,
-                 Radius:         75 }
+               query: { Keyword:        'Nursing',
+                        Organization:   'HE38',
+                        LocationName:   'Baltimore, MD, USA',
+                        ResultsPerPage: 10,
+                        Radius:         75 }
       )).to have_been_made
     end
 

@@ -5,10 +5,11 @@ describe Membership do
 
   describe 'scopes' do
     describe '.daily_snapshot_receivers' do
+      subject(:receivers) { described_class.daily_snapshot_receivers }
       let!(:membership) { memberships(:four) }
       let!(:affiliate) { membership.affiliate }
       let!(:user) { membership.user }
-      subject(:receivers) { described_class.daily_snapshot_receivers }
+
 
       it { is_expected.to include(membership) }
 

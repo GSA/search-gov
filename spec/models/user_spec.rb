@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# frozen_string_literal: true
-
 describe User do
   let(:valid_attributes) do
     { email: 'unique_login@agency.gov',
@@ -259,9 +257,9 @@ describe User do
 
     # login.gov - commented out till SRCH-952. Updating email address will have a different flow.
     pending 'when updating an email address' do
+      subject(:update_email) { user.update(email: new_email) }
       let(:user) { users(:affiliate_admin) }
       let(:new_email) { 'new@new.gov' }
-      subject(:update_email) { user.update(email: new_email) }
 
       context 'to a non-government address' do
         let(:new_email) { 'random@random.com' }

@@ -10,6 +10,7 @@ describe 'Federal register rake tasks' do
 
   describe 'usasearch:federal_register:import_agencies' do
     let(:task_name) { 'usasearch:federal_register:import_agencies' }
+
     before { @rake[task_name].reenable }
 
     it "should have 'environment' as a prereq" do
@@ -24,6 +25,7 @@ describe 'Federal register rake tasks' do
 
   describe 'usasearch:federal_register:import_documents' do
     let(:task_name) { 'usasearch:federal_register:import_documents' }
+
     before { @rake[task_name].reenable }
 
     it "should have 'environment' as a prereq" do

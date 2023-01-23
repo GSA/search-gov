@@ -13,6 +13,7 @@ describe 'Features-related rake tasks' do
   describe 'usasearch:features' do
     describe 'usasearch:features:record_feature_usage' do
       let(:task_name) { 'usasearch:features:record_feature_usage' }
+
       before { @rake[task_name].reenable }
 
       it "should have 'environment' as a prereq" do
@@ -56,6 +57,7 @@ describe 'Features-related rake tasks' do
 
     describe 'usasearch:features:email_admin_about_new_feature_usage' do
       let(:task_name) { 'usasearch:features:email_admin_about_new_feature_usage' }
+
       before { @rake[task_name].reenable }
 
       it "should have 'environment' as a prereq" do

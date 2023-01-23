@@ -26,7 +26,7 @@ class Sites::DisplaysController < Sites::SetupSiteController
 
   def site_params
     params.require(:site).permit(
-        :default_search_label,
+      :default_search_label,
         :is_federal_register_document_govbox_enabled,
         :is_medline_govbox_enabled,
         :is_related_searches_enabled,

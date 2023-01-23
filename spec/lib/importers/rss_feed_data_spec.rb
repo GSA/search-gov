@@ -5,12 +5,14 @@ describe RssFeedData do
 
   describe '#import' do
     let(:rss_feed_url) { rss_feed_urls(:basic_url) }
+
     before { allow(UrlStatusCodeFetcher).to receive(:fetch) { '200 OK' } }
 
     context 'when the feed is empty' do
       let(:rss_feed_content) do
         File.read(Rails.root.to_s + '/spec/fixtures/rss/empty.xml')
       end
+
       before do
         stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
         rss_feed_url.news_items.destroy_all
@@ -76,6 +78,7 @@ describe RssFeedData do
       let(:rss_feed_content) do
         File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_missing_link.xml')
       end
+
       before do
         stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
         rss_feed_url.news_items.destroy_all
@@ -203,6 +206,7 @@ describe RssFeedData do
           let(:rss_feed_content) do
             File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_diff_protocol.xml')
           end
+
           before do
             stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
             NewsItem.destroy_all
@@ -234,6 +238,7 @@ describe RssFeedData do
       let(:rss_feed_content) do
         File.read(Rails.root.to_s + '/spec/fixtures/rss/rss_with_content_module.xml')
       end
+
       before do
         stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
         rss_feed_url.news_items.destroy_all

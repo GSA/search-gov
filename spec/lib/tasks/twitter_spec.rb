@@ -11,6 +11,7 @@ describe 'Twitter rake tasks' do
   describe 'usasearch:twitter' do
     describe 'usasearch:twitter:expire' do
       let(:task_name) { 'usasearch:twitter:expire' }
+
       before { @rake[task_name].reenable }
 
       it "should have 'environment' as a prereq" do

@@ -36,7 +36,7 @@ describe SearchImpression do
           '"referrer":"http://www.gov.gov/ref",' \
           '"user_agent":"whatevs","diagnostics":' \
           '[{"snap":"judgement","module":"AWEB"}],' \
-          "\"time\":\"#{time.to_formatted_s(:db)}\"," \
+          "\"time\":\"#{time.to_fs(:db)}\"," \
           '"vertical":"web","modules":"BWEB",' \
           '"params":{"foo":"yep"}}'
         )

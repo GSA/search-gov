@@ -94,6 +94,7 @@ describe RssFeedUrl do
 
         context 'for a protocol change' do
           let(:new_url) { 'https://www.whitehouse.gov/blog' }
+
           it 'is allowed' do
             rss_feed_url.url = new_url
             expect(rss_feed_url.valid?).to be true
@@ -107,6 +108,7 @@ describe RssFeedUrl do
 
         context 'for a non-protocol change' do
           let(:new_url) { 'http://www.newanddifferent.gov/blog' }
+
           it 'is not allowed' do
             rss_feed_url.url = new_url
             expect(rss_feed_url.valid?).to be false
@@ -356,6 +358,7 @@ describe RssFeedUrl do
   describe '#current_url' do
     context 'when the feed has been redirected' do
       let(:new_url) { 'http://www.new.com' }
+
       before do
         stub_request(:get, rss_feed_url.url).to_return( body: '', status: 301, headers: { 'Location' => new_url } )
         stub_request(:get, new_url)

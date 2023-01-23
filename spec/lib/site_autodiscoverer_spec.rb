@@ -44,6 +44,7 @@ describe SiteAutodiscoverer do
 
       context 'when the site has a default_autodiscovery_url' do
         let(:url) { 'https://www.usa.gov' }
+
         before do
           allow(site).to receive(:default_autodiscovery_url) { url }
           allow(autodiscoverer).to receive(:autodiscover_website).with(url).and_return(url)
@@ -55,6 +56,7 @@ describe SiteAutodiscoverer do
 
         context 'when the autodiscover_website returns a different url' do
           let(:other_url) { 'https://www.usa.gov' }
+
           before do
             allow(autodiscoverer).to receive(:autodiscover_website).with(url).and_return(other_url)
           end

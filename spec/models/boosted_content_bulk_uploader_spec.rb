@@ -2,10 +2,11 @@ require 'spec_helper'
 
 describe BoostedContentBulkUploader do
   fixtures :affiliates
+  subject(:results) { uploader.upload }
   let(:affiliate) { affiliates(:basic_affiliate) }
   let(:file) { fixture_file_upload('/csv/boosted_content/bulk_upload.csv', 'text/csv') }
   let(:uploader) { described_class.new(affiliate, file) }
-  subject(:results) { uploader.upload }
+
 
   before do
     ElasticBoostedContent.recreate_index
@@ -56,12 +57,12 @@ describe BoostedContentBulkUploader do
 
       it 'should update existing boosted Contents if the url match' do
         boosted_content = affiliate.boosted_contents.build(
-            url: 'http://some.url',
-            title: 'an old title',
-            description: 'an old description',
-            status: 'active',
-            publish_start_on: Date.current,
-            match_keyword_values_only: false)
+          url: 'http://some.url',
+          title: 'an old title',
+          description: 'an old description',
+          status: 'active',
+          publish_start_on: Date.current,
+          match_keyword_values_only: false)
         boosted_content.boosted_content_keywords.build(value: 'Lone star state')
         boosted_content.boosted_content_keywords.build(value: 'Texan')
         boosted_content.save!

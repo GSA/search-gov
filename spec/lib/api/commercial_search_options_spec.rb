@@ -16,6 +16,7 @@ describe Api::CommercialSearchOptions do
     subject { described_class.new({ affiliate: :affiliate_name, api_key: api_key }) }
     let(:api_key) { :api_key }
     let(:affiliate) { nil }
+
     before { allow(Affiliate).to receive(:find_by_name).with(:affiliate_name).and_return(affiliate) }
 
     context 'when the given affiliate does not exist' do

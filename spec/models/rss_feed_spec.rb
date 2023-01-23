@@ -163,12 +163,12 @@ describe RssFeed do
   end
 
   describe '.find_existing_or_initialize' do
+    subject { affiliate.rss_feeds.find_existing_or_initialize(name, url) }
     let(:name) { 'name' }
     let(:url) { rss_feed_urls(:white_house_press_gallery_url).url }
     let(:rfu) { [ ] }
     let(:affiliate) { affiliates(:basic_affiliate) }
 
-    subject { affiliate.rss_feeds.find_existing_or_initialize(name, url) }
 
     context 'when there are no rss_feeds records' do
       it { is_expected.to be_a(described_class) }
@@ -186,6 +186,7 @@ describe RssFeed do
 
       context 'when the RSS feed has the same name but no matching URLs' do
         let(:rfu) { [rss_feed_urls(:white_house_blog_url)] }
+
         it { is_expected.to be_a(described_class) }
         it { is_expected.to be_new_record }
         its(:name) { should eq(name) }
@@ -194,6 +195,7 @@ describe RssFeed do
       context 'when the RSS feed has a different name but matching URLs' do
         let(:created_name) { 'other name' }
         let(:rfu) { [rss_feed_urls(:white_house_press_gallery_url)] }
+
         it { is_expected.to be_a(described_class) }
         it { is_expected.to be_new_record }
         its(:name) { should eq(name) }
@@ -201,6 +203,7 @@ describe RssFeed do
 
       context 'when the RSS feed has the same name and exactly one matching URL' do
         let(:rfu) { [rss_feed_urls(:white_house_press_gallery_url)] }
+
         it { is_expected.to eq(rss_feed) }
         it { is_expected.not_to be_new_record }
       end

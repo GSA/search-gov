@@ -59,6 +59,7 @@ describe AzureCompositeEngine do
   end
 
   skip '#execute_query' do
+    subject(:response) { engine.execute_query }
     let(:engine) do
       described_class.new api_key: Rails.application.secrets.hosted_azure[:account_key],
                           language: 'en',
@@ -73,7 +74,6 @@ describe AzureCompositeEngine do
     let(:offset) { 0 }
     let(:query) { 'survy (site:www.census.gov)' }
 
-    subject(:response) { engine.execute_query }
 
     context 'when no results are present' do
       let(:query) { 'unpossible (site:www.census.gov)' }

@@ -27,7 +27,7 @@ class Sites::NoResultsPagesController < Sites::SetupSiteController
 
   def site_params
     params.require(:no_results_pages).permit(
-          :additional_guidance_text,
+      :additional_guidance_text,
           managed_no_results_pages_alt_links_attributes: %i[position title url]
         ).to_h
   end

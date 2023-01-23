@@ -69,6 +69,7 @@ describe SaytFilter do
 
     context 'when the filter is a regex' do
       let(:filter) { described_class.create!(phrase: "[^aeiou].com", is_regex: true) }
+
       it 'should match based on the regex' do
         expect(filter.match?('gotvowels.com')).to be_truthy
         expect(filter.match?('oaeiuXcom')).to be_falsey
@@ -77,6 +78,7 @@ describe SaytFilter do
 
     context 'when the filter requires an exact match' do
       let(:filter) { described_class.create!(phrase: 'xxx', filter_only_exact_phrase: true) }
+
       it 'should filter exact matches only' do
         expect(filter.match?('xxx')).to be_truthy
         expect(filter.match?('xxxx')).to be_falsey

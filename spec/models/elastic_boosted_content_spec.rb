@@ -269,6 +269,7 @@ describe ElasticBoostedContent do
 
       context 'when match_keyword_values_only is true' do
         let(:bc_params) { valid_bc_params.merge({ match_keyword_values_only: true }) }
+
         it 'should not return the matches from the title or description' do
           expect(search.total).to eq(0)
           expect(search.results.size).to eq(0)

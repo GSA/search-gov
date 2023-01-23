@@ -53,7 +53,7 @@ describe RoutedQuery do
 
       let(:expected_errors) do
         'The following keyword has been duplicated: \'some keyword phrase\'. ' \
-        'Each keyword is case-insensitive and should be added only once.'
+          'Each keyword is case-insensitive and should be added only once.'
       end
 
       it 'rejects the save of the keywords' do
@@ -80,8 +80,8 @@ describe RoutedQuery do
 
       let(:expected_errors) do
         'The following keywords have been duplicated: \'some keyword phrase\', ' \
-        '\'some other keyword phrase\'. ' \
-        'Each keyword is case-insensitive and should be added only once.'
+          '\'some other keyword phrase\'. ' \
+          'Each keyword is case-insensitive and should be added only once.'
       end
 
       it 'rejects the save of the keywords' do

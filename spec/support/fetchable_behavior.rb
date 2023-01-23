@@ -91,6 +91,7 @@ shared_examples_for 'a record with a fetchable url' do
 
     context 'when a blank URL is passed in' do
       let(:url) { '' }
+
       it 'marks record as invalid' do
         expect(described_class.new(valid_attributes.merge(url: url))).not_to be_valid
       end

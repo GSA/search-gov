@@ -3,8 +3,6 @@
 require 'spec_helper'
 
 describe ApiClick do
-  let(:affiliate) { 'nps.gov' }
-
   subject(:click) do
     described_class.new(url: 'http://www.fda.gov/foo.html',
                         query: 'my query',
@@ -17,6 +15,8 @@ describe ApiClick do
                         access_key: 'basic_key',
                         referrer: 'http://www.fda.gov/referrer')
   end
+  let(:affiliate) { 'nps.gov' }
+
 
   context 'with required params' do
     describe '#valid?' do

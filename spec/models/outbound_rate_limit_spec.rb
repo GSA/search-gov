@@ -10,16 +10,19 @@ describe OutboundRateLimit do
     subject(:outbound_rate_limit) { described_class.new(name: 'rate_limited_api', limit: 1000, interval: interval).current_interval }
     context 'when the interval is "day"' do
       let(:interval) { 'day' }
+
       specify { expect(subject).to eq(Date.current.strftime('%Y-%m-%d')) }
     end
 
     context 'when the interval is "month"' do
       let(:interval) { 'month' }
+
       specify { expect(subject).to eq(Date.current.strftime('%Y-%m')) }
     end
 
     context 'when the interval is invalid' do
       let(:interval) { 'fortnight' }
+
       specify { expect { subject }.to raise_error }
     end
   end
@@ -29,16 +32,19 @@ describe OutboundRateLimit do
 
     context 'when the interval is "day"' do
       let(:interval) { 'day' }
+
       specify { expect(subject).to eq(8.days.to_i) }
     end
 
     context 'when the interval is "month"' do
       let(:interval) { 'month' }
+
       specify { expect(subject).to eq(13.months.to_i) }
     end
 
     context 'when the interval is invalid' do
       let(:interval) { 'fortnight' }
+
       specify { expect { subject }.to raise_error }
     end
   end

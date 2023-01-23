@@ -8,8 +8,9 @@ describe ResultsRejector do
   let(:processor) { TestProcessor.new }
 
   describe '#url_is_excluded' do
-    let(:excluded_urls) { ['www.excluded.com'] }
     subject(:url_is_excluded) { processor.send(:url_is_excluded?, url) }
+    let(:excluded_urls) { ['www.excluded.com'] }
+
     before do
       allow(processor).to receive(:excluded_urls).and_return(excluded_urls)
     end

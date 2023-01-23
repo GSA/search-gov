@@ -3,8 +3,6 @@ require 'spec_helper'
 describe ApiAzureCompositeImageSearch do
   fixtures :affiliates
 
-  let(:api_key) { nil }
-
   subject do
     described_class.new({
       affiliate: affiliates(:basic_affiliate),
@@ -12,6 +10,8 @@ describe ApiAzureCompositeImageSearch do
       api_key: api_key
     })
   end
+  let(:api_key) { nil }
+
 
   describe '#new' do
     context 'when initialized with a Bing V2 key' do

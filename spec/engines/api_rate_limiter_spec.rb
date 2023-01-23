@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 describe ApiRateLimiter do
+  subject(:rate_limiter) { described_class.new(namespace) }
   let(:namespace) { 'my_api' }
   let!(:today) { Date.new(2014, 1, 1) }
   let(:key) { 'my_api:2014-01-01:used_count'.freeze }
 
-  subject(:rate_limiter) { described_class.new(namespace) }
 
   before do
     described_class.redis.flushdb
@@ -34,6 +34,7 @@ describe ApiRateLimiter do
 
     context 'when limit has been reached' do
       let(:allowed_calls) { 2 }
+
       before do
         OutboundRateLimit.create!(name: namespace, limit: 2)
         expect(connection).to receive(:get).exactly(allowed_calls).times

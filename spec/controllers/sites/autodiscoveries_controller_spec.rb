@@ -31,6 +31,7 @@ describe Sites::AutodiscoveriesController do
 
       context 'when an invalid autodiscovery_url is invalid' do
         let(:autodiscovery_url) { 'http://_' }
+
         before do
           expect(SiteAutodiscoverer).to receive(:new).with(site, autodiscovery_url).and_raise URI::InvalidURIError
           post :create, params: { site_id: site.id, autodiscovery_url: autodiscovery_url }

@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe OutboundRateLimitStatus do
+  subject(:status) { described_class.new(outbound_rate_limit) }
   let(:outbound_rate_limit) do
     mock_model(OutboundRateLimit,
                limit: 1000,
@@ -8,7 +9,7 @@ describe OutboundRateLimitStatus do
   end
 
   let(:rate_limiter) { double(ApiRateLimiter) }
-  subject(:status) { described_class.new(outbound_rate_limit) }
+
 
   before do
     expect(ApiRateLimiter).to receive(:new).with('my_api').and_return(rate_limiter)

@@ -5,6 +5,7 @@ describe FaradayResponseBodyRashify do
     context 'when the body is a Hash' do
       let(:hash_body) { { body: {'foo'=>'bar'} }  }
       let(:response) { Faraday::Response.new(Hashie::Mash::Rash.new( hash_body )) }
+
       it 'parses the body' do
         described_class.process_response(response)
         expect(response.env.body).to eq( {'foo'=>'bar'} )
@@ -14,6 +15,7 @@ describe FaradayResponseBodyRashify do
     context 'when the body is a String' do
       let(:string_body) { {'body'=>'{"foo":"bar"}'} }
       let(:response) { Faraday::Response.new(Hashie::Mash::Rash.new( string_body )) }
+
       it 'parses the body' do
         described_class.process_response(response)
         expect(response.env.body).to eq( {'foo'=>'bar'} )

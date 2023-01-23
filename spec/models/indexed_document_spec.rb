@@ -30,6 +30,7 @@ describe IndexedDocument do
       affiliate_id: affiliates(:basic_affiliate).id
     }
   end
+
   it { is_expected.to validate_presence_of :affiliate_id }
   it { is_expected.to validate_presence_of :title }
   it { is_expected.to belong_to :affiliate }

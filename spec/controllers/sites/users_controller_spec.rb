@@ -14,6 +14,7 @@ describe Sites::UsersController do
 
     context 'when logged in as affiliate' do
       let(:site_users) { [mock_model(User)] }
+
       include_context 'approved user logged in to a site'
 
       before do

@@ -5,6 +5,7 @@ describe I14yDrawerHelper do
 
   describe 'i14y_drawer_data_row(i14y_drawer)' do
     let(:i14y_drawer) { i14y_drawers(:one) }
+
     context 'stats are present' do
       context 'documents exist' do
         before do
@@ -51,6 +52,7 @@ describe I14yDrawerHelper do
 
     context 'when the drawer has one owner' do
       let(:drawer) { I14yDrawer.new }
+
       before { allow(drawer).to receive_message_chain(:affiliates, :count).and_return(1) }
 
       it { is_expected.to eq confirmation_for_one_affiliate }

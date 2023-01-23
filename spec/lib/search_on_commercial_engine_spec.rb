@@ -21,6 +21,7 @@ describe SearchOnCommercialEngine do
   let(:search_engine) { double(:search_engine, execute_query: search_result, query: nil) }
   let(:search_result) { double(:search_result, diagnostics: result_diagnostics) }
   let(:result_diagnostics) { :result_diagnostics }
+
   before do
     search.search_engine = search_engine
     search.affiliate = affiliates(:usagov_affiliate)
