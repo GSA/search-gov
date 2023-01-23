@@ -10,6 +10,7 @@ class Sites::DocumentCollectionsController < Sites::SetupSiteController
 
   def show
   end
+
   def new
     @document_collection = @site.document_collections.build
     build_url_prefix
@@ -20,10 +21,10 @@ class Sites::DocumentCollectionsController < Sites::SetupSiteController
     respond_to { |format| format.js }
   end
 
-
   def edit
     build_url_prefix
   end
+
   def create
     @document_collection = @site.document_collections.build(collection_params)
     if @document_collection.save
@@ -36,7 +37,6 @@ class Sites::DocumentCollectionsController < Sites::SetupSiteController
       render action: :new
     end
   end
-
 
   def update
       if @document_collection.destroy_and_update_attributes(collection_params)

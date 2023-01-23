@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   def show; end
 
   def edit; end
+
   def create
     @user = User.new(user_params)
     if verify_recaptcha(model: @user, message: 'Word verification is incorrect') && @user.save
@@ -40,7 +41,6 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-
 
   def update
     if @user.update(user_params)

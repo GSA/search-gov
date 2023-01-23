@@ -10,6 +10,7 @@ class Sites::RssFeedsController < Sites::SetupSiteController
   end
 
   def show; end
+
   def new
     @rss_feed = @site.rss_feeds.build
     build_url
@@ -20,10 +21,10 @@ class Sites::RssFeedsController < Sites::SetupSiteController
     respond_to { |format| format.js }
   end
 
-
   def edit
     build_url
   end
+
   def create
     RssFeed.transaction do
       @rss_feed = @site.rss_feeds.build(rss_feed_params.except(:rss_feed_urls_attributes))
@@ -37,7 +38,6 @@ class Sites::RssFeedsController < Sites::SetupSiteController
       end
     end
   end
-
 
   def update
     RssFeed.transaction do
