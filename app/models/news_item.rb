@@ -43,6 +43,10 @@ class NewsItem < ApplicationRecord
     link =~ %r{\Ahttps?://www\.youtube\.com/watch\?v=}
   end
 
+  def untested
+    'foo'
+    end
+
   def tags
     if properties.key?(:media_content) and
        properties[:media_content][:url].present? and
