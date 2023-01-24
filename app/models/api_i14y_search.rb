@@ -20,7 +20,9 @@ class ApiI14ySearch < I14ySearch
   def add_facets_to_results(result)
     fields = {}
     I14ySearch::FACET_FIELDS.each do |field|
-      next if result[field].nil?
+      # SRCH-3738 created is a i14y default field and handled in app/models/i14y_post_processor.rb
+      # and lib/api/v2/non_commercial_search.rb
+      next if field == 'created' || result[field].nil?
 
       process_facet_fields(fields, field.to_sym, result)
     end
