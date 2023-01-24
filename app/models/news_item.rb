@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+
+#badcomment
 class NewsItem < ApplicationRecord
   include FastDeleteFromDbAndEs
 
