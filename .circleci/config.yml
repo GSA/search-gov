@@ -7,6 +7,7 @@ version: 2.1
 orbs:
   ruby: circleci/ruby@1.6.0
   browser-tools: circleci/browser-tools@1.2.5
+  nodejs: circleci/node@5.1.0
 
 executors:
   test_executor:
@@ -61,7 +62,7 @@ commands:
   install_js_dependencies:
     description: 'Install JavaScript dependencies'
     steps:
-      - run: yarn install
+      - run: yarn install --frozen-lockfile
   precompile_assets:
     description: 'Pre-compile assets'
     steps:
@@ -227,6 +228,46 @@ jobs:
           path: /tmp/test-results
           destination: test-results
 
+  jest:
+    parameters:
+      ruby_version:
+        type: string
+      elasticsearch_version:
+        type: string
+      node_version:
+        type: string
+
+    executor: 
+      name: test_executor
+      ruby_version: << parameters.ruby_version >>
+      elasticsearch_version: << parameters.elasticsearch_version >>
+
+    steps:
+      - restore_cache:
+          key: repo-{{ .Environment.CIRCLE_SHA1 }}
+
+      - nodejs/install:
+          install-yarn: true
+          node-version: << parameters.node_version >>
+
+      - install_js_dependencies
+
+      - run:
+          name: Run Tests
+          command: |
+            ./cc-test-reporter before-build
+
+            # Run jest tests
+            yarn test:coverage
+
+            ./cc-test-reporter format-coverage \
+              --output coverage/codeclimate.jest.<< parameters.node_version >>.json
+
+      - persist_to_workspace:
+          root: ~/search-gov/coverage
+          paths:
+          - codeclimate.jest.*.json
+
   report_coverage:
     parameters:
       ruby_version:
@@ -249,8 +290,8 @@ jobs:
       - run:
           name: Report coverage to Code Climate
           command: |
-            ./cc-test-reporter sum-coverage --parts 16 \
-              coverage/codeclimate.*.<< parameters.ruby_version >>_<< parameters.elasticsearch_version >>.json \
+            ./cc-test-reporter sum-coverage --parts 17 \
+              coverage/codeclimate.*.json \
               --output coverage/codeclimate_full_report.json
 
             ./cc-test-reporter upload-coverage --input coverage/codeclimate_full_report.json
@@ -293,10 +334,24 @@ workflows:
               elasticsearch_version:
                 - 7.17.7
 
+      - jest:
+          requires:
+            - checkout_code
+          name: "jest: NodeJS << matrix.node_version >>"
+          matrix:
+            parameters:
+              ruby_version:
+                - 2.7.5
+              elasticsearch_version:
+                - 7.17.7
+              node_version:
+                - 16.18.1
+
       - report_coverage:
           requires:
             - rspec
             - cucumber
+            - jest
           name: "report coverage: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>"
           matrix:
             # We only report coverage for one run, as the coverage will be
