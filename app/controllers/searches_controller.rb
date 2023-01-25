@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class SearchesController < ApplicationController
+  layout :set_layout, only: [:index]
+
   skip_before_action :verify_authenticity_token, :set_default_locale
 
   before_action :set_affiliate, :set_locale_based_on_affiliate_locale
@@ -14,7 +16,9 @@ class SearchesController < ApplicationController
   include QueryRoutableController
 
   def index
-    search_klass, @search_vertical, template, layout = pick_klass_vertical_template_layout
+    search_klass, @search_vertical, template = pick_klass_vertical_template
+    # For the SERP redesign, we override the template set in the previous line.
+    template = :index_redesign if redesign?
     @search = search_klass.new(@search_options.merge(geoip_info: GeoipLookup.lookup(request.remote_ip)))
     @search.run
     @form_path = search_path
@@ -22,7 +26,7 @@ class SearchesController < ApplicationController
     set_search_page_title
     set_search_params
     respond_to do |format|
-      format.html { render template, layout: layout }
+      format.html { render template }
       format.json { render :json => @search }
     end
   end
@@ -63,23 +67,17 @@ class SearchesController < ApplicationController
 
   private
 
-  # Temporarily disabling this cop until this method is refactored in
-  # upcoming changes for the SERP redesign.
-  # rubocop:disable Metrics/MethodLength
-  def pick_klass_vertical_template_layout
+  def pick_klass_vertical_template
     if get_commercial_results?
-      [WebSearch, :web, :index, 'searches']
+      [WebSearch, :web, :index]
     elsif gets_i14y_results?
-      [I14ySearch, :i14y, :i14y, 'searches']
+      [I14ySearch, :i14y, :i14y]
     elsif @affiliate.gets_blended_results
-      [BlendedSearch, :blended, :blended, 'searches']
-    elsif redesign?
-      [WebSearch, :web, :index_redesign, 'searches_redesign']
+      [BlendedSearch, :blended, :blended]
     else
-      [WebSearch, :web, :index, 'searches']
+      [WebSearch, :web, :index]
     end
   end
-  # rubocop:enable Metrics/MethodLength
 
   def set_news_search_page_title
     if permitted_params[:query].present?
@@ -141,5 +139,9 @@ class SearchesController < ApplicationController
 
   def redesign?
     permitted_params[:redesign] == 'true'
+  end
+
+  def set_layout
+    redesign? ? 'searches_redesign' : 'searches'
   end
 end
