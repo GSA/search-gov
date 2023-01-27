@@ -61,6 +61,7 @@ SEED_LANGUAGES = {
   uz: { is_bing_supported: true, is_google_supported: false, is_azure_supported: false, inferred_country_code: nil, name: 'Uzbek' , rtl: false },
   vi: { is_bing_supported: true, is_google_supported: false, is_azure_supported: false, inferred_country_code: nil, name: 'Vietnamese' , rtl: false },
   zh: { is_bing_supported: true, is_google_supported: true, is_azure_supported: true, inferred_country_code: 'CN', name: 'Chinese' , rtl: false },
+  zz: { is_bing_supported: true, is_google_supported: true, is_azure_supported: true, inferred_country_code: 'zz', name: 'Fake test' , rtl: false },
 }
 
 SEED_LANGUAGES.each do |code, language|
