@@ -3,29 +3,31 @@
 require 'spec_helper'
 
 describe I14ySearch do
+  subject(:i14y_search) { described_class.new(filterable_search_options) }
+
   let(:affiliate) { affiliates(:i14y_affiliate) }
-  let(:i14y_search) { described_class.new(affiliate: affiliate, query: 'marketplase') }
+  let(:highlighting) { true }
+  let(:query) { 'marketplase' }
+  let(:filterable_search_options) do
+    { affiliate: affiliate,
+      enable_highlighting: highlighting,
+      limit: 20,
+      offset: 0,
+      query: query }
+  end
 
   describe '#initialize' do
-    let(:filterable_search_options) do
-      { affiliate: affiliate,
-        enable_highlighting: true,
-        limit: 20,
-        offset: 0,
-        query: 'electro coagulation' }
-    end
+    let(:query) { 'electro coagulation' }
 
     it_behaves_like 'an initialized filterable search'
 
     context 'when options does not include sort_by' do
-      subject(:test_search) { described_class.new(filterable_search_options) }
-
       its(:sort_by_relevance?) { is_expected.to be true }
       its(:sort) { is_expected.to be_nil }
     end
 
     context 'when facet filters are present' do
-      subject(:test_search) do
+      subject(:i14y_search) do
         described_class.new filterable_search_options.
           merge(tags: 'tag from params')
       end
@@ -35,30 +37,23 @@ describe I14ySearch do
   end
 
   context 'when results are available' do
-    let(:i14y_search) { described_class.new(affiliate: affiliate, query: 'marketplase', per_page: 20) }
+    before { i14y_search.run }
 
-    it 'returns a response' do
-      i14y_search.run
-      expect(i14y_search.startrecord).to eq(1)
-      expect(i14y_search.endrecord).to eq(20)
-      expect(i14y_search.total).to eq(270)
-      expect(i14y_search.spelling_suggestion).to eq('marketplace')
-      expect(i14y_search.aggregations).to match(array_including(hash_including('content_type')))
-      expect(i14y_search.aggregations).to match(array_including(hash_including('changed')))
-      first = i14y_search.results.first
-      expect(first.title).to eq('Marketplace')
-      expect(first.link).to eq('https://www.healthcare.gov/glossary/marketplace')
-      expect(first.description).to eq('See Health Insurance Marketplace...More info on Health Insurance Marketplace')
-      expect(first.body).to eq('More info on Health Insurance Marketplace')
-    end
+    its(:startrecord) { is_expected.to eq(1) }
+    its(:endrecord) { is_expected.to eq(20) }
+    its(:total) { is_expected.to eq(270) }
+    its(:spelling_suggestion) { is_expected.to eq('marketplace') }
+    its(:aggregations) { is_expected.to match(array_including(hash_including('content_type'), hash_including('changed'))) }
+    its('results.first.title') { is_expected.to eq('Marketplace') }
+    its('results.first.link') { is_expected.to eq('https://www.healthcare.gov/glossary/marketplace') }
+    its('results.first.description') { is_expected.to eq('See Health Insurance Marketplace...More info on Health Insurance Marketplace') }
+    its('results.first.body') { is_expected.to eq('More info on Health Insurance Marketplace') }
   end
 
   context 'when sort_by=date' do
     let(:i14y_search) do
-      described_class.new(affiliate: affiliate,
-                          sort_by: 'date',
-                          per_page: 20,
-                          query: 'marketplase')
+      described_class.new(filterable_search_options.
+        merge(sort_by: 'date'))
     end
 
     before { allow(I14yCollections).to receive(:search) }
@@ -69,9 +64,26 @@ describe I14ySearch do
     end
   end
 
+  context 'when include_facets is true' do
+    let(:i14y_search) do
+      described_class.new(filterable_search_options.
+        merge(include_facets: 'true'))
+    end
+    let(:query) { 'testing tag filters' }
+
+    before { allow(I14yCollections).to receive(:search) }
+
+    it 'requests facet fields be included in the search' do
+      i14y_search.run
+      expect(I14yCollections).to have_received(:search).
+        with(hash_including(include: 'title,path,audience,changed,content_type,'\
+                                     'created,mime_type,searchgov_custom1,'\
+                                     'searchgov_custom2,searchgov_custom3,tags'))
+    end
+  end
+
   context 'when tag filters are present' do
-    let(:search_params) { { affiliate: affiliate, per_page: 20, query: 'testing tag filters' } }
-    let(:i14y_search) { described_class.new(search_params) }
+    let(:query) { 'testing tag filters' }
 
     before { allow(I14yCollections).to receive(:search) }
 
@@ -88,7 +100,10 @@ describe I14ySearch do
 
     context 'when only tag filter query params are present' do
       let(:affiliate) { affiliates(:searchgov_affiliate) }
-      let(:i14y_search) { described_class.new(search_params.merge(tags: 'tag from params')) }
+      let(:i14y_search) do
+        described_class.new(filterable_search_options.
+          merge(tags: 'tag from params'))
+      end
 
       it 'searches I14y with the appropriate filter params' do
         i14y_search.run
@@ -99,7 +114,10 @@ describe I14ySearch do
 
     context 'when both affiliate-set and query param tag filters are present' do
       let(:affiliate) { affiliates(:basic_affiliate) }
-      let(:i14y_search) { described_class.new(search_params.merge(tags: 'tag from params')) }
+      let(:i14y_search) do
+        described_class.new(filterable_search_options.
+          merge(tags: 'tag from params'))
+      end
 
       it 'searches I14y with all relevant tags params' do
         i14y_search.run
@@ -112,11 +130,9 @@ describe I14ySearch do
 
   context 'when sort_by=date and tbs is specified' do
     let(:i14y_search) do
-      described_class.new(affiliate: affiliate,
-                          sort_by: 'date',
-                          tbs: 'm',
-                          per_page: 20,
-                          query: 'marketplase')
+      described_class.new(filterable_search_options.
+        merge(sort_by: 'date',
+              tbs: 'm'))
     end
 
     before { allow(I14yCollections).to receive(:search) }
@@ -130,12 +146,10 @@ describe I14ySearch do
 
   context 'when sort_by=date and since_date and until_date are specified' do
     let(:i14y_search) do
-      described_class.new(affiliate: affiliate,
-                          sort_by: 'date',
-                          since_date: '07/28/2015',
-                          until_date: '09/28/2015',
-                          per_page: 20,
-                          query: 'marketplase')
+      described_class.new(filterable_search_options.
+        merge(sort_by: 'date',
+              since_date: '07/28/2015',
+              until_date: '09/28/2015'))
     end
 
     before { allow(I14yCollections).to receive(:search) }
@@ -150,30 +164,23 @@ describe I14ySearch do
   end
 
   context 'when enable_highlighting is false' do
-    let(:i14y_search) do
-      described_class.new(affiliate: affiliate,
-                          enable_highlighting: false,
-                          per_page: 20,
-                          query: 'marketplase')
-    end
+    let(:highlighting) { false }
 
-    it 'returns non highlighted results' do
-      i14y_search.run
-      first = i14y_search.results.first
-      expect(first.title).to eq('Marketplace')
-      expect(first.link).to eq('https://www.healthcare.gov/glossary/marketplace')
-      expect(first.description).to eq('See Health Insurance Marketplace...More info on Health Insurance Marketplace')
-      expect(first.body).to eq('More info on Health Insurance Marketplace')
-    end
+    before { i14y_search.run }
+
+    its('results.first.title') { is_expected.to eq('Marketplace') }
+    its('results.first.link') { is_expected.to eq('https://www.healthcare.gov/glossary/marketplace') }
+    its('results.first.description') { is_expected.to eq('See Health Insurance Marketplace...More info on Health Insurance Marketplace') }
+    its('results.first.body') { is_expected.to eq('More info on Health Insurance Marketplace') }
   end
 
   context 'when a site limit is specified' do
-    let!(:site_domains) { affiliate.site_domains.create!(domain: 'nih.gov') }
     let(:i14y_search) do
-      described_class.new(affiliate: affiliate,
-                          site_limits: 'http://nih.gov/foo',
-                          query: 'marketplase')
+      described_class.new(filterable_search_options.
+        merge(site_limits: 'http://nih.gov/foo'))
     end
+
+    before { affiliate.site_domains.create!(domain: 'nih.gov') }
 
     it 'passes the sitelimits to i14y with out http/https' do
       allow(I14yCollections).to receive(:search)
@@ -188,14 +195,12 @@ describe I14ySearch do
   end
 
   context 'when multiple site limits are specified' do
-    let!(:site_domains) { affiliate.site_domains.create!(domain: 'nih.gov') }
     let(:i14y_search) do
-      described_class.new(
-        affiliate: affiliate,
-        site_limits: 'http://nih.gov/foo https://nih.gov/bar',
-        query: 'marketplase'
-      )
+      described_class.new(filterable_search_options.
+        merge(site_limits: 'http://nih.gov/foo https://nih.gov/bar'))
     end
+
+    before { affiliate.site_domains.create!(domain: 'nih.gov') }
 
     it 'passes the sitelimits to i14y with out http/https' do
       allow(I14yCollections).to receive(:search)

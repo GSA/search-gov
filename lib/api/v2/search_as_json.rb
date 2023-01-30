@@ -1,8 +1,8 @@
 module Api::V2::SearchAsJson
   def as_json(_options = {})
     hash = { query: @query }
-    as_json_append_web hash
-    as_json_append_govbox_set hash
+    as_json_append_web(hash)
+    as_json_append_govbox_set(hash)
     hash
   end
 
@@ -12,6 +12,7 @@ module Api::V2::SearchAsJson
     web_hash = {}
     web_hash[:total] = @total if @total
     web_hash[:next_offset] = @next_offset
+    web_hash[:include_facets] = @include_facets unless @include_facets.nil?
     yield web_hash if block_given?
     web_hash[:results] = as_json_results_to_hash
     hash[:web] = web_hash

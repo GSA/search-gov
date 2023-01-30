@@ -80,14 +80,37 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
+    # Hitting the production I14y API during tests is unsafe, and we currently
+    # lack a straightforward way to set up a dev i14y sandbox. So for very basic
+    # tests, we're stubbing two sample responses - one containing facet fields
+    # (SRCH-3738) and one not.
+    # As we expand i14y searching options/functionality, a less opaque approach
+    # to stubbing/calling this test data should be implemented, but this gets us
+    # what we need for the time being with minimal changes.
+    # See also: features/step_definitions/search_steps.rb
     i14y_api_url = "#{I14y.host}#{I14yCollections::API_ENDPOINT}/search?"
-    i14y_web_result = Rails.root.join('spec/fixtures/json/i14y/web_search/marketplace.json').read
-    i14y_search_params = { handles: 'one,two', language: 'en', offset: 0, query: 'marketplase', size: 20 }
+    i14y_result = Rails.root.join('spec/fixtures/json/i14y/marketplace.json').read
+    i14y_facet_result = Rails.root.join('spec/fixtures/json/i14y/faq.json').read
+    i14y_search_params = { handles: 'one,two',
+                           language: 'en',
+                           offset: 0,
+                           query: 'marketplase',
+                           size: 20 }
+    # SRCH-3738: This mirrors the i14y request sent when 'include_facets = true'.
+    # See: app/models/i14y_search.rb
+    i14y_facet_search_params = { handles: 'one,two',
+                                 language: 'en',
+                                 offset: 0,
+                                 query: 'faq',
+                                 size: 20,
+                                 include: "title,path,#{I14ySearch::FACET_FIELDS.join(',')}" }
     # Avoid making unnecessary requests to test domains
     stub_request(:get, /(agency|foo|searchgov)\.gov/).
       to_return(body: 'a stubbed web page')
     stub_request(:get, "#{i14y_api_url}#{i14y_search_params.to_param}").
-      to_return( status: 200, body: i14y_web_result )
+      to_return(status: 200, body: i14y_result)
+    stub_request(:get, "#{i14y_api_url}#{i14y_facet_search_params.to_param}").
+      to_return(status: 200, body: i14y_facet_result)
     OmniAuth.config.mock_auth[:default] = OmniAuth::AuthHash.new({})
   end
 

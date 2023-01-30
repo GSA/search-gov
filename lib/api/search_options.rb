@@ -20,6 +20,7 @@ class Api::SearchOptions
                 :enable_highlighting,
                 :file_type,
                 :filter,
+                :include_facets,
                 :limit,
                 :offset,
                 :query_not,
@@ -60,6 +61,7 @@ class Api::SearchOptions
     self.enable_highlighting = is_highlighting_enabled?(
       params[:enable_highlighting])
 
+    self.include_facets = params[:include_facets]
     limit = params[:limit]
     self.limit = limit.present? ? limit.to_i : default_limit
 
@@ -80,6 +82,7 @@ class Api::SearchOptions
       enable_highlighting: enable_highlighting,
       file_type: file_type,
       filter: filter,
+      include_facets: include_facets,
       limit: limit,
       next_offset_within_limit: next_offset_within_limit?,
       offset: offset,
