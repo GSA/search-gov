@@ -42,7 +42,6 @@ describe HelpDocsController do
       it { is_expected.to redirect_to('https://www.usa.gov/search-error') }
     end
 
-
     context 'when user is not logged in' do
       let(:url) { 'https://search.gov/manual/site-information.html' }
 

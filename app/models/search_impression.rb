@@ -13,7 +13,7 @@ class SearchImpression
 
     request_pairs[:diagnostics] = flatten_diagnostics_hash(search.diagnostics)
     relevant_params = params.reject { |k, v| IRRELEVANT_KEYS.include?(k.to_s) || k.to_s.include?('.') }
-    hash = request_pairs.merge(time: Time.now.to_formatted_s(:db),
+    hash = request_pairs.merge(time: Time.now.to_fs(:db),
                                vertical: vertical,
                                modules: search.modules.join('|'),
                                params: relevant_params)

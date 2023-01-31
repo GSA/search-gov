@@ -10,6 +10,7 @@ describe 'RSS feed urls rake tasks' do
 
   describe 'usasearch:rss_feed_urls:enqueue_destroy_all_inactive' do
     let(:task_name) { 'usasearch:rss_feed_urls:enqueue_destroy_all_inactive' }
+
     before { @rake[task_name].reenable }
 
     it "should have 'environment' as a prereq" do
@@ -24,6 +25,7 @@ describe 'RSS feed urls rake tasks' do
 
   describe 'usasearch:rss_feed_urls:enqueue_destroy_all_news_items_with_404' do
     let(:task_name) { 'usasearch:rss_feed_urls:enqueue_destroy_all_news_items_with_404' }
+
     before { @rake[task_name].reenable }
 
     it "should have 'environment' as a prereq" do

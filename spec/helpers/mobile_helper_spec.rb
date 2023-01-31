@@ -87,6 +87,7 @@ describe MobileHelper do
 
     context 'when locale is written right-to-left' do
       let(:language) { languages(:ar) }
+
       it 'should set the HTML direction to rtl' do
         expect(helper.html_class_hash(language)[:dir]).to eq('rtl')
       end

@@ -33,6 +33,7 @@ describe RtuQueriesRequest do
 
       context 'when stats available' do
         let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/rtu_queries_request.json")) }
+
         before do
           opts = { index: 'logstash-*',
                    body: 'query_body',
@@ -89,6 +90,7 @@ describe RtuQueriesRequest do
                                                           'end_date' => '05/28/2014',
                                                           'query' => 'mexico petition marine',
                                                           'site' => site) }
+
         before do
           rtu_queries_request.save
         end
@@ -103,6 +105,7 @@ describe RtuQueriesRequest do
         let(:rtu_queries_request) { described_class.new('start_date' => '05/27/2014',
                                                           'query' => 'mexico petition marine',
                                                           'site' => site) }
+
         before do
           rtu_queries_request.save
         end

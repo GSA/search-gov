@@ -119,11 +119,13 @@ describe FeaturedCollection do
   describe '#display_status' do
     context 'when status is set to active' do
       subject { described_class.new(status: 'active') }
+
       its(:display_status) { should == 'Active' }
     end
 
     context 'when status is set to inactive' do
       subject { described_class.new(status: 'inactive') }
+
       its(:display_status) { should == 'Inactive' }
     end
   end

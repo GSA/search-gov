@@ -43,7 +43,7 @@ describe Sites::DocumentCollectionsController do
 
           email = double(Mail::Message)
           expect(Emailer).to receive(:deep_collection_notification).with(
-              current_user, document_collection).
+            current_user, document_collection).
               and_return(email)
           expect(email).to receive(:deliver_now)
 

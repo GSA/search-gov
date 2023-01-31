@@ -37,15 +37,18 @@ describe SiteCloner do
       end
 
       context 'existing site name is ridiculously long' do
+        subject(:cloner) { described_class.new(affiliates(:basic_affiliate)) }
+
         before do
           affiliates(:basic_affiliate).update_attribute(:name, 'washingtonstateofficeofattorneyge')
         end
-        subject(:cloner) { described_class.new(affiliates(:basic_affiliate)) }
 
         its(:target_handle) { should eq('washingtonstateofficeofattorneyg1') }
       end
 
       context 'prior copy exists' do
+        subject(:cloner) { described_class.new(affiliates(:basic_affiliate)) }
+
         before do
           Affiliate.create!(
             display_name: 'My Awesome Site',
@@ -54,8 +57,6 @@ describe SiteCloner do
             locale: 'es'
           )
         end
-
-        subject(:cloner) { described_class.new(affiliates(:basic_affiliate)) }
 
         its(:target_handle) { should eq("#{affiliates(:basic_affiliate).name}2") }
       end
@@ -69,6 +70,12 @@ describe SiteCloner do
   end
 
   describe '#clone' do
+    subject(:cloned_site) do
+      site_cloner = described_class.new(origin_site)
+      cloned_instance = site_cloner.clone
+      Affiliate.find cloned_instance.id
+    end
+
     let(:origin_site) do
       affiliate = affiliates(:basic_affiliate)
       affiliate.agency = agencies(:irs)
@@ -85,12 +92,6 @@ describe SiteCloner do
     end
 
     let(:nav_attr_keys) { %w(is_active position).freeze }
-
-    subject(:cloned_site) do
-      site_cloner = described_class.new(origin_site)
-      cloned_instance = site_cloner.clone
-      Affiliate.find cloned_instance.id
-    end
 
     %i(agency
        css_property_hash
@@ -298,6 +299,7 @@ describe SiteCloner do
 
       context 'when something goes wrong' do
         let(:cloner) { described_class.new(origin_site) }
+
         before do
           allow(cloner).to receive(:clone_association_with_children) { true }
           allow(cloner).to receive(:clone_association_with_children).
@@ -366,6 +368,7 @@ describe SiteCloner do
 
     context 'the origin site has attached images' do
       let(:mock_image) { double('image', file?: true) }
+
       before do
         allow(origin_site).to receive(:mobile_logo).and_return mock_image
         allow(origin_site).to receive(:header_tagline_logo).and_return mock_image

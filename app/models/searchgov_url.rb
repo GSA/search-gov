@@ -168,7 +168,7 @@ class SearchgovUrl < ApplicationRecord
       domain: URI.parse(url).host,
       orig_size: response.headers['Content-Length'],
       parsed_size: document.parsed_content&.bytesize,
-      time: Time.now.utc.to_formatted_s(:db),
+      time: Time.now.utc.to_fs(:db),
     }.to_json
   end
 

@@ -5,6 +5,7 @@ describe Alert do
   context 'Validation' do
     context 'When title and text are blank' do
       subject(:alert) { described_class.new(title: '', text: '', status: 'Active') }
+
       it { is_expected.to be_valid }
     end
   end

@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe DocumentFetchLogger do
   subject { described_class.new(url, type, attributes) }
+
   let(:url) { 'http://www.example.com/foo.html' }
   let(:type) { 'rss_feed' }
   let(:attributes) { { } }

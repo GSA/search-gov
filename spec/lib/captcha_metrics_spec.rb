@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe CaptchaMetrics do
   subject { described_class.new(request) }
+
   let(:statsd) { double(Datadog::Statsd, increment: nil) }
   let(:headers) { { 'HTTP_X_BON_REASON' => reason_header } }
   let(:request) { double(:request, headers: headers) }
@@ -22,6 +23,7 @@ describe CaptchaMetrics do
 
   describe '#increment_counter_for' do
     subject(:increment_counter) { described_class.new(request).increment_counter_for(activity) }
+
     let(:activity) { :activity }
 
     it "increments the provided activity's counter" do

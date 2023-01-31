@@ -8,6 +8,7 @@ shared_examples 'a web search engine' do
 
   describe '#execute_query' do
     subject(:search) { described_class.new(query: 'taxes') }
+
     context 'when something goes wrong' do
       before { allow(search.api_connection).to receive(:get).and_raise 'uh oh' }
 

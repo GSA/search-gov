@@ -18,6 +18,7 @@ end
 
 describe SearchEngine do
   subject { DummySearchEngine.new(options) }
+
   let(:options) { {} }
   let(:api_connection) { double(:api_connection, get: cached_response) }
   let(:cached_response) { CachedSearchApiConnectionResponse.new(:response, cache_name) }

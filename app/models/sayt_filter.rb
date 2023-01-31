@@ -6,7 +6,6 @@ class SaytFilter < ApplicationRecord
   scope :accept, -> { where(accept: true) }
   scope :deny, -> { where(accept: false) }
 
-
   def self.filter(inputs, key = nil)
     return if inputs.nil?
     accept_filters, deny_filters = accept, deny

@@ -10,6 +10,7 @@ describe 'Localization rake tasks' do
 
   describe 'usasearch:l10n:update_navigable_names' do
     let(:task_name) { 'usasearch:l10n:update_navigable_names' }
+
     before { @rake[task_name].reenable }
 
     it "should have 'environment' as a prereq" do

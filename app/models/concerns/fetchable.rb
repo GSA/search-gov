@@ -92,7 +92,7 @@ module Fetchable
     if self_url
       scheme = self_url.scheme.downcase
       host = self_url.host.downcase
-      request = self_url.request_uri.gsub(%r{\/+}, '/')
+      request = self_url.request_uri.gsub(%r{/+}, '/')
       self.url = "#{scheme}://#{host}#{request}"
       @self_url = nil
     end

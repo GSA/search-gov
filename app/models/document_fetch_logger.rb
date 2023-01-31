@@ -29,6 +29,6 @@ class DocumentFetchLogger
   end
 
   def time
-    Time.now.utc.to_formatted_s(:db)
+    Time.now.utc.to_fs(:db)
   end
 end

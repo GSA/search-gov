@@ -61,7 +61,6 @@ class BlendedSearch < FilterableSearch
                                 @highlight_options) if first_page?
   end
 
-
   def log_serp_impressions
     @modules << "LOVER" << "SPEL" unless self.spelling_suggestion.nil?
     @modules |= (@govbox_set.modules - %w(NEWS)) if @govbox_set

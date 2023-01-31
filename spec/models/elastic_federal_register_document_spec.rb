@@ -18,7 +18,7 @@ describe ElasticFederalRegisterDocument do
 
         expect(search.total).to eq 5
         expect(search.results.first).to be_instance_of(FederalRegisterDocument)
-        expect(search.results.map { |r| r['document_number'] }).not_to include '2022-12345'
+        expect(search.results.pluck('document_number')).not_to include '2022-12345'
       end
 
       it 'sorts results by comments_close_on in the descending order' do
