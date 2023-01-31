@@ -8,6 +8,7 @@ import '@trussworks/react-uswds/lib/index.css';
 interface ResultsPageProps {
   results: any;
   params: any;
+  vertical: any;
 };
 
 interface Nothing {};
@@ -121,6 +122,9 @@ class ResultsPage extends React.Component<ResultsPageProps, Nothing> {
                   <Grid row>
                     <Grid tablet={{ col: true }}><a href= "#">{result['unescapedUrl']}</a></Grid>
                   </Grid>
+                  {this.props.vertical === 'image' && <Grid row>
+                    <Grid tablet={{ col: true }}><img src={result['thumbnail']['url']} /></Grid>
+                  </Grid>}
                   <Grid row>
                     <Grid tablet={{ col: true }}><p>{result['content']}</p></Grid>
                   </Grid>

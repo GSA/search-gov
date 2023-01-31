@@ -22,6 +22,8 @@ module NavigationHelpers
       search_path(:affiliate => $1, :sitelimit => $2)
     when /^(.*)'s image search page$/
       image_search_path(:affiliate => $1)
+    when /^(.*)'s redesigned image search page with "([^\"]*)" query$/
+      image_search_path(:affiliate => $1, :query => $2, :redesign => 'true')
     when /^(.*)'s news search page$/
       news_search_path(:affiliate => $1)
     when /^(.*)'s "([^\"]*)" news search page$/

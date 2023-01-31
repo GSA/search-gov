@@ -1,0 +1,721 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/images/search?count=20&mkt=en-US&offset=0&q=white%20house%20(site:whitehouse.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=<DATADOG_API_ENABLED>&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_IMAGE_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Pragma:
+      - no-cache
+      Content-Length:
+      - '110537'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      Bingapis-Traceid:
+      - 63d18d0cdbce45a2a173d49b9f6d85a0
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Clientid:
+      - 0CF6C397CE3160EB1D7CD133CF7E61A3
+      X-Msapi-Userstate:
+      - 612a
+      X-Search-Responseinfo:
+      - InternalResponseTime=291,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      X-Msedge-Ref:
+      - 'Ref A: 350564ECAF894747B40EB725EFECD035 Ref B: BLUEDGE2020 Ref C: 2023-01-25T20:11:56Z'
+      Apim-Request-Id:
+      - 97c2617a-b860-4640-89c7-2001fa1285b2
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Ms-Region:
+      - East US
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 25 Jan 2023 20:11:56 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "Images", "instrumentation": {"_type": "ResponseInstrumentation"},
+        "readLink": "images\/search?q=white house (site:whitehouse.gov)", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=white house (site:whitehouse.gov)&FORM=OIIARP",
+        "queryContext": {"originalQuery": "white house (site:whitehouse.gov)", "alterationDisplayQuery":
+        "white house", "alterationOverrideQuery": "+white house (site:whitehouse.gov)",
+        "alterationMethod": "AM_JustChangeIt", "alterationType": "CombinedAlterationsChained"},
+        "totalEstimatedMatches": 101, "nextOffset": 25, "currentOffset": 0, "value":
+        [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=6D2D34DDA3F04CE3C814F36484A31A003E69FFFE&simid=608038868571290943",
+        "name": "About The White House | The White House", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.L_qNI_TMHGC5mR-6Ta3gbwHaDt&pid=Api",
+        "datePublished": "2010-11-01T11:51:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2021\/01\/about_the_white_house.jpg",
+        "hostPageUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/", "contentSize":
+        "720103 B", "encodingFormat": "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house",
+        "width": 2500, "height": 1250, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.bhiQj_1JJFJe5eKkzrMoAw&pid=Api",
+        "hostPageDomainFriendlyName": "The White House", "hostPageDiscoveredDate":
+        "2010-11-01T11:51:08.0000000Z", "thumbnail": {"width": 474, "height": 237},
+        "imageInsightsToken": "ccid_L\/qNI\/TM*cp_1B0293D413C99A8CCFBD7B9E2BEA5812*mid_6D2D34DDA3F04CE3C814F36484A31A003E69FFFE*simid_608038868571290943*thid_OIP.L!_qNI!_TMHGC5mR-6Ta3gbwHaDt",
+        "insightsMetadata": {"pagesIncludingCount": 156, "availableSizesCount": 61},
+        "imageId": "6D2D34DDA3F04CE3C814F36484A31A003E69FFFE", "accentColor": "1D56AE"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=6D2D34DDA3F04CE3C814C99EA216F72FAF79B91C&simid=607996168005882994",
+        "name": "About The White House | The White House", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.0k-f4umsqMfzfg56pRvu7AHaDt&pid=Api",
+        "datePublished": "2021-07-26T20:15:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2021\/01\/white_house_grounds.jpg",
+        "hostPageUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/", "contentSize":
+        "954429 B", "encodingFormat": "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house",
+        "width": 2500, "height": 1250, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.bhiQj_1JJFJe5eKkzrMoAw&pid=Api",
+        "hostPageDomainFriendlyName": "The White House", "hostPageDiscoveredDate":
+        "2021-07-26T20:15:00.0000000Z", "thumbnail": {"width": 474, "height": 237},
+        "imageInsightsToken": "ccid_0k+f4ums*cp_BF94C85EBD0EE7C307FC18C38905FBC6*mid_6D2D34DDA3F04CE3C814C99EA216F72FAF79B91C*simid_607996168005882994*thid_OIP.0k-f4umsqMfzfg56pRvu7AHaDt",
+        "insightsMetadata": {"pagesIncludingCount": 806, "availableSizesCount": 150},
+        "imageId": "6D2D34DDA3F04CE3C814C99EA216F72FAF79B91C", "accentColor": "728511"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=108C91A1D28AB79E79D0BB00922ABF3304A9DB21&simid=608043915160133122",
+        "name": "Get Involved | The White House", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.eVahoyE0wokpA4D6iO5AugHaFm&pid=Api",
+        "datePublished": "2011-01-26T05:48:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2021\/01\/white-house-sunrise.jpg?w=1400&h=1060&crop=1",
+        "hostPageUrl": "https:\/\/www.whitehouse.gov\/get-involved\/", "contentSize":
+        "238126 B", "encodingFormat": "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/get-involved",
+        "width": 1400, "height": 1060, "hostPageDiscoveredDate": "2011-01-26T05:48:27.0000000Z",
+        "thumbnail": {"width": 474, "height": 358}, "imageInsightsToken": "ccid_eVahoyE0*cp_834B872D753E134DF8F2F086B1F06541*mid_108C91A1D28AB79E79D0BB00922ABF3304A9DB21*simid_608043915160133122*thid_OIP.eVahoyE0wokpA4D6iO5AugHaFm",
+        "insightsMetadata": {"pagesIncludingCount": 1, "availableSizesCount": 1},
+        "imageId": "108C91A1D28AB79E79D0BB00922ABF3304A9DB21", "accentColor": "B88113"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=7CA5052061E67611344179A2ECE2DF9E8FDCF090&simid=608006480231862595",
+        "name": "Visit The White House | The White House", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.jQWzgDEXAbhpaa2HtuNI5gHaE8&pid=Api",
+        "datePublished": "2022-03-27T01:53:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2022\/05\/WHAJAC.jpg?w=1920",
+        "hostPageUrl": "https:\/\/www.whitehouse.gov\/visit\/", "contentSize": "1145239
+        B", "encodingFormat": "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/visit",
+        "width": 1920, "height": 1280, "hostPageDiscoveredDate": "2022-03-27T01:53:02.0000000Z",
+        "thumbnail": {"width": 474, "height": 316}, "imageInsightsToken": "ccid_jQWzgDEX*cp_CD2A5935228F9AD1CBFFC9632E7814B5*mid_7CA5052061E67611344179A2ECE2DF9E8FDCF090*simid_608006480231862595*thid_OIP.jQWzgDEXAbhpaa2HtuNI5gHaE8",
+        "insightsMetadata": {"pagesIncludingCount": 1, "availableSizesCount": 1},
+        "imageId": "7CA5052061E67611344179A2ECE2DF9E8FDCF090", "accentColor": "B3181C"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=6D2D34DDA3F04CE3C8145476CA3F388A106FEEE7&simid=607996971174285419",
+        "name": "About The White House | The White House", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.WhfOmdPpgbJcXte6lmeZxwHaFm&pid=Api",
+        "datePublished": "2010-11-01T11:51:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2021\/01\/us-capitol.jpg?w=700&h=530&crop=1",
+        "hostPageUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/", "contentSize":
+        "100058 B", "encodingFormat": "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house",
+        "width": 700, "height": 530, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.bhiQj_1JJFJe5eKkzrMoAw&pid=Api",
+        "hostPageDomainFriendlyName": "The White House", "hostPageDiscoveredDate":
+        "2010-11-01T11:51:08.0000000Z", "thumbnail": {"width": 474, "height": 358},
+        "imageInsightsToken": "ccid_WhfOmdPp*cp_69A0E86C86180D59133561D68794C0C0*mid_6D2D34DDA3F04CE3C8145476CA3F388A106FEEE7*simid_607996971174285419*thid_OIP.WhfOmdPpgbJcXte6lmeZxwHaFm",
+        "insightsMetadata": {"pagesIncludingCount": 2, "availableSizesCount": 2},
+        "imageId": "6D2D34DDA3F04CE3C8145476CA3F388A106FEEE7", "accentColor": "104DA4"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=E613CAC9A67D21E2A26D07110149F2482DC5BCC0&simid=608041737612710955",
+        "name": "The Legislative Branch | The White House", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.asLKBnTJVAwm-2GariUCbQHaE8&pid=Api",
+        "datePublished": "2020-07-09T03:42:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2018\/09\/legislative-1024x683.jpg",
+        "hostPageUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/the-legislative-branch\/",
+        "contentSize": "123793 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/www.whitehouse.gov\/about-the-white-house\/the-legislative-branch",
+        "width": 1024, "height": 683, "hostPageDiscoveredDate": "2017-12-26T00:00:00.0000000Z",
+        "thumbnail": {"width": 474, "height": 316}, "imageInsightsToken": "ccid_asLKBnTJ*cp_DB2BB3F6B3C1E4B9EE6E6E487A136A0B*mid_E613CAC9A67D21E2A26D07110149F2482DC5BCC0*simid_608041737612710955*thid_OIP.asLKBnTJVAwm-2GariUCbQHaE8",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 45, "availableSizesCount":
+        30}, "imageId": "E613CAC9A67D21E2A26D07110149F2482DC5BCC0", "accentColor":
+        "3A5491"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=F24ADA95236CAC376A0551800838EE81310B2C97&simid=607996709177423277",
+        "name": "The Judicial Branch | The White House", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.T2HqG89ECxV8xyGhoT0kFQHaCx&pid=Api",
+        "datePublished": "2019-09-16T17:22:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2018\/09\/judicial-1920x720.jpg",
+        "hostPageUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/the-judicial-branch\/",
+        "contentSize": "255651 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/www.whitehouse.gov\/about-the-white-house\/the-judicial-branch",
+        "width": 1920, "height": 720, "hostPageDiscoveredDate": "2017-12-26T00:00:00.0000000Z",
+        "thumbnail": {"width": 474, "height": 177}, "imageInsightsToken": "ccid_T2HqG89E*cp_9C9C001150EEC0EAFB63CA682C5172C2*mid_F24ADA95236CAC376A0551800838EE81310B2C97*simid_607996709177423277*thid_OIP.T2HqG89ECxV8xyGhoT0kFQHaCx",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 7, "availableSizesCount":
+        6}, "imageId": "F24ADA95236CAC376A0551800838EE81310B2C97", "accentColor":
+        "2B60A0"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=32A8D7ADE2F780EC0FCD6053FE6A7EFBF8E5A65C&simid=608007133059367503",
+        "name": "Write or Call the White House | The White House", "thumbnailUrl":
+        "https:\/\/tse4.mm.bing.net\/th?id=OIP.a8WTSHsV0p7XtLFpgcfsfgAAAA&pid=Api",
+        "datePublished": "2021-01-31T21:49:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2021\/01\/wh_social-share.png",
+        "hostPageUrl": "https:\/\/www.whitehouse.gov\/get-involved\/write-or-call\/",
+        "contentSize": "547837 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/www.whitehouse.gov\/get-involved\/write-or-call", "width": 474,
+        "height": 248, "hostPageDiscoveredDate": "2017-12-26T00:00:00.0000000Z", "thumbnail":
+        {"width": 474, "height": 248}, "imageInsightsToken": "ccid_a8WTSHsV*cp_4634BD27E442E3D3B0BADEBCEA0B7D2E*mid_32A8D7ADE2F780EC0FCD6053FE6A7EFBF8E5A65C*simid_608007133059367503*thid_OIP.a8WTSHsV0p7XtLFpgcfsfgAAAA",
+        "insightsMetadata": {"pagesIncludingCount": 2000, "availableSizesCount": 72},
+        "imageId": "32A8D7ADE2F780EC0FCD6053FE6A7EFBF8E5A65C", "accentColor": "083680"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=F2386ACE0D956BFB25F2076C7C900C3E44D98351&simid=608010496029498405",
+        "name": "Christmas at the White House", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.Ol6Wsyp-6PKCj8-J1inV5AHaE7&pid=Api",
+        "datePublished": "2019-11-25T12:00:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2017\/12\/f20171124ah-0749_original-820x546.jpg",
+        "hostPageUrl": "https:\/\/www.whitehouse.gov\/christmas\/", "contentSize":
+        "144770 B", "encodingFormat": "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/christmas",
+        "width": 820, "height": 546, "hostPageDiscoveredDate": "2017-03-17T00:00:00.0000000Z",
+        "thumbnail": {"width": 474, "height": 315}, "imageInsightsToken": "ccid_Ol6Wsyp+*cp_3365519F4138E6945D5B738487CD07FC*mid_F2386ACE0D956BFB25F2076C7C900C3E44D98351*simid_608010496029498405*thid_OIP.Ol6Wsyp-6PKCj8-J1inV5AHaE7",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 16, "availableSizesCount":
+        5}, "imageId": "F2386ACE0D956BFB25F2076C7C900C3E44D98351", "accentColor":
+        "A16A2A"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=B1970B8EC525467AFCF94D16A275449793812A74&simid=608037511367583880",
+        "name": "The White House Easter Egg Roll", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.kRhcxef8k3DP99QCww8-fQHaE7&pid=Api",
+        "datePublished": "2020-03-16T16:32:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2018\/04\/EASTER01.jpg",
+        "hostPageUrl": "https:\/\/www.whitehouse.gov\/eastereggroll\/", "contentSize":
+        "120477 B", "encodingFormat": "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/eastereggroll",
+        "width": 680, "height": 453, "hostPageDiscoveredDate": "2013-08-26T00:00:00.0000000Z",
+        "thumbnail": {"width": 474, "height": 315}, "imageInsightsToken": "ccid_kRhcxef8*cp_5CEE36B8EA73BFB69CC969D2725F898C*mid_B1970B8EC525467AFCF94D16A275449793812A74*simid_608037511367583880*thid_OIP.kRhcxef8k3DP99QCww8-fQHaE7",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 8, "availableSizesCount":
+        3}, "imageId": "B1970B8EC525467AFCF94D16A275449793812A74", "accentColor":
+        "A8232B"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=F2386ACE0D956BFB25F2C5D54E8653C88C570964&simid=607999097174837223",
+        "name": "Christmas at the White House", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.pOSjOoRrF2-wdlTDTNAiQwHaF7&pid=Api",
+        "datePublished": "2019-11-25T12:00:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2017\/12\/Merry-Christmas-from-President-Donald-J.-Trump-and-First-Lady-Melania-Trump-820x656.jpg",
+        "hostPageUrl": "https:\/\/www.whitehouse.gov\/christmas\/", "contentSize":
+        "134021 B", "encodingFormat": "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/christmas",
+        "width": 820, "height": 656, "hostPageDiscoveredDate": "2017-03-17T00:00:00.0000000Z",
+        "thumbnail": {"width": 474, "height": 379}, "imageInsightsToken": "ccid_pOSjOoRr*cp_5CBFFCC1DE749124273961A9781CC1FE*mid_F2386ACE0D956BFB25F2C5D54E8653C88C570964*simid_607999097174837223*thid_OIP.pOSjOoRrF2-wdlTDTNAiQwHaF7",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 44, "availableSizesCount":
+        32}, "imageId": "F2386ACE0D956BFB25F2C5D54E8653C88C570964", "accentColor":
+        "BA112A"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=F2386ACE0D956BFB25F28889B569F65F1E27B7D0&simid=608025528405919287",
+        "name": "Christmas at the White House", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.pKl1JYHbl7yX4yAKBWdVewHaE8&pid=Api",
+        "datePublished": "2019-11-25T12:00:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2017\/12\/f20171126ah-1489_original-820x547.jpg",
+        "hostPageUrl": "https:\/\/www.whitehouse.gov\/christmas\/", "contentSize":
+        "190448 B", "encodingFormat": "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/christmas",
+        "width": 820, "height": 547, "hostPageDiscoveredDate": "2017-03-17T00:00:00.0000000Z",
+        "thumbnail": {"width": 474, "height": 316}, "imageInsightsToken": "ccid_pKl1JYHb*cp_F13FE2E8C4C8DC00D247486140B9E4D5*mid_F2386ACE0D956BFB25F28889B569F65F1E27B7D0*simid_608025528405919287*thid_OIP.pKl1JYHbl7yX4yAKBWdVewHaE8",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 23, "availableSizesCount":
+        22}, "imageId": "F2386ACE0D956BFB25F28889B569F65F1E27B7D0", "accentColor":
+        "A56826"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=6CB36AE3396A7D7883D545132F3D108530C40D8F&simid=608037502778944551",
+        "name": "White House Internship Program | The White House", "thumbnailUrl":
+        "https:\/\/tse1.mm.bing.net\/th?id=OIP.5k5ZJx25tgmOaR9fvNZP6QHaE8&pid=Api",
+        "datePublished": "2022-08-26T20:50:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2022\/05\/WH-4july.jpg",
+        "hostPageUrl": "https:\/\/www.whitehouse.gov\/get-involved\/internships\/white-house-internship-program\/",
+        "contentSize": "1384998 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/www.whitehouse.gov\/get-involved\/internships\/white-house-internship-program",
+        "width": 3000, "height": 2000, "hostPageDiscoveredDate": "2022-08-26T20:50:24.0000000Z",
+        "thumbnail": {"width": 474, "height": 316}, "imageInsightsToken": "ccid_5k5ZJx25*cp_39EE0ED5CEB454274625632A8B480822*mid_6CB36AE3396A7D7883D545132F3D108530C40D8F*simid_608037502778944551*thid_OIP.5k5ZJx25tgmOaR9fvNZP6QHaE8",
+        "insightsMetadata": {"pagesIncludingCount": 1, "availableSizesCount": 1},
+        "imageId": "6CB36AE3396A7D7883D545132F3D108530C40D8F", "accentColor": "2224A9"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=7625032F58C04941CD85C1E0218EC7340435820F&simid=608023002961765433",
+        "name": "The Year in Review: The White House''s 13 Favorite GIFs of 2013 ...",
+        "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.ORHPSgk_Pz6_jLBFl0iZCQHaEK&pid=Api",
+        "datePublished": "2013-12-27T12:00:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/31.media.tumblr.com\/4c1aedbd5f1e87d1415bb8912907a122\/tumblr_inline_myfaa2NXaC1rilum7.gif",
+        "hostPageUrl": "http:\/\/www.whitehouse.gov\/blog\/2013\/12\/27\/year-review-white-houses-13-favorite-gifs-2013?utm_source=snapshot&utm_medium=email&utm_content=123013-blog",
+        "contentSize": "1014895 B", "encodingFormat": "animatedgif", "hostPageDisplayUrl":
+        "www.whitehouse.gov\/blog\/2013\/12\/27\/year-review-white-houses-13-favorite-gifs-2013?utm...",
+        "width": 445, "height": 250, "proxyContentUrl": "https:\/\/tse4.mm.bing.net\/th?id=OGC.3911cf4a093f3f3ebf8cb04597489909&pid=Api&rurl=https%3a%2f%2f31.media.tumblr.com%2f4c1aedbd5f1e87d1415bb8912907a122%2ftumblr_inline_myfaa2NXaC1rilum7.gif&ehk=btmjN0HUbiVPrUxP%2fjz7JZ3vxeUxQyCAFf8eYAyp0Iw%3d",
+        "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.bhiQj_1JJFJe5eKkzrMoAw&pid=Api",
+        "hostPageDomainFriendlyName": "The White House", "hostPageDiscoveredDate":
+        "2013-12-27T12:00:00.0000000Z", "thumbnail": {"width": 445, "height": 250},
+        "imageInsightsToken": "ccid_ORHPSgk\/*cp_3C1B4AC5A084B7718AE13F187FBB767A*mid_7625032F58C04941CD85C1E0218EC7340435820F*simid_608023002961765433*thid_OIP.ORHPSgk!_Pz6!_jLBFl0iZCQHaEK",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 8, "availableSizesCount":
+        1}, "imageId": "7625032F58C04941CD85C1E0218EC7340435820F", "accentColor":
+        "51592F"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=1668E9AAB1A7DF64924F188D0C20E9283A5ACAFC&simid=608045358276705650",
+        "name": "At Christmas Tree Lighting, President Trump Revives the Tradition’s
+        ...", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.NkF_gSmqeivzHiMPmqAyHQHaE8&pid=Api",
+        "datePublished": "2017-12-01T12:00:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2017\/12\/Christmas-Tree.jpg",
+        "hostPageUrl": "https:\/\/www.whitehouse.gov\/articles\/christmas-tree-lighting-president-trump-revives-traditions-religious-spirit\/",
+        "contentSize": "210575 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/www.whitehouse.gov\/articles\/christmas-tree-lighting-president-trump-revives...",
+        "width": 1024, "height": 683, "hostPageDiscoveredDate": "2017-12-01T12:00:00.0000000Z",
+        "thumbnail": {"width": 474, "height": 316}, "imageInsightsToken": "ccid_NkF\/gSmq*cp_876013FD6F7D036B9A55EA69CA0C9BAF*mid_1668E9AAB1A7DF64924F188D0C20E9283A5ACAFC*simid_608045358276705650*thid_OIP.NkF!_gSmqeivzHiMPmqAyHQHaE8",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 30, "availableSizesCount":
+        14}, "imageId": "1668E9AAB1A7DF64924F188D0C20E9283A5ACAFC", "accentColor":
+        "9A7C31"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=BF70FEAA560ED91BC1A35CBFF6D48CC1270B1476&simid=608044417674973084",
+        "name": "#Bam4Ham: Hamilton at the White House | whitehouse.gov", "thumbnailUrl":
+        "https:\/\/tse2.mm.bing.net\/th?id=OIP.3oHjWWmDQUQ7kFeC5qY9VgHaE8&pid=Api",
+        "datePublished": "2016-03-14T12:00:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/obamawhitehouse.archives.gov\/sites\/obamawhitehouse.archives.gov\/files\/POTUS_Hamilton_0.jpg",
+        "hostPageUrl": "https:\/\/www.whitehouse.gov\/blog\/2016\/03\/14\/bam4ham-hamilton-white-house",
+        "contentSize": "931018 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/www.whitehouse.gov\/blog\/2016\/03\/14\/bam4ham-hamilton-white-house",
+        "width": 2800, "height": 1867, "hostPageDiscoveredDate": "2016-03-14T12:00:00.0000000Z",
+        "thumbnail": {"width": 474, "height": 316}, "imageInsightsToken": "ccid_3oHjWWmD*cp_D45233641C11DE8D825C22865057D114*mid_BF70FEAA560ED91BC1A35CBFF6D48CC1270B1476*simid_608044417674973084*thid_OIP.3oHjWWmDQUQ7kFeC5qY9VgHaE8",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 5, "availableSizesCount":
+        4}, "imageId": "BF70FEAA560ED91BC1A35CBFF6D48CC1270B1476", "accentColor":
+        "958536"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=A7D46F4C40F65E0BC2062C8F96AB0B756DB57186&simid=608044159969284619",
+        "name": "A Nation of Makers | The White House", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.2qz90-o0iivOVY2W-hlbKwHaEQ&pid=Api",
+        "datePublished": "2001-01-01T00:00:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/obamawhitehouse.archives.gov\/sites\/default\/files\/longpage\/nation_of_makers_newheader.jpg",
+        "hostPageUrl": "http:\/\/www.whitehouse.gov\/nation-of-makers", "contentSize":
+        "161052 B", "encodingFormat": "jpeg", "hostPageDisplayUrl": "www.whitehouse.gov\/nation-of-makers",
+        "width": 976, "height": 562, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.bhiQj_1JJFJe5eKkzrMoAw&pid=Api",
+        "hostPageDomainFriendlyName": "The White House", "hostPageDiscoveredDate":
+        "2001-01-01T00:00:00.0000000Z", "thumbnail": {"width": 474, "height": 272},
+        "imageInsightsToken": "ccid_2qz90+o0*cp_114FDF306567D65F7595259D0BD7776B*mid_A7D46F4C40F65E0BC2062C8F96AB0B756DB57186*simid_608044159969284619*thid_OIP.2qz90-o0iivOVY2W-hlbKwHaEQ",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 7, "availableSizesCount":
+        4}, "imageId": "A7D46F4C40F65E0BC2062C8F96AB0B756DB57186", "accentColor":
+        "4B5E2C"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=136DAFCD3317700AC691913621C0B04F600AADDE&simid=608010577633828974",
+        "name": "Follow Along: Welcoming Singapore to the White House | whitehouse.gov",
+        "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.hoVDdmRGu88kLphAKRrNyQHaE4&pid=Api",
+        "datePublished": "2016-08-02T12:00:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/obamawhitehouse.archives.gov\/sites\/obamawhitehouse.archives.gov\/files\/pmlee_1.jpg",
+        "hostPageUrl": "https:\/\/www.whitehouse.gov\/blog\/2016\/08\/02\/after-30-years-president-obama-welcomes-singapore-white-house",
+        "contentSize": "3151842 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/www.whitehouse.gov\/blog\/2016\/08\/02\/after-30-years-president-obama-welcomes...",
+        "width": 4724, "height": 3119, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.bhiQj_1JJFJe5eKkzrMoAw&pid=Api",
+        "hostPageDomainFriendlyName": "The White House", "hostPageDiscoveredDate":
+        "2016-08-02T12:00:00.0000000Z", "thumbnail": {"width": 474, "height": 312},
+        "imageInsightsToken": "ccid_hoVDdmRG*cp_6E66B5E108969999B0F3A93BD3A07D68*mid_136DAFCD3317700AC691913621C0B04F600AADDE*simid_608010577633828974*thid_OIP.hoVDdmRGu88kLphAKRrNyQHaE4",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 2, "availableSizesCount":
+        1}, "imageId": "136DAFCD3317700AC691913621C0B04F600AADDE", "accentColor":
+        "9F3A2C"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=6D2D34DDA3F04CE3C81437B7C0440FF89E195B9F&simid=608013300631623887",
+        "name": "About The White House | The White House", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.g8GG27bdL9Z90AtzM5SpAQHaFm&pid=Api",
+        "datePublished": "2010-11-01T11:51:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2021\/01\/01_george_washington.jpg?w=700&h=530&crop=1",
+        "hostPageUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/", "contentSize":
+        "100140 B", "encodingFormat": "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house",
+        "width": 700, "height": 530, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.bhiQj_1JJFJe5eKkzrMoAw&pid=Api",
+        "hostPageDomainFriendlyName": "The White House", "hostPageDiscoveredDate":
+        "2010-11-01T11:51:08.0000000Z", "thumbnail": {"width": 474, "height": 358},
+        "imageInsightsToken": "ccid_g8GG27bd*cp_0D8E55B19720C91EB9A997DF82DDBFEA*mid_6D2D34DDA3F04CE3C81437B7C0440FF89E195B9F*simid_608013300631623887*thid_OIP.g8GG27bdL9Z90AtzM5SpAQHaFm",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 1, "availableSizesCount":
+        1}, "imageId": "6D2D34DDA3F04CE3C81437B7C0440FF89E195B9F", "accentColor":
+        "525A4D"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=E60A955CF04B18ABC2D32598483A7095401785CC&simid=608014395851166542",
+        "name": "Celebrating African American History at the White House | whitehouse.gov",
+        "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.9F7sXTH0hRTURKaOOgu1GQHaFz&pid=Api",
+        "datePublished": "2018-11-12T11:22:00.0000000Z", "isFamilyFriendly": true,
+        "contentUrl": "https:\/\/obamawhitehouse.archives.gov\/sites\/obamawhitehouse.archives.gov\/files\/WH%20Kitchen.jpg",
+        "hostPageUrl": "https:\/\/www.whitehouse.gov\/blog\/2016\/09\/23\/celebrating-african-american-history-white-house",
+        "contentSize": "1122030 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/www.whitehouse.gov\/blog\/2016\/09\/23\/celebrating-african-american-history-white...",
+        "width": 3000, "height": 2351, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.bhiQj_1JJFJe5eKkzrMoAw&pid=Api",
+        "hostPageDomainFriendlyName": "The White House", "hostPageDiscoveredDate":
+        "2018-11-12T11:22:00.0000000Z", "thumbnail": {"width": 474, "height": 371},
+        "imageInsightsToken": "ccid_9F7sXTH0*cp_F39D89222624EC02A547458F37ED35E5*mid_E60A955CF04B18ABC2D32598483A7095401785CC*simid_608014395851166542*thid_OIP.9F7sXTH0hRTURKaOOgu1GQHaFz",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 1, "availableSizesCount":
+        1}, "imageId": "E60A955CF04B18ABC2D32598483A7095401785CC", "accentColor":
+        "292728"}], "queryExpansions": [{"text": "White House Front", "displayText":
+        "Front", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=White+House+Front&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Front%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Front&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Front%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=White+House+Front&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Number", "displayText": "Number", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=White+House+Number&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Number%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Number&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Number%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=White+House+Number&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Inside", "displayText": "Inside", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=White+House+Inside&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Inside%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Inside&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Inside%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=White+House+Inside&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Outside", "displayText": "Outside", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Outside&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Outside%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Outside&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Outside%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=White+House+Outside&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Art", "displayText": "Art", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=White+House+Art&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Art%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Art&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Art%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=White+House+Art&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Christmas", "displayText": "Christmas", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Christmas&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Christmas%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Christmas&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Christmas%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=White+House+Christmas&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Architecture", "displayText": "Architecture", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Architecture&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Architecture%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Architecture&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Architecture%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=White+House+Architecture&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Blue Prints", "displayText": "Blue Prints", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Blue+Prints&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Blue+Prints%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Blue+Prints&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Blue+Prints%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=White+House+Blue+Prints&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Funny", "displayText": "Funny", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=White+House+Funny&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Funny%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Funny&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Funny%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=White+House+Funny&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Layout", "displayText": "Layout", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=White+House+Layout&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Layout%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Layout&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Layout%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=White+House+Layout&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Grounds", "displayText": "Grounds", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Grounds&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Grounds%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Grounds&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Grounds%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=White+House+Grounds&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Today", "displayText": "Today", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=White+House+Today&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Today%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Today&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Today%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=White+House+Today&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Kitchen", "displayText": "Kitchen", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Kitchen&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Kitchen%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Kitchen&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Kitchen%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=White+House+Kitchen&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Toy", "displayText": "Toy", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=White+House+Toy&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Toy%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Toy&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Toy%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=White+House+Toy&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Kids", "displayText": "Kids", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=White+House+Kids&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Kids%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Kids&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Kids%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=White+House+Kids&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Wallpaper", "displayText": "Wallpaper", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Wallpaper&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Wallpaper%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Wallpaper&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Wallpaper%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=White+House+Wallpaper&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Women", "displayText": "Women", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=White+House+Women&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Women%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Women&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Women%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=White+House+Women&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House in 1800", "displayText": "$1800", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=White+House+in+1800&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22%241800%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+in+1800&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22%241800%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=White+House+in+1800&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Rooms", "displayText": "Rooms", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=White+House+Rooms&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Rooms%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Rooms&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Rooms%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=White+House+Rooms&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Museum", "displayText": "Museum", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=White+House+Museum&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Museum%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Museum&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Museum%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=White+House+Museum&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Stairs", "displayText": "Stairs", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=White+House+Stairs&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Stairs%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Stairs&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Stairs%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=White+House+Stairs&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Tour", "displayText": "Tour", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=White+House+Tour&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Tour%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Tour&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Tour%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=White+House+Tour&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Interior", "displayText": "Interior", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Interior&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Interior%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Interior&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Interior%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=White+House+Interior&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Night", "displayText": "Night", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=White+House+Night&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Night%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Night&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Night%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=White+House+Night&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Entrance", "displayText": "Entrance", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Entrance&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Entrance%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Entrance&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Entrance%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=White+House+Entrance&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White Family House", "displayText": "Family", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=White+Family+House&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Family%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+Family+House&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Family%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=White+Family+House&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Portraits", "displayText": "Portraits", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Portraits&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Portraits%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Portraits&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Portraits%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=White+House+Portraits&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Design", "displayText": "Design", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=White+House+Design&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Design%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Design&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Design%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=White+House+Design&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Drawing", "displayText": "Drawing", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Drawing&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Drawing%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Drawing&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Drawing%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=White+House+Drawing&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "Snow White House", "displayText": "Snow", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Snow+White+House&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Snow%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Snow+White+House&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Snow%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Snow+White+House&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "United States White House", "displayText": "United States", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=United+States+White+House&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22United+States%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=United+States+White+House&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22United+States%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=United+States+White+House&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Blue Room", "displayText": "Blue Room", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Blue+Room&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Blue+Room%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Blue+Room&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Blue+Room%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=White+House+Blue+Room&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}}],
+        "pivotSuggestions": [{"pivot": "white house", "suggestions": [{"text": "Washington
+        Monument", "displayText": "Washington Monument", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Washington+Monument&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Washington+Monument%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Washington+Monument&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Washington+Monument%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Washington+Monument&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "Statue of Liberty", "displayText": "Statue of Liberty", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Statue+of+Liberty&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Statue+of+Liberty%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Statue+of+Liberty&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Statue+of+Liberty%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Statue+of+Liberty&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "West Wing", "displayText": "West Wing", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=West+Wing&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22West+Wing%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=West+Wing&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22West+Wing%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=West+Wing&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "Blair House", "displayText": "Blair House", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Blair+House&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Blair+House%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Blair+House&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Blair+House%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Blair+House&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "The Pentagon", "displayText": "The Pentagon", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=The+Pentagon&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22The+Pentagon%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=The+Pentagon&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22The+Pentagon%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=The+Pentagon&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "Jefferson Memorial", "displayText": "Jefferson Memorial", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Jefferson+Memorial&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Jefferson+Memorial%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Jefferson+Memorial&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Jefferson+Memorial%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Jefferson+Memorial&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "National Mall", "displayText": "National Mall", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=National+Mall&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22National+Mall%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=National+Mall&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22National+Mall%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=National+Mall&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "Empire State Building", "displayText": "Empire State Building",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Empire+State+Building&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Empire+State+Building%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Empire+State+Building&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Empire+State+Building%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Empire+State+Building&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "Buckingham Palace", "displayText": "Buckingham Palace", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Buckingham+Palace&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Buckingham+Palace%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Buckingham+Palace&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Buckingham+Palace%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Buckingham+Palace&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "Capitol Hill", "displayText": "Capitol Hill", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Capitol+Hill&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Capitol+Hill%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Capitol+Hill&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Capitol+Hill%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Capitol+Hill&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "Eiffel Tower", "displayText": "Eiffel Tower", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Eiffel+Tower&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Eiffel+Tower%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Eiffel+Tower&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Eiffel+Tower%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Eiffel+Tower&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "Grand Canyon", "displayText": "Grand Canyon", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Grand+Canyon&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Grand+Canyon%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Grand+Canyon&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Grand+Canyon%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Grand+Canyon&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "Biltmore Estate", "displayText": "Biltmore Estate", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Biltmore+Estate&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Biltmore+Estate%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Biltmore+Estate&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Biltmore+Estate%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Biltmore+Estate&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "Library White House", "displayText": "Library White House", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Library+White+House&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Library+White+House%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Library+White+House&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Library+White+House%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Library+White+House&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "Washington, D C", "displayText": "Washington, D C", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Washington%2c+D+C&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Washington%2c+D+C%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Washington%2c+D+C&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Washington%2c+D+C%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Washington%2c+D+C&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Down", "displayText": "White House Down", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Down&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22White+House+Down%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Down&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22White+House+Down%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=White+House+Down&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "Library of Congress", "displayText": "Library of Congress", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Library+of+Congress&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Library+of+Congress%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Library+of+Congress&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%2c%7b%22cv%22%3a%22Library+of+Congress%22%2c%22pv%22%3a%22%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Library+of+Congress&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}}]},
+        {"pivot": "(site:whitehouse.gov)", "suggestions": []}], "relatedSearches":
+        [{"text": "White House Front", "displayText": "White House Front", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Front&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Front",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=White+House+Front&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Number", "displayText": "White House Number", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Number&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Number",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=White+House+Number&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Christmas", "displayText": "White House Christmas",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=White+House+Christmas&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Christmas",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=White+House+Christmas&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Outside", "displayText": "White House Outside", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Outside&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Outside",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=White+House+Outside&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Art", "displayText": "White House Art", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Art&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Art",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=White+House+Art&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Inside", "displayText": "White House Inside", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Inside&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Inside",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=White+House+Inside&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Blue Prints", "displayText": "White House Blue Prints",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=White+House+Blue+Prints&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Blue+Prints",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=White+House+Blue+Prints&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Kitchen", "displayText": "White House Kitchen", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Kitchen&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Kitchen",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=White+House+Kitchen&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White Colonial House with Black Shutters", "displayText": "White
+        Colonial House with Black Shutters", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=White+Colonial+House+with+Black+Shutters&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+Colonial+House+with+Black+Shutters",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=White+Colonial+House+with+Black+Shutters&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Funny", "displayText": "White House Funny", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Funny&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Funny",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=White+House+Funny&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Toy", "displayText": "White House Toy", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Toy&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Toy",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=White+House+Toy&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Steps", "displayText": "White House Steps", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Steps&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Steps",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=White+House+Steps&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Today", "displayText": "White House Today", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Today&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Today",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=White+House+Today&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Architecture", "displayText": "White House Architecture",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=White+House+Architecture&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Architecture",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=White+House+Architecture&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Entrance", "displayText": "White House Entrance", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Entrance&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Entrance",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=White+House+Entrance&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Blue Room", "displayText": "White House Blue Room",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=White+House+Blue+Room&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Blue+Room",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=White+House+Blue+Room&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Grounds", "displayText": "White House Grounds", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Grounds&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Grounds",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=White+House+Grounds&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Wallpaper", "displayText": "White House Wallpaper",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=White+House+Wallpaper&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Wallpaper",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=White+House+Wallpaper&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Museum", "displayText": "White House Museum", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Museum&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Museum",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=White+House+Museum&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House in 1800", "displayText": "White House in 1800", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+in+1800&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+in+1800",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=White+House+in+1800&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Blue Room Chairs", "displayText": "White House Blue
+        Room Chairs", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=White+House+Blue+Room+Chairs&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Blue+Room+Chairs",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=White+House+Blue+Room+Chairs&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Stairs", "displayText": "White House Stairs", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Stairs&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Stairs",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=White+House+Stairs&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Women", "displayText": "White House Women", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Women&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Women",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=White+House+Women&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Bathrooms", "displayText": "White House Bathrooms",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=White+House+Bathrooms&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Bathrooms",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=White+House+Bathrooms&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Interior", "displayText": "White House Interior", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Interior&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Interior",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=White+House+Interior&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Kids", "displayText": "White House Kids", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Kids&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Kids",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=White+House+Kids&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Layout", "displayText": "White House Layout", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Layout&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Layout",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=White+House+Layout&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House in America", "displayText": "White House in America",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=White+House+in+America&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+in+America",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=White+House+in+America&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Plan", "displayText": "White House Plan", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Plan&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Plan",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=White+House+Plan&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White Family House", "displayText": "White Family House", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+Family+House&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+Family+House",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=White+Family+House&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Art Collection", "displayText": "White House Art Collection",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=White+House+Art+Collection&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Art+Collection",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=White+House+Art+Collection&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Design", "displayText": "White House Design", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Design&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Design",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=White+House+Design&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Tour", "displayText": "White House Tour", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Tour&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Tour",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=White+House+Tour&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "History of the White House", "displayText": "History of the White
+        House", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=History+of+the+White+House&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=History+of+the+White+House",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=History+of+the+White+House&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Library", "displayText": "White House Library", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Library&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Library",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=White+House+Library&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Night", "displayText": "White House Night", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Night&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Night",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=White+House+Night&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "United States White House", "displayText": "United States White
+        House", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=United+States+White+House&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=United+States+White+House",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=United+States+White+House&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Halloween", "displayText": "White House Halloween",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=White+House+Halloween&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Halloween",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=White+House+Halloween&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Bedrooms", "displayText": "White House Bedrooms", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Bedrooms&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Bedrooms",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=White+House+Bedrooms&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Back", "displayText": "White House Back", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Back&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Back",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=White+House+Back&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Gate", "displayText": "White House Gate", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Gate&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Gate",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=White+House+Gate&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "First White House Christmas Tree", "displayText": "First White House
+        Christmas Tree", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=First+White+House+Christmas+Tree&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=First+White+House+Christmas+Tree",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=First+White+House+Christmas+Tree&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Top View", "displayText": "White House Top View", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Top+View&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Top+View",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=White+House+Top+View&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "Old White House", "displayText": "Old White House", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Old+White+House&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Old+White+House",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Old+White+House&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Master Bedroom", "displayText": "White House Master
+        Bedroom", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=White+House+Master+Bedroom&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Master+Bedroom",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=White+House+Master+Bedroom&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Dome", "displayText": "White House Dome", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Dome&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Dome",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=White+House+Dome&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Front and Back", "displayText": "White House Front and
+        Back", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=White+House+Front+and+Back&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Front+and+Back",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=White+House+Front+and+Back&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Portraits", "displayText": "White House Portraits",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=White+House+Portraits&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Portraits",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=White+House+Portraits&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "Snow White House", "displayText": "Snow White House", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Snow+White+House&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Snow+White+House",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Snow+White+House&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Facts", "displayText": "White House Facts", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Facts&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Facts",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=White+House+Facts&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "Small White House", "displayText": "Small White House", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Small+White+House&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Small+White+House",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Small+White+House&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Pool", "displayText": "White House Pool", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Pool&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Pool",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=White+House+Pool&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House North Lawn", "displayText": "White House North Lawn",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=White+House+North+Lawn&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+North+Lawn",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=White+House+North+Lawn&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Building", "displayText": "White House Building", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Building&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Building",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=White+House+Building&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Sketch", "displayText": "White House Sketch", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Sketch&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Sketch",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=White+House+Sketch&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Paint", "displayText": "White House Paint", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Paint&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Paint",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=White+House+Paint&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Top", "displayText": "White House Top", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Top&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Top",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=White+House+Top&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Built", "displayText": "White House Built", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Built&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Built",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=White+House+Built&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}},
+        {"text": "White House Model", "displayText": "White House Model", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=White+House+Model&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=White+House+Model",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=White+House+Model&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1"}}]}'
+  recorded_at: Wed, 25 Jan 2023 20:11:57 GMT
+recorded_with: VCR 6.1.0
