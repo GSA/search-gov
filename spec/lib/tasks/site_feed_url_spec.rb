@@ -10,6 +10,7 @@ describe 'RSS site feed URL rake tasks' do
 
   describe 'usasearch:site_feed_url:refresh_all' do
     let(:task_name) { 'usasearch:site_feed_url:refresh_all' }
+
     before { @rake[task_name].reenable }
 
     it "should have 'environment' as a prereq" do

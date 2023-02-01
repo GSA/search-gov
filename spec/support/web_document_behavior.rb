@@ -6,7 +6,7 @@ shared_examples 'a web document' do
   describe 'web document interface' do
     %i[title description parsed_content language keywords created changed].each do |method|
       it "responds to #{method}" do
-        expect(web_document.respond_to?(method)).to eq true
+        expect(web_document.respond_to?(method)).to be true
       end
     end
   end
@@ -37,7 +37,7 @@ shared_examples 'a web document' do
     context 'when the description is missing' do
       let(:raw_document) { doc_without_description }
 
-      it { is_expected.to eq nil }
+      it { is_expected.to be_nil }
     end
   end
 

@@ -4,7 +4,7 @@ shared_examples 'an indexable' do
     it 'should return an appropriate result set with zero hits' do
       expect(Es::CustomIndices.client_reader).to receive(:search).and_raise StandardError
       options = { q: 'query', affiliate_id: affiliate.id, language: affiliate.indexing_locale }
-      expect(described_class.search_for(options)).to be_a_kind_of(ElasticResults)
+      expect(described_class.search_for(options)).to be_a(ElasticResults)
     end
   end
 

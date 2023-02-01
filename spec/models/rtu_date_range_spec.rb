@@ -26,7 +26,6 @@ describe RtuDateRange do
     end
   end
 
-
   describe '#available_dates_range' do
     context 'when dates are available' do
       include_context 'when dates are available'

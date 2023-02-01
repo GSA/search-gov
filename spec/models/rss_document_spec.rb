@@ -67,6 +67,7 @@ describe RssDocument do
           media_text: './/media:text',
           media_thumbnail_url: './/media:thumbnail/@url' }.freeze
       end
+
       before { allow(document).to receive(:feed_type).and_return(:rss) }
 
       it 'returns rss elements' do
@@ -83,6 +84,7 @@ describe RssDocument do
           guid: 'xmlns:id',
           description: %w(xmlns:content xmlns:summary) }.freeze
       end
+
       before { allow(document).to receive(:feed_type).and_return(:atom) }
 
       it 'returns atom elements' do

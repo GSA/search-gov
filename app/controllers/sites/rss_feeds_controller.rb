@@ -9,6 +9,8 @@ class Sites::RssFeedsController < Sites::SetupSiteController
     @rss_feeds = @site.rss_feeds.order(:name)
   end
 
+  def show; end
+
   def new
     @rss_feed = @site.rss_feeds.build
     build_url
@@ -17,6 +19,10 @@ class Sites::RssFeedsController < Sites::SetupSiteController
   def new_url
     @index = params[:index].to_i
     respond_to { |format| format.js }
+  end
+
+  def edit
+    build_url
   end
 
   def create
@@ -31,12 +37,6 @@ class Sites::RssFeedsController < Sites::SetupSiteController
         render action: :new
       end
     end
-  end
-
-  def show; end
-
-  def edit
-    build_url
   end
 
   def update

@@ -115,7 +115,6 @@ describe Sites::BoostedContentsController do
     end
   end
 
-
   describe '#destroy' do
     it_should_behave_like 'restricted to approved user', :delete, :destroy, site_id: 100, id: 100
 

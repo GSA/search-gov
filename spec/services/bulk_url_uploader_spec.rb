@@ -76,7 +76,7 @@ describe BulkUrlUploader do
       before { uploader.upload_and_index }
 
       it 'does not create the SearchgovUrl' do
-        expect(SearchgovUrl.find_by(url: raw_urls.first)).to be(nil)
+        expect(SearchgovUrl.find_by(url: raw_urls.first)).to be_nil
       end
 
       it 'reports the number of URLs processed' do

@@ -12,6 +12,7 @@ describe 'SAYT suggestions rake tasks' do
 
     describe 'usasearch:sayt_suggestions:compute' do
       let(:task_name) { 'usasearch:sayt_suggestions:compute' }
+
       before { @rake[task_name].reenable }
 
       it "should have 'environment' as a prereq" do
@@ -54,6 +55,7 @@ describe 'SAYT suggestions rake tasks' do
 
     describe 'usasearch:sayt_suggestions:expire' do
       let(:task_name) { 'usasearch:sayt_suggestions:expire' }
+
       before { @rake[task_name].reenable }
 
       it "should have 'environment' as a prereq" do

@@ -16,6 +16,7 @@ describe NewsItemsHelper do
 
     context 'when published at date is in the future' do
       let(:future_time) { 1.hour.from_now }
+
       it 'should not output anything' do
         expect(helper.news_item_time_ago_in_words(future_time)).to be_blank
       end

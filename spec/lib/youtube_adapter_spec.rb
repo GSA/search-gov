@@ -46,6 +46,7 @@ describe YoutubeAdapter do
   describe '.get_channel_title' do
     let(:result) { nil }
     let(:error) { nil }
+
     before do
       expect(client).to receive(:list_channels).with('snippet', id: 'nasa_channel_id') do |&block|
         block.call(result, error)
@@ -58,6 +59,7 @@ describe YoutubeAdapter do
           { id: 'nasa_channel_id', snippet: { title: 'my channel' } }
         ])
       end
+
       it 'returns a title' do
         expect(described_class.get_channel_title('nasa_channel_id')).to eq('my channel')
       end
@@ -65,6 +67,7 @@ describe YoutubeAdapter do
 
     context 'when channel_id is invalid' do
       let(:result) { Hashie::Mash.new(items: []) }
+
       it 'returns false' do
         expect(described_class.get_channel_title('nasa_channel_id')).to be_nil
       end
@@ -182,6 +185,7 @@ describe YoutubeAdapter do
 
     context 'when the resource has not changed' do
       let(:error) { Hashie::Mash.new(status_code: 304) }
+
       it 'returns the result' do
         expect do |item|
           described_class.each_playlist_item(playlist, &item)
@@ -203,6 +207,7 @@ describe YoutubeAdapter do
 
   describe '.each_video' do
     let(:result) { Hashie::Mash.new(items: [double('video_1'), double('video_2')]) }
+
     before do
       expect(client).to receive(:list_videos).with('contentDetails', id: 'video_1_id,video_2_id') do |&block|
         block.call(result)

@@ -11,7 +11,7 @@ class SaytSuggestion < ApplicationRecord
   validates :phrase, presence: true
   validates :phrase, uniqueness: { scope: :affiliate_id, case_sensitive: false }
   validates :phrase, length: { within: (3..80) }
-  validates :phrase, format: { with: /\A[a-z0-9#{LETTERS_WITH_DIACRITIC}]+([\s_\.'\-]+[a-z0-9#{LETTERS_WITH_DIACRITIC}]+)*\z/iu }
+  validates :phrase, format: { with: /\A[a-z0-9#{LETTERS_WITH_DIACRITIC}]+([\s_.'-]+[a-z0-9#{LETTERS_WITH_DIACRITIC}]+)*\z/iu }
   belongs_to :affiliate
 
   MAX_POPULARITY = 2**30

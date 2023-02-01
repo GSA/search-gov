@@ -6,8 +6,8 @@ class EmailTemplate < ApplicationRecord
 
   DEFAULT_SUBJECT_HASH = {
     affiliate_monthly_report:
-      '[Search.gov] Monthly Report for '\
-      '<%= Date::MONTHNAMES[@user_monthly_report.report_date.month.to_i] %>'\
+      '[Search.gov] Monthly Report for ' \
+      '<%= Date::MONTHNAMES[@user_monthly_report.report_date.month.to_i] %>' \
       ' <%= @user_monthly_report.report_date.year %>',
     affiliate_yearly_report: '[Search.gov] <%= @report_year %> Year in Review',
     daily_snapshot:

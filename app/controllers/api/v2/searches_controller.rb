@@ -102,6 +102,7 @@ module Api
                                          :filetype,
                                          :filter, # Advanced search "safe search" param
                                          :format,
+                                         :include_facets,
                                          :limit,
                                          :mime_type,
                                          :offset,

@@ -66,7 +66,7 @@ class Click
       clientip: client_ip,
       referrer: referrer,
       user_agent: user_agent,
-      time: Time.current.to_formatted_s(:db),
+      time: Time.current.to_fs(:db),
       vertical: vertical,
       modules: module_code,
       click_domain: URI(url).host,

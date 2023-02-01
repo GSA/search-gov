@@ -3,8 +3,8 @@ class Sites::BestBetsController < Sites::SetupSiteController
   def search_best_bets(klass)
     name = klass.name.tableize
     @site.send(name).substring_match(params[:query]).paginate(
-        per_page: klass.per_page,
-        page: params[:page]).order("#{name}.updated_at DESC, #{name}.title ASC")
+      per_page: klass.per_page,
+      page: params[:page]).order("#{name}.updated_at DESC, #{name}.title ASC")
   end
 
   def new_keyword

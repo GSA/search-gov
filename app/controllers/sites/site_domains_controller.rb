@@ -12,6 +12,9 @@ class Sites::SiteDomainsController < Sites::SetupSiteController
     @site_domain = @site.site_domains.build
   end
 
+  def edit
+  end
+
   def create
     @site_domain = @site.site_domains.build site_domain_params
     if @site_domain.save
@@ -22,9 +25,6 @@ class Sites::SiteDomainsController < Sites::SetupSiteController
       load_hints
       render action: :new
     end
-  end
-
-  def edit
   end
 
   def update

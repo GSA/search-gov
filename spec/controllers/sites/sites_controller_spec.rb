@@ -118,10 +118,10 @@ describe Sites::SitesController do
 
         before do
           expect(Affiliate).to receive(:new).with(
-              'display_name' => 'New Aff',
-              'locale' => 'es',
-              'name' => 'newaff',
-              'site_domains_attributes' => { '0' => { 'domain' => 'http://www.brandnew.gov' } }).and_return(site)
+            'display_name' => 'New Aff',
+            'locale' => 'es',
+            'name' => 'newaff',
+            'site_domains_attributes' => { '0' => { 'domain' => 'http://www.brandnew.gov' } }).and_return(site)
           expect(site).to receive(:save).and_return(true)
 
           autodiscoverer = double(SiteAutodiscoverer)

@@ -4,7 +4,7 @@ class Sites::ExcludedUrlsController < Sites::SetupSiteController
 
   def index
     @excluded_urls = @site.excluded_urls.paginate(
-        page: params[:page]).order('url ASC')
+      page: params[:page]).order('url ASC')
   end
 
   def new

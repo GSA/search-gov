@@ -10,6 +10,7 @@ describe 'YouTube rake tasks' do
 
   describe 'usasearch:youtube:refresh' do
     let(:task_name) { 'usasearch:youtube:refresh' }
+
     before { @rake[task_name].reenable }
 
     it "should have 'environment' as a prereq" do

@@ -62,7 +62,7 @@ class FeaturedCollection < ApplicationRecord
 
   def self.do_not_dup_attributes
     @@do_not_dup_attributes ||= begin
-      column_names.select { |c| c =~ /\Aimage\_/ }.push('affiliate_id').freeze
+      column_names.select { |c| c =~ /\Aimage_/ }.push('affiliate_id').freeze
     end
   end
 

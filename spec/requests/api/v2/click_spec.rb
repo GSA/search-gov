@@ -42,7 +42,7 @@ describe '/api/v2/click' do
 
       post endpoint, params: valid_params
 
-      expect(response.status).to eq 401
+      expect(response).to have_http_status :unauthorized
       expect(response.body).to eq('["Access key is invalid"]')
     end
   end
@@ -60,9 +60,9 @@ describe '/api/v2/click' do
       }
     end
     let(:expected_error_msg) do
-      "[\"Access key can't be blank\",\"Affiliate can't be blank\","\
-      "\"Module code can't be blank\",\"Position can't be blank\","\
-      "\"Query can't be blank\",\"Url can't be blank\"]"
+      "[\"Access key can't be blank\",\"Affiliate can't be blank\"," \
+        "\"Module code can't be blank\",\"Position can't be blank\"," \
+        "\"Query can't be blank\",\"Url can't be blank\"]"
     end
 
     it_behaves_like 'an unsuccessful click request'

@@ -7,6 +7,7 @@ describe GovboxSet do
     subject(:govbox_set) do
       described_class.new('foo', affiliate, geoip_info, highlighting_options)
     end
+
     let(:affiliate) { affiliates(:basic_affiliate) }
     let(:agency) { agencies(:irs) }
     let(:geoip_info) do
@@ -274,6 +275,7 @@ describe GovboxSet do
     context 'when an affiliate has video govbox enabled' do
       let(:youtube_feed) { mock_model(RssFeed) }
       let(:video_results) { double('video results', total: 3) }
+
       before do
         expect(affiliate).to receive(:is_rss_govbox_enabled?).and_return(false)
         expect(affiliate).to receive(:is_video_govbox_enabled?).and_return(true)

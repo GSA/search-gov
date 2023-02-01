@@ -271,6 +271,7 @@ describe SearchgovCrawler do
 
           context 'when the doc link contains a query string' do
             let(:link) { 'admin/foo?bar.pdf' }
+
             it 'does not create a searchgov url' do
               expect(SearchgovUrl).not_to receive(:create).with(url: url)
               crawl

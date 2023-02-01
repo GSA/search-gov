@@ -3,7 +3,7 @@
 class AffiliateCss
   include AffiliateCssHelper
 
-  MOBILE_LOOK_AND_FEEL_TEMPLATE = File.open("#{Rails.root}/lib/renderers/templates/_mobile_look_and_feel.css.sass.erb").read.freeze
+  MOBILE_LOOK_AND_FEEL_TEMPLATE = File.read("#{Rails.root}/lib/renderers/templates/_mobile_look_and_feel.css.sass.erb").freeze
 
   def initialize(css_hash)
     @css_hash = css_hash.freeze

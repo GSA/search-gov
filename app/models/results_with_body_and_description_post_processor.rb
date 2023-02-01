@@ -5,7 +5,6 @@ class ResultsWithBodyAndDescriptionPostProcessor
     @results = results
   end
 
-
   def post_process_results
     override_plain_description_with_highlighted_body
   end

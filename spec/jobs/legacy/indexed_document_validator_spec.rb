@@ -5,6 +5,7 @@ describe IndexedDocumentValidator, '#perform(indexed_document_id)' do
 
   let(:aff) { affiliates(:basic_affiliate) }
   let(:url) { 'http://nps.gov/pdf.pdf' }
+
   before do
     aff.indexed_documents.destroy_all
 

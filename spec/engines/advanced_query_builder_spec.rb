@@ -40,6 +40,7 @@ describe AdvancedQueryBuilder do
 
   context 'when OR terms are specified' do
     subject { described_class.new([], query: 'government', query_or: 'barack obama') }
+
     it "should construct a query string that includes the OR terms OR'ed together" do
       expect(subject.build).to eq('government (barack OR obama)')
     end
@@ -47,6 +48,7 @@ describe AdvancedQueryBuilder do
 
   context 'when negative query terms are specified' do
     subject { described_class.new([], query: 'government', query_not: 'barack obama') }
+
     it "should construct a query string that includes the negative query terms prefixed with '-'" do
       expect(subject.build).to eq('government -barack -obama')
     end
@@ -55,6 +57,7 @@ describe AdvancedQueryBuilder do
   context 'when a filetype is specified' do
     context "when the filetype specified is not 'All'" do
       subject { described_class.new([], query: 'government', file_type: 'pdf') }
+
       it 'should construct a query string that includes a filetype' do
         expect(subject.build).to eq('government filetype:pdf')
       end
@@ -62,6 +65,7 @@ describe AdvancedQueryBuilder do
 
     context "when the filetype specified is 'All'" do
       subject { described_class.new([], query: 'government', file_type: 'All') }
+
       it 'should construct a query string that does not have a filetype parameter' do
         expect(subject.build).to eq('government')
       end
@@ -76,6 +80,7 @@ describe AdvancedQueryBuilder do
                                        file_type: 'pdf',
                                        site_excludes: 'nasa.gov noaa.gov',
                                        query: 'government site:.gov') }
+
     it 'should construct a query string that incorporates all of them' do
       expect(subject.build).to eq('government site:.gov "barack obama" -clunkers (cars OR stimulus) filetype:pdf -site:nasa.gov -site:noaa.gov')
     end
@@ -96,9 +101,6 @@ describe AdvancedQueryBuilder do
       it 'should construct a query string with site exlcusions for each of the sites' do
         expect(subject.build).to eq('government -site:whitehouse.gov -site:omb.gov')
       end
-
     end
   end
-
-
 end

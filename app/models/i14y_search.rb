@@ -2,6 +2,15 @@ class I14ySearch < FilterableSearch
   include SearchInitializer
   include Govboxable
   I14Y_SUCCESS = 200
+  FACET_FIELDS = %w[audience
+                    changed
+                    content_type
+                    created
+                    mime_type
+                    searchgov_custom1
+                    searchgov_custom2
+                    searchgov_custom3
+                    tags].freeze
   attr_reader :aggregations,
               :collection,
               :matching_site_limits
@@ -9,6 +18,7 @@ class I14ySearch < FilterableSearch
   def initialize(options = {})
     super
     @enable_highlighting = !(false === options[:enable_highlighting])
+    @include_facets = options[:include_facets] == 'true'
     @collection = options[:document_collection]
     @site_limits = options[:site_limits]
     @matching_site_limits = formatted_query_instance.matching_site_limits
@@ -29,18 +39,15 @@ class I14ySearch < FilterableSearch
     false
   end
 
-  # SRCH-3615: Disabling cop temporarily as facets work is ongoing and will continue to involve
-  # modifications to this method.
-  # rubocop:disable Metrics/AbcSize
   def filter_options
     filter_options = {}
     date_filter_options(filter_options)
     facet_filter_options(filter_options)
     filter_options[:ignore_tags] = @affiliate.tag_filters.excluded.pluck(:tag).join(',') if @affiliate.tag_filters.excluded.present?
     filter_options[:tags] = included_tags if @tags || @affiliate.tag_filters.required.present?
+    include_facet_fields(filter_options) if @include_facets
     filter_options
   end
-  # rubocop:enable Metrics/AbcSize
 
   def detect_size
     @limit || @per_page
@@ -55,6 +62,10 @@ class I14ySearch < FilterableSearch
   end
 
   protected
+
+  def include_facet_fields(filter_options)
+    filter_options[:include] = "title,path,#{FACET_FIELDS.join(',')}"
+  end
 
   def date_filter_options(filter_options)
     filter_options[:sort_by_date] = 1 if @sort_by == 'date'

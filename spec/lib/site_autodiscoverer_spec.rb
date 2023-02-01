@@ -8,7 +8,7 @@ describe SiteAutodiscoverer do
   describe '#initialize' do
     context 'when autodiscovery_url is not present' do
       it 'should initialize correctly' do
-        expect(autodiscoverer).to be_kind_of(described_class)
+        expect(autodiscoverer).to be_a(described_class)
       end
     end
 
@@ -16,7 +16,7 @@ describe SiteAutodiscoverer do
       let(:autodiscovery_url) { 'https://www.usa.gov' }
 
       it 'should initialize correctly' do
-        expect(autodiscoverer).to be_kind_of(described_class)
+        expect(autodiscoverer).to be_a(described_class)
       end
     end
 
@@ -31,6 +31,7 @@ describe SiteAutodiscoverer do
 
   describe '#autodiscovery_url' do
     subject { autodiscoverer.autodiscovery_url }
+
     context 'when no autodiscovery_url is provided to the constructor' do
       context 'when the site has no default_autodiscovery_url' do
         before do
@@ -44,6 +45,7 @@ describe SiteAutodiscoverer do
 
       context 'when the site has a default_autodiscovery_url' do
         let(:url) { 'https://www.usa.gov' }
+
         before do
           allow(site).to receive(:default_autodiscovery_url) { url }
           allow(autodiscoverer).to receive(:autodiscover_website).with(url).and_return(url)
@@ -55,6 +57,7 @@ describe SiteAutodiscoverer do
 
         context 'when the autodiscover_website returns a different url' do
           let(:other_url) { 'https://www.usa.gov' }
+
           before do
             allow(autodiscoverer).to receive(:autodiscover_website).with(url).and_return(other_url)
           end

@@ -14,6 +14,8 @@ describe HostedAzureWebEngine do
 
   skip '#execute_query' do
     context 'when response _next is present' do
+      subject(:response) { engine.execute_query }
+
       let(:engine) do
         described_class.new enable_highlighting: true,
                                  language: 'en',
@@ -21,8 +23,6 @@ describe HostedAzureWebEngine do
                                  per_page: 20,
                                  query: 'food nutrition (site:usa.gov)'
       end
-
-      subject(:response) { engine.execute_query }
 
       it 'sets results' do
         expect(response.results.count).to eq(20)
@@ -43,6 +43,8 @@ describe HostedAzureWebEngine do
     end
 
     context 'when response _next is not present' do
+      subject(:response) { engine.execute_query }
+
       let(:engine) do
         described_class.new enable_highlighting: true,
                                  language: 'en',
@@ -57,14 +59,14 @@ describe HostedAzureWebEngine do
           .to_return( status: 200, body: no_next_result )
       end
 
-      subject(:response) { engine.execute_query }
-
       it 'sets total' do
         expect(response.total).to eq(12)
       end
     end
 
     context 'when there are no results' do
+      subject(:response) { engine.execute_query }
+
       let(:engine) do
         described_class.new enable_highlighting: true,
                                  language: 'en',
@@ -72,8 +74,6 @@ describe HostedAzureWebEngine do
                                  per_page: 20,
                                  query: 'mango smoothie (site:usa.gov)'
       end
-
-      subject(:response) { engine.execute_query }
 
       it 'sets total' do
         expect(response.total).to eq(0)

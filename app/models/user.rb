@@ -8,7 +8,7 @@ class User < ApplicationRecord
     \A
     [A-Z0-9_.&%+\-']+   # mailbox
     @
-    (?:[A-Z0-9\-]+\.)+  # subdomains
+    (?:[A-Z0-9-]+\.)+  # subdomains
     (?:[A-Z]{2,25})     # TLD
     \z
   /ix.freeze

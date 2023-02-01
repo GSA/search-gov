@@ -66,6 +66,6 @@ class FederalRegisterDocumentApiParser
   end
 
   def extract_agency_ids(attributes)
-    attributes['agencies'].map { |agency| agency['id'] }.compact.uniq.sort
+    attributes['agencies'].pluck('id').compact.uniq.sort
   end
 end

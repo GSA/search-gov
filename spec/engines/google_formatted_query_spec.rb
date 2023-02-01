@@ -36,6 +36,7 @@ describe GoogleFormattedQuery do
 
         context 'when excluded domains absent' do
           subject { described_class.new('government', included_domains: included_domains) }
+
           it 'should use included domains in query without passing default ScopeID' do
             expect(subject.query).to eq('government site:bar.com OR site:foo.com')
           end
@@ -43,19 +44,20 @@ describe GoogleFormattedQuery do
       end
 
       context "when there are so many included domains that the overall query exceeds the search engine's limit, generating an error" do
-        let(:too_many_domains) { 'superlongdomain10001'.upto('superlongdomain10175').collect { |x| "#{x}.gov" } }
         subject { described_class.new('government', included_domains: too_many_domains, excluded_domains: %w(exclude1.gov exclude2.gov)) }
+
+        let(:too_many_domains) { 'superlongdomain10001'.upto('superlongdomain10175').collect { |x| "#{x}.gov" } }
 
         it 'should use as many as it can up to the predetermined limit' do
           expect(subject.query.length).to be < GoogleFormattedQuery::QUERY_STRING_ALLOCATION
         end
       end
 
-
       context 'when there are some included domains and too many excluded domains' do
+        subject { described_class.new('government', included_domains: some_domains, excluded_domains: too_many_excluded_domains) }
+
         let(:some_domains) { 'domain10001'.upto('domain10010').collect { |x| "#{x}.gov" } }
         let(:too_many_excluded_domains) { 'superlongexcludeddomain20001'.upto('superlongexcludeddomain20110').collect { |x| "#{x}.gov" } }
-        subject { described_class.new('government', included_domains: some_domains, excluded_domains: too_many_excluded_domains) }
 
         it 'should use all the included domains and as many excluded domains as it can up to the predetermined limit' do
           expect(subject.query.length).to be < GoogleFormattedQuery::QUERY_STRING_ALLOCATION
