@@ -46,3 +46,21 @@ Feature: Search - redesign
     When I am on bar.gov's redesigned search page with "article" query
     Then I should see exactly "6" web search results
     And I should see "The last hour"
+
+  @javascript
+  Scenario: News search
+    Given the following Affiliates exist:
+      | display_name     | name       | contact_email | first_name | last_name | locale | youtube_handles |
+      | bar site         | bar.gov    | aff@bar.gov   | John       | Bar       | en     | en_agency       |
+    And affiliate "bar.gov" has the following RSS feeds:
+      | name   | url                                  | is_navigable | is_managed |
+      | Press  | http://www.whitehouse.gov/feed/press | true         |            |
+      | Videos |                                      | true         | true       |
+    And feed "Press" has the following news items:
+      | link                             | title       | guid  | published_ago | description                       |
+      | http://www.whitehouse.gov/news/1 | First item  | uuid1 | day           | item First news item for the feed |
+      | http://www.whitehouse.gov/news/2 | Second item | uuid2 | day           | item Next news item for the feed  |
+    When I am on bar.gov's redesigned news search page with "item" query
+    And I should see "First"
+    And I should see "Second"
+    And I should see exactly "2" web search results
