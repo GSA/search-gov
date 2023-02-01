@@ -106,6 +106,18 @@ describe ApiI14ySearch do
                                              :searchgov_custom3,
                                              :tags)
       end
+
+      it 'returns aggregations' do
+        expect(web_hash).to include(:aggregations)
+      end
+
+      it 'returns agg_key string and doc_count' do
+        aggs_hash = web_hash[:aggregations].first
+        random_agg = aggs_hash.keys.sample
+        expect(aggs_hash[random_agg].first).
+          to match hash_including(agg_key: be_a(String),
+                                  doc_count: be_an(Integer))
+      end
     end
 
     context 'when include_facets is false' do
@@ -136,6 +148,10 @@ describe ApiI14ySearch do
                                              :url,
                                              :snippet,
                                              :publication_date)
+      end
+
+      it 'does not return aggregations' do
+        expect(web_hash).not_to include(:aggregations)
       end
     end
 

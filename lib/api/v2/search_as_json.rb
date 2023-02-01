@@ -15,6 +15,7 @@ module Api::V2::SearchAsJson
     web_hash[:include_facets] = @include_facets unless @include_facets.nil?
     yield web_hash if block_given?
     web_hash[:results] = as_json_results_to_hash
+    web_hash[:aggregations] = @aggregations if @include_facets
     hash[:web] = web_hash
   end
 
