@@ -191,8 +191,17 @@ To run test searches, you will need a working Bing API key. You can request one 
 rails server
 ```
 3. Test searches should return results:
+
+**Web results**
+* http://localhost:3000/search?affiliate=test_affiliate&query=government
+
+**News results**
 * http://localhost:3000/search?affiliate=test_affiliate&query=news
 * http://localhost:3000/search/news?affiliate=test_affiliate&channel=1&query=news
+
+**Video results**
+* http://localhost:3000/search?affiliate=test_affiliate&query=video
+* http://localhost:3000/search/news?affiliate=test_affiliate&channel=3&query=video
 
 ## Creating a new local admin account
 [Login.gov](https://login.gov) is used for authentication.
