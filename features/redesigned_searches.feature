@@ -55,7 +55,6 @@ Feature: Search - redesign
     And affiliate "bar.gov" has the following RSS feeds:
       | name   | url                                  | is_navigable | is_managed |
       | Press  | http://www.whitehouse.gov/feed/press | true         |            |
-      | Videos |                                      | true         | true       |
     And feed "Press" has the following news items:
       | link                             | title       | guid  | published_ago | description                       |
       | http://www.whitehouse.gov/news/1 | First item  | uuid1 | day           | item First news item for the feed |
