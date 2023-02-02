@@ -49,7 +49,6 @@ class ApiRateLimiter
     @@redis.get(key).to_i
   end
 
-
   def increment(key)
     @@redis.incr key
   end

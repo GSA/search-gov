@@ -96,7 +96,7 @@ class SitemapIndexer
 
   def log_info
     {
-      time: Time.now.utc.to_formatted_s(:db),
+      time: Time.now.utc.to_fs(:db),
       domain: domain,
       sitemap: uri.to_s
     }

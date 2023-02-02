@@ -3,6 +3,7 @@ require 'spec_helper'
 describe SuperfreshController, '#index' do
   fixtures :affiliates, :languages
   let(:affiliate) { affiliates(:basic_affiliate) }
+
   it 'should set the request fomat to :rss' do
     get :index
     expect(response.media_type).to eq('application/rss+xml')

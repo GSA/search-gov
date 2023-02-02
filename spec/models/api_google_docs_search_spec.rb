@@ -242,7 +242,6 @@ describe ApiGoogleDocsSearch do
       search.run
     end
 
-
     it 'returns a formatted query' do
       expect(search.as_json[:query]).to eq('healthy snack -kittens (chili OR cheese OR fries)')
     end

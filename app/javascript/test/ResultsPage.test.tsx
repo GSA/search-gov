@@ -5,13 +5,13 @@ import ResultsPage from '../components/ResultsPage';
 
 describe('ResultsPage', () => {
   it('shows a message when there are no results', () => {
-    render(<ResultsPage params="foo" results={[]} />);
+    render(<ResultsPage params="foo" results={[]} vertical="web" />);
     const message = screen.getByText(/Please enter a search term in the box above./i);
     expect(message).toBeInTheDocument();
   });
 
   it('renders all relevant links', () => {
-    render(<ResultsPage params="foo" results={[]} />);
+    render(<ResultsPage params="foo" results={[]} vertical="web" />);
     const privacyPolicy = screen.getAllByText(/Privacy policy/i)[0];
     const updates = screen.getAllByText(/Latest updates/i)[0];
     const everything = screen.getByText(/Everything/i);
@@ -28,12 +28,21 @@ describe('ResultsPage', () => {
 
   it('renders search results', () => {
     const results = [{ 'title': 'test result 1', 'unescapedUrl': 'https://www.search.gov', 'content': 'result body' }];
-    render(<ResultsPage params="foo" results={results} />);
+    render(<ResultsPage params="foo" results={results} vertical="web" />);
     const resultTitle = screen.getByText(/test result 1/i);
     const resultUrl = screen.getByText(/https\:\/\/www.search.gov/i);
     const resultBody = screen.getByText(/result body/i);
     expect(resultTitle).toBeInTheDocument();
     expect(resultUrl).toBeInTheDocument();
     expect(resultBody).toBeInTheDocument();
+  });
+
+  it('renders image search results', () => {
+    const results = [{ 'title': 'test result 1', 'thumbnail': { 'url': 'https://www.search.gov/test_image.png' } }];
+    render(<ResultsPage params="foo" results={results} vertical="image" />);
+    const resultTitle = screen.getByText(/test result 1/i);
+    const img = [...document.querySelectorAll("img")].pop() as HTMLImageElement;
+    expect(resultTitle).toBeInTheDocument();
+    expect(img).toHaveAttribute('src', 'https://www.search.gov/test_image.png');
   });
 });

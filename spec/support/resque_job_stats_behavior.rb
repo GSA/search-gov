@@ -1,6 +1,7 @@
 shared_examples 'a ResqueJobStats job' do
   describe '.around_perform_with_stats' do
     subject(:perform) { described_class.around_perform_with_stats() { job.run } }
+
     let(:job) { double(run: nil) }
     let(:statsd) { described_class.statsd }
 

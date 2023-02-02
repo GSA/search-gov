@@ -55,6 +55,7 @@ describe DocumentCollection do
 
   describe '#dup' do
     subject(:original_instance) { document_collections(:sample).dup }
+
     include_examples 'site dupable'
   end
 end

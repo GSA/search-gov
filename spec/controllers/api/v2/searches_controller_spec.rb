@@ -33,7 +33,7 @@ describe Api::V2::SearchesController do
       expect(SearchImpression).to receive(:log).with(search,
                                                      'blended',
                                                      hash_including('query'),
-                                                     be_a_kind_of(ActionDispatch::Request))
+                                                     be_a(ActionDispatch::Request))
 
       get :blended, params: search_params
     end
@@ -67,7 +67,7 @@ describe Api::V2::SearchesController do
         expect(SearchImpression).to receive(:log).with(search,
                                                        'azure',
                                                        hash_including('query'),
-                                                       be_a_kind_of(ActionDispatch::Request))
+                                                       be_a(ActionDispatch::Request))
 
         get :azure, params: search_params
       end
@@ -118,7 +118,7 @@ describe Api::V2::SearchesController do
         expect(SearchImpression).to receive(:log).with(search,
                                                        'azure_web',
                                                        hash_including('query'),
-                                                       be_a_kind_of(ActionDispatch::Request))
+                                                       be_a(ActionDispatch::Request))
 
         get :azure_web, params: search_params
       end
@@ -169,7 +169,7 @@ describe Api::V2::SearchesController do
         expect(SearchImpression).to receive(:log).with(search,
                                                        'azure_image',
                                                        hash_including('query'),
-                                                       be_a_kind_of(ActionDispatch::Request))
+                                                       be_a(ActionDispatch::Request))
 
         get :azure_image, params: search_params
       end
@@ -225,7 +225,7 @@ describe Api::V2::SearchesController do
         expect(SearchImpression).to receive(:log).with(search,
                                                        'gss',
                                                        hash_including('query'),
-                                                       be_a_kind_of(ActionDispatch::Request))
+                                                       be_a(ActionDispatch::Request))
 
         get :gss, params: gss_params
       end
@@ -282,7 +282,7 @@ describe Api::V2::SearchesController do
         allow(SearchImpression).to receive(:log).with(search,
                                                       'i14y',
                                                       hash_including('query'),
-                                                      be_a_kind_of(ActionDispatch::Request))
+                                                      be_a(ActionDispatch::Request))
 
         get :i14y, params: search_params
       end
@@ -303,6 +303,15 @@ describe Api::V2::SearchesController do
                                                                  query_or: 'alternative',
                                                                  query_quote: 'barack obama',
                                                                  sort_by: 'date' })
+      end
+
+      context 'when include_facets is true' do
+        let(:params_with_facets) { search_params.merge(include_facets: 'true') }
+
+        it 'passes the include_facets value to its ApiI14ySearch object' do
+          get :i14y, params: params_with_facets
+          expect(assigns(:search_options).attributes).to include({ include_facets: 'true' })
+        end
       end
 
       context 'when an audience filter is present' do
@@ -417,7 +426,7 @@ describe Api::V2::SearchesController do
         expect(SearchImpression).to receive(:log).with(search,
                                                        'video',
                                                        hash_including('query'),
-                                                       be_a_kind_of(ActionDispatch::Request))
+                                                       be_a(ActionDispatch::Request))
 
         get :video, params: search_params
       end
@@ -473,7 +482,7 @@ describe Api::V2::SearchesController do
         expect(SearchImpression).to receive(:log).with(search,
                                                        'docs',
                                                        hash_including('query'),
-                                                       be_a_kind_of(ActionDispatch::Request))
+                                                       be_a(ActionDispatch::Request))
 
         get :docs, params: docs_params
       end
@@ -497,7 +506,7 @@ describe Api::V2::SearchesController do
         expect(SearchImpression).to receive(:log).with(search,
                                                        'docs',
                                                        hash_including('query'),
-                                                       be_a_kind_of(ActionDispatch::Request))
+                                                       be_a(ActionDispatch::Request))
 
         get :docs, params: docs_params
       end

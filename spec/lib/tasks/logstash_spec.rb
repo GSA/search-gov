@@ -10,6 +10,7 @@ describe 'Logstash rake tasks' do
 
   describe 'usasearch:logstash:dedupe' do
     let(:task_name) { 'usasearch:logstash:dedupe' }
+
     before { @rake[task_name].reenable }
 
     it "should have 'environment' as a prereq" do

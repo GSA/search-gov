@@ -133,17 +133,17 @@ describe Affiliate do
 
       it 'should normalize site domains' do
         affiliate = described_class.create!(valid_create_attributes.merge(
-                                          site_domains_attributes: { '0' => { domain: 'www1.usa.gov' },
-                                                                     '1' => { domain: 'www2.usa.gov' },
-                                                                     '2' => { domain: 'usa.gov' } }))
+                                              site_domains_attributes: { '0' => { domain: 'www1.usa.gov' },
+                                                                         '1' => { domain: 'www2.usa.gov' },
+                                                                         '2' => { domain: 'usa.gov' } }))
         expect(affiliate.site_domains.reload.count).to eq(1)
         expect(affiliate.site_domains.first.domain).to eq('usa.gov')
 
         affiliate = described_class.create!(
-            valid_create_attributes.merge(
-                name: 'anothersite',
-                site_domains_attributes: { '0' => { domain: 'sec.gov' },
-                                           '1' => { domain: 'www.sec.gov.staging.net' } }))
+          valid_create_attributes.merge(
+            name: 'anothersite',
+            site_domains_attributes: { '0' => { domain: 'sec.gov' },
+                                       '1' => { domain: 'www.sec.gov.staging.net' } }))
         expect(affiliate.site_domains.reload.count).to eq(2)
         expect(affiliate.site_domains.pluck(:domain).sort).to eq(%w(sec.gov www.sec.gov.staging.net))
       end
@@ -264,7 +264,6 @@ describe Affiliate do
       expect(affiliate.related_sites_dropdown_label).to eq('More related sites')
     end
 
-
     it 'should set default RSS govbox label if the value is blank' do
       en_affiliate = described_class.create!(valid_create_attributes.merge(locale: 'en'))
       expect(en_affiliate.rss_govbox_label).to eq('News')
@@ -344,7 +343,7 @@ describe Affiliate do
 
     it 'validates logo alignment' do
       expect(described_class.new(valid_create_attributes.merge(
-                        css_property_hash: { 'logo_alignment' => 'invalid' }))).not_to be_valid
+                                   css_property_hash: { 'logo_alignment' => 'invalid' }))).not_to be_valid
     end
 
     it 'validates locale is valid' do
@@ -387,6 +386,7 @@ describe Affiliate do
 
     describe 'bing v5 key stripping' do
       subject { described_class.new(valid_create_attributes.merge(bing_v5_key: bing_v5_key)) }
+
       before { subject.save }
 
       [
@@ -398,7 +398,7 @@ describe Affiliate do
           let(:bing_v5_key) { blank_key }
 
           it 'sets it to nil' do
-            expect(subject.bing_v5_key).to be nil
+            expect(subject.bing_v5_key).to be_nil
           end
         end
       end
@@ -789,7 +789,7 @@ describe Affiliate do
       affiliate = affiliates(:non_existent_affiliate)
       expect(affiliate.user_emails).
         to eq('Another Manager Smith <another_affiliate_manager@fixtures.org>,' \
-              'Requires Manual Approval Affiliate Manager Smith '\
+              'Requires Manual Approval Affiliate Manager Smith ' \
               '<affiliate_manager_requires_manual_approval@fixtures.org>')
     end
   end
@@ -882,10 +882,6 @@ describe Affiliate do
   end
 
   describe '#default_autodiscovery_url' do
-    let(:site_domains_attributes) { nil }
-    let(:single_domain) { { '0' => { domain: 'usa.gov' } } }
-    let(:multiple_domains) { single_domain.merge({ '1' => { domain: 'navy.mil' } }) }
-
     subject do
       attrs = valid_create_attributes.dup.merge({
         website: website,
@@ -894,32 +890,42 @@ describe Affiliate do
       described_class.create!(attrs)
     end
 
+    let(:site_domains_attributes) { nil }
+    let(:single_domain) { { '0' => { domain: 'usa.gov' } } }
+    let(:multiple_domains) { single_domain.merge({ '1' => { domain: 'navy.mil' } }) }
+
     context 'when the website is empty' do
       let(:website) { nil }
+
       its(:default_autodiscovery_url) { should be_nil }
 
       context 'when a single site_domain is provided' do
         let(:site_domains_attributes) { single_domain }
+
         its(:default_autodiscovery_url) { should eq('http://usa.gov') }
       end
 
       context 'when mutiple site_domains are provided' do
         let(:site_domains_attributes) { multiple_domains }
+
         its(:default_autodiscovery_url) { should be_nil }
       end
     end
 
     context 'when the website is present' do
       let(:website) { valid_create_attributes[:website] }
+
       its(:default_autodiscovery_url) { should eq(website) }
 
       context 'when a single site_domain is provided' do
         let(:site_domains_attributes) { single_domain }
+
         its(:default_autodiscovery_url) { should eq(website) }
       end
 
       context 'when mutiple site_domains are provided' do
         let(:site_domains_attributes) { multiple_domains }
+
         its(:default_autodiscovery_url) { should eq(website) }
       end
     end

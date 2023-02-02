@@ -11,7 +11,7 @@ describe '/status/outbound_rate_limit' do
   it 'returns used_percentage' do
     get '/status/outbound_rate_limit.txt', params: { name: 'my_api' }
 
-    expect(response.status).to eq(200)
+    expect(response).to have_http_status(:ok)
     expect(response.body).to eq('name:my_api;limit:500;used_count:100;used_percentage:20%')
   end
 end

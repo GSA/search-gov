@@ -46,7 +46,7 @@ module YoutubeProfileData
   private
 
   def self.detect_url_type_and_id(path)
-    paths = path.to_s.split('/').reject(&:blank?)
+    paths = path.to_s.split('/').compact_blank
 
     type_and_id = []
     if path_starts_with_channel_or_user? paths

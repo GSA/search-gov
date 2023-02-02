@@ -27,6 +27,7 @@ describe ExcludedUrl do
 
   describe '#dup' do
     subject(:original_instance) { described_class.create!(@valid_attributes) }
+
     include_examples 'site dupable'
   end
 end

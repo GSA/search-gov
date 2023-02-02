@@ -14,7 +14,6 @@ describe 'User rake tasks' do
   let(:affiliate) { affiliates(:basic_affiliate) }
   let(:not_active_user) { users(:not_active_user) }
 
-
   describe 'usasearch:user:update_approval_status' do
     let(:task_name) { 'usasearch:user:update_approval_status' }
 

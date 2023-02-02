@@ -7,6 +7,7 @@ describe RtuTopN do
 
   describe '#top_n' do
     subject(:top_n) { rtu_top_n.top_n }
+
     let(:query_args) do
       {
         index: 'logstash-2019.01.01',

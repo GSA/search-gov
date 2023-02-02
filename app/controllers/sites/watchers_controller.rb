@@ -13,6 +13,9 @@ class Sites::WatchersController < Sites::SetupSiteController
     @watcher = watcher_type.new(COMMON_DEFAULTS.merge(watcher_type::WATCHER_DEFAULTS))
   end
 
+  def edit
+  end
+
   def create
     @watcher = watcher_type.new watcher_params
     if @watcher.save
@@ -21,9 +24,6 @@ class Sites::WatchersController < Sites::SetupSiteController
       load_hints
       render action: :new
     end
-  end
-
-  def edit
   end
 
   def update

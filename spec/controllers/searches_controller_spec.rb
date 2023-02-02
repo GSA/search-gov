@@ -47,7 +47,7 @@ describe SearchesController do
       end
 
       it { is_expected.to assign_to(:search_params).with(
-                      hash_including(affiliate: affiliate.name, query: 'social security')) }
+        hash_including(affiliate: affiliate.name, query: 'social security')) }
     end
 
     context 'when searching in English (redesign)' do
@@ -81,6 +81,7 @@ describe SearchesController do
 
   context 'when the affiliate is not active' do
     let(:affiliate) { affiliates(:inactive_affiliate) }
+
     before do
       get :index,
           params: {
@@ -101,6 +102,7 @@ describe SearchesController do
 
   context 'searching on a routed keyword' do
     let(:affiliate) { affiliates(:basic_affiliate) }
+
     context 'referrer does not match redirect url' do
       it 'redirects to the proper url' do
         get :index, params: { query: 'moar unclaimed money', affiliate: affiliate.name }
@@ -141,11 +143,13 @@ describe SearchesController do
 
       context 'when the match is exact except that the referring URL is http and the routed query URL is https' do
         let(:rq_url) { 'https://www.gov.gov/foo.html' }
+
         it_should_behave_like 'a routed query that matches the referrer'
       end
 
       context 'when the match is exact except that the referring URL is https and the routed query URL is http' do
         let(:ref_url) { 'https://www.gov.gov/foo.html' }
+
         it_should_behave_like 'a routed query that matches the referrer'
       end
     end
@@ -171,7 +175,7 @@ describe SearchesController do
     end
 
     it { is_expected.to assign_to(:search_params).with(
-                  hash_including(affiliate: affiliate.name, query: 'gov')) }
+      hash_including(affiliate: affiliate.name, query: 'gov')) }
 
     it { is_expected.to render_template(:i14y) }
 
@@ -197,7 +201,7 @@ describe SearchesController do
     end
 
     it { is_expected.to assign_to(:search_params).with(
-                  hash_including(affiliate: affiliate.name, query: 'gov')) }
+      hash_including(affiliate: affiliate.name, query: 'gov')) }
 
     it { is_expected.to render_template(:i14y) }
   end
@@ -393,7 +397,7 @@ describe SearchesController do
       end
 
       it { is_expected.to assign_to(:search_params).with(
-                      hash_including(affiliate: affiliate.name, query: 'gov')) }
+        hash_including(affiliate: affiliate.name, query: 'gov')) }
 
       it { is_expected.to render_template(:docs) }
 
@@ -635,14 +639,14 @@ describe SearchesController do
       end
 
       it { is_expected.to assign_to(:search_params).with(
-                      hash_including(affiliate: affiliate.name,
-                                     query: 'element',
-                                     channel: rss_feeds(:white_house_blog).id,
-                                     tbs: 'w',
-                                     sort_by: 'r',
-                                     contributor: 'The President',
-                                     publisher: 'The White House',
-                                     subject: 'Economy')) }
+        hash_including(affiliate: affiliate.name,
+                       query: 'element',
+                       channel: rss_feeds(:white_house_blog).id,
+                       tbs: 'w',
+                       sort_by: 'r',
+                       contributor: 'The President',
+                       publisher: 'The White House',
+                       subject: 'Economy')) }
     end
 
     context 'when searching with a date range' do
@@ -681,11 +685,11 @@ describe SearchesController do
       it { is_expected.to assign_to(:affiliate).with(affiliate) }
       it { is_expected.to assign_to(:search_options).with(hash_including(since_date: '10/1/2012', until_date:'10/15/2012')) }
       it { is_expected.to assign_to(:search_params).with(
-                      hash_including(affiliate: affiliate.name,
-                                     query: 'element',
-                                     channel: rss_feeds(:white_house_blog).id,
-                                     since_date: '10/01/2012',
-                                     until_date: '10/15/2012')) }
+        hash_including(affiliate: affiliate.name,
+                       query: 'element',
+                       channel: rss_feeds(:white_house_blog).id,
+                       since_date: '10/01/2012',
+                       until_date: '10/15/2012')) }
     end
 
     describe 'rendering the view' do

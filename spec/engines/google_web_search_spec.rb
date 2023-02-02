@@ -16,6 +16,7 @@ describe GoogleWebSearch do
 
     context 'when only required search params are passed in' do
       let(:minimum_search) { described_class.new(query: 'taxes') }
+
       it 'should set appropriate defaults' do
         expect(minimum_search.query).to eq('taxes')
         expect(minimum_search.filter_level).to eq('medium')
@@ -24,6 +25,7 @@ describe GoogleWebSearch do
 
     context 'when all search params are passed in' do
       let(:fully_specified_search) { described_class.new(query: 'taxes', offset: 11, filter: 2) }
+
       it 'should set appropriate values from params' do
         expect(fully_specified_search.query).to eq('taxes')
         expect(fully_specified_search.offset).to eq(11)

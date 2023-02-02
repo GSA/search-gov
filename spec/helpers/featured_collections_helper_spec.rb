@@ -4,6 +4,7 @@ describe FeaturedCollectionsHelper do
   describe '#featured_collection_image' do
     context 'when fc.image is present' do
       let(:fc) { FeaturedCollection.new(image_file_name: 'corgi.jpg') }
+
       it 'returns the content tag' do
         expect(helper.featured_collection_image(fc)).
           to eq "<div class=\"image\"><img src=\"#{fc.image.url(:medium)}\" /></div>"

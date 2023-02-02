@@ -19,7 +19,6 @@ describe RssFeed do
   it { is_expected.to have_many(:news_items).through :rss_feed_urls }
   it { is_expected.to have_readonly_attribute :is_managed }
 
-
   context 'on create' do
     let(:rss_feed_content) { File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml') }
 
@@ -163,15 +162,15 @@ describe RssFeed do
   end
 
   describe '.find_existing_or_initialize' do
+    subject { affiliate.rss_feeds.find_existing_or_initialize(name, url) }
+
     let(:name) { 'name' }
     let(:url) { rss_feed_urls(:white_house_press_gallery_url).url }
     let(:rfu) { [ ] }
     let(:affiliate) { affiliates(:basic_affiliate) }
 
-    subject { affiliate.rss_feeds.find_existing_or_initialize(name, url) }
-
     context 'when there are no rss_feeds records' do
-      it { is_expected.to be_kind_of(described_class) }
+      it { is_expected.to be_a(described_class) }
       it { is_expected.to be_new_record }
       its(:name) { should eq(name) }
     end
@@ -186,7 +185,8 @@ describe RssFeed do
 
       context 'when the RSS feed has the same name but no matching URLs' do
         let(:rfu) { [rss_feed_urls(:white_house_blog_url)] }
-        it { is_expected.to be_kind_of(described_class) }
+
+        it { is_expected.to be_a(described_class) }
         it { is_expected.to be_new_record }
         its(:name) { should eq(name) }
       end
@@ -194,13 +194,15 @@ describe RssFeed do
       context 'when the RSS feed has a different name but matching URLs' do
         let(:created_name) { 'other name' }
         let(:rfu) { [rss_feed_urls(:white_house_press_gallery_url)] }
-        it { is_expected.to be_kind_of(described_class) }
+
+        it { is_expected.to be_a(described_class) }
         it { is_expected.to be_new_record }
         its(:name) { should eq(name) }
       end
 
       context 'when the RSS feed has the same name and exactly one matching URL' do
         let(:rfu) { [rss_feed_urls(:white_house_press_gallery_url)] }
+
         it { is_expected.to eq(rss_feed) }
         it { is_expected.not_to be_new_record }
       end
@@ -262,6 +264,7 @@ describe RssFeed do
 
   describe '#dup' do
     subject(:original_instance) { rss_feeds(:white_house_blog) }
+
     include_examples 'dupable', %w(owner_id)
   end
 end

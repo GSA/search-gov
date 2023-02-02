@@ -14,6 +14,7 @@ describe I14yMembership do
 
   describe '#dup' do
     subject(:original_instance) { i14y_memberships(:one) }
+
     include_examples 'site dupable'
   end
 end

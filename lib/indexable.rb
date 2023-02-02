@@ -177,7 +177,7 @@ module Indexable
   end
 
   def host_list(client)
-    client.transport.hosts.collect { |h| h[:host] }.join(',')
+    client.transport.hosts.pluck(:host).join(',')
   end
 
 end

@@ -140,18 +140,18 @@ describe SearchgovUrl do
       it 'fetches and indexes the document' do
         expect(I14yDocument).to receive(:create).
           with(hash_including(
-            document_id: '1ff7dfd3cf763d08bee3546e2538cf0315578fbd7b1d3f28f014915983d4d7ef',
-            handle: 'searchgov',
-            path: url,
-            title: 'My OG Title',
-            description: 'My OG Description',
-            content: "This is my headline.\nThis is my content.",
-            content_type: 'video.movie',
-            language: 'en',
-            tags: 'this, that, the other, thing',
-            created: '2015-07-02T10:12:32-04:00',
-            changed: '2017-03-30T13:18:28-04:00',
-            mime_type: 'text/html'
+                 document_id: '1ff7dfd3cf763d08bee3546e2538cf0315578fbd7b1d3f28f014915983d4d7ef',
+                 handle: 'searchgov',
+                 path: url,
+                 title: 'My OG Title',
+                 description: 'My OG Description',
+                 content: "This is my headline.\nThis is my content.",
+                 content_type: 'video.movie',
+                 language: 'en',
+                 tags: 'this, that, the other, thing',
+                 created: '2015-07-02T10:12:32-04:00',
+                 changed: '2017-03-30T13:18:28-04:00',
+                 mime_type: 'text/html'
           ))
         fetch
       end
@@ -261,16 +261,16 @@ describe SearchgovUrl do
           it 'updates the document' do
             expect(I14yDocument).to receive(:update).
               with(hash_including(
-                document_id: '1ff7dfd3cf763d08bee3546e2538cf0315578fbd7b1d3f28f014915983d4d7ef',
-                handle: 'searchgov',
-                path: url,
-                title: 'My OG Title',
-                description: 'My OG Description',
-                content: "This is my headline.\nThis is my content.",
-                language: 'en',
-                tags: 'this, that, the other, thing',
-                created: '2015-07-02T10:12:32-04:00',
-                changed: '2017-03-30T13:18:28-04:00'
+                     document_id: '1ff7dfd3cf763d08bee3546e2538cf0315578fbd7b1d3f28f014915983d4d7ef',
+                     handle: 'searchgov',
+                     path: url,
+                     title: 'My OG Title',
+                     description: 'My OG Description',
+                     content: "This is my headline.\nThis is my content.",
+                     language: 'en',
+                     tags: 'this, that, the other, thing',
+                     created: '2015-07-02T10:12:32-04:00',
+                     changed: '2017-03-30T13:18:28-04:00'
               ))
             fetch
           end
@@ -431,13 +431,13 @@ describe SearchgovUrl do
       it 'fetches and indexes the document' do
         expect(I14yDocument).to receive(:create).
           with(hash_including(
-            handle: 'searchgov',
-            path: url,
-            title: 'My Title',
-            description: 'My description',
-            language: 'en',
-            tags: 'this, that',
-            created: '2018-06-09T17:42:11Z'
+                 handle: 'searchgov',
+                 path: url,
+                 title: 'My Title',
+                 description: 'My description',
+                 language: 'en',
+                 tags: 'this, that',
+                 created: '2018-06-09T17:42:11Z'
           ))
         fetch
       end
@@ -518,12 +518,12 @@ describe SearchgovUrl do
       it 'fetches and indexes the document' do
         expect(I14yDocument).to receive(:create).
           with(hash_including(
-            handle: 'searchgov',
-            path: url,
-            title: 'My Word Doc',
-            description: 'My Word doc description',
-            language: 'en',
-            tags: 'word'
+                 handle: 'searchgov',
+                 path: url,
+                 title: 'My Word Doc',
+                 description: 'My Word doc description',
+                 language: 'en',
+                 tags: 'word'
           ))
         fetch
       end
@@ -561,12 +561,12 @@ describe SearchgovUrl do
       it 'fetches and indexes the document' do
         expect(I14yDocument).to receive(:create).
           with(hash_including(
-            handle: 'searchgov',
-            path: url,
-            title: 'My Word Doc',
-            description: 'My Word doc description',
-            language: 'en',
-            tags: 'word'
+                 handle: 'searchgov',
+                 path: url,
+                 title: 'My Word Doc',
+                 description: 'My Word doc description',
+                 language: 'en',
+                 tags: 'word'
           ))
         fetch
       end
@@ -604,12 +604,12 @@ describe SearchgovUrl do
       it 'fetches and indexes the document' do
         expect(I14yDocument).to receive(:create).
           with(hash_including(
-            handle: 'searchgov',
-            path: url,
-            title: 'My Excel Doc',
-            description: 'My Excel doc description',
-            language: 'en',
-            tags: 'excel'
+                 handle: 'searchgov',
+                 path: url,
+                 title: 'My Excel Doc',
+                 description: 'My Excel doc description',
+                 language: 'en',
+                 tags: 'excel'
           ))
         fetch
       end
@@ -647,12 +647,12 @@ describe SearchgovUrl do
       it 'fetches and indexes the document' do
         expect(I14yDocument).to receive(:create).
           with(hash_including(
-            handle: 'searchgov',
-            path: url,
-            title: 'My Excel Doc',
-            description: 'My Excel doc description',
-            language: 'en',
-            tags: 'excel'
+                 handle: 'searchgov',
+                 path: url,
+                 title: 'My Excel Doc',
+                 description: 'My Excel doc description',
+                 language: 'en',
+                 tags: 'excel'
           ))
         fetch
       end
@@ -690,12 +690,12 @@ describe SearchgovUrl do
       it 'fetches and indexes the document' do
         expect(I14yDocument).to receive(:create).
           with(hash_including(
-            handle: 'searchgov',
-            path: 'https://agency.gov/test.txt',
-            title: 'test.txt',
-            description: nil,
-            content: 'This is my text content.',
-            language: 'en'
+                 handle: 'searchgov',
+                 path: 'https://agency.gov/test.txt',
+                 title: 'test.txt',
+                 description: nil,
+                 content: 'This is my text content.',
+                 language: 'en'
           ))
         fetch
       end

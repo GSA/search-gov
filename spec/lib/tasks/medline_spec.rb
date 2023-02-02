@@ -11,6 +11,7 @@ describe 'Medline rake tasks' do
 
   describe 'usasearch:medline:load' do
     let(:task_name) { 'usasearch:medline:load' }
+
     before { @rake[task_name].reenable }
 
     it "should have 'environment' as a prereq" do

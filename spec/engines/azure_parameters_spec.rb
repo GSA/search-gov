@@ -3,6 +3,7 @@ require 'spec_helper'
 describe AzureParameters do
   describe '#to_hash' do
     subject { described_class.new(options).to_hash }
+
     let(:options) do
       {
         language: language_code,
@@ -10,6 +11,7 @@ describe AzureParameters do
       }
     end
     let(:language_code) { 'de' }
+
     before { allow(Language).to receive(:find_by_code).with(language_code).and_return(language) }
 
     context 'when the specified language does not exist' do

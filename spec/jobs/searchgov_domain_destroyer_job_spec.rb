@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe SearchgovDomainDestroyerJob do
   subject(:perform) { described_class.perform_now(args) }
+
   let(:domain) { 'www.archive.gov' }
   let!(:searchgov_domain) {
     SearchgovDomain.create!(domain: domain, status: 200)

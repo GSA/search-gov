@@ -8,6 +8,9 @@ class Sites::DocumentCollectionsController < Sites::SetupSiteController
     @document_collections = @site.document_collections
   end
 
+  def show
+  end
+
   def new
     @document_collection = @site.document_collections.build
     build_url_prefix
@@ -16,6 +19,10 @@ class Sites::DocumentCollectionsController < Sites::SetupSiteController
   def new_url_prefix
     @index = params[:index].to_i
     respond_to { |format| format.js }
+  end
+
+  def edit
+    build_url_prefix
   end
 
   def create
@@ -29,13 +36,6 @@ class Sites::DocumentCollectionsController < Sites::SetupSiteController
       load_hints
       render action: :new
     end
-  end
-
-  def show
-  end
-
-  def edit
-    build_url_prefix
   end
 
   def update

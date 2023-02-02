@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ImageSearchesController < ApplicationController
-  layout 'searches'
+  layout :set_layout
 
   before_action :set_affiliate, :set_locale_based_on_affiliate_locale
   before_action :set_search_options
@@ -9,6 +9,7 @@ class ImageSearchesController < ApplicationController
 
   def index
     @search = ImageSearch.new(@search_options)
+    template = redesign? ? :index_redesign : :index
     @search.run
     @page_title = @search.query
     set_search_page_title
@@ -16,7 +17,7 @@ class ImageSearchesController < ApplicationController
     set_search_params
     SearchImpression.log(@search, @search_vertical, params, request)
     respond_to do |format|
-      format.html
+      format.html { render template }
       format.json { render json: @search }
     end
   end
@@ -30,5 +31,13 @@ class ImageSearchesController < ApplicationController
       page: permitted_params[:page],
       query: sanitize_query(permitted_params[:query]) || ''
     }
+  end
+
+  def redesign?
+    permitted_params[:redesign] == 'true'
+  end
+
+  def set_layout
+    redesign? ? 'searches_redesign' : 'searches'
   end
 end

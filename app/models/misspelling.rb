@@ -6,7 +6,7 @@ class Misspelling < ApplicationRecord
   validates_presence_of :wrong, :rite
   validates_uniqueness_of :wrong, :case_sensitive => false
   validates_length_of :wrong, :within=> (3..80)
-  validates_format_of :wrong, :with=> /\A[\w#{LETTERS_WITH_DIACRITIC}\.'-]+\z/iu
+  validates_format_of :wrong, :with=> /\A[\w#{LETTERS_WITH_DIACRITIC}.'-]+\z/iu
 
   def self.correct(phrase)
     return if phrase.nil?

@@ -161,7 +161,7 @@ group :development do
   # Bumping searchgov_style? Be sure to update rubocop, if possible,
   # and the Rubocop channel in .codeclimate.yml to match the updated rubocop version
   gem 'searchgov_style', '~> 0.1', require: false
-  gem 'rubocop', '1.23.0', require: false
+  gem 'rubocop', '1.39.0', require: false
   # Use console on exceptions pages [https://github.com/rails/web-console]
   # gem 'web-console'
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]

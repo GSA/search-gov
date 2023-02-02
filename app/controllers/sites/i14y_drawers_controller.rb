@@ -25,6 +25,9 @@ class Sites::I14yDrawersController < Sites::SetupSiteController
     @i14y_drawer = @site.i14y_drawers.build
   end
 
+  def edit
+  end
+
   def create
     @i14y_drawer = @site.i14y_drawers.build i14y_drawer_params
     if @i14y_drawer.save
@@ -34,9 +37,6 @@ class Sites::I14yDrawersController < Sites::SetupSiteController
       load_hints
       render action: :new
     end
-  end
-
-  def edit
   end
 
   def update

@@ -20,7 +20,6 @@ describe NewsItemsChecker do
       }.and_yield('http://www.example.com/page1', '200 OK').
         and_yield(news_item_with_404_link.link, '404 Not Found')
 
-
       expect(NewsItem).to receive(:where).
         with(rss_feed_url_id: rss_feed_url.id,
              link: [news_item_with_404_link.link]).

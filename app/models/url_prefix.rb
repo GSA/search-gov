@@ -4,7 +4,7 @@ class UrlPrefix < ApplicationRecord
   before_validation :ensure_protocol_and_trailing_slash_on_prefix
   validates_presence_of :prefix
   validates_uniqueness_of :prefix, :scope => :document_collection_id, :case_sensitive => false
-  validates_format_of :prefix, :with => /\Ahttps?:\/\/[a-z0-9]+([\-\.][a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/]\S*)?\/\z/ix
+  validates_format_of :prefix, :with => /\Ahttps?:\/\/[a-z0-9]+([-.][a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/]\S*)?\/\z/ix
   validates_url :prefix
   validates_length_of :prefix, maximum: 255
   belongs_to :document_collection

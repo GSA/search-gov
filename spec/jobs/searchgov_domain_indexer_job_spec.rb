@@ -22,7 +22,7 @@ describe SearchgovDomainIndexerJob do
 
     it 'fetches the url' do
       perform
-      expect(searchgov_url.reload.last_crawl_status).not_to be nil
+      expect(searchgov_url.reload.last_crawl_status).not_to be_nil
     end
 
     it 'transitions the domain activity back to "idle"' do

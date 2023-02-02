@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# frozen_string_literal: true
-
 describe User do
   let(:valid_attributes) do
     { email: 'unique_login@agency.gov',
@@ -156,25 +154,25 @@ describe User do
     context 'when the user first name is empty' do
       let(:user) { users(:no_first_name) }
 
-      it { is_expected.to eq(false) }
+      it { is_expected.to be(false) }
     end
 
     context 'when the user last name is empty' do
       let(:user) { users(:no_last_name) }
 
-      it { is_expected.to eq(false) }
+      it { is_expected.to be(false) }
     end
 
     context 'when the user organization name is empty' do
       let(:user) { users(:no_organization_name) }
 
-      it { is_expected.to eq(false) }
+      it { is_expected.to be(false) }
     end
 
     context 'when the user contact name and organization name are not empty' do
       let(:user) { users(:affiliate_manager) }
 
-      it { is_expected.to eq(true) }
+      it { is_expected.to be(true) }
     end
   end
 
@@ -259,9 +257,10 @@ describe User do
 
     # login.gov - commented out till SRCH-952. Updating email address will have a different flow.
     pending 'when updating an email address' do
+      subject(:update_email) { user.update(email: new_email) }
+
       let(:user) { users(:affiliate_admin) }
       let(:new_email) { 'new@new.gov' }
-      subject(:update_email) { user.update(email: new_email) }
 
       context 'to a non-government address' do
         let(:new_email) { 'random@random.com' }
@@ -463,7 +462,7 @@ describe User do
 
     let(:auth) { mock_user_auth('foo@gsa.gov', '55555') }
 
-    it { is_expected.to be_a_kind_of(described_class) }
+    it { is_expected.to be_a(described_class) }
 
     context 'when the user is new' do
       it 'sets the uid' do

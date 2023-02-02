@@ -11,6 +11,7 @@ describe 'Twitter rake tasks' do
   describe 'usasearch:twitter' do
     describe 'usasearch:twitter:expire' do
       let(:task_name) { 'usasearch:twitter:expire' }
+
       before { @rake[task_name].reenable }
 
       it "should have 'environment' as a prereq" do
@@ -171,7 +172,7 @@ describe 'Twitter rake tasks' do
         it 'should create a new tweet for every status received' do
           allow(@stream).to receive(:each).and_yield(tweet_status_json)
           expect(@logger).to receive(:info).with("[#{now}] [TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
-          expect(@logger).to receive(:info).with("[#{now}] [TWITTER] [FOLLOW] New tweet received: @usasearchdev: Fast. Relevant. Free.\nFeatures: http:\/\/t.co\/l8VhWiZH http:\/\/t.co\/y5YSDq7M")
+          expect(@logger).to receive(:info).with("[#{now}] [TWITTER] [FOLLOW] New tweet received: @usasearchdev: Fast. Relevant. Free.\nFeatures: http://t.co/l8VhWiZH http://t.co/y5YSDq7M")
           expect(TwitterData).to receive(:within_tweet_creation_time_threshold?) { true }
           @rake[task_name].invoke
           expect(Tweet.count).to eq(1)
@@ -183,7 +184,7 @@ describe 'Twitter rake tasks' do
         it 'should persist urls with complete data' do
           allow(@stream).to receive(:each).and_yield(tweet_status_with_partial_urls_json)
           expect(@logger).to receive(:info).with("[#{now}] [TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
-          expect(@logger).to receive(:info).with("[#{now}] [TWITTER] [FOLLOW] New tweet received: @usasearchdev: Fast. Relevant. Free.\nFeatures: http:\/\/t.co\/l8VhWiZH http:\/\/t.co\/y5YSDq7M")
+          expect(@logger).to receive(:info).with("[#{now}] [TWITTER] [FOLLOW] New tweet received: @usasearchdev: Fast. Relevant. Free.\nFeatures: http://t.co/l8VhWiZH http://t.co/y5YSDq7M")
           expect(TwitterData).to receive(:within_tweet_creation_time_threshold?).and_return(true)
           @rake[task_name].invoke
           expect(Tweet.count).to eq(1)
@@ -211,7 +212,7 @@ describe 'Twitter rake tasks' do
         it 'should log an error if something goes wrong in creating a Tweet' do
           allow(@stream).to receive(:each).and_yield(tweet_status_json)
           expect(@logger).to receive(:info).with("[#{now}] [TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
-          expect(@logger).to receive(:info).with("[#{now}] [TWITTER] [FOLLOW] New tweet received: @usasearchdev: Fast. Relevant. Free.\nFeatures: http:\/\/t.co\/l8VhWiZH http:\/\/t.co\/y5YSDq7M")
+          expect(@logger).to receive(:info).with("[#{now}] [TWITTER] [FOLLOW] New tweet received: @usasearchdev: Fast. Relevant. Free.\nFeatures: http://t.co/l8VhWiZH http://t.co/y5YSDq7M")
           expect(@logger).to receive(:error).with("[#{now}] [TWITTER] [FOLLOW] [ERROR] Encountered error while handling tweet with status_id=258289885373423617: Some Exception")
           expect(TwitterData).to receive(:import_tweet).and_raise 'Some Exception'
           @rake[task_name].invoke
@@ -249,7 +250,7 @@ describe 'Twitter rake tasks' do
           allow(@stream).to receive(:each).and_yield(tweet_status_json)
           allow(@stream).to receive(:on_reconnect).and_yield(10, 1)
           expect(@logger).to receive(:info).with("[#{now}] [TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
-          expect(@logger).to receive(:info).with("[#{now}] [TWITTER] [FOLLOW] New tweet received: @usasearchdev: Fast. Relevant. Free.\nFeatures: http:\/\/t.co\/l8VhWiZH http:\/\/t.co\/y5YSDq7M")
+          expect(@logger).to receive(:info).with("[#{now}] [TWITTER] [FOLLOW] New tweet received: @usasearchdev: Fast. Relevant. Free.\nFeatures: http://t.co/l8VhWiZH http://t.co/y5YSDq7M")
           expect(@logger).to receive(:info).with("[#{now}] [TWITTER] [RECONNECT] Reconnecting timeout: 10 retries: 1")
           @rake[task_name].invoke
         end
@@ -260,7 +261,7 @@ describe 'Twitter rake tasks' do
           expect(EM).to receive(:add_periodic_timer).and_yield
           allow(@stream).to receive(:each).and_yield(tweet_status_json)
           expect(@logger).to receive(:info).with("[#{now}] [TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
-          expect(@logger).to receive(:info).with("[#{now}] [TWITTER] [FOLLOW] New tweet received: @usasearchdev: Fast. Relevant. Free.\nFeatures: http:\/\/t.co\/l8VhWiZH http:\/\/t.co\/y5YSDq7M")
+          expect(@logger).to receive(:info).with("[#{now}] [TWITTER] [FOLLOW] New tweet received: @usasearchdev: Fast. Relevant. Free.\nFeatures: http://t.co/l8VhWiZH http://t.co/y5YSDq7M")
           expect(@logger).to receive(:info).with("[#{now}] [TWITTER] [RESET_STREAM]")
           expect(@client).to receive(:stop_stream)
           @rake[task_name].invoke
@@ -272,7 +273,7 @@ describe 'Twitter rake tasks' do
           expect(EM).to receive(:add_periodic_timer).and_yield
           allow(@stream).to receive(:each).and_yield(tweet_status_json)
           expect(@logger).to receive(:info).with("[#{now}] [TWITTER] [CONNECT] Connecting to Twitter to follow 1 Twitter profiles.")
-          expect(@logger).to receive(:info).with("[#{now}] [TWITTER] [FOLLOW] New tweet received: @usasearchdev: Fast. Relevant. Free.\nFeatures: http:\/\/t.co\/l8VhWiZH http:\/\/t.co\/y5YSDq7M")
+          expect(@logger).to receive(:info).with("[#{now}] [TWITTER] [FOLLOW] New tweet received: @usasearchdev: Fast. Relevant. Free.\nFeatures: http://t.co/l8VhWiZH http://t.co/y5YSDq7M")
           expect(@client).not_to receive(:stop_stream)
           @rake[task_name].invoke
         end

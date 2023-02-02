@@ -109,14 +109,9 @@ If you find that you need to run specs that interact with a remote service, you'
 
 Anything listed in the `secret_keys` entry of that file will automatically be masked by VCR in newly-recorded cassettes.
 
-## Database
+## Data
 
-Create and set up your development and test databases:
-
-    $ rails db:setup
-    $ rails db:test:prepare
-     
-### Indexes
+### Elasticsearch Indexes
 
 You can create the USASearch-related indexes like this:
 
@@ -147,6 +142,13 @@ In production, if you are changing a schema and want to migrate the index withou
 Same thing, but using Resque to index in parallel:
 
     $ rake usasearch:elasticsearch:resque_migrate[FeaturedCollection]
+
+### MySQL Database
+
+Create and set up your development and test databases:
+
+    $ rails db:setup
+    $ rails db:test:prepare
 
 # Tests
 
@@ -188,8 +190,9 @@ To run test searches, you will need a working Bing API key. You can request one 
 ```
 rails server
 ```
-3. A test search should return results:
-http://localhost:3000/search?affiliate=usagov&query=government
+3. Test searches should return results:
+* http://localhost:3000/search?affiliate=test_affiliate&query=news
+* http://localhost:3000/search/news?affiliate=test_affiliate&channel=1&query=news
 
 ## Creating a new local admin account
 [Login.gov](https://login.gov) is used for authentication.

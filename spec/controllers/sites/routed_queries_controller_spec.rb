@@ -164,6 +164,7 @@ describe Sites::RoutedQueriesController do
 
       context 'when routed query params are valid' do
         let(:keyword) { 'free money' }
+
         it { is_expected.to assign_to(:routed_query).with(routed_query) }
         it { is_expected.to redirect_to site_routed_queries_path(site) }
         it { is_expected.to set_flash.to("You have updated query routing for the following search term: '#{keyword}'") }
@@ -171,6 +172,7 @@ describe Sites::RoutedQueriesController do
 
       context 'when routed query params are not valid' do
         let(:keyword) { '' }
+
         it { is_expected.to assign_to(:routed_query).with(routed_query) }
         it { is_expected.to render_template(:edit) }
       end

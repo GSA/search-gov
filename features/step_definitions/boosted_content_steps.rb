@@ -1,4 +1,4 @@
-Given /^the following Boosted Content entries exist for the affiliate "([^\"]*)"$/ do |aff_name, table|
+Given /^the following Boosted Content entries exist for the affiliate "([^"]*)"$/ do |aff_name, table|
   affiliate = Affiliate.find_by_name aff_name
   table.hashes.collect do |hash|
     hash[:affiliate] = affiliate

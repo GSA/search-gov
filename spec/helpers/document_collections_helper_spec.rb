@@ -8,6 +8,7 @@ describe DocumentCollectionsHelper do
 
   describe '#link_to_preview_collection' do
     subject { helper.link_to_preview_collection(site, collection) }
+
     let(:link) do
       "a[href=\"http://test.host/search/docs?affiliate=usagov&dc=#{collection.id}&query=government\"][target=\"_blank\"]"
     end
