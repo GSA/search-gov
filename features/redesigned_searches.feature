@@ -50,11 +50,11 @@ Feature: Search - redesign
   @javascript
   Scenario: News search
     Given the following Affiliates exist:
-      | display_name     | name       | contact_email | first_name | last_name | locale | youtube_handles |
-      | bar site         | bar.gov    | aff@bar.gov   | John       | Bar       | en     | en_agency       |
+      | display_name     | name       | contact_email | first_name | last_name |
+      | bar site         | bar.gov    | aff@bar.gov   | John       | Bar       |
     And affiliate "bar.gov" has the following RSS feeds:
-      | name   | url                                  | is_navigable | is_managed |
-      | Press  | http://www.whitehouse.gov/feed/press | true         |            |
+      | name   | url                                  | is_navigable |
+      | Press  | http://www.whitehouse.gov/feed/press | true         |
     And feed "Press" has the following news items:
       | link                             | title       | guid  | published_ago | description                       |
       | http://www.whitehouse.gov/news/1 | First item  | uuid1 | day           | item First news item for the feed |
