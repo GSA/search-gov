@@ -63,3 +63,11 @@ Feature: Search - redesign
     And I should see "First"
     And I should see "Second"
     And I should see exactly "2" web search results
+
+  @javascript
+  Scenario: Docs search
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email | first_name | last_name | domains |
+      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov |
+    When I am on agency.gov's redesigned docs search page with "USA" query
+    Then I should see exactly "20" web search results

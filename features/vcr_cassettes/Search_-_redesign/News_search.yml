@@ -1,0 +1,25 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/search?handles=searchgov&language=en&offset=0&query=Press%20site:www.epa.gov%20site:archive.epa.gov&size=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      Expect:
+      - ''
+  response:
+    status:
+      code: 0
+      message:
+    headers: {}
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Fri, 03 Feb 2023 22:38:24 GMT
+recorded_with: VCR 6.1.0
