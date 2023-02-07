@@ -105,7 +105,10 @@ gem 'active_scheduler', '~> 0.7.0'
 gem 'retriable', '~> 3.1'
 gem 'cld3', '~> 3.4.3'
 gem 'activejob-uniqueness', '~> 0.2.1'
-gem 'selenium-webdriver'
+# Temporarily locking the version to resolve SRCH-3788.
+# The fix for the bug in SRCH-3788 is NOT covered by automated specs.
+# A spec will be added (if possible) per SRCH-3790
+gem 'selenium-webdriver', '4.7.1'
 gem 'webdrivers', '~> 5.0'
 gem 'exception_notification', '~> 4.5'
 gem 'dogapi', '~> 1.45'
@@ -179,7 +182,9 @@ group :development, :test do
   gem 'pry-byebug', '~> 3.5'
   gem 'faker', '~> 1.8'
   gem 'pry-rails', '~> 0.3.6'
-  gem 'awesome_print'
+  # For improved console readability:
+  # https://github.com/amazing-print/amazing_print
+  gem 'amazing_print', '~> 1.4'
   gem 'puma', '~> 5.3'
   gem 'debug'
   gem 'bootsnap', '~> 1.13', require: 'bootsnap/setup'
