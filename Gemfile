@@ -105,7 +105,10 @@ gem 'active_scheduler', '~> 0.7.0'
 gem 'retriable', '~> 3.1'
 gem 'cld3', '~> 3.4.3'
 gem 'activejob-uniqueness', '~> 0.2.1'
-gem 'selenium-webdriver'
+# Temporarily locking the version to resolve SRCH-3788.
+# The fix for the bug in SRCH-3788 is NOT covered by automated specs.
+# A spec will be added (if possible) per SRCH-3790
+gem 'selenium-webdriver', '4.7.1'
 gem 'webdrivers', '~> 5.0'
 gem 'exception_notification', '~> 4.5'
 gem 'dogapi', '~> 1.45'
