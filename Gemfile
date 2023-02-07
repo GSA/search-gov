@@ -179,7 +179,9 @@ group :development, :test do
   gem 'pry-byebug', '~> 3.5'
   gem 'faker', '~> 1.8'
   gem 'pry-rails', '~> 0.3.6'
-  gem 'awesome_print'
+  # For improved console readability:
+  # https://github.com/amazing-print/amazing_print
+  gem 'amazing_print', '~> 1.4'
   gem 'puma', '~> 5.3'
   gem 'debug'
   gem 'bootsnap', '~> 1.13', require: 'bootsnap/setup'
