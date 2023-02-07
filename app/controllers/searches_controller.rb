@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SearchesController < ApplicationController
-  layout :set_layout, only: [:index]
+  layout :set_layout
 
   skip_before_action :verify_authenticity_token, :set_default_locale
 
@@ -41,6 +41,7 @@ class SearchesController < ApplicationController
     set_search_page_title
     set_search_params
     template = search_klass == I14ySearch ? :i14y : :docs
+    template = :index_redesign if redesign?
     respond_to { |format| format.html { render template } }
   end
 
@@ -52,7 +53,8 @@ class SearchesController < ApplicationController
     set_search_page_title
     @search_vertical = :news
     set_search_params
-    respond_to { |format| format.html {} }
+    template = redesign? ? :index_redesign : :news
+    respond_to { |format| format.html { render template } }
   end
 
   def advanced
