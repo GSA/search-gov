@@ -196,6 +196,7 @@ GEM
     after_commit_action (1.1.0)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
+    amazing_print (1.4.0)
     american_date (1.1.1)
     ast (2.4.2)
     authlogic (6.4.2)
@@ -203,7 +204,6 @@ GEM
       activerecord (>= 5.2, < 7.1)
       activesupport (>= 5.2, < 7.1)
       request_store (~> 1.0)
-    awesome_print (1.9.2)
     aws-eventstream (1.2.0)
     aws-partitions (1.699.0)
     aws-sdk-core (3.169.0)
@@ -867,9 +867,9 @@ DEPENDENCIES
   activerecord-validate_unique_child_attribute
   addressable (~> 2.8.0)
   after_commit_action (~> 1.1)
+  amazing_print (~> 1.4)
   american_date (~> 1.1.1)
   authlogic (~> 6.4.1)
-  awesome_print
   aws-sdk-s3 (~> 1.102.0)
   bootsnap (~> 1.13)
   capybara (~> 3.26)
