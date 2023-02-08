@@ -6,14 +6,14 @@ import { SearchBar } from './SearchBar/SearchBar';
 import { Results } from './Results/Results';
 import { Footer } from './Footer/Footer';
 import { Identifier } from './Identifier/Identifier';
-
 interface SearchResultsLayoutProps {
-  results: any;
-  params: any;
-  vertical: any;
+  results: {}[];
+  vertical: string;
+  params?: string;
 };
 
 const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
+  console.log({props});
   return (
     <React.Fragment>
       <Header 

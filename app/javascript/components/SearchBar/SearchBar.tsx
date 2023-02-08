@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { ExtendedNav, Search, GridContainer, Grid } from '@trussworks/react-uswds';
-
 interface SearchBarProps {
-  results: []
+  results: {}[]
 }
 
 export const SearchBar = (props: SearchBarProps) => {

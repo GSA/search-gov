@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
-
 interface ResultsProps {
-  results: []
+  results: {}[]
   vertical: string
 }
 
