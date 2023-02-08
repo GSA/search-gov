@@ -25,33 +25,19 @@ describe AffiliateIndexedDocumentFetcher, '#perform(affiliate_id, start_id, end_
   it_behaves_like 'a ResqueJobStats job'
 
   it "should handle scope 'ok'" do
-    expect(IndexedDocument).to receive(:find).once.with(@ok.id).and_return @ok
-    expect(@ok).to receive(:fetch)
+    expect(IndexedDocumentFetcherJob).to receive(:perform_later).once.with(indexed_document_id: @ok.id).and_return @ok
     described_class.perform(@affiliate.id, 1, 2**30, 'ok')
   end
 
   it "should handle scope 'not_ok'" do
-    expect(IndexedDocument).to receive(:find).with(@not_ok.id).and_return @not_ok
-    expect(IndexedDocument).to receive(:find).with(@unfetched.id).and_return @unfetched
-    expect(@unfetched).to receive(:fetch)
-    expect(@not_ok).to receive(:fetch)
+    expect(IndexedDocumentFetcherJob).to receive(:perform_later).with(indexed_document_id: @not_ok.id).and_return @not_ok
+    expect(IndexedDocumentFetcherJob).to receive(:perform_later).with(indexed_document_id: @unfetched.id).and_return @unfetched
     described_class.perform(@affiliate.id, 1, 2**30, 'not_ok')
   end
 
   it "should handle scope 'unfetched'" do
-    expect(IndexedDocument).to receive(:find).once.with(@unfetched.id).and_return @unfetched
-    expect(@unfetched).to receive(:fetch)
+    expect(IndexedDocumentFetcherJob).to receive(:perform_later).once.with(indexed_document_id: @unfetched.id).and_return @unfetched
     described_class.perform(@affiliate.id, 1, 2**30, 'unfetched')
-  end
-
-  context 'when affiliate or indexed document have disappeared before job runs' do
-    before do
-      allow(IndexedDocument).to receive(:find).and_raise ActiveRecord::RecordNotFound
-    end
-
-    it 'should ignore the problem and move on' do
-      described_class.perform(@affiliate.id, 1, 2**30, 'unfetched')
-    end
   end
 
   describe '.before_perform_with_timeout' do

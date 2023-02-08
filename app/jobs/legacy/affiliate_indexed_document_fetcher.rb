@@ -10,9 +10,7 @@ class AffiliateIndexedDocumentFetcher
   def self.perform(affiliate_id, start_id, end_id, scope)
     conditions = ["id between ? and ?", start_id, end_id]
     Affiliate.find(affiliate_id).indexed_documents.select(:id).send(scope.to_sym).where(conditions).order(:last_crawled_at).each do |indexed_document|
-      IndexedDocument.find(indexed_document.id).fetch
+      IndexedDocumentFetcherJob.perform_later(indexed_document_id: indexed_document.id)
     end
-  rescue ActiveRecord::RecordNotFound => e
-    Rails.logger.warn "Ignoring race condition in AffiliateIndexedDocumentFetcher: #{e}"
   end
 end
