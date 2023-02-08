@@ -13,7 +13,6 @@ interface SearchResultsLayoutProps {
 };
 
 const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
-  console.log({props});
   return (
     <React.Fragment>
       <Header 
