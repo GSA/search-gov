@@ -1,8 +1,12 @@
 # frozen_string_literal: true
 
+# https://search.gov/admin-center/content/rss.html
+# 
 # After seeding the database, you should see these news items on the SERP and News facet:
 # /search?affiliate=test_affiliate&query=news
 # /search/news?affiliate=test_affiliate&channel=1&query=news
+
+puts 'Creating news items'
 
 affiliate = Affiliate.find_by(name: 'test_affiliate')
 

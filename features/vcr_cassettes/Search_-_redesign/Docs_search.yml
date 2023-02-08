@@ -1,0 +1,281 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/search?handles=searchgov&language=en&offset=0&query=Press%20site:www.epa.gov%20site:archive.epa.gov&size=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      Expect:
+      - ''
+  response:
+    status:
+      code: 0
+      message:
+    headers: {}
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Fri, 03 Feb 2023 22:41:09 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=usa%20(site:usa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Fri, 03 Feb 2023 22:56:02 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      Bingapis-Traceid:
+      - 63dd913e45ac4c19bda39b8d37b048a1
+      Bingapis-Sessionid:
+      - 1DF925CFA2CE4092BFC0029A5C2CBB2F
+      X-Msedge-Clientid:
+      - 2C3FD00EFA99649A1A89C2A3FBF86572
+      X-Msapi-Userstate:
+      - e26a
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=255,MSDatacenter=CH1B
+      X-Cache:
+      - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      X-Msedge-Ref:
+      - 'Ref A: 24969ECBB28744A6A539B05AF8ABCC2D Ref B: CH1EDGE0814 Ref C: 2023-02-03T22:57:02Z'
+      Apim-Request-Id:
+      - aba4560d-98f6-4ca4-b5b7-7b524a131810
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Fri, 03 Feb 2023 22:57:02 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "usa
+        (site:usa.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=usa+(site%3ausa.gov)",
+        "totalEstimatedMatches": 47800000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Official Guide to Government Information and Services | USAGov",
+        "url": "https:\/\/www.usa.gov\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.usa.gov", "snippet": "Learn how to prepare for and recover
+        from disasters and emergencies. Find government information on getting and
+        funding an education in the U.S. Find information for federal, state, and
+        local government agencies and elected officials. Find health resources from
+        the government. Get information and services to help with finding and keeping
+        a home.", "dateLastCrawled": "2023-01-30T04:12:00.0000000Z", "language": "en",
+        "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "COVID-19 | USAGov", "url": "https:\/\/www.usa.gov\/coronavirus",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/coronavirus",
+        "snippet": "COVID-19 unemployment benefits can help employees, gig workers,
+        and self-employed people whose jobs have been affected by the coronavirus
+        pandemic. Financial Assistance for Food, Housing, and Bills. Get government
+        help during the COVID-19 pandemic with rent, student loans, food stamps,
+        meal programs, funeral expenses, and more.", "dateLastCrawled": "2023-02-01T09:30:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "About USA.gov | USAGov", "url": "https:\/\/www.usa.gov\/about",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/about",
+        "snippet": "About USA.gov. Our mission is to create and organize timely,
+        needed government information and services and make them accessible anytime,
+        anywhere, via your channel of choice. Contact us with any government question
+        you may have. Software developers and researchers can use these APIs and data
+        feeds to help people find useful government information.", "dateLastCrawled":
+        "2023-02-01T15:32:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3", "name": "Unclaimed
+        Money from the Government | USAGov", "url": "https:\/\/www.usa.gov\/unclaimed-money",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/unclaimed-money",
+        "snippet": "Unclaimed property can include many things, including cash, checks,
+        money orders, security deposits, or the contents of safe deposit boxes. The
+        federal government doesn’t have a central website for finding unclaimed money.
+        But you don’t need to hire a company to find unclaimed money for you. You
+        can find it on your own for free, using ...", "dateLastCrawled": "2023-02-01T06:37:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Branches of the U.S. Government | USAGov", "url": "https:\/\/www.usa.gov\/branches-of-government",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/branches-of-government",
+        "snippet": "The Constitution of the United States divides the federal government
+        into three branches to make sure no individual or group will have too much
+        power: Legislative—Makes laws (Congress, comprised of the House of Representatives
+        and Senate) Executive—Carries out laws (president, vice president, Cabinet,
+        most federal agencies) Judicial ...", "dateLastCrawled": "2023-02-01T06:19:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Government Benefits, Grants, and Loans | USAGov", "url": "https:\/\/www.usa.gov\/benefits-grants-loans",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/benefits-grants-loans",
+        "snippet": "Find food programs including SNAP (food stamps), WIC, school meals,
+        and more. Get emergency food assistance during the COVID-19 pandemic. Learn
+        about government grants and loans for states and organizations. Find government
+        programs to help with phone bills, medical bills, and other expenses. Get
+        COVID rent assistance.", "dateLastCrawled": "2023-01-30T04:18:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Unemployment Help | USAGov", "url": "https:\/\/www.usa.gov\/unemployment",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/unemployment",
+        "snippet": "Federal agencies offer many unemployment education and training
+        programs. They are generally free or low cost to the unemployed. Self-Employment
+        Help. Self-employment assistance programs help unemployed workers start their
+        own small businesses. Delaware, Mississippi, New Hampshire, New York, and
+        Oregon offer this program.", "dateLastCrawled": "2023-02-01T04:31:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Apply for Nonimmigrant Visas to the U.S. | USAGov", "url": "https:\/\/www.usa.gov\/visas",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/visas",
+        "snippet": "Apply for a visa. The process of applying for a visa will vary
+        depending on the U.S. Embassy or Consulate where you apply. Follow the specific
+        instructions for the country that you’re in. In general, you will need: To
+        complete online form DS-160, the nonimmigrant visa application form. A photo.
+        A visa application fee.", "dateLastCrawled": "2023-02-01T06:37:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "The American Flag | USAGov", "url": "https:\/\/www.usa.gov\/flag",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/flag", "snippet":
+        "The American Flag and Its Flying Rules. The Flag of the United States of
+        America is a symbol of freedom and liberty to which Americans pledge their
+        allegiance. Standing at attention and facing the flag with their right hand
+        over the heart, they recite: \"I pledge allegiance to the flag of the United
+        States of America, and to the republic for which it stands, one nation under
+        God, indivisible ...", "dateLastCrawled": "2023-02-02T07:27:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Link to Us | USAGov", "url": "https:\/\/www.usa.gov\/link-to-us",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/link-to-us",
+        "snippet": "Link to USA.gov. USA.gov (www.usa.gov) is the official guide
+        to government information and services. It is a public domain website. You
+        may link to USA.gov at no cost. When you link to USA.gov, please do it
+        in an appropriate context as a service to your customers when they need to
+        find official U.S. government information and services.", "dateLastCrawled":
+        "2023-01-30T05:37:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "Filing Your Taxes | USAGov", "url": "https:\/\/www.usa.gov\/filing-taxes-topics",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/filing-taxes-topics",
+        "snippet": "Make sure you have the forms you need to file your taxes, including
+        Form W-2 from your employer and your previous tax transcripts. How to File
+        Your Federal Taxes. Federal taxes are due on April 18, 2023. Learn how
+        to file a return or get an extension. Small Business Taxes.", "dateLastCrawled":
+        "2023-02-01T12:31:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "Government Website Data | USAGov", "url": "https:\/\/www.usa.gov\/government-website-data",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/government-website-data",
+        "snippet": "Government Website Data. Discover the most popular pages and
+        resources on USA.gov, USAGov en Español, and across all federal government
+        websites that use the Digital Analytics Program. Find out how users are accessing
+        these websites (devices, browsers, operating systems) and the cities and countries
+        from which they are connecting. Federal ...", "dateLastCrawled": "2023-02-01T11:48:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Recreational Areas and Activities | USAGov", "url": "https:\/\/www.usa.gov\/recreation",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/recreation",
+        "snippet": "Most permit recreational fishing, diving, surfing, swimming, and
+        kayaking. National Wildlife Refuges - You can hunt, fish, and observe nature
+        at these protected habitats. They’re home to more than 700 species of birds,
+        220 species of mammals, 250 reptile and amphibian species and more than 1,000
+        species of fish. Find a wildlife refuge near you.", "dateLastCrawled": "2023-01-30T02:15:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Visitors Living in the U.S. | USAGov", "url": "https:\/\/www.usa.gov\/visitors",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/visitors",
+        "snippet": "Travel Documents for All Other Foreign Citizens Living in the
+        U.S. Contact USCIS and your country''s embassy or consulate for all document
+        requirements. Note: If you need a travel document, but left the U.S. without
+        obtaining one, contact U.S. Citizenship and Immigration Services (USCIS) for
+        assistance: United States: Call 1-800-375-5283; for ...", "dateLastCrawled":
+        "2023-01-30T21:22:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "How to Enter the United States | USAGov", "url": "https:\/\/www.usa.gov\/enter-us",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/enter-us",
+        "snippet": "Apply For a Visa. The U.S. Department of State issues visas U.S.
+        Visa: a document issued by a U.S. embassy or consulate to a non-U.S. citizen.
+        It’s placed in their passport to allow them to seek entry to the U.S. for
+        a specific purpose. to foreign nationals Foreign National: a person who is
+        not a citizen of the country they’re visiting, studying or working in. traveling
+        to the United ...", "dateLastCrawled": "2023-01-30T04:19:00.0000000Z", "language":
+        "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Administration for Children and Families | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/administration-for-children-and-families",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/administration-for-children-and-families",
+        "snippet": "The Administration for Children and Families funds state, territory,
+        local, and tribal organizations to provide family assistance (welfare), child
+        support, child care, Head Start, child welfare, and other programs relating
+        to children and families.", "dateLastCrawled": "2023-01-30T18:25:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Where''s My Refund? Check the Status of My Tax Return - USA.gov",
+        "url": "https:\/\/www.usa.gov\/check-tax-status", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.usa.gov\/check-tax-status", "snippet": "Whether
+        you owe taxes or you’re expecting a refund, you can find out your tax return’s
+        status by: Using the IRS Where’s My Refund tool. Viewing your IRS account
+        information. Calling the IRS at 1-800-829-1040 (Wait times to speak to a representative
+        may be long.) Looking for emails or status updates from your e-filing website
+        or software.", "dateLastCrawled": "2023-01-30T04:20:00.0000000Z", "language":
+        "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Financial Aid for Students | USAGov", "url": "https:\/\/www.usa.gov\/financial-aid",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/financial-aid",
+        "snippet": "Know the Deadlines for Submitting the FAFSA. The federal deadline
+        for submitting the FAFSA for the 2023-24 school year is June 30, 2024. The
+        federal deadline for submitting the FAFSA for the 2022-23 school year is June
+        30, 2023. Many states and colleges use the FAFSA for their financial aid programs.
+        See the state deadlines.", "dateLastCrawled": "2023-02-01T06:21:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "1.usa.gov", "url": "https:\/\/1.usa.gov\/1jiCUyl", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/1.usa.gov\/1jiCUyl", "snippet": "301 Moved
+        Permanently. openresty", "dateLastCrawled": "2023-02-03T18:14:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Benefits and Insurance for People with Disabilities - USA.gov",
+        "url": "https:\/\/www.usa.gov\/disability-benefits-insurance", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.usa.gov\/disability-benefits-insurance",
+        "snippet": "Social Security Disability Insurance (SSDI) is for people who
+        have become disabled after earning enough Social Security work credits within
+        a certain time. Your spouse or former spouse and your children may be eligible
+        for benefits when you start getting SSDI. How to Apply for SSDI. You can apply
+        for SSDI benefits online, by phone, or in person .", "dateLastCrawled": "2023-01-30T04:22:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Fri, 03 Feb 2023 22:57:02 GMT
+recorded_with: VCR 6.1.0
