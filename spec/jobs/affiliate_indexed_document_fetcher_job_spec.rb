@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
-
 describe AffiliateIndexedDocumentFetcherJob do
   let(:affiliate) { affiliates(:basic_affiliate) }
   let(:unfetched) { IndexedDocument.find_by(unfetched_atts) }
