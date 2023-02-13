@@ -70,6 +70,7 @@ export const BasicHeader = (props: HeaderProps) => {
               label="Menu"
               onClick={props.toggleMobileNav}
               className="usa-menu-btn"
+              data-testid="usa-menu-mob-btn"
             />
           </div>
           <PrimaryNav
