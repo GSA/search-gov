@@ -7,10 +7,10 @@ export const ExtendedHeader = (props: HeaderProps) => {
 
   const testMenuItems = [
     <a href="#linkOne" key="one">
-      Simple link one
+      Privacy policy
     </a>,
     <a href="#linkTwo" key="two">
-      Simple link two
+      Latest updates
     </a>,
   ]
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Identifier as UswdsIdentifier, IdentifierMasthead, IdentifierLinks, IdentifierLogos, IdentifierLogo, IdentifierIdentity, Link, IdentifierGov, IdentifierLinkItem, IdentifierLink } from '@trussworks/react-uswds';
 
-import circleSvg from 'uswds/src/img/circle-gray-20.svg';
+//import circleSvg from 'uswds/src/img/circle-gray-20.svg';
 interface IdentifierProps {
 }
 
@@ -25,7 +25,8 @@ export const Identifier = (props: IdentifierProps) => {
             <IdentifierLogo href="">
               <img
                 className="usa-identifier__logo-img"
-                src={circleSvg}
+                src=""
+                //src={circleSvg}
                 alt="<Parent agency> logo"
               />
             </IdentifierLogo>

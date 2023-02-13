@@ -1,7 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 
 import { Header } from './Header';
-
 import { Facets } from './Facets/Facets';
 import { SearchBar } from './SearchBar/SearchBar';
 import { Results } from './Results/Results';
@@ -18,7 +17,7 @@ const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
     <>
       <Header 
         title="Search.gov"
-        isBasic={true} 
+        isBasic={false} 
       />
      
       <div className="usa-section">

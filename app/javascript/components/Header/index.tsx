@@ -6,7 +6,6 @@ import '@trussworks/react-uswds/lib/index.css';
 
 import { BasicHeader } from './BasicHeader';
 import { ExtendedHeader } from './ExtendedHeader';
-
 interface HeaderProps {
   title: string
   isBasic: boolean

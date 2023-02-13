@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Footer as UswdsFooter, GridContainer, FooterNav, Logo, Address } from '@trussworks/react-uswds';
 
-import logoImg from 'uswds/src/img/logo-img.png';
-
+//import logoImg from 'uswds/src/img/logo-img.png';
 interface FooterProps {
 }
 
@@ -53,7 +52,8 @@ export const Footer = (props: FooterProps) => {
               <img
                 className="usa-footer__logo-img"
                 alt="img alt text"
-                src={logoImg}
+                src=""
+                //src={logoImg}
               />
             }
             heading={<p className="usa-footer__logo-heading">Name of Agency</p>}

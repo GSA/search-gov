@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import * as React from 'react';
+import React from 'react';
 import SearchResultsLayout from '../components/SearchResultsLayout';
 
 describe('SearchResultsLayout', () => {
@@ -41,8 +41,12 @@ describe('SearchResultsLayout', () => {
     const results = [{ 'title': 'test result 1', 'thumbnail': { 'url': 'https://www.search.gov/test_image.png' } }];
     render(<SearchResultsLayout params="foo" results={results} vertical="image" />);
     const resultTitle = screen.getByText(/test result 1/i);
-    const img = [...document.querySelectorAll("img")].pop() as HTMLImageElement;
+    const img = [...document.getElementsByClassName("result-image")].pop() as HTMLImageElement;
+    console.log(img);
     expect(resultTitle).toBeInTheDocument();
     expect(img).toHaveAttribute('src', 'https://www.search.gov/test_image.png');
   });
 });
+
+
+
