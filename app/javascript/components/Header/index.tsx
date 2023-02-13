@@ -32,6 +32,15 @@ export const Header = (props: HeaderProps) => {
     console.log("clicked");
     event.preventDefault();
   }
+
+  const headerProps = {
+    title: props.title,
+    handleSearch,
+    toggleMobileNav,
+    mobileNavOpen,
+    handleToggleNavDropdown,
+    navDropdownOpen
+  }
  
   return (
     <>
@@ -43,20 +52,10 @@ export const Header = (props: HeaderProps) => {
 
       {props.isBasic ? 
       <BasicHeader 
-        title={props.title}
-        handleSearch={handleSearch}
-        toggleMobileNav={toggleMobileNav}
-        mobileNavOpen={mobileNavOpen}
-        handleToggleNavDropdown={handleToggleNavDropdown}
-        navDropdownOpen= {navDropdownOpen}
+        {...headerProps}
       />:
       <ExtendedHeader 
-        title={props.title}
-        handleSearch={handleSearch}
-        toggleMobileNav={toggleMobileNav}
-        mobileNavOpen={mobileNavOpen}
-        handleToggleNavDropdown={handleToggleNavDropdown}
-        navDropdownOpen= {navDropdownOpen}
+        {...headerProps}
       />}
     </>
   );
