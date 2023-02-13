@@ -5,7 +5,7 @@ import { HeaderProps } from './../props';
 
 export const ExtendedHeader = (props: HeaderProps) => {
 
-  const testMenuItems = [
+  const secondaryLinkItems = [
     <a href="#linkOne" key="one">
       Privacy policy
     </a>,
@@ -14,9 +14,19 @@ export const ExtendedHeader = (props: HeaderProps) => {
     </a>,
   ]
 
+  const subMenuItems = [
+    <a href="#linkOne" key="one">
+      Navigation link 1
+    </a>,
+    <a href="#linkTwo" key="two">
+      Navigation link 2
+    </a>,
+  ]
+
   const testItemsMenu = [
     <>
       <NavDropDownButton
+        data-testid="nav-label"
         onToggle={(): void => {
           props.handleToggleNavDropdown(0)
         }}
@@ -27,7 +37,7 @@ export const ExtendedHeader = (props: HeaderProps) => {
       />
       <Menu
         key="one"
-        items={testMenuItems}
+        items={subMenuItems}
         isOpen={props.navDropdownOpen[0]}
         id="testDropDownOne"
       />
@@ -49,7 +59,7 @@ export const ExtendedHeader = (props: HeaderProps) => {
         </div>
         <ExtendedNav
           primaryItems={testItemsMenu}
-          secondaryItems={testMenuItems}
+          secondaryItems={secondaryLinkItems}
           mobileExpanded={props.mobileNavOpen}
           onToggleMobileNav={props.toggleMobileNav}>
           <Search size="small" onSubmit={props.handleSearch} />

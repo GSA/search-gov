@@ -8,6 +8,7 @@ export const BasicHeader = (props: HeaderProps) => {
   const primaryNavItems = [
     <React.Fragment key="primaryNav_0">
       <NavDropDownButton
+        data-testid="current-section"
         menuId="extended-nav-section-one"
         isOpen={props.navDropdownOpen[0]}
         label={'<Current section>'}
@@ -18,14 +19,18 @@ export const BasicHeader = (props: HeaderProps) => {
       />
       <Menu
         id="extended-nav-section-one"
-        items={new Array(8).fill(
-          <a href="">{'<Navigation link>'}</a>
-        )}
+        items={[
+          <a href="">{'<Navigation link 1>'}</a>,
+          <a href="">{'<Navigation link 2>'}</a>,
+          <a href="">{'<Navigation link 3>'}</a>,
+          <a href="">{'<Navigation link 4>'}</a>
+        ]}
         isOpen={props.navDropdownOpen[0]}
       />
     </React.Fragment>,
     <React.Fragment key="primaryNav_1">
       <NavDropDownButton
+        data-testid="current-section-2"
         menuId="extended-nav-section-two"
         isOpen={props.navDropdownOpen[1]}
         label={'<Section>'}
@@ -35,11 +40,14 @@ export const BasicHeader = (props: HeaderProps) => {
       />
       <Menu
         id="extended-nav-section-two"
-        items={new Array(3).fill(
+        items={[
           <a href="">
-            {'< A very long navigation link that goes on two lines>'}
+            {'<Section link 1>'}
+          </a>,
+          <a href="">
+            {'<Section link 2>'}
           </a>
-        )}
+        ]}
         isOpen={props.navDropdownOpen[1]}
       />
     </React.Fragment>,

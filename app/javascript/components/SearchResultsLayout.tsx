@@ -17,7 +17,7 @@ const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
     <>
       <Header 
         title="Search.gov"
-        isBasic={false} 
+        isBasic={true} 
       />
      
       <div className="usa-section">
