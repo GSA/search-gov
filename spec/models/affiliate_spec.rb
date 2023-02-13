@@ -743,8 +743,8 @@ describe Affiliate do
     end
 
     it 'should enqueue just the scoped docs in batches' do
-      expect(Resque).to receive(:enqueue_with_priority).with(:low, AffiliateIndexedDocumentFetcher, @affiliate.id, @first.id, @second.id, 'not_ok')
-      expect(Resque).to receive(:enqueue_with_priority).with(:low, AffiliateIndexedDocumentFetcher, @affiliate.id, @third.id, @third.id, 'not_ok')
+      expect(AffiliateIndexedDocumentFetcherJob).to receive(:perform_later).with(@affiliate.id, @first.id, @second.id, 'not_ok')
+      expect(AffiliateIndexedDocumentFetcherJob).to receive(:perform_later).with(@affiliate.id, @third.id, @third.id, 'not_ok')
       @affiliate.refresh_indexed_documents('not_ok')
     end
   end
