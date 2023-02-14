@@ -12,12 +12,22 @@ interface SearchResultsLayoutProps {
   params?: string;
 };
 
+//To be updated
+const getAffiliateTitle = (): string => {
+  return "Search.gov";
+}
+
+//To be updated
+const isBasicHeader = (): boolean => {
+  return true;
+}
+
 const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
   return (
     <>
       <Header 
-        title="Search.gov"
-        isBasic={true} 
+        title={getAffiliateTitle()}
+        isBasic={isBasicHeader()} 
       />
      
       <div className="usa-section">

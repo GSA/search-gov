@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Footer as UswdsFooter, GridContainer, FooterNav, Logo, Address } from '@trussworks/react-uswds';
 
-//import logoImg from 'uswds/src/img/logo-img.png';
+import './Footer.css';
 interface FooterProps {
 }
 
@@ -13,6 +13,30 @@ export const Footer = (props: FooterProps) => {
     </GridContainer>
   )
 
+  const primaryFooterLinks = [
+    <a className="usa-footer__primary-link" href="#">
+      Primary Link 1
+    </a>,
+    <a className="usa-footer__primary-link" href="#">
+      Primary Link 2
+    </a>,
+    <a className="usa-footer__primary-link" href="#">
+      Primary Link 3
+    </a>,
+    <a className="usa-footer__primary-link" href="#">
+      Primary Link 4
+    </a>
+  ];
+
+  const addressItems = [
+    <a key="telephone" href="tel:1-800-555-5555">
+      (800) CALL-GOVT
+    </a>,
+    <a key="email" href="mailto:info@agency.gov">
+      info@agency.gov
+    </a>
+  ]
+
   return (
     <div id="serp-footer-wrapper">
       <UswdsFooter
@@ -23,24 +47,13 @@ export const Footer = (props: FooterProps) => {
             <div className="mobile-lg:grid-col-8">
               <FooterNav
                 size="slim"
-                links={Array(4).fill(
-                  <a className="usa-footer__primary-link" href="#">
-                    Primary Link
-                  </a>
-                )}
+                links={primaryFooterLinks}
               />
             </div>
             <div className="tablet:grid-col-4">
               <Address
                 size="slim"
-                items={[
-                  <a key="telephone" href="tel:1-800-555-5555">
-                    (800) CALL-GOVT
-                  </a>,
-                  <a key="email" href="mailto:info@agency.gov">
-                    info@agency.gov
-                  </a>,
-                ]}
+                items={addressItems}
               />
             </div>
           </div>
@@ -50,12 +63,12 @@ export const Footer = (props: FooterProps) => {
             size="slim"
             image={
               <img
-                className="usa-footer__logo-img"
-                alt="img alt text"
-                src="https://search.gov/assets/gsa-logo-893b811a49f74b06b2bddbd1cde232d2922349c8c8c6aad1d88594f3e8fe42bd097e980c57c5e28eff4d3a9256adb4fcd88bf73a5112833b2efe2e56791aad9d.svg"
+                className=""
+                alt=""
+                src=""
               />
             }
-            heading={<p className="usa-footer__logo-heading">Name of Agency</p>}
+            heading={<p className=""></p>}
           />
         }
       />
