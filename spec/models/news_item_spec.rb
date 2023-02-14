@@ -18,7 +18,9 @@ describe NewsItem do
   let(:news_item) { described_class.new(valid_attributes) }
 
   describe 'schema' do
-    it { is_expected.to have_db_column(:safe_properties).of_type(:json) }
+    it { is_expected.to have_db_column(:properties).of_type(:json) }
+    # temporary backup column - will be removed per SRCH-3465
+    it { is_expected.to have_db_column(:unsafe_properties).of_type(:text) }
   end
 
   describe 'creating a new NewsItem' do
@@ -124,38 +126,16 @@ describe NewsItem do
     end
   end
 
+  # These specs are just sanity-checks. The 'properties' hash should not be accessed
+  # directly. Data getters and setters can be added via the 'store_accessor' method.
   describe '#properties' do
     subject(:properties) { news_item.properties }
 
     it { is_expected.to be_a Hash }
 
-    context 'when the news item is a video' do
-      let(:news_item) { described_class.new(properties: { duration: '0:39' }) }
-
-      it { is_expected.to eq({ duration: '0:39' }) }
-    end
-
-    context 'when saving' do
-      let(:news_item) do
-        described_class.new(valid_attributes.merge(properties: { foo: 'bar' }))
-      end
-
-      it 'saves the properties to the safe_properties column' do
-        expect { news_item.save! }.to change { news_item.safe_properties }.
-          from(nil).to({ 'foo' => 'bar' })
-      end
-
-      context 'when the item has no properties' do
-        let(:news_item) do
-          described_class.new(valid_attributes.merge(properties: nil))
-        end
-
-        # ensure we don't save an empty hash
-        it 'returns nil' do
-          news_item.save!
-          expect(news_item.safe_properties).to be_nil
-        end
-      end
+    it 'raises an error for non-hash values' do
+      expect { news_item.properties = 'not a hash' }.
+        to raise_error(ActiveRecord::SerializationTypeMismatch)
     end
   end
 
@@ -165,6 +145,25 @@ describe NewsItem do
       expect(ElasticNewsItem).to receive(:delete).with(ids)
       described_class.fast_delete(ids)
       expect(described_class.where(id: ids)).to be_empty
+    end
+  end
+
+  describe '#duration' do
+    subject(:duration) { news_item.duration }
+
+    context 'when the news item is a video with a duration' do
+      let(:news_item) { described_class.new(duration: '0:39') }
+
+      it { is_expected.to eq('0:39') }
+    end
+
+    # Temporary - will be removed per SRCH-3465
+    context 'when deploying SRCH-3718' do
+      before do
+        allow(news_item).to receive(:properties).and_return('{"duration": "5:54"}')
+      end
+
+      it { is_expected.to eq('5:54') }
     end
   end
 

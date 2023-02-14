@@ -5,9 +5,9 @@ require 'spec_helper'
 describe NewsSearch do
   let(:affiliate) { affiliates(:basic_affiliate) }
 
-  before(:each) do
+  before do
     ElasticNewsItem.recreate_index
-    NewsItem.all.each { |news_item| news_item.save! }
+    NewsItem.all.each(&:save!)
     ElasticNewsItem.commit
   end
 
@@ -43,55 +43,54 @@ describe NewsSearch do
     end
 
     context 'when a valid RSS feed is specified' do
-      it 'should set the rss_feed member' do
+      it 'sets the rss_feed member' do
         expect(described_class.new(query: 'element', channel: feed.id, affiliate: affiliate).rss_feed).to eq(feed)
       end
     end
 
     context "when another affiliate's RSS feed is specified" do
-      it 'should set the rss_feed member to nil' do
+      it 'sets the rss_feed member to nil' do
         another_feed = rss_feeds(:another)
         expect(described_class.new(query: 'element', channel: another_feed.id, affiliate: affiliate).rss_feed).to be_nil
       end
     end
 
     context 'when channel is not a valid number' do
-      it 'should set the rss_feed member to nil' do
+      it 'sets the rss_feed member to nil' do
         expect(described_class.new(query: 'element', channel: { 'foo' => 'bar' }, affiliate: affiliate).rss_feed).to be_nil
       end
     end
 
     context "when the query param isn't set" do
-      it "should set 'query' to a blank string" do
+      it "sets 'query' to a blank string" do
         expect(described_class.new(channel: feed.id, affiliate: affiliate).query).to be_blank
       end
     end
 
-    it 'should not overwrite per_page option' do
+    it 'does not overwrite per_page option' do
       news_search = described_class.new(channel: feed.id, affiliate: affiliate, per_page: '15')
       expect(news_search.per_page).to eq(15)
     end
   end
 
   describe '#run' do
-
     context 'when searching with really long queries' do
       before do
         @search = described_class.new(query: 'X' * (Search::MAX_QUERYTERM_LENGTH + 1), affiliate: affiliate)
       end
 
-      it 'should return false when searching' do
+      it 'returns false when searching' do
         expect(@search.run).to be false
       end
 
-      it 'should have 0 results' do
+      it 'has 0 results' do
         @search.run
         expect(@search.results.size).to eq(0)
         expect(@search.total).to eq(0)
         expect(@search.module_tag).to be_nil
       end
 
-      it 'should set error message' do
+      it 'sets the error message' do
         @search.run
         expect(@search.error_message).not_to be_nil
       end
@@ -102,7 +101,7 @@ describe NewsSearch do
         @search = described_class.new(query: '   ', affiliate: affiliate)
       end
 
-      it 'should return true when searching' do
+      it 'returns true when searching' do
         expect(@search.run).to be true
       end
 
@@ -111,17 +110,17 @@ describe NewsSearch do
         expect(@search.results.size).to be > 0
       end
 
-      it 'should not set error message' do
+      it 'does not set error message' do
         @search.run
         expect(@search.error_message).to be_nil
       end
     end
 
     context 'when a valid active RSS feed is specified' do
-      it 'should only search for news items from that feed' do
+      it 'only searches for news items from that feed' do
         feed = affiliate.rss_feeds.first
         search = described_class.new(query: 'element', channel: feed.id, affiliate: affiliate,
-                                contributor: 'contributor', publisher: 'publisher', subject: 'subject')
+                                     contributor: 'contributor', publisher: 'publisher', subject: 'subject')
         expect(ElasticNewsItem).to receive(:search_for).
           with(q: 'element', rss_feeds: [feed], excluded_urls: affiliate.excluded_urls,
                since: nil, until: nil,
@@ -138,7 +137,7 @@ describe NewsSearch do
       let(:youtube_profile_feed) { rss_feeds(:nps_youtube_feed) }
 
       context 'when per_page option is not set' do
-        it 'should set per_page to 20' do
+        it 'sets per_page to 20' do
           search = described_class.new(query: 'element', channel: feed.id, affiliate: affiliate)
           expect(ElasticNewsItem).to receive(:search_for).
             with(q: 'element', rss_feeds: [youtube_profile_feed], excluded_urls: affiliate.excluded_urls,
@@ -152,7 +151,7 @@ describe NewsSearch do
       end
 
       context 'when per_page option is set' do
-        it 'should not change the initial per_page value' do
+        it 'does not change the initial per_page value' do
           search = described_class.new(query: 'element', channel: feed.id, affiliate: affiliate, per_page: '15')
           expect(ElasticNewsItem).to receive(:search_for).
             with(q: 'element', rss_feeds: [youtube_profile_feed], excluded_urls: affiliate.excluded_urls,
@@ -170,7 +169,7 @@ describe NewsSearch do
       let(:feed) { rss_feeds(:media_feed) }
 
       context 'when per_page option is not set' do
-        it 'should set per_page to 20' do
+        it 'sets per_page to 20' do
           search = described_class.new(query: 'element', channel: feed.id, affiliate: affiliate)
           expect(ElasticNewsItem).to receive(:search_for).
             with(q: 'element', rss_feeds: [feed], excluded_urls: affiliate.excluded_urls,
@@ -178,13 +177,13 @@ describe NewsSearch do
                  offset: 0, size: 20,
                  contributor: nil, subject: nil, publisher: nil,
                  sort: 'published_at:desc',
-                 tags: %w(image), language: 'en')
+                 tags: %w[image], language: 'en')
           expect(search.run).to be true
         end
       end
 
       context 'when per_page option is set' do
-        it 'should not change the initial per_page value' do
+        it 'does not change the initial per_page value' do
           search = described_class.new(query: 'element', channel: feed.id, affiliate: affiliate, per_page: '15')
           expect(ElasticNewsItem).to receive(:search_for).
             with(q: 'element', rss_feeds: [feed], excluded_urls: affiliate.excluded_urls,
@@ -192,14 +191,14 @@ describe NewsSearch do
                  offset: 0, size: 15,
                  contributor: nil, subject: nil, publisher: nil,
                  sort: 'published_at:desc',
-                 tags: %w(image), language: 'en')
+                 tags: %w[image], language: 'en')
           expect(search.run).to be true
         end
       end
     end
 
     context 'when no RSS feed is specified' do
-      it 'should search for news items from all active feeds for the affiliate' do
+      it 'searches for news items from all active feeds for the affiliate' do
         one_week_ago = Time.current.advance(weeks: -1).beginning_of_day
         search = described_class.new(query: 'element', tbs: 'w', affiliate: affiliate)
         expect(ElasticNewsItem).to receive(:search_for).
@@ -214,7 +213,7 @@ describe NewsSearch do
     end
 
     context 'when searching with since_date' do
-      it 'should search for NewsItem with since option' do
+      it 'searches for NewsItem with since option' do
         feed = mock_model(RssFeed, is_managed?: false, show_only_media_content?: false)
         allow(affiliate).to receive_message_chain(:rss_feeds, :find_by_id).with(feed.id).and_return(feed)
 
@@ -232,7 +231,7 @@ describe NewsSearch do
     end
 
     context 'when searching with until_date' do
-      it 'should search for NewsItem with until option' do
+      it 'searches for NewsItem with until option' do
         feed = mock_model(RssFeed, is_managed?: false, show_only_media_content?: false)
         allow(affiliate).to receive_message_chain(:rss_feeds, :find_by_id).with(feed.id).and_return(feed)
 
@@ -252,11 +251,11 @@ describe NewsSearch do
     end
 
     context 'when sorting by relevance' do
-      it 'should pass in the sort_by param' do
+      it 'passes in the sort_by param' do
         feed = affiliate.rss_feeds.first
         search = described_class.new(query: 'element', channel: feed.id, affiliate: affiliate,
-                                contributor: 'contributor', publisher: 'publisher', subject: 'subject',
-                                sort_by: 'r')
+                                     contributor: 'contributor', publisher: 'publisher', subject: 'subject',
+                                     sort_by: 'r')
         expect(ElasticNewsItem).to receive(:search_for).
           with(q: 'element', rss_feeds: [feed], excluded_urls: affiliate.excluded_urls,
                since: nil, until: nil,
@@ -269,7 +268,7 @@ describe NewsSearch do
     end
 
     context 'when response is present' do
-      it 'should assign the correct start and end record' do
+      it 'assigns the correct start and end record' do
         feed = affiliate.rss_feeds.first
         search = described_class.new(query: 'element', channel: feed.id, affiliate: affiliate, page: 2, per_page: '15')
         results = [mock_model(NewsItem, title: 'result1', description?: true),
@@ -354,7 +353,7 @@ describe NewsSearch do
     let(:feed) { rss_feeds(:managed_video) }
     let(:since_a_week_ago) { Date.current.advance(weeks: -1).to_s }
 
-    it 'should output a key based on the affiliate id, query, channel, tbs, since-until, page, and per_page parameters' do
+    it 'outputs a key based on the affiliate id, query, channel, tbs, since-until, page, and per_page parameters' do
       expect(described_class.new(options.merge(tbs: 'w', channel: feed.id, page: 2, per_page: 21)).cache_key).to eq("#{affiliate.id}:element:#{feed.id}:#{since_a_week_ago}:2:21")
       expect(described_class.new(options.merge(channel: feed.id)).cache_key).to eq("#{affiliate.id}:element:#{feed.id}::1:20")
       expect(described_class.new(options.merge(tbs: 'w')).cache_key).to eq("#{affiliate.id}:element::#{since_a_week_ago}:1:10")
@@ -364,8 +363,8 @@ describe NewsSearch do
 
   describe '#as_json' do
     let(:expected_keys) do
-      %w[body contributor created_at description guid id link properties
-         published_at publisher rss_feed_url_id subject title updated_at safe_properties]
+      %w[body contributor created_at description guid id link unsafe_properties
+         published_at publisher rss_feed_url_id subject title updated_at properties]
     end
 
     it 'contains all attributes' do

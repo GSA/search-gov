@@ -457,9 +457,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_10_203501) do
     t.text "contributor", size: :medium
     t.text "subject", size: :medium
     t.text "publisher", size: :medium
-    t.text "properties", size: :medium
+    t.text "unsafe_properties", size: :medium
     t.text "body", size: :long
-    t.json "safe_properties"
+    t.json "properties"
     t.index ["link"], name: "index_news_items_on_link"
     t.index ["rss_feed_url_id", "guid"], name: "index_news_items_on_rss_feed_url_id_and_guid"
     t.index ["rss_feed_url_id", "link"], name: "index_news_items_on_rss_feed_url_id_and_link", unique: true
