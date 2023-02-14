@@ -84,6 +84,7 @@ class ApplicationController < ActionController::Base
     @permitted_params ||= params.permit(*PERMITTED_PARAM_KEYS).to_h
   end
 
+  # Used for browser-based searches. See: app/controllers/searches_controller.rb
   def search_options_from_params(*param_keys)
     h = permitted_params.slice(*param_keys)
     h.merge! affiliate: @affiliate,
