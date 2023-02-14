@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { GovBanner } from '@trussworks/react-uswds';
 
 import '@trussworks/react-uswds/lib/uswds.css';
