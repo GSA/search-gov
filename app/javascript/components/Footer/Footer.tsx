@@ -1,5 +1,5 @@
 import React from 'react';
-import { Footer as UswdsFooter, GridContainer, FooterNav, Logo, Address } from '@trussworks/react-uswds';
+import { Footer as UswdsFooter, GridContainer, FooterNav, Address } from '@trussworks/react-uswds';
 
 import './Footer.css';
 interface FooterProps {
@@ -58,19 +58,7 @@ export const Footer = (props: FooterProps) => {
             </div>
           </div>
         }
-        secondary={
-          <Logo
-            size="slim"
-            image={
-              <img
-                className=""
-                alt=""
-                src=""
-              />
-            }
-            heading={<p className=""></p>}
-          />
-        }
+        secondary={<></>}
       />
     </div>
   );
