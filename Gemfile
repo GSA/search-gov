@@ -38,7 +38,10 @@ gem 'googlecharts', '~> 1.6.12'
 gem 'tweetstream', git: 'https://github.com/GSA/tweetstream'
 gem 'twitter', git: 'https://github.com/GSA/twitter.git', branch: '5-stable'
 gem 'flickraw', '~> 0.9.9'
-gem 'active_scaffold', '~> 3.6.0'
+# SRCH-3837: We need this change: https://github.com/activescaffold/active_scaffold/pull/666
+# for ruby 3, but all current releases require Rails < 6.2 (though main is looser).
+gem 'active_scaffold', git: 'https://github.com/activescaffold/active_scaffold',
+                       branch: 'master'
 gem 'active_scaffold_export', '~> 3.4.0'
 gem "recaptcha", '~> 4.6.3', :require => "recaptcha/rails"
 gem 'newrelic_rpm', '~> 8.12.0'
