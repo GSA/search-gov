@@ -5,7 +5,7 @@ describe Sites::SiteFeedUrlsController do
   before { activate_authlogic }
 
   describe '#edit' do
-    it_should_behave_like 'restricted to approved user', :get, :edit, site_id: 100
+    it_behaves_like 'restricted to approved user', :get, :edit, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -23,7 +23,7 @@ describe Sites::SiteFeedUrlsController do
   end
 
   describe '#update' do
-    it_should_behave_like 'restricted to approved user', :put, :update, site_id: 100
+    it_behaves_like 'restricted to approved user', :put, :update, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -34,13 +34,13 @@ describe Sites::SiteFeedUrlsController do
         before do
           expect(site).to receive(:site_feed_url).and_return(site_feed_url)
           expect(site_feed_url).to receive(:update).
-              with('rss_url' => 'http://search.gov/all.atom',
+            with({ 'rss_url' => 'http://search.gov/all.atom',
                    'last_checked_at' => nil,
-                   'last_fetch_status' => 'Pending').
-              and_return(true)
+                   'last_fetch_status' => 'Pending' }).
+            and_return(true)
 
           expect(Resque).to receive(:enqueue_with_priority).
-              with(:high, SiteFeedUrlFetcher, site_feed_url.id)
+            with(:high, SiteFeedUrlFetcher, site_feed_url.id)
 
           put :update,
               params: {
@@ -61,10 +61,10 @@ describe Sites::SiteFeedUrlsController do
         before do
           allow(site).to receive(:site_feed_url).and_return(site_feed_url)
           expect(site_feed_url).to receive(:update).
-              with('rss_url' => '',
+            with({ 'rss_url' => '',
                    'last_checked_at' => nil,
-                   'last_fetch_status' => 'Pending').
-              and_return(false)
+                   'last_fetch_status' => 'Pending' }).
+            and_return(false)
 
           put :update,
               params: {
@@ -81,7 +81,7 @@ describe Sites::SiteFeedUrlsController do
   end
 
   describe '#destroy' do
-    it_should_behave_like 'restricted to approved user', :delete, :destroy, site_id: 100
+    it_behaves_like 'restricted to approved user', :delete, :destroy, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'

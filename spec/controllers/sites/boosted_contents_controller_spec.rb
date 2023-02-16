@@ -5,7 +5,7 @@ describe Sites::BoostedContentsController do
   before { activate_authlogic }
 
   describe '#index' do
-    it_should_behave_like 'restricted to approved user', :get, :index, site_id: 100
+    it_behaves_like 'restricted to approved user', :get, :index, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -23,7 +23,7 @@ describe Sites::BoostedContentsController do
   end
 
   describe '#create' do
-    it_should_behave_like 'restricted to approved user', :post, :create, site_id: 100
+    it_behaves_like 'restricted to approved user', :post, :create, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -35,8 +35,8 @@ describe Sites::BoostedContentsController do
           boosted_contents = double('boosted contents')
           allow(site).to receive(:boosted_contents).and_return(boosted_contents)
           expect(boosted_contents).to receive(:build).
-              with('title' => 'page title').
-              and_return(boosted_content)
+            with({ 'title' => 'page title' }).
+            and_return(boosted_content)
 
           expect(boosted_content).to receive(:save).and_return(true)
 
@@ -60,8 +60,8 @@ describe Sites::BoostedContentsController do
           boosted_contents = double('boosted contents')
           allow(site).to receive(:boosted_contents).and_return(boosted_contents)
           expect(boosted_contents).to receive(:build).
-              with('title' => '').
-              and_return(boosted_content)
+            with({ 'title' => '' }).
+            and_return(boosted_content)
 
           expect(boosted_content).to receive(:save).and_return(false)
           allow(boosted_content).to receive_message_chain(:boosted_content_keywords, :build)
@@ -80,7 +80,7 @@ describe Sites::BoostedContentsController do
   end
 
   describe '#update' do
-    it_should_behave_like 'restricted to approved user', :put, :update, site_id: 100, id: 100
+    it_behaves_like 'restricted to approved user', :put, :update, site_id: 100, id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -94,15 +94,15 @@ describe Sites::BoostedContentsController do
           expect(boosted_contents).to receive(:find_by_id).with('100').and_return(boosted_content)
 
           expect(boosted_content).to receive(:destroy_and_update_attributes).
-              with('title' => 'updated title').
-              and_return(false)
+            with({ 'title' => 'updated title' }).
+            and_return(false)
           allow(boosted_content).to receive_message_chain(:boosted_content_keywords, :build)
 
           put :update,
               params: {
                 site_id: site.id,
                 id: 100,
-                boosted_content: { 
+                boosted_content: {
                   title: 'updated title',
                   not_allowed_key: 'not allowed value'
                 }
@@ -116,7 +116,7 @@ describe Sites::BoostedContentsController do
   end
 
   describe '#destroy' do
-    it_should_behave_like 'restricted to approved user', :delete, :destroy, site_id: 100, id: 100
+    it_behaves_like 'restricted to approved user', :delete, :destroy, site_id: 100, id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -127,7 +127,7 @@ describe Sites::BoostedContentsController do
 
         boosted_content = mock_model(BoostedContent, title: 'awesome page')
         expect(boosted_contents).to receive(:find_by_id).with('100').
-            and_return(boosted_content)
+          and_return(boosted_content)
         expect(boosted_content).to receive(:destroy)
 
         delete :destroy, params: { site_id: site.id, id: 100 }
@@ -137,5 +137,4 @@ describe Sites::BoostedContentsController do
       it { is_expected.to set_flash.to(/You have removed awesome page from this site/) }
     end
   end
-
 end

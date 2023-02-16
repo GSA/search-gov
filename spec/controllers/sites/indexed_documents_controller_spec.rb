@@ -48,11 +48,11 @@ describe Sites::IndexedDocumentsController do
           indexed_documents = double('indexed documents')
           allow(site).to receive(:indexed_documents).and_return(indexed_documents)
           expect(indexed_documents).to receive(:build).
-            with('url' => 'http://search.gov/developer/jobs.html',
-                 'title' => 'Jobs API',
-                 'description' => 'Helping job seekers land a job with the government.',
-                 'source' => 'manual',
-                 'last_crawl_status' => 'summarized').
+            with({ 'url' => 'http://search.gov/developer/jobs.html',
+                   'title' => 'Jobs API',
+                   'description' => 'Helping job seekers land a job with the government.',
+                   'source' => 'manual',
+                   'last_crawl_status' => 'summarized' }).
             and_return(indexed_document).at_least(:once)
 
           expect(indexed_document).to receive(:save).and_return(true).at_least(:once)
@@ -79,11 +79,11 @@ describe Sites::IndexedDocumentsController do
           indexed_documents = double('indexed documents')
           allow(site).to receive(:indexed_documents).and_return(indexed_documents)
           expect(indexed_documents).to receive(:build).
-            with('url' => 'http://search.gov/developer/jobs.html',
-                 'title' => '',
-                 'description' => '',
-                 'source' => 'manual',
-                 'last_crawl_status' => 'summarized').
+            with({ 'url' => 'http://search.gov/developer/jobs.html',
+                   'title' => '',
+                   'description' => '',
+                   'source' => 'manual',
+                   'last_crawl_status' => 'summarized' }).
             and_return(indexed_document)
 
           expect(indexed_document).to receive(:save).and_return(false)
