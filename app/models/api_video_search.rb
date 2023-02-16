@@ -34,7 +34,7 @@ class ApiVideoSearch < Search
       sort_by_relevance: @sort_by_relevance,
     }.reverse_merge(@highlight_options)
 
-    ElasticNewsItem.search_for(search_options)
+    ElasticNewsItem.search_for(**search_options)
   end
 
   def as_json(_options = {})

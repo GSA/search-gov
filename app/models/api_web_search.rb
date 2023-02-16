@@ -15,6 +15,6 @@ class ApiWebSearch < ApiCommercialSearch
     engine_options.merge!(language: @affiliate.locale,
                           password: options[:api_key],
                           query: @formatted_query)
-    engine_klass.new engine_options
+    engine_klass.new(**engine_options)
   end
 end

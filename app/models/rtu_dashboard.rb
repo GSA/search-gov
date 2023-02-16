@@ -84,7 +84,7 @@ class RtuDashboard
   end
 
   def top_query(klass, options = {})
-    query = klass.new(@site.name, 'search', options)
+    query = klass.new(@site.name, 'search', **options)
     buckets = top_n(query.body)
     buckets.collect { |hash| QueryCount.new(hash["key"], hash["doc_count"]) } if buckets
   end

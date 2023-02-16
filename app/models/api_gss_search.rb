@@ -16,7 +16,7 @@ class ApiGssSearch < ApiCommercialSearch
                           language: "lang_#{@affiliate.locale}",
                           per_page: options[:limit],
                           query: @formatted_query)
-    ApiGssWebEngine.new engine_options
+    ApiGssWebEngine.new(**engine_options)
   end
 
   def handle_response(response)
