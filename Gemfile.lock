@@ -108,6 +108,14 @@ GIT
       railties (>= 3.2)
 
 GIT
+  remote: https://github.com/technorama/active_scaffold_export
+  revision: 85caf5b74f0997e64445c762fee5d93009a290fe
+  branch: rails3
+  specs:
+    active_scaffold_export (3.4.0)
+      active_scaffold (>= 3.6.0.pre)
+
+GIT
   remote: https://github.com/winston/google_visualr
   revision: 17b97114a345baadd011e7b442b9a6c91a2b7ab5
   ref: 17b97114a345baadd011e7b442b9a6c91a2b7ab5
@@ -164,8 +172,6 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
-    active_scaffold_export (3.4.0)
-      active_scaffold (>= 3.6.0.pre)
     active_scheduler (0.7.0)
       activejob (>= 4.2.0)
       rake
@@ -867,7 +873,7 @@ PLATFORMS
 DEPENDENCIES
   aasm (~> 5.2.0)
   active_scaffold!
-  active_scaffold_export (~> 3.4.0)
+  active_scaffold_export!
   active_scheduler (~> 0.7.0)
   activejob-uniqueness (~> 0.2.1)
   activerecord-validate_unique_child_attribute

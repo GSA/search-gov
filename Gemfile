@@ -42,7 +42,10 @@ gem 'flickraw', '~> 0.9.9'
 # for ruby 3, but all current releases require Rails < 6.2 (though main is looser).
 gem 'active_scaffold', git: 'https://github.com/activescaffold/active_scaffold',
                        branch: 'master'
-gem 'active_scaffold_export', '~> 3.4.0'
+# SRCH-3846: We need the change PRed from this branch for ruby 3, but the latest gem release
+# has yet to accept the PR: https://github.com/activescaffold/active_scaffold_export/pull/5
+gem 'active_scaffold_export', git: 'https://github.com/technorama/active_scaffold_export',
+                              branch: 'rails3'
 gem "recaptcha", '~> 4.6.3', :require => "recaptcha/rails"
 gem 'newrelic_rpm', '~> 8.12.0'
 gem 'american_date', '~> 1.1.1'
