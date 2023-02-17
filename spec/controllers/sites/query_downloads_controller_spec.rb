@@ -31,7 +31,7 @@ describe Sites::QueryDownloadsController do
           Date.new(2014, 6, 8),
           Date.new(2014, 6, 14),
           field: 'params.query.raw',
-          size: 1_000_000
+          size: 50_000
         ]
       end
       let(:date_range_top_n_click_args) do
@@ -41,7 +41,7 @@ describe Sites::QueryDownloadsController do
           Date.new(2014, 6, 8),
           Date.new(2014, 6, 14),
           field: 'params.query.raw',
-          size: 1_000_000
+          size: 50_000
         ]
       end
       let(:search_query) { instance_double(DateRangeTopNQuery, body: 'search query') }
