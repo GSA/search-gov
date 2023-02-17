@@ -5,7 +5,7 @@ describe Sites::YoutubeProfilesController do
   before { activate_authlogic }
 
   describe '#index' do
-    it_should_behave_like 'restricted to approved user', :get, :index, site_id: 100
+    it_behaves_like 'restricted to approved user', :get, :index, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -23,7 +23,7 @@ describe Sites::YoutubeProfilesController do
   end
 
   describe '#create' do
-    it_should_behave_like 'restricted to approved user', :post, :create, site_id: 100
+    it_behaves_like 'restricted to approved user', :post, :create, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -41,8 +41,8 @@ describe Sites::YoutubeProfilesController do
           youtube_profiles = double('youtube profiles')
           allow(site).to receive(:youtube_profiles).and_return(youtube_profiles)
           expect(youtube_profiles).to receive(:exists?).
-              with(youtube_profile.id).
-              and_return(false)
+            with(youtube_profile.id).
+            and_return(false)
           expect(youtube_profiles).to receive(:<<).with(youtube_profile)
           expect(site).to receive(:enable_video_govbox!)
 
@@ -51,7 +51,8 @@ describe Sites::YoutubeProfilesController do
                  site_id: site.id,
                  youtube_profile: {
                    url: 'youtube.com/channel/us_government_channel_id',
-                   not_allowed_key: 'not allowed value' }
+                   not_allowed_key: 'not allowed value'
+                 }
                }
         end
 
@@ -74,12 +75,12 @@ describe Sites::YoutubeProfilesController do
           youtube_profiles = double('youtube profiles')
           allow(site).to receive(:youtube_profiles).and_return(youtube_profiles)
           expect(youtube_profiles).to receive(:exists?).
-              with(existing_youtube_profile.id).
-              and_return(true)
+            with(existing_youtube_profile.id).
+            and_return(true)
 
           expect(YoutubeProfile).to receive(:new).
-              with('url' => 'youtube.com/channel/us_government_channel_id').
-              and_return(new_youtube_profile)
+            with({ 'url' => 'youtube.com/channel/us_government_channel_id' }).
+            and_return(new_youtube_profile)
 
           post :create,
                params: {
@@ -104,16 +105,15 @@ describe Sites::YoutubeProfilesController do
             with('youtube.com/user/dgsearch').
             and_return(nil)
           expect(YoutubeProfile).to receive(:new).
-              with('url' => 'youtube.com/user/dgsearch').
-              and_return(new_youtube_profile)
+            with({ 'url' => 'youtube.com/user/dgsearch' }).
+            and_return(new_youtube_profile)
 
           post :create,
                params: { site_id: site.id,
                          youtube_profile: {
                            url: 'youtube.com/user/dgsearch',
                            not_allowed_key: 'not allowed value'
-                         }
-               }
+                         } }
         end
 
         it { is_expected.to assign_to(:profile).with(new_youtube_profile) }
@@ -123,7 +123,7 @@ describe Sites::YoutubeProfilesController do
   end
 
   describe '#destroy' do
-    it_should_behave_like 'restricted to approved user', :delete, :destroy, site_id: 100, id: 100
+    it_behaves_like 'restricted to approved user', :delete, :destroy, site_id: 100, id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -134,7 +134,7 @@ describe Sites::YoutubeProfilesController do
 
         youtube_profile = mock_model(YoutubeProfile, title: 'usgovernment')
         expect(youtube_profiles).to receive(:find_by_id).with('100').
-            and_return(youtube_profile)
+          and_return(youtube_profile)
         expect(youtube_profiles).to receive(:delete).with(youtube_profile)
         expect(youtube_profiles).
           to receive_message_chain(:reload, :exists?).and_return(false)
