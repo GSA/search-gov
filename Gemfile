@@ -50,7 +50,7 @@ gem 'sass-rails', '~> 5.0.7'
 gem 'google_visualr',
     git: 'https://github.com/winston/google_visualr',
     ref: '17b97114a345baadd011e7b442b9a6c91a2b7ab5'
-gem 'faraday_middleware', '~> 0.12.2'
+gem 'faraday_middleware', '~> 0.14.0'
 gem 'net-http-persistent', '~> 2.9.3'
 gem 'rash_alt', '~> 0.4.12', require: 'rash'
 gem 'geoip', '~> 1.6.3'
