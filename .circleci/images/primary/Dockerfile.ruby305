@@ -1,6 +1,4 @@
-# This Dockerfile can be removed once system wide update is done with Ruby 3.0
-
-FROM cimg/ruby:2.7.5-browsers
+FROM cimg/ruby:3.0.5-browsers
 
 USER root
 
