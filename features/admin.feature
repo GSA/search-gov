@@ -60,6 +60,7 @@ Feature:  Administration
     And I fill in "Display name" with "New Name"
     And I press "Update"
     Then I should see "New Name"
+    And the page should be axe clean
 
   Scenario: Visiting the users admin page as an admin
     When I go to the admin home page
