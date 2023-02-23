@@ -1,8 +1,6 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe DomainScopeOptionsBuilder do
-  fixtures :affiliates, :site_domains, :document_collections, :url_prefixes
-
   describe '.build' do
     subject(:build) { described_class.build(args) }
 
@@ -10,7 +8,7 @@ describe DomainScopeOptionsBuilder do
 
     it 'includes the site domains' do
       expect(described_class.build(site: affiliate)).to eq(
-        {included_domains: ['nps.gov'], excluded_domains: [], scope_ids: [], site_limits: nil}
+        { included_domains: ['nps.gov'], excluded_domains: [], scope_ids: [], site_limits: nil }
       )
     end
 
@@ -19,7 +17,7 @@ describe DomainScopeOptionsBuilder do
 
       it 'includes the included and excluded domains' do
         expect(described_class.build(site: affiliate)).to eq(
-          { included_domains: ['nps.gov'], excluded_domains: ['excluded.gov'], scope_ids: [], site_limits: nil}
+          { included_domains: ['nps.gov'], excluded_domains: ['excluded.gov'], scope_ids: [], site_limits: nil }
         )
       end
     end
@@ -29,7 +27,7 @@ describe DomainScopeOptionsBuilder do
 
       it 'uses the collection prefixes as the included domains' do
         expect(described_class.build(site: affiliate, collection: collection)).to eq(
-          { included_domains: ['www.something.gov/subfolder/'], excluded_domains: [], scope_ids: [], site_limits: nil}
+          { included_domains: ['www.something.gov/subfolder/'], excluded_domains: [], scope_ids: [], site_limits: nil }
         )
       end
     end
