@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class RtuPopularRawHumanArray
-  MAX_RESULTS = 1000000
+  MAX_RESULTS = 50_000
   RESULTS_SIZE = 10
   INSUFFICIENT_DATA = "Not enough historic data to compute most popular"
 
