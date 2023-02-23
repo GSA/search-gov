@@ -10,7 +10,7 @@ Feature:  Administration
     And I should see "affiliate_admin@fixtures.org"
     And I should see "My Account"
     And I should see "Sign Out"
-    And the page should be axe clean according to: section508
+    And the page should be axe clean according to: section508, wcag2aa
 
     When I follow "Super Admin" in the main navigation bar
     Then I should be on the admin home page
