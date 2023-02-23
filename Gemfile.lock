@@ -220,6 +220,16 @@ GEM
       aws-sigv4 (~> 1.4)
     aws-sigv4 (1.5.2)
       aws-eventstream (~> 1, >= 1.0.2)
+    axe-core-api (4.6.0)
+      dumb_delegator
+      virtus
+    axe-core-capybara (4.6.0)
+      axe-core-api
+      dumb_delegator
+    axe-core-cucumber (4.6.0)
+      axe-core-api
+      dumb_delegator
+      virtus
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
@@ -350,6 +360,7 @@ GEM
     dogstatsd-ruby (3.2.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    dumb_delegator (1.0.0)
     elasticsearch-xpack (7.4.0)
       elasticsearch-api (>= 6)
     em-http-request (1.1.7)
@@ -871,6 +882,8 @@ DEPENDENCIES
   american_date (~> 1.1.1)
   authlogic (~> 6.4.1)
   aws-sdk-s3 (~> 1.102.0)
+  axe-core-capybara
+  axe-core-cucumber
   bootsnap (~> 1.13)
   capybara (~> 3.26)
   capybara-screenshot

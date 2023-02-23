@@ -188,6 +188,8 @@ group :development, :test do
   gem 'puma', '~> 5.3'
   gem 'debug'
   gem 'bootsnap', '~> 1.13', require: 'bootsnap/setup'
+  gem 'axe-core-capybara'
+  gem 'axe-core-cucumber'
 end
 
 group :test do

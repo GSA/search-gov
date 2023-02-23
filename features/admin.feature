@@ -2,6 +2,7 @@ Feature:  Administration
   Background:
     Given I am logged in with email "affiliate_admin@fixtures.org"
 
+  @javascript
   Scenario: Visiting the admin home page as an admin
     When I go to the admin home page
     Then I should see the browser page titled "Super Admin"
@@ -9,6 +10,7 @@ Feature:  Administration
     And I should see "affiliate_admin@fixtures.org"
     And I should see "My Account"
     And I should see "Sign Out"
+    And the page should be axe clean according to: section508
 
     When I follow "Super Admin" in the main navigation bar
     Then I should be on the admin home page
