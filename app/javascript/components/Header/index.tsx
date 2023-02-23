@@ -13,33 +13,15 @@ interface HeaderProps {
 
 export const Header = (props: HeaderProps) => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
-  const [navDropdownOpen, setNavDropdownOpen] = useState([false, false]);
 
   const toggleMobileNav = (): void => {
     setMobileNavOpen((prevOpen) => !prevOpen)
   }
 
-  const handleToggleNavDropdown = (index: number): void => {
-    setNavDropdownOpen((prevNavDropdownOpen) => {
-      const newOpenState = Array(prevNavDropdownOpen.length).fill(false)
-      
-      newOpenState[index] = !prevNavDropdownOpen[index]
-      return newOpenState
-    })
-  }
-
-  const handleSearch = (event): void => {
-    console.log("clicked");
-    event.preventDefault();
-  }
-
   const headerProps = {
     title: props.title,
-    handleSearch,
     toggleMobileNav,
-    mobileNavOpen,
-    handleToggleNavDropdown,
-    navDropdownOpen
+    mobileNavOpen
   }
  
   return (

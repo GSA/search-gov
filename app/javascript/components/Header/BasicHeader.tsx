@@ -1,58 +1,23 @@
 import React from 'react';
-import { Header as UswdsHeader, PrimaryNav, Search, Title, NavMenuButton, NavDropDownButton, Menu } from '@trussworks/react-uswds';
+import { Header as UswdsHeader, PrimaryNav, Logo, Title, NavMenuButton } from '@trussworks/react-uswds';
 
 import { HeaderProps } from './../props';
+
+import './ExtendedHeader.css';
+
+const logoImg = "https://search.gov/assets/gsa-logo-893b811a49f74b06b2bddbd1cde232d2922349c8c8c6aad1d88594f3e8fe42bd097e980c57c5e28eff4d3a9256adb4fcd88bf73a5112833b2efe2e56791aad9d.svg";
 
 export const BasicHeader = (props: HeaderProps) => {
   
   const primaryNavItems = [
-    <React.Fragment key="primaryNav_0">
-      <NavDropDownButton
-        data-testid="current-section"
-        menuId="extended-nav-section-one"
-        isOpen={props.navDropdownOpen[0]}
-        label={'<Current section>'}
-        onToggle={(): void => {
-          props.handleToggleNavDropdown(0)
-        }}
-        isCurrent
-      />
-      <Menu
-        id="extended-nav-section-one"
-        items={[
-          <a href="">{'<Navigation link 1>'}</a>,
-          <a href="">{'<Navigation link 2>'}</a>,
-          <a href="">{'<Navigation link 3>'}</a>,
-          <a href="">{'<Navigation link 4>'}</a>
-        ]}
-        isOpen={props.navDropdownOpen[0]}
-      />
-    </React.Fragment>,
-    <React.Fragment key="primaryNav_1">
-      <NavDropDownButton
-        data-testid="current-section-2"
-        menuId="extended-nav-section-two"
-        isOpen={props.navDropdownOpen[1]}
-        label={'<Section>'}
-        onToggle={(): void => {
-          props.handleToggleNavDropdown(1)
-        }}
-      />
-      <Menu
-        id="extended-nav-section-two"
-        items={[
-          <a href="">
-            {'<Section link 1>'}
-          </a>,
-          <a href="">
-            {'<Section link 2>'}
-          </a>
-        ]}
-        isOpen={props.navDropdownOpen[1]}
-      />
-    </React.Fragment>,
     <a key="primaryNav_2" className="usa-nav__link" href="">
-      <span>{'<Simple link>'}</span>
+      <span>{'Primary link 1'}</span>
+    </a>,
+    <a key="primaryNav_2" className="usa-nav__link" href="">
+      <span>{'Primary link 2'}</span>
+    </a>,
+    <a key="primaryNav_2" className="usa-nav__link" href="">
+      <span>{'Primary link 3'}</span>
     </a>,
   ]
 
@@ -61,11 +26,16 @@ export const BasicHeader = (props: HeaderProps) => {
       <UswdsHeader basic>
         <div className="usa-nav-container">
           <div className="usa-navbar">
-            <Title id="basic-logo">
-              <a href="" title={props.title} aria-label={props.title}>
-                {props.title}
-              </a>
-            </Title>
+            <Logo
+              className="width-full"
+              size="slim"
+              image={
+                <img className="usa-identifier__logo" src={logoImg} alt="Site logo" />
+              }
+              heading={
+                <Title>{props.title}</Title>
+              }
+            />
             <NavMenuButton
               label="Menu"
               onClick={props.toggleMobileNav}
@@ -73,12 +43,21 @@ export const BasicHeader = (props: HeaderProps) => {
               data-testid="usa-menu-mob-btn"
             />
           </div>
+
           <PrimaryNav
             aria-label="Primary navigation"
             items={primaryNavItems}
             onToggleMobileNav={props.toggleMobileNav}
-            mobileExpanded={props.mobileNavOpen}>
-            <Search size="small" onSubmit={props.handleSearch} />
+            mobileExpanded={props.mobileNavOpen}
+            >
+              <ul className="usa-nav__secondary-links">
+                <li className="usa-nav__secondary-item">
+                  <a href="#linkOne">Secondary link 1</a>
+                </li>
+                <li className="usa-nav__secondary-item">
+                  <a href="#linkTwo">Secondary link 2</a>
+                </li>
+              </ul>
           </PrimaryNav>
         </div>
       </UswdsHeader>
