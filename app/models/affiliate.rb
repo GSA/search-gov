@@ -311,7 +311,7 @@ class Affiliate < ApplicationRecord
 
   def refresh_indexed_documents(scope)
     indexed_documents.select(:id).send(scope.to_sym).find_in_batches(batch_size: batch_size(scope)) do |batch|
-      Resque.enqueue_with_priority(:low, AffiliateIndexedDocumentFetcher, id, batch.first.id, batch.last.id, scope)
+      AffiliateIndexedDocumentFetcherJob.perform_later(id, batch.first.id, batch.last.id, scope)
     end
   end
 
