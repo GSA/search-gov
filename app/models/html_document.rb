@@ -21,7 +21,7 @@ class HtmlDocument < WebDocument
     dcterms_data['dcterms.audience']&.first
   end
 
-  def image_url
+  def thumbnail_url
     metadata['og:image']&.first
   end
 
