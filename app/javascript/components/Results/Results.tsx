@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
 interface ResultsProps {
   results: {}[]
@@ -20,7 +20,7 @@ export const Results = (props: ResultsProps) => {
                   <Grid tablet={{ col: true }}><a href= "#">{result['unescapedUrl']}</a></Grid>
                 </Grid>
                 {props.vertical === 'image' && <Grid row>
-                  <Grid tablet={{ col: true }}><img src={result['thumbnail']['url']} /></Grid>
+                  <Grid tablet={{ col: true }}><img src={result['thumbnail']['url']} className="result-image"/></Grid>
                 </Grid>}
                 <Grid row>
                   <Grid tablet={{ col: true }}><p>{result['content']}</p></Grid>

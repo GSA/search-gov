@@ -16,7 +16,7 @@ describe Sites::QueryDownloadsController do
       }
     end
 
-    it_should_behave_like 'restricted to approved user', :get, :show, site_id: 100
+    it_behaves_like 'restricted to approved user', :get, :show, site_id: 100
 
     context 'when affiliate is downloading CSV data' do
       include_context 'approved user logged in to a site'
@@ -30,8 +30,10 @@ describe Sites::QueryDownloadsController do
           'search',
           Date.new(2014, 6, 8),
           Date.new(2014, 6, 14),
-          field: 'params.query.raw',
-          size: 1_000_000
+          {
+            field: 'params.query.raw',
+            size: 50_000
+          }
         ]
       end
       let(:date_range_top_n_click_args) do
@@ -40,8 +42,10 @@ describe Sites::QueryDownloadsController do
           'click',
           Date.new(2014, 6, 8),
           Date.new(2014, 6, 14),
-          field: 'params.query.raw',
-          size: 1_000_000
+          {
+            field: 'params.query.raw',
+            size: 50_000
+          }
         ]
       end
       let(:search_query) { instance_double(DateRangeTopNQuery, body: 'search query') }

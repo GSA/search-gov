@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 
-import { Header } from './Header/Header';
+import { Header } from './Header';
 import { Facets } from './Facets/Facets';
 import { SearchBar } from './SearchBar/SearchBar';
 import { Results } from './Results/Results';
@@ -12,23 +12,38 @@ interface SearchResultsLayoutProps {
   params?: string;
 };
 
+//To be updated
+const getAffiliateTitle = (): string => {
+  return "Search.gov";
+}
+
+//To be updated
+const isBasicHeader = (): boolean => {
+  return true;
+}
+
 const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
   return (
-    <React.Fragment>
+    <>
       <Header 
-        title="Search.gov" 
+        title={getAffiliateTitle()}
+        isBasic={isBasicHeader()} 
       />
-      <Facets />
-      <SearchBar 
-        results={props.results} 
-      />
-      <Results 
-        results={props.results} 
-        vertical={props.vertical}
-      />
+     
+      <div className="usa-section">
+        <Facets />
+        <SearchBar 
+          results={props.results} 
+        />
+        <Results 
+          results={props.results} 
+          vertical={props.vertical}
+        />
+      </div>
+
       <Footer />
       <Identifier />
-    </React.Fragment>
+    </>
   );
 }
 
