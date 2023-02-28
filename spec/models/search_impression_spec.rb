@@ -83,5 +83,26 @@ describe SearchImpression do
         )
       end
     end
+
+    context 'when the search includes sensitive information' do
+      let(:sensitive_info) { '123-45-6789' }
+      let(:params) { { 'query' => sensitive_info } }
+      let(:request) do
+        instance_double('request',
+                         remote_ip: '1.2.3.4',
+                         url: "http://www.gov.gov/search?query=#{sensitive_info}",
+                         referer: "http://www.gov.gov/#{sensitive_info}",
+                         user_agent: 'whatevs',
+                         headers: {})
+      end
+
+      it 'does not log the information' do
+        expect(Rails.logger).not_to have_received(:info).with(/123-45-6789/)
+      end
+
+      it 'specifies what was redacted' do
+        expect(Rails.logger).to have_received(:info).with(/redacted_ssn/)
+      end
+    end
   end
 end

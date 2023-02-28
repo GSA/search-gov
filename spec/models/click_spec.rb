@@ -10,6 +10,7 @@ describe Click do
   let(:position) { '7' }
   let(:module_code) { 'BWEB' }
   let(:query) { 'my query' }
+  let(:referrer) { 'http://www.fda.gov/referrer' }
   let(:params) do
     {
       url: url,
@@ -20,7 +21,7 @@ describe Click do
       module_code: module_code,
       vertical: 'web',
       user_agent: 'mozilla',
-      referrer: 'http://www.fda.gov/referrer'
+      referrer: referrer
     }
   end
 
@@ -51,13 +52,12 @@ describe Click do
       before do
         allow(Rails.logger).to receive(:info)
         travel_to(Time.utc(2020, 1, 1))
+        click.log
       end
 
       after { travel_back }
 
       it 'logs almost-JSON info about the click' do
-        click.log
-
         expect(Rails.logger).to have_received(:info).with("[Click] #{click_json}")
       end
 
@@ -65,7 +65,6 @@ describe Click do
         let(:url) { 'https://search.gov/%28%3A%7C%29'  }
 
         it 'logs the encoded URL' do
-          click.log
           expect(Rails.logger).to have_received(:info).
             with(%r{https://search.gov/%28%3A%7C%29})
         end
@@ -77,8 +76,20 @@ describe Click do
         let(:query) { 'DOWNCASE ME' }
 
         it 'downcases the query' do
-          click.log
           expect(Rails.logger).to have_received(:info).with(/downcase me/)
+        end
+      end
+
+      context 'when the click includes sensitive information' do
+        let(:query) { '123-45-6789' }
+        let(:referrer) { 'https://foo.gov/search?query=123-45-6789' }
+
+        it 'does not log the information' do
+          expect(Rails.logger).not_to have_received(:info).with(/123-45-6789/)
+        end
+
+        it 'specifies what was redacted' do
+          expect(Rails.logger).to have_received(:info).with(/redacted_ssn/)
         end
       end
     end

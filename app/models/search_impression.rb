@@ -18,7 +18,7 @@ class SearchImpression
                                modules: search.modules.join('|'),
                                params: relevant_params)
 
-    Rails.logger.info("[Search Impression] #{hash.to_json}")
+    Rails.logger.info("[Search Impression] #{Redactor.redact(hash.to_json)}")
   end
 
   def self.get_url_from_request(request)

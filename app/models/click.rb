@@ -34,7 +34,7 @@ class Click
   end
 
   def log
-    Rails.logger.info('[Click] ' + click_hash.to_json)
+    Rails.logger.info('[Click] ' + Redactor.redact(click_hash.to_json))
   end
 
   private
