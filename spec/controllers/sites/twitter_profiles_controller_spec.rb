@@ -7,7 +7,7 @@ describe Sites::TwitterProfilesController do
   before { activate_authlogic }
 
   describe '#index' do
-    it_should_behave_like 'restricted to approved user', :get, :index, site_id: 100
+    it_behaves_like 'restricted to approved user', :get, :index, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -25,7 +25,7 @@ describe Sites::TwitterProfilesController do
   end
 
   describe '#create' do
-    it_should_behave_like 'restricted to approved user', :post, :create, site_id: 100
+    it_behaves_like 'restricted to approved user', :post, :create, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -37,19 +37,19 @@ describe Sites::TwitterProfilesController do
 
         before do
           expect(TwitterData).to receive(:import_profile).
-              with('usasearch').
-              and_return(twitter_profile)
+            with('usasearch').
+            and_return(twitter_profile)
 
           twitter_profiles = double('twitter profiles')
           allow(site).to receive(:twitter_profiles).and_return(twitter_profiles)
           expect(twitter_profiles).to receive(:exists?).
-              with(twitter_profile.id).
-              and_return(false)
+            with(twitter_profile.id).
+            and_return(false)
 
           expect(AffiliateTwitterSetting).to receive(:create!).
-              with(affiliate_id: site.id,
+            with({ affiliate_id: site.id,
                    twitter_profile_id: twitter_profile.id,
-                   show_lists: '1')
+                   show_lists: '1' })
 
           post :create,
                params: {
@@ -73,18 +73,18 @@ describe Sites::TwitterProfilesController do
 
         before do
           expect(TwitterData).to receive(:import_profile).
-              with('usasearch').
-              and_return(existing_twitter_profile)
+            with('usasearch').
+            and_return(existing_twitter_profile)
 
           twitter_profiles = double('twitter profiles')
           allow(site).to receive(:twitter_profiles).and_return(twitter_profiles)
           expect(twitter_profiles).to receive(:exists?).
-              with(existing_twitter_profile.id).
-              and_return(true)
+            with(existing_twitter_profile.id).
+            and_return(true)
 
           expect(TwitterProfile).to receive(:new).
-              with('screen_name' => 'usasearch').
-              and_return(new_twitter_profile)
+            with({ 'screen_name' => 'usasearch' }).
+            and_return(new_twitter_profile)
 
           post :create,
                params: {
@@ -107,15 +107,14 @@ describe Sites::TwitterProfilesController do
         before do
           expect(TwitterData).to receive(:import_profile).with('invalid handle').and_return(nil)
           expect(TwitterProfile).to receive(:new).
-              with('screen_name' => 'invalid handle').
-              and_return(new_twitter_profile)
+            with({ 'screen_name' => 'invalid handle' }).
+            and_return(new_twitter_profile)
 
           post :create,
                params: {
                  site_id: site.id,
                  twitter_profile: { screen_name: 'invalid handle',
-                                    not_allowed_key: 'not allowed value'
-                 }
+                                    not_allowed_key: 'not allowed value' }
                }
         end
 
@@ -126,7 +125,7 @@ describe Sites::TwitterProfilesController do
   end
 
   describe '#destroy' do
-    it_should_behave_like 'restricted to approved user', :delete, :destroy, site_id: 100, id: 100
+    it_behaves_like 'restricted to approved user', :delete, :destroy, site_id: 100, id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -137,7 +136,7 @@ describe Sites::TwitterProfilesController do
 
         twitter_profile = mock_model(TwitterProfile, screen_name: 'USASearch')
         expect(twitter_profiles).to receive(:find_by_id).with('100').
-            and_return(twitter_profile)
+          and_return(twitter_profile)
         expect(twitter_profiles).to receive(:delete).with(twitter_profile)
 
         delete :destroy, params: { site_id: site.id, id: 100 }

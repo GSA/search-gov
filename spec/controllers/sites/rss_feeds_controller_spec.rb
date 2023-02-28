@@ -37,7 +37,7 @@ describe Sites::RssFeedsController do
           rss_feeds = double('rss feeds')
           allow(site).to receive(:rss_feeds).and_return(rss_feeds)
           expect(rss_feeds).to receive(:build).
-            with('name' => 'Recalls', 'show_only_media_content' => 'false').
+            with({ 'name' => 'Recalls', 'show_only_media_content' => 'false' }).
             and_return(rss_feed)
           allow(RssFeedUrl).to receive_message_chain(:rss_feed_owned_by_affiliate,
                                                      :find_existing_or_initialize).
@@ -73,7 +73,7 @@ describe Sites::RssFeedsController do
           rss_feeds = double('rss feeds')
           allow(site).to receive(:rss_feeds).and_return(rss_feeds)
           expect(rss_feeds).to receive(:build).
-            with('name' => 'Recalls', 'show_only_media_content' => 'false').
+            with({ 'name' => 'Recalls', 'show_only_media_content' => 'false' }).
             and_return(rss_feed)
           allow(RssFeedUrl).to receive_message_chain(:rss_feed_owned_by_affiliate,
                                                      :find_existing_or_initialize).
@@ -119,7 +119,7 @@ describe Sites::RssFeedsController do
           expect(rss_feeds).to receive(:find_by).with(id: '100').and_return(rss_feed)
 
           expect(rss_feed).to receive(:assign_attributes).
-            with('name' => 'Recalls', 'show_only_media_content' => 'false')
+            with({ 'name' => 'Recalls', 'show_only_media_content' => 'false' })
           allow(RssFeedUrl).to receive_message_chain(:rss_feed_owned_by_affiliate,
                                                      :find_existing_or_initialize).
             and_return(rss_feed_url)

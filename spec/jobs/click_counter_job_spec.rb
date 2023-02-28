@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ClickCounterJob do
-  subject(:perform) { described_class.perform_now(args) }
+  subject(:perform) { described_class.perform_now(**args) }
 
   let(:counter) { instance_double(ClickCounter) }
   let(:args) do

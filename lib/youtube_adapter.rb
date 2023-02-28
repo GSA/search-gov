@@ -8,7 +8,7 @@ module YoutubeAdapter
     params = {
       for_username: username,
     }
-    first_channel('id', params) { |item| item.id }
+    first_channel('id', **params) { |item| item.id }
   end
 
   def self.get_channel_title(channel_id)
@@ -85,7 +85,7 @@ module YoutubeAdapter
 
   def self.first_channel(part, params, raise_on_error = false)
     channel = nil
-    client.list_channels(part, params) do |result, error|
+    client.list_channels(part, **params) do |result, error|
       on_result_with_items(result, error, raise_on_error) do |items|
         channel = yield items.first if items.first.present?
       end
@@ -119,7 +119,7 @@ module YoutubeAdapter
 
     until next_page_token.nil?
       params = opts[:params].merge(page_token: next_page_token, options: request_options)
-      client.send(:"list_#{what_to_list}", opts[:part], params) do |result, error|
+      client.send(:"list_#{what_to_list}", opts[:part], **params) do |result, error|
         return_value ||= first_result(result, error)
         if return_value.status_code == 304
           next_page_token = nil

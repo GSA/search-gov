@@ -61,7 +61,7 @@ class GovboxSet
       size: 1,
       twitter_profile_ids: affiliate_twitter_ids)
     if affiliate_twitter_ids.any?
-      @tweets = ElasticTweet.search_for(search_options)
+      @tweets = ElasticTweet.search_for(**search_options)
       @modules << 'TWEET' if elastic_results_exist?(@tweets)
     end
   end
@@ -99,14 +99,14 @@ class GovboxSet
         rss_feeds: non_managed_feeds,
         since: 4.months.ago.beginning_of_day,
         title_only: true)
-      @news_items = ElasticNewsItem.search_for search_options
+      @news_items = ElasticNewsItem.search_for(**search_options)
       @modules << 'NEWS' if elastic_results_exist?(@news_items)
     end
   end
 
   def init_jobs
     if @affiliate.jobs_enabled?
-      job_results = Jobs.search({
+      job_results = Jobs.search(**{
         query: @query,
         organization_codes: @affiliate.agency&.joined_organization_codes,
         location_name: @geoip_info&.location_name,
@@ -136,7 +136,7 @@ class GovboxSet
     return if @affiliate.boosted_contents.empty?
 
     search_options = build_search_options(affiliate_id: @affiliate.id, size: 2, site_limits: @site_limits)
-    @boosted_contents = ElasticBoostedContent.search_for(search_options)
+    @boosted_contents = ElasticBoostedContent.search_for(**search_options)
     @modules << 'BOOS' if elastic_results_exist?(@boosted_contents)
   end
 
@@ -144,7 +144,7 @@ class GovboxSet
     return if @affiliate.featured_collections.empty?
 
     search_options = build_search_options(affiliate_id: @affiliate.id, size: 1)
-    @featured_collections = ElasticFeaturedCollection.search_for(search_options)
+    @featured_collections = ElasticFeaturedCollection.search_for(**search_options)
     if elastic_results_exist?(@featured_collections)
       if elastic_results_exist?(@boosted_contents) and @boosted_contents.total > 1
         search_options = build_search_options(affiliate_id: @affiliate.id, size: 1, site_limits: @site_limits)

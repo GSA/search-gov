@@ -111,7 +111,7 @@ class I14ySearch < FilterableSearch
   end
 
   def populate_additional_results
-    @govbox_set = GovboxSet.new(query, affiliate, @options[:geoip_info], @highlight_options) if first_page?
+    @govbox_set = GovboxSet.new(query, affiliate, @options[:geoip_info], **@highlight_options) if first_page?
   end
 
   def log_serp_impressions

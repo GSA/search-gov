@@ -118,6 +118,8 @@ module Api
                                          :sort_by,
                                          :tags).to_h
 
+        # Mirrors param key renaming done for browser-based searches.
+        # See: app/controllers/application_controller.rb #search_options_from_params
         @search_params[:site_limits] = @search_params.delete(:sitelimit)
         @search_params
       end

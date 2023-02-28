@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
-
 describe I14ySearch do
   subject(:i14y_search) { described_class.new(filterable_search_options) }
 
@@ -76,8 +74,8 @@ describe I14ySearch do
     it 'requests facet fields be included in the search' do
       i14y_search.run
       expect(I14yCollections).to have_received(:search).
-        with(hash_including(include: 'title,path,audience,changed,content_type,'\
-                                     'created,mime_type,searchgov_custom1,'\
+        with(hash_including(include: 'title,path,audience,changed,content_type,' \
+                                     'created,mime_type,searchgov_custom1,' \
                                      'searchgov_custom2,searchgov_custom3,tags'))
     end
   end
@@ -182,7 +180,7 @@ describe I14ySearch do
 
     before { affiliate.site_domains.create!(domain: 'nih.gov') }
 
-    it 'passes the sitelimits to i14y with out http/https' do
+    it 'passes the site limit to i14y with out http/https' do
       allow(I14yCollections).to receive(:search)
       i14y_search.run
       expect(I14yCollections).to have_received(:search).
@@ -202,11 +200,16 @@ describe I14ySearch do
 
     before { affiliate.site_domains.create!(domain: 'nih.gov') }
 
-    it 'passes the sitelimits to i14y with out http/https' do
+    it 'passes the site limits to i14y with out http/https' do
       allow(I14yCollections).to receive(:search)
       i14y_search.run
       expect(I14yCollections).to have_received(:search).
         with(hash_including(query: 'marketplase site:nih.gov/bar site:nih.gov/foo'))
+    end
+
+    it 'sets matching site limits' do
+      expect(i14y_search.matching_site_limits).
+        to match(array_including('nih.gov/foo', 'nih.gov/bar'))
     end
   end
 
