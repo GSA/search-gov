@@ -2,7 +2,7 @@
 
 class Sites::QueryDownloadsController < Sites::SetupSiteController
   include CsvResponsive
-  MAX_RESULTS = 1_000_000
+  MAX_RESULTS = 50_000
 
   def show
     @end_date = request['end_date'].to_date

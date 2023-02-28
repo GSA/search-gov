@@ -16,6 +16,7 @@
     "paths": {
       "*": ["node_modules/*", "app/javascript/*"]
     },
+    "esModuleInterop": true
   },
   "exclude": ["app/javascript/**/*.test.ts", "app/javascript/**/*.test.tsx", "node_modules", "vendor", "public"],
   "compileOnSave": false
