@@ -61,9 +61,42 @@ describe AffiliateIndexedDocumentFetcherJob do
     end
   end
 
-  context 'when affiliate or indexed document have disappeared before job runs' do
+  context 'when an indexed document has disappeared before job runs' do
+    let(:unfetched2) { IndexedDocument.find_by(unfetched_atts2) }
+    let(:unfetched_atts2) do
+      { url: 'http://nps.gov/foo2.html',
+        title: 'Doc Title 2',
+        description: 'This is a document 2.' }
+    end
+
     before do
-      allow(IndexedDocument).to receive(:find).and_raise ActiveRecord::RecordNotFound
+      affiliate.indexed_documents.build(unfetched_atts2)
+      affiliate.save
+      allow(IndexedDocument).to receive(:find).with(unfetched.id).and_raise ActiveRecord::RecordNotFound
+      allow(IndexedDocument).to receive(:find).with(unfetched2.id).and_return(unfetched2)
+      allow(unfetched2).to receive(:fetch)
+      allow(Rails.logger).to receive(:warn)
+    end
+
+    it 'logs the problem and moves on' do
+      described_class.perform_now(affiliate.id, 1, 2**30, 'unfetched')
+      expect(Rails.logger).to have_received(:warn).with(/Cannot find IndexedDocument to fetch/)
+    end
+
+    it 'fetches the good document' do
+      described_class.perform_now(affiliate.id, 1, 2**30, 'unfetched')
+      expect(unfetched2).to have_received(:fetch)
+    end
+
+    it 'does not fetch the missing document' do
+      described_class.perform_now(affiliate.id, 1, 2**30, 'unfetched')
+      expect(unfetched).not_to have_received(:fetch)
+    end
+  end
+
+  context 'when the affiliate has disappeared before job runs' do
+    before do
+      allow(Affiliate).to receive(:find).and_raise ActiveRecord::RecordNotFound
       allow(Rails.logger).to receive(:warn)
     end
 
