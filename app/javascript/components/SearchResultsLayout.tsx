@@ -25,7 +25,6 @@ const isBasicHeader = (): boolean => {
 }
 
 const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
-  console.log({SearchResultsLayout: props});
   return (
     <>
       <Header 
