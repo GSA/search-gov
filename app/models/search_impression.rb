@@ -10,7 +10,6 @@ class SearchImpression
       referrer: request.referer,
       user_agent: request.user_agent
     }
-
     request_pairs[:diagnostics] = flatten_diagnostics_hash(search.diagnostics)
     relevant_params = params.reject { |k, v| IRRELEVANT_KEYS.include?(k.to_s) || k.to_s.include?('.') }
     hash = request_pairs.merge(time: Time.now.to_fs(:db),

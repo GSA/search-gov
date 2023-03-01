@@ -5,12 +5,12 @@ require 'spec_helper'
 describe SearchImpression do
   describe '.log' do
     let(:request) do
-      double('request',
-             remote_ip: '1.2.3.4',
-             url: 'http://www.gov.gov/',
-             referer: 'http://www.gov.gov/ref',
-             user_agent: 'whatevs',
-             headers: {})
+      instance_double(ActionDispatch::Request,
+                      remote_ip: '1.2.3.4',
+                      url: 'http://www.gov.gov/',
+                      referer: 'http://www.gov.gov/ref',
+                      user_agent: 'whatevs',
+                      headers: {})
     end
     let(:search) do
       double(Search,
@@ -65,12 +65,12 @@ describe SearchImpression do
 
     context 'headers contains X-Original-Request header' do
       let(:request) do
-        double('request',
-               remote_ip: '1.2.3.4',
-               url: 'http://www.gov.gov/',
-               referer: 'http://www.gov.gov/ref',
-               user_agent: 'whatevs',
-               headers: { 'X-Original-Request' => 'http://test.gov' })
+        instance_double(ActionDispatch::Request,
+                        remote_ip: '1.2.3.4',
+                        url: 'http://www.gov.gov/',
+                        referer: 'http://www.gov.gov/ref',
+                        user_agent: 'whatevs',
+                        headers: { 'X-Original-Request' => 'http://test.gov' })
       end
 
       it 'should log two lines, the original-request header and the search impression' do
@@ -88,12 +88,12 @@ describe SearchImpression do
       let(:sensitive_info) { '123-45-6789' }
       let(:params) { { 'query' => sensitive_info } }
       let(:request) do
-        instance_double('request',
-                         remote_ip: '1.2.3.4',
-                         url: "http://www.gov.gov/search?query=#{sensitive_info}",
-                         referer: "http://www.gov.gov/#{sensitive_info}",
-                         user_agent: 'whatevs',
-                         headers: {})
+        instance_double(ActionDispatch::Request,
+                        remote_ip: '1.2.3.4',
+                        url: "http://www.gov.gov/search?query=#{sensitive_info}",
+                        referer: "http://www.gov.gov/#{sensitive_info}",
+                        user_agent: 'whatevs',
+                        headers: {})
       end
 
       it 'does not log the information' do
