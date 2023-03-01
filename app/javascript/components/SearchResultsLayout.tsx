@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './SearchResultsLayout.css';
+
 import { Header } from './Header';
 import { Facets } from './Facets/Facets';
 import { SearchBar } from './SearchBar/SearchBar';
@@ -23,6 +25,7 @@ const isBasicHeader = (): boolean => {
 }
 
 const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
+  console.log({SearchResultsLayout: props});
   return (
     <>
       <Header 
