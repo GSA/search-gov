@@ -109,7 +109,7 @@ gem 'after_commit_action', '~> 1.1'
 gem 'aasm', '~> 5.2.0'
 gem 'active_scheduler', '~> 0.7.0'
 gem 'retriable', '~> 3.1'
-gem 'cld3', '~> 3.5.0'
+gem 'cld3', '= 3.5.0'
 gem 'activejob-uniqueness', '~> 0.2.1'
 # Temporarily locking the version to resolve SRCH-3788.
 # The fix for the bug in SRCH-3788 is NOT covered by automated specs.
