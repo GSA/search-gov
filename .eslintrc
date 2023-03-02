@@ -3,6 +3,9 @@
     "modules": true,
     "jsx": true
   },
+  "parserOptions": {
+    "sourceType": "module"
+  },
   "env": {
     "amd": true,
     "browser": true,
@@ -10,6 +13,13 @@
     "jquery": true,
     "node": true
   },
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
   // http://eslint.org/docs/rules/
   "rules": {
     // Possible Errors
@@ -128,7 +138,7 @@
       }
     ],
     "no-undefined": 0,
-    "no-unused-vars": 0,
+    "no-unused-vars": 1,
     "no-use-before-define": 0,
 
     // Node.js and CommonJS

@@ -1,3 +1,4 @@
+/* eslint-disable no-var, prefer-const, prefer-destructuring */
 var button = document.getElementsByClassName('usa-banner__button')[0];
 var bannerContent = document.getElementsByClassName('usa-banner__content')[0];
 

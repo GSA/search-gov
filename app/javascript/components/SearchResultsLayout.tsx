@@ -6,6 +6,9 @@ import { SearchBar } from './SearchBar/SearchBar';
 import { Results } from './Results/Results';
 import { Footer } from './Footer/Footer';
 import { Identifier } from './Identifier/Identifier';
+
+import { Facets } from './Facets/Facets';
+
 interface SearchResultsLayoutProps {
   results: {}[];
   vertical: string;
@@ -13,7 +16,7 @@ interface SearchResultsLayoutProps {
 };
 
 //To be updated
-const getAffiliateTitle = (): string => {
+var getAffiliateTitle = (): string => {
   return "Search.gov";
 }
 
