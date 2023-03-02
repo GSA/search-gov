@@ -5,7 +5,7 @@
 # We may also want to use gems such as 'redactor' or 'ruby_regex'.
 module Redactor
   PATTERNS = {
-    ssn: /\b\d{3}[-\sxX._]?\d{2}[-\sxX._]?\d{4}\b/,
+    ssn: /\b\d{3}[-\sxX._\+]?\d{2}[-\sxX._\+]?\d{4}\b/,
     email: /[a-zA-Z0-9][-a-zA-Z0-9._]+(@|%40)[-a-zA-Z0-9]+\.+[a-zA-Z]{2,8}/,
     cc: /\b(?:\d[ -.]*?){13,17}\b/,
     phone: /\(?([2-9]\d{2})\)?[- .]?([2-9]\d{2}[- .]?\d{4})/

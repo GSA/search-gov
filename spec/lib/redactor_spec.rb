@@ -14,6 +14,12 @@ describe Redactor do
       let(:string) { 'foo 123-45-6789 bar' }
 
       it { is_expected.to eq 'foo [redacted_ssn] bar' }
+
+      context 'when the spaces have been URI-encoded' do
+        let(:string) { '123+45+6789' }
+
+        it { is_expected.to eq '[redacted_ssn]' }
+      end
     end
 
     context 'when the string contains an email address' do
