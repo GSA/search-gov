@@ -1,3 +1,9 @@
+# WARNING
+The fake analytics data generator was written prior to our upgrade to Elasticsearch 6.
+It is NOT compatible with Elasticsearch 7. We may want to update it in the future for
+compatibility, but we also may take a different approach entirely to making the analytics
+more easily testable locally.
+
 # background
 
 Some pages in the Analytics section require searches to have been conducted against

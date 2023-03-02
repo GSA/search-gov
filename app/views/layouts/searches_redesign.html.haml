@@ -1,6 +1,14 @@
 !!!strict
 %html
   %head
+    %meta{ charset: 'UTF-8' }
+    %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
+    = render_robots_meta_tag
+    = attribution
+    = favicon_link_tag favicon_url(@search.affiliate.favicon_url)
+
+    %title #{@page_title}
+
     = javascript_pack_tag 'application'
     = stylesheet_pack_tag 'application'
   %body
