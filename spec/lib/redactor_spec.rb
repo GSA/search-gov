@@ -20,6 +20,12 @@ describe Redactor do
       let(:string) { 'foo foo@bar.gov bar' }
 
       it { is_expected.to eq 'foo [redacted_email] bar' }
+
+      context 'when the email address is URI-encoded' do
+        let(:string) { 'foo%40bar.gov' }
+
+        it { is_expected.to eq '[redacted_email]' }
+      end
     end
 
     context 'when the string may contain a credit card number' do
