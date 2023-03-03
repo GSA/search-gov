@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe SearchgovDomainReindexerJob do
-  subject(:perform) { described_class.perform_now(args) }
+  subject(:perform) { described_class.perform_now(**args) }
 
   let(:searchgov_domain) { searchgov_domains(:basic_domain) }
   let(:args) do

@@ -66,7 +66,7 @@ describe DocumentFetcher do
         it 'uses the given timeout overrides' do
           expect(connection).to receive(:'connect_timeout=').with(42)
           expect(connection).to receive(:'timeout=').with(84)
-          described_class.fetch('http://healthcare.gov', { connect_timeout: 42, read_timeout: 84 })
+          described_class.fetch('http://healthcare.gov', **{ connect_timeout: 42, read_timeout: 84 })
         end
       end
     end

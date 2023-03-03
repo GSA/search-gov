@@ -11,7 +11,7 @@ describe ApplicationDocument do
       url: url
     }
   end
-  let(:application_document) { described_class.new(valid_attributes) }
+  let(:application_document) { described_class.new(**valid_attributes) }
 
   it_behaves_like 'a web document' do
     let(:doc_without_description) { open_fixture_file('/pdf/no_metadata.pdf') }

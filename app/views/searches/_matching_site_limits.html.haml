@@ -1,6 +1,6 @@
 #site-limits
   .content-block-item
     .matching-site-limits
-      = raw t :'searches.site_limits.including_results_for_query_from_matching_sites', query_and_matching_sites_hash
+      = raw t :'searches.site_limits.including_results_for_query_from_matching_sites', **query_and_matching_sites_hash
     .search-all-sites
-      = raw t :'searches.site_limits.do_you_want_to_see_results_for', query_from_all_sites_hash
+      = raw t :'searches.site_limits.do_you_want_to_see_results_for', **query_from_all_sites_hash

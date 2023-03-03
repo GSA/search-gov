@@ -38,8 +38,14 @@ gem 'googlecharts', '~> 1.6.12'
 gem 'tweetstream', git: 'https://github.com/GSA/tweetstream'
 gem 'twitter', git: 'https://github.com/GSA/twitter.git', branch: '5-stable'
 gem 'flickraw', '~> 0.9.9'
-gem 'active_scaffold', '~> 3.6.0'
-gem 'active_scaffold_export', '~> 3.4.0'
+# SRCH-3837: We need this change: https://github.com/activescaffold/active_scaffold/pull/666
+# for ruby 3, but all current releases require Rails < 6.2 (though main is looser).
+gem 'active_scaffold', git: 'https://github.com/activescaffold/active_scaffold',
+                       branch: 'master'
+# SRCH-3846: We need the change PRed from this branch for ruby 3, but the latest gem release
+# has yet to accept the PR: https://github.com/activescaffold/active_scaffold_export/pull/5
+gem 'active_scaffold_export', git: 'https://github.com/technorama/active_scaffold_export',
+                              branch: 'rails3'
 gem "recaptcha", '~> 4.6.3', :require => "recaptcha/rails"
 gem 'newrelic_rpm', '~> 8.12.0'
 gem 'american_date', '~> 1.1.1'
@@ -50,7 +56,7 @@ gem 'sass-rails', '~> 5.0.7'
 gem 'google_visualr',
     git: 'https://github.com/winston/google_visualr',
     ref: '17b97114a345baadd011e7b442b9a6c91a2b7ab5'
-gem 'faraday_middleware', '~> 0.12.2'
+gem 'faraday_middleware', '~> 0.14.0'
 gem 'net-http-persistent', '~> 2.9.3'
 gem 'rash_alt', '~> 0.4.12', require: 'rash'
 gem 'geoip', '~> 1.6.3'
@@ -73,7 +79,7 @@ gem 'elasticsearch', git: 'https://github.com/GSA/elasticsearch-ruby', branch: '
 gem 'elasticsearch-xpack', '~> 7.4.0'
 gem 'federal_register', '~> 0.6.3'
 gem 'github-markdown', '~> 0.6.9'
-gem 'google-api-client', '~> 0.19.1'
+gem 'google-api-client', '~> 0.53.0'
 gem 'iso8601', '~> 0.10.1'
 gem 'jbuilder', '~> 2.11.5'
 gem 'typhoeus', '~> 1.3.0'
@@ -103,7 +109,8 @@ gem 'after_commit_action', '~> 1.1'
 gem 'aasm', '~> 5.2.0'
 gem 'active_scheduler', '~> 0.7.0'
 gem 'retriable', '~> 3.1'
-gem 'cld3', '~> 3.4.3'
+# Lock version of cld3, since higher patch version cld3(3.5.2) has caused deployment issues.
+gem 'cld3', '= 3.5.0'
 gem 'activejob-uniqueness', '~> 0.2.1'
 # Temporarily locking the version to resolve SRCH-3788.
 # The fix for the bug in SRCH-3788 is NOT covered by automated specs.
