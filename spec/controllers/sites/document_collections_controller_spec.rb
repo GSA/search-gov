@@ -5,7 +5,7 @@ describe Sites::DocumentCollectionsController do
   before { activate_authlogic }
 
   describe '#index' do
-    it_should_behave_like 'restricted to approved user', :get, :index, site_id: 100
+    it_behaves_like 'restricted to approved user', :get, :index, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -23,7 +23,7 @@ describe Sites::DocumentCollectionsController do
   end
 
   describe '#create' do
-    it_should_behave_like 'restricted to approved user', :post, :create, site_id: 100
+    it_behaves_like 'restricted to approved user', :post, :create, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -35,16 +35,17 @@ describe Sites::DocumentCollectionsController do
           document_collections = double('document collections')
           allow(site).to receive(:document_collections).and_return(document_collections)
           expect(document_collections).to receive(:build).
-              with('name' => 'News',
-                   'url_prefixes_attributes' => { '0' =>{ 'prefix' => 'some.agency.gov/news' } }).
-              and_return(document_collection)
+            with({ 'name' => 'News',
+                   'url_prefixes_attributes' => { '0' => { 'prefix' => 'some.agency.gov/news' } } }).
+            and_return(document_collection)
           expect(document_collection).to receive(:save).and_return(true)
           expect(document_collection).to receive(:too_deep_for_bing?).and_return(true)
 
           email = double(Mail::Message)
           expect(Emailer).to receive(:deep_collection_notification).with(
-            current_user, document_collection).
-              and_return(email)
+            current_user, document_collection
+          ).
+            and_return(email)
           expect(email).to receive(:deliver_now)
 
           post :create,
@@ -71,9 +72,9 @@ describe Sites::DocumentCollectionsController do
           document_collections = double('document collections')
           allow(site).to receive(:document_collections).and_return(document_collections)
           expect(document_collections).to receive(:build).
-              with('name' => 'News',
-                   'url_prefixes_attributes' => { '0' =>{ 'prefix' => '' } }).
-              and_return(document_collection)
+            with({ 'name' => 'News',
+                   'url_prefixes_attributes' => { '0' => { 'prefix' => '' } } }).
+            and_return(document_collection)
           expect(document_collection).to receive(:save).and_return(false)
           allow(document_collection).to receive_message_chain(:url_prefixes, :build)
 
@@ -96,7 +97,7 @@ describe Sites::DocumentCollectionsController do
   end
 
   describe '#update' do
-    it_should_behave_like 'restricted to approved user', :put, :update, site_id: 100, id: 100
+    it_behaves_like 'restricted to approved user', :put, :update, site_id: 100, id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -110,9 +111,9 @@ describe Sites::DocumentCollectionsController do
           expect(document_collections).to receive(:find_by_id).with('100').and_return(document_collection)
 
           expect(document_collection).to receive(:destroy_and_update_attributes).
-              with('name' => 'News',
-                   'url_prefixes_attributes' => { '0' =>{ 'prefix' => '' } }).
-              and_return(false)
+            with({ 'name' => 'News',
+                   'url_prefixes_attributes' => { '0' => { 'prefix' => '' } } }).
+            and_return(false)
           allow(document_collection).to receive_message_chain(:url_prefixes, :build)
 
           put :update,
