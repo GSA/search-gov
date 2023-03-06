@@ -70,8 +70,7 @@ describe AffiliateIndexedDocumentFetcherJob do
     end
 
     before do
-      affiliate.indexed_documents.build(unfetched_atts2)
-      affiliate.save
+      affiliate.indexed_documents.create!(unfetched_atts2)
       allow(IndexedDocument).to receive(:find).with(unfetched.id).and_raise ActiveRecord::RecordNotFound
       allow(IndexedDocument).to receive(:find).with(unfetched2.id).and_return(unfetched2)
       allow(unfetched2).to receive(:fetch)
