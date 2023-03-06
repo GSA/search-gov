@@ -5,7 +5,7 @@ describe Sites::FeaturedCollectionsController do
   before { activate_authlogic }
 
   describe '#index' do
-    it_should_behave_like 'restricted to approved user', :get, :index, site_id: 100
+    it_behaves_like 'restricted to approved user', :get, :index, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -23,7 +23,7 @@ describe Sites::FeaturedCollectionsController do
   end
 
   describe '#create' do
-    it_should_behave_like 'restricted to approved user', :post, :create, site_id: 100
+    it_behaves_like 'restricted to approved user', :post, :create, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -35,8 +35,8 @@ describe Sites::FeaturedCollectionsController do
           featured_collections = double('featured collections')
           allow(site).to receive(:featured_collections).and_return(featured_collections)
           expect(featured_collections).to receive(:build).
-              with('title' => 'page title').
-              and_return(featured_collection)
+            with({ 'title' => 'page title' }).
+            and_return(featured_collection)
 
           expect(featured_collection).to receive(:save).and_return(true)
 
@@ -60,8 +60,8 @@ describe Sites::FeaturedCollectionsController do
           featured_collections = double('featured collections')
           allow(site).to receive(:featured_collections).and_return(featured_collections)
           expect(featured_collections).to receive(:build).
-              with('title' => '').
-              and_return(featured_collection)
+            with({ 'title' => '' }).
+            and_return(featured_collection)
 
           expect(featured_collection).to receive(:save).and_return(false)
           allow(featured_collection).to receive_message_chain(:featured_collection_keywords, :build)
@@ -81,7 +81,7 @@ describe Sites::FeaturedCollectionsController do
   end
 
   describe '#update' do
-    it_should_behave_like 'restricted to approved user', :put, :update, site_id: 100, id: 100
+    it_behaves_like 'restricted to approved user', :put, :update, site_id: 100, id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -95,8 +95,8 @@ describe Sites::FeaturedCollectionsController do
           expect(featured_collections).to receive(:find_by_id).with('100').and_return(featured_collection)
 
           expect(featured_collection).to receive(:destroy_and_update_attributes).
-              with('title' => 'updated title').
-              and_return(false)
+            with({ 'title' => 'updated title' }).
+            and_return(false)
           allow(featured_collection).to receive_message_chain(:featured_collection_keywords, :build)
           allow(featured_collection).to receive_message_chain(:featured_collection_links, :build)
 
@@ -116,7 +116,7 @@ describe Sites::FeaturedCollectionsController do
   end
 
   describe '#destroy' do
-    it_should_behave_like 'restricted to approved user', :delete, :destroy, site_id: 100, id: 100
+    it_behaves_like 'restricted to approved user', :delete, :destroy, site_id: 100, id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -127,7 +127,7 @@ describe Sites::FeaturedCollectionsController do
 
         featured_collection = mock_model(FeaturedCollection, title: 'awesome page')
         expect(featured_collections).to receive(:find_by_id).with('100').
-            and_return(featured_collection)
+          and_return(featured_collection)
         expect(featured_collection).to receive(:destroy)
 
         delete :destroy, params: { site_id: site.id, id: 100 }

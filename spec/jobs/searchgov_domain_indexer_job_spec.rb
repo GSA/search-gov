@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe SearchgovDomainIndexerJob do
-  subject(:perform) { described_class.perform_now(args) }
+  subject(:perform) { described_class.perform_now(**args) }
 
   let!(:searchgov_domain) do
     searchgov_domain = SearchgovDomain.find_by(domain: 'agency.gov')

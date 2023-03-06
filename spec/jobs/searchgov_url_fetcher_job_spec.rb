@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 describe SearchgovUrlFetcherJob do
-  subject(:perform) { described_class.perform_now(args) }
+  subject(:perform) { described_class.perform_now(**args) }
 
   let!(:searchgov_url) { SearchgovUrl.create!(url: 'https://agency.gov/') }
   let(:args) do

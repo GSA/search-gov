@@ -36,12 +36,12 @@ module ActiveModel
           messages.each do |m|
             if m =~ /^\^/
               options[:default] = "%{message}"
-              full_messages << I18n.t(:"dynamic_form.errors.dynamic_format", options.merge(:message => m[1..-1]))
+              full_messages << I18n.t(:"dynamic_form.errors.dynamic_format", **options.merge(:message => m[1..-1]))
             elsif m.is_a? Proc
               options[:default] = "%{message}"
-              full_messages << I18n.t(:"dynamic_form.errors.dynamic_format", options.merge(:message => m.call(@base)))
+              full_messages << I18n.t(:"dynamic_form.errors.dynamic_format", **options.merge(:message => m.call(@base)))
             else
-              full_messages << I18n.t(:"dynamic_form.errors.format", options.merge(:message => m))
+              full_messages << I18n.t(:"dynamic_form.errors.format", **options.merge(:message => m))
             end
           end
         end

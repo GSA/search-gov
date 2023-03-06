@@ -1,4 +1,4 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe ApiI14ySearch do
   let(:affiliate) { affiliates(:i14y_affiliate) }
@@ -30,9 +30,9 @@ describe ApiI14ySearch do
         allow(GovboxSet).to receive(:new).with('marketplase',
                                                affiliate,
                                                nil,
-                                               highlighting: true,
-                                               pre_tags: ["\ue000"],
-                                               post_tags: ["\ue001"])
+                                               { highlighting: true,
+                                                 pre_tags: ["\ue000"],
+                                                 post_tags: ["\ue001"] })
         search.run
       end
 
@@ -66,9 +66,9 @@ describe ApiI14ySearch do
         allow(GovboxSet).to receive(:new).with('marketplase',
                                                affiliate,
                                                nil,
-                                               highlighting: false,
-                                               pre_tags: ["\ue000"],
-                                               post_tags: ["\ue001"])
+                                               { highlighting: false,
+                                                 pre_tags: ["\ue000"],
+                                                 post_tags: ["\ue001"] })
         search.run
       end
 

@@ -5,7 +5,7 @@ describe Sites::AlertsController do
   before { activate_authlogic }
 
   describe '#edit' do
-    it_should_behave_like 'restricted to approved user', :get, :edit, site_id: 100
+    it_behaves_like 'restricted to approved user', :get, :edit, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -23,7 +23,7 @@ describe Sites::AlertsController do
   end
 
   describe '#update' do
-    it_should_behave_like 'restricted to approved user', :put, :update, site_id: 100
+    it_behaves_like 'restricted to approved user', :put, :update, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -34,10 +34,10 @@ describe Sites::AlertsController do
         before do
           expect(site).to receive(:alert).and_return(alert)
           expect(alert).to receive(:update).
-              with('title' => 'Updated Title for Alert',
+            with({ 'title' => 'Updated Title for Alert',
                    'text' => 'Some text for the alert.',
-                   'status' => 'Active').
-              and_return(true)
+                   'status' => 'Active' }).
+            and_return(true)
 
           put :update,
               params: {
@@ -47,7 +47,6 @@ describe Sites::AlertsController do
                          status: 'Active',
                          not_allowed_key: 'not allowed value' }
               }
-
         end
 
         it { is_expected.to assign_to(:alert).with(alert) }
@@ -61,10 +60,10 @@ describe Sites::AlertsController do
         before do
           allow(site).to receive(:alert).and_return(alert)
           expect(alert).to receive(:update).
-              with('title' => 'Title',
+            with({ 'title' => 'Title',
                    'text' => '',
-                   'status' => 'Active').
-              and_return(false)
+                   'status' => 'Active' }).
+            and_return(false)
 
           put :update,
               params: {
@@ -80,5 +79,4 @@ describe Sites::AlertsController do
       end
     end
   end
-
 end
