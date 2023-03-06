@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { GovBanner } from '@trussworks/react-uswds';
 
 import '@trussworks/react-uswds/lib/uswds.css';
@@ -6,6 +6,9 @@ import '@trussworks/react-uswds/lib/index.css';
 
 import { BasicHeader } from './BasicHeader';
 import { ExtendedHeader } from './ExtendedHeader';
+
+import { SearchBar } from '../SearchBar/SearchBar';
+
 interface HeaderProps {
   title: string
   isBasic: boolean
