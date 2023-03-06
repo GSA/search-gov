@@ -123,6 +123,7 @@ gem 'dogapi', '~> 1.45'
 # https://github.com/ruby/net-protocol/issues/10
 # This gem can be removed once we upgrade to Ruby 3.1.
 gem 'net-http'
+gem 'uri', '= 0.10.0'
 
 # Assets-related gems
 gem 'coffee-rails', '~> 5.0.0'
