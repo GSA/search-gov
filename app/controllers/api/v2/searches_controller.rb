@@ -126,9 +126,9 @@ module Api
 
       def validate_search_options
         @search_options = search_options_validator_klass.new(search_params)
-        unless @search_options.valid? && @search_options.valid?(:affiliate)
-          respond_with({ errors: @search_options.errors.full_messages }, { status: 400 })
-        end
+        return if @search_options.valid? && @search_options.valid?(:affiliate)
+
+        respond_with({ errors: @search_options.errors.full_messages }, { status: 400 })
       end
 
       def search_options_validator_klass
@@ -136,7 +136,8 @@ module Api
         when :azure then Api::CommercialSearchOptions
         when :azure_web then Api::AzureCompositeWebSearchOptions
         when :azure_image then Api::AzureCompositeImageSearchOptions
-        when :blended, :i14y, :video then Api::NonCommercialSearchOptions
+        when :blended, :video then Api::NonCommercialSearchOptions
+        when :i14y then Api::I14ySearchOptions
         when :gss then Api::GssSearchOptions
         when :docs then Api::DocsSearchOptions
         end
