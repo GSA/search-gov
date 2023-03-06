@@ -38,6 +38,12 @@ describe Redactor do
       let(:string) { 'foo 1234567812345678 bar' }
 
       it { is_expected.to eq 'foo [redacted_cc] bar' }
+
+      context 'when the spaces have been URI-encoded' do
+        let(:string) { '1234+5678+1234+5678' }
+
+        it { is_expected.to eq '[redacted_cc]' }
+      end
     end
 
     context 'when the string may contain a phone number' do
