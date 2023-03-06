@@ -17,7 +17,7 @@ describe SearchImpression do
              modules: ['BWEB'],
              diagnostics: { AWEB: { snap: 'judgement' } })
     end
-    let(:params) { { 'foo' => 'yep' } }
+    let(:params) { { 'query' => 'yep' } }
     let(:time) { Time.now }
 
     before do
@@ -38,7 +38,7 @@ describe SearchImpression do
           '[{"snap":"judgement","module":"AWEB"}],' \
           "\"time\":\"#{time.to_fs(:db)}\"," \
           '"vertical":"web","modules":"BWEB",' \
-          '"params":{"foo":"yep"}}'
+          '"params":{"query":"yep"}}'
         )
       end
     end
@@ -54,11 +54,11 @@ describe SearchImpression do
     end
 
     context 'params contains key with period' do
-      let(:params) { { 'foo' => 'yep', 'bar.blat' => 'nope' } }
+      let(:params) { { 'query' => 'yep', 'bar.blat' => 'nope' } }
 
       it 'omits that parameter' do
         expect(Rails.logger).to have_received(:info).with(
-          include('"params":{"foo":"yep"}')
+          include('"params":{"query":"yep"}')
         )
       end
     end
@@ -90,18 +90,23 @@ describe SearchImpression do
       let(:request) do
         instance_double(ActionDispatch::Request,
                         remote_ip: '1.2.3.4',
-                        url: "http://www.gov.gov/search?query=#{sensitive_info}",
-                        referer: "http://www.gov.gov/#{sensitive_info}",
-                        user_agent: 'whatevs',
+                        url: "http://www.gov.gov/search?query=#{sensitive_info}&utm_x=123456789",
+                        referer: "http://www.gov.gov/?query=foo+#{sensitive_info}+bar",
+                        user_agent: 'Mozilla 123456789',
                         headers: {})
       end
 
-      it 'does not log the information' do
+      it 'does not log the sensitive information' do
         expect(Rails.logger).not_to have_received(:info).with(/123-45-6789/)
       end
 
       it 'specifies what was redacted' do
-        expect(Rails.logger).to have_received(:info).with(/redacted_ssn/)
+        expect(Rails.logger).to have_received(:info).with(/REDACTED_SSN/)
+      end
+
+      it 'logs non-sensitive information that happens to match sensitive patterns' do
+        expect(Rails.logger).to have_received(:info).with(/utm_x=123456789/)
+        expect(Rails.logger).to have_received(:info).with(/Mozilla 123456789/)
       end
     end
   end

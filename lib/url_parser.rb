@@ -31,6 +31,16 @@ module UrlParser
     uri.to_s
   end
 
+  def self.redact_query(url)
+    return url unless url&.match? /(&|\?)query=/
+
+    uri = Addressable::URI.parse(url)
+    query_values = uri.query_values
+    query_values['query'] = Redactor.redact(query_values['query'])
+    uri.query_values = query_values
+    uri.to_s
+  end
+
   private
 
   def self.normalize_non_query_parts(uri)

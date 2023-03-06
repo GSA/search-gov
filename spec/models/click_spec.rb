@@ -11,6 +11,7 @@ describe Click do
   let(:module_code) { 'BWEB' }
   let(:query) { 'my query' }
   let(:referrer) { 'http://www.fda.gov/referrer' }
+  let(:user_agent) { 'mozilla' }
   let(:params) do
     {
       url: url,
@@ -20,7 +21,7 @@ describe Click do
       position: position,
       module_code: module_code,
       vertical: 'web',
-      user_agent: 'mozilla',
+      user_agent: user_agent,
       referrer: referrer
     }
   end
@@ -81,15 +82,23 @@ describe Click do
       end
 
       context 'when the click includes sensitive information' do
-        let(:query) { '123-45-6789' }
-        let(:referrer) { 'https://foo.gov/search?query=123-45-6789' }
+        let(:sensitive_info) { '123-45-6789' }
+        let(:query) { sensitive_info }
+        let(:referrer) { "https://foo.gov/search?query=#{sensitive_info}&utm_x=123456789" }
+        let(:url) { "https://foo.gov/search?query=#{sensitive_info}&utm_x=123456789" }
+        let(:user_agent) { 'Mozilla 123456789' }
 
         it 'does not log the information' do
           expect(Rails.logger).not_to have_received(:info).with(/123-45-6789/)
         end
 
         it 'specifies what was redacted' do
-          expect(Rails.logger).to have_received(:info).with(/redacted_ssn/)
+          expect(Rails.logger).to have_received(:info).with(/REDACTED_SSN/)
+        end
+
+        it 'logs non-sensitive information that happens to match sensitive patterns' do
+          expect(Rails.logger).to have_received(:info).with(/utm_x=123456789/)
+          expect(Rails.logger).to have_received(:info).with(/Mozilla 123456789/)
         end
       end
     end

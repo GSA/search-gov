@@ -34,7 +34,7 @@ class Click
   end
 
   def log
-    Rails.logger.info("[Click] #{Redactor.redact(click_hash.to_json)}")
+    Rails.logger.info("[Click] #{click_hash.to_json}")
   end
 
   private
@@ -64,16 +64,16 @@ class Click
   def click_hash
     {
       clientip: client_ip,
-      referrer: referrer,
+      referrer: UrlParser.redact_query(referrer),
       user_agent: user_agent,
       time: Time.current.to_fs(:db),
       vertical: vertical,
       modules: module_code,
       click_domain: URI(url).host,
       params: {
-        url: url,
+        url: UrlParser.redact_query(url),
         affiliate: affiliate,
-        query: query.downcase,
+        query: Redactor.redact(query.downcase),
         position: position
       }
     }

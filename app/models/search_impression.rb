@@ -6,18 +6,23 @@ class SearchImpression
 
     request_pairs = {
       clientip: request.remote_ip,
-      request: url,
-      referrer: request.referer,
+      request: UrlParser.redact_query(url),
+      referrer: UrlParser.redact_query(request.referer),
       user_agent: request.user_agent
     }
     request_pairs[:diagnostics] = flatten_diagnostics_hash(search.diagnostics)
-    relevant_params = params.reject { |k, v| IRRELEVANT_KEYS.include?(k.to_s) || k.to_s.include?('.') }
     hash = request_pairs.merge(time: Time.now.to_fs(:db),
                                vertical: vertical,
                                modules: search.modules.join('|'),
-                               params: relevant_params)
+                               params: clean_params(params))
 
-    Rails.logger.info("[Search Impression] #{Redactor.redact(hash.to_json)}")
+    Rails.logger.info("[Search Impression] #{hash.to_json}")
+  end
+
+  def self.clean_params(params)
+    params.reject! { |k, v| IRRELEVANT_KEYS.include?(k.to_s) || k.to_s.include?('.') }
+    params['query'] = Redactor.redact(params['query'])
+    params
   end
 
   def self.get_url_from_request(request)
