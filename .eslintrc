@@ -1,10 +1,10 @@
 {
-  "ecmaFeatures": {
-    "modules": true,
-    "jsx": true
-  },
   "parserOptions": {
-    "sourceType": "module"
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "modules": true,
+      "jsx": true
+    }
   },
   "env": {
     "amd": true,
@@ -139,13 +139,15 @@
       }
     ],
     "no-undefined": 0,
-    "no-unused-vars": "off",
-    "unused-imports/no-unused-imports": "error",
+    "no-unused-vars": 2,
+    "unused-imports/no-unused-imports": 2,
 		"unused-imports/no-unused-vars": [
 			"warn",
 			{ "vars": "all", "varsIgnorePattern": "^_", "args": "after-used", "argsIgnorePattern": "^_" }
 		],
     "no-use-before-define": 0,
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
 
     // Node.js and CommonJS
     "callback-return": 2,
