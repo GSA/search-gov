@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { GovBanner } from '@trussworks/react-uswds';
 
 import '@trussworks/react-uswds/lib/uswds.css';
@@ -6,8 +6,6 @@ import '@trussworks/react-uswds/lib/index.css';
 
 import { BasicHeader } from './BasicHeader';
 import { ExtendedHeader } from './ExtendedHeader';
-
-import { SearchBar } from '../SearchBar/SearchBar';
 
 interface HeaderProps {
   title: string;
@@ -36,12 +34,12 @@ export const Header = (props: HeaderProps) => {
       <div className={`usa-overlay ${mobileNavOpen ? 'is-visible' : ''}`}></div>
 
       {props.isBasic ? 
-      <BasicHeader 
-        {...headerProps}
-      />:
-      <ExtendedHeader 
-        {...headerProps}
-      />}
+        <BasicHeader 
+          {...headerProps}
+        />:
+        <ExtendedHeader 
+          {...headerProps}
+        />}
     </>
   );
 };
