@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'open-uri'
 
 module HelpDoc
   def self.extract_article(url)
-    doc = Nokogiri::HTML open(url)
-    prefix_links_with_scheme_and_host doc
+    doc = Nokogiri::HTML(URI.parse(url).open)
+    prefix_links_with_scheme_and_host(doc)
     doc.css('#main-container article.article').first.to_s
   rescue
     "<div class='alert alert-error'>Unable to retrieve <a href='#{url}'>#{url}</a>.</div>"

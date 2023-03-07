@@ -2,7 +2,7 @@
 
 describe DomainScopeOptionsBuilder do
   describe '.build' do
-    subject(:build) { described_class.build(args) }
+    subject(:build) { described_class.build(**args) }
 
     let(:affiliate) { affiliates(:basic_affiliate) }
 

@@ -1,10 +1,8 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe ApiGssSearch do
-  fixtures :affiliates
-
   let(:affiliate) { affiliates(:usagov_affiliate) }
-  let(:api_key) {  GoogleSearch::API_KEY }
+  let(:api_key) { GoogleSearch::API_KEY }
   let(:cx) { GoogleSearch::SEARCH_CX }
   let(:search_params) do
     { affiliate: affiliate,
@@ -30,14 +28,14 @@ describe ApiGssSearch do
 
     it 'initializes ApiGssWebEngine' do
       expect(ApiGssWebEngine).to receive(:new).
-        with(google_cx: 'my_cx',
-             google_key: 'my_api_key',
-             enable_highlighting: false,
-             language: 'lang_en',
-             per_page: 8,
-             next_offset_within_limit: true,
-             offset: 10,
-             query: 'gov -site:kids.usa.gov site:whitehouse.gov OR site:usa.gov')
+        with({ google_cx: 'my_cx',
+               google_key: 'my_api_key',
+               enable_highlighting: false,
+               language: 'lang_en',
+               per_page: 8,
+               next_offset_within_limit: true,
+               offset: 10,
+               query: 'gov -site:kids.usa.gov site:whitehouse.gov OR site:usa.gov' })
 
       described_class.new affiliate: affiliate,
                           api_key: 'my_api_key',
@@ -63,7 +61,8 @@ describe ApiGssSearch do
           'ira',
           affiliate,
           nil,
-          highlighting_options)
+          highlighting_options
+        )
 
         described_class.new(affiliate: affiliate,
                             api_key: 'my_api_key',
@@ -124,8 +123,8 @@ describe ApiGssSearch do
 
       it 'return non highlighted title and description' do
         result = search.results.first
-        expect(result.title).to_not match(/\ue000.+\ue001/)
-        expect(result.description).to_not match(/\ue000.+\ue001/)
+        expect(result.title).not_to match(/\ue000.+\ue001/)
+        expect(result.description).not_to match(/\ue000.+\ue001/)
       end
 
       its(:next_offset) { is_expected.to eq(10) }
@@ -148,7 +147,7 @@ describe ApiGssSearch do
         google_api_url = "#{GoogleSearch::API_HOST}#{GoogleSearch::API_ENDPOINT}"
         google_no_next = Rails.root.join('spec/fixtures/json/google/web_search/no_next.json').read
         stub_request(:get, /#{google_api_url}.*gss no next/).
-          to_return( status: 200, body:  google_no_next )
+          to_return(status: 200, body: google_no_next)
 
         search.run
       end
@@ -157,12 +156,12 @@ describe ApiGssSearch do
         expect(search.results.count).to eq(3)
       end
 
-      its(:next_offset) { should be_nil }
+      its(:next_offset) { is_expected.to be_nil }
     end
 
     context 'when the site locale is es' do
       let(:affiliate) { affiliates(:spanish_affiliate) }
-      let(:search)  { described_class.new search_params.merge(query: 'casa blanca') }
+      let(:search) { described_class.new search_params.merge(query: 'casa blanca') }
 
       before do
         search.run
@@ -204,14 +203,14 @@ describe ApiGssSearch do
 
       before { search.run }
 
-      its(:results) { should be_empty }
-      its(:modules) { should_not include('GWEB') }
+      its(:results) { is_expected.to be_empty }
+      its(:modules) { is_expected.not_to include('GWEB') }
     end
   end
 
   describe '#as_json' do
     subject(:search) do
-      agency = Agency.create!({name: 'Some New Agency', abbreviation: 'SNA' })
+      agency = Agency.create!({ name: 'Some New Agency', abbreviation: 'SNA' })
       AgencyOrganizationCode.create!(organization_code: 'XX00', agency: agency)
       allow(affiliate).to receive(:agency).and_return(agency)
 

@@ -79,7 +79,7 @@ gem 'elasticsearch', git: 'https://github.com/GSA/elasticsearch-ruby', branch: '
 gem 'elasticsearch-xpack', '~> 7.4.0'
 gem 'federal_register', '~> 0.6.3'
 gem 'github-markdown', '~> 0.6.9'
-gem 'google-api-client', '~> 0.19.1'
+gem 'google-api-client', '~> 0.53.0'
 gem 'iso8601', '~> 0.10.1'
 gem 'jbuilder', '~> 2.11.5'
 gem 'typhoeus', '~> 1.3.0'
@@ -109,7 +109,8 @@ gem 'after_commit_action', '~> 1.1'
 gem 'aasm', '~> 5.2.0'
 gem 'active_scheduler', '~> 0.7.0'
 gem 'retriable', '~> 3.1'
-gem 'cld3', '~> 3.4.3'
+# Lock version of cld3, since higher patch version cld3(3.5.2) has caused deployment issues.
+gem 'cld3', '= 3.5.0'
 gem 'activejob-uniqueness', '~> 0.2.1'
 # Temporarily locking the version to resolve SRCH-3788.
 # The fix for the bug in SRCH-3788 is NOT covered by automated specs.
@@ -122,6 +123,9 @@ gem 'dogapi', '~> 1.45'
 # https://github.com/ruby/net-protocol/issues/10
 # This gem can be removed once we upgrade to Ruby 3.1.
 gem 'net-http'
+# Temporary fix for a gem version mismatch with Fullstaq Ruby.
+# This will be removed once we upgrade to Ruby 3.x in SRCH-3862.
+gem 'uri', '= 0.10.0'
 
 # Assets-related gems
 gem 'coffee-rails', '~> 5.0.0'
