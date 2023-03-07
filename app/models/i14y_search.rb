@@ -17,7 +17,7 @@ class I14ySearch < FilterableSearch
 
   def initialize(options = {})
     super
-    @enable_highlighting = !(false === options[:enable_highlighting])
+    @enable_highlighting = options[:enable_highlighting] != false
     @include_facets = options[:include_facets] == 'true'
     @collection = options[:document_collection]
     @site_limits = options[:site_limits]
@@ -71,6 +71,8 @@ class I14ySearch < FilterableSearch
     filter_options[:sort_by_date] = 1 if @sort_by == 'date'
     filter_options[:min_timestamp] = @since if @since
     filter_options[:max_timestamp] = @until if @until
+    filter_options[:min_timestamp_created] = @created_since if @created_since
+    filter_options[:max_timestamp_created] = @created_until if @created_until
   end
 
   def facet_filter_options(filter_options)

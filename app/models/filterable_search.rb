@@ -1,12 +1,14 @@
 class FilterableSearch < Search
   TIME_FILTER_PARAMS = %i[hour day week month year].freeze
-  TIME_BASED_SEARCH_OPTIONS = Hash[TIME_FILTER_PARAMS.collect { |p| [p.to_s[0], p] }]
+  TIME_BASED_SEARCH_OPTIONS = TIME_FILTER_PARAMS.index_by { |p| p.to_s[0] }
 
   class_attribute :default_sort_by
   self.default_sort_by = 'r'.freeze
 
   attr_reader :audience,
               :content_type,
+              :created_since,
+              :created_until,
               :mime_type,
               :searchgov_custom1,
               :searchgov_custom2,
@@ -42,17 +44,33 @@ class FilterableSearch < Search
 
   def initialize_date_attributes(options)
     @until = parse_until_ts(options[:until_date])
-    @since = parse_since_ts(options[:since_date])
+    @since = parse_since_ts(options[:since_date], @until)
+    @created_until = parse_until_ts(options[:created_until_date])
+    @created_since = parse_since_ts(options[:created_since_date], @created_until)
 
-    if @since && @until && @since > @until
-      @since, @until = @until.beginning_of_day, @since.end_of_day
-    end
+    flip_reversed_dates(@since, @until, @created_since, @created_until)
 
+    return unless (@since.nil? && @until.nil?) || (@created_since.nil? && @created_until.nil?)
+
+    time_based_search(options)
+  end
+
+  def time_based_search(options)
     extent = TIME_BASED_SEARCH_OPTIONS[options[:tbs]]
-    return unless extent && @since.nil? && @until.nil?
+    return unless extent
 
     @tbs = options[:tbs]
     @since = since_when(extent)
+  end
+
+  def flip_reversed_dates(since_date, until_date, created_since_date, created_until_date)
+    if since_date && until_date && since_date > until_date
+      @since = until_date.beginning_of_day
+      @until = since_date.end_of_day
+    elsif created_since_date && created_until_date && created_since_date > created_until_date
+      @created_since = created_until_date.beginning_of_day
+      @created_until = created_since_date.end_of_day
+    end
   end
 
   def initialize_facet_attributes(options)
@@ -73,10 +91,15 @@ class FilterableSearch < Search
     DateTime.current.end_of_day
   end
 
-  def parse_since_ts(since_date_str)
-    return unless since_date_str.present?
-    parsed_date = parse_date_str(since_date_str).beginning_of_day rescue nil
-    parsed_date || (@until ? @until : DateTime.current).prev_year.beginning_of_day
+  def parse_since_ts(since_date_str, until_date)
+    return if since_date_str.blank?
+
+    parsed_date = begin
+      parse_date_str(since_date_str).beginning_of_day
+    rescue
+      nil
+    end
+    parsed_date || (until_date || DateTime.current).prev_year.beginning_of_day
   end
 
   def parse_date_str(date_str)
