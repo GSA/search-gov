@@ -3,8 +3,7 @@
   "private": true,
   "scripts": {
     "test": "jest",
-    "test:coverage": "jest --coverage",
-    "lint:react": "eslint --ext .js --ext .ts -f stylish 'app/javascript/components/**' > coverage/lint-report"
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "@babel/core": "^7.19.6",
