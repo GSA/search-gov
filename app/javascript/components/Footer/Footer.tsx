@@ -2,10 +2,8 @@ import React from 'react';
 import { Footer as UswdsFooter, GridContainer, FooterNav, Address } from '@trussworks/react-uswds';
 
 import './Footer.css';
-interface FooterProps {
-}
 
-export const Footer = (props: FooterProps) => {
+export const Footer = () => {
 
   const returnToTop = (
     <GridContainer className="usa-footer__return-to-top">
