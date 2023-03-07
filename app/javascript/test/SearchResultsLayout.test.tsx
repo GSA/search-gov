@@ -23,7 +23,7 @@ describe('SearchResultsLayout', () => {
   });
 
   it('renders search results', () => {
-    const results = [{ title: 'test result 1', unescapedUrl: 'https://www.search.gov', thumbnail: {url: 'https://www.search.gov/test_image.png'}, content: 'result body' }];
+    const results = [{ title: 'test result 1', unescapedUrl: 'https://www.search.gov', thumbnail: { url: 'https://www.search.gov/test_image.png' }, content: 'result body' }];
     render(<SearchResultsLayout params='foo' results={results} vertical='web' />);
     const resultTitle = screen.getByText(/test result 1/i);
     const resultUrl = screen.getByText(/https:\/\/www.search.gov/i);
@@ -34,7 +34,7 @@ describe('SearchResultsLayout', () => {
   });
 
   it('renders image search results', () => {
-    const results = [{ title: 'test result 1', unescapedUrl: 'https://www.search.gov', thumbnail: {url: 'https://www.search.gov/test_image.png'}, content: 'result body' }];
+    const results = [{ title: 'test result 1', unescapedUrl: 'https://www.search.gov', thumbnail: { url: 'https://www.search.gov/test_image.png' }, content: 'result body' }];
     render(<SearchResultsLayout params='foo' results={results} vertical='image' />);
     const resultTitle = screen.getByText(/test result 1/i);
     const img = [...document.getElementsByClassName('result-image')].pop() as HTMLImageElement;
