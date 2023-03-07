@@ -49,15 +49,15 @@ export const BasicHeader = (props: HeaderProps) => {
             items={primaryNavItems}
             onToggleMobileNav={props.toggleMobileNav}
             mobileExpanded={props.mobileNavOpen}
-            >
-              <ul className="usa-nav__secondary-links">
-                <li className="usa-nav__secondary-item">
-                  <a href="#linkOne">Secondary link 1</a>
-                </li>
-                <li className="usa-nav__secondary-item">
-                  <a href="#linkTwo">Secondary link 2</a>
-                </li>
-              </ul>
+          >
+            <ul className="usa-nav__secondary-links">
+              <li className="usa-nav__secondary-item">
+                <a href="#linkOne">Secondary link 1</a>
+              </li>
+              <li className="usa-nav__secondary-item">
+                <a href="#linkTwo">Secondary link 2</a>
+              </li>
+            </ul>
           </PrimaryNav>
         </div>
       </UswdsHeader>
