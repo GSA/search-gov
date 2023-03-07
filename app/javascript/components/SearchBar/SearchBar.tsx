@@ -21,7 +21,7 @@ export const SearchBar = (props: SearchBarProps) => {
               placeholder="Please enter a search term."
               size="small"
               onSubmit={() => {
-                return;
+                // to be added
               }}
             />
           </Grid>
@@ -55,7 +55,7 @@ export const SearchBar = (props: SearchBarProps) => {
               secondaryItems={[]}
               mobileExpanded={false}
               onToggleMobileNav={() => {
-                return;
+                // to be added
               }}
             >
             </ExtendedNav>
