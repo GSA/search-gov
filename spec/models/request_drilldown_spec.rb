@@ -7,12 +7,13 @@ describe RequestDrilldown do
     subject(:docs) { drilldown.docs }
 
     it 'queries Elasticsearch with the expected options' do
-      expect(Es::ELK.client_reader).to receive(:search).with(
-        index: 'human-logstash-*',
-        body: '',
-        size: 10_000,
-        sort: '@timestamp:asc'
-      )
+      expect(Es::ELK.client_reader).to receive(:search).
+        with({
+               index: 'human-logstash-*',
+               body: '',
+               size: 10_000,
+               sort: '@timestamp:asc'
+             })
       docs
     end
 

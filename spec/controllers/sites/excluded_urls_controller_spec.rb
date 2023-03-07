@@ -5,7 +5,7 @@ describe Sites::ExcludedUrlsController do
   before { activate_authlogic }
 
   describe '#index' do
-    it_should_behave_like 'restricted to approved user', :get, :index, site_id: 100
+    it_behaves_like 'restricted to approved user', :get, :index, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -23,7 +23,7 @@ describe Sites::ExcludedUrlsController do
   end
 
   describe '#create' do
-    it_should_behave_like 'restricted to approved user', :post, :create, site_id: 100
+    it_behaves_like 'restricted to approved user', :post, :create, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -35,8 +35,8 @@ describe Sites::ExcludedUrlsController do
           excluded_urls = double('excluded urls')
           allow(site).to receive(:excluded_urls).and_return(excluded_urls)
           expect(excluded_urls).to receive(:build).
-              with('url' => 'http://agency.gov/exclude-me.html').
-              and_return(excluded_url)
+            with({ 'url' => 'http://agency.gov/exclude-me.html' }).
+            and_return(excluded_url)
 
           expect(excluded_url).to receive(:save).and_return(true)
 
@@ -60,7 +60,7 @@ describe Sites::ExcludedUrlsController do
           excluded_urls = double('excluded urls')
           allow(site).to receive(:excluded_urls).and_return(excluded_urls)
           expect(excluded_urls).to receive(:build).
-              with('url' => '').and_return(excluded_url)
+            with({ 'url' => '' }).and_return(excluded_url)
 
           expect(excluded_url).to receive(:save).and_return(false)
 
@@ -79,7 +79,7 @@ describe Sites::ExcludedUrlsController do
   end
 
   describe '#destroy' do
-    it_should_behave_like 'restricted to approved user', :delete, :destroy, site_id: 100, id: 100
+    it_behaves_like 'restricted to approved user', :delete, :destroy, site_id: 100, id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -90,7 +90,7 @@ describe Sites::ExcludedUrlsController do
 
         excluded_url = mock_model(ExcludedUrl, url: 'agency.gov/exclude-me.html')
         expect(excluded_urls).to receive(:find_by_id).with('100').
-            and_return(excluded_url)
+          and_return(excluded_url)
         expect(excluded_url).to receive(:destroy)
 
         delete :destroy, params: { site_id: site.id, id: 100 }
