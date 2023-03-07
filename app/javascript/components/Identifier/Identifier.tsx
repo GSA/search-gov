@@ -30,7 +30,7 @@ export const Identifier = () => {
           </IdentifierLogos>
           <IdentifierIdentity domain={'<domain.gov>'}>
             An official website of the{' '}
-            <Link href=''>{`<Parent agency>`}</Link>
+            <Link href="">Parent agency</Link>
           </IdentifierIdentity>
         </IdentifierMasthead>
         <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>

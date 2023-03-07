@@ -16,7 +16,7 @@ describe('Header', () => {
     expect(secondaryLinkTitle).toBeInTheDocument();
 
     // To Do - investigate test cases for responsive
-    const btn = screen.getByTestId('usa-menu-mob-btn'); //Menu button for mobile
+    const btn = screen.getByTestId('usa-menu-mob-btn'); // Menu button for mobile
     fireEvent.click(btn);
     expect(primaryLinkTitle).toBeInTheDocument();
   });

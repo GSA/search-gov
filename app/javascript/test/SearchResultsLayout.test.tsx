@@ -26,7 +26,7 @@ describe('SearchResultsLayout', () => {
     const results = [{ title: 'test result 1', unescapedUrl: 'https://www.search.gov', content: 'result body' }];
     render(<SearchResultsLayout params='foo' results={results} vertical='web' />);
     const resultTitle = screen.getByText(/test result 1/i);
-    const resultUrl = screen.getByText(/https\:\/\/www.search.gov/i);
+    const resultUrl = screen.getByText(/https:\/\/www.search.gov/i);
     const resultBody = screen.getByText(/result body/i);
     expect(resultTitle).toBeInTheDocument();
     expect(resultUrl).toBeInTheDocument();
