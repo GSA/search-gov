@@ -1,7 +1,14 @@
 import React from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
 interface ResultsProps {
-  results: {}[];
+  results: {
+    title: string,
+    unescapedUrl: string,
+    thumbnail: {
+      url: string
+    },
+    content: string
+  }[];
   vertical: string;
 }
 
