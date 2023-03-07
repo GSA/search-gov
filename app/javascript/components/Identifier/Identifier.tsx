@@ -20,7 +20,7 @@ export const Identifier = () => {
       <UswdsIdentifier>
         <IdentifierMasthead aria-label="Agency identifier">
           <IdentifierLogos>
-            <IdentifierLogo href=''>
+            <IdentifierLogo href="">
               <img
                 className="usa-identifier__logo-img"
                 src={logoImg}
