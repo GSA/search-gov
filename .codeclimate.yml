@@ -32,8 +32,12 @@ plugins:
   eslint:
     enabled: true
     channel: "eslint-8"
-  tslint:
-    enabled: true
+    config:
+      extensions:
+      - .js
+      - .jsx
+      - .ts
+      - .tsx
   fixme:
     enabled: true
   # Rubocop is configured in .rubocop.yml
