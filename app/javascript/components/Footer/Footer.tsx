@@ -12,16 +12,16 @@ export const Footer = () => {
   )
 
   const primaryFooterLinks = [
-    <a className="usa-footer__primary-link" href="#">
+    <a className="usa-footer__primary-link" href="#" key="primary-link-1">
       Primary Link 1
     </a>,
-    <a className="usa-footer__primary-link" href="#">
+    <a className="usa-footer__primary-link" href="#" key="primary-link-2">
       Primary Link 2
     </a>,
-    <a className="usa-footer__primary-link" href="#">
+    <a className="usa-footer__primary-link" href="#" key="primary-link-3">
       Primary Link 3
     </a>,
-    <a className="usa-footer__primary-link" href="#">
+    <a className="usa-footer__primary-link" href="#" key="primary-link-4">
       Primary Link 4
     </a>
   ];
