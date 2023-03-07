@@ -14,20 +14,20 @@ export const Results = (props: ResultsProps) => {
             <div className='result' key={index}>
               <GridContainer>
                 <Grid row>
-                  <Grid tablet={{ col: true }}><a href= "#" ><h4>{result['title']}</h4></a></Grid>
+                  <Grid tablet={{ col: true }}><a href= "#" ><h4>{result.title}</h4></a></Grid>
                 </Grid>
                 <Grid row>
-                  <Grid tablet={{ col: true }}><a href= "#">{result['unescapedUrl']}</a></Grid>
+                  <Grid tablet={{ col: true }}><a href= "#">{result.unescapedUrl}</a></Grid>
                 </Grid>
                 {props.vertical === 'image' && <Grid row>
-                  <Grid tablet={{ col: true }}><img src={result['thumbnail']['url']} className="result-image"/></Grid>
+                  <Grid tablet={{ col: true }}><img src={result.thumbnail.url} className="result-image"/></Grid>
                 </Grid>}
                 <Grid row>
-                  <Grid tablet={{ col: true }}><p>{result['content']}</p></Grid>
+                  <Grid tablet={{ col: true }}><p>{result.content}</p></Grid>
                 </Grid>
               </GridContainer>
             </div>
-            )
+            );
           }
         )}
       </div>

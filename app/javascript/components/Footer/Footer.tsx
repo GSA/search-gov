@@ -1,15 +1,14 @@
 import React from 'react';
-import {Footer as UswdsFooter, GridContainer, FooterNav, Address} from '@trussworks/react-uswds';
+import { Footer as UswdsFooter, GridContainer, FooterNav, Address } from '@trussworks/react-uswds';
 
 import './Footer.css';
 
 export const Footer = () => {
-
   const returnToTop = (
     <GridContainer className="usa-footer__return-to-top">
       <a href="#">Return to top</a>
     </GridContainer>
-  )
+  );
 
   const primaryFooterLinks = [
     <a className="usa-footer__primary-link" href="#" key="primary-link-1">
@@ -60,4 +59,4 @@ export const Footer = () => {
       />
     </div>
   );
-}
+};

@@ -12,7 +12,7 @@ import { SearchBar } from '../SearchBar/SearchBar';
 interface HeaderProps {
   title: string;
   isBasic: boolean;
-};
+}
 
 export const Header = (props: HeaderProps) => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);

@@ -10,11 +10,11 @@ interface SearchResultsLayoutProps {
   results: {}[];
   vertical: string;
   params?: string;
-};
+}
 
 //To be updated
 const getAffiliateTitle = (): string => {
-  return "Search.gov";
+  return 'Search.gov';
 };
 
 //To be updated
@@ -45,6 +45,6 @@ const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
       <Identifier />
     </>
   );
-};
+}
 
 export default SearchResultsLayout;
