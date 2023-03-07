@@ -7,7 +7,14 @@ import { Results } from './Results/Results';
 import { Footer } from './Footer/Footer';
 import { Identifier } from './Identifier/Identifier';
 interface SearchResultsLayoutProps {
-  results: {}[];
+  results: {
+    title: string,
+    unescapedUrl: string,
+    thumbnail: {
+      url: string
+    },
+    content: string
+  }[];
   vertical: string;
   params?: string;
 }
