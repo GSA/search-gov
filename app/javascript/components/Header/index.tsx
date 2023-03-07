@@ -39,7 +39,8 @@ export const Header = (props: HeaderProps) => {
         />:
         <ExtendedHeader 
           {...headerProps}
-        />}
+        />
+      }
     </>
   );
 };
