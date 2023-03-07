@@ -9,7 +9,7 @@ export const Footer = () => {
     <GridContainer className="usa-footer__return-to-top">
       <a href="#">Return to top</a>
     </GridContainer>
-  );
+  )
 
   const primaryFooterLinks = [
     <a className="usa-footer__primary-link" href="#">
@@ -33,7 +33,7 @@ export const Footer = () => {
     <a key="email" href="mailto:info@agency.gov">
       info@agency.gov
     </a>
-  ];
+  ]
 
   return (
     <div id="serp-footer-wrapper">
@@ -60,4 +60,4 @@ export const Footer = () => {
       />
     </div>
   );
-};
+}
