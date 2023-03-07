@@ -1,8 +1,8 @@
 import React from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
 interface ResultsProps {
-  results: {}[]
-  vertical: string
+  results: {}[];
+  vertical: string;
 }
 
 export const Results = (props: ResultsProps) => {
@@ -33,4 +33,4 @@ export const Results = (props: ResultsProps) => {
       </div>
     </div>
   );
-}
+};

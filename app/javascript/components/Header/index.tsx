@@ -10,22 +10,22 @@ import { ExtendedHeader } from './ExtendedHeader';
 import { SearchBar } from '../SearchBar/SearchBar';
 
 interface HeaderProps {
-  title: string
-  isBasic: boolean
-}
+  title: string;
+  isBasic: boolean;
+};
 
 export const Header = (props: HeaderProps) => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   const toggleMobileNav = (): void => {
-    setMobileNavOpen((prevOpen) => !prevOpen)
-  }
+    setMobileNavOpen((prevOpen) => !prevOpen);
+  };
 
   const headerProps = {
     title: props.title,
     toggleMobileNav,
     mobileNavOpen
-  }
+  };
  
   return (
     <>
@@ -44,4 +44,4 @@ export const Header = (props: HeaderProps) => {
       />}
     </>
   );
-}
+};

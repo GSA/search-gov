@@ -16,7 +16,7 @@ export const ExtendedHeader = (props: HeaderProps) => {
     <a href="#linkTwo" key="two">
       Secondary link 2
     </a>
-  ]
+  ];
 
   const primaryLinkItems = [
     <a href="#one" key="one" className="usa-nav__link">
@@ -28,7 +28,7 @@ export const ExtendedHeader = (props: HeaderProps) => {
     <a href="#three" key="three" className="usa-nav__link">
       <span>Primary link 3</span>
     </a>
-  ]
+  ];
   
   return (
     <>
@@ -54,5 +54,5 @@ export const ExtendedHeader = (props: HeaderProps) => {
         />
       </UswdsHeader>
     </>
-  )
-}
+  );
+};

@@ -19,7 +19,7 @@ export const BasicHeader = (props: HeaderProps) => {
     <a key="primaryNav_2" className="usa-nav__link" href="">
       <span>{'Primary link 3'}</span>
     </a>,
-  ]
+  ];
 
   return (
     <>
@@ -63,4 +63,4 @@ export const BasicHeader = (props: HeaderProps) => {
       </UswdsHeader>
     </>
   );
-}
+};

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ExtendedNav, Search, GridContainer, Grid } from '@trussworks/react-uswds';
 interface SearchBarProps {
-  results: {}[]
+  results: {}[];
 }
 
 export const SearchBar = (props: SearchBarProps) => {
@@ -53,4 +53,4 @@ export const SearchBar = (props: SearchBarProps) => {
       </GridContainer>
     </div>
   );
-}
+};

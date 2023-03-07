@@ -6,9 +6,6 @@ import { SearchBar } from './SearchBar/SearchBar';
 import { Results } from './Results/Results';
 import { Footer } from './Footer/Footer';
 import { Identifier } from './Identifier/Identifier';
-
-import { Facets } from './Facets/Facets';
-
 interface SearchResultsLayoutProps {
   results: {}[];
   vertical: string;
@@ -16,14 +13,14 @@ interface SearchResultsLayoutProps {
 };
 
 //To be updated
-var getAffiliateTitle = (): string => {
+const getAffiliateTitle = (): string => {
   return "Search.gov";
-}
+};
 
 //To be updated
 const isBasicHeader = (): boolean => {
   return true;
-}
+};
 
 const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
   return (
@@ -48,6 +45,6 @@ const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
       <Identifier />
     </>
   );
-}
+};
 
 export default SearchResultsLayout;
