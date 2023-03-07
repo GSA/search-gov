@@ -39,11 +39,11 @@ export const SearchBar = (props: SearchBarProps) => {
                   <span>News</span>
                 </a>,
                 <a href="#three" key="three" className="usa-nav__link">
-                <span>Images</span>
-              </a>,
+                  <span>Images</span>
+                </a>,
                 <a href="#three" key="three" className="usa-nav__link">
-                <span>Videos</span>
-              </a>,
+                  <span>Videos</span>
+                </a>
               ]}
               secondaryItems={[]}
               mobileExpanded={false}
