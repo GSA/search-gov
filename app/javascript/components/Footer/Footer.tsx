@@ -1,5 +1,5 @@
 import React from 'react';
-import { Footer as UswdsFooter, GridContainer, FooterNav, Address } from '@trussworks/react-uswds';
+import {Footer as UswdsFooter, GridContainer, FooterNav, Address} from '@trussworks/react-uswds';
 
 import './Footer.css';
 
