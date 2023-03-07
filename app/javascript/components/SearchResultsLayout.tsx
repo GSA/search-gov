@@ -12,12 +12,12 @@ interface SearchResultsLayoutProps {
   params?: string;
 }
 
-//To be updated
+// To be updated
 const getAffiliateTitle = (): string => {
   return 'Search.gov';
 };
 
-//To be updated
+// To be updated
 const isBasicHeader = (): boolean => {
   return true;
 };
@@ -45,6 +45,6 @@ const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
       <Identifier />
     </>
   );
-}
+};
 
 export default SearchResultsLayout;

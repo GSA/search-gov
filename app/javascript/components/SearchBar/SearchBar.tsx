@@ -13,13 +13,15 @@ export const SearchBar = (props: SearchBarProps) => {
             <Search
               placeholder="Please enter a search term."
               size="small"
-              onSubmit={() => {return;}}
+              onSubmit={() => {
+                return;
+              }}
             />
           </Grid>
         </Grid>
         {props.results.length === 0 &&
-          <Grid row>
-            <Grid tablet={{ col: true }}><h4>Please enter a search term in the box above.</h4></Grid>
+        <Grid row>
+          <Grid tablet={{ col: true }}><h4>Please enter a search term in the box above.</h4></Grid>
         </Grid>}
       </GridContainer>
       <GridContainer>
@@ -45,7 +47,9 @@ export const SearchBar = (props: SearchBarProps) => {
               ]}
               secondaryItems={[]}
               mobileExpanded={false}
-              onToggleMobileNav={() => {return;}}
+              onToggleMobileNav={() => {
+                return;
+              }}
             >
             </ExtendedNav>
           </Grid>

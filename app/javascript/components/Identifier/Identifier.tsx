@@ -1,7 +1,7 @@
 import React from 'react';
 import { Identifier as UswdsIdentifier, IdentifierMasthead, IdentifierLinks, IdentifierLogos, IdentifierLogo, IdentifierIdentity, Link, IdentifierGov, IdentifierLinkItem, IdentifierLink } from '@trussworks/react-uswds';
 
-//this is just a dummy logo for UI purposes - to be dynamic
+// this is just a dummy logo for UI purposes - to be dynamic
 const logoImg = 'https://search.gov/assets/gsa-logo-893b811a49f74b06b2bddbd1cde232d2922349c8c8c6aad1d88594f3e8fe42bd097e980c57c5e28eff4d3a9256adb4fcd88bf73a5112833b2efe2e56791aad9d.svg';
 
 export const Identifier = () => {
@@ -12,7 +12,7 @@ export const Identifier = () => {
     'No FEAR Act data',
     'Office of the Inspector General',
     'Performance reports',
-    'Privacy policy',
+    'Privacy policy'
   ];
 
   return (
@@ -20,7 +20,7 @@ export const Identifier = () => {
       <UswdsIdentifier>
         <IdentifierMasthead aria-label="Agency identifier">
           <IdentifierLogos>
-            <IdentifierLogo href="">
+            <IdentifierLogo href=''>
               <img
                 className="usa-identifier__logo-img"
                 src={logoImg}
@@ -30,7 +30,7 @@ export const Identifier = () => {
           </IdentifierLogos>
           <IdentifierIdentity domain={'<domain.gov>'}>
             An official website of the{' '}
-            <Link href="">{`<Parent agency>`}</Link>
+            <Link href=''>{`<Parent agency>`}</Link>
           </IdentifierIdentity>
         </IdentifierMasthead>
         <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>

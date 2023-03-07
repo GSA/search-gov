@@ -27,9 +27,8 @@ export const Results = (props: ResultsProps) => {
                 </Grid>
               </GridContainer>
             </div>
-            );
-          }
-        )}
+          );
+        })}
       </div>
     </div>
   );

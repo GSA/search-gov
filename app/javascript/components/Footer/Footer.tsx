@@ -32,7 +32,7 @@ export const Footer = () => {
     <a key="email" href="mailto:info@agency.gov">
       info@agency.gov
     </a>
-  ]
+  ];
 
   return (
     <div id="serp-footer-wrapper">
