@@ -131,6 +131,10 @@ module Api
         respond_with({ errors: @search_options.errors.full_messages }, { status: 400 })
       end
 
+      # SRCH-3923: Temporarily disabling cop as at least one of these search classes (gss)
+      # is slated for removal, and another is current not used (docs). Future refactoring here
+      # is a given, and at that time this cop should be reenabled.
+      # rubocop:disable Metrics/CyclomaticComplexity
       def search_options_validator_klass
         case action_name.to_sym
         when :azure then Api::CommercialSearchOptions
@@ -142,6 +146,7 @@ module Api
         when :docs then Api::DocsSearchOptions
         end
       end
+      # rubocop:enable Metrics/CyclomaticComplexity
 
       def log_search_impression
         SearchImpression.log(@search, action_name, search_params, request)
