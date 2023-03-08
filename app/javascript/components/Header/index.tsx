@@ -6,23 +6,24 @@ import '@trussworks/react-uswds/lib/index.css';
 
 import { BasicHeader } from './BasicHeader';
 import { ExtendedHeader } from './ExtendedHeader';
+
 interface HeaderProps {
-  title: string
-  isBasic: boolean
+  title: string;
+  isBasic: boolean;
 }
 
 export const Header = (props: HeaderProps) => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   const toggleMobileNav = (): void => {
-    setMobileNavOpen((prevOpen) => !prevOpen)
-  }
+    setMobileNavOpen((prevOpen) => !prevOpen);
+  };
 
   const headerProps = {
     title: props.title,
     toggleMobileNav,
     mobileNavOpen
-  }
+  };
  
   return (
     <>
@@ -33,12 +34,13 @@ export const Header = (props: HeaderProps) => {
       <div className={`usa-overlay ${mobileNavOpen ? 'is-visible' : ''}`}></div>
 
       {props.isBasic ? 
-      <BasicHeader 
-        {...headerProps}
-      />:
-      <ExtendedHeader 
-        {...headerProps}
-      />}
+        <BasicHeader 
+          {...headerProps}
+        />:
+        <ExtendedHeader 
+          {...headerProps}
+        />
+      }
     </>
   );
-}
+};
