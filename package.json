@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "test": "jest",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "lint:react": "codeclimate analyze -f text -e eslint app/javascript/components/ > coverage/lint-report"
   },
   "dependencies": {
     "@babel/core": "^7.19.6",
