@@ -53,7 +53,7 @@ class Click
     # before our test fixture data is loaded.
     # https://apidock.com/rails/ActiveModel/Validations/ClassMethods/validates_inclusion_of#427-Check-if-value-is-included-in-array-of-valid-values
     return if module_code.blank?
-    return if SearchModule.pluck(:tag).include? module_code
+    return if SearchModule.pluck(:tag).include?(module_code)
 
     errors.add(:module_code, "#{module_code} is not a valid module")
   end
@@ -69,7 +69,7 @@ class Click
       time: Time.current.to_fs(:db),
       vertical: vertical,
       modules: module_code,
-      click_domain: URI(url).host,
+      click_domain: click_domain,
       params: {
         url: UrlParser.redact_query(url),
         affiliate: affiliate,
@@ -77,5 +77,9 @@ class Click
         position: position
       }
     }
+  end
+
+  def click_domain
+    URI(url).host
   end
 end
