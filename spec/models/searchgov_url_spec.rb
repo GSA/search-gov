@@ -147,6 +147,7 @@ describe SearchgovUrl do
                  description: 'My OG Description',
                  content: "This is my headline.\nThis is my content.",
                  content_type: 'video.movie',
+                 thumbnail_url: 'http://www.foo.gov/og_image.jpg',
                  language: 'en',
                  tags: 'this, that, the other, thing',
                  created: '2015-07-02T10:12:32-04:00',

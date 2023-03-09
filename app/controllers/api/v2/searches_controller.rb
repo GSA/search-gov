@@ -126,21 +126,27 @@ module Api
 
       def validate_search_options
         @search_options = search_options_validator_klass.new(search_params)
-        unless @search_options.valid? && @search_options.valid?(:affiliate)
-          respond_with({ errors: @search_options.errors.full_messages }, { status: 400 })
-        end
+        return if @search_options.valid? && @search_options.valid?(:affiliate)
+
+        respond_with({ errors: @search_options.errors.full_messages }, { status: 400 })
       end
 
+      # SRCH-3923: Temporarily disabling cop as at least one of these search classes (gss)
+      # is slated for removal, and another is current not used (docs). Future refactoring here
+      # is a given, and at that time this cop should be reenabled.
+      # rubocop:disable Metrics/CyclomaticComplexity
       def search_options_validator_klass
         case action_name.to_sym
         when :azure then Api::CommercialSearchOptions
         when :azure_web then Api::AzureCompositeWebSearchOptions
         when :azure_image then Api::AzureCompositeImageSearchOptions
-        when :blended, :i14y, :video then Api::NonCommercialSearchOptions
+        when :blended, :video then Api::NonCommercialSearchOptions
+        when :i14y then Api::I14ySearchOptions
         when :gss then Api::GssSearchOptions
         when :docs then Api::DocsSearchOptions
         end
       end
+      # rubocop:enable Metrics/CyclomaticComplexity
 
       def log_search_impression
         SearchImpression.log(@search, action_name, search_params, request)
