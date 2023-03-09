@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 describe Redactor do
-  describe '.' do
+  describe '.redact' do
     subject(:redact) { described_class.redact(string) }
 
     context 'when the string is nil' do
