@@ -25,6 +25,10 @@ class ApplicationDocument < WebDocument
     nil
   end
 
+  def thumbnail_url
+    nil
+  end
+
   def searchgov_custom(_number)
     nil
   end

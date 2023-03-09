@@ -7,20 +7,27 @@ import { Results } from './Results/Results';
 import { Footer } from './Footer/Footer';
 import { Identifier } from './Identifier/Identifier';
 interface SearchResultsLayoutProps {
-  results: {}[];
+  results: {
+    title: string,
+    unescapedUrl: string,
+    thumbnail: {
+      url: string
+    },
+    content: string
+  }[];
   vertical: string;
   params?: string;
+}
+
+// To be updated
+const getAffiliateTitle = (): string => {
+  return 'Search.gov';
 };
 
-//To be updated
-const getAffiliateTitle = (): string => {
-  return "Search.gov";
-}
-
-//To be updated
+// To be updated
 const isBasicHeader = (): boolean => {
   return true;
-}
+};
 
 const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
   return (
@@ -45,6 +52,6 @@ const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
       <Identifier />
     </>
   );
-}
+};
 
 export default SearchResultsLayout;

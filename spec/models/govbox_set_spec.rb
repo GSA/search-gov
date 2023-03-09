@@ -1,8 +1,6 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe GovboxSet do
-  fixtures :affiliates, :agencies, :federal_register_agencies, :rss_feed_urls, :rss_feeds, :agency_organization_codes
-
   describe '.new(query, affiliate, geoip_info)' do
     subject(:govbox_set) do
       described_class.new('foo', affiliate, geoip_info, highlighting_options)
@@ -12,14 +10,14 @@ describe GovboxSet do
     let(:agency) { agencies(:irs) }
     let(:geoip_info) do
       instance_double(
-        GeoIP::City,location_name: 'Flemington, New Jersey, United States'
+        GeoIP::City, location_name: 'Flemington, New Jersey, United States'
       )
     end
 
     let(:highlighting_options) do
       { highlighting: true,
-        pre_tags: %w(<strong>),
-        post_tags: %w(</strong>) }.freeze
+        pre_tags: %w[<strong>],
+        post_tags: %w[</strong>] }.freeze
     end
 
     describe '#boosted_contents' do
@@ -76,10 +74,10 @@ describe GovboxSet do
           affiliate.locale = 'en'
           expected_results = double(ElasticFeaturedCollectionResults, total: 1)
           allow(ElasticFeaturedCollection).to receive(:search_for).
-            with(q: 'foo',
-                 affiliate_id: affiliate.id,
-                 language: 'en',
-                 size: 1).
+            with({ q: 'foo',
+                   affiliate_id: affiliate.id,
+                   language: 'en',
+                   size: 1 }).
             and_return(expected_results)
 
           govbox_set = described_class.new('foo', affiliate, geoip_info)
@@ -135,10 +133,10 @@ describe GovboxSet do
           and_return(bc_expected_results_2)
 
         allow(ElasticFeaturedCollection).to receive(:search_for).
-          with(q: 'foo',
-               affiliate_id: affiliate.id,
-               language: 'en',
-               size: 1).
+          with({ q: 'foo',
+                 affiliate_id: affiliate.id,
+                 language: 'en',
+                 size: 1 }).
           and_return(fc_expected_results)
       end
 
@@ -200,20 +198,20 @@ describe GovboxSet do
 
         it 'should call Jobs.search with the params' do
           expect(Jobs).to receive(:search).
-            with(query: 'job',
-                 organization_codes: 'ABCD;BCDE',
-                 results_per_page: 10,
-                 location_name: 'Flemington, New Jersey, United States')
+            with({ query: 'job',
+                   organization_codes: 'ABCD;BCDE',
+                   results_per_page: 10,
+                   location_name: 'Flemington, New Jersey, United States' })
           govbox_set = described_class.new('job', affiliate, geoip_info)
         end
       end
 
       context 'when the affiliate does not have a related agency with an org code' do
         it 'calls Jobs.search with just the query, results per page' do
-          expect(Jobs).to receive(:search).with(query: 'job',
-                                                organization_codes: nil,
-                                                results_per_page: 10,
-                                                location_name: nil).and_return nil
+          expect(Jobs).to receive(:search).with({ query: 'job',
+                                                  organization_codes: nil,
+                                                  results_per_page: 10,
+                                                  location_name: nil }).and_return nil
           described_class.new('job', affiliate, nil)
         end
       end
@@ -239,13 +237,14 @@ describe GovboxSet do
         expect(affiliate).to receive(:is_rss_govbox_enabled?).and_return(true)
         expect(affiliate).to receive(:is_video_govbox_enabled?).and_return(false)
         non_managed_feeds = [news_feed, blog_feed]
-        allow(affiliate).to receive_message_chain(:rss_feeds, :non_mrss, :non_managed, :includes, :to_a).and_return non_managed_feeds
+        allow(affiliate).to receive_message_chain(:rss_feeds, :non_mrss, :non_managed, :includes, :to_a).
+          and_return(non_managed_feeds)
       end
 
       it 'should retrieve non-video news items from the last 13 months' do
         expect(ElasticNewsItem).to receive(:search_for).
-          with(q: 'foo', rss_feeds: [news_feed, blog_feed], excluded_urls: affiliate.excluded_urls,
-               since: 4.months.ago.beginning_of_day, language: 'en', title_only: true).
+          with({ q: 'foo', rss_feeds: [news_feed, blog_feed], excluded_urls: affiliate.excluded_urls,
+                 since: 4.months.ago.beginning_of_day, language: 'en', title_only: true }).
           and_return(non_video_results)
 
         govbox_set = described_class.new('foo', affiliate, geoip_info)
@@ -307,7 +306,6 @@ describe GovboxSet do
     context 'med topics' do
       fixtures :med_topics
       context 'when the affiliate has the medline govbox enabled' do
-
         before do
           allow(affiliate).to receive(:is_medline_govbox_enabled?).and_return true
         end
@@ -324,16 +322,15 @@ describe GovboxSet do
               I18n.locale = :es
             end
 
+            after do
+              I18n.locale = I18n.default_locale
+            end
+
             it 'should retrieve the spanish version of the med topic' do
               govbox_set = described_class.new('Colitis ulcerativa', affiliate, geoip_info)
               expect(govbox_set.med_topic).to eq(med_topics(:ulcerative_colitis_es))
             end
-
-            after do
-              I18n.locale = I18n.default_locale
-            end
           end
-
         end
 
         context 'when the query does not match a med topic' do
@@ -372,7 +369,13 @@ describe GovboxSet do
 
           it 'should find the most recent relevant tweet' do
             expected_tweets = double(ElasticTweetResults, total: 1)
-            expect(ElasticTweet).to receive(:search_for).with(q: 'foo', twitter_profile_ids: [123], since: 3.days.ago.beginning_of_day, language: 'en', size: 1).and_return(expected_tweets)
+            expect(ElasticTweet).to receive(:search_for).
+              with({ q: 'foo',
+                     twitter_profile_ids: [123],
+                     since: 3.days.ago.beginning_of_day,
+                     language: 'en',
+                     size: 1 }).
+              and_return(expected_tweets)
             govbox_set = described_class.new('foo', affiliate, geoip_info)
             expect(govbox_set.tweets).to eq(expected_tweets)
             expect(govbox_set.modules).to include('TWEET')
@@ -422,7 +425,6 @@ describe GovboxSet do
           govbox_set = described_class.new('foo', affiliate, geoip_info, highlighting_options)
           expect(govbox_set.related_search).to eq(expected_search_terms)
         end
-
       end
 
       context 'when the affiliate does not have related searches enabled' do
@@ -454,16 +456,16 @@ describe GovboxSet do
         affiliate.locale = 'en'
         expected_results = double(ElasticBoostedContentResults, total: 1)
         allow(ElasticBoostedContent).to receive(:search_for).
-          with(q: 'foo',
-               affiliate_id: affiliate.id,
-               language: 'en',
-               size: 2,
-               site_limits: %w(blogs.usa.gov news.usa.gov)).
+          with({ q: 'foo',
+                 affiliate_id: affiliate.id,
+                 language: 'en',
+                 size: 2,
+                 site_limits: %w[blogs.usa.gov news.usa.gov] }).
           and_return(expected_results)
 
         govbox_set = described_class.new('foo',
-                                   affiliate, geoip_info,
-                                   site_limits: %w(https://blogs.usa.gov http://news.usa.gov))
+                                         affiliate, geoip_info,
+                                         site_limits: %w[https://blogs.usa.gov http://news.usa.gov])
         expect(govbox_set.boosted_contents).to eq(expected_results)
         expect(govbox_set.modules).to include('BOOS')
       end

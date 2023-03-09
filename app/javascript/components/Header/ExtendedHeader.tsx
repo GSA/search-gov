@@ -5,10 +5,9 @@ import { HeaderProps } from './../props';
 
 import './ExtendedHeader.css';
 
-const logoImg = "https://search.gov/assets/gsa-logo-893b811a49f74b06b2bddbd1cde232d2922349c8c8c6aad1d88594f3e8fe42bd097e980c57c5e28eff4d3a9256adb4fcd88bf73a5112833b2efe2e56791aad9d.svg";
+const logoImg = 'https://search.gov/assets/gsa-logo-893b811a49f74b06b2bddbd1cde232d2922349c8c8c6aad1d88594f3e8fe42bd097e980c57c5e28eff4d3a9256adb4fcd88bf73a5112833b2efe2e56791aad9d.svg';
 
 export const ExtendedHeader = (props: HeaderProps) => {
-
   const secondaryLinkItems = [
     <a href="#linkOne" key="one">
       Secondary link 1
@@ -16,7 +15,7 @@ export const ExtendedHeader = (props: HeaderProps) => {
     <a href="#linkTwo" key="two">
       Secondary link 2
     </a>
-  ]
+  ];
 
   const primaryLinkItems = [
     <a href="#one" key="one" className="usa-nav__link">
@@ -28,7 +27,7 @@ export const ExtendedHeader = (props: HeaderProps) => {
     <a href="#three" key="three" className="usa-nav__link">
       <span>Primary link 3</span>
     </a>
-  ]
+  ];
   
   return (
     <>
@@ -54,5 +53,5 @@ export const ExtendedHeader = (props: HeaderProps) => {
         />
       </UswdsHeader>
     </>
-  )
-}
+  );
+};

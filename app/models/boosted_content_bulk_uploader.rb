@@ -25,7 +25,7 @@ class BoostedContentBulkUploader
   private
 
   def import_boosted_contents
-    contents = @file.read.encode('UTF-8', { invalid: :replace,
+    contents = @file.read.encode('UTF-8', **{ invalid: :replace,
                                            undef:   :replace,
                                            replace: '' })
 

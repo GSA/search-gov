@@ -20,6 +20,7 @@ class I14yDocument
                 :description,
                 :document_id,
                 :handle,
+                :thumbnail_url,
                 :language,
                 :mime_type,
                 :path,
@@ -74,6 +75,7 @@ class I14yDocument
        created
        description
        document_id
+       thumbnail_url
        language
        mime_type
        path
