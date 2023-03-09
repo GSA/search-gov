@@ -44,11 +44,7 @@ module UrlParser
   end
 
   def self.normalize_non_query_parts(uri)
-    addressable_uri = begin
-      Addressable::URI.parse(uri)
-    rescue
-      nil
-    end
+    addressable_uri = Addressable::URI.parse(uri)
     addressable_uri.host = addressable_uri.normalized_host
     addressable_uri.authority = addressable_uri.normalized_authority
     addressable_uri.path = addressable_uri.normalized_path.squeeze('/')
