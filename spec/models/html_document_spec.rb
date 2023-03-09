@@ -205,8 +205,8 @@ describe HtmlDocument do
     end
   end
 
-  describe '#image_url' do
-    subject(:image_url) { html_document.image_url }
+  describe '#thumbnail_url' do
+    subject(:thumbnail_url) { html_document.thumbnail_url }
 
     context 'when an og:image is available' do
       let(:raw_document) { read_fixture_file('/html/page_with_og_metadata.html') }

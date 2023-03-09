@@ -5,7 +5,7 @@ describe Sites::SiteDomainsController do
   before { activate_authlogic }
 
   describe '#index' do
-    it_should_behave_like 'restricted to approved user', :get, :index, site_id: 100
+    it_behaves_like 'restricted to approved user', :get, :index, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -23,7 +23,7 @@ describe Sites::SiteDomainsController do
   end
 
   describe '#create' do
-    it_should_behave_like 'restricted to approved user', :post, :create, site_id: 100
+    it_behaves_like 'restricted to approved user', :post, :create, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -35,8 +35,8 @@ describe Sites::SiteDomainsController do
           site_domains_arel = double('site domains arel')
           allow(site).to receive(:site_domains).and_return(site_domains_arel)
           expect(site_domains_arel).to receive(:build).
-              with('domain' => 'usa.gov').
-              and_return(site_domain)
+            with({ 'domain' => 'usa.gov' }).
+            and_return(site_domain)
 
           expect(site_domain).to receive(:save).and_return(true)
           expect(site).to receive(:normalize_site_domains)
@@ -61,8 +61,8 @@ describe Sites::SiteDomainsController do
           site_domains_arel = double('site domains arel')
           allow(site).to receive(:site_domains).and_return(site_domains_arel)
           expect(site_domains_arel).to receive(:build).
-              with('domain' => 'gov').
-              and_return(site_domain)
+            with({ 'domain' => 'gov' }).
+            and_return(site_domain)
 
           expect(site_domain).to receive(:save).and_return(false)
 
@@ -81,7 +81,7 @@ describe Sites::SiteDomainsController do
   end
 
   describe '#update' do
-    it_should_behave_like 'restricted to approved user', :put, :update, site_id: 100, id: 100
+    it_behaves_like 'restricted to approved user', :put, :update, site_id: 100, id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -96,8 +96,8 @@ describe Sites::SiteDomainsController do
             and_return(site_domain)
 
           expect(site_domain).to receive(:update).
-              with('domain' => 'gov').
-              and_return(false)
+            with({ 'domain' => 'gov' }).
+            and_return(false)
 
           put :update,
               params: {

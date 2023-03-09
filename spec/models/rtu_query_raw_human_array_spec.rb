@@ -15,7 +15,7 @@ describe RtuQueryRawHumanArray do
           'search',
           Date.current,
           Date.current,
-          { field: 'params.query.raw', size: 1_000_000 }
+          { field: 'params.query.raw', size: 50_000 }
         ]
       end
 

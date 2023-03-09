@@ -13,7 +13,7 @@ describe RtuClickRawHumanArray do
           'click',
           Date.current,
           Date.current,
-          { field: 'params.url', size: 1_000_000 }
+          { field: 'params.url', size: 50_000 }
         ]
       end
 

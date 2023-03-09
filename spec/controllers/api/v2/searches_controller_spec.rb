@@ -25,23 +25,33 @@ describe Api::V2::SearchesController do
   end
 
   describe '#blended' do
-    before do
-      expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
-      search = double('search', as_json: { foo: 'bar'}, modules: %w(AIDOC NEWS))
-      expect(ApiBlendedSearch).to receive(:new).with(hash_including(query_params)).and_return(search)
-      expect(search).to receive(:run)
-      expect(SearchImpression).to receive(:log).with(search,
-                                                     'blended',
-                                                     hash_including('query'),
-                                                     be_a(ActionDispatch::Request))
+    context 'when the search options are valid' do
+      before do
+        allow(Affiliate).to receive(:find_by_name).and_return(affiliate)
+        search = instance_double(ApiBlendedSearch, as_json: { foo: 'bar' }, modules: %w[AIDOC NEWS])
+        allow(ApiBlendedSearch).to receive(:new).with(hash_including(query_params)).and_return(search)
+        allow(search).to receive(:run)
+        allow(SearchImpression).to receive(:log).with(search,
+                                                      'blended',
+                                                      hash_including('query'),
+                                                      be_a(ActionDispatch::Request))
 
-      get :blended, params: search_params
+        get :blended, params: search_params
+      end
+
+      it { is_expected.to respond_with :success }
+
+      it 'returns search JSON' do
+        expect(JSON.parse(response.body)['foo']).to eq('bar')
+      end
     end
 
-    it { is_expected.to respond_with :success }
+    context 'when search options contains unrecognized attributes' do
+      before { get :blended, params: search_params.merge(audience: 'everyone') }
 
-    it 'returns search JSON' do
-      expect(JSON.parse(response.body)['foo']).to eq('bar')
+      it 'drops the attribute from the ApiBlendedSearch object' do
+        expect(assigns(:search_options).attributes).not_to include({ audience: 'everyone' })
+      end
     end
   end
 
@@ -415,18 +425,25 @@ describe Api::V2::SearchesController do
       end
     end
 
+    context 'when search options contains unrecognized attributes' do
+      before { get :video, params: search_params.merge(audience: 'everyone') }
+
+      it 'drops the attribute from the ApiVideoSearch object' do
+        expect(assigns(:search_options).attributes).not_to include({ audience: 'everyone' })
+      end
+    end
+
     context 'when the search options are valid' do
-      let!(:search) { double(ApiVideoSearch, as_json: { foo: 'bar'}, modules: %w(VIDS)) }
+      let!(:search) { instance_double(ApiVideoSearch, as_json: { foo: 'bar' }, modules: %w[VIDS]) }
 
       before do
-        expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
-
-        expect(ApiVideoSearch).to receive(:new).with(hash_including(query_params)).and_return(search)
-        expect(search).to receive(:run)
-        expect(SearchImpression).to receive(:log).with(search,
-                                                       'video',
-                                                       hash_including('query'),
-                                                       be_a(ActionDispatch::Request))
+        allow(Affiliate).to receive(:find_by_name).and_return(affiliate)
+        allow(ApiVideoSearch).to receive(:new).with(hash_including(query_params)).and_return(search)
+        allow(search).to receive(:run)
+        allow(SearchImpression).to receive(:log).with(search,
+                                                      'video',
+                                                      hash_including('query'),
+                                                      be_a(ActionDispatch::Request))
 
         get :video, params: search_params
       end

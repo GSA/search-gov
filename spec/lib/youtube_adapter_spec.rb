@@ -1,4 +1,4 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe YoutubeAdapter do
   let(:client) { described_class.client }
@@ -56,8 +56,8 @@ describe YoutubeAdapter do
     context 'when channel_id is valid' do
       let(:result) do
         Hashie::Mash.new(items: [
-          { id: 'nasa_channel_id', snippet: { title: 'my channel' } }
-        ])
+                           { id: 'nasa_channel_id', snippet: { title: 'my channel' } }
+                         ])
       end
 
       it 'returns a title' do
@@ -81,10 +81,10 @@ describe YoutubeAdapter do
         and_return('upload_playlist_id')
       expect(described_class).to receive(:get_custom_playlist_ids).
         with('my_channel_id').
-        and_return(%w(custom_playlist_id))
+        and_return(%w[custom_playlist_id])
 
       playlist_ids = described_class.get_playlist_ids('my_channel_id')
-      expected_playlist_ids = %w(custom_playlist_id upload_playlist_id)
+      expected_playlist_ids = %w[custom_playlist_id upload_playlist_id]
       expect(playlist_ids).to eq(expected_playlist_ids)
     end
   end
@@ -92,12 +92,12 @@ describe YoutubeAdapter do
   describe '.get_uploads_playlist_id' do
     let(:result) do
       Hashie::Mash.new(items: [{
-        content_details: {
-          related_playlists: {
-            uploads: 'my_uploads_playlist_id'
-          }
-        }
-      }])
+                         content_details: {
+                           related_playlists: {
+                             uploads: 'my_uploads_playlist_id'
+                           }
+                         }
+                       }])
     end
 
     before do
@@ -115,29 +115,29 @@ describe YoutubeAdapter do
   describe '.get_custom_playlist_ids' do
     let(:result) do
       Hashie::Mash.new(items: [
-        { id: 'my_custom_playlist_1',
-          status: { privacy_status: 'public' } },
-        { id: 'my_custom_playlist_2',
-          status: { privacy_status: 'public' } },
-        { id: 'my_custom_playlist_3',
-          status: { privacy_status: 'private' } }
-      ])
+                         { id: 'my_custom_playlist_1',
+                           status: { privacy_status: 'public' } },
+                         { id: 'my_custom_playlist_2',
+                           status: { privacy_status: 'public' } },
+                         { id: 'my_custom_playlist_3',
+                           status: { privacy_status: 'private' } }
+                       ])
     end
 
     before do
       expect(client).to receive(:list_playlists).with(
         'id,status',
-        channel_id:  'nasa_channel_id',
-        max_results: 50,
-        page_token:  '',
-        options:     Google::Apis::RequestOptions.new
+        { channel_id: 'nasa_channel_id',
+          max_results: 50,
+          page_token: '',
+          options: Google::Apis::RequestOptions.new }
       ) do |&block|
         block.call(result)
       end
     end
     it 'returns playlist ids' do
       playlist_ids = described_class.get_custom_playlist_ids('nasa_channel_id')
-      expected_playlist_ids = %w(my_custom_playlist_1 my_custom_playlist_2)
+      expected_playlist_ids = %w[my_custom_playlist_1 my_custom_playlist_2]
       expect(playlist_ids).to eq(expected_playlist_ids)
     end
   end
@@ -154,7 +154,7 @@ describe YoutubeAdapter do
         items: [
           { status: { privacy_status: 'public' } },
           { status: { privacy_status: 'public' } },
-          { status: { privacy_status: 'private' } },
+          { status: { privacy_status: 'private' } }
         ]
       )
     end
@@ -168,10 +168,10 @@ describe YoutubeAdapter do
     before do
       expect(client).to receive(:list_playlist_items).with(
         'snippet,status',
-        max_results: 50,
-        page_token: '',
-        playlist_id: 'nasa_playlist_id',
-        options: request_options
+        { max_results: 50,
+          page_token: '',
+          playlist_id: 'nasa_playlist_id',
+          options: request_options }
       ) do |&block|
         block.call(result, error)
       end
@@ -216,7 +216,7 @@ describe YoutubeAdapter do
 
     it 'yields item' do
       expect do |item|
-        described_class.each_video(%w(video_1_id video_2_id), &item)
+        described_class.each_video(%w[video_1_id video_2_id], &item)
       end.to yield_successive_args(result.items[0], result.items[1])
     end
   end
