@@ -64,7 +64,7 @@ class I14ySearch < FilterableSearch
   protected
 
   def include_facet_fields(filter_options)
-    filter_options[:include] = "title,path,#{FACET_FIELDS.join(',')}"
+    filter_options[:include] = "title,path,thumbnail_url,#{FACET_FIELDS.join(',')}"
   end
 
   def date_filter_options(filter_options)
