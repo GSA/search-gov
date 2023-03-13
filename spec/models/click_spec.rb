@@ -10,6 +10,8 @@ describe Click do
   let(:position) { '7' }
   let(:module_code) { 'BWEB' }
   let(:query) { 'my query' }
+  let(:referrer) { 'http://www.fda.gov/referrer' }
+  let(:user_agent) { 'mozilla' }
   let(:params) do
     {
       url: url,
@@ -19,8 +21,8 @@ describe Click do
       position: position,
       module_code: module_code,
       vertical: 'web',
-      user_agent: 'mozilla',
-      referrer: 'http://www.fda.gov/referrer'
+      user_agent: user_agent,
+      referrer: referrer
     }
   end
 
@@ -51,13 +53,12 @@ describe Click do
       before do
         allow(Rails.logger).to receive(:info)
         travel_to(Time.utc(2020, 1, 1))
+        click.log
       end
 
       after { travel_back }
 
       it 'logs almost-JSON info about the click' do
-        click.log
-
         expect(Rails.logger).to have_received(:info).with("[Click] #{click_json}")
       end
 
@@ -65,7 +66,6 @@ describe Click do
         let(:url) { 'https://search.gov/%28%3A%7C%29'  }
 
         it 'logs the encoded URL' do
-          click.log
           expect(Rails.logger).to have_received(:info).
             with(%r{https://search.gov/%28%3A%7C%29})
         end
@@ -77,8 +77,28 @@ describe Click do
         let(:query) { 'DOWNCASE ME' }
 
         it 'downcases the query' do
-          click.log
           expect(Rails.logger).to have_received(:info).with(/downcase me/)
+        end
+      end
+
+      context 'when the click includes sensitive information' do
+        let(:sensitive_info) { '123-45-6789' }
+        let(:query) { sensitive_info }
+        let(:referrer) { "https://foo.gov/search?query=#{sensitive_info}&utm_x=123456789" }
+        let(:url) { "https://foo.gov/search?query=#{sensitive_info}&utm_x=123456789" }
+        let(:user_agent) { 'Mozilla 123456789' }
+
+        it 'does not log the information' do
+          expect(Rails.logger).not_to have_received(:info).with(/123-45-6789/)
+        end
+
+        it 'specifies what was redacted' do
+          expect(Rails.logger).to have_received(:info).with(/REDACTED_SSN/)
+        end
+
+        it 'logs non-sensitive information that happens to match sensitive patterns' do
+          expect(Rails.logger).to have_received(:info).with(/utm_x=123456789/)
+          expect(Rails.logger).to have_received(:info).with(/Mozilla 123456789/)
         end
       end
     end

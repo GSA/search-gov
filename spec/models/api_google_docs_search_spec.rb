@@ -1,10 +1,8 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe ApiGoogleDocsSearch do
-  fixtures :affiliates
-
   let(:affiliate) { affiliates(:usagov_affiliate) }
-  let(:api_key) {  GoogleSearch::API_KEY }
+  let(:api_key) { GoogleSearch::API_KEY }
   let(:cx) { GoogleSearch::SEARCH_CX }
   let(:search_params) do
     { affiliate: affiliate,
@@ -27,12 +25,12 @@ describe ApiGoogleDocsSearch do
 
     it 'initializes GoogleWebSearch' do
       expect(GoogleWebSearch).to receive(:new).
-        with(enable_highlighting: false,
-             language: 'en',
-             next_offset_within_limit: true,
-             offset: 10,
-             password: 'my_api_key',
-             query: 'gov -site:kids.usa.gov site:whitehouse.gov OR site:usa.gov')
+        with({ enable_highlighting: false,
+               language: 'en',
+               next_offset_within_limit: true,
+               offset: 10,
+               password: 'my_api_key',
+               query: 'gov -site:kids.usa.gov site:whitehouse.gov OR site:usa.gov' })
 
       described_class.new affiliate: affiliate,
                           api_key: 'my_api_key',
@@ -58,7 +56,8 @@ describe ApiGoogleDocsSearch do
           'healthy snack',
           affiliate,
           nil,
-          highlighting_options)
+          highlighting_options
+        )
 
         described_class.new(affiliate: affiliate,
                             api_key: 'my_api_key',
@@ -101,7 +100,7 @@ describe ApiGoogleDocsSearch do
       end
 
       it 'includes urls' do
-        expect(search.results.map(&:unescaped_url).compact).to include(match(URI.regexp))
+        expect(search.results.map(&:unescaped_url).compact).to include(match(URI::DEFAULT_PARSER.make_regexp))
       end
 
       its(:next_offset) { is_expected.to eq(10) }
@@ -121,8 +120,8 @@ describe ApiGoogleDocsSearch do
 
       it 'return non highlighted title and description' do
         result = search.results.first
-        expect(result.title).to_not match(/\ue000.+\ue001/)
-        expect(result.content).to_not match(/\ue000.+\ue001/)
+        expect(result.title).not_to match(/\ue000.+\ue001/)
+        expect(result.content).not_to match(/\ue000.+\ue001/)
       end
 
       its(:next_offset) { is_expected.to eq(10) }
@@ -147,12 +146,12 @@ describe ApiGoogleDocsSearch do
         search.run
       end
 
-      its(:next_offset) { should be_nil }
+      its(:next_offset) { is_expected.to be_nil }
     end
 
     context 'when the site locale is es' do
       let(:affiliate) { affiliates(:spanish_affiliate) }
-      let(:search)  { described_class.new search_params.merge(query: 'casa blanca') }
+      let(:search) { described_class.new search_params.merge(query: 'casa blanca') }
 
       before do
         I18n.locale = :es
@@ -173,7 +172,7 @@ describe ApiGoogleDocsSearch do
       end
 
       it 'includes urls' do
-        expect(search.results.map(&:unescaped_url).compact).to include(match(URI.regexp))
+        expect(search.results.map(&:unescaped_url).compact).to include(match(URI::DEFAULT_PARSER.make_regexp))
       end
     end
 
@@ -191,8 +190,8 @@ describe ApiGoogleDocsSearch do
 
       before { search.run }
 
-      its(:results) { should be_empty }
-      its(:modules) { should_not include('GWEB') }
+      its(:results) { is_expected.to be_empty }
+      its(:modules) { is_expected.not_to include('GWEB') }
     end
   end
 
@@ -201,10 +200,10 @@ describe ApiGoogleDocsSearch do
       described_class.new search_params.merge(query: 'ira')
     end
 
-    before {
+    before do
       I18n.locale = :en
       search.run
-    }
+    end
 
     it 'returns results' do
       expect(search.as_json[:docs][:results].count).to be > 1
@@ -220,7 +219,7 @@ describe ApiGoogleDocsSearch do
     end
 
     it 'includes urls' do
-      expect(search.results.map(&:unescaped_url).compact).to include(match(URI.regexp))
+      expect(search.results.map(&:unescaped_url).compact).to include(match(URI::DEFAULT_PARSER.make_regexp))
     end
   end
 

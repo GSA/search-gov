@@ -1,8 +1,6 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe ApiVideoSearch do
-  fixtures :affiliates
-
   let(:affiliate) { affiliates(:usagov_affiliate) }
 
   describe '#search' do
@@ -37,15 +35,15 @@ describe ApiVideoSearch do
 
       it 'executes ElasticNewsItem.search_for' do
         expect(ElasticNewsItem).to receive(:search_for).
-          with(highlighting: false,
-               language: 'en',
-               offset: 23,
-               pre_tags: ["\ue000"],
-               post_tags: ["\ue001"],
-               q: 'my video',
-               rss_feeds: youtube_profile_rss_feeds,
-               size: 8,
-               sort_by_relevance: true)
+          with({ highlighting: false,
+                 language: 'en',
+                 offset: 23,
+                 pre_tags: ["\ue000"],
+                 post_tags: ["\ue001"],
+                 q: 'my video',
+                 rss_feeds: youtube_profile_rss_feeds,
+                 size: 8,
+                 sort_by_relevance: true })
 
         described_class.new(search_options).run
       end
@@ -55,27 +53,28 @@ describe ApiVideoSearch do
         response = double('response', results: results, total: 100)
         expect(ElasticNewsItem).to receive(:search_for).and_return(response)
         search = described_class.new(
-          search_options.merge(next_offset_within_limit: true))
+          search_options.merge(next_offset_within_limit: true)
+        )
         search.run
 
         expect(search.results).to eq(results)
         expect(search.total).to eq(100)
         expect(search.next_offset).to eq(31)
-        expect(search.modules).to eq(%w(VIDS))
+        expect(search.modules).to eq(%w[VIDS])
       end
 
       context 'when sort_by=date' do
         it 'executes ElasticNewsItem.search_for with sort_by_relevance=false' do
           expect(ElasticNewsItem).to receive(:search_for).
-            with(highlighting: false,
-                 language: 'en',
-                 offset: 23,
-                 pre_tags: ["\ue000"],
-                 post_tags: ["\ue001"],
-                 q: 'my video',
-                 rss_feeds: youtube_profile_rss_feeds,
-                 size: 8,
-                 sort_by_relevance: false)
+            with({ highlighting: false,
+                   language: 'en',
+                   offset: 23,
+                   pre_tags: ["\ue000"],
+                   post_tags: ["\ue001"],
+                   q: 'my video',
+                   rss_feeds: youtube_profile_rss_feeds,
+                   size: 8,
+                   sort_by_relevance: false })
 
           described_class.new(search_options.merge(sort_by: 'date')).run
         end
@@ -90,10 +89,10 @@ describe ApiVideoSearch do
 
     let(:search) do
       described_class.new(affiliate: affiliate,
-                         limit: 2,
-                         next_offset_within_limit: true,
-                         offset: 23,
-                         query: 'my video')
+                          limit: 2,
+                          next_offset_within_limit: true,
+                          offset: 23,
+                          query: 'my video')
     end
 
     before do
@@ -115,8 +114,8 @@ describe ApiVideoSearch do
       end
 
       elastic_results = double(ElasticNewsItemResults,
-                             results: news_items,
-                             total: 30)
+                               results: news_items,
+                               total: 30)
 
       expect(ElasticNewsItem).to receive(:search_for).and_return(elastic_results)
     end

@@ -1,8 +1,6 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe RtuDashboard do
-  fixtures :affiliates
-
   let(:site) { affiliates(:basic_affiliate) }
   let(:dashboard) { described_class.new(site, Date.current, true) }
 
@@ -34,7 +32,7 @@ describe RtuDashboard do
 
       before do
         expect(TopNMissingQuery).to receive(:new).at_least(:once).
-          with(site.name, 'search', field: 'params.query.raw', min_doc_count: 10).
+          with(site.name, 'search', { field: 'params.query.raw', min_doc_count: 10 }).
           and_call_original
         allow(Es::ELK.client_reader).to receive(:search).and_return json_response
       end
@@ -48,7 +46,6 @@ describe RtuDashboard do
         end
       end
     end
-
   end
 
   describe '#top_urls' do
@@ -61,13 +58,13 @@ describe RtuDashboard do
 
       it "searches for the affiliate's top N URLs" do
         expect(TopNQuery).to receive(:new).
-          with(site.name, 'click', field: 'params.url').
+          with(site.name, 'click', { field: 'params.url' }).
           and_call_original
         dashboard.top_urls
       end
 
       it 'should return an array of url/count pairs' do
-        top_urls = Hash[json_response['aggregations']['agg']['buckets'].collect { |hash| [hash['key'], hash['doc_count']] }]
+        top_urls = json_response['aggregations']['agg']['buckets'].to_h { |hash| [hash['key'], hash['doc_count']] }
         expect(dashboard.top_urls).to eq(top_urls)
       end
     end
@@ -179,6 +176,5 @@ describe RtuDashboard do
         expect(dashboard.monthly_queries_to_date).to be_nil
       end
     end
-
   end
 end

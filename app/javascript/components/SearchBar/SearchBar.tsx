@@ -3,7 +3,14 @@ import { ExtendedNav, Search, GridContainer, Grid } from '@trussworks/react-uswd
 
 import './SearchBar.css';
 interface SearchBarProps {
-  results: {}[]
+  results: {
+    title: string,
+    unescapedUrl: string,
+    thumbnail: {
+      url: string
+    },
+    content: string
+  }[];
 }
 
 export const SearchBar = (props: SearchBarProps) => {
@@ -15,13 +22,15 @@ export const SearchBar = (props: SearchBarProps) => {
             <Search
               placeholder="Please enter a search term."
               size="small"
-              onSubmit={() => {}}
+              onSubmit={() => {
+                // to be added
+              }}
             />
           </Grid>
         </Grid>
         {props.results.length === 0 &&
-          <Grid row>
-            <Grid tablet={{ col: true }}><h4>Please enter a search term in the box above.</h4></Grid>
+        <Grid row>
+          <Grid tablet={{ col: true }}><h4>Please enter a search term in the box above.</h4></Grid>
         </Grid>}
       </GridContainer>
       <GridContainer>
@@ -39,15 +48,17 @@ export const SearchBar = (props: SearchBarProps) => {
                   <span>News</span>
                 </a>,
                 <a href="#three" key="three" className="usa-nav__link">
-                <span>Images</span>
-              </a>,
+                  <span>Images</span>
+                </a>,
                 <a href="#three" key="three" className="usa-nav__link">
-                <span>Videos</span>
-              </a>,
+                  <span>Videos</span>
+                </a>
               ]}
               secondaryItems={[]}
               mobileExpanded={false}
-              onToggleMobileNav={() => {}}
+              onToggleMobileNav={() => {
+                // to be added
+              }}
             >
             </ExtendedNav>
           </Grid>
@@ -55,4 +66,4 @@ export const SearchBar = (props: SearchBarProps) => {
       </GridContainer>
     </div>
   );
-}
+};

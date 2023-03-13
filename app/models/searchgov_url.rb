@@ -187,6 +187,7 @@ class SearchgovUrl < ApplicationRecord
       description: document.description,
       document_id: document_id,
       handle: 'searchgov',
+      thumbnail_url: document.thumbnail_url,
       language: document.language,
       mime_type: response.content_type.mime_type,
       path: url,

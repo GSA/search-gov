@@ -9,7 +9,7 @@ describe Sites::SitesController do
   end
 
   describe '#index' do
-    it_should_behave_like 'restricted to approved user', :get, :index, id: 100
+    it_behaves_like 'restricted to approved user', :get, :index, id: 100
 
     it_behaves_like 'require complete account', :get, :index, id: 100
 
@@ -58,7 +58,7 @@ describe Sites::SitesController do
   end
 
   describe '#show' do
-    it_should_behave_like 'restricted to approved user', :get, :show, id: 100
+    it_behaves_like 'restricted to approved user', :get, :show, id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -107,7 +107,7 @@ describe Sites::SitesController do
   end
 
   describe '#create' do
-    it_should_behave_like 'restricted to approved user', :post, :create, id: 100
+    it_behaves_like 'restricted to approved user', :post, :create, id: 100
 
     context 'when logged in' do
       include_context 'approved user logged in to a site'
@@ -118,10 +118,13 @@ describe Sites::SitesController do
 
         before do
           expect(Affiliate).to receive(:new).with(
-            'display_name' => 'New Aff',
-            'locale' => 'es',
-            'name' => 'newaff',
-            'site_domains_attributes' => { '0' => { 'domain' => 'http://www.brandnew.gov' } }).and_return(site)
+            { 'display_name' => 'New Aff',
+              'locale' => 'es',
+              'name' => 'newaff',
+              'site_domains_attributes' => {
+                '0' => { 'domain' => 'http://www.brandnew.gov' }
+              } }
+          ).and_return(site)
           expect(site).to receive(:save).and_return(true)
 
           autodiscoverer = double(SiteAutodiscoverer)
@@ -150,7 +153,7 @@ describe Sites::SitesController do
   end
 
   describe '#pin' do
-    it_should_behave_like 'restricted to approved user', :put, :pin, id: 100
+    it_behaves_like 'restricted to approved user', :put, :pin, id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -168,7 +171,7 @@ describe Sites::SitesController do
   end
 
   describe '#destroy' do
-    it_should_behave_like 'restricted to approved user', :delete, :destroy, id: 100
+    it_behaves_like 'restricted to approved user', :delete, :destroy, id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
