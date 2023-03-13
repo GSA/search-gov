@@ -2,28 +2,25 @@ import React from 'react';
 import { Footer as UswdsFooter, GridContainer, FooterNav, Address } from '@trussworks/react-uswds';
 
 import './Footer.css';
-interface FooterProps {
-}
 
-export const Footer = (props: FooterProps) => {
-
+export const Footer = () => {
   const returnToTop = (
     <GridContainer className="usa-footer__return-to-top">
       <a href="#">Return to top</a>
     </GridContainer>
-  )
+  );
 
   const primaryFooterLinks = [
-    <a className="usa-footer__primary-link" href="#">
+    <a className="usa-footer__primary-link" href="#" key="primary-link-1">
       Primary Link 1
     </a>,
-    <a className="usa-footer__primary-link" href="#">
+    <a className="usa-footer__primary-link" href="#" key="primary-link-2">
       Primary Link 2
     </a>,
-    <a className="usa-footer__primary-link" href="#">
+    <a className="usa-footer__primary-link" href="#" key="primary-link-3">
       Primary Link 3
     </a>,
-    <a className="usa-footer__primary-link" href="#">
+    <a className="usa-footer__primary-link" href="#" key="primary-link-4">
       Primary Link 4
     </a>
   ];
@@ -35,7 +32,7 @@ export const Footer = (props: FooterProps) => {
     <a key="email" href="mailto:info@agency.gov">
       info@agency.gov
     </a>
-  ]
+  ];
 
   return (
     <div id="serp-footer-wrapper">
@@ -62,4 +59,4 @@ export const Footer = (props: FooterProps) => {
       />
     </div>
   );
-}
+};

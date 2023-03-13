@@ -1,4 +1,5 @@
 /* eslint global-require:"off" */
+/* eslint-disable @typescript-eslint/no-var-requires */
 
 module.exports = function (api) {
   const defaultConfigFunc = require('shakapacker/package/babel/preset.js');
