@@ -147,7 +147,8 @@ describe ApiI14ySearch do
         expect(first_result.keys).to include(:title,
                                              :url,
                                              :snippet,
-                                             :publication_date)
+                                             :publication_date,
+                                             :thumbnail_url)
       end
 
       it 'does not return aggregations' do

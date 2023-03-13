@@ -74,7 +74,7 @@ describe I14ySearch do
     it 'requests facet fields be included in the search' do
       i14y_search.run
       expect(I14yCollections).to have_received(:search).
-        with(hash_including(include: 'title,path,thumbnail_url,audience,changed,content_type,' \
+        with(hash_including(include: 'title,path,audience,changed,content_type,' \
                                      'created,mime_type,searchgov_custom1,' \
                                      'searchgov_custom2,searchgov_custom3,tags'))
     end
