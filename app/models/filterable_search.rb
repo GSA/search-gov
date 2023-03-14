@@ -52,14 +52,14 @@ class FilterableSearch < Search
 
     return unless (@since.nil? && @until.nil?) || (@created_since.nil? && @created_until.nil?)
 
-    time_based_search(options)
+    time_based_search(options[:tbs])
   end
 
-  def time_based_search(options)
-    extent = TIME_BASED_SEARCH_OPTIONS[options[:tbs]]
+  def time_based_search(tbs)
+    extent = TIME_BASED_SEARCH_OPTIONS[tbs]
     return unless extent
 
-    @tbs = options[:tbs]
+    @tbs = tbs
     @since = since_when(extent)
   end
 
