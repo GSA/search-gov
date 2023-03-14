@@ -16,8 +16,14 @@ class OdieImageSearch < OdieSearch
   end
 
   def search
-    ActiveSupport::Notifications.instrument("oasis_search.usasearch", :query => {
-      :term => @query, :affiliate => @affiliate.name, :page => @page }) do
+    ActiveSupport::Notifications.instrument(
+      'oasis_search.usasearch',
+      query: {
+        query: @query,
+        affiliate: @affiliate.name,
+        page: @page
+      }.to_json
+    ) do
       @oasis_search.execute_query
     end
   rescue SearchEngine::SearchError => error

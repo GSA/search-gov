@@ -1,5 +1,8 @@
 module Instrumentation
   class LogSubscriber < ActiveSupport::LogSubscriber
+    # The only methods that work as of 2023 are oasis_search and elastic_search. The others
+    # should be removed when we remove those old search classes. The Bing methods need to
+    # be updated to support BingV7.
     def api_gss_web_engine(event)
       generic_logging('Google Query', event, RED)
     end
@@ -35,7 +38,11 @@ module Instrumentation
     private
     def generic_logging(label, event, color)
       name = '%s (%.1fms)' % [label, event.duration]
-      query = event.payload[:query].to_json
+      # The Redactor redacts strings matching certain patterns, such as 9-digit numbers
+      # resembling SSNs. For Elasticsearch queries, it may redact false positives such
+      # as 9-digit IDs. We may need to fine-tune the redaction if it is redacting too much
+      # necessary information from the logs.
+      query = Redactor.redact(event.payload[:query])
       info "  #{color(name, color, true)}  #{query}"
     end
   end
