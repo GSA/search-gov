@@ -57,9 +57,10 @@ export const SearchBar = (props: SearchBarProps) => {
                 type="search" 
                 name="searchQuery" 
                 value={searchQuery} 
-                onChange={handleSearchQueryChange} 
+                onChange={handleSearchQueryChange}
+                data-testid="search-field" 
               />
-              <button className="usa-button" type="submit">
+              <button className="usa-button" type="submit" data-testid="search-submit-btn">
                 <img src={logoImg} className="usa-search__submit-icon" alt="Search"/>
               </button>
             </form>
