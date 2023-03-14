@@ -1,3 +1,36 @@
 .usa-input{
   max-width: none;
 }
+
+.vertical-wrapper{
+  border-bottom: 1px solid #DEDEDE;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.vertical-wrapper .vertical-button {
+  padding: 1rem 0 1rem 0;
+  font-weight: normal;
+  color: #3D4551;
+  text-decoration: none;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  cursor: pointer;
+  border-bottom: 4px solid #fff;
+}
+
+.vertical-wrapper .vertical-button-rel-sites{
+  margin-left: auto;
+}
+
+.vertical-wrapper .vertical-button:focus {
+  outline: 0.25rem solid #2491ff;
+  color: #005EA2;
+  border-bottom: 4px solid #005ea2;
+  outline-offset: 0;
+}
+
+.vertical-wrapper .vertical-button:hover {
+  color: #005EA2;
+  border-bottom: 4px solid #005ea2;
+}

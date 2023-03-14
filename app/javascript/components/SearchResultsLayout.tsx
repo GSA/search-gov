@@ -18,7 +18,9 @@ interface SearchResultsLayoutProps {
     content: string
   }[];
   vertical: string;
-  params?: string;
+  params: {
+    query: string
+  };
 }
 
 // To be updated
@@ -42,6 +44,7 @@ const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
       <div className="usa-section">
         <Facets />
         <SearchBar 
+          query={props.params.query}
           results={props.results} 
         />
         <Results 
