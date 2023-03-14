@@ -34,7 +34,7 @@ class Click
   end
 
   def log
-    Rails.logger.info('[Click] ' + click_hash.to_json)
+    Rails.logger.info("[Click] #{click_hash.to_json}")
   end
 
   private
@@ -53,7 +53,7 @@ class Click
     # before our test fixture data is loaded.
     # https://apidock.com/rails/ActiveModel/Validations/ClassMethods/validates_inclusion_of#427-Check-if-value-is-included-in-array-of-valid-values
     return if module_code.blank?
-    return if SearchModule.pluck(:tag).include? module_code
+    return if SearchModule.pluck(:tag).include?(module_code)
 
     errors.add(:module_code, "#{module_code} is not a valid module")
   end
@@ -64,18 +64,22 @@ class Click
   def click_hash
     {
       clientip: client_ip,
-      referrer: referrer,
+      referrer: UrlParser.redact_query(referrer),
       user_agent: user_agent,
       time: Time.current.to_fs(:db),
       vertical: vertical,
       modules: module_code,
-      click_domain: URI(url).host,
+      click_domain: click_domain,
       params: {
-        url: url,
+        url: UrlParser.redact_query(url),
         affiliate: affiliate,
-        query: query.downcase,
+        query: Redactor.redact(query.downcase),
         position: position
       }
     }
+  end
+
+  def click_domain
+    URI(url).host
   end
 end
