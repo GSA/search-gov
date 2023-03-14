@@ -1,10 +1,34 @@
 shared_examples 'an indexable' do
+  describe '.search_for' do
+    subject(:search_for) { described_class.search_for(options) }
 
-  context 'when searching raises an exception' do
-    it 'should return an appropriate result set with zero hits' do
-      expect(Es::CustomIndices.client_reader).to receive(:search).and_raise StandardError
-      options = { q: 'query', affiliate_id: affiliate.id, language: affiliate.indexing_locale }
-      expect(described_class.search_for(options)).to be_a(ElasticResults)
+    let(:options) do
+      { q: 'search term' }
+    end
+
+    before { allow(Rails.logger).to receive(:info) }
+
+    context 'when searching raises an exception' do
+      it 'should return an appropriate result set with zero hits' do
+        expect(Es::CustomIndices.client_reader).to receive(:search).and_raise StandardError
+        expect(described_class.search_for(options)).to be_a(ElasticResults)
+      end
+    end
+
+    it 'logs the query JSON' do
+      search_for
+      expect(Rails.logger).to have_received(:info).with(/"query":"search term"/)
+    end
+
+    context 'when the query includes sensitive data' do
+      let(:options) do
+        { q: '123-45-6789' }
+      end
+
+      it 'redacts the data' do
+        search_for
+        expect(Rails.logger).not_to have_received(:info).with(/123-45-6789/)
+      end
     end
   end
 
@@ -32,7 +56,7 @@ shared_examples 'an indexable' do
     describe '.delete_index' do
       it 'should send a delete to each cluster' do
         [es1, es2].each do |client|
-          es_indices=client.indices
+          es_indices = client.indices
           expect(client).to receive(:indices).and_return es_indices
           expect(es_indices).to receive(:delete)
         end
@@ -43,7 +67,7 @@ shared_examples 'an indexable' do
     describe '.create_index' do
       it 'should send a create to each cluster' do
         [es1, es2].each do |client|
-          es_indices=client.indices
+          es_indices = client.indices
           allow(client).to receive(:indices).and_return es_indices
           expect(es_indices).to receive(:create)
           expect(es_indices).to receive(:put_alias).with(index: described_class.index_name, name: described_class.writer_alias)
@@ -60,7 +84,7 @@ shared_examples 'an indexable' do
 
       it 'should send a create to each cluster' do
         [es1, es2].each do |client|
-          es_indices=client.indices
+          es_indices = client.indices
           allow(client).to receive(:indices).and_return es_indices
           expect(es_indices).to receive(:create)
         end
@@ -71,7 +95,7 @@ shared_examples 'an indexable' do
     describe '.commit' do
       it 'should send a refresh to each cluster' do
         [es1, es2].each do |client|
-          es_indices=client.indices
+          es_indices = client.indices
           allow(client).to receive(:indices).and_return es_indices
           expect(es_indices).to receive(:refresh).with(index: described_class.writer_alias)
         end
@@ -138,5 +162,4 @@ shared_examples 'an indexable' do
       end
     end
   end
-
 end
