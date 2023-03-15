@@ -41,7 +41,7 @@ module Api::V2::SearchAsJson
       title: result.title,
       url: result.url,
       display_url: result.display_url,
-      snippet: as_json_build_snippet(result.description),
+      snippet: as_json_build_snippet(result.description)
     }
   end
 

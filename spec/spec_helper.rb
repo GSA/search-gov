@@ -103,7 +103,7 @@ RSpec.configure do |config|
                                  offset: 0,
                                  query: 'faq',
                                  size: 20,
-                                 include: "title,path,#{I14ySearch::FACET_FIELDS.join(',')}" }
+                                 include: "title,path,thumbnail_url,#{I14ySearch::FACET_FIELDS.join(',')}" }
     # Avoid making unnecessary requests to test domains
     stub_request(:get, /(agency|foo|searchgov)\.gov/).
       to_return(body: 'a stubbed web page')
