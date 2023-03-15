@@ -26,7 +26,6 @@ describe('SearchBar', () => {
     render(<SearchBar query='medical' results={[]} />);
 
     const searchInput = screen.getByTestId('search-field');
-
     const searchBtn = screen.getByTestId('search-submit-btn');
 
     fireEvent.change(searchInput, { target: { value: "ssn" } });
