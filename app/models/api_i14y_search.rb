@@ -11,9 +11,9 @@ class ApiI14ySearch < I14ySearch
 
   def as_json_result_hash(result)
     if @include_facets
-      super.merge(add_facets_to_results(result))
+      super.merge({ thumbnail_url: result.thumbnail_url }, add_facets_to_results(result))
     else
-      super
+      super.merge({ thumbnail_url: result.thumbnail_url })
     end
   end
 

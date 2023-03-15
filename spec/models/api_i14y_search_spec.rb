@@ -95,6 +95,15 @@ describe ApiI14ySearch do
         expect(web_hash[:include_facets]).to be true
       end
 
+      it 'includes default fields in response' do
+        first_result = web_hash[:results].first
+        expect(first_result.keys).to include(:title,
+                                             :url,
+                                             :snippet,
+                                             :publication_date,
+                                             :thumbnail_url)
+      end
+
       it 'includes facet fields in response' do
         first_result = web_hash[:results].first
         expect(first_result.keys).to include(:audience,
@@ -147,7 +156,8 @@ describe ApiI14ySearch do
         expect(first_result.keys).to include(:title,
                                              :url,
                                              :snippet,
-                                             :publication_date)
+                                             :publication_date,
+                                             :thumbnail_url)
       end
 
       it 'does not return aggregations' do
