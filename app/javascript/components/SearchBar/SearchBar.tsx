@@ -16,7 +16,7 @@ interface SearchBarProps {
   }[];
 }
 
-const getUriWithParam = (baseUrl: string, params: Record<string, any>): string => {
+const getUriWithParam = (baseUrl: string, params: { query: string }): string => {
   const Url = new URL(baseUrl);
   const urlParams: URLSearchParams = new URLSearchParams(Url.search);
   for (const key in params) {
@@ -37,7 +37,7 @@ export const SearchBar = (props: SearchBarProps) => {
 
   const querySubmit = (event) => {
     event.preventDefault();
-    window.location.assign(getUriWithParam(window.location.href, {query: searchQuery}));
+    window.location.assign(getUriWithParam(window.location.href, { query: searchQuery }));
   };
 
   return (

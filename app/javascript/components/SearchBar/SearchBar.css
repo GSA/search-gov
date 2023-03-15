@@ -4,19 +4,19 @@
 
 .vertical-wrapper{
   border-bottom: 1px solid #DEDEDE;
-  margin-top: 1rem;
   margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
 .vertical-wrapper .vertical-button {
-  padding: 1rem 0 1rem 0;
-  font-weight: normal;
+  border-bottom: 4px solid #fff;
   color: #3D4551;
-  text-decoration: none;
+  cursor: pointer;
+  font-weight: normal;
   margin-left: 1rem;
   margin-right: 1rem;
-  cursor: pointer;
-  border-bottom: 4px solid #fff;
+  padding: 1rem 0 1rem 0;
+  text-decoration: none;
 }
 
 .vertical-wrapper .vertical-button-rel-sites{
@@ -24,13 +24,13 @@
 }
 
 .vertical-wrapper .vertical-button:focus {
-  outline: 0.25rem solid #2491ff;
-  color: #005EA2;
   border-bottom: 4px solid #005ea2;
+  color: #005EA2;
+  outline: 0.25rem solid #2491ff;
   outline-offset: 0;
 }
 
 .vertical-wrapper .vertical-button:hover {
-  color: #005EA2;
   border-bottom: 4px solid #005ea2;
+  color: #005EA2;
 }
