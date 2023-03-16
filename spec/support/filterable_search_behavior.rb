@@ -1,92 +1,100 @@
 # frozen_string_literal: true
 
 shared_examples 'an initialized filterable search' do
-  context 'when since_date and until_date are valid' do
-    subject(:test_search) do
-      described_class.new filterable_search_options.
-        merge(since_date: '8/20/2012',
-              until_date: '11/30/2014')
-    end
+  context 'when date based filtering' do
+    # Testing since_date/until_date and created_since_date/created_until_date in parallel.
+    # The existing `since_date` and `until_date` functionality refers to the publication_date for
+    # blended and news searches, and updated_date for i14y. `created_since_date` and `created_until_date`
+    # only pertains (at the moment) to i14y searches.
+    (%w[created_] << '').each do |date_type|
+      context "when #{date_type}since_date and #{date_type}until_date are valid" do
+        subject(:test_search) do
+          described_class.new filterable_search_options.
+            merge("#{date_type}since_date": '8/20/2012',
+                  "#{date_type}until_date": '11/30/2014')
+        end
 
-    let(:expected_since) { DateTime.parse('2012-08-20T00:00:00Z') }
-    let(:expected_until) { DateTime.parse('2014-11-30T23:59:59.999999999Z') }
+        let(:expected_since) { DateTime.parse('2012-08-20T00:00:00Z') }
+        let(:expected_until) { DateTime.parse('2014-11-30T23:59:59.999999999Z') }
 
-    its(:since) { is_expected.to eq(expected_since) }
-    its(:until) { is_expected.to eq(expected_until) }
-  end
-
-  context 'when since_date is invalid and until_date is valid' do
-    subject(:test_search) do
-      described_class.new filterable_search_options.
-        merge(since_date: '20/20/2012',
-              until_date: '11/30/2014')
-    end
-
-    let(:expected_since) { DateTime.parse('2013-11-30T00:00:00Z') }
-    let(:expected_until) { DateTime.parse('2014-11-30T23:59:59.999999999Z') }
-
-    its(:since) { is_expected.to eq(expected_since) }
-    its(:until) { is_expected.to eq(expected_until) }
-  end
-
-  context 'when since_date is invalid and until_date is blank' do
-    subject(:test_search) do
-      described_class.new filterable_search_options.
-        merge(since_date: '20/20/2012',
-              until_date: '')
-    end
-
-    let(:expected_since) { DateTime.current.prev_year.beginning_of_day }
-
-    its(:since) { is_expected.to eq(expected_since) }
-    its(:until) { is_expected.to be_nil }
-  end
-
-  context 'when until_date is invalid' do
-    subject(:test_search) do
-      described_class.new filterable_search_options.
-        merge(since_date: '8/20/2012',
-              until_date: '20/30/2014')
-    end
-
-    let(:expected_since) { DateTime.parse('2012-08-20T00:00:00Z') }
-    let(:expected_until) { DateTime.current.end_of_day }
-
-    its(:since) { is_expected.to eq(expected_since) }
-    its(:until) { is_expected.to eq(expected_until) }
-  end
-
-  context 'when since_date is > until_date' do
-    subject(:test_search) do
-      described_class.new filterable_search_options.
-        merge(since_date: '12/25/2014',
-              until_date: '10/18/2012')
-    end
-
-    let(:expected_since) { DateTime.parse('2012-10-18T00:00:00Z') }
-    let(:expected_until) { DateTime.parse('2014-12-25T23:59:59.999999999Z') }
-
-    its(:since) { is_expected.to eq(expected_since) }
-    its(:until) { is_expected.to eq(expected_until) }
-  end
-
-  context 'when locale is set to :es' do
-    before(:all) { I18n.locale = :es }
-
-    after(:all) { I18n.locale = I18n.default_locale }
-
-    context 'when the since_date and until_date params are valid' do
-      subject(:test_search) do
-        described_class.new filterable_search_options.
-          merge(since_date: '25/12/2014',
-                until_date: '18/10/2012')
+        its(:"#{date_type}since") { is_expected.to eq(expected_since) }
+        its(:"#{date_type}until") { is_expected.to eq(expected_until) }
       end
 
-      let(:expected_since) { DateTime.parse('2012-10-18T00:00:00Z') }
-      let(:expected_until) { DateTime.parse('2014-12-25T23:59:59.999999999Z') }
+      context "when #{date_type}since_date is invalid and #{date_type}until_date is valid" do
+        subject(:test_search) do
+          described_class.new filterable_search_options.
+            merge("#{date_type}since_date": '20/20/2012',
+                  "#{date_type}until_date": '11/30/2014')
+        end
 
-      its(:since) { is_expected.to eq(expected_since) }
-      its(:until) { is_expected.to eq(expected_until) }
+        let(:expected_since) { DateTime.parse('2013-11-30T00:00:00Z') }
+        let(:expected_until) { DateTime.parse('2014-11-30T23:59:59.999999999Z') }
+
+        its(:"#{date_type}since") { is_expected.to eq(expected_since) }
+        its(:"#{date_type}until") { is_expected.to eq(expected_until) }
+      end
+
+      context "when #{date_type}since_date is invalid and #{date_type}until_date is blank" do
+        subject(:test_search) do
+          described_class.new filterable_search_options.
+            merge("#{date_type}since_date": '20/20/2012',
+                  "#{date_type}until_date": '')
+        end
+
+        let(:expected_since) { DateTime.current.prev_year.beginning_of_day }
+
+        its(:"#{date_type}since") { is_expected.to eq(expected_since) }
+        its(:"#{date_type}until") { is_expected.to be_nil }
+      end
+
+      context "when #{date_type}until_date is invalid" do
+        subject(:test_search) do
+          described_class.new filterable_search_options.
+            merge("#{date_type}since_date": '8/20/2012',
+                  "#{date_type}until_date": '20/30/2014')
+        end
+
+        let(:expected_since) { DateTime.parse('2012-08-20T00:00:00Z') }
+        let(:expected_until) { DateTime.current.end_of_day }
+
+        its(:"#{date_type}since") { is_expected.to eq(expected_since) }
+        its(:"#{date_type}until") { is_expected.to eq(expected_until) }
+      end
+
+      context "when #{date_type}since_date is > #{date_type}until_date" do
+        subject(:test_search) do
+          described_class.new filterable_search_options.
+            merge("#{date_type}since_date": '12/25/2014',
+                  "#{date_type}until_date": '10/18/2012')
+        end
+
+        let(:expected_since) { DateTime.parse('2012-10-18T00:00:00Z') }
+        let(:expected_until) { DateTime.parse('2014-12-25T23:59:59.999999999Z') }
+
+        its(:"#{date_type}since") { is_expected.to eq(expected_since) }
+        its(:"#{date_type}until") { is_expected.to eq(expected_until) }
+      end
+
+      context 'when locale is set to :es' do
+        before(:all) { I18n.locale = :es }
+
+        after(:all) { I18n.locale = I18n.default_locale }
+
+        context "when the #{date_type}since_date and #{date_type}until_date params are valid" do
+          subject(:test_search) do
+            described_class.new filterable_search_options.
+              merge("#{date_type}since_date": '25/12/2014',
+                    "#{date_type}until_date": '18/10/2012')
+          end
+
+          let(:expected_since) { DateTime.parse('2012-10-18T00:00:00Z') }
+          let(:expected_until) { DateTime.parse('2014-12-25T23:59:59.999999999Z') }
+
+          its(:"#{date_type}since") { is_expected.to eq(expected_since) }
+          its(:"#{date_type}until") { is_expected.to eq(expected_until) }
+        end
+      end
     end
   end
 

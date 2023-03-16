@@ -1,4 +1,4 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe Api::V2::SearchesController do
   let(:affiliate) { affiliates(:basic_affiliate) }
@@ -67,17 +67,16 @@ describe Api::V2::SearchesController do
     end
 
     context 'when the search options are valid' do
-      let!(:search) { double(ApiAzureSearch, as_json: { foo: 'bar'}, modules: %w(AWEB)) }
+      let!(:search) { instance_double(ApiAzureSearch, as_json: { foo: 'bar' }, modules: %w[AWEB]) }
 
       before do
-        expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
-
-        expect(ApiAzureSearch).to receive(:new).with(hash_including(query_params)).and_return(search)
-        expect(search).to receive(:run)
-        expect(SearchImpression).to receive(:log).with(search,
-                                                       'azure',
-                                                       hash_including('query'),
-                                                       be_a(ActionDispatch::Request))
+        allow(Affiliate).to receive(:find_by_name).and_return(affiliate)
+        allow(ApiAzureSearch).to receive(:new).with(hash_including(query_params)).and_return(search)
+        allow(search).to receive(:run)
+        allow(SearchImpression).to receive(:log).with(search,
+                                                      'azure',
+                                                      hash_including('query'),
+                                                      be_a(ActionDispatch::Request))
 
         get :azure, params: search_params
       end
@@ -91,7 +90,7 @@ describe Api::V2::SearchesController do
 
     context 'when a routed query term is matched' do
       before do
-        expect(RoutedQueryImpressionLogger).to receive(:log).
+        allow(RoutedQueryImpressionLogger).to receive(:log).
           with(affiliate, 'moar unclaimed money', an_instance_of(ActionController::TestRequest))
 
         get :azure, params: search_params.merge(query: 'moar unclaimed money')
@@ -117,18 +116,17 @@ describe Api::V2::SearchesController do
     end
 
     context 'when the search options are valid' do
-      let!(:search) { double(ApiAzureCompositeWebSearch, as_json: { foo: 'bar'}, modules: %w(AZCW)) }
+      let!(:search) { instance_double(ApiAzureCompositeWebSearch, as_json: { foo: 'bar' }, modules: %w[AZCW]) }
 
       before do
-        expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
-
-        expect(ApiAzureCompositeWebSearch).to receive(:new).
+        allow(Affiliate).to receive(:find_by_name).and_return(affiliate)
+        allow(ApiAzureCompositeWebSearch).to receive(:new).
           with(hash_including(query_params)).and_return(search)
-        expect(search).to receive(:run)
-        expect(SearchImpression).to receive(:log).with(search,
-                                                       'azure_web',
-                                                       hash_including('query'),
-                                                       be_a(ActionDispatch::Request))
+        allow(search).to receive(:run)
+        allow(SearchImpression).to receive(:log).with(search,
+                                                      'azure_web',
+                                                      hash_including('query'),
+                                                      be_a(ActionDispatch::Request))
 
         get :azure_web, params: search_params
       end
@@ -142,7 +140,7 @@ describe Api::V2::SearchesController do
 
     context 'when a routed query term is matched' do
       before do
-        expect(RoutedQueryImpressionLogger).to receive(:log).
+        allow(RoutedQueryImpressionLogger).to receive(:log).
           with(affiliate, 'moar unclaimed money', an_instance_of(ActionController::TestRequest))
 
         get :azure_web, params: search_params.merge(query: 'moar unclaimed money')
@@ -168,18 +166,17 @@ describe Api::V2::SearchesController do
     end
 
     context 'when the search options are valid' do
-      let!(:search) { double(ApiAzureCompositeImageSearch, as_json: { foo: 'bar'}, modules: %w(AZCI)) }
+      let!(:search) { instance_double(ApiAzureCompositeImageSearch, as_json: { foo: 'bar' }, modules: %w[AZCI]) }
 
       before do
-        expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
-
-        expect(ApiAzureCompositeImageSearch).to receive(:new).
+        allow(Affiliate).to receive(:find_by_name).and_return(affiliate)
+        allow(ApiAzureCompositeImageSearch).to receive(:new).
           with(hash_including(query_params)).and_return(search)
-        expect(search).to receive(:run)
-        expect(SearchImpression).to receive(:log).with(search,
-                                                       'azure_image',
-                                                       hash_including('query'),
-                                                       be_a(ActionDispatch::Request))
+        allow(search).to receive(:run)
+        allow(SearchImpression).to receive(:log).with(search,
+                                                      'azure_image',
+                                                      hash_including('query'),
+                                                      be_a(ActionDispatch::Request))
 
         get :azure_image, params: search_params
       end
@@ -193,7 +190,7 @@ describe Api::V2::SearchesController do
 
     context 'when a routed query term is matched' do
       before do
-        expect(RoutedQueryImpressionLogger).to receive(:log).
+        allow(RoutedQueryImpressionLogger).to receive(:log).
           with(affiliate, 'moar unclaimed money', an_instance_of(ActionController::TestRequest))
 
         get :azure_image, params: search_params.merge(query: 'moar unclaimed money')
@@ -225,17 +222,16 @@ describe Api::V2::SearchesController do
     end
 
     context 'when the search options are valid' do
-      let!(:search) { double(ApiGssSearch, as_json: { foo: 'bar'}, modules: %w(GWEB)) }
+      let!(:search) { instance_double(ApiGssSearch, as_json: { foo: 'bar' }, modules: %w[GWEB]) }
 
       before do
-        expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
-
-        expect(ApiGssSearch).to receive(:new).with(hash_including(query: 'api')).and_return(search)
-        expect(search).to receive(:run)
-        expect(SearchImpression).to receive(:log).with(search,
-                                                       'gss',
-                                                       hash_including('query'),
-                                                       be_a(ActionDispatch::Request))
+        allow(Affiliate).to receive(:find_by_name).and_return(affiliate)
+        allow(ApiGssSearch).to receive(:new).with(hash_including(query: 'api')).and_return(search)
+        allow(search).to receive(:run)
+        allow(SearchImpression).to receive(:log).with(search,
+                                                      'gss',
+                                                      hash_including('query'),
+                                                      be_a(ActionDispatch::Request))
 
         get :gss, params: gss_params
       end
@@ -249,7 +245,7 @@ describe Api::V2::SearchesController do
 
     context 'when a routed query term is matched' do
       before do
-        expect(RoutedQueryImpressionLogger).to receive(:log).
+        allow(RoutedQueryImpressionLogger).to receive(:log).
           with(affiliate, 'moar unclaimed money', an_instance_of(ActionController::TestRequest))
 
         get :gss, params: gss_params.merge(query: 'moar unclaimed money')
@@ -369,6 +365,34 @@ describe Api::V2::SearchesController do
         end
       end
 
+      context 'when updated date filters are present' do
+        let(:params_with_updated_dates) do
+          search_params.
+            merge(updated_since: '2020-01-01', updated_until: '2022-01-01')
+        end
+
+        it 'passes the tags filter to its ApiI14ySearch object' do
+          get :i14y, params: params_with_updated_dates
+          expect(assigns(:search_options).attributes).
+            to include({ since_date: '01/01/2020',
+                         until_date: '01/01/2022' })
+        end
+      end
+
+      context 'when created date filters are present' do
+        let(:params_with_created_dates) do
+          search_params.
+            merge(created_since: '2020-01-01', created_until: '2022-01-01')
+        end
+
+        it 'passes the tags filter to its ApiI14ySearch object' do
+          get :i14y, params: params_with_created_dates
+          expect(assigns(:search_options).attributes).
+            to include({ created_since_date: '01/01/2020',
+                         created_until_date: '01/01/2022' })
+        end
+      end
+
       context 'when a sitelimit filter is present' do
         let(:params_with_sitelimit) { search_params.merge(sitelimit: 'nps.gov') }
 
@@ -457,7 +481,7 @@ describe Api::V2::SearchesController do
 
     context 'when a routed query term is matched' do
       before do
-        expect(RoutedQueryImpressionLogger).to receive(:log).
+        allow(RoutedQueryImpressionLogger).to receive(:log).
           with(affiliate, 'moar unclaimed money', an_instance_of(ActionController::TestRequest))
 
         get :video, params: search_params.merge(query: 'moar unclaimed money')
@@ -485,21 +509,19 @@ describe Api::V2::SearchesController do
     end
 
     context 'when the search options are valid, the affiliate is using BingV6, and the collection is deep' do
-      let!(:search) { double(ApiI14ySearch, as_json: { foo: 'bar'}, modules: %w(I14Y)) }
-      let!(:document_collection) { double(DocumentCollection, too_deep_for_bing?: true) }
+      let!(:search) { instance_double(ApiI14ySearch, as_json: { foo: 'bar' }, modules: %w[I14Y]) }
+      let!(:document_collection) { instance_double(DocumentCollection, too_deep_for_bing?: true) }
 
       before do
-        expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
+        allow(Affiliate).to receive(:find_by_name).and_return(affiliate)
         allow(affiliate).to receive(:search_engine).and_return('BingV6')
-
-        expect(DocumentCollection).to receive(:find).and_return(document_collection)
-
-        expect(ApiI14ySearch).to receive(:new).with(hash_including(query_params)).and_return(search)
-        expect(search).to receive(:run)
-        expect(SearchImpression).to receive(:log).with(search,
-                                                       'docs',
-                                                       hash_including('query'),
-                                                       be_a(ActionDispatch::Request))
+        allow(DocumentCollection).to receive(:find).and_return(document_collection)
+        allow(ApiI14ySearch).to receive(:new).with(hash_including(query_params)).and_return(search)
+        allow(search).to receive(:run)
+        allow(SearchImpression).to receive(:log).with(search,
+                                                      'docs',
+                                                      hash_including('query'),
+                                                      be_a(ActionDispatch::Request))
 
         get :docs, params: docs_params
       end
@@ -512,18 +534,17 @@ describe Api::V2::SearchesController do
     end
 
     context 'when the search options are valid and the affiliate is using Google' do
-      let!(:search) { double(ApiGoogleDocsSearch, as_json: { foo: 'bar'}, modules: %w(GWEB)) }
+      let!(:search) { instance_double(ApiGoogleDocsSearch, as_json: { foo: 'bar' }, modules: %w[GWEB]) }
 
       before do
-        expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
+        allow(Affiliate).to receive(:find_by_name).and_return(affiliate)
         allow(affiliate).to receive(:search_engine).and_return('Google')
-
-        expect(ApiGoogleDocsSearch).to receive(:new).with(hash_including(query_params)).and_return(search)
-        expect(search).to receive(:run)
-        expect(SearchImpression).to receive(:log).with(search,
-                                                       'docs',
-                                                       hash_including('query'),
-                                                       be_a(ActionDispatch::Request))
+        allow(ApiGoogleDocsSearch).to receive(:new).with(hash_including(query_params)).and_return(search)
+        allow(search).to receive(:run)
+        allow(SearchImpression).to receive(:log).with(search,
+                                                      'docs',
+                                                      hash_including('query'),
+                                                      be_a(ActionDispatch::Request))
 
         get :docs, params: docs_params
       end
@@ -537,7 +558,7 @@ describe Api::V2::SearchesController do
 
     context 'when a routed query term is matched' do
       before do
-        expect(RoutedQueryImpressionLogger).to receive(:log).
+        allow(RoutedQueryImpressionLogger).to receive(:log).
           with(affiliate, 'moar unclaimed money', an_instance_of(ActionController::TestRequest))
 
         get :docs, params: docs_params.merge(query: 'moar unclaimed money')

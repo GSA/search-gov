@@ -2,7 +2,7 @@
     "status": 200,
     "developer_message": "OK",
     "metadata": {
-        "total": 10,
+        "total": 9,
         "offset": 0,
         "suggestion": null,
         "aggregations": [
@@ -18,14 +18,6 @@
                     },
                     {
                         "agg_key": "newsletters",
-                        "doc_count": 1
-                    }
-                ]
-            },
-            {
-                "audience": [
-                    {
-                        "agg_key": "Everyone",
                         "doc_count": 1
                     }
                 ]
@@ -47,14 +39,6 @@
                     {
                         "agg_key": "article",
                         "doc_count": 5
-                    },
-                    {
-                        "agg_key": "General Information, website",
-                        "doc_count": 3
-                    },
-                    {
-                        "agg_key": "Program Homepage, website",
-                        "doc_count": 1
                     }
                 ]
             },
@@ -62,7 +46,7 @@
                 "mime_type": [
                     {
                         "agg_key": "text/html",
-                        "doc_count": 9
+                        "doc_count": 8
                     },
                     {
                         "agg_key": "application/pdf",
@@ -74,11 +58,11 @@
                 "created": [
                     {
                         "agg_key": "Last Year",
-                        "doc_count": 4,
-                        "to": 1674164922210.0,
-                        "from": 1642628922210.0,
-                        "to_as_string": "1/19/2023",
-                        "from_as_string": "1/19/2022"
+                        "doc_count": 1,
+                        "to": 1678821364763.0,
+                        "from": 1647285364763.0,
+                        "to_as_string": "3/14/2023",
+                        "from_as_string": "3/14/2022"
                     }
                 ]
             },
@@ -89,19 +73,11 @@
                         "doc_count": 1
                     },
                     {
-                        "agg_key": "custom",
-                        "doc_count": 1
-                    },
-                    {
                         "agg_key": "help-manual",
                         "doc_count": 1
                     },
                     {
                         "agg_key": "manage-content",
-                        "doc_count": 1
-                    },
-                    {
-                        "agg_key": "searchgov",
                         "doc_count": 1
                     }
                 ]
@@ -110,63 +86,59 @@
                 "changed": [
                     {
                         "agg_key": "Last Year",
-                        "doc_count": 6,
-                        "to": 1674164922210.0,
-                        "from": 1642628922210.0,
-                        "to_as_string": "1/19/2023",
-                        "from_as_string": "1/19/2022"
+                        "doc_count": 2,
+                        "to": 1678821364763.0,
+                        "from": 1647285364763.0,
+                        "to_as_string": "3/14/2023",
+                        "from_as_string": "3/14/2022"
                     },
                     {
                         "agg_key": "Last Month",
-                        "doc_count": 2,
-                        "to": 1674164922210.0,
-                        "from": 1671486522210.0,
-                        "to_as_string": "1/19/2023",
-                        "from_as_string": "12/19/2022"
+                        "doc_count": 1,
+                        "to": 1678821364763.0,
+                        "from": 1676402164763.0,
+                        "to_as_string": "3/14/2023",
+                        "from_as_string": "2/14/2023"
+                    },
+                    {
+                        "agg_key": "Last Week",
+                        "doc_count": 1,
+                        "to": 1678821364763.0,
+                        "from": 1678216564763.0,
+                        "to_as_string": "3/14/2023",
+                        "from_as_string": "3/7/2023"
                     }
                 ]
             },
             {
                 "tags": [
                     {
-                        "agg_key": "va",
-                        "doc_count": 4
+                        "agg_key": "analytics.usa.gov",
+                        "doc_count": 1
                     },
                     {
-                        "agg_key": "vha",
-                        "doc_count": 4
+                        "agg_key": "and api",
+                        "doc_count": 1
                     },
                     {
-                        "agg_key": "eligibility",
-                        "doc_count": 3
+                        "agg_key": "and open data",
+                        "doc_count": 1
                     },
                     {
-                        "agg_key": "female",
-                        "doc_count": 3
+                        "agg_key": "education",
+                        "doc_count": 1
                     },
                     {
-                        "agg_key": "health",
-                        "doc_count": 3
+                        "agg_key": "evangelism",
+                        "doc_count": 1
                     },
                     {
-                        "agg_key": "healthcare",
-                        "doc_count": 3
+                        "agg_key": "open government",
+                        "doc_count": 1
                     },
                     {
-                        "agg_key": "military sexual trauma",
-                        "doc_count": 3
-                    },
-                    {
-                        "agg_key": "veteran",
-                        "doc_count": 3
-                    },
-                    {
-                        "agg_key": "woman",
-                        "doc_count": 3
-                    },
-                    {
-                        "agg_key": "women",
-                        "doc_count": 3
+                        "agg_key": "open source and tools you can use",
+                        "doc_count": 1
                     }
                 ]
             }
@@ -174,7 +146,6 @@
     },
     "results": [
         {
-            "path": "https://search.gov/about/updates/newsletters/november-2022.html",
             "searchgov_custom2": [
                 "newsletters"
             ],
@@ -182,243 +153,175 @@
             "searchgov_custom3": [
                 "about_us"
             ],
-            "content_type": "article",
-            "mime_type": "text/html",
             "created": "2022-11-28 05:00:00 UTC",
             "language": "en",
+            "thumbnail_url": "https://18f.gsa.gov/assets/img/logos/18F-Logo-M.png",
             "searchgov_custom1": [
-                "searchgov",
-                "custom"
+                "help-manual",
+                "manage-content",
+                "collections"
             ],
             "tags": [
-                "list",
-                "of",
-                "some",
-                "tags"
+                "open source and tools you can use"
             ],
+            "path": "https://search.gov/about/updates/newsletters/november-2022.html",
+            "content_type": "article",
+            "mime_type": "text/html",
             "changed": "2022-11-28 05:00:00 UTC",
             "title": "November 2022 Newsletter | Search.gov",
             "content": "content from database-driven pages such as FAQ-management tools, or catalogs. Some"
         },
         {
-            "path": "https://www.womenshealth.va.gov/faq.asp",
-            "audience": null,
-            "searchgov_custom2": null,
-            "searchgov_custom3": null,
-            "content_type": "General Information, website",
-            "mime_type": "text/html",
-            "created": "2022-03-28 00:00:00 UTC",
-            "language": "en",
-            "searchgov_custom1": null,
-            "tags": [
-                "frequently asked questions about women's health services at va",
-                "va",
-                "vha",
-                "female",
-                "woman",
-                "women",
-                "veteran",
-                "health",
-                "healthcare",
-                "disability",
-                "enrollment",
-                "eligibility",
-                "harassment",
-                "infertility",
-                "military sexual trauma",
-                "maternity care",
-                "lgbtq+",
-                "crisis"
-            ],
-            "changed": "2022-09-01 00:00:00 UTC",
-            "title": "Frequently Asked Questions - Women Veterans Health Care",
-            "content": "Line Locator Contact Search Contact Us FAQs Ask a Question Toll Free Numbers Locator...Respect Women Veterans Call Center FAQs Materials and Resources Overview of"
-        },
-        {
-            "path": "https://search.gov/blog/searchgov-faqs-indexing.html",
-            "audience": null,
             "searchgov_custom2": [
                 "blog"
             ],
+            "audience": null,
             "searchgov_custom3": null,
-            "content_type": "article",
-            "mime_type": "text/html",
             "created": "2018-03-28 04:00:00 UTC",
             "language": "en",
+            "thumbnail_url": null,
             "searchgov_custom1": null,
             "tags": null,
+            "path": "https://search.gov/blog/searchgov-faqs-indexing.html",
+            "content_type": "article",
+            "mime_type": "text/html",
             "changed": "2018-03-28 04:00:00 UTC",
             "title": "Search.gov: Index Transition FAQs | Search.gov",
             "content": "Search.gov: Index Transition FAQs This page has been archived. Updated March...announcement as well. We will update these FAQs with questions we hear from our customers"
         },
         {
-            "path": "https://www.womenshealth.va.gov/how-to-apply.asp",
-            "audience": null,
             "searchgov_custom2": null,
-            "searchgov_custom3": null,
-            "content_type": "General Information, website",
-            "mime_type": "text/html",
-            "created": "2022-03-28 00:00:00 UTC",
-            "language": "en",
-            "searchgov_custom1": null,
-            "tags": [
-                "information on how to apply for va health care benefits and services",
-                "va",
-                "vha",
-                "female",
-                "woman",
-                "women",
-                "veteran",
-                "health",
-                "healthcare",
-                "10-10ez",
-                "apply",
-                "application",
-                "enroll",
-                "eligibility",
-                "benefits",
-                "services"
-            ],
-            "changed": "2022-05-22 00:00:00 UTC",
-            "title": "How to Apply - Women Veterans Health Care",
-            "content": "Line Locator Contact Search Contact Us FAQs Ask a Question Toll Free Numbers Locator...Respect Women Veterans Call Center FAQs Materials and Resources Overview of"
-        },
-        {
-            "path": "https://www.womenshealth.va.gov/",
             "audience": null,
-            "searchgov_custom2": null,
             "searchgov_custom3": null,
-            "content_type": "Program Homepage, website",
-            "mime_type": "text/html",
-            "created": "2013-08-15 00:00:00 UTC",
-            "language": "en",
-            "searchgov_custom1": null,
-            "tags": [
-                "women veterans health care",
-                "va",
-                "vha",
-                "women veterans health services",
-                "primary care",
-                "specialty",
-                "wellness",
-                "long-term",
-                "mental health",
-                "military sexual trauma",
-                "mst",
-                "musculoskeletal",
-                "chronic pain",
-                "maternity",
-                "fertility",
-                "ivf"
-            ],
-            "changed": "2023-01-09 00:00:00 UTC",
-            "title": "Women Veterans Health Care Home",
-            "content": "Line Locator Contact Search Contact Us FAQs Ask a Question Toll Free Numbers Locator...Respect Women Veterans Call Center FAQs Materials and Resources Overview of"
-        },
-        {
-            "path": "https://www.womenshealth.va.gov/eligibility.asp",
-            "audience": null,
-            "searchgov_custom2": null,
-            "searchgov_custom3": null,
-            "content_type": "General Information, website",
-            "mime_type": "text/html",
-            "created": "2022-03-28 00:00:00 UTC",
-            "language": "en",
-            "searchgov_custom1": null,
-            "tags": [
-                "information on eligibility and enrollment for va health care benefits",
-                "va",
-                "vha",
-                "female",
-                "woman",
-                "women",
-                "veteran",
-                "health",
-                "healthcare",
-                "eligibility",
-                "enrollment",
-                "military sexual trauma",
-                "how to apply",
-                "priority group",
-                "discharge",
-                "women's health transition training",
-                ""
-            ],
-            "changed": "2022-09-27 00:00:00 UTC",
-            "title": "Eligibility and Enrollment - Women Veterans Health Care",
-            "content": "Line Locator Contact Search Contact Us FAQs Ask a Question Toll Free Numbers Locator...Respect Women Veterans Call Center FAQs Materials and Resources Overview of"
-        },
-        {
-            "path": "https://search.gov/files/HowSearchEnginesIndexYourWebsite.pdf",
-            "audience": null,
-            "searchgov_custom2": null,
-            "searchgov_custom3": null,
-            "content_type": null,
-            "mime_type": "application/pdf",
             "created": null,
             "language": "en",
+            "thumbnail_url": null,
             "searchgov_custom1": null,
             "tags": null,
-            "changed": "2023-01-09 14:51:19 UTC",
+            "path": "https://search.gov/files/HowSearchEnginesIndexYourWebsite.pdf",
+            "content_type": null,
+            "mime_type": "application/pdf",
+            "changed": "2023-03-08 15:28:05 UTC",
             "title": "HowSearchEnginesIndexYourWebsite.pdf",
             "content": "Reference: http://www.robotstxt.org/faq/blockjustbad.html So why have one then"
         },
         {
-            "path": "https://search.gov/blog/six-months-in.html",
-            "audience": null,
             "searchgov_custom2": [
                 "blog"
             ],
+            "audience": null,
             "searchgov_custom3": null,
-            "content_type": "article",
-            "mime_type": "text/html",
             "created": "2018-03-28 04:00:00 UTC",
             "language": "en",
+            "thumbnail_url": null,
             "searchgov_custom1": null,
             "tags": null,
+            "path": "https://search.gov/blog/six-months-in.html",
+            "content_type": "article",
+            "mime_type": "text/html",
             "changed": "2018-03-28 04:00:00 UTC",
             "title": "Six Months In: Lessons Learned in the Transition to Search.gov | Search.gov",
             "content": "them, and we’ve updated the indexing FAQs to reflect the current approach. Lessons"
         },
         {
-            "path": "https://search.gov/admin-center/content/collections.html",
+            "searchgov_custom2": [
+                "blog"
+            ],
             "audience": null,
+            "searchgov_custom3": null,
+            "created": "2017-09-21 04:00:00 UTC",
+            "language": "en",
+            "thumbnail_url": null,
+            "searchgov_custom1": null,
+            "tags": null,
+            "path": "https://search.gov/blog/searchgov-blog.html",
+            "content_type": "article",
+            "mime_type": "text/html",
+            "changed": "2017-09-21 04:00:00 UTC",
+            "title": "Search.gov – The Road Ahead in 2018 | Search.gov",
+            "content": "929827# We also invite you to read our FAQs, which we’ll update regularly. Finally"
+        },
+        {
             "searchgov_custom2": [
                 "admin-center"
             ],
+            "audience": null,
             "searchgov_custom3": [
                 "admin_center"
             ],
-            "content_type": "article",
-            "mime_type": "text/html",
             "created": "2016-12-28 05:00:00 UTC",
             "language": "en",
+            "thumbnail_url": null,
             "searchgov_custom1": [
                 "help-manual",
                 "manage-content",
                 "collections"
             ],
             "tags": null,
+            "path": "https://search.gov/admin-center/content/collections.html",
+            "content_type": "article",
+            "mime_type": "text/html",
             "changed": "2016-12-28 05:00:00 UTC",
             "title": "How to Create Collections Within Our Index | Search.gov",
             "content": "a name for the collection (such as FAQs, Archive, or News). Enter the domains"
         },
         {
-            "path": "https://search.gov/blog/searchgov-blog.html",
+            "searchgov_custom2": null,
             "audience": null,
-            "searchgov_custom2": [
-                "blog"
-            ],
             "searchgov_custom3": null,
-            "content_type": "article",
-            "mime_type": "text/html",
-            "created": "2017-09-21 04:00:00 UTC",
+            "created": null,
             "language": "en",
+            "thumbnail_url": "https://18f.gsa.gov/assets/blog/github-facts/wh-astronomy-night.jpg",
             "searchgov_custom1": null,
-            "tags": null,
-            "changed": "2017-09-21 04:00:00 UTC",
-            "title": "Search.gov – The Road Ahead in 2018 | Search.gov",
-            "content": "929827# We also invite you to read our FAQs, which we’ll update regularly. Finally"
+            "tags": [
+                "open source and tools you can use"
+            ],
+            "path": "https://18f.gsa.gov/2016/08/08/facts-about-publishing-open-source-code-in-government/",
+            "content_type": null,
+            "mime_type": "text/html",
+            "changed": "2016-08-08 00:00:00 UTC",
+            "title": "18F: Digital service delivery | Facts about publishing open source code in government",
+            "content": "government, and their Open Source Software FAQ has useful details about open source"
+        },
+        {
+            "searchgov_custom2": null,
+            "audience": null,
+            "searchgov_custom3": null,
+            "created": null,
+            "language": "en",
+            "thumbnail_url": "https://18f.gsa.gov/assets/blog/dap/screen.png",
+            "searchgov_custom1": null,
+            "tags": [
+                "analytics.usa.gov",
+                "open government",
+                "and open data"
+            ],
+            "path": "https://18f.gsa.gov/2015/03/19/how-we-built-analytics-usa-gov/",
+            "content_type": null,
+            "mime_type": "text/html",
+            "changed": "2015-03-19 10:00:00 UTC",
+            "title": "18F: Digital service delivery | How we built analytics.usa.gov",
+            "content": "Digital Analytics Program has a privacy FAQ. A nice-looking dashboard The analytics"
+        },
+        {
+            "searchgov_custom2": null,
+            "audience": null,
+            "searchgov_custom3": null,
+            "created": null,
+            "language": "en",
+            "thumbnail_url": "https://18f.gsa.gov/assets/img/logos/18F-Logo-M.png",
+            "searchgov_custom1": null,
+            "tags": [
+                "education",
+                "evangelism",
+                "and api"
+            ],
+            "path": "https://18f.gsa.gov/2014/05/29/announcing-the-developer-program-a-new-hub-for/",
+            "content_type": null,
+            "mime_type": "text/html",
+            "changed": "2014-05-29 21:15:00 UTC",
+            "title": "18F: Digital service delivery | Announcing the /Developer Program: a new hub for federal API creators",
+            "content": "training, best practices, talking points, FAQs, and case studies in case you need inspiration"
         }
     ]
 }
