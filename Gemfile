@@ -23,7 +23,7 @@ gem 'redis', '~> 4.0.1'
 gem 'redis-namespace', '~> 1.6.0'
 gem 'redis-rails', '~> 5.0.2'
 gem 'resque', '~> 1.27.4'
-gem 'resque-priority', :git => 'https://github.com/GSA/resque-priority.git'
+gem 'resque-priority', git: 'https://github.com/GSA/resque-priority.git'
 gem 'resque-timeout', '~> 1.0.0'
 gem 'resque-lock-timeout', '~> 0.4.5'
 gem 'resque-scheduler', '~> 4.3.1'
@@ -46,7 +46,7 @@ gem 'active_scaffold', git: 'https://github.com/activescaffold/active_scaffold',
 # has yet to accept the PR: https://github.com/activescaffold/active_scaffold_export/pull/5
 gem 'active_scaffold_export', git: 'https://github.com/technorama/active_scaffold_export',
                               branch: 'rails3'
-gem "recaptcha", '~> 4.6.3', :require => "recaptcha/rails"
+gem 'recaptcha', '~> 4.6.3', require: 'recaptcha/rails'
 gem 'newrelic_rpm', '~> 8.12.0'
 gem 'american_date', '~> 1.1.1'
 # sassc-rails is now the Rails default. Consider replacing:
@@ -69,7 +69,7 @@ gem 'will_paginate-bootstrap', '~> 1.0.1'
 gem 'virtus', '~> 1.0.5'
 gem 'truncator', '~> 0.1.7'
 gem 'em-http-request', '~> 1.1.5'
-gem "validate_url", '= 0.2.0' # Newer versions use Addressable::URI for validation, which is more permissive than what we want
+gem 'validate_url', '= 0.2.0' # Newer versions use Addressable::URI for validation, which is more permissive than what we want
 # The elasticsearch gems will be limited to 7.4 until we can remove or upgrade the
 # twitter & tweetstream gems, due to their dependency on an old version of faraday:
 # https://cm-jira.usa.gov/browse/SRCH-2939
@@ -86,7 +86,7 @@ gem 'typhoeus', '~> 1.3.0'
 gem 'activerecord-validate_unique_child_attribute',
     require: 'active_record/validate_unique_child_attribute'
 
-gem 'rack-cors', '~> 1.1.0', :require => 'rack/cors'
+gem 'rack-cors', '~> 1.1.0', require: 'rack/cors'
 gem 'hashie', '~> 5.0.0'
 # retry_block is unsupported - consider replacing with retriable
 gem 'retry_block', '~> 1.2.0'

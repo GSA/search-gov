@@ -26,13 +26,13 @@ class OdieImageSearch < OdieSearch
     ) do
       @oasis_search.execute_query
     end
-  rescue SearchEngine::SearchError => error
-    Rails.logger.warn "Error getting search results from Oasis API endpoint: #{error}"
+  rescue SearchEngine::SearchError => e
+    Rails.logger.warn "Error getting search results from Oasis API endpoint: #{e}"
     false
   end
 
   def cache_key
-    ["oasis_image", @query, @affiliate.id, @page, @per_page].join(':')
+    ['oasis_image', @query, @affiliate.id, @page, @per_page].join(':')
   end
 
   def handle_response(response)
@@ -44,7 +44,7 @@ class OdieImageSearch < OdieSearch
     image_results = response.results || []
     image_results.collect do |result|
       Hashie::Mash::Rash.new(title: result.title, url: result.url, display_url: result.url,
-                       thumbnail: { url: result.thumbnail_url })
+                             thumbnail: { url: result.thumbnail_url })
     end
   end
 
