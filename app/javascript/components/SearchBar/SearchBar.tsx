@@ -16,14 +16,10 @@ interface SearchBarProps {
   }[];
 }
 
-const getUriWithParam = (baseUrl: string, params: { query: string }): string => {
+const getUriWithParam = (baseUrl: string, query: string, searchQuery: string): string => {
   const Url = new URL(baseUrl);
   const urlParams: URLSearchParams = new URLSearchParams(Url.search);
-  for (const key in params) {
-    if (params[key] !== undefined) {
-      urlParams.set(key, params[key]);
-    }
-  }
+  urlParams.set(query, searchQuery);
   Url.search = urlParams.toString();
   return Url.toString();
 };
@@ -37,7 +33,7 @@ export const SearchBar = (props: SearchBarProps) => {
 
   const querySubmit = (event) => {
     event.preventDefault();
-    window.location.assign(getUriWithParam(window.location.href, { query: searchQuery }));
+    window.location.assign(getUriWithParam(window.location.href, "query", searchQuery));
   };
 
   return (
