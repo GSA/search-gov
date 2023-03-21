@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './SearchResultsLayout.css';
+
 import { Header } from './Header';
 import { Facets } from './Facets/Facets';
 import { SearchBar } from './SearchBar/SearchBar';
@@ -16,7 +18,9 @@ interface SearchResultsLayoutProps {
     content: string
   }[];
   vertical: string;
-  params?: string;
+  params: {
+    query: string
+  };
 }
 
 // To be updated
@@ -40,6 +44,7 @@ const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
       <div className="usa-section">
         <Facets />
         <SearchBar 
+          query={props.params.query}
           results={props.results} 
         />
         <Results 
