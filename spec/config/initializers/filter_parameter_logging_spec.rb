@@ -24,7 +24,7 @@ describe 'ActiveSupport::ParameterFilter' do
   end
 
   it 'does not redact non-sensitive queries' do
-    expect(parameter_filter.filter({ 'query' => 'safe query' })).
-      to eq({ 'query' => 'safe query' })
+    expect(parameter_filter.filter('query' => 'safe query')).
+      to eq('query' => 'safe query')
   end
 end
