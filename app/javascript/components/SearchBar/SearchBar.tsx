@@ -68,27 +68,6 @@ export const SearchBar = (props: SearchBarProps) => {
           <Grid tablet={{ col: true }}><h4>Please enter a search term in the box above.</h4></Grid>
         </Grid>}
       </GridContainer>
-      
-      <GridContainer>
-        <Grid row className="vertical-wrapper">
-          <a href="#Everything" key="Everything" className="vertical-button">
-            <span>Everything</span>
-          </a>
-          <a href="#News" key="News" className="vertical-button">
-            <span>News</span>
-          </a>
-          <a href="#Images" key="Images" className="vertical-button">
-            <span>Images</span>
-          </a>
-          <a href="#Videos" key="Videos" className="vertical-button">
-            <span>Videos</span>
-          </a>
-          
-          <a href="#relatedSites" key="relatedSites" className="vertical-button vertical-button-rel-sites">
-            <span>Related Sites</span>
-          </a>
-        </Grid>
-      </GridContainer>
     </div>
   );
 };
