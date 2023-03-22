@@ -13,12 +13,12 @@ describe('VerticalNav', () => {
     expect(relatedSitesLink).toBeInTheDocument();
 
     const moreLinkBtn = screen.getByTestId('moreBtn');
-    const moreLinkChild = screen.getAllByText(/Link 1/i)[0];
+    const [moreLinkChild] = screen.getAllByText(/Link 1/i);
     fireEvent.click(moreLinkBtn);
     expect(moreLinkChild).toBeInTheDocument();
 
     const relatesSitesBtn = screen.getByTestId('relatedSitesBtn');
-    const relatedSitesChild = screen.getAllByText(/Related Site 1/i)[0];
+    const [relatedSitesChild] = screen.getAllByText(/Related Site 1/i);
     fireEvent.click(relatesSitesBtn);
     expect(relatedSitesChild).toBeInTheDocument();
   });
