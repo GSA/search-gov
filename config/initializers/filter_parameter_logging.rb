@@ -6,3 +6,10 @@
 Rails.application.config.filter_parameters += [
   :passw, :secret, :token, :_key, :crypt, :salt, :certificate, :otp, :ssn
 ]
+
+# SRCH-3929: Filter the exact 'q' parameter for sayt searches, filter potentially sensitive
+# information from the 'query' parameter.
+Rails.application.config.filter_parameters += [ /\Aq\z/ ]
+Rails.application.config.filter_parameters += [->(k, v) { 
+  v&.gsub!(v, Redactor.redact(v)) if /query/.match?(k)
+}]

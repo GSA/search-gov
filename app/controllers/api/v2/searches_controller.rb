@@ -96,6 +96,8 @@ module Api
                                          :api_key,
                                          :audience,
                                          :content_type,
+                                         :created_since,
+                                         :created_until,
                                          :cx, # SRCH-1429 This will be removed as GSS is deprecated
                                          :dc,
                                          :enable_highlighting,
@@ -116,7 +118,9 @@ module Api
                                          :searchgov_custom3,
                                          :sitelimit,
                                          :sort_by,
-                                         :tags).to_h
+                                         :tags,
+                                         :updated_since,
+                                         :updated_until).to_h
 
         # Mirrors param key renaming done for browser-based searches.
         # See: app/controllers/application_controller.rb #search_options_from_params
