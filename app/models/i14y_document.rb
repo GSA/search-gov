@@ -127,6 +127,7 @@ class I14yDocument
 
   def thumbnail_url_is_valid
     return if thumbnail_url&.match?(URI::DEFAULT_PARSER.make_regexp)
+
     if path.nil?
       self.thumbnail_url = nil
       return

@@ -109,7 +109,7 @@ describe I14yDocument do
       update[:thumbnail_url] = 'http://www.foo.gov/assets/img/logos/18F-Logo-M.png'
       expect(i14y_connection).to receive(:put).
         with('/api/v1/documents/update_me', { title: 'My New Title',
-          thumbnail_url: 'http://www.foo.gov/assets/img/logos/18F-Logo-M.png' }).
+                                              thumbnail_url: 'http://www.foo.gov/assets/img/logos/18F-Logo-M.png' }).
         and_return(Hashie::Mash.new(status: 200))
       described_class.update(update)
     end
@@ -118,8 +118,8 @@ describe I14yDocument do
       update[:thumbnail_url] = 'assets/img/logos/18F-Logo-M.png'
       update[:path] = url
       expect(i14y_connection).to receive(:put).
-        with('/api/v1/documents/update_me', { title: 'My New Title', path: url, 
-          thumbnail_url: 'http://www.foo.gov/assets/img/logos/18F-Logo-M.png' }).
+        with('/api/v1/documents/update_me', { title: 'My New Title', path: url,
+                                              thumbnail_url: 'http://www.foo.gov/assets/img/logos/18F-Logo-M.png' }).
         and_return(Hashie::Mash.new(status: 200))
       described_class.update(update)
     end
