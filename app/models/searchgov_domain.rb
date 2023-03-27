@@ -10,7 +10,6 @@ class SearchgovDomain < ApplicationRecord
 
   before_validation(on: :create) { self.domain = domain&.downcase&.strip }
 
-  validates :scheme, inclusion: %w[http https]
   validates :domain, uniqueness: { case_sensitive: true }, on: :create
   validates :domain, presence: true,
                      format: { with: /\A([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,}\Z/ }
@@ -31,7 +30,7 @@ class SearchgovDomain < ApplicationRecord
   end
 
   def delay
-    @delay ||= (robotex.delay("http://#{domain}/") || 1)
+    @delay ||= (robotex.delay(url) || 1)
   end
 
   def index_urls
@@ -70,7 +69,7 @@ class SearchgovDomain < ApplicationRecord
 
   def sitemap_urls
     urls = sitemaps.pluck(:url)
-    urls += robotex.sitemaps(url).uniq.map { |url| UrlParser.update_scheme(url, scheme) }
+    urls += robotex.sitemaps(url).uniq.map { |url| UrlParser.update_scheme(url, 'https') }
     urls.presence || ["#{url}sitemap.xml"]
   end
 
@@ -108,14 +107,13 @@ class SearchgovDomain < ApplicationRecord
 
   def record_response
     self.status = response.status
-    self.scheme = response.uri.scheme
     self.canonical_domain = host unless domain == host
 
     save if changed?
   end
 
   def url
-    "#{scheme}://#{domain}/"
+    "https://#{domain}/"
   end
 
   def host
