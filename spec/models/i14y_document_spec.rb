@@ -105,25 +105,6 @@ describe I14yDocument do
       described_class.update(update)
     end
 
-    it 'check if thumbnail_url is valid' do
-      update[:thumbnail_url] = 'http://www.foo.gov/assets/img/logos/18F-Logo-M.png'
-      expect(i14y_connection).to receive(:put).
-        with('/api/v1/documents/update_me', { title: 'My New Title',
-                                              thumbnail_url: 'http://www.foo.gov/assets/img/logos/18F-Logo-M.png' }).
-        and_return(Hashie::Mash.new(status: 200))
-      described_class.update(update)
-    end
-
-    it 'update document with absolute thumbnail_url' do
-      update[:thumbnail_url] = 'assets/img/logos/18F-Logo-M.png'
-      update[:path] = url
-      expect(i14y_connection).to receive(:put).
-        with('/api/v1/documents/update_me', { title: 'My New Title', path: url,
-                                              thumbnail_url: 'http://www.foo.gov/assets/img/logos/18F-Logo-M.png' }).
-        and_return(Hashie::Mash.new(status: 200))
-      described_class.update(update)
-    end
-
     context 'when the update fails' do
       before do
         allow(i14y_connection).to receive(:put).

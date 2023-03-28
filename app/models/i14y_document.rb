@@ -8,7 +8,6 @@ class I14yDocument
   class I14yDocumentError < StandardError; end
 
   define_model_callbacks :save
-  define_model_callbacks :update
 
   delegate :i14y_connection, to: :i14y_drawer
 
@@ -33,8 +32,6 @@ class I14yDocument
                 :title
 
   validates :document_id, :path, :handle, :title, presence: true
-  before_save :thumbnail_url_is_valid
-  before_update :thumbnail_url_is_valid
 
   def initialize(attributes = {})
     attributes.each do |name, value|
@@ -98,13 +95,11 @@ class I14yDocument
   end
 
   def update
-    run_callbacks(:save) do
-      params = attributes.except(:document_id).compact_blank
-      response = i14y_connection.put("#{self.class.api_endpoint}/#{document_id}", params)
-      raise I14yDocumentError, response.body.developer_message unless response.status == 200
+    params = attributes.except(:document_id).compact_blank
+    response = i14y_connection.put("#{self.class.api_endpoint}/#{document_id}", params)
+    raise I14yDocumentError, response.body.developer_message unless response.status == 200
 
-      true
-    end
+    true
   end
 
   def self.delete(handle:, document_id:)
@@ -121,25 +116,5 @@ class I14yDocument
 
   def self.promote(handle:, document_id:, bool: 'true')
     update(handle: handle, document_id: document_id, promote: bool)
-  end
-
-  private
-
-  def thumbnail_url_is_valid
-    return if thumbnail_url&.match?(URI::DEFAULT_PARSER.make_regexp)
-
-    if path.nil?
-      self.thumbnail_url = nil
-      return
-    end
-
-    build_absolute_url
-  end
-
-  def build_absolute_url
-    scheme = URI.parse(path).scheme.downcase
-    host = URI.parse(path).host.downcase
-    request = thumbnail_url
-    self.thumbnail_url = "#{scheme}://#{host}/#{request}"
   end
 end
