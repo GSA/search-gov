@@ -48,7 +48,7 @@ const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
           query={props.params.query}
           results={props.results} 
         />
-        <VerticalNav />
+        {/* <VerticalNav /> */}
         <Results 
           results={props.results} 
           vertical={props.vertical}

@@ -1,3 +1,30 @@
+#vertical-nav-wrapper .grid-container{
+  padding-left: 0;
+  padding-right: 0;
+  margin-top: 2rem;
+}
+
+/*
+#vertical-nav-wrapper .usa-nav__primary > .usa-nav__primary-item:first-child > a{
+  padding-left: 0;
+} */
+
+#vertical-nav-wrapper .usa-nav-container nav.usa-nav{
+  margin-left: -1rem;
+}
+
+#vertical-nav-wrapper .usa-nav__primary > .usa-nav__primary-item:last-child{
+  margin-right: -2rem;
+}
+
+/* #vertical-nav-wrapper .usa-nav__primary > .usa-nav__primary-item:last-child span{
+  padding-right: 0;
+}
+
+#vertical-nav-wrapper .usa-nav__primary > .usa-nav__primary-item:last-child span::after{
+  right: -0.25rem;
+} */
+
 .vertical-wrapper .usa-nav-container{
   padding-left: 0;
   padding-right: 0;
