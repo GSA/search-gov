@@ -5,7 +5,6 @@ import './SearchResultsLayout.css';
 import { Header } from './Header';
 import { Facets } from './Facets/Facets';
 import { SearchBar } from './SearchBar/SearchBar';
-import { VerticalNav } from './VerticalNav/VerticalNav';
 import { Results } from './Results/Results';
 import { Footer } from './Footer/Footer';
 import { Identifier } from './Identifier/Identifier';
@@ -48,7 +47,6 @@ const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
           query={props.params.query}
           results={props.results} 
         />
-        {/* <VerticalNav /> */}
         <Results 
           results={props.results} 
           vertical={props.vertical}

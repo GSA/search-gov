@@ -85,7 +85,7 @@ export const VerticalNav = () => {
   ];
 
   return (
-    <div id="vertical-nav-wrapper">
+    <div className="vertical-nav-wrapper">
       <GridContainer>
         <Header basic={true} className="vertical-wrapper">
           <div className="usa-nav-container">
