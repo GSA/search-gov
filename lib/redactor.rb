@@ -6,7 +6,8 @@
 module Redactor
   PATTERNS = {
     ssn: /\b\d{3}[-\sxX._+]?\d{2}[-\sxX._+]?\d{4}\b/,
-    email: /[a-zA-Z0-9][-a-zA-Z0-9._]+(@|%40)[-a-zA-Z0-9]+\.+[a-zA-Z]{2,8}/
+    email: /[a-zA-Z0-9][-a-zA-Z0-9._]+(@|%40)[-a-zA-Z0-9]+\.+[a-zA-Z]{2,8}/,
+    phone: /(?:\+?1[-.\s+]?)?\(?\d{3}\)?[-.\s+]?\d{3}[-.\s+]?\d{4}\b/
   }.freeze
 
   def self.redact(str)
