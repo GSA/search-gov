@@ -52,10 +52,16 @@ describe Redactor do
       end
     end
 
-    context 'when the string may contain a phone number', pending: 'SRCH-3919' do
+    context 'when the string may contain a phone number' do
       let(:string) { 'foo (800)555-1234 bar' }
 
       it { is_expected.to eq 'foo REDACTED_PHONE bar' }
+
+      context 'when the spaces have been URI-encoded' do
+        let(:string) { '800+555+1234' }
+
+        it { is_expected.to eq 'REDACTED_PHONE' }
+      end
     end
   end
 end
