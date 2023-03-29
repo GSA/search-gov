@@ -61,6 +61,16 @@ class I14ySearch < FilterableSearch
     @offset ? @offset.zero? : super
   end
 
+  def normalized_results
+    @results.map do |result|
+      {
+        title: result['title'],
+        url: result['link'],
+        description: result['body']
+      }
+    end
+  end
+
   protected
 
   def include_facet_fields(filter_options)

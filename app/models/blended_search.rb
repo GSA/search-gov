@@ -41,6 +41,16 @@ class BlendedSearch < FilterableSearch
     @offset ? @offset.zero? : super
   end
 
+  def normalized_results
+    @results.map do |result|
+      {
+        title: result['title'],
+        url: result['url'],
+        description: result['description']
+      }
+    end
+  end
+
   protected
 
   def handle_response(response)

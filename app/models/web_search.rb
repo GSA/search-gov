@@ -36,6 +36,16 @@ class WebSearch < Search
     module_tag_for_search_engine
   end
 
+  def normalized_results
+    @results.map do |result|
+      {
+        title: result['title'],
+        url: result['unescapedUrl'],
+        description: result['content']
+      }
+    end
+  end
+
   protected
   def search_engine_klass(search_engine_option)
     "#{search_engine_option}#{get_vertical.to_s.classify}Search".constantize
