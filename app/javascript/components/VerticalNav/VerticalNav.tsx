@@ -5,8 +5,6 @@ import './VerticalNav.css';
 
 export const VerticalNav = () => {
   const [isOpen, setIsOpen] = useState([false, false]);
-  const [isOpen2, setIsOpen2] = useState([false, false]);
-
   const onToggle = (
     index: number,
     setIsOpen: React.Dispatch<React.SetStateAction<boolean[]>>
@@ -69,16 +67,16 @@ export const VerticalNav = () => {
         data-testid="relatedSitesBtn"
         menuId="relatedSitesDropDown"
         onToggle={(): void => {
-          onToggle(0, setIsOpen2);
+          onToggle(1, setIsOpen);
         }}
-        isOpen={isOpen2[0]}
+        isOpen={isOpen[1]}
         label="Related Sites"
         isCurrent={false}
       />
       <Menu
         key="one"
         items={relatedSitesItems}
-        isOpen={isOpen2[0]}
+        isOpen={isOpen[1]}
         id="relatedSitesDropDown"
       />
     </>
