@@ -12,14 +12,10 @@ describe('SearchResultsLayout', () => {
 
   it('renders all relevant links', () => {
     render(<SearchResultsLayout params={{ query: 'foo' }} results={[]} vertical='web' />);
-    const everything = screen.getByText(/Everything/i);
-    const news = screen.getByText(/News/i);
-    const images = screen.getByText(/Images/i);
-    const videos = screen.getByText(/Videos/i);
+    const everything = screen.getByText(/More/i);
+    const news = screen.getByText(/Related Sites/i);
     expect(everything).toBeInTheDocument();
     expect(news).toBeInTheDocument();
-    expect(images).toBeInTheDocument();
-    expect(videos).toBeInTheDocument();
   });
 
   it('renders search results', () => {

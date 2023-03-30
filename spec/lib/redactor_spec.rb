@@ -40,22 +40,65 @@ describe Redactor do
       end
     end
 
-    context 'when the string may contain a credit card number', pending: 'SRCH-3918' do
-      let(:string) { 'foo 1234567812345678 bar' }
+    # CC examples drawn from: https://support.bluesnap.com/docs/test-credit-card-numbers
+    context 'when the string may contain a Amex style credit card number' do
+      let(:string) { 'foo 374245455400126 bar' }
 
       it { is_expected.to eq 'foo REDACTED_CC bar' }
 
       context 'when the spaces have been URI-encoded' do
-        let(:string) { '1234+5678+1234+5678' }
+        let(:string) { '3742+454554+00126' }
 
         it { is_expected.to eq 'REDACTED_CC' }
       end
     end
 
-    context 'when the string may contain a phone number', pending: 'SRCH-3919' do
+    context 'when the string may contain a Discover style credit card number' do
+      let(:string) { 'foo 6011000991300009 bar' }
+
+      it { is_expected.to eq 'foo REDACTED_CC bar' }
+
+      context 'when the spaces have been URI-encoded' do
+        let(:string) { '6011+0009+9130+0009' }
+
+        it { is_expected.to eq 'REDACTED_CC' }
+      end
+    end
+
+    context 'when the string may contain a MasterCard style credit card number' do
+      let(:string) { 'foo 2223000048410010 bar' }
+
+      it { is_expected.to eq 'foo REDACTED_CC bar' }
+
+      context 'when the spaces have been URI-encoded' do
+        let(:string) { '5425+2334+3010+9903' }
+
+        it { is_expected.to eq 'REDACTED_CC' }
+      end
+    end
+
+    context 'when the string may contain a Visa style credit card number' do
+      let(:string) { 'foo 4263982640269299 bar' }
+
+      it { is_expected.to eq 'foo REDACTED_CC bar' }
+
+      context 'when the spaces have been URI-encoded' do
+        let(:string) { '4263+9826+4026+9299' }
+
+        it { is_expected.to eq 'REDACTED_CC' }
+      end
+    end
+
+    context 'when the string may contain a phone number' do
       let(:string) { 'foo (800)555-1234 bar' }
 
       it { is_expected.to eq 'foo REDACTED_PHONE bar' }
+
+      context 'when the spaces have been URI-encoded' do
+        let(:string) { '800+555+1234' }
+
+        it { is_expected.to eq 'REDACTED_PHONE' }
+      end
     end
   end
 end
