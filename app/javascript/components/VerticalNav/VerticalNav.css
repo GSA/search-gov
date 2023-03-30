@@ -1,0 +1,66 @@
+.vertical-nav-wrapper .grid-container{
+  margin-top: 2rem;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.vertical-nav-wrapper .usa-nav-container nav.usa-nav{
+  margin-left: -1rem;
+}
+
+.vertical-nav-wrapper .usa-nav__primary > .usa-nav__primary-item:last-child{
+  margin-right: -2rem;
+}
+
+.vertical-wrapper .usa-nav-container{
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.vertical-wrapper .usa-nav-container .usa-nav{
+  justify-content: flex-start;
+}
+
+.vertical-wrapper .usa-nav-container .usa-nav__primary-item:last-of-type {
+  position: absolute;
+  right: 0;
+}
+
+.vertical-wrapper .usa-nav-container .usa-nav-container {
+  align-items: flex-end;
+  display: flex;
+  justify-content: space-between; 
+}
+
+.vertical-wrapper{
+  border-bottom: 1px solid #DEDEDE;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.vertical-wrapper .vertical-button {
+  border-bottom: 4px solid #fff;
+  color: #3D4551;
+  cursor: pointer;
+  font-weight: normal;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding: 1rem 0 1rem 0;
+  text-decoration: none;
+}
+
+.vertical-wrapper .vertical-button-rel-sites{
+  margin-left: auto;
+}
+
+.vertical-wrapper .vertical-button:focus {
+  border-bottom: 4px solid #005ea2;
+  color: #005EA2;
+  outline: 0.25rem solid #2491ff;
+  outline-offset: 0;
+}
+
+.vertical-wrapper .vertical-button:hover {
+  border-bottom: 4px solid #005ea2;
+  color: #005EA2;
+}
