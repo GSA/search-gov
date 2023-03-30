@@ -80,6 +80,32 @@ describe WebSearch do
     end
   end
 
+  describe '#normalized_results' do
+    context 'when the affiliate uses BingV7' do
+      let(:search_engine) { 'BingV7' }
+      let(:query) { 'legal careers' }
+      let(:included_domain) { 'nasa.gov' }
+      let(:result_keys) { [:description, :url, :title] }
+      let(:affiliate) do
+        Affiliate.create!(name: 'nasa', display_name: 'Nasa', search_engine: search_engine)
+      end
+      let(:search) { described_class.new(affiliate: affiliate, query: query) }
+
+      before do
+        affiliate.site_domains.create!(domain: included_domain)
+        search.run
+      end
+
+      it 'includes the relevant search result fields' do
+        results = search.normalized_results
+        expect(results.first).to eq({:description=> "Careers at NASA: Explore the Extraordinary, Every Day Click Here to Search Jobs NASA is more than astronauts. We are scientists, engineers, IT specialists, human resources specialists, accountants, writers, technicians and many other kinds of people working together to break barriers to achieve the seemingly impossible.", :title=>"Careers at NASA: Explore the Extraordinary, Every Day | NASA", :url=>"https://www.nasa.gov/careers/"})
+        results.each do |result|
+          expect(result.keys).to contain_exactly(*result_keys)
+        end
+      end
+    end
+  end
+
   describe 'instrumenting search engine calls' do
     context 'when BingV6 is the engine' do
       let(:valid_options) do
@@ -447,8 +473,8 @@ describe WebSearch do
         end
       end
 
-      context 'when the affiliate.uses BingV6' do
-        let(:search_engine) { 'BingV6' }
+      context 'when the affiliate uses BingV7' do
+        let(:search_engine) { 'BingV7' }
 
         context 'when a subdirectory is excluded' do
           let(:included_domain) { 'justice.gov' }
