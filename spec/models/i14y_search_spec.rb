@@ -46,6 +46,7 @@ describe I14ySearch do
     its('results.first.link') { is_expected.to eq('https://www.healthcare.gov/glossary/marketplace') }
     its('results.first.description') { is_expected.to eq('See Health Insurance Marketplace...More info on Health Insurance Marketplace') }
     its('results.first.body') { is_expected.to eq('More info on Health Insurance Marketplace') }
+    its('normalized_results.first') { is_expected.to eq(description: 'More info on Health Insurance Marketplace', title: 'Marketplace', url: 'https://www.healthcare.gov/glossary/marketplace') }
   end
 
   context 'when sort_by=date' do
