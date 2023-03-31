@@ -473,8 +473,8 @@ describe WebSearch do
         end
       end
 
-      context 'when the affiliate uses BingV7' do
-        let(:search_engine) { 'BingV7' }
+      context 'when the affiliate uses BingV6' do
+        let(:search_engine) { 'BingV6' }
 
         context 'when a subdirectory is excluded' do
           let(:included_domain) { 'justice.gov' }

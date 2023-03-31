@@ -55,7 +55,7 @@ describe BlendedSearch do
         and_return(elastic_results)
     end
 
-    it 'test' do
+    it 'returns normalized results for the SERP redesign' do
       search.run
       expect(search.normalized_results).to eq([{ title: 'electro coagulation', url: 'http://p.whitehouse.gov/hour.html', description: 'electro coagulation' }])
     end
