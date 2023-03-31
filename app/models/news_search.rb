@@ -61,6 +61,11 @@ class NewsSearch < FilterableSearch
     @results.map { |r| r.serializable_hash }
   end
 
+  #TO-DO: Normalize news results
+  def normalized_results
+    @results
+  end
+
   protected
 
   def handle_response(response)
