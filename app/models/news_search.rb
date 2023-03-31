@@ -61,7 +61,7 @@ class NewsSearch < FilterableSearch
     @results.map { |r| r.serializable_hash }
   end
 
-  # TO-DO: Normalize news results
+  # TO-DO: Normalize news results in https://cm-jira.usa.gov/browse/SRCH-4071
   def normalized_results
     @results
   end
