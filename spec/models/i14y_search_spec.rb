@@ -146,9 +146,7 @@ describe I14ySearch do
   context 'when sort_by=date and since_date and until_date are specified' do
     let(:i14y_search) do
       described_class.new(filterable_search_options.
-        merge(sort_by: 'date',
-              since_date: '07/28/2015',
-              until_date: '09/28/2015'))
+        merge(sort_by: 'date', since_date: '07/28/2015', until_date: '09/28/2015'))
     end
 
     before { allow(I14yCollections).to receive(:search) }
