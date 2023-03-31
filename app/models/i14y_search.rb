@@ -2,8 +2,18 @@ class I14ySearch < FilterableSearch
   include SearchInitializer
   include Govboxable
   I14Y_SUCCESS = 200
-  FACET_FIELDS = %w[audience changed content_type created mime_type searchgov_custom1 searchgov_custom2 searchgov_custom3 tags].freeze
-  attr_reader :aggregations, :collection, :matching_site_limits
+  FACET_FIELDS = %w[audience
+                    changed
+                    content_type
+                    created
+                    mime_type
+                    searchgov_custom1
+                    searchgov_custom2
+                    searchgov_custom3
+                    tags].freeze
+  attr_reader :aggregations,
+              :collection,
+              :matching_site_limits
 
   def initialize(options = {})
     super
@@ -53,7 +63,11 @@ class I14ySearch < FilterableSearch
 
   def normalized_results
     @results.map do |result|
-      { title: result['title'], url: result['link'], description: result['body'] }
+      {
+        title: result['title'],
+        url: result['link'],
+        description: result['body']
+      }
     end
   end
 
