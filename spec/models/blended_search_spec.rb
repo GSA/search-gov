@@ -35,6 +35,32 @@ describe BlendedSearch do
     end
   end
 
+  describe '#normalized_results' do
+    subject(:search) do
+      described_class.new affiliate: affiliate,
+                          enable_highlighting: true,
+                          limit: 20,
+                          offset: 0,
+                          query: 'electro coagulation'
+    end
+
+    before do
+      elastic_results = double(ElasticBlendedResults,
+                             results: [IndexedDocument.new(title: 'electro coagulation', description: 'electro coagulation', url: 'http://p.whitehouse.gov/hour.html', last_crawl_status: 'OK', affiliate: affiliates(:usagov_affiliate))],
+                             suggestion: double('suggestion', text:'electro coagulation'),
+                             total: 1)
+      allow(elastic_results).to receive(:override_suggestion)
+      allow(ElasticBlended).to receive(:search_for).
+        with(hash_including(q: 'electro coagulation')).
+        and_return(elastic_results)
+    end
+
+     it 'test' do
+      search.run
+      expect(search.normalized_results).to eq([{:title=>"electro coagulation", :url=>"http://p.whitehouse.gov/hour.html", :description=>"electro coagulation"}])
+     end
+  end
+
   describe '#run' do
     it_behaves_like 'a runnable filterable search'
 
