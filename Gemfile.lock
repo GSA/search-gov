@@ -409,7 +409,6 @@ GEM
       raabro (~> 1.4)
     gems (1.2.0)
     geoip (1.6.4)
-    github-markdown (0.6.9)
     globalid (1.1.0)
       activesupport (>= 5.0)
     google-api-client (0.53.0)
@@ -644,6 +643,7 @@ GEM
       tilt
     recaptcha (4.6.6)
       json
+    redcarpet (3.6.0)
     redis (4.0.3)
     redis-actionpack (5.3.0)
       actionpack (>= 5, < 8)
@@ -922,7 +922,6 @@ DEPENDENCIES
   font-awesome-grunticon-rails!
   font-awesome-rails (~> 4.7.0)
   geoip (~> 1.6.3)
-  github-markdown (~> 0.6.9)
   google-api-client (~> 0.53.0)
   google_visualr!
   googlecharts (~> 1.6.12)
@@ -962,6 +961,7 @@ DEPENDENCIES
   rash_alt (~> 0.4.12)
   react-rails (~> 2.6.2)
   recaptcha (~> 4.6.3)
+  redcarpet (~> 3.6)
   redis (~> 4.0.1)
   redis-namespace (~> 1.6.0)
   redis-rails (~> 5.0.2)
