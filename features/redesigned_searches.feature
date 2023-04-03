@@ -18,7 +18,9 @@ Feature: Search - redesign
       | bar site         | bar.gov          | aff@bar.gov           | John       | Bar       | whitehouse.gov |
     When I am on bar.gov's redesigned search page with "white house" query
     Then I should see exactly "20" web search results
-    And I should see "Remarks by President Biden"
+    And I should see "The White House"
+    And I should see "https://www.whitehouse.gov/"
+    And I should see "Press Secretary Karine Jean-Pierre on the Meeting Between President Joe Biden and President Xi Jinping"
 
   @javascript
   Scenario: Search with I14y results
@@ -28,6 +30,8 @@ Feature: Search - redesign
     Given there are results for the "searchgov" drawer
     When I am on healthcare.gov's redesigned search page with "marketplace" query
     Then I should see exactly "20" web search results
+    And I should see "Marketplace"
+    And I should see "https://www.healthcare.gov/glossary/marketplace"
     And I should see "More info on Health Insurance"
 
   @javascript
@@ -45,7 +49,9 @@ Feature: Search - redesign
       | The last decade article | Within last decade article on item   | http://p.whitehouse.gov/decade.html | bar.gov   | OK                | 5 years ago    |
     When I am on bar.gov's redesigned search page with "article" query
     Then I should see exactly "6" web search results
-    And I should see "The last hour"
+    And I should see "The last hour article"
+    And I should see "http://p.whitehouse.gov/hour.html"
+    And I should see "Within the last hour article on item"
 
   @javascript
   Scenario: News search
