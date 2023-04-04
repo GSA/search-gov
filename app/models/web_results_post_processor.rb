@@ -26,6 +26,16 @@ class WebResultsPostProcessor
     post_processed.compact
   end
 
+  def normalized_results(results)
+    results.map do |result|
+      {
+        title: result['title'],
+        url: result['unescaped_url'],
+        description: result['content']
+      }
+    end
+  end
+
   private
 
   def title_description_date_hash_by_link

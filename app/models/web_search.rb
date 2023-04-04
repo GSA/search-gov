@@ -2,7 +2,7 @@ class WebSearch < Search
   include SearchOnCommercialEngine
   include Govboxable
 
-  attr_reader :matching_site_limits, :tracking_information
+  attr_reader :matching_site_limits, :tracking_information, :normalized_results
 
   def initialize(options = {})
     super(options)
@@ -34,16 +34,6 @@ class WebSearch < Search
 
   def diagnostics_label
     module_tag_for_search_engine
-  end
-
-  def normalized_results
-    @results.map do |result|
-      {
-        title: result['title'],
-        url: result['unescapedUrl'],
-        description: result['content']
-      }
-    end
   end
 
   protected
@@ -134,6 +124,7 @@ class WebSearch < Search
 
   def post_process_results(results)
     post_processor = WebResultsPostProcessor.new(@query, @affiliate, results)
+    @normalized_results = post_processor.normalized_results(results)
     post_processor.post_processed_results
   end
 

@@ -2,6 +2,8 @@ class BlendedSearch < FilterableSearch
   include SearchInitializer
   include Govboxable
 
+  attr_reader :normalized_results
+
   self.default_sort_by = 'r'.freeze
 
   KLASS_MODULE_MAPPING = { indexed_document: 'AIDOC', news_item: 'NEWS' }
@@ -41,23 +43,15 @@ class BlendedSearch < FilterableSearch
     @offset ? @offset.zero? : super
   end
 
-  def normalized_results
-    @results.map do |result|
-      {
-        title: result['title'],
-        url: result['url'],
-        description: result['description']
-      }
-    end
-  end
-
   protected
 
   def handle_response(response)
     if response
       @total = response.total
-      ResultsWithBodyAndDescriptionPostProcessor.new(response.results).post_process_results
+      post_processor = ResultsWithBodyAndDescriptionPostProcessor.new(response.results)
+      post_processor.post_process_results
       @results = paginate(response.results)
+      @normalized_results = post_processor.normalized_results(@results)
       @startrecord = ((@page - 1) * @per_page) + 1
       @endrecord = @startrecord + @results.size - 1
       assign_spelling_suggestion_if_eligible(response.suggestion.text) if response.suggestion.present?

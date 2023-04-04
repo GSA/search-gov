@@ -9,6 +9,16 @@ class ResultsWithBodyAndDescriptionPostProcessor
     override_plain_description_with_highlighted_body
   end
 
+  def normalized_results(results)
+    results.map do |result|
+      {
+        title: result['title'],
+        url: result['url'],
+        description: result['description']
+      }
+    end
+  end
+
   protected
 
   def override_plain_description_with_highlighted_body

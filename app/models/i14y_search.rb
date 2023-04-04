@@ -13,7 +13,8 @@ class I14ySearch < FilterableSearch
                     tags].freeze
   attr_reader :aggregations,
               :collection,
-              :matching_site_limits
+              :matching_site_limits,
+              :normalized_results
 
   def initialize(options = {})
     super
@@ -61,16 +62,6 @@ class I14ySearch < FilterableSearch
     @offset ? @offset.zero? : super
   end
 
-  def normalized_results
-    @results.map do |result|
-      {
-        title: result['title'],
-        url: result['link'],
-        description: result['body']
-      }
-    end
-  end
-
   protected
 
   def include_facet_fields(filter_options)
@@ -112,10 +103,10 @@ class I14ySearch < FilterableSearch
     return unless response && response.status == I14Y_SUCCESS
 
     @total = response.metadata.total
-    I14yPostProcessor.new(@enable_highlighting,
-                          response.results,
-                          @affiliate.excluded_urls_set).post_process_results
+    post_processor = I14yPostProcessor.new(@enable_highlighting, response.results, @affiliate.excluded_urls_set)
+    post_processor.post_process_results
     @results = paginate(response.results)
+    @normalized_results = post_processor.normalized_results
     @startrecord = ((@page - 1) * @per_page) + 1
     @endrecord = @startrecord + @results.size - 1
     @spelling_suggestion = response.metadata.suggestion.text if response.metadata.suggestion.present?
