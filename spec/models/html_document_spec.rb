@@ -219,7 +219,7 @@ describe HtmlDocument do
         <<~HTML
           <html lang="en">
             <head>
-              <meta name="og:image" content="">
+              <meta name="" content="">
             </head>
           </html>
         HTML
