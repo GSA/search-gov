@@ -9,17 +9,9 @@ describe I14yPostProcessor do
       results
     end
     let(:excluded_urls) { [] }
-    let(:normalized_results) { described_class.new(true, results, excluded_urls).normalized_results }
 
-    it 'returns normalized results' do
-      expect(normalized_results.length).to eq(5)
-
-      normalized_results.each_with_index do |result, index|
-        expect(result.keys).to contain_exactly(*normalized_result_keys)
-        expect(result[:title]).to eq('title')
-        expect(result[:description]).to eq('content')
-        expect(result[:url]).to eq("http://foo.gov/#{index}")
-      end
+    it_behaves_like 'a search with normalized results' do
+      let(:normalized_results) { described_class.new(true, results, excluded_urls).normalized_results }
     end
   end
 
