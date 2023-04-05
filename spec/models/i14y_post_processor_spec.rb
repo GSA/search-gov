@@ -30,9 +30,6 @@ describe I14yPostProcessor do
         path: 'http://www.foo.com',
         created: Time.now }
     end
-    let(:results) do
-      [Hashie::Mash.new(result.merge(description: nil, content: "content with \uE000match\uE001" ))]
-    end  
     let(:excluded_urls) { [] }
 
     before do
