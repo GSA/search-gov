@@ -17,7 +17,6 @@ describe SiteCloner do
            :routed_query_keywords,
            :rss_feed_urls,
            :rss_feeds,
-           :twitter_profiles,
            :url_prefixes,
            :users,
            :youtube_profiles
@@ -102,21 +101,6 @@ describe SiteCloner do
        website
        youtube_profile_ids).each do |attr|
       its(attr) { should eq(origin_site.send attr) }
-    end
-
-    context 'when the origin site has affiliate twitter settings' do
-      before do
-        origin_site.affiliate_twitter_settings.create!(show_lists: true,
-                                                       twitter_profile_id: twitter_profiles(:usagov).id)
-      end
-
-      it 'copies the twitter settings' do
-        expect(cloned_site.affiliate_twitter_settings.count).to eq(1)
-
-        cloned_twitter_setting = cloned_site.affiliate_twitter_settings.first
-        expect(cloned_twitter_setting.show_lists).to be true
-        expect(cloned_twitter_setting.twitter_profile_id).to eq(twitter_profiles(:usagov).id)
-      end
     end
 
     context 'when the origin site has boosted contents' do

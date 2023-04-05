@@ -5,7 +5,7 @@ class SiteAutodiscoverer
 
   FAVICON_LINK_XPATH = "//link[@rel='shortcut icon' or @rel='icon'][@href]".freeze
   RSS_LINK_XPATH = "//link[@type='application/rss+xml' or @type='application/atom+xml'][@href]".freeze
-  SOCIAL_MEDIA_REGEXP = %r{\Ahttps?://(www\.)?(flickr|twitter|youtube)\.com/.+}i
+  SOCIAL_MEDIA_REGEXP = %r{\Ahttps?://(www\.)?(flickr|youtube)\.com/.+}i
 
   def initialize(site, url = nil)
     @site = site
@@ -151,17 +151,6 @@ class SiteAutodiscoverer
     @discovered_resources['Social Media'] << url if flickr_data.new_profile_created?
   end
 
-  def create_twitter_profile(url)
-    screen_name = extract_profile_name(url)
-    twitter_profile = TwitterData.import_profile screen_name
-    return unless twitter_profile
-
-    unless @site.twitter_profiles.exists?(id: twitter_profile.id)
-      @site.affiliate_twitter_settings.create(twitter_profile_id: twitter_profile.id)
-      @discovered_resources['Social Media'] << url
-    end
-  end
-
   def create_youtube_profile(url)
     youtube_profile = YoutubeProfileData.import_profile url
     return unless youtube_profile
@@ -171,10 +160,6 @@ class SiteAutodiscoverer
       @discovered_resources['Social Media'] << url
       @site.enable_video_govbox!
     end
-  end
-
-  def extract_profile_name(url)
-    url.gsub(/(\/|\?.*)$/, '').split('/').last
   end
 
   def candidate_autodiscovery_urls(base_url)

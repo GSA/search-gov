@@ -650,42 +650,6 @@ Feature: Manage Content
     When I press "Remove" and confirm "Are you sure you wish to remove search.gov/developer/jobs.html from this site?"
     Then I should see "You have removed search.gov/developer/jobs.html from this site"
 
-  Scenario: View Twitter Handles
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
-    When the following Twitter handles exist for the site "agency.gov":
-      | screen_name |
-      | usasearch   |
-      | usagov      |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Manage Content page
-    And I follow "Twitter" within the Admin Center content
-    Then I should see the following table rows:
-      | @usagov    |
-      | @USASearch |
-
-  Scenario: Add/remove Twitter Handle
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Manage Content page
-    And I follow "Twitter" within the Admin Center content
-    And I follow "Add Twitter Handle"
-    When I fill in "Twitter Handle" with "NIH"
-    # And I check "Show tweets from my lists"
-    And I submit the form by pressing "Add"
-    Then I should see "You have added @NIH to this site"
-    And I should see a link to "@NIH" with url for "https://twitter.com/NIH"
-    # And I should see "@NIH (show lists)"
-    When I press "Remove" and confirm "Are you sure you wish to remove @NIH from this site?"
-    Then I should see "You have removed @NIH from this site"
-    When I follow "Add Twitter Handle"
-    When I fill in "Twitter Handle" with "usasearch101"
-    And I submit the form by pressing "Add"
-    Then I should see "Screen name is not found"
-
   Scenario: View YouTube Channels
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name |

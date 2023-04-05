@@ -47,13 +47,6 @@ Feature: Searches using mobile device
       | Presidente Barack Obama: ganador elecciones de 2012 | https://www.usa.gov/gobiernousa/Temas/Votaciones/Presidente-Barack-Obama.shtml |
       | Servicios por Internet                              | https://www.usa.gov/gobiernousa/Temas/Servicios.shtml                          |
       | Seguros de salud                                    | https://www.usa.gov/gobiernousa/Salud-Nutricion-Seguridad/Salud/Seguros.shtml  |
-    And the following Twitter Profiles exist:
-      | screen_name | name          | twitter_id | affiliate     |
-      | USASearch   | USASearch.gov | 123456     | en.agency.gov |
-    And the following Tweets exist:
-      | tweet_text                                                                                    | tweet_id | published_ago | twitter_profile_id | url                    | expanded_url            | display_url      |
-      | President Obama: "Don’t Just Play on Your Phone, Program It"                                  | 234567   | week          | 123456             |                        |                         |                  |
-      | "We wish you all a blessed and safe holiday season." - President Obama http://t.co/l8jbZSbmAX | 184957   | hour          | 123456             | http://t.co/l8jbZSbmAX | http://go.wh.gov/sgCp3q | go.wh.gov/sgCp3q |
     And the following SAYT Suggestions exist for en.agency.gov:
       | phrase                 |
       | president list         |
@@ -65,7 +58,6 @@ Feature: Searches using mobile device
     And I should see 1 Best Bets Texts
     And I should see 1 Best Bets Graphic
     And I should see "44. Barack Obama 43. George W. Bush The Presidents Photo Galleries"
-    And I should see a link to "http://t.co/l8jbZSbmAX" with text "go.wh.gov/sgCp3q"
     And I should see at least "2" web search results
     And I should see 2 related searches
     And I should see a link to "Next"

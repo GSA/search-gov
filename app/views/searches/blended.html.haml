@@ -8,7 +8,6 @@
   = render partial: 'best_bets', locals: { search: @search } if @search.has_best_bets?
   = render partial: 'med_topic', locals: { search: @search } if @search.med_topic.present?
   = render partial: 'jobs', locals: { search: @search } if @search.jobs.present?
-  = render partial: 'tweets', locals: { search:  @search } if @search.has_tweets?
 
   - if @search.results.present?
     = render partial: 'searches/blended/results', locals: { search:  @search }

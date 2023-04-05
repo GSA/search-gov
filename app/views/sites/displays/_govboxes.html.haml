@@ -41,12 +41,6 @@
       %td.cell-1x Medline Plus
       = switch_cell f, :is_medline_govbox_enabled
 
-    - if @site.twitter_profiles.exists?
-      %tr
-        %td Recent Tweets
-        %td.cell-1x= link_to 'Twitter', site_twitter_handles_path(@site)
-        %td.cell-1x
-          .muted ON (delete Twitter to turn off)
     %tr
       %td Type-ahead Search
       %td.cell-1x Search.gov
