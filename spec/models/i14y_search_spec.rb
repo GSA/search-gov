@@ -46,7 +46,6 @@ describe I14ySearch do
     its('results.first.link') { is_expected.to eq('https://www.healthcare.gov/glossary/marketplace') }
     its('results.first.description') { is_expected.to eq('See Health Insurance Marketplace...More info on Health Insurance Marketplace') }
     its('results.first.body') { is_expected.to eq('More info on Health Insurance Marketplace') }
-    its('normalized_results.first') { is_expected.to eq(description: 'More info on Health Insurance Marketplace', title: 'Marketplace', url: 'https://www.healthcare.gov/glossary/marketplace') }
   end
 
   context 'when sort_by=date' do
@@ -146,7 +145,9 @@ describe I14ySearch do
   context 'when sort_by=date and since_date and until_date are specified' do
     let(:i14y_search) do
       described_class.new(filterable_search_options.
-        merge(sort_by: 'date', since_date: '07/28/2015', until_date: '09/28/2015'))
+        merge(sort_by: 'date',
+              since_date: '07/28/2015',
+              until_date: '09/28/2015'))
     end
 
     before { allow(I14yCollections).to receive(:search) }

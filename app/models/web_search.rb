@@ -124,7 +124,7 @@ class WebSearch < Search
 
   def post_process_results(results)
     post_processor = WebResultsPostProcessor.new(@query, @affiliate, results)
-    @normalized_results = post_processor.normalized_results(results)
+    @normalized_results = post_processor.normalized_results
     post_processor.post_processed_results
   end
 

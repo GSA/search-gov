@@ -1,6 +1,28 @@
 require 'spec_helper'
 
 describe I14yPostProcessor do
+  describe '#normalized_results' do
+    let(:normalized_result_keys) { [:description, :url, :title] }
+    let(:results) do
+      results = []
+      5.times { |x| results << Hashie::Mash::Rash.new(title: 'title', content: 'content', path: "http://foo.gov/#{x}") }
+      results
+    end
+    let(:excluded_urls) { [] }
+    let(:normalized_results) { described_class.new(true, results, excluded_urls).normalized_results }
+
+    it 'returns normalized results' do
+      expect(normalized_results.length).to eq(5)
+
+      normalized_results.each_with_index do |result, index|
+        expect(result.keys).to contain_exactly(*normalized_result_keys)
+        expect(result[:title]).to eq('title')
+        expect(result[:description]).to eq('content')
+        expect(result[:url]).to eq("http://foo.gov/#{index}")
+      end
+    end
+  end
+
   describe '#post_process_results' do
     let(:result) do
       { content: 'doc content',
@@ -8,6 +30,9 @@ describe I14yPostProcessor do
         path: 'http://www.foo.com',
         created: Time.now }
     end
+    let(:results) do
+      [Hashie::Mash.new(result.merge(description: nil, content: "content with \uE000match\uE001" ))]
+    end  
     let(:excluded_urls) { [] }
 
     before do
