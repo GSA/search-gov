@@ -2,8 +2,6 @@ class BlendedSearch < FilterableSearch
   include SearchInitializer
   include Govboxable
 
-  attr_reader :normalized_results
-
   self.default_sort_by = 'r'.freeze
 
   KLASS_MODULE_MAPPING = { indexed_document: 'AIDOC', news_item: 'NEWS' }

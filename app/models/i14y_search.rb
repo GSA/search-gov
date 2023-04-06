@@ -13,8 +13,7 @@ class I14ySearch < FilterableSearch
                     tags].freeze
   attr_reader :aggregations,
               :collection,
-              :matching_site_limits,
-              :normalized_results
+              :matching_site_limits
 
   def initialize(options = {})
     super

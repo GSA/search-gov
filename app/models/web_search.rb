@@ -2,7 +2,7 @@ class WebSearch < Search
   include SearchOnCommercialEngine
   include Govboxable
 
-  attr_reader :matching_site_limits, :tracking_information, :normalized_results
+  attr_reader :matching_site_limits, :tracking_information
 
   def initialize(options = {})
     super(options)
