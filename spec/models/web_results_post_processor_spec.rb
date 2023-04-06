@@ -7,7 +7,6 @@ describe WebResultsPostProcessor do
   let(:post_processor) { described_class.new('foo', affiliate, results) }
 
   describe '#normalized_results' do
-    let(:normalized_result_keys) { [:description, :url, :title] }
     let(:results) do
       results = []
       5.times { |x| results << Hashie::Mash::Rash.new(title: 'title', content: 'content', unescaped_url: "http://foo.gov/#{x}") }

@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe ResultsWithBodyAndDescriptionPostProcessor do
   describe '#normalized_results' do
-    let(:normalized_result_keys) { [:description, :url, :title] }
     let(:results) do
       results = []
       5.times { |x| results << Hashie::Mash::Rash.new(title: 'title', description: 'content', url: "http://foo.gov/#{x}") }
