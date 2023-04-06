@@ -1,9 +1,9 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe OdieImageSearch do
-  fixtures :affiliates, :flickr_profiles, :rss_feeds, :rss_feed_urls
-
   let(:affiliate) { affiliates(:basic_affiliate) }
+  let(:query) { 'obama' }
+  let(:image_search) { described_class.new(query: query, affiliate: affiliate) }
   let(:search_engine_response) do
     SearchEngineResponse.new do |search_response|
       search_response.total = 2
@@ -20,12 +20,27 @@ describe OdieImageSearch do
   end
 
   describe '.search' do
-    it 'should retrieve photos from Oasis API endpoint' do
-      image_search = described_class.new(query: 'obama', affiliate: affiliate)
+    before do
+      allow(Rails.logger).to receive(:info)
       image_search.run
+    end
+
+    it 'should retrieve photos from Oasis API endpoint' do
       expect(image_search.results.first['title']).to eq('President Obama walks the Obama daughters to school')
       expect(image_search.results.last['title']).to eq('POTUS gets in car.')
       expect(image_search.total).to eq(2)
+    end
+
+    it 'logs the query JSON' do
+      expect(Rails.logger).to have_received(:info).with(/"query":"obama"/)
+    end
+
+    context 'when the query includes sensitive data' do
+      let(:query) { '123-45-6789' }
+
+      it 'redacts the data' do
+        expect(Rails.logger).not_to have_received(:info).with(/123-45-6789/)
+      end
     end
   end
 
@@ -44,11 +59,9 @@ describe OdieImageSearch do
 
       it 'should create an OasisSearch with the MRSS feed names' do
         expect(OasisSearch).to receive(:new).with(query: 'element', per_page: 10, offset: 0, mrss_names: ['13'],
-                                              flickr_users: [], flickr_groups: [])
+                                                  flickr_users: [], flickr_groups: [])
         described_class.new(query: 'element', affiliate: affiliate)
       end
     end
-
   end
-
 end

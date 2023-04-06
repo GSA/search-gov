@@ -213,6 +213,34 @@ describe HtmlDocument do
 
       it { is_expected.to eq 'http://www.foo.gov/og_image.jpg' }
     end
+
+    context 'when og:image is not available' do
+      let(:raw_document) do
+        <<~HTML
+          <html lang="en">
+            <head>
+              <meta name="" content="">
+            </head>
+          </html>
+        HTML
+      end
+
+      it { is_expected.to be_nil }
+    end
+
+    context 'when og:image is not a valid URL' do
+      let(:raw_document) do
+        <<~HTML
+          <html lang="en">
+            <head>
+              <meta name="og:image" content="/abc">
+            </head>
+          </html>
+        HTML
+      end
+
+      it { is_expected.to be_nil }
+    end
   end
 
   describe '#content_type' do
