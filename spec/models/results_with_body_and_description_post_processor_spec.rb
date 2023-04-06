@@ -6,7 +6,7 @@ describe ResultsWithBodyAndDescriptionPostProcessor do
   describe '#normalized_results' do
     let(:results) do
       results = []
-      5.times { |x| results << Hashie::Mash::Rash.new(title: 'title', description: 'content', url: "http://foo.gov/#{x}") }
+      5.times { |index| results << Hashie::Mash::Rash.new(title: "title #{index}", description: "content #{index}", url: "http://foo.gov/#{index}") }
       results
     end
     let(:excluded_urls) { [] }

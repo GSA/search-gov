@@ -9,7 +9,7 @@ describe WebResultsPostProcessor do
   describe '#normalized_results' do
     let(:results) do
       results = []
-      5.times { |x| results << Hashie::Mash::Rash.new(title: 'title', content: 'content', unescaped_url: "http://foo.gov/#{x}") }
+      5.times { |index| results << Hashie::Mash::Rash.new(title: "title #{index}", content: "content #{index}", unescaped_url: "http://foo.gov/#{index}") }
       results
     end
 

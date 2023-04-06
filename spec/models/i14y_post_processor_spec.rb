@@ -4,7 +4,7 @@ describe I14yPostProcessor do
   describe '#normalized_results' do
     let(:results) do
       results = []
-      5.times { |x| results << Hashie::Mash::Rash.new(title: 'title', content: 'content', path: "http://foo.gov/#{x}") }
+      5.times { |index| results << Hashie::Mash::Rash.new(title: "title #{index}", content: "content #{index}", path: "http://foo.gov/#{index}") }
       results
     end
     let(:excluded_urls) { [] }
