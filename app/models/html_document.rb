@@ -22,7 +22,8 @@ class HtmlDocument < WebDocument
   end
 
   def thumbnail_url
-    metadata['og:image']&.first
+    url = metadata['og:image']&.first
+    url&.match?(URI::DEFAULT_PARSER.make_regexp) ? url : nil
   end
 
   def content_type
