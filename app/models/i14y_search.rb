@@ -102,10 +102,10 @@ class I14ySearch < FilterableSearch
     return unless response && response.status == I14Y_SUCCESS
 
     @total = response.metadata.total
-    I14yPostProcessor.new(@enable_highlighting,
-                          response.results,
-                          @affiliate.excluded_urls_set).post_process_results
+    post_processor = I14yPostProcessor.new(@enable_highlighting, response.results, @affiliate.excluded_urls_set)
+    post_processor.post_process_results
     @results = paginate(response.results)
+    @normalized_results = post_processor.normalized_results
     @startrecord = ((@page - 1) * @per_page) + 1
     @endrecord = @startrecord + @results.size - 1
     @spelling_suggestion = response.metadata.suggestion.text if response.metadata.suggestion.present?

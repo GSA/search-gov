@@ -6,6 +6,18 @@ describe WebResultsPostProcessor do
   let(:affiliate) { affiliates(:basic_affiliate) }
   let(:post_processor) { described_class.new('foo', affiliate, results) }
 
+  describe '#normalized_results' do
+    let(:results) do
+      results = []
+      5.times { |index| results << Hashie::Mash::Rash.new(title: "title #{index}", content: "content #{index}", unescaped_url: "http://foo.gov/#{index}") }
+      results
+    end
+
+    it_behaves_like 'a search with normalized results' do
+      let(:normalized_results) { post_processor.normalized_results }
+    end
+  end
+
   describe '#post_processed_results' do
     context 'when results contain excluded URLs' do
       let(:excluded_url) { 'http://www.uspto.gov/web.html' }

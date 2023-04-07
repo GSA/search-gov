@@ -14,6 +14,16 @@ class I14yPostProcessor < ResultsWithBodyAndDescriptionPostProcessor
     strip_highlighting unless @enable_highlighting
   end
 
+  def normalized_results
+    @results.map do |result|
+      {
+        title: result['title'],
+        url: result['link'],
+        description: result['body']
+      }
+    end
+  end
+
   protected
 
   def override_plain_description_with_highlighted_body

@@ -1,4 +1,4 @@
-require 'github/markdown'
+require 'redcarpet'
 
 module Haml::Filters
   remove_filter 'Markdown'
@@ -7,7 +7,8 @@ module Haml::Filters
     include Haml::Filters::Base
 
     def render(text)
-      ::GitHub::Markdown.render text
+      markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, tables: true)
+      markdown.render(text)
     end
   end
 end
