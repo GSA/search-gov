@@ -11,11 +11,11 @@ import { Identifier } from './Identifier/Identifier';
 interface SearchResultsLayoutProps {
   results: {
     title: string,
-    unescapedUrl: string,
+    url: string,
     thumbnail: {
       url: string
     },
-    content: string
+    description: string
   }[];
   vertical: string;
   params: {

@@ -22,7 +22,8 @@ class Search
               :spelling_suggestion_eligible,
               :queried_at_seconds,
               :module_tag,
-              :modules
+              :modules,
+              :normalized_results
 
   def initialize(options = {})
     @affiliate = options[:affiliate]
@@ -30,6 +31,7 @@ class Search
     initialize_pageable_attributes options
 
     @results, @spelling_suggestion = [], nil
+    @normalized_results = []
     @queried_at_seconds = Time.now.to_i
     @modules = []
     @spelling_suggestion_eligible = !SuggestionBlock.exists?(query: options[:query])
