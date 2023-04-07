@@ -25,9 +25,9 @@ class WebSearch < Search
   def to_hash
     hash = super
     unless @error_message
-      hash.merge!(:spelling_suggestion => @spelling_suggestion) if @spelling_suggestion
-      hash.merge!(:boosted_results => boosted_contents.results) if has_boosted_contents?
-      hash.merge!(:jobs => jobs) if jobs.present?
+      hash[:spelling_suggestion] = @spelling_suggestion if @spelling_suggestion
+      hash[:boosted_results] = boosted_contents.results if has_boosted_contents?
+      hash[:jobs] = jobs if jobs.present?
     end
     hash
   end
@@ -37,6 +37,7 @@ class WebSearch < Search
   end
 
   protected
+
   def search_engine_klass(search_engine_option)
     "#{search_engine_option}#{get_vertical.to_s.classify}Search".constantize
   end
@@ -46,8 +47,12 @@ class WebSearch < Search
   end
 
   def handle_response(response)
-    @total = response.total rescue 0
-    available_search_engine_pages = (@total/@per_page.to_f).ceil
+    @total = begin
+      response.total
+    rescue
+      0
+    end
+    available_search_engine_pages = (@total / @per_page.to_f).ceil
     backfill_with_odie(available_search_engine_pages) if backfill_needed? && social_image_feeds_checked?
     handle_search_engine_response(response) if available_search_engine_pages >= @page
     assign_module_tag
@@ -98,7 +103,7 @@ class WebSearch < Search
     @startrecord = response.start_record
     @results = paginate(post_process_results(response.results))
     @endrecord = response.end_record
-    assign_spelling_suggestion_if_eligible response.spelling_suggestion
+    assign_spelling_suggestion_if_eligible(response.spelling_suggestion)
     @tracking_information = response.tracking_information
   end
 
@@ -108,13 +113,13 @@ class WebSearch < Search
 
   def assign_module_tag
     @module_tag = nil
-    if @total > 0
-      if @indexed_results.present?
-        @module_tag = local_index_module_tag
-      else
-        @module_tag = module_tag_for_search_engine
-      end
-    end
+    return unless @total.positive?
+
+    @module_tag = if @indexed_results.present?
+                    local_index_module_tag
+                  else
+                    module_tag_for_search_engine
+                  end
   end
 
   def local_index_module_tag
@@ -145,7 +150,8 @@ class WebSearch < Search
 
   def spelling_suggestion_modules
     return [] unless spelling_suggestion
-    commercial_results? ? %w(OVER BSPEL) : %w(LOVER SPEL)
+
+    commercial_results? ? %w[OVER BSPEL] : %w[LOVER SPEL]
   end
 
   def odie_search_class
@@ -167,5 +173,4 @@ class WebSearch < Search
   def social_image_feeds_checked?
     true
   end
-
 end

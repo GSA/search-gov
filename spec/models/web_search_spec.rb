@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 describe WebSearch do
-  fixtures :affiliates, :site_domains
   let(:affiliate) { affiliates(:usagov_affiliate) }
   let(:valid_options) do
     { query: 'government', affiliate: affiliate }
@@ -19,7 +18,7 @@ describe WebSearch do
     end
 
     it 'does not require a query' do
-      described_class.new(affiliate: affiliate)
+      expect { described_class.new(affiliate: affiliate) }.not_to raise_error
     end
 
     it 'ignores invalid params' do
@@ -437,7 +436,7 @@ describe WebSearch do
 
           it 'includes the included domains' do
             search.results.each do |result|
-              expect(result['unescapedUrl']).to match(%r{justice.gov})
+              expect(result['unescapedUrl']).to match(/justice.gov/)
             end
           end
 
@@ -455,13 +454,13 @@ describe WebSearch do
 
           it 'includes the included domains' do
             search.results.each do |result|
-              expect(result['unescapedUrl']).to match(%r{nasa.gov})
+              expect(result['unescapedUrl']).to match(/nasa.gov/)
             end
           end
 
           it 'excludes the excluded domains' do
             search.results.each do |result|
-              expect(result['unescapedUrl']).not_to match(%r{mars.nasa.gov})
+              expect(result['unescapedUrl']).not_to match(/mars.nasa.gov/)
             end
           end
         end
@@ -473,13 +472,13 @@ describe WebSearch do
 
           it 'includes the included domains' do
             search.results.each do |result|
-              expect(result['unescapedUrl']).to match(%r{.gov})
+              expect(result['unescapedUrl']).to match(/.gov/)
             end
           end
 
           it 'excludes the excluded domains' do
             search.results.each do |result|
-              expect(result['unescapedUrl']).not_to match(%r{nasa.gov})
+              expect(result['unescapedUrl']).not_to match(/nasa.gov/)
             end
           end
         end
@@ -495,7 +494,7 @@ describe WebSearch do
 
           it 'includes the included domains' do
             search.results.each do |result|
-              expect(result['unescapedUrl']).to match(%r{justice.gov})
+              expect(result['unescapedUrl']).to match(/justice.gov/)
             end
           end
 
@@ -514,14 +513,14 @@ describe WebSearch do
 
           it 'includes the included domains' do
             search.results.each do |result|
-              expect(result['unescapedUrl']).to match(%r{nasa.gov})
+              expect(result['unescapedUrl']).to match(/nasa.gov/)
             end
           end
 
           # Pending: https://www.pivotaltracker.com/story/show/139210497
           xit 'excludes the excluded domains' do
             search.results.each do |result|
-              expect(result['unescapedUrl']).not_to match(%r{mars.nasa.gov})
+              expect(result['unescapedUrl']).not_to match(/mars.nasa.gov/)
             end
           end
         end
@@ -533,14 +532,14 @@ describe WebSearch do
 
           it 'includes the included domains' do
             search.results.each do |result|
-              expect(result['unescapedUrl']).to match(%r{.gov})
+              expect(result['unescapedUrl']).to match(/.gov/)
             end
           end
 
           # Pending: https://www.pivotaltracker.com/story/show/139210497
           xit 'excludes the excluded domains' do
             search.results.each do |result|
-              expect(result['unescapedUrl']).not_to match(%r{nasa.gov})
+              expect(result['unescapedUrl']).not_to match(/nasa.gov/)
             end
           end
         end

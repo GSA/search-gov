@@ -30,18 +30,18 @@ class OdieSearch < Search
   end
 
   def handle_response(response)
-    if response
-      @total = response.total
-      @results = paginate(process_results(response))
-      @startrecord = ((@page - 1) * @per_page) + 1
-      @endrecord = @startrecord + @results.size - 1
-      @module_tag = @total > 0 ? default_module_tag : nil
-    end
+    return unless response
+
+    @total = response.total
+    @results = paginate(process_results(response))
+    @startrecord = ((@page - 1) * @per_page) + 1
+    @endrecord = @startrecord + @results.size - 1
+    @module_tag = @total.positive? ? default_module_tag : nil
   end
 
   def process_results(response)
     response.results.collect do |result|
-      content_field = !(has_highlight?(result.description)) && has_highlight?(result.body) ? result.body : result.description
+      content_field = !highlighted?(result.description) && highlighted?(result.body) ? result.body : result.description
       {
         'title' => result.title,
         'unescapedUrl' => result.url,
@@ -52,7 +52,7 @@ class OdieSearch < Search
 
   protected
 
-  def has_highlight?(field)
+  def highlighted?(field)
     field =~ /\uE000/
   end
 
