@@ -48,44 +48,50 @@ class WebSearch < Search
   def handle_response(response)
     @total = response.total rescue 0
     available_search_engine_pages = (@total/@per_page.to_f).ceil
-
-    if backfill_needed? and social_image_feeds_checked?
-      odie_search = initialize_odie_search(available_search_engine_pages)
-      odie_response = run_odie_search_and_handle_response(odie_search, available_search_engine_pages)
-      if odie_response && odie_response.total.zero? && (suggestion = odie_response.spelling_suggestion)
-        odie_search = initialize_odie_search(available_search_engine_pages, suggestion)
-        run_odie_search_and_handle_response(odie_search, available_search_engine_pages)
-        assign_spelling_suggestion_if_eligible(suggestion) if @indexed_results
-      end
-    end
-
+    backfill_with_odie(available_search_engine_pages) if backfill_needed? && social_image_feeds_checked?
     handle_search_engine_response(response) if available_search_engine_pages >= @page
     assign_module_tag
   end
 
+  def backfill_with_odie(available_search_engine_pages)
+    odie_search = initialize_odie_search(available_search_engine_pages)
+    odie_response = run_odie_search_and_handle_response(odie_search, available_search_engine_pages)
+    return unless odie_response&.total&.zero? && (suggestion = odie_response.spelling_suggestion)
+
+    odie_search_with_spelling_suggestions(available_search_engine_pages, suggestion)
+  end
+
   def initialize_odie_search(available_search_engine_pages, query = nil)
-    odie_search_params = @options.merge(per_page: self.default_per_page,
+    @per_page = OdieSearch.default_per_page
+    odie_search_params = @options.merge(per_page: @per_page,
                                         page: [@page - available_search_engine_pages, 1].max)
     odie_search_params[:query] = query if query
-    odie_search_class.new odie_search_params
+    odie_search_class.new(odie_search_params)
   end
 
   def run_odie_search_and_handle_response(odie_search, available_search_engine_pages)
     odie_response = odie_search.search
-    if odie_response and odie_response.total > 0
-      adjusted_total = available_search_engine_pages * @per_page + odie_response.total
-      if @total <= @per_page * (@page - 1) and available_search_engine_pages < @page
-        temp_total = @total
-        @total = adjusted_total
-        @results = paginate(odie_search.process_results(odie_response))
-        @total = temp_total
-        @startrecord = (@page -1) * @per_page + 1
-        @endrecord = @startrecord + odie_response.results.size - 1
-        @indexed_results = odie_response
+    if odie_response&.total&.positive?
+      adjusted_total = (available_search_engine_pages * @per_page) + odie_response.total
+      if @total <= @per_page * (@page - 1) && available_search_engine_pages < @page
+        paginate_odie_response(odie_search, odie_response)
       end
       @total = adjusted_total
     end
     odie_response
+  end
+
+  def paginate_odie_response(odie_search, odie_response)
+    @results = paginate(odie_search.process_results(odie_response))
+    @startrecord = ((@page - 1) * @per_page) + 1
+    @endrecord = @startrecord + odie_response.results.size - 1
+    @indexed_results = odie_response
+  end
+
+  def odie_search_with_spelling_suggestions(available_search_engine_pages, suggestion)
+    odie_search = initialize_odie_search(available_search_engine_pages, suggestion)
+    run_odie_search_and_handle_response(odie_search, available_search_engine_pages)
+    assign_spelling_suggestion_if_eligible(suggestion) if @indexed_results
   end
 
   def handle_search_engine_response(response)

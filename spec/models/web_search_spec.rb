@@ -240,79 +240,84 @@ describe WebSearch do
       end
     end
 
-    context 'when the affiliate has no Bing/Google results, but has indexed documents' do
-      let(:non_affiliate) { affiliates(:non_existent_affiliate) }
-
-      before do
-        ElasticIndexedDocument.recreate_index
-        non_affiliate.site_domains.create(domain: 'nonsense.com')
-        non_affiliate.indexed_documents.destroy_all
-        1.upto(15) do |index|
-          non_affiliate.indexed_documents << IndexedDocument.new(title: "Indexed Result no_result #{index}",
-                                                                 url: "http://nonsense.com/#{index}.html",
-                                                                 description: 'This is an indexed result no_result.',
-                                                                 last_crawl_status: IndexedDocument::OK_STATUS)
-        end
-        ElasticIndexedDocument.commit
-        expect(non_affiliate.indexed_documents.size).to eq(15)
-        expect(ElasticIndexedDocument.search_for(q: 'indexed', affiliate_id: non_affiliate.id, language: non_affiliate.indexing_locale).total).to eq(15)
-      end
-
-      it 'fills the results with the Odie docs' do
-        search = described_class.new(query: 'no_results', affiliate: non_affiliate)
-        search.run
-        expect(search.total).to eq(15)
-        expect(search.startrecord).to eq(1)
-        expect(search.endrecord).to eq(10)
-        expect(search.results.first['unescapedUrl']).to match(/nonsense.com/)
-        expect(search.results.last['unescapedUrl']).to match(/nonsense.com/)
-        expect(search.module_tag).to eq('AIDOC')
-      end
-    end
-
-    context 'when affiliate has no Bing/Google results and IndexedDocuments search returns nil' do
+    context 'when the affiliate has no Bing/Google results' do
       let(:non_affiliate) { affiliates(:non_existent_affiliate) }
       let(:search) { described_class.new(query: 'no_results', affiliate: non_affiliate) }
 
       before do
-        non_affiliate.boosted_contents.destroy_all
-        allow(ElasticIndexedDocument).to receive(:search_for).and_return nil
+        bing_api_url = "#{BingV7WebSearch::API_HOST}#{BingV7WebSearch::API_ENDPOINT}"
+        stub_request(:get, /#{bing_api_url}.*no_results/).
+          to_return(status: 200, body: '{}')
       end
 
-      it 'returns a search with a zero total' do
-        search.run
-        expect(search.total).to eq(0)
-        expect(search.results).not_to be_nil
-        expect(search.results).to be_empty
-        expect(search.startrecord).to be_nil
-        expect(search.endrecord).to be_nil
+      context 'when the affiliate has indexed documents' do
+        before do
+          ElasticIndexedDocument.recreate_index
+          non_affiliate.site_domains.create(domain: 'nonsense.com')
+          non_affiliate.indexed_documents.destroy_all
+          1.upto(25) do |index|
+            non_affiliate.indexed_documents << IndexedDocument.new(title: "Indexed Result no_result #{index}",
+                                                                   url: "http://nonsense.com/#{index}.html",
+                                                                   description: 'This is an indexed result no_result.',
+                                                                   last_crawl_status: IndexedDocument::OK_STATUS)
+          end
+          ElasticIndexedDocument.commit
+        end
+
+        it 'fills the results with the Odie docs' do
+          search.run
+          expect(search.total).to eq(25)
+          expect(search.startrecord).to eq(1)
+          expect(search.endrecord).to eq(20)
+          expect(search.results.first['unescapedUrl']).to match(/nonsense.com/)
+          expect(search.results.last['unescapedUrl']).to match(/nonsense.com/)
+          expect(search.module_tag).to eq('AIDOC')
+        end
       end
 
-      it 'still returns true when searching' do
-        expect(search.run).to be true
+      context 'when the IndexedDocuments search returns nil' do
+        before do
+          non_affiliate.boosted_contents.destroy_all
+          allow(ElasticIndexedDocument).to receive(:search_for).and_return nil
+        end
+
+        it 'returns a search with a zero total' do
+          search.run
+          expect(search.total).to eq(0)
+          expect(search.results).not_to be_nil
+          expect(search.results).to be_empty
+          expect(search.startrecord).to be_nil
+          expect(search.endrecord).to be_nil
+        end
+
+        it 'still returns true when searching' do
+          expect(search.run).to be true
+        end
+
+        it 'populates additional results' do
+          expect(search).to receive(:populate_additional_results).and_return true
+          search.run
+        end
       end
 
-      it 'populates additional results' do
-        expect(search).to receive(:populate_additional_results).and_return true
-        search.run
-      end
-    end
+      context 'when there is an orphan document in the Odie index' do
+        before do
+          ElasticIndexedDocument.recreate_index
+          non_affiliate.indexed_documents.destroy_all
+          odie = non_affiliate.indexed_documents.create!(title: 'PDF Title',
+                                                         description: 'PDF Description',
+                                                         url: 'http://nonsense.gov/pdf1.pdf',
+                                                         doctype: 'pdf',
+                                                         last_crawl_status: IndexedDocument::OK_STATUS)
+          ElasticIndexedDocument.commit
+          odie.delete
+        end
 
-    context 'when affiliate has no Bing/Google results and there is an orphan document in the Odie index' do
-      let(:non_affiliate) { affiliates(:non_existent_affiliate) }
-
-      before do
-        ElasticIndexedDocument.recreate_index
-        non_affiliate.indexed_documents.destroy_all
-        odie = non_affiliate.indexed_documents.create!(title: 'PDF Title', description: 'PDF Description', url: 'http://nonsense.gov/pdf1.pdf', doctype: 'pdf', last_crawl_status: IndexedDocument::OK_STATUS)
-        ElasticIndexedDocument.commit
-        odie.delete
-      end
-
-      it 'returns with zero results' do
-        search = described_class.new(query: 'no_results', affiliate: non_affiliate)
-        search.run
-        expect(search.results).to be_blank
+        it 'returns with zero results' do
+          search = described_class.new(query: 'no_results', affiliate: non_affiliate)
+          search.run
+          expect(search.results).to be_blank
+        end
       end
     end
 
@@ -334,44 +339,77 @@ describe WebSearch do
 
       context 'when we want X Bing/Google results from page Y and there are 0 <= n < X of them' do
         let(:search) do
-          described_class.new(query: 'odie backfill page 2', affiliate: affiliate, page: 2)
+          described_class.new(query: 'odie backfill', affiliate: affiliate, page: page)
         end
+        let(:page) { 1 }
 
         before do
           ElasticIndexedDocument.recreate_index
 
           bing_api_url = "#{BingV6WebSearch::API_HOST}#{BingV6WebSearch::API_ENDPOINT}"
-          page2_6results = Rails.root.join('spec/fixtures/json/bing_v6/web_search/page2_6results.json').read
-          stub_request(:get, /#{bing_api_url}.*odie backfill page 2/).
-            to_return(status: 200, body: page2_6results)
+          page1_6results = Rails.root.join('spec/fixtures/json/bing_v6/web_search/page1_6results.json').read
+          stub_request(:get, /#{bing_api_url}.*odie backfill/).
+            to_return(status: 200, body: page1_6results)
         end
 
         context 'when the affiliate has social image feeds and there are Odie results' do
           before do
-            affiliate.indexed_documents.create!(
-              title: 'odie backfill page 2', description: 'odie backfill page 2',
-              url: 'http://nonsense.gov', last_crawl_status: IndexedDocument::OK_STATUS
-            )
+            21.times do |index|
+              affiliate.indexed_documents.create!(
+                title: "odie backfill #{index}",
+                description: "odie backfill #{index}",
+                url: "http://nonsense.gov/#{index}",
+                last_crawl_status: IndexedDocument::OK_STATUS
+              )
+            end
             ElasticIndexedDocument.commit
             allow(affiliate).to receive(:has_social_image_feeds?).and_return true
           end
 
-          it 'indicates that there is another page of results' do
-            search.run
-            expect(search.total).to be >= 20
-            expect(search.results.size).to be == 6
-            expect(search.startrecord).to be == 11
-            expect(search.endrecord).to be == 16
+          context 'when returning the first page with commercial results' do
+            it 'indicates via the search.total that there is another page of results' do
+              search.run
+              expect(search.total).to be >= 20
+              expect(search.results.size).to be == 6
+              expect(search.startrecord).to be == 1
+              expect(search.endrecord).to be == 6
+            end
+          end
+
+          context 'when returning the second page' do
+            let(:page) { 2 }
+
+            it 'returns the Odie results' do
+              search.run
+              expect(search.results.sample['title']).to match(/odie/)
+              expect(search.total).to be >= 20
+              expect(search.results.size).to be == 20
+              expect(search.startrecord).to be == 21
+              expect(search.endrecord).to be == 40
+            end
+          end
+
+          context 'when returning the third page' do
+            let(:page) { 3 }
+
+            it 'returns the remaining Odie result' do
+              search.run
+              expect(search.results.sample['title']).to match(/odie/)
+              expect(search.total).to be >= 20
+              expect(search.results.size).to be == 1
+              expect(search.startrecord).to be == 41
+              expect(search.endrecord).to be == 41
+            end
           end
         end
 
         context 'when there are no Odie results' do
           it 'returns the X Bing/Google results' do
             search.run
-            expect(search.total).to be >= 20
+            expect(search.total).to be == 6
             expect(search.results.size).to be == 6
-            expect(search.startrecord).to be == 11
-            expect(search.endrecord).to be == 16
+            expect(search.startrecord).to be == 1
+            expect(search.endrecord).to be == 6
           end
         end
       end

@@ -46,7 +46,7 @@ describe OdieImageSearch do
 
   describe '.cache_key' do
     it 'should output a key based on the query, affiliate id, and page parameters' do
-      expect(described_class.new(query: 'element', affiliate: affiliate, page: 4).cache_key).to eq("oasis_image:element:#{affiliate.id}:4:10")
+      expect(described_class.new(query: 'element', affiliate: affiliate, page: 4).cache_key).to eq("oasis_image:element:#{affiliate.id}:4:20")
     end
   end
 
@@ -58,7 +58,7 @@ describe OdieImageSearch do
       end
 
       it 'should create an OasisSearch with the MRSS feed names' do
-        expect(OasisSearch).to receive(:new).with(query: 'element', per_page: 10, offset: 0, mrss_names: ['13'],
+        expect(OasisSearch).to receive(:new).with(query: 'element', per_page: 20, offset: 0, mrss_names: ['13'],
                                                   flickr_users: [], flickr_groups: [])
         described_class.new(query: 'element', affiliate: affiliate)
       end

@@ -2,6 +2,10 @@ class OdieSearch < Search
   include DefaultModuleTaggable
 
   self.default_module_tag = 'AIDOC'.freeze
+  # NOTE: For Odie backfill to work on blended sites with commercial results, Odie's default_per_page should
+  # remain the same as that of commercial engines. As of 4/2023, the only commercial search engine is
+  # Bing, with a count of `20`.
+  self.default_per_page = 20
   attr_reader :document_collection
 
   def initialize(options = {})
