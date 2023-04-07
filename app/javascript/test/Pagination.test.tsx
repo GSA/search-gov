@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import React from 'react';
 
-import { UswdsPagination } from '../components/Pagination/UswdsPagination';
+import { UswdsPagination } from '../components/UswdsOverrides/UswdsPagination';
 
 describe('Pagination component', () => {
   const testPages = 24;

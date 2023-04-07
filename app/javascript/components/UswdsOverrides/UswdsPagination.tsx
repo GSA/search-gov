@@ -5,6 +5,8 @@ import React from 'react';
 import classnames from 'classnames';
 import { Icon, Link, Button } from '@trussworks/react-uswds';
 
+import { getUriWithParam } from '../../utils';
+
 type PaginationProps = {
   pathname: string // pathname of results page
   totalPages: number // total items divided by items per page
@@ -17,14 +19,6 @@ type PaginationProps = {
     page: number
   ) => void
 }
-
-const getUriWithParam = (baseUrl: string, urlParam: string, urlParamQuery: string): string => {
-  const Url = new URL(baseUrl);
-  const urlParams: URLSearchParams = new URLSearchParams(Url.search);
-  urlParams.set(urlParam, urlParamQuery);
-  Url.search = urlParams.toString();
-  return Url.toString();
-};
 
 const PaginationPage = ({
   page,

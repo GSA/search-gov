@@ -1,18 +1,14 @@
 import React from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
-import { UswdsPagination } from './UswdsPagination';
+import { UswdsPagination } from '../UswdsOverrides/UswdsPagination';
+
+import { getCurrentPage } from '../../utils';
 
 import './Pagination.css';
 interface PaginationProps {
   pathname: string
   totalPages: number
 }
-
-const getCurrentPage = (): number => {
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
-  return Number(urlParams.get('page')) ? Number(urlParams.get('page')) : 1;
-};
 
 export const Pagination = (props: PaginationProps) => {
   return (
