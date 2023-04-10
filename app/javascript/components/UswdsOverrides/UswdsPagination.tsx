@@ -1,5 +1,5 @@
 /* eslint-disable id-length, complexity, no-plusplus, max-statements, no-undef */
-/* Above eslint rules are disabled as this file which is from USWDS library is being overriden so disabled few rules so as we can override the needed behaviour without much changes */
+/* Above eslint rules are disabled as this file which is from USWDS library - https://github.com/trussworks/react-uswds/blob/main/src/components/Pagination/Pagination.tsx is being overriden so disabled few rules so as we can override the needed behaviour without much changes */
 
 import React from 'react';
 import classnames from 'classnames';
@@ -55,7 +55,6 @@ const PaginationPage = ({
         </Button>
       ) : (
         <Link
-          // href={`${pathname}&page=${page}`} 
           href={getUriWithParam(window.location.href, 'page', page.toString())}  
           className={linkClasses}
           aria-label={`Page ${page}`}
@@ -181,7 +180,6 @@ export const UswdsPagination = ({
               </Button>
             ) : (
               <Link
-                // href={`${pathname}&page=${prevPage}`} 
                 href={getUriWithParam(window.location.href, 'page', prevPage.toString())}
                 className="usa-pagination__link usa-pagination__previous-page"
                 aria-label="Previous page">
@@ -220,7 +218,6 @@ export const UswdsPagination = ({
               </Button>
             ) : (
               <Link
-                // href={`${pathname}&page=${nextPage}`}
                 href={getUriWithParam(window.location.href, 'page', nextPage.toString())}
                 className="usa-pagination__link usa-pagination__next-page"
                 aria-label="Next page">

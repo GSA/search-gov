@@ -15,6 +15,8 @@ interface ResultsProps {
 }
 
 export const Results = (props: ResultsProps) => {
+  const totalPages = 10; // to do: updated once we get pagination data from the backend
+  
   return (
     <>
       <div id="serp-results-wrapper">
@@ -41,9 +43,9 @@ export const Results = (props: ResultsProps) => {
           })}
         </div>
       </div>
-      {props.results.length > 0 && 
+      {totalPages > 0 && 
         <Pagination 
-          totalPages={props.results.length}
+          totalPages={totalPages}
           pathname={window.location.href}
         />
       }
