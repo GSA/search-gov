@@ -38,8 +38,8 @@ export const Results = (props: ResultsProps) => {
                       July 4th, 2022
                     </div>
                     <div className='result-title'>
-                      <a href={result.url} >
-                        <h2>{result.title}</h2>
+                      <a href={result.url} className='result-title-link'>
+                        <h2 className='result-title-label'>{result.title}</h2>
                       </a>
                     </div>
                     <div className='result-desc'>
