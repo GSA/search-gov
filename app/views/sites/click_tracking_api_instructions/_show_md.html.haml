@@ -31,14 +31,16 @@
 
   Please note that we only support the `application/x-www-form-urlencoded` content type. A full example is below.
 
-  ```
-  curl -i -X POST \
-  -H "Content-Type: application/x-www-form-urlencoded" \
-  -H "Content-Length: 0" \
-  -A "user agent string" \
-  "https://api.gsa.gov/technology/searchgov/v2/clicks/?url=https://foo.gov/clicked&affiliate=#{h(@site.name)}&access_key=#{h(@site.api_access_key)}&module_code=BOOS&query=test%20query&position=1"
-  ```
+%pre
+  %code
+    :preserve
+      curl -i -X POST \
+      -H "Content-Type: application/x-www-form-urlencoded" \
+      -H "Content-Length: 0" \
+      -A "user agent string" \
+      "https://api.gsa.gov/technology/searchgov/v2/clicks/?url=https://foo.gov/clicked&affiliate=#{h(@site.name)}&access_key=#{h(@site.api_access_key)}&module_code=BOOS&query=test%20query&position=1"
 
+:markdown
   ## Terms of Service
 
   By using this API, you agree to our [Terms of Service](https://search.gov/tos.html).

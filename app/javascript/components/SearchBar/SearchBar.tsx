@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
 
 import { VerticalNav } from './../VerticalNav/VerticalNav';
+import { getUriWithParam } from '../../utils';
 
 import './SearchBar.css';
 
@@ -10,21 +11,13 @@ interface SearchBarProps {
   query: string
   results: {
     title: string,
-    unescapedUrl: string,
+    url: string,
     thumbnail: {
       url: string
     },
-    content: string
+    description: string
   }[];
 }
-
-const getUriWithParam = (baseUrl: string, urlParam: string, urlParamQuery: string): string => {
-  const Url = new URL(baseUrl);
-  const urlParams: URLSearchParams = new URLSearchParams(Url.search);
-  urlParams.set(urlParam, urlParamQuery);
-  Url.search = urlParams.toString();
-  return Url.toString();
-};
 
 export const SearchBar = (props: SearchBarProps) => {
   const [searchQuery, setSearchQuery] = useState(props.query);
