@@ -22,9 +22,10 @@ export const Results = (props: ResultsProps) => {
   return (
     <>
       <div className='search-result-wrapper'>
+        <div id="results">
           {props.results.map((result, index) => {
             return (
-              <GridContainer key={index} className='search-result-item'>
+              <GridContainer key={index} className='result search-result-item'>
                 <Grid row gap="md">
                   { props.vertical === 'image' &&
                   <Grid mobileLg={{ col: 4 }} className='result-thumbnail'>
@@ -32,6 +33,7 @@ export const Results = (props: ResultsProps) => {
                   </Grid>
                   }
                   <Grid col={true} className='result-meta-data'>
+                    {/* This date need to be dynamic */}
                     <div className='published-date'>
                       July 4th, 2022
                     </div>
@@ -49,6 +51,7 @@ export const Results = (props: ResultsProps) => {
               </GridContainer>
             );
           })}
+        </div>
       </div>
       {totalPages > 0 && 
         <Pagination 
