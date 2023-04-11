@@ -46,8 +46,10 @@ class BlendedSearch < FilterableSearch
   def handle_response(response)
     if response
       @total = response.total
-      ResultsWithBodyAndDescriptionPostProcessor.new(response.results).post_process_results
+      post_processor = ResultsWithBodyAndDescriptionPostProcessor.new(response.results)
+      post_processor.post_process_results
       @results = paginate(response.results)
+      @normalized_results = post_processor.normalized_results
       @startrecord = ((@page - 1) * @per_page) + 1
       @endrecord = @startrecord + @results.size - 1
       assign_spelling_suggestion_if_eligible(response.suggestion.text) if response.suggestion.present?

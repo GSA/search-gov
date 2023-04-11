@@ -10,11 +10,11 @@ interface SearchBarProps {
   query: string
   results: {
     title: string,
-    unescapedUrl: string,
+    url: string,
     thumbnail: {
       url: string
     },
-    content: string
+    description: string
   }[];
 }
 
