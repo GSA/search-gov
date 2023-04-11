@@ -71,7 +71,7 @@ class WebSearch < Search
     odie_search_params = @options.merge(per_page: @per_page,
                                         page: [@page - available_search_engine_pages, 1].max)
     odie_search_params[:query] = query if query
-    odie_search_class.new(odie_search_params)
+    OdieSearch.new(odie_search_params)
   end
 
   def run_odie_search_and_handle_response(odie_search, available_search_engine_pages)
@@ -153,10 +153,6 @@ class WebSearch < Search
     return [] unless spelling_suggestion
 
     commercial_results? ? %w[OVER BSPEL] : %w[LOVER SPEL]
-  end
-
-  def odie_search_class
-    OdieSearch
   end
 
   def get_vertical
