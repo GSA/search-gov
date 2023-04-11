@@ -343,10 +343,11 @@ describe WebSearch do
         let(:page) { 1 }
 
         before do
+          affiliate.search_engine = 'BingV7'
           ElasticIndexedDocument.recreate_index
 
-          bing_api_url = "#{BingV6WebSearch::API_HOST}#{BingV6WebSearch::API_ENDPOINT}"
-          page1_6results = Rails.root.join('spec/fixtures/json/bing_v6/web_search/page1_6results.json').read
+          bing_api_url = "#{BingV7WebSearch::API_HOST}#{BingV7WebSearch::API_ENDPOINT}"
+          page1_6results = Rails.root.join('spec/fixtures/json/bing_v7/web_search/page1_6results.json').read
           stub_request(:get, /#{bing_api_url}.*odie backfill/).
             to_return(status: 200, body: page1_6results)
         end
@@ -363,11 +364,12 @@ describe WebSearch do
             end
             ElasticIndexedDocument.commit
             allow(affiliate).to receive(:has_social_image_feeds?).and_return true
+
+            search.run
           end
 
           context 'when returning the first page with commercial results' do
             it 'indicates via the search.total that there is another page of results' do
-              search.run
               expect(search.total).to be >= 20
               expect(search.results.size).to be == 6
               expect(search.startrecord).to be == 1
@@ -379,7 +381,6 @@ describe WebSearch do
             let(:page) { 2 }
 
             it 'returns the Odie results' do
-              search.run
               expect(search.results.sample['title']).to match(/odie/)
               expect(search.total).to be >= 20
               expect(search.results.size).to be == 20
@@ -392,7 +393,6 @@ describe WebSearch do
             let(:page) { 3 }
 
             it 'returns the remaining Odie result' do
-              search.run
               expect(search.results.sample['title']).to match(/odie/)
               expect(search.total).to be >= 20
               expect(search.results.size).to be == 1
@@ -403,8 +403,11 @@ describe WebSearch do
         end
 
         context 'when there are no Odie results' do
-          it 'returns the X Bing/Google results' do
+          before do
             search.run
+          end
+
+          it 'returns the X Bing/Google results' do
             expect(search.total).to be == 6
             expect(search.results.size).to be == 6
             expect(search.startrecord).to be == 1
