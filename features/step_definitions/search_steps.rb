@@ -31,16 +31,14 @@ Then /^I should see a left aligned menu button$/ do
 end
 
 When /^I search for "(.+?)"$/ do |query|
-  steps %{
+  steps %(
     When I fill in "query" with "#{query}"
     And I press "Search" within the search box
-  }
+  )
 end
 
 When /^I search for "(.+?)" in the redesigned search page$/ do |query|
-  steps %{
-    When I fill in "searchQuery" with "#{query}"
-  }
+  steps %( When I fill in "searchQuery" with "#{query}" )
   find('button[data-testid="search-submit-btn"]').click
 end
 
