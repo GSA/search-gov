@@ -37,6 +37,13 @@ When /^I search for "(.+?)"$/ do |query|
   }
 end
 
+When /^I search for "(.+?)" in the redesigned search page$/ do |query|
+  steps %{
+    When I fill in "searchQuery" with "#{query}"
+  }
+  find('button[data-testid="search-submit-btn"]').click
+end
+
 Then /every result URL should match "(.+?)"$/ do |str|
   results = page.find_all('.content-block-item.result')
   results.each { |result| result.should have_link(href: %r{#{str}}i) }
