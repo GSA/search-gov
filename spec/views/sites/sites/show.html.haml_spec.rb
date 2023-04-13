@@ -35,6 +35,8 @@ describe 'sites/sites/show' do
       end
     end
 
+    # Potential code zombie - the "trending URLs" feature has been broken for years,
+    # in both the admin center and super admin: https://search.usa.gov/admin/trending_urls
     context 'when Discovery Tag trending URLs are available for today' do
       let(:trending_urls) { %w[http://www.gov.gov/url1.html http://www.gov.gov/this/url/is/really/extremely/long/for/some/reason/url2.html] }
 
@@ -45,10 +47,13 @@ describe 'sites/sites/show' do
       it 'should show them truncated in an ordered list without URL protocol' do
         render
         expect(rendered).to have_selector('h3', text: 'Trending URLs')
-        expect(rendered).to have_selector('ol#trending_urls li', count: 2) do |lis|
-          expect(lis[0]).to have_selector('a', text: 'www.gov.gov/url1.html', href: trending_urls[0])
-          expect(lis[1]).to have_selector("a[href=\"#{trending_urls[1]}\"]", text: 'www.gov.gov/this/url/is/really/.../long/for/some/reason/url2.html')
-        end
+        expect(rendered).to have_selector('ol#trending_urls li', count: 2)
+        lis = Capybara.string(rendered).find_css('ol#trending_urls li')
+        expect(lis[0]).to have_link('www.gov.gov/url1.html', href: trending_urls[0])
+        expect(lis[1]).to have_link(
+          'www.gov.gov/this/url/is/really/.../long/for/some/reason/url2.html',
+          href: trending_urls[1]
+        )
       end
 
     end
@@ -92,12 +97,17 @@ describe 'sites/sites/show' do
       it 'should show them in an ordered list' do
         render
         expect(rendered).to have_selector('h3', text: 'Top Clicked URLs')
-        expect(rendered).to have_selector('ol#top_urls li', count: 2) do |lis|
-          expect(lis[0].inner_text).to eq('www.gov.gov/clicked_url4.html [20]')
-          expect(lis[1].inner_text).to eq('www.gov.gov/this/url/is/really/.../some/reason/clicked_url5.html [10]')
-          expect(lis[0]).to have_selector("a[href='http://www.gov.gov/clicked_url4.html']", text: 'www.gov.gov/clicked_url4.html')
-          expect(lis[1]).to have_selector("a[href='http://www.gov.gov/this/url/is/really/extremely/long/for/some/reason/clicked_url5.html']", text: 'www.gov.gov/this/url/is/really/.../some/reason/clicked_url5.html')
-        end
+        expect(rendered).to have_selector('ol#top_urls li', count: 2)
+
+        lis = Capybara.string(rendered).find_css('ol#top_urls li')
+        expect(lis[0]).to have_link(
+          'www.gov.gov/clicked_url4.html',
+          href: 'http://www.gov.gov/clicked_url4.html'
+        )
+        expect(lis[1]).to have_link(
+          'www.gov.gov/this/url/is/really/.../some/reason/clicked_url5.html',
+          href: 'http://www.gov.gov/this/url/is/really/extremely/long/for/some/reason/clicked_url5.html'
+        )
       end
     end
 
