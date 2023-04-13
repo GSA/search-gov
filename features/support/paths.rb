@@ -12,8 +12,8 @@ module NavigationHelpers
       search_path
     when /^(.*)'s search page$/
       search_path(:affiliate => $1)
-    when /^(.*)'s redesigned search page with "([^"]*)" query$/
-      search_path(:affiliate => $1, :query => $2, :redesign => 'true')
+    when /^(.*)'s redesigned search page$/
+      search_path(:affiliate => $1, :redesign => 'true')
     when /^(.*)'s advanced search page$/
       advanced_search_path(:affiliate => $1)
     when /^(.*)'s search page with unsanitized "([^"]*)" query$/
@@ -22,18 +22,18 @@ module NavigationHelpers
       search_path(:affiliate => $1, :sitelimit => $2)
     when /^(.*)'s image search page$/
       image_search_path(:affiliate => $1)
-    when /^(.*)'s redesigned image search page with "([^\"]*)" query$/
-      image_search_path(:affiliate => $1, :query => $2, :redesign => 'true')
+    when /^(.*)'s redesigned image search page$/
+      image_search_path(:affiliate => $1, :redesign => 'true')
     when /^(.*)'s news search page$/
       news_search_path(:affiliate => $1)
-    when /^(.*)'s redesigned news search page with "([^\"]*)" query$/
-      news_search_path(:affiliate => $1, :query => $2, :redesign => 'true')
+    when /^(.*)'s redesigned news search page$/
+      news_search_path(:affiliate => $1, :redesign => 'true')
     when /^(.*)'s "([^"]*)" news search page$/
       news_search_path(:affiliate => $1, :channel => Affiliate.find_by_name($1).rss_feeds.find_by_name($2))
     when /^(.*)'s docs search page$/
       docs_search_path(:affiliate => $1)
-    when /^(.*)'s redesigned docs search page with "([^\"]*)" query$/
-      docs_search_path(:affiliate => $1, :query => $2, :redesign => 'true')
+    when /^(.*)'s redesigned docs search page$/
+      docs_search_path(:affiliate => $1, :redesign => 'true')
     when /^(.*)'s "([^"]*)" docs search page$/
       docs_search_path(:affiliate => $1, :dc => Affiliate.find_by_name($1).document_collections.find_by_name($2))
     when /the timeline page for "([^"]*)"$/
