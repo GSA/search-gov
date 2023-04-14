@@ -3,7 +3,7 @@ Feature: Image search - redesign
   As a site visitor
   I want to search for images on the redesigned Search page
 
-  @javascript
+  @javascript @a11y @a11y_wip
   Scenario: English Image search
     Given the following Affiliates exist:
       | display_name | name   | contact_email | first_name | last_name | domains        |

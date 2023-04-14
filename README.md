@@ -162,7 +162,13 @@ Make sure the unit tests, functional and integration tests run:
 
     # Run the JavaScript tests
     $ yarn test
-    
+
+Optionally, to only run Cucumber accessibility tests:
+
+    $ cucumber features/ --tags @a11y
+
+The above will call the axe step defined in `features/support/hooks.rb` for any scenario tagged with the `@a11y` tag (but not `@a11y_wip` as these are expected to fail).
+
 ## Code Coverage
 
 We require 100% code coverage. After running the tests (both RSpec & Cucumber), open `coverage/index.html` in your favorite browser to view the report. You can click around on the files that have < 100% coverage to see what lines weren't exercised.

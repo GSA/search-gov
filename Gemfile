@@ -201,18 +201,20 @@ group :development, :test do
 end
 
 group :test do
+  gem 'axe-core-capybara'
+  gem 'axe-core-cucumber'
   gem 'capybara-screenshot'
-  gem 'simplecov', '~> 0.17.0', require: false
-  gem 'cucumber', '~> 7.1', require: false
   gem 'cucumber-rails', '~> 2.4', require: false
+  gem 'cucumber', '~> 7.1', require: false
+  gem 'rails-controller-testing', '~> 1.0'
   # resque-spec hasn't been supported since 2018. Consider replacing with equivalent
   # functionality from rspec-rails: https://relishapp.com/rspec/rspec-rails/v/5-0/docs/job-specs/job-spec
   gem 'resque_spec', '~> 0.18.0'
-  gem 'shoulda-matchers', '~> 5.0'
+  gem 'rspec_junit_formatter', '~> 0.4'
+  gem 'rspec-activemodel-mocks', '~> 1.1'
   gem 'shoulda-kept-assign-to', '~> 1.1'
+  gem 'shoulda-matchers', '~> 5.0'
+  gem 'simplecov', '~> 0.17.0', require: false
   gem 'vcr', '~> 6.0'
   gem 'webmock', '~> 3.8'
-  gem 'rspec-activemodel-mocks', '~> 1.1'
-  gem 'rspec_junit_formatter', '~> 0.4'
-  gem 'rails-controller-testing', '~> 1.0'
 end

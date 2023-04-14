@@ -27,3 +27,8 @@ After do |scenario|
   ScenarioStatusTracker.success = false if scenario.failed?
   travel_back
 end
+
+# Run axe tests on scenarios with @a11y tag, but not @a11y_wip tag
+After('@a11y and not @a11y_wip') do
+  step 'the page should be axe clean according to: section508, wcag2aa'
+end
