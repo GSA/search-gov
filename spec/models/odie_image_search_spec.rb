@@ -8,7 +8,12 @@ describe OdieImageSearch do
     SearchEngineResponse.new do |search_response|
       search_response.total = 2
       search_response.start_record = 1
-      search_response.results = [Hashie::Mash::Rash.new(title: 'President Obama walks the Obama daughters to school', url: 'http://url1', thumbnail_url: 'http://thumbnailurl1'), Hashie::Mash::Rash.new(title: 'POTUS gets in car.', url: 'http://url2', thumbnail_url: 'http://thumbnailurl2')]
+      search_response.results = [Hashie::Mash::Rash.new(title: 'President Obama walks the Obama daughters to school',
+                                                        url: 'http://url1',
+                                                        thumbnail_url: 'http://thumbnailurl1'),
+                                 Hashie::Mash::Rash.new(title: 'POTUS gets in car.',
+                                                        url: 'http://url2',
+                                                        thumbnail_url: 'http://thumbnailurl2')]
       search_response.end_record = 2
     end
   end
@@ -25,7 +30,7 @@ describe OdieImageSearch do
       image_search.run
     end
 
-    it 'should retrieve photos from Oasis API endpoint' do
+    it 'retrieves photos from Oasis API endpoint' do
       expect(image_search.results.first['title']).to eq('President Obama walks the Obama daughters to school')
       expect(image_search.results.last['title']).to eq('POTUS gets in car.')
       expect(image_search.total).to eq(2)
@@ -45,8 +50,8 @@ describe OdieImageSearch do
   end
 
   describe '.cache_key' do
-    it 'should output a key based on the query, affiliate id, and page parameters' do
-      expect(described_class.new(query: 'element', affiliate: affiliate, page: 4).cache_key).to eq("oasis_image:element:#{affiliate.id}:4:10")
+    it 'outputs a key based on the query, affiliate id, and page parameters' do
+      expect(described_class.new(query: 'element', affiliate: affiliate, page: 4).cache_key).to eq("oasis_image:element:#{affiliate.id}:4:20")
     end
   end
 
@@ -57,10 +62,15 @@ describe OdieImageSearch do
         affiliate.rss_feeds << rss_feeds(:media_feed)
       end
 
-      it 'should create an OasisSearch with the MRSS feed names' do
-        expect(OasisSearch).to receive(:new).with(query: 'element', per_page: 10, offset: 0, mrss_names: ['13'],
-                                                  flickr_users: [], flickr_groups: [])
+      it 'creates an OasisSearch with the MRSS feed names' do
+        allow(OasisSearch).to receive(:new)
         described_class.new(query: 'element', affiliate: affiliate)
+        expect(OasisSearch).to have_received(:new).with(query: 'element',
+                                                        per_page: 20,
+                                                        offset: 0,
+                                                        mrss_names: ['13'],
+                                                        flickr_users: [],
+                                                        flickr_groups: [])
       end
     end
   end
