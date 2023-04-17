@@ -33,13 +33,17 @@ export const Results = (props: ResultsProps) => {
                   </Grid>
                   }
                   <Grid col={true} className='result-meta-data'>
-                    {/* This date need to be dynamic */}
+                    {/* ToDo: This date need to be dynamic */}
                     <div className='published-date'>
-                      July 4th, 2022
+                      July 4th, 2022 <span>&#40;Updated on July 10th, 2022&#41;</span>
                     </div>
                     <div className='result-title'>
                       <a href={result.url} className='result-title-link'>
-                        <h2 className='result-title-label'>{result.title}</h2>
+                        <h2 className='result-title-label'>
+                          {result.title} 
+                          {/* ToDo: This need to be dynamic */}
+                          <span className='filetype-label'>PDF</span>
+                        </h2>
                       </a>
                     </div>
                     <div className='result-desc'>

@@ -1,6 +1,7 @@
 .search-result-item{
   margin-bottom: 3.5rem;
   margin-top: 2rem;
+  padding-left: 2.5rem;
 }
 
 .result-thumbnail .result-image{
@@ -42,4 +43,17 @@
   background: #EFF6FC;
   border-radius: 8px;
   padding: 25px;
+}
+
+.filetype-label{
+  border: 1px solid #B6B6B6;
+  border-radius: 2px;
+  color: #71767A;
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 300;
+  margin-left: 10px;
+  margin-top: 4px;
+  padding: 1px 8px;
+  vertical-align: top;
 }
