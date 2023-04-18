@@ -15,8 +15,8 @@ class ResultsWithBodyAndDescriptionPostProcessor
         title: result['title'],
         url: result['url'],
         description: result['description'] || result['body'],
-        updatedDate: nil,
-        publishedDate: nil,
+        updatedDate: parse_result_date(result['updated_at']),
+        publishedDate: parse_result_date(result['published_at']),
         thumbnailUrl: nil
       }
     end
@@ -36,5 +36,11 @@ class ResultsWithBodyAndDescriptionPostProcessor
 
   def highlighted?(field)
     field =~ /\uE000/
+  end
+
+  private
+
+  def parse_result_date(date)
+    date ? date.to_date.to_fs(:long_ordinal) : nil
   end
 end
