@@ -10,7 +10,7 @@ gem 'mysql2', '~> 0.5.0'
 gem 'curb', '~> 1.0.1'
 gem 'haml', '~> 5.2.1'
 gem 'will_paginate', '~> 3.3.0'
-gem 'nokogiri', '~> 1.13.4'
+gem 'nokogiri', '~> 1.14.3'
 gem 'authlogic', '~> 6.4.1'
 gem 'omniauth_login_dot_gov', git: 'https://github.com/18f/omniauth_login_dot_gov',
                               ref: '6e117a9c68b19a1fbc70533613b74b0d8affd641'
@@ -32,11 +32,6 @@ gem 'resque-scheduler', '~> 4.3.1'
 gem 'kt-paperclip', '~> 7.1.0'
 gem 'aws-sdk-s3', '~> 1.102.0'
 gem 'googlecharts', '~> 1.6.12'
-# Using custom fork of tweetstream until vulnerability is resolved
-# (or until we switch to Twitter's API v2):
-# https://github.com/tweetstream/tweetstream/issues/212
-gem 'tweetstream', git: 'https://github.com/GSA/tweetstream'
-gem 'twitter', git: 'https://github.com/GSA/twitter.git', branch: '5-stable'
 gem 'flickraw', '~> 0.9.9'
 # SRCH-3837: We need this change: https://github.com/activescaffold/active_scaffold/pull/666
 # for ruby 3, but all current releases require Rails < 6.2 (though main is looser).
@@ -68,11 +63,10 @@ gem 'turbolinks', '~> 5.2.1'
 gem 'will_paginate-bootstrap', '~> 1.0.1'
 gem 'virtus', '~> 1.0.5'
 gem 'truncator', '~> 0.1.7'
-gem 'em-http-request', '~> 1.1.5'
 gem 'validate_url', '= 0.2.0' # Newer versions use Addressable::URI for validation, which is more permissive than what we want
 # The elasticsearch gems will be limited to 7.4 until we can remove or upgrade the
-# twitter & tweetstream gems, due to their dependency on an old version of faraday:
-# https://cm-jira.usa.gov/browse/SRCH-2939
+# omniauth_login_dot_gov gem, due to its dependency on faraday < 1:
+# https://github.com/18F/omniauth_login_dot_gov/blob/main/omniauth_login_dot_gov.gemspec#L28
 # We are temporarily using a custom branch in order to access the deprecation logging
 # functionality that is available in the official 7.16 release.
 gem 'elasticsearch', git: 'https://github.com/GSA/elasticsearch-ruby', branch: '7.4'
@@ -92,7 +86,7 @@ gem 'hashie', '~> 5.0.0'
 gem 'retry_block', '~> 1.2.0'
 gem 'colorize', '~> 0.8.1'
 gem 'dogstatsd-ruby', '~> 3.2.0'
-gem 'http', '~> 4.0'
+gem 'http', '~> 5.0'
 gem 'robots_tag_parser', '~> 0.1.0'
 gem 'loofah', '~> 2.19.1'
 # Locking ref, as later versions (after being renamed & released as "medusa-crawler")

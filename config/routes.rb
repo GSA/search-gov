@@ -140,9 +140,6 @@ Rails.application.routes.draw do
       resources :supplemental_urls,
                 controller: 'indexed_documents',
                 except: [:show, :edit, :update]
-      resources :twitter_handles,
-                controller: 'twitter_profiles',
-                only: [:index, :new, :create, :destroy]
       resources :users, only: [:index, :new, :create, :destroy]
       resources :youtube_channels,
                 controller: 'youtube_profiles',

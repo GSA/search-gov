@@ -68,10 +68,7 @@ Style/MethodCallWithArgsParentheses:
 Style/NumericLiterals:
   Exclude:
     # Exclude files that tend to contain long, numeric ID's
-    - /**/**/*twitter*
-    - /**/**/*tweet*
     - spec/support/api_search_as_json_behavior.rb
-
 
 Style/QuotedSymbols:
   Exclude:

@@ -64,9 +64,6 @@ Feature: Manage Display
     And the following flickr URLs exist for the site "agency.gov":
       | url                                      | profile_type | profile_id   |
       | http://www.flickr.com/photos/whitehouse/ | user         | 35591378@N03 |
-    And the following Twitter handles exist for the site "agency.gov":
-      | screen_name |
-      | usasearch   |
     And the following YouTube channels exist for the site "agency.gov":
       | channel_id              | title        |
       | usgovernment_channel_id | USGovernment |
@@ -81,7 +78,6 @@ Feature: Manage Display
     And the "Is sayt enabled" should be switched on
     And the "Is medline govbox enabled" should be switched off
     And the "i14y date stamp enabled" should be switched off
-    And I should see "Recent Tweets"
 
     When I fill in "Rss govbox label" with "Latest News"
     And I switch on "Is rss govbox enabled"

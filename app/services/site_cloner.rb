@@ -41,7 +41,6 @@ class SiteCloner
   def clone_simple_associations(cloned_site)
     clone_associations(@origin_site,
                        cloned_site,
-                       :affiliate_twitter_settings,
                        :connections,
                        :excluded_urls,
                        :i14y_memberships,
