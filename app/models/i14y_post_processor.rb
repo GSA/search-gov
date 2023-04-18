@@ -19,7 +19,10 @@ class I14yPostProcessor < ResultsWithBodyAndDescriptionPostProcessor
       {
         title: result['title'],
         url: result['link'],
-        description: result['body']
+        description: result['body'],
+        updatedDate: result['changed'] ? Date.parse(result['changed']).to_fs(:long_ordinal) : nil,
+        publishedDate: result['published_at'] ? Date.parse(result['published_at']).to_fs(:long_ordinal) : nil,
+        thumbnailUrl: result['thumbnail_url'] || nil
       }
     end
   end

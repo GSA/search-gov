@@ -9,7 +9,10 @@ interface ResultsProps {
     thumbnail: {
       url: string
     },
-    description: string
+    description: string,
+    updatedDate?: string,
+    publishedDate?: string,
+    thumbnailUrl?: string
   }[];
   vertical: string;
 }
@@ -36,6 +39,12 @@ export const Results = (props: ResultsProps) => {
                   </Grid>}
                   <Grid row>
                     <Grid tablet={{ col: true }}><p>{result.description}</p></Grid>
+                  </Grid>
+                  <Grid row>
+                    <Grid tablet={{ col: true }}><p>{result.updatedDate}</p></Grid>
+                  </Grid>
+                  <Grid row>
+                    <Grid tablet={{ col: true }}><p>{result.publishedDate}</p></Grid>
                   </Grid>
                 </GridContainer>
               </div>

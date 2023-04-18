@@ -15,7 +15,10 @@ interface SearchResultsLayoutProps {
     thumbnail: {
       url: string
     },
-    description: string
+    description: string,
+    updatedDate?: string,
+    publishedDate?: string,
+    thumbnailUrl?: string
   }[];
   vertical: string;
   params: {
