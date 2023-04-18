@@ -34,12 +34,6 @@ Feature: Blended Search
     And the following featured collections exist for the affiliate "bar.gov":
       | title           | status | publish_start_on |
       | featured item   | active | 2013-07-01       |
-    And the following Twitter Profiles exist:
-      | screen_name | name          | twitter_id | affiliate  |
-      | USASearch   | USASearch.gov | 123456     | bar.gov    |
-    And the following Tweets exist:
-      | tweet_text                                                                                  | tweet_id | published_ago | twitter_profile_id | url                    | expanded_url            | display_url      |
-      | "We wish you all a blessed and safe holiday item." - President Obama http://t.co/l8jbZSbmAX | 184957   | hour          | 123456             | http://t.co/l8jbZSbmAX | http://go.wh.gov/sgCp3q | go.wh.gov/sgCp3q |
     When I am on bar.gov's search page
     And I fill in "Enter your search term" with "items"
     And I press "Search" within the search box
@@ -56,7 +50,6 @@ Feature: Blended Search
     And I should see "The last year article"
     And I should see 1 Best Bets Text
     And I should see 1 Best Bets Graphic
-    And I should see "blessed and safe"
 
     When I follow "Last year"
     Then the "Enter your search term" field should contain "items"

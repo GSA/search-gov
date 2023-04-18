@@ -82,7 +82,7 @@ module NavigationHelpers
       admin_superfresh_urls_bulk_upload_index_path
     when /the bulk url upload admin page/
       admin_bulk_url_upload_index_path
-    when /^(.*)'s new (flickr|twitter|youtube) profile page$/
+    when /^(.*)'s new (flickr|youtube) profile page$/
       affiliate_social_media_path(Affiliate.find_by_name($1), :profile_type => "#{$2.camelize}Profile")
     when /^the (.*)'s Dashboard page$/
       site_path(Affiliate.find_by_name($1))

@@ -353,60 +353,6 @@ describe GovboxSet do
       end
     end
 
-    describe 'twitter' do
-      context 'when affiliate is twitter govbox enabled' do
-        before do
-          allow(Twitter).to receive(:user).and_return double('Twitter')
-        end
-
-        context 'when affiliate has Twitter Profiles' do
-          before do
-            affiliate.twitter_profiles.create!(screen_name: 'USASearch',
-                                               name: 'Test',
-                                               twitter_id: 123,
-                                               profile_image_url: 'http://a0.twimg.com/profile_images/1879738641/USASearch_avatar_normal.png')
-          end
-
-          it 'should find the most recent relevant tweet' do
-            expected_tweets = double(ElasticTweetResults, total: 1)
-            expect(ElasticTweet).to receive(:search_for).
-              with({ q: 'foo',
-                     twitter_profile_ids: [123],
-                     since: 3.days.ago.beginning_of_day,
-                     language: 'en',
-                     size: 1 }).
-              and_return(expected_tweets)
-            govbox_set = described_class.new('foo', affiliate, geoip_info)
-            expect(govbox_set.tweets).to eq(expected_tweets)
-            expect(govbox_set.modules).to include('TWEET')
-          end
-
-          it 'uses highlighting_options' do
-            expected_search_options = {
-              language: 'en',
-              q: 'foo',
-              since: 3.days.ago.beginning_of_day,
-              size: 1,
-              twitter_profile_ids: [123]
-            }.merge(highlighting_options)
-
-            expected_tweets = double(ElasticTweetResults, total: 1)
-            expect(ElasticTweet).to receive(:search_for).with(expected_search_options).
-              and_return(expected_tweets)
-            govbox_set = described_class.new('foo', affiliate, geoip_info, highlighting_options)
-            expect(govbox_set.tweets).to eq(expected_tweets)
-          end
-        end
-
-        context 'when affiliate has no Twitter Profiles' do
-          it 'should not set tweets' do
-            govbox_set = described_class.new('foo', affiliate, geoip_info)
-            expect(govbox_set.tweets).to be_nil
-          end
-        end
-      end
-    end
-
     describe '#related_search' do
       context 'when the affiliate has related search terms' do
         let(:expected_search_terms) { double('search terms') }
@@ -448,7 +394,6 @@ describe GovboxSet do
         expect(affiliate).not_to receive(:is_rss_govbox_enabled?)
         expect(affiliate).not_to receive(:is_video_govbox_enabled?)
         expect(affiliate).not_to receive(:jobs_enabled?)
-        expect(affiliate).not_to receive(:searchable_twitter_ids)
         expect(SaytSuggestion).not_to receive(:related_search)
       end
 

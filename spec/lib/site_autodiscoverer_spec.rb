@@ -308,7 +308,6 @@ describe SiteAutodiscoverer do
       end
 
       it 'should create flickr profile' do
-        allow(TwitterData).to receive(:import_profile)
         allow(YoutubeProfileData).to receive(:import_profile)
 
         expect(flickr_data).to receive(:import_profile)
@@ -317,25 +316,7 @@ describe SiteAutodiscoverer do
         autodiscoverer.autodiscover_social_media
       end
 
-      it 'should create twitter profile' do
-        allow(YoutubeProfileData).to receive(:import_profile)
-
-        twitter_profile = mock_model(TwitterProfile)
-        expect(TwitterData).to receive(:import_profile)
-          .with('whitehouse')
-          .and_return(twitter_profile)
-
-        allow(site).to receive_message_chain(:twitter_profiles, :exists?).and_return(false)
-        twitter_settings = double('twitter_settings')
-        expect(site).to receive(:affiliate_twitter_settings).and_return(twitter_settings)
-        expect(twitter_settings).to receive(:create).with(twitter_profile_id: twitter_profile.id)
-
-        autodiscoverer.autodiscover_social_media
-      end
-
       it 'should create youtube profile' do
-        allow(TwitterData).to receive(:import_profile)
-
         youtube_profile = mock_model(YoutubeProfile)
         allow(YoutubeProfileData).to receive(:import_profile) do |url|
           youtube_profile if 'http://www.youtube.com/whitehouse1?watch=0' == url
