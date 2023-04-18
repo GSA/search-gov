@@ -3,7 +3,7 @@ Feature: Search - redesign
   As a site visitor
   I want to be able to search for information on the redesigned Search page
 
-  @javascript
+  @javascript @a11y @a11y_wip
   Scenario: Search with no query on an affiliate page
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | first_name | last_name | domains        |
@@ -11,7 +11,7 @@ Feature: Search - redesign
     When I am on bar.gov's redesigned search page
     Then I should see "Please enter a search term in the box above."
 
-  @javascript
+  @javascript @a11y @a11y_wip
   Scenario: Searching a domain with Bing results
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | first_name | last_name | domains        |
@@ -23,7 +23,7 @@ Feature: Search - redesign
     And I should see "https://www.whitehouse.gov/"
     And I should see "Press Secretary Karine Jean-Pierre on the Meeting Between President Joe Biden and President Xi Jinping"
 
-  @javascript
+  @javascript @a11y @a11y_wip
   Scenario: Search with I14y results
     Given the following SearchGov Affiliates exist:
       | display_name   | name           | contact_email      | first_name | last_name | domains            |
@@ -36,7 +36,7 @@ Feature: Search - redesign
     And I should see "https://www.healthcare.gov/glossary/marketplace"
     And I should see "More info on Health Insurance"
 
-  @javascript
+  @javascript @a11y @a11y_wip
   Scenario: Search with blended results
     Given the following Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name | gets_blended_results    |
@@ -56,7 +56,7 @@ Feature: Search - redesign
     And I should see "http://p.whitehouse.gov/hour.html"
     And I should see "Within the last hour article on item"
 
-  @javascript
+  @javascript @a11y @a11y_wip
   Scenario: News search
     Given the following Affiliates exist:
       | display_name     | name       | contact_email | first_name | last_name |
@@ -74,7 +74,7 @@ Feature: Search - redesign
     And I should see "Second"
     And I should see exactly "2" web search results
 
-  @javascript
+  @javascript @a11y @a11y_wip
   Scenario: Docs search
     Given the following Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | domains |

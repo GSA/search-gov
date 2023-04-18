@@ -14,7 +14,7 @@ end
 
 Before do |scenario|
   ActiveRecord::FixtureSet.reset_cache
-  ActiveRecord::FixtureSet.create_fixtures('spec/fixtures', %w(users federal_register_agencies agencies affiliates twitter_profiles memberships rss_feeds rss_feed_urls hints languages))
+  ActiveRecord::FixtureSet.create_fixtures('spec/fixtures', %w(users federal_register_agencies agencies affiliates memberships rss_feeds rss_feed_urls hints languages))
 end
 
 Around do |scenario, block|
@@ -26,4 +26,9 @@ end
 After do |scenario|
   ScenarioStatusTracker.success = false if scenario.failed?
   travel_back
+end
+
+# Run axe tests on scenarios with @a11y tag, but not @a11y_wip tag
+After('@a11y and not @a11y_wip') do
+  step 'the page should be axe clean according to: section508, wcag2aa'
 end

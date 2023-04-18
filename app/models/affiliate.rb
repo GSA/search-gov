@@ -21,7 +21,6 @@ class Affiliate < ApplicationRecord
 
   with_options dependent: :destroy do |assoc|
     assoc.has_many :affiliate_feature_addition
-    assoc.has_many :affiliate_twitter_settings
     assoc.has_many :boosted_contents
     assoc.has_many :connections, -> { order 'connections.position ASC' },
                    inverse_of: :affiliate
@@ -70,7 +69,6 @@ class Affiliate < ApplicationRecord
 
   has_many :rss_feed_urls, -> { distinct }, through: :rss_feeds
   has_many :url_prefixes, through: :document_collections
-  has_many :twitter_profiles, -> { order 'twitter_profiles.screen_name ASC' }, through: :affiliate_twitter_settings
   has_and_belongs_to_many :youtube_profiles, -> { order 'youtube_profiles.title ASC' }
   has_many :i14y_drawers, -> { order 'handle' }, through: :i14y_memberships
   has_many :routed_query_keywords, -> { order 'keyword' }, through: :routed_queries
@@ -169,7 +167,6 @@ class Affiliate < ApplicationRecord
   accepts_nested_attributes_for :document_collections, reject_if: :all_blank
   accepts_nested_attributes_for :connections, allow_destroy: true, reject_if: proc { |a| a[:affiliate_name].blank? and a[:label].blank? }
   accepts_nested_attributes_for :flickr_profiles, allow_destroy: true
-  accepts_nested_attributes_for :twitter_profiles, allow_destroy: false
 
   USAGOV_AFFILIATE_NAME = 'usagov'
   GOBIERNO_AFFILIATE_NAME = 'gobiernousa'
@@ -343,14 +340,6 @@ class Affiliate < ApplicationRecord
 
   def has_social_image_feeds?
     !has_no_social_image_feeds?
-  end
-
-  def searchable_twitter_ids
-    affiliate_twitter_settings.includes(:twitter_profile).map do |ats|
-      twitter_ids = [ats.twitter_profile.twitter_id]
-      twitter_ids.push(ats.twitter_profile.twitter_lists.map(&:member_ids)) if ats.show_lists?
-      twitter_ids
-    end.flatten.uniq
   end
 
   def destroy_and_update_attributes(params)

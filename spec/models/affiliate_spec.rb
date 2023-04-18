@@ -61,16 +61,12 @@ describe Affiliate do
     it { is_expected.to have_many :boosted_contents }
     it { is_expected.to have_many(:connections).inverse_of(:affiliate) }
     it { is_expected.to have_many(:connected_connections).inverse_of(:connected_affiliate) }
-
     it { is_expected.to have_many :sayt_suggestions }
-    it { is_expected.to have_many :twitter_profiles }
-
     it { is_expected.to have_many(:routed_query_keywords).through :routed_queries }
     it { is_expected.to have_many(:rss_feed_urls).through(:rss_feeds) }
     it { is_expected.to have_many(:users).through :memberships }
 
     it { is_expected.to have_many(:affiliate_feature_addition).dependent(:destroy) }
-    it { is_expected.to have_many(:affiliate_twitter_settings).dependent(:destroy) }
     it { is_expected.to have_many(:excluded_domains).dependent(:destroy).inverse_of(:affiliate) }
     it { is_expected.to have_many(:featured_collections).dependent(:destroy) }
     it { is_expected.to have_many(:features).dependent(:destroy) }
