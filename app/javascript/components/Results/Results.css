@@ -1,6 +1,9 @@
-.search-result-item{
-  margin-bottom: 3.5rem;
+.search-result-item-wrapper{
   margin-top: 2rem;
+}
+
+.search-result-item{
+  margin-bottom: 3rem;
   padding-left: 2.5rem;
 }
 
@@ -40,12 +43,6 @@
   word-wrap: break-word;
 }
 
-.text-best-bet{
-  background: #EFF6FC;
-  border-radius: 8px;
-  padding: 25px;
-}
-
 .filetype-label{
   border: 1px solid #B6B6B6;
   border-radius: 2px;
@@ -58,3 +55,67 @@
   padding: 1px 8px;
   vertical-align: top;
 }
+
+/* Best bet - text/graphics */
+.results-best-bets-wrapper{
+  margin-bottom: 3rem;
+  margin-top: 2rem;
+}
+
+.results-best-bets-wrapper > .grid-row{
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.results-best-bets-wrapper > .grid-row > .grid-col{
+  background: rgb(239, 246, 252);
+  border-radius: 8px;
+  padding: 20px 0px 0px;
+}
+
+.results-best-bets-wrapper .search-result-item{
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.results-best-bets-wrapper .search-result-item:nth-child(2){
+  margin-top: 1rem;
+}
+
+.results-best-bets-wrapper .search-result-item:last-child{
+  margin-bottom: 1.5rem;
+}
+
+.best-bets-title{
+  color: #565C65;
+  font-size: 1rem;
+  font-weight: 600;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.text-best-bets{
+  background: #EFF6FC;
+  border-radius: 8px;
+  padding: 25px;
+}
+
+.graphics-best-bets{
+  margin-top: 2rem;
+}
+
+.graphics-best-bets-title{
+  color: #3D4551;
+  font-size: 1.15rem;
+  line-height: 19px;
+}
+
+.graphics-best-bets-link-wrapper{
+  margin-top: 0.75rem;
+}
+
+.graphics-best-bets-link-wrapper a{
+  color: #005EA2;
+  text-decoration: none;
+}
+
