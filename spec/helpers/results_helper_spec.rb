@@ -191,30 +191,6 @@ describe ResultsHelper do
     end
   end
 
-  describe '#link_to_tweet_link' do
-    subject(:link_to_tweet_link) do
-      helper.link_to_tweet_link(tweet, 'tweet title', tweet.url_to_tweet, 2)
-    end
-
-    let!(:profile) { twitter_profiles('usasearch') }
-    let(:tweet) do
-      text = "A <b>tweet</b> with \n http://t.co/h5vNlSdL and http://t.co/YQQSs9bb"
-      Tweet.create(tweet_text: text,
-                   tweet_id: 123_456,
-                   published_at: '01/01/1990',
-                   twitter_profile_id: profile.twitter_id)
-    end
-
-    it 'adds a tweet link with click tracking attributes' do
-      expected_output = '<a data-click="{&quot;position&quot;:2,' \
-                        '&quot;module_code&quot;:&quot;TWEET&quot;}"' \
-                        ' href="https://twitter.com/USASearch/status/123456">' \
-                        'tweet title</a>'
-
-      expect(link_to_tweet_link).to eq expected_output
-    end
-  end
-
   describe '#link_to_related_search' do
     subject(:link_to_related_search) do
       helper.link_to_related_search(search, related, '2')
