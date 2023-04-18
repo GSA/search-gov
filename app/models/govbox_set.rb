@@ -12,7 +12,6 @@ class GovboxSet
               :modules,
               :news_items,
               :related_search,
-              :tweets,
               :video_news_items
 
   def initialize(query, affiliate, geoip_info, options = {})
@@ -34,7 +33,6 @@ class GovboxSet
       init_news_items
       init_video_news_items
       init_jobs
-      init_tweets
       init_related_search
     end
   end
@@ -52,18 +50,6 @@ class GovboxSet
 
     @related_search = SaytSuggestion.related_search(@query, @affiliate, @highlighting_options)
     @modules << 'SREL' if @related_search.present?
-  end
-
-  def init_tweets
-    affiliate_twitter_ids = @affiliate.searchable_twitter_ids
-    search_options = build_search_options(
-      since: 3.days.ago.beginning_of_day,
-      size: 1,
-      twitter_profile_ids: affiliate_twitter_ids)
-    if affiliate_twitter_ids.any?
-      @tweets = ElasticTweet.search_for(search_options)
-      @modules << 'TWEET' if elastic_results_exist?(@tweets)
-    end
   end
 
   def init_med_topic

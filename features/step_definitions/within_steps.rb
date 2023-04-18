@@ -6,7 +6,6 @@
   'in the search navbar': '#search-nav',
   'in the boosted contents section': '#best-bets',
   'in the Super Admin page': '.container',
-  'in the twitter govbox': '#tweets',
   'in the site header': '.l-site-header',
   'in the active site main navigation': '.l-site-nav.main .active',
   'in the active site sub navigation': '.l-site-nav.sub .active',
