@@ -4,13 +4,22 @@ describe I14yPostProcessor do
   describe '#normalized_results' do
     let(:results) do
       results = []
-      5.times { |index| results << Hashie::Mash::Rash.new(title: "title #{index}", content: "content #{index}", path: "http://foo.gov/#{index}") }
+      5.times { |index| results << Hashie::Mash::Rash.new(title: "title #{index}", content: "content #{index}", path: "http://foo.gov/#{index}", changed: "2020-09-09 00:00:00 UTC", created: "2020-09-09 00:00:00 UTC", thumbnail_url: "https://search.gov/img.svg") }
       results
     end
     let(:excluded_urls) { [] }
+    subject(:normalized_results) { described_class.new(true, results, excluded_urls).normalized_results }
 
     it_behaves_like 'a search with normalized results' do
       let(:normalized_results) { described_class.new(true, results, excluded_urls).normalized_results }
+    end
+
+    it 'has a published date, updated date, and thumbnaul URL' do
+      normalized_results.each do |result|
+        expect(result[:updatedDate]).to eq("September 9th, 2020")
+        expect(result[:publishedDate]).to eq("September 9th, 2020")
+        expect(result[:thumbnailUrl]).to eq("https://search.gov/img.svg")
+      end
     end
   end
 

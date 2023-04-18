@@ -32,7 +32,7 @@ class I14ySearch < FilterableSearch
       size: detect_size,
       offset: detect_offset
     }.merge!(filter_options)
-    binding.pry
+
     I14yCollections.search(search_options)
   rescue Faraday::ClientError => e
     Rails.logger.error "I14y search problem: #{e.message}"
