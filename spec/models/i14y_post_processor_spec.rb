@@ -4,13 +4,14 @@ describe I14yPostProcessor do
   describe '#normalized_results' do
     subject(:normalized_results) { described_class.new(true, results, excluded_urls).normalized_results }
 
+    let(:excluded_urls) { [] }
+
     context 'when results have all attributes' do
       let(:results) do
         results = []
         5.times { |index| results << Hashie::Mash::Rash.new(title: "title #{index}", content: "content #{index}", path: "http://foo.gov/#{index}", changed: '2020-09-09 00:00:00 UTC', created: '2020-09-09 00:00:00 UTC', thumbnail_url: 'https://search.gov/img.svg') }
         results
       end
-      let(:excluded_urls) { [] }
 
       it_behaves_like 'a search with normalized results' do
         let(:normalized_results) { described_class.new(true, results, excluded_urls).normalized_results }
@@ -31,7 +32,6 @@ describe I14yPostProcessor do
         5.times { |index| results << Hashie::Mash::Rash.new(title: "title #{index}", content: "content #{index}", path: "http://foo.gov/#{index}") }
         results
       end
-      let(:excluded_urls) { [] }
 
       it_behaves_like 'a search with normalized results' do
         let(:normalized_results) { described_class.new(true, results, excluded_urls).normalized_results }
