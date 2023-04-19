@@ -11,7 +11,7 @@ describe ResultsWithBodyAndDescriptionPostProcessor do
     context 'when results have all attributes' do
       let(:results) do
         results = []
-        5.times { |index| results << Hashie::Mash::Rash.new(title: "title #{index}", description: "content #{index}", url: "http://foo.gov/#{index}", updated_at: test_date, published_at: test_date) }
+        5.times { |index| results << Hashie::Mash::Rash.new(title: "title #{index}", description: "content #{index}", url: "http://foo.gov/#{index}", updated_at: test_date, created_at: test_date) }
         results
       end
 
