@@ -11,7 +11,10 @@ interface ResultsProps {
     thumbnail: {
       url: string
     },
-    description: string
+    description: string,
+    updatedDate: string,
+    publishedDate: string,
+    thumbnailUrl: string
   }[];
   vertical: string;
 }
@@ -33,10 +36,10 @@ export const Results = (props: ResultsProps) => {
                   </Grid>
                   }
                   <Grid col={true} className='result-meta-data'>
-                    {/* ToDo: This date need to be dynamic */}
-                    <div className='published-date'>
-                      July 4th, 2022 <span>&#40;Updated on July 10th, 2022&#41;</span>
-                    </div>
+                    {result.publishedDate && (<span className='published-date'>
+                      {result.publishedDate}
+                    </span>)}
+                    {result.updatedDate && (<span className='published-date'>{' '}&#40;Updated on {result.updatedDate}&#41;</span>)}
                     <div className='result-title'>
                       <a href={result.url} className='result-title-link'>
                         <h2 className='result-title-label'>

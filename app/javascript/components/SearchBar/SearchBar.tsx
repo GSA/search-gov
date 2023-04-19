@@ -16,9 +16,9 @@ interface SearchBarProps {
       url: string
     },
     description: string,
-    updatedDate?: string,
-    publishedDate?: string,
-    thumbnailUrl?: string
+    updatedDate: string,
+    publishedDate: string,
+    thumbnailUrl: string
   }[];
 }
 
