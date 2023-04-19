@@ -36,9 +36,7 @@ export const Results = (props: ResultsProps) => {
                   </Grid>
                   }
                   <Grid col={true} className='result-meta-data'>
-                    {result.publishedDate && (<span className='published-date'>
-                      {result.publishedDate}
-                    </span>)}
+                    {result.publishedDate && (<span className='published-date'>{result.publishedDate}</span>)}
                     {result.updatedDate && (<span className='published-date'>{' '}&#40;Updated on {result.updatedDate}&#41;</span>)}
                     <div className='result-title'>
                       <a href={result.url} className='result-title-link'>
