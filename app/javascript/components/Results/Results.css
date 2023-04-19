@@ -3,7 +3,7 @@
 }
 
 .search-result-item{
-  margin-bottom: 3rem;
+  margin-top: 4.5rem;
   padding-left: 2.5rem;
 }
 
@@ -58,7 +58,6 @@
 
 /* Best bet - text/graphics */
 .results-best-bets-wrapper{
-  margin-bottom: 3rem;
   margin-top: 2rem;
 }
 
@@ -70,7 +69,7 @@
 .results-best-bets-wrapper > .grid-row > .grid-col{
   background: rgb(239, 246, 252);
   border-radius: 8px;
-  padding: 20px 0 0;
+  padding: 1.5rem 0 1.5rem 0;
 }
 
 .results-best-bets-wrapper .search-result-item{
@@ -79,11 +78,7 @@
 }
 
 .results-best-bets-wrapper .search-result-item:nth-child(2){
-  margin-top: 1rem;
-}
-
-.results-best-bets-wrapper .search-result-item:last-child{
-  margin-bottom: 1.5rem;
+  margin-top: 4.25rem;
 }
 
 .best-bets-title{
@@ -101,7 +96,7 @@
 }
 
 .graphics-best-bets{
-  margin-top: 2rem;
+  margin-top: 5.5rem;
 }
 
 .graphics-best-bets-title{
@@ -118,4 +113,3 @@
   color: #005EA2;
   text-decoration: none;
 }
-

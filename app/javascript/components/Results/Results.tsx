@@ -33,17 +33,14 @@ export const Results = (props: ResultsProps) => {
                 <Grid row gap="md">
                   <Grid col={true} className='result-meta-data'>
                     {/* ToDo: This date need to be dynamic */}
-                    <div className='published-date'>
-                      July 4th, 2022
-                    </div>
                     <div className='result-title'>
-                      <a href="https://search.gov/" className='result-title-link'>
-                        <h2 className='result-title-label'>Gears of Government President’s Award winners</h2>
+                      <a href="https://medlineplus.gov/appendixb.html" className='result-title-link'>
+                        <h2 className='result-title-label'>Appendix B: Some Common Abbreviations - MedlinePlus</h2>
                       </a>
                     </div>
                     <div className='result-desc'>
-                      <p>Today, the Administration announces the winners of the Gears of Government President’s Award. This program recognizes the contributions of individuals and teams across the federal workforce who make a profound difference in the lives of the American people.</p>
-                      <div className='result-url-text'>https://search.gov/</div>
+                      <p>ABG. Arterial blood gases. You may have an ABG test to detect lung diseases. ACE. Angiotensin converting enzyme. Drugs called ACE inhibitors are used to treat high blood pressure, heart failure, diabetes and kidney diseases. ACL. Anterior cruciate ligament. Commonly injured part of the knee.</p>
+                      <div className='result-url-text'>https://medlineplus.gov/appendixb.html</div>
                     </div>
                   </Grid>
                 </Grid>
@@ -52,22 +49,19 @@ export const Results = (props: ResultsProps) => {
                 <Grid row gap="md">
                   <Grid col={true} className='result-meta-data'>
                     {/* This date need to be dynamic */}
-                    <div className='published-date'>
-                      July 4th, 2022
-                    </div>
                     <div className='result-title'>
-                      <a href="https://search.gov/" className='result-title-link'>
-                        <h2 className='result-title-label'>Gears of Government President’s Award winners</h2>
+                      <a href="https://clinicaltrials.gov/ct2/search/index" className='result-title-link'>
+                        <h2 className='result-title-label'>Find Studies - ClinicalTrials.gov</h2>
                       </a>
                     </div>
                     <div className='result-desc'>
-                      <p>Today, the Administration announces the winners of the Gears of Government President’s Award. This program recognizes the contributions of individuals and teams across the federal workforce who make a profound difference in the lives of the American people.</p>
-                      <div className='result-url-text'>https://search.gov/</div>
+                      <p>Learn how to find studies that have been updated with study results, including studies with results that have been published in medical journals. How to Read a Study Record. Learn about the information available in a study record and the different ways to view a record.</p>
+                      <div className='result-url-text'>https://clinicaltrials.gov/ct2/search/index</div>
                     </div>
                   </Grid>
                 </Grid>
               </GridContainer>
-              <GridContainer className='result search-result-item graphics-best-bets'>
+              <GridContainer className='result search-result-item graphics-best-bets display-none'>
                 <Grid row gap="md">
                   <Grid mobileLg={{ col: 4 }} className='result-thumbnail'>
                     <img src="https://plus.unsplash.com/premium_photo-1666277012069-bd342b857f89?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=10" className="result-image"/>
