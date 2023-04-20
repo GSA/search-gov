@@ -31,7 +31,10 @@ class WebResultsPostProcessor
       {
         title: result['title'],
         url: result['unescaped_url'],
-        description: result['content']
+        description: result['content'],
+        updatedDate: nil,
+        publishedDate: nil,
+        thumbnailUrl: nil
       }
     end
   end
