@@ -15,8 +15,8 @@ class ResultsWithBodyAndDescriptionPostProcessor
         title: result['title'],
         url: result['url'],
         description: result['description'] || result['body'],
-        updatedDate: parse_result_date(result['updated_at']),
-        publishedDate: parse_result_date(result['created_at']),
+        updatedDate: nil,
+        publishedDate: nil,
         thumbnailUrl: nil
       }
     end
