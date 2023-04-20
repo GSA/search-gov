@@ -42,24 +42,41 @@ describe SearchgovUrl do
 
   describe 'scopes' do
     describe '.fetch_required' do
+      subject(:fetch_required) { described_class.fetch_required }
       it 'includes urls that have never been crawled and outdated urls' do
-        expect(described_class.fetch_required.pluck(:url)).
-          to include('https://www.agency.gov/new', 'https://www.agency.gov/outdated')
+        expect(fetch_required.pluck(:url)).
+          to include('http://www.agency.gov/new', 'http://www.agency.gov/outdated')
       end
 
       it 'does not include current, crawled and not enqueued urls' do
-        expect(described_class.fetch_required.pluck(:url)).
-          not_to include('https://www.agency.gov/current')
+        expect(fetch_required.pluck(:url)).
+          not_to include('http://www.agency.gov/current')
       end
 
       it 'includes urls that have been enqueued for reindexing' do
-        expect(described_class.fetch_required.pluck(:url)).
-          to include 'https://www.agency.gov/enqueued'
+        expect(fetch_required.pluck(:url)).
+          to include 'http://www.agency.gov/enqueued'
       end
 
       it 'includes urls last crawled more than 30 days and crawl status is ok' do
-        expect(described_class.fetch_required.pluck(:url)).
-          to include 'https://www.agency.gov/crawled_more_than_month'
+        expect(fetch_required.pluck(:url)).
+          to include 'http://www.agency.gov/crawled_more_than_month'
+      end
+
+      it 'does not include urls last crawled more than 30 days ago and crawl status is not ok' do
+        expect(fetch_required.pluck(:url)).
+          not_to include 'http://www.agency.gov/failed_more_than_month'
+      end
+
+      it 'prioritizes unfetched, enqueued, and recently modified URLs' do
+        expect(fetch_required.pluck(:url)).to eq(
+          %w[
+             http://www.agency.gov/new
+             http://www.agency.gov/enqueued
+             http://www.agency.gov/outdated
+             http://www.agency.gov/crawled_more_than_month
+            ]
+        )
       end
     end
   end

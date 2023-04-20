@@ -583,6 +583,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_25_172522) do
     t.string "hashed_url", limit: 64, null: false
     t.index ["hashed_url"], name: "index_searchgov_urls_on_hashed_url", unique: true
     t.index ["last_crawl_status"], name: "index_searchgov_urls_on_last_crawl_status"
+    t.index ["lastmod"], name: "index_searchgov_urls_on_lastmod"
     t.index ["searchgov_domain_id", "enqueued_for_reindex"], name: "searchgov_urls_on_searchgov_domain_id_and_enqueued_for_reindex"
     t.index ["searchgov_domain_id", "last_crawl_status"], name: "index_by_searchgov_domain_id_and_last_crawl_status"
     t.index ["searchgov_domain_id", "last_crawled_at"], name: "index_searchgov_urls_on_searchgov_domain_id_and_last_crawled_at"
