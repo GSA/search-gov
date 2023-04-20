@@ -14,7 +14,10 @@ class ResultsWithBodyAndDescriptionPostProcessor
       {
         title: result['title'],
         url: result['url'],
-        description: result['description'] || result['body']
+        description: result['description'] || result['body'],
+        updatedDate: nil,
+        publishedDate: nil,
+        thumbnailUrl: nil
       }
     end
   end
