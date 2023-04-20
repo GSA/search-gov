@@ -37,10 +37,4 @@ class ResultsWithBodyAndDescriptionPostProcessor
   def highlighted?(field)
     field =~ /\uE000/
   end
-
-  private
-
-  def parse_result_date(date)
-    date ? date.to_date.to_fs(:long_ordinal) : nil
-  end
 end
