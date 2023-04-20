@@ -85,6 +85,21 @@ Given /^there are (\d+)( image| video)? news items for "([^"]*)"$/ do |count, is
   ElasticNewsItem.commit
 end
 
+Given /^there are (\d+)( manual| rss)? indexed documents for affiliate "([^"]*)"$/ do |count, source, affiliate|
+  affiliate = Affiliate.find_by(name: affiliate)
+
+  count.to_i.times do |index|
+    IndexedDocument.create!(affiliate: affiliate,
+                            title: "Document number #{index + 1}",
+                            description: 'An Indexed Document',
+                            url: "http://petitions.whitehouse.gov/petition-#{index + 1}.html",
+                            source: source.strip,
+                            last_crawl_status: 'OK',
+                            last_crawled_at: Time.current.to_i)
+  end
+  ElasticIndexedDocument.commit
+end
+
 Then /^I should not see "([^"]*)" in bold font$/ do |text|
   page.should_not have_selector("strong", :text => text)
 end
