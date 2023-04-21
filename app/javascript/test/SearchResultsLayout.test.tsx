@@ -19,18 +19,22 @@ describe('SearchResultsLayout', () => {
   });
 
   it('renders search results', () => {
-    const results = [{ title: 'test result 1', url: 'https://www.search.gov', thumbnail: { url: 'https://www.search.gov/test_image.png' }, description: 'result body' }];
+    const results = [{ title: 'test result 1', url: 'https://www.search.gov', thumbnail: { url: 'https://www.search.gov/test_image.png' }, description: 'result body', publishedDate: 'May 9th, 2023', updatedDate: 'May 10th, 2023', thumbnailUrl: null }];
     render(<SearchResultsLayout params={{ query: 'foo' }} results={results} vertical='web' />);
     const resultTitle = screen.getByText(/test result 1/i);
     const resultUrl = screen.getByText(/https:\/\/www.search.gov/i);
     const resultBody = screen.getByText(/result body/i);
+    const publishedDate = screen.getByText(/May 9th, 2023/i);
+    const updatedDate = screen.getByText(/Updated on May 10th, 2023/i);
     expect(resultTitle).toBeInTheDocument();
     expect(resultUrl).toBeInTheDocument();
     expect(resultBody).toBeInTheDocument();
+    expect(publishedDate).toBeInTheDocument();
+    expect(updatedDate).toBeInTheDocument();
   });
 
   it('renders image search results', () => {
-    const results = [{ title: 'test result 1', url: 'https://www.search.gov', thumbnail: { url: 'https://www.search.gov/test_image.png' }, description: 'result body' }];
+    const results = [{ title: 'test result 1', url: 'https://www.search.gov', thumbnail: { url: 'https://www.search.gov/test_image.png' }, description: 'result body', publishedDate: 'May 9th, 2023', updatedDate: 'May 10th, 2023', thumbnailUrl: null }];
     render(<SearchResultsLayout params={{ query: 'foo' }} results={results} vertical='image' />);
     const resultTitle = screen.getByText(/test result 1/i);
     const img = [...document.getElementsByClassName('result-image')].pop() as HTMLImageElement;
