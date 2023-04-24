@@ -106,6 +106,7 @@ class I14ySearch < FilterableSearch
     post_processor.post_process_results
     @results = paginate(response.results)
     @normalized_results = post_processor.normalized_results
+    @total_pages = post_processor.total_pages(@total)
     @startrecord = ((@page - 1) * @per_page) + 1
     @endrecord = @startrecord + @results.size - 1
     @spelling_suggestion = response.metadata.suggestion.text if response.metadata.suggestion.present?

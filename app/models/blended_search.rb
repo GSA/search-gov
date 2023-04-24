@@ -50,6 +50,7 @@ class BlendedSearch < FilterableSearch
       post_processor.post_process_results
       @results = paginate(response.results)
       @normalized_results = post_processor.normalized_results
+      @total_pages = post_processor.total_pages(@total)
       @startrecord = ((@page - 1) * @per_page) + 1
       @endrecord = @startrecord + @results.size - 1
       assign_spelling_suggestion_if_eligible(response.suggestion.text) if response.suggestion.present?

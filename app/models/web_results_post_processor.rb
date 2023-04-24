@@ -1,4 +1,4 @@
-class WebResultsPostProcessor
+class WebResultsPostProcessor < PostProcessor
   include ResultsRejector
 
   attr_reader :results
