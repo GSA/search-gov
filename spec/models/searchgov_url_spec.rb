@@ -741,8 +741,8 @@ describe SearchgovUrl do
 
         context 'when the document cannot be deleted' do
           before do
-           allow(I14yDocument).to receive(:delete).and_raise('something went wrong')
-           allow(Rails.logger).to receive(:error)
+            allow(I14yDocument).to receive(:delete).and_raise('something went wrong')
+            allow(Rails.logger).to receive(:error)
           end
 
           it 'logs the error' do
