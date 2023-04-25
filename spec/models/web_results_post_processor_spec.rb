@@ -16,6 +16,14 @@ describe WebResultsPostProcessor do
     it_behaves_like 'a search with normalized results' do
       let(:normalized_results) { post_processor.normalized_results }
     end
+
+    it 'does not have a published date, updated date, or thumbnail URL' do
+      post_processor.normalized_results.each do |result|
+        expect(result[:publishedDate]).to be_nil
+        expect(result[:updatedDate]).to be_nil
+        expect(result[:thumbnailUrl]).to be_nil
+      end
+    end
   end
 
   describe '#post_processed_results' do

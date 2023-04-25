@@ -79,15 +79,18 @@ class WebSearch < Search
     if odie_response&.total&.positive?
       adjusted_total = (available_search_engine_pages * @per_page) + odie_response.total
       if @total <= @per_page * (@page - 1) && available_search_engine_pages < @page
-        paginate_odie_response(odie_search, odie_response)
+        paginate_odie_response(odie_search, odie_response, adjusted_total)
       end
       @total = adjusted_total
     end
     odie_response
   end
 
-  def paginate_odie_response(odie_search, odie_response)
+  def paginate_odie_response(odie_search, odie_response, adjusted_total)
+    temp_total = @total
+    @total = adjusted_total
     @results = paginate(odie_search.process_results(odie_response))
+    @total = temp_total
     @startrecord = ((@page - 1) * @per_page) + 1
     @endrecord = @startrecord + odie_response.results.size - 1
     @indexed_results = odie_response
