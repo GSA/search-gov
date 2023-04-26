@@ -5,7 +5,7 @@ import { SearchBar } from '../components/SearchBar/SearchBar';
 
 describe('SearchBar', () => {
   it('Search Bar with No Results', () => {
-    render(<SearchBar query='medical' results={[]} />);
+    render(<SearchBar results={[]} />);
 
     const searchInput = screen.getByTestId('search-field');
     const searchBtn = screen.getByTestId('search-submit-btn');

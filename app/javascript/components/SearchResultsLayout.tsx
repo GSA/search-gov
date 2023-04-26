@@ -23,7 +23,7 @@ interface SearchResultsLayoutProps {
   totalPages: number;
   vertical: string;
   params: {
-    query: string
+    query?: string
   };
 }
 
