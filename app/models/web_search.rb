@@ -138,9 +138,13 @@ class WebSearch < Search
 
   def post_process_results(results)
     post_processor = WebResultsPostProcessor.new(@query, @affiliate, results)
+    process_data_for_redesign(post_processor)
+    post_processor.post_processed_results
+  end
+
+  def process_data_for_redesign(post_processor)
     @normalized_results = post_processor.normalized_results
     @total_pages = post_processor.total_pages(@total)
-    post_processor.post_processed_results
   end
 
   def populate_additional_results

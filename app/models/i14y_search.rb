@@ -105,12 +105,16 @@ class I14ySearch < FilterableSearch
     post_processor = I14yPostProcessor.new(@enable_highlighting, response.results, @affiliate.excluded_urls_set)
     post_processor.post_process_results
     @results = paginate(response.results)
-    @normalized_results = post_processor.normalized_results
-    @total_pages = post_processor.total_pages(@total)
+    process_data_for_redesign(post_processor)
     @startrecord = ((@page - 1) * @per_page) + 1
     @endrecord = @startrecord + @results.size - 1
     @spelling_suggestion = response.metadata.suggestion.text if response.metadata.suggestion.present?
     @aggregations = response.metadata.aggregations if response.metadata.aggregations.present?
+  end
+
+  def process_data_for_redesign(post_processor)
+    @normalized_results = post_processor.normalized_results
+    @total_pages = post_processor.total_pages(@total)
   end
 
   def populate_additional_results
