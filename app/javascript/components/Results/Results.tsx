@@ -136,6 +136,7 @@ export const Results = (props: ResultsProps) => {
         <Pagination 
           totalPages={props.totalPages}
           pathname={window.location.href}
+          resultsCount={props.results.length}
         />
       }
     </>
