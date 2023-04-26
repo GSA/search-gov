@@ -19,7 +19,7 @@ describe PostProcessor do
 
     context 'when an invalid value is passed in' do
       it 'returns zero' do
-        expect(post_processor.total_pages('invalid')).to eq(0)
+        expect(post_processor.total_pages({})).to eq(0)
       end
     end
   end
