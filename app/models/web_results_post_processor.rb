@@ -4,6 +4,7 @@ class WebResultsPostProcessor < PostProcessor
   attr_reader :results
 
   def initialize(query, affiliate, results)
+    super
     @affiliate = affiliate
     @results = results
     @news_item_hash = @affiliate.rss_feeds.non_managed.present? ? build_news_item_hash_from_search(query) : {}

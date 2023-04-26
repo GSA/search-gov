@@ -2,6 +2,7 @@ class ResultsWithBodyAndDescriptionPostProcessor < PostProcessor
   attr_accessor :results
 
   def initialize(results)
+    super
     @results = results
   end
 
