@@ -100,7 +100,7 @@ gem 'saxerator', '~> 0.9.9'
 gem 'counter_culture', '~> 2.9.0'
 # after_commit_action needed to enable counter_culture's execute_after_commit option.
 gem 'after_commit_action', '~> 1.1'
-gem 'aasm', '~> 5.2.0'
+gem 'aasm', '~> 5.5'
 gem 'active_scheduler', '~> 0.7.0'
 gem 'retriable', '~> 3.1'
 gem 'cld3', '~> 3.5.0'
