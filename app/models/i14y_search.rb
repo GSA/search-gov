@@ -1,7 +1,6 @@
 class I14ySearch < FilterableSearch
   include SearchInitializer
   include Govboxable
-  I14Y_SUCCESS = 200
   FACET_FIELDS = %w[audience
                     changed
                     content_type
@@ -11,9 +10,7 @@ class I14ySearch < FilterableSearch
                     searchgov_custom2
                     searchgov_custom3
                     tags].freeze
-  attr_reader :aggregations,
-              :collection,
-              :matching_site_limits
+  attr_reader :aggregations, :collection, :matching_site_limits
 
   def initialize(options = {})
     super
@@ -99,7 +96,7 @@ class I14ySearch < FilterableSearch
   end
 
   def handle_response(response)
-    return unless response && response.status == I14Y_SUCCESS
+    return unless response && response.status == 200
 
     @total = response.metadata.total
     post_processor = I14yPostProcessor.new(@enable_highlighting, response.results, @affiliate.excluded_urls_set)
