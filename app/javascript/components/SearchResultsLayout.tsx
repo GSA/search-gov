@@ -20,6 +20,7 @@ interface SearchResultsLayoutProps {
     publishedDate: string,
     thumbnailUrl: string
   }[];
+  totalPages: number;
   vertical: string;
   params: {
     query: string
@@ -53,6 +54,7 @@ const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
         <Results 
           results={props.results} 
           vertical={props.vertical}
+          totalPages={props.totalPages}
         />
       </div>
 

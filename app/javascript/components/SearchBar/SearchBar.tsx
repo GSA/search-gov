@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
 
 import { VerticalNav } from './../VerticalNav/VerticalNav';
-import { getUriWithParam } from '../../utils';
+import { getUriWithParam, getCurrentPage } from '../../utils';
 
 import './SearchBar.css';
 
@@ -68,7 +68,7 @@ export const SearchBar = (props: SearchBarProps) => {
           </Grid>
         </Grid>
         
-        {props.results.length === 0 &&
+        {!props.query &&
         <Grid row>
           <Grid tablet={{ col: true }}><h4>Please enter a search term in the box above.</h4></Grid>
         </Grid>}

@@ -3,6 +3,8 @@ import { GridContainer, Grid } from '@trussworks/react-uswds';
 
 import { Pagination } from './../Pagination/Pagination';
 
+import { getCurrentPage } from '../../utils';
+
 import './Results.css';
 interface ResultsProps {
   results: {
@@ -16,12 +18,11 @@ interface ResultsProps {
     publishedDate: string,
     thumbnailUrl: string
   }[];
+  totalPages: number;
   vertical: string;
 }
 
 export const Results = (props: ResultsProps) => {
-  const totalPages = 10; // to do: updated once we get pagination data from the backend
-  
   return (
     <>
       <div className='search-result-wrapper'>
@@ -131,9 +132,9 @@ export const Results = (props: ResultsProps) => {
           })}
         </div>
       </div>
-      {totalPages > 0 && 
+      {(props.totalPages > 1 || getCurrentPage() > 1) && 
         <Pagination 
-          totalPages={totalPages}
+          totalPages={props.totalPages}
           pathname={window.location.href}
         />
       }
