@@ -74,7 +74,7 @@ export const SearchBar = (props: SearchBarProps) => {
         </Grid>}
         {(props.query && getCurrentPage() > 0 && props.results.length === 0) &&
         <Grid row>
-          <Grid tablet={{ col: true }}><h4>No results. Please click the "Previous" link.</h4></Grid>
+          <Grid tablet={{ col: true }}><h4>No results. Please click the &#34;Previous&#34; link.</h4></Grid>
         </Grid>}
       </GridContainer>
     </div>
