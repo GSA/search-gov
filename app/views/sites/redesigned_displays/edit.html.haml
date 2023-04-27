@@ -1,0 +1,11 @@
+= content_for_site_page_title @site, t('admin_center.displays.redesigned_display.redesigned_display')
+= form_for @site, as: :redesigned_display, url: site_redesigned_display_path, html: { class: 'form', id: 'edit-redesigned-displays' } do |f|
+  .sub-nav-heading
+    %h2= t('admin_center.displays.redesigned_display.redesigned_display')
+    .action-bar
+      %ul
+        = list_item_with_link_to_current_help_page
+        %li=link_to(t('admin_center.displays.redesigned_display.preview_button'), 
+                    search_path(affiliate: @site.name, redesign: true),
+                    class: 'btn btn-primary',
+                    target: :_blank)

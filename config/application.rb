@@ -74,6 +74,9 @@ module Usasearch
 
     config.i18n.enforce_available_locales = false
 
+    # Load admin center translations file
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', 'admin_center', '*.{yml}')]
+
     config.ssl_options[:redirect] =
       { exclude: ->(request) { request.path == '/healthcheck' } }
 
