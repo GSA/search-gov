@@ -229,19 +229,13 @@ describe SearchgovDomain do
     context 'when the domain is already being indexed' do
       let(:searchgov_domain) { described_class.new(activity: 'indexing') }
 
-      it 'does not enqueue another indexer job' do
-        expect(SearchgovDomainIndexerJob).
-          not_to receive(:perform_later)
+      it 'attempts to enqueue another indexer job' do
+        expect(SearchgovDomainIndexerJob).to receive(:perform_later)
         index_urls
       end
 
       it 'does not raise an error' do
         expect { index_urls }.not_to raise_error
-      end
-
-      it 'logs a message that the domain is being indexed' do
-        expect(Rails.logger).to receive(:warn).with(/already being indexed/)
-        index_urls
       end
     end
   end

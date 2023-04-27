@@ -36,8 +36,6 @@ class SearchgovDomain < ApplicationRecord
   def index_urls
     index!
     SearchgovDomainIndexerJob.perform_later(searchgov_domain: self, delay: delay)
-  rescue AASM::InvalidTransition
-    Rails.logger.warn("#{domain} is already being indexed")
   end
 
   def index_sitemaps
@@ -54,7 +52,7 @@ class SearchgovDomain < ApplicationRecord
     status
   end
 
-  aasm column: 'activity' do
+  aasm column: 'activity', whiny_transitions: false do
     state :idle, initial: true
     state :indexing
 
