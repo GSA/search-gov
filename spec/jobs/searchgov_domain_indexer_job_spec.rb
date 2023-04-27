@@ -16,6 +16,13 @@ describe SearchgovDomainIndexerJob do
   end
 
   it_behaves_like 'a searchgov job'
+  it_behaves_like 'a unique job'
+
+  describe 'job locking options' do
+    subject(:lock_options) { described_class.lock_options }
+
+    it { is_expected.to eq(lock_ttl: 30.minutes) }
+  end
 
   context 'when a domain has unfetched urls' do
     let!(:searchgov_url) { SearchgovUrl.create(url: 'https://agency.gov/') }

@@ -2,6 +2,11 @@
 
 class SearchgovDomainIndexerJob < ApplicationJob
   queue_as :searchgov
+  # Prevent multiple jobs from being enqueued simultaneously with the same options. This
+  # ensures we respect each website's crawl-delay by fetching URLs one at a time
+  # with a delay between them. After a reasonable period of time (lock_ttl), assume
+  # something has gone wrong, and unlock the job.
+  unique :until_executing, lock_ttl: 30.minutes
 
   def perform(searchgov_domain:, delay:)
     searchgov_domain.searchgov_urls.fetch_required.first&.fetch

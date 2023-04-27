@@ -247,7 +247,7 @@ class SearchgovUrl < ApplicationRecord
 
   def delete_document
     I14yDocument.delete(handle: 'searchgov', document_id: document_id)
-  rescue I14yDocument::I14yDocumentError => e
+  rescue => e
     Rails.logger.error "[SearchgovUrl] Unable to delete Searchgov i14y document #{document_id}: #{e.message}".red
   end
 end

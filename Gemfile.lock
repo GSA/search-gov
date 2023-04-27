@@ -47,7 +47,7 @@ GIT
 
 GIT
   remote: https://github.com/activescaffold/active_scaffold
-  revision: ccfc9d71d5223b80bdc44ed92d105e09c6987783
+  revision: 5393631fc2b97a7510051da955dcf8b470480d11
   branch: master
   specs:
     active_scaffold (3.6.99)
@@ -92,7 +92,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    aasm (5.2.0)
+    aasm (5.5.0)
       concurrent-ruby (~> 1.0)
     actioncable (7.0.4.3)
       actionpack (= 7.0.4.3)
@@ -184,7 +184,7 @@ GEM
       activesupport (>= 5.2, < 7.1)
       request_store (~> 1.0)
     aws-eventstream (1.2.0)
-    aws-partitions (1.749.0)
+    aws-partitions (1.755.0)
     aws-sdk-core (3.171.0)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.651.0)
@@ -426,7 +426,7 @@ GEM
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
     httpclient (2.8.3)
-    i18n (1.12.0)
+    i18n (1.13.0)
       concurrent-ruby (~> 1.0)
     i18n-tasks (0.9.37)
       activesupport (>= 4.0.2)
@@ -530,7 +530,7 @@ GEM
     open_uri_redirections (0.2.1)
     os (1.1.4)
     parallel (1.23.0)
-    parser (3.2.2.0)
+    parser (3.2.2.1)
       ast (~> 2.4.1)
     pry (0.14.2)
       coderay (~> 1.1)
@@ -545,7 +545,7 @@ GEM
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.6.2)
-    rack (2.2.6.4)
+    rack (2.2.7)
     rack-contrib (2.1.0)
       rack (~> 2.0)
     rack-cors (1.1.1)
@@ -669,9 +669,9 @@ GEM
       activemodel (>= 3.0)
       activesupport (>= 3.0)
       rspec-mocks (>= 2.99, < 4.0)
-    rspec-core (3.12.1)
+    rspec-core (3.12.2)
       rspec-support (~> 3.12.0)
-    rspec-expectations (3.12.2)
+    rspec-expectations (3.12.3)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
     rspec-its (1.3.0)
@@ -842,7 +842,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aasm (~> 5.2.0)
+  aasm (~> 5.5)
   active_scaffold!
   active_scaffold_export!
   active_scheduler (~> 0.7.0)
