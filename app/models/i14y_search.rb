@@ -110,8 +110,7 @@ class I14ySearch < FilterableSearch
   end
 
   def process_data_for_redesign(post_processor)
-    @normalized_results = post_processor.normalized_results
-    @total_pages = post_processor.total_pages(@total)
+    @normalized_results = post_processor.normalized_results(@total)
   end
 
   def populate_additional_results

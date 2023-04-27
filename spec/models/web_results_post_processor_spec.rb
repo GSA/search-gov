@@ -7,6 +7,8 @@ describe WebResultsPostProcessor do
   let(:post_processor) { described_class.new('foo', affiliate, results) }
 
   describe '#normalized_results' do
+    subject(:normalized_results) { post_processor.normalized_results(5) }
+
     let(:results) do
       results = []
       5.times { |index| results << Hashie::Mash::Rash.new(title: "title #{index}", content: "content #{index}", unescaped_url: "http://foo.gov/#{index}") }
@@ -14,11 +16,11 @@ describe WebResultsPostProcessor do
     end
 
     it_behaves_like 'a search with normalized results' do
-      let(:normalized_results) { post_processor.normalized_results }
+      let(:normalized_results) { post_processor.normalized_results(5) }
     end
 
     it 'does not have a published date, updated date, or thumbnail URL' do
-      post_processor.normalized_results.each do |result|
+      normalized_results[:results].each do |result|
         expect(result[:publishedDate]).to be_nil
         expect(result[:updatedDate]).to be_nil
         expect(result[:thumbnailUrl]).to be_nil

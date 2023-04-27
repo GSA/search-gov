@@ -15,16 +15,15 @@ class I14yPostProcessor < ResultsWithBodyAndDescriptionPostProcessor
   end
 
   def normalized_results
-    @results.map do |result|
-      {
-        title: result['title'],
-        url: result['link'],
-        description: result['body'],
-        updatedDate: parse_result_date(result['changed']),
-        publishedDate: parse_result_date(result['published_at']),
-        thumbnailUrl: result['thumbnail_url'] || nil
-      }
-    end
+
+  end
+
+  def normalized_results(total_results)
+    {
+      totalPages: total_pages(total_results),
+      results: format_results,
+      bing: false
+    }
   end
 
   protected
@@ -58,5 +57,18 @@ class I14yPostProcessor < ResultsWithBodyAndDescriptionPostProcessor
 
   def parse_result_date(date)
     date ? Date.parse(date).to_fs(:long_ordinal) : nil
+  end
+
+  def format_results
+    @results.map do |result|
+      {
+        title: result['title'],
+        url: result['link'],
+        description: result['body'],
+        updatedDate: parse_result_date(result['changed']),
+        publishedDate: parse_result_date(result['published_at']),
+        thumbnailUrl: result['thumbnail_url'] || nil
+      }
+    end
   end
 end

@@ -40,7 +40,28 @@ class WebResultsPostProcessor < PostProcessor
     end
   end
 
+  def normalized_results(total_results)
+    {
+      totalPages: total_pages(total_results),
+      results: format_results,
+      bing: true
+    }
+  end
+
   private
+
+  def format_results
+    @results.map do |result|
+      {
+        title: result['title'],
+        url: result['unescaped_url'],
+        description: result['content'],
+        updatedDate: nil,
+        publishedDate: nil,
+        thumbnailUrl: nil
+      }
+    end
+  end
 
   def title_description_date_hash_by_link
     links_news_items = NewsItem.select([:link, :title, :description, :published_at]).

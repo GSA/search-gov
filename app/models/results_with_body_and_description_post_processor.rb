@@ -10,17 +10,12 @@ class ResultsWithBodyAndDescriptionPostProcessor < PostProcessor
     override_plain_description_with_highlighted_body
   end
 
-  def normalized_results
-    @results.map do |result|
-      {
-        title: result['title'],
-        url: result['url'],
-        description: result['description'] || result['body'],
-        updatedDate: nil,
-        publishedDate: nil,
-        thumbnailUrl: nil
-      }
-    end
+  def normalized_results(total_results)
+    {
+      totalPages: total_pages(total_results),
+      results: format_results,
+      bing: false
+    }
   end
 
   protected
@@ -37,5 +32,20 @@ class ResultsWithBodyAndDescriptionPostProcessor < PostProcessor
 
   def highlighted?(field)
     field =~ /\uE000/
+  end
+
+  private
+
+  def format_results
+    @results.map do |result|
+      {
+        title: result['title'],
+        url: result['url'],
+        description: result['description'] || result['body'],
+        updatedDate: nil,
+        publishedDate: nil,
+        thumbnailUrl: nil
+      }
+    end
   end
 end
