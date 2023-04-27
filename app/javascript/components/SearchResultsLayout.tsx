@@ -24,7 +24,6 @@ interface SearchResultsLayoutProps {
       thumbnailUrl: string
     }[];
   }
-  totalPages: number;
   vertical: string;
   params: {
     query?: string

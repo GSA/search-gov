@@ -5,13 +5,13 @@ import SearchResultsLayout from '../components/SearchResultsLayout';
 
 describe('SearchResultsLayout', () => {
   it('shows a message when there are no results', () => {
-    render(<SearchResultsLayout params={{}} results={[]} vertical='web' totalPages={0} />);
+    render(<SearchResultsLayout params={{}} resultsData={{ results: [], totalPages: 0, bing: false }} vertical='web' />);
     const message = screen.getByText(/Please enter a search term in the box above./i);
     expect(message).toBeInTheDocument();
   });
 
   it('renders all relevant links', () => {
-    render(<SearchResultsLayout params={{}} results={[]} vertical='web' totalPages={1} />);
+    render(<SearchResultsLayout params={{}} resultsData={{ results: [], totalPages: 0, bing: false }} vertical='web' />);
     const everything = screen.getByText(/More/i);
     const news = screen.getByText(/Related Sites/i);
     expect(everything).toBeInTheDocument();
@@ -19,8 +19,8 @@ describe('SearchResultsLayout', () => {
   });
 
   it('renders search results', () => {
-    const results = [{ title: 'test result 1', url: 'https://www.search.gov', thumbnail: { url: 'https://www.search.gov/test_image.png' }, description: 'result body', publishedDate: 'May 9th, 2023', updatedDate: 'May 10th, 2023', thumbnailUrl: null }];
-    render(<SearchResultsLayout params={{ query: 'foo' }} results={results} vertical='web' totalPages={1} />);
+    const resultsData = { totalPages: 2, bing: false, results: [{ title: 'test result 1', url: 'https://www.search.gov', thumbnail: { url: 'https://www.search.gov/test_image.png' }, description: 'result body', publishedDate: 'May 9th, 2023', updatedDate: 'May 10th, 2023', thumbnailUrl: null }]};
+    render(<SearchResultsLayout params={{ query: 'foo' }} resultsData={resultsData} vertical='web' />);
     const resultTitle = screen.getByText(/test result 1/i);
     const resultUrl = screen.getByText(/https:\/\/www.search.gov/i);
     const resultBody = screen.getByText(/result body/i);
@@ -34,8 +34,8 @@ describe('SearchResultsLayout', () => {
   });
 
   it('renders image search results', () => {
-    const results = [{ title: 'test result 1', url: 'https://www.search.gov', thumbnail: { url: 'https://www.search.gov/test_image.png' }, description: 'result body', publishedDate: 'May 9th, 2023', updatedDate: 'May 10th, 2023', thumbnailUrl: null }];
-    render(<SearchResultsLayout params={{ query: 'foo' }} results={results} vertical='image' totalPages={1} />);
+    const resultsData = { totalPages: 2, bing: true, results: [{ title: 'test result 1', url: 'https://www.search.gov', thumbnail: { url: 'https://www.search.gov/test_image.png' }, description: 'result body', publishedDate: 'May 9th, 2023', updatedDate: 'May 10th, 2023', thumbnailUrl: null }]};
+    render(<SearchResultsLayout params={{ query: 'foo' }} resultsData={resultsData} vertical='image' />);
     const resultTitle = screen.getByText(/test result 1/i);
     const img = [...document.getElementsByClassName('result-image')].pop() as HTMLImageElement;
     expect(resultTitle).toBeInTheDocument();
