@@ -14,10 +14,6 @@ class I14yPostProcessor < ResultsWithBodyAndDescriptionPostProcessor
     strip_highlighting unless @enable_highlighting
   end
 
-  def normalized_results
-
-  end
-
   def normalized_results(total_results)
     {
       totalPages: total_pages(total_results),

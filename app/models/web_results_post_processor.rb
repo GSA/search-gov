@@ -27,19 +27,6 @@ class WebResultsPostProcessor < PostProcessor
     post_processed.compact
   end
 
-  def normalized_results
-    @results.map do |result|
-      {
-        title: result['title'],
-        url: result['unescaped_url'],
-        description: result['content'],
-        updatedDate: nil,
-        publishedDate: nil,
-        thumbnailUrl: nil
-      }
-    end
-  end
-
   def normalized_results(total_results)
     {
       totalPages: total_pages(total_results),
