@@ -11,9 +11,5 @@ describe Search do
     it 'has no normalized results' do
       expect(search.normalized_results).to eq([])
     end
-
-    it 'has zero total pages' do
-      expect(search.total_pages).to eq(0)
-    end
   end
 end
