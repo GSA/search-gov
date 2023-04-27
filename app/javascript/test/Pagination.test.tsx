@@ -15,7 +15,6 @@ describe('Pagination component', () => {
         totalPages={testPages}
         currentPage={10}
         pathname={testPathname}
-        resultsCount={20}
       />
     );
   });
@@ -26,7 +25,6 @@ describe('Pagination component', () => {
         totalPages={testPages}
         currentPage={10}
         pathname={testPathname}
-        resultsCount={20}
       />
     );
     expect(screen.getAllByRole('listitem')).toHaveLength(7); // overflow slots don't count
@@ -38,7 +36,6 @@ describe('Pagination component', () => {
         totalPages={testPages}
         currentPage={1}
         pathname={testPathname}
-        resultsCount={20}
       />
     );
   });
@@ -49,7 +46,6 @@ describe('Pagination component', () => {
         totalPages={testPages}
         currentPage={24}
         pathname={testPathname}
-        resultsCount={20}
       />
     );
   });
@@ -60,7 +56,6 @@ describe('Pagination component', () => {
         totalPages={testPages}
         currentPage={10}
         pathname={testPathname}
-        resultsCount={20}
       />
     );
     expect(screen.getAllByText('…')).toHaveLength(2);
@@ -72,7 +67,6 @@ describe('Pagination component', () => {
         totalPages={testPages}
         currentPage={3}
         pathname={testPathname}
-        resultsCount={20}
       />
     );
   });
@@ -83,7 +77,6 @@ describe('Pagination component', () => {
         totalPages={testPages}
         currentPage={21}
         pathname={testPathname}
-        resultsCount={0}
       />
     );
     expect(screen.getAllByText('…')).toHaveLength(1);
@@ -98,7 +91,6 @@ describe('Pagination component', () => {
       <UswdsPagination
         totalPages={testPages}
         currentPage={21}
-        resultsCount={20}
         pathname={testPathname}
         onClickPrevious={mockOnClickPrevious}
         onClickNext={mockOnClickNext}
@@ -124,7 +116,6 @@ describe('Pagination component', () => {
           totalPages={testThreePages}
           currentPage={2}
           pathname={testPathname}
-          resultsCount={20}
         />
       );
       expect(screen.getAllByRole('listitem')).toHaveLength(5);
@@ -137,7 +128,6 @@ describe('Pagination component', () => {
           totalPages={testSevenPages}
           currentPage={4}
           pathname={testPathname}
-          resultsCount={20}
         />
       );
       expect(screen.getAllByRole('listitem')).toHaveLength(9);
@@ -153,7 +143,6 @@ describe('Pagination component', () => {
           currentPage={10}
           pathname={testPathname}
           maxSlots={10}
-          resultsCount={20}
         />
       );
       expect(screen.getAllByRole('listitem')).toHaveLength(10);

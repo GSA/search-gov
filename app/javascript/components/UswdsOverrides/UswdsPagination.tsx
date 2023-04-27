@@ -11,7 +11,6 @@ type PaginationProps = {
   pathname: string // pathname of results page
   totalPages: number // total items divided by items per page
   currentPage: number // current page number (starting at 1)
-  resultsCount: number
   maxSlots?: number // number of pagination "slots"
   onClickNext?: () => void
   onClickPrevious?: () => void
@@ -161,7 +160,7 @@ export const UswdsPagination = ({
   }
 
   const prevPage = !isOnFirstPage && currentPage - 1;
-  const nextPage = !isOnLastPage && currentPage + 1 && props.resultsCount > 0;
+  const nextPage = !isOnLastPage && currentPage + 1;
 
   return (
     <nav aria-label="Pagination" className={navClasses} {...props}>
