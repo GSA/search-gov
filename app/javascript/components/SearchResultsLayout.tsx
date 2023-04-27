@@ -9,17 +9,21 @@ import { Results } from './Results/Results';
 import { Footer } from './Footer/Footer';
 import { Identifier } from './Identifier/Identifier';
 interface SearchResultsLayoutProps {
-  results: {
-    title: string,
-    url: string,
-    thumbnail: {
-      url: string
-    },
-    description: string,
-    updatedDate: string,
-    publishedDate: string,
-    thumbnailUrl: string
-  }[];
+  resultsData: {
+    totalPages: number;
+    bing: boolean;
+    results: {
+      title: string,
+      url: string,
+      thumbnail: {
+        url: string
+      },
+      description: string,
+      updatedDate: string,
+      publishedDate: string,
+      thumbnailUrl: string
+    }[];
+  }
   totalPages: number;
   vertical: string;
   params: {
@@ -49,12 +53,12 @@ const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
         <Facets />
         <SearchBar 
           query={props.params.query}
-          results={props.results} 
+          results={props.resultsData.results} 
         />
         <Results 
-          results={props.results} 
+          results={props.resultsData.results} 
           vertical={props.vertical}
-          totalPages={props.totalPages}
+          totalPages={props.resultsData.totalPages}
         />
       </div>
 
