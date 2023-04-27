@@ -21,7 +21,7 @@ describe SearchgovDomainIndexerJob do
   describe 'job locking options' do
     subject(:lock_options) { described_class.lock_options }
 
-    it { is_expected.to eq(lock_ttl: 4.hours) }
+    it { is_expected.to eq(lock_ttl: 30.minutes) }
   end
 
   context 'when a domain has unfetched urls' do
