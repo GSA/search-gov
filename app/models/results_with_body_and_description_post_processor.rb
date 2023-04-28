@@ -1,4 +1,4 @@
-class ResultsWithBodyAndDescriptionPostProcessor < PostProcessor
+class ResultsWithBodyAndDescriptionPostProcessor < ResultsPostProcessor
   attr_accessor :results
 
   def initialize(results)

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PostProcessor
+class ResultsPostProcessor
   def initialize(*args); end
 
   def total_pages(total_results)

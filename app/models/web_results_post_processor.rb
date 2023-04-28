@@ -1,4 +1,4 @@
-class WebResultsPostProcessor < PostProcessor
+class WebResultsPostProcessor < ResultsPostProcessor
   include ResultsRejector
 
   attr_reader :results
@@ -31,7 +31,7 @@ class WebResultsPostProcessor < PostProcessor
     {
       totalPages: total_pages(total_results),
       results: format_results,
-      bing: true
+      bing: @affiliate.search_engine == 'BingV7'
     }
   end
 

@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe PostProcessor do
+describe ResultsPostProcessor do
   describe '#total_pages' do
     subject(:post_processor) { described_class.new }
 
