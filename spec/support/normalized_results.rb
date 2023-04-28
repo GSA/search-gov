@@ -14,7 +14,7 @@ shared_examples 'a search with normalized results' do
     expect(normalized_results[:totalPages]).to eq(total_pages)
   end
 
-  context 'results array' do
+  context 'with five results' do
     it 'returns the correct number of results' do
       expect(normalized_results[:results].length).to eq(result_count)
     end

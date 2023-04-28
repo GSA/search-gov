@@ -22,8 +22,7 @@ class Search
               :spelling_suggestion_eligible,
               :queried_at_seconds,
               :module_tag,
-              :modules,
-              :normalized_results
+              :modules
 
   def initialize(options = {})
     @affiliate = options[:affiliate]
