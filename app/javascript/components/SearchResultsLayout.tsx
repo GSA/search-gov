@@ -9,7 +9,7 @@ import { Results } from './Results/Results';
 import { Footer } from './Footer/Footer';
 import { Identifier } from './Identifier/Identifier';
 interface SearchResultsLayoutProps {
-  resultsData: {
+  resultsData?: {
     totalPages: number;
     bing: boolean;
     results: {
@@ -52,13 +52,13 @@ const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
         <Facets />
         <SearchBar 
           query={props.params.query}
-          results={props.resultsData.results} 
+          results={props.resultsData === null ? null : props.resultsData.results} 
         />
-        <Results 
+        {props.resultsData && (<Results 
           results={props.resultsData.results} 
           vertical={props.vertical}
           totalPages={props.resultsData.totalPages}
-        />
+        />)}
       </div>
 
       <Footer />
