@@ -4,7 +4,7 @@ import React from 'react';
 import { SearchBar } from '../components/SearchBar/SearchBar';
 
 describe('SearchBar', () => {
-  it('Search Bar with No Results', () => {
+  it('Search Bar with No Query', () => {
     render(<SearchBar results={[]} />);
 
     const searchInput = screen.getByTestId('search-field');
