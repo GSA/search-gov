@@ -55,7 +55,8 @@ const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
           results={props.resultsData === null ? null : props.resultsData.results} 
         />
         {props.resultsData && (<Results 
-          results={props.resultsData.results} 
+          results={props.resultsData.results}
+          bing={props.resultsData.bing}
           vertical={props.vertical}
           totalPages={props.resultsData.totalPages}
         />)}
