@@ -6,7 +6,7 @@ class SearchgovDomainIndexerJob < ApplicationJob
   # ensures we respect each website's crawl-delay by fetching URLs one at a time
   # with a delay between them. After a reasonable period of time (lock_ttl), assume
   # something has gone wrong, and unlock the job.
-  unique :until_executing, lock_ttl: 4.hours
+  unique :until_executing, lock_ttl: 30.minutes
 
   def perform(searchgov_domain:, delay:)
     searchgov_domain.searchgov_urls.fetch_required.first&.fetch
