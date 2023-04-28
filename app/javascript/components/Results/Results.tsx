@@ -3,8 +3,6 @@ import { GridContainer, Grid } from '@trussworks/react-uswds';
 
 import { Pagination } from './../Pagination/Pagination';
 
-import { getCurrentPage } from '../../utils';
-
 import './Results.css';
 interface ResultsProps {
   results: {
@@ -132,7 +130,7 @@ export const Results = (props: ResultsProps) => {
           })}
         </div>
       </div>
-      {(props.totalPages > 1 || getCurrentPage() > 1) && 
+      {props.totalPages > 1 && 
         <Pagination 
           totalPages={props.totalPages}
           pathname={window.location.href}
