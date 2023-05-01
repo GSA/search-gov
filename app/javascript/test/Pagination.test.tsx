@@ -54,6 +54,17 @@ describe('Pagination component', () => {
     );
   });
 
+  it('renders pagination when the last page is current for Bing', () => {
+    render(
+      <UswdsPagination
+        totalPages={testPages}
+        currentPage={24}
+        pathname={testPathname}
+        unboundedResults={true}
+      />
+    );
+  });
+
   it('renders overflow at the beginning and end when current page is in the middle', () => {
     render(
       <UswdsPagination
