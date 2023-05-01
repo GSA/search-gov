@@ -80,6 +80,7 @@ export const UswdsPagination = ({
   currentPage,
   className,
   maxSlots = 7,
+  unboundedResults,
   onClickPrevious,
   onClickNext,
   onClickPageNumber,
@@ -120,7 +121,7 @@ export const UswdsPagination = ({
     } else if (showPrevOverflow) {
       // We are in the end of the set, there will be overflow (...) at the beginning
       // Ex: [1] [...] [20] [21] [22] [23] [24]
-      if (props.unboundedResults) currentPageAfterSize = totalPages - currentPage;
+      if (unboundedResults) currentPageAfterSize = totalPages - currentPage;
       else currentPageAfterSize = totalPages - currentPage - 1; // current & last
       
       currentPageAfterSize = currentPageAfterSize < 0 ? 0 : currentPageAfterSize;
@@ -142,6 +143,7 @@ export const UswdsPagination = ({
       counter++;
       currentPageBeforeSize--;
     }
+    if (unboundedResults) currentPageAfterSize += 1;
 
     counter = 1;
     while (currentPageAfterSize > 0) {
@@ -158,7 +160,7 @@ export const UswdsPagination = ({
       currentPageRange.unshift(1);
     if (showNextOverflow) 
       currentPageRange.push('overflow');
-    if (currentPage !== totalPages && !props.unboundedResults) 
+    if (currentPage !== totalPages && !unboundedResults) 
       currentPageRange.push(totalPages);
   }
 

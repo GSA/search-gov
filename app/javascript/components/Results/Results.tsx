@@ -131,7 +131,7 @@ export const Results = (props: ResultsProps) => {
           })}
         </div>
       </div>
-      {props.totalPages > 1 && 
+      {props.totalPages > 1 && props.results.length === 20 && 
         <Pagination 
           totalPages={props.totalPages}
           pathname={window.location.href}
