@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe SearchgovDomain do
-  subject(:searchgov_domain) { described_class.new(domain: domain, scheme: 'http') }
+  subject(:searchgov_domain) { described_class.new(domain: domain) }
 
   let(:domain) { 'searchgov.gov' }
 
@@ -33,11 +33,6 @@ describe SearchgovDomain do
     it do
       is_expected.to have_db_column(:unfetched_urls_count).of_type(:integer).
         with_options(null: false, default: 0)
-    end
-
-    it do
-      is_expected.to have_db_column(:scheme).of_type(:string).
-        with_options(null: false, default: 'http', limit: 5)
     end
 
     it do
@@ -90,7 +85,6 @@ describe SearchgovDomain do
       end
     end
 
-    it { is_expected.to validate_inclusion_of(:scheme).in_array %w(http https) }
     it { is_expected.to validate_uniqueness_of(:domain).case_insensitive.on(:create) }
   end
 
@@ -174,7 +168,7 @@ describe SearchgovDomain do
     subject(:delay) { searchgov_domain.delay }
 
     before do
-      stub_request(:get, "http://#{domain}/robots.txt").
+      stub_request(:get, "https://#{domain}/robots.txt").
         to_return(status: [200, 'OK'], headers: { content_type: 'text/plain' }, body: robots)
     end
 
@@ -183,11 +177,11 @@ describe SearchgovDomain do
 
       it { is_expected.to eq 10 }
 
-      context 'when the domain is redirected' do
+      context 'when the robots is redirected' do
         before do
-          stub_request(:get, "http://#{domain}/robots.txt").
-            to_return(status: 301, headers: { location: "https://#{domain}/robots.txt" }, body: '')
           stub_request(:get, "https://#{domain}/robots.txt").
+            to_return(status: 301, headers: { location: "https://#{domain}/other_robots.txt" }, body: '')
+          stub_request(:get, "https://#{domain}/other_robots.txt").
             to_return(status: [200, 'OK'], headers: { content_type: 'text/plain' }, body: robots)
         end
 
@@ -249,14 +243,9 @@ describe SearchgovDomain do
   describe '#index_sitemaps' do
     subject(:index_sitemaps) { searchgov_domain.index_sitemaps }
 
-    before do
-      allow(searchgov_domain).to receive(:sitemap_urls).
-        and_return ['http://searchgov.gov/sitemap.xml']
-    end
-
     it 'indexes the sitemaps' do
       expect(SitemapIndexerJob).to receive(:perform_later).
-        with(sitemap_url: 'http://searchgov.gov/sitemap.xml', domain: domain)
+        with(sitemap_url: 'https://searchgov.gov/sitemap.xml', domain: domain)
       index_sitemaps
     end
   end
@@ -292,7 +281,7 @@ describe SearchgovDomain do
     let(:searchgov_domain) { described_class.create!(domain: domain) }
 
     context 'when the domain is available' do
-      before { stub_request(:get, 'http://searchgov.gov').to_return(status: 200) }
+      before { stub_request(:get, 'https://searchgov.gov').to_return(status: 200) }
 
       it 'sets the status to 200' do
         expect { check_status }.to change{ searchgov_domain.reload.status }.from(nil).to('200 OK')
@@ -304,7 +293,7 @@ describe SearchgovDomain do
     end
 
     context 'when the domain returns an error code' do
-      before { stub_request(:get, 'http://searchgov.gov').to_return(status: [403, 'Forbidden']) }
+      before { stub_request(:get, 'https://searchgov.gov').to_return(status: [403, 'Forbidden']) }
 
       it 'sets the status to the error code'  do
        expect { check_status }.to change{ searchgov_domain.reload.status }.from(nil).to('403 Forbidden')
@@ -327,7 +316,7 @@ describe SearchgovDomain do
     context 'when the request raises an error' do
       before do
         allow(searchgov_domain).to receive(:delay).and_return(0)
-        stub_request(:get, 'http://searchgov.gov').to_raise(StandardError.new('kaboom'))
+        stub_request(:get, 'https://searchgov.gov').to_raise(StandardError.new('kaboom'))
       end
 
       it 'sets the status to the error code'  do
@@ -343,7 +332,7 @@ describe SearchgovDomain do
 
       context 'when the error is transient' do
         before do
-          stub_request(:get, 'http://searchgov.gov').to_raise(HTTP::ConnectionError).times(2).
+          stub_request(:get, 'https://searchgov.gov').to_raise(HTTP::ConnectionError).times(2).
             then.to_return(status: 200)
         end
 
@@ -355,25 +344,9 @@ describe SearchgovDomain do
 
     context 'when the domain is redirected' do
       before do
-        stub_request(:get, "http://#{domain}").
+        stub_request(:get, "https://#{domain}").
           to_return(body: '', status: 301, headers: { 'Location' => new_url })
         stub_request(:get, new_url).to_return(status: 200)
-      end
-
-      context 'when the redirect is to https' do
-        let(:new_url) { 'https://searchgov.gov/' }
-
-        it 'sets the status to 200 OK' do
-          expect { check_status }.to change {
-            searchgov_domain.reload.status
-          }.from(nil).to('200 OK')
-        end
-
-        it 'sets the scheme to "https"' do
-          expect { check_status }.to change {
-            searchgov_domain.reload.scheme
-          }.from('http').to('https')
-        end
       end
 
       context 'when the redirect is to another domain' do
@@ -425,79 +398,79 @@ describe SearchgovDomain do
 
     context 'when there is no robots.txt' do
       before do
-        stub_request(:get, 'http://searchgov.gov/robots.txt').to_return(status: 404)
+        stub_request(:get, 'https://searchgov.gov/robots.txt').to_return(status: 404)
       end
 
-      it { is_expected.to eq ['http://searchgov.gov/sitemap.xml'] }
+      it { is_expected.to eq ['https://searchgov.gov/sitemap.xml'] }
     end
 
     context 'when the domain has a robots.txt file' do
       before do
-        stub_request(:get, 'http://searchgov.gov/robots.txt').
+        stub_request(:get, 'https://searchgov.gov/robots.txt').
           to_return(status: [200, 'OK'], body: robots_txt, headers: { content_type: 'text/plain' })
       end
 
-      let(:robots_txt) { 'Sitemap: http://searchgov.gov/agency_sitemap.xml' }
+      let(:robots_txt) { 'Sitemap: https://searchgov.gov/agency_sitemap.xml' }
 
-      it { is_expected.to eq ['http://searchgov.gov/agency_sitemap.xml'] }
+      it { is_expected.to eq ['https://searchgov.gov/agency_sitemap.xml'] }
 
       context 'when no sitemap is listed on robots.txt' do
         let(:robots_txt) { 'Delay: 1' }
 
-        it { is_expected.to eq ['http://searchgov.gov/sitemap.xml'] }
+        it { is_expected.to eq ['https://searchgov.gov/sitemap.xml'] }
       end
 
       context 'when the sitemap entry is followed by a comment' do
-        let(:robots_txt) { 'Sitemap: http://searchgov.gov/commented.xml #comment' }
+        let(:robots_txt) { 'Sitemap: https://searchgov.gov/commented.xml #comment' }
 
-        it { is_expected.to eq ['http://searchgov.gov/commented.xml'] }
+        it { is_expected.to eq ['https://searchgov.gov/commented.xml'] }
       end
 
       context 'when the sitemap url is relative' do
         let(:robots_txt) { 'Sitemap: /relative.xml' }
 
-        it { is_expected.to eq ['http://searchgov.gov/relative.xml'] }
+        it { is_expected.to eq ['https://searchgov.gov/relative.xml'] }
       end
 
       context 'when "sitemap" is lowercase' do
-        let(:robots_txt) { 'sitemap: http://searchgov.gov/lower.xml' }
+        let(:robots_txt) { 'sitemap: https://searchgov.gov/lower.xml' }
 
-        it { is_expected.to eq ['http://searchgov.gov/lower.xml'] }
+        it { is_expected.to eq ['https://searchgov.gov/lower.xml'] }
       end
 
       context 'when the sitemap is on another domain' do
         # This is technically permissible per the Sitemap protocol
         # (https://www.sitemaps.org/protocol.html#location).
-        let(:robots_txt) { 'Sitemap: http://other.gov/agency_sitemap.xml' }
+        let(:robots_txt) { 'Sitemap: https://other.gov/agency_sitemap.xml' }
 
-        it { is_expected.to include('http://other.gov/agency_sitemap.xml') }
+        it { is_expected.to include('https://other.gov/agency_sitemap.xml') }
       end
 
       context 'when the sitemap is listed with the wrong scheme' do
-        let(:robots_txt) { 'Sitemap: https://searchgov.gov/https_sitemap.xml' }
+        let(:robots_txt) { 'Sitemap: http://searchgov.gov/http_sitemap.xml' }
 
-        it { is_expected.to eq ['http://searchgov.gov/https_sitemap.xml'] }
+        it { is_expected.to eq ['https://searchgov.gov/http_sitemap.xml'] }
       end
 
       context 'when the sitemap is listed twice' do
         let(:robots_txt) do
           <<~SITEMAP
-            Sitemap: http://searchgov.gov/dupe_sitemap.xml
-            Sitemap: http://searchgov.gov/dupe_sitemap.xml
+            Sitemap: https://searchgov.gov/dupe_sitemap.xml
+            Sitemap: https://searchgov.gov/dupe_sitemap.xml
           SITEMAP
         end
 
-        it { is_expected.to eq ['http://searchgov.gov/dupe_sitemap.xml'] }
+        it { is_expected.to eq ['https://searchgov.gov/dupe_sitemap.xml'] }
       end
     end
 
     context 'when the domain has sitemap records' do
       before do
         searchgov_domain.save!
-        searchgov_domain.sitemaps.create!(url: 'http://searchgov.gov/sitemap_record.xml')
+        searchgov_domain.sitemaps.create!(url: 'https://searchgov.gov/sitemap_record.xml')
       end
 
-      it { is_expected.to eq ['http://searchgov.gov/sitemap_record.xml'] }
+      it { is_expected.to eq ['https://searchgov.gov/sitemap_record.xml'] }
     end
   end
 end

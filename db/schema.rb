@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_26_211536) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_18_192652) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -562,7 +562,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_26_211536) do
     t.integer "unfetched_urls_count", default: 0, null: false
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.string "scheme", limit: 5, default: "http", null: false
     t.string "activity", limit: 100, default: "idle", null: false
     t.string "canonical_domain"
     t.boolean "js_renderer", default: false
