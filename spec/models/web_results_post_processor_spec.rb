@@ -26,6 +26,10 @@ describe WebResultsPostProcessor do
         expect(result[:thumbnailUrl]).to be_nil
       end
     end
+
+    it 'uses unbounded pagination' do
+      expect(normalized_results[:unboundedResults]).to be true
+    end
   end
 
   describe '#post_processed_results' do

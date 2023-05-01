@@ -24,6 +24,10 @@ describe I14yPostProcessor do
           expect(result[:thumbnailUrl]).to eq('https://search.gov/img.svg')
         end
       end
+
+      it 'does not use unbounded pagination' do
+        expect(normalized_results[:unboundedResults]).to be false
+      end
     end
 
     context 'when results are missing some attributes' do
@@ -43,6 +47,10 @@ describe I14yPostProcessor do
           expect(result[:publishedDate]).to be_nil
           expect(result[:thumbnailUrl]).to be_nil
         end
+      end
+
+      it 'does not use unbounded pagination' do
+        expect(normalized_results[:unboundedResults]).to be false
       end
     end
   end

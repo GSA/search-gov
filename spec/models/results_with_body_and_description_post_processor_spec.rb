@@ -23,5 +23,9 @@ describe ResultsWithBodyAndDescriptionPostProcessor do
         expect(result[:thumbnailUrl]).to be_nil
       end
     end
+
+    it 'does not use unbounded pagination' do
+      expect(normalized_results[:unboundedResults]).to be false
+    end
   end
 end
