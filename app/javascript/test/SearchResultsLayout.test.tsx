@@ -5,7 +5,7 @@ import SearchResultsLayout from '../components/SearchResultsLayout';
 
 describe('SearchResultsLayout', () => {
   it('shows a message when there are no results', () => {
-    render(<SearchResultsLayout params={{}} resultsData={{ results: [], totalPages: 0, unboundedResults: false }} vertical='web' />);
+    render(<SearchResultsLayout params={{}} resultsData={null} vertical='web' />);
     const message = screen.getByText(/Please enter a search term in the box above./i);
     expect(message).toBeInTheDocument();
   });
@@ -19,7 +19,7 @@ describe('SearchResultsLayout', () => {
   });
 
   it('renders search results', () => {
-    let results = []
+    let results = [];
     for (let i = 0; i < 20; i += 1) {
       results.push({ title: 'test result 1', url: 'https://www.search.gov', thumbnail: { url: 'https://www.search.gov/test_image.png' }, description: 'result body', publishedDate: 'May 9th, 2023', updatedDate: 'May 10th, 2023', thumbnailUrl: null })
     }
