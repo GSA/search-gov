@@ -31,6 +31,7 @@ class SearchgovUrl < ApplicationRecord
     allow_blank: true
 
   before_validation :set_searchgov_domain, on: :create
+  before_create :set_document_id
   before_destroy :delete_document
 
   belongs_to :searchgov_domain
@@ -82,10 +83,6 @@ class SearchgovUrl < ApplicationRecord
       end
     end
     save!
-  end
-
-  def document_id
-    Digest::SHA256.hexdigest(url_without_protocol)
   end
 
   private
@@ -199,8 +196,9 @@ class SearchgovUrl < ApplicationRecord
     }
   end
 
-  def url_without_protocol
-    UrlParser.strip_http_protocols(url)
+  def set_document_id
+    url_without_protocol = UrlParser.strip_http_protocols(url)
+    self.document_id = Digest::SHA256.hexdigest(url_without_protocol)
   end
 
   def parse_document
