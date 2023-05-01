@@ -1,17 +1,16 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe IndexedDocument do
-  fixtures :affiliates, :superfresh_urls, :site_domains, :features
   before do
     @min_valid_attributes = {
       title: 'Some Title',
-      url: 'http://min.nps.gov/link.html',
+      url: 'https://min.nps.gov/link.html',
       affiliate_id: affiliates(:basic_affiliate).id
     }
     @valid_attributes = {
       title: 'Some Title',
       description: 'This is a document.',
-      url: 'http://www.nps.gov/index.htm',
+      url: 'https://www.nps.gov/index.htm',
       doctype: 'html',
       last_crawl_status: IndexedDocument::OK_STATUS,
       body: 'this is the doc body',
@@ -23,7 +22,7 @@ describe IndexedDocument do
     {
       title: 'Some Title',
       description: 'This is a document.',
-      url: 'http://www.nps.gov/index.htm',
+      url: 'https://www.nps.gov/index.htm',
       doctype: 'html',
       last_crawl_status: IndexedDocument::OK_STATUS,
       body: 'this is the doc body',

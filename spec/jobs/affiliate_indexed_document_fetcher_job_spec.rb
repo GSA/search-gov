@@ -6,14 +6,14 @@ describe AffiliateIndexedDocumentFetcherJob do
   let(:ok) { IndexedDocument.find_by(ok_atts) }
   let(:not_ok) { IndexedDocument.find_by(not_ok_atts) }
   let(:unfetched_atts) do
-    { url: 'http://nps.gov/foo.html',
+    { url: 'https://nps.gov/foo.html',
       title: 'Doc Title',
       description: 'This is a document.' }
   end
   let(:ok_atts) do
     { title: 'PDF Title',
       description: 'This is a PDF document.',
-      url: 'http://nps.gov/pdf.pdf',
+      url: 'https://nps.gov/pdf.pdf',
       last_crawl_status: IndexedDocument::OK_STATUS,
       last_crawled_at: Time.zone.now,
       body: 'this is the doc body' }
@@ -21,7 +21,7 @@ describe AffiliateIndexedDocumentFetcherJob do
   let(:not_ok_atts) do
     { title: 'Dupe PDF Title',
       description: 'Dupe This is a PDF document.',
-      url: 'http://nps.gov/dupe_pdf.pdf',
+      url: 'https://nps.gov/dupe_pdf.pdf',
       last_crawl_status: 'duplicate',
       last_crawled_at: Time.zone.now,
       body: 'this is the doc body' }
@@ -64,7 +64,7 @@ describe AffiliateIndexedDocumentFetcherJob do
   context 'when an indexed document has disappeared before job runs' do
     let(:unfetched2) { IndexedDocument.find_by(unfetched_atts2) }
     let(:unfetched_atts2) do
-      { url: 'http://nps.gov/foo2.html',
+      { url: 'https://nps.gov/foo2.html',
         title: 'Doc Title 2',
         description: 'This is a document 2.' }
     end

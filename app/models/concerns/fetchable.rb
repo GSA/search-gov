@@ -90,10 +90,9 @@ module Fetchable
 
   def downcase_scheme_and_host_and_remove_anchor_tags
     if self_url
-      scheme = self_url.scheme.downcase
       host = self_url.host.downcase
       request = self_url.request_uri.gsub(%r{/+}, '/')
-      self.url = "#{scheme}://#{host}#{request}"
+      self.url = "https://#{host}#{request}"
       @self_url = nil
     end
   end

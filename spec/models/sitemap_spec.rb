@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe Sitemap do
   let(:domain) { 'agency.gov' }
-  let(:url) { "http://#{domain}/sitemap.xml" }
+  let(:url) { "https://#{domain}/sitemap.xml" }
   let(:valid_attributes) { { url: url } }
 
   it { is_expected.to have_readonly_attribute(:url) }
