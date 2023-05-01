@@ -155,4 +155,8 @@ class IndexedDocument < ApplicationRecord
         e.message
     end
   end
+
+  def scheme
+    self_url.scheme.downcase
+  end
 end
