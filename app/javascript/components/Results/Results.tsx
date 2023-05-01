@@ -8,7 +8,7 @@ interface ResultsProps {
   results: {
     title: string,
     url: string,
-    thumbnail: {
+    thumbnail?: {
       url: string
     },
     description: string,

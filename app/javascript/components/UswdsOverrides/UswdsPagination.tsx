@@ -120,7 +120,9 @@ export const UswdsPagination = ({
     } else if (showPrevOverflow) {
       // We are in the end of the set, there will be overflow (...) at the beginning
       // Ex: [1] [...] [20] [21] [22] [23] [24]
-      currentPageAfterSize = totalPages - currentPage - 1; // current & last
+      if (props.unboundedResults) currentPageAfterSize = totalPages - currentPage;
+      else currentPageAfterSize = totalPages - currentPage - 1; // current & last
+      
       currentPageAfterSize = currentPageAfterSize < 0 ? 0 : currentPageAfterSize;
       currentPageBeforeSize = pageRangeSize - currentPageAfterSize;
     } else if (showNextOverflow) {
@@ -140,7 +142,6 @@ export const UswdsPagination = ({
       counter++;
       currentPageBeforeSize--;
     }
-    if (props.unboundedResults) currentPageAfterSize += 1;
 
     counter = 1;
     while (currentPageAfterSize > 0) {
