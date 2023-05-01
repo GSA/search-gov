@@ -14,7 +14,7 @@ class ResultsWithBodyAndDescriptionPostProcessor < ResultsPostProcessor
     {
       totalPages: total_pages(total_results),
       results: format_results,
-      bing: false
+      unboundedResults: false
     }
   end
 

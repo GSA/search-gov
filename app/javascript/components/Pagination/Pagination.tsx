@@ -8,7 +8,7 @@ import './Pagination.css';
 interface PaginationProps {
   pathname: string
   totalPages: number
-  bing: boolean
+  unboundedResults: boolean
 }
 
 export const Pagination = (props: PaginationProps) => {
@@ -21,7 +21,7 @@ export const Pagination = (props: PaginationProps) => {
               pathname={props.pathname} 
               totalPages={props.totalPages} 
               currentPage={getCurrentPage()}
-              bing={props.bing}
+              unboundedResults={props.unboundedResults}
             />
           </Grid>
         </Grid>

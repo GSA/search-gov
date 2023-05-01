@@ -31,7 +31,7 @@ class WebResultsPostProcessor < ResultsPostProcessor
     {
       totalPages: total_pages(total_results),
       results: format_results,
-      bing: @affiliate.search_engine == 'BingV7'
+      unboundedResults: @affiliate.search_engine == 'BingV7'
     }
   end
 

@@ -11,7 +11,7 @@ import { Identifier } from './Identifier/Identifier';
 interface SearchResultsLayoutProps {
   resultsData?: {
     totalPages: number;
-    bing: boolean;
+    unboundedResults: boolean;
     results: {
       title: string,
       url: string,
@@ -56,7 +56,7 @@ const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
         />
         {props.resultsData && (<Results 
           results={props.resultsData.results}
-          bing={props.resultsData.bing}
+          unboundedResults={props.resultsData.unboundedResults}
           vertical={props.vertical}
           totalPages={props.resultsData.totalPages}
         />)}

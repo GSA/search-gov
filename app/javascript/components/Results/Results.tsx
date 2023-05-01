@@ -16,7 +16,7 @@ interface ResultsProps {
     publishedDate: string,
     thumbnailUrl: string
   }[];
-  bing: boolean;
+  unboundedResults: boolean;
   totalPages: number;
   vertical: string;
 }
@@ -135,7 +135,7 @@ export const Results = (props: ResultsProps) => {
         <Pagination 
           totalPages={props.totalPages}
           pathname={window.location.href}
-          bing={props.bing}
+          unboundedResults={props.unboundedResults}
         />
       }
     </>

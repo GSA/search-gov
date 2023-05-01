@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 shared_examples 'a search with normalized results' do
-  let(:normalized_result_data_keys) { %i[results totalPages bing] }
+  let(:normalized_result_data_keys) { %i[results totalPages unboundedResults] }
   let(:normalized_result_keys) { %i[description url title updatedDate publishedDate thumbnailUrl] }
   let(:result_count) { 5 }
   let(:total_pages) { 1 }

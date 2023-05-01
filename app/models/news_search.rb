@@ -66,7 +66,7 @@ class NewsSearch < FilterableSearch
     {
       results: @results,
       totalPages: 2,
-      bing: false
+      unboundedResults: false
     }
   end
 

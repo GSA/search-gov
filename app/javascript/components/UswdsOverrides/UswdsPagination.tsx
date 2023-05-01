@@ -12,7 +12,7 @@ type PaginationProps = {
   totalPages: number // total items divided by items per page
   currentPage: number // current page number (starting at 1)
   maxSlots?: number // number of pagination "slots"
-  bing: boolean
+  unboundedResults: boolean
   onClickNext?: () => void
   onClickPrevious?: () => void
   onClickPageNumber?: (
@@ -140,7 +140,7 @@ export const UswdsPagination = ({
       counter++;
       currentPageBeforeSize--;
     }
-    if (props.bing) currentPageAfterSize += 1;
+    if (props.unboundedResults) currentPageAfterSize += 1;
 
     counter = 1;
     while (currentPageAfterSize > 0) {
@@ -157,7 +157,7 @@ export const UswdsPagination = ({
       currentPageRange.unshift(1);
     if (showNextOverflow) 
       currentPageRange.push('overflow');
-    if (currentPage !== totalPages && !props.bing) 
+    if (currentPage !== totalPages && !props.unboundedResults) 
       currentPageRange.push(totalPages);
   }
 
