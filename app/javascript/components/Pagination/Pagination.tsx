@@ -7,8 +7,8 @@ import { getCurrentPage } from '../../utils';
 import './Pagination.css';
 interface PaginationProps {
   pathname: string
-  totalPages: number
-  unboundedResults: boolean
+  totalPages?: number
+  unboundedResults?: boolean
 }
 
 export const Pagination = (props: PaginationProps) => {

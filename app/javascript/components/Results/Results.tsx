@@ -4,8 +4,10 @@ import { GridContainer, Grid } from '@trussworks/react-uswds';
 import { Pagination } from './../Pagination/Pagination';
 
 import './Results.css';
+
 interface ResultsProps {
-  results: {
+  query?: string
+  results?: {
     title: string,
     url: string,
     thumbnail?: {
@@ -16,8 +18,8 @@ interface ResultsProps {
     publishedDate: string,
     thumbnailUrl: string
   }[];
-  unboundedResults: boolean;
-  totalPages: number;
+  unboundedResults?: boolean;
+  totalPages?: number;
   vertical: string;
 }
 
@@ -99,7 +101,7 @@ export const Results = (props: ResultsProps) => {
         </GridContainer>
 
         <div id="results" className="search-result-item-wrapper">
-          {props.results.map((result, index) => {
+          {props.results ? (props.results.map((result, index) => {
             return (
               <GridContainer key={index} className='result search-result-item'>
                 <Grid row gap="md">
@@ -128,15 +130,27 @@ export const Results = (props: ResultsProps) => {
                 </Grid>
               </GridContainer>
             );
-          })}
+          })) : (
+            <GridContainer className='result search-result-item'>
+              <Grid row>
+                <Grid tablet={{ col: true }}><h4>Sorry, no results found for &#39;{props.query}&#39;. Try entering fewer or more general search terms.</h4></Grid>
+            </Grid>
+          </GridContainer>
+            
+          )}
         </div>
       </div>
-      {props.totalPages > 1 && props.results.length === 20 && 
+      {props.totalPages > 1 ? (
         <Pagination 
           totalPages={props.totalPages}
           pathname={window.location.href}
           unboundedResults={props.unboundedResults}
-        />
+        />) : (
+          <Pagination 
+          totalPages={props.totalPages}
+          pathname={window.location.href}
+        />      
+        )
       }
     </>
   );

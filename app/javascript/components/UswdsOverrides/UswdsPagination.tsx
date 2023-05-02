@@ -12,7 +12,7 @@ type PaginationProps = {
   totalPages: number // total items divided by items per page
   currentPage: number // current page number (starting at 1)
   maxSlots?: number // number of pagination "slots"
-  unboundedResults: boolean
+  unboundedResults?: boolean
   onClickNext?: () => void
   onClickPrevious?: () => void
   onClickPageNumber?: (
@@ -117,12 +117,12 @@ export const UswdsPagination = ({
       // We are in the middle of the set, there will be overflow (...) at both the beginning & end
       // Ex: [1] [...] [9] [10] [11] [...] [24]
       currentPageBeforeSize = Math.round((pageRangeSize - 1) / 2);
+      if (unboundedResults) currentPageBeforeSize += 2;
       currentPageAfterSize = pageRangeSize - currentPageBeforeSize;
     } else if (showPrevOverflow) {
       // We are in the end of the set, there will be overflow (...) at the beginning
       // Ex: [1] [...] [20] [21] [22] [23] [24]
-      if (unboundedResults) currentPageAfterSize = totalPages - currentPage;
-      else currentPageAfterSize = totalPages - currentPage - 1; // current & last
+      currentPageAfterSize = totalPages - currentPage - 1; // current & last
       
       currentPageAfterSize = currentPageAfterSize < 0 ? 0 : currentPageAfterSize;
       currentPageBeforeSize = pageRangeSize - currentPageAfterSize;
@@ -135,6 +135,8 @@ export const UswdsPagination = ({
       currentPageAfterSize = pageRangeSize - currentPageBeforeSize;
     }
 
+    if (unboundedResults) currentPageAfterSize = 0;
+
     // Populate the remaining slots
     let counter = 1;
     while (currentPageBeforeSize > 0) {
@@ -143,7 +145,6 @@ export const UswdsPagination = ({
       counter++;
       currentPageBeforeSize--;
     }
-    if (unboundedResults) currentPageAfterSize += 1;
 
     counter = 1;
     while (currentPageAfterSize > 0) {
