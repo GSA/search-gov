@@ -1,12 +1,14 @@
-# frozen_string_literal: true
+require 'spec_helper'
 
 describe SiteSearch do
+  fixtures :affiliates
+
   let(:affiliate) { affiliates(:power_affiliate) }
   let(:dc) do
     collection = affiliate.document_collections.build(
       name: 'WH only',
-      url_prefixes_attributes: {'0' => {prefix: 'https://www.whitehouse.gov/photos-and-video/'},
-                                   '1' => {prefix: 'https://www.whitehouse.gov/blog/'}})
+      url_prefixes_attributes: {'0' => {prefix: 'http://www.whitehouse.gov/photos-and-video/'},
+                                   '1' => {prefix: 'http://www.whitehouse.gov/blog/'}})
     collection.save!
     collection.navigation.update!(is_active: true)
     collection
@@ -61,7 +63,7 @@ describe SiteSearch do
         IndexedDocument.create!(affiliate: affiliate,
                                 title: 'electro coagulation',
                                 description: 'Scientists created a technology to remove contaminants',
-                                url: 'https://www100.whitehouse.gov/electro-coagulation',
+                                url: 'http://www100.whitehouse.gov/electro-coagulation',
                                 last_crawl_status: IndexedDocument::OK_STATUS)
         ElasticIndexedDocument.commit
       end
@@ -88,7 +90,7 @@ describe SiteSearch do
         IndexedDocument.create!(affiliate: affiliates(:usagov_affiliate),
                                 title: 'electro coagulation',
                                 description: 'Scientists created a technology to remove contaminants',
-                                url: 'https://www100.whitehouse.gov/electro-coagulation',
+                                url: 'http://www100.whitehouse.gov/electro-coagulation',
                                 last_crawl_status: IndexedDocument::OK_STATUS)
         ElasticIndexedDocument.commit
       end

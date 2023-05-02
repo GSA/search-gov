@@ -1,19 +1,15 @@
 # frozen_string_literal: true
 
+require 'spec_helper'
+
 describe IndexedDocumentFetcherJob do
+  fixtures :affiliates, :features
   before do
     IndexedDocument.destroy_all
   end
 
   let(:affiliate) { affiliates(:basic_affiliate) }
-  let(:indexed_document) do
-    IndexedDocument.create!(
-      url: 'https://www.nps.gov/test.html',
-      affiliate: affiliate,
-      title: 'Document Title 1',
-      description: 'This is a Document.'
-    )
-  end
+  let(:indexed_document) { IndexedDocument.create!(url: 'http://www.nps.gov/test.html', affiliate: affiliate, title: 'Document Title 1', description: 'This is a Document.') }
 
   it_behaves_like 'a searchgov job'
 

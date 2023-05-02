@@ -52,7 +52,7 @@ describe SiteCloner do
           Affiliate.create!(
             display_name: 'My Awesome Site',
             name: "#{affiliates(:basic_affiliate).name}1",
-            website: 'https://www.someaffiliate.gov',
+            website: 'http://www.someaffiliate.gov',
             locale: 'es'
           )
         end
@@ -159,12 +159,12 @@ describe SiteCloner do
 
     context 'when the origin site has excluded URLs' do
       before do
-        origin_site.excluded_urls.create!(url: 'https://do.not.include.gov/doc')
+        origin_site.excluded_urls.create!(url: 'http://do.not.include.gov/doc')
       end
 
       it 'copies excluded URLs' do
         expect(cloned_site.excluded_urls.count).to eq(1)
-        expect(cloned_site.excluded_urls.first.url).to eq('https://do.not.include.gov/doc')
+        expect(cloned_site.excluded_urls.first.url).to eq('http://do.not.include.gov/doc')
       end
     end
 
@@ -174,7 +174,7 @@ describe SiteCloner do
         fc.featured_collection_keywords.create!(value: 'cloning')
         fc.featured_collection_links.create!(position: 1,
                                              title: 'title',
-                                             url: 'https://www.gov.gov/some.url')
+                                             url: 'http://www.gov.gov/some.url')
       end
 
       it 'copies the featured collections' do
@@ -242,7 +242,7 @@ describe SiteCloner do
       before do
         origin_site.indexed_documents.create!(description: 'This is a document.',
                                               title: 'Some Title',
-                                              url: 'https://min.foo.gov/link.html')
+                                              url: 'http://min.foo.gov/link.html')
       end
 
       it 'copies the indexed documents' do
@@ -251,7 +251,7 @@ describe SiteCloner do
         cloned_doc = cloned_site.indexed_documents.first
         expect(cloned_doc.description).to eq('This is a document.')
         expect(cloned_doc.title).to eq('Some Title')
-        expect(cloned_doc.url).to eq('https://min.foo.gov/link.html')
+        expect(cloned_doc.url).to eq('http://min.foo.gov/link.html')
       end
     end
 
@@ -341,12 +341,12 @@ describe SiteCloner do
     context 'when the origin site has site feed URL' do
       before do
         origin_site.create_site_feed_url!(quota: 5,
-                                          rss_url: 'https://some.gov/feed.xml')
+                                          rss_url: 'http://some.gov/feed.xml')
       end
 
       it 'copies site feed URL' do
         expect(cloned_site.site_feed_url.quota).to eq(5)
-        expect(cloned_site.site_feed_url.rss_url).to eq('https://some.gov/feed.xml')
+        expect(cloned_site.site_feed_url.rss_url).to eq('http://some.gov/feed.xml')
       end
     end
 

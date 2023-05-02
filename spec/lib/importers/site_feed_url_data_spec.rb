@@ -5,7 +5,7 @@ describe SiteFeedUrlData do
 
   let(:site_feed_url) do
     SiteFeedUrl.create!(affiliate_id: affiliates(:basic_affiliate).id,
-                        rss_url: 'https://nps.gov/urls.rss',
+                        rss_url: 'http://nps.gov/urls.rss',
                         quota: 3)
   end
 
@@ -33,7 +33,7 @@ describe SiteFeedUrlData do
 
       it 'should delete any RSS-sourced indexed documents that are not in the feed' do
         obsolete_doc = IndexedDocument.create!(affiliate_id: site_feed_url.affiliate.id,
-                                               url: 'https://www.whitehouse.gov/blog/2011/obsolete-document',
+                                               url: 'http://www.whitehouse.gov/blog/2011/obsolete-document',
                                                title: 'obsolete document title',
                                                description: 'obsolete document description')
         expect(IndexedDocument).to receive(:fast_delete).with([obsolete_doc.id])
@@ -43,19 +43,19 @@ describe SiteFeedUrlData do
       it 'should try to create {quota} indexed documents with link, title, desc and summarized status, but not body' do
         described_class.new(site_feed_url).import
         idocs = IndexedDocument.last(3)
-        expect(idocs.first.url).to eq('https://www.whitehouse.gov/blog/2011/09/26/famine-horn-africa-be-part-solution')
+        expect(idocs.first.url).to eq('http://www.whitehouse.gov/blog/2011/09/26/famine-horn-africa-be-part-solution')
         expect(idocs.first.title).to eq('Famine in the Horn of Africa: Be a Part of the Solution')
         expect(idocs.first.description).to match(/FWD them to your neighbors/)
         expect(idocs.first.body).to be_nil
         expect(idocs.first.source).to eq('rss')
         expect(idocs.first.last_crawl_status).to eq(IndexedDocument::SUMMARIZED_STATUS)
-        expect(idocs[1].url).to eq('https://www.whitehouse.gov/blog/2011/09/26/call-peace-perspectives-volunteers-peace-corps-50')
+        expect(idocs[1].url).to eq('http://www.whitehouse.gov/blog/2011/09/26/call-peace-perspectives-volunteers-peace-corps-50')
         expect(idocs[1].title).to eq('A Call to Peace: Perspectives of Volunteers on the Peace Corps at 50 (no pubDate)')
         expect(idocs[1].description).to match(/200,000 Peace Corps volunteers/)
         expect(idocs[1].body).to be_nil
         expect(idocs[1].source).to eq('rss')
         expect(idocs[1].last_crawl_status).to eq(IndexedDocument::SUMMARIZED_STATUS)
-        expect(idocs.last.url).to eq('https://www.whitehouse.gov/blog/2011/09/26/supporting-scientists-lab-bench-and-bedtime-0')
+        expect(idocs.last.url).to eq('http://www.whitehouse.gov/blog/2011/09/26/supporting-scientists-lab-bench-and-bedtime-0')
         expect(idocs.last.title).to eq('Supporting Scientists at the Lab Bench ... and at Bedtime')
         expect(idocs.last.description).to match(/from the Office of Science and Technology/)
         expect(idocs.last.body).to be_nil
@@ -78,17 +78,17 @@ describe SiteFeedUrlData do
         described_class.new(site_feed_url).import
 
         idocs = IndexedDocument.last(3)
-        expect(idocs.first.url).to eq('https://www.whitehouse.gov/blog/2011/09/26/famine-horn-africa-be-part-solution')
+        expect(idocs.first.url).to eq('http://www.whitehouse.gov/blog/2011/09/26/famine-horn-africa-be-part-solution')
         expect(idocs.first.title).to eq('Famine in the Horn of Africa: Be a Part of the Solution')
         expect(idocs.first.description).to match(/FWD them to your neighbors/)
         expect(idocs.first.last_crawl_status).to eq(IndexedDocument::OK_STATUS)
 
-        expect(idocs[1].url).to eq('https://www.whitehouse.gov/blog/2011/09/26/call-peace-perspectives-volunteers-peace-corps-50')
+        expect(idocs[1].url).to eq('http://www.whitehouse.gov/blog/2011/09/26/call-peace-perspectives-volunteers-peace-corps-50')
         expect(idocs[1].title).to eq('A Call to Peace: Perspectives of Volunteers on the Peace Corps at 50 (updated)')
         expect(idocs[1].description).to match(/200,000 Peace Corps volunteers/)
         expect(idocs[1].last_crawl_status).to eq(IndexedDocument::SUMMARIZED_STATUS)
 
-        expect(idocs.last.url).to eq('https://www.whitehouse.gov/blog/2011/09/26/supporting-scientists-lab-bench-and-bedtime-0')
+        expect(idocs.last.url).to eq('http://www.whitehouse.gov/blog/2011/09/26/supporting-scientists-lab-bench-and-bedtime-0')
         expect(idocs.last.title).to eq('Supporting Scientists at the Lab Bench ... and at Bedtime (updated)')
         expect(idocs.last.description).to match(/from the Office of Science and Technology/)
         expect(idocs.last.last_crawl_status).to eq(IndexedDocument::SUMMARIZED_STATUS)
