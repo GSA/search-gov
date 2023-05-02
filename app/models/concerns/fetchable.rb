@@ -92,7 +92,7 @@ module Fetchable
     if self_url
       host = self_url.host.downcase
       request = self_url.request_uri.gsub(%r{/+}, '/')
-      self.url = "https://#{host}#{request}"
+      self.url = "#{scheme}://#{host}#{request}"
       @self_url = nil
     end
   end
@@ -107,5 +107,9 @@ module Fetchable
 
   def escape_url
     self.url = Addressable::URI.normalized_encode(url) rescue ''
+  end
+
+  def scheme
+    self_url.scheme.downcase
   end
 end

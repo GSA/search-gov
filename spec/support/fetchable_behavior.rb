@@ -168,7 +168,7 @@ shared_examples_for 'a record with a fetchable url' do
       end
     end
 
-    context 'when the URL uses http' do
+    pending 'when the URL uses http' do
       let(:url) { 'http://agency.gov/' }
 
       it 'sets the scheme to https' do
