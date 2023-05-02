@@ -167,15 +167,6 @@ shared_examples_for 'a record with a fetchable url' do
         end
       end
     end
-
-    pending 'when the URL uses http' do
-      let(:url) { 'http://agency.gov/' }
-
-      it 'sets the scheme to https' do
-        expect { record.valid? }.to change { record.url }.
-          from(url).to('https://agency.gov/')
-      end
-    end
   end
 
   describe '#fetched?' do
@@ -226,6 +217,23 @@ shared_examples_for 'a record with an indexable url' do
       it 'is not valid' do
         expect(record).not_to be_valid
         expect(record.errors.full_messages.first).to match(/extension is not one we index/i)
+      end
+    end
+  end
+end
+
+shared_examples_for 'a record that requires https' do
+  describe 'callbacks' do
+    describe 'before_validation' do
+      context 'when the URL uses http' do
+        let(:record) do
+          described_class.new(valid_attributes.merge(url: 'http://agency.gov/'))
+        end
+
+        it 'sets the scheme to https' do
+          expect { record.valid? }.to change { record.url }.
+            from('http://agency.gov/').to('https://agency.gov/')
+        end
       end
     end
   end
