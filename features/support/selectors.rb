@@ -8,11 +8,17 @@ module HtmlSelectorsHelpers
   #
   # step definitions in web_steps.rb
   #
+  ORDINAL = {
+    'first' => 1,
+    'second' => 2,
+    'third' => 3
+  }.freeze
+
   def selector_for(locator)
     case locator
 
     when /the page/
-      "html > body"
+      'html > body'
     when /the Collection URL Prefixes modal/
       '#url-prefixes .modal-body .url-prefixes'
     when /the RSS URLs modal/
@@ -30,15 +36,15 @@ module HtmlSelectorsHelpers
     when /the first scaffold row/
       '.records > tr:first-child'
     when /the first table body row/
-      "table tbody tr:first-child"
+      'table tbody tr:first-child'
     when /the first table body error row/
-      "table tbody tr.error"
+      'table tbody tr.error'
     when /the first table body warning row/
-      "table tbody tr.warning"
+      'table tbody tr.warning'
     when /the first table body success row/
-      "table tbody tr.success"
-    when /the first subsection row/
-      "li.sub-section:nth-child(1)"
+      'table tbody tr.success'
+    when /the (.*) subsection row/
+      "li.sub-section:nth-child(#{ORDINAL[::Regexp.last_match(1)]})"
     when /the search box/
       '#search-bar'
     when /the SERP active navigation/
@@ -58,11 +64,11 @@ module HtmlSelectorsHelpers
     when /the search all sites row/
       '#search .search-all-sites'
     when /the main menu/
-        '#main-menu'
+      '#main-menu'
     when /the footer/
-        '#footer-wrapper'
+      '#footer-wrapper'
     when /form tooltip/
-        '.form .tooltip'
+      '.form .tooltip'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
@@ -80,11 +86,11 @@ module HtmlSelectorsHelpers
     # for "within" steps as was previously the default for the
     # web steps:
     when /"(.+)"/
-      $1
+      ::Regexp.last_match(1)
 
     else
-      raise "Can't find mapping from \"#{locator}\" to a selector.\n" +
-        "Now, go and add a mapping in #{__FILE__}"
+      raise "Can't find mapping from \"#{locator}\" to a selector.\n" \
+            "Now, go and add a mapping in #{__FILE__}"
     end
   end
 end
