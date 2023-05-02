@@ -14,12 +14,12 @@ interface ResultsProps {
       url: string
     },
     description: string,
-    updatedDate: string,
-    publishedDate: string,
-    thumbnailUrl: string
+    updatedDate: string | null,
+    publishedDate: string | null,
+    thumbnailUrl: string | null
   }[];
   unboundedResults?: boolean;
-  totalPages?: number;
+  totalPages: number;
   vertical: string;
 }
 

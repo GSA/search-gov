@@ -12,9 +12,9 @@ import { Identifier } from './Identifier/Identifier';
 import { getCurrentPage } from '../utils';
 
 interface SearchResultsLayoutProps {
-  resultsData?: {
-    totalPages: number;
-    unboundedResults: boolean;
+  resultsData: {
+    totalPages: number | null;
+    unboundedResults: boolean | null;
     results: {
       title: string,
       url: string,
@@ -22,10 +22,10 @@ interface SearchResultsLayoutProps {
         url: string
       },
       description: string,
-      updatedDate: string,
-      publishedDate: string,
-      thumbnailUrl: string
-    }[];
+      updatedDate: string | null,
+      publishedDate: string | null,
+      thumbnailUrl: string | null
+    }[] | null;
   }
   vertical: string;
   params: {
