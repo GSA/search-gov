@@ -250,8 +250,4 @@ class SearchgovUrl < ApplicationRecord
   rescue => e
     Rails.logger.error "[SearchgovUrl] Unable to delete Searchgov i14y document #{document_id}: #{e.message}".red
   end
-
-  def scheme
-    'https'
-  end
 end

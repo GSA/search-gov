@@ -110,6 +110,6 @@ module Fetchable
   end
 
   def scheme
-    self_url.scheme.downcase
+    'https'
   end
 end
