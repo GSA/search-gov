@@ -31,7 +31,10 @@ class SearchgovUrl < ApplicationRecord
     allow_blank: true
 
   before_validation :set_searchgov_domain, on: :create
-  before_create :set_document_id
+  # The document_id and hashed_url are more or less synonymous. The document_id
+  # method will be removed in SRCH-4171, after the hashed_url value has been saved for
+  # all the records in production.
+  before_create { self.hashed_url = document_id }
   before_destroy :delete_document
 
   belongs_to :searchgov_domain
@@ -83,6 +86,10 @@ class SearchgovUrl < ApplicationRecord
       end
     end
     save!
+  end
+
+  def document_id
+    Digest::SHA256.hexdigest(url_without_protocol)
   end
 
   private
@@ -196,9 +203,8 @@ class SearchgovUrl < ApplicationRecord
     }
   end
 
-  def set_document_id
-    url_without_protocol = UrlParser.strip_http_protocols(url)
-    self.document_id = Digest::SHA256.hexdigest(url_without_protocol)
+  def url_without_protocol
+    UrlParser.strip_http_protocols(url)
   end
 
   def parse_document
