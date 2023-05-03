@@ -101,7 +101,7 @@ export const Results = (props: ResultsProps) => {
         </GridContainer>
 
         <div id="results" className="search-result-item-wrapper">
-          {props.results ? (props.results.map((result, index) => {
+          {props.results && props.results.length > 0 ? (props.results.map((result, index) => {
             return (
               <GridContainer key={index} className='result search-result-item'>
                 <Grid row gap="md">
@@ -145,10 +145,11 @@ export const Results = (props: ResultsProps) => {
           totalPages={props.totalPages}
           pathname={window.location.href}
           unboundedResults={props.unboundedResults}
-        />) : props.results ? (<></>) : (
+        />) : (props.results && props.results.length > 0) || props.totalPages === 0 ? (<></>) : (
         <Pagination 
           totalPages={props.totalPages}
           pathname={window.location.href}
+          unboundedResults={true}
         />)}
     </>
   );

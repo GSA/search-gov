@@ -55,7 +55,7 @@ const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
         <Facets />
         <SearchBar 
           query={props.params.query}
-          results={props.resultsData === null ? null : props.resultsData.results} 
+          results={props.resultsData ? props.resultsData.results : null} 
         />
         {props.resultsData ? (
           <Results 
@@ -63,6 +63,7 @@ const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
             unboundedResults={props.resultsData.unboundedResults}
             vertical={props.vertical}
             totalPages={props.resultsData.totalPages}
+            query={props.params.query}
           />) : (props.params.query && getCurrentPage() > 1) ? (
           <Results 
             vertical={props.vertical}

@@ -133,7 +133,6 @@ export const UswdsPagination = ({
       // We are in the end of the set, there will be overflow (...) at the beginning
       // Ex: [1] [...] [20] [21] [22] [23] [24]
       currentPageAfterSize = totalPages - currentPage - 1; // current & last
-      
       currentPageAfterSize = currentPageAfterSize < 0 ? 0 : currentPageAfterSize;
       currentPageBeforeSize = pageRangeSize - currentPageAfterSize;
     } else if (showNextOverflow) {

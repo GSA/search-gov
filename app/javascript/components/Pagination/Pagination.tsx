@@ -8,7 +8,7 @@ import './Pagination.css';
 interface PaginationProps {
   pathname: string
   totalPages: number
-  unboundedResults?: boolean
+  unboundedResults: boolean
 }
 
 export const Pagination = (props: PaginationProps) => {
