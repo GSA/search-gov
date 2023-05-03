@@ -12,6 +12,10 @@ interface PaginationProps {
 }
 
 export const Pagination = (props: PaginationProps) => {
+  if (props.totalPages < 2) {
+    return (<></>);
+  }
+
   return (
     <div className="serp-pagination-wrapper">
       <GridContainer>

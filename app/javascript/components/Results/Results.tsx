@@ -1,5 +1,3 @@
-/* eslint-disable complexity */
-
 import React from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
 
@@ -142,12 +140,12 @@ export const Results = (props: ResultsProps) => {
             </GridContainer>)}
         </div>
       </div>
-      {props.totalPages > 1 ? (
+      {props.totalPages ? (
         <Pagination 
           totalPages={props.totalPages}
           pathname={window.location.href}
           unboundedResults={props.unboundedResults}
-        />) : (props.results && props.results.length > 0) || props.totalPages === 0 ? (<></>) : (
+        />) : (
         <Pagination 
           totalPages={props.totalPages}
           pathname={window.location.href}
