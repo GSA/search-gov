@@ -222,9 +222,6 @@ shared_examples_for 'a record with an indexable url' do
   end
 end
 
-# This should eventually be required for all "Fetchable" classes (SRCH-4148), but there
-# is some old IndexedDocument logic that prevents us from enforcing this behavior for that
-# class at this time.
 shared_examples_for 'a record that requires https' do
   describe 'callbacks' do
     describe 'before_validation' do
