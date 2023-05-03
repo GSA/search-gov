@@ -69,6 +69,7 @@ const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
             vertical={props.vertical}
             totalPages={getCurrentPage()}
             query={props.params.query}
+            unboundedResults={true}
           />) : <></>}
       </div>
 
