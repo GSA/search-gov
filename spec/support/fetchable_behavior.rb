@@ -10,6 +10,7 @@ shared_examples_for 'a record with a fetchable url' do
   describe 'validations' do
     it { is_expected.to validate_presence_of(:url) }
     it { is_expected.to allow_value('https://some.site.gov/url').for(:url) }
+
     it 'limits the url length to 2000 characters' do
       record = described_class.new(valid_attributes.merge(url: ('x' * 2001)))
       expect(record).not_to be_valid
