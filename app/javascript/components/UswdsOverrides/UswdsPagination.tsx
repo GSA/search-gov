@@ -94,7 +94,13 @@ export const UswdsPagination = ({
   const showOverflow = totalPages > maxSlots; // If more pages than slots, use overflow indicator(s)
 
   const middleSlot = Math.round(maxSlots / 2); // 4 if maxSlots is 7
-  const showPrevOverflow = showOverflow && currentPage > middleSlot;
+  let showPrevOverflow; 
+  if (!unboundedResults) {
+    showPrevOverflow = showOverflow && currentPage > middleSlot;
+  } else {
+    showPrevOverflow = showOverflow && currentPage > (middleSlot + 2);
+  }
+  
   const showNextOverflow =
     showOverflow && totalPages - currentPage >= middleSlot;
 
