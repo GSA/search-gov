@@ -18,6 +18,7 @@ describe SearchgovUrl do
 
     it { is_expected.to have_db_column(:load_time).of_type(:integer) }
     it { is_expected.to have_db_column(:lastmod).of_type(:datetime) }
+    it { is_expected.to have_db_column(:hashed_url).of_type(:string).with_options(limit: 64) }
 
     it {
       is_expected.to have_db_column(:enqueued_for_reindex).
@@ -85,6 +86,15 @@ describe SearchgovUrl do
   end
 
   describe 'callbacks' do
+    describe 'on create' do
+      it 'sets the hashed_url' do
+        searchgov_url = described_class.create!(valid_attributes)
+        expect(searchgov_url.hashed_url).to eq(
+          '1ff7dfd3cf763d08bee3546e2538cf0315578fbd7b1d3f28f014915983d4d7ef'
+        )
+      end
+    end
+
     context 'when destroying' do
       it 'deletes the document' do
         expect(I14yDocument).to receive(:delete).

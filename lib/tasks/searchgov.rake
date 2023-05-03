@@ -4,6 +4,9 @@ namespace :searchgov do
   # Promote: rake searchgov:promote[important_urls.csv]
   # Demote:  rake searchgov:promote[important_urls.csv,false]
 
+  # This is an old, *mostly* unused task that was intended to boost certain search results
+  # before we improved our relevance ranking. It is still used on rare occasions, but should
+  # eventually be retired.
   task :promote, [:url_file, :boolean] => [:environment] do |_t, args|
     url_file = args.url_file
     boolean = args.boolean || 'true'
@@ -25,6 +28,8 @@ namespace :searchgov do
   desc 'Crawl a given domain, & optionally create searchgov_urls'
   # Usage: rake searchgov:crawl[www.foo.gov, srsly, skip, 0]
 
+  # This task is not currently used in production and will likely be replaced by a more
+  # robust crawler.
   task :crawl, [:domain, :srsly, :skip, :delay] => [:environment] do |_t, args|
     @domain = args[:domain]
     @srsly = (args[:srsly] == 'srsly')
