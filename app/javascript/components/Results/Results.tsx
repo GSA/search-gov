@@ -18,7 +18,7 @@ interface ResultsProps {
     publishedDate: string | null,
     thumbnailUrl: string | null
   }[] | null;
-  unboundedResults?: boolean;
+  unboundedResults: boolean;
   totalPages: number;
   vertical: string;
 }

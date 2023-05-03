@@ -7,7 +7,7 @@ import { getCurrentPage } from '../../utils';
 import './Pagination.css';
 interface PaginationProps {
   pathname: string
-  totalPages: number | null
+  totalPages: number
   unboundedResults: boolean
 }
 
