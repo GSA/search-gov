@@ -1,3 +1,4 @@
+#!/bin/sh
 set -e
 
 # Clean up phantom pids
