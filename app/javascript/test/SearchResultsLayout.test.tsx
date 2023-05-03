@@ -12,10 +12,10 @@ describe('SearchResultsLayout', () => {
 
   it('renders all relevant links', () => {
     render(<SearchResultsLayout params={{}} resultsData={{ results: [], totalPages: 1, unboundedResults: false }} vertical='web' />);
-    const everything = screen.getByText(/More/i);
-    const news = screen.getByText(/Related Sites/i);
-    expect(everything).toBeInTheDocument();
-    expect(news).toBeInTheDocument();
+    const linkToMoreDropdown = screen.getAllByText(/More/i);
+    const relatedSites = screen.getByText(/Related Sites/i);
+    expect(linkToMoreDropdown[0]).toBeInTheDocument();
+    expect(relatedSites).toBeInTheDocument();
   });
 
   it('renders search results', () => {
