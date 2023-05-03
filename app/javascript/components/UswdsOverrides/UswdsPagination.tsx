@@ -12,7 +12,7 @@ type PaginationProps = {
   totalPages: number // total items divided by items per page
   currentPage: number // current page number (starting at 1)
   maxSlots?: number // number of pagination "slots"
-  unboundedResults?: boolean
+  unboundedResults: boolean
   onClickNext?: () => void
   onClickPrevious?: () => void
   onClickPageNumber?: (
