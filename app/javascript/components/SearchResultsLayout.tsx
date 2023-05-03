@@ -58,18 +58,17 @@ const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
           results={props.resultsData === null ? null : props.resultsData.results} 
         />
         {props.resultsData ? (
-        <Results 
-          results={props.resultsData.results}
-          unboundedResults={props.resultsData.unboundedResults}
-          vertical={props.vertical}
-          totalPages={props.resultsData.totalPages}
-        />) : (props.params.query && getCurrentPage() > 1) ? (
           <Results 
-          vertical={props.vertical}
-          totalPages={getCurrentPage()}
-          query={props.params.query}
-        />
-        ) : <></>}
+            results={props.resultsData.results}
+            unboundedResults={props.resultsData.unboundedResults}
+            vertical={props.vertical}
+            totalPages={props.resultsData.totalPages}
+          />) : (props.params.query && getCurrentPage() > 1) ? (
+          <Results 
+            vertical={props.vertical}
+            totalPages={getCurrentPage()}
+            query={props.params.query}
+          />) : <></>}
       </div>
 
       <Footer />

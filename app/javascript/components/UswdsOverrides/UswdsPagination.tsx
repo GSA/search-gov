@@ -117,7 +117,11 @@ export const UswdsPagination = ({
       // We are in the middle of the set, there will be overflow (...) at both the beginning & end
       // Ex: [1] [...] [9] [10] [11] [...] [24]
       currentPageBeforeSize = Math.round((pageRangeSize - 1) / 2);
-      if (unboundedResults) currentPageBeforeSize += 2;
+
+      if (unboundedResults) {
+        currentPageBeforeSize += 2;
+      }
+      
       currentPageAfterSize = pageRangeSize - currentPageBeforeSize;
     } else if (showPrevOverflow) {
       // We are in the end of the set, there will be overflow (...) at the beginning
@@ -135,7 +139,9 @@ export const UswdsPagination = ({
       currentPageAfterSize = pageRangeSize - currentPageBeforeSize;
     }
 
-    if (unboundedResults) currentPageAfterSize = 0;
+    if (unboundedResults) {
+      currentPageAfterSize = 0;
+    }
 
     // Populate the remaining slots
     let counter = 1;

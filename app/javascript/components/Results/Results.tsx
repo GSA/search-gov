@@ -133,11 +133,11 @@ export const Results = (props: ResultsProps) => {
           })) : (
             <GridContainer className='result search-result-item'>
               <Grid row>
-                <Grid tablet={{ col: true }}><h4>Sorry, no results found for &#39;{props.query}&#39;. Try entering fewer or more general search terms.</h4></Grid>
-            </Grid>
-          </GridContainer>
-            
-          )}
+                <Grid tablet={{ col: true }}>
+                  <h4>Sorry, no results found for &#39;{props.query}&#39;. Try entering fewer or more general search terms.</h4>
+                </Grid>
+              </Grid>
+            </GridContainer>)}
         </div>
       </div>
       {props.totalPages > 1 ? (
@@ -146,12 +146,10 @@ export const Results = (props: ResultsProps) => {
           pathname={window.location.href}
           unboundedResults={props.unboundedResults}
         />) : (
-          <Pagination 
+        <Pagination 
           totalPages={props.totalPages}
           pathname={window.location.href}
-        />      
-        )
-      }
+        />)}
     </>
   );
 };
