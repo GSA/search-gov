@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 class WebResultsPostProcessor < ResultsPostProcessor
+  BING = 'BingV7'
   include ResultsRejector
 
   attr_reader :results
@@ -31,7 +34,7 @@ class WebResultsPostProcessor < ResultsPostProcessor
     {
       totalPages: total_pages(total_results),
       results: format_results,
-      unboundedResults: @affiliate.search_engine == 'BingV7'
+      unboundedResults: @affiliate.search_engine == BING
     }
   end
 
