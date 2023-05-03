@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
-
 describe Sitemap do
   let(:domain) { 'agency.gov' }
   let(:url) { "https://#{domain}/sitemap.xml" }
@@ -39,6 +37,7 @@ describe Sitemap do
     end
   end
 
-  it_should_behave_like 'a record with a fetchable url'
-  it_should_behave_like 'a record that belongs to a searchgov_domain'
+  it_behaves_like 'a record with a fetchable url'
+  it_behaves_like 'a record that belongs to a searchgov_domain'
+  it_behaves_like 'a record that requires https'
 end

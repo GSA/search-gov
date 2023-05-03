@@ -1,4 +1,4 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe IndexedDocument do
   fixtures :affiliates, :superfresh_urls, :site_domains, :features
