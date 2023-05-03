@@ -145,7 +145,7 @@ export const Results = (props: ResultsProps) => {
           totalPages={props.totalPages}
           pathname={window.location.href}
           unboundedResults={props.unboundedResults}
-        />) : (
+        />) : props.results ? (<></>) : (
         <Pagination 
           totalPages={props.totalPages}
           pathname={window.location.href}
