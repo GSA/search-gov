@@ -19,11 +19,11 @@ describe('SearchResultsLayout', () => {
   });
 
   it('renders search results', () => {
-    let results : any[] = [];
-    for (let i = 0; i < 20; i += 1) {
-      results.push({ title: 'test result 1', url: 'https://www.search.gov', description: 'result body', publishedDate: 'May 9th, 2023', updatedDate: 'May 10th, 2023' })
+    const results : any[] = []; // eslint-disable-line @typescript-eslint/no-explicit-any
+    for (let counter = 0; counter < 20; counter += 1) {
+      results.push({ title: 'test result 1', url: 'https://www.search.gov', description: 'result body', publishedDate: 'May 9th, 2023', updatedDate: 'May 10th, 2023' });
     }
-    const resultsData = { totalPages: 2, unboundedResults: true, results: results };
+    const resultsData = { totalPages: 2, unboundedResults: true, results };
     render(<SearchResultsLayout params={{ query: 'foo' }} resultsData={resultsData} vertical='web' />);
     const resultTitle = screen.getAllByText(/test result 1/i);
     const resultUrl = screen.getAllByText(/https:\/\/www.search.gov/i);
