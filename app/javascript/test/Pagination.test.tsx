@@ -1,6 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import React from 'react';
-import { jest, describe, it, expect } from '@jest/globals'
 
 import { UswdsPagination } from '../components/UswdsOverrides/UswdsPagination';
 

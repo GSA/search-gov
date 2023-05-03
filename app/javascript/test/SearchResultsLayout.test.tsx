@@ -5,13 +5,13 @@ import SearchResultsLayout from '../components/SearchResultsLayout';
 
 describe('SearchResultsLayout', () => {
   it('shows a message when there is no search query', () => {
-    render(<SearchResultsLayout params={{}} resultsData={ { results: null, totalPages: null, unboundedResults: null }} vertical='web' />);
+    render(<SearchResultsLayout params={{}} resultsData={null} vertical='web' />);
     const message = screen.getByText(/Please enter a search term in the box above./i);
     expect(message).toBeInTheDocument();
   });
 
   it('renders all relevant links', () => {
-    render(<SearchResultsLayout params={{}} resultsData={{ results: [], totalPages: 0, unboundedResults: false }} vertical='web' />);
+    render(<SearchResultsLayout params={{}} resultsData={{ results: [], totalPages: 1, unboundedResults: false }} vertical='web' />);
     const everything = screen.getByText(/More/i);
     const news = screen.getByText(/Related Sites/i);
     expect(everything).toBeInTheDocument();

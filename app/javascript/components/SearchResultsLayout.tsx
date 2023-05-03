@@ -13,8 +13,8 @@ import { getCurrentPage } from '../utils';
 
 interface SearchResultsLayoutProps {
   resultsData: {
-    totalPages: number | null;
-    unboundedResults: boolean | null;
+    totalPages: number;
+    unboundedResults: boolean;
     results: {
       title: string,
       url: string,
@@ -26,7 +26,7 @@ interface SearchResultsLayoutProps {
       publishedDate: string | null,
       thumbnailUrl: string | null
     }[] | null;
-  }
+  } | null
   vertical: string;
   params: {
     query?: string
