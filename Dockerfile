@@ -9,7 +9,6 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
   nodejs yarn
 # Workaround for PhantomJS: https://github.com/DMOJ/online-judge/pull/1270
 ENV OPENSSL_CONF /etc/ssl/
-RUN gem install rails
 
 COPY Gemfile* /usr/src/app/
 WORKDIR /usr/src/app
@@ -33,5 +32,5 @@ RUN yarn install
 COPY . /usr/src/app/
 
 EXPOSE 3000
-ENTRYPOINT ["./docker-entrypoint.sh"]
+# ENTRYPOINT ["./docker-entrypoint.sh"]
 CMD ["rails", "server", "-b", "0.0.0.0"]
