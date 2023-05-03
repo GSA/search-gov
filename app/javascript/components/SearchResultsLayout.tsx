@@ -64,7 +64,7 @@ const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
             vertical={props.vertical}
             totalPages={props.resultsData.totalPages}
             query={props.params.query}
-          />) : (props.params.query && getCurrentPage() > 1) ? (
+          />) : (props.params.query || getCurrentPage() > 1) ? (
           <Results 
             vertical={props.vertical}
             totalPages={getCurrentPage()}
