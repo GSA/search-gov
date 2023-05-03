@@ -140,12 +140,11 @@ export const Results = (props: ResultsProps) => {
             </GridContainer>)}
         </div>
       </div>
-      {props.totalPages && (
-        <Pagination 
-          totalPages={props.totalPages}
-          pathname={window.location.href}
-          unboundedResults={props.unboundedResults}
-        />)}
+      <Pagination 
+        totalPages={props.totalPages}
+        pathname={window.location.href}
+        unboundedResults={props.unboundedResults}
+      />
     </>
   );
 };
