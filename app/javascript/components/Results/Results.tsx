@@ -1,3 +1,5 @@
+/* eslint-disable complexity */
+
 import React from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
 
