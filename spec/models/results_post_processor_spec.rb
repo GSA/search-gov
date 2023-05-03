@@ -10,16 +10,26 @@ describe ResultsPostProcessor do
       expect(post_processor.total_pages(0)).to eq(0)
     end
 
-    it 'returns one when there are 20 or fewer results' do
-      expect(post_processor.total_pages(1)).to eq(1)
-      expect(post_processor.total_pages(10)).to eq(1)
-      expect(post_processor.total_pages(20)).to eq(1)
-      expect(post_processor.total_pages(21)).not_to eq(1)
+    context 'when there are 20 or fewer results' do
+      it 'returns one' do
+        expect(post_processor.total_pages(1)).to eq(1)
+        expect(post_processor.total_pages(10)).to eq(1)
+        expect(post_processor.total_pages(20)).to eq(1)
+        expect(post_processor.total_pages(21)).not_to eq(1)
+      end
+    end
+
+    context 'when there are more than 20 results' do
+      it 'returns the correct value' do
+        expect(post_processor.total_pages(21)).to eq(2)
+        expect(post_processor.total_pages(100)).to eq(5)
+        expect(post_processor.total_pages(101)).to eq(6)
+      end
     end
 
     context 'when an invalid value is passed in' do
       it 'returns zero' do
-        expect(post_processor.total_pages({})).to eq(0)
+        expect(post_processor.total_pages(nil)).to eq(0)
       end
     end
   end
