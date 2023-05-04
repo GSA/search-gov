@@ -1,23 +1,28 @@
 new:
   url: https://www.agency.gov/new
+  hashed_url: 3c8b54ce13ebc521f293e0f17fb804d9f9a0a15a9896c510641ae7c975441555
 
 outdated:
   url: https://www.agency.gov/outdated
+  hashed_url: 5f6a904a44fb7ccd348f7994963b1950e885a9e78c97fc55a876f9e1f01be9a2
   last_crawled_at: <%= 1.week.ago.to_fs(:db) %>
   lastmod: <%= 1.day.ago.to_fs(:db) %>
 
 current:
   url: https://www.agency.gov/current
+  hashed_url: 6ee2781be00be54fa0c72f08263759db2ba3052ad2624e1d3023e56f043b8a1c
   last_crawled_at: <%= 1.day.ago.to_fs(:db) %>
   lastmod: <%= 1.week.ago.to_fs(:db) %>
 
 enqueued:
   url: https://www.agency.gov/enqueued
+  hashed_url: f03086b21237918bb4b135c38669d8b274b06c070bd56519c9394794202a4b4b
   last_crawled_at: <%= 1.day.ago.to_fs(:db) %>
   lastmod: <%= 1.week.ago.to_fs(:db) %>
   enqueued_for_reindex: true
 
 crawled_more_than_month:
   url: https://www.agency.gov/crawled_more_than_month
+  hashed_url: 367f5717e22c0484a557326a6ff68c8974cf7865e927803739f860c21f0f7456
   last_crawled_at: <%= 45.days.ago.to_fs(:db) %>
   last_crawl_status: 'OK'
