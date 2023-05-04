@@ -1,36 +1,37 @@
 FROM ruby:3.0.6
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+WORKDIR /usr/src/app
+EXPOSE 3000
 
 RUN apt-get update -y && apt-get install -y --no-install-recommends \
   default-jre \
   default-mysql-client \
   imagemagick \
   libprotobuf-dev \
-  protobuf-compiler \
-  nodejs yarn
+  protobuf-compiler 
+
 # Workaround for PhantomJS: https://github.com/DMOJ/online-judge/pull/1270
 ENV OPENSSL_CONF /etc/ssl/
 
+ENV NODE_VERSION 16.18.1
+ENV NVM_DIR=/root/.nvm
+
+RUN apt install -y curl \
+  && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash \
+  && . "$NVM_DIR/nvm.sh" \
+  && nvm install $NODE_VERSION \
+  && nvm alias default $NODE_VERSION \
+  && nvm use default \
+  && npm install -g yarn \
+  && yarn install
+
+ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
+ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
+
 COPY Gemfile* /usr/src/app/
-WORKDIR /usr/src/app
-
 ENV BUNDLE_PATH /gems
-
 RUN bundle install
 
-ENV NODE_VERSION=16.13.0
-RUN apt install -y curl
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-
-ENV NVM_DIR=/root/.nvm
-RUN . "$NVM_DIR/nvm.sh" && nvm install ${NODE_VERSION}
-RUN . "$NVM_DIR/nvm.sh" && nvm use v${NODE_VERSION}
-RUN . "$NVM_DIR/nvm.sh" && nvm alias default v${NODE_VERSION}
-ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin/:${PATH}"
-RUN npm install -g yarn
-RUN yarn install
-
 COPY . /usr/src/app/
-
-EXPOSE 3000
-# ENTRYPOINT ["./docker-entrypoint.sh"]
+ENTRYPOINT ["./docker-entrypoint.sh"]
 CMD ["rails", "server", "-b", "0.0.0.0"]
