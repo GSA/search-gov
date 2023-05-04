@@ -75,8 +75,9 @@ describe Admin::AffiliatesController do
             is_rss_govbox_enabled is_sayt_enabled is_video_govbox_enabled jobs_enabled raw_log_access_enabled ]
       end
       let(:display_columns) do
-        %i[ footer_fragment header_tagline_font_family header_tagline_font_size header_tagline_font_style
-            no_results_pointer page_one_more_results_pointer navigation_dropdown_label related_sites_dropdown_label ]
+        %i[ show_redesign_display_settings use_redesigned_results_page footer_fragment header_tagline_font_family
+            header_tagline_font_size header_tagline_font_style no_results_pointer page_one_more_results_pointer
+            navigation_dropdown_label related_sites_dropdown_label ]
       end
       let(:analytics_columns) do
         %i[ga_web_property_id domain_control_validation_code external_tracking_code submitted_external_tracking_code]
@@ -168,10 +169,12 @@ describe Admin::AffiliatesController do
             recent_user_activity
             related_sites_dropdown_label
             search_engine
+            show_redesign_display_settings
             site_domains
             submitted_external_tracking_code
             theme
             updated_at
+            use_redesigned_results_page
             website ]
       end
 
