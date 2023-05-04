@@ -57,14 +57,15 @@ const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
           query={props.params.query}
           results={props.resultsData ? props.resultsData.results : null} 
         />
+        {/* This ternary is needed to handle the case when Bing pagination leads to a page with no results */}
         {props.resultsData ? (
           <Results 
             results={props.resultsData.results}
-            unboundedResults={props.resultsData.unboundedResults}
             vertical={props.vertical}
             totalPages={props.resultsData.totalPages}
             query={props.params.query}
-          />) : (props.params.query || getCurrentPage() > 1) ? (
+            unboundedResults={props.resultsData.unboundedResults}
+          />) : props.params.query ? (
           <Results 
             vertical={props.vertical}
             totalPages={getCurrentPage()}
