@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_02_160301) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_03_151057) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -95,6 +95,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_02_160301) do
     t.datetime "header_tagline_logo_updated_at", precision: nil
     t.string "bing_v5_key", limit: 32
     t.boolean "active", default: true, null: false
+    t.boolean "show_redesign_display_settings", default: false
+    t.boolean "use_redesigned_results_page", default: false
     t.index ["name"], name: "index_affiliates_on_name", unique: true
   end
 
