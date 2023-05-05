@@ -50,7 +50,7 @@ class BlendedSearch < FilterableSearch
     post_processor = ResultsWithBodyAndDescriptionPostProcessor.new(response.results)
     post_processor.post_process_results
     @results = paginate(response.results)
-    process_data_for_redesign(post_processor)
+    @normalized_results = process_data_for_redesign(post_processor)
     @startrecord = ((@page - 1) * @per_page) + 1
     @endrecord = @startrecord + @results.size - 1
     assign_spelling_suggestion_if_eligible(response.suggestion.text) if response.suggestion.present?
@@ -74,7 +74,7 @@ class BlendedSearch < FilterableSearch
   private
 
   def process_data_for_redesign(post_processor)
-    @normalized_results = post_processor.normalized_results(@total)
+    post_processor.normalized_results(@total)
   end
 
   def modules_in_results

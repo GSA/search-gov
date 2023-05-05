@@ -4,34 +4,38 @@ require 'spec_helper'
 
 describe ResultsPostProcessor do
   describe '#total_pages' do
-    subject(:post_processor) { described_class.new }
+    subject(:total_pages) { described_class.new.total_pages(total_results) }
 
-    it 'returns zero when there are no results' do
-      expect(post_processor.total_pages(0)).to eq(0)
+    context 'when there are no results' do
+      let(:total_results) { 0 }
+
+      it { is_expected.to eq(0) }
     end
 
-    context 'when there are 20 or fewer results' do
-      it 'returns one' do
-        expect(post_processor.total_pages(1)).to eq(1)
-        expect(post_processor.total_pages(10)).to eq(1)
-        expect(post_processor.total_pages(20)).to eq(1)
-        expect(post_processor.total_pages(21)).not_to eq(1)
+    context 'when there is one page of results' do
+      let(:total_results) { 10 }
+
+      it { is_expected.to eq(1) }
+    end
+
+    context 'when there is more than one page of results' do
+      context 'when the last page has exactly 20 results' do
+        let(:total_results) { 60 }
+
+        it { is_expected.to eq(3) }
       end
-    end
 
-    context 'when there are more than 20 results' do
-      it 'returns the correct value' do
-        expect(post_processor.total_pages(21)).to eq(2)
-        expect(post_processor.total_pages(100)).to eq(5)
-        expect(post_processor.total_pages(101)).to eq(6)
+      context 'when the last page has less than 20 results' do
+        let(:total_results) { 65 }
+
+        it { is_expected.to eq(4) }
       end
     end
 
     context 'when an invalid value is passed in' do
-      it 'returns zero' do
-        expect(post_processor.total_pages(nil)).to eq(0)
-        expect(post_processor.total_pages({})).to eq(0)
-      end
+      let(:total_results) { {} }
+
+      it { is_expected.to eq(0) }
     end
   end
 end
