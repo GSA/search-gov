@@ -1,21 +1,21 @@
-%h3 Faceted Navigation
-= f.label :left_nav_label, 'Label for Facets'
+%h3= t('.search_tabs_navigation', scope: 'admin_center')
+= f.label :left_nav_label, t('.label_for_search_tabs', scope: 'admin_center')
 = f.text_field :left_nav_label, maxlength: 20
 
 %table#sidebar.table.table-draggable
   %thead
     %tr.nodrag.nodrop
-      %th Name
-      %th Source
-      %th Setting
+      %th= t('.name', scope: 'admin_center')
+      %th= t('.source', scope: 'admin_center')
+      %th= t('.setting', scope: 'admin_center')
   %tbody
     %tr.nodrag.nodrop
       %td
         %i.fa.fa-reorder-black{ style: 'visibility: hidden' }
         = f.label :default_search_label, nil, class: 'required hide'
         = f.text_field :default_search_label, maxlength: 20
-      %td= link_to 'Domains', site_domains_path(@site)
-      %td.muted ON
+      %td= link_to t('.domains', scope: 'admin_center'), site_domains_path(@site)
+      %td.muted= I18n.t('admin_center.actions.toggle_on')
     - filter_navigations(@site, @site.navigations).each_with_index do |nav, index|
       = f.fields_for :"#{render_navigable_field_name_for nav}", nav.navigable do |navigable_form|
         = navigable_form.fields_for :navigation do |navigation_form|
