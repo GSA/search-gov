@@ -102,6 +102,7 @@ class SitemapIndexer
 
   def sitemap
     @sitemap ||= begin
+      DocumentFetchLogger.new(sitemap_url, 'sitemap_url').log
       HTTP.headers(user_agent: DEFAULT_USER_AGENT).
         timeout(connect: 20, read: 60).follow.get(sitemap_url).to_s
     rescue => e

@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
-
 describe SitemapIndexer do
   let(:sitemap_url) { 'https://agency.gov/sitemap.xml' }
   let(:searchgov_domain) { searchgov_domains(:agency_gov) }
@@ -240,6 +238,13 @@ describe SitemapIndexer do
         expect(searchgov_domain.searchgov_urls.first.lastmod).
           to eq(Time.zone.parse('Mon, 26 Sep 2011 21:33:05 +0000'))
       end
+    end
+
+    it 'logs the sitemap URL that was requested' do
+      allow(Rails.logger).to receive(:info)
+      index
+      expect(Rails.logger).to have_received(:info).
+        with(%r{Document Fetch.*https://agency.gov/sitemap.xml})
     end
   end
 
