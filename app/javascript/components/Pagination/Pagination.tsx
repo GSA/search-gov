@@ -7,12 +7,12 @@ import { getCurrentPage } from '../../utils';
 import './Pagination.css';
 interface PaginationProps {
   pathname: string
-  totalPages: number
+  totalPages: number | null
   unboundedResults: boolean
 }
 
 export const Pagination = (props: PaginationProps) => {
-  if (props.totalPages < 2) {
+  if ((!props.totalPages || props.totalPages < 2 || getCurrentPage() > props.totalPages)) {
     return (<></>);
   }
 

@@ -10,6 +10,7 @@ Feature: Search - redesign
       | bar site         | bar.gov          | aff@bar.gov           | John       | Bar       | whitehouse.gov |
     When I am on bar.gov's redesigned search page
     Then I should see "Please enter a search term in the box above."
+    And I should not see pagination
 
   @javascript @a11y @a11y_wip
   Scenario: Searching a domain with Bing results with pagination
