@@ -19,6 +19,7 @@ data:
     - config/locales/%{locale}.yml
     ## More files:
     - config/locales/**/*.%{locale}.yml
+    - config/locales/admin_center/%{locale}.yml
 
   # Locale files to write new keys to, based on a list of key pattern => file rules. Matched from top to bottom:
   # `i18n-tasks normalize -p` will force move the keys according to these rules
@@ -27,6 +28,8 @@ data:
     # - ['{devise, simple_form}.*', 'config/locales/\1.%{locale}.yml']
     ## Catch-all default:
     # - config/locales/%{locale}.yml
+    ## Write admin_center keys to their respective file(s):
+    - ['{admin_center}.*', 'config/locales/admin_center/%{locale}.yml']
 
   # External locale data (e.g. gems).
   # This data is not considered unused and is never written to.
@@ -127,9 +130,11 @@ ignore_unused:
 #   fr,es:
 #     - common.brand
 
-## Exclude these keys from the `i18n-tasks check-consistent-interpolations` report:
-# ignore_inconsistent_interpolations:
-# - 'activerecord.attributes.*'
+# Exclude these keys from the `i18n-tasks check-consistent-interpolations` report:
+ignore_inconsistent_interpolations:
+  # To be resolved via SRCH-2592
+  - 'searches.commercial_results.see_more_image_results'
+  - 'datetime.time_ago_in_words.*.*'
 
 ## Ignore these keys completely:
 # ignore:
