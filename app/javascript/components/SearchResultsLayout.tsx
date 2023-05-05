@@ -9,8 +9,6 @@ import { Results } from './Results/Results';
 import { Footer } from './Footer/Footer';
 import { Identifier } from './Identifier/Identifier';
 
-import { getCurrentPage } from '../utils';
-
 interface SearchResultsLayoutProps {
   resultsData: {
     totalPages: number;
