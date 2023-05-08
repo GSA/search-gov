@@ -31,7 +31,6 @@ class Search
     initialize_pageable_attributes options
 
     @results, @spelling_suggestion = [], nil
-    @normalized_results = []
     @queried_at_seconds = Time.now.to_i
     @modules = []
     @spelling_suggestion_eligible = !SuggestionBlock.exists?(query: options[:query])
