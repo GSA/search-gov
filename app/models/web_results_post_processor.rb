@@ -1,9 +1,13 @@
-class WebResultsPostProcessor
+# frozen_string_literal: true
+
+class WebResultsPostProcessor < ResultsPostProcessor
+  BING = 'BingV7'
   include ResultsRejector
 
   attr_reader :results
 
   def initialize(query, affiliate, results)
+    super
     @affiliate = affiliate
     @results = results
     @news_item_hash = @affiliate.rss_feeds.non_managed.present? ? build_news_item_hash_from_search(query) : {}
@@ -26,7 +30,17 @@ class WebResultsPostProcessor
     post_processed.compact
   end
 
-  def normalized_results
+  def normalized_results(total_results)
+    {
+      totalPages: total_pages(total_results),
+      results: format_results,
+      unboundedResults: @affiliate.search_engine == BING
+    }
+  end
+
+  private
+
+  def format_results
     @results.map do |result|
       {
         title: result['title'],
@@ -38,8 +52,6 @@ class WebResultsPostProcessor
       }
     end
   end
-
-  private
 
   def title_description_date_hash_by_link
     links_news_items = NewsItem.select([:link, :title, :description, :published_at]).

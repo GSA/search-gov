@@ -8,21 +8,26 @@ import { SearchBar } from './SearchBar/SearchBar';
 import { Results } from './Results/Results';
 import { Footer } from './Footer/Footer';
 import { Identifier } from './Identifier/Identifier';
+
 interface SearchResultsLayoutProps {
-  results: {
-    title: string,
-    url: string,
-    thumbnail: {
-      url: string
-    },
-    description: string,
-    updatedDate: string,
-    publishedDate: string,
-    thumbnailUrl: string
-  }[];
+  resultsData: {
+    totalPages: number;
+    unboundedResults: boolean;
+    results: {
+      title: string,
+      url: string,
+      thumbnail?: {
+        url: string
+      },
+      description: string,
+      updatedDate: string | null,
+      publishedDate: string | null,
+      thumbnailUrl: string | null
+    }[] | null;
+  } | null
   vertical: string;
   params: {
-    query: string
+    query?: string
   };
 }
 
@@ -48,12 +53,23 @@ const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
         <Facets />
         <SearchBar 
           query={props.params.query}
-          results={props.results} 
+          results={props.resultsData ? props.resultsData.results : null} 
         />
-        <Results 
-          results={props.results} 
-          vertical={props.vertical}
-        />
+        {/* This ternary is needed to handle the case when Bing pagination leads to a page with no results */}
+        {props.resultsData ? (
+          <Results 
+            results={props.resultsData.results}
+            vertical={props.vertical}
+            totalPages={props.resultsData.totalPages}
+            query={props.params.query}
+            unboundedResults={props.resultsData.unboundedResults}
+          />) : props.params.query ? (
+          <Results 
+            vertical={props.vertical}
+            totalPages={null}
+            query={props.params.query}
+            unboundedResults={true}
+          />) : <></>}
       </div>
 
       <Footer />

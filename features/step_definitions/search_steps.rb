@@ -47,6 +47,39 @@ Then /every result URL should match "(.+?)"$/ do |str|
   results.each { |result| result.should have_link(href: %r{#{str}}i) }
 end
 
+Then /I (should|should not) see pagination/ do |should|
+  if should == 'should'
+    page.should have_selector('.usa-pagination')
+  else
+    page.should_not have_selector('.usa-pagination')
+  end
+end
+
+Then /I (should|should not) see a link to the "(.+?)" page/ do |should, page_link|
+  if should == 'should'
+    page.should have_link(page_link)
+  else
+    page.should_not have_link(page_link)
+  end
+end
+
+When /I click on the "(.+?)" page/ do |link|
+  click_link(link)
+end
+
+Then /I should be on page "(.+?)" of results/ do |page|
+  current_page = find('a[class="usa-link usa-pagination__button usa-current"]').text
+  expect(current_page).to eq(page)
+end
+
+Then /I should see a link to the last page \("(.+?)"\)/ do |last_page|
+  page.should have_link(last_page)
+end
+
+When /I click on the last page \("(.+?)"\)/ do |last_page|
+  click_link(last_page)
+end
+
 # Hitting the production I14y API during tests is unsafe, and we currently
 # lack a straightforward way to set up a dev i14y sandbox. So for very basic
 # integration search tests, we're stubbing a simple response. This does NOT

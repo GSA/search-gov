@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe I14yPostProcessor do
   describe '#normalized_results' do
-    subject(:normalized_results) { described_class.new(true, results, excluded_urls).normalized_results }
+    subject(:normalized_results) { described_class.new(true, results, excluded_urls).normalized_results(5) }
 
     let(:excluded_urls) { [] }
 
@@ -14,15 +14,19 @@ describe I14yPostProcessor do
       end
 
       it_behaves_like 'a search with normalized results' do
-        let(:normalized_results) { described_class.new(true, results, excluded_urls).normalized_results }
+        let(:normalized_results) { described_class.new(true, results, excluded_urls).normalized_results(5) }
       end
 
       it 'has a published date, updated date, and thumbnaul URL' do
-        normalized_results.each do |result|
+        normalized_results[:results].each do |result|
           expect(result[:updatedDate]).to eq('September 9th, 2020')
           expect(result[:publishedDate]).to eq('September 9th, 2020')
           expect(result[:thumbnailUrl]).to eq('https://search.gov/img.svg')
         end
+      end
+
+      it 'does not use unbounded pagination' do
+        expect(normalized_results[:unboundedResults]).to be false
       end
     end
 
@@ -34,15 +38,19 @@ describe I14yPostProcessor do
       end
 
       it_behaves_like 'a search with normalized results' do
-        let(:normalized_results) { described_class.new(true, results, excluded_urls).normalized_results }
+        let(:normalized_results) { described_class.new(true, results, excluded_urls).normalized_results(5) }
       end
 
       it 'has no published date, updated date, or thumbnaul URL' do
-        normalized_results.each do |result|
+        normalized_results[:results].each do |result|
           expect(result[:updatedDate]).to be_nil
           expect(result[:publishedDate]).to be_nil
           expect(result[:thumbnailUrl]).to be_nil
         end
+      end
+
+      it 'does not use unbounded pagination' do
+        expect(normalized_results[:unboundedResults]).to be false
       end
     end
   end
