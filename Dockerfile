@@ -28,6 +28,7 @@ RUN apt install -y curl \
 ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
 ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
+RUN gem install therubyracer -v '0.12.3' --source 'https://rubygems.org/' -- --with-system-v8 --with-v8-dir=/usr/local/opt/v8@3.15
 COPY Gemfile* /usr/src/app/
 ENV BUNDLE_PATH /gems
 RUN bundle install
