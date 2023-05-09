@@ -37,6 +37,13 @@ class GovboxSet
     end
   end
 
+  def as_json(*_args)
+    {
+      recommendedBy: @affiliate.display_name,
+      textBestBets: @boosted_contents&.results&.map { |result| result.slice(:title, :url, :description) }
+    }
+  end
+
   private
 
   def extract_site_limits(site_limits)
@@ -147,5 +154,4 @@ class GovboxSet
   def elastic_results_exist?(elastic_results)
     elastic_results.present? && elastic_results.total > 0
   end
-
 end
