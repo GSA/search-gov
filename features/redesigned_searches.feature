@@ -10,9 +10,10 @@ Feature: Search - redesign
       | bar site         | bar.gov          | aff@bar.gov           | John       | Bar       | whitehouse.gov |
     When I am on bar.gov's redesigned search page
     Then I should see "Please enter a search term in the box above."
+    And I should not see pagination
 
   @javascript @a11y @a11y_wip
-  Scenario: Searching a domain with Bing results
+  Scenario: Searching a domain with Bing results with pagination
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | first_name | last_name | domains        |
       | bar site         | bar.gov          | aff@bar.gov           | John       | Bar       | whitehouse.gov |
@@ -21,10 +22,24 @@ Feature: Search - redesign
     Then I should see exactly "20" web search results
     And I should see "The White House"
     And I should see "https://www.whitehouse.gov/"
-    And I should see "Press Secretary Karine Jean-Pierre on the Meeting Between President Joe Biden and President Xi Jinping"
+    And I should see "President Biden's Budget Topics: Reproductive Rights"
+    And I should be on page "1" of results
+    And I should see pagination
+    And I should see a link to the "Next" page
+    And I should not see a link to the "Previous" page
+    When I click on the "Next" page
+    Then I should see exactly "20" web search results
+    And I should be on page "2" of results
+    And I should see a link to the "Next" page
+    And I should see a link to the "Previous" page
+    When I search for "America" in the redesigned search page
+    Then I should be on page "1" of results
+    And I should see exactly "20" web search results
+    And I should see a link to the "Next" page
+    And I should not see a link to the "Previous" page
 
   @javascript @a11y @a11y_wip
-  Scenario: Search with I14y results
+  Scenario: Search with I14y results with pagination
     Given the following SearchGov Affiliates exist:
       | display_name   | name           | contact_email      | first_name | last_name | domains            |
       | HealthCare.gov | healthcare.gov | aff@healthcare.gov | Jane       | Bar       | www.healthcare.gov |
@@ -35,6 +50,16 @@ Feature: Search - redesign
     And I should see "Marketplace"
     And I should see "https://www.healthcare.gov/glossary/marketplace"
     And I should see "More info on Health Insurance"
+    And I should see pagination
+    And I should be on page "1" of results
+    And I should see a link to the "Next" page
+    And I should not see a link to the "Previous" page
+    And I should see a link to the last page ("14")
+    When I click on the last page ("14")
+    Then I should see exactly "20" web search results
+    And I should be on page "14" of results
+    And I should not see a link to the "Next" page
+    And I should see a link to the "Previous" page
 
   @javascript @a11y @a11y_wip
   Scenario: Search with blended results
@@ -55,6 +80,7 @@ Feature: Search - redesign
     And I should see "The last hour article"
     And I should see "http://p.whitehouse.gov/hour.html"
     And I should see "Within the last hour article on item"
+    And I should not see pagination
 
   @javascript @a11y @a11y_wip
   Scenario: News search
