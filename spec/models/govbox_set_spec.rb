@@ -20,6 +20,24 @@ describe GovboxSet do
         post_tags: %w[</strong>] }.freeze
     end
 
+    describe '#as_json' do
+      context 'when there are text best bets' do
+        let(:text_best_bet) { BoostedContent.new(title: 'Support', url: 'https://search.gov/support.html', description: '<strong>GSA</strong> support') }
+        let(:expected_results) { instance_double(ElasticBoostedContentResults, total: 1, results: [text_best_bet]) }
+        
+        before do
+          allow(ElasticBoostedContent).to receive(:search_for).and_return(expected_results)
+        end
+
+        it 'returns the affiliate display name and an array of text best bets' do
+          expect(govbox_set.as_json).to eq({
+            recommendedBy: affiliate.display_name,
+            textBestBets: [{"description"=>"<strong>GSA</strong> support", "title"=>"Support", "url"=>"https://search.gov/support.html"}]
+          })
+        end
+      end
+    end
+
     describe '#boosted_contents' do
       context 'when the affiliate has boosted contents' do
         it 'assigns boosted contents' do
