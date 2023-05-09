@@ -36,6 +36,21 @@ describe GovboxSet do
           })
         end
       end
+
+      context 'when there are no text best bets' do
+        let(:expected_results) { instance_double(ElasticBoostedContentResults, total: 0, results: []) }
+        
+        before do
+          allow(ElasticBoostedContent).to receive(:search_for).and_return(expected_results)
+        end
+
+        it 'returns the affiliate display name and an empty array for text best bets' do
+          expect(govbox_set.as_json).to eq({
+            recommendedBy: affiliate.display_name,
+            textBestBets: []
+          })
+        end
+      end
     end
 
     describe '#boosted_contents' do
