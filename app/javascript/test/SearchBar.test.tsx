@@ -4,8 +4,8 @@ import React from 'react';
 import { SearchBar } from '../components/SearchBar/SearchBar';
 
 describe('SearchBar', () => {
-  it('Search Bar with No Results', () => {
-    render(<SearchBar query='medical' results={[]} />);
+  it('Search Bar with No Query', () => {
+    render(<SearchBar results={null} />);
 
     const searchInput = screen.getByTestId('search-field');
     const searchBtn = screen.getByTestId('search-submit-btn');

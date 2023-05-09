@@ -63,7 +63,11 @@ class NewsSearch < FilterableSearch
 
   # TO-DO: Normalize news results in https://cm-jira.usa.gov/browse/SRCH-4071
   def normalized_results
-    @results
+    {
+      results: @results,
+      totalPages: 2,
+      unboundedResults: false
+    }
   end
 
   protected

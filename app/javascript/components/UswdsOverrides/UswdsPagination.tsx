@@ -12,6 +12,7 @@ type PaginationProps = {
   totalPages: number // total items divided by items per page
   currentPage: number // current page number (starting at 1)
   maxSlots?: number // number of pagination "slots"
+  unboundedResults: boolean
   onClickNext?: () => void
   onClickPrevious?: () => void
   onClickPageNumber?: (
@@ -79,6 +80,7 @@ export const UswdsPagination = ({
   currentPage,
   className,
   maxSlots = 7,
+  unboundedResults,
   onClickPrevious,
   onClickNext,
   onClickPageNumber,
@@ -92,7 +94,13 @@ export const UswdsPagination = ({
   const showOverflow = totalPages > maxSlots; // If more pages than slots, use overflow indicator(s)
 
   const middleSlot = Math.round(maxSlots / 2); // 4 if maxSlots is 7
-  const showPrevOverflow = showOverflow && currentPage > middleSlot;
+  let showPrevOverflow; 
+  if (!unboundedResults) {
+    showPrevOverflow = showOverflow && currentPage > middleSlot;
+  } else {
+    showPrevOverflow = showOverflow && currentPage > (middleSlot + 2);
+  }
+  
   const showNextOverflow =
     showOverflow && totalPages - currentPage >= middleSlot;
 
@@ -115,6 +123,11 @@ export const UswdsPagination = ({
       // We are in the middle of the set, there will be overflow (...) at both the beginning & end
       // Ex: [1] [...] [9] [10] [11] [...] [24]
       currentPageBeforeSize = Math.round((pageRangeSize - 1) / 2);
+
+      if (unboundedResults) {
+        currentPageBeforeSize += 2;
+      }
+      
       currentPageAfterSize = pageRangeSize - currentPageBeforeSize;
     } else if (showPrevOverflow) {
       // We are in the end of the set, there will be overflow (...) at the beginning
@@ -129,6 +142,10 @@ export const UswdsPagination = ({
       currentPageBeforeSize =
         currentPageBeforeSize < 0 ? 0 : currentPageBeforeSize;
       currentPageAfterSize = pageRangeSize - currentPageBeforeSize;
+    }
+
+    if (unboundedResults) {
+      currentPageAfterSize = 0;
     }
 
     // Populate the remaining slots
@@ -155,7 +172,7 @@ export const UswdsPagination = ({
       currentPageRange.unshift(1);
     if (showNextOverflow) 
       currentPageRange.push('overflow');
-    if (currentPage !== totalPages) 
+    if (currentPage !== totalPages && !unboundedResults) 
       currentPageRange.push(totalPages);
   }
 
