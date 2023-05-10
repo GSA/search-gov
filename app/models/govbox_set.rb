@@ -50,7 +50,7 @@ class GovboxSet
   private
 
   def extract_site_limits(site_limits)
-    return unless site_limits.present?
+    return if site_limits.blank?
 
     site_limits.map do |site_limit|
       UrlParser.strip_http_protocols(site_limit)
