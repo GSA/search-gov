@@ -26,13 +26,15 @@ export const SearchBar = (props: SearchBarProps) => {
   const [searchQuery, setSearchQuery] = useState(props.query);
   const searchUrlParam = 'query';
 
-  const handleSearchQueryChange = (event) => {
-    setSearchQuery(event.target.value);
+  const handleSearchQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const element = event.target as HTMLInputElement;
+    setSearchQuery(element.value);
   };
 
-  const querySubmit = (event) => {
+  const querySubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    window.location.assign(getUriWithParam(window.location.href, searchUrlParam, searchQuery));
+    const query : string = searchQuery!;
+    window.location.assign(getUriWithParam(window.location.href, searchUrlParam, query));
   };
 
   return (
