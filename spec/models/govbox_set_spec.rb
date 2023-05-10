@@ -21,34 +21,32 @@ describe GovboxSet do
     end
 
     describe '#as_json' do
+      subject(:govbox_set_json) { govbox_set.as_json }
+
+      before do
+        allow(ElasticBoostedContent).to receive(:search_for).and_return(elastic_boosted_content_results)
+      end
+
       context 'when there are text best bets' do
         let(:text_best_bet) { BoostedContent.new(title: 'Support', url: 'https://search.gov/support.html', description: '<strong>GSA</strong> support') }
-        let(:expected_results) { instance_double(ElasticBoostedContentResults, total: 1, results: [text_best_bet]) }
-
-        before do
-          allow(ElasticBoostedContent).to receive(:search_for).and_return(expected_results)
-        end
+        let(:elastic_boosted_content_results) { instance_double(ElasticBoostedContentResults, total: 1, results: [text_best_bet]) }
 
         it 'returns the affiliate display name and an array of text best bets' do
-          expect(govbox_set.as_json).to eq({
-                                             recommendedBy: affiliate.display_name,
-                                             textBestBets: [{ 'description' => text_best_bet.description, 'title' => text_best_bet.title, 'url' => text_best_bet.url }]
-                                           })
+          expect(govbox_set_json).to eq({
+                                          recommendedBy: affiliate.display_name,
+                                          textBestBets: [{ 'description' => text_best_bet.description, 'title' => text_best_bet.title, 'url' => text_best_bet.url }]
+                                        })
         end
       end
 
       context 'when there are no text best bets' do
-        let(:expected_results) { instance_double(ElasticBoostedContentResults, total: 0, results: []) }
-
-        before do
-          allow(ElasticBoostedContent).to receive(:search_for).and_return(expected_results)
-        end
+        let(:elastic_boosted_content_results) { instance_double(ElasticBoostedContentResults, total: 0, results: []) }
 
         it 'returns the affiliate display name and an empty array for text best bets' do
-          expect(govbox_set.as_json).to eq({
-                                             recommendedBy: affiliate.display_name,
-                                             textBestBets: []
-                                           })
+          expect(govbox_set_json).to eq({
+                                          recommendedBy: affiliate.display_name,
+                                          textBestBets: []
+                                        })
         end
       end
     end
