@@ -23,7 +23,7 @@ interface SearchBarProps {
 }
 
 export const SearchBar = (props: SearchBarProps) => {
-  const [searchQuery, setSearchQuery] = useState(props.query);
+  const [searchQuery, setSearchQuery] = useState(props.query ? props.query : '');
   const searchUrlParam = 'query';
 
   const handleSearchQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,8 +33,7 @@ export const SearchBar = (props: SearchBarProps) => {
 
   const querySubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const query : string = searchQuery!;
-    window.location.assign(getUriWithParam(window.location.href, searchUrlParam, query));
+    window.location.assign(getUriWithParam(window.location.href, searchUrlParam, searchQuery));
   };
 
   return (
