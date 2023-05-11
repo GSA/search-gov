@@ -53,7 +53,6 @@ const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
         <Facets />
         <SearchBar 
           query={props.params.query}
-          results={props.resultsData ? props.resultsData.results : null} 
         />
         {/* This ternary is needed to handle the case when Bing pagination leads to a page with no results */}
         {props.resultsData ? (

@@ -8,22 +8,11 @@ import './SearchBar.css';
 
 const logoImg = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0Ij48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PHBhdGggZmlsbD0iI2ZmZmZmZiIgZD0iTTE1LjUgMTRoLS43OWwtLjI4LS4yN0MxNS40MSAxMi41OSAxNiAxMS4xMSAxNiA5LjUgMTYgNS45MSAxMy4wOSAzIDkuNSAzUzMgNS45MSAzIDkuNSA1LjkxIDE2IDkuNSAxNmMxLjYxIDAgMy4wOS0uNTkgNC4yMy0xLjU3bC4yNy4yOHYuNzlsNSA0Ljk5TDIwLjQ5IDE5bC00Ljk5LTV6bS02IDBDNy4wMSAxNCA1IDExLjk5IDUgOS41UzcuMDEgNSA5LjUgNSAxNCA3LjAxIDE0IDkuNSAxMS45OSAxNCA5LjUgMTR6Ii8+PC9zdmc+';
 interface SearchBarProps {
-  query?: string
-  results?: {
-    title: string,
-    url: string,
-    thumbnail?: {
-      url: string
-    },
-    description: string,
-    updatedDate: string | null,
-    publishedDate: string | null,
-    thumbnailUrl: string | null
-  }[] | null;
+  query?: string;
 }
 
-export const SearchBar = (props: SearchBarProps) => {
-  const [searchQuery, setSearchQuery] = useState(props.query ? props.query : '');
+export const SearchBar = ({ query = '' }: SearchBarProps) => {
+  const [searchQuery, setSearchQuery] = useState(query);
   const searchUrlParam = 'query';
 
   const handleSearchQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -69,7 +58,7 @@ export const SearchBar = (props: SearchBarProps) => {
           </Grid>
         </Grid>
         
-        {!props.query &&
+        {!query &&
         <Grid row>
           <Grid tablet={{ col: true }}><h4>Please enter a search term in the box above.</h4></Grid>
         </Grid>}
