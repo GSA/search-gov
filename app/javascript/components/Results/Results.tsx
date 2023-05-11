@@ -107,7 +107,7 @@ export const Results = (props: ResultsProps) => {
                 <Grid row gap="md">
                   { props.vertical === 'image' &&
                   <Grid mobileLg={{ col: 4 }} className='result-thumbnail'>
-                    <img src={result.thumbnail.url} className="result-image"/>
+                    <img src={result.thumbnail.url} className="result-image" alt={result.title}/>
                   </Grid>
                   }
                   <Grid col={true} className='result-meta-data'>
