@@ -11,8 +11,8 @@ interface PaginationProps {
   unboundedResults: boolean
 }
 
-export const Pagination = (props: PaginationProps) => {
-  if ((!props.totalPages || props.totalPages < 2 || getCurrentPage() > props.totalPages)) {
+export const Pagination = ({ pathname, totalPages = null, unboundedResults }: PaginationProps) => {
+  if ((!totalPages || totalPages < 2 || getCurrentPage() > totalPages)) {
     return (<></>);
   }
 
@@ -22,10 +22,10 @@ export const Pagination = (props: PaginationProps) => {
         <Grid row>
           <Grid tablet={{ col: true }}>
             <UswdsPagination 
-              pathname={props.pathname} 
-              totalPages={props.totalPages} 
+              pathname={pathname} 
+              totalPages={totalPages} 
               currentPage={getCurrentPage()}
-              unboundedResults={props.unboundedResults}
+              unboundedResults={unboundedResults}
             />
           </Grid>
         </Grid>

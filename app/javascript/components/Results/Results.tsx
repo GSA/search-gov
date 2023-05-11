@@ -23,7 +23,7 @@ interface ResultsProps {
   vertical: string;
 }
 
-export const Results = (props: ResultsProps) => {
+export const Results = ({ query = '', results = null, unboundedResults, totalPages = null, vertical }: ResultsProps) => {
   return (
     <>
       <div className='search-result-wrapper'>
@@ -101,11 +101,11 @@ export const Results = (props: ResultsProps) => {
         </GridContainer>
 
         <div id="results" className="search-result-item-wrapper">
-          {props.results && props.results.length > 0 ? (props.results.map((result, index) => {
+          {results && results.length > 0 ? (results.map((result, index) => {
             return (
               <GridContainer key={index} className='result search-result-item'>
                 <Grid row gap="md">
-                  { props.vertical === 'image' &&
+                  {vertical === 'image' &&
                   <Grid mobileLg={{ col: 4 }} className='result-thumbnail'>
                     <img src={result.thumbnail?.url} className="result-image"/>
                   </Grid>
@@ -134,16 +134,16 @@ export const Results = (props: ResultsProps) => {
             <GridContainer className='result search-result-item'>
               <Grid row>
                 <Grid tablet={{ col: true }}>
-                  <h4>Sorry, no results found for &#39;{props.query}&#39;. Try entering fewer or more general search terms.</h4>
+                  <h4>Sorry, no results found for &#39;{query}&#39;. Try entering fewer or more general search terms.</h4>
                 </Grid>
               </Grid>
             </GridContainer>)}
         </div>
       </div>
       <Pagination 
-        totalPages={props.totalPages}
+        totalPages={totalPages}
         pathname={window.location.href}
-        unboundedResults={props.unboundedResults}
+        unboundedResults={unboundedResults}
       />
     </>
   );
