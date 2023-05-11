@@ -2,6 +2,8 @@
   .title Manage Display
 %ul.nav.nav-list
   %li{ site_nav_css_class_hash('displays') }= link_to 'Display Overview', edit_site_display_path(@site)
+  %li{ site_nav_css_class_hash('redesigned_displays') }= link_to t('sites.redesigned_displays.edit.redesigned_display',
+  scope: 'admin_center'), edit_site_redesigned_display_path(@site)
   %li{ site_nav_css_class_hash('font_and_colors') }= link_to 'Font & Colors', edit_site_font_and_colors_path(@site)
   %li{ site_nav_css_class_hash('image_assets') }= link_to 'Image Assets', edit_site_image_assets_path(@site)
   %li{ site_nav_css_class_hash('header_and_footers') }= link_to 'Header & Footer', edit_site_header_and_footer_path(@site)
