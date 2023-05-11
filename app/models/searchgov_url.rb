@@ -31,6 +31,10 @@ class SearchgovUrl < ApplicationRecord
     allow_blank: true
 
   before_validation :set_searchgov_domain, on: :create
+  # The document_id and hashed_url are more or less synonymous. The document_id
+  # method will be removed in SRCH-4171, after the hashed_url value has been saved for
+  # all the records in production.
+  before_create { self.hashed_url = document_id }
   before_destroy :delete_document
 
   belongs_to :searchgov_domain
@@ -247,7 +251,7 @@ class SearchgovUrl < ApplicationRecord
 
   def delete_document
     I14yDocument.delete(handle: 'searchgov', document_id: document_id)
-  rescue I14yDocument::I14yDocumentError => e
+  rescue => e
     Rails.logger.error "[SearchgovUrl] Unable to delete Searchgov i14y document #{document_id}: #{e.message}".red
   end
 end

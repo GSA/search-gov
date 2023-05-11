@@ -83,11 +83,6 @@ module ResultsHelper
     thumbnail_html << duration_html
   end
 
-  def link_to_tweet_link(_tweet, title, url, position, options = {})
-    click_data = { position: position, module_code: 'TWEET' }
-    link_to title, url, { data: { click: click_data } }.reverse_merge(options)
-  end
-
   def link_to_related_search(search, related_term, position)
     click_data = { position: position, module_code: 'SREL' }
     link_to related_term.downcase.html_safe,

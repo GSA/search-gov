@@ -39,33 +39,6 @@ GIT
     resque-priority (0.1)
 
 GIT
-  remote: https://github.com/GSA/tweetstream
-  revision: 8e03a6e8a8e87012fe007c8a989e9777e2eb186b
-  specs:
-    tweetstream (2.6.1)
-      daemons (~> 1.1)
-      em-http-request (>= 1.1.1)
-      em-twitter (~> 0.3)
-      multi_json (~> 1.3)
-      twitter (~> 5.12)
-
-GIT
-  remote: https://github.com/GSA/twitter.git
-  revision: 04c5584141102177f1cb8834a42aca81da8aa7af
-  branch: 5-stable
-  specs:
-    twitter (5.17.0)
-      addressable (~> 2.3)
-      buftok (~> 0.2.0)
-      equalizer (= 0.0.10)
-      faraday (>= 0.9.0, < 1.0)
-      http (~> 4.0)
-      http_parser.rb (~> 0.7.0)
-      memoizable (~> 0.4.0)
-      naught (~> 1.0)
-      simple_oauth (~> 0.3.0)
-
-GIT
   remote: https://github.com/MothOnMars/robotex
   revision: d1a2bd515882385734d119a78261d015008467c6
   specs:
@@ -74,7 +47,7 @@ GIT
 
 GIT
   remote: https://github.com/activescaffold/active_scaffold
-  revision: ccfc9d71d5223b80bdc44ed92d105e09c6987783
+  revision: 5393631fc2b97a7510051da955dcf8b470480d11
   branch: master
   specs:
     active_scaffold (3.6.99)
@@ -119,7 +92,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    aasm (5.2.0)
+    aasm (5.5.0)
       concurrent-ruby (~> 1.0)
     actioncable (7.0.4.3)
       actionpack (= 7.0.4.3)
@@ -196,7 +169,7 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
-    addressable (2.8.1)
+    addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
     aes_key_wrap (1.1.0)
     after_commit_action (1.1.0)
@@ -211,7 +184,7 @@ GEM
       activesupport (>= 5.2, < 7.1)
       request_store (~> 1.0)
     aws-eventstream (1.2.0)
-    aws-partitions (1.735.0)
+    aws-partitions (1.755.0)
     aws-sdk-core (3.171.0)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.651.0)
@@ -226,6 +199,16 @@ GEM
       aws-sigv4 (~> 1.4)
     aws-sigv4 (1.5.2)
       aws-eventstream (~> 1, >= 1.0.2)
+    axe-core-api (4.6.1)
+      dumb_delegator
+      virtus
+    axe-core-capybara (4.6.1)
+      axe-core-api
+      dumb_delegator
+    axe-core-cucumber (4.6.1)
+      axe-core-api
+      dumb_delegator
+      virtus
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
@@ -237,10 +220,9 @@ GEM
     bindata (2.4.15)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
-    buftok (0.2.0)
     builder (3.2.4)
     byebug (11.1.3)
-    capybara (3.38.0)
+    capybara (3.39.0)
       addressable
       matrix
       mini_mime (>= 0.1.3)
@@ -253,8 +235,7 @@ GEM
       capybara (>= 1.0, < 4)
       launchy
     chunky_png (1.4.0)
-    cld3 (3.5.0)
-      ffi (>= 1.1.0, < 1.16.0)
+    cld3 (3.5.3)
     climate_control (0.2.0)
     coderay (1.1.3)
     coercible (1.0.0)
@@ -288,7 +269,6 @@ GEM
       sprockets (< 4.0)
     concurrent-ruby (1.2.2)
     connection_pool (2.4.0)
-    cookiejar (0.3.3)
     counter_culture (2.9.0)
       activerecord (>= 4.2)
       activesupport (>= 4.2)
@@ -335,7 +315,6 @@ GEM
       cucumber-core (~> 10.1, >= 10.1.0)
       cucumber-cucumber-expressions (~> 14.0, >= 14.0.0)
     curb (1.0.5)
-    daemons (1.4.1)
     database_cleaner (2.0.2)
       database_cleaner-active_record (>= 2, < 3)
     database_cleaner-active_record (2.1.0)
@@ -343,7 +322,7 @@ GEM
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
     date (3.3.3)
-    debug (1.7.1)
+    debug (1.7.2)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
     declarative (0.0.20)
@@ -356,32 +335,19 @@ GEM
     dogstatsd-ruby (3.2.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    dumb_delegator (1.0.0)
     elasticsearch-xpack (7.4.0)
       elasticsearch-api (>= 6)
-    em-http-request (1.1.7)
-      addressable (>= 2.3.4)
-      cookiejar (!= 0.3.1)
-      em-socksify (>= 0.3)
-      eventmachine (>= 1.0.3)
-      http_parser.rb (>= 0.6.0)
-    em-socksify (0.3.2)
-      eventmachine (>= 1.0.0.beta.4)
-    em-twitter (0.3.5)
-      buftok (~> 0.2)
-      eventmachine (~> 1.0)
-      http_parser.rb (~> 0.6)
-      simple_oauth (~> 0.2)
     email_spec (2.2.1)
       htmlentities (~> 4.3.3)
       launchy (~> 2.1)
       mail (~> 2.7)
-    equalizer (0.0.10)
+    equalizer (0.0.11)
     erubi (1.12.0)
     et-orbi (1.2.7)
       tzinfo
     ethon (0.16.0)
       ffi (>= 1.15.0)
-    eventmachine (1.2.7)
     exception_notification (4.5.0)
       actionmailer (>= 5.2, < 8)
       activesupport (>= 5.2, < 8)
@@ -431,7 +397,7 @@ GEM
       google-apis-core (>= 0.11.0, < 2.a)
       google-apis-discovery_v1 (~> 0.5)
       thor (>= 0.20, < 2.a)
-    googleauth (1.5.0)
+    googleauth (1.5.2)
       faraday (>= 0.17.3, < 3.a)
       jwt (>= 1.4, < 3.0)
       memoist (~> 0.16)
@@ -448,22 +414,19 @@ GEM
     html_truncator (0.4.2)
       nokogiri (~> 1.5)
     htmlentities (4.3.4)
-    http (4.4.1)
-      addressable (~> 2.3)
+    http (5.1.1)
+      addressable (~> 2.8)
       http-cookie (~> 1.0)
       http-form_data (~> 2.2)
-      http-parser (~> 1.2.0)
+      llhttp-ffi (~> 0.4.0)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
-    http-parser (1.2.3)
-      ffi-compiler (>= 1.0, < 2.0)
-    http_parser.rb (0.7.0)
     httparty (0.21.0)
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
     httpclient (2.8.3)
-    i18n (1.12.0)
+    i18n (1.13.0)
       concurrent-ruby (~> 1.0)
     i18n-tasks (0.9.37)
       activesupport (>= 4.0.2)
@@ -477,7 +440,7 @@ GEM
       terminal-table (>= 1.5.1)
     ice_nine (0.11.2)
     io-console (0.6.0)
-    irb (1.6.3)
+    irb (1.6.4)
       reline (>= 0.3.0)
     iso8601 (0.10.1)
     jbuilder (2.11.5)
@@ -512,6 +475,9 @@ GEM
       less (~> 2.6.0)
       sprockets (~> 3.0)
     libv8 (3.16.14.19)
+    llhttp-ffi (0.4.0)
+      ffi-compiler (~> 1.0)
+      rake (~> 13.0)
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -520,8 +486,6 @@ GEM
     marcel (1.0.2)
     matrix (0.4.2)
     memoist (0.16.2)
-    memoizable (0.4.2)
-      thread_safe (~> 0.3, >= 0.3.1)
     method_source (1.0.0)
     mime-types (3.4.1)
       mime-types-data (~> 3.2015)
@@ -530,8 +494,8 @@ GEM
     mini_portile2 (2.8.1)
     minitest (5.18.0)
     moneta (1.6.0)
-    mono_logger (1.1.1)
-    msgpack (1.6.1)
+    mono_logger (1.1.2)
+    msgpack (1.7.0)
     multi_json (1.15.0)
     multi_test (0.1.2)
     multi_xml (0.6.0)
@@ -539,7 +503,6 @@ GEM
     mustermann (3.0.0)
       ruby2_keywords (~> 0.0.1)
     mysql2 (0.5.5)
-    naught (1.1.0)
     net-http (0.3.2)
       uri
     net-http-persistent (2.9.4)
@@ -553,8 +516,8 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     newrelic_rpm (8.12.0)
-    nio4r (2.5.8)
-    nokogiri (1.13.10)
+    nio4r (2.5.9)
+    nokogiri (1.14.3)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     omniauth (2.1.1)
@@ -566,8 +529,8 @@ GEM
       omniauth (~> 2.0)
     open_uri_redirections (0.2.1)
     os (1.1.4)
-    parallel (1.22.1)
-    parser (3.2.1.1)
+    parallel (1.23.0)
+    parser (3.2.2.1)
       ast (~> 2.4.1)
     pry (0.14.2)
       coderay (~> 1.1)
@@ -582,12 +545,12 @@ GEM
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.6.2)
-    rack (2.2.6.4)
+    rack (2.2.7)
     rack-contrib (2.1.0)
       rack (~> 2.0)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
-    rack-protection (3.0.5)
+    rack-protection (3.0.6)
       rack
     rack-proxy (0.7.6)
       rack
@@ -666,7 +629,7 @@ GEM
     redlock (1.3.2)
       redis (>= 3.0.0, < 6.0)
     ref (2.0.0)
-    regexp_parser (2.7.0)
+    regexp_parser (2.8.0)
     reline (0.3.3)
       io-console (~> 0.5)
     representable (3.2.0)
@@ -706,15 +669,15 @@ GEM
       activemodel (>= 3.0)
       activesupport (>= 3.0)
       rspec-mocks (>= 2.99, < 4.0)
-    rspec-core (3.12.1)
+    rspec-core (3.12.2)
       rspec-support (~> 3.12.0)
-    rspec-expectations (3.12.2)
+    rspec-expectations (3.12.3)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
     rspec-its (1.3.0)
       rspec-core (>= 3.0.0)
       rspec-expectations (>= 3.0.0)
-    rspec-mocks (3.12.4)
+    rspec-mocks (3.12.5)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
     rspec-rails (5.1.2)
@@ -740,10 +703,10 @@ GEM
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.28.0)
       parser (>= 3.2.1.0)
-    rubocop-performance (1.16.0)
+    rubocop-performance (1.17.1)
       rubocop (>= 1.7.0, < 2.0)
       rubocop-ast (>= 0.4.0)
-    rubocop-rails (2.18.0)
+    rubocop-rails (2.19.1)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.33.0, < 2.0)
@@ -791,16 +754,15 @@ GEM
       faraday (>= 0.17.5, < 3.a)
       jwt (>= 1.5, < 3.0)
       multi_json (~> 1.10)
-    simple_oauth (0.3.1)
     simplecov (0.17.1)
       docile (~> 1.1)
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
-    sinatra (3.0.5)
+    sinatra (3.0.6)
       mustermann (~> 3.0)
       rack (~> 2.2, >= 2.2.4)
-      rack-protection (= 3.0.5)
+      rack-protection (= 3.0.6)
       tilt (~> 2.0)
     sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
@@ -809,7 +771,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    sys-uname (1.2.2)
+    sys-uname (1.2.3)
       ffi (~> 1.1)
     temple (0.10.0)
     terminal-table (3.0.2)
@@ -880,7 +842,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aasm (~> 5.2.0)
+  aasm (~> 5.5)
   active_scaffold!
   active_scaffold_export!
   active_scheduler (~> 0.7.0)
@@ -892,10 +854,12 @@ DEPENDENCIES
   american_date (~> 1.1.1)
   authlogic (~> 6.4.1)
   aws-sdk-s3 (~> 1.102.0)
+  axe-core-capybara
+  axe-core-cucumber
   bootsnap (~> 1.13)
   capybara (~> 3.26)
   capybara-screenshot
-  cld3 (= 3.5.0)
+  cld3 (~> 3.5.0)
   coffee-rails (~> 5.0.0)
   colorize (~> 0.8.1)
   compass-blueprint (~> 1.0.0)
@@ -910,7 +874,6 @@ DEPENDENCIES
   dogstatsd-ruby (~> 3.2.0)
   elasticsearch!
   elasticsearch-xpack (~> 7.4.0)
-  em-http-request (~> 1.1.5)
   email_spec (~> 2.2)
   exception_notification (~> 4.5)
   execjs (~> 2.7.0)
@@ -929,7 +892,7 @@ DEPENDENCIES
   hashie (~> 5.0.0)
   html_truncator (~> 0.4.2)
   htmlentities (~> 4.3.4)
-  http (~> 4.0)
+  http (~> 5.0)
   i18n-tasks (~> 0.9.19)
   iso8601 (~> 0.10.1)
   jbuilder (~> 2.11.5)
@@ -945,7 +908,7 @@ DEPENDENCIES
   net-http
   net-http-persistent (~> 2.9.3)
   newrelic_rpm (~> 8.12.0)
-  nokogiri (~> 1.13.4)
+  nokogiri (~> 1.14.3)
   omniauth (~> 2.1.0)
   omniauth-rails_csrf_protection (~> 1.0.1)
   omniauth_login_dot_gov!
@@ -993,8 +956,6 @@ DEPENDENCIES
   therubyracer (~> 0.12.3)
   truncator (~> 0.1.7)
   turbolinks (~> 5.2.1)
-  tweetstream!
-  twitter!
   twitter-typeahead-rails (~> 0.11.1)
   typhoeus (~> 1.3.0)
   uglifier (~> 4.2.0)

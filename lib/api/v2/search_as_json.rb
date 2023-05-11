@@ -24,7 +24,6 @@ module Api::V2::SearchAsJson
     hash[:graphic_best_bets] = featured_collections ? featured_collections.results : []
     hash[:health_topics] = med_topic ? as_json_health_topics : []
     hash[:job_openings] = jobs ? as_json_job_openings : []
-    hash[:recent_tweets] = tweets ? tweets.results : []
     yield if block_given?
     hash[:federal_register_documents] = federal_register_documents ? as_json_federal_register_documents : []
     hash[:related_search_terms] = related_search ? related_search : []

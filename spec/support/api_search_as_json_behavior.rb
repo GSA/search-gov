@@ -9,35 +9,6 @@ shared_examples 'an API search as_json' do
     expect(search_rash[:query]).to eq(search.query)
   end
 
-  context 'when tweets are present' do
-    let(:current_time) { DateTime.current }
-
-    before do
-      search.affiliate.twitter_profiles.destroy_all
-      twitter_profile = twitter_profiles(:usagov)
-      affiliate.twitter_profiles << twitter_profile
-
-      Tweet.delete_all
-      tweet = Tweet.create!(
-        published_at: current_time,
-        tweet_id: 1234567,
-        tweet_text: 'Good morning, API!',
-        twitter_profile_id: twitter_profile.twitter_id)
-
-      allow(search).to receive(:tweets) { double(ElasticTweetResults, results: [tweet]) }
-    end
-
-    it 'includes recent_tweets' do
-      tweet = search_rash.recent_tweets.first.to_hash.deep_symbolize_keys
-       expect(tweet).to eq(created_at: current_time.to_time.iso8601,
-                          name: 'USA.gov',
-                          profile_image_url: 'http://a0.twimg.com/profile_images/1155238675/usagov_normal.jpg',
-                          screen_name: 'usagov',
-                          text: 'Good morning, API!',
-                          url: 'https://twitter.com/usagov/status/1234567')
-    end
-  end
-
   context 'when federal register documents are present' do
     before do
       docs = [

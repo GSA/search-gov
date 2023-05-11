@@ -2,15 +2,56 @@ require 'spec_helper'
 
 describe I14yPostProcessor do
   describe '#normalized_results' do
-    let(:results) do
-      results = []
-      5.times { |index| results << Hashie::Mash::Rash.new(title: "title #{index}", content: "content #{index}", path: "http://foo.gov/#{index}") }
-      results
-    end
+    subject(:normalized_results) { described_class.new(true, results, excluded_urls).normalized_results(5) }
+
     let(:excluded_urls) { [] }
 
-    it_behaves_like 'a search with normalized results' do
-      let(:normalized_results) { described_class.new(true, results, excluded_urls).normalized_results }
+    context 'when results have all attributes' do
+      let(:results) do
+        results = []
+        5.times { |index| results << Hashie::Mash::Rash.new(title: "title #{index}", content: "content #{index}", path: "http://foo.gov/#{index}", changed: '2020-09-09 00:00:00 UTC', created: '2020-09-09 00:00:00 UTC', thumbnail_url: 'https://search.gov/img.svg') }
+        results
+      end
+
+      it_behaves_like 'a search with normalized results' do
+        let(:normalized_results) { described_class.new(true, results, excluded_urls).normalized_results(5) }
+      end
+
+      it 'has a published date, updated date, and thumbnaul URL' do
+        normalized_results[:results].each do |result|
+          expect(result[:updatedDate]).to eq('September 9th, 2020')
+          expect(result[:publishedDate]).to eq('September 9th, 2020')
+          expect(result[:thumbnailUrl]).to eq('https://search.gov/img.svg')
+        end
+      end
+
+      it 'does not use unbounded pagination' do
+        expect(normalized_results[:unboundedResults]).to be false
+      end
+    end
+
+    context 'when results are missing some attributes' do
+      let(:results) do
+        results = []
+        5.times { |index| results << Hashie::Mash::Rash.new(title: "title #{index}", content: "content #{index}", path: "http://foo.gov/#{index}") }
+        results
+      end
+
+      it_behaves_like 'a search with normalized results' do
+        let(:normalized_results) { described_class.new(true, results, excluded_urls).normalized_results(5) }
+      end
+
+      it 'has no published date, updated date, or thumbnaul URL' do
+        normalized_results[:results].each do |result|
+          expect(result[:updatedDate]).to be_nil
+          expect(result[:publishedDate]).to be_nil
+          expect(result[:thumbnailUrl]).to be_nil
+        end
+      end
+
+      it 'does not use unbounded pagination' do
+        expect(normalized_results[:unboundedResults]).to be false
+      end
     end
   end
 
@@ -29,7 +70,7 @@ describe I14yPostProcessor do
 
     context 'when a result has no description' do
       let(:results) do
-        [Hashie::Mash.new(result.merge(description: nil, content: "content with \uE000match\uE001" ))]
+        [Hashie::Mash.new(result.merge(description: nil, content: "content with \uE000match\uE001"))]
       end
 
       it 'sets the body as the description' do
@@ -39,7 +80,7 @@ describe I14yPostProcessor do
 
     context 'when the description does not contain a match' do
       let(:results) do
-        [Hashie::Mash.new(result.merge(description: 'no match', content: "content with \uE000match\uE001" ))]
+        [Hashie::Mash.new(result.merge(description: 'no match', content: "content with \uE000match\uE001"))]
       end
 
       it 'sets the body as the description' do
@@ -50,7 +91,7 @@ describe I14yPostProcessor do
     context 'when there is a match in the description' do
       let(:results) do
         [Hashie::Mash.new(result.merge(description: "description with \uE000match\uE001",
-                                       content: content ))]
+                                       content: content))]
       end
 
       context 'when there is no match in the body' do

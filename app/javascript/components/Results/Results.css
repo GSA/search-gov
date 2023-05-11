@@ -1,0 +1,120 @@
+.search-result-item-wrapper{
+  margin-top: 2rem;
+}
+
+.search-result-item{
+  margin-top: 3rem;
+  padding-left: 2.5rem;
+}
+
+.result-thumbnail .result-image{
+  border: 1px solid #eee;
+}
+
+.search-result-item .published-date{
+  color: #565C65;
+  font-size: 0.95rem;
+  line-height: 19px;
+}
+
+.search-result-item .result-title-link{
+  text-decoration: none;
+}
+
+.search-result-item .result-title-label{
+  color: #1A4480;
+  font-size: 1.375rem;
+  font-weight: 400;
+  margin-bottom: 0.35rem;
+  margin-top: 0.35rem;
+}
+
+.search-result-item .result-desc p{
+  color: #3D4551;
+  font-size: 1rem;
+  letter-spacing: 0.25px;
+  line-height: 26px;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.search-result-item .result-desc .result-url-text{
+  color: #4D8055;
+  word-wrap: break-word;
+}
+
+.filetype-label{
+  border: 1px solid #B6B6B6;
+  border-radius: 2px;
+  color: #71767A;
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 300;
+  margin-left: 10px;
+  margin-top: 4px;
+  padding: 1px 8px;
+  vertical-align: top;
+}
+
+/* Best bet - text/graphics */
+.results-best-bets-wrapper{
+  margin-top: 2rem;
+}
+
+.results-best-bets-wrapper > .grid-row{
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.results-best-bets-wrapper > .grid-row > .grid-col{
+  background: rgb(239, 246, 252);
+  border-radius: 8px;
+  padding: 1.5rem 0 1.5rem 0;
+}
+
+.results-best-bets-wrapper .search-result-item{
+  margin-top: 2rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.results-best-bets-wrapper .search-result-item:nth-child(2){
+  margin-top: 1.75rem;
+}
+
+.results-best-bets-wrapper .search-result-item .result-desc .result-url-text{
+  color: #565C65;
+}
+
+.best-bets-title{
+  color: #565C65;
+  font-size: 1rem;
+  font-weight: 600;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.text-best-bets{
+  background: #EFF6FC;
+  border-radius: 8px;
+  padding: 25px;
+}
+
+.results-best-bets-wrapper .graphics-best-bets{
+  margin-top: 3.5rem;
+}
+
+.graphics-best-bets-title{
+  color: #3D4551;
+  font-size: 1.15rem;
+  line-height: 19px;
+}
+
+.graphics-best-bets-link-wrapper{
+  margin-top: 0.75rem;
+}
+
+.graphics-best-bets-link-wrapper a{
+  color: #005EA2;
+  text-decoration: none;
+}

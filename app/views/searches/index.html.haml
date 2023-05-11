@@ -8,7 +8,6 @@
   = render partial: 'best_bets', locals: { search: @search } if @search.has_best_bets?
   = render partial: 'med_topic', locals: { search: @search } if @search.med_topic.present?
   = render partial: 'jobs', locals: { search: @search } if @search.modules.include? 'JOBS'
-  = render partial: 'tweets', locals: { search:  @search } if @search.has_tweets?
   = render partial: 'govbox_video_news_items', locals: { search:  @search, search_params: @search_params } if @search.has_video_news_items?
   = render partial: 'govbox_news_items', locals: { search:  @search } if @search.has_fresh_news_items?
 

@@ -4,8 +4,7 @@ class SearchableObserver < ActiveRecord::Observer
           :federal_register_document,
           :indexed_document,
           :news_item,
-          :sayt_suggestion,
-          :tweet
+          :sayt_suggestion
 
   def after_save(model)
     model_name = model.class.name

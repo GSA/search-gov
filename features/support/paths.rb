@@ -12,8 +12,8 @@ module NavigationHelpers
       search_path
     when /^(.*)'s search page$/
       search_path(:affiliate => $1)
-    when /^(.*)'s redesigned search page with "([^"]*)" query$/
-      search_path(:affiliate => $1, :query => $2, :redesign => 'true')
+    when /^(.*)'s redesigned search page$/
+      search_path(:affiliate => $1, :redesign => 'true')
     when /^(.*)'s advanced search page$/
       advanced_search_path(:affiliate => $1)
     when /^(.*)'s search page with unsanitized "([^"]*)" query$/
@@ -22,18 +22,18 @@ module NavigationHelpers
       search_path(:affiliate => $1, :sitelimit => $2)
     when /^(.*)'s image search page$/
       image_search_path(:affiliate => $1)
-    when /^(.*)'s redesigned image search page with "([^\"]*)" query$/
-      image_search_path(:affiliate => $1, :query => $2, :redesign => 'true')
+    when /^(.*)'s redesigned image search page$/
+      image_search_path(:affiliate => $1, :redesign => 'true')
     when /^(.*)'s news search page$/
       news_search_path(:affiliate => $1)
-    when /^(.*)'s redesigned news search page with "([^\"]*)" query$/
-      news_search_path(:affiliate => $1, :query => $2, :redesign => 'true')
+    when /^(.*)'s redesigned news search page$/
+      news_search_path(:affiliate => $1, :redesign => 'true')
     when /^(.*)'s "([^"]*)" news search page$/
       news_search_path(:affiliate => $1, :channel => Affiliate.find_by_name($1).rss_feeds.find_by_name($2))
     when /^(.*)'s docs search page$/
       docs_search_path(:affiliate => $1)
-    when /^(.*)'s redesigned docs search page with "([^\"]*)" query$/
-      docs_search_path(:affiliate => $1, :query => $2, :redesign => 'true')
+    when /^(.*)'s redesigned docs search page$/
+      docs_search_path(:affiliate => $1, :redesign => 'true')
     when /^(.*)'s "([^"]*)" docs search page$/
       docs_search_path(:affiliate => $1, :dc => Affiliate.find_by_name($1).document_collections.find_by_name($2))
     when /the timeline page for "([^"]*)"$/
@@ -82,7 +82,7 @@ module NavigationHelpers
       admin_superfresh_urls_bulk_upload_index_path
     when /the bulk url upload admin page/
       admin_bulk_url_upload_index_path
-    when /^(.*)'s new (flickr|twitter|youtube) profile page$/
+    when /^(.*)'s new (flickr|youtube) profile page$/
       affiliate_social_media_path(Affiliate.find_by_name($1), :profile_type => "#{$2.camelize}Profile")
     when /^the (.*)'s Dashboard page$/
       site_path(Affiliate.find_by_name($1))
@@ -90,6 +90,8 @@ module NavigationHelpers
       site_content_path(Affiliate.find_by_name($1))
     when /^the (.*)'s Manage Display page$/
       edit_site_display_path(Affiliate.find_by_name($1))
+    when /^the (.*)'s Redesigned Display page$/
+      edit_site_redesigned_display_path(Affiliate.find_by_name($1))
     when /^the (.*)'s Font & Colors page$/
       edit_site_font_and_colors_path(Affiliate.find_by_name($1))
     when /^the (.*)'s Image Assets page$/

@@ -85,6 +85,21 @@ Given /^there are (\d+)( image| video)? news items for "([^"]*)"$/ do |count, is
   ElasticNewsItem.commit
 end
 
+Given /^there are (\d+)( manual| rss)? indexed documents for affiliate "([^"]*)"$/ do |count, source, affiliate|
+  affiliate = Affiliate.find_by(name: affiliate)
+
+  count.to_i.times do |index|
+    IndexedDocument.create!(affiliate: affiliate,
+                            title: "Document number #{index + 1}",
+                            description: 'An Indexed Document',
+                            url: "http://petitions.whitehouse.gov/petition-#{index + 1}.html",
+                            source: source.strip,
+                            last_crawl_status: 'OK',
+                            last_crawled_at: Time.current.to_i)
+  end
+  ElasticIndexedDocument.commit
+end
+
 Then /^I should not see "([^"]*)" in bold font$/ do |text|
   page.should_not have_selector("strong", :text => text)
 end
@@ -109,32 +124,6 @@ end
 
 Then /^I should see (\d+) search result title links? with url for "([^"]*)"$/ do |count, url|
   page.should have_selector(".title a[href='#{url}']", count: count)
-end
-
-Given /^the following Twitter Profiles exist:$/ do |table|
-  table.hashes.each do |hash|
-    affiliate = Affiliate.find_by_name(hash[:affiliate])
-    affiliate.twitter_profiles.destroy_all
-    affiliate.twitter_profiles.create!(:screen_name => hash[:screen_name],
-                                       :name => hash[:name] || hash[:screen_name],
-                                       :twitter_id => hash[:twitter_id],
-                                       :profile_image_url => 'http://a0.twimg.com/profile_images/1879738641/USASearch_avatar_normal.png')
-  end
-end
-
-Given /^the following Tweets exist:$/ do |table|
-  table.hashes.each do |hash|
-    if hash[:url].present? and hash[:expanded_url].present? and hash[:display_url].present?
-      urls = [Struct.new(:display_url, :expanded_url, :url).new(hash[:display_url], hash[:expanded_url], hash[:url])]
-    else
-      urls = nil
-    end
-    Tweet.create!(:tweet_text => hash[:tweet_text],
-                  :tweet_id => hash[:tweet_id],
-                  :published_at => 1.send(hash[:published_ago]).ago,
-                  :twitter_profile_id => hash[:twitter_profile_id], :urls => urls)
-  end
-  ElasticTweet.commit
 end
 
 Then /^I should see a link to "([^"]*)" with text "([^"]*)"$/ do |url, text|

@@ -64,9 +64,6 @@ Feature: Manage Display
     And the following flickr URLs exist for the site "agency.gov":
       | url                                      | profile_type | profile_id   |
       | http://www.flickr.com/photos/whitehouse/ | user         | 35591378@N03 |
-    And the following Twitter handles exist for the site "agency.gov":
-      | screen_name |
-      | usasearch   |
     And the following YouTube channels exist for the site "agency.gov":
       | channel_id              | title        |
       | usgovernment_channel_id | USGovernment |
@@ -81,7 +78,6 @@ Feature: Manage Display
     And the "Is sayt enabled" should be switched on
     And the "Is medline govbox enabled" should be switched off
     And the "i14y date stamp enabled" should be switched off
-    And I should see "Recent Tweets"
 
     When I fill in "Rss govbox label" with "Latest News"
     And I switch on "Is rss govbox enabled"
@@ -455,3 +451,13 @@ Feature: Manage Display
     And the "Text" field should contain "Updated text for search page alert."
     And the "Status" field should contain "Inactive"
     And I should see "The alert for this site has been updated."
+
+  @javascript
+  Scenario: Editing the Redesigned Display Settings
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | first_name | last_name | is_bing_image_search_enabled |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | true                         |
+    And I am logged in with email "john@agency.gov"
+    When I go to the agency.gov's Redesigned Display page
+    Then I should see "Redesigned Display"
+    Then I should see a link to "Preview Redesigned Display" with url that ends with "/search?affiliate=agency.gov&redesign=true"

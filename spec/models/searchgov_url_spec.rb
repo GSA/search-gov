@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe SearchgovUrl do
-  let(:url) { 'http://www.agency.gov/boring.html' }
+  let(:url) { 'https://www.agency.gov/boring.html' }
   let(:html) { read_fixture_file('/html/page_with_og_metadata.html') }
   let(:valid_attributes) { { url: url } }
   let(:searchgov_url) { described_class.new(valid_attributes) }
@@ -18,6 +18,7 @@ describe SearchgovUrl do
 
     it { is_expected.to have_db_column(:load_time).of_type(:integer) }
     it { is_expected.to have_db_column(:lastmod).of_type(:datetime) }
+    it { is_expected.to have_db_column(:hashed_url).of_type(:string).with_options(limit: 64) }
 
     it {
       is_expected.to have_db_column(:enqueued_for_reindex).
@@ -36,22 +37,22 @@ describe SearchgovUrl do
     describe '.fetch_required' do
       it 'includes urls that have never been crawled and outdated urls' do
         expect(described_class.fetch_required.pluck(:url)).
-          to include('http://www.agency.gov/new', 'http://www.agency.gov/outdated')
+          to include('https://www.agency.gov/new', 'https://www.agency.gov/outdated')
       end
 
       it 'does not include current, crawled and not enqueued urls' do
         expect(described_class.fetch_required.pluck(:url)).
-          not_to include('http://www.agency.gov/current')
+          not_to include('https://www.agency.gov/current')
       end
 
       it 'includes urls that have been enqueued for reindexing' do
         expect(described_class.fetch_required.pluck(:url)).
-          to include 'http://www.agency.gov/enqueued'
+          to include 'https://www.agency.gov/enqueued'
       end
 
       it 'includes urls last crawled more than 30 days and crawl status is ok' do
         expect(described_class.fetch_required.pluck(:url)).
-          to include 'http://www.agency.gov/crawled_more_than_month'
+          to include 'https://www.agency.gov/crawled_more_than_month'
       end
     end
   end
@@ -85,6 +86,15 @@ describe SearchgovUrl do
   end
 
   describe 'callbacks' do
+    describe 'on create' do
+      it 'sets the hashed_url' do
+        searchgov_url = described_class.create!(valid_attributes)
+        expect(searchgov_url.hashed_url).to eq(
+          '1ff7dfd3cf763d08bee3546e2538cf0315578fbd7b1d3f28f014915983d4d7ef'
+        )
+      end
+    end
+
     context 'when destroying' do
       it 'deletes the document' do
         expect(I14yDocument).to receive(:delete).
@@ -738,6 +748,20 @@ describe SearchgovUrl do
             with(handle: 'searchgov', document_id: searchgov_url.document_id)
           fetch
         end
+
+        context 'when the document cannot be deleted' do
+          before do
+            allow(I14yDocument).to receive(:delete).and_raise('something went wrong')
+            allow(Rails.logger).to receive(:error)
+          end
+
+          it 'logs the error' do
+            fetch
+            expect(Rails.logger).to have_received(:error).with(
+              /Unable to delete Searchgov i14y document.*something went wrong/
+            )
+          end
+        end
       end
 
       it 'checks the domain status' do
@@ -773,7 +797,7 @@ describe SearchgovUrl do
       end
 
       context 'when it is redirected to a url outside the original domain' do
-        let(:new_url) { 'http://www.random.com/' }
+        let(:new_url) { 'https://www.random.com/' }
 
         it 'disallows the redirect' do
           fetch
@@ -805,7 +829,7 @@ describe SearchgovUrl do
 
         it 'creates a url' do
           expect(described_class).to receive(:create).
-            with(url: 'http://www.agency.gov/client_side.html')
+            with(url: 'https://www.agency.gov/client_side.html')
           fetch
         end
       end
@@ -849,8 +873,8 @@ describe SearchgovUrl do
           let!(:searchgov_domain) { searchgov_url.searchgov_domain }
 
           before do
-            stub_request(:get, 'http://www.agency.gov/').to_return(status: 403)
-            searchgov_domain.update!(scheme: 'http', status: '200 OK')
+            stub_request(:get, 'https://www.agency.gov/').to_return(status: 403)
+            searchgov_domain.update!(status: '200 OK')
           end
 
           it 'does not delete the document' do

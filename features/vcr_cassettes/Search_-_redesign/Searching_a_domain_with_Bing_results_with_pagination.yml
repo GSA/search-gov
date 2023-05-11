@@ -1,0 +1,927 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=white%20house%20(site:whitehouse.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 03 May 2023 14:04:14 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Eventid:
+      - 64526a1a082b48b7a0745342512cfa5c
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      Bingapis-Traceid:
+      - 64526a1a082b48b7a0745342512cfa5c
+      Bingapis-Sessionid:
+      - 6F4479F02AE74C15B603EC8E44DFB3B0
+      X-Msedge-Clientid:
+      - 06CF3395596468B20F3D2093588369C3
+      X-Msapi-Userstate:
+      - c003
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=274,MSDatacenter=CH1B
+      X-Cache:
+      - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      X-Msedge-Ref:
+      - 'Ref A: 1CCBEA97D3C246C19FD909A89C46A785 Ref B: CH1EDGE2107 Ref C: 2023-05-03T14:05:14Z'
+      Apim-Request-Id:
+      - 39da58cf-eaca-4eb8-8088-79db8adabe7a
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 03 May 2023 14:05:13 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "white
+        house (site:whitehouse.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=white+house+(site%3awhitehouse.gov)",
+        "totalEstimatedMatches": 518000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "The White House", "url": "https:\/\/www.whitehouse.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.whitehouse.gov", "snippet": "The White
+        House President Biden''s Budget Topics: Reproductive Rights Economic Progress
+        Clean Energy Vaccines.gov Remarks by President Biden to the People of County
+        Mayo Featured Media", "dateLastCrawled": "2023-05-02T06:11:00.0000000Z", "language":
+        "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "About The White House - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house",
+        "snippet": "The White House is where the President and First Family of the
+        United States live and work — but it’s also the People’s House, where we
+        hope all Americans feel a sense of inclusion and...", "dateLastCrawled": "2023-05-02T10:27:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Visit The White House - The White House", "url": "https:\/\/www.whitehouse.gov\/visit\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/visit",
+        "snippet": "Visit The White House Contact Your Representative The President
+        and Dr. Biden are delighted to welcome members of the public to tour the White
+        House. Public tour requests are scheduled on a...", "dateLastCrawled": "2023-05-02T07:10:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "FACT SHEET: President Biden Announces Student Loan Relief for Borrowers
+        ...", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2022\/08\/24\/fact-sheet-president-biden-announces-student-loan-relief-for-borrowers-who-need-it-most\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2022\/08\/24\/fact-sheet...",
+        "snippet": "To ensure borrowers are aware of the temporary changes, the White
+        House has launched four PSLF Days of Action dedicated to borrowers in specific
+        sectors: government employees, educators,...", "dateLastCrawled": "2023-05-02T09:09:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "FACT SHEET: Investing in the Special Friendship and Alliance Between
+        ...", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/05\/01\/fact-sheet-investing-in-the-special-friendship-and-alliance-between-the-united-states-and-the-philippines\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/05\/01\/fact-sheet...",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. May 01, 2023. FACT SHEET:
+        Investing in the Special Friendship and Alliance Between ...", "dateLastCrawled":
+        "2023-05-03T10:14:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5", "name": "Remarks
+        by President Biden at a Reception to Celebrate Eid al-Fitr ...", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-remarks\/2023\/05\/01\/remarks-by-president-biden-at-a-reception-to-celebrate-eid-al-fitr-2\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-remarks\/2023\/05\/01\/remarks-by...",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. May 01, 2023. Remarks by
+        President Biden at a Reception to Celebrate Eid al-Fitr", "dateLastCrawled":
+        "2023-05-03T12:05:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6", "name": "The
+        Biden-Harris Administration - The White House", "url": "https:\/\/www.whitehouse.gov\/administration\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/administration",
+        "snippet": "The White House The Biden- Harris Administration Thousands
+        of people work in the West Wing, the East Wing, the Cabinet, and the Executive
+        Office of the President. Learn more about the people...", "dateLastCrawled":
+        "2023-05-01T14:03:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7", "name": "FACT
+        SHEET: President Biden Signs Executive Order to Revitalize Our ...", "url":
+        "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/04\/21\/fact-sheet-president-biden-signs-executive-order-to-revitalize-our-nations-commitment-to-environmental-justice-for-all\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/04\/21\/fact-sheet...",
+        "snippet": "The White House engaged more than a thousand individuals, organizations,
+        and Tribal Nations to develop guidance on elevating Indigenous Knowledge in
+        federal research, policy, and decision-making....", "dateLastCrawled": "2023-05-03T07:14:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Readout of President Biden’s Call with Congressional Leaders", "url":
+        "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/05\/01\/readout-of-president-bidens-call-with-congressional-leaders\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/05\/01\/readout-of...",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. May 01, 2023. Readout of
+        President Biden’s Call with Congressional Leaders", "dateLastCrawled": "2023-05-02T07:21:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "A Proclamation on Asian American, Native Hawaiian, and Pacific Islander
+        ...", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/presidential-actions\/2023\/04\/28\/a-proclamation-on-asian-american-native-hawaiian-and-pacific-islander-heritage-month-2023\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/presidential-actions\/2023\/04\/28\/a...",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. April 28, 2023. A Proclamation
+        on Asian American, Native Hawaiian, and Pacific ...", "dateLastCrawled": "2023-05-02T10:19:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Priorities - The White House", "url": "https:\/\/www.whitehouse.gov\/priorities\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/priorities",
+        "snippet": "President Biden will take steps to restore America’s standing
+        in the world, strengthening the U.S. national security workforce, rebuilding
+        democratic alliances across the globe, championing...", "dateLastCrawled":
+        "2023-05-02T21:09:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "Washington Declaration - The White House", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/04\/26\/washington-declaration-2\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/04\/26\/washington...",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. April 26, 2023. Washington
+        Declaration Home; Briefing Room ...", "dateLastCrawled": "2023-05-02T15:30:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Joint Statement of the Leaders of the United States and the Philippines
+        ...", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/05\/01\/joint-statement-of-the-leaders-of-the-united-states-and-the-philippines\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/05\/01\/joint...",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. May 01, 2023.", "dateLastCrawled":
+        "2023-05-03T11:24:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "Presidents - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents",
+        "snippet": "About The White House George Washington The 1st President of
+        the United States John Adams The 2nd President of the United States Thomas
+        Jefferson The 3rd President of the United States James...", "dateLastCrawled":
+        "2023-05-03T03:51:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "The DAME Tax: Making Cryptominers Pay for Costs They Impose on", "url": "https:\/\/www.whitehouse.gov\/cea\/written-materials\/2023\/05\/02\/cost-of-cryptomining-dame-tax\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/cea\/written-materials\/2023\/05\/02\/cost-of-cryptomining-dame-tax",
+        "snippet": "Last month, the President released his Budget for Fiscal Year
+        2024, building on progress over the past two years to make critical investments
+        to grow the economy, lower costs for families, protect...", "dateLastCrawled":
+        "2023-05-03T13:03:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "Briefing Room - The White House", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        WH.gov. Scroll to Top. Top ...", "dateLastCrawled": "2023-05-02T13:05:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Remarks by President Biden at the White House Correspondents''
+        Dinner ...", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-remarks\/2023\/04\/30\/remarks-by-president-biden-at-the-white-house-correspondents-dinner\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-remarks\/2023\/04\/30\/remarks-by...",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. April 30, 2023.", "dateLastCrawled":
+        "2023-05-03T01:03:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "The Cabinet - The White House", "url": "https:\/\/www.whitehouse.gov\/administration\/cabinet\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/administration\/cabinet",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        WH.gov. Scroll to Top. Top ...", "dateLastCrawled": "2023-05-02T03:13:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "The Biden-Harris Record - The White House", "url": "https:\/\/www.whitehouse.gov\/therecord\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/therecord",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. The Biden-Harris Record.",
+        "dateLastCrawled": "2023-05-01T23:23:00.0000000Z", "language": "en", "isNavigational":
+        <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "National COVID-19 Preparedness Plan - The White House", "url":
+        "https:\/\/www.whitehouse.gov\/covidplan\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.whitehouse.gov\/covid", "snippet": "Today, the U.S. government
+        is releasing the National COVID-19 Preparedness Plan – which will enable America
+        to move forward safely, sustaining and building on the progress we’ve made
+        over the past...", "dateLastCrawled": "2023-05-01T11:39:00.0000000Z", "language":
+        "en", "isNavigational": <DATADOG_API_ENABLED>}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 03 May 2023 14:05:14 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=20&q=white%20house%20(site:whitehouse.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 03 May 2023 15:38:03 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Eventid:
+      - 645280178d1b459680ee9eaa1a4b70a9
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      Bingapis-Traceid:
+      - 645280178d1b459680ee9eaa1a4b70a9
+      Bingapis-Sessionid:
+      - A3BC44A8ECE44B9BA1B3095C7D1AD05A
+      X-Msedge-Clientid:
+      - 0D6EF7D17AA760BE0A67E4D77B7761C3
+      X-Msapi-Userstate:
+      - d754
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=274,MSDatacenter=CH1B
+      X-Cache:
+      - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      X-Msedge-Ref:
+      - 'Ref A: 2AE7E4EB634F4880912BD81F7263F4BC Ref B: CH1EDGE1418 Ref C: 2023-05-03T15:39:03Z'
+      Apim-Request-Id:
+      - 659971dc-ae03-4cce-a1f9-46681674bac8
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 03 May 2023 15:39:03 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "white
+        house (site:whitehouse.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=white+house+(site%3awhitehouse.gov)",
+        "totalEstimatedMatches": 518000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Presidents - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents",
+        "snippet": "Learn more about the Presidents of the United States. About
+        The White House George Washington The 1st President of the United States
+        John Adams The 2nd President of the United States Thomas...", "dateLastCrawled":
+        "2023-05-03T03:51:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1", "name": "Remarks
+        by President Biden at a Reception to Celebrate Eid al-Fitr ...", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-remarks\/2023\/05\/01\/remarks-by-president-biden-at-a-reception-to-celebrate-eid-al-fitr-2\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-remarks\/2023\/05\/01\/remarks-by...",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. May 01, 2023. Remarks by
+        President Biden at a Reception to Celebrate Eid al-Fitr", "dateLastCrawled":
+        "2023-05-03T12:05:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2", "name": "The
+        Biden-Harris Administration Will End COVID-19 Vaccination ...", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/05\/01\/the-biden-administration-will-end-covid-19-vaccination-requirements-for-federal-employees-contractors-international-travelers-head-start-educators-and-cms-certified-facilities\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/05\/01\/the-biden...",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. May 01, 2023. The Biden-
+        ...", "dateLastCrawled": "2023-05-03T06:14:00.0000000Z", "language": "en",
+        "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "The Biden-Harris Record - The White House", "url": "https:\/\/www.whitehouse.gov\/therecord\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/therecord",
+        "snippet": "The Biden-Harris Record | The White House The White House
+        Lowering Costs of Families’ Everyday Expenses More People Are Working Than
+        At Any Point in American History Making More in America...", "dateLastCrawled":
+        "2023-05-03T00:25:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4", "name": "STATE
+        FACT SHEETS: MAGA House Republicans’ Default on America Act Would ...",
+        "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/05\/02\/state-fact-sheets-maga-house-republicans-default-on-america-act-would-have-devastating-impacts-across-america\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/05\/02\/state-fact...",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. May 02, 2023.", "dateLastCrawled":
+        "2023-05-03T09:16:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5", "name": "FACT
+        SHEET: President Biden Signs Executive Order to Revitalize Our ...", "url":
+        "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/04\/21\/fact-sheet-president-biden-signs-executive-order-to-revitalize-our-nations-commitment-to-environmental-justice-for-all\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/04\/21\/fact-sheet...",
+        "snippet": "The White House engaged more than a thousand individuals, organizations,
+        and Tribal Nations to develop guidance on elevating Indigenous Knowledge in
+        federal research, policy, and decision-making.", "dateLastCrawled": "2023-05-03T07:14:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "The DAME Tax: Making Cryptominers Pay for Costs They Impose on",
+        "url": "https:\/\/www.whitehouse.gov\/cea\/written-materials\/2023\/05\/02\/cost-of-cryptomining-dame-tax\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/cea\/written-materials\/2023\/05\/02\/cost-of-cryptomining-dame-tax",
+        "snippet": "One new proposal in this year’s Budget, the Digital Asset Mining
+        Energy (DAME) excise tax, is an example of the President’s commitment to addressing
+        both long-standing national challenges as well...", "dateLastCrawled": "2023-05-03T13:03:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Joint Statement of the Leaders of the United States and the Philippines
+        ...", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/05\/01\/joint-statement-of-the-leaders-of-the-united-states-and-the-philippines\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/05\/01\/joint...",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. May 01, 2023.", "dateLastCrawled":
+        "2023-05-03T11:24:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8", "name": "Washington
+        Declaration - The White House", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/04\/26\/washington-declaration-2\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/04\/26\/washington...",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. April 26, 2023. Washington
+        Declaration Home; Briefing Room ...", "dateLastCrawled": "2023-05-02T15:30:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "FACT SHEET: President Biden to Catalyze Global Climate Action through
+        ...", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/04\/20\/fact-sheet-president-biden-to-catalyze-global-climate-action-through-the-major-economies-forum-on-energy-and-climate\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/04\/20\/fact-sheet...",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. April 20, 2023.", "dateLastCrawled":
+        "2023-04-28T08:19:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "Congressional Republicans'' Legislation: 22% Cuts That Would Harm ...", "url":
+        "https:\/\/www.whitehouse.gov\/omb\/briefing-room\/2023\/04\/20\/congressional-republicans-legislation-22-cuts-that-would-harm-american-families-seniors-and-veterans\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/omb\/briefing-room\/2023\/04\/20\/congressional-republicans...",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. April 20, 2023.", "dateLastCrawled":
+        "2023-05-02T21:11:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "FACT SHEET: Investing in the Special Friendship and Alliance Between ...",
+        "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/05\/01\/fact-sheet-investing-in-the-special-friendship-and-alliance-between-the-united-states-and-the-philippines\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/05\/01\/fact-sheet...",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. May 01, 2023. FACT SHEET:
+        Investing in the Special Friendship and Alliance Between ...", "dateLastCrawled":
+        "2023-05-03T10:14:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "Remarks by President Biden at the White House Correspondents'' Dinner ...",
+        "url": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-remarks\/2023\/04\/30\/remarks-by-president-biden-at-the-white-house-correspondents-dinner\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-remarks\/2023\/04\/30\/remarks-by...",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. April 30, 2023.", "dateLastCrawled":
+        "2023-05-03T01:03:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "Combating COVID-19 - The White House", "url": "https:\/\/www.whitehouse.gov\/priorities\/covid-19\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/priorities\/covid-19",
+        "snippet": "President Biden, September 16, 2020 Plan for the effective, equitable
+        distribution of treatments and vaccines — because development isn’t enough
+        if they aren’t effectively distributed. Invest $25...", "dateLastCrawled":
+        "2023-05-03T04:06:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "Fact Sheet: Biden Administration Announces Details of ... - The White
+        House", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/11\/04\/fact-sheet-biden-administration-announces-details-of-two-major-vaccination-policies\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/11\/04\/fact-sheet...",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. November 04, 2021. Fact Sheet:
+        Biden Administration Announces Details of Two Major ...", "dateLastCrawled":
+        "2023-05-02T16:26:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "A Proclamation on the 70th Anniversary of the Lavender Scare", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/presidential-actions\/2023\/04\/26\/a-proclamation-on-the-70th-anniversary-of-the-lavender-scare\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/presidential-actions\/2023\/04\/26\/a...",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. April 26, 2023. A Proclamation
+        on the 70th Anniversary of the Lavender Scare", "dateLastCrawled": "2023-04-30T05:42:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Press Briefing by Press Secretary Karine - The White House", "url":
+        "https:\/\/www.whitehouse.gov\/briefing-room\/press-briefings\/2023\/05\/01\/press-briefing-by-press-secretary-karine-jean-pierre-29\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/press-briefings\/2023\/05\/01\/press-briefing-by...",
+        "snippet": "James S. Brady Press Briefing Room 3:35 P.M. EDT MS. JEAN-PIERRE:
+        Hi, everybody. Q Hi. MS. JEAN-PIERRE: Join us, Weijia. Join us, join us. Let
+        me first congratulate the White House Correspondent ...", "dateLastCrawled":
+        "2023-05-02T23:38:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17", "name":
+        "Disclosures - The White House", "url": "https:\/\/www.whitehouse.gov\/disclosures\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/disclosures",
+        "snippet": "Disclosures As part of President Biden’s commitment to government
+        transparency, we are providing the following disclosures on an ongoing basis
+        online. Financial Disclosures Ethics Waivers and...", "dateLastCrawled":
+        "2023-05-02T22:21:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "Clemency Recipient List - The White House", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/04\/28\/clemency-recipient-list-3\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/04\/28\/clemency...",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. April 28, 2023. Clemency
+        Recipient List Home; Briefing Room ...", "dateLastCrawled": "2023-05-02T22:23:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "FACT SHEET: President - The White House", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/12\/08\/fact-sheet-president-biden-signs-executive-order-catalyzing-americas-clean-energy-economy-through-federal-sustainability\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/12\/08\/fact-sheet...",
+        "snippet": "FACT SHEET: President Biden Signs Executive Order Catalyzing America’s
+        Clean Energy Economy Through Federal Sustainability | The White House December
+        08, 2021 FACT SHEET: President Biden Signs...", "dateLastCrawled": "2023-05-02T04:27:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 03 May 2023 15:39:03 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=america%20(site:whitehouse.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 03 May 2023 15:38:04 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Eventid:
+      - 6452801868dd46ed8493a0ca33f5dd06
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      Bingapis-Traceid:
+      - 6452801868dd46ed8493a0ca33f5dd06
+      Bingapis-Sessionid:
+      - 71E56D4F1ED245E68D89A93614B5EFC4
+      X-Msedge-Clientid:
+      - 1AEAA788393966B3040AB48E38E96714
+      X-Msapi-Userstate:
+      - ed80
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=307,MSDatacenter=CH1B
+      X-Cache:
+      - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      X-Msedge-Ref:
+      - 'Ref A: DBF580AAF2E54ACA9E743C476AEF1386 Ref B: CH1EDGE1418 Ref C: 2023-05-03T15:39:04Z'
+      Apim-Request-Id:
+      - 9b10daa0-054d-4761-9c65-5604888db621
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 03 May 2023 15:39:03 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "america
+        (site:whitehouse.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=america+(site%3awhitehouse.gov)",
+        "totalEstimatedMatches": 20100, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "The White House", "url": "https:\/\/www.whitehouse.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.whitehouse.gov", "snippet": "President
+        Biden and Vice President Harris promised to move quickly to deliver results
+        for working families. That’s what they’ve done.", "dateLastCrawled": "2023-05-03T07:10:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Remarks by National Security Advisor Jake Sullivan on Renewing American
+        ...", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-remarks\/2023\/04\/27\/remarks-by-national-security-advisor-jake-sullivan-on-renewing-american-economic-leadership-at-the-brookings-institution\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-remarks\/2023\/04\/27\/remarks-by...",
+        "snippet": "America now manufactures only around 10 percent of the world’s
+        semiconductors, and production—in general and especially when it comes to
+        the most advanced chips—is geographically ...", "dateLastCrawled": "2023-05-03T15:18:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Building a Better America | The White House", "url": "https:\/\/www.whitehouse.gov\/build\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/build",
+        "snippet": "Help build a better America. Apply now for jobs to support the
+        Bipartisan Infrastructure Law To date, over 20,000 projects have been awarded
+        funding from the Bipartisan Infrastructure Law.", "dateLastCrawled": "2023-05-02T18:54:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Investing in America Means Investing in America’s Small", "url":
+        "https:\/\/www.whitehouse.gov\/cea\/written-materials\/2023\/05\/01\/investing-in-small-businesses\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/cea\/written-materials\/2023\/05\/01\/investing-in-small-businesses",
+        "snippet": "Moreover, closing the gap in small business ownership rates between
+        Black and white households could narrow the gap in average net worth between
+        these groups by up to $185,900 (22 percent), while ...", "dateLastCrawled":
+        "2023-05-03T09:14:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4", "name": "A
+        Proclamation on Jewish American Heritage Month, 2023", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/presidential-actions\/2023\/04\/28\/a-proclamation-on-jewish-american-heritage-month-2023\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/presidential-actions\/2023\/04\/28\/a...",
+        "snippet": "This month, we celebrate the enduring heritage of Jewish Americans,
+        whose values, culture, and contributions have shaped our character as a Nation.
+        For generations, the story of the Jewish people ...", "dateLastCrawled": "2023-05-02T20:19:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Our Government | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/our-government\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/our-government",
+        "snippet": "Our Government. The Federal Government is composed of three
+        distinct branches: legislative, executive, and judicial, whose powers are
+        vested by the U.S. Constitution in the Congress, the President ...", "dateLastCrawled":
+        "2023-05-02T06:59:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6", "name": "Presidents
+        | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents",
+        "snippet": "Learn more about the Presidents of the United States from WhiteHouse.gov.",
+        "dateLastCrawled": "2023-05-03T03:51:00.0000000Z", "language": "en", "isNavigational":
+        <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "FACT SHEET: President Biden Delivers Update on His Strategy to Build
+        on ...", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/05\/01\/fact-sheet-president-biden-delivers-update-on-his-strategy-to-build-on-americas-small-business-boom-while-speak-mccarthy-and-house-republicans-threaten-to-harm-small-businesses-and-eliminat\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/05\/01\/fact-sheet...",
+        "snippet": "New Report Card and Analysis Released On How the Biden-Harris
+        Administration Has Ushered in Record New Business Formation Today, in honor
+        of National Small Business Week, President Biden is ...", "dateLastCrawled":
+        "2023-05-02T00:11:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8", "name": "A
+        Proclamation on National Mental Health Awareness Month,", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/presidential-actions\/2023\/04\/28\/a-proclamation-on-national-mental-health-awareness-month-2023\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/presidential-actions\/2023\/04\/28\/a...",
+        "snippet": "We are all in this together. NOW, THEREFORE, I, JOSEPH R. BIDEN
+        JR., President of the United States of America, by virtue of the authority
+        vested in me by the Constitution and the laws of the ...", "dateLastCrawled":
+        "2023-05-03T06:14:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9", "name": "A
+        Proclamation on National Foster Care Month, 2023", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/presidential-actions\/2023\/04\/28\/a-proclamation-on-national-foster-care-month-2023\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/presidential-actions\/2023\/04\/28\/a...",
+        "snippet": "The more than 391,000 American children and youth living in foster
+        care deserve to grow up in safe and loving homes devoted to their health,
+        happiness, and advancement. This month, we honor the ...", "dateLastCrawled":
+        "2023-05-02T18:16:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10", "name":
+        "A Proclamation on Loyalty Day, 2023", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/presidential-actions\/2023\/04\/28\/a-proclamation-on-loyalty-day-2023\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/presidential-actions\/2023\/04\/28\/a...",
+        "snippet": "America was founded on the sacred proposition that we are all
+        created equal; entitled to be treated with dignity and respect; and deserving
+        of equal access to justice, opportunity, and freedom. On ...", "dateLastCrawled":
+        "2023-05-01T20:27:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "STATE FACT SHEETS: MAGA House Republicans’ Default on America Act Would
+        ...", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/05\/02\/state-fact-sheets-maga-house-republicans-default-on-america-act-would-have-devastating-impacts-across-america\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/05\/02\/state-fact...",
+        "snippet": "The Default on America Act stands in sharp contrast with President
+        Biden’s Budget, which invests in America, lowers costs for families, protects
+        and strengthens Medicare and Social Security, and ...", "dateLastCrawled":
+        "2023-05-03T09:16:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "FACT SHEET: Biden-Harris Administration Announces New Private and ...", "url":
+        "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/04\/17\/fact-sheet-biden-harris-administration-announces-new-private-and-public-sector-investments-for-affordable-electric-vehicles\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/04\/17\/fact-sheet...",
+        "snippet": "Rewiring America, a non-profit organization, is committing to
+        launch an online personal electrification planner in 2023 with the initial
+        goal of helping 100,000 homeowners and renters create ...", "dateLastCrawled":
+        "2023-05-02T16:12:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "The DAME Tax: Making Cryptominers Pay for Costs They Impose on", "url": "https:\/\/www.whitehouse.gov\/cea\/written-materials\/2023\/05\/02\/cost-of-cryptomining-dame-tax\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/cea\/written-materials\/2023\/05\/02\/cost-of-cryptomining-dame-tax",
+        "snippet": "The DAME tax encourages firms to start taking better account of
+        the harms they impose on society. While crypto assets are virtual, the energy
+        consumption tied to their computationally intensive ...", "dateLastCrawled":
+        "2023-05-03T13:03:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "FACT SHEET: President Biden Signs Executive Order to Revitalize Our ...",
+        "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/04\/21\/fact-sheet-president-biden-signs-executive-order-to-revitalize-our-nations-commitment-to-environmental-justice-for-all\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/04\/21\/fact-sheet...",
+        "snippet": "Throughout Earth Week, President Biden, Vice President Harris,
+        and other Cabinet-level officials are holding events and announcing commitments
+        focused on how the President’s Investing in America ...", "dateLastCrawled":
+        "2023-05-02T05:18:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "Declaration of North America (DNA)", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/01\/10\/declaration-of-north-america-dna\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/01\/10\/dec",
+        "snippet": "Our people share bonds of family and friendship and value – above
+        all else – freedom, justice, human rights, equality, and democracy. This is
+        the North American DNA. Diversity, Equity, and ...", "dateLastCrawled": "2023-05-02T23:32:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Biden-Harris Administration Launches $1 Billion America the Beautiful
+        ...", "url": "https:\/\/www.whitehouse.gov\/ceq\/news-updates\/2022\/04\/11\/biden-harris-administration-launches-1-billion-america-the-beautiful-challenge-to-support-and-accelerate-locally-led-conservation-and-restoration-projects\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/ceq\/news-updates\/2022\/04\/11\/biden-harris-administration...",
+        "snippet": "New Public-Private One-Stop Shop Will Make It Easier for Communities
+        to Access Grants and Will Deliver Landscape-Scale Impact. Today, the Biden-Harris
+        Administration launched a $1 billion America ...", "dateLastCrawled": "2023-05-02T01:12:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Biden-Harris Administration''s National Security Strategy", "url":
+        "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2022\/10\/Biden-Harris-Administrations-National-Security-Strategy-10.2022.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2022\/10\/Biden-Harris-Administrations...",
+        "snippet": "Administration will seize this decisive decade to advance America’s
+        vital interests, position the United States to outmaneuver our geopolitical
+        competitors, tackle shared challenges, and set our", "dateLastCrawled": "2023-05-02T08:14:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "What They Are Saying: “America the Beautiful” Initiative", "url":
+        "https:\/\/www.whitehouse.gov\/ceq\/news-updates\/2021\/05\/10\/what-they-are-saying\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/ceq\/news-updates\/2021\/05\/10\/what-they-are-saying",
+        "snippet": "The “America the Beautiful” initiative is a national call to
+        action to work collaboratively to conserve and restore the lands, waters,
+        and wildlife that support and sustain the nation, and to ...", "dateLastCrawled":
+        "2023-05-02T01:13:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19", "name":
+        "The Future of Our Economy Depends On Reinventing American Manufacturing
+        ...", "url": "https:\/\/www.whitehouse.gov\/omb\/briefing-room\/2021\/07\/29\/the-future-of-our-economy-depends-on-reinventing-american-manufacturing-and-innovation\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/omb\/briefing-room\/2021\/07\/29\/the-future-of-our-economy...",
+        "snippet": "By Made in America Director Celeste Drake When the COVID-19
+        pandemic struck, it upended almost every aspect of American life and devastated
+        our economy—including in the American manufacturing ...", "dateLastCrawled":
+        "2023-05-01T05:34:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 03 May 2023 15:39:04 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=white%20houseamerica%20(site:whitehouse.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 03 May 2023 16:08:34 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Eventid:
+      - 6452873ec1ba4a0183e3cd22b629163f
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      Bingapis-Traceid:
+      - 6452873ec1ba4a0183e3cd22b629163f
+      Bingapis-Sessionid:
+      - A4638E3F494449C6B509218659206C4E
+      X-Msedge-Clientid:
+      - 24BD19861F64630E169A0A801EB462B6
+      X-Msapi-Userstate:
+      - f78f
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=318,MSDatacenter=CH1B
+      X-Cache:
+      - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      X-Msedge-Ref:
+      - 'Ref A: 1EB4C7BAD8224958ADBBB080D7FD0A9A Ref B: CH1EDGE1422 Ref C: 2023-05-03T16:09:34Z'
+      Apim-Request-Id:
+      - d63632ba-c840-4f53-8931-dfac50e49e5e
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 03 May 2023 16:09:34 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "white
+        houseamerica (site:whitehouse.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=white+houseamerica+(site%3awhitehouse.gov)",
+        "totalEstimatedMatches": 26500, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "FACT SHEET: President Biden Delivers Update on His Strategy to Build
+        on ...", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/05\/01\/fact-sheet-president-biden-delivers-update-on-his-strategy-to-build-on-americas-small-business-boom-while-speak-mccarthy-and-house-republicans-threaten-to-harm-small-businesses-and-eliminat\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/05\/01\/fact-sheet...",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. May 01, 2023. FACT SHEET:
+        President Biden Delivers Update on His Strategy to Build ...", "dateLastCrawled":
+        "2023-05-02T00:11:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1", "name": "A
+        Proclamation on National Day of Prayer, 2023 | The White House", "url":
+        "https:\/\/www.whitehouse.gov\/briefing-room\/presidential-actions\/2023\/05\/03\/a-proclamation-on-national-day-of-prayer-2023\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/presidential-actions\/2023\/05\/03\/a...",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. May 03, 2023. A Proclamation
+        on National Day of Prayer, 2023", "dateLastCrawled": "2023-05-03T15:32:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "About The White House - The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house",
+        "snippet": "The White House is where the President and First Family of the
+        United States live and work — but it’s also the People’s House, where we hope
+        all Americans feel a sense of inclusion and belonging....", "dateLastCrawled":
+        "2023-05-02T10:27:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3", "name": "The
+        White House", "url": "https:\/\/www.whitehouse.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.whitehouse.gov", "snippet": "Today’s
+        report shows continued progress in our fight against inflation with annual
+        inflation at the lowest level since May 2021. America is going back to the
+        moon with the Artemis II crew. Our...", "dateLastCrawled": "2023-05-02T06:11:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Remarks by President Biden at a Reception to Celebrate Eid al-Fitr
+        ...", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-remarks\/2023\/05\/01\/remarks-by-president-biden-at-a-reception-to-celebrate-eid-al-fitr-2\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-remarks\/2023\/05\/01\/remarks-by...",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. May 01, 2023. Remarks by
+        President Biden at a Reception to Celebrate Eid al-Fitr", "dateLastCrawled":
+        "2023-05-03T12:05:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5", "name": "Washington
+        Declaration - The White House", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/04\/26\/washington-declaration-2\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/04\/26\/washington...",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        WH.gov. Scroll to Top. Top ...", "dateLastCrawled": "2023-05-02T15:30:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "A Proclamation on National Mental Health Awareness Month,", "url":
+        "https:\/\/www.whitehouse.gov\/briefing-room\/presidential-actions\/2023\/04\/28\/a-proclamation-on-national-mental-health-awareness-month-2023\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/presidential-actions\/2023\/04\/28\/a...",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. April 28, 2023. A Proclamation
+        on National Mental Health Awareness Month, 2023", "dateLastCrawled": "2023-05-03T06:14:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "PCAST Releases Report on Supporting America’s Public Health", "url":
+        "https:\/\/www.whitehouse.gov\/pcast\/briefing-room\/2023\/05\/01\/pcast-releases-report-on-supporting-americas-public-health-workforce\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/pcast\/briefing-room\/2023\/05\/01\/pcast-releases-report-on...",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. May 01, 2023.", "dateLastCrawled":
+        "2023-05-01T18:40:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8", "name": "STATE
+        FACT SHEETS: MAGA House Republicans’ Default on America Act Would ...", "url":
+        "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/05\/02\/state-fact-sheets-maga-house-republicans-default-on-america-act-would-have-devastating-impacts-across-america\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/05\/02\/state-fact...",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. May 02, 2023.", "dateLastCrawled":
+        "2023-05-03T09:16:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9", "name": "A
+        Proclamation on Jewish American Heritage Month, 2023", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/presidential-actions\/2023\/04\/28\/a-proclamation-on-jewish-american-heritage-month-2023\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/presidential-actions\/2023\/04\/28\/a...",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. April 28, 2023. A Proclamation
+        on Jewish American Heritage Month, 2023", "dateLastCrawled": "2023-05-02T20:19:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Biden Administration Makes Public First Full-Color ... - The White
+        House", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2022\/07\/11\/biden-administration-produces-first-full-color-image-from-webb-space-telescope\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2022\/07\/11\/biden...",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. July 11, 2022. Biden Administration
+        Makes Public First Full-Color Image from Webb ...", "dateLastCrawled": "2023-04-26T23:55:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Investing in America Means Investing in America’s Small", "url":
+        "https:\/\/www.whitehouse.gov\/cea\/written-materials\/2023\/05\/01\/investing-in-small-businesses\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/cea\/written-materials\/2023\/05\/01\/investing-in-small-businesses",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. May 01, 2023. Investing in
+        America Means Investing in America’s Small Businesses", "dateLastCrawled":
+        "2023-05-03T09:14:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12", "name":
+        "Statement by President Biden on the America COMPETES Act of 2022", "url":
+        "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2022\/01\/25\/statement-by-president-biden-on-the-america-competes-act-of-2022\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2022\/01\/25\/statement-by...",
+        "snippet": "The proposals laid out by the House and Senate represent the sort
+        of transformational investments in our industrial base and research and development
+        that helped power the United States to lead the...", "dateLastCrawled": "2023-04-30T23:49:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Statement from President - The White House", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/presidential-actions\/2022\/02\/04\/statement-from-president-biden-on-house-passage-of-the-america-competes-act\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/presidential-actions\/2022\/02\/04\/statement...",
+        "snippet": "Presidential Actions The House took a critical vote today for
+        stronger supply chains and lower prices, for more manufacturing – and good
+        manufacturing jobs – right here in America, and for...", "dateLastCrawled":
+        "2023-04-27T14:18:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14", "name":
+        "Biden- ⁠ Harris Administration Outlines “America ... - The White House",
+        "url": "https:\/\/www.whitehouse.gov\/ceq\/news-updates\/2021\/05\/06\/biden-harris-administration-outlines-america-the-beautiful-initiative\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/ceq\/news-updates\/2021\/05\/06\/biden-harris-administration...",
+        "snippet": "It outlines eight principles that should guide the nationwide
+        effort, including a pursuit of collaborative approaches; a commitment to supporting
+        the voluntary conservation efforts of farmers,...", "dateLastCrawled": "2023-05-02T04:11:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "The DAME Tax: Making Cryptominers Pay for Costs They Impose on",
+        "url": "https:\/\/www.whitehouse.gov\/cea\/written-materials\/2023\/05\/02\/cost-of-cryptomining-dame-tax\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/cea\/written-materials\/2023\/05\/02\/cost-of-cryptomining-dame-tax",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        To search this site, enter a search term Search. May 02, 2023. The DAME Tax:
+        Making Cryptominers Pay for Costs They Impose on Others", "dateLastCrawled":
+        "2023-05-03T13:03:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "Priorities - The White House", "url": "https:\/\/www.whitehouse.gov\/priorities\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/priorities",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        WH.gov. Scroll to Top. Top ...", "dateLastCrawled": "2023-05-02T21:09:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Readout of White House America the Beautiful Interagency Working
+        Group ...", "url": "https:\/\/www.whitehouse.gov\/ceq\/news-updates\/2021\/08\/10\/readout-of-white-house-america-the-beautiful-interagency-working-group\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/ceq\/news-updates\/2021\/08\/10\/readout-of-white-house-america...",
+        "snippet": "White House Council on Environmental Quality Chair Brenda Mallory
+        provided an overview of President Biden’s historic conservation goal, reiterating
+        the principles in the America the Beautiful...", "dateLastCrawled": "2023-04-30T15:40:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Biden-Harris Administration Launches $1 Billion ... - The White
+        House", "url": "https:\/\/www.whitehouse.gov\/ceq\/news-updates\/2022\/04\/11\/biden-harris-administration-launches-1-billion-america-the-beautiful-challenge-to-support-and-accelerate-locally-led-conservation-and-restoration-projects\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/ceq\/news-updates\/2022\/04\/11\/biden-harris-administration...",
+        "snippet": "Today, the Biden-Harris Administration launched a $1 billion America
+        the Beautiful Challenge that will leverage Federal conservation and restoration
+        investments with private and philanthropic...", "dateLastCrawled": "2023-05-02T01:12:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Get Involved - The White House", "url": "https:\/\/www.whitehouse.gov\/get-involved\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/get-involved",
+        "snippet": "The White House 1600 Pennsylvania Ave NW Washington, DC 20500
+        WH.gov. Scroll to Top. Top ...", "dateLastCrawled": "2023-05-03T00:37:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}], "someResultsRemoved":
+        true}, "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages",
+        "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 03 May 2023 16:09:34 GMT
+recorded_with: VCR 6.1.0

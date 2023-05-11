@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_10_203501) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_03_151057) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -44,16 +44,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_10_203501) do
     t.integer "feature_id", null: false
     t.datetime "created_at", precision: nil, null: false
     t.index ["affiliate_id", "feature_id"], name: "index_affiliate_feature_additions_on_affiliate_id_and_feature_id", unique: true
-  end
-
-  create_table "affiliate_twitter_settings", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.integer "affiliate_id", null: false
-    t.integer "twitter_profile_id", null: false
-    t.boolean "show_lists", default: false, null: false
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.index ["affiliate_id", "twitter_profile_id"], name: "aff_id_tp_id"
-    t.index ["twitter_profile_id"], name: "index_affiliate_twitter_settings_on_twitter_profile_id"
   end
 
   create_table "affiliates", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
@@ -105,6 +95,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_10_203501) do
     t.datetime "header_tagline_logo_updated_at", precision: nil
     t.string "bing_v5_key", limit: 32
     t.boolean "active", default: true, null: false
+    t.boolean "show_redesign_display_settings", default: false
+    t.boolean "use_redesigned_results_page", default: false
     t.index ["name"], name: "index_affiliates_on_name", unique: true
   end
 
@@ -572,7 +564,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_10_203501) do
     t.integer "unfetched_urls_count", default: 0, null: false
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.string "scheme", limit: 5, default: "http", null: false
     t.string "activity", limit: 100, default: "idle", null: false
     t.string "canonical_domain"
     t.boolean "js_renderer", default: false
@@ -591,6 +582,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_10_203501) do
     t.integer "searchgov_domain_id"
     t.datetime "lastmod", precision: nil
     t.boolean "enqueued_for_reindex", default: false, null: false
+    t.string "hashed_url", limit: 64
     t.index ["last_crawl_status"], name: "index_searchgov_urls_on_last_crawl_status"
     t.index ["searchgov_domain_id", "enqueued_for_reindex"], name: "searchgov_urls_on_searchgov_domain_id_and_enqueued_for_reindex"
     t.index ["searchgov_domain_id", "last_crawl_status"], name: "index_by_searchgov_domain_id_and_last_crawl_status"
@@ -667,48 +659,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_10_203501) do
     t.integer "affiliate_id"
     t.index ["affiliate_id"], name: "index_top_searches_on_affiliate_id"
     t.index ["position", "affiliate_id"], name: "index_top_searches_on_position_and_affiliate_id", unique: true
-  end
-
-  create_table "tweets", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.bigint "tweet_id", null: false, unsigned: true
-    t.string "tweet_text"
-    t.bigint "twitter_profile_id", null: false, unsigned: true
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.datetime "published_at", precision: nil
-    t.text "urls", size: :medium
-    t.json "safe_urls"
-    t.index ["published_at"], name: "index_tweets_on_published_at"
-    t.index ["tweet_id"], name: "index_tweets_on_tweet_id", unique: true
-    t.index ["twitter_profile_id"], name: "index_tweets_on_twitter_profile_id"
-  end
-
-  create_table "twitter_lists", id: false, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.bigint "id", null: false, unsigned: true
-    t.text "member_ids", size: :long
-    t.bigint "last_status_id", default: 1, null: false, unsigned: true
-    t.string "statuses_updated_at"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.json "safe_member_ids"
-    t.index ["id"], name: "index_twitter_lists_on_id", unique: true
-  end
-
-  create_table "twitter_lists_twitter_profiles", id: false, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.bigint "twitter_list_id", null: false, unsigned: true
-    t.integer "twitter_profile_id", null: false
-    t.index ["twitter_list_id", "twitter_profile_id"], name: "twitter_list_id_profile_id", unique: true
-    t.index ["twitter_profile_id"], name: "index_twitter_lists_twitter_profiles_on_twitter_profile_id"
-  end
-
-  create_table "twitter_profiles", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.bigint "twitter_id", null: false, unsigned: true
-    t.string "screen_name"
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.string "profile_image_url", null: false
-    t.string "name", null: false
-    t.index ["twitter_id"], name: "index_twitter_profiles_on_twitter_id", unique: true
   end
 
   create_table "url_prefixes", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|

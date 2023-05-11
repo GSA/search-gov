@@ -34,12 +34,6 @@ Feature: Blended Search
     And the following featured collections exist for the affiliate "bar.gov":
       | title           | status | publish_start_on |
       | featured item   | active | 2013-07-01       |
-    And the following Twitter Profiles exist:
-      | screen_name | name          | twitter_id | affiliate  |
-      | USASearch   | USASearch.gov | 123456     | bar.gov    |
-    And the following Tweets exist:
-      | tweet_text                                                                                  | tweet_id | published_ago | twitter_profile_id | url                    | expanded_url            | display_url      |
-      | "We wish you all a blessed and safe holiday item." - President Obama http://t.co/l8jbZSbmAX | 184957   | hour          | 123456             | http://t.co/l8jbZSbmAX | http://go.wh.gov/sgCp3q | go.wh.gov/sgCp3q |
     When I am on bar.gov's search page
     And I fill in "Enter your search term" with "items"
     And I press "Search" within the search box
@@ -56,7 +50,6 @@ Feature: Blended Search
     And I should see "The last year article"
     And I should see 1 Best Bets Text
     And I should see 1 Best Bets Graphic
-    And I should see "blessed and safe"
 
     When I follow "Last year"
     Then the "Enter your search term" field should contain "items"
@@ -331,6 +324,37 @@ Feature: Blended Search
     And I should see "Try your search again"
     When I follow "Try your search again"
     Then I should see exactly "20" web search results
+
+  Scenario: A site that gets commercial results and has a document collection
+    Given the following Affiliates exist:
+      | display_name | name               | contact_email    | first_name   | last_name | gets_blended_results | gets_commercial_results_on_blended_search |
+      | Blended site | blended.agency.gov | admin@agency.gov | John         | Bar       | true                 | true                                      |
+    And there are 21 manual indexed documents for affiliate "blended.agency.gov"
+    And affiliate "blended.agency.gov" has the following document collections:
+      | name      | prefixes                         | is_navigable |
+      | Documents | http://petitions.whitehouse.gov/ | true         |
+    When I am on blended.agency.gov's search page
+    And I fill in "Enter your search term" with "document"
+    And I press "Search" within the search box
+    Then I should see exactly "20" web search results
+    And I should see a link to "Next"
+    And I should see a link to "2" with class "pagination-numbered-link"
+    When I follow "Next"
+    Then I should see exactly "1" web search results
+    Then I should see a link to "Previous"
+    And I should see a link to "1" with class "pagination-numbered-link"
+    And I should not see a link to "Next"
+    And I should not see a link to "3" with class "pagination-numbered-link"
+
+    And I follow "Documents" in the search navbar
+    Then I should see exactly "20" web search results
+    And I should see a link to "Next"
+    And I should not see a link to "2" with class "pagination-numbered-link"
+    When I follow "Next"
+    Then I should see exactly "1" web search results
+    Then I should see a link to "Previous"
+    And I should not see a link to "Next"
+    And I should not see a link to "1" with class "pagination-numbered-link"
 
   Scenario: Search with only stopwords
     Given the following Affiliates exist:
