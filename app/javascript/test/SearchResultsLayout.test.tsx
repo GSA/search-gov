@@ -44,6 +44,7 @@ describe('SearchResultsLayout', () => {
     const img = Array.from(document.getElementsByClassName('result-image')).pop() as HTMLImageElement;
     expect(resultTitle).toBeInTheDocument();
     expect(img).toHaveAttribute('src', 'https://www.search.gov/test_image.png');
+    expect(img).toHaveAttribute('alt', 'test result 1');
   });
 });
 
