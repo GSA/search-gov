@@ -12,7 +12,7 @@ interface HeaderProps {
   isBasic: boolean;
 }
 
-export const Header = (props: HeaderProps) => {
+export const Header = ({ title, isBasic }: HeaderProps) => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   const toggleMobileNav = (): void => {
@@ -20,7 +20,7 @@ export const Header = (props: HeaderProps) => {
   };
 
   const headerProps = {
-    title: props.title,
+    title,
     toggleMobileNav,
     mobileNavOpen
   };
@@ -33,7 +33,7 @@ export const Header = (props: HeaderProps) => {
       <GovBanner />
       <div className={`usa-overlay ${mobileNavOpen ? 'is-visible' : ''}`}></div>
 
-      {props.isBasic ? 
+      {isBasic ? 
         <BasicHeader 
           {...headerProps}
         />:
