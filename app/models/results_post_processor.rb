@@ -9,6 +9,7 @@ class ResultsPostProcessor
     pages = total_results.to_i / 20
     pages += 1 if (total_results.to_i % 20).positive?
     return MAX_PAGES if pages >= MAX_PAGES
+
     pages
   rescue
     0
