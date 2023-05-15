@@ -3,6 +3,7 @@ Feature: Image search - redesign
   As a site visitor
   I want to search for images on the redesigned Search page
 
+  # SRCH-4102: Remove @a11y_wip once usa-icon image resolved.
   @javascript @a11y @a11y_wip
   Scenario: English Image search
     Given the following Affiliates exist:

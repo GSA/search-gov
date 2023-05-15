@@ -41,7 +41,7 @@ const isBasicHeader = (): boolean => {
   return true;
 };
 
-const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
+const SearchResultsLayout = ({ resultsData, vertical, params }: SearchResultsLayoutProps) => {
   return (
     <>
       <Header 
@@ -52,22 +52,21 @@ const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
       <div className="usa-section">
         <Facets />
         <SearchBar 
-          query={props.params.query}
-          results={props.resultsData ? props.resultsData.results : null} 
+          query={params.query}
         />
         {/* This ternary is needed to handle the case when Bing pagination leads to a page with no results */}
-        {props.resultsData ? (
+        {resultsData ? (
           <Results 
-            results={props.resultsData.results}
-            vertical={props.vertical}
-            totalPages={props.resultsData.totalPages}
-            query={props.params.query}
-            unboundedResults={props.resultsData.unboundedResults}
-          />) : props.params.query ? (
+            results={resultsData.results}
+            vertical={vertical}
+            totalPages={resultsData.totalPages}
+            query={params.query}
+            unboundedResults={resultsData.unboundedResults}
+          />) : params.query ? (
           <Results 
-            vertical={props.vertical}
+            vertical={vertical}
             totalPages={null}
-            query={props.params.query}
+            query={params.query}
             unboundedResults={true}
           />) : <></>}
       </div>
