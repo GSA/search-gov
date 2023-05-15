@@ -1,4 +1,4 @@
-FROM ruby:3.0.6
+FROM --platform=linux/amd64 ruby:3.0.6
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 WORKDIR /usr/src/app
 EXPOSE 3000
@@ -35,4 +35,3 @@ RUN bundle install
 
 COPY . /usr/src/app/
 # ENTRYPOINT ["./docker-entrypoint.sh"]
-CMD ["rails", "server", "-b", "0.0.0.0"]
