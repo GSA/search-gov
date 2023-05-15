@@ -9,3 +9,6 @@
                     search_path(affiliate: @site.name, redesign: true),
                     class: 'btn btn-primary',
                     target: :_blank)
+  
+  - if @site.show_redesign_display_settings
+    = render partial: 'fonts_and_colors', locals: { f: f }
