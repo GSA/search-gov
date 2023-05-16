@@ -2,14 +2,12 @@
 
 class SitemapIndexer
   attr_reader :domain,
-              :scheme,
               :searchgov_domain,
-              :uri
+              :sitemap_url
 
   def initialize(sitemap_url:, domain:)
-    @uri = URI(sitemap_url.strip)
+    @sitemap_url = https_url(sitemap_url)
     @domain = domain
-    @scheme = uri.scheme
     @searchgov_domain = SearchgovDomain.find_by(domain: domain)
   end
 
@@ -67,14 +65,14 @@ class SitemapIndexer
       process_entry(entry) if entry_matches_domain?(entry)
     end
   rescue => e
-    Rails.logger.error("Error processing sitemap entries for #{uri}: #{e}")
+    Rails.logger.error("Error processing sitemap entries for #{sitemap_url}: #{e}")
   ensure
     searchgov_domain.reload.index_urls
     set_counter_callbacks
   end
 
   def process_entry(entry)
-    sitemap_url = UrlParser.update_scheme(entry[:loc].strip, scheme)
+    sitemap_url = https_url(entry[:loc])
     searchgov_url = SearchgovUrl.find_or_initialize_by(url: sitemap_url)
     searchgov_url.update!(lastmod: entry[:lastmod])
   rescue => e
@@ -98,14 +96,15 @@ class SitemapIndexer
     {
       time: Time.now.utc.to_fs(:db),
       domain: domain,
-      sitemap: uri.to_s
+      sitemap: sitemap_url
     }
   end
 
   def sitemap
     @sitemap ||= begin
+      DocumentFetchLogger.new(sitemap_url, 'sitemap_url').log
       HTTP.headers(user_agent: DEFAULT_USER_AGENT).
-        timeout(connect: 20, read: 60).follow.get(uri).to_s
+        timeout(connect: 20, read: 60).follow.get(sitemap_url).to_s
     rescue => e
       error_info = log_info.merge(error: e.message)
       log_line = "[Searchgov SitemapIndexer] #{error_info.to_json}"
@@ -123,5 +122,9 @@ class SitemapIndexer
   def set_counter_callbacks
     SearchgovUrl.set_callback :create, :after, :_update_counts_after_create
     SearchgovUrl.set_callback :update, :after, :_update_counts_after_update
+  end
+
+  def https_url(url)
+    UrlParser.update_scheme(url.strip, 'https')
   end
 end

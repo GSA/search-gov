@@ -1,4 +1,4 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe IndexedDocument do
   fixtures :affiliates, :superfresh_urls, :site_domains, :features
@@ -353,6 +353,10 @@ describe IndexedDocument do
     include_examples 'site dupable'
   end
 
-  it_should_behave_like 'a record with a fetchable url'
-  it_should_behave_like 'a record with an indexable url'
+  it_behaves_like 'a record with a fetchable url'
+  it_behaves_like 'a record with an indexable url'
+  # This should be required for all "Fetchable" classes (SRCH-4148), but there
+  # is some old logic in the SiteFeedUrlData importer that needs refactoring before we
+  # can enforce this behavior for the IndexedDocument class.
+  # it_behaves_like 'a record that requires https'
 end
