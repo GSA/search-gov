@@ -23,7 +23,8 @@ class Search
               :queried_at_seconds,
               :module_tag,
               :modules,
-              :normalized_results
+              :normalized_results,
+              :govbox_set
 
   def initialize(options = {})
     @affiliate = options[:affiliate]
