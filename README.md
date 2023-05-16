@@ -22,6 +22,17 @@ Use [NVM](https://github.com/nvm-sh/nvm#installing-and-updating) to install the 
 
 The required services (MySQL, Elasticsearch, etc.) can be run using Docker. Please refer to [searchgov-services](https://github.com/GSA/search-services) for detailed instructions on centralized configuration for services.
 
+`search-gov` application can be in local machine or using Docker container which is configured to run on the port [3100](http://localhost:3100/). Few dependencies ([Ruby](https://github.com/GSA/search-gov#ruby), [NodeJS](https://github.com/GSA/search-gov#nodejs), [Package Manager](https://github.com/GSA/search-gov#package-manager), [Packages](https://github.com/GSA/search-gov#packages), [Gems](https://github.com/GSA/search-gov#gems), [JavaScript dependencies](https://github.com/GSA/search-gov#javascript-dependencies)) required to run application are installed using Docker. However, other dependent data and configuration needs to be setup manually, which can be done with in the running container using `bash` or in local machine.
+
+Using bash to perform any operations on search-gov application running in Docker container.
+
+    $ docker compose run search-gov bash
+
+For example, to setup DB in Docker:
+
+    $ docker compose run search-gov bash
+    $ bin/rails db:setup
+
 The Elasticsearch service provided by `searchgov-services` is configured to run on the default port, [9200](http://localhost:9200/). To use a different host (with or without port) or set of hosts, set the `ES_HOSTS` environment variable. For example, use following command to run the specs using Elasticsearch running on `localhost:9207`:
 
     ES_HOSTS=localhost:9207 bundle exec rspec spec
