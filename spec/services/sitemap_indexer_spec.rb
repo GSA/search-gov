@@ -1,15 +1,13 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
-
 describe SitemapIndexer do
-  let(:sitemap_url) { 'http://agency.gov/sitemap.xml' }
+  let(:sitemap_url) { 'https://agency.gov/sitemap.xml' }
   let(:searchgov_domain) { searchgov_domains(:agency_gov) }
-  let(:sitemap_entries) { '<url><loc>http://agency.gov/doc1</loc></url>' }
+  let(:sitemap_entries) { '<url><loc>https://agency.gov/doc1</loc></url>' }
   let(:sitemap_content) do
     <<~SITEMAP
       <?xml version="1.0" encoding="UTF-8"?>
-      <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+      <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
          #{sitemap_entries}
       </urlset>
     SITEMAP
@@ -36,7 +34,7 @@ describe SitemapIndexer do
 
     context 'when the sitemap specifies a lastmod value' do
       let(:sitemap_entries) do
-        '<url><loc>http://agency.gov/doc1</loc><lastmod>2018-01-01T12:00:00+00:00</lastmod></url>'
+        '<url><loc>https://agency.gov/doc1</loc><lastmod>2018-01-01T12:00:00+00:00</lastmod></url>'
       end
 
       it 'sets the lastmod attribute' do
@@ -48,13 +46,13 @@ describe SitemapIndexer do
     context 'when a sitemap url is a sitemap index' do
       let(:sitemap_content) do
         <<~SITEMAP_INDEX
-          <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+          <sitemapindex xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
              <sitemap>
-                <loc>http://agency.gov/sitemap_a.xml</loc>
+                <loc>https://agency.gov/sitemap_a.xml</loc>
                 <lastmod>2004-10-01T18:23:17+00:00</lastmod>
              </sitemap>
              <sitemap>
-                <loc>http://agency.gov/sitemap_b.xml</loc>
+                <loc>https://agency.gov/sitemap_b.xml</loc>
                 <lastmod>2005-01-01</lastmod>
              </sitemap>
           </sitemapindex>
@@ -64,21 +62,21 @@ describe SitemapIndexer do
       it 'enqueues new jobs to process both sitemaps' do
         index
         expect(SitemapIndexerJob).to have_been_enqueued.
-          with(sitemap_url: 'http://agency.gov/sitemap_a.xml', domain: 'agency.gov')
+          with(sitemap_url: 'https://agency.gov/sitemap_a.xml', domain: 'agency.gov')
         expect(SitemapIndexerJob).to have_been_enqueued.
-          with(sitemap_url: 'http://agency.gov/sitemap_b.xml', domain: 'agency.gov')
+          with(sitemap_url: 'https://agency.gov/sitemap_b.xml', domain: 'agency.gov')
       end
     end
 
     context 'when a searchgov url already exists' do
       let(:existing_url) do
-        SearchgovUrl.create(url: 'http://agency.gov/doc1',
+        SearchgovUrl.create(url: 'https://agency.gov/doc1',
                             last_crawl_status: 'OK',
                             last_crawled_at: 1.week.ago)
       end
 
       context 'when lastmod is not specified in the sitemap' do
-        let(:sitemap_entries) { '<url><loc>http://agency.gov/doc1</loc></url>' }
+        let(:sitemap_entries) { '<url><loc>https://agency.gov/doc1</loc></url>' }
 
         it 'does not update the url' do
           expect { index }.not_to change { existing_url.reload.lastmod }
@@ -87,7 +85,7 @@ describe SitemapIndexer do
 
       context 'when when lastmod is specified in the sitemap' do
         let(:sitemap_entries) do
-          '<url><loc>http://agency.gov/doc1</loc><lastmod>2021-01-01</lastmod></url>'
+          '<url><loc>https://agency.gov/doc1</loc><lastmod>2021-01-01</lastmod></url>'
         end
 
         it 'updates the lastmod value' do
@@ -107,44 +105,56 @@ describe SitemapIndexer do
       end
 
       it 'logs the error' do
-        expect(Rails.logger).to receive(:error).with(%r{"sitemap_entry_failed":"http://agency.gov/doc1"})
+        expect(Rails.logger).to receive(:error).with(%r{"sitemap_entry_failed":"https://agency.gov/doc1"})
         indexer.index
       end
     end
 
     context 'when the sitemap contains whitespace around the elements' do
-      let(:sitemap_entries) { "<url>\n  <loc>\n    http://agency.gov/doc1 \n    </loc>\n  </url>" }
+      let(:sitemap_entries) { "<url>\n  <loc>\n    https://agency.gov/doc1 \n    </loc>\n  </url>" }
 
       it 'creates a searchgov_url record' do
         expect { index }.to change { SearchgovUrl.count }.by(1)
       end
     end
 
-    # This does not adhere to the Sitemaps protocol, but we're assuming
-    # any scheme mismatches for our domain sitemaps are benign.
-    context 'when the sitemap urls do not have the same scheme as the domain' do
-      let(:sitemap_url) { 'https://agency.gov/sitemap.xml' }
-      let(:sitemap_entries) { '<url><loc>http://agency.gov/doc1</loc></url>' }
-      let(:site) { 'https://agency.gov' }
+    describe 'https enforcement' do
+      context 'when processing an "http" sitemap URL' do
+        let(:sitemap_url) { 'http://agency.gov/sitemap.xml' }
 
-      it 'creates a SearchgovUrl record with the correct scheme' do
-        index
-        expect(SearchgovUrl.find_by(url: 'https://agency.gov/doc1')).not_to be_nil
+        it 'requests the https version' do
+          indexer.index
+          expect(a_request(:get, 'http://agency.gov/sitemap.xml')).not_to have_been_made
+          expect(a_request(:get, 'https://agency.gov/sitemap.xml')).to have_been_made
+        end
+      end
+
+      # The sitemaps protocol requires the same scheme to be used for the sitemap and the
+      # URLs listed on the sitemap, but we require 'https' for both.
+      context 'when the sitemap urls are not https' do
+        let(:sitemap_url) { 'https://agency.gov/sitemap.xml' }
+        let(:sitemap_entries) { '<url><loc>http://agency.gov/doc1</loc></url>' }
+        let(:site) { 'https://agency.gov' }
+
+        it 'creates a SearchgovUrl record with https' do
+          index
+          expect(SearchgovUrl.find_by(url: 'https://agency.gov/doc1')).not_to be_nil
+        end
       end
     end
 
     context 'when urls are from a different domain' do
       let(:sitemap_entries) do
         <<~SITEMAP_ENTRIES
-          <url><loc>http://agency.gov/doc1</loc></url>
-          <url><loc>http://www.agency.gov/doc1</loc></url>
-          <url><loc>http://other.gov/doc1</loc></url>
+          <url><loc>https://agency.gov/doc1</loc></url>
+          <url><loc>https://www.agency.gov/doc1</loc></url>
+          <url><loc>https://other.gov/doc1</loc></url>
         SITEMAP_ENTRIES
       end
 
       it 'ignores them' do
         index
-        expect(SearchgovUrl.pluck(:url)).not_to include 'http://other.gov/doc1'
+        expect(SearchgovUrl.pluck(:url)).not_to include 'https://other.gov/doc1'
       end
     end
 
@@ -167,7 +177,7 @@ describe SitemapIndexer do
 
       it 'logs the error' do
         expect(Rails.logger).to receive(:warn).
-          with(%r{"sitemap":"http://agency.gov/sitemap.xml","error":"kaboom"})
+          with(%r{"sitemap":"https://agency.gov/sitemap.xml","error":"kaboom"})
         index
       end
     end
@@ -175,8 +185,8 @@ describe SitemapIndexer do
     context 'when the XML is poorly formatted' do
       let(:sitemap_entries) do
         <<~SITEMAP_ENTRIES
-          <url><loc>http://agency.gov/good</loc></url>'
-          <url><loc>http://agency.gov/bad</loc></bad_tag>'
+          <url><loc>https://agency.gov/good</loc></url>'
+          <url><loc>https://agency.gov/bad</loc></bad_tag>'
         SITEMAP_ENTRIES
       end
 
@@ -186,7 +196,7 @@ describe SitemapIndexer do
 
       it 'processes as many entries as possible' do
         index
-        expect(SearchgovUrl.find_by(url: 'http://agency.gov/good')).not_to be_nil
+        expect(SearchgovUrl.find_by(url: 'https://agency.gov/good')).not_to be_nil
       end
 
       it 'logs the error' do
@@ -203,7 +213,7 @@ describe SitemapIndexer do
     end
 
     context 'when a sitemap contains an invalid URL' do
-      let(:sitemap_entries) { '<url><loc>http://agency.gov/doc (1).pdf</loc></url>' }
+      let(:sitemap_entries) { '<url><loc>https://agency.gov/doc (1).pdf</loc></url>' }
 
       it 'does not raise an error' do
         expect { indexer.index }.not_to raise_error
@@ -229,12 +239,21 @@ describe SitemapIndexer do
           to eq(Time.zone.parse('Mon, 26 Sep 2011 21:33:05 +0000'))
       end
     end
+
+    it 'logs the sitemap URL that was requested' do
+      allow(Rails.logger).to receive(:info)
+      index
+      expect(Rails.logger).to have_received(:info).
+        with(%r{Document Fetch.*https://agency.gov/sitemap.xml})
+    end
   end
 
   describe '#initialize' do
     context 'when given a sitemap url string having leading or trailing whitespace' do
+      let(:sitemap_url) { " \nhttps://agency.gov/sitemap.xml\n " }
+
       it 'strips the leading or trailing whitespace before parsing it' do
-        expect(described_class.new(sitemap_url: " \n#{sitemap_url}\n ", domain: 'agency.gov').uri.to_s).to eq(sitemap_url)
+        expect(indexer.sitemap_url).to eq('https://agency.gov/sitemap.xml')
       end
     end
   end
