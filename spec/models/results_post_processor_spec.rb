@@ -32,6 +32,12 @@ describe ResultsPostProcessor do
       end
     end
 
+    context 'when there are more than 500 pages of results' do
+      let(:total_results) { 15_000 }
+
+      it { is_expected.to eq(500) }
+    end
+
     context 'when an invalid value is passed in' do
       let(:total_results) { {} }
 
