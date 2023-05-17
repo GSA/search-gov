@@ -1,0 +1,19 @@
+%h3= t('.fonts_and_colors', scope: 'admin_center')
+
+-# NOTE: This is placeholder, disabled content. This subsection to be completed in SRCH-4142.
+= label_tag :font_family, t('.font_family', scope: 'admin_center')
+= select_tag :font_family,
+             options_for_select(%w(- Font_1 Font_2), selected: '-'), 
+             disabled: true
+
+-# NOTE: This is placeholder, disabled content. This subsection to be completed in SRCH-4143.
+%fieldset
+  %legend= t('.color_scheme', scope: 'admin_center')
+  = f.label :theme, value: 'default', class: 'radio' do
+    = f.radio_button :theme, 'default', disabled: true
+    = t('.default', scope: 'admin_center')
+  = f.label :theme, value: 'custom', class: 'radio' do
+    = f.radio_button :theme, 'custom', disabled: true
+    = t('.custom', scope: 'admin_center')
+
+%hr

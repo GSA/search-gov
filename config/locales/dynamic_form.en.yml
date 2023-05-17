@@ -1,9 +1,10 @@
+---
 en:
   dynamic_form:
+    error_messages:
+      body: 'There were problems with the following fields:'
+      header:
+        one: 1 error prohibited this %{record_name} from being saved
+        other: "%{count} errors prohibited this %{record_name} from being saved"
     errors:
       dynamic_format: "%{message}"
-    error_messages:
-      header:
-        one: "1 error prohibited this %{record_name} from being saved"
-        other: "%{count} errors prohibited this %{record_name} from being saved"
-      body: "There were problems with the following fields:"
