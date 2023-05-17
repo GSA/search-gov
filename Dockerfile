@@ -38,4 +38,3 @@ ENV BUNDLE_PATH /gems
 RUN bundle install
 
 COPY . /usr/src/app/
-# ENTRYPOINT ["./docker-entrypoint.sh"]
