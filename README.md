@@ -18,13 +18,13 @@ Use [RVM](https://rvm.io/) to install the version of Ruby specified in [.ruby-ve
 
 Use [NVM](https://github.com/nvm-sh/nvm#installing-and-updating) to install the version of NodeJS specified in the [.nvmrc](/.nvmrc). 
 
-### Docker Services
+### Docker
 
-The required services (MySQL, Elasticsearch, etc.) can be run using Docker. Please refer to [searchgov-services](https://github.com/GSA/search-services) for detailed instructions on centralized configuration for services.
+Docker can be used to: 1) run just the required services (MySQL, Elasticsearch, etc.) while [running the search-gov application in your local machine](https://github.com/GSA/search-gov#running-the-app), and/or 2) run the entire `search-gov` application in a Docker container.  Please refer to [searchgov-services](https://github.com/GSA/search-services) for detailed instructions on centralized configuration for the services.
 
-`search-gov` application can be in local machine or using Docker container which is configured to run on the port [3100](http://localhost:3100/). Few dependencies ([Ruby](https://github.com/GSA/search-gov#ruby), [NodeJS](https://github.com/GSA/search-gov#nodejs), [Package Manager](https://github.com/GSA/search-gov#package-manager), [Packages](https://github.com/GSA/search-gov#packages), [Gems](https://github.com/GSA/search-gov#gems), [JavaScript dependencies](https://github.com/GSA/search-gov#javascript-dependencies)) required to run application are installed using Docker. However, other dependent data and configuration needs to be setup manually, which can be done with in the running container using `bash` or in local machine.
+When running in a Docker container (option 2 above), the `search-gov` application is configured to run on port [3100](http://localhost:3100/). Required dependencies - ([Ruby](https://github.com/GSA/search-gov#ruby), [NodeJS](https://github.com/GSA/search-gov#nodejs), [Package Manager](https://github.com/GSA/search-gov#package-manager), [Packages](https://github.com/GSA/search-gov#packages), [Gems](https://github.com/GSA/search-gov#gems), [JavaScript dependencies](https://github.com/GSA/search-gov#javascript-dependencies)) - are installed using Docker. However, other data or configuration may need to be setup manually, which can be done in the running container using `bash`.
 
-Using bash to perform any operations on search-gov application running in Docker container.
+Using bash to perform any operations on search-gov application running in Docker container, below command needs to be run in `search-services`.
 
     $ docker compose run search-gov bash
 
