@@ -398,6 +398,26 @@ describe SearchgovUrl do
           end
         end
       end
+
+      # We normally do not index URLs in parallel, but it can happen on occasion.
+      # In those cases, we log it, consider the #fetch to have been successful, and move on.
+      context 'when the URL was indexed by a parallel process' do
+        before do
+          allow(I14yDocument).to receive(:create).
+            and_raise(I14yDocument::DuplicateID, 'Document already exists with that ID')
+          allow(Rails.logger).to receive(:warn)
+        end
+
+        it 'sets the #last_crawl_status to "OK"' do
+          expect { fetch }.to change { searchgov_url.last_crawl_status }.from(nil).to('OK')
+        end
+
+        it 'logs a warning' do
+          fetch
+          expect(Rails.logger).to have_received(:warn).
+            with(/Document already exists with that ID: 1ff7df/)
+        end
+      end
     end
 
     context 'when the searchgov domain has js renderer enabled' do
