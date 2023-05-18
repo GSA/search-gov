@@ -149,7 +149,7 @@ gem 'font-awesome-grunticon-rails',
 # https://github.com/rails/execjs/releases/tag/v2.8.0
 # Locking the version to 2.7.x until we remove or replace therubyracer
 gem 'execjs', '~> 2.7.0'
-gem 'react-rails', '~> 2.6.2'
+gem 'react-rails', '~> 2.7.0'
 # Locking to prevent a version mismatch between the gem and the NPM package version
 # See https://github.com/shakacode/shakapacker#upgrading
 gem 'shakapacker', '6.5.4'
