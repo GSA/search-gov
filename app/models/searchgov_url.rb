@@ -17,7 +17,7 @@ class SearchgovUrl < ApplicationRecord
                               ]
 
   attr_reader :response, :document, :tempfile
-  attr_readonly :url
+  attr_readonly :hashed_url, :url
 
   validates_associated :searchgov_domain, on: :create
   validates(:searchgov_domain,

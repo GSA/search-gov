@@ -8,6 +8,7 @@ describe SearchgovUrl do
   let(:valid_attributes) { { url: url } }
   let(:searchgov_url) { described_class.new(valid_attributes) }
 
+  it { is_expected.to have_readonly_attribute(:hashed_url) }
   it { is_expected.to have_readonly_attribute(:url) }
 
   describe 'schema' do
@@ -18,7 +19,12 @@ describe SearchgovUrl do
 
     it { is_expected.to have_db_column(:load_time).of_type(:integer) }
     it { is_expected.to have_db_column(:lastmod).of_type(:datetime) }
-    it { is_expected.to have_db_column(:hashed_url).of_type(:string).with_options(limit: 64) }
+
+    it do
+      is_expected.to have_db_column(:hashed_url).
+        of_type(:string).
+        with_options(limit: 64, null: false)
+    end
 
     it {
       is_expected.to have_db_column(:enqueued_for_reindex).
@@ -26,6 +32,7 @@ describe SearchgovUrl do
         with_options(default: false, null: false)
     }
 
+    it { is_expected.to have_db_index(:hashed_url).unique(true) }
     it { is_expected.to have_db_index(:last_crawl_status) }
     it { is_expected.to have_db_index(:url) }
     it { is_expected.to have_db_index([:searchgov_domain_id, :last_crawl_status]) }
