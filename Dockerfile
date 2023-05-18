@@ -1,7 +1,7 @@
 FROM --platform=linux/amd64 ruby:3.0.6
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 WORKDIR /usr/src/app
-EXPOSE 3000
+EXPOSE 3100
 
 RUN apt-get update -y && apt-get install -y --no-install-recommends \
   default-jre \
