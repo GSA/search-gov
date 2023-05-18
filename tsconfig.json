@@ -4,6 +4,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "downlevelIteration": true,
+    "strict": true,
     "lib": ["es6", "dom"],
     "module": "es6",
     "moduleResolution": "node",
@@ -13,6 +14,7 @@
     "noEmit": true,
     "baseUrl": ".",
     "allowSyntheticDefaultImports": true,
+    "types": ["node", "jest", "@testing-library/jest-dom"],
     "paths": {
       "*": ["node_modules/*", "app/javascript/*"]
     },

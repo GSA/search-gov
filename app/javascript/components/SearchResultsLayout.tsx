@@ -8,21 +8,26 @@ import { SearchBar } from './SearchBar/SearchBar';
 import { Results } from './Results/Results';
 import { Footer } from './Footer/Footer';
 import { Identifier } from './Identifier/Identifier';
+
 interface SearchResultsLayoutProps {
-  results: {
-    title: string,
-    url: string,
-    thumbnail: {
-      url: string
-    },
-    description: string,
-    updatedDate: string,
-    publishedDate: string,
-    thumbnailUrl: string
-  }[];
+  resultsData: {
+    totalPages: number;
+    unboundedResults: boolean;
+    results: {
+      title: string,
+      url: string,
+      thumbnail?: {
+        url: string
+      },
+      description: string,
+      updatedDate: string | null,
+      publishedDate: string | null,
+      thumbnailUrl: string | null
+    }[] | null;
+  } | null
   vertical: string;
   params: {
-    query: string
+    query?: string
   };
 }
 
@@ -36,7 +41,7 @@ const isBasicHeader = (): boolean => {
   return true;
 };
 
-const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
+const SearchResultsLayout = ({ resultsData, vertical, params }: SearchResultsLayoutProps) => {
   return (
     <>
       <Header 
@@ -47,13 +52,23 @@ const SearchResultsLayout = (props: SearchResultsLayoutProps) => {
       <div className="usa-section">
         <Facets />
         <SearchBar 
-          query={props.params.query}
-          results={props.results} 
+          query={params.query}
         />
-        <Results 
-          results={props.results} 
-          vertical={props.vertical}
-        />
+        {/* This ternary is needed to handle the case when Bing pagination leads to a page with no results */}
+        {resultsData ? (
+          <Results 
+            results={resultsData.results}
+            vertical={vertical}
+            totalPages={resultsData.totalPages}
+            query={params.query}
+            unboundedResults={resultsData.unboundedResults}
+          />) : params.query ? (
+          <Results 
+            vertical={vertical}
+            totalPages={null}
+            query={params.query}
+            unboundedResults={true}
+          />) : <></>}
       </div>
 
       <Footer />

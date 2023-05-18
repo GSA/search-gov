@@ -4,24 +4,26 @@ import { GridContainer, Grid } from '@trussworks/react-uswds';
 import { Pagination } from './../Pagination/Pagination';
 
 import './Results.css';
+
 interface ResultsProps {
-  results: {
+  query?: string
+  results?: {
     title: string,
     url: string,
-    thumbnail: {
+    thumbnail?: {
       url: string
     },
     description: string,
-    updatedDate: string,
-    publishedDate: string,
-    thumbnailUrl: string
-  }[];
+    updatedDate: string | null,
+    publishedDate: string | null,
+    thumbnailUrl: string | null
+  }[] | null;
+  unboundedResults: boolean;
+  totalPages: number | null;
   vertical: string;
 }
 
-export const Results = (props: ResultsProps) => {
-  const totalPages = 10; // to do: updated once we get pagination data from the backend
-  
+export const Results = ({ query = '', results = null, unboundedResults, totalPages = null, vertical }: ResultsProps) => {
   return (
     <>
       <div className='search-result-wrapper'>
@@ -99,13 +101,13 @@ export const Results = (props: ResultsProps) => {
         </GridContainer>
 
         <div id="results" className="search-result-item-wrapper">
-          {props.results.map((result, index) => {
+          {results && results.length > 0 ? (results.map((result, index) => {
             return (
               <GridContainer key={index} className='result search-result-item'>
                 <Grid row gap="md">
-                  { props.vertical === 'image' &&
+                  {vertical === 'image' &&
                   <Grid mobileLg={{ col: 4 }} className='result-thumbnail'>
-                    <img src={result.thumbnail.url} className="result-image"/>
+                    <img src={result.thumbnail?.url} className="result-image" alt={result.title}/>
                   </Grid>
                   }
                   <Grid col={true} className='result-meta-data'>
@@ -128,15 +130,21 @@ export const Results = (props: ResultsProps) => {
                 </Grid>
               </GridContainer>
             );
-          })}
+          })) : (
+            <GridContainer className='result search-result-item'>
+              <Grid row>
+                <Grid tablet={{ col: true }}>
+                  <h4>Sorry, no results found for &#39;{query}&#39;. Try entering fewer or more general search terms.</h4>
+                </Grid>
+              </Grid>
+            </GridContainer>)}
         </div>
       </div>
-      {totalPages > 0 && 
-        <Pagination 
-          totalPages={totalPages}
-          pathname={window.location.href}
-        />
-      }
+      <Pagination 
+        totalPages={totalPages}
+        pathname={window.location.href}
+        unboundedResults={unboundedResults}
+      />
     </>
   );
 };

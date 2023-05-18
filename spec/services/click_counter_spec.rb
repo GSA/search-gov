@@ -7,7 +7,7 @@ describe ClickCounter do
     subject(:update_click_counts) { counter.update_click_counts }
 
     context 'when clicks are available' do
-      let(:url) { 'http://agency.gov/' }
+      let(:url) { 'https://agency.gov/' }
 
       before do
         allow(counter).to receive(:statistically_significant_clicks).
@@ -33,7 +33,7 @@ describe ClickCounter do
         it 'logs the missing URL' do
           update_click_counts
           expect(Rails.logger).to have_received(:error).
-            with('SearchgovUrl not found for clicked URL: http://agency.gov/')
+            with('SearchgovUrl not found for clicked URL: https://agency.gov/')
         end
       end
 
@@ -46,7 +46,7 @@ describe ClickCounter do
 
         it 'logs the unindexed URL' do
           expect(Rails.logger).to receive(:error).with(
-            'Unable to update I14yDocument click_count for http://agency.gov/: fail'
+            'Unable to update I14yDocument click_count for https://agency.gov/: fail'
           )
           update_click_counts
         end

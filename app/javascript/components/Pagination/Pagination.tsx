@@ -7,19 +7,25 @@ import { getCurrentPage } from '../../utils';
 import './Pagination.css';
 interface PaginationProps {
   pathname: string
-  totalPages: number
+  totalPages: number | null
+  unboundedResults: boolean
 }
 
-export const Pagination = (props: PaginationProps) => {
+export const Pagination = ({ pathname, totalPages = null, unboundedResults }: PaginationProps) => {
+  if ((!totalPages || totalPages < 2 || getCurrentPage() > totalPages)) {
+    return (<></>);
+  }
+
   return (
     <div className="serp-pagination-wrapper">
       <GridContainer>
         <Grid row>
           <Grid tablet={{ col: true }}>
             <UswdsPagination 
-              pathname={props.pathname} 
-              totalPages={props.totalPages} 
-              currentPage={getCurrentPage()} 
+              pathname={pathname} 
+              totalPages={totalPages} 
+              currentPage={getCurrentPage()}
+              unboundedResults={unboundedResults}
             />
           </Grid>
         </Grid>

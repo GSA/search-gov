@@ -23,7 +23,8 @@ class Search
               :queried_at_seconds,
               :module_tag,
               :modules,
-              :normalized_results
+              :normalized_results,
+              :govbox_set
 
   def initialize(options = {})
     @affiliate = options[:affiliate]
@@ -31,7 +32,6 @@ class Search
     initialize_pageable_attributes options
 
     @results, @spelling_suggestion = [], nil
-    @normalized_results = []
     @queried_at_seconds = Time.now.to_i
     @modules = []
     @spelling_suggestion_eligible = !SuggestionBlock.exists?(query: options[:query])
