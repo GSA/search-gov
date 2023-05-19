@@ -95,6 +95,7 @@ Feature: Search - redesign
     When I am on healthcare.gov's redesigned search page
     And I search for "hippopotamus" in the redesigned search page
     Then I should see 1 Best Bets Text
+    And I should see "Recommended by HealthCare.gov"
     And I should see "Hippopotamus item"
     And I should see "http://healthcare.gov/hippopotamus-amphibius"
     And I should see "large, mostly herbivorous mammal in sub-Saharan Africa"
