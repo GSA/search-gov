@@ -5,7 +5,6 @@ import parse from 'html-react-parser';
 import { Pagination } from './../Pagination/Pagination';
 
 import './Results.css';
-import { text } from 'stream/consumers';
 
 interface ResultsProps {
   query?: string
