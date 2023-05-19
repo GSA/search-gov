@@ -4,6 +4,7 @@ import { GridContainer, Grid } from '@trussworks/react-uswds';
 import { Pagination } from './../Pagination/Pagination';
 
 import './Results.css';
+import { text } from 'stream/consumers';
 
 interface ResultsProps {
   query?: string
@@ -18,54 +19,48 @@ interface ResultsProps {
     publishedDate: string | null,
     thumbnailUrl: string | null
   }[] | null;
+  additionalResults?: {
+    recommendedBy: string;
+    textBestBets: {
+      title: string;
+      url: string;
+      description: string;
+    }[];
+  } | null;
   unboundedResults: boolean;
   totalPages: number | null;
   vertical: string;
 }
 
-export const Results = ({ query = '', results = null, unboundedResults, totalPages = null, vertical }: ResultsProps) => {
+export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical }: ResultsProps) => {
   return (
     <>
       <div className='search-result-wrapper'>
-        {/* ToDo: This need to be dynamic: this is for UI purposes only */}
+        {additionalResults && additionalResults.textBestBets?.length > 0 && (
         <GridContainer className="results-best-bets-wrapper">
           <Grid row gap="md">
             <Grid col={true}>
               <GridContainer className='best-bets-title'>
-                Recommended by GSA
+                Recommended by {additionalResults.recommendedBy}
               </GridContainer>
-              <GridContainer className='result search-result-item'>
-                <Grid row gap="md">
-                  <Grid col={true} className='result-meta-data'>
-                    {/* ToDo: This date need to be dynamic */}
-                    <div className='result-title'>
-                      <a href="https://medlineplus.gov/appendixb.html" className='result-title-link'>
-                        <h2 className='result-title-label'>Appendix B: Some Common Abbreviations - MedlinePlus</h2>
-                      </a>
-                    </div>
-                    <div className='result-desc'>
-                      <p>ABG. Arterial blood gases. You may have an ABG test to detect lung diseases. ACE. Angiotensin converting enzyme. Drugs called ACE inhibitors are used to treat high blood pressure, heart failure, diabetes and kidney diseases. ACL. Anterior cruciate ligament. Commonly injured part of the knee.</p>
-                      <div className='result-url-text'>https://medlineplus.gov/appendixb.html</div>
-                    </div>
-                  </Grid>
-                </Grid>
-              </GridContainer>
-              <GridContainer className='result search-result-item'>
-                <Grid row gap="md">
-                  <Grid col={true} className='result-meta-data'>
-                    {/* This date need to be dynamic */}
-                    <div className='result-title'>
-                      <a href="https://clinicaltrials.gov/ct2/search/index" className='result-title-link'>
-                        <h2 className='result-title-label'>Find Studies - ClinicalTrials.gov</h2>
-                      </a>
-                    </div>
-                    <div className='result-desc'>
-                      <p>Learn how to find studies that have been updated with study results, including studies with results that have been published in medical journals. How to Read a Study Record. Learn about the information available in a study record and the different ways to view a record.</p>
-                      <div className='result-url-text'>https://clinicaltrials.gov/ct2/search/index</div>
-                    </div>
-                  </Grid>
-                </Grid>
-              </GridContainer>
+              {additionalResults.textBestBets.map((textBestBet, _index) => {
+                return (
+                  <GridContainer className='result search-result-item'>
+                    <Grid row gap="md">
+                    <Grid col={true} className='result-meta-data'>
+                      <div className='result-title'>
+                        <a href={textBestBet.url} className='result-title-link'>
+                          <h2 className='result-title-label'>{textBestBet.title}</h2>
+                        </a>
+                      </div>
+                      <div className='result-desc'>
+                        <p>{textBestBet.description}</p>
+                        <div className='result-url-text'>{textBestBet.url}</div>
+                      </div>
+                    </Grid>
+                    </Grid>
+                  </GridContainer>
+                );})}
               <GridContainer className='result search-result-item graphics-best-bets display-none'>
                 <Grid row gap="md">
                   <Grid mobileLg={{ col: 4 }} className='result-thumbnail'>
@@ -98,7 +93,7 @@ export const Results = ({ query = '', results = null, unboundedResults, totalPag
               </GridContainer>
             </Grid>
           </Grid>
-        </GridContainer>
+        </GridContainer>)}
 
         <div id="results" className="search-result-item-wrapper">
           {results && results.length > 0 ? (results.map((result, index) => {
