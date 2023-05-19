@@ -42,7 +42,7 @@ describe('SearchResultsLayout', () => {
     for (let counter = 0; counter < 2; counter += 1) {
       results.push({ title: 'test result 1', url: 'https://www.search.gov', description: 'result body', publishedDate: 'May 9th, 2023', updatedDate: 'May 10th, 2023' });
     }
-    const additionalResults = { recommendedBy: 'USAgov', textBestBets: [{ title: 'A best bet', description: 'This is the best bet', url: 'http://www.example.com' }]};
+    const additionalResults = { recommendedBy: 'USAgov', textBestBets: [{ title: 'A best bet', description: 'This is the best bet', url: 'http://www.example.com' }] };
     const resultsData = { totalPages: 2, unboundedResults: true, results };
     render(<SearchResultsLayout params={{ query: 'foo' }} resultsData={resultsData} additionalResults={additionalResults} vertical='web' />);
     const bestBetRecommendedBy = screen.getByText(/Recommended by USAgov/i);
