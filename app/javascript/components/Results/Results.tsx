@@ -1,5 +1,6 @@
 import React from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
+import parse from 'html-react-parser';
 
 import { Pagination } from './../Pagination/Pagination';
 
@@ -38,23 +39,23 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
       <div className='search-result-wrapper'>
         {additionalResults && additionalResults.textBestBets?.length > 0 && (
         <GridContainer className="results-best-bets-wrapper">
-          <Grid row gap="md">
+          <Grid row gap="md" id="best-bets">
             <Grid col={true}>
               <GridContainer className='best-bets-title'>
                 Recommended by {additionalResults.recommendedBy}
               </GridContainer>
-              {additionalResults.textBestBets.map((textBestBet, _index) => {
+              {additionalResults.textBestBets.map((textBestBet, index) => {
                 return (
-                  <GridContainer className='result search-result-item'>
+                  <GridContainer key={index} className='result search-result-item boosted-content'>
                     <Grid row gap="md">
                     <Grid col={true} className='result-meta-data'>
                       <div className='result-title'>
                         <a href={textBestBet.url} className='result-title-link'>
-                          <h2 className='result-title-label'>{textBestBet.title}</h2>
+                          <h2 className='result-title-label'>{parse(textBestBet.title)}</h2>
                         </a>
                       </div>
                       <div className='result-desc'>
-                        <p>{textBestBet.description}</p>
+                        <p>{parse(textBestBet.description)}</p>
                         <div className='result-url-text'>{textBestBet.url}</div>
                       </div>
                     </Grid>

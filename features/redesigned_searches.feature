@@ -82,6 +82,24 @@ Feature: Search - redesign
     And I should see "Within the last hour article on item"
     And I should not see pagination
 
+
+  @javascript @a11y @a11y_wip
+  Scenario: Search with best bets
+    Given the following SearchGov Affiliates exist:
+      | display_name   | name           | contact_email      | first_name | last_name | domains            |
+      | HealthCare.gov | healthcare.gov | aff@healthcare.gov | Jane       | Bar       | www.healthcare.gov |
+    Given the following Boosted Content entries exist for the affiliate "healthcare.gov"
+      | url                                          | title             | description                                            |
+      | http://healthcare.gov/hippopotamus-amphibius | Hippopotamus item | large, mostly herbivorous mammal in sub-Saharan Africa |
+    Given there are results for the "searchgov" drawer
+    When I am on healthcare.gov's redesigned search page
+    And I search for "hippopotamus" in the redesigned search page
+    Then I should see 1 Best Bets Text
+    And I should see "Hippopotamus item"
+    And I should see "http://healthcare.gov/hippopotamus-amphibius"
+    And I should see "large, mostly herbivorous mammal in sub-Saharan Africa"
+
+
   @javascript @a11y @a11y_wip
   Scenario: News search
     Given the following Affiliates exist:
