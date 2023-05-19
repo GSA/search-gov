@@ -49,7 +49,7 @@ const isBasicHeader = (): boolean => {
   return true;
 };
 
-const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = { query: '' } }: SearchResultsLayoutProps) => {
+const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {} }: SearchResultsLayoutProps) => {
   return (
     <>
       <Header 
