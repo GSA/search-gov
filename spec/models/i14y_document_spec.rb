@@ -70,14 +70,30 @@ describe I14yDocument do
     end
 
     context 'when the save is unsuccessful' do
+      let(:response) do
+        { status: 400, body: { developer_message: 'fail', status: 400 } }
+      end
+
       before do
         allow(i14y_connection).to receive(:post).
           with('/api/v1/documents', valid_attributes.except(:handle)).
-          and_return(Hashie::Mash.new(status: 400))
+          and_return(Hashie::Mash.new(response))
       end
 
       it 'raises an error' do
-        expect { document.save }.to raise_error
+        expect { document.save }.to raise_error(I14yDocument::I14yDocumentError, 'fail')
+      end
+
+      context 'when a document already exists with that ID' do
+        let(:response) do
+          { status: 422, body: { developer_message: 'Document already exists with that ID', status: 422 } }
+        end
+
+        it 'raises a DuplicateID error' do
+          expect { document.save }.to raise_error(
+            I14yDocument::DuplicateID, 'Document already exists with that ID'
+          )
+        end
       end
     end
   end
