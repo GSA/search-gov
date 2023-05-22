@@ -99,7 +99,6 @@ Feature: Search - redesign
     And I should see "http://healthcare.gov/hippopotamus-amphibius"
     And I should see "large, mostly herbivorous mammal in sub-Saharan Africa"
 
-
   @javascript @a11y @a11y_wip
   Scenario: News search
     Given the following Affiliates exist:
