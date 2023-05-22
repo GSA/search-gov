@@ -215,13 +215,23 @@ describe I14ySearch do
 
   context 'when there is some problem with the i14y client' do
     before do
-      allow(I14yCollections).to receive(:search).and_raise Faraday::ClientError.new(Exception.new('problem'))
+      stub_request(:get, %r{api/v1/collections}).
+        to_raise(Faraday::ClientError.new('problem'))
       allow(Rails.logger).to receive(:error)
     end
 
     it 'logs the error' do
       i14y_search.run
       expect(Rails.logger).to have_received(:error).with(/I14y search problem/)
+    end
+
+    # semi-integration spec to confirm that we send i14y search client errors to Datadog
+    it 'sends the information to datadog' do
+      i14y_search.run
+      expect(a_request(
+        :post,
+        'https://api.datadoghq.com/api/v1/events?api_key=datadogapikey'
+      ).with { |request| request.body.match?(%r{problem.*i14y}) }).to have_been_made.once
     end
   end
 
