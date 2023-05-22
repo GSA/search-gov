@@ -82,7 +82,6 @@ Feature: Search - redesign
     And I should see "Within the last hour article on item"
     And I should not see pagination
 
-
   @javascript @a11y @a11y_wip
   Scenario: Search with best bets
     Given the following SearchGov Affiliates exist:
