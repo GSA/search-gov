@@ -179,6 +179,8 @@ class SearchgovUrl < ApplicationRecord
   def index_document
     Rails.logger.info "[Index SearchgovUrl] #{log_data}"
     indexed? ? I14yDocument.update(i14y_params) : I14yDocument.create(i14y_params)
+  rescue I14yDocument::DuplicateID => e
+    Rails.logger.warn("#{e}: #{hashed_url}")
   end
 
   def i14y_params

@@ -1,5 +1,6 @@
 import React from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
+import parse from 'html-react-parser';
 
 import { Pagination } from './../Pagination/Pagination';
 
@@ -18,87 +19,82 @@ interface ResultsProps {
     publishedDate: string | null,
     thumbnailUrl: string | null
   }[] | null;
+  additionalResults?: {
+    recommendedBy: string;
+    textBestBets: {
+      title: string;
+      url: string;
+      description: string;
+    }[];
+  } | null;
   unboundedResults: boolean;
   totalPages: number | null;
   vertical: string;
 }
 
-export const Results = ({ query = '', results = null, unboundedResults, totalPages = null, vertical }: ResultsProps) => {
+export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical }: ResultsProps) => {
   return (
     <>
       <div className='search-result-wrapper'>
-        {/* ToDo: This need to be dynamic: this is for UI purposes only */}
-        <GridContainer className="results-best-bets-wrapper">
-          <Grid row gap="md">
-            <Grid col={true}>
-              <GridContainer className='best-bets-title'>
-                Recommended by GSA
-              </GridContainer>
-              <GridContainer className='result search-result-item'>
-                <Grid row gap="md">
-                  <Grid col={true} className='result-meta-data'>
-                    {/* ToDo: This date need to be dynamic */}
-                    <div className='result-title'>
-                      <a href="https://medlineplus.gov/appendixb.html" className='result-title-link'>
-                        <h2 className='result-title-label'>Appendix B: Some Common Abbreviations - MedlinePlus</h2>
-                      </a>
-                    </div>
-                    <div className='result-desc'>
-                      <p>ABG. Arterial blood gases. You may have an ABG test to detect lung diseases. ACE. Angiotensin converting enzyme. Drugs called ACE inhibitors are used to treat high blood pressure, heart failure, diabetes and kidney diseases. ACL. Anterior cruciate ligament. Commonly injured part of the knee.</p>
-                      <div className='result-url-text'>https://medlineplus.gov/appendixb.html</div>
-                    </div>
-                  </Grid>
-                </Grid>
-              </GridContainer>
-              <GridContainer className='result search-result-item'>
-                <Grid row gap="md">
-                  <Grid col={true} className='result-meta-data'>
-                    {/* This date need to be dynamic */}
-                    <div className='result-title'>
-                      <a href="https://clinicaltrials.gov/ct2/search/index" className='result-title-link'>
-                        <h2 className='result-title-label'>Find Studies - ClinicalTrials.gov</h2>
-                      </a>
-                    </div>
-                    <div className='result-desc'>
-                      <p>Learn how to find studies that have been updated with study results, including studies with results that have been published in medical journals. How to Read a Study Record. Learn about the information available in a study record and the different ways to view a record.</p>
-                      <div className='result-url-text'>https://clinicaltrials.gov/ct2/search/index</div>
-                    </div>
-                  </Grid>
-                </Grid>
-              </GridContainer>
-              <GridContainer className='result search-result-item graphics-best-bets display-none'>
-                <Grid row gap="md">
-                  <Grid mobileLg={{ col: 4 }} className='result-thumbnail'>
-                    <img src="https://plus.unsplash.com/premium_photo-1666277012069-bd342b857f89?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=10" className="result-image"/>
-                  </Grid>
-                  <Grid col={true} className='result-meta-data'>
-                    {/* ToDo: This need to be dynamic */}
-                    <div className='graphics-best-bets-title'>
-                      Find a Job
-                    </div>
-                    <Grid row gap="md">
-                      <Grid mobileLg={{ col: 7 }} className='graphics-best-bets-link-wrapper'>
-                        <a href='#'>USAJOBS - Federal Government Jobs</a>
+        {additionalResults && additionalResults.textBestBets?.length > 0 && (
+          <GridContainer className="results-best-bets-wrapper">
+            <Grid row gap="md" id="best-bets">
+              <Grid col={true}>
+                <GridContainer className='best-bets-title'>
+                  Recommended by {additionalResults.recommendedBy}
+                </GridContainer>
+                {additionalResults.textBestBets.map((textBestBet, index) => {
+                  return (
+                    <GridContainer key={index} className='result search-result-item boosted-content'>
+                      <Grid row gap="md">
+                        <Grid col={true} className='result-meta-data'>
+                          <div className='result-title'>
+                            <a href={textBestBet.url} className='result-title-link'>
+                              <h2 className='result-title-label'>{parse(textBestBet.title)}</h2>
+                            </a>
+                          </div>
+                          <div className='result-desc'>
+                            <p>{parse(textBestBet.description)}</p>
+                            <div className='result-url-text'>{textBestBet.url}</div>
+                          </div>
+                        </Grid>
                       </Grid>
-                      <Grid mobileLg={{ col: 5 }} className='graphics-best-bets-link-wrapper'>
-                        <a href='#'>Veterans Employment</a>
-                      </Grid>
-                      <Grid mobileLg={{ col: 7 }} className='graphics-best-bets-link-wrapper'>
-                        <a href='#'>Jobs in Your State</a>
-                      </Grid>
-                      <Grid mobileLg={{ col: 5 }} className='graphics-best-bets-link-wrapper'>
-                        <a href='#'>Disability Resources</a>
-                      </Grid>
-                      <Grid mobileLg={{ col: 7 }} className='graphics-best-bets-link-wrapper'>
-                        <a href='#'>Federal Jobs for Recent Graduates</a>
+                    </GridContainer>
+                  );
+                })}
+                <GridContainer className='result search-result-item graphics-best-bets display-none'>
+                  <Grid row gap="md">
+                    <Grid mobileLg={{ col: 4 }} className='result-thumbnail'>
+                      <img src="https://plus.unsplash.com/premium_photo-1666277012069-bd342b857f89?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=10" className="result-image"/>
+                    </Grid>
+                    <Grid col={true} className='result-meta-data'>
+                      {/* ToDo: This need to be dynamic */}
+                      <div className='graphics-best-bets-title'>
+                        Find a Job
+                      </div>
+                      <Grid row gap="md">
+                        <Grid mobileLg={{ col: 7 }} className='graphics-best-bets-link-wrapper'>
+                          <a href='#'>USAJOBS - Federal Government Jobs</a>
+                        </Grid>
+                        <Grid mobileLg={{ col: 5 }} className='graphics-best-bets-link-wrapper'>
+                          <a href='#'>Veterans Employment</a>
+                        </Grid>
+                        <Grid mobileLg={{ col: 7 }} className='graphics-best-bets-link-wrapper'>
+                          <a href='#'>Jobs in Your State</a>
+                        </Grid>
+                        <Grid mobileLg={{ col: 5 }} className='graphics-best-bets-link-wrapper'>
+                          <a href='#'>Disability Resources</a>
+                        </Grid>
+                        <Grid mobileLg={{ col: 7 }} className='graphics-best-bets-link-wrapper'>
+                          <a href='#'>Federal Jobs for Recent Graduates</a>
+                        </Grid>
                       </Grid>
                     </Grid>
                   </Grid>
-                </Grid>
-              </GridContainer>
+                </GridContainer>
+              </Grid>
             </Grid>
-          </Grid>
-        </GridContainer>
+          </GridContainer>)}
 
         <div id="results" className="search-result-item-wrapper">
           {results && results.length > 0 ? (results.map((result, index) => {

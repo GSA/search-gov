@@ -37,6 +37,24 @@ describe('SearchResultsLayout', () => {
     expect(updatedDate).toHaveLength(20);
   });
 
+  it('renders text best bets', () => {
+    const results : any[] = []; // eslint-disable-line @typescript-eslint/no-explicit-any
+    for (let counter = 0; counter < 2; counter += 1) {
+      results.push({ title: 'test result 1', url: 'https://www.search.gov', description: 'result body', publishedDate: 'May 9th, 2023', updatedDate: 'May 10th, 2023' });
+    }
+    const additionalResults = { recommendedBy: 'USAgov', textBestBets: [{ title: 'A best bet', description: 'This is the best bet', url: 'http://www.example.com' }] };
+    const resultsData = { totalPages: 2, unboundedResults: true, results };
+    render(<SearchResultsLayout params={{ query: 'foo' }} resultsData={resultsData} additionalResults={additionalResults} vertical='web' />);
+    const bestBetRecommendedBy = screen.getByText(/Recommended by USAgov/i);
+    const bestBetTitle = screen.getByText(/A best bet/i);
+    const bestBetDescription = screen.getByText(/This is the best bet/i);
+    const bestBetUrl = screen.getByText(/www.example.com/i);
+    expect(bestBetRecommendedBy).toBeInTheDocument();
+    expect(bestBetTitle).toBeInTheDocument();
+    expect(bestBetDescription).toBeInTheDocument();
+    expect(bestBetUrl).toBeInTheDocument();
+  });
+
   it('renders image search results', () => {
     const resultsData = { totalPages: 2, unboundedResults: true, results: [{ title: 'test result 1', url: 'https://www.search.gov', description: 'result body', thumbnail: { url: 'https://www.search.gov/test_image.png' }, publishedDate: 'May 9th, 2023', updatedDate: 'May 10th, 2023', thumbnailUrl: null }] };
     render(<SearchResultsLayout params={{ query: 'foo' }} resultsData={resultsData} vertical='image' />);
