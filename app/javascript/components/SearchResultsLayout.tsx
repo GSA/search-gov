@@ -10,7 +10,7 @@ import { Footer } from './Footer/Footer';
 import { Identifier } from './Identifier/Identifier';
 
 interface SearchResultsLayoutProps {
-  resultsData: {
+  resultsData?: {
     totalPages: number;
     unboundedResults: boolean;
     results: {
@@ -24,9 +24,17 @@ interface SearchResultsLayoutProps {
       publishedDate: string | null,
       thumbnailUrl: string | null
     }[] | null;
-  } | null
+  } | null;
+  additionalResults?: {
+    recommendedBy: string;
+    textBestBets: {
+      title: string;
+      url: string;
+      description: string;
+    }[];
+  } | null;
   vertical: string;
-  params: {
+  params?: {
     query?: string
   };
 }
@@ -41,7 +49,7 @@ const isBasicHeader = (): boolean => {
   return true;
 };
 
-const SearchResultsLayout = ({ resultsData, vertical, params }: SearchResultsLayoutProps) => {
+const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {} }: SearchResultsLayoutProps) => {
   return (
     <>
       <Header 
@@ -62,6 +70,7 @@ const SearchResultsLayout = ({ resultsData, vertical, params }: SearchResultsLay
             totalPages={resultsData.totalPages}
             query={params.query}
             unboundedResults={resultsData.unboundedResults}
+            additionalResults={additionalResults}
           />) : params.query ? (
           <Results 
             vertical={vertical}
