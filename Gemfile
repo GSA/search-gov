@@ -118,7 +118,7 @@ gem 'dogapi', '~> 1.45'
 gem 'net-http'
 # Temporary fix for a gem version mismatch with Fullstaq Ruby.
 # This will be removed once we upgrade to Ruby 3.x in SRCH-3862.
-gem 'uri', '= 0.10.0'
+# gem 'uri', '= 0.10.0'
 
 # Assets-related gems
 gem 'coffee-rails', '~> 5.0.0'
