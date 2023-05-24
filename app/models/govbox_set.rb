@@ -43,8 +43,9 @@ class GovboxSet
   def as_json(*_args)
     {
       recommendedBy: @affiliate.display_name,
-      textBestBets: @boosted_contents&.results&.map { |result| result.slice(:title, :url, :description) }
-    }
+      textBestBets: @boosted_contents&.results&.map { |result| result.slice(:title, :url, :description) },
+      graphicsBestBet: @featured_collections&.results&.first&.as_json.except(:id)
+    }.compact
   end
 
   private

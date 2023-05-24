@@ -26,6 +26,16 @@ interface ResultsProps {
       url: string;
       description: string;
     }[];
+    graphicsBestBet?: {
+      title: string;
+      titleUrl?: string;
+      imageUrl?: string;
+      imageAltText?: string;
+      links?: {
+        title: string;
+        url: string;
+      }[];
+    }
   } | null;
   unboundedResults: boolean;
   totalPages: number | null;
@@ -36,14 +46,14 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
   return (
     <>
       <div className='search-result-wrapper'>
-        {additionalResults && additionalResults.textBestBets?.length > 0 && (
+        {additionalResults && (additionalResults.textBestBets?.length > 0 || additionalResults.graphicsBestBet) && (
           <GridContainer className="results-best-bets-wrapper">
             <Grid row gap="md" id="best-bets">
               <Grid col={true}>
                 <GridContainer className='best-bets-title'>
                   Recommended by {additionalResults.recommendedBy}
                 </GridContainer>
-                {additionalResults.textBestBets.map((textBestBet, index) => {
+                {additionalResults.textBestBets?.map((textBestBet, index) => {
                   return (
                     <GridContainer key={index} className='result search-result-item boosted-content'>
                       <Grid row gap="md">
@@ -62,15 +72,15 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
                     </GridContainer>
                   );
                 })}
-                <GridContainer className='result search-result-item graphics-best-bets display-none'>
+                {additionalResults.graphicsBestBet && (
+                <GridContainer className='result search-result-item graphics-best-bets'>
                   <Grid row gap="md">
                     <Grid mobileLg={{ col: 4 }} className='result-thumbnail'>
-                      <img src="https://plus.unsplash.com/premium_photo-1666277012069-bd342b857f89?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=10" className="result-image"/>
+                      <img src={additionalResults.graphicsBestBet.imageUrl} className="result-image"/>
                     </Grid>
                     <Grid col={true} className='result-meta-data'>
-                      {/* ToDo: This need to be dynamic */}
                       <div className='graphics-best-bets-title'>
-                        Find a Job
+                        {parse(additionalResults.graphicsBestBet.title)}
                       </div>
                       <Grid row gap="md">
                         <Grid mobileLg={{ col: 7 }} className='graphics-best-bets-link-wrapper'>
@@ -91,7 +101,7 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
                       </Grid>
                     </Grid>
                   </Grid>
-                </GridContainer>
+                </GridContainer>)}
               </Grid>
             </Grid>
           </GridContainer>)}

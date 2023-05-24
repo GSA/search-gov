@@ -87,5 +87,6 @@ module Usasearch
     # https://discuss.rubyonrails.org/t/cve-2022-32224-possible-rce-escalation-bug-with-serialized-columns-in-active-record/81017
     # A permanent solution will be implemented in https://cm-jira.usa.gov/browse/SRCH-3206
     config.active_record.use_yaml_unsafe_load = true
+    config.react.camelize_props = true
   end
 end
