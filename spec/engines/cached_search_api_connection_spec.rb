@@ -41,18 +41,20 @@ describe CachedSearchApiConnection do
         expect(cache).to receive(:read).with(endpoint, params).and_return(response)
       end
 
-      specify { expect(cached_connection.get(endpoint, params)).
-        to eq(CachedSearchApiConnectionResponse.new(response, 'some_cache')) }
+      it 'returns a cached response' do
+        expect(cached_connection.get(endpoint, params)).
+          to eq(CachedSearchApiConnectionResponse.new(response, 'some_cache'))
+      end
     end
 
     context 'on cache miss' do
       before do
-        expect(cache).to receive(:read).with(endpoint, params).and_return(nil)
+        allow(cache).to receive(:read).with(endpoint, params).and_return(nil)
       end
 
       it 'sends outbound request and cache response' do
-        expect(cached_connection.connection).to receive(:get).with(endpoint, params).and_return(response)
-        expect(cache).to receive(:write).with(endpoint, params, response)
+        allow(cached_connection.connection).to receive(:get).with(endpoint, params).and_return(response)
+        allow(cache).to receive(:write).with(endpoint, params, response)
 
         expect(cached_connection.get(endpoint, params)).
           to eq(CachedSearchApiConnectionResponse.new(response, 'none'))

@@ -231,7 +231,7 @@ describe I14ySearch do
       expect(a_request(
         :post,
         'https://api.datadoghq.com/api/v1/events?api_key=datadogapikey'
-      ).with { |request| request.body.match?(%r{problem.*i14y}) }).to have_been_made.once
+      ).with { |request| request.body.match?(/problem.*i14y/) }).to have_been_made.once
     end
   end
 
