@@ -63,8 +63,8 @@ class I14yPostProcessor < ResultsWithBodyAndDescriptionPostProcessor
         description: result['body'],
         updatedDate: parse_result_date(result['changed']),
         publishedDate: parse_result_date(result['published_at']),
-        thumbnailUrl: result['thumbnail_url'] || nil
-      }
+        thumbnailUrl: result['thumbnail_url']
+      }.compact
     end
   end
 end

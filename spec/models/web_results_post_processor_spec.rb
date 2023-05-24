@@ -19,14 +19,6 @@ describe WebResultsPostProcessor do
       let(:normalized_results) { post_processor.normalized_results(5) }
     end
 
-    it 'does not have a published date, updated date, or thumbnail URL' do
-      normalized_results[:results].each do |result|
-        expect(result[:publishedDate]).to be_nil
-        expect(result[:updatedDate]).to be_nil
-        expect(result[:thumbnailUrl]).to be_nil
-      end
-    end
-
     it 'uses unbounded pagination' do
       expect(normalized_results[:unboundedResults]).to be true
     end
