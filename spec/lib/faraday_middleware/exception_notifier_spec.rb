@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe FaradayMiddleware::ExceptionNotifier do
   let(:connection) do
     Faraday.new do |faraday|
@@ -15,7 +17,7 @@ describe FaradayMiddleware::ExceptionNotifier do
     end
 
     it 'reports the error' do
-      connection.get 'http://fail.gov' rescue nil
+      expect { connection.get 'http://fail.gov' }.to raise_error(Faraday::ClientError)
       expect(ExceptionNotifier).to have_received(:notify_exception).
         with(error, tags: [])
     end
@@ -29,7 +31,7 @@ describe FaradayMiddleware::ExceptionNotifier do
       end
 
       it 'sends the tags' do
-        connection.get 'http://fail.gov' rescue nil
+        expect { connection.get 'http://fail.gov' }.to raise_error(Faraday::ClientError)
         expect(ExceptionNotifier).to have_received(:notify_exception).
           with(error, tags: ['testing'])
       end
