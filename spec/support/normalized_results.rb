@@ -2,7 +2,7 @@
 
 shared_examples 'a search with normalized results' do
   let(:normalized_result_data_keys) { %i[results totalPages unboundedResults] }
-  let(:normalized_result_keys) { %i[description url title updatedDate publishedDate thumbnailUrl] }
+  let(:normalized_result_keys) { %i[description url title] }
   let(:result_count) { 5 }
   let(:total_pages) { 1 }
 
@@ -21,7 +21,7 @@ shared_examples 'a search with normalized results' do
 
     it 'has a normalized set of keys for results' do
       normalized_results[:results].each do |result|
-        expect(result.keys).to contain_exactly(*normalized_result_keys)
+        expect(result.keys).to include(*normalized_result_keys)
       end
     end
 

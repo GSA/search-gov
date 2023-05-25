@@ -111,6 +111,8 @@ RSpec.configure do |config|
       to_return(status: 200, body: i14y_result)
     stub_request(:get, "#{i14y_api_url}#{i14y_facet_search_params.to_param}").
       to_return(status: 200, body: i14y_facet_result)
+    # Avoid making unnecessary requests to submit any errors encountered in integration tests
+    stub_request(:any, /api.datadoghq.com/)
     OmniAuth.config.mock_auth[:default] = OmniAuth::AuthHash.new({})
   end
 

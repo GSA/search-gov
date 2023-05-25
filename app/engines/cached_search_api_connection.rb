@@ -8,6 +8,9 @@ class CachedSearchApiConnection
   def initialize(namespace, site, cache_duration = DEFAULT_CACHE_DURATION)
     @connection = Faraday.new(site) do |conn|
       conn.request(:json)
+      conn.use(FaradayMiddleware::ExceptionNotifier, [namespace])
+      # raise Faraday::Error on status code 4xx or 5xx
+      conn.response(:raise_error)
       conn.response(:rashify)
       conn.response(:json)
       conn.headers[:user_agent] = 'USASearch'
