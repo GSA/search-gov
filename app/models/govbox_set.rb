@@ -44,7 +44,7 @@ class GovboxSet
     {
       recommendedBy: @affiliate.display_name,
       textBestBets: @boosted_contents&.results&.map { |result| result.slice(:title, :url, :description) },
-      graphicsBestBet: @featured_collections&.results&.first&.as_json.except(:id)
+      graphicsBestBet: @featured_collections&.results&.first&.as_json&.except(:id)
     }.compact
   end
 

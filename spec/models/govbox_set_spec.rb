@@ -23,13 +23,13 @@ describe GovboxSet do
     describe '#as_json' do
       subject(:govbox_set_json) { govbox_set.as_json }
 
-      before do
-        allow(ElasticBoostedContent).to receive(:search_for).and_return(elastic_boosted_content_results)
-      end
-
       context 'when there are text best bets' do
         let(:text_best_bet) { BoostedContent.new(title: 'Support', url: 'https://search.gov/support.html', description: '<strong>GSA</strong> support') }
         let(:elastic_boosted_content_results) { instance_double(ElasticBoostedContentResults, total: 1, results: [text_best_bet]) }
+
+        before do
+          allow(ElasticBoostedContent).to receive(:search_for).and_return(elastic_boosted_content_results)
+        end
 
         it 'returns the affiliate display name and an array of text best bets' do
           expect(govbox_set_json).to eq({
@@ -40,11 +40,28 @@ describe GovboxSet do
       end
 
       context 'when there are no text best bets' do
-        let(:elastic_boosted_content_results) { instance_double(ElasticBoostedContentResults, total: 0, results: []) }
-
         it 'returns the affiliate display name and an empty array for text best bets' do
           expect(govbox_set_json).to eq({
                                           recommendedBy: affiliate.display_name,
+                                          textBestBets: []
+                                        })
+        end
+      end
+
+      context 'when there is a graphic best bet' do
+        let(:graphic_best_bet) { FeaturedCollection.new(title: 'Search USA Blog', status: 'active', publish_start_on: '07/01/2011', affiliate: affiliate) }
+        let(:elastic_featured_collection_results) { instance_double(ElasticFeaturedCollectionResults, total: 1, results: [graphic_best_bet]) }
+
+        before do
+          graphic_best_bet.featured_collection_links.build(title: 'Blog Post', url: 'https://search.gov/blog-1', position: 0)
+          graphic_best_bet.save!
+          allow(ElasticFeaturedCollection).to receive(:search_for).and_return(elastic_featured_collection_results)
+        end
+
+        it 'returns the affiliate display name and a hash for the graphics best bet' do
+          expect(govbox_set_json).to eq({
+                                          recommendedBy: affiliate.display_name,
+                                          graphicsBestBet: {:links=>[{:title=>"Blog Post", :url=>"https://search.gov/blog-1"}], :title=>"Search USA Blog", :title_url=>nil},
                                           textBestBets: []
                                         })
         end
