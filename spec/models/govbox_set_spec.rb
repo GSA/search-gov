@@ -61,7 +61,7 @@ describe GovboxSet do
         it 'returns the affiliate display name and a hash for the graphics best bet' do
           expect(govbox_set_json).to eq({
                                           recommendedBy: affiliate.display_name,
-                                          graphicsBestBet: {:links=>[{:title=>"Blog Post", :url=>"https://search.gov/blog-1"}], :title=>"Search USA Blog", :title_url=>nil},
+                                          graphicsBestBet: { links: [{ title: 'Blog Post', url: 'https://search.gov/blog-1' }], title: 'Search USA Blog', title_url: nil },
                                           textBestBets: []
                                         })
         end
