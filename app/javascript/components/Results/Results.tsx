@@ -15,9 +15,9 @@ interface ResultsProps {
       url: string
     },
     description: string,
-    updatedDate: string | null,
-    publishedDate: string | null,
-    thumbnailUrl: string | null
+    updatedDate?: string,
+    publishedDate?: string,
+    thumbnailUrl?: string
   }[] | null;
   additionalResults?: {
     recommendedBy: string;

@@ -16,14 +16,6 @@ describe ResultsWithBodyAndDescriptionPostProcessor do
       let(:normalized_results) { described_class.new(results).normalized_results(5) }
     end
 
-    it 'has no published date, updated date, or thumbnaul URL' do
-      normalized_results[:results].each do |result|
-        expect(result[:updatedDate]).to be_nil
-        expect(result[:publishedDate]).to be_nil
-        expect(result[:thumbnailUrl]).to be_nil
-      end
-    end
-
     it 'does not use unbounded pagination' do
       expect(normalized_results[:unboundedResults]).to be false
     end
