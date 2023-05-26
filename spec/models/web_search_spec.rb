@@ -312,7 +312,6 @@ describe WebSearch do
         let(:search) { described_class.new(query: 'english', affiliate: affiliate) }
 
         before do
-          affiliate.search_engine = 'BingV7'
           search.run
         end
 
