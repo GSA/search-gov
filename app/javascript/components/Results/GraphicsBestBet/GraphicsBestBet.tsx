@@ -10,8 +10,8 @@ interface GraphicsBestBetProps {
     title: string;
     url: string;
   }[];
-  parse(html: string): string | JSX.Element | JSX.Element[]
-};
+  parse(html: string): string | JSX.Element | JSX.Element[] // eslint-disable-line no-undef
+}
 
 export const GraphicsBestBet = ({ title, titleUrl, imageUrl, imageAltText, links, parse }: GraphicsBestBetProps) => {
   return (
@@ -32,9 +32,9 @@ export const GraphicsBestBet = ({ title, titleUrl, imageUrl, imageAltText, links
             <Grid row gap="md">
               {links.map((link, index) => {
                 return (
-                <Grid key={index} mobileLg={{ col: (index as number) % 2 === 0 ? 7 : 5 }} className='graphics-best-bets-link-wrapper'>
-                  <a href={link.url}>{parse(link.title)}</a>
-                </Grid>
+                  <Grid key={index} mobileLg={{ col: (index as number) % 2 === 0 ? 7 : 5 }} className='graphics-best-bets-link-wrapper'>
+                    <a href={link.url}>{parse(link.title)}</a>
+                  </Grid>
                 );
               })}
             </Grid>
@@ -42,4 +42,5 @@ export const GraphicsBestBet = ({ title, titleUrl, imageUrl, imageAltText, links
         </Grid>
       </Grid>
     </GridContainer>
-)};
+  );
+};
