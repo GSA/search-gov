@@ -12,10 +12,10 @@ describe ExternalFaraday do
     context 'when namespaced config is not present' do
       it 'contains values for adapter and options' do
         nonexistent = described_class.get_config('nonexistent')
-        expect(described_class.get_config('google_api')['adapter']).to be_present
-        expect(described_class.get_config('google_api')['adapter']).to eq(nonexistent['adapter'])
-        expect(described_class.get_config('google_api')['options']).to be_present
-        expect(described_class.get_config('google_api')['options']).to eq(nonexistent['options'])
+        expect(described_class.get_config('some_other_api')['adapter']).to be_present
+        expect(described_class.get_config('some_other_api')['adapter']).to eq(nonexistent['adapter'])
+        expect(described_class.get_config('some_other_api')['options']).to be_present
+        expect(described_class.get_config('some_other_api')['options']).to eq(nonexistent['options'])
       end
     end
   end
