@@ -39,14 +39,6 @@ describe GovboxSet do
         end
       end
 
-      context 'when there are no text best bets' do
-        it 'returns the affiliate display name and an empty array for text best bets' do
-          expect(govbox_set_json).to eq({
-                                          recommendedBy: affiliate.display_name,
-                                          textBestBets: []
-                                        })
-        end
-      end
 
       context 'when there is a graphic best bet' do
         let(:graphic_best_bet) { FeaturedCollection.new(title: 'Search USA Blog', status: 'active', publish_start_on: '07/01/2011', affiliate: affiliate) }
@@ -62,6 +54,15 @@ describe GovboxSet do
           expect(govbox_set_json).to eq({
                                           recommendedBy: affiliate.display_name,
                                           graphicsBestBet: { links: [{ title: 'Blog Post', url: 'https://search.gov/blog-1' }], title: 'Search USA Blog', title_url: nil },
+                                          textBestBets: []
+                                        })
+        end
+      end
+
+      context 'when there are no text best bets or graphics best bets' do
+        it 'returns the affiliate display name and an empty array for text best bets' do
+          expect(govbox_set_json).to eq({
+                                          recommendedBy: affiliate.display_name,
                                           textBestBets: []
                                         })
         end
