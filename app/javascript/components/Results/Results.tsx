@@ -3,6 +3,8 @@ import { GridContainer, Grid } from '@trussworks/react-uswds';
 import parse from 'html-react-parser';
 
 import { Pagination } from './../Pagination/Pagination';
+import { TextBestBet } from './TextBestBet/TextBestBet';
+import { GraphicsBestBet } from './GraphicsBestBet/GraphicsBestBet';
 
 import './Results.css';
 
@@ -55,53 +57,20 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
                 </GridContainer>
                 {additionalResults.textBestBets?.map((textBestBet, index) => {
                   return (
-                    <GridContainer key={index} className='result search-result-item boosted-content'>
-                      <Grid row gap="md">
-                        <Grid col={true} className='result-meta-data'>
-                          <div className='result-title'>
-                            <a href={textBestBet.url} className='result-title-link'>
-                              <h2 className='result-title-label'>{parse(textBestBet.title)}</h2>
-                            </a>
-                          </div>
-                          <div className='result-desc'>
-                            <p>{parse(textBestBet.description)}</p>
-                            <div className='result-url-text'>{textBestBet.url}</div>
-                          </div>
-                        </Grid>
-                      </Grid>
-                    </GridContainer>
+                    <React.Fragment key={index}>
+                      <TextBestBet
+                        {...textBestBet}
+                        parse={parse}
+                      />
+                    </React.Fragment>
                   );
                 })}
                 {additionalResults.graphicsBestBet && (
-                <GridContainer className='result search-result-item graphics-best-bets'>
-                  <Grid row gap="md">
-                    <Grid mobileLg={{ col: 4 }} className='result-thumbnail'>
-                      <img src={additionalResults.graphicsBestBet.imageUrl} className="result-image"/>
-                    </Grid>
-                    <Grid col={true} className='result-meta-data'>
-                      <div className='graphics-best-bets-title'>
-                        {parse(additionalResults.graphicsBestBet.title)}
-                      </div>
-                      <Grid row gap="md">
-                        <Grid mobileLg={{ col: 7 }} className='graphics-best-bets-link-wrapper'>
-                          <a href='#'>USAJOBS - Federal Government Jobs</a>
-                        </Grid>
-                        <Grid mobileLg={{ col: 5 }} className='graphics-best-bets-link-wrapper'>
-                          <a href='#'>Veterans Employment</a>
-                        </Grid>
-                        <Grid mobileLg={{ col: 7 }} className='graphics-best-bets-link-wrapper'>
-                          <a href='#'>Jobs in Your State</a>
-                        </Grid>
-                        <Grid mobileLg={{ col: 5 }} className='graphics-best-bets-link-wrapper'>
-                          <a href='#'>Disability Resources</a>
-                        </Grid>
-                        <Grid mobileLg={{ col: 7 }} className='graphics-best-bets-link-wrapper'>
-                          <a href='#'>Federal Jobs for Recent Graduates</a>
-                        </Grid>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                </GridContainer>)}
+                  <GraphicsBestBet
+                    {...additionalResults.graphicsBestBet}
+                    parse={parse}
+                  />
+                )}
               </Grid>
             </Grid>
           </GridContainer>)}
