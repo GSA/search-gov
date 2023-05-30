@@ -43,12 +43,20 @@ class GovboxSet
   def as_json(*_args)
     {
       recommendedBy: @affiliate.display_name,
-      textBestBets: @boosted_contents&.results&.map { |result| result.slice(:title, :url, :description) },
-      graphicsBestBet: @featured_collections&.results&.first&.as_json&.except(:id)
+      textBestBets: format_text_best_bets,
+      graphicsBestBet: format_graphics_best_bet
     }.compact
   end
 
   private
+
+  def format_text_best_bets
+    @boosted_contents&.results&.map { |result| result.slice(:title, :url, :description) }
+  end
+
+  def format_graphics_best_bet
+    @featured_collections&.results&.first&.as_json&.except(:id)
+  end
 
   def extract_site_limits(site_limits)
     return if site_limits.blank?

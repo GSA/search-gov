@@ -39,7 +39,6 @@ describe GovboxSet do
         end
       end
 
-
       context 'when there is a graphic best bet' do
         let(:graphic_best_bet) { FeaturedCollection.new(title: 'Search USA Blog', status: 'active', publish_start_on: '07/01/2011', affiliate: affiliate) }
         let(:elastic_featured_collection_results) { instance_double(ElasticFeaturedCollectionResults, total: 1, results: [graphic_best_bet]) }
