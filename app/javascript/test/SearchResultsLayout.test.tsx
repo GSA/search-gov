@@ -60,7 +60,7 @@ describe('SearchResultsLayout', () => {
     for (let counter = 0; counter < 2; counter += 1) {
       results.push({ title: 'test result 1', url: 'https://www.search.gov', description: 'result body', publishedDate: 'May 9th, 2023', updatedDate: 'May 10th, 2023' });
     }
-    const additionalResults = { recommendedBy: 'USAgov', textBestBets: [], graphicsBestBet: { title: 'Search support', titleUrl: 'https://search.gov/support.html', imageUrl: 'https://search.gov/support.jpg', imageAltText: "support alt text", links: [{ title: 'Learning', url: 'https://search.gov/learn' }]} };
+    const additionalResults = { recommendedBy: 'USAgov', textBestBets: [], graphicsBestBet: { title: 'Search support', titleUrl: 'https://search.gov/support.html', imageUrl: 'https://search.gov/support.jpg', imageAltText: 'support alt text', links: [{ title: 'Learning', url: 'https://search.gov/learn' }] } };
     const resultsData = { totalPages: 2, unboundedResults: true, results };
     render(<SearchResultsLayout params={{ query: 'foo' }} resultsData={resultsData} additionalResults={additionalResults} vertical='web' />);
     const bestBetRecommendedBy = screen.getByText(/Recommended by USAgov/i);

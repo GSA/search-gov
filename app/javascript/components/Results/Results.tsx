@@ -3,8 +3,7 @@ import { GridContainer, Grid } from '@trussworks/react-uswds';
 import parse from 'html-react-parser';
 
 import { Pagination } from './../Pagination/Pagination';
-import { TextBestBet } from './TextBestBet/TextBestBet';
-import { GraphicsBestBet } from './GraphicsBestBet/GraphicsBestBet';
+import { BestBets } from './BestBets';
 
 import './Results.css';
 
@@ -48,33 +47,12 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
   return (
     <>
       <div className='search-result-wrapper'>
-        {additionalResults && (additionalResults.textBestBets?.length > 0 || additionalResults.graphicsBestBet) && (
-          <GridContainer className="results-best-bets-wrapper">
-            <Grid row gap="md" id="best-bets">
-              <Grid col={true}>
-                <GridContainer className='best-bets-title'>
-                  Recommended by {additionalResults.recommendedBy}
-                </GridContainer>
-                {additionalResults.textBestBets?.map((textBestBet, index) => {
-                  return (
-                    <React.Fragment key={index}>
-                      <TextBestBet
-                        {...textBestBet}
-                        parse={parse}
-                      />
-                    </React.Fragment>
-                  );
-                })}
-                {additionalResults.graphicsBestBet && (
-                  <GraphicsBestBet
-                    {...additionalResults.graphicsBestBet}
-                    parse={parse}
-                  />
-                )}
-              </Grid>
-            </Grid>
-          </GridContainer>)}
-
+        {additionalResults && (
+          <BestBets
+            {...additionalResults}
+            parse={parse}
+          />
+        )}
         <div id="results" className="search-result-item-wrapper">
           {results && results.length > 0 ? (results.map((result, index) => {
             return (
