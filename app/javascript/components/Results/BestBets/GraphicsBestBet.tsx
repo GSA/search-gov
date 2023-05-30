@@ -15,7 +15,7 @@ interface GraphicsBestBetProps {
 
 export const GraphicsBestBet = ({ title, titleUrl, imageUrl, imageAltText, links, parse }: GraphicsBestBetProps) => {
   return (
-    <GridContainer className='result search-result-item graphics-best-bets'>
+    <GridContainer className='result search-result-item graphics-best-bets featured-collection'>
       <Grid row gap="md">
         {imageUrl && (
           <Grid mobileLg={{ col: 4 }} className='result-thumbnail'>
