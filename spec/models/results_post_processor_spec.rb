@@ -3,6 +3,16 @@
 require 'spec_helper'
 
 describe ResultsPostProcessor do
+  describe '#translate_highlights' do
+    subject { described_class.new.translate_highlights(text_with_highlights) }
+
+    let(:text_with_highlights) { "\uE000healthcare\uE001.gov" }
+
+    it 'returns a string with strong HTML tags' do
+      expect(subject).to eq '<strong>healthcare</strong>.gov'
+    end
+  end
+
   describe '#total_pages' do
     subject(:total_pages) { described_class.new.total_pages(total_results) }
 

@@ -14,4 +14,8 @@ class ResultsPostProcessor
   rescue
     0
   end
+
+  def translate_highlights(body)
+    body.gsub(/\uE000/, '<strong>').gsub(/\uE001/, '</strong>')
+  end
 end
