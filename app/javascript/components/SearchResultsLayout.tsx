@@ -32,6 +32,16 @@ interface SearchResultsLayoutProps {
       url: string;
       description: string;
     }[];
+    graphicsBestBet?: {
+      title: string;
+      titleUrl?: string;
+      imageUrl?: string;
+      imageAltText?: string;
+      links?: {
+        title: string;
+        url: string;
+      }[];
+    }
   } | null;
   vertical: string;
   params?: {
