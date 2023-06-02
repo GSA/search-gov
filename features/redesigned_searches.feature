@@ -90,14 +90,19 @@ Feature: Search - redesign
     Given the following Boosted Content entries exist for the affiliate "healthcare.gov"
       | url                                          | title             | description                                            |
       | http://healthcare.gov/hippopotamus-amphibius | Hippopotamus item | large, mostly herbivorous mammal in sub-Saharan Africa |
+    And the following featured collections exist for the affiliate "healthcare.gov":
+      | title                  | status | publish_start_on |
+      | Hippopotamus graphic   | active | 2013-07-01       |
     Given there are results for the "searchgov" drawer
     When I am on healthcare.gov's redesigned search page
     And I search for "hippopotamus" in the redesigned search page
     Then I should see 1 Best Bets Text
+    And I should see 1 Best Bets Graphic
     And I should see "Recommended by HealthCare.gov"
     And I should see "Hippopotamus item"
     And I should see "http://healthcare.gov/hippopotamus-amphibius"
     And I should see "large, mostly herbivorous mammal in sub-Saharan Africa"
+    And I should see "Hippopotamus graphic"
 
   @javascript @a11y @a11y_wip
   Scenario: News search

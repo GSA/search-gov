@@ -55,6 +55,25 @@ describe('SearchResultsLayout', () => {
     expect(bestBetUrl).toBeInTheDocument();
   });
 
+  it('renders graphics best bets', () => {
+    const results : any[] = []; // eslint-disable-line @typescript-eslint/no-explicit-any
+    for (let counter = 0; counter < 2; counter += 1) {
+      results.push({ title: 'test result 1', url: 'https://www.search.gov', description: 'result body', publishedDate: 'May 9th, 2023', updatedDate: 'May 10th, 2023' });
+    }
+    const additionalResults = { recommendedBy: 'USAgov', textBestBets: [], graphicsBestBet: { title: 'Search support', titleUrl: 'https://search.gov/support.html', imageUrl: 'https://search.gov/support.jpg', imageAltText: 'support alt text', links: [{ title: 'Learning', url: 'https://search.gov/learn' }] } };
+    const resultsData = { totalPages: 2, unboundedResults: true, results };
+    render(<SearchResultsLayout params={{ query: 'foo' }} resultsData={resultsData} additionalResults={additionalResults} vertical='web' />);
+    const bestBetRecommendedBy = screen.getByText(/Recommended by USAgov/i);
+    const bestBetTitle = screen.getByText(/Search support/i);
+    const img = Array.from(document.getElementsByClassName('result-image')).pop() as HTMLImageElement;
+    const bestBetLink = screen.getByText(/Learning/i);
+    expect(bestBetRecommendedBy).toBeInTheDocument();
+    expect(bestBetTitle).toBeInTheDocument();
+    expect(bestBetLink).toBeInTheDocument();
+    expect(img).toHaveAttribute('src', 'https://search.gov/support.jpg');
+    expect(img).toHaveAttribute('alt', 'support alt text');
+  });
+
   it('renders image search results', () => {
     const resultsData = { totalPages: 2, unboundedResults: true, results: [{ title: 'test result 1', url: 'https://www.search.gov', description: 'result body', thumbnail: { url: 'https://www.search.gov/test_image.png' }, publishedDate: 'May 9th, 2023', updatedDate: 'May 10th, 2023' }] };
     render(<SearchResultsLayout params={{ query: 'foo' }} resultsData={resultsData} vertical='image' />);
