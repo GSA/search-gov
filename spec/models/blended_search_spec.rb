@@ -56,13 +56,13 @@ describe BlendedSearch do
                             suggestion: suggestion,
                             total: 0))
 
-        elastic_results = double(ElasticBlendedResults,
-                                 results: [NewsItem.new(link: 'http://www.wh.gov/ns1',
-                                                        title: 'Obama adopts policies similar to other policies',
-                                                        description: "<p> Ed note: This&nbsp;has been cross-posted&nbsp;from the Office of Science and Technology policy&#39;s <a href='http://www.whitehouse.gov/blog/2011/09/26/supporting-scientists-lab-bench-and-bedtime'><img alt='ignore' src='/foo.jpg' />blog</a></p> <p> Today is a good day for policy science and technology, a good day for scientists and petrol, and a good day for the nation and policies.</p>",
-                                                        body: 'random text here')],
-                                 suggestion: double('suggestion', text: 'electrocoagulation'),
-                                 total: 1)
+        elastic_results = instance_double(ElasticBlendedResults,
+                                          results: [NewsItem.new(link: 'http://www.wh.gov/ns1',
+                                                                 title: 'Obama adopts policies similar to other policies',
+                                                                 description: 'Ed note: This&nbsp;has been cross-posted&nbsp;from the Office of Science and Technology policy&#39;s...',
+                                                                 body: 'random text here')],
+                                          suggestion: double('suggestion', text: 'electrocoagulation'),
+                                          total: 1)
         expect(elastic_results).to receive(:override_suggestion).with(suggestion)
         expect(ElasticBlended).to receive(:search_for).
           with(hash_including(q: 'electrocoagulation')).
