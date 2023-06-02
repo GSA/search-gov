@@ -16,6 +16,8 @@ class ResultsPostProcessor
   end
 
   def translate_highlights(body)
+    return if body.nil?
+
     body.gsub(/\uE000/, '<strong>').gsub(/\uE001/, '</strong>')
   end
 end
