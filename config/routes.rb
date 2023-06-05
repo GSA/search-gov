@@ -21,7 +21,6 @@ Rails.application.routes.draw do
       get '/search/bing' => 'searches#bing'
       get '/search/azure/web' => 'searches#azure_web'
       get '/search/azure/image' => 'searches#azure_image'
-      get '/search/gss' => 'searches#gss'
       get '/search/i14y' => 'searches#i14y'
       get '/search/video' => 'searches#video'
       get '/search/docs' => 'searches#docs'
