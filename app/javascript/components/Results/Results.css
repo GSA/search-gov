@@ -41,6 +41,9 @@
 .search-result-item .result-desc .result-url-text{
   color: #4D8055;
   word-wrap: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .filetype-label{

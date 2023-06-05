@@ -26,7 +26,7 @@ describe('SearchResultsLayout', () => {
     const resultsData = { totalPages: 2, unboundedResults: true, results };
     render(<SearchResultsLayout params={{ query: 'foo' }} resultsData={resultsData} vertical='web' />);
     const resultTitle = screen.getAllByText(/test result 1/i);
-    const resultUrl = screen.getAllByText(/https:\/\/www.search.gov/i);
+    const resultUrl = screen.getAllByText(/www.search.gov/i);
     const resultBody = screen.getAllByText(/result body/i);
     const publishedDate = screen.getAllByText(/May 9th, 2023/i);
     const updatedDate = screen.getAllByText(/Updated on May 10th, 2023/i);
