@@ -25,7 +25,7 @@ export const truncate = (text: string | undefined, length: number): string => {
     return result;
   }
 
-  return `${result.substring(0, length - 1)}...`;
+  return `${result.substring(0, length)}...`;
 };
 
 const stripProtocols = (url: string): string => {

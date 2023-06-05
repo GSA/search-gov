@@ -37,6 +37,25 @@ describe('SearchResultsLayout', () => {
     expect(updatedDate).toHaveLength(20);
   });
 
+  it('truncates long URLs and descriptions in search results', () => {
+    const results : any[] = []; // eslint-disable-line @typescript-eslint/no-explicit-any
+    for (let counter = 0; counter < 1; counter += 1) {
+      results.push({ 
+        title: 'test result 1',
+        url: 'https://support.search.gov/this/is/a/very/long/url/used/for/testing/truncation/in/the/serp/redesign_1234567890',
+        description: 'Betty decided to write a short story and she was sure it was going to be amazing. She had already written it in her head and each time she thought about it she grinned from ear to ear knowing how wonderful it would be. She could imagine the accolades coming in and the praise she would receive'
+      });
+    }
+    const resultsData = { totalPages: 2, unboundedResults: true, results };
+    render(<SearchResultsLayout params={{ query: 'foo' }} resultsData={resultsData} vertical='web' />);
+    const resultTitle = screen.getByText(/test result 1/i);
+    const resultUrl = screen.getByText(/support.search.gov\/this\/is\/a\/very\/long\/url\/used\/for\/testing\/truncation\/in\/the\/se.../i);
+    const resultBody = screen.getByText(/Betty decided to write a short story and she was sure it was going to be amazing. She had already written it in her head and each time she thought about it she grinned from ear to ear knowing how wonderful it would be. She could imagine the accolades coming in and the praise she .../i);
+    expect(resultTitle).toBeInTheDocument();
+    expect(resultUrl).toBeInTheDocument();
+    expect(resultBody).toBeInTheDocument();
+  });
+
   it('renders text best bets', () => {
     const results : any[] = []; // eslint-disable-line @typescript-eslint/no-explicit-any
     for (let counter = 0; counter < 2; counter += 1) {
