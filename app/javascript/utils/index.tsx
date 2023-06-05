@@ -20,13 +20,12 @@ export const truncate = (text: string | undefined, length: number): string => {
     return '';
   }
 
-  let result;
-  result = stripProtocols(text);
+  const result = stripProtocols(text);
   if (result.length <= length) {
     return result;
   }
 
-  return result.substring(0, length - 1) + '...';
+  return `${result.substring(0, length - 1)}...`;
 };
 
 const stripProtocols = (url: string): string => {
