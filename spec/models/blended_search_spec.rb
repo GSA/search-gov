@@ -19,8 +19,8 @@ describe BlendedSearch do
     context 'when options does not include sort_by' do
       subject(:search) { described_class.new filterable_search_options }
 
-      its(:sort_by_relevance?) { should be true }
-      its(:sort) { should be_nil }
+      its(:sort_by_relevance?) { is_expected.to be true }
+      its(:sort) { is_expected.to be_nil }
     end
 
     # NOTE: While this confirms that these params are passed on to BlendedSearch by FilterableSearch, but, at present,
@@ -48,25 +48,28 @@ describe BlendedSearch do
       end
 
       before do
-        suggestion = double('suggestion', text:'electrocoagulation')
+        suggestion = double('suggestion', text: 'electrocoagulation')
         expect(ElasticBlended).to receive(:search_for).
           with(hash_including(q: 'electro coagulation')).
           and_return(double(ElasticBlendedResults,
-                          results: [],
-                          suggestion: suggestion,
-                          total: 0))
+                            results: [],
+                            suggestion: suggestion,
+                            total: 0))
 
-        elastic_results = double(ElasticBlendedResults,
-                               results: [NewsItem.new],
-                               suggestion: double('suggestion', text:'electrocoagulation'),
-                               total: 1)
+        elastic_results = instance_double(ElasticBlendedResults,
+                                          results: [NewsItem.new(link: 'http://www.wh.gov/ns1',
+                                                                 title: 'Obama adopts policies similar to other policies',
+                                                                 description: 'Ed note: This&nbsp;has been cross-posted&nbsp;from the Office of Science and Technology policy&#39;s...',
+                                                                 body: 'random text here')],
+                                          suggestion: double('suggestion', text: 'electrocoagulation'),
+                                          total: 1)
         expect(elastic_results).to receive(:override_suggestion).with(suggestion)
         expect(ElasticBlended).to receive(:search_for).
           with(hash_including(q: 'electrocoagulation')).
           and_return(elastic_results)
       end
 
-      it_should_behave_like 'a search with spelling suggestion'
+      it_behaves_like 'a search with spelling suggestion'
     end
   end
 
@@ -75,17 +78,17 @@ describe BlendedSearch do
       expect(ElasticBlended).to receive(:search_for).
         with(hash_including(sort: 'published_at:desc')).
         and_return(double(ElasticBlendedResults,
-                        results: [],
-                        suggestion: nil,
-                        total: 0))
+                          results: [],
+                          suggestion: nil,
+                          total: 0))
 
       described_class.new(affiliate: affiliate,
-                        highlighting: false,
-                        limit: 8,
-                        next_offset_within_limit: true,
-                        offset: 5,
-                        query: 'gov',
-                        sort_by: 'date').run
+                          highlighting: false,
+                          limit: 8,
+                          next_offset_within_limit: true,
+                          offset: 5,
+                          query: 'gov',
+                          sort_by: 'date').run
     end
   end
 end
