@@ -20,7 +20,7 @@ Feature: Search - redesign
     When I am on bar.gov's redesigned search page
     And I search for "white house" in the redesigned search page
     Then I should see exactly "20" web search results
-    And I should see "The White House"
+    And I should see "The <strong>White House</strong>"
     And I should see "https://www.whitehouse.gov/"
     And I should see "President Biden's Budget Topics: Reproductive Rights"
     And I should be on page "1" of results
@@ -47,7 +47,7 @@ Feature: Search - redesign
     When I am on healthcare.gov's redesigned search page
     And I search for "marketplace" in the redesigned search page
     Then I should see exactly "20" web search results
-    And I should see "Marketplace"
+    And I should see "<strong>Marketplace</strong>"
     And I should see "https://www.healthcare.gov/glossary/marketplace"
     And I should see "More info on Health Insurance"
     And I should see pagination
@@ -77,9 +77,9 @@ Feature: Search - redesign
     When I am on bar.gov's redesigned search page
     And I search for "article" in the redesigned search page
     Then I should see exactly "6" web search results
-    And I should see "The last hour article"
+    And I should see "The last hour <strong>article</strong>"
     And I should see "http://p.whitehouse.gov/hour.html"
-    And I should see "Within the last hour article on item"
+    And I should see "Within the last hour <strong>article</strong> on item"
     And I should not see pagination
 
   @javascript @a11y @a11y_wip

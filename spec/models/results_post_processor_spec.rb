@@ -3,6 +3,24 @@
 require 'spec_helper'
 
 describe ResultsPostProcessor do
+  describe '#translate_highlights' do
+    subject(:highlighted_text) { described_class.new.translate_highlights(text_with_highlights) }
+
+    let(:text_with_highlights) { "\uE000healthcare\uE001.gov" }
+
+    it 'returns a string with strong HTML tags' do
+      expect(highlighted_text).to eq '<strong>healthcare</strong>.gov'
+    end
+
+    context 'when the text is nil' do
+      let(:text_with_highlights) { nil }
+
+      it 'returns nil' do
+        expect(highlighted_text).to be_nil
+      end
+    end
+  end
+
   describe '#total_pages' do
     subject(:total_pages) { described_class.new.total_pages(total_results) }
 
