@@ -39,9 +39,9 @@ class ResultsWithBodyAndDescriptionPostProcessor < ResultsPostProcessor
   def format_results
     @results.map do |result|
       {
-        title: result['title'],
+        title: translate_highlights(result['title']),
         url: result['url'],
-        description: result['description'] || result['body']
+        description: translate_highlights(result['description'] || result['body'])
       }
     end
   end
