@@ -23,7 +23,7 @@ Capybara::Screenshot.autosave_on_failure = false
 
 Capybara.register_driver :selenium_chrome_headless do |app|
   options = Selenium::WebDriver::Chrome::Options.new
-  options.add_argument('--headless')
+  # options.add_argument('--headless')
   options.add_argument('--window-size=1200,768')
 
   Capybara::Selenium::Driver.new(app,
