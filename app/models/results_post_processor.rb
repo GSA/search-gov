@@ -23,8 +23,9 @@ class ResultsPostProcessor
     body.gsub(/\uE000/, '<strong>').gsub(/\uE001/, '</strong>')
   end
 
-  def truncate_html(html, max_length = DEFAULT_TRUNCATED_HTML_LENGTH, options = {})
+  def truncate_description(html)
     return '' unless html
-    HTML_Truncator.truncate(html, max_length, options.reverse_merge(DEFAULT_TRUNCATE_OPTIONS)).html_safe
+
+    HTML_Truncator.truncate(html, DEFAULT_TRUNCATED_HTML_LENGTH, DEFAULT_TRUNCATE_OPTIONS)
   end
 end
