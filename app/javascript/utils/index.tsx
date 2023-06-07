@@ -15,7 +15,7 @@ export const getCurrentPage = (): number => {
   return Number(urlParams.get('page')) ? Number(urlParams.get('page')) : 1;
 };
 
-export const truncate = (text: string | undefined, length: number): string => {
+export const truncateUrl = (text: string | undefined, length: number): string => {
   if (text === undefined) {
     return '';
   }
@@ -29,6 +29,5 @@ export const truncate = (text: string | undefined, length: number): string => {
 };
 
 const stripProtocols = (url: string): string => {
-  const result = url.replace(/(^\w+:|^)\/\//, '');
-  return result;
+  return url.replace(/(^\w+:|^)\/\//, '');
 };
