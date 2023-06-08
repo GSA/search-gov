@@ -14,7 +14,7 @@ class WebSearch < Search
     search_engine_parameters = options.merge(language: @affiliate.locale,
                                              offset: offset,
                                              per_page: @per_page,
-                                             query: @formatted_query).merge(google_credentials_override)
+                                             query: @formatted_query)
     @search_engine = search_engine_klass(@affiliate.search_engine).new(search_engine_parameters)
   end
 
@@ -130,10 +130,7 @@ class WebSearch < Search
   end
 
   def module_tag_for_search_engine
-    case @affiliate.search_engine
-    when 'Google' then 'GWEB'
-    else 'BWEB'
-    end
+    'BWEB'
   end
 
   def post_process_results(results)
@@ -164,14 +161,6 @@ class WebSearch < Search
 
   def get_vertical
     :web
-  end
-
-  def google_credentials_override
-    google_credentials_overridden? ? { google_cx: @affiliate.google_cx, google_key: @affiliate.google_key } : {}
-  end
-
-  def google_credentials_overridden?
-    @affiliate.search_engine == 'Google' && @affiliate.google_cx.present? && @affiliate.google_key.present?
   end
 
   def social_image_feeds_checked?
