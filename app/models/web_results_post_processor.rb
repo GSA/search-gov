@@ -43,9 +43,9 @@ class WebResultsPostProcessor < ResultsPostProcessor
   def format_results
     @results.map do |result|
       {
-        title: result['title'],
+        title: translate_highlights(result['title']),
         url: result['unescaped_url'],
-        description: result['content']
+        description: translate_highlights(result['content'])
       }
     end
   end

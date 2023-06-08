@@ -58,9 +58,9 @@ class I14yPostProcessor < ResultsWithBodyAndDescriptionPostProcessor
   def format_results
     @results.map do |result|
       {
-        title: result['title'],
+        title: translate_highlights(result['title']),
         url: result['link'],
-        description: result['body'],
+        description: translate_highlights(result['body']),
         updatedDate: parse_result_date(result['changed']),
         publishedDate: parse_result_date(result['published_at']),
         thumbnailUrl: result['thumbnail_url']
