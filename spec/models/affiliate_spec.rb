@@ -56,7 +56,7 @@ describe Affiliate do
                rejecting(nil, %w{ text/plain text/xml application/pdf }) }
     end
 
-    it { is_expected.to validate_inclusion_of(:search_engine).in_array(%w( Google BingV6 BingV7 SearchGov )) }
+    it { is_expected.to validate_inclusion_of(:search_engine).in_array(%w[BingV6 BingV7 SearchGov]) }
 
     it { is_expected.to have_many :boosted_contents }
     it { is_expected.to have_many(:connections).inverse_of(:affiliate) }

@@ -1,5 +1,5 @@
 class SearchImpression
-  IRRELEVANT_KEYS = %w(access_key action api_key controller cx m utf8)
+  IRRELEVANT_KEYS = %w[access_key action api_key controller m utf8].freeze
 
   def self.log(search, vertical, params, request)
     url = get_url_from_request(request)

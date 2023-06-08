@@ -3,10 +3,6 @@ module Instrumentation
     # The only methods that work as of 2023 are oasis_search and elastic_search. The others
     # should be removed when we remove those old search classes. The Bing methods need to
     # be updated to support BingV7.
-    def api_gss_web_engine(event)
-      generic_logging('Google Query', event, RED)
-    end
-
     def azure_web_engine(event)
       generic_logging('Azure Query', event, BLUE)
     end
@@ -21,10 +17,6 @@ module Instrumentation
 
     def bing_web_search(event)
       generic_logging('Bing Query', event, YELLOW)
-    end
-
-    def google_web_search(event)
-      generic_logging('Google Query', event, RED)
     end
 
     def oasis_search(event)

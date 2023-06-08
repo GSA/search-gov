@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_04_173700) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_25_172522) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -78,8 +78,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_04_173700) do
     t.boolean "gets_blended_results", default: false, null: false
     t.boolean "is_bing_image_search_enabled", default: false, null: false
     t.boolean "is_federal_register_document_govbox_enabled", default: false, null: false
-    t.string "google_cx"
-    t.string "google_key"
     t.string "api_access_key", null: false
     t.boolean "gets_commercial_results_on_blended_search", default: true, null: false
     t.boolean "gets_i14y_results", default: false, null: false

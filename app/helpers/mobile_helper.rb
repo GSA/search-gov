@@ -62,7 +62,6 @@ module MobileHelper
   def search_results_by_text(module_tag)
     provider = case module_tag
       when 'AIMAG', 'AWEB', 'BWEB', 'IMAG' then ' Bing'
-      when 'GWEB', 'GIMAG' then ' Google'
       else ' Search.gov'
       end
     I18n.t(:powered_by) << provider
@@ -75,8 +74,6 @@ module MobileHelper
       content_tag(:div, class: bing_class) do
         (powered_by << content_tag(:span, ' Bing')).html_safe
       end
-    elsif %w(GWEB GIMAG).include? search_module_tag
-      content_tag(:span, "#{powered_by} Google")
     else
       render partial: 'searches/powered_by_digital_gov_search'
     end
