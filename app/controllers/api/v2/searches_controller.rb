@@ -34,13 +34,6 @@ module Api
         respond_with(@search)
       end
 
-      # Deprecated - will be removed in https://cm-jira.usa.gov/browse/SRCH-1429
-      def gss
-        @search = ApiGssSearch.new(@search_options.attributes)
-        @search.run
-        respond_with(@search)
-      end
-
       def i14y
         @search = ApiI14ySearch.new(@search_options.attributes)
         @search.run
@@ -57,23 +50,12 @@ module Api
       # https://cm-jira.usa.gov/browse/SFL-46
       def docs
         @document_collection = (DocumentCollection.find(@search_options.dc) rescue nil)
-        @search = if @document_collection&.too_deep_for_bing?
-                    ApiI14ySearch.new(@search_options.attributes)
-                  else
-                    affiliate_docs_search_class.new(@search_options.attributes)
-                  end
+        @search = ApiI14ySearch.new(@search_options.attributes)
         @search.run
         respond_with(@search)
       end
 
       private
-
-      def affiliate_docs_search_class
-        case @search_options.site.search_engine
-        when 'Google'
-          ApiGoogleDocsSearch
-        end
-      end
 
       def handle_query_routing
         affiliate = @search_options.site
@@ -98,7 +80,6 @@ module Api
                                          :content_type,
                                          :created_since,
                                          :created_until,
-                                         :cx, # SRCH-1429 This will be removed as GSS is deprecated
                                          :dc,
                                          :enable_highlighting,
                                          :filetype,
@@ -135,10 +116,6 @@ module Api
         respond_with({ errors: @search_options.errors.full_messages }, { status: 400 })
       end
 
-      # SRCH-3923: Temporarily disabling cop as at least one of these search classes (gss)
-      # is slated for removal, and another is current not used (docs). Future refactoring here
-      # is a given, and at that time this cop should be reenabled.
-      # rubocop:disable Metrics/CyclomaticComplexity
       def search_options_validator_klass
         case action_name.to_sym
         when :azure then Api::CommercialSearchOptions
@@ -146,11 +123,9 @@ module Api
         when :azure_image then Api::AzureCompositeImageSearchOptions
         when :blended, :video then Api::NonCommercialSearchOptions
         when :i14y then Api::I14ySearchOptions
-        when :gss then Api::GssSearchOptions
         when :docs then Api::DocsSearchOptions
         end
       end
-      # rubocop:enable Metrics/CyclomaticComplexity
 
       def log_search_impression
         SearchImpression.log(@search, action_name, search_params, request)
