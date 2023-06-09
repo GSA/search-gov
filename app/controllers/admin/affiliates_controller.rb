@@ -71,8 +71,6 @@ class Admin::AffiliatesController < Admin::AdminController
       gets_blended_results
       gets_commercial_results_on_blended_search
       gets_i14y_results
-      google_cx
-      google_key
       i14y_date_stamp_enabled
       is_bing_image_search_enabled
       is_federal_register_document_govbox_enabled

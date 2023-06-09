@@ -6,9 +6,6 @@ class OutboundRateLimit < ApplicationRecord
   validates_inclusion_of :interval, in: VALID_INTERVALS
 
   def self.load_defaults
-    create!(name: GoogleSearch::NAMESPACE,
-            interval: 'day',
-            limit: 3000) unless find_by_name(GoogleSearch::NAMESPACE)
     create!(name: AzureEngine::NAMESPACE,
             interval: 'month',
             limit: 5000) unless find_by_name(AzureEngine::NAMESPACE)
