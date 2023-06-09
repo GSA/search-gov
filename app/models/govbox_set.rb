@@ -46,25 +46,32 @@ class GovboxSet
       textBestBets: format_text_best_bets,
       graphicsBestBet: format_graphics_best_bet,
       jobs: format_jobs,
-      healthTopics: format_health_topics
+      healthTopic: format_health_topic,
+      federalRegisterDocuments: format_federal_register_documents
     }.compact
   end
 
   private
 
   def format_text_best_bets
+    return if @affiliate.boosted_contents.empty?
+
     @boosted_contents&.results&.map { |result| result.slice(:title, :url, :description) }
   end
 
   def format_graphics_best_bet
+    return if @affiliate.featured_collections.empty?
+
     @featured_collections&.results&.first&.as_json&.except(:id)
   end
 
   def format_jobs
+    return unless @affiliate.jobs_enabled?
+
     @jobs&.map { |job| job.slice(:position_title, :position_uri, :position_location_display, :organization_name, :minimum_pay, :maximum_pay, :rate_interval_code) }
   end
 
-  def format_health_topics
+  def format_health_topic
     return unless @med_topic
 
     {
@@ -72,6 +79,12 @@ class GovboxSet
       description: @med_topic.truncated_summary,
       relatedTopics: @med_topic&.med_related_topics&.limit(3)&.map { |topic| topic.slice(:title, :url) }
     }.compact
+  end
+
+  def format_federal_register_documents
+    return unless @federal_register_documents
+
+    @federal_register_documents&.results&.first(3)&.map { |frd| frd.slice(:title, :document_type, :document_number, :publication_date, :comments_close_on, :start_page, :end_page, :page_length) }
   end
 
   def extract_site_limits(site_limits)

@@ -22,7 +22,7 @@ interface ResultsProps {
   }[] | null;
   additionalResults?: {
     recommendedBy: string;
-    textBestBets: {
+    textBestBets?: {
       title: string;
       url: string;
       description: string;
