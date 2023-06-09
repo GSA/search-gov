@@ -44,7 +44,9 @@ class GovboxSet
     {
       recommendedBy: @affiliate.display_name,
       textBestBets: format_text_best_bets,
-      graphicsBestBet: format_graphics_best_bet
+      graphicsBestBet: format_graphics_best_bet,
+      jobs: format_jobs,
+      healthTopics: format_health_topics
     }.compact
   end
 
@@ -56,6 +58,20 @@ class GovboxSet
 
   def format_graphics_best_bet
     @featured_collections&.results&.first&.as_json&.except(:id)
+  end
+
+  def format_jobs
+    @jobs&.map { |job| job.slice(:position_title, :position_uri, :position_location_display, :organization_name, :minimum_pay, :maximum_pay, :rate_interval_code) }
+  end
+
+  def format_health_topics
+    return unless @med_topic
+
+    {
+      title: @med_topic.medline_title,
+      description: @med_topic.truncated_summary,
+      relatedTopics: @med_topic&.med_related_topics&.limit(3)&.map { |topic| topic.slice(:title, :url) }
+    }.compact
   end
 
   def extract_site_limits(site_limits)
@@ -126,6 +142,7 @@ class GovboxSet
     if job_results.present?
       @jobs = JobResultsPostProcessor.new(results: job_results)&.post_processed_results
     end
+
     @modules << 'JOBS' if Jobs.query_eligible?(@query)
   end
 
