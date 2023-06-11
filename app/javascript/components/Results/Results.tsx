@@ -78,7 +78,7 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
         )}
         <div id="results" className="search-result-item-wrapper">
           {/* Below images to be dynamic - To Do as part of backend integration */}
-          <GridContainer className='result search-result-item search-result-image-item'>
+          {/* <GridContainer className='result search-result-item search-result-image-item'>
             <Grid row gap="md">
               {(imagesToBeDynamic.map((image, index) => {
                 return (
@@ -88,7 +88,7 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
                 );
               }))}
             </Grid>
-          </GridContainer>
+          </GridContainer> */}
 
           {results && results.length > 0 ? (results.map((result, index) => {
             return (
