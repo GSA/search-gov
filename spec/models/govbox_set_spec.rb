@@ -89,15 +89,46 @@ describe GovboxSet do
           described_class.new('jobs', affiliate, geoip_info, highlighting_options).as_json
         end
 
+        let(:job_attributes) { %w[application_close_date maximum_pay minimum_pay organization_name position_location_display position_title position_uri rate_interval_code] }
+
         before do
           allow(affiliate).to receive(:jobs_enabled?).and_return(true)
-          allow(Jobs).to receive(:search).and_return nil
         end
 
-        it 'returns the affiliate display name' do
-          expect(govbox_set_json).to eq({
-                                          recommendedBy: 'NPS Site'
-                                        })
+        it 'returns ten jobs' do
+          expect(govbox_set_json[:jobs].length).to eq(10)
+        end
+
+        it 'has valid keys for all jobs' do
+          govbox_set_json[:jobs].each do |job|
+            expect(job.keys).to match_array(job_attributes)
+          end
+        end
+
+        it 'returns valid data for the first job' do
+          expect(govbox_set_json[:jobs].first).to eq({
+                                                       'application_close_date' => '2024-01-25T23:59:59.9970',
+                                                       'maximum_pay' => 170_800.0,
+                                                       'minimum_pay' => 64_660.0,
+                                                       'organization_name' => 'Office of the Secretary of Health and Human Services',
+                                                       'position_location_display' => 'Multiple Locations',
+                                                       'position_title' => 'General Attorney Advisor',
+                                                       'position_uri' => 'https://www.usajobs.gov:443/GetJob/ViewDetails/523056100',
+                                                       'rate_interval_code' => 'PA'
+                                                     })
+        end
+      end
+
+      context 'when there are federal register documents' do
+        let(:agency) { agencies(:irs) }
+        let(:federal_register_agency) { federal_register_agencies(:fr_irs) }
+        let(:expected_results) { instance_double(ElasticFeaturedCollectionResults, total: 1) }
+
+        before do
+          allow(affiliate).to receive(:agency).and_return(agency)
+          allow(affiliate).to receive(:is_federal_register_document_govbox_enabled?).and_return(true)
+          allow(ElasticFederalRegisterDocument).to receive(:search_for).
+            and_return(expected_results)
         end
       end
 
