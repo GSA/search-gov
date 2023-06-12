@@ -85,8 +85,6 @@ class GovboxSet
   end
 
   def format_federal_register_documents
-    return unless @federal_register_documents
-
     @federal_register_documents&.results&.first(3)&.map { |frd| frd.slice(:title, :document_type, :document_number, :publication_date, :comments_close_on, :start_page, :end_page, :page_length) }&.
       each do |frd|
       frd[:comments_close_on] = frd[:comments_close_on].to_fs(:long)
