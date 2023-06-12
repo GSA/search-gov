@@ -48,13 +48,13 @@ class GovboxSet
       jobs: format_jobs,
       healthTopic: format_health_topic,
       federalRegisterDocuments: format_federal_register_documents
-    }.compact
+    }.compact_blank
   end
 
   private
 
   def format_text_best_bets
-    return if @affiliate.boosted_contents.empty?
+    return if @affiliate.boosted_contents.empty? || @boosted_contents&.results.blank?
 
     @boosted_contents&.results&.map { |result| result.slice(:title, :url, :description) }
   end
@@ -68,7 +68,7 @@ class GovboxSet
   def format_jobs
     return unless @affiliate.jobs_enabled?
 
-    @jobs&.map { |job| job.slice(:position_title, :position_uri, :position_location_display, :organization_name, :minimum_pay, :maximum_pay, :rate_interval_code) }
+    @jobs&.map { |job| job.slice(:position_title, :position_uri, :position_location_display, :organization_name, :minimum_pay, :maximum_pay, :rate_interval_code, :application_close_date) }
   end
 
   def format_health_topic
@@ -77,8 +77,9 @@ class GovboxSet
     {
       title: @med_topic.medline_title,
       description: @med_topic.truncated_summary,
+      url: @med_topic.medline_url,
       relatedTopics: @med_topic&.med_related_topics&.limit(3)&.map { |topic| topic.slice(:title, :url) }
-    }.compact
+    }.compact_blank
   end
 
   def format_federal_register_documents
@@ -144,10 +145,10 @@ class GovboxSet
 
   def init_jobs
     return unless @affiliate.jobs_enabled?
-
+  
     job_results = Jobs.search({
                                 query: @query,
-                                organization_codes: @affiliate.agency&.joined_organization_codes,
+                                organization_codes: 'GS',
                                 location_name: @geoip_info&.location_name,
                                 results_per_page: 10
                               })&.search_result&.search_result_items
