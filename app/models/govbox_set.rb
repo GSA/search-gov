@@ -148,7 +148,7 @@ class GovboxSet
   
     job_results = Jobs.search({
                                 query: @query,
-                                organization_codes: 'GS',
+                                organization_codes: @affiliate.agency&.joined_organization_codes,
                                 location_name: @geoip_info&.location_name,
                                 results_per_page: 10
                               })&.search_result&.search_result_items
