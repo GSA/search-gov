@@ -52,17 +52,59 @@ describe GovboxSet do
         it 'returns the affiliate display name and a hash for the graphics best bet' do
           expect(govbox_set_json).to eq({
                                           recommendedBy: affiliate.display_name,
-                                          graphicsBestBet: { links: [{ title: 'Blog Post', url: 'https://search.gov/blog-1' }], title: 'Search USA Blog', title_url: nil },
-                                          textBestBets: []
+                                          graphicsBestBet: { links: [{ title: 'Blog Post', url: 'https://search.gov/blog-1' }], title: 'Search USA Blog', title_url: nil }
                                         })
         end
       end
 
-      context 'when there are no text best bets or graphics best bets' do
-        it 'returns the affiliate display name and an empty array for text best bets' do
+      context 'when there is a health topic' do
+        fixtures :med_topics
+
+        subject(:govbox_set_json) do
+          described_class.new('cancer', affiliate, geoip_info, highlighting_options).as_json
+        end
+
+        before do
+          allow(affiliate).to receive(:is_medline_govbox_enabled?).and_return true
+        end
+
+        it 'returns the affiliate display name and a hash for the health topic' do
           expect(govbox_set_json).to eq({
-                                          recommendedBy: affiliate.display_name,
-                                          textBestBets: []
+                                          healthTopic: {
+                                            title: 'Cancer',
+                                            description: 'Cancer begins in your cells, which are the building blocks of your body. Normally, your body forms new cells as you need them, replacing old cells that die. Sometimes this process goes wrong.',
+                                            url: 'https://www.nlm.nih.gov/medlineplus/cancer.html',
+                                            relatedTopics: [
+                                              { 'title' => 'Cancer Alternative Therapies', 'url' => 'https://www.nlm.nih.gov/medlineplus/canceralternativetherapies.html' },
+                                              { 'title' => 'Cancer and Pregnancy', 'url' => 'https://www.nlm.nih.gov/medlineplus/cancerandpregnancy.html' }
+                                            ]
+                                          },
+                                          recommendedBy: 'NPS Site'
+                                        })
+        end
+      end
+
+      context 'when there are job results' do
+        subject(:govbox_set_json) do
+          described_class.new('jobs', affiliate, geoip_info, highlighting_options).as_json
+        end
+
+        before do
+          allow(affiliate).to receive(:jobs_enabled?).and_return(true)
+          allow(Jobs).to receive(:search).and_return nil
+        end
+
+        it 'returns the affiliate display name' do
+          expect(govbox_set_json).to eq({
+                                          recommendedBy: 'NPS Site'
+                                        })
+        end
+      end
+
+      context 'when there is no additional result data' do
+        it 'returns the affiliate display name' do
+          expect(govbox_set_json).to eq({
+                                          recommendedBy: affiliate.display_name
                                         })
         end
       end

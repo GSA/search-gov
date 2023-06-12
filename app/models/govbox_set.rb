@@ -145,7 +145,7 @@ class GovboxSet
 
   def init_jobs
     return unless @affiliate.jobs_enabled?
-  
+
     job_results = Jobs.search({
                                 query: @query,
                                 organization_codes: @affiliate.agency&.joined_organization_codes,
