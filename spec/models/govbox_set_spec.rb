@@ -122,13 +122,43 @@ describe GovboxSet do
       context 'when there are federal register documents' do
         let(:agency) { agencies(:irs) }
         let(:federal_register_agency) { federal_register_agencies(:fr_irs) }
-        let(:expected_results) { instance_double(ElasticFeaturedCollectionResults, total: 1) }
+        let(:federal_register_document) do
+          FederalRegisterDocument.new(
+            document_number: 1,
+            title: 'Test FRD',
+            abstract: 'This is a test FRD.',
+            html_url: 'http://www.federalregister.gov/articles/2016/05/11/2016-10932/unsuccessful-work',
+            document_type: 'Proposed Rule',
+            start_page: 2,
+            end_page: 5,
+            page_length: 4,
+            publication_date: Date.new(2020, 1, 2, 3),
+            comments_close_on: Date.new(2024, 4, 5, 6)
+          )
+        end
+        let(:results) { instance_double(ElasticFederalRegisterDocumentResults, total: 1, results: [federal_register_document]) }
 
         before do
           allow(affiliate).to receive(:agency).and_return(agency)
           allow(affiliate).to receive(:is_federal_register_document_govbox_enabled?).and_return(true)
           allow(ElasticFederalRegisterDocument).to receive(:search_for).
-            and_return(expected_results)
+            and_return(results)
+        end
+
+        it 'returns the affiliate display name and an array of federal register documents' do
+          expect(govbox_set_json).to eq({
+                                          recommendedBy: affiliate.display_name,
+                                          federalRegisterDocuments: [
+                                            { 'comments_close_on' => 'April 05, 2024',
+                                              'document_number' => '1',
+                                              'document_type' => 'Proposed Rule',
+                                              'end_page' => 5,
+                                              'page_length' => 4,
+                                              'publication_date' => 'January 02, 2020',
+                                              'start_page' => 2,
+                                              'title' => 'Test FRD' }
+                                          ]
+                                        })
         end
       end
 
