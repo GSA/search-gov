@@ -41,7 +41,7 @@ class ResultsWithBodyAndDescriptionPostProcessor < ResultsPostProcessor
       {
         title: translate_highlights(result['title']),
         url: result['url'],
-        description: translate_highlights(result['description'] || result['body'])
+        description: truncate_description(translate_highlights(result['description'] || result['body']))
       }
     end
   end

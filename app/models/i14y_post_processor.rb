@@ -60,7 +60,7 @@ class I14yPostProcessor < ResultsWithBodyAndDescriptionPostProcessor
       {
         title: translate_highlights(result['title']),
         url: result['link'],
-        description: translate_highlights(result['body']),
+        description: truncate_description(translate_highlights(result['body'])),
         updatedDate: parse_result_date(result['changed']),
         publishedDate: parse_result_date(result['published_at']),
         thumbnailUrl: result['thumbnail_url']

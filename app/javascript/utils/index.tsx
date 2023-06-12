@@ -14,3 +14,20 @@ export const getCurrentPage = (): number => {
   const urlParams = new URLSearchParams(queryString);
   return Number(urlParams.get('page')) ? Number(urlParams.get('page')) : 1;
 };
+
+export const truncateUrl = (text: string | undefined, length: number): string => {
+  if (text === undefined) {
+    return '';
+  }
+
+  const result = stripProtocols(text);
+  if (result.length <= length) {
+    return result;
+  }
+
+  return `${result.substring(0, length)}...`;
+};
+
+const stripProtocols = (url: string): string => {
+  return url.replace(/(^\w+:|^)\/\//, '');
+};
