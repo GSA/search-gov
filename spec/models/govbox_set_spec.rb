@@ -107,7 +107,7 @@ describe GovboxSet do
 
         it 'returns valid data for the first job' do
           expect(govbox_set_json[:jobs].first).to eq({
-                                                       'application_close_date' => '2024-01-25T23:59:59.9970',
+                                                       'application_close_date' => 'January 25, 2024',
                                                        'maximum_pay' => 170_800.0,
                                                        'minimum_pay' => 64_660.0,
                                                        'organization_name' => 'Office of the Secretary of Health and Human Services',

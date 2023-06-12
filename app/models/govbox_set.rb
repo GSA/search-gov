@@ -68,7 +68,9 @@ class GovboxSet
   def format_jobs
     return unless @affiliate.jobs_enabled?
 
-    @jobs&.map { |job| job.slice(:position_title, :position_uri, :position_location_display, :organization_name, :minimum_pay, :maximum_pay, :rate_interval_code, :application_close_date) }
+    @jobs&.
+      map { |job| job.slice(:position_title, :position_uri, :position_location_display, :organization_name, :minimum_pay, :maximum_pay, :rate_interval_code, :application_close_date) }&.
+      each { |job| job[:application_close_date] = Date.parse(job[:application_close_date]).to_fs(:long) }
   end
 
   def format_health_topic
