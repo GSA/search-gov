@@ -149,14 +149,14 @@ describe GovboxSet do
           expect(govbox_set_json).to eq({
                                           recommendedBy: affiliate.display_name,
                                           federalRegisterDocuments: [
-                                            { 'comments_close_on' => 'April 05, 2024',
-                                              'document_number' => '1',
-                                              'document_type' => 'Proposed Rule',
-                                              'end_page' => 5,
-                                              'page_length' => 4,
-                                              'publication_date' => 'January 02, 2020',
-                                              'start_page' => 2,
-                                              'title' => 'Test FRD' }
+                                            { 'comments_close_on' => federal_register_document.comments_close_on.to_fs(:long),
+                                              'document_number' => federal_register_document.document_number,
+                                              'document_type' => federal_register_document.document_type,
+                                              'end_page' => federal_register_document.end_page,
+                                              'page_length' => federal_register_document.page_length,
+                                              'publication_date' => federal_register_document.publication_date.to_fs(:long),
+                                              'start_page' => federal_register_document.start_page,
+                                              'title' => federal_register_document.title }
                                           ]
                                         })
         end
