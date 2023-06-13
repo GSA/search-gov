@@ -31,6 +31,7 @@ crawled_more_than_month:
   last_crawl_status: 'OK'
 
 failed_more_than_month:
-  url: http://www.agency.gov/failed_more_than_month
-  last_crawled_at: <%= 45.days.ago.to_s(:db) %>
+  url: https://www.agency.gov/failed_more_than_month
+  hashed_url: aHR0cHM6Ly93d3cuYWdlbmN5Lmdvdi9mYWlsZWRfbW9yZV90aGFuX21vbnRo
+  last_crawled_at: <%= 45.days.ago.to_fs(:db) %>
   last_crawl_status: '404'
