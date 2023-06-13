@@ -50,10 +50,22 @@ interface SearchResultsLayoutProps {
       minimumPay: number;
       maximumPay: number;
       rateIntervalCode: string;
+      applicationCloseDate: string;
+    }[];
+    federalRegisterDocuments?: {
+      title: string;
+      documentType: string;
+      documentNumber: number;
+      publicationDate: string;
+      commentsCloseOn: string;
+      startPage: number;
+      endPage: number;
+      pageLength: number;
     }[];
     healthTopic?: {
       title: string;
       description: string;
+      url: string;
       relatedTopics?: {
         title: string;
         url: string;
