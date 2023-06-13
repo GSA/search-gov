@@ -65,7 +65,7 @@ describe('SearchResultsLayout', () => {
     render(<SearchResultsLayout params={{ query: 'foo' }} resultsData={resultsData} additionalResults={additionalResults} vertical='web' />);
     const bestBetRecommendedBy = screen.getByText(/Recommended by USAgov/i);
     const bestBetTitle = screen.getByText(/Search support/i);
-    const img = Array.from(document.getElementsByClassName('result-image')).shift() as HTMLImageElement;
+    const img = Array.from(document.getElementsByClassName('result-image')).pop() as HTMLImageElement;
     const bestBetLink = screen.getByText(/Learning/i);
     expect(bestBetRecommendedBy).toBeInTheDocument();
     expect(bestBetTitle).toBeInTheDocument();
