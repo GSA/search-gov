@@ -1,3 +1,5 @@
+require 'ostruct'
+
 class GovboxSet
   DEFAULT_JOB_HIGHLIGHTING_OPTIONS = {
     pre_tags: %w[<strong>],
@@ -85,7 +87,7 @@ class GovboxSet
   end
 
   def format_federal_register_documents
-    @federal_register_documents&.results&.first(3)&.map { |frd| frd.slice(:title, :document_type, :document_number, :publication_date, :comments_close_on, :start_page, :end_page, :page_length) }&.
+    @federal_register_documents&.results&.first(3)&.map { |frd| frd.slice(:title, :document_type, :document_number, :publication_date, :comments_close_on, :start_page, :end_page, :page_length, :contributing_agency_names) }&.
       each do |frd|
       frd[:comments_close_on] = frd[:comments_close_on].to_fs(:long)
       frd[:publication_date] = frd[:publication_date].to_fs(:long)

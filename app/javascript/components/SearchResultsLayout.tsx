@@ -61,6 +61,7 @@ interface SearchResultsLayoutProps {
       startPage: number;
       endPage: number;
       pageLength: number;
+      contributingAgencyNames: string[];
     }[];
     healthTopic?: {
       title: string;
@@ -69,7 +70,7 @@ interface SearchResultsLayoutProps {
       relatedTopics?: {
         title: string;
         url: string;
-      }[]
+      }[];
     };
   } | null;
   vertical: string;

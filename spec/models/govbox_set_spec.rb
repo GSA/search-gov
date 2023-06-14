@@ -136,11 +136,13 @@ describe GovboxSet do
             comments_close_on: Date.new(2024, 4, 5, 6)
           )
         end
+        let(:federal_agency_names) { ["GSA"] }
         let(:results) { instance_double(ElasticFederalRegisterDocumentResults, total: 1, results: [federal_register_document]) }
 
         before do
           allow(affiliate).to receive(:agency).and_return(agency)
           allow(affiliate).to receive(:is_federal_register_document_govbox_enabled?).and_return(true)
+          allow(federal_register_document).to receive(:contributing_agency_names).and_return(federal_agency_names)
           allow(ElasticFederalRegisterDocument).to receive(:search_for).
             and_return(results)
         end
@@ -156,6 +158,7 @@ describe GovboxSet do
                                               'page_length' => federal_register_document.page_length,
                                               'publication_date' => federal_register_document.publication_date.to_fs(:long),
                                               'start_page' => federal_register_document.start_page,
+                                              'contributing_agency_names' => federal_agency_names,
                                               'title' => federal_register_document.title }
                                           ]
                                         })
