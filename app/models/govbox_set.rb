@@ -80,7 +80,8 @@ class GovboxSet
       title: @med_topic.medline_title,
       description: @med_topic.truncated_summary,
       url: @med_topic.medline_url,
-      relatedTopics: @med_topic&.med_related_topics&.limit(3)&.map { |topic| topic.slice(:title, :url) }
+      relatedTopics: @med_topic&.med_related_topics&.limit(3)&.map { |topic| topic.slice(:title, :url) },
+      studiesAndTrials: @medtopic&.med_sites&.limit(2)&.map { |study| study.slice(:title, :url) }
     }.compact_blank
   end
 
