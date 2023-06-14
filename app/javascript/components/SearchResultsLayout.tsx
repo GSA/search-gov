@@ -67,6 +67,10 @@ interface SearchResultsLayoutProps {
       title: string;
       description: string;
       url: string;
+      studiesAndTrials?: {
+        title: string;
+        url: string;
+      }[];
       relatedTopics?: {
         title: string;
         url: string;
