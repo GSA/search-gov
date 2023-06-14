@@ -66,6 +66,10 @@ describe GovboxSet do
 
         before do
           allow(affiliate).to receive(:is_medline_govbox_enabled?).and_return true
+          topic = MedTopic.find_by(medline_title: 'cancer')
+          topic.med_sites.clear
+          topic.med_sites << MedSite.find_or_create_by(title: 'Carcinoma', url: 'https://clinicaltrials.gov/search/open/condition=%22Carcinoma%22', med_topic_id: topic.id)
+          topic.save
         end
 
         it 'returns the affiliate display name and a hash for the health topic' do
@@ -74,6 +78,9 @@ describe GovboxSet do
                                             title: 'Cancer',
                                             description: 'Cancer begins in your cells, which are the building blocks of your body. Normally, your body forms new cells as you need them, replacing old cells that die. Sometimes this process goes wrong.',
                                             url: 'https://www.nlm.nih.gov/medlineplus/cancer.html',
+                                            studiesAndTrials: [
+                                              { 'title' => 'Carcinoma', 'url' => 'https://clinicaltrials.gov/search/open/condition=%22Carcinoma%22' }
+                                            ],
                                             relatedTopics: [
                                               { 'title' => 'Cancer Alternative Therapies', 'url' => 'https://www.nlm.nih.gov/medlineplus/canceralternativetherapies.html' },
                                               { 'title' => 'Cancer and Pregnancy', 'url' => 'https://www.nlm.nih.gov/medlineplus/cancerandpregnancy.html' }
