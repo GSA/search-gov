@@ -136,7 +136,7 @@ describe GovboxSet do
             comments_close_on: Date.new(2024, 4, 5, 6)
           )
         end
-        let(:federal_agency_names) { ["GSA"] }
+        let(:federal_agency_names) { ['GSA'] }
         let(:results) { instance_double(ElasticFederalRegisterDocumentResults, total: 1, results: [federal_register_document]) }
 
         before do
