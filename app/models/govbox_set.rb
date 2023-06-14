@@ -1,5 +1,3 @@
-require 'ostruct'
-
 class GovboxSet
   DEFAULT_JOB_HIGHLIGHTING_OPTIONS = {
     pre_tags: %w[<strong>],
