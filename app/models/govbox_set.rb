@@ -80,9 +80,17 @@ class GovboxSet
       title: @med_topic.medline_title,
       description: @med_topic.truncated_summary,
       url: @med_topic.medline_url,
-      relatedTopics: @med_topic&.med_related_topics&.limit(3)&.map { |topic| topic.slice(:title, :url) },
-      studiesAndTrials: @medtopic&.med_sites&.limit(2)&.map { |study| study.slice(:title, :url) }
+      relatedTopics: format_health_topic_related_topics,
+      studiesAndTrials: format_health_topic_trials_and_studies
     }.compact_blank
+  end
+
+  def format_health_topic_related_topics
+    @med_topic&.med_related_topics&.limit(3)&.map { |topic| topic.slice(:title, :url) }
+  end
+
+  def format_health_topic_trials_and_studies
+    @med_topic&.med_sites&.limit(2)&.map { |study| study.slice(:title, :url) }
   end
 
   def format_federal_register_documents
