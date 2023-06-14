@@ -45,7 +45,7 @@ class WebResultsPostProcessor < ResultsPostProcessor
       {
         title: translate_highlights(result['title']),
         url: result['unescaped_url'],
-        description: translate_highlights(result['content'])
+        description: truncate_description(translate_highlights(result['content']))
       }
     end
   end
