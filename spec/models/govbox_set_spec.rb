@@ -166,6 +166,7 @@ describe GovboxSet do
                                               'publication_date' => federal_register_document.publication_date.to_fs(:long),
                                               'start_page' => federal_register_document.start_page,
                                               'contributing_agency_names' => federal_agency_names,
+                                              'html_url' => federal_register_document.html_url,
                                               'title' => federal_register_document.title }
                                           ]
                                         })
