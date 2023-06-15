@@ -42,24 +42,42 @@ describe SearchgovUrl do
 
   describe 'scopes' do
     describe '.fetch_required' do
+      subject(:fetch_required) { described_class.fetch_required }
+
       it 'includes urls that have never been crawled and outdated urls' do
-        expect(described_class.fetch_required.pluck(:url)).
+        expect(fetch_required.pluck(:url)).
           to include('https://www.agency.gov/new', 'https://www.agency.gov/outdated')
       end
 
       it 'does not include current, crawled and not enqueued urls' do
-        expect(described_class.fetch_required.pluck(:url)).
+        expect(fetch_required.pluck(:url)).
           not_to include('https://www.agency.gov/current')
       end
 
       it 'includes urls that have been enqueued for reindexing' do
-        expect(described_class.fetch_required.pluck(:url)).
+        expect(fetch_required.pluck(:url)).
           to include 'https://www.agency.gov/enqueued'
       end
 
       it 'includes urls last crawled more than 30 days and crawl status is ok' do
-        expect(described_class.fetch_required.pluck(:url)).
+        expect(fetch_required.pluck(:url)).
           to include 'https://www.agency.gov/crawled_more_than_month'
+      end
+
+      it 'does not include urls last crawled more than 30 days ago and crawl status is not ok' do
+        expect(fetch_required.pluck(:url)).
+          not_to include 'https://www.agency.gov/failed_more_than_month'
+      end
+
+      it 'prioritizes unfetched, enqueued, and recently modified URLs' do
+        expect(fetch_required.pluck(:url)).to eq(
+          %w[
+            https://www.agency.gov/new
+            https://www.agency.gov/enqueued
+            https://www.agency.gov/outdated
+            https://www.agency.gov/crawled_more_than_month
+          ]
+        )
       end
     end
   end
@@ -170,7 +188,7 @@ describe SearchgovUrl do
                  created: '2015-07-02T10:12:32-04:00',
                  changed: '2017-03-30T13:18:28-04:00',
                  mime_type: 'text/html'
-          ))
+               ))
         fetch
       end
 
@@ -289,7 +307,7 @@ describe SearchgovUrl do
                      tags: 'this, that, the other, thing',
                      created: '2015-07-02T10:12:32-04:00',
                      changed: '2017-03-30T13:18:28-04:00'
-              ))
+                   ))
             fetch
           end
         end
@@ -476,7 +494,7 @@ describe SearchgovUrl do
                  language: 'en',
                  tags: 'this, that',
                  created: '2018-06-09T17:42:11Z'
-          ))
+               ))
         fetch
       end
 
@@ -562,7 +580,7 @@ describe SearchgovUrl do
                  description: 'My Word doc description',
                  language: 'en',
                  tags: 'word'
-          ))
+               ))
         fetch
       end
 
@@ -605,7 +623,7 @@ describe SearchgovUrl do
                  description: 'My Word doc description',
                  language: 'en',
                  tags: 'word'
-          ))
+               ))
         fetch
       end
 
@@ -648,7 +666,7 @@ describe SearchgovUrl do
                  description: 'My Excel doc description',
                  language: 'en',
                  tags: 'excel'
-          ))
+               ))
         fetch
       end
 
@@ -691,7 +709,7 @@ describe SearchgovUrl do
                  description: 'My Excel doc description',
                  language: 'en',
                  tags: 'excel'
-          ))
+               ))
         fetch
       end
 
@@ -734,7 +752,7 @@ describe SearchgovUrl do
                  description: nil,
                  content: 'This is my text content.',
                  language: 'en'
-          ))
+               ))
         fetch
       end
 
