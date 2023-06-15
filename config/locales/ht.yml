@@ -36,26 +36,26 @@
   clear: 'Efase'
 
 # Prompts for spelling, spelling overrides, and did you mean suggestions
-  showing_results_for: Ցուցադրվում է որոնման արդյունքներ %{corrected_query}
-  search_instead_for: Փոխարենը որոնել %{original_query}
+  showing_results_for: "Men rezilta yo pou %{corrected_query}"
+  search_instead_for: "Chèche de preferans pou %{original_query}"
 
 # Prompts for searchers to revise or refine search
-  no_results_for_and_try: "Ցավոք, որոնման արդյունքներ չկան '%{query}'. Փորձեք ավելացնել կամ պակասեցնել բանալի բառերը."
-  too_long: "Որոնվող արտահայտությունը շատ երկար է: Փորձեք կրկին օգտագործելով ավելի կարճ արտահայտություն:."
-  empty_query: "Մուտքագրեք որոնվող արտահայտությունը վերևի դաշտում."
+  no_results_for_and_try: "Dezole, nou pa jwenn okenn rezilta pou %{query}. Eseye mete mwens mo oswa mo rechèch ki pi jeneral."
+  too_long: "Mo rechèch ou twò long. Eseye ankò men mete yon mo oswa yon fraz ki pi kout"
+  empty_query: "Tanpri ekri mo rechèch nan bwat ki anlè a."
 
 # Labels for inline best bets, news, and related searches modules
-  recommended: "Խորհուրդ է տրվում"
-  default_rss_govbox_label: 'Նորություններ'
-  related_searches: "Առնչվող որոնումներ"
+  recommended: "Rekòmande"
+  default_rss_govbox_label: 'Nouvèl'
+  related_searches: "Rechèch ki an rapò yo"
 
 # Labels for paging through results
-  page: 'Էջ'
-  prev_label: "Նախորդ"
-  next_label: "Հաջորդ"
+  page: 'Paj'
+  prev_label: "Presedan"
+  next_label: "Pwochen"
 
   searches:
-    by: by #CHECK THIS
+    by: "pou"
 # Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
     skip_to_main_content: "Sote pati sa a pou ale nan kontni prensipal la"
 # Labels for navigation bar "sections" (most easily seen on mobile dimension)
