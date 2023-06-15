@@ -44,18 +44,61 @@ class GovboxSet
     {
       recommendedBy: @affiliate.display_name,
       textBestBets: format_text_best_bets,
-      graphicsBestBet: format_graphics_best_bet
-    }.compact
+      graphicsBestBet: format_graphics_best_bet,
+      jobs: format_jobs,
+      healthTopic: format_health_topic,
+      federalRegisterDocuments: format_federal_register_documents
+    }.compact_blank
   end
 
   private
 
   def format_text_best_bets
+    return if @affiliate.boosted_contents.empty? || @boosted_contents&.results.blank?
+
     @boosted_contents&.results&.map { |result| result.slice(:title, :url, :description) }
   end
 
   def format_graphics_best_bet
+    return if @affiliate.featured_collections.empty?
+
     @featured_collections&.results&.first&.as_json&.except(:id)
+  end
+
+  def format_jobs
+    return unless @affiliate.jobs_enabled?
+
+    @jobs&.
+      map { |job| job.slice(:position_title, :position_uri, :position_location_display, :organization_name, :minimum_pay, :maximum_pay, :rate_interval_code, :application_close_date) }&.
+      each { |job| job[:application_close_date] = Date.parse(job[:application_close_date]).to_fs(:long) }
+  end
+
+  def format_health_topic
+    return unless @med_topic
+
+    {
+      title: @med_topic.medline_title,
+      description: @med_topic.truncated_summary,
+      url: @med_topic.medline_url,
+      relatedTopics: format_health_topic_related_topics,
+      studiesAndTrials: format_health_topic_trials_and_studies
+    }.compact_blank
+  end
+
+  def format_health_topic_related_topics
+    @med_topic&.med_related_topics&.limit(3)&.map { |topic| topic.slice(:title, :url) }
+  end
+
+  def format_health_topic_trials_and_studies
+    @med_topic&.med_sites&.limit(2)&.map { |study| study.slice(:title, :url) }
+  end
+
+  def format_federal_register_documents
+    @federal_register_documents&.results&.first(3)&.map { |frd| frd.slice(:title, :document_type, :document_number, :publication_date, :comments_close_on, :start_page, :end_page, :page_length, :contributing_agency_names, :html_url) }&.
+      each do |frd|
+      frd[:comments_close_on] = frd[:comments_close_on].to_fs(:long)
+      frd[:publication_date] = frd[:publication_date].to_fs(:long)
+    end
   end
 
   def extract_site_limits(site_limits)
@@ -126,6 +169,7 @@ class GovboxSet
     if job_results.present?
       @jobs = JobResultsPostProcessor.new(results: job_results)&.post_processed_results
     end
+
     @modules << 'JOBS' if Jobs.query_eligible?(@query)
   end
 

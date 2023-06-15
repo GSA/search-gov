@@ -27,7 +27,7 @@ interface SearchResultsLayoutProps {
   } | null;
   additionalResults?: {
     recommendedBy: string;
-    textBestBets: {
+    textBestBets?: {
       title: string;
       url: string;
       description: string;
@@ -41,7 +41,41 @@ interface SearchResultsLayoutProps {
         title: string;
         url: string;
       }[];
-    }
+    };
+    jobs?: {
+      positionTitle: string;
+      positionUri: string;
+      positionLocationDisplay: string;
+      organizationName: string;
+      minimumPay: number;
+      maximumPay: number;
+      rateIntervalCode: string;
+      applicationCloseDate: string;
+    }[];
+    federalRegisterDocuments?: {
+      title: string;
+      documentType: string;
+      documentNumber: number;
+      publicationDate: string;
+      commentsCloseOn: string;
+      startPage: number;
+      endPage: number;
+      pageLength: number;
+      contributingAgencyNames: string[];
+    }[];
+    healthTopic?: {
+      title: string;
+      description: string;
+      url: string;
+      studiesAndTrials?: {
+        title: string;
+        url: string;
+      }[];
+      relatedTopics?: {
+        title: string;
+        url: string;
+      }[];
+    };
   } | null;
   vertical: string;
   params?: {

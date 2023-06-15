@@ -52,17 +52,131 @@ describe GovboxSet do
         it 'returns the affiliate display name and a hash for the graphics best bet' do
           expect(govbox_set_json).to eq({
                                           recommendedBy: affiliate.display_name,
-                                          graphicsBestBet: { links: [{ title: 'Blog Post', url: 'https://search.gov/blog-1' }], title: 'Search USA Blog', title_url: nil },
-                                          textBestBets: []
+                                          graphicsBestBet: { links: [{ title: 'Blog Post', url: 'https://search.gov/blog-1' }], title: 'Search USA Blog', title_url: nil }
                                         })
         end
       end
 
-      context 'when there are no text best bets or graphics best bets' do
-        it 'returns the affiliate display name and an empty array for text best bets' do
+      context 'when there is a health topic' do
+        fixtures :med_topics
+
+        subject(:govbox_set_json) do
+          described_class.new('cancer', affiliate, geoip_info, highlighting_options).as_json
+        end
+
+        before do
+          allow(affiliate).to receive(:is_medline_govbox_enabled?).and_return true
+          topic = MedTopic.find_by(medline_title: 'cancer')
+          topic.med_sites.clear
+          topic.med_sites << MedSite.find_or_create_by(title: 'Carcinoma', url: 'https://clinicaltrials.gov/search/open/condition=%22Carcinoma%22', med_topic_id: topic.id)
+          topic.save
+        end
+
+        it 'returns the affiliate display name and a hash for the health topic' do
+          expect(govbox_set_json).to eq({
+                                          healthTopic: {
+                                            title: 'Cancer',
+                                            description: 'Cancer begins in your cells, which are the building blocks of your body. Normally, your body forms new cells as you need them, replacing old cells that die. Sometimes this process goes wrong.',
+                                            url: 'https://www.nlm.nih.gov/medlineplus/cancer.html',
+                                            studiesAndTrials: [
+                                              { 'title' => 'Carcinoma', 'url' => 'https://clinicaltrials.gov/search/open/condition=%22Carcinoma%22' }
+                                            ],
+                                            relatedTopics: [
+                                              { 'title' => 'Cancer Alternative Therapies', 'url' => 'https://www.nlm.nih.gov/medlineplus/canceralternativetherapies.html' },
+                                              { 'title' => 'Cancer and Pregnancy', 'url' => 'https://www.nlm.nih.gov/medlineplus/cancerandpregnancy.html' }
+                                            ]
+                                          },
+                                          recommendedBy: 'NPS Site'
+                                        })
+        end
+      end
+
+      context 'when there are job results' do
+        subject(:govbox_set_json) do
+          described_class.new('jobs', affiliate, geoip_info, highlighting_options).as_json
+        end
+
+        let(:job_attributes) { %w[application_close_date maximum_pay minimum_pay organization_name position_location_display position_title position_uri rate_interval_code] }
+
+        before do
+          allow(affiliate).to receive(:jobs_enabled?).and_return(true)
+        end
+
+        it 'returns ten jobs' do
+          expect(govbox_set_json[:jobs].length).to eq(10)
+        end
+
+        it 'has valid keys for all jobs' do
+          govbox_set_json[:jobs].each do |job|
+            expect(job.keys).to match_array(job_attributes)
+          end
+        end
+
+        it 'returns valid data for the first job' do
+          expect(govbox_set_json[:jobs].first).to eq({
+                                                       'application_close_date' => 'January 25, 2024',
+                                                       'maximum_pay' => 170_800.0,
+                                                       'minimum_pay' => 64_660.0,
+                                                       'organization_name' => 'Office of the Secretary of Health and Human Services',
+                                                       'position_location_display' => 'Multiple Locations',
+                                                       'position_title' => 'General Attorney Advisor',
+                                                       'position_uri' => 'https://www.usajobs.gov:443/GetJob/ViewDetails/523056100',
+                                                       'rate_interval_code' => 'PA'
+                                                     })
+        end
+      end
+
+      context 'when there are federal register documents' do
+        let(:agency) { agencies(:irs) }
+        let(:federal_register_agency) { federal_register_agencies(:fr_irs) }
+        let(:federal_register_document) do
+          FederalRegisterDocument.new(
+            document_number: 1,
+            title: 'Test FRD',
+            abstract: 'This is a test FRD.',
+            html_url: 'http://www.federalregister.gov/articles/2016/05/11/2016-10932/unsuccessful-work',
+            document_type: 'Proposed Rule',
+            start_page: 2,
+            end_page: 5,
+            page_length: 4,
+            publication_date: Date.new(2020, 1, 2, 3),
+            comments_close_on: Date.new(2024, 4, 5, 6)
+          )
+        end
+        let(:federal_agency_names) { ['GSA'] }
+        let(:results) { instance_double(ElasticFederalRegisterDocumentResults, total: 1, results: [federal_register_document]) }
+
+        before do
+          allow(affiliate).to receive(:agency).and_return(agency)
+          allow(affiliate).to receive(:is_federal_register_document_govbox_enabled?).and_return(true)
+          allow(federal_register_document).to receive(:contributing_agency_names).and_return(federal_agency_names)
+          allow(ElasticFederalRegisterDocument).to receive(:search_for).
+            and_return(results)
+        end
+
+        it 'returns the affiliate display name and an array of federal register documents' do
           expect(govbox_set_json).to eq({
                                           recommendedBy: affiliate.display_name,
-                                          textBestBets: []
+                                          federalRegisterDocuments: [
+                                            { 'comments_close_on' => federal_register_document.comments_close_on.to_fs(:long),
+                                              'document_number' => federal_register_document.document_number,
+                                              'document_type' => federal_register_document.document_type,
+                                              'end_page' => federal_register_document.end_page,
+                                              'page_length' => federal_register_document.page_length,
+                                              'publication_date' => federal_register_document.publication_date.to_fs(:long),
+                                              'start_page' => federal_register_document.start_page,
+                                              'contributing_agency_names' => federal_agency_names,
+                                              'html_url' => federal_register_document.html_url,
+                                              'title' => federal_register_document.title }
+                                          ]
+                                        })
+        end
+      end
+
+      context 'when there is no additional result data' do
+        it 'returns the affiliate display name' do
+          expect(govbox_set_json).to eq({
+                                          recommendedBy: affiliate.display_name
                                         })
         end
       end
