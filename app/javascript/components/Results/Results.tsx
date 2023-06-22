@@ -4,11 +4,9 @@ import parse from 'html-react-parser';
 
 import { Pagination } from './../Pagination/Pagination';
 import { BestBets } from './BestBets';
-
 import { truncateUrl } from '../../utils';
 
 import './Results.css';
-
 interface ResultsProps {
   query?: string
   results?: {
@@ -68,7 +66,7 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
       title: 'title 5'
     }
   ];
-
+  
   const URL_LENGTH = 80;
   return (
     <>
