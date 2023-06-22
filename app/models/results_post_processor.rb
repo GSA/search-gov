@@ -2,6 +2,8 @@
 
 class ResultsPostProcessor
   MAX_PAGES = 500
+  DEFAULT_TRUNCATED_HTML_LENGTH = 280
+  DEFAULT_TRUNCATE_OPTIONS = { length_in_chars: true, ellipsis: ' ...' }.freeze
 
   def initialize(*args); end
 
@@ -19,5 +21,11 @@ class ResultsPostProcessor
     return if body.nil?
 
     body.gsub(/\uE000/, '<strong>').gsub(/\uE001/, '</strong>')
+  end
+
+  def truncate_description(html)
+    return '' unless html
+
+    HTML_Truncator.truncate(html, DEFAULT_TRUNCATED_HTML_LENGTH, DEFAULT_TRUNCATE_OPTIONS)
   end
 end

@@ -5,6 +5,8 @@ import parse from 'html-react-parser';
 import { Pagination } from './../Pagination/Pagination';
 import { BestBets } from './BestBets';
 
+import { truncateUrl } from '../../utils';
+
 import './Results.css';
 
 interface ResultsProps {
@@ -22,7 +24,7 @@ interface ResultsProps {
   }[] | null;
   additionalResults?: {
     recommendedBy: string;
-    textBestBets: {
+    textBestBets?: {
       title: string;
       url: string;
       description: string;
@@ -67,6 +69,7 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
     }
   ];
 
+  const URL_LENGTH = 80;
   return (
     <>
       <div className='search-result-wrapper'>
@@ -113,7 +116,7 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
                     </div>
                     <div className='result-desc'>
                       <p>{result.description}</p>
-                      <div className='result-url-text'>{result.url}</div>
+                      <div className='result-url-text'>{truncateUrl(result.url, URL_LENGTH)}</div>
                     </div>
                   </Grid>
                 </Grid>
