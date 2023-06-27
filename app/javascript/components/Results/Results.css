@@ -5,6 +5,7 @@
 .search-result-item{
   margin-top: 3rem;
   padding-left: 2.5rem;
+  padding-right: 2.5rem;
 }
 
 .result-thumbnail .result-image{
@@ -120,4 +121,12 @@
 .graphics-best-bets-link-wrapper a{
   color: #005EA2;
   text-decoration: none;
+}
+
+/* Media Queries */
+@media (max-width: 767.98px) {
+  .search-result-item{
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
