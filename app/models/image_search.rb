@@ -13,8 +13,7 @@ class ImageSearch
               :query,
               :queried_at_seconds,
               :spelling_suggestion_eligible,
-              :uses_cr,
-              :normalized_results
+              :uses_cr
 
   def initialize(options = {})
     @options = options
@@ -49,9 +48,13 @@ class ImageSearch
     else
       @error_message = I18n.t(:empty_query)
     end
-
-    format_results
   end
+
+  def format_results
+    post_processor = ImageResultsPostProcessor.new(total, results)
+    post_processor.normalized_results
+  end
+
 
   def as_json(_options = {})
     if @error_message
@@ -73,11 +76,6 @@ class ImageSearch
   end
 
   private
-
-  def format_results
-    post_processor = ImageResultsPostProcessor.new(total, results)
-    @normalized_results = post_processor.normalized_results
-  end
 
   def initialize_search_instance(uses_cr)
     params = search_params(uses_cr)
