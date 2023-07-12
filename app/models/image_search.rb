@@ -50,7 +50,6 @@ class ImageSearch
     end
   end
 
-  
   def format_results
     post_processor = ImageResultsPostProcessor.new(total, results)
     post_processor.normalized_results
