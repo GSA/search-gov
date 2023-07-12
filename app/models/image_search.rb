@@ -55,7 +55,6 @@ class ImageSearch
     post_processor.normalized_results
   end
 
-
   def as_json(_options = {})
     if @error_message
       { error: @error_message }
