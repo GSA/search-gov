@@ -1,2 +1,1 @@
-- # TO-DO: Add image results data in https://cm-jira.usa.gov/browse/SRCH-3974
-= react_component("SearchResultsLayout", { resultsData: { results: (@search.results.nil? ? [] : @search.results), totalPages: 2, unboundedResults: false }, params: @search_params, vertical: @search_vertical })
+= react_component("SearchResultsLayout", { resultsData: @search.format_results, params: @search_params, vertical: @search_vertical })
