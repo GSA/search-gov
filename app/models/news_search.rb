@@ -1,5 +1,5 @@
 class NewsSearch < FilterableSearch
-  DEFAULT_VIDEO_PER_PAGE = 20.freeze
+  DEFAULT_VIDEO_PER_PAGE = 20
 
   self.default_sort_by = 'date'.freeze
 
@@ -9,7 +9,13 @@ class NewsSearch < FilterableSearch
   def initialize(options = {})
     super(options)
     @query = (@query || '').squish
-    @channel = options[:channel].to_i rescue nil if options[:channel].present?
+    if options[:channel].present?
+      @channel = begin
+        options[:channel].to_i
+      rescue
+        nil
+      end
+    end
     @enable_highlighting = options[:enable_highlighting]
 
     if @channel
@@ -21,18 +27,20 @@ class NewsSearch < FilterableSearch
     end
 
     if @rss_feeds.any?(&:is_managed?) and @affiliate.youtube_profile_ids.present?
-      youtube_feeds = RssFeed.youtube_profile_rss_feeds_by_site @affiliate
+      youtube_feeds = RssFeed.youtube_profile_rss_feeds_by_site(@affiliate)
       @rss_feeds = @rss_feeds.reject(&:is_managed?)
-      @rss_feeds.push *youtube_feeds
+      @rss_feeds.push(*youtube_feeds)
     end
 
-    @tags = @rss_feed && @rss_feed.show_only_media_content? ? %w(image) : []
+    @tags = @rss_feed && @rss_feed.show_only_media_content? ? %w[image] : []
 
     @total = 0
-    @contributor, @subject, @publisher = options[:contributor], options[:subject], options[:publisher]
-    if @rss_feed and @rss_feed.is_managed? || @rss_feed.show_only_media_content? and options[:per_page].blank?
-      @per_page = DEFAULT_VIDEO_PER_PAGE
-    end
+    @contributor = options[:contributor]
+    @subject = options[:subject]
+    @publisher = options[:publisher]
+    return unless @rss_feed and @rss_feed.is_managed? || @rss_feed.show_only_media_content? and options[:per_page].blank?
+
+    @per_page = DEFAULT_VIDEO_PER_PAGE
   end
 
   def sort_by_relevance?
@@ -40,19 +48,21 @@ class NewsSearch < FilterableSearch
   end
 
   def search
+    return unless @rss_feeds.present?
+
     ElasticNewsItem.search_for(q: @query, rss_feeds: @rss_feeds, excluded_urls: @affiliate.excluded_urls,
                                since: @since, until: @until,
                                size: @per_page, offset: (@page - 1) * @per_page,
                                contributor: @contributor, subject: @subject, publisher: @publisher,
                                sort: @sort,
-                               tags: @tags, language: @affiliate.indexing_locale) if @rss_feeds.present?
+                               tags: @tags, language: @affiliate.indexing_locale)
   end
 
   def cache_key
     date_range = ''
     if @since || @until
-      date_range << "#{@since.to_date.to_s}" if @since
-      date_range << "..#{@until.to_date.to_s}" if @until
+      date_range << "#{@since.to_date}" if @since
+      date_range << "..#{@until.to_date}" if @until
     end
     [@affiliate.id, @query, @channel, date_range, @page, @per_page].join(':')
   end
@@ -61,27 +71,20 @@ class NewsSearch < FilterableSearch
     @results.map { |r| r.serializable_hash }
   end
 
-  # TO-DO: Normalize news results in https://cm-jira.usa.gov/browse/SRCH-4071
-  def normalized_results
-    {
-      results: @results,
-      totalPages: 2,
-      unboundedResults: false
-    }
-  end
-
   protected
 
   def handle_response(response)
-    if response
-      @total = response.total
-      @aggregations = response.aggregations
-      ResultsWithBodyAndDescriptionPostProcessor.new(response.results).post_process_results
-      @results = paginate(response.results)
-      @startrecord = ((@page - 1) * @per_page) + 1
-      @endrecord = @startrecord + @results.size - 1
-      assign_module_tag
-    end
+    return unless response
+
+    @total = response.total
+    @aggregations = response.aggregations
+    post_processor = ResultsWithBodyAndDescriptionPostProcessor.new(response.results)
+    post_processor.post_process_results
+    @normalized_results = post_processor.normalized_results(@total)
+    @results = paginate(response.results)
+    @startrecord = ((@page - 1) * @per_page) + 1
+    @endrecord = @startrecord + @results.size - 1
+    assign_module_tag
   end
 
   def assign_module_tag
@@ -89,7 +92,7 @@ class NewsSearch < FilterableSearch
   end
 
   def assign_rss_feed
-    @rss_feed = @affiliate.rss_feeds.find_by_id @channel
+    @rss_feed = @affiliate.rss_feeds.find_by_id(@channel)
   end
 
   def navigable_feeds
