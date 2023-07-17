@@ -367,6 +367,19 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
               <Grid row className="row-mobile-divider"></Grid>
             </GridContainer>
 
+            <GridContainer className='result search-result-item'>
+              <Grid row gap="md">
+                <Grid col={true} className='result-meta-data'>
+                  <div className='result-title'>
+                    <a href="" className='more-fed-register-link'>
+                      More SSA documents on FederalRegister.gov
+                    </a>
+                  </div>
+                </Grid>
+              </Grid>
+              <Grid row className="row-mobile-divider"></Grid>
+            </GridContainer>
+
             <GridContainer className='result-divider'>
               <Grid row gap="md">
               </Grid>
