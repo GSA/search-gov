@@ -48,7 +48,7 @@ class NewsSearch < FilterableSearch
   end
 
   def search
-    return unless @rss_feeds.present?
+    return if @rss_feeds.blank?
 
     ElasticNewsItem.search_for(q: @query, rss_feeds: @rss_feeds, excluded_urls: @affiliate.excluded_urls,
                                since: @since, until: @until,
@@ -61,7 +61,7 @@ class NewsSearch < FilterableSearch
   def cache_key
     date_range = ''
     if @since || @until
-      date_range << "#{@since.to_date}" if @since
+      date_range << @since.to_date.to_s if @since
       date_range << "..#{@until.to_date}" if @until
     end
     [@affiliate.id, @query, @channel, date_range, @page, @per_page].join(':')
@@ -92,7 +92,7 @@ class NewsSearch < FilterableSearch
   end
 
   def assign_rss_feed
-    @rss_feed = @affiliate.rss_feeds.find_by_id(@channel)
+    @rss_feed = @affiliate.rss_feeds.find_by(id: @channel)
   end
 
   def navigable_feeds
