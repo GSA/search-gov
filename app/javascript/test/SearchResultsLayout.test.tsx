@@ -75,7 +75,7 @@ describe('SearchResultsLayout', () => {
   });
 
   it('renders image search results', () => {
-    const resultsData = { totalPages: 2, unboundedResults: true, results: [{ title: 'test result 1', url: 'https://www.search.gov', description: 'result body', thumbnail: { url: 'https://www.search.gov/test_image.png' }, publishedDate: 'May 9th, 2023', updatedDate: 'May 10th, 2023' }] };
+    const resultsData = { totalPages: 2, unboundedResults: true, results: [{ title: 'test result 1', url: 'https://www.search.gov', description: 'result body', thumbnailUrl: 'https://www.search.gov/test_image.png', publishedDate: 'May 9th, 2023', updatedDate: 'May 10th, 2023' }] };
     render(<SearchResultsLayout params={{ query: 'foo' }} resultsData={resultsData} vertical='image' />);
     const resultTitle = screen.getByText(/test result 1/i);
     const img = Array.from(document.getElementsByClassName('result-image')).pop() as HTMLImageElement;

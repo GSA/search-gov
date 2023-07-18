@@ -16,9 +16,6 @@ interface SearchResultsLayoutProps {
     results: {
       title: string,
       url: string,
-      thumbnail?: {
-        url: string
-      },
       description: string,
       updatedDate?: string,
       publishedDate?: string,

@@ -14,9 +14,6 @@ interface ResultsProps {
   results?: {
     title: string,
     url: string,
-    thumbnail?: {
-      url: string
-    },
     description: string,
     updatedDate?: string,
     publishedDate?: string,
@@ -63,7 +60,7 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
                 <Grid row gap="md">
                   {vertical === 'image' &&
                   <Grid mobileLg={{ col: 4 }} className='result-thumbnail'>
-                    <img src={result.thumbnail?.url} className="result-image" alt={result.title}/>
+                    <img src={result.thumbnailUrl} className="result-image" alt={result.title}/>
                   </Grid>
                   }
                   <Grid col={true} className='result-meta-data'>
