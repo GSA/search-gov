@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { GridContainer, Grid, Alert } from '@trussworks/react-uswds';
+import { GridContainer, Grid } from '@trussworks/react-uswds';
 
 import { VerticalNav } from './../VerticalNav/VerticalNav';
+import { Alert } from './../Alert/Alert';
 import { getUriWithParam } from '../../utils';
 
 import './SearchBar.css';
@@ -28,14 +29,7 @@ export const SearchBar = ({ query = '' }: SearchBarProps) => {
   return (
     <div id="serp-search-bar-wrapper">
       <GridContainer>
-
-        <Grid row className='alert-wrapper'>
-          <Grid tablet={{ col: true }}>
-            <Alert type="info" heading="Informative status" headingLevel="h4">
-              We are launching a new ssa.gov. If your search does not return the content you expected, please check back soon for updated results. You may also <a className="usa-link" href="javascript:void(0);">contact our Webmaster for assistance</a>.
-            </Alert>
-          </Grid>
-        </Grid>
+        <Alert />
 
         <Grid row>
           <Grid tablet={{ col: true }}>
