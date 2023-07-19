@@ -4,11 +4,11 @@ import parse from 'html-react-parser';
 
 import { Pagination } from './../Pagination/Pagination';
 import { BestBets } from './BestBets';
-// import { HealthTopics } from './HealthTopics/HealthTopics';
-// import { ImagesPage } from './ImagesPage/ImagesPage';
-// import { RssNews } from './RssNews/RssNews';
-// import { Videos } from './Videos/Videos';
-// import { FedRegister } from './FedRegister/FedRegister';
+import { HealthTopics } from './HealthTopics/HealthTopics';
+import { ImagesPage } from './ImagesPage/ImagesPage';
+import { RssNews } from './RssNews/RssNews';
+import { Videos } from './Videos/Videos';
+import { FedRegister } from './FedRegister/FedRegister';
 
 import { truncateUrl } from '../../utils';
 
@@ -59,19 +59,19 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
         )}
         <div id="results" className="search-result-item-wrapper">
           {/* Health topics - To Do as part of backend integration */}
-          {/* <HealthTopics /> */}
+          <HealthTopics />
 
           {/* Image page Components - To do with its integration task */}
-          {/* <ImagesPage /> */}
+          <ImagesPage />
           
           {/* RSS module/page - To do with its integration task */}
-          {/* <RssNews /> */}
+          <RssNews />
 
           {/* Video module/page - To do with its integration task */}
-          {/* <Videos /> */}
+          <Videos />
 
           {/* Federal register - To do with its integration task */}
-          {/* <FedRegister /> */}
+          <FedRegister />
 
           {results && results.length > 0 ? (results.map((result, index) => {
             return (
