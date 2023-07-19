@@ -1,3 +1,4 @@
+import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 
@@ -14,6 +15,6 @@ describe('FedRegister component', () => {
     render(
       <FedRegister />
     );
-    expect(screen.getAllByText('Federal Register documents about Benefits')).toHaveLength(1);
+    expect(screen.getByText('Federal Register documents about Benefits')).toBeInTheDocument();
   });
 });
