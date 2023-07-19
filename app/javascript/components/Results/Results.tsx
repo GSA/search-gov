@@ -58,22 +58,6 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
           />
         )}
         <div id="results" className="search-result-item-wrapper">
-          
-          {/* Health topics - To Do as part of backend integration */}
-          <HealthTopics />
-
-          {/* Image page Components - To do with its integration task */}
-          <ImagesPage />
-          
-          {/* RSS module/page - To do with its integration task */}
-          <RssNews />
-
-          {/* Video module/page - To do with its integration task */}
-          <Videos />
-
-          {/* Federal register - To do with its integration task */}
-          <FedRegister />
-
           {results && results.length > 0 ? (results.map((result, index) => {
             return (
               <GridContainer key={index} className='result search-result-item'>
