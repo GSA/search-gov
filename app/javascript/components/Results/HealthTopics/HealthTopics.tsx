@@ -16,12 +16,12 @@ export const HealthTopics = () => {
                   <div className='health-topic-desc'>
                     <p>What is pneumonia? Pneumonia is an infection in one or both of the lungs. It causes the air sacs of the lungs to fill up with fluid or pus.</p>
                     <div className='related-topics'>Related topics: &nbsp;
-                      <a className="usa-link" href="javascript:void(0);">COVID-19 (Coronavirus Disease 2019)</a>, &nbsp; 
-                      <a className="usa-link" href="javascript:void(0);">Haemophilus Infections</a>, &nbsp; 
-                      <a className="usa-link" href="javascript:void(0);">Legionnaires' Disease</a>
+                      <a className="usa-link" href="">COVID-19 (Coronavirus Disease 2019)</a>, &nbsp; 
+                      <a className="usa-link" href="">Haemophilus Infections</a>, &nbsp; 
+                      <a className="usa-link" href="">Legionnaires Disease</a>
                     </div>
                     <div className='clinical-studies'>Open clinical studies and trials: &nbsp;
-                      <a className="usa-link" href="javascript:void(0);">Pneumonia</a>
+                      <a className="usa-link" href="">Pneumonia</a>
                     </div>
                   </div>
                 </Grid>

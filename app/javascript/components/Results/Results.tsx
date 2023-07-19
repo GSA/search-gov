@@ -4,11 +4,11 @@ import parse from 'html-react-parser';
 
 import { Pagination } from './../Pagination/Pagination';
 import { BestBets } from './BestBets';
-import { HealthTopics } from './HealthTopics/HealthTopics';
-import { ImagesPage } from './ImagesPage/ImagesPage';
-import { RssNews } from './RssNews/RssNews';
-import { Videos } from './Videos/Videos';
-import { FedRegister } from './FedRegister/FedRegister';
+// import { HealthTopics } from './HealthTopics/HealthTopics';
+// import { ImagesPage } from './ImagesPage/ImagesPage';
+// import { RssNews } from './RssNews/RssNews';
+// import { Videos } from './Videos/Videos';
+// import { FedRegister } from './FedRegister/FedRegister';
 
 import { truncateUrl } from '../../utils';
 

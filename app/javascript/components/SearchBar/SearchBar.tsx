@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
 
 import { VerticalNav } from './../VerticalNav/VerticalNav';
-import { Alert } from './../Alert/Alert';
+// import { Alert } from './../Alert/Alert';
 import { getUriWithParam } from '../../utils';
 
 import './SearchBar.css';

@@ -124,20 +124,20 @@
 }
 
 .video-duration{
+  background: black;
+  bottom: 0;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  margin-right: 0.75rem;
+  padding: 5px 7px 3px 10px;
   position: absolute;
   right: 0;
-  bottom: 0;
-  background: black;
-  color: #fff;
-  padding: 5px 7px 3px 10px;
-  margin-right: 0.75rem;
-  margin-bottom: 0.5rem;
 }
 
 .tri-icon{
+  border-color: transparent transparent transparent #fff;
   border-style: solid;
   border-width: 7px 0 7px 12px;
-  border-color: transparent transparent transparent #fff;
   display: inline-block;
   margin-right: 7px;
 }
@@ -154,13 +154,13 @@
 
 .news-title-wrapper-label,
 .fed-register-label{
-  margin-top: 0;
   color: #565C65;
   font-size: 1.375rem;
   font-weight: 500;
+  margin-top: 0;
 }
 
-.result-divider .grid-row.grid-gap-md{
+.result-divider .grid-row{
   border-bottom: 1px solid #A9AEB1;
   margin-bottom: 3rem;
   margin-left: -0.25rem;
@@ -168,10 +168,10 @@
 }
 
 .row-mobile-divider{
-  visibility: hidden;
   border-top: 1px solid #DFE1E2;
-  margin-top: 1.5rem;
   margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+  visibility: hidden;
 }
 
 .health-topic-wrapper{
@@ -191,16 +191,13 @@
 
 .health-topic-wrapper .health-topic-title{
   background: #1A4480;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   color: #fff;
   font-size: 1.375rem;
   font-weight: 400;
+  padding: 0.75rem 1.5rem 0.75rem 1.5rem;
   text-decoration: underline;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
 }
 
 .health-topic-wrapper .health-topic-title img{
@@ -224,16 +221,16 @@
 
 .health-topic-wrapper .related-topics,
 .health-topic-wrapper .clinical-studies{
+  color: #565C65;
   font-size: 0.875rem;
   letter-spacing: 0.5px;
-  color: #565C65;
   line-height: 150%;
 }
 
 .pages-count{
   color: #71767A;
-  line-height: normal;
   letter-spacing: 0.5px;
+  line-height: normal;
 }
 
 .comment-period{
@@ -270,11 +267,11 @@
   }
 
   .search-item-wrapper .search-result-item:nth-last-child(2) .row-mobile-divider{
-    visibility: hidden;
     margin-top: 0.5rem;
+    visibility: hidden;
   }
 
-  .search-item-wrapper .result-divider .grid-row.grid-gap-md{
+  .search-item-wrapper .result-divider .grid-row{
     margin-bottom: 2rem;
   }
 }
