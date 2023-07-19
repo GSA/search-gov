@@ -29,7 +29,8 @@ export const SearchBar = ({ query = '' }: SearchBarProps) => {
   return (
     <div id="serp-search-bar-wrapper">
       <GridContainer>
-        <Alert />
+        {/* Alert - To do with its integration task */}
+        {/* <Alert /> */}
 
         <Grid row>
           <Grid tablet={{ col: true }}>
