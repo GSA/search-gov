@@ -15,6 +15,6 @@ describe('Rss News component', () => {
     render(
       <RssNews />
     );
-    expect(screen.getAllByText('News about Benefits')).toHaveLength(1);
+    expect(screen.getByText('News about Benefits')).toBeInTheDocument();
   });
 });

@@ -1,3 +1,4 @@
+import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 
@@ -14,6 +15,6 @@ describe('HealthTopics component', () => {
     render(
       <HealthTopics />
     );
-    expect(screen.getAllByText('Haemophilus Infections')).toHaveLength(1);
+    expect(screen.getByText('Haemophilus Infections')).toBeInTheDocument();
   });
 });

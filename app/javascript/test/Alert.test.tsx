@@ -1,3 +1,4 @@
+import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 
@@ -14,6 +15,6 @@ describe('Alert component', () => {
     render(
       <Alert />
     );
-    expect(screen.getAllByText('Attention')).toHaveLength(1);
+    expect(screen.getByText('Attention')).toBeInTheDocument();
   });
 });
