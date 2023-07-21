@@ -120,13 +120,13 @@ gem 'net-http'
 # Assets-related gems
 gem 'coffee-rails', '~> 5.0.0'
 gem 'uglifier', '~> 4.2.0'
-gem 'less-rails-bootstrap', git: 'https://github.com/GSA/less-rails-bootstrap.git',
-                            branch: 'master'
+# gem 'less-rails-bootstrap', git: 'https://github.com/GSA/less-rails-bootstrap.git',
+#                             branch: 'master'
 gem 'compass-rails', '~> 4.0.0'
 gem 'compass-blueprint', '~> 1.0.0'
 gem 'jquery-ui-rails', '~> 6.0.1'
 gem 'jquery-rails', '~> 4.4.0'
-gem 'therubyracer', '~> 0.12.3'
+gem "mini_racer", "~> 0.8.0"
 gem 'yui-compressor', '~> 0.12.0'
 gem 'twitter-typeahead-rails', '~> 0.11.1'
 # Why do we have two versions of Font Awesome?

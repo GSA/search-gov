@@ -25,14 +25,6 @@ GIT
       multi_json
 
 GIT
-  remote: https://github.com/GSA/less-rails-bootstrap.git
-  revision: 594b4c0e4d7f458a71709f4fbe6bc94a913792eb
-  branch: master
-  specs:
-    less-rails-bootstrap (3.3.5.0)
-      less-rails (>= 3.0)
-
-GIT
   remote: https://github.com/GSA/resque-priority.git
   revision: bc5dca990d6370ad7eaa01d0b986c90f541a4d18
   specs:
@@ -248,7 +240,6 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     colorize (0.8.1)
-    commonjs (0.2.7)
     compass (1.0.3)
       chunky_png (~> 1.2)
       compass-core (~> 1.0.2)
@@ -468,13 +459,7 @@ GEM
       terrapin (~> 0.6.0)
     launchy (2.5.2)
       addressable (~> 2.8)
-    less (2.6.0)
-      commonjs (~> 0.2.7)
-    less-rails (5.0.0)
-      actionpack (>= 5.0)
-      less (~> 2.6.0)
-      sprockets (~> 3.0)
-    libv8 (3.16.14.19)
+    libv8-node (18.16.0.0)
     llhttp-ffi (0.4.0)
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
@@ -492,6 +477,8 @@ GEM
     mime-types-data (3.2023.0218.1)
     mini_mime (1.1.2)
     mini_portile2 (2.8.2)
+    mini_racer (0.8.0)
+      libv8-node (~> 18.16.0.0)
     minitest (5.18.0)
     moneta (1.6.0)
     mono_logger (1.1.2)
@@ -628,7 +615,6 @@ GEM
       redis (>= 4, < 6)
     redlock (1.3.2)
       redis (>= 3.0.0, < 6.0)
-    ref (2.0.0)
     regexp_parser (2.8.0)
     reline (0.3.4)
       io-console (~> 0.5)
@@ -784,9 +770,6 @@ GEM
       unicode-display_width (>= 1.1.1, < 3)
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
-    therubyracer (0.12.3)
-      libv8 (~> 3.16.14.15)
-      ref
     thor (1.2.2)
     thread_safe (0.3.6)
     tilt (2.1.0)
@@ -906,10 +889,10 @@ DEPENDENCIES
   jquery-ui-rails (~> 6.0.1)
   kt-paperclip (~> 7.1.0)
   launchy (~> 2.5)
-  less-rails-bootstrap!
   loofah (~> 2.19.1)
   mail (~> 2.7.1)
   medusa!
+  mini_racer (~> 0.8.0)
   mysql2 (~> 0.5.0)
   net-http
   net-http-persistent (~> 2.9.3)
@@ -959,7 +942,6 @@ DEPENDENCIES
   shoulda-kept-assign-to (~> 1.1)
   shoulda-matchers (~> 5.0)
   simplecov (~> 0.17.0)
-  therubyracer (~> 0.12.3)
   truncator (~> 0.1.7)
   turbolinks (~> 5.2.1)
   twitter-typeahead-rails (~> 0.11.1)
