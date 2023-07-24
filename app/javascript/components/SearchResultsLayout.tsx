@@ -98,7 +98,7 @@ const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params 
         isBasic={isBasicHeader()} 
       />
      
-      <div className="usa-section">
+      <div className="usa-section serp-result-wrapper">
         <Facets />
         <SearchBar 
           query={params.query}
