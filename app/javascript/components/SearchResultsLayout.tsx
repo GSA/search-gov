@@ -79,7 +79,7 @@ interface SearchResultsLayoutProps {
   params?: {
     query?: string
   };
-  locale: Record<string, any>;
+  locale: Record<string, string>;
 }
 
 // To be updated

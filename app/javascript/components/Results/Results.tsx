@@ -46,7 +46,7 @@ interface ResultsProps {
   totalPages: number | null;
   vertical: string;
   locale: {
-    t(key: string, values: Record<string, any>): string;
+    t(key: string, values: Record<string, string>): string;
   };
 }
 
@@ -111,7 +111,7 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
             <GridContainer className='result search-result-item'>
               <Grid row>
                 <Grid tablet={{ col: true }}>
-                  <h4>{locale.t('no_results_for_and_try', { query: query })}</h4>
+                  <h4>{locale.t('no_results_for_and_try', { query })}</h4>
                 </Grid>
               </Grid>
             </GridContainer>)}
