@@ -1,5 +1,5 @@
 import React from 'react';
-import { I18n } from "i18n-js";
+import { I18n } from 'i18n-js';
 
 import './SearchResultsLayout.css';
 
@@ -79,7 +79,7 @@ interface SearchResultsLayoutProps {
   params?: {
     query?: string
   };
-  locale: {};
+  locale: Record<string, any>;
 }
 
 // To be updated

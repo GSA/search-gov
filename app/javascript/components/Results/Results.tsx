@@ -46,7 +46,7 @@ interface ResultsProps {
   totalPages: number | null;
   vertical: string;
   locale: {
-    t(key: string, values: {}): string;
+    t(key: string, values: Record<string, any>): string;
   };
 }
 
