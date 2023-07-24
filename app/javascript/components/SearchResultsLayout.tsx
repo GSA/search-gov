@@ -1,4 +1,5 @@
 import React from 'react';
+import { I18n } from "i18n-js";
 
 import './SearchResultsLayout.css';
 
@@ -78,6 +79,7 @@ interface SearchResultsLayoutProps {
   params?: {
     query?: string
   };
+  locale: {};
 }
 
 // To be updated
@@ -90,7 +92,8 @@ const isBasicHeader = (): boolean => {
   return true;
 };
 
-const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {} }: SearchResultsLayoutProps) => {
+const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, locale }: SearchResultsLayoutProps) => {
+  const i18n = new I18n(locale);
   return (
     <>
       <Header 
@@ -112,12 +115,14 @@ const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params 
             query={params.query}
             unboundedResults={resultsData.unboundedResults}
             additionalResults={additionalResults}
+            locale={i18n}
           />) : params.query ? (
           <Results 
             vertical={vertical}
             totalPages={null}
             query={params.query}
             unboundedResults={true}
+            locale={i18n}
           />) : <></>}
       </div>
 
