@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "test": "jest",
-    "test:coverage": "jest --coverage",
+    "test:coverage": "jest --coverage --runInBand --no-cache",
     "lint:react": "codeclimate analyze -f text -e eslint app/javascript/components/ > coverage/lint-report"
   },
   "dependencies": {
@@ -64,7 +64,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^29.3.1",
+    "jest": "^29.6.1",
     "jest-environment-jsdom": "^29.3.1",
     "react-refresh": "^0.14.0",
     "ts-jest": "^29.0.5"
