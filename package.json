@@ -5,6 +5,8 @@
     "test": "jest",
     "test:coverage": "jest --coverage --runInBand --no-cache",
     "lint:react": "codeclimate analyze -f text -e eslint app/javascript/components/ > coverage/lint-report"
+    "build:css": "bin/css",
+    "build:less": "lessc ./app/assets/stylesheets/$FILE.css ./app/assets/builds/$FILE.css --rootpath=./app/assets/stylesheets --math=always --include-path='./vendor/assets/stylesheets:./node_modules'"
   },
   "dependencies": {
     "@babel/core": "^7.19.6",
