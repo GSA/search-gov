@@ -4,11 +4,15 @@ import parse from 'html-react-parser';
 
 import { Pagination } from './../Pagination/Pagination';
 import { BestBets } from './BestBets';
+// import { HealthTopics } from './HealthTopics/HealthTopics';
+// import { ImagesPage } from './ImagesPage/ImagesPage';
+// import { RssNews } from './RssNews/RssNews';
+// import { Videos } from './Videos/Videos';
+// import { FedRegister } from './FedRegister/FedRegister';
 
 import { truncateUrl } from '../../utils';
 
 import './Results.css';
-
 interface ResultsProps {
   query?: string
   results?: {
@@ -54,6 +58,21 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
           />
         )}
         <div id="results" className="search-result-item-wrapper">
+          {/* Health topics - To Do as part of backend integration */}
+          {/* <HealthTopics /> */}
+
+          {/* Image page Components - To do with its integration task */}
+          {/* <ImagesPage /> */}
+          
+          {/* RSS module/page - To do with its integration task */}
+          {/* <RssNews /> */}
+
+          {/* Video module/page - To do with its integration task */}
+          {/* <Videos /> */}
+
+          {/* Federal register - To do with its integration task */}
+          {/* <FedRegister /> */}
+
           {results && results.length > 0 ? (results.map((result, index) => {
             return (
               <GridContainer key={index} className='result search-result-item'>
@@ -81,6 +100,7 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
                     </div>
                   </Grid>
                 </Grid>
+                <Grid row className="row-mobile-divider"></Grid>
               </GridContainer>
             );
           })) : (

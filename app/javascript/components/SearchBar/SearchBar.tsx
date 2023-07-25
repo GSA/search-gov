@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
 
 import { VerticalNav } from './../VerticalNav/VerticalNav';
+// import { Alert } from './../Alert/Alert';
 import { getUriWithParam } from '../../utils';
 
 import './SearchBar.css';
@@ -28,6 +29,9 @@ export const SearchBar = ({ query = '' }: SearchBarProps) => {
   return (
     <div id="serp-search-bar-wrapper">
       <GridContainer>
+        {/* Alert - To do with its integration task */}
+        {/* <Alert /> */}
+
         <Grid row>
           <Grid tablet={{ col: true }}>
             <form 
