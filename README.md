@@ -203,9 +203,9 @@ To run test searches, you will need a working Bing API key. You can request one 
   bing_v7:
     web_subscription_id: *****
 ```
-2. Start your local rails server:
+2. Start your local development environment:
 ```
-rails server
+bin/dev
 ```
 3. Test searches should return results:
 
