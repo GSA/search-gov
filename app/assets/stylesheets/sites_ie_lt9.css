@@ -1,3 +1,13 @@
-/*
- *= require sites/ie_lt9
- */
+#pin-site .btn .description, #envelope-snapshot-toggle .btn .description, #filtered-analytics-toggle .btn .description {
+  background-color: #999;
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+}
+
+#pin-site .btn .description.label-warning, #envelope-snapshot-toggle .btn .description.label-warning, #filtered-analytics-toggle .btn .description.label-warning {
+  background-color: #F89406;
+}
+#envelope-snapshot-toggle, #filtered-analytics-toggle {
+  margin-left: 10px;
+}

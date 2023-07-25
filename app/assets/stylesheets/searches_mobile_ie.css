@@ -1,3 +1,20 @@
-/*
- *= require searches/ie
- */
+#search-bar #search-button {
+  font: 0/0 a;
+}
+
+a:focus {
+  outline: 3px solid #EDB864 !important;
+}
+
+#search .pagination a, #search .pagination span {
+  outline: 0;
+  border: 2px solid transparent;
+}
+
+#search .pagination a:focus, #search .pagination span:focus {
+  border-color: #EDB864;
+}
+
+.icon {
+  margin-top: -1px;
+}
