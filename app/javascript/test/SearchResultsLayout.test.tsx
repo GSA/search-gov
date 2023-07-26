@@ -5,9 +5,9 @@ import SearchResultsLayout from '../components/SearchResultsLayout';
 
 const locale = {
   en: {
-    noResultsForAndTry: "Sorry, no results found for '%{query}'. Try entering fewer or more general search terms."
+    noResultsForAndTry: 'Sorry, no results found for \'%{query}\'. Try entering fewer or more general search terms.'
   }
-}
+};
 
 jest.mock('i18n-js', () => {
   return jest.requireActual('i18n-js/dist/require/index');
