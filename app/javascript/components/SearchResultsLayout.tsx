@@ -79,7 +79,9 @@ interface SearchResultsLayoutProps {
   params?: {
     query?: string
   };
-  locale: Record<string, string>;
+  locale: {
+    en?: { noResultsForAndTry: string }
+  };
 }
 
 // To be updated

@@ -111,7 +111,7 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
             <GridContainer className='result search-result-item'>
               <Grid row>
                 <Grid tablet={{ col: true }}>
-                  <h4>{locale.t('no_results_for_and_try', { query })}</h4>
+                  <h4>{locale.t('noResultsForAndTry', { query })}</h4>
                 </Grid>
               </Grid>
             </GridContainer>)}
