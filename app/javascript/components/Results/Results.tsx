@@ -13,6 +13,7 @@ import { BestBets } from './BestBets';
 import { truncateUrl } from '../../utils';
 
 import './Results.css';
+
 interface ResultsProps {
   query?: string
   results?: {
@@ -44,9 +45,12 @@ interface ResultsProps {
   unboundedResults: boolean;
   totalPages: number | null;
   vertical: string;
+  locale: {
+    t(key: string, values: Record<string, string>): string;
+  };
 }
 
-export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical }: ResultsProps) => {
+export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical, locale }: ResultsProps) => {
   const URL_LENGTH = 80;
   return (
     <>
@@ -107,7 +111,7 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
             <GridContainer className='result search-result-item'>
               <Grid row>
                 <Grid tablet={{ col: true }}>
-                  <h4>Sorry, no results found for &#39;{query}&#39;. Try entering fewer or more general search terms.</h4>
+                  <h4>{locale.t('noResultsForAndTry', { query })}</h4>
                 </Grid>
               </Grid>
             </GridContainer>)}
