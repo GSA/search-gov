@@ -95,7 +95,7 @@ const isBasicHeader = (): boolean => {
 };
 
 const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, locale }: SearchResultsLayoutProps) => {
-  const [ language ] = Object.keys(locale);
+  const [language] = Object.keys(locale);
   const i18n = new I18n(locale);
   i18n.locale = language;
 
