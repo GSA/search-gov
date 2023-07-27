@@ -4,6 +4,7 @@ import parse from 'html-react-parser';
 
 import { Pagination } from './../Pagination/Pagination';
 import { BestBets } from './BestBets';
+import { NoResults } from './NoResults/NoResults';
 // import { HealthTopics } from './HealthTopics/HealthTopics';
 // import { ImagesPage } from './ImagesPage/ImagesPage';
 // import { RssNews } from './RssNews/RssNews';
@@ -104,13 +105,8 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
               </GridContainer>
             );
           })) : (
-            <GridContainer className='result search-result-item'>
-              <Grid row>
-                <Grid tablet={{ col: true }}>
-                  <h4>Sorry, no results found for &#39;{query}&#39;. Try entering fewer or more general search terms.</h4>
-                </Grid>
-              </Grid>
-            </GridContainer>)}
+            <NoResults query={query} />
+            )}
         </div>
       </div>
       <Pagination 

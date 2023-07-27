@@ -64,7 +64,7 @@ export const SearchBar = ({ query = '' }: SearchBarProps) => {
         
         {!query &&
         <Grid row>
-          <Grid tablet={{ col: true }}><h4>Please enter a search term in the box above.</h4></Grid>
+          <Grid tablet={{ col: true }}><h4 className='no-result-error'>Please enter a search term in the box above.</h4></Grid>
         </Grid>}
       </GridContainer>
     </div>

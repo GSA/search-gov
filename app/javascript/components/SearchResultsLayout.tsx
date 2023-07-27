@@ -91,6 +91,7 @@ const isBasicHeader = (): boolean => {
 };
 
 const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {} }: SearchResultsLayoutProps) => {
+  console.log({resultsData, additionalResults, vertical, params});
   return (
     <>
       <Header 
