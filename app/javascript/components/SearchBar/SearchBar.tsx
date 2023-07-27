@@ -10,9 +10,12 @@ import './SearchBar.css';
 const logoImg = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0Ij48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PHBhdGggZmlsbD0iI2ZmZmZmZiIgZD0iTTE1LjUgMTRoLS43OWwtLjI4LS4yN0MxNS40MSAxMi41OSAxNiAxMS4xMSAxNiA5LjUgMTYgNS45MSAxMy4wOSAzIDkuNSAzUzMgNS45MSAzIDkuNSA1LjkxIDE2IDkuNSAxNmMxLjYxIDAgMy4wOS0uNTkgNC4yMy0xLjU3bC4yNy4yOHYuNzlsNSA0Ljk5TDIwLjQ5IDE5bC00Ljk5LTV6bS02IDBDNy4wMSAxNCA1IDExLjk5IDUgOS41UzcuMDEgNSA5LjUgNSAxNCA3LjAxIDE0IDkuNSAxMS45OSAxNCA5LjUgMTR6Ii8+PC9zdmc+';
 interface SearchBarProps {
   query?: string;
+  locale: {
+    t(key: string): string;
+  };
 }
 
-export const SearchBar = ({ query = '' }: SearchBarProps) => {
+export const SearchBar = ({ query = '', locale }: SearchBarProps) => {
   const [searchQuery, setSearchQuery] = useState(query);
   const searchUrlParam = 'query';
 
@@ -64,7 +67,11 @@ export const SearchBar = ({ query = '' }: SearchBarProps) => {
         
         {!query &&
         <Grid row>
-          <Grid tablet={{ col: true }}><h4 className='no-result-error'>Please enter a search term in the box above.</h4></Grid>
+          <Grid tablet={{ col: true }}>
+            <h4 className='no-result-error'>
+              {locale.t('emptyQuery')}
+            </h4>
+          </Grid>
         </Grid>}
       </GridContainer>
     </div>

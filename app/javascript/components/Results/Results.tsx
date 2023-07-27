@@ -14,6 +14,7 @@ import { NoResults } from './NoResults/NoResults';
 import { truncateUrl } from '../../utils';
 
 import './Results.css';
+
 interface ResultsProps {
   query?: string
   results?: {
@@ -45,9 +46,12 @@ interface ResultsProps {
   unboundedResults: boolean;
   totalPages: number | null;
   vertical: string;
+  locale: {
+    t(key: string, values: Record<string, string>): string;
+  };
 }
 
-export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical }: ResultsProps) => {
+export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical, locale }: ResultsProps) => {
   const URL_LENGTH = 80;
   return (
     <>
@@ -105,7 +109,7 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
               </GridContainer>
             );
           })) : (
-            <NoResults query={query} />
+            <NoResults errorMsg={locale.t('noResultsForAndTry', { query })} />
             )}
         </div>
       </div>

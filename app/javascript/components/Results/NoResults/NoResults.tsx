@@ -4,16 +4,16 @@ import { GridContainer, Grid } from '@trussworks/react-uswds';
 import './NoResults.css';
 
 interface NoResultsProps {
-  query?: string
+  errorMsg?: string
 }
 
-export const NoResults = ({ query = '' }: NoResultsProps) => {
+export const NoResults = ({ errorMsg = '' }: NoResultsProps) => {
   return (
     <GridContainer className='result search-result-item'>
       <Grid row>
         <Grid tablet={{ col: true }}>
           <div className='no-result-error'>
-            Sorry, no results found for <span className='query'>&#39;{query}&#39;</span>. Try entering fewer or more general search terms.
+            {errorMsg}
           </div>
           {/* To do: dynamic */}
           {/* https://github.com/GSA/search-gov/blob/main/app/views/searches/_no_results.html.haml */}
