@@ -1,1 +1,1 @@
-= react_component("SearchResultsLayout", { resultsData: @search.format_results, params: @search_params, vertical: @search_vertical })
+= react_component("SearchResultsLayout", { resultsData: @search.format_results, params: @search_params, vertical: @search_vertical, locale: YAML.load_file("config/locales/#{@affiliate.locale}.yml") })
