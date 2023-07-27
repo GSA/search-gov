@@ -18,7 +18,7 @@ export const NoResults = ({ errorMsg = '' }: NoResultsProps) => {
           {/* To do: dynamic */}
           {/* https://github.com/GSA/search-gov/blob/main/app/views/searches/_no_results.html.haml */}
           <div className='additional-guidance-text'>
-            Are you looking for information from across government? Please search again on USA.gov. Click the "Search again on USA.gov" link above the search button here, or use the link below to go to the main USA.gov website. Search.gov is a service powering the search boxes on government agencies' websites. You are currently searching the Search.gov website, and this website only contains information about our service.
+            Are you looking for information from across government? Please search again on USA.gov. Click the &quot;Search again on USA.gov&quot; link above the search button here, or use the link below to go to the main USA.gov website. Search.gov is a service powering the search boxes on government agencies websites. You are currently searching the Search.gov website, and this website only contains information about our service.
           </div>
           <div className='search-tips'>
             <div className='search-tips-label'>Search Tips</div>

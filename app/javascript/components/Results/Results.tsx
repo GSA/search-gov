@@ -110,7 +110,7 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
             );
           })) : (
             <NoResults errorMsg={locale.t('noResultsForAndTry', { query })} />
-            )}
+          )}
         </div>
       </div>
       <Pagination 
