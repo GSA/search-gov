@@ -96,6 +96,8 @@ const isBasicHeader = (): boolean => {
 
 const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, locale }: SearchResultsLayoutProps) => {
   const i18n = new I18n(locale);
+  i18n.locale = Object.keys(locale)[0];
+
   return (
     <>
       <Header 
