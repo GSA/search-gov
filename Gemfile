@@ -120,8 +120,6 @@ gem 'net-http'
 # Assets-related gems
 gem 'coffee-rails', '~> 5.0.0'
 gem 'uglifier', '~> 4.2.0'
-# gem 'less-rails-bootstrap', git: 'https://github.com/GSA/less-rails-bootstrap.git',
-#                             branch: 'master'
 gem 'compass-rails', '~> 4.0.0'
 gem 'compass-blueprint', '~> 1.0.0'
 gem 'jquery-ui-rails', '~> 6.0.1'
@@ -141,21 +139,16 @@ gem 'font-awesome-rails', '~> 4.7.0'
 gem 'font-awesome-grunticon-rails',
     git: 'https://github.com/gsa/font-awesome-grunticon-rails',
     ref: '8ad9734a65f7e2d2de934bebe4ee7b460734f96e'
-# execjs 2.8 removed support for therubyracer:
-# https://github.com/rails/execjs/releases/tag/v2.8.0
-# Locking the version to 2.7.x until we remove or replace therubyracer
-gem 'execjs', '~> 2.7.0'
 gem 'react-rails', '~> 2.7.0'
 # Locking to prevent a version mismatch between the gem and the NPM package version
 # See https://github.com/shakacode/shakapacker#upgrading
 gem 'shakapacker', '6.5.4'
+gem 'cssbundling-rails', '~> 1.2' # Management of css (Less) files conversion
+
 # Temporarily locking the 'mail' version until the next version of Rails is released
 # https://github.com/rails/rails/pull/46650
 gem 'mail', '~> 2.7.1'
 gem 'feedjira', '~> 3.2'
-
-# Management of Less files conversion
-gem 'cssbundling-rails', '~> 1.2'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
