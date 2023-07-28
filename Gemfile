@@ -155,7 +155,7 @@ gem 'mail', '~> 2.7.1'
 gem 'feedjira', '~> 3.2'
 
 # Management of Less files conversion
-gem "cssbundling-rails", "~> 1.2"
+gem 'cssbundling-rails', '~> 1.2'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators

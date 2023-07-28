@@ -1,3 +1,5 @@
+/* csslint ids:false, important:false, outline-none:false */
+
 #search-bar #search-button {
   font: 0/0 a;
 }
@@ -7,8 +9,8 @@ a:focus {
 }
 
 #search .pagination a, #search .pagination span {
-  outline: 0;
   border: 2px solid transparent;
+  outline: 0;
 }
 
 #search .pagination a:focus, #search .pagination span:focus {
