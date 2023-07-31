@@ -1,1 +1,1 @@
-= react_component("SearchResultsLayout", { resultsData: @search.normalized_results, additionalResults: @search.govbox_set, params: @search_params, vertical: @search_vertical }.compact )
+= react_component("SearchResultsLayout", { resultsData: @search.normalized_results, additionalResults: @search.govbox_set, params: @search_params, vertical: @search_vertical, locale: YAML.load_file("config/locales/#{@affiliate.locale}.yml") }.compact )
