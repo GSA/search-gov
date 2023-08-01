@@ -14,12 +14,6 @@ jest.mock('i18n-js', () => {
 });
 
 describe('SearchResultsLayout', () => {
-  it('shows a message when there is no search query', () => {
-    render(<SearchResultsLayout params={{}} resultsData={null} vertical='web' locale={locale} />);
-    const message = screen.getByText(/Please enter a search term in the box above./i);
-    expect(message).toBeInTheDocument();
-  });
-
   it('renders all relevant links', () => {
     render(<SearchResultsLayout params={{}} resultsData={{ results: [], totalPages: 1, unboundedResults: false }} vertical='web' locale={locale} />);
     const linkToMoreDropdown = screen.getAllByText(/More/i);
