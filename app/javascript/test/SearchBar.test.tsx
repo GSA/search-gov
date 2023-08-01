@@ -25,7 +25,7 @@ describe('SearchBar', () => {
     const searchInput = screen.getByTestId('search-field');
     const searchBtn = screen.getByTestId('search-submit-btn');
 
-    fireEvent.change(searchInput, { target: { value: '' } });
+    fireEvent.change(searchInput, { target: { value: 'ssn' } });
     fireEvent.click(searchBtn);
 
     const inputTextWithResults = screen.getByText(/Please enter a search term in the box above./i);
