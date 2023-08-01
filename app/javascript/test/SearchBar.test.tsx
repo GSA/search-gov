@@ -1,11 +1,26 @@
 import '@testing-library/jest-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
 import React from 'react';
+import { I18n } from 'i18n-js';
 import { SearchBar } from '../components/SearchBar/SearchBar';
+
+const locale = {
+  en: {
+    emptyQuery: 'Please enter a search term in the box above.'
+  }
+};
+
+jest.mock('i18n-js', () => {
+  return jest.requireActual('i18n-js/dist/require/index');
+});
+
+const [language] = Object.keys(locale);
+const i18n = new I18n(locale);
+i18n.locale = language;
 
 describe('SearchBar', () => {
   it('Search Bar with No Query', () => {
-    render(<SearchBar />);
+    render(<SearchBar query="" locale={i18n}/>);
 
     const searchInput = screen.getByTestId('search-field');
     const searchBtn = screen.getByTestId('search-submit-btn');
