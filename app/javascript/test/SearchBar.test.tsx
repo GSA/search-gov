@@ -14,9 +14,7 @@ jest.mock('i18n-js', () => {
   return jest.requireActual('i18n-js/dist/require/index');
 });
 
-const [language] = Object.keys(locale);
 const i18n = new I18n(locale);
-i18n.locale = language;
 
 describe('SearchBar', () => {
   it('Search Bar with No Query', () => {
