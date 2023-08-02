@@ -28,4 +28,13 @@ class ResultsPostProcessor
 
     HTML_Truncator.truncate(html, DEFAULT_TRUNCATED_HTML_LENGTH, DEFAULT_TRUNCATE_OPTIONS)
   end
+
+  def rss_module(news_results)
+    news_results.map do |news_item|
+      {
+        title: news_item.title,
+        url: news_item.link,
+        publishedAt: news_item.published_at
+      }
+  end
 end

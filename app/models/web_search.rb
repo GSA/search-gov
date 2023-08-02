@@ -135,12 +135,16 @@ class WebSearch < Search
 
   def post_process_results(results)
     post_processor = WebResultsPostProcessor.new(@query, @affiliate, results)
-    @normalized_results = process_data_for_redesign(post_processor)
+    process_data_for_redesign(post_processor)
     post_processor.post_processed_results
   end
 
   def process_data_for_redesign(post_processor)
-    post_processor.normalized_results(@total)
+    if has_news_items?
+      @rss_module = post_processor.rss_module(news_items.results.first(3))
+    end
+
+    @normalized_results = post_processor.normalized_results(@total)
   end
 
   def populate_additional_results

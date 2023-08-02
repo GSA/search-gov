@@ -103,7 +103,7 @@ class I14ySearch < FilterableSearch
     post_processor = I14yPostProcessor.new(@enable_highlighting, response.results, @affiliate.excluded_urls_set)
     post_processor.post_process_results
     @results = paginate(response.results)
-    @normalized_results = process_data_for_redesign(post_processor)
+    process_data_for_redesign(post_processor)
     @startrecord = ((@page - 1) * @per_page) + 1
     @endrecord = @startrecord + @results.size - 1
     @spelling_suggestion = response.metadata.suggestion.text if response.metadata.suggestion.present?
@@ -111,7 +111,12 @@ class I14ySearch < FilterableSearch
   end
 
   def process_data_for_redesign(post_processor)
-    post_processor.normalized_results(@total)
+    @normalized_results = post_processor.normalized_results(@total)
+    if has_news_items?
+      @rss_module = post_processor.rss_module(news_items.results.first(3))
+      end
+    end
+    
   end
 
   def populate_additional_results
