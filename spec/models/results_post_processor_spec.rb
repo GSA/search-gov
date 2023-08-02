@@ -21,6 +21,26 @@ describe ResultsPostProcessor do
     end
   end
 
+  describe '#rss_module' do
+    subject(:rss_results) { described_class.new.rss_module(news_results) }
+
+    let(:news_results) { [Hashie::Mash::Rash.new(title: 'News item 0', link: 'http://search.gov/news0', published_at: '09-01-2022'), Hashie::Mash::Rash.new(title: 'News item 1', link: 'http://search.gov/news1', published_at: '09-01-2022')] }
+
+    it 'returns rss results' do
+      rss_results.each_with_index do |result, index|
+        expect(result).to eq({ title: "News item #{index}", url: "http://search.gov/news#{index}", publishedAt: '09-01-2022' })
+      end
+    end
+
+    context 'when there are no results' do
+      let(:news_results) { [] }
+
+      it 'returns nil' do
+        expect(rss_results).to be_empty
+      end
+    end
+  end
+
   describe '#truncate_description' do
     subject(:truncated_description) { described_class.new.truncate_description(html) }
 

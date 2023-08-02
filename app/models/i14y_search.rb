@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/ClassLength
 class I14ySearch < FilterableSearch
   include SearchInitializer
   include Govboxable
@@ -141,3 +142,4 @@ class I14ySearch < FilterableSearch
     @formatted_query_instance ||= I14yFormattedQuery.new(@query, domains_scope_options)
   end
 end
+# rubocop:enable Metrics/ClassLength
