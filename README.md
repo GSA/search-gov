@@ -303,3 +303,10 @@ Example:
 
 ### Additional developer resources
 * [Local i14y setup](https://github.com/GSA/search-gov/wiki/Setting-up-i14y-with-usasearch-for-development)
+
+## Production
+
+Precompile assets
+```
+bin/rails assets:precompile
+```
