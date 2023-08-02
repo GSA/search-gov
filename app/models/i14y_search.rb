@@ -111,12 +111,11 @@ class I14ySearch < FilterableSearch
   end
 
   def process_data_for_redesign(post_processor)
-    @normalized_results = post_processor.normalized_results(@total)
     if has_news_items?
       @rss_module = post_processor.rss_module(news_items.results.first(3))
-      end
     end
-    
+
+    @normalized_results = post_processor.normalized_results(@total)
   end
 
   def populate_additional_results

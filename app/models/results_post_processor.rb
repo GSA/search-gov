@@ -36,5 +36,6 @@ class ResultsPostProcessor
         url: news_item.link,
         publishedAt: news_item.published_at
       }
+    end
   end
 end
