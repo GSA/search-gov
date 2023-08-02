@@ -23,6 +23,11 @@ interface SearchResultsLayoutProps {
       thumbnailUrl?: string
     }[] | null;
   } | null;
+  rssModule?: {
+    title: string,
+    url: string,
+    publishedAt: string
+  }[];
   additionalResults?: {
     recommendedBy: string;
     textBestBets?: {
