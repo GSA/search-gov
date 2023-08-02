@@ -4,6 +4,7 @@ import parse from 'html-react-parser';
 
 import { Pagination } from './../Pagination/Pagination';
 import { BestBets } from './BestBets';
+import { NoResults } from './NoResults/NoResults';
 // import { HealthTopics } from './HealthTopics/HealthTopics';
 // import { ImagesPage } from './ImagesPage/ImagesPage';
 // import { RssNews } from './RssNews/RssNews';
@@ -108,13 +109,8 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
               </GridContainer>
             );
           })) : (
-            <GridContainer className='result search-result-item'>
-              <Grid row>
-                <Grid tablet={{ col: true }}>
-                  <h4>{locale.t('noResultsForAndTry', { query })}</h4>
-                </Grid>
-              </Grid>
-            </GridContainer>)}
+            <NoResults errorMsg={locale.t('noResultsForAndTry', { query })} />
+          )}
         </div>
       </div>
       <Pagination 

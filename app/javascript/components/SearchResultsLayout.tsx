@@ -110,6 +110,7 @@ const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params 
         <Facets />
         <SearchBar 
           query={params.query}
+          locale={i18n}
         />
         {/* This ternary is needed to handle the case when Bing pagination leads to a page with no results */}
         {resultsData ? (
