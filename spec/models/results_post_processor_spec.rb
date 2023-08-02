@@ -33,10 +33,10 @@ describe ResultsPostProcessor do
     end
 
     context 'when there are no results' do
-      let(:news_results) { [] }
+      let(:news_results) { nil }
 
       it 'returns nil' do
-        expect(rss_results).to be_empty
+        expect(rss_results).to be_nil
       end
     end
   end

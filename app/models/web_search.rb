@@ -140,9 +140,7 @@ class WebSearch < Search
   end
 
   def process_data_for_redesign(post_processor)
-    if has_news_items?
-      @rss_module = post_processor.rss_module(news_items.results.first(3))
-    end
+    @rss_module = post_processor.rss_module(news_items&.results&.first(3))
 
     @normalized_results = post_processor.normalized_results(@total)
   end

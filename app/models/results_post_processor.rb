@@ -30,6 +30,8 @@ class ResultsPostProcessor
   end
 
   def rss_module(news_results)
+    return unless news_results
+
     news_results.map do |news_item|
       {
         title: news_item.title,
