@@ -23,7 +23,7 @@
 }
 
 .search-result-item .result-title-label{
-  color: #1A4480;
+  color: #005EA2;
   font-size: 1.375rem;
   font-weight: 400;
   margin-bottom: 0.35rem;
@@ -147,13 +147,15 @@
 }
 
 .news-title-wrapper,
-.fed-register-wrapper{
+.fed-register-wrapper,
+.jobs-title-wrapper{
   padding-left: 2.5rem;
   padding-right: 2.5rem;
 }
 
 .news-title-wrapper-label,
-.fed-register-label{
+.fed-register-label,
+.jobs-title-wrapper-label{
   color: #565C65;
   font-size: 1.375rem;
   font-weight: 500;
@@ -246,8 +248,17 @@
 }
 
 .more-fed-register-link{
-  color: #1A4480;
+  color: #005EA2;
   text-decoration: none;
+}
+
+.jobs-logo-wrapper{
+  text-align: right;
+}
+
+.more-jobs-title-link .result-title-label{
+  font-size: 1rem;
+  margin-bottom: 2rem;
 }
 
 /* Media Queries */
@@ -258,8 +269,18 @@
   }
 
   .news-title-wrapper,
-  .fed-register-wrapper{
+  .fed-register-wrapper,
+  .jobs-title-wrapper{
     padding-left: 1rem;
+  }
+
+  .jobs-title-wrapper .grid-row{
+    flex-direction: column-reverse;
+  }
+
+  .jobs-logo-wrapper{
+    margin-bottom: 1rem;
+    text-align: left;
   }
 
   .row-mobile-divider{
