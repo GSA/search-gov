@@ -1,5 +1,5 @@
 import React from 'react';
-import { GridContainer, Grid, Icon } from '@trussworks/react-uswds';
+import { GridContainer, Grid } from '@trussworks/react-uswds';
 import { useCollapse } from 'react-collapsed';
 
 import './Jobs.css';

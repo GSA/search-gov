@@ -1,21 +1,21 @@
-.view_more_less_jobs.usa-nav__primary button[aria-expanded=false] span::after {
+.view_more_less_jobs button[aria-expanded=false] span::after {
   background: none;
   background-color: #005EA2;
   -webkit-mask: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0Ij48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTE2LjU5IDguNTlMMTIgMTMuMTcgNy40MSA4LjU5IDYgMTBsNiA2IDYtNnoiLz48L3N2Zz4=) no-repeat center/contain;
   mask: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0Ij48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTE2LjU5IDguNTlMMTIgMTMuMTcgNy40MSA4LjU5IDYgMTBsNiA2IDYtNnoiLz48L3N2Zz4=) no-repeat center/contain;
 }
 
-.view_more_less_jobs.usa-nav__primary .usa-accordion__button{
+.view_more_less_jobs .usa-accordion__button{
   background: none;
   padding: 7px;
 }
 
-.view_more_less_jobs.usa-nav__primary .usa-accordion__button span{
+.view_more_less_jobs .usa-accordion__button span{
   color: #005EA2;
   font-weight: 400;
 }
 
-.view_more_less_jobs.usa-nav__primary .usa-accordion__button span::after {
+.view_more_less_jobs .usa-accordion__button span::after {
   background-color: #005EA2;
   right: 4px;
   top: 6px;
@@ -23,21 +23,23 @@
 }
 
 .list-horizontal{
-  padding-left: 0;
   margin-top: 0;
   margin-bottom: 0;
+  padding-left: 0;
 }
 
 .list-horizontal li {
 	display:inline-block;
 }
+
 .list-horizontal li:before {
+  color:#000;
 	content: '\00a0\2022\00a0\00a0';
-	color:#000;
 	font-size: 14px;
   padding-left: 10px;
   padding-right: 5px;
 }
+
 .list-horizontal li:first-child:before {
 	content: '';
   padding-left: 0;
@@ -47,19 +49,19 @@
 /* Media Queries */
 @media (max-width: 767.98px) {
   .view_more_less_jobs{
-      margin-top: 0;
-      margin-bottom: 1rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
   }
 
   .view_more_less_jobs .usa-nav__primary-item{
     border-top: none;
   }
 
-  .view_more_less_jobs.usa-nav__primary .usa-accordion__button{
+  .view_more_less_jobs .usa-accordion__button{
     padding-right: 25px;
   }
 
-  .view_more_less_jobs.usa-nav__primary .usa-accordion__button span::after{
+  .view_more_less_jobs .usa-accordion__button span::after{
     right: 4px;
   }
 
@@ -71,19 +73,19 @@
 
 @media (max-width: 1023.98px) {
   .view_more_less_jobs{
-      margin-top: 0;
-      margin-bottom: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 0;
   }
 
   .view_more_less_jobs .usa-nav__primary-item{
     border-top: none;
   }
 
-  .view_more_less_jobs.usa-nav__primary .usa-accordion__button{
+  .view_more_less_jobs .usa-accordion__button{
     padding-right: 25px;
   }
 
-  .view_more_less_jobs.usa-nav__primary .usa-accordion__button span::after{
+  .view_more_less_jobs .usa-accordion__button span::after{
     right: 4px;
   }
 }
