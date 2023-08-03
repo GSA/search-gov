@@ -5,12 +5,12 @@ import parse from 'html-react-parser';
 import { Pagination } from './../Pagination/Pagination';
 import { BestBets } from './BestBets';
 import { NoResults } from './NoResults/NoResults';
-import { HealthTopics } from './HealthTopics/HealthTopics';
-import { ImagesPage } from './ImagesPage/ImagesPage';
-import { RssNews } from './RssNews/RssNews';
-import { Videos } from './Videos/Videos';
-import { FedRegister } from './FedRegister/FedRegister';
-import { Jobs } from './Jobs/Jobs';
+// import { HealthTopics } from './HealthTopics/HealthTopics';
+// import { ImagesPage } from './ImagesPage/ImagesPage';
+// import { RssNews } from './RssNews/RssNews';
+// import { Videos } from './Videos/Videos';
+// import { FedRegister } from './FedRegister/FedRegister';
+// import { Jobs } from './Jobs/Jobs';
 
 import { truncateUrl } from '../../utils';
 
@@ -65,7 +65,7 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
         )}
         <div id="results" className="search-result-item-wrapper">
           {/* Jobs - To Do as part of backend integration */}
-          <Jobs />
+          {/* <Jobs /> */}
           
           {/* Health topics - To Do as part of backend integration */}
           {/* <HealthTopics /> */}
