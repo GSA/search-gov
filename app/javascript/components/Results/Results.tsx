@@ -10,7 +10,7 @@ import { NoResults } from './NoResults/NoResults';
 // import { RssNews } from './RssNews/RssNews';
 // import { Videos } from './Videos/Videos';
 // import { FedRegister } from './FedRegister/FedRegister';
-import { Jobs } from './Jobs/Jobs';
+// import { Jobs } from './Jobs/Jobs';
 
 import { truncateUrl } from '../../utils';
 
@@ -65,7 +65,7 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
         )}
         <div id="results" className="search-result-item-wrapper">
           {/* Jobs - To Do as part of backend integration */}
-          <Jobs />
+          {/* <Jobs /> */}
           
           {/* Health topics - To Do as part of backend integration */}
           {/* <HealthTopics /> */}
