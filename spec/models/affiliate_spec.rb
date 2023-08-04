@@ -197,6 +197,33 @@ describe Affiliate do
       expect(described_class.find(affiliate.id).css_property_hash[:page_background_color]).to eq(Affiliate::THEMES[:default][:page_background_color])
     end
 
+    describe 'visual design json' do
+      subject(:visual_design_json) { affiliate.visual_design_json }
+
+      let(:affiliate) { described_class.create!(valid_create_attributes.merge(visual_design_json: visual_design)) }
+
+      context 'when a valid header_links_font_family is supplied' do
+        let(:visual_design) { { header_links_font_family: 'tahoma' } }
+
+        its(['header_links_font_family']) { is_expected.to eq('tahoma') }
+        its(['footer_and_results_font_family']) { is_expected.to eq(Affiliate::DEFAULT_FONT) }
+      end
+
+      context 'when a valid footer_and_results_font_family is supplied' do
+        let(:visual_design) { { footer_and_results_font_family: 'georgia' } }
+
+        its(['header_links_font_family']) { is_expected.to eq(Affiliate::DEFAULT_FONT) }
+        its(['footer_and_results_font_family']) { is_expected.to eq('georgia') }
+      end
+
+      context 'when no font families are supplied' do
+        let(:visual_design) { {} }
+
+        its(['header_links_font_family']) { is_expected.to eq(Affiliate::DEFAULT_FONT) }
+        its(['footer_and_results_font_family']) { is_expected.to eq(Affiliate::DEFAULT_FONT) }
+      end
+    end
+
     it 'should save favicon URL with http:// prefix when it does not start with http(s)://' do
       url = 'cdn.agency.gov/favicon.ico'
       prefixes = %w( http https HTTP HTTPS invalidhttp:// invalidHtTp:// invalidhttps:// invalidHTtPs:// invalidHttPsS://)
@@ -334,6 +361,42 @@ describe Affiliate do
         expect(affiliate.errors[:base]).to include('Visited title link color should consist of a # character followed by 3 or 6 hexadecimal digits')
         expect(affiliate.errors[:base]).to include('Description text color should consist of a # character followed by 3 or 6 hexadecimal digits')
         expect(affiliate.errors[:base]).to include('Url link color should consist of a # character followed by 3 or 6 hexadecimal digits')
+      end
+    end
+
+    context 'when provided fonts are valid USWDS font families' do
+      Affiliate::USWDS_FONTS.each do |font_family|
+        subject { described_class.new(valid_create_attributes.merge(visual_design_json: valid_font_family)) }
+
+        let(:valid_font_family) do
+          {
+            header_links_font_family: font_family,
+            footer_and_results_font_family: font_family
+          }
+        end
+
+        it { is_expected.to be_valid }
+      end
+    end
+
+    %w[header_links_font_family footer_and_results_font_family].each do |font|
+      context "when #{font} is not a valid USWDS font family" do
+        subject(:affiliate) do
+          described_class.new(valid_create_attributes.merge(visual_design_json: invalid_font_family))
+        end
+
+        let(:invalid_font_family) do
+          {
+            "#{font}": 'Comic Sans MS'
+          }
+        end
+
+        it { is_expected.not_to be_valid }
+
+        it 'throws an error' do
+          affiliate.save
+          expect(affiliate.errors[:base]).to include("#{font} font family selection is invalid")
+        end
       end
     end
 
