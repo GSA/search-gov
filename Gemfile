@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 7.0.0'
+gem 'rails', '~> 7.0.0', '>= 7.0.5.1'
 
 gem 'rake', '~> 13.0.6'
 gem 'rack-contrib', '~> 2.1.0'
