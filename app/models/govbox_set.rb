@@ -59,7 +59,7 @@ class GovboxSet
     return false unless @news_items
 
     stale_threshold = Date.current - 5
-    @news_items&.results&.any? { |news_item| news_item.published_at.to_date >= stale_threshold }
+    @news_items&.results&.first(3)&.any? { |news_item| news_item.published_at.to_date >= stale_threshold }
   end
 
   def format_new_news
