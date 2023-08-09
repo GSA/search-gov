@@ -24,8 +24,7 @@ class Search
               :module_tag,
               :modules,
               :normalized_results,
-              :govbox_set,
-              :rss_module
+              :govbox_set
 
   def initialize(options = {})
     @affiliate = options[:affiliate]

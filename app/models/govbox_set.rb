@@ -47,11 +47,46 @@ class GovboxSet
       graphicsBestBet: format_graphics_best_bet,
       jobs: format_jobs,
       healthTopic: format_health_topic,
-      federalRegisterDocuments: format_federal_register_documents
+      federalRegisterDocuments: format_federal_register_documents,
+      oldNews: format_old_news,
+      newNews: format_new_news
     }.compact_blank
   end
 
   private
+
+  def has_fresh_news_items?
+    return false unless @news_items
+
+    stale_threshold = Date.current - 5
+    @news_items&.results&.any? { |news_item| news_item.published_at.to_date >= stale_threshold }
+  end
+
+  def format_new_news
+    if has_fresh_news_items?
+      @news_items.results.map do |news_item|
+        {
+          title: news_item.title,
+          description: news_item.description,
+          link: news_item.link,
+          publishedAt: news_item.published_at
+        }
+      end
+    end
+  end
+
+  def format_old_news
+    return nil if has_fresh_news_items?
+
+    @news_items&.results&.map do |news_item|
+      {
+        title: news_item.title,
+        description: news_item.description,
+        url: news_item.link,
+        publishedAt: news_item.published_at
+      }
+    end
+  end
 
   def format_text_best_bets
     return if @affiliate.boosted_contents.empty? || @boosted_contents&.results.blank?
