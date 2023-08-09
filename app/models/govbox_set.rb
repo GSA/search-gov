@@ -65,7 +65,7 @@ class GovboxSet
   def format_new_news
     return unless fresh_news_items?
 
-    @news_items&.results&.map do |news_item|
+    @news_items&.results&.first(3)&.map do |news_item|
       {
         title: news_item.title,
         description: news_item.description,
@@ -78,7 +78,7 @@ class GovboxSet
   def format_old_news
     return nil if fresh_news_items?
 
-    @news_items&.results&.map do |news_item|
+    @news_items&.results&.first(3)&.map do |news_item|
       {
         title: news_item.title,
         description: news_item.description,
