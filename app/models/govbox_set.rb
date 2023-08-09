@@ -69,7 +69,7 @@ class GovboxSet
           title: news_item.title,
           description: news_item.description,
           link: news_item.link,
-          publishedAt: news_item.published_at
+          publishedAt: news_item.published_at.to_date
         }
       end
     end
@@ -82,8 +82,8 @@ class GovboxSet
       {
         title: news_item.title,
         description: news_item.description,
-        url: news_item.link,
-        publishedAt: news_item.published_at
+        link: news_item.link,
+        publishedAt: news_item.published_at.to_date
       }
     end
   end
