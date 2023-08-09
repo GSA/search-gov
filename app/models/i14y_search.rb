@@ -1,6 +1,3 @@
-# frozen_string_literal: true
-
-# rubocop:disable Metrics/ClassLength
 class I14ySearch < FilterableSearch
   include SearchInitializer
   include Govboxable
@@ -106,7 +103,7 @@ class I14ySearch < FilterableSearch
     post_processor = I14yPostProcessor.new(@enable_highlighting, response.results, @affiliate.excluded_urls_set)
     post_processor.post_process_results
     @results = paginate(response.results)
-    process_data_for_redesign(post_processor)
+    @normalized_results = process_data_for_redesign(post_processor)
     @startrecord = ((@page - 1) * @per_page) + 1
     @endrecord = @startrecord + @results.size - 1
     @spelling_suggestion = response.metadata.suggestion.text if response.metadata.suggestion.present?
@@ -114,9 +111,7 @@ class I14ySearch < FilterableSearch
   end
 
   def process_data_for_redesign(post_processor)
-    @rss_module = post_processor.rss_module(news_items&.results&.first(3))
-
-    @normalized_results = post_processor.normalized_results(@total)
+    post_processor.normalized_results(@total)
   end
 
   def populate_additional_results
@@ -142,4 +137,3 @@ class I14ySearch < FilterableSearch
     @formatted_query_instance ||= I14yFormattedQuery.new(@query, domains_scope_options)
   end
 end
-# rubocop:enable Metrics/ClassLength
