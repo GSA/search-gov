@@ -55,7 +55,7 @@ class GovboxSet
 
   private
 
-  def has_fresh_news_items?
+  def fresh_news_items?
     return false unless @news_items
 
     stale_threshold = Date.current - 5
@@ -63,20 +63,20 @@ class GovboxSet
   end
 
   def format_new_news
-    if has_fresh_news_items?
-      @news_items.results.map do |news_item|
-        {
-          title: news_item.title,
-          description: news_item.description,
-          link: news_item.link,
-          publishedAt: news_item.published_at.to_date
-        }
-      end
+    return unless fresh_news_items?
+
+    @news_items&.results&.map do |news_item|
+      {
+        title: news_item.title,
+        description: news_item.description,
+        link: news_item.link,
+        publishedAt: news_item.published_at.to_date
+      }
     end
   end
 
   def format_old_news
-    return nil if has_fresh_news_items?
+    return nil if fresh_news_items?
 
     @news_items&.results&.map do |news_item|
       {
