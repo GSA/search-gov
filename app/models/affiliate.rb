@@ -209,6 +209,10 @@ class Affiliate < ApplicationRecord
   }.merge(THEMES[:default])
 
   # SRCH-4142 settings used for 2023 SERP redesign
+  FONT_FIELDS = %w[
+    header_links_font_family
+    footer_and_results_font_family
+  ].freeze
   DEFAULT_FONT = 'public-sans'
   USWDS_FONTS = %w[
     georgia
@@ -461,7 +465,7 @@ class Affiliate < ApplicationRecord
   end
 
   def validate_visual_design_font_family(visual_design_json)
-    %w[header_links_font_family footer_and_results_font_family].each do |font|
+    FONT_FIELDS.each do |font|
       next unless visual_design_json[font].present? && USWDS_FONTS.exclude?(visual_design_json[font])
 
       errors.add(:base, "#{font} font family selection is invalid")

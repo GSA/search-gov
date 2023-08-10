@@ -15,12 +15,11 @@ class Sites::RedesignedDisplaysController < Sites::SetupSiteController
   private
 
   def site_params
-    @site_params = params.require(:site).permit(
+    params.require(:site).permit(
       visual_design_json: [
         :header_links_font_family,
         :footer_and_results_font_family
       ]
     )
-    @site_params
   end
 end
