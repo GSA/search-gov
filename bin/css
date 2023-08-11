@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+files=(application searches sites_base)
+
+for file in ${files[@]}; do
+  echo Processing $file
+
+  FILE=$file yarn run build:less
+done
