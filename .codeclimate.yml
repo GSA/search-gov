@@ -8,6 +8,8 @@ prepare:
 checks:
   method-lines:
     enabled: false
+  method-count:
+    enabled: false
 plugins:
   brakeman:
     enabled: true
