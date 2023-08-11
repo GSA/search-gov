@@ -90,8 +90,8 @@ module NavigationHelpers
       site_content_path(Affiliate.find_by_name($1))
     when /^the (.*)'s Manage Display page$/
       edit_site_display_path(Affiliate.find_by_name($1))
-    when /^the (.*)'s Redesigned Display page$/
-      edit_site_redesigned_display_path(Affiliate.find_by_name($1))
+    when /^the (.*)'s Visual Design page$/
+      edit_site_visual_design_path(Affiliate.find_by_name($1))
     when /^the (.*)'s Font & Colors page$/
       edit_site_font_and_colors_path(Affiliate.find_by_name($1))
     when /^the (.*)'s Image Assets page$/

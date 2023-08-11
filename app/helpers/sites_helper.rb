@@ -129,7 +129,7 @@ module SitesHelper
 
   def site_manage_display_controllers
     %w[displays
-       redesigned_displays
+       visual_designs
        font_and_colors
        image_assets
        header_and_footers

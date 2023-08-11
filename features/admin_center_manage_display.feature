@@ -452,26 +452,25 @@ Feature: Manage Display
     And the "Status" field should contain "Inactive"
     And I should see "The alert for this site has been updated."
 
-  @javascript
-  Scenario: Editing the Redesigned Display Settings when "Show Redesign Display Settings" is false
+  Scenario: Editing the Visual Design Settings when "Show Redesign Display Settings" is false
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       |
     And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Redesigned Display page
-    Then I should see "Redesigned Display"
+    When I go to the agency.gov's Visual Design page
+    Then I should see "Visual design (new)"
     Then I should see a link to "Preview Redesigned Display" with url that ends with "/search?affiliate=agency.gov&redesign=true"
-    And I should not see "Font Family"
-    And I should not see "Color Scheme"
+    And the page body should not contain "These settings are for preview purposes only."
 
   @javascript
-  Scenario: Editing the Redesigned Display Settings when "Show Redesign Display Settings" is true
+  Scenario: Editing the Visual Design Settings when "Show Redesign Display Settings" is true
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | show_redesign_display_settings |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | true                           |
     And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Redesigned Display page
-    Then I should see "Redesigned Display"
+    When I go to the agency.gov's Visual Design page
+    Then I should see "Visual design (new)"
+    And the page body should contain "These settings are for preview purposes only."
     And I should see "Header Links Font Family"
     And the "Header Links Font Family" field should contain "public-sans"
     And I should see "Footer and Results Font Family"
@@ -489,3 +488,12 @@ Feature: Manage Display
     Then I should see "You have updated your font & colors"
     And the "Header Links Font Family" field should contain "georgia"
     And the "Footer and Results Font Family" field should contain "roboto-mono"
+
+  Scenario: Editing the Visual Design Settings when "Show Redesign Display Settings" and "Use Redesigned Results Page" are true
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | first_name | last_name | show_redesign_display_settings | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | true                           | true                        |
+    And I am logged in with email "john@agency.gov"
+    When I go to the agency.gov's Visual Design page
+    Then I should see "Visual design (new)"
+    And the page body should not contain "These settings are for preview purposes only."
