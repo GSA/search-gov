@@ -1,0 +1,42 @@
+= content_for_site_page_title(@site, t('.visual_design', scope: 'admin_center'))
+= form_for(@site, as: :site, url: site_visual_design_path, html: { class: 'form', id: 'edit-visual-designs' }) do |f|
+  .sub-nav-heading
+    %h2= t('.visual_design', scope: 'admin_center')
+    .action-bar
+      %ul
+        = list_item_with_link_to_current_help_page
+        %li=link_to(t('.preview_button', scope: 'admin_center'), 
+                    search_path(affiliate: @site.name, redesign: true),
+                    class: 'btn btn-primary',
+                    target: :_blank)
+        %li= f.submit 'Save', class: 'btn submit disabled', disabled: true
+  = render_flash_message
+  = render_error_messages(@site)
+
+  - if @site.show_redesign_display_settings
+    - unless @site.use_redesigned_results_page
+      %p= t('admin_center.sites.visual_designs.edit.preview_warning', email: mail_to(SUPPORT_EMAIL_ADDRESS)).html_safe
+
+    %ul.navigation_tabs
+      %li
+        %h3
+          %a{ :href => "#fonts_and_colors",
+              :title => t('.sections.fonts_and_colors', scope: 'admin_center') }=t('.sections.fonts_and_colors',
+              scope: 'admin_center')
+      %li
+        %h3
+          %a{ :href => "#results_format",
+              :title => t('.sections.results_format', scope: 'admin_center') }=t('.sections.results_format',
+              scope: 'admin_center')
+      %li
+        %h3
+          %a{ :href => "#image_assets",
+              :title => t('.sections.image_assets', scope: 'admin_center') }=t('.sections.image_assets',
+              scope: 'admin_center')
+      %li
+        %h3
+          %a{ :href => "#header_and_footer",
+              :title => t('.sections.header_and_footer', scope: 'admin_center') }=t('.sections.header_and_footer',
+              scope: 'admin_center')
+
+    = render partial: 'fonts_and_colors', locals: { f: f }

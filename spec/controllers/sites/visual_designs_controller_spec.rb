@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe Sites::RedesignedDisplaysController do
+describe Sites::VisualDesignsController do
   before { activate_authlogic }
 
   describe '#edit' do
@@ -35,7 +35,7 @@ describe Sites::RedesignedDisplaysController do
               }
         end
 
-        it { is_expected.to redirect_to(edit_site_redesigned_display_path(site)) }
+        it { is_expected.to redirect_to(edit_site_visual_design_path(site)) }
 
         it 'sets the flash success message' do
           expect(flash[:success]).to match('You have updated your font & colors.')

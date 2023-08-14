@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-class Sites::RedesignedDisplaysController < Sites::SetupSiteController
+class Sites::VisualDesignsController < Sites::SetupSiteController
   def edit; end
 
   def update
     if @site.update(site_params)
-      redirect_to edit_site_redesigned_display_path(@site),
+      redirect_to edit_site_visual_design_path(@site),
                   flash: { success: 'You have updated your font & colors.' }
     else
       render :edit

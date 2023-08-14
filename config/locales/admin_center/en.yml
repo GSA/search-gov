@@ -12,10 +12,19 @@ en:
           search_tabs_navigation: Search Tabs Navigation
           setting: Setting
           source: Source
-      redesigned_displays:
+      visual_designs:
         edit:
           preview_button: Preview Redesigned Display
-          redesigned_display: Redesigned Display
+          preview_warning: |
+            These settings are for preview purposes only. If you would like to use the new display layout for your
+            results, contact %{email} and we will enable it for you. In January 2024, all sites still using
+            the old layout will be updated to the new layout.
+          sections:
+            fonts_and_colors: Fonts & Colors
+            header_and_footer: Header & Footer
+            image_assets: Image Assets
+            results_format: Results Format
+          visual_design: Visual design (new)
         fonts_and_colors:
           fonts:
             georgia: Georgia
