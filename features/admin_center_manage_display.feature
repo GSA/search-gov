@@ -477,13 +477,13 @@ Feature: Manage Display
     And I should see "Footer and Results Font Family"
     And the "Footer and Results Font Family" field should contain "public-sans"
 
-    When I select "'Georgia', 'Cambria', 'Times New Roman', 'Times', serif" from "Header Links Font Family"
+    When I select "Georgia" from "Header Links Font Family"
     And I submit the form by pressing "Save"
 
     Then I should see "You have updated your font & colors"
     And the "Header Links Font Family" field should contain "georgia"
 
-    When I select "'Roboto Mono Web', 'Bitstream Vera Sans Mono', 'Consolas', 'Courier', monospace" from "Footer and Results Font Family"
+    When I select "Roboto mono" from "Footer and Results Font Family"
     And I submit the form by pressing "Save"
 
     Then I should see "You have updated your font & colors"
