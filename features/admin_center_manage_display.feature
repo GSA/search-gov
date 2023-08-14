@@ -472,5 +472,20 @@ Feature: Manage Display
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Redesigned Display page
     Then I should see "Redesigned Display"
-    And I should see "Font Family"
-    And I should see "Color Scheme"
+    And I should see "Header Links Font Family"
+    And the "Header Links Font Family" field should contain "public-sans"
+    And I should see "Footer and Results Font Family"
+    And the "Footer and Results Font Family" field should contain "public-sans"
+
+    When I select "Georgia" from "Header Links Font Family"
+    And I submit the form by pressing "Save"
+
+    Then I should see "You have updated your font & colors"
+    And the "Header Links Font Family" field should contain "georgia"
+
+    When I select "Roboto mono" from "Footer and Results Font Family"
+    And I submit the form by pressing "Save"
+
+    Then I should see "You have updated your font & colors"
+    And the "Header Links Font Family" field should contain "georgia"
+    And the "Footer and Results Font Family" field should contain "roboto-mono"
