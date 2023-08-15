@@ -8,7 +8,7 @@ class Admin::AffiliatesController < Admin::AdminController
     config.field_search.columns = :id, :name, :display_name, :website
 
     attribute_columns = config.columns.reject do |column|
-      column.association or column.name =~ /(_created_at|_updated_at|agency_id|css_properties|content_type|file_name|_image|json|label|_logo|_mappings|scope_ids|size)\z/
+      column.association or column.name =~ /(_created_at|_updated_at|agency_id|css_properties|content_type|file_name|_image|json|label|_logo|_mappings|scope_ids|size|visual_design_json)\z/
     end.map(&:name)
     attribute_columns << :agency
     attribute_columns.sort!

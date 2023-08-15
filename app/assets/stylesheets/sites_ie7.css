@@ -1,3 +1,20 @@
-/*
- *= require sites/ie7
- */
+/* csslint ids:false, adjoining-classes:false */
+
+#select2-drop .select2-search .select2-input {
+  width: 200px;
+}
+.l-site-nav.main .nav > li > a {
+  vertical-align: top;
+}
+.sub-nav-heading {
+  height: 56px;
+}
+.sub-nav-heading .action-bar li a {
+  line-height: 46px;
+}
+.form .table th, .form .table td {
+  padding-left: 0;
+}
+.form #queries_request_query {
+  width: 160px;
+}

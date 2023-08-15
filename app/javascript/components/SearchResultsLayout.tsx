@@ -25,6 +25,18 @@ interface SearchResultsLayoutProps {
   } | null;
   additionalResults?: {
     recommendedBy: string;
+    newNews?: {
+      title: string,
+      link: string,
+      description: string,
+      publishedAt: string
+    }[];
+    oldNews?: {
+      title: string,
+      link: string,
+      description: string,
+      publishedAt: string
+    }[];
     textBestBets?: {
       title: string;
       url: string;

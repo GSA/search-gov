@@ -173,6 +173,50 @@ describe GovboxSet do
         end
       end
 
+      context 'when there are new news results' do
+        let(:news_item) { NewsItem.new(title: 'title', link: 'https://www.search.gov', description: 'description', published_at: Date.current - 2) }
+        let(:news_results) { instance_double(ElasticNewsItemResults, total: 1, results: [news_item]) }
+
+        before do
+          allow(affiliate).to receive(:is_rss_govbox_enabled?).and_return(true)
+          allow(ElasticNewsItem).to receive(:search_for).and_return(news_results)
+        end
+
+        it 'returns the news results' do
+          expect(govbox_set_json).to eq({
+                                          recommendedBy: affiliate.display_name,
+                                          newNews: [{
+                                            description: news_item.description,
+                                            link: news_item.link,
+                                            publishedAt: news_item.published_at.to_date,
+                                            title: news_item.title
+                                          }]
+                                        })
+        end
+      end
+
+      context 'when there are old news results' do
+        let(:news_item) { NewsItem.new(title: 'title', link: 'https://www.search.gov', description: 'description', published_at: Date.current - 10) }
+        let(:news_results) { instance_double(ElasticNewsItemResults, total: 1, results: [news_item]) }
+
+        before do
+          allow(affiliate).to receive(:is_rss_govbox_enabled?).and_return(true)
+          allow(ElasticNewsItem).to receive(:search_for).and_return(news_results)
+        end
+
+        it 'returns the news results' do
+          expect(govbox_set_json).to eq({
+                                          recommendedBy: affiliate.display_name,
+                                          oldNews: [{
+                                            description: news_item.description,
+                                            link: news_item.link,
+                                            publishedAt: news_item.published_at.to_date,
+                                            title: news_item.title
+                                          }]
+                                        })
+        end
+      end
+
       context 'when there is no additional result data' do
         it 'returns the affiliate display name' do
           expect(govbox_set_json).to eq({

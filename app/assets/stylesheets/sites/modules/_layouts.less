@@ -11,7 +11,27 @@ body {
 }
 
 .l-row {
-  #grid > .fluid > .row-fluid();
+  width: 100%;
+
+  .clearfix();
+
+  [class*="span"] {
+    .input-block-level();
+    float: left;
+    margin-left: @fluidGridGutterWidth;
+    *margin-left: @fluidGridGutterWidth - (.5 / @gridRowWidth * 100 * 1%);
+  }
+
+  [class*="span"]:first-child {
+    margin-left: 0;
+  }
+
+  .controls-row [class*="span"] + [class*="span"] {
+    margin-left: @fluidGridGutterWidth;
+  }
+
+  .spanX (@gridColumns);
+  .offsetX (@gridColumns);
 }
 
 .l-container {
