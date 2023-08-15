@@ -38,12 +38,9 @@ class SitemapIndexer
   def sitemap_entries_stream
     @sitemap_entries_stream ||=
       if txt_sitemap?
-        URI.extract(sitemap, %w[http https])
-      elsif xml_sitemap_entries.any?
-        xml_sitemap_entries
-      else
-        rss_entries
+        return URI.extract(sitemap, %w[http https])
       end
+    (xml_sitemap_entries.any? ? xml_sitemap_entries : rss_entries)
   end
 
   def xml_sitemap_entries
@@ -83,16 +80,15 @@ class SitemapIndexer
 
   def process_entry(entry)
     sitemap_url = txt_sitemap? ? https_url(entry) : https_url(entry[:loc])
-    searchgov_url = SearchgovUrl.find_or_initialize_by(url: sitemap_url)
-    if txt_sitemap?
-      searchgov_url.save!
-    else
-      searchgov_url.update!(lastmod: https_url(entry[:loc]))
-    end
+    save_sitemap_urls(sitemap_url, entry)
   rescue => e
     error_info = log_info.merge(sitemap_entry_failed: sitemap_url, error: e.message)
-    log_line = "[Searchgov SitemapIndexer] #{error_info.to_json}"
-    Rails.logger.error log_line.red
+    Rails.logger.error "[Searchgov SitemapIndexer] #{error_info.to_json}".red
+  end
+
+  def save_sitemap_urls(sitemap_url, entry)
+    searchgov_url = SearchgovUrl.find_or_initialize_by(url: sitemap_url)
+    txt_sitemap? ? searchgov_url.save! : searchgov_url.update!(lastmod: entry[:lastmod])
   end
 
   def entry_matches_domain?(entry)
