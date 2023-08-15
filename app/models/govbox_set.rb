@@ -47,11 +47,17 @@ class GovboxSet
       graphicsBestBet: format_graphics_best_bet,
       jobs: format_jobs,
       healthTopic: format_health_topic,
-      federalRegisterDocuments: format_federal_register_documents
+      federalRegisterDocuments: format_federal_register_documents,
+      youtubeNewsItems: format_video_news_items
     }.compact_blank
   end
 
   private
+
+  def format_video_news_items
+    @video_news_items&.results&.map { |result| result.slice(:link, :title, :description, :published_at, :youtube_thumbnail_url) }&.
+      each { |result| result[:published_at] = result[:published_at].to_datetime.to_fs(:long) }
+  end
 
   def format_text_best_bets
     return if @affiliate.boosted_contents.empty? || @boosted_contents&.results.blank?

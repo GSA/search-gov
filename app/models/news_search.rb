@@ -78,7 +78,7 @@ class NewsSearch < FilterableSearch
 
     @total = response.total
     @aggregations = response.aggregations
-    post_processor = ResultsWithBodyAndDescriptionPostProcessor.new(response.results)
+    post_processor = ResultsWithBodyAndDescriptionPostProcessor.new(response.results, rss_feed.show_only_media_content?)
     post_processor.post_process_results
     @normalized_results = post_processor.normalized_results(@total)
     @results = paginate(response.results)

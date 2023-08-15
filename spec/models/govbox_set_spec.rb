@@ -173,6 +173,56 @@ describe GovboxSet do
         end
       end
 
+      context 'when there are video results' do
+        before do
+          allow(affiliate).to receive(:is_video_govbox_enabled?).and_return(true)
+
+          youtube_profile = youtube_profiles(:whitehouse)
+          rss_feed_url = youtube_profile.rss_feed.rss_feed_urls.first
+          rss_feed_url.news_items.delete_all
+
+          news_items = (1..2).map do |i|
+            NewsItem.create!(rss_feed_url: rss_feed_url,
+                             link: "http://www.youtube.com/watch?v=#{i}&feature=youtube_gdata",
+                             title: "video #{i}",
+                             description: "video news description #{i}",
+                             published_at: Date.new(2011, 9, 26),
+                             guid: "http://gdata.youtube.com/feeds/base/videos/#{i}",
+                             duration: "#{i}:0#{i}",
+                             updated_at: Time.current)
+          end
+
+          elastic_results = double(ElasticNewsItemResults,
+                                   results: news_items,
+                                   total: 30)
+
+          allow(ElasticNewsItem).to receive(:search_for).and_return(elastic_results)
+          allow(affiliate).to receive(:is_video_govbox_enabled?).and_return(true)
+        end
+
+        it 'returns the affiliate display name and an array of federal register documents' do
+          expect(govbox_set_json).to eq({
+                                          recommendedBy: affiliate.display_name,
+                                          youtubeNewsItems: [
+                                            {
+                                              'description' => 'video news description 1',
+                                              'link' => 'http://www.youtube.com/watch?v=1&feature=youtube_gdata',
+                                              'published_at' => 'September 26, 2011 00:00',
+                                              'title' => 'video 1',
+                                              'youtube_thumbnail_url' => 'https://i.ytimg.com/vi/1/default.jpg'
+                                            },
+                                            {
+                                              'description' => 'video news description 2',
+                                              'link' => 'http://www.youtube.com/watch?v=2&feature=youtube_gdata',
+                                              'published_at' => 'September 26, 2011 00:00',
+                                              'title' => 'video 2',
+                                              'youtube_thumbnail_url' => 'https://i.ytimg.com/vi/2/default.jpg'
+                                            }
+                                          ]
+                                        })
+        end
+      end
+
       context 'when there is no additional result data' do
         it 'returns the affiliate display name' do
           expect(govbox_set_json).to eq({
