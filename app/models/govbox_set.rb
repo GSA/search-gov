@@ -48,15 +48,56 @@ class GovboxSet
       jobs: format_jobs,
       healthTopic: format_health_topic,
       federalRegisterDocuments: format_federal_register_documents,
-      youtubeNewsItems: format_video_news_items
+      youtubeNewsItems: format_video_news_items,
+      oldNews: format_old_news,
+      newNews: format_new_news
     }.compact_blank
   end
 
   private
 
   def format_video_news_items
+    return unless @affiliate.is_video_govbox_enabled?
+
+    youtube_profile_ids = @affiliate.youtube_profile_ids
+    video_feeds = RssFeed.includes(:rss_feed_urls).owned_by_youtube_profile.where(owner_id: youtube_profile_ids)
+    return unless video_feeds.present?
+
     @video_news_items&.results&.map { |result| result.slice(:link, :title, :description, :published_at, :youtube_thumbnail_url) }&.
       each { |result| result[:published_at] = result[:published_at].to_datetime.to_fs(:long) }
+  end
+
+  def fresh_news_items?
+    return false unless @news_items
+
+    stale_threshold = Date.current - 5
+    @news_items&.results&.first(3)&.any? { |news_item| news_item.published_at.to_date >= stale_threshold }
+  end
+
+  def format_new_news
+    return unless fresh_news_items?
+
+    @news_items&.results&.first(3)&.map do |news_item|
+      {
+        title: news_item.title,
+        description: news_item.description,
+        link: news_item.link,
+        publishedAt: news_item.published_at.to_date
+      }
+    end
+  end
+
+  def format_old_news
+    return nil if fresh_news_items?
+
+    @news_items&.results&.first(3)&.map do |news_item|
+      {
+        title: news_item.title,
+        description: news_item.description,
+        link: news_item.link,
+        publishedAt: news_item.published_at.to_date
+      }
+    end
   end
 
   def format_text_best_bets

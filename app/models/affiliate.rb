@@ -139,6 +139,7 @@ class Affiliate < ApplicationRecord
 
   validate :html_columns_cannot_be_malformed,
            :validate_css_property_hash,
+           :validate_visual_design_json,
            :validate_managed_footer_links,
            :validate_managed_header_links,
            :validate_managed_no_results_pages_alt_links,
@@ -146,7 +147,7 @@ class Affiliate < ApplicationRecord
            :validate_managed_no_results_pages_guidance_text
 
   after_validation :update_error_keys
-  before_save :set_css_properties, :generate_look_and_feel_css, :set_json_fields, :set_search_labels
+  before_save :set_css_properties, :generate_look_and_feel_css, :set_json_fields, :set_search_labels, :set_visual_design_json
   before_update :clear_existing_attachments
   after_commit :normalize_site_domains,             on: :create
   after_commit :remove_boosted_contents_from_index, on: :destroy
@@ -206,6 +207,27 @@ class Affiliate < ApplicationRecord
     header_tagline_font_style: 'italic',
     logo_alignment: LogoAlignment::DEFAULT
   }.merge(THEMES[:default])
+
+  # SRCH-4142 settings used for 2023 SERP redesign
+  FONT_FIELDS = %w[
+    header_links_font_family
+    footer_and_results_font_family
+  ].freeze
+  DEFAULT_FONT = 'public-sans'
+  USWDS_FONTS = %w[
+    georgia
+    helvetica
+    merriweather
+    public-sans
+    roboto-mono
+    source-sans-pro
+    system
+    tahoma
+  ].freeze
+  DEFAULT_VISUAL_DESIGN = {
+    header_links_font_family: DEFAULT_FONT,
+    footer_and_results_font_family: DEFAULT_FONT
+  }.freeze
 
   CUSTOM_INDEXING_LANGUAGES = %w[en es].freeze
 
@@ -436,6 +458,20 @@ class Affiliate < ApplicationRecord
     errors.add(:base, 'Font family selection is invalid') if hash['font_family'].present? && !FontFamily.valid?(hash['font_family'])
   end
 
+  def validate_visual_design_json
+    return if visual_design_json.blank?
+
+    validate_visual_design_font_family(visual_design_json)
+  end
+
+  def validate_visual_design_font_family(visual_design_json)
+    FONT_FIELDS.each do |font|
+      next unless visual_design_json[font].present? && USWDS_FONTS.exclude?(visual_design_json[font])
+
+      errors.add(:base, "#{font} font family selection is invalid")
+    end
+  end
+
   def validate_logo_alignment(hash)
     errors.add(:base, 'Logo alignment is invalid') if hash['logo_alignment'].present? && !LogoAlignment.valid?(hash['logo_alignment'])
   end
@@ -518,6 +554,14 @@ class Affiliate < ApplicationRecord
 
   def set_css_properties
     self.css_properties = @css_property_hash.to_json if @css_property_hash.present?
+  end
+
+  def set_visual_design_json
+    self.visual_design_json = if visual_design_json.blank?
+                                DEFAULT_VISUAL_DESIGN
+                              else
+                                visual_design_json.reverse_merge(DEFAULT_VISUAL_DESIGN)
+                              end
   end
 
   def language_valid
