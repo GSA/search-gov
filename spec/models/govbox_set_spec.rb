@@ -192,9 +192,9 @@ describe GovboxSet do
                          updated_at: Time.current)
           end
 
-          elastic_results = double(ElasticNewsItemResults,
+          elastic_results = instance_double(ElasticNewsItemResults,
                                    results: news_items,
-                                   total: 30)
+                                   total: 2)
 
           allow(ElasticNewsItem).to receive(:search_for).and_return(elastic_results)
           allow(affiliate).to receive(:is_video_govbox_enabled?).and_return(true)

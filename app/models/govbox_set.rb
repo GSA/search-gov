@@ -57,11 +57,8 @@ class GovboxSet
   private
 
   def format_video_news_items
-    return unless @affiliate.is_video_govbox_enabled?
-
-    youtube_profile_ids = @affiliate.youtube_profile_ids
-    video_feeds = RssFeed.includes(:rss_feed_urls).owned_by_youtube_profile.where(owner_id: youtube_profile_ids)
-    return unless video_feeds.present?
+    video_feeds = RssFeed.includes(:rss_feed_urls).owned_by_youtube_profile.where(owner_id: @affiliate.youtube_profile_ids)
+    return unless video_feeds.present? && @affiliate.is_video_govbox_enabled?
 
     @video_news_items&.results&.map { |result| result.slice(:link, :title, :description, :published_at, :youtube_thumbnail_url) }&.
       each { |result| result[:published_at] = result[:published_at].to_datetime.to_fs(:long) }

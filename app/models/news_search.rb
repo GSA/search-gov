@@ -73,12 +73,13 @@ class NewsSearch < FilterableSearch
 
   protected
 
+  # rubocop:disable Metrics/AbcSize
   def handle_response(response)
     return unless response
 
     @total = response.total
     @aggregations = response.aggregations
-    post_processor = ResultsWithBodyAndDescriptionPostProcessor.new(response.results, rss_feed.show_only_media_content?)
+    post_processor = ResultsWithBodyAndDescriptionPostProcessor.new(response.results, nil, rss_feed.show_only_media_content?)
     post_processor.post_process_results
     @normalized_results = post_processor.normalized_results(@total)
     @results = paginate(response.results)
@@ -86,6 +87,7 @@ class NewsSearch < FilterableSearch
     @endrecord = @startrecord + @results.size - 1
     assign_module_tag
   end
+  # rubocop:ensable Metrics/AbcSize
 
   def assign_module_tag
     @module_tag = @total > 0 ? 'NEWS' : nil
