@@ -87,7 +87,7 @@ class NewsSearch < FilterableSearch
     @endrecord = @startrecord + @results.size - 1
     assign_module_tag
   end
-  # rubocop:ensable Metrics/AbcSize
+  # rubocop:enable Metrics/AbcSize
 
   def assign_module_tag
     @module_tag = @total > 0 ? 'NEWS' : nil
