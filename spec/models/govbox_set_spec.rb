@@ -183,13 +183,13 @@ describe GovboxSet do
 
           news_items = (1..2).map do |i|
             NewsItem.new(rss_feed_url: rss_feed_url,
-                             link: "http://www.youtube.com/watch?v=#{i}&feature=youtube_gdata",
-                             title: "video #{i}",
-                             description: "video news description #{i}",
-                             published_at: Date.new(2011, 9, 26),
-                             guid: "http://gdata.youtube.com/feeds/base/videos/#{i}",
-                             duration: "#{i}:0#{i}",
-                             updated_at: Time.current)
+                         link: "http://www.youtube.com/watch?v=#{i}&feature=youtube_gdata",
+                         title: "video #{i}",
+                         description: "video news description #{i}",
+                         published_at: Date.new(2011, 9, 26),
+                         guid: "http://gdata.youtube.com/feeds/base/videos/#{i}",
+                         duration: "#{i}:0#{i}",
+                         updated_at: Time.current)
           end
 
           elastic_results = double(ElasticNewsItemResults,
@@ -222,7 +222,8 @@ describe GovboxSet do
                                               'title' => 'video 2',
                                               'youtube_thumbnail_url' => 'https://i.ytimg.com/vi/2/default.jpg'
                                             }
-                                          ]})
+                                          ]
+                                        })
         end
       end
 
