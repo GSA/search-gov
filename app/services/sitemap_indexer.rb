@@ -37,11 +37,21 @@ class SitemapIndexer
 
   def sitemap_entries_stream
     @sitemap_entries_stream ||=
-      xml_sitemap_entries.any? ? xml_sitemap_entries : rss_entries
+      if txt_sitemap?
+        URI.extract(sitemap, %w[http https])
+      elsif xml_sitemap_entries.any?
+        xml_sitemap_entries
+      else
+        rss_entries
+      end
   end
 
   def xml_sitemap_entries
     sitemap_parser(sitemap).within('urlset').for_tag('url')
+  end
+
+  def txt_sitemap?
+    File.extname(sitemap_url) == '.txt'
   end
 
   def rss_entries
@@ -72,9 +82,13 @@ class SitemapIndexer
   end
 
   def process_entry(entry)
-    sitemap_url = https_url(entry[:loc])
+    sitemap_url = txt_sitemap? ? https_url(entry) : https_url(entry[:loc])
     searchgov_url = SearchgovUrl.find_or_initialize_by(url: sitemap_url)
-    searchgov_url.update!(lastmod: entry[:lastmod])
+    if txt_sitemap?
+      searchgov_url.save!
+    else
+      searchgov_url.update!(lastmod: https_url(entry[:loc]))
+    end
   rescue => e
     error_info = log_info.merge(sitemap_entry_failed: sitemap_url, error: e.message)
     log_line = "[Searchgov SitemapIndexer] #{error_info.to_json}"
@@ -86,7 +100,7 @@ class SitemapIndexer
     # strictly adhering to the sitemap protocol,
     # but matching the domain should suffice for now.
     # https://www.pivotaltracker.com/story/show/157485118
-    url = entry[:loc].strip
+    url = txt_sitemap? ? entry : entry[:loc].strip
     URI(url).host == domain
   rescue URI::InvalidURIError
     Rails.logger.error("Error processing sitemap entry. Invalid URL: #{url}")
