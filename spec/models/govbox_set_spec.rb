@@ -250,6 +250,7 @@ describe GovboxSet do
         end
       end
 
+      
       context 'when there are old news results' do
         let(:news_item) { NewsItem.new(title: 'title', link: 'https://www.search.gov', description: 'description', published_at: Date.current - 10) }
         let(:news_results) { instance_double(ElasticNewsItemResults, total: 1, results: [news_item]) }
