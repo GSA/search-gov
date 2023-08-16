@@ -12,13 +12,29 @@ en:
           search_tabs_navigation: Search Tabs Navigation
           setting: Setting
           source: Source
-      redesigned_displays:
+      visual_designs:
         edit:
           preview_button: Preview Redesigned Display
-          redesigned_display: Redesigned Display
+          preview_warning: |
+            These settings are for preview purposes only. If you would like to use the new display layout for your
+            results, contact %{email} and we will enable it for you. In January 2024, all sites still using
+            the old layout will be updated to the new layout.
+          sections:
+            fonts_and_colors: Fonts & Colors
+            header_and_footer: Header & Footer
+            image_assets: Image Assets
+            results_format: Results Format
+          visual_design: Visual design (new)
         fonts_and_colors:
-          color_scheme: Color Scheme
-          custom: Custom
-          default: Default
-          font_family: Font Family
+          fonts:
+            georgia: Georgia
+            helvetica: Helvetica neue
+            merriweather: Merriweather
+            public-sans: Public sans
+            roboto-mono: Roboto mono
+            source-sans-pro: Source sans pro
+            system: System
+            tahoma: Tahoma
           fonts_and_colors: Fonts & Colors
+          footer_and_results_font_family: Footer and Results Font Family
+          header_links_font_family: Header Links Font Family

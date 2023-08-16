@@ -6,7 +6,7 @@ version: 2.1
 
 orbs:
   ruby: circleci/ruby@2.0.0
-  browser-tools: circleci/browser-tools@1.2.5
+  browser-tools: circleci/browser-tools@1.4.3
   nodejs: circleci/node@5.1.0
 
 executors:
@@ -50,9 +50,7 @@ commands:
   install_chrome:
     description: 'Install latest Chrome and ChromeDriver'
     steps:
-      - browser-tools/install-chrome:
-          # Workaround for https://github.com/CircleCI-Public/browser-tools-orb/issues/33
-          chrome-version: 100.0.4896.60
+      - browser-tools/install-chrome
       - browser-tools/install-chromedriver
       - run:
           command: |

@@ -1,0 +1,13 @@
+%h3{:id => "fonts_and_colors"}= t('.fonts_and_colors', scope: 'admin_center')
+
+= f.fields_for :visual_design_json do |visual_design|
+  = visual_design.label :header_links_font_family, t('.header_links_font_family', scope: 'admin_center')
+  = visual_design.select :header_links_font_family,
+    options_for_select(Affiliate::USWDS_FONTS.index_by { |font| t(".fonts.#{font}", scope: 'admin_center') },
+    render_affiliate_visual_design_value(@site.visual_design_json, :header_links_font_family))
+  = visual_design.label :footer_and_results_font_family, t('.footer_and_results_font_family', scope: 'admin_center')
+  = visual_design.select :footer_and_results_font_family,
+    options_for_select(Affiliate::USWDS_FONTS.index_by { |font| t(".fonts.#{font}", scope: 'admin_center') },
+    render_affiliate_visual_design_value(@site.visual_design_json, :footer_and_results_font_family))
+
+%hr

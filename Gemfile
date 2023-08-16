@@ -109,7 +109,6 @@ gem 'activejob-uniqueness', '~> 0.2.1'
 # The fix for the bug in SRCH-3788 is NOT covered by automated specs.
 # A spec will be added (if possible) per SRCH-3790
 gem 'selenium-webdriver', '4.7.1'
-gem 'webdrivers', '~> 5.0'
 gem 'exception_notification', '~> 4.5'
 gem 'dogapi', '~> 1.45'
 # Temporary fix to remove warnings seen in Rails 7:
@@ -120,13 +119,10 @@ gem 'net-http'
 # Assets-related gems
 gem 'coffee-rails', '~> 5.0.0'
 gem 'uglifier', '~> 4.2.0'
-gem 'less-rails-bootstrap', git: 'https://github.com/GSA/less-rails-bootstrap.git',
-                            branch: 'master'
 gem 'compass-rails', '~> 4.0.0'
 gem 'compass-blueprint', '~> 1.0.0'
 gem 'jquery-ui-rails', '~> 6.0.1'
 gem 'jquery-rails', '~> 4.4.0'
-gem 'therubyracer', '~> 0.12.3'
 gem 'yui-compressor', '~> 0.12.0'
 gem 'twitter-typeahead-rails', '~> 0.11.1'
 # Why do we have two versions of Font Awesome?
@@ -142,14 +138,12 @@ gem 'font-awesome-rails', '~> 4.7.0'
 gem 'font-awesome-grunticon-rails',
     git: 'https://github.com/gsa/font-awesome-grunticon-rails',
     ref: '8ad9734a65f7e2d2de934bebe4ee7b460734f96e'
-# execjs 2.8 removed support for therubyracer:
-# https://github.com/rails/execjs/releases/tag/v2.8.0
-# Locking the version to 2.7.x until we remove or replace therubyracer
-gem 'execjs', '~> 2.7.0'
 gem 'react-rails', '~> 2.7.0'
 # Locking to prevent a version mismatch between the gem and the NPM package version
 # See https://github.com/shakacode/shakapacker#upgrading
 gem 'shakapacker', '6.5.4'
+gem 'cssbundling-rails', '~> 1.2' # Management of css (Less) files conversion
+
 # Temporarily locking the 'mail' version until the next version of Rails is released
 # https://github.com/rails/rails/pull/46650
 gem 'mail', '~> 2.7.1'
