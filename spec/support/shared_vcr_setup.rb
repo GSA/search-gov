@@ -13,9 +13,6 @@ PAPERCLIP_MATCHERS = {
   }
 }
 
-# https://github.com/titusfortner/webdrivers/wiki/Using-with-VCR-or-WebMock
-DRIVER_HOSTS = Webdrivers::Common.subclasses.map { |driver| URI(driver.base_url).host }
-
 VCR.configure do |config|
   config.hook_into :webmock
 
@@ -36,8 +33,7 @@ VCR.configure do |config|
     clean_outdated_http_interactions: true
   }
 
-  config.ignore_hosts 'example.com', 'codeclimate.com', '127.0.0.1'
-  config.ignore_hosts *DRIVER_HOSTS
+  config.ignore_hosts 'example.com', 'codeclimate.com', '127.0.0.1', 'googlechromelabs.github.io'
   config.ignore_request do |request|
     /codeclimate.com/ ===  URI(request.uri).host
   end
