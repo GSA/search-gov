@@ -58,7 +58,7 @@ class GovboxSet
 
   def videos_exist?
     video_feeds = RssFeed.includes(:rss_feed_urls).owned_by_youtube_profile.where(owner_id: @affiliate.youtube_profile_ids)
-    return video_feeds.present? && @affiliate.is_video_govbox_enabled?
+    video_feeds.present? && @affiliate.is_video_govbox_enabled?
   end
 
   def format_video_news_items
