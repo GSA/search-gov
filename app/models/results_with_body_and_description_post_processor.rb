@@ -1,7 +1,7 @@
 class ResultsWithBodyAndDescriptionPostProcessor < ResultsPostProcessor
   attr_accessor :results
 
-  def initialize(results, _val, youtube: false)
+  def initialize(results, _val: nil, youtube: false)
     super
     @results = results
     @youtube = youtube
