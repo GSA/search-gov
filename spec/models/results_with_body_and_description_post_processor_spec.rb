@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe ResultsWithBodyAndDescriptionPostProcessor do
   describe '#normalized_results' do
-    subject(:normalized_results) { described_class.new(results, nil).normalized_results(5) }
+    subject(:normalized_results) { described_class.new(results, _val: nil).normalized_results(5) }
 
     let(:results) do
       results = []
@@ -13,7 +13,7 @@ describe ResultsWithBodyAndDescriptionPostProcessor do
     end
 
     it_behaves_like 'a search with normalized results' do
-      let(:normalized_results) { described_class.new(results, nil).normalized_results(5) }
+      let(:normalized_results) { described_class.new(results, _val: nil).normalized_results(5) }
     end
 
     it 'does not use unbounded pagination' do
@@ -21,7 +21,7 @@ describe ResultsWithBodyAndDescriptionPostProcessor do
     end
 
     context 'when there are video results' do
-      subject(:normalized_results) { described_class.new(results, nil, youtube: true).normalized_results(5) }
+      subject(:normalized_results) { described_class.new(results, _val: nil, youtube: true).normalized_results(5) }
 
       let(:results) do
         results = []
