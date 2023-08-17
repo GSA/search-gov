@@ -200,10 +200,7 @@ describe SearchgovDomain do
     context 'when a delay is specified for the "usasearch" user agent' do
       let(:robots) { "User-agent: *\nCrawl-delay: 10\nUser-agent: usasearch\nCrawl-delay: 2" }
 
-      # This needs to be fixed in the robotex gem:
-      # https://github.com/chriskite/robotex/issues/9
-      # https://www.pivotaltracker.com/story/show/157329443
-      xit { is_expected.to eq 2 }
+      it { is_expected.to eq 2 }
     end
   end
 

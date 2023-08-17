@@ -17,7 +17,7 @@ class ImageSearch
 
   def initialize(options = {})
     @options = options
-    initialize_pageable_attributes @options
+    initialize_pageable_attributes(@options)
 
     @affiliate = @options[:affiliate]
     @modules = []
@@ -46,12 +46,16 @@ class ImageSearch
 
       assign_module_tag if results.present?
     else
-      @error_message = (I18n.translate :empty_query)
+      @error_message = I18n.t(:empty_query)
     end
-
   end
 
-  def as_json(options = {})
+  def format_results
+    post_processor = ImageResultsPostProcessor.new(total, results)
+    post_processor.normalized_results
+  end
+
+  def as_json(_options = {})
     if @error_message
       { error: @error_message }
     else
@@ -67,10 +71,10 @@ class ImageSearch
   end
 
   def commercial_results?
-    %W(AIMAG IMAG).include? module_tag
+    %w[AIMAG IMAG].include?(module_tag)
   end
 
-  protected
+  private
 
   def initialize_search_instance(uses_cr)
     params = search_params(uses_cr)
@@ -85,7 +89,7 @@ class ImageSearch
   end
 
   def search_engine_adapter(options)
-    SearchEngineAdapter.new engine_klass, options
+    SearchEngineAdapter.new(engine_klass, options)
   end
 
   def engine_klass
@@ -105,5 +109,4 @@ class ImageSearch
     @modules << @module_tag
     @modules << @search_instance.default_spelling_module_tag unless @search_instance.spelling_suggestion.nil?
   end
-
 end

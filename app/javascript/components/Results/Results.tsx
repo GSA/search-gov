@@ -4,6 +4,13 @@ import parse from 'html-react-parser';
 
 import { Pagination } from './../Pagination/Pagination';
 import { BestBets } from './BestBets';
+import { NoResults } from './NoResults/NoResults';
+// import { HealthTopics } from './HealthTopics/HealthTopics';
+// import { ImagesPage } from './ImagesPage/ImagesPage';
+// import { RssNews } from './RssNews/RssNews';
+// import { Videos } from './Videos/Videos';
+// import { FedRegister } from './FedRegister/FedRegister';
+// import { Jobs } from './Jobs/Jobs';
 
 import { truncateUrl } from '../../utils';
 
@@ -14,9 +21,6 @@ interface ResultsProps {
   results?: {
     title: string,
     url: string,
-    thumbnail?: {
-      url: string
-    },
     description: string,
     updatedDate?: string,
     publishedDate?: string,
@@ -43,9 +47,12 @@ interface ResultsProps {
   unboundedResults: boolean;
   totalPages: number | null;
   vertical: string;
+  locale: {
+    t(key: string, values: Record<string, string>): string;
+  };
 }
 
-export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical }: ResultsProps) => {
+export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical, locale }: ResultsProps) => {
   const URL_LENGTH = 80;
   return (
     <>
@@ -57,13 +64,31 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
           />
         )}
         <div id="results" className="search-result-item-wrapper">
+          {/* Jobs - To Do as part of backend integration */}
+          {/* <Jobs /> */}
+          
+          {/* Health topics - To Do as part of backend integration */}
+          {/* <HealthTopics /> */}
+
+          {/* Image page Components - To do with its integration task */}
+          {/* <ImagesPage /> */}
+          
+          {/* RSS module/page - To do with its integration task */}
+          {/* <RssNews /> */}
+
+          {/* Video module/page - To do with its integration task */}
+          {/* <Videos /> */}
+
+          {/* Federal register - To do with its integration task */}
+          {/* <FedRegister /> */}
+
           {results && results.length > 0 ? (results.map((result, index) => {
             return (
               <GridContainer key={index} className='result search-result-item'>
                 <Grid row gap="md">
                   {vertical === 'image' &&
                   <Grid mobileLg={{ col: 4 }} className='result-thumbnail'>
-                    <img src={result.thumbnail?.url} className="result-image" alt={result.title}/>
+                    <img src={result.thumbnailUrl} className="result-image" alt={result.title}/>
                   </Grid>
                   }
                   <Grid col={true} className='result-meta-data'>
@@ -84,16 +109,12 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
                     </div>
                   </Grid>
                 </Grid>
+                <Grid row className="row-mobile-divider"></Grid>
               </GridContainer>
             );
           })) : (
-            <GridContainer className='result search-result-item'>
-              <Grid row>
-                <Grid tablet={{ col: true }}>
-                  <h4>Sorry, no results found for &#39;{query}&#39;. Try entering fewer or more general search terms.</h4>
-                </Grid>
-              </Grid>
-            </GridContainer>)}
+            <NoResults errorMsg={locale.t('noResultsForAndTry', { query })} />
+          )}
         </div>
       </div>
       <Pagination 
