@@ -81,9 +81,9 @@
 # Label for inline news module and prompt to see more news on news vertical
     more_news_about_query: 'Plis %{news_label} konsènan %{query}'
     news_about_query: '%{news_label} konsènan %{query}'
-    news_search_options: "Sijè ki an rapò yo"
+    news_search_options:
 # It's safe to modify the order of these (e.g., 'm/d/yyyy'), but do not localize 'd', 'm', or 'yyyy'. Do not change the case of the letters.
-    date_format: 'm/d/yyyy'
+      date_format: 'm/d/yyyy'
 
 # Label for attributing results to Bing, Search.gov, or Google
   powered_by: 'Egzekite pa'
