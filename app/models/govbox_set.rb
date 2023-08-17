@@ -62,7 +62,7 @@ class GovboxSet
   end
 
   def format_video_news_items
-    return unless videos_exist?
+    return unless videos_exist? && @video_news_items&.total > 0
 
     @video_news_items&.results&.map { |result| result.slice(:link, :title, :description, :published_at, :youtube_thumbnail_url) }&.
       each { |result| result[:published_at] = result[:published_at].to_datetime.to_fs(:long) }
