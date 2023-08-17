@@ -14,7 +14,7 @@ class ResultsWithBodyAndDescriptionPostProcessor < ResultsPostProcessor
   def normalized_results(total_results)
     {
       totalPages: total_pages(total_results),
-      results: format_results(@search),
+      results: format_results,
       unboundedResults: false
     }
   end
@@ -37,7 +37,7 @@ class ResultsWithBodyAndDescriptionPostProcessor < ResultsPostProcessor
 
   private
 
-  def format_results(_search)
+  def format_results
     @results.map do |result|
       {
         title: translate_highlights(result['title']),

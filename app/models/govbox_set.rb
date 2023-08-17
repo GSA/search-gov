@@ -58,11 +58,11 @@ class GovboxSet
 
   def videos_exist?
     video_feeds = RssFeed.includes(:rss_feed_urls).owned_by_youtube_profile.where(owner_id: @affiliate.youtube_profile_ids)
-    video_feeds.present? && @affiliate.is_video_govbox_enabled?
+    video_feeds.present? && @affiliate.is_video_govbox_enabled? && @video_news_items.total > 0
   end
 
   def format_video_news_items
-    return unless videos_exist? && @video_news_items&.total > 0
+    return unless videos_exist?
 
     @video_news_items&.results&.map { |result| result.slice(:link, :title, :description, :published_at, :youtube_thumbnail_url) }&.
       each { |result| result[:published_at] = result[:published_at].to_datetime.to_fs(:long) }
