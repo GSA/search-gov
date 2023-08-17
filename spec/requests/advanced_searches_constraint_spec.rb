@@ -20,4 +20,10 @@ describe AdvancedSearchesConstraint do
       expect(response).to have_http_status(:ok)
     end
   end
+
+  context 'when affiliate do not exists' do
+    let(:affiliate) { 'nonexistent' }
+
+    it { is_expected.not_to have_http_status(:internal_server_error) }
+  end
 end
