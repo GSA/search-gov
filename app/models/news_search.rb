@@ -79,7 +79,7 @@ class NewsSearch < FilterableSearch
 
     @total = response.total
     @aggregations = response.aggregations
-    post_processor = ResultsWithBodyAndDescriptionPostProcessor.new(response.results, _val: nil, youtube: rss_feed&.show_only_media_content?)
+    post_processor = ResultsWithBodyAndDescriptionPostProcessor.new(response.results, _val: nil, youtube: youtube?)
     post_processor.post_process_results
     @normalized_results = post_processor.normalized_results(@total)
     @results = paginate(response.results)
@@ -110,7 +110,7 @@ class NewsSearch < FilterableSearch
   end
 
   private
-  
+
   def youtube?
     video_feeds = RssFeed.includes(:rss_feed_urls).owned_by_youtube_profile.where(owner_id: @affiliate.youtube_profile_ids)
     video_feeds.present? && @affiliate.is_video_govbox_enabled?
