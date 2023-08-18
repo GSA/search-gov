@@ -213,7 +213,8 @@ describe GovboxSet do
                                               'link' => 'http://www.youtube.com/watch?v=1&feature=youtube_gdata',
                                               'published_at' => 'September 26, 2011 00:00',
                                               'title' => 'video 1',
-                                              'youtube_thumbnail_url' => 'https://i.ytimg.com/vi/1/default.jpg'
+                                              'youtube_thumbnail_url' => 'https://i.ytimg.com/vi/1/default.jpg',
+                                              'duration' => '1:01'
                                             }
                                           ]
                                         })

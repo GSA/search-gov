@@ -65,7 +65,7 @@ class GovboxSet
   def format_video_news_items
     return unless videos_exist?
 
-    @video_news_items&.results&.first(1)&.map { |result| result.slice(:link, :title, :description, :published_at, :youtube_thumbnail_url) }&.
+    @video_news_items&.results&.first(1)&.map { |result| result.slice(:link, :title, :description, :published_at, :youtube_thumbnail_url, :duration) }&.
       each { |result| result[:published_at] = result[:published_at].to_datetime.to_fs(:long) }
   end
   # rubocop:enable Metrics/CyclomaticComplexity

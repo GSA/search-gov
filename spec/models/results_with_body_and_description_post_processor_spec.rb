@@ -25,7 +25,7 @@ describe ResultsWithBodyAndDescriptionPostProcessor do
 
       let(:results) do
         results = []
-        5.times { |index| results << Hashie::Mash::Rash.new(title: "title #{index}", description: "content #{index}", url: "http://foo.gov/#{index}", published_at: DateTime.parse('2011-09-26'), youtube_thumbnail_url: "http://youtube.com/#{index}") }
+        5.times { |index| results << Hashie::Mash::Rash.new(title: "title #{index}", description: "content #{index}", url: "http://foo.gov/#{index}", published_at: DateTime.parse('2011-09-26'), youtube_thumbnail_url: "http://youtube.com/#{index}", duration: '1:23') }
         results
       end
 
@@ -37,6 +37,7 @@ describe ResultsWithBodyAndDescriptionPostProcessor do
           expect(result[:youtube]).to be true
           expect(result[:youtubePublishedAt]).to eq(Date.new(2011, 9, 26))
           expect(result[:youtubeThumbnailUrl]).to eq("http://youtube.com/#{index}")
+          expect(result[:youtubeDuration]).to eq('1:23')
         end
       end
     end

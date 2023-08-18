@@ -45,7 +45,8 @@ class ResultsWithBodyAndDescriptionPostProcessor < ResultsPostProcessor
         description: truncate_description(translate_highlights(result['description'] || result['body'])),
         youtube: @youtube,
         youtubePublishedAt: (result&.published_at if @youtube),
-        youtubeThumbnailUrl: (result&.youtube_thumbnail_url if @youtube)
+        youtubeThumbnailUrl: (result&.youtube_thumbnail_url if @youtube),
+        youtubeDuration: (result&.duration if @youtube)
       }.compact_blank
     end
   end
