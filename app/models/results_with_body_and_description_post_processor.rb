@@ -34,7 +34,7 @@ class ResultsWithBodyAndDescriptionPostProcessor < ResultsPostProcessor
   end
 
   def highlighted?(field)
-    field.include?('')
+    field =~ /\uE000/
   end
 
   private
