@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ResultsWithBodyAndDescriptionPostProcessor < ResultsPostProcessor
   attr_accessor :results
 
@@ -32,7 +34,7 @@ class ResultsWithBodyAndDescriptionPostProcessor < ResultsPostProcessor
   end
 
   def highlighted?(field)
-    field =~ /\uE000/
+    field.include?('')
   end
 
   private
@@ -42,12 +44,16 @@ class ResultsWithBodyAndDescriptionPostProcessor < ResultsPostProcessor
       {
         title: translate_highlights(result['title']),
         url: result['url'] || result['link'],
-        description: truncate_description(translate_highlights(result['description'] || result['body'])),
+        description: format_description(resullt),
         youtube: @youtube,
         youtubePublishedAt: (result&.published_at if @youtube),
         youtubeThumbnailUrl: (result&.youtube_thumbnail_url if @youtube),
         youtubeDuration: (result&.duration if @youtube)
       }.compact_blank
     end
+  end
+
+  def format_description(result)
+    truncate_description(translate_highlights(result['description'] || result['body']))
   end
 end

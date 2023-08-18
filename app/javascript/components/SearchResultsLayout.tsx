@@ -24,6 +24,7 @@ interface SearchResultsLayoutProps {
       youtube?: boolean;
       youtubePublishedAt?: string;
       youtubeThumbnailUrl?: string;
+      youtubeDuration?: string;
     }[] | null;
   } | null;
   additionalResults?: {
@@ -71,6 +72,7 @@ interface SearchResultsLayoutProps {
       description: string;
       publishedAt: string;
       youtubeThumbnailUrl: string;
+      duration: string;
     }[];
     federalRegisterDocuments?: {
       title: string;
