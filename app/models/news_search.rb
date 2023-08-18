@@ -112,7 +112,6 @@ class NewsSearch < FilterableSearch
   private
 
   def youtube?
-    video_feeds = RssFeed.includes(:rss_feed_urls).owned_by_youtube_profile.where(owner_id: @affiliate.youtube_profile_ids)
-    video_feeds.present? && @affiliate.is_video_govbox_enabled?
+    rss_feed&.is_managed?
   end
 end
