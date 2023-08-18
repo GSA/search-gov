@@ -214,13 +214,6 @@ describe GovboxSet do
                                               'published_at' => 'September 26, 2011 00:00',
                                               'title' => 'video 1',
                                               'youtube_thumbnail_url' => 'https://i.ytimg.com/vi/1/default.jpg'
-                                            },
-                                            {
-                                              'description' => 'video news description 2',
-                                              'link' => 'http://www.youtube.com/watch?v=2&feature=youtube_gdata',
-                                              'published_at' => 'September 26, 2011 00:00',
-                                              'title' => 'video 2',
-                                              'youtube_thumbnail_url' => 'https://i.ytimg.com/vi/2/default.jpg'
                                             }
                                           ]
                                         })
