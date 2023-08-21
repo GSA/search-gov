@@ -61,14 +61,14 @@ class GovboxSet
     video_feeds.present? && @affiliate.is_video_govbox_enabled? && @video_news_items.total.positive?
   end
 
-  def get_first_video_result
+  def first_video_result
     @video_news_items&.results&.first(1)
   end
 
   def format_video_news_items
     return unless videos_exist?
 
-    get_first_video_result&.map { |result| result.slice(:link, :title, :description, :published_at, :youtube_thumbnail_url, :duration) }&.
+    first_video_result&.map { |result| result.slice(:link, :title, :description, :published_at, :youtube_thumbnail_url, :duration) }&.
       each { |result| result[:published_at] = result[:published_at].to_datetime.to_fs(:long) }
   end
 
