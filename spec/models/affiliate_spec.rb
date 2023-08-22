@@ -209,27 +209,13 @@ describe Affiliate do
     describe 'visual design json' do
       subject(:visual_design_json) { affiliate.visual_design_json }
 
-      let(:affiliate) { described_class.create!(valid_create_attributes.merge(visual_design_json: visual_design)) }
+      let(:affiliate) { described_class.create!(valid_create_attributes) }
 
-      context 'when a valid header_links_font_family is supplied' do
-        let(:visual_design) { { header_links_font_family: 'tahoma' } }
+      its(['header_links_font_family']) { is_expected.to eq(Affiliate::DEFAULT_FONT) }
+      its(['footer_and_results_font_family']) { is_expected.to eq(Affiliate::DEFAULT_FONT) }
 
-        its(['header_links_font_family']) { is_expected.to eq('tahoma') }
-        its(['footer_and_results_font_family']) { is_expected.to eq(Affiliate::DEFAULT_FONT) }
-      end
-
-      context 'when a valid footer_and_results_font_family is supplied' do
-        let(:visual_design) { { footer_and_results_font_family: 'georgia' } }
-
-        its(['header_links_font_family']) { is_expected.to eq(Affiliate::DEFAULT_FONT) }
-        its(['footer_and_results_font_family']) { is_expected.to eq('georgia') }
-      end
-
-      context 'when no font families are supplied' do
-        let(:visual_design) { {} }
-
-        its(['header_links_font_family']) { is_expected.to eq(Affiliate::DEFAULT_FONT) }
-        its(['footer_and_results_font_family']) { is_expected.to eq(Affiliate::DEFAULT_FONT) }
+      Affiliate::DEFAULT_COLORS.each_key do |color|
+        its([color.to_s]) { is_expected.to eq(Affiliate::DEFAULT_COLORS[color]) }
       end
     end
 
@@ -373,38 +359,55 @@ describe Affiliate do
       end
     end
 
-    context 'when provided fonts are valid USWDS font families' do
-      Affiliate::USWDS_FONTS.each do |font_family|
-        subject { described_class.new(valid_create_attributes.merge(visual_design_json: valid_font_family)) }
-
-        let(:valid_font_family) do
-          {
-            header_links_font_family: font_family,
-            footer_and_results_font_family: font_family
-          }
-        end
-
-        it { is_expected.to be_valid }
+    describe 'visual design json' do
+      subject(:affiliate) do
+        described_class.new(valid_create_attributes.merge(visual_design_json: visual_design))
       end
-    end
 
-    %w[header_links_font_family footer_and_results_font_family].each do |font|
-      context "when #{font} is not a valid USWDS font family" do
-        subject(:affiliate) do
-          described_class.new(valid_create_attributes.merge(visual_design_json: invalid_font_family))
+      let(:visual_design) { Affiliate::DEFAULT_VISUAL_DESIGN.merge(updates) }
+
+      context 'when provided fonts are valid USWDS font families' do
+        Affiliate::USWDS_FONTS.each do |font_family|
+          let(:updates) do
+            {
+              header_links_font_family: font_family,
+              footer_and_results_font_family: font_family
+            }
+          end
+
+          it { is_expected.to be_valid }
+        end
+      end
+
+      %w[header_links_font_family footer_and_results_font_family].each do |font|
+        context "when #{font} is not a valid USWDS font family" do
+          let(:updates) { { "#{font}": 'Comic Sans MS' } }
+
+          it { is_expected.not_to be_valid }
+
+          it 'throws an error' do
+            affiliate.save
+            expect(affiliate.errors[:base]).to include("#{font} font family selection is invalid")
+          end
+        end
+      end
+
+      Affiliate::DEFAULT_COLORS.each_key do |color|
+        context "when #{color} is a valid hex code" do
+          let(:updates) { { "#{color}": '#000' } }
+
+          it { is_expected.to be_valid }
         end
 
-        let(:invalid_font_family) do
-          {
-            "#{font}": 'Comic Sans MS'
-          }
-        end
+        context "when #{color} is not a valid hex code" do
+          let(:updates) { { "#{color}": 'not a hex code' } }
 
-        it { is_expected.not_to be_valid }
+          it { is_expected.not_to be_valid }
 
-        it 'throws an error' do
-          affiliate.save
-          expect(affiliate.errors[:base]).to include("#{font} font family selection is invalid")
+          it 'throws an error' do
+            affiliate.save
+            expect(affiliate.errors[:base]).to include("#{color.to_s.humanize} value is not a valid hex code")
+          end
         end
       end
     end

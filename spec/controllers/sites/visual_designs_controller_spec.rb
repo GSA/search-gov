@@ -30,7 +30,7 @@ describe Sites::VisualDesignsController do
                   visual_design_json: {
                     header_links_font_family: 'georgia',
                     footer_and_results_font_family: 'tahoma'
-                  }
+                  }.merge(Affiliate::DEFAULT_COLORS)
                 }
               }
         end
@@ -54,7 +54,7 @@ describe Sites::VisualDesignsController do
                     visual_design_json: {
                       header_links_font_family: 'comic sans',
                       footer_and_results_font_family: 'invalid'
-                    }
+                    }.merge(Affiliate::DEFAULT_COLORS)
                   }
                 }
           end

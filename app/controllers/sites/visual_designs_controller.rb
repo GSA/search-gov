@@ -18,8 +18,13 @@ class Sites::VisualDesignsController < Sites::SetupSiteController
     params.require(:site).permit(
       visual_design_json: [
         :header_links_font_family,
-        :footer_and_results_font_family
+        :footer_and_results_font_family,
+        color_params
       ]
     )
+  end
+
+  def color_params
+    Affiliate::DEFAULT_COLORS.keys
   end
 end

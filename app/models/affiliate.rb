@@ -224,10 +224,37 @@ class Affiliate < ApplicationRecord
     system
     tahoma
   ].freeze
+  DEFAULT_COLORS = {
+    banner_background_color: '#F0F0F0',
+    banner_text_color: '#1B1B1B',
+    header_background_color: '#FFFFFF',
+    secondary_header_background_color: '#FFFFFF',
+    header_primary_link_color: '#565C65',
+    header_secondary_link_color: '#71767A',
+    navigation_text_color: '#565C65',
+    page_background_color: '#FFFFFF',
+    button_background_color: '#005EA2',
+    active_search_tab_navigation_color: '#005EA2',
+    search_tab_navigation_link_color: '#005EA2',
+    best_bet_background_color: '#1A4480',
+    health_benefits_header_background_color: '#1A4480',
+    result_title_color: '#005EA2',
+    result_title_link_visited_color: '#8168B3',
+    result_description_color: '#1B1B1B',
+    result_url_color: '#446443',
+    link_color: '#005EA2',
+    link_color_visited: '#54278F',
+    section_title_color: '#565C65',
+    footer_background_color: '#F0F0F0',
+    footer_links_text_color: '#1B1B1B',
+    identifier_background_color: '#1B1B1B',
+    identifier_heading_color: '#FFFFFF',
+    identifier_link_color: '#A9AEB1'
+  }.freeze
   DEFAULT_VISUAL_DESIGN = {
     header_links_font_family: DEFAULT_FONT,
     footer_and_results_font_family: DEFAULT_FONT
-  }.freeze
+  }.merge(DEFAULT_COLORS)
 
   CUSTOM_INDEXING_LANGUAGES = %w[en es].freeze
 
@@ -462,6 +489,7 @@ class Affiliate < ApplicationRecord
     return if visual_design_json.blank?
 
     validate_visual_design_font_family(visual_design_json)
+    validate_visual_design_colors(visual_design_json)
   end
 
   def validate_visual_design_font_family(visual_design_json)
@@ -469,6 +497,15 @@ class Affiliate < ApplicationRecord
       next unless visual_design_json[font].present? && USWDS_FONTS.exclude?(visual_design_json[font])
 
       errors.add(:base, "#{font} font family selection is invalid")
+    end
+  end
+
+  def validate_visual_design_colors(visual_design_json)
+    DEFAULT_COLORS.each_key do |color|
+      color = color.to_s
+      next if visual_design_json[color]&.match?(/^#([0-9A-F]{3}|[0-9A-F]{6})$/i)
+
+      errors.add(:base, "#{color.humanize} value is not a valid hex code")
     end
   end
 
