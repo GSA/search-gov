@@ -173,11 +173,60 @@ describe GovboxSet do
         end
       end
 
+      context 'when there are video results' do
+        before do
+          allow(affiliate).to receive(:is_video_govbox_enabled?).and_return(true)
+
+          youtube_profile = youtube_profiles(:whitehouse)
+          rss_feed_url = youtube_profile.rss_feed.rss_feed_urls.first
+          rss_feed_url.news_items.delete_all
+
+          news_items = (1..2).map do |i|
+            NewsItem.new(rss_feed_url: rss_feed_url,
+                         link: "http://www.youtube.com/watch?v=#{i}&feature=youtube_gdata",
+                         title: "video #{i}",
+                         description: "video news description #{i}",
+                         published_at: Date.new(2011, 9, 26),
+                         guid: "http://gdata.youtube.com/feeds/base/videos/#{i}",
+                         duration: "#{i}:0#{i}",
+                         updated_at: Time.current)
+          end
+
+          elastic_results = instance_double(ElasticNewsItemResults,
+                                            results: news_items,
+                                            total: 2)
+
+          allow(ElasticNewsItem).to receive(:search_for).and_return(elastic_results)
+          allow(affiliate).to receive(:is_video_govbox_enabled?).and_return(true)
+        end
+
+        after do
+          NewsItem.destroy_all
+        end
+
+        it 'returns the affiliate display name and an array of video news items' do
+          expect(govbox_set_json).to eq({
+                                          recommendedBy: affiliate.display_name,
+                                          youtubeNewsItems: [
+                                            {
+                                              'description' => 'video news description 1',
+                                              'link' => 'http://www.youtube.com/watch?v=1&feature=youtube_gdata',
+                                              'published_at' => 'September 26, 2011 00:00',
+                                              'title' => 'video 1',
+                                              'youtube_thumbnail_url' => 'https://i.ytimg.com/vi/1/default.jpg',
+                                              'duration' => '1:01'
+                                            }
+                                          ]
+                                        })
+        end
+      end
+
       context 'when there are new news results' do
         let(:news_item) { NewsItem.new(title: 'title', link: 'https://www.search.gov', description: 'description', published_at: Date.current - 2) }
         let(:news_results) { instance_double(ElasticNewsItemResults, total: 1, results: [news_item]) }
 
         before do
+          allow(affiliate).to receive(:is_video_govbox_enabled?).and_return(false)
           allow(affiliate).to receive(:is_rss_govbox_enabled?).and_return(true)
           allow(ElasticNewsItem).to receive(:search_for).and_return(news_results)
         end
@@ -200,6 +249,7 @@ describe GovboxSet do
         let(:news_results) { instance_double(ElasticNewsItemResults, total: 1, results: [news_item]) }
 
         before do
+          allow(affiliate).to receive(:is_video_govbox_enabled?).and_return(false)
           allow(affiliate).to receive(:is_rss_govbox_enabled?).and_return(true)
           allow(ElasticNewsItem).to receive(:search_for).and_return(news_results)
         end
