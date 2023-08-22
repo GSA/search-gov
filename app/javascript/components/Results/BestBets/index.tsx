@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
+import { LanguageContext } from '../../../contexts/LanguageContext';
 
 import { TextBestBet } from './TextBestBet';
 import { GraphicsBestBet } from './GraphicsBestBet';
@@ -25,6 +26,8 @@ interface BestBetsProps {
 }
 
 export const BestBets = ({ recommendedBy, textBestBets = [], graphicsBestBet, parse }: BestBetsProps) => {
+  const i18n = useContext(LanguageContext);
+
   return (
     <>
       {(textBestBets?.length > 0 || graphicsBestBet) && (
@@ -32,7 +35,7 @@ export const BestBets = ({ recommendedBy, textBestBets = [], graphicsBestBet, pa
           <Grid row gap="md" id="best-bets">
             <Grid col={true}>
               <GridContainer className='best-bets-title'>
-                Recommended by {recommendedBy}
+                {i18n.t('recommendedBy', { affiliate: recommendedBy })}
               </GridContainer>
               {textBestBets?.map((textBestBet, index) => {
                 return (

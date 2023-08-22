@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
 import parse from 'html-react-parser';
 
 import { Pagination } from './../Pagination/Pagination';
 import { BestBets } from './BestBets';
 import { NoResults } from './NoResults/NoResults';
+import { LanguageContext } from '../../contexts/LanguageContext';
+
 // import { HealthTopics } from './HealthTopics/HealthTopics';
 // import { ImagesPage } from './ImagesPage/ImagesPage';
 // import { RssNews } from './RssNews/RssNews';
@@ -47,12 +49,11 @@ interface ResultsProps {
   unboundedResults: boolean;
   totalPages: number | null;
   vertical: string;
-  locale: {
-    t(key: string, values: Record<string, string>): string;
-  };
 }
 
-export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical, locale }: ResultsProps) => {
+export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical }: ResultsProps) => {
+  const i18n = useContext(LanguageContext);
+
   const URL_LENGTH = 80;
   return (
     <>
@@ -113,7 +114,7 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
               </GridContainer>
             );
           })) : (
-            <NoResults errorMsg={locale.t('noResultsForAndTry', { query })} />
+            <NoResults errorMsg={i18n.t('noResultsForAndTry', { query })} />
           )}
         </div>
       </div>

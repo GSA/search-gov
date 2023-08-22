@@ -5,7 +5,8 @@ import SearchResultsLayout from '../components/SearchResultsLayout';
 
 const locale = {
   en: {
-    noResultsForAndTry: 'Sorry, no results found for \'%{query}\'. Try entering fewer or more general search terms.'
+    noResultsForAndTry: 'Sorry, no results found for \'%{query}\'. Try entering fewer or more general search terms.',
+    recommendedBy: 'Recommended by %{affiliate}'
   }
 };
 

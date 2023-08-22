@@ -12,7 +12,9 @@
   "watch": {
     "build:css": {
       "extensions": "less",
-      "patterns": ["app/assets/stylesheets"],
+      "patterns": [
+        "app/assets/stylesheets"
+      ],
       "runOnChangeOnly": true
     }
   },

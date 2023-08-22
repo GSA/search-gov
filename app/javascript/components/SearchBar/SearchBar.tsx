@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
 
 import { VerticalNav } from './../VerticalNav/VerticalNav';
 // import { Alert } from './../Alert/Alert';
 import { getUriWithParam } from '../../utils';
+import { LanguageContext } from '../../contexts/LanguageContext';
 
 import './SearchBar.css';
 
@@ -11,15 +12,14 @@ const logoImg = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vc
 
 interface SearchBarProps {
   query?: string;
-  locale: {
-    t(key: string): string;
-  };
   relatedSites?: {label: string, link: string}[];
 }
 
-export const SearchBar = ({ query = '', locale, relatedSites = [] }: SearchBarProps) => {
+export const SearchBar = ({ query = '', relatedSites = [] }: SearchBarProps) => {
   const [searchQuery, setSearchQuery] = useState(query);
   const searchUrlParam = 'query';
+
+  const i18n = useContext(LanguageContext);
 
   const handleSearchQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const element = event.target as HTMLInputElement;
@@ -47,7 +47,7 @@ export const SearchBar = ({ query = '', locale, relatedSites = [] }: SearchBarPr
               <input 
                 className="usa-input" 
                 id="search-field" 
-                placeholder="Please enter a search term."
+                placeholder={i18n.t('inputPlaceholder')}
                 type="search" 
                 name="searchQuery" 
                 value={searchQuery} 
@@ -71,7 +71,7 @@ export const SearchBar = ({ query = '', locale, relatedSites = [] }: SearchBarPr
         <Grid row>
           <Grid tablet={{ col: true }}>
             <h4 className='no-result-error'>
-              {locale.t('emptyQuery')}
+              {i18n.t('emptyQuery')}
             </h4>
           </Grid>
         </Grid>}
