@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'ostruct'
-
 describe Affiliate do
   let(:valid_create_attributes) do
     { display_name: 'My Awesome Site',
@@ -1108,7 +1106,11 @@ describe Affiliate do
 
   describe '#no_results_error' do
     let(:no_results_error) { 'There are no results.' }
-    let(:additional_links) { OpenStruct.new({ values: [{ title: 'Search.gov', url: 'https://search.gov' }, { title: 'Google', url: 'https://google.com' }] }) }
+    let(:additional_links) do
+      Links = Struct.new('Links', :values)
+      links = Links.new([{ title: 'Search.gov', url: 'https://search.gov' }, { title: 'Google', url: 'https://google.com' }])
+      links
+    end
 
     context 'when there is a custom message without additional links' do
       before do
