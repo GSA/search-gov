@@ -1107,9 +1107,8 @@ describe Affiliate do
   end
 
   describe '#no_results_error' do
-
-    let (:no_results_error) {'There are no results.' }
-    let (:additional_links) { [OpenStruct.new({ values: { title: 'Search.gov', url: 'https://search.gov'} }), OpenStruct.new({ values: { title: 'Google', url: 'https://google.com' }})] }
+    let(:no_results_error) { 'There are no results.' }
+    let(:additional_links) { [OpenStruct.new({ values: { title: 'Search.gov', url: 'https://search.gov' } }), OpenStruct.new({ values: { title: 'Google', url: 'https://google.com' } })] }
 
     context 'when there is a custom message without additional links' do
       before do
@@ -1118,7 +1117,7 @@ describe Affiliate do
       end
 
       it 'returns the custom message' do
-        expect(affiliate.no_results_error).to eq({:text=>no_results_error})
+        expect(affiliate.no_results_error).to eq({ text: no_results_error })
       end
     end
 
@@ -1131,7 +1130,7 @@ describe Affiliate do
       end
 
       it 'returns the custom message' do
-        expect(affiliate.no_results_error).to eq({:text=>no_results_error})
+        expect(affiliate.no_results_error).to eq({ text: no_results_error })
       end
     end
   end

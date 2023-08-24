@@ -425,7 +425,7 @@ class Affiliate < ApplicationRecord
   end
 
   def no_results_error
-    return unless additional_guidance_text.present?
+    return if additional_guidance_text.blank?
 
     {
       text: additional_guidance_text,

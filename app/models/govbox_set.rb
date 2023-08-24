@@ -194,7 +194,7 @@ class GovboxSet
 
   def init_news_items
     return unless @affiliate.is_rss_govbox_enabled?
-    binding.pry
+
     non_managed_feeds = @affiliate.rss_feeds.non_mrss.non_managed.includes(:rss_feed_urls).to_a
     return unless non_managed_feeds.present?
 
