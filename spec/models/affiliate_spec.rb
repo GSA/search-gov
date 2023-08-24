@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'ostruct'
+
 describe Affiliate do
   let(:valid_create_attributes) do
     { display_name: 'My Awesome Site',
@@ -1101,6 +1103,36 @@ describe Affiliate do
 
     it 'returns unique excluded urls without protocol' do
       expect(affiliate.excluded_urls_set).to eq ['excluded.com']
+    end
+  end
+
+  describe '#no_results_error' do
+
+    let (:no_results_error) {'There are no results.' }
+    let (:additional_links) { [OpenStruct.new({ values: { title: 'Search.gov', url: 'https://search.gov'} }), OpenStruct.new({ values: { title: 'Google', url: 'https://google.com' }})] }
+
+    context 'when there is a custom message without additional links' do
+      before do
+        affiliate.additional_guidance_text = no_results_error
+        affiliate.save!
+      end
+
+      it 'returns the custom message' do
+        expect(affiliate.no_results_error).to eq({:text=>no_results_error})
+      end
+    end
+
+    context 'when there is a custom message with additional links' do
+      before do
+        affiliate.additional_guidance_text = no_results_error
+        affiliate.managed_no_results_pages_alt_links_attributes = additional_links
+        # affiliate.set_managed_no_results_pages_alt_links
+        affiliate.save!
+      end
+
+      it 'returns the custom message' do
+        expect(affiliate.no_results_error).to eq({:text=>no_results_error})
+      end
     end
   end
 end
