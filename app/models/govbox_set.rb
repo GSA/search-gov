@@ -48,12 +48,29 @@ class GovboxSet
       jobs: format_jobs,
       healthTopic: format_health_topic,
       federalRegisterDocuments: format_federal_register_documents,
+      youtubeNewsItems: format_video_news_items,
       oldNews: format_old_news,
       newNews: format_new_news
     }.compact_blank
   end
 
   private
+
+  def videos_exist?
+    video_feeds = RssFeed.includes(:rss_feed_urls).owned_by_youtube_profile.where(owner_id: @affiliate.youtube_profile_ids)
+    video_feeds.present? && @affiliate.is_video_govbox_enabled? && @video_news_items.total.positive?
+  end
+
+  def first_video_result
+    @video_news_items&.results&.first(1)
+  end
+
+  def format_video_news_items
+    return unless videos_exist?
+
+    first_video_result&.map { |result| result.slice(:link, :title, :description, :published_at, :youtube_thumbnail_url, :duration) }&.
+      each { |result| result[:published_at] = result[:published_at].to_datetime.to_fs(:long) }
+  end
 
   def fresh_news_items?
     return false unless @news_items

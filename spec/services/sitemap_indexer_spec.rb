@@ -95,6 +95,51 @@ describe SitemapIndexer do
       end
     end
 
+    describe '#txt_sitemap?' do
+      let(:domain) { 'repodb.net' }
+      let(:sitemap_url) { 'http://repodb.net/sitemap.txt' }
+      let(:sitemap_indexer) { described_class.new(sitemap_url: sitemap_url, domain: domain) }
+
+      context 'when the sitemap is a TXT format' do
+        let(:txt_sitemap_content) { 'http://repodb.net/preface\nhttp://repodb.net/docs\n' }
+
+        before do
+          allow(sitemap_indexer).to receive(:https_url).and_return(sitemap_url)
+          allow(sitemap_indexer).to receive(:sitemap).and_return(txt_sitemap_content)
+        end
+
+        it 'returns true when sitemap_url ends with .txt' do
+          expect(sitemap_indexer.send(:txt_sitemap?)).to be true
+        end
+
+        it 'returns the URLs extracted from the TXT sitemap content' do
+          expect(sitemap_indexer.send(:sitemap_entries_stream)).to eq(['http://repodb.net/preface', 'http://repodb.net/docs'])
+        end
+      end
+
+      context 'when urls are extracted from sitemap' do
+        let(:entry) { 'http://repodb.net/preface' }
+        let(:searchgov_domain) { SearchgovDomain.create(domain: domain) }
+        let(:searchgov_url) { instance_double(SearchgovUrl) }
+
+        before do
+          allow(SearchgovDomain).to receive(:find_by).with(domain: domain).and_return(searchgov_domain)
+          allow(SearchgovUrl).to receive(:find_or_initialize_by).and_return(searchgov_url)
+          allow(sitemap_indexer).to receive(:sitemap_entries_stream).and_return([entry])
+        end
+
+        it 'processes each entry' do
+          expect(sitemap_indexer).to receive(:process_entry).with(entry)
+          sitemap_indexer.send(:process_entries)
+        end
+
+        it 'saves the sitemap url' do
+          expect(searchgov_url).to receive(:save!)
+          sitemap_indexer.send(:process_entry, entry)
+        end
+      end
+    end
+
     context 'when a SearchgovUrl record raises an error' do
       before do
         allow(SearchgovUrl).to receive(:find_or_initialize_by).and_raise(StandardError)

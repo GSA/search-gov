@@ -15,12 +15,16 @@ interface SearchResultsLayoutProps {
     totalPages: number;
     unboundedResults: boolean;
     results: {
-      title: string,
-      url: string,
-      description: string,
-      updatedDate?: string,
-      publishedDate?: string,
-      thumbnailUrl?: string
+      title: string;
+      url: string;
+      description: string;
+      updatedDate?: string;
+      publishedDate?: string;
+      thumbnailUrl?: string;
+      youtube?: boolean;
+      youtubePublishedAt?: string;
+      youtubeThumbnailUrl?: string;
+      youtubeDuration?: string;
     }[] | null;
   } | null;
   additionalResults?: {
@@ -61,6 +65,14 @@ interface SearchResultsLayoutProps {
       maximumPay: number;
       rateIntervalCode: string;
       applicationCloseDate: string;
+    }[];
+    youtubeNewsItems?: {
+      link: string;
+      title: string;
+      description: string;
+      publishedAt: string;
+      youtubeThumbnailUrl: string;
+      duration: string;
     }[];
     federalRegisterDocuments?: {
       title: string;
