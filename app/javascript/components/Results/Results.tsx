@@ -7,7 +7,7 @@ import { BestBets } from './BestBets';
 import { NoResults } from './NoResults/NoResults';
 // import { HealthTopics } from './HealthTopics/HealthTopics';
 // import { ImagesPage } from './ImagesPage/ImagesPage';
-// import { RssNews } from './RssNews/RssNews';
+import { RssNews } from './RssNews/RssNews';
 // import { Videos } from './Videos/Videos';
 // import { FedRegister } from './FedRegister/FedRegister';
 // import { Jobs } from './Jobs/Jobs';
@@ -42,7 +42,13 @@ interface ResultsProps {
         title: string;
         url: string;
       }[];
-    }
+    };
+    oldNews?: {
+      title: string;
+      link: string;
+      description: string;
+      publishedAt: string;
+    }[];
   } | null;
   unboundedResults: boolean;
   totalPages: number | null;
@@ -115,6 +121,18 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
           })) : (
             <NoResults errorMsg={locale.t('noResultsForAndTry', { query })} />
           )}
+
+          {
+            (additionalResults && 
+              additionalResults?.oldNews && 
+              additionalResults?.oldNews?.length > 0) && 
+              <RssNews 
+                news={additionalResults.oldNews} 
+                recommendedBy={additionalResults.recommendedBy}
+                parse={parse}
+              />
+          }
+
         </div>
       </div>
       <Pagination 
