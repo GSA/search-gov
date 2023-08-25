@@ -1103,4 +1103,48 @@ describe Affiliate do
       expect(affiliate.excluded_urls_set).to eq ['excluded.com']
     end
   end
+
+  describe '#no_results_error' do
+    let(:no_results_error) { 'There are no results.' }
+    let(:additional_links) do
+      instance_double(ActiveSupport::HashWithIndifferentAccess, values: [{ title: 'Search.gov', url: 'https://search.gov' }, { title: 'Google', url: 'https://google.com' }])
+    end
+
+    context 'when there is no custom message' do
+      before do
+        affiliate.additional_guidance_text = ''
+        affiliate.save!
+      end
+
+      it 'returns nil' do
+        expect(affiliate.no_results_error).to be_nil
+      end
+    end
+
+    context 'when there is a custom message without additional links' do
+      before do
+        affiliate.additional_guidance_text = no_results_error
+        affiliate.save!
+      end
+
+      it 'returns the custom message' do
+        expect(affiliate.no_results_error).to eq({ text: no_results_error })
+      end
+    end
+
+    context 'when there is a custom message with additional links' do
+      before do
+        affiliate.additional_guidance_text = no_results_error
+        affiliate.managed_no_results_pages_alt_links_attributes = additional_links
+        affiliate.save!
+      end
+
+      it 'returns the custom message and links' do
+        expect(affiliate.no_results_error).to eq(
+          { text: 'There are no results.',
+            urls: [{ title: 'Search.gov', url: 'https://search.gov' }, { title: 'Google', url: 'https://google.com' }] }
+        )
+      end
+    end
+  end
 end
