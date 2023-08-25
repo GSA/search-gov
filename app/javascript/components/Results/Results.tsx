@@ -64,6 +64,7 @@ interface ResultsProps {
   };
 }
 
+// eslint-disable-next-line complexity
 export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical, locale }: ResultsProps) => {
   const URL_LENGTH = 80;
   return (

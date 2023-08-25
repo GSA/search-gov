@@ -7,17 +7,17 @@ import { RssNews } from '../components/Results/RssNews/RssNews';
 
 describe('Rss News component', () => {
   const newsProps = {
-    'news': [
+    news: [
       {
-        'title': '<strong>GSA</strong> title',
-        'description': 'test description',
-        'link': 'https://test.com',
-        'publishedAt': '2023-08-17'
+        title: '<strong>GSA</strong> title',
+        description: 'test description',
+        link: 'https://test.com',
+        publishedAt: '2023-08-17'
       }
     ],
-    'recommendedBy': 'gsa',
+    recommendedBy: 'gsa',
     parse
-  }
+  };
 
   it('renders rss news component', () => {
     render(

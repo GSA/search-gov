@@ -59,7 +59,7 @@ class GovboxSet
   def translate_highlights(body)
     body&.gsub(/\uE000/, '<strong>')&.gsub(/\uE001/, '</strong>')
   end
- 
+  
   def videos_exist?
     video_feeds = RssFeed.includes(:rss_feed_urls).owned_by_youtube_profile.where(owner_id: @affiliate.youtube_profile_ids)
     video_feeds.present? && @affiliate.is_video_govbox_enabled? && @video_news_items.total.positive?
