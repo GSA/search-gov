@@ -49,6 +49,12 @@ interface ResultsProps {
       description: string;
       publishedAt: string;
     }[];
+    newNews?: {
+      title: string;
+      link: string;
+      description: string;
+      publishedAt: string;
+    }[];
   } | null;
   unboundedResults: boolean;
   totalPages: number | null;
@@ -69,7 +75,20 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
             parse={parse}
           />
         )}
+
         <div id="results" className="search-result-item-wrapper">
+          {/* RSS - new news */}
+          {
+            (additionalResults && 
+              additionalResults?.newNews && 
+              additionalResults?.newNews?.length > 0) && 
+              <RssNews 
+                news={additionalResults.newNews} 
+                recommendedBy={additionalResults.recommendedBy}
+                parse={parse}
+              />
+          }
+
           {/* Jobs - To Do as part of backend integration */}
           {/* <Jobs /> */}
           
@@ -78,9 +97,6 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
 
           {/* Image page Components - To do with its integration task */}
           {/* <ImagesPage /> */}
-          
-          {/* RSS module/page - To do with its integration task */}
-          {/* <RssNews /> */}
 
           {/* Video module/page - To do with its integration task */}
           {/* <Videos /> */}
@@ -88,40 +104,48 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
           {/* Federal register - To do with its integration task */}
           {/* <FedRegister /> */}
 
-          {results && results.length > 0 ? (results.map((result, index) => {
-            return (
-              <GridContainer key={index} className='result search-result-item'>
+          {/* Results */}
+          {results && results.length > 0 ? 
+            <> 
+              {results.map((result, index) => {
+                return (
+                  <GridContainer key={index} className='result search-result-item'>
+                    <Grid row gap="md">
+                      {vertical === 'image' &&
+                      <Grid mobileLg={{ col: 4 }} className='result-thumbnail'>
+                        <img src={result.thumbnailUrl} className="result-image" alt={result.title}/>
+                      </Grid>
+                      }
+                      <Grid col={true} className='result-meta-data'>
+                        {result.publishedDate && (<span className='published-date'>{result.publishedDate}</span>)}
+                        {result.updatedDate && (<span className='published-date'>{' '}&#40;Updated on {result.updatedDate}&#41;</span>)}
+                        <div className='result-title'>
+                          <a href={result.url} className='result-title-link'>
+                            <h2 className='result-title-label'>
+                              {parse(result.title)} 
+                              {/* ToDo: This need to be dynamic */}
+                              <span className='filetype-label'>PDF</span>
+                            </h2>
+                          </a>
+                        </div>
+                        <div className='result-desc'>
+                          <p>{parse(result.description)}</p>
+                          <div className='result-url-text'>{truncateUrl(result.url, URL_LENGTH)}</div>
+                        </div>
+                      </Grid>
+                    </Grid>
+                    <Grid row className="row-mobile-divider"></Grid>
+                  </GridContainer>
+                );
+              })}
+              <GridContainer className='result-divider'>
                 <Grid row gap="md">
-                  {vertical === 'image' &&
-                  <Grid mobileLg={{ col: 4 }} className='result-thumbnail'>
-                    <img src={result.thumbnailUrl} className="result-image" alt={result.title}/>
-                  </Grid>
-                  }
-                  <Grid col={true} className='result-meta-data'>
-                    {result.publishedDate && (<span className='published-date'>{result.publishedDate}</span>)}
-                    {result.updatedDate && (<span className='published-date'>{' '}&#40;Updated on {result.updatedDate}&#41;</span>)}
-                    <div className='result-title'>
-                      <a href={result.url} className='result-title-link'>
-                        <h2 className='result-title-label'>
-                          {parse(result.title)} 
-                          {/* ToDo: This need to be dynamic */}
-                          <span className='filetype-label'>PDF</span>
-                        </h2>
-                      </a>
-                    </div>
-                    <div className='result-desc'>
-                      <p>{parse(result.description)}</p>
-                      <div className='result-url-text'>{truncateUrl(result.url, URL_LENGTH)}</div>
-                    </div>
-                  </Grid>
                 </Grid>
-                <Grid row className="row-mobile-divider"></Grid>
-              </GridContainer>
-            );
-          })) : (
+              </GridContainer></> : (
             <NoResults errorMsg={locale.t('noResultsForAndTry', { query })} />
           )}
 
+          {/* RSS - old news */}
           {
             (additionalResults && 
               additionalResults?.oldNews && 
@@ -132,7 +156,6 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
                 parse={parse}
               />
           }
-
         </div>
       </div>
       <Pagination 
