@@ -1107,9 +1107,18 @@ describe Affiliate do
   describe '#no_results_error' do
     let(:no_results_error) { 'There are no results.' }
     let(:additional_links) do
-      Links = Struct.new('Links', :values)
-      links = Links.new([{ title: 'Search.gov', url: 'https://search.gov' }, { title: 'Google', url: 'https://google.com' }])
-      links
+      instance_double(ActiveSupport::HashWithIndifferentAccess, values: [{ title: 'Search.gov', url: 'https://search.gov' }, { title: 'Google', url: 'https://google.com' }])
+    end
+
+    context 'when there is no custom message' do
+      before do
+        affiliate.additional_guidance_text = ''
+        affiliate.save!
+      end
+
+      it 'returns nil' do
+        expect(affiliate.no_results_error).to be_nil
+      end
     end
 
     context 'when there is a custom message without additional links' do
@@ -1130,7 +1139,7 @@ describe Affiliate do
         affiliate.save!
       end
 
-      it 'returns the custom message' do
+      it 'returns the custom message and links' do
         expect(affiliate.no_results_error).to eq(
           { text: 'There are no results.',
             urls: [{ title: 'Search.gov', url: 'https://search.gov' }, { title: 'Google', url: 'https://google.com' }] }
