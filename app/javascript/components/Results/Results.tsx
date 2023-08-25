@@ -142,8 +142,8 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
                 <Grid row gap="md">
                 </Grid>
               </GridContainer></> : (
-            <NoResults errorMsg={locale.t('noResultsForAndTry', { query })} />
-          )}
+              <NoResults errorMsg={locale.t('noResultsForAndTry', { query })} />
+            )}
 
           {/* RSS - old news */}
           {
