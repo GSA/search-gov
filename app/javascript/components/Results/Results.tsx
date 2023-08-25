@@ -97,14 +97,14 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
                     <div className='result-title'>
                       <a href={result.url} className='result-title-link'>
                         <h2 className='result-title-label'>
-                          {result.title} 
+                          {parse(result.title)} 
                           {/* ToDo: This need to be dynamic */}
                           <span className='filetype-label'>PDF</span>
                         </h2>
                       </a>
                     </div>
                     <div className='result-desc'>
-                      <p>{result.description}</p>
+                      <p>{parse(result.description)}</p>
                       <div className='result-url-text'>{truncateUrl(result.url, URL_LENGTH)}</div>
                     </div>
                   </Grid>
