@@ -79,15 +79,12 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
 
         <div id="results" className="search-result-item-wrapper">
           {/* RSS - new news */}
-          {
-            (additionalResults && 
-              additionalResults?.newNews && 
-              additionalResults?.newNews?.length > 0) && 
-              <RssNews 
-                news={additionalResults.newNews} 
-                recommendedBy={additionalResults.recommendedBy}
-                parse={parse}
-              />
+          {additionalResults?.newNews && 
+            <RssNews 
+              news={additionalResults.newNews} 
+              recommendedBy={additionalResults.recommendedBy}
+              parse={parse}
+            />
           }
 
           {/* Jobs - To Do as part of backend integration */}
@@ -147,15 +144,12 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
             )}
 
           {/* RSS - old news */}
-          {
-            (additionalResults && 
-              additionalResults?.oldNews && 
-              additionalResults?.oldNews?.length > 0) && 
-              <RssNews 
-                news={additionalResults.oldNews} 
-                recommendedBy={additionalResults.recommendedBy}
-                parse={parse}
-              />
+          {additionalResults?.oldNews && 
+            <RssNews 
+              news={additionalResults.oldNews} 
+              recommendedBy={additionalResults.recommendedBy}
+              parse={parse}
+            />
           }
         </div>
       </div>
