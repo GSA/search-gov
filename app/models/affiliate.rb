@@ -451,6 +451,15 @@ class Affiliate < ApplicationRecord
     end.uniq
   end
 
+  def no_results_error
+    return if additional_guidance_text.blank?
+
+    {
+      text: additional_guidance_text,
+      urls: managed_no_results_pages_alt_links&.map { |link| link.slice(:title, :url) }
+    }.compact_blank
+  end
+
   private
 
   def batch_size(scope)
