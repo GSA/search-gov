@@ -146,8 +146,9 @@ class Affiliate < ApplicationRecord
            :language_valid,
            :validate_managed_no_results_pages_guidance_text
 
+  before_validation :set_visual_design_json
   after_validation :update_error_keys
-  before_save :set_css_properties, :generate_look_and_feel_css, :set_json_fields, :set_search_labels, :set_visual_design_json
+  before_save :set_css_properties, :generate_look_and_feel_css, :set_json_fields, :set_search_labels
   before_update :clear_existing_attachments
   after_commit :normalize_site_domains,             on: :create
   after_commit :remove_boosted_contents_from_index, on: :destroy
