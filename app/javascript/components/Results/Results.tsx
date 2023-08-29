@@ -10,7 +10,7 @@ import { NoResults } from './NoResults/NoResults';
 import { RssNews } from './RssNews/RssNews';
 // import { Videos } from './Videos/Videos';
 // import { FedRegister } from './FedRegister/FedRegister';
-// import { Jobs } from './Jobs/Jobs';
+import { Jobs } from './Jobs/Jobs';
 
 import { truncateUrl } from '../../utils';
 
@@ -55,6 +55,16 @@ interface ResultsProps {
       description: string;
       publishedAt: string;
     }[];
+    jobs?: {
+      positionTitle: string;
+      positionUri: string;
+      positionLocationDisplay: string;
+      organizationName: string;
+      minimumPay: number;
+      maximumPay: number;
+      rateIntervalCode: string;
+      applicationCloseDate: string;
+    }[];
   } | null;
   unboundedResults: boolean;
   totalPages: number | null;
@@ -88,7 +98,13 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
           }
 
           {/* Jobs - To Do as part of backend integration */}
-          {/* <Jobs /> */}
+          {additionalResults?.jobs && 
+            <Jobs 
+              jobs={additionalResults.jobs} 
+              recommendedBy={additionalResults.recommendedBy}
+              parse={parse}
+            />
+          }
           
           {/* Health topics - To Do as part of backend integration */}
           {/* <HealthTopics /> */}
