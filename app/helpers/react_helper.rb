@@ -12,7 +12,7 @@ module ReactHelper
       vertical: vertical
     }
 
-    react_component('SearchResultsLayout', data)
+    react_component('SearchResultsLayout', data.compact_blank)
   end
 
   private
