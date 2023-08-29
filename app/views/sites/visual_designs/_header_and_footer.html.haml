@@ -1,0 +1,13 @@
+%h3{:id => "header_and_footer"}= t('.header_and_footer', scope: 'admin_center')
+
+%fieldset
+  %legend= t('.header_layout', scope: 'admin_center')
+
+  = f.label :use_extended_header, value: 'true', class: 'radio' do
+    = f.radio_button :use_extended_header, true
+    = t('.use_extended_header', scope: 'admin_center')
+  = f.label :use_extended_header, value: 'false', class: 'radio' do
+    = f.radio_button :use_extended_header, false
+    = t('.use_basic_header', scope: 'admin_center')
+
+%hr

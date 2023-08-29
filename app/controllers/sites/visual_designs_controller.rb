@@ -16,6 +16,7 @@ class Sites::VisualDesignsController < Sites::SetupSiteController
 
   def site_params
     params.require(:site).permit(
+      :use_extended_header,
       visual_design_json: [
         :header_links_font_family,
         :footer_and_results_font_family,
