@@ -69,6 +69,8 @@ module HtmlSelectorsHelpers
       '#footer-wrapper'
     when /form tooltip/
       '.form .tooltip'
+    when /navigation tabs/
+      'ul.navigation_tabs'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

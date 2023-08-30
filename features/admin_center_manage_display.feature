@@ -471,23 +471,42 @@ Feature: Manage Display
     When I go to the agency.gov's Visual Design page
     Then I should see "Visual design (new)"
     And the page body should contain "These settings are for preview purposes only."
-    And I should see "Header Links Font Family"
+
+    When I follow "Fonts & Colors" within the navigation tabs
+    Then I should see "Header Links Font Family"
     And the "Header Links Font Family" field should contain "public-sans"
     And I should see "Footer and Results Font Family"
     And the "Footer and Results Font Family" field should contain "public-sans"
 
     When I select "Georgia" from "Header Links Font Family"
     And I submit the form by pressing "Save"
-
     Then I should see "You have updated your font & colors"
     And the "Header Links Font Family" field should contain "georgia"
 
     When I select "Roboto mono" from "Footer and Results Font Family"
     And I submit the form by pressing "Save"
-
     Then I should see "You have updated your font & colors"
     And the "Header Links Font Family" field should contain "georgia"
     And the "Footer and Results Font Family" field should contain "roboto-mono"
+
+    When I follow "Fonts & Colors" within the navigation tabs
+    Then I should see "Banner background color"
+    And the "Banner background color" field should contain "#F0F0F0"
+
+    When I fill in "Banner background color" with "not a hex code"
+    And I fill in "Navigation text color" with ""
+    And I submit the form by pressing "Save"
+    Then I should see "2 errors prohibited this affiliate from being saved"
+    Then I should see "There were problems with the following fields:"
+    Then I should see "Banner background color value is not a valid hex code"
+    Then I should see "Navigation text color value is not a valid hex code"
+
+    When I fill in "Banner background color" with "#F0F0F0"
+    And I fill in "Navigation text color" with "#F0F0F0"
+    And I submit the form by pressing "Save"
+    Then I should see "You have updated your font & colors"
+    And the "Banner background color" field should contain "#F0F0F0"
+    And the "Navigation text color" field should contain "#F0F0F0"
 
   Scenario: Editing the Visual Design Settings when "Show Redesign Display Settings" and "Use Redesigned Results Page" are true
     Given the following Affiliates exist:
