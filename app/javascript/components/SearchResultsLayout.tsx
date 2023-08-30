@@ -106,6 +106,10 @@ interface SearchResultsLayoutProps {
   locale: {
     en?: { noResultsForAndTry: string }
   };
+  relatedSites?: {
+    label: string;
+    link: string;
+  }[];
 }
 
 // To be updated
