@@ -504,7 +504,7 @@ Feature: Manage Display
     When I fill in "Banner background color" with "#F0F0F0"
     And I fill in "Navigation text color" with "#F0F0F0"
     And I submit the form by pressing "Save"
-    Then I should see "You have updated your font & colors"
+    Then I should see "You have updated your visual design settings"
     And the "Banner background color" field should contain "#F0F0F0"
     And the "Navigation text color" field should contain "#F0F0F0"
 
