@@ -5,7 +5,9 @@ import { VerticalNav } from '../components/VerticalNav/VerticalNav';
 
 describe('VerticalNav', () => {
   it('shows the vertical nav links', () => {
-    render(<VerticalNav />);
+    const relatedSites = [{ label: 'Related Site 1', link: 'example.com' }];
+
+    render(<VerticalNav relatedSites={relatedSites}/>);
     
     const moreLink = screen.getByText(/More/i);
     const relatedSitesLink = screen.getByText(/Related Sites/i);

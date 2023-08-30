@@ -122,7 +122,7 @@ const isBasicHeader = (): boolean => {
   return true;
 };
 
-const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, locale }: SearchResultsLayoutProps) => {
+const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, locale, relatedSites = [] }: SearchResultsLayoutProps) => {
   const [language] = Object.keys(locale);
   const i18n = new I18n(locale);
   i18n.locale = language;
@@ -139,6 +139,7 @@ const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params 
         <SearchBar 
           query={params.query}
           locale={i18n}
+          relatedSites={relatedSites}
         />
         {/* This ternary is needed to handle the case when Bing pagination leads to a page with no results */}
         {resultsData ? (
