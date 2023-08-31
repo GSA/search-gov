@@ -256,8 +256,7 @@ Rails.application.routes.draw do
     status: 302
   )
 
-  get "*path" => redirect(
-    Rails.application.secrets.organization[:page_not_found_url],
-    status: 302
-  )
+  get "*path", to: redirect(Rails.application.secrets.organization[:page_not_found_url],
+                            status: 302),
+               constraints: lambda { |req| req.path.exclude? 'rails/active_storage' }
 end
