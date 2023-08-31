@@ -423,6 +423,19 @@ describe Affiliate do
                                  ))).not_to be_valid
     end
 
+    describe 'attached image assets' do
+      %i[header_logo identifier_logo].each do |logo|
+        it { is_expected.to validate_content_type_of(logo).allowing(Affiliate::VALID_IMAGE_CONTENT_TYPES) }
+
+        it {
+          is_expected.to validate_content_type_of(logo).
+            rejecting(%w[text/plain text/xml application/pdf image/svg+xml])
+        }
+
+        it { is_expected.to validate_size_of(logo).less_than(Affiliate::MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB.kilobytes) }
+      end
+    end
+
     it 'validates locale is valid' do
       affiliate = described_class.new(valid_create_attributes.merge(locale: 'invalid_locale'))
       expect(affiliate.save).to be false
@@ -1154,5 +1167,9 @@ describe Affiliate do
         )
       end
     end
+  end
+
+  it_behaves_like 'a class with attachable images' do
+    subject(:my_class) { described_class.new(valid_create_attributes) }
   end
 end

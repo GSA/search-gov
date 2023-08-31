@@ -78,6 +78,8 @@ module Usasearch
       { exclude: ->(request) { request.path == '/healthcheck' } }
 
     config.active_job.queue_adapter = :resque
+    config.active_storage.queues.analysis = :searchgov
+    config.active_storage.queues.purge = :searchgov
 
     # Require `belongs_to` associations by default. Versions before
     # Rails 5.0 had false.

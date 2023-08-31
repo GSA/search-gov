@@ -62,6 +62,15 @@ Then /^I should see an image with src "([^"]*)"$/ do |src|
   page.should have_selector("img[src='#{src}']")
 end
 
+Then /^I (should|should not) see an image with src that contains "([^"]*)"$/ do |should, src|
+  image_url = page.has_xpath?('//img') ? page.find(:xpath, '//img')[:src] : []
+
+  case should
+  when 'should' then image_url.should(include(src))
+  when 'should not' then image_url.should_not(include(src))
+  end
+end
+
 Then /^I should not see a field labeled "([^"]*)"$/ do |label|
   page.should_not have_field(label)
 end
