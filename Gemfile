@@ -41,6 +41,7 @@ gem 'active_scaffold', git: 'https://github.com/activescaffold/active_scaffold',
 # has yet to accept the PR: https://github.com/activescaffold/active_scaffold_export/pull/5
 gem 'active_scaffold_export', git: 'https://github.com/technorama/active_scaffold_export',
                               branch: 'rails3'
+gem 'active_storage_validations', '~> 1.0', '>= 1.0.4'
 gem 'recaptcha', '~> 4.6.3', require: 'recaptcha/rails'
 gem 'newrelic_rpm', '~> 8.12.0'
 gem 'american_date', '~> 1.1.1'

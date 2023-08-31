@@ -14,4 +14,22 @@ describe VisualDesignHelper do
       end
     end
   end
+
+  describe '#render_logo_alt_text' do
+    context 'when logo alt_text is present' do
+      let(:metadata) { { 'alt_text' => 'A small screenshot' } }
+
+      it 'renders that alt_text' do
+        expect(helper.render_logo_alt_text(metadata)).to eq('A small screenshot')
+      end
+    end
+
+    context 'when logo alt_text is not present' do
+      let(:metadata) { { 'some_other_key' => 'Some other value' } }
+
+      it 'renders the default alt_text' do
+        expect(helper.render_logo_alt_text(metadata)).to eq('Logo')
+      end
+    end
+  end
 end

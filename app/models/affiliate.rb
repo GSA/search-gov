@@ -8,15 +8,16 @@ class Affiliate < ApplicationRecord
   extend HashColumnsAccessible
   include Dupable
   include LogstashPrefix
+  include Attachable
 
   MAXIMUM_IMAGE_SIZE_IN_KB = 512
   MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB = 64
   MAXIMUM_HEADER_TAGLINE_LOGO_IMAGE_SIZE_IN_KB = 16
   VALID_IMAGE_CONTENT_TYPES = %w[image/gif image/jpeg image/pjpeg image/png image/x-png].freeze
   INVALID_CONTENT_TYPE_MESSAGE = 'must be GIF, JPG, or PNG'
-  INVALID_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB"
-  INVALID_MOBILE_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB} KB"
-  INVALID_HEADER_TAGLINE_LOGO_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_HEADER_TAGLINE_LOGO_IMAGE_SIZE_IN_KB} KB"
+  INVALID_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB".freeze
+  INVALID_MOBILE_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB} KB".freeze
+  INVALID_HEADER_TAGLINE_LOGO_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_HEADER_TAGLINE_LOGO_IMAGE_SIZE_IN_KB} KB".freeze
   MAX_NAME_LENGTH = 33
 
   with_options dependent: :destroy do |assoc|
@@ -59,6 +60,12 @@ class Affiliate < ApplicationRecord
     assoc.has_many :tag_filters, -> { order 'tag ASC' }, inverse_of: :affiliate
   end
 
+  has_one_attached :header_logo
+  has_one_attached :identifier_logo
+
+  accepts_nested_attributes_for :header_logo_attachment, :identifier_logo_attachment, allow_destroy: true
+  accepts_nested_attributes_for :header_logo_blob, :identifier_logo_blob
+
   has_many :users, -> { order 'first_name' }, through: :memberships
 
   has_many :default_users,
@@ -100,6 +107,7 @@ class Affiliate < ApplicationRecord
   before_validation :set_managed_no_results_pages_alt_links
   before_validation :set_default_labels
   before_validation :strip_bing_v5_key
+  before_validation :set_attached_filepath
 
   before_validation do |record|
     AttributeProcessor.squish_attributes(record,
@@ -136,6 +144,14 @@ class Affiliate < ApplicationRecord
   validates_attachment_size :header_tagline_logo,
                             in: (1..MAXIMUM_HEADER_TAGLINE_LOGO_IMAGE_SIZE_IN_KB.kilobytes),
                             message: INVALID_HEADER_TAGLINE_LOGO_IMAGE_SIZE_MESSAGE
+
+  validates :header_logo, :identifier_logo,
+            size: { less_than: MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB.kilobytes,
+                    message: INVALID_MOBILE_IMAGE_SIZE_MESSAGE }
+
+  validates :header_logo, :identifier_logo,
+            content_type: { in: VALID_IMAGE_CONTENT_TYPES,
+                            message: INVALID_CONTENT_TYPE_MESSAGE }
 
   validate :html_columns_cannot_be_malformed,
            :validate_css_property_hash,
