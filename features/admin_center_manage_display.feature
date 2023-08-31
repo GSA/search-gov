@@ -570,7 +570,7 @@ Feature: Manage Display
 
     When I choose "Use basic header"
     And I submit the form by pressing "Save"
-    Then I should see "You have updated your font & colors"
+    Then I should see "You have updated your visual design settings"
     And the "Use extended header" radio button should not be checked
     And the "Use basic header" radio button should be checked
 
