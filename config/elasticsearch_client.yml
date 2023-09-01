@@ -16,3 +16,7 @@ test:
 production:
   <<: *DEFAULT
   log_level: WARN
+  transport_options:
+    ssl:
+      verify: false
+  ca_fingerprint: <%= Rails.application.secrets[:ca_fingerprint] %>
