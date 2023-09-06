@@ -8,15 +8,16 @@ class Affiliate < ApplicationRecord
   extend HashColumnsAccessible
   include Dupable
   include LogstashPrefix
+  include Attachable
 
   MAXIMUM_IMAGE_SIZE_IN_KB = 512
   MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB = 64
   MAXIMUM_HEADER_TAGLINE_LOGO_IMAGE_SIZE_IN_KB = 16
   VALID_IMAGE_CONTENT_TYPES = %w[image/gif image/jpeg image/pjpeg image/png image/x-png].freeze
   INVALID_CONTENT_TYPE_MESSAGE = 'must be GIF, JPG, or PNG'
-  INVALID_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB"
-  INVALID_MOBILE_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB} KB"
-  INVALID_HEADER_TAGLINE_LOGO_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_HEADER_TAGLINE_LOGO_IMAGE_SIZE_IN_KB} KB"
+  INVALID_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB".freeze
+  INVALID_MOBILE_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB} KB".freeze
+  INVALID_HEADER_TAGLINE_LOGO_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_HEADER_TAGLINE_LOGO_IMAGE_SIZE_IN_KB} KB".freeze
   MAX_NAME_LENGTH = 33
 
   with_options dependent: :destroy do |assoc|
@@ -59,6 +60,12 @@ class Affiliate < ApplicationRecord
     assoc.has_many :tag_filters, -> { order 'tag ASC' }, inverse_of: :affiliate
   end
 
+  has_one_attached :header_logo
+  has_one_attached :identifier_logo
+
+  accepts_nested_attributes_for :header_logo_attachment, :identifier_logo_attachment, allow_destroy: true
+  accepts_nested_attributes_for :header_logo_blob, :identifier_logo_blob
+
   has_many :users, -> { order 'first_name' }, through: :memberships
 
   has_many :default_users,
@@ -100,6 +107,7 @@ class Affiliate < ApplicationRecord
   before_validation :set_managed_no_results_pages_alt_links
   before_validation :set_default_labels
   before_validation :strip_bing_v5_key
+  before_validation :set_attached_filepath
 
   before_validation do |record|
     AttributeProcessor.squish_attributes(record,
@@ -137,6 +145,14 @@ class Affiliate < ApplicationRecord
                             in: (1..MAXIMUM_HEADER_TAGLINE_LOGO_IMAGE_SIZE_IN_KB.kilobytes),
                             message: INVALID_HEADER_TAGLINE_LOGO_IMAGE_SIZE_MESSAGE
 
+  validates :header_logo, :identifier_logo,
+            size: { less_than: MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB.kilobytes,
+                    message: INVALID_MOBILE_IMAGE_SIZE_MESSAGE }
+
+  validates :header_logo, :identifier_logo,
+            content_type: { in: VALID_IMAGE_CONTENT_TYPES,
+                            message: INVALID_CONTENT_TYPE_MESSAGE }
+
   validate :html_columns_cannot_be_malformed,
            :validate_css_property_hash,
            :validate_visual_design_json,
@@ -146,8 +162,9 @@ class Affiliate < ApplicationRecord
            :language_valid,
            :validate_managed_no_results_pages_guidance_text
 
+  before_validation :set_visual_design_json
   after_validation :update_error_keys
-  before_save :set_css_properties, :generate_look_and_feel_css, :set_json_fields, :set_search_labels, :set_visual_design_json
+  before_save :set_css_properties, :generate_look_and_feel_css, :set_json_fields, :set_search_labels
   before_update :clear_existing_attachments
   after_commit :normalize_site_domains,             on: :create
   after_commit :remove_boosted_contents_from_index, on: :destroy
@@ -224,10 +241,37 @@ class Affiliate < ApplicationRecord
     system
     tahoma
   ].freeze
+  DEFAULT_COLORS = {
+    banner_background_color: '#F0F0F0',
+    banner_text_color: '#1B1B1B',
+    header_background_color: '#FFFFFF',
+    secondary_header_background_color: '#FFFFFF',
+    header_primary_link_color: '#565C65',
+    header_secondary_link_color: '#71767A',
+    navigation_text_color: '#565C65',
+    page_background_color: '#FFFFFF',
+    button_background_color: '#005EA2',
+    active_search_tab_navigation_color: '#005EA2',
+    search_tab_navigation_link_color: '#005EA2',
+    best_bet_background_color: '#1A4480',
+    health_benefits_header_background_color: '#1A4480',
+    result_title_color: '#005EA2',
+    result_title_link_visited_color: '#8168B3',
+    result_description_color: '#1B1B1B',
+    result_url_color: '#446443',
+    link_color: '#005EA2',
+    link_color_visited: '#54278F',
+    section_title_color: '#565C65',
+    footer_background_color: '#F0F0F0',
+    footer_links_text_color: '#1B1B1B',
+    identifier_background_color: '#1B1B1B',
+    identifier_heading_color: '#FFFFFF',
+    identifier_link_color: '#A9AEB1'
+  }.freeze
   DEFAULT_VISUAL_DESIGN = {
     header_links_font_family: DEFAULT_FONT,
     footer_and_results_font_family: DEFAULT_FONT
-  }.freeze
+  }.merge(DEFAULT_COLORS)
 
   CUSTOM_INDEXING_LANGUAGES = %w[en es].freeze
 
@@ -424,6 +468,15 @@ class Affiliate < ApplicationRecord
     end.uniq
   end
 
+  def no_results_error
+    return if additional_guidance_text.blank?
+
+    {
+      text: additional_guidance_text,
+      urls: managed_no_results_pages_alt_links&.map { |link| link.slice(:title, :url) }
+    }.compact_blank
+  end
+
   private
 
   def batch_size(scope)
@@ -462,6 +515,7 @@ class Affiliate < ApplicationRecord
     return if visual_design_json.blank?
 
     validate_visual_design_font_family(visual_design_json)
+    validate_visual_design_colors(visual_design_json)
   end
 
   def validate_visual_design_font_family(visual_design_json)
@@ -469,6 +523,15 @@ class Affiliate < ApplicationRecord
       next unless visual_design_json[font].present? && USWDS_FONTS.exclude?(visual_design_json[font])
 
       errors.add(:base, "#{font} font family selection is invalid")
+    end
+  end
+
+  def validate_visual_design_colors(visual_design_json)
+    DEFAULT_COLORS.each_key do |color|
+      color = color.to_s
+      next if visual_design_json[color]&.match?(/^#([0-9A-F]{3}|[0-9A-F]{6})$/i)
+
+      errors.add(:base, "#{color.humanize} value is not a valid hex code")
     end
   end
 

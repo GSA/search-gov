@@ -3,7 +3,11 @@ import { GridContainer, Header, NavDropDownButton, Menu, PrimaryNav } from '@tru
 
 import './VerticalNav.css';
 
-export const VerticalNav = () => {
+interface VerticalNavProps {
+  relatedSites?: {label: string, link: string}[];
+}
+
+export const VerticalNav = ({ relatedSites = [] }: VerticalNavProps) => {
   const [isOpen, setIsOpen] = useState([false, false]);
   const onToggle = (
     index: number,
@@ -22,15 +26,6 @@ export const VerticalNav = () => {
     </a>,
     <a href="#linkTwo" key="linkTwo">
       Link 2
-    </a>
-  ];
-
-  const relatedSitesItems = [
-    <a href="#relatedSitesItem1" key="relatedSitesItem1">
-      Related Site 1
-    </a>,
-    <a href="#relatedSitesItem2" key="relatedSitesItem2">
-      Related Site 2
     </a>
   ];
 
@@ -75,7 +70,7 @@ export const VerticalNav = () => {
       />
       <Menu
         key="one"
-        items={relatedSitesItems}
+        items={relatedSites.map((site, index) => <a href={site.link} key={index}>{site.label}</a>)}
         isOpen={isOpen[1]}
         id="relatedSitesDropDown"
       />

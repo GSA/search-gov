@@ -15,12 +15,16 @@ interface SearchResultsLayoutProps {
     totalPages: number;
     unboundedResults: boolean;
     results: {
-      title: string,
-      url: string,
-      description: string,
-      updatedDate?: string,
-      publishedDate?: string,
-      thumbnailUrl?: string
+      title: string;
+      url: string;
+      description: string;
+      updatedDate?: string;
+      publishedDate?: string;
+      thumbnailUrl?: string;
+      youtube?: boolean;
+      youtubePublishedAt?: string;
+      youtubeThumbnailUrl?: string;
+      youtubeDuration?: string;
     }[] | null;
   } | null;
   additionalResults?: {
@@ -62,6 +66,14 @@ interface SearchResultsLayoutProps {
       rateIntervalCode: string;
       applicationCloseDate: string;
     }[];
+    youtubeNewsItems?: {
+      link: string;
+      title: string;
+      description: string;
+      publishedAt: string;
+      youtubeThumbnailUrl: string;
+      duration: string;
+    }[];
     federalRegisterDocuments?: {
       title: string;
       documentType: string;
@@ -94,6 +106,10 @@ interface SearchResultsLayoutProps {
   locale: {
     en?: { noResultsForAndTry: string }
   };
+  relatedSites?: {
+    label: string;
+    link: string;
+  }[];
 }
 
 // To be updated
@@ -106,7 +122,7 @@ const isBasicHeader = (): boolean => {
   return true;
 };
 
-const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, locale }: SearchResultsLayoutProps) => {
+const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, locale, relatedSites = [] }: SearchResultsLayoutProps) => {
   const [language] = Object.keys(locale);
   const i18n = new I18n(locale);
   i18n.locale = language;
@@ -123,6 +139,7 @@ const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params 
         <SearchBar 
           query={params.query}
           locale={i18n}
+          relatedSites={relatedSites}
         />
         {/* This ternary is needed to handle the case when Bing pagination leads to a page with no results */}
         {resultsData ? (
