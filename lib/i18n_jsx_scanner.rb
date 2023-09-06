@@ -8,7 +8,7 @@ class I18nJsxScanner < I18n::Tasks::Scanners::FileScanner
 
   def scan_file(path)
     text = read_file(path)
-    text.scan(/^.*i18n\.t\(["'](\w+)["']/).map do |match|
+    text.scan(/i18n\.t\(["']([\w.]+)/).map do |match|
       raw_key = match.first.underscore
       occurrence = occurrence_from_position(path, text, Regexp.last_match.offset(0).first, raw_key: raw_key)
 

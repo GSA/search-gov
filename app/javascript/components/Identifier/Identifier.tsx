@@ -32,7 +32,7 @@ export const Identifier = () => {
             </IdentifierLogo>
           </IdentifierLogos>
           <IdentifierIdentity domain={'<domain.gov>'}>
-            An official website of the{' '}
+            {i18n.t('official_website_of')}
             <Link href="">Parent agency</Link>
           </IdentifierIdentity>
         </IdentifierMasthead>
@@ -45,11 +45,11 @@ export const Identifier = () => {
         </IdentifierLinks>
         <IdentifierGov aria-label="U.S. government information and services">
           <div className="usa-identifier__usagov-description">
-            {i18n.t('usagovCtaNote')}
+            {i18n.t('lookingForUsGovInfo')}
           </div>
           &nbsp;
           <Link href="" className="usa-link">
-            {i18n.t('usagovCtaLink')}
+            {i18n.t('visitUsaDotGov')}
           </Link>
         </IdentifierGov>
       </UswdsIdentifier>
