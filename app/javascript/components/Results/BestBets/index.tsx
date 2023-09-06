@@ -35,7 +35,7 @@ export const BestBets = ({ recommendedBy, textBestBets = [], graphicsBestBet, pa
           <Grid row gap="md" id="best-bets">
             <Grid col={true}>
               <GridContainer className='best-bets-title'>
-                {i18n.t('recommendedBy', { affiliate: recommendedBy })}
+                {i18n.t('recommended')} {i18n.t('searches.by')} {recommendedBy}
               </GridContainer>
               {textBestBets?.map((textBestBet, index) => {
                 return (

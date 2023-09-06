@@ -47,7 +47,7 @@ export const SearchBar = ({ query = '', relatedSites = [] }: SearchBarProps) => 
               <input 
                 className="usa-input" 
                 id="search-field" 
-                placeholder={i18n.t('inputPlaceholder')}
+                placeholder={i18n.t('searchLabeLabel')}
                 type="search" 
                 name="searchQuery" 
                 value={searchQuery} 
