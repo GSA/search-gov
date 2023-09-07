@@ -1,3 +1,17 @@
+legend.section-heading {
+  font-size: (@baseFontSize * 1.1)!important;
+  padding-top: 10px;
+}
+
+#primary-header-links, #secondary-header-links, #footer-links, #identifier-links {
+  .table-draggable();
+  margin-bottom: 5px;
+
+  td.title {
+    .table-draggable .with-drag-icon();
+  }
+}
+
 ul.navigation_tabs {
   margin-left: 0px;
   list-style-type: none;
@@ -16,4 +30,11 @@ ul.navigation_tabs {
       }
     }
   }
+}
+
+a.anchor {
+  display: block;
+  position: relative;
+  top: -160px;
+  visibility: hidden;
 }

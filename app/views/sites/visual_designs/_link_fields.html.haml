@@ -1,0 +1,25 @@
+%tr{ id: "#{type.dasherize}-link-#{index}"}
+  %td.title
+    %i.draggable.fa.fa-reorder-black
+    = f.label "#{type}_links_#{index}_title",
+      t('.indexed_title', scope: 'admin_center', type: type.humanize, index: index),
+      class: 'hide'
+    = f.text_field "links_json[#{type}_links][][title]",
+      value: link['title'],
+      id: "site_#{type}_links_#{index}_title",
+      class: 'title',
+      maxlength: 32,
+      size: nil
+    = f.hidden_field "links_json[#{type}_links[][position]",
+      value: index,
+      class: 'position'
+  %td.url
+    = f.label "#{type}_links_#{index}_url",
+      t('.indexed_url', scope: 'admin_center', type: type.humanize, index: index),
+      class: 'hide'
+    = f.text_field "links_json[#{type}_links[]][url]",
+      value: link['url'],
+      id: "site_#{type}_links_#{index}_url",
+      class: 'url',
+      maxlength: 128,
+      size: nil

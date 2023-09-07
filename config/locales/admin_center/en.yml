@@ -69,8 +69,20 @@ en:
           footer_and_results_font_family: Footer and Results Font Family
           header_links_font_family: Header Links Font Family
         header_and_footer:
+          add_new_link: Add new %{type} link
+          footer_links: Footer links
           header_and_footer: Header and footer
           header_layout: Header layout
+          identifier: Identifier
+          identifier_domain_name: Identifier domain name
+          identifier_links: Identifier links
+          link-limit: "(Limit of 3)"
+          link_title: Title
+          link_url: URL
+          parent_agency_link: Parent agency link
+          parent_agency_name: Parent agency name
+          primary_header_links: Primary header links
+          secondary_header_links: Secondary header links
           use_basic_header: Use basic header
           use_extended_header: Use extended header
         image_assets:
@@ -82,3 +94,6 @@ en:
           image_help_text: GIF, JPG or PNG with maximum size of %{max_file_size} KB
           logo: Logo
           mark_for_deletion: Mark %{image_type} for deletion
+        link_fields:
+          indexed_title: "%{type} link title %{index}"
+          indexed_url: "%{type} link URL %{index}"

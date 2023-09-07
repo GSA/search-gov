@@ -127,4 +127,22 @@ describe Sites::VisualDesignsController do
       end
     end
   end
+
+  describe '#new_link' do
+    it_behaves_like 'restricted to approved user', :get, :new_link, site_id: 100
+
+    context 'when logged in as affiliate' do
+      include_context 'approved user logged in to a site'
+
+      before do
+        get :new_link, params: {
+          site_id: site.id,
+          index: 0,
+          type: 'secondary_header'
+        }, xhr: true, format: :js
+      end
+
+      it { is_expected.to render_template(:new_link) }
+    end
+  end
 end

@@ -1,7 +1,8 @@
-%h3{:id => "header_and_footer"}= t('.header_and_footer', scope: 'admin_center')
+%a{id: 'header_and_footer', class: 'anchor'}
+%h3= t('.header_and_footer', scope: 'admin_center')
 
 %fieldset
-  %legend= t('.header_layout', scope: 'admin_center')
+  %legend.section-heading= t('.header_layout', scope: 'admin_center')
 
   = f.label :use_extended_header, value: 'true', class: 'radio' do
     = f.radio_button :use_extended_header, true
@@ -9,5 +10,67 @@
   = f.label :use_extended_header, value: 'false', class: 'radio' do
     = f.radio_button :use_extended_header, false
     = t('.use_basic_header', scope: 'admin_center')
+
+%fieldset
+  %legend.section-heading= t('.primary_header_links', scope: 'admin_center')
+  %table#primary-header-links.table
+    %thead
+      %tr.nodrag.nodrop
+        %th= t('.link_title', scope: 'admin_center')
+        %th= t('.link_url', scope: 'admin_center')
+    %tbody
+      - @site.primary_header_links.each_with_index do |primary_header_link, index|
+        = render partial: 'link_fields', locals: { f: f, type: 'primary_header', link: primary_header_link, index: index }
+  .trigger-wrapper= link_to_add_primary_header_link(t('.add_new_link', scope: 'admin_center', type: 'primary header'), @site)
+
+%fieldset
+  %legend.section-heading= t('.secondary_header_links', scope: 'admin_center')
+  %span= t('.link-limit', scope: 'admin_center')
+  %table#secondary-header-links.table
+    %thead
+      %tr.nodrag.nodrop
+        %th= t('.link_title', scope: 'admin_center')
+        %th= t('.link_url', scope: 'admin_center')
+    %tbody
+      - @site.secondary_header_links.each_with_index do |secondary_header_link, index|
+        = render partial: 'link_fields', locals: { f: f, type: 'secondary_header', link: secondary_header_link, index: index }
+  - unless @site.secondary_header_links.count > 2
+    .trigger-wrapper= link_to_add_secondary_header_link(t('.add_new_link', scope: 'admin_center', type: 'secondary header'), @site)
+
+%fieldset
+  %legend.section-heading= t('.footer_links', scope: 'admin_center')
+  %table#footer-links.table
+    %thead
+      %tr.nodrag.nodrop
+        %th= t('.link_title', scope: 'admin_center')
+        %th= t('.link_url', scope: 'admin_center')
+    %tbody
+      - @site.footer_links.each_with_index do |footer_link, index|
+        = render partial: 'link_fields', locals: { f: f, type: 'footer', link: footer_link, index: index }
+  .trigger-wrapper= link_to_add_footer_link(t('.add_new_link', scope: 'admin_center', type: 'footer'), @site)
+
+%fieldset
+  %legend.section-heading= t('.identifier', scope: 'admin_center')
+
+  = f.label :parent_agency_name, t('.parent_agency_name', scope: 'admin_center')
+  = f.text_field :parent_agency_name, maxlength: 255
+
+  = f.label :parent_agency_link, t('.parent_agency_link', scope: 'admin_center')
+  = f.text_field :parent_agency_link, maxlength: 255
+
+  = f.label :identifier_domain_name, t('.identifier_domain_name', scope: 'admin_center')
+  = f.text_field :identifier_domain_name, maxlength: 255
+
+%fieldset
+  %legend.section-heading= t('.identifier_links', scope: 'admin_center')
+  %table#identifier-links.table
+    %thead
+      %tr.nodrag.nodrop
+        %th= t('.link_title', scope: 'admin_center')
+        %th= t('.link_url', scope: 'admin_center')
+    %tbody
+      - @site.identifier_links.each_with_index do |identifier_link, index|
+        = render partial: 'link_fields', locals: { f: f, type: 'identifier', link: identifier_link, index: index }
+  .trigger-wrapper= link_to_add_identifier_link(t('.add_new_link', scope: 'admin_center', type: 'identifier'), @site)
 
 %hr

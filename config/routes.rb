@@ -83,7 +83,11 @@ Rails.application.routes.draw do
       resource :display, only: [:edit, :update] do
         collection { get :new_connection }
       end
-      resource :visual_design, only: [:edit, :update]
+      resource :visual_design, only: [:edit, :update] do
+        collection do
+          get :new_link
+        end
+      end
       resource :embed_code, only: [:show]
       resource :font_and_colors, only: [:edit, :update]
       resource :header_and_footer, only: [:edit, :update] do

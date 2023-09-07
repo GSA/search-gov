@@ -224,6 +224,109 @@ describe Affiliate do
       end
     end
 
+    describe 'links json' do
+      subject(:affiliate) { described_class.create!(valid_create_attributes.merge(links_attributes)) }
+
+      context 'when links_json is valid' do
+        before do
+          affiliate.save!
+        end
+
+        context 'when no links are provided' do
+          let(:links_attributes) { {} }
+
+          its(:primary_header_links) { is_expected.to eq([{}]) }
+          its(:secondary_header_links) { is_expected.to eq([{}]) }
+          its(:footer_links) { is_expected.to eq([{}]) }
+          its(:identifier_links) { is_expected.to eq([{}]) }
+        end
+
+        context 'when the provided links are empty' do
+          let(:links_attributes) do
+            {
+              links_json: {
+                identifier_links: [{ title: '', position: 0, url: '' }]
+              }
+            }
+          end
+
+          its(:identifier_links) { is_expected.to eq([{}]) }
+        end
+
+        context 'when valid links are provided' do
+          let(:links_attributes) do
+            {
+              links_json: {
+                primary_header_links: [{ title: 'Link with no http', position: 0, url: 'link' }],
+                secondary_header_links: [{ title: 'Link with http', position: 0, url: 'http://link.gov' }],
+                footer_links: [{ title: 'Link with mailto', position: 0, url: 'mailto:link' }],
+                identifier_links: [{ title: 'Link with https', position: 0, url: 'https://link.gov' }]
+              }
+            }
+          end
+
+          it 'httpifies a url without a prefix' do
+            link = affiliate.primary_header_links.first
+            expect(link['url']).to eq('https://link')
+          end
+
+          it 'does not httpify url with http prefix' do
+            link = affiliate.secondary_header_links.first
+            expect(link['url']).to eq('http://link.gov')
+          end
+
+          it 'does not httpify url with mailto prefix' do
+            link = affiliate.footer_links.first
+            expect(link['url']).to eq('mailto:link')
+          end
+
+          it 'does not httpify url with https prefix' do
+            link = affiliate.identifier_links.first
+            expect(link['url']).to eq('https://link.gov')
+          end
+        end
+      end
+
+      context 'when 4 secondary header links are provided' do
+        let(:links_attributes) do
+          {
+            links_json: {
+              secondary_header_links: [
+                { title: 'Link with http', position: 0, url: 'http://link.gov' },
+                { title: 'Link with http', position: 1, url: 'http://link.gov' },
+                { title: 'Link with http', position: 2, url: 'http://link.gov' },
+                { title: 'Link with http', position: 3, url: 'http://link.gov' }
+              ]
+            }
+          }
+        end
+
+        it 'is invalid' do
+          expect(described_class.new(valid_create_attributes.
+            merge(links_attributes))).not_to(be_valid)
+        end
+      end
+
+      context 'when 3 secondary header links are provided' do
+        let(:links_attributes) do
+          {
+            links_json: {
+              secondary_header_links: [
+                { title: 'Link with http', position: 0, url: 'http://link.gov' },
+                { title: 'Link with http', position: 1, url: 'http://link.gov' },
+                { title: 'Link with http', position: 2, url: 'http://link.gov' }
+              ]
+            }
+          }
+        end
+
+        it 'is valid' do
+          expect(described_class.new(valid_create_attributes.
+            merge(links_attributes))).to(be_valid)
+        end
+      end
+    end
+
     it 'saves favicon URL with http:// prefix when it does not start with http(s)://' do
       url = 'cdn.agency.gov/favicon.ico'
       prefixes = %w[http https HTTP HTTPS invalidhttp:// invalidHtTp:// invalidhttps:// invalidHTtPs:// invalidHttPsS://]

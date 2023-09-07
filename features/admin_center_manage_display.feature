@@ -574,6 +574,57 @@ Feature: Manage Display
     And the "Use extended header" radio button should not be checked
     And the "Use basic header" radio button should be checked
 
+    When I fill in "Parent agency name" with "My Parent Name"
+    And I fill in "Parent agency link" with "My Parent Link"
+    And I fill in "Identifier domain name" with "My Domain Name"
+    And I submit the form by pressing "Save"
+    Then I should see "You have updated your visual design settings"
+    And the "Parent agency name" field should contain "My Parent Name"
+    And the "Parent agency link" field should contain "My Parent Link"
+    And the "Identifier domain name" field should contain "My Domain Name"
+
+    When I fill in "Primary header link title 0" with "A primary header link"
+    And I fill in "Primary header link URL 0" with ""
+    And I submit the form by pressing "Save"
+    Then I should see "1 error prohibited this affiliate from being saved"
+    Then I should see "There were problems with the following fields:"
+    Then I should see "Primary header links link URL can't be blank"
+
+    When I fill in the following:
+      | Primary header link title 0    | A primary header link   |
+      | Primary header link URL 0      | https://link.gov        |
+      | Secondary header link title 0  | A secondary header link |
+      | Secondary header link URL 0    | link.gov                |
+      | Footer link title 0            | A footer link           |
+      | Footer link URL 0              | mailto:person@gsa.gov   |
+      | Identifier link title 0        | An identifier link      |
+      | Identifier link URL 0          | http://link.gov         |
+    And I submit the form by pressing "Save"
+    Then I should see "You have updated your visual design settings"
+    And the "Primary header link title 0" field should contain "A primary header link"
+    And the "Primary header link URL 0" field should contain "https://link.gov"
+    And the "Secondary header link title 0" field should contain "A secondary header link"
+    And the "Secondary header link URL 0" field should contain "https://link.gov"
+    And the "Footer link title 0" field should contain "A footer link"
+    And the "Footer link URL 0" field should contain "mailto:person@gsa.gov"
+    And the "Identifier link title 0" field should contain "An identifier link"
+    And the "Identifier link URL 0" field should contain "http://link.gov"
+
+    When I follow "Add new identifier link"
+    Then I should be able to access 2 "identifier-link" rows
+    And I fill in "Identifier link title 1" with "A second identifier link"
+    And I fill in "Identifier link URL 1" with "link2.gov"
+    And I submit the form by pressing "Save"
+    Then I should see "You have updated your visual design settings"
+    And the "Identifier link title 1" field should contain "A second identifier link"
+    And the "Identifier link URL 1" field should contain "https://link2.gov"
+
+    When I follow "Add new secondary header link"
+    Then I should be able to access 2 "secondary-header-link" rows
+    And I follow "Add new secondary header link"
+    Then I should be able to access 3 "secondary-header-link" rows
+    And I should not see "Add new secondary header link"
+
   Scenario: Editing the Visual Design Settings when "Show Redesign Display Settings" and "Use Redesigned Results Page" are true
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | show_redesign_display_settings | use_redesigned_results_page |

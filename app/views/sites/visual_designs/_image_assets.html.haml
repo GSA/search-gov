@@ -1,5 +1,5 @@
-%h3{:id => "image_assets"}= t('.image_assets', scope: 'admin_center')
-
+%a{id: 'image_assets', class: 'anchor'}
+%h3= t('.image_assets', scope: 'admin_center')
 
 = f.label :favicon_url, t('.favicon_url', scope: 'admin_center')
 = f.text_field :favicon_url, maxlength: 255
