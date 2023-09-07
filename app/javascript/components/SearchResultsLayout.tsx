@@ -104,9 +104,10 @@ interface SearchResultsLayoutProps {
   params?: {
     query?: string
   };
-  locale: {
+  translations: {
     en?: { noResultsForAndTry: string }
   };
+  currentLocale?: string;
   relatedSites?: {
     label: string;
     link: string;
@@ -123,10 +124,11 @@ const isBasicHeader = (): boolean => {
   return true;
 };
 
-const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, locale, relatedSites = [] }: SearchResultsLayoutProps) => {
-  const [language] = Object.keys(locale);
-  const i18n = new I18n(locale);
-  i18n.locale = language;
+const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [] }: SearchResultsLayoutProps) => {
+  const i18n = new I18n(translations);
+  i18n.defaultLocale = 'en';
+  i18n.enableFallback = true;
+  i18n.locale = currentLocale;
 
   return (
     <LanguageContext.Provider value={i18n}>

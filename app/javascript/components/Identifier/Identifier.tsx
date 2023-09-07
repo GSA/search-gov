@@ -32,7 +32,7 @@ export const Identifier = () => {
             </IdentifierLogo>
           </IdentifierLogos>
           <IdentifierIdentity domain={'<domain.gov>'}>
-            {i18n.t('official_website_of')}
+            {i18n.t('officialWebsiteOf')}{' '}
             <Link href="">Parent agency</Link>
           </IdentifierIdentity>
         </IdentifierMasthead>
