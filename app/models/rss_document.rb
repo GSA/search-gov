@@ -35,7 +35,7 @@ class RssDocument
   private
 
   def is_rss
-    if !(%w(feed rss).include?(xml.root.try(:name)))
+    if !%w(feed rss).include?(xml.root.try(:name))
       errors.add(:base, 'invalid rss')
     end
   end
