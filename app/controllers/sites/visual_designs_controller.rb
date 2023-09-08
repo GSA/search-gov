@@ -18,6 +18,7 @@ class Sites::VisualDesignsController < Sites::SetupSiteController
 
   def site_params
     params.require(:site).permit(
+      :use_extended_header,
       :favicon_url,
       :header_logo,
       :identifier_logo,
