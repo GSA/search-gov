@@ -5,6 +5,7 @@ module ReactHelper
     data = {
       additionalResults: search.govbox_set,
       currentLocale: affiliate.locale,
+      navigationLinks: navigation_links(search, params),
       noResultsMessage: (search.affiliate.no_results_error if search.results.blank? && search.query.present?),
       params: params,
       relatedSites: related_sites(affiliate.connections, search.query),
@@ -27,6 +28,20 @@ module ReactHelper
       {
         label: connection.label,
         link: search_url(affiliate: connection.connected_affiliate.name, query: query)
+      }
+    end
+  end
+
+  def navigation_links(search, search_params)
+    non_default_search_navigable = detect_non_default_search_navigable(search)
+
+    renderable_navigations(search).map do |navigation|
+      navigable = navigation.navigable
+
+      {
+        active: non_default_search_navigable == navigable,
+        label: navigable.name,
+        link: navigable_path(navigable, search, search_params)
       }
     end
   end
