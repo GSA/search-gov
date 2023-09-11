@@ -10,7 +10,8 @@ module ReactHelper
       relatedSites: related_sites(affiliate.connections, search.query),
       resultsData: search.normalized_results,
       translations: translations(affiliate.locale),
-      vertical: vertical
+      vertical: vertical,
+      alert: affiliate.alert
     }
 
     react_component('SearchResultsLayout', data.compact_blank)

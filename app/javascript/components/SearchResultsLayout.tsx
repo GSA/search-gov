@@ -112,6 +112,10 @@ interface SearchResultsLayoutProps {
     label: string;
     link: string;
   }[];
+  alert?: {
+    title: string;
+    text: string;
+  } | null;
 }
 
 // To be updated
@@ -124,7 +128,7 @@ const isBasicHeader = (): boolean => {
   return true;
 };
 
-const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [] }: SearchResultsLayoutProps) => {
+const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [], alert }: SearchResultsLayoutProps) => {
   const i18n = new I18n(translations);
   i18n.defaultLocale = 'en';
   i18n.enableFallback = true;
