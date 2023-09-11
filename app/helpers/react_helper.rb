@@ -6,7 +6,7 @@ module ReactHelper
       additionalResults: search.govbox_set,
       currentLocale: affiliate.locale,
       navigationLinks: navigation_links(search, params),
-      noResultsMessage: (search.affiliate.no_results_error if search.results.blank? && search.query.present?),
+      noResultsMessage: no_result_message(search),
       params: params,
       relatedSites: related_sites(affiliate.connections, search.query),
       resultsData: search.normalized_results,
@@ -18,6 +18,12 @@ module ReactHelper
   end
 
   private
+
+  def no_result_message(search)
+    return unless search.results.blank? && search.query.present?
+
+    search.affiliate.no_results_error
+  end
 
   def translations(locale)
     I18n.backend.translations.slice(:en, locale.to_sym)
