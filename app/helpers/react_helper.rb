@@ -4,11 +4,12 @@ module ReactHelper
   def search_results_layout(search, params, vertical, affiliate)
     data = {
       additionalResults: search.govbox_set,
-      locale: YAML.load_file("config/locales/#{affiliate.locale}.yml"),
+      currentLocale: affiliate.locale,
       noResultsMessage: (search.affiliate.no_results_error if search.results.blank? && search.query.present?),
       params: params,
       relatedSites: related_sites(affiliate.connections, search.query),
       resultsData: search.normalized_results,
+      translations: translations(affiliate.locale),
       vertical: vertical
     }
 
@@ -16,6 +17,10 @@ module ReactHelper
   end
 
   private
+
+  def translations(locale)
+    I18n.backend.translations.slice(:en, locale.to_sym)
+  end
 
   def related_sites(connections, query)
     connections.map do |connection|

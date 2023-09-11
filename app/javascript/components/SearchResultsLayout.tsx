@@ -9,6 +9,7 @@ import { SearchBar } from './SearchBar/SearchBar';
 import { Results } from './Results/Results';
 import { Footer } from './Footer/Footer';
 import { Identifier } from './Identifier/Identifier';
+import { LanguageContext } from '../contexts/LanguageContext';
 
 interface SearchResultsLayoutProps {
   resultsData?: {
@@ -103,9 +104,10 @@ interface SearchResultsLayoutProps {
   params?: {
     query?: string
   };
-  locale: {
+  translations: {
     en?: { noResultsForAndTry: string }
   };
+  currentLocale?: string;
   relatedSites?: {
     label: string;
     link: string;
@@ -122,13 +124,14 @@ const isBasicHeader = (): boolean => {
   return true;
 };
 
-const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, locale, relatedSites = [] }: SearchResultsLayoutProps) => {
-  const [language] = Object.keys(locale);
-  const i18n = new I18n(locale);
-  i18n.locale = language;
+const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [] }: SearchResultsLayoutProps) => {
+  const i18n = new I18n(translations);
+  i18n.defaultLocale = 'en';
+  i18n.enableFallback = true;
+  i18n.locale = currentLocale;
 
   return (
-    <>
+    <LanguageContext.Provider value={i18n}>
       <Header 
         title={getAffiliateTitle()}
         isBasic={isBasicHeader()} 
@@ -136,11 +139,7 @@ const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params 
      
       <div className="usa-section serp-result-wrapper">
         <Facets />
-        <SearchBar 
-          query={params.query}
-          locale={i18n}
-          relatedSites={relatedSites}
-        />
+        <SearchBar query={params.query} relatedSites={relatedSites} />
         {/* This ternary is needed to handle the case when Bing pagination leads to a page with no results */}
         {resultsData ? (
           <Results 
@@ -150,20 +149,18 @@ const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params 
             query={params.query}
             unboundedResults={resultsData.unboundedResults}
             additionalResults={additionalResults}
-            locale={i18n}
           />) : params.query ? (
           <Results 
             vertical={vertical}
             totalPages={null}
             query={params.query}
             unboundedResults={true}
-            locale={i18n}
           />) : <></>}
       </div>
 
       <Footer />
       <Identifier />
-    </>
+    </LanguageContext.Provider>
   );
 };
 
