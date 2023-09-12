@@ -86,5 +86,21 @@ describe ReactHelper do
         )
       end
     end
+
+    context 'with an affiliate with navigations' do
+      let(:navigation_links) do
+        [
+          { active: false, label: 'Usa Gov Blog', link: '/search/news?channel=321734936&query=chocolate' },
+          { active: false, label: 'USAGov Collection', link: '/search/docs?dc=40842210&query=chocolate' }
+        ]
+      end
+
+      it 'sends links to SearchResultsLayout component' do
+        helper.search_results_layout(search, {}, true, affiliate)
+
+        expect(helper).to have_received(:react_component).
+          with('SearchResultsLayout', hash_including(navigationLinks: navigation_links))
+      end
+    end
   end
 end

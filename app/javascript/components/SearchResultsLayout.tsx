@@ -116,6 +116,7 @@ interface SearchResultsLayoutProps {
     title: string;
     text: string;
   };
+  navigationLinks?: { active: boolean; label: string; link: string; }[];
 }
 
 // To be updated
