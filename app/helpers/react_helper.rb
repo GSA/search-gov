@@ -11,7 +11,8 @@ module ReactHelper
       relatedSites: related_sites(affiliate.connections, search.query),
       resultsData: search.normalized_results,
       translations: translations(affiliate.locale),
-      vertical: vertical
+      vertical: vertical,
+      alert: search_page_alert(affiliate.alert)
     }
 
     react_component('SearchResultsLayout', data.compact_blank)
@@ -27,6 +28,12 @@ module ReactHelper
 
   def translations(locale)
     I18n.backend.translations.slice(:en, locale.to_sym)
+  end
+
+  def search_page_alert(alert)
+    return if !alert || (alert.text.blank? && alert.title.blank?)
+
+    alert.slice('text', 'title')
   end
 
   def related_sites(connections, query)
