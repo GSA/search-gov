@@ -20,12 +20,12 @@ rss_feed = affiliate.rss_feeds.new(
 
 rss_feed.rss_feed_urls.build(
   rss_feed_owner_type: 'Affiliate',
-  url: 'https://www.epa.gov/newsreleases/search/rss',
+  url: 'https://www.gsa.gov/_rssfeed/gsablogs.xml',
   language: 'en'
 )
 
 # enable navigation, which is created on save by navigable observer
-rss_feed.save
+rss_feed.save!
 
 # enable the News facet
 rss_feed.navigation.update(is_active: true)
@@ -37,9 +37,9 @@ rss_feed_url = rss_feed.rss_feed_urls.first
 
 (1..5).each do |i|
   rss_feed_url.news_items.create(
-    link: "https://www.epa.gov/newsreleases/news_item_#{i}",
-    title: "EPA News Item #{i}",
-    guid: "https://www.epa.gov/newsreleases/news_item_#{i}",
+    link: "https://www.gsa.gov/newsreleases/news_item_#{i}",
+    title: "GSA News Item #{i}",
+    guid: "https://www.gsa.gov/newsreleases/news_item_#{i}",
     description: "This is News Item ##{i}",
     published_at: i.days.ago
   )

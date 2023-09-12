@@ -563,6 +563,17 @@ Feature: Manage Display
     And I should not see "Mark identifier logo for deletion"
     And I should not see "Identifier logo alt text"
 
+    When I follow "Header & Footer" within the navigation tabs
+    Then I should see "Header layout"
+    And the "Use extended header" radio button should be checked
+    And the "Use basic header" radio button should not be checked
+
+    When I choose "Use basic header"
+    And I submit the form by pressing "Save"
+    Then I should see "You have updated your visual design settings"
+    And the "Use extended header" radio button should not be checked
+    And the "Use basic header" radio button should be checked
+
   Scenario: Editing the Visual Design Settings when "Show Redesign Display Settings" and "Use Redesigned Results Page" are true
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | show_redesign_display_settings | use_redesigned_results_page |

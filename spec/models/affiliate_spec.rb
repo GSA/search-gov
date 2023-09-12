@@ -26,6 +26,11 @@ describe Affiliate do
         is_expected.to have_db_column(:active).of_type(:boolean).
           with_options(default: true, null: false)
       end
+
+      it do
+        is_expected.to have_db_column(:use_extended_header).of_type(:boolean).
+          with_options(default: true, null: false)
+      end
     end
 
     describe 'Paperclip attachments' do

@@ -52,9 +52,11 @@
   page: 'Էջ'
   prev_label: "Նախորդ"
   next_label: "Հաջորդ"
+  return_to_top:
   
   searches: # Heading. No localization here.
     by: "սնուցվում է"
+
 # Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
     skip_to_main_content: Անցնել հիմնական բովանդակությանը
 # Labels for navigation bar "sections" (most easily seen on mobile dimension)
@@ -139,3 +141,8 @@
 
 # Label for text best bet when it appears in suggestions via the type-ahead API
   recommended_pages: "Առաջարկվող էջեր"
+
+# Labels for USWDS Identifier component
+  official_website_of: 
+  looking_for_us_gov_info: 
+  visit_usa_dot_gov:  # English link text is "Visit USA.gov." This link will go to the main English language USA.gov site
