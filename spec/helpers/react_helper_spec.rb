@@ -39,46 +39,48 @@ describe ReactHelper do
       end
     end
 
-    context 'when alert is present and has text and title' do
-      let(:alert) { instance_double(Alert, text: 'alert_title', title: 'alert_title') }
+    context 'when affiliate has alert with text and title' do
+      let(:alert) { Alert.new(text: 'Alert text', title: 'Alert title', affiliate_id: affiliate.id) }
 
-      it 'includes alert and has text and title' do
-        helper.search_results_layout(search, {}, vertical, affiliate)
+      it 'sets alert to contain both text and title' do
+        helper.search_results_layout(search, {}, vertical, alert.affiliate)
         expect(helper).to have_received(:react_component).with(
           'SearchResultsLayout',
-          hash_excluding(:alert)
+          hash_including(:alert)
         )
       end
     end
 
-    context 'when alert is present but text is blank' do
-      let(:alert) { instance_double(Alert, text: '', title: 'alert_title') }
+    context 'when affiliate has alert with only title' do
+      let(:alert) { Alert.new(text: '', title: 'Alert title', affiliate_id: affiliate.id) }
 
-      it 'excludes alert from data' do
-        helper.search_results_layout(search, {}, vertical, affiliate)
+      it 'sets alert to contain only title' do
+        helper.search_results_layout(search, {}, vertical, alert.affiliate)
         expect(helper).to have_received(:react_component).with(
           'SearchResultsLayout',
-          hash_excluding(:alert)
+          hash_including(:alert)
         )
       end
     end
 
-    context 'when alert is present but title is blank' do
-      let(:alert) { instance_double(Alert, text: 'alert_title', title: '') }
+    context 'when affiliate has alert with only text' do
+      let(:alert) { Alert.new(text: 'Alert text', title: '', affiliate_id: affiliate.id) }
 
-      it 'excludes alert from data' do
-        helper.search_results_layout(search, {}, vertical, affiliate)
+      it 'sets alert to contain only text' do
+        helper.search_results_layout(search, {}, vertical, alert.affiliate)
         expect(helper).to have_received(:react_component).with(
           'SearchResultsLayout',
-          hash_excluding(:alert)
+          hash_including(:alert)
         )
       end
     end
 
-    context 'when alert is not present' do
-      let(:alert) { nil }
+    context 'when affiliate has no alert' do
+      before do
+        affiliate.alert = nil
+      end
 
-      it 'excludes alert from data' do
+      it 'sets alert to nil in the data hash' do
         helper.search_results_layout(search, {}, vertical, affiliate)
         expect(helper).to have_received(:react_component).with(
           'SearchResultsLayout',

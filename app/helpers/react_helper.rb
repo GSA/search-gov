@@ -12,7 +12,7 @@ module ReactHelper
       resultsData: search.normalized_results,
       translations: translations(affiliate.locale),
       vertical: vertical,
-      alert: (search_page_alert(affiliate.alert) if affiliate.alert.present?)
+      alert: search_page_alert(affiliate.alert)
     }
 
     react_component('SearchResultsLayout', data.compact_blank)
@@ -31,7 +31,7 @@ module ReactHelper
   end
 
   def search_page_alert(alert)
-    return if alert.text.blank? && alert.title.blank?
+    return if !alert || (alert.text.blank? && alert.title.blank?)
 
     alert.slice('text', 'title')
   end
