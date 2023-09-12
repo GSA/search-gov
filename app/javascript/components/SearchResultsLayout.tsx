@@ -115,7 +115,7 @@ interface SearchResultsLayoutProps {
   alert?: {
     title: string;
     text: string;
-  } | null;
+  };
 }
 
 // To be updated

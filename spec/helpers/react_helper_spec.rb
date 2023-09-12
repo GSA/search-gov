@@ -6,6 +6,7 @@ describe ReactHelper do
   describe '#search_results_layout' do
     let(:affiliate) { affiliates(:usagov_affiliate) }
     let(:search) { WebSearch.new(query: 'chocolate', affiliate: affiliate) }
+    let(:vertical) { 'vertical_nav' }
 
     before do
       allow(helper).to receive(:react_component)
@@ -35,6 +36,54 @@ describe ReactHelper do
 
         expect(helper).not_to have_received(:react_component).
           with('SearchResultsLayout', hash_including(:relatedSites))
+      end
+    end
+
+    context 'when alert is present and has text and title' do
+      let(:alert) { instance_double(Alert, text: 'alert_title', title: 'alert_title') }
+
+      it 'includes alert and has text and title' do
+        helper.search_results_layout(search, params, vertical, affiliate)
+        expect(helper).to have_received(:react_component).with(
+          'SearchResultsLayout',
+          hash_excluding(:alert)
+        )
+      end
+    end
+
+    context 'when alert is present but text is blank' do
+      let(:alert) { instance_double(Alert, text: '', title: 'alert_title') }
+
+      it 'excludes alert from data' do
+        helper.search_results_layout(search, params, vertical, affiliate)
+        expect(helper).to have_received(:react_component).with(
+          'SearchResultsLayout',
+          hash_excluding(:alert)
+        )
+      end
+    end
+
+    context 'when alert is present but title is blank' do
+      let(:alert) { instance_double(Alert, text: 'alert_title', title: '') }
+
+      it 'excludes alert from data' do
+        helper.search_results_layout(search, params, vertical, affiliate)
+        expect(helper).to have_received(:react_component).with(
+          'SearchResultsLayout',
+          hash_excluding(:alert)
+        )
+      end
+    end
+
+    context 'when alert is not present' do
+      let(:alert) { nil }
+
+      it 'excludes alert from data' do
+        helper.search_results_layout(search, params, vertical, affiliate)
+        expect(helper).to have_received(:react_component).with(
+          'SearchResultsLayout',
+          hash_excluding(:alert)
+        )
       end
     end
   end
