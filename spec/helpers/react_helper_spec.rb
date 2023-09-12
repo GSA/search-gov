@@ -43,7 +43,7 @@ describe ReactHelper do
       let(:alert) { instance_double(Alert, text: 'alert_title', title: 'alert_title') }
 
       it 'includes alert and has text and title' do
-        helper.search_results_layout(search, params, vertical, affiliate)
+        helper.search_results_layout(search, {}, vertical, affiliate)
         expect(helper).to have_received(:react_component).with(
           'SearchResultsLayout',
           hash_excluding(:alert)
@@ -55,7 +55,7 @@ describe ReactHelper do
       let(:alert) { instance_double(Alert, text: '', title: 'alert_title') }
 
       it 'excludes alert from data' do
-        helper.search_results_layout(search, params, vertical, affiliate)
+        helper.search_results_layout(search, {}, vertical, affiliate)
         expect(helper).to have_received(:react_component).with(
           'SearchResultsLayout',
           hash_excluding(:alert)
@@ -67,7 +67,7 @@ describe ReactHelper do
       let(:alert) { instance_double(Alert, text: 'alert_title', title: '') }
 
       it 'excludes alert from data' do
-        helper.search_results_layout(search, params, vertical, affiliate)
+        helper.search_results_layout(search, {}, vertical, affiliate)
         expect(helper).to have_received(:react_component).with(
           'SearchResultsLayout',
           hash_excluding(:alert)
@@ -79,7 +79,7 @@ describe ReactHelper do
       let(:alert) { nil }
 
       it 'excludes alert from data' do
-        helper.search_results_layout(search, params, vertical, affiliate)
+        helper.search_results_layout(search, {}, vertical, affiliate)
         expect(helper).to have_received(:react_component).with(
           'SearchResultsLayout',
           hash_excluding(:alert)
