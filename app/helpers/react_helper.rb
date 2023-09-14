@@ -8,6 +8,7 @@ module ReactHelper
       navigationLinks: navigation_links(search, params),
       noResultsMessage: no_result_message(search),
       params: params,
+      relatedSearches: related_searches(search),
       relatedSites: related_sites(affiliate.connections, search.query),
       resultsData: search.normalized_results,
       translations: translations(affiliate.locale),
@@ -19,6 +20,15 @@ module ReactHelper
   end
 
   private
+
+  def related_searches(search)
+    search.related_search&.map do |related_term|
+      {
+        label: related_term.downcase.html_safe,
+        link: search_path(affiliate: search.affiliate.name, query: strip_tags(related_term))
+      }
+    end
+  end
 
   def no_result_message(search)
     return unless search.results.blank? && search.query.present?
