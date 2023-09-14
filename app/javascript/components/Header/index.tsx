@@ -10,9 +10,12 @@ import { ExtendedHeader } from './ExtendedHeader';
 interface HeaderProps {
   title: string;
   isBasic: boolean;
+  fontsAndColors: {
+    headerLinksFontFamily: string;
+  };
 }
 
-export const Header = ({ title, isBasic }: HeaderProps) => {
+export const Header = ({ title, isBasic, fontsAndColors }: HeaderProps) => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   const toggleMobileNav = (): void => {
@@ -22,7 +25,8 @@ export const Header = ({ title, isBasic }: HeaderProps) => {
   const headerProps = {
     title,
     toggleMobileNav,
-    mobileNavOpen
+    mobileNavOpen,
+    fontsAndColors
   };
  
   return (

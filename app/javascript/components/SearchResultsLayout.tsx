@@ -117,6 +117,9 @@ interface SearchResultsLayoutProps {
     text: string;
   };
   navigationLinks?: { active: boolean; label: string; link: string; }[];
+  fontsAndColors: {
+    headerLinksFontFamily: string;
+  };
 }
 
 // To be updated
@@ -129,7 +132,7 @@ const isBasicHeader = (): boolean => {
   return true;
 };
 
-const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [] }: SearchResultsLayoutProps) => {
+const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [], fontsAndColors }: SearchResultsLayoutProps) => {
   const i18n = new I18n(translations);
   i18n.defaultLocale = 'en';
   i18n.enableFallback = true;
@@ -139,7 +142,8 @@ const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params 
     <LanguageContext.Provider value={i18n}>
       <Header 
         title={getAffiliateTitle()}
-        isBasic={isBasicHeader()} 
+        isBasic={isBasicHeader()}
+        fontsAndColors={fontsAndColors}
       />
      
       <div className="usa-section serp-result-wrapper">
