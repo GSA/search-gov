@@ -45,6 +45,7 @@ class ResultsWithBodyAndDescriptionPostProcessor < ResultsPostProcessor
         title: translate_highlights(result['title']),
         url: result['url'] || result['link'],
         description: format_description(result),
+        published_at: result['published_at'],
         youtube: @youtube,
         youtubePublishedAt: (result&.published_at if @youtube),
         youtubeThumbnailUrl: (result&.youtube_thumbnail_url if @youtube),
