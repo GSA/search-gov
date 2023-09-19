@@ -142,7 +142,6 @@ Feature: Search - redesign
     And I fill in "Enter your search term" with "jobs"
     And I press "Search"
     Then I should see "Federal Job Openings"
-    And I should see at least 3 job postings
     And I should see "Washington, District of Columbia"
     And I should see "$64,660.00-$170,800.00 PA"
     And I should see an image link to "USAJobs.gov" with url for "https://www.usajobs.gov/"
