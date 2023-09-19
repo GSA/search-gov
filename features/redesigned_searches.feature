@@ -160,3 +160,49 @@ Feature: Search - redesign
     Then I should see an image link to "USAJobs.gov" with url for "https://www.usajobs.gov/"
     And I should see "Ninguna oferta de trabajo en su región coincide con su búsqueda"
     And I should see a link to "Más trabajos en el gobierno federal en USAJobs.gov" with url for "https://www.usajobs.gov/Search/Results?hp=public"
+
+  @javascript @a11y @a11y_wip
+  Scenario: News search
+    Given the following Affiliates exist:
+      | display_name | name          | contact_email    | first_name | last_name | locale |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     |
+      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     |
+
+    And affiliate "en.agency.gov" has the following RSS feeds:
+      | name   | url                              |
+      | News-1 | http://en.agency.gov/feed/news-1 |
+    And affiliate "es.agency.gov" has the following RSS feeds:
+      | name       | url                                  |
+      | Noticias-1 | http://es.agency.gov/feed/noticias-1 |
+
+    And there are 150 news items for "News-1"
+    And there are 5 news items for "Noticias-1"
+
+    When I am on en.agency.gov's "News-1" news search page
+    And I fill in "Enter your search term" with "news item"
+    And I press "Search" within the search box
+
+    Then the "Enter your search term" field should contain "news item"
+    And I should see "Any time" within the current time filter
+    And I should see "Most recent" within the current sort by filter
+    And I should see "150 results"
+    And I should see "Powered by Search.gov"
+    And I should see exactly "20" web search results
+    
+    And I should see a link to "2" with class "pagination-numbered-link"
+    And I should see a link to "Next"
+    When I follow "Next"
+    Then I should see "150 results"
+    And I should see exactly "20" web search results
+    And I should see a link to "Previous"
+    And I should see a link to "1" with class "pagination-numbered-link"
+    And I should see "Next"
+    When I follow "5"
+    And I follow "7"
+    And I follow "8"
+    Then I should see "150 results"
+    And I should see exactly "10" web search results
+
+    When I am on es.agency.gov's "Noticias-1" news search page
+    Then I should see "Generado por Search.gov"
+    And I should see at least "5" web search results
