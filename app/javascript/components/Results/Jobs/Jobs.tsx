@@ -125,9 +125,9 @@ export const Jobs = ({ recommendedBy, jobs=[] }: JobsProps) => {
             <Grid row gap="md">
               <Grid col={true} className='result-meta-data'>
                 <div className='result-title'>
-                  <a href="" className='result-title-link more-jobs-title-link'>
+                  <a href="https://www.usajobs.gov/Search/Results?hp=public" className='result-title-link more-jobs-title-link'>
                     <h2 className='result-title-label'>
-                      Go to USAJobs.gov to see more openings
+                      More federal job openings on USAJobs.gov
                     </h2>
                   </a>
                 </div>

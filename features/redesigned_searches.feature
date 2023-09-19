@@ -130,3 +130,34 @@ Feature: Search - redesign
     When I am on agency.gov's redesigned docs search page
     And I search for "USA" in the redesigned search page
     Then I should see exactly "20" web search results
+
+  @javascript @a11y @a11y_wip
+  Scenario: Job search
+    Given the following Affiliates exist:
+      | display_name | name          | contact_email    | first_name | last_name |locale | jobs_enabled |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en    | 1            |
+      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es    | 1            |
+
+    When I am on en.agency.gov's search page
+    And I fill in "Enter your search term" with "jobs"
+    And I press "Search"
+    Then I should see "Federal Job Openings"
+    And I should see at least 3 job postings
+    And I should see "Washington, District of Columbia"
+    And I should see "$64,660.00-$170,800.00 PA"
+    And I should see an image link to "USAJobs.gov" with url for "https://www.usajobs.gov/"
+    And I should see a link to "More federal job openings on USAJobs.gov" with url for "https://www.usajobs.gov/Search/Results?hp=public"
+
+    When I am on en.agency.gov's search page
+    And I fill in "Enter your search term" with "blablah jobs"
+    And I press "Search"
+    Then I should see an image link to "USAJobs.gov" with url for "https://www.usajobs.gov/"
+    And I should see "No job openings in your region match your search"
+    And I should see a link to "More federal job openings on USAJobs.gov" with url for "https://www.usajobs.gov/Search/Results?hp=public"
+
+    When I am on es.agency.gov's search page
+    And I fill in "Ingrese su búsqueda" with "blablah trabajo"
+    And I press "Buscar"
+    Then I should see an image link to "USAJobs.gov" with url for "https://www.usajobs.gov/"
+    And I should see "Ninguna oferta de trabajo en su región coincide con su búsqueda"
+    And I should see a link to "Más trabajos en el gobierno federal en USAJobs.gov" with url for "https://www.usajobs.gov/Search/Results?hp=public"
