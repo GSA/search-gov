@@ -13,7 +13,7 @@ module ReactHelper
       relatedSites: related_sites(affiliate.connections, search.query),
       resultsData: search.normalized_results,
       translations: translations(affiliate.locale),
-      vertical: vertical,
+      vertical: vertical
     }
 
     react_component('SearchResultsLayout', data.compact_blank)
@@ -26,7 +26,7 @@ module ReactHelper
 
     search.related_search.map do |related_term|
       {
-        label: related_term.downcase.html_safe,
+        label: related_term,
         link: search_path(affiliate: search.affiliate.name, query: strip_tags(related_term))
       }
     end
