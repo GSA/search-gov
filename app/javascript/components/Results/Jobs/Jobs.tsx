@@ -20,13 +20,13 @@ interface JobsProps {
   parse(html: string): string | JSX.Element | JSX.Element[]; // eslint-disable-line no-undef
 }
 
-export const Jobs = ({ recommendedBy, jobs=[], parse }: JobsProps) => {
+export const Jobs = ({ recommendedBy, jobs=[] }: JobsProps) => {
   const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
-  const MAX_JOBS_IN_COLLAPSE_VIEW:number = 3;
+  const MAX_JOBS_IN_COLLAPSE_VIEW = 3;
   let lessJobs = jobs;
   let moreJobs:jobType = [];
 
-  if(jobs?.length > MAX_JOBS_IN_COLLAPSE_VIEW){
+  if (jobs?.length > MAX_JOBS_IN_COLLAPSE_VIEW) {
     lessJobs = jobs.slice(0, MAX_JOBS_IN_COLLAPSE_VIEW);
     moreJobs = jobs.slice(MAX_JOBS_IN_COLLAPSE_VIEW, jobs.length);
   }   

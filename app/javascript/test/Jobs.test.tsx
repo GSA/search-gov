@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
+import parse from 'html-react-parser';
 
 import { Jobs } from '../components/Results/Jobs/Jobs';
 
@@ -19,16 +20,34 @@ Object.defineProperty(window, 'matchMedia', {
 });
 
 describe('Jobs component', () => {
+  const jobsProps = {
+    jobs: [
+      {
+        positionTitle: "Contract Specialist",
+        positionUri: "https://www.usajobs.gov/GetJob/ViewDetails/690037300",
+        positionLocationDisplay: "Multiple Locations",
+        organizationName: "Office of Acquisition and Logistics",
+        minimumPay: 122000,
+        maximumPay: 150000,
+        rateIntervalCode: "PA",
+        applicationCloseDate: "September 29, 2023"
+      }
+    ],
+    recommendedBy: 'gsa',
+    parse
+  };
+
   it('renders Jobs component', () => {
     render(
-      <Jobs />
+      <Jobs {...jobsProps}/>
     );
   });
 
-  it('shows title', () => {
+  it('shows Jobs details', () => {
     render(
-      <Jobs />
+      <Jobs {...jobsProps}/>
     );
-    expect(screen.getByText('Job Openings at SSA')).toBeInTheDocument();
+    expect(screen.getByText('Contract Specialist')).toBeInTheDocument();
+    expect(screen.getByText('Office of Acquisition and Logistics')).toBeInTheDocument();
   });
 });
