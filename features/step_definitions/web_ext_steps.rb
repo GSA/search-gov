@@ -62,6 +62,15 @@ Then /^I should see an image with src "([^"]*)"$/ do |src|
   page.should have_selector("img[src='#{src}']")
 end
 
+Then /^I (should|should not) see an image with src that contains "([^"]*)"$/ do |should, src|
+  image_url = page.has_xpath?('//img') ? page.find(:xpath, '//img')[:src] : []
+
+  case should
+  when 'should' then image_url.should(include(src))
+  when 'should not' then image_url.should_not(include(src))
+  end
+end
+
 Then /^I should not see a field labeled "([^"]*)"$/ do |label|
   page.should_not have_field(label)
 end
@@ -73,11 +82,11 @@ And /^the "([^"]*)" field should be blank$/ do |field|
 end
 
 Then /^the "([^"]*)" radio button should be checked$/ do |label|
-  find_field(label)['checked'].should be_truthy
+  find_field(label)['checked'].should(be_truthy)
 end
 
 Then /^the "([^"]*)" radio button should not be checked$/ do |label|
-  field_labeled(label)['checked'].should_not be_true
+  find_field(label)['checked'].should(be_falsey)
 end
 
 Then /^the page body should (contain|match) "([^"]*)"$/ do |matcher, content|

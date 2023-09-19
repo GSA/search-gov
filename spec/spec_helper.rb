@@ -8,6 +8,7 @@ require 'rspec/rails'
 require 'email_spec'
 require 'authlogic/test_case'
 require 'paperclip/matchers'
+require 'active_storage_validations/matchers'
 require 'webmock/rspec'
 
 include Authlogic::TestCase
@@ -58,6 +59,7 @@ RSpec.configure do |config|
   config.file_fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true
   config.include Paperclip::Shoulda::Matchers
+  config.include ActiveStorageValidations::Matchers
   config.include ActiveSupport::Testing::TimeHelpers
   config.infer_spec_type_from_file_location!
   config.expect_with(:rspec) do |c|
