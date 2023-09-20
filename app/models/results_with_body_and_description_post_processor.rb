@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ResultsWithBodyAndDescriptionPostProcessor < ResultsPostProcessor
+  include NewsItemsHelper
   attr_accessor :results
 
   def initialize(results, _val: nil, youtube: false)
@@ -45,7 +46,7 @@ class ResultsWithBodyAndDescriptionPostProcessor < ResultsPostProcessor
         title: translate_highlights(result['title']),
         url: result['url'] || result['link'],
         description: format_description(result),
-        published_at: result['published_at'],
+        publishedAt: news_item_time_ago_in_words(result['published_at']),
         youtube: @youtube,
         youtubePublishedAt: (result&.published_at if @youtube),
         youtubeThumbnailUrl: (result&.youtube_thumbnail_url if @youtube),

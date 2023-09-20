@@ -34,7 +34,7 @@ describe ResultsWithBodyAndDescriptionPostProcessor do
           expect(result[:title]).to eq("title #{index}")
           expect(result[:description]).to eq("content #{index}")
           expect(result[:url]).to eq("http://foo.gov/#{index}")
-          expect(result[:published_at]).to eq(DateTime.parse('2011-09-26'))
+          expect(result[:publishedAt]).to eq("almost 12 years")
           expect(result[:youtube]).to be true
           expect(result[:youtubePublishedAt]).to eq(Date.new(2011, 9, 26))
           expect(result[:youtubeThumbnailUrl]).to eq("http://youtube.com/#{index}")
