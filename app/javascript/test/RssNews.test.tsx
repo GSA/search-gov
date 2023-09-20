@@ -1,7 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
-import parse from 'html-react-parser';
 
 import { RssNews } from '../components/Results/RssNews/RssNews';
 
@@ -15,8 +14,7 @@ describe('Rss News component', () => {
         publishedAt: '2023-08-17'
       }
     ],
-    recommendedBy: 'gsa',
-    parse
+    recommendedBy: 'gsa'
   };
 
   it('renders rss news component', () => {

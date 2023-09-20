@@ -93,7 +93,6 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
             <RssNews 
               news={additionalResults.newNews} 
               recommendedBy={additionalResults.recommendedBy}
-              parse={parse}
             />
           }
 
@@ -164,7 +163,6 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
             <RssNews 
               news={additionalResults.oldNews} 
               recommendedBy={additionalResults.recommendedBy}
-              parse={parse}
             />
           }
         </div>

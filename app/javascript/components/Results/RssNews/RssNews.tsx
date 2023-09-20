@@ -1,6 +1,7 @@
 import React from 'react';
 import Moment from 'react-moment';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
+import parse from 'html-react-parser';
 interface RssNewsProps {
   recommendedBy: string;
   news?: {
@@ -9,10 +10,9 @@ interface RssNewsProps {
     description: string;
     publishedAt: string;
   }[];
-  parse(html: string): string | JSX.Element | JSX.Element[]; // eslint-disable-line no-undef
 }
 
-export const RssNews = ({ recommendedBy, news=[], parse }: RssNewsProps) => {
+export const RssNews = ({ recommendedBy, news=[] }: RssNewsProps) => {
   return (
     <>
       {news?.length > 0 && (
