@@ -1,2 +1,4 @@
 web: unset PORT && bin/rails server
 css: yarn run watch
+job: QUEUE=* VERBOSE=true bundle exec rake environment resque:work
+sch: VERBOSE=true bundle exec rake environment resque:scheduler

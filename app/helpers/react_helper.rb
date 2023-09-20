@@ -4,16 +4,17 @@ module ReactHelper
   def search_results_layout(search, params, vertical, affiliate)
     data = {
       additionalResults: search.govbox_set,
+      alert: search_page_alert(affiliate.alert),
       currentLocale: affiliate.locale,
       fontsAndColors: affiliate.visual_design_json,
       navigationLinks: navigation_links(search, params),
       noResultsMessage: no_result_message(search),
       params: params,
+      relatedSearches: related_searches(search),
       relatedSites: related_sites(affiliate.connections, search.query),
       resultsData: search.normalized_results,
       translations: translations(affiliate.locale),
-      vertical: vertical,
-      alert: search_page_alert(affiliate.alert)
+      vertical: vertical
     }
 
     react_component('SearchResultsLayout', data.compact_blank)
@@ -32,6 +33,17 @@ module ReactHelper
   end
 
   private
+
+  def related_searches(search)
+    return [] if search.is_a?(NewsSearch) || search.related_search.nil?
+
+    search.related_search.map do |related_term|
+      {
+        label: related_term,
+        link: search_path(affiliate: search.affiliate.name, query: strip_tags(related_term))
+      }
+    end
+  end
 
   def no_result_message(search)
     return unless search.results.blank? && search.query.present?

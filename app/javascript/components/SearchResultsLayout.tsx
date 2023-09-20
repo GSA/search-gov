@@ -120,6 +120,7 @@ interface SearchResultsLayoutProps {
   fontsAndColors: {
     headerLinksFontFamily: string;
   };
+  relatedSearches?: { label: string; link: string; }[];
 }
 
 // To be updated
