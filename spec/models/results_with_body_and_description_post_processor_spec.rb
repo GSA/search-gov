@@ -8,7 +8,7 @@ describe ResultsWithBodyAndDescriptionPostProcessor do
 
     let(:results) do
       results = []
-      5.times { |index| results << Hashie::Mash::Rash.new(title: "title #{index}", description: "content #{index}", url: "http://foo.gov/#{index}", published_at: DateTime.parse('2011-09-26')) }
+      5.times { |index| results << Hashie::Mash::Rash.new(title: "title #{index}", description: "content #{index}", url: "http://foo.gov/#{index}", published_at: Time.zone.today - 2.days) }
       results
     end
 
@@ -25,7 +25,7 @@ describe ResultsWithBodyAndDescriptionPostProcessor do
 
       let(:results) do
         results = []
-        5.times { |index| results << Hashie::Mash::Rash.new(title: "title #{index}", description: "content #{index}", url: "http://foo.gov/#{index}", published_at: DateTime.parse('2011-09-26'), youtube_thumbnail_url: "http://youtube.com/#{index}", duration: '1:23') }
+        5.times { |index| results << Hashie::Mash::Rash.new(title: "title #{index}", description: "content #{index}", url: "http://foo.gov/#{index}", published_at: Time.zone.today - 2.days, youtube_thumbnail_url: "http://youtube.com/#{index}", duration: '1:23') }
         results
       end
 
@@ -34,9 +34,9 @@ describe ResultsWithBodyAndDescriptionPostProcessor do
           expect(result[:title]).to eq("title #{index}")
           expect(result[:description]).to eq("content #{index}")
           expect(result[:url]).to eq("http://foo.gov/#{index}")
-          expect(result[:publishedAt]).to eq("almost 12 years")
+          expect(result[:publishedAt]).to eq('3 days')
           expect(result[:youtube]).to be true
-          expect(result[:youtubePublishedAt]).to eq(Date.new(2011, 9, 26))
+          expect(result[:youtubePublishedAt]).to eq(Time.zone.today - 2.days)
           expect(result[:youtubeThumbnailUrl]).to eq("http://youtube.com/#{index}")
           expect(result[:youtubeDuration]).to eq('1:23')
         end
