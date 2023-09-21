@@ -162,10 +162,12 @@ class GovboxSet
   end
 
   def init_related_search
-    return unless @affiliate.is_related_searches_enabled?
-
-    @related_search = SaytSuggestion.related_search(@query, @affiliate, @highlighting_options)
-    @modules << 'SREL' if @related_search.present?
+    if @affiliate.is_related_searches_enabled?
+      @related_search = SaytSuggestion.related_search(@query, @affiliate, @highlighting_options)
+      @modules << 'SREL' if @related_search.present?
+    else
+      @related_search = []
+    end
   end
 
   def init_med_topic

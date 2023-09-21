@@ -27,8 +27,8 @@ describe Sites::VisualDesignsController do
             site_id: site.id,
             site: {
               visual_design_json: {
-                header_links_font_family: 'georgia',
-                footer_and_results_font_family: 'tahoma'
+                header_links_font_family: "'Georgia', 'Cambria', 'Times New Roman', 'Times', serif",
+                footer_and_results_font_family: "'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif"
               }
             }
           }

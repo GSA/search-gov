@@ -104,5 +104,25 @@ describe ReactHelper do
           with('SearchResultsLayout', hash_including(navigationLinks: navigation_links))
       end
     end
+
+    context 'with an affiliate with type ahead suggestions' do
+      before do
+        SaytSuggestion.create!(phrase: 'chocolate bar', affiliate: affiliate)
+        ElasticSaytSuggestion.commit
+        search.run
+      end
+
+      it 'sends suggestion to SearchResultsLayout component' do
+        helper.search_results_layout(search, {}, true, affiliate)
+
+        related_search = {
+          label: '<strong>chocolate</strong> bar',
+          link: '/search?affiliate=usagov&query=chocolate+bar'
+        }
+
+        expect(helper).to have_received(:react_component).
+          with('SearchResultsLayout', hash_including(relatedSearches: [related_search]))
+      end
+    end
   end
 end
