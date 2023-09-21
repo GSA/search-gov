@@ -17,7 +17,6 @@ type jobType = {
 interface JobsProps {
   recommendedBy: string;
   jobs?: jobType;
-  parse(html: string): string | JSX.Element | JSX.Element[]; // eslint-disable-line no-undef
 }
 
 export const Jobs = ({ recommendedBy, jobs=[] }: JobsProps) => {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
+import parse from 'html-react-parser';
 
 interface GraphicsBestBetProps {
   title: string;
@@ -10,10 +11,9 @@ interface GraphicsBestBetProps {
     title: string;
     url: string;
   }[];
-  parse(html: string): string | JSX.Element | JSX.Element[] // eslint-disable-line no-undef
 }
 
-export const GraphicsBestBet = ({ title, titleUrl, imageUrl, imageAltText, links, parse }: GraphicsBestBetProps) => {
+export const GraphicsBestBet = ({ title, titleUrl, imageUrl, imageAltText, links }: GraphicsBestBetProps) => {
   return (
     <GridContainer className='result search-result-item graphics-best-bets featured-collection'>
       <Grid row gap="md">

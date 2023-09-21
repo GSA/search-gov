@@ -83,7 +83,6 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
         {additionalResults && (
           <BestBets
             {...additionalResults}
-            parse={parse}
           />
         )}
 
@@ -101,7 +100,6 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
             <Jobs 
               jobs={additionalResults.jobs} 
               recommendedBy={additionalResults.recommendedBy}
-              parse={parse}
             />
           }
           
