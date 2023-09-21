@@ -1,7 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
-import parse from 'html-react-parser';
 
 import { Jobs } from '../components/Results/Jobs/Jobs';
 
@@ -73,8 +72,7 @@ describe('Jobs component', () => {
         applicationCloseDate: 'September 24, 2023'
       }
     ],
-    recommendedBy: 'gsa',
-    parse
+    recommendedBy: 'gsa'
   };
 
   it('renders Jobs component', () => {
