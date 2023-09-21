@@ -474,20 +474,20 @@ Feature: Manage Display
 
     When I follow "Fonts & Colors" within the navigation tabs
     Then I should see "Header Links Font Family"
-    And the "Header Links Font Family" field should contain "public-sans"
+    And the "Header Links Font Family" field should contain "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
     And I should see "Footer and Results Font Family"
-    And the "Footer and Results Font Family" field should contain "public-sans"
+    And the "Footer and Results Font Family" field should contain "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
 
     When I select "Georgia" from "Header Links Font Family"
     And I submit the form by pressing "Save"
     Then I should see "You have updated your visual design settings."
-    And the "Header Links Font Family" field should contain "georgia"
+    And the "Header Links Font Family" field should contain "'Georgia', 'Cambria', 'Times New Roman', 'Times', serif"
 
     When I select "Roboto mono" from "Footer and Results Font Family"
     And I submit the form by pressing "Save"
     Then I should see "You have updated your visual design settings."
-    And the "Header Links Font Family" field should contain "georgia"
-    And the "Footer and Results Font Family" field should contain "roboto-mono"
+    And the "Header Links Font Family" field should contain "'Georgia', 'Cambria', 'Times New Roman', 'Times', serif"
+    And the "Footer and Results Font Family" field should contain "'Roboto Mono Web', 'Bitstream Vera Sans Mono', 'Consolas', 'Courier', monospace"
 
     When I follow "Fonts & Colors" within the navigation tabs
     Then I should see "Banner background color"

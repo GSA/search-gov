@@ -54,14 +54,17 @@ en:
             secondary_header_background_color: Secondary header background color
             section_title_color: Section title color
           fonts:
-            georgia: Georgia
-            helvetica: Helvetica neue
-            merriweather: Merriweather
-            public-sans: Public sans
-            roboto-mono: Roboto mono
-            source-sans-pro: Source sans pro
-            system: System
-            tahoma: Tahoma
+            "'Georgia', 'Cambria', 'Times New Roman', 'Times', serif": Georgia
+            "'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif": Helvetica neue
+            "'Merriweather Web', 'Georgia', 'Cambria', 'Times New Roman', 'Times', serif": Merriweather
+            ? "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
+            : Public sans
+            "'Roboto Mono Web', 'Bitstream Vera Sans Mono', 'Consolas', 'Courier', monospace": Roboto mono
+            "'Source Sans Pro','Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif": Source sans pro
+            ? "'Tahoma', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
+            : Tahoma
+            ? "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
+            : System
           fonts_and_colors: Fonts & Colors
           footer_and_results_font_family: Footer and Results Font Family
           header_links_font_family: Header Links Font Family

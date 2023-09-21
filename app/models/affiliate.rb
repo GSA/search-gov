@@ -230,16 +230,16 @@ class Affiliate < ApplicationRecord
     header_links_font_family
     footer_and_results_font_family
   ].freeze
-  DEFAULT_FONT = 'public-sans'
-  USWDS_FONTS = %w[
-    georgia
-    helvetica
-    merriweather
-    public-sans
-    roboto-mono
-    source-sans-pro
-    system
-    tahoma
+  DEFAULT_FONT = "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
+  USWDS_FONTS = [
+    "'Georgia', 'Cambria', 'Times New Roman', 'Times', serif",
+    "'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif",
+    "'Merriweather Web', 'Georgia', 'Cambria', 'Times New Roman', 'Times', serif",
+    "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "'Roboto Mono Web', 'Bitstream Vera Sans Mono', 'Consolas', 'Courier', monospace",
+    "'Source Sans Pro','Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif",
+    "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "'Tahoma', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
   ].freeze
   DEFAULT_COLORS = {
     banner_background_color: '#F0F0F0',

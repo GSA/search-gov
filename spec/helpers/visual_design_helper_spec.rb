@@ -1,16 +1,20 @@
 describe VisualDesignHelper do
   describe '#render_affiliate_visual_design_value' do
     context 'when font_family is valid' do
-      let(:visual_design_json) { { 'header_links_font_family' => 'tahoma' } }
+      let(:visual_design_json) do
+        { 'header_links_font_family' => "'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif" }
+      end
 
       it 'renders that font_family' do
-        expect(helper.render_affiliate_visual_design_value(visual_design_json, :header_links_font_family)).to eq('tahoma')
+        expect(helper.render_affiliate_visual_design_value(visual_design_json, :header_links_font_family)).
+          to match(/Helvetica/)
       end
     end
 
     context 'when font_family is missing' do
       it 'renders the default font_family' do
-        expect(helper.render_affiliate_visual_design_value({}, :footer_and_results_font_family)).to eq('public-sans')
+        expect(helper.render_affiliate_visual_design_value({}, :footer_and_results_font_family)).
+          to match(/Public Sans Web/)
       end
     end
   end
