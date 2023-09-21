@@ -6,6 +6,7 @@ module ReactHelper
       additionalResults: search.govbox_set,
       alert: search_page_alert(affiliate.alert),
       currentLocale: affiliate.locale,
+      fontsAndColors: affiliate.visual_design_json,
       navigationLinks: navigation_links(search, params),
       noResultsMessage: no_result_message(search),
       params: params,
@@ -13,6 +14,18 @@ module ReactHelper
       relatedSites: related_sites(affiliate.connections, search.query),
       resultsData: search.normalized_results,
       translations: translations(affiliate.locale),
+      vertical: vertical
+    }
+
+    react_component('SearchResultsLayout', data.compact_blank)
+  end
+
+  def image_search_results_layout(search, params, vertical, affiliate)
+    data = {
+      fontsAndColors: affiliate.visual_design_json,
+      locale: YAML.load_file("config/locales/#{affiliate.locale}.yml"),
+      params: params,
+      resultsData: search.format_results,
       vertical: vertical
     }
 
