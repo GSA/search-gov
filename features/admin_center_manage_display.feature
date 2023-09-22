@@ -588,7 +588,7 @@ Feature: Manage Display
     And I submit the form by pressing "Save"
     Then I should see "1 error prohibited this affiliate from being saved"
     Then I should see "There were problems with the following fields:"
-    Then I should see "Primary header links link URL can't be blank"
+    Then I should see "Primary header links url can't be blank"
 
     When I fill in the following:
       | Primary header link title 0    | A primary header link   |
@@ -611,7 +611,7 @@ Feature: Manage Display
     And the "Identifier link URL 0" field should contain "http://link.gov"
 
     When I follow "Add new identifier link"
-    Then I should be able to access 2 "identifier-link" rows
+    Then I should be able to access 2 "new_identifier_link" rows
     And I fill in "Identifier link title 1" with "A second identifier link"
     And I fill in "Identifier link URL 1" with "link2.gov"
     And I submit the form by pressing "Save"
@@ -620,9 +620,9 @@ Feature: Manage Display
     And the "Identifier link URL 1" field should contain "https://link2.gov"
 
     When I follow "Add new secondary header link"
-    Then I should be able to access 2 "secondary-header-link" rows
+    Then I should be able to access 2 "new_secondary_header_link" rows
     And I follow "Add new secondary header link"
-    Then I should be able to access 3 "secondary-header-link" rows
+    Then I should be able to access 3 "new_secondary_header_link" rows
     And I should not see "Add new secondary header link"
 
   Scenario: Editing the Visual Design Settings when "Show Redesign Display Settings" and "Use Redesigned Results Page" are true

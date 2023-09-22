@@ -18,4 +18,5 @@
           = render "sites/links/form", f: link_fields, link: link_fields.object
 
   - unless attribute_name == 'secondary_header_links' && @site.send(attribute_name).size >= 3
-    .trigger-wrapper= link_to_add_link(t('.add_new', scope: 'admin_center', type: attribute_name.singularize.humanize), @site, attribute_name)
+    .trigger-wrapper= link_to_add_link(t('.add_new', scope: 'admin_center', type: attribute_name.singularize.humanize.downcase),
+    @site, attribute_name)
