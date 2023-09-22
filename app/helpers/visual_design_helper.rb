@@ -21,7 +21,7 @@ module VisualDesignHelper
     link_to(title,
             new_site_link_path(site),
             remote: true,
-            data: { params: { position: site.send(attribute).size, type: attribute.camelize.singularize }},
+            data: { params: { position: site.send(attribute).size, type: attribute.camelize.singularize } },
             id: "new-#{attribute.dasherize}-trigger")
   end
 end

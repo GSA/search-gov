@@ -1,5 +1,9 @@
 %fieldset
   %legend.section-heading= t(attribute_name, scope: 'admin_center')
+
+  - if attribute_name == 'secondary_header_links'
+    %span= t('.limit', scope: 'admin_center')
+
   %table.table.draggable-links{id: attribute_name.dasherize}
     %thead
       %tr.nodrag.nodrop

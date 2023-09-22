@@ -34,10 +34,10 @@ class Sites::VisualDesignsController < Sites::SetupSiteController
         :footer_and_results_font_family,
         color_params
       ],
-      primary_header_links_attributes: [:title, :url, :position, :id, :_destroy],
-      secondary_header_links_attributes: [:title, :url, :position, :id, :_destroy],
-      footer_links_attributes: [:title, :url, :position, :id, :_destroy],
-      identifier_links_attributes: [:title, :url, :position, :id, :_destroy],
+      primary_header_links_attributes: %i[title url position id _destroy],
+      secondary_header_links_attributes: %i[title url position id _destroy],
+      footer_links_attributes: %i[title url position id _destroy],
+      identifier_links_attributes: %i[title url position id _destroy]
     )
   end
 
