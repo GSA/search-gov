@@ -1,0 +1,11 @@
+%tr{ id: dom_id(link) }
+  %td.title
+    %i.draggable.fa.fa-reorder-black
+    = f.hidden_field :id
+    = f.label :title, t('.indexed_title', scope: 'admin_center', type: link.type.humanize, index: f.index), class: 'hide'
+    = f.text_field :title, maxlength: 32, class: 'title'
+    = f.hidden_field :position, class: 'position', value: f.index
+
+  %td.url
+    = f.label :url, t('.indexed_url', scope: 'admin_center', type: link.type.humanize, index: f.index), class: 'hide'
+    = f.text_field :url, maxlength: 128, class: 'url'

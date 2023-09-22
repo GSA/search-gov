@@ -17,31 +17,11 @@ module VisualDesignHelper
     end
   end
 
-  def link_to_add_primary_header_link(title, site)
-    instrumented_link_to(title,
-                         new_link_site_visual_design_path(site),
-                         site.primary_header_links.length,
-                         'site-primary-header-link')
-  end
-
-  def link_to_add_secondary_header_link(title, site)
-    instrumented_link_to(title,
-                         new_link_site_visual_design_path(site),
-                         site.secondary_header_links.length,
-                         'site-secondary-header-link')
-  end
-
-  def link_to_add_footer_link(title, site)
-    instrumented_link_to(title,
-                         new_link_site_visual_design_path(site),
-                         site.footer_links.length,
-                         'site-footer-link')
-  end
-
-  def link_to_add_identifier_link(title, site)
-    instrumented_link_to(title,
-                         new_link_site_visual_design_path(site),
-                         site.identifier_links.length,
-                         'site-identifier-link')
+  def link_to_add_link(title, site, attribute)
+    link_to(title,
+            new_site_link_path(site),
+            remote: true,
+            data: { params: { position: site.send(attribute).size, type: attribute.camelize.singularize }},
+            id: "new-#{attribute.dasherize}-trigger")
   end
 end

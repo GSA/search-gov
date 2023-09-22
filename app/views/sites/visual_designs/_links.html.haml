@@ -1,0 +1,17 @@
+%fieldset
+  %legend.section-heading= t(attribute_name, scope: 'admin_center')
+  %table.table.draggable-links{id: attribute_name.dasherize}
+    %thead
+      %tr.nodrag.nodrop
+        %th= t('.title', scope: 'admin_center')
+        %th= t('.url', scope: 'admin_center')
+    %tbody
+      - if @site.send(attribute_name).any?
+        = f.fields_for attribute_name do |link_fields|
+          = render "sites/links/form", f: link_fields, link: link_fields.object
+      - else
+        = f.fields_for attribute_name, @site.send(attribute_name).build do |link_fields|
+          = render "sites/links/form", f: link_fields, link: link_fields.object
+
+  - unless attribute_name == 'secondary_header_links' && @site.send(attribute_name).size >= 3
+    .trigger-wrapper= link_to_add_link(t('.add_new', scope: 'admin_center', type: attribute_name.singularize.humanize), @site, attribute_name)

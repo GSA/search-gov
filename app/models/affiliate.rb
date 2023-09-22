@@ -19,7 +19,6 @@ class Affiliate < ApplicationRecord
   INVALID_MOBILE_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB} KB".freeze
   INVALID_HEADER_TAGLINE_LOGO_IMAGE_SIZE_MESSAGE = "must be under #{MAXIMUM_HEADER_TAGLINE_LOGO_IMAGE_SIZE_IN_KB} KB".freeze
   MAX_NAME_LENGTH = 33
-  LINK_FIELDS = %i[primary_header_links secondary_header_links footer_links identifier_links].freeze
 
   with_options dependent: :destroy do |assoc|
     assoc.has_many :affiliate_feature_addition
@@ -59,6 +58,10 @@ class Affiliate < ApplicationRecord
     assoc.has_one :alert
     assoc.has_many :watchers, -> { order 'name ASC' }, inverse_of: :affiliate
     assoc.has_many :tag_filters, -> { order 'tag ASC' }, inverse_of: :affiliate
+    assoc.has_many :primary_header_links, -> { order :position }
+    assoc.has_many :secondary_header_links, -> { order :position }
+    assoc.has_many :footer_links, -> { order :position }
+    assoc.has_many :identifier_links, -> { order :position }
   end
 
   has_one_attached :header_logo
@@ -66,6 +69,7 @@ class Affiliate < ApplicationRecord
 
   accepts_nested_attributes_for :header_logo_attachment, :identifier_logo_attachment, allow_destroy: true
   accepts_nested_attributes_for :header_logo_blob, :identifier_logo_blob
+  accepts_nested_attributes_for :primary_header_links, :secondary_header_links, :footer_links, :identifier_links
 
   has_many :users, -> { order 'first_name' }, through: :memberships
 
@@ -109,8 +113,6 @@ class Affiliate < ApplicationRecord
   before_validation :set_default_labels
   before_validation :strip_bing_v5_key
   before_validation :set_attached_filepath
-  before_validation :reject_empty_links_and_httpify_link_urls
-  before_validation :set_default_links
 
   before_validation do |record|
     AttributeProcessor.squish_attributes(record,
@@ -163,8 +165,9 @@ class Affiliate < ApplicationRecord
            :validate_managed_header_links,
            :validate_managed_no_results_pages_alt_links,
            :language_valid,
-           :validate_managed_no_results_pages_guidance_text,
-           :validate_links
+           :validate_managed_no_results_pages_guidance_text
+
+  validates :secondary_header_links, length: { maximum: 3 }
 
   before_validation :set_visual_design_json
   after_validation :update_error_keys
@@ -183,18 +186,13 @@ class Affiliate < ApplicationRecord
                 :managed_footer_links_attributes,
                 :managed_no_results_pages_alt_links_attributes
 
-  store_accessor :links_json,
-                 :primary_header_links,
-                 :secondary_header_links,
-                 :footer_links,
-                 :identifier_links
-
   accepts_nested_attributes_for :site_domains, reject_if: :all_blank
   accepts_nested_attributes_for :image_search_label
   accepts_nested_attributes_for :rss_feeds
   accepts_nested_attributes_for :document_collections, reject_if: :all_blank
   accepts_nested_attributes_for :connections, allow_destroy: true, reject_if: proc { |a| a[:affiliate_name].blank? and a[:label].blank? }
   accepts_nested_attributes_for :flickr_profiles, allow_destroy: true
+  accepts_nested_attributes_for :primary_header_links, :secondary_header_links, :footer_links, :identifier_links, allow_destroy: true, reject_if: :empty_link?
 
   USAGOV_AFFILIATE_NAME = 'usagov'
   GOBIERNO_AFFILIATE_NAME = 'gobiernousa'
@@ -594,39 +592,8 @@ class Affiliate < ApplicationRecord
     end
   end
 
-  def set_default_links
-    self.links_json ||= {}
-
-    LINK_FIELDS.each do |field|
-      self.links_json[field.to_s] = [{}] if self.links_json[field.to_s].nil?
-    end
-  end
-
-  def reject_empty_links_and_httpify_link_urls
-    LINK_FIELDS.each do |field|
-      link_attributes = send(field)
-      link_attributes&.each do |link|
-        link.replace({}) if empty_link(link)
-        httpify_links_urls(link)
-      end
-      flatten_link_array(link_attributes)
-    end
-  end
-
-  def empty_link(link)
+  def empty_link?(link)
     link['title'].blank? && link['url'].blank?
-  end
-
-  def httpify_links_urls(link)
-    return unless link['url'].present? && link['url'] !~ %r{^(http(s?)://|mailto:)}i
-
-    link['url'] = "https://#{link['url']}"
-  end
-
-  def flatten_link_array(link_attributes)
-    return unless link_attributes && link_attributes.count > 1
-
-    link_attributes.delete_if(&:empty?)
   end
 
   def validate_managed_header_links
@@ -641,32 +608,17 @@ class Affiliate < ApplicationRecord
     validate_managed_links(managed_no_results_pages_alt_links, :alternative)
   end
 
-  def validate_links
-    LINK_FIELDS.each do |field|
-      links = send(field)
-      validate_managed_links(links, field)
-      validate_secondary_header_links(links) if field.to_s == 'secondary_header_links'
-    end
-  end
-
   def validate_managed_links(links, link_type)
     return if links.blank?
 
     add_blank_link_title_error = false
     add_blank_link_url_error = false
     links.each do |link|
-      link = link.symbolize_keys
       add_blank_link_title_error = true if link[:title].blank? && link[:url].present?
       add_blank_link_url_error = true if link[:title].present? && link[:url].blank?
     end
     errors.add(:base, "#{link_type.to_s.humanize} link title can't be blank") if add_blank_link_title_error
     errors.add(:base, "#{link_type.to_s.humanize} link URL can't be blank") if add_blank_link_url_error
-  end
-
-  def validate_secondary_header_links(links)
-    return unless links.present? && links.count > 3
-
-    errors.add(:base, 'Secondary header links cannot contain more than 3 items')
   end
 
   def set_default_fields
