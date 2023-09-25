@@ -1097,6 +1097,31 @@ describe Affiliate do
     end
   end
 
+  describe 'attached links' do
+    context 'when the link exists' do
+      before do
+        affiliate.update!(primary_header_links_attributes: [{ title: 'title', url: 'url', position: 0 }])
+      end
+
+      let(:link_id) { affiliate.primary_header_links.first.id }
+      let(:empty_link) { { title: '', url: '', position: 0, id: link_id } }
+
+      it 'destroys newly blank links' do
+        expect { affiliate.update!(primary_header_links_attributes: [empty_link]) }.
+          to change { Link.where(id: link_id).count }.from(1).to(0)
+      end
+    end
+
+    context 'when no link exists' do
+      let(:empty_link) { { title: '', url: '', position: 0 } }
+
+      it 'rejects empty links' do
+        expect { affiliate.update!(primary_header_links_attributes: [empty_link]) }.
+          not_to change { Link.count }
+      end
+    end
+  end
+
   describe '#status' do
     subject(:status) { affiliate.status }
 

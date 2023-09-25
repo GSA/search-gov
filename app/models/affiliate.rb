@@ -593,7 +593,11 @@ class Affiliate < ApplicationRecord
   end
 
   def empty_link?(link)
-    link['title'].blank? && link['url'].blank?
+    empty_link = link['title'].blank? && link['url'].blank?
+    existing_link = link['id'].present?
+    # delete newly empty existing link
+    link[:_destroy] = 1 if empty_link && existing_link
+    !existing_link && empty_link
   end
 
   def validate_managed_header_links
