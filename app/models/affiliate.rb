@@ -592,9 +592,7 @@ class Affiliate < ApplicationRecord
   end
 
   def empty_link?(link)
-    return if link['id'].present?
-
-    link['title'].blank? && link['url'].blank?
+    link['id'].blank? && link['title'].blank? && link['url'].blank?
   end
 
   def validate_managed_header_links
