@@ -14,7 +14,8 @@ module ReactHelper
       relatedSites: related_sites(affiliate.connections, search.query),
       resultsData: search.normalized_results,
       translations: translations(affiliate.locale),
-      vertical: vertical
+      vertical: vertical,
+      newsLabel: news_label(search.news_items&.results, affiliate, params["query"])
     }
 
     react_component('SearchResultsLayout', data.compact_blank)
@@ -43,6 +44,13 @@ module ReactHelper
         link: search_path(affiliate: search.affiliate.name, query: strip_tags(related_term))
       }
     end
+  end
+
+  def news_label(affiliate, results, query)
+    {
+      newsAboutQuery: news_about_query(affiliate, query),
+      results: news_items_results(affiliate, results)
+    }
   end
 
   def no_result_message(search)

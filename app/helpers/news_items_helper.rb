@@ -25,4 +25,18 @@ module NewsItemsHelper
 
     [time_ago_in_words(published_at), separator].join
   end
+
+  def news_items_results(affiliate, results)
+    unique_news_items(results).first(3).map do |news_item|
+      {
+        title: news_item.title,
+        feedName: RssFeedUrl.find_parent_rss_feed_name(affiliate, news_item.rss_feed_url_id),
+        publishedAt: news_item_time_ago_in_words(news_item.published_at)
+      }
+    end
+  end
+
+  def news_about_query(affiliate, query)
+    I18n.t(:news_about_query, news_label: affiliate.rss_govbox_label, query: query)
+  end
 end
