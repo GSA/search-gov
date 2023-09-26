@@ -69,7 +69,6 @@ class Affiliate < ApplicationRecord
 
   accepts_nested_attributes_for :header_logo_attachment, :identifier_logo_attachment, allow_destroy: true
   accepts_nested_attributes_for :header_logo_blob, :identifier_logo_blob
-  accepts_nested_attributes_for :primary_header_links, :secondary_header_links, :footer_links, :identifier_links
 
   has_many :users, -> { order 'first_name' }, through: :memberships
 
@@ -593,11 +592,9 @@ class Affiliate < ApplicationRecord
   end
 
   def empty_link?(link)
-    empty_link = link['title'].blank? && link['url'].blank?
-    existing_link = link['id'].present?
-    # delete newly empty existing link
-    link[:_destroy] = 1 if empty_link && existing_link
-    !existing_link && empty_link
+    return if link['id'].present?
+
+    link['title'].blank? && link['url'].blank?
   end
 
   def validate_managed_header_links
