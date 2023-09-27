@@ -1,0 +1,23 @@
+%a{id: 'results_format', class: 'anchor'}
+%h3= t('.results_format', scope: 'admin_center')
+
+%table#govboxes.table
+  %thead
+    %tr
+      %th= t('.name', scope: 'admin_center')
+      %th= t('.setting', scope: 'admin_center')
+  %tbody
+    %tr
+      %td= t('.display_image_on_search_results', scope: 'admin_center')
+      = switch_cell f, :display_image_on_search_results
+    %tr
+      %td= t('.display_filetype_on_search_results', scope: 'admin_center')
+      = switch_cell f, :display_filetype_on_search_results
+    %tr
+      %td= t('.display_created_date_on_search_results', scope: 'admin_center')
+      = switch_cell f, :display_created_date_on_search_results
+    %tr
+      %td= t('.display_updated_date_on_search_results', scope: 'admin_center')
+      = switch_cell f, :display_updated_date_on_search_results
+
+%hr
