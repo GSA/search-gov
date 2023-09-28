@@ -25,6 +25,7 @@ interface ResultsProps {
     url: string,
     description: string,
     updatedDate?: string,
+    publishedAt?: string,
     publishedDate?: string,
     thumbnailUrl?: string
   }[] | null;
