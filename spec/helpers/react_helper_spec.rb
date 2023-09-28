@@ -127,17 +127,16 @@ describe ReactHelper do
 
     context 'when an affiliate has news label and news items' do
       let(:results) do
-        [ 
-          { feedName: "Biographies", publishedAt: "27 days ago", title: "Rear Admiral Robert T. Clark"},
-          { feedName: "Biographies2", publishedAt: "20 days ago", title: "Rear Admiral Robert T. Clark2"}
+        [
+          { feedName: 'Biographies', publishedAt: '27 days ago', title: 'Rear Admiral Robert T. Clark' },
+          { feedName: 'Biographies2', publishedAt: '20 days ago', title: 'Rear Admiral Robert T. Clark2' }
         ]
       end
       let(:news_about_query) { 'News about chocolate' }
       let(:news_label) { { newsAboutQuery: news_about_query, results: results } }
 
       before do
-        allow(helper).to receive(:news_about_query).and_return(news_about_query)
-        allow(helper).to receive(:news_items_results).and_return(results)
+        allow(helper).to receive_messages(news_about_query: news_about_query, news_items_results: results)
       end
 
       it 'returns the correct news label hash' do

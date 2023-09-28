@@ -22,7 +22,7 @@ module NewsItemsHelper
     "searches/#{template}news_item"
   end
 
-  def news_item_time_ago_in_words(published_at, separator = '', date_stamp_enabled: true)
+  def news_item_time_ago_in_words(published_at, separator = '', date_stamp_enabled = true)
     return unless published_at.present? && date_stamp_enabled && published_at < Time.current
 
     [time_ago_in_words(published_at), separator].join
