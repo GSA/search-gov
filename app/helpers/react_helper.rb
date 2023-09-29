@@ -15,7 +15,7 @@ module ReactHelper
       resultsData: search.normalized_results,
       translations: translations(affiliate.locale),
       vertical: vertical,
-      newsLabel: news_label(affiliate, search, search.query)
+      newsLabel: news_label(search)
     }
 
     react_component('SearchResultsLayout', data.compact_blank)
@@ -46,9 +46,10 @@ module ReactHelper
     end
   end
 
-  def news_label(affiliate, search, query)
+  def news_label(search)
+    affiliate = search.affiliate
     {
-      newsAboutQuery: news_about_query(affiliate, query),
+      newsAboutQuery: news_about_query(affiliate, search.query),
       results: news_items_results(affiliate, search)
     }
   end

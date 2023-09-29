@@ -5,11 +5,24 @@ require 'spec_helper'
 describe ReactHelper do
   describe '#search_results_layout' do
     let(:affiliate) { affiliates(:usagov_affiliate) }
-    let(:search) { WebSearch.new(query: 'chocolate', affiliate: affiliate) }
     let(:vertical) { 'vertical_nav' }
+    let(:rss_feed) do
+      rss_feeds(:usagov_blog).tap do |rss_feed|
+        rss_feed.rss_feed_urls = [rss_feed_urls(:white_house_blog_url)]
+      end
+    end
+    let(:search) { WebSearch.new(query: 'chocolate', affiliate: affiliate) }
+    let(:results) do
+      [
+        mock_model(NewsItem, title: 'GSA News Item 1', description: true, link: 'http://search.gov/1', published_at: DateTime.parse('2011-09-26 21:33:05'), rss_feed_url_id: rss_feed.rss_feed_urls.first.id),
+        mock_model(NewsItem, title: 'GSA News Item 2', description: true, link: 'http://search.gov/2', published_at: DateTime.parse('2011-09-26 21:33:05'), rss_feed_url_id: rss_feed.rss_feed_urls.first.id)
+      ]
+    end
+    let(:news_items) { instance_double(ElasticNewsItemResults, results: results) }
 
     before do
       allow(helper).to receive(:react_component)
+      allow(search).to receive(:news_items).and_return(news_items)
     end
 
     context 'when an affiliate has connections' do
@@ -126,17 +139,14 @@ describe ReactHelper do
     end
 
     context 'when an affiliate has news label and news items' do
-      let(:results) do
-        [
-          { feedName: 'Biographies', publishedAt: '27 days ago', title: 'Rear Admiral Robert T. Clark' },
-          { feedName: 'Biographies2', publishedAt: '20 days ago', title: 'Rear Admiral Robert T. Clark2' }
-        ]
-      end
-      let(:news_about_query) { 'News about chocolate' }
-      let(:news_label) { { newsAboutQuery: news_about_query, results: results } }
-
-      before do
-        allow(helper).to receive_messages(news_about_query: news_about_query, news_items_results: results)
+      let(:news_label) do
+        {
+          newsAboutQuery: 'RSSGovbox about chocolate',
+          results: [
+            { title: 'GSA News Item 1', feedName: 'Usa Gov Blog', publishedAt: 'about 12 years ago' },
+            { title: 'GSA News Item 2', feedName: 'Usa Gov Blog', publishedAt: 'about 12 years ago' }
+          ]
+        }
       end
 
       it 'returns the correct news label hash' do

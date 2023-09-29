@@ -30,6 +30,8 @@ module NewsItemsHelper
 
   def news_items_results(affiliate, search)
     results = search.news_items&.results
+    return [] if results.blank?
+
     unique_news_items(results).first(3).map do |news_item|
       {
         title: news_item.title,
