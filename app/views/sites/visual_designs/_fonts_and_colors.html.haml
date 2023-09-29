@@ -1,4 +1,5 @@
-%h3{:id => "fonts_and_colors"}= t('.fonts_and_colors', scope: 'admin_center')
+%a{id: 'fonts_and_colors', class: 'anchor'}
+%h3= t('.fonts_and_colors', scope: 'admin_center')
 
 = f.fields_for :visual_design_json do |visual_design|
   = visual_design.label :header_links_font_family, t('.header_links_font_family', scope: 'admin_center')

@@ -1,7 +1,8 @@
-%h3{:id => "header_and_footer"}= t('.header_and_footer', scope: 'admin_center')
+%a{id: 'header_and_footer', class: 'anchor'}
+%h3= t('.header_and_footer', scope: 'admin_center')
 
 %fieldset
-  %legend= t('.header_layout', scope: 'admin_center')
+  %legend.section-heading= t('.header_layout', scope: 'admin_center')
 
   = f.label :use_extended_header, value: 'true', class: 'radio' do
     = f.radio_button :use_extended_header, true
@@ -9,5 +10,23 @@
   = f.label :use_extended_header, value: 'false', class: 'radio' do
     = f.radio_button :use_extended_header, false
     = t('.use_basic_header', scope: 'admin_center')
+
+= render 'links', attribute_name: 'primary_header_links', f: f
+= render 'links', attribute_name: 'secondary_header_links', f: f
+= render 'links', attribute_name: 'footer_links', f: f
+
+%fieldset
+  %legend.section-heading= t('.identifier', scope: 'admin_center')
+
+  = f.label :parent_agency_name, t('.parent_agency_name', scope: 'admin_center')
+  = f.text_field :parent_agency_name, maxlength: 255
+
+  = f.label :parent_agency_link, t('.parent_agency_link', scope: 'admin_center')
+  = f.text_field :parent_agency_link, maxlength: 255
+
+  = f.label :identifier_domain_name, t('.identifier_domain_name', scope: 'admin_center')
+  = f.text_field :identifier_domain_name, maxlength: 255
+
+= render "links", attribute_name: 'identifier_links', f: f
 
 %hr
