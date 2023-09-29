@@ -29,8 +29,9 @@ module NewsItemsHelper
   end
 
   def news_items_results(affiliate, search)
+    return [] if search.is_a?(NewsSearch) || search.news_items.blank?
+
     results = search.news_items&.results
-    return [] if results.blank?
 
     unique_news_items(results).first(3).map do |news_item|
       {
