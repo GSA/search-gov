@@ -9,10 +9,8 @@ class SearchgovDomainIndexerJob < ApplicationJob
   unique :until_executing, lock_ttl: 30.minutes
 
   def perform(searchgov_domain:, delay:)
-    if url = searchgov_domain.searchgov_urls.fetch_required.first
-
-      SearchgovDomainIndexerJob.
-        set(wait: delay.seconds).
+    if (url = searchgov_domain.searchgov_urls.fetch_required.first)
+      SearchgovDomainIndexerJob.set(wait: delay.seconds).
         perform_later(searchgov_domain: searchgov_domain, delay: delay)
 
       url.fetch

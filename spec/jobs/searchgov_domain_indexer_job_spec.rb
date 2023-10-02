@@ -31,7 +31,9 @@ describe SearchgovDomainIndexerJob do
       perform
       expect(searchgov_url.reload.last_crawl_status).not_to be_nil
     end
+  end
 
+  context 'when a domain do not have unfetched urls' do
     it 'transitions the domain activity back to "idle"' do
       expect { perform }.to change { searchgov_domain.activity }.
         from('indexing').to('idle')
