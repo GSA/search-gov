@@ -1,0 +1,3 @@
+= fields_for :site do |f|
+  = f.fields_for "#{@fields_name}_attributes", index: @index do |link_fields|
+    = render 'form', f: link_fields, link: @link

@@ -20,24 +20,24 @@
     %ul.navigation_tabs
       %li
         %h3
-          %a{ :href => "#fonts_and_colors",
-              :title => t('.sections.fonts_and_colors', scope: 'admin_center') }=t('.sections.fonts_and_colors',
-              scope: 'admin_center')
+          =link_to t('.sections.fonts_and_colors', scope: 'admin_center'),
+          edit_site_visual_design_path(@site, anchor: 'fonts_and_colors'),
+          title: t('.sections.fonts_and_colors', scope: 'admin_center')
       %li
         %h3
-          %a{ :href => "#results_format",
-              :title => t('.sections.results_format', scope: 'admin_center') }=t('.sections.results_format',
-              scope: 'admin_center')
+          =link_to t('.sections.results_format', scope: 'admin_center'),
+          edit_site_visual_design_path(@site, anchor: 'results_format'),
+          title: t('.sections.results_format', scope: 'admin_center')
       %li
         %h3
-          %a{ :href => "#image_assets",
-              :title => t('.sections.image_assets', scope: 'admin_center') }=t('.sections.image_assets',
-              scope: 'admin_center')
+          =link_to t('.sections.image_assets', scope: 'admin_center'),
+          edit_site_visual_design_path(@site, anchor: 'image_assets'),
+          title: t('.sections.image_assets', scope: 'admin_center')
       %li
         %h3
-          %a{ :href => "#header_and_footer",
-              :title => t('.sections.header_and_footer', scope: 'admin_center') }=t('.sections.header_and_footer',
-              scope: 'admin_center')
+          =link_to t('.sections.header_and_footer', scope: 'admin_center'),
+          edit_site_visual_design_path(@site, anchor: 'header_and_footer'),
+          title: t('.sections.header_and_footer', scope: 'admin_center')
 
     = render partial: 'fonts_and_colors', locals: { f: f }
     = render partial: 'image_assets', locals: { f: f }

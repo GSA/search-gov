@@ -22,6 +22,9 @@ class Sites::VisualDesignsController < Sites::SetupSiteController
       :favicon_url,
       :header_logo,
       :identifier_logo,
+      :identifier_domain_name,
+      :parent_agency_name,
+      :parent_agency_link,
       header_logo_attachment_attributes: attachment_attributes,
       header_logo_blob_attributes: blob_attributes,
       identifier_logo_attachment_attributes: attachment_attributes,
@@ -30,7 +33,11 @@ class Sites::VisualDesignsController < Sites::SetupSiteController
         :header_links_font_family,
         :footer_and_results_font_family,
         color_params
-      ]
+      ],
+      primary_header_links_attributes: %i[title url position id _destroy],
+      secondary_header_links_attributes: %i[title url position id _destroy],
+      footer_links_attributes: %i[title url position id _destroy],
+      identifier_links_attributes: %i[title url position id _destroy]
     )
   end
 
