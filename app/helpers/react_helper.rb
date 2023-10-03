@@ -11,7 +11,7 @@ module ReactHelper
       noResultsMessage: no_result_message(search),
       params: params,
       relatedSearches: related_searches(search),
-      relatedSites: related_sites(affiliate.connections, search.query),
+      relatedSites: related_sites(search),
       resultsData: search.normalized_results,
       translations: translations(affiliate.locale),
       vertical: vertical,
@@ -70,11 +70,12 @@ module ReactHelper
     alert.slice('text', 'title')
   end
 
-  def related_sites(connections, query)
+  def related_sites(search)
+    connections = search.affiliate.connections
     connections.map do |connection|
       {
         label: connection.label,
-        link: search_url(affiliate: connection.connected_affiliate.name, query: query)
+        link: search_url(affiliate: connection.connected_affiliate.name, query: search.query)
       }
     end
   end
