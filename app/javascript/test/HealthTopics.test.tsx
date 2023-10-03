@@ -10,16 +10,16 @@ jest.mock('i18n-js', () => {
 
 describe('HealthTopics component', () => {
   const healthTopic = {
-    description: "A1C is a blood test for type 2 diabetes and prediabetes.",
-    title: "A1C",
-    url: "https://medlineplus.gov/a1c.html",
+    description: 'A1C is a blood test for type 2 diabetes and prediabetes.',
+    title: 'A1C',
+    url: 'https://medlineplus.gov/a1c.html',
     relatedTopics: [{
-      title: "Legionnaires Disease",
-      url: "https://medlineplus.gov/legionnairesdisease.html"
+      title: 'Legionnaires Disease',
+      url: 'https://medlineplus.gov/legionnairesdisease.html'
     }],
     studiesAndTrials: [{
-      title: "Pneumonia",
-      url: "https://clinicaltrials.gov/search?cond=%22Pneumonia%22&aggFilters=status:not%20rec"
+      title: 'Pneumonia',
+      url: 'https://clinicaltrials.gov/search?cond=%22Pneumonia%22&aggFilters=status:not%20rec'
     }]
   };
 
