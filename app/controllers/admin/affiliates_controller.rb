@@ -1,5 +1,23 @@
 # frozen_string_literal: true
 
+HIDDEN_COLUMNS = /(_created_at|
+                   _updated_at|
+                   agency_id|
+                   css_properties|
+                   content_type|
+                   file_name|
+                   identifier_domain_name|
+                   _image|
+                   _json|
+                   label|
+                   _logo|
+                   _mappings|
+                   parent_agency_link|
+                   parent_agency_name|
+                   scope_ids|
+                   size|
+                   use_extended_header)\z/x
+
 class Admin::AffiliatesController < Admin::AdminController
   active_scaffold :affiliate do |config|
     config.label = 'Sites'
@@ -8,7 +26,7 @@ class Admin::AffiliatesController < Admin::AdminController
     config.field_search.columns = :id, :name, :display_name, :website
 
     attribute_columns = config.columns.reject do |column|
-      column.association or column.name =~ /(_created_at|_updated_at|agency_id|css_properties|content_type|file_name|_image|json|label|_logo|_mappings|scope_ids|size|use_extended_header|visual_design_json)\z/
+      column.association or HIDDEN_COLUMNS.match?(column.name)
     end.map(&:name)
     attribute_columns << :agency
     attribute_columns.sort!

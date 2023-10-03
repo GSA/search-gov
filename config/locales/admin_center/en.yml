@@ -3,6 +3,10 @@ en:
   admin_center:
     actions:
       toggle_on: 'ON'
+    footer_links: Footer links
+    identifier_links: Identifier links
+    primary_header_links: Primary header links
+    secondary_header_links: Secondary header links
     sites:
       displays:
         sidebar:
@@ -12,6 +16,10 @@ en:
           search_tabs_navigation: Search Tabs Navigation
           setting: Setting
           source: Source
+      links:
+        form:
+          indexed_title: "%{type} title %{index}"
+          indexed_url: "%{type} URL %{index}"
       visual_designs:
         edit:
           preview_button: Preview Redesigned Display
@@ -71,6 +79,10 @@ en:
         header_and_footer:
           header_and_footer: Header and footer
           header_layout: Header layout
+          identifier: Identifier
+          identifier_domain_name: Identifier domain name
+          parent_agency_link: Parent agency link
+          parent_agency_name: Parent agency name
           use_basic_header: Use basic header
           use_extended_header: Use extended header
         image_assets:
@@ -82,3 +94,8 @@ en:
           image_help_text: GIF, JPG or PNG with maximum size of %{max_file_size} KB
           logo: Logo
           mark_for_deletion: Mark %{image_type} for deletion
+        links:
+          add_new: Add new %{type}
+          limit: "(Limit of 3)"
+          title: Title
+          url: URL
