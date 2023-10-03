@@ -16,7 +16,7 @@ interface HealthTopicProps {
   }[];
 }
 
-export const HealthTopics = ({description, title, url, relatedTopics=[], studiesAndTrials=[]}: HealthTopicProps) => {
+export const HealthTopics = ({ description, title, url, relatedTopics=[], studiesAndTrials=[] }: HealthTopicProps) => {
   const i18n = useContext(LanguageContext);
   
   return (
@@ -34,19 +34,19 @@ export const HealthTopics = ({description, title, url, relatedTopics=[], studies
                     <p>{parse(description)}</p>
 
                     {relatedTopics.length > 0 && (
-                    <div className='related-topics'>{i18n.t('searches.medTopic.relatedTopics')}: &nbsp;
-                      {relatedTopics.map(( relatedTopic, i ) => [ i > 0 && ", ",
-                        <a className="usa-link" href={relatedTopic.url} key={i}>{parse(relatedTopic.title)}</a>
-                      ])}
-                    </div>
+                      <div className='related-topics'>{i18n.t('searches.medTopic.relatedTopics')}: &nbsp;
+                        {relatedTopics.map((relatedTopic, count) => [count > 0 && ', ',
+                          <a className="usa-link" href={relatedTopic.url} key={count}>{parse(relatedTopic.title)}</a>
+                        ])}
+                      </div>
                     )}
 
                     {studiesAndTrials.length > 0 && (
-                    <div className='clinical-studies'>Open clinical studies and trials: &nbsp;
-                      {studiesAndTrials.map(( studiesAndTrial, i ) => [ i > 0 && ", ",
-                        <a className="usa-link" href={studiesAndTrial.url} key={i}>{parse(studiesAndTrial.title)}</a>
-                      ])}
-                    </div>
+                      <div className='clinical-studies'>Open clinical studies and trials: &nbsp;
+                        {studiesAndTrials.map((studiesAndTrial, count) => [count > 0 && ', ',
+                          <a className="usa-link" href={studiesAndTrial.url} key={count}>{parse(studiesAndTrial.title)}</a>
+                        ])}
+                      </div>
                     )}
                   </div>
                 </Grid>
