@@ -47,6 +47,8 @@ module ReactHelper
   end
 
   def news_label(search)
+    return if search.query.blank? || search.is_a?(NewsSearch)
+
     affiliate = search.affiliate
     {
       newsAboutQuery: news_about_query(affiliate, search.query),

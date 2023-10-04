@@ -29,7 +29,7 @@ module NewsItemsHelper
   end
 
   def news_items_results(affiliate, search)
-    return [] if search.is_a?(NewsSearch) || search.news_items.blank?
+    return [] if search.news_items.blank?
 
     results = search.news_items&.results
 
