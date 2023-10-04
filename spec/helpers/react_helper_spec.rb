@@ -124,5 +124,20 @@ describe ReactHelper do
           with('SearchResultsLayout', hash_including(relatedSearches: [related_search]))
       end
     end
+
+    context 'when affiliate has a non-blank external_tracking_code' do
+      let(:external_tracking_code) { '<script>var foo;</script>' }
+
+      before do
+        allow(affiliate).to receive(:external_tracking_code).and_return(external_tracking_code)
+      end
+
+      it 'returns the external_tracking_code' do
+        helper.search_results_layout(search, {}, true, affiliate)
+
+        expect(helper).to have_received(:react_component).
+          with('SearchResultsLayout', hash_including(externalTrackingCode: external_tracking_code))
+      end
+    end
   end
 end

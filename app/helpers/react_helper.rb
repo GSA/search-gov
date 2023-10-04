@@ -13,6 +13,7 @@ module ReactHelper
       relatedSearches: related_searches(search),
       relatedSites: related_sites(affiliate.connections, search.query),
       resultsData: search.normalized_results,
+      externalTrackingCode: external_tracking_code(affiliate),
       translations: translations(affiliate.locale),
       vertical: vertical
     }
@@ -68,6 +69,12 @@ module ReactHelper
         link: search_url(affiliate: connection.connected_affiliate.name, query: query)
       }
     end
+  end
+
+  def external_tracking_code(affiliate)
+    return if affiliate.external_tracking_code.blank?
+
+    affiliate.external_tracking_code
   end
 
   def navigation_links(search, search_params)
