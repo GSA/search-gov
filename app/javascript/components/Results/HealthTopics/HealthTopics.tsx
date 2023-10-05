@@ -25,7 +25,11 @@ export const HealthTopics = ({ description, title, url, relatedTopics=[], studie
         <Grid row gap="md">
           <Grid col={true}>
             <GridContainer className='health-topic-title'>
-              <a href={url}>{parse(title)}</a><img src={`/assets/legacy/medline.${i18n.locale}.png`}></img>
+              <a href={url}>{parse(title)}</a>
+              <a href={i18n.t('searches.medTopic.homepageUrl')} className={`logo-${i18n.locale}`}>
+                <span className='health-med-topic-title'>MedlinePlus</span>
+                <span className='health-med-topic-image'></span>
+              </a>
             </GridContainer>
             <GridContainer className='health-topic-data'>
               <Grid row gap="md">
