@@ -27,3 +27,5 @@ Rails.application.config.assets.precompile += Dir.entries("#{Rails.root}/app/ass
 Rails.application.config.assets.precompile += %w( uswds.css )
 Rails.application.config.assets.precompile += %w( uswds_override.css )
 Rails.application.config.assets.precompile += %w( uswds.js )
+# Added CSS for Redesigned SERP for image url path
+Rails.application.config.assets.precompile += %w( searches_redesign.css )
