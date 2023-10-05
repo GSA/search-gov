@@ -5,7 +5,7 @@ http_interactions:
     uri: http://localhost:8081/api/v1/collections/search?handles=searchgov&language=en&offset=0&query=exciting%20site:www.epa.gov%20site:archive.epa.gov&size=20
     body:
       encoding: US-ASCII
-      string: ''
+      base64_string: ''
     headers:
       User-Agent:
       - USASearch
@@ -20,6 +20,65 @@ http_interactions:
     headers: {}
     body:
       encoding: UTF-8
-      string: ''
+      base64_string: ''
   recorded_at: Tue, 07 Sep 2021 16:19:58 GMT
-recorded_with: VCR 6.0.0
+- request:
+    method: post
+    uri: https://api.datadoghq.com/api/v1/events?api_key=<DATADOG_API_KEY>
+    body:
+      encoding: UTF-8
+      base64_string: |
+        eyJtc2dfdGV4dCI6IiUlJVxuIyMjICoqQmFja3RyYWNlKipcbmBgYGBcbmxp
+        Yi9mYXJhZGF5X21pZGRsZXdhcmUvZXhjZXB0aW9uX25vdGlmaWVyLnJiOjE0
+        OmluIGBjYWxsJ1xuYXBwL2VuZ2luZXMvY2FjaGVkX3NlYXJjaF9hcGlfY29u
+        bmVjdGlvbi5yYjozNjppbiBgZ2V0X2Zyb21fYXBpJ1xuYXBwL2VuZ2luZXMv
+        Y2FjaGVkX3NlYXJjaF9hcGlfY29ubmVjdGlvbi5yYjoyODppbiBgZ2V0J1xu
+        YGBgYFxuX19fXG4lJSUiLCJkYXRlX2hhcHBlbmVkIjoxNjk2NTMwMzExLCJt
+        c2dfdGl0bGUiOiIgKEZhcmFkYXk6OkVycm9yOjpDb25uZWN0aW9uRmFpbGVk
+        KSBcIlwiIiwicHJpb3JpdHkiOiJub3JtYWwiLCJwYXJlbnQiOm51bGwsInRh
+        Z3MiOlsiaTE0eSJdLCJhZ2dyZWdhdGlvbl9rZXkiOiJbXCIgKEZhcmFkYXk6
+        OkVycm9yOjpDb25uZWN0aW9uRmFpbGVkKSBcXFwiXFxcIlwiXSIsImFsZXJ0
+        X3R5cGUiOiJlcnJvciIsImV2ZW50X3R5cGUiOm51bGwsInNvdXJjZV90eXBl
+        X25hbWUiOm51bGwsInRpdGxlIjoiIChGYXJhZGF5OjpFcnJvcjo6Q29ubmVj
+        dGlvbkZhaWxlZCkgXCJcIiIsInRleHQiOiIlJSVcbiMjIyAqKkJhY2t0cmFj
+        ZSoqXG5gYGBgXG5saWIvZmFyYWRheV9taWRkbGV3YXJlL2V4Y2VwdGlvbl9u
+        b3RpZmllci5yYjoxNDppbiBgY2FsbCdcbmFwcC9lbmdpbmVzL2NhY2hlZF9z
+        ZWFyY2hfYXBpX2Nvbm5lY3Rpb24ucmI6MzY6aW4gYGdldF9mcm9tX2FwaSdc
+        bmFwcC9lbmdpbmVzL2NhY2hlZF9zZWFyY2hfYXBpX2Nvbm5lY3Rpb24ucmI6
+        Mjg6aW4gYGdldCdcbmBgYGBcbl9fX1xuJSUlIiwiaG9zdCI6IllvZ2VzaEEt
+        TUJQLmxvY2FsIiwiZGV2aWNlIjpudWxsfQ==
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - dogapi-rb/1.45.0 (ruby 2.7.5; os darwin21; arch x86_64)
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      Date:
+      - Thu, 05 Oct 2023 18:25:11 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '172'
+      Connection:
+      - keep-alive
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      base64_string: |
+        eyJzdGF0dXMiOiJlcnJvciIsImNvZGUiOjQwMywiZXJyb3JzIjpbIkZvcmJp
+        ZGRlbiJdLCJzdGF0dXNwYWdlIjoie3sgLlZhbHVlcy5zdGF0dXNfcGFnZV9s
+        aW5rIH19IiwidHdpdHRlciI6Imh0dHA6Ly90d2l0dGVyLmNvbS9kYXRhZG9n
+        b3BzIiwiZW1haWwiOiJzdXBwb3J0QGRhdGFkb2docS5jb20ifQ==
+  recorded_at: Thu, 05 Oct 2023 18:25:11 GMT
+recorded_with: VCR 6.2.0

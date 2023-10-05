@@ -7,7 +7,7 @@ import { BestBets } from './BestBets';
 import { NoResults } from './NoResults/NoResults';
 import { LanguageContext } from '../../contexts/LanguageContext';
 
-// import { HealthTopics } from './HealthTopics/HealthTopics';
+import { HealthTopics } from './HealthTopics/HealthTopics';
 // import { ImagesPage } from './ImagesPage/ImagesPage';
 // import { RssNews } from './RssNews/RssNews';
 // import { Videos } from './Videos/Videos';
@@ -45,7 +45,20 @@ interface ResultsProps {
         title: string;
         url: string;
       }[];
-    }
+    };
+    healthTopic?: {
+      description: string;
+      title: string;
+      url: string;
+      relatedTopics?: {
+        title: string;
+        url: string;
+      }[];
+      studiesAndTrials?: {
+        title: string;
+        url: string;
+      }[];
+    };
   } | null;
   unboundedResults: boolean;
   totalPages: number | null;
@@ -69,8 +82,11 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
           {/* Jobs - To Do as part of backend integration */}
           {/* <Jobs /> */}
           
-          {/* Health topics - To Do as part of backend integration */}
-          {/* <HealthTopics /> */}
+          {additionalResults?.healthTopic && 
+            <HealthTopics 
+              {...additionalResults.healthTopic}
+            />
+          }
 
           {/* Image page Components - To do with its integration task */}
           {/* <ImagesPage /> */}
