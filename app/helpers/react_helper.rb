@@ -8,10 +8,11 @@ module ReactHelper
       currentLocale: affiliate.locale,
       fontsAndColors: affiliate.visual_design_json,
       navigationLinks: navigation_links(search, params),
+      newsLabel: news_label(search),
       noResultsMessage: no_result_message(search),
       params: params,
       relatedSearches: related_searches(search),
-      relatedSites: related_sites(affiliate.connections, search.query),
+      relatedSites: related_sites(search),
       resultsData: search.normalized_results,
       externalTrackingCode: external_tracking_code(affiliate),
       translations: translations(affiliate.locale),
@@ -46,6 +47,16 @@ module ReactHelper
     end
   end
 
+  def news_label(search)
+    return if search.query.blank? || search.is_a?(NewsSearch)
+
+    affiliate = search.affiliate
+    {
+      newsAboutQuery: news_about_query(affiliate, search.query),
+      results: news_items_results(affiliate, search)
+    }
+  end
+
   def no_result_message(search)
     return unless search.results.blank? && search.query.present?
 
@@ -62,11 +73,12 @@ module ReactHelper
     alert.slice('text', 'title')
   end
 
-  def related_sites(connections, query)
+  def related_sites(search)
+    connections = search.affiliate.connections
     connections.map do |connection|
       {
         label: connection.label,
-        link: search_url(affiliate: connection.connected_affiliate.name, query: query)
+        link: search_url(affiliate: connection.connected_affiliate.name, query: search.query)
       }
     end
   end
