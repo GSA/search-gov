@@ -82,7 +82,6 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
           {/* Jobs - To Do as part of backend integration */}
           {/* <Jobs /> */}
           
-          {/* Health topics - To Do as part of backend integration */}
           {/* <HealthTopics /> */}
           {additionalResults?.healthTopic && 
             <HealthTopics 
