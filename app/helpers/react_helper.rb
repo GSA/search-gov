@@ -8,14 +8,14 @@ module ReactHelper
       currentLocale: affiliate.locale,
       fontsAndColors: affiliate.visual_design_json,
       navigationLinks: navigation_links(search, params),
+      newsLabel: news_label(search),
       noResultsMessage: no_result_message(search),
       params: params,
       relatedSearches: related_searches(search),
       relatedSites: related_sites(search),
       resultsData: search.normalized_results,
       translations: translations(affiliate.locale),
-      vertical: vertical,
-      newsLabel: news_label(search)
+      vertical: vertical
     }
 
     react_component('SearchResultsLayout', data.compact_blank)
