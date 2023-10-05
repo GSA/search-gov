@@ -129,7 +129,7 @@ describe ReactHelper do
       let(:external_tracking_code) { '<script>var foo;</script>' }
 
       before do
-        allow(affiliate).to receive(:external_tracking_code).and_return(external_tracking_code)
+        affiliate.external_tracking_code = external_tracking_code
       end
 
       it 'returns the external_tracking_code' do

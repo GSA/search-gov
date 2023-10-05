@@ -72,8 +72,6 @@ module ReactHelper
   end
 
   def external_tracking_code(affiliate)
-    return if affiliate.external_tracking_code.blank?
-
     affiliate.external_tracking_code
   end
 
