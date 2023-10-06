@@ -5,6 +5,10 @@ HIDDEN_COLUMNS = /(_created_at|
                    agency_id|
                    css_properties|
                    content_type|
+                   display_created_date_on_search_results|
+                   display_filetype_on_search_results|
+                   display_image_on_search_results|
+                   display_updated_date_on_search_results|
                    file_name|
                    identifier_domain_name|
                    _image|

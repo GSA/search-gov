@@ -16,9 +16,14 @@ class Sites::VisualDesignsController < Sites::SetupSiteController
 
   private
 
+  # rubocop:disable Metrics/MethodLength
   def site_params
     params.require(:site).permit(
       :use_extended_header,
+      :display_image_on_search_results,
+      :display_filetype_on_search_results,
+      :display_created_date_on_search_results,
+      :display_updated_date_on_search_results,
       :favicon_url,
       :header_logo,
       :identifier_logo,
@@ -40,6 +45,7 @@ class Sites::VisualDesignsController < Sites::SetupSiteController
       identifier_links_attributes: %i[title url position id _destroy]
     )
   end
+  # rubocop:enable Metrics/MethodLength
 
   def color_params
     Affiliate::DEFAULT_COLORS.keys
