@@ -138,11 +138,7 @@ const getAffiliateTitle = (): string => {
 };
 
 const isBasicHeader = (extendedHeader: boolean): boolean => {
-  if (extendedHeader) {
-    return false;
-  }
-
-  return true;
+  return !extendedHeader;
 };
 
 const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [], extendedHeader, fontsAndColors }: SearchResultsLayoutProps) => {
