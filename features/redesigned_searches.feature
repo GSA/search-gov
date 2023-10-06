@@ -206,3 +206,48 @@ Feature: Search - redesign
     When I am on es.agency.gov's "Noticias-1" news search page
     Then I should see "Generado por Search.gov"
     And I should see at least "5" web search results
+  
+  Scenario: Searchers see English Medline Govbox
+    Given the following Affiliates exist:
+      | display_name | name        | contact_email | first_name | last_name | domains | is_medline_govbox_enabled |
+      | english site | english-nih | aff@bar.gov   | John       | Bar       | nih.gov | true                      |
+    And the following Medline Topics exist:
+      | medline_title                        | medline_tid | locale | summary_html                                                     |
+      | Hippopotomonstrosesquippedaliophobia | 67890       | es     | Hippopotomonstrosesquippedaliophobia y otros miedos irracionales |
+    When I am on english-nih's search page
+    And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
+    And I press "Search" within the search box
+    Then I should not see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales"
+
+    Given the following Medline Topics exist:
+      | medline_title                        | medline_tid | locale | summary_html                                                     |
+      | Hippopotomonstrosesquippedaliophobia | 12345       | en     | Hippopotomonstrosesquippedaliophobia and Other Irrational Fears  |
+    And the following Related Medline Topics for "Hippopotomonstrosesquippedaliophobia" in English exist:
+      | medline_title | medline_tid | url                                                                          |
+      | Hippo1        | 24680       | https://www.nlm.nih.gov/medlineplus/Hippopotomonstrosesquippedaliophobia.html |
+    When I am on english-nih's search page
+    And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
+    And I press "Search" within the search box
+    Then I should see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears" within the med topic govbox
+    And I should see a link to "Hippo1" with url for "https://www.nlm.nih.gov/medlineplus/Hippopotomonstrosesquippedaliophobia.html"
+
+  @javascript @a11y @a11y_wip
+  Scenario: Searchers see Spanish Medline Govbox
+    Given the following Affiliates exist:
+      | display_name | name        | contact_email | first_name | last_name | domains | is_medline_govbox_enabled | locale |
+      | spanish site | spanish-nih | aff@bar.gov   | John       | Bar       | nih.gov | true                      | es     |
+    And the following Medline Topics exist:
+      | medline_title                        | medline_tid | locale | summary_html                                                     |
+      | Hippopotomonstrosesquippedaliophobia | 12345       | en     | Hippopotomonstrosesquippedaliophobia and Other Irrational Fears  |
+    When I am on spanish-nih's search page
+    And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
+    And I press "Buscar" within the search box
+    Then I should not see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears"
+
+    Given the following Medline Topics exist:
+      | medline_title                        | medline_tid | locale | summary_html                                                     |
+      | Hippopotomonstrosesquippedaliophobia | 67890       | es     | Hippopotomonstrosesquippedaliophobia y otros miedos irracionales |
+    When I am on spanish-nih's search page
+    And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
+    And I press "Buscar" within the search box
+    Then I should see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales" within the med topic govbox

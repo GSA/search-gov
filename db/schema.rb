@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_29_170934) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_27_213029) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -97,6 +97,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_170934) do
     t.boolean "use_redesigned_results_page", default: false
     t.json "visual_design_json"
     t.boolean "use_extended_header", default: true, null: false
+    t.string "identifier_domain_name"
+    t.string "parent_agency_name"
+    t.string "parent_agency_link"
+    t.boolean "display_image_on_search_results", default: false, null: false
+    t.boolean "display_filetype_on_search_results", default: false, null: false
+    t.boolean "display_created_date_on_search_results", default: false, null: false
+    t.boolean "display_updated_date_on_search_results", default: false, null: false
     t.index ["name"], name: "index_affiliates_on_name", unique: true
   end
 
@@ -366,6 +373,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_170934) do
     t.string "inferred_country_code"
     t.boolean "is_azure_supported", default: false
     t.index ["code"], name: "index_languages_on_code", unique: true
+  end
+
+  create_table "links", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+    t.integer "position"
+    t.string "type"
+    t.string "title"
+    t.string "url"
+    t.integer "affiliate_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "med_related_topics", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|

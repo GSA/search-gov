@@ -121,6 +121,14 @@ interface SearchResultsLayoutProps {
     headerLinksFontFamily: string;
   };
   relatedSearches?: { label: string; link: string; }[];
+  newsLabel?: {
+    newsAboutQuery: string;
+    results: {
+      title: string;
+      feedName: string,
+      publishedAt: string
+    }[] | null;
+  } | null;
 }
 
 // To be updated
