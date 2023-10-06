@@ -1,6 +1,7 @@
 !!!strict
 %html
   %head
+    = render "/shared/google_tag_manager_script"
     %meta{ charset: 'UTF-8' }
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
     = render_robots_meta_tag
@@ -14,4 +15,5 @@
     = stylesheet_link_tag 'searches_redesign'
   %body
     #main-content= yield
+    = render "/shared/google_tag_manager_noscript"
     = render "/shared/affiliate_google_analytics"
