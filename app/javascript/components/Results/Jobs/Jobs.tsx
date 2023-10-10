@@ -20,28 +20,29 @@ interface JobsProps {
 }
 
 const numberToCurrency = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
+  style: 'currency',
+  currency: 'USD'
 });
 
-function formatSalary(job: any) {
-    if (job.minimumPay === null || job.minimumPay === 0) {
-      return;
-    }
-    let max = job.maximumPay || 0;
-    let min_str = numberToCurrency.format(job.minimumPay);
-    let max_str = numberToCurrency.format(job.maximumPay);
-    switch (job.rateIntervalCode) {
-      case 'Per Year' || 'Per Hour':
-        let period = job.rateIntervalCode === 'Per Year' ? 'yr' : 'hr';
-        let plus = max > job.minimumPay ? '+' : '';
-        return min_str + plus + '/' + period;
-      case 'Without Compensation':
-        return null;
-      default:
-        let with_max = max > job.minimumPay ? '-' + max_str + ' ' : ' ';
-        return min_str + with_max + job.rateIntervalCode;
-    }
+// eslint-disable-next-line complexity
+const formatSalary = (job: { minimumPay: number, maximumPay: number, rateIntervalCode: string }) => {
+  if (job.minimumPay === null || job.minimumPay === 0) {
+    return;
+  }
+  const max = job.maximumPay || 0;
+  const minStr = numberToCurrency.format(job.minimumPay);
+  const maxStr = numberToCurrency.format(job.maximumPay);
+  switch (job.rateIntervalCode) {
+    case 'Per Year' || 'Per Hour':
+      const period = job.rateIntervalCode === 'Per Year' ? 'yr' : 'hr';
+      const plus = max > job.minimumPay ? '+' : '';
+      return `${minStr}${plus}/${period}`;
+    case 'Without Compensation':
+      return null;
+    default:
+      const withMax = max > job.minimumPay ? '-' + maxStr + ' ' : ' ';
+      return minStr + withMax + job.rateIntervalCode;
+  }
 }
 
 export const Jobs = ({ jobs=[] }: JobsProps) => {

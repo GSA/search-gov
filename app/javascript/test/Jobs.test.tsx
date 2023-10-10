@@ -115,7 +115,7 @@ describe('Jobs component', () => {
   });
 
   it('shows Jobs details', () => {
-    const jobsProps2 = {jobs: [
+    const jobsProps2 = { jobs: [
       {
         positionTitle: 'Contract Specialist 5',
         positionUri: 'https://www.usajobs.gov/GetJob/ViewDetails/690037300',
@@ -126,7 +126,7 @@ describe('Jobs component', () => {
         rateIntervalCode: 'Per Year',
         applicationCloseDate: 'September 24, 2023'
       }
-    ]};
+    ] };
 
     render(
       <Jobs {...jobsProps2}/>
