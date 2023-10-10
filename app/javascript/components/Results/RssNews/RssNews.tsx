@@ -3,7 +3,7 @@ import Moment from 'react-moment';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
 import parse from 'html-react-parser';
 interface RssNewsProps {
-  query: string;
+  newsLabel: string;
   news?: {
     title: string;
     link: string;
@@ -12,7 +12,7 @@ interface RssNewsProps {
   }[];
 }
 
-export const RssNews = ({ query, news=[] }: RssNewsProps) => {
+export const RssNews = ({ newsLabel, news=[] }: RssNewsProps) => {
   return (
     <>
       {news?.length > 0 && (
@@ -20,7 +20,7 @@ export const RssNews = ({ query, news=[] }: RssNewsProps) => {
           <GridContainer className='news-title-wrapper'>
             <Grid row gap="md">
               <h2 className='news-title-wrapper-label'>
-                News about {query}
+                {newsLabel}
               </h2>
             </Grid>
           </GridContainer>

@@ -85,10 +85,11 @@ interface ResultsProps {
   unboundedResults: boolean;
   totalPages: number | null;
   vertical: string;
+  newsAboutQuery?: string;
 }
 
 // eslint-disable-next-line complexity
-export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical }: ResultsProps) => {
+export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical, newsAboutQuery = '' }: ResultsProps) => {
   const i18n = useContext(LanguageContext);
   const URL_LENGTH = 80;
 
@@ -106,7 +107,7 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
           {additionalResults?.newNews && 
             <RssNews 
               news={additionalResults.newNews} 
-              query={query}
+              newsLabel={newsAboutQuery}
             />
           }
 
@@ -177,7 +178,7 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
           {additionalResults?.oldNews && 
             <RssNews 
               news={additionalResults.oldNews} 
-              query={query}
+              newsLabel={newsAboutQuery}
             />
           }
         </div>

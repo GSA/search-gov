@@ -14,7 +14,7 @@ describe('Rss News component', () => {
         publishedAt: '2023-08-17'
       }
     ],
-    query: 'gsa'
+    newsLabel: 'News about gsa'
   };
 
   it('renders rss news component', () => {
