@@ -111,7 +111,6 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
             />
           }
 
-          {/* Jobs */}
           {additionalResults?.jobs && 
             <Jobs 
               jobs={additionalResults.jobs}
