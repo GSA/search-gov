@@ -16,7 +16,7 @@ const fontsAndColors = {
 };
 
 const newsLabel = {
-  newsAboutQuery: "News about GSA",
+  newsAboutQuery: 'News about GSA',
   results: [{
     title: 'title 1',
     feedName: 'feedName 1',
