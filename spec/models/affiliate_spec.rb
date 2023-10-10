@@ -28,6 +28,26 @@ describe Affiliate do
       end
 
       it do
+        is_expected.to have_db_column(:display_image_on_search_results).of_type(:boolean).
+          with_options(default: false, null: false)
+      end
+
+      it do
+        is_expected.to have_db_column(:display_filetype_on_search_results).of_type(:boolean).
+          with_options(default: false, null: false)
+      end
+
+      it do
+        is_expected.to have_db_column(:display_created_date_on_search_results).of_type(:boolean).
+          with_options(default: false, null: false)
+      end
+
+      it do
+        is_expected.to have_db_column(:display_updated_date_on_search_results).of_type(:boolean).
+          with_options(default: false, null: false)
+      end
+
+      it do
         is_expected.to have_db_column(:use_extended_header).of_type(:boolean).
           with_options(default: true, null: false)
       end

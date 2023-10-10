@@ -9,6 +9,11 @@ module VisualDesignHelper
     end
   end
 
+  def show_results_format?(site)
+    (site.gets_i14y_results || site.gets_blended_results || site.search_engine == 'SearchGov') &&
+      site.search_engine != 'BingV7'
+  end
+
   def render_logo_alt_text(logo_metadata)
     if logo_metadata.present? && logo_metadata.key?('alt_text')
       logo_metadata['alt_text']

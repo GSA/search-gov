@@ -126,3 +126,10 @@ russian_affiliate:
   display_name: Russian Affiliate
   name: russian_affiliate
   locale: ru
+
+blended_affiliate:
+  <<: *DEFAULTS
+  search_engine: SearchGov
+  display_name: Blended Affiliate
+  name: blended_affiliate
+  gets_blended_results: true

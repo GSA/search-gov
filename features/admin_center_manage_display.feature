@@ -466,7 +466,19 @@ Feature: Manage Display
   Scenario: Editing the Visual Design Settings when "Show Redesign Display Settings" is true
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | show_redesign_display_settings |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | true                           |
+      | bing site    | agency.gov | john@agency.gov | John       | Bar       | true                           |
+    And I am logged in with email "john@agency.gov"
+    When I go to the agency.gov's Visual Design page
+    Then I should see "Visual design (new)"
+    And the page body should contain "These settings are for preview purposes only."
+    And I should see "Fonts & Colors" within the navigation tabs
+    And I should not see "Results Format" within the navigation tabs
+    And I should see "Image Assets" within the navigation tabs
+    And I should see "Header & Footer" within the navigation tabs
+
+    Given the following SearchGov Affiliates exist:
+      | display_name    | name       | contact_email   | first_name | last_name | show_redesign_display_settings |
+      | searchgov site  | agency.gov | john@agency.gov | John       | Bar       | true                           |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Visual Design page
     Then I should see "Visual design (new)"
@@ -507,6 +519,21 @@ Feature: Manage Display
     Then I should see "You have updated your visual design settings"
     And the "Banner background color" field should contain "#F0F0F0"
     And the "Navigation text color" field should contain "#F0F0F0"
+
+    When I follow "Results Format" within the navigation tabs
+    Then I should see "Display image on search results?"
+    Then I should see "Display filetype on search results?"
+    Then I should see "Display created date on search results?"
+    Then I should see "Display updated date on search results?"
+    And I switch on "display image on search results"
+    And I switch on "display filetype on search results"
+    
+    When I submit the form by pressing "Save"
+    Then I should see "You have updated your visual design settings"
+    And the "display image on search results" should be switched on
+    And the "display filetype on search results" should be switched on
+    And the "display created date on search results" should be switched off
+    And the "display updated date on search results" should be switched off
 
     When I follow "Image Assets" within the navigation tabs
     Then I should see "Favicon URL"
