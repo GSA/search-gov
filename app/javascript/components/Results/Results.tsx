@@ -91,6 +91,7 @@ interface ResultsProps {
 export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical }: ResultsProps) => {
   const i18n = useContext(LanguageContext);
   const URL_LENGTH = 80;
+
   return (
     <>
       <div className='search-result-wrapper'>
@@ -105,15 +106,14 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
           {additionalResults?.newNews && 
             <RssNews 
               news={additionalResults.newNews} 
-              recommendedBy={additionalResults.recommendedBy}
+              query={query}
             />
           }
 
           {/* Jobs */}
           {additionalResults?.jobs && 
             <Jobs 
-              jobs={additionalResults.jobs} 
-              recommendedBy={additionalResults.recommendedBy}
+              jobs={additionalResults.jobs}
             />
           }
           
@@ -177,7 +177,7 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
           {additionalResults?.oldNews && 
             <RssNews 
               news={additionalResults.oldNews} 
-              recommendedBy={additionalResults.recommendedBy}
+              query={query}
             />
           }
         </div>

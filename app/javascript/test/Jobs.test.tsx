@@ -4,6 +4,10 @@ import React from 'react';
 
 import { Jobs } from '../components/Results/Jobs/Jobs';
 
+jest.mock('i18n-js', () => {
+  return jest.requireActual('i18n-js/dist/require/index');
+});
+
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
   value: jest.fn().mockImplementation((query) => ({
@@ -68,11 +72,40 @@ describe('Jobs component', () => {
         organizationName: 'Office of Acquisition and Logistics 5',
         minimumPay: 122000,
         maximumPay: 150000,
+        rateIntervalCode: 'Per Year',
+        applicationCloseDate: 'September 24, 2023'
+      },
+      {
+        positionTitle: 'Contract Specialist 6',
+        positionUri: 'https://www.usajobs.gov/GetJob/ViewDetails/690037300',
+        positionLocationDisplay: 'Multiple Locations',
+        organizationName: 'Office of Acquisition and Logistics 5',
+        minimumPay: 122000,
+        maximumPay: 150000,
+        rateIntervalCode: 'Per Hour',
+        applicationCloseDate: 'September 24, 2023'
+      },
+      {
+        positionTitle: 'Contract Specialist 7',
+        positionUri: 'https://www.usajobs.gov/GetJob/ViewDetails/690037300',
+        positionLocationDisplay: 'Multiple Locations',
+        organizationName: 'Office of Acquisition and Logistics 5',
+        minimumPay: 122000,
+        maximumPay: 150000,
+        rateIntervalCode: 'Without Compensation',
+        applicationCloseDate: 'September 24, 2023'
+      },
+      {
+        positionTitle: 'Contract Specialist 8',
+        positionUri: 'https://www.usajobs.gov/GetJob/ViewDetails/690037300',
+        positionLocationDisplay: 'Multiple Locations',
+        organizationName: 'Office of Acquisition and Logistics 5',
+        minimumPay: 0,
+        maximumPay: 150000,
         rateIntervalCode: 'PA',
         applicationCloseDate: 'September 24, 2023'
       }
-    ],
-    recommendedBy: 'gsa'
+    ]
   };
 
   it('renders Jobs component', () => {
@@ -82,10 +115,24 @@ describe('Jobs component', () => {
   });
 
   it('shows Jobs details', () => {
+    const jobsProps2 = {jobs: [
+      {
+        positionTitle: 'Contract Specialist 5',
+        positionUri: 'https://www.usajobs.gov/GetJob/ViewDetails/690037300',
+        positionLocationDisplay: 'Multiple Locations',
+        organizationName: 'Office of Acquisition and Logistics 5',
+        minimumPay: 122000,
+        maximumPay: 150000,
+        rateIntervalCode: 'Per Year',
+        applicationCloseDate: 'September 24, 2023'
+      }
+    ]};
+
     render(
-      <Jobs {...jobsProps}/>
+      <Jobs {...jobsProps2}/>
     );
-    expect(screen.getByText('Contract Specialist')).toBeInTheDocument();
-    expect(screen.getByText('Office of Acquisition and Logistics')).toBeInTheDocument();
+    expect(screen.getByText('$122,000.00+/yr')).toBeInTheDocument();
+    expect(screen.getByText('Contract Specialist 5')).toBeInTheDocument();
+    expect(screen.getByText('Office of Acquisition and Logistics 5')).toBeInTheDocument();
   });
 });

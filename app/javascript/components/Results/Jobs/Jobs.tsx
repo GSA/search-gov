@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
 import { useCollapse } from 'react-collapsed';
+import { LanguageContext } from '../../../contexts/LanguageContext';
 
 import './Jobs.css';
 
@@ -15,11 +16,37 @@ type jobType = {
   applicationCloseDate: string;
 }[];
 interface JobsProps {
-  recommendedBy: string;
   jobs?: jobType;
 }
 
-export const Jobs = ({ recommendedBy, jobs=[] }: JobsProps) => {
+const numberToCurrency = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+});
+
+function formatSalary(job: any) {
+    if (job.minimumPay === null || job.minimumPay === 0) {
+      return;
+    }
+    let max = job.maximumPay || 0;
+    let min_str = numberToCurrency.format(job.minimumPay);
+    let max_str = numberToCurrency.format(job.maximumPay);
+    switch (job.rateIntervalCode) {
+      case 'Per Year' || 'Per Hour':
+        let period = job.rateIntervalCode === 'Per Year' ? 'yr' : 'hr';
+        let plus = max > job.minimumPay ? '+' : '';
+        return min_str + plus + '/' + period;
+      case 'Without Compensation':
+        return null;
+      default:
+        let with_max = max > job.minimumPay ? '-' + max_str + ' ' : ' ';
+        return min_str + with_max + job.rateIntervalCode;
+    }
+}
+
+export const Jobs = ({ jobs=[] }: JobsProps) => {
+  const i18n = useContext(LanguageContext);
+
   const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
   const MAX_JOBS_IN_COLLAPSE_VIEW = 3;
   let lessJobs = jobs;
@@ -38,12 +65,12 @@ export const Jobs = ({ recommendedBy, jobs=[] }: JobsProps) => {
             <Grid row gap="md">
               <Grid col={true}>
                 <h2 className='jobs-title-wrapper-label'>
-                  Job Openings at {recommendedBy}
+                  {i18n.t('federalJobOpenings')}
                 </h2>
               </Grid>
               <Grid col={true} className='jobs-logo-wrapper'>
                 <a className="usajobs-logo" href="https://www.usajobs.gov/">
-                  <img alt="USAJobs.gov" src="https://d15vqlr7iz6e8x.cloudfront.net/assets/searches/usajobs-bab6b21076d3a8fdf0808ddbde43f24858db74b226057f19daa10ef3b3fba090.jpg" />
+                  <img alt="USAJobs.gov" />
                 </a>
               </Grid>
             </Grid>
@@ -65,7 +92,7 @@ export const Jobs = ({ recommendedBy, jobs=[] }: JobsProps) => {
                       <p>{job.organizationName}</p>
                       <ul className="list-horizontal">
                         <li>{job.positionLocationDisplay}</li>
-                        <li>{job.minimumPay}-{job.maximumPay} {job.rateIntervalCode}</li>
+                        {formatSalary(job) && (<li>{formatSalary(job)}</li>)}
                         <li>Apply by {job.applicationCloseDate}</li>
                       </ul>
                     </div>
@@ -94,7 +121,7 @@ export const Jobs = ({ recommendedBy, jobs=[] }: JobsProps) => {
                           <p>{job.organizationName}</p>
                           <ul className="list-horizontal">
                             <li>{job.positionLocationDisplay}</li>
-                            <li>{job.minimumPay}-{job.maximumPay} {job.rateIntervalCode}</li>
+                            {formatSalary(job) && (<li>{formatSalary(job)}</li>)}
                             <li>Apply by {job.applicationCloseDate}</li>
                           </ul>
                         </div>
@@ -126,7 +153,7 @@ export const Jobs = ({ recommendedBy, jobs=[] }: JobsProps) => {
                 <div className='result-title'>
                   <a href="https://www.usajobs.gov/Search/Results?hp=public" className='result-title-link more-jobs-title-link'>
                     <h2 className='result-title-label'>
-                      More federal job openings on USAJobs.gov
+                      {i18n.t('searches.moreFederalJobOpenings')}
                     </h2>
                   </a>
                 </div>
