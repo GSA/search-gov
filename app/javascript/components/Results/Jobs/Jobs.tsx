@@ -45,7 +45,7 @@ const formatSalary = (job: { minimumPay: number, maximumPay: number, rateInterva
     return minStr + withMax + job.rateIntervalCode;
   }
   }
-}
+};
 
 export const Jobs = ({ jobs=[] }: JobsProps) => {
   const i18n = useContext(LanguageContext);
