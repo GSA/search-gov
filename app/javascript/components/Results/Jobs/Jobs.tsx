@@ -33,15 +33,17 @@ const formatSalary = (job: { minimumPay: number, maximumPay: number, rateInterva
   const minStr = numberToCurrency.format(job.minimumPay);
   const maxStr = numberToCurrency.format(job.maximumPay);
   switch (job.rateIntervalCode) {
-    case 'Per Year' || 'Per Hour':
+    case 'Per Year' || 'Per Hour': {
       const period = job.rateIntervalCode === 'Per Year' ? 'yr' : 'hr';
       const plus = max > job.minimumPay ? '+' : '';
       return `${minStr}${plus}/${period}`;
+    }
     case 'Without Compensation':
       return null;
-    default:
-      const withMax = max > job.minimumPay ? '-' + maxStr + ' ' : ' ';
+    default: {
+      const withMax = max > job.minimumPay ? `-${maxStr} `: ' ';
       return minStr + withMax + job.rateIntervalCode;
+    }
   }
 }
 
