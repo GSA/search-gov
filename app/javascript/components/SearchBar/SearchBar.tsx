@@ -5,6 +5,7 @@ import { VerticalNav } from './../VerticalNav/VerticalNav';
 // import { Alert } from './../Alert/Alert';
 import { getUriWithParam } from '../../utils';
 import { LanguageContext } from '../../contexts/LanguageContext';
+import { NavigationLink } from '../SearchResultsLayout';
 
 import './SearchBar.css';
 
@@ -13,9 +14,10 @@ const logoImg = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vc
 interface SearchBarProps {
   query?: string;
   relatedSites?: {label: string, link: string}[];
+  navigationLinks: NavigationLink[];
 }
 
-export const SearchBar = ({ query = '', relatedSites = [] }: SearchBarProps) => {
+export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [] }: SearchBarProps) => {
   const [searchQuery, setSearchQuery] = useState(query);
   const searchUrlParam = 'query';
 
@@ -63,7 +65,7 @@ export const SearchBar = ({ query = '', relatedSites = [] }: SearchBarProps) => 
         
         <Grid row>
           <Grid tablet={{ col: true }}>
-            <VerticalNav relatedSites={relatedSites} />
+            <VerticalNav relatedSites={relatedSites} navigationLinks={navigationLinks} />
           </Grid>
         </Grid>
         
