@@ -5,7 +5,7 @@ import { LanguageContext } from '../../../contexts/LanguageContext';
 
 import './Jobs.css';
 
-type jobType = {
+type Job = {
   positionTitle: string;
   positionUri: string;
   positionLocationDisplay: string;
@@ -16,7 +16,7 @@ type jobType = {
   applicationCloseDate: string;
 }[];
 interface JobsProps {
-  jobs?: jobType;
+  jobs?: Job;
 }
 
 const numberToCurrency = new Intl.NumberFormat('en-US', {
@@ -26,25 +26,19 @@ const numberToCurrency = new Intl.NumberFormat('en-US', {
 
 // eslint-disable-next-line complexity
 const formatSalary = (job: { minimumPay: number, maximumPay: number, rateIntervalCode: string }) => {
-  if (job.minimumPay === null || job.minimumPay === 0) {
+  if (job.minimumPay === null || job.minimumPay === 0 || job.rateIntervalCode === 'Without Compensation') {
     return;
   }
-  const max = job.maximumPay || 0;
-  const minStr = numberToCurrency.format(job.minimumPay);
+  const max    = job.maximumPay || 0;
   const maxStr = numberToCurrency.format(job.maximumPay);
-  switch (job.rateIntervalCode) {
-  case 'Per Year' || 'Per Hour': {
+  const minStr = numberToCurrency.format(job.minimumPay);
+  const withMax = max > job.minimumPay ? `-${maxStr} `: ' ';
+  if (job.rateIntervalCode === 'Per Year' || job.rateIntervalCode === 'Per Hour') {
     const period = job.rateIntervalCode === 'Per Year' ? 'yr' : 'hr';
-    const plus = max > job.minimumPay ? '+' : '';
+    const plus   = max > job.minimumPay ? '+' : '';
     return `${minStr}${plus}/${period}`;
   }
-  case 'Without Compensation':
-    return null;
-  default: {
-    const withMax = max > job.minimumPay ? `-${maxStr} `: ' ';
-    return minStr + withMax + job.rateIntervalCode;
-  }
-  }
+  return minStr + withMax + job.rateIntervalCode;
 };
 
 export const Jobs = ({ jobs=[] }: JobsProps) => {
@@ -53,7 +47,7 @@ export const Jobs = ({ jobs=[] }: JobsProps) => {
   const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
   const MAX_JOBS_IN_COLLAPSE_VIEW = 3;
   let lessJobs = jobs;
-  let moreJobs:jobType = [];
+  let moreJobs:Job = [];
 
   if (jobs?.length > MAX_JOBS_IN_COLLAPSE_VIEW) {
     lessJobs = jobs.slice(0, MAX_JOBS_IN_COLLAPSE_VIEW);
