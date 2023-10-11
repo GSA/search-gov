@@ -24,12 +24,15 @@ const numberToCurrency = new Intl.NumberFormat('en-US', {
   currency: 'USD'
 });
 
-// eslint-disable-next-line complexity
-const formatSalary = (job: { minimumPay: number, maximumPay: number, rateIntervalCode: string }) => {
+const showSalary = (job: { minimumPay: number, maximumPay: number, rateIntervalCode: string }) => {
   if (job.minimumPay === null || job.minimumPay === 0 || job.rateIntervalCode === 'Without Compensation') {
-    return;
+    return false;
   }
-  const max    = job.maximumPay || 0;
+  return true;
+};
+
+const formatSalary = (job: { minimumPay: number, maximumPay: number, rateIntervalCode: string }) => {
+  const max    = job.maximumPay;
   const maxStr = numberToCurrency.format(job.maximumPay);
   const minStr = numberToCurrency.format(job.minimumPay);
   const withMax = max > job.minimumPay ? `-${maxStr} `: ' ';
@@ -89,7 +92,7 @@ export const Jobs = ({ jobs=[] }: JobsProps) => {
                       <p>{job.organizationName}</p>
                       <ul className="list-horizontal">
                         <li>{job.positionLocationDisplay}</li>
-                        {formatSalary(job) && (<li>{formatSalary(job)}</li>)}
+                        {showSalary(job) && (<li>{formatSalary(job)}</li>)}
                         <li>Apply by {job.applicationCloseDate}</li>
                       </ul>
                     </div>
@@ -118,7 +121,7 @@ export const Jobs = ({ jobs=[] }: JobsProps) => {
                           <p>{job.organizationName}</p>
                           <ul className="list-horizontal">
                             <li>{job.positionLocationDisplay}</li>
-                            {formatSalary(job) && (<li>{formatSalary(job)}</li>)}
+                            {showSalary(job) && (<li>{formatSalary(job)}</li>)}
                             <li>Apply by {job.applicationCloseDate}</li>
                           </ul>
                         </div>
