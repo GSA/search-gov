@@ -11,7 +11,7 @@ import { HealthTopics } from './HealthTopics/HealthTopics';
 // import { ImagesPage } from './ImagesPage/ImagesPage';
 // import { RssNews } from './RssNews/RssNews';
 // import { Videos } from './Videos/Videos';
-// import { FedRegister } from './FedRegister/FedRegister';
+import { FedRegister } from './FedRegister/FedRegister';
 // import { Jobs } from './Jobs/Jobs';
 
 import { truncateUrl } from '../../utils';
@@ -59,6 +59,18 @@ interface ResultsProps {
         url: string;
       }[];
     };
+    federalRegisterDocuments?: {
+      commentsCloseOn: string;
+      contributingAgencyNames: [string];
+      documentNumber: string;
+      documentType: string;
+      endPage: number;
+      htmlUrl: string;
+      pageLength: number;
+      publicationDate: string;
+      startPage: number;
+      title: string;
+    }[];
   } | null;
   unboundedResults: boolean;
   totalPages: number | null;
@@ -97,9 +109,6 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
           {/* Video module/page - To do with its integration task */}
           {/* <Videos /> */}
 
-          {/* Federal register - To do with its integration task */}
-          {/* <FedRegister /> */}
-
           {results && results.length > 0 ? (results.map((result, index) => {
             return (
               <GridContainer key={index} className='result search-result-item'>
@@ -133,6 +142,11 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
           })) : (
             <NoResults errorMsg={i18n.t('noResultsForAndTry', { query })} />
           )}
+
+          {/* Federal register - To do with its integration task */}
+          {additionalResults?.federalRegisterDocuments && 
+            <FedRegister fedRegisterDocs = {additionalResults.federalRegisterDocuments}/>
+          }
         </div>
       </div>
       <Pagination 
