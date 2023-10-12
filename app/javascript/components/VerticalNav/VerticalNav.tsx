@@ -22,8 +22,8 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [] }: Vertica
     });
   };
 
-  const buildLink = ({ wractive, label, link }: NavigationLink, key = 0) => <a href={link} key={key} className={ active && 'usa-current' }>{label}</a>;
-  let items = navigationLinks.slice(0, 3).map(buildLink);
+  const buildLink = ({ active, label, href }: NavigationLink, key = 0) => <a href={href} key={key} className={ active && 'usa-current' || '' }>{label}</a>;
+  const items = navigationLinks.slice(0, 3).map(buildLink);
   const secondary = navigationLinks.slice(3).map(buildLink);
 
   if (secondary.length > 0) {
@@ -32,7 +32,7 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [] }: Vertica
         <NavDropDownButton
           data-testid="moreBtn"
           menuId="moreDropDown"
-          onToggle={(): void => { onToggle(0, setIsOpen); }}
+          onToggle={onToggle(0, setIsOpen)}
           isOpen={isOpen[0]}
           label="More"
           isCurrent={false}
@@ -44,8 +44,8 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [] }: Vertica
           id="moreMenuDropDown"
         />
       </>
-    )
-  };
+    );
+  }
 
   if (relatedSites.length > 0) {
     items.push(
@@ -53,9 +53,7 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [] }: Vertica
         <NavDropDownButton
           data-testid="relatedSitesBtn"
           menuId="relatedSitesDropDown"
-          onToggle={(): void => {
-            onToggle(1, setIsOpen);
-          }}
+          onToggle={onToggle(1, setIsOpen)}
           isOpen={isOpen[1]}
           label="Related Sites"
           isCurrent={false}
@@ -67,8 +65,8 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [] }: Vertica
           id="relatedSitesDropDown"
         />
       </>
-    )
-  };
+    );
+  }
 
   return (
     <div className="vertical-nav-wrapper">
