@@ -32,7 +32,7 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [] }: Vertica
         <NavDropDownButton
           data-testid="moreBtn"
           menuId="moreDropDown"
-          onToggle={onToggle(0, setIsOpen)}
+          onToggle={(): void => { onToggle(0, setIsOpen) }}
           isOpen={isOpen[0]}
           label="More"
           isCurrent={false}
@@ -53,7 +53,7 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [] }: Vertica
         <NavDropDownButton
           data-testid="relatedSitesBtn"
           menuId="relatedSitesDropDown"
-          onToggle={onToggle(1, setIsOpen)}
+          onToggle={(): void => { onToggle(1, setIsOpen) }}
           isOpen={isOpen[1]}
           label="Related Sites"
           isCurrent={false}
