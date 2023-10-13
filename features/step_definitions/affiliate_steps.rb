@@ -88,6 +88,11 @@ When /^the rss govbox is enabled for the site "(.*?)"$/ do |name|
   site.update!(is_rss_govbox_enabled: true)
 end
 
+When /^the use redesigned results page is disabled for the site "(.*?)"$/ do |name|
+  site = Affiliate.find_by_name name
+  site.update!(use_redesigned_results_page: false)
+end
+
 Given(/^"(.*?)" is an affiliate$/) do |email|
   User.find_by_email(email).update_attribute(:is_affiliate, true)
 end
