@@ -48,10 +48,10 @@ class SearchgovUrl < ApplicationRecord
 
   scope :fetch_required, lambda {
     where('last_crawled_at IS NULL
-           OR lastmod > last_crawled_at
            OR enqueued_for_reindex
+           OR lastmod > last_crawled_at
            OR (last_crawl_status = "OK" AND last_crawled_at < ?)', 1.month.ago).
-      order(last_crawl_status: :ASC, enqueued_for_reindex: :DESC, lastmod: :DESC)
+      order(Arel.sql('last_crawled_at IS NULL DESC'), enqueued_for_reindex: :DESC, lastmod: :DESC)
   }
 
   class SearchgovUrlError < StandardError; end
