@@ -54,7 +54,7 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [] }: Vertica
     </>;
   };
 
-  const thereIsEnoghtSpace = () => {
+  const isThereEnoughSpace = () => {
     const container = document.getElementById('tabs-container');
 
     if (container) {
@@ -73,7 +73,7 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [] }: Vertica
   const isLastItem = () => navItemsCount === navigationLinks.length - 1;
 
   useEffect(() => {
-    if ((navItemsCount < navigationLinks.length) && thereIsEnoghtSpace()) {
+    if ((navItemsCount < navigationLinks.length) && isThereEnoughSpace()) {
       setNavItems([...navItems, buildLink(navigationLinks[navItemsCount], navItemsCount)]);
 
       setNavItemsCount(navItemsCount + 1);
