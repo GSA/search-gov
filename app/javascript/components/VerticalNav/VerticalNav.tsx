@@ -10,7 +10,7 @@ interface VerticalNavProps {
   navigationLinks: NavigationLink[];
 }
 
-function getTextWidth(text: string) {
+const getTextWidth = (text: string) => {
   const canvas = document.createElement('canvas');
   const context = canvas.getContext('2d');
 
@@ -21,17 +21,17 @@ function getTextWidth(text: string) {
 
 export const VerticalNav = ({ relatedSites = [], navigationLinks = [] }: VerticalNavProps) => {
   const i18n = useContext(LanguageContext);
-  const [openMore, setOpenMore] = useState(true)
+  const [openMore, setOpenMore] = useState(true);
   const [navItems, setNavItems] = useState([]);
   const [navItemsCount, setNavItemsCount] = useState(0);
 
   const onToggle = (setOpenMore: React.Dispatch<React.SetStateAction<boolean>>) => {
     console.log('before: ' + openMore);
 
-    setOpenMore(last => {
+    setOpenMore((last) => {
       console.log(' inside: ' + last);
 
-      return !last
+      return !last;
     });
   };
 
@@ -40,39 +40,33 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [] }: Vertica
     return <>
       <NavDropDownButton
         menuId="nav-menu"
-        onToggle={(): void => { onToggle(setOpenMore) }}
+        onToggle={(): void => {
+          onToggle(setOpenMore) }
+        }
         isOpen={openMore}
         label={i18n.t(label)}
       />
       <Menu key={navItemsCount} items={items} isOpen={openMore} id="nav-menu" />
-    </>
-  }
+    </>;
+  };
 
-  function thereIsEnoghtSpace() {
+  const thereIsEnoghtSpace = () => {
     const container = document.getElementById('tabs-container');
 
-    if(container) {
+    if (container) {
       const nav = container.getElementsByClassName('usa-nav__primary');
 
       if(nav && nav[0]) {
-        return container.offsetWidth > (nav[0].offsetWidth + itemToAddWidth())
+        return container.offsetWidth > (nav[0].offsetWidth + itemToAddWidth());
       }
     }
 
     return false;
   }
 
-  const itemToAddWidth = () => {
-    return isLastItem() ? (currentNavItemWidth() + 160) : currentNavItemWidth()
-  };
-
-  const currentNavItemWidth = () => {
-    return getTextWidth(navigationLinks[navItemsCount].label) + 100
-  }
-
-  function isLastItem() {
-    return navItemsCount == navigationLinks.length - 1
-  }
+  const itemToAddWidth = () => isLastItem() ? (currentNavItemWidth() + 160) : currentNavItemWidth();
+  const currentNavItemWidth = () => getTextWidth(navigationLinks[navItemsCount].label) + 100;
+  const isLastItem = () => navItemsCount == navigationLinks.length - 1;
 
   useEffect(() => {
     if ((navItemsCount < navigationLinks.length) && thereIsEnoghtSpace()) {
@@ -86,11 +80,11 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [] }: Vertica
       if (itemsLeft) {
         items.push(<><hr /><i className="text-base-light">Related Sites</i></>);
         
-        items = items.concat(relatedSites.map(({link, label}, index) => <a href={link} key={index + itemsLeft}>{label}</a>));
+        items = items.concat(relatedSites.map(({ link, label }, index) => <a href={link} key={index + itemsLeft}>{label}</a>));
 
         setNavItems([...navItems, buildNavLink('showMore', items)]);
       } else {
-        items = relatedSites.map((site, index) => <a href={site.link} key={index}>{site.label}</a>)
+        items = relatedSites.map((site, index) => <a href={site.link} key={index}>{site.label}</a>);
 
         setNavItems([...navItems, buildNavLink('relatedSearches', items)]);
       }
