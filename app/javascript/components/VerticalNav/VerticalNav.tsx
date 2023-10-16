@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, ReactNode } from 'react';
 import { GridContainer, Header, NavDropDownButton, Menu, PrimaryNav } from '@trussworks/react-uswds';
 import { NavigationLink } from '../SearchResultsLayout';
 import { LanguageContext } from '../../contexts/LanguageContext';
@@ -14,35 +14,39 @@ const getTextWidth = (text: string) => {
   const canvas = document.createElement('canvas');
   const context = canvas.getContext('2d');
 
-  context.font = getComputedStyle(document.body).font;
+  if (context) {
+    context.font = getComputedStyle(document.body).font;
 
-  return context.measureText(text).width;
-}
+    return context.measureText(text).width;
+  }
+
+  return 0;
+};
 
 export const VerticalNav = ({ relatedSites = [], navigationLinks = [] }: VerticalNavProps) => {
   const i18n = useContext(LanguageContext);
   const [openMore, setOpenMore] = useState(true);
-  const [navItems, setNavItems] = useState([]);
+  const [navItems, setNavItems] = useState<ReactNode[]>([]);
   const [navItemsCount, setNavItemsCount] = useState(0);
 
   const onToggle = (setOpenMore: React.Dispatch<React.SetStateAction<boolean>>) => {
-    console.log('before: ' + openMore);
+    console.log(`before: ${ openMore }`);
 
     setOpenMore((last) => {
-      console.log(' inside: ' + last);
+      console.log(` last: ${ last }`);
 
       return !last;
     });
   };
 
   const buildLink = ({ active, label, href }: NavigationLink, key = 0) => <a href={href} key={key} className={ active && 'usa-current' || '' }>{label}</a>;
-  const buildNavLink = (label, items) => {
+  const buildNavLink = (label: string, items: ReactNode[]) => {
     return <>
       <NavDropDownButton
         menuId="nav-menu"
         onToggle={(): void => {
-          onToggle(setOpenMore) }
-        }
+          onToggle(setOpenMore);
+        }}
         isOpen={openMore}
         label={i18n.t(label)}
       />
@@ -56,17 +60,17 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [] }: Vertica
     if (container) {
       const nav = container.getElementsByClassName('usa-nav__primary');
 
-      if(nav && nav[0]) {
-        return container.offsetWidth > (nav[0].offsetWidth + itemToAddWidth());
+      if (nav && nav[0]) {
+        return container.offsetWidth > ((nav[0] as HTMLElement).offsetWidth + itemToAddWidth());
       }
     }
 
     return false;
-  }
+  };
 
   const itemToAddWidth = () => isLastItem() ? (currentNavItemWidth() + 160) : currentNavItemWidth();
   const currentNavItemWidth = () => getTextWidth(navigationLinks[navItemsCount].label) + 100;
-  const isLastItem = () => navItemsCount == navigationLinks.length - 1;
+  const isLastItem = () => navItemsCount === navigationLinks.length - 1;
 
   useEffect(() => {
     if ((navItemsCount < navigationLinks.length) && thereIsEnoghtSpace()) {
