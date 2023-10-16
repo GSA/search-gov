@@ -6,7 +6,7 @@ import { VerticalNav } from '../components/VerticalNav/VerticalNav';
 describe('VerticalNav', () => {
   it('shows the vertical nav links', () => {
     const relatedSites = [{ label: 'Related Site 1', link: 'example.com' }];
-    const navigationLinks = [{ label: 'all', active: true, link: 'http://search.gov' }];
+    const navigationLinks = [{ label: 'all', active: true, href: 'http://search.gov' }];
 
     render(<VerticalNav relatedSites={relatedSites} navigationLinks={navigationLinks} />);
     
