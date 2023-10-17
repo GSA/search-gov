@@ -5,16 +5,28 @@ import React from 'react';
 import { RssNews } from '../components/Results/RssNews/RssNews';
 
 describe('Rss News component', () => {
+  const newsProps = {
+    news: [
+      {
+        title: '<strong>GSA</strong> title',
+        description: 'test description',
+        link: 'https://test.com',
+        publishedAt: '2023-08-17'
+      }
+    ],
+    newsLabel: 'News about gsa'
+  };
+
   it('renders rss news component', () => {
     render(
-      <RssNews />
+      <RssNews {...newsProps}/>
     );
   });
 
   it('shows title', () => {
     render(
-      <RssNews />
+      <RssNews {...newsProps}/>
     );
-    expect(screen.getByText('News about Benefits')).toBeInTheDocument();
+    expect(screen.getByText('News about gsa')).toBeInTheDocument();
   });
 });
