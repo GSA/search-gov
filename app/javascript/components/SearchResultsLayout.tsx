@@ -141,7 +141,7 @@ const isBasicHeader = (extendedHeader: boolean): boolean => {
   return !extendedHeader;
 };
 
-const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [], extendedHeader, fontsAndColors }: SearchResultsLayoutProps) => {
+const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [], extendedHeader, fontsAndColors, newsLabel }: SearchResultsLayoutProps) => {
   const i18n = new I18n(translations);
   i18n.defaultLocale = 'en';
   i18n.enableFallback = true;
@@ -167,6 +167,7 @@ const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params 
             query={params.query}
             unboundedResults={resultsData.unboundedResults}
             additionalResults={additionalResults}
+            newsAboutQuery={newsLabel?.newsAboutQuery}
           />) : params.query ? (
           <Results 
             vertical={vertical}

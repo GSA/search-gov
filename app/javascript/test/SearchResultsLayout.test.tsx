@@ -15,6 +15,15 @@ const fontsAndColors = {
   headerLinksFontFamily: '"Georgia", "Cambria", "Times New Roman", "Times", serif'
 };
 
+const newsLabel = {
+  newsAboutQuery: 'News about GSA',
+  results: [{
+    title: 'title 1',
+    feedName: 'feedName 1',
+    publishedAt: '22 days ago'
+  }]
+};
+
 jest.mock('i18n-js', () => {
   return jest.requireActual('i18n-js/dist/require/index');
 });
@@ -27,7 +36,7 @@ describe('SearchResultsLayout', () => {
   });
 
   it('renders all relevant links', () => {
-    render(<SearchResultsLayout params={{}} resultsData={{ results: [], totalPages: 1, unboundedResults: false }} vertical='web' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} />);
+    render(<SearchResultsLayout params={{}} resultsData={{ results: [], totalPages: 1, unboundedResults: false }} vertical='web' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} />);
     const linkToMoreDropdown = screen.getAllByText(/More/i);
     const relatedSites = screen.getByText(/Related Sites/i);
     expect(linkToMoreDropdown[0]).toBeInTheDocument();
@@ -40,7 +49,7 @@ describe('SearchResultsLayout', () => {
       results.push({ title: 'test result 1', url: 'https://www.search.gov', description: 'result body', publishedDate: 'May 9th, 2023', updatedDate: 'May 10th, 2023' });
     }
     const resultsData = { totalPages: 2, unboundedResults: true, results };
-    render(<SearchResultsLayout params={{ query: 'foo' }} resultsData={resultsData} vertical='web' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} />);
+    render(<SearchResultsLayout params={{ query: 'foo' }} resultsData={resultsData} vertical='web' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} />);
     const resultTitle = screen.getAllByText(/test result 1/i);
     const resultUrl = screen.getAllByText(/www.search.gov/i);
     const resultBody = screen.getAllByText(/result body/i);
@@ -60,7 +69,7 @@ describe('SearchResultsLayout', () => {
     }
     const additionalResults = { recommendedBy: 'USAgov', textBestBets: [{ title: 'A best bet', description: 'This is the best bet', url: 'http://www.example.com' }] };
     const resultsData = { totalPages: 2, unboundedResults: true, results };
-    render(<SearchResultsLayout params={{ query: 'foo' }} resultsData={resultsData} additionalResults={additionalResults} vertical='web' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} />);
+    render(<SearchResultsLayout params={{ query: 'foo' }} resultsData={resultsData} additionalResults={additionalResults} vertical='web' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} />);
     const bestBetRecommendedBy = screen.getByText(/Recommended by USAgov/i);
     const bestBetTitle = screen.getByText(/A best bet/i);
     const bestBetDescription = screen.getByText(/This is the best bet/i);
@@ -78,7 +87,7 @@ describe('SearchResultsLayout', () => {
     }
     const additionalResults = { recommendedBy: 'USAgov', textBestBets: [], graphicsBestBet: { title: 'Search support', titleUrl: 'https://search.gov/support.html', imageUrl: 'https://search.gov/support.jpg', imageAltText: 'support alt text', links: [{ title: 'Learning', url: 'https://search.gov/learn' }] } };
     const resultsData = { totalPages: 2, unboundedResults: true, results };
-    render(<SearchResultsLayout params={{ query: 'foo' }} resultsData={resultsData} additionalResults={additionalResults} vertical='web' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} />);
+    render(<SearchResultsLayout params={{ query: 'foo' }} resultsData={resultsData} additionalResults={additionalResults} vertical='web' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} />);
     const bestBetRecommendedBy = screen.getByText(/Recommended by USAgov/i);
     const bestBetTitle = screen.getByText(/Search support/i);
     const img = Array.from(document.getElementsByClassName('result-image')).pop() as HTMLImageElement;
@@ -92,7 +101,7 @@ describe('SearchResultsLayout', () => {
 
   it('renders image search results', () => {
     const resultsData = { totalPages: 2, unboundedResults: true, results: [{ title: 'test result 1', url: 'https://www.search.gov', description: 'result body', thumbnailUrl: 'https://www.search.gov/test_image.png', publishedDate: 'May 9th, 2023', updatedDate: 'May 10th, 2023' }] };
-    render(<SearchResultsLayout params={{ query: 'foo' }} resultsData={resultsData} vertical='image' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} />);
+    render(<SearchResultsLayout params={{ query: 'foo' }} resultsData={resultsData} vertical='image' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} />);
     const resultTitle = screen.getByText(/test result 1/i);
     const img = Array.from(document.getElementsByClassName('result-image')).pop() as HTMLImageElement;
     expect(resultTitle).toBeInTheDocument();
