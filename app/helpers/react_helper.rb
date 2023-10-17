@@ -6,6 +6,7 @@ module ReactHelper
       additionalResults: search.govbox_set,
       alert: search_page_alert(affiliate.alert),
       currentLocale: affiliate.locale,
+      extendedHeader: affiliate.use_extended_header,
       fontsAndColors: affiliate.visual_design_json,
       navigationLinks: navigation_links(search, params),
       newsLabel: news_label(search),
@@ -23,6 +24,7 @@ module ReactHelper
 
   def image_search_results_layout(search, params, vertical, affiliate)
     data = {
+      extendedHeader: affiliate.use_extended_header,
       fontsAndColors: affiliate.visual_design_json,
       locale: YAML.load_file("config/locales/#{affiliate.locale}.yml"),
       params: params,
