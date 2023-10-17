@@ -80,20 +80,23 @@ module MobileNavigationsHelper
   end
 
   def navigation_builder(search, search_params, non_default_search_navigable, navigations)
-    query = search.query
     navigations.map do |navigation|
       navigable = navigation.navigable
-      path =
-          case navigable
-            when ImageSearchLabel
-              path_for_image_search(search_params, query)
-            when DocumentCollection
-              path_for_document_collection_search(search_params, navigable, query)
-            when RssFeed
-              path_for_rss_feed_search(search, search_params, navigable)
-          end
+      path = navigable_path(navigable, search, search_params)
       is_active = non_default_search_navigable == navigable
+
       yield navigable.name, is_active, path
+    end
+  end
+
+  def navigable_path(navigable, search, search_params)
+    case navigable
+      when ImageSearchLabel
+        path_for_image_search(search_params, search.query)
+      when DocumentCollection
+        path_for_document_collection_search(search_params, navigable, search.query)
+      when RssFeed
+        path_for_rss_feed_search(search, search_params, navigable)
     end
   end
 

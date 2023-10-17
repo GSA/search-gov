@@ -1,11 +1,12 @@
 /* eslint-disable id-length, complexity, no-plusplus, max-statements, no-undef */
 /* Above eslint rules are disabled as this file which is from USWDS library - https://github.com/trussworks/react-uswds/blob/main/src/components/Pagination/Pagination.tsx is being overriden so disabled few rules so as we can override the needed behaviour without much changes */
 
-import React from 'react';
+import React, { useContext } from 'react';
 import classnames from 'classnames';
 import { Icon, Link, Button } from '@trussworks/react-uswds';
 
 import { getUriWithParam } from '../../utils';
+import { LanguageContext } from '../../contexts/LanguageContext'
 
 type PaginationProps = {
   pathname: string // pathname of results page
@@ -86,6 +87,8 @@ export const UswdsPagination = ({
   onClickPageNumber,
   ...props
 }: PaginationProps & JSX.IntrinsicElements['nav']): React.ReactElement => {
+  const i18n = useContext(LanguageContext);
+
   const navClasses = classnames('usa-pagination', className);
 
   const isOnFirstPage = currentPage === 1;
@@ -193,7 +196,7 @@ export const UswdsPagination = ({
                 data-testid="pagination-previous"
                 onClick={onClickPrevious}>
                 <Icon.NavigateBefore />
-                <span className="usa-pagination__link-text">Previous</span>
+                <span className="usa-pagination__link-text">{i18n.t("prevLabel")}</span>
               </Button>
             ) : (
               <Link
@@ -201,7 +204,7 @@ export const UswdsPagination = ({
                 className="usa-pagination__link usa-pagination__previous-page"
                 aria-label="Previous page">
                 <Icon.NavigateBefore />
-                <span className="usa-pagination__link-text">Previous</span>
+                <span className="usa-pagination__link-text">{i18n.t("prevLabel")}</span>
               </Link>
             )}
           </li>
@@ -230,7 +233,9 @@ export const UswdsPagination = ({
                 aria-label="Next page"
                 data-testid="pagination-next"
                 onClick={onClickNext}>
-                <span className="usa-pagination__link-text">Next</span>
+                <span className="usa-pagination__link-text">
+                  {i18n.t("nextLabel")}
+                </span>
                 <Icon.NavigateNext />
               </Button>
             ) : (
@@ -238,7 +243,9 @@ export const UswdsPagination = ({
                 href={getUriWithParam(window.location.href, 'page', nextPage.toString())}
                 className="usa-pagination__link usa-pagination__next-page"
                 aria-label="Next page">
-                <span className="usa-pagination__link-text">Next</span>
+                <span className="usa-pagination__link-text">
+                  {i18n.t("nextLabel")}
+                </span>
                 <Icon.NavigateNext />
               </Link>
             )}

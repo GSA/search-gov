@@ -271,8 +271,8 @@ describe NewsSearch do
       it 'assigns the correct start and end record' do
         feed = affiliate.rss_feeds.first
         search = described_class.new(query: 'element', channel: feed.id, affiliate: affiliate, page: 2, per_page: '15')
-        results = [mock_model(NewsItem, title: 'result1', description?: true, url: 'http://search.gov/1'),
-                   mock_model(NewsItem, title: 'result2', description?: true, url: 'http://search.gov/2')]
+        results = [mock_model(NewsItem, title: 'result1', description?: true, url: 'http://search.gov/1', pubished_at: DateTime.parse('2023-08-26')),
+                   mock_model(NewsItem, title: 'result2', description?: true, url: 'http://search.gov/2', pubished_at: DateTime.parse('2023-08-27'))]
         response = double(ElasticNewsItemResults, total: 17, offset: 15, aggregations: [], results: results)
         expect(ElasticNewsItem).to receive(:search_for).
           with(q: 'element', rss_feeds: [feed], excluded_urls: affiliate.excluded_urls,
@@ -293,8 +293,8 @@ describe NewsSearch do
           feed = affiliate.rss_feeds.first
           search = described_class.new(query: 'element', channel: feed.id, affiliate: affiliate)
 
-          result_1 = mock_model(NewsItem, title: 'element result1', description?: false, body: 'result 1 body', url: 'http://search.gov/1')
-          result_2 = mock_model(NewsItem, title: 'element result2', description?: true, body: 'result 2 body', url: 'http://search.gov/2')
+          result_1 = mock_model(NewsItem, title: 'element result1', description?: false, body: 'result 1 body', url: 'http://search.gov/1', pubished_at: DateTime.parse('2023-08-26'))
+          result_2 = mock_model(NewsItem, title: 'element result2', description?: true, body: 'result 2 body', url: 'http://search.gov/2', pubished_at: DateTime.parse('2023-08-27'))
           results = [result_1, result_2]
 
           response = double(ElasticNewsItemResults, total: 2, offset: 0, aggregations: [], results: results)
@@ -323,13 +323,15 @@ describe NewsSearch do
                                 description?: true,
                                 description: "\uE000highlighted\uE001 result 1 description",
                                 body: 'result 1 body',
-                                url: 'http://search.gov/1')
+                                url: 'http://search.gov/1',
+                                pubished_at: DateTime.parse('2023-08-26'))
           result_2 = mock_model(NewsItem,
                                 title: 'result2',
                                 description?: true,
                                 description: 'result 2 description',
                                 body: "\uE000highlighted\uE001 result 2 body",
-                                url: 'http://search.gov/2')
+                                url: 'http://search.gov/2',
+                                pubished_at: DateTime.parse('2023-08-27'))
           results = [result_1, result_2]
 
           response = double(ElasticNewsItemResults, total: 2, offset: 0, aggregations: [], results: results)

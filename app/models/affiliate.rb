@@ -58,6 +58,10 @@ class Affiliate < ApplicationRecord
     assoc.has_one :alert
     assoc.has_many :watchers, -> { order 'name ASC' }, inverse_of: :affiliate
     assoc.has_many :tag_filters, -> { order 'tag ASC' }, inverse_of: :affiliate
+    assoc.has_many :primary_header_links, -> { order :position }, inverse_of: :affiliate
+    assoc.has_many :secondary_header_links, -> { order :position }, inverse_of: :affiliate
+    assoc.has_many :footer_links, -> { order :position }, inverse_of: :affiliate
+    assoc.has_many :identifier_links, -> { order :position }, inverse_of: :affiliate
   end
 
   has_one_attached :header_logo
@@ -162,6 +166,8 @@ class Affiliate < ApplicationRecord
            :language_valid,
            :validate_managed_no_results_pages_guidance_text
 
+  validates :secondary_header_links, length: { maximum: 3 }
+
   before_validation :set_visual_design_json
   after_validation :update_error_keys
   before_save :set_css_properties, :generate_look_and_feel_css, :set_json_fields, :set_search_labels
@@ -185,6 +191,7 @@ class Affiliate < ApplicationRecord
   accepts_nested_attributes_for :document_collections, reject_if: :all_blank
   accepts_nested_attributes_for :connections, allow_destroy: true, reject_if: proc { |a| a[:affiliate_name].blank? and a[:label].blank? }
   accepts_nested_attributes_for :flickr_profiles, allow_destroy: true
+  accepts_nested_attributes_for :primary_header_links, :secondary_header_links, :footer_links, :identifier_links, allow_destroy: true, reject_if: :empty_link?
 
   USAGOV_AFFILIATE_NAME = 'usagov'
   GOBIERNO_AFFILIATE_NAME = 'gobiernousa'
@@ -230,16 +237,16 @@ class Affiliate < ApplicationRecord
     header_links_font_family
     footer_and_results_font_family
   ].freeze
-  DEFAULT_FONT = 'public-sans'
-  USWDS_FONTS = %w[
-    georgia
-    helvetica
-    merriweather
-    public-sans
-    roboto-mono
-    source-sans-pro
-    system
-    tahoma
+  DEFAULT_FONT = "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
+  USWDS_FONTS = [
+    "'Georgia', 'Cambria', 'Times New Roman', 'Times', serif",
+    "'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif",
+    "'Merriweather Web', 'Georgia', 'Cambria', 'Times New Roman', 'Times', serif",
+    "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "'Roboto Mono Web', 'Bitstream Vera Sans Mono', 'Consolas', 'Courier', monospace",
+    "'Source Sans Pro','Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif",
+    "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "'Tahoma', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
   ].freeze
   DEFAULT_COLORS = {
     banner_background_color: '#F0F0F0',
@@ -582,6 +589,10 @@ class Affiliate < ApplicationRecord
       url = "http://#{url}" if url.present? && url !~ %r{^(http(s?)://|mailto:)}i
       managed_links << { position: link[:position].to_i, title: link[:title], url: url }
     end
+  end
+
+  def empty_link?(link)
+    link['id'].blank? && link['title'].blank? && link['url'].blank?
   end
 
   def validate_managed_header_links

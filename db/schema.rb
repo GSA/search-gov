@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_04_145237) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_27_213029) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -96,6 +96,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_04_145237) do
     t.boolean "show_redesign_display_settings", default: false
     t.boolean "use_redesigned_results_page", default: false
     t.json "visual_design_json"
+    t.boolean "use_extended_header", default: true, null: false
+    t.string "identifier_domain_name"
+    t.string "parent_agency_name"
+    t.string "parent_agency_link"
+    t.boolean "display_image_on_search_results", default: false, null: false
+    t.boolean "display_filetype_on_search_results", default: false, null: false
+    t.boolean "display_created_date_on_search_results", default: false, null: false
+    t.boolean "display_updated_date_on_search_results", default: false, null: false
     t.index ["name"], name: "index_affiliates_on_name", unique: true
   end
 
@@ -367,6 +375,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_04_145237) do
     t.index ["code"], name: "index_languages_on_code", unique: true
   end
 
+  create_table "links", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+    t.integer "position"
+    t.string "type"
+    t.string "title"
+    t.string "url"
+    t.integer "affiliate_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "med_related_topics", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "med_topic_id", null: false
     t.integer "related_medline_tid", null: false
@@ -586,10 +604,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_04_145237) do
     t.index ["last_crawl_status"], name: "index_searchgov_urls_on_last_crawl_status"
     t.index ["searchgov_domain_id", "enqueued_for_reindex"], name: "searchgov_urls_on_searchgov_domain_id_and_enqueued_for_reindex"
     t.index ["searchgov_domain_id", "last_crawl_status"], name: "index_by_searchgov_domain_id_and_last_crawl_status"
-    t.index ["searchgov_domain_id", "last_crawl_status"], name: "searchgov_urls_on_searchgov_domain_id_and_last_crawl_status"
+    t.index ["searchgov_domain_id", "last_crawled_at", "enqueued_for_reindex", "lastmod", "last_crawl_status"], name: "searchgov_urls_fetch_required"
     t.index ["searchgov_domain_id", "last_crawled_at"], name: "index_searchgov_urls_on_searchgov_domain_id_and_last_crawled_at"
-    t.index ["searchgov_domain_id", "last_crawled_at"], name: "searchgov_urls_on_searchgov_domain_id_and_last_crawled_at"
-    t.index ["searchgov_domain_id", "lastmod"], name: "searchgov_urls_on_searchgov_domain_id_and_lastmod"
     t.index ["searchgov_domain_id"], name: "index_searchgov_urls_on_searchgov_domain_id"
     t.index ["url"], name: "index_searchgov_urls_on_url", length: 255
   end

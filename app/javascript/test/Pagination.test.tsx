@@ -3,6 +3,10 @@ import React from 'react';
 
 import { UswdsPagination } from '../components/UswdsOverrides/UswdsPagination';
 
+jest.mock('i18n-js', () => {
+  return jest.requireActual('i18n-js/dist/require/index');
+});
+
 describe('Pagination component', () => {
   const testPages = 24;
   const testThreePages = 3;

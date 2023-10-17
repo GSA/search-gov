@@ -1,0 +1,150 @@
+﻿ht:
+
+# Search.gov localizations for: Haitian Creole (ht)
+
+# Default page title of search results page
+  default_serp_title: '%{query} - %{site_name} Rezilta Rechèch'
+
+# Labels for the search box
+  search: "Rechèch"
+  search_label: 'Make mo w ap chèche a'
+
+# Labels for the navigation bar
+  everything: "Tout bagay"
+  images: "Imaj yo"
+  videos: "Videyo"
+  show_more: 'Plis'
+
+# Labels to change the sort order by date or relevance
+  by_date: 'Pi resan'
+  by_relevance: 'Pibon korespondans la'
+
+# Labels to narrow results by a preset timeframe or a custom date range, or clear filters ('Before' is the label for custom date range with only a 'To' date set.)
+  refine_your_search: "Ajiste rechèch ou"
+  all_time: "Nenpòt kilè"
+  last_hour: "Dènye lè "
+  last_day: "Dènye jou"
+  last_week: "Semèn pase"
+  last_month: "Mwa pase"
+  last_year: "Ane pase"
+  custom_range: 'Peryòd pèsonalize'
+  from: 'Soti'
+  to: 'Rive'
+# It's safe to modify the order of these (e.g., '%m/%d/%Y'), but do not localize the Latin letters 'd', 'm', or 'Y'. Do not change the case of the letters.
+  cdr_format: '%d/%m/%Y'
+  before: 'Anvan'
+  clear: 'Efase'
+
+# Prompts for spelling, spelling overrides, and did you mean suggestions
+  showing_results_for: "Men rezilta yo pou %{corrected_query}"
+  search_instead_for: "Chèche de preferans pou %{original_query}"
+
+# Prompts for searchers to revise or refine search
+  no_results_for_and_try: "Dezole, nou pa jwenn okenn rezilta pou %{query}. Eseye mete mwens mo oswa mo rechèch ki pi jeneral."
+  too_long: "Mo rechèch ou twò long. Eseye ankò men mete yon mo oswa yon fraz ki pi kout"
+  empty_query: "Tanpri ekri mo rechèch nan bwat ki anlè a."
+
+# Labels for inline best bets, news, and related searches modules
+  recommended: "Rekòmande"
+  default_rss_govbox_label: 'Nouvèl'
+  related_searches: "Rechèch ki an rapò yo"
+
+# Labels for paging through results
+  page: 'Paj'
+  prev_label: "Presedan"
+  next_label: "Pwochen"
+  return_to_top:
+
+  searches:
+    by: "pou"
+# Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
+    skip_to_main_content: "Sote pati sa a pou ale nan kontni prensipal la"
+# Labels for navigation bar "sections" (most easily seen on mobile dimension)
+    menu: "Meni"
+    browse_site: "Vizite sit la"
+    related_sites: "Gade sijè yo"
+    results_count:
+      zero: '0 rezilta yo'
+      one: '1 rezilta yo'
+      other: '%{formatted_count} rezilta yo'
+    search_results: "Rezilta rechèch yo"
+# Prompts for searchers to view more results from Bing/Google after reaching page n of Search.gov results
+    commercial_results:
+      find_what_looking_for: "Èske w reyisi jwenn sa w t ap chèche a?"
+      see_more_web_results: "%{link} pou wè plis rezilta. (Ou gendwa wè kèk nan rezilta w te wè deja.)"
+      see_more_image_results: "Rezilta ki anlè yo soti nan kont medya sosyo ak nan galri nou yo. %{link} pou wè rezilta yo ki sou wèbsayt nou an. (Ou gendwa wè kèk nan rezilta w te wè deja.)"
+      search_again: "Refè rechèch la ankò"
+# Prompts for searchers to view more results from the broader website after initially seeing site-scoped results
+    site_limits:
+      including_results_for_query_from_matching_sites: "N ap enkli rezilta yo pou %{query} ki soti nan %{matching_sites} sèlman."
+      do_you_want_to_see_results_for: "Èske w vle wè rezilta yo pou %{query_from_all_sites}?"
+      query_from_all_sites: '%{query} ki soti tout kote'
+# Label for inline news module and prompt to see more news on news vertical
+    more_news_about_query: 'Plis %{news_label} konsènan %{query}'
+    news_about_query: '%{news_label} konsènan %{query}'
+    news_search_options:
+# It's safe to modify the order of these (e.g., 'm/d/yyyy'), but do not localize 'd', 'm', or 'yyyy'. Do not change the case of the letters.
+      date_format: 'm/d/yyyy'
+
+# Label for attributing results to Bing, Search.gov, or Google
+  powered_by: 'Egzekite pa'
+
+# Prompts for searchers to expand/collapse the number of best bets visible on the results page
+  show_more_label: 'Montre plis'
+  show_less_label: 'Montre mwens'
+
+# Date format used in custom date range picker and other places
+  date:
+    formats:
+# It's safe to modify the order of these (e.g., '%-d/%-m/%Y'), but do not localize 'd', 'm', or 'Y' or remove the dashes. Do not change the case of the letters.
+      slashes: "%-m/%-d/%Y"
+
+# Labels for news-based results indicating how long ago they were published
+  datetime:
+    time_ago_in_words:
+      half_a_minute: "yon demi-minit desa"
+      less_than_x_seconds:
+        one:   "mwens pase 1 segonn desa"
+        other: "mwens pase %{count} segonn desa"
+      x_seconds:
+        one:   "1 segonn desa"
+        other: "%{count} segonn desa"
+      less_than_x_minutes:
+        one:   "mwens pase yon minit desa"
+        other: "mwens pase %{count} minit desa"
+      x_minutes:
+        one:   "1 minit desa"
+        other: "%{count} minit desa"
+      about_x_hours:
+        one:   "anviwon 1èdtan desa"
+        other: "anviwon %{count} èdtan desa"
+      x_days:
+        one:   "1 jou desa"
+        other: "%{count} jou desa"
+      about_x_months:
+        one:   "anviwon 1 mwa desa"
+        other: "anviwon %{count} mwa desa"
+      x_months:
+        one:   "1 mwa desa"
+        other: "%{count} mwa desa"
+      about_x_years:
+        one:   "anviwon 1 lane desa"
+        other: "anviwon %{count} ane desa"
+      over_x_years:
+        one:   "plis pase 1 lane desa"
+        other: "plis pase %{count} lane desa"
+      almost_x_years:
+        one:   "prèske 1 lane desa"
+        other: "prèske %{count} lane desa"
+
+# Text for page captcha challenge, which is shown if bot-like search patterns are detected
+  are_you_human: "Nou detekte yon kantite elve ki pa nòmal nan rechèch ki soti bò kote w. Èske w se yon moun toutbon vre oswa yon wobo?"
+  captcha_requires_javascript: "O-o! Sanble w pa gen Javascript ki aktive, kifè w p ap kapab konplete tchalenj la. Tanpri aktive Javascript epi rechaje paj la."
+
+# Label for text best bet when it appears in suggestions via the type-ahead API
+  recommended_pages: "Paj ki rekòmande yo"
+
+# Labels for USWDS Identifier component
+  official_website_of:
+  looking_for_us_gov_info:
+  visit_usa_dot_gov:  # This link will go to the main English language USA.gov site
