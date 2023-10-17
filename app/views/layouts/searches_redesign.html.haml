@@ -1,12 +1,12 @@
 !!!strict
 %html
   %head
+    = attribution
     = render "/shared/google_tag_manager_script"
     = render "/shared/affiliate_google_analytics"
     %meta{ charset: 'UTF-8' }
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
     = render_robots_meta_tag
-    = attribution
     = favicon_link_tag favicon_url(@search.affiliate.favicon_url)
 
     %title #{@page_title}
