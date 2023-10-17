@@ -56,6 +56,10 @@ class GovboxSet
 
   private
 
+  def translate_highlights(body)
+    body&.gsub(/\uE000/, '<strong>')&.gsub(/\uE001/, '</strong>')
+  end
+
   def videos_exist?
     video_feeds = RssFeed.includes(:rss_feed_urls).owned_by_youtube_profile.where(owner_id: @affiliate.youtube_profile_ids)
     video_feeds.present? && @affiliate.is_video_govbox_enabled? && @video_news_items.total.positive?
@@ -84,7 +88,7 @@ class GovboxSet
 
     @news_items&.results&.first(3)&.map do |news_item|
       {
-        title: news_item.title,
+        title: translate_highlights(news_item.title),
         description: news_item.description,
         link: news_item.link,
         publishedAt: news_item.published_at.to_date
@@ -97,7 +101,7 @@ class GovboxSet
 
     @news_items&.results&.first(3)&.map do |news_item|
       {
-        title: news_item.title,
+        title: translate_highlights(news_item.title),
         description: news_item.description,
         link: news_item.link,
         publishedAt: news_item.published_at.to_date
