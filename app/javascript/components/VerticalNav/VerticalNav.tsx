@@ -30,10 +30,10 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [] }: Vertica
   const [navItemsCount, setNavItemsCount] = useState(0);
 
   const onToggle = (setOpenMore: React.Dispatch<React.SetStateAction<boolean>>) => {
-    console.log(`before: ${ openMore }`);
+    console.log(`inside onToggle: ${ openMore }`);
 
     setOpenMore((last) => {
-      console.log(` last: ${ last }`);
+      console.log(`inside setOpenMore: ${ last }`);
 
       return !last;
     });
