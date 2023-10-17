@@ -3,7 +3,7 @@ Feature: Search - redesign
   As a site visitor
   I want to be able to search for information on the redesigned Search page
 
-  @javascript @a11y @a11y_wip
+  @javascript @a11y
   Scenario: Search with no query on an affiliate page
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | first_name | last_name | domains        |
@@ -61,7 +61,7 @@ Feature: Search - redesign
     And I should not see a link to the "Next" page
     And I should see a link to the "Previous" page
 
-  @javascript @a11y @a11y_wip
+  @javascript @a11y
   Scenario: Search with blended results
     Given the following Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name | gets_blended_results    |
@@ -104,7 +104,7 @@ Feature: Search - redesign
     And I should see "large, mostly herbivorous mammal in sub-Saharan Africa"
     And I should see "Hippopotamus graphic"
 
-  @javascript @a11y @a11y_wip
+  @javascript @a11y
   Scenario: News search
     Given the following Affiliates exist:
       | display_name     | name       | contact_email | first_name | last_name |
@@ -251,3 +251,17 @@ Feature: Search - redesign
     And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
     And I press "Buscar" within the search box
     Then I should see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales" within the med topic govbox
+
+  @javascript @a11y
+  Scenario: Searching with custom visual design settings
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email | first_name | last_name | domains | use_extended_header |
+      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov | false               |
+    When I am on agency.gov's redesigned docs search page
+    Then I should see the basic header
+
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email | first_name | last_name | domains | use_extended_header |
+      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov | true               |
+    When I am on agency.gov's redesigned docs search page
+    Then I should see the extended header

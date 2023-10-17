@@ -117,6 +117,7 @@ interface SearchResultsLayoutProps {
     text: string;
   };
   navigationLinks?: { active: boolean; label: string; link: string; }[];
+  extendedHeader: boolean;
   fontsAndColors: {
     headerLinksFontFamily: string;
   };
@@ -136,12 +137,11 @@ const getAffiliateTitle = (): string => {
   return 'Search.gov';
 };
 
-// To be updated
-const isBasicHeader = (): boolean => {
-  return true;
+const isBasicHeader = (extendedHeader: boolean): boolean => {
+  return !extendedHeader;
 };
 
-const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [], fontsAndColors, newsLabel }: SearchResultsLayoutProps) => {
+const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [], extendedHeader, fontsAndColors, newsLabel }: SearchResultsLayoutProps) => {
   const i18n = new I18n(translations);
   i18n.defaultLocale = 'en';
   i18n.enableFallback = true;
@@ -151,7 +151,7 @@ const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params 
     <LanguageContext.Provider value={i18n}>
       <Header 
         title={getAffiliateTitle()}
-        isBasic={isBasicHeader()}
+        isBasic={isBasicHeader(extendedHeader)}
         fontsAndColors={fontsAndColors}
       />
      
