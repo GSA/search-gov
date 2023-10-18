@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext, ReactNode } from 'react';
-import { GridContainer, Header, NavDropDownButton, Menu, PrimaryNav } from '@trussworks/react-uswds';
+import { GridContainer, Header, PrimaryNav } from '@trussworks/react-uswds';
 import { NavigationLink } from '../SearchResultsLayout';
 import { LanguageContext } from '../../contexts/LanguageContext';
 import { DropDownMenu } from './DropDownMenu';
@@ -70,7 +70,7 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [] }: Vertica
         label = 'relatedSearches';
       }
 
-      setNavItems([...navItems, <DropDownMenu label={label} items={items} />]);
+      setNavItems([...navItems, <DropDownMenu key={navItemsCount} label={label} items={items} />]);
     }
   }, [navItemsCount]);
 

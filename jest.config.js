@@ -11,5 +11,6 @@ module.exports = {
   },
   testMatch: [
     '<rootDir>/app/javascript/test/**/*test.{ts,tsx}'
-  ]
+  ],
+  setupFiles: ['jest-canvas-mock']
 };

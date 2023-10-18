@@ -7,7 +7,7 @@ interface DropDownMenuProps {
   items: ReactNode[]
 }
 
-export const DropDownMenu = ({label, items}: DropDownMenuProps) => {
+export const DropDownMenu = ({ label, items }: DropDownMenuProps) => {
   const i18n = useContext(LanguageContext);
   const [openMore, setOpenMore] = useState(false);
 

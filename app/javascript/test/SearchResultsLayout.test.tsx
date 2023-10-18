@@ -37,14 +37,6 @@ describe('SearchResultsLayout', () => {
     expect(header).toHaveClass('usa-header--basic');
   });
 
-  it('renders all relevant links', () => {
-    render(<SearchResultsLayout params={{}} resultsData={{ results: [], totalPages: 1, unboundedResults: false }} vertical='web' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} navigationLinks={navigationLinks} />);
-    const linkToMoreDropdown = screen.getAllByText(/More/i);
-    const relatedSites = screen.getByText(/Related Sites/i);
-    expect(linkToMoreDropdown[0]).toBeInTheDocument();
-    expect(relatedSites).toBeInTheDocument();
-  });
-
   it('renders search results', () => {
     const results : any[] = []; // eslint-disable-line @typescript-eslint/no-explicit-any
     for (let counter = 0; counter < 20; counter += 1) {

@@ -1,28 +1,46 @@
 import '@testing-library/jest-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
 import React from 'react';
+import { I18n } from 'i18n-js';
 import { VerticalNav } from '../components/VerticalNav/VerticalNav';
+import { LanguageContext } from '../contexts/LanguageContext';
+
+jest.mock('i18n-js', () => {
+  return jest.requireActual('i18n-js/dist/require/index');
+});
+
+const locale = {
+  en: {
+    showMore: 'More',
+    relatedSearches: 'Related Searches'
+  }
+};
+
+const i18n = new I18n(locale);
 
 describe('VerticalNav', () => {
   it('shows the vertical nav links', () => {
     const relatedSites = [{ label: 'Related Site 1', link: 'example.com' }];
     const navigationLinks = [{ label: 'all', active: true, href: 'http://search.gov' }];
 
-    render(<VerticalNav relatedSites={relatedSites} navigationLinks={navigationLinks} />);
+    render(
+      <LanguageContext.Provider value={i18n} >
+        <VerticalNav relatedSites={relatedSites} navigationLinks={navigationLinks} />
+      </LanguageContext.Provider>
+    );
+
+    const all = screen.getByText(/all/i);
+    expect(all).toBeInTheDocument();
     
     const moreLink = screen.getByText(/More/i);
-    const relatedSitesLink = screen.getByText(/Related Sites/i);
     expect(moreLink).toBeInTheDocument();
+
+    fireEvent.click(moreLink);
+
+    const relatedSitesLink = screen.getByText(/Related Searches/i);
     expect(relatedSitesLink).toBeInTheDocument();
 
-    const moreLinkBtn = screen.getByTestId('moreBtn');
-    const [moreLinkChild] = screen.getAllByText(/Link 1/i);
-    fireEvent.click(moreLinkBtn);
-    expect(moreLinkChild).toBeInTheDocument();
-
-    const relatesSitesBtn = screen.getByTestId('relatedSitesBtn');
     const [relatedSitesChild] = screen.getAllByText(/Related Site 1/i);
-    fireEvent.click(relatesSitesBtn);
     expect(relatedSitesChild).toBeInTheDocument();
   });
 });
