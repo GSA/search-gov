@@ -3,28 +3,16 @@ import { GridContainer, Header, PrimaryNav } from '@trussworks/react-uswds';
 import { NavigationLink } from '../SearchResultsLayout';
 import { LanguageContext } from '../../contexts/LanguageContext';
 import { DropDownMenu } from './DropDownMenu';
+import { getTextWidth } from '../../utils';
 
 import './VerticalNav.css';
 
-const getTextWidth = (text: string) => {
-  const canvas = document.createElement('canvas');
-  const context = canvas.getContext('2d');
-
-  if (context) {
-    context.font = getComputedStyle(document.body).font;
-
-    return context.measureText(text).width;
-  }
-
-  return 0;
-};
+const buildLink = ({ active, label, href }: NavigationLink, key = 0) => <a href={href} key={key} className={ active && 'usa-current' || '' }>{label}</a>;
 
 interface VerticalNavProps {
   relatedSites?: {label: string, link: string}[];
   navigationLinks: NavigationLink[];
 }
-
-const buildLink = ({ active, label, href }: NavigationLink, key = 0) => <a href={href} key={key} className={ active && 'usa-current' || '' }>{label}</a>;
 
 export const VerticalNav = ({ relatedSites = [], navigationLinks = [] }: VerticalNavProps) => {
   const i18n = useContext(LanguageContext);

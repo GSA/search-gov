@@ -31,3 +31,16 @@ export const truncateUrl = (text: string | undefined, length: number): string =>
 const stripProtocols = (url: string): string => {
   return url.replace(/(^\w+:|^)\/\//, '');
 };
+
+export const getTextWidth = (text: string) => {
+  const canvas = document.createElement('canvas');
+  const context = canvas.getContext('2d');
+
+  if (context) {
+    context.font = getComputedStyle(document.body).font;
+
+    return context.measureText(text).width;
+  }
+
+  return 0;
+};
