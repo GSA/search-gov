@@ -115,7 +115,7 @@ describe ReactHelper do
     context 'with an affiliate with navigations' do
       let(:navigation_links) do
         [
-          { active: true, label: 'search', href: '/search?query=chocolate'},
+          { active: true, label: 'search', href: '/search?query=chocolate' },
           { active: false, label: 'Usa Gov Blog', href: '/search/news?channel=321734936&query=chocolate' },
           { active: false, label: 'USAGov Collection', href: '/search/docs?dc=40842210&query=chocolate' }
         ]
