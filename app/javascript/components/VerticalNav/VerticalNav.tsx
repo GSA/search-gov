@@ -2,13 +2,9 @@ import React, { useState, useEffect, useContext, ReactNode } from 'react';
 import { GridContainer, Header, NavDropDownButton, Menu, PrimaryNav } from '@trussworks/react-uswds';
 import { NavigationLink } from '../SearchResultsLayout';
 import { LanguageContext } from '../../contexts/LanguageContext';
+import { DropDownMenu } from './DropDownMenu';
 
 import './VerticalNav.css';
-
-interface VerticalNavProps {
-  relatedSites?: {label: string, link: string}[];
-  navigationLinks: NavigationLink[];
-}
 
 const getTextWidth = (text: string) => {
   const canvas = document.createElement('canvas');
@@ -23,36 +19,24 @@ const getTextWidth = (text: string) => {
   return 0;
 };
 
+interface VerticalNavProps {
+  relatedSites?: {label: string, link: string}[];
+  navigationLinks: NavigationLink[];
+}
+
+const buildLink = ({ active, label, href }: NavigationLink, key = 0) => <a href={href} key={key} className={ active && 'usa-current' || '' }>{label}</a>;
+
 export const VerticalNav = ({ relatedSites = [], navigationLinks = [] }: VerticalNavProps) => {
   const i18n = useContext(LanguageContext);
-  const [openMore, setOpenMore] = useState(true);
   const [navItems, setNavItems] = useState<ReactNode[]>([]);
   const [navItemsCount, setNavItemsCount] = useState(0);
 
-  const onToggle = (setOpenMore: React.Dispatch<React.SetStateAction<boolean>>) => {
-    console.log(`inside onToggle: ${ openMore }`);
+  const moreTextWidth = getTextWidth(i18n.t('showMore'));
+  const relatedTextWidth = getTextWidth(i18n.t('relatedSearches'));
 
-    setOpenMore((last) => {
-      console.log(`inside setOpenMore: ${ last }`);
-
-      return !last;
-    });
-  };
-
-  const buildLink = ({ active, label, href }: NavigationLink, key = 0) => <a href={href} key={key} className={ active && 'usa-current' || '' }>{label}</a>;
-  const buildNavLink = (label: string, items: ReactNode[]) => {
-    return <>
-      <NavDropDownButton
-        menuId="nav-menu"
-        onToggle={(): void => {
-          onToggle(setOpenMore);
-        }}
-        isOpen={openMore}
-        label={i18n.t(label)}
-      />
-      <Menu key={navItemsCount} items={items} isOpen={openMore} id="nav-menu" />
-    </>;
-  };
+  const itemToAddWidth = () => currentNavItemWidth() + (isLastItem() ? moreTextWidth : relatedTextWidth) + 100;
+  const currentNavItemWidth = () => getTextWidth(navigationLinks[navItemsCount].label) + 100;
+  const isLastItem = () => navItemsCount === navigationLinks.length - 1;
 
   const isThereEnoughSpace = () => {
     const container = document.getElementById('tabs-container');
@@ -68,10 +52,6 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [] }: Vertica
     return false;
   };
 
-  const itemToAddWidth = () => isLastItem() ? (currentNavItemWidth() + 160) : currentNavItemWidth();
-  const currentNavItemWidth = () => getTextWidth(navigationLinks[navItemsCount].label) + 100;
-  const isLastItem = () => navItemsCount === navigationLinks.length - 1;
-
   useEffect(() => {
     if ((navItemsCount < navigationLinks.length) && isThereEnoughSpace()) {
       setNavItems([...navItems, buildLink(navigationLinks[navItemsCount], navItemsCount)]);
@@ -79,19 +59,18 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [] }: Vertica
       setNavItemsCount(navItemsCount + 1);
     } else {
       let items = navigationLinks.slice(navItemsCount).map(buildLink);
-      const itemsLeft = items.length;
+      let label = '';
 
-      if (itemsLeft) {
-        items.push(<><hr /><i className="text-base-light">Related Sites</i></>);
-        
-        items = items.concat(relatedSites.map(({ link, label }, index) => <a href={link} key={index + itemsLeft}>{label}</a>));
-
-        setNavItems([...navItems, buildNavLink('showMore', items)]);
+      if (items.length) {
+        items.push(<><hr /><i className="text-base-light">{i18n.t('relatedSearches')}</i></>);
+        items = items.concat(relatedSites.map(({ link, label }, index) => <a href={link} key={index + items.length}>{label}</a>));
+        label = 'showMore';
       } else {
         items = relatedSites.map((site, index) => <a href={site.link} key={index}>{site.label}</a>);
-
-        setNavItems([...navItems, buildNavLink('relatedSearches', items)]);
+        label = 'relatedSearches';
       }
+
+      setNavItems([...navItems, <DropDownMenu label={label} items={items} />]);
     }
   }, [navItemsCount]);
 
