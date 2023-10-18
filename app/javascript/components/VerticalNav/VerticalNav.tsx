@@ -9,6 +9,18 @@ import './VerticalNav.css';
 
 const buildLink = ({ active, label, href }: NavigationLink, key = 0) => <a href={href} key={key} className={ active && 'usa-current' || '' }>{label}</a>;
 
+const isThereEnoughSpace = (itemToAddWidth: number) => {
+  const container = document.getElementById('tabs-container');
+
+  if (container) {
+    const nav = container.getElementsByClassName('usa-nav__primary');
+
+    if (nav && nav[0]) {
+      return container.offsetWidth > ((nav[0] as HTMLElement).offsetWidth + itemToAddWidth);
+    }
+  }
+}
+
 interface VerticalNavProps {
   relatedSites?: {label: string, link: string}[];
   navigationLinks: NavigationLink[];
@@ -26,22 +38,8 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [] }: Vertica
   const currentNavItemWidth = () => getTextWidth(navigationLinks[navItemsCount].label) + 100;
   const isLastItem = () => navItemsCount === navigationLinks.length - 1;
 
-  const isThereEnoughSpace = () => {
-    const container = document.getElementById('tabs-container');
-
-    if (container) {
-      const nav = container.getElementsByClassName('usa-nav__primary');
-
-      if (nav && nav[0]) {
-        return container.offsetWidth > ((nav[0] as HTMLElement).offsetWidth + itemToAddWidth());
-      }
-    }
-
-    return false;
-  };
-
   useEffect(() => {
-    if ((navItemsCount < navigationLinks.length) && isThereEnoughSpace()) {
+    if ((navItemsCount < navigationLinks.length) && isThereEnoughSpace(itemToAddWidth())) {
       setNavItems([...navItems, buildLink(navigationLinks[navItemsCount], navItemsCount)]);
 
       setNavItemsCount(navItemsCount + 1);
