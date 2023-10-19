@@ -9,7 +9,7 @@ import './VerticalNav.css';
 
 const buildLink = ({ active, label, href }: NavigationLink, key = 0) => <a href={href} key={key} className={ active && 'usa-current' || '' }>{label}</a>;
 
-const isThereEnoughSpace = (itemToAddWidth: number) => {
+export const isThereEnoughSpace = (itemToAddWidth: number) => {
   const container = document.getElementById('tabs-container');
 
   if (container) {
@@ -19,7 +19,7 @@ const isThereEnoughSpace = (itemToAddWidth: number) => {
       return container.offsetWidth > ((nav[0] as HTMLElement).offsetWidth + itemToAddWidth);
     }
   }
-}
+};
 
 interface VerticalNavProps {
   relatedSites?: {label: string, link: string}[];

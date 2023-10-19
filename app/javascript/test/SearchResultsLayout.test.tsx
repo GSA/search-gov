@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
-import SearchResultsLayout from '../components/SearchResultsLayout';
+import SearchResultsLayout, { NavigationLink } from '../components/SearchResultsLayout';
 
 const translations = {
   en: {
@@ -24,7 +24,7 @@ const newsLabel = {
   }]
 };
 
-const navigationLinks = [];
+const navigationLinks: NavigationLink[] = [];
 
 jest.mock('i18n-js', () => {
   return jest.requireActual('i18n-js/dist/require/index');
