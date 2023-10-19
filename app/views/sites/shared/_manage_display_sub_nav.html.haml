@@ -2,8 +2,7 @@
   .title Manage Display
 %ul.nav.nav-list
   %li{ site_nav_css_class_hash('displays') }= link_to 'Display Overview', edit_site_display_path(@site)
-  - if @site.use_redesigned_results_page
-    %li{ site_nav_css_class_hash('visual_designs') }= link_to t('sites.visual_designs.edit.visual_design',
+  %li{ site_nav_css_class_hash('visual_designs') }= link_to t('sites.visual_designs.edit.visual_design',
   scope: 'admin_center'), edit_site_visual_design_path(@site)
   - unless @site.use_redesigned_results_page
     %li{ site_nav_css_class_hash('font_and_colors') }= link_to 'Font & Colors', edit_site_font_and_colors_path(@site)

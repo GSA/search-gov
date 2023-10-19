@@ -229,7 +229,6 @@ Feature: Dashboard
     Then the "Discover and add the RSS feeds and social media accounts listed on the following page:" field should contain "https://www.nih.gov"
 
     When I follow "Display"
-    And the use redesigned results page is disabled for the site "agencygov"
     And I follow "Image Assets"
     Then the "Favicon URL" field should contain "https://www.nih.gov/favicon.ico"
 
