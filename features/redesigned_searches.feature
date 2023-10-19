@@ -328,6 +328,7 @@ Feature: Search - redesign
     Then I should see "Everything"
     And I should see "Topics"
     And I should see "Very very long colllection name one"
+    And I should not see "Related Searches"
     And I press "More"
     And I should see "Very very long colllection name two"
     And I should see "Related Searches"
