@@ -281,3 +281,54 @@ Feature: Search - redesign
     And I should see "A Notice by the Internal Revenue Service, the International Trade Administration and the National Oceanic and Atmospheric Administration posted on June 9, 2014."
     And I should see "Comment period ends in 7 days"
     And I should see "Pages 33040 - 33041 (2 pages) [FR DOC #: 2014-13420]"
+
+  @javascript @a11y
+  Scenario: Search without tabs nor related searches
+    Given the following Affiliates exist:
+      | display_name     | name             | contact_email         | first_name | last_name | domains        |
+      | bar site         | bar.gov          | aff@bar.gov           | John       | Bar       | whitehouse.gov |
+    When I am on bar.gov's redesigned search page
+    Then I should see "Everything"
+    And I should not see "More"
+    And I should not see "Related Searches"
+
+  @javascript @a11y
+  Scenario: Search with tabs and related searches
+    Given the following Affiliates exist:
+      | display_name     | name             | contact_email         | first_name | last_name | domains        |
+      | bar site         | bar.gov          | aff@bar.gov           | John       | Bar       | whitehouse.gov |
+      | other site   | other.gov  | aff@bad.gov   | John       | Bad       | cdc.gov |
+    And affiliate "bar.gov" has the following document collections:
+      | name   | prefixes               | is_navigable |
+      | Topics | http://bar.gov/topics/ | true         |
+    And the following Connections exist for the affiliate "bar.gov":
+      | connected_affiliate   |   display_name    |
+      | other.gov             |   Other Site      |
+    When I am on bar.gov's redesigned search page
+    Then I should see "Everything"
+    And I should see "Topics"
+    And I press "Related Searches"
+    And I should see "Other Site"
+
+  @javascript @a11y
+  Scenario: Search with too many tabs
+    Given the following Affiliates exist:
+      | display_name     | name             | contact_email         | first_name | last_name | domains        |
+      | bar site         | bar.gov          | aff@bar.gov           | John       | Bar       | whitehouse.gov |
+      | other site   | other.gov  | aff@bad.gov   | John       | Bad       | cdc.gov |
+    And affiliate "bar.gov" has the following document collections:
+      | name                                | prefixes               | is_navigable |
+      | Topics                              | http://bar.gov/topics/ | true         |
+      | Very very long colllection name one | http://bar.gov/one/    | true         |
+      | Very very long colllection name two | http://bar.gov/two/    | true         |
+    And the following Connections exist for the affiliate "bar.gov":
+      | connected_affiliate   |   display_name    |
+      | other.gov             |   Other Site      |
+    When I am on bar.gov's redesigned search page
+    Then I should see "Everything"
+    And I should see "Topics"
+    And I should see "Very very long colllection name one"
+    And I press "More"
+    And I should see "Very very long colllection name two"
+    And I should see "Related Searches"
+    And I should see "Other Site"

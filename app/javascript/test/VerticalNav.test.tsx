@@ -64,7 +64,7 @@ describe('VerticalNav', () => {
   });
 
   describe('there is space to render only one tab', () => {
-    it('shows tab and more button', ()=> {
+    it('shows tab and more button', () => {
       jest.spyOn(VNav, 'isThereEnoughSpace').mockReturnValueOnce(true).mockReturnValueOnce(false);
 
       const relatedSites = [{ label: 'Related Site 1', link: 'example.com' }];

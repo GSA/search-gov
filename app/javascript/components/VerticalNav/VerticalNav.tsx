@@ -45,18 +45,21 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [] }: Vertica
       setNavItemsCount(navItemsCount + 1);
     } else {
       let items = navigationLinks.slice(navItemsCount).map(buildLink);
-      let label = '';
 
       if (items.length) {
-        items.push(<><hr /><i className="text-base-light">{i18n.t('relatedSearches')}</i></>);
-        items = items.concat(relatedSites.map(({ link, label }, index) => <a href={link} key={index + items.length}>{label}</a>));
-        label = 'showMore';
-      } else {
-        items = relatedSites.map((site, index) => <a href={site.link} key={index}>{site.label}</a>);
-        label = 'relatedSearches';
-      }
+        if (relatedSites.length) {
+          items.push(<><hr /><i className="text-base-light">{i18n.t('relatedSearches')}</i></>);
+          items = items.concat(relatedSites.map(({ link, label }, index) => <a href={link} key={index + items.length}>{label}</a>));
+        }
 
-      setNavItems([...navItems, <DropDownMenu key={navItemsCount} label={label} items={items} />]);
+        setNavItems([...navItems, <DropDownMenu key={navItemsCount} label='showMore' items={items} />]);
+      } else {
+        if (relatedSites.length) {
+          items = relatedSites.map((site, index) => <a href={site.link} key={index}>{site.label}</a>);
+
+          setNavItems([...navItems, <DropDownMenu key={navItemsCount} label='relatedSearches' items={items} />]);
+        }
+      }
     }
   }, [navItemsCount]);
 
