@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext, ReactNode } from 'react';
 import { GridContainer, Header, PrimaryNav } from '@trussworks/react-uswds';
-import { NavigationLink } from '../SearchResultsLayout';
-import { LanguageContext } from '../../contexts/LanguageContext';
+
 import { DropDownMenu } from './DropDownMenu';
+import { LanguageContext } from '../../contexts/LanguageContext';
+import { NavigationLink } from '../SearchResultsLayout';
 import { getTextWidth } from '../../utils';
 
 import './VerticalNav.css';
