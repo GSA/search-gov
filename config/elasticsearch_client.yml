@@ -2,8 +2,8 @@ default: &DEFAULT
   log: true
   log_level: INFO
   randomize_hosts: true
-  reload_connections: true
-  reload_on_failure: true
+  reload_connections: false
+  reload_on_failure: false
   retry_on_failure: 1
 
 development:
