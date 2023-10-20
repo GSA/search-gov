@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Footer as UswdsFooter, GridContainer, FooterNav, Address } from '@trussworks/react-uswds';
+import { LanguageContext } from '../../contexts/LanguageContext';
 
 import './Footer.css';
 
 export const Footer = () => {
+  const i18n = useContext(LanguageContext);
+
   const returnToTop = (
     <GridContainer className="usa-footer__return-to-top">
-      <a href="#">Return to top</a>
+      <a href="#">
+        {i18n.t('returnToTop')}
+      </a>
     </GridContainer>
   );
 

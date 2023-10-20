@@ -4,11 +4,31 @@ module ReactHelper
   def search_results_layout(search, params, vertical, affiliate)
     data = {
       additionalResults: search.govbox_set,
-      locale: YAML.load_file("config/locales/#{affiliate.locale}.yml"),
-      noResultsMessage: (search.affiliate.no_results_error if search.results.blank? && search.query.present?),
+      alert: search_page_alert(affiliate.alert),
+      currentLocale: affiliate.locale,
+      extendedHeader: affiliate.use_extended_header,
+      fontsAndColors: affiliate.visual_design_json,
+      navigationLinks: navigation_links(search, params),
+      newsLabel: news_label(search),
+      noResultsMessage: no_result_message(search),
       params: params,
-      relatedSites: related_sites(affiliate.connections, search.query),
+      relatedSearches: related_searches(search),
+      relatedSites: related_sites(search),
       resultsData: search.normalized_results,
+      translations: translations(affiliate.locale),
+      vertical: vertical
+    }
+
+    react_component('SearchResultsLayout', data.compact_blank)
+  end
+
+  def image_search_results_layout(search, params, vertical, affiliate)
+    data = {
+      extendedHeader: affiliate.use_extended_header,
+      fontsAndColors: affiliate.visual_design_json,
+      locale: YAML.load_file("config/locales/#{affiliate.locale}.yml"),
+      params: params,
+      resultsData: search.format_results,
       vertical: vertical
     }
 
@@ -17,11 +37,63 @@ module ReactHelper
 
   private
 
-  def related_sites(connections, query)
+  def related_searches(search)
+    return [] if search.is_a?(NewsSearch) || search.related_search.nil?
+
+    search.related_search.map do |related_term|
+      {
+        label: related_term,
+        link: search_path(affiliate: search.affiliate.name, query: strip_tags(related_term))
+      }
+    end
+  end
+
+  def news_label(search)
+    return if search.query.blank? || search.is_a?(NewsSearch)
+
+    affiliate = search.affiliate
+    {
+      newsAboutQuery: news_about_query(affiliate, search.query),
+      results: news_items_results(affiliate, search)
+    }
+  end
+
+  def no_result_message(search)
+    return unless search.results.blank? && search.query.present?
+
+    search.affiliate.no_results_error
+  end
+
+  def translations(locale)
+    I18n.backend.translations.slice(:en, locale.to_sym)
+  end
+
+  def search_page_alert(alert)
+    return if !alert || (alert.text.blank? && alert.title.blank?)
+
+    alert.slice('text', 'title')
+  end
+
+  def related_sites(search)
+    connections = search.affiliate.connections
     connections.map do |connection|
       {
         label: connection.label,
-        link: search_url(affiliate: connection.connected_affiliate.name, query: query)
+        link: search_url(affiliate: connection.connected_affiliate.name, query: search.query)
+      }
+    end
+  end
+
+  def navigation_links(search, search_params)
+    non_default_search_navigable = detect_non_default_search_navigable(search)
+
+    renderable_navigations(search).map do |navigation|
+      navigable = navigation.navigable
+
+      {
+        active: non_default_search_navigable == navigable,
+        label: navigable.name,
+        link: navigable_path(navigable, search, search_params)
       }
     end
   end

@@ -1,0 +1,88 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.datadoghq.com/api/v1/events?api_key=<DATADOG_API_KEY>
+    body:
+      encoding: UTF-8
+      base64_string: |
+        eyJtc2dfdGV4dCI6IiUlJVxuIyMjICoqUmVxdWVzdCoqXG4qKlVSTDoqKiBo
+        dHRwOi8vMTI3LjAuMC4xOjU3NjgzL3NlYXJjaD9hZmZpbGlhdGU9aGVhbHRo
+        Y2FyZS5nb3YmcmVkZXNpZ249PERBVEFET0dfQVBJX0VOQUJMRUQ+XG4qKkhU
+        VFAgTWV0aG9kOioqIEdFVFxuKipJUCBBZGRyZXNzOioqIDEyNy4wLjAuMVxu
+        KipQYXJhbWV0ZXJzOioqIHtcImFmZmlsaWF0ZVwiPT5cImhlYWx0aGNhcmUu
+        Z292XCIsIFwicmVkZXNpZ25cIj0+XCI8REFUQURPR19BUElfRU5BQkxFRD5c
+        IiwgXCJjb250cm9sbGVyXCI9Plwic2VhcmNoZXNcIiwgXCJhY3Rpb25cIj0+
+        XCJpbmRleFwiLCBcImZvcm1hdFwiPT5cImh0bWxcIn1cbioqVGltZXN0YW1w
+        OioqIDIwMjMtMDktMTkgMTY6MzI6MzQgVVRDXG4qKlNlcnZlcjoqKiBGQ09I
+        MkotNjY2QzZSRDZcbioqUmFpbHMgcm9vdDoqKiAvVXNlcnMvc3RldmVuYmFy
+        cmFnYW5uYXJhbmovd29ya3NwYWNlL3NlYXJjaC1nb3ZcbioqUHJvY2Vzczoq
+        KiAzOTgwN1xuX19fXG4jIyMgKipTZXNzaW9uKipcbioqRGF0YToqKiB7fVxu
+        X19fXG4jIyMgKipCYWNrdHJhY2UqKlxuYGBgYFxuYXBwL2hlbHBlcnMvcmVh
+        Y3RfaGVscGVyLnJiOjI3OmluIGByZWxhdGVkX3NlYXJjaGVzJ1xuYXBwL2hl
+        bHBlcnMvcmVhY3RfaGVscGVyLnJiOjEyOmluIGBzZWFyY2hfcmVzdWx0c19s
+        YXlvdXQnXG5hcHAvdmlld3Mvc2VhcmNoZXMvaW5kZXhfcmVkZXNpZ24uaHRt
+        bC5oYW1sOjFcbmBgYGBcbl9fX1xuJSUlIiwiZGF0ZV9oYXBwZW5lZCI6MTY5
+        NTE0MTE1NCwibXNnX3RpdGxlIjoic2VhcmNoZXMgaW5kZXggKEFjdGlvblZp
+        ZXc6OlRlbXBsYXRlOjpFcnJvcikgXCJ1bmRlZmluZWQgbWV0aG9kIGBtYXAn
+        IGZvciBuaWw6TmlsQ2xhc3NcIiIsInByaW9yaXR5Ijoibm9ybWFsIiwicGFy
+        ZW50IjpudWxsLCJ0YWdzIjpbXSwiYWdncmVnYXRpb25fa2V5IjoiW1wic2Vh
+        cmNoZXMgaW5kZXggKEFjdGlvblZpZXc6OlRlbXBsYXRlOjpFcnJvcikgXFxc
+        InVuZGVmaW5lZCBtZXRob2QgYG1hcCcgZm9yIG5pbDpOaWxDbGFzc1xcXCJc
+        Il0iLCJhbGVydF90eXBlIjoiZXJyb3IiLCJldmVudF90eXBlIjpudWxsLCJz
+        b3VyY2VfdHlwZV9uYW1lIjpudWxsLCJ0aXRsZSI6InNlYXJjaGVzIGluZGV4
+        IChBY3Rpb25WaWV3OjpUZW1wbGF0ZTo6RXJyb3IpIFwidW5kZWZpbmVkIG1l
+        dGhvZCBgbWFwJyBmb3IgbmlsOk5pbENsYXNzXCIiLCJ0ZXh0IjoiJSUlXG4j
+        IyMgKipSZXF1ZXN0KipcbioqVVJMOioqIGh0dHA6Ly8xMjcuMC4wLjE6NTc2
+        ODMvc2VhcmNoP2FmZmlsaWF0ZT1oZWFsdGhjYXJlLmdvdiZyZWRlc2lnbj08
+        REFUQURPR19BUElfRU5BQkxFRD5cbioqSFRUUCBNZXRob2Q6KiogR0VUXG4q
+        KklQIEFkZHJlc3M6KiogMTI3LjAuMC4xXG4qKlBhcmFtZXRlcnM6Kioge1wi
+        YWZmaWxpYXRlXCI9PlwiaGVhbHRoY2FyZS5nb3ZcIiwgXCJyZWRlc2lnblwi
+        PT5cIjxEQVRBRE9HX0FQSV9FTkFCTEVEPlwiLCBcImNvbnRyb2xsZXJcIj0+
+        XCJzZWFyY2hlc1wiLCBcImFjdGlvblwiPT5cImluZGV4XCIsIFwiZm9ybWF0
+        XCI9PlwiaHRtbFwifVxuKipUaW1lc3RhbXA6KiogMjAyMy0wOS0xOSAxNjoz
+        MjozNCBVVENcbioqU2VydmVyOioqIEZDT0gySi02NjZDNlJENlxuKipSYWls
+        cyByb290OioqIC9Vc2Vycy9zdGV2ZW5iYXJyYWdhbm5hcmFuai93b3Jrc3Bh
+        Y2Uvc2VhcmNoLWdvdlxuKipQcm9jZXNzOioqIDM5ODA3XG5fX19cbiMjIyAq
+        KlNlc3Npb24qKlxuKipEYXRhOioqIHt9XG5fX19cbiMjIyAqKkJhY2t0cmFj
+        ZSoqXG5gYGBgXG5hcHAvaGVscGVycy9yZWFjdF9oZWxwZXIucmI6Mjc6aW4g
+        YHJlbGF0ZWRfc2VhcmNoZXMnXG5hcHAvaGVscGVycy9yZWFjdF9oZWxwZXIu
+        cmI6MTI6aW4gYHNlYXJjaF9yZXN1bHRzX2xheW91dCdcbmFwcC92aWV3cy9z
+        ZWFyY2hlcy9pbmRleF9yZWRlc2lnbi5odG1sLmhhbWw6MVxuYGBgYFxuX19f
+        XG4lJSUiLCJob3N0IjoiRkNPSDJKLTY2NkM2UkQ2IiwiZGV2aWNlIjpudWxs
+        fQ==
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - dogapi-rb/1.45.0 (ruby 3.0.6; os darwin21; arch arm64)
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      Date:
+      - Tue, 19 Sep 2023 16:32:35 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '170'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Via:
+      - haproxy
+    body:
+      encoding: UTF-8
+      base64_string: |
+        eyJzdGF0dXMiOiJlcnJvciIsImNvZGUiOjQwMywiZXJyb3JzIjpbIkZvcmJp
+        ZGRlbiJdLCJzdGF0dXNwYWdlIjoiaHR0cDovL3N0YXR1cy5kYXRhZG9naHEu
+        Y29tIiwidHdpdHRlciI6Imh0dHA6Ly90d2l0dGVyLmNvbS9kYXRhZG9nb3Bz
+        IiwiZW1haWwiOiJzdXBwb3J0QGRhdGFkb2docS5jb20ifQo=
+  recorded_at: Tue, 19 Sep 2023 16:32:35 GMT
+recorded_with: VCR 6.2.0

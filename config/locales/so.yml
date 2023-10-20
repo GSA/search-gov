@@ -52,7 +52,8 @@ so:
   page: 'Bog'
   prev_label: "Tii hore "
   next_label: "Tan ku xegto"
-  
+  return_to_top: 
+
   searches:
     by: by
 # Prompt for searchers to skip to main content (most easily seen by tabbing through results page)
@@ -138,3 +139,8 @@ so:
 
 # Label for text best bet when it appears in suggestions via the type-ahead API
   recommended_pages:
+
+# Labels for USWDS Identifier component
+  official_website_of: 
+  looking_for_us_gov_info: 
+  visit_usa_dot_gov:  # This link will go to the main English language USA.gov site

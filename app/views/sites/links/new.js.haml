@@ -1,0 +1,10 @@
+:plain
+  jQuery("##{@html_id} tbody").append("#{escape_javascript(render('new'))}");
+  jQuery("##{@html_id}").tableDnDUpdate();
+  jQuery("##{@html_id} tbody .title").last().focus();
+  jQuery("#new-#{@html_id}-trigger").data("params", {position: "#{ @index + 1 }", type: "#{ @link.class }"});
+  window.usasearch.setupVisualDesignFormDnD();
+
+- if @link.is_a?(SecondaryHeaderLink) && @index >= 2
+  :plain
+    jQuery("#new-#{@html_id}-trigger").remove();

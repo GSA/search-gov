@@ -3,6 +3,10 @@ en:
   admin_center:
     actions:
       toggle_on: 'ON'
+    footer_links: Footer links
+    identifier_links: Identifier links
+    primary_header_links: Primary header links
+    secondary_header_links: Secondary header links
     sites:
       displays:
         sidebar:
@@ -12,6 +16,10 @@ en:
           search_tabs_navigation: Search Tabs Navigation
           setting: Setting
           source: Source
+      links:
+        form:
+          indexed_title: "%{type} title %{index}"
+          indexed_url: "%{type} URL %{index}"
       visual_designs:
         edit:
           preview_button: Preview Redesigned Display
@@ -54,17 +62,29 @@ en:
             secondary_header_background_color: Secondary header background color
             section_title_color: Section title color
           fonts:
-            georgia: Georgia
-            helvetica: Helvetica neue
-            merriweather: Merriweather
-            public-sans: Public sans
-            roboto-mono: Roboto mono
-            source-sans-pro: Source sans pro
-            system: System
-            tahoma: Tahoma
+            "'Georgia', 'Cambria', 'Times New Roman', 'Times', serif": Georgia
+            "'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif": Helvetica neue
+            "'Merriweather Web', 'Georgia', 'Cambria', 'Times New Roman', 'Times', serif": Merriweather
+            ? "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
+            : Public sans
+            "'Roboto Mono Web', 'Bitstream Vera Sans Mono', 'Consolas', 'Courier', monospace": Roboto mono
+            "'Source Sans Pro','Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif": Source sans pro
+            ? "'Tahoma', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
+            : Tahoma
+            ? "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
+            : System
           fonts_and_colors: Fonts & Colors
           footer_and_results_font_family: Footer and Results Font Family
           header_links_font_family: Header Links Font Family
+        header_and_footer:
+          header_and_footer: Header and footer
+          header_layout: Header layout
+          identifier: Identifier
+          identifier_domain_name: Identifier domain name
+          parent_agency_link: Parent agency link
+          parent_agency_name: Parent agency name
+          use_basic_header: Use basic header
+          use_extended_header: Use extended header
         image_assets:
           alt_text: "%{image_type} alt text"
           favicon_url: Favicon URL
@@ -74,3 +94,16 @@ en:
           image_help_text: GIF, JPG or PNG with maximum size of %{max_file_size} KB
           logo: Logo
           mark_for_deletion: Mark %{image_type} for deletion
+        links:
+          add_new: Add new %{type}
+          limit: "(Limit of 3)"
+          title: Title
+          url: URL
+        results_format:
+          display_created_date_on_search_results: Display created date on search results?
+          display_filetype_on_search_results: Display filetype on search results?
+          display_image_on_search_results: Display image on search results?
+          display_updated_date_on_search_results: Display updated date on search results?
+          name: Name
+          results_format: Results format
+          setting: Setting

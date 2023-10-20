@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
+import { LanguageContext } from '../../../contexts/LanguageContext';
 
 import { TextBestBet } from './TextBestBet';
 import { GraphicsBestBet } from './GraphicsBestBet';
@@ -21,10 +22,11 @@ interface BestBetsProps {
       url: string;
     }[];
   }
-  parse(html: string): string | JSX.Element | JSX.Element[]; // eslint-disable-line no-undef
 }
 
-export const BestBets = ({ recommendedBy, textBestBets = [], graphicsBestBet, parse }: BestBetsProps) => {
+export const BestBets = ({ recommendedBy, textBestBets = [], graphicsBestBet }: BestBetsProps) => {
+  const i18n = useContext(LanguageContext);
+
   return (
     <>
       {(textBestBets?.length > 0 || graphicsBestBet) && (
@@ -32,14 +34,13 @@ export const BestBets = ({ recommendedBy, textBestBets = [], graphicsBestBet, pa
           <Grid row gap="md" id="best-bets">
             <Grid col={true}>
               <GridContainer className='best-bets-title'>
-                Recommended by {recommendedBy}
+                {i18n.t('recommended')} {i18n.t('searches.by')} {recommendedBy}
               </GridContainer>
               {textBestBets?.map((textBestBet, index) => {
                 return (
                   <React.Fragment key={index}>
                     <TextBestBet
                       {...textBestBet}
-                      parse={parse}
                     />
                   </React.Fragment>
                 );
@@ -47,7 +48,6 @@ export const BestBets = ({ recommendedBy, textBestBets = [], graphicsBestBet, pa
               {graphicsBestBet && (
                 <GraphicsBestBet
                   {...graphicsBestBet}
-                  parse={parse}
                 />
               )}
             </Grid>

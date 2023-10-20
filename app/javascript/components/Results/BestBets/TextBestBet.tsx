@@ -1,14 +1,14 @@
 import React from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
+import parse from 'html-react-parser';
 
 interface TextBestBetProps {
   title: string;
   url: string;
   description: string;
-  parse(html: string): string | JSX.Element | JSX.Element[] // eslint-disable-line no-undef
 }
 
-export const TextBestBet = ({ title, url, description, parse }: TextBestBetProps) => {
+export const TextBestBet = ({ title, url, description }: TextBestBetProps) => {
   return (
     <GridContainer className='result search-result-item boosted-content'>
       <Grid row gap="md">

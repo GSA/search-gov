@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
 import parse from 'html-react-parser';
 
 import { Pagination } from './../Pagination/Pagination';
 import { BestBets } from './BestBets';
 import { NoResults } from './NoResults/NoResults';
-// import { HealthTopics } from './HealthTopics/HealthTopics';
+import { LanguageContext } from '../../contexts/LanguageContext';
+
+import { HealthTopics } from './HealthTopics/HealthTopics';
 // import { ImagesPage } from './ImagesPage/ImagesPage';
-// import { RssNews } from './RssNews/RssNews';
+import { RssNews } from './RssNews/RssNews';
 // import { Videos } from './Videos/Videos';
 // import { FedRegister } from './FedRegister/FedRegister';
-// import { Jobs } from './Jobs/Jobs';
+import { Jobs } from './Jobs/Jobs';
 
 import { truncateUrl } from '../../utils';
 
@@ -23,6 +25,7 @@ interface ResultsProps {
     url: string,
     description: string,
     updatedDate?: string,
+    publishedAt?: string,
     publishedDate?: string,
     thumbnailUrl?: string
   }[] | null;
@@ -42,39 +45,86 @@ interface ResultsProps {
         title: string;
         url: string;
       }[];
-    }
+    };
+    oldNews?: {
+      title: string;
+      link: string;
+      description: string;
+      publishedAt: string;
+    }[];
+    newNews?: {
+      title: string;
+      link: string;
+      description: string;
+      publishedAt: string;
+    }[];
+    jobs?: {
+      positionTitle: string;
+      positionUri: string;
+      positionLocationDisplay: string;
+      organizationName: string;
+      minimumPay: number;
+      maximumPay: number;
+      rateIntervalCode: string;
+      applicationCloseDate: string;
+    }[];
+    healthTopic?: {
+      description: string;
+      title: string;
+      url: string;
+      relatedTopics?: {
+        title: string;
+        url: string;
+      }[];
+      studiesAndTrials?: {
+        title: string;
+        url: string;
+      }[];
+    };
   } | null;
   unboundedResults: boolean;
   totalPages: number | null;
   vertical: string;
-  locale: {
-    t(key: string, values: Record<string, string>): string;
-  };
+  newsAboutQuery?: string;
 }
 
-export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical, locale }: ResultsProps) => {
+// eslint-disable-next-line complexity
+export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical, newsAboutQuery = '' }: ResultsProps) => {
+  const i18n = useContext(LanguageContext);
   const URL_LENGTH = 80;
+
   return (
     <>
       <div className='search-result-wrapper'>
         {additionalResults && (
           <BestBets
             {...additionalResults}
-            parse={parse}
           />
         )}
+
         <div id="results" className="search-result-item-wrapper">
-          {/* Jobs - To Do as part of backend integration */}
-          {/* <Jobs /> */}
+          {/* RSS - new news */}
+          {additionalResults?.newNews && 
+            <RssNews 
+              news={additionalResults.newNews} 
+              newsLabel={newsAboutQuery}
+            />
+          }
+
+          {additionalResults?.jobs && 
+            <Jobs 
+              jobs={additionalResults.jobs}
+            />
+          }
           
-          {/* Health topics - To Do as part of backend integration */}
-          {/* <HealthTopics /> */}
+          {additionalResults?.healthTopic && 
+            <HealthTopics 
+              {...additionalResults.healthTopic}
+            />
+          }
 
           {/* Image page Components - To do with its integration task */}
           {/* <ImagesPage /> */}
-          
-          {/* RSS module/page - To do with its integration task */}
-          {/* <RssNews /> */}
 
           {/* Video module/page - To do with its integration task */}
           {/* <Videos /> */}
@@ -82,39 +132,54 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
           {/* Federal register - To do with its integration task */}
           {/* <FedRegister /> */}
 
-          {results && results.length > 0 ? (results.map((result, index) => {
-            return (
-              <GridContainer key={index} className='result search-result-item'>
+          {/* Results */}
+          {results && results.length > 0 ? 
+            <> 
+              {results.map((result, index) => {
+                return (
+                  <GridContainer key={index} className='result search-result-item'>
+                    <Grid row gap="md">
+                      {vertical === 'image' &&
+                      <Grid mobileLg={{ col: 4 }} className='result-thumbnail'>
+                        <img src={result.thumbnailUrl} className="result-image" alt={result.title}/>
+                      </Grid>
+                      }
+                      <Grid col={true} className='result-meta-data'>
+                        {result.publishedDate && (<span className='published-date'>{result.publishedDate}</span>)}
+                        {result.updatedDate && (<span className='published-date'>{' '}&#40;Updated on {result.updatedDate}&#41;</span>)}
+                        <div className='result-title'>
+                          <a href={result.url} className='result-title-link'>
+                            <h2 className='result-title-label'>
+                              {parse(result.title)} 
+                              {/* ToDo: This need to be dynamic */}
+                              <span className='filetype-label'>PDF</span>
+                            </h2>
+                          </a>
+                        </div>
+                        <div className='result-desc'>
+                          <p>{parse(result.description)}</p>
+                          <div className='result-url-text'>{truncateUrl(result.url, URL_LENGTH)}</div>
+                        </div>
+                      </Grid>
+                    </Grid>
+                    <Grid row className="row-mobile-divider"></Grid>
+                  </GridContainer>
+                );
+              })}
+              <GridContainer className='result-divider'>
                 <Grid row gap="md">
-                  {vertical === 'image' &&
-                  <Grid mobileLg={{ col: 4 }} className='result-thumbnail'>
-                    <img src={result.thumbnailUrl} className="result-image" alt={result.title}/>
-                  </Grid>
-                  }
-                  <Grid col={true} className='result-meta-data'>
-                    {result.publishedDate && (<span className='published-date'>{result.publishedDate}</span>)}
-                    {result.updatedDate && (<span className='published-date'>{' '}&#40;Updated on {result.updatedDate}&#41;</span>)}
-                    <div className='result-title'>
-                      <a href={result.url} className='result-title-link'>
-                        <h2 className='result-title-label'>
-                          {parse(result.title)} 
-                          {/* ToDo: This need to be dynamic */}
-                          <span className='filetype-label'>PDF</span>
-                        </h2>
-                      </a>
-                    </div>
-                    <div className='result-desc'>
-                      <p>{parse(result.description)}</p>
-                      <div className='result-url-text'>{truncateUrl(result.url, URL_LENGTH)}</div>
-                    </div>
-                  </Grid>
                 </Grid>
-                <Grid row className="row-mobile-divider"></Grid>
-              </GridContainer>
-            );
-          })) : (
-            <NoResults errorMsg={locale.t('noResultsForAndTry', { query })} />
-          )}
+              </GridContainer></> : (
+              <NoResults errorMsg={i18n.t('noResultsForAndTry', { query })} />
+            )}
+
+          {/* RSS - old news */}
+          {additionalResults?.oldNews && 
+            <RssNews 
+              news={additionalResults.oldNews} 
+              newsLabel={newsAboutQuery}
+            />
+          }
         </div>
       </div>
       <Pagination 
