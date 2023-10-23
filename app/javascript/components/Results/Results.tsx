@@ -82,8 +82,8 @@ interface ResultsProps {
       }[];
     };
     federalRegisterDocuments?: {
-      commentsCloseOn: string;
-      contributingAgencyNames: [string];
+      commentsCloseOn: string | null;
+      contributingAgencyNames: string[];
       documentNumber: string;
       documentType: string;
       endPage: number;
@@ -193,7 +193,7 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
             />
           }
 
-          {/* Federal register - To do with its integration task */}
+          {/* Federal register */}
           {additionalResults?.federalRegisterDocuments && 
             <FedRegister fedRegisterDocs = {additionalResults.federalRegisterDocuments}/>
           }

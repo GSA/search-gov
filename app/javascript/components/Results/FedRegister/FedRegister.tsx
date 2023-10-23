@@ -3,8 +3,8 @@ import { GridContainer, Grid } from '@trussworks/react-uswds';
 import parse from 'html-react-parser';
 
 type FedRegisterDoc = {
-  commentsCloseOn: string;
-  contributingAgencyNames: [string];
+  commentsCloseOn: string | null;
+  contributingAgencyNames: string[];
   documentNumber: string;
   documentType: string;
   endPage: number;
@@ -27,7 +27,7 @@ const getFedRegDocInfo = (document: FedRegisterDoc) => {
   return `A ${docType} ${agenciesHtml} posted on ${pubDate}.`;
 };
 
-const getFedRegisterAgenciesText = (agencyNames: [string]) => {
+const getFedRegisterAgenciesText = (agencyNames: string[]) => {
   const agencyText = agencyNames.sort().map((name) => name);
   const lastAgencyText = agencyText.pop();
   let agencies = `by the ${agencyText.join(', the ')}`;

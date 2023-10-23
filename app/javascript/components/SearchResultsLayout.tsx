@@ -76,8 +76,8 @@ interface SearchResultsLayoutProps {
       duration: string;
     }[];
     federalRegisterDocuments?: {
-      commentsCloseOn: string;
-      contributingAgencyNames: [string];
+      commentsCloseOn: string | null;
+      contributingAgencyNames: string[];
       documentNumber: string;
       documentType: string;
       endPage: number;
@@ -147,48 +147,7 @@ const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params 
   i18n.defaultLocale = 'en';
   i18n.enableFallback = true;
   i18n.locale = currentLocale;
-
-  // additionalResults.federalRegisterDocuments = [
-  //   {
-  //     title: "Expand the Definition of a Public Assistance Household",
-  //     htmlUrl: "https://gsa.gov/",
-  //     commentsCloseOn: "October 12, 2023",
-  //     contributingAgencyNames: ["Social Security Administarion"],
-  //     documentNumber: "2016-10932",
-  //     documentType: "Proposed Rule",
-  //     publicationDate: "January 02, 2020",
-  //     startPage: 29212,
-  //     endPage: 29215,
-  //     pageLength: 4
-  //   },
-  //   {
-  //     title: "Unsuccessful Work Attempts and Expedited Reinstatement Eligibility",
-  //     htmlUrl: "https://www.federalregister.gov/articles/2016/05/11/2016-10932/unsuccessful-work-attempts-and-expedited-reinstatement-eligibility",
-  //     commentsCloseOn: "April 05, 2022",
-  //     contributingAgencyNames: ["Social Security Administarion"],
-  //     documentNumber: "2013-18148",
-  //     documentType: "Rule",
-  //     publicationDate: "January 02, 2020",
-  //     startPage: 29212,
-  //     endPage: 29215,
-  //     pageLength: 5
-  //   },
-  //   {
-  //     title: "Unsuccessful Work Attempts and Expedited Reinstatement Eligibility",
-  //     htmlUrl: "https://www.federalregister.gov/articles/2016/05/11/2016-10932/unsuccessful-work-attempts-and-expedited-reinstatement-eligibility",
-  //     commentsCloseOn: "April 05, 2024",
-  //     contributingAgencyNames: ["Social Security Administarion"],
-  //     documentNumber: "2013-18148",
-  //     documentType: "Rule",
-  //     publicationDate: "January 02, 2020",
-  //     startPage: 29212,
-  //     endPage: 29215,
-  //     pageLength: 5
-  //   },
-  // ]
-
-  // console.log({additionalResults});
-
+  
   return (
     <LanguageContext.Provider value={i18n}>
       <Header 
