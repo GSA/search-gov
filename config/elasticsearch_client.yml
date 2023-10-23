@@ -2,8 +2,8 @@ default: &DEFAULT
   log: true
   log_level: INFO
   randomize_hosts: true
-  reload_connections: true
-  reload_on_failure: true
+  reload_connections: false
+  reload_on_failure: false
   retry_on_failure: 1
 
 development:
@@ -16,3 +16,7 @@ test:
 production:
   <<: *DEFAULT
   log_level: WARN
+  transport_options:
+    ssl:
+      verify: false
+  ca_fingerprint: <%= Rails.application.secrets[:ca_fingerprint] %>
