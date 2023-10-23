@@ -33,7 +33,7 @@ const fedRegisterDocs = [
   {
     title: 'Unsuccessful Work Attempts and Expedited Reinstatement Eligibility',
     htmlUrl: 'https://www.federalregister.gov/articles/2016/05/11/2016-10932/unsuccessful-work-attempts-and-expedited-reinstatement-eligibility',
-    commentsCloseOn: moment().format("MMM DD, YYYY"),
+    commentsCloseOn: moment().format('MMM DD, YYYY'),
     contributingAgencyNames: ['Social Security Administarion'],
     documentNumber: '2013-18148',
     documentType: 'Rule',
