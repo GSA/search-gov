@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
+import moment from 'moment';
 
 import { FedRegister } from '../components/Results/FedRegister/FedRegister';
 
@@ -32,7 +33,7 @@ const fedRegisterDocs = [
   {
     title: 'Unsuccessful Work Attempts and Expedited Reinstatement Eligibility',
     htmlUrl: 'https://www.federalregister.gov/articles/2016/05/11/2016-10932/unsuccessful-work-attempts-and-expedited-reinstatement-eligibility',
-    commentsCloseOn: 'Oct 23, 2023',
+    commentsCloseOn: moment().format("MMM DD, YYYY"),
     contributingAgencyNames: ['Social Security Administarion'],
     documentNumber: '2013-18148',
     documentType: 'Rule',
@@ -53,7 +54,7 @@ const fedRegisterDocs = [
     endPage: 29215,
     pageLength: 5
   }
-]
+];
 
 describe('FedRegister component', () => {
   it('renders federal register component', () => {
@@ -77,10 +78,17 @@ describe('FedRegister component', () => {
     expect(screen.getByText('Pages 29212 - 29215 (4 page) [FR DOC #: 2016-10932]')).toBeInTheDocument();
   });
 
+  it('shows comment ends today', () => {
+    render(
+      <FedRegister fedRegisterDocs={fedRegisterDocs} />
+    );
+    expect(screen.getByText('Comment period ends today')).toBeInTheDocument();
+  });
+
   it('shows comment period ends in x days', () => {
     render(
       <FedRegister fedRegisterDocs={fedRegisterDocs} />
     );
-    expect(screen.getByText('Comment period ends in ', {exact: false})).toBeInTheDocument();
+    expect(screen.getByText('Comment period ends in ', { exact: false })).toBeInTheDocument();
   });
 });
