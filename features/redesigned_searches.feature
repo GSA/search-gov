@@ -266,7 +266,7 @@ Feature: Search - redesign
     When I am on agency.gov's redesigned docs search page
     Then I should see the extended header
 
-  @javascript @a11y
+  @javascript @a11y @a11y_wip
   Scenario: Searching on sites with federal register documents
     And the following Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | agency_abbreviation | is_federal_register_document_govbox_enabled | domains  |
