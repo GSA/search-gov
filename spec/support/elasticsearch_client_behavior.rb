@@ -11,8 +11,8 @@ shared_examples 'an Elasticsearch client' do
       options = {
         log: true,
         randomize_hosts: true,
-        reload_connections: true,
-        reload_on_failure: true,
+        reload_connections: false,
+        reload_on_failure: false,
         retry_on_failure: 1
       }
       expect(client.transport.options).to include(options)
