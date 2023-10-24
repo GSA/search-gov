@@ -59,20 +59,20 @@ const fedRegisterDocs = [
 describe('FedRegister component', () => {
   it('renders federal register component', () => {
     render(
-      <FedRegister fedRegisterDocs={fedRegisterDocs} />
+      <FedRegister fedRegisterDocs={fedRegisterDocs} query='government' />
     );
   });
 
   it('shows title', () => {
     render(
-      <FedRegister fedRegisterDocs={fedRegisterDocs} />
+      <FedRegister fedRegisterDocs={fedRegisterDocs} query='government' />
     );
     expect(screen.getByText('Expand the Definition of a Public Assistance Household')).toBeInTheDocument();
   });
 
   it('shows agency names and pages count', () => {
     render(
-      <FedRegister fedRegisterDocs={fedRegisterDocs} />
+      <FedRegister fedRegisterDocs={fedRegisterDocs} query='government' />
     );
     expect(screen.getByText('A Proposed Rule by the GSA and the Social Security Administarion posted on January 02, 2020.')).toBeInTheDocument();
     expect(screen.getByText('Pages 29212 - 29215 (4 page) [FR DOC #: 2016-10932]')).toBeInTheDocument();
@@ -80,14 +80,14 @@ describe('FedRegister component', () => {
 
   it('shows comment ends today', () => {
     render(
-      <FedRegister fedRegisterDocs={fedRegisterDocs} />
+      <FedRegister fedRegisterDocs={fedRegisterDocs} query='government' />
     );
     expect(screen.getByText('Comment period ends today')).toBeInTheDocument();
   });
 
   it('shows comment period ends in x days', () => {
     render(
-      <FedRegister fedRegisterDocs={fedRegisterDocs} />
+      <FedRegister fedRegisterDocs={fedRegisterDocs} query='government' />
     );
     expect(screen.getByText('Comment period ends in ', { exact: false })).toBeInTheDocument();
   });

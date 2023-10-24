@@ -195,7 +195,10 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
 
           {/* Federal register */}
           {additionalResults?.federalRegisterDocuments && 
-            <FedRegister fedRegisterDocs = {additionalResults.federalRegisterDocuments}/>
+            <FedRegister 
+              fedRegisterDocs={additionalResults.federalRegisterDocuments}
+              query={query}
+            />
           }
         </div>
       </div>

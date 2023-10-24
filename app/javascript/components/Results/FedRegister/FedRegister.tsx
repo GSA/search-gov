@@ -17,6 +17,7 @@ type FedRegisterDoc = {
 
 interface FedRegisterDocsProps {
   fedRegisterDocs?: FedRegisterDoc[];
+  query?:string;
 }
 
 const getFedRegDocInfo = (document: FedRegisterDoc) => {
@@ -72,7 +73,13 @@ const getFedRegDocCommentPeriod = (document: FedRegisterDoc) => {
   return (<div className='comment-period'>{`Comment period ends in ${dateDeltaSpan} (${commentsCloseOnSpan})`}</div>);
 };
 
-export const FedRegister = ({ fedRegisterDocs=[] }: FedRegisterDocsProps) => {
+const getAgencyFedUrl = (query: string) => {
+  const agencyIds = 470;
+  const moreFedUrl = `https://www.federalregister.gov/articles/search?conditions[agency_ids][]=${agencyIds}&conditions[term]=${query}`;
+  return encodeURI(moreFedUrl);
+};
+
+export const FedRegister = ({ fedRegisterDocs=[], query='' }: FedRegisterDocsProps) => {
   return (
     <>
       {fedRegisterDocs?.length > 0 && (
@@ -110,6 +117,20 @@ export const FedRegister = ({ fedRegisterDocs=[] }: FedRegisterDocsProps) => {
               </GridContainer>
             );
           })}
+
+          <GridContainer className='result search-result-item'>
+            <Grid row gap="md">
+              <Grid col={true} className='result-meta-data'>
+                <div className='result-title'>
+                  <a href={getAgencyFedUrl(query)} className='result-title-link more-title-link'>
+                    <h2 className='result-title-label'>
+                      More agency documents on FederalRegister.gov
+                    </h2>
+                  </a>
+                </div>
+              </Grid>
+            </Grid>
+          </GridContainer>
 
           <GridContainer className='result-divider'>
             <Grid row gap="md">
