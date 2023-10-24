@@ -660,3 +660,6 @@ Feature: Manage Display
     When I go to the agency.gov's Visual Design page
     Then I should see "Visual design (new)"
     And the page body should not contain "These settings are for preview purposes only."
+    And I should not see a link to "Fonts & Colors" in the active site sub navigation
+    And I should not see a link to "Image Assets" in the active site sub navigation
+    And I should not see a link to "Header & Footer" in the active site sub navigation
