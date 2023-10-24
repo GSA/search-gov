@@ -34,7 +34,7 @@ class ImageSearchesController < ApplicationController
   end
 
   def redesign?
-    permitted_params[:redesign] == 'true'
+    @affiliate.use_redesigned_results_page
   end
 
   def set_layout
