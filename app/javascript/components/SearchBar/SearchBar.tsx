@@ -15,9 +15,10 @@ interface SearchBarProps {
   query?: string;
   relatedSites?: {label: string, link: string}[];
   navigationLinks: NavigationLink[];
+  relatedSitesDropdownLabel?: string;
 }
 
-export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [] }: SearchBarProps) => {
+export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [], relatedSitesDropdownLabel = '' }: SearchBarProps) => {
   const [searchQuery, setSearchQuery] = useState(query);
   const searchUrlParam = 'query';
 
@@ -65,7 +66,7 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [] 
         
         <Grid row>
           <Grid tablet={{ col: true }}>
-            <VerticalNav relatedSites={relatedSites} navigationLinks={navigationLinks} />
+            <VerticalNav relatedSites={relatedSites} navigationLinks={navigationLinks} relatedSitesDropdownLabel={relatedSitesDropdownLabel} />
           </Grid>
         </Grid>
         

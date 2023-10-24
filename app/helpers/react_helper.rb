@@ -16,6 +16,7 @@ module ReactHelper
       params: params,
       relatedSearches: related_searches(search),
       relatedSites: related_sites(search),
+      relatedSitesDropdownLabel: affiliate.related_sites_dropdown_label,
       resultsData: search.normalized_results,
       translations: translations(affiliate.locale),
       vertical: vertical

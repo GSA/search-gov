@@ -1,5 +1,4 @@
-import React, { useState, useContext, ReactNode, createRef, useEffect, RefObject } from 'react';
-import { LanguageContext } from '../../contexts/LanguageContext';
+import React, { useState, ReactNode, createRef, useEffect, RefObject } from 'react';
 import { NavDropDownButton, Menu } from '@trussworks/react-uswds';
 
 interface DropDownMenuProps {
@@ -8,7 +7,6 @@ interface DropDownMenuProps {
 }
 
 export const DropDownMenu = ({ label, items }: DropDownMenuProps) => {
-  const i18n = useContext(LanguageContext);
   const [openMore, setOpenMore] = useState(false);
   const btnRef: RefObject<HTMLDivElement> = createRef();
 
@@ -30,7 +28,7 @@ export const DropDownMenu = ({ label, items }: DropDownMenuProps) => {
         menuId="nav-menu"
         onToggle={() => setOpenMore((prev) => !prev)}
         isOpen={openMore}
-        label={i18n.t(label)}
+        label={label}
       />
       <Menu items={items} isOpen={openMore} id="nav-menu" />
     </div>

@@ -139,6 +139,7 @@ interface SearchResultsLayoutProps {
       publishedAt: string
     }[] | null;
   } | null;
+  relatedSitesDropdownLabel?: string;
 }
 
 // To be updated
@@ -150,7 +151,7 @@ const isBasicHeader = (extendedHeader: boolean): boolean => {
   return !extendedHeader;
 };
 
-const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [], extendedHeader, footerLinks, fontsAndColors, newsLabel, navigationLinks }: SearchResultsLayoutProps) => {
+const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [], extendedHeader, footerLinks, fontsAndColors, newsLabel, navigationLinks, relatedSitesDropdownLabel = '' }: SearchResultsLayoutProps) => {
   const i18n = new I18n(translations);
   i18n.defaultLocale = 'en';
   i18n.enableFallback = true;
@@ -166,7 +167,9 @@ const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params 
      
       <div className="usa-section serp-result-wrapper">
         <Facets />
-        <SearchBar query={params.query} relatedSites={relatedSites} navigationLinks={navigationLinks} />
+
+        <SearchBar query={params.query} relatedSites={relatedSites} navigationLinks={navigationLinks} relatedSitesDropdownLabel={relatedSitesDropdownLabel} />
+
         {/* This ternary is needed to handle the case when Bing pagination leads to a page with no results */}
         {resultsData ? (
           <Results 

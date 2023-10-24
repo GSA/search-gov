@@ -25,9 +25,10 @@ export const isThereEnoughSpace = (itemToAddWidth: number) => {
 interface VerticalNavProps {
   relatedSites?: {label: string, link: string}[];
   navigationLinks: NavigationLink[];
+  relatedSitesDropdownLabel: string;
 }
 
-export const VerticalNav = ({ relatedSites = [], navigationLinks = [] }: VerticalNavProps) => {
+export const VerticalNav = ({ relatedSites = [], navigationLinks = [], relatedSitesDropdownLabel = '' }: VerticalNavProps) => {
   const i18n = useContext(LanguageContext);
   const [navItems, setNavItems] = useState<ReactNode[]>([]);
   const [navItemsCount, setNavItemsCount] = useState(0);
@@ -40,27 +41,45 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [] }: Vertica
   const isLastItem = () => navItemsCount === navigationLinks.length - 1;
 
   useEffect(() => {
-    if ((navItemsCount < navigationLinks.length) && isThereEnoughSpace(itemToAddWidth())) {
-      setNavItems([...navItems, buildLink(navigationLinks[navItemsCount], navItemsCount)]);
+    if (navItemsCount < navigationLinks.length) {
+      if (isThereEnoughSpace(itemToAddWidth()))  {
+        setNavItems([...navItems, buildLink(navigationLinks[navItemsCount], navItemsCount)]);
 
-      setNavItemsCount(navItemsCount + 1);
-    } else {
-      let items = navigationLinks.slice(navItemsCount).map(buildLink);
-
-      if (items.length) {
-        if (relatedSites.length) {
-          items.push(<><hr /><i className="text-base-light">{i18n.t('relatedSearches')}</i></>);
-          items = items.concat(relatedSites.map(({ link, label }, index) => <a href={link} key={index + items.length}>{label}</a>));
-        }
-
-        setNavItems([...navItems, <DropDownMenu key={navItemsCount} label='showMore' items={items} />]);
+        setNavItemsCount(navItemsCount + 1);
       } else {
-        if (relatedSites.length) {
-          items = relatedSites.map((site, index) => <a href={site.link} key={index}>{site.label}</a>);
+        let activeIndex = navigationLinks.findIndex((navLink) => navLink.active);
 
-          setNavItems([...navItems, <DropDownMenu key={navItemsCount} label='relatedSearches' items={items} />]);
+        if (activeIndex >= navItemsCount) {
+          [navigationLinks[activeIndex], navigationLinks[navItemsCount - 1]] = [navigationLinks[navItemsCount - 1], navigationLinks[activeIndex]];
+
+          setNavItems([]);
+          setNavItemsCount(0);
+        } else {
+          let items = navigationLinks.slice(navItemsCount).map(buildLink);
+
+          if (relatedSites.length) {
+            items.push(<><hr /><i className="text-base-light">{i18n.t('relatedSearches')}</i></>);
+            items = items.concat(relatedSites.map(({ link, label }, index) => <a href={link} key={index + items.length}>{label}</a>));
+          }
+
+          setNavItems([...navItems, <DropDownMenu key={navItemsCount} label={i18n.t('showMore')} items={items} />]);
         }
       }
+    } else if (relatedSites.length == 1) {
+      setNavItems([...navItems, <a href={relatedSites[0].link} >{relatedSites[0].label}</a>]);
+
+    } else if (relatedSites.length) {
+      let items = relatedSites.map((site, index) => <a href={site.link} key={index}>{site.label}</a>);
+
+      let label = '';
+
+      if (relatedSitesDropdownLabel) {
+        label = relatedSitesDropdownLabel;
+      } else {
+        label = i18n.t('searches.relatedSites');
+      }
+
+      setNavItems([...navItems, <DropDownMenu key={navItemsCount} label={label} items={items} />]);
     }
   }, [navItemsCount]);
 
