@@ -1,6 +1,7 @@
 import React from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
 import parse from 'html-react-parser';
+import moment from 'moment';
 
 type FedRegisterDoc = {
   commentsCloseOn: string | null;
@@ -23,7 +24,7 @@ interface FedRegisterDocsProps {
 const getFedRegDocInfo = (document: FedRegisterDoc) => {
   const docType = document.documentType;
   const agencyNames = document.contributingAgencyNames;
-  const agenciesHtml = getFedRegisterAgenciesText(agencyNames);
+  const agenciesHtml = agencyNames.length > 0 ? getFedRegisterAgenciesText(agencyNames): '';
   const pubDate = document.publicationDate;
   return `A ${docType} ${agenciesHtml} posted on ${pubDate}.`;
 };
@@ -66,8 +67,8 @@ const getFedRegDocCommentPeriod = (document: FedRegisterDoc) => {
 
   if (commentsCloseOn < today)
     return (<div className='comment-period-ended'>Comment Period Closed</div>);
-  
-  const dateDelta = Math.floor((commentsCloseOn - today) / (1000 * 60 * 60 * 24));
+
+  const dateDelta = moment(document.commentsCloseOn).diff(moment().format('MMM DD, YYYY'), 'days');
   const dateDeltaSpan = dateDelta === 1 ? '1 day' : `${dateDelta} days`;
   const commentsCloseOnSpan = document.commentsCloseOn ;
   return (<div className='comment-period'>{`Comment period ends in ${dateDeltaSpan} (${commentsCloseOnSpan})`}</div>);
@@ -87,7 +88,7 @@ export const FedRegister = ({ fedRegisterDocs=[], query='' }: FedRegisterDocsPro
           <GridContainer className='fed-register-wrapper'>
             <Grid row gap="md">
               <h2 className='fed-register-label'>
-                Federal Register documents about Benefits
+                Federal Register documents about {query}
               </h2>
             </Grid>
           </GridContainer>
