@@ -151,7 +151,7 @@ export const Jobs = ({ jobs=[] }: JobsProps) => {
             <Grid row gap="md">
               <Grid col={true} className='result-meta-data'>
                 <div className='result-title'>
-                  <a href="https://www.usajobs.gov/Search/Results?hp=public" className='result-title-link more-jobs-title-link'>
+                  <a href="https://www.usajobs.gov/Search/Results?hp=public" className='result-title-link more-title-link'>
                     <h2 className='result-title-label'>
                       {i18n.t('searches.moreFederalJobOpenings')}
                     </h2>

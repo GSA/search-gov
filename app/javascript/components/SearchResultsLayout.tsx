@@ -76,15 +76,16 @@ interface SearchResultsLayoutProps {
       duration: string;
     }[];
     federalRegisterDocuments?: {
-      title: string;
-      documentType: string;
-      documentNumber: number;
-      publicationDate: string;
-      commentsCloseOn: string;
-      startPage: number;
-      endPage: number;
-      pageLength: number;
+      commentsCloseOn: string | null;
       contributingAgencyNames: string[];
+      documentNumber: string;
+      documentType: string;
+      endPage: number;
+      htmlUrl: string;
+      pageLength: number;
+      publicationDate: string;
+      startPage: number;
+      title: string;
     }[];
     healthTopic?: {
       title: string;
@@ -146,7 +147,7 @@ const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params 
   i18n.defaultLocale = 'en';
   i18n.enableFallback = true;
   i18n.locale = currentLocale;
-
+  
   return (
     <LanguageContext.Provider value={i18n}>
       <Header 

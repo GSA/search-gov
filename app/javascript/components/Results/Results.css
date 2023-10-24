@@ -146,7 +146,8 @@
   margin-right: 7px;
 }
 
-.search-news-item-wrapper .search-result-item:nth-child(2){
+.search-news-item-wrapper .search-result-item:nth-child(2),
+.fed-register-item-wrapper .search-result-item:nth-child(2){
   margin-top: 1rem;
 }
 
@@ -267,9 +268,13 @@
   text-align: right;
 }
 
-.more-jobs-title-link .result-title-label{
+.more-title-link .result-title-label{
   font-size: 1rem;
   margin-bottom: 2rem;
+}
+
+.fed-register-item-wrapper .search-result-item .result-desc p{
+  color: #1B1B1B;
 }
 
 /* Media Queries */
