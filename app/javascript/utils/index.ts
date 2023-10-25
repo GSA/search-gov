@@ -37,7 +37,9 @@ export const getTextWidth = (text: string): number => {
   const context = canvas.getContext('2d');
 
   if (context) {
-    context.font = getComputedStyle(document.body).font;
+    const {fontFamily} = getComputedStyle(document.body);
+
+    context.font = `bold 0.93rem ${fontFamily}`;
 
     return context.measureText(text).width;
   }
