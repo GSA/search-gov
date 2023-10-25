@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, ReactNode } from 'react';
+import React, { useState, useEffect, useContext, ReactNode, useRef } from 'react';
 import { GridContainer, Header, PrimaryNav } from '@trussworks/react-uswds';
 
 import { DropDownMenu } from './DropDownMenu';
@@ -29,16 +29,17 @@ interface VerticalNavProps {
 }
 
 export const VerticalNav = ({ relatedSites = [], navigationLinks = [], relatedSitesDropdownLabel = '' }: VerticalNavProps) => {
-  const i18n = useContext(LanguageContext);
-  const [navItems, setNavItems] = useState<ReactNode[]>([]);
+  const i18n             = useContext(LanguageContext);
+  const relatedLabel     = useRef(relatedSitesDropdownLabel || i18n.t('searches.relatedSites'));
+  const moreTextWidth    = useRef(getTextWidth(i18n.t('showMore')));
+  const relatedTextWidth = useRef(getTextWidth(relatedLabel));
+
+  const [navItems, setNavItems]           = useState<ReactNode[]>([]);
   const [navItemsCount, setNavItemsCount] = useState(0);
 
-  const moreTextWidth = getTextWidth(i18n.t('showMore'));
-  const relatedTextWidth = getTextWidth(i18n.t('relatedSearches'));
-
-  const itemToAddWidth = () => currentNavItemWidth() + (isLastItem() ? moreTextWidth : relatedTextWidth) + 100;
+  const itemToAddWidth      = () => currentNavItemWidth() + (isLastItem() ? moreTextWidth.current : relatedTextWidth.current) + 100;
   const currentNavItemWidth = () => getTextWidth(navigationLinks[navItemsCount].label) + 100;
-  const isLastItem = () => navItemsCount === navigationLinks.length - 1;
+  const isLastItem          = () => navItemsCount === navigationLinks.length - 1;
 
   useEffect(() => {
     if (navItemsCount < navigationLinks.length) {
@@ -47,7 +48,7 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [], relatedSi
 
         setNavItemsCount(navItemsCount + 1);
       } else {
-        let activeIndex = navigationLinks.findIndex((navLink) => navLink.active);
+        const activeIndex = navigationLinks.findIndex((navLink) => navLink.active);
 
         if (activeIndex >= navItemsCount) {
           move(navigationLinks, activeIndex, navItemsCount - 1);
@@ -58,28 +59,19 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [], relatedSi
           let items = navigationLinks.slice(navItemsCount).map(buildLink);
 
           if (relatedSites.length) {
-            items.push(<><hr /><i className="text-base-light">{i18n.t('relatedSearches')}</i></>);
+            items.push(<><hr /><i className="text-base-light">{relatedLabel.current}</i></>);
             items = items.concat(relatedSites.map(({ link, label }, index) => <a href={link} key={index + items.length}>{label}</a>));
           }
 
           setNavItems([...navItems, <DropDownMenu key={navItemsCount} label={i18n.t('showMore')} items={items} />]);
         }
       }
-    } else if (relatedSites.length == 1) {
-      setNavItems([...navItems, <a href={relatedSites[0].link} >{relatedSites[0].label}</a>]);
-
+    } else if (relatedSites.length === 1) {
+      setNavItems([...navItems, <a href={relatedSites[0].link} key={navItemsCount}>{relatedSites[0].label}</a>]);
     } else if (relatedSites.length) {
-      let items = relatedSites.map((site, index) => <a href={site.link} key={index}>{site.label}</a>);
+      const items = relatedSites.map((site, index) => <a href={site.link} key={index}>{site.label}</a>);
 
-      let label = '';
-
-      if (relatedSitesDropdownLabel) {
-        label = relatedSitesDropdownLabel;
-      } else {
-        label = i18n.t('searches.relatedSites');
-      }
-
-      setNavItems([...navItems, <DropDownMenu key={navItemsCount} label={label} items={items} />]);
+      setNavItems([...navItems, <DropDownMenu key={navItemsCount} label={relatedLabel.current} items={items} />]);
     }
   }, [navItemsCount]);
 
