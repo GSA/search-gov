@@ -30,48 +30,56 @@ interface VerticalNavProps {
 
 export const VerticalNav = ({ relatedSites = [], navigationLinks = [], relatedSitesDropdownLabel = '' }: VerticalNavProps) => {
   const i18n             = useContext(LanguageContext);
+  const padding          = 100;
+  const moreItemWidth    = useRef(getTextWidth(i18n.t('showMore')) + padding);
   const relatedLabel     = useRef(relatedSitesDropdownLabel || i18n.t('searches.relatedSites'));
-  const moreTextWidth    = useRef(getTextWidth(i18n.t('showMore')));
-  const relatedTextWidth = useRef(getTextWidth(relatedLabel));
+  const relatedTextWidth = useRef(getTextWidth(relatedLabel.current));
 
   const [navItems, setNavItems]           = useState<ReactNode[]>([]);
   const [navItemsCount, setNavItemsCount] = useState(0);
 
-  const itemToAddWidth      = () => currentNavItemWidth() + (isLastItem() ? moreTextWidth.current : relatedTextWidth.current) + 100;
-  const currentNavItemWidth = () => getTextWidth(navigationLinks[navItemsCount].label) + 100;
+  const currentNavItemWidth = () => getTextWidth(navigationLinks[navItemsCount].label) + padding;
   const isLastItem          = () => navItemsCount === navigationLinks.length - 1;
+  const itemToAddWidth      = () => currentNavItemWidth() + nextItemWidth();
+  const nextItemWidth       = () => isLastItem() ? relatedSitesWidth() : moreItemWidth.current;
+  const relatedSitesWidth   = () => relatedSites.length ? relatedTextWidth.current + padding : 0;
+
+  const addNavItem = (item) => setNavItems([...navItems, item]);
+  const addMoveBtn = () => {
+    const activeIndex = navigationLinks.findIndex((navLink) => navLink.active);
+
+    if (activeIndex >= navItemsCount) {
+      move(navigationLinks, activeIndex, navItemsCount - 1);
+
+      setNavItems([]);
+      setNavItemsCount(0);
+    } else {
+      let items = navigationLinks.slice(navItemsCount).map(buildLink);
+
+      if (relatedSites.length) {
+        items.push(<><hr /><i className="text-base-light">{relatedLabel.current}</i></>);
+        items = items.concat(relatedSites.map(({ link, label }, index) => <a href={link} key={index + items.length}>{label}</a>));
+      }
+
+      addNavItem(<DropDownMenu key={navItemsCount} label={i18n.t('showMore')} items={items} />);
+    }
+  };
 
   useEffect(() => {
     if (navItemsCount < navigationLinks.length) {
       if (isThereEnoughSpace(itemToAddWidth()))  {
-        setNavItems([...navItems, buildLink(navigationLinks[navItemsCount], navItemsCount)]);
+        addNavItem(buildLink(navigationLinks[navItemsCount], navItemsCount));
 
         setNavItemsCount(navItemsCount + 1);
       } else {
-        const activeIndex = navigationLinks.findIndex((navLink) => navLink.active);
-
-        if (activeIndex >= navItemsCount) {
-          move(navigationLinks, activeIndex, navItemsCount - 1);
-
-          setNavItems([]);
-          setNavItemsCount(0);
-        } else {
-          let items = navigationLinks.slice(navItemsCount).map(buildLink);
-
-          if (relatedSites.length) {
-            items.push(<><hr /><i className="text-base-light">{relatedLabel.current}</i></>);
-            items = items.concat(relatedSites.map(({ link, label }, index) => <a href={link} key={index + items.length}>{label}</a>));
-          }
-
-          setNavItems([...navItems, <DropDownMenu key={navItemsCount} label={i18n.t('showMore')} items={items} />]);
-        }
+        addMoveBtn();
       }
     } else if (relatedSites.length === 1) {
-      setNavItems([...navItems, <a href={relatedSites[0].link} key={navItemsCount}>{relatedSites[0].label}</a>]);
+      addNavItem(<a href={relatedSites[0].link} key={navItemsCount}>{relatedSites[0].label}</a>);
     } else if (relatedSites.length) {
       const items = relatedSites.map((site, index) => <a href={site.link} key={index}>{site.label}</a>);
 
-      setNavItems([...navItems, <DropDownMenu key={navItemsCount} label={relatedLabel.current} items={items} />]);
+      addNavItem(<DropDownMenu key={navItemsCount} label={relatedLabel.current} items={items} />);
     }
   }, [navItemsCount]);
 

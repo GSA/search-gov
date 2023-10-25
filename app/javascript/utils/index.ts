@@ -45,12 +45,12 @@ export const getTextWidth = (text: string) => {
   return 0;
 };
 
-export const move = (input: Array, from: number, to: number) => {
+export const move = <T>(input: T[], from: number, to: number): T[] => {
   let numberOfDeletedElm = 1;
 
-  const [ elm ] = input.splice(from, numberOfDeletedElm);
+  const [elm] = input.splice(from, numberOfDeletedElm);
 
   numberOfDeletedElm = 0;
 
-  input.splice(to, numberOfDeletedElm, elm);
+  return input.splice(to, numberOfDeletedElm, elm);
 };
