@@ -4,7 +4,7 @@ import { GridContainer, Header, PrimaryNav } from '@trussworks/react-uswds';
 import { DropDownMenu } from './DropDownMenu';
 import { LanguageContext } from '../../contexts/LanguageContext';
 import { NavigationLink } from '../SearchResultsLayout';
-import { getTextWidth } from '../../utils';
+import { getTextWidth, move } from '../../utils';
 
 import './VerticalNav.css';
 
@@ -50,7 +50,7 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [], relatedSi
         let activeIndex = navigationLinks.findIndex((navLink) => navLink.active);
 
         if (activeIndex >= navItemsCount) {
-          [navigationLinks[activeIndex], navigationLinks[navItemsCount - 1]] = [navigationLinks[navItemsCount - 1], navigationLinks[activeIndex]];
+          move(navigationLinks, activeIndex, navItemsCount - 1);
 
           setNavItems([]);
           setNavItemsCount(0);
