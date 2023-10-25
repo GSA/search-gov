@@ -10,22 +10,22 @@ const logoImg = 'https://search.gov/assets/gsa-logo-893b811a49f74b06b2bddbd1cde2
 export const ExtendedHeader = ({ title, toggleMobileNav, mobileNavOpen, fontsAndColors }: HeaderProps) => {
   const secondaryLinkItems = [
     <a href="#linkOne" key="one">
-      <span style={{ fontFamily: fontsAndColors.headerLinksFontFamily }}>Secondary link 1</span>
+      <span style={{ fontFamily: fontsAndColors?.headerLinksFontFamily }}>Secondary link 1</span>
     </a>,
     <a href="#linkTwo" key="two">
-      <span style={{ fontFamily: fontsAndColors.headerLinksFontFamily }}>Secondary link 2</span>
+      <span style={{ fontFamily: fontsAndColors?.headerLinksFontFamily }}>Secondary link 2</span>
     </a>
   ];
 
   const primaryLinkItems = [
     <a href="#one" key="one" className="usa-nav__link">
-      <span style={{ fontFamily: fontsAndColors.headerLinksFontFamily }}>Primary link 1</span>
+      <span style={{ fontFamily: fontsAndColors?.headerLinksFontFamily }}>Primary link 1</span>
     </a>,
     <a href="#two" key="two" className="usa-nav__link">
-      <span style={{ fontFamily: fontsAndColors.headerLinksFontFamily }}>Primary link 2</span>
+      <span style={{ fontFamily: fontsAndColors?.headerLinksFontFamily }}>Primary link 2</span>
     </a>,
     <a href="#three" key="three" className="usa-nav__link">
-      <span style={{ fontFamily: fontsAndColors.headerLinksFontFamily }}>Primary link 3</span>
+      <span style={{ fontFamily: fontsAndColors?.headerLinksFontFamily }}>Primary link 3</span>
     </a>
   ];
   
