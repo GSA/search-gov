@@ -30,7 +30,7 @@ interface VerticalNavProps {
 
 export const VerticalNav = ({ relatedSites = [], navigationLinks = [], relatedSitesDropdownLabel = '' }: VerticalNavProps) => {
   const i18n             = useContext(LanguageContext);
-  const padding          = 100;
+  const padding          = 64;
   const moreItemWidth    = useRef(getTextWidth(i18n.t('showMore')) + padding);
   const relatedLabel     = useRef(relatedSitesDropdownLabel || i18n.t('searches.relatedSites'));
   const relatedTextWidth = useRef(getTextWidth(relatedLabel.current));
@@ -44,7 +44,7 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [], relatedSi
   const nextItemWidth       = () => isLastItem() ? relatedSitesWidth() : moreItemWidth.current;
   const relatedSitesWidth   = () => relatedSites.length ? relatedTextWidth.current + padding : 0;
 
-  const addNavItem = (item) => setNavItems([...navItems, item]);
+  const addNavItem = (item: ReactNode) => setNavItems([...navItems, item]);
   const addMoveBtn = () => {
     const activeIndex = navigationLinks.findIndex((navLink) => navLink.active);
 

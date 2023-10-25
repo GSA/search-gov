@@ -32,7 +32,7 @@ const stripProtocols = (url: string): string => {
   return url.replace(/(^\w+:|^)\/\//, '');
 };
 
-export const getTextWidth = (text: string) => {
+export const getTextWidth = (text: string): number => {
   const canvas = document.createElement('canvas');
   const context = canvas.getContext('2d');
 
