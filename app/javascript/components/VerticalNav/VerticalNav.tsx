@@ -58,7 +58,7 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [], relatedSi
       let items = navigationLinks.slice(navItemsCount).map(buildLink);
 
       if (relatedSites.length) {
-        if(relatedSites.length > 1) {
+        if (relatedSites.length > 1) {
           items.push(<><hr /><i className="text-base-light">{relatedLabel.current}</i></>);
         }
 
@@ -90,7 +90,8 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [], relatedSi
 
         addNavItem(<DropDownMenu key={navItemsCount} label={relatedLabel.current} items={items} />);
       }
-    }  }, [navItemsCount]);
+    }
+  }, [navItemsCount]);
 
   return (
     <div className="vertical-nav-wrapper">
