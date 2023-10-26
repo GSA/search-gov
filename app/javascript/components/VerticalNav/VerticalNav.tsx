@@ -14,7 +14,7 @@ export const isThereEnoughSpace = (itemToAddWidth: number) => {
   const container = document.getElementById('tabs-container');
 
   if (container) {
-    const ul = container.getElementsByClassName('usa-nav__primary')[0];
+    const [ul] = container.getElementsByClassName('usa-nav__primary');
 
     return (container.offsetWidth - (ul as HTMLElement).offsetWidth) >= itemToAddWidth;
   }
@@ -50,7 +50,7 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [], relatedSi
     if (activeIndex >= navItemsCount) {
       const position = navItemsCount === activeIndex ? navItemsCount - 1 : navItemsCount;
 
-      move(navigationLinks, activeIndex, navItemsCount == activeIndex ? navItemsCount - 1 : navItemsCount);
+      move(navigationLinks, activeIndex, position);
 
       setNavItems([]);
       setNavItemsCount(0);
