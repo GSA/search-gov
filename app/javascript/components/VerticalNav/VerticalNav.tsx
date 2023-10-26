@@ -58,7 +58,10 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [], relatedSi
       let items = navigationLinks.slice(navItemsCount).map(buildLink);
 
       if (relatedSites.length) {
-        items.push(<><hr /><i className="text-base-light">{relatedLabel.current}</i></>);
+        if(relatedSites.length > 1) {
+          items.push(<><hr /><i className="text-base-light">{relatedLabel.current}</i></>);
+        }
+
         items = items.concat(relatedSites.map(({ link, label }, index) => <a href={link} key={index + items.length}>{label}</a>));
       }
 
@@ -75,14 +78,19 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [], relatedSi
       } else {
         addMoveBtn();
       }
-    } else if (relatedSites.length === 1) {
-      addNavItem(<a href={relatedSites[0].link} key={navItemsCount}>{relatedSites[0].label}</a>);
-    } else if (relatedSites.length) {
-      const items = relatedSites.map((site, index) => <a href={site.link} key={index}>{site.label}</a>);
+    } else {
+      if (relatedSites.length === 1) {
+        if (isThereEnoughSpace(getTextWidth(relatedSites[0].label) + padding))  {
+          addNavItem(<a href={relatedSites[0].link} key={navItemsCount}>{relatedSites[0].label}</a>);
+        } else {
+          addMoveBtn();
+        }
+      } else if (relatedSites.length) {
+        const items = relatedSites.map((site, index) => <a href={site.link} key={index}>{site.label}</a>);
 
-      addNavItem(<DropDownMenu key={navItemsCount} label={relatedLabel.current} items={items} />);
-    }
-  }, [navItemsCount]);
+        addNavItem(<DropDownMenu key={navItemsCount} label={relatedLabel.current} items={items} />);
+      }
+    }  }, [navItemsCount]);
 
   return (
     <div className="vertical-nav-wrapper">
