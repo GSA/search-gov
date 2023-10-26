@@ -14,18 +14,16 @@ export const isThereEnoughSpace = (itemToAddWidth: number) => {
   const container = document.getElementById('tabs-container');
 
   if (container) {
-    const nav = container.getElementsByClassName('usa-nav__primary');
+    const ul = container.getElementsByClassName('usa-nav__primary')[0];
 
-    if (nav && nav[0]) {
-      return container.offsetWidth > ((nav[0] as HTMLElement).offsetWidth + itemToAddWidth);
-    }
+    return (container.offsetWidth - (ul as HTMLElement).offsetWidth) >= itemToAddWidth;
   }
 };
 
 interface VerticalNavProps {
   relatedSites?: {label: string, link: string}[];
   navigationLinks: NavigationLink[];
-  relatedSitesDropdownLabel: string;
+  relatedSitesDropdownLabel?: string;
 }
 
 export const VerticalNav = ({ relatedSites = [], navigationLinks = [], relatedSitesDropdownLabel = '' }: VerticalNavProps) => {
