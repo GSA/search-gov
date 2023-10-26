@@ -10,13 +10,13 @@ const logoImg = 'https://search.gov/assets/gsa-logo-893b811a49f74b06b2bddbd1cde2
 export const BasicHeader = ({ title, toggleMobileNav, mobileNavOpen, fontsAndColors }: HeaderProps) => {
   const primaryNavItems = [
     <a key="primaryNav_2" className="usa-nav__link" href="">
-      <span style={{ fontFamily: fontsAndColors.headerLinksFontFamily }}>{'Primary link 1'}</span>
+      <span style={{ fontFamily: fontsAndColors?.headerLinksFontFamily }}>{'Primary link 1'}</span>
     </a>,
     <a key="primaryNav_2" className="usa-nav__link" href="">
-      <span style={{ fontFamily: fontsAndColors.headerLinksFontFamily }}>{'Primary link 2'}</span>
+      <span style={{ fontFamily: fontsAndColors?.headerLinksFontFamily }}>{'Primary link 2'}</span>
     </a>,
     <a key="primaryNav_2" className="usa-nav__link" href="">
-      <span style={{ fontFamily: fontsAndColors.headerLinksFontFamily }}>{'Primary link 3'}</span>
+      <span style={{ fontFamily: fontsAndColors?.headerLinksFontFamily }}>{'Primary link 3'}</span>
     </a>
   ];
 
@@ -49,7 +49,7 @@ export const BasicHeader = ({ title, toggleMobileNav, mobileNavOpen, fontsAndCol
             onToggleMobileNav={toggleMobileNav}
             mobileExpanded={mobileNavOpen}
           >
-            <ul className="usa-nav__secondary-links" style={{ fontFamily: fontsAndColors.headerLinksFontFamily }}>
+            <ul className="usa-nav__secondary-links" style={{ fontFamily: fontsAndColors?.headerLinksFontFamily }}>
               <li className="usa-nav__secondary-item">
                 <a href="#linkOne">Secondary link 1</a>
               </li>

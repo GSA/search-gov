@@ -11,7 +11,7 @@ import { HealthTopics } from './HealthTopics/HealthTopics';
 // import { ImagesPage } from './ImagesPage/ImagesPage';
 import { RssNews } from './RssNews/RssNews';
 // import { Videos } from './Videos/Videos';
-// import { FedRegister } from './FedRegister/FedRegister';
+import { FedRegister } from './FedRegister/FedRegister';
 import { Jobs } from './Jobs/Jobs';
 
 import { truncateUrl } from '../../utils';
@@ -81,6 +81,18 @@ interface ResultsProps {
         url: string;
       }[];
     };
+    federalRegisterDocuments?: {
+      commentsCloseOn: string | null;
+      contributingAgencyNames: string[];
+      documentNumber: string;
+      documentType: string;
+      endPage: number;
+      htmlUrl: string;
+      pageLength: number;
+      publicationDate: string;
+      startPage: number;
+      title: string;
+    }[];
   } | null;
   unboundedResults: boolean;
   totalPages: number | null;
@@ -178,6 +190,14 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
             <RssNews 
               news={additionalResults.oldNews} 
               newsLabel={newsAboutQuery}
+            />
+          }
+
+          {/* Federal register */}
+          {additionalResults?.federalRegisterDocuments && 
+            <FedRegister 
+              fedRegisterDocs={additionalResults.federalRegisterDocuments}
+              query={query}
             />
           }
         </div>

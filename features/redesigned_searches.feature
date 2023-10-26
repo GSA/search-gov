@@ -265,3 +265,19 @@ Feature: Search - redesign
       | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov | true               |
     When I am on agency.gov's redesigned docs search page
     Then I should see the extended header
+
+  @javascript @a11y @a11y_wip
+  Scenario: Searching on sites with federal register documents
+    And the following Affiliates exist:
+      | display_name | name          | contact_email    | first_name | last_name | agency_abbreviation | is_federal_register_document_govbox_enabled | domains  |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | DOC                 | true                                        | noaa.gov |
+    And the following Federal Register Document entries exist:
+      | federal_register_agencies | document_number | document_type | title                                                              | publication_date | comments_close_in_days | start_page | end_page | page_length | html_url                                                                                                                         |
+      | DOC,IRS,ITA,NOAA          | 2014-13420      | Notice        | Proposed Information Collection; Comment Request                   | 2014-06-09       | 7                      | 33040      | 33041    | 2           | https://www.federalregister.gov/articles/2014/06/09/2014-13420/proposed-information-collection-comment-request                   |
+      | DOC, NOAA                 | 2013-20176      | Rule          | Atlantic Highly Migratory Species; Atlantic Bluefin Tuna Fisheries | 2013-08-19       |                        | 50346      | 50347    | 2           | https://www.federalregister.gov/articles/2013/08/19/2013-20176/atlantic-highly-migratory-species-atlantic-bluefin-tuna-fisheries |
+    When I am on en.agency.gov's search page
+    And I fill in "Enter your search term" with "collection"
+    And I press "Search"
+    And I should see "A Notice by the Internal Revenue Service, the International Trade Administration and the National Oceanic and Atmospheric Administration posted on June 9, 2014."
+    And I should see "Comment period ends in 7 days"
+    And I should see "Pages 33040 - 33041 (2 pages) [FR DOC #: 2014-13420]"
