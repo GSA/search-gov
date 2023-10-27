@@ -18,6 +18,19 @@ const locale = {
 const i18n = new I18n(locale);
 
 describe('VerticalNav', () => {
+  it('there is no menu without space', () => {
+    const navigationLinks = [{ label: 'all', active: true, href: 'http://search.gov' }];
+
+    render(
+      <LanguageContext.Provider value={i18n} >
+        <VNav.VerticalNav navigationLinks={navigationLinks} />
+      </LanguageContext.Provider>
+    );
+
+    const all = screen.queryByText(/all/i);
+    expect(all).not.toBeInTheDocument();
+  });
+
   describe('when all tabs fit', () => {
     beforeEach(() => {
       jest.spyOn(VNav, 'isThereEnoughSpace').mockReturnValue(true);
@@ -70,7 +83,6 @@ describe('VerticalNav', () => {
     });
   });
 
-
   describe('when not all tabs fit', () => {
     beforeEach(() => {
       jest.spyOn(VNav, 'isThereEnoughSpace').mockReturnValueOnce(true).mockReturnValue(false);
@@ -78,8 +90,8 @@ describe('VerticalNav', () => {
 
     describe('when there is one related site', () => {
       it('shows related site label on menu when there is one related site', () => {
-        const relatedSites = [{ label: 'Site 1', link: 'one.com' }];
         const navigationLinks = [{ label: 'all', active: true, href: 'http://search.gov' }];
+        const relatedSites = [{ label: 'Site 1', link: 'one.com' }];
 
         render(
           <LanguageContext.Provider value={i18n} >
