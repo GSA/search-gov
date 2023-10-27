@@ -8,7 +8,7 @@ import { getTextWidth, move } from '../../utils';
 
 import './VerticalNav.css';
 
-const buildLink = ({ active, label, href }: NavigationLink, key = 0) => <a href={href} key={key} className={ active && 'usa-current' || '' }>{label}</a>;
+const buildLink = ({ active, label, url }: NavigationLink, key = 0) => <a href={url} key={key} className={ active && 'usa-current' || '' }>{label}</a>;
 
 export const isThereEnoughSpace = (itemToAddWidth: number) => {
   const container = document.getElementById('tabs-container');

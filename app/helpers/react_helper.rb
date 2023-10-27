@@ -103,7 +103,7 @@ module ReactHelper
     {
       active: is_default_search?(search),
       label: search.affiliate.default_search_label,
-      href: search_path(params.slice(:affiliate, :m).merge(query: search.query))
+      url: search_path(params.slice(:affiliate, :m).merge(query: search.query))
     }
   end
 
@@ -116,7 +116,7 @@ module ReactHelper
       {
         active: non_default_search_navigable == navigable,
         label: navigable.name,
-        href: navigable_path(navigable, search, search_params)
+        url: navigable_path(navigable, search, search_params)
       }
     end
   end

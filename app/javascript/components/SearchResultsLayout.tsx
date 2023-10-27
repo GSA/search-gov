@@ -12,7 +12,7 @@ import { Identifier } from './Identifier/Identifier';
 import { LanguageContext } from '../contexts/LanguageContext';
 
 export interface NavigationLink {
-  active: boolean; label: string; href: string;
+  active: boolean; label: string; url: string;
 }
 
 interface SearchResultsLayoutProps {
