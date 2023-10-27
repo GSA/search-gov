@@ -1,4 +1,4 @@
-import React, { useState, ReactNode, createRef, useEffect, RefObject } from 'react';
+import React, { useState, ReactNode, createRef, useEffect, RefObject, useId } from 'react';
 import { NavDropDownButton, Menu } from '@trussworks/react-uswds';
 
 interface DropDownMenuProps {
@@ -7,6 +7,7 @@ interface DropDownMenuProps {
 }
 
 export const DropDownMenu = ({ label, items }: DropDownMenuProps) => {
+  const id = useId();
   const [openMore, setOpenMore] = useState(false);
   const btnRef: RefObject<HTMLDivElement> = createRef();
 
@@ -25,12 +26,12 @@ export const DropDownMenu = ({ label, items }: DropDownMenuProps) => {
   return (
     <div ref={btnRef}>
       <NavDropDownButton
-        menuId="nav-menu"
+        menuId={id}
         onToggle={() => setOpenMore((prev) => !prev)}
         isOpen={openMore}
         label={label}
       />
-      <Menu items={items} isOpen={openMore} id="nav-menu" />
+      <Menu items={items} isOpen={openMore} id={id} />
     </div>
   );
 };
