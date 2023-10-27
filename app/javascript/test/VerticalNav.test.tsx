@@ -5,7 +5,6 @@ import { I18n } from 'i18n-js';
 
 import * as VNav from '../components/VerticalNav/VerticalNav';
 import { LanguageContext } from '../contexts/LanguageContext';
-import { NavigationLink } from '../components/SearchResultsLayout';
 
 jest.mock('i18n-js', () => jest.requireActual('i18n-js/dist/require/index'));
 
@@ -13,36 +12,37 @@ const locale = {
   en: {
     searches: { relatedSites: 'View More' },
     showMore: 'More'
-  },
+  }
 };
 
 const i18n = new I18n(locale);
 
 describe('VerticalNav', () => {
-  it('shows the vertical nav link with related site in the menu', () => {
-    const relatedSites = [{ label: 'Related Site 1', link: 'example.com' }];
-    const navigationLinks = [{ label: 'all', active: true, href: 'http://search.gov' }];
+  describe('when all tabs fit', () => {
+    beforeEach(() => {
+      jest.spyOn(VNav, 'isThereEnoughSpace').mockReturnValue(true);
+    });
 
-    jest.spyOn(VNav, 'isThereEnoughSpace').mockReturnValue(true);
-
-    render(
-      <LanguageContext.Provider value={i18n} >
-        <VNav.VerticalNav relatedSites={relatedSites} navigationLinks={navigationLinks} />
-      </LanguageContext.Provider>
-    );
-
-    const all = screen.getByText(/all/i);
-    expect(all).toBeInTheDocument();
-    
-    const moreLink = screen.getByText(/Related Site 1/i);
-  });
-
-  describe('there is space to render only one tab', () => {
-    it('shows tab and more button', () => {
-      jest.spyOn(VNav, 'isThereEnoughSpace').mockReturnValueOnce(true).mockReturnValue(false);
-
+    it('shows related site label on menu when there is only one related site', () => {
       const relatedSites = [{ label: 'Related Site 1', link: 'example.com' }];
-      const navigationLinks = [{ label: 'all', active: true, href: 'http://search.gov' }, { label: 'other', active: false, href: 'http://other.gov' }];
+      const navigationLinks = [{ label: 'all', active: true, href: 'http://search.gov' }];
+
+      render(
+        <LanguageContext.Provider value={i18n} >
+          <VNav.VerticalNav relatedSites={relatedSites} navigationLinks={navigationLinks} />
+        </LanguageContext.Provider>
+      );
+
+      const all = screen.getByText(/all/i);
+      expect(all).toBeInTheDocument();
+
+      const moreLink = screen.getByText(/Related Site 1/i);
+      expect(moreLink).toBeInTheDocument();
+    });
+
+    it('shows more dropdown when there is multiple related sites', () => {
+      const relatedSites = [{ label: 'Site 1', link: 'one.com' }, { label: 'Site 2', link: 'two.com' }];
+      const navigationLinks = [{ label: 'all', active: true, href: 'http://search.gov' }];
 
       render(
         <LanguageContext.Provider value={i18n} >
@@ -54,10 +54,92 @@ describe('VerticalNav', () => {
       expect(all).toBeInTheDocument();
 
       const moreLink = screen.getByText(/More/i);
-      expect(moreLink).toBeInTheDocument();
+      fireEvent.click(moreLink);
 
-      const [relatedSitesChild] = screen.getAllByText(/Related Site 1/i);
-      expect(relatedSitesChild).toBeInTheDocument();
+      const one = screen.getByText(/Site 1/i);
+      const two = screen.getByText(/Site 2/i);
+
+      expect(one).toBeInTheDocument();
+      expect(two).toBeInTheDocument();
+    });
+  });
+
+
+  describe('when not all tabs fit', () => {
+    beforeEach(() => {
+      jest.spyOn(VNav, 'isThereEnoughSpace').mockReturnValueOnce(true).mockReturnValue(false);
+    });
+
+    describe('when there is one related site', () => {
+      it('shows related site label on menu when there is one related site', () => {
+        const relatedSites = [{ label: 'Site 1', link: 'one.com' }];
+        const navigationLinks = [{ label: 'all', active: true, href: 'http://search.gov' }];
+
+        render(
+          <LanguageContext.Provider value={i18n} >
+            <VNav.VerticalNav relatedSites={relatedSites} navigationLinks={navigationLinks} />
+          </LanguageContext.Provider>
+        );
+
+        const all = screen.getByText(/all/i);
+        expect(all).toBeInTheDocument();
+
+        const moreLink = screen.getByText(/More/i);
+        fireEvent.click(moreLink);
+
+        const siteOne = screen.getByText(/Site 1/i);
+
+        expect(siteOne).toBeInTheDocument();
+      });
+    });
+
+    describe('when there is multiple related sites', () => {
+      it('shows related site label on menu', () => {
+        const relatedSites = [{ label: 'Site 1', link: 'one.com' }, { label: 'Site 2', link: 'two.com' }];
+        const navigationLinks = [{ label: 'all', active: true, href: 'http://search.gov' }];
+
+        render(
+          <LanguageContext.Provider value={i18n} >
+            <VNav.VerticalNav relatedSites={relatedSites} navigationLinks={navigationLinks} />
+          </LanguageContext.Provider>
+        );
+
+        const all = screen.getByText(/all/i);
+        expect(all).toBeInTheDocument();
+
+        const moreLink = screen.getByText(/More/i);
+        fireEvent.click(moreLink);
+
+        const viewMore = screen.getByText(/View More/i);
+        const siteOne  = screen.getByText(/Site 1/i);
+        const siteTwo  = screen.getByText(/Site 2/i);
+
+        expect(viewMore).toBeInTheDocument();
+        expect(siteOne).toBeInTheDocument();
+        expect(siteTwo).toBeInTheDocument();
+      });
+    });
+  });
+
+  describe('when active link do not fit in navigation', () => {
+    it('moves acive link into a visible stop', () => {
+      jest.spyOn(VNav, 'isThereEnoughSpace').
+        mockReturnValueOnce(true).
+        mockReturnValueOnce(false).
+        mockReturnValueOnce(true).
+        mockReturnValueOnce(false);
+
+      const relatedSites = [{ label: 'Site 1', link: 'one.com' }];
+      const navigationLinks = [
+        { label: 'all', active: false, href: 'http://search.gov' },
+        { label: 'one', active: true,  href: 'http://one.gov' }
+      ];
+
+      render(
+        <LanguageContext.Provider value={i18n} >
+          <VNav.VerticalNav relatedSites={relatedSites} navigationLinks={navigationLinks} />
+        </LanguageContext.Provider>
+      );
     });
   });
 });
