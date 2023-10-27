@@ -90,7 +90,7 @@ module ReactHelper
   def links(affiliate, type)
     links = affiliate.send(type)
 
-    links.sort_by(&:position).map do |link|
+    links.map do |link|
       {
         title: link.title,
         url: link.url
