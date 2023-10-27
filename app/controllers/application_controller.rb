@@ -151,4 +151,8 @@ class ApplicationController < ActionController::Base
     super
     payload[:ip] = request.remote_ip
   end
+
+  def redesign?
+    @affiliate.use_redesigned_results_page
+  end
 end

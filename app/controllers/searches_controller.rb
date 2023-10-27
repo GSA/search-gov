@@ -139,10 +139,6 @@ class SearchesController < ApplicationController
     @search_options[:document_collection] ? SiteSearch : WebSearch
   end
 
-  def redesign?
-    @affiliate.use_redesigned_results_page
-  end
-
   def set_layout
     redesign? ? 'searches_redesign' : 'searches'
   end
