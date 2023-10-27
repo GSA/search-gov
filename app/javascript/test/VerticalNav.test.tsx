@@ -10,7 +10,7 @@ jest.mock('i18n-js', () => jest.requireActual('i18n-js/dist/require/index'));
 
 const locale = {
   en: {
-    searches: { relatedSites: 'View More' },
+    searches: { relatedSites: 'View Topic' },
     showMore: 'More'
   }
 };
@@ -41,8 +41,14 @@ describe('VerticalNav', () => {
     });
 
     it('shows more dropdown when there is multiple related sites', () => {
-      const relatedSites = [{ label: 'Site 1', link: 'one.com' }, { label: 'Site 2', link: 'two.com' }];
-      const navigationLinks = [{ label: 'all', active: true, href: 'http://search.gov' }];
+      const relatedSites = [
+        { label: 'Site 1', link: 'one.com' },
+        { label: 'Site 2', link: 'two.com' }
+      ];
+
+      const navigationLinks = [
+        { label: 'all', active: true, href: 'http://search.gov' }
+      ];
 
       render(
         <LanguageContext.Provider value={i18n} >
@@ -53,8 +59,8 @@ describe('VerticalNav', () => {
       const all = screen.getByText(/all/i);
       expect(all).toBeInTheDocument();
 
-      const moreLink = screen.getByText(/More/i);
-      fireEvent.click(moreLink);
+      const viewTopic = screen.getByText(/View Topic/i);
+      fireEvent.click(viewTopic);
 
       const one = screen.getByText(/Site 1/i);
       const two = screen.getByText(/Site 2/i);
@@ -95,12 +101,19 @@ describe('VerticalNav', () => {
 
     describe('when there is multiple related sites', () => {
       it('shows related site label on menu', () => {
-        const relatedSites = [{ label: 'Site 1', link: 'one.com' }, { label: 'Site 2', link: 'two.com' }];
-        const navigationLinks = [{ label: 'all', active: true, href: 'http://search.gov' }];
+        const navigationLinks = [
+          { label: 'all',  active: true, href: 'http://search.gov' },
+          { label: 'none', active: true, href: 'http://none.gov' }
+        ];
+
+        const relatedSites = [
+          { label: 'Site 1', link: 'one.com' },
+          { label: 'Site 2', link: 'two.com' }
+        ];
 
         render(
           <LanguageContext.Provider value={i18n} >
-            <VNav.VerticalNav relatedSites={relatedSites} navigationLinks={navigationLinks} />
+            <VNav.VerticalNav navigationLinks={navigationLinks} relatedSites={relatedSites} />
           </LanguageContext.Provider>
         );
 
@@ -110,11 +123,11 @@ describe('VerticalNav', () => {
         const moreLink = screen.getByText(/More/i);
         fireEvent.click(moreLink);
 
-        const viewMore = screen.getByText(/View More/i);
+        const viewTopic = screen.getByText(/View Topic/i);
         const siteOne  = screen.getByText(/Site 1/i);
         const siteTwo  = screen.getByText(/Site 2/i);
 
-        expect(viewMore).toBeInTheDocument();
+        expect(viewTopic).toBeInTheDocument();
         expect(siteOne).toBeInTheDocument();
         expect(siteTwo).toBeInTheDocument();
       });
