@@ -122,6 +122,10 @@ interface SearchResultsLayoutProps {
   fontsAndColors: {
     headerLinksFontFamily: string;
   };
+  footerLinks?: {
+    title: string,
+    url: string
+  }[];
   relatedSearches?: { label: string; link: string; }[];
   newsLabel?: {
     newsAboutQuery: string;
@@ -142,7 +146,7 @@ const isBasicHeader = (extendedHeader: boolean): boolean => {
   return !extendedHeader;
 };
 
-const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [], extendedHeader, fontsAndColors, newsLabel }: SearchResultsLayoutProps) => {
+const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [], extendedHeader, footerLinks, fontsAndColors, newsLabel }: SearchResultsLayoutProps) => {
   const i18n = new I18n(translations);
   i18n.defaultLocale = 'en';
   i18n.enableFallback = true;
@@ -178,7 +182,9 @@ const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params 
           />) : <></>}
       </div>
 
-      <Footer />
+      <Footer 
+        footerLinks={footerLinks}
+      />
       <Identifier />
     </LanguageContext.Provider>
   );
