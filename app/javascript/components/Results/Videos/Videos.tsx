@@ -1,6 +1,6 @@
 import React from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
-import {Video} from './Video';
+import { Video } from './Video';
 
 interface VideosProps {
   videos?: {
@@ -10,23 +10,23 @@ interface VideosProps {
     publishedAt: string;
     youtubeThumbnailUrl: string;
     duration: string;
-  }[];
+  }[]
 }
 
-export const Videos = ({videos=[]}: VideosProps) => {
+export const Videos = ({ videos=[] }: VideosProps) => {
   return (
     <>
       {videos?.length > 0 && (
         <div className='search-item-wrapper'>
           {videos?.map((video, index) => {
-            return (<Video {...video} />);
+            return (<Video key={index} {...video} />);
           })}
           <GridContainer className='result-divider'>
             <Grid row gap="md">
             </Grid>
           </GridContainer>
         </div>
-    )}
+      )}
     </>
   );
 };

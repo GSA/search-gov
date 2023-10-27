@@ -10,7 +10,7 @@ interface VideoProps {
   publishedAt?: string;
   youtubeThumbnailUrl?: string;
   duration?: string;
-};
+}
 
 export const Video = (video: VideoProps) => {
   return (

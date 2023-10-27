@@ -162,9 +162,10 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
           {results && results.length > 0 ? 
             <> 
               {results.map((result, index) => {
-                if(result?.youtube){
+                if (result?.youtube) {
                   return (
                     <Video 
+                      key={index}
                       link={result.url}
                       title={result.url}
                       description={result.description}
@@ -172,7 +173,7 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
                       youtubeThumbnailUrl={result.youtubeThumbnailUrl} 
                       duration={result.youtubeDuration}
                     />
-                  )
+                  );
                 }
                 return (
                   <GridContainer key={index} className='result search-result-item'>
