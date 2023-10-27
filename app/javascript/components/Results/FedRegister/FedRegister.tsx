@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import styled from 'styled-components';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
 import parse from 'html-react-parser';
 import moment from 'moment';
+import { StyleContext } from '../../../contexts/StyleContext';
 
 type FedRegisterDoc = {
   commentsCloseOn: string | null;
@@ -20,6 +22,14 @@ interface FedRegisterDocsProps {
   fedRegisterDocs?: FedRegisterDoc[];
   query?:string;
 }
+
+const StyledWrapper = styled.div.attrs<{ styles: { sectionTitleColor: string }; }>(props => ({
+  styles: props.styles,
+}))`
+  .fed-register-label {
+    color: ${props => props.styles.sectionTitleColor};
+  }
+`;
 
 const getFedRegDocInfo = (document: FedRegisterDoc) => {
   const docType = document.documentType;
@@ -81,63 +91,67 @@ const getAgencyFedUrl = (query: string) => {
 };
 
 export const FedRegister = ({ fedRegisterDocs=[], query='' }: FedRegisterDocsProps) => {
+  const styles = useContext(StyleContext);
+
   return (
     <>
       {fedRegisterDocs?.length > 0 && (
-        <div className='search-item-wrapper fed-register-item-wrapper'>
-          <GridContainer className='fed-register-wrapper'>
-            <Grid row gap="md">
-              <h2 className='fed-register-label'>
-                Federal Register documents about {query}
-              </h2>
-            </Grid>
-          </GridContainer>
-          
-          {fedRegisterDocs?.map((fedRegisterDoc, index) => {
-            return (
-              <GridContainer className='result search-result-item' key={index}>
-                <Grid row gap="md">
-                  <Grid col={true} className='result-meta-data'>
-                    <span className='published-date'>{fedRegisterDoc.publicationDate}</span>
-                    
-                    <div className='result-title'>
-                      <a href={fedRegisterDoc.htmlUrl} className='result-title-link'>
-                        <h2 className='result-title-label'>
-                          {parse(fedRegisterDoc.title)} 
-                        </h2>
-                      </a>
-                    </div>
-                    <div className='result-desc'>
-                      <p>{getFedRegDocInfo(fedRegisterDoc)}</p>
-                      <div className='pages-count'>{getFedRegDocPageInfo(fedRegisterDoc)}</div>
-                      {getFedRegDocCommentPeriod(fedRegisterDoc)}
-                    </div>
-                  </Grid>
-                </Grid>
-                <Grid row className="row-mobile-divider"></Grid>
-              </GridContainer>
-            );
-          })}
-
-          <GridContainer className='result search-result-item'>
-            <Grid row gap="md">
-              <Grid col={true} className='result-meta-data'>
-                <div className='result-title'>
-                  <a href={getAgencyFedUrl(query)} className='result-title-link more-title-link'>
-                    <h2 className='result-title-label'>
-                      More agency documents on FederalRegister.gov
-                    </h2>
-                  </a>
-                </div>
+        <StyledWrapper styles={styles}>
+          <div className='search-item-wrapper fed-register-item-wrapper'>
+            <GridContainer className='fed-register-wrapper'>
+              <Grid row gap="md">
+                <h2 className='fed-register-label'>
+                  Federal Register documents about {query}
+                </h2>
               </Grid>
-            </Grid>
-          </GridContainer>
+            </GridContainer>
+            
+            {fedRegisterDocs?.map((fedRegisterDoc, index) => {
+              return (
+                <GridContainer className='result search-result-item' key={index}>
+                  <Grid row gap="md">
+                    <Grid col={true} className='result-meta-data'>
+                      <span className='published-date'>{fedRegisterDoc.publicationDate}</span>
+                      
+                      <div className='result-title'>
+                        <a href={fedRegisterDoc.htmlUrl} className='result-title-link'>
+                          <h2 className='result-title-label'>
+                            {parse(fedRegisterDoc.title)} 
+                          </h2>
+                        </a>
+                      </div>
+                      <div className='result-desc'>
+                        <p>{getFedRegDocInfo(fedRegisterDoc)}</p>
+                        <div className='pages-count'>{getFedRegDocPageInfo(fedRegisterDoc)}</div>
+                        {getFedRegDocCommentPeriod(fedRegisterDoc)}
+                      </div>
+                    </Grid>
+                  </Grid>
+                  <Grid row className="row-mobile-divider"></Grid>
+                </GridContainer>
+              );
+            })}
 
-          <GridContainer className='result-divider'>
-            <Grid row gap="md">
-            </Grid>
-          </GridContainer>
-        </div>
+            <GridContainer className='result search-result-item'>
+              <Grid row gap="md">
+                <Grid col={true} className='result-meta-data'>
+                  <div className='result-title'>
+                    <a href={getAgencyFedUrl(query)} className='result-title-link more-title-link'>
+                      <h2 className='result-title-label'>
+                        More agency documents on FederalRegister.gov
+                      </h2>
+                    </a>
+                  </div>
+                </Grid>
+              </Grid>
+            </GridContainer>
+
+            <GridContainer className='result-divider'>
+              <Grid row gap="md">
+              </Grid>
+            </GridContainer>
+          </div>
+        </StyledWrapper>
       )}
     </>
   );

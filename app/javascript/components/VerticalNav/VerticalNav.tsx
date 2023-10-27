@@ -1,12 +1,25 @@
-import React, { useState, useEffect, useContext, ReactNode, useRef } from 'react';
+import React, { useContext, useState, useEffect, ReactNode, useRef } from 'react';
+import styled from 'styled-components';
 import { GridContainer, Header, PrimaryNav } from '@trussworks/react-uswds';
 
 import { DropDownMenu } from './DropDownMenu';
 import { LanguageContext } from '../../contexts/LanguageContext';
 import { NavigationLink } from '../SearchResultsLayout';
 import { getTextWidth, move } from '../../utils';
+import { StyleContext } from '../../contexts/StyleContext';
 
 import './VerticalNav.css';
+
+const StyledPrimaryNav = styled(PrimaryNav).attrs<{ styles: { searchTabNavigationLinkColor: string; activeSearchTabNavigationColor: string; }; }>(props => ({
+  styles: props.styles,
+}))`
+  li.usa-nav__primary-item:not(li.usa-nav__submenu-item) > a {
+    color: ${props => props.styles.searchTabNavigationLinkColor} !important;
+  }
+  .usa-current::after {
+    background-color: ${props => props.styles.activeSearchTabNavigationColor} !important;
+  }
+`;
 
 const buildLink = ({ active, label, url }: NavigationLink, key = 0) => <a href={url} key={key} className={ active && 'usa-current' || '' }>{label}</a>;
 
@@ -28,6 +41,7 @@ interface VerticalNavProps {
 
 export const VerticalNav = ({ relatedSites = [], navigationLinks = [], relatedSitesDropdownLabel = '' }: VerticalNavProps) => {
   const i18n             = useContext(LanguageContext);
+  const styles           = useContext(StyleContext);
   const arrowWidth       = 16;
   const padding          = 32;
   const moreItemWidth    = useRef(getTextWidth(i18n.t('showMore')) + padding + arrowWidth);
@@ -112,7 +126,7 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [], relatedSi
       <GridContainer>
         <Header basic={true} className="vertical-wrapper">
           <div className="usa-nav-container" id="tabs-container">
-            <PrimaryNav items={navItems} />
+            <StyledPrimaryNav items={navItems} styles={styles} />
           </div>
         </Header>
       </GridContainer>
