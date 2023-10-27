@@ -293,7 +293,7 @@ Feature: Search - redesign
     And I should not see "Related Searches"
 
   @javascript @a11y
-  Scenario: Search with tabs and related searches
+  Scenario: Search with tabs and one related site on menu
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | first_name | last_name | domains        |
       | bar site         | bar.gov          | aff@bar.gov           | John       | Bar       | whitehouse.gov |
@@ -307,15 +307,36 @@ Feature: Search - redesign
     When I am on bar.gov's redesigned search page
     Then I should see "Everything"
     And I should see "Topics"
-    And I press "Related Searches"
     And I should see "Other Site"
 
   @javascript @a11y
-  Scenario: Search with too many tabs
+  Scenario: Search with tabs and more than one related site on menu
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | first_name | last_name | domains        |
-      | bar site         | bar.gov          | aff@bar.gov           | John       | Bar       | whitehouse.gov |
-      | other site   | other.gov  | aff@bad.gov   | John       | Bad       | cdc.gov |
+      | display_name | name      | contact_email | first_name | last_name | domains        |
+      | bar site     | bar.gov   | aff@bar.gov   | John       | Bar       | whitehouse.gov |
+      | other site   | other.gov | aff@bad.gov   | John       | Bad       | cdc.gov        |
+      | third site   | third.gov | third@bad.gov | Steven     | The Third | third.gov      |
+    And affiliate "bar.gov" has the following document collections:
+      | name   | prefixes               | is_navigable |
+      | Topics | http://bar.gov/topics/ | true         |
+    And the following Connections exist for the affiliate "bar.gov":
+      | connected_affiliate   |   display_name    |
+      | other.gov             |   Other Site      |
+      | third.gov             |   Third Site      |
+    When I am on bar.gov's redesigned search page
+    Then I should see "Everything"
+    And I should see "Topics"
+    And I press "View topic"
+    And I should see "Other Site"
+    And I should see "Third Site"
+
+  @javascript @a11y
+  Scenario: Search with too many tabs and multiple related sites
+    Given the following Affiliates exist:
+      | display_name | name      | contact_email | first_name | last_name | domains        |
+      | bar site     | bar.gov   | aff@bar.gov   | John       | Bar       | whitehouse.gov |
+      | other site   | other.gov | aff@bad.gov   | John       | Bad       | cdc.gov        |
+      | third site   | third.gov | third@bad.gov | Steven     | The Third | third.gov      |
     And affiliate "bar.gov" has the following document collections:
       | name                                | prefixes               | is_navigable |
       | Topics                              | http://bar.gov/topics/ | true         |
@@ -324,6 +345,7 @@ Feature: Search - redesign
     And the following Connections exist for the affiliate "bar.gov":
       | connected_affiliate   |   display_name    |
       | other.gov             |   Other Site      |
+      | third.gov             |   Third Site      |
     When I am on bar.gov's redesigned search page
     Then I should see "Everything"
     And I should see "Topics"
@@ -331,5 +353,5 @@ Feature: Search - redesign
     And I should not see "Related Searches"
     And I press "More"
     And I should see "Very very long colllection name two"
-    And I should see "Related Searches"
+    And I should see "View topic"
     And I should see "Other Site"

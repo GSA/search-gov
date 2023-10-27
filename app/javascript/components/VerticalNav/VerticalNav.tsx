@@ -14,7 +14,7 @@ export const isThereEnoughSpace = (itemToAddWidth: number) => {
   const container = document.getElementById('tabs-container');
 
   if (container) {
-    const [ul] = container.getElementsByClassName('usa-nav__primary');
+    const ul = container.getElementsByClassName('usa-nav__primary').item(0);
 
     return (container.offsetWidth - (ul as HTMLElement).offsetWidth) >= itemToAddWidth;
   }
