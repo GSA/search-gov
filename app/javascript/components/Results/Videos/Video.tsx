@@ -14,7 +14,7 @@ interface VideoProps {
 
 export const Video = (video: VideoProps) => {
   return (
-    <GridContainer className='result search-result-item'>
+    <GridContainer className='result search-result-item search-result-video-item'>
       <Grid row gap="md">
         <Grid mobileLg={{ col: 4 }} className='result-thumbnail'>
           <img src={video.youtubeThumbnailUrl} className="result-image result-youtube-thumbnail" alt={video.title}/>

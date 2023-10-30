@@ -167,7 +167,7 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
                     <Video 
                       key={index}
                       link={result.url}
-                      title={result.url}
+                      title={result.title}
                       description={result.description}
                       publishedAt={result.youtubePublishedAt}
                       youtubeThumbnailUrl={result.youtubeThumbnailUrl} 
