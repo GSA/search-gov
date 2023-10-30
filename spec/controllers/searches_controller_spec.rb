@@ -52,7 +52,7 @@ describe SearchesController do
 
     context 'when searching in English (redesign)' do
       before do
-        get :index, params: { query: 'social security', affiliate: 'usagov', redesign: 'true' }
+        get :index, params: { query: 'social security', affiliate: 'redesigned_usagov' }
       end
 
       it 'renders the React templates' do
