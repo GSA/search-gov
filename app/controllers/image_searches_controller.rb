@@ -33,6 +33,10 @@ class ImageSearchesController < ApplicationController
     }
   end
 
+  def redesign?
+    permitted_params[:redesign] == 'true'
+  end
+
   def set_layout
     redesign? ? 'searches_redesign' : 'searches'
   end
