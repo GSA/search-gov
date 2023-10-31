@@ -7,8 +7,8 @@ Feature: Image search - redesign
   @javascript @a11y @a11y_wip
   Scenario: English Image search
     Given the following Affiliates exist:
-      | display_name | name   | contact_email | first_name | last_name | domains        |
-      | USA.gov      | usagov | aff@bar.gov   | John       | Bar       | whitehouse.gov |
+      | display_name | name   | contact_email | first_name | last_name | domains        | use_redesigned_results_page |
+      | USA.gov      | usagov | aff@bar.gov   | John       | Bar       | whitehouse.gov | true                        |
     When I am on usagov's redesigned image search page
     And I search for "white house" in the redesigned search page
     Then I should see 20 image results
