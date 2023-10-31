@@ -6,7 +6,7 @@ Then /I should see the (basic|extended) header/ do |header|
   end
 end
 
-Then /I should see exactly "([^"]*)" video search result/ do |count|
+Then /I should see exactly "([^"]*)" redesigned video search result/ do |count|
   selector = '.search-result-video-item'
   page.should have_selector selector, count: count
 end

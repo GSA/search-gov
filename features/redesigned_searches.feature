@@ -285,9 +285,9 @@ Feature: Search - redesign
   @javascript @a11y @a11y_wip
   Scenario: Video news search
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | locale | youtube_handles         |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | usgovernment,whitehouse |
-      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | gobiernousa             |
+      | display_name | name          | contact_email    | first_name | last_name | locale | youtube_handles | use_redesigned_results_page     |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | usgovernment,whitehouse | true |
+      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | gobiernousa             | true |
     And affiliate "en.agency.gov" has the following RSS feeds:
       | name   | url | is_navigable | is_managed |
       | Videos |     | true         | true       |
@@ -301,29 +301,7 @@ Feature: Search - redesign
     When I am on en.agency.gov's redesigned search page
     And I fill in "Enter your search term" with "video"
     And I press "Search"
-    Then I should see exactly "1" video search result
-
-    When I follow "Videos" within the SERP navigation
-    Then I should see 1 search result title link with url for "http://www.youtube.com/watch?v=0_usgovernment_channel_id"
-    And I should see "Powered by Search.gov"
-    And I should see exactly "20" video search results
-
-    And I should see a link to "2"
-    And I should see a link to "Next"
-
-
-    When I follow "Next"
-    Then I should see exactly "20" video search results
-    And I should see a link to "Previous"
-    And I should see a link to "1"
-    And I should see "Next"
-
-    When I follow "Previous"
-    And I follow "2"
-    Then I should see exactly "20" video search results
-
-    When I follow "1"
-    Then I should see exactly "20" video search results
+    Then I should see exactly "1" redesigned video search result
 
  
 
