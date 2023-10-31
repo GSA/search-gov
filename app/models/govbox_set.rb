@@ -76,7 +76,7 @@ class GovboxSet
   def first_video_result
     @video_news_items&.results&.first(1)
   end
-  
+
   def format_video_news_items
     return unless videos_exist?
     
@@ -86,7 +86,7 @@ class GovboxSet
       result[:description] = truncate_description(translate_highlights(result[:description]))
     end
   end
-
+  
   def raw_video_results
     first_video_result&.map { |result| result.slice(:link, :title, :description, :published_at, :youtube_thumbnail_url, :duration) }
   end
