@@ -282,22 +282,23 @@ Feature: Search - redesign
     And I should see "Comment period ends in 7 days"
     And I should see "Pages 33040 - 33041 (2 pages) [FR DOC #: 2014-13420]"
 
-  @javascript @a11y
+  @javascript @a11y @a11y_wip
   Scenario: Search without tabs nor related searches
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | first_name | last_name | domains        |
-      | bar site         | bar.gov          | aff@bar.gov           | John       | Bar       | whitehouse.gov |
+      | display_name | name    | contact_email | first_name | last_name | domains        | use_redesigned_results_page |
+      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | whitehouse.gov | true                        |
     When I am on bar.gov's redesigned search page
+    Then show me the page
     Then I should see "Everything"
     And I should not see "More"
     And I should not see "Related Searches"
 
-  @javascript @a11y
+  @javascript @a11y @a11y_wip
   Scenario: Search with tabs and one related site on menu
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | first_name | last_name | domains        |
-      | bar site         | bar.gov          | aff@bar.gov           | John       | Bar       | whitehouse.gov |
-      | other site   | other.gov  | aff@bad.gov   | John       | Bad       | cdc.gov |
+      | display_name | name      | contact_email | first_name | last_name | domains        | use_redesigned_results_page |
+      | bar site     | bar.gov   | aff@bar.gov   | John       | Bar       | whitehouse.gov | true                        |
+      | other site   | other.gov | aff@bad.gov   | John       | Bad       | cdc.gov        | true                        |
     And affiliate "bar.gov" has the following document collections:
       | name   | prefixes               | is_navigable |
       | Topics | http://bar.gov/topics/ | true         |
@@ -309,13 +310,13 @@ Feature: Search - redesign
     And I should see "Topics"
     And I should see "Other Site"
 
-  @javascript @a11y
+  @javascript @a11y @a11y_wip
   Scenario: Search with tabs and more than one related site on menu
     Given the following Affiliates exist:
-      | display_name | name      | contact_email | first_name | last_name | domains        |
-      | bar site     | bar.gov   | aff@bar.gov   | John       | Bar       | whitehouse.gov |
-      | other site   | other.gov | aff@bad.gov   | John       | Bad       | cdc.gov        |
-      | third site   | third.gov | third@bad.gov | Steven     | The Third | third.gov      |
+      | display_name | name      | contact_email | first_name | last_name | domains        | use_redesigned_results_page |
+      | bar site     | bar.gov   | aff@bar.gov   | John       | Bar       | whitehouse.gov | true                        |
+      | other site   | other.gov | aff@bad.gov   | John       | Bad       | cdc.gov        | true                        |
+      | third site   | third.gov | third@bad.gov | Steven     | The Third | third.gov      | true                        |
     And affiliate "bar.gov" has the following document collections:
       | name   | prefixes               | is_navigable |
       | Topics | http://bar.gov/topics/ | true         |
@@ -330,13 +331,13 @@ Feature: Search - redesign
     And I should see "Other Site"
     And I should see "Third Site"
 
-  @javascript @a11y
+  @javascript @a11y @a11y_wip
   Scenario: Search with too many tabs and multiple related sites
     Given the following Affiliates exist:
-      | display_name | name      | contact_email | first_name | last_name | domains        |
-      | bar site     | bar.gov   | aff@bar.gov   | John       | Bar       | whitehouse.gov |
-      | other site   | other.gov | aff@bad.gov   | John       | Bad       | cdc.gov        |
-      | third site   | third.gov | third@bad.gov | Steven     | The Third | third.gov      |
+      | display_name | name      | contact_email | first_name | last_name | domains        | use_redesigned_results_page |
+      | bar site     | bar.gov   | aff@bar.gov   | John       | Bar       | whitehouse.gov | true                        |
+      | other site   | other.gov | aff@bad.gov   | John       | Bad       | cdc.gov        | true                        |
+      | third site   | third.gov | third@bad.gov | Steven     | The Third | third.gov      | true                        |
     And affiliate "bar.gov" has the following document collections:
       | name                                | prefixes               | is_navigable |
       | Topics                              | http://bar.gov/topics/ | true         |
