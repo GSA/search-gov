@@ -133,3 +133,11 @@ blended_affiliate:
   display_name: Blended Affiliate
   name: blended_affiliate
   gets_blended_results: true
+
+redesigned_usagov_affiliate:
+  <<: *DEFAULTS
+  display_name: USA.gov
+  name: redesigned_usagov
+  website: https://www.usa.gov
+  search_engine: BingV7
+  use_redesigned_results_page: true
