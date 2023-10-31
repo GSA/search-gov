@@ -310,3 +310,5 @@ Precompile assets
 ```
 bin/rails assets:precompile
 ```
+
+TEST
