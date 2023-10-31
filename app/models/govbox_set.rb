@@ -76,7 +76,7 @@ class GovboxSet
   def first_video_result
     @video_news_items&.results&.first(1)
   end
-
+  
   def format_video_news_items
     return unless videos_exist?
     
