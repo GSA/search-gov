@@ -22,8 +22,7 @@ class ImageResultsPostProcessor < ResultsPostProcessor
       {
         altText: result['title'],
         url: result['url'],
-        thumbnailUrl: result['thumbnail']['url'],
-        image: true
+        thumbnailUrl: result['thumbnail']['url']
       }
     end
   end
