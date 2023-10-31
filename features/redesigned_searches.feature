@@ -282,7 +282,7 @@ Feature: Search - redesign
     And I should see "Comment period ends in 7 days"
     And I should see "Pages 33040 - 33041 (2 pages) [FR DOC #: 2014-13420]"
 
-  @javascript @a11y @a11y_wip
+  @javascript @a11y
   Scenario: Search without tabs nor related searches
     Given the following Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name | domains        | use_redesigned_results_page |
@@ -293,7 +293,7 @@ Feature: Search - redesign
     And I should not see "More"
     And I should not see "Related Searches"
 
-  @javascript @a11y @a11y_wip
+  @javascript @a11y
   Scenario: Search with tabs and one related site on menu
     Given the following Affiliates exist:
       | display_name | name      | contact_email | first_name | last_name | domains        | use_redesigned_results_page |
@@ -310,7 +310,7 @@ Feature: Search - redesign
     And I should see "Topics"
     And I should see "Other Site"
 
-  @javascript @a11y @a11y_wip
+  @javascript @a11y
   Scenario: Search with tabs and more than one related site on menu
     Given the following Affiliates exist:
       | display_name | name      | contact_email | first_name | last_name | domains        | use_redesigned_results_page |
@@ -331,7 +331,7 @@ Feature: Search - redesign
     And I should see "Other Site"
     And I should see "Third Site"
 
-  @javascript @a11y @a11y_wip
+  @javascript @a11y
   Scenario: Search with too many tabs and multiple related sites
     Given the following Affiliates exist:
       | display_name | name      | contact_email | first_name | last_name | domains        | use_redesigned_results_page |
