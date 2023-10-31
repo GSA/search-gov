@@ -15,6 +15,7 @@ describe('Vidoes component', () => {
       duration: '2:50'
     }
   ];
+  
   it('renders videos component', () => {
     render(
       <Videos videos={videos}/>
