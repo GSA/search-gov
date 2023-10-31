@@ -79,13 +79,16 @@ class GovboxSet
 
   def format_video_news_items
     return unless videos_exist?
+    
+    raw_video_results&.each do |result|
+      result[:published_at] = result[:published_at].to_datetime.to_fs(:long)
+      result[:title] = translate_highlights(result[:title])
+      result[:description] = truncate_description(translate_highlights(result[:description]))
+    end
+  end
 
-    first_video_result&.map { |result| result.slice(:link, :title, :description, :published_at, :youtube_thumbnail_url, :duration) }&.
-      each { |result| 
-        result[:published_at] = result[:published_at].to_datetime.to_fs(:long)
-        result[:title] = translate_highlights(result[:title])
-        result[:description] = truncate_description(translate_highlights(result[:description]))
-      }
+  def raw_video_results
+    first_video_result&.map { |result| result.slice(:link, :title, :description, :published_at, :youtube_thumbnail_url, :duration) }
   end
 
   def fresh_news_items?
