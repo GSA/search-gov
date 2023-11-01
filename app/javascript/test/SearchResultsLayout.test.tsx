@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
-import SearchResultsLayout from '../components/SearchResultsLayout';
+import SearchResultsLayout, { NavigationLink } from '../components/SearchResultsLayout';
 
 const translations = {
   en: {
@@ -24,23 +24,17 @@ const newsLabel = {
   }]
 };
 
+const navigationLinks: NavigationLink[] = [];
+
 jest.mock('i18n-js', () => {
   return jest.requireActual('i18n-js/dist/require/index');
 });
 
 describe('SearchResultsLayout', () => {
   it('renders the correct header type and content', () => {
-    render(<SearchResultsLayout params={{}} resultsData={{ results: [], totalPages: 1, unboundedResults: false }} vertical='web' translations={translations} extendedHeader={false} fontsAndColors={fontsAndColors} />);
+    render(<SearchResultsLayout params={{}} resultsData={{ results: [], totalPages: 1, unboundedResults: false }} vertical='web' translations={translations} extendedHeader={false} fontsAndColors={fontsAndColors} navigationLinks={navigationLinks} />);
     const [header] = screen.getAllByTestId('header');
     expect(header).toHaveClass('usa-header--basic');
-  });
-
-  it('renders all relevant links', () => {
-    render(<SearchResultsLayout params={{}} resultsData={{ results: [], totalPages: 1, unboundedResults: false }} vertical='web' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} />);
-    const linkToMoreDropdown = screen.getAllByText(/More/i);
-    const relatedSites = screen.getByText(/Related Sites/i);
-    expect(linkToMoreDropdown[0]).toBeInTheDocument();
-    expect(relatedSites).toBeInTheDocument();
   });
 
   it('renders search results', () => {
@@ -49,7 +43,7 @@ describe('SearchResultsLayout', () => {
       results.push({ title: 'test result 1', url: 'https://www.search.gov', description: 'result body', publishedDate: 'May 9th, 2023', updatedDate: 'May 10th, 2023' });
     }
     const resultsData = { totalPages: 2, unboundedResults: true, results };
-    render(<SearchResultsLayout params={{ query: 'foo' }} resultsData={resultsData} vertical='web' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} />);
+    render(<SearchResultsLayout params={{ query: 'foo' }} resultsData={resultsData} vertical='web' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} navigationLinks={navigationLinks} />);
     const resultTitle = screen.getAllByText(/test result 1/i);
     const resultUrl = screen.getAllByText(/www.search.gov/i);
     const resultBody = screen.getAllByText(/result body/i);
@@ -69,7 +63,7 @@ describe('SearchResultsLayout', () => {
     }
     const additionalResults = { recommendedBy: 'USAgov', textBestBets: [{ title: 'A best bet', description: 'This is the best bet', url: 'http://www.example.com' }] };
     const resultsData = { totalPages: 2, unboundedResults: true, results };
-    render(<SearchResultsLayout params={{ query: 'foo' }} resultsData={resultsData} additionalResults={additionalResults} vertical='web' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} />);
+    render(<SearchResultsLayout params={{ query: 'foo' }} resultsData={resultsData} additionalResults={additionalResults} vertical='web' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} navigationLinks={navigationLinks} />);
     const bestBetRecommendedBy = screen.getByText(/Recommended by USAgov/i);
     const bestBetTitle = screen.getByText(/A best bet/i);
     const bestBetDescription = screen.getByText(/This is the best bet/i);
@@ -87,7 +81,7 @@ describe('SearchResultsLayout', () => {
     }
     const additionalResults = { recommendedBy: 'USAgov', textBestBets: [], graphicsBestBet: { title: 'Search support', titleUrl: 'https://search.gov/support.html', imageUrl: 'https://search.gov/support.jpg', imageAltText: 'support alt text', links: [{ title: 'Learning', url: 'https://search.gov/learn' }] } };
     const resultsData = { totalPages: 2, unboundedResults: true, results };
-    render(<SearchResultsLayout params={{ query: 'foo' }} resultsData={resultsData} additionalResults={additionalResults} vertical='web' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} />);
+    render(<SearchResultsLayout params={{ query: 'foo' }} resultsData={resultsData} additionalResults={additionalResults} vertical='web' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} navigationLinks={navigationLinks} />);
     const bestBetRecommendedBy = screen.getByText(/Recommended by USAgov/i);
     const bestBetTitle = screen.getByText(/Search support/i);
     const img = Array.from(document.getElementsByClassName('result-image')).pop() as HTMLImageElement;
@@ -101,7 +95,27 @@ describe('SearchResultsLayout', () => {
 
   it('renders image search results', () => {
     const resultsData = { totalPages: 2, unboundedResults: true, results: [{ title: 'test result 1', url: 'https://www.search.gov', description: 'result body', thumbnailUrl: 'https://www.search.gov/test_image.png', publishedDate: 'May 9th, 2023', updatedDate: 'May 10th, 2023' }] };
-    render(<SearchResultsLayout params={{ query: 'foo' }} resultsData={resultsData} vertical='image' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} />);
+    render(<SearchResultsLayout params={{ query: 'foo' }} resultsData={resultsData} vertical='image' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} navigationLinks={navigationLinks} />);
+    const resultTitle = screen.getByText(/test result 1/i);
+    const img = Array.from(document.getElementsByClassName('result-image')).pop() as HTMLImageElement;
+    expect(resultTitle).toBeInTheDocument();
+    expect(img).toHaveAttribute('src', 'https://www.search.gov/test_image.png');
+    expect(img).toHaveAttribute('alt', 'test result 1');
+  });
+
+  it('renders videos', () => {
+    const videos = [{
+      'title': 'test result 1',
+      'url': 'https://www.youtube.com/watch?v=UcaloWLCe3w',
+      'description': 'result body',
+      'publishedAt': '9 days',
+      'youtube': true,
+      'youtubePublishedAt': '2023-10-23T15:11:13.000Z',
+      'youtubeThumbnailUrl': 'https://www.search.gov/test_image.png',
+      'youtubeDuration': '0:55'
+    }]
+    const resultsData = { totalPages: 2, unboundedResults: true, results: videos};
+    render(<SearchResultsLayout params={{ query: 'foo' }} resultsData={resultsData} vertical='image' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} navigationLinks={navigationLinks} />);
     const resultTitle = screen.getByText(/test result 1/i);
     const img = Array.from(document.getElementsByClassName('result-image')).pop() as HTMLImageElement;
     expect(resultTitle).toBeInTheDocument();
@@ -109,6 +123,3 @@ describe('SearchResultsLayout', () => {
     expect(img).toHaveAttribute('alt', 'test result 1');
   });
 });
-
-
-

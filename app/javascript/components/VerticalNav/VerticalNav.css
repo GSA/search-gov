@@ -8,10 +8,6 @@
   margin-left: -1rem;
 }
 
-.vertical-nav-wrapper .usa-nav__primary > .usa-nav__primary-item:last-child{
-  margin-right: -2rem;
-}
-
 .vertical-wrapper .usa-nav-container{
   padding-left: 0;
   padding-right: 0;
@@ -19,11 +15,6 @@
 
 .vertical-wrapper .usa-nav-container .usa-nav{
   justify-content: flex-start;
-}
-
-.vertical-wrapper .usa-nav-container .usa-nav__primary-item:last-of-type {
-  position: absolute;
-  right: 0;
 }
 
 .vertical-wrapper .usa-nav-container .usa-nav-container {
@@ -63,4 +54,8 @@
 .vertical-wrapper .vertical-button:hover {
   border-bottom: 4px solid #005ea2;
   color: #005EA2;
+}
+
+.vertical-nav-wrapper .usa-header .usa-nav {
+  padding-left: 0;
 }
