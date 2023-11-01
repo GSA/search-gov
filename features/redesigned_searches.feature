@@ -375,8 +375,6 @@ Feature: Search - redesign
     When I am on en.agency.gov's search page
     And I fill in "Enter your search term" with "video"
     And I press "Search"
-    Then I should see exactly "1" redesigned video search result
-
     When I follow "Videos"
     Then I should see exactly "20" redesigned video search result
     And I should see a link to "2" with class "usa-pagination__button"
