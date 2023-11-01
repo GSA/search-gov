@@ -44,7 +44,7 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [], relatedSi
   const relatedSitesWidth   = () => relatedSites.length ? relatedTextWidth.current + padding : 0;
 
   const addNavItem = (item: ReactNode) => setNavItems([...navItems, item]);
-  const addMoveBtn = () => {
+  const addMoreBtn = () => {
     const activeIndex = navigationLinks.findIndex((navLink) => navLink.active);
 
     if (activeIndex >= navItemsCount) {
@@ -76,14 +76,14 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [], relatedSi
 
         setNavItemsCount(navItemsCount + 1);
       } else {
-        addMoveBtn();
+        addMoreBtn();
       }
     } else {
       if (relatedSites.length === 1) {
         if (isThereEnoughSpace(getTextWidth(relatedSites[0].label) + padding))  {
           addNavItem(<a href={relatedSites[0].link} key={navItemsCount}>{relatedSites[0].label}</a>);
         } else {
-          addMoveBtn();
+          addMoreBtn();
         }
       } else if (relatedSites.length) {
         const items = relatedSites.map((site, index) => <a href={site.link} key={index}>{site.label}</a>);
