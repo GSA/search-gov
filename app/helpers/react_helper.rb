@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ReactHelper
+  # rubocop:disable Metrics/AbcSize
   def search_results_layout(search, params, vertical, affiliate)
     data = {
       additionalResults: search.govbox_set,
@@ -8,6 +9,7 @@ module ReactHelper
       currentLocale: affiliate.locale,
       extendedHeader: affiliate.use_extended_header,
       fontsAndColors: affiliate.visual_design_json,
+      footerLinks: links(affiliate, :footer_links),
       navigationLinks: navigation_links(search, params),
       newsLabel: news_label(search),
       noResultsMessage: no_result_message(search),
@@ -21,6 +23,7 @@ module ReactHelper
 
     react_component('SearchResultsLayout', data.compact_blank)
   end
+  # rubocop:enable Metrics/AbcSize
 
   def image_search_results_layout(search, params, vertical, affiliate)
     data = {
@@ -80,6 +83,17 @@ module ReactHelper
       {
         label: connection.label,
         link: search_url(affiliate: connection.connected_affiliate.name, query: search.query)
+      }
+    end
+  end
+
+  def links(affiliate, type)
+    links = affiliate.send(type)
+
+    links.map do |link|
+      {
+        title: link.title,
+        url: link.url
       }
     end
   end
