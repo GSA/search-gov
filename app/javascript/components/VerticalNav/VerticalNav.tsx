@@ -33,6 +33,7 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [], relatedSi
   const moreItemWidth    = useRef(getTextWidth(i18n.t('showMore')) + padding + arrowWidth);
   const relatedLabel     = useRef(relatedSitesDropdownLabel || i18n.t('searches.relatedSites'));
   const relatedTextWidth = useRef(getTextWidth(relatedLabel.current));
+  const resizeTimeout    = useRef();
 
   const [navItems, setNavItems]           = useState<ReactNode[]>([]);
   const [navItemsCount, setNavItemsCount] = useState(0);
@@ -43,6 +44,11 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [], relatedSi
   const nextItemWidth       = () => isLastItem() ? relatedSitesWidth() : moreItemWidth.current;
   const relatedSitesWidth   = () => relatedSites.length ? relatedTextWidth.current + padding : 0;
 
+  const rearrangeTabs = () => {
+    setNavItems([]);
+    setNavItemsCount(0);
+  };
+
   const addNavItem = (item: ReactNode) => setNavItems([...navItems, item]);
   const addMoreBtn = () => {
     const activeIndex = navigationLinks.findIndex((navLink) => navLink.active);
@@ -51,9 +57,7 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [], relatedSi
       const position = navItemsCount === activeIndex ? navItemsCount - 1 : navItemsCount;
 
       move(navigationLinks, activeIndex, position);
-
-      setNavItems([]);
-      setNavItemsCount(0);
+      rearrangeTabs();
     } else {
       let items = navigationLinks.slice(navItemsCount).map(buildLink);
 
@@ -68,6 +72,16 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [], relatedSi
       addNavItem(<DropDownMenu key={navItemsCount} label={i18n.t('showMore')} items={items} />);
     }
   };
+
+  useEffect(() => {
+    const resizeTabs = () => {
+      clearTimeout(resizeTimeout.current);
+
+      resizeTimeout.current = setTimeout(rearrangeTabs, 10);
+    }
+
+    window.addEventListener("resize", resizeTabs);
+  });
 
   useEffect(() => {
     if (navItemsCount < navigationLinks.length) {
