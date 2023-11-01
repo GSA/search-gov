@@ -113,7 +113,7 @@ describe('SearchResultsLayout', () => {
       youtubePublishedAt: '2023-10-23T15:11:13.000Z',
       youtubeThumbnailUrl: 'https://www.search.gov/test_image.png',
       youtubeDuration: '0:55'
-    }]
+    }];
     const resultsData = { totalPages: 2, unboundedResults: true, results: videos };
     render(<SearchResultsLayout params={{ query: 'foo' }} resultsData={resultsData} vertical='image' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} navigationLinks={navigationLinks} />);
     const resultTitle = screen.getByText(/test result 1/i);
