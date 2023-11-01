@@ -10,7 +10,6 @@ import { LanguageContext } from '../../contexts/LanguageContext';
 import { HealthTopics } from './HealthTopics/HealthTopics';
 // import { ImagesPage } from './ImagesPage/ImagesPage';
 import { RssNews } from './RssNews/RssNews';
-// import { VideosModule } from './Videos/VideosModule';
 import { Video } from './Videos/Video';
 import { FedRegister } from './FedRegister/FedRegister';
 import { Jobs } from './Jobs/Jobs';
