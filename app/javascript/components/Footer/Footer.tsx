@@ -1,10 +1,17 @@
 import React, { useContext } from 'react';
-import { Footer as UswdsFooter, GridContainer, FooterNav, Address } from '@trussworks/react-uswds';
+import { Footer as UswdsFooter, GridContainer, FooterNav } from '@trussworks/react-uswds';
 import { LanguageContext } from '../../contexts/LanguageContext';
 
 import './Footer.css';
 
-export const Footer = () => {
+interface FooterProps {
+  footerLinks?: {
+    title: string,
+    url: string
+  }[];
+}
+
+export const Footer = ({ footerLinks = [] }: FooterProps) => {
   const i18n = useContext(LanguageContext);
 
   const returnToTop = (
@@ -15,29 +22,18 @@ export const Footer = () => {
     </GridContainer>
   );
 
-  const primaryFooterLinks = [
-    <a className="usa-footer__primary-link" href="#" key="primary-link-1">
-      Primary Link 1
-    </a>,
-    <a className="usa-footer__primary-link" href="#" key="primary-link-2">
-      Primary Link 2
-    </a>,
-    <a className="usa-footer__primary-link" href="#" key="primary-link-3">
-      Primary Link 3
-    </a>,
-    <a className="usa-footer__primary-link" href="#" key="primary-link-4">
-      Primary Link 4
-    </a>
-  ];
-
-  const addressItems = [
-    <a key="telephone" href="tel:1-800-555-5555">
-      (800) CALL-GOVT
-    </a>,
-    <a key="email" href="mailto:info@agency.gov">
-      info@agency.gov
-    </a>
-  ];
+  const primaryFooterLinks =
+    footerLinks && footerLinks.length > 0 ? (footerLinks.map((link, index) => {
+      return (
+        <a className="usa-footer__primary-link" href={link.url} key={index}>
+          {link.title}
+        </a>
+      );
+    })) : (
+      [
+        <></>
+      ]
+    );
 
   return (
     <div id="serp-footer-wrapper">
@@ -50,12 +46,6 @@ export const Footer = () => {
               <FooterNav
                 size="slim"
                 links={primaryFooterLinks}
-              />
-            </div>
-            <div className="tablet:grid-col-4">
-              <Address
-                size="slim"
-                items={addressItems}
               />
             </div>
           </div>

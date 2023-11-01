@@ -6,8 +6,8 @@ Feature: Search - redesign
   @javascript @a11y
   Scenario: Search with no query on an affiliate page
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | first_name | last_name | domains        |
-      | bar site         | bar.gov          | aff@bar.gov           | John       | Bar       | whitehouse.gov |
+      | display_name     | name             | contact_email         | first_name | last_name | domains        | use_redesigned_results_page |
+      | bar site         | bar.gov          | aff@bar.gov           | John       | Bar       | whitehouse.gov | true                        |
     When I am on bar.gov's redesigned search page
     Then I should see "Please enter a search term in the box above."
     And I should not see pagination
@@ -15,8 +15,8 @@ Feature: Search - redesign
   @javascript @a11y @a11y_wip
   Scenario: Searching a domain with Bing results with pagination
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | first_name | last_name | domains        |
-      | bar site         | bar.gov          | aff@bar.gov           | John       | Bar       | whitehouse.gov |
+      | display_name     | name             | contact_email         | first_name | last_name | domains        | use_redesigned_results_page |
+      | bar site         | bar.gov          | aff@bar.gov           | John       | Bar       | whitehouse.gov | true                        |
     When I am on bar.gov's redesigned search page
     And I search for "white house" in the redesigned search page
     Then I should see exactly "20" web search results
@@ -41,8 +41,8 @@ Feature: Search - redesign
   @javascript @a11y @a11y_wip
   Scenario: Search with I14y results with pagination
     Given the following SearchGov Affiliates exist:
-      | display_name   | name           | contact_email      | first_name | last_name | domains            |
-      | HealthCare.gov | healthcare.gov | aff@healthcare.gov | Jane       | Bar       | www.healthcare.gov |
+      | display_name   | name           | contact_email      | first_name | last_name | domains            | use_redesigned_results_page |
+      | HealthCare.gov | healthcare.gov | aff@healthcare.gov | Jane       | Bar       | www.healthcare.gov | true                        |
     Given there are results for the "searchgov" drawer
     When I am on healthcare.gov's redesigned search page
     And I search for "marketplace" in the redesigned search page
@@ -64,8 +64,8 @@ Feature: Search - redesign
   @javascript @a11y
   Scenario: Search with blended results
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | first_name | last_name | gets_blended_results    |
-      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | true                    |
+      | display_name | name    | contact_email | first_name | last_name | gets_blended_results    | use_redesigned_results_page |
+      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | true                    | true                        |
     And the following IndexedDocuments exist:
       | title                   | description                          | url                                 | affiliate | last_crawl_status | published_ago  |
       | The last hour article   | Within the last hour article on item | http://p.whitehouse.gov/hour.html   | bar.gov   | OK                | 30 minutes ago |
@@ -85,8 +85,8 @@ Feature: Search - redesign
   @javascript @a11y @a11y_wip
   Scenario: Search with best bets
     Given the following SearchGov Affiliates exist:
-      | display_name   | name           | contact_email      | first_name | last_name | domains            |
-      | HealthCare.gov | healthcare.gov | aff@healthcare.gov | Jane       | Bar       | www.healthcare.gov |
+      | display_name   | name           | contact_email      | first_name | last_name | domains            | use_redesigned_results_page |
+      | HealthCare.gov | healthcare.gov | aff@healthcare.gov | Jane       | Bar       | www.healthcare.gov | true                        |
     Given the following Boosted Content entries exist for the affiliate "healthcare.gov"
       | url                                          | title             | description                                            |
       | http://healthcare.gov/hippopotamus-amphibius | Hippopotamus item | large, mostly herbivorous mammal in sub-Saharan Africa |
@@ -107,8 +107,8 @@ Feature: Search - redesign
   @javascript @a11y
   Scenario: News search
     Given the following Affiliates exist:
-      | display_name     | name       | contact_email | first_name | last_name |
-      | bar site         | bar.gov    | aff@bar.gov   | John       | Bar       |
+      | display_name     | name       | contact_email | first_name | last_name | use_redesigned_results_page |
+      | bar site         | bar.gov    | aff@bar.gov   | John       | Bar       | true                        |
     And affiliate "bar.gov" has the following RSS feeds:
       | name   | url                                  | is_navigable |
       | Press  | http://www.whitehouse.gov/feed/press | true         |
@@ -125,8 +125,8 @@ Feature: Search - redesign
   @javascript @a11y @a11y_wip
   Scenario: Docs search
     Given the following Affiliates exist:
-      | display_name | name       | contact_email | first_name | last_name | domains |
-      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov |
+      | display_name | name       | contact_email | first_name | last_name | domains | use_redesigned_results_page |
+      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov | true                        |
     When I am on agency.gov's redesigned docs search page
     And I search for "USA" in the redesigned search page
     Then I should see exactly "20" web search results
@@ -255,14 +255,14 @@ Feature: Search - redesign
   @javascript @a11y
   Scenario: Searching with custom visual design settings
     Given the following Affiliates exist:
-      | display_name | name       | contact_email | first_name | last_name | domains | use_extended_header |
-      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov | false               |
+      | display_name | name       | contact_email | first_name | last_name | domains | use_extended_header | use_redesigned_results_page |
+      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov | false               | true                        |
     When I am on agency.gov's redesigned docs search page
     Then I should see the basic header
 
     Given the following Affiliates exist:
-      | display_name | name       | contact_email | first_name | last_name | domains | use_extended_header |
-      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov | true               |
+      | display_name | name       | contact_email | first_name | last_name | domains | use_extended_header | use_redesigned_results_page |
+      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov | true                | true                        |
     When I am on agency.gov's redesigned docs search page
     Then I should see the extended header
 
