@@ -288,7 +288,6 @@ Feature: Search - redesign
       | display_name | name    | contact_email | first_name | last_name | domains        | use_redesigned_results_page |
       | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | whitehouse.gov | true                        |
     When I am on bar.gov's redesigned search page
-    Then show me the page
     Then I should see "Everything"
     And I should not see "More"
     And I should not see "Related Searches"
