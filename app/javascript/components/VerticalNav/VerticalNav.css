@@ -4,23 +4,92 @@
   padding-right: 0;
 }
 
-.vertical-nav-wrapper .usa-nav-container nav.usa-nav{
-  margin-left: -1rem;
+.vertical-wrapper {
+  .usa-nav-container {
+    align-items: flex-end;
+    display: flex;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
+
+    &::after {
+      clear: both;
+      content: "";
+      display: block;
+    }
+  }
+
+  .usa-nav {
+    background: none;
+    display: flex;
+    flex-direction: row;
+    float: right;
+    justify-content: flex-start;
+    padding: 0 0 0.25rem 0;
+    position: relative;
+    width: 100%;
+  }
+
+  .usa-nav__primary {
+    display: flex;
+    margin-top: 0;
+    width: auto;
+  }
+
+  .usa-nav__primary-item {
+    border-top: none;
+    font-size: .93rem;
+    line-height: 0.9;
+  }
+
+  .usa-nav__primary > .usa-nav__primary-item {
+    & button, & > a {
+      color: #565c65;
+      line-height: .9;
+      padding: 1rem;
+      display: block;
+      font-weight: 700;
+    }
+  }
+
+  .usa-nav__primary .usa-current::after {
+    background-color: #005ea2;
+    border-radius: 0;
+    bottom: -0.25rem;
+    content: "";
+    display: block;
+    height: 0.25rem;
+    left: 1rem;
+    position: absolute;
+    right: 1rem;
+    top: auto;
+    width: inherit;
+  }
+
+  .usa-nav__primary .usa-accordion__button span {
+    margin-right: 0;
+    padding-right: 1rem;
+  }
+
+  .usa-nav__close {
+    display: none;
+  }
 }
 
-.vertical-wrapper .usa-nav-container{
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.vertical-wrapper .usa-nav-container .usa-nav{
-  justify-content: flex-start;
-}
-
-.vertical-wrapper .usa-nav-container .usa-nav-container {
-  align-items: flex-end;
-  display: flex;
-  justify-content: space-between; 
+.vertical-wrapper .usa-nav__primary button[aria-expanded=false] span::after {
+  background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0Ij48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTE2LjU5IDguNTlMMTIgMTMuMTcgNy40MSA4LjU5IDYgMTBsNiA2IDYtNnoiLz48L3N2Zz4=) no-repeat center/contain;
+  content: "";
+  display: inline-block;
+  height: 1rem;
+  margin-left: auto;
+  position: absolute;
+  right: 0.75rem;
+  vertical-align: middle;
+  width: 1rem;
+  mask: none;
+  -webkit-mask: none;
 }
 
 .vertical-wrapper{
@@ -54,8 +123,4 @@
 .vertical-wrapper .vertical-button:hover {
   border-bottom: 4px solid #005ea2;
   color: #005EA2;
-}
-
-.vertical-nav-wrapper .usa-header .usa-nav {
-  padding-left: 0;
 }
