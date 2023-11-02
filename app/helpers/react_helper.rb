@@ -24,16 +24,14 @@ module ReactHelper
 
     react_component('SearchResultsLayout', data.compact_blank)
   end
+  # rubocop:enable Metrics/AbcSize
 
-  # rubocop:disable Metrics/AbcSize
   def image_search_results_layout(search, params, vertical, affiliate)
     data = {
-      currentLocale: affiliate.locale,
       extendedHeader: affiliate.use_extended_header,
       fontsAndColors: affiliate.visual_design_json,
       footerLinks: links(affiliate, :footer_links),
       navigationLinks: navigation_links(search, params),
-      noResultsMessage: no_result_message(search),
       params: params,
       resultsData: search.format_results,
       translations: translations(affiliate.locale),
@@ -42,7 +40,6 @@ module ReactHelper
 
     react_component('SearchResultsLayout', data.compact_blank)
   end
-  # rubocop:enable Metrics/AbcSize
 
   private
 
