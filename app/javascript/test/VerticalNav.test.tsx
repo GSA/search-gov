@@ -31,6 +31,28 @@ describe('VerticalNav', () => {
     expect(all).not.toBeInTheDocument();
   });
 
+  describe('when screen resizes', () => {
+    beforeEach(() => {
+      jest.useFakeTimers();
+      jest.spyOn(global, 'setTimeout');
+    });
+
+    it('rearranges tabs', () => {
+      const relatedSites = [{ label: 'Related Site 1', link: 'example.com' }];
+      const navigationLinks = [{ label: 'all', active: true, url: 'http://search.gov' }];
+
+      render(
+        <LanguageContext.Provider value={i18n} >
+          <VNav.VerticalNav navigationLinks={navigationLinks} />
+        </LanguageContext.Provider>
+      );
+
+      fireEvent(window, new Event('resize'))
+
+      expect(setTimeout).toHaveBeenCalled();
+    });
+  });
+
   describe('when all tabs fit', () => {
     beforeEach(() => {
       jest.spyOn(VNav, 'isThereEnoughSpace').mockReturnValue(true);

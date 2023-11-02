@@ -123,7 +123,6 @@
 }
 
 .vertical-wrapper .usa-nav__primary button[aria-expanded=true] span::after {
-  -webkit-mask: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0Ij48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTEyIDhsLTYgNiAxLjQxIDEuNDFMMTIgMTAuODNsNC41OSA0LjU4TDE4IDE0eiIvPjwvc3ZnPg==)  no-repeat center/contain;
   background-color: #fff;
   content: "";
   display: inline-block;
@@ -142,12 +141,11 @@
   display: inline-block;
   height: 1rem;
   margin-left: auto;
+  mask: none;
   position: absolute;
   right: 0.75rem;
   vertical-align: middle;
   width: 1rem;
-  mask: none;
-  -webkit-mask: none;
 }
 
 li.usa-nav__primary-item:last-of-type {
