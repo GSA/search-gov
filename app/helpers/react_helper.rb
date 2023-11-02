@@ -28,11 +28,15 @@ module ReactHelper
 
   def image_search_results_layout(search, params, vertical, affiliate)
     data = {
+      currentLocale: affiliate.locale,
       extendedHeader: affiliate.use_extended_header,
       fontsAndColors: affiliate.visual_design_json,
-      locale: YAML.load_file("config/locales/#{affiliate.locale}.yml"),
+      footerLinks: links(affiliate, :footer_links),
+      navigationLinks: navigation_links(search, params),
+      noResultsMessage: no_result_message(search),
       params: params,
       resultsData: search.format_results,
+      translations: translations(affiliate.locale),
       vertical: vertical
     }
 

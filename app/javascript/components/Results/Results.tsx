@@ -8,7 +8,7 @@ import { NoResults } from './NoResults/NoResults';
 import { LanguageContext } from '../../contexts/LanguageContext';
 
 import { HealthTopics } from './HealthTopics/HealthTopics';
-// import { ImagesPage } from './ImagesPage/ImagesPage';
+import { ImagesPage } from './ImagesPage/ImagesPage';
 import { RssNews } from './RssNews/RssNews';
 // import { Videos } from './Videos/Videos';
 import { FedRegister } from './FedRegister/FedRegister';
@@ -18,17 +18,20 @@ import { truncateUrl } from '../../utils';
 
 import './Results.css';
 
+type Result = {
+  title: string,
+  url: string,
+  description: string,
+  updatedDate?: string,
+  publishedAt?: string,
+  publishedDate?: string,
+  thumbnailUrl?: string,
+  image?: boolean,
+  altText?: string,
+};
 interface ResultsProps {
   query?: string
-  results?: {
-    title: string,
-    url: string,
-    description: string,
-    updatedDate?: string,
-    publishedAt?: string,
-    publishedDate?: string,
-    thumbnailUrl?: string
-  }[] | null;
+  results?: Result[] | null;
   additionalResults?: {
     recommendedBy: string;
     textBestBets?: {
@@ -100,10 +103,21 @@ interface ResultsProps {
   newsAboutQuery?: string;
 }
 
+const getImages = (result: Result[] | null) => {
+  const imageArr: { url: string, altText?: string, thumbnailUrl?: string }[] = [];
+  if (result)
+    result.forEach((res) => {
+      if (res.image)
+        imageArr.push({ url: res.url, altText: res.altText, thumbnailUrl: res.thumbnailUrl });
+    });
+  return imageArr;
+};
+
 // eslint-disable-next-line complexity
 export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical, newsAboutQuery = '' }: ResultsProps) => {
   const i18n = useContext(LanguageContext);
   const URL_LENGTH = 80;
+  const imagesResults = getImages(results);
 
   return (
     <>
@@ -135,19 +149,22 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
             />
           }
 
-          {/* Image page Components - To do with its integration task */}
-          {/* <ImagesPage /> */}
-
           {/* Video module/page - To do with its integration task */}
           {/* <Videos /> */}
 
           {/* Federal register - To do with its integration task */}
           {/* <FedRegister /> */}
 
+          {/* Results: Images */}
+          {imagesResults.length > 0 && <ImagesPage images={imagesResults}/>}
+          
           {/* Results */}
           {results && results.length > 0 ? 
             <> 
               {results.map((result, index) => {
+                if (result.image) {
+                  return null;
+                }
                 return (
                   <GridContainer key={index} className='result search-result-item'>
                     <Grid row gap="md">
