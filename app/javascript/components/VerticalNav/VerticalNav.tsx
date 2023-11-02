@@ -33,7 +33,7 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [], relatedSi
   const moreItemWidth    = useRef(getTextWidth(i18n.t('showMore')) + padding + arrowWidth);
   const relatedLabel     = useRef(relatedSitesDropdownLabel || i18n.t('searches.relatedSites'));
   const relatedTextWidth = useRef(getTextWidth(relatedLabel.current));
-  const resizeTimeout    = useRef();
+  const resizeTimeout    = useRef<ReturnType<typeof setTimeout>>();
 
   const [navItems, setNavItems]           = useState<ReactNode[]>([]);
   const [navItemsCount, setNavItemsCount] = useState(0);
