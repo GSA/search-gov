@@ -43,11 +43,11 @@ describe('VerticalNav', () => {
 
       render(
         <LanguageContext.Provider value={i18n} >
-          <VNav.VerticalNav navigationLinks={navigationLinks} />
+          <VNav.VerticalNav relatedSites={relatedSites} navigationLinks={navigationLinks} />
         </LanguageContext.Provider>
       );
 
-      fireEvent(window, new Event('resize'))
+      fireEvent(window, new Event('resize'));
 
       expect(setTimeout).toHaveBeenCalled();
     });

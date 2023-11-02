@@ -22,14 +22,12 @@
 
 .vertical-wrapper .usa-nav {
   background: none;
-  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   float: right;
   justify-content: flex-start;
   padding: 0 0 0.25rem 0;
   position: relative;
-  width: 100%;
 }
 
 .vertical-wrapper .usa-nav__primary {
@@ -114,6 +112,7 @@
 
 .vertical-wrapper .usa-nav {
   overflow-y: unset;
+  width: 100%;
 }
 
 .vertical-wrapper .usa-nav__primary button[aria-expanded=true] {
@@ -181,8 +180,8 @@ li.usa-nav__primary-item:last-of-type {
 .vertical-wrapper .vertical-button:focus {
   border-bottom: 4px solid #005ea2;
   color: #005EA2;
-  outline-offset: 0;
   outline: 0.25rem solid #2491ff;
+  outline-offset: 0;
 }
 
 .vertical-wrapper .vertical-button:hover {
