@@ -78,9 +78,9 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [], relatedSi
       clearTimeout(resizeTimeout.current);
 
       resizeTimeout.current = setTimeout(rearrangeTabs, 10);
-    }
+    };
 
-    window.addEventListener("resize", resizeTabs);
+    window.addEventListener('resize', resizeTabs);
   });
 
   useEffect(() => {
