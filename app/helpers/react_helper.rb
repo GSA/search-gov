@@ -24,7 +24,6 @@ module ReactHelper
 
     react_component('SearchResultsLayout', data.compact_blank)
   end
-  # rubocop:enable Metrics/AbcSize
 
   def image_search_results_layout(search, params, vertical, affiliate)
     data = {
@@ -42,6 +41,7 @@ module ReactHelper
 
     react_component('SearchResultsLayout', data.compact_blank)
   end
+  # rubocop:enable Metrics/AbcSize
 
   private
 
