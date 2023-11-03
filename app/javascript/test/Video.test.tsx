@@ -4,7 +4,7 @@ import React from 'react';
 
 import { Video } from '../components/Results/Videos/Video';
 
-describe('Vidoes component', () => {
+describe('Videos component', () => {
   const video = {
     link: 'string',
     title: 'image title',
@@ -20,7 +20,7 @@ describe('Vidoes component', () => {
     );
   });
 
-  it('shows vidoe image and title', () => {
+  it('shows video image and title', () => {
     render(
       <Video {...video}/>
     );
