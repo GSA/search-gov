@@ -35,7 +35,7 @@ export const Video = (video: VideoProps) => {
             </a>
           </div>
           <div className='result-desc'>
-            <p>{parse(video.description)}</p>
+            {video.description && <p>{parse(video.description)}</p>}
             <div className='result-url-text'>{video.link}</div>
           </div>
         </Grid>

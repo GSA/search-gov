@@ -196,7 +196,7 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
                           </a>
                         </div>
                         <div className='result-desc'>
-                          <p>{parse(result.description)}</p>
+                          {result.description && <p>{parse(result.description)}</p>}
                           <div className='result-url-text'>{truncateUrl(result.url, URL_LENGTH)}</div>
                         </div>
                       </Grid>
