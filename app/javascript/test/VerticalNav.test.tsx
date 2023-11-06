@@ -19,7 +19,7 @@ const i18n = new I18n(locale);
 
 describe('VerticalNav', () => {
   it('there is no menu without space', () => {
-    const navigationLinks = [{ label: 'all', active: true, url: 'http://search.gov' }];
+    const navigationLinks = [{ label: 'all', active: true, url: 'http://search.gov', facet: 'Default' }];
 
     render(
       <LanguageContext.Provider value={i18n} >
@@ -38,7 +38,7 @@ describe('VerticalNav', () => {
 
     it('shows related site label on menu when there is only one related site', () => {
       const relatedSites = [{ label: 'Related Site 1', link: 'example.com' }];
-      const navigationLinks = [{ label: 'all', active: true, url: 'http://search.gov' }];
+      const navigationLinks = [{ label: 'all', active: true, url: 'http://search.gov', facet: 'Defaut' }];
 
       render(
         <LanguageContext.Provider value={i18n} >
@@ -59,9 +59,7 @@ describe('VerticalNav', () => {
         { label: 'Site 2', link: 'two.com' }
       ];
 
-      const navigationLinks = [
-        { label: 'all', active: true, url: 'http://search.gov' }
-      ];
+      const navigationLinks = [{ label: 'all', active: true, url: 'http://search.gov', facet: 'Default' }];
 
       render(
         <LanguageContext.Provider value={i18n} >
@@ -90,7 +88,7 @@ describe('VerticalNav', () => {
 
     describe('when there is one related site', () => {
       it('shows related site label on menu when there is one related site', () => {
-        const navigationLinks = [{ label: 'all', active: true, url: 'http://search.gov' }];
+        const navigationLinks = [{ label: 'all', active: true, url: 'http://search.gov', facet: 'Default' }];
         const relatedSites = [{ label: 'Site 1', link: 'one.com' }];
 
         render(
@@ -114,8 +112,8 @@ describe('VerticalNav', () => {
     describe('when there is multiple related sites', () => {
       it('shows related site label on menu', () => {
         const navigationLinks = [
-          { label: 'all',  active: true, url: 'http://search.gov' },
-          { label: 'none', active: true, url: 'http://none.gov' }
+          { label: 'all',  active: true, url: 'http://search.gov', facet: 'Default' },
+          { label: 'none', active: true, url: 'http://none.gov', facet: 'RSS' }
         ];
 
         const relatedSites = [
@@ -156,8 +154,8 @@ describe('VerticalNav', () => {
 
       const relatedSites = [{ label: 'Site 1', link: 'one.com' }];
       const navigationLinks = [
-        { label: 'all', active: false, url: 'http://search.gov' },
-        { label: 'one', active: true,  url: 'http://one.gov' }
+        { label: 'all', active: false, url: 'http://search.gov', facet: 'Default' },
+        { label: 'one', active: true,  url: 'http://one.gov', facet: 'YouTube' }
       ];
 
       render(

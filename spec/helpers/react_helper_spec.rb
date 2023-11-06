@@ -115,9 +115,9 @@ describe ReactHelper do
     context 'with an affiliate with navigations' do
       let(:navigation_links) do
         [
-          { active: true, label: 'search', url: '/search?query=chocolate' },
-          { active: false, label: 'Usa Gov Blog', url: '/search/news?channel=321734936&query=chocolate' },
-          { active: false, label: 'USAGov Collection', url: '/search/docs?dc=40842210&query=chocolate' }
+          { active: true,  facet: 'Default', label: 'search', url: '/search?query=chocolate' },
+          { active: false, facet: 'RSS', label: 'Usa Gov Blog', url: '/search/news?channel=321734936&query=chocolate' },
+          { active: false, facet: 'DocumentCollection', label: 'USAGov Collection', url: '/search/docs?dc=40842210&query=chocolate' }
         ]
       end
 
