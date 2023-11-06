@@ -104,6 +104,7 @@ module ReactHelper
   def default_tab(search, params)
     {
       active: is_default_search?(search),
+      facet: 'Default',
       label: search.affiliate.default_search_label,
       url: search_path(params.slice(:affiliate, :m).merge(query: search.query))
     }
@@ -117,6 +118,7 @@ module ReactHelper
 
       {
         active: non_default_search_navigable == navigable,
+        facet: navigation.navigable_facet_type,
         label: navigable.name,
         url: navigable_path(navigable, search, search_params)
       }
