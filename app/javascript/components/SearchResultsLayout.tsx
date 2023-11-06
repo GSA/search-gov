@@ -11,6 +11,10 @@ import { Footer } from './Footer/Footer';
 import { Identifier } from './Identifier/Identifier';
 import { LanguageContext } from '../contexts/LanguageContext';
 
+export interface NavigationLink {
+  active: boolean; label: string; url: string;
+}
+
 interface SearchResultsLayoutProps {
   resultsData?: {
     totalPages: number;
@@ -117,7 +121,7 @@ interface SearchResultsLayoutProps {
     title: string;
     text: string;
   };
-  navigationLinks?: { active: boolean; label: string; link: string; }[];
+  navigationLinks: NavigationLink[];
   extendedHeader: boolean;
   fontsAndColors: {
     headerLinksFontFamily: string;
@@ -126,6 +130,15 @@ interface SearchResultsLayoutProps {
     title: string,
     url: string
   }[];
+  identifierContent?: {
+    domainName: string | null;
+    parentAgencyName: string | null;
+    parentAgencyLink: string | null;
+  };
+  identifierLinks?: {
+    title: string,
+    url: string
+  }[] | null;
   relatedSearches?: { label: string; link: string; }[];
   newsLabel?: {
     newsAboutQuery: string;
@@ -135,6 +148,7 @@ interface SearchResultsLayoutProps {
       publishedAt: string
     }[] | null;
   } | null;
+  relatedSitesDropdownLabel?: string;
 }
 
 // To be updated
@@ -146,7 +160,7 @@ const isBasicHeader = (extendedHeader: boolean): boolean => {
   return !extendedHeader;
 };
 
-const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [], extendedHeader, footerLinks, fontsAndColors, newsLabel }: SearchResultsLayoutProps) => {
+const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [], extendedHeader, footerLinks, fontsAndColors, newsLabel, identifierContent, identifierLinks, navigationLinks, relatedSitesDropdownLabel = '' }: SearchResultsLayoutProps) => {
   const i18n = new I18n(translations);
   i18n.defaultLocale = 'en';
   i18n.enableFallback = true;
@@ -162,7 +176,9 @@ const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params 
      
       <div className="usa-section serp-result-wrapper">
         <Facets />
-        <SearchBar query={params.query} relatedSites={relatedSites} />
+
+        <SearchBar query={params.query} relatedSites={relatedSites} navigationLinks={navigationLinks} relatedSitesDropdownLabel={relatedSitesDropdownLabel} />
+
         {/* This ternary is needed to handle the case when Bing pagination leads to a page with no results */}
         {resultsData ? (
           <Results 
@@ -185,7 +201,10 @@ const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params 
       <Footer 
         footerLinks={footerLinks}
       />
-      <Identifier />
+      <Identifier
+        identifierContent={identifierContent}
+        identifierLinks={identifierLinks}
+      />
     </LanguageContext.Provider>
   );
 };

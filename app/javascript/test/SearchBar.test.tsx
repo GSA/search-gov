@@ -21,7 +21,7 @@ describe('SearchBar', () => {
   it('Search Bar with No Query', () => {
     render(
       <LanguageContext.Provider value={i18n} >
-        <SearchBar query="" />
+        <SearchBar query="" navigationLinks={[]} />
       </LanguageContext.Provider>
     );
 

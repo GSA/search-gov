@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module ReactHelper
-  # rubocop:disable Metrics/AbcSize
   def search_results_layout(search, params, vertical, affiliate)
     data = {
       additionalResults: search.govbox_set,
@@ -10,12 +9,15 @@ module ReactHelper
       extendedHeader: affiliate.use_extended_header,
       fontsAndColors: affiliate.visual_design_json,
       footerLinks: links(affiliate, :footer_links),
+      identifierContent: identifier_content(affiliate),
+      identifierLinks: links(affiliate, :identifier_links),
       navigationLinks: navigation_links(search, params),
       newsLabel: news_label(search),
       noResultsMessage: no_result_message(search),
       params: params,
       relatedSearches: related_searches(search),
       relatedSites: related_sites(search),
+      relatedSitesDropdownLabel: affiliate.related_sites_dropdown_label,
       resultsData: search.normalized_results,
       translations: translations(affiliate.locale),
       vertical: vertical
@@ -23,7 +25,6 @@ module ReactHelper
 
     react_component('SearchResultsLayout', data.compact_blank)
   end
-  # rubocop:enable Metrics/AbcSize
 
   def image_search_results_layout(search, params, vertical, affiliate)
     data = {
@@ -98,17 +99,33 @@ module ReactHelper
     end
   end
 
+  def default_tab(search, params)
+    {
+      active: is_default_search?(search),
+      label: search.affiliate.default_search_label,
+      url: search_path(params.slice(:affiliate, :m).merge(query: search.query))
+    }
+  end
+
   def navigation_links(search, search_params)
     non_default_search_navigable = detect_non_default_search_navigable(search)
 
-    renderable_navigations(search).map do |navigation|
+    [default_tab(search, search_params)] + renderable_navigations(search).map do |navigation|
       navigable = navigation.navigable
 
       {
         active: non_default_search_navigable == navigable,
         label: navigable.name,
-        link: navigable_path(navigable, search, search_params)
+        url: navigable_path(navigable, search, search_params)
       }
     end
+  end
+
+  def identifier_content(affiliate)
+    {
+      domainName: affiliate.identifier_domain_name,
+      parentAgencyName: affiliate.parent_agency_name,
+      parentAgencyLink: affiliate.parent_agency_link
+    }
   end
 end
