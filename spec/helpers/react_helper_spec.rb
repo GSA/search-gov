@@ -35,6 +35,52 @@ describe ReactHelper do
       end
     end
 
+    context 'when an affiliate has identifier content' do
+      before do
+        affiliate.update!({ identifier_domain_name: 'Example Domain Name',
+                            parent_agency_name: 'My Agency',
+                            parent_agency_link: 'https://agency.gov' })
+      end
+
+      let(:identifier_content) do
+        {
+          domainName: 'Example Domain Name',
+          parentAgencyName: 'My Agency',
+          parentAgencyLink: 'https://agency.gov'
+        }
+      end
+
+      it 'sends identifier content to SearchResultsLayout component' do
+        helper.search_results_layout(search, {}, true, affiliate)
+
+        expect(helper).to have_received(:react_component).
+          with('SearchResultsLayout', hash_including(identifierContent: identifier_content))
+      end
+    end
+
+    context 'when an affiliate has identifier links' do
+      before do
+        3.times do |i|
+          Link.create!(position: i,
+                       title: "Link #{i}",
+                       url: "https://link_#{i}.gov",
+                       type: IdentifierLink,
+                       affiliate_id: affiliate.id)
+        end
+      end
+
+      it 'sends the identifier links array to SearchResultsLayout component' do
+        helper.search_results_layout(search, {}, true, affiliate)
+
+        expect(helper).to have_received(:react_component).
+          with('SearchResultsLayout', hash_including(identifierLinks: [
+                                                       { title: 'Link 0', url: 'https://link_0.gov' },
+                                                       { title: 'Link 1', url: 'https://link_1.gov' },
+                                                       { title: 'Link 2', url: 'https://link_2.gov' }
+                                                     ]))
+      end
+    end
+
     context 'when an affiliate has connections' do
       let(:related_sites) do
         [{
