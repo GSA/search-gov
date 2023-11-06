@@ -10,7 +10,7 @@ import { LanguageContext } from '../../contexts/LanguageContext';
 import { HealthTopics } from './HealthTopics/HealthTopics';
 // import { ImagesPage } from './ImagesPage/ImagesPage';
 import { RssNews } from './RssNews/RssNews';
-// import { Videos } from './Videos/Videos';
+import { Video } from './Videos/Video';
 import { FedRegister } from './FedRegister/FedRegister';
 import { Jobs } from './Jobs/Jobs';
 
@@ -27,7 +27,11 @@ interface ResultsProps {
     updatedDate?: string,
     publishedAt?: string,
     publishedDate?: string,
-    thumbnailUrl?: string
+    thumbnailUrl?: string,
+    youtube?: boolean,
+    youtubePublishedAt?: string,
+    youtubeThumbnailUrl?: string,
+    youtubeDuration?: string
   }[] | null;
   additionalResults?: {
     recommendedBy: string;
@@ -93,6 +97,14 @@ interface ResultsProps {
       startPage: number;
       title: string;
     }[];
+    youtubeNewsItems?: {
+      link: string;
+      title: string;
+      description: string;
+      publishedAt: string;
+      youtubeThumbnailUrl: string;
+      duration: string;
+    }[];
   } | null;
   unboundedResults: boolean;
   totalPages: number | null;
@@ -138,16 +150,31 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
           {/* Image page Components - To do with its integration task */}
           {/* <ImagesPage /> */}
 
-          {/* Video module/page - To do with its integration task */}
-          {/* <Videos /> */}
-
-          {/* Federal register - To do with its integration task */}
-          {/* <FedRegister /> */}
+          {/* Video module - To do with its integration task */}
+          {/* {additionalResults?.youtubeNewsItems && 
+            <VideosModule 
+              videos={additionalResults.youtubeNewsItems}
+              query={query}
+            />
+          } */}
 
           {/* Results */}
           {results && results.length > 0 ? 
             <> 
               {results.map((result, index) => {
+                if (result?.youtube) {
+                  return (
+                    <Video 
+                      key={index}
+                      link={result.url}
+                      title={result.title}
+                      description={result.description}
+                      publishedAt={result.youtubePublishedAt}
+                      youtubeThumbnailUrl={result.youtubeThumbnailUrl} 
+                      duration={result.youtubeDuration}
+                    />
+                  );
+                }
                 return (
                   <GridContainer key={index} className='result search-result-item'>
                     <Grid row gap="md">
@@ -164,12 +191,12 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
                             <h2 className='result-title-label'>
                               {parse(result.title)} 
                               {/* ToDo: This need to be dynamic */}
-                              <span className='filetype-label'>PDF</span>
+                              {/* <span className='filetype-label'>PDF</span> */}
                             </h2>
                           </a>
                         </div>
                         <div className='result-desc'>
-                          <p>{parse(result.description)}</p>
+                          {result.description && <p>{parse(result.description)}</p>}
                           <div className='result-url-text'>{truncateUrl(result.url, URL_LENGTH)}</div>
                         </div>
                       </Grid>
