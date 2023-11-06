@@ -167,7 +167,7 @@ const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params 
   i18n.defaultLocale = 'en';
   i18n.enableFallback = true;
   i18n.locale = currentLocale;
-  
+
   return (
     <LanguageContext.Provider value={i18n}>
       <Header 

@@ -162,10 +162,7 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
 
           {/* Video module */}
           {additionalResults?.youtubeNewsItems && 
-            <VideosModule 
-              videos={additionalResults.youtubeNewsItems}
-              query={query}
-            />
+            <VideosModule videos={additionalResults.youtubeNewsItems} query={query} videosUrl={videosUrl} />
           }
 
           {/* Results: Images */}
