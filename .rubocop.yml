@@ -20,6 +20,11 @@ Lint/SymbolConversion:
     - spec/models/logstash_queries/**/*
     - spec/models/custom_index_queries/**/*
 
+Metrics/AbcSize:
+  Exclude:
+    # Exclude while SERP redesign under active development
+    - app/helpers/react_helper.rb
+
 Metrics/BlockLength:
   Exclude:
     # Exclude ActiveScaffold-based controllers
@@ -28,6 +33,11 @@ Metrics/BlockLength:
     # for easier side-to-side comparison, copy/pasting, etc.
     - spec/models/logstash_queries/**/*
     - spec/models/custom_index_queries/**/*
+
+Metrics/ModuleLength:
+  Exclude:
+    # Exclude while SERP redesign under active development
+    - app/helpers/react_helper.rb
 
 RSpec/DescribeClass:
   Exclude:

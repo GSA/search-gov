@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module ReactHelper
-  # rubocop:disable Metrics/AbcSize
   def search_results_layout(search, params, vertical, affiliate)
     data = {
       additionalResults: search.govbox_set,
@@ -10,6 +9,8 @@ module ReactHelper
       extendedHeader: affiliate.use_extended_header,
       fontsAndColors: affiliate.visual_design_json,
       footerLinks: links(affiliate, :footer_links),
+      identifierContent: identifier_content(affiliate),
+      identifierLinks: links(affiliate, :identifier_links),
       navigationLinks: navigation_links(search, params),
       newsLabel: news_label(search),
       noResultsMessage: no_result_message(search),
@@ -24,7 +25,6 @@ module ReactHelper
 
     react_component('SearchResultsLayout', data.compact_blank)
   end
-  # rubocop:enable Metrics/AbcSize
 
   def image_search_results_layout(search, params, vertical, affiliate)
     data = {
@@ -121,5 +121,13 @@ module ReactHelper
         url: navigable_path(navigable, search, search_params)
       }
     end
+  end
+
+  def identifier_content(affiliate)
+    {
+      domainName: affiliate.identifier_domain_name,
+      parentAgencyName: affiliate.parent_agency_name,
+      parentAgencyLink: affiliate.parent_agency_link
+    }
   end
 end
