@@ -652,47 +652,36 @@ Feature: Manage Display
     Then I should be able to access 3 "new_secondary_header_link" rows
     And I should not see "Add new secondary header link"
 
-  Scenario: Display sub navigation links when "Show Redesign Display Settings" and "Use Redesigned Results Page" is true/false
+  Scenario: Display sub navigation links when "Show Redesign Display Settings" and "Use Redesigned Results Page" are true/false
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | show_redesign_display_settings | use_redesigned_results_page |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | true                           | true                        |
+      | display_name | name       | contact_email   | first_name | last_name |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Display page
-    Then I should see a link to "Display" in the active site main navigation
-    And I should see a link to "Display Overview" in the active site sub navigation
-    And I should not see a link to "Fonts & Colors" in the active site sub navigation
-    And I should not see a link to "Image Assets" in the active site sub navigation
-    And I should not see a link to "Header & Footer" in the active site sub navigation
+    And I follow "Font & Colors"
+    And I should see a link to "Font & Colors" in the active site sub navigation
+    And I follow "Image Assets"
+    And I should see a link to "Image Assets" in the active site sub navigation
+    And I follow "Header & Footer"
+    And I should see a link to "Header & Footer" in the active site sub navigation
+    
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | first_name | last_name | show_redesign_display_settings |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | true                           |
+    And I am logged in with email "john@agency.gov"
+    When I go to the agency.gov's Manage Display page
+    And I follow "Legacy Font & Colors"
+    And I should see a link to "Legacy Font & Colors" in the active site sub navigation
+    And I follow "Legacy Image Assets"
+    And I should see a link to "Legacy Image Assets" in the active site sub navigation
+    And I follow "Legacy Header & Footer"
+    And I should see a link to "Legacy Header & Footer" in the active site sub navigation
 
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | true                        |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Display page
-    Then I should see a link to "Display" in the active site main navigation
-    And I should see a link to "Display Overview" in the active site sub navigation
-    And I should not see a link to "Fonts & Colors" in the active site sub navigation
+    And I should not see a link to "Font & Colors" in the active site sub navigation
     And I should not see a link to "Image Assets" in the active site sub navigation
     And I should not see a link to "Header & Footer" in the active site sub navigation
-
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | show_redesign_display_settings |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | true                           |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Manage Display page
-    Then I should see a link to "Display" in the active site main navigation
-    And I should see a link to "Display Overview" in the active site sub navigation
-    And I should see a link to "Legacy Fonts & Colors" in the active site sub navigation
-    And I should see a link to "Legacy Image Assets" in the active site sub navigation
-    And I should see a link to "Legacy Header & Footer" in the active site sub navigation
-
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Manage Display page
-    Then I should see a link to "Display" in the active site main navigation
-    And I should see a link to "Display Overview" in the active site sub navigation
-    And I should see a link to "Fonts & Colors" in the active site sub navigation
-    And I should see a link to "Image Assets" in the active site sub navigation
-    And I should see a link to "Header & Footer" in the active site sub navigation
