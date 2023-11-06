@@ -102,4 +102,24 @@ describe('SearchResultsLayout', () => {
     expect(img).toHaveAttribute('src', 'https://www.search.gov/test_image.png');
     expect(img).toHaveAttribute('alt', 'test result 1');
   });
+
+  it('renders videos', () => {
+    const videos = [{
+      title: 'test result 1',
+      url: 'https://www.youtube.com/watch?v=UcaloWLCe3w',
+      description: 'result body',
+      publishedAt: '9 days',
+      youtube: true,
+      youtubePublishedAt: '2023-10-23T15:11:13.000Z',
+      youtubeThumbnailUrl: 'https://www.search.gov/test_image.png',
+      youtubeDuration: '0:55'
+    }];
+    const resultsData = { totalPages: 2, unboundedResults: true, results: videos };
+    render(<SearchResultsLayout params={{ query: 'foo' }} resultsData={resultsData} vertical='image' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} navigationLinks={navigationLinks} />);
+    const resultTitle = screen.getByText(/test result 1/i);
+    const img = Array.from(document.getElementsByClassName('result-image')).pop() as HTMLImageElement;
+    expect(resultTitle).toBeInTheDocument();
+    expect(img).toHaveAttribute('src', 'https://www.search.gov/test_image.png');
+    expect(img).toHaveAttribute('alt', 'test result 1');
+  });
 });
