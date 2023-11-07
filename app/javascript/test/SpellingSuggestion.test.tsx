@@ -9,8 +9,8 @@ jest.mock('i18n-js', () => {
 
 describe('Alert component', () => {
   const spellingSuggestionProps = {
-    suggested: '<a href=\"/search?affiliate=test_alert&amp;query=government\">government</a>',
-    original: '<a href=\"/search?affiliate=test_alert&amp;query=%2Bgovermment\">govermment</a>'
+    suggested: '<a href="/search?affiliate=test_alert&amp;query=government">government</a>',
+    original: '<a href="/search?affiliate=test_alert&amp;query=%2Bgovermment">govermment</a>'
   };
 
   it('renders SpellingSuggestion component', () => {
