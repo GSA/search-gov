@@ -113,7 +113,7 @@ describe ReactHelper do
       it 'sets alert to contain both text and title' do
         alert_data = { text: 'Alert text', title: 'Alert title' }
         affiliate.build_alert(alert_data.merge(status: 'Active'))
-        helper.search_results_layout(search, {}, vertical, affiliate)
+        helper.search_results_layout(search, {}, vertical, affiliate, search_options)
         expect(helper).to have_received(:react_component).with(
           'SearchResultsLayout',
           hash_including(alert: alert_data)
@@ -125,7 +125,7 @@ describe ReactHelper do
       it 'sets alert to contain only title' do
         alert_data = { text: 'Alert text', title: 'Alert title', status: 'Inactive' }
         affiliate.build_alert(alert_data)
-        helper.search_results_layout(search, {}, vertical, affiliate)
+        helper.search_results_layout(search, {}, vertical, affiliate, search_options)
         expect(helper).to have_received(:react_component).with(
           'SearchResultsLayout',
           hash_excluding(:alert)
