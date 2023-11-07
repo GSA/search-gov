@@ -12,6 +12,18 @@
   border: 1px solid #eee;
 }
 
+.search-result-image-item .result-thumbnail .result-image{
+  height: 150px;
+  width: 100%;
+}
+
+.result-thumbnail .result-youtube-thumbnail{
+  clip-path: inset(25px 0 25px 0);
+  height: 100%;
+  margin-top: -20px;
+  width: 100%;
+}
+
 .search-result-item .published-date{
   color: #565C65;
   font-size: 0.95rem;
@@ -41,6 +53,7 @@
   line-height: 26px;
   margin-bottom: 0.5rem;
   margin-top: 0.5rem;
+  word-wrap: break-word;
 }
 
 .search-result-item .result-desc .result-url-text{
@@ -129,13 +142,13 @@
 
 .video-duration{
   background: black;
-  bottom: 0;
+  bottom: 44px;
   color: #fff;
   margin-bottom: 0.5rem;
   margin-right: 0.75rem;
   padding: 5px 7px 3px 10px;
   position: absolute;
-  right: 0;
+  right: -1px;
 }
 
 .tri-icon{
