@@ -7,6 +7,7 @@ describe ReactHelper do
     let(:affiliate) { affiliates(:usagov_affiliate) }
     let(:vertical) { 'vertical_nav' }
     let(:search) { WebSearch.new(query: 'chocolate', affiliate: affiliate) }
+    let(:search_options) { {} }
 
     before do
       allow(helper).to receive(:react_component)
@@ -24,7 +25,7 @@ describe ReactHelper do
       end
 
       it 'sends the footer links array to SearchResultsLayout component' do
-        helper.search_results_layout(search, {}, true, affiliate)
+        helper.search_results_layout(search, {}, vertical, affiliate, search_options)
 
         expect(helper).to have_received(:react_component).
           with('SearchResultsLayout', hash_including(footerLinks: [
@@ -51,7 +52,7 @@ describe ReactHelper do
       end
 
       it 'sends identifier content to SearchResultsLayout component' do
-        helper.search_results_layout(search, {}, true, affiliate)
+        helper.search_results_layout(search, {}, vertical, affiliate, search_options)
 
         expect(helper).to have_received(:react_component).
           with('SearchResultsLayout', hash_including(identifierContent: identifier_content))
@@ -70,7 +71,7 @@ describe ReactHelper do
       end
 
       it 'sends the identifier links array to SearchResultsLayout component' do
-        helper.search_results_layout(search, {}, true, affiliate)
+        helper.search_results_layout(search, {}, vertical, affiliate, search_options)
 
         expect(helper).to have_received(:react_component).
           with('SearchResultsLayout', hash_including(identifierLinks: [
@@ -92,7 +93,7 @@ describe ReactHelper do
       it 'sends related sites label and link to SearchResultsLayout component' do
         affiliate.connections.create(connected_affiliate: affiliates(:power_affiliate), label: :power)
 
-        helper.search_results_layout(search, {}, true, affiliate)
+        helper.search_results_layout(search, {}, vertical, affiliate, search_options)
 
         expect(helper).to have_received(:react_component).
           with('SearchResultsLayout', hash_including(relatedSites: related_sites))
@@ -101,7 +102,7 @@ describe ReactHelper do
 
     context 'when an affiliate has no connections' do
       it 'does not send related sites to the SearchResultsLayout' do
-        helper.search_results_layout(search, {}, true, affiliate)
+        helper.search_results_layout(search, {}, vertical, affiliate, search_options)
 
         expect(helper).not_to have_received(:react_component).
           with('SearchResultsLayout', hash_including(:relatedSites))
@@ -112,7 +113,7 @@ describe ReactHelper do
       it 'sets alert to contain both text and title' do
         alert_data = { text: 'Alert text', title: 'Alert title' }
         affiliate.build_alert(alert_data)
-        helper.search_results_layout(search, {}, vertical, affiliate)
+        helper.search_results_layout(search, {}, vertical, affiliate, search_options)
         expect(helper).to have_received(:react_component).with(
           'SearchResultsLayout',
           hash_including(alert: alert_data)
@@ -124,7 +125,7 @@ describe ReactHelper do
       it 'sets alert to contain only title' do
         alert_data = { text: '', title: 'Alert title' }
         affiliate.build_alert(alert_data)
-        helper.search_results_layout(search, {}, vertical, affiliate)
+        helper.search_results_layout(search, {}, vertical, affiliate, search_options)
         expect(helper).to have_received(:react_component).with(
           'SearchResultsLayout',
           hash_including(alert: alert_data)
@@ -136,7 +137,7 @@ describe ReactHelper do
       it 'sets alert to contain only text' do
         alert_data = { text: 'Alert text', title: '' }
         affiliate.build_alert(alert_data)
-        helper.search_results_layout(search, {}, vertical, affiliate)
+        helper.search_results_layout(search, {}, vertical, affiliate, search_options)
         expect(helper).to have_received(:react_component).with(
           'SearchResultsLayout',
           hash_including(alert: alert_data)
@@ -150,7 +151,7 @@ describe ReactHelper do
       end
 
       it 'sets alert to nil in the data hash' do
-        helper.search_results_layout(search, {}, vertical, affiliate)
+        helper.search_results_layout(search, {}, vertical, affiliate, search_options)
         expect(helper).to have_received(:react_component).with(
           'SearchResultsLayout',
           hash_excluding(:alert)
@@ -168,7 +169,7 @@ describe ReactHelper do
       end
 
       it 'sends links to SearchResultsLayout component' do
-        helper.search_results_layout(search, {}, true, affiliate)
+        helper.search_results_layout(search, {}, vertical, affiliate, search_options)
 
         expect(helper).to have_received(:react_component).
           with('SearchResultsLayout', hash_including(navigationLinks: navigation_links))
@@ -183,7 +184,7 @@ describe ReactHelper do
       end
 
       it 'sends suggestion to SearchResultsLayout component' do
-        helper.search_results_layout(search, {}, true, affiliate)
+        helper.search_results_layout(search, {}, vertical, affiliate, search_options)
 
         related_search = {
           label: '<strong>chocolate</strong> bar',
@@ -223,11 +224,43 @@ describe ReactHelper do
       end
 
       it 'returns the correct news label hash' do
-        helper.search_results_layout(search, {}, vertical, affiliate)
+        helper.search_results_layout(search, {}, vertical, affiliate, search_options)
         expect(helper).to have_received(:react_component).with(
           'SearchResultsLayout',
           hash_including(newsLabel: news_label)
         )
+      end
+    end
+
+    context 'when search contains a spelling suggestion' do
+      before do
+        allow(search).to receive(:spelling_suggestion).and_return('chalkcolate')
+      end
+
+      it 'returns a spelling suggestion hash' do
+        helper.search_results_layout(search, {}, vertical, affiliate, search_options)
+
+        expect(helper).to have_received(:react_component).
+          with('SearchResultsLayout', hash_including(spellingSuggestion:
+          {
+            original: '<a href="/search?affiliate=usagov&amp;query=%2Bchocolate">chocolate</a>',
+            suggested: '<a href="/search?affiliate=usagov&amp;query=chalkcolate">chalkcolate</a>'
+          }))
+      end
+
+      context 'when a sitelimit is provided' do
+        let(:search_options) { { site_limits: 'usa.gov' } }
+
+        it 'persists the sitelimit in the spelling suggestion hash' do
+          helper.search_results_layout(search, {}, vertical, affiliate, search_options)
+
+          expect(helper).to have_received(:react_component).
+            with('SearchResultsLayout', hash_including(spellingSuggestion:
+            {
+              original: '<a href="/search?affiliate=usagov&amp;query=%2Bchocolate&amp;sitelimit=usa.gov">chocolate</a>',
+              suggested: '<a href="/search?affiliate=usagov&amp;query=chalkcolate&amp;sitelimit=usa.gov">chalkcolate</a>'
+            }))
+        end
       end
     end
   end

@@ -121,6 +121,10 @@ interface SearchResultsLayoutProps {
     title: string;
     text: string;
   };
+  spellingSuggestion?: {
+    suggested: string;
+    original: string;
+  };
   navigationLinks: NavigationLink[];
   extendedHeader: boolean;
   fontsAndColors: {
