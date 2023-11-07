@@ -164,12 +164,11 @@ const isBasicHeader = (extendedHeader: boolean): boolean => {
   return !extendedHeader;
 };
 
-const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [], extendedHeader, footerLinks, fontsAndColors, newsLabel, identifierContent, identifierLinks, navigationLinks, relatedSitesDropdownLabel = '', alert }: SearchResultsLayoutProps) => {
+const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [], extendedHeader, footerLinks, fontsAndColors, newsLabel, identifierContent, identifierLinks, navigationLinks, relatedSitesDropdownLabel = '', alert, spellingSuggestion }: SearchResultsLayoutProps) => {
   const i18n = new I18n(translations);
   i18n.defaultLocale = 'en';
   i18n.enableFallback = true;
   i18n.locale = currentLocale;
-  
   return (
     <LanguageContext.Provider value={i18n}>
       <Header 
@@ -193,6 +192,7 @@ const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params 
             unboundedResults={resultsData.unboundedResults}
             additionalResults={additionalResults}
             newsAboutQuery={newsLabel?.newsAboutQuery}
+            spellingSuggestion={spellingSuggestion}
           />) : params.query ? (
           <Results 
             vertical={vertical}

@@ -13,6 +13,7 @@ import { RssNews } from './RssNews/RssNews';
 import { Video } from './Videos/Video';
 import { FedRegister } from './FedRegister/FedRegister';
 import { Jobs } from './Jobs/Jobs';
+import { SpellingSuggestion } from './SpellingSuggestion/SpellingSuggestion';
 
 import './Results.css';
 
@@ -111,6 +112,10 @@ interface ResultsProps {
   totalPages: number | null;
   vertical: string;
   newsAboutQuery?: string;
+  spellingSuggestion?: {
+    suggested: string;
+    original: string;
+  }
 }
 
 const getImages = (result: Result[] | null) => {
@@ -124,13 +129,17 @@ const getImages = (result: Result[] | null) => {
 };
 
 // eslint-disable-next-line complexity
-export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical, newsAboutQuery = '' }: ResultsProps) => {
+export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical, newsAboutQuery = '', spellingSuggestion }: ResultsProps) => {
   const i18n = useContext(LanguageContext);
   const imagesResults = getImages(results);
-
+  
   return (
     <>
       <div className='search-result-wrapper'>
+        {spellingSuggestion && (
+          <SpellingSuggestion {...spellingSuggestion}/>
+        )}
+
         {additionalResults && (
           <BestBets
             {...additionalResults}

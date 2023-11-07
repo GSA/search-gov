@@ -407,3 +407,13 @@ Feature: Search - redesign
       | en.agency.gov| New alert for the test aff | Inactive | Test Title |
     When I am on en.agency.gov's search page
     Then I should not see "New alert for the test aff"
+
+  @javascript @a11y @a11y_wip
+  Scenario: Searching with spelling suggestions
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email | first_name | last_name | domains | use_redesigned_results_page |
+      | agency site  | agency.gov | aff@bar.gov   | Jane       | Bar       | usa.gov | true |
+    When I am on agency.gov's search page
+    And I search for "qeury" in the redesigned search page
+    Then I should see "Showing results for query"
+    And I should see "Search instead for qeury"
