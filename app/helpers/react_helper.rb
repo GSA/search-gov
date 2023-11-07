@@ -75,7 +75,7 @@ module ReactHelper
   end
 
   def search_page_alert(alert)
-    return if !alert || (alert.text.blank? && alert.title.blank?)
+    return unless alert&.renderable?
 
     alert.slice('text', 'title')
   end

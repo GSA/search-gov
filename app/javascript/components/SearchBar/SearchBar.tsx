@@ -16,6 +16,10 @@ interface SearchBarProps {
   relatedSites?: {label: string, link: string}[];
   navigationLinks: NavigationLink[];
   relatedSitesDropdownLabel?: string;
+  alert?: {
+    title: string;
+    text: string;
+  }
 }
 
 export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [], relatedSitesDropdownLabel = '', alert }: SearchBarProps) => {
@@ -39,7 +43,6 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [],
   return (
     <div id="serp-search-bar-wrapper">
       <GridContainer>
-        {/* Alert - To do with its integration task */}
         {alert && <Alert title={alert.title} text={alert.text}/>}
 
         <Grid row>
