@@ -23,7 +23,6 @@ interface SearchBarProps {
 }
 
 export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [], relatedSitesDropdownLabel = '', alert }: SearchBarProps) => {
-
   const [searchQuery, setSearchQuery] = useState(query);
   const searchUrlParam = 'query';
 

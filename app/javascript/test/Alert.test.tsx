@@ -6,8 +6,8 @@ import { Alert } from '../components/Alert/Alert';
 
 describe('Alert component', () => {
   const alertProps = {
-      title: 'Attention',
-      text: 'Description',
+    title: 'Attention',
+    text: 'Description'
   };
 
   it('renders Alert component', () => {
