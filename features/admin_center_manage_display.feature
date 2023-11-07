@@ -654,16 +654,16 @@ Feature: Manage Display
 
   Scenario: Display sub navigation links when "Show Redesign Display Settings" and "Use Redesigned Results Page" are true/false
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
+      | display_name | name       | contact_email   | first_name | last_name | show_redesign_display_settings | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | true                           | true                        |
     And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Manage Display page
-    And I follow "Font & Colors"
-    And I should see a link to "Font & Colors" in the active site sub navigation
-    And I follow "Image Assets"
-    And I should see a link to "Image Assets" in the active site sub navigation
-    And I follow "Header & Footer"
-    And I should see a link to "Header & Footer" in the active site sub navigation
+    And I go to the agency.gov's Manage Display page
+    When I go to the agency.gov's Visual Design page
+    Then I should see "Visual design (new)"
+    And the page body should not contain "These settings are for preview purposes only."
+    And I should not see a link to "Font & Colors" in the active site sub navigation
+    And I should not see a link to "Image Assets" in the active site sub navigation
+    And I should not see a link to "Header & Footer" in the active site sub navigation
     
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | show_redesign_display_settings |
@@ -685,3 +685,18 @@ Feature: Manage Display
     And I should not see a link to "Font & Colors" in the active site sub navigation
     And I should not see a link to "Image Assets" in the active site sub navigation
     And I should not see a link to "Header & Footer" in the active site sub navigation
+
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | first_name | last_name |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
+    And I am logged in with email "john@agency.gov"
+    When I go to the agency.gov's Manage Display page
+    When I go to the agency.gov's Visual Design page
+    Then I should see "Visual design (new)"
+    And the page body should not contain "These settings are for preview purposes only."
+    And I follow "Font & Colors"
+    And I should see a link to "Font & Colors" in the active site sub navigation
+    And I follow "Image Assets"
+    And I should see a link to "Image Assets" in the active site sub navigation
+    And I follow "Header & Footer"
+    And I should see a link to "Header & Footer" in the active site sub navigation
