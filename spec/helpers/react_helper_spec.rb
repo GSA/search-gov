@@ -243,8 +243,8 @@ describe ReactHelper do
         expect(helper).to have_received(:react_component).
           with('SearchResultsLayout', hash_including(spellingSuggestion:
           {
-            original: 'Search instead for <a href="/search?affiliate=usagov&amp;query=%2Bchocolate">chocolate</a>',
-            suggested: 'Showing results for <a href="/search?affiliate=usagov&amp;query=chalkcolate">chalkcolate</a>'
+            original: '<a href="/search?affiliate=usagov&amp;query=%2Bchocolate">chocolate</a>',
+            suggested: '<a href="/search?affiliate=usagov&amp;query=chalkcolate">chalkcolate</a>'
           }))
       end
 
@@ -257,8 +257,8 @@ describe ReactHelper do
           expect(helper).to have_received(:react_component).
             with('SearchResultsLayout', hash_including(spellingSuggestion:
             {
-              original: 'Search instead for <a href="/search?affiliate=usagov&amp;query=%2Bchocolate&amp;sitelimit=usa.gov">chocolate</a>',
-              suggested: 'Showing results for <a href="/search?affiliate=usagov&amp;query=chalkcolate&amp;sitelimit=usa.gov">chalkcolate</a>'
+              original: '<a href="/search?affiliate=usagov&amp;query=%2Bchocolate&amp;sitelimit=usa.gov">chocolate</a>',
+              suggested: '<a href="/search?affiliate=usagov&amp;query=chalkcolate&amp;sitelimit=usa.gov">chalkcolate</a>'
             }))
         end
       end
