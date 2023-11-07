@@ -35,7 +35,7 @@ export const VideosModule = ({ query, videos=[], videosUrl }: VideosModuleProps)
                   <div className='result-title'>
                     <a href={videosUrl} className='result-title-link more-title-link'>
                       <h2 className='result-title-label'>
-                        {i18n.t('searches.moreNewsAboutQuery', { news_label: 'Video', query })}
+                        {i18n.t('searches.moreNewsAboutQuery', { news_label: 'videos', query })}
                       </h2>
                     </a>
                   </div>
