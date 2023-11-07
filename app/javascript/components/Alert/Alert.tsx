@@ -8,7 +8,7 @@ interface AlertProps {
   text: string;
 }
 
-export const Alert = ({text, title}: AlertProps) => {
+export const Alert = ({ text, title }: AlertProps) => {
   return (
     <Grid row className='alert-wrapper'>
       <Grid tablet={{ col: true }}>
