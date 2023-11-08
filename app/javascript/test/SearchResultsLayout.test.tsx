@@ -102,4 +102,32 @@ describe('SearchResultsLayout', () => {
     expect(img).toHaveAttribute('src', 'https://www.search.gov/test_image.png');
     expect(img).toHaveAttribute('alt', 'test result 1');
   });
+
+  it('renders image page results', () => {
+    const resultsData = { totalPages: 2, unboundedResults: true, results: [{ altText: 'Heritage Tourism | GSA', url: 'https://18f.gsa.gov/2015/06/22/avoiding-cloudfall/', thumbnailUrl: 'https://plus.unsplash.com/premium_photo-1664303499312-917c50e4047b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dG9ybmFkb3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60', image: true, title: 'test result 1', description: 'result body', publishedDate: 'May 9th, 2023', updatedDate: 'May 10th, 2023' }] };
+    render(<SearchResultsLayout params={{ query: 'foo' }} resultsData={resultsData} vertical='image' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} navigationLinks={navigationLinks} />);
+    const img = Array.from(document.getElementsByClassName('result-image')).pop() as HTMLImageElement;
+    expect(img).toHaveAttribute('src', 'https://plus.unsplash.com/premium_photo-1664303499312-917c50e4047b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dG9ybmFkb3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60');
+    expect(img).toHaveAttribute('alt', 'Heritage Tourism | GSA');
+  });
+
+  it('renders videos', () => {
+    const videos = [{
+      title: 'test result 1',
+      url: 'https://www.youtube.com/watch?v=UcaloWLCe3w',
+      description: 'result body',
+      publishedAt: '9 days',
+      youtube: true,
+      youtubePublishedAt: '2023-10-23T15:11:13.000Z',
+      youtubeThumbnailUrl: 'https://www.search.gov/test_image.png',
+      youtubeDuration: '0:55'
+    }];
+    const resultsData = { totalPages: 2, unboundedResults: true, results: videos };
+    render(<SearchResultsLayout params={{ query: 'foo' }} resultsData={resultsData} vertical='image' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} navigationLinks={navigationLinks} />);
+    const resultTitle = screen.getByText(/test result 1/i);
+    const img = Array.from(document.getElementsByClassName('result-image')).pop() as HTMLImageElement;
+    expect(resultTitle).toBeInTheDocument();
+    expect(img).toHaveAttribute('src', 'https://www.search.gov/test_image.png');
+    expect(img).toHaveAttribute('alt', 'test result 1');
+  });
 });

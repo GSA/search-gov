@@ -1,34 +1,39 @@
 import React, { useContext } from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
-import parse from 'html-react-parser';
 
 import { Pagination } from './../Pagination/Pagination';
 import { BestBets } from './BestBets';
 import { NoResults } from './NoResults/NoResults';
 import { LanguageContext } from '../../contexts/LanguageContext';
 
+import { ResultGrid } from './ResultGrid/ResultGrid';
 import { HealthTopics } from './HealthTopics/HealthTopics';
-// import { ImagesPage } from './ImagesPage/ImagesPage';
+import { ImagesPage } from './ImagesPage/ImagesPage';
 import { RssNews } from './RssNews/RssNews';
-// import { Videos } from './Videos/Videos';
+import { Video } from './Videos/Video';
 import { FedRegister } from './FedRegister/FedRegister';
 import { Jobs } from './Jobs/Jobs';
 
-import { truncateUrl } from '../../utils';
-
 import './Results.css';
 
+type Result = {
+  title: string,
+  url: string,
+  description: string,
+  updatedDate?: string,
+  publishedAt?: string,
+  publishedDate?: string,
+  thumbnailUrl?: string,
+  image?: boolean,
+  altText?: string,
+  youtube?: boolean,
+  youtubePublishedAt?: string,
+  youtubeThumbnailUrl?: string,
+  youtubeDuration?: string
+};
 interface ResultsProps {
   query?: string
-  results?: {
-    title: string,
-    url: string,
-    description: string,
-    updatedDate?: string,
-    publishedAt?: string,
-    publishedDate?: string,
-    thumbnailUrl?: string
-  }[] | null;
+  results?: Result[] | null;
   additionalResults?: {
     recommendedBy: string;
     textBestBets?: {
@@ -93,6 +98,14 @@ interface ResultsProps {
       startPage: number;
       title: string;
     }[];
+    youtubeNewsItems?: {
+      link: string;
+      title: string;
+      description: string;
+      publishedAt: string;
+      youtubeThumbnailUrl: string;
+      duration: string;
+    }[];
   } | null;
   unboundedResults: boolean;
   totalPages: number | null;
@@ -100,10 +113,20 @@ interface ResultsProps {
   newsAboutQuery?: string;
 }
 
+const getImages = (result: Result[] | null) => {
+  const imageArr: { url: string, altText?: string, thumbnailUrl?: string }[] = [];
+  if (result)
+    result.forEach((res) => {
+      if (res.image)
+        imageArr.push({ url: res.url, altText: res.altText, thumbnailUrl: res.thumbnailUrl });
+    });
+  return imageArr;
+};
+
 // eslint-disable-next-line complexity
 export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical, newsAboutQuery = '' }: ResultsProps) => {
   const i18n = useContext(LanguageContext);
-  const URL_LENGTH = 80;
+  const imagesResults = getImages(results);
 
   return (
     <>
@@ -135,47 +158,39 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
             />
           }
 
-          {/* Image page Components - To do with its integration task */}
-          {/* <ImagesPage /> */}
+          {/* Video module - To do with its integration task */}
+          {/* {additionalResults?.youtubeNewsItems && 
+            <VideosModule 
+              videos={additionalResults.youtubeNewsItems}
+              query={query}
+            />
+          } */}
 
-          {/* Video module/page - To do with its integration task */}
-          {/* <Videos /> */}
-
-          {/* Federal register - To do with its integration task */}
-          {/* <FedRegister /> */}
-
+          {/* Results: Images */}
+          {imagesResults.length > 0 && <ImagesPage images={imagesResults}/>}
+          
           {/* Results */}
           {results && results.length > 0 ? 
             <> 
               {results.map((result, index) => {
+                if (result.image) {
+                  return null;
+                }
+                if (result?.youtube) {
+                  return (
+                    <Video 
+                      key={index}
+                      link={result.url}
+                      title={result.title}
+                      description={result.description}
+                      publishedAt={result.youtubePublishedAt}
+                      youtubeThumbnailUrl={result.youtubeThumbnailUrl} 
+                      duration={result.youtubeDuration}
+                    />
+                  );
+                }
                 return (
-                  <GridContainer key={index} className='result search-result-item'>
-                    <Grid row gap="md">
-                      {vertical === 'image' &&
-                      <Grid mobileLg={{ col: 4 }} className='result-thumbnail'>
-                        <img src={result.thumbnailUrl} className="result-image" alt={result.title}/>
-                      </Grid>
-                      }
-                      <Grid col={true} className='result-meta-data'>
-                        {result.publishedDate && (<span className='published-date'>{result.publishedDate}</span>)}
-                        {result.updatedDate && (<span className='published-date'>{' '}&#40;Updated on {result.updatedDate}&#41;</span>)}
-                        <div className='result-title'>
-                          <a href={result.url} className='result-title-link'>
-                            <h2 className='result-title-label'>
-                              {parse(result.title)} 
-                              {/* ToDo: This need to be dynamic */}
-                              <span className='filetype-label'>PDF</span>
-                            </h2>
-                          </a>
-                        </div>
-                        <div className='result-desc'>
-                          <p>{parse(result.description)}</p>
-                          <div className='result-url-text'>{truncateUrl(result.url, URL_LENGTH)}</div>
-                        </div>
-                      </Grid>
-                    </Grid>
-                    <Grid row className="row-mobile-divider"></Grid>
-                  </GridContainer>
+                  <ResultGrid key={index} vertical={vertical} result={result} />
                 );
               })}
               <GridContainer className='result-divider'>
