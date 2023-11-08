@@ -199,19 +199,19 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
               <NoResults errorMsg={i18n.t('noResultsForAndTry', { query })} />
             )}
 
-          {/* RSS - old news */}
-          {additionalResults?.oldNews && 
-            <RssNews 
-              news={additionalResults.oldNews} 
-              newsLabel={newsAboutQuery}
-            />
-          }
-
           {/* Federal register */}
           {additionalResults?.federalRegisterDocuments && 
             <FedRegister 
               fedRegisterDocs={additionalResults.federalRegisterDocuments}
               query={query}
+            />
+          }
+
+          {/* RSS - old news */}
+          {additionalResults?.oldNews && 
+            <RssNews 
+              news={additionalResults.oldNews} 
+              newsLabel={newsAboutQuery}
             />
           }
         </div>
