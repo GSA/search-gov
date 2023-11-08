@@ -10,6 +10,7 @@ import { ResultGrid } from './ResultGrid/ResultGrid';
 import { HealthTopics } from './HealthTopics/HealthTopics';
 import { ImagesPage } from './ImagesPage/ImagesPage';
 import { RssNews } from './RssNews/RssNews';
+import { VideosModule } from './Videos/VideosModule';
 import { Video } from './Videos/Video';
 import { FedRegister } from './FedRegister/FedRegister';
 import { Jobs } from './Jobs/Jobs';
@@ -115,7 +116,8 @@ interface ResultsProps {
   spellingSuggestion?: {
     suggested: string;
     original: string;
-  }
+  };
+  videosUrl?: string;
 }
 
 const getImages = (result: Result[] | null) => {
@@ -129,7 +131,7 @@ const getImages = (result: Result[] | null) => {
 };
 
 // eslint-disable-next-line complexity
-export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical, newsAboutQuery = '', spellingSuggestion }: ResultsProps) => {
+export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical, newsAboutQuery = '', spellingSuggestion, videosUrl }: ResultsProps) => {
   const i18n = useContext(LanguageContext);
   const imagesResults = getImages(results);
   
@@ -167,13 +169,10 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
             />
           }
 
-          {/* Video module - To do with its integration task */}
-          {/* {additionalResults?.youtubeNewsItems && 
-            <VideosModule 
-              videos={additionalResults.youtubeNewsItems}
-              query={query}
-            />
-          } */}
+          {/* Video module */}
+          {additionalResults?.youtubeNewsItems && 
+            <VideosModule videos={additionalResults.youtubeNewsItems} query={query} videosUrl={videosUrl} />
+          }
 
           {/* Results: Images */}
           {imagesResults.length > 0 && <ImagesPage images={imagesResults}/>}

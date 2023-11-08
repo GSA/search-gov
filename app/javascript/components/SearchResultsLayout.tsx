@@ -12,7 +12,7 @@ import { Identifier } from './Identifier/Identifier';
 import { LanguageContext } from '../contexts/LanguageContext';
 
 export interface NavigationLink {
-  active: boolean; label: string; url: string;
+  active: boolean; label: string; url: string, facet: string;
 }
 
 interface SearchResultsLayoutProps {
@@ -164,6 +164,8 @@ const isBasicHeader = (extendedHeader: boolean): boolean => {
   return !extendedHeader;
 };
 
+const videosUrl = (links: NavigationLink[]) => links.find((link) => link.facet === 'YouTube')?.url ;
+
 const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [], extendedHeader, footerLinks, fontsAndColors, newsLabel, identifierContent, identifierLinks, navigationLinks, relatedSitesDropdownLabel = '', alert, spellingSuggestion }: SearchResultsLayoutProps) => {
   const i18n = new I18n(translations);
   i18n.defaultLocale = 'en';
@@ -193,6 +195,7 @@ const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params 
             additionalResults={additionalResults}
             newsAboutQuery={newsLabel?.newsAboutQuery}
             spellingSuggestion={spellingSuggestion}
+            videosUrl= {videosUrl(navigationLinks)}
           />) : params.query ? (
           <Results 
             vertical={vertical}

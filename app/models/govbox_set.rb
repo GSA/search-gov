@@ -3,6 +3,8 @@ class GovboxSet
     pre_tags: %w[<strong>],
     post_tags: %w[</strong>]
   }.freeze
+  DEFAULT_TRUNCATED_HTML_LENGTH = 280
+  DEFAULT_TRUNCATE_OPTIONS = { length_in_chars: true, ellipsis: ' ...' }.freeze
 
   attr_reader :boosted_contents,
               :featured_collections,
@@ -60,6 +62,12 @@ class GovboxSet
     body&.gsub(/\uE000/, '<strong>')&.gsub(/\uE001/, '</strong>')
   end
 
+  def truncate_description(html)
+    return '' unless html
+
+    HTML_Truncator.truncate(html, DEFAULT_TRUNCATED_HTML_LENGTH, DEFAULT_TRUNCATE_OPTIONS)
+  end
+
   def videos_exist?
     video_feeds = RssFeed.includes(:rss_feed_urls).owned_by_youtube_profile.where(owner_id: @affiliate.youtube_profile_ids)
     video_feeds.present? && @affiliate.is_video_govbox_enabled? && @video_news_items.total.positive?
@@ -72,8 +80,15 @@ class GovboxSet
   def format_video_news_items
     return unless videos_exist?
 
-    first_video_result&.map { |result| result.slice(:link, :title, :description, :published_at, :youtube_thumbnail_url, :duration) }&.
-      each { |result| result[:published_at] = result[:published_at].to_datetime.to_fs(:long) }
+    raw_video_results&.each do |result|
+      result[:published_at] = result[:published_at].to_datetime.to_fs(:long)
+      result[:title] = translate_highlights(result[:title])
+      result[:description] = truncate_description(translate_highlights(result[:description]))
+    end
+  end
+
+  def raw_video_results
+    first_video_result&.map { |result| result.slice(:link, :title, :description, :published_at, :youtube_thumbnail_url, :duration) }
   end
 
   def fresh_news_items?
