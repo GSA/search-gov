@@ -14,6 +14,7 @@ import { VideosModule } from './Videos/VideosModule';
 import { Video } from './Videos/Video';
 import { FedRegister } from './FedRegister/FedRegister';
 import { Jobs } from './Jobs/Jobs';
+import { SiteLimitAlert } from './SiteLimitAlert/SiteLimitAlert';
 
 import './Results.css';
 
@@ -113,6 +114,10 @@ interface ResultsProps {
   vertical: string;
   newsAboutQuery?: string;
   videosUrl?: string;
+  sitelimit?: {
+    sitelimit: string;
+    url: string;
+  };
 }
 
 const getImages = (result: Result[] | null) => {
@@ -126,13 +131,23 @@ const getImages = (result: Result[] | null) => {
 };
 
 // eslint-disable-next-line complexity
-export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical, newsAboutQuery = '', videosUrl }: ResultsProps) => {
+export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical, newsAboutQuery = '', videosUrl, sitelimit }: ResultsProps) => {
   const i18n = useContext(LanguageContext);
   const imagesResults = getImages(results);
 
   return (
     <>
       <div className='search-result-wrapper'>
+        {sitelimit && (
+          <SiteLimitAlert {...sitelimit} query={query} />
+        )}
+        {/* Below is for testing the component */}
+        {/* <SiteLimitAlert 
+          sitelimit='www.nps.gov/shen'
+          url='/search?affiliate=nps&amp;query=trail+maps' 
+          query={query} 
+        /> */}
+
         {additionalResults && (
           <BestBets
             {...additionalResults}

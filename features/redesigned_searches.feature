@@ -393,3 +393,10 @@ Feature: Search - redesign
 
     When I follow "1"
     Then I should see exactly "20" redesigned video search results
+
+  @javascript @a11y @a11y_wip
+  Scenario: Search with site limits
+    Given there are results for the "searchgov" drawer
+    When I am on epa's search page with site limited to "www.epa.gov/news"
+    When I search for "carbon emissions"
+    Then I should see "We're including results for carbon emissions from www.epa.gov/news only."

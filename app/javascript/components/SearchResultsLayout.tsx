@@ -125,6 +125,10 @@ interface SearchResultsLayoutProps {
     suggested: string;
     original: string;
   };
+  sitelimit?: {
+    sitelimit: string;
+    url: string;
+  };
   navigationLinks: NavigationLink[];
   extendedHeader: boolean;
   fontsAndColors: {
@@ -166,7 +170,7 @@ const isBasicHeader = (extendedHeader: boolean): boolean => {
 
 const videosUrl = (links: NavigationLink[]) => links.find((link) => link.facet === 'YouTube')?.url ;
 
-const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [], extendedHeader, footerLinks, fontsAndColors, newsLabel, identifierContent, identifierLinks, navigationLinks, relatedSitesDropdownLabel = '' }: SearchResultsLayoutProps) => {
+const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [], extendedHeader, footerLinks, fontsAndColors, newsLabel, identifierContent, identifierLinks, navigationLinks, relatedSitesDropdownLabel = '', sitelimit }: SearchResultsLayoutProps) => {
   const i18n = new I18n(translations);
   i18n.defaultLocale = 'en';
   i18n.enableFallback = true;
@@ -196,6 +200,7 @@ const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params 
             additionalResults={additionalResults}
             newsAboutQuery={newsLabel?.newsAboutQuery}
             videosUrl= {videosUrl(navigationLinks)}
+            sitelimit={sitelimit}
           />) : params.query ? (
           <Results 
             vertical={vertical}
