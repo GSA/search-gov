@@ -15,6 +15,7 @@ import { Video } from './Videos/Video';
 import { FedRegister } from './FedRegister/FedRegister';
 import { Jobs } from './Jobs/Jobs';
 import { RelatedSearches } from './RelatedSearches/RelatedSearches';
+import { SpellingSuggestion } from './SpellingSuggestion/SpellingSuggestion';
 
 import './Results.css';
 
@@ -113,6 +114,10 @@ interface ResultsProps {
   totalPages: number | null;
   vertical: string;
   newsAboutQuery?: string;
+  spellingSuggestion?: {
+    suggested: string;
+    original: string;
+  };
   videosUrl?: string;
   relatedSearches?: { label: string; link: string; }[]
 }
@@ -128,13 +133,17 @@ const getImages = (result: Result[] | null) => {
 };
 
 // eslint-disable-next-line complexity
-export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical, newsAboutQuery = '', videosUrl, relatedSearches }: ResultsProps) => {
+export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical, newsAboutQuery = '', spellingSuggestion, videosUrl, relatedSearches }: ResultsProps) => {
   const i18n = useContext(LanguageContext);
   const imagesResults = getImages(results);
-
+  
   return (
     <>
       <div className='search-result-wrapper'>
+        {spellingSuggestion && (
+          <SpellingSuggestion {...spellingSuggestion}/>
+        )}
+
         {additionalResults && (
           <BestBets
             {...additionalResults}
@@ -217,11 +226,9 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
             />
           }
 
-
           {relatedSearches && relatedSearches.length > 0 && 
             <RelatedSearches relatedSearches={relatedSearches}/>
           }
-          
         </div>
       </div>
       <Pagination 
