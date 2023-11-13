@@ -9,6 +9,10 @@ Then /^I should see (\d+) related searches$/ do |count|
   page.should have_selector('#related-searches a', count: count)
 end
 
+Then /^I should see (\d+) redesigned related searches$/ do |count|
+  page.should have_selector('.related-searches-item-wrapper .result-title-link', count: count)
+end
+
 Then /^I should see a suggestion to search for "(.*)"/ do |query|
   expect(page.find('div.tt-suggestion', visible: :all).text(:all)).to eq query
 end
