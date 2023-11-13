@@ -652,7 +652,7 @@ Feature: Manage Display
     Then I should be able to access 3 "new_secondary_header_link" rows
     And I should not see "Add new secondary header link"
 
-  Scenario: Editing the Visual Design Settings when "Show Redesign Display Settings" and "Use Redesigned Results Page" are true
+  Scenario: Display sub navigation links when both "Show Redesign Display Settings" and "Use Redesigned Results Page" are true
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | show_redesign_display_settings | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | true                           | true                        |
@@ -660,6 +660,42 @@ Feature: Manage Display
     When I go to the agency.gov's Visual Design page
     Then I should see "Visual design (new)"
     And the page body should not contain "These settings are for preview purposes only."
-    And I should not see a link to "Fonts & Colors" in the active site sub navigation
+    And I should not see a link to "Font & Colors" in the active site sub navigation
     And I should not see a link to "Image Assets" in the active site sub navigation
     And I should not see a link to "Header & Footer" in the active site sub navigation
+  
+  Scenario: Display sub navigation links when "Show Redesign Display Settings" is true and "Use Redesigned Results Page" is false
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | first_name | last_name | show_redesign_display_settings |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | true                           |
+    And I am logged in with email "john@agency.gov"
+    When I go to the agency.gov's Manage Display page
+    And I follow "Legacy Font & Colors"
+    And I should see a link to "Legacy Font & Colors" in the active site sub navigation
+    And I follow "Legacy Image Assets"
+    And I should see a link to "Legacy Image Assets" in the active site sub navigation
+    And I follow "Legacy Header & Footer"
+    And I should see a link to "Legacy Header & Footer" in the active site sub navigation
+
+  Scenario: Display sub navigation links when "Show Redesign Display Settings" is false and "Use Redesigned Results Page" is true  
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | true                        |
+    And I am logged in with email "john@agency.gov"
+    When I go to the agency.gov's Manage Display page
+    And I should not see a link to "Font & Colors" in the active site sub navigation
+    And I should not see a link to "Image Assets" in the active site sub navigation
+    And I should not see a link to "Header & Footer" in the active site sub navigation
+
+  Scenario: Display sub navigation links when both "Show Redesign Display Settings" and "Use Redesigned Results Page" are false
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | first_name | last_name |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
+    And I am logged in with email "john@agency.gov"
+    When I go to the agency.gov's Manage Display page
+    And I follow "Font & Colors"
+    And I should see a link to "Font & Colors" in the active site sub navigation
+    And I follow "Image Assets"
+    And I should see a link to "Image Assets" in the active site sub navigation
+    And I follow "Header & Footer"
+    And I should see a link to "Header & Footer" in the active site sub navigation
