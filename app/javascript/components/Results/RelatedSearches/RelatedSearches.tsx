@@ -3,16 +3,16 @@ import { GridContainer, Grid } from '@trussworks/react-uswds';
 import parse from 'html-react-parser';
 import { LanguageContext } from '../../../contexts/LanguageContext';
 
-type RelatedSearches = {
+type RelatedSearch = {
   label: string; 
   link: string;
 };
 
 interface RelatedSearchesProps {
-  relatedSearches?: RelatedSearches[];
+  relatedSearches?: RelatedSearch[];
 }
 
-export const RelatedSearches = ({ relatedSearches=[]}: RelatedSearchesProps) => {
+export const RelatedSearches = ({ relatedSearches=[] }: RelatedSearchesProps) => {
   const i18n = useContext(LanguageContext);
 
   return (
