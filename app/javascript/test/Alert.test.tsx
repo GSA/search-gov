@@ -5,16 +5,22 @@ import React from 'react';
 import { Alert } from '../components/Alert/Alert';
 
 describe('Alert component', () => {
+  const alertProps = {
+    title: 'Attention',
+    text: 'Description'
+  };
+
   it('renders Alert component', () => {
     render(
-      <Alert />
+      <Alert {...alertProps} />
     );
   });
 
-  it('shows Alert title', () => {
+  it('shows Alert title and description', () => {
     render(
-      <Alert />
+      <Alert {...alertProps} />
     );
     expect(screen.getByText('Attention')).toBeInTheDocument();
+    expect(screen.getByText('Description')).toBeInTheDocument();
   });
 });
