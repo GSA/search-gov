@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { render, screen, within } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import React from 'react';
 import { RelatedSearches } from '../components/Results/RelatedSearches/RelatedSearches';
 
