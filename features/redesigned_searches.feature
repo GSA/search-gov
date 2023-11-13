@@ -404,6 +404,12 @@ Feature: Search - redesign
       | en.agency.gov| New alert for the test aff | Active   |  Test Title  |
     When I am on en.agency.gov's search page
     Then I should see "New alert for the test aff"
+
+  @javascript @a11y
+  Scenario: Hide an Alert on search page
+    Given the following Affiliates exist:
+      | display_name | name          | contact_email    | first_name | last_name | locale |  use_redesigned_results_page |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     |       true                   |
     Given the following Alert exists:
       | affiliate    | text                       | status   | title      |
       | en.agency.gov| New alert for the test aff | Inactive | Test Title |
