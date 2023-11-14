@@ -127,6 +127,7 @@ class ApplicationController < ActionController::Base
     @search_params = ActiveSupport::HashWithIndifferentAccess.new(query: @search.query, affiliate: @affiliate.name)
     @search_params[:sitelimit] = permitted_params[:sitelimit] if permitted_params[:sitelimit].present?
     @search_params[:dc] = permitted_params[:dc] if permitted_params[:dc].present?
+    @search_params[:redesign] = permitted_params[:redesign] if permitted_params[:redesign].present?
     if @search.is_a? FilterableSearch
       @search_params[:channel] = @search.rss_feed.id if @search.is_a?(NewsSearch) && @search.rss_feed
       @search_params[:tbs] = @search.tbs if @search.tbs
@@ -153,6 +154,6 @@ class ApplicationController < ActionController::Base
   end
 
   def redesign?
-    @affiliate.use_redesigned_results_page
+    @affiliate.use_redesigned_results_page or permitted_params[:redesign] == 'true'
   end
 end
