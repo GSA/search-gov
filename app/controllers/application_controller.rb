@@ -129,12 +129,16 @@ class ApplicationController < ActionController::Base
     @search_params[:dc] = permitted_params[:dc] if permitted_params[:dc].present?
     @search_params[:redesign] = permitted_params[:redesign] if permitted_params[:redesign].present?
     if @search.is_a? FilterableSearch
-      @search_params[:channel] = @search.rss_feed.id if @search.is_a?(NewsSearch) && @search.rss_feed
-      @search_params[:tbs] = @search.tbs if @search.tbs
-      @search_params[:since_date] = @search.since.strftime(I18n.t(:cdr_format)) if permitted_params[:since_date].present? && @search.since
-      @search_params[:until_date] = @search.until.strftime(I18n.t(:cdr_format)) if permitted_params[:until_date].present? && @search.until
-      @search_params.merge!(permitted_params.slice(:contributor, :publisher, :sort_by, :subject))
+      filterable_search
     end
+  end
+
+  def filterable_search
+    @search_params[:channel] = @search.rss_feed.id if @search.is_a?(NewsSearch) && @search.rss_feed
+    @search_params[:tbs] = @search.tbs if @search.tbs
+    @search_params[:since_date] = @search.since.strftime(I18n.t(:cdr_format)) if permitted_params[:since_date].present? && @search.since
+    @search_params[:until_date] = @search.until.strftime(I18n.t(:cdr_format)) if permitted_params[:until_date].present? && @search.until
+    @search_params.merge!(permitted_params.slice(:contributor, :publisher, :sort_by, :subject))
   end
 
   def set_search_page_title
