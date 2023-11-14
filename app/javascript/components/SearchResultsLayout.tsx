@@ -170,12 +170,11 @@ const isBasicHeader = (extendedHeader: boolean): boolean => {
 
 const videosUrl = (links: NavigationLink[]) => links.find((link) => link.facet === 'YouTube')?.url ;
 
-const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [], extendedHeader, footerLinks, fontsAndColors, newsLabel, identifierContent, identifierLinks, navigationLinks, relatedSitesDropdownLabel = '', sitelimit }: SearchResultsLayoutProps) => {
+const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [], extendedHeader, footerLinks, fontsAndColors, newsLabel, identifierContent, identifierLinks, navigationLinks, relatedSitesDropdownLabel = '', alert, spellingSuggestion, sitelimit }: SearchResultsLayoutProps) => {
   const i18n = new I18n(translations);
   i18n.defaultLocale = 'en';
   i18n.enableFallback = true;
   i18n.locale = currentLocale;
-
   return (
     <LanguageContext.Provider value={i18n}>
       <Header 
@@ -187,7 +186,7 @@ const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params 
       <div className="usa-section serp-result-wrapper">
         <Facets />
 
-        <SearchBar query={params.query} relatedSites={relatedSites} navigationLinks={navigationLinks} relatedSitesDropdownLabel={relatedSitesDropdownLabel} />
+        <SearchBar query={params.query} relatedSites={relatedSites} navigationLinks={navigationLinks} relatedSitesDropdownLabel={relatedSitesDropdownLabel} alert={alert}/>
 
         {/* This ternary is needed to handle the case when Bing pagination leads to a page with no results */}
         {resultsData ? (
@@ -199,6 +198,7 @@ const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params 
             unboundedResults={resultsData.unboundedResults}
             additionalResults={additionalResults}
             newsAboutQuery={newsLabel?.newsAboutQuery}
+            spellingSuggestion={spellingSuggestion}
             videosUrl= {videosUrl(navigationLinks)}
             sitelimit={sitelimit}
           />) : params.query ? (

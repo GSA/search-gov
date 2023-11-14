@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
 
 import { VerticalNav } from './../VerticalNav/VerticalNav';
-// import { Alert } from './../Alert/Alert';
+import { Alert } from './../Alert/Alert';
 import { getUriWithParam } from '../../utils';
 import { LanguageContext } from '../../contexts/LanguageContext';
 import { NavigationLink } from '../SearchResultsLayout';
@@ -16,9 +16,13 @@ interface SearchBarProps {
   relatedSites?: {label: string, link: string}[];
   navigationLinks: NavigationLink[];
   relatedSitesDropdownLabel?: string;
+  alert?: {
+    title: string;
+    text: string;
+  }
 }
 
-export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [], relatedSitesDropdownLabel = '' }: SearchBarProps) => {
+export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [], relatedSitesDropdownLabel = '', alert }: SearchBarProps) => {
   const [searchQuery, setSearchQuery] = useState(query);
   const searchUrlParam = 'query';
 
@@ -37,8 +41,7 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [],
   return (
     <div id="serp-search-bar-wrapper">
       <GridContainer>
-        {/* Alert - To do with its integration task */}
-        {/* <Alert /> */}
+        {alert && <Alert title={alert.title} text={alert.text}/>}
 
         <Grid row>
           <Grid tablet={{ col: true }}>
