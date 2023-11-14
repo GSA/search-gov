@@ -393,3 +393,35 @@ Feature: Search - redesign
 
     When I follow "1"
     Then I should see exactly "20" redesigned video search results
+
+  @javascript @a11y
+  Scenario: Display an Alert on search page
+    Given the following Affiliates exist:
+      | display_name | name          | contact_email    | first_name | last_name | locale |  use_redesigned_results_page |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     |       true                   |
+    Given the following Alert exists:
+      | affiliate    | text                       | status   | title        |
+      | en.agency.gov| New alert for the test aff | Active   |  Test Title  |
+    When I am on en.agency.gov's search page
+    Then I should see "New alert for the test aff"
+
+  @javascript @a11y
+  Scenario: Hide an Alert on search page
+    Given the following Affiliates exist:
+      | display_name | name          | contact_email    | first_name | last_name | locale |  use_redesigned_results_page |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     |       true                   |
+    Given the following Alert exists:
+      | affiliate    | text                       | status   | title      |
+      | en.agency.gov| New alert for the test aff | Inactive | Test Title |
+    When I am on en.agency.gov's search page
+    Then I should not see "New alert for the test aff"
+
+  @javascript @a11y @a11y_wip
+  Scenario: Searching with spelling suggestions
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email | first_name | last_name | domains | use_redesigned_results_page |
+      | agency site  | agency.gov | aff@bar.gov   | Jane       | Bar       | usa.gov | true |
+    When I am on agency.gov's search page
+    And I search for "qeury" in the redesigned search page
+    Then I should see "Showing results for query"
+    And I should see "Search instead for qeury"
