@@ -16,6 +16,10 @@ export interface NavigationLink {
 }
 
 interface SearchResultsLayoutProps {
+  page: {
+    logoUrl: string;
+    title: string;
+  };
   resultsData?: {
     totalPages: number;
     unboundedResults: boolean;
@@ -155,29 +159,33 @@ interface SearchResultsLayoutProps {
   relatedSitesDropdownLabel?: string;
 }
 
-// To be updated
-const getAffiliateTitle = (): string => {
-  return 'Search.gov';
-};
-
 const isBasicHeader = (extendedHeader: boolean): boolean => {
   return !extendedHeader;
 };
 
 const videosUrl = (links: NavigationLink[]) => links.find((link) => link.facet === 'YouTube')?.url ;
 
-const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [], extendedHeader, footerLinks, fontsAndColors, newsLabel, identifierContent, identifierLinks, navigationLinks, relatedSitesDropdownLabel = '', alert, spellingSuggestion }: SearchResultsLayoutProps) => {
+const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [], extendedHeader, footerLinks, fontsAndColors, newsLabel, identifierContent, identifierLinks, navigationLinks, relatedSitesDropdownLabel = '', alert, spellingSuggestion }: SearchResultsLayoutProps) => {
   const i18n = new I18n(translations);
   i18n.defaultLocale = 'en';
   i18n.enableFallback = true;
   i18n.locale = currentLocale;
+
   return (
     <LanguageContext.Provider value={i18n}>
       <Header 
-        title={getAffiliateTitle()}
+        title={page.title}
+        logoUrl={page.logoUrl}
         isBasic={isBasicHeader(extendedHeader)}
         fontsAndColors={fontsAndColors}
       />
+      {/* Below to be deleted once the backend task - SRCH-4576 and SRCH-4630 are done */}
+      {/* <Header 
+        title="Search.gov"
+        logoUrl="https://search.gov/assets/gsa-logo-893b811a49f74b06b2bddbd1cde232d2922349c8c8c6aad1d88594f3e8fe42bd097e980c57c5e28eff4d3a9256adb4fcd88bf73a5112833b2efe2e56791aad9d.svg"
+        isBasic={isBasicHeader(extendedHeader)}
+        fontsAndColors={fontsAndColors}
+      /> */}
      
       <div className="usa-section serp-result-wrapper">
         <Facets />
