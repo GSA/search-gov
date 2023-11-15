@@ -17,6 +17,7 @@ export interface NavigationLink {
 
 interface SearchResultsLayoutProps {
   resultsData?: {
+    total?: number;
     totalPages: number;
     unboundedResults: boolean;
     results: {
@@ -190,6 +191,7 @@ const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params 
             results={resultsData.results}
             vertical={vertical}
             totalPages={resultsData.totalPages}
+            total={resultsData?.total}
             query={params.query}
             unboundedResults={resultsData.unboundedResults}
             additionalResults={additionalResults}
