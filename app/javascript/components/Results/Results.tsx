@@ -143,7 +143,8 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
         {total && (
           <ResultsCount total={total}/>
         )}
-        <ResultsCount total={2000}/>
+        {/* Below is only for testing, to be deleted once its backend task SRCH-4575 is done */}
+        <ResultsCount total={1}/>
 
         {spellingSuggestion && (
           <SpellingSuggestion {...spellingSuggestion}/>
