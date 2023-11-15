@@ -144,7 +144,7 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
           <ResultsCount total={total}/>
         )}
         {/* Below is only for testing, to be deleted once its backend task SRCH-4575 is done */}
-        <ResultsCount total={1}/>
+        {/* <ResultsCount total={2312329}/> */}
 
         {spellingSuggestion && (
           <SpellingSuggestion {...spellingSuggestion}/>

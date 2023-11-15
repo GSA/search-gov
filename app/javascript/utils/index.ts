@@ -58,5 +58,5 @@ export const move = <T>(input: T[], from: number, to: number): T[] => {
 };
 
 export const numberWithDelimiter = (number: number): string => {
-  return number.toLocaleString("en-US");
+  return number.toLocaleString('en-US');
 };
