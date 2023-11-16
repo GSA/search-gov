@@ -103,6 +103,8 @@ class WebSearch < Search
   end
 
   def handle_search_engine_response(response)
+    binding.pry
+
     @startrecord = response.start_record
     @results = paginate(post_process_results(response.results))
     @endrecord = response.end_record

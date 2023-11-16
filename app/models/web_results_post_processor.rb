@@ -41,6 +41,8 @@ class WebResultsPostProcessor < ResultsPostProcessor
   private
 
   def format_results
+    binding.pry
+
     @results.map do |result|
       {
         title: translate_highlights(result['title']),

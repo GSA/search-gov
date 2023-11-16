@@ -50,12 +50,16 @@ class NewsSearch < FilterableSearch
   def search
     return if @rss_feeds.blank?
 
-    ElasticNewsItem.search_for(q: @query, rss_feeds: @rss_feeds, excluded_urls: @affiliate.excluded_urls,
+    result = ElasticNewsItem.search_for(q: @query, rss_feeds: @rss_feeds, excluded_urls: @affiliate.excluded_urls,
                                since: @since, until: @until,
                                size: @per_page, offset: (@page - 1) * @per_page,
                                contributor: @contributor, subject: @subject, publisher: @publisher,
                                sort: @sort,
                                tags: @tags, language: @affiliate.indexing_locale)
+
+    binding.pry
+
+    result
   end
 
   def cache_key
