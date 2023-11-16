@@ -14,6 +14,7 @@ import { VideosModule } from './Videos/VideosModule';
 import { Video } from './Videos/Video';
 import { FedRegister } from './FedRegister/FedRegister';
 import { Jobs } from './Jobs/Jobs';
+import { RelatedSearches } from './RelatedSearches/RelatedSearches';
 import { SpellingSuggestion } from './SpellingSuggestion/SpellingSuggestion';
 
 import './Results.css';
@@ -118,6 +119,7 @@ interface ResultsProps {
     original: string;
   };
   videosUrl?: string;
+  relatedSearches?: { label: string; link: string; }[]
 }
 
 const getImages = (result: Result[] | null) => {
@@ -131,7 +133,7 @@ const getImages = (result: Result[] | null) => {
 };
 
 // eslint-disable-next-line complexity
-export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical, newsAboutQuery = '', spellingSuggestion, videosUrl }: ResultsProps) => {
+export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical, newsAboutQuery = '', spellingSuggestion, videosUrl, relatedSearches }: ResultsProps) => {
   const i18n = useContext(LanguageContext);
   const imagesResults = getImages(results);
   
@@ -208,6 +210,14 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
               <NoResults errorMsg={i18n.t('noResultsForAndTry', { query })} />
             )}
 
+          {/* Federal register */}
+          {additionalResults?.federalRegisterDocuments && 
+            <FedRegister 
+              fedRegisterDocs={additionalResults.federalRegisterDocuments}
+              query={query}
+            />
+          }
+
           {/* RSS - old news */}
           {additionalResults?.oldNews && 
             <RssNews 
@@ -216,12 +226,8 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
             />
           }
 
-          {/* Federal register */}
-          {additionalResults?.federalRegisterDocuments && 
-            <FedRegister 
-              fedRegisterDocs={additionalResults.federalRegisterDocuments}
-              query={query}
-            />
+          {relatedSearches && relatedSearches.length > 0 && 
+            <RelatedSearches relatedSearches={relatedSearches}/>
           }
         </div>
       </div>
