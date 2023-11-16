@@ -24,11 +24,11 @@ export const SiteLimitAlert = ({ sitelimit, url, query }: SiteLimitAlertProps) =
       <GridContainer className='result search-result-item'>
         <Grid row>
           <Grid tablet={{ col: true }}>
-            <div className='spelling-suggestion-wrapper'>
+            <div className='sitelimit-alert-wrapper'>
               <div>
                 {i18n.t('searches.siteLimits.includingResultsForQueryFromMatchingSites', { query, matching_sites: sitelimit })}
               </div>
-              <div className='spelling-search-instead-for'>
+              <div className='sitelimit-search-instead-for'>
                 {
                   parse(i18n.t('searches.siteLimits.doYouWantToSeeResultsFor', { query_from_all_sites: query_from_all_sites() }))
                 }

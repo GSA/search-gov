@@ -148,12 +148,6 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
         {sitelimit && (
           <SiteLimitAlert {...sitelimit} query={query} />
         )}
-        {/* Below is for testing the component: remove it once its backend is ready: SRCH-3998 */}
-        {/* <SiteLimitAlert 
-          sitelimit='www.nps.gov/shen'
-          url='/search?affiliate=nps&amp;query=trail+maps' 
-          query={query} 
-        /> */}
 
         {spellingSuggestion && (
           <SpellingSuggestion {...spellingSuggestion}/>
