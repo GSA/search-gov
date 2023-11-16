@@ -5,7 +5,7 @@ import { HeaderProps } from './../props';
 
 import './BasicHeader.css';
 
-export const BasicHeader = ({ title, logoUrl, toggleMobileNav, mobileNavOpen, fontsAndColors }: HeaderProps) => {
+export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen, fontsAndColors }: HeaderProps) => {
   const primaryNavItems = [
     <a key="primaryNav_2" className="usa-nav__link" href="">
       <span style={{ fontFamily: fontsAndColors?.headerLinksFontFamily }}>{'Primary link 1'}</span>
@@ -27,10 +27,10 @@ export const BasicHeader = ({ title, logoUrl, toggleMobileNav, mobileNavOpen, fo
               className="width-full"
               size="slim"
               image={
-                <img className="usa-identifier__logo" src={logoUrl} alt="Site logo" />
+                <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} />
               }
               heading={
-                <Title>{title}</Title>
+                <Title>{page.title}</Title>
               }
             />
             <NavMenuButton

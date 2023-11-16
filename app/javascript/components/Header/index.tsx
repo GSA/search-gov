@@ -6,17 +6,17 @@ import '@trussworks/react-uswds/lib/index.css';
 
 import { BasicHeader } from './BasicHeader';
 import { ExtendedHeader } from './ExtendedHeader';
+import { PageData } from '../SearchResultsLayout';
 
 interface HeaderProps {
-  title: string;
-  logoUrl: string;
+  page: PageData;
   isBasic: boolean;
   fontsAndColors: {
     headerLinksFontFamily: string;
   };
 }
 
-export const Header = ({ title, logoUrl, isBasic, fontsAndColors }: HeaderProps) => {
+export const Header = ({ page, isBasic, fontsAndColors }: HeaderProps) => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   const toggleMobileNav = (): void => {
@@ -24,8 +24,7 @@ export const Header = ({ title, logoUrl, isBasic, fontsAndColors }: HeaderProps)
   };
 
   const headerProps = {
-    title,
-    logoUrl,
+    page,
     toggleMobileNav,
     mobileNavOpen,
     fontsAndColors

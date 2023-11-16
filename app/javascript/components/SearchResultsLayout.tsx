@@ -15,11 +15,16 @@ export interface NavigationLink {
   active: boolean; label: string; url: string, facet: string;
 }
 
+export interface PageData {
+  title: string;
+  logo: {
+    url: string;
+    text: string;
+  }
+}
+
 interface SearchResultsLayoutProps {
-  page: {
-    logoUrl: string;
-    title: string;
-  };
+  page: PageData;
   resultsData?: {
     totalPages: number;
     unboundedResults: boolean;
@@ -174,8 +179,7 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
   return (
     <LanguageContext.Provider value={i18n}>
       <Header 
-        title={page.title}
-        logoUrl={page.logoUrl}
+        page={page}
         isBasic={isBasicHeader(extendedHeader)}
         fontsAndColors={fontsAndColors}
       />

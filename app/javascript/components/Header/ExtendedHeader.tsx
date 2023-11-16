@@ -5,7 +5,7 @@ import { HeaderProps } from './../props';
 
 import './ExtendedHeader.css';
 
-export const ExtendedHeader = ({ title, logoUrl, toggleMobileNav, mobileNavOpen, fontsAndColors }: HeaderProps) => {
+export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, fontsAndColors }: HeaderProps) => {
   const secondaryLinkItems = [
     <a href="#linkOne" key="one">
       <span style={{ fontFamily: fontsAndColors?.headerLinksFontFamily }}>Secondary link 1</span>
@@ -35,10 +35,10 @@ export const ExtendedHeader = ({ title, logoUrl, toggleMobileNav, mobileNavOpen,
             className="width-full"
             size="slim"
             image={
-              <img className="usa-identifier__logo" src={logoUrl} alt="Site logo" />
+              <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} />
             }
             heading={
-              <Title>{title}</Title>
+              <Title>{page.title}</Title>
             }
           />
           <NavMenuButton onClick={toggleMobileNav} label="Menu" />
