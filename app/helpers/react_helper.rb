@@ -32,7 +32,7 @@ module ReactHelper
     {
       title: affiliate.display_name,
       logo: {
-        text: affiliate.header_logo_blob.custom_metadata[:alt_text],
+        text: affiliate.header_logo_blob&.custom_metadata[:alt_text],
         url: url_for(affiliate.header_logo)
       }
     }
