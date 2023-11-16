@@ -14,7 +14,7 @@ module ReactHelper
       navigationLinks: navigation_links(search, params),
       newsLabel: news_label(search),
       noResultsMessage: no_result_message(search),
-      page_data: page_data(affilaite),
+      page_data: page_data(affiliate),
       params: params,
       relatedSearches: related_searches(search),
       relatedSites: related_sites(search),
@@ -22,7 +22,7 @@ module ReactHelper
       resultsData: search.normalized_results,
       spellingSuggestion: spelling_text(search, search_options),
       translations: translations(affiliate.locale),
-      vertical: vertical,
+      vertical: vertical
     }
 
     react_component('SearchResultsLayout', data.compact_blank)
@@ -31,10 +31,7 @@ module ReactHelper
   def page_data(affiliate)
     {
       title: affiliate.display_name,
-      logo: {
-        text: affiliate.logo_alt_text,
-        url:  affiliate.mobile_logo_url
-      }
+      logo: { text: affiliate.logo_alt_text, url: affiliate.mobile_logo_url }
     }
   end
 
