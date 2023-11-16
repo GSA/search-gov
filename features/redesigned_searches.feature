@@ -425,3 +425,17 @@ Feature: Search - redesign
     And I search for "qeury" in the redesigned search page
     Then I should see "Showing results for query"
     And I should see "Search instead for qeury"
+
+  @javascript @a11y @a11y_wip
+  Scenario: Related searches module
+    Given the following Affiliates exist:
+      | display_name | name          | contact_email    | first_name | last_name | locale | use_redesigned_results_page |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar     | en     | true  |
+    And the following SAYT Suggestions exist for en.agency.gov:
+      | phrase                 |
+      | president list         |
+      | president inauguration |
+    When I am on en.agency.gov's search page
+    And I fill in "Enter your search term" with "president"
+    And I press "Search"
+    Then I should see 2 redesigned related searches
