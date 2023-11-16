@@ -59,6 +59,10 @@ describe SearchesController do
         expect(response).to render_template 'index_redesign'
         expect(response).to render_template 'layouts/searches_redesign'
       end
+
+      it 'renders the referrer policy' do
+        expect(response.body).to match(/meta content='no-referrer-when-downgrade' name='referrer'/)
+      end
     end
 
     context 'when searching on a Spanish site' do
