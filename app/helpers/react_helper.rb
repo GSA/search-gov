@@ -31,7 +31,10 @@ module ReactHelper
   def page_data(affiliate)
     {
       title: affiliate.display_name,
-      logo: { text: affiliate.logo_alt_text, url: affiliate.mobile_logo_url }
+      logo: {
+        text: affiliate.header_logo_blob.custom_metadata[:alt_text],
+        url: url_for(affiliate.header_logo)
+      }
     }
   end
 
