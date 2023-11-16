@@ -442,7 +442,10 @@ Feature: Search - redesign
 
   @javascript @a11y @a11y_wip
   Scenario: Search with site limits
-    Given there are results for the "searchgov" drawer
-    When I am on epa's search page with site limited to "www.epa.gov/news"
-    When I search for "carbon emissions"
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email | first_name | last_name | domains | use_redesigned_results_page |
+      | agency site  | agency.gov | aff@bar.gov   | Jane       | Bar       | usa.gov | true                        |
+    When I am on agency.gov's search page with site limited to "www.epa.gov/news"
+    And I fill in "Enter your search term" with "carbon emissions"
+    And I press "Search"
     Then I should see "We're including results for carbon emissions from www.epa.gov/news only."
