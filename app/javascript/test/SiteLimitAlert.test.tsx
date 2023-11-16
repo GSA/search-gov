@@ -37,9 +37,9 @@ describe('Site limit Alert component', () => {
     render(
       <LanguageContext.Provider value={i18n} >
         <SiteLimitAlert 
-        sitelimit='www.nps.gov/shen'
-        url='/search?affiliate=nps&amp;query=trail+maps' 
-        query='government' />
+          sitelimit='www.nps.gov/shen'
+          url='/search?affiliate=nps&amp;query=trail+maps' 
+          query='government' />
       </LanguageContext.Provider>
     );
     expect(screen.getByText('We\'re including results for government from www.nps.gov/shen only')).toBeInTheDocument();
