@@ -183,13 +183,6 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
         isBasic={isBasicHeader(extendedHeader)}
         fontsAndColors={fontsAndColors}
       />
-      {/* Below to be deleted once the backend task - SRCH-4576 and SRCH-4630 are done */}
-      {/* <Header 
-        title="Search.gov"
-        logoUrl="https://search.gov/assets/gsa-logo-893b811a49f74b06b2bddbd1cde232d2922349c8c8c6aad1d88594f3e8fe42bd097e980c57c5e28eff4d3a9256adb4fcd88bf73a5112833b2efe2e56791aad9d.svg"
-        isBasic={isBasicHeader(extendedHeader)}
-        fontsAndColors={fontsAndColors}
-      /> */}
      
       <div className="usa-section serp-result-wrapper">
         <Facets />
