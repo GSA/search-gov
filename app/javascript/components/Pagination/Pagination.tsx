@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
 import { UswdsPagination } from '../UswdsOverrides/UswdsPagination';
 
@@ -12,6 +12,13 @@ interface PaginationProps {
 }
 
 export const Pagination = ({ pathname, totalPages = null, unboundedResults }: PaginationProps) => {
+  useEffect(() => {
+    // SRCH-4102: added the  aria label to fix the accessibility violation
+    Array.from(document.getElementsByClassName('usa-icon')).forEach((el) => { 
+      el.setAttribute('aria-label', 'previous next icon');
+    });
+  });
+  
   if ((!totalPages || totalPages < 2 || getCurrentPage() > totalPages)) {
     return (<></>);
   }
