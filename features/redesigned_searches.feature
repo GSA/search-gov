@@ -184,16 +184,17 @@ Feature: Search - redesign
     When I am on es.agency.gov's "Noticias-1" news search page
     And I should see exactly "5" web search results
   
+  @javascript @a11y
   Scenario: Searchers see English Medline Govbox
     Given the following Affiliates exist:
-      | display_name | name        | contact_email | first_name | last_name | domains | is_medline_govbox_enabled |
-      | english site | english-nih | aff@bar.gov   | John       | Bar       | nih.gov | true                      |
+      | display_name | name        | contact_email | first_name | last_name | domains | is_medline_govbox_enabled | use_redesigned_results_page |
+      | english site | english-nih | aff@bar.gov   | John       | Bar       | nih.gov | true                      |  true         |
     And the following Medline Topics exist:
       | medline_title                        | medline_tid | locale | summary_html                                                     |
       | Hippopotomonstrosesquippedaliophobia | 67890       | es     | Hippopotomonstrosesquippedaliophobia y otros miedos irracionales |
     When I am on english-nih's search page
-    And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
-    And I press "Search" within the search box
+    And I fill in "searchQuery" with "hippopotomonstrosesquippedaliophobia"
+    And I press "Search"
     Then I should not see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales"
 
     Given the following Medline Topics exist:
@@ -203,31 +204,32 @@ Feature: Search - redesign
       | medline_title | medline_tid | url                                                                          |
       | Hippo1        | 24680       | https://www.nlm.nih.gov/medlineplus/Hippopotomonstrosesquippedaliophobia.html |
     When I am on english-nih's search page
-    And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
-    And I press "Search" within the search box
-    Then I should see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears" within the med topic govbox
+    And I fill in "searchQuery" with "hippopotomonstrosesquippedaliophobia"
+    And I press "Search"
+    Then I should see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears"
     And I should see a link to "Hippo1" with url for "https://www.nlm.nih.gov/medlineplus/Hippopotomonstrosesquippedaliophobia.html"
 
   @javascript @a11y 
   Scenario: Searchers see Spanish Medline Govbox
     Given the following Affiliates exist:
-      | display_name | name        | contact_email | first_name | last_name | domains | is_medline_govbox_enabled | locale |
-      | spanish site | spanish-nih | aff@bar.gov   | John       | Bar       | nih.gov | true                      | es     |
+      | display_name | name        | contact_email | first_name | last_name | domains | is_medline_govbox_enabled | locale |  use_redesigned_results_page |
+      | spanish site | spanish-nih | aff@bar.gov   | John       | Bar       | nih.gov | true                      | es     |  true  |
     And the following Medline Topics exist:
       | medline_title                        | medline_tid | locale | summary_html                                                     |
       | Hippopotomonstrosesquippedaliophobia | 12345       | en     | Hippopotomonstrosesquippedaliophobia and Other Irrational Fears  |
     When I am on spanish-nih's search page
-    And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
-    And I press "Buscar" within the search box
+    
+    And I fill in "searchQuery" with "hippopotomonstrosesquippedaliophobia"
+    And I press "Search"
     Then I should not see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears"
 
     Given the following Medline Topics exist:
       | medline_title                        | medline_tid | locale | summary_html                                                     |
       | Hippopotomonstrosesquippedaliophobia | 67890       | es     | Hippopotomonstrosesquippedaliophobia y otros miedos irracionales |
     When I am on spanish-nih's search page
-    And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
-    And I press "Buscar" within the search box
-    Then I should see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales" within the med topic govbox
+    And I fill in "searchQuery" with "hippopotomonstrosesquippedaliophobia"
+    And I press "Search"
+    Then I should see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales"
 
   @javascript @a11y
   Scenario: Searching with custom visual design settings
