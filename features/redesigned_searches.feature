@@ -134,9 +134,9 @@ Feature: Search - redesign
   @javascript @a11y 
   Scenario: Job search
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name |locale | jobs_enabled |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en    | 1            |
-      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es    | 1            |
+      | display_name | name          | contact_email    | first_name | last_name |locale | jobs_enabled | use_redesigned_results_page |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en    | 1            | true  |
+      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es    | 1            | true  |
 
     When I am on en.agency.gov's search page
     And I fill in "Enter your search term" with "jobs"
