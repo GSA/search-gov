@@ -258,7 +258,7 @@ Feature: Search - redesign
     And I fill in "Enter your search term" with "collection"
     And I press "Search"
     And I should see "A Notice by the Internal Revenue Service, the International Trade Administration and the National Oceanic and Atmospheric Administration posted on June 09, 2014."
-    And I should see "Comment period ends in 8 days"
+    And I should see "Comment period ends in 7 days"
     And I should see "Pages 33040 - 33041 (2 page) [FR DOC #: 2014-13420]"
 
   @javascript @a11y
