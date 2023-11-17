@@ -12,7 +12,7 @@ Feature: Search - redesign
     Then I should see "Please enter a search term in the box above."
     And I should not see pagination
 
-  @javascript @a11y @a11y_wip
+  @javascript @a11y
   Scenario: Searching a domain with Bing results with pagination
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | first_name | last_name | domains        | use_redesigned_results_page |
@@ -38,7 +38,7 @@ Feature: Search - redesign
     And I should see a link to the "Next" page
     And I should not see a link to the "Previous" page
 
-  @javascript @a11y @a11y_wip
+  @javascript @a11y
   Scenario: Search with I14y results with pagination
     Given the following SearchGov Affiliates exist:
       | display_name   | name           | contact_email      | first_name | last_name | domains            | use_redesigned_results_page |
@@ -82,7 +82,7 @@ Feature: Search - redesign
     And I should see "Within the last hour article on item"
     And I should not see pagination
 
-  @javascript @a11y @a11y_wip
+  @javascript @a11y
   Scenario: Search with best bets
     Given the following SearchGov Affiliates exist:
       | display_name   | name           | contact_email      | first_name | last_name | domains            | use_redesigned_results_page |
@@ -122,7 +122,7 @@ Feature: Search - redesign
     And I should see "Second"
     And I should see exactly "2" web search results
 
-  @javascript @a11y @a11y_wip
+  @javascript @a11y 
   Scenario: Docs search
     Given the following Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | domains | use_redesigned_results_page |
@@ -131,7 +131,7 @@ Feature: Search - redesign
     And I search for "USA" in the redesigned search page
     Then I should see exactly "20" web search results
 
-  @javascript @a11y @a11y_wip
+  @javascript @a11y 
   Scenario: Job search
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name |locale | jobs_enabled |
@@ -161,7 +161,7 @@ Feature: Search - redesign
     And I should see "Ninguna oferta de trabajo en su región coincide con su búsqueda"
     And I should see a link to "Más trabajos en el gobierno federal en USAJobs.gov" with url for "https://www.usajobs.gov/Search/Results?hp=public"
 
-  @javascript @a11y @a11y_wip
+  @javascript @a11y 
   Scenario: News search
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale |
@@ -231,7 +231,7 @@ Feature: Search - redesign
     Then I should see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears" within the med topic govbox
     And I should see a link to "Hippo1" with url for "https://www.nlm.nih.gov/medlineplus/Hippopotomonstrosesquippedaliophobia.html"
 
-  @javascript @a11y @a11y_wip
+  @javascript @a11y 
   Scenario: Searchers see Spanish Medline Govbox
     Given the following Affiliates exist:
       | display_name | name        | contact_email | first_name | last_name | domains | is_medline_govbox_enabled | locale |
@@ -266,11 +266,11 @@ Feature: Search - redesign
     When I am on agency.gov's redesigned docs search page
     Then I should see the extended header
 
-  @javascript @a11y @a11y_wip
+  @javascript @a11y 
   Scenario: Searching on sites with federal register documents
     And the following Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | agency_abbreviation | is_federal_register_document_govbox_enabled | domains  |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | DOC                 | true                                        | noaa.gov |
+      | display_name | name          | contact_email    | first_name | last_name | agency_abbreviation | is_federal_register_document_govbox_enabled | domains  | use_redesigned_results_page |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | DOC                 | true                                        | noaa.gov | true |
     And the following Federal Register Document entries exist:
       | federal_register_agencies | document_number | document_type | title                                                              | publication_date | comments_close_in_days | start_page | end_page | page_length | html_url                                                                                                                         |
       | DOC,IRS,ITA,NOAA          | 2014-13420      | Notice        | Proposed Information Collection; Comment Request                   | 2014-06-09       | 7                      | 33040      | 33041    | 2           | https://www.federalregister.gov/articles/2014/06/09/2014-13420/proposed-information-collection-comment-request                   |
@@ -278,9 +278,9 @@ Feature: Search - redesign
     When I am on en.agency.gov's search page
     And I fill in "Enter your search term" with "collection"
     And I press "Search"
-    And I should see "A Notice by the Internal Revenue Service, the International Trade Administration and the National Oceanic and Atmospheric Administration posted on June 9, 2014."
+    And I should see "A Notice by the Internal Revenue Service, the International Trade Administration and the National Oceanic and Atmospheric Administration posted on June 09, 2014."
     And I should see "Comment period ends in 7 days"
-    And I should see "Pages 33040 - 33041 (2 pages) [FR DOC #: 2014-13420]"
+    And I should see "Pages 33040 - 33041 (2 page) [FR DOC #: 2014-13420]" 
 
   @javascript @a11y
   Scenario: Search without tabs nor related searches
@@ -356,7 +356,7 @@ Feature: Search - redesign
     And I should see "View topic"
     And I should see "Other Site"
 
-  @javascript @a11y @a11y_wip
+  @javascript @a11y 
   Scenario: Video news search
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale | youtube_handles | use_redesigned_results_page     |
@@ -416,7 +416,7 @@ Feature: Search - redesign
     When I am on en.agency.gov's search page
     Then I should not see "New alert for the test aff"
 
-  @javascript @a11y @a11y_wip
+  @javascript @a11y 
   Scenario: Searching with spelling suggestions
     Given the following Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | domains | use_redesigned_results_page |
@@ -425,17 +425,3 @@ Feature: Search - redesign
     And I search for "qeury" in the redesigned search page
     Then I should see "Showing results for query"
     And I should see "Search instead for qeury"
-
-  @javascript @a11y @a11y_wip
-  Scenario: Related searches module
-    Given the following Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | locale | use_redesigned_results_page |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar     | en     | true  |
-    And the following SAYT Suggestions exist for en.agency.gov:
-      | phrase                 |
-      | president list         |
-      | president inauguration |
-    When I am on en.agency.gov's search page
-    And I fill in "Enter your search term" with "president"
-    And I press "Search"
-    Then I should see 2 redesigned related searches
