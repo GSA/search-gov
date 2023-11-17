@@ -153,6 +153,7 @@ interface SearchResultsLayoutProps {
     }[] | null;
   } | null;
   relatedSitesDropdownLabel?: string;
+  agencyName?: string;
 }
 
 // To be updated

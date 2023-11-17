@@ -138,6 +138,7 @@ class GovboxSet
 
   def format_jobs
     return unless @affiliate.jobs_enabled?
+    return I18n.t(:'no_job_results') if @jobs.blank?
 
     @jobs&.
       map { |job| job.slice(:position_title, :position_uri, :position_location_display, :organization_name, :minimum_pay, :maximum_pay, :rate_interval_code, :application_close_date) }&.
