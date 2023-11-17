@@ -32,10 +32,22 @@ module ReactHelper
     {
       title: affiliate.display_name,
       logo: {
-        text: affiliate.header_logo_blob&.custom_metadata[:alt_text],
-        url: url_for(affiliate.header_logo)
+        text: logo_text(affiliate.header_logo_blob),
+        url: header_logo_url(affiliate.header_logo)
       }
     }
+  end
+
+  def header_logo_url(header_logo)
+    return unless header_logo.present?
+
+    url_for(header_logo)
+  end
+
+  def logo_text(blob)
+    return unless blob&.custom_metadata
+
+    blob.custom_metadata[:alt_text]
   end
 
   def image_search_results_layout(search, params, vertical, affiliate)
