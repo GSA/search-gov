@@ -206,7 +206,7 @@ Feature: Search - redesign
     When I am on english-nih's search page
     And I fill in "searchQuery" with "hippopotomonstrosesquippedaliophobia"
     And I press "Search"
-    Then I should see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears"
+    Then I should see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears" within the serp med topic govbox
     And I should see a link to "Hippo1" with url for "https://www.nlm.nih.gov/medlineplus/Hippopotomonstrosesquippedaliophobia.html"
 
   @javascript @a11y 
@@ -229,7 +229,7 @@ Feature: Search - redesign
     When I am on spanish-nih's search page
     And I fill in "searchQuery" with "hippopotomonstrosesquippedaliophobia"
     And I press "Search"
-    Then I should see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales"
+    Then I should see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales" within the serp med topic govbox
 
   @javascript @a11y
   Scenario: Searching with custom visual design settings
