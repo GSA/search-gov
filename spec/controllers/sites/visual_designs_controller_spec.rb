@@ -55,7 +55,7 @@ describe Sites::VisualDesignsController do
 
           it 'adds an ActiveStorage attachment' do
             expect { put :update, params: attachment_params }.
-              to change { ActiveStorage::Attachment.count }.from(0).to(1)
+              to change { ActiveStorage::Attachment.count }.by(1)
           end
 
           context 'when a header logo is attached' do
