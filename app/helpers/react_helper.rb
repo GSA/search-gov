@@ -39,7 +39,7 @@ module ReactHelper
   end
 
   def header_logo_url(header_logo)
-    return unless header_logo.present?
+    return if header_logo.blank?
 
     url_for(header_logo)
   end
