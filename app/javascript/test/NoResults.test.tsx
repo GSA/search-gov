@@ -12,7 +12,7 @@ const locale = {
 };
 
 const noResultsMessageProp = {
-  text: "There are no results",
+  text: 'There are no results',
   urls: [
     { title: 'First Link', url: 'http://www.search.gov' },
     { title: 'First message' }
