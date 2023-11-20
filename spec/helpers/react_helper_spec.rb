@@ -251,5 +251,33 @@ describe ReactHelper do
         end
       end
     end
+
+    describe '#agency_name' do
+      context 'when affiliate has an agency abbreviation or name' do
+        it 'sets agency to contain abbreviation or name' do
+          agency_data = { abbreviation: nil, name: 'Department of Energy' }
+          affiliate.build_agency(agency_data)
+          helper.search_results_layout(search, {}, vertical, affiliate, search_options)
+          expect(helper).to have_received(:react_component).with(
+            'SearchResultsLayout',
+            hash_including(agencyName: 'Department of Energy')
+          )
+        end
+      end
+
+      context 'when affiliate has no agency' do
+        before do
+          affiliate.agency = nil
+        end
+
+        it 'sets agency to nil in the data hash' do
+          helper.search_results_layout(search, {}, vertical, affiliate, search_options)
+          expect(helper).to have_received(:react_component).with(
+            'SearchResultsLayout',
+            hash_excluding(:agencyName)
+          )
+        end
+      end
+    end
   end
 end

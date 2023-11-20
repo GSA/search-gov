@@ -126,6 +126,20 @@ describe GovboxSet do
         end
       end
 
+      context 'when there are no job results' do
+        subject(:govbox_set_json) do
+          described_class.new('jobs', affiliate, geoip_info, highlighting_options).as_json
+        end
+
+        before do
+          allow(affiliate).to receive(:jobs_enabled?).and_return(true)
+        end
+
+        it 'returns no_job_results international text' do
+          expect(govbox_set_json[:jobs]).to eq('No job openings in your region match your search')
+        end
+      end
+
       context 'when there are federal register documents' do
         let(:agency) { agencies(:irs) }
         let(:federal_register_agency) { federal_register_agencies(:fr_irs) }
