@@ -153,6 +153,13 @@ interface SearchResultsLayoutProps {
     }[] | null;
   } | null;
   relatedSitesDropdownLabel?: string;
+  noResultsMessage?: {
+    text: string;
+    urls: {
+      title: string;
+      url: string;
+    }[]
+  };
 }
 
 // To be updated
@@ -166,7 +173,7 @@ const isBasicHeader = (extendedHeader: boolean): boolean => {
 
 const videosUrl = (links: NavigationLink[]) => links.find((link) => link.facet === 'YouTube')?.url ;
 
-const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [], extendedHeader, footerLinks, fontsAndColors, newsLabel, identifierContent, identifierLinks, navigationLinks, relatedSitesDropdownLabel = '', alert, spellingSuggestion, relatedSearches }: SearchResultsLayoutProps) => {
+const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [], extendedHeader, footerLinks, fontsAndColors, newsLabel, identifierContent, identifierLinks, navigationLinks, relatedSitesDropdownLabel = '', alert, spellingSuggestion, relatedSearches, noResultsMessage }: SearchResultsLayoutProps) => {
   const i18n = new I18n(translations);
   i18n.defaultLocale = 'en';
   i18n.enableFallback = true;
@@ -197,12 +204,14 @@ const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params 
             spellingSuggestion={spellingSuggestion}
             videosUrl= {videosUrl(navigationLinks)}
             relatedSearches = {relatedSearches}
+            noResultsMessage = {noResultsMessage}
           />) : params.query ? (
           <Results 
             vertical={vertical}
             totalPages={null}
             query={params.query}
             unboundedResults={true}
+            noResultsMessage = {noResultsMessage}
           />) : <></>}
       </div>
 
