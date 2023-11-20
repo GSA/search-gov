@@ -14,10 +14,10 @@ const locale = {
 const noResultsMessageProp = {
   text: "There are no results",
   urls: [
-    {title: "First Link", url: "http://www.search.gov"},
-    {title: "First message"}
+    { title: 'First Link', url: 'http://www.search.gov' },
+    { title: 'First message' }
   ]
-}
+};
 
 jest.mock('i18n-js', () => {
   return jest.requireActual('i18n-js/dist/require/index');
