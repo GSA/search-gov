@@ -9,7 +9,7 @@ interface NoResultsProps {
     text?: string;
     urls?: {
       title: string;
-      url: string;
+      url?: string;
     }[];
   };
 }
