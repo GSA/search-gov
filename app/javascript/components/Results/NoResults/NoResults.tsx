@@ -33,10 +33,9 @@ export const NoResults = ({ errorMsg = '', noResultsMessage }: NoResultsProps) =
                 <ul>
                   {noResultsMessage.urls.map((url, index) => {
                     if (url.url) {
-                      return <li key={index}><a href={url.url}>{url.title}</a></li>
-                    } else {
-                      return <li key={index}>{url.title}</li>
+                      return <li key={index}><a href={url.url}>{url.title}</a></li>;
                     }
+                    return <li key={index}>{url.title}</li>;
                   })}
                 </ul>
               </div>
