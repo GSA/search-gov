@@ -125,6 +125,10 @@ interface SearchResultsLayoutProps {
     suggested: string;
     original: string;
   };
+  sitelimit?: {
+    sitelimit: string;
+    url: string;
+  };
   navigationLinks: NavigationLink[];
   extendedHeader: boolean;
   fontsAndColors: {
@@ -173,7 +177,7 @@ const isBasicHeader = (extendedHeader: boolean): boolean => {
 
 const videosUrl = (links: NavigationLink[]) => links.find((link) => link.facet === 'YouTube')?.url ;
 
-const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [], extendedHeader, footerLinks, fontsAndColors, newsLabel, identifierContent, identifierLinks, navigationLinks, relatedSitesDropdownLabel = '', alert, spellingSuggestion, relatedSearches, noResultsMessage }: SearchResultsLayoutProps) => {
+const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [], extendedHeader, footerLinks, fontsAndColors, newsLabel, identifierContent, identifierLinks, navigationLinks, relatedSitesDropdownLabel = '', alert, spellingSuggestion, relatedSearches, sitelimit, noResultsMessage }: SearchResultsLayoutProps) => {
   const i18n = new I18n(translations);
   i18n.defaultLocale = 'en';
   i18n.enableFallback = true;
@@ -205,6 +209,7 @@ const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params 
             videosUrl= {videosUrl(navigationLinks)}
             relatedSearches = {relatedSearches}
             noResultsMessage = {noResultsMessage}
+            sitelimit={sitelimit}
           />) : params.query ? (
           <Results 
             vertical={vertical}
