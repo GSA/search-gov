@@ -59,7 +59,7 @@ export const Jobs = ({ jobs=[] }: JobsProps) => {
 
   return (
     <>
-      {jobs?.length > 0 && (
+      {typeof jobs !== 'string' && jobs?.length > 0 && (
         <div className='search-item-wrapper search-jobs-item-wrapper'>
           <GridContainer className='jobs-title-wrapper'>
             <Grid row gap="md">
