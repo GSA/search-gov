@@ -19,6 +19,7 @@ module ReactHelper
       relatedSites: related_sites(search),
       relatedSitesDropdownLabel: affiliate.related_sites_dropdown_label,
       resultsData: search.normalized_results,
+      sitelimit: sitelimit_alert(search, params),
       spellingSuggestion: spelling_text(search, search_options),
       translations: translations(affiliate.locale),
       vertical: vertical
@@ -62,6 +63,15 @@ module ReactHelper
     {
       newsAboutQuery: news_about_query(affiliate, search.query),
       results: news_items_results(affiliate, search)
+    }
+  end
+
+  def sitelimit_alert(search, params)
+    return unless params[:sitelimit]
+
+    {
+      sitelimit: params[:sitelimit],
+      url: search_path(affiliate: search.affiliate.name, query: search.query)
     }
   end
 

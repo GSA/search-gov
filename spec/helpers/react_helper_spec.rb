@@ -251,5 +251,18 @@ describe ReactHelper do
         end
       end
     end
+
+    context 'when search contains a sitelimit' do
+      it 'returns a sitelimit hash' do
+        helper.search_results_layout(search, { sitelimit: 'usa.gov' }, vertical, affiliate, search_options)
+
+        expect(helper).to have_received(:react_component).
+          with('SearchResultsLayout', hash_including(sitelimit:
+          {
+            sitelimit: 'usa.gov',
+            url: '/search?affiliate=usagov&query=chocolate'
+          }))
+      end
+    end
   end
 end
