@@ -26,7 +26,7 @@ export const HealthTopics = ({ description, title, url, relatedTopics=[], studie
           <Grid col={true}>
             <GridContainer className='health-topic-title'>
               <a href={url}>{parse(title)}</a>
-              <a href={i18n.t('searches.medTopic.homepageUrl')} className={`logo-${i18n.locale}`}>
+              <a href={i18n.t('searches.medTopic.homepageUrl')} className={`logo-${i18n.locale}`} aria-label="MedlinePlus">
                 <span className='health-med-topic-title'>MedlinePlus</span>
                 <span className='health-med-topic-image'></span>
               </a>

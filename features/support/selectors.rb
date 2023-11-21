@@ -59,6 +59,8 @@ module HtmlSelectorsHelpers
       '#custom-date-search-form'
     when /the med topic govbox/
       '#med-topic'
+    when /the serp med topic govbox/
+      '.health-topic-wrapper'
     when /the news govbox/
       '#news'
     when /the search all sites row/
