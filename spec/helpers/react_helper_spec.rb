@@ -255,8 +255,7 @@ describe ReactHelper do
     describe '#agency_name' do
       context 'when affiliate has an agency abbreviation or name' do
         it 'sets agency to contain abbreviation or name' do
-          agency_data = { abbreviation: nil, name: 'Department of Energy' }
-          affiliate.build_agency(agency_data)
+          affiliate.build_agency({ abbreviation: nil, name: 'Department of Energy' })
           helper.search_results_layout(search, {}, vertical, affiliate, search_options)
           expect(helper).to have_received(:react_component).with(
             'SearchResultsLayout',
