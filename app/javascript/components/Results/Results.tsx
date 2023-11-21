@@ -14,6 +14,7 @@ import { VideosModule } from './Videos/VideosModule';
 import { Video } from './Videos/Video';
 import { FedRegister } from './FedRegister/FedRegister';
 import { Jobs } from './Jobs/Jobs';
+import { SiteLimitAlert } from './SiteLimitAlert/SiteLimitAlert';
 import { RelatedSearches } from './RelatedSearches/RelatedSearches';
 import { SpellingSuggestion } from './SpellingSuggestion/SpellingSuggestion';
 
@@ -119,7 +120,11 @@ interface ResultsProps {
     original: string;
   };
   videosUrl?: string;
-  relatedSearches?: { label: string; link: string; }[]
+  relatedSearches?: { label: string; link: string; }[];
+  sitelimit?: {
+    sitelimit: string;
+    url: string;
+  };
 }
 
 const getImages = (result: Result[] | null) => {
@@ -133,13 +138,17 @@ const getImages = (result: Result[] | null) => {
 };
 
 // eslint-disable-next-line complexity
-export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical, newsAboutQuery = '', spellingSuggestion, videosUrl, relatedSearches }: ResultsProps) => {
+export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical, newsAboutQuery = '', spellingSuggestion, videosUrl, relatedSearches, sitelimit }: ResultsProps) => {
   const i18n = useContext(LanguageContext);
   const imagesResults = getImages(results);
   
   return (
     <>
       <div className='search-result-wrapper'>
+        {sitelimit && (
+          <SiteLimitAlert {...sitelimit} query={query} />
+        )}
+
         {spellingSuggestion && (
           <SpellingSuggestion {...spellingSuggestion}/>
         )}
