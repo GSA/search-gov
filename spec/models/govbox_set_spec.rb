@@ -132,7 +132,7 @@ describe GovboxSet do
         end
 
         before do
-          allow(affiliate).to receive(:jobs_enabled?).and_return(true)
+          affiliate.jobs_enabled = true
         end
 
         it 'returns no_job_results international text' do
