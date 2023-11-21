@@ -15,7 +15,7 @@ const noResultsMessageProp = {
   text: 'There are no results',
   urls: [
     { title: 'First Link', url: 'http://www.search.gov' },
-    { title: 'First message' }
+    { title: 'First message', url: 'http://www.gsa.gov' }
   ]
 };
 

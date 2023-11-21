@@ -32,10 +32,7 @@ export const NoResults = ({ errorMsg = '', noResultsMessage }: NoResultsProps) =
               <div className='no-results-pages-alt-links'>
                 <ul>
                   {noResultsMessage.urls.map((url, index) => {
-                    if (url.url) {
-                      return <li key={index}><a href={url.url}>{url.title}</a></li>;
-                    }
-                    return <li key={index}>{url.title}</li>;
+                    return <li key={index}><a href={url.url}>{url.title}</a></li>;
                   })}
                 </ul>
               </div>
