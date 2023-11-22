@@ -158,11 +158,11 @@ interface SearchResultsLayoutProps {
   } | null;
   relatedSitesDropdownLabel?: string;
   noResultsMessage?: {
-    text: string;
-    urls: {
+    text?: string;
+    urls?: {
       title: string;
       url: string;
-    }[]
+    }[];
   };
 }
 

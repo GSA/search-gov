@@ -120,14 +120,14 @@ interface ResultsProps {
     original: string;
   };
   videosUrl?: string;
-  relatedSearches?: { label: string; link: string; }[]
+  relatedSearches?: { label: string; link: string; }[];
   noResultsMessage?: {
     text?: string;
     urls?: {
       title: string;
       url: string;
     }[];
-  }
+  };
   sitelimit?: {
     sitelimit: string;
     url: string;
