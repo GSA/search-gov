@@ -432,9 +432,12 @@ Feature: Search - redesign
   @javascript @a11y @a11y_wip
   Scenario: Search with custom no results page
     Given the following Affiliates exist:
-      | display_name | name           | contact_email    | first_name   | last_name | locale | no_results_error                                                                                       |
-      | English site | en.agency.gov  | admin@agency.gov | John         | Bar       | en     | {:text=>"Sorry, no results.", :urls=>[{:title=>"This is a link.", :url=>"https://search.gov"}, {:title=>"Test", :url=>"https://google.com"}]} |
-    When I am on en.agency.gov's search page
-    And I fill in "Enter your search term" with "lkssldfkjsldfkjsldkfjsldkjflsdkjflskdjfwer"
+      | display_name | name           | contact_email    | first_name   | last_name | domains    | locale | additional_guidance_text     | use_redesigned_results_page |
+      | English site | search.gov     | admin@agency.gov | John         | Bar       | search.gov | en     | Sorry, there are no results. | true                        |
+    And the "search.gov" affiliate has additional links for the no results module
+    When I am on search.gov's search page
+    And I fill in "Enter your search term" with "lkssldfkjsldfkjsld kfj"
     And I press "Search"
-    Then I should see "NORESULTS. Try your search again to see results"
+    Then I should see "Sorry, there are no results."
+    And I should see "First no results link"
+    And I should see "Second no results link"
