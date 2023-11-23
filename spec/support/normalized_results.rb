@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
 shared_examples 'a search with normalized results' do
-  let(:normalized_result_data_keys) { %i[results totalPages unboundedResults] }
-  let(:normalized_result_keys) { %i[description url title] }
   let(:result_count) { 5 }
   let(:total_pages) { 1 }
 
   it 'has a normalized set of keys' do
-    expect(normalized_results.keys).to contain_exactly(*normalized_result_data_keys)
+    expect(normalized_results.keys).to contain_exactly(%i[results total totalPages unboundedResults])
+  end
+
+  it 'returns correct total' do
+    expect(normalized_results[:total]).to eq(results_count)
   end
 
   it 'returns the correct number of pages' do
@@ -21,7 +23,7 @@ shared_examples 'a search with normalized results' do
 
     it 'has a normalized set of keys for results' do
       normalized_results[:results].each do |result|
-        expect(result.keys).to include(*normalized_result_keys)
+        expect(result.keys).to include(%i[description url title])
       end
     end
 
