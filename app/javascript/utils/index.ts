@@ -56,7 +56,3 @@ export const move = <T>(input: T[], from: number, to: number): T[] => {
 
   return input.splice(to, numberOfDeletedElm, elm);
 };
-
-export const numberWithDelimiter = (number: number): string => {
-  return number.toLocaleString('en-US');
-};

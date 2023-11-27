@@ -2,7 +2,6 @@
 import React, { useContext } from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
 import { LanguageContext } from '../../../contexts/LanguageContext';
-import { numberWithDelimiter } from '../../../utils';
 
 import './ResultsCount.css';
 
@@ -18,7 +17,7 @@ export const ResultsCount = ({ total }: ResultsCountProps) => {
       <GridContainer className='search-result-item'>
         <Grid row gap="md">
           <Grid col={true} className='results-count'>
-            {i18n.t('searches.resultsCount', { count: total, formatted_count: numberWithDelimiter(total) })}
+            {i18n.t('searches.resultsCount', { count: total, formatted_count: total.toLocaleString(i18n.locale) })}
           </Grid>
         </Grid>
       </GridContainer>
