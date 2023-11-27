@@ -33,7 +33,7 @@ class WebResultsPostProcessor < ResultsPostProcessor
   def normalized_results(total_results)
     {
       results: format_results,
-      total: total_results,
+      total: @affiliate.search_engine == BING ? nil : total_results,
       totalPages: total_pages(total_results),
       unboundedResults: @affiliate.search_engine == BING
     }
