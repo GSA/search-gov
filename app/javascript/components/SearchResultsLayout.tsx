@@ -158,6 +158,7 @@ interface SearchResultsLayoutProps {
   } | null;
   relatedSitesDropdownLabel?: string;
   agencyName?: string;
+  jobsEnabled?: boolean;
 }
 
 // To be updated

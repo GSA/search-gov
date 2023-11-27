@@ -15,6 +15,7 @@ module ReactHelper
       newsLabel: news_label(search),
       noResultsMessage: no_result_message(search),
       agencyName: agency_name(affiliate.agency),
+      jobsEnabled: affiliate.jobs_enabled?,
       params: params,
       relatedSearches: related_searches(search),
       relatedSites: related_sites(search),
