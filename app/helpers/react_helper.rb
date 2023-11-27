@@ -16,6 +16,7 @@ module ReactHelper
       noResultsMessage: no_result_message(search),
       agencyName: agency_name(affiliate.agency),
       jobsEnabled: affiliate.jobs_enabled?,
+      page: page_data(affiliate),
       params: params,
       relatedSearches: related_searches(search),
       relatedSites: related_sites(search),
@@ -30,12 +31,35 @@ module ReactHelper
     react_component('SearchResultsLayout', data.compact_blank)
   end
 
+  def page_data(affiliate)
+    {
+      title: affiliate.display_name,
+      logo: {
+        text: logo_text(affiliate.header_logo_blob),
+        url: header_logo_url(affiliate.header_logo)
+      }
+    }
+  end
+
+  def header_logo_url(header_logo)
+    return if header_logo.blank?
+
+    url_for(header_logo)
+  end
+
+  def logo_text(blob)
+    return unless blob&.custom_metadata
+
+    blob.custom_metadata[:alt_text]
+  end
+
   def image_search_results_layout(search, params, vertical, affiliate)
     data = {
       extendedHeader: affiliate.use_extended_header,
       fontsAndColors: affiliate.visual_design_json,
       footerLinks: links(affiliate, :footer_links),
       navigationLinks: navigation_links(search, params),
+      page: page_data(affiliate),
       params: params,
       resultsData: search.format_results,
       translations: translations(affiliate.locale),

@@ -15,7 +15,16 @@ export interface NavigationLink {
   active: boolean; label: string; url: string, facet: string;
 }
 
+export interface PageData {
+  title: string;
+  logo: {
+    url: string;
+    text: string;
+  }
+}
+
 interface SearchResultsLayoutProps {
+  page: PageData;
   resultsData?: {
     totalPages: number;
     unboundedResults: boolean;
@@ -161,26 +170,22 @@ interface SearchResultsLayoutProps {
   jobsEnabled?: boolean;
 }
 
-// To be updated
-const getAffiliateTitle = (): string => {
-  return 'Search.gov';
-};
-
 const isBasicHeader = (extendedHeader: boolean): boolean => {
   return !extendedHeader;
 };
 
 const videosUrl = (links: NavigationLink[]) => links.find((link) => link.facet === 'YouTube')?.url ;
 
-const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [], extendedHeader, footerLinks, fontsAndColors, newsLabel, identifierContent, identifierLinks, navigationLinks, relatedSitesDropdownLabel = '', alert, spellingSuggestion, relatedSearches, sitelimit }: SearchResultsLayoutProps) => {
+const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [], extendedHeader, footerLinks, fontsAndColors, newsLabel, identifierContent, identifierLinks, navigationLinks, relatedSitesDropdownLabel = '', alert, spellingSuggestion, relatedSearches, sitelimit }: SearchResultsLayoutProps) => {
   const i18n = new I18n(translations);
   i18n.defaultLocale = 'en';
   i18n.enableFallback = true;
   i18n.locale = currentLocale;
+
   return (
     <LanguageContext.Provider value={i18n}>
       <Header 
-        title={getAffiliateTitle()}
+        page={page}
         isBasic={isBasicHeader(extendedHeader)}
         fontsAndColors={fontsAndColors}
       />
