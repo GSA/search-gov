@@ -1,5 +1,7 @@
+import { PageData } from '../SearchResultsLayout';
+
 export interface HeaderProps {
-  title: string;
+  page: PageData;
   toggleMobileNav(): void;
   mobileNavOpen: boolean;
   fontsAndColors: {
