@@ -121,6 +121,13 @@ interface ResultsProps {
   };
   videosUrl?: string;
   relatedSearches?: { label: string; link: string; }[];
+  noResultsMessage?: {
+    text?: string;
+    urls?: {
+      title: string;
+      url: string;
+    }[];
+  };
   sitelimit?: {
     sitelimit: string;
     url: string;
@@ -138,7 +145,7 @@ const getImages = (result: Result[] | null) => {
 };
 
 // eslint-disable-next-line complexity
-export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical, newsAboutQuery = '', spellingSuggestion, videosUrl, relatedSearches, sitelimit }: ResultsProps) => {
+export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical, newsAboutQuery = '', spellingSuggestion, videosUrl, relatedSearches, sitelimit, noResultsMessage }: ResultsProps) => {
   const i18n = useContext(LanguageContext);
   const imagesResults = getImages(results);
   
@@ -216,7 +223,10 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
                 <Grid row gap="md">
                 </Grid>
               </GridContainer></> : (
-              <NoResults errorMsg={i18n.t('noResultsForAndTry', { query })} />
+              <NoResults 
+                errorMsg={i18n.t('noResultsForAndTry', { query })}
+                noResultsMessage={noResultsMessage}
+              />
             )}
 
           {/* Federal register */}
