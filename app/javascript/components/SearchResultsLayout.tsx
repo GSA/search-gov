@@ -176,6 +176,12 @@ interface SearchResultsLayoutProps {
     secondaryHeaderBackgroundColor: string;
     sectionTitleColor: string;
   };
+  resultsFormatDisplay?: {
+    displayCreatedDate: boolean,
+    displayFiletype: boolean,
+    displayImage: boolean,
+    displayUpdatedDate: boolean
+  }
   footerLinks?: {
     title: string,
     url: string

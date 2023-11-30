@@ -14,6 +14,7 @@ module ReactHelper
       jobsEnabled: (affiliate.jobs_enabled? and search.modules.include?('JOBS')),
       language: affiliate.language.slice(:code, :rtl),
       navigationLinks: navigation_links(search, params),
+      resultsFormatDisplay: results_format_display(affiliate),
       newsLabel: news_label(search),
       noResultsMessage: no_result_message(search),
       page: page_data(affiliate),
@@ -173,6 +174,15 @@ module ReactHelper
         url: navigable_path(navigable, search, search_params)
       }
     end
+  end
+
+  def results_format_display(affiliate)
+    {
+      displayImage: affiliate.display_image_on_search_results,
+      displayFiletype: affiliate.display_filetype_on_search_results,
+      displayCreatedDate: affiliate.display_created_date_on_search_results,
+      displayUpdatedDate: affiliate.display_updated_date_on_search_results
+    }
   end
 
   def identifier_content(affiliate)
