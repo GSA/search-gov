@@ -7,7 +7,9 @@ import { Identifier } from '../components/Identifier/Identifier';
 const identifierContent = { 
   domainName: 'example domain name',
   parentAgencyName: 'My Agency',
-  parentAgencyLink: 'https://agency.gov'
+  parentAgencyLink: 'https://agency.gov',
+  logoUrl: 'https://www.search.gov/logo.png',
+  logoAltText: 'identifier alt text'
 };
 
 const identifierLinks = [

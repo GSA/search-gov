@@ -41,13 +41,15 @@ describe ReactHelper do
         affiliate.update!({ identifier_domain_name: 'Example Domain Name',
                             parent_agency_name: 'My Agency',
                             parent_agency_link: 'https://agency.gov' })
+        allow(affiliate).to_receive(:identifier_logo_blob).and return({ metadata: { alt_text: 'identifier logo alt text' } })
       end
 
       let(:identifier_content) do
         {
           domainName: 'Example Domain Name',
           parentAgencyName: 'My Agency',
-          parentAgencyLink: 'https://agency.gov'
+          parentAgencyLink: 'https://agency.gov',
+          logoAltText: 'identifier logo alt text'
         }
       end
 
