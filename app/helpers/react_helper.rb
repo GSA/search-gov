@@ -34,7 +34,8 @@ module ReactHelper
       title: affiliate.display_name,
       logo: {
         text: logo_text(affiliate.header_logo_blob),
-        url: header_logo_url(affiliate.header_logo)
+        url: header_logo_url(affiliate.header_logo),
+        altText: header_logo_alt_text(affiliate)
       }
     }
   end
@@ -49,6 +50,10 @@ module ReactHelper
     return unless blob&.custom_metadata
 
     blob.custom_metadata[:alt_text]
+  end
+
+  def header_logo_alt_text(affiliate)
+    affiliate.header_logo_blob&.metadata[:custom][:alt_text]
   end
 
   def image_search_results_layout(search, params, vertical, affiliate)
@@ -175,7 +180,19 @@ module ReactHelper
     {
       domainName: affiliate.identifier_domain_name,
       parentAgencyName: affiliate.parent_agency_name,
-      parentAgencyLink: affiliate.parent_agency_link
+      parentAgencyLink: affiliate.parent_agency_link,
+      logoUrl: identifier_logo_url(affiliate.header_logo),
+      logoAltText:identifier_logo_alt_text(affiliate)
     }
+  end
+
+  def identifier_logo_url(identifier_logo)
+    return if identifier_logo.blank?
+
+    url_for(identifier_logo)
+  end
+
+  def identifier_logo_alt_text(affiliate)
+    affiliate.identifier_logo_blob&.metadata[:custom][:alt_text]
   end
 end

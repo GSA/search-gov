@@ -7,6 +7,8 @@ interface IdentifierProps {
     domainName: string | null;
     parentAgencyName: string | null;
     parentAgencyLink: string | null;
+    logoUrl: string | null;
+    logoAltText: string | null;
   };
   identifierLinks?: {
     title: string,
@@ -47,8 +49,8 @@ export const Identifier = ({ identifierContent, identifierLinks }: IdentifierPro
             <IdentifierLogo href="">
               <img
                 className="usa-identifier__logo-img"
-                src={logoImg}
-                alt="<Parent agency> logo"
+                src={identifierContent?.logoUrl ? identifierContent?.logoUrl : logoImg}
+                alt={identifierContent?.logoAltText ? identifierContent?.logoAltText : ""}
               />
             </IdentifierLogo>
           </IdentifierLogos>

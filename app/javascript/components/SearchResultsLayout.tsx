@@ -20,6 +20,7 @@ export interface PageData {
   logo: {
     url: string;
     text: string;
+    altText: string | null;
   }
 }
 
@@ -151,6 +152,8 @@ interface SearchResultsLayoutProps {
     domainName: string | null;
     parentAgencyName: string | null;
     parentAgencyLink: string | null;
+    logoUrl: string | null;
+    logoAltText: string | null;
   };
   identifierLinks?: {
     title: string,
