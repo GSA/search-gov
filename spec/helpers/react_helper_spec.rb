@@ -11,7 +11,6 @@ describe ReactHelper do
 
     before do
       allow(helper).to receive(:react_component)
-      allow(affiliate).to receive_message_chain(:identifier_logo_blob, :metadata).and_return({ custom: { alt_text: 'identifier logo alt text' } })
     end
 
     context 'when an affiliate has footer links' do

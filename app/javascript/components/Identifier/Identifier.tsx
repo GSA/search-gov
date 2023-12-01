@@ -48,8 +48,8 @@ export const Identifier = ({ identifierContent, identifierLinks }: IdentifierPro
             <IdentifierLogo href="">
               <img
                 className="usa-identifier__logo-img"
-                src={identifierContent?.logoUrl ? identifierContent.logoUrl : logoImg}
-                alt={identifierContent?.logoAltText ? identifierContent.logoAltText : ""}
+                src={identifierContent?.logoUrl || logoImg}
+                alt={identifierContent?.logoAltText || ''}
               />
             </IdentifierLogo>
           </IdentifierLogos>

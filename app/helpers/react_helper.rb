@@ -176,8 +176,8 @@ module ReactHelper
       domainName: affiliate.identifier_domain_name,
       parentAgencyName: affiliate.parent_agency_name,
       parentAgencyLink: affiliate.parent_agency_link,
-      logoUrl: identifier_logo_url(affiliate.header_logo),
-      logoAltText:identifier_logo_alt_text(affiliate)
+      logoUrl: identifier_logo_url(affiliate.identifier_logo),
+      logoAltText:logo_text(affiliate.identifier_logo_blob)
     }
   end
 
@@ -185,11 +185,5 @@ module ReactHelper
     return if identifier_logo.blank?
 
     url_for(identifier_logo)
-  end
-
-  def identifier_logo_alt_text(affiliate)
-    return if affiliate.header_logo.blank?
-
-    affiliate.identifier_logo_blob&.metadata[:custom][:alt_text]
   end
 end
