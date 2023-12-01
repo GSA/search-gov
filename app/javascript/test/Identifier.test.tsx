@@ -48,4 +48,13 @@ describe('Identifier', () => {
     expect(secondLink).toHaveAttribute('href', 'https://second.gov');
     expect(secondLink).toHaveTextContent('second footer link');
   });
+
+  it('has a logo with alt text', () => {
+    render(<Identifier identifierContent={identifierContent} identifierLinks={identifierLinks} />);
+
+    const img = Array.from(document.getElementsByClassName('usa-identifier__logo-img')).pop() as HTMLImageElement;
+
+    expect(img).toHaveAttribute('src', 'https://www.search.gov/logo.png');
+    expect(img).toHaveAttribute('alt', 'identifier alt text');
+  });
 });

@@ -47,7 +47,7 @@ export const Identifier = ({ identifierContent, identifierLinks }: IdentifierPro
           {identifierContent?.logoUrl && (
             <IdentifierLogoWrapper
               logoUrl={identifierContent.logoUrl}
-              logoAltText={identifierContent.logoAltText}
+              logoAltText={identifierContent?.logoAltText}
             />
           )}
           <IdentifierIdentity domain={identifierContent?.domainName || ''}>

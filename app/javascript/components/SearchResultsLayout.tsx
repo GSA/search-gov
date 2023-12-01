@@ -20,7 +20,6 @@ export interface PageData {
   logo: {
     url: string;
     text: string;
-    altText: string | null;
   }
 }
 
