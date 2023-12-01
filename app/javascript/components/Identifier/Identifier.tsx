@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import { Identifier as UswdsIdentifier, IdentifierMasthead, IdentifierLinks, IdentifierLogos, IdentifierLogo, IdentifierIdentity, Link, IdentifierGov, IdentifierLinkItem, IdentifierLink } from '@trussworks/react-uswds';
 import { LanguageContext } from '../../contexts/LanguageContext';
 
+import { IdentifierLogoWrapper } from './IdentifierLogoWrapper';
+
 interface IdentifierProps {
   identifierContent?: {
     domainName: string | null;
@@ -15,8 +17,6 @@ interface IdentifierProps {
     url: string
   }[] | null;
 }
-
-const logoImg = 'https://search.gov/assets/gsa-logo-893b811a49f74b06b2bddbd1cde232d2922349c8c8c6aad1d88594f3e8fe42bd097e980c57c5e28eff4d3a9256adb4fcd88bf73a5112833b2efe2e56791aad9d.svg';
 
 export const Identifier = ({ identifierContent, identifierLinks }: IdentifierProps) => {
   const i18n = useContext(LanguageContext);
@@ -44,15 +44,12 @@ export const Identifier = ({ identifierContent, identifierLinks }: IdentifierPro
     <div id="serp-identifier-wrapper">
       <UswdsIdentifier>
         <IdentifierMasthead aria-label="Agency identifier">
-          <IdentifierLogos>
-            <IdentifierLogo href="">
-              <img
-                className="usa-identifier__logo-img"
-                src={identifierContent?.logoUrl || logoImg}
-                alt={identifierContent?.logoAltText || ''}
-              />
-            </IdentifierLogo>
-          </IdentifierLogos>
+          {identifierContent?.logoUrl && (
+            <IdentifierLogoWrapper
+            logoUrl={identifierContent.logoUrl}
+            logoAltText={identifierContent.logoAltText}
+            />
+          )}
           <IdentifierIdentity domain={identifierContent?.domainName || ''}>
             {primaryIdentifierContent}
           </IdentifierIdentity>
