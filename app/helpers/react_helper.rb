@@ -34,7 +34,7 @@ module ReactHelper
       title: affiliate.display_name,
       logo: {
         text: logo_text(affiliate.header_logo_blob),
-        url: header_logo_url(affiliate.header_logo),
+        url: header_logo_url(affiliate.header_logo)
       }
     }
   end
@@ -177,7 +177,7 @@ module ReactHelper
       parentAgencyName: affiliate.parent_agency_name,
       parentAgencyLink: affiliate.parent_agency_link,
       logoUrl: identifier_logo_url(affiliate.identifier_logo),
-      logoAltText:logo_text(affiliate.identifier_logo_blob)
+      logoAltText: logo_text(affiliate.identifier_logo_blob)
     }
   end
 

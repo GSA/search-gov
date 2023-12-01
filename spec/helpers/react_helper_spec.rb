@@ -67,7 +67,7 @@ describe ReactHelper do
                             parent_agency_name: 'My Agency',
                             parent_agency_link: 'https://agency.gov',
                             header_logo: nil })
-                            allow(affiliate).to receive(:identifier_logo_blob).and_return(nil)
+        allow(affiliate).to receive(:identifier_logo_blob).and_return(nil)
       end
 
       let(:identifier_content) do
