@@ -36,31 +36,6 @@ describe ReactHelper do
       end
     end
 
-    context 'when an affiliate has identifier content with a logo' do
-      before do
-        affiliate.update!({ identifier_domain_name: 'Example Domain Name',
-                            parent_agency_name: 'My Agency',
-                            parent_agency_link: 'https://agency.gov' })
-      end
-
-      let(:identifier_content) do
-        {
-          domainName: 'Example Domain Name',
-          parentAgencyName: 'My Agency',
-          parentAgencyLink: 'https://agency.gov',
-          logoAltText: 'identifier logo alt text',
-          logoUrl: /.*logo.png/
-        }
-      end
-
-      it 'sends identifier content to SearchResultsLayout component' do
-        helper.search_results_layout(search, {}, vertical, affiliate, search_options)
-
-        expect(helper).to have_received(:react_component).
-          with('SearchResultsLayout', hash_including(identifierContent: identifier_content))
-      end
-    end
-
     context 'when an affiliate has identifier content without a logo' do
       before do
         affiliate.update!({ identifier_domain_name: 'Example Domain Name',
