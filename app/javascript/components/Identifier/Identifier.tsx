@@ -29,7 +29,7 @@ export const Identifier = ({ identifierContent, identifierLinks }: IdentifierPro
       </Link>
     </> : <></>;
 
-  const primaryIdentifierLinks = identifierLinks && identifierLinks.length > 0 ? 
+  const primaryIdentifierLinks = identifierLinks ? 
     <>
       {identifierLinks.map((link, index) => {
         return (
@@ -46,8 +46,8 @@ export const Identifier = ({ identifierContent, identifierLinks }: IdentifierPro
         <IdentifierMasthead aria-label="Agency identifier">
           {identifierContent?.logoUrl && (
             <IdentifierLogoWrapper
-            logoUrl={identifierContent.logoUrl}
-            logoAltText={identifierContent.logoAltText}
+              logoUrl={identifierContent.logoUrl}
+              logoAltText={identifierContent.logoAltText}
             />
           )}
           <IdentifierIdentity domain={identifierContent?.domainName || ''}>
