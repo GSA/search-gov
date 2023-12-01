@@ -11,6 +11,7 @@ describe ReactHelper do
 
     before do
       allow(helper).to receive(:react_component)
+      allow(affiliate).to receive_message_chain(:identifier_logo_blob, :metadata).and_return({ custom: { alt_text: 'identifier logo alt text' } })
     end
 
     context 'when an affiliate has footer links' do
@@ -36,12 +37,11 @@ describe ReactHelper do
       end
     end
 
-    context 'when an affiliate has identifier content' do
+    context 'when an affiliate has identifier content with a logo' do
       before do
         affiliate.update!({ identifier_domain_name: 'Example Domain Name',
                             parent_agency_name: 'My Agency',
                             parent_agency_link: 'https://agency.gov' })
-        allow(affiliate).to_receive(:identifier_logo_blob).and return({ metadata: { alt_text: 'identifier logo alt text' } })
       end
 
       let(:identifier_content) do
@@ -49,7 +49,35 @@ describe ReactHelper do
           domainName: 'Example Domain Name',
           parentAgencyName: 'My Agency',
           parentAgencyLink: 'https://agency.gov',
-          logoAltText: 'identifier logo alt text'
+          logoAltText: 'identifier logo alt text',
+          logoUrl: /.*logo.png/
+        }
+      end
+
+      it 'sends identifier content to SearchResultsLayout component' do
+        helper.search_results_layout(search, {}, vertical, affiliate, search_options)
+
+        expect(helper).to have_received(:react_component).
+          with('SearchResultsLayout', hash_including(identifierContent: identifier_content))
+      end
+    end
+
+    context 'when an affiliate has identifier content without a logo' do
+      before do
+        affiliate.update!({ identifier_domain_name: 'Example Domain Name',
+                            parent_agency_name: 'My Agency',
+                            parent_agency_link: 'https://agency.gov',
+                            header_logo: nil })
+                            allow(affiliate).to receive(:identifier_logo_blob).and_return(nil)
+      end
+
+      let(:identifier_content) do
+        {
+          domainName: 'Example Domain Name',
+          parentAgencyName: 'My Agency',
+          parentAgencyLink: 'https://agency.gov',
+          logoAltText: nil,
+          logoUrl: nil
         }
       end
 
