@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Identifier as UswdsIdentifier, IdentifierMasthead, IdentifierLinks, IdentifierLogos, IdentifierLogo, IdentifierIdentity, Link, IdentifierGov, IdentifierLinkItem, IdentifierLink } from '@trussworks/react-uswds';
+import { Identifier as UswdsIdentifier, IdentifierMasthead, IdentifierLinks, IdentifierIdentity, Link, IdentifierGov, IdentifierLinkItem, IdentifierLink } from '@trussworks/react-uswds';
 import { LanguageContext } from '../../contexts/LanguageContext';
 
 import { IdentifierLogoWrapper } from './IdentifierLogoWrapper';
