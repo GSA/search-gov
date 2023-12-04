@@ -14,6 +14,8 @@ module ReactHelper
       navigationLinks: navigation_links(search, params),
       newsLabel: news_label(search),
       noResultsMessage: no_result_message(search),
+      agencyName: agency_name(affiliate.agency),
+      jobsEnabled: affiliate.jobs_enabled?,
       page: page_data(affiliate),
       params: params,
       relatedSearches: related_searches(search),
@@ -185,5 +187,11 @@ module ReactHelper
     return if identifier_logo.blank?
 
     url_for(identifier_logo)
+  end
+
+  def agency_name(agency)
+    return if agency.nil?
+
+    agency.abbreviation || agency.name
   end
 end

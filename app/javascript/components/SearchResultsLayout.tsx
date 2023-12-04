@@ -168,6 +168,8 @@ interface SearchResultsLayoutProps {
     }[] | null;
   } | null;
   relatedSitesDropdownLabel?: string;
+  agencyName?: string;
+  jobsEnabled?: boolean;
   noResultsMessage?: {
     text?: string;
     urls?: {
