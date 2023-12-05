@@ -23,16 +23,18 @@ export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen, fontsAndColo
       <UswdsHeader basic>
         <div className="usa-nav-container">
           <div className="usa-navbar">
-            <Logo
-              className="width-full"
-              size="slim"
-              image={
-                <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} />
-              }
-              heading={
-                <Title>{page.title}</Title>
-              }
-            />
+            {page.logo?.url && (
+              <Logo
+                className="width-full"
+                size="slim"
+                image={
+                  <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} />
+                }
+                heading={
+                  <Title>{page.title}</Title>
+                }
+              />
+            )}
             <NavMenuButton
               label="Menu"
               onClick={toggleMobileNav}
