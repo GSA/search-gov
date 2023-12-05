@@ -14,6 +14,8 @@ module ReactHelper
       navigationLinks: navigation_links(search, params),
       newsLabel: news_label(search),
       noResultsMessage: no_result_message(search),
+      agencyName: agency_name(affiliate.agency),
+      jobsEnabled: affiliate.jobs_enabled?,
       page: page_data(affiliate),
       params: params,
       relatedSearches: related_searches(search),
@@ -177,5 +179,11 @@ module ReactHelper
       parentAgencyName: affiliate.parent_agency_name,
       parentAgencyLink: affiliate.parent_agency_link
     }
+  end
+
+  def agency_name(agency)
+    return if agency.nil?
+
+    agency.abbreviation || agency.name
   end
 end
