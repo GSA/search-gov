@@ -26,14 +26,14 @@ interface BestBetsProps {
   }
 }
 
-const StyledWrapper = styled.div.attrs<{ styles: { bestBetBackgroundColor: string; sectionTitleColor: string }; }>(props => ({
-  styles: props.styles,
+const StyledWrapper = styled.div.attrs<{ styles: { bestBetBackgroundColor: string; sectionTitleColor: string }; }>((props) => ({
+  styles: props.styles
 }))`
   .results-best-bets-wrapper > .grid-row > .grid-col {
-    background: ${props => props.styles.bestBetBackgroundColor};
+    background: ${(props) => props.styles.bestBetBackgroundColor};
   }
   .best-bets-title {
-    color: ${props => props.styles.sectionTitleColor};
+    color: ${(props) => props.styles.sectionTitleColor};
   }
 `;
 

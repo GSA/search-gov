@@ -16,15 +16,15 @@ interface IdentifierProps {
   }[] | null;
 }
 
-const StyledUswdsIdentifier = styled(UswdsIdentifier).attrs<{ styles: { identifierBackgroundColor: string, identifierHeadingColor: string; identifierLinkColor: string; }; }>(props => ({
-  styles: props.styles,
+const StyledUswdsIdentifier = styled(UswdsIdentifier).attrs<{ styles: { identifierBackgroundColor: string, identifierHeadingColor: string; identifierLinkColor: string; }; }>((props) => ({
+  styles: props.styles
 }))`
-  background-color: ${props => props.styles.identifierBackgroundColor};
+  background-color: ${(props) => props.styles.identifierBackgroundColor};
   .usa-identifier__container, .usa-identifier__container > a, .usa-identifier__identity-disclaimer, .usa-identifier__identity-disclaimer > a {
-    color: ${props => props.styles.identifierHeadingColor};
+    color: ${(props) => props.styles.identifierHeadingColor};
   }
   .usa-identifier__required-links-item > a, .usa-identifier__identity-domain {
-    color: ${props => props.styles.identifierLinkColor};
+    color: ${(props) => props.styles.identifierLinkColor};
   }
 `;
 

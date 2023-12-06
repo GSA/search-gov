@@ -14,11 +14,11 @@ interface RssNewsProps {
   }[];
 }
 
-const StyledWrapper = styled.div.attrs<{ styles: { sectionTitleColor: string }; }>(props => ({
-  styles: props.styles,
+const StyledWrapper = styled.div.attrs<{ styles: { sectionTitleColor: string }; }>((props) => ({
+  styles: props.styles
 }))`
   .news-title-wrapper-label {
-    color: ${props => props.styles.sectionTitleColor};
+    color: ${(props) => props.styles.sectionTitleColor};
   }
 `;
 

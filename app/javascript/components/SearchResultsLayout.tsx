@@ -1,5 +1,5 @@
 import React from 'react';
-import {createGlobalStyle} from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 import { darken } from 'polished';
 import { I18n } from 'i18n-js';
 
@@ -204,12 +204,12 @@ interface SearchResultsLayoutProps {
 
 const GlobalStyle = createGlobalStyle<{ pageBackgroundColor: string; buttonBackgroundColor: string; }>`
   .serp-result-wrapper {
-    background-color: ${props => props.pageBackgroundColor};
+    background-color: ${(props) => props.pageBackgroundColor};
   }
   .usa-button {
-    background-color: ${props => props.buttonBackgroundColor};
+    background-color: ${(props) => props.buttonBackgroundColor};
     &:hover {
-      background-color: ${props => darken(0.10, props.buttonBackgroundColor)};
+      background-color: ${(props) => darken(0.10, props.buttonBackgroundColor)};
     }
   }
 `;
@@ -229,8 +229,7 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
   return (
     <LanguageContext.Provider value={i18n}>
       <StyleContext.Provider value={fontsAndColors}>
-        <GlobalStyle pageBackgroundColor={fontsAndColors.pageBackgroundColor}
-                     buttonBackgroundColor={fontsAndColors.buttonBackgroundColor} />
+        <GlobalStyle pageBackgroundColor={fontsAndColors.pageBackgroundColor} buttonBackgroundColor={fontsAndColors.buttonBackgroundColor} />
         <Header 
           page={page}
           isBasic={isBasicHeader(extendedHeader)}

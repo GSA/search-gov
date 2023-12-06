@@ -13,12 +13,12 @@ interface FooterProps {
   }[];
 }
 
-const StyledUswdsFooter = styled(UswdsFooter).attrs<{ styles: { footerBackgroundColor: string, footerLinksTextColor: string; }; }>(props => ({
-  styles: props.styles,
+const StyledUswdsFooter = styled(UswdsFooter).attrs<{ styles: { footerBackgroundColor: string, footerLinksTextColor: string; }; }>((props) => ({
+  styles: props.styles
 }))`
-  background-color: ${props => props.styles.footerBackgroundColor};
+  background-color: ${(props) => props.styles.footerBackgroundColor};
   .usa-footer__return-to-top > a, a.usa-footer__primary-link {
-    color: ${props => props.styles.footerLinksTextColor};
+    color: ${(props) => props.styles.footerLinksTextColor};
   }
 `;
 

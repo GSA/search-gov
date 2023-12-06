@@ -23,11 +23,11 @@ interface FedRegisterDocsProps {
   query?:string;
 }
 
-const StyledWrapper = styled.div.attrs<{ styles: { sectionTitleColor: string }; }>(props => ({
-  styles: props.styles,
+const StyledWrapper = styled.div.attrs<{ styles: { sectionTitleColor: string }; }>((props) => ({
+  styles: props.styles
 }))`
   .fed-register-label {
-    color: ${props => props.styles.sectionTitleColor};
+    color: ${(props) => props.styles.sectionTitleColor};
   }
 `;
 

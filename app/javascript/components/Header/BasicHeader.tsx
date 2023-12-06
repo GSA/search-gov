@@ -8,23 +8,23 @@ import { HeaderProps } from './../props';
 
 import './BasicHeader.css';
 
-const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: { buttonBackgroundColor: string; headerLinksFontFamily: string, headerBackgroundColor: string, headerPrimaryLinkColor: string, headerSecondaryLinkColor: string; }; }>(props => ({
-  styles: props.styles,
+const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: { buttonBackgroundColor: string; headerLinksFontFamily: string, headerBackgroundColor: string, headerPrimaryLinkColor: string, headerSecondaryLinkColor: string; }; }>((props) => ({
+  styles: props.styles
 }))`
-  background-color: ${props => props.styles.headerBackgroundColor};
+  background-color: ${(props) => props.styles.headerBackgroundColor};
   .usa-nav__primary, .usa-nav__secondary-links {
-    font-family: ${props => props.styles.headerLinksFontFamily};
+    font-family: ${(props) => props.styles.headerLinksFontFamily};
   }
   a.usa-nav__link {
-    color: ${props => props.styles.headerPrimaryLinkColor};
+    color: ${(props) => props.styles.headerPrimaryLinkColor};
   }
   .usa-nav__secondary-item > a {
-    color: ${props => props.styles.headerSecondaryLinkColor};
+    color: ${(props) => props.styles.headerSecondaryLinkColor};
   }
   button.usa-menu-btn {
-    background-color: ${props => props.styles.buttonBackgroundColor};
+    background-color: ${(props) => props.styles.buttonBackgroundColor};
     &:hover {
-      background-color: ${props => darken(0.10, props.styles.buttonBackgroundColor)};
+      background-color: ${(props) => darken(0.10, props.styles.buttonBackgroundColor)};
     }
   }
 `;

@@ -2,22 +2,8 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 import SearchResultsLayout, { NavigationLink } from '../components/SearchResultsLayout';
-import {createGlobalStyle} from 'styled-components';
-import { darken } from 'polished';
 import renderer from 'react-test-renderer';
-import 'jest-styled-components'
-
-const GlobalStyle = createGlobalStyle<{ pageBackgroundColor: string; buttonBackgroundColor: string; }>`
-  .serp-result-wrapper {
-    background-color: ${props => props.pageBackgroundColor};
-  }
-  .usa-button {
-    background-color: ${props => props.buttonBackgroundColor};
-    &:hover {
-      background-color: ${props => darken(0.10, props.buttonBackgroundColor)};
-    }
-  }
-`;
+import 'jest-styled-components';
 
 const fontsAndColors = {
   activeSearchTabNavigationColor: '#1f1748',
@@ -28,7 +14,7 @@ const fontsAndColors = {
   footerBackgroundColor: '#5fcfc5',
   footerLinksTextColor: '#46f966',
   headerBackgroundColor: '#4a402b',
-  headerLinksFontFamily: "'Georgia', 'Cambria', 'Times New Roman', 'Times', serif",
+  headerLinksFontFamily: '"Georgia", "Cambria", "Times New Roman", "Times", serif',
   headerPrimaryLinkColor: '#594973',
   headerSecondaryLinkColor: '#c8155d',
   healthBenefitsHeaderBackgroundColor: '#abb178',
@@ -70,9 +56,9 @@ jest.mock('i18n-js', () => {
 
 // Needed to access GlobalStyle elements.
 // See: https://github.com/styled-components/styled-components/issues/3570#issuecomment-1537564119
-jest.mock("styled-components", () =>
-  jest.requireActual("styled-components/dist/styled-components.browser.cjs.js"),
-)
+jest.mock('styled-components', () =>
+  jest.requireActual('styled-components/dist/styled-components.browser.cjs.js')
+);
 
 describe('SearchResultsLayout', () => {
   const page = {

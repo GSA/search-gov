@@ -15,12 +15,12 @@ interface HeaderProps {
   isBasic: boolean;
 }
 
-const StyledGovBanner = styled(GovBanner).attrs<{ styles: { bannerBackgroundColor: string; bannerTextColor: string; }; }>(props => ({
-  styles: props.styles,
+const StyledGovBanner = styled(GovBanner).attrs<{ styles: { bannerBackgroundColor: string; bannerTextColor: string; }; }>((props) => ({
+  styles: props.styles
 }))`
   .usa-banner__header {
-    background-color: ${props => props.styles.bannerBackgroundColor};
-    color: ${props => props.styles.bannerTextColor};
+    background-color: ${(props) => props.styles.bannerBackgroundColor};
+    color: ${(props) => props.styles.bannerTextColor};
   }
 `;
 

@@ -6,7 +6,7 @@ import classnames from 'classnames';
 import { Icon, Link, Button } from '@trussworks/react-uswds';
 
 import { getUriWithParam } from '../../utils';
-import { LanguageContext } from '../../contexts/LanguageContext'
+import { LanguageContext } from '../../contexts/LanguageContext';
 
 type PaginationProps = {
   pathname: string // pathname of results page

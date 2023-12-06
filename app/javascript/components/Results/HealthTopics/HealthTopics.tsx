@@ -18,11 +18,11 @@ interface HealthTopicProps {
   }[];
 }
 
-const StyledWrapper = styled.div.attrs<{ styles: { healthBenefitsHeaderBackgroundColor: string }; }>(props => ({
-  styles: props.styles,
+const StyledWrapper = styled.div.attrs<{ styles: { healthBenefitsHeaderBackgroundColor: string }; }>((props) => ({
+  styles: props.styles
 }))`
   .health-topic-title {
-    background: ${props => props.styles.healthBenefitsHeaderBackgroundColor};
+    background: ${(props) => props.styles.healthBenefitsHeaderBackgroundColor};
   }
 `;
 

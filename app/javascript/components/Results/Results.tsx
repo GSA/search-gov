@@ -136,20 +136,20 @@ interface ResultsProps {
   };
 }
 
-const StyledWrapper = styled.div.attrs<{ styles: { resultDescriptionColor: string; resultTitleColor: string; resultTitleLinkVisitedColor: string; resultUrlColor: string; }; }>(props => ({
-  styles: props.styles,
+const StyledWrapper = styled.div.attrs<{ styles: { resultDescriptionColor: string; resultTitleColor: string; resultTitleLinkVisitedColor: string; resultUrlColor: string; }; }>((props) => ({
+  styles: props.styles
 }))`
   .result-title-link > .result-title-label{
-    color: ${props => props.styles.resultTitleColor} !important;
+    color: ${(props) => props.styles.resultTitleColor} !important;
   }
   .result-title-link:visited > .result-title-label{
-    color: ${props => props.styles.resultTitleLinkVisitedColor} !important;
+    color: ${(props) => props.styles.resultTitleLinkVisitedColor} !important;
   }
   .result-desc > p {
-    color: ${props => props.styles.resultDescriptionColor} !important;
+    color: ${(props) => props.styles.resultDescriptionColor} !important;
   }
   .result-url-text {
-    color: ${props => props.styles.resultUrlColor} !important;
+    color: ${(props) => props.styles.resultUrlColor} !important;
   }
 `;
 

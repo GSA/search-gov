@@ -26,11 +26,11 @@ const numberToCurrency = new Intl.NumberFormat('en-US', {
   currency: 'USD'
 });
 
-const StyledWrapper = styled.div.attrs<{ styles: { sectionTitleColor: string }; }>(props => ({
-  styles: props.styles,
+const StyledWrapper = styled.div.attrs<{ styles: { sectionTitleColor: string }; }>((props) => ({
+  styles: props.styles
 }))`
   .jobs-title-wrapper-label {
-    color: ${props => props.styles.sectionTitleColor};
+    color: ${(props) => props.styles.sectionTitleColor};
   }
 `;
 

@@ -10,14 +10,14 @@ import { StyleContext } from '../../contexts/StyleContext';
 
 import './VerticalNav.css';
 
-const StyledPrimaryNav = styled(PrimaryNav).attrs<{ styles: { searchTabNavigationLinkColor: string; activeSearchTabNavigationColor: string; }; }>(props => ({
-  styles: props.styles,
+const StyledPrimaryNav = styled(PrimaryNav).attrs<{ styles: { searchTabNavigationLinkColor: string; activeSearchTabNavigationColor: string; }; }>((props) => ({
+  styles: props.styles
 }))`
   li.usa-nav__primary-item:not(li.usa-nav__submenu-item) > a {
-    color: ${props => props.styles.searchTabNavigationLinkColor} !important;
+    color: ${(props) => props.styles.searchTabNavigationLinkColor} !important;
   }
   .usa-current::after {
-    background-color: ${props => props.styles.activeSearchTabNavigationColor} !important;
+    background-color: ${(props) => props.styles.activeSearchTabNavigationColor} !important;
   }
 `;
 
