@@ -10,7 +10,7 @@ const styles = {
   footerBackgroundColor: '#F0F0F0',
   footerLinksTextColor: '#1B1B1B',
   headerBackgroundColor: '#FFFFFF',
-  headerLinksFontFamily: "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+  headerLinksFontFamily: '"Public Sans Web", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
   headerPrimaryLinkColor: '#565C65',
   headerSecondaryLinkColor: '#71767A',
   healthBenefitsHeaderBackgroundColor: '#1A4480',
