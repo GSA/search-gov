@@ -25,7 +25,7 @@ module NewsItemsHelper
   def news_item_time_ago_in_words(published_at, separator = '', date_stamp_enabled = true)
     return unless published_at.present? && date_stamp_enabled && published_at < Time.current
 
-    [time_ago_in_words(published_at), separator].join
+    [time_ago_in_words(published_at, scope: 'datetime.time_ago_in_words'), separator].join
   end
 
   def news_items_results(affiliate, search)

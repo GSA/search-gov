@@ -5,7 +5,7 @@ describe NewsItemsHelper do
 
   describe '#news_item_time_ago_in_words(published_at)' do
     it 'should output time ago in words' do
-      expect(helper.news_item_time_ago_in_words(timestamp)).to eq('less than a minute ago')
+      expect(helper.news_item_time_ago_in_words(timestamp)).to eq('less than 5 seconds ago')
     end
 
     context 'when published at date is unavailable' do
