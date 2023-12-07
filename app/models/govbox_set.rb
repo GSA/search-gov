@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GovboxSet
   DEFAULT_JOB_HIGHLIGHTING_OPTIONS = {
     pre_tags: %w[<strong>],
@@ -201,7 +203,7 @@ class GovboxSet
 
     youtube_profile_ids = @affiliate.youtube_profile_ids
     video_feeds = RssFeed.includes(:rss_feed_urls).owned_by_youtube_profile.where(owner_id: youtube_profile_ids)
-    return unless video_feeds.present?
+    return if video_feeds.blank?
 
     search_options = build_search_options(
       excluded_urls: @affiliate.excluded_urls,
@@ -217,7 +219,7 @@ class GovboxSet
     return unless @affiliate.is_rss_govbox_enabled?
 
     non_managed_feeds = @affiliate.rss_feeds.non_mrss.non_managed.includes(:rss_feed_urls).to_a
-    return unless non_managed_feeds.present?
+    return if non_managed_feeds.blank?
 
     search_options = build_search_options(
       excluded_urls: @affiliate.excluded_urls,
@@ -274,7 +276,7 @@ class GovboxSet
     @featured_collections = ElasticFeaturedCollection.search_for(search_options)
     return unless elastic_results_exist?(@featured_collections)
 
-    if elastic_results_exist?(@boosted_contents) and @boosted_contents.total > 1
+    if elastic_results_exist?(@boosted_contents) && (@boosted_contents.total > 1)
       search_options = build_search_options(affiliate_id: @affiliate.id, size: 1, site_limits: @site_limits)
       @boosted_contents = ElasticBoostedContent.search_for(search_options)
     end
@@ -286,6 +288,6 @@ class GovboxSet
   end
 
   def elastic_results_exist?(elastic_results)
-    elastic_results.present? && elastic_results.total > 0
+    elastic_results.present? && elastic_results.total.positive?
   end
 end
