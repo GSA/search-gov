@@ -418,3 +418,26 @@ Feature: Search - redesign
     And I fill in "Enter your search term" with "president"
     And I press "Search"
     Then I should see 2 redesigned related searches
+
+  @javascript @a11y @a11y_wip
+  Scenario: Search with site limits
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email | first_name | last_name | domains | use_redesigned_results_page |
+      | agency site  | agency.gov | aff@bar.gov   | Jane       | Bar       | usa.gov | true                        |
+    When I am on agency.gov's search page with site limited to "www.epa.gov/news"
+    And I fill in "Enter your search term" with "carbon emissions"
+    And I press "Search"
+    Then I should see "We're including results for carbon emissions from www.epa.gov/news only."
+
+  @javascript @a11y @a11y_wip
+  Scenario: Search with custom no results page
+    Given the following Affiliates exist:
+      | display_name | name           | contact_email    | first_name   | last_name | domains    | locale | additional_guidance_text     | use_redesigned_results_page |
+      | English site | search.gov     | admin@agency.gov | John         | Bar       | search.gov | en     | Sorry, there are no results. | true                        |
+    And the "search.gov" affiliate has additional links for the no results module
+    When I am on search.gov's search page
+    And I fill in "Enter your search term" with "lkssldfkjsldfkjsld kfj"
+    And I press "Search"
+    Then I should see "Sorry, there are no results."
+    And I should see "First no results link"
+    And I should see "Second no results link"

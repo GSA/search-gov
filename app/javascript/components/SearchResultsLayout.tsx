@@ -15,7 +15,16 @@ export interface NavigationLink {
   active: boolean; label: string; url: string, facet: string;
 }
 
+export interface PageData {
+  title: string;
+  logo: {
+    url: string;
+    text: string;
+  }
+}
+
 interface SearchResultsLayoutProps {
+  page: PageData;
   resultsData?: {
     totalPages: number;
     unboundedResults: boolean;
@@ -125,6 +134,10 @@ interface SearchResultsLayoutProps {
     suggested: string;
     original: string;
   };
+  sitelimit?: {
+    sitelimit: string;
+    url: string;
+  };
   navigationLinks: NavigationLink[];
   extendedHeader: boolean;
   fontsAndColors: {
@@ -153,12 +166,16 @@ interface SearchResultsLayoutProps {
     }[] | null;
   } | null;
   relatedSitesDropdownLabel?: string;
+  agencyName?: string;
+  jobsEnabled?: boolean;
+  noResultsMessage?: {
+    text?: string;
+    urls?: {
+      title: string;
+      url: string;
+    }[];
+  };
 }
-
-// To be updated
-const getAffiliateTitle = (): string => {
-  return 'Search.gov';
-};
 
 const isBasicHeader = (extendedHeader: boolean): boolean => {
   return !extendedHeader;
@@ -166,15 +183,16 @@ const isBasicHeader = (extendedHeader: boolean): boolean => {
 
 const videosUrl = (links: NavigationLink[]) => links.find((link) => link.facet === 'YouTube')?.url ;
 
-const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [], extendedHeader, footerLinks, fontsAndColors, newsLabel, identifierContent, identifierLinks, navigationLinks, relatedSitesDropdownLabel = '', alert, spellingSuggestion, relatedSearches }: SearchResultsLayoutProps) => {
+const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [], extendedHeader, footerLinks, fontsAndColors, newsLabel, identifierContent, identifierLinks, navigationLinks, relatedSitesDropdownLabel = '', alert, spellingSuggestion, relatedSearches, sitelimit, noResultsMessage }: SearchResultsLayoutProps) => {
   const i18n = new I18n(translations);
   i18n.defaultLocale = 'en';
   i18n.enableFallback = true;
   i18n.locale = currentLocale;
+
   return (
     <LanguageContext.Provider value={i18n}>
       <Header 
-        title={getAffiliateTitle()}
+        page={page}
         isBasic={isBasicHeader(extendedHeader)}
         fontsAndColors={fontsAndColors}
       />
@@ -197,12 +215,15 @@ const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params 
             spellingSuggestion={spellingSuggestion}
             videosUrl= {videosUrl(navigationLinks)}
             relatedSearches = {relatedSearches}
+            noResultsMessage = {noResultsMessage}
+            sitelimit={sitelimit}
           />) : params.query ? (
           <Results 
             vertical={vertical}
             totalPages={null}
             query={params.query}
             unboundedResults={true}
+            noResultsMessage = {noResultsMessage}
           />) : <></>}
       </div>
 

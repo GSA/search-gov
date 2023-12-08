@@ -1,3 +1,5 @@
+require 'ostruct'
+
 Given /^the following( SearchGov)? Affiliates exist:$/ do |affiliate_type, table|
   Affiliate.destroy_all
   table.hashes.each do |hash|
@@ -96,4 +98,12 @@ Given /^the following "(.+)" exist for the affiliate (.+):$/ do |association, af
   affiliate = Affiliate.find_by_name(affiliate_name)
   association.gsub!(' ','_')
   table.hashes.each {|hash|  affiliate.send(association).create!(hash) }
+end
+
+Given('the {string} affiliate has additional links for the no results module') do |affiliate_name|
+  affiliate = Affiliate.find_by_name(affiliate_name)
+  links = [{ title: 'First no results link', url: 'https://search.gov', position: 0 }, { title: 'Second no results link', url: 'https://google.com', position: 1 }]
+  additional_links = OpenStruct.new({ values: links })
+  affiliate.managed_no_results_pages_alt_links_attributes = additional_links
+  affiliate.save!
 end

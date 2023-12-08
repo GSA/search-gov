@@ -5,9 +5,7 @@ import { HeaderProps } from './../props';
 
 import './BasicHeader.css';
 
-const logoImg = 'https://search.gov/assets/gsa-logo-893b811a49f74b06b2bddbd1cde232d2922349c8c8c6aad1d88594f3e8fe42bd097e980c57c5e28eff4d3a9256adb4fcd88bf73a5112833b2efe2e56791aad9d.svg';
-
-export const BasicHeader = ({ title, toggleMobileNav, mobileNavOpen, fontsAndColors }: HeaderProps) => {
+export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen, fontsAndColors }: HeaderProps) => {
   const primaryNavItems = [
     <a key="primaryNav_2" className="usa-nav__link" href="">
       <span style={{ fontFamily: fontsAndColors?.headerLinksFontFamily }}>{'Primary link 1'}</span>
@@ -29,10 +27,10 @@ export const BasicHeader = ({ title, toggleMobileNav, mobileNavOpen, fontsAndCol
               className="width-full"
               size="slim"
               image={
-                <img className="usa-identifier__logo" src={logoImg} alt="Site logo" />
+                <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} />
               }
               heading={
-                <Title>{title}</Title>
+                <Title>{page.title}</Title>
               }
             />
             <NavMenuButton

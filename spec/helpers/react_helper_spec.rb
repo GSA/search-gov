@@ -251,5 +251,45 @@ describe ReactHelper do
         end
       end
     end
+
+    describe '#agency_name' do
+      context 'when affiliate has an agency abbreviation or name' do
+        it 'sets agency to contain abbreviation or name' do
+          affiliate.build_agency({ abbreviation: nil, name: 'Department of Energy' })
+          helper.search_results_layout(search, {}, vertical, affiliate, search_options)
+          expect(helper).to have_received(:react_component).with(
+            'SearchResultsLayout',
+            hash_including(agencyName: 'Department of Energy')
+          )
+        end
+      end
+
+      context 'when affiliate has no agency' do
+        before do
+          affiliate.agency = nil
+        end
+
+        it 'sets agency to nil in the data hash' do
+          helper.search_results_layout(search, {}, vertical, affiliate, search_options)
+          expect(helper).to have_received(:react_component).with(
+            'SearchResultsLayout',
+            hash_excluding(:agencyName)
+          )
+        end
+      end
+    end
+
+    context 'when search contains a sitelimit' do
+      it 'returns a sitelimit hash' do
+        helper.search_results_layout(search, { sitelimit: 'usa.gov' }, vertical, affiliate, search_options)
+
+        expect(helper).to have_received(:react_component).
+          with('SearchResultsLayout', hash_including(sitelimit:
+          {
+            sitelimit: 'usa.gov',
+            url: '/search?affiliate=usagov&query=chocolate'
+          }))
+      end
+    end
   end
 end
