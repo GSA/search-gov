@@ -15,12 +15,18 @@ describe WebResultsPostProcessor do
       results
     end
 
-    it_behaves_like 'a search with normalized results' do
-      let(:normalized_results) { post_processor.normalized_results(5) }
+    describe 'with an affiliate using bing' do
+      it 'uses unbounded pagination' do
+        expect(normalized_results[:unboundedResults]).to be true
+      end
     end
 
-    it 'uses unbounded pagination' do
-      expect(normalized_results[:unboundedResults]).to be true
+    describe 'with an affiliate using searchgov' do
+      let(:affiliate) { affiliates(:searchgov_affiliate) }
+
+      it_behaves_like 'a search with normalized results' do
+        let(:normalized_results) { post_processor.normalized_results(5) }
+      end
     end
   end
 

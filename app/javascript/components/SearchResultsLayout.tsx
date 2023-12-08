@@ -29,6 +29,7 @@ export interface PageData {
 interface SearchResultsLayoutProps {
   page: PageData;
   resultsData?: {
+    total?: number;
     totalPages: number;
     unboundedResults: boolean;
     results: {
@@ -246,6 +247,7 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
               results={resultsData.results}
               vertical={vertical}
               totalPages={resultsData.totalPages}
+              total={resultsData.total}
               query={params.query}
               unboundedResults={resultsData.unboundedResults}
               additionalResults={additionalResults}

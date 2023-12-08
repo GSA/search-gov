@@ -9,6 +9,7 @@ import { LanguageContext } from '../../contexts/LanguageContext';
 import { StyleContext } from '../../contexts/StyleContext';
 
 import { ResultGrid } from './ResultGrid/ResultGrid';
+import { ResultsCount } from './ResultsCount/ResultsCount';
 import { HealthTopics } from './HealthTopics/HealthTopics';
 import { ImagesPage } from './ImagesPage/ImagesPage';
 import { RssNews } from './RssNews/RssNews';
@@ -115,6 +116,7 @@ interface ResultsProps {
   } | null;
   unboundedResults: boolean;
   totalPages: number | null;
+  total?: number;
   vertical: string;
   newsAboutQuery?: string;
   spellingSuggestion?: {
@@ -164,7 +166,7 @@ const getImages = (result: Result[] | null) => {
 };
 
 // eslint-disable-next-line complexity
-export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical, newsAboutQuery = '', spellingSuggestion, videosUrl, relatedSearches, sitelimit, noResultsMessage }: ResultsProps) => {
+export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical, newsAboutQuery = '', spellingSuggestion, videosUrl, relatedSearches, sitelimit, noResultsMessage, total }: ResultsProps) => {
   const i18n = useContext(LanguageContext);
   const styles = useContext(StyleContext);
   const imagesResults = getImages(results);
@@ -175,6 +177,8 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
         {sitelimit && (
           <SiteLimitAlert {...sitelimit} query={query} />
         )}
+
+        {total && <ResultsCount total={total}/>}
 
         {spellingSuggestion && (
           <SpellingSuggestion {...spellingSuggestion}/>
