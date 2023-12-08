@@ -7,6 +7,7 @@ const styles = {
   bannerTextColor: '#1B1B1B',
   bestBetBackgroundColor: '#1A4480',
   buttonBackgroundColor: '#005EA2',
+  footerAndResultsFontFamily: '"Public Sans Web", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
   footerBackgroundColor: '#F0F0F0',
   footerLinksTextColor: '#1B1B1B',
   headerBackgroundColor: '#FFFFFF',
