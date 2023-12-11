@@ -138,9 +138,10 @@ interface ResultsProps {
   };
 }
 
-const StyledWrapper = styled.div.attrs<{ styles: { resultDescriptionColor: string; resultTitleColor: string; resultTitleLinkVisitedColor: string; resultUrlColor: string; }; }>((props) => ({
+const StyledWrapper = styled.div.attrs<{ styles: { footerAndResultsFontFamily: string; resultDescriptionColor: string; resultTitleColor: string; resultTitleLinkVisitedColor: string; resultUrlColor: string; }; }>((props) => ({
   styles: props.styles
 }))`
+  font-family: ${(props) => props.styles.footerAndResultsFontFamily};
   .result-title-link > .result-title-label{
     color: ${(props) => props.styles.resultTitleColor} !important;
   }
