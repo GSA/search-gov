@@ -150,6 +150,7 @@ interface SearchResultsLayoutProps {
     bannerTextColor: string;
     bestBetBackgroundColor: string;
     buttonBackgroundColor: string;
+    footerAndResultsFontFamily: string;
     footerBackgroundColor: string;
     footerLinksTextColor: string;
     headerBackgroundColor: string;
