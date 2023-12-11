@@ -2,6 +2,34 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 import SearchResultsLayout, { NavigationLink } from '../components/SearchResultsLayout';
+import renderer from 'react-test-renderer';
+import 'jest-styled-components';
+
+const fontsAndColors = {
+  activeSearchTabNavigationColor: '#1f1748',
+  bannerBackgroundColor: '#643617',
+  bannerTextColor: '#dacb1b',
+  bestBetBackgroundColor: '#6e09bf',
+  buttonBackgroundColor: '#cfcd03',
+  footerBackgroundColor: '#5fcfc5',
+  footerLinksTextColor: '#46f966',
+  headerBackgroundColor: '#4a402b',
+  headerLinksFontFamily: '"Georgia", "Cambria", "Times New Roman", "Times", serif',
+  headerPrimaryLinkColor: '#594973',
+  headerSecondaryLinkColor: '#c8155d',
+  healthBenefitsHeaderBackgroundColor: '#abb178',
+  identifierBackgroundColor: '#be1c21',
+  identifierHeadingColor: '#f48a4c',
+  identifierLinkColor: '#5d5a6f',
+  pageBackgroundColor: '#761816',
+  resultDescriptionColor: '#2bd4c7',
+  resultTitleColor: '#33f0aa',
+  resultTitleLinkVisitedColor: '#4a97ad',
+  resultUrlColor: '#475830',
+  searchTabNavigationLinkColor: '#aea9f7',
+  secondaryHeaderBackgroundColor: '#83df0a',
+  sectionTitleColor: '#8b4a35'
+};
 
 const translations = {
   en: {
@@ -9,10 +37,6 @@ const translations = {
     recommended: 'Recommended',
     searches: { by: 'by' }
   }
-};
-
-const fontsAndColors = {
-  headerLinksFontFamily: '"Georgia", "Cambria", "Times New Roman", "Times", serif'
 };
 
 const newsLabel = {
@@ -29,6 +53,12 @@ const navigationLinks: NavigationLink[] = [];
 jest.mock('i18n-js', () => {
   return jest.requireActual('i18n-js/dist/require/index');
 });
+
+// Needed to access GlobalStyle elements.
+// See: https://github.com/styled-components/styled-components/issues/3570#issuecomment-1537564119
+jest.mock('styled-components', () =>
+  jest.requireActual('styled-components/dist/styled-components.browser.cjs.js')
+);
 
 describe('SearchResultsLayout', () => {
   const page = {
@@ -137,5 +167,15 @@ describe('SearchResultsLayout', () => {
     expect(resultTitle).toBeInTheDocument();
     expect(img).toHaveAttribute('src', 'https://www.search.gov/test_image.png');
     expect(img).toHaveAttribute('alt', 'test result 1');
+  });
+
+  it('renders basic header styles properly', () => {
+    renderer.create(<SearchResultsLayout page={page} params={{}} resultsData={{ results: [], totalPages: 1, unboundedResults: false }} vertical='web' translations={translations} extendedHeader={false} fontsAndColors={fontsAndColors} navigationLinks={navigationLinks} />).toJSON();
+    expect(document.head).toMatchSnapshot();
+  });
+
+  it('renders extended header styles properly', () => {
+    renderer.create(<SearchResultsLayout page={page} params={{}} resultsData={{ results: [], totalPages: 1, unboundedResults: false }} vertical='web' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} navigationLinks={navigationLinks} />).toJSON();
+    expect(document.head).toMatchSnapshot();
   });
 });
