@@ -6,6 +6,10 @@ prepare:
     - url: https://raw.githubusercontent.com/GSA/searchgov_style/main/.default.yml
       path: .rubocop-https---raw-githubusercontent-com-GSA-searchgov-style-main--default-yml
 checks:
+  file-lines:
+    enabled: true
+    config:
+      threshold: 300
   method-lines:
     enabled: false
   method-count:
