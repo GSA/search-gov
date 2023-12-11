@@ -1,4 +1,6 @@
 import React from 'react';
+import { createGlobalStyle } from 'styled-components';
+import { darken } from 'polished';
 import { I18n } from 'i18n-js';
 
 import './SearchResultsLayout.css';
@@ -10,13 +12,24 @@ import { Results } from './Results/Results';
 import { Footer } from './Footer/Footer';
 import { Identifier } from './Identifier/Identifier';
 import { LanguageContext } from '../contexts/LanguageContext';
+import { StyleContext } from '../contexts/StyleContext';
 
 export interface NavigationLink {
   active: boolean; label: string; url: string, facet: string;
 }
 
+export interface PageData {
+  title: string;
+  logo: {
+    url: string;
+    text: string;
+  }
+}
+
 interface SearchResultsLayoutProps {
+  page: PageData;
   resultsData?: {
+    total?: number;
     totalPages: number;
     unboundedResults: boolean;
     results: {
@@ -132,7 +145,30 @@ interface SearchResultsLayoutProps {
   navigationLinks: NavigationLink[];
   extendedHeader: boolean;
   fontsAndColors: {
+    activeSearchTabNavigationColor: string;
+    bannerBackgroundColor: string;
+    bannerTextColor: string;
+    bestBetBackgroundColor: string;
+    buttonBackgroundColor: string;
+    footerAndResultsFontFamily: string;
+    footerBackgroundColor: string;
+    footerLinksTextColor: string;
+    headerBackgroundColor: string;
     headerLinksFontFamily: string;
+    headerPrimaryLinkColor: string;
+    headerSecondaryLinkColor: string;
+    healthBenefitsHeaderBackgroundColor: string;
+    identifierBackgroundColor: string;
+    identifierHeadingColor: string;
+    identifierLinkColor: string;
+    pageBackgroundColor: string;
+    resultDescriptionColor: string;
+    resultTitleColor: string;
+    resultTitleLinkVisitedColor: string;
+    resultUrlColor: string;
+    searchTabNavigationLinkColor: string;
+    secondaryHeaderBackgroundColor: string;
+    sectionTitleColor: string;
   };
   footerLinks?: {
     title: string,
@@ -157,12 +193,28 @@ interface SearchResultsLayoutProps {
     }[] | null;
   } | null;
   relatedSitesDropdownLabel?: string;
+  agencyName?: string;
+  jobsEnabled?: boolean;
+  noResultsMessage?: {
+    text?: string;
+    urls?: {
+      title: string;
+      url: string;
+    }[];
+  };
 }
 
-// To be updated
-const getAffiliateTitle = (): string => {
-  return 'Search.gov';
-};
+const GlobalStyle = createGlobalStyle<{ pageBackgroundColor: string; buttonBackgroundColor: string; }>`
+  .serp-result-wrapper {
+    background-color: ${(props) => props.pageBackgroundColor};
+  }
+  .usa-button {
+    background-color: ${(props) => props.buttonBackgroundColor};
+    &:hover {
+      background-color: ${(props) => darken(0.10, props.buttonBackgroundColor)};
+    }
+  }
+`;
 
 const isBasicHeader = (extendedHeader: boolean): boolean => {
   return !extendedHeader;
@@ -170,54 +222,60 @@ const isBasicHeader = (extendedHeader: boolean): boolean => {
 
 const videosUrl = (links: NavigationLink[]) => links.find((link) => link.facet === 'YouTube')?.url ;
 
-const SearchResultsLayout = ({ resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [], extendedHeader, footerLinks, fontsAndColors, newsLabel, identifierContent, identifierLinks, navigationLinks, relatedSitesDropdownLabel = '', alert, spellingSuggestion, relatedSearches, sitelimit }: SearchResultsLayoutProps) => {
+const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [], extendedHeader, footerLinks, fontsAndColors, newsLabel, identifierContent, identifierLinks, navigationLinks, relatedSitesDropdownLabel = '', alert, spellingSuggestion, relatedSearches, sitelimit, noResultsMessage }: SearchResultsLayoutProps) => {
   const i18n = new I18n(translations);
   i18n.defaultLocale = 'en';
   i18n.enableFallback = true;
   i18n.locale = currentLocale;
+
   return (
     <LanguageContext.Provider value={i18n}>
-      <Header 
-        title={getAffiliateTitle()}
-        isBasic={isBasicHeader(extendedHeader)}
-        fontsAndColors={fontsAndColors}
-      />
-     
-      <div className="usa-section serp-result-wrapper">
-        <Facets />
+      <StyleContext.Provider value={fontsAndColors}>
+        <GlobalStyle pageBackgroundColor={fontsAndColors.pageBackgroundColor} buttonBackgroundColor={fontsAndColors.buttonBackgroundColor} />
+        <Header 
+          page={page}
+          isBasic={isBasicHeader(extendedHeader)}
+        />
+      
+        <div className="usa-section serp-result-wrapper">
+          <Facets />
+  
+          <SearchBar query={params.query} relatedSites={relatedSites} navigationLinks={navigationLinks} relatedSitesDropdownLabel={relatedSitesDropdownLabel} alert={alert}/>
 
-        <SearchBar query={params.query} relatedSites={relatedSites} navigationLinks={navigationLinks} relatedSitesDropdownLabel={relatedSitesDropdownLabel} alert={alert}/>
+          {/* This ternary is needed to handle the case when Bing pagination leads to a page with no results */}
+          {resultsData ? (
+            <Results 
+              results={resultsData.results}
+              vertical={vertical}
+              totalPages={resultsData.totalPages}
+              total={resultsData.total}
+              query={params.query}
+              unboundedResults={resultsData.unboundedResults}
+              additionalResults={additionalResults}
+              newsAboutQuery={newsLabel?.newsAboutQuery}
+              spellingSuggestion={spellingSuggestion}
+              videosUrl= {videosUrl(navigationLinks)}
+              relatedSearches = {relatedSearches}
+              noResultsMessage = {noResultsMessage}
+              sitelimit={sitelimit}
+            />) : params.query ? (
+            <Results 
+              vertical={vertical}
+              totalPages={null}
+              query={params.query}
+              unboundedResults={true}
+              noResultsMessage = {noResultsMessage}
+            />) : <></>}
+        </div>
 
-        {/* This ternary is needed to handle the case when Bing pagination leads to a page with no results */}
-        {resultsData ? (
-          <Results 
-            results={resultsData.results}
-            vertical={vertical}
-            totalPages={resultsData.totalPages}
-            query={params.query}
-            unboundedResults={resultsData.unboundedResults}
-            additionalResults={additionalResults}
-            newsAboutQuery={newsLabel?.newsAboutQuery}
-            spellingSuggestion={spellingSuggestion}
-            videosUrl= {videosUrl(navigationLinks)}
-            relatedSearches = {relatedSearches}
-            sitelimit={sitelimit}
-          />) : params.query ? (
-          <Results 
-            vertical={vertical}
-            totalPages={null}
-            query={params.query}
-            unboundedResults={true}
-          />) : <></>}
-      </div>
-
-      <Footer 
-        footerLinks={footerLinks}
-      />
-      <Identifier
-        identifierContent={identifierContent}
-        identifierLinks={identifierLinks}
-      />
+        <Footer 
+          footerLinks={footerLinks}
+        />
+        <Identifier
+          identifierContent={identifierContent}
+          identifierLinks={identifierLinks}
+        />
+      </StyleContext.Provider>
     </LanguageContext.Provider>
   );
 };

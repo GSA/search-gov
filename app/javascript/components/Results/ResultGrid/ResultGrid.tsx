@@ -26,6 +26,7 @@ interface ResultProps {
 
 export const ResultGrid = ({ vertical, result }: ResultProps) => {  
   const URL_LENGTH = 80;
+
   return (
     <GridContainer className='result search-result-item'>
       <Grid row gap="md">
@@ -35,8 +36,9 @@ export const ResultGrid = ({ vertical, result }: ResultProps) => {
         </Grid>
         }
         <Grid col={true} className='result-meta-data'>
-          {result.publishedDate && (<span className='published-date'>{result.publishedDate}</span>)}
-          {result.updatedDate && (<span className='published-date'>{' '}&#40;Updated on {result.updatedDate}&#41;</span>)}
+          {result.publishedDate && <span className='published-date'>{result.publishedDate}</span>}
+          {result.updatedDate   && <span className='published-date'>{' '}&#40;Updated on {result.updatedDate}&#41;</span>}
+          {result.publishedAt   && <span className='published-date'>{result.publishedAt}</span>}
           <div className='result-title'>
             <a href={result.url} className='result-title-link'>
               <h2 className='result-title-label'>

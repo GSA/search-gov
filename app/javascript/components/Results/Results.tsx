@@ -1,12 +1,15 @@
 import React, { useContext } from 'react';
+import styled from 'styled-components';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
 
 import { Pagination } from './../Pagination/Pagination';
 import { BestBets } from './BestBets';
 import { NoResults } from './NoResults/NoResults';
 import { LanguageContext } from '../../contexts/LanguageContext';
+import { StyleContext } from '../../contexts/StyleContext';
 
 import { ResultGrid } from './ResultGrid/ResultGrid';
+import { ResultsCount } from './ResultsCount/ResultsCount';
 import { HealthTopics } from './HealthTopics/HealthTopics';
 import { ImagesPage } from './ImagesPage/ImagesPage';
 import { RssNews } from './RssNews/RssNews';
@@ -113,6 +116,7 @@ interface ResultsProps {
   } | null;
   unboundedResults: boolean;
   totalPages: number | null;
+  total?: number;
   vertical: string;
   newsAboutQuery?: string;
   spellingSuggestion?: {
@@ -121,11 +125,36 @@ interface ResultsProps {
   };
   videosUrl?: string;
   relatedSearches?: { label: string; link: string; }[];
+  noResultsMessage?: {
+    text?: string;
+    urls?: {
+      title: string;
+      url: string;
+    }[];
+  };
   sitelimit?: {
     sitelimit: string;
     url: string;
   };
 }
+
+const StyledWrapper = styled.div.attrs<{ styles: { footerAndResultsFontFamily: string; resultDescriptionColor: string; resultTitleColor: string; resultTitleLinkVisitedColor: string; resultUrlColor: string; }; }>((props) => ({
+  styles: props.styles
+}))`
+  font-family: ${(props) => props.styles.footerAndResultsFontFamily};
+  .result-title-link > .result-title-label{
+    color: ${(props) => props.styles.resultTitleColor} !important;
+  }
+  .result-title-link:visited > .result-title-label{
+    color: ${(props) => props.styles.resultTitleLinkVisitedColor} !important;
+  }
+  .result-desc > p {
+    color: ${(props) => props.styles.resultDescriptionColor} !important;
+  }
+  .result-url-text {
+    color: ${(props) => props.styles.resultUrlColor} !important;
+  }
+`;
 
 const getImages = (result: Result[] | null) => {
   const imageArr: { url: string, altText?: string, thumbnailUrl?: string }[] = [];
@@ -138,8 +167,9 @@ const getImages = (result: Result[] | null) => {
 };
 
 // eslint-disable-next-line complexity
-export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical, newsAboutQuery = '', spellingSuggestion, videosUrl, relatedSearches, sitelimit }: ResultsProps) => {
+export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical, newsAboutQuery = '', spellingSuggestion, videosUrl, relatedSearches, sitelimit, noResultsMessage, total }: ResultsProps) => {
   const i18n = useContext(LanguageContext);
+  const styles = useContext(StyleContext);
   const imagesResults = getImages(results);
   
   return (
@@ -148,6 +178,8 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
         {sitelimit && (
           <SiteLimitAlert {...sitelimit} query={query} />
         )}
+
+        {total && <ResultsCount total={total}/>}
 
         {spellingSuggestion && (
           <SpellingSuggestion {...spellingSuggestion}/>
@@ -191,32 +223,37 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
           {/* Results */}
           {results && results.length > 0 ? 
             <> 
-              {results.map((result, index) => {
-                if (result.image) {
-                  return null;
-                }
-                if (result?.youtube) {
+              <StyledWrapper styles={styles}>
+                {results.map((result, index) => {
+                  if (result.image) {
+                    return null;
+                  }
+                  if (result?.youtube) {
+                    return (
+                      <Video 
+                        key={index}
+                        link={result.url}
+                        title={result.title}
+                        description={result.description}
+                        publishedAt={result.youtubePublishedAt}
+                        youtubeThumbnailUrl={result.youtubeThumbnailUrl} 
+                        duration={result.youtubeDuration}
+                      />
+                    );
+                  }
                   return (
-                    <Video 
-                      key={index}
-                      link={result.url}
-                      title={result.title}
-                      description={result.description}
-                      publishedAt={result.youtubePublishedAt}
-                      youtubeThumbnailUrl={result.youtubeThumbnailUrl} 
-                      duration={result.youtubeDuration}
-                    />
+                    <ResultGrid key={index} vertical={vertical} result={result} />
                   );
-                }
-                return (
-                  <ResultGrid key={index} vertical={vertical} result={result} />
-                );
-              })}
+                })}
+              </StyledWrapper>
               <GridContainer className='result-divider'>
                 <Grid row gap="md">
                 </Grid>
               </GridContainer></> : (
-              <NoResults errorMsg={i18n.t('noResultsForAndTry', { query })} />
+              <NoResults 
+                errorMsg={i18n.t('noResultsForAndTry', { query })}
+                noResultsMessage={noResultsMessage}
+              />
             )}
 
           {/* Federal register */}

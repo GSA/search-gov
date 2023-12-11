@@ -55,6 +55,7 @@ Feature: Search - redesign
     And I should see a link to the "Next" page
     And I should not see a link to the "Previous" page
     And I should see a link to the last page ("14")
+    And I should see "270 results"
     When I click on the last page ("14")
     Then I should see exactly "20" web search results
     And I should be on page "14" of results
@@ -81,6 +82,7 @@ Feature: Search - redesign
     And I should see "p.whitehouse.gov/hour.html"
     And I should see "Within the last hour article on item"
     And I should not see pagination
+    And I should see "6 results"
 
   @javascript @a11y 
   Scenario: Search with best bets
@@ -121,6 +123,7 @@ Feature: Search - redesign
     Then I should see "First"
     And I should see "Second"
     And I should see exactly "2" web search results
+    And I should see "2 results"
 
   @javascript @a11y 
   Scenario: Docs search
@@ -428,3 +431,16 @@ Feature: Search - redesign
     And I fill in "Enter your search term" with "carbon emissions"
     And I press "Search"
     Then I should see "We're including results for carbon emissions from www.epa.gov/news only."
+
+  @javascript @a11y @a11y_wip
+  Scenario: Search with custom no results page
+    Given the following Affiliates exist:
+      | display_name | name           | contact_email    | first_name   | last_name | domains    | locale | additional_guidance_text     | use_redesigned_results_page |
+      | English site | search.gov     | admin@agency.gov | John         | Bar       | search.gov | en     | Sorry, there are no results. | true                        |
+    And the "search.gov" affiliate has additional links for the no results module
+    When I am on search.gov's search page
+    And I fill in "Enter your search term" with "lkssldfkjsldfkjsld kfj"
+    And I press "Search"
+    Then I should see "Sorry, there are no results."
+    And I should see "First no results link"
+    And I should see "Second no results link"
