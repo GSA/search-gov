@@ -9,8 +9,9 @@ class ImageResultsPostProcessor < ResultsPostProcessor
 
   def normalized_results
     {
-      totalPages: total_pages(@total_results),
       results: format_results,
+      total: @total_results,
+      totalPages: total_pages(@total_results),
       unboundedResults: false
     }
   end

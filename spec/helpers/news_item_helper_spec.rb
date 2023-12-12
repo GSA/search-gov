@@ -4,8 +4,8 @@ describe NewsItemsHelper do
   let(:timestamp) { Time.current }
 
   describe '#news_item_time_ago_in_words(published_at)' do
-    it 'should output time ago in words' do
-      expect(helper.news_item_time_ago_in_words(timestamp)).to eq('less than a minute ago')
+    it 'outputs time ago in words' do
+      expect(helper.news_item_time_ago_in_words(timestamp)).to eq('less than 5 seconds ago')
     end
 
     context 'when published at date is unavailable' do
@@ -17,7 +17,7 @@ describe NewsItemsHelper do
     context 'when published at date is in the future' do
       let(:future_time) { 1.hour.from_now }
 
-      it 'should not output anything' do
+      it 'does not output anything' do
         expect(helper.news_item_time_ago_in_words(future_time)).to be_blank
       end
     end
