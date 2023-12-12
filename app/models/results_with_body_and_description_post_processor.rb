@@ -4,6 +4,8 @@ class ResultsWithBodyAndDescriptionPostProcessor < ResultsPostProcessor
   include NewsItemsHelper
   attr_accessor :results
 
+  SPECIAL_URL_PATH_EXT_NAMES = %w[doc pdf ppt ps rtf swf txt xls docx pptx xlsx].freeze
+
   def initialize(results, _val: nil, youtube: false)
     super
     @results = results
@@ -48,6 +50,7 @@ class ResultsWithBodyAndDescriptionPostProcessor < ResultsPostProcessor
         url: result['url'] || result['link'],
         description: format_description(result),
         publishedAt: news_item_time_ago_in_words(result['published_at']),
+        fileType: file_type(result['url']),
         youtube: @youtube,
         youtubePublishedAt: (result&.published_at if @youtube),
         youtubeThumbnailUrl: (result&.youtube_thumbnail_url if @youtube),
@@ -58,5 +61,12 @@ class ResultsWithBodyAndDescriptionPostProcessor < ResultsPostProcessor
 
   def format_description(result)
     truncate_description(translate_highlights(result['description'] || result['body']))
+  end
+
+  def file_type(url)
+    return if url.blank?
+
+    ext_name = File.extname(url)[1..-1]
+    ext_name if SPECIAL_URL_PATH_EXT_NAMES.include?(ext_name&.downcase)
   end
 end

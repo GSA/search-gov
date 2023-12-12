@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 class I14yPostProcessor < ResultsWithBodyAndDescriptionPostProcessor
   include ResultsRejector
+  SPECIAL_URL_PATH_EXT_NAMES = %w[doc pdf ppt ps rtf swf txt xls docx pptx xlsx].freeze
 
   def initialize(enable_highlighting, results, excluded_urls=[])
     @enable_highlighting = enable_highlighting
@@ -64,8 +67,16 @@ class I14yPostProcessor < ResultsWithBodyAndDescriptionPostProcessor
         description: truncate_description(translate_highlights(result['body'])),
         updatedDate: parse_result_date(result['changed']),
         publishedDate: parse_result_date(result['published_at']),
-        thumbnailUrl: result['thumbnail_url']
+        thumbnailUrl: result['thumbnail_url'],
+        fileType: file_type(result['link'])
       }.compact
     end
+  end
+
+  def file_type(url)
+    return if url.blank?
+
+    ext_name = File.extname(url)[1..-1]
+    ext_name if SPECIAL_URL_PATH_EXT_NAMES.include?(ext_name&.downcase)
   end
 end

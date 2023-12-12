@@ -20,6 +20,31 @@ describe ResultsWithBodyAndDescriptionPostProcessor do
       expect(normalized_results[:unboundedResults]).to be false
     end
 
+    context 'when a results have url that has file extension' do
+      subject(:normalized_results) { described_class.new(results, _val: nil).normalized_results(1) }
+
+      let(:results) do
+        results = [] << Hashie::Mash::Rash.new(title: 'file type title', description: 'file type content', url: 'http://foo.gov.pdf', published_at: DateTime.parse('2011-09-26'))
+      end
+
+      it 'returns results including fileType data' do
+        expect(normalized_results[:results].first).to include(:fileType)
+        expect(normalized_results[:results].first[:fileType]).to eq('pdf')
+      end
+    end
+
+    context 'when a results does not have url that has file extension' do
+      subject(:normalized_results) { described_class.new(results, _val: nil).normalized_results(1) }
+
+      let(:results) do
+        results = [] << Hashie::Mash::Rash.new(title: 'file type title', description: 'file type content', url: 'http://foo.gov', published_at: DateTime.parse('2011-09-26'))
+      end
+
+      it 'returns results without fileType data' do
+        expect(normalized_results[:results].first).not_to include(:fileType)
+      end
+    end
+
     context 'when there are video results' do
       subject(:normalized_results) { described_class.new(results, _val: nil, youtube: true).normalized_results(5) }
 

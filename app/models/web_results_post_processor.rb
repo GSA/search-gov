@@ -3,6 +3,7 @@
 class WebResultsPostProcessor < ResultsPostProcessor
   BING = 'BingV7'
   include ResultsRejector
+  SPECIAL_URL_PATH_EXT_NAMES = %w[doc pdf ppt ps rtf swf txt xls docx pptx xlsx].freeze
 
   attr_reader :results
 
@@ -46,8 +47,9 @@ class WebResultsPostProcessor < ResultsPostProcessor
       {
         title: translate_highlights(result['title']),
         url: result['unescaped_url'],
+        fileType: file_type(result['unescaped_url']),
         description: truncate_description(translate_highlights(result['content']))
-      }
+      }.compact
     end
   end
 
@@ -71,5 +73,12 @@ class WebResultsPostProcessor < ResultsPostProcessor
                                              sort: "",
                                              size: NewsSearch::DEFAULT_VIDEO_PER_PAGE)
     Hash[news_search.results.collect { |news_item| [news_item.link, news_item] }]
+  end
+
+  def file_type(url)
+    return if url.blank?
+
+    ext_name = File.extname(url)[1..-1]
+    ext_name if SPECIAL_URL_PATH_EXT_NAMES.include?(ext_name&.downcase)
   end
 end
