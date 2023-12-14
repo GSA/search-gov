@@ -66,7 +66,7 @@ class ResultsWithBodyAndDescriptionPostProcessor < ResultsPostProcessor
   def file_type(url)
     return if url.blank?
 
-    ext_name = File.extname(url)[1..-1]
+    ext_name = File.extname(url)[1..]
     ext_name if SPECIAL_URL_PATH_EXT_NAMES.include?(ext_name&.downcase)
   end
 end

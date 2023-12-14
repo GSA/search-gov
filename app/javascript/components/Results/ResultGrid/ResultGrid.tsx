@@ -10,7 +10,7 @@ type Result = {
   updatedDate?: string,
   publishedAt?: string,
   publishedDate?: string,
-  fileType: string;
+  fileType?: string;
   thumbnailUrl?: string,
   image?: boolean,
   altText?: string,
@@ -43,8 +43,8 @@ export const ResultGrid = ({ vertical, result }: ResultProps) => {
           <div className='result-title'>
             <a href={result.url} className='result-title-link'>
               <h2 className='result-title-label'>
-                {parse(result.title)} 
-                <span className='filetype-label'>{result.fileType}</span>
+                {parse(result.title)}
+                {result.fileType && <span className='filetype-label'>{result.fileType}</span>}
               </h2>
             </a>
           </div>

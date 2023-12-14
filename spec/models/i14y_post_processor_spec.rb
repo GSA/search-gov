@@ -34,7 +34,7 @@ describe I14yPostProcessor do
       subject(:normalized_results) { described_class.new(true, results, excluded_urls).normalized_results(1) }
 
       let(:results) do
-        results = [] << Hashie::Mash::Rash.new(title: 'file type title', content: "file type content", path: "http://foo.gov.pdf", changed: '2020-09-09 00:00:00 UTC', created: '2020-09-09 00:00:00 UTC', thumbnail_url: 'https://search.gov/img.svg')
+        results = [] << Hashie::Mash::Rash.new(title: 'file type title', content: 'file type content', path: 'http://foo.gov.pdf', changed: '2020-09-09 00:00:00 UTC', created: '2020-09-09 00:00:00 UTC', thumbnail_url: 'https://search.gov/img.svg')
       end
 
       it 'returns results including fileType data' do
@@ -47,7 +47,7 @@ describe I14yPostProcessor do
       subject(:normalized_results) { described_class.new(true, results, excluded_urls).normalized_results(1) }
 
       let(:results) do
-        results = [] << Hashie::Mash::Rash.new(title: 'file type title', content: "file type content", path: "http://foo.gov", changed: '2020-09-09 00:00:00 UTC', created: '2020-09-09 00:00:00 UTC', thumbnail_url: 'https://search.gov/img.svg')
+        results = [] << Hashie::Mash::Rash.new(title: 'file type title', content: 'file type content', path: 'http://foo.gov', changed: '2020-09-09 00:00:00 UTC', created: '2020-09-09 00:00:00 UTC', thumbnail_url: 'https://search.gov/img.svg')
       end
 
       it 'returns results without fileType data' do
