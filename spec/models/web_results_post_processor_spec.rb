@@ -34,12 +34,12 @@ describe WebResultsPostProcessor do
     subject(:normalized_results) { described_class.new('foo', affiliate, results).normalized_results(1) }
 
     let(:results) do
-      results = [] << Hashie::Mash::Rash.new(title: 'file type title', content: 'file type content', unescaped_url: 'http://foo.gov.pdf')
+      [] << Hashie::Mash::Rash.new(title: 'file type title', content: 'file type content', unescaped_url: 'http://foo.gov.pdf')
     end
 
     it 'returns results including fileType data' do
       expect(normalized_results[:results].first).to include(:fileType)
-      expect(normalized_results[:results].first[:fileType]).to eq('pdf')
+      expect(normalized_results[:results].first[:fileType]).to eq('PDF')
     end
   end
 
@@ -47,7 +47,7 @@ describe WebResultsPostProcessor do
     subject(:normalized_results) { described_class.new('foo', affiliate, results).normalized_results(1) }
 
     let(:results) do
-      results = [] << Hashie::Mash::Rash.new(title: 'file type title', content: 'file type content', unescaped_url: 'http://foo.gov')
+      [] << Hashie::Mash::Rash.new(title: 'file type title', content: 'file type content', unescaped_url: 'http://foo.gov')
     end
 
     it 'returns results without fileType data' do

@@ -24,12 +24,12 @@ describe ResultsWithBodyAndDescriptionPostProcessor do
       subject(:normalized_results) { described_class.new(results, _val: nil).normalized_results(1) }
 
       let(:results) do
-        results = [] << Hashie::Mash::Rash.new(title: 'file type title', description: 'file type content', url: 'http://foo.gov.pdf', published_at: DateTime.parse('2011-09-26'))
+        [] << Hashie::Mash::Rash.new(title: 'file type title', description: 'file type content', url: 'http://foo.gov.pdf', published_at: DateTime.parse('2011-09-26'))
       end
 
       it 'returns results including fileType data' do
         expect(normalized_results[:results].first).to include(:fileType)
-        expect(normalized_results[:results].first[:fileType]).to eq('pdf')
+        expect(normalized_results[:results].first[:fileType]).to eq('PDF')
       end
     end
 
@@ -37,7 +37,7 @@ describe ResultsWithBodyAndDescriptionPostProcessor do
       subject(:normalized_results) { described_class.new(results, _val: nil).normalized_results(1) }
 
       let(:results) do
-        results = [] << Hashie::Mash::Rash.new(title: 'file type title', description: 'file type content', url: 'http://foo.gov', published_at: DateTime.parse('2011-09-26'))
+        [] << Hashie::Mash::Rash.new(title: 'file type title', description: 'file type content', url: 'http://foo.gov', published_at: DateTime.parse('2011-09-26'))
       end
 
       it 'returns results without fileType data' do

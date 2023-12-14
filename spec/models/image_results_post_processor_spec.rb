@@ -35,12 +35,12 @@ describe ImageResultsPostProcessor do
 
       let(:results) do
         thumbnail = Hashie::Mash::Rash.new(url: 'http://bar.gov/image.png')
-        results = [] << Hashie::Mash::Rash.new(title: 'file type title', url: 'http://foo.gov.pdf', thumbnail: thumbnail)
+        [] << Hashie::Mash::Rash.new(title: 'file type title', url: 'http://foo.gov.pdf', thumbnail: thumbnail)
       end
 
       it 'returns results including fileType data' do
         expect(normalized_results[:results].first).to include(:fileType)
-        expect(normalized_results[:results].first[:fileType]).to eq('pdf')
+        expect(normalized_results[:results].first[:fileType]).to eq('PDF')
       end
     end
 
@@ -49,7 +49,7 @@ describe ImageResultsPostProcessor do
 
       let(:results) do
         thumbnail = Hashie::Mash::Rash.new(url: 'http://bar.gov/image.png')
-        results = [] << Hashie::Mash::Rash.new(title: 'file type title', url: 'http://foo.gov', thumbnail: thumbnail)
+        [] << Hashie::Mash::Rash.new(title: 'file type title', url: 'http://foo.gov', thumbnail: thumbnail)
       end
 
       it 'returns results without fileType data' do
