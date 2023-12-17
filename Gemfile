@@ -140,7 +140,7 @@ gem 'font-awesome-rails', '~> 4.7.0'
 gem 'font-awesome-grunticon-rails',
     git: 'https://github.com/gsa/font-awesome-grunticon-rails',
     ref: '8ad9734a65f7e2d2de934bebe4ee7b460734f96e'
-gem 'react-rails', '~> 2.7.0'
+gem 'react-rails', '~> 3.0.0'
 # Locking to prevent a version mismatch between the gem and the NPM package version
 # See https://github.com/shakacode/shakapacker#upgrading
 gem 'shakapacker', '~> 6.5.4'
