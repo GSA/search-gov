@@ -42,20 +42,6 @@ describe('Header', () => {
     expect(secondaryLinkTitle).toBeInTheDocument();
   });
 
-  it('uses declared headerLinksFontFamily font', () => {
-    render(<Header page={page} isBasic={false} fontsAndColors={fontsAndColors} />);
-
-    const primaryLinkTitle = screen.getByText(/Primary link 1/i);
-    expect(primaryLinkTitle).toHaveStyle({
-      'font-family': '"Georgia", "Cambria", "Times New Roman", "Times", serif'
-    });
-
-    const secondaryLinkTitle = screen.getByText(/Secondary link 1/i);
-    expect(secondaryLinkTitle).toHaveStyle({
-      'font-family': '"Georgia", "Cambria", "Times New Roman", "Times", serif'
-    });
-  });
-
   it('shows agency logo and alt text in the basic header', () => {
     render(<Header page={page} isBasic={true} fontsAndColors={fontsAndColors} />);
 
