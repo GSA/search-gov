@@ -11,6 +11,7 @@ module ReactHelper
       footerLinks: links(affiliate, :footer_links),
       identifierContent: identifier_content(affiliate),
       identifierLinks: links(affiliate, :identifier_links),
+      language: affiliate.language.slice(:code, :rtl),
       navigationLinks: navigation_links(search, params),
       newsLabel: news_label(search),
       noResultsMessage: no_result_message(search),
