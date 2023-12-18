@@ -5,7 +5,6 @@ module ReactHelper
     data = {
       additionalResults: search.govbox_set,
       alert: search_page_alert(affiliate.alert),
-      currentLocale: affiliate.locale,
       extendedHeader: affiliate.use_extended_header,
       fontsAndColors: affiliate.visual_design_json,
       footerLinks: links(affiliate, :footer_links),
