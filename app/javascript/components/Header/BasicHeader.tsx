@@ -1,26 +1,52 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import { darken } from 'polished';
 import { Header as UswdsHeader, PrimaryNav, Logo, Title, NavMenuButton } from '@trussworks/react-uswds';
+import { StyleContext } from '../../contexts/StyleContext';
 
 import { HeaderProps } from './../props';
 
 import './BasicHeader.css';
 
-export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen, fontsAndColors }: HeaderProps) => {
+const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: { buttonBackgroundColor: string; headerLinksFontFamily: string, headerBackgroundColor: string, headerPrimaryLinkColor: string, headerSecondaryLinkColor: string; }; }>((props) => ({
+  styles: props.styles
+}))`
+  background-color: ${(props) => props.styles.headerBackgroundColor};
+  .usa-nav__primary, .usa-nav__secondary-links {
+    font-family: ${(props) => props.styles.headerLinksFontFamily};
+  }
+  a.usa-nav__link {
+    color: ${(props) => props.styles.headerPrimaryLinkColor};
+  }
+  .usa-nav__secondary-item > a {
+    color: ${(props) => props.styles.headerSecondaryLinkColor};
+  }
+  button.usa-menu-btn {
+    background-color: ${(props) => props.styles.buttonBackgroundColor};
+    &:hover {
+      background-color: ${(props) => darken(0.10, props.styles.buttonBackgroundColor)};
+    }
+  }
+`;
+
+export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen }: HeaderProps) => {
+  const styles = useContext(StyleContext);
+
   const primaryNavItems = [
     <a key="primaryNav_2" className="usa-nav__link" href="">
-      <span style={{ fontFamily: fontsAndColors?.headerLinksFontFamily }}>{'Primary link 1'}</span>
+      <span>{'Primary link 1'}</span>
     </a>,
     <a key="primaryNav_2" className="usa-nav__link" href="">
-      <span style={{ fontFamily: fontsAndColors?.headerLinksFontFamily }}>{'Primary link 2'}</span>
+      <span>{'Primary link 2'}</span>
     </a>,
     <a key="primaryNav_2" className="usa-nav__link" href="">
-      <span style={{ fontFamily: fontsAndColors?.headerLinksFontFamily }}>{'Primary link 3'}</span>
+      <span>{'Primary link 3'}</span>
     </a>
   ];
 
   return (
     <>
-      <UswdsHeader basic>
+      <StyledUswdsHeader basic styles={styles}>
         <div className="usa-nav-container">
           <div className="usa-navbar">
             {page.logo?.url && (
@@ -49,7 +75,7 @@ export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen, fontsAndColo
             onToggleMobileNav={toggleMobileNav}
             mobileExpanded={mobileNavOpen}
           >
-            <ul className="usa-nav__secondary-links" style={{ fontFamily: fontsAndColors?.headerLinksFontFamily }}>
+            <ul className="usa-nav__secondary-links">
               <li className="usa-nav__secondary-item">
                 <a href="#linkOne">Secondary link 1</a>
               </li>
@@ -59,7 +85,7 @@ export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen, fontsAndColo
             </ul>
           </PrimaryNav>
         </div>
-      </UswdsHeader>
+      </StyledUswdsHeader>
     </>
   );
 };

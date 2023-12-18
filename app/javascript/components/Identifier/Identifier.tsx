@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
+import styled from 'styled-components';
 import { Identifier as UswdsIdentifier, IdentifierMasthead, IdentifierLinks, IdentifierIdentity, Link, IdentifierGov, IdentifierLinkItem, IdentifierLink } from '@trussworks/react-uswds';
 import { LanguageContext } from '../../contexts/LanguageContext';
+import { StyleContext } from '../../contexts/StyleContext';
 
 import { IdentifierLogoWrapper } from './IdentifierLogoWrapper';
 
@@ -18,8 +20,21 @@ interface IdentifierProps {
   }[] | null;
 }
 
+const StyledUswdsIdentifier = styled(UswdsIdentifier).attrs<{ styles: { identifierBackgroundColor: string, identifierHeadingColor: string; identifierLinkColor: string; }; }>((props) => ({
+  styles: props.styles
+}))`
+  background-color: ${(props) => props.styles.identifierBackgroundColor};
+  .usa-identifier__container, .usa-identifier__container > a, .usa-identifier__identity-disclaimer, .usa-identifier__identity-disclaimer > a {
+    color: ${(props) => props.styles.identifierHeadingColor};
+  }
+  .usa-identifier__required-links-item > a, .usa-identifier__identity-domain {
+    color: ${(props) => props.styles.identifierLinkColor};
+  }
+`;
+
 export const Identifier = ({ identifierContent, identifierLinks }: IdentifierProps) => {
   const i18n = useContext(LanguageContext);
+  const styles = useContext(StyleContext);
 
   const primaryIdentifierContent = (identifierContent?.parentAgencyLink && identifierContent?.parentAgencyName) ?
     <>
@@ -42,7 +57,7 @@ export const Identifier = ({ identifierContent, identifierLinks }: IdentifierPro
 
   return (
     <div id="serp-identifier-wrapper">
-      <UswdsIdentifier>
+      <StyledUswdsIdentifier styles={styles}>
         <IdentifierMasthead aria-label="Agency identifier">
           {identifierContent?.logoUrl && (
             <IdentifierLogoWrapper
@@ -66,7 +81,7 @@ export const Identifier = ({ identifierContent, identifierLinks }: IdentifierPro
             {i18n.t('visitUsaDotGov')}
           </Link>
         </IdentifierGov>
-      </UswdsIdentifier>
+      </StyledUswdsIdentifier>
     </div>
   );
 };
