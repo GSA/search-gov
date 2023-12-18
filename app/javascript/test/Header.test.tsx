@@ -43,7 +43,7 @@ describe('Header', () => {
   });
 
   it('shows agency logo and alt text in the basic header', () => {
-    render(<Header page={page} isBasic={true} fontsAndColors={fontsAndColors} />);
+    render(<Header page={page} isBasic={true} />);
 
     const img = Array.from(document.getElementsByClassName('usa-identifier__logo')).pop() as HTMLImageElement;
 
@@ -52,7 +52,7 @@ describe('Header', () => {
   });
 
   it('shows agency logo and alt text in the basic header', () => {
-    render(<Header page={page} isBasic={false} fontsAndColors={fontsAndColors} />);
+    render(<Header page={page} isBasic={false} />);
 
     const img = Array.from(document.getElementsByClassName('usa-identifier__logo')).pop() as HTMLImageElement;
 
