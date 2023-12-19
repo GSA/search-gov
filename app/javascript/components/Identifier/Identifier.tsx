@@ -1,14 +1,18 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { Identifier as UswdsIdentifier, IdentifierMasthead, IdentifierLinks, IdentifierLogos, IdentifierLogo, IdentifierIdentity, Link, IdentifierGov, IdentifierLinkItem, IdentifierLink } from '@trussworks/react-uswds';
+import { Identifier as UswdsIdentifier, IdentifierMasthead, IdentifierLinks, IdentifierIdentity, Link, IdentifierGov, IdentifierLinkItem, IdentifierLink } from '@trussworks/react-uswds';
 import { LanguageContext } from '../../contexts/LanguageContext';
 import { StyleContext } from '../../contexts/StyleContext';
+
+import { IdentifierLogoWrapper } from './IdentifierLogoWrapper';
 
 interface IdentifierProps {
   identifierContent?: {
     domainName: string | null;
     parentAgencyName: string | null;
     parentAgencyLink: string | null;
+    logoUrl: string | null;
+    logoAltText: string | null;
   };
   identifierLinks?: {
     title: string,
@@ -28,9 +32,6 @@ const StyledUswdsIdentifier = styled(UswdsIdentifier).attrs<{ styles: { identifi
   }
 `;
 
-// this is just a dummy logo for UI purposes - to be dynamic
-const logoImg = 'https://search.gov/assets/gsa-logo-893b811a49f74b06b2bddbd1cde232d2922349c8c8c6aad1d88594f3e8fe42bd097e980c57c5e28eff4d3a9256adb4fcd88bf73a5112833b2efe2e56791aad9d.svg';
-
 export const Identifier = ({ identifierContent, identifierLinks }: IdentifierProps) => {
   const i18n = useContext(LanguageContext);
   const styles = useContext(StyleContext);
@@ -43,7 +44,7 @@ export const Identifier = ({ identifierContent, identifierLinks }: IdentifierPro
       </Link>
     </> : <></>;
 
-  const primaryIdentifierLinks = identifierLinks && identifierLinks.length > 0 ? 
+  const primaryIdentifierLinks = identifierLinks ? 
     <>
       {identifierLinks.map((link, index) => {
         return (
@@ -58,15 +59,12 @@ export const Identifier = ({ identifierContent, identifierLinks }: IdentifierPro
     <div id="serp-identifier-wrapper">
       <StyledUswdsIdentifier styles={styles}>
         <IdentifierMasthead aria-label="Agency identifier">
-          <IdentifierLogos>
-            <IdentifierLogo href="">
-              <img
-                className="usa-identifier__logo-img"
-                src={logoImg}
-                alt="<Parent agency> logo"
-              />
-            </IdentifierLogo>
-          </IdentifierLogos>
+          {identifierContent?.logoUrl && (
+            <IdentifierLogoWrapper
+              logoUrl={identifierContent.logoUrl}
+              logoAltText={identifierContent?.logoAltText}
+            />
+          )}
           <IdentifierIdentity domain={identifierContent?.domainName || ''}>
             {primaryIdentifierContent}
           </IdentifierIdentity>
