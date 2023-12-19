@@ -67,4 +67,22 @@ describe('Header', () => {
     expect(secondSecondaryHeaderLink.childNodes[0]).toHaveAttribute('href', 'https://second.gov');
     expect(secondSecondaryHeaderLink.childNodes[0]).toHaveTextContent('second secondary header link');
   });
+
+  it('shows agency logo and alt text in the basic header', () => {
+    render(<Header page={page} isBasic={true} />);
+
+    const img = Array.from(document.getElementsByClassName('usa-identifier__logo')).pop() as HTMLImageElement;
+
+    expect(img).toHaveAttribute('src', page.logo.url);
+    expect(img).toHaveAttribute('alt', page.logo.text);
+  });
+
+  it('shows agency logo and alt text in the basic header', () => {
+    render(<Header page={page} isBasic={false} />);
+
+    const img = Array.from(document.getElementsByClassName('usa-identifier__logo')).pop() as HTMLImageElement;
+
+    expect(img).toHaveAttribute('src', page.logo.url);
+    expect(img).toHaveAttribute('alt', page.logo.text);
+  });
 });

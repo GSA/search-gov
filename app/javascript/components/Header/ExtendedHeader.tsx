@@ -69,7 +69,7 @@ export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHe
             className="width-full"
             size="slim"
             image={
-              <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} />
+              page.logo?.url ? <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} /> : null
             }
             heading={
               <Title>{page.title}</Title>
