@@ -32,7 +32,7 @@ type Result = {
   publishedDate?: string,
   thumbnailUrl?: string,
   image?: boolean,
-  fileType?: string,
+  fileType: string,
   altText?: string,
   youtube?: boolean,
   youtubePublishedAt?: string,
