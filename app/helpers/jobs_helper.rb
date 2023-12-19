@@ -37,7 +37,6 @@ module JobsHelper
   end
 
   def format_locations(locations)
-    binding.pry
     locations.many? ? "Multiple Locations" : locations.first
   end
 
