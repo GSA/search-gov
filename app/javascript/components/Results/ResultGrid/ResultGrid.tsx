@@ -10,7 +10,7 @@ type Result = {
   updatedDate?: string,
   publishedAt?: string,
   publishedDate?: string,
-  fileType?: string;
+  fileType: string;
   thumbnailUrl?: string,
   image?: boolean,
   altText?: string,
@@ -24,6 +24,20 @@ interface ResultProps {
   vertical?: string;
   result: Result;
 }
+
+const getDescription = (description: string) => {
+  if (!description) {
+    return;
+  }
+  return (<p>{parse(description)}</p>);
+};
+
+const getFileType = (fileType: string) => {
+  if (!fileType) {
+    return;
+  }
+  return (<span className='filetype-label'>{fileType}</span>);
+};
 
 export const ResultGrid = ({ vertical, result }: ResultProps) => {  
   const URL_LENGTH = 80;
@@ -43,13 +57,13 @@ export const ResultGrid = ({ vertical, result }: ResultProps) => {
           <div className='result-title'>
             <a href={result.url} className='result-title-link'>
               <h2 className='result-title-label'>
-                {parse(result.title)}
-                {result.fileType && <span className='filetype-label'>{result.fileType}</span>}
+                {parse(result.title)} 
+                {getFileType(result.fileType)}
               </h2>
             </a>
           </div>
           <div className='result-desc'>
-            {result.description && <p>{parse(result.description)}</p>}
+            {getDescription(result.description)}
             <div className='result-url-text'>{truncateUrl(result.url, URL_LENGTH)}</div>
           </div>
         </Grid>

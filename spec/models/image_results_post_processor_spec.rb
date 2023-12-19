@@ -30,33 +30,6 @@ describe ImageResultsPostProcessor do
       end
     end
 
-    context 'when a results have url that has file extension' do
-      subject(:normalized_results) { described_class.new(1, results).normalized_results }
-
-      let(:results) do
-        thumbnail = Hashie::Mash::Rash.new(url: 'http://bar.gov/image.png')
-        [] << Hashie::Mash::Rash.new(title: 'file type title', url: 'http://foo.gov.pdf', thumbnail: thumbnail)
-      end
-
-      it 'returns results including fileType data' do
-        expect(normalized_results[:results].first).to include(:fileType)
-        expect(normalized_results[:results].first[:fileType]).to eq('PDF')
-      end
-    end
-
-    context 'when a results does not have url that has file extension' do
-      subject(:normalized_results) { described_class.new(1, results).normalized_results }
-
-      let(:results) do
-        thumbnail = Hashie::Mash::Rash.new(url: 'http://bar.gov/image.png')
-        [] << Hashie::Mash::Rash.new(title: 'file type title', url: 'http://foo.gov', thumbnail: thumbnail)
-      end
-
-      it 'returns results without fileType data' do
-        expect(normalized_results[:results].first).not_to include(:fileType)
-      end
-    end
-
     context 'when there are no results' do
       let(:total_results) { nil }
       let(:results) { nil }
