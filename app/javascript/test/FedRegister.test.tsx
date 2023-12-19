@@ -75,7 +75,7 @@ describe('FedRegister component', () => {
       <FedRegister fedRegisterDocs={fedRegisterDocs} query='government' />
     );
     expect(screen.getByText('A Proposed Rule by the GSA and the Social Security Administarion posted on January 02, 2020.')).toBeInTheDocument();
-    expect(screen.getByText('Pages 29212 - 29215 (4 page) [FR DOC #: 2016-10932]')).toBeInTheDocument();
+    expect(screen.getByText('Pages 29212 - 29215 (4 pages) [FR DOC #: 2016-10932]')).toBeInTheDocument();
   });
 
   it('shows comment ends today', () => {

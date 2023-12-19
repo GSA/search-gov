@@ -41,4 +41,22 @@ describe('Header', () => {
     const secondaryLinkTitle = screen.getByText(/Secondary link 1/i);
     expect(secondaryLinkTitle).toBeInTheDocument();
   });
+
+  it('shows agency logo and alt text in the basic header', () => {
+    render(<Header page={page} isBasic={true} />);
+
+    const img = Array.from(document.getElementsByClassName('usa-identifier__logo')).pop() as HTMLImageElement;
+
+    expect(img).toHaveAttribute('src', page.logo.url);
+    expect(img).toHaveAttribute('alt', page.logo.text);
+  });
+
+  it('shows agency logo and alt text in the basic header', () => {
+    render(<Header page={page} isBasic={false} />);
+
+    const img = Array.from(document.getElementsByClassName('usa-identifier__logo')).pop() as HTMLImageElement;
+
+    expect(img).toHaveAttribute('src', page.logo.url);
+    expect(img).toHaveAttribute('alt', page.logo.text);
+  });
 });

@@ -177,8 +177,16 @@ module ReactHelper
     {
       domainName: affiliate.identifier_domain_name,
       parentAgencyName: affiliate.parent_agency_name,
-      parentAgencyLink: affiliate.parent_agency_link
+      parentAgencyLink: affiliate.parent_agency_link,
+      logoUrl: identifier_logo_url(affiliate.identifier_logo),
+      logoAltText: logo_text(affiliate.identifier_logo_blob)
     }
+  end
+
+  def identifier_logo_url(identifier_logo)
+    return if identifier_logo.blank?
+
+    url_for(identifier_logo)
   end
 
   def agency_name(agency)

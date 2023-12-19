@@ -52,7 +52,7 @@ const getFedRegisterAgenciesText = (agencyNames: string[]) => {
 
 const getFedRegDocPageInfo = (document: FedRegisterDoc) => {
   let content = `Pages ${document.startPage} - ${document.endPage} `;
-  content += `(${document.pageLength} page) `;
+  content += document.pageLength === 1 ? `(${document.pageLength} page) ` : `(${document.pageLength} pages) `;
   content += `[FR DOC #: ${document.documentNumber}]`;
   return content;
 };
