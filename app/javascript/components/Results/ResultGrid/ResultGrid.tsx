@@ -10,7 +10,7 @@ type Result = {
   updatedDate?: string,
   publishedAt?: string,
   publishedDate?: string,
-  fileType: string;
+  fileType?: string;
   thumbnailUrl?: string,
   image?: boolean,
   altText?: string,
@@ -32,7 +32,7 @@ const getDescription = (description: string) => {
   return (<p>{parse(description)}</p>);
 };
 
-const getFileType = (fileType: string) => {
+const getFileType = (fileType?: string) => {
   if (!fileType) {
     return;
   }

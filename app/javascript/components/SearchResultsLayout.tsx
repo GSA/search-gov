@@ -44,7 +44,7 @@ interface SearchResultsLayoutProps {
       updatedDate?: string;
       publishedDate?: string;
       thumbnailUrl?: string;
-      fileType: string,
+      fileType?: string,
       youtube?: boolean;
       youtubePublishedAt?: string;
       youtubeThumbnailUrl?: string;
