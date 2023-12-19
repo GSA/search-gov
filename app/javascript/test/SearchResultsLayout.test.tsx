@@ -79,7 +79,7 @@ describe('SearchResultsLayout', () => {
   it('renders search results', () => {
     const results : any[] = []; // eslint-disable-line @typescript-eslint/no-explicit-any
     for (let counter = 0; counter < 20; counter += 1) {
-      results.push({ title: 'test result 1', url: 'https://www.search.gov', description: 'result body', publishedDate: 'May 9th, 2023', updatedDate: 'May 10th, 2023' });
+      results.push({ title: 'test result 1', url: 'https://www.search.gov', description: 'result body', fileType: 'PDF', publishedDate: 'May 9th, 2023', updatedDate: 'May 10th, 2023' });
     }
     const resultsData = { totalPages: 2, unboundedResults: true, results };
     render(<SearchResultsLayout page={page} params={{ query: 'foo' }} resultsData={resultsData} vertical='web' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} navigationLinks={navigationLinks} />);
@@ -88,9 +88,28 @@ describe('SearchResultsLayout', () => {
     const resultBody = screen.getAllByText(/result body/i);
     const publishedDate = screen.getAllByText(/May 9th, 2023/i);
     const updatedDate = screen.getAllByText(/Updated on May 10th, 2023/i);
+    const fileType = screen.getAllByText(/PDF/i);
     expect(resultTitle).toHaveLength(20);
     expect(resultUrl).toHaveLength(20);
     expect(resultBody).toHaveLength(20);
+    expect(publishedDate).toHaveLength(20);
+    expect(updatedDate).toHaveLength(20);
+    expect(fileType).toHaveLength(20);
+  });
+
+  it('renders search results with no description and no file type', () => {
+    const results : any[] = []; // eslint-disable-line @typescript-eslint/no-explicit-any
+    for (let counter = 0; counter < 20; counter += 1) {
+      results.push({ title: 'test result 1', url: 'https://www.search.gov', publishedDate: 'May 9th, 2023', updatedDate: 'May 10th, 2023' });
+    }
+    const resultsData = { totalPages: 2, unboundedResults: true, results };
+    render(<SearchResultsLayout page={page} params={{ query: 'foo' }} resultsData={resultsData} vertical='web' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} navigationLinks={navigationLinks} />);
+    const resultTitle = screen.getAllByText(/test result 1/i);
+    const resultUrl = screen.getAllByText(/www.search.gov/i);
+    const publishedDate = screen.getAllByText(/May 9th, 2023/i);
+    const updatedDate = screen.getAllByText(/Updated on May 10th, 2023/i);
+    expect(resultTitle).toHaveLength(20);
+    expect(resultUrl).toHaveLength(20);
     expect(publishedDate).toHaveLength(20);
     expect(updatedDate).toHaveLength(20);
   });
