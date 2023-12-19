@@ -10,11 +10,11 @@
   line-height: 162%;
 }
 
-[dir="rtl"] .usa-search [type=submit] {
+[dir="rtl"] .usa-search .usa-button {
   border-radius: 4px 0 0 4px;
 }
 
-[dir="rtl"] .usa-search [type=search] {
+[dir="rtl"] .usa-search .usa-input {
   border-right: 1px solid;
 }
 
@@ -32,6 +32,6 @@
   }
 }
 
-[dir="rtl"] .usa-banner__inner > * {
+[dir="rtl"] .usa-banner__inner > div,  [dir="rtl"] .usa-banner__inner > button {
   margin-right: 0.5rem;
 }
