@@ -295,7 +295,7 @@ describe Emailer do
     before do
       affiliate = affiliates(:basic_affiliate)
       report_date = Date.civil(report_year, 1, 1)
-      nps_top_queries = [['query5', 54, 53], ['query6', 55, 43], ['query4', 53, 42]]
+      nps_top_queries = [['query5', 54_000, 53_321], ['query6', 55, 43], ['query4', 53, 42]]
       insufficient = RtuQueryRawHumanArray::INSUFFICIENT_DATA
       allow(RtuQueryRawHumanArray).to receive(:new).and_return double(RtuQueryRawHumanArray, top_queries: insufficient)
       allow(RtuQueryRawHumanArray).to receive(:new).with('nps.gov', Date.parse('2012-01-01'), Date.parse('2012-12-31'), 100).and_return double(RtuQueryRawHumanArray, top_queries: nps_top_queries)
@@ -308,7 +308,7 @@ describe Emailer do
       body = Sanitizer.sanitize(email.default_part_body)
       expect(body).to include('Most Popular Queries for 2012')
       expect(body).to include('NPEspanol Site Not enough historic data to compute most popular')
-      expect(body).to include('query5 54 53')
+      expect(body).to include('query5 54,000 53,321')
       expect(body).to include('query6 55 43')
       expect(body).to include('query4 53 42')
     end

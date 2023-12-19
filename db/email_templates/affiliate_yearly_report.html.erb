@@ -36,11 +36,11 @@
         <th style="<%= th_style %>">Total Queries (Bots + Humans)</th>
         <th style="<%= th_style %>">Real Queries</th>
       </tr>
-      <% popular_queries.each do |popular_query| %>
+      <% popular_queries.each do |(term, total_queries, real_queries)| %>
         <tr style="<%= cycle('', tr_even_style, :name => 'colors') %>">
-          <td style="<%= td_text_style %>"><%= popular_query[0] %></td>
-          <td style="<%= td_style %>"><%= popular_query[1] %></td>
-          <td style="<%= td_style %>"><%= popular_query[2] %></td>
+          <td style="<%= td_text_style %>"><%= term %></td>
+          <td style="<%= td_style %>"><%= number_with_delimiter(total_queries) %></td>
+          <td style="<%= td_style %>"><%= number_with_delimiter(real_queries) %></td>
         </tr>
       <% end %>
       <% reset_cycle('colors') %>
