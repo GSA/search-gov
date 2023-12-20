@@ -19,8 +19,7 @@ class SearchesController < ApplicationController
     search_klass, @search_vertical, template = pick_klass_vertical_template
     # For the SERP redesign, we override the template set in the previous line.
     template = :index_redesign if redesign?
-    # @search = search_klass.new(@search_options.merge(geoip_info: GeoipLookup.lookup(request.remote_ip)))
-    @search = search_klass.new(@search_options.merge(geoip_info: GeoipLookup.lookup("96.231.60.212")))
+    @search = search_klass.new(@search_options.merge(geoip_info: GeoipLookup.lookup(request.remote_ip)))
     @search.run
     @form_path = search_path
     @page_title = @search.query

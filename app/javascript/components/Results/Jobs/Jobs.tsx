@@ -20,6 +20,7 @@ type Job = {
 }[];
 interface JobsProps {
   jobs?: Job;
+  agencyName?: string;
 }
 
 const numberToCurrency = new Intl.NumberFormat('en-US', {
@@ -55,7 +56,7 @@ const formatSalary = (job: { minimumPay: number, maximumPay: number, rateInterva
   return minStr + withMax + job.rateIntervalCode;
 };
 
-export const Jobs = ({ jobs=[] }: JobsProps) => {
+export const Jobs = ({ jobs=[], agencyName }: JobsProps) => {
   const i18n = useContext(LanguageContext);
   const styles = useContext(StyleContext);
 
@@ -69,6 +70,13 @@ export const Jobs = ({ jobs=[] }: JobsProps) => {
     moreJobs = jobs.slice(MAX_JOBS_IN_COLLAPSE_VIEW, jobs.length);
   }   
 
+  const jobOpeningsHeader = (agency: string | undefined) => {
+    if(agency){
+      return `${i18n.t('jobOpenings')} ${i18n.t('atAgency', {agency})}`
+    }
+    return i18n.t('federalJobOpenings');
+  }
+
   return (
     <>
       <StyledWrapper styles={styles}>
@@ -77,7 +85,7 @@ export const Jobs = ({ jobs=[] }: JobsProps) => {
             <Grid row gap="md">
               <Grid col={true}>
                 <h2 className='jobs-title-wrapper-label'>
-                  {i18n.t('federalJobOpenings')}
+                  {jobOpeningsHeader(agencyName)}
                 </h2>
               </Grid>
               <Grid col={true} className='jobs-logo-wrapper'>
