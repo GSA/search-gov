@@ -15,6 +15,7 @@
 }
 
 [dir="rtl"] .usa-search .usa-input {
+  border-left:  none;
   border-right: 1px solid;
 }
 
@@ -26,12 +27,12 @@
   transform: rotate(180deg);
 }
 
+[dir="rtl"] .usa-banner__inner > div, [dir="rtl"] .usa-banner__inner > button {
+  margin-right: 0.5rem;
+}
+
 @media (min-width: 64em) {
   [dir="rtl"] .usa-nav__secondary-item + .usa-nav__secondary-item::before {
     padding: 0 0 0 0.25rem;
   }
-}
-
-[dir="rtl"] .usa-banner__inner > div,  [dir="rtl"] .usa-banner__inner > button {
-  margin-right: 0.5rem;
 }
