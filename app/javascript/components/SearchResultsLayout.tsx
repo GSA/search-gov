@@ -26,6 +26,11 @@ export interface PageData {
   }
 }
 
+export interface Language {
+  code: string;
+  rtl: boolean;
+}
+
 interface SearchResultsLayoutProps {
   page: PageData;
   resultsData?: {
@@ -125,7 +130,7 @@ interface SearchResultsLayoutProps {
   translations: {
     en?: { noResultsForAndTry: string }
   };
-  currentLocale?: string;
+  language?: Language;
   relatedSites?: {
     label: string;
     link: string;
@@ -232,11 +237,11 @@ const isBasicHeader = (extendedHeader: boolean): boolean => {
 
 const videosUrl = (links: NavigationLink[]) => links.find((link) => link.facet === 'YouTube')?.url ;
 
-const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [], extendedHeader, footerLinks, primaryHeaderLinks, secondaryHeaderLinks, fontsAndColors, newsLabel, identifierContent, identifierLinks, navigationLinks, relatedSitesDropdownLabel = '', alert, spellingSuggestion, relatedSearches, sitelimit, noResultsMessage }: SearchResultsLayoutProps) => {
+const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, params = {}, translations, language = { code: 'en', rtl: false }, relatedSites = [], extendedHeader, footerLinks, primaryHeaderLinks, secondaryHeaderLinks, fontsAndColors, newsLabel, identifierContent, identifierLinks, navigationLinks, relatedSitesDropdownLabel = '', alert, spellingSuggestion, relatedSearches, sitelimit, noResultsMessage }: SearchResultsLayoutProps) => {
   const i18n = new I18n(translations);
   i18n.defaultLocale = 'en';
   i18n.enableFallback = true;
-  i18n.locale = currentLocale;
+  i18n.locale = language.code;
 
   return (
     <LanguageContext.Provider value={i18n}>
