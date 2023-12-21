@@ -74,7 +74,7 @@ interface ResultsProps {
     jobs?: {
       positionTitle: string;
       positionUri: string;
-      positionLocationDisplay: string;
+      positionLocation: string;
       organizationName: string;
       minimumPay: number;
       maximumPay: number;
