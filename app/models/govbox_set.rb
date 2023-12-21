@@ -143,12 +143,11 @@ class GovboxSet
 
     @jobs&.
       map { |job| job.slice(:position_title, :position_uri, :position_location, :organization_name, :minimum_pay, :maximum_pay, :rate_interval_code, :application_close_date) }&.
-      each { |job| job[:application_close_date] = Date.parse(job[:application_close_date]).to_fs(:long) }&.
-      each { |job| job[:position_location] = format_locations(job[:position_location]) }
+      each { |job| job[:application_close_date] = Date.parse(job[:application_close_date]).to_fs(:long), job[:position_location] = format_locations(job[:position_location]) }
   end
 
   def format_locations(locations)
-    locations.many? ? "Multiple Locations" : locations.first[:location_name]
+    locations.many? ? 'Multiple Locations' : locations.first[:location_name]
   end
 
   def format_health_topic
