@@ -13,6 +13,52 @@ describe ReactHelper do
       allow(helper).to receive(:react_component)
     end
 
+    context 'when an affiliate has primary header links' do
+      before do
+        3.times do |i|
+          Link.create!(position: i,
+                       title: "Link #{i}",
+                       url: "https://link_#{i}.gov",
+                       type: PrimaryHeaderLink,
+                       affiliate_id: affiliate.id)
+        end
+      end
+
+      it 'sends the primary header links array to SearchResultsLayout component' do
+        helper.search_results_layout(search, {}, vertical, affiliate, search_options)
+
+        expect(helper).to have_received(:react_component).
+          with('SearchResultsLayout', hash_including(primaryHeaderLinks: [
+                                                       { title: 'Link 0', url: 'https://link_0.gov' },
+                                                       { title: 'Link 1', url: 'https://link_1.gov' },
+                                                       { title: 'Link 2', url: 'https://link_2.gov' }
+                                                     ]))
+      end
+    end
+
+    context 'when an affiliate has secondary header links' do
+      before do
+        3.times do |i|
+          Link.create!(position: i,
+                       title: "Link #{i}",
+                       url: "https://link_#{i}.gov",
+                       type: SecondaryHeaderLink,
+                       affiliate_id: affiliate.id)
+        end
+      end
+
+      it 'sends the secondary header links array to SearchResultsLayout component' do
+        helper.search_results_layout(search, {}, vertical, affiliate, search_options)
+
+        expect(helper).to have_received(:react_component).
+          with('SearchResultsLayout', hash_including(secondaryHeaderLinks: [
+                                                       { title: 'Link 0', url: 'https://link_0.gov' },
+                                                       { title: 'Link 1', url: 'https://link_1.gov' },
+                                                       { title: 'Link 2', url: 'https://link_2.gov' }
+                                                     ]))
+      end
+    end
+
     context 'when an affiliate has footer links' do
       before do
         3.times do |i|
