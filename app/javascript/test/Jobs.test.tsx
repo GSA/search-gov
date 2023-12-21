@@ -110,7 +110,7 @@ describe('Jobs component', () => {
 
   it('renders Jobs component', () => {
     render(
-      <Jobs {...jobsProps}/>
+      <Jobs {...jobsProps} agencyName='USA.gov'/>
     );
   });
 
@@ -129,7 +129,7 @@ describe('Jobs component', () => {
     ] };
 
     render(
-      <Jobs {...jobsProps2}/>
+      <Jobs {...jobsProps2} />
     );
     expect(screen.getByText('$122,000.00+/yr')).toBeInTheDocument();
     expect(screen.getByText('Contract Specialist 5')).toBeInTheDocument();

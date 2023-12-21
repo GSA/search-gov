@@ -71,11 +71,11 @@ export const Jobs = ({ jobs=[], agencyName }: JobsProps) => {
   }   
 
   const jobOpeningsHeader = (agency: string | undefined) => {
-    if(agency){
-      return `${i18n.t('jobOpenings')} ${i18n.t('atAgency', {agency})}`
+    if (agency) {
+      return `${i18n.t('jobOpenings')} ${i18n.t('atAgency', { agency })}`;
     }
     return i18n.t('federalJobOpenings');
-  }
+  };
 
   return (
     <>
