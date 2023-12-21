@@ -179,9 +179,9 @@ Feature: Search - redesign
     And I should see a link to "Previous"
     And I should see a link to "1" with class "usa-pagination__button"
     And I should see "Next"
-    When I follow "5"
-    And I follow "7"
-    And I follow "8"
+    When I follow page "5"
+    And I follow page "7"
+    And I follow page "8"
     And I should see exactly "10" web search results
 
     When I am on es.agency.gov's "Noticias-1" news search page
