@@ -370,10 +370,10 @@ Feature: Search - redesign
     And I should see a link to "1" with class "usa-pagination__button"
 
     When I follow "Previous"
-    And I follow "2"
+    And I follow page "2"
     Then I should see exactly "20" redesigned video search results
 
-    When I follow "1"
+    When I follow page "1"
     Then I should see exactly "20" redesigned video search results
 
   @javascript @a11y
