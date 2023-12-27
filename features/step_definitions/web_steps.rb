@@ -233,6 +233,6 @@ Then /^the downloaded file should include "([^"]*)"$/ do |content|
   page.driver.response.body.should match content
 end
 
-When('I follow page {string}') do |string|
-  find('.usa-pagination').click_link(string)
+When('I follow page {string}') do |page|
+  find('.usa-pagination').click_link(page)
 end
