@@ -278,8 +278,8 @@ describe ReactHelper do
         {
           newsAboutQuery: 'RSSGovbox about chocolate',
           results: [
-            { title: 'GSA News Item 1', feedName: 'Usa Gov Blog', publishedAt: 'about 12 years ago' },
-            { title: 'GSA News Item 2', feedName: 'Usa Gov Blog', publishedAt: 'about 12 years ago' }
+            { title: 'GSA News Item 1', feedName: 'Usa Gov Blog', publishedAt: 'over 12 years ago' },
+            { title: 'GSA News Item 2', feedName: 'Usa Gov Blog', publishedAt: 'over 12 years ago' }
           ]
         }
       end
