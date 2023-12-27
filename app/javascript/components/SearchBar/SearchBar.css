@@ -9,3 +9,30 @@
   font-weight: 400;
   line-height: 162%;
 }
+
+[dir="rtl"] .usa-search .usa-button {
+  border-radius: 4px 0 0 4px;
+}
+
+[dir="rtl"] .usa-search .usa-input {
+  border-left:  none;
+  border-right: 1px solid;
+}
+
+[dir="rtl"] .usa-nav__secondary {
+  left: 2em;
+}
+
+[dir="rtl"] .usa-pagination__arrow svg {
+  transform: rotate(180deg);
+}
+
+[dir="rtl"] .usa-banner__inner > div, [dir="rtl"] .usa-banner__inner > button {
+  margin-right: 0.5rem;
+}
+
+@media (min-width: 64em) {
+  [dir="rtl"] .usa-nav__secondary-item + .usa-nav__secondary-item::before {
+    padding: 0 0 0 0.25rem;
+  }
+}
