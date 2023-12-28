@@ -30,6 +30,31 @@ describe WebResultsPostProcessor do
     end
   end
 
+  context 'when a results have url that has file extension' do
+    subject(:normalized_results) { described_class.new('foo', affiliate, results).normalized_results(1) }
+
+    let(:results) do
+      [] << Hashie::Mash::Rash.new(title: 'file type title', content: 'file type content', unescaped_url: 'http://foo.gov.pdf')
+    end
+
+    it 'returns results including fileType data' do
+      expect(normalized_results[:results].first).to include(:fileType)
+      expect(normalized_results[:results].first[:fileType]).to eq('PDF')
+    end
+  end
+
+  context 'when a results does not have url that has file extension' do
+    subject(:normalized_results) { described_class.new('foo', affiliate, results).normalized_results(1) }
+
+    let(:results) do
+      [] << Hashie::Mash::Rash.new(title: 'file type title', content: 'file type content', unescaped_url: 'http://foo.gov')
+    end
+
+    it 'returns results without fileType data' do
+      expect(normalized_results[:results].first).not_to include(:fileType)
+    end
+  end
+
   describe '#post_processed_results' do
     context 'when results contain excluded URLs' do
       let(:excluded_url) { 'http://www.uspto.gov/web.html' }

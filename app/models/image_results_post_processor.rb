@@ -25,7 +25,7 @@ class ImageResultsPostProcessor < ResultsPostProcessor
         url: result['url'],
         thumbnailUrl: result['thumbnail']['url'],
         image: true
-      }
+      }.compact
     end
   end
 end
