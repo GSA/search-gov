@@ -5,6 +5,8 @@ import { LanguageContext } from '../../../contexts/LanguageContext';
 import { StyleContext } from '../../../contexts/StyleContext';
 import parse from 'html-react-parser';
 
+import './HealthTopics.css';
+
 import medlineEn from 'legacy/medline.en.png';
 import medlineEs from 'legacy/medline.es.png';
 
