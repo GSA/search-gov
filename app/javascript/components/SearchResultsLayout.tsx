@@ -12,7 +12,7 @@ import { Results } from './Results/Results';
 import { Footer } from './Footer/Footer';
 import { Identifier } from './Identifier/Identifier';
 import { LanguageContext } from '../contexts/LanguageContext';
-import { StyleContext } from '../contexts/StyleContext';
+import { StyleContext, styles } from '../contexts/StyleContext';
 
 export interface NavigationLink {
   active: boolean; label: string; url: string, facet: string;
@@ -220,14 +220,14 @@ interface SearchResultsLayoutProps {
   };
 }
 
-const GlobalStyle = createGlobalStyle<{ pageBackgroundColor: string; buttonBackgroundColor: string; }>`
+const GlobalStyle = createGlobalStyle<{ styles: { pageBackgroundColor: string; buttonBackgroundColor: string; } }>`
   .serp-result-wrapper {
-    background-color: ${(props) => props.pageBackgroundColor};
+    background-color: ${(props) => props.styles.pageBackgroundColor};
   }
   .usa-button {
-    background-color: ${(props) => props.buttonBackgroundColor};
+    background-color: ${(props) => props.styles.buttonBackgroundColor};
     &:hover {
-      background-color: ${(props) => darken(0.10, props.buttonBackgroundColor)};
+      background-color: ${(props) => darken(0.10, props.styles.buttonBackgroundColor)};
     }
   }
 `;
@@ -246,8 +246,10 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
 
   return (
     <LanguageContext.Provider value={i18n}>
-      <StyleContext.Provider value={fontsAndColors}>
-        <GlobalStyle pageBackgroundColor={fontsAndColors.pageBackgroundColor} buttonBackgroundColor={fontsAndColors.buttonBackgroundColor} />
+      <StyleContext.Provider value={ fontsAndColors ? fontsAndColors : styles }>
+        <StyleContext.Consumer>
+          {(value) => <GlobalStyle styles={value} />}
+        </StyleContext.Consumer>
         <Header 
           page={page}
           isBasic={isBasicHeader(extendedHeader)}
