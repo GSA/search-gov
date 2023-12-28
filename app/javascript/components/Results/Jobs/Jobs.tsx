@@ -11,7 +11,7 @@ import './Jobs.css';
 type Job = {
   positionTitle: string;
   positionUri: string;
-  positionLocationDisplay: string;
+  positionLocation: string;
   organizationName: string;
   minimumPay: number;
   maximumPay: number;
@@ -112,7 +112,7 @@ export const Jobs = ({ jobs=[], agencyName }: JobsProps) => {
                       <div className='result-desc'>
                         <p>{job.organizationName}</p>
                         <ul className="list-horizontal">
-                          <li>{job.positionLocationDisplay}</li>
+                          <li>{job.positionLocation}</li>
                           {showSalary(job) && (<li>{formatSalary(job)}</li>)}
                           <li>Apply by {job.applicationCloseDate}</li>
                         </ul>
@@ -141,7 +141,7 @@ export const Jobs = ({ jobs=[], agencyName }: JobsProps) => {
                           <div className='result-desc'>
                             <p>{job.organizationName}</p>
                             <ul className="list-horizontal">
-                              <li>{job.positionLocationDisplay}</li>
+                              <li>{job.positionLocation}</li>
                               {showSalary(job) && (<li>{formatSalary(job)}</li>)}
                               <li>Apply by {job.applicationCloseDate}</li>
                             </ul>
