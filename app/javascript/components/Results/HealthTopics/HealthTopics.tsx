@@ -55,7 +55,7 @@ export const HealthTopics = ({ description, title, url, relatedTopics=[], studie
                 <a href={i18n.t('searches.medTopic.homepageUrl')} aria-label="MedlinePlus">
                   <span className='health-med-topic-title'>MedlinePlus</span>
                   <span className='health-med-topic-image'>
-                    <img src={medlineImgSrc(i18n.locale)} />
+                    <img src={medlineImgSrc(i18n.locale)} alt='Medline' />
                   </span>
                 </a>
               </GridContainer>
