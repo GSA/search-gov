@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 
 // Default fonts and colors
-const styles = {
+export const styles = {
   activeSearchTabNavigationColor: '#005EA2',
   bannerBackgroundColor: '#F0F0F0',
   bannerTextColor: '#1B1B1B',
@@ -29,3 +29,4 @@ const styles = {
 };
 
 export const StyleContext = createContext(styles);
+export default { StyleContext, styles };
