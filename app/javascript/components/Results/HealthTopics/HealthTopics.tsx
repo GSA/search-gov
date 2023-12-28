@@ -30,16 +30,6 @@ const StyledWrapper = styled.div.attrs<{ styles: { healthBenefitsHeaderBackgroun
   }
 `;
 
-const medlineImgSrc = (locale: string) => {
-  if (locale === 'en') {
-    return medlineEn;
-  }
-
-  if (locale === 'es') {
-    return medlineEs;
-  }
-};
-
 export const HealthTopics = ({ description, title, url, relatedTopics=[], studiesAndTrials=[] }: HealthTopicProps) => {
   const i18n = useContext(LanguageContext);
   const styles = useContext(StyleContext);
@@ -55,7 +45,7 @@ export const HealthTopics = ({ description, title, url, relatedTopics=[], studie
                 <a href={i18n.t('searches.medTopic.homepageUrl')} aria-label="MedlinePlus">
                   <span className='health-med-topic-title'>MedlinePlus</span>
                   <span className='health-med-topic-image'>
-                    <img src={medlineImgSrc(i18n.locale)} alt='Medline' />
+                    <img src={i18n.locale === 'es' ? medlineEs : medlineEn} alt='Medline' />
                   </span>
                 </a>
               </GridContainer>
