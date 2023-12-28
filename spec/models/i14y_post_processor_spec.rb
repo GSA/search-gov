@@ -30,6 +30,31 @@ describe I14yPostProcessor do
       end
     end
 
+    context 'when a results have url that has file extension' do
+      subject(:normalized_results) { described_class.new(true, results, excluded_urls).normalized_results(1) }
+
+      let(:results) do
+        [] << Hashie::Mash::Rash.new(title: 'file type title', content: 'file type content', path: 'http://foo.gov.pdf', changed: '2020-09-09 00:00:00 UTC', created: '2020-09-09 00:00:00 UTC', thumbnail_url: 'https://search.gov/img.svg')
+      end
+
+      it 'returns results including fileType data' do
+        expect(normalized_results[:results].first).to include(:fileType)
+        expect(normalized_results[:results].first[:fileType]).to eq('PDF')
+      end
+    end
+
+    context 'when a results does not have url that has file extension' do
+      subject(:normalized_results) { described_class.new(true, results, excluded_urls).normalized_results(1) }
+
+      let(:results) do
+        [] << Hashie::Mash::Rash.new(title: 'file type title', content: 'file type content', path: 'http://foo.gov', changed: '2020-09-09 00:00:00 UTC', created: '2020-09-09 00:00:00 UTC', thumbnail_url: 'https://search.gov/img.svg')
+      end
+
+      it 'returns results without fileType data' do
+        expect(normalized_results[:results].first).not_to include(:fileType)
+      end
+    end
+
     context 'when results are missing some attributes' do
       let(:results) do
         results = []
