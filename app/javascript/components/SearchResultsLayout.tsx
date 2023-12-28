@@ -14,8 +14,6 @@ import { Identifier } from './Identifier/Identifier';
 import { LanguageContext } from '../contexts/LanguageContext';
 import { StyleContext, styles } from '../contexts/StyleContext';
 
-import Medline from 'legacy/medline.en.png';
-
 export interface NavigationLink {
   active: boolean; label: string; url: string, facet: string;
 }
@@ -245,8 +243,6 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
   i18n.defaultLocale = 'en';
   i18n.enableFallback = true;
   i18n.locale = language.code;
-
-  console.log(Medline);
 
   return (
     <LanguageContext.Provider value={i18n}>
