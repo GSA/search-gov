@@ -82,11 +82,21 @@ And /^the "([^"]*)" field should be blank$/ do |field|
 end
 
 Then /^the "([^"]*)" radio button should be checked$/ do |label|
-  find_field(label)['checked'].should(be_truthy)
+  field_checked = find_field(label)['checked']
+  if field_checked.respond_to?(:should)
+    field_checked.should(be_truthy)
+  else
+    assert field_checked
+  end
 end
 
 Then /^the "([^"]*)" radio button should not be checked$/ do |label|
-  find_field(label)['checked'].should(be_falsey)
+  field_checked = find_field(label)['checked']
+  if field_checked.respond_to?(:should)
+    field_checked.should(be_falsey)
+  else
+    assert !field_checked
+  end
 end
 
 Then /^the page body should (contain|match) "([^"]*)"$/ do |matcher, content|
