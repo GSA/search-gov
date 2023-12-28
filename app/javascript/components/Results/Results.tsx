@@ -32,6 +32,7 @@ type Result = {
   publishedDate?: string,
   thumbnailUrl?: string,
   image?: boolean,
+  fileType?: string,
   altText?: string,
   youtube?: boolean,
   youtubePublishedAt?: string,
@@ -73,7 +74,7 @@ interface ResultsProps {
     jobs?: {
       positionTitle: string;
       positionUri: string;
-      positionLocationDisplay: string;
+      positionLocation: string;
       organizationName: string;
       minimumPay: number;
       maximumPay: number;

@@ -13,6 +13,14 @@ import { PageData } from '../SearchResultsLayout';
 interface HeaderProps {
   page: PageData;
   isBasic: boolean;
+  primaryHeaderLinks?: {
+    title: string,
+    url: string
+  }[];
+  secondaryHeaderLinks?: {
+    title: string,
+    url: string
+  }[];
 }
 
 const StyledGovBanner = styled(GovBanner).attrs<{ styles: { bannerBackgroundColor: string; bannerTextColor: string; }; }>((props) => ({
@@ -24,7 +32,7 @@ const StyledGovBanner = styled(GovBanner).attrs<{ styles: { bannerBackgroundColo
   }
 `;
 
-export const Header = ({ page, isBasic }: HeaderProps) => {
+export const Header = ({ page, isBasic, primaryHeaderLinks, secondaryHeaderLinks }: HeaderProps) => {
   const styles = useContext(StyleContext);
 
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
@@ -36,7 +44,9 @@ export const Header = ({ page, isBasic }: HeaderProps) => {
   const headerProps = {
     page,
     toggleMobileNav,
-    mobileNavOpen
+    mobileNavOpen,
+    primaryHeaderLinks,
+    secondaryHeaderLinks
   };
  
   return (

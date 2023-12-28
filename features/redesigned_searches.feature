@@ -179,9 +179,9 @@ Feature: Search - redesign
     And I should see a link to "Previous"
     And I should see a link to "1" with class "usa-pagination__button"
     And I should see "Next"
-    When I follow "5"
-    And I follow "7"
-    And I follow "8"
+    When I follow page "5"
+    And I follow page "7"
+    And I follow page "8"
     And I should see exactly "10" web search results
 
     When I am on es.agency.gov's "Noticias-1" news search page
@@ -370,10 +370,10 @@ Feature: Search - redesign
     And I should see a link to "1" with class "usa-pagination__button"
 
     When I follow "Previous"
-    And I follow "2"
+    And I follow page "2"
     Then I should see exactly "20" redesigned video search results
 
-    When I follow "1"
+    When I follow page "1"
     Then I should see exactly "20" redesigned video search results
 
   @javascript @a11y
@@ -421,6 +421,24 @@ Feature: Search - redesign
     And I fill in "Enter your search term" with "president"
     And I press "Search"
     Then I should see 2 redesigned related searches
+
+  @javascript @a11y
+  Scenario: Search for the results with file extension
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | first_name | last_name | gets_blended_results    | use_redesigned_results_page |
+      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | true                    | true                        |
+    And the following IndexedDocuments exist:
+      | title                   | description                          | url                               | affiliate | last_crawl_status | published_ago  |
+      | The PDF document        | Within the last hour PDF on item     | http://p.whitehouse.gov/hour.pdf  | bar.gov   | OK                | 30 minutes ago |
+      | The article with PDF    | Within the last day article on item  | http://p.whitehouse.gov/day.pdf   | bar.gov   | OK                | 8 hours ago    |
+    When I am on bar.gov's redesigned search page
+    And I search for "PDF" in the redesigned search page
+    Then I should see exactly "2" web search results
+    And I should see "The PDF document"
+    And I should see "p.whitehouse.gov/hour.pdf"
+    And I should see "Within the last hour PDF on item"
+    And I should not see pagination
+    And I should see "2 results"
 
   @javascript @a11y @a11y_wip
   Scenario: Search with site limits

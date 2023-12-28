@@ -12,7 +12,7 @@ import { Results } from './Results/Results';
 import { Footer } from './Footer/Footer';
 import { Identifier } from './Identifier/Identifier';
 import { LanguageContext } from '../contexts/LanguageContext';
-import { StyleContext } from '../contexts/StyleContext';
+import { StyleContext, styles } from '../contexts/StyleContext';
 
 export interface NavigationLink {
   active: boolean; label: string; url: string, facet: string;
@@ -24,6 +24,11 @@ export interface PageData {
     url: string;
     text: string;
   }
+}
+
+export interface Language {
+  code: string;
+  rtl: boolean;
 }
 
 interface SearchResultsLayoutProps {
@@ -39,6 +44,7 @@ interface SearchResultsLayoutProps {
       updatedDate?: string;
       publishedDate?: string;
       thumbnailUrl?: string;
+      fileType?: string,
       youtube?: boolean;
       youtubePublishedAt?: string;
       youtubeThumbnailUrl?: string;
@@ -77,7 +83,7 @@ interface SearchResultsLayoutProps {
     jobs?: {
       positionTitle: string;
       positionUri: string;
-      positionLocationDisplay: string;
+      positionLocation: string;
       organizationName: string;
       minimumPay: number;
       maximumPay: number;
@@ -125,7 +131,7 @@ interface SearchResultsLayoutProps {
   translations: {
     en?: { noResultsForAndTry: string }
   };
-  currentLocale?: string;
+  language?: Language;
   relatedSites?: {
     label: string;
     link: string;
@@ -174,6 +180,14 @@ interface SearchResultsLayoutProps {
     title: string,
     url: string
   }[];
+  primaryHeaderLinks?: {
+    title: string,
+    url: string
+  }[];
+  secondaryHeaderLinks?: {
+    title: string,
+    url: string
+  }[];
   identifierContent?: {
     domainName: string | null;
     parentAgencyName: string | null;
@@ -206,14 +220,14 @@ interface SearchResultsLayoutProps {
   };
 }
 
-const GlobalStyle = createGlobalStyle<{ pageBackgroundColor: string; buttonBackgroundColor: string; }>`
+const GlobalStyle = createGlobalStyle<{ styles: { pageBackgroundColor: string; buttonBackgroundColor: string; } }>`
   .serp-result-wrapper {
-    background-color: ${(props) => props.pageBackgroundColor};
+    background-color: ${(props) => props.styles.pageBackgroundColor};
   }
   .usa-button {
-    background-color: ${(props) => props.buttonBackgroundColor};
+    background-color: ${(props) => props.styles.buttonBackgroundColor};
     &:hover {
-      background-color: ${(props) => darken(0.10, props.buttonBackgroundColor)};
+      background-color: ${(props) => darken(0.10, props.styles.buttonBackgroundColor)};
     }
   }
 `;
@@ -224,19 +238,23 @@ const isBasicHeader = (extendedHeader: boolean): boolean => {
 
 const videosUrl = (links: NavigationLink[]) => links.find((link) => link.facet === 'YouTube')?.url ;
 
-const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, params = {}, translations, currentLocale = 'en', relatedSites = [], extendedHeader, footerLinks, fontsAndColors, newsLabel, identifierContent, identifierLinks, navigationLinks, relatedSitesDropdownLabel = '', alert, spellingSuggestion, relatedSearches, sitelimit, noResultsMessage }: SearchResultsLayoutProps) => {
+const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, params = {}, translations, language = { code: 'en', rtl: false }, relatedSites = [], extendedHeader, footerLinks, primaryHeaderLinks, secondaryHeaderLinks, fontsAndColors, newsLabel, identifierContent, identifierLinks, navigationLinks, relatedSitesDropdownLabel = '', alert, spellingSuggestion, relatedSearches, sitelimit, noResultsMessage }: SearchResultsLayoutProps) => {
   const i18n = new I18n(translations);
   i18n.defaultLocale = 'en';
   i18n.enableFallback = true;
-  i18n.locale = currentLocale;
+  i18n.locale = language.code;
 
   return (
     <LanguageContext.Provider value={i18n}>
-      <StyleContext.Provider value={fontsAndColors}>
-        <GlobalStyle pageBackgroundColor={fontsAndColors.pageBackgroundColor} buttonBackgroundColor={fontsAndColors.buttonBackgroundColor} />
+      <StyleContext.Provider value={ fontsAndColors ? fontsAndColors : styles }>
+        <StyleContext.Consumer>
+          {(value) => <GlobalStyle styles={value} />}
+        </StyleContext.Consumer>
         <Header 
           page={page}
           isBasic={isBasicHeader(extendedHeader)}
+          primaryHeaderLinks={primaryHeaderLinks}
+          secondaryHeaderLinks={secondaryHeaderLinks}
         />
       
         <div className="usa-section serp-result-wrapper">
