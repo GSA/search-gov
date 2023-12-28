@@ -262,11 +262,12 @@ describe ReactHelper do
     end
 
     context 'when an affiliate has news label and news items' do
+      let(:twelve_years_ago) { DateTime.now - 12.years }
       let(:news_items) do
         instance_double(ElasticNewsItemResults,
                         results: [
-                          mock_model(NewsItem, title: 'GSA News Item 1', description: true, link: 'http://search.gov/1', published_at: DateTime.parse('2011-09-26 21:33:05'), rss_feed_url_id: rss_feed.rss_feed_urls.first.id),
-                          mock_model(NewsItem, title: 'GSA News Item 2', description: true, link: 'http://search.gov/2', published_at: DateTime.parse('2011-09-26 21:33:05'), rss_feed_url_id: rss_feed.rss_feed_urls.first.id)
+                          mock_model(NewsItem, title: 'GSA News Item 1', description: true, link: 'http://search.gov/1', published_at: twelve_years_ago, rss_feed_url_id: rss_feed.rss_feed_urls.first.id),
+                          mock_model(NewsItem, title: 'GSA News Item 2', description: true, link: 'http://search.gov/2', published_at: twelve_years_ago, rss_feed_url_id: rss_feed.rss_feed_urls.first.id)
                         ])
       end
       let(:rss_feed) do
