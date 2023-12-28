@@ -7,6 +7,8 @@ import { StyleContext } from '../../../contexts/StyleContext';
 
 import './Jobs.css';
 
+import usajobsImage from 'searches/usajobs.jpg';
+
 type Job = {
   positionTitle: string;
   positionUri: string;
@@ -82,7 +84,7 @@ export const Jobs = ({ jobs=[] }: JobsProps) => {
                 </Grid>
                 <Grid col={true} className='jobs-logo-wrapper'>
                   <a className="usajobs-logo" href="https://www.usajobs.gov/">
-                    <img alt="USAJobs.gov" />
+                    <img alt="USAJobs.gov" src={usajobsImage} />
                   </a>
                 </Grid>
               </Grid>
