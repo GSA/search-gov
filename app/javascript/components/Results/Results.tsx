@@ -137,6 +137,8 @@ interface ResultsProps {
     sitelimit: string;
     url: string;
   };
+  jobsEnabled?: boolean
+  agencyName?: string
 }
 
 const StyledWrapper = styled.div.attrs<{ styles: { footerAndResultsFontFamily: string; resultDescriptionColor: string; resultTitleColor: string; resultTitleLinkVisitedColor: string; resultUrlColor: string; }; }>((props) => ({
@@ -168,7 +170,7 @@ const getImages = (result: Result[] | null) => {
 };
 
 // eslint-disable-next-line complexity
-export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical, newsAboutQuery = '', spellingSuggestion, videosUrl, relatedSearches, sitelimit, noResultsMessage, total }: ResultsProps) => {
+export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical, newsAboutQuery = '', spellingSuggestion, videosUrl, relatedSearches, sitelimit, noResultsMessage, total, jobsEnabled, agencyName }: ResultsProps) => {
   const i18n = useContext(LanguageContext);
   const styles = useContext(StyleContext);
   const imagesResults = getImages(results);
@@ -200,10 +202,11 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
               newsLabel={newsAboutQuery}
             />
           }
-
-          {additionalResults?.jobs && 
+          {/* additionalResults?.jobs */}
+          {jobsEnabled && 
             <Jobs 
-              jobs={additionalResults.jobs}
+              jobs={additionalResults?.jobs}
+              agencyName={agencyName}
             />
           }
           
