@@ -440,7 +440,7 @@ Feature: Search - redesign
     And I should not see pagination
     And I should see "2 results"
 
-  @javascript @a11y @a11y_wip
+  @javascript @a11y
   Scenario: Search with site limits
     Given the following Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | domains | use_redesigned_results_page |
@@ -450,7 +450,7 @@ Feature: Search - redesign
     And I press "Search"
     Then I should see "We're including results for carbon emissions from www.epa.gov/news only."
 
-  @javascript @a11y @a11y_wip
+  @javascript @a11y
   Scenario: Search with custom no results page
     Given the following Affiliates exist:
       | display_name | name           | contact_email    | first_name   | last_name | domains    | locale | additional_guidance_text     | use_redesigned_results_page |
