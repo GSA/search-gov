@@ -343,7 +343,7 @@ workflows:
               elasticsearch_version:
                 - 7.17.7
               node_version:
-                - 20.10.0
+                - 16.20.2
 
       - report_coverage:
           requires:
