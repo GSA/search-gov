@@ -4,6 +4,12 @@ import { GridContainer, Grid } from '@trussworks/react-uswds';
 import { LanguageContext } from '../../../contexts/LanguageContext';
 import { StyleContext } from '../../../contexts/StyleContext';
 import parse from 'html-react-parser';
+
+import './HealthTopics.css';
+
+import medlineEn from 'legacy/medline.en.png';
+import medlineEs from 'legacy/medline.es.png';
+
 interface HealthTopicProps {
   description: string;
   title: string;
@@ -29,7 +35,7 @@ const StyledWrapper = styled.div.attrs<{ styles: { healthBenefitsHeaderBackgroun
 export const HealthTopics = ({ description, title, url, relatedTopics=[], studiesAndTrials=[] }: HealthTopicProps) => {
   const i18n = useContext(LanguageContext);
   const styles = useContext(StyleContext);
-  
+
   return (
     <div className='search-item-wrapper'>
       <StyledWrapper styles={styles}>
@@ -38,9 +44,11 @@ export const HealthTopics = ({ description, title, url, relatedTopics=[], studie
             <Grid col={true}>
               <GridContainer className='health-topic-title'>
                 <a href={url}>{parse(title)}</a>
-                <a href={i18n.t('searches.medTopic.homepageUrl')} className={`logo-${i18n.locale}`} aria-label="MedlinePlus">
+                <a href={i18n.t('searches.medTopic.homepageUrl')} aria-label="MedlinePlus">
                   <span className='health-med-topic-title'>MedlinePlus</span>
-                  <span className='health-med-topic-image'></span>
+                  <span className='health-med-topic-image'>
+                    <img src={i18n.locale === 'es' ? medlineEs : medlineEn} alt='Medline' />
+                  </span>
                 </a>
               </GridContainer>
               <GridContainer className='health-topic-data'>

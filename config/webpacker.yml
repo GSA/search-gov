@@ -28,8 +28,7 @@ default: &default
   # manifest_path: public/packs/manifest.json
 
   # Additional paths webpack should look up modules
-  # ['app/assets', 'engine/foo/app/assets']
-  additional_paths: []
+  additional_paths: ['app/assets/images']
 
   # Reload manifest.json on all requests so we reload latest compiled packs
   cache_manifest: false
