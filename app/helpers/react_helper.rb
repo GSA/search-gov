@@ -3,7 +3,7 @@
 module ReactHelper
   def search_results_layout(search, params, vertical, affiliate, search_options)
     data = {
-      additionalResults: search.govbox_set,
+      additionalResults: govbox_set(search),
       agencyName: agency_name(affiliate.agency),
       alert: search_page_alert(affiliate.alert),
       extendedHeader: affiliate.use_extended_header,
@@ -14,7 +14,6 @@ module ReactHelper
       jobsEnabled: (affiliate.jobs_enabled? and search.modules.include?('JOBS')),
       language: affiliate.language.slice(:code, :rtl),
       navigationLinks: navigation_links(search, params),
-      resultsFormatDisplay: results_format_display(affiliate),
       newsLabel: news_label(search),
       noResultsMessage: no_result_message(search),
       page: page_data(affiliate),
@@ -23,7 +22,7 @@ module ReactHelper
       relatedSearches: related_searches(search),
       relatedSites: related_sites(search),
       relatedSitesDropdownLabel: affiliate.related_sites_dropdown_label,
-      resultsData: search.normalized_results,
+      resultsData: results_data(search),
       secondaryHeaderLinks: links(affiliate, :secondary_header_links),
       sitelimit: sitelimit_alert(search, params),
       spellingSuggestion: spelling_text(search, search_options),
@@ -176,15 +175,6 @@ module ReactHelper
     end
   end
 
-  def results_format_display(affiliate)
-    {
-      displayImage: affiliate.display_image_on_search_results,
-      displayFiletype: affiliate.display_filetype_on_search_results,
-      displayCreatedDate: affiliate.display_created_date_on_search_results,
-      displayUpdatedDate: affiliate.display_updated_date_on_search_results
-    }
-  end
-
   def identifier_content(affiliate)
     {
       domainName: affiliate.identifier_domain_name,
@@ -205,5 +195,49 @@ module ReactHelper
     return if agency.nil?
 
     agency.abbreviation || agency.name
+  end
+
+  def govbox_set(search)
+    return if search.govbox_set.nil?
+
+    affiliate = search.affiliate
+    return unless show_results_format?(affiliate) || affiliate.display_created_date_on_search_results
+
+    reject_keys_from_hash(search.govbox_set.federal_register_documents, :publication_date) if search.govbox_set.federal_register_documents.present?
+    reject_keys_from_hash(search.govbox_set.news_items, :published_at) if search.govbox_set.news_items.present?
+    reject_keys_from_hash(search.govbox_set.video_news_items, :published_at) if search.govbox_set.video_news_items.present?
+  end
+
+  def reject_keys_from_hash(results, key)
+    return if results.blank?
+
+    results.each do |result|
+      result.reject! { |k| k == key }
+    end
+  end
+
+  def results_data(search)
+    return if search.normalized_results.nil?
+
+    affiliate = search.affiliate
+    return unless show_results_format?(affiliate)
+
+    show_results_content(affiliate, boolean_keys = [])
+
+    search.normalized_results[:results].each do |result|
+      result.reject! { |k| boolean_keys.include?(k) }
+    end
+  end
+
+  def show_results_content(affiliate, boolean_keys = [])
+    boolean_keys << :image unless affiliate.display_image_on_search_results
+    boolean_keys << :fileType unless affiliate.display_filetype_on_search_results
+    boolean_keys << :publishedAt unless affiliate.display_created_date_on_search_results
+    boolean_keys << :updatedDate unless affiliate.display_updated_date_on_search_results
+  end
+
+  def show_results_format?(site)
+    (site.gets_i14y_results || site.gets_blended_results || site.search_engine == 'SearchGov') &&
+      site.search_engine != 'BingV7'
   end
 end
