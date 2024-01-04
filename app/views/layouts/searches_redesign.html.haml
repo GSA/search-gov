@@ -12,8 +12,8 @@
 
     %title #{@page_title}
 
-    = javascript_pack_tag 'application', crossorigin: 'anonymous'
-    = stylesheet_pack_tag 'application', crossorigin: 'anonymous'
+    = javascript_pack_tag 'application'
+    = stylesheet_pack_tag 'application'
   %body
     #main-content= yield
     = render "/shared/google_tag_manager_noscript"
