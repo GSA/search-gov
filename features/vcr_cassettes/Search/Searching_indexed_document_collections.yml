@@ -2,75 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=death%20star%20r2d2%20xyz3%20(site:petitions.whitehouse.gov/)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V7_SUBSCRIPTION_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Transfer-Encoding:
-      - chunked
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Tue, 07 Sep 2021 16:18:18 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
-      Bingapis-Traceid:
-      - 83A46DDFA671490E90017780EBFAF6E5
-      Bingapis-Sessionid:
-      - 23916C51480144AFAC28D60B315E0A93
-      X-Msedge-Clientid:
-      - 35B109B5952666B30C52191E949667B2
-      X-Msapi-Userstate:
-      - '8071'
-      Bingapis-Market:
-      - en-US
-      X-Search-Responseinfo:
-      - InternalResponseTime=191,MSDatacenter=BN2B
-      X-Cache:
-      - CONFIG_NOCACHE
-      X-Msedge-Ref:
-      - 'Ref A: 83A46DDFA671490E90017780EBFAF6E5 Ref B: BLUEDGE1412 Ref C: 2021-09-07T16:19:17Z'
-      Apim-Request-Id:
-      - efa46e43-10b5-43d2-a62b-9f25d2adc222
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
-      X-Content-Type-Options:
-      - nosniff
-      Csp-Billing-Usage:
-      - CognitiveServices.BingSearchV7.Transaction=1
-      Date:
-      - Tue, 07 Sep 2021 16:19:17 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "death
-        star r2d2 xyz3 (site:petitions.whitehouse.gov\/)"}, "rankingResponse": {}}'
-  recorded_at: Tue, 07 Sep 2021 16:19:18 GMT
-- request:
-    method: get
     uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=death%20star%20r2d2%20xyz3%20(site:petitions.whitehouse.gov/)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
@@ -100,31 +31,35 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Wed, 06 Oct 2021 15:38:17 GMT
+      - Wed, 10 Jan 2024 14:40:36 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
+      X-Eventid:
+      - 659eaca097254482afc9b90fe8c2ad6e
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
       Bingapis-Traceid:
-      - 18E65C0364FD49EBBC683ED8DF0427BE
+      - 659eaca097254482afc9b90fe8c2ad6e
       Bingapis-Sessionid:
-      - 659CF2985FA54FB4B9EEF094F74A86CA
+      - 743F1FFC46E34ED8B4EE7576A9351147
       X-Msedge-Clientid:
-      - 2E6E9A9D79C361523CF58A557825607D
+      - 2ED522F97D40604714A736FB7CEA61B7
       X-Msapi-Userstate:
-      - 89c8
+      - '0897'
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=202,MSDatacenter=CH1B
+      - InternalResponseTime=145,MSDatacenter=BNZE01
       X-Cache:
       - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
       X-Msedge-Ref:
-      - 'Ref A: 18E65C0364FD49EBBC683ED8DF0427BE Ref B: DM2EDGE0505 Ref C: 2021-10-06T15:39:17Z'
+      - 'Ref A: 27A1820B930E45709C9FAD46A48E43B0 Ref B: BN3EDGE0208 Ref C: 2024-01-10T14:41:36Z'
       Apim-Request-Id:
-      - f12ed6dc-ad6b-4bad-8f40-9e776bb5d9cb
+      - 66bb3a7d-a67a-491b-ada2-d5496c33e41e
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -132,10 +67,10 @@ http_interactions:
       Csp-Billing-Usage:
       - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Wed, 06 Oct 2021 15:39:17 GMT
+      - Wed, 10 Jan 2024 14:41:36 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "death
         star r2d2 xyz3 (site:petitions.whitehouse.gov\/)"}, "rankingResponse": {}}'
-  recorded_at: Wed, 06 Oct 2021 15:39:17 GMT
-recorded_with: VCR 6.0.0
+  recorded_at: Wed, 10 Jan 2024 14:41:36 GMT
+recorded_with: VCR 6.2.0

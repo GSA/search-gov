@@ -2,76 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=english%20(site:nonsense.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V7_SUBSCRIPTION_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Transfer-Encoding:
-      - chunked
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Tue, 31 Aug 2021 20:29:53 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
-      Bingapis-Traceid:
-      - '078454AD1EA34547AC448196CAB1C240'
-      Bingapis-Sessionid:
-      - C433645B26E8407EA0DABD95B0E38523
-      X-Msedge-Clientid:
-      - '08834E6FDAA26B2E20695ECBDB5F6A0C'
-      X-Msapi-Userstate:
-      - '4204'
-      Bingapis-Market:
-      - en-US
-      X-Search-Responseinfo:
-      - InternalResponseTime=135,MSDatacenter=BN2B
-      X-Cache:
-      - CONFIG_NOCACHE
-      X-Msedge-Ref:
-      - 'Ref A: 078454AD1EA34547AC448196CAB1C240 Ref B: BLUEDGE0116 Ref C: 2021-08-31T20:30:53Z'
-      Apim-Request-Id:
-      - d75484e6-0917-440b-a6e1-b867701060ad
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
-      X-Content-Type-Options:
-      - nosniff
-      Csp-Billing-Usage:
-      - CognitiveServices.BingSearchV7.Transaction=1
-      Date:
-      - Tue, 31 Aug 2021 20:30:53 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "english
-        (site:nonsense.gov)"}, "rankingResponse": {}}'
-  recorded_at: Tue, 31 Aug 2021 20:30:53 GMT
-- request:
-    method: get
-    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=english%20(site:nonsense.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=english%20(site:nonsense.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=<DATADOG_API_ENABLED>&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
@@ -100,31 +31,35 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Wed, 06 Oct 2021 10:37:58 GMT
+      - Mon, 08 Jan 2024 19:32:34 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
+      X-Eventid:
+      - 659c4e0e182e49199701be2d2d6cba5b
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
       Bingapis-Traceid:
-      - 9F2666E7F27045EB9F40FE01B8B27757
+      - 659c4e0e182e49199701be2d2d6cba5b
       Bingapis-Sessionid:
-      - F5FCE452D8604A56A0EE25166C012F8A
+      - D4F0ED86E166432DB7D55B9C3617BE0D
       X-Msedge-Clientid:
-      - 3072B3B7B71C60840B6FA37FB65361C0
+      - 18D37E226AA56B0034196A226BA46A12
       X-Msapi-Userstate:
-      - 1fa8
+      - d87a
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=94,MSDatacenter=BN2B
+      - InternalResponseTime=117,MSDatacenter=BNZE01
       X-Cache:
       - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
       X-Msedge-Ref:
-      - 'Ref A: 9F2666E7F27045EB9F40FE01B8B27757 Ref B: BLUEDGE1208 Ref C: 2021-10-06T10:38:58Z'
+      - 'Ref A: 78FB09DA94324900B6ADBC64E9EB0742 Ref B: BL2AA2030102027 Ref C: 2024-01-08T19:33:34Z'
       Apim-Request-Id:
-      - f623e9e6-b89c-480a-9d4c-0c9d5bc726fd
+      - 45c7342b-4ed3-4955-9953-a48383d4af75
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -132,10 +67,10 @@ http_interactions:
       Csp-Billing-Usage:
       - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Wed, 06 Oct 2021 10:38:58 GMT
+      - Mon, 08 Jan 2024 19:33:33 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "english
         (site:nonsense.gov)"}, "rankingResponse": {}}'
-  recorded_at: Wed, 06 Oct 2021 04:35:56 GMT
-recorded_with: VCR 6.0.0
+  recorded_at: Mon, 08 Jan 2024 19:33:34 GMT
+recorded_with: VCR 6.2.0

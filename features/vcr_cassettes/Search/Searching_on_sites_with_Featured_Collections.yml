@@ -2,513 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=warnings%20for%20a%20tornado%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V7_SUBSCRIPTION_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Transfer-Encoding:
-      - chunked
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Tue, 07 Sep 2021 16:18:35 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
-      Bingapis-Traceid:
-      - '0973CF9787AE4E4A8604FDB9E5D14121'
-      Bingapis-Sessionid:
-      - F3531BDFC0014BFCAB87F3F3B34EAA8D
-      X-Msedge-Clientid:
-      - 35A812289F2A66193DE502839E38679A
-      X-Msapi-Userstate:
-      - '08ac'
-      Bingapis-Market:
-      - en-US
-      X-Search-Responseinfo:
-      - InternalResponseTime=266,MSDatacenter=BN2B
-      X-Cache:
-      - CONFIG_NOCACHE
-      X-Msedge-Ref:
-      - 'Ref A: 0973CF9787AE4E4A8604FDB9E5D14121 Ref B: BLUEDGE1516 Ref C: 2021-09-07T16:19:35Z'
-      Apim-Request-Id:
-      - 3a918f8f-c402-42ef-84fb-8e584afe3281
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
-      X-Content-Type-Options:
-      - nosniff
-      Csp-Billing-Usage:
-      - CognitiveServices.BingSearchV7.Transaction=1
-      Date:
-      - Tue, 07 Sep 2021 16:19:35 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "warnings
-        for a tornado (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=warnings+for+a+tornado+(site%3agov+OR+site%3amil)",
-        "totalEstimatedMatches": 11700000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "Tornado | Alerts and Warnings - FEMA", "url": "https:\/\/community.fema.gov\/ProtectiveActions\/s\/article\/Tornado-Alerts-and-Warnings",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/community.fema.gov\/ProtectiveActions\/s\/article\/Tornado-Alerts-and-Warnings",
-        "snippet": "Tornado Warning – The NWS issues a Tornado Warning when
-        a tornado has been sighted or indicated by weather radar. Take shelter IMMEDIATELY.
-        Warning times vary in the range of 10 to 15 minutes. Occasionally, tornadoes
-        develop without detection, and no official warnings can be made before touchdown.
-        [1]", "dateLastCrawled": "2021-09-04T04:25:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "Understand Tornado Alerts - National Weather Service", "url":
-        "https:\/\/www.weather.gov\/safety\/tornado-ww", "isFamilyFriendly": true,
-        "displayUrl": "https:\/\/www.weather.gov\/safety\/tornado-ww", "snippet":
-        "Warnings are issued by your local forecast office. Warnings typically
-        encompass a much smaller area (around the size of a city or small county)
-        that may be impacted by a tornado identified by a forecaster on radar or
-        by a trained spotter \/law enforcement who is watching the storm.", "dateLastCrawled":
-        "2021-09-04T12:09:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
-        "Tornado Safety Rules - National Weather Service", "url": "https:\/\/www.weather.gov\/bmx\/sps_torsafetyrules",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/bmx\/sps_torsafetyrules",
-        "snippet": "Tornado Warning - issued when a developing tornado has been
-        detected by National Weather Service doppler radar or a reliable report
-        of a tornado has been reported. A tornado warning is usually issued
-        for portions of one or two counties, for an hour or less. The storm could
-        also produce large hail and destructive straight line winds.", "dateLastCrawled":
-        "2021-09-04T19:17:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3", "name":
-        "Preparing for a Tornado | Tornadoes | CDC", "url": "https:\/\/www.cdc.gov\/disasters\/tornadoes\/prepared.html",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/disasters\/tornadoes\/prepared.html",
-        "snippet": "Tornado warning. A tornado warning means that a tornado
-        has been sighted or indicated by weather radar. You should immediately take
-        shelter during a tornado warning. Learn your local tornado warning
-        system. Learn about the tornado warning system of your county or locality.
-        Most tornado-prone areas have an outdoor siren system.", "dateLastCrawled":
-        "2021-09-05T06:58:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4", "name":
-        "WATCH VS. WARNING WEATHER", "url": "https:\/\/www.weather.gov\/media\/owlie\/3-fold-Safety-Tips-Tornado-Brochure-08-07-18-D-FINAL.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/media\/owlie\/3-fold-Safety-Tips-Tornado-Brochure-08-07-18-D...",
-        "snippet": "tornado watches and warnings. 9 a long-sleeved shirt and sturdy
-        shoes. Contact At Your House: If you are in a tornado warning area, go
-        to your basement, safe room or an interior room away from windows. Don’t forget
-        pets if time allows. 9At Your Workplace or School: Follow your tornado drill
-        and proceed to your tornado shelter quickly and calmly.", "dateLastCrawled":
-        "2021-09-03T10:31:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5", "name":
-        "Staying Safe in a Tornado", "url": "https:\/\/www.cdc.gov\/nceh\/features\/tornadosafety\/index.html",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/nceh\/features\/tornadosafety",
-        "snippet": "Be sure your children know what a tornado is, what tornado
-        watches and warnings are, what county or parish they live in (warnings
-        are typically issued by county or parish), and what makes a location a safe
-        shelter, whether at home or at school. TIP : Stay aware of weather conditions.",
-        "dateLastCrawled": "2021-09-05T05:18:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
-        "name": "Severe Weather 101: Tornado Basics", "url": "https:\/\/www.nssl.noaa.gov\/education\/svrwx101\/tornadoes\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nssl.noaa.gov\/education\/svrwx101\/tornadoes",
-        "snippet": "A Tornado WARNING is issued by your local NOAA National Weather
-        Service Forecast Office meteorologists who watch the weather 24\/7 over a
-        designated area. This means a tornado has been reported by spotters or indicated
-        by radar and there is a serious threat to life and property to those in the
-        path of the tornado.", "dateLastCrawled": "2021-09-05T08:15:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
-        "name": "What to do During a Tornado - National Weather Service", "url":
-        "https:\/\/www.weather.gov\/safety\/tornado-during", "isFamilyFriendly": true,
-        "displayUrl": "https:\/\/www.weather.gov\/safety\/tornado-during", "snippet":
-        "Find out what you can do when a tornado strikes. Acting quickly is key
-        to staying safe and minimizing impacts. Stay Weather-Ready: Continue to listen
-        to local news or a NOAA Weather Radio to stay updated about tornado watches
-        and warnings.; At Your House: If you are in a tornado warning, go to
-        your basement, safe room, or an interior room away from windows.", "dateLastCrawled":
-        "2021-09-05T08:16:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
-        "Severe Weather Safety and Survival - National Weather Service", "url":
-        "https:\/\/www.weather.gov\/oun\/safety-severe-homesafety", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.weather.gov\/oun\/safety-severe-homesafety",
-        "snippet": "This is why tornado safety plans are so crucial for residents
-        of mobile homes! Pictured below is a destroyed mobile home southeast of Wewoka
-        from a tornado in 1998. This is an example of what an EF-1 tornado can
-        do to a mobile home. Mobile homes are especially susceptible to high winds
-        from severe thunderstorms and tornadoes.", "dateLastCrawled": "2021-09-04T08:14:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
-        "name": "Current Watches and Warnings - National Weather Service", "url":
-        "https:\/\/www.weather.gov\/cys\/current", "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.weather.gov\/cys\/current", "snippet": "US Dept of Commerce
-        National Oceanic and Atmospheric Administration National Weather Service
-        Cheyenne, WY 1301 Airport Parkway Cheyenne, WY 82001-1549", "dateLastCrawled":
-        "2021-09-02T06:45:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10", "name":
-        "Active Alerts - National Weather Service", "url": "https:\/\/www.weather.gov\/alerts",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/alerts",
-        "snippet": "Active Alerts. Weather.gov > Active Alerts. Warnings By
-        State. Excessive Rainfall and Winter Weather Forecasts. National River Flooding.
-        Latest Warnings. Thunderstorm\/Tornado Outlook. Hurricanes. Fire Weather
-        Outlooks.", "dateLastCrawled": "2021-09-05T08:14:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
-        "name": "Weather warnings on the go!", "url": "https:\/\/www.weather.gov\/wrn\/wea",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/wrn\/wea",
-        "snippet": "Warnings for Tsunamis (see Fact Sheet), Tornado, Severe Thunderstorm
-        (only when the damage threat is destructive), Flash Flood (only when the damage
-        threat is considerable or catastrophic), Hurricane, Typhoon, Storm Surge,
-        Extreme Wind, Dust Storm and Snow Squall.", "dateLastCrawled": "2021-09-03T11:11:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
-        "name": "Current Weather Hazards for North and Central Georgia", "url":
-        "https:\/\/www.weather.gov\/ffc\/warnings", "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.weather.gov\/ffc\/warnings", "snippet": "Current or Potential
-        Local Weather Hazards. This information may be received in a more timely manner
-        via local radio, television, your cable television provider, or. NOAA Weather
-        Radio. Click on a county to get current bulletins for that specific location.",
-        "dateLastCrawled": "2021-09-04T23:12:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
-        "name": "Prepare! Don''t let Tornadoes Take You by Surprise", "url": "https:\/\/www.weather.gov\/safety\/tornado-prepare",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/safety\/tornado-prepare",
-        "snippet": "Be Weather-Ready: Check the forecast regularly to see if you''re
-        at risk for tornadoes. Listen to local news or a NOAA Weather Radio to stay
-        informed about tornado watches and warnings. Check the Weather-Ready Nation
-        for tips. Sign Up for Notifications: Know how your community sends warnings.
-        Some communities have outdoor sirens.", "dateLastCrawled": "2021-09-01T22:08:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
-        "name": "Tornadoes | Ready.gov", "url": "https:\/\/www.ready.gov\/tornadoes",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ready.gov\/tornado",
-        "snippet": "Learn what to do if you are under a tornado warning and how
-        to stay safe when a tornado threatens. Prepare for Tornadoes Stay Safe
-        During Stay Safe After Associated Content Tornadoes are violently rotating
-        columns of air that extend from a thunderstorm to the ground. Tornadoes
-        can destroy buildings, flip cars, and create deadly flying debris.", "dateLastCrawled":
-        "2021-09-05T04:35:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15", "name":
-        "Severe Weather 101: Tornado FAQ", "url": "https:\/\/www.nssl.noaa.gov\/education\/svrwx101\/tornadoes\/faq\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nssl.noaa.gov\/education\/svrwx101\/tornadoes\/faq",
-        "snippet": "A tornado warning means that a tornado has been spotted,
-        or that Doppler radar shows a thunderstorm circulation which can spawn a tornado.
-        When a tornado warning is issued for your area, seek safe shelter immediately.
-        The Storm Prediction Center issues tornado and severe thunderstorm watches.",
-        "dateLastCrawled": "2021-09-05T11:14:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
-        "name": "Tornadoes | CookCountyIL.gov", "url": "https:\/\/prod18.cookcountyil.gov\/content\/tornadoes",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/prod18.cookcountyil.gov\/content\/tornadoes",
-        "snippet": "Tornadoes. Tornadoes, nature’s most violent storms, can appear
-        suddenly and without warning — even remaining invisible until dust and debris
-        are picked up or a funnel cloud appears. These violent storms can pack winds
-        of up to 300 mph and leave damage trails up to 1 mile wide and 50 miles long.",
-        "dateLastCrawled": "2021-09-05T05:19:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
-        "name": "Tornado - FEMA", "url": "https:\/\/community.fema.gov\/ProtectiveActions\/s\/article\/Tornado",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/community.fema.gov\/ProtectiveActions\/s\/article\/Tornado",
-        "snippet": "Protect Yourself Key Messages. If you are under a tornado warning,
-        find safe shelter right away. Go to a safe room, basement, or storm cellar.
-        If there is no basement, get to a small, interior room on the lowest level.
-        Stay away from windows, doors, and outside walls. If you can safely get to
-        a sturdy building, do so immediately.", "dateLastCrawled": "2021-09-05T13:08:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
-        "name": "Tornadoes 101 | National Oceanic and Atmospheric ...", "url": "https:\/\/www.noaa.gov\/stories\/tornadoes-101",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.noaa.gov\/stories\/tornadoes-101",
-        "snippet": "A Tornado Warning means a tornado has been sighted or indicated
-        by weather radar — time to take cover! Your local National Weather Service
-        office issues tornado and severe thunderstorm warnings. How many people
-        are killed by tornadoes each year? Tornadoes kill about 60 people each
-        year, mostly from flying or falling debris.", "dateLastCrawled": "2021-09-04T07:48:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
-        "name": "Wisconsin Tornado and Severe Weather Statistics", "url": "https:\/\/www.weather.gov\/grb\/WI_tornado_stats",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/grb\/WI_tornado_stats",
-        "snippet": "National Weather Service offices servicing Wisconsin issue,
-        on average, 1 to 2 Tornado Warnings and 5 to 10 Severe Thunderstorm Warnings
-        per county per year in the southern counties. The averages are less for the
-        northern counties.", "dateLastCrawled": "2021-09-03T09:09:00.0000000Z", "language":
-        "en", "isNavigational": false}]}, "rankingResponse": {"mainline": {"items":
-        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-  recorded_at: Tue, 07 Sep 2021 16:19:35 GMT
-- request:
-    method: get
-    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=atlantic%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V7_SUBSCRIPTION_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Transfer-Encoding:
-      - chunked
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Tue, 07 Sep 2021 16:18:36 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
-      Bingapis-Traceid:
-      - BA18CFFADDB542948D6B5329434AED1F
-      Bingapis-Sessionid:
-      - CDB462159C224B9A940BFBE4895B9DDA
-      X-Msedge-Clientid:
-      - 19EA7DDD95FA6CEF1E7D6D76944A6DBD
-      X-Msapi-Userstate:
-      - '8686'
-      Bingapis-Market:
-      - en-US
-      X-Search-Responseinfo:
-      - InternalResponseTime=256,MSDatacenter=BN2B
-      X-Cache:
-      - CONFIG_NOCACHE
-      X-Msedge-Ref:
-      - 'Ref A: BA18CFFADDB542948D6B5329434AED1F Ref B: BLUEDGE1409 Ref C: 2021-09-07T16:19:36Z'
-      Apim-Request-Id:
-      - b7f2b70e-7b6b-4d26-b962-2b05fe6c6264
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
-      X-Content-Type-Options:
-      - nosniff
-      Csp-Billing-Usage:
-      - CognitiveServices.BingSearchV7.Transaction=1
-      Date:
-      - Tue, 07 Sep 2021 16:19:36 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "atlantic
-        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=atlantic+(site%3agov+OR+site%3amil)",
-        "totalEstimatedMatches": 9350000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "Atlantic Ocean - The World Factbook", "url": "https:\/\/www.cia.gov\/the-world-factbook\/oceans\/atlantic-ocean\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cia.gov\/the-world-factbook\/oceans\/atlantic-ocean",
-        "snippet": "The Atlantic Ocean is the second largest of the world''s five
-        oceans (after the Pacific Ocean, but larger than the Indian Ocean, Southern
-        Ocean, and Arctic Ocean). The Kiel Canal (Germany), Oresund (Denmark-Sweden),
-        Bosporus (Turkey), Strait of Gibraltar (Morocco-Spain), and the Saint Lawrence
-        Seaway (Canada-US) are important strategic access ...", "dateLastCrawled":
-        "2021-09-05T03:16:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1", "name":
-        "Atlantic 5-Day Graphical Tropical Weather Outlook", "url": "https:\/\/www.nhc.noaa.gov\/gtwo.php?basin=atlc",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nhc.noaa.gov\/gtwo.php?basin=atlc",
-        "snippet": "Atlantic 5-Day Graphical Tropical Weather Outlook. This product
-        is updated at approximately 2 AM, 8 AM, 2 PM, and 8 PM EDT from May 15 to
-        November 30, with special outlooks issued at any time as conditions warrant.
-        The graphic displays all currently active tropical cyclones, and disturbances
-        with tropical cyclone formation potential over the ...", "dateLastCrawled":
-        "2021-09-04T23:20:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
-        "Atlantic 5-Day Graphical Tropical Weather Outlook", "url": "https:\/\/www.nhc.noaa.gov\/gtwo.php?basin=atlc&202109031139",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nhc.noaa.gov\/gtwo.php?basin=atlc&202109031139",
-        "snippet": "Atlantic 5-Day Graphical Tropical Weather Outlook. This product
-        is updated at approximately 2 AM, 8 AM, 2 PM, and 8 PM EDT from May 15 to
-        November 30, with special outlooks issued at any time as conditions warrant.
-        The graphic displays all currently active tropical cyclones, and disturbances
-        with tropical cyclone formation potential over the ...", "dateLastCrawled":
-        "2021-09-06T15:21:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3", "name":
-        "Atlantic 5-Day Graphical Tropical Weather Outlook", "url": "https:\/\/www.nhc.noaa.gov\/gtwo.php?text",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nhc.noaa.gov\/gtwo.php?text",
-        "snippet": "Atlantic 5-Day Graphical Tropical Weather Outlook (Text) This
-        product is updated at approximately 2 AM, 8 AM, 2 PM, and 8 PM EDT from May
-        15 to November 30, with special outlooks issued at any time as conditions
-        warrant. The graphic displays all currently active tropical cyclones, and
-        disturbances with tropical cyclone formation potential over ...", "dateLastCrawled":
-        "2021-09-05T03:18:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4", "name":
-        "Atlantic Tropical Weather Discussion", "url": "https:\/\/www.nhc.noaa.gov\/text\/refresh\/MIATWDAT+shtml\/060904_MIATWDAT.shtml",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nhc.noaa.gov\/text\/refresh\/MIATWDAT+shtml\/060904_MIATWDAT.shtml",
-        "snippet": "An eastern Atlantic Ocean tropical wave has an axis along 26W,
-        from 19N southward, moving W around 15 kt. Scattered moderate convection is
-        noted from 06N to 09N between 20W and 30W. A central Atlantic Ocean tropical
-        wave has an axis along 42W, from 17N southward, moving W around 10 kt. The
-        wave is situated at the leading edge of a Saharan dust ...", "dateLastCrawled":
-        "2021-09-06T09:06:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5", "name":
-        "Atlantic Tropical Weather Discussion", "url": "https:\/\/www.nhc.noaa.gov\/text\/refresh\/MIATWDAT+shtml\/061718_MIATWDAT.shtml",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nhc.noaa.gov\/text\/refresh\/MIATWDAT+shtml\/061718_MIATWDAT.shtml",
-        "snippet": "An eastern Atlantic Ocean tropical wave has an axis along 26W-27W,
-        from 19N southward, moving W around 15 kt. A 1013 mb low along the wave was
-        depicted near 11N27W by a recent ASCAT pass, and also showed evidence of the
-        wave at the surface. Scattered moderate isolated strong convection is noted
-        along the trough from 05N to 10N between 21W and 33W.", "dateLastCrawled":
-        "2021-09-06T17:20:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6", "name":
-        "Naval Medical Forces Atlantic", "url": "https:\/\/www.med.navy.mil\/Naval-Medical-Forces-Atlantic\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.med.navy.mil\/Naval-Medical-Forces-Atlantic",
-        "snippet": "It’s a one-stop shop for back-to-school students onboard Naval
-        Support Activity (NSA) Naples who participated in a hospital-sponsored clinic
-        offering sports physicals, school entrance physicals, immunizations, and COVID-19
-        vaccines on base from Aug. 26-28.Some students were surprisingly excited.
-        31 August 2021.", "dateLastCrawled": "2021-09-04T09:39:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
-        "name": "U.S. Army Regional Health Command - Atlantic", "url": "https:\/\/www.army.mil\/RHCAtlantic",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.army.mil\/RHCAtlantic",
-        "snippet": "Secretary of General Staff retires after more than 50 years of
-        service February 12, 2021. First COVID-19 vaccines administered at Fort Drum
-        January 12, 2021. RHC-A military treatment facilities ...", "dateLastCrawled":
-        "2021-09-05T13:25:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
-        "Atlantic and Caribbean Tropical Satellite Imagery ...", "url": "https:\/\/www.ssd.noaa.gov\/PS\/TROP\/trop-atl.html",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssd.noaa.gov\/PS\/TROP\/trop-atl.html",
-        "snippet": "Links to outside sites and more satellite data: NOAA National
-        Hurricane Center - for official forecasts and outlooks.; University of Wisconsin
-        SSEC GOES Images and Loops; Advanced Scatterometer Winds: ASCAT METOP-A |
-        ASCAT METOP-B RAMSDIS Online - Tropical", "dateLastCrawled": "2021-09-05T10:12:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
-        "name": "AIRLANT Home", "url": "https:\/\/www.airlant.usff.navy.mil\/", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.airlant.usff.navy.mil", "snippet": "The
-        Official Website of Commander, Naval Air Force Atlantic (AIRLANT), which
-        mans, trains and equips deployable, combat-ready naval avaition forces that
-        win in combat.", "dateLastCrawled": "2021-09-03T23:36:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
-        "name": "Atlantic Tropical Weather Discussion", "url": "https:\/\/www.nhc.noaa.gov\/mobile\/refresh\/MIATWDAT+html\/MIATWDAT_052309.html",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nhc.noaa.gov\/mobile\/refresh\/MIATWDAT+html\/MIATWDAT_052309.html",
-        "snippet": "An eastern Atlantic tropical wave has an axis along 21W from
-        18N southward, moving W at 10 kt. Scattered showers are noted from 06N to
-        09N between 18W to 23W. An Atlantic Ocean tropical wave has an axis along
-        37W from 16N southward, moving W at 5-10 kt. The wave is situated at the leading
-        edge of a Saharan dust plume.", "dateLastCrawled": "2021-09-05T23:13:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
-        "name": "GOES East Atlantic Links from STAR - NOAA GOES ...", "url": "https:\/\/www.goes.noaa.gov\/Atlantic.html",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.goes.noaa.gov\/Atlantic.html",
-        "snippet": "U.S. Atlantic Coast; GeoColor Full Size: Image | Animated GIF:
-        Infrared (Band 13) Full Size: Image | Animated GIF: U.S. Atlantic Coast
-        Page Source | Local: Tropical Atlantic - Wide; GeoColor Full Size Image
-        | Animated GIF: Infrared (Band 13) Full Size Image ...", "dateLastCrawled":
-        "2021-09-05T12:21:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "name":
-        "Atlantic Herring | NOAA Fisheries", "url": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-herring",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-herring",
-        "snippet": "Atlantic herring and Atlantic mackerel may be retained by
-        vessels fishing with small-mesh bottom trawl gear in the exemption areas,
-        provided vessels comply with all season, area, and gear requirements, possession
-        limits, and are issued a whiting (Category K Open Access Northeast Multispecies)
-        permit or a limited access Northeast multispecies ...", "dateLastCrawled":
-        "2021-09-02T17:31:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13", "name":
-        "Careers – NIWC Atlantic", "url": "https:\/\/www.niwcatlantic.navy.mil\/careers\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.niwcatlantic.navy.mil\/careers",
-        "snippet": "Office of Naval Research (ONR) Internship Program at NIWC Atlantic
-        August 20, 2021 A Look Into Interning at NIWC Atlantic August 17, 2021 NIWC
-        Atlantic Employees Win Three FedHealthIT Innovation Awards July 29, 2021",
-        "dateLastCrawled": "2021-08-31T21:34:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
-        "name": "Atlantic Sturgeon | NOAA Fisheries", "url": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-sturgeon",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-sturgeon",
-        "snippet": "Atlantic sturgeon spawning intervals range from 1 to 5 years
-        for males and 2 to 5 years for females, with males returning almost every
-        year and females usually returning every other year or every third year. Female
-        egg production correlates with age and body size, and ranges from 400,000
-        to 1.6 million eggs.", "dateLastCrawled": "2021-09-05T04:03:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
-        "name": "NWS Radiofax Charts for the NW Atlantic", "url": "https:\/\/www.weather.gov\/marine\/marsh",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/marine\/marsh",
-        "snippet": "NWS Radiofax Charts for the NW Atlantic. The latest version
-        of marine weather charts for broadcast by the U.S. Coast Guard are available
-        from the National Weather Service Telecommunication Gateway on this server.
-        The listed charts are in the G4 (T4) format and enveloped in TIFF for viewing,
-        also available in GIF format.", "dateLastCrawled": "2021-09-04T20:23:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
-        "name": "NASA - Satellites Record Weakening North Atlantic Current", "url":
-        "https:\/\/www.nasa.gov\/vision\/earth\/environment\/North_Atlantic.html",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nasa.gov\/vision\/earth\/environment\/North_Atlantic.html",
-        "snippet": "One important current in the Atlantic is the sub polar gyre,
-        created when warm, subtropical waters enter the northeastern Atlantic from
-        the eastward extension of the Gulf Stream and circulate northward and westward
-        in a counterclockwise motion near Iceland and the tip of Greenland. The current
-        loses heat to the atmosphere as it moves north.", "dateLastCrawled": "2021-09-05T12:02:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
-        "name": "Atlantic Highly Migratory Species Angling Permit (Open ...", "url":
-        "https:\/\/www.fisheries.noaa.gov\/permit\/atlantic-highly-migratory-species-angling-permit-open-access",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/permit\/atlantic-highly-migratory-species-angling-permit",
-        "snippet": "This permit authorizes vessels to recreationally fish for and
-        retain Atlantic highly migratory species, or HMS, using specific gears.
-        This permit must be renewed annually. Vessels with this permit may not sell
-        their catch.", "dateLastCrawled": "2021-09-03T08:56:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
-        "name": "Atlantic Salmon (Salmo salar) - Species Profile", "url": "https:\/\/nas.er.usgs.gov\/queries\/FactSheet.aspx?speciesID=926",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/nas.er.usgs.gov\/queries\/FactSheet.aspx?speciesID=926",
-        "snippet": "Ecology: Salmo salar is an anadromous species, living in freshwater
-        for the first 1 to 3 years of its life before migrating. The Atlantic Salmon
-        prefers temperatures of 4°C to 12°C, with optimal spawning temperature ranging
-        from 7.2°C to 10°C (Jordan and Beland 1981, Peterson et al. 1977).", "dateLastCrawled":
-        "2021-09-02T22:37:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19", "name":
-        "Atlantic White-Sided Dolphin | NOAA Fisheries", "url": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-white-sided-dolphin",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-white-sided-dolphin",
-        "snippet": "Atlantic white-sided dolphins have a distribution throughout
-        the colder waters of the North Atlantic Ocean from about 38 to 80 degrees
-        North. Their range includes Svalbard, Greenland, Ireland, Europe, Barents
-        Sea, the Azores, and Gulf of Maine.", "dateLastCrawled": "2021-09-04T19:59:00.0000000Z",
-        "language": "en", "isNavigational": false}], "someResultsRemoved": true},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-  recorded_at: Tue, 07 Sep 2021 16:19:36 GMT
-- request:
-    method: get
     uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=warnings%20for%20a%20tornado%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
@@ -538,31 +31,35 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Wed, 06 Oct 2021 11:49:55 GMT
+      - Wed, 10 Jan 2024 14:40:49 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
+      X-Eventid:
+      - 659eacadac134e2eb0631c4654d6c8bc
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
       Bingapis-Traceid:
-      - 4FF30B3DEEEA4F8898549645BE711A1C
+      - 659eacadac134e2eb0631c4654d6c8bc
       Bingapis-Sessionid:
-      - 53A5A54023F748168F035A02E4CBFD03
+      - E5B97130168B46BDAF2314DFFD74C3E0
       X-Msedge-Clientid:
-      - 3BC10DBE8DC66588258A1D768C896411
+      - 0FC737F0902862560E5E23F29182639F
       X-Msapi-Userstate:
-      - 1f72
+      - 83d8
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=262,MSDatacenter=BN2B
+      - InternalResponseTime=257,MSDatacenter=BNZE01
       X-Cache:
       - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
       X-Msedge-Ref:
-      - 'Ref A: 4FF30B3DEEEA4F8898549645BE711A1C Ref B: BLUEDGE1906 Ref C: 2021-10-06T11:50:55Z'
+      - 'Ref A: 2FDAB93952D64EA294EE47F808E691C0 Ref B: BN3EDGE0208 Ref C: 2024-01-10T14:41:49Z'
       Apim-Request-Id:
-      - 561c4dfd-f4e3-4501-b158-351fd58002a5
+      - 3ae60b16-e58f-410f-94f6-516b51394e74
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -570,180 +67,208 @@ http_interactions:
       Csp-Billing-Usage:
       - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Wed, 06 Oct 2021 11:50:55 GMT
+      - Wed, 10 Jan 2024 14:41:49 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "warnings
         for a tornado (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=warnings+for+a+tornado+(site%3agov+OR+site%3amil)",
-        "totalEstimatedMatches": 6120000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "Tornado | Alerts and Warnings - FEMA", "url": "https:\/\/community.fema.gov\/ProtectiveActions\/s\/article\/Tornado-Alerts-and-Warnings",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/community.fema.gov\/ProtectiveActions\/s\/article\/Tornado-Alerts-and-Warnings",
-        "snippet": "Tornado Warning – The NWS issues a Tornado Warning when
-        a tornado has been sighted or indicated by weather radar. Take shelter IMMEDIATELY.
-        Warning times vary in the range of 10 to 15 minutes. Occasionally, tornadoes
-        develop without detection, and no official warnings can be made before touchdown.
-        [1]", "dateLastCrawled": "2021-10-02T23:27:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "totalEstimatedMatches": 4730000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
         "name": "Understand Tornado Alerts - National Weather Service", "url":
         "https:\/\/www.weather.gov\/safety\/tornado-ww", "isFamilyFriendly": true,
         "displayUrl": "https:\/\/www.weather.gov\/safety\/tornado-ww", "snippet":
-        "Warnings are issued by your local forecast office. Warnings typically
-        encompass a much smaller area (around the size of a city or small county)
-        that may be impacted by a tornado identified by a forecaster on radar or
-        by a trained spotter \/law enforcement who is watching the storm.", "dateLastCrawled":
-        "2021-10-03T01:12:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2", "name": "Tornado
-        Safety Rules - National Weather Service", "url": "https:\/\/www.weather.gov\/bmx\/sps_torsafetyrules",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/bmx\/sps_torsafetyrules",
-        "snippet": "Tornado Warning - issued when a developing tornado has been
-        detected by National Weather Service doppler radar or a reliable report
-        of a tornado has been reported. A tornado warning is usually issued
-        for portions of one or two counties, for an hour or less. The storm could
-        also produce large hail and destructive straight line winds.", "dateLastCrawled":
-        "2021-09-29T14:22:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3", "name": "Staying
-        Safe in a Tornado", "url": "https:\/\/www.cdc.gov\/nceh\/features\/tornadosafety\/index.html",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/nceh\/features\/tornadosafety",
-        "snippet": "Be sure your children know what a tornado is, what tornado
-        watches and warnings are, what county or parish they live in (warnings
-        are typically issued by county or parish), and what makes a location a safe
-        shelter, whether at home or at school. TIP : Stay aware of weather conditions.",
-        "dateLastCrawled": "2021-09-30T17:34:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4", "name":
-        "Tornado - FEMA", "url": "https:\/\/community.fema.gov\/ProtectiveActions\/s\/article\/Tornado",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/community.fema.gov\/ProtectiveActions\/s\/article\/Tornado",
-        "snippet": "An alternative shelter should be identified prior to a tornado
-        watch or warning. While there is research to support the use of a vehicle
-        as a “last resort,” no research on the efficacy of below ground level outdoor
-        locations was found. Tornadoes have the ability to cause massive and total
-        destruction.", "dateLastCrawled": "2021-10-03T10:07:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
-        "name": "Preparing for a Tornado | Tornadoes | CDC", "url": "https:\/\/www.cdc.gov\/disasters\/tornadoes\/prepared.html",
+        "Tornadoes are possible in and near the watch area. Review and discuss your
+        emergency plans and check supplies and your safe room. Be ready to act quickly
+        if a warning is issued or you suspect a tornado is approaching. Acting
+        early helps to save lives! Watches are issued by the Storm Prediction Center
+        for counties where tornadoes may occur.", "dateLastCrawled": "2024-01-07T06:11:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=warnings+for+a+tornado+(site%3agov+OR+site%3amil)&d=4545097949597428&mkt=en-US&setlang=en-US&w=RBg11hKp9cQS31jrEjTycJqDHBTo0VJV",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Active Alerts - National Weather Service", "url": "https:\/\/www.weather.gov\/alerts",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/alerts",
+        "snippet": "Weather.gov > Active Alerts. Warnings By State. Excessive
+        Rainfall and Winter Weather Forecasts. National River Flooding. Latest Warnings.
+        Thunderstorm\/Tornado Outlook. Hurricanes. Fire Weather Outlooks. UV Alerts.",
+        "dateLastCrawled": "2024-01-08T15:31:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=warnings+for+a+tornado+(site%3agov+OR+site%3amil)&d=4570343766491288&mkt=en-US&setlang=en-US&w=fTEzaSak-wYeWgytOgzZVHjxLSIVuAGj",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Tornadoes | Ready.gov", "url": "https:\/\/www.ready.gov\/tornadoes",
+        "datePublished": "2022-02-18T00:00:00.0000000", "datePublishedDisplayText":
+        "Feb 18, 2022", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ready.gov\/tornado",
+        "snippet": "Learn what to do if you are under a tornado warning and how
+        to stay safe when a tornado threatens. Prepare for Tornadoes Stay Safe
+        During Stay Safe After Associated Content Tornadoes are violently rotating
+        columns of air that extend from a thunderstorm to the ground. Tornadoes
+        can destroy buildings, flip cars, and create deadly flying debris. A tornado
+        can:", "dateLastCrawled": "2024-01-10T05:19:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=warnings+for+a+tornado+(site%3agov+OR+site%3amil)&d=4876987252681968&mkt=en-US&setlang=en-US&w=trzKxL3McXWpzFhvtlnS_sMDN4u19JcB",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Stay Safe During a Tornado | Tornadoes | CDC", "url": "https:\/\/www.cdc.gov\/disasters\/tornadoes\/during.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/disasters\/tornadoes\/during.html",
+        "snippet": "Take shelter immediately during a tornado warning. A tornado
+        warning is issued when a tornado is sighted or indicated by weather radar.
+        Take shelter if you see signs of a tornado. Sometimes tornadoes strike
+        quickly, without time for a tornado warning. Signs that a tornado may
+        be approaching include. Rotating funnel-shaped cloud.", "dateLastCrawled":
+        "2024-01-08T15:32:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=warnings+for+a+tornado+(site%3agov+OR+site%3amil)&d=4981135913127987&mkt=en-US&setlang=en-US&w=Uza2ix5H-dDZKKZnf122ZGF2UC6iPPGO",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "What to do During a Tornado - National Weather Service", "url":
+        "https:\/\/www.weather.gov\/safety\/tornado-during", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.weather.gov\/safety\/tornado-during", "snippet":
+        "Find out what you can do when a tornado strikes. Acting quickly is key
+        to staying safe and minimizing impacts. Stay Weather-Ready: Continue to listen
+        to local news or a NOAA Weather Radio to stay updated about tornado watches
+        and warnings.; At Your House: If you are in a tornado warning, go to
+        your basement, safe room, or an interior room away from windows.", "dateLastCrawled":
+        "2024-01-09T09:40:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=warnings+for+a+tornado+(site%3agov+OR+site%3amil)&d=4527475694251062&mkt=en-US&setlang=en-US&w=9yG_yTk0cD8K28cvRHN4_-nmSZdZNVye",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Preparing for a Tornado | Tornadoes | CDC", "url": "https:\/\/www.cdc.gov\/disasters\/tornadoes\/prepared.html",
         "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/disasters\/tornadoes\/prepared.html",
-        "snippet": "Tornado warning. A tornado warning means that a tornado
-        has been sighted or indicated by weather radar. You should immediately take
-        shelter during a tornado warning. Learn your local tornado warning
-        system. Learn about the tornado warning system of your county or locality.
-        Most tornado-prone areas have an outdoor siren system.", "dateLastCrawled":
-        "2021-10-02T07:19:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6", "name": "What
-        to do During a Tornado - National Weather Service", "url": "https:\/\/www.weather.gov\/safety\/tornado-during",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/safety\/tornado-during",
-        "snippet": "Find out what you can do when a tornado strikes. Acting quickly
-        is key to staying safe and minimizing impacts. Stay Weather-Ready: Continue
-        to listen to local news or a NOAA Weather Radio to stay updated about tornado
-        watches and warnings.; At Your House: If you are in a tornado warning,
-        go to your basement, safe room, or an interior room away from windows.", "dateLastCrawled":
-        "2021-10-03T22:30:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7", "name": "Severe
-        Weather 101: Tornado Basics", "url": "https:\/\/www.nssl.noaa.gov\/education\/svrwx101\/tornadoes\/",
+        "snippet": "Learn your local tornado warning system. Learn about the tornado
+        warning system of your county or locality. Most tornado-prone areas have
+        an outdoor siren system. Know how to distinguish between the siren’s warnings
+        for a tornado watch and a tornado warning. Wireless Emergency Alerts
+        (WEAs) are another method to stay up to date on weather ...", "dateLastCrawled":
+        "2024-01-08T18:07:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=warnings+for+a+tornado+(site%3agov+OR+site%3amil)&d=4555659273248157&mkt=en-US&setlang=en-US&w=A0PszR8fWeQXrMPeHE_-M01IXEDvtUS7",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Tornado | Alerts and Warnings - FEMA", "url": "https:\/\/community.fema.gov\/ProtectiveActions\/s\/article\/Tornado-Alerts-and-Warnings",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/community.fema.gov\/ProtectiveActions\/s\/article\/Tornado-Alerts-and-Warnings",
+        "snippet": "For tornado warnings, some storms with little or no radar-detected
+        rotation can produce weak tornadoes.”. [2] “The relationship between warnings
+        and fatalities is not as intuition suggests. A lead time up to 15 min reduces
+        fatalities; a warning in the range of 6–10 min reduces expected fatalities
+        by 41% compared to a similar tornado with ...", "dateLastCrawled": "2024-01-09T05:21:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=warnings+for+a+tornado+(site%3agov+OR+site%3amil)&d=4908112878174227&mkt=en-US&setlang=en-US&w=m9PRgWcI0yG384Jc__DiPI5PX0pGaRxS",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Staying Safe in a Tornado - Centers for Disease Control and Prevention",
+        "url": "https:\/\/www.cdc.gov\/nceh\/features\/tornadosafety\/index.html",
+        "datePublished": "2023-04-03T00:00:00.0000000", "datePublishedDisplayText":
+        "Apr 3, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/nceh\/features\/tornadosafety",
+        "snippet": "The best way to stay safe during a tornado is to be prepared
+        with the following items: Fresh batteries and a battery-operated TV, radio,
+        or internet-enabled device to listen to the latest emergency weather information.
+        A tornado emergency plan including access to a safe shelter for yourself,
+        your family, people with special needs, and your pets.", "dateLastCrawled":
+        "2024-01-08T14:28:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=warnings+for+a+tornado+(site%3agov+OR+site%3amil)&d=5020838600770130&mkt=en-US&setlang=en-US&w=DqpG_bZPWHnrNvwNJcIuu6sg_Nc7Q-tw",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "BE PREPARED FOR A TORNADO - Ready.gov", "url": "https:\/\/www.ready.gov\/sites\/default\/files\/2020-03\/tornado-information-sheet.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ready.gov\/sites\/default\/files\/2020-03\/tornado-information-sheet.pdf",
+        "snippet": "TORNADO Tornadoes can destroy buildings, flip cars, and create
+        deadly flying debris. FEMA V-1010\/ March 2018. Tornadoes are violently
+        rotating columns of air that extend from a thunderstorm . to the ground. Can
+        happen anytime. 200+ MPH Bring intense winds. Can happen anywhere. Look like
+        funnels. IF YOU ARE UNDER A TORNADO WARNING, FIND SAFE ...", "dateLastCrawled":
+        "2024-01-07T16:22:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9", "name": "Tornadoes
+        101 | National Oceanic and Atmospheric Administration", "url": "https:\/\/www.noaa.gov\/stories\/tornadoes-101",
+        "datePublished": "2011-04-17T00:00:00.0000000", "datePublishedDisplayText":
+        "Apr 17, 2011", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.noaa.gov\/stories\/tornadoes-101",
+        "snippet": "The area that has the most strong and violent tornadoes includes
+        eastern South Dakota, Nebraska, Kansas, Oklahoma, northern Texas, and eastern
+        Colorado. How much advance warning can forecasters give us before a tornado
+        strikes? The current average lead-time for tornado warnings is 13 minutes.
+        NOAA Research is working to increase tornado warning ...", "dateLastCrawled":
+        "2024-01-09T14:28:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=warnings+for+a+tornado+(site%3agov+OR+site%3amil)&d=4960906614694233&mkt=en-US&setlang=en-US&w=I0lPUZM1LSjP9fci8ruey_RIlS8_IMUT",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Severe Weather 101: Tornado Basics - NOAA National Severe Storms
+        Laboratory", "url": "https:\/\/www.nssl.noaa.gov\/education\/svrwx101\/tornadoes\/",
         "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nssl.noaa.gov\/education\/svrwx101\/tornadoes",
         "snippet": "A Tornado WARNING is issued by your local NOAA National Weather
         Service Forecast Office meteorologists who watch the weather 24\/7 over a
         designated area. This means a tornado has been reported by spotters or indicated
         by radar and there is a serious threat to life and property to those in the
-        path of the tornado.", "dateLastCrawled": "2021-10-03T01:27:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
-        "name": "WATCH VS. WARNING WEATHER", "url": "https:\/\/www.weather.gov\/media\/owlie\/3-fold-Safety-Tips-Tornado-Brochure-08-07-18-D-FINAL.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/media\/owlie\/3-fold-Safety-Tips-Tornado-Brochure-08-07-18-D...",
-        "snippet": "tornado watches and warnings. 9 a long-sleeved shirt and sturdy
-        shoes. Contact At Your House: If you are in a tornado warning area, go
-        to your basement, safe room or an interior room away from windows. Don’t forget
-        pets if time allows. 9At Your Workplace or School: Follow your tornado drill
-        and proceed to your tornado shelter quickly and calmly.", "dateLastCrawled":
-        "2021-10-03T08:18:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9", "name": "Severe
-        Weather Safety and Survival - National Weather Service", "url": "https:\/\/www.weather.gov\/oun\/safety-severe-homesafety",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/oun\/safety-severe-homesafety",
-        "snippet": "This is why tornado safety plans are so crucial for residents
-        of mobile homes! Pictured below is a destroyed mobile home southeast of Wewoka
-        from a tornado in 1998. This is an example of what an EF-1 tornado can
-        do to a mobile home. Mobile homes are especially susceptible to high winds
-        from severe thunderstorms and tornadoes.", "dateLastCrawled": "2021-10-01T22:34:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
-        "name": "Weather warnings on the go!", "url": "https:\/\/www.weather.gov\/wrn\/wea",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/wrn\/wea",
-        "snippet": "Warnings for Tsunamis (see Fact Sheet), Tornado, Severe Thunderstorm
-        (only when the damage threat is destructive), Flash Flood (only when the damage
-        threat is considerable or catastrophic), Hurricane, Typhoon, Storm Surge,
-        Extreme Wind, Dust Storm and Snow Squall.", "dateLastCrawled": "2021-09-30T14:50:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
-        "name": "Prepare! Don''t let Tornadoes Take You by Surprise", "url": "https:\/\/www.weather.gov\/safety\/tornado-prepare",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/safety\/tornado-prepare",
-        "snippet": "Be Weather-Ready: Check the forecast regularly to see if you''re
-        at risk for tornadoes. Listen to local news or a NOAA Weather Radio to stay
-        informed about tornado watches and warnings. Check the Weather-Ready Nation
-        for tips. Sign Up for Notifications: Know how your community sends warnings.
-        Some communities have outdoor sirens.", "dateLastCrawled": "2021-10-02T07:05:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
-        "name": "Be Prepared for a Tornado | Wilmington, DE", "url": "https:\/\/www.wilmingtonde.gov\/government\/city-departments\/office-of-emergency-management\/be-prepared-for-a-tornado",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.wilmingtonde.gov\/...\/office-of-emergency-management\/be-prepared-for-a-tornado",
-        "snippet": "A tornado warning is when a tornado is actually occurring,
-        take shelter immediately. For more about tornadoes and additional information
-        resources, visit www.Ready.gov. This information is courtesy of the Federal
-        Emergency Management Agency (FEMA), DisasterAssistance.gov, and The National
-        Office of Citizen Corps. ...", "dateLastCrawled": "2021-09-29T15:17:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
-        "name": "Tornadoes | Ready.gov", "url": "https:\/\/www.ready.gov\/tornadoes",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ready.gov\/tornado",
-        "snippet": "Learn what to do if you are under a tornado warning and how
-        to stay safe when a tornado threatens. Prepare for Tornadoes Stay Safe
-        During Stay Safe After Associated Content Tornadoes are violently rotating
-        columns of air that extend from a thunderstorm to the ground. Tornadoes
-        can destroy buildings, flip cars, and create deadly flying debris.", "dateLastCrawled":
-        "2021-10-02T02:25:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14", "name":
-        "Tornado Data, Information and Links", "url": "https:\/\/www.weather.gov\/oun\/tornadodata",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/oun\/tornadodata",
-        "snippet": "Significant Tornadoes and Tornado Outbreaks in the NWS Norman
-        County Warning Area. The May 10, 1905 Snyder, Oklahoma F5 Tornado - The
-        violent tornado that killed at least 97 people and ravaged the town of Snyder
-        is still ranked as the second deadliest Oklahoma tornado of all time.; The
-        May 25, 1955 Blackwell, Oklahoma F5 Tornado - This F5 tornado killed 20
-        people in and near Blackwell during ...", "dateLastCrawled": "2021-10-02T12:18:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
-        "name": "Tornado Preparedness and Response - Introduction ...", "url": "https:\/\/www.osha.gov\/tornado",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.osha.gov\/tornado",
-        "snippet": "Tornadoes can occur with little or no warning. Taking precautions
-        in advance of the storms, such as developing an emergency plan, learning the
-        warning signs, and monitoring tornado watches and warnings, can help
-        you stay safe if a tornado occurs in your area. To prepare for a tornado,
-        businesses ...", "dateLastCrawled": "2021-10-03T09:15:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
-        "name": "Active Alerts - National Weather Service", "url": "https:\/\/www.weather.gov\/alerts",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/alerts",
-        "snippet": "Active Alerts. Weather.gov > Active Alerts. Warnings By
-        State. Excessive Rainfall and Winter Weather Forecasts. National River Flooding.
-        Latest Warnings. Thunderstorm\/Tornado Outlook. Hurricanes. Fire Weather
-        Outlooks.", "dateLastCrawled": "2021-10-03T02:21:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
-        "name": "Stay Safe During a Tornado | Tornadoes | CDC", "url": "https:\/\/www.cdc.gov\/disasters\/tornadoes\/during.html",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/disasters\/tornadoes\/during.html",
-        "snippet": "A tornado warning is issued when a tornado is sighted or
-        indicated by weather radar. Take shelter if you see signs of a tornado.
-        Sometimes tornadoes strike quickly, without time for a tornado warning.
-        Signs that a tornado may be approaching include Rotating funnel-shaped cloud;",
-        "dateLastCrawled": "2021-10-03T01:27:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
-        "name": "Current Weather Hazards for North and Central Georgia", "url":
-        "https:\/\/www.weather.gov\/ffc\/warnings", "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.weather.gov\/ffc\/warnings", "snippet": "Contact Us. Go
-        to Severe Weather Product Suite. Current or Potential Local Weather Hazards.
-        This information may be received in a more timely manner via local radio,
-        television, your cable television provider, or. NOAA Weather Radio. Click
-        on a county to get current bulletins for that specific location.", "dateLastCrawled":
-        "2021-10-02T19:09:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19", "name":
-        "Preparing for a Tornado - StormAware Tornado Safety", "url": "https:\/\/stormaware.mo.gov\/preparing-for-a-tornado\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/stormaware.mo.gov\/preparing-for-a-tornado",
-        "snippet": "Watches and Warnings. Tornado Watch means tornadoes are
-        possible. Remain alert for approaching storms. Watch the sky and stay tuned
-        to NOAA Weather Radio, commercial radio, or television for information. Tornado
-        Warning means a tornado has been sighted or indicated by weather radar.
-        Take shelter immediately. When a Tornado Strikes", "dateLastCrawled": "2021-09-24T23:19:00.0000000Z",
-        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
-        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        path of the tornado.", "dateLastCrawled": "2024-01-10T07:34:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=warnings+for+a+tornado+(site%3agov+OR+site%3amil)&d=4588786352849613&mkt=en-US&setlang=en-US&w=Qz9BMbb0xWkmvSRGGL8yky_wERFMb5Ef",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Severe Weather 101: Tornado FAQ - NOAA National Severe Storms
+        Laboratory", "url": "https:\/\/www.nssl.noaa.gov\/education\/svrwx101\/tornadoes\/faq\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nssl.noaa.gov\/education\/svrwx101\/tornadoes\/faq",
+        "snippet": "A tornado warning means that a tornado has been spotted,
+        or that Doppler radar shows a thunderstorm circulation which can spawn a tornado.
+        When a tornado warning is issued for your area, seek safe shelter immediately.
+        The Storm Prediction Center issues tornado and severe thunderstorm watches.",
+        "dateLastCrawled": "2024-01-07T12:31:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=warnings+for+a+tornado+(site%3agov+OR+site%3amil)&d=4550629866298727&mkt=en-US&setlang=en-US&w=-52wHq6KZGsVY3ExjQCYfh3XCtv5e3-c",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Tornado - FEMA", "url": "https:\/\/community.fema.gov\/ProtectiveActions\/s\/article\/Tornado",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/community.fema.gov\/ProtectiveActions\/s\/article\/Tornado",
+        "snippet": "A room or space built below ground level and without windows that
+        is safer place to be during a tornado. Protect Yourself Key Messages. If
+        you are under a tornado warning, find safe shelter right away. Go to a
+        safe room, basement, or storm cellar. If there is no basement, get to a small,
+        interior room on the lowest level.", "dateLastCrawled": "2024-01-09T02:29:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=warnings+for+a+tornado+(site%3agov+OR+site%3amil)&d=4733767272126147&mkt=en-US&setlang=en-US&w=uBNthY6SFiRoq3eXSu9UEdV7BOqKM3fj",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Tornado Safety - National Weather Service", "url": "https:\/\/www.weather.gov\/safety\/tornado",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov\/safety\/tornado",
+        "snippet": "A tornado is a violently rotating column of air extending from
+        the base of a thunderstorm down to the ground. Tornadoes are capable of
+        completely destroying well-made structures, uprooting trees, and hurling objects
+        through the air like deadly missiles. Tornadoes can occur at any time of
+        day or night and at any time of the year. Although ...", "dateLastCrawled":
+        "2024-01-10T01:28:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=warnings+for+a+tornado+(site%3agov+OR+site%3amil)&d=5039882477061526&mkt=en-US&setlang=en-US&w=RVidmz0nnb_z38WyJND9XgkTmvGRPtAB",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Severe Weather 101: Tornado Forecasting - NOAA National Severe
+        Storms ...", "url": "https:\/\/www.nssl.noaa.gov\/education\/svrwx101\/tornadoes\/forecasting\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nssl.noaa.gov\/education\/svrwx101\/tornadoes\/forecasting",
+        "snippet": "If conditions develop that are favorable for tornadoes, SPC
+        forecasters issue a severe thunderstorm or tornado watch that typically
+        lasts four to six hours. Local forecast offices, emergency managers, storm
+        spotters and the general public are alerted to the possibility of severe
+        weather. Tornado warnings are issued by the local National Weather ...",
+        "dateLastCrawled": "2024-01-09T09:20:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=warnings+for+a+tornado+(site%3agov+OR+site%3amil)&d=4691998716993119&mkt=en-US&setlang=en-US&w=pVAwkPApr_RVrKSC8Fe9ZuBACMvnZVyI",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Tornado | Signs and Clues - FEMA", "url": "https:\/\/community.fema.gov\/ProtectiveActions\/s\/article\/Tornado-Signs-and-Clues",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/community.fema.gov\/ProtectiveActions\/s\/article\/Tornado-Signs-and-Clues",
+        "snippet": "Warning signs may include the following: A rotating, funnel-shaped
+        cloud that extends from a thunderstorm toward the ground may be visible. An
+        approaching cloud of debris especially at ground level, even if a funnel is
+        not visible; A loud roar - similar to a freight train - or a strange quiet
+        occurring within or shortly after a thunderstorm.", "dateLastCrawled": "2024-01-09T10:30:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=warnings+for+a+tornado+(site%3agov+OR+site%3amil)&d=4727445078355080&mkt=en-US&setlang=en-US&w=8VqUuP6edbFlyzrSWe4pBwfrME6RuHy7",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Storm Prediction Center Public Severe Weather Outlook (PWO)", "url":
+        "https:\/\/www.spc.noaa.gov\/products\/outlook\/archive\/2024\/pwo_202401081335.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.spc.noaa.gov\/products\/outlook\/archive\/2024\/pwo_202401081335.html",
+        "snippet": "A tornado watch means that conditions are favorable for tornadoes
+        to form during the next several hours. If a tornado warning is issued
+        for your area, move to a place of safety, ideally in a basement or interior
+        room on the lowest floor of a sturdy building. && ..Guyer.. 01\/08\/2024 $$
+        Top of Page\/All Outlooks\/Home", "dateLastCrawled": "2024-01-08T16:20:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=warnings+for+a+tornado+(site%3agov+OR+site%3amil)&d=3899987876794&mkt=en-US&setlang=en-US&w=BRMz4q0KSb0MDymNr2NpVYrTMSeMf5bA",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Governor Cooper Declares State of Emergency Ahead of Severe Weather",
+        "url": "https:\/\/governor.nc.gov\/news\/press-releases\/2024\/01\/08\/governor-cooper-declares-state-emergency-ahead-severe-weather",
+        "datePublished": "2024-01-08T00:00:00.0000000", "datePublishedFreshnessText":
+        "2 days ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/governor.nc.gov\/...\/governor-cooper-declares-state-emergency-ahead-severe-weather",
+        "snippet": "Jan 8, 2024. Governor Roy Cooper signed an Executive Order today
+        declaring a State of Emergency ahead of severe weather expected across the
+        state. The Order waives truck weight, size and hours of service restrictions
+        so that vehicles carrying essential supplies such as food, medicine or fuel
+        or transporting livestock and crops can get their ...", "dateLastCrawled":
+        "2024-01-10T12:26:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=warnings+for+a+tornado+(site%3agov+OR+site%3amil)&d=5274895388802&mkt=en-US&setlang=en-US&w=FLkOtFmaelsNeip4RFevnDJC213X9WLq",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Tornadoes | CDC - Centers for Disease Control and Prevention",
+        "url": "https:\/\/www.cdc.gov\/disasters\/tornadoes\/index.html", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.cdc.gov\/disasters\/tornadoes", "snippet":
+        "Knowing what to do when you see a tornado, or when you hear a tornado
+        warning, can help protect you and your loved ones. During a tornado, people
+        face hazards from extremely high winds and risk being struck by flying and
+        falling objects. After a tornado, the damage left behind poses additional
+        injury risks.", "dateLastCrawled": "2024-01-08T17:05:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=warnings+for+a+tornado+(site%3agov+OR+site%3amil)&d=4972185201360007&mkt=en-US&setlang=en-US&w=dRIQQRZ88orVFuuICFWaiEr7P9KaNc5u",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Winter Travel Advisory: Wind, rain, snow could create hazardous travel
+        ...", "url": "https:\/\/www.portland.gov\/transportation\/news\/2024\/1\/8\/winter-travel-advisory-wind-rain-snow-could-create-hazardous-travel",
+        "datePublished": "2024-01-08T00:00:00.0000000", "datePublishedFreshnessText":
+        "2 days ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.portland.gov\/transportation\/news\/2024\/1\/8\/winter-travel-advisory-wind-rain...",
+        "snippet": "Preparing for severe weather travel: Stay informed. Sign up
+        at Public Alerts for emergency notifications from all regional agencies
+        via text, email, or phone. Go to PBOT’s Winter Weather Center to track real-time
+        weather, traffic, road closures, and plow information. Sign up for PBOT alerts
+        via text or email. Build a severe weather travel plan.", "dateLastCrawled":
+        "2024-01-10T00:05:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=warnings+for+a+tornado+(site%3agov+OR+site%3amil)&d=3556765956433&mkt=en-US&setlang=en-US&w=kS3b_67VFfHyicKY6ouKXB3KTzjuP9ls",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
@@ -762,7 +287,7 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-  recorded_at: Wed, 06 Oct 2021 05:48:13 GMT
+  recorded_at: Wed, 10 Jan 2024 14:41:49 GMT
 - request:
     method: get
     uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=atlantic%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
@@ -794,31 +319,35 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Wed, 06 Oct 2021 11:49:56 GMT
+      - Wed, 10 Jan 2024 14:40:50 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
+      X-Eventid:
+      - 659eacae352542ee920a229ffcb64af2
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
       Bingapis-Traceid:
-      - E509081C7CF1442393005EF76165B294
+      - 659eacae352542ee920a229ffcb64af2
       Bingapis-Sessionid:
-      - CDA9702D21EA4F82A9D4FBB129FF2702
+      - 0065E00024704BE0BFB9F763AFA56A27
       X-Msedge-Clientid:
-      - 2740E86F030B6B660E5AF8A702446A6F
+      - 35E5C107010566D93AB3D50500AF6797
       X-Msapi-Userstate:
-      - a181
+      - f059
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=251,MSDatacenter=BN2B
+      - InternalResponseTime=288,MSDatacenter=BNZE01
       X-Cache:
       - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
       X-Msedge-Ref:
-      - 'Ref A: E509081C7CF1442393005EF76165B294 Ref B: BLUEDGE1116 Ref C: 2021-10-06T11:50:56Z'
+      - 'Ref A: 3C4C179ABDC248CD9079C1B1217FE21F Ref B: BN3EDGE1116 Ref C: 2024-01-10T14:41:50Z'
       Apim-Request-Id:
-      - 3e2cda46-90d5-4867-bcd9-893d5d605c6b
+      - 956d57a2-faa9-42b3-ab89-239814abc132
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -826,181 +355,216 @@ http_interactions:
       Csp-Billing-Usage:
       - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Wed, 06 Oct 2021 11:50:56 GMT
+      - Wed, 10 Jan 2024 14:41:50 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "atlantic
         (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=atlantic+(site%3agov+OR+site%3amil)",
-        "totalEstimatedMatches": 9970000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "Atlantic 2-Day Graphical Tropical Weather Outlook", "url": "https:\/\/www.nhc.noaa.gov\/gtwo.php?basin=atlc&fdays=2",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nhc.noaa.gov\/gtwo.php?basin=atlc&fdays=2",
-        "snippet": "Atlantic: Disturbances: ALL [1] View 5-Day Graphical Tropical
-        Weather Outlook: This product is updated at approximately 2 AM, 8 AM, 2 PM,
-        and 8 PM EDT from May 15 to November 30, with special outlooks issued at any
-        time as conditions warrant. The graphic displays all currently active tropical
-        cyclones, and disturbances with tropical cyclone ...", "dateLastCrawled":
-        "2021-10-03T09:19:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1", "name": "Atlantic
-        5-Day Graphical Tropical Weather Outlook", "url": "https:\/\/www.nhc.noaa.gov\/gtwo.php?basin=atlc&202110060503",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nhc.noaa.gov\/gtwo.php?basin=atlc&202110060503",
-        "snippet": "Atlantic 5-Day Graphical Tropical Weather Outlook. This product
-        is updated at approximately 2 AM, 8 AM, 2 PM, and 8 PM EDT from May 15 to
-        November 30, with special outlooks issued at any time as conditions warrant.
-        The graphic displays all currently active tropical cyclones, and disturbances
-        with tropical cyclone formation potential over the ...", "dateLastCrawled":
-        "2021-10-06T11:22:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2", "name": "Atlantic
-        5-Day Graphical Tropical Weather Outlook", "url": "https:\/\/www.nhc.noaa.gov\/gtwo.php?basin=atlc",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nhc.noaa.gov\/gtwo.php?basin=atlc",
-        "snippet": "Atlantic 5-Day Graphical Tropical Weather Outlook. This product
-        is updated at approximately 2 AM, 8 AM, 2 PM, and 8 PM EDT from May 15 to
-        November 30, with special outlooks issued at any time as conditions warrant.
-        The graphic displays all currently active tropical cyclones, and disturbances
-        with tropical cyclone formation potential over the ...", "dateLastCrawled":
-        "2021-10-03T00:22:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3", "name": "Atlantic
-        Tropical Weather Discussion", "url": "https:\/\/www.nhc.noaa.gov\/text\/refresh\/MIATWDAT+shtml\/060619_MIATWDAT.shtml",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nhc.noaa.gov\/text\/refresh\/MIATWDAT+shtml\/060619_MIATWDAT.shtml",
-        "snippet": "An Atlantic Ocean tropical wave is along 46W\/47W, from 19N
-        southward, moving westward from 15 knots to 20 knots. Precipitation: widely
-        scattered to scattered moderate and widely scattered strong is from the ITCZ
-        to 14N between 36W and 50W. A Caribbean Sea tropical wave is along 78W, from
-        16N southward, moving westward from 10 knots to 15 knots.", "dateLastCrawled":
-        "2021-10-06T06:22:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4", "name": "Atlantic
-        5-Day Graphical Tropical Weather Outlook", "url": "https:\/\/www.nhc.noaa.gov\/gtwo.php?text",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nhc.noaa.gov\/gtwo.php?text",
-        "snippet": "Atlantic 5-Day Graphical Tropical Weather Outlook (Text) This
-        product is updated at approximately 2 AM, 8 AM, 2 PM, and 8 PM EDT from May
-        15 to November 30, with special outlooks issued at any time as conditions
-        warrant. The graphic displays all currently active tropical cyclones, and
-        disturbances with tropical cyclone formation potential over ...", "dateLastCrawled":
-        "2021-10-02T23:27:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5", "name": "Atlantic
-        Tropical Weather Discussion", "url": "https:\/\/www.nhc.woc.noaa.gov\/text\/refresh\/MIATWDAT+shtml\/061046_MIATWDAT.shtml",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nhc.woc.noaa.gov\/text\/refresh\/MIATWDAT+shtml\/061046_MIATWDAT.shtml",
-        "snippet": "Atlantic Tropical Weather Discussion 000 AXNT20 KNHC 061046
-        TWDAT Tropical Weather Discussion NWS National Hurricane Center Miami FL 1205
-        UTC Wed Oct 6 2021 Tropical Weather Discussion for North America, Central
-        America Gulf of Mexico, Caribbean Sea, northern sections of South America,
-        and Atlantic Ocean to the African coast from the Equator to ...", "dateLastCrawled":
-        "2021-10-06T10:54:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6", "name": "U.S.
-        Army Regional Health Command - Atlantic", "url": "https:\/\/www.army.mil\/RHCAtlantic",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.army.mil\/RHCAtlantic",
-        "snippet": "Secretary of General Staff retires after more than 50 years of
-        service February 12, 2021. First COVID-19 vaccines administered at Fort Drum
-        January 12, 2021. RHC-A military treatment facilities ...", "dateLastCrawled":
-        "2021-10-02T01:30:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7", "name": "Marine
-        Operations Center - Atlantic (MOC-A) | Office of ...", "url": "https:\/\/www.omao.noaa.gov\/explore\/facilities\/marine-operations-center-atlantic-moc",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.omao.noaa.gov\/explore\/facilities\/marine-operations-center-atlantic-moc",
-        "snippet": "The NOAA Marine Operations Center-Atlantic (MOC-A) serves as
-        a homeport for one NOAA survey ship and provides administrative, engineering,
-        maintenance and logistical support to NOAA''s Atlantic fleet.", "dateLastCrawled":
-        "2021-10-01T20:22:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8", "name": "Atlantic
-        Tropical Weather Discussion", "url": "https:\/\/www.nhc.noaa.gov\/text\/MIATWDAT.shtml",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nhc.noaa.gov\/text\/MIATWDAT.shtml",
-        "snippet": "An Atlantic tropical wave has its axis along 20W, south of 20N,
-        and it is moving W at 15 kt. No deep convection is noted in association with
-        this wave. A Caribbean tropical wave has its axis along 69W, south of 20N,
-        extending from E Hispaniola to W Venezuela, and it is W at 15 kt. Scattered
-        moderate to strong convection is noted with and ahead ...", "dateLastCrawled":
-        "2021-10-03T20:24:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9", "name": "Atlantic
-        and Caribbean Tropical Satellite Imagery ...", "url": "https:\/\/www.ssd.noaa.gov\/PS\/TROP\/trop-atl.html",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssd.noaa.gov\/PS\/TROP\/trop-atl.html",
-        "snippet": "Links to outside sites and more satellite data: NOAA National
-        Hurricane Center - for official forecasts and outlooks.; University of Wisconsin
-        SSEC GOES Images and Loops; Advanced Scatterometer Winds: ASCAT METOP-A |
-        ASCAT METOP-B RAMSDIS Online - Tropical", "dateLastCrawled": "2021-10-03T12:18:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
-        "name": "The Atlantic Niño: El Niño’s Little Brother – NOAA''s ...", "url":
-        "https:\/\/www.aoml.noaa.gov\/news\/the-atlantic-nino-el-ninos-little-brother\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.aoml.noaa.gov\/news\/the-atlantic-nino-el-ninos-little-brother",
-        "snippet": "The Atlantic Niño is just one member of a big extended family
-        that covers much of the tropical and subtropical oceans. Just like El Niño,
-        Atlantic Niño has a sister, Atlantic Niña, that brings cooler-than-average
-        equatorial Atlantic conditions and the opposite climate impacts as her brother.
-        There are many other siblings, cousins, and ...", "dateLastCrawled": "2021-09-30T22:00:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "totalEstimatedMatches": 12100000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Atlantic Cooperation - United States Department of State", "url":
+        "https:\/\/www.state.gov\/atlantic-cooperation\/", "datePublished": "2023-09-18T00:00:00.0000000",
+        "datePublishedDisplayText": "Sep 18, 2023", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.state.gov\/atlantic-cooperation", "snippet": "On September
+        18, 2023, at the Ministerial for Atlantic Cooperation on the margins of
+        the 78th United Nations General Assembly, the United States was among 32 Atlantic
+        countries to adopt the Declaration on Atlantic Cooperation, launching the
+        new Partnership for Atlantic Cooperation. This new multilateral forum brings
+        together an unprecedented ...", "dateLastCrawled": "2024-01-04T10:20:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=atlantic+(site%3agov+OR+site%3amil)&d=4931163966810822&mkt=en-US&setlang=en-US&w=rWPGDAVNRF_Cbym6ssJyhS_gccF2pS2P",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Atlantic Salmon | NOAA Fisheries", "url": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-salmon",
+        "datePublished": "2023-10-12T00:00:00.0000000", "datePublishedDisplayText":
+        "Oct 12, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-salmon",
+        "snippet": "Atlantic salmon are anadromous – they leave the ocean to return
+        to freshwater streams and rivers to breed. Females lay an average of 7,500
+        eggs in gravel nests, called redds. Eggs incubate slowly due to cold winter
+        water temperatures. About 9 to 20 percent of the eggs survive to the fry stage.
+        Fry remain buried in the gravel for about 6 weeks ...", "dateLastCrawled":
+        "2024-01-09T05:09:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=atlantic+(site%3agov+OR+site%3amil)&d=4836601676897430&mkt=en-US&setlang=en-US&w=qWjT9ScHGgKXbpoyavrNRzvHj0gTRIS1",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Atlantic Salmon (Protected) | NOAA Fisheries", "url": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-salmon-protected",
+        "datePublished": "2023-05-31T00:00:00.0000000", "datePublishedDisplayText":
+        "May 31, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-salmon-protected",
+        "snippet": "Atlantic salmon. Credit: NOAA Fisheries. Atlantic salmon,
+        also known as the “King of Fish,” are anadromous, which means they live in
+        both fresh and saltwater. Atlantic salmon have a complex life history that
+        begins with spawning and juvenile rearing in rivers. They then migrate to
+        saltwater to feed, grow, and mature before returning to ...", "dateLastCrawled":
+        "2024-01-09T23:24:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=atlantic+(site%3agov+OR+site%3amil)&d=5062761768299624&mkt=en-US&setlang=en-US&w=k9rKaiq_0Dr-RygyWG3jddr6K7e0Rguh",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "South Atlantic Fishery Management Council; Public Meeting", "url":
+        "https:\/\/www.federalregister.gov\/documents\/2024\/01\/10\/2024-00364\/south-atlantic-fishery-management-council-public-meeting",
+        "datePublished": "2024-01-10T00:00:00.0000000", "datePublishedFreshnessText":
+        "14 hours ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.federalregister.gov\/documents\/2024\/01\/10\/2024-00364\/south-atlantic-fishery...",
+        "snippet": "The South Atlantic Fishery Management Council''s (Council) will
+        hold a meeting of the Law Enforcement Advisory Panel (AP) January 29–30, 2024,
+        in Charleston, SC. DATES: The Law Enforcement AP will meet from 1 p.m. until
+        5 p.m. on January 29, and from 9 a.m. until 5 p.m. on January 30, 2024.",
+        "dateLastCrawled": "2024-01-10T09:44:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=atlantic+(site%3agov+OR+site%3amil)&d=1770164412969&mkt=en-US&setlang=en-US&w=zJv_jy1uFy3iARDWAdiqJFsSWQ-2WjcC",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "The New Atlantic Charter | The White House", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2021\/06\/10\/the-new-atlantic-charter\/",
+        "datePublished": "2021-06-10T00:00:00.0000000", "datePublishedDisplayText":
+        "Jun 10, 2021", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/...\/statements-releases\/2021\/06\/10\/the-new-atlantic-charter",
+        "snippet": "The New Atlantic. Charter. Today, the President of the United
+        States and Prime Minister of the United Kingdom reaffirm their commitment
+        to work together to realise our vision for a more peaceful ...", "dateLastCrawled":
+        "2024-01-08T05:04:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=atlantic+(site%3agov+OR+site%3amil)&d=4951354611604423&mkt=en-US&setlang=en-US&w=vVoUQYwhrg3LnZAGlddJF5rpO-NFb9ZS",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Atlantic Salmon (Salmo salar) - Species Profile", "url": "https:\/\/nas.er.usgs.gov\/queries\/FactSheet.aspx?speciesID=926",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/nas.er.usgs.gov\/queries\/FactSheet.aspx?speciesID=926",
+        "snippet": "Ecology: Salmo salar is generally an anadromous or ocean-going
+        species, living in freshwater for the first 1 to 3 years of its life before
+        migrating. The Atlantic Salmon prefers temperatures of 4°C to 12°C, with
+        optimal spawning temperature ranging from 7.2°C to 10°C (Peterson et al. 1977;
+        Bley 1987).", "dateLastCrawled": "2024-01-08T04:07:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=atlantic+(site%3agov+OR+site%3amil)&d=4506520410259503&mkt=en-US&setlang=en-US&w=6wljL1AeZicBVBK1DlYQ7TwL63BJSusH",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Declaration on Atlantic Cooperation | The White House", "url":
+        "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/09\/18\/declaration-on-atlantic-cooperation\/",
+        "datePublished": "2023-09-18T00:00:00.0000000", "datePublishedDisplayText":
+        "Sep 18, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/...\/2023\/09\/18\/declaration-on-atlantic-cooperation",
+        "snippet": "1. We, as States bordering the Atlantic Ocean, share a commitment
+        to a peaceful, stable, prosperous, open, safe, cooperative Atlantic region
+        and to conserve a healthy, sustainable, and resilient ...", "dateLastCrawled":
+        "2024-01-05T00:38:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=atlantic+(site%3agov+OR+site%3amil)&d=4936279271101317&mkt=en-US&setlang=en-US&w=7w0oeGMJb6fEwsnm6lWn2PvISLeOCz2U",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "NOAA predicts a near-normal 2023 Atlantic hurricane season", "url":
+        "https:\/\/www.noaa.gov\/news-release\/2023-atlantic-hurricane-season-outlook",
+        "datePublished": "2023-05-25T00:00:00.0000000", "datePublishedDisplayText":
+        "May 25, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.noaa.gov\/news-release\/2023-atlantic-hurricane-season-outlook",
+        "snippet": "NOAA forecasters with the Climate Prediction Center, a division
+        of the National Weather Service, predict near-normal hurricane activity in
+        the Atlantic this year.NOAA’s outlook for the 2023 Atlantic hurricane
+        season, which goes from June 1 to November 30, predicts a 40% chance of a
+        near-normal season, a 30% chance of an above-normal season and a 30% chance
+        of a below-normal season.", "dateLastCrawled": "2024-01-08T20:17:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=atlantic+(site%3agov+OR+site%3amil)&d=4714238050850051&mkt=en-US&setlang=en-US&w=pfCXFnoMxTVfyfBYr1_WEBW1-5o3JT61",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Coast Guard urges caution as winter storm impacts Mid-Atlantic
+        region ...", "url": "https:\/\/www.news.uscg.mil\/Press-Releases\/Article\/3639129\/coast-guard-urges-caution-as-winter-storm-impacts-mid-atlantic-region\/",
+        "datePublished": "2024-01-09T00:00:00.0000000", "datePublishedFreshnessText":
+        "1 day ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.news.uscg.mil\/Press-Releases\/Article\/3639129\/coast-guard-urges-caution-as...",
+        "snippet": "Coast Guard Sectors throughout the Mid-Atlantic region are closely
+        monitoring the weather and have issued Marine Safety Information Broadcasts
+        (MSIB) to inform mariners of the weather. As forecasted predictions change,
+        the captain of the ports throughout the region will evaluate if port conditions
+        restrictions are necessary. Up-to-date port ...", "dateLastCrawled": "2024-01-09T20:39:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=atlantic+(site%3agov+OR+site%3amil)&d=2113545068056&mkt=en-US&setlang=en-US&w=7DXFIAbRh2i7Jp3liWXMJbYAqTmyI8oO",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Atlantic Salmon (Farmed) | NOAA Fisheries", "url": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-salmon-farmed",
+        "datePublished": "2023-06-22T00:00:00.0000000", "datePublishedDisplayText":
+        "Jun 22, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-salmon-farmed",
+        "snippet": "Spawning females lay an average of 7,500 eggs. Juvenile “smolts”
+        grow much faster in saltwater than in freshwater. Growth rates vary, depending
+        on season, age, sex and population density. After two years at sea, adult
+        salmon have an average length of 28 to 30 inches and a weight of 8 to 12 pounds.
+        Atlantic salmon do not die after spawning.", "dateLastCrawled": "2024-01-09T09:10:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=atlantic+(site%3agov+OR+site%3amil)&d=4952037511342555&mkt=en-US&setlang=en-US&w=fv1g_K2_tubL7TlqVgHhtW6Yp1vbXrG4",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Atlantic Sea Scallop | NOAA Fisheries", "url": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-sea-scallop",
+        "datePublished": "2023-11-09T00:00:00.0000000", "datePublishedDisplayText":
+        "Nov 9, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-sea-scallop",
+        "snippet": "In 2022, commercial landings of Atlantic sea scallop totaled
+        31.6 million pounds of sea scallop meats and were valued at $478 million,
+        according to the NOAA Fisheries commercial fishing landings database. Scallop
+        vessels from Massachusetts, Virginia, and New Jersey are responsible for the
+        majority of the U.S. harvest.", "dateLastCrawled": "2024-01-09T09:09:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=atlantic+(site%3agov+OR+site%3amil)&d=4625147551175239&mkt=en-US&setlang=en-US&w=y_vowqRGSPc3RiOjW2Wt7v415ThS5Wd2",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Record-breaking Atlantic hurricane season draws to an end", "url":
+        "https:\/\/www.noaa.gov\/media-release\/record-breaking-atlantic-hurricane-season-draws-to-end",
+        "datePublished": "2020-11-24T00:00:00.0000000", "datePublishedDisplayText":
+        "Nov 24, 2020", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.noaa.gov\/media-release\/record-breaking-atlantic-hurricane-season-draws-to-end",
+        "snippet": "This is the fifth consecutive year with an above-normal Atlantic
+        hurricane season, with 18 above-normal seasons out of the past 26. This increased
+        hurricane activity is attributed to the warm phase of the Atlantic Multi-Decadal
+        Oscillation (AMO) — which began in 1995 — and has favored more, stronger,
+        and longer-lasting storms since that ...", "dateLastCrawled": "2024-01-03T02:36:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=atlantic+(site%3agov+OR+site%3amil)&d=5056242007867629&mkt=en-US&setlang=en-US&w=n1KQ12xE_kT7UA7GyaRGv7K3jFsHnVxw",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Fun Facts About Amazing Atlantic Salmon | NOAA Fisheries", "url":
+        "https:\/\/www.fisheries.noaa.gov\/national\/outreach-and-education\/fun-facts-about-amazing-atlantic-salmon",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/...\/fun-facts-about-amazing-atlantic-salmon",
+        "snippet": "A landlocked Atlantic salmon is a freshwater form of the sea-run
+        Atlantic salmon. They are genetically considered a subspecies of the sea-run
+        Atlantic salmon. They reside in lakes, never making the marine migration.
+        They generally do not grow as large as sea-run fish, averaging between 12
+        and 20 inches long.", "dateLastCrawled": "2024-01-08T10:08:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=atlantic+(site%3agov+OR+site%3amil)&d=4754885627751592&mkt=en-US&setlang=en-US&w=0jy577k6GGZyRbT0CQEz4LqxkoVB7OV9",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Atlantic Ocean - The World Factbook", "url": "https:\/\/www.cia.gov\/the-world-factbook\/oceans\/atlantic-ocean\/",
+        "datePublished": "2023-11-24T00:00:00.0000000", "datePublishedDisplayText":
+        "Nov 24, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cia.gov\/the-world-factbook\/oceans\/atlantic-ocean",
+        "snippet": "The Atlantic Ocean is the second largest of the world''s five
+        oceans (after the Pacific Ocean, but larger than the Indian Ocean, Southern
+        Ocean, and Arctic Ocean). The Kiel Canal (Germany), Oresund (Denmark-Sweden),
+        Bosporus (Turkey), Strait of Gibraltar (Morocco-Spain), and the Saint Lawrence
+        Seaway (Canada-US) are important strategic access ...", "dateLastCrawled":
+        "2024-01-09T14:26:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=atlantic+(site%3agov+OR+site%3amil)&d=5003087495965201&mkt=en-US&setlang=en-US&w=WqtadkRbFMXjJCnNXj6iKmxKgW9V-Wte",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Atlantic Herring | NOAA Fisheries", "url": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-herring",
+        "datePublished": "2023-10-05T00:00:00.0000000", "datePublishedDisplayText":
+        "Oct 5, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-herring",
+        "snippet": "Atlantic herring are one of nearly 200 herring species in the
+        family Clupeidae. They grow quickly, up to 14 inches. They can live up to
+        15 years. They are able to reproduce when they reach age 4. Atlantic herring
+        migrate in schools to areas where they feed, spawn, and spend the winter.
+        They spawn as early as August in Nova Scotia and eastern ...", "dateLastCrawled":
+        "2024-01-07T13:11:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=atlantic+(site%3agov+OR+site%3amil)&d=4552571195775819&mkt=en-US&setlang=en-US&w=eKe81I8wypQWRXwaTuTPQgwMvJRnlUQf",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Latest Satellite Imagery - National Hurricane Center", "url":
+        "https:\/\/www.nhc.noaa.gov\/satellite.php", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.nhc.noaa.gov\/satellite.php", "snippet": "Latest Satellite
+        Imagery. Unless otherwise noted, the images linked from this page are located
+        on servers at the Satellite Products and Services Division (SPSD) of the National
+        Environmental Satellite, Data, and Information Service (NESDIS). If you are
+        looking for high resolution, photographic quality satellite imagery of hurricanes
+        and other ...", "dateLastCrawled": "2024-01-09T11:32:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=atlantic+(site%3agov+OR+site%3amil)&d=4747167573610532&mkt=en-US&setlang=en-US&w=IBDsgIMEuVhuwylmoiA_UcljJ7FGYQIC",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
         "name": "Atlantic Sturgeon | NOAA Fisheries", "url": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-sturgeon",
         "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-sturgeon",
-        "snippet": "Atlantic sturgeon live in rivers and coastal waters from Maine
+        "snippet": "Atlantic sturgeon live in rivers and coastal waters from Canada
         to Florida. Hatched in the freshwater of rivers, Atlantic sturgeon head
-        out to sea as juveniles, and return to their birthplace to spawn, or lay eggs,
-        when they reach adulthood.", "dateLastCrawled": "2021-10-02T23:19:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
-        "name": "Atlantic Herring | NOAA Fisheries", "url": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-herring",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-herring",
-        "snippet": "Atlantic herring and Atlantic mackerel may be retained by
-        vessels fishing with small-mesh bottom trawl gear in the exemption areas,
-        provided vessels comply with all season, area, and gear requirements, possession
-        limits, and are issued a whiting (Category K Open Access Northeast Multispecies)
-        permit or a limited access Northeast multispecies ...", "dateLastCrawled":
-        "2021-10-01T23:14:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13", "name":
-        "High Seas Forecast (Tropical Atlantic)", "url": "https:\/\/www.nhc.noaa.gov\/text\/MIAHSFAT2.shtml",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nhc.noaa.gov\/text\/MIAHSFAT2.shtml",
-        "snippet": "High Seas Forecast (Tropical Atlantic) 000 FZNT02 KNHC 242206
-        HSFAT2 HIGH SEAS FORECAST NWS NATIONAL HURRICANE CENTER MIAMI FL 2230 UTC
-        FRI SEP 24 2021 SUPERSEDED BY NEXT ISSUANCE IN 6 HOURS SEAS GIVEN AS SIGNIFICANT
-        WAVE HEIGHT...WHICH IS THE AVERAGE HEIGHT OF THE HIGHEST 1\/3 OF THE WAVES.
-        INDIVIDUAL WAVES MAY BE MORE THAN TWICE THE ...", "dateLastCrawled": "2021-09-30T07:14:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
-        "name": "Atlantic Surfclam | NOAA Fisheries", "url": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-surfclam",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-surfclam",
-        "snippet": "The Atlantic surfclam fishery is managed by the Mid-Atlantic
-        Fishery Management Council, with NOAA Fisheries serving as the implementing
-        body for rules and regulations within the fishery. This fishery was established
-        in 1977, and with the exception of the Maine mahogany quahog zone portion
-        of the fishery, has operated under an individual ...", "dateLastCrawled":
-        "2021-10-02T09:13:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15", "name":
-        "Atlantic Cod | NOAA Fisheries", "url": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-cod",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-cod",
-        "snippet": "Atlantic cod can live more than 20 years. They can grow up to
-        51 inches and 77 pounds. They are capable of reproducing at 2 to 3 years old,
-        when they are between 12 and 16 inches long. Cod spawn near the ocean floor
-        from winter to early spring. Larger females can produce 3 to 9 million eggs
-        when they spawn.", "dateLastCrawled": "2021-10-03T03:04:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
-        "name": "Atlantic White-Sided Dolphin | NOAA Fisheries", "url": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-white-sided-dolphin",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-white-sided-dolphin",
-        "snippet": "Atlantic white-sided dolphins have a distribution throughout
-        the colder waters of the North Atlantic Ocean from about 38 to 80 degrees
-        North. Their range includes Svalbard, Greenland, Ireland, Europe, Barents
-        Sea, the Azores, and Gulf of Maine.", "dateLastCrawled": "2021-10-03T01:15:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
-        "name": "Atlantic Common Thresher Shark | NOAA Fisheries", "url": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-common-thresher-shark",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-common-thresher-shark",
-        "snippet": "To commercially harvest Atlantic sharks, vessel owners must
-        obtain a valid Atlantic shark directed or incidental limited access permit
-        or a smoothhound shark open access permit. More information regarding limited
-        access permits can be found in the Atlantic HMS fishery compliance guides.
-        Most of this catch comes from New Jersey and North Carolina.", "dateLastCrawled":
-        "2021-10-02T06:06:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18", "name":
-        "Atlantic Chub Mackerel | NOAA Fisheries", "url": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-chub-mackerel",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-chub-mackerel",
-        "snippet": "Atlantic chub mackerel are a schooling pelagic species that
-        are found on the continental shelf to depths of about 250 to 300 meters throughout
-        much of the western and eastern Atlantic Ocean. In the western Atlantic,
-        their range spans from Nova Scotia (where they are rare) through Argentina,
-        including the Gulf of Mexico.", "dateLastCrawled": "2021-10-01T02:33:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
-        "name": "Atlantic Sea Scallop | NOAA Fisheries", "url": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-sea-scallop",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/species\/atlantic-sea-scallop",
-        "snippet": "Atlantic cod: Vessels may possess up to 100 lb (45.4 kg) of
-        Atlantic cod per trip, provided such fish is intended for personal use only
-        and cannot be not sold, traded, or bartered Haddock: Vessels may possess and
-        land haddock up to the overall possession limit of all Northeast multispecies
-        combined, except that vessels are prohibited from ...", "dateLastCrawled":
-        "2021-10-03T06:06:00.0000000Z", "language": "en", "isNavigational": false}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        out to sea as sub-adults, and return to their birthplace to spawn, or lay
+        eggs, when they reach adulthood. The Atlantic sturgeon has five rows of
+        bony plates known as scutes that run along its body and a snout ...", "dateLastCrawled":
+        "2024-01-09T05:16:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=atlantic+(site%3agov+OR+site%3amil)&d=4627355159902842&mkt=en-US&setlang=en-US&w=HW9RJRUIe704Rz4nMdYjLj0E90ZcqBAZ",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Restoring Atlantic Salmon and Reviving Tribal Connections in the
+        ...", "url": "https:\/\/www.fisheries.noaa.gov\/feature-story\/restoring-atlantic-salmon-and-reviving-tribal-connections-penobscot-river-watershed",
+        "datePublished": "2023-08-24T00:00:00.0000000", "datePublishedDisplayText":
+        "Aug 24, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/feature-story\/restoring-atlantic-salmon-and-reviving...",
+        "snippet": "This year, the Maine Department of Marine Resources reported a
+        count of 1,520 Atlantic salmon on Penobscot. This is the highest number
+        reported in more than decade! The work to bring back Atlantic salmon has
+        also allowed the population of river herring to soar, benefiting the health
+        of the entire ecosystem.", "dateLastCrawled": "2024-01-06T19:26:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=atlantic+(site%3agov+OR+site%3amil)&d=4756878489815246&mkt=en-US&setlang=en-US&w=g1KMJ3kDiBtzLalgMg94CqL6-_IW9eiv",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Federal Register \/Vol. 89, No. 7\/Wednesday, January 10, 2024 ...
+        - GovInfo", "url": "https:\/\/www.govinfo.gov\/content\/pkg\/FR-2024-01-10\/pdf\/2024-00364.pdf",
+        "datePublished": "2024-01-10T00:00:00.0000000", "datePublishedFreshnessText":
+        "14 hours ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.govinfo.gov\/content\/pkg\/FR-2024-01-10\/pdf\/2024-00364.pdf",
+        "snippet": "Atlantic, 105 Eden Street, Bar Harbor, ME 04609, has applied
+        in due form for a permit for scientific research on marine mammal parts. DATES:
+        Written comments must be received on or before February 9, 2024. ADDRESSES:
+        The application and related documents are available for review by selecting
+        ‘‘Records Open for Public", "dateLastCrawled": "2024-01-10T09:46:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Battle of the Atlantic - NHHC", "url": "https:\/\/www.history.navy.mil\/browse-by-topic\/wars-conflicts-and-operations\/world-war-ii\/1942\/atlantic.html",
+        "datePublished": "2021-01-12T12:27:00.0000000", "datePublishedDisplayText":
+        "Jan 12, 2021", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.history.navy.mil\/...\/world-war-ii\/1942\/atlantic.html",
+        "snippet": "The Battle of the Atlantic pitted the German submarine force
+        and surface units against the U.S. Navy, U.S. Coast Guard, Royal Navy, Royal
+        Canadian Navy, and Allied merchant convoys. The convoys were essential to
+        the British and Soviet war efforts (read more about the Arctic convoys to
+        the USSR in \"Convoy is to Scatter\" and The Ordeal of PQ-17 ...", "dateLastCrawled":
+        "2024-01-03T04:12:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=atlantic+(site%3agov+OR+site%3amil)&d=4835888710363356&mkt=en-US&setlang=en-US&w=0ww4UNcw9ZuXG6QQ_SeZTID8e8ZTKhiQ",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
@@ -1019,5 +583,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-  recorded_at: Wed, 06 Oct 2021 05:48:14 GMT
-recorded_with: VCR 6.0.0
+  recorded_at: Wed, 10 Jan 2024 14:41:50 GMT
+recorded_with: VCR 6.2.0
