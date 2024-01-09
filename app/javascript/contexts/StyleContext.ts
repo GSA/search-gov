@@ -5,7 +5,7 @@ export const styles = {
   activeSearchTabNavigationColor: '#005EA2',
   bannerBackgroundColor: '#F0F0F0',
   bannerTextColor: '#1B1B1B',
-  bestBetBackgroundColor: '#1A4480',
+  bestBetBackgroundColor: '#EFF6FB',
   buttonBackgroundColor: '#005EA2',
   footerAndResultsFontFamily: '"Public Sans Web", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
   footerBackgroundColor: '#F0F0F0',
