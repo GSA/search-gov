@@ -3,7 +3,7 @@
 module ReactHelper
   def search_results_layout(search, params, vertical, affiliate, search_options)
     data = {
-      additionalResults: govbox_set(search),
+      additionalResults: govbox_set_data(search),
       agencyName: agency_name(affiliate.agency),
       alert: search_page_alert(affiliate.alert),
       extendedHeader: affiliate.use_extended_header,
@@ -197,22 +197,24 @@ module ReactHelper
     agency.abbreviation || agency.name
   end
 
-  def govbox_set(search)
+  def govbox_set_data(search)
     return if search.govbox_set.nil?
 
     affiliate = search.affiliate
-    return unless show_results_format?(affiliate) || affiliate.display_created_date_on_search_results
-
-    reject_keys_from_hash(search.govbox_set.federal_register_documents, :publication_date) if search.govbox_set.federal_register_documents.present?
-    reject_keys_from_hash(search.govbox_set.news_items, :published_at) if search.govbox_set.news_items.present?
-    reject_keys_from_hash(search.govbox_set.video_news_items, :published_at) if search.govbox_set.video_news_items.present?
+    govbox_set_json = search.govbox_set.as_json
+    if show_results_format?(affiliate) && !affiliate.display_created_date_on_search_results?
+      reject_keys_from_hash(govbox_set_json[:federalRegisterDocuments], 'publication_date') if govbox_set_json[:federalRegisterDocuments].present?
+      reject_keys_from_hash(govbox_set_json[:newsItems], 'published_at') if govbox_set_json[:newsItems].present?
+      reject_keys_from_hash(govbox_set_json[:youtubeNewsItems], 'published_at') if govbox_set_json[:youtubeNewsItems].present?
+    end
+    govbox_set_json
   end
 
   def reject_keys_from_hash(results, key)
     return if results.blank?
 
-    results.each do |result|
-      result.reject! { |k| k == key }
+    results.map do |result|
+      result.delete(key)
     end
   end
 
@@ -220,24 +222,18 @@ module ReactHelper
     return if search.normalized_results.nil?
 
     affiliate = search.affiliate
-    return unless show_results_format?(affiliate)
-
-    show_results_content(affiliate, boolean_keys = [])
-
-    search.normalized_results[:results].each do |result|
-      result.reject! { |k| boolean_keys.include?(k) }
+    if show_results_format?(affiliate)
+      show_results_content(affiliate, boolean_keys = [])
+      search.normalized_results[:results].each do |result|
+        result.reject! { |k| boolean_keys.include?(k) }
+      end
     end
+    search.normalized_results
   end
 
-  def show_results_content(affiliate, boolean_keys = [])
-    boolean_keys << :image unless affiliate.display_image_on_search_results
-    boolean_keys << :fileType unless affiliate.display_filetype_on_search_results
-    boolean_keys << :publishedAt unless affiliate.display_created_date_on_search_results
-    boolean_keys << :updatedDate unless affiliate.display_updated_date_on_search_results
-  end
-
-  def show_results_format?(site)
-    (site.gets_i14y_results || site.gets_blended_results || site.search_engine == 'SearchGov') &&
-      site.search_engine != 'BingV7'
+  def show_results_content(affiliate, boolean_keys)
+    boolean_keys << :fileType unless affiliate.display_filetype_on_search_results?
+    boolean_keys << :publishedAt unless affiliate.display_created_date_on_search_results?
+    boolean_keys << :updatedDate unless affiliate.display_updated_date_on_search_results?
   end
 end

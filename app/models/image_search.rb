@@ -51,7 +51,7 @@ class ImageSearch
   end
 
   def format_results
-    post_processor = ImageResultsPostProcessor.new(total, results)
+    post_processor = ImageResultsPostProcessor.new(total, results, @affiliate)
     post_processor.normalized_results
   end
 
