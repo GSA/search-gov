@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 describe BingV7WebSearch do
-  subject { described_class.new(options) }
+  subject(:search) { described_class.new(options) }
 
   it_behaves_like 'a Bing search'
   it_behaves_like 'a web search engine'
@@ -23,13 +23,14 @@ describe BingV7WebSearch do
     end
 
     it 'uses the web search key' do
-      expect(subject.hosted_subscription_key).to eq('web key')
+      expect(search.hosted_subscription_key).to eq('web key')
     end
   end
 
-  # This was an edge-case bug on Bing's side:
-  # https://www.pivotaltracker.com/story/show/160807845
-  # Move this spec to shared bing_search_behavior after Bing V5 and Azure classes are removed
+  # SRCH-4311 Update:
+  # This spec should be moved to shared bing_search_behavior, but we cannot do so until
+  # we have clarity on the future of BingV7 Image search since we currently cannot run or
+  # or record successful BingV7 image searches.
   context 'when a Spanish site runs a search that could return location results' do
     let(:params) do
       { query: 'hotel (site:search.gov)' }

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 describe BingV7ImageSearch do
-  subject { described_class.new(options) }
+  subject(:search) { described_class.new(options) }
 
   it_behaves_like 'a Bing search'
   it_behaves_like 'an image search'
@@ -23,7 +23,7 @@ describe BingV7ImageSearch do
     end
 
     it 'uses the image search key' do
-      expect(subject.hosted_subscription_key).to eq('image key')
+      expect(search.hosted_subscription_key).to eq('image key')
     end
   end
 end
