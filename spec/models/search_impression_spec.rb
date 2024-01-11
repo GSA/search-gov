@@ -15,7 +15,7 @@ describe SearchImpression do
     let(:search) do
       double(Search,
              modules: ['BWEB'],
-             diagnostics: { AWEB: { snap: 'judgement' } })
+             diagnostics: { BWEB: { snap: 'judgement' } })
     end
     let(:params) { { 'query' => 'yep' } }
     let(:time) { Time.now }
@@ -35,7 +35,7 @@ describe SearchImpression do
           '"request":"http://www.gov.gov/",' \
           '"referrer":"http://www.gov.gov/ref",' \
           '"user_agent":"whatevs","diagnostics":' \
-          '[{"snap":"judgement","module":"AWEB"}],' \
+          '[{"snap":"judgement","module":"BWEB"}],' \
           "\"time\":\"#{time.to_fs(:db)}\"," \
           '"vertical":"web","modules":"BWEB",' \
           '"params":{"query":"yep"}}'
