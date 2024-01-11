@@ -26,7 +26,7 @@ gem 'resque', '~> 1.27.4'
 gem 'resque-priority', git: 'https://github.com/GSA/resque-priority.git'
 gem 'resque-timeout', '~> 1.0.0'
 gem 'resque-lock-timeout', '~> 0.4.5'
-gem 'resque-scheduler', '~> 4.3.1'
+gem 'resque-scheduler', '~> 4.10.2'
 # Paperclip is deprecated: https://cm-jira.usa.gov/browse/SRCH-702
 # Using a third-party fork as an interim measure.
 gem 'kt-paperclip', '~> 7.1.0'
