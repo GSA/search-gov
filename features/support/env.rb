@@ -86,7 +86,6 @@ World OmniauthHelpers
 After { OmniAuth.config.mock_auth[:default] = OmniAuth::AuthHash.new({}) }
 
 EmailTemplate.load_default_templates
-OutboundRateLimit.load_defaults
 
 TestServices::create_es_indexes
 
