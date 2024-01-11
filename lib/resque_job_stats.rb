@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+require 'datadog/statsd'
+
 module ResqueJobStats
   # NB: this method name needs to come before "around_perform_with_timeout"
   # alphabetically so that this hook gets called before resque-timeout's
