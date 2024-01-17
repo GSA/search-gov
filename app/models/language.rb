@@ -3,14 +3,14 @@
 class Language < ApplicationRecord
   validates :code, :name, presence: true
 
-  validates_uniqueness_of :code, case_sensitive: false
+  validates :code, uniqueness: { case_sensitive: false }
 
   has_many :affiliates, foreign_key: :locale, primary_key: :code, inverse_of: :language
 
   def self.bing_market_for_code(code)
-    language = find_by_code(code)
+    language = find_by(code: code)
 
-    if language && language.is_azure_supported && language.inferred_country_code
+    if language&.inferred_country_code
       "#{code}-#{language.inferred_country_code}"
     else
       'en-US'
