@@ -88,7 +88,6 @@
 }
 
 .results-best-bets-wrapper > .grid-row > .grid-col{
-  background: rgb(239, 246, 252);
   border-radius: 8px;
   padding: 1.5rem 0 1.5rem 0;
 }
@@ -327,5 +326,11 @@
 
   .search-item-wrapper .result-divider .grid-row{
     margin-bottom: 2rem;
+  }
+}
+
+@media (min-width: 64em){
+  .usa-header--extended .usa-logo {
+    max-width: 100%;
   }
 }
