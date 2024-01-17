@@ -17,13 +17,6 @@
   width: 100%;
 }
 
-.result-thumbnail .result-youtube-thumbnail{
-  clip-path: inset(25px 0 25px 0);
-  height: 100%;
-  margin-top: -20px;
-  width: 100%;
-}
-
 .search-result-item .published-date{
   color: #565C65;
   font-size: 0.95rem;
@@ -137,25 +130,6 @@
 .graphics-best-bets-link-wrapper a{
   color: #005EA2;
   text-decoration: none;
-}
-
-.video-duration{
-  background: black;
-  bottom: 44px;
-  color: #fff;
-  margin-bottom: 0.5rem;
-  margin-right: 0.75rem;
-  padding: 5px 7px 3px 10px;
-  position: absolute;
-  right: -1px;
-}
-
-.tri-icon{
-  border-color: transparent transparent transparent #fff;
-  border-style: solid;
-  border-width: 7px 0 7px 12px;
-  display: inline-block;
-  margin-right: 7px;
 }
 
 .search-news-item-wrapper .search-result-item:nth-child(2),
@@ -334,3 +308,11 @@
     max-width: 100%;
   }
 }
+
+@media (max-width: 63.99em){
+  /* Mobile overlay fix for menu tabs */
+  .usa-nav.is-visible {
+      z-index: 501;
+  }
+}
+
