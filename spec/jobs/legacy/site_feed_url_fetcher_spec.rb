@@ -16,12 +16,12 @@ describe SiteFeedUrlFetcher do
   end
 
   describe '.before_perform_with_timeout' do
-    before { @original_timeout = Resque::Plugins::Timeout.timeout }
-    after { Resque::Plugins::Timeout.timeout = @original_timeout }
+    before { @original_timeout = Resque::Plugins::JobTimeout.timeout }
+    after { Resque::Plugins::JobTimeout.timeout = @original_timeout }
 
-    it 'sets Resque::Plugins::Timeout.timeout to 20 minutes' do
+    it 'sets Resque::Plugins::JobTimeout.timeout to 20 minutes' do
       described_class.before_perform_with_timeout
-      expect(Resque::Plugins::Timeout.timeout).to eq(20.minutes)
+      expect(Resque::Plugins::JobTimeout.timeout).to eq(20.minutes)
     end
   end
 end
