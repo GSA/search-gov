@@ -12,36 +12,26 @@ describe AzureParameters do
     end
     let(:language_code) { 'de' }
 
-    before { allow(Language).to receive(:find_by_code).with(language_code).and_return(language) }
+    before { allow(Language).to receive(:find_by).with(code: language_code).and_return(language) }
 
     context 'when the specified language does not exist' do
       let(:language) { nil }
 
-      its([:Market]) { should == "'en-US'" }
+      its([:Market]) { is_expected.to eq("'en-US'") }
     end
 
     context 'when the specified language exists' do
-      let(:language) { mock_model(Language, is_azure_supported: is_azure_supported, inferred_country_code: inferred_country_code) }
+      let(:language) { mock_model(Language, inferred_country_code: inferred_country_code) }
       let(:inferred_country_code) { nil }
 
-      context 'but is not supported by azure' do
-        let(:is_azure_supported) { false }
-
-        its([:Market]) { should == "'en-US'" }
+      context 'when there is no inferred country code' do
+        its([:Market]) { is_expected.to eq("'en-US'") }
       end
 
-      context 'and is supported by azure' do
-        let(:is_azure_supported) { true }
+      context 'when there is an inferred country code' do
+        let(:inferred_country_code) { 'DE' }
 
-        context 'but has no inferred country code' do
-          its([:Market]) { should == "'en-US'" }
-        end
-
-        context 'and has an inferred country code' do
-          let(:inferred_country_code) { 'DE' }
-
-          its([:Market]) { should == "'de-DE'" }
-        end
+        its([:Market]) { is_expected.to eq("'de-DE'") }
       end
     end
   end
