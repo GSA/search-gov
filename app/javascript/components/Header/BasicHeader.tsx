@@ -45,6 +45,8 @@ export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeade
       ]
     );
 
+  const showMobileMenu = (primaryHeaderLinks && primaryHeaderLinks.length > 0) || (secondaryHeaderLinks && secondaryHeaderLinks.length > 0);
+
   return (
     <>
       <StyledUswdsHeader basic styles={styles}>
@@ -60,12 +62,12 @@ export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeade
                 <Title>{page.title}</Title>
               }
             />
-            <NavMenuButton
+            {showMobileMenu && (<NavMenuButton
               label="Menu"
               onClick={toggleMobileNav}
               className="usa-menu-btn"
               data-testid="usa-menu-mob-btn"
-            />
+            />)}
           </div>
 
           <PrimaryNav

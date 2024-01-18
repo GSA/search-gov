@@ -34,6 +34,7 @@ const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: { buttonBackground
 
 export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeaderLinks, secondaryHeaderLinks }: HeaderProps) => {
   const styles = useContext(StyleContext);
+  console.log({primaryHeaderLinks, secondaryHeaderLinks}, secondaryHeaderLinks?.length);
 
   const secondaryLinkItems =
     secondaryHeaderLinks && secondaryHeaderLinks.length > 0 ? (secondaryHeaderLinks.map((link, index) => {
@@ -61,6 +62,8 @@ export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHe
       ]
     );
   
+  const showMobileMenu = (primaryHeaderLinks && primaryHeaderLinks.length > 0) || (secondaryHeaderLinks && secondaryHeaderLinks.length > 0);
+  
   return (
     <>
       <StyledUswdsHeader extended={true} styles={styles}>
@@ -75,7 +78,7 @@ export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHe
               <Title>{page.title}</Title>
             }
           />
-          <NavMenuButton onClick={toggleMobileNav} label="Menu" />
+          {showMobileMenu && (<NavMenuButton onClick={toggleMobileNav} label="Menu" />)}
         </div>
         <ExtendedNav
           primaryItems={primaryLinkItems}
