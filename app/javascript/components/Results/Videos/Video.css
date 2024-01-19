@@ -1,0 +1,32 @@
+.result-thumbnail .result-youtube-thumbnail{
+  clip-path: inset(12px 0 12px 0);
+  margin-top: -8px;
+}
+
+.video-duration{
+  background: #000;
+  bottom: 13px;
+  color: #fff;
+  font-size: .95rem;
+  margin-bottom: 0.5rem;
+  margin-right: 0.75rem;
+  padding: 5px 7px 3px 10px;
+  position: absolute;
+  right: -1px;
+}
+
+.tri-icon{
+  border-color: transparent transparent transparent #fff;
+  border-style: solid;
+  border-width: 5px 0 5px 10px;
+  display: inline-block;
+  margin-right: 7px;
+}
+
+@media (min-width: 30em){
+  /* Video aspect ratio fix - this can be updated in the future if high resolution images are available */
+  .search-result-video-item .result-thumbnail {
+    height: 93px;
+    width: 19%;
+  }
+}
