@@ -34,7 +34,6 @@ const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: { buttonBackground
 
 export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeaderLinks, secondaryHeaderLinks }: HeaderProps) => {
   const styles = useContext(StyleContext);
-  console.log({primaryHeaderLinks, secondaryHeaderLinks}, secondaryHeaderLinks?.length);
 
   const secondaryLinkItems =
     secondaryHeaderLinks && secondaryHeaderLinks.length > 0 ? (secondaryHeaderLinks.map((link, index) => {
