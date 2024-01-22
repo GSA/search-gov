@@ -3,7 +3,7 @@ SimpleCov.command_name 'RSpec'
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
+require File.expand_path('../config/environment', __dir__)
 require 'rspec/rails'
 require 'email_spec'
 require 'authlogic/test_case'
@@ -19,7 +19,7 @@ WebMock.disable_net_connect!(allow_localhost: true)
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 # figure out where we are being loaded from to ensure it's only done once
-if $LOADED_FEATURES.grep(/spec\/spec_helper\.rb/).any?
+if $LOADED_FEATURES.grep(%r{spec/spec_helper\.rb}).any?
   begin
     raise 'foo'
   rescue => e
@@ -55,8 +55,8 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 
   config.mock_with :rspec
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
-  config.file_fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.fixture_path = Rails.root.join('spec/fixtures').to_s
+  config.file_fixture_path = Rails.root.join('spec/fixtures').to_s
   config.use_transactional_fixtures = true
   config.include Paperclip::Shoulda::Matchers
   config.include ActiveStorageValidations::Matchers
@@ -70,18 +70,17 @@ RSpec.configure do |config|
   config.global_fixtures = :all
 
   config.before(:suite) do
-    FileUtils.mkdir_p(File.join(Rails.root.to_s, 'tmp'))
+    FileUtils.mkdir_p(Rails.root.join('tmp').to_s)
 
     require 'test_services'
 
     TestServices.verify_xpack_license
     EmailTemplate.load_default_templates
-    OutboundRateLimit.load_defaults
     TestServices.delete_es_indexes
     TestServices.create_es_indexes
   end
 
-  config.before(:each) do
+  config.before do
     # Hitting the production I14y API during tests is unsafe, and we currently
     # lack a straightforward way to set up a dev i14y sandbox. So for very basic
     # tests, we're stubbing two sample responses - one containing facet fields
@@ -118,7 +117,7 @@ RSpec.configure do |config|
     OmniAuth.config.mock_auth[:default] = OmniAuth::AuthHash.new({})
   end
 
-  config.after(:each) do
+  config.after do
     ApplicationJob.queue_adapter.enqueued_jobs.clear
     ActiveJob::Uniqueness.unlock!
   end
@@ -128,7 +127,7 @@ RSpec.configure do |config|
   end
 
   # Add VCR to all tests
-  config.around(:each) do |example|
+  config.around do |example|
     options = example.metadata[:vcr] || {}
     if options[:record] == :skip
       VCR.turn_off!(ignore_cassettes: true)
@@ -138,7 +137,7 @@ RSpec.configure do |config|
       description = example.metadata[:full_description]
       test = example.metadata[:description_args][0].to_s
       full_context = description.chomp(test).strip
-      name = full_context.split(/\s+/, 2).join('/').underscore.gsub(/\./,'/').gsub(/[^\w\/]+/, '_').gsub(/\/$/, '')
+      name = full_context.split(/\s+/, 2).join('/').underscore.tr('.', '/').gsub(%r{[^\w/]+}, '_').gsub(%r{/$}, '')
 
       VCR.use_cassette(name, options, &example)
     end

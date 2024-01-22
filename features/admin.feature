@@ -188,10 +188,6 @@ Feature:  Administration
     And I follow "Hints"
     Then I should see the following breadcrumbs: Super Admin > Hints
 
-    When I go to the admin home page
-    And I follow "Outbound Rate Limits"
-    Then I should see the following breadcrumbs: Super Admin > OutboundRateLimits
-
   @javascript
   Scenario: Managing Search.gov Domains
     Given the following "searchgov domains" exist:

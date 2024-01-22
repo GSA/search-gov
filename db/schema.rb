@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_27_213029) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_05_215009) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -365,13 +365,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_27_213029) do
   create_table "languages", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "code", null: false
-    t.boolean "is_google_supported", default: false, null: false
     t.boolean "is_bing_supported", default: false, null: false
     t.boolean "rtl", default: false, null: false
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.string "inferred_country_code"
-    t.boolean "is_azure_supported", default: false
     t.index ["code"], name: "index_languages_on_code", unique: true
   end
 
@@ -472,15 +470,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_27_213029) do
     t.index ["link"], name: "index_news_items_on_link"
     t.index ["rss_feed_url_id", "guid"], name: "index_news_items_on_rss_feed_url_id_and_guid"
     t.index ["rss_feed_url_id", "link"], name: "index_news_items_on_rss_feed_url_id_and_link", unique: true
-  end
-
-  create_table "outbound_rate_limits", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.string "name", null: false
-    t.integer "limit", null: false
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "interval", limit: 10, default: "day"
-    t.index ["name"], name: "index_outbound_rate_limits_on_name"
   end
 
   create_table "routed_queries", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
