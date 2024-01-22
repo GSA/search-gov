@@ -203,7 +203,7 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
             />
           }
           {/* additionalResults?.jobs */}
-          {jobsEnabled && additionalResults?.jobs && additionalResults.jobs.length > 0 &&
+          {jobsEnabled && additionalResults?.jobs &&
             <Jobs 
               jobs={additionalResults?.jobs}
               agencyName={agencyName}
