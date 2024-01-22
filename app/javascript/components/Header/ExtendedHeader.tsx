@@ -77,7 +77,7 @@ export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHe
               <Title>{page.title}</Title>
             }
           />
-          {showMobileMenu && (<NavMenuButton onClick={toggleMobileNav} label="Menu" />)}
+          {showMobileMenu && <NavMenuButton onClick={toggleMobileNav} label="Menu" />}
         </div>
         <ExtendedNav
           primaryItems={primaryLinkItems}

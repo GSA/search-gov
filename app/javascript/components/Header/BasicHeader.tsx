@@ -62,12 +62,12 @@ export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeade
                 <Title>{page.title}</Title>
               }
             />
-            {showMobileMenu && (<NavMenuButton
+            {showMobileMenu && <NavMenuButton
               label="Menu"
               onClick={toggleMobileNav}
               className="usa-menu-btn"
               data-testid="usa-menu-mob-btn"
-            />)}
+            />}
           </div>
 
           <PrimaryNav
