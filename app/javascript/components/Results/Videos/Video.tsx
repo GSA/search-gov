@@ -3,6 +3,8 @@ import { GridContainer, Grid } from '@trussworks/react-uswds';
 import parse from 'html-react-parser';
 import Moment from 'react-moment';
 
+import './Video.css';
+
 interface VideoProps {
   link: string;
   title: string;
