@@ -11,7 +11,7 @@ module ReactHelper
       footerLinks: links(affiliate, :footer_links),
       identifierContent: identifier_content(affiliate),
       identifierLinks: links(affiliate, :identifier_links),
-      jobsEnabled: affiliate.jobs_enabled?,
+      jobsEnabled: (affiliate.jobs_enabled? and search.modules.include? 'JOBS'),
       language: affiliate.language.slice(:code, :rtl),
       navigationLinks: navigation_links(search, params),
       newsLabel: news_label(search),
