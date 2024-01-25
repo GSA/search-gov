@@ -5,7 +5,7 @@ class SiteFeedUrlFetcher
   @queue = :primary
 
   def self.before_perform_with_timeout(*_args)
-    Resque::Plugins::Timeout.timeout = 20.minutes
+    Resque::Plugins::JobTimeout.timeout = 20.minutes
   end
 
   def self.perform(site_feed_url_id)
