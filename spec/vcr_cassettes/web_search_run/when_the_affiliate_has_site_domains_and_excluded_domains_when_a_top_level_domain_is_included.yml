@@ -1,0 +1,292 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=mars%20(site:.gov)%20(-site:nasa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 06 Feb 2024 14:16:29 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Eventid:
+      - 65c23f7982a241d0af40e263a1dfc57c
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      Bingapis-Traceid:
+      - 65c23f7982a241d0af40e263a1dfc57c
+      Bingapis-Sessionid:
+      - 75D9553FD6414C83B3F3EC27A1FC8C54
+      X-Msedge-Clientid:
+      - 3CF2F35D9F3560B81661E7409EA16156
+      X-Msapi-Userstate:
+      - 73cb
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=250,MSDatacenter=BNZE01
+      X-Cache:
+      - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      X-Msedge-Ref:
+      - 'Ref A: F024E221D7ED4ED7AF6DC9932F2943FE Ref B: BL2AA2030101025 Ref C: 2024-02-06T14:17:29Z'
+      Apim-Request-Id:
+      - a00011e1-9401-4eeb-8792-54696745360f
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Tue, 06 Feb 2024 14:17:29 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "mars
+        (site:.gov) (-site:nasa.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=mars+(site%3a.gov)+(-site%3anasa.gov)",
+        "totalEstimatedMatches": 48000000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Mars Colonization: Beyond Getting There - PMC - National Center for
+        ...", "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC6383964\/",
+        "datePublished": "2018-10-25T00:00:00.0000000", "datePublishedDisplayText":
+        "Oct 25, 2018", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC6383964",
+        "snippet": "Beyond an active target for space exploration, colonization of
+        Mars has become a popular topic nowadays, fuelled by a potentially naive and
+        somewhat questionable belief that this planet could at some point in time
+        be terraformed to sustain human life. 1 Indeed, the Moon, while very close,
+        is small, barren and devoid of atmosphere.", "dateLastCrawled": "2024-02-05T06:05:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Mars - Science On a Sphere", "url": "https:\/\/sos.noaa.gov\/catalog\/datasets\/mars\/",
+        "datePublished": "2010-01-01T00:00:00.0000000", "datePublishedDisplayText":
+        "Jan 1, 2010", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/sos.noaa.gov\/catalog\/datasets\/mars",
+        "snippet": "Mars touts not only the highest point in the solar system, but
+        also a canyon over 4 miles (6.5 km) deep. The highest point, the mountain
+        Olympus Mons is 88,500 feet (almost 17 miles) above the surrounding area and
+        has an astounding diameter of over 300 miles. The base of the mountain is
+        surrounded by a cliff that drops 20,000 feet (almost 4 miles).", "dateLastCrawled":
+        "2024-02-03T10:41:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=mars+(site%3a.gov)+(-site%3anasa.gov)&d=4877760235569253&mkt=en-US&setlang=en-US&w=cZJgRiCje1yqJifinIfazDP60bhObmN6",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Interactive GIS Map of Mars | USGS Astrogeology Science Center",
+        "url": "https:\/\/astrogeology.usgs.gov\/facilities\/mrctr\/mars-online-map",
+        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/astrogeology.usgs.gov\/facilities\/mrctr\/mars-online-map",
+        "snippet": "Layers available for download from: USGS Astrogeology. Data Portal:
+        Astropedia. historical FTP downloads. USGS Astrogeology Science Center works
+        with NASA and space-science communities to integrate planetary maps, geology,
+        and remote sensing for Mars, Venus, the Moon, Mercury, Asteroids, Titan, Io,
+        and more.", "dateLastCrawled": "2024-02-04T10:04:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=mars+(site%3a.gov)+(-site%3anasa.gov)&d=4803551788073168&mkt=en-US&setlang=en-US&w=Bi1x8AgsS5yIZ3rYndOAqaGBzeoT_gJd",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "An Origin of Life on Mars - PMC - National Center for Biotechnology
+        ...", "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC2845199\/",
+        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC2845199",
+        "snippet": "Mars today is a cold dry desert world with surface conditions
+        that are not habitable even for the hardiest life forms from Earth. The average
+        surface temperature is −60°C and the atmospheric pressure is near the triple
+        point of water: 120 times lower than sea level pressure on Earth. Even worse
+        for habitability, solar ultraviolet light at ...", "dateLastCrawled": "2024-02-02T01:29:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "The Caves of Mars | U.S. Geological Survey - USGS.gov", "url": "https:\/\/www.usgs.gov\/news\/caves-mars",
+        "datePublished": "2019-07-26T00:00:00.0000000", "datePublishedDisplayText":
+        "Jul 26, 2019", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.usgs.gov\/news\/caves-mars",
+        "snippet": "The dots indicate the location of candidate caves in the Tharsis
+        region on Mars. The Mars Global Cave Candidate Catalog (MGC 3) provides latitude
+        and longitude coordinates, feature type, priority (confidence) rating, and
+        a brief comment about each candidate.Types of cave entrances identified in
+        the catalog include lava tube skylights, deep fractures, Atypical Pit Craters
+        (APCs), and other void ...", "dateLastCrawled": "2024-02-03T06:12:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=mars+(site%3a.gov)+(-site%3anasa.gov)&d=4686836173832224&mkt=en-US&setlang=en-US&w=FZtI9C2J6ZBTU4EYSxuLfF6qz8_on1D6",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Mars Global Digital Image Mosaic MDIM 2.1 - USGS", "url": "https:\/\/astrogeology.usgs.gov\/maps\/mdim-2-1",
+        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/astrogeology.usgs.gov\/maps\/mdim-2-1",
+        "snippet": "This global image map of Mars has a resolution of 256 pixels\/degree
+        (scale approximately 231 m\/pixel at the equator). The black-and-white mosaic
+        is processed to emphasize local topographic features. This mosaic, known as
+        Mars Digital Image Model (MDIM) 2.1, replaces two earlier mosaics produced
+        by the USGS from the same set of approximately 4600 Viking Orbiter images.",
+        "dateLastCrawled": "2024-02-02T07:11:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=mars+(site%3a.gov)+(-site%3anasa.gov)&d=4792114287018042&mkt=en-US&setlang=en-US&w=fBWkE31z97qDM46Wm8sj2P-q58l2Kt8c",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Mars MGS MOLA DEM 463m v2 | USGS Astrogeology Science Center", "url":
+        "https:\/\/astrogeology.usgs.gov\/search\/map\/Mars\/GlobalSurveyor\/MOLA\/Mars_MGS_MOLA_DEM_mosaic_global_463m\/",
+        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/astrogeology.usgs.gov\/search\/map\/Mars\/GlobalSurveyor\/MOLA\/Mars_MGS_MOLA_DEM...",
+        "snippet": "MGS was the first successful U.S. mission launched to Mars since
+        the Viking mission in 1976 (Albee et al., 2001). MGS launched on November
+        7, 1996 atop a three-stage Delta II launch vehicle from launch pad 17A at
+        Cape Canaveral Air Station, FL. The thirdstage Star 48B solid rocket later
+        propelled the spacecraft out of Earth orbit and on its way ...", "dateLastCrawled":
+        "2024-02-04T10:24:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=mars+(site%3a.gov)+(-site%3anasa.gov)&d=4823570625790009&mkt=en-US&setlang=en-US&w=Yce5ujsxOsqRgZfOBdvOGxtTUELxWFld",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Mars Extant Life: What''s Next? Conference Report - PubMed", "url":
+        "https:\/\/pubmed.ncbi.nlm.nih.gov\/32466662\/", "isFamilyFriendly": <DATADOG_API_ENABLED>,
+        "displayUrl": "https:\/\/pubmed.ncbi.nlm.nih.gov\/32466662", "snippet": "On
+        November 5-8, 2019, the \"Mars Extant Life: What''s Next?\" conference was
+        convened in Carlsbad, New Mexico. The conference gathered a community of actively
+        publishing experts in disciplines related to habitability and astrobiology.
+        Primary conclusions are as follows: A significant subset of conference attendees
+        concluded that there is a ...", "dateLastCrawled": "2024-01-05T12:48:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Mars Control Networks | USGS Astrogeology Science Center", "url":
+        "https:\/\/astrogeology.usgs.gov\/maps\/control-networks\/mars", "isFamilyFriendly":
+        <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/astrogeology.usgs.gov\/maps\/control-networks\/mars",
+        "snippet": "Mars Control Networks. The U.S. Geological Survey has recently
+        completed a final revised version of its 231 m\/pixel global Viking image
+        mosaic of Mars that has substantially improved geodetic accuracy compared
+        to versions released in 1991 and 2001. This mosaic, known as MDIM 2.1, is
+        currently available in the USGS ISIS file format and will be ...", "dateLastCrawled":
+        "2024-01-29T19:10:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=mars+(site%3a.gov)+(-site%3anasa.gov)&d=4807275520524625&mkt=en-US&setlang=en-US&w=AFGiihHTZZSKGLTpYMN-siOVFN6RjWXO",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Mars MSL Gale Merged DEM 1m v3 | USGS Astrogeology Science Center",
+        "url": "https:\/\/astrogeology.usgs.gov\/search\/map\/Mars\/MarsScienceLaboratory\/Mosaics\/MSL_Gale_DEM_Mosaic_10m",
+        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/astrogeology.usgs.gov\/search\/map\/Mars\/MarsScienceLaboratory\/Mosaics\/MSL_Gale...",
+        "snippet": "Mars Express is a mission of the European Space Agency (ESA) it
+        launched in June 2003 onboard a Soyuz-Fregat launcher from the Baikonur Cosmodrome
+        in Kazakhstan. The High-Resolution Stereo Camera (HRSC) is imaging the entire
+        planet in full color, 3D and with a resolution of about 10 meters. Selected
+        areas will be imaged at 2-meter resolution.", "dateLastCrawled": "2024-02-03T08:37:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=mars+(site%3a.gov)+(-site%3anasa.gov)&d=4507211925749969&mkt=en-US&setlang=en-US&w=CkWNUmU8rFUBpNTtHWGRggc9x3TLFMdD",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Atmospheric pressure changes could be driving Mars’ elusive methane
+        ...", "url": "https:\/\/discover.lanl.gov\/publications\/connections\/2024-february\/mars-methane",
+        "datePublished": "2024-02-05T00:00:00.0000000", "datePublishedFreshnessText":
+        "1 day ago", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/discover.lanl.gov\/publications\/connections\/2024-february\/mars-methane",
+        "snippet": "A primary focus of NASA’s Mars missions, including Curiosity and
+        Perseverance, is to detect and understand past or present signs of life, such
+        as methane. However, with the source of methane on Mars likely being underground,
+        short-term variations in atmospheric methane levels have posed a research
+        challenge.", "dateLastCrawled": "2024-02-06T00:56:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=mars+(site%3a.gov)+(-site%3anasa.gov)&d=401410058019&mkt=en-US&setlang=en-US&w=sGFra4dJTjD3XcT1uf-k1phUKMiaxifn",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Mars Viking Colorized Global Mosaic 232m v2 - USGS", "url": "https:\/\/astrogeology.usgs.gov\/search\/details\/Mars\/Viking\/MDIM21\/Mars_Viking_MDIM21_ClrMosaic_global_232m\/cub",
+        "datePublished": "2009-02-02T00:00:00.0000000", "datePublishedDisplayText":
+        "Feb 2, 2009", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/astrogeology.usgs.gov\/search\/details\/Mars\/Viking\/MDIM21\/Mars_Viking_MDIM21_Clr...",
+        "snippet": "Product Information: This global image map of Mars has a resolution
+        of 256 pixels\/degree (scale approximately 232 meters per pixel (m) at the
+        equator). The colorized mosaic was completed by NASA AMES which warped the
+        original Viking colorized mosaic and blended over the latest black\/white
+        Mars Digital Image Model (MDIM 2.1).", "dateLastCrawled": "2024-02-03T16:07:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=mars+(site%3a.gov)+(-site%3anasa.gov)&d=4933934108049887&mkt=en-US&setlang=en-US&w=ufSTP_ez9N3Dsc1Ht1EnfXP3ZmUd567A",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Topographic Map of Mars | USGS I Map 2782 - USGS Publications Warehouse",
+        "url": "https:\/\/pubs.usgs.gov\/imap\/i2782\/", "isFamilyFriendly": <DATADOG_API_ENABLED>,
+        "displayUrl": "https:\/\/pubs.usgs.gov\/imap\/i2782", "snippet": "Topographic
+        Map of Mars By U.S. Geological Survey . These maps are based on data from
+        the Mars Orbiter Laser Altimeter (MOLA; Smith and others, 2001), an instrument
+        on NASA’s Mars Global Surveyor (MGS) spacecraft (Albee and others, 2001).
+        The image used for the base of this map represents more than 600 million measurements
+        gathered between ...", "dateLastCrawled": "2024-02-04T04:40:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=mars+(site%3a.gov)+(-site%3anasa.gov)&d=5046440903120675&mkt=en-US&setlang=en-US&w=ZOmCZlWBGdj222AJGz9VFPUohWKouxZi",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Mars THEMIS-Derived Global Thermal Inertia Mosaic - USGS", "url":
+        "https:\/\/astrogeology.usgs.gov\/maps\/mars-themis-derived-global-thermal-inertia-mosaic",
+        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/astrogeology.usgs.gov\/maps\/mars-themis-derived-global-thermal-inertia-mosaic",
+        "snippet": "This product is a global thermal inertia mosaic of Mars generated
+        from high-resolution Thermal Emission Imaging System (THEMIS) nighttime infrared
+        images (Christensen et al., 2004; Fergason et al., 2006a) that allows the
+        identification, assessment, and global correlation of martian surface materials.
+        The higher spatial resolution of THEMIS data (100 m per pixel), relative to
+        Thermal Emission ...", "dateLastCrawled": "2024-02-02T23:08:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=mars+(site%3a.gov)+(-site%3anasa.gov)&d=4690194706923688&mkt=en-US&setlang=en-US&w=36IfjmHKnytU2rpvoIbnoyB-fT6db7a9",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Mars Global Surveyor MOLA Topographic Map - USGS", "url": "https:\/\/astrogeology.usgs.gov\/search\/map\/Docs\/Globes\/i2782_sh1",
+        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/astrogeology.usgs.gov\/search\/map\/Docs\/Globes\/i2782_sh1",
+        "snippet": "Mars Global Surveyor MOLA Topographic Map. This map is based on
+        data from the Mars Orbiter Laser Altimeter (MOLA) (Smith and others, 2001),
+        an instrument on NASA''s Mars Global Surveyor (MGS) spacecraft (Albee and
+        others, 2001). The image used for the base of this map represents more than
+        600 million measurements gathered between 1999 and 2001 ...", "dateLastCrawled":
+        "2024-02-04T13:02:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=mars+(site%3a.gov)+(-site%3anasa.gov)&d=4834986648142020&mkt=en-US&setlang=en-US&w=rM0dX1GiwcSWsrEiUggDaj3yl4SX4aOM",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Planetary Names", "url": "https:\/\/planetarynames.wr.usgs.gov\/Page\/MARS\/target",
+        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/planetarynames.wr.usgs.gov\/Page\/MARS\/target",
+        "snippet": "Mars Topography Data: Download data, view sample imagery, and
+        get information on published maps related to the Mars Transverse Mercator
+        Map (MTM). For additional Mars topography resources, visit the USGS Astrogeology
+        Geomatics Group. Mars Geologic GIS Data: Download GIS data and view sample
+        imagery on the PIGWAD web site.", "dateLastCrawled": "2024-01-28T12:22:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=mars+(site%3a.gov)+(-site%3anasa.gov)&d=4668603900362926&mkt=en-US&setlang=en-US&w=tJHN8Jcm-m5LCU5fN-E8qEV0FIs2zcM3",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Planetary Names", "url": "https:\/\/planetarynames.wr.usgs.gov\/Page\/MARS\/system",
+        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/planetarynames.wr.usgs.gov\/Page\/MARS\/system",
+        "snippet": "Mars System Martian Coordinate Systems For more detailed information
+        about planetary nomenclature see Introduction to Gazetteer of Planetary Nomenclature..
+        You can now view the coordinates for Mars in two different systems: planetographic
+        latitude with longitude increasing to the west, or planetocentric latitude
+        with longitude increasing to the east.", "dateLastCrawled": "2024-02-03T12:43:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=mars+(site%3a.gov)+(-site%3anasa.gov)&d=4687175477767037&mkt=en-US&setlang=en-US&w=57ddef0y_t5Te2Y5bid9aciPoGFuvqSt",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Utility of the MARS-5 in Assessing Medication Adherence in IBD",
+        "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC7885329\/", "datePublished":
+        "2020-03-20T00:00:00.0000000", "datePublishedDisplayText": "Mar 20, 2020",
+        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC7885329",
+        "snippet": "The MARS-5 was significantly associated with adherence based on
+        medication monitoring data at baseline (r = 0.48) and week 52 (r = 0.57).
+        Sensitivity and specificity for adherence ≥80% and ≥90% were maximized at
+        MARS-5 scores of >22 and >23, respectively. Having CD (OR = 4.62; 95% confidence
+        interval, 1.36-15.7) was the only significant ...", "dateLastCrawled": "2024-02-03T04:14:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "MARS: Should I Use It? - PubMed", "url": "https:\/\/pubmed.ncbi.nlm.nih.gov\/34389137\/",
+        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/pubmed.ncbi.nlm.nih.gov\/34389137",
+        "snippet": "In addition to its uses in acute liver failure and acute-on-chronic
+        liver failure, the MARS system has also been applied in various clinical settings,
+        such as drug overdosing and poisoning and intractable cholestatic pruritus
+        refractory to pharmacological treatment. This review aims to discuss the controversies,
+        potential benefits ...", "dateLastCrawled": "2023-07-01T05:08:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "The Molecular Adsorbent Recirculating System (MARS", "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC1550821\/",
+        "datePublished": "2006-02-08T00:00:00.0000000", "datePublishedDisplayText":
+        "Feb 8, 2006", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC1550821",
+        "snippet": "Molecular Adsorbent Recirculating System. MARS ® is a liver support
+        system that uses an albumin-enriched dialysate to facilitate the removal of
+        albumin-bound toxins. The system has three different fluid compartments: a
+        blood circuit, a circuit containing 600 ml of 20% human albumin with a charcoal
+        column and an anion exchange resin column and a dialysate circuit [].", "dateLastCrawled":
+        "2024-02-05T09:03:00.0000000Z", "language": "en", "isNavigational": false}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Tue, 06 Feb 2024 14:17:30 GMT
+recorded_with: VCR 6.2.0

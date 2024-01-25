@@ -73,4 +73,77 @@ http_interactions:
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "english
         (site:nonsense.gov)"}, "rankingResponse": {}}'
   recorded_at: Mon, 08 Jan 2024 19:33:34 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=english%20(site:nonsense.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Thu, 25 Jan 2024 23:23:33 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Eventid:
+      - 65b2edb106db4fb89cd5be6ab79d833d
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      Bingapis-Traceid:
+      - 65b2edb106db4fb89cd5be6ab79d833d
+      Bingapis-Sessionid:
+      - 31B829E008374B419145E7B137FE3A03
+      X-Msedge-Clientid:
+      - 38AECCCDD9EB6590261BD8DCD841644C
+      X-Msapi-Userstate:
+      - 955c
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=108,MSDatacenter=BNZE01
+      X-Cache:
+      - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      X-Msedge-Ref:
+      - 'Ref A: A0C563144FEA4346836F41FD4B52D39F Ref B: BN3EDGE0814 Ref C: 2024-01-25T23:24:33Z'
+      Apim-Request-Id:
+      - a4ec38d3-513c-4082-be12-e8e7189407e2
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Thu, 25 Jan 2024 23:24:32 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "english
+        (site:nonsense.gov)"}, "rankingResponse": {}}'
+  recorded_at: Thu, 25 Jan 2024 23:24:33 GMT
 recorded_with: VCR 6.2.0

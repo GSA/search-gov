@@ -1,0 +1,299 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=legal%20careers%20(site:justice.gov)%20(-site:justice.gov/legal-careers)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 06 Feb 2024 14:16:29 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Eventid:
+      - 65c23f79f6a742b5b5f921f166ba461e
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      Bingapis-Traceid:
+      - 65c23f79f6a742b5b5f921f166ba461e
+      Bingapis-Sessionid:
+      - 73D323FBD1B942E69992887599A47FDD
+      X-Msedge-Clientid:
+      - 11458D03A1BB6EDA11C5991EA0116F3D
+      X-Msapi-Userstate:
+      - 35d4
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=299,MSDatacenter=BNZE01
+      X-Cache:
+      - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      X-Msedge-Ref:
+      - 'Ref A: 5C93BD2FE4CE4BC199768778FB05D793 Ref B: BN3EDGE0909 Ref C: 2024-02-06T14:17:29Z'
+      Apim-Request-Id:
+      - 040511dc-b916-4229-9874-b281d1329320
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Tue, 06 Feb 2024 14:17:29 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "legal
+        careers (site:justice.gov) (-site:justice.gov\/legal-careers)"}, "webPages":
+        {"webSearchUrl": "https:\/\/www.bing.com\/search?q=legal+careers+(site%3ajustice.gov)+(-site%3ajustice.gov%2flegal-careers)",
+        "totalEstimatedMatches": 692000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Legal Careers | Legal Careers - United States Department of Justice",
+        "url": "https:\/\/www.justice.gov\/legal-careers", "isFamilyFriendly": <DATADOG_API_ENABLED>,
+        "displayUrl": "https:\/\/www.justice.gov\/legal-careers", "snippet": "Explore
+        Legal Careers at Justice. The Office of Attorney Recruitment and Management
+        (OARM) leads Justice’s outreach and recruitment efforts for law students and
+        attorneys with the goal of attracting a highly-qualified and diverse talent
+        pool. Search Attorney Vacancies and Volunteer Legal Internships.", "dateLastCrawled":
+        "2024-02-05T04:15:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=legal+careers+(site%3ajustice.gov)+(-site%3ajustice.gov%2flegal-careers)&d=4708289540283085&mkt=en-US&setlang=en-US&w=zTtkgRacGaFdFTjD0Z7u9Kzf7mupMm8t",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "U.S. Attorneys | Current Job Openings - United States Department
+        of Justice", "url": "https:\/\/www.justice.gov\/usao\/career-center\/job-openings",
+        "datePublished": "2015-09-18T00:00:00.0000000", "datePublishedDisplayText":
+        "Sep 18, 2015", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.justice.gov\/usao\/career-center\/job-openings",
+        "snippet": "Current Job Openings. Select a link below to view job openings
+        at the Executive Office for United States Attorneys and the 94 United States
+        Attorneys'' offices. Professional staff opportunities are posted on USAJobs,
+        and applicants should apply there. Attorney and volunteer legal internship
+        opportunities are posted by the Department of Justice''s ...", "dateLastCrawled":
+        "2024-02-04T23:18:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=legal+careers+(site%3ajustice.gov)+(-site%3ajustice.gov%2flegal-careers)&d=4668689935648838&mkt=en-US&setlang=en-US&w=W2KzJWbTqY5LE3MbFIaBf1edaWKuoxZB",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Careers | Careers - United States Department of Justice", "url":
+        "https:\/\/www.justice.gov\/careers", "isFamilyFriendly": <DATADOG_API_ENABLED>,
+        "displayUrl": "https:\/\/www.justice.gov\/careers", "snippet": "Careers. The
+        Department of Justice (DOJ) leads the nation in ensuring the protection of
+        all Americans while preserving their constitutional freedoms. As a Justice
+        employee you''ll be a member of a team where you can achieve your career goals
+        and apply your skills and talents to our important mission. Read more about
+        the exciting opportunities ...", "dateLastCrawled": "2024-02-05T03:08:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=legal+careers+(site%3ajustice.gov)+(-site%3ajustice.gov%2flegal-careers)&d=4629627214627136&mkt=en-US&setlang=en-US&w=v16clC7t9x05T4nVWxU8DT1KAs6RdrBK",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Office of Legal Counsel | Employment Opportunities", "url": "https:\/\/www.justice.gov\/olc\/employment-opportunities",
+        "datePublished": "2023-09-28T00:00:00.0000000", "datePublishedDisplayText":
+        "Sep 28, 2023", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.justice.gov\/olc\/employment-opportunities",
+        "snippet": "For a listing of OLC’s current experienced attorney vacancies,
+        please visit the Department''s Legal Careers website. Qualified attorneys
+        who are interested in positions with OLC are encouraged to send a resume to:
+        Office of Legal Counsel 950 Pennsylvania Ave, N.W., Room 5218 Washington,
+        DC 20530 Attn: Dyone Mitchell", "dateLastCrawled": "2024-02-05T08:15:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=legal+careers+(site%3ajustice.gov)+(-site%3ajustice.gov%2flegal-careers)&d=4671584749118478&mkt=en-US&setlang=en-US&w=ECymiRnViINMZDm4aTSwo8Pw1zVHmYB2",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Attorney Job Openings - United States Department of Justice", "url":
+        "https:\/\/www.justice.gov\/usao\/career-center\/job-openings\/attorneys",
+        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.justice.gov\/usao\/career-center\/job-openings\/attorneys",
+        "snippet": "January 31, 2024. USAO Western District of North Carolina. Assistant
+        United States Attorney (Criminal) NC. January 17, 2024. January 31, 2024.
+        USAO Western District of Texas. Assistant United States Attorney (Appellate)
+        TX.", "dateLastCrawled": "2024-02-04T15:35:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=legal+careers+(site%3ajustice.gov)+(-site%3ajustice.gov%2flegal-careers)&d=4853588279117534&mkt=en-US&setlang=en-US&w=NSjCjRiD8kufKDLpYclblL7VZhMZyQMr",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Careers | Search Jobs | United States Department of Justice", "url":
+        "https:\/\/www.justice.gov\/careers\/search-jobs", "isFamilyFriendly": <DATADOG_API_ENABLED>,
+        "displayUrl": "https:\/\/www.justice.gov\/careers\/search-jobs", "snippet":
+        "The Department of Justice (DOJ) leads the nation in ensuring the protection
+        of all Americans while preserving their constitutional freedoms. As a Justice
+        employee you''ll be a member of a team where you can achieve your career goals
+        and apply your skills and talents to our important mission. See the categories
+        below for DOJ Components providing ...", "dateLastCrawled": "2024-02-04T23:07:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=legal+careers+(site%3ajustice.gov)+(-site%3ajustice.gov%2flegal-careers)&d=4647331065393896&mkt=en-US&setlang=en-US&w=jUf3Sbw9DuBBXPpHKkI7tIkSdJmPzJt6",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Office of Attorney Recruitment & Management", "url": "https:\/\/www.justice.gov\/oarm",
+        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.justice.gov\/oarm",
+        "snippet": "The Department of Justice is the world’s largest law office, employing
+        more than 10,000 attorneys nationwide. The Office of Attorney Recruitment
+        and Management (OARM) oversees Justice’s outreach and recruitment efforts
+        for law students and attorneys with the goal of attracting a highly-qualified
+        and diverse talent pool.", "dateLastCrawled": "2024-02-02T08:00:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=legal+careers+(site%3ajustice.gov)+(-site%3ajustice.gov%2flegal-careers)&d=4807563411547217&mkt=en-US&setlang=en-US&w=FKOkNPZo5QOKOlgqtRzY9jJ4nr-IRK_2",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Careers - United States Department of Justice", "url": "https:\/\/www.justice.gov\/careers\/department-justice-jobs",
+        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.justice.gov\/careers\/department-justice-jobs",
+        "snippet": "Sheridan, Oregon. January 30, 2024. Utility Systems Repairer-Operator
+        Supervisor (Utility Systems Repairer-Operator Foreman) Links to other government
+        and non-government sites will typically appear with the “external link” icon
+        to indicate that you are leaving the Department of Justice website when you
+        click the link.", "dateLastCrawled": "2024-02-06T09:30:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=legal+careers+(site%3ajustice.gov)+(-site%3ajustice.gov%2flegal-careers)&d=4531358363877799&mkt=en-US&setlang=en-US&w=CwihBxwUXrMMn4vlBPWyHfL7HTEuvydw",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Office of the Solicitor General | Employment Opportunities", "url":
+        "https:\/\/www.justice.gov\/osg\/employment-opportunities", "datePublished":
+        "2023-11-09T00:00:00.0000000", "datePublishedDisplayText": "Nov 9, 2023",
+        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.justice.gov\/osg\/employment-opportunities",
+        "snippet": "The Office of the Solicitor General (OSG) carries a heavy and
+        important workload with a relatively small legal staff. The Office, therefore,
+        typically hires only attorneys with strong academic records and relevant legal
+        experience, such as a federal judicial clerkship at the appellate level or
+        significant appellate litigation experience.", "dateLastCrawled": "2024-02-05T11:27:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=legal+careers+(site%3ajustice.gov)+(-site%3ajustice.gov%2flegal-careers)&d=5039912425619538&mkt=en-US&setlang=en-US&w=IOt_dkOliyfz4weOBxOw0kW0CutahwdO",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Employment Opportunities - United States Department of Justice",
+        "url": "https:\/\/www.justice.gov\/ust\/employment-opportunities", "isFamilyFriendly":
+        <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.justice.gov\/ust\/employment-opportunities",
+        "snippet": "The USTP offers a wide range of career opportunities in the legal,
+        financial, paraprofessional, administrative, and IT fields—both in our headquarters
+        in Washington, DC, and in our 89 field offices across the country. And if
+        you are interested in learning more about the work of the USTP, consider engaging
+        with one of our Ambassador Attorneys.", "dateLastCrawled": "2024-02-03T04:25:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=legal+careers+(site%3ajustice.gov)+(-site%3ajustice.gov%2flegal-careers)&d=4756234261056241&mkt=en-US&setlang=en-US&w=ZgqBXNJ7-Yty4sjW86Bkq4tc4v9qKqfw",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "U.S. Attorneys | Professional Staff Job Openings | United States
+        ...", "url": "https:\/\/www.justice.gov\/usao\/career-center\/job-openings\/professional-staff",
+        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.justice.gov\/usao\/career-center\/job-openings\/professional-staff",
+        "snippet": "Professional Staff Job Openings. Below is a list of all professional
+        staff jobs available at the Executive Office for United States Attorneys and
+        the 94 United States Attorneys'' offices. To learn more, click a job title
+        below or visit USAJobs. Title. Location.", "dateLastCrawled": "2024-02-05T20:51:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=legal+careers+(site%3ajustice.gov)+(-site%3ajustice.gov%2flegal-careers)&d=4602663411079522&mkt=en-US&setlang=en-US&w=fEF7pmZpuXUtDLZ--SJCgtYfV2qJsszp",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Legal Careers | Assistant U.S. Attorney - Civil | United States ...",
+        "url": "https:\/\/www.justice.gov\/usao-nj\/job\/assistant-us-attorney-civil-1",
+        "datePublished": "2023-06-30T00:00:00.0000000", "datePublishedDisplayText":
+        "Jun 30, 2023", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.justice.gov\/usao-nj\/job\/assistant-us-attorney-civil-1",
+        "snippet": "lndividuals interested in applying for this Assistant United States
+        Attorney position should email their resume and other documents by 5:OO pm
+        on December 31, 2023. Applications should be emailed to USANJ.HRAPPLICATIONS@USDOJ.GOV.
+        PLEASE INDICATE ON THE SUBJECT LINE OF YOUR EMAIL - LAST NAME, FIRSTNAME,ANNOUNCEMENT
+        # NJ-23-AUSA CIVIL-01.", "dateLastCrawled": "2024-01-18T02:51:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=legal+careers+(site%3ajustice.gov)+(-site%3ajustice.gov%2flegal-careers)&d=4775694746459467&mkt=en-US&setlang=en-US&w=3lZC4QNoFSR7vCTpg8-NFrKE0qoiSaqT",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Civil Rights Division | Employment Opportunities", "url": "https:\/\/www.justice.gov\/crt\/employment-opportunities",
+        "datePublished": "2023-12-18T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 18, 2023", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.justice.gov\/crt\/employment",
+        "snippet": "Complaints about discrimination and\/or prohibited personnel practices
+        may be raised within the Division by contacting the Division’s Human Resources
+        Office at CRT.HumanResources@usdoj.gov, or outside the Division by contacting
+        the Department''s Equal Employment Opportunity Staff at 202-616-4800, or the
+        Office of Special Counsel at www.osc.gov ...", "dateLastCrawled": "2024-02-04T05:29:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=legal+careers+(site%3ajustice.gov)+(-site%3ajustice.gov%2flegal-careers)&d=4921122344285253&mkt=en-US&setlang=en-US&w=VOzM4qeM7-i93jiOqeby87BXNva4LAWM",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Begin a Rewarding Career in Federal Service", "url": "https:\/\/www.justice.gov\/usao-sdin\/employment-opportunities",
+        "datePublished": "2023-12-18T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 18, 2023", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.justice.gov\/usao-sdin\/employment-opportunities",
+        "snippet": "Attorney Positions: 1. Special Assistant United States Attorney,
+        Violent Crime (3 vacancies open) The Career Opportunities listing for the
+        Department of Justice will provide you with information your resume must contain.
+        An application typically consists of a resume and cover letter, however, some
+        job announcements require specific information.", "dateLastCrawled": "2024-02-04T06:13:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=legal+careers+(site%3ajustice.gov)+(-site%3ajustice.gov%2flegal-careers)&d=4678959200866758&mkt=en-US&setlang=en-US&w=F2SsXRW_QPVPvp7xt5bWQ7GMhqoVj-4B",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Antitrust Division | Employment Opportunities for Attorneys", "url":
+        "https:\/\/www.justice.gov\/atr\/employment-opportunities-attorneys", "datePublished":
+        "2023-06-15T00:00:00.0000000", "datePublishedDisplayText": "Jun 15, 2023",
+        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.justice.gov\/atr\/employment-opportunities-attorneys",
+        "snippet": "Law students who want to gain work experience with the Antitrust
+        Division may apply directly with the Division for a position as a volunteer
+        (without compensation) interns. The Division’s volunteer internship opportunities
+        can be found on the main Employment page. Qualifications: For details, see
+        Volunteer Legal Intern Recruitment.", "dateLastCrawled": "2024-02-05T06:24:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=legal+careers+(site%3ajustice.gov)+(-site%3ajustice.gov%2flegal-careers)&d=5008447619924345&mkt=en-US&setlang=en-US&w=FAMRKR-3FFXllAxLIbXVHLCKqeZF3Pqa",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Careers | Interns, Recent Graduates and Fellows", "url": "https:\/\/www.justice.gov\/careers\/interns-recent-graduates-and-fellows",
+        "datePublished": "2023-11-03T00:00:00.0000000", "datePublishedDisplayText":
+        "Nov 3, 2023", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.justice.gov\/careers\/interns-recent-graduates-and-fellows",
+        "snippet": "The Presidential Management Fellows (PMF) Program is a flagship
+        leadership development program at the entry-level for advanced degree candidates.
+        Created more than three decades ago, the Program attracts and selects from
+        among the best candidates and is designed to develop a cadre of potential
+        Federal Government leaders. Updated November 3, 2023.", "dateLastCrawled":
+        "2024-02-05T05:47:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=legal+careers+(site%3ajustice.gov)+(-site%3ajustice.gov%2flegal-careers)&d=5021895162010301&mkt=en-US&setlang=en-US&w=BiaSJMYbaJzrsftv50F1wq66WT8cO2az",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Eastern District of Texas | Careers", "url": "https:\/\/www.justice.gov\/usao-edtx\/careers",
+        "datePublished": "2023-04-10T00:00:00.0000000", "datePublishedDisplayText":
+        "Apr 10, 2023", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.justice.gov\/usao-edtx\/careers",
+        "snippet": "Staff. The Eastern District of Texas employs a wide-range of non-attorney
+        staff positions that provide a number of critical supporting services to the
+        District. Most commonly hired are the paralegal specialists and legal assistants
+        who directly support the Assistant United States Attorneys during all stages
+        of a case, from the inception of an ...", "dateLastCrawled": "2024-02-03T05:49:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=legal+careers+(site%3ajustice.gov)+(-site%3ajustice.gov%2flegal-careers)&d=4806803201797447&mkt=en-US&setlang=en-US&w=zNmZ05FErc6J4cJJn46iLT_dU5DW6cUA",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Careers | Disability Hiring - United States Department of Justice",
+        "url": "https:\/\/www.justice.gov\/careers\/disability-hiring", "datePublished":
+        "2021-01-25T00:00:00.0000000", "datePublishedDisplayText": "Jan 25, 2021",
+        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.justice.gov\/careers\/disability-hiring",
+        "snippet": "For excepted service hiring (including attorney hiring), individuals
+        with disabilities may also contact a Disability Point of Contact (DPOC) to
+        express interest in being considered via the Schedule A process. To be considered
+        for a Schedule A appointment, please submit your resume and proof of your
+        disability (see 5 C.F.R. § 213.3102 (u) (3 ...", "dateLastCrawled": "2024-01-19T13:26:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=legal+careers+(site%3ajustice.gov)+(-site%3ajustice.gov%2flegal-careers)&d=4783159399969112&mkt=en-US&setlang=en-US&w=a5eEEsVkex5_IU6zNOMf9729BEXANs7Q",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Office of Information Policy | Employment Opportunities", "url":
+        "https:\/\/www.justice.gov\/oip\/employment-opportunities", "datePublished":
+        "2023-11-15T00:00:00.0000000", "datePublishedDisplayText": "Nov 15, 2023",
+        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.justice.gov\/oip\/employment-opportunities",
+        "snippet": "The Office of Information Policy employs highly qualified attorneys
+        to serve as Attorney-Advisors in carrying out each of these responsibilities.
+        Applicants must have a J.D. degree, be an active member of at least one bar
+        (any U.S. jurisdiction), and have at least one year of post-J.D. legal experience.
+        The ideal candidate will have outstanding ...", "dateLastCrawled": "2024-02-02T08:06:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=legal+careers+(site%3ajustice.gov)+(-site%3ajustice.gov%2flegal-careers)&d=4706421096317113&mkt=en-US&setlang=en-US&w=SAUdp6ODgHxcO_HEBAmXcpho4_WvKb12",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Office on Violence Against Women (OVW) | Careers", "url": "https:\/\/www.justice.gov\/ovw\/careers",
+        "datePublished": "2023-12-13T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 13, 2023", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.justice.gov\/ovw\/careers",
+        "snippet": "If you are interested in applying for a position with OVW and
+        meet the eligibility requirements for applicants covered under Schedule A,
+        you may apply to an advertised position, and submit your resume and Schedule
+        A letter to OVW.ScheduleAHiring@usdoj.gov. For DOJ attorney opportunities
+        and internships, please visit the legal careers webpage to ...", "dateLastCrawled":
+        "2024-02-03T05:49:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=legal+careers+(site%3ajustice.gov)+(-site%3ajustice.gov%2flegal-careers)&d=4927397293679706&mkt=en-US&setlang=en-US&w=aPKx6FIZ1MfAuLj1ikOTsgRHkFWzEpaf",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Tue, 06 Feb 2024 14:17:29 GMT
+recorded_with: VCR 6.2.0
