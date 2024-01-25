@@ -13,12 +13,12 @@ describe SearchImpression do
                       headers: {})
     end
     let(:search) do
-      double(Search,
-             modules: ['BWEB'],
-             diagnostics: { AWEB: { snap: 'judgement' } })
+      instance_double(Search,
+                      modules: ['BWEB'],
+                      diagnostics: { BWEB: { snap: 'judgement' } })
     end
     let(:params) { { 'query' => 'yep' } }
-    let(:time) { Time.now }
+    let(:time) { Time.zone.now }
 
     before do
       allow(Time).to receive(:now).and_return(time)
@@ -35,7 +35,7 @@ describe SearchImpression do
           '"request":"http://www.gov.gov/",' \
           '"referrer":"http://www.gov.gov/ref",' \
           '"user_agent":"whatevs","diagnostics":' \
-          '[{"snap":"judgement","module":"AWEB"}],' \
+          '[{"snap":"judgement","module":"BWEB"}],' \
           "\"time\":\"#{time.to_fs(:db)}\"," \
           '"vertical":"web","modules":"BWEB",' \
           '"params":{"query":"yep"}}'
@@ -44,7 +44,7 @@ describe SearchImpression do
     end
 
     context 'with routed query module and empty diagnostics' do
-      let(:search) { double(Search, modules: ['QRTD'], diagnostics: {}) }
+      let(:search) { instance_double(Search, modules: ['QRTD'], diagnostics: {}) }
 
       it 'has the expected log line parts' do
         expect(Rails.logger).to have_received(:info).with(
@@ -53,7 +53,7 @@ describe SearchImpression do
       end
     end
 
-    context 'params contains key with period' do
+    context 'when params contains key with period' do
       let(:params) { { 'query' => 'yep', 'bar.blat' => 'nope' } }
 
       it 'omits that parameter' do
@@ -63,7 +63,7 @@ describe SearchImpression do
       end
     end
 
-    context 'headers contains X-Original-Request header' do
+    context 'when headers contains X-Original-Request header' do
       let(:request) do
         instance_double(ActionDispatch::Request,
                         remote_ip: '1.2.3.4',
@@ -73,7 +73,7 @@ describe SearchImpression do
                         headers: { 'X-Original-Request' => 'http://test.gov' })
       end
 
-      it 'should log two lines, the original-request header and the search impression' do
+      it 'logs two lines, the original-request header and the search impression' do
         expect(Rails.logger).to have_received(:info).twice
         expect(Rails.logger).to have_received(:info).with(
           '[X-Original-Request] ("http://test.gov")'
