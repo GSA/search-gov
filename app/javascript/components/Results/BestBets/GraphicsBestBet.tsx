@@ -32,7 +32,7 @@ export const GraphicsBestBet = ({ title, titleUrl, imageUrl, imageAltText, links
             <Grid row gap="md">
               {links.map((link, index) => {
                 return (
-                  <Grid key={index} mobileLg={{ col: (index as number) % 2 === 0 ? 7 : 5 }} className='graphics-best-bets-link-wrapper'>
+                  <Grid key={index} mobileLg={{ col: (index as number) < (Math.ceil(links.length/2)) ? 7 : 5 }} className='graphics-best-bets-link-wrapper'>
                     <a href={link.url}>{parse(link.title)}</a>
                   </Grid>
                 );
