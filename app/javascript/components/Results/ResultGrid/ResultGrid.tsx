@@ -21,7 +21,6 @@ type Result = {
 };
 
 interface ResultProps {
-  vertical?: string;
   result: Result;
 }
 
@@ -39,7 +38,7 @@ const getFileType = (fileType?: string) => {
   return (<span className='filetype-label'>{fileType}</span>);
 };
 
-export const ResultGrid = ({ vertical, result }: ResultProps) => {  
+export const ResultGrid = ({ result }: ResultProps) => {  
   const URL_LENGTH = 80;
 
   return (

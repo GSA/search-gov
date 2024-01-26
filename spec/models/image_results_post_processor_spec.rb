@@ -18,7 +18,7 @@ describe ImageResultsPostProcessor do
           expect(result[:altText]).to eq("title #{index}")
           expect(result[:url]).to eq("http://foo.gov/#{index}")
           expect(result[:thumbnailUrl]).to eq('http://bar.gov/image.png')
-          expect(result[:image]).to eq(true)
+          expect(result[:image]).to be(true)
         end
       end
 
