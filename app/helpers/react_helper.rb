@@ -232,6 +232,7 @@ module ReactHelper
   end
 
   def show_results_content(affiliate, boolean_keys)
+    boolean_keys << :thumbnailUrl unless affiliate.display_image_on_search_results?
     boolean_keys << :fileType unless affiliate.display_filetype_on_search_results?
     boolean_keys << :publishedAt << :publishedDate unless affiliate.display_created_date_on_search_results?
     boolean_keys << :updatedDate unless affiliate.display_updated_date_on_search_results?

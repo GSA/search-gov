@@ -2,9 +2,7 @@ require 'spec_helper'
 
 describe ImageResultsPostProcessor do
   describe '#normalized_results' do
-    subject(:normalized_results) { described_class.new(total_results, results, affiliate).normalized_results }
-
-    let(:affiliate) { affiliates(:basic_affiliate) }
+    subject(:normalized_results) { described_class.new(total_results, results).normalized_results }
 
     context 'when results have all attributes' do
       let(:total_results) { 5 }
@@ -20,7 +18,7 @@ describe ImageResultsPostProcessor do
           expect(result[:altText]).to eq("title #{index}")
           expect(result[:url]).to eq("http://foo.gov/#{index}")
           expect(result[:thumbnailUrl]).to eq('http://bar.gov/image.png')
-          expect(result[:image]).to eq(affiliate.display_image_on_search_results)
+          expect(result[:image]).to eq(true)
         end
       end
 
@@ -37,7 +35,7 @@ describe ImageResultsPostProcessor do
       let(:total_results) { nil }
       let(:results) { nil }
 
-      it 'does not have alt text, link URL, and thumbnail URL' do
+      it 'does not have alt text, link URL, thumbnail URL, and image' do
         expect(normalized_results[:results]).to be_nil
       end
 
