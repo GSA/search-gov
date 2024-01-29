@@ -21,7 +21,6 @@ type Result = {
 };
 
 interface ResultProps {
-  vertical?: string;
   result: Result;
 }
 
@@ -39,13 +38,13 @@ const getFileType = (fileType?: string) => {
   return (<span className='filetype-label'>{fileType}</span>);
 };
 
-export const ResultGrid = ({ vertical, result }: ResultProps) => {  
+export const ResultGrid = ({ result }: ResultProps) => {  
   const URL_LENGTH = 80;
 
   return (
     <GridContainer className='result search-result-item'>
       <Grid row gap="md">
-        {vertical === 'image' &&
+        {result.thumbnailUrl &&
         <Grid mobileLg={{ col: 4 }} className='result-thumbnail'>
           <img src={result.thumbnailUrl} className="result-image" alt={result.title}/>
         </Grid>
