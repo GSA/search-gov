@@ -55,15 +55,25 @@ module ReactHelper
     blob.custom_metadata[:alt_text]
   end
 
-  def image_search_results_layout(search, params, vertical, affiliate)
+  def image_search_results_layout(search, params, vertical, affiliate, search_options)
     data = {
+      agencyName: agency_name(affiliate.agency),
       extendedHeader: affiliate.use_extended_header,
       fontsAndColors: affiliate.visual_design_json,
       footerLinks: links(affiliate, :footer_links),
+      identifierContent: identifier_content(affiliate),
+      identifierLinks: links(affiliate, :identifier_links),
+      language: affiliate.language.slice(:code, :rtl),
       navigationLinks: navigation_links(search, params),
+      noResultsMessage: no_result_message(search),
       page: page_data(affiliate),
       params: params,
+      primaryHeaderLinks: links(affiliate, :primary_header_links),
+      relatedSites: related_sites(search),
+      relatedSitesDropdownLabel: affiliate.related_sites_dropdown_label,
       resultsData: search.format_results,
+      secondaryHeaderLinks: links(affiliate, :secondary_header_links),
+      spellingSuggestion: spelling_text(search, search_options),
       translations: translations(affiliate.locale),
       vertical: vertical
     }
