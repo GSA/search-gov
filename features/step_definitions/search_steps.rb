@@ -18,8 +18,8 @@ Then /^I should see (exactly|at least) "([^"]*)" video( govbox)? search results?
   end
 end
 
-Then(/^I should see (Powered by|Generado por) (Azure|Bing) logo$/) do |text, engine|
-  page.should have_selector ".content-provider .#{engine.downcase}", text: text
+Then(/^I should see (Powered by|Generado por) Bing logo$/) do |text|
+  page.should have_selector ".content-provider .bing", text: text
 end
 
 Then /^I should see a (left|right) aligned SERP logo$/ do |alignment|

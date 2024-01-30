@@ -2,464 +2,10 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=obama%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=obama%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=<DATADOG_API_ENABLED>&traffictype=test
     body:
       encoding: US-ASCII
-      base64_string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - my_api_key
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '4928'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Tue, 31 Aug 2021 20:32:13 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=38E70DBA7D556BAD2E461D1E7C1A6A21; domain=.bingapis.com; expires=Sun,
-        25-Sep-2022 20:33:13 GMT; path=/; secure; SameSite=None
-      - MUIDB=38E70DBA7D556BAD2E461D1E7C1A6A21; expires=Sun, 25-Sep-2022 20:33:13
-        GMT; path=/; HttpOnly
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 31-Aug-2023 20:33:13 GMT;
-        path=/
-      - SRCHHPGUSR=SRCHLANG=en; domain=.bingapis.com; expires=Thu, 31-Aug-2023 20:33:13
-        GMT; path=/
-      - SRCHUID=V=2&GUID=D098971BEFB54FCABD5F18919928EF52&dmnchg=1; domain=.bingapis.com;
-        expires=Thu, 31-Aug-2023 20:33:13 GMT; path=/
-      - SRCHUSR=DOB=20210831; domain=.bingapis.com; expires=Thu, 31-Aug-2023 20:33:13
-        GMT; path=/
-      - _EDGE_S=F=1&SID=35003B894BCE6D12053B2B2D4A816C13&mkt=en-us; domain=.bingapis.com;
-        path=/; HttpOnly
-      - _EDGE_V=1; domain=.bingapis.com; expires=Sun, 25-Sep-2022 20:33:13 GMT; path=/;
-        HttpOnly
-      - _SS=SID=35003B894BCE6D12053B2B2D4A816C13; domain=.bingapis.com; path=/
-      X-Snr-Routing:
-      - '1'
-      Bingapis-Traceid:
-      - DC27F20F68304B1A935AC80525D7644E
-      X-Msedge-Clientid:
-      - 38E70DBA7D556BAD2E461D1E7C1A6A21
-      X-Msapi-Userstate:
-      - 532c
-      Bingapis-Market:
-      - en-US
-      X-Cache:
-      - CONFIG_NOCACHE
-      X-Msedge-Ref:
-      - 'Ref A: DC27F20F68304B1A935AC80525D7644E Ref B: BLUEDGE1216 Ref C: 2021-08-31T20:33:13Z'
-      Date:
-      - Tue, 31 Aug 2021 20:33:14 GMT
-    body:
-      encoding: UTF-8
-      base64_string: |
-        eyJfdHlwZSI6ICJTZWFyY2hSZXNwb25zZSIsICJpbnN0cnVtZW50YXRpb24i
-        OiB7InBpbmdVcmxCYXNlIjogImh0dHBzOlwvXC93d3cuYmluZ2FwaXMuY29t
-        XC9hcGlcL3Bpbmc/SUc9MDI5MTFFNjAzNjFBNEM0RUEwMzJCNjk3MzkyMURD
-        NTEmQ0lEPTM4RTcwREJBN0Q1NTZCQUQyRTQ2MUQxRTdDMUE2QTIxJklEPSIs
-        ICJwYWdlTG9hZFBpbmdVcmwiOiAiaHR0cHM6XC9cL3d3dy5iaW5nYXBpcy5j
-        b21cL2FwaVwvcGluZ1wvcGFnZWxvYWQ/SUc9MDI5MTFFNjAzNjFBNEM0RUEw
-        MzJCNjk3MzkyMURDNTEmQ0lEPTM4RTcwREJBN0Q1NTZCQUQyRTQ2MUQxRTdD
-        MUE2QTIxJlR5cGU9RXZlbnQuQ1BUJkRBVEE9MCJ9LCAid2ViUGFnZXMiOiB7
-        IndlYlNlYXJjaFVybCI6ICJodHRwczpcL1wvd3d3LmJpbmcuY29tXC9zZWFy
-        Y2g/cT1vYmFtYSsoc2l0ZSUzYWdvditPUitzaXRlJTNhbWlsKSIsICJ3ZWJT
-        ZWFyY2hVcmxQaW5nU3VmZml4IjogIkRldkV4LDU0MjMuMSIsICJ0b3RhbEVz
-        dGltYXRlZE1hdGNoZXMiOiA2MTgwMDAwLCAidmFsdWUiOiBbeyJpZCI6ICJo
-        dHRwczpcL1wvd3d3LmJpbmdhcGlzLmNvbVwvYXBpXC92NlwvI1dlYlBhZ2Vz
-        LjAiLCAibmFtZSI6ICJCYXJhY2sgT2JhbWEgfCBUaGUgV2hpdGUgSG91c2Ui
-        LCAidXJsIjogImh0dHBzOlwvXC93d3cud2hpdGVob3VzZS5nb3ZcL2Fib3V0
-        LXRoZS13aGl0ZS1ob3VzZVwvcHJlc2lkZW50c1wvYmFyYWNrLW9iYW1hXC8i
-        LCAidXJsUGluZ1N1ZmZpeCI6ICJEZXZFeCw1MDYzLjEiLCAiZGlzcGxheVVy
-        bCI6ICJodHRwczpcL1wvd3d3LndoaXRlaG91c2UuZ292XC9hYm91dC10aGUt
-        d2hpdGUtaG91c2VcL3ByZXNpZGVudHNcL2JhcmFjay1vYmFtYSIsICJzbmlw
-        cGV0IjogIkJhcmFjayBPYmFtYSBzZXJ2ZWQgYXMgdGhlIDQ0dGggUHJlc2lk
-        ZW50IG9mIHRoZSBVbml0ZWQgU3RhdGVzLiBIaXMgc3RvcnkgaXMgdGhlIEFt
-        ZXJpY2FuIHN0b3J5IOKAlCB2YWx1ZXMgZnJvbSB0aGUgaGVhcnRsYW5kLCBh
-        IG1pZGRsZS1jbGFzcyB1cGJyaW5naW5nIGluIGEgc3Ryb25nIGZhbWlseSwg
-        aGFyZCB3b3JrIGFuZCBlZHVjYXRpb24gLi4uIiwgImRhdGVMYXN0Q3Jhd2xl
-        ZCI6ICIyMDIxLTA4LTI5VDIxOjQxOjAwLjAwMDAwMDBaIn0sIHsiaWQiOiAi
-        aHR0cHM6XC9cL3d3dy5iaW5nYXBpcy5jb21cL2FwaVwvdjZcLyNXZWJQYWdl
-        cy4xIiwgIm5hbWUiOiAiUHJlc2lkZW50IEJhcmFjayBPYmFtYSB8IEJhcmFj
-        ayBPYmFtYSBQcmVzaWRlbnRpYWwgTGlicmFyeSIsICJ1cmwiOiAiaHR0cHM6
-        XC9cL3d3dy5vYmFtYWxpYnJhcnkuZ292XC9vYmFtYXNcL3ByZXNpZGVudC1i
-        YXJhY2stb2JhbWEiLCAidXJsUGluZ1N1ZmZpeCI6ICJEZXZFeCw1MDc2LjEi
-        LCAiZGlzcGxheVVybCI6ICJodHRwczpcL1wvd3d3Lm9iYW1hbGlicmFyeS5n
-        b3ZcL29iYW1hc1wvcHJlc2lkZW50LWJhcmFjay1vYmFtYSIsICJzbmlwcGV0
-        IjogIkJhcmFjayBIdXNzZWluIE9iYW1hIElJIHdhcyBib3JuIEF1Z3VzdCA0
-        LCAxOTYxLCBpbiBIb25vbHVsdSwgSGF3YWlpLCB0byBwYXJlbnRzIEJhcmFj
-        ayBILiBPYmFtYSwgU3IuLCBhbmQgU3RhbmxleSBBbm4gRHVuaGFtLiBIaXMg
-        cGFyZW50cyBkaXZvcmNlZCB3aGVuIGhlIHdhcyAyIHllYXJzIG9sZCBhbmQg
-        aGUgd2FzIHJhaXNlZCBieSBoaXMgbW90aGVyLCBBbm4sIGFuZCBtYXRlcm5h
-        bCBncmFuZHBhcmVudHMsIFN0YW5sZXkgYW5kIE1hZGVseW4gRHVuaGFtLiBI
-        aXMgbW90aGVyIGxhdGVyIG1hcnJpZWQgTG9sbyBTb2V0b3JvLCBhbmQgaGlz
-        IHNpc3RlciBNYXlhIHdhcyBib3JuIGluIDE5NzAuIiwgImRhdGVMYXN0Q3Jh
-        d2xlZCI6ICIyMDIxLTA4LTI3VDA0OjA2OjAwLjAwMDAwMDBaIn0sIHsiaWQi
-        OiAiaHR0cHM6XC9cL3d3dy5iaW5nYXBpcy5jb21cL2FwaVwvdjZcLyNXZWJQ
-        YWdlcy4yIiwgIm5hbWUiOiAiT0JBTUEsIEJhcmFjayB8IFVTIEhvdXNlIG9m
-        IFJlcHJlc2VudGF0aXZlczogSGlzdG9yeSwgQXJ0IC4uLiIsICJ1cmwiOiAi
-        aHR0cHM6XC9cL2hpc3RvcnkuaG91c2UuZ292XC9QZW9wbGVcL0RldGFpbFwv
-        MTkyNzYiLCAidXJsUGluZ1N1ZmZpeCI6ICJEZXZFeCw1MDg5LjEiLCAiZGlz
-        cGxheVVybCI6ICJodHRwczpcL1wvaGlzdG9yeS5ob3VzZS5nb3ZcL1Blb3Bs
-        ZVwvRGV0YWlsXC8xOTI3NiIsICJzbmlwcGV0IjogIkJhcmFjayBPYmFtYSB3
-        YXMgYm9ybiBpbiBIb25vbHVsdSwgSGF3YWlpLCBvbiBBdWd1c3QgNCwgMTk2
-        MSwgdGhlIHNvbiBvZiBCYXJhY2sgT2JhbWEsIFNyLiwgYW5kIEFubiBEdW5o
-        YW0gT2JhbWEuIEJhcmFjaywgU3IuLCBhbiBlY29ub21pc3QsIHdhcyBib3Ju
-        IGFuZCByYWlzZWQgaW4gS2VueWEgYW5kIGdyZXcgdXAgcmFpc2luZyBnb2F0
-        cyB3aXRoIGhpcyBmYXRoZXIsIHdobyB3YXMgYSBkb21lc3RpYyBzZXJ2YW50
-        IGZvciB0aGUgQnJpdGlzaC4gMSBIZSBtZXQgYW5kIG1hcnJpZWQgQW5uIER1
-        bmhhbSwgd2hvIGdyZXcgdXAgaW4gYSBzbWFsbCB0b3duIGluIEthbnNhcywg
-        d2hpbGUgYm90aCB3ZXJlIC4uLiIsICJkYXRlTGFzdENyYXdsZWQiOiAiMjAy
-        MS0wOC0yOFQwMDowODowMC4wMDAwMDAwWiJ9LCB7ImlkIjogImh0dHBzOlwv
-        XC93d3cuYmluZ2FwaXMuY29tXC9hcGlcL3Y2XC8jV2ViUGFnZXMuMyIsICJu
-        YW1lIjogIkJhcmFjayBPYmFtYSBQcmVzaWRlbnRpYWwgTGlicmFyeSIsICJ1
-        cmwiOiAiaHR0cHM6XC9cL3d3dy5vYmFtYWxpYnJhcnkuZ292XC8iLCAidXJs
-        UGluZ1N1ZmZpeCI6ICJEZXZFeCw1MTAyLjEiLCAiZGlzcGxheVVybCI6ICJo
-        dHRwczpcL1wvd3d3Lm9iYW1hbGlicmFyeS5nb3YiLCAic25pcHBldCI6ICJQ
-        cmVzaWRlbnQgT2JhbWEgZGVsaXZlcnMgdGhlIGtleW5vdGUgYWRkcmVzcyBh
-        dCB0aGUgQ2l2aWwgUmlnaHRzIFN5bXBvc2l1bSwgaGVsZCBpbiBob25vciBv
-        ZiB0aGUgNTB0aCBBbm5pdmVyc2FyeSBvZiB0aGUgQ2l2aWwgUmlnaHRzIEFj
-        dCBvZiAxOTY0LCBhdCB0aGUgTHluZG9uIEJhaW5lcyBKb2huc29uIExpYnJh
-        cnkgaW4gQXVzdGluLCBUZXhhcy4gRm9ybWVyIFByZXNpZGVudHMgSmltbXkg
-        Q2FydGVyLCBCaWxsIENsaW50b24sIGFuZCBHZW9yZ2UgVy4gQnVzaCBhbHNv
-        IHBhcnRpY2lwYXRlIGluIHRoZSBldmVudC4gTG9hZGluZy4iLCAiZGF0ZUxh
-        c3RDcmF3bGVkIjogIjIwMjEtMDgtMjhUMDc6MDk6MDAuMDAwMDAwMFoifSwg
-        eyJpZCI6ICJodHRwczpcL1wvd3d3LmJpbmdhcGlzLmNvbVwvYXBpXC92Nlwv
-        I1dlYlBhZ2VzLjQiLCAibmFtZSI6ICJBYm91dCBVcyB8IEJhcmFjayBPYmFt
-        YSBQcmVzaWRlbnRpYWwgTGlicmFyeSIsICJ1cmwiOiAiaHR0cHM6XC9cL3d3
-        dy5vYmFtYWxpYnJhcnkuZ292XC9hYm91dC11cyIsICJ1cmxQaW5nU3VmZml4
-        IjogIkRldkV4LDUxMTUuMSIsICJkaXNwbGF5VXJsIjogImh0dHBzOlwvXC93
-        d3cub2JhbWFsaWJyYXJ5LmdvdlwvYWJvdXQtdXMiLCAic25pcHBldCI6ICJB
-        Ym91dCB0aGUgTGlicmFyeS4gVGhlIEJhcmFjayBPYmFtYSBQcmVzaWRlbnRp
-        YWwgTGlicmFyeSBpcyB0aGUgMTR0aCBQcmVzaWRlbnRpYWwgbGlicmFyeSBh
-        ZG1pbmlzdGVyZWQgYnkgdGhlIE5hdGlvbmFsIEFyY2hpdmVzIGFuZCBSZWNv
-        cmRzIEFkbWluaXN0cmF0aW9uIChOQVJBKSwgYSBmZWRlcmFsIGFnZW5jeS4u
-        IFVubGlrZSBvdGhlciBQcmVzaWRlbnRpYWwgTGlicmFyaWVzIGFkbWluaXN0
-        ZXJlZCBieSBOQVJBLCB0aGUgQmFyYWNrIE9iYW1hIFByZXNpZGVudGlhbCBM
-        aWJyYXJ5IHdpbGwgYmUgdGhlIGZpcnN0IGZ1bGx5IGRpZ2l0YWwgcHJlc2lk
-        ZW50aWFsIGxpYnJhcnkuIEFuIGVzdGltYXRlZCA5NSBwZXJjZW50IG9mIHRo
-        ZSBQcmVzaWRlbnRpYWwgcmVjb3JkcyBvZiB0aGUgT2JhbWEgLi4uIiwgImRh
-        dGVMYXN0Q3Jhd2xlZCI6ICIyMDIxLTA4LTI5VDAxOjE4OjAwLjAwMDAwMDBa
-        In0sIHsiaWQiOiAiaHR0cHM6XC9cL3d3dy5iaW5nYXBpcy5jb21cL2FwaVwv
-        djZcLyNXZWJQYWdlcy41IiwgIm5hbWUiOiAiUGhvdG9zICYgVmlkZW9zIHwg
-        QmFyYWNrIE9iYW1hIFByZXNpZGVudGlhbCBMaWJyYXJ5IiwgInVybCI6ICJo
-        dHRwczpcL1wvd3d3Lm9iYW1hbGlicmFyeS5nb3ZcL3Bob3Rvcy12aWRlb3Mi
-        LCAidXJsUGluZ1N1ZmZpeCI6ICJEZXZFeCw1MTI4LjEiLCAiZGlzcGxheVVy
-        bCI6ICJodHRwczpcL1wvd3d3Lm9iYW1hbGlicmFyeS5nb3ZcL3Bob3Rvcy12
-        aWRlb3MiLCAic25pcHBldCI6ICJQcmVzaWRlbnQgQmFyYWNrIE9iYW1hIHBl
-        dHMgQm8gaW4gdGhlIE91dGVyIE92YWwgT2ZmaWNlLCBPY3RvYmVyIDI5LCAy
-        MDA5LiAoUDEwMjkwOVBTLTA3ODkpIE9mZmljaWFsIFdoaXRlIEhvdXNlIFBo
-        b3RvIGJ5IFBldGUgU291emEuIERvd25sb2FkIFByaW50LiBGaXJzdCBMYWR5
-        IE1pY2hlbGxlIE9iYW1hIGFuZCBkYXVnaHRlcnMgU2FzaGEgYW5kIE1hbGlh
-        LCBhbG9uZyB3aXRoIGZhbWlseSBkb2csIEJvLCBwbGF5IGluIHRoZSBzbm93
-        IG9uIHRoZSBTb3V0aCBMYXduIG9mIHRoZSBXaGl0ZSBIb3VzZSBvbiBEZWNl
-        bWJlciAxOSwgMjAwOS4iLCAiZGF0ZUxhc3RDcmF3bGVkIjogIjIwMjEtMDgt
-        MjlUMDY6MTg6MDAuMDAwMDAwMFoifSwgeyJpZCI6ICJodHRwczpcL1wvd3d3
-        LmJpbmdhcGlzLmNvbVwvYXBpXC92NlwvI1dlYlBhZ2VzLjYiLCAibmFtZSI6
-        ICJDb250YWN0IFVzIHwgQmFyYWNrIE9iYW1hIFByZXNpZGVudGlhbCBMaWJy
-        YXJ5IiwgInVybCI6ICJodHRwczpcL1wvd3d3Lm9iYW1hbGlicmFyeS5nb3Zc
-        L2Fib3V0LXVzXC9jb250YWN0LXVzIiwgInVybFBpbmdTdWZmaXgiOiAiRGV2
-        RXgsNTE0MS4xIiwgImRpc3BsYXlVcmwiOiAiaHR0cHM6XC9cL3d3dy5vYmFt
-        YWxpYnJhcnkuZ292XC9hYm91dC11c1wvY29udGFjdC11cyIsICJzbmlwcGV0
-        IjogIkJhcmFjayBPYmFtYSBQcmVzaWRlbnRpYWwgTGlicmFyeSAyNTAwIFcu
-        IEdvbGYgUm9hZCBIb2ZmbWFuIEVzdGF0ZXMsIElMIDYwMTY5LTExMTQgUGhv
-        bmU6ICg4NDcpIDI1Mi01NzAwIEZheDogKDg0NykgMjUyLTU3OTkgRW1haWw6
-        IG9iYW1hLmxpYnJhcnlAbmFyYS5nb3YgT2ZmaWNlIG9mIEJhcmFjayBhbmQg
-        TWljaGVsbGUgT2JhbWEgUHJlc2lkZW50IEJhcmFjayBPYmFtYSBhbmQgTXJz
-        LiBNaWNoZWxsZSBPYmFtYSBkbyBub3QgbWFpbnRhaW4gb2ZmaWNlcyBhdCB0
-        aGUgQmFyYWNrIE9iYW1hIFByZXNpZGVudGlhbCBMaWJyYXJ5LiBXcml0ZSB0
-        byB0aGUgUHJlc2lkZW50IG9yIE1ycy4gT2JhbWEgYXQgdGhlIGZvbGxvd2lu
-        ZyBhZGRyZXNzOiIsICJkYXRlTGFzdENyYXdsZWQiOiAiMjAyMS0wOC0yN1Qw
-        NzoxNzowMC4wMDAwMDAwWiJ9LCB7ImlkIjogImh0dHBzOlwvXC93d3cuYmlu
-        Z2FwaXMuY29tXC9hcGlcL3Y2XC8jV2ViUGFnZXMuNyIsICJuYW1lIjogIkZy
-        ZXF1ZW50bHkgQXNrZWQgUXVlc3Rpb25zIHwgQmFyYWNrIE9iYW1hIFByZXNp
-        ZGVudGlhbCBMaWJyYXJ5IiwgInVybCI6ICJodHRwczpcL1wvd3d3Lm9iYW1h
-        bGlicmFyeS5nb3ZcL2Fib3V0LXVzXC9mcmVxdWVudGx5LWFza2VkLXF1ZXN0
-        aW9ucyIsICJ1cmxQaW5nU3VmZml4IjogIkRldkV4LDUxNTQuMSIsICJkaXNw
-        bGF5VXJsIjogImh0dHBzOlwvXC93d3cub2JhbWFsaWJyYXJ5LmdvdlwvYWJv
-        dXQtdXNcL2ZyZXF1ZW50bHktYXNrZWQtcXVlc3Rpb25zIiwgInNuaXBwZXQi
-        OiAiUHJlc2lkZW50IE9iYW1hJ3MgbWVtb2lyLCBBIFByb21pc2VkIExhbmQs
-        IHdpbGwgY29tbWVuY2UgcHVibGljYXRpb24gaW4gTm92ZW1iZXIgMjAyMC4g
-        TXJzLiBPYmFtYSB3cm90ZSBoZXIgZmlyc3QgYm9vayB3aGlsZSBzaGUgd2Fz
-        IHNlcnZpbmcgYXMgRmlyc3QgTGFkeS4gQW1lcmljYW4gR3Jvd246IFRoZSBT
-        dG9yeSBvZiB0aGUgV2hpdGUgSG91c2UgS2l0Y2hlbiBHYXJkZW4gYW5kIEdh
-        cmRlbnMgYWNyb3NzIEFtZXJpY2Egd2FzIHB1Ymxpc2hlZCBpbiAyMDEyLiBN
-        cnMuIE9iYW1h4oCZcyBtZW1vaXIsIEJlY29taW5nLCB3YXMgcHVibGlzaGVk
-        IGluIE5vdmVtYmVyIDIwMTguIiwgImRhdGVMYXN0Q3Jhd2xlZCI6ICIyMDIx
-        LTA4LTI5VDA3OjE3OjAwLjAwMDAwMDBaIn0sIHsiaWQiOiAiaHR0cHM6XC9c
-        L3d3dy5iaW5nYXBpcy5jb21cL2FwaVwvdjZcLyNXZWJQYWdlcy44IiwgIm5h
-        bWUiOiAiRkFDVCBTSEVFVDogQ2VsZWJyYXRpbmcgUHJlc2lkZW50IE9iYW1h
-        4oCZcyBUb3AgMTAgQWN0aW9ucyAuLi4iLCAidXJsIjogImh0dHBzOlwvXC9v
-        YmFtYXdoaXRlaG91c2UuYXJjaGl2ZXMuZ292XC90aGUtcHJlc3Mtb2ZmaWNl
-        XC8yMDE2XC8xMVwvMzBcL2ZhY3Qtc2hlZXQtY2VsZWJyYXRpbmctcHJlc2lk
-        ZW50LW9iYW1hcy10b3AtMTAtYWN0aW9ucy1hZHZhbmNlIiwgInVybFBpbmdT
-        dWZmaXgiOiAiRGV2RXgsNTE2OC4xIiwgImRpc3BsYXlVcmwiOiAiaHR0cHM6
-        XC9cL29iYW1hd2hpdGVob3VzZS5hcmNoaXZlcy5nb3ZcL3RoZS1wcmVzcy1v
-        ZmZpY2VcLzIwMTZcLzExXC8zMFwvZmFjdC1zaGVldC4uLiIsICJzbmlwcGV0
-        IjogIuKAkyBQcmVzaWRlbnQgT2JhbWEsIEluYXVndXJhbCBBZGRyZXNzLCBK
-        YW51YXJ5IDIxLCAyMDA5IEFtZXJpY2HigJlzIGVudHJlcHJlbmV1cmlhbCBl
-        Y29ub215IGlzIHRoZSBlbnZ5IG9mIHRoZSB3b3JsZC4gWW91bmcgY29tcGFu
-        aWVzIGFjY291bnQgZm9yIGFsbW9zdCAzMCBwZXJjZW50IG9mIG5ldyBqb2Jz
-        LCBhbmQgYXMgd2UgaGF2ZSBmb3VnaHQgYmFjayBmcm9tIHRoZSB3b3JzdCBl
-        Y29ub21pYyBjcmlzaXMgb2Ygb3VyIGxpZmV0aW1lcywgc3RhcnR1cHMgaGF2
-        ZSBoZWxwZWQgdGhlIFUuUy4gcHJpdmF0ZSBzZWN0b3IgY3JlYXRlIDE1LjUg
-        bWlsbGlvbiBqb2JzIHNpbmNlIGVhcmx5IDIwMTDigJR0aGUgLi4uIiwgImRh
-        dGVMYXN0Q3Jhd2xlZCI6ICIyMDIxLTA4LTI4VDE5OjU1OjAwLjAwMDAwMDBa
-        In0sIHsiaWQiOiAiaHR0cHM6XC9cL3d3dy5iaW5nYXBpcy5jb21cL2FwaVwv
-        djZcLyNXZWJQYWdlcy45IiwgIm5hbWUiOiAiRkFDVCBTSEVFVDogT2JhbWEg
-        QWRtaW5pc3RyYXRpb27igJlzIFJlY29yZCBhbmQgdGhlIExHQlQgLi4uIiwg
-        InVybCI6ICJodHRwczpcL1wvb2JhbWF3aGl0ZWhvdXNlLmFyY2hpdmVzLmdv
-        dlwvdGhlLXByZXNzLW9mZmljZVwvMjAxNlwvMDZcLzA5XC9mYWN0LXNoZWV0
-        LW9iYW1hLWFkbWluaXN0cmF0aW9ucy1yZWNvcmQtYW5kLWxnYnQtY29tbXVu
-        aXR5IiwgInVybFBpbmdTdWZmaXgiOiAiRGV2RXgsNTE4Mi4xIiwgImRpc3Bs
-        YXlVcmwiOiAiaHR0cHM6XC9cL29iYW1hd2hpdGVob3VzZS5hcmNoaXZlcy5n
-        b3ZcL3RoZS1wcmVzcy1vZmZpY2VcLzIwMTZcLzA2XC8wOVwvZmFjdC1zaGVl
-        dC1vYmFtYS4uLiIsICJzbmlwcGV0IjogIlByZXNpZGVudCBPYmFtYSwgSnVu
-        ZSAyNiwgMjAxNS4gU2luY2UgdGFraW5nIG9mZmljZSwgUHJlc2lkZW50IE9i
-        YW1hIGFuZCBoaXMgQWRtaW5pc3RyYXRpb24gaGF2ZSBtYWRlIGhpc3Rvcmlj
-        IHN0cmlkZXMgdG8gZXhwYW5kIG9wcG9ydHVuaXRpZXMgYW5kIGFkdmFuY2Ug
-        ZXF1YWxpdHkgYW5kIGp1c3RpY2UgZm9yIGFsbCBBbWVyaWNhbnMsIGluY2x1
-        ZGluZyBMZXNiaWFuLCBHYXksIEJpc2V4dWFsLCBhbmQgVHJhbnNnZW5kZXIg
-        KExHQlQpIEFtZXJpY2Fucy4iLCAiZGF0ZUxhc3RDcmF3bGVkIjogIjIwMjEt
-        MDgtMjdUMjM6MzY6MDAuMDAwMDAwMFoifSwgeyJpZCI6ICJodHRwczpcL1wv
-        d3d3LmJpbmdhcGlzLmNvbVwvYXBpXC92NlwvI1dlYlBhZ2VzLjEwIiwgIm5h
-        bWUiOiAiVGhlIFdoaXRlIEhvdXNlIHwgd2hpdGVob3VzZS5nb3YiLCAidXJs
-        IjogImh0dHBzOlwvXC9vYmFtYXdoaXRlaG91c2UuYXJjaGl2ZXMuZ292XC8i
-        LCAidXJsUGluZ1N1ZmZpeCI6ICJEZXZFeCw1MTk1LjEiLCAiZGlzcGxheVVy
-        bCI6ICJodHRwczpcL1wvb2JhbWF3aGl0ZWhvdXNlLmFyY2hpdmVzLmdvdiIs
-        ICJzbmlwcGV0IjogIlByZXNpZGVudCBPYmFtYSBoYXMgcHJvdGVjdGVkIG1v
-        cmUgbmF0dXJhbCByZXNvdXJjZXMgdGhhbiBhbnkgb3RoZXIgcHJlc2lkZW50
-        LiBQcmVzaWRlbnQgT2JhbWEgaGFzIHJlZm9jdXNlZCBhbmQgcmVhZmZpcm1l
-        ZCBBbWVyaWNhbiBsZWFkZXJzaGlwIGluIHRoZSB3b3JsZC4gUHJlc2lkZW50
-        IE9iYW1hIGhhcyBjcmVhdGVkIGpvYnMsIHJlc2N1ZWQgdGhlIGF1dG8gaW5k
-        dXN0cnksIGFuZCByZWJ1aWx0IHRoZSBlY29ub215LiBQcmVzaWRlbnQgT2Jh
-        bWEgaGFzIGxlZCB0aGUgZmlnaHQgdG8gZW5zdXJlIGVxdWFsaXR5IGZvciBh
-        bGwgQW1lcmljYW5zLiIsICJkYXRlTGFzdENyYXdsZWQiOiAiMjAyMS0wOC0y
-        NFQwOToyMTowMC4wMDAwMDAwWiJ9LCB7ImlkIjogImh0dHBzOlwvXC93d3cu
-        YmluZ2FwaXMuY29tXC9hcGlcL3Y2XC8jV2ViUGFnZXMuMTEiLCAibmFtZSI6
-        ICJQcmVzaWRlbnQgT2JhbWEgV2VsY29tZXMgUSB0byBXYXNoaW5ndG9uIHwg
-        d2hpdGVob3VzZS5nb3YiLCAidXJsIjogImh0dHBzOlwvXC9vYmFtYXdoaXRl
-        aG91c2UuYXJjaGl2ZXMuZ292XC9ibG9nXC8yMDEyXC8wNFwvMTdcL3ByZXNp
-        ZGVudC1vYmFtYS13ZWxjb21lcy1xLXdhc2hpbmd0b24iLCAidXJsUGluZ1N1
-        ZmZpeCI6ICJEZXZFeCw1MjA5LjEiLCAiZGlzcGxheVVybCI6ICJodHRwczpc
-        L1wvb2JhbWF3aGl0ZWhvdXNlLmFyY2hpdmVzLmdvdlwvYmxvZ1wvMjAxMlwv
-        MDRcLzE3XC9wcmVzaWRlbnQtb2JhbWEtd2VsY29tZXMtcS13YXNoaW5ndG9u
-        IiwgInNuaXBwZXQiOiAiUHJlc2lkZW50IE9iYW1hIHdlbGNvbXMgZXZhbmdl
-        bGljYWwgbGVhZGVycyBmcm9tIGNodXJjaGVzLCB0aGUgbm9uLXByb2ZpdCBz
-        ZWN0b3IsIGJ1c2luZXNzLCBmYXNoaW9uIGFuZCBvdGhlciBzZWN0b3JzIHdo
-        byBnYXRoZXJlZCBpbiBXYXNoaW5ndG9uIGZvciBRLiBMYXN0IHdlZWssIGV2
-        YW5nZWxpY2FsIGxlYWRlcnMgZnJvbSBjaHVyY2hlcywgdGhlIG5vbi1wcm9m
-        aXQgc2VjdG9yLCBidXNpbmVzcywgZmFzaGlvbiBhbmQgb3RoZXIgc2VjdG9y
-        cyBnYXRoZXJlZCBpbiBXYXNoaW5ndG9uIGZvciBRLiIsICJkYXRlTGFzdENy
-        YXdsZWQiOiAiMjAyMS0wOC0yMlQxNDowNzowMC4wMDAwMDAwWiJ9LCB7Imlk
-        IjogImh0dHBzOlwvXC93d3cuYmluZ2FwaXMuY29tXC9hcGlcL3Y2XC8jV2Vi
-        UGFnZXMuMTIiLCAibmFtZSI6ICJQcmVzaWRlbnQgT2JhbWEgTmFycmF0ZXMg
-        XCJUaGUgUGVvcGxl4oCZcyBIb3VzZSxcIiBhIFZpcnR1YWwgLi4uIiwgInVy
-        bCI6ICJodHRwczpcL1wvb2JhbWF3aGl0ZWhvdXNlLmFyY2hpdmVzLmdvdlwv
-        YmxvZ1wvMjAxN1wvMDFcLzEzXC9wcmVzaWRlbnQtb2JhbWEtbmFycmF0ZXMt
-        cGVvcGxlcy1ob3VzZS12aXJ0dWFsLXJlYWxpdHktdG91ci13aGl0ZS1ob3Vz
-        ZSIsICJ1cmxQaW5nU3VmZml4IjogIkRldkV4LDUyMjMuMSIsICJkaXNwbGF5
-        VXJsIjogImh0dHBzOlwvXC9vYmFtYXdoaXRlaG91c2UuYXJjaGl2ZXMuZ292
-        XC9ibG9nXC8yMDE3XC8wMVwvMTNcL3ByZXNpZGVudC1vYmFtYS1uYXJyYXRl
-        cy1wZW9wbGVzLi4uIiwgInNuaXBwZXQiOiAiUHJlc2lkZW50IE9iYW1hIE5h
-        cnJhdGVzIFwiVGhlIFBlb3BsZeKAmXMgSG91c2UsXCIgYSBWaXJ0dWFsIFJl
-        YWxpdHkgVG91ciBvZiB0aGUgV2hpdGUgSG91c2UuIEphbnVhcnkgMTMsIDIw
-        MTcgYXQgMTA6MDAgQU0gRVQgYnkgS29yaSBTY2h1bG1hbi4gVHdpdHRlciBG
-        YWNlYm9vayBFbWFpbCAuIFN1bW1hcnk6IFRoZSBQcmVzaWRlbnQgYW5kIEZp
-        cnN0IExhZHkgYXJlIHVzaW5nIHZpcnR1YWwgcmVhbGl0eSB0byBicmluZyB0
-        aGUgaGlzdG9yeSBvZiB0aGUgV2hpdGUgSG91c2UgZGlyZWN0bHkgdG8geW91
-        LiIsICJkYXRlTGFzdENyYXdsZWQiOiAiMjAyMS0wOC0xN1QwMzoxNTowMC4w
-        MDAwMDAwWiJ9LCB7ImlkIjogImh0dHBzOlwvXC93d3cuYmluZ2FwaXMuY29t
-        XC9hcGlcL3Y2XC8jV2ViUGFnZXMuMTMiLCAibmFtZSI6ICIyMDE1IEV4ZWN1
-        dGl2ZSBPcmRlcnMgU2lnbmVkIGJ5IEJhcmFjayBPYmFtYSB8IE5hdGlvbmFs
-        IC4uLiIsICJ1cmwiOiAiaHR0cHM6XC9cL3d3dy5hcmNoaXZlcy5nb3ZcL2Zl
-        ZGVyYWwtcmVnaXN0ZXJcL2V4ZWN1dGl2ZS1vcmRlcnNcLzIwMTUuaHRtbCIs
-        ICJ1cmxQaW5nU3VmZml4IjogIkRldkV4LDUyMzcuMSIsICJkaXNwbGF5VXJs
-        IjogImh0dHBzOlwvXC93d3cuYXJjaGl2ZXMuZ292XC9mZWRlcmFsLXJlZ2lz
-        dGVyXC9leGVjdXRpdmUtb3JkZXJzXC8yMDE1Lmh0bWwiLCAic25pcHBldCI6
-        ICIyMDE1IEV4ZWN1dGl2ZSBPcmRlcnMgU2lnbmVkIGJ5IEJhcmFjayBPYmFt
-        YS4gRXhlY3V0aXZlIE9yZGVyIDEzNjg3LiBJbXBvc2luZyBBZGRpdGlvbmFs
-        IFNhbmN0aW9ucyBXaXRoIFJlc3BlY3QgVG8gTm9ydGggS29yZWEuIFNpZ25l
-        ZDogSmFudWFyeSAyLCAyMDE1LiBGZWRlcmFsIFJlZ2lzdGVyIHBhZ2UgYW5k
-        IGRhdGU6IDgwIEZSIDgxOSwgSmFudWFyeSA2LCAyMDE1LiBTZWU6IEVPIDEz
-        NDY2LCBKdW5lIDI2LCAyMDA4OyBFTyAxMzU1MSwgQXVndXN0IDMwLCAyMDEw
-        OyBFTyAxMzU3MCwgQXByaWwgMTgsIDIwMTEuIEV4ZWN1dGl2ZSBPcmRlciAx
-        MzY4OC4iLCAiZGF0ZUxhc3RDcmF3bGVkIjogIjIwMjEtMDgtMTFUMDQ6Mjk6
-        MDAuMDAwMDAwMFoifSwgeyJpZCI6ICJodHRwczpcL1wvd3d3LmJpbmdhcGlz
-        LmNvbVwvYXBpXC92NlwvI1dlYlBhZ2VzLjE0IiwgIm5hbWUiOiAiQSBIaXN0
-        b3JpYyBDb21taXRtZW50IHRvIFByb3RlY3RpbmcgdGhlIEVudmlyb25tZW50
-        IGFuZCAuLi4iLCAidXJsIjogImh0dHBzOlwvXC9vYmFtYXdoaXRlaG91c2Uu
-        YXJjaGl2ZXMuZ292XC90aGUtcmVjb3JkXC9jbGltYXRlIiwgInVybFBpbmdT
-        dWZmaXgiOiAiRGV2RXgsNTI1MC4xIiwgImRpc3BsYXlVcmwiOiAiaHR0cHM6
-        XC9cL29iYW1hd2hpdGVob3VzZS5hcmNoaXZlcy5nb3ZcL3RoZS1yZWNvcmRc
-        L2NsaW1hdGUiLCAic25pcHBldCI6ICJQcmVzaWRlbnQgT2JhbWEgYmVsaWV2
-        ZXMgdGhhdCBubyBjaGFsbGVuZ2UgcG9zZXMgYSBncmVhdGVyIHRocmVhdCB0
-        byBvdXIgY2hpbGRyZW4sIG91ciBwbGFuZXQsIGFuZCBmdXR1cmUgZ2VuZXJh
-        dGlvbnMgdGhhbiBjbGltYXRlIGNoYW5nZSDigJQgYW5kIHRoYXQgbm8gb3Ro
-        ZXIgY291bnRyeSBvbiBFYXJ0aCBpcyBiZXR0ZXIgZXF1aXBwZWQgdG8gbGVh
-        ZCB0aGUgd29ybGQgdG93YXJkcyBhIHNvbHV0aW9uLiBUaGF04oCZcyB3aHkg
-        dW5kZXIgUHJlc2lkZW50IE9iYW1h4oCZcyBsZWFkZXJzaGlwLCB0aGUgVW5p
-        dGVkIFN0YXRlcyBoYXMgZG9uZSBtb3JlIHRvIGNvbWJhdCBjbGltYXRlIGNo
-        YW5nZSB0aGFuIC4uLiIsICJkYXRlTGFzdENyYXdsZWQiOiAiMjAyMS0wOC0y
-        OFQwMjo0NDowMC4wMDAwMDAwWiJ9LCB7ImlkIjogImh0dHBzOlwvXC93d3cu
-        YmluZ2FwaXMuY29tXC9hcGlcL3Y2XC8jV2ViUGFnZXMuMTUiLCAibmFtZSI6
-        ICJGcm9tIHRoZSBBcmNoaXZlczogUHJlc2lkZW50IE9iYW1hJ3MgVHJpcCB0
-        byBHaGFuYSAuLi4iLCAidXJsIjogImh0dHBzOlwvXC9vYmFtYXdoaXRlaG91
-        c2UuYXJjaGl2ZXMuZ292XC9ibG9nXC8yMDEyXC8wNlwvMTRcL2FyY2hpdmVz
-        LXByZXNpZGVudC1vYmFtYXMtdHJpcC1naGFuYSIsICJ1cmxQaW5nU3VmZml4
-        IjogIkRldkV4LDUyNjQuMSIsICJkaXNwbGF5VXJsIjogImh0dHBzOlwvXC9v
-        YmFtYXdoaXRlaG91c2UuYXJjaGl2ZXMuZ292XC9ibG9nXC8yMDEyXC8wNlwv
-        MTRcL2FyY2hpdmVzLXByZXNpZGVudC1vYmFtYXMtdHJpcC1naGFuYSIsICJz
-        bmlwcGV0IjogIkluIHRoZSBzdW1tZXIgb2YgMjAwOSwgUHJlc2lkZW50IE9i
-        YW1hIHRyYXZlbGVkIHRvIEdoYW5hLCB0aGUgZmluYWwgc3RvcCBvZiBvbmUg
-        b2YgaGlzIGZpcnN0IGludGVybmF0aW9uYWwgdHJpcHMgYXMgUHJlc2lkZW50
-        LCBhbmQgZGVsaXZlcmVkIHJlbWFya3MgdG8gdGhlIEdoYW5haWFuIHBhcmxp
-        YW1lbnQgaW4gQWNjcmEuSW4gaGlzIHNwZWVjaCwgaGUgZGlzY3Vzc2VkIG91
-        ciBuYXRpb27igJlzIHJlbGF0aW9uc2hpcCB3aXRoIEFmcmljYSwgYW5kIHRo
-        ZSBwYXJ0bmVyc2hpcCBuZWVkZWQgdG8gZW5zdXJlIHRyYW5zZm9ybWF0aW9u
-        YWwgY2hhbmdlIGFjcm9zcyB0aGUgY29udGluZW50LiIsICJkYXRlTGFzdENy
-        YXdsZWQiOiAiMjAyMS0wOC0yNFQxMDoxOTowMC4wMDAwMDAwWiJ9LCB7Imlk
-        IjogImh0dHBzOlwvXC93d3cuYmluZ2FwaXMuY29tXC9hcGlcL3Y2XC8jV2Vi
-        UGFnZXMuMTYiLCAibmFtZSI6ICJJcmFxIFRpbWVsaW5lIHwgVGhlIFdoaXRl
-        IEhvdXNlIiwgInVybCI6ICJodHRwczpcL1wvb2JhbWF3aGl0ZWhvdXNlLmFy
-        Y2hpdmVzLmdvdlwvaXJhcSIsICJ1cmxQaW5nU3VmZml4IjogIkRldkV4LDUy
-        NzcuMSIsICJkaXNwbGF5VXJsIjogImh0dHBzOlwvXC9vYmFtYXdoaXRlaG91
-        c2UuYXJjaGl2ZXMuZ292XC9pcmFxIiwgInNuaXBwZXQiOiAiRmlyc3QgTGFk
-        eSBNaWNoZWxsZSBPYmFtYSBhbmQgRHIuIEppbGwgQmlkZW4gbGF1bmNoZWQg
-        Sm9pbmluZyBGb3JjZXMgdG8gc3VwcG9ydCBhbmQgaG9ub3IgQW1lcmljYeKA
-        mXMgc2VydmljZSBtZW1iZXJzIGFuZCB0aGVpciBmYW1pbGllcy4gQXVndXN0
-        IDMxLCAyMDEwIFByZXNpZGVudCBPYmFtYSBhbm5vdW5jZXMgdGhlIGVuZCBv
-        ZiB0aGUgY29tYmF0IG1pc3Npb24gaW4gSXJhcSBhbmQgZGlzY3Vzc2VzIHRo
-        ZSBmdXR1cmUgb2YgdGhlIFUuUy4gY29tbWl0bWVudCB0byBoZWxwaW5nIGJ1
-        aWxkIGEgc3RhYmxlIElyYXEgaW4gYW4gYWRkcmVzcyB0byB0aGUgbmF0aW9u
-        IGZyb20gdGhlIE92YWwgT2ZmaWNlLiIsICJkYXRlTGFzdENyYXdsZWQiOiAi
-        MjAyMS0wOC0yOFQyMjozNzowMC4wMDAwMDAwWiJ9LCB7ImlkIjogImh0dHBz
-        OlwvXC93d3cuYmluZ2FwaXMuY29tXC9hcGlcL3Y2XC8jV2ViUGFnZXMuMTci
-        LCAibmFtZSI6ICJOZXQgTmV1dHJhbGl0eTogQSBGcmVlIGFuZCBPcGVuIElu
-        dGVybmV0IHwgVGhlIFdoaXRlIEhvdXNlIiwgInVybCI6ICJodHRwczpcL1wv
-        b2JhbWF3aGl0ZWhvdXNlLmFyY2hpdmVzLmdvdlwvbmV0LW5ldXRyYWxpdHki
-        LCAidXJsUGluZ1N1ZmZpeCI6ICJEZXZFeCw1MjkxLjEiLCAiZGlzcGxheVVy
-        bCI6ICJodHRwczpcL1wvb2JhbWF3aGl0ZWhvdXNlLmFyY2hpdmVzLmdvdlwv
-        bmV0LW5ldXRyYWxpdHkiLCAic25pcHBldCI6ICJQcmVzaWRlbnQgT2JhbWEg
-        Y2FsbHMgb24gdGhlIEZDQyB0byB0YWtlIHVwIHRoZSBzdHJvbmdlc3QgcG9z
-        c2libGUgcnVsZXMgdG8gcHJvdGVjdCBuZXQgbmV1dHJhbGl0eSwgdGhlIHBy
-        aW5jaXBsZSB0aGF0IHNheXMgSW50ZXJuZXQgc2VydmljZSBwcm92aWRlcnMg
-        KElTUHMpIHNob3VsZCB0cmVhdCBhbGwgaW50ZXJuZXQgdHJhZmZpYyBlcXVh
-        bGx5LiBGZWIuIDI2IDIwMTUuIFRoZSBGQ0Mgdm90ZXMgaW4gZmF2b3Igb2Yg
-        c3Ryb25nIG5ldCBuZXV0cmFsaXR5IHJ1bGVzIHRvIGtlZXAgdGhlIGludGVy
-        bmV0IG9wZW4gYW5kIGZyZWUuIiwgImRhdGVMYXN0Q3Jhd2xlZCI6ICIyMDIx
-        LTA4LTI0VDIyOjU0OjAwLjAwMDAwMDBaIn0sIHsiaWQiOiAiaHR0cHM6XC9c
-        L3d3dy5iaW5nYXBpcy5jb21cL2FwaVwvdjZcLyNXZWJQYWdlcy4xOCIsICJu
-        YW1lIjogIlNwZWVjaGVzIGFuZCBSZW1hcmtzIHwgd2hpdGVob3VzZS5nb3Yi
-        LCAidXJsIjogImh0dHBzOlwvXC9vYmFtYXdoaXRlaG91c2UuYXJjaGl2ZXMu
-        Z292XC9icmllZmluZy1yb29tXC9zcGVlY2hlcy1hbmQtcmVtYXJrcyIsICJ1
-        cmxQaW5nU3VmZml4IjogIkRldkV4LDUzMDQuMSIsICJkaXNwbGF5VXJsIjog
-        Imh0dHBzOlwvXC9vYmFtYXdoaXRlaG91c2UuYXJjaGl2ZXMuZ292XC9icmll
-        ZmluZy1yb29tXC9zcGVlY2hlcy1hbmQtcmVtYXJrcyIsICJzbmlwcGV0Ijog
-        IlByZXNpZGVudCBCYXJhY2sgT2JhbWE7IFZpY2UgUHJlc2lkZW50IEpvZSBC
-        aWRlbjsgRmlyc3QgTGFkeSBNaWNoZWxsZSBPYmFtYTsgRHIuIEppbGwgQmlk
-        ZW47IFRoZSBDYWJpbmV0OyBFeGVjdXRpdmUgT2ZmaWNlIG9mIHRoZSBQcmVz
-        aWRlbnQ7IFNlbmlvciBXaGl0ZSBIb3VzZSBMZWFkZXJzaGlwOyBPdGhlciBB
-        ZHZpc29yeSBCb2FyZHM7IEV4ZWN1dGl2ZSBPZmZpY2VzLiBPZmZpY2Ugb2Yg
-        TWFuYWdlbWVudCBhbmQgQnVkZ2V0OyBPZmZpY2Ugb2YgU2NpZW5jZSBhbmQg
-        VGVjaG5vbG9neSBQb2xpY3k7IENvdW5jaWwgb2YgRWNvbm9taWMgQWR2aXNl
-        cnM7IENvdW5jaWwgb24gRW52aXJvbm1lbnRhbCBRdWFsaXR5IiwgImRhdGVM
-        YXN0Q3Jhd2xlZCI6ICIyMDIxLTA4LTIxVDIzOjI2OjAwLjAwMDAwMDBaIn0s
-        IHsiaWQiOiAiaHR0cHM6XC9cL3d3dy5iaW5nYXBpcy5jb21cL2FwaVwvdjZc
-        LyNXZWJQYWdlcy4xOSIsICJuYW1lIjogIkFkdmFuY2luZyBTb2NpYWwgUHJv
-        Z3Jlc3MgYW5kIEVxdWFsaXR5IHwgd2hpdGVob3VzZS5nb3YiLCAidXJsIjog
-        Imh0dHBzOlwvXC9vYmFtYXdoaXRlaG91c2UuYXJjaGl2ZXMuZ292XC90aGUt
-        cmVjb3JkXC9zb2NpYWwtcHJvZ3Jlc3MiLCAidXJsUGluZ1N1ZmZpeCI6ICJE
-        ZXZFeCw1MzE3LjEiLCAiZGlzcGxheVVybCI6ICJodHRwczpcL1wvb2JhbWF3
-        aGl0ZWhvdXNlLmFyY2hpdmVzLmdvdlwvdGhlLXJlY29yZFwvc29jaWFsLXBy
-        b2dyZXNzIiwgInNuaXBwZXQiOiAiVGhlIE9iYW1hIEFkbWluaXN0cmF0aW9u
-        IHJlbGVhc2VkIGEgcmVwb3J0IHNldHRpbmcgb3V0IG1vcmUgdGhhbiA1MCBH
-        dWlkaW5nIFByaW5jaXBsZXMgdG8gaGVscCBhbGwgY29ycmVjdGlvbmFsIHN5
-        c3RlbXMgcmVkdWNlIHRoZWlyIHVzZSBvZiBzb2xpdGFyeSBjb25maW5lbWVu
-        dCwgd2hpY2ggY292ZXIgYSByYW5nZSBvZiBpbXBvcnRhbnQgcmVmb3JtIGFy
-        ZWFzIGluY2x1ZGluZyB0aGUgdXNlIG9mIHRoZSByZXN0cmljdGl2ZSBob3Vz
-        aW5nIGFzIGEgZm9ybSBvZiBwdW5pc2htZW50LCB0aGUgYXBwcm9wcmlhdGUg
-        Y29uZGl0aW9ucyBvZiBjb25maW5lbWVudCBpbiByZXN0cmljdGl2ZSBob3Vz
-        aW5nIC4uLiIsICJkYXRlTGFzdENyYXdsZWQiOiAiMjAyMS0wOC0yOVQxMDo0
-        NjowMC4wMDAwMDAwWiJ9XX0sICJyYW5raW5nUmVzcG9uc2UiOiB7Im1haW5s
-        aW5lIjogeyJpdGVtcyI6IFt7ImFuc3dlclR5cGUiOiAiV2ViUGFnZXMiLCAi
-        cmVzdWx0SW5kZXgiOiAwLCAidmFsdWUiOiB7ImlkIjogImh0dHBzOlwvXC93
-        d3cuYmluZ2FwaXMuY29tXC9hcGlcL3Y2XC8jV2ViUGFnZXMuMCJ9fSwgeyJh
-        bnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJlc3VsdEluZGV4IjogMSwgInZh
-        bHVlIjogeyJpZCI6ICJodHRwczpcL1wvd3d3LmJpbmdhcGlzLmNvbVwvYXBp
-        XC92NlwvI1dlYlBhZ2VzLjEifX0sIHsiYW5zd2VyVHlwZSI6ICJXZWJQYWdl
-        cyIsICJyZXN1bHRJbmRleCI6IDIsICJ2YWx1ZSI6IHsiaWQiOiAiaHR0cHM6
-        XC9cL3d3dy5iaW5nYXBpcy5jb21cL2FwaVwvdjZcLyNXZWJQYWdlcy4yIn19
-        LCB7ImFuc3dlclR5cGUiOiAiV2ViUGFnZXMiLCAicmVzdWx0SW5kZXgiOiAz
-        LCAidmFsdWUiOiB7ImlkIjogImh0dHBzOlwvXC93d3cuYmluZ2FwaXMuY29t
-        XC9hcGlcL3Y2XC8jV2ViUGFnZXMuMyJ9fSwgeyJhbnN3ZXJUeXBlIjogIldl
-        YlBhZ2VzIiwgInJlc3VsdEluZGV4IjogNCwgInZhbHVlIjogeyJpZCI6ICJo
-        dHRwczpcL1wvd3d3LmJpbmdhcGlzLmNvbVwvYXBpXC92NlwvI1dlYlBhZ2Vz
-        LjQifX0sIHsiYW5zd2VyVHlwZSI6ICJXZWJQYWdlcyIsICJyZXN1bHRJbmRl
-        eCI6IDUsICJ2YWx1ZSI6IHsiaWQiOiAiaHR0cHM6XC9cL3d3dy5iaW5nYXBp
-        cy5jb21cL2FwaVwvdjZcLyNXZWJQYWdlcy41In19LCB7ImFuc3dlclR5cGUi
-        OiAiV2ViUGFnZXMiLCAicmVzdWx0SW5kZXgiOiA2LCAidmFsdWUiOiB7Imlk
-        IjogImh0dHBzOlwvXC93d3cuYmluZ2FwaXMuY29tXC9hcGlcL3Y2XC8jV2Vi
-        UGFnZXMuNiJ9fSwgeyJhbnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJlc3Vs
-        dEluZGV4IjogNywgInZhbHVlIjogeyJpZCI6ICJodHRwczpcL1wvd3d3LmJp
-        bmdhcGlzLmNvbVwvYXBpXC92NlwvI1dlYlBhZ2VzLjcifX0sIHsiYW5zd2Vy
-        VHlwZSI6ICJXZWJQYWdlcyIsICJyZXN1bHRJbmRleCI6IDgsICJ2YWx1ZSI6
-        IHsiaWQiOiAiaHR0cHM6XC9cL3d3dy5iaW5nYXBpcy5jb21cL2FwaVwvdjZc
-        LyNXZWJQYWdlcy44In19LCB7ImFuc3dlclR5cGUiOiAiV2ViUGFnZXMiLCAi
-        cmVzdWx0SW5kZXgiOiA5LCAidmFsdWUiOiB7ImlkIjogImh0dHBzOlwvXC93
-        d3cuYmluZ2FwaXMuY29tXC9hcGlcL3Y2XC8jV2ViUGFnZXMuOSJ9fSwgeyJh
-        bnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJlc3VsdEluZGV4IjogMTAsICJ2
-        YWx1ZSI6IHsiaWQiOiAiaHR0cHM6XC9cL3d3dy5iaW5nYXBpcy5jb21cL2Fw
-        aVwvdjZcLyNXZWJQYWdlcy4xMCJ9fSwgeyJhbnN3ZXJUeXBlIjogIldlYlBh
-        Z2VzIiwgInJlc3VsdEluZGV4IjogMTEsICJ2YWx1ZSI6IHsiaWQiOiAiaHR0
-        cHM6XC9cL3d3dy5iaW5nYXBpcy5jb21cL2FwaVwvdjZcLyNXZWJQYWdlcy4x
-        MSJ9fSwgeyJhbnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJlc3VsdEluZGV4
-        IjogMTIsICJ2YWx1ZSI6IHsiaWQiOiAiaHR0cHM6XC9cL3d3dy5iaW5nYXBp
-        cy5jb21cL2FwaVwvdjZcLyNXZWJQYWdlcy4xMiJ9fSwgeyJhbnN3ZXJUeXBl
-        IjogIldlYlBhZ2VzIiwgInJlc3VsdEluZGV4IjogMTMsICJ2YWx1ZSI6IHsi
-        aWQiOiAiaHR0cHM6XC9cL3d3dy5iaW5nYXBpcy5jb21cL2FwaVwvdjZcLyNX
-        ZWJQYWdlcy4xMyJ9fSwgeyJhbnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJl
-        c3VsdEluZGV4IjogMTQsICJ2YWx1ZSI6IHsiaWQiOiAiaHR0cHM6XC9cL3d3
-        dy5iaW5nYXBpcy5jb21cL2FwaVwvdjZcLyNXZWJQYWdlcy4xNCJ9fSwgeyJh
-        bnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJlc3VsdEluZGV4IjogMTUsICJ2
-        YWx1ZSI6IHsiaWQiOiAiaHR0cHM6XC9cL3d3dy5iaW5nYXBpcy5jb21cL2Fw
-        aVwvdjZcLyNXZWJQYWdlcy4xNSJ9fSwgeyJhbnN3ZXJUeXBlIjogIldlYlBh
-        Z2VzIiwgInJlc3VsdEluZGV4IjogMTYsICJ2YWx1ZSI6IHsiaWQiOiAiaHR0
-        cHM6XC9cL3d3dy5iaW5nYXBpcy5jb21cL2FwaVwvdjZcLyNXZWJQYWdlcy4x
-        NiJ9fSwgeyJhbnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJlc3VsdEluZGV4
-        IjogMTcsICJ2YWx1ZSI6IHsiaWQiOiAiaHR0cHM6XC9cL3d3dy5iaW5nYXBp
-        cy5jb21cL2FwaVwvdjZcLyNXZWJQYWdlcy4xNyJ9fSwgeyJhbnN3ZXJUeXBl
-        IjogIldlYlBhZ2VzIiwgInJlc3VsdEluZGV4IjogMTgsICJ2YWx1ZSI6IHsi
-        aWQiOiAiaHR0cHM6XC9cL3d3dy5iaW5nYXBpcy5jb21cL2FwaVwvdjZcLyNX
-        ZWJQYWdlcy4xOCJ9fSwgeyJhbnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJl
-        c3VsdEluZGV4IjogMTksICJ2YWx1ZSI6IHsiaWQiOiAiaHR0cHM6XC9cL3d3
-        dy5iaW5nYXBpcy5jb21cL2FwaVwvdjZcLyNXZWJQYWdlcy4xOSJ9fV19fX0=
-  recorded_at: Tue, 31 Aug 2021 20:33:14 GMT
-- request:
-    method: get
-    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=obama%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
-    body:
-      encoding: US-ASCII
-      base64_string: ''
+      string: ''
     headers:
       User-Agent:
       - USASearch
@@ -485,35 +31,35 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Thu, 05 Oct 2023 04:17:17 GMT
+      - Mon, 08 Jan 2024 18:56:27 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       X-Eventid:
-      - 651e3909f9984bd290b129a7d6f394a8
+      - 659c45970d7347a0a072b3230ac80ed4
       Useragentreductionoptout:
       - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
       Bingapis-Traceid:
-      - 651e3909f9984bd290b129a7d6f394a8
+      - 659c45970d7347a0a072b3230ac80ed4
       Bingapis-Sessionid:
-      - 88E4E71B881B41E0A49848250EF29D91
+      - D04E8AAC2E8E46D59FEEDFF1EC484FC5
       X-Msedge-Clientid:
-      - 2AFE41C2477A6EC926A7526346D06F21
+      - 1F8DB71501F2684401C6A31500F169DD
       X-Msapi-Userstate:
-      - d54d
+      - 775b
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=259,MSDatacenter=BNZE01
+      - InternalResponseTime=216,MSDatacenter=BNZE01
       X-Cache:
       - CONFIG_NOCACHE
       Accept-Ch:
       - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
       X-Msedge-Ref:
-      - 'Ref A: 2D5ED03F20014964A9D927FE74FD2E3F Ref B: BN3EDGE0921 Ref C: 2023-10-05T04:18:17Z'
+      - 'Ref A: C0484EC6994E41BC8599AE1469EFEB85 Ref B: BN3EDGE0621 Ref C: 2024-01-08T18:57:27Z'
       Apim-Request-Id:
-      - 5fef3658-a533-4ff4-a106-1ea43ea164a2
+      - a7475637-1c39-4a61-b8ad-90485789a841
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -521,395 +67,223 @@ http_interactions:
       Csp-Billing-Usage:
       - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Thu, 05 Oct 2023 04:18:16 GMT
+      - Mon, 08 Jan 2024 18:57:27 GMT
     body:
       encoding: UTF-8
-      base64_string: |
-        eyJfdHlwZSI6ICJTZWFyY2hSZXNwb25zZSIsICJxdWVyeUNvbnRleHQiOiB7
-        Im9yaWdpbmFsUXVlcnkiOiAib2JhbWEgKHNpdGU6Z292IE9SIHNpdGU6bWls
-        KSJ9LCAid2ViUGFnZXMiOiB7IndlYlNlYXJjaFVybCI6ICJodHRwczpcL1wv
-        d3d3LmJpbmcuY29tXC9zZWFyY2g/cT1vYmFtYSsoc2l0ZSUzYWdvditPUitz
-        aXRlJTNhbWlsKSIsICJ0b3RhbEVzdGltYXRlZE1hdGNoZXMiOiAxNjQwMDAw
-        MCwgInZhbHVlIjogW3siaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jv
-        c29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4wIiwgIm5hbWUiOiAiQmFy
-        YWNrIE9iYW1hIHwgVGhlIFdoaXRlIEhvdXNlIiwgInVybCI6ICJodHRwczpc
-        L1wvd3d3LndoaXRlaG91c2UuZ292XC9hYm91dC10aGUtd2hpdGUtaG91c2Vc
-        L3ByZXNpZGVudHNcL2JhcmFjay1vYmFtYVwvIiwgImlzRmFtaWx5RnJpZW5k
-        bHkiOiA8REFUQURPR19BUElfRU5BQkxFRD4sICJkaXNwbGF5VXJsIjogImh0
-        dHBzOlwvXC93d3cud2hpdGVob3VzZS5nb3ZcL2Fib3V0LXRoZS13aGl0ZS1o
-        b3VzZVwvcHJlc2lkZW50c1wvYmFyYWNrLW9iYW1hIiwgInNuaXBwZXQiOiAi
-        QmFyYWNrIE9iYW1hIHNlcnZlZCBhcyB0aGUgNDR0aCBQcmVzaWRlbnQgb2Yg
-        dGhlIFVuaXRlZCBTdGF0ZXMuIEhpcyBzdG9yeSBpcyB0aGUgQW1lcmljYW4g
-        c3Rvcnkg4oCUIHZhbHVlcyBmcm9tIHRoZSBoZWFydGxhbmQsIGEgbWlkZGxl
-        LWNsYXNzIHVwYnJpbmdpbmcgaW4gYSBzdHJvbmcgZmFtaWx5LCBoYXJkIHdv
-        cmsgYW5kIGVkdWNhdGlvbiAuLi4iLCAiZGF0ZUxhc3RDcmF3bGVkIjogIjIw
-        MjMtMTAtMDNUMDc6MTY6MDAuMDAwMDAwMFoiLCAibGFuZ3VhZ2UiOiAiZW4i
-        LCAiaXNOYXZpZ2F0aW9uYWwiOiBmYWxzZX0sIHsiaWQiOiAiaHR0cHM6XC9c
-        L2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4x
-        IiwgIm5hbWUiOiAiUHJlc2lkZW50IEJhcmFjayBPYmFtYSB8IHdoaXRlaG91
-        c2UuZ292IiwgInVybCI6ICJodHRwczpcL1wvb2JhbWF3aGl0ZWhvdXNlLmFy
-        Y2hpdmVzLmdvdlwvYWRtaW5pc3RyYXRpb25cL3ByZXNpZGVudC1vYmFtYSIs
-        ICJpc0ZhbWlseUZyaWVuZGx5IjogPERBVEFET0dfQVBJX0VOQUJMRUQ+LCAi
-        ZGlzcGxheVVybCI6ICJodHRwczpcL1wvb2JhbWF3aGl0ZWhvdXNlLmFyY2hp
-        dmVzLmdvdlwvYWRtaW5pc3RyYXRpb25cL3ByZXNpZGVudC1vYmFtYSIsICJz
-        bmlwcGV0IjogIlByZXNpZGVudCBCYXJhY2sgT2JhbWEuIEJhcmFjayBPYmFt
-        YSBpcyB0aGUgNDR0aCBQcmVzaWRlbnQgb2YgdGhlIFVuaXRlZCBTdGF0ZXMu
-        IEhpcyBzdG9yeSBpcyB0aGUgQW1lcmljYW4gc3RvcnkgLS0gdmFsdWVzIGZy
-        b20gdGhlIGhlYXJ0bGFuZCwgYSBtaWRkbGUtY2xhc3MgdXBicmluZ2luZyBp
-        biBhIHN0cm9uZyBmYW1pbHksIGhhcmQgd29yayBhbmQgZWR1Y2F0aW9uIGFz
-        IHRoZSBtZWFucyBvZiBnZXR0aW5nIGFoZWFkLCBhbmQgdGhlIGNvbnZpY3Rp
-        b24gdGhhdCBhIGxpZmUgc28gYmxlc3NlZCBzaG91bGQgYmUgbGl2ZWQgaW4g
-        c2VydmljZSB0byBvdGhlcnMuIERvd25sb2FkIExvdy1yZXMgKDI5NiBLQiki
-        LCAiZGF0ZUxhc3RDcmF3bGVkIjogIjIwMjMtMTAtMDNUMDY6MzY6MDAuMDAw
-        MDAwMFoiLCAibGFuZ3VhZ2UiOiAiZW4iLCAiaXNOYXZpZ2F0aW9uYWwiOiBm
-        YWxzZX0sIHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5j
-        b21cL2FwaVwvdjdcLyNXZWJQYWdlcy4yIiwgIm5hbWUiOiAiUHJlc2lkZW50
-        cyB8IFRoZSBXaGl0ZSBIb3VzZSIsICJ1cmwiOiAiaHR0cHM6XC9cL3d3dy53
-        aGl0ZWhvdXNlLmdvdlwvYWJvdXQtdGhlLXdoaXRlLWhvdXNlXC9wcmVzaWRl
-        bnRzXC8iLCAiaXNGYW1pbHlGcmllbmRseSI6IDxEQVRBRE9HX0FQSV9FTkFC
-        TEVEPiwgImRpc3BsYXlVcmwiOiAiaHR0cHM6XC9cL3d3dy53aGl0ZWhvdXNl
-        LmdvdlwvYWJvdXQtdGhlLXdoaXRlLWhvdXNlXC9wcmVzaWRlbnRzIiwgInNu
-        aXBwZXQiOiAiSm9zZXBoIFIuIEJpZGVuIEpyLiBUSEUgNDZUSCBQUkVTSURF
-        TlQgT0YgVEhFIFVOSVRFRCBTVEFURVMuIExlYXJuIG1vcmUgYWJvdXQgdGhl
-        IFByZXNpZGVudHMgb2YgdGhlIFVuaXRlZCBTdGF0ZXMgZnJvbSBXaGl0ZUhv
-        dXNlLmdvdi4iLCAiZGF0ZUxhc3RDcmF3bGVkIjogIjIwMjMtMTAtMDRUMDk6
-        MDM6MDAuMDAwMDAwMFoiLCAibGFuZ3VhZ2UiOiAiZW4iLCAiaXNOYXZpZ2F0
-        aW9uYWwiOiBmYWxzZX0sIHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1p
-        Y3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4zIiwgIm5hbWUiOiAi
-        TWljaGVsbGUgT2JhbWEgfCBUaGUgV2hpdGUgSG91c2UiLCAidXJsIjogImh0
-        dHBzOlwvXC93d3cud2hpdGVob3VzZS5nb3ZcL2Fib3V0LXRoZS13aGl0ZS1o
-        b3VzZVwvZmlyc3QtZmFtaWxpZXNcL21pY2hlbGxlLW9iYW1hXC8iLCAiaXNG
-        YW1pbHlGcmllbmRseSI6IDxEQVRBRE9HX0FQSV9FTkFCTEVEPiwgImRpc3Bs
-        YXlVcmwiOiAiaHR0cHM6XC9cL3d3dy53aGl0ZWhvdXNlLmdvdlwvYWJvdXQt
-        dGhlLXdoaXRlLWhvdXNlXC9maXJzdC1mYW1pbGllc1wvbWljaGVsbGUtb2Jh
-        bWEiLCAic25pcHBldCI6ICJNaWNoZWxsZSBPYmFtYS4gQWJvdXQgVGhlIFdo
-        aXRlIEhvdXNlLiBGaXJzdCBGYW1pbGllcy4gRmlyc3QgTGFkeSBNaWNoZWxs
-        ZSBMYVZhdWdobiBSb2JpbnNvbiBPYmFtYSBpcyBhIGxhd3llciwgd3JpdGVy
-        LCBhbmQgdGhlIHdpZmUgb2YgdGhlIDQ0dGggUHJlc2lkZW50LCBCYXJhY2sg
-        T2JhbWEuIFNoZSBpcyB0aGUgZmlyc3QgQWZyaWNhbiAuLi4iLCAiZGF0ZUxh
-        c3RDcmF3bGVkIjogIjIwMjMtMTAtMDNUMTM6MTU6MDAuMDAwMDAwMFoiLCAi
-        bGFuZ3VhZ2UiOiAiZW4iLCAiaXNOYXZpZ2F0aW9uYWwiOiBmYWxzZX0sIHsi
-        aWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwv
-        djdcLyNXZWJQYWdlcy40IiwgIm5hbWUiOiAiRmlyc3QgTGFkeSBNaWNoZWxs
-        ZSBPYmFtYSB8IHdoaXRlaG91c2UuZ292IiwgInVybCI6ICJodHRwczpcL1wv
-        b2JhbWF3aGl0ZWhvdXNlLmFyY2hpdmVzLmdvdlwvYWRtaW5pc3RyYXRpb25c
-        L2ZpcnN0LWxhZHktbWljaGVsbGUtb2JhbWEiLCAiaXNGYW1pbHlGcmllbmRs
-        eSI6IDxEQVRBRE9HX0FQSV9FTkFCTEVEPiwgImRpc3BsYXlVcmwiOiAiaHR0
-        cHM6XC9cL29iYW1hd2hpdGVob3VzZS5hcmNoaXZlcy5nb3ZcL2FkbWluaXN0
-        cmF0aW9uXC9maXJzdC1sYWR5LW1pY2hlbGxlLW9iYW1hIiwgInNuaXBwZXQi
-        OiAiRmlyc3QgTGFkeSBNaWNoZWxsZSBMYVZhdWdobiBSb2JpbnNvbiBPYmFt
-        YSBpcyBhIGxhd3llciwgd3JpdGVyLCBhbmQgdGhlIHdpZmUgb2YgdGhlIDQ0
-        dGggYW5kIGN1cnJlbnQgUHJlc2lkZW50LCBCYXJhY2sgT2JhbWEuIFNoZSBp
-        cyB0aGUgZmlyc3QgQWZyaWNhbi1BbWVyaWNhbiBGaXJzdCBMYWR5IG9mIHRo
-        ZSBVbml0ZWQgU3RhdGVzLiBUaHJvdWdoIGhlciBmb3VyIG1haW4gaW5pdGlh
-        dGl2ZXMsIHNoZSBoYXMgYmVjb21lIGEgcm9sZSBtb2RlbCBmb3Igd29tZW4g
-        YW5kIGFuIGFkdm9jYXRlIGZvciBoZWFsdGh5IGZhbWlsaWVzLCBzZXJ2aWNl
-        IG1lbWJlcnMgYW5kIHRoZWlyIGZhbWlsaWVzLCBoaWdoZXIgZWR1Y2F0aW9u
-        LCBhbmQgaW50ZXJuYXRpb25hbCBhZG9sZXNjZW50IGdpcmxzIC4uLiIsICJk
-        YXRlTGFzdENyYXdsZWQiOiAiMjAyMy0xMC0wNFQwNjoxMjowMC4wMDAwMDAw
-        WiIsICJsYW5ndWFnZSI6ICJlbiIsICJpc05hdmlnYXRpb25hbCI6IGZhbHNl
-        fSwgeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNvbVwv
-        YXBpXC92N1wvI1dlYlBhZ2VzLjUiLCAibmFtZSI6ICJUaGUgV2hpdGUgSG91
-        c2UgfCB3aGl0ZWhvdXNlLmdvdiIsICJ1cmwiOiAiaHR0cHM6XC9cL29iYW1h
-        d2hpdGVob3VzZS5hcmNoaXZlcy5nb3ZcLyIsICJpc0ZhbWlseUZyaWVuZGx5
-        IjogPERBVEFET0dfQVBJX0VOQUJMRUQ+LCAiZGlzcGxheVVybCI6ICJodHRw
-        czpcL1wvb2JhbWF3aGl0ZWhvdXNlLmFyY2hpdmVzLmdvdiIsICJzbmlwcGV0
-        IjogIkxhdGVzdCBOZXdzIFJlYWQgdGhlIGxhdGVzdCBibG9nIHBvc3RzIGZy
-        b20gMTYwMCBQZW5uc3lsdmFuaWEgQXZlLiBTaGFyZS1Xb3J0aHkgQ2hlY2sg
-        b3V0IHRoZSBtb3N0IHBvcHVsYXIgaW5mb2dyYXBoaWNzIGFuZCB2aWRlb3Mu
-        IFBob3RvcyBWaWV3IHRoZSBwaG90byBvZiB0aGUgZGF5IGFuZCBvdGhlciBn
-        YWxsZXJpZXMuIFZpZGVvIEdhbGxlcnkgV2F0Y2ggYmVoaW5kLXRoZS1zY2Vu
-        ZXMgdmlkZW9zIGFuZCBtb3JlLiBMaXZlIEV2ZW50cyBUdW5lIGluIHRvIFdo
-        aXRlIEhvdXNlIGV2ZW50cyBhbmQgc3RhdGVtZW50cyBhcyB0aGV5IGhhcHBl
-        bi4iLCAiZGF0ZUxhc3RDcmF3bGVkIjogIjIwMjMtMTAtMDJUMTA6MjU6MDAu
-        MDAwMDAwMFoiLCAibGFuZ3VhZ2UiOiAiZW4iLCAiaXNOYXZpZ2F0aW9uYWwi
-        OiBmYWxzZX0sIHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29m
-        dC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy42IiwgIm5hbWUiOiAiQmFyYWNr
-        IEguIE9iYW1hIENhYmluZXQgTm9taW5hdGlvbnMgLSBVLlMuIFNlbmF0ZSIs
-        ICJ1cmwiOiAiaHR0cHM6XC9cL3d3dy5zZW5hdGUuZ292XC9sZWdpc2xhdGl2
-        ZVwvbm9taW5hdGlvbnNcL09iYW1hX2NhYmluZXQuaHRtIiwgImlzRmFtaWx5
-        RnJpZW5kbHkiOiA8REFUQURPR19BUElfRU5BQkxFRD4sICJkaXNwbGF5VXJs
-        IjogImh0dHBzOlwvXC93d3cuc2VuYXRlLmdvdlwvbGVnaXNsYXRpdmVcL25v
-        bWluYXRpb25zXC9PYmFtYV9jYWJpbmV0Lmh0bSIsICJzbmlwcGV0IjogIjEu
-        IFdpdGhkcmF3biBKYW51YXJ5IDQsIDIwMDkuIDIuIFdpdGhkcmF3biBGZWJy
-        dWFyeSAxMiwgMjAwOS4gMy4gQ29udGludWVkIGZyb20gdGhlIHByZXZpb3Vz
-        IGFkbWluaXN0cmF0aW9uLiA0LiBNZXNzYWdlIG9mIHdpdGhkcmF3YWwgcmVj
-        ZWl2ZWQgaW4gdGhlIFNlbmF0ZSBvbiBGZWJydWFyeSA5LCAyMDA5LiBPYmFt
-        YSBjYWJpbmV0IG5vbWluYXRpb25zLiIsICJkYXRlTGFzdENyYXdsZWQiOiAi
-        MjAyMy0xMC0wM1QwOTowMDowMC4wMDAwMDAwWiIsICJsYW5ndWFnZSI6ICJl
-        biIsICJpc05hdmlnYXRpb25hbCI6IGZhbHNlfSwgeyJpZCI6ICJodHRwczpc
-        L1wvYXBpLmJpbmcubWljcm9zb2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2Vz
-        LjciLCAibmFtZSI6ICJOZXQgTmV1dHJhbGl0eTogQSBGcmVlIGFuZCBPcGVu
-        IEludGVybmV0IHwgVGhlIFdoaXRlIEhvdXNlIiwgInVybCI6ICJodHRwczpc
-        L1wvb2JhbWF3aGl0ZWhvdXNlLmFyY2hpdmVzLmdvdlwvbmV0LW5ldXRyYWxp
-        dHkiLCAiaXNGYW1pbHlGcmllbmRseSI6IDxEQVRBRE9HX0FQSV9FTkFCTEVE
-        PiwgImRpc3BsYXlVcmwiOiAiaHR0cHM6XC9cL29iYW1hd2hpdGVob3VzZS5h
-        cmNoaXZlcy5nb3ZcL25ldC1uZXV0cmFsaXR5IiwgInNuaXBwZXQiOiAiUHJl
-        c2lkZW50IE9iYW1hIGNhbGxzIG9uIHRoZSBGQ0MgdG8gdGFrZSB1cCB0aGUg
-        c3Ryb25nZXN0IHBvc3NpYmxlIHJ1bGVzIHRvIHByb3RlY3QgbmV0IG5ldXRy
-        YWxpdHksIHRoZSBwcmluY2lwbGUgdGhhdCBzYXlzIEludGVybmV0IHNlcnZp
-        Y2UgcHJvdmlkZXJzIChJU1BzKSBzaG91bGQgdHJlYXQgYWxsIGludGVybmV0
-        IHRyYWZmaWMgZXF1YWxseS4gRmViLiAyNi4gMjAxNS4gVGhlIEZDQyB2b3Rl
-        cyBpbiBmYXZvciBvZiBzdHJvbmcgbmV0IG5ldXRyYWxpdHkgcnVsZXMgdG8g
-        a2VlcCB0aGUgaW50ZXJuZXQgb3BlbiBhbmQgZnJlZS4gSnVuZSAxNC4iLCAi
-        ZGF0ZUxhc3RDcmF3bGVkIjogIjIwMjMtMTAtMDRUMDg6MDY6MDAuMDAwMDAw
-        MFoiLCAibGFuZ3VhZ2UiOiAiZW4iLCAiaXNOYXZpZ2F0aW9uYWwiOiBmYWxz
-        ZX0sIHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21c
-        L2FwaVwvdjdcLyNXZWJQYWdlcy44IiwgIm5hbWUiOiAiQSBQcm9jbGFtYXRp
-        b24gb24gTmF0aW9uYWwgRGlzYWJpbGl0eSBFbXBsb3ltZW50IEF3YXJlbmVz
-        cyBNb250aCwiLCAidXJsIjogImh0dHBzOlwvXC93d3cud2hpdGVob3VzZS5n
-        b3ZcL2JyaWVmaW5nLXJvb21cL3ByZXNpZGVudGlhbC1hY3Rpb25zXC8yMDIz
-        XC8wOVwvMjlcL2EtcHJvY2xhbWF0aW9uLW9uLW5hdGlvbmFsLWRpc2FiaWxp
-        dHktZW1wbG95bWVudC1hd2FyZW5lc3MtbW9udGgtMjAyM1wvIiwgImlzRmFt
-        aWx5RnJpZW5kbHkiOiA8REFUQURPR19BUElfRU5BQkxFRD4sICJkaXNwbGF5
-        VXJsIjogImh0dHBzOlwvXC93d3cud2hpdGVob3VzZS5nb3ZcL2JyaWVmaW5n
-        LXJvb21cL3ByZXNpZGVudGlhbC1hY3Rpb25zXC8yMDIzXC8wOVwvMjlcL2Eu
-        Li4iLCAic25pcHBldCI6ICJOT1csIFRIRVJFRk9SRSwgSSwgSk9TRVBIIFIu
-        IEJJREVOIEpSLiwgUHJlc2lkZW50IG9mIHRoZSBVbml0ZWQgU3RhdGVzIG9m
-        IEFtZXJpY2EsIGJ5IHZpcnR1ZSBvZiB0aGUgYXV0aG9yaXR5IHZlc3RlZCBp
-        biBtZSBieSB0aGUgQ29uc3RpdHV0aW9uIGFuZCB0aGUgbGF3cyBvZiB0aGUg
-        VW5pdGVkIFN0YXRlcywgZG8gaGVyZWJ5IHByb2NsYWltIC4uLiIsICJkYXRl
-        TGFzdENyYXdsZWQiOiAiMjAyMy0xMC0wNFQyMjoxMDowMC4wMDAwMDAwWiIs
-        ICJsYW5ndWFnZSI6ICJlbiIsICJpc05hdmlnYXRpb25hbCI6IGZhbHNlfSwg
-        eyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNvbVwvYXBp
-        XC92N1wvI1dlYlBhZ2VzLjkiLCAibmFtZSI6ICJCYXJhY2sgT2JhbWEgLSBU
-        cmF2ZWxzIG9mIHRoZSBQcmVzaWRlbnQgLSBUcmF2ZWxzIC0gRGVwYXJ0bWVu
-        dCBIaXN0b3J5IC4uLiIsICJ1cmwiOiAiaHR0cHM6XC9cL2hpc3Rvcnkuc3Rh
-        dGUuZ292XC9kZXBhcnRtZW50aGlzdG9yeVwvdHJhdmVsc1wvcHJlc2lkZW50
-        XC9vYmFtYS1iYXJhY2siLCAiaXNGYW1pbHlGcmllbmRseSI6IDxEQVRBRE9H
-        X0FQSV9FTkFCTEVEPiwgImRpc3BsYXlVcmwiOiAiaHR0cHM6XC9cL2hpc3Rv
-        cnkuc3RhdGUuZ292XC9kZXBhcnRtZW50aGlzdG9yeVwvdHJhdmVsc1wvcHJl
-        c2lkZW50XC9vYmFtYS1iYXJhY2siLCAic25pcHBldCI6ICJCYXJhY2sgT2Jh
-        bWEgQ291bnRyeSBMb2NhbGUgUmVtYXJrcyBEYXRlOyBDYW5hZGE6IE90dGF3
-        YTogTWV0IHdpdGggUHJpbWUgTWluaXN0ZXIgSGFycGVyLiBGZWJydWFyeSAx
-        OSwgMjAwOTogVW5pdGVkIEtpbmdkb206IExvbmRvbjogTWV0IHdpdGggUXVl
-        ZW4gRWxpemFiZXRoIElJIGFuZCBQcmltZSBNaW5pc3RlciBCcm93bi4gQXR0
-        ZW5kZWQgdGhlIEctMjAgRWNvbm9taWMgU3VtbWl0IE1lZXRpbmcuIE1hcmNo
-        IDMx4oCTQXByaWwgMywgMjAwOTogRnJhbmNlOiBTdHJhc2JvdXJnOiBBdHRl
-        bmRlZCB0aGUgTkFUTyBTdW1taXQgTWVldGluZy4iLCAiZGF0ZUxhc3RDcmF3
-        bGVkIjogIjIwMjMtMTAtMDFUMTQ6MDU6MDAuMDAwMDAwMFoiLCAibGFuZ3Vh
-        Z2UiOiAiZW4iLCAiaXNOYXZpZ2F0aW9uYWwiOiBmYWxzZX0sIHsiaWQiOiAi
-        aHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNX
-        ZWJQYWdlcy4xMCIsICJuYW1lIjogIkNhcnIgQWdyZWVzIHdpdGggT2JhbWEn
-        cyBMYXd5ZXJzIG9uIEludGVybmV0IFJlZ3MiLCAidXJsIjogImh0dHBzOlwv
-        XC93d3cuZmNjLmdvdlwvZG9jdW1lbnRcL2NhcnItYWdyZWVzLW9iYW1hcy1s
-        YXd5ZXJzLWludGVybmV0LXJlZ3MiLCAiaXNGYW1pbHlGcmllbmRseSI6IDxE
-        QVRBRE9HX0FQSV9FTkFCTEVEPiwgImRpc3BsYXlVcmwiOiAiaHR0cHM6XC9c
-        L3d3dy5mY2MuZ292XC9kb2N1bWVudFwvY2Fyci1hZ3JlZXMtb2JhbWFzLWxh
-        d3llcnMtaW50ZXJuZXQtcmVncyIsICJzbmlwcGV0IjogIklzc3VlZCBPbjog
-        U2VwIDI2LCAyMDIzLiBNZWRpYSBDb250YWN0OiBHcmVnIFdhdHNvbiAoMjAy
-        KSA0MTgtMDY1OCBvciBncmVnLndhdHNvbkBmY2MuZ292LiBGZWRlcmFsIENv
-        bW11bmljYXRpb25zIENvbW1pc3Npb24uIDQ1IEwgU3RyZWV0IE5FLiBXYXNo
-        aW5ndG9uLCBEQyAyMDU1NC4iLCAiZGF0ZUxhc3RDcmF3bGVkIjogIjIwMjMt
-        MTAtMDFUMDY6Mjk6MDAuMDAwMDAwMFoiLCAibGFuZ3VhZ2UiOiAiZW4iLCAi
-        aXNOYXZpZ2F0aW9uYWwiOiBmYWxzZX0sIHsiaWQiOiAiaHR0cHM6XC9cL2Fw
-        aS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4xMSIs
-        ICJuYW1lIjogIlByZXNpZGVudCBsYW5kcyBhdCBNb2ZmZXR0IEZpZWxkIGR1
-        cmluZyBTaWxpY29uIFZhbGxleSB2aXNpdCAtIE5BU0EiLCAidXJsIjogImh0
-        dHBzOlwvXC93d3cubmFzYS5nb3ZcL3dwLWNvbnRlbnRcL3VwbG9hZHNcLzIw
-        MjNcLzA5XC82MDA3OTZtYWluX0ZhbGwyMDExQXN0cm9ncmFtLnBkZiIsICJp
-        c0ZhbWlseUZyaWVuZGx5IjogPERBVEFET0dfQVBJX0VOQUJMRUQ+LCAiZGlz
-        cGxheVVybCI6ICJodHRwczpcL1wvd3d3Lm5hc2EuZ292XC93cC1jb250ZW50
-        XC91cGxvYWRzXC8yMDIzXC8wOVwvNjAwNzk2bWFpbl9GYWxsMjAxMUFzdHJv
-        Z3JhbS5wZGYiLCAic25pcHBldCI6ICJkZW50IE9iYW1hIHZpc2l0ZWQgdGhl
-        IENvbXB1dGVyIEhpcy10b3J5IE11c2V1bSBpbiBNb3VudGFpbiBWaWV3LCBD
-        YWxpZi4sIHRvIHBhcnRpY2lwYXRlIGluIGEgZGlzY3Vzc2lvbiBhYm91dCBw
-        dXR0aW5nIEFtZXJpY2EgYmFjayB0byB3b3JrLiBMaW5rZS1kSW4sIHRoZSB3
-        b3JsZCdzIGxhcmdlc3QgcHJvZmVzc2lvbmFsIG5ldHdvcmsgd2l0aCBtb3Jl
-        IHRoYW4gMTIwIG1pbGxpb24gdXNlcnMgd29ybGR3aWRlLCBob3N0ZWQgdGhl
-        IHRvd24gaGFsbCBtZWV0aW5nLiBUaGUgY29yZSB0b3BpY3Mgb2YgdGhlIFBy
-        ZXNpZGVudOKAmXMgdHJpcCB0byBTaWxpY29uIFZhbGxleSBmb2N1c2VkIG9u
-        IGpvYiIsICJkYXRlTGFzdENyYXdsZWQiOiAiMjAyMy0xMC0wNFQxNjoyNjow
-        MC4wMDAwMDAwWiIsICJsYW5ndWFnZSI6ICJlbiIsICJpc05hdmlnYXRpb25h
-        bCI6IGZhbHNlfSwgeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9z
-        b2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjEyIiwgIm5hbWUiOiAiQ29u
-        dGFjdCBVcyB8IFRoZSBXaGl0ZSBIb3VzZSIsICJ1cmwiOiAiaHR0cHM6XC9c
-        L3d3dy53aGl0ZWhvdXNlLmdvdlwvY29udGFjdFwvIiwgImlzRmFtaWx5RnJp
-        ZW5kbHkiOiA8REFUQURPR19BUElfRU5BQkxFRD4sICJkaXNwbGF5VXJsIjog
-        Imh0dHBzOlwvXC93d3cud2hpdGVob3VzZS5nb3ZcL2NvbnRhY3QiLCAic25p
-        cHBldCI6ICJTdGF5IENvbm5lY3RlZC4gRW1haWwgQWRkcmVzcyouIFpJUCBD
-        b2RlLiBDb250YWN0IHRoZSBQcmVzaWRlbnQsIFZpY2UgUHJlc2lkZW50LCBn
-        ZXQgaGVscCB3aXRoIGEgRmVkZXJhbCBBZ2VuY3ksIG9yIGFzayBhIHF1ZXN0
-        aW9uIGFib3V0IFdoaXRlSG91c2UuZ292LiIsICJkYXRlTGFzdENyYXdsZWQi
-        OiAiMjAyMy0xMC0wNFQwNzoxMTowMC4wMDAwMDAwWiIsICJsYW5ndWFnZSI6
-        ICJlbiIsICJpc05hdmlnYXRpb25hbCI6IGZhbHNlfSwgeyJpZCI6ICJodHRw
-        czpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBh
-        Z2VzLjEzIiwgIm5hbWUiOiAiUHJlc2lkZW50IE9iYW1hJ3MgQmFjayB0byBT
-        Y2hvb2wgU3BlZWNoIHwgVGhlIFdoaXRlIEhvdXNlIiwgInVybCI6ICJodHRw
-        czpcL1wvb2JhbWF3aGl0ZWhvdXNlLmFyY2hpdmVzLmdvdlwvYmFjay10by1z
-        Y2hvb2wiLCAiaXNGYW1pbHlGcmllbmRseSI6IDxEQVRBRE9HX0FQSV9FTkFC
-        TEVEPiwgImRpc3BsYXlVcmwiOiAiaHR0cHM6XC9cL29iYW1hd2hpdGVob3Vz
-        ZS5hcmNoaXZlcy5nb3ZcL2JhY2stdG8tc2Nob29sIiwgInNuaXBwZXQiOiAi
-        QXMgc3R1ZGVudHMgYmVnaW4gdGhlaXIgc2Nob29sIHllYXIsIFByZXNpZGVu
-        dCBCYXJhY2sgT2JhbWEgd2lsbCBkZWxpdmVyIGhpcyB0aGlyZCBhbm51YWwg
-        QmFjay10by1TY2hvb2wgU3BlZWNoIGF0IDE6MzBQTUVEVCBvbiBXZWRuZXNk
-        YXksIFNlcHRlbWJlciAyOCwgMjAxMSBhdCBCZW5qYW1pbiBCYW5uZWtlciBB
-        Y2FkZW1pYyBIaWdoIFNjaG9vbCBpbiBXYXNoaW5ndG9uLCBEQy4gVGhlIFBy
-        ZXNpZGVudOKAmXMgQmFjay10by1TY2hvb2wgU3BlZWNoIGlzIGFuIG9wcG9y
-        dHVuaXR5IHRvIHNwZWFrIGRpcmVjdGx5IHRvIHN0dWRlbnRzIGFjcm9zcyB0
-        aGUgY291bnRyeS4iLCAiZGF0ZUxhc3RDcmF3bGVkIjogIjIwMjMtMTAtMDNU
-        MTc6MTY6MDAuMDAwMDAwMFoiLCAibGFuZ3VhZ2UiOiAiZW4iLCAiaXNOYXZp
-        Z2F0aW9uYWwiOiBmYWxzZX0sIHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5n
-        Lm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4xNCIsICJuYW1l
-        IjogIkFkdmFuY2luZyBTb2NpYWwgUHJvZ3Jlc3MgYW5kIEVxdWFsaXR5IHwg
-        d2hpdGVob3VzZS5nb3YiLCAidXJsIjogImh0dHBzOlwvXC9vYmFtYXdoaXRl
-        aG91c2UuYXJjaGl2ZXMuZ292XC90aGUtcmVjb3JkXC9zb2NpYWwtcHJvZ3Jl
-        c3MiLCAiaXNGYW1pbHlGcmllbmRseSI6IDxEQVRBRE9HX0FQSV9FTkFCTEVE
-        PiwgImRpc3BsYXlVcmwiOiAiaHR0cHM6XC9cL29iYW1hd2hpdGVob3VzZS5h
-        cmNoaXZlcy5nb3ZcL3RoZS1yZWNvcmRcL3NvY2lhbC1wcm9ncmVzcyIsICJz
-        bmlwcGV0IjogIlRoZSBPYmFtYSBBZG1pbmlzdHJhdGlvbiByZWxlYXNlZCBh
-        IHJlcG9ydCBzZXR0aW5nIG91dCBtb3JlIHRoYW4gNTAgR3VpZGluZyBQcmlu
-        Y2lwbGVzIHRvIGhlbHAgYWxsIGNvcnJlY3Rpb25hbCBzeXN0ZW1zIHJlZHVj
-        ZSB0aGVpciB1c2Ugb2Ygc29saXRhcnkgY29uZmluZW1lbnQsIHdoaWNoIGNv
-        dmVyIGEgcmFuZ2Ugb2YgaW1wb3J0YW50IHJlZm9ybSBhcmVhcyBpbmNsdWRp
-        bmcgdGhlIHVzZSBvZiB0aGUgcmVzdHJpY3RpdmUgaG91c2luZyBhcyBhIGZv
-        cm0gb2YgcHVuaXNobWVudCwgdGhlIGFwcHJvcHJpYXRlIGNvbmRpdGlvbnMg
-        b2YgY29uZmluZW1lbnQgaW4gcmVzdHJpY3RpdmUgaG91c2luZyAuLi4iLCAi
-        ZGF0ZUxhc3RDcmF3bGVkIjogIjIwMjMtMTAtMDNUMTM6NDA6MDAuMDAwMDAw
-        MFoiLCAibGFuZ3VhZ2UiOiAiZW4iLCAiaXNOYXZpZ2F0aW9uYWwiOiBmYWxz
-        ZX0sIHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21c
-        L2FwaVwvdjdcLyNXZWJQYWdlcy4xNSIsICJuYW1lIjogIkluYXVndXJhbCBB
-        ZGRyZXNzIGJ5IFByZXNpZGVudCBCYXJhY2sgT2JhbWEgfCB3aGl0ZWhvdXNl
-        LmdvdiIsICJ1cmwiOiAiaHR0cHM6XC9cL29iYW1hd2hpdGVob3VzZS5hcmNo
-        aXZlcy5nb3ZcL3RoZS1wcmVzcy1vZmZpY2VcLzIwMTNcLzAxXC8yMVwvaW5h
-        dWd1cmFsLWFkZHJlc3MtcHJlc2lkZW50LWJhcmFjay1vYmFtYSIsICJpc0Zh
-        bWlseUZyaWVuZGx5IjogPERBVEFET0dfQVBJX0VOQUJMRUQ+LCAiZGlzcGxh
-        eVVybCI6ICJodHRwczpcL1wvb2JhbWF3aGl0ZWhvdXNlLmFyY2hpdmVzLmdv
-        dlwvdGhlLXByZXNzLW9mZmljZVwvMjAxM1wvMDFcLzIxXC9pbmF1Z3VyYWwt
-        YWRkcmVzcy4uLiIsICJzbmlwcGV0IjogIlByZXNpZGVudCBCYXJhY2sgT2Jh
-        bWE7IFZpY2UgUHJlc2lkZW50IEpvZSBCaWRlbjsgRmlyc3QgTGFkeSBNaWNo
-        ZWxsZSBPYmFtYTsgRHIuIEppbGwgQmlkZW47IFRoZSBDYWJpbmV0OyBFeGVj
-        dXRpdmUgT2ZmaWNlIG9mIHRoZSBQcmVzaWRlbnQ7IFNlbmlvciBXaGl0ZSBI
-        b3VzZSBMZWFkZXJzaGlwOyBPdGhlciBBZHZpc29yeSBCb2FyZHM7IEV4ZWN1
-        dGl2ZSBPZmZpY2VzLiBPZmZpY2Ugb2YgTWFuYWdlbWVudCBhbmQgQnVkZ2V0
-        OyBPZmZpY2Ugb2YgU2NpZW5jZSBhbmQgVGVjaG5vbG9neSBQb2xpY3k7IENv
-        dW5jaWwgb2YgRWNvbm9taWMgQWR2aXNlcnM7IENvdW5jaWwgb24gRW52aXJv
-        bm1lbnRhbCBRdWFsaXR5IiwgImRhdGVMYXN0Q3Jhd2xlZCI6ICIyMDIzLTEw
-        LTAyVDE4OjAzOjAwLjAwMDAwMDBaIiwgImxhbmd1YWdlIjogImVuIiwgImlz
-        TmF2aWdhdGlvbmFsIjogZmFsc2V9LCB7ImlkIjogImh0dHBzOlwvXC9hcGku
-        YmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMuMTYiLCAi
-        bmFtZSI6ICJWaWNlIFByZXNpZGVudCBKb2UgQmlkZW4gfCBUaGUgV2hpdGUg
-        SG91c2UiLCAidXJsIjogImh0dHBzOlwvXC9vYmFtYXdoaXRlaG91c2UuYXJj
-        aGl2ZXMuZ292XC92cCIsICJpc0ZhbWlseUZyaWVuZGx5IjogPERBVEFET0df
-        QVBJX0VOQUJMRUQ+LCAiZGlzcGxheVVybCI6ICJodHRwczpcL1wvb2JhbWF3
-        aGl0ZWhvdXNlLmFyY2hpdmVzLmdvdlwvdnAiLCAic25pcHBldCI6ICJGb3Jl
-        aWduIFBvbGljeS4gR28gVG8gVG9wLiBKb3NlcGggUm9iaW5ldHRlIEJpZGVu
-        LCBKci4sIHJlcHJlc2VudGVkIERlbGF3YXJlIGZvciAzNiB5ZWFycyBpbiB0
-        aGUgVS5TLiBTZW5hdGUgYmVmb3JlIGJlY29taW5nIHRoZSA0N3RoIGFuZCBj
-        dXJyZW50IFZpY2UgUHJlc2lkZW50IG9mIHRoZSBVbml0ZWQgU3RhdGVzLiBK
-        b3NlcGggUm9iaW5ldHRlIEJpZGVuLCBKci4sIHdhcyBib3JuIE5vdmVtYmVy
-        IDIwLCAxOTQyLCBpbiBTY3JhbnRvbiwgUGVubnN5bHZhbmlhLCB0aGUgZmly
-        c3Qgb2YgZm91ciBzaWJsaW5ncy4gSW4gMTk1MywgdGhlIEJpZGVuIGZhbWls
-        eSBtb3ZlZCBmcm9tIFBlbm5zeWx2YW5pYSAuLi4iLCAiZGF0ZUxhc3RDcmF3
-        bGVkIjogIjIwMjMtMTAtMDNUMjM6MjA6MDAuMDAwMDAwMFoiLCAibGFuZ3Vh
-        Z2UiOiAiZW4iLCAiaXNOYXZpZ2F0aW9uYWwiOiBmYWxzZX0sIHsiaWQiOiAi
-        aHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNX
-        ZWJQYWdlcy4xNyIsICJuYW1lIjogIlByZXNpZGVudCBPYmFtYSdzIFN1cHJl
-        bWUgQ291cnQgTm9taW5hdGlvbiB8IFRoZSBXaGl0ZSBIb3VzZSIsICJ1cmwi
-        OiAiaHR0cHM6XC9cL29iYW1hd2hpdGVob3VzZS5hcmNoaXZlcy5nb3ZcL3Nj
-        b3R1cyIsICJpc0ZhbWlseUZyaWVuZGx5IjogPERBVEFET0dfQVBJX0VOQUJM
-        RUQ+LCAiZGlzcGxheVVybCI6ICJodHRwczpcL1wvb2JhbWF3aGl0ZWhvdXNl
-        LmFyY2hpdmVzLmdvdlwvc2NvdHVzIiwgInNuaXBwZXQiOiAiVGhlIEZhY3Rz
-        LiBTaXggSnVzdGljZXMgaGF2ZSBiZWVuIGNvbmZpcm1lZCBpbiBhIHByZXNp
-        ZGVudGlhbCBlbGVjdGlvbiB5ZWFyIHNpbmNlIDE5MDAuIEV2ZXJ5IG5vbWlu
-        ZWUgd2hvIHdhcyBub3Qgd2l0aGRyYXduIGhhcyByZWNlaXZlZCBhIHZvdGUg
-        d2l0aGluIDEyNSBkYXlzIG9mIG5vbWluYXRpb24uIEl0IHdpbGwgYmUgaGFy
-        bWZ1bCBhbmQgY3JlYXRlIHVuc3VzdGFpbmFibGUgdW5jZXJ0YWludHkgaWYg
-        Q29uZ3Jlc3MgZmFpbHMgdG8gYWN0IG9uIHRoZSBQcmVzaWRlbnQncyBub21p
-        bmVlLiBIZXJlJ3MgYSBsb29rIGF0IHdoZXJlIFByZXNpZGVudCBPYmFtYSdz
-        IFN1cHJlbWUgQ291cnQgbm9taW5lZSAuLi4iLCAiZGF0ZUxhc3RDcmF3bGVk
-        IjogIjIwMjMtMTAtMDFUMTQ6MjY6MDAuMDAwMDAwMFoiLCAibGFuZ3VhZ2Ui
-        OiAiZW4iLCAiaXNOYXZpZ2F0aW9uYWwiOiBmYWxzZX0sIHsiaWQiOiAiaHR0
-        cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQ
-        YWdlcy4xOCIsICJuYW1lIjogIlByZXNpZGVudCBCYXJhY2sgT2JhbWEgfCBC
-        YXJhY2sgT2JhbWEgUHJlc2lkZW50aWFsIExpYnJhcnkiLCAidXJsIjogImh0
-        dHBzOlwvXC93d3cub2JhbWFsaWJyYXJ5Lmdvdlwvb2JhbWFzXC9wcmVzaWRl
-        bnQtYmFyYWNrLW9iYW1hIiwgImlzRmFtaWx5RnJpZW5kbHkiOiA8REFUQURP
-        R19BUElfRU5BQkxFRD4sICJkaXNwbGF5VXJsIjogImh0dHBzOlwvXC93d3cu
-        b2JhbWFsaWJyYXJ5Lmdvdlwvb2JhbWFzXC9wcmVzaWRlbnQtYmFyYWNrLW9i
-        YW1hIiwgInNuaXBwZXQiOiAiUGVyc29uYWwuIFByZXNpZGVudCBCYXJhY2sg
-        T2JhbWEuIEJhcmFjayBIdXNzZWluIE9iYW1hIElJIHdhcyBib3JuIEF1Z3Vz
-        dCA0LCAxOTYxLCBpbiBIb25vbHVsdSwgSGF3YWlpLCB0byBwYXJlbnRzIEJh
-        cmFjayBILiBPYmFtYSwgU3IuLCBhbmQgU3RhbmxleSBBbm4gRHVuaGFtLiBI
-        aXMgcGFyZW50cyBkaXZvcmNlZCB3aGVuIGhlIHdhcyAyIHllYXJzIG9sZCBh
-        bmQgaGUgd2FzIHJhaXNlZCBieSBoaXMgbW90aGVyLCBBbm4sIGFuZCBtYXRl
-        cm5hbCBncmFuZHBhcmVudHMsIFN0YW5sZXkgYW5kIE1hZGVseW4gRHVuaGFt
-        LiBIaXMgbW90aGVyIGxhdGVyIG1hcnJpZWQgTG9sbyBTb2V0b3JvLCBhbmQg
-        aGlzIC4uLiIsICJkYXRlTGFzdENyYXdsZWQiOiAiMjAyMy0xMC0wM1QxMDow
-        NjowMC4wMDAwMDAwWiIsICJsYW5ndWFnZSI6ICJlbiIsICJpc05hdmlnYXRp
-        b25hbCI6IGZhbHNlfSwgeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWlj
-        cm9zb2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjE5IiwgIm5hbWUiOiAi
-        VGhlIEFkbWluaXN0cmF0aW9uIHwgVGhlIFdoaXRlIEhvdXNlIiwgInVybCI6
-        ICJodHRwczpcL1wvb2JhbWF3aGl0ZWhvdXNlLmFyY2hpdmVzLmdvdlwvYWRt
-        aW5pc3RyYXRpb24iLCAiaXNGYW1pbHlGcmllbmRseSI6IDxEQVRBRE9HX0FQ
-        SV9FTkFCTEVEPiwgImRpc3BsYXlVcmwiOiAiaHR0cHM6XC9cL29iYW1hd2hp
-        dGVob3VzZS5hcmNoaXZlcy5nb3ZcL2FkbWluaXN0cmF0aW9uIiwgInNuaXBw
-        ZXQiOiAiRnJvbSB0aGUgTmV3cyBSb29tLiBMYXRlc3QgTmV3cyBSZWFkIHRo
-        ZSBsYXRlc3QgYmxvZyBwb3N0cyBmcm9tIDE2MDAgUGVubnN5bHZhbmlhIEF2
-        ZTsgU2hhcmUtV29ydGh5IENoZWNrIG91dCB0aGUgbW9zdCBwb3B1bGFyIGlu
-        Zm9ncmFwaGljcyBhbmQgdmlkZW9zOyBQaG90b3MgVmlldyB0aGUgcGhvdG8g
-        b2YgdGhlIGRheSBhbmQgb3RoZXIgZ2FsbGVyaWVzOyBWaWRlbyBHYWxsZXJ5
-        IFdhdGNoIGJlaGluZC10aGUtc2NlbmVzIHZpZGVvcyBhbmQgbW9yZTsgTGl2
-        ZSBFdmVudHMgVHVuZSBpbiB0byBXaGl0ZSBIb3VzZSBldmVudHMgYW5kIHN0
-        YXRlbWVudHMgYXMgdGhleSBoYXBwZW47IE11c2ljICYgQXJ0cyBQZXJmb3Jt
-        YW5jZXMgU2VlIHRoZSBsaW5ldXAgb2YgYXJ0aXN0cyBhbmQgLi4uIiwgImRh
-        dGVMYXN0Q3Jhd2xlZCI6ICIyMDIzLTEwLTAyVDA5OjI2OjAwLjAwMDAwMDBa
-        IiwgImxhbmd1YWdlIjogImVuIiwgImlzTmF2aWdhdGlvbmFsIjogZmFsc2V9
-        XX0sICJyYW5raW5nUmVzcG9uc2UiOiB7Im1haW5saW5lIjogeyJpdGVtcyI6
-        IFt7ImFuc3dlclR5cGUiOiAiV2ViUGFnZXMiLCAicmVzdWx0SW5kZXgiOiAw
-        LCAidmFsdWUiOiB7ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3Nv
-        ZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMuMCJ9fSwgeyJhbnN3ZXJUeXBl
-        IjogIldlYlBhZ2VzIiwgInJlc3VsdEluZGV4IjogMSwgInZhbHVlIjogeyJp
-        ZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNvbVwvYXBpXC92
-        N1wvI1dlYlBhZ2VzLjEifX0sIHsiYW5zd2VyVHlwZSI6ICJXZWJQYWdlcyIs
-        ICJyZXN1bHRJbmRleCI6IDIsICJ2YWx1ZSI6IHsiaWQiOiAiaHR0cHM6XC9c
-        L2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4y
-        In19LCB7ImFuc3dlclR5cGUiOiAiV2ViUGFnZXMiLCAicmVzdWx0SW5kZXgi
-        OiAzLCAidmFsdWUiOiB7ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNy
-        b3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMuMyJ9fSwgeyJhbnN3ZXJU
-        eXBlIjogIldlYlBhZ2VzIiwgInJlc3VsdEluZGV4IjogNCwgInZhbHVlIjog
-        eyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNvbVwvYXBp
-        XC92N1wvI1dlYlBhZ2VzLjQifX0sIHsiYW5zd2VyVHlwZSI6ICJXZWJQYWdl
-        cyIsICJyZXN1bHRJbmRleCI6IDUsICJ2YWx1ZSI6IHsiaWQiOiAiaHR0cHM6
-        XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdl
-        cy41In19LCB7ImFuc3dlclR5cGUiOiAiV2ViUGFnZXMiLCAicmVzdWx0SW5k
-        ZXgiOiA2LCAidmFsdWUiOiB7ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5t
-        aWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMuNiJ9fSwgeyJhbnN3
-        ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJlc3VsdEluZGV4IjogNywgInZhbHVl
-        IjogeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNvbVwv
-        YXBpXC92N1wvI1dlYlBhZ2VzLjcifX0sIHsiYW5zd2VyVHlwZSI6ICJXZWJQ
-        YWdlcyIsICJyZXN1bHRJbmRleCI6IDgsICJ2YWx1ZSI6IHsiaWQiOiAiaHR0
-        cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQ
-        YWdlcy44In19LCB7ImFuc3dlclR5cGUiOiAiV2ViUGFnZXMiLCAicmVzdWx0
-        SW5kZXgiOiA5LCAidmFsdWUiOiB7ImlkIjogImh0dHBzOlwvXC9hcGkuYmlu
-        Zy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMuOSJ9fSwgeyJh
-        bnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJlc3VsdEluZGV4IjogMTAsICJ2
-        YWx1ZSI6IHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5j
-        b21cL2FwaVwvdjdcLyNXZWJQYWdlcy4xMCJ9fSwgeyJhbnN3ZXJUeXBlIjog
-        IldlYlBhZ2VzIiwgInJlc3VsdEluZGV4IjogMTEsICJ2YWx1ZSI6IHsiaWQi
-        OiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdc
-        LyNXZWJQYWdlcy4xMSJ9fSwgeyJhbnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwg
-        InJlc3VsdEluZGV4IjogMTIsICJ2YWx1ZSI6IHsiaWQiOiAiaHR0cHM6XC9c
-        L2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4x
-        MiJ9fSwgeyJhbnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJlc3VsdEluZGV4
-        IjogMTMsICJ2YWx1ZSI6IHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1p
-        Y3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4xMyJ9fSwgeyJhbnN3
-        ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJlc3VsdEluZGV4IjogMTQsICJ2YWx1
-        ZSI6IHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21c
-        L2FwaVwvdjdcLyNXZWJQYWdlcy4xNCJ9fSwgeyJhbnN3ZXJUeXBlIjogIldl
-        YlBhZ2VzIiwgInJlc3VsdEluZGV4IjogMTUsICJ2YWx1ZSI6IHsiaWQiOiAi
-        aHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNX
-        ZWJQYWdlcy4xNSJ9fSwgeyJhbnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJl
-        c3VsdEluZGV4IjogMTYsICJ2YWx1ZSI6IHsiaWQiOiAiaHR0cHM6XC9cL2Fw
-        aS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4xNiJ9
-        fSwgeyJhbnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJlc3VsdEluZGV4Ijog
-        MTcsICJ2YWx1ZSI6IHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jv
-        c29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4xNyJ9fSwgeyJhbnN3ZXJU
-        eXBlIjogIldlYlBhZ2VzIiwgInJlc3VsdEluZGV4IjogMTgsICJ2YWx1ZSI6
-        IHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2Fw
-        aVwvdjdcLyNXZWJQYWdlcy4xOCJ9fSwgeyJhbnN3ZXJUeXBlIjogIldlYlBh
-        Z2VzIiwgInJlc3VsdEluZGV4IjogMTksICJ2YWx1ZSI6IHsiaWQiOiAiaHR0
-        cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQ
-        YWdlcy4xOSJ9fV19fX0=
-  recorded_at: Thu, 05 Oct 2023 04:18:17 GMT
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "obama
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=obama+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 9620000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Barack Obama | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/barack-obama\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/barack-obama",
+        "snippet": "Barack Obama served as the 44th President of the United States.
+        His story is the American story — values from the heartland, a middle-class
+        upbringing in a strong family, hard work and education ...", "dateLastCrawled":
+        "2024-01-08T02:34:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=obama+(site%3agov+OR+site%3amil)&d=4587192924774995&mkt=en-US&setlang=en-US&w=7rS33Y9aK4YmA8OoKE9gtb4ErMmgRrIp",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "President Barack Obama | Barack Obama Presidential Library", "url":
+        "https:\/\/www.obamalibrary.gov\/obamas\/president-barack-obama", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.obamalibrary.gov\/obamas\/president-barack-obama",
+        "snippet": "Personal. President Barack Obama. Barack Hussein Obama II was
+        born August 4, 1961, in Honolulu, Hawaii, to parents Barack H. Obama, Sr.,
+        and Stanley Ann Dunham. His parents divorced when he was 2 years old and he
+        was raised by his mother, Ann, and maternal grandparents, Stanley and Madelyn
+        Dunham. His mother later married Lolo Soetoro, and his ...", "dateLastCrawled":
+        "2024-01-08T01:06:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=obama+(site%3agov+OR+site%3amil)&d=5036347715449845&mkt=en-US&setlang=en-US&w=ysUl8o5Ro8fyRHxmcBPpraGj8nU3gg9-",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "President Barack Obama | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/administration\/president-obama",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/administration\/president-obama",
+        "snippet": "President Barack Obama. Barack Obama is the 44th President of
+        the United States. His story is the American story -- values from the heartland,
+        a middle-class upbringing in a strong family, hard work and education as the
+        means of getting ahead, and the conviction that a life so blessed should be
+        lived in service to others. Download Low-res (296 KB)", "dateLastCrawled":
+        "2024-01-07T15:29:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=obama+(site%3agov+OR+site%3amil)&d=4942601471074247&mkt=en-US&setlang=en-US&w=apr--y03Wj3HorhnsC-6_X2eCKX1jCzl",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "President Barack Obama''s Inaugural Address | whitehouse.gov", "url":
+        "https:\/\/obamawhitehouse.archives.gov\/blog\/2009\/01\/21\/president-barack-obamas-inaugural-address",
+        "datePublished": "2009-01-21T18:27:00.0000000", "datePublishedDisplayText":
+        "Jan 21, 2009", "isFamilyFriendly": true, "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2009\/01\/21\/president-barack-obamas-inaugural...",
+        "snippet": "Inaugural Address. By President Barack Hussein Obama. My fellow
+        citizens: I stand here today humbled by the task before us, grateful for the
+        trust you''ve bestowed, mindful of the sacrifices borne by our ancestors.
+        I thank President Bush for his service to our nation -- (applause) -- as well
+        as the generosity and cooperation he has shown ...", "dateLastCrawled": "2024-01-06T14:23:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=obama+(site%3agov+OR+site%3amil)&d=4775918084696374&mkt=en-US&setlang=en-US&w=O0iUC6ZvAcl71hTM66t3e6x1KZJha0b_",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "The White House | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/obamawhitehouse.archives.gov",
+        "snippet": "Latest News Read the latest blog posts from 1600 Pennsylvania
+        Ave. Share-Worthy Check out the most popular infographics and videos. Photos
+        View the photo of the day and other galleries. Video Gallery Watch behind-the-scenes
+        videos and more. Live Events Tune in to White House events and statements
+        as they happen.", "dateLastCrawled": "2024-01-07T13:22:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=obama+(site%3agov+OR+site%3amil)&d=4670498105732066&mkt=en-US&setlang=en-US&w=OQ-9knnw14xL5bfatefAvAMutQWeNqBM",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Inaugural Address by President Barack Obama | whitehouse.gov", "url":
+        "https:\/\/obamawhitehouse.archives.gov\/the-press-office\/2013\/01\/21\/inaugural-address-president-barack-obama",
+        "datePublished": "2013-01-21T00:00:00.0000000", "datePublishedDisplayText":
+        "Jan 21, 2013", "isFamilyFriendly": true, "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/the-press-office\/2013\/01\/21\/inaugural-address...",
+        "snippet": "Inaugural Address by President Barack Obama. United States Capitol.
+        11:55 A.M. EST. THE PRESIDENT: Vice President Biden, Mr. Chief Justice, members
+        of the United States Congress, distinguished guests, and fellow citizens:
+        Each time we gather to inaugurate a President we bear witness to the enduring
+        strength of our Constitution.", "dateLastCrawled": "2024-01-07T17:03:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=obama+(site%3agov+OR+site%3amil)&d=4786376324303637&mkt=en-US&setlang=en-US&w=chn2qIpe46iAl-hDblX9XtZfvAsAGr2R",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "The Obamas | Barack Obama Presidential Library", "url": "https:\/\/www.obamalibrary.gov\/obamas",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.obamalibrary.gov\/obamas",
+        "snippet": "All general requests, including congratulatory or retirement letters,
+        scheduling requests, or media inquiries, should be sent to the Office of Barack
+        and Michelle Obama. Mail addressed to President or Mrs. Obama delivered to
+        the Barack Obama Presidential Library will be returned to the sender. Office
+        of Barack and Michelle Obama. P.O. Box 91000.", "dateLastCrawled": "2024-01-05T11:23:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=obama+(site%3agov+OR+site%3amil)&d=4807249869414401&mkt=en-US&setlang=en-US&w=EzyUOvUKxLiKFdxa6hxGdfVApfNivLU9",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "FACT SHEET: Celebrating President Obama’s Top 10 Actions to Advance
+        ...", "url": "https:\/\/obamawhitehouse.archives.gov\/the-press-office\/2016\/11\/30\/fact-sheet-celebrating-president-obamas-top-10-actions-advance",
+        "datePublished": "2016-11-30T00:00:00.0000000", "datePublishedDisplayText":
+        "Nov 30, 2016", "isFamilyFriendly": true, "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/the-press-office\/2016\/11\/30\/fact-sheet...",
+        "snippet": "– President Obama, Inaugural Address, January 21, 2009 America’s
+        entrepreneurial economy is the envy of the world. Young companies account
+        for almost 30 percent of new jobs, and as we have fought back from the worst
+        economic crisis of our lifetimes, startups have helped the U.S. private sector
+        create 15.5 million jobs since early 2010—the ...", "dateLastCrawled": "2024-01-05T23:49:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=obama+(site%3agov+OR+site%3amil)&d=4963835784158807&mkt=en-US&setlang=en-US&w=mxSln_pd20_RSuFoSZdlSJbqaGnBTrZH",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Economic Rescue, Recovery, and Rebuilding on a New Foundation", "url":
+        "https:\/\/obamawhitehouse.archives.gov\/the-record\/economy", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/the-record\/economy",
+        "snippet": "Economic Record of the Obama Administration: Progress Reducing
+        Inequality. Read More. Made permanent tax cuts for 98 percent of Americans
+        as part of the bipartisan fiscal cliff agreement in January 2013, while allowing
+        costly tax cuts to expire for those with the highest incomes — which will
+        reduce deficits by more than $800 billion over the ...", "dateLastCrawled":
+        "2024-01-03T21:03:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=obama+(site%3agov+OR+site%3amil)&d=4743430946769040&mkt=en-US&setlang=en-US&w=L8jTrnsGGRZtEGuqQ9l_d32PiClIEGJB",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "President Obama''s Supreme Court Nomination | The White House", "url":
+        "https:\/\/obamawhitehouse.archives.gov\/scotus", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/scotus", "snippet":
+        "A: Brian Deese, Senior Advisor to the President, and White House Counsel
+        Neil Eggleston oversaw a broad process that involved other key members of
+        the President’s team such as Valerie Jarrett, Senior Advisor to the President.
+        Over the course of this past month, the White House consulted Senate leadership,
+        other members of Congress, leaders of the bar, and a broad array of other
+        stakeholders.", "dateLastCrawled": "2024-01-06T00:09:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=obama+(site%3agov+OR+site%3amil)&d=4609939071511643&mkt=en-US&setlang=en-US&w=QDVPjPCoHnowW8Ls-bx4pmnBTwKGWrzd",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Barack H. Obama Cabinet Nominations - U.S. Senate", "url": "https:\/\/www.senate.gov\/legislative\/nominations\/Obama_cabinet.htm",
+        "datePublished": "2023-06-09T00:00:00.0000000", "datePublishedDisplayText":
+        "Jun 9, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.senate.gov\/legislative\/nominations\/Obama_cabinet.htm",
+        "snippet": "1. Withdrawn January 4, 2009. 2. Withdrawn February 12, 2009.
+        3. Continued from the previous administration. 4. Message of withdrawal received
+        in the Senate on February 9, 2009. Obama cabinet nominations.", "dateLastCrawled":
+        "2024-01-03T12:03:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=obama+(site%3agov+OR+site%3amil)&d=4745372271602707&mkt=en-US&setlang=en-US&w=KkVgUxwDcr9t8knn24XZEil6P3OGDMJf",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Advancing Social Progress and Equality | whitehouse.gov", "url":
+        "https:\/\/obamawhitehouse.archives.gov\/the-record\/social-progress", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/the-record\/social-progress",
+        "snippet": "The Obama Administration released a report setting out more than
+        50 Guiding Principles to help all correctional systems reduce their use of
+        solitary confinement, which cover a range of important reform areas including
+        the use of the restrictive housing as a form of punishment, the appropriate
+        conditions of confinement in restrictive housing ...", "dateLastCrawled":
+        "2024-01-05T12:17:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=obama+(site%3agov+OR+site%3amil)&d=4941703822452685&mkt=en-US&setlang=en-US&w=jQY5jK1VlrLHOkN24qcBEPTMuZ461uhz",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "About Us | Barack Obama Presidential Library", "url": "https:\/\/www.obamalibrary.gov\/about-us",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.obamalibrary.gov\/about-us",
+        "snippet": "About the Library. The Barack Obama Presidential Library is the
+        14th Presidential library administered by the National Archives and Records
+        Administration (NARA), a federal agency.. Unlike other Presidential Libraries
+        administered by NARA, the Barack Obama Presidential Library will be the first
+        fully digital presidential library. An estimated 95 percent of the Presidential
+        records of the Obama ...", "dateLastCrawled": "2024-01-05T09:16:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=obama+(site%3agov+OR+site%3amil)&d=4646248726135058&mkt=en-US&setlang=en-US&w=j033n7fLEKxA3pUk7XVZ_3wOXY1U9MiH",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "A Historic Commitment to Protecting the Environment and Addressing
+        the ...", "url": "https:\/\/obamawhitehouse.archives.gov\/the-record\/climate",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/the-record\/climate",
+        "snippet": "President Obama believes that no challenge poses a greater threat
+        to our children, our planet, and future generations than climate change —
+        and that no other country on Earth is better equipped to lead the world towards
+        a solution. That’s why under President Obama’s leadership, the United States
+        has done more to combat climate change than ...", "dateLastCrawled": "2024-01-06T17:26:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=obama+(site%3agov+OR+site%3amil)&d=4673491698279723&mkt=en-US&setlang=en-US&w=cU-rJAOhIkBNQlYUxf9KEYB_3wBPau1o",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "First Lady Michelle Obama | Barack Obama Presidential Library", "url":
+        "https:\/\/www.obamalibrary.gov\/obamas\/first-lady-michelle-obama", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.obamalibrary.gov\/obamas\/first-lady-michelle-obama",
+        "snippet": "Early Life and Career. First Lady Michelle Obama. Michelle Robinson
+        Obama was born in DeYoung, Illinois, on January 17, 1964, to parents Frasier
+        Robinson III and Marian Shields. She grew up in Chicago’s South Shore neighborhood
+        with her older brother Craig, attending Chicago Public Schools and quickly
+        joining gifted classes in elementary school.", "dateLastCrawled": "2024-01-08T01:31:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=obama+(site%3agov+OR+site%3amil)&d=4541842369282303&mkt=en-US&setlang=en-US&w=GYU53d0GSW4RZBS9oZy-OQhQzlCvPJgY",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "President Obama''s Statement on Roe vs. Wade Day | Document | U.S
+        ...", "url": "https:\/\/www.usaid.gov\/document\/president-obamas-statement-roe-vs-wade-day",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usaid.gov\/document\/president-obamas-statement-roe-vs-wade-day",
+        "snippet": "President Obama''s Statement on Roe vs. Wade Day; President Obama''s
+        Statement on Roe vs. Wade Day. Document. President Obama''s Statement on Roe
+        vs. Wade Day (17.02 KB) Follow USAID. Facebook. X. YouTube. Linkedin. Flickr.
+        Instagram. United States Agency for International Development. 1300 Pennsylvania
+        Ave, NW. Washington DC 20004. Footer menu.", "dateLastCrawled": "2024-01-05T09:08:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=obama+(site%3agov+OR+site%3amil)&d=5205348671359&mkt=en-US&setlang=en-US&w=y2EP7cKETFAhNu8oCAbo2i4esVyu6P84",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Photos & Videos | Barack Obama Presidential Library", "url": "https:\/\/www.obamalibrary.gov\/photos-videos",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.obamalibrary.gov\/photos-videos",
+        "snippet": "Photos & Videos. These photo and video galleries are a peek into
+        the Barack Obama Presidential Library holdings. These materials are in the
+        public domain and do not require permission and\/or licensing for use. Please
+        credit: Courtesy Barack Obama Presidential Library. To order copies of photos
+        or videos, see the Ordering Photos & Videos page.", "dateLastCrawled": "2024-01-03T15:35:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=obama+(site%3agov+OR+site%3amil)&d=5001317967538600&mkt=en-US&setlang=en-US&w=hpKiK7RjLoziVi_Q1v9GwoUNmcgEAJs2",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Michelle Obama | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/michelle-obama\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-families\/michelle-obama",
+        "snippet": "Michelle Obama. About The White House. First Families. First Lady
+        Michelle LaVaughn Robinson Obama is a lawyer, writer, and the wife of the
+        44th President, Barack Obama. She is the first African ...", "dateLastCrawled":
+        "2024-01-08T06:14:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=obama+(site%3agov+OR+site%3amil)&d=4780655430361661&mkt=en-US&setlang=en-US&w=kt6eUw5tkJB9_dV_PtNuFTgYLByotiNv",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "President Obama''s Record on Empowering Women and Girls", "url":
+        "https:\/\/obamawhitehouse.archives.gov\/issues\/women", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/issues\/women",
+        "snippet": "President Barack Obama and Vice President Joe Biden talk with
+        Judge Sonia Sotomayor in the Blue Room following the announcement that she
+        is the President''s nominee for the U.S. Supreme Court to replace retiring
+        Justice David Souter, May 26, 2009. (Official White House Photo by Pete Souza)",
+        "dateLastCrawled": "2024-01-07T09:08:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=obama+(site%3agov+OR+site%3amil)&d=4957517890209414&mkt=en-US&setlang=en-US&w=jC3bOEhNkGPOa2FXWNvYhtLYZwv_uCwH",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "About Us | Barack Obama Presidential Library", "url": "https:\/\/obamalibrary.archives.gov\/about-us",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/obamalibrary.archives.gov\/about-us",
+        "snippet": "About the Library. The Barack Obama Presidential Library is the
+        14th Presidential library administered by the National Archives and Records
+        Administration (NARA), a federal agency.. Unlike other Presidential Libraries
+        administered by NARA, plans are for the Barack Obama Presidential Library
+        to be the first fully digital presidential library. An estimated 95 percent
+        of the Presidential records ...", "dateLastCrawled": "2024-01-04T08:02:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=obama+(site%3agov+OR+site%3amil)&d=4699029426995378&mkt=en-US&setlang=en-US&w=UmxoLcbqaSdY3zyinAAd5aFkFQ5xkmxY",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Mon, 08 Jan 2024 18:57:27 GMT
 recorded_with: VCR 6.2.0

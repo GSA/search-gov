@@ -21,10 +21,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v2 do
       get '/search' => 'searches#blended'
-      get '/search/azure' => 'searches#azure'
       get '/search/bing' => 'searches#bing'
-      get '/search/azure/web' => 'searches#azure_web'
-      get '/search/azure/image' => 'searches#azure_image'
       get '/search/i14y' => 'searches#i14y'
       get '/search/video' => 'searches#video'
       get '/search/docs' => 'searches#docs'

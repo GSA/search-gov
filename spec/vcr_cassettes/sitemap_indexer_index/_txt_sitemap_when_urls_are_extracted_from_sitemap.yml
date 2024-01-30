@@ -33,27 +33,27 @@ http_interactions:
       X-Proxy-Cache:
       - MISS
       X-Github-Request-Id:
-      - 7E96:21F4:166CE03:202B65B:64DFAE7E
+      - 82B8:4133:317951:3E265B:659C7988
       Accept-Ranges:
       - bytes
       Date:
-      - Fri, 18 Aug 2023 17:46:40 GMT
+      - Mon, 08 Jan 2024 22:40:46 GMT
       Via:
       - 1.1 varnish
       Age:
-      - '0'
+      - '102'
       X-Served-By:
-      - cache-pdk17868-PDK
+      - cache-iad-kiad7000039-IAD
       X-Cache:
-      - MISS
+      - HIT
       X-Cache-Hits:
-      - '0'
+      - '1'
       X-Timer:
-      - S1692380800.433886,VS0,VE23
+      - S1704753647.826072,VS0,VE1
       Vary:
       - Accept-Encoding
       X-Fastly-Request-Id:
-      - 96d41b71aa70e877e962aa6f9ba4d12bb878e427
+      - 8cd13e7b8d0fc36319d13176a8d92c600b74d05b
     body:
       encoding: UTF-8
       string: '<!DOCTYPE html><html lang="en-US"><head><meta charset="UTF-8"><meta
@@ -446,5 +446,5 @@ http_interactions:
         class="search-overlay"></div></div>
 
         '
-  recorded_at: Fri, 18 Aug 2023 17:46:40 GMT
-recorded_with: VCR 6.1.0
+  recorded_at: Mon, 08 Jan 2024 22:40:46 GMT
+recorded_with: VCR 6.2.0

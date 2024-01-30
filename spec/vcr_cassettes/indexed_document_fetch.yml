@@ -21,21 +21,29 @@ http_interactions:
       Content-Type:
       - text/html; charset=utf-8
       Content-Length:
-      - '3939'
+      - '27572'
       Connection:
       - keep-alive
       Date:
-      - Tue, 31 Aug 2021 20:36:10 GMT
+      - Mon, 08 Jan 2024 19:31:17 GMT
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Methods:
+      - GET, HEAD
       Cache-Control:
       - max-age=60
       Last-Modified:
-      - Thu, 26 Aug 2021 19:27:31 GMT
+      - Wed, 13 Dec 2023 13:26:12 GMT
       Strict-Transport-Security:
-      - max-age=31536000; preload
+      - max-age=31536000; preload; includeSubDomains
+      X-Amz-Server-Side-Encryption:
+      - AES256
+      X-Robots-Tag:
+      - all
       X-Server:
-      - Federalist
+      - Cloud.gov Pages
       X-Vcap-Request-Id:
-      - ef17dbce-9bc7-4796-6cf3-0069bba18483
+      - '0081d374-50e1-4c0e-5bb4-62711d21f6c6'
       X-Frame-Options:
       - SAMEORIGIN
       X-Content-Type-Options:
@@ -43,151 +51,356 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Etag:
-      - '"dc9146b6f5f578562a4a7f4ebe53fd65"'
+      - '"7244006b7fe55da6e7bf6e105654e33e"'
       Vary:
       - Accept-Encoding
       X-Cache:
       - Miss from cloudfront
       Via:
-      - 1.1 bc96a77398629da395795f95ed2380fe.cloudfront.net (CloudFront)
+      - 1.1 65cdd88e2e6e21b095c2caf59292000c.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
-      - BOS50-C3
+      - IAD55-P3
       X-Amz-Cf-Id:
-      - Znz-wYFFar0W5HDimm70enKIaJY7RR3o8LCsyNV7mvZorUScGWDpCw==
+      - pWgdfz0_u9j91kwl8L55esB8MlSp-ZlzeJx-qHE1GOT3hnUnjHa0aA==
     body:
       encoding: UTF-8
-      string: "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta name=viewport
-        content=\"width=device-width, initial-scale=1\">\n  <meta charset=\"utf-8\">\n
-        \ \n  <title>Search.gov</title>\n  <meta name=\"description\" content=\"Search.gov
+      string: "\n\n<!DOCTYPE html>\n<html lang=\"en\">\n\n\n\n<head>\n  <!-- Basic
+        Page Needs\n    ================================================== -->\n  <meta
+        charset=\"utf-8\">\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n
+        \ \n  <!-- Mobile Specific Metas\n    ==================================================
+        -->\n  <meta name=\"HandheldFriendly\" content=\"True\">\n  <meta name=\"MobileOptimized\"
+        content=\"320\">\n  <meta name=\"viewport\" content=\"width=device-width,
+        initial-scale=1.0\">\n\n  <!-- Favicons\n    ==================================================
+        -->\n  <link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"https://search.gov/assets/img/favicons/apple-touch-icon.png\">\n
+        \ <link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"https://search.gov/assets/img/favicons/favicon-32x32.png\">\n
+        \ <link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"https://search.gov/assets/img/favicon-16x16.png\">\n
+        \ <link rel=\"manifest\" href=\"https://search.gov/assets/img/favicons/site.webmanifest\">\n
+        \ <link rel=\"mask-icon\" href=\"https://search.gov/assets/img/favicons/safari-pinned-tab.svg\"
+        color=\"#5bbad5\">\n  <link rel=\"shortcut icon\" href=\"https://search.gov/assets/img/favicons/favicon.ico\">\n
+        \ <meta name=\"msapplication-TileColor\" content=\"#da532c\">\n  <meta name=\"msapplication-config\"
+        content=\"https://search.gov/assets/img/favicons/browserconfig.xml\">\n  <meta
+        name=\"theme-color\" content=\"#ffffff\">\n  <!-- CSS\n    ==================================================
+        -->\n  <link type=\"text/css\" href=\"/assets/css/styles.css\" rel=\"stylesheet\"
+        />\n\n  <!-- Google Tag Manager -->\n    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\n
+        \     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\n
+        \     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=\n
+        \     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);\n
+        \     })(window,document,'script','dataLayer','GTM-N56JXGD');</script>\n  <!--
+        End Google Tag Manager -->\n  <!-- Begin Jekyll SEO tag v2.8.0 -->\n<title>Search.gov
+        Home | Search.gov</title>\n<meta name=\"generator\" content=\"Jekyll v4.3.2\"
+        />\n<meta property=\"og:title\" content=\"Search.gov Home\" />\n<meta property=\"og:locale\"
+        content=\"en_US\" />\n<meta name=\"description\" content=\"Search.gov powers
+        thousands of federal government search boxes. Use it to improve the public’s
+        search experience on your agency’s site.\" />\n<meta property=\"og:description\"
+        content=\"Search.gov powers thousands of federal government search boxes.
+        Use it to improve the public’s search experience on your agency’s site.\"
+        />\n<link rel=\"canonical\" href=\"https://search.gov/\" />\n<meta property=\"og:url\"
+        content=\"https://search.gov/\" />\n<meta property=\"og:site_name\" content=\"Search.gov\"
+        />\n<meta property=\"og:type\" content=\"website\" />\n<meta name=\"twitter:card\"
+        content=\"summary\" />\n<meta property=\"twitter:title\" content=\"Search.gov
+        Home\" />\n<script type=\"application/ld+json\">\n{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"description\":\"Search.gov
         powers thousands of federal government search boxes. Use it to improve the
-        public's search experience on your agency's site.\">\n  <meta name=\"author\"
-        content=\"\">\n  <link href=\"https://fonts.googleapis.com/css?family=Maven+Pro:400,700\"
-        media=\"screen\" rel=\"stylesheet\" type=\"text/css\" />\n  <link href=\"https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700\"
-        media=\"screen\" rel=\"stylesheet\" type=\"text/css\" />\n  <link href=\"https://fonts.googleapis.com/css?family=Merriweather:400,700\"
-        media=\"screen\" rel=\"stylesheet\" type=\"text/css\" />\n  <link rel=\"stylesheet\"
-        href=\"/stylesheets/font-awesome.min.css\">\n  <!--[if IE 7]>\n  <link rel=\"stylesheet\"
-        href=\"/stylesheets/font-awesome-ie7.min.css\">\n  <![endif]-->\n\n  <!--
-        OLD CSS - Pre USWDS Gulp -->\n  <!-- <link href=\"/stylesheets/custom.css\"
-        rel=\"stylesheet\"> -->\n\n  <!-- OLD CSS - Post USWDS Gulp -->\n  <link href=\"/assets/bootstrap/css/bootstrap.css\"
-        rel=\"stylesheet\">\n  <link rel=\"stylesheet\" type=\"text/css\" href=\"/assets/dist/old_styles.css\">\n\n
-        \ <!-- NEW CSS - Post USWDS Gulp -->\n  <link rel=\"stylesheet\" type=\"text/css\"
-        href=\"/assets/dist/styles.css\">\n\n  <!-- HTML5 shim, for IE6-8 support
-        of HTML5 elements -->\n  <!--[if lt IE 9]>\n  <script src=\"/javascripts/html5shiv.js\"></script>\n
-        \ <![endif]-->\n\n  <!-- Fav and touch icons -->\n  <!--  <link rel=\"apple-touch-icon-precomposed\"
-        sizes=\"144x144\"\n          href=\"../assets/ico/apple-touch-icon-144-precomposed.png\">\n
-        \   <link rel=\"apple-touch-icon-precomposed\" sizes=\"114x114\"\n          href=\"../assets/ico/apple-touch-icon-114-precomposed.png\">\n
-        \   <link rel=\"apple-touch-icon-precomposed\" sizes=\"72x72\"\n          href=\"../assets/ico/apple-touch-icon-72-precomposed.png\">\n
-        \   <link rel=\"apple-touch-icon-precomposed\" href=\"../assets/ico/apple-touch-icon-57-precomposed.png\">-->\n
-        \ <link rel=\"shortcut icon\" href=\"https://d3qcdigd1fhos0.cloudfront.net/blog/img/favicon.ico\">\n
-        \ <link rel='alternate' type='application/atom+xml' title='search.gov Atom
-        feed' href='/all.atom' />\n  <script src=\"https://code.jquery.com/jquery-3.6.0.min.js\"></script>\n
-        \ <script src=\"/javascripts/bootstrap3-typeahead.js\"></script>\n  <script
-        type=\"text/javascript\" src=\"//script.crazyegg.com/pages/scripts/0007/9651.js\"
-        async=\"async\" ></script>\n  \n  <!-- Digital Analytics Program roll-up,
-        see https://analytics.usa.gov for data -->\n  <script async type=\"text/javascript\"
-        src=\"https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=GSA&subagency=TTS\"
-        id=\"_fed_an_ua_tag\"></script>\n\n </head>\n\n<body>\n<nav class=\"navbar
-        navbar-inverse navbar-fixed-top\">\n  <div class=\"container\">\n    <!--
-        Brand and toggle get grouped for better mobile display -->\n    <div class=\"navbar-header\">\n
-        \     <a class=\"navbar-brand\" href=\"/\">\n        <span class=\"search\">Search.gov</span>\n
-        \     </a>\n    </div>\n    <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n\n
-        \     <form class=\"navbar-form navbar-left form-search\" accept-charset=\"UTF-8\"
-        action=\"https://find.search.gov/search/\" id=\"search-form\" method=\"get\">\n
-        \       <div style=\"margin:0;padding:0;display:inline\"><input name=\"utf8\"
-        type=\"hidden\" value=\"&#x2713;\" /></div>\n        <input name=\"affiliate\"
-        id=\"affiliate\" type=\"hidden\" value=\"usasearch\">\n        <div class=\"input-group
-        input-append\">\n          <label for=\"search-query\" class=\"hide\">Query</label>\n\n
-        \         <input name=\"query\" autocomplete=\"off\"  type=\"text\" class=\"typeahead
-        form-control search-query\" id=\"search-query\" data-provide=\"typeahead\"
-        >\n          <span class=\"input-group-btn\">\n            <button type=\"submit\"
-        class=\"btn btn-nav\" aria-label=\"Left Align\" id=\"search-button\">\n              <span
-        class=\"glyphicon glyphicon-search\" aria-hidden=\"true\"></span>\n            </button>\n
-        \         </span>\n        </div>\n      </form>\n      <div class=\"nav navbar-right\">\n
-        \         <a href=\"https://search.usa.gov/sites\" class=\"navbar-brand\"
-        onClick=\"ga('send', 'event', { eventCategory: 'outbound', eventAction: 'login',
-        eventLabel: 'header'});\"><i\n              class=\"icon-user icon-white\"></i>&nbsp;Login</a>\n
-        \     </div>&nbsp;&nbsp;&nbsp;<div class=\"nav navbar-right\">\n          <a
-        href=\"https://search.usa.gov/signup\" class=\"navbar-brand\" onClick=\"ga('send',
-        'event', { eventCategory: 'outbound', eventAction: 'signup', eventLabel: 'header'});\">Sign
-        up</a>\n      </div>&nbsp;&nbsp;&nbsp;<div class=\"nav navbar-right\">\n          <a
-        href=\"https://search.gov/status.html\" class=\"navbar-brand\">System Status</a>\n
-        \     </div>\n    </div><!-- /.navbar-collapse -->\n  </div><!-- /.container-fluid
-        -->\n</nav>\n\n\n<div class=\"col-md-offset-2 col-md-8  hidden-sm hidden-md
-        hidden-lg\">\n\n  <form class=\"form-search\" accept-charset=\"UTF-8\" action=\"https://find.search.gov/search/\"
-        id=\"search-form\" method=\"get\">\n    <input name=\"affiliate\" id=\"affiliate\"
-        type=\"hidden\" value=\"usasearch\">\n    <div class=\"input-group input-append\">\n
-        \     <label for=\"search-query\" class=\"hide\">Query</label>\n\n      <input
-        name=\"query\" autocomplete=\"off\"  type=\"text\" class=\" form-control search-query\"
-        id=\"search-query\"  >\n      <span class=\"input-group-btn\">\n        <button
-        type=\"submit\" class=\"btn btn-primary\" aria-label=\"Left Align\" id=\"search-button\">\n
-        \         <span class=\"glyphicon glyphicon-search\" aria-hidden=\"true\"></span>\n
-        \       </button>\n      </span>\n    </div>\n  </form>\n</div>\n\n<div class=\"container-fluid\">\n
-        \ <!-- do not remove as used to parse in usasearch -->\n  <main id=\"main-container\">
-        \   \n    <div class=\"col-md-8 col-md-offset-2\">      \n      <article class=\"article
-        feature\" style=\"padding:0 30px; margin-top: 10px;\">\n  <div class=\"banner\"
-        style=\"text-center center-block\">\n    <p><img src=\"/assets/img/site/searchdotgovlogo.png\"
-        alt=\"Search.gov logo with magnifying glass\" /></p>\n  </div>\n\n  <div style=\"text-align:
-        center;\">\n    <h1>Powering over 2,000 search boxes on Federal websites.</h1>\n
-        \ </div>\n\n  <blockquote>\n    <p>“It would be impossible to match the value
-        of GSA’s Search service by procuring, building, and configuring a custom solution
-        ourselves. With the combination of a very feature-rich search service and
-        knowledgeable staff, this is the most appealing search tool for government
-        websites.”\n<small><cite>Department of Homeland Security</cite></small></p>\n
-        \ </blockquote>\n\n  <div class=\"signup-wrapper\">\n    <p><a href=\"https://search.usa.gov/signup\"
-        class=\"btn btn-primary btn-large\" onclick=\"ga('send', 'event', { eventCategory:
-        'outbound', eventAction: 'signup', eventLabel: 'in-page'});\">Federal agencies,
-        try our service today!</a></p>\n  </div>\n\n  <h2 id=\"new-to-our-service\">New
-        to our service?</h2>\n\n  <p>Watch our <a href=\"https://www.youtube.com/watch?v=p-y9T23ziEg\">Getting
-        Started video</a> (4 mins) <i class=\"icon-external-link\"><span>(External
-        link)</span></i>, read our <a href=\"/manual/site-launch-guide.html\">Search
-        Site Launch Guide</a> or <a href=\"/manual/training.html\">view a recording</a>
-        of Intro to Search.gov, a 1 hour overview of our system.  Our <a href=\"/manual/index.html\">Help
-        Manual</a> is a section by section list of everything you’ll see inside the
-        Search Admin Center (the administrative dashboard you see after logging in).</p>\n\n
-        \ <p>Getting ready to launch? Before you go live with our service, we’ll want
-        to talk to you about your website and options for indexing your content. <a
-        href=\"mailto:search@support.digitalgov.gov\">Reach out to us</a> and we can
-        schedule a call.  You can also review our <a href=\"/manual/go-live.html\">go-live
-        checklist</a> for tips and reminders.</p>\n\n  <p>We also hold regular <a
-        href=\"/manual/training.html\">training sessions</a>. Register now for upcoming
-        training, or watch recordings of previous sessions.</p>\n\n  <h2 id=\"popular-links\">Popular
-        Links</h2>\n\n  <ul>\n    <li><strong>New!</strong> <a href=\"/blog/2020-annual-review.html\">Search.gov
-        2020 Year In Review</a></li>\n    <li><a href=\"/manual/site-launch-guide.html\">Search
-        Site Launch Guide</a></li>\n    <li><a href=\"/manual/indexing-with-searchgov.html\">Everything
-        You Need to Know About Indexing with Search.gov</a></li>\n    <li><a href=\"/manual/sitemaps.html\">All
-        about XML Sitemaps</a></li>\n    <li><a href=\"/manual/index.html\">Help manual</a></li>\n
-        \   <li><a href=\"/manual/redesign.html\">Updating your search after a redesign,
-        move to a new CMS, or both</a></li>\n    <li><a href=\"/tagged/release-notes/\">Monthly
-        release notes</a>: the latest features, fixes, and focuses of the Search team</li>\n
-        \   <li><a href=\"/about/roadmap.html\">Product roadmap</a></li>\n  </ul>\n\n
-        \ <h2 id=\"need-help-were-here-to-help\">Need Help? We’re Here to Help!</h2>\n\n
-        \ <p>Email us at <a href=\"mailto:search@support.digitalgov.gov\">search@support.digitalgov.gov</a>,
-        or give us a call at 202-969-7426.</p>\n\n  <p>If you’re a federal agency,
-        we’d be happy to schedule time with you for a consultation. <a href=\"mailto:search@support.digitalgov.gov\">Email
-        us</a> to set up a time.</p>\n</article>\n      \n    </div>\n  </main>\n</div>\n<footer
-        class=\"footer\">\n  <div class=\"container\">\n    <p><a href=\"mailto:search@support.digitalgov.gov\">Email
-        us</a> or call us at 202-969-7426</p>\n    <p> An Official Website of the
-        U.S. Government <br />\n      <a href=\"https://www.gsa.gov/portal/category/25729\">Technology
-        Transformation Service</a>, <a href=\"https://www.gsa.gov/portal/category/100000\">U.S.
-        General Services Administration</a>\n    </p>\n    <ul class=\"footer-links
-        list-unstyled list-inline\">\n      <li><a href=\"https://www.usa.gov\">USA.gov</a></li>\n
-        \     <li class=\"muted\">&bull;</li>\n      <li><a href=\"/tos.html\">Terms
-        of Service</a></li>\n      <li class=\"muted\">&bull;</li>\n      <li><a href=\"https://www.digitalgov.gov/about/policies/\">Site
-        Policies</a></li>\n      <li class=\"muted\">&bull;</li>\n      <li><a href=\"/developer/\">Developers</a></li>\n
-        \   </ul>\n  </div>\n</footer>\n\n<script type=\"text/javascript\">\n  //<![CDATA[\n
-        \ var usasearch_config = { siteHandle:\"usasearch\" };\n\njQuery(document).ready(function()
-        {\n  $('.typeahead').typeahead({\n      source: function (query, process)
-        {\n          return $.get('https://search.usa.gov/sayt?name=usasearch&q='
-        + query, function (data) {\n              return process(data);\n          });\n
-        \     }, minLength: 2\n  });\n})\n\n\n  // var script = document.createElement(\"script\");\n
-        \ // script.type = \"text/javascript\";\n  // script.src = \"https://search.usa.gov/javascripts/remote.loader.js\";\n
-        \ // document.getElementsByTagName(\"head\")[0].appendChild(script);\n\n  var
-        _gaq = _gaq || [];\n  _gaq.push(['_setAccount', 'UA-31302465-1']);\n  _gaq.push(['_trackPageview']);\n\n
-        \ (function() {\n    var ga = document.createElement('script'); ga.type =
-        'text/javascript'; ga.async = true;\n    ga.src = ('https:' == document.location.protocol
-        ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';\n    var
-        s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga,
-        s);\n  })();\n\n  //]]>\n</script>\n\n</body>\n</html>\n"
-    http_version:
-  recorded_at: Tue, 31 Aug 2021 20:36:10 GMT
-recorded_with: VCR 4.0.0
+        public’s search experience on your agency’s site.\",\"headline\":\"Search.gov
+        Home\",\"name\":\"Search.gov\",\"url\":\"https://search.gov/\"}</script>\n<!--
+        End Jekyll SEO tag -->\n\n\n  <!-- Custom Fields -->\n  \n  \n  \n  <!-- End
+        Custom Fields -->\n\n</head>\n\n\n<body>\n  \n\n<!-- Google Tag Manager (noscript)
+        -->\n<noscript><iframe sandbox src=\"https://www.googletagmanager.com/ns.html?id=GTM-N56JXGD\"\n
+        \ height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe></noscript>\n<!--
+        End Google Tag Manager (noscript) -->\n\n<a class=\"usa-skipnav\" href=\"#main-content\">Skip
+        to main content</a>\n<div class=\"usa-banner\">\n  <div class=\"usa-accordion\">\n
+        \   <section\n      id=\"gov-banner-header-section\"\n      aria-label=\"USA
+        Gov banner section header\"\n      class=\"usa-banner__header\"\n    >\n      <div
+        class=\"usa-banner__inner\">\n        <div class=\"grid-col-auto\">\n          <img
+        src=\"/assets/uswds/img/us_flag_small.png\" class=\"usa-banner__header-flag\"
+        alt=\"U.S. flag\" />\n        </div>\n        <div class=\"grid-col-fill tablet:grid-col-auto\">\n
+        \         <p class=\"usa-banner__header-text\">\n            An official website
+        of the United States government\n          </p>\n          <p class=\"usa-banner__header-action\"
+        aria-hidden=\"true\">\n            Here’s how you know\n          </p>\n        </div>\n
+        \       <button\n          class=\"usa-accordion__button usa-banner__button\"\n
+        \         aria-expanded=\"<DATADOG_API_ENABLED>\"\n          aria-controls=\"gov-banner\"\n
+        \       >\n          <span class=\"usa-banner__button-text\">Here's how you
+        know</span>\n        </button>\n      </div>\n    </section>\n    <div class=\"usa-banner__content
+        usa-accordion__content\" id=\"gov-banner\">\n      <div class=\"grid-row grid-gap-lg\">\n
+        \       <div class=\"usa-banner__guidance tablet:grid-col-6\">\n          <img
+        src=\"/assets/uswds/img/icon-dot-gov.svg\" class=\"usa-banner__icon usa-media-block__img\"
+        alt=\"Dot gov\" />\n          <div class=\"usa-media-block__body\">\n            <p>\n
+        \             <strong>Official websites use .gov</strong><br />A\n              <strong>.gov</strong>
+        website belongs to an official government\n              organization in the
+        United States.\n            </p>\n          </div>\n        </div>\n        <div
+        class=\"usa-banner__guidance tablet:grid-col-6\">\n          <img src=\"/assets/uswds/img/icon-https.svg\"
+        class=\"usa-banner__icon usa-media-block__img\" alt=\"Https\" />\n          <div
+        class=\"usa-media-block__body\">\n            <p>\n              <strong>Secure
+        .gov websites use HTTPS</strong><br />A\n              <strong>lock</strong>
+        (\n              <span class=\"icon-lock\"\n                ><svg\n                  xmlns=\"http://www.w3.org/2000/svg\"\n
+        \                 width=\"52\"\n                  height=\"64\"\n                  viewBox=\"0
+        0 52 64\"\n                  class=\"usa-banner__lock-image\"\n                  role=\"img\"\n
+        \                 aria-labelledby=\"banner-lock-title-default banner-lock-description-default\"\n
+        \                 focusable=\"<DATADOG_API_ENABLED>\"\n                >\n
+        \                 <title id=\"banner-lock-title-default\">Lock</title>\n                  <desc
+        id=\"banner-lock-description-default\">A locked padlock</desc>\n                  <path\n
+        \                   fill=\"#000000\"\n                    fill-rule=\"evenodd\"\n
+        \                   d=\"M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4
+        4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0
+        8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z\"\n
+        \                 />\n                </svg> </span\n              >) or <strong>https://</strong>
+        means you’ve safely connected to\n              the .gov website. Share sensitive
+        information only on official,\n              secure websites.\n            </p>\n
+        \         </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div
+        class=\"usa-overlay\"></div>\n\n\n  \n\n<header class=\"usa-header usa-header--extended\"
+        role=\"banner\">\n  <div class=\"usa-navbar\">\n    <div class=\"usa-logo\">\n
+        \ <em class=\"usa-logo__text\">\n    <a href=\"/\" title=\"Home\" aria-label=\"Home\">\n
+        \     <img src=\"/assets/images/mag-white.svg\" class=\"logo\" alt=\"Search.gov
+        Logo\" width=\"30\" height=\"30\" />\n      <span>search.gov</span>\n    </a>\n
+        \ </em>\n</div>\n\n    <button class=\"usa-menu-btn\">Menu</button>\n  </div>\n
+        \ <nav role=\"navigation\" class=\"usa-nav\">\n    <div class=\"usa-nav__inner\">\n
+        \     <button class=\"usa-nav__close\"><img src=\"/assets/uswds/img/close.svg\"
+        alt=\"close\" /></button>\n      <ul class=\"usa-nav__primary usa-accordion\">\n
+        \       \n        \n        \n        <li class=\"usa-nav__primary-item\">\n
+        \         <button class=\"usa-accordion__button usa-nav__link\" aria-expanded=\"<DATADOG_API_ENABLED>\"\n
+        \           aria-controls=\"primary-nav-1\"><span>About Us</span></button>\n
+        \         <ul id=\"primary-nav-1\" class=\"usa-nav__submenu\">\n            \n
+        \           <li class=\"usa-nav__submenu-item\">\n              <a href=\"/about/\">About
+        Us</a>\n            </li>\n            \n            <li class=\"usa-nav__submenu-item\">\n
+        \             <a href=\"/about/why-choose-searchgov.html\">Why Choose Search.gov?</a>\n
+        \           </li>\n            \n            <li class=\"usa-nav__submenu-item\">\n
+        \             <a href=\"/about/customers.html\">Customers</a>\n            </li>\n
+        \           \n            <li class=\"usa-nav__submenu-item\">\n              <a
+        href=\"/about/policy/\">Search.gov in Policy</a>\n            </li>\n            \n
+        \           <li class=\"usa-nav__submenu-item\">\n              <a href=\"/about/updates/year-in-review/\">Year
+        in Review</a>\n            </li>\n            \n            <li class=\"usa-nav__submenu-item\">\n
+        \             <a href=\"/about/security.html\">Security and Compliance</a>\n
+        \           </li>\n            \n            <li class=\"usa-nav__submenu-item\">\n
+        \             <a href=\"/about/updates/roadmap/\">Our Product Roadmap</a>\n
+        \           </li>\n            \n            <li class=\"usa-nav__submenu-item\">\n
+        \             <a href=\"/about/updates/releases/\">Release Notes</a>\n            </li>\n
+        \           \n            <li class=\"usa-nav__submenu-item\">\n              <a
+        href=\"/about/updates/newsletters/\">Newsletters</a>\n            </li>\n
+        \           \n            <li class=\"usa-nav__submenu-item\">\n              <a
+        href=\"/about/feedback.html\">Share Your Feedback</a>\n            </li>\n
+        \           \n            <li class=\"usa-nav__submenu-item\">\n              <a
+        href=\"/developer/\">For Developers</a>\n            </li>\n            \n
+        \         </ul>\n\n        </li>\n        \n        \n        \n        \n
+        \       <li class=\"usa-nav__primary-item\">\n          <button class=\"usa-accordion__button
+        usa-nav__link\" aria-expanded=\"<DATADOG_API_ENABLED>\"\n            aria-controls=\"primary-nav-2\"><span>Get
+        Started</span></button>\n          <ul id=\"primary-nav-2\" class=\"usa-nav__submenu\">\n
+        \           \n            <li class=\"usa-nav__submenu-item\">\n              <a
+        href=\"/get-started/\">Get Started With Search.gov</a>\n            </li>\n
+        \           \n            <li class=\"usa-nav__submenu-item\">\n              <a
+        href=\"/get-started/account.html\">Sign Up/Create an Account</a>\n            </li>\n
+        \           \n            <li class=\"usa-nav__submenu-item\">\n              <a
+        href=\"/get-started/site-launch-guide.html\">Site Launch Guide</a>\n            </li>\n
+        \           \n            <li class=\"usa-nav__submenu-item\">\n              <a
+        href=\"/get-started/go-live.html\">Going live with Search.gov: Checklist</a>\n
+        \           </li>\n            \n            <li class=\"usa-nav__submenu-item\">\n
+        \             <a href=\"/admin-center/display/hosted-vs-api-results.html\">Results
+        Page Feature Comparison</a>\n            </li>\n            \n            <li
+        class=\"usa-nav__submenu-item\">\n              <a href=\"/get-started/searchgov-for-cloudgov-pages.html\">Cloud.gov
+        Pages Integration</a>\n            </li>\n            \n            <li class=\"usa-nav__submenu-item\">\n
+        \             <a href=\"/get-started/learn.html\">Training and Resources</a>\n
+        \           </li>\n            \n            <li class=\"usa-nav__submenu-item\">\n
+        \             <a href=\"/indexing/redesign.html\">Website Redesign Tips</a>\n
+        \           </li>\n            \n          </ul>\n\n        </li>\n        \n
+        \       \n        \n        \n        <li class=\"usa-nav__primary-item\">\n
+        \         <button class=\"usa-accordion__button usa-nav__link\" aria-expanded=\"<DATADOG_API_ENABLED>\"\n
+        \           aria-controls=\"primary-nav-3\"><span>Manage Your Search Site</span></button>\n
+        \         <ul id=\"primary-nav-3\" class=\"usa-nav__submenu\">\n            \n
+        \           <li class=\"usa-nav__submenu-item\">\n              <a href=\"/admin-center/index.html\">Full
+        Help Manual</a>\n            </li>\n            \n            <li class=\"usa-nav__submenu-item\">\n
+        \             <a href=\"/admin-center/dashboard/users.html\">Add or Remove
+        Users</a>\n            </li>\n            \n            <li class=\"usa-nav__submenu-item\">\n
+        \             <a href=\"/admin-center/dashboard/add-site.html\">Add a Site</a>\n
+        \           </li>\n            \n            <li class=\"usa-nav__submenu-item\">\n
+        \             <a href=\"/admin-center/content/domains.html\">Add Domains</a>\n
+        \           </li>\n            \n            <li class=\"usa-nav__submenu-item\">\n
+        \             <a href=\"/admin-center/analytics/index.html\">Manage Your Search
+        Analytics</a>\n            </li>\n            \n            <li class=\"usa-nav__submenu-item\">\n
+        \             <a href=\"/get-started/site-launch-guide.html#add-features\">Add
+        Search Features</a>\n            </li>\n            \n            <li class=\"usa-nav__submenu-item\">\n
+        \             <a href=\"/indexing/redesign.html\">Website Redesign Tips</a>\n
+        \           </li>\n            \n          </ul>\n\n        </li>\n        \n
+        \       \n        \n        \n        <li class=\"usa-nav__primary-item\">\n
+        \         <button class=\"usa-accordion__button usa-nav__link\" aria-expanded=\"<DATADOG_API_ENABLED>\"\n
+        \           aria-controls=\"primary-nav-4\"><span>Index With Search.gov</span></button>\n
+        \         <ul id=\"primary-nav-4\" class=\"usa-nav__submenu\">\n            \n
+        \           <li class=\"usa-nav__submenu-item\">\n              <a href=\"/indexing/indexing-with-searchgov.html\">Start
+        Here</a>\n            </li>\n            \n            <li class=\"usa-nav__submenu-item\">\n
+        \             <a href=\"/indexing/what-searchgov-indexes.html\">What We Index</a>\n
+        \           </li>\n            \n            <li class=\"usa-nav__submenu-item\">\n
+        \             <a href=\"/indexing/ranking-factors.html\">Relevance Ranking</a>\n
+        \           </li>\n            \n            <li class=\"usa-nav__submenu-item\">\n
+        \             <a href=\"/indexing/sitemaps-to-search-sites.html\">How a Page
+        Becomes a Search Result</a>\n            </li>\n            \n            <li
+        class=\"usa-nav__submenu-item\">\n              <a href=\"/indexing/indexing-workflow.html\">Indexing
+        Step-By-Step</a>\n            </li>\n            \n            <li class=\"usa-nav__submenu-item\">\n
+        \             <a href=\"/indexing/metadata.html\">Metadata and Tags</a>\n
+        \           </li>\n            \n            <li class=\"usa-nav__submenu-item\">\n
+        \             <a href=\"/indexing/pdf-metadata.html\">PDF Metadata</a>\n            </li>\n
+        \           \n            <li class=\"usa-nav__submenu-item\">\n              <a
+        href=\"/indexing/redesign.html\">Website Redesign Tips</a>\n            </li>\n
+        \           \n          </ul>\n\n        </li>\n        \n        \n        \n
+        \       \n        \n        <li class=\"usa-nav__primary-item\">\n          <a
+        class=\"usa-nav__link\"\n            href=\"/support.html\"><span>Support</span></a>\n
+        \       </li>\n        \n        \n        \n        \n        \n        <li
+        class=\"usa-nav__primary-item\">\n          <a class=\"usa-nav__link\"\n            href=\"/developer/\"><span>For
+        Developers</span></a>\n        </li>\n        \n        \n      </ul>\n      <div
+        class=\"usa-nav__secondary\">\n        <ul class=\"usa-button-group\">\n          <li
+        class=\"usa-button-group__item\">\n            <a href=\"/status.html\" class=\"usa-button
+        usa-button--unstyled system-status\">System Status</a>\n          </li>\n
+        \         <li class=\"usa-button-group__item\">\n            <a href=\"https://search.usa.gov/signup\"
+        class=\"usa-button usa-button--unstyled sign-in\">Sign up</a>\n          </li>\n
+        \         <li class=\"usa-button-group__item\">\n            <a href=\"https://search.usa.gov/sites\"
+        class=\"usa-button login\">Login</a>\n          </li>\n        </ul>\n        \n\n\n
+        \ \n    <form id=\"search_form\" class=\"usa-search usa-search--small\" action=\"https://find.search.gov/search\"
+        accept-charset=\"UTF-8\" method=\"get\">\n  \n    \n  \n    <input name=\"utf8\"
+        type=\"hidden\" value=\"&#x2713;\" />\n    <input name=\"affiliate\" type=\"hidden\"
+        value=\"usasearch\" />\n      <label class=\"usa-sr-only\" for=\"search_form\">Search</label>\n
+        \ \n    <div role=\"search\">\n      <label class=\"usa-sr-only\" for=\"extended-search-field-small\">Search
+        suggestions</label>\n      <input class=\"usa-input usagov-search-autocomplete\"
+        id=\"extended-search-field-small\" type=\"search\" name=\"query\" autocomplete=\"off\">\n
+        \     <button class=\"usa-button\" type=\"submit\">    \n        <img src=\"/assets/uswds/img/usa-icons-bg/search--white.svg\"
+        class=\"usa-search__submit-icon\" alt=\"Search\">\n      </button>\n    </div>\n
+        \ </form>\n\n\n      </div>\n    </div>\n  </nav>\n</header>\n\n\n  \n\n  \n\n<div
+        id=\"main-container\" class=\"wide-layout\">\n    <main id=\"main-content\">\n
+        \   \n\n\n<section class=\"usa-hero\">\n  <div class=\"grid-container\">\n
+        \   <div class=\"usa-hero__callout\">\n      <h2 class=\"usa-hero__heading\">A
+        search engine by and for the federal government\n      </h2>\n      <p>Powering
+        search results on more than 2,000 websites. Free, effective, and simple—Search.gov
+        has all you need to get search right on your website!</p>\n      <a class=\"usa-button\"
+        href=\"/get-started/\">Get started today</a>\n    </div>\n  </div>\n</section>\n\n<section
+        class=\"grid-container usa-section usa-prose why-search-gov\">\n    <div>\n
+        \       <h2 class=\"font-heading-xl margin-top-0 tablet:margin-bottom-0\">Why
+        <strong>Search.gov?</strong></h2>\n        <p><strong>Built for government
+        &mdash;</strong> Secure, compliant, designed around the unique circumstances
+        of government web publishing.</p>\n        <p><strong>Highly configurable
+        &mdash;</strong> No developers required - use our easy interface to design
+        your search experience yourself.</p>\n        <p><strong>Hands-on customer
+        service &mdash;</strong> We're here to help you, from implementation to SEO.</p>\n
+        \       <p><strong>No barriers to entry &mdash;</strong> Getting started with
+        Search.gov is friction free.</p>\n        <a class=\"usa-button\" href=\"/about/why-choose-searchgov.html\">Learn
+        more</a>\n    </div>\n</section>\n\n<section class=\"usa-section get-more-info\">\n
+        \ <div class=\"grid-container\">\n    <h2><strong>How do I get search right</strong>
+        on my website?</h2>\n    <ul class=\"usa-card-group grid-row grid-gap-6\">\n
+        \     <li class=\"tablet:grid-col-4 usa-card\">\n        <div class=\"usa-card__container\">\n
+        \         <header class=\"usa-card__header\">\n            <h3 class=\"usa-card__heading\">Learn
+        all about indexing your site</h3>\n          </header>\n          <div class=\"usa-card__body\">\n
+        \           <p>Curious about how to properly index your federal agency website?
+        We can help you get started with our training and resources on indexing.</p>\n
+        \         </div>\n          <div class=\"usa-card__footer\">\n            <a
+        class=\"usa-button\" href=\"/indexing/indexing-with-searchgov.html\">Learn
+        about indexing</a>\n          </div>\n        </div>\n      </li>\n      <li
+        class=\"tablet:grid-col-4 usa-card\">\n        <div class=\"usa-card__container\">\n
+        \         <header class=\"usa-card__header\">\n            <h3 class=\"usa-card__heading\">Managing
+        your search results</h3>\n          </header>\n          <div class=\"usa-card__body\">\n
+        \           <p>Want to improve your results? Having trouble with results missing?
+        Learn more about how to improve your search experience.</p>\n          </div>\n
+        \         <div class=\"usa-card__footer\">\n            <a class=\"usa-button\"
+        href=\"/admin-center/\">Manage your search</a>\n          </div>\n        </div>\n
+        \     </li>\n      <li class=\"tablet:grid-col-4 usa-card\">\n        <div
+        class=\"usa-card__container\">\n          <header class=\"usa-card__header\">\n
+        \           <h3 class=\"usa-card__heading\">What to do after a site redesign
+        or migration</h3>\n          </header>\n          <div class=\"usa-card__body\">\n
+        \           <p>Making improvements to your site can be exciting but also daunting.
+        We created a guide to help you keep your search working well on the new site.</p>\n
+        \         </div>\n          <div class=\"usa-card__footer\">\n            <a
+        class=\"usa-button\" href=\"/indexing/redesign.html\">Read our site update
+        guide</a>\n          </div>\n        </div>\n      </li>\n    </ul>\n  </div>\n</section>\n\n<section
+        class=\"grid-container usa-section usa-prose top-tasks\">\n    <div>\n        <h2
+        class=\"font-heading-xl margin-top-0\">How do I...</strong></h2>\n        <div
+        class=\"usa-graphic-list__row grid-row grid-gap-lg\">\n            \n            <div
+        class=\"usa-media-block tablet:grid-col\">\n              <div class=\"usa-media-block__body\">\n
+        \               <div> \n                  <h3 class=\"usa-graphic-list__heading\">Get
+        help to log in</h3>\n                  <p>If you’re unable to log in to your
+        account, email us for help.</p>\n                </div>\n                \n
+        \                 <a class=\"usa-button usa-button--outline\" href=\"mailto:search@gsa.gov\">Email
+        Us</a>\n                \n              </div>\n            </div>\n            \n
+        \           <div class=\"usa-media-block tablet:grid-col\">\n              <div
+        class=\"usa-media-block__body\">\n                <div> \n                  <h3
+        class=\"usa-graphic-list__heading\">Re-index your site or submit sitemap</h3>\n
+        \                 <p>Let us know if your search results are outdated, or if
+        you have a new sitemap.</p>\n                </div>\n                \n                  <a
+        class=\"usa-button usa-button--outline\" href=\"mailto:search@gsa.gov\">Email
+        Us</a>\n                \n              </div>\n            </div>\n            \n
+        \           <div class=\"usa-media-block tablet:grid-col\">\n              <div
+        class=\"usa-media-block__body\">\n                <div> \n                  <h3
+        class=\"usa-graphic-list__heading\">Learn about Results API features</h3>\n
+        \                 <p>We offer a robust API for pulling search results, but
+        its feature set is different from our hosted results page.</p>\n                </div>\n
+        \               \n                  <a class=\"usa-button usa-button--outline\"
+        href=\"/admin-center/display/hosted-vs-api-results.html\">Compare Features</a>\n
+        \               \n              </div>\n            </div>\n            \n
+        \           <div class=\"usa-media-block tablet:grid-col\">\n              <div
+        class=\"usa-media-block__body\">\n                <div> \n                  <h3
+        class=\"usa-graphic-list__heading\">Add or remove users</h3>\n                  <p>You
+        can manage who has access to your search site in the Admin Center.</p>\n                </div>\n
+        \               \n                  <a class=\"usa-button usa-button--outline\"
+        href=\"/admin-center/dashboard/users.html\">Manage Users</a>\n                \n
+        \             </div>\n            </div>\n            \n          </div>\n
+        \   </div>\n</section>\n\n\n    </main>\n</div>\n\n\n\n\n  <footer>\n  <div
+        id=\"survey-goes-here\"></div>\n\n  <section class=\"usa-section site-links\">\n
+        \ <div class=\"grid-container\">\n    <div class=\"grid-row flex-row flex-justify\">\n
+        \     <div class=\"tablet:grid-col-3\">\n        <h2>Our Service</h2>\n        <ul>\n
+        \         <li><a href=\"/about/\">About Us</a></li>\n          <li><a href=\"/about/customers.html\">Customers</a></li>\n
+        \         <li><a href=\"/about/policy/\">Search.gov in Policy</a></li>\n          <li><a
+        href=\"/about/feedback.html\">Submit Feature Requests</a></li>\n        </ul>\n
+        \     </div>\n      <div class=\"tablet:grid-col-3\">\n        <h2>Our System</h2>\n
+        \       <ul>\n          <li><a href=\"/about/updates/releases/\">Release Notes</a></li>\n
+        \         <li><a href=\"/about/updates/roadmap/\">Product Roadmap</a></li>\n
+        \         <li><a href=\"/about/security.html\">Security and Compliance</a></li>\n
+        \         <li><a href=\"/developer/\">For Developers</a></li>\n          <li><a
+        href=\"/about/policy/tos.html\">Terms of Service</a></li>\n        </ul>\n
+        \     </div>\n      <div class=\"tablet:grid-col-3\">\n        <h2>Contact
+        Us</h2>\n        <ul>\n          <li><a href=\"mailto:search@gsa.gov\">Email</a></li>\n
+        \         <li><a href=\"tel:(202)-969-7426\">Phone</a></li>\n        </ul>\n
+        \     </div>\n      <div class=\"tablet:grid-col-3\">\n        <h2>More TTS
+        Services</h2>\n        <ul>\n          <li><a href=\"https://digital.gov/guides/dap/\">Digital
+        Analytics Program</a></li>\n          <li><a href=\"https://cloud.gov/pages/\">Cloud.gov
+        Pages</a></li>\n          <li><a href=\"https://cloud.gov/\">Cloud.gov</a></li>\n
+        \         <li><a href=\"https://login.gov/\">Login.gov</a></li>\n          <li><a
+        href=\"https://www.gsa.gov/about-us/organization/federal-acquisition-service/technology-transformation-services/tts-solutions\">More
+        TTS Solutions</a></li>\n        </ul>\n      </div>\n    </div>\n  </div>\n</section>\n\n\n
+        \ <div class=\"usa-identifier\">\n  <section class=\"usa-identifier__section
+        usa-identifier__section--masthead\" aria-label=\"Agency identifier\">\n      <div
+        class=\"usa-identifier__container\">\n          <div class=\"usa-identifier__logos\">\n
+        \             <a href=\"https://www.gsa.gov\" class=\"usa-identifier__logo\">\n
+        \               <img src=\"/assets/images/gsa-logo.svg\" class=\"usa-identifier__logo-img\"
+        alt=\"GSA logo\" role=\"img\" />\n                  <!-- <img class=\"\" src=\"/assets/images/gsa-logo.svg\"
+        alt=\"GSA logo\" role=\"img\"> -->\n              </a>\n          </div>\n
+        \         <div class=\"usa-identifier__identity\" aria-label=\"Agency description\">\n
+        \             <p class=\"usa-identifier__identity-domain\">search.gov</p>\n
+        \             <p class=\"usa-identifier__identity-disclaimer\">\n                  An
+        official website of the GSA's <a href=\"https://gsa.gov/tts\">Technology Transformation
+        Services</a>\n              </p>\n          </div>\n      </div>\n  </section>\n
+        \ <nav class=\"usa-identifier__section usa-identifier__section--required-links\"
+        aria-label=\"Important links\">\n      <div class=\"usa-identifier__container\">\n
+        \         <ul class=\"usa-identifier__required-links-list\">\n              <li
+        class=\"usa-identifier__required-links-item\">\n                  <a href=\"https://www.gsa.gov/about-us\"
+        class=\"usa-identifier__required-link\">\n                      About GSA\n
+        \                 </a>\n              </li>\n              <li class=\"usa-identifier__required-links-item\">\n
+        \                 <a href=\"https://www.gsa.gov/website-information/website-policies#accessibility\"
+        class=\"usa-identifier__required-link\">\n                      Accessibility\n
+        \                 </a>\n              </li>\n              <li class=\"usa-identifier__required-links-item\">\n
+        \                 <a href=\"https://www.gsa.gov/reference/freedom-of-information-act-foia\"
+        class=\"usa-identifier__required-link usa-link\">\n                      FOIA
+        requests\n                  </a>\n              </li>\n              <li class=\"usa-identifier__required-links-item\">\n
+        \                 <a href=\"https://www.gsa.gov/website-information/website-policies#privacy\"
+        class=\"usa-identifier__required-link usa-link\">\n                      Privacy
+        policy\n                  </a>\n              </li>\n              <li class=\"usa-identifier__required-links-item\">\n
+        \                 <a href=\"https://www.gsa.gov/website-information/website-policies\"
+        class=\"usa-identifier__required-link usa-link\">\n                      Website
+        policies\n                  </a>\n              </li>\n          </ul>\n      </div>\n
+        \ </nav>\n  <section class=\"usa-identifier__section usa-identifier__section--usagov\"
+        aria-label=\"Government information and services\">\n      <div class=\"usa-identifier__container\">\n
+        \         <div class=\"usa-identifier__usagov-description\">Have a question
+        about government services?</div>\n          <a href=\"https://www.usa.gov/\"
+        class=\"usa-link\">Contact USA.gov</a>\n      </div>\n  </section>\n</div>\n
+        \ </footer>\n\n  <!-- Digital Analytics Program roll-up, see https://analytics.usa.gov
+        for data -->\n\n<script\n  id=\"_fed_an_ua_tag\"\n  src=\"https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=GSA&subagency=TTS\"\n></script>\n\n\n\n\n<script
+        src=\"/assets/js/app.js\"></script>\n<script src=\"/assets/js/uswds-init.js\"></script>\n<script
+        src=\"/assets/js/uswds.js\"></script>\n\n\n  \n    <script>\n          var
+        usasearch_config = { siteHandle: \"usasearch\" };\n    </script>\n    <script
+        async src=\"https://search.usa.gov/javascripts/remote.loader.js\" type=\"text/javascript\"></script>\n
+        \ \n\n\n<script src=\"https://touchpoints.app.cloud.gov/touchpoints/b5daa2ee/js\"
+        async></script>\n\n<script type=\"text/javascript\" src=\"//script.crazyegg.com/pages/scripts/0007/9651.js\"
+        async=\"async\"></script>\n\n</body>\n</html>\n"
+  recorded_at: Mon, 08 Jan 2024 19:31:17 GMT
+recorded_with: VCR 6.2.0
