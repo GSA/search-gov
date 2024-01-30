@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe MobileHelper do
   describe '#font_stylesheet_link_tag' do
     context 'font_family is blank' do
@@ -38,24 +36,6 @@ describe MobileHelper do
                                header_tagline_logo_file_name: 'header_tagline_logo.png',
                                header_tagline_url: nil)
         expect(helper.header_tagline_logo(affiliate)).to be_nil
-      end
-    end
-  end
-
-  describe '#search_results_by_text' do
-    context 'when module_tag is AWEB or AIMAG' do
-      %w(AWEB AIMAG).each do |module_tag|
-        it 'returns Powered by Bing' do
-          expect(helper.search_results_by_text(module_tag)).to have_content('Powered by Bing')
-        end
-      end
-    end
-  end
-
-  describe '#serp_attribution' do
-    context 'when module_tag is AWEB' do
-      it 'returns Powered by Bing' do
-        expect(helper.serp_attribution('AWEB')).to have_content('Powered by Bing')
       end
     end
   end

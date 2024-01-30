@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=carbon%20emissions%20(site:usa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
-      base64_string: ''
+      string: ''
     headers:
       User-Agent:
       - USASearch
@@ -31,35 +31,35 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Thu, 16 Nov 2023 21:10:00 GMT
+      - Wed, 10 Jan 2024 14:52:18 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       X-Eventid:
-      - 6556856427964c408c214d088951764d
+      - 659eaf5e525c4849853492e920edfdbf
       Useragentreductionoptout:
       - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
       Bingapis-Traceid:
-      - 6556856427964c408c214d088951764d
+      - 659eaf5e525c4849853492e920edfdbf
       Bingapis-Sessionid:
-      - CBBA3EC0C9AD4F309B125A73CA183DF0
+      - 1E2AFE553B6845339798E617EDFAE00A
       X-Msedge-Clientid:
-      - 36E62077E0816D9B393733BCE1806C46
+      - 2F84273194E061940EEE3333956C6037
       X-Msapi-Userstate:
-      - f809
+      - 50fb
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=271,MSDatacenter=BNZE01
+      - InternalResponseTime=249,MSDatacenter=BNZE01
       X-Cache:
       - CONFIG_NOCACHE
       Accept-Ch:
       - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
       X-Msedge-Ref:
-      - 'Ref A: DCB949B929394FEB95F79AAFBAD96D30 Ref B: BL2AA2030102019 Ref C: 2023-11-16T21:11:00Z'
+      - 'Ref A: C637970819634B0191293B6FC59D30EA Ref B: BL2AA2010201019 Ref C: 2024-01-10T14:53:18Z'
       Apim-Request-Id:
-      - 4c829c0f-6679-4727-a5a1-9c86a32efebf
+      - 640852d4-772d-497b-a715-24a9b9ae2fba
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -67,470 +67,199 @@ http_interactions:
       Csp-Billing-Usage:
       - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Thu, 16 Nov 2023 21:11:01 GMT
+      - Wed, 10 Jan 2024 14:53:17 GMT
     body:
       encoding: UTF-8
-      base64_string: |
-        eyJfdHlwZSI6ICJTZWFyY2hSZXNwb25zZSIsICJxdWVyeUNvbnRleHQiOiB7
-        Im9yaWdpbmFsUXVlcnkiOiAiY2FyYm9uIGVtaXNzaW9ucyAoc2l0ZTp1c2Eu
-        Z292KSJ9LCAid2ViUGFnZXMiOiB7IndlYlNlYXJjaFVybCI6ICJodHRwczpc
-        L1wvd3d3LmJpbmcuY29tXC9zZWFyY2g/cT1jYXJib24rZW1pc3Npb25zKyhz
-        aXRlJTNhdXNhLmdvdikiLCAidG90YWxFc3RpbWF0ZWRNYXRjaGVzIjogNTks
-        ICJ2YWx1ZSI6IFt7ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3Nv
-        ZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMuMCIsICJuYW1lIjogIkVudmly
-        b25tZW50YWwgUHJvdGVjdGlvbiBBZ2VuY3kgKEVQQSkgfCBVU0FHb3YiLCAi
-        dXJsIjogImh0dHBzOlwvXC93d3cudXNhLmdvdlwvYWdlbmNpZXNcL2Vudmly
-        b25tZW50YWwtcHJvdGVjdGlvbi1hZ2VuY3kiLCAiaXNGYW1pbHlGcmllbmRs
-        eSI6IHRydWUsICJkaXNwbGF5VXJsIjogImh0dHBzOlwvXC/ugIB3d3cudXNh
-        Lmdvdu6AgVwvYWdlbmNpZXNcL2Vudmlyb25tZW50YWwtcHJvdGVjdGlvbi1h
-        Z2VuY3kiLCAic25pcHBldCI6ICJUb3AgVGhlIEVudmlyb25tZW50YWwgUHJv
-        dGVjdGlvbiBBZ2VuY3kgcHJvdGVjdHMgcGVvcGxlIGFuZCB0aGUgZW52aXJv
-        bm1lbnQgZnJvbSBzaWduaWZpY2FudCBoZWFsdGggcmlza3MsIHNwb25zb3Jz
-        IGFuZCBjb25kdWN0cyByZXNlYXJjaCwgYW5kIGRldmVsb3BzIGFuZCBlbmZv
-        cmNlcyBlbnZpcm9ubWVudGFsIHJlZ3VsYXRpb25zLiIsICJkYXRlTGFzdENy
-        YXdsZWQiOiAiMjAyMy0xMS0xNVQwNjoyMDowMC4wMDAwMDAwWiIsICJjYWNo
-        ZWRQYWdlVXJsIjogImh0dHA6XC9cL2NjLmJpbmdqLmNvbVwvY2FjaGUuYXNw
-        eD9xPWNhcmJvbitlbWlzc2lvbnMrKHNpdGUlM2F1c2EuZ292KSZkPTQ2NDkx
-        ODY0NTk5MjUzNzgmbWt0PWVuLVVTJnNldGxhbmc9ZW4tVVMmdz04aWpyY2lR
-        a1FWOUNOUEFWRTI3OVo2Qnhzb0NUVG9HbSIsICJsYW5ndWFnZSI6ICJlbiIs
-        ICJpc05hdmlnYXRpb25hbCI6IDxEQVRBRE9HX0FQSV9FTkFCTEVEPn0sIHsi
-        aWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwv
-        djdcLyNXZWJQYWdlcy4xIiwgIm5hbWUiOiAiRW5lcmd5IEluZm9ybWF0aW9u
-        IEFkbWluaXN0cmF0aW9uIHwgVVNBR292IiwgInVybCI6ICJodHRwczpcL1wv
-        d3d3LnVzYS5nb3ZcL2FnZW5jaWVzXC9lbmVyZ3ktaW5mb3JtYXRpb24tYWRt
-        aW5pc3RyYXRpb24iLCAiaXNGYW1pbHlGcmllbmRseSI6IHRydWUsICJkaXNw
-        bGF5VXJsIjogImh0dHBzOlwvXC/ugIB3d3cudXNhLmdvdu6AgVwvYWdlbmNp
-        ZXNcL2VuZXJneS1pbmZvcm1hdGlvbi1hZG1pbmlzdHJhdGlvbiIsICJzbmlw
-        cGV0IjogIkFzayBhIHJlYWwgcGVyc29uIGFueSBnb3Zlcm5tZW50LXJlbGF0
-        ZWQgcXVlc3Rpb24gZm9yIGZyZWUuIFRoZXkgd2lsbCBnZXQgeW91IHRoZSBh
-        bnN3ZXIgb3IgbGV0IHlvdSBrbm93IHdoZXJlIHRvIGZpbmQgaXQuIENhbGwg
-        VVNBR292LiBDaGF0IHdpdGggVVNBR292LiBUb3AuIFRoZSBFbmVyZ3kgSW5m
-        b3JtYXRpb24gQWRtaW5pc3RyYXRpb24gcmVzZWFyY2hlcywgY29sbGVjdHMg
-        YW5kIGRpc3NlbWluYXRlcyBpbmZvcm1hdGlvbiBvbiBlbmVyZ3kgdG9waWNz
-        LiIsICJkYXRlTGFzdENyYXdsZWQiOiAiMjAyMy0xMS0xNlQwNTowNzowMC4w
-        MDAwMDAwWiIsICJjYWNoZWRQYWdlVXJsIjogImh0dHA6XC9cL2NjLmJpbmdq
-        LmNvbVwvY2FjaGUuYXNweD9xPWNhcmJvbitlbWlzc2lvbnMrKHNpdGUlM2F1
-        c2EuZ292KSZkPTQ4NTUwMjI3NjY3ODkyOTUmbWt0PWVuLVVTJnNldGxhbmc9
-        ZW4tVVMmdz1xaGNwMDZKcVBLQ2Z6MHVwQ2tTbGtPZ1pnOFNvV3loOSIsICJs
-        YW5ndWFnZSI6ICJlbiIsICJpc05hdmlnYXRpb25hbCI6IDxEQVRBRE9HX0FQ
-        SV9FTkFCTEVEPn0sIHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jv
-        c29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4yIiwgIm5hbWUiOiAiVS5T
-        LiBEZXBhcnRtZW50IG9mIEVuZXJneSAoRE9FKSB8IFVTQUdvdiIsICJ1cmwi
-        OiAiaHR0cHM6XC9cL3d3dy51c2EuZ292XC9hZ2VuY2llc1wvdS1zLWRlcGFy
-        dG1lbnQtb2YtZW5lcmd5IiwgImlzRmFtaWx5RnJpZW5kbHkiOiB0cnVlLCAi
-        ZGlzcGxheVVybCI6ICJodHRwczpcL1wv7oCAd3d3LnVzYS5nb3bugIFcL2Fn
-        ZW5jaWVzXC91LXMtZGVwYXJ0bWVudC1vZi1lbmVyZ3kiLCAic25pcHBldCI6
-        ICJBc2sgYSByZWFsIHBlcnNvbiBhbnkgZ292ZXJubWVudC1yZWxhdGVkIHF1
-        ZXN0aW9uIGZvciBmcmVlLiBUaGV5IHdpbGwgZ2V0IHlvdSB0aGUgYW5zd2Vy
-        IG9yIGxldCB5b3Uga25vdyB3aGVyZSB0byBmaW5kIGl0LiBDYWxsIFVTQUdv
-        di4gQ2hhdCB3aXRoIFVTQUdvdi4gVG9wLiBUaGUgRGVwYXJ0bWVudCBvZiBF
-        bmVyZ3kgbWFuYWdlcyB0aGUgVW5pdGVkIFN0YXRlcycgbnVjbGVhciBpbmZy
-        YXN0cnVjdHVyZSBhbmQgYWRtaW5pc3RlcnMgdGhlIGNvdW50cnkncyBlbmVy
-        Z3kgcG9saWN5LiBUaGUgRGVwYXJ0bWVudCBvZiBFbmVyZ3kgYWxzbyBmdW5k
-        cyBzY2llbnRpZmljIHJlc2VhcmNoIGluIHRoZSBmaWVsZC4iLCAiZGF0ZUxh
-        c3RDcmF3bGVkIjogIjIwMjMtMTEtMTRUMDY6MjU6MDAuMDAwMDAwMFoiLCAi
-        Y2FjaGVkUGFnZVVybCI6ICJodHRwOlwvXC9jYy5iaW5nai5jb21cL2NhY2hl
-        LmFzcHg/cT1jYXJib24rZW1pc3Npb25zKyhzaXRlJTNhdXNhLmdvdikmZD00
-        NzI0NzIyMDUxOTg5MTcxJm1rdD1lbi1VUyZzZXRsYW5nPWVuLVVTJnc9M0Ix
-        QnRDQ1dRd0Zram10QmVSU2o5Nk1uRkc5SHBlbUMiLCAibGFuZ3VhZ2UiOiAi
-        ZW4iLCAiaXNOYXZpZ2F0aW9uYWwiOiA8REFUQURPR19BUElfRU5BQkxFRD59
-        LCB7ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9h
-        cGlcL3Y3XC8jV2ViUGFnZXMuMyIsICJuYW1lIjogIkZpZnRoIFUuUy4gT3Bl
-        biBHb3Zlcm5tZW50IE5hdGlvbmFsIEFjdGlvbiBQbGFuIHwgb3Blbi7ugIBV
-        U0EuZ2927oCBIiwgInVybCI6ICJodHRwczpcL1wvb3Blbi51c2EuZ292XC9u
-        YXRpb25hbC1hY3Rpb24tcGxhblwvNVwvIiwgImlzRmFtaWx5RnJpZW5kbHki
-        OiB0cnVlLCAiZGlzcGxheVVybCI6ICJodHRwczpcL1wvb3Blbi7ugIB1c2Eu
-        Z2927oCBXC9uYXRpb25hbC1hY3Rpb24tcGxhblwvNSIsICJzbmlwcGV0Ijog
-        IlRoZSBwdWJsaWNhdGlvbiBvZiB0aGUgRmlmdGggVS5TLiBPcGVuIEdvdmVy
-        bm1lbnQgTmF0aW9uYWwgUGxhbiBjb21lcyBhdCBhIHRpbWUgd2hlbiB0aGUg
-        cHJpbmNpcGxlcyBvZiBlcXVhbGl0eSBhbmQgZGVtb2NyYWN5IGFyZSB0aHJl
-        YXRlbmVkIGFjcm9zcyB0aGUgVW5pdGVkIFN0YXRlcyBhbmQgYXJvdW5kIHRo
-        ZSB3b3JsZC4gQWNjb3JkaW5nIHRvIHRoZSBJbnRlcm5hdGlvbmFsIEluc3Rp
-        dHV0ZSBmb3IgRGVtb2NyYWN5IGFuZCBFbGVjdG9yYWwgQXNzaXN0YW5jZSwg
-        bW9yZSB0aGFuIGhhbGYgb2YgYWxsIGdsb2JhbCBkZW1vY3JhY2llcyBoYXZl
-        IGV4cGVyaWVuY2VkIGEgZGVjbGluZSBpbiBhdCAuLi4iLCAiZGF0ZUxhc3RD
-        cmF3bGVkIjogIjIwMjMtMTEtMTRUMDY6MDQ6MDAuMDAwMDAwMFoiLCAiY2Fj
-        aGVkUGFnZVVybCI6ICJodHRwOlwvXC9jYy5iaW5nai5jb21cL2NhY2hlLmFz
-        cHg/cT1jYXJib24rZW1pc3Npb25zKyhzaXRlJTNhdXNhLmdvdikmZD00ODU5
-        NjE0MDg4NTk0MDY3Jm1rdD1lbi1VUyZzZXRsYW5nPWVuLVVTJnc9VjlZVmVH
-        MS0xSUNoNWJ4MVdFR2J0QXd3Z000ek1HMTEiLCAibGFuZ3VhZ2UiOiAiZW4i
-        LCAiaXNOYXZpZ2F0aW9uYWwiOiA8REFUQURPR19BUElfRU5BQkxFRD59LCB7
-        ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlc
-        L3Y3XC8jV2ViUGFnZXMuNCIsICJuYW1lIjogIk9mZmljZSBvZiBGb3NzaWwg
-        RW5lcmd5IHwgVVNBR292IiwgInVybCI6ICJodHRwczpcL1wvd3d3LnVzYS5n
-        b3ZcL2FnZW5jaWVzXC9vZmZpY2Utb2YtZm9zc2lsLWVuZXJneSIsICJpc0Zh
-        bWlseUZyaWVuZGx5IjogdHJ1ZSwgImRpc3BsYXlVcmwiOiAiaHR0cHM6XC9c
-        L+6AgHd3dy51c2EuZ2927oCBXC9hZ2VuY2llc1wvb2ZmaWNlLW9mLWZvc3Np
-        bC1lbmVyZ3kiLCAic25pcHBldCI6ICJBc2sgYSByZWFsIHBlcnNvbiBhbnkg
-        Z292ZXJubWVudC1yZWxhdGVkIHF1ZXN0aW9uIGZvciBmcmVlLiBUaGV5IHdp
-        bGwgZ2V0IHlvdSB0aGUgYW5zd2VyIG9yIGxldCB5b3Uga25vdyB3aGVyZSB0
-        byBmaW5kIGl0LiBDYWxsIFVTQUdvdi4gQ2hhdCB3aXRoIFVTQUdvdi4gVGhl
-        IE9mZmljZSBvZiBGb3NzaWwgRW5lcmd5IGlzIHJlc3BvbnNpYmxlIGZvciBy
-        ZXNlYXJjaCBhbmQgZGV2ZWxvcG1lbnQgb2YgcHJvZ3JhbXMgaW52b2x2aW5n
-        IGNvYWwsIHBldHJvbGV1bSwgYW5kIG5hdHVyYWwgZ2FzLiIsICJkYXRlTGFz
-        dENyYXdsZWQiOiAiMjAyMy0xMS0wOFQxMzoxMDowMC4wMDAwMDAwWiIsICJj
-        YWNoZWRQYWdlVXJsIjogImh0dHA6XC9cL2NjLmJpbmdqLmNvbVwvY2FjaGUu
-        YXNweD9xPWNhcmJvbitlbWlzc2lvbnMrKHNpdGUlM2F1c2EuZ292KSZkPTUw
-        MTg5MzU4OTgyODc1NDgmbWt0PWVuLVVTJnNldGxhbmc9ZW4tVVMmdz1EMFVH
-        ZF9lTEk3RHFXVkJBZkFVVDhNeVJFZ05oVXM4WCIsICJsYW5ndWFnZSI6ICJl
-        biIsICJpc05hdmlnYXRpb25hbCI6IDxEQVRBRE9HX0FQSV9FTkFCTEVEPn0s
-        IHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2Fw
-        aVwvdjdcLyNXZWJQYWdlcy41IiwgIm5hbWUiOiAiRW5lcmd5IEVmZmljaWVu
-        Y3kgYW5kIFJlbmV3YWJsZSBFbmVyZ3kgKEVFUkUpIHwgVVNBR292IiwgInVy
-        bCI6ICJodHRwczpcL1wvd3d3LnVzYS5nb3ZcL2FnZW5jaWVzXC9lbmVyZ3kt
-        ZWZmaWNpZW5jeS1hbmQtcmVuZXdhYmxlLWVuZXJneSIsICJpc0ZhbWlseUZy
-        aWVuZGx5IjogdHJ1ZSwgImRpc3BsYXlVcmwiOiAiaHR0cHM6XC9cL+6AgHd3
-        dy51c2EuZ2927oCBXC9hZ2VuY2llc1wvZW5lcmd5LWVmZmljaWVuY3ktYW5k
-        LXJlbmV3YWJsZS1lbmVyZ3kiLCAic25pcHBldCI6ICJUb3AgVGhlIEVFUkUg
-        SW5mb3JtYXRpb24gQ2VudGVyIGFuc3dlcnMgcXVlc3Rpb25zIGFib3V0IEVF
-        UkVzIHByb2R1Y3RzLCBzZXJ2aWNlcywgYW5kIHRlY2hub2xvZ3kgcHJvZ3Jh
-        bXMsIGFuZCByZWZlcnMgY2FsbGVycyB0byB0aGUgbW9zdCBhcHByb3ByaWF0
-        ZSBFRVJFIHJlc291cmNlcy4iLCAiZGF0ZUxhc3RDcmF3bGVkIjogIjIwMjMt
-        MTEtMTNUMTI6NTc6MDAuMDAwMDAwMFoiLCAiY2FjaGVkUGFnZVVybCI6ICJo
-        dHRwOlwvXC9jYy5iaW5nai5jb21cL2NhY2hlLmFzcHg/cT1jYXJib24rZW1p
-        c3Npb25zKyhzaXRlJTNhdXNhLmdvdikmZD00Njc2MjMxODY4MTkzNjg1Jm1r
-        dD1lbi1VUyZzZXRsYW5nPWVuLVVTJnc9T3QxQjJQdHdtUlZPZ1F5NmtOcWtP
-        VHk1ZE1Vd2F4OGciLCAibGFuZ3VhZ2UiOiAiZW4iLCAiaXNOYXZpZ2F0aW9u
-        YWwiOiA8REFUQURPR19BUElfRU5BQkxFRD59LCB7ImlkIjogImh0dHBzOlwv
-        XC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMu
-        NiIsICJuYW1lIjogIk5hdHVyYWwgUmVzb3VyY2VzIENvbnNlcnZhdGlvbiBT
-        ZXJ2aWNlIHwgVVNBR292IiwgInVybCI6ICJodHRwczpcL1wvd3d3LnVzYS5n
-        b3ZcL2FnZW5jaWVzXC9uYXR1cmFsLXJlc291cmNlcy1jb25zZXJ2YXRpb24t
-        c2VydmljZSIsICJpc0ZhbWlseUZyaWVuZGx5IjogdHJ1ZSwgImRpc3BsYXlV
-        cmwiOiAiaHR0cHM6XC9cL+6AgHd3dy51c2EuZ2927oCBXC9hZ2VuY2llc1wv
-        bmF0dXJhbC1yZXNvdXJjZXMtY29uc2VydmF0aW9uLXNlcnZpY2UiLCAic25p
-        cHBldCI6ICJBc2sgYSByZWFsIHBlcnNvbiBhbnkgZ292ZXJubWVudC1yZWxh
-        dGVkIHF1ZXN0aW9uIGZvciBmcmVlLiBUaGV5IHdpbGwgZ2V0IHlvdSB0aGUg
-        YW5zd2VyIG9yIGxldCB5b3Uga25vdyB3aGVyZSB0byBmaW5kIGl0LiBDYWxs
-        IFVTQUdvdi4gQ2hhdCB3aXRoIFVTQUdvdi4gVG9wLiBUaGUgTmF0dXJhbCBS
-        ZXNvdXJjZXMgQ29uc2VydmF0aW9uIFNlcnZpY2Ugd29ya3Mgd2l0aCBsYW5k
-        b3duZXJzIGZvciBjb25zZXJ2YXRpb24gcGxhbm5pbmcgYW5kIGFzc2lzdGFu
-        Y2UgdG8gZm9zdGVyIGhlYWx0aHkgZWNvc3lzdGVtcy4iLCAiZGF0ZUxhc3RD
-        cmF3bGVkIjogIjIwMjMtMTEtMTRUMjE6MjI6MDAuMDAwMDAwMFoiLCAiY2Fj
-        aGVkUGFnZVVybCI6ICJodHRwOlwvXC9jYy5iaW5nai5jb21cL2NhY2hlLmFz
-        cHg/cT1jYXJib24rZW1pc3Npb25zKyhzaXRlJTNhdXNhLmdvdikmZD00ODkz
-        NjUxNjk4NjAwMTQwJm1rdD1lbi1VUyZzZXRsYW5nPWVuLVVTJnc9OGdaX1h6
-        Vkx2TWV4WUdWRzEwcHlEQ0drblB3dVNKQ0giLCAibGFuZ3VhZ2UiOiAiZW4i
-        LCAiaXNOYXZpZ2F0aW9uYWwiOiA8REFUQURPR19BUElfRU5BQkxFRD59LCB7
-        ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlc
-        L3Y3XC8jV2ViUGFnZXMuNyIsICJuYW1lIjogIkJ1cmVhdSBvZiBTYWZldHkg
-        YW5kIEVudmlyb25tZW50YWwgRW5mb3JjZW1lbnQgKEJTRUUpIiwgInVybCI6
-        ICJodHRwczpcL1wvd3d3LnVzYS5nb3ZcL2FnZW5jaWVzXC9idXJlYXUtb2Yt
-        c2FmZXR5LWFuZC1lbnZpcm9ubWVudGFsLWVuZm9yY2VtZW50IiwgImlzRmFt
-        aWx5RnJpZW5kbHkiOiB0cnVlLCAiZGlzcGxheVVybCI6ICJodHRwczpcL1wv
-        7oCAd3d3LnVzYS5nb3bugIFcL2FnZW5jaWVzXC9idXJlYXUtb2Ytc2FmZXR5
-        LWFuZC1lbnZpcm9ubWVudGFsLWVuZm9yY2VtZW50IiwgInNuaXBwZXQiOiAi
-        VGhleSB3aWxsIGdldCB5b3UgdGhlIGFuc3dlciBvciBsZXQgeW91IGtub3cg
-        d2hlcmUgdG8gZmluZCBpdC4gQ2FsbCBVU0FHb3YuIENoYXQgd2l0aCBVU0FH
-        b3YuIFRvcC4gVGhlIEJ1cmVhdSBvZiBTYWZldHkgYW5kIEVudmlyb25tZW50
-        YWwgRW5mb3JjZW1lbnQgcHJvdmlkZXMgb3ZlcnNpZ2h0IGFuZCBlbmZvcmNl
-        bWVudCB0byBwcm9tb3RlIHNhZmV0eSwgcHJvdGVjdCB0aGUgZW52aXJvbm1l
-        bnQsIGFuZCBjb25zZXJ2ZSBvZmZzaG9yZSByZXNvdXJjZXMuIiwgImRhdGVM
-        YXN0Q3Jhd2xlZCI6ICIyMDIzLTExLTE2VDAyOjQwOjAwLjAwMDAwMDBaIiwg
-        ImNhY2hlZFBhZ2VVcmwiOiAiaHR0cDpcL1wvY2MuYmluZ2ouY29tXC9jYWNo
-        ZS5hc3B4P3E9Y2FyYm9uK2VtaXNzaW9ucysoc2l0ZSUzYXVzYS5nb3YpJmQ9
-        NDc4ODE3NTg5NzUwNjE2MiZta3Q9ZW4tVVMmc2V0bGFuZz1lbi1VUyZ3PTVZ
-        ZlliQ2hPSWplQmFWRFcxRVhwSHRjaWwyeXVGc2hZIiwgImxhbmd1YWdlIjog
-        ImVuIiwgImlzTmF2aWdhdGlvbmFsIjogPERBVEFET0dfQVBJX0VOQUJMRUQ+
-        fSwgeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNvbVwv
-        YXBpXC92N1wvI1dlYlBhZ2VzLjgiLCAibmFtZSI6ICJOYXRpb25hbCBPY2Vh
-        bmljIGFuZCBBdG1vc3BoZXJpYyBBZG1pbmlzdHJhdGlvbiAoTk9BQSkiLCAi
-        dXJsIjogImh0dHBzOlwvXC93d3cudXNhLmdvdlwvYWdlbmNpZXNcL25hdGlv
-        bmFsLW9jZWFuaWMtYW5kLWF0bW9zcGhlcmljLWFkbWluaXN0cmF0aW9uIiwg
-        ImlzRmFtaWx5RnJpZW5kbHkiOiB0cnVlLCAiZGlzcGxheVVybCI6ICJodHRw
-        czpcL1wv7oCAd3d3LnVzYS5nb3bugIFcL2FnZW5jaWVzXC9uYXRpb25hbC1v
-        Y2VhbmljLWFuZC1hdG1vc3BoZXJpYy1hZG1pbmlzdHJhdGlvbiIsICJzbmlw
-        cGV0IjogIlRoZXkgd2lsbCBnZXQgeW91IHRoZSBhbnN3ZXIgb3IgbGV0IHlv
-        dSBrbm93IHdoZXJlIHRvIGZpbmQgaXQuIENhbGwgVVNBR292LiBDaGF0IHdp
-        dGggVVNBR292LiBUaGUgTmF0aW9uYWwgT2NlYW5pYyBhbmQgQXRtb3NwaGVy
-        aWMgQWRtaW5pc3RyYXRpb24gKE5PQUEpIHdvcmtzIHRvIHVuZGVyc3RhbmQg
-        YW5kIHByZWRpY3QgY2hhbmdlcyBpbiBjbGltYXRlLCB3ZWF0aGVyLCBvY2Vh
-        bnMsIGFuZCBjb2FzdHMuIFRoZWlyIHdvcmsgc3VwcG9ydHMgc2V2ZXJlIHdl
-        YXRoZXIgcHJlcGFyZWRuZXNzLCBhbmQgaW50ZXJuYXRpb25hbCBzaGlwcGlu
-        Zy4iLCAiZGF0ZUxhc3RDcmF3bGVkIjogIjIwMjMtMTEtMTVUMDc6NTI6MDAu
-        MDAwMDAwMFoiLCAiY2FjaGVkUGFnZVVybCI6ICJodHRwOlwvXC9jYy5iaW5n
-        ai5jb21cL2NhY2hlLmFzcHg/cT1jYXJib24rZW1pc3Npb25zKyhzaXRlJTNh
-        dXNhLmdvdikmZD00NTY4NTA5Nzk0MjM0OTM4Jm1rdD1lbi1VUyZzZXRsYW5n
-        PWVuLVVTJnc9b24xaHQzQnpNQm9kaFBkN1RXcjNMaU5qbFhJeVVPbTYiLCAi
-        bGFuZ3VhZ2UiOiAiZW4iLCAiaXNOYXZpZ2F0aW9uYWwiOiA8REFUQURPR19B
-        UElfRU5BQkxFRD59LCB7ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNy
-        b3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMuOSIsICJuYW1lIjogIkZl
-        ZGVyYWwg7oCAbGF3cyBhbmQgcmVndWxhdGlvbnPugIEgfCBVU0FHb3YiLCAi
-        dXJsIjogImh0dHBzOlwvXC93d3cudXNhLmdvdlwvbGF3cy1hbmQtcmVndWxh
-        dGlvbnMiLCAiaXNGYW1pbHlGcmllbmRseSI6IHRydWUsICJkaXNwbGF5VXJs
-        IjogImh0dHBzOlwvXC/ugIB3d3cudXNhLmdvdu6AgVwv7oCAbGF3cy1hbmQt
-        cmVndWxhdGlvbnPugIEiLCAic25pcHBldCI6ICJUb3AgUmVzZWFyY2ggZmVk
-        ZXJhbCBsYXdzIGFuZCBmaW5kIG91dCBob3cgdGhleSBhcmUgbWFkZS4gTGVh
-        cm4gYWJvdXQgaW1wZWFjaG1lbnQsIGNvcHlyaWdodHMsIGFuZCBob3cgdG8g
-        Z2V0IGNvcGllcyBvZiB5b3VyIGdvdmVybm1lbnQgZmlsZXMuIiwgImRhdGVM
-        YXN0Q3Jhd2xlZCI6ICIyMDIzLTExLTE1VDIzOjEyOjAwLjAwMDAwMDBaIiwg
-        ImNhY2hlZFBhZ2VVcmwiOiAiaHR0cDpcL1wvY2MuYmluZ2ouY29tXC9jYWNo
-        ZS5hc3B4P3E9Y2FyYm9uK2VtaXNzaW9ucysoc2l0ZSUzYXVzYS5nb3YpJmQ9
-        NDU4MjQ2ODQ0MDIzOTcyMyZta3Q9ZW4tVVMmc2V0bGFuZz1lbi1VUyZ3PXcw
-        TVhpbFdlSHdRajNjUktQLVlsV0UzM3BYSFZwcDNiIiwgImxhbmd1YWdlIjog
-        ImVuIiwgImlzTmF2aWdhdGlvbmFsIjogPERBVEFET0dfQVBJX0VOQUJMRUQ+
-        fSwgeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNvbVwv
-        YXBpXC92N1wvI1dlYlBhZ2VzLjEwIiwgIm5hbWUiOiAiRmVkZXJhbCBFbmVy
-        Z3kgUmVndWxhdG9yeSBDb21taXNzaW9uIHwgVVNBR292IiwgInVybCI6ICJo
-        dHRwczpcL1wvd3d3LnVzYS5nb3ZcL2FnZW5jaWVzXC9mZWRlcmFsLWVuZXJn
-        eS1yZWd1bGF0b3J5LWNvbW1pc3Npb24iLCAiaXNGYW1pbHlGcmllbmRseSI6
-        IHRydWUsICJkaXNwbGF5VXJsIjogImh0dHBzOlwvXC/ugIB3d3cudXNhLmdv
-        du6AgVwvYWdlbmNpZXNcL2ZlZGVyYWwtZW5lcmd5LXJlZ3VsYXRvcnktY29t
-        bWlzc2lvbiIsICJzbmlwcGV0IjogIkFzayBhIHJlYWwgcGVyc29uIGFueSBn
-        b3Zlcm5tZW50LXJlbGF0ZWQgcXVlc3Rpb24gZm9yIGZyZWUuIFRoZXkgd2ls
-        bCBnZXQgeW91IHRoZSBhbnN3ZXIgb3IgbGV0IHlvdSBrbm93IHdoZXJlIHRv
-        IGZpbmQgaXQuIENhbGwgVVNBR292LiBDaGF0IHdpdGggVVNBR292LiBUb3Au
-        IFRoZSBGZWRlcmFsIEVuZXJneSBSZWd1bGF0b3J5IENvbW1pc3Npb24gcmVn
-        dWxhdGVzIGludGVyc3RhdGUgdHJhbnNtaXNzaW9uIG9mIGVsZWN0cmljaXR5
-        LCBuYXR1cmFsIGdhcywgYW5kIG9pbCwgYW5kIGFsc28gcmVndWxhdGVzIGh5
-        ZHJvcG93ZXIgcHJvamVjdHMgYW5kIG5hdHVyYWwgZ2FzIHRlcm1pbmFscy4i
-        LCAiZGF0ZUxhc3RDcmF3bGVkIjogIjIwMjMtMTEtMTRUMDQ6Mjk6MDAuMDAw
-        MDAwMFoiLCAiY2FjaGVkUGFnZVVybCI6ICJodHRwOlwvXC9jYy5iaW5nai5j
-        b21cL2NhY2hlLmFzcHg/cT1jYXJib24rZW1pc3Npb25zKyhzaXRlJTNhdXNh
-        LmdvdikmZD00NjU5NzczNTUwNzgyMDY3Jm1rdD1lbi1VUyZzZXRsYW5nPWVu
-        LVVTJnc9eGVvbFVtS0c4WmhIQlhzdDl6ZzJFcFU1MjJvbzFHcWciLCAibGFu
-        Z3VhZ2UiOiAiZW4iLCAiaXNOYXZpZ2F0aW9uYWwiOiA8REFUQURPR19BUElf
-        RU5BQkxFRD59LCB7ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3Nv
-        ZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMuMTEiLCAibmFtZSI6ICJNYWtp
-        bmcgZ292ZXJubWVudCBzZXJ2aWNlcyBlYXNpZXIgdG8gZmluZCB8IFVTQUdv
-        diIsICJ1cmwiOiAiaHR0cHM6XC9cL3d3dy51c2EuZ292XC8iLCAiaXNGYW1p
-        bHlGcmllbmRseSI6IHRydWUsICJkaXNwbGF5VXJsIjogImh0dHBzOlwvXC/u
-        gIB3d3cudXNhLmdvdu6AgSIsICJzbmlwcGV0IjogIlZvdGluZyBhbmQgZWxl
-        Y3Rpb25zLiBGaW5kIGFuc3dlcnMgdG8gY29tbW9uIHF1ZXN0aW9ucyBhYm91
-        dCB2b3RpbmcgaW4gdGhlIFVuaXRlZCBTdGF0ZXMuIFRvcC4gRmluZCBnb3Zl
-        cm5tZW50IGJlbmVmaXRzLCBzZXJ2aWNlcywgYWdlbmNpZXMsIGFuZCBpbmZv
-        cm1hdGlvbiBhdCDugIBVU0EuZ2927oCBLiBDb250YWN0IGVsZWN0ZWQgb2Zm
-        aWNpYWxzLiBMZWFybiBhYm91dCBwYXNzcG9ydHMsIFNvY2lhbCBTZWN1cml0
-        eSwgdGF4ZXMsIGFuZCBtb3JlLiIsICJkYXRlTGFzdENyYXdsZWQiOiAiMjAy
-        My0xMS0xNlQwMToxMTowMC4wMDAwMDAwWiIsICJjYWNoZWRQYWdlVXJsIjog
-        Imh0dHA6XC9cL2NjLmJpbmdqLmNvbVwvY2FjaGUuYXNweD9xPWNhcmJvbitl
-        bWlzc2lvbnMrKHNpdGUlM2F1c2EuZ292KSZkPTUwMjI2NDY3NTEzNTMyNjQm
-        bWt0PWVuLVVTJnNldGxhbmc9ZW4tVVMmdz1LTzJlY2IxN18tN3NDVlo4UUti
-        R003TzltWEpqaHBaRSIsICJsYW5ndWFnZSI6ICJlbiIsICJpc05hdmlnYXRp
-        b25hbCI6IDxEQVRBRE9HX0FQSV9FTkFCTEVEPn0sIHsiaWQiOiAiaHR0cHM6
-        XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdl
-        cy4xMiIsICJuYW1lIjogIlUuUy4gRGVwYXJ0bWVudCBvZiBUcmFuc3BvcnRh
-        dGlvbiAoRE9UKSB8IFVTQUdvdiIsICJ1cmwiOiAiaHR0cHM6XC9cL3d3dy51
-        c2EuZ292XC9hZ2VuY2llc1wvdS1zLWRlcGFydG1lbnQtb2YtdHJhbnNwb3J0
-        YXRpb24iLCAiaXNGYW1pbHlGcmllbmRseSI6IHRydWUsICJkaXNwbGF5VXJs
-        IjogImh0dHBzOlwvXC/ugIB3d3cudXNhLmdvdu6AgVwvYWdlbmNpZXNcL3Ut
-        cy1kZXBhcnRtZW50LW9mLXRyYW5zcG9ydGF0aW9uIiwgInNuaXBwZXQiOiAi
-        QXNrIGEgcmVhbCBwZXJzb24gYW55IGdvdmVybm1lbnQtcmVsYXRlZCBxdWVz
-        dGlvbiBmb3IgZnJlZS4gVGhleSB3aWxsIGdldCB5b3UgdGhlIGFuc3dlciBv
-        ciBsZXQgeW91IGtub3cgd2hlcmUgdG8gZmluZCBpdC4gQ2FsbCBVU0FHb3Yu
-        IENoYXQgd2l0aCBVU0FHb3YuIFRoZSBEZXBhcnRtZW50IG9mIFRyYW5zcG9y
-        dGF0aW9uIGlzIHJlc3BvbnNpYmxlIGZvciBwbGFubmluZyBhbmQgY29vcmRp
-        bmF0aW5nIGZlZGVyYWwgdHJhbnNwb3J0YXRpb24gcHJvamVjdHMuIEl0IGFs
-        c28gc2V0cyBzYWZldHkgcmVndWxhdGlvbnMgZm9yIGFsbCBtYWpvciBtb2Rl
-        cyBvZiB0cmFuc3BvcnRhdGlvbi4iLCAiZGF0ZUxhc3RDcmF3bGVkIjogIjIw
-        MjMtMTEtMTRUMDU6MjI6MDAuMDAwMDAwMFoiLCAiY2FjaGVkUGFnZVVybCI6
-        ICJodHRwOlwvXC9jYy5iaW5nai5jb21cL2NhY2hlLmFzcHg/cT1jYXJib24r
-        ZW1pc3Npb25zKyhzaXRlJTNhdXNhLmdvdikmZD00OTA0NTA5Mzc5NTc5ODA3
-        Jm1rdD1lbi1VUyZzZXRsYW5nPWVuLVVTJnc9Tm1KazVTREZXSTIyVUJjYnNn
-        djEzSklvSzVYYVNPUGoiLCAibGFuZ3VhZ2UiOiAiZW4iLCAiaXNOYXZpZ2F0
-        aW9uYWwiOiA8REFUQURPR19BUElfRU5BQkxFRD59LCB7ImlkIjogImh0dHBz
-        OlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFn
-        ZXMuMTMiLCAibmFtZSI6ICJSZW5ldyBhbiBhZHVsdCBwYXNzcG9ydCB8IFVT
-        QUdvdiIsICJ1cmwiOiAiaHR0cHM6XC9cL3d3dy51c2EuZ292XC9yZW5ldy1h
-        ZHVsdC1wYXNzcG9ydCIsICJkYXRlUHVibGlzaGVkIjogIjIwMjMtMTEtMTRU
-        MDA6MDA6MDAuMDAwMDAwMCIsICJkYXRlUHVibGlzaGVkRnJlc2huZXNzVGV4
-        dCI6ICIyIGRheXMgYWdvIiwgImlzRmFtaWx5RnJpZW5kbHkiOiB0cnVlLCAi
-        ZGlzcGxheVVybCI6ICJodHRwczpcL1wv7oCAd3d3LnVzYS5nb3bugIFcL3Jl
-        bmV3LWFkdWx0LXBhc3Nwb3J0IiwgInNuaXBwZXQiOiAiUGFzc3BvcnRzIGNh
-        biBvbmx5IGJlIHJlbmV3ZWQgYnkgbWFpbC4gT25saW5lIHJlbmV3YWxzIGFy
-        ZSBjdXJyZW50bHkgcGF1c2VkLiBCZWNhdXNlIGl0IGNhbiB0YWtlIHVwIHRv
-        IHRocmVlIG1vbnRocyB0byBwcm9jZXNzIHlvdXIgYXBwbGljYXRpb24sIGl0
-        IGlzIGltcG9ydGFudCB0byByZW5ldyB5b3VyIHBhc3Nwb3J0IGJlZm9yZSBp
-        dCBleHBpcmVzLiBUeXBpY2FsbHksIHlvdSB3aWxsIG5lZWQgdGhlIGZvbGxv
-        d2luZyBpdGVtcyB0byByZW5ldyB5b3VyIHBhc3Nwb3J0OiBBcHBsaWNhdGlv
-        biAtIFlvdSB3aWxsIG5lZWQgRm9ybSBEUy04Mi4iLCAiZGF0ZUxhc3RDcmF3
-        bGVkIjogIjIwMjMtMTEtMTVUMDE6Mjk6MDAuMDAwMDAwMFoiLCAiY2FjaGVk
-        UGFnZVVybCI6ICJodHRwOlwvXC9jYy5iaW5nai5jb21cL2NhY2hlLmFzcHg/
-        cT1jYXJib24rZW1pc3Npb25zKyhzaXRlJTNhdXNhLmdvdikmZD00Nzc4NDQ3
-        Nzk2MzcyMzIwJm1rdD1lbi1VUyZzZXRsYW5nPWVuLVVTJnc9cnZCb3RuR01v
-        UGQ4X0xKc0FtUENRd25waHhrT3dSYW4iLCAibGFuZ3VhZ2UiOiAiZW4iLCAi
-        aXNOYXZpZ2F0aW9uYWwiOiA8REFUQURPR19BUElfRU5BQkxFRD59LCB7Imlk
-        IjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3
-        XC8jV2ViUGFnZXMuMTQiLCAibmFtZSI6ICJIb3cgdG8gY2hhbmdlIHlvdXIg
-        YWRkcmVzcyB8IFVTQUdvdiIsICJ1cmwiOiAiaHR0cHM6XC9cL3d3dy51c2Eu
-        Z292XC9jaGFuZ2UtYWRkcmVzcyIsICJkYXRlUHVibGlzaGVkIjogIjIwMjMt
-        MDUtMjZUMDA6MDA6MDAuMDAwMDAwMCIsICJkYXRlUHVibGlzaGVkRGlzcGxh
-        eVRleHQiOiAiTWF5IDI2LCAyMDIzIiwgImlzRmFtaWx5RnJpZW5kbHkiOiB0
-        cnVlLCAiZGlzcGxheVVybCI6ICJodHRwczpcL1wv7oCAd3d3LnVzYS5nb3bu
-        gIFcL2NoYW5nZS1hZGRyZXNzIiwgInNuaXBwZXQiOiAiSWYgeW91IGFyZSDu
-        gIBtb3ZpbmfugIEsIGxlYXJuIGhvdyB0byBjaGFuZ2UgeW91ciBhZGRyZXNz
-        IHdpdGggdGhlIFUuUy4gUG9zdGFsIFNlcnZpY2UgYW5kIG90aGVyIGdvdmVy
-        bm1lbnQgc2VydmljZXMgdG8gY29udGludWUgcmVjZWl2aW5nIG1haWwuIiwg
-        ImRhdGVMYXN0Q3Jhd2xlZCI6ICIyMDIzLTExLTE2VDAwOjA2OjAwLjAwMDAw
-        MDBaIiwgImNhY2hlZFBhZ2VVcmwiOiAiaHR0cDpcL1wvY2MuYmluZ2ouY29t
-        XC9jYWNoZS5hc3B4P3E9Y2FyYm9uK2VtaXNzaW9ucysoc2l0ZSUzYXVzYS5n
-        b3YpJmQ9NTAxNTU0Mjg3NjczMzc4NyZta3Q9ZW4tVVMmc2V0bGFuZz1lbi1V
-        UyZ3PWx0UEIzM19IZDN2b3poUTNpa2hrSFZYWE9ZZ01zUU1KIiwgImxhbmd1
-        YWdlIjogImVuIiwgImlzTmF2aWdhdGlvbmFsIjogPERBVEFET0dfQVBJX0VO
-        QUJMRUQ+fSwgeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0
-        LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjE1IiwgIm5hbWUiOiAiTmF0aW9u
-        YWwgSGlnaHdheSBUcmFmZmljIFNhZmV0eSBBZG1pbmlzdHJhdGlvbiAoTkhU
-        U0EpIiwgInVybCI6ICJodHRwczpcL1wvd3d3LnVzYS5nb3ZcL2FnZW5jaWVz
-        XC9uYXRpb25hbC1oaWdod2F5LXRyYWZmaWMtc2FmZXR5LWFkbWluaXN0cmF0
-        aW9uIiwgImlzRmFtaWx5RnJpZW5kbHkiOiB0cnVlLCAiZGlzcGxheVVybCI6
-        ICJodHRwczpcL1wv7oCAd3d3LnVzYS5nb3bugIFcL2FnZW5jaWVzXC9uYXRp
-        b25hbC1oaWdod2F5LXRyYWZmaWMtc2FmZXR5LWFkbWluaXN0cmF0aW9uIiwg
-        InNuaXBwZXQiOiAiVGhlIE5hdGlvbmFsIEhpZ2h3YXkgVHJhZmZpYyBTYWZl
-        dHkgQWRtaW5pc3RyYXRpb24gaW52ZXN0aWdhdGVzIHNhZmV0eSBkZWZlY3Rz
-        IGluIG1vdG9yIHZlaGljbGVzLCBzZXRzIGFuZCBlbmZvcmNlcyBmdWVsIGVj
-        b25vbXkgc3RhbmRhcmRzLCBoZWxwcyBzdGF0ZXMgYW5kIGxvY2FsIGNvbW11
-        bml0aWVzIHJlZHVjZSB0aGUgdGhyZWF0IG9mIGRydW5rIGRyaXZlcnMsIHBy
-        b21vdGVzIHRoZSB1c2Ugb2Ygc2FmZXR5IGJlbHRzLCBjaGlsZCBzYWZldHkg
-        c2VhdHMgYW5kIGFpciBiYWdzLCBpbnZlc3RpZ2F0ZXMgb2RvbWV0ZXIgZnJh
-        dWQsIGVzdGFibGlzaGVzIGFuZCBlbmZvcmNlcyB2ZWhpY2xlIGFudGktdGhl
-        ZnQgcmVndWxhdGlvbnMsIGNvbmR1Y3RzIHJlc2VhcmNoIG9uIGRyaXZlciAu
-        Li4iLCAiZGF0ZUxhc3RDcmF3bGVkIjogIjIwMjMtMTEtMTVUMDQ6Mjc6MDAu
-        MDAwMDAwMFoiLCAiY2FjaGVkUGFnZVVybCI6ICJodHRwOlwvXC9jYy5iaW5n
-        ai5jb21cL2NhY2hlLmFzcHg/cT1jYXJib24rZW1pc3Npb25zKyhzaXRlJTNh
-        dXNhLmdvdikmZD00OTYzNTk1MjQ0ODYzNTk5Jm1rdD1lbi1VUyZzZXRsYW5n
-        PWVuLVVTJnc9LWU4Rjd5c0tJVFBSTG9lVWZfWm1aeTN6bUZmemQyNHAiLCAi
-        bGFuZ3VhZ2UiOiAiZW4iLCAiaXNOYXZpZ2F0aW9uYWwiOiA8REFUQURPR19B
-        UElfRU5BQkxFRD59LCB7ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNy
-        b3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMuMTYiLCAibmFtZSI6ICJH
-        ZXQgYSBwYXNzcG9ydCBmb3IgYSBtaW5vciB1bmRlciAxOCB8IFVTQUdvdiIs
-        ICJ1cmwiOiAiaHR0cHM6XC9cL3d3dy51c2EuZ292XC9jaGlsZC1wYXNzcG9y
-        dCIsICJkYXRlUHVibGlzaGVkIjogIjIwMjMtMTEtMDlUMDA6MDA6MDAuMDAw
-        MDAwMCIsICJkYXRlUHVibGlzaGVkRGlzcGxheVRleHQiOiAiTm92IDksIDIw
-        MjMiLCAiaXNGYW1pbHlGcmllbmRseSI6IHRydWUsICJkaXNwbGF5VXJsIjog
-        Imh0dHBzOlwvXC/ugIB3d3cudXNhLmdvdu6AgVwvY2hpbGQtcGFzc3BvcnQi
-        LCAic25pcHBldCI6ICJBbGwgY2hpbGRyZW4gdW5kZXIgMTYgbXVzdCBhcHBl
-        YXIgaW4gcGVyc29uIHRvIGFwcGx5LiBBIHBhcmVudCAocHJlZmVyYWJseSBi
-        b3RoKSBtdXN0IGJlIHByZXNlbnQgYW5kIG11c3Qgc2lnbiB0aGUgcGFzc3Bv
-        cnQgYXBwbGljYXRpb24uIEZvbGxvdyB0aGUgc3RlcC1ieS1zdGVwIHByb2Nl
-        c3MgZm9yIGNoaWxkcmVuIHVuZGVyIDE2IGZyb20gdGhlIFN0YXRlIERlcGFy
-        dG1lbnQgdG8gZW5zdXJlIHlvdSBoYXZlIHRoZSBwcm9wZXIgZm9ybXMgYW5k
-        IGRvY3VtZW50cy5PbmUgc3RlcCB3aWxsIGhlbHAgeW91IGRldGVybWluZSB0
-        aGUgcGFzc3BvcnQgZmVlLiIsICJkYXRlTGFzdENyYXdsZWQiOiAiMjAyMy0x
-        MS0xNlQwNzowOTowMC4wMDAwMDAwWiIsICJjYWNoZWRQYWdlVXJsIjogImh0
-        dHA6XC9cL2NjLmJpbmdqLmNvbVwvY2FjaGUuYXNweD9xPWNhcmJvbitlbWlz
-        c2lvbnMrKHNpdGUlM2F1c2EuZ292KSZkPTQ5NjQ0MTk4NzY2MjI2MTcmbWt0
-        PWVuLVVTJnNldGxhbmc9ZW4tVVMmdz10cTU3RF9XenVTSFJqcmt5UFh2a3M5
-        LWZlTWtaangwcCIsICJsYW5ndWFnZSI6ICJlbiIsICJpc05hdmlnYXRpb25h
-        bCI6IDxEQVRBRE9HX0FQSV9FTkFCTEVEPn0sIHsiaWQiOiAiaHR0cHM6XC9c
-        L2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4x
-        NyIsICJuYW1lIjogIlBpcGVsaW5lIGFuZCBIYXphcmRvdXMgTWF0ZXJpYWxz
-        IFNhZmV0eSBBZG1pbmlzdHJhdGlvbiIsICJ1cmwiOiAiaHR0cHM6XC9cL3d3
-        dy51c2EuZ292XC9hZ2VuY2llc1wvcGlwZWxpbmUtYW5kLWhhemFyZG91cy1t
-        YXRlcmlhbHMtc2FmZXR5LWFkbWluaXN0cmF0aW9uIiwgImlzRmFtaWx5RnJp
-        ZW5kbHkiOiB0cnVlLCAiZGlzcGxheVVybCI6ICJodHRwczpcL1wv7oCAd3d3
-        LnVzYS5nb3bugIFcL2FnZW5jaWVzXC9waXBlbGluZS1hbmQtaGF6YXJkb3Vz
-        LW1hdGVyaWFscy1zYWZldHktYWRtaW5pc3RyYXRpb24iLCAic25pcHBldCI6
-        ICJBc2sgYSByZWFsIHBlcnNvbiBhbnkgZ292ZXJubWVudC1yZWxhdGVkIHF1
-        ZXN0aW9uIGZvciBmcmVlLiBUaGV5IHdpbGwgZ2V0IHlvdSB0aGUgYW5zd2Vy
-        IG9yIGxldCB5b3Uga25vdyB3aGVyZSB0byBmaW5kIGl0LiBDYWxsIFVTQUdv
-        di4gQ2hhdCB3aXRoIFVTQUdvdi4gVGhlIFBpcGVsaW5lIGFuZCBIYXphcmRv
-        dXMgTWF0ZXJpYWxzIFNhZmV0eSBBZG1pbmlzdHJhdGlvbiByZWd1bGF0ZXMg
-        dGhlIHRyYW5zcG9ydCBvZiBoYXphcmRvdXMgbWF0ZXJpYWxzLiIsICJkYXRl
-        TGFzdENyYXdsZWQiOiAiMjAyMy0xMS0xNFQwNjo1NTowMC4wMDAwMDAwWiIs
-        ICJjYWNoZWRQYWdlVXJsIjogImh0dHA6XC9cL2NjLmJpbmdqLmNvbVwvY2Fj
-        aGUuYXNweD9xPWNhcmJvbitlbWlzc2lvbnMrKHNpdGUlM2F1c2EuZ292KSZk
-        PTQ4NTA3NDQ5NzU5NjQwMjAmbWt0PWVuLVVTJnNldGxhbmc9ZW4tVVMmdz1y
-        YndRb0M5U3RDMmQzUlFvMG1HSU5XNmRMaFBrVFRwSiIsICJsYW5ndWFnZSI6
-        ICJlbiIsICJpc05hdmlnYXRpb25hbCI6IDxEQVRBRE9HX0FQSV9FTkFCTEVE
-        Pn0sIHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21c
-        L2FwaVwvdjdcLyNXZWJQYWdlcy4xOCIsICJuYW1lIjogIkFnZW5jaWEgZGUg
-        UHJvdGVjY2nDs24gQW1iaWVudGFsIGRlIEVzdGFkb3MgVW5pZG9zIChFUEEp
-        IiwgInVybCI6ICJodHRwczpcL1wvd3d3LnVzYS5nb3ZcL2VzXC9hZ2VuY2lh
-        c1wvYWdlbmNpYS1kZS1wcm90ZWNjaW9uLWFtYmllbnRhbC1kZS1lc3RhZG9z
-        LXVuaWRvcyIsICJpc0ZhbWlseUZyaWVuZGx5IjogdHJ1ZSwgImRpc3BsYXlV
-        cmwiOiAiaHR0cHM6XC9cL+6AgHd3dy51c2EuZ2927oCBXC9lc1wvYWdlbmNp
-        YXNcL2FnZW5jaWEtZGUtcHJvdGVjY2lvbi1hbWJpZW50YWwtZGUtZXN0YWRv
-        cy11bmlkb3MiLCAic25pcHBldCI6ICJMYSBBZ2VuY2lhIGRlIFByb3RlY2Np
-        w7NuIEFtYmllbnRhbCAoRVBBLCBzaWdsYSBlbiBpbmdsw6lzKSBwcm90ZWdl
-        IGxhIHNhbHVkIGRlIGxvcyBzZXJlcyBodW1hbm9zLCBlbCBtZWRpbyBhbWJp
-        ZW50ZSB5IGxvcyByZWN1cnNvcyBuYXR1cmFsZXMuIFByZXZpZW5lIHkgY29u
-        dHJvbGEgbGEgY29udGFtaW5hY2nDs24gZGVsIGFpcmUgeSBlbCBhZ3VhIG1l
-        ZGlhbnRlIGVsIGRlc2Fycm9sbG8gZGUgZXN0w6FuZGFyZXMgcGFyYSBsYSBj
-        YWxpZGFkIGRlbCBhaXJlIHkgbGFzIGVtaXNpb25lcyBkZSBhdXRvbcOzdmls
-        ZXMsIHByb2dyYW1hcyBwYXJhIGFzZWd1cmFyIGxhIGxpbXBpZXphIGRlbCBh
-        Z3VhIGUgaW5mb3JtYWNpw7NuIHNvYnJlIGxhIHNhbHVkIGFtYmllbnRhbC4i
-        LCAiZGF0ZUxhc3RDcmF3bGVkIjogIjIwMjMtMTEtMTVUMDg6MTc6MDAuMDAw
-        MDAwMFoiLCAiY2FjaGVkUGFnZVVybCI6ICJodHRwOlwvXC9jYy5iaW5nai5j
-        b21cL2NhY2hlLmFzcHg/cT1jYXJib24rZW1pc3Npb25zKyhzaXRlJTNhdXNh
-        LmdvdikmZD00OTI0Nzc3MzI4ODc2Njg1Jm1rdD1lbi1VUyZzZXRsYW5nPWVu
-        LVVTJnc9WXNsX3RLQldRaldfaDQzYTRDWEdpVzFKbWd5OU5fRG0iLCAibGFu
-        Z3VhZ2UiOiAiZXMiLCAiaXNOYXZpZ2F0aW9uYWwiOiA8REFUQURPR19BUElf
-        RU5BQkxFRD59LCB7ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3Nv
-        ZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMuMTkiLCAibmFtZSI6ICJIb3cg
-        dG8gY2hlY2sgYW5kIGNoYW5nZSB5b3VyIHRheCB3aXRoaG9sZGluZyB8IFVT
-        QUdvdiIsICJ1cmwiOiAiaHR0cHM6XC9cL3d3dy51c2EuZ292XC9jaGVjay10
-        YXgtd2l0aGhvbGRpbmciLCAiZGF0ZVB1Ymxpc2hlZCI6ICIyMDIzLTA4LTAx
-        VDAwOjAwOjAwLjAwMDAwMDAiLCAiZGF0ZVB1Ymxpc2hlZERpc3BsYXlUZXh0
-        IjogIkF1ZyAxLCAyMDIzIiwgImlzRmFtaWx5RnJpZW5kbHkiOiB0cnVlLCAi
-        ZGlzcGxheVVybCI6ICJodHRwczpcL1wv7oCAd3d3LnVzYS5nb3bugIFcL2No
-        ZWNrLXRheC13aXRoaG9sZGluZyIsICJzbmlwcGV0IjogIkNoYW5nZSB5b3Vy
-        IHRheCB3aXRoaG9sZGluZy4gU3VibWl0IGEgbmV3IEZvcm0gVy00IHRvIHlv
-        dXIgZW1wbG95ZXIgaWYgeW91IHdhbnQgdG8gY2hhbmdlIHRoZSB3aXRoaG9s
-        ZGluZyBmcm9tIHlvdXIgcmVndWxhciBwYXkuIENvbXBsZXRlIEZvcm0gVy00
-        UCB0byBjaGFuZ2UgdGhlIGFtb3VudCB3aXRoaGVsZCBmcm9tIHBlbnNpb24s
-        IGFubnVpdHksIGFuZCBJUkEgcGF5bWVudHMuIFRoZW4gc3VibWl0IGl0IHRv
-        IHRoZSBvcmdhbml6YXRpb24gcGF5aW5nIHlvdS4gTEFTVCBVUERBVEVEOiBB
-        dWd1c3QgMSwgMjAyMy4iLCAiZGF0ZUxhc3RDcmF3bGVkIjogIjIwMjMtMTEt
-        MTVUMTM6MTQ6MDAuMDAwMDAwMFoiLCAiY2FjaGVkUGFnZVVybCI6ICJodHRw
-        OlwvXC9jYy5iaW5nai5jb21cL2NhY2hlLmFzcHg/cT1jYXJib24rZW1pc3Np
-        b25zKyhzaXRlJTNhdXNhLmdvdikmZD00NjUxMTYyMTQ1ODQ5ODE5Jm1rdD1l
-        bi1VUyZzZXRsYW5nPWVuLVVTJnc9TDlkTTJDajB0QXRER3FuV05OWmRkT0ZS
-        T0lIUjh4aEQiLCAibGFuZ3VhZ2UiOiAiZW4iLCAiaXNOYXZpZ2F0aW9uYWwi
-        OiA8REFUQURPR19BUElfRU5BQkxFRD59XX0sICJyYW5raW5nUmVzcG9uc2Ui
-        OiB7Im1haW5saW5lIjogeyJpdGVtcyI6IFt7ImFuc3dlclR5cGUiOiAiV2Vi
-        UGFnZXMiLCAicmVzdWx0SW5kZXgiOiAwLCAidmFsdWUiOiB7ImlkIjogImh0
-        dHBzOlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2Vi
-        UGFnZXMuMCJ9fSwgeyJhbnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJlc3Vs
-        dEluZGV4IjogMSwgInZhbHVlIjogeyJpZCI6ICJodHRwczpcL1wvYXBpLmJp
-        bmcubWljcm9zb2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjEifX0sIHsi
-        YW5zd2VyVHlwZSI6ICJXZWJQYWdlcyIsICJyZXN1bHRJbmRleCI6IDIsICJ2
-        YWx1ZSI6IHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5j
-        b21cL2FwaVwvdjdcLyNXZWJQYWdlcy4yIn19LCB7ImFuc3dlclR5cGUiOiAi
-        V2ViUGFnZXMiLCAicmVzdWx0SW5kZXgiOiAzLCAidmFsdWUiOiB7ImlkIjog
-        Imh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8j
-        V2ViUGFnZXMuMyJ9fSwgeyJhbnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJl
-        c3VsdEluZGV4IjogNCwgInZhbHVlIjogeyJpZCI6ICJodHRwczpcL1wvYXBp
-        LmJpbmcubWljcm9zb2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjQifX0s
-        IHsiYW5zd2VyVHlwZSI6ICJXZWJQYWdlcyIsICJyZXN1bHRJbmRleCI6IDUs
-        ICJ2YWx1ZSI6IHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29m
-        dC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy41In19LCB7ImFuc3dlclR5cGUi
-        OiAiV2ViUGFnZXMiLCAicmVzdWx0SW5kZXgiOiA2LCAidmFsdWUiOiB7Imlk
-        IjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3
-        XC8jV2ViUGFnZXMuNiJ9fSwgeyJhbnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwg
-        InJlc3VsdEluZGV4IjogNywgInZhbHVlIjogeyJpZCI6ICJodHRwczpcL1wv
-        YXBpLmJpbmcubWljcm9zb2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjci
-        fX0sIHsiYW5zd2VyVHlwZSI6ICJXZWJQYWdlcyIsICJyZXN1bHRJbmRleCI6
-        IDgsICJ2YWx1ZSI6IHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jv
-        c29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy44In19LCB7ImFuc3dlclR5
-        cGUiOiAiV2ViUGFnZXMiLCAicmVzdWx0SW5kZXgiOiA5LCAidmFsdWUiOiB7
-        ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlc
-        L3Y3XC8jV2ViUGFnZXMuOSJ9fSwgeyJhbnN3ZXJUeXBlIjogIldlYlBhZ2Vz
-        IiwgInJlc3VsdEluZGV4IjogMTAsICJ2YWx1ZSI6IHsiaWQiOiAiaHR0cHM6
-        XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdl
-        cy4xMCJ9fSwgeyJhbnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJlc3VsdElu
-        ZGV4IjogMTEsICJ2YWx1ZSI6IHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5n
-        Lm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4xMSJ9fSwgeyJh
-        bnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJlc3VsdEluZGV4IjogMTIsICJ2
-        YWx1ZSI6IHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5j
-        b21cL2FwaVwvdjdcLyNXZWJQYWdlcy4xMiJ9fSwgeyJhbnN3ZXJUeXBlIjog
-        IldlYlBhZ2VzIiwgInJlc3VsdEluZGV4IjogMTMsICJ2YWx1ZSI6IHsiaWQi
-        OiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdc
-        LyNXZWJQYWdlcy4xMyJ9fSwgeyJhbnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwg
-        InJlc3VsdEluZGV4IjogMTQsICJ2YWx1ZSI6IHsiaWQiOiAiaHR0cHM6XC9c
-        L2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4x
-        NCJ9fSwgeyJhbnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJlc3VsdEluZGV4
-        IjogMTUsICJ2YWx1ZSI6IHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1p
-        Y3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4xNSJ9fSwgeyJhbnN3
-        ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJlc3VsdEluZGV4IjogMTYsICJ2YWx1
-        ZSI6IHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21c
-        L2FwaVwvdjdcLyNXZWJQYWdlcy4xNiJ9fSwgeyJhbnN3ZXJUeXBlIjogIldl
-        YlBhZ2VzIiwgInJlc3VsdEluZGV4IjogMTcsICJ2YWx1ZSI6IHsiaWQiOiAi
-        aHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNX
-        ZWJQYWdlcy4xNyJ9fSwgeyJhbnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJl
-        c3VsdEluZGV4IjogMTgsICJ2YWx1ZSI6IHsiaWQiOiAiaHR0cHM6XC9cL2Fw
-        aS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4xOCJ9
-        fSwgeyJhbnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJlc3VsdEluZGV4Ijog
-        MTksICJ2YWx1ZSI6IHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jv
-        c29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4xOSJ9fV19fX0=
-  recorded_at: Thu, 16 Nov 2023 21:11:01 GMT
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "carbon
+        emissions (site:usa.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=carbon+emissions+(site%3ausa.gov)",
+        "totalEstimatedMatches": 59, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Environmental Protection Agency (EPA) | USAGov", "url": "https:\/\/www.usa.gov\/agencies\/environmental-protection-agency",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/agencies\/environmental-protection-agency",
+        "snippet": "Top The Environmental Protection Agency protects people and the
+        environment from significant health risks, sponsors and conducts research,
+        and develops and enforces environmental regulations.", "dateLastCrawled":
+        "2024-01-08T06:19:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=carbon+emissions+(site%3ausa.gov)&d=4649186483246164&mkt=en-US&setlang=en-US&w=l16dtotj01hCNPAVE279Z6BxsoCTToGm",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Energy Efficiency and Renewable Energy (EERE) | USAGov", "url": "https:\/\/www.usa.gov\/agencies\/energy-efficiency-and-renewable-energy",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/agencies\/energy-efficiency-and-renewable-energy",
+        "snippet": "Top The EERE Information Center answers questions about EEREs
+        products, services, and technology programs, and refers callers to the most
+        appropriate EERE resources.", "dateLastCrawled": "2024-01-08T22:57:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=carbon+emissions+(site%3ausa.gov)&d=4676231886930134&mkt=en-US&setlang=en-US&w=pm7WCZunwCxOgQy6kNqkOTy5dMUwax8g",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Fifth U.S. Open Government National Action Plan | open.USA.gov",
+        "url": "https:\/\/open.usa.gov\/national-action-plan\/5\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/open.usa.gov\/national-action-plan\/5", "snippet":
+        "The publication of the Fifth U.S. Open Government National Plan comes at
+        a time when the principles of equality and democracy are threatened across
+        the United States and around the world. According to the International Institute
+        for Democracy and Electoral Assistance, more than half of all global democracies
+        have experienced a decline in at ...", "dateLastCrawled": "2024-01-07T16:17:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=carbon+emissions+(site%3ausa.gov)&d=4859614111538955&mkt=en-US&setlang=en-US&w=eTZ91ZaAuECh5bx1WEGbtAwwgM4zMG11",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Energy Information Administration | USAGov", "url": "https:\/\/www.usa.gov\/agencies\/energy-information-administration",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/agencies\/energy-information-administration",
+        "snippet": "Ask a real person any government-related question for free. They
+        will get you the answer or let you know where to find it. Call USAGov. Chat
+        with USAGov. Top. The Energy Information Administration researches, collects
+        and disseminates information on energy topics.", "dateLastCrawled": "2024-01-06T15:05:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=carbon+emissions+(site%3ausa.gov)&d=4855022790853337&mkt=en-US&setlang=en-US&w=OlYiANUMAF2fz0upCkSlkOgZg8SoWyh9",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "National Oceanic and Atmospheric Administration (NOAA)", "url": "https:\/\/www.usa.gov\/agencies\/national-oceanic-and-atmospheric-administration",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/agencies\/national-oceanic-and-atmospheric-administration",
+        "snippet": "They will get you the answer or let you know where to find it.
+        Call USAGov. Chat with USAGov. Top. The National Oceanic and Atmospheric Administration
+        (NOAA) works to understand and predict changes in climate, weather, oceans,
+        and coasts. Their work supports severe weather preparedness, and international
+        shipping.", "dateLastCrawled": "2024-01-07T21:02:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=carbon+emissions+(site%3ausa.gov)&d=4568509818621078&mkt=en-US&setlang=en-US&w=rknYfYQaItcdhPd7TWr3LiNjlXIyUOm6",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Federal Energy Regulatory Commission | USAGov", "url": "https:\/\/www.usa.gov\/agencies\/federal-energy-regulatory-commission",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/agencies\/federal-energy-regulatory-commission",
+        "snippet": "Ask a real person any government-related question for free. They
+        will get you the answer or let you know where to find it. Call USAGov. Chat
+        with USAGov. Top. The Federal Energy Regulatory Commission regulates interstate
+        transmission of electricity, natural gas, and oil, and also regulates hydropower
+        projects and natural gas terminals.", "dateLastCrawled": "2024-01-09T11:43:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=carbon+emissions+(site%3ausa.gov)&d=4659773573850544&mkt=en-US&setlang=en-US&w=-ly_C790FGpHBXst9zg2EpU522oo1Gqg",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Natural Resources Conservation Service | USAGov", "url": "https:\/\/www.usa.gov\/agencies\/natural-resources-conservation-service",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/agencies\/natural-resources-conservation-service",
+        "snippet": "The Natural Resources Conservation Service works with landowners
+        for conservation planning and assistance to foster healthy ecosystems.", "dateLastCrawled":
+        "2024-01-10T03:15:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=carbon+emissions+(site%3ausa.gov)&d=4893651721599718&mkt=en-US&setlang=en-US&w=rkMkE2SkGLOxYGVG10pyDCGknPwuSJCH",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Office of Scientific and Technical Information | USAGov", "url":
+        "https:\/\/www.usa.gov\/agencies\/office-of-scientific-and-technical-information",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/agencies\/office-of-scientific-and-technical-information",
+        "snippet": "They will get you the answer or let you know where to find it.
+        Call USAGov. Chat with USAGov. Top. The Office of Scientific and Technical
+        Information collects, preserves, and makes available the results of research
+        and development carried out or sponsored by the Department of Energy.", "dateLastCrawled":
+        "2023-12-10T23:39:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=carbon+emissions+(site%3ausa.gov)&d=4931567685818261&mkt=en-US&setlang=en-US&w=ZGoK7JyFDZDCnnB3hIKOa2SxTI1jw3X1",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Federal laws and regulations | USAGov", "url": "https:\/\/www.usa.gov\/laws-and-regulations",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/laws-and-regulations",
+        "snippet": "Top Research federal laws and find out how they are made. Learn
+        about impeachment, copyrights, and how to get copies of your government files.",
+        "dateLastCrawled": "2024-01-08T17:08:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=carbon+emissions+(site%3ausa.gov)&d=4582468463779593&mkt=en-US&setlang=en-US&w=tIh2lS0U-coj3cRKP-YlWE33pXHVpp3b",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Bureau of Safety and Environmental Enforcement (BSEE)", "url": "https:\/\/www.usa.gov\/agencies\/bureau-of-safety-and-environmental-enforcement",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/agencies\/bureau-of-safety-and-environmental-enforcement",
+        "snippet": "They will get you the answer or let you know where to find it.
+        Call USAGov. Chat with USAGov. Top. The Bureau of Safety and Environmental
+        Enforcement provides oversight and enforcement to promote safety, protect
+        the environment, and conserve offshore resources.", "dateLastCrawled": "2024-01-04T23:32:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=carbon+emissions+(site%3ausa.gov)&d=4788175920254039&mkt=en-US&setlang=en-US&w=nvHZ-pcTWzOBaVDW1EXpHtcil2yuFshY",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "U.S. Department of Housing and Urban Development (HUD)", "url": "https:\/\/www.usa.gov\/agencies\/u-s-department-of-housing-and-urban-development",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/agencies\/u-s-department-of-housing-and-urban-development",
+        "snippet": "Ask a real person any government-related question for free. They
+        will get you the answer or let you know where to find it. Call USAGov. Chat
+        with USAGov. The Department of Housing and Urban Development administers programs
+        that provide housing and community development assistance. The Department
+        also works to ensure fair and equal housing ...", "dateLastCrawled": "2024-01-10T05:26:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=carbon+emissions+(site%3ausa.gov)&d=4940475457273930&mkt=en-US&setlang=en-US&w=7TmtLLHfhWzGqwMofivabHCxL5VMd3Xn",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "U.S. Department of Transportation (DOT) | USAGov", "url": "https:\/\/www.usa.gov\/agencies\/u-s-department-of-transportation",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/agencies\/u-s-department-of-transportation",
+        "snippet": "Ask a real person any government-related question for free. They
+        will get you the answer or let you know where to find it. Call USAGov. Chat
+        with USAGov. The Department of Transportation is responsible for planning
+        and coordinating federal transportation projects. It also sets safety regulations
+        for all major modes of transportation.", "dateLastCrawled": "2024-01-08T23:31:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=carbon+emissions+(site%3ausa.gov)&d=4904509402579289&mkt=en-US&setlang=en-US&w=kNirPgw2NVC2UBcbsgv13JIoK5XaSOPj",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Agencia de Protección Ambiental de Estados Unidos (EPA)", "url":
+        "https:\/\/www.usa.gov\/es\/agencias\/agencia-de-proteccion-ambiental-de-estados-unidos",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/es\/agencias\/agencia-de-proteccion-ambiental-de-estados-unidos",
+        "snippet": "La Agencia de Protección Ambiental (EPA, sigla en inglés) protege
+        la salud de los seres humanos, el medio ambiente y los recursos naturales.
+        Previene y controla la contaminación del aire y el agua mediante el desarrollo
+        de estándares para la calidad del aire y las emisiones de automóviles, programas
+        para asegurar la limpieza del agua e información sobre la salud ambiental.",
+        "dateLastCrawled": "2024-01-09T08:25:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=carbon+emissions+(site%3ausa.gov)&d=4924777352069319&mkt=en-US&setlang=en-US&w=Ptza2AoszH6_h43a4CXGiW1Jmgy9N_Dm",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "National Aeronautics and Space Administration (NASA)", "url": "https:\/\/www.usa.gov\/agencies\/national-aeronautics-and-space-administration",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/agencies\/national-aeronautics-and-space-administration",
+        "snippet": "Ask a real person any government-related question for free. They
+        will get you the answer or let you know where to find it. Call USAGov. Chat
+        with USAGov. Top. The National Aeronautics and Space Administration (NASA)
+        explores space, and researches Earth systems, the solar system, and the universe.",
+        "dateLastCrawled": "2024-01-07T16:27:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=carbon+emissions+(site%3ausa.gov)&d=4815844101945563&mkt=en-US&setlang=en-US&w=3fzS16R14XiN_lnBV1kN0EKYX78ZicXd",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Agency for Toxic Substances and Disease Registry | USAGov", "url":
+        "https:\/\/www.usa.gov\/agencies\/agency-for-toxic-substances-and-disease-registry",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/agencies\/agency-for-toxic-substances-and-disease-registry",
+        "snippet": "The Agency for Toxic Substances and Disease Registry responds
+        to, and protects people from harmful chemical exposures.", "dateLastCrawled":
+        "2024-01-04T07:25:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=carbon+emissions+(site%3ausa.gov)&d=4701550722894386&mkt=en-US&setlang=en-US&w=X7qNzrmP4SFaBM0n4cis_-a0YqS8iC_x",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Discrimination, harassment, and retaliation | USAGov", "url": "https:\/\/www.usa.gov\/job-discrimination-harassment",
+        "datePublished": "2023-12-06T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 6, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/job-discrimination-harassment",
+        "snippet": "Workplace harassment is unwelcome conduct based on a person’s
+        race, color, religion, sex, national origin, older age, disability, or genetic
+        information. Harassment includes: Offensive jokes, objects, or pictures. Name
+        calling. Physical assaults and threats. Intimidation. Harassment is unlawful
+        when:", "dateLastCrawled": "2024-01-09T13:22:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=carbon+emissions+(site%3ausa.gov)&d=4549594779043789&mkt=en-US&setlang=en-US&w=YW3lxFpv_Q0U6uOx_42b2gUQKla0ZKVx",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "How to confirm your voter registration status | USAGov", "url": "https:\/\/www.usa.gov\/confirm-voter-registration",
+        "datePublished": "2023-12-11T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 11, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/confirm-voter-registration",
+        "snippet": "Voting and elections Voter registration Confirm your voter registration
+        How to confirm your voter registration status Check your voter registration
+        online to confirm your voter registration number, if you are still registered
+        to vote, and your name, address, and political party are correct.", "dateLastCrawled":
+        "2024-01-08T13:11:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=carbon+emissions+(site%3ausa.gov)&d=5047639185051960&mkt=en-US&setlang=en-US&w=uchBSM_mCkL3ZtbpppWARRn0AVcLCNUe",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Renew an adult passport | USAGov", "url": "https:\/\/www.usa.gov\/renew-adult-passport",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/renew-adult-passport",
+        "snippet": "Passports can only be renewed by mail. Online renewals are currently
+        paused. Because it can take up to three months to process your application,
+        it is important to renew your passport before it expires. Typically, you will
+        need the following items to renew your passport: Application - You will need
+        Form DS-82.", "dateLastCrawled": "2024-01-09T08:17:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=carbon+emissions+(site%3ausa.gov)&d=4778447819120125&mkt=en-US&setlang=en-US&w=aGmCn8XVfvZ8_LJsAmPCQwnphxkOwRan",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "National Interagency Fire Center | USAGov", "url": "https:\/\/www.usa.gov\/agencies\/national-interagency-fire-center",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/agencies\/national-interagency-fire-center",
+        "snippet": "3833 S Development Ave. Boise, ID 83705-5354. Ask a real person
+        any government-related question for free. They will get you the answer or
+        let you know where to find it. Chat with USAGov. Top. The National Interagency
+        Fire Center coordinates the national mobilization of resources for wildland
+        fire and other incidents throughout the United States.", "dateLastCrawled":
+        "2024-01-05T13:30:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=carbon+emissions+(site%3ausa.gov)&d=5065171242327987&mkt=en-US&setlang=en-US&w=surG5cxH0I3_X7OjRrdsUiy98NYb16xN",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Find emergency help paying your rent | USAGov", "url": "https:\/\/www.usa.gov\/emergency-pay-rent",
+        "datePublished": "2023-12-15T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 15, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/emergency-pay-rent",
+        "snippet": "Top If you need emergency help paying your rent, contact your
+        state''s emergency rental assistance program. Find out what you are eligible
+        for and what it covers.", "dateLastCrawled": "2024-01-10T04:44:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=carbon+emissions+(site%3ausa.gov)&d=4720040558933983&mkt=en-US&setlang=en-US&w=ovvbwffvGv1ibVlZWPkiYmFvXUKgsB3k",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 10 Jan 2024 14:53:18 GMT
 recorded_with: VCR 6.2.0

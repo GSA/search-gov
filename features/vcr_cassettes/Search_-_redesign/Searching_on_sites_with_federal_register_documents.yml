@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=collection%20(site:noaa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=<DATADOG_API_ENABLED>&traffictype=test
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=collection%20(site:noaa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
-      base64_string: ''
+      string: ''
     headers:
       User-Agent:
       - USASearch
@@ -31,35 +31,35 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Wed, 10 Jan 2024 02:31:39 GMT
+      - Wed, 10 Jan 2024 14:51:20 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       X-Eventid:
-      - 659e01c7f0c548029cd5e15595b9032c
+      - 659eaf24d8864356a8e9ed3851b8d395
       Useragentreductionoptout:
       - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
       Bingapis-Traceid:
-      - 659e01c7f0c548029cd5e15595b9032c
+      - 659eaf24d8864356a8e9ed3851b8d395
       Bingapis-Sessionid:
-      - 4B8BF06BAF02421C88877C3CA27DC555
+      - AEAB1E793E9A410D892DD7445B27D938
       X-Msedge-Clientid:
-      - 22EDBC217381619C2BFFA82372156038
+      - 1774DAAFF3036688350ECEADF28F67B0
       X-Msapi-Userstate:
-      - 6aa7
+      - '1832'
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=309,MSDatacenter=BNZE01
+      - InternalResponseTime=312,MSDatacenter=BNZE01
       X-Cache:
       - CONFIG_NOCACHE
       Accept-Ch:
       - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
       X-Msedge-Ref:
-      - 'Ref A: BE71A98EAF15416DA8F9A01979D957BC Ref B: BL2AA2010204017 Ref C: 2024-01-10T02:32:39Z'
+      - 'Ref A: E4335C871A6144239B45D018615E6B77 Ref B: BL2AA2010203023 Ref C: 2024-01-10T14:52:20Z'
       Apim-Request-Id:
-      - e5cb7e7b-2636-4f15-98fa-522681a76afd
+      - 9538d9c1-d29b-46b2-a70c-64a6a6b38c44
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -67,546 +67,236 @@ http_interactions:
       Csp-Billing-Usage:
       - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Wed, 10 Jan 2024 02:32:39 GMT
+      - Wed, 10 Jan 2024 14:52:20 GMT
     body:
       encoding: UTF-8
-      base64_string: |
-        eyJfdHlwZSI6ICJTZWFyY2hSZXNwb25zZSIsICJxdWVyeUNvbnRleHQiOiB7
-        Im9yaWdpbmFsUXVlcnkiOiAiY29sbGVjdGlvbiAoc2l0ZTpub2FhLmdvdiki
-        fSwgIndlYlBhZ2VzIjogeyJ3ZWJTZWFyY2hVcmwiOiAiaHR0cHM6XC9cL3d3
-        dy5iaW5nLmNvbVwvc2VhcmNoP3E9Y29sbGVjdGlvbisoc2l0ZSUzYW5vYWEu
-        Z292KSIsICJ0b3RhbEVzdGltYXRlZE1hdGNoZXMiOiAzODMwMDAwLCAidmFs
-        dWUiOiBbeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNv
-        bVwvYXBpXC92N1wvI1dlYlBhZ2VzLjAiLCAibmFtZSI6ICLugIBXZWF0aGVy
-        IGFuZCBhdG1vc3BoZXJlIGRhdGEgcmVzb3VyY2Vz7oCBIHwgTmF0aW9uYWwg
-        T2NlYW5pYyBhbmQgLi4uIiwgInVybCI6ICJodHRwczpcL1wvd3d3Lm5vYWEu
-        Z292XC9lZHVjYXRpb25cL3Jlc291cmNlLWNvbGxlY3Rpb25zXC9kYXRhXC93
-        ZWF0aGVyLWF0bW9zcGhlcmUiLCAiZGF0ZVB1Ymxpc2hlZCI6ICIyMDE4LTA5
-        LTAxVDAwOjAwOjAwLjAwMDAwMDAiLCAiZGF0ZVB1Ymxpc2hlZERpc3BsYXlU
-        ZXh0IjogIlNlcCAxLCAyMDE4IiwgImlzRmFtaWx5RnJpZW5kbHkiOiA8REFU
-        QURPR19BUElfRU5BQkxFRD4sICJkaXNwbGF5VXJsIjogImh0dHBzOlwvXC/u
-        gIB3d3cubm9hYS5nb3bugIFcL2VkdWNhdGlvblwvcmVzb3VyY2Ut7oCAY29s
-        bGVjdGlvbnPugIFcL2RhdGFcL3dlYXRoZXItYXRtb3NwaGVyZSIsICJzbmlw
-        cGV0IjogIlRoaXMg7oCAY29sbGVjdGlvbu6AgSB1c2VzIHJlYWwtdGltZSBl
-        bnZpcm9ubWVudGFsIGRhdGEgaW4gc2VsZi1kaXJlY3RlZCBzdHVkZW50IGFj
-        dGl2aXRpZXMgZXhwbG9yaW5nIHRoZSBuYXR1cmFsIHdvcmxkLiBTdHVkZW50
-        cyBsZWFybiBhYm91dCBjYXJib24gY3ljbGluZywgb2NlYW4gYWNpZGlmaWNh
-        dGlvbiwgYW5kIG90aGVyIHBoZW5vbWVuYSByZWxhdGVkIHRvIGNsaW1hdGUg
-        Y2hhbmdlLiBUaGVzZSBtb2R1bGVzIGFyZSBkZXNpZ25lZCB3aXRoIGEgdGhy
-        ZWUtZGltZW5zaW9uYWwgYXBwcm9hY2ggdG8gdGVhY2hpbmcgaW4gbWluZCBh
-        bmQgdXNlIGEgZGF0YSBsaXRlcmFjeSBmcmFtZXdvcmsuIiwgImRhdGVMYXN0
-        Q3Jhd2xlZCI6ICIyMDI0LTAxLTA5VDA3OjI4OjAwLjAwMDAwMDBaIiwgImNh
-        Y2hlZFBhZ2VVcmwiOiAiaHR0cDpcL1wvY2MuYmluZ2ouY29tXC9jYWNoZS5h
-        c3B4P3E9Y29sbGVjdGlvbisoc2l0ZSUzYW5vYWEuZ292KSZkPTQ2ODY3ODAx
-        ODQ5ODY0MzcmbWt0PWVuLVVTJnNldGxhbmc9ZW4tVVMmdz01RkhYbnQxZ1Qz
-        SlRUVmhCV2xMVVgtVTVrRFFzT2ZkTSIsICJsYW5ndWFnZSI6ICJlbiIsICJp
-        c05hdmlnYXRpb25hbCI6IGZhbHNlfSwgeyJpZCI6ICJodHRwczpcL1wvYXBp
-        LmJpbmcubWljcm9zb2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjEiLCAi
-        bmFtZSI6ICLugIBUZWNobm9sb2d5IGFuZCBlbmdpbmVlcmluZ+6AgSB8IE5h
-        dGlvbmFsIE9jZWFuaWMgYW5kIEF0bW9zcGhlcmljIC4uLiIsICJ1cmwiOiAi
-        aHR0cHM6XC9cL3d3dy5ub2FhLmdvdlwvZWR1Y2F0aW9uXC9yZXNvdXJjZS1j
-        b2xsZWN0aW9uc1wvc3BlY2lhbC10b3BpY3NcL3RlY2hub2xvZ3ktZW5naW5l
-        ZXJpbmciLCAiZGF0ZVB1Ymxpc2hlZCI6ICIyMDE5LTEwLTE2VDAwOjAwOjAw
-        LjAwMDAwMDAiLCAiZGF0ZVB1Ymxpc2hlZERpc3BsYXlUZXh0IjogIk9jdCAx
-        NiwgMjAxOSIsICJpc0ZhbWlseUZyaWVuZGx5IjogPERBVEFET0dfQVBJX0VO
-        QUJMRUQ+LCAiZGlzcGxheVVybCI6ICJodHRwczpcL1wv7oCAd3d3Lm5vYWEu
-        Z2927oCBXC9lZHVjYXRpb25cL3Jlc291cmNlLe6AgGNvbGxlY3Rpb25z7oCB
-        XC9zcGVjaWFsLXRvcGljc1wvdGVjaG5vbG9neS1lbmdpbmVlcmluZyIsICJz
-        bmlwcGV0IjogIu6AgFRlY2hub2xvZ3kgYW5kIGVuZ2luZWVyaW5n7oCBLiBJ
-        ZiBpdCB3ZXJlbuKAmXQgZm9yIG91ciBzYXRlbGxpdGVzLCBidW95cywgcGxh
-        bmVzLCBhbmQgc2hpcHMsIE5PQUEgd291bGRu4oCZdCBoYXZlIG5lYXJseSB0
-        aGUgYW1vdW50IG9mIGRhdGEgaXQgZG9lcyB0b2RheS4gVGhhdOKAmXMgd2h5
-        IHRlY2hub2xvZ3kgYW5kIGlubm92YXRpb24gYXJlIGtleSBpbmdyZWRpZW50
-        cyBmb3IgY3V0dGluZy1lZGdlIHNjaWVuY2UuIEluIHRoaXMg7oCAY29sbGVj
-        dGlvbu6AgSBvZiBsZXNzb25zLCBtb2JpbGUgYXBwcywgdmlkZW9zLCBkYXRh
-        LCBhbmQgbW9yZSwgeW91IGNhbiBsZWFybiBob3cgTk9BQSB1c2VzIHRlY2hu
-        b2xvZ3kgLi4uIiwgImRhdGVMYXN0Q3Jhd2xlZCI6ICIyMDI0LTAxLTA3VDA3
-        OjI5OjAwLjAwMDAwMDBaIiwgImNhY2hlZFBhZ2VVcmwiOiAiaHR0cDpcL1wv
-        Y2MuYmluZ2ouY29tXC9jYWNoZS5hc3B4P3E9Y29sbGVjdGlvbisoc2l0ZSUz
-        YW5vYWEuZ292KSZkPTQ1ODcwMjk1NzI2ODIyNDUmbWt0PWVuLVVTJnNldGxh
-        bmc9ZW4tVVMmdz0yd09aRGd4UXpIY2w4UEFjNF92MnQyeWFBOW9MT1ZoWSIs
-        ICJsYW5ndWFnZSI6ICJlbiIsICJpc05hdmlnYXRpb25hbCI6IGZhbHNlfSwg
-        eyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNvbVwvYXBp
-        XC92N1wvI1dlYlBhZ2VzLjIiLCAibmFtZSI6ICLugIBDbGFzc3Jvb20tcmVh
-        ZHkgZGF0YSByZXNvdXJjZXPugIEgfCBOYXRpb25hbCBPY2VhbmljIGFuZCBB
-        dG1vc3BoZXJpYyAuLi4iLCAidXJsIjogImh0dHBzOlwvXC93d3cubm9hYS5n
-        b3ZcL2VkdWNhdGlvblwvcmVzb3VyY2UtY29sbGVjdGlvbnNcL2RhdGFcL2Ns
-        YXNzcm9vbS1yZWFkeSIsICJkYXRlUHVibGlzaGVkIjogIjIwMTgtMDktMDFU
-        MDA6MDA6MDAuMDAwMDAwMCIsICJkYXRlUHVibGlzaGVkRGlzcGxheVRleHQi
-        OiAiU2VwIDEsIDIwMTgiLCAiaXNGYW1pbHlGcmllbmRseSI6IDxEQVRBRE9H
-        X0FQSV9FTkFCTEVEPiwgImRpc3BsYXlVcmwiOiAiaHR0cHM6XC9cL+6AgHd3
-        dy5ub2FhLmdvdu6AgVwvZWR1Y2F0aW9uXC9yZXNvdXJjZS3ugIBjb2xsZWN0
-        aW9uc+6AgVwvZGF0YVwvY2xhc3Nyb29tLXJlYWR5IiwgInNuaXBwZXQiOiAi
-        VGhpcyDugIBjb2xsZWN0aW9u7oCBIHVzZXMgcmVhbC10aW1lIGVudmlyb25t
-        ZW50YWwgZGF0YSBpbiBzZWxmLWRpcmVjdGVkIHN0dWRlbnQgYWN0aXZpdGll
-        cyBleHBsb3JpbmcgdGhlIG5hdHVyYWwgd29ybGQuIFN0dWRlbnRzIGxlYXJu
-        IGFib3V0IGNhcmJvbiBjeWNsaW5nLCBvY2VhbiBhY2lkaWZpY2F0aW9uLCBh
-        bmQgb3RoZXIgcGhlbm9tZW5hIHJlbGF0ZWQgdG8gY2xpbWF0ZSBjaGFuZ2Uu
-        IFRoZXNlIG1vZHVsZXMgYXJlIGRlc2lnbmVkIHdpdGggYSB0aHJlZS1kaW1l
-        bnNpb25hbCBhcHByb2FjaCB0byB0ZWFjaGluZyBpbiBtaW5kIGFuZCB1c2Ug
-        YSBkYXRhIGxpdGVyYWN5IGZyYW1ld29yay4iLCAiZGF0ZUxhc3RDcmF3bGVk
-        IjogIjIwMjQtMDEtMDdUMTM6MjQ6MDAuMDAwMDAwMFoiLCAiY2FjaGVkUGFn
-        ZVVybCI6ICJodHRwOlwvXC9jYy5iaW5nai5jb21cL2NhY2hlLmFzcHg/cT1j
-        b2xsZWN0aW9uKyhzaXRlJTNhbm9hYS5nb3YpJmQ9NDgxNjUwMTA4NDM4OTc3
-        NyZta3Q9ZW4tVVMmc2V0bGFuZz1lbi1VUyZ3PUwyQ25DUzJaN1ZPT1N0REpx
-        M2pKZGxvYmRMdEt1OERZIiwgImxhbmd1YWdlIjogImVuIiwgImlzTmF2aWdh
-        dGlvbmFsIjogZmFsc2V9LCB7ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5t
-        aWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMuMyIsICJuYW1lIjog
-        Ik5PQUEgUGhvdG8gTGlicmFyeSA+IEhvbWUiLCAidXJsIjogImh0dHBzOlwv
-        XC93d3cucGhvdG9saWIubm9hYS5nb3ZcLyIsICJpc0ZhbWlseUZyaWVuZGx5
-        IjogPERBVEFET0dfQVBJX0VOQUJMRUQ+LCAiZGlzcGxheVVybCI6ICJodHRw
-        czpcL1wvd3d3LnBob3RvbGliLu6AgG5vYWEuZ2927oCBIiwgInNuaXBwZXQi
-        OiAiVGhlIE5PQUEgUGhvdG8gTGlicmFyeSBjb250YWlucyBvdmVyIDgwLDAw
-        MCBpbWFnZXMgdGhhdCBzaG93Y2FzZSB0aGUgd29yayBvZiBOT0FBLiBFeHBs
-        b3JlIGltYWdlcyBpbiBhIHdpZGUgYXJyYXkgb2YgY29sbGVjdGlvbnMgYW5k
-        IGdhbGxlcmllcyBiYXNlZCBvbiB0aGUgd29yayBvZiBOT0FBIHNjaWVudGlz
-        dHMsIG9mZmljZXJzLCBlbmdpbmVlcnMsIGFuZCBvdGhlciBwZXJzb25uZWwg
-        d2l0aGluIHRoZSBhZ2VuY3kuIE5PQUEgc3RhZmYgY2FuIHN1Ym1pdCB0aGVp
-        ciBpbWFnZXMgdG8gdGhlIE5PQUEgUGhvdG8gTGlicmFyeS4gSW4gZG9pbmcg
-        c28sIHRoZXNlIGltYWdlcyB3aWxsIGJlIGZyZWVseSAuLi4iLCAiZGF0ZUxh
-        c3RDcmF3bGVkIjogIjIwMjQtMDEtMDRUMDM6MjE6MDAuMDAwMDAwMFoiLCAi
-        Y2FjaGVkUGFnZVVybCI6ICJodHRwOlwvXC9jYy5iaW5nai5jb21cL2NhY2hl
-        LmFzcHg/cT1jb2xsZWN0aW9uKyhzaXRlJTNhbm9hYS5nb3YpJmQ9NDc4OTU1
-        ODg5MjQzOTgxOCZta3Q9ZW4tVVMmc2V0bGFuZz1lbi1VUyZ3PWk3YjlQMmdr
-        eTVDQ0NnNWhQZXQzQTVBYmZ3TUdoYUtLIiwgImxhbmd1YWdlIjogImVuIiwg
-        ImlzTmF2aWdhdGlvbmFsIjogZmFsc2V9LCB7ImlkIjogImh0dHBzOlwvXC9h
-        cGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMuNCIs
-        ICJuYW1lIjogIu6AgEhpc3RvcmljYWwgZGF0YSByZXNvdXJjZXPugIEgLSDu
-        gIBOYXRpb25hbCBPY2VhbmljIGFuZCBBdG1vc3BoZXJpYyBBZG1pbmlzdHJh
-        dGlvbu6AgSIsICJ1cmwiOiAiaHR0cHM6XC9cL3d3dy5ub2FhLmdvdlwvZWR1
-        Y2F0aW9uXC9yZXNvdXJjZS1jb2xsZWN0aW9uc1wvZGF0YVwvaGlzdG9yaWNh
-        bCIsICJkYXRlUHVibGlzaGVkIjogIjIwMTgtMDktMDFUMDA6MDA6MDAuMDAw
-        MDAwMCIsICJkYXRlUHVibGlzaGVkRGlzcGxheVRleHQiOiAiU2VwIDEsIDIw
-        MTgiLCAiaXNGYW1pbHlGcmllbmRseSI6IDxEQVRBRE9HX0FQSV9FTkFCTEVE
-        PiwgImRpc3BsYXlVcmwiOiAiaHR0cHM6XC9cL+6AgHd3dy5ub2FhLmdvdu6A
-        gVwvZWR1Y2F0aW9uXC9yZXNvdXJjZS3ugIBjb2xsZWN0aW9uc+6AgVwvZGF0
-        YVwvaGlzdG9yaWNhbCIsICJzbmlwcGV0IjogIk5hdGlvbmFsIENlbnRlcnMg
-        Zm9yIEVudmlyb25tZW50YWwgSW5mb3JtYXRpb24gKE5DRUkpIFtBZHZhbmNl
-        ZF0gTkNFSSBob3N0cyBhbmQgcHJvdmlkZXMgcHVibGljIGFjY2VzcyB0byBv
-        bmUgb2YgdGhlIG1vc3Qgc2lnbmlmaWNhbnQgYXJjaGl2ZXMgZm9yIGVudmly
-        b25tZW50YWwgZGF0YSBvbiBFYXJ0aC4gT3ZlciAyNSBwZXRhYnl0ZXMgKDI1
-        IG1pbGxpb24gZ2lnYWJ5dGVzKSBvZiBhdG1vc3BoZXJpYywgY29hc3RhbCwg
-        b2NlYW5pYywgYW5kIGdlb3BoeXNpY2FsIGRhdGEgYXJlIGF2YWlsYWJsZS4g
-        SW50ZXJhY3RpdmUgbWFwIOKAoiBOdW1lcmljYWwgZGF0YSDigKIgU2F0ZWxs
-        aXRlIGltYWdlcnkgLi4uIiwgImRhdGVMYXN0Q3Jhd2xlZCI6ICIyMDI0LTAx
-        LTA5VDA0OjE5OjAwLjAwMDAwMDBaIiwgImNhY2hlZFBhZ2VVcmwiOiAiaHR0
-        cDpcL1wvY2MuYmluZ2ouY29tXC9jYWNoZS5hc3B4P3E9Y29sbGVjdGlvbiso
-        c2l0ZSUzYW5vYWEuZ292KSZkPTQ5Mjk4NDUyNzI4MzgzNDMmbWt0PWVuLVVT
-        JnNldGxhbmc9ZW4tVVMmdz1UZHZUYlBJTTZxTEIxWmFmLWNiSzg1eHBLU3lL
-        b3h2SCIsICJsYW5ndWFnZSI6ICJlbiIsICJpc05hdmlnYXRpb25hbCI6IGZh
-        bHNlfSwgeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNv
-        bVwvYXBpXC92N1wvI1dlYlBhZ2VzLjUiLCAibmFtZSI6ICJPY2VhbiBwb2xs
-        dXRpb24gYW5kIG1hcmluZSBkZWJyaXMgfCBOYXRpb25hbCBPY2VhbmljIGFu
-        ZCBBdG1vc3BoZXJpYyAuLi4iLCAidXJsIjogImh0dHBzOlwvXC93d3cubm9h
-        YS5nb3ZcL2VkdWNhdGlvblwvcmVzb3VyY2UtY29sbGVjdGlvbnNcL29jZWFu
-        LWNvYXN0c1wvb2NlYW4tcG9sbHV0aW9uIiwgImlzRmFtaWx5RnJpZW5kbHki
-        OiA8REFUQURPR19BUElfRU5BQkxFRD4sICJkaXNwbGF5VXJsIjogImh0dHBz
-        OlwvXC/ugIB3d3cubm9hYS5nb3bugIFcL2VkdWNhdGlvblwvcmVzb3VyY2Ut
-        7oCAY29sbGVjdGlvbnPugIFcL29jZWFuLWNvYXN0c1wvb2NlYW4tcG9sbHV0
-        aW9uIiwgInNuaXBwZXQiOiAiTWFyaW5lIGRlYnJpcy4gTWFyaW5lIGRlYnJp
-        cyBpcyBhIHBlcnNpc3RlbnQgcG9sbHV0aW9uIHByb2JsZW0gdGhhdCByZWFj
-        aGVzIHRocm91Z2hvdXQgdGhlIGVudGlyZSBvY2VhbiBhbmQgR3JlYXQgTGFr
-        ZXMuIE91ciBvY2VhbiBhbmQgd2F0ZXJ3YXlzIGFyZSBwb2xsdXRlZCB3aXRo
-        IGEgd2lkZSB2YXJpZXR5IG9mIG1hcmluZSBkZWJyaXMsIHJhbmdpbmcgZnJv
-        bSB0aW55IG1pY3JvcGxhc3RpY3MsIHNtYWxsZXIgdGhhbiA1IG1tLCB0byBk
-        ZXJlbGljdCBmaXNoaW5nIGdlYXIgYW5kIGFiYW5kb25lZCB2ZXNzZWxzLiBX
-        b3JsZHdpZGUsIGh1bmRyZWRzIG9mIG1hcmluZSBzcGVjaWVzIGhhdmUgYmVl
-        biAuLi4iLCAiZGF0ZUxhc3RDcmF3bGVkIjogIjIwMjQtMDEtMDlUMTY6MDU6
-        MDAuMDAwMDAwMFoiLCAiY2FjaGVkUGFnZVVybCI6ICJodHRwOlwvXC9jYy5i
-        aW5nai5jb21cL2NhY2hlLmFzcHg/cT1jb2xsZWN0aW9uKyhzaXRlJTNhbm9h
-        YS5nb3YpJmQ9NDU3OTI2MDEyMTMwNjQ1NiZta3Q9ZW4tVVMmc2V0bGFuZz1l
-        bi1VUyZ3PTFYOVhXOWk1MFI4aWFFQVcydl9NR0dwYnd6U0JHenVQIiwgImxh
-        bmd1YWdlIjogImVuIiwgImlzTmF2aWdhdGlvbmFsIjogZmFsc2V9LCB7Imlk
-        IjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3
-        XC8jV2ViUGFnZXMuNiIsICJuYW1lIjogIu6AgFJlYWwtdGltZSBkYXRhIHJl
-        c291cmNlc+6AgSAtIO6AgE5hdGlvbmFsIE9jZWFuaWMgYW5kIEF0bW9zcGhl
-        cmljIEFkbWluaXN0cmF0aW9u7oCBIiwgInVybCI6ICJodHRwczpcL1wvd3d3
-        Lm5vYWEuZ292XC9lZHVjYXRpb25cL3Jlc291cmNlLWNvbGxlY3Rpb25zXC9k
-        YXRhXC9yZWFsLXRpbWUiLCAiZGF0ZVB1Ymxpc2hlZCI6ICIyMDE5LTA5LTA5
-        VDAwOjAwOjAwLjAwMDAwMDAiLCAiZGF0ZVB1Ymxpc2hlZERpc3BsYXlUZXh0
-        IjogIlNlcCA5LCAyMDE5IiwgImlzRmFtaWx5RnJpZW5kbHkiOiA8REFUQURP
-        R19BUElfRU5BQkxFRD4sICJkaXNwbGF5VXJsIjogImh0dHBzOlwvXC/ugIB3
-        d3cubm9hYS5nb3bugIFcL2VkdWNhdGlvblwvcmVzb3VyY2Ut7oCAY29sbGVj
-        dGlvbnPugIFcL2RhdGFcL3JlYWwtdGltZSIsICJzbmlwcGV0IjogIlRoaXMg
-        7oCAY29sbGVjdGlvbu6AgSB1c2VzIHJlYWwtdGltZSBlbnZpcm9ubWVudGFs
-        IGRhdGEgaW4gc2VsZi1kaXJlY3RlZCBzdHVkZW50IGFjdGl2aXRpZXMgZXhw
-        bG9yaW5nIHRoZSBuYXR1cmFsIHdvcmxkLiBTdHVkZW50cyBsZWFybiBhYm91
-        dCBjYXJib24gY3ljbGluZywgb2NlYW4gYWNpZGlmaWNhdGlvbiwgYW5kIG90
-        aGVyIHBoZW5vbWVuYSByZWxhdGVkIHRvIGNsaW1hdGUgY2hhbmdlLiBUaGVz
-        ZSBtb2R1bGVzIGFyZSBkZXNpZ25lZCB3aXRoIGEgdGhyZWUtZGltZW5zaW9u
-        YWwgYXBwcm9hY2ggdG8gdGVhY2hpbmcgaW4gbWluZCBhbmQgdXNlIGEgZGF0
-        YSBsaXRlcmFjeSBmcmFtZXdvcmsuIiwgImRhdGVMYXN0Q3Jhd2xlZCI6ICIy
-        MDI0LTAxLTA3VDIxOjI3OjAwLjAwMDAwMDBaIiwgImNhY2hlZFBhZ2VVcmwi
-        OiAiaHR0cDpcL1wvY2MuYmluZ2ouY29tXC9jYWNoZS5hc3B4P3E9Y29sbGVj
-        dGlvbisoc2l0ZSUzYW5vYWEuZ292KSZkPTUwNDMwMjYyNDMxNTg1MDMmbWt0
-        PWVuLVVTJnNldGxhbmc9ZW4tVVMmdz1oNzlWMjQwNmd4RDFUZDlKU1hqd1hS
-        T1VaNmM4cm05XyIsICJsYW5ndWFnZSI6ICJlbiIsICJpc05hdmlnYXRpb25h
-        bCI6IGZhbHNlfSwgeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9z
-        b2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjciLCAibmFtZSI6ICLugIBE
-        YXRhIHJlc291cmNlcyBmb3IgZWR1Y2F0b3Jz7oCBIHwgTmF0aW9uYWwgT2Nl
-        YW5pYyBhbmQgQXRtb3NwaGVyaWMgLi4uIiwgInVybCI6ICJodHRwczpcL1wv
-        d3d3Lm5vYWEuZ292XC9lZHVjYXRpb25cL3Jlc291cmNlLWNvbGxlY3Rpb25z
-        XC9kYXRhIiwgImRhdGVQdWJsaXNoZWQiOiAiMjAyMS0wMS0xM1QwMDowMDow
-        MC4wMDAwMDAwIiwgImRhdGVQdWJsaXNoZWREaXNwbGF5VGV4dCI6ICJKYW4g
-        MTMsIDIwMjEiLCAiaXNGYW1pbHlGcmllbmRseSI6IDxEQVRBRE9HX0FQSV9F
-        TkFCTEVEPiwgImRpc3BsYXlVcmwiOiAiaHR0cHM6XC9cL+6AgHd3dy5ub2Fh
-        Lmdvdu6AgVwvZWR1Y2F0aW9uXC9yZXNvdXJjZS3ugIBjb2xsZWN0aW9uc+6A
-        gVwvZGF0YSIsICJzbmlwcGV0IjogIlRoaXMg7oCAY29sbGVjdGlvbu6AgSBo
-        aWdobGlnaHRzIG9jZWFuIGFuZCBhdG1vc3BoZXJlIGRhdGEgc291cmNlcyB0
-        aGF0IGFyZSBlYXN5IHRvIHVzZSBhbmQgYXBwcm9wcmlhdGUgZm9yIGNsYXNz
-        cm9vbXMgYW5kIGluZm9ybWFsIGxlYXJuaW5nIGVudmlyb25tZW50cy4gV2l0
-        aGluIGVhY2ggdG9waWMgYXJlYSwgdGhlIHJlc291cmNlcyBhcmUgc2VwYXJh
-        dGVkIGludG8gY2F0ZWdvcmllcyBiYXNlZCBvbiBsZXZlbCBvZiBjb250ZW50
-        OiBDbGFzc3Jvb20gcmVhZHkgbW9kdWxlcyBhcmUgZGVzaWduZWQgd2l0aCBl
-        ZHVjYXRvcnMgaW4gbWluZC4gVGhleSB1c2UgTk9BQSBkYXRhIGluIGxlc3Nv
-        biBwbGFucyBhbmQgLi4uIiwgImRhdGVMYXN0Q3Jhd2xlZCI6ICIyMDI0LTAx
-        LTA3VDA1OjQzOjAwLjAwMDAwMDBaIiwgImNhY2hlZFBhZ2VVcmwiOiAiaHR0
-        cDpcL1wvY2MuYmluZ2ouY29tXC9jYWNoZS5hc3B4P3E9Y29sbGVjdGlvbiso
-        c2l0ZSUzYW5vYWEuZ292KSZkPTQ1NDc0NDcxNTQyMTI5NTUmbWt0PWVuLVVT
-        JnNldGxhbmc9ZW4tVVMmdz11ZUs4Nks1enhHNFQ4S2pUdEdkdFdBS0tTcW9f
-        bnpPMyIsICJsYW5ndWFnZSI6ICJlbiIsICJpc05hdmlnYXRpb25hbCI6IGZh
-        bHNlfSwgeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNv
-        bVwvYXBpXC92N1wvI1dlYlBhZ2VzLjgiLCAibmFtZSI6ICJNYXJpbmUgTWFt
-        bWFsIGFuZCBTZWEgVHVydGxlIFJlc2VhcmNoIFRpc3N1ZSDugIBDb2xsZWN0
-        aW9u7oCBIiwgInVybCI6ICJodHRwczpcL1wvd3d3LmZpc2hlcmllcy5ub2Fh
-        Lmdvdlwvd2VzdC1jb2FzdFwvc2NpZW5jZS1kYXRhXC9tYXJpbmUtbWFtbWFs
-        LWFuZC1zZWEtdHVydGxlLXJlc2VhcmNoLXRpc3N1ZS1jb2xsZWN0aW9uIiwg
-        ImRhdGVQdWJsaXNoZWQiOiAiMjAyMC0wOC0wN1QwMDowMDowMC4wMDAwMDAw
-        IiwgImRhdGVQdWJsaXNoZWREaXNwbGF5VGV4dCI6ICJBdWcgNywgMjAyMCIs
-        ICJpc0ZhbWlseUZyaWVuZGx5IjogPERBVEFET0dfQVBJX0VOQUJMRUQ+LCAi
-        ZGlzcGxheVVybCI6ICJodHRwczpcL1wvd3d3LmZpc2hlcmllcy7ugIBub2Fh
-        Lmdvdu6AgVwvLi4uXC9tYXJpbmUtbWFtbWFsLWFuZC1zZWEtdHVydGxlLXJl
-        c2VhcmNoLXRpc3N1ZS3ugIBjb2xsZWN0aW9u7oCBIiwgInNuaXBwZXQiOiAi
-        VGhlIO6AgGNvbGxlY3Rpb27ugIEgY29tcHJpc2VzIG92ZXIgMjkwLDAwMCB0
-        aXNzdWUgYW5kIEROQSBzYW1wbGVzIGZyb20gMTE4IHNwZWNpZXMgY29sbGVj
-        dGVkIGdsb2JhbGx5IG92ZXIgdGhlIHBhc3QgMzAgeWVhcnMgKHdpdGggc29t
-        ZSBzYW1wbGVzIGRhdGluZyBiYWNrIG1vcmUgdGhhbiAxMDAgeWVhcnMpLiBT
-        YW1wbGVzIGFyZSBzdG9yZWQgY2FyZWZ1bGx5IGluIC0yMMKwQyBhbmQgLTgw
-        wrAgQyBmcmVlemVycyBhbmQgc2VjdXJlZCBieSBhIDI0LWhyIHRlbXBlcmF0
-        dXJlIG1vbml0b3Jpbmcgc3lzdGVtIGFuZCBnZW5lcmF0b3IgaW4gY2FzZSBv
-        ZiBhIHBvd2VyIGZhaWx1cmUuIFRoZSByaWNobmVzcyBvZiAuLi4iLCAiZGF0
-        ZUxhc3RDcmF3bGVkIjogIjIwMjQtMDEtMDhUMDQ6NDc6MDAuMDAwMDAwMFoi
-        LCAiY2FjaGVkUGFnZVVybCI6ICJodHRwOlwvXC9jYy5iaW5nai5jb21cL2Nh
-        Y2hlLmFzcHg/cT1jb2xsZWN0aW9uKyhzaXRlJTNhbm9hYS5nb3YpJmQ9NDk4
-        OTk5NjI4NDM3OTQwMCZta3Q9ZW4tVVMmc2V0bGFuZz1lbi1VUyZ3PW1udUhU
-        blBzbG9UZE1EekRfQUt3TXBvdjhfYk1mZ2tOIiwgImxhbmd1YWdlIjogImVu
-        IiwgImlzTmF2aWdhdGlvbmFsIjogZmFsc2V9LCB7ImlkIjogImh0dHBzOlwv
-        XC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMu
-        OSIsICJuYW1lIjogIu6AgERhdGEgQ29sbGVjdGlvbnPugIEgfCBORVNESVMi
-        LCAidXJsIjogImh0dHBzOlwvXC93d3cubmVzZGlzLm5vYWEuZ292XC9kYXRh
-        LXJlc2VhcmNoLXNlcnZpY2VzXC9kYXRhLWNvbGxlY3Rpb25zIiwgImlzRmFt
-        aWx5RnJpZW5kbHkiOiA8REFUQURPR19BUElfRU5BQkxFRD4sICJkaXNwbGF5
-        VXJsIjogImh0dHBzOlwvXC93d3cubmVzZGlzLu6AgG5vYWEuZ2927oCBXC9k
-        YXRhLXJlc2VhcmNoLXNlcnZpY2VzXC/ugIBkYXRhLWNvbGxlY3Rpb25z7oCB
-        IiwgInNuaXBwZXQiOiAi7oCARGF0YSBDb2xsZWN0aW9uc+6AgS4gTk9BQSBz
-        YXRlbGxpdGVzIG9ic2VydmUgdGhlIEVhcnRoIGZyb20gc3BhY2UsIGNvbnN0
-        YW50bHkgc2Nhbm5pbmcgdGhlIHBsYW5ldCB0byBjb2xsZWN0IHRoZSBtb3N0
-        IHVwLXRvLWRhdGUgZGF0YSBhYm91dCB0aGUgYXRtb3NwaGVyZSwgbGFuZCwg
-        YW5kIG9jZWFucy4gVGhpcyBpbmZvcm1hdGlvbiBpcyB2aXRhbCB0byBvdXIg
-        ZGFpbHkgbGl2ZXPigJRhbmQgaXMgaW4gZmFjdCB0aGUgYmFzaXMgZm9yIGV2
-        ZXJ5IHdlYXRoZXIgZm9yZWNhc3QuIEZyb20gb2ZmaWNpYWwgY29tcHJlaGVu
-        c2l2ZSBhc3Nlc3NtZW50cyBvZiB0aGUgZW52aXJvbm1lbnQgdG8gbWFwcGlu
-        ZyB0aGUgLi4uIiwgImRhdGVMYXN0Q3Jhd2xlZCI6ICIyMDI0LTAxLTA3VDEz
-        OjA1OjAwLjAwMDAwMDBaIiwgImNhY2hlZFBhZ2VVcmwiOiAiaHR0cDpcL1wv
-        Y2MuYmluZ2ouY29tXC9jYWNoZS5hc3B4P3E9Y29sbGVjdGlvbisoc2l0ZSUz
-        YW5vYWEuZ292KSZkPTQ2MDQ1NzQ1MDUyMzg3OTcmbWt0PWVuLVVTJnNldGxh
-        bmc9ZW4tVVMmdz1wb1hqVThGVE85VXQ2eTROSkkwZVZ4Tlc5U1Y0WVdrYyIs
-        ICJsYW5ndWFnZSI6ICJlbiIsICJpc05hdmlnYXRpb25hbCI6IGZhbHNlfSwg
-        eyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNvbVwvYXBp
-        XC92N1wvI1dlYlBhZ2VzLjEwIiwgIm5hbWUiOiAi7oCAV2F0ZXIgY3ljbGXu
-        gIEgfCDugIBOYXRpb25hbCBPY2VhbmljIGFuZCBBdG1vc3BoZXJpYyBBZG1p
-        bmlzdHJhdGlvbu6AgSIsICJ1cmwiOiAiaHR0cHM6XC9cL3d3dy5ub2FhLmdv
-        dlwvZWR1Y2F0aW9uXC9yZXNvdXJjZS1jb2xsZWN0aW9uc1wvZnJlc2h3YXRl
-        clwvd2F0ZXItY3ljbGUiLCAiZGF0ZVB1Ymxpc2hlZCI6ICIyMDE5LTAyLTAx
-        VDAwOjAwOjAwLjAwMDAwMDAiLCAiZGF0ZVB1Ymxpc2hlZERpc3BsYXlUZXh0
-        IjogIkZlYiAxLCAyMDE5IiwgImlzRmFtaWx5RnJpZW5kbHkiOiA8REFUQURP
-        R19BUElfRU5BQkxFRD4sICJkaXNwbGF5VXJsIjogImh0dHBzOlwvXC/ugIB3
-        d3cubm9hYS5nb3bugIFcL2VkdWNhdGlvblwvcmVzb3VyY2Ut7oCAY29sbGVj
-        dGlvbnPugIFcL2ZyZXNod2F0ZXJcL+6AgHdhdGVyLWN5Y2xl7oCBIiwgInNu
-        aXBwZXQiOiAiVGhlIO6AgHdhdGVyIGN5Y2xl7oCBIHNob3dzIHRoZSBjb250
-        aW51b3VzIG1vdmVtZW50IG9mIHdhdGVyIHdpdGhpbiB0aGUgRWFydGggYW5k
-        IGF0bW9zcGhlcmUuIEl0IGlzIGEgY29tcGxleCBzeXN0ZW0gdGhhdCBpbmNs
-        dWRlcyBtYW55IGRpZmZlcmVudCBwcm9jZXNzZXMuIExpcXVpZCB3YXRlciBl
-        dmFwb3JhdGVzIGludG8gd2F0ZXIgdmFwb3IsIGNvbmRlbnNlcyB0byBmb3Jt
-        IGNsb3VkcywgYW5kIHByZWNpcGl0YXRlcyBiYWNrIHRvIGVhcnRoIGluIHRo
-        ZSBmb3JtIG9mIHJhaW4gYW5kIHNub3cuIFdhdGVyIGluIGRpZmZlcmVudCBw
-        aGFzZXMgbW92ZXMgdGhyb3VnaCB0aGUgYXRtb3NwaGVyZSAuLi4iLCAiZGF0
-        ZUxhc3RDcmF3bGVkIjogIjIwMjQtMDEtMDhUMjI6MjY6MDAuMDAwMDAwMFoi
-        LCAiY2FjaGVkUGFnZVVybCI6ICJodHRwOlwvXC9jYy5iaW5nai5jb21cL2Nh
-        Y2hlLmFzcHg/cT1jb2xsZWN0aW9uKyhzaXRlJTNhbm9hYS5nb3YpJmQ9NDc0
-        MzY3NTc2NDIzNjQwOCZta3Q9ZW4tVVMmc2V0bGFuZz1lbi1VUyZ3PW9CakVX
-        TkVnNExwdExLMzVuZW1UN3ZhcE9IaExMQnh0IiwgImxhbmd1YWdlIjogImVu
-        IiwgImlzTmF2aWdhdGlvbmFsIjogZmFsc2V9LCB7ImlkIjogImh0dHBzOlwv
-        XC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMu
-        MTEiLCAibmFtZSI6ICLugIBDbGltYXRlIGNoYW5nZSBpbXBhY3Rz7oCBIC0g
-        7oCATmF0aW9uYWwgT2NlYW5pYyBhbmQgQXRtb3NwaGVyaWMgQWRtaW5pc3Ry
-        YXRpb27ugIEiLCAidXJsIjogImh0dHBzOlwvXC93d3cubm9hYS5nb3ZcL2Vk
-        dWNhdGlvblwvcmVzb3VyY2UtY29sbGVjdGlvbnNcL2NsaW1hdGVcL2NsaW1h
-        dGUtY2hhbmdlLWltcGFjdHMiLCAiZGF0ZVB1Ymxpc2hlZCI6ICIyMDIxLTA4
-        LTEzVDAwOjAwOjAwLjAwMDAwMDAiLCAiZGF0ZVB1Ymxpc2hlZERpc3BsYXlU
-        ZXh0IjogIkF1ZyAxMywgMjAyMSIsICJpc0ZhbWlseUZyaWVuZGx5IjogPERB
-        VEFET0dfQVBJX0VOQUJMRUQ+LCAiZGlzcGxheVVybCI6ICJodHRwczpcL1wv
-        7oCAd3d3Lm5vYWEuZ2927oCBXC9lZHVjYXRpb25cL3Jlc291cmNlLe6AgGNv
-        bGxlY3Rpb25z7oCBXC9jbGltYXRlXC/ugIBjbGltYXRlLWNoYW5nZS1pbXBh
-        Y3Rz7oCBIiwgInNuaXBwZXQiOiAiRWNvc3lzdGVtcyBhbmQgY29tbXVuaXRp
-        ZXMgaW4gdGhlIFVuaXRlZCBTdGF0ZXMgYW5kIGFyb3VuZCB0aGUgd29ybGQg
-        YXJlIGJlaW5nIGltcGFjdGVkIHRvZGF5LiBBIGNvbGxhZ2Ugb2YgdHlwaWNh
-        bCBjbGltYXRlIGFuZCB3ZWF0aGVyLXJlbGF0ZWQgZXZlbnRzOiBmbG9vZHMs
-        IGhlYXR3YXZlcywgZHJvdWdodCwgaHVycmljYW5lcywgd2lsZGZpcmVzIGFu
-        ZCBsb3NzIG9mIGdsYWNpYWwgaWNlLiAoSW1hZ2UgY3JlZGl0OiBOT0FBKSBH
-        bG9iYWwgdGVtcGVyYXR1cmVzIHJvc2UgYWJvdXQgMS45OMKwRiAoMS4xwrBD
-        KSBmcm9tIDE5MDEgdG8gMjAyMCwgYnV0IGNsaW1hdGUgY2hhbmdlIHJlZmVy
-        cyB0byAuLi4iLCAiZGF0ZUxhc3RDcmF3bGVkIjogIjIwMjQtMDEtMDhUMjA6
-        MzE6MDAuMDAwMDAwMFoiLCAiY2FjaGVkUGFnZVVybCI6ICJodHRwOlwvXC9j
-        Yy5iaW5nai5jb21cL2NhY2hlLmFzcHg/cT1jb2xsZWN0aW9uKyhzaXRlJTNh
-        bm9hYS5nb3YpJmQ9NTA1NjY3MTUwMjkwODg0NCZta3Q9ZW4tVVMmc2V0bGFu
-        Zz1lbi1VUyZ3PWNyczFsZ0JZdC1UN2dqZ2tnY0hfNndrdmVZdHlEV0ZFIiwg
-        Imxhbmd1YWdlIjogImVuIiwgImlzTmF2aWdhdGlvbmFsIjogZmFsc2V9LCB7
-        ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlc
-        L3Y3XC8jV2ViUGFnZXMuMTIiLCAibmFtZSI6ICLugIBQYXBlcndvcmsgUmVk
-        dWN0aW9uIEFjdCBnZW5lcmFsIGluZm9ybWF0aW9uIGZvcu6AgSB0aGUgcHVi
-        bGljIiwgInVybCI6ICJodHRwczpcL1wvd3d3Lm5vYWEuZ292XC9vcmdhbml6
-        YXRpb25cL2luZm9ybWF0aW9uLXRlY2hub2xvZ3lcL3BhcGVyd29yay1yZWR1
-        Y3Rpb24tYWN0LWdlbmVyYWwtaW5mb3JtYXRpb24tZm9yLXB1YmxpYyIsICJk
-        YXRlUHVibGlzaGVkIjogIjIwMjEtMDUtMDhUMDA6MDA6MDAuMDAwMDAwMCIs
-        ICJkYXRlUHVibGlzaGVkRGlzcGxheVRleHQiOiAiTWF5IDgsIDIwMjEiLCAi
-        aXNGYW1pbHlGcmllbmRseSI6IDxEQVRBRE9HX0FQSV9FTkFCTEVEPiwgImRp
-        c3BsYXlVcmwiOiAiaHR0cHM6XC9cL+6AgHd3dy5ub2FhLmdvdu6AgVwvb3Jn
-        YW5pemF0aW9uXC9pbmZvcm1hdGlvbi10ZWNobm9sb2d5XC9wYXBlcndvcmst
-        cmVkdWN0aW9uLWFjdC4uLiIsICJzbmlwcGV0IjogIkluIHRoZSBrZXl3b3Jk
-        IHNlYXJjaCBibGFuaywgdHlwZSBpbjog4oCcMDY0OOKAnSBhbmQg4oCcKHRo
-        ZSByZXN0IG9mIHRoZSBPTUIgY29udHJvbCBudW1iZXIgYXNzaWduZWQgdG8g
-        eW91ciDugIBjb2xsZWN0aW9u7oCB4oCdIHNlcGFyYXRlZCBieSB0aGUgd29y
-        ZCDigJxhbmTigJ07IGUuZy46IOKAnDA2NDjigJ0gYW5kIOKAnDAyMzTigJ0u
-        IElmIHRoaXMgaXMgYSBuZXcg7oCAY29sbGVjdGlvbu6AgSwgdHlwZSBpbiBh
-        IHdvcmQgbmVhciB0aGUgYmVnaW5uaW5nIG9mIHlvdXIg7oCAY29sbGVjdGlv
-        bu6AgeKAmXMgdGl0bGUsIGluc3RlYWQuIiwgImRhdGVMYXN0Q3Jhd2xlZCI6
-        ICIyMDI0LTAxLTAyVDE5OjIxOjAwLjAwMDAwMDBaIiwgImNhY2hlZFBhZ2VV
-        cmwiOiAiaHR0cDpcL1wvY2MuYmluZ2ouY29tXC9jYWNoZS5hc3B4P3E9Y29s
-        bGVjdGlvbisoc2l0ZSUzYW5vYWEuZ292KSZkPTQ2NzIxMjU3NTcwMzA2MjAm
-        bWt0PWVuLVVTJnNldGxhbmc9ZW4tVVMmdz1fYlRzY0tJbjBZWk1veTJUdU9I
-        emstWXBBaklfS290ciIsICJsYW5ndWFnZSI6ICJlbiIsICJpc05hdmlnYXRp
-        b25hbCI6IGZhbHNlfSwgeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWlj
-        cm9zb2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjEzIiwgIm5hbWUiOiAi
-        7oCAV29ybGQgT2NlYW4gRGF0YWJhc2XugIEgLSDugIBOYXRpb25hbCBDZW50
-        ZXJzIGZvciBFbnZpcm9ubWVudGFsIEluZm9ybWF0aW9u7oCBIiwgInVybCI6
-        ICJodHRwczpcL1wvd3d3Lm5jZWkubm9hYS5nb3ZcL3Byb2R1Y3RzXC93b3Js
-        ZC1vY2Vhbi1kYXRhYmFzZSIsICJpc0ZhbWlseUZyaWVuZGx5IjogPERBVEFE
-        T0dfQVBJX0VOQUJMRUQ+LCAiZGlzcGxheVVybCI6ICJodHRwczpcL1wvd3d3
-        Lm5jZWku7oCAbm9hYS5nb3bugIFcL3Byb2R1Y3RzXC/ugIB3b3JsZC1vY2Vh
-        bi1kYXRhYmFzZe6AgSIsICJzbmlwcGV0IjogIlRoZSDugIBXb3JsZCBPY2Vh
-        biBEYXRhYmFzZe6AgSAoV09EKSBpcyB3b3JsZCdzIGxhcmdlc3Qg7oCAY29s
-        bGVjdGlvbu6AgSBvZiB1bmlmb3JtbHkgZm9ybWF0dGVkLCBxdWFsaXR5IGNv
-        bnRyb2xsZWQsIHB1YmxpY2x5IGF2YWlsYWJsZSBvY2VhbiBwcm9maWxlIGRh
-        dGEuIEl0IGlzIGEgcG93ZXJmdWwgdG9vbCBmb3Igb2NlYW5vZ3JhcGhpYywg
-        Y2xpbWF0aWMsIGFuZCBlbnZpcm9ubWVudGFsIHJlc2VhcmNoLCBhbmQgdGhl
-        IGVuZCByZXN1bHQgb2YgbW9yZSB0aGFuIDIwIHllYXJzIG9mIGNvb3JkaW5h
-        dGVkIGVmZm9ydHMgdG8gaW5jb3Jwb3JhdGUgZGF0YSBmcm9tIGluc3RpdHV0
-        aW9ucywgYWdlbmNpZXMsIGluZGl2aWR1YWwgcmVzZWFyY2hlcnMsIGFuZCBk
-        YXRhIHJlY292ZXJ5IGluaXRpYXRpdmVzIGludG8gYSAuLi4iLCAiZGF0ZUxh
-        c3RDcmF3bGVkIjogIjIwMjQtMDEtMDdUMjE6MTQ6MDAuMDAwMDAwMFoiLCAi
-        Y2FjaGVkUGFnZVVybCI6ICJodHRwOlwvXC9jYy5iaW5nai5jb21cL2NhY2hl
-        LmFzcHg/cT1jb2xsZWN0aW9uKyhzaXRlJTNhbm9hYS5nb3YpJmQ9NDgyODIy
-        MjE5MjY4MTA0NSZta3Q9ZW4tVVMmc2V0bGFuZz1lbi1VUyZ3PTBzeGRsbmlU
-        OEdpVG53T1pSTzJvajFYWjJyOTZrVDhCIiwgImxhbmd1YWdlIjogImVuIiwg
-        ImlzTmF2aWdhdGlvbmFsIjogZmFsc2V9LCB7ImlkIjogImh0dHBzOlwvXC9h
-        cGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMuMTQi
-        LCAibmFtZSI6ICLugIBPY2VhbiBmbG9vciBmZWF0dXJlc+6AgSAtIO6AgE5h
-        dGlvbmFsIE9jZWFuaWMgYW5kIEF0bW9zcGhlcmljIEFkbWluaXN0cmF0aW9u
-        7oCBIiwgInVybCI6ICJodHRwczpcL1wvd3d3Lm5vYWEuZ292XC9lZHVjYXRp
-        b25cL3Jlc291cmNlLWNvbGxlY3Rpb25zXC9vY2Vhbi1jb2FzdHNcL29jZWFu
-        LWZsb29yLWZlYXR1cmVzIiwgImRhdGVQdWJsaXNoZWQiOiAiMjAyMC0wNS0w
-        MVQwMDowMDowMC4wMDAwMDAwIiwgImRhdGVQdWJsaXNoZWREaXNwbGF5VGV4
-        dCI6ICJNYXkgMSwgMjAyMCIsICJpc0ZhbWlseUZyaWVuZGx5IjogPERBVEFE
-        T0dfQVBJX0VOQUJMRUQ+LCAiZGlzcGxheVVybCI6ICJodHRwczpcL1wv7oCA
-        d3d3Lm5vYWEuZ2927oCBXC9lZHVjYXRpb25cL3Jlc291cmNlLe6AgGNvbGxl
-        Y3Rpb25z7oCBXC9vY2Vhbi1jb2FzdHNcL+6AgG9jZWFuLWZsb29yLWZlYXR1
-        cmVz7oCBIiwgInNuaXBwZXQiOiAiV2hpbGUgdGhlIG9jZWFuIGhhcyBhbiBh
-        dmVyYWdlIGRlcHRoIG9mIDIuMyBtaWxlcywgdGhlIHNoYXBlIGFuZCBkZXB0
-        aCBvZiB0aGUgc2VhZmxvb3IgaXMgY29tcGxleC4gU29tZSBmZWF0dXJlcywg
-        bGlrZSBjYW55b25zIGFuZCBzZWFtb3VudHMsIG1pZ2h0IGxvb2sgZmFtaWxp
-        YXIsIHdoaWxlIG90aGVycywgc3VjaCBhcyBoeWRyb3RoZXJtYWwgdmVudHMg
-        YW5kIG1ldGhhbmUgc2VlcHMsIGFyZSB1bmlxdWUgdG8gdGhlIGRlZXAuIFRo
-        aXMgZ3JhcGhpYyBzaG93cyBzZXZlcmFsIO6AgG9jZWFuIGZsb29yIGZlYXR1
-        cmVz7oCBIG9uIGEgc2NhbGUgZnJvbSAwLTM1LDAwMCBmZWV0IGJlbG93IHNl
-        YSBsZXZlbC4iLCAiZGF0ZUxhc3RDcmF3bGVkIjogIjIwMjQtMDEtMDlUMDg6
-        MDc6MDAuMDAwMDAwMFoiLCAiY2FjaGVkUGFnZVVybCI6ICJodHRwOlwvXC9j
-        Yy5iaW5nai5jb21cL2NhY2hlLmFzcHg/cT1jb2xsZWN0aW9uKyhzaXRlJTNh
-        bm9hYS5nb3YpJmQ9NDU1NTQ0NDUyMzYzNzYyNiZta3Q9ZW4tVVMmc2V0bGFu
-        Zz1lbi1VUyZ3PWt3QXZHNVY1OVFBWGs2WW1fclg4Sll6amQzU0dWZTNMIiwg
-        Imxhbmd1YWdlIjogImVuIiwgImlzTmF2aWdhdGlvbmFsIjogZmFsc2V9LCB7
-        ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlc
-        L3Y3XC8jV2ViUGFnZXMuMTUiLCAibmFtZSI6ICJOT0FBIE9wZW4gRGF0YSBE
-        aXNzZW1pbmF0aW9uIChOT0REKSIsICJ1cmwiOiAiaHR0cHM6XC9cL3d3dy5u
-        b2FhLmdvdlwvaW5mb3JtYXRpb24tdGVjaG5vbG9neVwvb3Blbi1kYXRhLWRp
-        c3NlbWluYXRpb24iLCAiZGF0ZVB1Ymxpc2hlZCI6ICIyMDIzLTEwLTI2VDAw
-        OjAwOjAwLjAwMDAwMDAiLCAiZGF0ZVB1Ymxpc2hlZERpc3BsYXlUZXh0Ijog
-        Ik9jdCAyNiwgMjAyMyIsICJpc0ZhbWlseUZyaWVuZGx5IjogPERBVEFET0df
-        QVBJX0VOQUJMRUQ+LCAiZGlzcGxheVVybCI6ICJodHRwczpcL1wv7oCAd3d3
-        Lm5vYWEuZ2927oCBXC9pbmZvcm1hdGlvbi10ZWNobm9sb2d5XC9vcGVuLWRh
-        dGEtZGlzc2VtaW5hdGlvbiIsICJzbmlwcGV0IjogIk5PREQgY29tYmluZXMg
-        dGhyZWUgaW5jcmVkaWJseSBwb3dlcmZ1bCByZXNvdXJjZXM6IE5PQUEncyBl
-        eHBhbnNpdmUg7oCAY29sbGVjdGlvbu6AgSBvZiBoaWdoLXF1YWxpdHkgZW52
-        aXJvbm1lbnRhbCBkYXRhIGFuZCBleHBlcnRpc2UsIHRoZSB2YXN0IGluZnJh
-        c3RydWN0dXJlIGFuZCBzY2FsYWJsZSBjb21wdXRpbmcgY2FwYWJpbGl0aWVz
-        IG9mIG91ciBpbmR1c3RyeSBwYXJ0bmVycywgYW5kIHRoZSBpbm5vdmF0aXZl
-        IGVuZXJneSBvZiB0aGUgQW1lcmljYW4gZWNvbm9teS4gTk9ERCBjdXJyZW50
-        bHkgd29ya3Mgd2l0aCB0aHJlZSBpbmZyYXN0cnVjdHVyZS1hcy1hLXNlcnZp
-        Y2UgKElhYVMpIHByb3ZpZGVycyB0byAuLi4iLCAiZGF0ZUxhc3RDcmF3bGVk
-        IjogIjIwMjQtMDEtMDRUMTE6MzA6MDAuMDAwMDAwMFoiLCAiY2FjaGVkUGFn
-        ZVVybCI6ICJodHRwOlwvXC9jYy5iaW5nai5jb21cL2NhY2hlLmFzcHg/cT1j
-        b2xsZWN0aW9uKyhzaXRlJTNhbm9hYS5nb3YpJmQ9NDYxNTcyODU0NTg1Nzc5
-        MyZta3Q9ZW4tVVMmc2V0bGFuZz1lbi1VUyZ3PWo2TlYwa2NISF9NeV9jeGN2
-        SGRsNDhzQ2ZiZUE1c0l2IiwgImxhbmd1YWdlIjogImVuIiwgImlzTmF2aWdh
-        dGlvbmFsIjogZmFsc2V9LCB7ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5t
-        aWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMuMTYiLCAibmFtZSI6
-        ICLugIBNZXRhZGF0Ye6AgSB8IE5hdGlvbmFsIENlbnRlcnMgZm9yIEVudmly
-        b25tZW50YWwgSW5mb3JtYXRpb24gKE5DRUkpIiwgInVybCI6ICJodHRwczpc
-        L1wvd3d3Lm5jZWkubm9hYS5nb3ZcL3Jlc291cmNlc1wvbWV0YWRhdGEiLCAi
-        aXNGYW1pbHlGcmllbmRseSI6IDxEQVRBRE9HX0FQSV9FTkFCTEVEPiwgImRp
-        c3BsYXlVcmwiOiAiaHR0cHM6XC9cL3d3dy5uY2VpLu6AgG5vYWEuZ2927oCB
-        XC9yZXNvdXJjZXNcL+6AgG1ldGFkYXRh7oCBIiwgInNuaXBwZXQiOiAiVGhl
-        IO6AgENvbGxlY3Rpb27ugIEgTWFuYWdlciBpcyBhIHNpbmdsZSBzeXN0ZW0g
-        Y29uc2lzdGluZyBvZiBkaWZmZXJlbnQgdG9vbHMgd2hpY2ggYWxsb3dzIE5P
-        QUEgdXNlcnMgdG8gaW1wb3J0LCBjcmVhdGUsIHVwZGF0ZSwgc3RvcmUsIHJl
-        dXNlLCBleHBvcnQsIHZhbGlkYXRlLCBhc3Nlc3MgYW5kIHB1Ymxpc2ggdGhl
-        aXIg7oCAY29sbGVjdGlvbu6AgSDugIBtZXRhZGF0Ye6AgS4gVGhpcyBzeXN0
-        ZW0gZW5zdXJlcyB0aGF0IGFsbCDugIBtZXRhZGF0Ye6AgSBtZWV0IE5PQUEg
-        7oCAbWV0YWRhdGHugIEgc3RhbmRhcmQgcHJhY3RpY2VzLiIsICJkYXRlTGFz
-        dENyYXdsZWQiOiAiMjAyNC0wMS0wNlQxMjowODowMC4wMDAwMDAwWiIsICJj
-        YWNoZWRQYWdlVXJsIjogImh0dHA6XC9cL2NjLmJpbmdqLmNvbVwvY2FjaGUu
-        YXNweD9xPWNvbGxlY3Rpb24rKHNpdGUlM2Fub2FhLmdvdikmZD00OTI1MzUy
-        NzQzODYyNDU0Jm1rdD1lbi1VUyZzZXRsYW5nPWVuLVVTJnc9N1VEeHRrRWlr
-        Z2VfeXFSbTAzNlNNV3BUeFM5YmdxRGYiLCAibGFuZ3VhZ2UiOiAiZW4iLCAi
-        aXNOYXZpZ2F0aW9uYWwiOiBmYWxzZX0sIHsiaWQiOiAiaHR0cHM6XC9cL2Fw
-        aS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4xNyIs
-        ICJuYW1lIjogIu6AgE9jZWFuIGFjaWRpZmljYXRpb27ugIEgLSDugIBOYXRp
-        b25hbCBPY2VhbmljIGFuZCBBdG1vc3BoZXJpYyBBZG1pbmlzdHJhdGlvbu6A
-        gSIsICJ1cmwiOiAiaHR0cHM6XC9cL3d3dy5ub2FhLmdvdlwvZWR1Y2F0aW9u
-        XC9yZXNvdXJjZS1jb2xsZWN0aW9uc1wvb2NlYW4tY29hc3RzXC9vY2Vhbi1h
-        Y2lkaWZpY2F0aW9uIiwgImRhdGVQdWJsaXNoZWQiOiAiMjAyMC0wNC0wMVQw
-        MDowMDowMC4wMDAwMDAwIiwgImRhdGVQdWJsaXNoZWREaXNwbGF5VGV4dCI6
-        ICJBcHIgMSwgMjAyMCIsICJpc0ZhbWlseUZyaWVuZGx5IjogPERBVEFET0df
-        QVBJX0VOQUJMRUQ+LCAiZGlzcGxheVVybCI6ICJodHRwczpcL1wv7oCAd3d3
-        Lm5vYWEuZ2927oCBXC9lZHVjYXRpb25cL3Jlc291cmNlLe6AgGNvbGxlY3Rp
-        b25z7oCBXC9vY2Vhbi1jb2FzdHNcL+6AgG9jZWFuLWFjaWRpZmljYXRpb27u
-        gIEiLCAic25pcHBldCI6ICLugIBPY2VhbiBhY2lkaWZpY2F0aW9u7oCBIGlt
-        cGFjdHMgb24gZmlzaCBhbmQgc2Vhd2VlZHMuIENoYW5nZXMgaW4gb2NlYW4g
-        Y2hlbWlzdHJ5IGNhbiBhZmZlY3QgdGhlIGJlaGF2aW9yIG9mIG5vbi1jYWxj
-        aWZ5aW5nIG9yZ2FuaXNtcyBhcyB3ZWxsLiBUaGUgYWJpbGl0eSBvZiBzb21l
-        IGZpc2gsIGxpa2UgY2xvd25maXNoLCB0byBkZXRlY3QgcHJlZGF0b3JzIGlz
-        IGRlY3JlYXNlZCBpbiBtb3JlIGFjaWRpYyB3YXRlcnMuIFN0dWRpZXMgaGF2
-        ZSBzaG93biB0aGF0IGRlY3JlYXNlZCBwSCBsZXZlbHMgYWxzbyBhZmZlY3Qg
-        dGhlIGFiaWxpdHkgb2YgbGFydmFsIGNsb3duZmlzaCB0byBsb2NhdGUgc3Vp
-        dGFibGUgLi4uIiwgImRhdGVMYXN0Q3Jhd2xlZCI6ICIyMDI0LTAxLTA5VDA3
-        OjEyOjAwLjAwMDAwMDBaIiwgImNhY2hlZFBhZ2VVcmwiOiAiaHR0cDpcL1wv
-        Y2MuYmluZ2ouY29tXC9jYWNoZS5hc3B4P3E9Y29sbGVjdGlvbisoc2l0ZSUz
-        YW5vYWEuZ292KSZkPTQ5NTY5NzY3MjA4NDI2NDImbWt0PWVuLVVTJnNldGxh
-        bmc9ZW4tVVMmdz1ONXVaZVlnSl9Gck9MRElvbWZyV2lCalRaaDY0WWJBRSIs
-        ICJsYW5ndWFnZSI6ICJlbiIsICJpc05hdmlnYXRpb25hbCI6IGZhbHNlfSwg
-        eyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNvbVwvYXBp
-        XC92N1wvI1dlYlBhZ2VzLjE4IiwgIm5hbWUiOiAiV2hhdCB0byBEbyBXaXRo
-        IEJvZHkgUGFydHMgb2YgRW5kYW5nZXJlZCBTcGVjaWVzIHwgTk9BQSBGaXNo
-        ZXJpZXMiLCAidXJsIjogImh0dHBzOlwvXC93d3cuZmlzaGVyaWVzLm5vYWEu
-        Z292XC9uYXRpb25hbFwvZW5kYW5nZXJlZC1zcGVjaWVzLWNvbnNlcnZhdGlv
-        blwvcHJvdGVjdGVkLXNwZWNpZXMtcGFydHMiLCAiaXNGYW1pbHlGcmllbmRs
-        eSI6IDxEQVRBRE9HX0FQSV9FTkFCTEVEPiwgImRpc3BsYXlVcmwiOiAiaHR0
-        cHM6XC9cL3d3dy5maXNoZXJpZXMu7oCAbm9hYS5nb3bugIFcL25hdGlvbmFs
-        XC9lbmRhbmdlcmVkLXNwZWNpZXMtY29uc2VydmF0aW9uXC9wcm90ZWN0ZWQu
-        Li4iLCAic25pcHBldCI6ICJSZWNlaXB0LCB0cmFuc2ZlciwgYW5kIGxvYW5z
-        IG9mIG1hcmluZSBtYW1tYWxzIHBhcnRzIG11c3QgYmUgZm9yIHRoZSBwdXJw
-        b3NlIG9mIHNjaWVudGlmaWMgcmVzZWFyY2gsIG1haW50ZW5hbmNlIGluIGEg
-        cHJvZmVzc2lvbmFsbHkgY3VyYXRlZCBzY2llbnRpZmljIO6AgGNvbGxlY3Rp
-        b27ugIEsIG9yIGVkdWNhdGlvbi4gTG9hbnMgbXVzdCBiZSBsZXNzIHRoYW4g
-        MTIgbW9udGhzLCBhIHJlY29yZCBvZiB0aGUgbG9hbiBtdXN0IGJlIG1haW50
-        YWluZWQsIGFuZCB0aGUgcmVjaXBpZW50IG11c3QgYmUgYXV0aG9yaXplZC4g
-        WW91IG1heSBub3QgdHJhbnNmZXIgcGFydHMgZm9yIHBlcnNvbmFsIGNvbGxl
-        Y3Rpb25zLiIsICJkYXRlTGFzdENyYXdsZWQiOiAiMjAyNC0wMS0wN1QyMjo1
-        OTowMC4wMDAwMDAwWiIsICJjYWNoZWRQYWdlVXJsIjogImh0dHA6XC9cL2Nj
-        LmJpbmdqLmNvbVwvY2FjaGUuYXNweD9xPWNvbGxlY3Rpb24rKHNpdGUlM2Fu
-        b2FhLmdvdikmZD00ODYxOTgwNDk4MjY0NTA0Jm1rdD1lbi1VUyZzZXRsYW5n
-        PWVuLVVTJnc9c2pDZ3g0LWM2XzZpLVZGSm9YdW1lSFVySVZzQjZ2eHMiLCAi
-        bGFuZ3VhZ2UiOiAiZW4iLCAiaXNOYXZpZ2F0aW9uYWwiOiBmYWxzZX0sIHsi
-        aWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwv
-        djdcLyNXZWJQYWdlcy4xOSIsICJuYW1lIjogIu6AgE9jZWFuIGN1cnJlbnRz
-        7oCBIHwg7oCATmF0aW9uYWwgT2NlYW5pYyBhbmQgQXRtb3NwaGVyaWMgQWRt
-        aW5pc3RyYXRpb27ugIEiLCAidXJsIjogImh0dHBzOlwvXC93d3cubm9hYS5n
-        b3ZcL2VkdWNhdGlvblwvcmVzb3VyY2UtY29sbGVjdGlvbnNcL29jZWFuLWNv
-        YXN0c1wvb2NlYW4tY3VycmVudHMiLCAiZGF0ZVB1Ymxpc2hlZCI6ICIyMDEx
-        LTA4LTAxVDAwOjAwOjAwLjAwMDAwMDAiLCAiZGF0ZVB1Ymxpc2hlZERpc3Bs
-        YXlUZXh0IjogIkF1ZyAxLCAyMDExIiwgImlzRmFtaWx5RnJpZW5kbHkiOiA8
-        REFUQURPR19BUElfRU5BQkxFRD4sICJkaXNwbGF5VXJsIjogImh0dHBzOlwv
-        XC/ugIB3d3cubm9hYS5nb3bugIFcL2VkdWNhdGlvblwvcmVzb3VyY2Ut7oCA
-        Y29sbGVjdGlvbnPugIFcL29jZWFuLWNvYXN0c1wv7oCAb2NlYW4tY3VycmVu
-        dHPugIEiLCAic25pcHBldCI6ICJMYXJnZS1zY2FsZSBzdXJmYWNlIO6AgG9j
-        ZWFuIGN1cnJlbnRz7oCBIGFyZSBkcml2ZW4gYnkgZ2xvYmFsIHdpbmQgc3lz
-        dGVtcyB0aGF0IGFyZSBmdWVsZWQgYnkgZW5lcmd5IGZyb20gdGhlIHN1bi4g
-        VGhlc2UgY3VycmVudHMgdHJhbnNmZXIgaGVhdCBmcm9tIHRoZSB0cm9waWNz
-        IHRvIHRoZSBwb2xhciByZWdpb25zLCBpbmZsdWVuY2luZyBsb2NhbCBhbmQg
-        Z2xvYmFsIGNsaW1hdGUuIFRoZSB3YXJtIEd1bGYgU3RyZWFtIG9yaWdpbmF0
-        aW5nIGluIHRoZSB0cm9waWNhbCBDYXJpYmJlYW4sIGZvciBpbnN0YW5jZSwg
-        Y2FycmllcyBhYm91dCAxNTAgdGltZXMgbW9yZSB3YXRlciB0aGFuIHRoZSBB
-        bWF6b24gUml2ZXIuIiwgImRhdGVMYXN0Q3Jhd2xlZCI6ICIyMDI0LTAxLTA5
-        VDE5OjAzOjAwLjAwMDAwMDBaIiwgImNhY2hlZFBhZ2VVcmwiOiAiaHR0cDpc
-        L1wvY2MuYmluZ2ouY29tXC9jYWNoZS5hc3B4P3E9Y29sbGVjdGlvbisoc2l0
-        ZSUzYW5vYWEuZ292KSZkPTQ2OTA0Njk3MDg3MDY5NjkmbWt0PWVuLVVTJnNl
-        dGxhbmc9ZW4tVVMmdz1ZTXk1MkdIMEtiSlUtc1lra3pjTHlDa2tMMW1jRklw
-        YyIsICJsYW5ndWFnZSI6ICJlbiIsICJpc05hdmlnYXRpb25hbCI6IGZhbHNl
-        fV19LCAicmFua2luZ1Jlc3BvbnNlIjogeyJtYWlubGluZSI6IHsiaXRlbXMi
-        OiBbeyJhbnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJlc3VsdEluZGV4Ijog
-        MCwgInZhbHVlIjogeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9z
-        b2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjAifX0sIHsiYW5zd2VyVHlw
-        ZSI6ICJXZWJQYWdlcyIsICJyZXN1bHRJbmRleCI6IDEsICJ2YWx1ZSI6IHsi
-        aWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwv
-        djdcLyNXZWJQYWdlcy4xIn19LCB7ImFuc3dlclR5cGUiOiAiV2ViUGFnZXMi
-        LCAicmVzdWx0SW5kZXgiOiAyLCAidmFsdWUiOiB7ImlkIjogImh0dHBzOlwv
-        XC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMu
-        MiJ9fSwgeyJhbnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJlc3VsdEluZGV4
-        IjogMywgInZhbHVlIjogeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWlj
-        cm9zb2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjMifX0sIHsiYW5zd2Vy
-        VHlwZSI6ICJXZWJQYWdlcyIsICJyZXN1bHRJbmRleCI6IDQsICJ2YWx1ZSI6
-        IHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2Fw
-        aVwvdjdcLyNXZWJQYWdlcy40In19LCB7ImFuc3dlclR5cGUiOiAiV2ViUGFn
-        ZXMiLCAicmVzdWx0SW5kZXgiOiA1LCAidmFsdWUiOiB7ImlkIjogImh0dHBz
-        OlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFn
-        ZXMuNSJ9fSwgeyJhbnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJlc3VsdElu
-        ZGV4IjogNiwgInZhbHVlIjogeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcu
-        bWljcm9zb2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjYifX0sIHsiYW5z
-        d2VyVHlwZSI6ICJXZWJQYWdlcyIsICJyZXN1bHRJbmRleCI6IDcsICJ2YWx1
-        ZSI6IHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21c
-        L2FwaVwvdjdcLyNXZWJQYWdlcy43In19LCB7ImFuc3dlclR5cGUiOiAiV2Vi
-        UGFnZXMiLCAicmVzdWx0SW5kZXgiOiA4LCAidmFsdWUiOiB7ImlkIjogImh0
-        dHBzOlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2Vi
-        UGFnZXMuOCJ9fSwgeyJhbnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJlc3Vs
-        dEluZGV4IjogOSwgInZhbHVlIjogeyJpZCI6ICJodHRwczpcL1wvYXBpLmJp
-        bmcubWljcm9zb2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjkifX0sIHsi
-        YW5zd2VyVHlwZSI6ICJXZWJQYWdlcyIsICJyZXN1bHRJbmRleCI6IDEwLCAi
-        dmFsdWUiOiB7ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3NvZnQu
-        Y29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMuMTAifX0sIHsiYW5zd2VyVHlwZSI6
-        ICJXZWJQYWdlcyIsICJyZXN1bHRJbmRleCI6IDExLCAidmFsdWUiOiB7Imlk
-        IjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3
-        XC8jV2ViUGFnZXMuMTEifX0sIHsiYW5zd2VyVHlwZSI6ICJXZWJQYWdlcyIs
-        ICJyZXN1bHRJbmRleCI6IDEyLCAidmFsdWUiOiB7ImlkIjogImh0dHBzOlwv
-        XC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMu
-        MTIifX0sIHsiYW5zd2VyVHlwZSI6ICJXZWJQYWdlcyIsICJyZXN1bHRJbmRl
-        eCI6IDEzLCAidmFsdWUiOiB7ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5t
-        aWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMuMTMifX0sIHsiYW5z
-        d2VyVHlwZSI6ICJXZWJQYWdlcyIsICJyZXN1bHRJbmRleCI6IDE0LCAidmFs
-        dWUiOiB7ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29t
-        XC9hcGlcL3Y3XC8jV2ViUGFnZXMuMTQifX0sIHsiYW5zd2VyVHlwZSI6ICJX
-        ZWJQYWdlcyIsICJyZXN1bHRJbmRleCI6IDE1LCAidmFsdWUiOiB7ImlkIjog
-        Imh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8j
-        V2ViUGFnZXMuMTUifX0sIHsiYW5zd2VyVHlwZSI6ICJXZWJQYWdlcyIsICJy
-        ZXN1bHRJbmRleCI6IDE2LCAidmFsdWUiOiB7ImlkIjogImh0dHBzOlwvXC9h
-        cGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMuMTYi
-        fX0sIHsiYW5zd2VyVHlwZSI6ICJXZWJQYWdlcyIsICJyZXN1bHRJbmRleCI6
-        IDE3LCAidmFsdWUiOiB7ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNy
-        b3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMuMTcifX0sIHsiYW5zd2Vy
-        VHlwZSI6ICJXZWJQYWdlcyIsICJyZXN1bHRJbmRleCI6IDE4LCAidmFsdWUi
-        OiB7ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9h
-        cGlcL3Y3XC8jV2ViUGFnZXMuMTgifX0sIHsiYW5zd2VyVHlwZSI6ICJXZWJQ
-        YWdlcyIsICJyZXN1bHRJbmRleCI6IDE5LCAidmFsdWUiOiB7ImlkIjogImh0
-        dHBzOlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2Vi
-        UGFnZXMuMTkifX1dfX19
-  recorded_at: Wed, 10 Jan 2024 02:32:39 GMT
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "collection
+        (site:noaa.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=collection+(site%3anoaa.gov)",
+        "totalEstimatedMatches": 3830000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Weather and atmosphere data resources | National Oceanic and ...",
+        "url": "https:\/\/www.noaa.gov\/education\/resource-collections\/data\/weather-atmosphere",
+        "datePublished": "2018-09-01T00:00:00.0000000", "datePublishedDisplayText":
+        "Sep 1, 2018", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.noaa.gov\/education\/resource-collections\/data\/weather-atmosphere",
+        "snippet": "This collection uses real-time environmental data in self-directed
+        student activities exploring the natural world. Students learn about carbon
+        cycling, ocean acidification, and other phenomena related to climate change.
+        These modules are designed with a three-dimensional approach to teaching in
+        mind and use a data literacy framework.", "dateLastCrawled": "2024-01-09T07:28:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=collection+(site%3anoaa.gov)&d=4686780184986437&mkt=en-US&setlang=en-US&w=5FHXnt1gT3JTTVhBWlLUX-U5kDQsOfdM",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Technology and engineering | National Oceanic and Atmospheric ...",
+        "url": "https:\/\/www.noaa.gov\/education\/resource-collections\/special-topics\/technology-engineering",
+        "datePublished": "2019-10-16T00:00:00.0000000", "datePublishedDisplayText":
+        "Oct 16, 2019", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.noaa.gov\/education\/resource-collections\/special-topics\/technology-engineering",
+        "snippet": "Technology and engineering. If it weren’t for our satellites,
+        buoys, planes, and ships, NOAA wouldn’t have nearly the amount of data it
+        does today. That’s why technology and innovation are key ingredients for cutting-edge
+        science. In this collection of lessons, mobile apps, videos, data, and more,
+        you can learn how NOAA uses technology ...", "dateLastCrawled": "2024-01-07T07:29:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=collection+(site%3anoaa.gov)&d=4587029572682245&mkt=en-US&setlang=en-US&w=2wOZDgxQzHcl8PAc4_v2t2yaA9oLOVhY",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Water cycle | National Oceanic and Atmospheric Administration",
+        "url": "https:\/\/www.noaa.gov\/education\/resource-collections\/freshwater\/water-cycle",
+        "datePublished": "2019-02-01T00:00:00.0000000", "datePublishedDisplayText":
+        "Feb 1, 2019", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.noaa.gov\/education\/resource-collections\/freshwater\/water-cycle",
+        "snippet": "The water cycle shows the continuous movement of water within
+        the Earth and atmosphere. It is a complex system that includes many different
+        processes. Liquid water evaporates into water vapor, condenses to form clouds,
+        and precipitates back to earth in the form of rain and snow. Water in different
+        phases moves through the atmosphere ...", "dateLastCrawled": "2024-01-08T22:26:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=collection+(site%3anoaa.gov)&d=4743675764236408&mkt=en-US&setlang=en-US&w=oBjEWNEg4LptLK35nemT7vapOHhLLBxt",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Data Collections | NESDIS", "url": "https:\/\/www.nesdis.noaa.gov\/data-research-services\/data-collections",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nesdis.noaa.gov\/data-research-services\/data-collections",
+        "snippet": "Data Collections. NOAA satellites observe the Earth from space,
+        constantly scanning the planet to collect the most up-to-date data about the
+        atmosphere, land, and oceans. This information is vital to our daily lives—and
+        is in fact the basis for every weather forecast. From official comprehensive
+        assessments of the environment to mapping the ...", "dateLastCrawled": "2024-01-07T13:05:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=collection+(site%3anoaa.gov)&d=4604574505238797&mkt=en-US&setlang=en-US&w=poXjU8FTO9Ut6y4NJI0eVxNW9SV4YWkc",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Marine Mammal and Sea Turtle Research Tissue Collection", "url":
+        "https:\/\/www.fisheries.noaa.gov\/west-coast\/science-data\/marine-mammal-and-sea-turtle-research-tissue-collection",
+        "datePublished": "2020-08-07T00:00:00.0000000", "datePublishedDisplayText":
+        "Aug 7, 2020", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/...\/marine-mammal-and-sea-turtle-research-tissue-collection",
+        "snippet": "The collection comprises over 290,000 tissue and DNA samples
+        from 118 species collected globally over the past 30 years (with some samples
+        dating back more than 100 years). Samples are stored carefully in -20°C and
+        -80° C freezers and secured by a 24-hr temperature monitoring system and generator
+        in case of a power failure. The richness of ...", "dateLastCrawled": "2024-01-08T04:47:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=collection+(site%3anoaa.gov)&d=4989996284379400&mkt=en-US&setlang=en-US&w=mnuHTnPsloTdMDzD_AKwMpov8_bMfgkN",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "NOAA Photo Library > Home", "url": "https:\/\/www.photolib.noaa.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.photolib.noaa.gov",
+        "snippet": "The NOAA Photo Library contains over 80,000 images that showcase
+        the work of NOAA. Explore images in a wide array of collections and galleries
+        based on the work of NOAA scientists, officers, engineers, and other personnel
+        within the agency. NOAA staff can submit their images to the NOAA Photo Library.
+        In doing so, these images will be freely ...", "dateLastCrawled": "2024-01-04T03:21:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=collection+(site%3anoaa.gov)&d=4789558892439818&mkt=en-US&setlang=en-US&w=i7b9P2gky5CCCg5hPet3A5AbfwMGhaKK",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Building a Climate Ready Nation: The Need for a Climate-Ready Fisheries
+        ...", "url": "https:\/\/www.fisheries.noaa.gov\/s3\/2024-01\/Final-Climate-Ready-Fisheries-Recommendation-Updated-12.18.23-508.pdf",
+        "datePublished": "2023-12-18T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 18, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/s3\/2024-01\/Final-Climate-Ready-Fisheries-Recommendation...",
+        "snippet": "Broadly, the concept of climate-ready fisheries encompasses the
+        need to maintain long-term sustainability in the face of climate impacts;
+        use the best available science and information; create a more adaptive system
+        that includes consideration of vulnerability and risk, and manages for resilience;
+        and prioritizes equity and thoughtful ...", "dateLastCrawled": "2024-01-07T08:55:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Guidelines for Ephemeral Data Collection", "url": "https:\/\/pub-data.diver.orr.noaa.gov\/field-files\/Guidelines%20for%20Ephemeral%20Data%20Collection_Arctic_September2014.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/pub-data.diver.orr.noaa.gov\/field-files\/Guidelines
+        for Ephemeral Data...", "snippet": "collection. All of the document produced
+        by this project can be updated and adapted as needed on an incident-specific
+        basis. The goal is that they will be kept updated and ready to be implemented
+        in the event of an oil spill in the Arctic. Guideline Format . All guidelines
+        have the same basic format and include field data forms. Sample collection",
+        "dateLastCrawled": "2024-01-08T09:27:00.0000000Z", "language": "en", "isNavigational":
+        <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Paperwork Reduction Act general information for the public", "url":
+        "https:\/\/www.noaa.gov\/organization\/information-technology\/paperwork-reduction-act-general-information-for-public",
+        "datePublished": "2021-05-08T00:00:00.0000000", "datePublishedDisplayText":
+        "May 8, 2021", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.noaa.gov\/organization\/information-technology\/paperwork-reduction-act...",
+        "snippet": "In the keyword search blank, type in: “0648” and “(the rest of
+        the OMB control number assigned to your collection” separated by the word
+        “and”; e.g.: “0648” and “0234”. If this is a new collection, type in a word
+        near the beginning of your collection’s title, instead.", "dateLastCrawled":
+        "2024-01-02T19:21:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=collection+(site%3anoaa.gov)&d=4672125757030620&mkt=en-US&setlang=en-US&w=_bTscKIn0YZMoy2TuOHzk-YpAjI_Kotr",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "What to Do With Body Parts of Endangered Species | NOAA Fisheries",
+        "url": "https:\/\/www.fisheries.noaa.gov\/national\/endangered-species-conservation\/protected-species-parts",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/national\/endangered-species-conservation\/protected...",
+        "snippet": "Receipt, transfer, and loans of marine mammals parts must be for
+        the purpose of scientific research, maintenance in a professionally curated
+        scientific collection, or education. Loans must be less than 12 months,
+        a record of the loan must be maintained, and the recipient must be authorized.
+        You may not transfer parts for personal collections.", "dateLastCrawled":
+        "2024-01-07T22:59:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=collection+(site%3anoaa.gov)&d=4861980498264504&mkt=en-US&setlang=en-US&w=sjCgx4-c6_6i-VFJoXumeHUrIVsB6vxs",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Metadata | National Centers for Environmental Information (NCEI)",
+        "url": "https:\/\/www.ncei.noaa.gov\/resources\/metadata", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ncei.noaa.gov\/resources\/metadata",
+        "snippet": "The Collection Manager is a single system consisting of different
+        tools which allows NOAA users to import, create, update, store, reuse, export,
+        validate, assess and publish their collection metadata. This system ensures
+        that all metadata meet NOAA metadata standard practices.", "dateLastCrawled":
+        "2024-01-06T12:08:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=collection+(site%3anoaa.gov)&d=4925352743862454&mkt=en-US&setlang=en-US&w=7UDxtkEikge_yqRm036SMWpTxS9bgqDf",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "World Ocean Database - National Centers for Environmental Information",
+        "url": "https:\/\/www.ncei.noaa.gov\/products\/world-ocean-database", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ncei.noaa.gov\/products\/world-ocean-database",
+        "snippet": "The World Ocean Database (WOD) is world''s largest collection
+        of uniformly formatted, quality controlled, publicly available ocean profile
+        data. It is a powerful tool for oceanographic, climatic, and environmental
+        research, and the end result of more than 20 years of coordinated efforts
+        to incorporate data from institutions, agencies, individual researchers, and
+        data recovery initiatives into a ...", "dateLastCrawled": "2024-01-08T22:17:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=collection+(site%3anoaa.gov)&d=4828222192681045&mkt=en-US&setlang=en-US&w=0sxdlniT8GiTnwOZRO2oj1XZ2r96kT8B",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Climate change impacts - National Oceanic and Atmospheric Administration",
+        "url": "https:\/\/www.noaa.gov\/education\/resource-collections\/climate\/climate-change-impacts",
+        "datePublished": "2021-08-13T00:00:00.0000000", "datePublishedDisplayText":
+        "Aug 13, 2021", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.noaa.gov\/education\/resource-collections\/climate\/climate-change-impacts",
+        "snippet": "Ecosystems and communities in the United States and around the
+        world are being impacted today. A collage of typical climate and weather-related
+        events: floods, heatwaves, drought, hurricanes, wildfires and loss of glacial
+        ice. (Image credit: NOAA) Global temperatures rose about 1.98°F (1.1°C) from
+        1901 to 2020, but climate change refers to ...", "dateLastCrawled": "2024-01-10T00:40:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=collection+(site%3anoaa.gov)&d=5056671502908844&mkt=en-US&setlang=en-US&w=crs1lgBYt-T7gjgkgcH_6wkveYtyDWFE",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "NOAA Fisheries Climate Change Efforts Funded by the Inflation Reduction
+        ...", "url": "https:\/\/www.fisheries.noaa.gov\/feature-story\/noaa-fisheries-climate-change-efforts-funded-inflation-reduction-act-highlights",
+        "datePublished": "2024-01-09T00:00:00.0000000", "datePublishedFreshnessText":
+        "1 day ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/feature-story\/noaa-fisheries-climate-change-efforts...",
+        "snippet": "Red snapper is an iconic Gulf of Mexico species and one of the
+        region’s greatest management success stories. NOAA Fisheries is working with
+        the Gulf of Mexico states to improve data collection for recreational fisheries.
+        This will result in more timely and accurate scientific advice for managing
+        red snapper and other reef fish.", "dateLastCrawled": "2024-01-09T22:10:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=collection+(site%3anoaa.gov)&d=3281773771983&mkt=en-US&setlang=en-US&w=vngHOZfHVp-JlG-KVUFOZcwp7dJj138c",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Classroom-ready data resources | National Oceanic and Atmospheric
+        ...", "url": "https:\/\/www.noaa.gov\/education\/resource-collections\/data\/classroom-ready",
+        "datePublished": "2018-09-01T00:00:00.0000000", "datePublishedDisplayText":
+        "Sep 1, 2018", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.noaa.gov\/education\/resource-collections\/data\/classroom-ready",
+        "snippet": "This collection uses real-time environmental data in self-directed
+        student activities exploring the natural world. Students learn about carbon
+        cycling, ocean acidification, and other phenomena related to climate change.
+        These modules are designed with a three-dimensional approach to teaching in
+        mind and use a data literacy framework.", "dateLastCrawled": "2024-01-07T13:24:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=collection+(site%3anoaa.gov)&d=4816501084389777&mkt=en-US&setlang=en-US&w=L2CnCS2Z7VOOStDJq3jJdlobdLtKu8DY",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Lidar 101: An Introduction to Lidar Technology, Data, and Applications",
+        "url": "https:\/\/coast.noaa.gov\/data\/digitalcoast\/pdf\/lidar-101.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/coast.noaa.gov\/data\/digitalcoast\/pdf\/lidar-101.pdf",
+        "snippet": "Collection of elevation data using lidar has several advantages
+        over most other techniques. Chief among them are higher resolutions, centimeter
+        accuracies, and ground detection in forested terrain. This section will address
+        1) the basics of lidar, 2) the terminology, and 3) some examples of how
+        the data are routinely used.", "dateLastCrawled": "2024-01-09T03:18:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Marine Fisheries Advisory Committee", "url": "https:\/\/www.fisheries.noaa.gov\/s3\/2024-01\/Final-Strategic-Planning-and-Budget-Subcommittee-Letter-Updated-12.18.23-508.pdf",
+        "datePublished": "2023-12-18T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 18, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fisheries.noaa.gov\/s3\/2024-01\/Final-Strategic-Planning-and-Budget...",
+        "snippet": "mission and services such as ecosystem data collection and stock
+        assessments. Failure to adequately fund and implement efficient survey systems
+        and data collection is having a detrimental impact and jeopardizes the future
+        of fishing communities and the nation. These services are foundational to
+        responsive conservation. An accompanying strategic", "dateLastCrawled": "2024-01-07T08:55:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "NOAA Open Data Dissemination (NODD)", "url": "https:\/\/www.noaa.gov\/information-technology\/open-data-dissemination",
+        "datePublished": "2023-10-26T00:00:00.0000000", "datePublishedDisplayText":
+        "Oct 26, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.noaa.gov\/information-technology\/open-data-dissemination",
+        "snippet": "NODD combines three incredibly powerful resources: NOAA''s expansive
+        collection of high-quality environmental data and expertise, the vast infrastructure
+        and scalable computing capabilities of our industry partners, and the innovative
+        energy of the American economy. NODD currently works with three infrastructure-as-a-service
+        (IaaS) providers to ...", "dateLastCrawled": "2024-01-04T11:30:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=collection+(site%3anoaa.gov)&d=4615728545857793&mkt=en-US&setlang=en-US&w=j6NV0kcHH_My_cxcvHdl48sCfbeA5sIv",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Passive Acoustic Data | National Centers for Environmental Information
+        ...", "url": "https:\/\/www.ncei.noaa.gov\/products\/passive-acoustic-data",
+        "datePublished": "2023-08-21T00:00:00.0000000", "datePublishedDisplayText":
+        "Aug 21, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncei.noaa.gov\/products\/passive-acoustic-data",
+        "snippet": "The graphic above depicts the key metadata components necessary
+        to properly describe passive acoustic data and the stage of the data collection
+        process that they are typically obtained. These metadata fields span high
+        level project description to platform type to details on the hydrophone, preamplifier,
+        and sampling details.", "dateLastCrawled": "2024-01-05T02:05:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=collection+(site%3anoaa.gov)&d=4908937373090455&mkt=en-US&setlang=en-US&w=05weAZYv1Tm4U_i2o0jbp5rFC9CiMptA",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Historical data resources - National Oceanic and Atmospheric Administration",
+        "url": "https:\/\/www.noaa.gov\/education\/resource-collections\/data\/historical",
+        "datePublished": "2018-09-01T00:00:00.0000000", "datePublishedDisplayText":
+        "Sep 1, 2018", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.noaa.gov\/education\/resource-collections\/data\/historical",
+        "snippet": "National Centers for Environmental Information (NCEI) [Advanced]
+        NCEI hosts and provides public access to one of the most significant archives
+        for environmental data on Earth. Over 25 petabytes (25 million gigabytes)
+        of atmospheric, coastal, oceanic, and geophysical data are available. Interactive
+        map • Numerical data • Satellite imagery ...", "dateLastCrawled": "2024-01-09T04:19:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=collection+(site%3anoaa.gov)&d=4929845272838343&mkt=en-US&setlang=en-US&w=TdvTbPIM6qLB1Zaf-cbK85xpKSyKoxvH",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 10 Jan 2024 14:52:20 GMT
 recorded_with: VCR 6.2.0

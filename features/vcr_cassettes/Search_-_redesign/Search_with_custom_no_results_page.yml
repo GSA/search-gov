@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=lkssldfkjsldfkjsld%20kfj%20(site:search.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=<DATADOG_API_ENABLED>&traffictype=test
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=lkssldfkjsldfkjsld%20kfj%20(site:search.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
-      base64_string: ''
+      string: ''
     headers:
       User-Agent:
       - USASearch
@@ -31,35 +31,35 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Wed, 22 Nov 2023 18:13:53 GMT
+      - Wed, 10 Jan 2024 14:52:22 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       X-Eventid:
-      - 655e451d951d4368a5b6e9fa333fb8ff
+      - 659eaf62de674de5895934aadf04fc36
       Useragentreductionoptout:
       - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
       Bingapis-Traceid:
-      - 655e451d951d4368a5b6e9fa333fb8ff
+      - 659eaf62de674de5895934aadf04fc36
       Bingapis-Sessionid:
-      - 5A19437A6B7E4F079BEEEFDD5DAB0AEC
+      - 4C2667785AA446FDB9EB673AC8A94684
       X-Msedge-Clientid:
-      - 216A711B680D65D50D7B62CA69C96478
+      - 2D6B3C67E92C6D6E3FC02865E8A06CE2
       X-Msapi-Userstate:
-      - fdd0
+      - 3bda
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=122,MSDatacenter=CHIE01
+      - InternalResponseTime=144,MSDatacenter=BNZE01
       X-Cache:
       - CONFIG_NOCACHE
       Accept-Ch:
       - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
       X-Msedge-Ref:
-      - 'Ref A: DBEE85FDA8524EEC91C503596AF319D2 Ref B: CH1EDGE1508 Ref C: 2023-11-22T18:14:53Z'
+      - 'Ref A: 72BA664DAF4540948D9C8B5A0C430BC6 Ref B: BL2AA2010201037 Ref C: 2024-01-10T14:53:22Z'
       Apim-Request-Id:
-      - c00f2590-10bb-4863-ac49-947418c74699
+      - b248528f-4e8d-4ee7-a54b-8e3a801ef745
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -67,12 +67,10 @@ http_interactions:
       Csp-Billing-Usage:
       - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Wed, 22 Nov 2023 18:14:53 GMT
+      - Wed, 10 Jan 2024 14:53:21 GMT
     body:
       encoding: UTF-8
-      base64_string: |
-        eyJfdHlwZSI6ICJTZWFyY2hSZXNwb25zZSIsICJxdWVyeUNvbnRleHQiOiB7
-        Im9yaWdpbmFsUXVlcnkiOiAibGtzc2xkZmtqc2xkZmtqc2xkIGtmaiAoc2l0
-        ZTpzZWFyY2guZ292KSJ9LCAicmFua2luZ1Jlc3BvbnNlIjoge319
-  recorded_at: Wed, 22 Nov 2023 18:14:53 GMT
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "lkssldfkjsldfkjsld
+        kfj (site:search.gov)"}, "rankingResponse": {}}'
+  recorded_at: Wed, 10 Jan 2024 14:53:22 GMT
 recorded_with: VCR 6.2.0

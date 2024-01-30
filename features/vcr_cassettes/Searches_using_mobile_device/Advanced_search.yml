@@ -2,76 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=allofit%20%22exact%22%20-bad%20(any)%20filetype:pdf%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V7_SUBSCRIPTION_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Transfer-Encoding:
-      - chunked
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Tue, 07 Sep 2021 16:17:01 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
-      Bingapis-Traceid:
-      - 00BFCDB705CC4364BBEC9F393067F65B
-      Bingapis-Sessionid:
-      - 12F69D6BCA1948F0853BEC518EAEEFFA
-      X-Msedge-Clientid:
-      - 0E37E9540EF669B02E50F9FF0F286871
-      X-Msapi-Userstate:
-      - a465
-      Bingapis-Market:
-      - en-US
-      X-Search-Responseinfo:
-      - InternalResponseTime=166,MSDatacenter=BN2B
-      X-Cache:
-      - CONFIG_NOCACHE
-      X-Msedge-Ref:
-      - 'Ref A: 00BFCDB705CC4364BBEC9F393067F65B Ref B: BLUEDGE0610 Ref C: 2021-09-07T16:18:01Z'
-      Apim-Request-Id:
-      - 114016a2-3ac6-4459-a47a-11f83cf7c59f
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
-      X-Content-Type-Options:
-      - nosniff
-      Csp-Billing-Usage:
-      - CognitiveServices.BingSearchV7.Transaction=1
-      Date:
-      - Tue, 07 Sep 2021 16:18:00 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "allofit
-        \"exact\" -bad (any) filetype:pdf (site:gov OR site:mil)"}, "rankingResponse":
-        {}}'
-  recorded_at: Tue, 07 Sep 2021 16:18:01 GMT
-- request:
-    method: get
     uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=allofit%20%22exact%22%20-bad%20(any)%20filetype:pdf%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
@@ -101,31 +31,35 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Wed, 06 Oct 2021 15:36:47 GMT
+      - Wed, 10 Jan 2024 14:58:48 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
+      X-Eventid:
+      - 659eb0e407da46258c04f431bbc52e40
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
       Bingapis-Traceid:
-      - 66356ACC235241DB96915CB0F79D1FF2
+      - 659eb0e407da46258c04f431bbc52e40
       Bingapis-Sessionid:
-      - 6BA63FD9CEB34D528449ABB9E1802B40
+      - 96C6292C9F3247089DD8FA680A935B0C
       X-Msedge-Clientid:
-      - 07BCFA2557EA68961C69EAED5617697E
+      - 070BA10082F86EF025E6B50283F96F43
       X-Msapi-Userstate:
-      - '7505'
+      - '1920'
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=307,MSDatacenter=BN2B
+      - InternalResponseTime=310,MSDatacenter=BNZE01
       X-Cache:
       - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
       X-Msedge-Ref:
-      - 'Ref A: 66356ACC235241DB96915CB0F79D1FF2 Ref B: BLUEDGE0507 Ref C: 2021-10-06T15:37:47Z'
+      - 'Ref A: C5758012B3E349F6A714B6938E487256 Ref B: BL2AA2030103009 Ref C: 2024-01-10T14:59:48Z'
       Apim-Request-Id:
-      - 478382e6-03f6-4c6a-b090-aa1a24abd4a8
+      - 470fccb1-56e9-4b75-bf51-b5318d007c5e
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -133,183 +67,194 @@ http_interactions:
       Csp-Billing-Usage:
       - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Wed, 06 Oct 2021 15:37:48 GMT
+      - Wed, 10 Jan 2024 14:59:48 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "allofit
         \"exact\" -bad (any) filetype:pdf (site:gov OR site:mil)"}, "webPages": {"webSearchUrl":
         "https:\/\/www.bing.com\/search?q=allofit+%22exact%22+-bad+(any)+filetype%3apdf+(site%3agov+OR+site%3amil)",
-        "totalEstimatedMatches": 31300, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "Rules of Statutory Construction and Interpretation", "url": "https:\/\/www.supremecourt.gov\/DocketPDF\/18\/18-9575\/102239\/20190611092122150_00000055.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.supremecourt.gov\/DocketPDF\/18\/18-9575\/102239\/20190611092122150_00000055.pdf",
-        "snippet": "App. A4 11 Expressio Umus est Exclusio Alterius Rule The term
-        \"includes'' is a term of limitation and not enlargement in most cases. Where
-        it is used, it prescribes all of the things or classes of things to which
-        the statute pertains.Al] other possible objects of the statute are, thereby
-        excluded, by implication. Expressio unius est exclusw alterius.", "dateLastCrawled":
-        "2021-10-04T04:06:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1", "name": "Loan
-        Fact Sheet - Small Business Administration", "url": "https:\/\/www.sba.gov\/sites\/default\/files\/articles\/SBA_Loan_Fact_Sheet_0.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sba.gov\/sites\/default\/files\/articles\/SBA_Loan_Fact_Sheet_0.pdf",
-        "snippet": "The exact percentage of the guaranty depends on a variety of
-        factors such as size of loan nd a which SBA program is to be used. This will
-        be worked out between the SBA and your bank. Amounts - The maximum loan amount
-        is $5 million. The total SBA guarantee for any one borrower may not exceed
-        $,3750,000.", "dateLastCrawled": "2021-10-01T23:36:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
-        "name": "ACCOUNTING FOR FIXED ASSETS - HUD", "url": "https:\/\/www.hud.gov\/sites\/documents\/DOC_26243.PDF",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.hud.gov\/sites\/documents\/DOC_26243.PDF",
-        "snippet": "any major additions in the form of additional con-struction
-        and improve-ments, known as “hard costs,” be capitalized (recorded as assets).
-        Ad-ministrative and other costs that did not add value to the buildings, known
-        as “soft costs”, associated with modern-ization and development, were accumulated
-        into fixed asset accounts and capitalized.", "dateLastCrawled": "2021-10-03T04:44:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
-        "name": "U.S. Department of State STATEMENT REGARDING A LOST OR ...", "url":
-        "https:\/\/eforms.state.gov\/Forms\/ds64.pdf", "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/eforms.state.gov\/Forms\/ds64.pdf", "snippet": "at any one time,
-        except as authorized by the U.S. Depa rtment of State, and to combat passport
-        fraud and misuse. The collection of the Social Security number will be used
-        to verify the identity of the person reporting the lost or stolen pas sport
-        and to identify the passport being reported lost or stolen.", "dateLastCrawled":
-        "2021-10-04T00:17:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4", "name": "Version
-        1.1 – December 6, 2016 - National Archives", "url": "https:\/\/www.archives.gov\/files\/cui\/20161206-cui-marking-handbook-v1-1.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.archives.gov\/files\/cui\/20161206-cui-marking-handbook-v1-1.pdf",
-        "snippet": "CUI and, when portion markings are used, identify the exact
-        information or portion that needs protection. Markings can alert holders to
-        any CUI dissemination and safeguarding controls. While every marking situation
-        is not reflected, this handbook provides basic marking guidelines for CUI,
-        regardless of form.", "dateLastCrawled": "2021-10-02T08:16:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
-        "name": "RESONANCE RECTIFICATION EFFECTS IN WARM MAGNETOPLASMAS", "url": "https:\/\/ntrs.nasa.gov\/api\/citations\/19670024992\/downloads\/19670024992.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/ntrs.nasa.gov\/api\/citations\/19670024992\/downloads\/19670024992.pdf",
-        "snippet": "values at any kL I I To determine the exact location of the
-        resonance rectification pedrswould be an extremely difficult problem. We can,
-        however, make some further qualitative predictions. In general, the form of
-        the plasma impedance will be, 8 z (w) = P IL (5) -8- FIG. 2( a). Normalized
-        reactance of warm magnetoplasma (RF electric ...", "dateLastCrawled": "2021-09-30T21:06:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
-        "name": "UNISE. . rAfSvCNVIRONlfcHrAL PROffcCTlOK Jfl^NCY ^ -Mi*", "url":
-        "https:\/\/semspub.epa.gov\/work\/07\/30325123.pdf", "isFamilyFriendly": true,
-        "displayUrl": "https:\/\/semspub.epa.gov\/work\/07\/30325123.pdf", "snippet":
-        "(a) every copy of each document which is not an exact duplicate of a document
-        which is produced, (b) every copy which has any writing, figure or notation,
-        annotation or the like of it, (c) drafts, (d) attachments to or enclosures
-        with any document and (e) every document referred to in any other document.
-        11.", "dateLastCrawled": "2021-09-29T16:28:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
-        "name": "PowerShell Commands - USALearning", "url": "https:\/\/fedvte.usalearning.gov\/courses\/IWBS\/course\/videos\/pdf\/IWBS_D01_S05_T03_STEP.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/fedvte.usalearning.gov\/courses\/IWBS\/course\/videos\/pdf\/IWBS_D01_S05_T03_STEP.pdf",
-        "snippet": "It''s calling the exact same command. You would get the same
-        output if you . ran it at the same time. But the . bottom one is useful for
-        scripting in . batch files. The top one is really just . for interactive.
-        Instructor: Right. Did everybody . get that? Page 12 of 19", "dateLastCrawled":
-        "2021-10-03T09:01:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8", "name": "Laboratory
-        Math II: Solutions and Dilutions", "url": "https:\/\/www.training.nih.gov\/assets\/Lab_Math_II_Transcript_-_508.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.training.nih.gov\/assets\/Lab_Math_II_Transcript_-_508.pdf",
-        "snippet": "Solutions A solution is a homogenous mixture of two or more substances.
-        Can be in any form of matter: solid, liquid or gas Solutions are essential
-        in most laboratory -based biomedical research Examples: buffers, reaction
-        mixtures, cell culture media, cell lysates, etc.", "dateLastCrawled": "2021-10-04T01:11:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
-        "name": "Magna Carta with Annotations, unabridged.", "url": "https:\/\/edsitement.neh.gov\/sites\/default\/files\/2018-08\/Annotation_Unabridged737.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/edsitement.neh.gov\/sites\/default\/files\/2018-08\/Annotation_Unabridged737.pdf",
-        "snippet": "to a sheriff, or to any person answerable to us for the revenues,
-        and he commits destruction or damage, we will exact compensation from him,
-        and the land shall be entrusted to two worthy and prudent men of the same
-        ''fee'', who shall be answerable to us for the revenues, or to the person
-        to whom we have assigned them. If we have given", "dateLastCrawled": "2021-10-01T09:21:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
-        "name": "UNITED STATES ENVIRONMENTAL PROTECTION AGENCY REGION VII ...", "url":
-        "https:\/\/semspub.epa.gov\/work\/07\/139395.pdf", "isFamilyFriendly": true,
-        "displayUrl": "https:\/\/semspub.epa.gov\/work\/07\/139395.pdf", "snippet":
-        "each document which is not an exact duplicate of a document which is produced,
-        (2) every copy which has any writing, figure or notation, annotation or
-        the like of it, (3) drafts, (4) attachments to or enclosures with any document
-        and (5) every document referred to in any other document. 6. The terms \"and\"
-        and \"or\" shall be construed either", "dateLastCrawled": "2021-10-01T02:34:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
-        "name": "12 LABORATORY SAMPLE PREPARATION", "url": "https:\/\/www.epa.gov\/sites\/production\/files\/2015-05\/documents\/402-b-04-001b-12-final.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.epa.gov\/sites\/production\/files\/2015-05\/documents\/402-b-04-001b-12-final.pdf",
-        "snippet": "account for any analyte loss during sample preparation. 12.2.1.1
-        Losses as Dust or Particulates When a sample is dry ashed, a fine residue
-        (ash) is often formed. The small particles in the residue are resuspended
-        readily by any air flow over the sample. Air flows are generated by", "dateLastCrawled":
-        "2021-10-02T23:48:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12", "name":
-        "Guide to the Art and Science of Searching in iManage", "url": "http:\/\/www.bestpractices.ca.gov\/sysacq\/downloads\/iManage%20Advanced%20Searching%20Techniques.pdf",
-        "isFamilyFriendly": true, "displayUrl": "www.bestpractices.ca.gov\/sysacq\/downloads\/iManage
-        Advanced Searching Techniques.pdf", "snippet": "The asterisk stands for any
-        sequence of multiple characters; the question mark stands for any single
-        character. The danger in using wildcard characters is that you will increase
-        your search results by including undesired matches. The asterisk (or percent
-        sign), truncates the word and finds all variations of it. For example,", "dateLastCrawled":
-        "2021-09-28T17:38:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13", "name":
-        "3rd Response Copyright Small Claims", "url": "https:\/\/www.copyright.gov\/docs\/smallclaims\/comments\/noi_02263013\/APA.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.copyright.gov\/docs\/smallclaims\/comments\/noi_02263013\/APA.pdf",
-        "snippet": "In any case, it is the mere cost of adducing evidence, and computing
-        the revenues, that makes the proceedings costly, and impractical for the rights
-        owner. There are several possible answers. The first would be a mandatory
-        requirement that the defendant in any infringement case make a full disclosure
-        of their net profits taking into", "dateLastCrawled": "2021-09-29T21:11:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
-        "name": "General notice letter and information request letter ...", "url":
-        "https:\/\/semspub.epa.gov\/work\/07\/30325107.pdf", "isFamilyFriendly": true,
-        "displayUrl": "https:\/\/semspub.epa.gov\/work\/07\/30325107.pdf", "snippet":
-        "(a) every copy of each document which is not an exact duplicate of a document
-        which is produced, (b) every copy which has any writing, figure or notation,
-        annotation or the like of it, (c) drafts, (d) attachments to or enclosures
-        with any document and (e) every document referred to in any other document.
-        11.", "dateLastCrawled": "2021-09-28T01:31:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
-        "name": "Lesson Planning 101 - United States Department of State", "url":
-        "https:\/\/americanenglish.state.gov\/files\/ae\/resource_files\/lesson_planning_101-pre-recording.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/americanenglish.state.gov\/files\/ae\/resource_files\/lesson_planning_101-pre...",
-        "snippet": "Any minor errors do not hinder meaning. Total Points Comments.
-        Guidelines for Using Rubrics 1. Keep the exact objective(s) in mind that
-        you are assessing. 2. Be as specific or general as you need to be. 3. Share
-        the rubric with students before they begin working on the task. 4. Evaluate
-        students according to the rubric.", "dateLastCrawled": "2021-09-30T15:25:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
-        "name": "^pr\/atiaiTPi . ATES-Q^lRONME||jyM^ROTECTIOh >E#:Y", "url": "https:\/\/semspub.epa.gov\/work\/07\/30325108.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/semspub.epa.gov\/work\/07\/30325108.pdf",
-        "snippet": "(a) every copy of each document which is not an exact duplicate
-        of a document which is produced, (b) every copy which has any writing, figure
-        or notation, annotation or the like of it, (c) drafts, (d) attachments to
-        or enclosures with any document and (e) every document referred to in any
-        other document. 11.", "dateLastCrawled": "2021-09-30T10:30:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
-        "name": "Second Request on 104(e) Request Letter", "url": "https:\/\/semspub.epa.gov\/work\/07\/2041458.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/semspub.epa.gov\/work\/07\/2041458.pdf",
-        "snippet": "exact duplicate of a document that is produced; (b) every copy
-        which has any writing, figure or notation, annotation or the like; (c) drafts;
-        (d) attachments to or enclosures with any document; and, (e) every document
-        referred to in any other document. 14. The terms \"and\" and \"or\" Bhall
-        mean, either disjunctively or", "dateLastCrawled": "2021-09-18T23:18:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
-        "name": "Welcome HOW TO USE YOUR WASHINGTON EBT QUEST CARD AT AN ...", "url":
-        "https:\/\/www.dshs.wa.gov\/sites\/default\/files\/publications\/documents\/22-310.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.dshs.wa.gov\/sites\/default\/files\/publications\/documents\/22-310.pdf",
-        "snippet": "Only the exact amount of your food purchase is deducted from
-        your food benefit account. Stores will not give you change for food benefit
-        purchases. You may use your cash benefits at stores to make a cash-only withdrawal,
-        or to purchase both food and non-food items (soap, diapers, etc.). Stores
-        may also provide cash back when you make a purchase ...", "dateLastCrawled":
-        "2021-10-03T09:06:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19", "name":
-        "Pennsylvania Department of Agriculture", "url": "https:\/\/www.agriculture.pa.gov\/consumer_protection\/FoodSafety\/Retail%20Food\/Retail%20Foods%20Facilities%20and%20Restaurants\/Documents\/APPLICATION%20PACKET-%20FARMERS%20MARKETS.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.agriculture.pa.gov\/consumer_protection\/FoodSafety\/Retail
-        Food\/Retail Foods...", "snippet": "Mobilized Unit (any operation the moves
-        around with the same exact set-up and equipment from market to market) PART
-        B: (please select one): New Food Vendor\/New License Change of Ownership for
-        an Existing Operating Stand that is currently in operation Remodel of a currently
-        licensed stand OR significant change\/addition to food items sold", "dateLastCrawled":
-        "2021-09-28T23:47:00.0000000Z", "language": "en", "isNavigational": false}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        "totalEstimatedMatches": 254000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Movement Disorders Therapeutic Class Review (TCR) - Texas Health
+        and ...", "url": "https:\/\/www.hhs.texas.gov\/sites\/default\/files\/documents\/jan-2024-durb-agenda-item5o.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.hhs.texas.gov\/sites\/default\/files\/documents\/jan-2024-durb-agenda-item5o.pdf",
+        "snippet": "No part of this publication may be reproduced or transmitted in
+        any form or by any means, electronic or mechanical, including photocopying,
+        recording, digital scanning, or via any information storage or retrieval
+        system without the express written consent of Magellan Rx Management. All
+        requests for permission should be mailed to:", "dateLastCrawled": "2024-01-10T03:07:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Progestins for Cachexia TCR - Texas Health and Human Services", "url":
+        "https:\/\/www.hhs.texas.gov\/sites\/default\/files\/documents\/jan-2024-durb-agenda-item5cc.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.hhs.texas.gov\/sites\/default\/files\/documents\/jan-2024-durb-agenda-item5cc.pdf",
+        "snippet": "Cachexia is a debilitating and life-threatening syndrome characterized
+        by anorexia, body weight loss, loss of adipose tissue and skeletal muscle.
+        Both formulations of megestrol acetate suspension are clinically effective
+        in increasing food intake resulting in weight gain. The original liquid formulation
+        of megestrol acetate 800 mg\/20 mL is ...", "dateLastCrawled": "2024-01-10T03:21:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Local Public Fleet Electrification Planning Technial Assistance 2024
+        ...", "url": "https:\/\/mtc.ca.gov\/sites\/default\/files\/documents\/2024-01\/Public-Fleet-Electrification-Planning-Technical-Assistance-2024-Program-Guide.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/mtc.ca.gov\/sites\/default\/files\/documents\/2024-01\/Public-Fleet-Electrification...",
+        "snippet": "2. List all local jurisdiction departments or divisions that
+        are responsible for any fleet vehicles (e.g., public works, police, fire,
+        public health, parks and recreation, etc.). Please note that the inclusion
+        of all departments that are responsible for any public fleet vehicles
+        and their operations in the jurisdiction is encouraged.", "dateLastCrawled":
+        "2024-01-09T10:46:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3", "name": "Revised
+        1\/1\/2024 SMALL CLAIMS Plaintiff''s Claim", "url": "https:\/\/www.stanislaus.courts.ca.gov\/system\/files\/forms-and-filings\/sc-plaintiff-claim-packet.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.stanislaus.courts.ca.gov\/system\/files\/forms-and-filings\/sc-plaintiff-claim...",
+        "snippet": "ATTENTION: I. Fill out the (SC-100) Plaintiff''s Claim and ORDER
+        to Go to Small Claims Court. • All pages of the SC-100 (pages 1-6) must
+        be included when filing it with the Court. • You must also attach Local Form
+        (Attachment SC-001) Notice to Small Claims Litigants. • You may attach documentation,
+        but it must be on 8 1\/2 x 11 size sheets of paper.", "dateLastCrawled": "2024-01-09T04:26:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Federal Motor Carrier Safety Administration, DOT 373 - GovInfo",
+        "url": "https:\/\/www.govinfo.gov\/content\/pkg\/CFR-2002-title49-vol4\/pdf\/CFR-2002-title49-vol4-sec373-101.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.govinfo.gov\/content\/pkg\/CFR-2002-title49-vol4\/pdf\/CFR-2002-title49-vol4...",
+        "snippet": "The carrier shall keep a copy of all ex-pense bills issued for
+        the period pre-scribed at 49 CFR part 379. If any ex-pense bill is spoiled,
+        voided, or unused for any reason, a copy or written record of its disposition
+        shall be re-tained for a like period. [55 FR 11198, Mar. 27, 1990, as amended
+        at 59 FR 2303, Jan. 14, 1994; 61 FR 19860, May 3,", "dateLastCrawled": "2024-01-10T05:35:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "DATE FILED: January 8, 2024 4:26 PM FILING ID: D67FE7FF27EB6 COLORADO
+        ...", "url": "https:\/\/coag.gov\/app\/uploads\/2024\/01\/2024-01-08-16-15-27-Complaint.pdf",
+        "datePublished": "2024-01-08T00:00:00.0000000", "datePublishedFreshnessText":
+        "2 days ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/coag.gov\/app\/uploads\/2024\/01\/2024-01-08-16-15-27-Complaint.pdf",
+        "snippet": "cause to do so; and if a landlord withholds any portion, they
+        must provide the tenant with a written list of the exact reasons the portion
+        was withheld. C.R.S. § 38-12-103. 5. A landlord may not withhold money from
+        a tenant’s security deposit for “normal wear and tear.” C.R.S. § 38 -12-103.
+        “Normal wear and tear” is “deterioration", "dateLastCrawled": "2024-01-09T19:23:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Top 10 SAM.gov Questions - Under Secretary of Defense for Acquisition
+        ...", "url": "https:\/\/www.acq.osd.mil\/asda\/dpc\/ce\/p2p\/docs\/training-presentations\/2022\/Top-10-SAM.gov-FAQ.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.acq.osd.mil\/asda\/dpc\/ce\/p2p\/docs\/training-presentations\/2022\/Top-10-SAM...",
+        "snippet": "“Any Words” option works like an “or” search operator. The search
+        will return results with one, or some, or all of the keywords. 1 The “All
+        Words” option works like an “and” search operator. All of your keywords
+        must be present in the search results. 1 The “Exact Phrase” option will
+        search for the speciﬁcterms or phrases ...", "dateLastCrawled": "2024-01-02T23:50:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "BILL AS INTRODUCED S.226 2024 Page 1 of 5 2 Introduced by Senator
+        ...", "url": "https:\/\/legislature.vermont.gov\/Documents\/2024\/Docs\/BILLS\/S-0226\/S-0226%20As%20Introduced.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/legislature.vermont.gov\/Documents\/2024\/Docs\/BILLS\/S-0226\/S-0226
+        As Introduced.pdf", "snippet": "2 costs of compiling and reporting pursuant
+        to this section and to pay any fees 3 imposed by the Department of Public
+        Safety. 4 Sec. 2. APPLICABILITY 5 Notwithstanding 1 V.S.A. § 214, this act
+        shall apply retroactively to any 6 seizures occurring on and after January
+        1, 2024. 7 Sec. 3. EFFECTIVE DATE", "dateLastCrawled": "2024-01-09T16:30:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Day Use Shelter Application", "url": "https:\/\/parksandrecreation.idaho.gov\/wp-content\/uploads\/000Reservation-Application-Packet-Rev.12.12.2023.pdf",
+        "datePublished": "2023-12-12T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 12, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/parksandrecreation.idaho.gov\/wp-content\/uploads\/000Reservation-Application...",
+        "snippet": "and any other applicable fees associated with reservation. _____
+        I agree to the cancellation policy as follows: Any changes to a reservation
+        or a cancelation of reservation must be made 14 days in advance to the date
+        of use. If cancelled 14 days in advance, all monies paid, excluding the
+        non-refundable reservation fee, will be returned.", "dateLastCrawled": "2024-01-09T20:53:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "THE PHYSICAL THERAPY PRACTICE ACT CODE OF ALABAMA 1975 Section 34-24
+        ...", "url": "https:\/\/www.pt.alabama.gov\/PDF\/2024\/THEPHYSICALTHERAPYPRACTICEACTCurrent.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.pt.alabama.gov\/PDF\/2024\/THEPHYSICALTHERAPYPRACTICEACTCurrent.pdf",
+        "snippet": "all times the commission shall avoid any appearance of impropriety
+        or conflict of interest. (11) Lease, purchase, accept appropriate gifts or
+        donations of, or otherwise own, hold, improve, or use, any property, real,
+        personal, or mixed, provided that at all times the commission shall avoid
+        any appearance of impropriety.", "dateLastCrawled": "2024-01-10T01:07:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "State of Connecticut Form CT-W4 Employee’s Withholding Certificate",
+        "url": "https:\/\/www.ctd.uscourts.gov\/sites\/default\/files\/CT-W4_2024.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ctd.uscourts.gov\/sites\/default\/files\/CT-W4_2024.pdf",
+        "snippet": "For Form CT-W4 purposes, gross income means all income from
+        all sources, whether received in the form of money, goods, property, or
+        services, not exempt from federal income tax, and includes any additions
+        to income from Schedule 1 of Form CT-1040, Connecticut Resident Income Tax
+        Return, or Form CT-1040NR\/PY, Connecticut", "dateLastCrawled": "2024-01-09T20:07:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "CMS Manual System - Centers for Medicare & Medicaid Services",
+        "url": "https:\/\/www.cms.gov\/Regulations-and-Guidance\/Guidance\/Transmittals\/Downloads\/R2678CP.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cms.gov\/Regulations-and-Guidance\/Guidance\/Transmittals\/Downloads\/R2678CP.pdf",
+        "snippet": "B. Policy: The claims processing systems contain edits which identify
+        duplicate claims and suspect duplicate claims. All exact duplicate claims
+        or claim lines are auto-denied or rejected (absent appropriate modifiers).
+        Suspect duplicate claims and claim lines are suspended and reviewed by the
+        claims", "dateLastCrawled": "2024-01-02T05:19:00.0000000Z", "language": "en",
+        "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Hazard Communication Standard: Safety Data Sheets", "url": "https:\/\/www.osha.gov\/Publications\/OSHA3514.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.osha.gov\/Publications\/OSHA3514.html",
+        "snippet": "The chemical name and concentration (i.e., exact percentage)
+        of all ingredients which are. classified as health hazards and are: ° Present
+        above their cut-off\/concentration limits or ° Present a health risk below
+        the cut-off\/concentration limits. • The concentration (exact percentages)
+        of each ingredient must be specified except", "dateLastCrawled": "2024-01-08T22:06:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Florida Senate - 2024 SENATOR AMENDMENT Bill No. CS for SB 7004",
+        "url": "https:\/\/www.flsenate.gov\/Session\/Bill\/2024\/7004\/Amendment\/573724\/PDF",
+        "datePublished": "2024-01-09T00:00:00.0000000", "datePublishedFreshnessText":
+        "1 day ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.flsenate.gov\/Session\/Bill\/2024\/7004\/Amendment\/573724\/PDF",
+        "snippet": "103 (9). 104 1. The department shall provide a list of state examined
+        105 and approved comprehensive reading and intervention programs. 106 The
+        intervention programs shall be provided in addition to the 107 comprehensive
+        core reading instruction that is provided to all 108 students in the general
+        education classroom.", "dateLastCrawled": "2024-01-09T18:43:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "DEPARTMENT OF HEALTH AND HUMAN SERVICES Centers for Medicare & Medicaid
+        ...", "url": "https:\/\/www.hhs.gov\/guidance\/sites\/default\/files\/hhs-guidance-documents\/MM8121.pdf",
+        "datePublished": "2013-03-29T00:00:00.0000000", "datePublishedDisplayText":
+        "Mar 29, 2013", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.hhs.gov\/guidance\/sites\/default\/files\/hhs-guidance-documents\/MM8121.pdf",
+        "snippet": "Fact Sheet, ICN 903768, Downloadable only. MLN Matters® Number:
+        MM8121. Related CR Release Date: March 29, 2013. Related CR Transmittal #:
+        R2678CP. Related Change Request (CR) #: CR 8121. Effective Date: April 29,
+        2013. Implementation Date: April 29, 2013. Clarification of Detection of Duplicate
+        Claims Section of the CMS Internet Only Manual.", "dateLastCrawled": "2023-12-30T03:22:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Vulnerability of Complementary Cell Suppression to Intruder Attack",
+        "url": "https:\/\/nces.ed.gov\/FCSM\/pdf\/2009FCSM_Cox_III-A.pdf", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/nces.ed.gov\/FCSM\/pdf\/2009FCSM_Cox_III-A.pdf",
+        "snippet": "set of all unsafe estimates of x. Statistical disclosure limitation
+        (SDL) of tabular data is complete if and only if only the tightest (exact)
+        interval estimate of each sensitive cell value x computable from the released
+        tabulations is safe, viz., strictly contains the protection interval. The
+        theory of sensitivity measures is developed fully ...", "dateLastCrawled":
+        "2024-01-08T20:02:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "Cyber Awareness Challenge 2024 Information Security", "url": "https:\/\/dl.dod.cyber.mil\/wp-content\/uploads\/trn\/online\/disa-cac-2024\/pdf\/DISA_CAC2024_InformationSecurity.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/dl.dod.cyber.mil\/wp-content\/uploads\/trn\/online\/disa-cac-2024\/pdf\/DISA_CAC2024...",
+        "snippet": "Personally Identifiable Information (PII) is information that
+        can be used to distinguish or trace an individual’s identity, either alone
+        or when combined with other information that is linked or linkable to a specific
+        individual. PII includes, but is not limited to: Social Security Number. Date
+        and place of birth.", "dateLastCrawled": "2024-01-09T07:09:00.0000000Z", "language":
+        "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "PUBLIC OFFICIAL BONDS - IN.gov", "url": "https:\/\/www.in.gov\/idoi\/files\/Bulletin-223-Public-Official-Bonds.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.in.gov\/idoi\/files\/Bulletin-223-Public-Official-Bonds.pdf",
+        "snippet": "d) This Public Official Bond complies with IC 5-4-1-18, and any
+        conflict between this bond and the Indiana Code shall be resolved in favor
+        of the statutory provisions. e) The Legislature may change, modify, or repeal
+        any relevant law now in force and exact any and all laws", "dateLastCrawled":
+        "2023-12-05T07:32:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18", "name":
+        "NOTE: The attached form document is provided for illustrative purposes ...",
+        "url": "https:\/\/www.cdfifund.gov\/sites\/cdfi\/files\/2021-04\/ucc_1_bond_loan_collateral_exhibit_a_template.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdfifund.gov\/sites\/cdfi\/files\/2021-04\/ucc_1_bond_loan_collateral_exhibit_a...",
+        "snippet": "101 Barclay Street, Floor 11W New York, NY 10286. The UCC-1 Financing
+        Statement to which this Exhibit A is attached covers all of the Debtor’s
+        right, title and interest in the following (collectively, the “Collateral”),
+        both now owned and hereafter acquired, including, but not limited to: Any
+        and all loan documents entered into by and ...", "dateLastCrawled": "2024-01-04T04:02:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "DoDM 5200.01 Vol 1, ''DoD Information Security Program: Overview
+        ...", "url": "https:\/\/www.esd.whs.mil\/Portals\/54\/Documents\/DD\/issuances\/dodm\/520001m_vol1.pdf?ver=2020-08-04-092500-203",
+        "datePublished": "2020-08-04T00:00:00.0000000", "datePublishedDisplayText":
+        "Aug 4, 2020", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.esd.whs.mil\/Portals\/54\/Documents\/DD\/issuances\/dodm\/520001m_vol1.pdf?ver=...",
+        "snippet": "Department of Defense . MANUAL NUMBER 5200.01, Volume 1 . February
+        24, 2012 . Incorporating Change 2, July 28, 2020 . USD(I&S) SUBJECT: DoD Information
+        Security ...", "dateLastCrawled": "2024-01-08T09:13:00.0000000Z", "language":
+        "en", "isNavigational": <DATADOG_API_ENABLED>}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
         {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
@@ -329,5 +274,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-  recorded_at: Wed, 06 Oct 2021 15:37:48 GMT
-recorded_with: VCR 6.0.0
+  recorded_at: Wed, 10 Jan 2024 14:59:48 GMT
+recorded_with: VCR 6.2.0

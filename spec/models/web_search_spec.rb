@@ -37,23 +37,6 @@ describe WebSearch do
       search = described_class.new(query: 'government', affiliate: affiliate, site_limits: 'foo.com/subdir1 foo.com/subdir2 include3.gov')
       expect(search.matching_site_limits).to eq(%w[foo.com/subdir1 foo.com/subdir2])
     end
-
-    skip 'when the search engine is Azure' do
-      # disabling until tests are removed:
-      # https://www.pivotaltracker.com/story/show/134719601
-
-      before { affiliate.search_engine = 'Azure' }
-
-      it 'searches using Azure web engine' do
-        HostedAzureWebEngine.should_receive(:new).
-          with(hash_including(language: 'en',
-                              offset: 0,
-                              per_page: 10,
-                              query: 'government (site:gov OR site:mil)'))
-
-        described_class.new valid_options
-      end
-    end
   end
 
   describe '#cache_key' do
@@ -176,27 +159,6 @@ describe WebSearch do
       it 'assigns module_tag to BWEB' do
         search.run
         expect(search.module_tag).to eq('BWEB')
-      end
-
-      skip 'when search_engine is Azure' do
-        # disabling until tests are removed:
-        # https://www.pivotaltracker.com/story/show/134719601
-
-        subject(:search) do
-          affiliate = affiliates(:usagov_affiliate)
-          affiliate.site_domains.create!(domain: 'usa.gov')
-          affiliate.search_engine = 'Azure'
-
-          described_class.new(affiliate: affiliate,
-                              page: 1,
-                              per_page: 20,
-                              query: 'healthy snack')
-        end
-
-        before { search.run }
-
-        its(:module_tag) { is_expected.to eq('AWEB') }
-        its(:fake_total?) { is_expected.to be_true }
       end
     end
 
