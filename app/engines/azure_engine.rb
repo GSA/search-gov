@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class AzureEngine < SearchEngine
-  API_HOST = 'https://api.datamarket.azure.com'.freeze
-  NAMESPACE = 'azure_web_api'.freeze
+  API_HOST = 'https://api.datamarket.azure.com'
+  NAMESPACE = 'azure_web_api'
   CACHE_LIFETIME = AZURE_CACHE_DURATION
   DEFAULT_AZURE_HOSTED_PASSWORD = Rails.application.secrets.hosted_azure[:account_key].freeze
 
@@ -15,11 +17,11 @@ class AzureEngine < SearchEngine
     super
     @password = get_password(options)
     self.api_connection = connection_instance(@password)
-    @azure_params = azure_parameters_class.new options
+    @azure_params = azure_parameters_class.new(options)
   end
 
   def execute_query
-    api_connection.basic_auth nil, @password
+    api_connection.basic_auth(nil, @password)
     super
   end
 
@@ -31,13 +33,13 @@ class AzureEngine < SearchEngine
 
   class << self
     def unlimited_api_connection
-      @azure_unlimited_api_connection ||= { }
-      @azure_unlimited_api_connection[self] ||= CachedSearchApiConnection.new(self.api_namespace, API_HOST, CACHE_LIFETIME)
+      @azure_unlimited_api_connection ||= {}
+      @azure_unlimited_api_connection[self] ||= CachedSearchApiConnection.new(api_namespace, API_HOST, CACHE_LIFETIME)
     end
 
     def rate_limited_api_connection
-      @azure_rate_limited_api_connection ||= { }
-      @azure_rate_limited_api_connection[self] ||= RateLimitedSearchApiConnection.new(self.api_namespace, API_HOST, CACHE_LIFETIME, true)
+      @azure_rate_limited_api_connection ||= {}
+      @azure_rate_limited_api_connection[self]
     end
   end
 
@@ -46,7 +48,7 @@ class AzureEngine < SearchEngine
   end
 
   def get_password(options)
-    if options.has_key? :password
+    if options.key?(:password)
       options[:password]
     else
       DEFAULT_AZURE_HOSTED_PASSWORD

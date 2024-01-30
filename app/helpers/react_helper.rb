@@ -3,25 +3,27 @@
 module ReactHelper
   def search_results_layout(search, params, vertical, affiliate, search_options)
     data = {
-      additionalResults: search.govbox_set,
+      additionalResults: govbox_set_data(search),
+      agencyName: agency_name(affiliate.agency),
       alert: search_page_alert(affiliate.alert),
-      currentLocale: affiliate.locale,
       extendedHeader: affiliate.use_extended_header,
       fontsAndColors: affiliate.visual_design_json,
       footerLinks: links(affiliate, :footer_links),
       identifierContent: identifier_content(affiliate),
       identifierLinks: links(affiliate, :identifier_links),
+      jobsEnabled: (affiliate.jobs_enabled? and search.modules.include?('JOBS')),
+      language: affiliate.language.slice(:code, :rtl),
       navigationLinks: navigation_links(search, params),
       newsLabel: news_label(search),
       noResultsMessage: no_result_message(search),
-      agencyName: agency_name(affiliate.agency),
-      jobsEnabled: affiliate.jobs_enabled?,
       page: page_data(affiliate),
       params: params,
+      primaryHeaderLinks: links(affiliate, :primary_header_links),
       relatedSearches: related_searches(search),
       relatedSites: related_sites(search),
       relatedSitesDropdownLabel: affiliate.related_sites_dropdown_label,
-      resultsData: search.normalized_results,
+      resultsData: results_data(search),
+      secondaryHeaderLinks: links(affiliate, :secondary_header_links),
       sitelimit: sitelimit_alert(search, params),
       spellingSuggestion: spelling_text(search, search_options),
       translations: translations(affiliate.locale),
@@ -193,5 +195,46 @@ module ReactHelper
     return if agency.nil?
 
     agency.abbreviation || agency.name
+  end
+
+  def govbox_set_data(search)
+    return if search.govbox_set.nil?
+
+    affiliate = search.affiliate
+    govbox_set_json = search.govbox_set.as_json
+    if show_results_format?(affiliate) && !affiliate.display_created_date_on_search_results?
+      reject_keys_from_hash(govbox_set_json[:federalRegisterDocuments], 'publication_date') if govbox_set_json[:federalRegisterDocuments].present?
+      reject_keys_from_hash(govbox_set_json[:newsItems], 'published_at') if govbox_set_json[:newsItems].present?
+      reject_keys_from_hash(govbox_set_json[:youtubeNewsItems], 'published_at') if govbox_set_json[:youtubeNewsItems].present?
+    end
+    govbox_set_json
+  end
+
+  def reject_keys_from_hash(results, key)
+    return if results.blank?
+
+    results.map do |result|
+      result.delete(key)
+    end
+  end
+
+  def results_data(search)
+    return if search.normalized_results.nil?
+
+    affiliate = search.affiliate
+    if show_results_format?(affiliate)
+      show_results_content(affiliate, boolean_keys = [])
+      search.normalized_results[:results].each do |result|
+        result.reject! { |k| boolean_keys.include?(k) }
+      end
+    end
+    search.normalized_results
+  end
+
+  def show_results_content(affiliate, boolean_keys)
+    boolean_keys << :thumbnailUrl unless affiliate.display_image_on_search_results?
+    boolean_keys << :fileType unless affiliate.display_filetype_on_search_results?
+    boolean_keys << :publishedAt << :publishedDate unless affiliate.display_created_date_on_search_results?
+    boolean_keys << :updatedDate unless affiliate.display_updated_date_on_search_results?
   end
 end

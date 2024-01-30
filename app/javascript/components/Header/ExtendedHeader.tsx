@@ -32,29 +32,36 @@ const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: { buttonBackground
   }
 `;
 
-export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen }: HeaderProps) => {
+export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeaderLinks, secondaryHeaderLinks }: HeaderProps) => {
   const styles = useContext(StyleContext);
 
-  const secondaryLinkItems = [
-    <a href="#linkOne" key="one">
-      <span>Secondary link 1</span>
-    </a>,
-    <a href="#linkTwo" key="two">
-      <span>Secondary link 2</span>
-    </a>
-  ];
+  const secondaryLinkItems =
+    secondaryHeaderLinks && secondaryHeaderLinks.length > 0 ? (secondaryHeaderLinks.map((link, index) => {
+      return (
+        <a href={link.url} key={index}>
+          <span>{link.title}</span>
+        </a>
+      );
+    })) : (
+      [
+        <></>
+      ]
+    );
 
-  const primaryLinkItems = [
-    <a href="#one" key="one" className="usa-nav__link">
-      <span>Primary link 1</span>
-    </a>,
-    <a href="#two" key="two" className="usa-nav__link">
-      <span>Primary link 2</span>
-    </a>,
-    <a href="#three" key="three" className="usa-nav__link">
-      <span>Primary link 3</span>
-    </a>
-  ];
+  const primaryLinkItems =
+    primaryHeaderLinks && primaryHeaderLinks.length > 0 ? (primaryHeaderLinks.map((link, index) => {
+      return (
+        <a className="usa-nav__link" href={link.url} key={index}>
+          <span>{link.title}</span>
+        </a>
+      );
+    })) : (
+      [
+        <></>
+      ]
+    );
+  
+  const showMobileMenu = (primaryHeaderLinks && primaryHeaderLinks.length > 0) || (secondaryHeaderLinks && secondaryHeaderLinks.length > 0);
   
   return (
     <>
@@ -70,7 +77,7 @@ export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen }: HeaderP
               <Title>{page.title}</Title>
             }
           />
-          <NavMenuButton onClick={toggleMobileNav} label="Menu" />
+          {showMobileMenu && <NavMenuButton onClick={toggleMobileNav} label="Menu" />}
         </div>
         <ExtendedNav
           primaryItems={primaryLinkItems}

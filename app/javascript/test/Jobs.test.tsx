@@ -28,7 +28,7 @@ describe('Jobs component', () => {
       {
         positionTitle: 'Contract Specialist',
         positionUri: 'https://www.usajobs.gov/GetJob/ViewDetails/690037300',
-        positionLocationDisplay: 'Multiple Locations',
+        positionLocation: 'Multiple Locations',
         organizationName: 'Office of Acquisition and Logistics',
         minimumPay: 122000,
         maximumPay: 150000,
@@ -38,7 +38,7 @@ describe('Jobs component', () => {
       {
         positionTitle: 'Contract Specialist 2',
         positionUri: 'https://www.usajobs.gov/GetJob/ViewDetails/690037300',
-        positionLocationDisplay: 'Multiple Locations',
+        positionLocation: 'Multiple Locations',
         organizationName: 'Office of Acquisition and Logistics 2',
         minimumPay: 122000,
         maximumPay: 150000,
@@ -48,7 +48,7 @@ describe('Jobs component', () => {
       {
         positionTitle: 'Contract Specialist 3',
         positionUri: 'https://www.usajobs.gov/GetJob/ViewDetails/690037300',
-        positionLocationDisplay: 'Multiple Locations',
+        positionLocation: 'Multiple Locations',
         organizationName: 'Office of Acquisition and Logistics 3',
         minimumPay: 122000,
         maximumPay: 150000,
@@ -58,7 +58,7 @@ describe('Jobs component', () => {
       {
         positionTitle: 'Contract Specialist 4',
         positionUri: 'https://www.usajobs.gov/GetJob/ViewDetails/690037300',
-        positionLocationDisplay: 'Multiple Locations',
+        positionLocation: 'Multiple Locations',
         organizationName: 'Office of Acquisition and Logistics 4',
         minimumPay: 122000,
         maximumPay: 150000,
@@ -68,7 +68,7 @@ describe('Jobs component', () => {
       {
         positionTitle: 'Contract Specialist 5',
         positionUri: 'https://www.usajobs.gov/GetJob/ViewDetails/690037300',
-        positionLocationDisplay: 'Multiple Locations',
+        positionLocation: 'Multiple Locations',
         organizationName: 'Office of Acquisition and Logistics 5',
         minimumPay: 122000,
         maximumPay: 150000,
@@ -78,7 +78,7 @@ describe('Jobs component', () => {
       {
         positionTitle: 'Contract Specialist 6',
         positionUri: 'https://www.usajobs.gov/GetJob/ViewDetails/690037300',
-        positionLocationDisplay: 'Multiple Locations',
+        positionLocation: 'Multiple Locations',
         organizationName: 'Office of Acquisition and Logistics 5',
         minimumPay: 122000,
         maximumPay: 150000,
@@ -88,7 +88,7 @@ describe('Jobs component', () => {
       {
         positionTitle: 'Contract Specialist 7',
         positionUri: 'https://www.usajobs.gov/GetJob/ViewDetails/690037300',
-        positionLocationDisplay: 'Multiple Locations',
+        positionLocation: 'Multiple Locations',
         organizationName: 'Office of Acquisition and Logistics 5',
         minimumPay: 122000,
         maximumPay: 150000,
@@ -98,7 +98,7 @@ describe('Jobs component', () => {
       {
         positionTitle: 'Contract Specialist 8',
         positionUri: 'https://www.usajobs.gov/GetJob/ViewDetails/690037300',
-        positionLocationDisplay: 'Multiple Locations',
+        positionLocation: 'Multiple Locations',
         organizationName: 'Office of Acquisition and Logistics 5',
         minimumPay: 0,
         maximumPay: 150000,
@@ -110,7 +110,7 @@ describe('Jobs component', () => {
 
   it('renders Jobs component', () => {
     render(
-      <Jobs {...jobsProps}/>
+      <Jobs {...jobsProps} agencyName='USA.gov'/>
     );
   });
 
@@ -119,7 +119,7 @@ describe('Jobs component', () => {
       {
         positionTitle: 'Contract Specialist 5',
         positionUri: 'https://www.usajobs.gov/GetJob/ViewDetails/690037300',
-        positionLocationDisplay: 'Multiple Locations',
+        positionLocation: 'Multiple Locations',
         organizationName: 'Office of Acquisition and Logistics 5',
         minimumPay: 122000,
         maximumPay: 150000,
@@ -129,7 +129,7 @@ describe('Jobs component', () => {
     ] };
 
     render(
-      <Jobs {...jobsProps2}/>
+      <Jobs {...jobsProps2} />
     );
     expect(screen.getByText('$122,000.00+/yr')).toBeInTheDocument();
     expect(screen.getByText('Contract Specialist 5')).toBeInTheDocument();

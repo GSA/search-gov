@@ -8,7 +8,7 @@ interface IdentifierLogoWrapperProps {
 
 export const IdentifierLogoWrapper = ({ logoUrl, logoAltText }: IdentifierLogoWrapperProps) => {
   return (
-    <div id="serp-identifier-logo-wrapper">
+    <div id="serp-identifier-logo-wrapper" className="margin-right-2">
       <IdentifierLogos>
         <IdentifierLogo href="">
           <img

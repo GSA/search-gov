@@ -4,13 +4,16 @@ import { GridContainer, Grid } from '@trussworks/react-uswds';
 import { useCollapse } from 'react-collapsed';
 import { LanguageContext } from '../../../contexts/LanguageContext';
 import { StyleContext } from '../../../contexts/StyleContext';
+import { NoResults } from '../NoResults/NoResults';
 
 import './Jobs.css';
+
+import usajobsImage from 'searches/usajobs.jpg';
 
 type Job = {
   positionTitle: string;
   positionUri: string;
-  positionLocationDisplay: string;
+  positionLocation: string;
   organizationName: string;
   minimumPay: number;
   maximumPay: number;
@@ -19,6 +22,7 @@ type Job = {
 }[];
 interface JobsProps {
   jobs?: Job;
+  agencyName?: string;
 }
 
 const numberToCurrency = new Intl.NumberFormat('en-US', {
@@ -54,7 +58,7 @@ const formatSalary = (job: { minimumPay: number, maximumPay: number, rateInterva
   return minStr + withMax + job.rateIntervalCode;
 };
 
-export const Jobs = ({ jobs=[] }: JobsProps) => {
+export const Jobs = ({ jobs=[], agencyName }: JobsProps) => {
   const i18n = useContext(LanguageContext);
   const styles = useContext(StyleContext);
 
@@ -68,26 +72,33 @@ export const Jobs = ({ jobs=[] }: JobsProps) => {
     moreJobs = jobs.slice(MAX_JOBS_IN_COLLAPSE_VIEW, jobs.length);
   }   
 
+  const jobOpeningsHeader = (agency: string | undefined) => {
+    if (agency) {
+      return `${i18n.t('jobOpenings')} ${i18n.t('atAgency', { agency })}`;
+    }
+    return i18n.t('federalJobOpenings');
+  };
+
   return (
     <>
-      {jobs?.length > 0 && (
-        <StyledWrapper styles={styles}>
-          <div className='search-item-wrapper search-jobs-item-wrapper'>
-            <GridContainer className='jobs-title-wrapper'>
-              <Grid row gap="md">
-                <Grid col={true}>
-                  <h2 className='jobs-title-wrapper-label'>
-                    {i18n.t('federalJobOpenings')}
-                  </h2>
-                </Grid>
-                <Grid col={true} className='jobs-logo-wrapper'>
-                  <a className="usajobs-logo" href="https://www.usajobs.gov/">
-                    <img alt="USAJobs.gov" />
-                  </a>
-                </Grid>
+      <StyledWrapper styles={styles}>
+        <div className='search-item-wrapper search-jobs-item-wrapper'>
+          <GridContainer className='jobs-title-wrapper'>
+            <Grid row gap="md">
+              <Grid col={true}>
+                <h2 className='jobs-title-wrapper-label'>
+                  {jobOpeningsHeader(agencyName)}
+                </h2>
               </Grid>
-            </GridContainer>
-
+              <Grid col={true} className='jobs-logo-wrapper'>
+                <a className="usajobs-logo" href="https://www.usajobs.gov/">
+                  <img alt="USAJobs.gov" src={usajobsImage} />
+                </a>
+              </Grid>
+            </Grid>
+          </GridContainer>
+          
+          {jobs?.length > 0 ? <>
             {lessJobs?.map((job, index) => {
               return (
                 <GridContainer className='result search-result-item' key={index}>
@@ -103,7 +114,7 @@ export const Jobs = ({ jobs=[] }: JobsProps) => {
                       <div className='result-desc'>
                         <p>{job.organizationName}</p>
                         <ul className="list-horizontal">
-                          <li>{job.positionLocationDisplay}</li>
+                          <li>{job.positionLocation}</li>
                           {showSalary(job) && (<li>{formatSalary(job)}</li>)}
                           <li>Apply by {job.applicationCloseDate}</li>
                         </ul>
@@ -115,7 +126,7 @@ export const Jobs = ({ jobs=[] }: JobsProps) => {
               );
             })}
 
-            {moreJobs?.length > 0 && (
+            {moreJobs?.length > 0 && (<>
               <div {...getCollapseProps()} className='collapsed-jobs-wrapper'>
                 {moreJobs?.map((job, index) => {
                   return (
@@ -132,7 +143,7 @@ export const Jobs = ({ jobs=[] }: JobsProps) => {
                           <div className='result-desc'>
                             <p>{job.organizationName}</p>
                             <ul className="list-horizontal">
-                              <li>{job.positionLocationDisplay}</li>
+                              <li>{job.positionLocation}</li>
                               {showSalary(job) && (<li>{formatSalary(job)}</li>)}
                               <li>Apply by {job.applicationCloseDate}</li>
                             </ul>
@@ -144,42 +155,42 @@ export const Jobs = ({ jobs=[] }: JobsProps) => {
                   );
                 })}
               </div>
-            )}
-
-            <GridContainer className='result search-result-item'>
-              <Grid row className='flex-justify-center'>
-                <div className="usa-nav__primary view_more_less_jobs" {...getToggleProps()}>
-                  <div className="usa-nav__primary-item">
-                    {isExpanded ? 
-                      <button className="usa-accordion__button" aria-expanded="true" type="button"><span>View Less</span></button> : 
-                      <button className="usa-accordion__button" aria-expanded="false" type="button"><span>View More</span></button>
-                    }
-                  </div>
-                </div>
-              </Grid>
-            </GridContainer>
-            
-            <GridContainer className='result search-result-item'>
-              <Grid row gap="md">
-                <Grid col={true} className='result-meta-data'>
-                  <div className='result-title'>
-                    <a href="https://www.usajobs.gov/Search/Results?hp=public" className='result-title-link more-title-link'>
-                      <h2 className='result-title-label'>
-                        {i18n.t('searches.moreFederalJobOpenings')}
-                      </h2>
-                    </a>
+              <GridContainer className='result search-result-item'>
+                <Grid row className='flex-justify-center'>
+                  <div className="usa-nav__primary view_more_less_jobs" {...getToggleProps()}>
+                    <div className="usa-nav__primary-item">
+                      {isExpanded ? 
+                        <button className="usa-accordion__button" aria-expanded="true" type="button"><span>View Less</span></button> : 
+                        <button className="usa-accordion__button" aria-expanded="false" type="button"><span>View More</span></button>
+                      }
+                    </div>
                   </div>
                 </Grid>
+              </GridContainer>
+            </>)}
+          </>: <NoResults errorMsg={i18n.t('noJobResults')} />
+          }
+
+          <GridContainer className='result search-result-item'>
+            <Grid row gap="md">
+              <Grid col={true} className='result-meta-data'>
+                <div className='result-title'>
+                  <a href="https://www.usajobs.gov/Search/Results?hp=public" className='result-title-link more-title-link'>
+                    <h2 className='result-title-label'>
+                      {i18n.t('searches.moreFederalJobOpenings')}
+                    </h2>
+                  </a>
+                </div>
               </Grid>
-            </GridContainer>
-            
-            <GridContainer className='result-divider'>
-              <Grid row gap="md">
-              </Grid>
-            </GridContainer>
-          </div>
-        </StyledWrapper>
-      )}
+            </Grid>
+          </GridContainer> 
+          
+          <GridContainer className='result-divider'>
+            <Grid row gap="md">
+            </Grid>
+          </GridContainer> 
+        </div>
+      </StyledWrapper>
     </>
   );
 };

@@ -142,8 +142,15 @@ class GovboxSet
     return unless @affiliate.jobs_enabled?
 
     @jobs&.
-      map { |job| job.slice(:position_title, :position_uri, :position_location_display, :organization_name, :minimum_pay, :maximum_pay, :rate_interval_code, :application_close_date) }&.
-      each { |job| job[:application_close_date] = Date.parse(job[:application_close_date]).to_fs(:long) }
+      map { |job| job.slice(:position_title, :position_uri, :position_location, :organization_name, :minimum_pay, :maximum_pay, :rate_interval_code, :application_close_date) }&.
+      each do |job|
+      job[:application_close_date] = Date.parse(job[:application_close_date]).to_fs(:long)
+      job[:position_location] = format_locations(job[:position_location])
+    end
+  end
+
+  def format_locations(locations)
+    locations.many? ? 'Multiple Locations' : locations.first[:location_name]
   end
 
   def format_health_topic
@@ -167,10 +174,14 @@ class GovboxSet
   end
 
   def format_federal_register_documents
-    @federal_register_documents&.results&.first(3)&.map { |frd| frd.slice(:title, :document_type, :document_number, :publication_date, :comments_close_on, :start_page, :end_page, :page_length, :contributing_agency_names, :html_url) }&.
-      each do |frd|
-      frd[:comments_close_on] = frd[:comments_close_on].to_fs(:long)
-      frd[:publication_date] = frd[:publication_date].to_fs(:long)
+    frds = @federal_register_documents&.results&.first(3)&.map { |frd| frd.slice(:title, :document_type, :document_number, :publication_date, :comments_close_on, :start_page, :end_page, :page_length, :contributing_agency_names, :html_url) }
+    format_frd_dates(frds)
+  end
+
+  def format_frd_dates(frds)
+    frds&.each do |frd|
+      frd[:comments_close_on] = frd[:comments_close_on].to_fs(:long) if frd[:comments_close_on].present?
+      frd[:publication_date] = frd[:publication_date].to_fs(:long) if frd[:publication_date].present?
     end
   end
 

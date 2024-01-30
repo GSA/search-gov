@@ -37,7 +37,6 @@ Rails.application.routes.draw do
   get '/healthcheck' => 'health_checks#new'
   get '/login' => 'user_sessions#security_notification', as: :login
   get '/signup' => 'user_sessions#security_notification', as: :signup
-  get '/status/outbound_rate_limit' => 'statuses#outbound_rate_limit', defaults: { format: :text }
   get '/dcv/:affiliate.txt' => 'statuses#domain_control_validation',
     defaults: { format: :text },
     constraints: { affiliate: /.*/, format: :text }
@@ -191,7 +190,6 @@ Rails.application.routes.draw do
       collection { get 'reimport' }
     end
     resources :federal_register_documents, concerns: :active_scaffold
-    resources :outbound_rate_limits, concerns: :active_scaffold
     resources :search_modules, concerns: :active_scaffold
     resources :excluded_domains, concerns: :active_scaffold
     resources :affiliate_scopes, concerns: :active_scaffold

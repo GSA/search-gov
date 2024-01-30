@@ -179,9 +179,9 @@ Feature: Search - redesign
     And I should see a link to "Previous"
     And I should see a link to "1" with class "usa-pagination__button"
     And I should see "Next"
-    When I follow "5"
-    And I follow "7"
-    And I follow "8"
+    When I follow page "5"
+    And I follow page "7"
+    And I follow page "8"
     And I should see exactly "10" web search results
 
     When I am on es.agency.gov's "Noticias-1" news search page
@@ -251,8 +251,8 @@ Feature: Search - redesign
   @javascript @a11y 
   Scenario: Searching on sites with federal register documents
     And the following Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | agency_abbreviation | is_federal_register_document_govbox_enabled | domains  | use_redesigned_results_page             |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | DOC                 | true                                        | noaa.gov | true  |
+      | display_name | name          | contact_email    | first_name | last_name | agency_abbreviation | is_federal_register_document_govbox_enabled | domains  | use_redesigned_results_page | display_created_date_on_search_results |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | DOC                 | true                                        | noaa.gov | true                        | true                                   |
     And the following Federal Register Document entries exist:
       | federal_register_agencies | document_number | document_type | title                                                              | publication_date | comments_close_in_days | start_page | end_page | page_length | html_url                                                                                                                         |
       | DOC,IRS,ITA,NOAA          | 2014-13420      | Notice        | Proposed Information Collection; Comment Request                   | 2014-06-09       | 7                      | 33040      | 33041    | 2           | https://www.federalregister.gov/articles/2014/06/09/2014-13420/proposed-information-collection-comment-request                   |
@@ -370,10 +370,10 @@ Feature: Search - redesign
     And I should see a link to "1" with class "usa-pagination__button"
 
     When I follow "Previous"
-    And I follow "2"
+    And I follow page "2"
     Then I should see exactly "20" redesigned video search results
 
-    When I follow "1"
+    When I follow page "1"
     Then I should see exactly "20" redesigned video search results
 
   @javascript @a11y
@@ -422,7 +422,25 @@ Feature: Search - redesign
     And I press "Search"
     Then I should see 2 redesigned related searches
 
-  @javascript @a11y @a11y_wip
+  @javascript @a11y
+  Scenario: Search for the results with file extension
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | first_name | last_name | gets_blended_results    | use_redesigned_results_page |
+      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | true                    | true                        |
+    And the following IndexedDocuments exist:
+      | title                   | description                          | url                               | affiliate | last_crawl_status | published_ago  |
+      | The PDF document        | Within the last hour PDF on item     | http://p.whitehouse.gov/hour.pdf  | bar.gov   | OK                | 30 minutes ago |
+      | The article with PDF    | Within the last day article on item  | http://p.whitehouse.gov/day.pdf   | bar.gov   | OK                | 8 hours ago    |
+    When I am on bar.gov's redesigned search page
+    And I search for "PDF" in the redesigned search page
+    Then I should see exactly "2" web search results
+    And I should see "The PDF document"
+    And I should see "p.whitehouse.gov/hour.pdf"
+    And I should see "Within the last hour PDF on item"
+    And I should not see pagination
+    And I should see "2 results"
+
+  @javascript @a11y
   Scenario: Search with site limits
     Given the following Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | domains | use_redesigned_results_page |
@@ -432,7 +450,7 @@ Feature: Search - redesign
     And I press "Search"
     Then I should see "We're including results for carbon emissions from www.epa.gov/news only."
 
-  @javascript @a11y @a11y_wip
+  @javascript @a11y
   Scenario: Search with custom no results page
     Given the following Affiliates exist:
       | display_name | name           | contact_email    | first_name   | last_name | domains    | locale | additional_guidance_text     | use_redesigned_results_page |

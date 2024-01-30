@@ -29,20 +29,23 @@ const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: { buttonBackground
   }
 `;
 
-export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen }: HeaderProps) => {
+export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeaderLinks, secondaryHeaderLinks }: HeaderProps) => {
   const styles = useContext(StyleContext);
 
-  const primaryNavItems = [
-    <a key="primaryNav_2" className="usa-nav__link" href="">
-      <span>{'Primary link 1'}</span>
-    </a>,
-    <a key="primaryNav_2" className="usa-nav__link" href="">
-      <span>{'Primary link 2'}</span>
-    </a>,
-    <a key="primaryNav_2" className="usa-nav__link" href="">
-      <span>{'Primary link 3'}</span>
-    </a>
-  ];
+  const primaryNavItems =
+    primaryHeaderLinks && primaryHeaderLinks.length > 0 ? (primaryHeaderLinks.map((link, index) => {
+      return (
+        <a className="usa-nav__link" href={link.url} key={index}>
+          <span>{link.title}</span>
+        </a>
+      );
+    })) : (
+      [
+        <></>
+      ]
+    );
+
+  const showMobileMenu = (primaryHeaderLinks && primaryHeaderLinks.length > 0) || (secondaryHeaderLinks && secondaryHeaderLinks.length > 0);
 
   return (
     <>
@@ -59,12 +62,12 @@ export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen }: HeaderProp
                 <Title>{page.title}</Title>
               }
             />
-            <NavMenuButton
+            {showMobileMenu && <NavMenuButton
               label="Menu"
               onClick={toggleMobileNav}
               className="usa-menu-btn"
               data-testid="usa-menu-mob-btn"
-            />
+            />}
           </div>
 
           <PrimaryNav
@@ -73,13 +76,20 @@ export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen }: HeaderProp
             onToggleMobileNav={toggleMobileNav}
             mobileExpanded={mobileNavOpen}
           >
-            <ul className="usa-nav__secondary-links">
-              <li className="usa-nav__secondary-item">
-                <a href="#linkOne">Secondary link 1</a>
-              </li>
-              <li className="usa-nav__secondary-item">
-                <a href="#linkTwo">Secondary link 2</a>
-              </li>
+            <ul  className="usa-nav__secondary-links">
+              { secondaryHeaderLinks && secondaryHeaderLinks.length > 0 ? (secondaryHeaderLinks.map((link, index) => {
+                return (
+                  <li className="usa-nav__secondary-item" key={index}>
+                    <a href={link.url} key={index}>
+                      {link.title}
+                    </a>
+                  </li>
+                );
+              })) : (
+                [
+                  <></>
+                ]
+              ) }
             </ul>
           </PrimaryNav>
         </div>

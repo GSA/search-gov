@@ -1,11 +1,12 @@
+# frozen_string_literal: true
+
 class Search
   include SearchEngineResponseDiagnostics
   include Pageable
-  BLACKLISTED_QUERIES = ["search", "search our site", "*", "1", "what are you looking for?", "¿qué está buscando?"]
-  COMMERCIAL_INDEX_MODULE_TAGS = %w(BWEB IMAG GWEB GIMAG).freeze
+  BLACKLISTED_QUERIES = ['search', 'search our site', '*', '1', 'what are you looking for?', '¿qué está buscando?'].freeze
+  COMMERCIAL_INDEX_MODULE_TAGS = %w[BWEB IMAG].freeze
 
-  class SearchError < RuntimeError;
-  end
+  class SearchError < RuntimeError; end
 
   MAX_QUERYTERM_LENGTH = 255
 
@@ -29,9 +30,10 @@ class Search
   def initialize(options = {})
     @affiliate = options[:affiliate]
     @query = build_query(options)
-    initialize_pageable_attributes options
+    initialize_pageable_attributes(options)
 
-    @results, @spelling_suggestion = [], nil
+    @results = []
+    @spelling_suggestion = nil
     @queried_at_seconds = Time.now.to_i
     @modules = []
     @spelling_suggestion_eligible = !SuggestionBlock.exists?(query: options[:query])
@@ -39,8 +41,8 @@ class Search
 
   # This does your search.
   def run
-    @error_message = (I18n.translate :too_long) and return false if @query.length > MAX_QUERYTERM_LENGTH
-    @error_message = (I18n.translate :empty_query) and return false unless query_present_or_blank_ok? and !query_blacklisted?
+    @error_message = I18n.t(:too_long) and return false if @query.length > MAX_QUERYTERM_LENGTH
+    @error_message = I18n.t(:empty_query) and return false unless query_present_or_blank_ok? && !query_blacklisted?
 
     response = search
     handle_response(response)
@@ -61,23 +63,23 @@ class Search
     page == 1
   end
 
-  def to_xml(options = {:indent => 0, :root => :search})
+  def to_xml(options = { indent: 0, root: :search })
     to_hash.to_xml(options)
   end
 
-  def as_json(options = {})
+  def as_json(_options = {})
     to_hash
   end
 
   def to_hash
     if @error_message
-      {error: @error_message}
+      { error: @error_message }
     else
-      hash = {total: @total,
-              startrecord: @startrecord,
-              endrecord: @endrecord,
-              results: results_to_hash}
-      hash.merge!(related: remove_strong(related_search)) if self.respond_to?(:related_search)
+      hash = { total: @total,
+               startrecord: @startrecord,
+               endrecord: @endrecord,
+               results: results_to_hash }
+      hash[:related] = remove_strong(related_search) if respond_to?(:related_search)
       hash
     end
   end
@@ -87,33 +89,28 @@ class Search
   end
 
   def commercial_results?
-    COMMERCIAL_INDEX_MODULE_TAGS.include? module_tag
+    COMMERCIAL_INDEX_MODULE_TAGS.include?(module_tag)
   end
 
   protected
 
   # This does the search.  You get back a response object, which is handled in the handle_response method below.
-  def search
-  end
+  def search; end
 
   # Set @total, @startrecord, @endrecord, and do anything else based on those values here
-  def handle_response(response)
-  end
+  def handle_response(response); end
 
   def assign_spelling_suggestion_if_eligible(suggestion)
     @spelling_suggestion = suggestion if @spelling_suggestion_eligible
   end
 
   # If you need to query anything else, do that here
-  def populate_additional_results
-  end
+  def populate_additional_results; end
 
-  def log_serp_impressions
-  end
+  def log_serp_impressions; end
 
   # All search classes should be cache-able, so we need to implement a unique cache key for each search class
-  def cache_key
-  end
+  def cache_key; end
 
   def paginate(items)
     WillPaginate::Collection.create(@page, @per_page, [@per_page * 100, @total].min) { |pager| pager.replace(items) }
@@ -124,7 +121,7 @@ class Search
   end
 
   def remove_strong(string_array)
-    string_array.map { |entry| entry.gsub(/<\/?strong>/, '') } if string_array.kind_of?(Array)
+    string_array.map { |entry| entry.gsub(%r{</?strong>}, '') } if string_array.is_a?(Array)
   end
 
   def build_query(options)

@@ -96,7 +96,7 @@ describe GovboxSet do
           described_class.new('jobs', affiliate, geoip_info, highlighting_options).as_json
         end
 
-        let(:job_attributes) { %w[application_close_date maximum_pay minimum_pay organization_name position_location_display position_title position_uri rate_interval_code] }
+        let(:job_attributes) { %w[application_close_date maximum_pay minimum_pay organization_name position_location position_title position_uri rate_interval_code] }
 
         before do
           allow(affiliate).to receive(:jobs_enabled?).and_return(true)
@@ -118,7 +118,7 @@ describe GovboxSet do
                                                        'maximum_pay' => 170_800.0,
                                                        'minimum_pay' => 64_660.0,
                                                        'organization_name' => 'Office of the Secretary of Health and Human Services',
-                                                       'position_location_display' => 'Multiple Locations',
+                                                       'position_location' => 'Multiple Locations',
                                                        'position_title' => 'General Attorney Advisor',
                                                        'position_uri' => 'https://www.usajobs.gov:443/GetJob/ViewDetails/523056100',
                                                        'rate_interval_code' => 'PA'
