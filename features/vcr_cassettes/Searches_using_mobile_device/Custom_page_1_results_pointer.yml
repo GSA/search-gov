@@ -2,481 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=gov%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V7_SUBSCRIPTION_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Transfer-Encoding:
-      - chunked
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Tue, 07 Sep 2021 16:17:08 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
-      Bingapis-Traceid:
-      - 465F20A6032249C59C5A92B5C4B3A1AC
-      Bingapis-Sessionid:
-      - 34728F3D28424117951BE4BA7AC4A5A4
-      X-Msedge-Clientid:
-      - 25CFA08AC6436C030049B021C7366D70
-      X-Msapi-Userstate:
-      - 2cd8
-      Bingapis-Market:
-      - en-US
-      X-Search-Responseinfo:
-      - InternalResponseTime=252,MSDatacenter=BN2B
-      X-Cache:
-      - CONFIG_NOCACHE
-      X-Msedge-Ref:
-      - 'Ref A: 465F20A6032249C59C5A92B5C4B3A1AC Ref B: BLUEDGE1712 Ref C: 2021-09-07T16:18:08Z'
-      Apim-Request-Id:
-      - e467db21-de90-4c16-b5be-7472103bac39
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
-      X-Content-Type-Options:
-      - nosniff
-      Csp-Billing-Usage:
-      - CognitiveServices.BingSearchV7.Transaction=1
-      Date:
-      - Tue, 07 Sep 2021 16:18:08 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "gov
-        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=gov+(site%3agov+OR+site%3amil)",
-        "totalEstimatedMatches": 80400000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "Official Guide to Government Information and ... - USA.gov", "url":
-        "https:\/\/www.usa.gov\/", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov",
-        "snippet": "Learn how to prepare for and recover from disasters and emergencies.
-        Find government information on energy, green technology, pollution, wildlife,
-        and more. Find government information on education including primary, secondary,
-        and higher education. Find information for federal, state, and local government
-        agencies and elected officials.", "dateLastCrawled": "2021-09-02T01:13:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "The United States Social Security Administration", "url": "http:\/\/www.ssa.gov\/",
-        "isFamilyFriendly": true, "displayUrl": "www.ssa.gov", "snippet": "Official
-        website of the U.S. Social Security Administration. Did you recently get
-        a new cell phone number or email address? If you did, you will need to update
-        your personal my Social Security account to reflect the new number or email.",
-        "dateLastCrawled": "2021-09-05T04:15:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
-        "name": "Internal Revenue Service | An official website of the ...", "url":
-        "https:\/\/www.irs.gov\/", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov",
-        "snippet": "Pay your taxes. Get your refund status. Find IRS forms and answers
-        to tax questions. We help you understand and meet your federal tax responsibilities.",
-        "dateLastCrawled": "2021-09-05T04:20:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
-        "name": "COVID-19 | USAGov", "url": "https:\/\/www.usa.gov\/coronavirus",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/coronavirus",
-        "snippet": "A .gov website belongs to an official government organization
-        in the United States. Secure .gov websites use HTTPS A lock ( A locked padlock)
-        or https:\/\/ means you’ve safely connected to the .gov website. Share sensitive
-        information only on official, secure websites. Español MENU. Main Navigation.
-        Close. Search Search ...", "dateLastCrawled": "2021-09-05T06:15:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
-        "name": "Where''s My Refund? Check the Status of My Tax Return - USA.gov",
-        "url": "https:\/\/www.usa.gov\/check-tax-status", "isFamilyFriendly": true,
-        "displayUrl": "https:\/\/www.usa.gov\/check-tax-status", "snippet": "Whether
-        you owe taxes or you’re expecting a refund, you can find out your tax return’s
-        status by: Using the IRS Where’s My Refund tool. Viewing your IRS account
-        information. Calling the IRS at 1-800-829-1040 (Wait times to speak to a representative
-        may be long.) Looking for emails or status updates from your e-filing website
-        or software.", "dateLastCrawled": "2021-09-02T01:36:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
-        "name": "Vaccines.gov - Find COVID-19 vaccine locations near you", "url":
-        "https:\/\/www.vaccines.gov\/", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.vaccines.gov",
-        "snippet": "Vaccines.gov helps you find locations that carry COVID-19 vaccines
-        and their contact information. Because every location handles appointments
-        differently, you will need to schedule your appointment directly with the
-        location you choose.", "dateLastCrawled": "2021-09-05T04:07:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
-        "name": "PR.GOV - Inicio", "url": "http:\/\/pr.gov\/", "isFamilyFriendly":
-        true, "displayUrl": "pr.gov", "snippet": "Censo 2020. Ahora más que nunca
-        es importante que participes en el Censo 2020. Comparte la siguiente información
-        con tus asociados, familia y amigos.", "dateLastCrawled": "2021-09-05T09:03:00.0000000Z",
-        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
-        "name": "National Institute of Standards and Technology | NIST", "url": "https:\/\/time.gov\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/time.gov", "snippet":
-        "The National Institute of Standards and Technology - Time and Frequency Division
-        maintains the standard for frequency and time interval for the United States,
-        provides official time to the United States, and carries out a broad program
-        of research and service activities in time and frequency metrology.", "dateLastCrawled":
-        "2021-09-05T04:06:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
-        "National Weather Service", "url": "https:\/\/www.weather.gov\/", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.weather.gov", "snippet": "Critical Fire
-        Weather in the West; Hot Temperatures in the South and West. Critical fire
-        weather is expected Sunday for parts of Montana, and southwest Oregon into
-        northern California.", "dateLastCrawled": "2021-09-05T04:14:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
-        "name": "Home [www.chp.ca.gov]", "url": "http:\/\/www.chp.ca.gov\/", "isFamilyFriendly":
-        true, "displayUrl": "www.chp.ca.gov", "snippet": "Officer with canine. .
-        The mission of the California Highway Patrol is to provide the highest level
-        of Safety, Service, and Security. YouTube. California Highway Patrol. Subscribe.",
-        "dateLastCrawled": "2021-09-05T10:23:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
-        "name": "Unclaimed Money from the Government | USAGov", "url": "https:\/\/www.usa.gov\/unclaimed-money",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/unclaimed-money",
-        "snippet": "A .gov website belongs to an official government organization
-        in the United States. Secure .gov websites use HTTPS A lock ( A locked padlock)
-        or https:\/\/ means you’ve safely connected to the .gov website. Share sensitive
-        information only on official, secure websites. Español MENU. Money and Taxes.
-        Main Navigation ...", "dateLastCrawled": "2021-09-05T04:21:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
-        "name": "VA.gov Home | Veterans Affairs", "url": "https:\/\/www.va.gov\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.va.gov", "snippet":
-        "The .gov means it’s official. Federal government websites often end in
-        .gov or .mil. Before sharing sensitive information, make sure you''re on
-        a federal government site. The site is secure. The https:\/\/ ensures that
-        you''re connecting to the official website and that any information you provide
-        is encrypted and sent securely. ...", "dateLastCrawled": "2021-09-05T04:10:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
-        "name": "Government Benefits, Grants, and Loans | USAGov", "url": "https:\/\/www.usa.gov\/benefits-grants-loans",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/benefits-grants-loans",
-        "snippet": "Find food programs including SNAP (food stamps), WIC, school meals,
-        and more. Get emergency food assistance during the COVID-19 pandemic. Learn
-        about government grants and loans for states and organizations. Find government
-        programs to help with phone bills, medical bills, and other expenses. Get
-        COVID rent assistance.", "dateLastCrawled": "2021-09-05T07:11:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
-        "name": "Texas.gov | The Official Website of the State of Texas", "url":
-        "https:\/\/www.texas.gov\/", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.texas.gov",
-        "snippet": "Texas.gov is the official website of the State of Texas. From
-        here, we’ll guide you to online services, news, and information around our
-        great state.", "dateLastCrawled": "2021-09-05T06:10:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
-        "name": "Refunds | Internal Revenue Service", "url": "https:\/\/www.irs.gov\/refunds",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/refund",
-        "snippet": "It’s taking more than 21 days for us to issue refunds for certain
-        mailed and e-filed 2020 tax returns that require review. Mailed correspondence
-        is also taking longer to process. Thank you for your patience. Expect delays
-        if you mailed a paper return, had to respond to an IRS inquiry about your
-        e ...", "dateLastCrawled": "2021-09-05T04:20:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
-        "name": "CSLB-Home -CSLB", "url": "http:\/\/www.cslb.ca.gov\/", "isFamilyFriendly":
-        true, "displayUrl": "www.cslb.ca.gov", "snippet": "Welcome to the Contractors
-        State License Board. The Contractors State License Board (CSLB) protects California
-        consumers by licensing and regulating the state''s construction industry.
-        CSLB was established in 1929 and today licenses about 290,000 contractors
-        in 44 different classifications.", "dateLastCrawled": "2021-09-05T12:36:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
-        "name": "View Your Tax Account | Internal Revenue Service", "url": "https:\/\/www.irs.gov\/payments\/view-your-tax-account",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/payments\/view-your-tax-account",
-        "snippet": "Online Account is an online system that allows you to securely
-        access your individual account information. Log in to your Online Account.
-        If you have questions about how to create an account, see Secure Access: How
-        to Register for Certain Online Self-Help Tools.. You can view:", "dateLastCrawled":
-        "2021-09-05T04:11:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
-        "Data.gov", "url": "https:\/\/www.data.gov\/", "isFamilyFriendly": true,
-        "displayUrl": "https:\/\/www.data.gov", "snippet": "Data.gov to Discontinue
-        CSW Service on May 1. April 28, 2021 By Data.gov. Data.gov will be discontinuing
-        the Catalog Service for Web (CSW) as of May 1st, 2021. You can access the
-        same catalog of data through the Comprehensive Knowledge Archive Network Application
-        Programming Interface (CKAN API) provided by catalog.data.gov. If you have
-        ….", "dateLastCrawled": "2021-09-05T08:04:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
-        "name": "Government Grants and Loans - USA.gov", "url": "https:\/\/www.usa.gov\/grants",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/grants",
-        "snippet": "Grants.gov centralizes information from more than 1,000 government
-        grant programs. It''s designed to help states and organizations find and apply
-        for grants. Eligibility - Most of the funding opportunities are for organizations,
-        not individuals. How to apply - Get tips and tools to help you with the registration
-        and application process.", "dateLastCrawled": "2021-09-05T06:15:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
-        "name": "Excelsior Pass and Excelsior Pass Plus | COVID-19 Vaccine", "url":
-        "https:\/\/covid19vaccine.health.ny.gov\/excelsior-pass-and-excelsior-pass-plus",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/covid19vaccine.health.ny.gov\/excelsior-pass",
-        "snippet": "Excelsior Pass and Excelsior Pass Plus provide a free and secure
-        way to validate individual COVID-19 vaccination and\/or negative test results.
-        INFORMATION FOR BUSINESSES AND ORGANIZATIONS.", "dateLastCrawled": "2021-09-07T03:34:00.0000000Z",
-        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
-        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-  recorded_at: Tue, 07 Sep 2021 16:18:09 GMT
-- request:
-    method: get
-    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=20&q=gov%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V7_SUBSCRIPTION_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Transfer-Encoding:
-      - chunked
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Tue, 07 Sep 2021 16:17:09 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
-      Bingapis-Traceid:
-      - 542F41EC364B4AA89EF433B8479D1E0E
-      Bingapis-Sessionid:
-      - 158852ED4E8941F7A14F2FB7F50B5D26
-      X-Msedge-Clientid:
-      - 367E4C95455F69F50DAC5C3E44E868ED
-      X-Msapi-Userstate:
-      - a782
-      Bingapis-Market:
-      - en-US
-      X-Search-Responseinfo:
-      - InternalResponseTime=245,MSDatacenter=BN2B
-      X-Cache:
-      - CONFIG_NOCACHE
-      X-Msedge-Ref:
-      - 'Ref A: 542F41EC364B4AA89EF433B8479D1E0E Ref B: BLUEDGE0711 Ref C: 2021-09-07T16:18:09Z'
-      Apim-Request-Id:
-      - 392060fc-ecf1-47b2-9ada-87613ee92da7
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
-      X-Content-Type-Options:
-      - nosniff
-      Csp-Billing-Usage:
-      - CognitiveServices.BingSearchV7.Transaction=1
-      Date:
-      - Tue, 07 Sep 2021 16:18:09 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "gov
-        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=gov+(site%3agov+OR+site%3amil)",
-        "totalEstimatedMatches": 83100000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "Welcome to Benefits.gov | Benefits.gov", "url": "https:\/\/www.benefits.gov\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.benefits.gov", "snippet":
-        "The .gov means it’s official. Federal government websites always use a
-        .gov or .mil domain. Before sharing sensitive information online, make sure
-        you’re on a .gov or .mil site by inspecting your browser’s address (or “location”)
-        bar.", "dateLastCrawled": "2021-09-04T08:07:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "Home | USCIS", "url": "https:\/\/www.uscis.gov\/", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.uscis.gov", "snippet": "A .gov website
-        belongs to an official government organization in the United States. Secure
-        .gov websites use HTTPS A lock ( A locked padlock ) or https:\/\/ means
-        you''ve safely connected to the .gov website. Share sensitive information
-        only on official, secure websites. Menu.", "dateLastCrawled": "2021-09-05T06:04:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
-        "name": "SAM.gov | Home", "url": "https:\/\/sam.gov\/", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/sam.gov", "snippet": "SAM.gov has merged
-        with beta.SAM.gov. All content from both sites is now here at SAM.gov.
-        This is the official site for registering to do business with the federal
-        government. Registration on this site is free.", "dateLastCrawled": "2021-09-05T04:14:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
-        "name": "Unemployment Help - USA.gov", "url": "https:\/\/www.usa.gov\/unemployment",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/unemployment",
-        "snippet": "A .gov website belongs to an official government organization
-        in the United States. Secure .gov websites use HTTPS A lock ( A locked padlock)
-        or https:\/\/ means you’ve safely connected to the .gov website. Share sensitive
-        information only on official, secure websites. Español MENU. Jobs and Unemployment
-        ...", "dateLastCrawled": "2021-09-05T05:07:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
-        "name": "Recalls.gov", "url": "https:\/\/www.recalls.gov\/", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.recalls.gov", "snippet": "Recalls.gov.
-        To provide better service in alerting the American people to unsafe, hazardous
-        or defective products, six federal agencies with vastly different jurisdictions
-        have joined together to create www.recalls.gov -- a \"one stop shop\" for
-        U.S. Government recalls. Follow the tabs above to obtain the latest recall
-        information, to report a ...", "dateLastCrawled": "2021-09-04T22:11:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
-        "name": "Tennessee State Government - TN.gov", "url": "https:\/\/www.tn.gov\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.tn.gov", "snippet":
-        "State of Tennessee - TN.gov. NASHVILLE, TN — Today, the Tennessee Department
-        of Education announced a new grant opportunity that will provide up to 2,400
-        licensed Tennessee educators the ability to add a new Special Education
-        (SPED) and English as a Second Language (ESL) additional endorsement to their
-        educator license.", "dateLastCrawled": "2021-09-05T04:08:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
-        "name": "Idaho Governor Brad Little", "url": "http:\/\/gov.idaho.gov\/", "isFamilyFriendly":
-        true, "displayUrl": "gov.idaho.gov", "snippet": "8\/31\/2021 --Gov.
-        Little activates National Guard again, directs hundreds of new medical personnel
-        to help Idaho hospitals overwhelmed with unvaccinated COVID-19 patients8\/26\/2021
-        --Gov. Little launches COVID-19 antibody treatment centers, directs relief
-        funds to increase hospital capacity8\/25\/2021 --Gov. Little comments on
-        Supreme Court decision to reinstate Trump’s ‘Remain in Mexico’ policy", "dateLastCrawled":
-        "2021-09-03T07:18:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7", "name":
-        "Coronavirus Tax Relief and Economic Impact Payments ...", "url": "https:\/\/www.irs.gov\/coronavirus-tax-relief-and-economic-impact-payments",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/corona",
-        "snippet": "For more information, visit IRS.gov\/childtaxcredit2021, or
-        read FAQs on the 2021 Child Tax Credit and Advance Child Tax Credit Payments.
-        Third Round of Economic Impact Payments Continues Each week we''re sending
-        the third round of Economic Impact Payments and the related 2020 Recovery
-        Rebate Credit to eligible individuals as people continue to ...", "dateLastCrawled":
-        "2021-09-03T02:22:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
-        "Recreation.gov - Camping, Cabins, RVs, Permits, Passes & More", "url":
-        "https:\/\/www.recreation.gov\/", "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.recreation.gov", "snippet": "Recreation.gov is your gateway
-        to explore America''s outdoor and cultural destinations in your zip code and
-        across the country. We provide tools and tips to discover new adventures through
-        a one-stop shop for inspiration and ideation, trip planning, information sharing,
-        and reservations.", "dateLastCrawled": "2021-09-05T04:04:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
-        "name": "My Account | Thrift Savings Plan", "url": "https:\/\/www.tsp.gov\/tsp\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.tsp.gov\/tsp",
-        "snippet": "Questions? 1-877-968-3778. Find other ways to contact us . Calculators.
-        News and resources. Agency and Service Rep Resources. About us.", "dateLastCrawled":
-        "2021-09-04T03:17:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10", "name":
-        "Find What You Need - USA.gov", "url": "https:\/\/www.usa.gov\/how-to-use",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/how-to-use",
-        "snippet": "USA.gov searches only federal, state, and local government websites
-        for the public. Its search box works like other search engines you''re used
-        to, but USA.gov only returns results from government web pages, most ending
-        in .gov or .mil. This helps you be sure you’re getting official information
-        you can trust--and there’s no advertising.", "dateLastCrawled": "2021-09-03T22:03:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
-        "name": "Medicare.gov: the official U.S. government site for ...", "url":
-        "https:\/\/www.medicare.gov\/", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.medicare.gov",
-        "snippet": "Find Medicare.gov on facebook (link opens in a new tab) Follow
-        Medicare.gov on Twitter (link opens in a new tab) Find Medicare.gov on
-        YouTube (link opens in a new tab)", "dateLastCrawled": "2021-09-05T04:11:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
-        "name": "Unemployment Compensation - POPULAR ON UC.PA.GOV", "url": "https:\/\/www.uc.pa.gov\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uc.pa.gov", "snippet":
-        "Employers & Tax Services. Access UCMS and find information about starting
-        or maintaining a business in Pennsylvania. Pandemic Unemployment Assistance
-        (PUA) Login to the PUA system to file a claim or weekly certification. Applying
-        for Benefit Extensions Due to COVID-19. Instructions for Filing Benefits Online.",
-        "dateLastCrawled": "2021-09-05T04:17:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
-        "name": "Retirement - USA.gov", "url": "https:\/\/www.usa.gov\/retirement",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/retirement",
-        "snippet": "A .gov website belongs to an official government organization
-        in the United States. Secure .gov websites use HTTPS A lock ( A locked padlock)
-        or https:\/\/ means you’ve safely connected to the .gov website. Share sensitive
-        information only on official, secure websites. Español MENU. Jobs and Unemployment
-        ...", "dateLastCrawled": "2021-09-05T08:06:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
-        "name": "Forms & Instructions | Internal Revenue Service", "url": "https:\/\/www.irs.gov\/forms-instructions",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/form", "snippet":
-        "Employer''s Quarterly Federal Tax Return. Employers who withhold income taxes,
-        social security tax, or Medicare tax from employee''s paychecks or who must
-        pay the employer''s portion of social security or Medicare tax.", "dateLastCrawled":
-        "2021-09-05T04:03:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15", "name":
-        "Health Insurance Marketplace for Individuals | HealthCare.gov", "url":
-        "https:\/\/www.healthcare.gov\/login", "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.healthcare.gov\/login", "snippet": "See your individual health
-        care rights at Healthcare.gov. Get high-quality, low-cost coverage under
-        Obamacare at the Health Insurance Marketplace", "dateLastCrawled": "2021-09-05T00:20:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
-        "name": "COVID19.CA.GOV", "url": "https:\/\/covid19.ca.gov\/", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/covid19.ca.gov", "snippet": "Official website
-        for California Coronavirus (COVID-19) Response daily updates and resources.
-        Stay home - save lives. Find information and services to help you and help
-        others.", "dateLastCrawled": "2021-09-05T04:10:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
-        "name": "Disaster Financial Assistance - USA.gov", "url": "https:\/\/www.usa.gov\/disaster-help-food-housing-bills",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/disaster-help-food-housing-bills",
-        "snippet": "A .gov website belongs to an official government organization
-        in the United States. Secure .gov websites use HTTPS A lock ( A locked padlock)
-        or https:\/\/ means you’ve safely connected to the .gov website. Share sensitive
-        information only on official, secure websites. Español MENU ...", "dateLastCrawled":
-        "2021-09-05T04:03:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18", "name":
-        "Housing - USA.gov", "url": "https:\/\/www.usa.gov\/housing", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.usa.gov\/housing", "snippet": "A .gov
-        website belongs to an official government organization in the United States.
-        Secure .gov websites use HTTPS A lock ( A locked padlock) or https:\/\/
-        means you’ve safely connected to the .gov website. Share sensitive information
-        only on official, secure websites. Español MENU. Main Navigation. Close. Search
-        Search ...", "dateLastCrawled": "2021-09-04T14:09:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
-        "name": "Excelsior Pass and Excelsior Pass Plus | COVID-19 Vaccine", "url":
-        "https:\/\/covid19vaccine.health.ny.gov\/excelsior-pass-and-excelsior-pass-plus",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/covid19vaccine.health.ny.gov\/excelsior-pass",
-        "snippet": "Excelsior Pass and Excelsior Pass Plus provide a free and secure
-        way to validate individual COVID-19 vaccination and\/or negative test results.
-        INFORMATION FOR BUSINESSES AND ORGANIZATIONS.", "dateLastCrawled": "2021-09-07T03:34:00.0000000Z",
-        "language": "en", "isNavigational": false}], "someResultsRemoved": true},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-  recorded_at: Tue, 07 Sep 2021 16:18:09 GMT
-- request:
-    method: get
     uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=gov%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
@@ -506,31 +31,35 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Wed, 06 Oct 2021 11:47:41 GMT
+      - Wed, 10 Jan 2024 14:58:52 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
+      X-Eventid:
+      - 659eb0e8b37a473e9a62f044b5ba21ac
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
       Bingapis-Traceid:
-      - 4BAC67CBEE1B46C1A9883273CD2E8CDD
+      - 659eb0e8b37a473e9a62f044b5ba21ac
       Bingapis-Sessionid:
-      - A21CF59C5BD94859BD2C9851418B6770
+      - D3248EE744174E5BA6738C9696F5B210
       X-Msedge-Clientid:
-      - 13A3E3B5C141669733D1F37DC03467B9
+      - 063C9B0CC7ED636035E08F0EC6616273
       X-Msapi-Userstate:
-      - e36d
+      - 9fdc
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=243,MSDatacenter=BN2B
+      - InternalResponseTime=263,MSDatacenter=BNZE01
       X-Cache:
       - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
       X-Msedge-Ref:
-      - 'Ref A: 4BAC67CBEE1B46C1A9883273CD2E8CDD Ref B: BLUEDGE1721 Ref C: 2021-10-06T11:48:41Z'
+      - 'Ref A: 1A03717AF5484397ACA9B47E671DC455 Ref B: BL2AA2010203003 Ref C: 2024-01-10T14:59:52Z'
       Apim-Request-Id:
-      - 17ca639b-e25e-4480-9bf4-54287cfe2bac
+      - f8a662c2-6c81-489d-8a33-3491165e6e06
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -538,162 +67,204 @@ http_interactions:
       Csp-Billing-Usage:
       - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Wed, 06 Oct 2021 11:48:41 GMT
+      - Wed, 10 Jan 2024 14:59:51 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "gov
         (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=gov+(site%3agov+OR+site%3amil)",
-        "totalEstimatedMatches": 86900000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "totalEstimatedMatches": 68500000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Making government services easier to find | USAGov", "url": "https:\/\/www.usa.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov", "snippet":
+        "Voting and elections. Find answers to common questions about voting in the
+        United States. Top. Find government benefits, services, agencies, and information
+        at USA.gov. Contact elected officials. Learn about passports, Social Security,
+        taxes, and more.", "dateLastCrawled": "2024-01-10T07:13:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=5022646634414247&mkt=en-US&setlang=en-US&w=vatIQ0UjRHjsCVZ8QKbGM7O9mXJjhpZE",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Search.gov | USAGov", "url": "https:\/\/www.usa.gov\/search-gov",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/search-gov",
+        "snippet": "Search.gov makes it easier for people to find the information
+        they need from federal websites. As the search engine used by more than 2,000
+        federal websites, Search.gov supports more than 300 million searches a year.
+        Search.gov shares its history with USA.gov, beginning when internet entrepreneur
+        Eric Brewer donated a powerful search engine to ...", "dateLastCrawled": "2024-01-09T08:13:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=4621595471446034&mkt=en-US&setlang=en-US&w=W_PGqVFF3f81qIUwbK6mjCXavfVfMsl-",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Welcome | Login.gov", "url": "https:\/\/secure.login.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/secure.login.gov", "snippet": "A .gov website
+        belongs to an official government organization in the United States. Secure
+        .gov websites use HTTPS A lock ( ) or https:\/\/ means you’ve safely connected
+        to the .gov website. Share sensitive information only on official, secure
+        websites. Sign in; Create an account; Sign in for existing users ...", "dateLastCrawled":
+        "2024-01-09T08:17:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=4523240711979441&mkt=en-US&setlang=en-US&w=6nS4NiNtd08I7sLNNOonI1GTVSGq3ffJ",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
         "name": "VA.gov Home | Veterans Affairs", "url": "https:\/\/www.va.gov\/",
         "isFamilyFriendly": true, "displayUrl": "https:\/\/www.va.gov", "snippet":
+        "Explore VA life insurance options for Veterans, service members, and families.
+        Manage your policy online, file claims for benefits, and access helpful resources.
+        Get help planning a burial in a VA national cemetery, order a headstone or
+        other memorial item to honor a Veteran''s service, and apply for survivor
+        and dependent benefits.", "dateLastCrawled": "2024-01-10T07:11:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=4726482864111884&mkt=en-US&setlang=en-US&w=UY4AzR3n53NlW0mA9k0pR6X9ZwY5MdKg",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Use Benefits.gov to find government benefits you qualify for",
+        "url": "https:\/\/www.usa.gov\/find-government-benefits", "datePublished":
+        "2023-12-07T00:00:00.0000000", "datePublishedDisplayText": "Dec 7, 2023",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/find-government-benefits",
+        "snippet": "Benefits.gov is a free government website that can help you
+        find federal, state, and local programs and assistance you might qualify for.
+        Use the website’s Benefit Finder to answer questions about yourself and your
+        needs. Benefits.gov will not store or share your personal information. The
+        Benefit Finder will create a list of government ...", "dateLastCrawled": "2024-01-10T01:22:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=5048661393677885&mkt=en-US&setlang=en-US&w=qCsLoSfCCwn33bQa77PcxZ6MROCDMUW-",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Welcome to Benefits.gov | Benefits.Gov", "url": "https:\/\/www.benefits.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.benefits.gov", "snippet":
+        "January 3, 2024. An inclusive workplace promotes a more diverse, productive,
+        and fair work environment. On Benefits.gov, there are benefits and resources
+        to help people with disabilities in their search for meaningful employment.
+        In this article, we will explore employment benefits for people with disabilities.",
+        "dateLastCrawled": "2024-01-09T21:10:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=4940702954815654&mkt=en-US&setlang=en-US&w=uPIrljE51lPGxZJ-SJ_S8iGDkyCv8dni",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "My VA | Veterans Affairs", "url": "https:\/\/www.va.gov\/my-va\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.va.gov\/my-va", "snippet":
         "The .gov means it’s official. Federal government websites often end in
         .gov or .mil. Before sharing sensitive information, make sure you''re on
         a federal government site. The site is secure. The https:\/\/ ensures that
         you''re connecting to the official website and that any information you provide
-        is encrypted and sent securely. ...", "dateLastCrawled": "2021-10-03T07:08:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "Official Guide to Government Information and ... - USA.gov", "url":
-        "https:\/\/www.usa.gov\/", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov",
-        "snippet": "Learn how to prepare for and recover from disasters and emergencies.
-        Find government information on energy, green technology, pollution, wildlife,
-        and more. Find government information on education including primary, secondary,
-        and higher education. Find information for federal, state, and local government
-        agencies and elected officials.", "dateLastCrawled": "2021-10-02T06:08:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
-        "name": "Internal Revenue Service | An official website of the ...", "url":
-        "https:\/\/www.irs.gov\/", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov",
-        "snippet": "Pay your taxes. Get your refund status. Find IRS forms and answers
-        to tax questions. We help you understand and meet your federal tax responsibilities.",
-        "dateLastCrawled": "2021-10-03T07:16:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3", "name":
-        "The United States Social Security Administration", "url": "http:\/\/www.ssa.gov\/",
-        "isFamilyFriendly": true, "displayUrl": "www.ssa.gov", "snippet": "Official
-        website of the U.S. Social Security Administration. At Social Security,
-        we strive to deliver great customer service and easy-to-access information
-        about our programs.", "dateLastCrawled": "2021-10-03T07:13:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
-        "name": "Home | USCIS", "url": "https:\/\/www.uscis.gov\/", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.uscis.gov", "snippet": "A .gov website
-        belongs to an official government organization in the United States. Secure
-        .gov websites use HTTPS A lock ( A locked padlock ) or https:\/\/ means
-        you''ve safely connected to the .gov website. Share sensitive information
-        only on official, secure websites. Menu", "dateLastCrawled": "2021-10-03T10:05:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
-        "name": "Where''s My Refund? Check the Status of My Tax Return - USA.gov",
-        "url": "https:\/\/www.usa.gov\/check-tax-status", "isFamilyFriendly": true,
-        "displayUrl": "https:\/\/www.usa.gov\/check-tax-status", "snippet": "A .gov
-        website belongs to an official government organization in the United States.
-        Secure .gov websites use HTTPS A lock ( A locked padlock) or https:\/\/
-        means you’ve safely connected to the .gov website. Share sensitive information
-        only on official, secure websites. Español MENU. Taxes. Main Navigation. Close
-        ...", "dateLastCrawled": "2021-10-02T06:14:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
-        "name": "Home | Agency for Healthcare Research and Quality", "url": "https:\/\/www.ahrq.gov\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ahrq.gov", "snippet":
-        "The Agency for Healthcare Research and Quality''s (AHRQ) mission is to
-        produce evidence to make health care safer, higher quality, more accessible,
-        equitable, and affordable, and to work within the U.S. Department of Health
-        and Human Services and with other partners to make sure that the evidence
-        is understood and used.", "dateLastCrawled": "2021-10-02T23:03:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
-        "name": "National Weather Service", "url": "https:\/\/www.weather.gov\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov", "snippet":
-        "NOAA National Weather Service National Weather Service. Swath of Showers
-        in Eastern U.S.; Powerful Alaska Storm. A slow moving cold front will produce
-        locally heavy showers and thunderstorms from the Deep South to the Great Lakes.",
-        "dateLastCrawled": "2021-10-03T07:13:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8", "name":
-        "Vaccines.gov - Find COVID-19 vaccine locations near you", "url": "https:\/\/www.vaccines.gov\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.vaccines.gov", "snippet":
-        "Vaccines.gov helps you find locations that carry COVID-19 vaccines and
-        their contact information. Because every location handles appointments differently,
-        you will need to schedule your appointment directly with the location you
-        choose.", "dateLastCrawled": "2021-10-03T07:05:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
-        "name": "PR.GOV - Inicio", "url": "http:\/\/pr.gov\/", "isFamilyFriendly":
-        true, "displayUrl": "pr.gov", "snippet": "Censo 2020. Ahora más que nunca
-        es importante que participes en el Censo 2020. Comparte la siguiente información
-        con tus asociados, familia y amigos.", "dateLastCrawled": "2021-10-03T16:04:00.0000000Z",
-        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
-        "name": "The United States Mint", "url": "https:\/\/www.usmint.gov\/", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.usmint.gov", "snippet": "United States
-        Mint Homepage - Coins and Medals, Shop, Product Schedule, Customer Service,
-        Education, News and Media and More.", "dateLastCrawled": "2021-10-03T09:01:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
-        "name": "Unclaimed Money from the Government | USAGov", "url": "https:\/\/www.usa.gov\/unclaimed-money",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/unclaimed-money",
-        "snippet": "The unclaimed funds held by the state are often from bank accounts,
-        insurance policies, or your state government. Start your search for unclaimed
-        money with your state’s unclaimed property office. Search for unclaimed
-        money using a multi-state database. Perform your search using your name,
-        especially if you’ve moved to another state.", "dateLastCrawled": "2021-10-02T06:22:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
-        "name": "Recreation.gov - Camping, Cabins, RVs, Permits, Passes & More",
-        "url": "https:\/\/www.recreation.gov\/", "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.recreation.gov", "snippet": "Recreation.gov is your gateway
-        to explore America''s outdoor and cultural destinations in your zip code and
-        across the country. We provide tools and tips to discover new adventures through
-        a one-stop shop for inspiration and ideation, trip planning, information sharing,
-        and reservations.", "dateLastCrawled": "2021-10-03T07:03:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
-        "name": "Refunds | Internal Revenue Service", "url": "https:\/\/www.irs.gov\/refunds",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/refund",
-        "snippet": "COVID-19 Processing Delays. It’s taking more than 21 days for
-        us to issue refunds for certain mailed and e-filed 2020 tax returns that require
-        review.Mailed correspondence is also taking longer to process.", "dateLastCrawled":
-        "2021-10-03T07:18:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14", "name":
-        "Census.gov", "url": "https:\/\/www.census.gov\/", "isFamilyFriendly": true,
-        "displayUrl": "https:\/\/www.census.gov", "snippet": "Census.gov Homepage.
-        Census Bureau Delivers 2020 Census Redistricting Data in Easier-to-Use Format
-        Census Bureau Delivers 2020 Census Redistricting Data in Easier-to-Use Format
-        Read More. The U.S. Census Bureau today released the 2020 Census Redistricting
-        Data (Public Law 94-171) Summary File to states and the public in an easier-to-use
-        format. ...", "dateLastCrawled": "2021-10-02T06:16:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
-        "name": "Drugs@FDA: FDA-Approved Drugs", "url": "https:\/\/www.accessdata.fda.gov\/scripts\/cder\/daf\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.accessdata.fda.gov\/scripts\/cder\/daf",
-        "snippet": "* Drugs@FDA includes information about drugs, including biological
-        products, approved for human use in the United States (see FAQ), but does
-        not include information about FDA-approved products regulated by the Center
-        for Biologics Evaluation and Research (for example, vaccines, allergenic products,
-        blood and blood products, plasma derivatives, cellular and gene therapy products).",
-        "dateLastCrawled": "2021-10-03T10:09:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
-        "name": "Government Benefits, Grants, and Loans | USAGov", "url": "https:\/\/www.usa.gov\/benefits-grants-loans",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/benefits-grants-loans",
-        "snippet": "Find food programs including SNAP (food stamps), WIC, school meals,
-        and more. Get emergency food assistance during the COVID-19 pandemic. Learn
-        about government grants and loans for states and organizations. Find government
-        programs to help with phone bills, medical bills, and other expenses. Get
-        COVID rent assistance.", "dateLastCrawled": "2021-10-02T15:13:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
-        "name": "National Institute of Standards and Technology | NIST", "url": "https:\/\/time.gov\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/time.gov", "snippet":
-        "The National Institute of Standards and Technology - Time and Frequency Division
-        maintains the standard for frequency and time interval for the United States,
-        provides official time to the United States, and carries out a broad program
-        of research and service activities in time and frequency metrology.", "dateLastCrawled":
-        "2021-10-03T07:07:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18", "name":
-        "Retirement - USA.gov", "url": "https:\/\/www.usa.gov\/retirement", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.usa.gov\/retirement", "snippet": "A
-        .gov website belongs to an official government organization in the United
-        States. Secure .gov websites use HTTPS A lock ( A locked padlock) or https:\/\/
-        means you’ve safely connected to the .gov website. Share sensitive information
-        only on official, secure websites. Español MENU. Jobs and Unemployment ...",
-        "dateLastCrawled": "2021-10-03T05:11:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
-        "name": "Ptarmigan Fire Information - InciWeb the Incident ...", "url": "https:\/\/inciweb.nwcg.gov\/incident\/7857\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/inciweb.nwcg.gov\/incident\/7857",
-        "snippet": "The Ptarmigan Fire was first reported on September 27, 2021 around
-        4:30 pm. Despite cooler and wetter weather, fire activity is expected to continue,
-        and smoke or flames may be visible. Do not call 9-1-1. Residents in the Hamilton
-        Creek and Angler Mountain neighborhoods are likely to encounter fire personnel
-        and heavy equipment on the roads and ...", "dateLastCrawled": "2021-10-05T10:25:00.0000000Z",
-        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
-        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        is encrypted and sent securely. ...", "dateLastCrawled": "2024-01-09T13:12:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=4549379891790083&mkt=en-US&setlang=en-US&w=UPh_AaJAjrQU0e5Nebfy4n7qulf2Q_PJ",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Internal Revenue Service | An official website of the United States
+        ...", "url": "https:\/\/www.irs.gov\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.irs.gov", "snippet": "IRS on Twitter. Follow @IRSnews on
+        Twitter for the latest news and announcements. Pay your taxes. Get your refund
+        status. Find IRS forms and answers to tax questions. We help you understand
+        and meet your federal tax responsibilities.", "dateLastCrawled": "2024-01-09T19:06:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=5059252635959501&mkt=en-US&setlang=en-US&w=rRKnAhmyaPP8rqt_mgr_7xDGxzhHRibz",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Pay.gov - Home", "url": "https:\/\/www.pay.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.pay.gov", "snippet": "An official website
+        of the United States government. Effective September 16, 2023, new sign-in
+        options to further protect your information have been deployed on Pay.gov.
+        Note that most payments do not require you to sign in. For customers that
+        sign-in to Pay.gov: Dismiss. Browse Payments. See All Agencies.", "dateLastCrawled":
+        "2024-01-09T09:26:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9", "name": "How
+        to find unclaimed money from the government | USAGov", "url": "https:\/\/www.usa.gov\/unclaimed-money",
+        "datePublished": "2023-11-13T00:00:00.0000000", "datePublishedDisplayText":
+        "Nov 13, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/unclaimed-money",
+        "snippet": "Search for unclaimed money Database or agency; Employers. Unpaid
+        wages – Search the Department of Labor’s database for back pay an employer
+        might owe you. Pensions from former employers – Contact the Pension Benefit
+        Guaranty Corporation (PBGC) to search for an unclaimed pension. Unclaimed
+        insurance money. VA life insurance funds – Search the U.S. Department of Veterans
+        Affairs (VA ...", "dateLastCrawled": "2024-01-10T07:36:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=4504287033622537&mkt=en-US&setlang=en-US&w=3SoVJ1a8aE8AUAQ9jaRI09DDm3PzyLO9",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "U.S. Department of State – Home", "url": "https:\/\/www.state.gov\/",
+        "datePublished": "2023-12-29T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 29, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.state.gov",
+        "snippet": "Americans we Lost in 2023. ShareAmerica is the U.S. Department
+        of State’s platform for stories about America and the principles that underlie
+        U.S. foreign policy. Leading America’s foreign policy to advance the interests
+        and security of the American people.", "dateLastCrawled": "2024-01-09T07:24:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=4512365864288793&mkt=en-US&setlang=en-US&w=cAMPgYipQrMD_O8Hb2aoct24gxiWaBn0",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Home - Centers for Medicare & Medicaid Services | CMS", "url":
+        "https:\/\/www.cms.gov\/", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cms.gov",
+        "snippet": "HHS to Improve Maternal Health Outcomes with New CMS Care Model
+        that Expands Access to Services, Other Proven Maternal Health Approaches.
+        14. Dec. CMS Letter to Plans and Pharmacy Benefit Managers. 14. Dec. Press
+        Release. CMS Releases Revised Guidance for Medicare Prescription Drug Inflation
+        Rebate Program.", "dateLastCrawled": "2024-01-10T09:11:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=4587502019084747&mkt=en-US&setlang=en-US&w=ApErulOedOAmJ-C4-khYMNm4llWzUm9t",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Vaccines.gov - Find COVID‑19 vaccine locations near you", "url":
+        "https:\/\/www.vaccines.gov\/", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.vaccines.gov",
+        "snippet": "Updated COVID-19 vaccines are now available for children and adults.
+        Availability will continue to increase, so if you don''t find vaccines near
+        you, contact your local pharmacy or health care provider, or check back later.
+        Once you find a location that works for you, please confirm vaccine availability
+        through their site.", "dateLastCrawled": "2024-01-09T10:10:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=5013472584073230&mkt=en-US&setlang=en-US&w=6-68DNt1Ksfn3QVfkkMQPCXquusrhTJ6",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "New Build.ca.gov Website Showcases Historic Investments in California
+        ...", "url": "https:\/\/www.gov.ca.gov\/2024\/01\/09\/new-build-ca-gov-website-showcases-historic-investments-in-california-infrastructure\/",
+        "datePublished": "2024-01-09T00:00:00.0000000", "datePublishedFreshnessText":
+        "1 day ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.gov.ca.gov\/2024\/01\/09\/new-build-ca-gov-website-showcases-historic...",
+        "snippet": "SACRAMENTO – Today, Governor Gavin Newsom’s Administration launched
+        Build.ca.gov to highlight once-in-a-generation investments in California
+        infrastructure that will benefit communities around the state. With $41 billion
+        already at work thanks to historic state funding and unprecedented help from
+        the Biden-Harris Administration, the website illustrates how transformative
+        these investments ...", "dateLastCrawled": "2024-01-10T03:28:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=3762925121731&mkt=en-US&setlang=en-US&w=VbfJg5TOeCL_GEt02oB78OoBrYpkug09",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "HHS Issues New Nondiscrimination Final Rule to Protect ... - HHS.gov",
+        "url": "https:\/\/www.hhs.gov\/about\/news\/2024\/01\/09\/hhs-issues-new-nondiscrimination-final-rule-protect-conscience-rights.html",
+        "datePublished": "2024-01-09T00:00:00.0000000", "datePublishedFreshnessText":
+        "1 day ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.hhs.gov\/about\/news\/2024\/01\/09\/hhs-issues-new-nondiscrimination-final-rule...",
+        "snippet": "In 2019, OCR issued a sweeping final rule that was held unlawful
+        by three federal district courts. Today’s Final Rule partially rescinds the
+        2019 rule, restores the longstanding process for enforcing federal conscience
+        laws, and strengthens protections against conscience and religious discrimination.
+        The Department received over 48,000 ...", "dateLastCrawled": "2024-01-10T03:35:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=2457398764335&mkt=en-US&setlang=en-US&w=iPkR1sUn7M7lvDnLCiFMwLDygRo_BGcS",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Federal Register :: Public Inspection: Safeguarding the Rights of
+        ...", "url": "https:\/\/www.federalregister.gov\/public-inspection\/2024-00091\/safeguarding-the-rights-of-conscience-as-protected-by-federal-statutes",
+        "datePublished": "2024-01-09T00:00:00.0000000", "datePublishedFreshnessText":
+        "1 day ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.federalregister.gov\/public-inspection\/2024-00091\/safeguarding-the-rights...",
+        "snippet": "While every effort has been made to ensure that the material on
+        FederalRegister.gov is accurately displayed, consistent with the official
+        SGML-based PDF version on govinfo.gov, those relying on it for legal research
+        should verify their results against an official edition of the Federal Register.
+        Until the ACFR grants it official status, the XML ...", "dateLastCrawled":
+        "2024-01-10T14:46:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=1976343612116&mkt=en-US&setlang=en-US&w=b2ldI4c2upxksz-tvJRzUnjq6T2ThTvr",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Secretary Blinken’s Meeting with Israeli Prime Minister Netanyahu
+        and ...", "url": "https:\/\/www.state.gov\/secretary-blinkens-meeting-with-israeli-prime-minister-netanyahu-and-the-israeli-war-cabinet\/",
+        "datePublished": "2024-01-09T00:00:00.0000000", "datePublishedFreshnessText":
+        "1 day ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.state.gov\/secretary-blinkens-meeting-with-israeli-prime-minister-netanyahu...",
+        "snippet": "The below is attributable to Spokesperson Matthew Miller: Secretary
+        of State Antony J. Blinken met today with Israeli Prime Minister Benjamin
+        Netanyahu and the Israeli War Cabinet in Tel Aviv. The Secretary reaffirmed
+        our support for Israel’s right to prevent the terrorist attacks of October
+        7 from being repeated and stressed the importance of avoiding […]", "dateLastCrawled":
+        "2024-01-10T09:22:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=3488132406464&mkt=en-US&setlang=en-US&w=DpAxCNNlr6HrSewAblUHjSOsnRLdWEdt",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Government benefits | USAGov", "url": "https:\/\/www.usa.gov\/benefits",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/benefits",
+        "snippet": "Explore all topics and services. Find government programs that
+        may help pay for food, housing, medical, and other basic living expenses.
+        Learn about Social Security and government checks.", "dateLastCrawled": "2024-01-09T11:19:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=4966064733749613&mkt=en-US&setlang=en-US&w=PEjloNjG-nzSTle4Duq8jsHG375Y53zZ",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Governor Newsom Declares Special Election for 20th Congressional
+        ...", "url": "https:\/\/www.gov.ca.gov\/2024\/01\/08\/governor-newsom-declares-special-election-for-20th-congressional-district\/",
+        "datePublished": "2024-01-08T00:00:00.0000000", "datePublishedFreshnessText":
+        "2 days ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.gov.ca.gov\/2024\/01\/08\/governor-newsom-declares-special-election-for-20th...",
+        "snippet": "Published: Jan 08, 2024. SACRAMENTO – Governor Gavin Newsom today
+        issued a proclamation declaring a special election for the 20th Congressional
+        District on May 21, 2024. The primary for the special election will be held
+        on March 19, 2024. The text of the proclamation and a copy can be found below:",
+        "dateLastCrawled": "2024-01-10T04:13:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=807993292463&mkt=en-US&setlang=en-US&w=kd2yeH4TDia3aC1_1zdxkuL5BeTZz3gS",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Park seeks input on the rehabilitation of Welcome Park", "url": "https:\/\/www.nps.gov\/inde\/learn\/news\/park-seeks-input-on-the-rehabilitation-of-welcome-park.htm",
+        "datePublished": "2024-01-05T00:00:00.0000000", "datePublishedFreshnessText":
+        "5 days ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/inde\/learn\/news\/park-seeks-input-on-the-rehabilitation-of-welcome...",
+        "snippet": "A unit of the National Park Service, Independence National Historical
+        Park was created 75 years ago by an Act of Congress on June 28, 1948. Accredited
+        by the American Association of Museums, Independence NHP covers almost 54
+        acres in Philadelphia’s Old City, and includes Independence Hall, the Liberty
+        Bell, Congress Hall, Franklin Court, and other historic buildings associated
+        with the ...", "dateLastCrawled": "2024-01-10T01:29:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=4244086755737&mkt=en-US&setlang=en-US&w=bbjxYbWg4y4OcnZ1sk9N8PwSw9Iz5aJb",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
@@ -712,7 +283,7 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-  recorded_at: Wed, 06 Oct 2021 05:45:59 GMT
+  recorded_at: Wed, 10 Jan 2024 14:59:52 GMT
 - request:
     method: get
     uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=20&q=gov%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
@@ -744,31 +315,35 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Wed, 06 Oct 2021 11:47:41 GMT
+      - Wed, 10 Jan 2024 14:58:52 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
+      X-Eventid:
+      - 659eb0e89d4a4681866899ce0866b75f
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
       Bingapis-Traceid:
-      - 45C15BD6AC8A472EBD34F78775F54BE5
+      - 659eb0e89d4a4681866899ce0866b75f
       Bingapis-Sessionid:
-      - 8186139E11D44364A573ADFB117D8A3D
+      - 33D6AB107B904617A607C335A48E4B54
       X-Msedge-Clientid:
-      - 0FF6ACE3CC9D60833BD5BC2BCD60618D
+      - '092E4C897BD86AF10BC7588B7AD96B4F'
       X-Msapi-Userstate:
-      - aec9
+      - '3305'
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=259,MSDatacenter=BN2B
+      - InternalResponseTime=250,MSDatacenter=BNZE01
       X-Cache:
       - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
       X-Msedge-Ref:
-      - 'Ref A: 45C15BD6AC8A472EBD34F78775F54BE5 Ref B: BLUEDGE0117 Ref C: 2021-10-06T11:48:41Z'
+      - 'Ref A: E5D2601426184366AFE097BEB289046D Ref B: BL2AA2030103009 Ref C: 2024-01-10T14:59:52Z'
       Apim-Request-Id:
-      - e17d6b03-f8fe-40e1-b551-803cae5298f4
+      - a65109ec-8cbe-43d2-8b4e-94803a5a493b
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -776,159 +351,195 @@ http_interactions:
       Csp-Billing-Usage:
       - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Wed, 06 Oct 2021 11:48:42 GMT
+      - Wed, 10 Jan 2024 14:59:52 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "gov
         (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=gov+(site%3agov+OR+site%3amil)",
-        "totalEstimatedMatches": 86800000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "Welcome to Benefits.gov | Benefits.gov", "url": "https:\/\/www.benefits.gov\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.benefits.gov", "snippet":
-        "The .gov means it’s official. Federal government websites always use a
-        .gov or .mil domain. Before sharing sensitive information online, make sure
-        you’re on a .gov or .mil site by inspecting your browser’s address (or “location”)
-        bar.", "dateLastCrawled": "2021-10-01T23:12:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "A-Z Index of U.S. Government Departments and ... - USA.gov", "url":
-        "https:\/\/www.usa.gov\/federal-agencies\/", "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.usa.gov\/federal-agencies", "snippet": "A .gov website
-        belongs to an official government organization in the United States. Secure
-        .gov websites use HTTPS A lock ( A locked padlock) or https:\/\/ means you’ve
-        safely connected to the .gov website. Share sensitive information only on
-        official, secure websites. Español MENU ...", "dateLastCrawled": "2021-10-03T16:05:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
-        "name": "25 Most Popular Go.USA.gov Links | Go.USA.gov", "url": "https:\/\/go.usa.gov\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/go.usa.gov", "snippet":
-        "Go.USA.gov is a URL shortener that lets government employees create short
-        .gov URLs from official government domains, such as .gov, .mil, .si.edu,
-        .fed.us, or .state ...", "dateLastCrawled": "2021-10-03T08:13:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
-        "name": "Unemployment Help - USA.gov", "url": "https:\/\/www.usa.gov\/unemployment",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/unemployment",
-        "snippet": "A .gov website belongs to an official government organization
-        in the United States. Secure .gov websites use HTTPS A lock ( A locked padlock)
-        or https:\/\/ means you’ve safely connected to the .gov website. Share sensitive
-        information only on official, secure websites. Español MENU. Jobs and Unemployment
-        ...", "dateLastCrawled": "2021-10-03T09:05:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
-        "name": "Recalls.gov", "url": "https:\/\/www.recalls.gov\/", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.recalls.gov", "snippet": "Recalls.gov.
-        To provide better service in alerting the American people to unsafe, hazardous
-        or defective products, six federal agencies with vastly different jurisdictions
-        have joined together to create www.recalls.gov -- a \"one stop shop\" for
-        U.S. Government recalls. Follow the tabs above to obtain the latest recall
-        information, to report a ...", "dateLastCrawled": "2021-10-03T12:08:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
-        "name": "Home | GRANTS.GOV", "url": "https:\/\/www.grants.gov\/", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.grants.gov", "snippet": "Grant, the Grants.gov
-        help chatbot, was created to answer users'' most frequently asked questions
-        (FAQs). Next System Maintenance: August 21-25, 2021. Software releases bring
-        users new features and fixes. Grant Writing Tips. Principles and examples
-        of good federal grant-writing. YouTube. Grants Gov. 24.5K subscribers.",
-        "dateLastCrawled": "2021-10-03T13:12:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6", "name":
-        "Federal Register :: Home - Monday, October 4th", "url": "https:\/\/www.federalregister.gov\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.federalregister.gov",
-        "snippet": "The Public Inspection page on FederalRegister.gov offers a preview
-        of documents scheduled to appear in the next day''s Federal Register issue.
-        The Public Inspection page may also include documents scheduled for later
-        issues, at the request of the issuing agency.", "dateLastCrawled": "2021-10-03T15:15:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
-        "name": "Recreation.gov - Camping, Cabins, RVs, Permits, Passes & More",
-        "url": "https:\/\/www.recreation.gov\/", "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.recreation.gov", "snippet": "Recreation.gov is your gateway
-        to explore America''s outdoor and cultural destinations in your zip code and
-        across the country. We provide tools and tips to discover new adventures through
-        a one-stop shop for inspiration and ideation, trip planning, information sharing,
-        and reservations.", "dateLastCrawled": "2021-10-03T07:03:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "totalEstimatedMatches": 68500000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Welcome to GovLoans.gov | GovLoans", "url": "https:\/\/www.govloans.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.govloans.gov",
+        "snippet": "GovLoans.gov is an online resource to help you find government
+        loans you may be eligible for. It is not an application for benefits and will
+        not send you free money. Loan Categories. Agricultural Loans. Business Loans.
+        Education Loans. Housing Loans. Loan Repayment. Veterans Loans.", "dateLastCrawled":
+        "2024-01-10T01:15:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=4879237678105211&mkt=en-US&setlang=en-US&w=ZCMyVza9tymq0l5UoDFLwTD4wGp9tFcp",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Housing help | USAGov", "url": "https:\/\/www.usa.gov\/housing-help",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/housing",
+        "snippet": "Find help if you cannot resolve a disagreement directly with your
+        landlord or management company. Looking for something else? Explore all topics
+        and services. See if you qualify for government assistance from HUD or your
+        state to rent, buy, or repair a home. Find emergency housing and avoid foreclosure
+        and eviction.", "dateLastCrawled": "2024-01-10T04:36:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=4557308543380425&mkt=en-US&setlang=en-US&w=5X7DeO8VyD8YbMB0j03XhBdUR8nZkIVC",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Home - Centers for Medicare & Medicaid Services | CMS", "url":
+        "https:\/\/www.cms.gov\/", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cms.gov",
+        "snippet": "HHS to Improve Maternal Health Outcomes with New CMS Care Model
+        that Expands Access to Services, Other Proven Maternal Health Approaches.
+        14. Dec. CMS Letter to Plans and Pharmacy Benefit Managers. 14. Dec. Press
+        Release. CMS Releases Revised Guidance for Medicare Prescription Drug Inflation
+        Rebate Program.", "dateLastCrawled": "2024-01-10T09:11:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=4587502019084747&mkt=en-US&setlang=en-US&w=ApErulOedOAmJ-C4-khYMNm4llWzUm9t",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Welcome to Medicare | Medicare", "url": "https:\/\/www.medicare.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.medicare.gov", "snippet":
+        "Talk to someone. Contact Medicare & other helpful resources. Get Help.
+        In a Medicare Advantage Plan? You can still make a change! From Jan 1 –
+        March 31, if you’re in a Medicare Advantage Plan, you can switch plans or
+        return to Original Medicare and join a separate Medicare drug plan. Find
+        Plans.", "dateLastCrawled": "2024-01-10T07:10:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=5043447164961281&mkt=en-US&setlang=en-US&w=-0IuKIie6j_1ftdfS6h_Acd8Ymw8jjhx",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Unemployment benefits | USAGov", "url": "https:\/\/www.usa.gov\/unemployment-benefits",
+        "datePublished": "2023-12-18T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 18, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/unemployment",
+        "snippet": "States set eligibility rules for unemployment benefits. Select
+        your state on this map to find the eligibility rules for unemployment benefits.
+        When deciding if you get benefits, many states require that you: Earned at
+        least a certain amount within the last 12-24 months. Worked consistently for
+        the last 12-24 months. Look for a new job.", "dateLastCrawled": "2024-01-10T08:04:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=4626002108678450&mkt=en-US&setlang=en-US&w=UICuxLME2xU3qeAb7U5VxEeuCMK1pXNw",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
         "name": "Centers for Disease Control and Prevention", "url": "https:\/\/www.cdc.gov\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov", "snippet":
-        "The Centers for Disease Control and Prevention (CDC) cannot attest to the
-        accuracy of a non-federal website. Linking to a non-federal website does not
-        constitute an endorsement by CDC or any of its employees of the sponsors or
-        the information and products presented on the website. You will be ...", "dateLastCrawled":
-        "2021-10-03T07:12:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9", "name": "Home
-        [www.chp.ca.gov]", "url": "http:\/\/www.chp.ca.gov\/", "isFamilyFriendly":
-        true, "displayUrl": "www.chp.ca.gov", "snippet": "The mission of the California
-        Highway Patrol is to provide the highest level of Safety, Service, and Security.",
-        "dateLastCrawled": "2021-10-02T22:15:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
-        "name": "Getting or Renewing a U.S. Passport | USAGov", "url": "https:\/\/www.usa.gov\/passport",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/passport",
-        "snippet": "A .gov website belongs to an official government organization
-        in the United States. Secure .gov websites use HTTPS A lock ( A locked padlock)
-        or https:\/\/ means you’ve safely connected to the .gov website. Share sensitive
-        information only on official, secure websites. Español MENU ...", "dateLastCrawled":
-        "2021-10-03T07:14:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11", "name":
-        "CSLB-Home -CSLB", "url": "http:\/\/www.cslb.ca.gov\/", "isFamilyFriendly":
-        true, "displayUrl": "www.cslb.ca.gov", "snippet": "Welcome to the Contractors
-        State License Board. The Contractors State License Board (CSLB) protects California
-        consumers by licensing and regulating the state''s construction industry.
-        CSLB was established in 1929 and today licenses about 290,000 contractors
-        in 44 different classifications.", "dateLastCrawled": "2021-10-03T18:05:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
-        "name": "Government Grants and Loans - USA.gov", "url": "https:\/\/www.usa.gov\/grants",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/grants",
-        "snippet": "Use the federal government’s free, official website, GovLoans.gov,
-        rather than commercial sites that may charge a fee for information or application
-        forms. GovLoans.gov directs you to information on loans for agriculture,
-        business, disaster relief, education, housing, and for veterans. Eligibility
-        - Use the online pre-screening tool.", "dateLastCrawled": "2021-10-03T13:15:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
-        "name": "View Your Tax Account | Internal Revenue Service", "url": "https:\/\/www.irs.gov\/payments\/view-your-tax-account",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/payments\/view-your-tax-account",
-        "snippet": "Online Account is an online system that allows you to securely
-        access your individual account information. Log in to your Online Account.
-        If you have questions about how to create an account, see Secure Access: How
-        to Register for Certain Online Self-Help Tools.. You can view:", "dateLastCrawled":
-        "2021-10-03T07:09:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14", "name":
-        "Idaho Governor Brad Little", "url": "http:\/\/gov.idaho.gov\/", "isFamilyFriendly":
-        true, "displayUrl": "gov.idaho.gov", "snippet": "The people of Idaho elected
-        Brad Little as the state’s 33rd Governor in November 2018. He became Governor
-        on January 7, 2019. Brad is an Emmett native who was raised on his family’s
-        sheep and cattle ranching operation.", "dateLastCrawled": "2021-10-03T01:25:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
-        "name": "Unemployment Compensation - POPULAR ON UC.PA.GOV", "url": "https:\/\/www.uc.pa.gov\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uc.pa.gov", "snippet":
-        "Employers & Tax Services. Access UCMS and find information about starting
-        or maintaining a business in Pennsylvania. Pandemic Unemployment Assistance
-        (PUA) Login to the PUA system to file a claim or weekly certification. Applying
-        for Benefit Extensions Due to COVID-19. Instructions for Filing Benefits Online.",
-        "dateLastCrawled": "2021-10-03T07:15:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
-        "name": "Coronavirus Tax Relief and Economic Impact Payments ...", "url":
-        "https:\/\/www.irs.gov\/coronavirus-tax-relief-and-economic-impact-payments",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/corona",
-        "snippet": "For more information, visit IRS.gov\/childtaxcredit2021, or
-        read FAQs on the 2021 Child Tax Credit and Advance Child Tax Credit Payments.
-        Third Round of Economic Impact Payments Continues Each week we''re sending
-        the third round of Economic Impact Payments and the related 2020 Recovery
-        Rebate Credit to eligible individuals as people continue to ...", "dateLastCrawled":
-        "2021-10-03T08:13:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17", "name":
-        "USAJOBS - The Federal Government''s Official Jobs Site", "url": "https:\/\/www.usajobs.gov\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usajobs.gov", "snippet":
-        "USAJOBS is the Federal Government''s official one-stop source for Federal
-        jobs and employment information.", "dateLastCrawled": "2021-10-03T07:18:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
-        "name": "NWS Radar", "url": "https:\/\/radar.weather.gov\/", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/radar.weather.gov", "snippet": "The NWS Radar
-        site displays the radar on a map along with forecast and alerts. The radar
-        products are also available as OGC compliant services to use in your application..
-        There are no additional pages on this site.", "dateLastCrawled": "2021-10-03T07:17:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
-        "name": "My Turn - California COVID-19 Vaccine Scheduling ...", "url": "https:\/\/myturn.ca.gov\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/myturn.ca.gov", "snippet":
-        "Safe, free, effective COVID-19 vaccines are available to everyone age 12
-        and up—regardless of immigration or insurance status. Stay healthy, protect
-        others and help us end the pandemic.", "dateLastCrawled": "2021-10-03T13:15:00.0000000Z",
-        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
-        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        "datePublished": "2024-01-08T00:00:00.0000000", "datePublishedFreshnessText":
+        "2 days ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov",
+        "snippet": "CDC is the nation’s leading science-based, data-driven, service
+        organization that protects the public’s health. For more than 70 years, we’ve
+        put science into action to help children stay healthy so they can grow and
+        learn; to help families, businesses, and communities fight disease and stay
+        strong; and to protect the public’s health.", "dateLastCrawled": "2024-01-10T07:15:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=4859979043701016&mkt=en-US&setlang=en-US&w=pW9tj2m4_PmiEE1ZGS2fB84FoFlihCVU",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "SAM.gov | Home", "url": "https:\/\/sam.gov\/content\/home", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/sam.gov\/content\/home", "snippet": "If you
+        use Simple Search in SAM.gov today, you can continue to search as you normally
+        do. Simple Search will remain the default. If you know how to use Boolean
+        search phrases (advanced formulas used with special terms along with keywords),
+        you can now use them with the new search editor in the SAM.gov Search. The
+        FASCSA order rule is in effect.", "dateLastCrawled": "2024-01-09T16:30:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "State governments | USAGov", "url": "https:\/\/www.usa.gov\/state-governments",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/state-governments",
+        "snippet": "State governments. Find out how to contact your state or territory,
+        its governor, and major state agencies. When autocomplete results are available
+        use up and down arrows to review and enter to select.Touch device users, explore
+        by touch or with swipe gestures. Find your state or territory website for
+        information on officials, elections, social ...", "dateLastCrawled": "2024-01-09T05:16:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=4665112077205838&mkt=en-US&setlang=en-US&w=QzgnVUJpdNZJcuW0dvpfw4vEiLM_fvEF",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Gov. Holcomb announces $250M Lilly Endowment grant to accelerate
+        ...", "url": "https:\/\/events.in.gov\/event\/gov_holcomb_announces_250m_lilly_endowment_grant_to_accelerate_quality_of_place_across_indiana",
+        "datePublished": "2024-01-09T00:00:00.0000000", "datePublishedFreshnessText":
+        "1 day ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/events.in.gov\/event\/gov_holcomb_announces_250m_lilly_endowment_grant_to...",
+        "snippet": "Gov. Holcomb announces $250M Lilly Endowment grant to accelerate
+        quality of place across Indiana Funds will support investments in communities
+        throughout the state focused on blight remediation and redevelopment, public
+        arts and cultural initiatives INDIANAPOLIS – Governor Eric J. Holcomb announced
+        at tonight’s State of the State address that Lilly Endowment Inc. has awarded
+        a $250 million ...", "dateLastCrawled": "2024-01-10T13:47:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=533204516158&mkt=en-US&setlang=en-US&w=T7-AtzS--wJK3wD7TJ7vnPNOcTKis7Eu",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "My VA | Veterans Affairs", "url": "https:\/\/www.va.gov\/my-va\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.va.gov\/my-va", "snippet":
+        "The .gov means it’s official. Federal government websites often end in
+        .gov or .mil. Before sharing sensitive information, make sure you''re on
+        a federal government site. The site is secure. The https:\/\/ ensures that
+        you''re connecting to the official website and that any information you provide
+        is encrypted and sent securely. ...", "dateLastCrawled": "2024-01-09T13:12:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=4549379891790083&mkt=en-US&setlang=en-US&w=UPh_AaJAjrQU0e5Nebfy4n7qulf2Q_PJ",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Home | U.S. Department of Labor", "url": "https:\/\/www.dol.gov\/",
+        "datePublished": "2024-01-08T00:00:00.0000000", "datePublishedFreshnessText":
+        "2 days ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.dol.gov",
+        "snippet": "Employer.gov. Family and Medical Leave Act (FMLA) Grants. Fair
+        Labor Standards Act (FLSA) Workplace Posters. Minimum Wage. Guidance for Visitors
+        to DOL National Office. Apprenticeship Finder. Worker rights and benefits
+        depend on you exercising your fundamental right!", "dateLastCrawled": "2024-01-09T08:02:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=4576519783776742&mkt=en-US&setlang=en-US&w=LWw0VXwfSighKW-a8hXGx2Gziw29V7Gy",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "The public’s one account for government. | Login.gov", "url": "https:\/\/www.login.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.login.gov", "snippet":
+        "Login.gov handles software development, security operations, and customer
+        support so you don’t have to. Become a partner. Agency developers. Developer
+        resources, real-time support and modern tools to help you implement and deploy
+        your application with Login.gov. See developer guide.", "dateLastCrawled":
+        "2024-01-10T02:25:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=4664510773002770&mkt=en-US&setlang=en-US&w=DbBd9-TsO05JLOr6ctccywmSyLq2ba_m",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "GRANTS.GOV", "url": "https:\/\/www.grants.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.grants.gov", "snippet": "Reminder: Federal
+        agencies do not publish personal financial assistance opportunities on Grants.gov.
+        Federal funding opportunities published on Grants.gov are for organizations
+        and entities supporting the development and management of government-funded
+        programs and projects. For more information about personal financial assistance
+        benefits, please visit Benefits.gov.", "dateLastCrawled": "2024-01-09T07:25:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=4607997606232107&mkt=en-US&setlang=en-US&w=H1_CiBFtFl4veYb1-WCGZEYAx3Q2KiRi",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Mass.gov", "url": "https:\/\/www.mass.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.mass.gov", "snippet": "Apply for unemployment
+        benefits. Renew your driver''s license. Buy Fishing or Hunting Licenses. Search
+        court dockets, calendars, and cases. SNAP into BabySteps. Login to your MassHealth
+        account. Mount Greylock State Reservation. George Headley.", "dateLastCrawled":
+        "2024-01-09T16:25:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=5009727373705684&mkt=en-US&setlang=en-US&w=a9e3s74rJDfmKU90odPOnb_EDg6Vfnh1",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Home | .gov", "url": "https:\/\/get.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/get.gov", "snippet": "November 17th, 2023:
+        We’ve emailed all .gov registrants with instructions on how to access the
+        new .gov registrar.Domain requests are still paused until January 2024..
+        October 13th, 2023: New domain requests are paused until January 2024 as we
+        transition to new infrastructure.. September 6, 2023: We’re leading a change
+        to .gov’s infrastructure that requires current users to take certain ...",
+        "dateLastCrawled": "2024-01-07T22:12:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=4942790446241903&mkt=en-US&setlang=en-US&w=_S5IX5oEYXfHuP3Z4zWxXZS0wm5EjAJL",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Pay.gov - Home", "url": "https:\/\/www.pay.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.pay.gov", "snippet": "An official website
+        of the United States government. Effective September 16, 2023, new sign-in
+        options to further protect your information have been deployed on Pay.gov.
+        Note that most payments do not require you to sign in. For customers that
+        sign-in to Pay.gov: Dismiss. Browse Payments. See All Agencies.", "dateLastCrawled":
+        "2024-01-09T09:26:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "New Build.ca.gov Website Showcases Historic Investments in California ...",
+        "url": "https:\/\/www.gov.ca.gov\/2024\/01\/09\/new-build-ca-gov-website-showcases-historic-investments-in-california-infrastructure\/",
+        "datePublished": "2024-01-09T00:00:00.0000000", "datePublishedFreshnessText":
+        "1 day ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.gov.ca.gov\/2024\/01\/09\/new-build-ca-gov-website-showcases-historic...",
+        "snippet": "SACRAMENTO – Today, Governor Gavin Newsom’s Administration launched
+        Build.ca.gov to highlight once-in-a-generation investments in California
+        infrastructure that will benefit communities around the state. With $41 billion
+        already at work thanks to historic state funding and unprecedented help from
+        the Biden-Harris Administration, the website illustrates how transformative
+        these investments ...", "dateLastCrawled": "2024-01-10T03:28:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=3762925121731&mkt=en-US&setlang=en-US&w=VbfJg5TOeCL_GEt02oB78OoBrYpkug09",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Open Enrollment ends Jan 16 - enroll now | HealthCare.gov", "url":
+        "https:\/\/www.healthcare.gov\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.healthcare.gov", "snippet": "Secure .gov websites use HTTPS
+        A lock or https:\/\/ means you''ve safely connected to the .gov website.
+        Share sensitive information only on official, secure websites. Share sensitive
+        information only on official, secure websites.", "dateLastCrawled": "2024-01-10T07:16:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=4902477748240734&mkt=en-US&setlang=en-US&w=s8VzkbJuYj21Y8VLmf9B4CPlaca6cZgs",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Domain requirements | .gov", "url": "https:\/\/get.gov\/registration\/requirements\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/get.gov\/registration\/requirements",
+        "snippet": "Eligibility. Only U.S.-based government and public sector organizations
+        are eligible to obtain a .gov domain. This includes any federal, state,
+        local, or territorial government entity, or other publicly controlled entity.
+        It also includes any tribal government recognized by the federal government
+        or a state government.", "dateLastCrawled": "2024-01-09T20:05:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=4550389353827789&mkt=en-US&setlang=en-US&w=CJ_9Qgn99RUVR2rY_53CRS7tWtb-8YOs",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Travel | USAGov", "url": "https:\/\/www.usa.gov\/travel", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.usa.gov\/travel", "snippet": "As a non-citizen
+        U.S. resident, learn what documents you need to return to the U.S. if you
+        leave. Looking for something else? Explore all topics and services. Learn
+        how to get or renew a passport. Get tips for traveling outside the U.S. Foreign
+        visitors: understand tourist visas and other documents to enter the U.S.",
+        "dateLastCrawled": "2024-01-09T09:34:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gov+(site%3agov+OR+site%3amil)&d=4721492248386974&mkt=en-US&setlang=en-US&w=NLLY75Rl4TFjFmiUL3iUZdZAT45ygq6w",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
@@ -947,5 +558,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-  recorded_at: Wed, 06 Oct 2021 05:46:00 GMT
-recorded_with: VCR 6.0.0
+  recorded_at: Wed, 10 Jan 2024 14:59:52 GMT
+recorded_with: VCR 6.2.0

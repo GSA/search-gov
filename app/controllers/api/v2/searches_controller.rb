@@ -16,24 +16,6 @@ module Api
         respond_with(@search)
       end
 
-      def azure
-        @search = ApiAzureSearch.new(@search_options.attributes)
-        @search.run
-        respond_with(@search)
-      end
-
-      def azure_web
-        @search = ApiAzureCompositeWebSearch.new(@search_options.attributes)
-        @search.run
-        respond_with(@search)
-      end
-
-      def azure_image
-        @search = ApiAzureCompositeImageSearch.new(@search_options.attributes)
-        @search.run
-        respond_with(@search)
-      end
-
       def i14y
         @search = ApiI14ySearch.new(@search_options.attributes)
         @search.run
@@ -118,9 +100,6 @@ module Api
 
       def search_options_validator_klass
         case action_name.to_sym
-        when :azure then Api::CommercialSearchOptions
-        when :azure_web then Api::AzureCompositeWebSearchOptions
-        when :azure_image then Api::AzureCompositeImageSearchOptions
         when :blended, :video then Api::NonCommercialSearchOptions
         when :i14y then Api::I14ySearchOptions
         when :docs then Api::DocsSearchOptions

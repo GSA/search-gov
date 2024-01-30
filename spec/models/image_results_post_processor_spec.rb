@@ -13,11 +13,12 @@ describe ImageResultsPostProcessor do
         results
       end
 
-      it 'has a alt text, link URL, and thumbnaul URL' do
+      it 'has a alt text, link URL, thumbnail URL, and image' do
         normalized_results[:results].each_with_index do |result, index|
           expect(result[:altText]).to eq("title #{index}")
           expect(result[:url]).to eq("http://foo.gov/#{index}")
           expect(result[:thumbnailUrl]).to eq('http://bar.gov/image.png')
+          expect(result[:image]).to be(true)
         end
       end
 
@@ -34,7 +35,7 @@ describe ImageResultsPostProcessor do
       let(:total_results) { nil }
       let(:results) { nil }
 
-      it 'has a alt text, link URL, and thumbnaul URL' do
+      it 'does not have alt text, link URL, thumbnail URL, and image' do
         expect(normalized_results[:results]).to be_nil
       end
 

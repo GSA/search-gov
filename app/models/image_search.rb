@@ -71,7 +71,7 @@ class ImageSearch
   end
 
   def commercial_results?
-    %w[AIMAG IMAG].include?(module_tag)
+    %w[IMAG].include?(module_tag)
   end
 
   private

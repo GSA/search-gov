@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api::V2::SearchAsJson
   def as_json(_options = {})
     hash = { query: @query }
@@ -30,18 +32,15 @@ module Api::V2::SearchAsJson
   end
 
   def as_json_results_to_hash
-    @results.collect { |result| as_json_result_hash result }
+    @results.collect { |result| as_json_result_hash(result) }
   end
 
   def as_json_result_hash(result)
-    result.description ||= result.content
-    result.url ||= result.unescaped_url
-    {
-      title: result.title,
-      url: result.url,
-      display_url: result.display_url,
-      snippet: as_json_build_snippet(result.description)
-    }
+    pub_date = result&.published_at&.to_date || nil
+    { title: result.title,
+      url: result_url(result),
+      snippet: as_json_build_snippet(result.description),
+      publication_date: pub_date }
   end
 
   def as_json_build_snippet(description)
@@ -56,7 +55,7 @@ module Api::V2::SearchAsJson
   def as_json_video_news(news_items)
     return [] unless news_items
 
-    news_items.collect { |news_item| as_json_video_news_item news_item }
+    news_items.collect { |news_item| as_json_video_news_item(news_item) }
   end
 
   def as_json_video_news_item(news_item)
@@ -76,7 +75,7 @@ module Api::V2::SearchAsJson
 
   def as_json_federal_register_documents
     federal_register_documents.results.collect do |document|
-      comments_close_on = document.comments_close_on ? document.comments_close_on.to_fs(:db) : nil
+      comments_close_on = document&.comments_close_on&.to_fs(:db) || nil
       { id: document.id,
         document_number: document.document_number,
         document_type: document.document_type,
@@ -94,7 +93,7 @@ module Api::V2::SearchAsJson
   def as_json_job_openings
     jobs.collect do |job|
       job_hash = job.to_hash.except('id')
-      org_codes = @affiliate.agency ? @affiliate.agency.joined_organization_codes : ""
+      org_codes = @affiliate.agency ? @affiliate.agency.joined_organization_codes : ''
       job_hash.merge(org_codes: org_codes)
     end
   end
