@@ -1,13 +1,9 @@
-require 'spec_helper'
-
 describe ApiBlendedSearch do
-  fixtures :affiliates
-
   let(:affiliate) { affiliates(:usagov_affiliate) }
 
   describe '#as_json' do
     subject(:search) do
-      agency = Agency.create!({name: 'Some New Agency', abbreviation: 'SNA' })
+      agency = Agency.create!({ name: 'Some New Agency', abbreviation: 'SNA' })
       AgencyOrganizationCode.create!(organization_code: 'XX00', agency: agency)
       allow(affiliate).to receive(:agency).and_return(agency)
 
@@ -19,6 +15,6 @@ describe ApiBlendedSearch do
                           query: 'healthy snack'
     end
 
-    it_should_behave_like 'an API search as_json'
+    it_behaves_like 'an API search as_json'
   end
 end

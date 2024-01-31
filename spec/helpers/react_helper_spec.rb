@@ -243,6 +243,7 @@ describe ReactHelper do
 
     context 'with an affiliate with type ahead suggestions' do
       before do
+        allow(search).to receive(:govbox_set).and_return(nil)
         SaytSuggestion.create!(phrase: 'chocolate bar', affiliate: affiliate)
         ElasticSaytSuggestion.commit
         search.run
@@ -367,6 +368,48 @@ describe ReactHelper do
             sitelimit: 'usa.gov',
             url: '/search?affiliate=usagov&query=chocolate'
           }))
+      end
+    end
+
+    describe '#govbox_set_data' do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:geoip_info) { instance_double(GeoIP::City, location_name: 'Flemington, New Jersey, United States') }
+      let(:govbox_set) { GovboxSet.new('foo', affiliate, geoip_info) }
+      let(:agency) { agencies(:irs) }
+      let(:federal_register_agency) { federal_register_agencies(:fr_irs) }
+      let(:federal_register_document) do
+        FederalRegisterDocument.new(
+          document_number: 1,
+          title: 'Test FRD',
+          abstract: 'This is a test FRD.',
+          html_url: 'http://www.federalregister.gov/articles/2016/05/11/2016-10932/unsuccessful-work',
+          document_type: 'Proposed Rule',
+          start_page: 2,
+          end_page: 5,
+          page_length: 4,
+          publication_date: Date.new(2020, 1, 2, 3),
+          comments_close_on: Date.new(2024, 4, 5, 6)
+        )
+      end
+      let(:federal_agency_names) { ['GSA'] }
+      let(:results) { instance_double(ElasticFederalRegisterDocumentResults, total: 1, results: [federal_register_document]) }
+
+      before do
+        allow(affiliate).to receive_messages(is_federal_register_document_govbox_enabled?: true, display_created_date_on_search_results?: false, agency: agency)
+        allow(federal_register_document).to receive(:contributing_agency_names).and_return(federal_agency_names)
+        allow(ElasticFederalRegisterDocument).to receive(:search_for).and_return(results)
+        allow(search).to receive(:govbox_set).and_return(govbox_set)
+      end
+
+      context 'when display_created_date_on_search_results is false' do
+        before do
+          allow(affiliate).to receive(:search_engine).and_return('SearchGov')
+        end
+
+        it 'filters out the created date from federal_register_documents results' do
+          search_var = helper.send(:govbox_set_data, search)
+          expect(search_var.as_json['federalRegisterDocuments'].first).not_to include('publication_date')
+        end
       end
     end
   end

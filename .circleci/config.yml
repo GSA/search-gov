@@ -16,6 +16,8 @@ executors:
         type: string
       elasticsearch_version:
         type: string
+      mysql_version:
+        type: string
 
     working_directory: ~/search-gov
 
@@ -25,7 +27,7 @@ executors:
         environment:
           RAILS_ENV: test
 
-      - image: cimg/mysql:5.7
+      - image: cimg/mysql:<< parameters.mysql_version >>
         environment:
           MYSQL_ALLOW_EMPTY_PASSWORD: true
           MYSQL_ROOT_HOST: "%"
@@ -77,11 +79,14 @@ jobs:
         type: string
       elasticsearch_version:
         type: string
+      mysql_version:
+        type: string
 
     executor: 
       name: test_executor
       ruby_version: << parameters.ruby_version >>
       elasticsearch_version: << parameters.elasticsearch_version >>
+      mysql_version: << parameters.mysql_version >>
 
     steps:
       - checkout
@@ -112,11 +117,14 @@ jobs:
         type: string
       elasticsearch_version:
         type: string
+      mysql_version:
+        type: string
 
     executor: 
       name: test_executor
       ruby_version: << parameters.ruby_version >>
       elasticsearch_version: << parameters.elasticsearch_version >>
+      mysql_version: << parameters.mysql_version >>
 
     parallelism: 6
 
@@ -151,7 +159,7 @@ jobs:
                               $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
 
             ./cc-test-reporter format-coverage \
-              --output coverage/codeclimate.rspec.$CIRCLE_NODE_INDEX.<< parameters.ruby_version >>_<< parameters.elasticsearch_version >>.json
+              --output coverage/codeclimate.rspec.$CIRCLE_NODE_INDEX.<< parameters.ruby_version >>_<< parameters.elasticsearch_version >>_<< parameters.mysql_version >>.json
 
       - persist_to_workspace:
           root: ~/search-gov/coverage
@@ -171,11 +179,14 @@ jobs:
         type: string
       elasticsearch_version:
         type: string
+      mysql_version:
+        type: string
 
     executor: 
       name: test_executor
       ruby_version: << parameters.ruby_version >>
       elasticsearch_version: << parameters.elasticsearch_version >>
+      mysql_version: << parameters.mysql_version >>
 
     parallelism: 10
 
@@ -212,7 +223,7 @@ jobs:
                                 -- $(circleci tests glob "features/*.feature" | circleci tests split --split-by=timings)
 
             ./cc-test-reporter format-coverage \
-              --output coverage/codeclimate.cucumber.$CIRCLE_NODE_INDEX.<< parameters.ruby_version >>_<< parameters.elasticsearch_version >>.json
+              --output coverage/codeclimate.cucumber.$CIRCLE_NODE_INDEX.<< parameters.ruby_version >>_<< parameters.elasticsearch_version >>_<< parameters.mysql_version >>.json
 
       - persist_to_workspace:
           root: ~/search-gov/coverage
@@ -232,6 +243,8 @@ jobs:
         type: string
       elasticsearch_version:
         type: string
+      mysql_version:
+        type: string
       node_version:
         type: string
 
@@ -239,6 +252,7 @@ jobs:
       name: test_executor
       ruby_version: << parameters.ruby_version >>
       elasticsearch_version: << parameters.elasticsearch_version >>
+      mysql_version: << parameters.mysql_version >>
 
     steps:
       - restore_cache:
@@ -259,7 +273,7 @@ jobs:
             yarn test:coverage
 
             ./cc-test-reporter format-coverage \
-              --output coverage/codeclimate.jest.<< parameters.node_version >>.json
+              --output coverage/codeclimate.jest.$CIRCLE_NODE_INDEX.<< parameters.node_version >>_<< parameters.mysql_version >>.json
 
       - persist_to_workspace:
           root: ~/search-gov/coverage
@@ -272,11 +286,14 @@ jobs:
         type: string
       elasticsearch_version:
         type: string
+      mysql_version:
+        type: string
 
     executor: 
       name: test_executor
       ruby_version: << parameters.ruby_version >>
       elasticsearch_version: << parameters.elasticsearch_version >>
+      mysql_version: << parameters.mysql_version >>
 
     steps:
       - restore_cache:
@@ -301,7 +318,7 @@ workflows:
   build_and_test:
     jobs:
       - checkout_code:
-          name: "checkout code: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>"
+          name: "checkout code: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>, MySQL << matrix.mysql_version >>"
           matrix:
             parameters:
               ruby_version:
@@ -309,39 +326,50 @@ workflows:
               elasticsearch_version:
                 - 7.17.7
                 # not yet compatible with Elasticsearch 8
+              mysql_version:
+                - "5.7"
+                - "8.0"
 
       - rspec:
           requires:
             - checkout_code
-          name: "rspec: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>"
+          name: "rspec: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>, MySQL << matrix.mysql_version >>"
           matrix:
             parameters:
               ruby_version:
                 - 3.0.6
               elasticsearch_version:
                 - 7.17.7
+              mysql_version:
+                - "5.7"
+                - "8.0"
 
       - cucumber:
           requires:
             - checkout_code
-          name: "cucumber: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>"
+          name: "cucumber: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>, MySQL << matrix.mysql_version >>"
           matrix:
             parameters:
               ruby_version:
                 - 3.0.6
               elasticsearch_version:
                 - 7.17.7
+              mysql_version:
+                - "5.7"
+                - "8.0"
 
       - jest:
           requires:
             - checkout_code
-          name: "jest: NodeJS << matrix.node_version >>"
+          name: "jest: NodeJS << matrix.node_version >>, MySQL << matrix.mysql_version >>"
           matrix:
             parameters:
               ruby_version:
                 - 3.0.6
               elasticsearch_version:
                 - 7.17.7
+              mysql_version:
+                - "5.7"
               node_version:
                 - 16.20.2
 
@@ -350,12 +378,13 @@ workflows:
             - rspec
             - cucumber
             - jest
-          name: "report coverage: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>"
+          name: "report coverage: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>, MySQL << matrix.mysql_version >>"
           matrix:
-            # We only report coverage for one run, as the coverage will be
-            # identical in all versions if all specs are passing
             parameters:
               ruby_version:
                 - 3.0.6
               elasticsearch_version:
                 - 7.17.7
+              mysql_version:
+                - "5.7"
+                - "8.0"

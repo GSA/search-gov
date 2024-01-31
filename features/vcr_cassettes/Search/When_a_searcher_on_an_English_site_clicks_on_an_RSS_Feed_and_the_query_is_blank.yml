@@ -2,265 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=first%20item%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V7_SUBSCRIPTION_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Transfer-Encoding:
-      - chunked
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Tue, 07 Sep 2021 16:18:06 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
-      Bingapis-Traceid:
-      - 58E82684824A4CFCAAA3ED9AD6FD310D
-      Bingapis-Sessionid:
-      - D44621B8C3AD4DD692EDB6486891EB65
-      X-Msedge-Clientid:
-      - 2190F2E182CC6C9F00ABE24A832A6D43
-      X-Msapi-Userstate:
-      - c378
-      Bingapis-Market:
-      - en-US
-      X-Search-Responseinfo:
-      - InternalResponseTime=250,MSDatacenter=CH1B
-      X-Cache:
-      - CONFIG_NOCACHE
-      X-Msedge-Ref:
-      - 'Ref A: 58E82684824A4CFCAAA3ED9AD6FD310D Ref B: DM2EDGE0409 Ref C: 2021-09-07T16:19:06Z'
-      Apim-Request-Id:
-      - 1d70153b-6e6b-48a3-ac8d-4a3eedf465e2
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
-      X-Content-Type-Options:
-      - nosniff
-      Csp-Billing-Usage:
-      - CognitiveServices.BingSearchV7.Transaction=1
-      Date:
-      - Tue, 07 Sep 2021 16:19:05 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "first
-        item (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=first+item+(site%3agov+OR+site%3amil)",
-        "totalEstimatedMatches": 999000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "Must-Haves for Your First-Aid Kit | Blogs | CDC", "url": "https:\/\/blogs.cdc.gov\/publichealthmatters\/2021\/05\/first-aid-kits\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/blogs.cdc.gov\/publichealthmatters\/2021\/05\/first-aid-kits",
-        "snippet": "The American Red Cross suggests that a first-aid kit for a family
-        of four include the following items: A first-aid guide. 2 absorbent compress
-        dressings (5 x 9 inches) 25 adhesive bandages (assorted sizes) 1 adhesive
-        cloth tape (10 yards x 1 inch) 5 antibiotic ointment packets. 5 antiseptic
-        wipe packets.", "dateLastCrawled": "2021-09-05T10:17:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "Subpart 9.3—First Article Testing and Approval", "url": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html\/Subpart%209_3.html",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html\/Subpart
-        9_3.html", "snippet": "The notice shall include the first article shipment
-        number, when available, and the applicable line item number. Any changes
-        in the drawings, designs, or specifications determined by the contracting
-        officer to be necessary shall be made under the Changes clause, and not by
-        the notice of approval, conditional approval, or disapproval furnished ...",
-        "dateLastCrawled": "2021-09-01T21:07:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
-        "name": "Your Guide to Who Pays First.", "url": "https:\/\/www.medicare.gov\/Pubs\/pdf\/02179-Medicare-Coordination-Benefits-Payer.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.medicare.gov\/Pubs\/pdf\/02179-Medicare-Coordination-Benefits-Payer.pdf",
-        "snippet": "No-fault insurance or liability insurance pays first and Medicare
-        pays second for services related to the accident or injury . I’m covered under
-        workers’ compensation because of a job related illness or injury involved
-        (pages 22–25) Workers’ compensation pays first for services or items related
-        to the workers’ compensation claim .", "dateLastCrawled": "2021-09-05T02:17:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
-        "name": "Dates of Use | USPTO", "url": "https:\/\/www.uspto.gov\/trademarks\/laws\/dates-use-1",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uspto.gov\/trademarks\/laws\/dates-use-1",
-        "snippet": "The USPTO presumes, if more than one item of goods or services
-        is listed in a particular class, that the dates of first use apply to all
-        the listed goods or services in that class. If the dates of first use do
-        not pertain to all the listed items, you should designate the particular
-        item(s) to which they do pertain.", "dateLastCrawled": "2021-09-04T01:21:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
-        "name": "NFIRS 4.1 Codes and Descriptions - U.S. Fire Administration", "url":
-        "https:\/\/www.usfa.fema.gov\/downloads\/xls\/NFIRS4_Codes.xls", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.usfa.fema.gov\/downloads\/xls\/NFIRS4_Codes.xls",
-        "snippet": "GENERAL ITEM STORES Department store. Small variety store. Large
-        variety store. Mail order store. Mall. General Item Stores not classified
-        above. General Item Stores; insufficient information available to classify
-        further. OFFICES General business office. Bank, with first story banking
-        facilities. Medical, research, scientific office.", "dateLastCrawled": "2021-09-05T01:19:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
-        "name": "1.WN GO 2. MASK OR RESPIRATOR 3. GOGGLES OR FACE SHIELD", "url":
-        "https:\/\/www.cdc.gov\/hai\/pdfs\/ppe\/PPE-Sequence.pdf", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.cdc.gov\/hai\/pdfs\/ppe\/PPE-Sequence.pdf",
-        "snippet": "• If the item is reusable, place in designated receptacle for
-        reprocessing. Otherwise, discard in a waste container. 3.WN GO • Gown front
-        and sleeves are contaminated! • If your hands get contaminated during gown
-        removal, immediately wash your hands or use an alcohol-based hand sanitizer",
-        "dateLastCrawled": "2021-09-04T14:47:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
-        "name": "Medical and First Aid - Standards | Occupational Safety ...", "url":
-        "https:\/\/www.osha.gov\/medical-first-aid\/standards", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.osha.gov\/medical-first-aid\/standards",
-        "snippet": "Medical and first aid services are addressed in specific OSHA
-        standards for general industry, maritime, and construction. This section highlights
-        OSHA standards and documents related to medical and first aid. OSHA Standards.
-        General Industry (29 CFR 1910) General Industry (29 CFR 1910) Related Information.
-        1910 Subpart K - Medical and First Aid.", "dateLastCrawled": "2021-09-04T05:12:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
-        "name": "Write the First Line of a Story | Library of Congress", "url":
-        "https:\/\/www.loc.gov\/item\/webcast-9156\/", "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.loc.gov\/item\/webcast-9156", "snippet": "Collection Items:
-        View 6,362 Items Audio Recording You''ve Been A Good Old Wagon, But You''ve
-        Done Broke Down", "dateLastCrawled": "2021-07-10T21:01:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
-        "name": "Help Buying a New Home | USAGov", "url": "https:\/\/www.usa.gov\/buying-home",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/buying-home",
-        "snippet": "If you have a low income and need help buying your first home,
-        the Department of Housing and Urban Development (HUD) Housing Choice Voucher
-        homeownership program may be able to help. Housing Choice Voucher Eligibility.
-        You must: Be a first-time buyer as defined by HUD. Meet a minimum income
-        requirement set by the local public housing authority ...", "dateLastCrawled":
-        "2021-09-04T10:45:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9", "name":
-        "Subpart 17.2—Options - Acquisition.GOV", "url": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html\/Subpart%2017_2.html",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html\/Subpart
-        17_2.html", "snippet": "(1) Percentage of specific line items, (2) Increase
-        in specific line items; or (3) Additional numbered line items identified
-        as the option. (g) Contracts may express extensions of the term of the contract
-        as an amended completion date or as additional time for performance; e.g.,
-        days, weeks, or months. 17.205 Documentation.", "dateLastCrawled": "2021-09-04T11:23:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
-        "name": "SCHOOL BUS SAFETY EQUIPMENT ITEM AND METHOD OF INSPECTION ...",
-        "url": "https:\/\/dps.mn.gov\/divisions\/msp\/commercial-vehicles\/Documents\/InspectionManual\/SBInspManRevinspmansec16.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/dps.mn.gov\/divisions\/msp\/commercial-vehicles\/Documents\/InspectionManual\/...",
-        "snippet": "ITEM AND METHOD OF INSPECTION POINT VALUE AND REQUIREMENT DESCRIPTION
-        (#) Designates points to be deducted XVI. Safety Equipment A. First Aid
-        Kit (missing) (25) A. The bus must carry a removable Grade A metal dust-proof
-        first : aid kit, mounted in full view or in a labeled accessible place in
-        the driver compartment. B.", "dateLastCrawled": "2021-09-04T19:07:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
-        "name": "\"The first vote\" \/ AW ; drawn by A.R. Waud. | Library of ...",
-        "url": "https:\/\/www.loc.gov\/item\/2011648984\/", "isFamilyFriendly": true,
-        "displayUrl": "https:\/\/www.loc.gov\/item\/2011648984", "snippet": "Title
-        \"The first vote\" \/ AW ; drawn by A.R. Waud. Summary Illustration shows
-        a queue of African American men, the first, dressed as a laborer, casting
-        his vote, the second is dressed as a businessman, the third is wearing a Union
-        army uniform, and the fourth appears to be dressed as a farmer.", "dateLastCrawled":
-        "2021-06-06T07:29:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "name":
-        "Qatar: Emir Approves First Elections Law for Legislative ...", "url": "https:\/\/www.loc.gov\/item\/global-legal-monitor\/2021-09-01\/qatar-emir-approves-first-elections-law-for-legislative-elections\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/global-legal-monitor\/2021-09-01\/qatar-emir-approves-first...",
-        "snippet": "On July 29, 2021, the emir of Qatar, Sheikh Tamim bin Hamad Al
-        Thani, approved Law No. 6 of 2021 to regulate the country’s first legislative
-        elections. The elections for the Shura Council (legislative branch) are slated
-        to take place in October 2021. During the elections, out of the 45 seats of
-        the Shura Council, … Continue reading &#8220;Qatar: Emir Approves First
-        Elections Law for ...", "dateLastCrawled": "2021-09-04T23:23:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
-        "name": "\"Who''s on first?\" | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/2012633780\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2012633780",
-        "snippet": "Is the item digitized? (A thumbnail (small) image will be visible
-        on the left.) Yes, the item is digitized. Please use the digital image in
-        preference to requesting the original. All images can be viewed at a large
-        size when you are in any reading room at the Library of Congress.", "dateLastCrawled":
-        "2021-09-03T06:49:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14", "name":
-        "The Patient Health Questionnaire (PHQ-9) - Overview", "url": "http:\/\/www.agencymeddirectors.wa.gov\/files\/AssessmentTools\/14-PHQ-9%20overview.pdf",
-        "isFamilyFriendly": true, "displayUrl": "www.agencymeddirectors.wa.gov\/files\/AssessmentTools\/14-PHQ-9
-        overview.pdf", "snippet": "Need one or both of the first two questions endorsed
-        as a “2” or a “3” (2 = “More than half the days” or 3 = “Nearly every day”)
-        Step 2: Questions 1 through 9 Need a total of five or more boxes endorsed
-        within the shaded area of the form to arrive at the total symptom count.",
-        "dateLastCrawled": "2021-09-04T15:03:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
-        "name": "Open for Business: 3-D Printer Creates First Object in ...", "url":
-        "https:\/\/www.nasa.gov\/content\/open-for-business-3-d-printer-creates-first-object-in-space-on-international-space-station\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nasa.gov\/content\/open-for-business-3-d-printer-creates-first-object-in...",
-        "snippet": "Commander Barry “Butch” Wilmore holds up the first object made
-        in space with additive manufacturing or 3-D printing. The International Space
-        Station’s 3-D printer has manufactured the first 3-D printed object in space,
-        paving the way to future long-term space expeditions. \"This first print
-        is the initial step toward providing an on-demand ...", "dateLastCrawled":
-        "2021-08-14T10:13:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16", "name":
-        "LOWEST FLOOR GUIDE", "url": "https:\/\/www.fema.gov\/pdf\/nfip\/manual201205\/content\/07_lfg.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fema.gov\/pdf\/nfip\/manual201205\/content\/07_lfg.pdf",
-        "snippet": "items permanently affixed to the building and that provide utility
-        services for the building – i.e., furnaces, water heaters, heat pumps, air
-        conditioners, and elevators and their associated equipment. Washers, dryers,
-        and food freezers are contents items and are not considered machinery or
-        equipment.); or", "dateLastCrawled": "2021-08-31T22:34:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
-        "name": "Apply in Person - Travel", "url": "https:\/\/travel.state.gov\/content\/travel\/en\/passports\/need-passport\/apply-in-person.html",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/travel.state.gov\/content\/travel\/en\/passports\/need-passport\/apply-in-person.html",
-        "snippet": "Inside the United States: You must submit your completed application,
-        including citizenship evidence, photocopy of ID, photo, and fees, in person
-        at a passport acceptance facility. You may be eligible to apply in person
-        at a passport agency if you are traveling soon. Please see Get My Passport
-        Fast for more information.", "dateLastCrawled": "2021-09-05T10:15:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
-        "name": "SEC.gov | How to Read a 10-K\/10-Q", "url": "https:\/\/www.sec.gov\/fast-answers\/answersreada10khtm.html",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sec.gov\/fast-answers\/answersreada10khtm.html",
-        "snippet": "Items in the Annual Report on Form 10-K Part I. Item 1 “Business”
-        requires a description of the company’s business, including its main products
-        and services, what subsidiaries it owns, and what markets it operates in.
-        This section may also include information about recent events, competition
-        the company faces, regulations that apply to it ...", "dateLastCrawled": "2021-09-05T11:52:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
-        "name": "\"The first vote\" \/ AW [monogram] ; drawn by A.R. Waud ...",
-        "url": "https:\/\/www.loc.gov\/item\/00651117\/", "isFamilyFriendly": true,
-        "displayUrl": "https:\/\/www.loc.gov\/item\/00651117", "snippet": "\"The
-        first vote\" \/ AW [monogram] ; drawn by A.R. Waud. ... determine whether
-        you need to fill out a call slip in the Prints and Photographs Reading Room
-        to view the original item(s). In some cases, a surrogate (substitute image)
-        is available, often in the form of a digital image, a copy print, or microfilm.",
-        "dateLastCrawled": "2021-07-02T10:21:00.0000000Z", "language": "en", "isNavigational":
-        false}]}, "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages",
-        "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-  recorded_at: Tue, 07 Sep 2021 16:19:06 GMT
-- request:
-    method: get
     uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=first%20item%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
@@ -290,31 +31,35 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Wed, 06 Oct 2021 15:38:04 GMT
+      - Wed, 10 Jan 2024 14:40:30 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
+      X-Eventid:
+      - 659eac9a5c2846fab5bee938feccf35a
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
       Bingapis-Traceid:
-      - 28EB016676CA437A842FA63EE5BB05E2
+      - 659eac9a5c2846fab5bee938feccf35a
       Bingapis-Sessionid:
-      - C29D78257DC5469F9356BD211B828C59
+      - '0983072604854E3793A534F7E696530B'
       X-Msedge-Clientid:
-      - 2411C259512F6CE02C44D29150D26DB0
+      - 38220406E252649112091004E351656C
       X-Msapi-Userstate:
-      - 9e4f
+      - 8b8e
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=232,MSDatacenter=BN2B
+      - InternalResponseTime=339,MSDatacenter=BNZE01
       X-Cache:
       - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
       X-Msedge-Ref:
-      - 'Ref A: 28EB016676CA437A842FA63EE5BB05E2 Ref B: BLUEDGE0120 Ref C: 2021-10-06T15:39:04Z'
+      - 'Ref A: D50E34227B7E4A04974D6D2036FF5146 Ref B: BN3EDGE0507 Ref C: 2024-01-10T14:41:30Z'
       Apim-Request-Id:
-      - c1521b21-cb35-481f-8ba9-97d734dca44b
+      - 71b13b55-bc51-4c01-8d2c-b5afce65de78
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -322,181 +67,203 @@ http_interactions:
       Csp-Billing-Usage:
       - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Wed, 06 Oct 2021 15:39:04 GMT
+      - Wed, 10 Jan 2024 14:41:30 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "first
         item (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=first+item+(site%3agov+OR+site%3amil)",
-        "totalEstimatedMatches": 984000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "The first items I will discuss are the five points of ...", "url":
-        "https:\/\/home.army.mil\/bragg\/index.php\/download_file\/390\/437", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/home.army.mil\/bragg\/index.php\/download_file\/390\/437",
-        "snippet": "The first items I will discuss are the five points of performance.
-        The first point of performance is proper exit, check body position, and
-        count. Jumpers hit it. Upon exiting the aircraft, snap into a good tight body
-        position. Keep your eyes open, chin on your chest, elbows tight into your
-        sides, hands on the ends of", "dateLastCrawled": "2021-09-29T14:02:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "Subpart 9.3—First Article Testing and Approval", "url": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html\/Subpart%209_3.html",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html\/Subpart
-        9_3.html", "snippet": "The notice shall include the first article shipment
-        number, when available, and the applicable line item number. Any changes
-        in the drawings, designs, or specifications determined by the contracting
-        officer to be necessary shall be made under the Changes clause, and not by
-        the notice of approval, conditional approval, or disapproval furnished ...",
-        "dateLastCrawled": "2021-09-30T16:47:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2", "name":
-        "Must-Haves for Your First-Aid Kit | Blogs | CDC", "url": "https:\/\/blogs.cdc.gov\/publichealthmatters\/2021\/05\/first-aid-kits\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/blogs.cdc.gov\/publichealthmatters\/2021\/05\/first-aid-kits",
+        "totalEstimatedMatches": 3810000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Must-Haves for Your First-Aid Kit | Blogs | CDC", "url": "https:\/\/blogs.cdc.gov\/publichealthmatters\/2021\/05\/first-aid-kits\/",
+        "datePublished": "2021-05-13T00:00:00.0000000", "datePublishedDisplayText":
+        "May 13, 2021", "isFamilyFriendly": true, "displayUrl": "https:\/\/blogs.cdc.gov\/publichealthmatters\/2021\/05\/first-aid-kits",
         "snippet": "The American Red Cross suggests that a first-aid kit for a family
         of four include the following items: A first-aid guide. 2 absorbent compress
         dressings (5 x 9 inches) 25 adhesive bandages (assorted sizes) 1 adhesive
         cloth tape (10 yards x 1 inch) 5 antibiotic ointment packets. 5 antiseptic
-        wipe packets.", "dateLastCrawled": "2021-10-03T03:19:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
-        "name": "Your Guide to Who Pays First.", "url": "https:\/\/www.medicare.gov\/Pubs\/pdf\/02179-Medicare-Coordination-Benefits-Payer.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.medicare.gov\/Pubs\/pdf\/02179-Medicare-Coordination-Benefits-Payer.pdf",
-        "snippet": "No-fault insurance or liability insurance pays first and Medicare
-        pays second for services related to the accident or injury . I’m covered under
-        workers’ compensation because of a job related illness or injury involved
-        (pages 22–25) Workers’ compensation pays first for services or items related
-        to the workers’ compensation claim .", "dateLastCrawled": "2021-10-04T00:21:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        wipe packets.", "dateLastCrawled": "2024-01-09T03:21:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=first+item+(site%3agov+OR+site%3amil)&d=4569553493754554&mkt=en-US&setlang=en-US&w=RrpBdsVFHuId_iAiAstSCURfMxedb1Bb",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Psychological distress and resilience in first responders and
+        health ...", "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC8420470\/",
+        "datePublished": "2021-08-13T00:00:00.0000000", "datePublishedDisplayText":
+        "Aug 13, 2021", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC8420470",
+        "snippet": "The second resilience measure was an adaptation of the first
+        item from the Brief Resilience Scale (BRS; Smith et␣al., 2008). Using a sliding
+        scale (0 = ‘not at all’ to 10 = ‘completely’) participants indicated the extent
+        to which they felt that ‘Overall, I tend to bounce back quickly after difficult
+        times’.", "dateLastCrawled": "2023-12-23T09:00:00.0000000Z", "language": "en",
+        "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
         "name": "1.WN GO 2. MASK OR RESPIRATOR 3. GOGGLES OR FACE SHIELD", "url":
-        "https:\/\/www.cdc.gov\/hai\/pdfs\/ppe\/PPE-Sequence.pdf", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.cdc.gov\/hai\/pdfs\/ppe\/PPE-Sequence.pdf",
+        "https:\/\/www.cdc.gov\/hai\/pdfs\/ppe\/ppe-sequence.pdf", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.cdc.gov\/hai\/pdfs\/ppe\/ppe-sequence.pdf",
         "snippet": "• If the item is reusable, place in designated receptacle for
-        reprocessing. Otherwise, discard in a waste container. 3.WN GO • Gown front
-        and sleeves are contaminated! • If your hands get contaminated during gown
-        removal, immediately wash your hands or use an alcohol-based hand sanitizer",
-        "dateLastCrawled": "2021-10-03T03:23:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5", "name":
-        "CONTRACT DATA REQUiREMENTS LIST (CDRL) I Page 1", "url": "https:\/\/www.faa.gov\/about\/office_org\/regions_centers\/mmac\/acquisition\/foia\/documents\/04D00070\/20090706143116168-File3-PgsCDRL0001-TechEx.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.faa.gov\/about\/office_org\/regions_centers\/mmac\/acquisition\/foia\/documents\/...",
-        "snippet": "Data Item No. The 4-character Exhibit Line Item Number (ELlN).
-        The first position consists of the exhibit identifier and the remaining
-        positions are assigned sequentially. 2. Title of Data Item. The title olthe
-        Data Item Description (DID) cited in item 4. 3. Subtitle. Further identification
-        of the data item to supplement the title, if required. 4.", "dateLastCrawled":
-        "2021-10-01T08:07:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6", "name": "Family
-        Emergency Kit Checklist", "url": "https:\/\/www.cdc.gov\/ncbddd\/hemophilia\/documents\/familyemergencykitchecklist.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/ncbddd\/hemophilia\/documents\/familyemergencykitchecklist.pdf",
-        "snippet": "OTHER MISCELLANEOUS ITEMS The following items also should
-        be stocked: • Emergency reference materials, such as a first-aid book
-        or a photocopy of such a book or manual • Rain gear • Paper towels • A fire
-        extinguisher • A tent • A compass • Matches in a waterproof container • Signal
-        flares • Paper and pencils • A medicine dropper", "dateLastCrawled": "2021-10-03T01:24:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
-        "name": "Associated Press Style", "url": "https:\/\/www.codot.gov\/business\/grants\/safetygrants\/documents\/APStyleGuideCheatSheet.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.codot.gov\/business\/grants\/safetygrants\/documents\/APStyleGuideCheatSheet.pdf",
-        "snippet": "After each bullet, capitalize the first letter and use periods
-        at the end of each item. Colon Capitalize the first word after a colon
-        only if it is a proper noun or the start of a complete sentence. Colons go
-        outside quotation marks unless they are part of the quoted material. Comma
-        Don’t use a comma before a conjunction in a simple series.", "dateLastCrawled":
-        "2021-10-03T05:16:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8", "name": "Employee’s
-        Last Name, First Name, Middle Initial (rev. 11\/08)", "url": "https:\/\/www.sco.ca.gov\/Files-PPSD\/PAM_2_PAR_Items_Lines_1-7_2019_0731.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sco.ca.gov\/Files-PPSD\/PAM_2_PAR_Items_Lines_1-7_2019_0731.pdf",
-        "snippet": "ITEM 111 – FIRST NAME and MIDDLE INITIAL On Padded PAR when
-        employee or additional position is new to the data base Enter: In ITEM 110
-        – LAST NAME Enter the employee''s legal surname and suffix* or title* as it
-        appears on the Social Security Account Number card. Begin entering last name
-        at the beginning of EMPLOYEE LAST NAME field.", "dateLastCrawled": "2021-09-29T05:18:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
-        "name": "SMR Codes Give the Clues - United States Army", "url": "https:\/\/www.logsa.army.mil\/psmag\/archives\/PS2017\/775\/775-55-59.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.logsa.army.mil\/psmag\/archives\/PS2017\/775\/775-55-59.pdf",
-        "snippet": "The first . and second positions of the code refer to an item’s
-        source. The . first position gives a general category and is always. one
-        of five letters… P, K, M, A or X: Key to X codes. X series source codes are
-        items for which little or no demand is expected. •XA - item is not procured
-        or stocked because this item requires you to", "dateLastCrawled": "2021-10-02T01:17:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
-        "name": "LOWEST FLOOR GUIDE", "url": "https:\/\/www.fema.gov\/pdf\/nfip\/manual201205\/content\/07_lfg.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fema.gov\/pdf\/nfip\/manual201205\/content\/07_lfg.pdf",
-        "snippet": "items permanently affixed to the building and that provide utility
-        services for the building – i.e., furnaces, water heaters, heat pumps, air
-        conditioners, and elevators and their associated equipment. Washers, dryers,
-        and food freezers are contents items and are not considered machinery or
-        equipment.); or", "dateLastCrawled": "2021-10-03T06:13:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
-        "name": "SCHOOL BUS SAFETY EQUIPMENT ITEM AND METHOD OF INSPECTION ...",
-        "url": "https:\/\/dps.mn.gov\/divisions\/msp\/commercial-vehicles\/Documents\/InspectionManual\/SBInspManRevinspmansec16.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/dps.mn.gov\/divisions\/msp\/commercial-vehicles\/Documents\/InspectionManual\/...",
-        "snippet": "ITEM AND METHOD OF INSPECTION POINT VALUE AND REQUIREMENT DESCRIPTION
-        (#) Designates points to be deducted XVI. Safety Equipment A. First Aid
-        Kit (missing) (25) A. The bus must carry a removable Grade A metal dust-proof
-        first : aid kit, mounted in full view or in a labeled accessible place in
-        the driver compartment. B.", "dateLastCrawled": "2021-09-28T22:28:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
-        "name": "Who invented the automobile? | Library of Congress", "url": "https:\/\/www.loc.gov\/everyday-mysteries\/item\/who-invented-the-automobile\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/everyday-mysteries\/item\/who-invented-the-automobile",
-        "snippet": "Prints and Photographs Division, Library of Congress. There are
-        many different types of automobiles – steam, electric, and gasoline – as well
-        as countless styles. Exactly who invented the automobile is a matter of
-        opinion. Earlier accounts often gave credit to Karl Benz, from Germany, for
-        creating the first true automobile in 1885\/1886.", "dateLastCrawled": "2021-10-03T18:05:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
-        "name": "Aviation Source Approval and Management Handbook", "url": "https:\/\/www.dla.mil\/Portals\/104\/Documents\/Aviation\/Source%20Approval%20Handbook.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.dla.mil\/Portals\/104\/Documents\/Aviation\/Source
-        Approval Handbook.pdf", "snippet": "Aviation Critical Safety Items.. The
-        processes described in this Handbook focus on Source Approvals other than
-        Qualified Products List (QPL) items and are intended to ensure that suppliers
-        are capable of consistently producing and\/or providing high quality, conforming
-        items that meet design and manufacturing or ROMM requirements.", "dateLastCrawled":
-        "2021-10-01T03:14:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14", "name":
-        "Emergency Kit Checklist for Kids and Families | CDC", "url": "https:\/\/www.cdc.gov\/childrenindisasters\/checklists\/kids-and-families.html",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/childrenindisasters\/checklists\/kids-and-families.html",
-        "snippet": "Consider these items in addition to the basic kit, if appropriate:
-        A well-stocked diaper bag (at least one pack of diapers, at least two packs
-        of baby wipes, baby powder, diaper rash cream, baby wash and lotion, and re-sealable
-        plastic bags (gallon size) for stashing dirty diapers and clothes); Ready-to-feed
-        infant formula in single serving cans or bottles (for formula-fed infants
-        only)", "dateLastCrawled": "2021-10-02T01:28:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
-        "name": "Additional First Year Depreciation Deduction (Bonus) - FAQ ...",
-        "url": "https:\/\/www.irs.gov\/newsroom\/additional-first-year-depreciation-deduction-bonus-faq",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/newsroom\/additional-first-year-depreciation-deduction-bonus-faq",
-        "snippet": "A6: First, bonus depreciation is another name for the additional
-        first year depreciation deduction provided by section 168(k). Prior to enactment
-        of the TCJA, the additional first year depreciation deduction applied only
-        to property where the original use began with the taxpayer.", "dateLastCrawled":
-        "2021-10-02T22:15:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16", "name":
-        "pubmed.ncbi.nlm.nih.gov", "url": "https:\/\/pubmed.ncbi.nlm.nih.gov\/30591715\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/pubmed.ncbi.nlm.nih.gov\/30591715",
-        "snippet": "pubmed.ncbi.nlm.nih.gov", "dateLastCrawled": "2021-09-23T16:57:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
-        "name": "Internal Consistency, Retest Reliability, and their ...", "url":
-        "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC2927808\/", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC2927808",
-        "snippet": "The first determinant of reliability is the appropriateness
-        or relevance of the item content. An Extraversion (E) scale that includes
-        items assessing Neuroticism (N) and Conscientiousness (C) as well as E is
-        unlikely to be internally consistent, because these three factors are largely
-        unrelated.", "dateLastCrawled": "2021-10-01T23:36:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
-        "name": "Psychometric analysis of the Generalized Anxiety Disorder ...", "url":
-        "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC5542568\/", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC5542568",
+        reprocessing. Otherwise, discard in a waste container. 3. MASK OR RESPIRATOR
+        • Front of mask\/respirator is contaminated — DO NOT TOUCH! • If your hands
+        get contaminated during mask\/respirator removal, immediately wash your hands
+        or use an alcohol-based hand sanitizer", "dateLastCrawled": "2024-01-06T14:23:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "P_MCQ - Centers for Disease Control and Prevention", "url": "https:\/\/wwwn.cdc.gov\/Nchs\/Nhanes\/2017-2018\/P_MCQ.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/wwwn.cdc.gov\/Nchs\/Nhanes\/2017-2018\/P_MCQ.htm",
+        "snippet": "capi instruction: text of question should be optional after first
+        item is read. interviewer: include viral hepatitis (including hepatitis a,
+        hepatitis b; and hepatitis c); autoimmune liver disease (including primary
+        biliary cirrhosis; autoimmune hepatitis, sclerosing cholangitis); genetic
+        liver diseases (including alpha-1-antitrysin deficiency ...", "dateLastCrawled":
+        "2024-01-05T09:55:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=first+item+(site%3agov+OR+site%3amil)&d=4595164385780240&mkt=en-US&setlang=en-US&w=frnGCo30qmEpo_V1G1j02bnsf97atc6K",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "The first items I will discuss are the five points of performance
+        ...", "url": "https:\/\/home.army.mil\/liberty\/application\/files\/5314\/7948\/1914\/Pre-Jump_FY_17.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/home.army.mil\/liberty\/application\/files\/5314\/7948\/1914\/Pre-Jump_FY_17.pdf",
+        "snippet": "The first point of performance is proper exit, check body position,
+        and count. Jumpers hit it. Upon exiting the aircraft, snap into a good tight
+        body position. Keep ... The next item I will cover is the activation of
+        the T-11 reserve parachute. To activate the T-11 reserve parachute, you will
+        use the pull drop method. Jumpers hit", "dateLastCrawled": "2024-01-07T08:02:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Prior Authorization Process for Certain Durable Medical Equipment
+        ...", "url": "https:\/\/www.cms.gov\/Research-Statistics-Data-and-Systems\/Monitoring-Programs\/Medicare-FFS-Compliance-Programs\/Prior-Authorization-Initiatives\/Downloads\/DME_Prior_Authorization_6050_-FAQs.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cms.gov\/Research-Statistics-Data-and-Systems\/Monitoring-Programs\/Medicare...",
+        "snippet": "A: Prior authorization is a process through which a request for
+        provisional affirmation of coverage is submitted for review before a DMEPOS
+        item is furnished to a beneficiary and before a claim is submitted for payment.
+        Prior authorization helps ensure that applicable coverage, payment, and coding
+        rules are met before supplies are delivered. 4. Q.", "dateLastCrawled": "2024-01-02T01:12:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "DOD''s Logistics Agency Touches American Lives", "url": "https:\/\/www.defense.gov\/News\/Feature-Stories\/Story\/Article\/2825305\/dods-logistics-agency-touches-american-lives\/",
+        "datePublished": "2021-11-02T00:00:00.0000000", "datePublishedDisplayText":
+        "Nov 2, 2021", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.defense.gov\/News\/Feature-Stories\/Story\/Article\/2825305\/dods-logistics...",
+        "snippet": "Fallout shelter supplies were the first items DLA bought for
+        use by the American public. Fear of a nuclear attack was so real the agency
+        assembled medical kits and stockpiled supplies in caves in ...", "dateLastCrawled":
+        "2024-01-08T00:55:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=first+item+(site%3agov+OR+site%3amil)&d=4982583316795309&mkt=en-US&setlang=en-US&w=kruevIIhrzHZ0Xn7FiRm_opt9ov_Q5a1",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "MCQ_J - Centers for Disease Control and Prevention", "url": "https:\/\/wwwn.cdc.gov\/Nchs\/Nhanes\/2017-2018\/MCQ_J.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/wwwn.cdc.gov\/Nchs\/Nhanes\/2017-2018\/MCQ_J.htm",
+        "snippet": "It’s the estimated age in months at time of menarche. RHQ018 was
+        asked of females 8-11 years of age in MCQ and of females 12-19 years of age
+        in the Reproductive History questionnaire (RHQ). Due to data disclosure concerns,
+        ages greater than 80 were coded to 80, for all age variables, and ages less
+        than 16 were coded to 16, for variables ...", "dateLastCrawled": "2024-01-06T08:00:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=first+item+(site%3agov+OR+site%3amil)&d=4910496590932557&mkt=en-US&setlang=en-US&w=Pv80UQZYo2u5CSvWDmg6yX0tHY5vMHxq",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Psychometric analysis of the Generalized Anxiety Disorder scale
+        (GAD-7 ...", "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC5542568\/",
+        "datePublished": "2017-08-03T00:00:00.0000000", "datePublishedDisplayText":
+        "Aug 3, 2017", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC5542568",
         "snippet": "However, item content analysis suggests that this pair reflects
         closely related aspects of GAD. Therefore evidence from three distinctive
         viewpoints (ROC; IRT and item content) suggests the first item pair as
         a reasonable ultra-brief assessment tool. Thus, the main findings which are
         tied to the practical and clinical application are as follows:", "dateLastCrawled":
-        "2021-10-02T04:26:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19", "name":
-        "www.tn.gov", "url": "https:\/\/www.tn.gov\/content\/dam\/tn\/generalservices\/documents\/cpo\/swc-files\/swc-612\/prices\/october-2021\/New%20Dairy%20HoldCo%20Item%20Request%20Sheet%20October%202021.xlsx",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.tn.gov\/content\/dam\/tn\/generalservices\/documents\/cpo\/swc-files\/swc-612...",
-        "snippet": "This item description can be up to 254 characters. I should
-        not include item numbers, brand names, or model names. The Inventory Module
-        will only present the first 60 characters, so pertinent information that
-        differentiates items (such as sizes, colors, etc) should be noted inside
-        the first 60 characters.", "dateLastCrawled": "2021-10-05T20:21:00.0000000Z",
-        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
-        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        "2024-01-08T22:38:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9", "name": "The
+        Youth Anxiety Measure for DSM-5 (YAM-5): Development and First ...", "url":
+        "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC5243875\/", "datePublished":
+        "2016-05-14T00:00:00.0000000", "datePublishedDisplayText": "May 14, 2016",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC5243875",
+        "snippet": "The first item was “I am afraid of the dark”, which did not
+        show adequate sensitivity and specificity. Quite a number of experts thought
+        that this item was indicative of a specific phobia—situational or other
+        type, but in essence this fear seems to have its origins in the natural environment.",
+        "dateLastCrawled": "2024-01-01T22:09:00.0000000Z", "language": "en", "isNavigational":
+        <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "[First Lieutenant James Iredell Waddell of the Confederate States
+        Navy ...", "url": "https:\/\/www.loc.gov\/item\/2022630165\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.loc.gov\/item\/2022630165", "snippet":
+        "Is the item digitized? (A thumbnail (small) image will be visible on the
+        left.) Yes, the item is digitized. Please use the digital image in preference
+        to requesting the original. All images can be viewed at a large size when
+        you are in any reading room at the Library of Congress.", "dateLastCrawled":
+        "2024-01-10T05:13:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=first+item+(site%3agov+OR+site%3amil)&d=3144460536043&mkt=en-US&setlang=en-US&w=cMbdRma907UtMe_umR63c5Q3v85ZgKPj",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "A New Year''s sermon, delivered in Granville, Licking county, Ohio,
+        on ...", "url": "https:\/\/www.loc.gov\/item\/40001644\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.loc.gov\/item\/40001644", "snippet":
+        "Twenty-fifth New Year''s sermon. A discourse preached in Granville, Ohio,
+        on the first Sabbath of January, ... Cover-title. BV4282 .L5 with : New
+        Year''s sermon, delivered in Granville, Licking county, Ohio, on the first
+        Sabbath of January, 1849 \/ by Rev. Jacob Little. Newark [Ohio] : Printed
+        at the... Contributor: Little, Jacob", "dateLastCrawled": "2024-01-08T03:26:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=first+item+(site%3agov+OR+site%3amil)&d=1494518542158&mkt=en-US&setlang=en-US&w=WR2iOlheJ-EE5sSXrk17s-xepdRScWB4",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "E.H. Outerbridge | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/2014700803\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.loc.gov\/item\/2014700803",
+        "snippet": "Reference staff can advise you in both how to fill out a call
+        slip and when the item can be served. To contact Reference staff in the
+        Prints and Photographs Reading Room, please use our Ask A Librarian service
+        or call the reading room between 8:30 and 5:00 at 202-707-6394, and Press
+        3.", "dateLastCrawled": "2024-01-10T05:34:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=first+item+(site%3agov+OR+site%3amil)&d=327034834399&mkt=en-US&setlang=en-US&w=6yZ3l4UsfUvEJH_RwbI4QJ6RwTbuYsZm",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Item response theory: A basic concept - ed", "url": "https:\/\/files.eric.ed.gov\/fulltext\/EJ1133065.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/files.eric.ed.gov\/fulltext\/EJ1133065.pdf",
+        "snippet": "The first and fourth item have equal difficulty level that
+        is, b i = 1, this can mean that both items requires participants’ ability
+        of T 1.0 to be able to answer 50% of the items correctly. However, both
+        items have different distinguishing capacity that is, the first items
+        with =0.5 while the fourth item is a i", "dateLastCrawled": "2024-01-04T06:37:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "TBI-QOL: Development and Calibration of Item Banks to Measure Patient
+        ...", "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC4697960\/",
+        "datePublished": "2015-01-06T00:00:00.0000000", "datePublishedDisplayText":
+        "Jan 6, 2015", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC4697960",
+        "snippet": "First, items were drawn verbatim from the PROMIS and\/or Neuro-QOL
+        systems in content areas that overlapped with other health populations. For
+        example, the TBI-QOL item pools for Fatigue, Depression, Anxiety, Anger,
+        and Pain Interference were made up primarily of PROMIS items, whereas items
+        in the Ability to Participate in Social Roles and ...", "dateLastCrawled":
+        "2023-11-14T04:12:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "eCFR :: 14 CFR Part 382 Subpart I -- Stowage of Wheelchairs, Other ...",
+        "url": "https:\/\/www.ecfr.gov\/current\/title-14\/chapter-II\/subchapter-D\/part-382\/subpart-I",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ecfr.gov\/current\/title-14\/chapter-II\/subchapter-D\/part-382\/subpart-I",
+        "snippet": "(1) You must ensure that a passenger with a disability who uses
+        a wheelchair and takes advantage of the opportunity to preboard the aircraft
+        can stow his or her wheelchair in this area, with priority over other items
+        brought onto the aircraft by other passengers or crew enplaning at the same
+        airport, consistent with FAA, PHMSA, TSA, or applicable foreign government
+        requirements concerning ...", "dateLastCrawled": "2024-01-05T10:35:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=first+item+(site%3agov+OR+site%3amil)&d=4981750093914308&mkt=en-US&setlang=en-US&w=S-stv0iarGfZcFUhpd_YS7OfV-0eqIzZ",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Get Ready: IRS website has helpful resources for taxpayers", "url":
+        "https:\/\/www.irs.gov\/newsroom\/get-ready-irs-website-has-helpful-resources-for-taxpayers",
+        "datePublished": "2024-01-04T00:00:00.0000000", "datePublishedFreshnessText":
+        "6 days ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/newsroom\/get-ready-irs-website-has-helpful-resources-for-taxpayers",
+        "snippet": "Get Ready: IRS website has helpful resources for taxpayers. IR-2024-01,
+        Jan. 4, 2024. WASHINGTON — The Internal Revenue Service encourages taxpayers
+        to check out IRS.gov for tips, tools and resources to help them get ready
+        to file their 2023 federal income tax return. This is the third in a series
+        of reminders to help taxpayers get ready for ...", "dateLastCrawled": "2024-01-08T03:20:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=first+item+(site%3agov+OR+site%3amil)&d=1082541244549&mkt=en-US&setlang=en-US&w=2nlxWXW7r6NF_OXrNXv2WnPY2L-TraoX",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Elson Bernard Spangler Collection | Library of Congress", "url":
+        "https:\/\/www.loc.gov\/item\/afc2001001.68260\/", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.loc.gov\/item\/afc2001001.68260", "snippet":
+        "Branch of Service: Army Air Forces\/Corps. Unit of Service: 353rd Bomb Squadron,
+        301st Bomb Group, 5th Wing, 15th Air Force. Location of Service: Foggia, Italy;
+        European Theater. Highest Rank: First Lieutenant. Collection Number: AFC\/2001\/001\/68260.
+        View full service history.", "dateLastCrawled": "2024-01-09T06:08:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=first+item+(site%3agov+OR+site%3amil)&d=4312272148708&mkt=en-US&setlang=en-US&w=vQcRVspqXmkZDI07R-YJ0eMyGN0XqxWc",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "STATE OF CALIFORNIA FAIR POLITICAL PRACTICES COMMISSION", "url":
+        "https:\/\/fppc.ca.gov\/content\/dam\/fppc\/NS-Documents\/AgendaDocuments\/General%20Items\/2024\/11_FY23-24_First_Quarter_Expenditures.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/fppc.ca.gov\/content\/dam\/fppc\/NS-Documents\/AgendaDocuments\/General
+        Items\/2024\/11...", "snippet": "FAIR POLITICAL PRACTICES COMMISSION. 1102
+        Q Street • Suite 3050 • Sacramento, CA 95811 (916) 322-5660 • Fax (916) 322-0886.
+        To: Chair Miadich, Commissioners Baker, Ortiz, Wilson, and Wood. From: Loressa
+        Hon, Chief of Administration and Technology Division. Subject: 2023-24 Fiscal
+        Year Budget Summary.", "dateLastCrawled": "2024-01-09T00:12:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "The effectiveness of weighted least squares means and variance adjusted
+        ...", "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC9477336\/",
+        "datePublished": "2022-09-15T00:00:00.0000000", "datePublishedDisplayText":
+        "Sep 15, 2022", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC9477336",
+        "snippet": "The first items of each subsets are the hardest ones as they
+        are the preceding halo items that impact the following items of each subset.
+        Based on the sample size condition from previous literatures [33, 34], 250,
+        500, and 1,000 sample sizes were considered in this study.", "dateLastCrawled":
+        "2023-12-07T04:09:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
         {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
@@ -516,5 +283,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-  recorded_at: Wed, 06 Oct 2021 15:39:04 GMT
-recorded_with: VCR 6.0.0
+  recorded_at: Wed, 10 Jan 2024 14:41:30 GMT
+recorded_with: VCR 6.2.0

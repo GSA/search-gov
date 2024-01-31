@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api::V2::NonCommercialSearch
   include Api::V2::SearchAsJson
   include Api::V2::AsJsonAppendWebSpellingCorrection
@@ -5,7 +7,7 @@ module Api::V2::NonCommercialSearch
   attr_reader :next_offset
 
   def initialize(options = {})
-    super options.merge(Api::V2::HighlightOptions::DEFAULT)
+    super(options.merge(Api::V2::HighlightOptions::DEFAULT))
     @next_offset_within_limit = options[:next_offset_within_limit]
   end
 
@@ -15,14 +17,6 @@ module Api::V2::NonCommercialSearch
   end
 
   protected
-
-  def as_json_result_hash(result)
-    pub_date = result.published_at ? result.published_at.to_date : nil
-    { title: result.title,
-      url: result_url(result),
-      snippet: as_json_build_snippet(result.description),
-      publication_date: pub_date }
-  end
 
   def result_url(result)
     result.url

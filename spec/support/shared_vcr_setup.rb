@@ -30,9 +30,12 @@ VCR.configure do |config|
   config.default_cassette_options = {
     record: :new_episodes,
     match_requests_on: [:method, :uri_with_paperclip_normalization],
-    preserve_exact_body_bytes: true,
     clean_outdated_http_interactions: true
   }
+
+  config.preserve_exact_body_bytes do |http_message|
+    http_message.body.encoding.name == 'ASCII-8BIT' || !http_message.body.valid_encoding?
+  end
 
   config.ignore_hosts 'example.com', 'codeclimate.com', '127.0.0.1', 'googlechromelabs.github.io'
   config.ignore_request do |request|

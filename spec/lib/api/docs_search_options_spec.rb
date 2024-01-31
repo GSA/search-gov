@@ -9,12 +9,6 @@ describe Api::DocsSearchOptions do
 
       its(:api_key) { should == 'client key' }
     end
-
-    context 'when no api_key is provided' do
-      let(:params) { { } }
-
-      its(:api_key) { should == Api::DocsSearchOptions::AZURE_HOSTED_PASSWORD }
-    end
   end
 
   describe '#valid?' do
