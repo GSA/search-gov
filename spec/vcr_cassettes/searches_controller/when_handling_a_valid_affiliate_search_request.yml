@@ -2,277 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=thunder%20%26%20lightning%20(site:nps.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V7_SUBSCRIPTION_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Transfer-Encoding:
-      - chunked
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Tue, 31 Aug 2021 20:32:05 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
-      Bingapis-Traceid:
-      - F2FB6ED90DB544F1961B0A77D0AECA59
-      Bingapis-Sessionid:
-      - D534220A3D8A45479EE754AC3194E976
-      X-Msedge-Clientid:
-      - '029449CF316F66A43A98596B309267EB'
-      X-Msapi-Userstate:
-      - dc79
-      Bingapis-Market:
-      - en-US
-      X-Search-Responseinfo:
-      - InternalResponseTime=276,MSDatacenter=BN2B
-      X-Cache:
-      - CONFIG_NOCACHE
-      X-Msedge-Ref:
-      - 'Ref A: F2FB6ED90DB544F1961B0A77D0AECA59 Ref B: BLUEDGE0116 Ref C: 2021-08-31T20:33:05Z'
-      Apim-Request-Id:
-      - a2b21c0a-3847-4050-94d6-09753277d6ab
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
-      X-Content-Type-Options:
-      - nosniff
-      Csp-Billing-Usage:
-      - CognitiveServices.BingSearchV7.Transaction=1
-      Date:
-      - Tue, 31 Aug 2021 20:33:05 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "thunder
-        & lightning (site:nps.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=thunder+%26+lightning+(site%3anps.gov)",
-        "totalEstimatedMatches": 40700, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "When Thunder Roars, Go Indoors (U.S. National Park Service)",
-        "url": "https:\/\/www.nps.gov\/articles\/lightning-safety.htm", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.nps.gov\/articles\/lightning-safety.htm",
-        "snippet": "Lightning is a spark of electricity in the atmosphere between
-        clouds, the air or the ground. We usually associate lightning with thunderstorms.
-        The booming sound of thunder is actually a result of lightning. To learn
-        more about what causes lightning and how it works, check out NOAA’s National
-        Severe Storms Laboratory.", "dateLastCrawled": "2021-07-18T20:05:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "Lightning Danger - Grand Canyon National Park (U.S ...", "url":
-        "https:\/\/www.nps.gov\/grca\/planyourvisit\/lightning-danger.htm", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.nps.gov\/grca\/planyourvisit\/lightning-danger.htm",
-        "snippet": "Lightning reaches temperatures five times hotter than the surface
-        of the sun. The surrounding air expands rapidly due to the heat of the bolt''s
-        flash and causes thunder, warning us that lightning is present. In Grand
-        Canyon National Park, lightning strikes an average of 25,000 times per year.
-        Enjoy the canyon, but be alert.", "dateLastCrawled": "2021-07-18T20:51:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
-        "name": "Lightning Safety - Yosemite National Park (U.S. National ...",
-        "url": "https:\/\/www.nps.gov\/yose\/planyourvisit\/lightning.htm", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.nps.gov\/yose\/planyourvisit\/lightning.htm",
-        "snippet": "Avoiding a thunderstorm before one arrives it the best way to
-        stay safe. If you''re unable to avoid a thunderstorm, here are some additional
-        tips. Avoid viewpoints. Avoid tall, isolated, or solitary trees, water, metal,
-        and power lines. Lightning often strikes the tallest object in the area.",
-        "dateLastCrawled": "2019-11-30T22:10:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
-        "name": "Lightning - Zion National Park (U.S. National Park Service)", "url":
-        "https:\/\/www.nps.gov\/zion\/planyourvisit\/lightning.htm", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.nps.gov\/zion\/planyourvisit\/lightning.htm",
-        "snippet": "Lightning. Seasonal thunderstorms are frequent in the desert
-        southwest and Zion National Park. Monsoon is from July to September and is
-        due to an increase in atmospheric moisture and summer heat, which leads to
-        strong thunderstorms. If you hear thunder: •When thunder roars, go indoors!
-        •There is no safe place outdoors during a lightning storm.", "dateLastCrawled":
-        "2021-03-02T21:45:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4", "name":
-        "Lightning - Gauley River National Recreation Area (U.S ...", "url": "https:\/\/www.nps.gov\/gari\/planyourvisit\/lightning.htm",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/gari\/planyourvisit\/lightning.htm",
-        "snippet": "Lightning. Lightning is a common occurrence in the park, especially
-        at higher elevations. It is important to be cautious during thunderstorms
-        to ensure you and your family''s safety. Safety Tips: • If you can hear thunder,
-        you are close enough to be struck by lightning. Lightning can strike up
-        to 10 miles away from where it is raining.", "dateLastCrawled": "2020-04-05T01:21:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
-        "name": "Don''t Get Zapped! - Bryce Canyon National Park (U.S ...", "url":
-        "https:\/\/www.nps.gov\/brca\/planyourvisit\/lightningsafety.htm", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.nps.gov\/brca\/planyourvisit\/lightningsafety.htm",
-        "snippet": "Lightning is Electricity; Thunder is a Sound Wave Although
-        they are called \"thunderstorms,\" it''s not the thunder that is especially
-        dangerous. Thunder is loud and intimidating, but lightning can kill you.
-        Lightning is electricity, just like the kind that comes out of a home wall
-        socket into a lamp or TV.", "dateLastCrawled": "2020-07-13T22:57:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
-        "name": "Lightning - New River Gorge National River (U.S. National ...",
-        "url": "https:\/\/www.nps.gov\/neri\/planyourvisit\/lightning.htm", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.nps.gov\/neri\/planyourvisit\/lightning.htm",
-        "snippet": "Lightning is a common occurrence in the park, especially at
-        higher elevations such as Grandview. It is important to be cautious during
-        thunderstorms to ensure you and your family''s safety. Safety Tips: If you
-        can hear thunder, you are close enough to be struck by lightning. Lightning
-        can strike up to 10 miles away from where it is raining.", "dateLastCrawled":
-        "2020-04-03T19:11:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7", "name":
-        "Monsoon Season (U.S. National Park Service)", "url": "https:\/\/www.nps.gov\/articles\/monsoon-season.htm",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/articles\/monsoon-season.htm",
-        "snippet": "All thunderstorms produce lightning and there is no safe place
-        outside during a storm – you must go indoors. Lightning can strike up to
-        60 miles (16 kilometers) away from the nearest rainfall. If you hear a clap
-        of thunder, a thunderstorm is within 10 miles (16 kilometers). So, if
-        you hear thunder, you are within lightning striking distance!", "dateLastCrawled":
-        "2021-08-26T12:39:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8", "name":
-        "Lightning Safety - Bryce Canyon National Park (U.S ...", "url": "https:\/\/www.nps.gov\/brca\/planyourvisit\/lightning-safety.htm",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/brca\/planyourvisit\/lightning-safety.htm",
-        "snippet": "Lightning is a Hazard That Has Been Responsible For Deaths and
-        Injuries in the Park. Lightning is serious business. Summer storms at Bryce
-        Canyon bring lightning, a powerful force which can and does kill. Take a
-        look along the canyon''s edge, and you''ll soon spot one of the countless
-        trees that have been struck.", "dateLastCrawled": "2020-10-02T14:37:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
-        "name": "Safety - Bryce Canyon National Park (U.S. National Park ...", "url":
-        "https:\/\/www.nps.gov\/brca\/planyourvisit\/safety.htm", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.nps.gov\/brca\/planyourvisit\/safety.htm",
-        "snippet": "Lightning is a year-round danger –especially during summer storms!
-        If you can hear thunder, lightning is within 10 miles (16 km) and you need
-        to seek the shelter of a building or your vehicle immediately. Read more about
-        lightning safety. #5 Dehydration . Drink 1 quart \/ liter every 1-2 hours.",
-        "dateLastCrawled": "2021-02-18T11:27:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
-        "name": "Lightning Strike Causes Injuries at Grand Canyon National ...",
-        "url": "https:\/\/www.nps.gov\/grca\/learn\/news\/lightning-strike-causes-injuries-at-grand-canyon-national-park.htm",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/grca\/learn\/news\/lightning-strike-causes-injuries-at-grand-canyon...",
-        "snippet": "Visitors to the park are reminded that if the sound of thunder
-        follows a lightning flash within 30 seconds or less, they should seek shelter
-        in a building or vehicle or proceed to the nearest bus stop to get on a park
-        shuttle. Lightning can strike two points up to 10 miles (16 km) apart at
-        the same time.", "dateLastCrawled": "2021-07-24T03:20:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
-        "name": "Lightning - Bluestone National Scenic River (U.S. National ...",
-        "url": "https:\/\/www.nps.gov\/blue\/planyourvisit\/lightning.htm", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.nps.gov\/blue\/planyourvisit\/lightning.htm",
-        "snippet": "Lightning. Lightning is a common occurrence in the park, especially
-        at higher elevations. It is important to be cautious during thunderstorms
-        to ensure you and your family’s safety. Safety Tips: • If you can hear thunder,
-        you are close enough to be struck by lightning. Lightning can strike up
-        to 10 miles away from where it is raining.", "dateLastCrawled": "2018-05-09T23:24:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
-        "name": "National Park Service U.S. Department of the Interior When ...",
-        "url": "https:\/\/www.nps.gov\/brca\/planyourvisit\/upload\/Lightning_Safety_Brochure__2015_001_i_FINAL.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/brca\/planyourvisit\/upload\/Lightning_Safety_Brochure__2015_001_i...",
-        "snippet": "3. Lightning is possible year-round at Bryce Canyon, even in
-        the winter! 4. Thunderstorms are most common in the spring and during late
-        July, August, and September. 5. If you can hear thunder, you are in danger
-        – lightning is close enough to pose an immediate threat. 6. Lightning
-        can cause respiratory and cardiac arrest. 7.", "dateLastCrawled": "2020-11-27T07:27:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
-        "name": "Camping Safety - Sequoia & Kings Canyon National Parks (U ...", "url":
-        "https:\/\/www.nps.gov\/seki\/planyourvisit\/camping-safety.htm", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.nps.gov\/seki\/planyourvisit\/camping-safety.htm",
-        "snippet": "Lightning is common in central California where storms can start
-        suddenly. If you see dark clouds or lightning or hear thunder, move inside
-        a large building or a vehicle (not a convertible). The tent and picnic shelter
-        are not safe places to wait out a thunderstorm. Wait 30 minutes until after
-        the last rumble of thunder before going back to the ...", "dateLastCrawled":
-        "2020-06-19T20:31:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14", "name":
-        "Prisoners In Richmond - Richmond National Battlefield Park ...", "url":
-        "https:\/\/www.nps.gov\/rich\/learn\/historyculture\/prisoners-in-richmond.htm",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/rich\/learn\/historyculture\/prisoners-in-richmond.htm",
-        "snippet": "Castle Lightning appears to have closed in 1863 and was converted
-        into barracks for the accommodation of several companies engaged in guard
-        duty within the city. The prisoners confined here were removed and most likely
-        placed in Castle Thunder.", "dateLastCrawled": "2021-03-30T16:53:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
-        "name": "Lightning Safety at Grand Canyon ... - National Park Service",
-        "url": "https:\/\/www.nps.gov\/media\/video\/view.htm?id=289A56C8-155D-451F-67D60E3331934BA0",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/media\/video\/view.htm?id=289A56C8-155D-451F-67D60E3331934BA0",
-        "snippet": "If lightning begins to strike (or you hear thunder, a product
-        of lightning), take shelter in the structure, being sure to avoid metal
-        surfaces and making sure your windows are rolled up if inside a vehicle. The
-        most common mistakes visitors to Grand Canyon make during thunderstorms is
-        not avoiding the rim or neglecting to find proper shelter.", "dateLastCrawled":
-        "2018-05-19T00:46:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16", "name":
-        "Safety - Flight 93 National Memorial (U.S. National Park ...", "url": "https:\/\/www.nps.gov\/flni\/planyourvisit\/safety.htm",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/flni\/planyourvisit\/safety.htm",
-        "snippet": "Lightning Lightning is a common occurrence at the memorial.
-        It is important to be cautious during thunderstorms. The memorial is mostly
-        open fields, especially the Memorial Plaza at the crash site. If you hear
-        thunder, you are close enough to be struck by lightning. Lightning can
-        strike up to ten miles away from where it is raining.", "dateLastCrawled":
-        "2021-04-01T11:15:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
-        "Weather - Assateague Island National Seashore (U.S ...", "url": "https:\/\/www.nps.gov\/asis\/planyourvisit\/weather.htm",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/asis\/planyourvisit\/weather.htm",
-        "snippet": "Sound travels a million times slower than light. When you see
-        a flash, time the seconds it takes to hear the thunder. A 5-second difference
-        between the lightning flash and the thunder means the lightning struck
-        1 mile away. For each additional 5 seconds the strike is another mile away.",
-        "dateLastCrawled": "2021-08-26T12:53:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
-        "name": "Don''t Get Zapped! Quiz - Bryce Canyon National Park (U.S ...", "url":
-        "https:\/\/www.nps.gov\/brca\/learn\/kidsyouth\/lightningquiz.htm", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.nps.gov\/brca\/learn\/kidsyouth\/lightningquiz.htm",
-        "snippet": "2. The place in Utah that has the highest lightning hazard density
-        in the state is _____ . (A) Uinta Mountains (B) Bryce Canyon National Park
-        (C) Zion National Park (C) Salt Lake City . 3. True or false: In a thunderstorm,
-        it''s the lightning that''s dangerous, not the thunder. 4. Lightning
-        is made out of _____ . (A) raindrops (B) sound (C ...", "dateLastCrawled":
-        "2018-06-17T04:18:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19", "name":
-        "Roaming Rocky Podcast Script Lightning Safety", "url": "https:\/\/home.nps.gov\/romo\/learn\/photosmultimedia\/upload\/lightning_safety.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/home.nps.gov\/romo\/learn\/photosmultimedia\/upload\/lightning_safety.pdf",
-        "snippet": "a warning in the form of thunder way off in the distance. So
-        the moral of that story is if you don’t want to be a “crispy critter” always
-        seek shelter during a lightning storm when you hear thunder. And if you
-        hear thunder off in the distance and you can’t get into any type of shelter,
-        the last thing you want to do is stand under a tall ...", "dateLastCrawled":
-        "2021-08-23T08:34:00.0000000Z", "language": "en", "isNavigational": false}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-  recorded_at: Tue, 31 Aug 2021 20:33:05 GMT
-- request:
-    method: get
     uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=thunder%20%26%20lightning%20(site:nps.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
@@ -302,31 +31,35 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Wed, 06 Oct 2021 10:43:45 GMT
+      - Mon, 08 Jan 2024 18:56:24 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
+      X-Eventid:
+      - 659c4594c16c4e47a1e46eebb9fd3cf2
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
       Bingapis-Traceid:
-      - 0CC42090A9354692B1F7921DC1D491E4
+      - 659c4594c16c4e47a1e46eebb9fd3cf2
       Bingapis-Sessionid:
-      - 6D415E39CCD34FF186F0DDFF84474058
+      - 43928B187B34415EAAB66EE8C9D161CE
       X-Msedge-Clientid:
-      - 3F3EA19B7D5F64F70A26B1537CA265E3
+      - 33BC9A8038886DAE26988E80391C6C69
       X-Msapi-Userstate:
-      - '8729'
+      - f49a
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=222,MSDatacenter=BN2B
+      - InternalResponseTime=229,MSDatacenter=BNZE01
       X-Cache:
       - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
       X-Msedge-Ref:
-      - 'Ref A: 0CC42090A9354692B1F7921DC1D491E4 Ref B: BLUEDGE0522 Ref C: 2021-10-06T10:44:45Z'
+      - 'Ref A: 68DA6BC4F37645E7A54A2BA21DA4A8B6 Ref B: BL2AA2010204003 Ref C: 2024-01-08T18:57:24Z'
       Apim-Request-Id:
-      - f0a9eef4-303c-470e-8376-b87f2059ba3b
+      - 187ce116-d7d2-407c-8e33-9603f1519184
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -334,192 +67,217 @@ http_interactions:
       Csp-Billing-Usage:
       - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Wed, 06 Oct 2021 10:44:45 GMT
+      - Mon, 08 Jan 2024 18:57:25 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "thunder
         & lightning (site:nps.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=thunder+%26+lightning+(site%3anps.gov)",
-        "totalEstimatedMatches": 24300, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "When Thunder Roars, Go Indoors (U.S. National Park Service)",
-        "url": "https:\/\/www.nps.gov\/articles\/lightning-safety.htm", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.nps.gov\/articles\/lightning-safety.htm",
-        "snippet": "Lightning is a spark of electricity in the atmosphere between
+        "totalEstimatedMatches": 57, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "When Thunder Roars, Go Indoors - U.S. National Park Service",
+        "url": "https:\/\/www.nps.gov\/articles\/lightning-safety.htm", "datePublished":
+        "2018-06-25T00:00:00.0000000", "datePublishedDisplayText": "Jun 25, 2018",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/articles\/lightning-safety.htm",
+        "snippet": "NOAA Lightning is a spark of electricity in the atmosphere between
         clouds, the air or the ground. We usually associate lightning with thunderstorms.
         The booming sound of thunder is actually a result of lightning. To learn
         more about what causes lightning and how it works, check out NOAA’s National
-        Severe Storms Laboratory.", "dateLastCrawled": "2021-07-18T20:05:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "Lightning Danger - Grand Canyon National Park (U.S ...", "url":
-        "https:\/\/www.nps.gov\/grca\/planyourvisit\/lightning-danger.htm", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.nps.gov\/grca\/planyourvisit\/lightning-danger.htm",
-        "snippet": "Lightning reaches temperatures five times hotter than the surface
-        of the sun. The surrounding air expands rapidly due to the heat of the bolt''s
-        flash and causes thunder, warning us that lightning is present. In Grand
-        Canyon National Park, lightning strikes an average of 25,000 times per year.
-        Enjoy the canyon, but be alert.", "dateLastCrawled": "2021-07-18T20:51:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
-        "name": "Lightning - Zion National Park (U.S. National Park Service)", "url":
-        "https:\/\/home.nps.gov\/zion\/planyourvisit\/lightning.htm", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/home.nps.gov\/zion\/planyourvisit\/lightning.htm",
-        "snippet": "Lightning in Zion . NPS Photo. Lightning Seasonal thunderstorms
-        are frequent in the desert southwest and Zion National Park. Monsoon is from
-        July to September and is due to an increase in atmospheric moisture and summer
-        heat, which leads to strong thunderstorms. If you hear thunder: •When thunder
-        roars, go indoors!", "dateLastCrawled": "2021-09-22T23:31:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
-        "name": "Lightning Safety - Yosemite National Park (U.S. National ...",
-        "url": "https:\/\/www.nps.gov\/yose\/planyourvisit\/lightning.htm", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.nps.gov\/yose\/planyourvisit\/lightning.htm",
-        "snippet": "Avoiding a thunderstorm before one arrives it the best way to
-        stay safe. If you''re unable to avoid a thunderstorm, here are some additional
-        tips. Avoid viewpoints. Avoid tall, isolated, or solitary trees, water, metal,
-        and power lines. Lightning often strikes the tallest object in the area.",
-        "dateLastCrawled": "2019-11-30T22:10:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4", "name":
-        "National Park Service U.S. Department of the Interior When ...", "url": "https:\/\/www.nps.gov\/brca\/planyourvisit\/upload\/Lightning_Safety_Brochure__2015_001_i_FINAL.pdf",
+        Severe Storms Laboratory.", "dateLastCrawled": "2024-01-02T16:29:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=thunder+%26+lightning+(site%3anps.gov)&d=4867576977702045&mkt=en-US&setlang=en-US&w=z2oTEZ6v886lhLIMi51xVdzMqUJnucBs",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Lightning Danger - U.S. National Park Service", "url": "https:\/\/www.nps.gov\/grca\/planyourvisit\/lightning-danger.htm",
+        "datePublished": "2018-08-03T00:00:00.0000000", "datePublishedDisplayText":
+        "Aug 3, 2018", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/grca\/planyourvisit\/lightning-danger.htm",
+        "snippet": "Powerful electric sparks from a thunderstorm cause lightning,
+        which can kill instantly. Lightning can strike two points up to 10 miles
+        (16 km) apart at the same time and whether or not blue sky is visible. Lightning
+        moves at 90,000 miles (144,841 km) per second with voltage up to one billion
+        volts.", "dateLastCrawled": "2024-01-04T19:10:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=thunder+%26+lightning+(site%3anps.gov)&d=4649349684010066&mkt=en-US&setlang=en-US&w=qatfm5Ih4ERCR5z6jVy_jRzUETN-_gdM",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Lightning Safety - U.S. National Park Service", "url": "https:\/\/www.nps.gov\/yose\/planyourvisit\/lightning.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/yose\/planyourvisit\/lightning.htm",
+        "snippet": "Thunderstorms bring lightning, a powerful force that can result
+        in death. In July 1985, lightning at Half Dome killed two people and injured
+        three others (two of them, critically). Though most common June through September,
+        thunderstorms can happen any time of the year.", "dateLastCrawled": "2023-12-20T06:57:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=thunder+%26+lightning+(site%3anps.gov)&d=4997418133705275&mkt=en-US&setlang=en-US&w=jZ4GtQwd7DngkFlQJUP807HF1CRGiYnw",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Lightning - Zion National Park (U.S. National Park Service)",
+        "url": "https:\/\/www.nps.gov\/zion\/planyourvisit\/lightning.htm", "datePublished":
+        "2018-10-31T00:00:00.0000000", "datePublishedDisplayText": "Oct 31, 2018",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/zion\/planyourvisit\/lightning.htm",
+        "snippet": "NPS Photo Lightning Seasonal thunderstorms are frequent in the
+        desert southwest and Zion National Park. Monsoon is from July to September
+        and is due to an increase in atmospheric moisture and summer heat, which leads
+        to strong thunderstorms. If you hear thunder: •When thunder roars, go
+        indoors!", "dateLastCrawled": "2023-10-07T01:37:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=thunder+%26+lightning+(site%3anps.gov)&d=4944134762478677&mkt=en-US&setlang=en-US&w=HJJV-v2pz-bIVSFMxSHMu9Y_yEyFQtNV",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Lightning Safety - U.S. National Park Service", "url": "https:\/\/www.nps.gov\/romo\/planyourvisit\/lightning-safety.htm",
+        "datePublished": "2023-08-07T00:00:00.0000000", "datePublishedDisplayText":
+        "Aug 7, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/romo\/planyourvisit\/lightning-safety.htm",
+        "snippet": "One of the most powerful forces of nature is lightning. Lightning
+        strikes are common in Rocky Mountain National Park from June through September.
+        Lightning strikes occur in the United States approximately 25 million times
+        a year. Before your next backcountry trip, make sure you know what to do when
+        recreating during a thunderstorm.", "dateLastCrawled": "2024-01-05T11:52:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=thunder+%26+lightning+(site%3anps.gov)&d=4892427662725282&mkt=en-US&setlang=en-US&w=anqPSTpr6m-w0auUah7ggodpQkzJRQ4_",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Lightning Safety - U.S. National Park Service", "url": "https:\/\/www.nps.gov\/brca\/planyourvisit\/lightning-safety.htm",
+        "datePublished": "2015-08-13T00:00:00.0000000", "datePublishedDisplayText":
+        "Aug 13, 2015", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/brca\/planyourvisit\/lightning-safety.htm",
+        "snippet": "There is no safe place outside in a thunderstorm. Plan ahead
+        to avoid dangerous lightning storms. Lightning is associated with heavy
+        rain and hail but it often strikes outside of it''s area. Lightning can
+        strike as far as 10 miles from any rainfall. Storm forming above Bryce Canyon
+        viewed from Sunrise Point.", "dateLastCrawled": "2023-12-16T03:47:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=thunder+%26+lightning+(site%3anps.gov)&d=4678959186933932&mkt=en-US&setlang=en-US&w=CvLmvWO9f2VPvvdtGr-fZ7ySCduEAImz",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Be a Weather-Ready Explorer - U.S. National Park Service", "url":
+        "https:\/\/www.nps.gov\/subjects\/healthandsafety\/severe-weather-safety.htm",
+        "datePublished": "2020-01-15T00:00:00.0000000", "datePublishedDisplayText":
+        "Jan 15, 2020", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/subjects\/healthandsafety\/severe-weather-safety.htm",
+        "snippet": "Locations within the park that are high-risk for weather hazards.
+        For example, there may be peaks, points or fields that regularly experience
+        lightning strikes. Safe places to take shelter around the park. Warning
+        systems that can provide notification on severe weather. Have a Plan B, just
+        in case!", "dateLastCrawled": "2023-12-29T05:43:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=thunder+%26+lightning+(site%3anps.gov)&d=4777099050877459&mkt=en-US&setlang=en-US&w=FZj0bwnxyoB8X-Pa_jCPZPiCsYtuzFPh",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Current Conditions - U.S. National Park Service", "url": "https:\/\/www.nps.gov\/brca\/planyourvisit\/conditions.htm",
+        "datePublished": "2023-11-27T00:00:00.0000000", "datePublishedDisplayText":
+        "Nov 27, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/brca\/planyourvisit\/conditions.htm",
+        "snippet": "When Thunder Roars, Go Indoors! Lightning is a year-round
+        possibility, but it''s most common (and most dangerous!) during summer thunderstorms
+        in July and August. . Flash Flood Information. Check on current watches, warnings,
+        and forecasts.", "dateLastCrawled": "2024-01-08T04:55:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=thunder+%26+lightning+(site%3anps.gov)&d=4773238023811928&mkt=en-US&setlang=en-US&w=WXOiE_s4J6h6nnGxhtOsj55-PzK-V3Yq",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "National Park Service U.S. Department of the Interior When Thunder
+        ...", "url": "https:\/\/www.nps.gov\/brca\/planyourvisit\/upload\/Lightning_Safety_Brochure__2015_001_i_FINAL.pdf",
         "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/brca\/planyourvisit\/upload\/Lightning_Safety_Brochure__2015_001_i...",
         "snippet": "3. Lightning is possible year-round at Bryce Canyon, even in
         the winter! 4. Thunderstorms are most common in the spring and during late
         July, August, and September. 5. If you can hear thunder, you are in danger
         – lightning is close enough to pose an immediate threat. 6. Lightning
-        can cause respiratory and cardiac arrest. 7.", "dateLastCrawled": "2020-11-27T07:27:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
-        "name": "Don''t Get Zapped! - Bryce Canyon National Park (U.S ...", "url":
-        "https:\/\/www.nps.gov\/brca\/planyourvisit\/lightningsafety.htm", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.nps.gov\/brca\/planyourvisit\/lightningsafety.htm",
-        "snippet": "Lightning is Electricity; Thunder is a Sound Wave Although
-        they are called \"thunderstorms,\" it''s not the thunder that is especially
-        dangerous. Thunder is loud and intimidating, but lightning can kill you.
-        Lightning is electricity, just like the kind that comes out of a home wall
-        socket into a lamp or TV.", "dateLastCrawled": "2020-07-13T22:57:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
-        "name": "Lightning - Gauley River National Recreation Area (U.S ...", "url":
-        "https:\/\/www.nps.gov\/gari\/planyourvisit\/lightning.htm", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.nps.gov\/gari\/planyourvisit\/lightning.htm",
-        "snippet": "Lightning. Lightning is a common occurrence in the park, especially
-        at higher elevations. It is important to be cautious during thunderstorms
-        to ensure you and your family''s safety. Safety Tips: • If you can hear thunder,
-        you are close enough to be struck by lightning. Lightning can strike up
-        to 10 miles away from where it is raining.", "dateLastCrawled": "2020-04-05T01:21:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
-        "name": "Sound Library - Thunder - Natural Sounds (U.S. National ...", "url":
-        "https:\/\/www.nps.gov\/subjects\/sound\/sounds-thunder.htm", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.nps.gov\/subjects\/sound\/sounds-thunder.htm",
-        "snippet": "Sound Library - Thunder. Desert lightning at Big Bend National
-        Park in Texas. NPS Photo by Jennette Jurado. Thunder. Audio recording of
-        thunder, NPS Natural Sounds and Night Skies Division. Duration: 46 seconds.
-        Credit \/ Author: NPS.", "dateLastCrawled": "2020-07-19T20:07:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
-        "name": "Lightning Strike Causes Injuries at Grand Canyon National ...",
+        can cause respiratory and cardiac arrest. 7.", "dateLastCrawled": "2023-11-28T00:02:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Safety - Bryce Canyon National Park (U.S. National Park Service)",
+        "url": "https:\/\/www.nps.gov\/brca\/planyourvisit\/safety.htm", "datePublished":
+        "2021-01-01T00:00:00.0000000", "datePublishedDisplayText": "Jan 1, 2021",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/brca\/planyourvisit\/safety.htm",
+        "snippet": "Lightning is a year-round danger –especially during summer storms!
+        If you can hear thunder, lightning is within 10 miles (16 km) and you need
+        to seek the shelter of a building or your vehicle immediately. Read more about
+        lightning safety. #5 Dehydration Drink 1 quart \/ liter every 1-2 hours.",
+        "dateLastCrawled": "2024-01-03T20:00:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=thunder+%26+lightning+(site%3anps.gov)&d=4823446186233419&mkt=en-US&setlang=en-US&w=2aIvhN-MKfqRcw_hHf_PmWWsCX1jaGPJ",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Your Safety - U.S. National Park Service", "url": "https:\/\/www.nps.gov\/cavo\/planyourvisit\/safety.htm",
+        "datePublished": "2015-05-22T00:00:00.0000000", "datePublishedDisplayText":
+        "May 22, 2015", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/cavo\/planyourvisit\/safety.htm",
+        "snippet": "Lightning can strike from up to 10 miles. This is the same distance
+        at which you can hear thunder. IF YOU CAN HEAR THUNDER, YOU CAN GET STRUCK
+        BY LIGHTNING. IF A STORM IS APPROACHING, GET TO A SAFE PLACE BEFORE IT HITS.
+        Avoid the high points of the trail, open areas, and lone trees. Lightning
+        strikes can cause serious injury or even kill.", "dateLastCrawled": "2023-11-21T06:32:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=thunder+%26+lightning+(site%3anps.gov)&d=5011642926170459&mkt=en-US&setlang=en-US&w=2ct_f34MwyvnCEeAxxA2oAPDFVkO2lM2",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Lightning Strike Causes Injuries at Grand Canyon National Park",
         "url": "https:\/\/www.nps.gov\/grca\/learn\/news\/lightning-strike-causes-injuries-at-grand-canyon-national-park.htm",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/grca\/learn\/news\/lightning-strike-causes-injuries-at-grand-canyon...",
-        "snippet": "Visitors to the park are reminded that if the sound of thunder
-        follows a lightning flash within 30 seconds or less, they should seek shelter
-        in a building or vehicle or proceed to the nearest bus stop to get on a park
-        shuttle. Lightning can strike two points up to 10 miles (16 km) apart at
-        the same time.", "dateLastCrawled": "2021-07-24T03:20:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
-        "name": "Lightning Safety - Bryce Canyon National Park (U.S ...", "url":
-        "https:\/\/www.nps.gov\/brca\/planyourvisit\/lightning-safety.htm", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.nps.gov\/brca\/planyourvisit\/lightning-safety.htm",
-        "snippet": "Lightning is a Hazard That Has Been Responsible For Deaths and
-        Injuries in the Park. Lightning is serious business. Summer storms at Bryce
-        Canyon bring lightning, a powerful force which can and does kill. Take a
-        look along the canyon''s edge, and you''ll soon spot one of the countless
-        trees that have been struck.", "dateLastCrawled": "2021-08-31T11:37:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
-        "name": "Lightning - New River Gorge National River (U.S. National ...",
-        "url": "https:\/\/www.nps.gov\/neri\/planyourvisit\/lightning.htm", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.nps.gov\/neri\/planyourvisit\/lightning.htm",
-        "snippet": "Lightning is a common occurrence in the park, especially at
-        higher elevations such as Grandview. It is important to be cautious during
-        thunderstorms to ensure you and your family''s safety. Safety Tips: If you
-        can hear thunder, you are close enough to be struck by lightning. Lightning
-        can strike up to 10 miles away from where it is raining.", "dateLastCrawled":
-        "2020-04-03T19:11:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11", "name":
-        "White Sands National Park Service U.S. Department of the ...", "url": "https:\/\/www.nps.gov\/whsa\/planyourvisit\/upload\/Lightning_Safety_7_11_12_-214KB_PDF-2.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/whsa\/planyourvisit\/upload\/Lightning_Safety_7_11_12_-214KB_PDF-2.pdf",
-        "snippet": "8. When thunder roars, go indoors! 9. Lightning can strike
-        up to 10 miles ahead of the storm. 10. It’s safe to come back outside after
-        30 minutes without a strike. HOW DO THUNDER AND LIGHTNING STORMS OCCUR?
-        Thunderstorms, lightning storms, and electrical storms are one in the same,
-        and lightning is always accompanied by thunder. These storms ...", "dateLastCrawled":
-        "2018-05-15T08:44:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12", "name":
-        "Lightning - Bluestone National Scenic River (U.S. National ...", "url":
-        "https:\/\/www.nps.gov\/blue\/planyourvisit\/lightning.htm", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.nps.gov\/blue\/planyourvisit\/lightning.htm",
-        "snippet": "Lightning. Lightning is a common occurrence in the park, especially
-        at higher elevations. It is important to be cautious during thunderstorms
-        to ensure you and your family’s safety. Safety Tips: • If you can hear thunder,
-        you are close enough to be struck by lightning. Lightning can strike up
-        to 10 miles away from where it is raining.", "dateLastCrawled": "2018-05-09T23:24:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
-        "name": "Lucky Encounters with Lightning - Yosemite National Park ...",
-        "url": "https:\/\/www.nps.gov\/yose\/blogs\/lucky-encounters-with-lightning.htm",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/yose\/blogs\/lucky-encounters-with-lightning.htm",
-        "snippet": "Assuming the lightning position is an option: it is a low squat,
-        with feet together (to reduce the effects of ground current) and arms tucked.
-        Learn about the seasonal weather patterns of the area in which you are plan
-        to recreate.", "dateLastCrawled": "2021-04-03T15:40:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
-        "name": "Don''t Get Zapped! Quiz - Bryce Canyon National Park (U.S ...",
-        "url": "https:\/\/www.nps.gov\/brca\/planyourvisit\/lightningquiz.htm", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.nps.gov\/brca\/planyourvisit\/lightningquiz.htm",
-        "snippet": "In a thunderstorm, it''s the lightning that''s dangerous,
-        not the thunder. 4. Lightning is made out of _____ . (A) raindrops (B)
-        sound (C) electricity (D) air. 5. True or false: If you see a lightning
-        flash, hear thunder, or observe dark threatening clouds, it is okay for
-        you to continue hiking. 6. The safest place to be during a lightning storm
-        ...", "dateLastCrawled": "2020-08-18T05:26:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
-        "name": "Safety - Flight 93 National Memorial (U.S. National Park ...", "url":
-        "https:\/\/www.nps.gov\/flni\/planyourvisit\/safety.htm", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.nps.gov\/flni\/planyourvisit\/safety.htm",
-        "snippet": "Lightning Lightning is a common occurrence at the memorial.
-        It is important to be cautious during thunderstorms. The memorial is mostly
-        open fields, especially the Memorial Plaza at the crash site. If you hear
-        thunder, you are close enough to be struck by lightning. Lightning can
-        strike up to ten miles away from where it is raining.", "dateLastCrawled":
-        "2021-04-01T11:15:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16", "name":
-        "History & Culture: Places: Dismal Nitch - Lewis and Clark ...", "url":
-        "https:\/\/www.nps.gov\/lewi\/learn\/historyculture\/histcult-places-dismal.htm",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/lewi\/learn\/historyculture\/histcult-places-dismal.htm",
-        "snippet": "Conditions worsened on November 12th; on top of rain, wind and
-        cold came thunder, lightning and hail. Clark describes their move from the
-        unnamed cove to the Dismal Nitch: \"As our situation became Seriously dangerous,
-        we took the advantage of a low tide & moved our Camp around a point a Short
-        distance to a Small wet bottom at the mouth of a ...", "dateLastCrawled":
-        "2021-09-07T14:48:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17", "name":
-        "Lightning Causes One Fatality and Five Injuries at Grand ...", "url": "https:\/\/www.nps.gov\/grca\/learn\/news\/2011-08-04_lightning.htm",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/grca\/learn\/news\/2011-08-04_lightning.htm",
-        "snippet": "Visitors to the park are reminded that if the sound of thunder
-        follows a lightning flash within 30 seconds or less, they should seek shelter
-        in a building or vehicle or proceed to the nearest bus stop to get on a park
-        shuttle. Remember, “if you see it, flee it; and if you hear it, clear it.”",
-        "dateLastCrawled": "2020-01-06T10:05:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
-        "name": "National Monument - nps.gov", "url": "https:\/\/www.nps.gov\/foun\/learn\/kidsyouth\/upload\/FOUNJr-RangerBooklet.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/foun\/learn\/kidsyouth\/upload\/FOUNJr-RangerBooklet.pdf",
-        "snippet": "from the west brought thunder, lightning, rain, hail, and such
-        strong winds that we had to chain the wagons together so they wouldn’t topple
-        over. What kind of weather did you experience at Fort Union? June 10, 1858
-        Cimarron At times I think this is a very bleak and desolate place. The plains
-        seem to", "dateLastCrawled": "2021-07-22T01:56:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
-        "name": "U.S. Department of the Interior Day Hikes", "url": "https:\/\/www.nps.gov\/band\/planyourvisit\/upload\/day-hikes.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/band\/planyourvisit\/upload\/day-hikes.pdf",
-        "snippet": "* Lightning kills! If you can hear thunder, lightning is in
-        the area. Immediately seek shelter in a building or vehicle. Never use a tree
-        as an umbrella! Since the Las Conchas Fire in 2011 the threat of flash flooding
-        in the canyons of Bandelier . has greatly increased. All hikers should watch
-        for these signs of possible flash flooding:", "dateLastCrawled": "2020-04-06T16:29:00.0000000Z",
-        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
-        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        "datePublished": "2021-07-21T00:00:00.0000000", "datePublishedDisplayText":
+        "Jul 21, 2021", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/grca\/learn\/news\/lightning-strike-causes-injuries-at-grand-canyon...",
+        "snippet": "News Release Date: July 21, 2021 Contact: Kaitlyn Thomas, 202-763-3440
+        GRAND CANYON, Ariz. - On July 20 at approximately 2:50 p.m., the Grand Canyon
+        Communications Center received a report of multiple individuals struck by
+        lightning at the Bright Angel Trailhead during a monsoonal thunderstorm.
+        A 30-year-old male and 28-year-old female victim were initially found unresponsive;
+        the male ...", "dateLastCrawled": "2023-08-03T04:56:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=thunder+%26+lightning+(site%3anps.gov)&d=4553133826130229&mkt=en-US&setlang=en-US&w=wuqNxwZODi4Whs8AMZDIlhgpD1rFhDH9",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Monsoon Season - U.S. National Park Service", "url": "https:\/\/www.nps.gov\/articles\/monsoon-season.htm",
+        "datePublished": "2020-07-02T00:00:00.0000000", "datePublishedDisplayText":
+        "Jul 2, 2020", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/articles\/monsoon-season.htm",
+        "snippet": "Lightning Summer storms include lightning, a powerful force
+        which can and does kill. All thunderstorms produce lightning and there is
+        no safe place outside during a storm – you must go indoors. Lightning can
+        strike up to 60 miles (16 kilometers) away from the nearest rainfall.", "dateLastCrawled":
+        "2024-01-07T06:02:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=thunder+%26+lightning+(site%3anps.gov)&d=4961679711820055&mkt=en-US&setlang=en-US&w=dfgoaHUqtvfQT_I9Suz9gt2W9OfhRePl",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Full Moon Night - U.S. National Park Service", "url": "https:\/\/www.nps.gov\/whsa\/planyourvisit\/full-moon-night.htm",
+        "datePublished": "2023-12-31T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 31, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/whsa\/planyourvisit\/full-moon-night.htm",
+        "snippet": "Remember, when thunder roars, go indoors. Lightning often
+        strikes the tallest object in the area. Avoid high points (top of a dune)
+        and ground currents (tree roots).If you see a gathering storm or hear thunder,
+        take cover in a metal-topped vehicle with your windows rolled up. Fold your
+        hands in your lap and avoid touching metal objects in your car.", "dateLastCrawled":
+        "2024-01-06T15:12:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=thunder+%26+lightning+(site%3anps.gov)&d=4695610638729223&mkt=en-US&setlang=en-US&w=GxXFt4gWANZXUQMgITcN4lFgQN83Z8y4",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Beach and Surf Safety - U.S. National Park Service", "url": "https:\/\/www.nps.gov\/asis\/planyourvisit\/surf-and-beach-safety.htm",
+        "datePublished": "2023-09-29T00:00:00.0000000", "datePublishedDisplayText":
+        "Sep 29, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/asis\/planyourvisit\/surf-and-beach-safety.htm",
+        "snippet": "Thunder and Lightning In 1986, four people were killed by
+        a lightning strike as they huddled under a beach umbrella on a nearby beach.
+        If you see lightning or hear thunder, seek immediate shelter inside your
+        vehicle or an enclosed building. Do not huddle under an umbrella or underneath
+        a lifeguard tower. During a storm, the entire protected ...", "dateLastCrawled":
+        "2024-01-01T18:01:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=thunder+%26+lightning+(site%3anps.gov)&d=4516463250243730&mkt=en-US&setlang=en-US&w=LkdcrGcKJXEF2bN9lvso4fFArOQjdy3v",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Moderate Hikes - U.S. National Park Service", "url": "https:\/\/www.nps.gov\/brca\/planyourvisit\/moderatehikes.htm",
+        "datePublished": "2021-09-21T00:00:00.0000000", "datePublishedDisplayText":
+        "Sep 21, 2021", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/brca\/planyourvisit\/moderatehikes.htm",
+        "snippet": "LIGHTNING SAFETY Lightning is a year-round danger – especially
+        during summer storms! If you can hear thunder, lightning is within 10 miles
+        (16 km) and you need to seek the shelter of a building or your vehicle immediately.
+        Click Here for more information Last updated: September 21, 2021 Was this
+        page helpful? No", "dateLastCrawled": "2024-01-05T16:37:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=thunder+%26+lightning+(site%3anps.gov)&d=4756771121609709&mkt=en-US&setlang=en-US&w=oT3YZdmKbAFzIUDiwC5i8SGBa6f3NNjT",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Hike Deer Mountain - U.S. National Park Service", "url": "https:\/\/www.nps.gov\/thingstodo\/romo_deermountain.htm",
+        "datePublished": "2022-07-15T00:00:00.0000000", "datePublishedDisplayText":
+        "Jul 15, 2022", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/thingstodo\/romo_deermountain.htm",
+        "snippet": "Ranger Recommendation: Be sure to be wary of parking availability
+        and thunderstorms as Deer Mountain is both one of the most popular and lightning-struck
+        mountains in the park. Storm Warning: Weather in Colorado can turn in an instant!
+        Be prepared for changing weather conditions. Check the forecast before heading
+        out.", "dateLastCrawled": "2024-01-05T03:38:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=thunder+%26+lightning+(site%3anps.gov)&d=4748004945494154&mkt=en-US&setlang=en-US&w=N4n09YX3MHFvJIcVxTLAN8UQN-vDFy2M",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Hiking - Bryce Canyon National Park (U.S. National Park Service)",
+        "url": "https:\/\/www.nps.gov\/brca\/planyourvisit\/day-hikes.htm", "datePublished":
+        "2023-09-22T00:00:00.0000000", "datePublishedDisplayText": "Sep 22, 2023",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/brca\/planyourvisit\/day-hikes.htm",
+        "snippet": "All trails offer a unique view of the beauty of this park, so
+        we encourage you to plan your hikes based on the amount of time you have and
+        your personal hiking abilities. Keep in mind Bryce Canyon is a high altitude
+        park ranging from 8,000 feet (2438 m) to over 9,000 feet (2743 m) in elevation.",
+        "dateLastCrawled": "2024-01-07T22:19:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=thunder+%26+lightning+(site%3anps.gov)&d=4884323054016319&mkt=en-US&setlang=en-US&w=NwkxYfk1M2itIl4l1BxGq1EmY9RDWOyM",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Safety - Assateague Island National Seashore (U.S. National Park
+        Service)", "url": "https:\/\/www.nps.gov\/asis\/planyourvisit\/safety.htm",
+        "datePublished": "2023-08-21T00:00:00.0000000", "datePublishedDisplayText":
+        "Aug 21, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/asis\/planyourvisit\/safety.htm",
+        "snippet": "Beach Safety During Lightning Storms. Every year lightning
+        strikes kill or injure beach-goers around the world. If thunder can be heard
+        then lightning is present. These simple steps can help save your life: Obey
+        posted closures. Retreat to your car or other shelter and wait out the storm.
+        Do not use the showers as you leave the beach during a ...", "dateLastCrawled":
+        "2024-01-02T12:35:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=thunder+%26+lightning+(site%3anps.gov)&d=5008090987954630&mkt=en-US&setlang=en-US&w=0Up4Rmvw-9_lavIEVNn3hkjOQmzKMVmK",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Easy Hikes - Bryce Canyon National Park (U.S. National Park Service)",
+        "url": "https:\/\/www.nps.gov\/brca\/planyourvisit\/easy-hikes.htm", "datePublished":
+        "2015-11-25T00:00:00.0000000", "datePublishedDisplayText": "Nov 25, 2015",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/brca\/planyourvisit\/easy-hikes.htm",
+        "snippet": "LIGHTNING SAFETY Lightning is a year-round danger – especially
+        during summer storms! If you can hear thunder, lightning is within 10 miles
+        (16 km) and you need to seek the shelter of a building or your vehicle immediately.
+        Click Here for more information. Last updated: September 21, 2021 Was this
+        page helpful? No", "dateLastCrawled": "2024-01-03T09:23:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=thunder+%26+lightning+(site%3anps.gov)&d=4907275358251264&mkt=en-US&setlang=en-US&w=bReIdWc_fT63kihigFioDkmwQ-tvprNc",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
@@ -538,5 +296,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-  recorded_at: Wed, 06 Oct 2021 04:42:03 GMT
-recorded_with: VCR 6.0.0
+  recorded_at: Mon, 08 Jan 2024 18:57:25 GMT
+recorded_with: VCR 6.2.0

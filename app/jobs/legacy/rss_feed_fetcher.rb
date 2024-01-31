@@ -1,7 +1,8 @@
-require 'resque-lock-timeout'
+require 'resque/plugins/lock'
+
 class RssFeedFetcher
   extend Resque::Plugins::Priority
-  extend Resque::Plugins::LockTimeout
+  extend Resque::Plugins::Lock
   extend ResqueJobStats
 
   @queue = :primary

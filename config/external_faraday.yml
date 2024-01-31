@@ -3,10 +3,6 @@ default: &DEFAULT
     open_timeout: 1
     timeout: 3
 
-azure_default: &AZURE_DEFAULT
-  <<: *DEFAULT
-  adapter: :typhoeus
-
 i14y_default: &I14Y_DEFAULT
   adapter: :typhoeus
   options:
@@ -16,10 +12,6 @@ development: &DEVELOPMENT
   <<: *DEFAULT
   adapter: :net_http_persistent
 
-  azure_web_api:
-    <<: *AZURE_DEFAULT
-  azure_composite_api:
-    <<: *AZURE_DEFAULT
   i14y:
     <<: *I14Y_DEFAULT
 
@@ -27,12 +19,6 @@ test:
   <<: *DEVELOPMENT
   i14y:
     <<: *I14Y_DEFAULT
-
-azure_production: &AZURE_PROD
-  options:
-    open_timeout: 1 # http://stackoverflow.com/questions/7987584/curl-timeout-less-than-1000ms-always-fails
-    timeout: 2
-  adapter: :typhoeus
 
 bing_v5_prod: &BING_V5_PROD
   options:
@@ -46,10 +32,6 @@ production: &PRODUCTION
     timeout: 2
   adapter: :net_http_persistent
 
-  azure_web_api:
-    <<: *AZURE_PROD
-  azure_composite_api:
-    <<: *AZURE_PROD
   bing_v5_api:
     <<: *BING_V5_PROD
   i14y:

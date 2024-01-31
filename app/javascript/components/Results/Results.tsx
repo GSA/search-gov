@@ -170,7 +170,7 @@ const getImages = (result: Result[] | null) => {
 };
 
 // eslint-disable-next-line complexity
-export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, vertical, newsAboutQuery = '', spellingSuggestion, videosUrl, relatedSearches, sitelimit, noResultsMessage, total, jobsEnabled, agencyName }: ResultsProps) => {
+export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, newsAboutQuery = '', spellingSuggestion, videosUrl, relatedSearches, sitelimit, noResultsMessage, total, jobsEnabled, agencyName }: ResultsProps) => {
   const i18n = useContext(LanguageContext);
   const styles = useContext(StyleContext);
   const imagesResults = getImages(results);
@@ -203,7 +203,7 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
             />
           }
           {/* additionalResults?.jobs */}
-          {jobsEnabled && 
+          {jobsEnabled &&
             <Jobs 
               jobs={additionalResults?.jobs}
               agencyName={agencyName}
@@ -246,7 +246,7 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
                     );
                   }
                   return (
-                    <ResultGrid key={index} vertical={vertical} result={result} />
+                    <ResultGrid key={index} result={result} />
                   );
                 })}
               </StyledWrapper>
