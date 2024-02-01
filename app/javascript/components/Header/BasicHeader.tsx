@@ -4,7 +4,6 @@ import { darken } from 'polished';
 import { Header as UswdsHeader, PrimaryNav, NavMenuButton, Logo, Title } from '@trussworks/react-uswds';
 
 import { HeaderProps } from './../props';
-// import { Logo } from './Logo';
 import { StyleContext } from '../../contexts/StyleContext';
 
 import './BasicHeader.css';
@@ -60,7 +59,7 @@ export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeade
 								page.logo?.url ? <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} /> : null
 							}
 							heading={
-                <Title>{page.displayLogoOnly ? '' : page.title}</Title>
+                <Title>{page.displayLogoOnly ? 'Steven' : page.title}</Title>
 							}
 						/>
             {showMobileMenu && <NavMenuButton
