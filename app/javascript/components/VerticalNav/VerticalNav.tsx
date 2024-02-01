@@ -13,14 +13,17 @@ import './VerticalNav.css';
 const StyledPrimaryNav = styled(PrimaryNav).attrs<{ styles: { searchTabNavigationLinkColor: string; activeSearchTabNavigationColor: string; }; }>((props) => ({
   styles: props.styles
 }))`
-  li.usa-nav__primary-item:not(li.usa-nav__submenu-item) > a {
-    color: ${(props) => props.styles.searchTabNavigationLinkColor} !important;
-  }
-  .usa-current::after {
-    background-color: ${(props) => props.styles.activeSearchTabNavigationColor} !important;
-  }
+  li.usa-nav__primary-item:not(li.usa-nav__submenu-item) > a,
   .usa-nav__primary > .usa-nav__primary-item button[aria-expanded=false] {
     color: ${(props) => props.styles.searchTabNavigationLinkColor} !important;
+  }
+  .usa-current::after,
+  .usa-nav__primary button[aria-expanded=false] span::after,
+  .usa-nav__primary > .usa-nav__primary-item button[aria-expanded=true] {
+    background-color: ${(props) => props.styles.searchTabNavigationLinkColor} !important;
+  }
+  .vertical-wrapper .usa-nav__submenu{
+    background-color: ${(props) => props.styles.searchTabNavigationLinkColor} !important;
   }
 `;
 
