@@ -83,7 +83,7 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [], relatedSi
 
       if (relatedSites.length) {
         if (relatedSites.length > 1) {
-          items.push(<><hr /><i className="text-base-light">{relatedLabel.current}</i></>);
+          items.push(<><hr /><i className="text-base-lightest text-bold">{relatedLabel.current}</i></>);
         }
 
         items = items.concat(relatedSites.map(({ link, label }, index) => <a href={link} key={index + items.length}>{label}</a>));
