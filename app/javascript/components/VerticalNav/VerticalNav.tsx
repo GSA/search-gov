@@ -19,6 +19,9 @@ const StyledPrimaryNav = styled(PrimaryNav).attrs<{ styles: { searchTabNavigatio
   .usa-current::after {
     background-color: ${(props) => props.styles.activeSearchTabNavigationColor} !important;
   }
+  .usa-nav__primary > .usa-nav__primary-item button[aria-expanded=false] {
+    color: ${(props) => props.styles.searchTabNavigationLinkColor} !important;
+  }
 `;
 
 const buildLink = ({ active, label, url }: NavigationLink, key = 0) => <a href={url} key={key} className={ active && 'usa-current' || '' }>{label}</a>;
