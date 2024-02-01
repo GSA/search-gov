@@ -63,6 +63,9 @@ export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHe
   
   const showMobileMenu = (primaryHeaderLinks && primaryHeaderLinks.length > 0) || (secondaryHeaderLinks && secondaryHeaderLinks.length > 0);
 
+  const title = page.displayLogoOnly ? 'Steven' : page.title;
+  const heading = <Title>{title}</Title>;
+
   return (
     <>
       <StyledUswdsHeader extended={true} styles={styles}>
@@ -74,9 +77,7 @@ export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHe
               page.logo?.url ? <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} /> : null
             }
             heading={
-              <Title>{
-              false ? page.title : "Steven"
-              }</Title>
+              heading
             }
           />
           {showMobileMenu && <NavMenuButton onClick={toggleMobileNav} label="Menu" />}
