@@ -24,6 +24,7 @@ class Sites::VisualDesignsController < Sites::SetupSiteController
       :display_filetype_on_search_results,
       :display_created_date_on_search_results,
       :display_updated_date_on_search_results,
+      :display_logo_only,
       :favicon_url,
       :header_logo,
       :identifier_logo,

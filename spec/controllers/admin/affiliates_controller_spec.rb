@@ -139,6 +139,7 @@ describe Admin::AffiliatesController do
             created_at
             dap_enabled
             display_name
+            display_logo_only
             domain_control_validation_code
             external_tracking_code
             favicon_url
