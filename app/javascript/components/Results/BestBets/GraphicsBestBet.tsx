@@ -23,10 +23,9 @@ export const GraphicsBestBet = ({ title, titleUrl, imageUrl, imageAltText, links
           </Grid>
         )}
         <Grid col={true} className='result-meta-data'>
-          <div className='graphics-best-bets-title'>
+          <div className='graphics-best-bets-title result-title'>
             {titleUrl ? (
-              <a href={titleUrl}>{parse(title)}</a>) : (parse(title)
-            )}
+              <a href={titleUrl} className='result-title-link'><h2 className='result-title-label'>{parse(title)}</h2></a>) : <h2 className='result-title-label'>{parse(title)}</h2>}
           </div>
           {links && links.length > 0 && (
             <Grid row gap="md">
