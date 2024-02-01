@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { darken } from 'polished';
-import { Header as UswdsHeader, PrimaryNav, Logo, Title, NavMenuButton } from '@trussworks/react-uswds';
+import { Header as UswdsHeader, PrimaryNav, Logo as UswdsLogo, Title, NavMenuButton } from '@trussworks/react-uswds';
 import { StyleContext } from '../../contexts/StyleContext';
 
 import { HeaderProps } from './../props';
@@ -29,6 +29,23 @@ const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: { buttonBackground
   }
 `;
 
+import { PageData } from '../SearchResultsLayout';
+
+interface LogoProps { page: PageData; }
+
+export const Logo = ({ page }: LogoProps) => (
+  <UswdsLogo
+    className="width-full"
+    size="slim"
+    image={page.logo?.url ? <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} /> : null}
+    heading={
+      <Title>
+        {page.title}
+      </Title>
+    }
+  />
+);
+
 export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeaderLinks, secondaryHeaderLinks }: HeaderProps) => {
   const styles = useContext(StyleContext);
 
@@ -52,16 +69,7 @@ export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeade
       <StyledUswdsHeader basic styles={styles}>
         <div className="usa-nav-container">
           <div className="usa-navbar">
-            <Logo
-              className="width-full"
-              size="slim"
-              image={
-                page.logo?.url ? <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} /> : null
-              }
-              heading={
-                <Title>{page.title}</Title>
-              }
-            />
+            <Logo page={page} />
             {showMobileMenu && <NavMenuButton
               label="Menu"
               onClick={toggleMobileNav}
