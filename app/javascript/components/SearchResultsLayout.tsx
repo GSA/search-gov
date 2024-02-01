@@ -19,6 +19,7 @@ export interface NavigationLink {
 }
 
 export interface PageData {
+  displayLogoOnly: boolean;
   title: string;
   logo: {
     url: string;
