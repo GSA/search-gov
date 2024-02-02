@@ -28,16 +28,38 @@ export const GraphicsBestBet = ({ title, titleUrl, imageUrl, imageAltText, links
               <a href={titleUrl}>{parse(title)}</a>) : (parse(title)
             )}
           </div>
-          {links && links.length > 0 && (
-            <Grid row gap="md">
-              {links.map((link, index) => {
-                return (
-                  <Grid key={index} mobileLg={{ col: (index as number) < (Math.ceil(links.length/2)) ? 7 : 5 }} className='graphics-best-bets-link-wrapper'>
-                    <a href={link.url}>{parse(link.title)}</a>
-                  </Grid>
-                );
-              })}
-            </Grid>
+          {links && links.length > 3 && (
+            <>
+              <Grid col={3} gap="md">
+                {links.slice(0, Math.ceil(links.length / 2)).map((link, index) => {
+                  return (
+                    <Grid key={index} className='graphics-best-bets-link-wrapper'>
+                      <a href={link.url}>{parse(link.title)}</a>
+                    </Grid>
+                  );
+                })}
+              </Grid>
+              <Grid col={4} gap="md">
+                {links.slice(Math.ceil(links.length / 2), links.length -1).map((link, index) => {
+                  return (
+                    <Grid key={index} className='graphics-best-bets-link-wrapper'>
+                      <a href={link.url}>{parse(link.title)}</a>
+                    </Grid>
+                  );
+                })}
+              </Grid>
+            </>
+          )}
+          {links && links.length <= 3 && (
+            <Grid col gap="md">
+            {links.map((link, index) => {
+              return (
+                <Grid key={index} mobileLg={{ col: 5 }} className='graphics-best-bets-link-wrapper'>
+                  <a href={link.url}>{parse(link.title)}</a>
+                </Grid>
+              );
+            })}
+          </Grid>
           )}
         </Grid>
       </Grid>
