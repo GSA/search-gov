@@ -63,7 +63,7 @@ export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHe
   
   const showMobileMenu = (primaryHeaderLinks && primaryHeaderLinks.length > 0) || (secondaryHeaderLinks && secondaryHeaderLinks.length > 0);
 
-  const heading = page.displayLogoOnly ? <Title>{page.title}</Title> : <Title>''</Title>;
+  const heading = page.displayLogoOnly ? <Title>{page.title}</Title> : '';
 
   return (
     <>
