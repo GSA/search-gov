@@ -1,0 +1,11 @@
+%div.active-scaffold
+  %div.active-scaffold-header
+    %h2
+      = t('.title', scope: 'super_admin')
+    -if @affiliate
+      = render partial: '/admin/odie_url_source_update/form', locals: { affiliate: @affiliate }
+  = form_with url: affiliate_lookup_admin_odie_url_source_update_index_path, method: :get, action: :affiliate_lookup do |form|
+    - unless @affiliate
+      = form.label :affiliate_id, t('.enter_affiliate_handle', scope: 'super_admin')
+      = form.text_field :affiliate_name
+      = form.submit t('.search', scope: 'super_admin'), id: 'search-button'
