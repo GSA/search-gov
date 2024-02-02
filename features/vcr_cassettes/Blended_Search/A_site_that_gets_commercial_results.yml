@@ -2,254 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=news%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V7_SUBSCRIPTION_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Transfer-Encoding:
-      - chunked
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Tue, 07 Sep 2021 16:15:24 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
-      Bingapis-Traceid:
-      - 90EC0101C21B422BA879B6B3299A2B65
-      Bingapis-Sessionid:
-      - 79905B34B203471BB85C5D546C679A18
-      X-Msedge-Clientid:
-      - 1F3245D6904661301432557D91F6607B
-      X-Msapi-Userstate:
-      - 8da8
-      Bingapis-Market:
-      - en-US
-      X-Search-Responseinfo:
-      - InternalResponseTime=251,MSDatacenter=BN2B
-      X-Cache:
-      - CONFIG_NOCACHE
-      X-Msedge-Ref:
-      - 'Ref A: 90EC0101C21B422BA879B6B3299A2B65 Ref B: BLUEDGE1407 Ref C: 2021-09-07T16:16:24Z'
-      Apim-Request-Id:
-      - 42ff1071-2fe3-48cc-baf7-1df879e25d66
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
-      X-Content-Type-Options:
-      - nosniff
-      Csp-Billing-Usage:
-      - CognitiveServices.BingSearchV7.Transaction=1
-      Date:
-      - Tue, 07 Sep 2021 16:16:23 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "news
-        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=news+(site%3agov+OR+site%3amil)",
-        "totalEstimatedMatches": 31200000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "Newsroom", "url": "https:\/\/www.defense.gov\/Newsroom\/", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.defense.gov\/Newsroom", "snippet":
-        "The Department of Defense and the Office of Military Commissions will allocate
-        seats for news media aboard a military-chartered aircraft for travel from
-        Joint Base Andrews in Maryland to Naval ...", "dateLastCrawled": "2021-09-04T15:15:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "News | Homeland Security", "url": "https:\/\/www.dhs.gov\/news",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.dhs.gov\/news",
-        "snippet": "News and important communications from the Department of Homeland
-        Security. Press Releases. Latest news and press releases. National Terrorism
-        Advisory System. The National Terrorism Advisory System (NTAS) communicates
-        information about terrorist threats to the American public. Blog.", "dateLastCrawled":
-        "2021-09-02T09:05:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2", "name":
-        "News Releases - Office of Public and Intergovernmental Affairs", "url":
-        "https:\/\/www.va.gov\/OPA\/PRESSREL\/", "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.va.gov\/OPA\/PRESSREL", "snippet": "News Releases ‘Reach
-        Out’ campaign highlights programs and assistance for Veterans during Suicide
-        Prevention Month - In conjunction with Suicide Prevention Month this September,
-        the Department of Veterans Affairs is launching Reach Out, a new campaign
-        that raises awareness of its mental health resources available for Veterans.
-        (9\/2\/21) VA expands rental support, increasing housing options ...", "dateLastCrawled":
-        "2021-09-04T21:10:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3", "name":
-        "News - Marines", "url": "https:\/\/www.marines.mil\/news.aspx", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.marines.mil\/news.aspx", "snippet":
-        "The latest news and the coverage of news, events, videos, tweets and
-        more from the U.S. Marine Corps. U.S. Marines with 9th Engineer Support Battalion,
-        3rd Marine Logistics Group, conduct a timed ...", "dateLastCrawled": "2021-09-04T03:02:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
-        "name": "News | U.S. Department of the Interior", "url": "https:\/\/www.doi.gov\/news",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.doi.gov\/news",
-        "snippet": "Wyoming, Secretary Deb Haaland, Press Release. 8\/12\/2021. Today
-        the U.S. Departments of the Interior and Agriculture announced their support
-        for the State of Wyoming’s wildlife migration strategy, which is designed
-        to improve outcomes for wildlife, honor private landowner rights, and preserve
-        multiple-use opportunities.", "dateLastCrawled": "2021-09-04T11:30:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
-        "name": "News (U.S. National Park Service)", "url": "https:\/\/www.nps.gov\/aboutus\/news\/index.htm",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nps.gov\/aboutus\/news\/index.htm",
-        "snippet": "News Sources. News releases - Here you can view all National
-        Park Service news releases, search by topic, or filter by park or office.
-        DOI news releases - Our parent agency, the U.S. Department of the Interior,
-        publishes news releases relating to national parks and other natural and
-        cultural resource topics. Fire news.", "dateLastCrawled": "2021-09-03T00:34:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
-        "name": "News - Yellowstone National Park (U.S. National Park Service)",
-        "url": "https:\/\/www.nps.gov\/yell\/learn\/news\/index.htm", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.nps.gov\/yell\/learn\/news\/index.htm",
-        "snippet": "News Releases. Browse our latest news releases or subscribe
-        to our RSS feed (the RSS feed does not work in Google Chrome. If you are using
-        Google Chrome you will need to add an extension).. Social Media. Social media
-        provides a quick and easy way for you to connect with us on a daily basis..
-        Photos, Sounds & Videos. Browse our library of high-quality, public domain
-        images on Flickr.", "dateLastCrawled": "2021-08-03T18:31:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
-        "name": "News - Biology | NSF - National Science Foundation", "url":
-        "https:\/\/www.nsf.gov\/news\/index.jsp?prio_area=3", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.nsf.gov\/news\/index.jsp?prio_area=3",
-        "snippet": "Research News. August 26, 2021. Uncovering the botanical history
-        of the Guadalupe Mountains. Research News. August 25, 2021. For trees, carbs
-        are key to surviving insect defoliation. Research News. August 24, 2021.
-        Study takes unprecedented peek into life of 17,000-year-old mammoth. Research
-        News.", "dateLastCrawled": "2021-09-05T15:16:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
-        "name": "Judiciary News | United States Courts", "url": "https:\/\/www.uscourts.gov\/judiciary-news",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uscourts.gov\/judiciary-news",
-        "snippet": "Judiciary Seeks $1.54 Billion for Infrastructure. Published onJuly
-        20, 2021. Citing “crucial infrastructure needs for courthouse security, courthouse
-        construction, and information technology,” the Judiciary is asking Congress
-        for $1.54 billion as part of any infrastructure bill enacted by the legislative
-        branch.", "dateLastCrawled": "2021-09-05T05:02:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
-        "name": "News - PennDOT Home", "url": "https:\/\/www.penndot.gov\/Pages\/News.aspx",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.penndot.gov\/Pages\/News.aspx",
-        "snippet": "News. This page offers the most recent news releases from
-        PennDOT''s central office in Harrisburg and its 11 engineering districts.
-        To contact the central press office, please call 717-783-8800. If you''d like
-        to reach a regional press office, please choose from the map here.", "dateLastCrawled":
-        "2021-09-05T09:12:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10", "name":
-        "News | FinCEN.gov", "url": "https:\/\/www.fincen.gov\/news-room\/news",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fincen.gov\/news-room\/news",
-        "snippet": "News. FinCEN''s Office of Strategic Communications responds
-        to questions from the media concerning Bank Secrecy Act requirements, FinCEN''s
-        mission, enforcement actions, and rulings. Media organizations with questions
-        and\/or requests for information or interviews can reach FinCEN''s Office
-        of Strategic Communications at 703-905-3770.", "dateLastCrawled": "2021-09-03T06:24:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
-        "name": "News - marines.mil", "url": "https:\/\/www.marines.mil\/News\/Tag\/27880\/osprey-pilot\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.marines.mil\/News\/Tag\/27880\/osprey-pilot",
-        "snippet": "News. News. The latest news and the coverage of news,
-        events, videos, tweets and more from the U.S. Marine Corps.", "dateLastCrawled":
-        "2021-09-06T18:07:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12", "name":
-        "News | USCIS", "url": "https:\/\/www.uscis.gov\/news", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.uscis.gov\/news", "snippet": "USCIS
-        News. You can find all USCIS news releases and alerts on our USCIS
-        News webpage, searchable by topic and date. It also includes policy and
-        procedure updates as well as late-breaking news about USCIS office closures
-        and other emergencies. Media Contacts.", "dateLastCrawled": "2021-09-04T16:09:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
-        "name": "News | NSF - National Science Foundation", "url": "https:\/\/nsf.gov\/news\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/nsf.gov\/news", "snippet":
-        "Research News. September 1, 2021. The ''phytoplankton factory'' -- from
-        nutrients to algae growth. Research News. September 1, 2021. Robotic floats
-        provide new look at ocean health and global carbon cycle. Research News.
-        August 31, 2021. Measuring electric current in soil could provide answers
-        on soil health.", "dateLastCrawled": "2021-09-05T14:49:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
-        "name": "Newsroom | Internal Revenue Service", "url": "https:\/\/www.irs.gov\/newsroom",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/newsroom",
-        "snippet": "News Release and Fact Sheet Archive. News releases and fact
-        sheets from November 2002 forward and an archive of news releases and fact
-        sheets in PDF format back to 1997. Helpful Links. Internal Revenue Service
-        Progress Update – Fiscal Year 2019 Independent Assessment of Free File Program.
-        Appendix A : The Economics of IRS Free File", "dateLastCrawled": "2021-09-04T01:10:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
-        "name": "News - af.mil", "url": "https:\/\/www.af.mil\/News\/Tag\/130566\/flightline-operations\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.af.mil\/News\/Tag\/130566\/flightline-operations",
-        "snippet": "The official website of the U.S. Air Force. AF.MIL delivers
-        the latest breaking news and information on the U.S. Air Force including
-        top stories, features, leadership, policies, and more. For in-depth coverage,
-        AF.MIL provides special reports, video, audio, and photo galleries.", "dateLastCrawled":
-        "2021-09-07T14:47:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16", "name":
-        "News - 15af.acc.af.mil", "url": "https:\/\/www.15af.acc.af.mil\/News\/News\/Article\/...",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.15af.acc.af.mil\/News\/News\/Article\/...",
-        "snippet": "Members of the joint Department of Defense assembled Feb. 24,
-        2021, in Florida, to provide flexible support to the Federal Emergency Management
-        Agency as part of the whole-of-government response to COVID-19.Service members
-        have temporarily been assigned to Fifteenth Air Force, under U.S. Northern
-        Command’s Joint Force Land Component Command, U.S.", "dateLastCrawled": "2021-09-06T05:15:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17",
-        "name": "News | Washington State Coronavirus Response (COVID-19)", "url":
-        "https:\/\/coronavirus.wa.gov\/news", "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/coronavirus.wa.gov\/news", "snippet": "News. Regular updates
-        can be found on the Department of Health’s Public Health Connection blog or
-        the Governor''s blog, or you can subscribe to daily bulletins from the state’s
-        Joint Information Center. En espanol: Nuevo podcast and Bienestarwa. Latest
-        News Conference.", "dateLastCrawled": "2021-09-05T13:13:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
-        "name": "News | Washington Department of Fish & Wildlife", "url": "https:\/\/wdfw.wa.gov\/news",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/wdfw.wa.gov\/news",
-        "snippet": "News. Welcome to our newsroom, where you''ll find links to recent
-        news releases. Enter keywords to search the contents of news releases
-        State, partners remind recreational boaters to Be Whale Wise to support endangered
-        Southern Resident killer whales ...", "dateLastCrawled": "2021-09-05T11:06:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
-        "name": "News | Lawrence Livermore National Laboratory", "url": "https:\/\/www.llnl.gov\/news",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.llnl.gov\/news",
-        "snippet": "Lawrence Livermore National Laboratory (LLNL) and its three partner
-        national labs in the Bay Area Lab Innovation Networking Center (LINC) will
-        offer a webinar about the future of semiconductors and advanced materials
-        on Wednesday, Aug. 25. The two-hour virtual Zoom webinar, called “Over the
-        Horizon” and set to start at noon Pacific time, is primarily targeted at Bay
-        Area industry partners...", "dateLastCrawled": "2021-09-01T13:25:00.0000000Z",
-        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
-        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-  recorded_at: Tue, 07 Sep 2021 16:16:24 GMT
-- request:
-    method: get
     uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=news%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
@@ -279,31 +31,35 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Wed, 06 Oct 2021 15:35:06 GMT
+      - Wed, 10 Jan 2024 14:35:54 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
+      X-Eventid:
+      - 659eab869ed8403ebbb4fc48adced395
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
       Bingapis-Traceid:
-      - 0027EFEA078A487BAD03DE70A853AE96
+      - 659eab869ed8403ebbb4fc48adced395
       Bingapis-Sessionid:
-      - 31E64BDD76F146EE856C0795D9C12AB1
+      - CC5080124A7E41D497D26F59F849B993
       X-Msedge-Clientid:
-      - 3B2A10D4831D63E6239E001C82AD626E
+      - 28D7078749E56D8F1A1F138548E46C45
       X-Msapi-Userstate:
-      - '2420'
+      - '09e5'
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=309,MSDatacenter=BN2B
+      - InternalResponseTime=274,MSDatacenter=BNZE01
       X-Cache:
       - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
       X-Msedge-Ref:
-      - 'Ref A: 0027EFEA078A487BAD03DE70A853AE96 Ref B: BLUEDGE1411 Ref C: 2021-10-06T15:36:06Z'
+      - 'Ref A: 50DE03AC522B4C47A5878DAB47426B1A Ref B: BL2AA2030102019 Ref C: 2024-01-10T14:36:54Z'
       Apim-Request-Id:
-      - 260e0386-86e7-4a20-afd3-777b23b3c14d
+      - 790e16e1-9d1a-4fa3-a722-1fd91085a87f
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -311,169 +67,182 @@ http_interactions:
       Csp-Billing-Usage:
       - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Wed, 06 Oct 2021 15:36:06 GMT
+      - Wed, 10 Jan 2024 14:36:54 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "news
         (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=news+(site%3agov+OR+site%3amil)",
-        "totalEstimatedMatches": 30600000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "News | Homeland Security", "url": "https:\/\/www.dhs.gov\/news",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.dhs.gov\/news",
-        "snippet": "News and important communications from the Department of Homeland
-        Security. Press Releases. Latest news and press releases. National Terrorism
-        Advisory System. The National Terrorism Advisory System (NTAS) communicates
-        information about terrorist threats to the American public. Blog.", "dateLastCrawled":
-        "2021-10-02T01:54:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1", "name": "News",
-        "url": "https:\/\/www.marines.mil\/News\/Tag\/52990\/cybersecurity\/", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.marines.mil\/News\/Tag\/52990\/cybersecurity",
-        "snippet": "News. News. The latest news and the coverage of news,
-        events, videos, tweets and more from the U.S. Marine Corps.", "dateLastCrawled":
-        "2021-10-05T22:33:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2", "name": "U.S.
-        Department of Defense", "url": "https:\/\/www.defense.gov\/", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.defense.gov", "snippet": "News Hicks
-        Discusses DOD Issues, Career Advice in ''Smart Women, Smart Power'' The first
-        woman in the No. 2 leadership position at the Defense Department, Deputy Secretary
-        of Defense Kathleen H ...", "dateLastCrawled": "2021-10-03T07:16:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
-        "name": "News Releases - Office of Public and Intergovernmental Affairs",
-        "url": "https:\/\/www.va.gov\/OPA\/PRESSREL\/", "isFamilyFriendly": true,
-        "displayUrl": "https:\/\/www.va.gov\/OPA\/PRESSREL", "snippet": "News
-        Releases PRESS STATEMENT: VA resumes overpayment notifications, medical copayment
-        collections while continuing to offer Veterans expansive debt relief options
-        - The Department of Veterans Affairs will resume over-payment notifications
-        for new benefit debts and the debts deferred from April 6, 2020 through Sept.
-        30, 2021 due to the COVID pandemic.", "dateLastCrawled": "2021-10-03T02:09:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
-        "name": "All News | USCIS", "url": "https:\/\/www.uscis.gov\/news\/all-news",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uscis.gov\/news\/all-news",
-        "snippet": "This page lists all USCIS news releases and alerts, searchable
-        by topic and date. For material older than three years or that is no longer
-        current, see our Archive News section.. Subscribe to get updates:", "dateLastCrawled":
-        "2021-10-01T05:16:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5", "name": "News:
-        Inside Veteran Benefits - Veterans Benefits ...", "url": "https:\/\/www.benefits.va.gov\/benefits\/news.asp",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.benefits.va.gov\/benefits\/news.asp",
-        "snippet": "Veterans can continue to get information about benefits or file
-        a claim for benefits by visiting our website at www.va.gov. Veterans with
-        claims specific or other questions may request information via Inquiry Routing
-        & Information System (IRIS) or telephone at 1-800-827-1000. VBA benefits and
-        services provided to Veterans, families, and ...", "dateLastCrawled": "2021-10-01T02:36:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
-        "name": "News - United States Marine Corps", "url": "https:\/\/www.quantico.marines.mil\/News\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.quantico.marines.mil\/News",
-        "snippet": "Reservists bring out the big guns - Senior Airman Christopher
-        Resolute, 512th Security Forces Squadron defender, fires a M240B machine gun
-        May 7, 2021, at Marine Corps Base Quantico, Virginia. Stationed at Dover Air
-        Force Base, Delaware, more than 20 reserve defenders traveled to Quantico
-        for heavy weapons training.", "dateLastCrawled": "2021-09-29T22:15:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
-        "name": "News - United States Marine Corps", "url": "https:\/\/www.lejeune.marines.mil\/News\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.lejeune.marines.mil\/News",
-        "snippet": "Camp Lejeune News. In early August 1950, American and Republic
-        of Korea troops established the Pusan Perimeter. Bevin Alexander’s Korea:
-        The First War We Lost details how our troops held that land for about the
-        next month and a half until the historic amphibious landing at Inchon (Sept.
-        15-16, 1950).Can you imagine the hope that was brimming ...", "dateLastCrawled":
-        "2021-10-02T07:18:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8", "name": "News
-        | NSF - National Science Foundation", "url": "https:\/\/nsf.gov\/news\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/nsf.gov\/news", "snippet":
-        "Research News. September 15, 2021. Observatory in Chile captures highest-resolution
-        measurements of asteroid surface temperatures. Research News. September
-        14, 2021. NSF announces the launch of SpectrumX, an NSF Spectrum Innovation
-        Center. News Release. September 14, 2021.", "dateLastCrawled": "2021-09-30T23:14:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
-        "name": "National Weather Service", "url": "https:\/\/www.weather.gov\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.weather.gov", "snippet":
-        "NEWS Newsroom Social Media Events Pubs\/Brochures\/Booklets . EDUCATION
-        NWS Education Home Be A Force of Nature NOAA Education Resources Glossary
-        JetStream NWS Training Portal NOAA Library For Students, Parents and Teachers
-        Brochures", "dateLastCrawled": "2021-10-03T07:13:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
-        "name": "News - NASA Mars", "url": "https:\/\/mars.nasa.gov\/mars2020\/news\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/mars.nasa.gov\/mars2020\/news",
-        "snippet": "Apr. 2021. NASA''s Mars Helicopter Survives First Cold Martian
-        Night on Its Own. April 05, 2021. NASA’s Ingenuity helicopter can be seen
-        on Mars as viewed by the Perseverance rover’s rear Hazard Camera on April
-        4, 2021, the 44th Martian day, or sol of the mission.", "dateLastCrawled":
-        "2021-10-03T08:09:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11", "name":
-        "News | Washington Department of Fish & Wildlife", "url": "https:\/\/wdfw.wa.gov\/news",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/wdfw.wa.gov\/news",
-        "snippet": "News. Welcome to our newsroom, where you''ll find links to recent
-        news releases. Enter keywords to search the contents of news releases
-        Quilomene bighorn sheep test positive for lethal bacteria. Oct 1, 2021. WDFW
-        lifts fire restrictions, including target shooting ban, on most Department-managed
-        lands .", "dateLastCrawled": "2021-10-02T23:06:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
-        "name": "News – NASA’s Mars Exploration Program", "url": "https:\/\/mars.nasa.gov\/news\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/mars.nasa.gov\/news",
-        "snippet": "NASA’s real-time portal for Mars exploration, featuring the
-        latest news, images, and discoveries from the Red Planet.", "dateLastCrawled":
-        "2021-10-02T09:03:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13", "name":
-        "Latest NASA News Releases | NASA", "url": "https:\/\/www.nasa.gov\/news\/releases\/latest\/index.html",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nasa.gov\/news",
-        "snippet": "NASA.gov brings you the latest images, videos and news from
-        America''s space agency. Get the latest updates on NASA missions, watch
-        NASA TV live, and learn about our quest to reveal the unknown and benefit
-        all humankind.", "dateLastCrawled": "2021-10-03T20:22:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
-        "name": "Newsroom | Internal Revenue Service", "url": "https:\/\/www.irs.gov\/newsroom",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/newsroom",
-        "snippet": "News Release and Fact Sheet Archive. News releases and fact
-        sheets from November 2002 forward and an archive of news releases and fact
-        sheets in PDF format back to 1997. Helpful Links. Internal Revenue Service
-        Progress Update – Fiscal Year 2019 PDF Independent Assessment of Free File
-        Program PDF. Appendix A : The Economics of IRS Free File PDF", "dateLastCrawled":
-        "2021-10-03T08:06:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15", "name":
-        "Judiciary News | United States Courts", "url": "https:\/\/www.uscourts.gov\/judiciary-news",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uscourts.gov\/judiciary-news",
-        "snippet": "Published onAugust 25, 2021. The Judiciary has informed Congress
-        that it opposes the proposed Judiciary Accountability Act. In a letter to
-        key lawmakers today, Judge Roslynn R. Mauskopf, secretary of the Judicial
-        Conference of the United States, wrote that the bill “fails to recognize the
-        robust safeguards that have been in place within the ...", "dateLastCrawled":
-        "2021-10-03T11:09:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16", "name":
-        "News Releases for Current Month | Internal Revenue Service", "url": "https:\/\/www.irs.gov\/newsroom\/news-releases-for-current-month",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/newsroom\/news-releases-for-current-month",
-        "snippet": "A listing of current news releases published by the IRS. IR-2021-181,
-        September 10, 2021 — The Internal Revenue Service reminds taxpayers today
-        that the cost of home testing for COVID-19 is an eligible medical expense
-        that can be paid or reimbursed under health flexible spending arrangements
-        (health FSAs), health savings accounts (HSAs), health reimbursement arrangements
-        (HRAs), or Archer ...", "dateLastCrawled": "2021-10-03T12:20:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
-        "name": "News - Kentucky Governor Andy Beshear", "url": "https:\/\/governor.ky.gov\/news",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/governor.ky.gov\/news",
-        "snippet": "Media Contacts. Crystal Staley, Communications Director (502)
-        545-3714 or (502) 564-2611. Sebastian Kitchen, Deputy Comms.Director (502)
-        330-0799 or (502) 564-2611 Sign up for Updates. Click here to sign up to have
-        news updates from Governor Beshear delivered right to your inbox or cell
-        phone. Social Media", "dateLastCrawled": "2021-10-02T07:15:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
-        "name": "News | Division of Cancer Prevention", "url": "https:\/\/prevention.cancer.gov\/news-and-events\/news",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/prevention.cancer.gov\/news-and-events\/news",
-        "snippet": "News about scientific advances in cancer prevention, program
-        activities, and new projects are included here in NCI press releases and fact
-        sheets, articles from the NCI Cancer Bulletin, and Clinical Trial News from
-        the NCI website.", "dateLastCrawled": "2021-09-08T06:24:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
-        "name": "Social Security Update | SSA", "url": "https:\/\/www.ssa.gov\/news\/newsletter\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/news\/newsletter",
-        "snippet": "Social Security now offers convenient and secure online options
-        for completing and submitting forms. Our newest online forms include: SSA
-        820– Work Activity Report (Self-Employed Person) – Provide work activity information
-        for self-employed individuals applying for or receiving disability benefits.;
-        SSA 821 – Work Activity Report – Provide work activity information for individuals
-        ...", "dateLastCrawled": "2021-10-03T12:04:00.0000000Z", "language": "en",
-        "isNavigational": false}]}, "rankingResponse": {"mainline": {"items": [{"answerType":
-        "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        "totalEstimatedMatches": 32700000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "News - U.S. Department of Defense", "url": "https:\/\/www.defense.gov\/News\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.defense.gov\/News",
+        "snippet": "Self-Defense Strike in Iraq Kills Terrorist Leader. U.S. forces
+        in Iraq conducted a self-defense strike that killed Mushtaq Jawad Kazim al-Jawari,
+        a leader of the Iran-backed Harakat-al-Nujaba ...", "dateLastCrawled": "2024-01-10T00:34:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=news+(site%3agov+OR+site%3amil)&d=4708637423640659&mkt=en-US&setlang=en-US&w=lomD0S-NScVdPcWL4Xejb-q13Bmlqnaa",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "News Stories - U.S. Department of Defense", "url": "https:\/\/www.defense.gov\/News\/News-Stories\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.defense.gov\/News\/News-Stories",
+        "snippet": "News Stories. Stories from around the Defense Department. This
+        is a simulated response. News Stories; Features; From the Services; Press
+        Products; Live Events; Search. List of News Stories.", "dateLastCrawled":
+        "2024-01-09T07:20:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=news+(site%3agov+OR+site%3amil)&d=4890172800132596&mkt=en-US&setlang=en-US&w=UyN7-l135ZOvy3JTHVBi5u4wwr-M3jaZ",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "U.S. Army News Service | ARNEWS", "url": "https:\/\/www.army.mil\/ARNews",
+        "datePublished": "2023-12-06T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 6, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.army.mil\/ARNews",
+        "snippet": "Latest News. Army asks for help in alleviating burden on missile
+        air and missile defense Soldiers January 2, 2024. Army stands up Special
+        Trial Counsel with independent authority for 13 UCMJ ...", "dateLastCrawled":
+        "2024-01-07T06:14:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=news+(site%3agov+OR+site%3amil)&d=5055494546260198&mkt=en-US&setlang=en-US&w=buW7Kg-342z6-TlNIgDFpKb0MJhm9-eE",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "The Official Home Page of the United States Army", "url": "https:\/\/www.army.mil\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.army.mil", "snippet":
+        "The latest news, images, videos, career information, and links from the
+        U.S. Army", "dateLastCrawled": "2024-01-10T07:02:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=news+(site%3agov+OR+site%3amil)&d=4554306360014304&mkt=en-US&setlang=en-US&w=fFC3lxDZptgXD2H3eLJgk4AQha0XWYkQ",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Readout of 2024 U.S.-PRC Defense Policy Coordination Talks", "url":
+        "https:\/\/www.defense.gov\/News\/Releases\/Release\/Article\/3639762\/readout-of-2024-us-prc-defense-policy-coordination-talks\/",
+        "datePublished": "2024-01-09T00:00:00.0000000", "datePublishedFreshnessText":
+        "1 day ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.defense.gov\/News\/Releases\/Release\/Article\/3639762\/readout-of-2024-us-prc...",
+        "snippet": "Readout of 2024 U.S.-PRC Defense Policy Coordination Talks. Dr.
+        Michael Chase, Deputy Assistant Secretary of Defense for China, Taiwan, and
+        Mongolia, met with People''s Republic of China (PRC ...", "dateLastCrawled":
+        "2024-01-10T07:07:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=news+(site%3agov+OR+site%3amil)&d=3350667281934&mkt=en-US&setlang=en-US&w=1Mc9yJ0M9C1usdTJZ4guwe2aspFpoxcJ",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "News - Marines.mil", "url": "https:\/\/www.marines.mil\/News\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.marines.mil\/News",
+        "snippet": "The latest news and the coverage of news, events, videos,
+        tweets and more from the U.S. Marine Corps.", "dateLastCrawled": "2024-01-09T02:12:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=news+(site%3agov+OR+site%3amil)&d=4892736895605084&mkt=en-US&setlang=en-US&w=_n1IMuY9Sdqw9eYtCM2kUwNpfF6mHGSI",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "VA Press Room - VA News - VA News and Information", "url": "https:\/\/news.va.gov\/va-press-room\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/news.va.gov\/va-press-room",
+        "snippet": "VA Press Room - VA News. Central location for Department of
+        Veterans Affairs official news releases, speeches, remarks, statements,
+        and advisories.", "dateLastCrawled": "2024-01-07T21:27:00.0000000Z", "language":
+        "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Press Releases | Homeland Security", "url": "https:\/\/www.dhs.gov\/news-releases\/press-releases",
+        "datePublished": "2023-12-01T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 1, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.dhs.gov\/news-releases",
+        "snippet": "Building on longstanding efforts and redoubling work to support
+        faith-based communities in response to the ongoing conflict in the Middle
+        East, DHS, through Cybersecurity and Infrastructure Security Agency (CISA),
+        released new resources to help houses of worship and other faith-based organizations
+        enhance their security. Dec 1 2023.", "dateLastCrawled": "2024-01-09T23:24:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=news+(site%3agov+OR+site%3amil)&d=4619241968594889&mkt=en-US&setlang=en-US&w=OL9XLnVkDc80ltXDzCEMd5dOX26pkDK4",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "News | HHS.gov", "url": "https:\/\/www.hhs.gov\/about\/news\/index.html",
+        "datePublished": "2023-12-18T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 18, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.hhs.gov\/about\/news",
+        "snippet": "Watch a live HHS event, mark your calendar for upcoming meetings
+        and celebrations, or find out how to stream your event. Agencies that are
+        a part of Health and Human Services offer podcasts that address the health
+        and well-being of all Americans and discuss topics in medicine, public health,
+        and social services. Viewers & Players. EEO\/No Fear Act.", "dateLastCrawled":
+        "2024-01-08T23:44:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=news+(site%3agov+OR+site%3amil)&d=4807249870389302&mkt=en-US&setlang=en-US&w=CeNrGgujvSiKFYRA1uif_I9aOrvc7DBT",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "News - U.S. Air Force", "url": "https:\/\/www.af.mil\/news\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.af.mil\/news",
+        "snippet": "The official website of the U.S. Air Force. AF.MIL delivers
+        the latest breaking news and information on the U.S. Air Force including
+        top stories, features, leadership, policies, and more. For in-depth coverage,
+        AF.MIL provides special reports, video, audio, and photo galleries.", "dateLastCrawled":
+        "2024-01-05T01:57:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=news+(site%3agov+OR+site%3amil)&d=5039272590661689&mkt=en-US&setlang=en-US&w=l9YDI0iNJHPzmP9OPbi03mh8CMD6dePI",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "All DHS News | Homeland Security", "url": "https:\/\/www.dhs.gov\/all-news-updates",
+        "datePublished": "2023-12-27T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 27, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.dhs.gov\/all-news-updates",
+        "snippet": "All news and updates for the Department of Homeland Security
+        – blogs, press releases, events, fact sheets, speeches, testimonies.", "dateLastCrawled":
+        "2024-01-09T03:06:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=news+(site%3agov+OR+site%3amil)&d=4808834710382861&mkt=en-US&setlang=en-US&w=KybFxulvgwCKzimLiDwWM8QZ4-33c5n8",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "At the Direction of President Biden, Department of Commerce to ...",
+        "url": "https:\/\/www.commerce.gov\/news\/press-releases\/2023\/11\/direction-president-biden-department-commerce-establish-us-artificial",
+        "datePublished": "2023-11-01T00:00:00.0000000", "datePublishedDisplayText":
+        "Nov 1, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.commerce.gov\/news\/press-releases\/2023\/11\/direction-president-biden...",
+        "snippet": "Today, the Biden-Harris Administration announced that the U.S.
+        Department of Commerce, through the National Institute of Standards and Technology
+        (NIST), will establish the U.S. Artificial Intelligence Safety Institute (USAISI)
+        to lead the U.S. government’s efforts on AI safety and trust, particularly
+        for evaluating the most advanced AI models.", "dateLastCrawled": "2024-01-04T03:10:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=news+(site%3agov+OR+site%3amil)&d=4910139962556460&mkt=en-US&setlang=en-US&w=3BkeD6UA5sC435CmfPxKeMXUMPUKnlb9",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "All News | United States Department of Justice", "url": "https:\/\/www.justice.gov\/news",
+        "datePublished": "2024-01-05T00:00:00.0000000", "datePublishedFreshnessText":
+        "5 days ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.justice.gov\/news",
+        "snippet": "All News. Keyword Search. Start Date. End Date. Sort by: 25556
+        Results Press Release Justice Department Releases Information on Efforts to
+        Protect the Right to Vote, Prosecute Election Crimes, and Secure Elections.
+        January 9, 2024. Press Release Owner of Oregon Payroll Services Company Sentenced
+        to More Than Two Years in Prison for Employment ...", "dateLastCrawled": "2024-01-10T04:10:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=news+(site%3agov+OR+site%3amil)&d=4973838767761363&mkt=en-US&setlang=en-US&w=pbsVIAHpKnTV1x97nQTWpoRfWFgX6z5S",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Live | The White House", "url": "https:\/\/www.whitehouse.gov\/live\/",
+        "datePublished": "2024-01-08T00:00:00.0000000", "datePublishedFreshnessText":
+        "2 days ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/live",
+        "snippet": "LIVE White House events and press briefings with President Joe
+        Biden, Vice President Kamala Harris and other administration officials.",
+        "dateLastCrawled": "2024-01-09T01:31:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=news+(site%3agov+OR+site%3amil)&d=4573874233493101&mkt=en-US&setlang=en-US&w=Dzf-Rt-NVXMf9UEAmtLHcub9vnl3aLqY",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Federal Reserve Board - News & Events", "url": "https:\/\/www.federalreserve.gov\/newsevents.htm",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.federalreserve.gov\/newsevents.htm",
+        "snippet": "News & Events Share. Minutes of the Federal Open Market Committee,
+        December 12-13, 2023 January 3, 2024. The Fed Listens initiative aims to engage
+        a wide range of stakeholders to hear how the economy is progressing across
+        the United States. Learn More ...", "dateLastCrawled": "2024-01-08T10:23:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=news+(site%3agov+OR+site%3amil)&d=4876244224780859&mkt=en-US&setlang=en-US&w=_9cNuA29atupdZds72p4JlQ5Nq2M64Pc",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "HHS Issues New Nondiscrimination Final Rule to Protect Conscience
+        ...", "url": "https:\/\/www.hhs.gov\/about\/news\/2024\/01\/09\/hhs-issues-new-nondiscrimination-final-rule-protect-conscience-rights.html",
+        "datePublished": "2024-01-09T00:00:00.0000000", "datePublishedFreshnessText":
+        "1 day ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.hhs.gov\/about\/news\/2024\/01\/09\/hhs-issues-new-nondiscrimination-final-rule...",
+        "snippet": "In 2019, OCR issued a sweeping final rule that was held unlawful
+        by three federal district courts. Today’s Final Rule partially rescinds the
+        2019 rule, restores the longstanding process for enforcing federal conscience
+        laws, and strengthens protections against conscience and religious discrimination.
+        The Department received over 48,000 ...", "dateLastCrawled": "2024-01-10T03:35:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=news+(site%3agov+OR+site%3amil)&d=2457335631508&mkt=en-US&setlang=en-US&w=TWBRi4ASF5blvDnLCiFMwLDygRo_BGcS",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "News | U.S. Department of Commerce", "url": "https:\/\/www.commerce.gov\/news",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.commerce.gov\/news",
+        "snippet": "January 3, 2024. As the nation rang in the new year, the U.S.
+        Census Bureau projected the U.S. population will be 335,893,238 at midnight
+        EST, on Jan. 1, 2024. This represents an increase of 1,759,535 (0.53%) from
+        Jan. 1, 2023, and 4,443,957 (1.34%) from Census Day (April 1) 2020. In January
+        2024, the United States is expected to experience one ...", "dateLastCrawled":
+        "2024-01-05T20:23:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=news+(site%3agov+OR+site%3amil)&d=4929557652137258&mkt=en-US&setlang=en-US&w=nkFrMPCTya_BtHDM8-69otUoxsSisP4w",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "JBLM News - The Official Home Page of the United States Army",
+        "url": "https:\/\/www.army.mil\/jblm", "datePublished": "2023-12-12T00:00:00.0000000",
+        "datePublishedDisplayText": "Dec 12, 2023", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.army.mil\/jblm", "snippet": "Louisiana Army Guard Aviation
+        Unit Holds Deployment Ceremony January 4, 2024. New York governor applauds
+        NY Guard recruiting success December 28, 2023. JBLM News is Joint Base Lewis-McChord''s
+        ...", "dateLastCrawled": "2024-01-08T06:55:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=news+(site%3agov+OR+site%3amil)&d=4921564721141847&mkt=en-US&setlang=en-US&w=iYo9ha4llqW-EfEconsj8i7OfNzuWQ-6",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "News - NASA Science", "url": "https:\/\/science.nasa.gov\/mission\/webb\/latestnews\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/science.nasa.gov\/mission\/webb\/latestnews",
+        "snippet": "8 min read. Scientists using NASA’s James Webb Space Telescope
+        just made a breakthrough discovery in revealing how planets are made. By observing
+        water vapor in protoplanetary disks, Webb confirmed a physical process involving
+        the drifting of ice-coated solids from the outer regions….", "dateLastCrawled":
+        "2024-01-09T08:12:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=news+(site%3agov+OR+site%3amil)&d=4615814586903589&mkt=en-US&setlang=en-US&w=qj_yoANDn9wzB81YFX4-k5dwO95hSaO3",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "2024 tax filing season set for January 29; IRS continues to make
+        ...", "url": "https:\/\/www.irs.gov\/newsroom\/2024-tax-filing-season-set-for-january-29-irs-continues-to-make-improvements-to-help-taxpayers",
+        "datePublished": "2024-01-08T00:00:00.0000000", "datePublishedFreshnessText":
+        "2 days ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/newsroom\/2024-tax-filing-season-set-for-january-29-irs-continues...",
+        "snippet": "IR-2024-04, Jan. 8, 2024 — The Internal Revenue Service today
+        announced Monday, Jan. 29, 2024, as the official start date of the nation’s
+        2024 tax season when the agency will begin accepting and processing 2023 tax
+        returns.", "dateLastCrawled": "2024-01-10T06:02:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=news+(site%3agov+OR+site%3amil)&d=1907527426312&mkt=en-US&setlang=en-US&w=S3TQAvlC7Ty4D65jlKMlBLwf1v05kmoQ",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
@@ -492,5 +261,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-  recorded_at: Wed, 06 Oct 2021 15:36:07 GMT
-recorded_with: VCR 6.0.0
+  recorded_at: Wed, 10 Jan 2024 14:36:55 GMT
+recorded_with: VCR 6.2.0

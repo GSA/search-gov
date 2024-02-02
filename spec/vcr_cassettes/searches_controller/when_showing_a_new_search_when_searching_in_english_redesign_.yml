@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=social%20security%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=<DATADOG_API_ENABLED>&traffictype=test
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=social%20security%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
-      base64_string: ''
+      string: ''
     headers:
       User-Agent:
       - USASearch
@@ -21,20 +21,272 @@ http_interactions:
       - '30'
   response:
     status:
-      code: 401
-      message: PermissionDenied
+      code: 200
+      message: OK
     headers:
-      Content-Length:
-      - '224'
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 08 Jan 2024 18:56:32 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Eventid:
+      - 659c459c491040fd89de5e8834a41551
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      Bingapis-Traceid:
+      - 659c459c491040fd89de5e8834a41551
+      Bingapis-Sessionid:
+      - C299494F15434A9C853FCF081A28CE8C
+      X-Msedge-Clientid:
+      - 11B2CA30E6DA65B60367DE30E7E76464
+      X-Msapi-Userstate:
+      - '3310'
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=276,MSDatacenter=BNZE01
+      X-Cache:
+      - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      X-Msedge-Ref:
+      - 'Ref A: 6871BB2D9B3941FABBFD9746B47A955E Ref B: BN3EDGE1016 Ref C: 2024-01-08T18:57:32Z'
+      Apim-Request-Id:
+      - 40de71f2-92d2-4257-99ac-a0773714a64e
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Fri, 27 Oct 2023 16:58:00 GMT
+      - Mon, 08 Jan 2024 18:57:32 GMT
     body:
       encoding: UTF-8
-      base64_string: |
-        eyJlcnJvciI6eyJjb2RlIjoiNDAxIiwibWVzc2FnZSI6IkFjY2VzcyBkZW5p
-        ZWQgZHVlIHRvIGludmFsaWQgc3Vic2NyaXB0aW9uIGtleSBvciB3cm9uZyBB
-        UEkgZW5kcG9pbnQuIE1ha2Ugc3VyZSB0byBwcm92aWRlIGEgdmFsaWQga2V5
-        IGZvciBhbiBhY3RpdmUgc3Vic2NyaXB0aW9uIGFuZCB1c2UgYSBjb3JyZWN0
-        IHJlZ2lvbmFsIEFQSSBlbmRwb2ludCBmb3IgeW91ciByZXNvdXJjZS4ifX0=
-  recorded_at: Fri, 27 Oct 2023 16:58:01 GMT
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "social
+        security (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=social+security+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 63600000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "The United States Social Security Administration | SSA", "url":
+        "https:\/\/www.ssa.gov\/", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov",
+        "snippet": "Latest news. Martin J. O’Malley was sworn in today by Senator
+        Ben Cardin as Commissioner of Social Security to a term that expires on
+        January 19, 2025... Stay on top of the latest Social Security news for the
+        media, advocate community, and the public. Official website of the U.S. Social
+        Security Administration.", "dateLastCrawled": "2024-01-08T05:17:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=social+security+(site%3agov+OR+site%3amil)&d=4993539778547300&mkt=en-US&setlang=en-US&w=TpkgCjBt6DXezJB5pc4W3qrQCQc4Mh3y",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "my Social Security | SSA", "url": "https:\/\/www.ssa.gov\/myaccount\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/myaccount",
+        "snippet": "Create your personal my Social Security account today. A free
+        and secure my Social Security account provides personalized tools for everyone,
+        whether you receive benefits or not. You can use your account to request a
+        replacement Social Security card, check the status of an application, estimate
+        future benefits, or manage the benefits you already receive.", "dateLastCrawled":
+        "2024-01-08T05:21:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=social+security+(site%3agov+OR+site%3amil)&d=4714886593325587&mkt=en-US&setlang=en-US&w=C0vKB9zrcwpgFRkgrbOJAvsf9It-t0jT",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Apply for Social Security Benefits | SSA", "url": "https:\/\/www.ssa.gov\/apply",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/apply",
+        "snippet": "Supplemental Security Income for Age 65+ You’re 65 or older.
+        And it''s hard to pay for essentials like food, clothing, and a home. Check
+        eligibility if you''re not sure what to apply for. Apply for Medicare if you
+        only need health insurance right now. Different ways to apply for Social
+        Security benefits.", "dateLastCrawled": "2024-01-08T05:03:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=social+security+(site%3agov+OR+site%3amil)&d=4624765296268494&mkt=en-US&setlang=en-US&w=bHJ0AxXFxrg3Ge1M7RGgpPwXkmzBQ2tE",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Apply for Retirement Benefits | SSA - The United States Social Security
+        ...", "url": "https:\/\/www-origin.ssa.gov\/benefits\/retirement\/apply.html#!",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www-origin.ssa.gov\/benefits\/retirement\/apply.html#!",
+        "snippet": "If you cannot use these online services, your local Social Security
+        office can help you apply. Although our offices are closed to the public,
+        employees from those offices are assisting people by telephone. You can find
+        the phone number for your local office by using our Field Office Locator and
+        looking under Social Security Office Information ...", "dateLastCrawled":
+        "2024-01-08T10:10:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4", "name": "Social
+        Security", "url": "https:\/\/secure.ssa.gov\/RIL\/SiView.action", "datePublished":
+        "2021-09-18T00:00:00.0000000", "datePublishedDisplayText": "Sep 18, 2021",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/secure.ssa.gov\/RIL",
+        "snippet": "If you need immediate assistance: You may call us Monday through
+        Friday: 8:00AM - 7:00PM at: 1-800-772-1213. If you are deaf or hard-of-hearing,
+        call our toll-free TTY number:", "dateLastCrawled": "2024-01-08T05:06:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "The United States Social Security Administration", "url": "https:\/\/www-origin.ssa.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www-origin.ssa.gov", "snippet":
+        "Newsroom. Social Security''s Fiscal Year (FY) 2022 Agency Financial Report
+        (AFR) Our FY 2022 AFR provides information enabling the Congress, the President,
+        and the public to assess our stewardship of the financial resources entrusted
+        to us and our performance as an organization. Social Security Implements
+        Self-Attestation of Sex Marker in Social ...", "dateLastCrawled": "2024-01-07T22:07:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=social+security+(site%3agov+OR+site%3amil)&d=4978700672251756&mkt=en-US&setlang=en-US&w=Pc4QyY6oT07YDT0X9aV00DgOb-klA-c8",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Social Security | USAGov", "url": "https:\/\/www.usa.gov\/social-security",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/social-security",
+        "snippet": "Most U.S. citizens can get Social Security benefits while visiting
+        or living outside the U.S. Find out if you qualify, how to apply, and who
+        to contact to get help. Learn about Social Security, including retirement
+        and disability benefits, how to get or replace your Social Security card,
+        and more.", "dateLastCrawled": "2024-01-08T04:20:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=social+security+(site%3agov+OR+site%3amil)&d=4733015650483554&mkt=en-US&setlang=en-US&w=iWNTJQNCp8hoU_9_uyGXtxdt21J8a1K3",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Retirement Benefits | SSA - The United States Social Security
+        ...", "url": "https:\/\/www-origin.ssa.gov\/benefits\/retirement\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www-origin.ssa.gov\/benefits\/retirement",
+        "snippet": "Retirement Benefits ( En español) Social Security is part
+        of the retirement plan for almost every American worker. It provides replacement
+        income for qualified retirees and their families. This section of our website
+        helps you better understand the program, the application process, and the
+        online tools and resources available to you.", "dateLastCrawled": "2024-01-07T22:58:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=social+security+(site%3agov+OR+site%3amil)&d=4627488161923218&mkt=en-US&setlang=en-US&w=vPPy4Jse0Yo4VtFNGpxbACVPENyrlx_Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Online Services | SSA - The United States Social Security Administration",
+        "url": "https:\/\/www.ssa.gov\/onlineservices\/", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.ssa.gov\/onlineservices", "snippet": "Online
+        Services. We are constantly expanding our online services to give you freedom
+        and control when conducting business with Social Security. Today, you can
+        apply for retirement, disability, and Medicare benefits online, check the
+        status of an application or appeal, request a replacement Social Security
+        card (in most areas), print a benefit verification letter, and more – from
+        anywhere and ...", "dateLastCrawled": "2023-12-24T15:15:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=social+security+(site%3agov+OR+site%3amil)&d=4614968480716349&mkt=en-US&setlang=en-US&w=YALxfXq9Z4cypXApMknjt8CE6cyORdFj",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Apply for Social Security Benefits | SSA", "url": "https:\/\/www-origin.ssa.gov\/benefits\/forms\/#!",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www-origin.ssa.gov\/benefits\/forms\/#!",
+        "snippet": "Ways to Apply. You can complete an application for Retirement,
+        Spouse''s, Medicare or Disability Benefits online. If you cannot submit your
+        application online: You can call us at 1-800-772-1213 (TTY 1-800-325-0778
+        ); or. Due to the COVID-19 pandemic, visits to our offices are by appointment
+        only for certain services.", "dateLastCrawled": "2024-01-08T00:20:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Benefits | SSA - The United States Social Security Administration",
+        "url": "https:\/\/www.ssa.gov\/benefits\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.ssa.gov\/benefits", "snippet": "Social Security works
+        with the Centers for Medicare and Medicaid Services to ensure the public receives
+        the assistance they need. LEARN MORE. Survivors. If you lose a loved one,
+        we are there to help you get through the difficult time. We pay survivors
+        benefits to widows, widowers, and to the dependents of eligible workers.",
+        "dateLastCrawled": "2024-01-08T12:08:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=social+security+(site%3agov+OR+site%3amil)&d=4736155275456402&mkt=en-US&setlang=en-US&w=XbauKkiiLHZpwXtXXF5EQplWBZNvblbL",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Social Security Benefits Increase in 2024 | SSA", "url": "https:\/\/blog.ssa.gov\/social-security-benefits-increase-in-2024\/",
+        "datePublished": "2023-10-12T00:00:00.0000000", "datePublishedDisplayText":
+        "Oct 12, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.ssa.gov\/social-security-benefits-increase-in-2024",
+        "snippet": "More than 71 million Americans will see a 3.2% increase in their
+        Social Security benefits and Supplemental Security Income (SSI) payments
+        in 2024. On average, Social Security retirement benefits will increase by
+        more than $50 per month starting in January. Federal benefit rates increase
+        when the cost-of-living rises, as measured by the ...", "dateLastCrawled":
+        "2024-01-08T07:03:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=social+security+(site%3agov+OR+site%3amil)&d=4892951643966482&mkt=en-US&setlang=en-US&w=4GMgelo4NDqxDqk5LWoz-LuIlcBKvvWZ",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "How We Serve People Who Have Limited English Proficiency", "url":
+        "https:\/\/blog.ssa.gov\/how-we-serve-people-who-have-limited-english-proficiency\/",
+        "datePublished": "2024-01-04T00:00:00.0000000", "datePublishedFreshnessText":
+        "4 days ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/blog.ssa.gov\/how-we-serve-people-who-have-limited-english-proficiency",
+        "snippet": "We offer many of our publications in languages other than English.
+        Please check out Social Security Information in Other Languages page to
+        view these resources, which include: Social Security Numbers for Non-Citizens.
+        Understanding the Benefits. A sample Social Security Statement and 10 supplemental
+        fact sheets.", "dateLastCrawled": "2024-01-06T06:40:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=social+security+(site%3agov+OR+site%3amil)&d=4242967776111&mkt=en-US&setlang=en-US&w=i_6DH25lAUyb8cBfN5GY8DhCk3Mn-6Fi",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Get Ready: IRS website has helpful resources for taxpayers", "url":
+        "https:\/\/www.irs.gov\/newsroom\/get-ready-irs-website-has-helpful-resources-for-taxpayers",
+        "datePublished": "2024-01-04T00:00:00.0000000", "datePublishedFreshnessText":
+        "4 days ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/newsroom\/get-ready-irs-website-has-helpful-resources-for-taxpayers",
+        "snippet": "Taxpayers with a Social Security number or an Individual Taxpayer
+        Identification Number can create or access their IRS Individual Online Account
+        to get information they need to file their return. With an IRS Individual
+        Online Account, people can: View balance owed, payment history and schedule
+        payments.", "dateLastCrawled": "2024-01-08T03:20:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=social+security+(site%3agov+OR+site%3amil)&d=1082492105482&mkt=en-US&setlang=en-US&w=ELkWw2mS2IFF_OXrNXv2WnPY2L-TraoX",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "What''s New for Illinois Income Taxes", "url": "https:\/\/tax.illinois.gov\/research\/publications\/bulletins\/fy-2024-18.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/tax.illinois.gov\/research\/publications\/bulletins\/fy-2024-18.html",
+        "snippet": "What are the changes to the 2023 Form IL-1040, Illinois Individual
+        Income Tax Return, and schedules? The 2023 personal exemption amount is $2,425.
+        The original due date for filing your 2023 Form IL-1040 and paying any tax
+        you owe is April 15, 2024. The extended due date for filing your return is
+        October 15, 2024.", "dateLastCrawled": "2024-01-08T09:13:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=social+security+(site%3agov+OR+site%3amil)&d=1975847118246&mkt=en-US&setlang=en-US&w=Jp6iWU5kfI_4SBkfh-n40X784QL1hr23",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "my Social Security | Social Security Administration", "url":
+        "https:\/\/www.ssa.gov\/myaccount\/index2.html", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/www.ssa.gov\/myaccount\/index2.html", "snippet":
+        "account today. With your free, personal my Social Security account, you
+        can receive personalized estimates of future benefits based on your real earnings,
+        see your latest Statement, and review your earnings history. It even makes
+        it easy to request a replacement Social Security Card or check the status
+        of an application, from anywhere!", "dateLastCrawled": "2024-01-07T05:16:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=social+security+(site%3agov+OR+site%3amil)&d=4700408264939384&mkt=en-US&setlang=en-US&w=bLaO9m7AsR5Zf_Dj3nae3nVxY06CZqQL",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "EM-21072 REV - socialsecurity.gov", "url": "https:\/\/secure.ssa.gov\/apps10\/reference.nsf\/90f9780548372aab852576e2006f4849\/2370a9bdf7ba15ea85258a9d001348c9!OpenDocument",
+        "datePublished": "2022-01-28T00:00:00.0000000", "datePublishedDisplayText":
+        "Jan 28, 2022", "isFamilyFriendly": true, "displayUrl": "https:\/\/secure.ssa.gov\/apps10\/reference.nsf\/90f9780548372aab852576e2006f4849\/2370a9bdf...",
+        "snippet": "Retention Date: March 26, 2024 Revision:1\/27\/2022 Section C:
+        added a note about remittances greater than the debt amount shown. A. Purpose
+        This emergency message is to announce the release of a Social Security Electronic
+        Remittance System (SERS) enhancement that will allow technicians to process
+        conserved funds remittances that do not have an associated debt posted to
+        the record, eliminating ...", "dateLastCrawled": "2024-01-07T18:12:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=social+security+(site%3agov+OR+site%3amil)&d=876020731071&mkt=en-US&setlang=en-US&w=cjm75f0_V2fdY3h7tSAJWGnz9AGdDK3T",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Brown, Toledo Law Enforcement and First Responders Call for Passage
+        of ...", "url": "https:\/\/www.brown.senate.gov\/newsroom\/press\/release\/sherrod-brown-toledo-law-enforcement-first-responders-call-passage-social-security-fairness-act",
+        "datePublished": "2024-01-04T00:00:00.0000000", "datePublishedFreshnessText":
+        "4 days ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.brown.senate.gov\/newsroom\/press\/release\/sherrod-brown-toledo-law...",
+        "snippet": "“Social Security should be available to everyone, including
+        local cops, sheriffs, deputies, firefighters, teachers – and their families.”
+        More than 240,000 Ohioans, many of whom are law enforcement officers and first
+        responders, are prevented from receiving the full Social Security benefits
+        they earn due to two laws from the 1970s and 1980s.", "dateLastCrawled": "2024-01-05T21:19:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=social+security+(site%3agov+OR+site%3amil)&d=2456156331714&mkt=en-US&setlang=en-US&w=xw3-vZQgjxgncuXBob-quXXNavVtrp8y",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Social Security in retirement | SSA", "url": "https:\/\/www.ssa.gov\/retirement",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/retirement",
+        "snippet": "Social Security in retirement. The Social Security Retirement
+        benefit is a monthly check that replaces part of your income when you reduce
+        your hours or stop working altogether. It may not replace all your income
+        so it''s best to identify other ways to pay for your monthly expenses as you
+        age.", "dateLastCrawled": "2024-01-08T09:13:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=social+security+(site%3agov+OR+site%3amil)&d=4894283081388648&mkt=en-US&setlang=en-US&w=9QVy65sF_IuxqZyvBHpfQL8BZQVCUN3t",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "2024–25 FAFSA Issue Alerts | Knowledge Center - FSA Partner Connect",
+        "url": "https:\/\/fsapartners.ed.gov\/knowledge-center\/topics\/fafsa-simplification-information\/2024-25-fafsa-issue-alerts",
+        "datePublished": "2024-01-04T00:00:00.0000000", "datePublishedFreshnessText":
+        "4 days ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/fsapartners.ed.gov\/knowledge-center\/topics\/fafsa-simplification-information\/...",
+        "snippet": "Status: Open Description: If a student with no Social Security
+        number (SSN) starts the 2024-25 FAFSA form but saves and exits before answering
+        the “State of Legal Residency” question, the student will be unable to continue
+        the application later. The student will no longer see the FAFSA draft in “My
+        Activity” and will be unable to start a new FAFSA, as the student will see
+        a message ...", "dateLastCrawled": "2024-01-08T00:22:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=social+security+(site%3agov+OR+site%3amil)&d=257841458126&mkt=en-US&setlang=en-US&w=Qd5TetnST66yEFj9XR2O1L35nV5tJ5Zb",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Mon, 08 Jan 2024 18:57:32 GMT
 recorded_with: VCR 6.2.0

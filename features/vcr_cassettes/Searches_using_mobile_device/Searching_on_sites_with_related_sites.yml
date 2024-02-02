@@ -2,496 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=gobierno%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V7_SUBSCRIPTION_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Transfer-Encoding:
-      - chunked
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Tue, 07 Sep 2021 16:16:53 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
-      Bingapis-Traceid:
-      - 5918E7062BD14A44A7DF222C0D054152
-      Bingapis-Sessionid:
-      - 41643A3F8E8D4865B22D3F26BDF1E4A3
-      X-Msedge-Clientid:
-      - 1B242F13D6FA630C10ED3FB8D78F62CA
-      X-Msapi-Userstate:
-      - 5ba6
-      Bingapis-Market:
-      - en-US
-      X-Search-Responseinfo:
-      - InternalResponseTime=260,MSDatacenter=BN2B
-      X-Cache:
-      - CONFIG_NOCACHE
-      X-Msedge-Ref:
-      - 'Ref A: 5918E7062BD14A44A7DF222C0D054152 Ref B: BLUEDGE1720 Ref C: 2021-09-07T16:17:53Z'
-      Apim-Request-Id:
-      - bd75341b-8102-40a3-801c-21089ae10585
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
-      X-Content-Type-Options:
-      - nosniff
-      Csp-Billing-Usage:
-      - CognitiveServices.BingSearchV7.Transaction=1
-      Date:
-      - Tue, 07 Sep 2021 16:17:53 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "gobierno
-        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=gobierno+(site%3agov+OR+site%3amil)",
-        "totalEstimatedMatches": 4090000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "PR.GOV - Inicio", "url": "https:\/\/pr.gov\/", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/pr.gov", "snippet": "Encuentre Información
-        sobre Programas y Servicios del Gobierno de Puerto Rico. Números de Emergencia
-        (Emergency Numbers ) Aquí encontrará la guía de números de emergencia (temporada
-        de huracanes 2018). Here you will find the emergency numbers guide (hurricane
-        season 2018). ...", "dateLastCrawled": "2021-09-04T05:18:00.0000000Z", "language":
-        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "Guía oficial de información y servicios del Gobierno | USAGov",
-        "url": "https:\/\/www.usa.gov\/Espanol\/", "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.usa.gov\/Espanol", "snippet": "Servicios e información del
-        Gobierno. Información general sobre Estados Unidos, incluyendo historia,
-        Gobierno, estructura política, etc. Información sobre ayuda federal para
-        estudiantes, beneficios y programas sociales del Gobierno. Información oficial
-        del Gobierno sobre pasaportes, residencia permanente, visas y viajes.",
-        "dateLastCrawled": "2021-09-05T02:09:00.0000000Z", "language": "es", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
-        "name": "PR.GOV - Gobierno a Gobierno", "url": "https:\/\/pr.gov\/GobiernoAGobierno\/Pages\/default.aspx",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/pr.gov\/GobiernoAGobierno",
-        "snippet": "Politicas y Procedimientos. Circular Administrativa 18-005 A Todos
-        Los Principales Jefes De Informáticas De Las Agencias Del Gobierno De Puerto
-        Rico. Manual Instrucciones LEAN. Carta Circular 140-16 Normas Generales sobre
-        la Implementación de sistemas. Politica Núm.", "dateLastCrawled": "2021-09-03T02:15:00.0000000Z",
-        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
-        "name": "PR.GOV - Servicios En Línea", "url": "https:\/\/pr.gov\/Pages\/servicefilter.aspx",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/pr.gov\/Pages\/servicefilter.aspx",
-        "snippet": "Administración Sistema de Retiro - Servicios en Línea-Patrono.
-        A través de este servicio usted podrá realiza una pre-cualificación para el
-        Programa Medicaid \/ Plan de Salud del Gobierno. Le indica el número de
-        teléfono a llamar para realizar una cita o recibir orientación.", "dateLastCrawled":
-        "2021-09-05T10:22:00.0000000Z", "language": "es", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4", "name":
-        "Empleo y capacitación laboral | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/empleo-capacitacion-laboral",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/empleo-capacitacion-laboral",
-        "snippet": "El sitio web USAJOBS (en inglés) le permite encontrar ofertas
-        de trabajo del Gobierno federal, que en su mayoría, son para ciudadanos
-        estadounidenses que dominen el inglés. Utilice el buscador de trabajos para
-        obtener resultados clasificados por salario, ubicación y disponibilidad.",
-        "dateLastCrawled": "2021-09-05T11:15:00.0000000Z", "language": "es", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
-        "name": "Gobierno Estatal y Local | La Casa Blanca", "url": "https:\/\/www.whitehouse.gov\/es\/acerca-de-la-casa-blanca\/nuestro-gobierno\/gobierno-estatal-local\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/es\/acerca-de-la-casa-blanca\/nuestro-gobierno\/gobierno...",
-        "snippet": "Gobierno Estatal y. Local. Los poderes que no se han concedido
-        al Gobierno federal se reservan para los estados y las personas; estos poderes
-        se dividen entre los gobiernos estatales y los ...", "dateLastCrawled": "2021-08-31T23:07:00.0000000Z",
-        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
-        "name": "Programas sociales del Gobierno - USAGov", "url": "https:\/\/www.usa.gov\/espanol\/programas-sociales",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/programas-sociales",
-        "snippet": "Programas sociales del Gobierno. Información sobre programas
-        gubernamentales que pueden ayudarlo a pagar por alimentos, vivienda y atención
-        médica, entre otros. Averigüe los requisitos de elegibilidad para programas
-        como cupones de alimentos, asistencia social y Medicaid, y cómo solicitarlos.",
-        "dateLastCrawled": "2021-09-04T23:27:00.0000000Z", "language": "es", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
-        "name": "Gobierno de New Jersey | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/gobiernos-estatales\/new-jersey",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/gobiernos-estatales\/new-jersey",
-        "snippet": "Un sitio web .gov pertenece a una organización oficial del Gobierno
-        de Estados Unidos. Los sitios web seguros .gov usan HTTPS Un candado ( A
-        locked padlock) o https:\/\/ significa que usted se conectó de forma segura
-        a un sitio web .gov. Comparta información sensible sólo en sitios web oficiales
-        y seguros. English MENÚ. Agencias estatales ...", "dateLastCrawled": "2021-09-03T09:45:00.0000000Z",
-        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
-        "name": "www.ca.gov | California State Portal", "url": "https:\/\/www.ca.gov\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ca.gov", "snippet":
-        "Disaster Resources. California has been hit with devastating wildfires
-        and other natural disasters in both the northern and southern parts of the
-        state.", "dateLastCrawled": "2021-09-05T04:17:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
-        "name": "Auctions and Sales | USAGov", "url": "https:\/\/www.usa.gov\/auctions-and-sales",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/auctions-and-sales",
-        "snippet": "Sales are conducted: Live: On the GSA Fleet Vehicle Sales site,
-        enter your zip code and a radius to find a nearby auction site. Or check out
-        the sales calendar to see upcoming auctions by date and location. Online:
-        Search the site for the vehicle you’re looking for. You can specify make,
-        model, mileage, fuel type, and more.", "dateLastCrawled": "2021-09-05T05:13:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
-        "name": "Reorganización Gubernamental - Pr", "url": "https:\/\/bvirtualogp.pr.gov\/ogp\/Bvirtual\/reogGubernamental\/Pages\/main_view.aspx",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/bvirtualogp.pr.gov\/ogp\/Bvirtual\/reogGubernamental",
-        "snippet": "Organigrama del Gobierno del Estado Libre Asociado 1952: Reorganización
-        de 2013: OE-2013-58: Orden Ejecutiva del Gobernador que Crea el Grupo Asesor
-        de Reforma Contributiva: Reorganización de 2017: OE-2017-020: Orden Ejecutiva
-        del Gobernador para Crear los Centros de Servisios Integrados (OE 2017-20)",
-        "dateLastCrawled": "2021-09-05T17:47:00.0000000Z", "language": "es", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
-        "name": "Préstamos y subvenciones | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/prestamos-y-subvenciones",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/prestamos-y-subvenciones",
-        "snippet": "El Gobierno otorga préstamos para fines específicos, como por
-        ejemplo: Para ayudar con el financiamiento de la educación. Para asistir con
-        las necesidades de vivienda. Como respuesta a una emergencia o crisis. Los
-        préstamos, a diferencia de las subvenciones, deben ser devueltos en pagos
-        que a menudo son con intereses. Abrir todos +.", "dateLastCrawled": "2021-09-05T12:47:00.0000000Z",
-        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
-        "name": "PR.GOV - Ayuda de Energía", "url": "https:\/\/pr.gov\/Pages\/ayuda-energia.aspx",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/pr.gov\/Pages\/ayuda-energia.aspx",
-        "snippet": "Las personas interesadas en obtener información adicional pueden
-        escribir vía correo electrónico a coordinadorliheap@familia.pr.gov o llamar
-        al 787.289.7600 extensión 2368 y 2375. La Ley federal que rige el Programa
-        de Ayuda para Energía para Hogares de Bajos Ingresos (Low Income Home Energy
-        Assistance Program LIHEAP, por sus siglas en ...", "dateLastCrawled": "2021-09-04T21:17:00.0000000Z",
-        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
-        "name": "Hipotecas | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/hipotecas",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/hipotecas",
-        "snippet": "Asesoría de agencias del Gobierno para conservar su hipoteca
-        y su vivienda. El programa Hacia una Vivienda Asequible (MHA, sigla en inglés)
-        brinda asesoría gratuita y ofrece opciones para evitar la ejecución hipotecaria.
-        Llame al 1-888-995-4673 (presione 2 para español) o 1-877-304-9709 (TTY, para
-        personas con problemas auditivos).", "dateLastCrawled": "2021-09-05T06:09:00.0000000Z",
-        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
-        "name": "PR.GOV - Directorio de Agencias", "url": "https:\/\/pr.gov\/Directorios\/Pages\/DirectoriodeAgencias.aspx",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/pr.gov\/Directorios\/Pages\/DirectoriodeAgencias.aspx",
-        "snippet": "PR.GOV - Directorio de Agencias. Administración de Asuntos Federales
-        de Puerto Rico (PRFAA) PRFAA. Administración de Compensaciones por Accidentes
-        de Automoviles (ACAA) ACAA. Administración de Desarrollo Socioeconómico de
-        la Familia (Dpto. Familia) ADSEF. Administración de Familias y Niños (Dpto.",
-        "dateLastCrawled": "2021-09-04T02:02:00.0000000Z", "language": "es", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
-        "name": "COVID-19: ayuda para la renta, hipoteca, comida y ...", "url": "https:\/\/www.usa.gov\/espanol\/covid-ayuda-financiera-del-gobierno",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/covid-ayuda-financiera-del-gobierno",
-        "snippet": "Obtenga la ayuda temporal por COVID-19 del Gobierno para pagar
-        la renta, gastos fúnebres, hipoteca y préstamos estudiantiles. El programa
-        de cupones de alimentos (SNAP) y los programas federales de comidas cambiaron
-        sus reglas para dar ayuda adicional a los afectados por la pandemia.", "dateLastCrawled":
-        "2021-09-04T04:29:00.0000000Z", "language": "es", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16", "name":
-        "Registro Único de Subasta (RUS)", "url": "https:\/\/subastas.pr.gov\/", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/subastas.pr.gov", "snippet": "Localización:
-        Gobierno de Puerto Rico. Fecha apertura: martes, 25 de agosto de 2020. Fecha
-        pre-subasta: Fecha pliegos: lunes, 10 de agosto de 2020. Adquisición de Asfalto
-        Caliente (S-1 y V-B) Recogido en Planta para los Distritos de Caguas, Salinas
-        (PR-10 Arecibo-Ponce) y Ceiba (C-21-05) Estatus: Abierta.", "dateLastCrawled":
-        "2021-09-04T22:22:00.0000000Z", "language": "es", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
-        "Gobierno de U.S. Virgin Islands | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/gobiernos-estatales\/u-s-virgin-islands",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/gobiernos-estatales\/u-s-virgin-islands",
-        "snippet": "Encuentre información de contacto de las principales agencias
-        y oficinas del Gobierno de U.S. Virgin Islands. Gobierno estatal Nombre:
-        U.S. Virgin Islands (en inglés) Dirección: 5047 (21-22) Kongens Gade St. Thomas,
-        VI, 00802-6487. Comparta esta página: Subir Sobre USAGov en Español ...",
-        "dateLastCrawled": "2021-09-02T12:24:00.0000000Z", "language": "es", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
-        "name": "Gobierno - San Antonio", "url": "https:\/\/www.sanantonio.gov\/Espanol\/consejo-ciudad\/gobierno",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sanantonio.gov\/Espanol\/consejo-ciudad\/gobierno",
-        "snippet": "Tu Gobierno de la Cuidad. El Alcalde y la Oficina del Consejo
-        se componen de. el alcalde, que es elegido en general; diez miembros del Consejo
-        Municipal, que son elegidos de distritos uninominales, y; personal de apoyo
-        administrativo; El Consejo Municipal actúa como el cuerpo legislativo dentro
-        del gobierno de la Ciudad.", "dateLastCrawled": "2021-08-25T09:16:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
-        "name": "Conozca las diferencias entre subvenciones y préstamos del ...",
-        "url": "https:\/\/www.usa.gov\/espanol\/novedades\/conozca-las-diferencias-entre-subvenciones-y-prestamos-del-gobierno",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/novedades\/conozca-las-diferencias-entre-subvenciones-y...",
-        "snippet": "El Gobierno otorga préstamos a las personas para fines específicos,
-        como por ejemplo: para ayudar con el financiamiento de la educación, para
-        asistir con las necesidades de vivienda o como respuesta a una emergencia
-        o crisis. Tenga en cuenta que:", "dateLastCrawled": "2021-08-29T10:38:00.0000000Z",
-        "language": "es", "isNavigational": false}]}, "rankingResponse": {"mainline":
-        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-  recorded_at: Tue, 07 Sep 2021 16:17:54 GMT
-- request:
-    method: get
-    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=gobierno%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V7_SUBSCRIPTION_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Transfer-Encoding:
-      - chunked
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Tue, 07 Sep 2021 16:16:54 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
-      Bingapis-Traceid:
-      - 28E7D76313A9439FA46C4E9756C6B500
-      Bingapis-Sessionid:
-      - AB40ADCC851F406D82F63D547E210190
-      X-Msedge-Clientid:
-      - 1A6E8F1099BF67A53B7A9FBB985966C6
-      X-Msapi-Userstate:
-      - '9981'
-      Bingapis-Market:
-      - en-US
-      X-Search-Responseinfo:
-      - InternalResponseTime=254,MSDatacenter=CH1B
-      X-Cache:
-      - CONFIG_NOCACHE
-      X-Msedge-Ref:
-      - 'Ref A: 28E7D76313A9439FA46C4E9756C6B500 Ref B: DM2EDGE0316 Ref C: 2021-09-07T16:17:54Z'
-      Apim-Request-Id:
-      - 3a10eeb2-deb3-4f01-a247-eabb000bd087
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
-      X-Content-Type-Options:
-      - nosniff
-      Csp-Billing-Usage:
-      - CognitiveServices.BingSearchV7.Transaction=1
-      Date:
-      - Tue, 07 Sep 2021 16:17:53 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "gobierno
-        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=gobierno+(site%3agov+OR+site%3amil)",
-        "totalEstimatedMatches": 4090000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "PR.GOV - Inicio", "url": "https:\/\/pr.gov\/", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/pr.gov", "snippet": "Encuentre Información
-        sobre Programas y Servicios del Gobierno de Puerto Rico. Números de Emergencia
-        (Emergency Numbers ) Aquí encontrará la guía de números de emergencia (temporada
-        de huracanes 2018). Here you will find the emergency numbers guide (hurricane
-        season 2018). ...", "dateLastCrawled": "2021-09-04T05:18:00.0000000Z", "language":
-        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "PR.GOV - Gobierno a Gobierno", "url": "https:\/\/pr.gov\/GobiernoAGobierno\/Pages\/default.aspx",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/pr.gov\/GobiernoAGobierno",
-        "snippet": "Politicas y Procedimientos. Circular Administrativa 18-005 A Todos
-        Los Principales Jefes De Informáticas De Las Agencias Del Gobierno De Puerto
-        Rico. Manual Instrucciones LEAN. Carta Circular 140-16 Normas Generales sobre
-        la Implementación de sistemas. Politica Núm.", "dateLastCrawled": "2021-09-03T02:15:00.0000000Z",
-        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
-        "name": "Guía oficial de información y servicios del Gobierno | USAGov",
-        "url": "https:\/\/www.usa.gov\/Espanol\/", "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.usa.gov\/Espanol", "snippet": "Servicios e información del
-        Gobierno. Información general sobre Estados Unidos, incluyendo historia,
-        Gobierno, estructura política, etc. Información sobre ayuda federal para
-        estudiantes, beneficios y programas sociales del Gobierno. Información oficial
-        del Gobierno sobre pasaportes, residencia permanente, visas y viajes.",
-        "dateLastCrawled": "2021-09-05T02:09:00.0000000Z", "language": "es", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
-        "name": "PR.GOV - Directorio de Agencias", "url": "https:\/\/pr.gov\/Directorios\/Pages\/DirectoriodeAgencias.aspx",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/pr.gov\/Directorios\/Pages\/DirectoriodeAgencias.aspx",
-        "snippet": "Directorio de Agencias. Oficina para el Desarrollo Socioeconómico
-        y Comunitario de Puerto Rico. Administración de Asuntos Federales de Puerto
-        Rico (PRFAA) PRFAA. Administración de Compensaciones por Accidentes de Automoviles
-        (ACAA) ACAA. Administración de Desarrollo Socioeconómico de la Familia (Dpto.
-        Familia)", "dateLastCrawled": "2021-09-04T02:02:00.0000000Z", "language":
-        "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
-        "name": "PR.GOV - Servicios En Línea", "url": "https:\/\/pr.gov\/Pages\/servicefilter.aspx",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/pr.gov\/Pages\/servicefilter.aspx",
-        "snippet": "Administración Sistema de Retiro - Servicios en Línea-Patrono.
-        A través de este servicio usted podrá realiza una pre-cualificación para el
-        Programa Medicaid \/ Plan de Salud del Gobierno. Le indica el número de
-        teléfono a llamar para realizar una cita o recibir orientación.", "dateLastCrawled":
-        "2021-09-05T10:22:00.0000000Z", "language": "es", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5", "name":
-        "Empleo y capacitación laboral | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/empleo-capacitacion-laboral",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/empleo-capacitacion-laboral",
-        "snippet": "El sitio web USAJOBS (en inglés) le permite encontrar ofertas
-        de trabajo del Gobierno federal, que en su mayoría, son para ciudadanos
-        estadounidenses que dominen el inglés. Utilice el buscador de trabajos para
-        obtener resultados clasificados por salario, ubicación y disponibilidad.",
-        "dateLastCrawled": "2021-09-05T11:15:00.0000000Z", "language": "es", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
-        "name": "Programas sociales del Gobierno - USAGov", "url": "https:\/\/www.usa.gov\/espanol\/programas-sociales",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/programas-sociales",
-        "snippet": "Programas sociales del Gobierno. Información sobre programas
-        gubernamentales que pueden ayudarlo a pagar por alimentos, vivienda y atención
-        médica, entre otros. Averigüe los requisitos de elegibilidad para programas
-        como cupones de alimentos, asistencia social y Medicaid, y cómo solicitarlos.",
-        "dateLastCrawled": "2021-09-04T23:27:00.0000000Z", "language": "es", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7",
-        "name": "Préstamos y subvenciones | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/prestamos-y-subvenciones",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/prestamos-y-subvenciones",
-        "snippet": "El Gobierno otorga préstamos para fines específicos, como por
-        ejemplo: Para ayudar con el financiamiento de la educación. Para asistir con
-        las necesidades de vivienda. Como respuesta a una emergencia o crisis. Los
-        préstamos, a diferencia de las subvenciones, deben ser devueltos en pagos
-        que a menudo son con intereses. Abrir todos +.", "dateLastCrawled": "2021-09-05T12:47:00.0000000Z",
-        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
-        "name": "Auctions and Sales | USAGov", "url": "https:\/\/www.usa.gov\/auctions-and-sales",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/auctions-and-sales",
-        "snippet": "Sales are conducted: Live: On the GSA Fleet Vehicle Sales site,
-        enter your zip code and a radius to find a nearby auction site. Or check out
-        the sales calendar to see upcoming auctions by date and location. Online:
-        Search the site for the vehicle you’re looking for. You can specify make,
-        model, mileage, fuel type, and more.", "dateLastCrawled": "2021-09-05T05:13:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
-        "name": "www.ca.gov | California State Portal", "url": "https:\/\/www.ca.gov\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ca.gov", "snippet":
-        "Disaster Resources. California has been hit with devastating wildfires
-        and other natural disasters in both the northern and southern parts of the
-        state.", "dateLastCrawled": "2021-09-05T04:17:00.0000000Z", "language": "en",
-        "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10",
-        "name": "Gobierno de New Jersey | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/gobiernos-estatales\/new-jersey",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/gobiernos-estatales\/new-jersey",
-        "snippet": "Un sitio web .gov pertenece a una organización oficial del Gobierno
-        de Estados Unidos. Los sitios web seguros .gov usan HTTPS Un candado ( A
-        locked padlock) o https:\/\/ significa que usted se conectó de forma segura
-        a un sitio web .gov. Comparta información sensible sólo en sitios web oficiales
-        y seguros. English MENÚ. Agencias estatales ...", "dateLastCrawled": "2021-09-03T09:45:00.0000000Z",
-        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11",
-        "name": "Hipotecas | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/hipotecas",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/hipotecas",
-        "snippet": "Asesoría de agencias del Gobierno para conservar su hipoteca
-        y su vivienda. El programa Hacia una Vivienda Asequible (MHA, sigla en inglés)
-        brinda asesoría gratuita y ofrece opciones para evitar la ejecución hipotecaria.
-        Llame al 1-888-995-4673 (presione 2 para español) o 1-877-304-9709 (TTY, para
-        personas con problemas auditivos).", "dateLastCrawled": "2021-09-05T06:09:00.0000000Z",
-        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
-        "name": "Gobierno - San Antonio", "url": "https:\/\/www.sanantonio.gov\/Espanol\/consejo-ciudad\/gobierno",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sanantonio.gov\/Espanol\/consejo-ciudad\/gobierno",
-        "snippet": "Tu Gobierno de la Cuidad. El Alcalde y la Oficina del Consejo
-        se componen de. el alcalde, que es elegido en general; diez miembros del Consejo
-        Municipal, que son elegidos de distritos uninominales, y; personal de apoyo
-        administrativo; El Consejo Municipal actúa como el cuerpo legislativo dentro
-        del gobierno de la Ciudad.", "dateLastCrawled": "2021-08-25T09:16:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
-        "name": "COVID-19: ayuda para la renta, hipoteca, comida y ...", "url": "https:\/\/www.usa.gov\/espanol\/covid-ayuda-financiera-del-gobierno",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/covid-ayuda-financiera-del-gobierno",
-        "snippet": "Obtenga la ayuda temporal por COVID-19 del Gobierno para pagar
-        la renta, gastos fúnebres, hipoteca y préstamos estudiantiles. El programa
-        de cupones de alimentos (SNAP) y los programas federales de comidas cambiaron
-        sus reglas para dar ayuda adicional a los afectados por la pandemia.", "dateLastCrawled":
-        "2021-09-04T04:29:00.0000000Z", "language": "es", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14", "name":
-        "Gobierno de U.S. Virgin Islands | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/gobiernos-estatales\/u-s-virgin-islands",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/gobiernos-estatales\/u-s-virgin-islands",
-        "snippet": "Encuentre información de contacto de las principales agencias
-        y oficinas del Gobierno de U.S. Virgin Islands. Gobierno estatal Nombre:
-        U.S. Virgin Islands (en inglés) Dirección: 5047 (21-22) Kongens Gade St. Thomas,
-        VI, 00802-6487. Comparta esta página: Subir Sobre USAGov en Español ...",
-        "dateLastCrawled": "2021-09-02T12:24:00.0000000Z", "language": "es", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
-        "name": "Reorganización Gubernamental - Pr", "url": "https:\/\/bvirtualogp.pr.gov\/ogp\/Bvirtual\/reogGubernamental\/Pages\/main_view.aspx",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/bvirtualogp.pr.gov\/ogp\/Bvirtual\/reogGubernamental",
-        "snippet": "Organigrama del Gobierno del Estado Libre Asociado 1952: Reorganización
-        de 2013: OE-2013-58: Orden Ejecutiva del Gobernador que Crea el Grupo Asesor
-        de Reforma Contributiva: Reorganización de 2017: OE-2017-020: Orden Ejecutiva
-        del Gobernador para Crear los Centros de Servisios Integrados (OE 2017-20)",
-        "dateLastCrawled": "2021-09-05T17:47:00.0000000Z", "language": "es", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
-        "name": "Registro Único de Subasta (RUS)", "url": "https:\/\/subastas.pr.gov\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/subastas.pr.gov", "snippet":
-        "Localización: Gobierno de Puerto Rico. Fecha apertura: martes, 25 de agosto
-        de 2020. Fecha pre-subasta: Fecha pliegos: lunes, 10 de agosto de 2020. Adquisición
-        de Asfalto Caliente (S-1 y V-B) Recogido en Planta para los Distritos de Caguas,
-        Salinas (PR-10 Arecibo-Ponce) y Ceiba (C-21-05) Estatus: Abierta.", "dateLastCrawled":
-        "2021-09-04T22:22:00.0000000Z", "language": "es", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
-        "PR.GOV - Ayuda de Energía", "url": "https:\/\/pr.gov\/Pages\/ayuda-energia.aspx",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/pr.gov\/Pages\/ayuda-energia.aspx",
-        "snippet": "Las personas interesadas en obtener información adicional pueden
-        escribir vía correo electrónico a coordinadorliheap@familia.pr.gov o llamar
-        al 787.289.7600 extensión 2368 y 2375. La Ley federal que rige el Programa
-        de Ayuda para Energía para Hogares de Bajos Ingresos (Low Income Home Energy
-        Assistance Program LIHEAP, por sus siglas en ...", "dateLastCrawled": "2021-09-04T21:17:00.0000000Z",
-        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
-        "name": "Gobierno Estatal y Local | La Casa Blanca", "url": "https:\/\/www.whitehouse.gov\/es\/acerca-de-la-casa-blanca\/nuestro-gobierno\/gobierno-estatal-local\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/es\/acerca-de-la-casa-blanca\/nuestro-gobierno\/gobierno...",
-        "snippet": "Gobierno Estatal y. Local. Los poderes que no se han concedido
-        al Gobierno federal se reservan para los estados y las personas; estos poderes
-        se dividen entre los gobiernos estatales y los ...", "dateLastCrawled": "2021-08-31T23:07:00.0000000Z",
-        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19",
-        "name": "Conozca las diferencias entre subvenciones y préstamos del ...",
-        "url": "https:\/\/www.usa.gov\/espanol\/novedades\/conozca-las-diferencias-entre-subvenciones-y-prestamos-del-gobierno",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/novedades\/conozca-las-diferencias-entre-subvenciones-y...",
-        "snippet": "El Gobierno otorga préstamos a las personas para fines específicos,
-        como por ejemplo: para ayudar con el financiamiento de la educación, para
-        asistir con las necesidades de vivienda o como respuesta a una emergencia
-        o crisis. Tenga en cuenta que:", "dateLastCrawled": "2021-08-29T10:38:00.0000000Z",
-        "language": "es", "isNavigational": false}]}, "rankingResponse": {"mainline":
-        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-  recorded_at: Tue, 07 Sep 2021 16:17:54 GMT
-- request:
-    method: get
     uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=gobierno%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
@@ -521,31 +31,35 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Wed, 06 Oct 2021 11:47:17 GMT
+      - Wed, 10 Jan 2024 14:58:38 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
+      X-Eventid:
+      - 659eb0da3929499b96eac900e0b8c5db
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
       Bingapis-Traceid:
-      - A7B4395A64EE475AA60CC83DDD7D125A
+      - 659eb0da3929499b96eac900e0b8c5db
       Bingapis-Sessionid:
-      - 14E895EF7BD545DBBF92505EE42502A1
+      - 2883249655B24681B9668EBCC72A3036
       X-Msedge-Clientid:
-      - 0DB5C2864AA8686315C1D24E4BE7691F
+      - 381B8BF6E5566208298A9FF4E457633C
       X-Msapi-Userstate:
-      - b0e0
+      - 90e2
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=246,MSDatacenter=BN2B
+      - InternalResponseTime=259,MSDatacenter=BNZE01
       X-Cache:
       - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
       X-Msedge-Ref:
-      - 'Ref A: A7B4395A64EE475AA60CC83DDD7D125A Ref B: BLUEDGE1208 Ref C: 2021-10-06T11:48:16Z'
+      - 'Ref A: A2CDC1FD8F7A4E0A911B7D11686CD951 Ref B: BL2AA2030102027 Ref C: 2024-01-10T14:59:38Z'
       Apim-Request-Id:
-      - '019e5c17-2f60-467b-b2e1-9a39e4dec473'
+      - 1b1c8b7e-c5b7-49b7-84ca-d19c856e6ac0
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -553,394 +67,197 @@ http_interactions:
       Csp-Billing-Usage:
       - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Wed, 06 Oct 2021 11:48:17 GMT
+      - Wed, 10 Jan 2024 14:59:39 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "gobierno
         (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=gobierno+(site%3agov+OR+site%3amil)",
-        "totalEstimatedMatches": 4340000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "PR.GOV - Inicio", "url": "http:\/\/pr.gov\/", "isFamilyFriendly":
-        true, "displayUrl": "pr.gov", "snippet": "Encuentre Información sobre Programas
-        y Servicios del Gobierno de Puerto Rico. Números de Emergencia (Emergency
-        Numbers ) Aquí encontrará la guía de números de emergencia (temporada de huracanes
-        2018). Here you will find the emergency numbers guide (hurricane season 2018).
-        ...", "dateLastCrawled": "2021-10-03T16:04:00.0000000Z", "language": "es",
-        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "Guía oficial de información y servicios del Gobierno | USAGov",
-        "url": "https:\/\/www.usa.gov\/Espanol\/", "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.usa.gov\/Espanol", "snippet": "Servicios e información del
-        Gobierno. Información general sobre Estados Unidos, incluyendo historia,
-        Gobierno, estructura política, etc. Información sobre ayuda federal para
-        estudiantes, beneficios y programas sociales del Gobierno. Información oficial
-        del Gobierno sobre pasaportes, residencia permanente, visas y viajes.",
-        "dateLastCrawled": "2021-10-02T10:10:00.0000000Z", "language": "es", "isNavigational":
-        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2", "name":
-        "PR.GOV - Gobierno a Gobierno", "url": "https:\/\/pr.gov\/GobiernoAGobierno\/Pages\/default.aspx",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/pr.gov\/GobiernoAGobierno",
-        "snippet": "Politicas y Procedimientos. Circular Administrativa 18-005 A Todos
-        Los Principales Jefes De Informáticas De Las Agencias Del Gobierno De Puerto
-        Rico. Manual Instrucciones LEAN. Carta Circular 140-16 Normas Generales sobre
-        la Implementación de sistemas. Politica Núm.", "dateLastCrawled": "2021-09-30T22:22:00.0000000Z",
-        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
-        "name": "Ramas del Gobierno | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/ramas-del-gobierno",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/ramas-del-gobierno",
-        "snippet": "Ramas del Gobierno. La Constitución de Estados Unidos, que es
-        la ley suprema de la nación, define la estructura del Gobierno federal y
-        las funciones de sus tres ramas principales:. La rama legislativa. El Congreso
-        representa la rama del poder legislativo y está conformado por la Cámara de
-        Representantes y el Senado.. El Congreso, conformado por 435 representantes
-        y 100 senadores, está ...", "dateLastCrawled": "2021-10-02T20:15:00.0000000Z",
-        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
-        "name": "Registro Demográfico de Puerto Rico", "url": "https:\/\/gobiernodigital.pr.gov\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/gobiernodigital.pr.gov",
-        "snippet": "GOBIERNO DE PUERTO RICO . Términos de Servicio. Política de
-        Privacidad. En revisión por la Comisión Estatal de Elecciones de Puerto Rico
-        (CEE) #CEE-SA-2020-3320. Bandeja De Entrada. Mensajes . No hay mensajes nuevos.
-        Theme Options close. Color themes Default Light Yellow Light Blue-Gray Dark",
-        "dateLastCrawled": "2021-10-03T08:05:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5", "name":
-        "PR.GOV - Servicios En Línea", "url": "https:\/\/pr.gov\/Pages\/servicefilter.aspx",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/pr.gov\/Pages\/servicefilter.aspx",
-        "snippet": "Administración Sistema de Retiro - Servicios en Línea-Patrono.
-        A través de este servicio usted podrá realiza una pre-cualificación para el
-        Programa Medicaid \/ Plan de Salud del Gobierno. Le indica el número de
-        teléfono a llamar para realizar una cita o recibir orientación.", "dateLastCrawled":
-        "2021-10-03T07:18:00.0000000Z", "language": "es", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6", "name": "PR.GOV
-        - Directorio de Agencias", "url": "https:\/\/pr.gov\/Directorios\/Pages\/DirectoriodeAgencias.aspx",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/pr.gov\/Directorios\/Pages\/DirectoriodeAgencias.aspx",
-        "snippet": "Directorio de Agencias. Oficina para el Desarrollo Socioeconómico
-        y Comunitario de Puerto Rico. Administración de Asuntos Federales de Puerto
-        Rico (PRFAA) PRFAA. Administración de Compensaciones por Accidentes de Automoviles
-        (ACAA) ACAA. Administración de Desarrollo Socioeconómico de la Familia (Dpto.
-        Familia)", "dateLastCrawled": "2021-10-01T22:02:00.0000000Z", "language":
-        "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
-        "name": "Información de la agencia - PR.GOV", "url": "https:\/\/pr.gov\/Directorios\/Pages\/InfoAgencia.aspx?PRIFA=113",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/pr.gov\/Directorios\/Pages\/InfoAgencia.aspx?PRIFA=113",
-        "snippet": "Cuadro Telefónico (787) 625-2746. Fax (787) 625-1459. Rutas de
-        la AMA", "dateLastCrawled": "2021-10-02T00:19:00.0000000Z", "language": "es",
-        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
-        "name": "Government of Puerto Rico | USAGov", "url": "https:\/\/www.usa.gov\/state-government\/puerto-rico",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/state-government\/puerto-rico",
-        "snippet": "Puerto Rico. Find contact information and major state agencies
-        and offices for the government of Puerto Rico.", "dateLastCrawled": "2021-10-03T01:03:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
-        "name": "U.S. Passport Application Status", "url": "https:\/\/passportstatus.state.gov\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/passportstatus.state.gov",
-        "snippet": "Status Checks. 1-877-487-2778 or. 1-888-874-7793 (TDD\/TTY) General
-        Questions. NPIC@state.gov. Technical Issues. PassportWeb@state.gov.", "dateLastCrawled":
-        "2021-10-03T07:17:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10", "name":
-        "Gobierno de New Mexico | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/gobiernos-estatales\/new-mexico",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/gobiernos-estatales\/new-mexico",
-        "snippet": "New Mexico. Encuentre información de contacto de las principales
-        agencias y oficinas del Gobierno de New Mexico. Gobierno estatal Nombre:
-        New Mexico (en inglés)", "dateLastCrawled": "2021-09-29T07:07:00.0000000Z",
-        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
-        "name": "Gobierno - San Antonio", "url": "https:\/\/www.sanantonio.gov\/Espanol\/consejo-ciudad\/gobierno",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sanantonio.gov\/Espanol\/consejo-ciudad\/gobierno",
-        "snippet": "Tu Gobierno de la Cuidad. El Alcalde y la Oficina del Consejo
-        se componen de. el alcalde, que es elegido en general; diez miembros del Consejo
-        Municipal, que son elegidos de distritos uninominales, y", "dateLastCrawled":
-        "2021-09-28T05:26:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12", "name":
-        "Housing Is Key", "url": "https:\/\/housing.ca.gov\/", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/housing.ca.gov", "snippet": "Housing, eviction,
-        tenant, landlord, ab3088, Tenant Protections. Applications are still being
-        accepted. Apply today to reduce your risk of eviction.", "dateLastCrawled":
-        "2021-10-03T08:04:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13", "name":
-        "Gobierno Estatal y Local | La Casa Blanca", "url": "https:\/\/www.whitehouse.gov\/es\/acerca-de-la-casa-blanca\/nuestro-gobierno\/gobierno-estatal-local\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/es\/acerca-de-la-casa-blanca\/nuestro-gobierno\/gobierno...",
-        "snippet": "Gobierno Estatal y. Local. Los poderes que no se han concedido
-        al Gobierno federal se reservan para los estados y las personas; estos poderes
-        se dividen entre los gobiernos estatales y los ...", "dateLastCrawled": "2021-10-01T02:19:00.0000000Z",
-        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
-        "name": "“Ley del Nuevo Gobierno de Puerto Rico” [Ley 122-2017]", "url":
-        "https:\/\/bvirtualogp.pr.gov\/ogp\/Bvirtual\/leyesreferencia\/PDF\/Gererencia\/122-2017.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/bvirtualogp.pr.gov\/ogp\/Bvirtual\/leyesreferencia\/PDF\/Gererencia\/122-2017.pdf",
-        "snippet": "“Ley del Nuevo Gobierno de Puerto Rico” [Ley 122-2017] Rev.
-        09 de febrero de 2021 www.ogp.pr.gov Página 3 de 12 las eficiencias que le
-        permitan al Gobierno ir maximizando sus recursos, hasta transformarse en
-        el nuevo gobierno que tanto necesitamos. La punta de lanza de esta iniciativa
-        es la Ley 8-2017, según enmendada, conocida como “Ley", "dateLastCrawled":
-        "2021-09-30T11:21:00.0000000Z", "language": "es", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15", "name":
-        "PR.GOV - Sobre Puerto Rico", "url": "https:\/\/pr.gov\/SobrePuertoRico\/Pages\/default.aspx",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/pr.gov\/SobrePuertoRico",
-        "snippet": "Ciudad Capital: San Juan Principales Ciudades: Ponce, Mayagüez,
-        Bayamón, Caguas y Guaynabo. Población: 3,195,153 (Censo Federal 2018).Estimado
-        población 2010-18 Geografía: Puerto Rico está situado en el Caribe oriental
-        y es la más pequeña de las Antillas Mayores.Es una isla de forma casi rectangular,
-        con una superficie que mide alrededor de 3,435 millas cuadradas (cerca de
-        9,000 ...", "dateLastCrawled": "2021-10-03T08:13:00.0000000Z", "language":
-        "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
-        "name": "“Carta de Derechos y la Política Pública del Gobierno a ...", "url":
-        "https:\/\/bvirtualogp.pr.gov\/ogp\/Bvirtual\/leyesreferencia\/PDF\/121-2019.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/bvirtualogp.pr.gov\/ogp\/Bvirtual\/leyesreferencia\/PDF\/121-2019.pdf",
-        "snippet": "El Gobierno de Puerto Rico y sus instrumentalidades facilitarán
-        el acceso de los adultos mayores a los servicios y recursos gubernamentales
-        a través de todo Puerto Rico y a tenor con los derechos que le reconoce esta
-        Ley. 2. Extender la expectativa de vida saludable, promoviendo la salud, el
-        envejecimiento activo y la ...", "dateLastCrawled": "2021-10-03T22:30:00.0000000Z",
-        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
-        "name": "Gobierno de U.S. Virgin Islands | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/gobiernos-estatales\/u-s-virgin-islands",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/gobiernos-estatales\/u-s-virgin-islands",
-        "snippet": "Encuentre información de contacto de las principales agencias
-        y oficinas del Gobierno de U.S. Virgin Islands. Gobierno estatal Nombre:
-        U.S. Virgin Islands (en inglés) Dirección: 5047 (21-22) Kongens Gade St. Thomas,
-        VI, 00802-6487. Comparta esta página: Subir Sobre USAGov en Español ...",
-        "dateLastCrawled": "2021-09-30T14:04:00.0000000Z", "language": "es", "isNavigational":
-        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
-        "name": "Cuerpo de Gobierno - Pr", "url": "https:\/\/acuden.pr.gov\/ProgramaHeadStart_EHead%20Start\/Pages\/HS-POLITICA-NORMATIVA-DE-LA-ACUDEN.aspx",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/acuden.pr.gov\/ProgramaHeadStart_EHead
-        Start\/Pages\/HS-POLITICA-NORMATIVA-DE-LA...", "snippet": "Cuerpo de Gobierno
-        Cuerpo de Gobierno lo componen la Junta de Gobierno y el Consejo de la
-        Política Normativa de la ACUDEN. Dentro del Programa Head Start \/ Early Head
-        Start se requiere la participación activa de los padres, madres y tutores
-        legales de los niños actuálmente matriculados.", "dateLastCrawled": "2021-10-01T09:15:00.0000000Z",
-        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
-        "name": "Gobierno de New York | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/gobiernos-estatales\/new-york",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/gobiernos-estatales\/new-york",
-        "snippet": "Encuentre información de contacto de las principales agencias
-        y oficinas del Gobierno de New York. Gobierno estatal Nombre: New York
-        (en inglés) Contact: Email (en inglés) Dirección: NYS State Capitol Building
-        Albany, NY, 12224. Teléfono: 1-518-474-8390. Comparta esta página:", "dateLastCrawled":
-        "2021-09-28T20:03:00.0000000Z", "language": "es", "isNavigational": false}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-  recorded_at: Wed, 06 Oct 2021 05:45:35 GMT
-- request:
-    method: get
-    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=gobierno%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Transfer-Encoding:
-      - chunked
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Wed, 06 Oct 2021 11:47:17 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
-      Bingapis-Traceid:
-      - BBB634D2895047BAB8673608F55441D8
-      Bingapis-Sessionid:
-      - C33CE97A3ED1450D8B87AE36798356C6
-      X-Msedge-Clientid:
-      - 1946013B3EDF68792AD311F33F226941
-      X-Msapi-Userstate:
-      - '2336'
-      Bingapis-Market:
-      - en-US
-      X-Search-Responseinfo:
-      - InternalResponseTime=208,MSDatacenter=BN2B
-      X-Cache:
-      - CONFIG_NOCACHE
-      X-Msedge-Ref:
-      - 'Ref A: BBB634D2895047BAB8673608F55441D8 Ref B: BLUEDGE1007 Ref C: 2021-10-06T11:48:17Z'
-      Apim-Request-Id:
-      - a49a19ca-e033-4825-b6d2-47dfd39f6f4e
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
-      X-Content-Type-Options:
-      - nosniff
-      Csp-Billing-Usage:
-      - CognitiveServices.BingSearchV7.Transaction=1
-      Date:
-      - Wed, 06 Oct 2021 11:48:16 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "gobierno
-        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=gobierno+(site%3agov+OR+site%3amil)",
-        "totalEstimatedMatches": 4340000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "PR.GOV - Inicio", "url": "http:\/\/pr.gov\/", "isFamilyFriendly":
-        true, "displayUrl": "pr.gov", "snippet": "Encuentre Información sobre Programas
-        y Servicios del Gobierno de Puerto Rico. Números de Emergencia (Emergency
-        Numbers ) Aquí encontrará la guía de números de emergencia (temporada de huracanes
-        2018). Here you will find the emergency numbers guide (hurricane season 2018).
-        ...", "dateLastCrawled": "2021-10-03T16:04:00.0000000Z", "language": "es",
-        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "Guía oficial de información y servicios del Gobierno | USAGov",
-        "url": "https:\/\/www.usa.gov\/Espanol\/", "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.usa.gov\/Espanol", "snippet": "Servicios e información del
-        Gobierno. Información general sobre Estados Unidos, incluyendo historia,
-        Gobierno, estructura política, etc. Información sobre ayuda federal para
-        estudiantes, beneficios y programas sociales del Gobierno. Información oficial
-        del Gobierno sobre pasaportes, residencia permanente, visas y viajes.",
-        "dateLastCrawled": "2021-10-02T10:10:00.0000000Z", "language": "es", "isNavigational":
-        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2", "name":
-        "PR.GOV - Gobierno a Gobierno", "url": "https:\/\/pr.gov\/GobiernoAGobierno\/Pages\/default.aspx",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/pr.gov\/GobiernoAGobierno",
-        "snippet": "Politicas y Procedimientos. Circular Administrativa 18-005 A Todos
-        Los Principales Jefes De Informáticas De Las Agencias Del Gobierno De Puerto
-        Rico. Manual Instrucciones LEAN. Carta Circular 140-16 Normas Generales sobre
-        la Implementación de sistemas. Politica Núm.", "dateLastCrawled": "2021-09-30T22:22:00.0000000Z",
-        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
-        "name": "Registro Demográfico de Puerto Rico", "url": "https:\/\/gobiernodigital.pr.gov\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/gobiernodigital.pr.gov",
-        "snippet": "GOBIERNO DE PUERTO RICO . Términos de Servicio. Política de
-        Privacidad. En revisión por la Comisión Estatal de Elecciones de Puerto Rico
-        (CEE) #CEE-SA-2020-3320. Bandeja De Entrada. Mensajes . No hay mensajes nuevos.
-        Theme Options close. Color themes Default Light Yellow Light Blue-Gray Dark",
-        "dateLastCrawled": "2021-10-03T08:05:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4", "name":
-        "PR.GOV - Servicios En Línea", "url": "https:\/\/pr.gov\/Pages\/servicefilter.aspx",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/pr.gov\/Pages\/servicefilter.aspx",
-        "snippet": "Administración Sistema de Retiro - Servicios en Línea-Patrono.
-        A través de este servicio usted podrá realiza una pre-cualificación para el
-        Programa Medicaid \/ Plan de Salud del Gobierno. Le indica el número de
-        teléfono a llamar para realizar una cita o recibir orientación.", "dateLastCrawled":
-        "2021-10-03T07:18:00.0000000Z", "language": "es", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5", "name": "Government
-        of Puerto Rico | USAGov", "url": "https:\/\/www.usa.gov\/state-government\/puerto-rico",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/state-government\/puerto-rico",
-        "snippet": "Puerto Rico. Find contact information and major state agencies
-        and offices for the government of Puerto Rico.", "dateLastCrawled": "2021-10-03T01:03:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
-        "name": "PR.GOV - Directorio de Agencias", "url": "https:\/\/pr.gov\/Directorios\/Pages\/DirectoriodeAgencias.aspx",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/pr.gov\/Directorios\/Pages\/DirectoriodeAgencias.aspx",
-        "snippet": "Directorio de Agencias. Oficina para el Desarrollo Socioeconómico
-        y Comunitario de Puerto Rico. Administración de Asuntos Federales de Puerto
-        Rico (PRFAA) PRFAA. Administración de Compensaciones por Accidentes de Automoviles
-        (ACAA) ACAA. Administración de Desarrollo Socioeconómico de la Familia (Dpto.
-        Familia)", "dateLastCrawled": "2021-10-01T22:02:00.0000000Z", "language":
-        "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
-        "name": "www.ca.gov | California State Portal", "url": "https:\/\/www.ca.gov\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ca.gov", "snippet":
-        "State of California. Disaster Resources. California has been hit with
-        devastating wildfires and other natural disasters in both the northern and
-        southern parts of the state.", "dateLastCrawled": "2021-10-03T07:16:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
-        "name": "Registro Único de Subasta (RUS)", "url": "https:\/\/subastas.pr.gov\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/subastas.pr.gov", "snippet":
-        "para establecer el contrato para la adquisicion de productos agricolas para
-        la administracion para el desarrollo de empresas agropecuarias, entidades
-        gubernamentales, exentas y municipios del gobierno de puerto rico. (22-0616)",
-        "dateLastCrawled": "2021-10-02T04:20:00.0000000Z", "language": "es", "isNavigational":
-        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9", "name":
-        "Departamento de Estado", "url": "https:\/\/www.estado.pr.gov\/en\/", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.estado.pr.gov\/en", "snippet": "Electronic
-        Filing of Marks, Trade Name and Related Transaction. UCC. UCC Electronic Registry.
-        OTHERS. Search the Registry of Registered Regulations. Search Registry of
-        Examining Boards. Request Examination and\/or License. Calls. Inscription
-        in the Intellectual Property Registry.", "dateLastCrawled": "2021-10-03T03:19:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
-        "name": "GOBIERNO MUNICIPAL DE MOCA, PR", "url": "https:\/\/www3.epa.gov\/region2\/water\/npdes\/permits\/pdfs\/moca.pdf",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www3.epa.gov\/region2\/water\/npdes\/permits\/pdfs\/moca.pdf",
-        "snippet": "GOBIERNO MUNICIPAL DE MOCA, PR OFICINA DEL ALCALDE Mr. Jose
-        E. Aviles Santiago Major. MUNICIPALITY OF MOCA PO BOX 1571 MOCA, PUERTO RICO
-        00676 NOTICE OF INTENT STORM WATER NPDES PERMIT 1 The Municipality of Moca
-        operates a Municipal separate storm sewer system located in state road 111
-        km 2.1 of Moca, Puerto Rico. ...", "dateLastCrawled": "2021-09-30T14:17:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
-        "name": "Expert Electricians | Departamento de Estado", "url": "https:\/\/www.estado.pr.gov\/en\/expert-electricians\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.estado.pr.gov\/en\/expert-electricians",
-        "snippet": "EXPERT ELECTRICIANS. Request License as a Expert Electricians.
-        On the Professional Credential Services link (PCS) you will find all necessary
-        information and requirements for each license online. You can also communicate
-        with PCS through prelectricistas@pcshq.com or by calling 1-888-773-9266.",
-        "dateLastCrawled": "2021-09-29T01:00:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
-        "name": "Gobierno - San Antonio", "url": "https:\/\/www.sanantonio.gov\/Espanol\/consejo-ciudad\/gobierno",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sanantonio.gov\/Espanol\/consejo-ciudad\/gobierno",
-        "snippet": "Tu Gobierno de la Cuidad. El Alcalde y la Oficina del Consejo
-        se componen de. el alcalde, que es elegido en general; diez miembros del Consejo
-        Municipal, que son elegidos de distritos uninominales, y", "dateLastCrawled":
-        "2021-09-28T05:26:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13", "name":
-        "Gobierno de New Mexico | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/gobiernos-estatales\/new-mexico",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/gobiernos-estatales\/new-mexico",
-        "snippet": "New Mexico. Encuentre información de contacto de las principales
-        agencias y oficinas del Gobierno de New Mexico. Gobierno estatal Nombre:
-        New Mexico (en inglés)", "dateLastCrawled": "2021-09-29T07:07:00.0000000Z",
-        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
-        "name": "¿Qué hace el gobierno federal? | ShareAmerica", "url": "https:\/\/share.america.gov\/es\/federal-government-white-house-congress\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/share.america.gov\/es\/federal-government-white-house-congress",
-        "snippet": "Sólo el gobierno federal puede regular el comercio interestatal
-        y exterior, declarar la guerra y fijar impuestos, gastos y otras políticas
-        nacionales. Estas acciones a menudo comienzan con la legislación del Congreso,
-        compuesto por 435 miembros en la Cámara de Representantes y 100 miembros en
-        el Senado.", "dateLastCrawled": "2021-10-03T08:12:00.0000000Z", "language":
-        "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
-        "name": "Gobierno Estatal y Local | La Casa Blanca", "url": "https:\/\/www.whitehouse.gov\/es\/acerca-de-la-casa-blanca\/nuestro-gobierno\/gobierno-estatal-local\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/es\/acerca-de-la-casa-blanca\/nuestro-gobierno\/gobierno...",
-        "snippet": "Gobierno Estatal y. Local. Los poderes que no se han concedido
-        al Gobierno federal se reservan para los estados y las personas; estos poderes
-        se dividen entre los gobiernos estatales y los ...", "dateLastCrawled": "2021-10-01T02:19:00.0000000Z",
-        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
-        "name": "Bienvenido a GovLoans.gov | GovLoans", "url": "https:\/\/www.govloans.gov\/es\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.govloans.gov\/es",
-        "snippet": "Explore los programas de préstamos del gobierno para encontrar
-        el préstamo adecuado para usted y obtenga más información sobre los requisitos
-        del programa.", "dateLastCrawled": "2021-10-01T22:26:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
-        "name": "Información de la agencia - PR.GOV", "url": "https:\/\/pr.gov\/Directorios\/Pages\/InfoAgencia.aspx?PRIFA=113",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/pr.gov\/Directorios\/Pages\/InfoAgencia.aspx?PRIFA=113",
-        "snippet": "Cuadro Telefónico (787) 625-2746. Fax (787) 625-1459. Rutas de
-        la AMA", "dateLastCrawled": "2021-10-02T00:19:00.0000000Z", "language": "es",
-        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
-        "name": "Calculadoras: Calculadora de Ajuste por pensión del gobierno",
-        "url": "https:\/\/www.ssa.gov\/espanol\/jubilacion2\/calc-ajuste.htm", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.ssa.gov\/espanol\/jubilacion2\/calc-ajuste.htm",
-        "snippet": "1. Ingrese la cantidad aproximada mensual «bruta» de la pensión
-        (en dólares actuales) de parte de su empleo del gobierno donde no pagó impuestos
-        de Seguro Social: $. 2. Ingrese la cantidad aproximada mensual de los beneficios
-        como cónyuge, viuda o viudo que recibirá antes de que se aplique el Ajuste
-        por pensión del gobierno (ver más ...", "dateLastCrawled": "2021-09-30T06:47:00.0000000Z",
-        "language": "es", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
-        "name": "Gobierno de U.S. Virgin Islands | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/gobiernos-estatales\/u-s-virgin-islands",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/gobiernos-estatales\/u-s-virgin-islands",
-        "snippet": "Encuentre información de contacto de las principales agencias
-        y oficinas del Gobierno de U.S. Virgin Islands. Gobierno estatal Nombre:
-        U.S. Virgin Islands (en inglés) Dirección: 5047 (21-22) Kongens Gade St. Thomas,
-        VI, 00802-6487. Comparta esta página: Subir Sobre USAGov en Español ...",
-        "dateLastCrawled": "2021-09-30T14:04:00.0000000Z", "language": "es", "isNavigational":
-        false}]}, "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages",
+        "totalEstimatedMatches": 5820000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "La Fortaleza", "url": "https:\/\/www.fortaleza.pr.gov\/comunicados\/gobernador-pierluisi-somete-varios-nombramientos-para-evaluacion-en-la-nueva-sesion-legislativa",
+        "datePublished": "2024-01-08T00:00:00.0000000", "datePublishedFreshnessText":
+        "2 days ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fortaleza.pr.gov\/comunicados\/gobernador-pierluisi-somete-varios-nombramie...",
+        "snippet": "Gobierno de Excelencia. ‍ (8 de enero de 2024)- El gobernador
+        de Puerto Rico, Pedro R. Pierluisi, anunció hoy 36 nombramientos que sometió
+        a la Asamblea Legislativa para su consideración durante el inicio de la Séptima
+        Sesión Ordinaria 2021-2024. Entre los nombramientos sometidos, hay 23 que
+        no fueron atendidos en la pasada sesión ...", "dateLastCrawled": "2024-01-09T21:52:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=1495287438474&mkt=en-US&setlang=en-US&w=U-6VEBNOtGddrwniU2wTFwuoob5Gazxe",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Jenniffer González pide al gobierno y a la Junta hablar claro sobre
+        el ...", "url": "https:\/\/gonzalez-colon.house.gov\/media\/press-releases\/jenniffer-gonzalez-pide-al-gobierno-y-la-junta-hablar-claro-sobre-el-aumento",
+        "datePublished": "2024-01-03T00:00:00.0000000", "datePublishedDisplayText":
+        "Jan 3, 2024", "isFamilyFriendly": true, "displayUrl": "https:\/\/gonzalez-colon.house.gov\/media\/press-releases\/jenniffer-gonzalez-pide-al...",
+        "snippet": "San Juan, Puerto Rico- La comisionada residente, Jenniffer González
+        Colón, reclamó tanto a la Junta de Supervisión y Administración Financiera
+        como al gobierno de Puerto Rico, a que presenten de manera clara lo que
+        envuelve el cambio en el cargo adicional por el pago de la deuda que aumentará
+        la factura de energía eléctrica a la población para que se pueda hacer un
+        análisis sosegado ...", "dateLastCrawled": "2024-01-10T08:10:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=120877048238&mkt=en-US&setlang=en-US&w=1jd7fvkCMHn4qbC7T0grC-ERBaW-i0Be",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "PR.gov | Gobierno de Puerto Rico", "url": "https:\/\/www.pr.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.pr.gov", "snippet":
+        "El portal de internet con información centralizada del Gobierno de Puerto
+        Rico es una herramienta en línea diseñada para brindar al ciudadano acceso
+        a información relevante y actualizada sobre los servicios y actividades gubernamentales.
+        Este portal funciona como un punto de encuentro centralizado para todas las
+        agencias y departamentos gubernamentales, lo que permite a los usuarios ...",
+        "dateLastCrawled": "2024-01-08T05:16:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=4770716874316992&mkt=en-US&setlang=en-US&w=gWqEzM-3Pvp5eK0B7Z2Z-cdGJY4ehK9F",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Gobierno Digital - pr", "url": "https:\/\/www.pr.gov\/gobierno-digital",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.pr.gov\/gobierno-digital",
+        "snippet": "Biblioteca Digital del Departamento de Educación. La Biblioteca
+        Digital del Departamento de Educación de Puerto Rico es un repositorio de
+        contenido educativo en formato digital y enlaces a colecciones externas para
+        el uso de los estudiantes, padres y maestros del Departamento.", "dateLastCrawled":
+        "2024-01-08T23:30:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=4835128501076244&mkt=en-US&setlang=en-US&w=HJ-9tsRsuQmWwxcgZGWEHKrm6IaP24R6",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Jenniffer González detallas gestiones para la construcción del centro
+        ...", "url": "https:\/\/gonzalez-colon.house.gov\/media\/press-releases\/jenniffer-gonzalez-detallas-gestiones-para-la-construccion-del-centro-de-0",
+        "datePublished": "2023-11-15T00:00:00.0000000", "datePublishedDisplayText":
+        "Nov 15, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/gonzalez-colon.house.gov\/media\/press-releases\/jenniffer-gonzalez-detallas...",
+        "snippet": "Washington, D.C.- Ante el desconocimiento por parte de funcionarios
+        del gobierno de Puerto Rico sobre las gestiones durante los pasados seis
+        años que hicieron posible la colocación de la primera piedra hoy del centro
+        de salud de Vieques, la comisionada residente, Jenniffer González Colón, hizo
+        una transmisión en vivo desde su oficina en el Congreso para aclarar toda
+        duda.", "dateLastCrawled": "2024-01-10T05:31:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=4175277937645&mkt=en-US&setlang=en-US&w=dka1X7mfm9vmq0_8PbEt6MfJzaCiTdRL",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Temporada de presentación de impuestos de 2024 inicia el 29 de enero
+        ...", "url": "https:\/\/www.irs.gov\/es\/newsroom\/2024-tax-filing-season-set-for-january-29-irs-continues-to-make-improvements-to-help-taxpayers",
+        "datePublished": "2024-01-08T00:00:00.0000000", "datePublishedFreshnessText":
+        "2 days ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/es\/newsroom\/2024-tax-filing-season-set-for-january-29-irs...",
+        "snippet": "IR-2024-04SP, 8 de enero de 2024 — El Servicio de Impuestos Internos
+        anunció hoy que el lunes, 29 de enero de 2024 iniciará oficialmente la temporada
+        de impuestos de 2024 de la nación, cuando la agencia comenzará a aceptar y
+        procesar las declaraciones de impuestos de 2023.", "dateLastCrawled": "2024-01-10T09:08:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=5206155418408&mkt=en-US&setlang=en-US&w=WDoRbG9Q7zAoAIPy2tb_QzXQKuPsgtbq",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Resumen del año 2023 | ICE", "url": "https:\/\/www.ice.gov\/es\/features\/2023-revision-anual",
+        "datePublished": "2024-01-09T00:00:00.0000000", "datePublishedFreshnessText":
+        "1 day ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ice.gov\/es\/features\/2023-revision-anual",
+        "snippet": "Informe anual del año fiscal 2023 de ICE. El informe anual del
+        año fiscal 2023 del Servicio de Inmigración y Control de Aduanas de EE. UU.
+        se centra en los esfuerzos de la agencia para ayudar a asegurar la frontera
+        suroeste y reconstruir un sistema de inmigración humano y ordenado; combatir
+        las organizaciones criminales transnacionales (TCOs, por sus siglas en inglés),
+        incluyendo la ...", "dateLastCrawled": "2024-01-09T20:54:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=1357558954764&mkt=en-US&setlang=en-US&w=9hMmWLJ8Z_l1_Cs3zUz4-9fNHPwIE1Fe",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "VIOLENCIA BASADA EN GÉNERO - U.S. Agency for International Development",
+        "url": "https:\/\/www.usaid.gov\/sites\/default\/files\/2023-03\/Fact%20Sheet%20-%20Violencia%20de%20G%C3%A9nero%2001.2023.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usaid.gov\/sites\/default\/files\/2023-03\/Fact
+        Sheet - Violencia de Género 01....", "snippet": "La programación de USAID\/Guatemala
+        fortalece la capacidad del gobierno guatemalteco y de la sociedad civil
+        para brindar justicia y servicios, incluidos servicios médicos, psicológicos
+        y de otro tipo, para responder a las necesidades de las víctimas de VBG, al
+        promover una mayor integración y coordinación", "dateLastCrawled": "2024-01-10T11:30:00.0000000Z",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "La Constitución | La Casa Blanca - The White House", "url": "https:\/\/www.whitehouse.gov\/es\/acerca-de-la-casa-blanca\/nuestro-gobierno\/la-constitucion\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/es\/acerca-de-la-casa-blanca\/nuestro-gobierno\/la-constitucion",
+        "snippet": "Uno de los objetivos principales de la Constitución, tal como
+        se redactó en el borrador de la Convención, era crear un gobierno que tuviera
+        suficiente poder para actuar a nivel nacional, pero ...", "dateLastCrawled":
+        "2024-01-09T09:49:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=4969208783774602&mkt=en-US&setlang=en-US&w=DpFrZtUYXxrTvCheFiShSUj2Tlya80hO",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "La Rama Legislativa | La Casa Blanca - The White House", "url":
+        "https:\/\/www.whitehouse.gov\/es\/acerca-de-la-casa-blanca\/nuestro-gobierno\/la-rama-legislativa\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/es\/acerca-de-la-casa-blanca\/nuestro-gobierno\/la-rama...",
+        "snippet": "Acerca de la Casa Blanca. Nuestro Gobierno. Creada por el
+        Artículo I de la Constitución, la Rama Legislativa se compone de la Cámara
+        de Representantes y el Senado, que juntos forman el Congreso ...", "dateLastCrawled":
+        "2024-01-06T01:38:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=4518198569675938&mkt=en-US&setlang=en-US&w=euAJmKL25ncGo6j81kjnQc4fxJpnI0gZ",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Información del Gobierno de Estados Unidos a su alcance | USAGov",
+        "url": "https:\/\/www.usa.gov\/es\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.usa.gov\/es", "snippet": "Votaciones y elecciones. Encuentre
+        información oficial del Gobierno sobre las elecciones y cómo votar en Estados
+        Unidos. Encuentre información sobre los beneficios, servicios y agencias del
+        Gobierno de los Estados Unidos en USAGov en Español. Conozca más sobre visas,
+        pasaportes, Seguro Social, vivienda, empleos y más.", "dateLastCrawled": "2024-01-06T11:24:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=4889266568109758&mkt=en-US&setlang=en-US&w=mWY3sZv4bLuvYcXnjYf_VxRpinHeDzbW",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "La Casa Blanca - The White House", "url": "https:\/\/www.whitehouse.gov\/es\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/es",
+        "snippet": "Escribe o llama a la Casa Blanca. Únete a la administración
+        Biden-Harris. Aplica para ser un becario de la Casa Blanca. Oportunidades
+        de pasantías en la Casa Blanca.", "dateLastCrawled": "2024-01-10T01:40:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=4750723806141800&mkt=en-US&setlang=en-US&w=7CjRhclqKaBwYUOMyu0CheFoafSydPlF",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Agencias - pr", "url": "https:\/\/www.pr.gov\/gobierno-2\/agencias",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.pr.gov\/gobierno-2\/agencias",
+        "snippet": "Administración de Vivienda Pública (Dpto. Vivienda) Administración
+        de los Sistemas de Retiro de los Empleados del Gobierno y la Judicatura
+        (ASR) Administración del Derecho al Trabajo (Dpto. Trabajo) Administración
+        para el Adiestramiento de Futuros Empresarios y Trabajadores (Dpto.", "dateLastCrawled":
+        "2024-01-10T02:25:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=4638577915658403&mkt=en-US&setlang=en-US&w=j97Dnnd0VUk9YYq8ys7swMz8QlnWR9nj",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "El IRS reanuda la emisión de avisos de cobro", "url": "https:\/\/www.irs.gov\/es\/newsroom\/irs-resumes-issuing-collection-notices",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/es\/newsroom\/irs-resumes-issuing-collection-notices",
+        "snippet": "El IRS reanuda la emisión de avisos de cobro. A partir de este
+        mes, el IRS está reanudando gradualmente el envío de cartas y avisos recordatorios
+        de cobro que se suspendieron durante la pandemia. Tiene deuda tributaria individual
+        antes del año tributario 2022. Su negocio, organización exenta de impuestos,
+        fideicomiso o patrimonio tiene ...", "dateLastCrawled": "2024-01-09T22:42:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=4449942531077&mkt=en-US&setlang=en-US&w=tJn3-esPg_crmEnr2r5pXM_aOR2MrPlz",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "District of Puerto Rico | Justicia Medioambiental", "url": "https:\/\/www.justice.gov\/es\/usao-pr\/environmental-justice",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.justice.gov\/es\/usao-pr\/environmental-justice",
+        "snippet": "La Justicia Medioambiental es un principio que combina los derechos
+        civiles con la protección del medio ambiente al examinar si las personas,
+        independientemente de su raza, color, origen nacional o ingreso, reciben un
+        trato justo y participación significativa en el desarrollo, implementación
+        y cumplimiento de las leyes, regulaciones y políticas medioambientales.",
+        "dateLastCrawled": "2024-01-08T07:02:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=807545969565&mkt=en-US&setlang=en-US&w=UQH84d89vq6rjWRm-85Lr05kSTTNCRPf",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Puerto Rico Innovation and Technology Service - pr", "url": "https:\/\/www.prits.pr.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.prits.pr.gov", "snippet":
+        "El Gobierno de Puerto Rico basa su modelo de desarrollo socioeconómico
+        en las ciencias, la tecnología y la innovación. Para realizarlo, se creó el
+        Puerto Rico Innovation and Technology Service (PRITS), mediante la Ley 75
+        del 25 de julio de 2019. La misión de PRITS es liderar la transformación digital
+        de nuestra Isla para elevar las capacidades del Gobierno de Puerto Rico
+        ante los ...", "dateLastCrawled": "2024-01-08T11:08:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=4652699762972509&mkt=en-US&setlang=en-US&w=f0lb6gnjyHJDzdKQ0Ol52EVCX-hpTSEI",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Créditos y deducciones para individuos | Internal Revenue Service",
+        "url": "https:\/\/www.irs.gov\/es\/newsroom\/tax-credits-and-deductions-for-individuals",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/es\/newsroom\/tax-credits-and-deductions-for-individuals",
+        "snippet": "Créditos y deducciones para individuos. Español. Consejo Tributario
+        del IRS 2024-01SP, 4 de enero de 2024. Los créditos tributarios y deducciones
+        cambian el monto de la factura o reembolso de impuestos de una persona. Las
+        personas deben conocer qué créditos y deducciones pueden reclamar y los documentos
+        que necesitan para demostrar su ...", "dateLastCrawled": "2024-01-08T05:12:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=1220075595082&mkt=en-US&setlang=en-US&w=aM0LQqhsNqjsuDbj7kOaOpgvNNKvXo4K",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Ayuda económica y beneficios del Gobierno | USAGov", "url": "https:\/\/www.usa.gov\/es\/beneficios-gobierno",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/es\/beneficios-gobierno",
+        "snippet": "Beneficios del Gobierno por fallecimiento. Conozca a cuáles
+        beneficios del Gobierno tiene derecho tras la muerte de un familiar; desde
+        ayuda para gastos funerarios por COVID-19, hasta beneficios de vivienda y
+        educación para sobrevivientes, entre otros.", "dateLastCrawled": "2024-01-09T10:25:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=4558597030161706&mkt=en-US&setlang=en-US&w=yyBhO9lXYH4ZAtkpppAPmxEl6K9GzZnp",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Ramas del Gobierno de Estados Unidos | USAGov", "url": "https:\/\/www.usa.gov\/es\/ramas-gobierno-estados-unidos",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/es\/ramas-gobierno-estados-unidos",
+        "snippet": "Aprenda sobre los poderes ejecutivo, legislativo y judicial del
+        Gobierno de Estados Unidos. La Constitución de Estados Unidos, que es la
+        ley suprema de la nación, define la estructura del Gobierno federal y lo
+        divide en tres ramas: legislativa, ejecutiva y judicial. Esto asegura que
+        ningún individuo o grupo tenga demasiado poder.", "dateLastCrawled": "2024-01-08T02:25:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=5021555848512330&mkt=en-US&setlang=en-US&w=UYWaSSn03bzriiHJ8soATxTdJtF2PTPX",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Antecedentes Penales - pr", "url": "https:\/\/servicios.pr.gov\/info",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/servicios.pr.gov\/info",
+        "snippet": "GOBIERNO CENTRAL. Gobierno de puerto rico. INICIO GOBIERNO
+        DIGITAL CENTROS DE SERVICIOS. AGENCIAS. SALUD Y BIENESTAR seguridad DESARROLLO
+        ECONÓMICO TURISMO. DIRECTORIO. AGENCIAS MUNICIPIOS. Certificado de Antecedentes
+        Penales Advertencia. El origen de esta transacción será registrado en nuestros
+        sistemas y es regido por el código penal de ...", "dateLastCrawled": "2024-01-10T00:19:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=4612683417321998&mkt=en-US&setlang=en-US&w=Hmz5dKRHwbwxm2t76cLouK4FHJXImXRZ",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}], "someResultsRemoved":
+        true}, "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages",
         "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
         {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
@@ -961,5 +278,286 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-  recorded_at: Wed, 06 Oct 2021 05:45:36 GMT
-recorded_with: VCR 6.0.0
+  recorded_at: Wed, 10 Jan 2024 14:59:39 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=gobierno%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 10 Jan 2024 14:58:39 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Eventid:
+      - 659eb0dbbd964d619add3a15194ed8bc
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      Bingapis-Traceid:
+      - 659eb0dbbd964d619add3a15194ed8bc
+      Bingapis-Sessionid:
+      - E6EF280932F145F689C50CDD222F016F
+      X-Msedge-Clientid:
+      - 06E4F6965394639B318CE29452956288
+      X-Msapi-Userstate:
+      - dfb5
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=257,MSDatacenter=BNZE01
+      X-Cache:
+      - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      X-Msedge-Ref:
+      - 'Ref A: 53A1F7C50CB34CA39424BB3754994D8F Ref B: BL2AA2030102027 Ref C: 2024-01-10T14:59:39Z'
+      Apim-Request-Id:
+      - 8168f8ba-9606-4d61-b0a8-920384e03d6c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 10 Jan 2024 14:59:39 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "gobierno
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=gobierno+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 5820000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "La Fortaleza", "url": "https:\/\/www.fortaleza.pr.gov\/comunicados\/gobernador-pierluisi-somete-varios-nombramientos-para-evaluacion-en-la-nueva-sesion-legislativa",
+        "datePublished": "2024-01-08T00:00:00.0000000", "datePublishedFreshnessText":
+        "2 days ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.fortaleza.pr.gov\/comunicados\/gobernador-pierluisi-somete-varios-nombramie...",
+        "snippet": "Gobierno de Excelencia. ‍ (8 de enero de 2024)- El gobernador
+        de Puerto Rico, Pedro R. Pierluisi, anunció hoy 36 nombramientos que sometió
+        a la Asamblea Legislativa para su consideración durante el inicio de la Séptima
+        Sesión Ordinaria 2021-2024. Entre los nombramientos sometidos, hay 23 que
+        no fueron atendidos en la pasada sesión ...", "dateLastCrawled": "2024-01-09T21:52:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=1495287438474&mkt=en-US&setlang=en-US&w=U-6VEBNOtGddrwniU2wTFwuoob5Gazxe",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Información del Gobierno de Estados Unidos a su alcance | USAGov",
+        "url": "https:\/\/www.usa.gov\/es\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.usa.gov\/es", "snippet": "Votaciones y elecciones. Encuentre
+        información oficial del Gobierno sobre las elecciones y cómo votar en Estados
+        Unidos. Encuentre información sobre los beneficios, servicios y agencias del
+        Gobierno de los Estados Unidos en USAGov en Español. Conozca más sobre visas,
+        pasaportes, Seguro Social, vivienda, empleos y más.", "dateLastCrawled": "2024-01-06T11:24:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=4889266568109758&mkt=en-US&setlang=en-US&w=mWY3sZv4bLuvYcXnjYf_VxRpinHeDzbW",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "PR.gov | Gobierno de Puerto Rico", "url": "https:\/\/www.pr.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.pr.gov", "snippet":
+        "El portal de internet con información centralizada del Gobierno de Puerto
+        Rico es una herramienta en línea diseñada para brindar al ciudadano acceso
+        a información relevante y actualizada sobre los servicios y actividades gubernamentales.
+        Este portal funciona como un punto de encuentro centralizado para todas las
+        agencias y departamentos gubernamentales, lo que permite a los usuarios ...",
+        "dateLastCrawled": "2024-01-08T05:16:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=4770716874316992&mkt=en-US&setlang=en-US&w=gWqEzM-3Pvp5eK0B7Z2Z-cdGJY4ehK9F",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Jenniffer González pide al gobierno y a la Junta hablar claro sobre
+        el ...", "url": "https:\/\/gonzalez-colon.house.gov\/media\/press-releases\/jenniffer-gonzalez-pide-al-gobierno-y-la-junta-hablar-claro-sobre-el-aumento",
+        "datePublished": "2024-01-03T00:00:00.0000000", "datePublishedDisplayText":
+        "Jan 3, 2024", "isFamilyFriendly": true, "displayUrl": "https:\/\/gonzalez-colon.house.gov\/media\/press-releases\/jenniffer-gonzalez-pide-al...",
+        "snippet": "San Juan, Puerto Rico- La comisionada residente, Jenniffer González
+        Colón, reclamó tanto a la Junta de Supervisión y Administración Financiera
+        como al gobierno de Puerto Rico, a que presenten de manera clara lo que
+        envuelve el cambio en el cargo adicional por el pago de la deuda que aumentará
+        la factura de energía eléctrica a la población para que se pueda hacer un
+        análisis sosegado ...", "dateLastCrawled": "2024-01-10T08:10:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=120877048238&mkt=en-US&setlang=en-US&w=1jd7fvkCMHn4qbC7T0grC-ERBaW-i0Be",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Gobierno Digital - pr", "url": "https:\/\/www.pr.gov\/gobierno-digital",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.pr.gov\/gobierno-digital",
+        "snippet": "Biblioteca Digital del Departamento de Educación. La Biblioteca
+        Digital del Departamento de Educación de Puerto Rico es un repositorio de
+        contenido educativo en formato digital y enlaces a colecciones externas para
+        el uso de los estudiantes, padres y maestros del Departamento.", "dateLastCrawled":
+        "2024-01-08T23:30:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=4835128501076244&mkt=en-US&setlang=en-US&w=HJ-9tsRsuQmWwxcgZGWEHKrm6IaP24R6",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Jenniffer González detallas gestiones para la construcción del centro
+        ...", "url": "https:\/\/gonzalez-colon.house.gov\/media\/press-releases\/jenniffer-gonzalez-detallas-gestiones-para-la-construccion-del-centro-de-0",
+        "datePublished": "2023-11-15T00:00:00.0000000", "datePublishedDisplayText":
+        "Nov 15, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/gonzalez-colon.house.gov\/media\/press-releases\/jenniffer-gonzalez-detallas...",
+        "snippet": "Washington, D.C.- Ante el desconocimiento por parte de funcionarios
+        del gobierno de Puerto Rico sobre las gestiones durante los pasados seis
+        años que hicieron posible la colocación de la primera piedra hoy del centro
+        de salud de Vieques, la comisionada residente, Jenniffer González Colón, hizo
+        una transmisión en vivo desde su oficina en el Congreso para aclarar toda
+        duda.", "dateLastCrawled": "2024-01-10T05:31:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=4175277937645&mkt=en-US&setlang=en-US&w=dka1X7mfm9vmq0_8PbEt6MfJzaCiTdRL",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Temporada de presentación de impuestos de 2024 inicia el 29 de enero
+        ...", "url": "https:\/\/www.irs.gov\/es\/newsroom\/2024-tax-filing-season-set-for-january-29-irs-continues-to-make-improvements-to-help-taxpayers",
+        "datePublished": "2024-01-08T00:00:00.0000000", "datePublishedFreshnessText":
+        "2 days ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/es\/newsroom\/2024-tax-filing-season-set-for-january-29-irs...",
+        "snippet": "IR-2024-04SP, 8 de enero de 2024 — El Servicio de Impuestos Internos
+        anunció hoy que el lunes, 29 de enero de 2024 iniciará oficialmente la temporada
+        de impuestos de 2024 de la nación, cuando la agencia comenzará a aceptar y
+        procesar las declaraciones de impuestos de 2023.", "dateLastCrawled": "2024-01-10T09:08:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=5206155418408&mkt=en-US&setlang=en-US&w=WDoRbG9Q7zAoAIPy2tb_QzXQKuPsgtbq",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Resumen del año 2023 | ICE", "url": "https:\/\/www.ice.gov\/es\/features\/2023-revision-anual",
+        "datePublished": "2024-01-09T00:00:00.0000000", "datePublishedFreshnessText":
+        "1 day ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ice.gov\/es\/features\/2023-revision-anual",
+        "snippet": "Informe anual del año fiscal 2023 de ICE. El informe anual del
+        año fiscal 2023 del Servicio de Inmigración y Control de Aduanas de EE. UU.
+        se centra en los esfuerzos de la agencia para ayudar a asegurar la frontera
+        suroeste y reconstruir un sistema de inmigración humano y ordenado; combatir
+        las organizaciones criminales transnacionales (TCOs, por sus siglas en inglés),
+        incluyendo la ...", "dateLastCrawled": "2024-01-09T20:54:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=1357558954764&mkt=en-US&setlang=en-US&w=9hMmWLJ8Z_l1_Cs3zUz4-9fNHPwIE1Fe",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Actualización sobre la variante JN.1 del SARS-CoV-2 a la que los
+        CDC le ...", "url": "https:\/\/espanol.cdc.gov\/respiratory-viruses\/whats-new\/SARS-CoV-2-variant-JN.1.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/espanol.cdc.gov\/respiratory-viruses\/whats-new\/SARS-CoV-2-variant-JN.1.html",
+        "snippet": "Los enlaces a sitios web que no pertenecen al Gobierno Federal
+        no están avalados por los CDC, ni tampoco por ninguno de los empleados de
+        los patrocinadores ni la información y los productos presentados en el sitio.
+        Usted estará sujeto a la política de privacidad del sitio web de destino cuando
+        siga el enlace.", "dateLastCrawled": "2024-01-09T20:54:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=4793846814452&mkt=en-US&setlang=en-US&w=iFuHxdn2LX97QTmqWedXG1KrtQBArvPZ",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "La Constitución | La Casa Blanca - The White House", "url": "https:\/\/www.whitehouse.gov\/es\/acerca-de-la-casa-blanca\/nuestro-gobierno\/la-constitucion\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/es\/acerca-de-la-casa-blanca\/nuestro-gobierno\/la-constitucion",
+        "snippet": "Uno de los objetivos principales de la Constitución, tal como
+        se redactó en el borrador de la Convención, era crear un gobierno que tuviera
+        suficiente poder para actuar a nivel nacional, pero ...", "dateLastCrawled":
+        "2024-01-04T08:15:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=4969208783774602&mkt=en-US&setlang=en-US&w=DpFrZtUYXxrTvCheFiShSUj2Tlya80hO",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "VIOLENCIA BASADA EN GÉNERO - U.S. Agency for International Development",
+        "url": "https:\/\/www.usaid.gov\/sites\/default\/files\/2023-03\/Fact%20Sheet%20-%20Violencia%20de%20G%C3%A9nero%2001.2023.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usaid.gov\/sites\/default\/files\/2023-03\/Fact
+        Sheet - Violencia de Género 01....", "snippet": "La programación de USAID\/Guatemala
+        fortalece la capacidad del gobierno guatemalteco y de la sociedad civil
+        para brindar justicia y servicios, incluidos servicios médicos, psicológicos
+        y de otro tipo, para responder a las necesidades de las víctimas de VBG, al
+        promover una mayor integración y coordinación", "dateLastCrawled": "2024-01-10T11:30:00.0000000Z",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "La Rama Legislativa | La Casa Blanca - The White House", "url":
+        "https:\/\/www.whitehouse.gov\/es\/acerca-de-la-casa-blanca\/nuestro-gobierno\/la-rama-legislativa\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/es\/acerca-de-la-casa-blanca\/nuestro-gobierno\/la-rama...",
+        "snippet": "El Congreso de los Estados Unidos se compone de la Cámara de Representantes
+        y el Senado. Aprenda más sobre los poderes de la Rama Legislativa del gobierno
+        federal de los Estados Unidos.", "dateLastCrawled": "2024-01-06T01:38:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=4518198569675938&mkt=en-US&setlang=en-US&w=euAJmKL25ncGo6j81kjnQc4fxJpnI0gZ",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "La Casa Blanca - The White House", "url": "https:\/\/www.whitehouse.gov\/es\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/es",
+        "snippet": "Escribe o llama a la Casa Blanca. Únete a la administración
+        Biden-Harris. Aplica para ser un becario de la Casa Blanca. Oportunidades
+        de pasantías en la Casa Blanca.", "dateLastCrawled": "2024-01-10T01:40:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=4750723806141800&mkt=en-US&setlang=en-US&w=7CjRhclqKaBwYUOMyu0CheFoafSydPlF",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Ramas del Gobierno de Estados Unidos | USAGov", "url": "https:\/\/www.usa.gov\/es\/ramas-gobierno-estados-unidos",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/es\/ramas-gobierno-estados-unidos",
+        "snippet": "Aprenda sobre los poderes ejecutivo, legislativo y judicial del
+        Gobierno de Estados Unidos. La Constitución de Estados Unidos, que es la
+        ley suprema de la nación, define la estructura del Gobierno federal y lo
+        divide en tres ramas: legislativa, ejecutiva y judicial. Esto asegura que
+        ningún individuo o grupo tenga demasiado poder.", "dateLastCrawled": "2024-01-08T02:25:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=5021555848512330&mkt=en-US&setlang=en-US&w=UYWaSSn03bzriiHJ8soATxTdJtF2PTPX",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "El IRS reanuda la emisión de avisos de cobro", "url": "https:\/\/www.irs.gov\/es\/newsroom\/irs-resumes-issuing-collection-notices",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/es\/newsroom\/irs-resumes-issuing-collection-notices",
+        "snippet": "El IRS reanuda la emisión de avisos de cobro. A partir de este
+        mes, el IRS está reanudando gradualmente el envío de cartas y avisos recordatorios
+        de cobro que se suspendieron durante la pandemia. Tiene deuda tributaria individual
+        antes del año tributario 2022. Su negocio, organización exenta de impuestos,
+        fideicomiso o patrimonio tiene ...", "dateLastCrawled": "2024-01-09T22:42:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=4449942531077&mkt=en-US&setlang=en-US&w=tJn3-esPg_crmEnr2r5pXM_aOR2MrPlz",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "District of Puerto Rico | Justicia Medioambiental", "url": "https:\/\/www.justice.gov\/es\/usao-pr\/environmental-justice",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.justice.gov\/es\/usao-pr\/environmental-justice",
+        "snippet": "La Justicia Medioambiental es un principio que combina los derechos
+        civiles con la protección del medio ambiente al examinar si las personas,
+        independientemente de su raza, color, origen nacional o ingreso, reciben un
+        trato justo y participación significativa en el desarrollo, implementación
+        y cumplimiento de las leyes, regulaciones y políticas medioambientales.",
+        "dateLastCrawled": "2024-01-08T07:02:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=807545969565&mkt=en-US&setlang=en-US&w=UQH84d89vq6rjWRm-85Lr05kSTTNCRPf",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Beneficios de desempleo | USAGov", "url": "https:\/\/www.usa.gov\/es\/beneficios-desempleo",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/es\/beneficios-desempleo",
+        "snippet": "El seguro de desempleo le brinda ayuda económica si usted pierde
+        su empleo sin haber cometido ninguna falta. Averigüe cuáles son los requisitos
+        de elegibilidad y cómo solicitarlo. Los beneficios de desempleo varían dependiendo
+        del estado. Usted debe aplicar en el estado en el que haya trabajado. En Estados
+        Unidos, no existe un programa ...", "dateLastCrawled": "2024-01-10T00:10:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=4700575768076917&mkt=en-US&setlang=en-US&w=bnau7BAAp_BZk3tkuAiHPjwN835ZutP8",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Agencias - pr", "url": "https:\/\/www.pr.gov\/gobierno-2\/agencias",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.pr.gov\/gobierno-2\/agencias",
+        "snippet": "Administración de Vivienda Pública (Dpto. Vivienda) Administración
+        de los Sistemas de Retiro de los Empleados del Gobierno y la Judicatura
+        (ASR) Administración del Derecho al Trabajo (Dpto. Trabajo) Administración
+        para el Adiestramiento de Futuros Empresarios y Trabajadores (Dpto.", "dateLastCrawled":
+        "2024-01-10T02:25:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=4638577915658403&mkt=en-US&setlang=en-US&w=j97Dnnd0VUk9YYq8ys7swMz8QlnWR9nj",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Puerto Rico Innovation and Technology Service - pr", "url": "https:\/\/www.prits.pr.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.prits.pr.gov", "snippet":
+        "El Gobierno de Puerto Rico basa su modelo de desarrollo socioeconómico
+        en las ciencias, la tecnología y la innovación. Para realizarlo, se creó el
+        Puerto Rico Innovation and Technology Service (PRITS), mediante la Ley 75
+        del 25 de julio de 2019. La misión de PRITS es liderar la transformación digital
+        de nuestra Isla para elevar las capacidades del Gobierno de Puerto Rico
+        ante los ...", "dateLastCrawled": "2024-01-08T11:08:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=4652699762972509&mkt=en-US&setlang=en-US&w=f0lb6gnjyHJDzdKQ0Ol52EVCX-hpTSEI",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Créditos y deducciones para individuos | Internal Revenue Service",
+        "url": "https:\/\/www.irs.gov\/es\/newsroom\/tax-credits-and-deductions-for-individuals",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/es\/newsroom\/tax-credits-and-deductions-for-individuals",
+        "snippet": "Créditos y deducciones para individuos. Español. Consejo Tributario
+        del IRS 2024-01SP, 4 de enero de 2024. Los créditos tributarios y deducciones
+        cambian el monto de la factura o reembolso de impuestos de una persona. Las
+        personas deben conocer qué créditos y deducciones pueden reclamar y los documentos
+        que necesitan para demostrar su ...", "dateLastCrawled": "2024-01-08T05:12:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=gobierno+(site%3agov+OR+site%3amil)&d=1220075595082&mkt=en-US&setlang=en-US&w=aM0LQqhsNqjsuDbj7kOaOpgvNNKvXo4K",
+        "language": "es", "isNavigational": <DATADOG_API_ENABLED>}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 10 Jan 2024 14:59:39 GMT
+recorded_with: VCR 6.2.0
