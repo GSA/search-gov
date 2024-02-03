@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { darken } from 'polished';
-import { Header as UswdsHeader, Logo, Title, NavMenuButton, ExtendedNav } from '@trussworks/react-uswds';
+import { Header as UswdsHeader, NavMenuButton, ExtendedNav } from '@trussworks/react-uswds';
 import { StyleContext } from '../../contexts/StyleContext';
 
 import { HeaderProps } from './../props';
+import { Logo } from './Logo';
 
 import './ExtendedHeader.css';
 
@@ -63,22 +64,11 @@ export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHe
   
   const showMobileMenu = (primaryHeaderLinks && primaryHeaderLinks.length > 0) || (secondaryHeaderLinks && secondaryHeaderLinks.length > 0);
 
-  const heading = page.displayLogoOnly ? <Title>{page.title}</Title> : '';
-
   return (
     <>
       <StyledUswdsHeader extended={true} styles={styles}>
         <div className="usa-navbar">
-          <Logo
-            className="width-full"
-            size="slim"
-            image={
-              page.logo?.url ? <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} /> : null
-            }
-            heading={
-              heading
-            }
-          />
+          <Logo page={page} />
           {showMobileMenu && <NavMenuButton onClick={toggleMobileNav} label="Menu" />}
         </div>
         <ExtendedNav

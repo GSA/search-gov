@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { darken } from 'polished';
-import { Header as UswdsHeader, PrimaryNav, NavMenuButton, Logo, Title } from '@trussworks/react-uswds';
+import { Header as UswdsHeader, PrimaryNav, NavMenuButton } from '@trussworks/react-uswds';
 
 import { HeaderProps } from './../props';
 import { StyleContext } from '../../contexts/StyleContext';
+import { Logo } from './Logo';
 
 import './BasicHeader.css';
 
@@ -47,23 +48,12 @@ export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeade
 
   const showMobileMenu = (primaryHeaderLinks && primaryHeaderLinks.length > 0) || (secondaryHeaderLinks && secondaryHeaderLinks.length > 0);
 
-  const title = page.displayLogoOnly ? 'Steven' : page.title;
-
   return (
     <>
       <StyledUswdsHeader basic styles={styles}>
         <div className="usa-nav-container">
           <div className="usa-navbar">
-						<Logo
-							className="width-full"
-							size="slim"
-							image={
-								page.logo?.url ? <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} /> : null
-							}
-							heading={
-                <Title>{title}</Title>
-							}
-						/>
+            <Logo page={page} />
             {showMobileMenu && <NavMenuButton
               label="Menu"
               onClick={toggleMobileNav}
