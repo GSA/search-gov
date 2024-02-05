@@ -14,19 +14,18 @@ interface GraphicsBestBetProps {
 }
 
 export const GraphicsBestBet = ({ title, titleUrl, imageUrl, imageAltText, links }: GraphicsBestBetProps) => {
-
   // This method reorders links so that they appear in column order.
   const sortedLinks = (links: {title: string, url: string}[]) => {
     const order = [];
-    for (let i = 0; i < links.length; i++) {
-      order.push((i % 2 === 0) ? i / 2 : (links.length + i) / 2);
+    for (let index = 0; index < links.length; index += 1) {
+      order.push((index % 2 === 0) ? index / 2 : (links.length + index) / 2);
     }
 
     const reorderedLinks = [];
-    for (let i = 0; i < order.length; i++) {
-      reorderedLinks.push(links[order[i]]);
+    for (let index = 0; index < order.length; index += 1) {
+      reorderedLinks.push(links[order[index]]);
     }
-    return reorderedLinks
+    return reorderedLinks;
   };
 
   return (
