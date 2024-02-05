@@ -110,7 +110,6 @@ class Affiliate < ApplicationRecord
   before_validation :set_managed_header_links, :set_managed_footer_links
   before_validation :set_managed_no_results_pages_alt_links
   before_validation :set_default_labels
-  before_validation :strip_bing_v5_key
   before_validation :set_attached_filepath
 
   before_validation do |record|
@@ -131,7 +130,6 @@ class Affiliate < ApplicationRecord
   validates_uniqueness_of :api_access_key, :name, case_sensitive: false
   validates_length_of :name, within: (2..MAX_NAME_LENGTH)
   validates_format_of :name, with: /\A[a-z0-9._-]+\z/
-  validates_format_of :bing_v5_key, with: /\A[0-9a-f]{32}\z/i, allow_nil: true
   validates_inclusion_of :search_engine, in: SEARCH_ENGINES
   validates_url :header_tagline_url, allow_blank: true
 
@@ -345,11 +343,11 @@ class Affiliate < ApplicationRecord
 
   def css_property_hash(reload = false)
     @css_property_hash = nil if reload
-    if theme.to_sym == :default
-      @css_property_hash ||= THEMES[:default].reverse_merge(load_css_properties)
-    else
-      @css_property_hash ||= load_css_properties
-    end
+    @css_property_hash ||= if theme.to_sym == :default
+                             THEMES[:default].reverse_merge(load_css_properties)
+                           else
+                             load_css_properties
+                           end
   end
 
   def add_site_domains(site_domain_param_hash)
@@ -499,10 +497,6 @@ class Affiliate < ApplicationRecord
     self.rss_govbox_label = I18n.t(:default_rss_govbox_label, locale: locale) if rss_govbox_label.blank?
   end
 
-  def strip_bing_v5_key
-    self.bing_v5_key = bing_v5_key.present? ? bing_v5_key.strip : nil
-  end
-
   def validate_css_property_hash
     return if @css_property_hash.blank?
 
@@ -554,7 +548,7 @@ class Affiliate < ApplicationRecord
   def validate_color_property(key, value)
     return unless key.to_s =~ /color$/ && value.present?
 
-    errors.add(:base, "#{key.to_s.humanize} should consist of a # character followed by 3 or 6 hexadecimal digits") unless value =~ /^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/
+    errors.add(:base, "#{key.to_s.humanize} should consist of a # character followed by 3 or 6 hexadecimal digits") unless /^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/.match?(value)
   end
 
   def set_managed_header_links
@@ -671,10 +665,10 @@ class Affiliate < ApplicationRecord
   end
 
   def update_error_keys
-    swap_error_key(:"rss_feeds.base", :base)
-    swap_error_key(:"site_domains.domain", :domain)
-    swap_error_key(:"connections.connected_affiliate_id", :related_site_handle)
-    swap_error_key(:"connections.label", :related_site_label)
+    swap_error_key(:'rss_feeds.base', :base)
+    swap_error_key(:'site_domains.domain', :domain)
+    swap_error_key(:'connections.connected_affiliate_id', :related_site_handle)
+    swap_error_key(:'connections.label', :related_site_label)
   end
 
   def live_fields
@@ -696,9 +690,9 @@ class Affiliate < ApplicationRecord
       mobile_logo.clear
     end
 
-    if header_tagline_logo? && !header_tagline_logo.dirty? && mark_header_tagline_logo_for_deletion == '1'
-      header_tagline_logo.clear
-    end
+    return unless header_tagline_logo? && !header_tagline_logo.dirty? && mark_header_tagline_logo_for_deletion == '1'
+
+    header_tagline_logo.clear
   end
 
   def set_search_labels
@@ -721,7 +715,7 @@ class Affiliate < ApplicationRecord
   end
 
   def self.to_name_site_hash
-    Hash[all.collect { |site| [site.name, site] }]
+    all.index_by(&:name)
   end
 
   def validate_managed_no_results_pages_guidance_text
