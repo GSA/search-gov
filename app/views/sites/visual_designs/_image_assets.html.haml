@@ -23,8 +23,9 @@
         = metadata.text_field :alt_text, value: render_logo_alt_text(@site.header_logo.custom_metadata)
 
 %fieldset
-  = f.label :display_logo_only, t('.display_logo_only', scope: 'admin_center')
-  = f.check_box :display_logo_only
+  = f.label :display_logo_only, class: 'checkbox' do
+    = f.check_box :display_logo_only
+    = t('.display_logo_only', scope: 'admin_center')
 
 %fieldset
   = f.label :identifier_logo, t('.identifier_logo', scope: 'admin_center')
