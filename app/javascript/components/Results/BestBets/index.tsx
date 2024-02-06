@@ -26,7 +26,7 @@ interface BestBetsProps {
   }
 }
 
-const StyledWrapper = styled.div.attrs<{ styles: { bestBetBackgroundColor: string; sectionTitleColor: string }; }>((props) => ({
+const StyledWrapper = styled.div.attrs<{ styles: { bestBetBackgroundColor: string; sectionTitleColor: string; resultUrlColor: string; resultDescriptionColor: string; }; }>((props) => ({
   styles: props.styles
 }))`
   .results-best-bets-wrapper > .grid-row > .grid-col {
@@ -34,6 +34,12 @@ const StyledWrapper = styled.div.attrs<{ styles: { bestBetBackgroundColor: strin
   }
   .best-bets-title {
     color: ${(props) => props.styles.sectionTitleColor};
+  }
+  .result-desc > p {
+    color: ${(props) => props.styles.resultDescriptionColor} !important;
+  }
+  .result-url-text{
+    color: ${(props) => props.styles.resultUrlColor} !important;
   }
 `;
 
