@@ -195,24 +195,16 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
         )}
 
         <div id="results" className="search-result-item-wrapper">
-          {/* RSS - new news */}
-          {additionalResults?.newNews && 
-            <RssNews 
-              news={additionalResults.newNews} 
-              newsLabel={newsAboutQuery}
+          {additionalResults?.healthTopic && 
+            <HealthTopics 
+              {...additionalResults.healthTopic}
             />
           }
-          {/* additionalResults?.jobs */}
+
           {jobsEnabled &&
             <Jobs 
               jobs={additionalResults?.jobs}
               agencyName={agencyName}
-            />
-          }
-          
-          {additionalResults?.healthTopic && 
-            <HealthTopics 
-              {...additionalResults.healthTopic}
             />
           }
 
@@ -221,6 +213,14 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
             <VideosModule videos={additionalResults.youtubeNewsItems} query={query} videosUrl={videosUrl} />
           }
 
+          {/* RSS - new news */}
+          {additionalResults?.newNews && 
+            <RssNews 
+              news={additionalResults.newNews} 
+              newsLabel={newsAboutQuery}
+            />
+          }
+          
           {/* Results: Images */}
           {imagesResults.length > 0 && <ImagesPage images={imagesResults}/>}
           
