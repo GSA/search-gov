@@ -1,29 +1,26 @@
-require 'spec_helper'
-
 describe SiteSearch do
-  fixtures :affiliates
-
   let(:affiliate) { affiliates(:power_affiliate) }
   let(:dc) do
     collection = affiliate.document_collections.build(
       name: 'WH only',
-      url_prefixes_attributes: {'0' => {prefix: 'http://www.whitehouse.gov/photos-and-video/'},
-                                   '1' => {prefix: 'http://www.whitehouse.gov/blog/'}})
+      url_prefixes_attributes: { '0' => { prefix: 'http://www.whitehouse.gov/photos-and-video/' },
+                                 '1' => { prefix: 'http://www.whitehouse.gov/blog/' } }
+    )
     collection.save!
     collection.navigation.update!(is_active: true)
     collection
   end
 
   describe '.initialize' do
-    it "should use the dc param to find a document collection when document_collection isn't present" do
+    it 'uses the dc param to find a document collection when document_collection is not present' do
       expect(described_class.new(query: 'gov', affiliate: affiliate, dc: dc.id).document_collection).to eq(dc)
     end
   end
 
   describe '#run' do
-    let(:bing_formatted_query) { double('BingFormattedQuery', matching_site_limits: nil, query: 'ignore') }
+    let(:bing_formatted_query) { instance_double(BingFormattedQuery, matching_site_limits: nil, query: 'ignore') }
 
-    it 'should include sites from document collection' do
+    it 'includes sites from document collection' do
       expect(BingV7FormattedQuery).to receive(:new).with(
         'gov', hash_including(included_domains: ['www.whitehouse.gov/photos-and-video/', 'www.whitehouse.gov/blog/'],
                               excluded_domains: [])).and_return bing_formatted_query
@@ -35,7 +32,8 @@ describe SiteSearch do
       let(:collection) do
         coll = affiliate.document_collections.build(
           name: 'WH only',
-          url_prefixes_attributes: {'0' => { prefix: 'www.whitehouse.gov' }})
+          url_prefixes_attributes: { '0' => { prefix: 'www.whitehouse.gov' } }
+        )
         coll.save!
         coll.navigation.update!(is_active: true)
         coll
@@ -52,7 +50,8 @@ describe SiteSearch do
       let(:collection) do
         coll = affiliate.document_collections.build(
           name: 'WH only',
-          url_prefixes_attributes: {'0' => { prefix: 'www100.whitehouse.gov' }})
+          url_prefixes_attributes: { '0' => { prefix: 'www100.whitehouse.gov' } }
+        )
         coll.save!
         coll.navigation.update!(is_active: true)
         coll
@@ -79,7 +78,8 @@ describe SiteSearch do
       let(:collection) do
         coll = affiliate.document_collections.build(
           name: 'WH only',
-          url_prefixes_attributes: {'0' => { prefix: 'www100.whitehouse.gov' }})
+          url_prefixes_attributes: { '0' => { prefix: 'www100.whitehouse.gov' } }
+        )
         coll.save!
         coll.navigation.update!(is_active: true)
         coll

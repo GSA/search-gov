@@ -10,7 +10,7 @@ describe ImageSearch do
         allow(affiliate).to receive(:has_no_social_image_feeds?).and_return true
       end
 
-      it 'should use commercial results instead of Oasis' do
+      it 'uses commercial results instead of Oasis' do
         image_search = described_class.new(affiliate: affiliate, query: 'some query')
         expect(image_search.uses_cr).to be true
       end
@@ -36,14 +36,12 @@ describe ImageSearch do
     context 'when commercial search results are specified' do
       let(:use_commercial_results) { 'true' }
 
-      %w[BingV6 BingV7].each do |search_engine|
-        context "and the affiliate's search_engine is #{search_engine}" do
-          let(:search_engine) { search_engine }
-          let(:underlying_search_class) { SearchEngineAdapter }
+      context 'when the affiliate search_engine is BingV7' do
+        let(:search_engine) { 'BingV7' }
+        let(:underlying_search_class) { SearchEngineAdapter }
 
-          it 'delegates to SearchEngineAdapter#diagnostics' do
-            expect(image_search.diagnostics).to be(:underlying_diagnostics)
-          end
+        it 'delegates to SearchEngineAdapter#diagnostics' do
+          expect(image_search.diagnostics).to be(:underlying_diagnostics)
         end
       end
 
@@ -77,22 +75,6 @@ describe ImageSearch do
         allow(affiliate).to receive(:has_no_social_image_feeds?).and_return false
       end
 
-      context 'when search_engine is BingV6' do
-        before { affiliate.search_engine = 'BingV6' }
-
-        it 'should perform a Bing image search' do
-          expect(SearchEngineAdapter).to receive(:new).
-            with(BingV6ImageSearch,
-                 hash_including(affiliate: affiliate,
-                                page: 1,
-                                per_page: 20,
-                                query: 'lsdkjflskjflskjdf')).
-            and_return(search_engine_adapter)
-          expect(search_engine_adapter).to receive(:run)
-          image_search.run
-        end
-      end
-
       context 'when search_engine is BingV7' do
         before { affiliate.search_engine = 'BingV7' }
 
@@ -112,7 +94,7 @@ describe ImageSearch do
       context 'when search_engine is SearchGov' do
         before { affiliate.search_engine = 'SearchGov' }
 
-        it 'should perform a Bing V6 image search' do
+        it 'performs a BingV7 image search' do
           expect(SearchEngineAdapter).to receive(:new).
             with(BingV7ImageSearch,
                  hash_including(affiliate: affiliate,

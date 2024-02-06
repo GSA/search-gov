@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::CommercialSearchOptions < Api::SearchOptions
   validates_presence_of :api_key, message: 'must be present'
 
@@ -10,7 +12,5 @@ class Api::CommercialSearchOptions < Api::SearchOptions
     super.merge(api_key: api_key)
   end
 
-  def api_key
-    site.try(:bing_v5_key) || @api_key
-  end
+  attr_reader :api_key
 end

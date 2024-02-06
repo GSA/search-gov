@@ -50,25 +50,6 @@ describe WebSearch do
   end
 
   describe 'instrumenting search engine calls' do
-    context 'when BingV6 is the engine' do
-      let(:valid_options) do
-        { query: 'government', affiliate: affiliate }
-      end
-      let(:bing_search) { BingV6WebSearch.new(valid_options) }
-
-      before do
-        allow(BingV6WebSearch).to receive(:new).and_return bing_search
-        allow(bing_search).to receive(:execute_query)
-      end
-
-      it 'instruments the call to the search engine with the proper action.service namespace and query param hash' do
-        expect(affiliate.search_engine).to eq('BingV7')
-        expect(ActiveSupport::Notifications).to receive(:instrument).
-          with('bing_v7_web_search.usasearch', hash_including(query: hash_including(term: 'government (site:gov OR site:mil)')))
-        described_class.new(valid_options).send(:search)
-      end
-    end
-
     context 'when BingV7 is the engine' do
       before do
         affiliate.search_engine = 'BingV7'
@@ -368,7 +349,7 @@ describe WebSearch do
 
     context 'when the affiliate has site domains and excluded domains' do
       let(:affiliate) do
-        Affiliate.create!(name: 'nasa', display_name: 'Nasa', search_engine: search_engine)
+        Affiliate.create!(name: 'nasa', display_name: 'Nasa', search_engine: 'BingV7')
       end
       let(:search) { described_class.new(affiliate: affiliate, query: query) }
 
@@ -378,63 +359,56 @@ describe WebSearch do
         search.run
       end
 
-      context 'when the affiliate.uses BingV6' do
-        let(:search_engine) { 'BingV6' }
+      context 'when a subdirectory is excluded' do
+        let(:included_domain) { 'justice.gov' }
+        let(:excluded_domain) { 'justice.gov/legal-careers' }
+        let(:query) { 'legal careers' }
 
-        context 'when a subdirectory is excluded' do
-          let(:included_domain) { 'justice.gov' }
-          let(:excluded_domain) { 'justice.gov/legal-careers' }
-          let(:query) { 'legal careers' }
-
-          it 'includes the included domains' do
-            search.results.each do |result|
-              expect(result['unescapedUrl']).to match(/justice.gov/)
-            end
-          end
-
-          # Pending: https://www.pivotaltracker.com/story/show/139210497
-          xit 'excludes the excluded domains' do
-            search.results.each do |result|
-              expect(result['unescapedUrl']).not_to match(%r{justice.gov/legal-careers})
-            end
+        it 'includes the included domains' do
+          search.results.each do |result|
+            expect(result['unescapedUrl']).to match(/justice.gov/)
           end
         end
 
-        context 'when a subdomain is excluded' do
-          let(:included_domain) { 'nasa.gov' }
-          let(:excluded_domain) { 'mars.nasa.gov' }
-          let(:query) { 'mars' }
-
-          it 'includes the included domains' do
-            search.results.each do |result|
-              expect(result['unescapedUrl']).to match(/nasa.gov/)
-            end
+        it 'excludes the excluded domains', skip: 'Pending: https://www.pivotaltracker.com/story/show/139210497' do
+          search.results.each do |result|
+            expect(result['unescapedUrl']).not_to match(%r{justice.gov/legal-careers})
           end
+        end
+      end
 
-          # Pending: https://www.pivotaltracker.com/story/show/139210497
-          xit 'excludes the excluded domains' do
-            search.results.each do |result|
-              expect(result['unescapedUrl']).not_to match(/mars.nasa.gov/)
-            end
+      context 'when a subdomain is excluded' do
+        let(:included_domain) { 'nasa.gov' }
+        let(:excluded_domain) { 'mars.nasa.gov' }
+        let(:query) { 'mars' }
+
+        it 'includes the included domains' do
+          search.results.each do |result|
+            expect(result['unescapedUrl']).to match(/nasa.gov/)
           end
         end
 
-        context 'when a top-level domain is included' do
-          let(:included_domain) { '.gov' }
-          let(:excluded_domain) { 'nasa.gov' }
-          let(:query) { 'mars' }
-
-          it 'includes the included domains' do
-            search.results.each do |result|
-              expect(result['unescapedUrl']).to match(/.gov/)
-            end
+        it 'excludes the excluded domains', skip: 'Pending: https://www.pivotaltracker.com/story/show/139210497' do
+          search.results.each do |result|
+            expect(result['unescapedUrl']).not_to match(/mars.nasa.gov/)
           end
+        end
+      end
 
-          # Pending: https://www.pivotaltracker.com/story/show/139210497
-          xit 'excludes the excluded domains' do
-            search.results.each do |result|
-              expect(result['unescapedUrl']).not_to match(/nasa.gov/)
-            end
+      context 'when a top-level domain is included' do
+        let(:included_domain) { '.gov' }
+        let(:excluded_domain) { 'nasa.gov' }
+        let(:query) { 'mars' }
+
+        it 'includes the included domains' do
+          search.results.each do |result|
+            expect(result['unescapedUrl']).to match(/.gov/)
+          end
+        end
+
+        it 'excludes the excluded domains', skip: 'Pending: https://www.pivotaltracker.com/story/show/139210497' do
+          search.results.each do |result|
+            expect(result['unescapedUrl']).not_to match(/nasa.gov/)
           end
         end
       end
