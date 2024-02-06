@@ -2,349 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=jobs%20(site:usa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V7_SUBSCRIPTION_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Transfer-Encoding:
-      - chunked
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Tue, 07 Sep 2021 16:18:27 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
-      Bingapis-Traceid:
-      - 59A3B5D0DA514D5F8002406A7A698010
-      Bingapis-Sessionid:
-      - 1BE0CCE7439B4E35B4C389B1E54D17B3
-      X-Msedge-Clientid:
-      - 16AA6EA30E8F68273ADF7E080F72697F
-      X-Msapi-Userstate:
-      - 87e9
-      Bingapis-Market:
-      - en-US
-      X-Search-Responseinfo:
-      - InternalResponseTime=233,MSDatacenter=BN2B
-      X-Cache:
-      - CONFIG_NOCACHE
-      X-Msedge-Ref:
-      - 'Ref A: 59A3B5D0DA514D5F8002406A7A698010 Ref B: BLUEDGE0120 Ref C: 2021-09-07T16:19:27Z'
-      Apim-Request-Id:
-      - 3064eb40-8b0b-400d-a62a-80d0c8a944b7
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
-      X-Content-Type-Options:
-      - nosniff
-      Csp-Billing-Usage:
-      - CognitiveServices.BingSearchV7.Transaction=1
-      Date:
-      - Tue, 07 Sep 2021 16:19:27 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "jobs
-        (site:usa.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=jobs+(site%3ausa.gov)",
-        "totalEstimatedMatches": 560000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "Find a Job | USAGov", "url": "https:\/\/www.usa.gov\/find-a-job",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/find-a-job",
-        "snippet": "Federal Government Employment walks you through the steps to apply
-        for a job on USAJOBS. USAJOBS is the federal government''s jobs portal.
-        Veterans'' Preference Advisor offers guidance on veterans'' preference in
-        federal hiring. If you plan to go to college or a vocational school, learn
-        about your educational benefits.", "dateLastCrawled": "2021-09-05T06:13:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "Find a Federal Government Job | USAGov", "url": "https:\/\/www.usa.gov\/government-jobs",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/government-jobs",
-        "snippet": "Many jobs open to people with disabilities use only that process.
-        Finding and Applying for Federal Jobs. You can search for most jobs on
-        the government’s job site, USAJOBS.gov. To apply for jobs under Schedule
-        A, you must provide proof that you have an intellectual, psychiatric, or severe
-        physical disability. To apply for a job online:", "dateLastCrawled": "2021-09-04T06:19:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2",
-        "name": "Looking for a New Job | USAGov", "url": "https:\/\/www.usa.gov\/job-search",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/job-search",
-        "snippet": "Looking for a New Job. Find out how to look for work in the private
-        sector and federal government. Learn how to find a job with the federal government.
-        Learn how and where to search for employment.", "dateLastCrawled": "2021-09-04T23:07:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3",
-        "name": "Jobs and Education for People with Disabilities | USAGov", "url":
-        "https:\/\/www.usa.gov\/disability-jobs-education", "isFamilyFriendly": true,
-        "displayUrl": "https:\/\/www.usa.gov\/disability-jobs-education", "snippet":
-        "Many jobs open to people with disabilities use only that process. Finding
-        and Applying for Federal Jobs. You can search for most jobs on the government’s
-        job site, USAJOBS.gov. To apply for jobs under Schedule A, you must provide
-        proof that you have an intellectual, psychiatric, or severe physical disability.
-        To apply for a job online:", "dateLastCrawled": "2021-09-04T22:08:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4",
-        "name": "Jobs and Training for Veterans | USAGov", "url": "https:\/\/www.usa.gov\/veteran-employment",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/veteran-employment",
-        "snippet": "VA for Vets has virtual job boards for Department of Veterans
-        Affairs, federal, and civilian openings. Federal Government Employment walks
-        you through the steps to apply for a job on USAJOBS. USAJOBS is the federal
-        government''s jobs portal. Veterans'' Preference Advisor offers guidance
-        on veterans'' preference in federal hiring.", "dateLastCrawled": "2021-09-04T18:12:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5",
-        "name": "Join the Military | USAGov", "url": "https:\/\/www.usa.gov\/join-military",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/join-military",
-        "snippet": "The U.S. military has six branches of service: the Army, Navy,
-        Air Force, Coast Guard, Marine Corps, and Space Force. The requirements to
-        join are similar for all six, but there are differences in age limits, test
-        scores, and fitness levels. You can apply online or through a recruiter.",
-        "dateLastCrawled": "2021-09-05T07:10:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6",
-        "name": "How To Start Your Own Business | USAGov", "url": "https:\/\/www.usa.gov\/start-business",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/start-business",
-        "snippet": "Note: The federal government never charges a fee for information
-        about, or applications for, government jobs. You can search and apply for
-        federal government jobs for free at USAJOBS. Commercial Driver''s Licenses.
-        A commercial driver''s license (CDL) allows someone to drive vehicles used
-        for business, like tractor trailers and buses. State motor ...", "dateLastCrawled":
-        "2021-09-05T08:03:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7", "name":
-        "Introduction to Government Contracting | USAGov", "url": "https:\/\/www.usa.gov\/government-contracting-for-beginners",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/government-contracting-for-beginners",
-        "snippet": "Introduction to Government Contracting. Learn how to grow your
-        business by having federal, state, and local governments as customers. Find
-        support to help you search for and bid on contract opportunities. Use this
-        official database from beta.SAM.gov to find federal government contracting
-        opportunities for your business.", "dateLastCrawled": "2021-09-05T04:09:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8",
-        "name": "Federal Court Interpreters | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/federal-court-interpreters",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/federal-court-interpreters",
-        "snippet": "Jobs and Education; Veterans Disability Benefits; Your Legal
-        Disability Rights; Disasters and Emergencies. After a Disaster; Disaster Financial
-        Assistance. Disaster Financial Assistance for Workers and Small Business Owners;
-        Disaster Financial Assistance with Food, Housing, and Bills; Financial Assistance
-        Within Designated Natural Disaster Areas", "dateLastCrawled": "2021-09-02T04:51:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9",
-        "name": "Medicare | USAGov", "url": "https:\/\/www.usa.gov\/medicare\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/medicare",
-        "snippet": "Medicare is the federal health insurance program for people:
-        Age 65 or older. Under 65 with certain disabilities. Any age with end-stage
-        renal disease (permanent kidney failure requiring dialysis or a kidney transplant).
-        Medicare has four parts: Part A is hospital insurance. Part B is medical
-        insurance. Part C Medicare Advantage Plans are a ...", "dateLastCrawled":
-        "2021-09-05T04:06:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10", "name":
-        "Official Guide to Government Information and Services | USAGov", "url": "https:\/\/www.usa.gov\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov", "snippet":
-        "Jobs and Unemployment. Find out how and where to look for a new job or
-        career, get help if you are unemployed, and more. Laws and Legal Issues. Learn
-        how to report a crime, locate a federal inmate, research common U.S. laws,
-        and file a complaint against the government. Military and Veterans", "dateLastCrawled":
-        "2021-09-02T01:13:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11", "name":
-        "Green Cards and Permanent Residence in the U.S. | USAGov", "url": "https:\/\/www.usa.gov\/green-cards",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/green-cards",
-        "snippet": "Learn how to get a Green Card to become a permanent resident,
-        check your green card case status, bring a foreign spouse to live in the U.S.
-        and what documents you need when traveling back to the U.S. Also, find out
-        how to enter or check your results for the Diversity Visa Lottery program.",
-        "dateLastCrawled": "2021-09-05T06:10:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12",
-        "name": "Apply for Nonimmigrant Visas to the U.S. | USAGov", "url": "https:\/\/www.usa.gov\/visas",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/visas",
-        "snippet": "Learn how to apply for different types of nonimmigrant visas for
-        tourists, students, business travelers and future spouses. Also, find information
-        about the Visa Waiver Program, and how to get a job in the United States as
-        a foreign worker.", "dateLastCrawled": "2021-09-05T05:18:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13",
-        "name": "Government Grants and Loans | USAGov", "url": "https:\/\/www.usa.gov\/grants",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/grants",
-        "snippet": "Grants.gov centralizes information from more than 1,000 government
-        grant programs. It''s designed to help states and organizations find and apply
-        for grants. Eligibility - Most of the funding opportunities are for organizations,
-        not individuals. How to apply - Get tips and tools to help you with the registration
-        and application process.", "dateLastCrawled": "2021-09-05T06:15:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14",
-        "name": "Leaving the Military? Avoid Job and Education Scams | USAGov",
-        "url": "https:\/\/www.usa.gov\/features\/leaving-the-military-avoid-job-and-education-scams",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/features\/leaving-the-military-avoid-job-and-education-scams",
-        "snippet": "Leaving the Military? Avoid Job and Education Scams. By: USAGov
-        and the Federal Trade Commission. Date: July 17, 2017. Most service members
-        transition out of the military into a civilian career or educational training.
-        But not every training program or job service may be out to help you. July
-        is the Month of the Military Consumer.", "dateLastCrawled": "2021-09-03T03:18:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15",
-        "name": "Financial Assistance and Support Services for People with ...",
-        "url": "https:\/\/www.usa.gov\/disability-financial-support", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.usa.gov\/disability-financial-support",
-        "snippet": "Explore a wide range of programs and tools to help with housing,
-        taxes, medical bills, service and emotional support animals, and more. Learn
-        about eligibility, how to apply, and more for each of these programs. You
-        may also be eligible for a Non-Elderly Disabled (NED) Voucher. NED vouchers
-        help ...", "dateLastCrawled": "2021-09-05T08:11:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16",
-        "name": "Selective Service | USAGov", "url": "https:\/\/www.usa.gov\/selective-service",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/selective-service",
-        "snippet": "Veterans Jobs and Training; Selective Service. Learn how a
-        military draft works and find out if and how you need to register for Selective
-        Service. The Draft. A draft is the mandatory enrollment of individuals into
-        the armed forces. The United States military has been all-volunteer since
-        1973. But an act of Congress could still reinstate the ...", "dateLastCrawled":
-        "2021-09-05T05:19:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17", "name":
-        "Advance Child Tax Credit and Economic Impact Payments ...", "url": "https:\/\/www.usa.gov\/covid-stimulus-checks",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/covid-stimulus-checks",
-        "snippet": "COVID-19 Stimulus Checks for Individuals. The IRS issued three
-        Economic Impact Payments during the coronavirus pandemic for people who were
-        eligible : $1,200 in April 2020. $600 in December 2020\/January 2021. $1,400
-        in March 2021. These payments were sent by direct deposit to a bank account
-        or by mail as a paper check or a debit card.", "dateLastCrawled": "2021-09-05T05:03:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18",
-        "name": "COVID-19 Unemployment Benefits | USAGov", "url": "https:\/\/www.usa.gov\/covid-unemployment-benefits",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/covid-unemployment-benefits",
-        "snippet": "COVID-19 Unemployment Benefits. The federal government allowed
-        states to change their laws to provide COVID-19 unemployment benefits for
-        people whose jobs have been affected by the coronavirus pandemic. Many states
-        are ending their COVID-related unemployment benefits. Contact your state’s
-        unemployment insurance program for the most up-to-date ...", "dateLastCrawled":
-        "2021-09-05T13:55:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19", "name":
-        "Veterans Disability Benefits | USAGov", "url": "https:\/\/www.usa.gov\/disability-veterans-benefits",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/disability-veterans-benefits",
-        "snippet": "Veterans Disability Benefits. Learn about types of benefits available
-        to some veterans with disabilities. These include compensation, pensions,
-        and grants for veterans with certain service-connected disabilities as well
-        as pensions for some veterans 65 and older and grants for vets with age-related
-        disabilities.", "dateLastCrawled": "2021-09-04T10:09:00.0000000Z", "language":
-        "en", "isNavigational": false}]}, "rankingResponse": {"mainline": {"items":
-        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-  recorded_at: Tue, 07 Sep 2021 16:19:28 GMT
-- request:
-    method: get
-    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=jazz%20(site:usa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V7_SUBSCRIPTION_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Transfer-Encoding:
-      - chunked
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Tue, 07 Sep 2021 16:18:28 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
-      Bingapis-Traceid:
-      - 108444E9A09A4EBD8D945060CA096E0D
-      Bingapis-Sessionid:
-      - 3D3630EA961D44B1BED21A4A442F97D1
-      X-Msedge-Clientid:
-      - 05AC11134943658F18D001B848BE6427
-      X-Msapi-Userstate:
-      - 675e
-      Bingapis-Market:
-      - en-US
-      X-Search-Responseinfo:
-      - InternalResponseTime=180,MSDatacenter=BN2B
-      X-Cache:
-      - CONFIG_NOCACHE
-      X-Msedge-Ref:
-      - 'Ref A: 108444E9A09A4EBD8D945060CA096E0D Ref B: BLUEDGE0117 Ref C: 2021-09-07T16:19:28Z'
-      Apim-Request-Id:
-      - 627761d5-715f-4d65-b225-9055ae5e43cb
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
-      X-Content-Type-Options:
-      - nosniff
-      Csp-Billing-Usage:
-      - CognitiveServices.BingSearchV7.Transaction=1
-      Date:
-      - Tue, 07 Sep 2021 16:19:27 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "jazz
-        (site:usa.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=jazz+(site%3ausa.gov)",
-        "totalEstimatedMatches": 2, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "Inauguration of the President of the United States | USAGov", "url":
-        "https:\/\/www.usa.gov\/inauguration", "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.usa.gov\/inauguration", "snippet": "Around noon, the president-elect
-        recites the following oath, in accordance with Article II, Section I of the
-        U.S. Constitution: \"I do solemnly swear (or affirm) that I will faithfully
-        execute the Office of President of the United States, and will to the best
-        of my ability, preserve, protect and defend the Constitution of the United
-        States.\"", "dateLastCrawled": "2021-09-03T01:23:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "Leyes federales más populares | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/leyes-federales",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/leyes-federales",
-        "snippet": "Si usted considera que ha sido discriminado en el trabajo o se
-        le ha negado una oportunidad en su empleo por razones que están prohibidas
-        por ley, puede presentar una queja ante la Comisión para la Igualdad de Oportunidades
-        en el Empleo (EEOC, sigla en inglés). La EEOC es la agencia del Gobierno ...",
-        "dateLastCrawled": "2021-09-05T17:07:00.0000000Z", "language": "es", "isNavigational":
-        false}]}, "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages",
-        "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}}]}}}'
-  recorded_at: Tue, 07 Sep 2021 16:19:28 GMT
-- request:
-    method: get
     uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=jobs%20(site:usa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
@@ -374,31 +31,35 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Wed, 06 Oct 2021 11:49:42 GMT
+      - Wed, 10 Jan 2024 14:40:43 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
+      X-Eventid:
+      - 659eaca7f5fc4e3bbc255801ef71c1e2
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
       Bingapis-Traceid:
-      - D515E3ACF0634622BAC8B58840DFA829
+      - 659eaca7f5fc4e3bbc255801ef71c1e2
       Bingapis-Sessionid:
-      - 1D6B990C25534B8797B6081EB3342A95
+      - CF66DFDE1DB34290AB4D1AFC1E365CB5
       X-Msedge-Clientid:
-      - 01E0525C4AE1686919C442944B516938
+      - 208A8B5466986DDB3C249F5667326C80
       X-Msapi-Userstate:
-      - c7bf
+      - '4514'
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=220,MSDatacenter=BN2B
+      - InternalResponseTime=242,MSDatacenter=BNZE01
       X-Cache:
       - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
       X-Msedge-Ref:
-      - 'Ref A: D515E3ACF0634622BAC8B58840DFA829 Ref B: BLUEDGE1419 Ref C: 2021-10-06T11:50:42Z'
+      - 'Ref A: C77C1D9BD0454F26863506CBA0A244B4 Ref B: BN3EDGE0915 Ref C: 2024-01-10T14:41:43Z'
       Apim-Request-Id:
-      - ddcb9fb3-e316-4bef-9e35-ded91fa63a54
+      - d1906467-2f17-41b1-8e88-f155b786f99d
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -406,176 +67,204 @@ http_interactions:
       Csp-Billing-Usage:
       - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Wed, 06 Oct 2021 11:50:41 GMT
+      - Wed, 10 Jan 2024 14:41:42 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "jobs
         (site:usa.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=jobs+(site%3ausa.gov)",
-        "totalEstimatedMatches": 518000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "Find a Job | USAGov", "url": "https:\/\/www.usa.gov\/find-a-job",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/find-a-job",
-        "snippet": "Federal Government Employment walks you through the steps to apply
-        for a job on USAJOBS. USAJOBS is the federal government''s jobs portal.
-        Veterans'' Preference Advisor offers guidance on veterans'' preference in
-        federal hiring. If you plan to go to college or a vocational school, learn
-        about your educational benefits.", "dateLastCrawled": "2021-10-02T20:12:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "Find a Federal Government Job | USAGov", "url": "https:\/\/www.usa.gov\/government-jobs",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/government-jobs",
-        "snippet": "Many jobs open to people with disabilities use only that process.
-        Finding and Applying for Federal Jobs. You can search for most jobs on
-        the government’s job site, USAJOBS.gov. To apply for jobs under Schedule
-        A, you must provide proof that you have an intellectual, psychiatric, or severe
-        physical disability. To apply for a job online:", "dateLastCrawled": "2021-10-03T13:19:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
-        "name": "Looking for a New Job | USAGov", "url": "https:\/\/www.usa.gov\/job-search",
+        "totalEstimatedMatches": 12800, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "How to find a job | USAGov", "url": "https:\/\/www.usa.gov\/job-help",
+        "datePublished": "2023-12-11T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 11, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/job-help",
+        "snippet": "Search for jobs in your local newspaper and its website; Visit
+        a public library to get in-person help with job searches and more; Search
+        for a government job Federal government jobs. USAJOBS is the central place
+        to find and apply for federal jobs at U.S. government agencies around the
+        world. Search USAJOBS. Federal jobs for special groups", "dateLastCrawled":
+        "2024-01-10T05:09:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=jobs+(site%3ausa.gov)&d=4867959229190985&mkt=en-US&setlang=en-US&w=RFb7ItZUR4ylsUoj0y5RF1p5TLgmWwve",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "How to find jobs and free training | USAGov", "url": "https:\/\/www.usa.gov\/job-search",
         "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/job-search",
-        "snippet": "Looking for a New Job. Find out how to look for work in the private
-        sector and federal government. Learn how to find a job with the federal government.
-        Learn how and where to search for employment.", "dateLastCrawled": "2021-10-02T20:06:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
-        "name": "Jobs and Education for People with Disabilities | USAGov", "url":
-        "https:\/\/www.usa.gov\/disability-jobs-education", "isFamilyFriendly": true,
-        "displayUrl": "https:\/\/www.usa.gov\/disability-jobs-education", "snippet":
-        "Many jobs open to people with disabilities use only that process. Finding
-        and Applying for Federal Jobs. You can search for most jobs on the government’s
-        job site, USAJOBS.gov. To apply for jobs under Schedule A, you must provide
-        proof that you have an intellectual, psychiatric, or severe physical disability.
-        To apply for a job online:", "dateLastCrawled": "2021-10-03T02:09:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
-        "name": "Jobs and Training for Veterans | USAGov", "url": "https:\/\/www.usa.gov\/veteran-employment",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/veteran-employment",
-        "snippet": "VA for Vets has virtual job boards for Department of Veterans
-        Affairs, federal, and civilian openings. Federal Government Employment walks
-        you through the steps to apply for a job on USAJOBS. USAJOBS is the federal
-        government''s jobs portal. Veterans'' Preference Advisor offers guidance
-        on veterans'' preference in federal hiring.", "dateLastCrawled": "2021-10-02T13:09:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
-        "name": "COVID-19 Unemployment Benefits | USAGov", "url": "https:\/\/www.usa.gov\/covid-unemployment-benefits",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/covid-unemployment-benefits",
-        "snippet": "The federal government allowed states to change their laws to
-        provide COVID-19 unemployment benefits for people whose jobs have been
-        affected by the coronavirus pandemic. Many states are ending their COVID-related
-        unemployment benefits. Contact your state’s unemployment insurance program
-        for the most up-to-date information.", "dateLastCrawled": "2021-10-03T12:12:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
-        "name": "Introduction to Government Contracting | USAGov", "url": "https:\/\/www.usa.gov\/government-contracting-for-beginners",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/government-contracting-for-beginners",
-        "snippet": "Introduction to Government Contracting. Learn how to grow your
-        business by having federal, state, and local governments as customers. Find
-        support to help you search for and bid on contract opportunities. Use this
-        official database from beta.SAM.gov to find federal government contracting
-        opportunities for your business.", "dateLastCrawled": "2021-10-03T14:07:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
-        "name": "Pay and Benefits for Federal Employees | USAGov", "url": "https:\/\/www.usa.gov\/benefits-for-federal-employees",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/benefits-for-federal-employees",
-        "snippet": "Pay Scales for Federal Employees. The government publishes new
-        pay tables for federal employees every year. Federal Employee Salaries. The
-        president and Congress decide how much, if any, pay raise federal workers
-        will receive in the next calendar year.. See pay tables for federal employees
-        (2021 and prior years).. Learn more about federal pay and benefits from the
-        Office of Personnel Management.", "dateLastCrawled": "2021-10-02T19:19:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
-        "name": "Find What You Need | USAGov", "url": "https:\/\/www.usa.gov\/how-to-use",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/how-to-use",
-        "snippet": "On your computer, find the search box at the top of every USA.gov
-        page. On your smartphone, find it after touching the MENU button on the screen.
-        Your initial search will return results from a variety of government websites.
-        You can get more specific results by then selecting “Only USA.gov,” “Images,”
-        or “Videos” at the top of the ...", "dateLastCrawled": "2021-10-03T01:05:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
-        "name": "Federal Court Interpreters | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/federal-court-interpreters",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/federal-court-interpreters",
-        "snippet": "Jobs and Education; Veterans Disability Benefits; Your Legal
-        Disability Rights; Disasters and Emergencies. After a Disaster; Disaster Financial
-        Assistance. Disaster Financial Assistance for Workers and Small Business Owners;
-        Disaster Financial Assistance with Food, Housing, and Bills; Financial Assistance
-        Within Designated Natural Disaster Areas", "dateLastCrawled": "2021-09-30T04:19:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
-        "name": "Join the Military | USAGov", "url": "https:\/\/www.usa.gov\/join-military",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/join-military",
-        "snippet": "The U.S. military has six branches of service: the Army, Navy,
-        Air Force, Coast Guard, Marine Corps, and Space Force. The requirements to
-        join are similar for all six, but there are differences in age limits, test
-        scores, and fitness levels. You can apply online or through a recruiter.",
-        "dateLastCrawled": "2021-10-03T07:12:00.0000000Z", "language": "en", "isNavigational":
-        false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
-        "name": "How to Enter the United States | USAGov", "url": "https:\/\/www.usa.gov\/enter-us",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/enter-us",
-        "snippet": "Learn about the most common types of visas for business, student
-        or travel you may need when coming to or traveling through the United States,
-        plus review what other documents you need to enter the U.S. Also, find information
-        on how to apply for an immigrant visa.", "dateLastCrawled": "2021-10-03T14:12:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
-        "name": "Change Your Address and Other U.S. Post Office Services ...", "url":
-        "https:\/\/www.usa.gov\/post-office", "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.usa.gov\/post-office", "snippet": "Scammers may charge $40
-        or more to do what you can do for just $1.05 using the moving section of the
-        official USPS.com website. Go to your local post office and request the Mover’s
-        Guide packet. Inside the packet is PS Form 3575. Fill out this change of address
-        form and give it to a postal worker behind the counter.", "dateLastCrawled":
-        "2021-10-03T07:08:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13", "name":
-        "Hurricane Ida | USAGov", "url": "https:\/\/www.usa.gov\/hurricane-ida", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.usa.gov\/hurricane-ida", "snippet": "Hurricane
-        Ida has brought life-threatening conditions to parts of the Gulf Coast of
-        the United States. Follow instructions from state and local emergency officials
-        in your area. Learn what the U.S. government is doing, and how to recover
-        from the storm.", "dateLastCrawled": "2021-09-30T07:23:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
-        "name": "Green Cards and Permanent Residence in the U.S. | USAGov", "url":
-        "https:\/\/www.usa.gov\/green-cards", "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.usa.gov\/green-cards", "snippet": "Learn how to get a Green
-        Card to become a permanent resident, check your green card case status, bring
-        a foreign spouse to live in the U.S. and what documents you need when traveling
-        back to the U.S. Also, find out how to enter or check your results for the
-        Diversity Visa Lottery program.", "dateLastCrawled": "2021-10-03T11:13:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
-        "name": "Education Benefits for Service Members, Veterans, and ...", "url":
-        "https:\/\/www.usa.gov\/education-military-veterans", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.usa.gov\/education-military-veterans",
-        "snippet": "Education Benefits for Service Members, Veterans, and Their
-        Families. If you were or are in the military, you may be eligible for veterans
-        education benefits.If you’re a spouse or dependent, you may qualify too..
-        Learn about the GI Bill and other education programs.. Compare schools with
-        the GI Bill Comparison Tool.. Learn how to apply for the GI Bill and other
-        education benefits.", "dateLastCrawled": "2021-10-02T01:13:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
-        "name": "Locate Military Members, Units, and Facilities | USAGov", "url":
-        "https:\/\/www.usa.gov\/military-personnel-and-installations", "isFamilyFriendly":
-        true, "displayUrl": "https:\/\/www.usa.gov\/military-personnel-and-installations",
-        "snippet": "Veterans Jobs and Training; Locate Military Members, Units,
-        and Facilities. Find a military member, unit or facility. On This Page. How
-        to Locate U.S. Military Personnel and Veterans Find a Military Base How to
-        Locate U.S. Military Personnel and Veterans.", "dateLastCrawled": "2021-10-02T23:09:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
-        "name": "Government and Local Disability Programs | USAGov", "url": "https:\/\/www.usa.gov\/disability-programs",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/disability-programs",
-        "snippet": "Jobs. Find job training near you. Start with your state vocational
-        rehabilitation agency. Government programs can help you train for and find
-        a job. Learn about special programs for young workers and veterans with disabilities.
-        You can work and get accommodations in the federal government. Learn how through
-        its traditional and Schedule A hiring ...", "dateLastCrawled": "2021-10-03T15:05:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
-        "name": "Your Legal Disability Rights | USAGov", "url": "https:\/\/www.usa.gov\/disability-rights",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/disability-rights",
-        "snippet": "Jobs. Transportation. Government services. Telecommunications.
-        The Department of Justice ADA information line answers questions about ADA
-        requirements. It''s available to businesses, state and local governments,
-        and the public. Call 1- 800-514-0301 (TTY: 1-800-514-0383). Find More ADA
-        Resources From the Government. The ADA website has ...", "dateLastCrawled":
-        "2021-10-01T21:32:00.0000000Z", "language": "en", "isNavigational": false},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19", "name":
-        "State and Local Consumer Agencies in Kentucky | USAGov", "url": "https:\/\/www.usa.gov\/state-consumer\/kentucky",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/state-consumer\/kentucky",
-        "snippet": "Consumer Protection Offices. City, county, regional, and state
-        consumer offices offer a variety of important services. They might mediate
-        complaints, conduct investigations, prosecute offenders of consumer laws,
-        license and regulate professional service providers, provide educational materials
-        and advocate for consumer rights.", "dateLastCrawled": "2021-10-01T08:50:00.0000000Z",
-        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
-        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        "snippet": "How to find free job training. Learn about government job training
+        programs that can give you new skills to reach your career goals. Find job
+        training programs that can help you learn new work skills. Search for federal
+        government jobs with USAJOBS. Find state and private sector jobs.", "dateLastCrawled":
+        "2024-01-10T06:06:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=jobs+(site%3ausa.gov)&d=4922561154719623&mkt=en-US&setlang=en-US&w=xuCK5FGdshu-hc1UKexwO_i6eTHZSFgu",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Employment and Training Administration (ETA) | USAGov", "url": "https:\/\/www.usa.gov\/agencies\/employment-and-training-administration",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/agencies\/employment-and-training-administration",
+        "snippet": "The Employment and Training Administration provides job training
+        and help with finding jobs and careers. Website Employment and Training
+        Administration. Contact Contact the Employment and Training Administration.
+        Toll-free number. 1-866-487-2365. TTY. 1-877-889-5627. Email ETAPagemaster@dol.gov",
+        "dateLastCrawled": "2024-01-05T02:05:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=jobs+(site%3ausa.gov)&d=4908851610535537&mkt=en-US&setlang=en-US&w=2OaHL8e7XaO4SaB43ej3ABndEqR3HkLM",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Making government services easier to find | USAGov", "url": "https:\/\/www.usa.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov", "snippet":
+        "Voting and elections. Find answers to common questions about voting in the
+        United States. Top. Find government benefits, services, agencies, and information
+        at USA.gov. Contact elected officials. Learn about passports, Social Security,
+        taxes, and more.", "dateLastCrawled": "2024-01-09T06:07:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=jobs+(site%3ausa.gov)&d=5022646775467264&mkt=en-US&setlang=en-US&w=W7vIvZcxic7sCVZ8QKbGM7O9mXJjhpZE",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Federal jobs for veterans | USAGov", "url": "https:\/\/www.usa.gov\/veteran-federal-jobs",
+        "datePublished": "2023-12-06T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 6, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/veteran-federal-jobs",
+        "snippet": "USAJobs.gov is the central website to search for federal jobs.
+        Create a profile to start applying for federal government jobs. Learn how
+        to answer questions in your USAJobs profile about your military service. Special
+        programs for hiring veterans. If you were honorably discharged, you may qualify
+        for federal hiring programs, especially for ...", "dateLastCrawled": "2024-01-08T07:06:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=jobs+(site%3ausa.gov)&d=5003564235060633&mkt=en-US&setlang=en-US&w=HwmzOqJ_6PHjW_kEqYiEOKFuD15sQjYz",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "How to find free job training | USAGov", "url": "https:\/\/www.usa.gov\/job-training",
+        "datePublished": "2023-12-06T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 6, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/job-training",
+        "snippet": "Ask a real person any government-related question for free. They
+        will get you the answer or let you know where to find it. Call USAGov. Chat
+        with USAGov. Top. Get free job training from CareerOneStop and other resources.
+        Find training for specific groups such as older workers, people with disabilities,
+        and more.", "dateLastCrawled": "2024-01-09T22:05:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=jobs+(site%3ausa.gov)&d=4860662086114825&mkt=en-US&setlang=en-US&w=3TX1PeBs05miX7Z47SppR8JyfSjYz9Lz",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Jobs, labor laws, and unemployment | USAGov", "url": "https:\/\/www.usa.gov\/jobs-labor-laws-unemployment",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/jobs",
+        "snippet": "Labor laws and worker protection. Learn about laws that protect
+        your employment and your safety on the job. Looking for something else? Explore
+        all topics and services. Find out how and where to look for a new job and
+        how to apply for unemployment. Get retirement planning tools. Learn about
+        important labor laws.", "dateLastCrawled": "2024-01-10T03:17:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=jobs+(site%3ausa.gov)&d=4824356723364163&mkt=en-US&setlang=en-US&w=eod3nE8vwKGR3TkTG2sTe-obWZ0B9Ih9",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Job training and employment programs for people with disabilities",
+        "url": "https:\/\/www.usa.gov\/disability-jobs-training", "datePublished":
+        "2023-12-06T00:00:00.0000000", "datePublishedDisplayText": "Dec 6, 2023",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/disability-jobs-training",
+        "snippet": "Job openings are with nonprofit agencies nationwide. USAJOBS has
+        tips for people with disabilities who want to get a job in the federal government.
+        You can also contact an individual federal agency’s Selective Placement Program
+        Coordinator (SPPC) for help. JAN, the Job Accommodation Network, answers your
+        questions about workplace accommodations.", "dateLastCrawled": "2024-01-10T05:20:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=jobs+(site%3ausa.gov)&d=4618099505849972&mkt=en-US&setlang=en-US&w=7-VSPTavHzU0Efkv9ZZOcaigo71dYlUp",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Bureau of Labor Statistics | USAGov", "url": "https:\/\/www.usa.gov\/agencies\/bureau-of-labor-statistics",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/agencies\/bureau-of-labor-statistics",
+        "snippet": "Ask a real person any government-related question for free. They
+        will get you the answer or let you know where to find it. Call USAGov. Chat
+        with USAGov. Top. The Bureau of Labor Statistics measures labor market activity,
+        working conditions, and price changes in the economy.", "dateLastCrawled":
+        "2024-01-09T18:34:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=jobs+(site%3ausa.gov)&d=4670184575351106&mkt=en-US&setlang=en-US&w=-Q9ooToPaxlLwUAVNa90D0CfasUEmBQ6",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Requirements to join the U.S. military | USAGov", "url": "https:\/\/www.usa.gov\/military-requirements",
+        "datePublished": "2023-12-06T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 6, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/military-requirements",
+        "snippet": "Age limits. Each branch of the military has age limits to enlist
+        in active duty: Air Force: 17 - 39. Army: 17 - 35. Coast Guard: 17 - 31. Marine
+        Corps: 17 - 28. Navy: 17 - 39. Space Force: 17 - 39. The age limits are different
+        if you join as an officer or join the Guard or Reserve.", "dateLastCrawled":
+        "2024-01-09T10:14:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=jobs+(site%3ausa.gov)&d=4516227177802949&mkt=en-US&setlang=en-US&w=Fach6QQsYIIFvnaTJa5D__waoh6K4uKs",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Job programs for veterans | USAGov", "url": "https:\/\/www.usa.gov\/veteran-job-programs",
+        "datePublished": "2023-12-06T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 6, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/veteran-job-programs",
+        "snippet": "The VA offers career counseling services to guide you through
+        your career transition. You and your counselor will create a career plan just
+        for you. A counselor can help you: Write a resume. Explore career options.
+        Help you use education benefits to train for a new career. Learn about the
+        VA’s educational and career counseling requirements ...", "dateLastCrawled":
+        "2024-01-09T06:18:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=jobs+(site%3ausa.gov)&d=4834608808807914&mkt=en-US&setlang=en-US&w=6zxT4PfTOi2Whvovjc9e9z1MW7LAS3lY",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Immigrant visa to work in the U.S. | USAGov", "url": "https:\/\/www.usa.gov\/immigrant-work-visa",
+        "datePublished": "2023-12-08T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 8, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/immigrant-work-visa",
+        "snippet": "To hire a foreign worker, you may have to sponsor them so they
+        can get an immigrant work visa. First, find out if you have to get a labor
+        certification from the Department of Labor (DOL). Learn about the DOL labor
+        certification process, also known as PERM. Apply for certification using the
+        Permanent Online System or using ETA Form 9089 .", "dateLastCrawled": "2024-01-10T06:23:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=jobs+(site%3ausa.gov)&d=4580415466318119&mkt=en-US&setlang=en-US&w=QyNQiNZXCBki7qNZFRIwBZ7Oyr0HLuQF",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Work in the U.S. with a work permit (EAD) | USAGov", "url": "https:\/\/www.usa.gov\/work-permit-ead",
+        "datePublished": "2023-12-15T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 15, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/work-permit-ead",
+        "snippet": "To apply for your work permit (EAD), file an Application for Employment
+        Authorization (Form I-765), review the instructions, and pay the filing fee.
+        Depending on your immigration category, your EAD work permit will be good
+        for 1 or 2 years. If the U.S. Citizenship and Immigration Services (USCIS)
+        approves your request, they may send your EAD in ...", "dateLastCrawled":
+        "2024-01-08T09:17:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=jobs+(site%3ausa.gov)&d=4969406355865640&mkt=en-US&setlang=en-US&w=zrzKWkmZ9IDT0wVEo_HepUAzK0aYOR8A",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Unemployment benefits | USAGov", "url": "https:\/\/www.usa.gov\/unemployment-benefits",
+        "datePublished": "2023-12-18T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 18, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/unemployment",
+        "snippet": "Select your state on this map to find the eligibility rules for
+        unemployment benefits. When deciding if you get benefits, many states require
+        that you: Earned at least a certain amount within the last 12-24 months. Worked
+        consistently for the last 12-24 months. Look for a new job.", "dateLastCrawled":
+        "2024-01-10T08:04:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=jobs+(site%3ausa.gov)&d=4626002247052564&mkt=en-US&setlang=en-US&w=yimNpV-OMwg3qeAb7U5VxEeuCMK1pXNw",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Temporary visa to work in the U.S. | USAGov", "url": "https:\/\/www.usa.gov\/temporary-work-visa",
+        "datePublished": "2023-12-15T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 15, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/temporary-work-visa",
+        "snippet": "To hire a temporary (nonimmigrant) worker, you generally have
+        to file a petition with USCIS to allow the employee to come to the U.S. Use
+        this temporary (nonimmigrant) worker classification table to see which classification
+        applies to the job you are offering. After determining the classification,
+        refer to the Form I-129, Petition for ...", "dateLastCrawled": "2024-01-10T07:20:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=jobs+(site%3ausa.gov)&d=4659305423579694&mkt=en-US&setlang=en-US&w=YwEa2MWUwH9GzsCnJ4LoHYEKKUjbFEe6",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Labor laws and worker protection | USAGov", "url": "https:\/\/www.usa.gov\/labor-laws",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/labor-laws",
+        "snippet": "Workplace laws. Federal laws require employers to act fairly and
+        protect the health of employees. Review this chart for an overview of the
+        most common laws. Learn about employment laws that cover wrongful discharge,
+        workers'' compensation, safety violations, discrimination, family and medical
+        leave, and more.", "dateLastCrawled": "2024-01-10T01:49:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=jobs+(site%3ausa.gov)&d=4599442168753415&mkt=en-US&setlang=en-US&w=b1hJCmKXTn8rlbNfZMPoJYgtKAusKuhO",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Discrimination, harassment, and retaliation | USAGov", "url": "https:\/\/www.usa.gov\/job-discrimination-harassment",
+        "datePublished": "2023-12-06T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 6, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/job-discrimination-harassment",
+        "snippet": "Discrimination, harassment, and retaliation. Federal and state
+        laws protect you from unfair and unwelcome treatment at work. The Equal Employment
+        Opportunity Commission (EEOC) and states enforce discrimination and harassment
+        laws. EEOC laws don’t cover all employers. Coverage is often based on the
+        number of employees.", "dateLastCrawled": "2024-01-09T13:22:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=jobs+(site%3ausa.gov)&d=4549594779446427&mkt=en-US&setlang=en-US&w=8eJ8Lik3ucsU6uOx_42b2gUQKla0ZKVx",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Work in the U.S. with a NAFTA visa | USAGov", "url": "https:\/\/www.usa.gov\/nafta-visa",
+        "datePublished": "2023-12-08T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 8, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/nafta-visa",
+        "snippet": "Only citizens of Canada and Mexico are eligible for a nonimmigrant
+        NAFTA professional (TN) visa. It grants the holder temporary entry into the
+        United States for business at a professional level. Learn more about the NAFTA
+        visa including: Which professions qualify for a NAFTA visa. The different
+        requirements for Canadian and Mexican citizens.", "dateLastCrawled": "2024-01-10T05:09:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=jobs+(site%3ausa.gov)&d=4998294311491477&mkt=en-US&setlang=en-US&w=Ef02jz3JYuzg9kbI2fSCLda6zrnNAf3L",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Job misclassification | USAGov", "url": "https:\/\/www.usa.gov\/job-misclassification",
+        "datePublished": "2023-12-18T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 18, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/job-misclassification",
+        "snippet": "How to report job misclassification. Job misclassification affects
+        your pay, access to employee benefits, and protection. Report job misclassification
+        to the Department of Labor: Call the Wage and Hour Division hotline at 1-866-487-9243.
+        Contact the Department of Labor office near you. LAST UPDATED: December 18,
+        2023.", "dateLastCrawled": "2024-01-09T13:12:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=jobs+(site%3ausa.gov)&d=4656043424169&mkt=en-US&setlang=en-US&w=oulBJld7PvZlYjyVWv60LI55J46aESJF",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Minimum wage | USAGov", "url": "https:\/\/www.usa.gov\/minimum-wage",
+        "datePublished": "2023-12-06T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 6, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/minimum-wage",
+        "snippet": "Federal minimum wage. The federal minimum wage is $7.25 per hour.
+        This rate applies to covered nonexempt workers. The minimum wage for employees
+        who receive tips is $2.13 per hour. The amount of tips plus the $2.13 must
+        reach at least $7.25 per hour. If not, your employer must pay to make up the
+        difference.", "dateLastCrawled": "2024-01-09T14:14:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=jobs+(site%3ausa.gov)&d=4901580236791415&mkt=en-US&setlang=en-US&w=KQU-WX7Zkne0-0kECuq9LT-uBPQ1LTZn",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
@@ -594,7 +283,7 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-  recorded_at: Wed, 06 Oct 2021 05:48:00 GMT
+  recorded_at: Wed, 10 Jan 2024 14:41:43 GMT
 - request:
     method: get
     uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=jazz%20(site:usa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
@@ -626,31 +315,35 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Wed, 06 Oct 2021 11:49:42 GMT
+      - Wed, 10 Jan 2024 14:40:44 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
+      X-Eventid:
+      - 659eaca8eda0401ebf90b976a3b66bf6
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
       Bingapis-Traceid:
-      - 2A9D294FDD7A4EC5AF8DDCD71DBFAB0C
+      - 659eaca8eda0401ebf90b976a3b66bf6
       Bingapis-Sessionid:
-      - 6E4FBDBBD3E14815B0CA8BBDFB68582B
+      - 90FA4C690E59466191EEF625D0EDD9CF
       X-Msedge-Clientid:
-      - 274A3BD6A76760E434832B1EA69A6163
+      - 0F6B67041B096109270073061A0A6028
       X-Msapi-Userstate:
-      - '9002'
+      - 438d
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=182,MSDatacenter=BN2B
+      - InternalResponseTime=229,MSDatacenter=BNZE01
       X-Cache:
       - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
       X-Msedge-Ref:
-      - 'Ref A: 2A9D294FDD7A4EC5AF8DDCD71DBFAB0C Ref B: BLUEDGE1008 Ref C: 2021-10-06T11:50:42Z'
+      - 'Ref A: 44BB0F5B8BC243B6A6AE7EDA92AF15BB Ref B: BN3EDGE0514 Ref C: 2024-01-10T14:41:44Z'
       Apim-Request-Id:
-      - 8214e5d9-03a7-42c5-914d-1e99cb36db0c
+      - 3e8a152a-6494-4363-80bf-49ffc6c7a3d4
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -658,27 +351,220 @@ http_interactions:
       Csp-Billing-Usage:
       - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Wed, 06 Oct 2021 11:50:42 GMT
+      - Wed, 10 Jan 2024 14:41:43 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "jazz
         (site:usa.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=jazz+(site%3ausa.gov)",
-        "totalEstimatedMatches": 2, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "Inauguration of the President of the United States | USAGov", "url":
-        "https:\/\/www.usa.gov\/inauguration", "isFamilyFriendly": true, "displayUrl":
-        "https:\/\/www.usa.gov\/inauguration", "snippet": "Inauguration Day is the
-        day when the President-elect and Vice President-elect swear in and take office.
-        It occurs every four years on January 20.", "dateLastCrawled": "2021-10-01T19:31:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "Leyes federales más populares | USAGov", "url": "https:\/\/www.usa.gov\/espanol\/leyes-federales",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/espanol\/leyes-federales",
-        "snippet": "Si usted considera que ha sido discriminado en el trabajo o se
-        le ha negado una oportunidad en su empleo por razones que están prohibidas
-        por ley, puede presentar una queja ante la Comisión para la Igualdad de Oportunidades
-        en el Empleo (EEOC, sigla en inglés). La EEOC es la agencia del Gobierno ...",
-        "dateLastCrawled": "2021-10-01T12:23:00.0000000Z", "language": "es", "isNavigational":
-        false}]}, "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages",
-        "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}}]}}}'
-  recorded_at: Wed, 06 Oct 2021 05:48:00 GMT
-recorded_with: VCR 6.0.0
+        "totalEstimatedMatches": 51, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "How to get insurance through the ACA Health Insurance Marketplace",
+        "url": "https:\/\/www.usa.gov\/health-insurance-marketplace", "datePublished":
+        "2023-12-06T00:00:00.0000000", "datePublishedDisplayText": "Dec 6, 2023",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/health-insurance-marketplace",
+        "snippet": "Go to Healthcare.gov to find your state Health Insurance Marketplace.
+        Each state''s Marketplace has its own enrollment instructions. During the
+        Marketplace open enrollment period each year, you can: Choose a plan for the
+        first time. Continue in your current plan. Make changes to your current insurance
+        plan.", "dateLastCrawled": "2024-01-09T06:09:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=jazz+(site%3ausa.gov)&d=4804947765446981&mkt=en-US&setlang=en-US&w=bJFBHBTPDHGJCdO94jFmAyBW_KMR6KEi",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Unemployment benefits | USAGov", "url": "https:\/\/www.usa.gov\/unemployment-benefits",
+        "datePublished": "2023-12-18T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 18, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/unemployment",
+        "snippet": "States set eligibility rules for unemployment benefits. Select
+        your state on this map to find the eligibility rules for unemployment benefits.
+        When deciding if you get benefits, many states require that you: Earned at
+        least a certain amount within the last 12-24 months. Worked consistently for
+        the last 12-24 months. Look for a new job.", "dateLastCrawled": "2024-01-09T07:07:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=jazz+(site%3ausa.gov)&d=4626002247052564&mkt=en-US&setlang=en-US&w=yimNpV-OMwg3qeAb7U5VxEeuCMK1pXNw",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Government auctions of seized and surplus property | USAGov", "url":
+        "https:\/\/www.usa.gov\/auctions-and-sales", "datePublished": "2023-12-06T00:00:00.0000000",
+        "datePublishedDisplayText": "Dec 6, 2023", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.usa.gov\/auctions-and-sales", "snippet": "Some government
+        auctions sell many types of excess and seized property. These can range from
+        computers to artwork to mobile homes and more. Auctions may take place online,
+        in person, or by mail-in bid. The federal agency that owns the property may
+        conduct the auction or it may contract with an auction company to conduct
+        the sales.", "dateLastCrawled": "2024-01-08T10:09:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=jazz+(site%3ausa.gov)&d=4974143711117041&mkt=en-US&setlang=en-US&w=gw_6d1vuEpTV-vMHMyM2HlW2HvEa-UJN",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "U.S. passports | USAGov", "url": "https:\/\/www.usa.gov\/passport",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/passport",
+        "snippet": "Lost or stolen passports. If your passport is lost or stolen
+        you must report it to the State Department right away. How you replace it
+        depends on if you are inside or outside the U.S. Find out how to apply for
+        or renew a passport for an adult or a minor under 18. Know what to do if
+        a passport is lost or stolen.", "dateLastCrawled": "2024-01-10T07:26:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=jazz+(site%3ausa.gov)&d=4626990093172788&mkt=en-US&setlang=en-US&w=3l2oWo_LMvw4HIPBUmgwyy7epw-SVb-t",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "How to find unclaimed money from the government | USAGov", "url":
+        "https:\/\/www.usa.gov\/unclaimed-money", "datePublished": "2023-11-13T00:00:00.0000000",
+        "datePublishedDisplayText": "Nov 13, 2023", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.usa.gov\/unclaimed-money", "snippet": "Use each separate
+        database in the links below to search for each type of unclaimed money.
+        Search for unclaimed money. Database or agency. Employers. Unpaid wages
+        – Search the Department of Labor’s database for back pay an employer might
+        owe you. Pensions from former employers – Contact the Pension Benefit Guaranty
+        Corporation (PBGC) to ...", "dateLastCrawled": "2024-01-09T06:21:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=jazz+(site%3ausa.gov)&d=4504287163711552&mkt=en-US&setlang=en-US&w=7vha06jvMf8AUAQ9jaRI09DDm3PzyLO9",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Making government services easier to find | USAGov", "url": "https:\/\/www.usa.gov\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov", "snippet":
+        "Voting and elections. Find answers to common questions about voting in the
+        United States. Find government benefits, services, agencies, and information
+        at USA.gov. Contact elected officials. Learn about passports, Social Security,
+        taxes, and more.", "dateLastCrawled": "2024-01-09T06:07:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=jazz+(site%3ausa.gov)&d=5022646775467264&mkt=en-US&setlang=en-US&w=W7vIvZcxic7sCVZ8QKbGM7O9mXJjhpZE",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Help with utility bills | USAGov", "url": "https:\/\/www.usa.gov\/help-with-utility-bills",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/help-with-utility-bills",
+        "snippet": "Lifeline helps individuals and families with a low income get
+        discounted telephone or internet service. Learn if you are eligible, how to
+        apply, and how to get help with your service. If you have a low income, you
+        may qualify for help paying your phone and internet bills and help paying
+        for heating, cooling, and weatherizing your home.", "dateLastCrawled": "2024-01-08T21:35:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=jazz+(site%3ausa.gov)&d=4957105575493802&mkt=en-US&setlang=en-US&w=VQcRfueWe2POOwwa3ncur3eB7Cdsgbbh",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "How and when to apply for Medicare | USAGov", "url": "https:\/\/www.usa.gov\/medicare\/",
+        "datePublished": "2023-12-06T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 6, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/medicare",
+        "snippet": "The Initial Enrollment Period to sign up for Medicare begins
+        3 months before you turn 65 and ends 3 months after the month you turn 65--a
+        total of 7 months. You may have to pay a penalty if you miss your Initial
+        Enrollment Period. If you are not ready to receive Social Security benefits
+        at 65 because you are still working, you can apply online ...", "dateLastCrawled":
+        "2024-01-09T06:06:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=jazz+(site%3ausa.gov)&d=4519538595925493&mkt=en-US&setlang=en-US&w=B_-HheWBP_4HP4hJCFd2gRILnVbSEUiP",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "National Endowment for the Arts (NEA) | USAGov", "url": "https:\/\/www.usa.gov\/agencies\/national-endowment-for-the-arts",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/agencies\/national-endowment-for-the-arts",
+        "snippet": "Ask a real person any government-related question for free. They
+        will get you the answer or let you know where to find it. Call USAGov. Chat
+        with USAGov. Top. The National Endowment for the Arts funds, promotes, and
+        strengthens the creative capacity of our communities by providing all Americans
+        with opportunities for arts participation.", "dateLastCrawled": "2024-01-06T16:37:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=jazz+(site%3ausa.gov)&d=4815693770533025&mkt=en-US&setlang=en-US&w=YDVkJR-cOUmN7JPqN8CCcwWO6Dr0nbv3",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Financial aid and student loans | USAGov", "url": "https:\/\/www.usa.gov\/financial-aid",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/financial-aid",
+        "snippet": "Free Application for Federal Student Aid (FAFSA) Federal Student
+        Aid offers grants, loans, work-study, and more to help you pay for college
+        or career school. Use the Free Application for Federal Student Aid (FAFSA)
+        to apply.", "dateLastCrawled": "2024-01-09T08:14:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=jazz+(site%3ausa.gov)&d=5050164626151092&mkt=en-US&setlang=en-US&w=HbnqylRQTOT4jO_UJ-iOocQIkfVBGztm",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "How to change your address | USAGov", "url": "https:\/\/www.usa.gov\/change-address",
+        "datePublished": "2023-12-15T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 15, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/change-address",
+        "snippet": "If you are moving, learn how to change your address with the
+        U.S. Postal Service and other government services to continue receiving mail.",
+        "dateLastCrawled": "2024-01-09T22:07:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=jazz+(site%3ausa.gov)&d=5015542900854359&mkt=en-US&setlang=en-US&w=cQXWg3jc6bHozhQ3ikhkHVXXOYgMsQMJ",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Where to report scams | USAGov", "url": "https:\/\/www.usa.gov\/where-report-scams",
+        "datePublished": "2023-06-15T00:00:00.0000000", "datePublishedDisplayText":
+        "Jun 15, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/where-report-scam",
+        "snippet": "Ask a real person any government-related question for free. They
+        will get you the answer or let you know where to find it. Call USAGov. Chat
+        with USAGov. Top. Use USA.gov’s scam reporting tool to identify a scam and
+        help you find the right government agency or consumer organization to report
+        it.", "dateLastCrawled": "2024-01-08T19:33:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=jazz+(site%3ausa.gov)&d=4613881850447633&mkt=en-US&setlang=en-US&w=jrbbHkqseikyJtt1sH2fJ1zrsmUFV1vG",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "U.S. National Central Bureau - Interpol | USAGov", "url": "https:\/\/www.usa.gov\/agencies\/u-s-national-central-bureau-interpol",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/agencies\/u-s-national-central-bureau-interpol",
+        "snippet": "Ask a real person any government-related question for free. They
+        will get you the answer or let you know where to find it. Call USAGov. Chat
+        with USAGov. Top. Interpol Washington, the U.S. National Central Bureau, coordinates
+        law enforcement activities between U.S. agencies and their international counterparts.",
+        "dateLastCrawled": "2024-01-08T15:06:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=jazz+(site%3ausa.gov)&d=4861271968470062&mkt=en-US&setlang=en-US&w=lRlb2hHqXKiipvHsRHQEHoqjzN42IDhr",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "How to apply for food stamps (SNAP benefits) and check your balance",
+        "url": "https:\/\/www.usa.gov\/food-stamps", "datePublished": "2023-12-07T00:00:00.0000000",
+        "datePublishedDisplayText": "Dec 7, 2023", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.usa.gov\/food-stamps", "snippet": "To check how much money
+        is left on your EBT card: Check your receipt from the store where you made
+        a purchase using your SNAP benefits. Many stores will print your balance on
+        your receipts. Find out if your state offers a mobile app you can use to manage
+        your benefits. Many allow you to check your balance. Contact your state’s
+        SNAP office. Image.", "dateLastCrawled": "2024-01-09T08:09:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=jazz+(site%3ausa.gov)&d=4847278962190994&mkt=en-US&setlang=en-US&w=1F65ePK4JKacSbsJQl-dYAgQ5JhCo-7A",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Vote.gov | USAGov", "url": "https:\/\/www.usa.gov\/vote-gov", "datePublished":
+        "2023-07-27T00:00:00.0000000", "datePublishedDisplayText": "Jul 27, 2023",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/vote-gov",
+        "snippet": "Start your registration on vote.gov. Vote.gov partners with the
+        U.S. Election Assistance Commission and collaborates with state and local
+        election officials. The site continues to grow to meet the accessibility,
+        language, and search goals of the Executive Order on Promoting Access to Voting.
+        LAST UPDATED: July 27, 2023.", "dateLastCrawled": "2024-01-10T01:31:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=jazz+(site%3ausa.gov)&d=4624503302142340&mkt=en-US&setlang=en-US&w=rGAbYQXh9KE2-3TC56xdDvTVvULe4U5M",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "American holidays | USAGov", "url": "https:\/\/www.usa.gov\/holidays",
+        "datePublished": "2023-12-06T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 6, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/holidays",
+        "snippet": "American holidays. The United States recognizes 12 federal holidays.
+        Learn about federal, state, and cultural holidays celebrated in the U.S.",
+        "dateLastCrawled": "2024-01-08T07:08:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=jazz+(site%3ausa.gov)&d=4862298463414627&mkt=en-US&setlang=en-US&w=fqcuUmZMNPujHi7Py7K6vZaQjWM1HEur",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Complain about phone and text scams, robocalls, and telemarketers",
+        "url": "https:\/\/www.usa.gov\/telemarketer-scam-call-complaints", "datePublished":
+        "2023-12-07T00:00:00.0000000", "datePublishedDisplayText": "Dec 7, 2023",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/telemarketer-scam-call-complaints",
+        "snippet": "Ask a real person any government-related question for free. They
+        will get you the answer or let you know where to find it. Call USAGov. Chat
+        with USAGov. Top. Find out how to file complaints about scam calls and texts
+        and telemarketers. Learn how to reduce sales calls through the National Do
+        Not Call Registry.", "dateLastCrawled": "2024-01-09T04:37:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=jazz+(site%3ausa.gov)&d=4510682372839486&mkt=en-US&setlang=en-US&w=CO1ZW-iFKhQDOJQ2XaRCCD8_cCQddPC7",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Find a lawyer and affordable legal aid | USAGov", "url": "https:\/\/www.usa.gov\/legal-aid",
+        "datePublished": "2023-12-08T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 8, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/legal-aid",
+        "snippet": "LawHelp.org - Find free legal aid near you and get answers to
+        your legal questions. These services are for people with low to moderate incomes.
+        American Bar Association free legal answers - This site lets people with low
+        incomes ask questions online and have a lawyer answer them. They will not
+        answer questions involving crimes.", "dateLastCrawled": "2024-01-09T06:21:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=jazz+(site%3ausa.gov)&d=4714246640644406&mkt=en-US&setlang=en-US&w=_2H_PQH9Vr1fyu41l-cJ0k9xbeuwqeby",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Learn about your credit report and how to get a copy | USAGov", "url":
+        "https:\/\/www.usa.gov\/credit-reports", "datePublished": "2023-11-07T00:00:00.0000000",
+        "datePublishedDisplayText": "Nov 7, 2023", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.usa.gov\/credit-reports", "snippet": "Ask a real person any
+        government-related question for free. They will get you the answer or let
+        you know where to find it. Call USAGov. Chat with USAGov. Top. Find the official
+        place to get a free credit report. See what information is in a credit report
+        and how lenders and other organizations may use them.", "dateLastCrawled":
+        "2024-01-08T05:20:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=jazz+(site%3ausa.gov)&d=4741257694159531&mkt=en-US&setlang=en-US&w=Ytu1VtOF30BsE2720_dk8Jc4ImduF995",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Rental assistance | USAGov", "url": "https:\/\/www.usa.gov\/rental-housing-programs",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/rental-housing-programs",
+        "snippet": "Find rental assistance for specific groups. Learn about special
+        rental assistance programs if you are a veteran or have a disability. Learn
+        about affordable rental housing including Section 8 for people with low incomes.
+        See how these programs work, who is eligible, and how to apply.", "dateLastCrawled":
+        "2024-01-09T07:20:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=jazz+(site%3ausa.gov)&d=4703990262203108&mkt=en-US&setlang=en-US&w=Dih4XEaAQuBbIKvYTWVnJgYjHFU2Gjb7",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 10 Jan 2024 14:41:44 GMT
+recorded_with: VCR 6.2.0

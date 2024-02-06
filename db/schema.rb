@@ -91,7 +91,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_29_214553) do
     t.string "header_tagline_logo_content_type"
     t.integer "header_tagline_logo_file_size"
     t.datetime "header_tagline_logo_updated_at", precision: nil
-    t.string "bing_v5_key", limit: 32
     t.boolean "active", default: true, null: false
     t.boolean "show_redesign_display_settings", default: false
     t.boolean "use_redesigned_results_page", default: false

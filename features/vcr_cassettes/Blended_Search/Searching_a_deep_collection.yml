@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=deep%20(site:agency.gov/very/very/very/deeply/nested/)&responseFilter=WebPages&safeSearch=moderate&textDecorations=<DATADOG_API_ENABLED>&traffictype=test
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=deep%20(site:agency.gov/very/very/very/deeply/nested/)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
-      base64_string: ''
+      string: ''
     headers:
       User-Agent:
       - USASearch
@@ -21,81 +21,57 @@ http_interactions:
       - '30'
   response:
     status:
-      code: 401
-      message: PermissionDenied
+      code: 200
+      message: OK
     headers:
-      Content-Length:
-      - '224'
-      Date:
-      - Thu, 31 Mar 2022 17:56:30 GMT
-    body:
-      encoding: UTF-8
-      base64_string: |
-        eyJlcnJvciI6eyJjb2RlIjoiNDAxIiwibWVzc2FnZSI6IkFjY2VzcyBkZW5p
-        ZWQgZHVlIHRvIGludmFsaWQgc3Vic2NyaXB0aW9uIGtleSBvciB3cm9uZyBB
-        UEkgZW5kcG9pbnQuIE1ha2Ugc3VyZSB0byBwcm92aWRlIGEgdmFsaWQga2V5
-        IGZvciBhbiBhY3RpdmUgc3Vic2NyaXB0aW9uIGFuZCB1c2UgYSBjb3JyZWN0
-        IHJlZ2lvbmFsIEFQSSBlbmRwb2ludCBmb3IgeW91ciByZXNvdXJjZS4ifX0=
-  recorded_at: Thu, 31 Mar 2022 17:56:30 GMT
-- request:
-    method: post
-    uri: https://api.datadoghq.com/api/v1/events?api_key=<DATADOG_API_KEY>
-    body:
-      encoding: UTF-8
-      base64_string: |
-        eyJtc2dfdGV4dCI6IiUlJVxuIyMjICoqQmFja3RyYWNlKipcbmBgYGBcbmxp
-        Yi9mYXJhZGF5X21pZGRsZXdhcmUvZXhjZXB0aW9uX25vdGlmaWVyLnJiOjE0
-        OmluIGBjYWxsJ1xuYXBwL2VuZ2luZXMvY2FjaGVkX3NlYXJjaF9hcGlfY29u
-        bmVjdGlvbi5yYjozNjppbiBgZ2V0X2Zyb21fYXBpJ1xuYXBwL2VuZ2luZXMv
-        Y2FjaGVkX3NlYXJjaF9hcGlfY29ubmVjdGlvbi5yYjoyODppbiBgZ2V0J1xu
-        YGBgYFxuX19fXG4lJSUiLCJkYXRlX2hhcHBlbmVkIjoxNjk2NTMwMDY0LCJt
-        c2dfdGl0bGUiOiIgKEZhcmFkYXk6OkNsaWVudEVycm9yKSBcInRoZSBzZXJ2
-        ZXIgcmVzcG9uZGVkIHdpdGggc3RhdHVzIDQwMVwiIiwicHJpb3JpdHkiOiJu
-        b3JtYWwiLCJwYXJlbnQiOm51bGwsInRhZ3MiOlsiYmluZ192NyJdLCJhZ2dy
-        ZWdhdGlvbl9rZXkiOiJbXCIgKEZhcmFkYXk6OkNsaWVudEVycm9yKSBcXFwi
-        dGhlIHNlcnZlciByZXNwb25kZWQgd2l0aCBzdGF0dXMgNDAxXFxcIlwiXSIs
-        ImFsZXJ0X3R5cGUiOiJlcnJvciIsImV2ZW50X3R5cGUiOm51bGwsInNvdXJj
-        ZV90eXBlX25hbWUiOm51bGwsInRpdGxlIjoiIChGYXJhZGF5OjpDbGllbnRF
-        cnJvcikgXCJ0aGUgc2VydmVyIHJlc3BvbmRlZCB3aXRoIHN0YXR1cyA0MDFc
-        IiIsInRleHQiOiIlJSVcbiMjIyAqKkJhY2t0cmFjZSoqXG5gYGBgXG5saWIv
-        ZmFyYWRheV9taWRkbGV3YXJlL2V4Y2VwdGlvbl9ub3RpZmllci5yYjoxNDpp
-        biBgY2FsbCdcbmFwcC9lbmdpbmVzL2NhY2hlZF9zZWFyY2hfYXBpX2Nvbm5l
-        Y3Rpb24ucmI6MzY6aW4gYGdldF9mcm9tX2FwaSdcbmFwcC9lbmdpbmVzL2Nh
-        Y2hlZF9zZWFyY2hfYXBpX2Nvbm5lY3Rpb24ucmI6Mjg6aW4gYGdldCdcbmBg
-        YGBcbl9fX1xuJSUlIiwiaG9zdCI6IllvZ2VzaEEtTUJQLmxvY2FsIiwiZGV2
-        aWNlIjpudWxsfQ==
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - dogapi-rb/1.45.0 (ruby 2.7.5; os darwin21; arch x86_64)
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
       Content-Type:
-      - application/json
-  response:
-    status:
-      code: 403
-      message: Forbidden
-    headers:
-      Date:
-      - Thu, 05 Oct 2023 18:21:04 GMT
-      Content-Type:
-      - application/json
-      Content-Length:
-      - '172'
-      Connection:
-      - keep-alive
-      X-Content-Type-Options:
-      - nosniff
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 10 Jan 2024 14:36:04 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Eventid:
+      - 659eab90d5fe485395b97c38b4d7c48c
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      Bingapis-Traceid:
+      - 659eab90d5fe485395b97c38b4d7c48c
+      Bingapis-Sessionid:
+      - 70D2494F9C0A40DCB96AA507726E68FF
+      X-Msedge-Clientid:
+      - 1EC97F36195A65A52E036B3418F06470
+      X-Msapi-Userstate:
+      - eec6
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=137,MSDatacenter=BNZE01
+      X-Cache:
+      - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      X-Msedge-Ref:
+      - 'Ref A: EB0761D7E97F4EA7A8A9F6E438E4771B Ref B: BN3EDGE0822 Ref C: 2024-01-10T14:37:04Z'
+      Apim-Request-Id:
+      - ff7ee3a0-ac4f-4bea-9bf0-6b088c1bfab1
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 10 Jan 2024 14:37:04 GMT
     body:
       encoding: UTF-8
-      base64_string: |
-        eyJzdGF0dXMiOiJlcnJvciIsImNvZGUiOjQwMywiZXJyb3JzIjpbIkZvcmJp
-        ZGRlbiJdLCJzdGF0dXNwYWdlIjoie3sgLlZhbHVlcy5zdGF0dXNfcGFnZV9s
-        aW5rIH19IiwidHdpdHRlciI6Imh0dHA6Ly90d2l0dGVyLmNvbS9kYXRhZG9n
-        b3BzIiwiZW1haWwiOiJzdXBwb3J0QGRhdGFkb2docS5jb20ifQ==
-  recorded_at: Thu, 05 Oct 2023 18:21:04 GMT
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "deep
+        (site:agency.gov\/very\/very\/very\/deeply\/nested\/)"}, "rankingResponse":
+        {}}'
+  recorded_at: Wed, 10 Jan 2024 14:37:04 GMT
 recorded_with: VCR 6.2.0

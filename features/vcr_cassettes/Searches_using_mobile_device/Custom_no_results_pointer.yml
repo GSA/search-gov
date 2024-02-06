@@ -2,76 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=lkssldfkjsldfkjsldkfjsldkjflsdkjflskdjfwer%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V7_SUBSCRIPTION_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Transfer-Encoding:
-      - chunked
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Tue, 07 Sep 2021 16:17:12 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
-      Bingapis-Traceid:
-      - 2EEC98F490EA4748AD40E40B2A4B6240
-      Bingapis-Sessionid:
-      - 6C2031C591AE4151BD57F1F86520EE89
-      X-Msedge-Clientid:
-      - 18A3806E98AE64F41C3690C5991E65B9
-      X-Msapi-Userstate:
-      - a6a1
-      Bingapis-Market:
-      - en-US
-      X-Search-Responseinfo:
-      - InternalResponseTime=144,MSDatacenter=BN2B
-      X-Cache:
-      - CONFIG_NOCACHE
-      X-Msedge-Ref:
-      - 'Ref A: 2EEC98F490EA4748AD40E40B2A4B6240 Ref B: BLUEDGE1409 Ref C: 2021-09-07T16:18:12Z'
-      Apim-Request-Id:
-      - 2d84907d-e95e-417e-8988-1007ee21262d
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
-      X-Content-Type-Options:
-      - nosniff
-      Csp-Billing-Usage:
-      - CognitiveServices.BingSearchV7.Transaction=1
-      Date:
-      - Tue, 07 Sep 2021 16:18:11 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "lkssldfkjsldfkjsldkfjsldkjflsdkjflskdjfwer
-        (site:gov OR site:mil)"}, "rankingResponse": {}}'
-  recorded_at: Tue, 07 Sep 2021 16:18:12 GMT
-- request:
-    method: get
-    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=lkssldfkjsldfkjsldkfjsldkjflsdkjflskdjfwer%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=lkssldfkjsldfkjsldkfjsldkjflsdkjflskdjfwer%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=<DATADOG_API_ENABLED>&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
@@ -100,31 +31,35 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Wed, 06 Oct 2021 11:47:47 GMT
+      - Tue, 09 Jan 2024 20:28:45 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
+      X-Eventid:
+      - 659dacb9f8954fed9144ba300a90de5d
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
       Bingapis-Traceid:
-      - 89175669EC2745F49AA6C88E47A44063
+      - 659dacb9f8954fed9144ba300a90de5d
       Bingapis-Sessionid:
-      - A29AEE0900D447AD87B626433963FD42
+      - EE31831B449B4AC7AB965D17DA53B011
       X-Msedge-Clientid:
-      - 25D9ABDFF33661922E8FBB17F24360C6
+      - 2E56434ED3D36CE83353574FD2796D1A
       X-Msapi-Userstate:
-      - '6578'
+      - 5b6a
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=157,MSDatacenter=BN2B
+      - InternalResponseTime=323,MSDatacenter=BNZE01
       X-Cache:
       - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
       X-Msedge-Ref:
-      - 'Ref A: 89175669EC2745F49AA6C88E47A44063 Ref B: BLUEDGE1721 Ref C: 2021-10-06T11:48:47Z'
+      - 'Ref A: 3CC84882BBAF4CA09F734ECC19E15199 Ref B: BN3EDGE0810 Ref C: 2024-01-09T20:29:45Z'
       Apim-Request-Id:
-      - a09612e0-edf1-40f7-b84f-1beb03ac1c33
+      - dea8a734-88f8-4eeb-a51a-98275d8a15e8
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -132,10 +67,10 @@ http_interactions:
       Csp-Billing-Usage:
       - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Wed, 06 Oct 2021 11:48:46 GMT
+      - Tue, 09 Jan 2024 20:29:46 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "lkssldfkjsldfkjsldkfjsldkjflsdkjflskdjfwer
         (site:gov OR site:mil)"}, "rankingResponse": {}}'
-  recorded_at: Wed, 06 Oct 2021 05:46:05 GMT
-recorded_with: VCR 6.0.0
+  recorded_at: Tue, 09 Jan 2024 20:29:46 GMT
+recorded_with: VCR 6.2.0

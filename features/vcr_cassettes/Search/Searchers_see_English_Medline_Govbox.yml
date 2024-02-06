@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=hippopotomonstrosesquippedaliophobia%20(site:nih.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=hippopotomonstrosesquippedaliophobia%20(site:nih.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
@@ -10,7 +10,7 @@ http_interactions:
       User-Agent:
       - USASearch
       Ocp-Apim-Subscription-Key:
-      - "<BING_V7_SUBSCRIPTION_ID>"
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -31,31 +31,35 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Tue, 07 Sep 2021 16:17:51 GMT
+      - Wed, 10 Jan 2024 14:40:18 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
+      X-Eventid:
+      - 659eac8d4c4049e6acee483f2919798e
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
       Bingapis-Traceid:
-      - EBE3528D5D0A4C948BE7B8F48E75420F
+      - 659eac8d4c4049e6acee483f2919798e
       Bingapis-Sessionid:
-      - 07EB9D0DDAE64DC3B3AC2E65E24E1E43
+      - 668D725CE7064E4B84ABAEC4E19852C5
       X-Msedge-Clientid:
-      - 13DB495E777160B62C4259F5763E61C1
+      - 243C760C91F86058001D620E90526172
       X-Msapi-Userstate:
-      - ec33
+      - 34b5
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=186,MSDatacenter=BN2B
+      - InternalResponseTime=219,MSDatacenter=BNZE01
       X-Cache:
       - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
       X-Msedge-Ref:
-      - 'Ref A: EBE3528D5D0A4C948BE7B8F48E75420F Ref B: BLUEDGE1807 Ref C: 2021-09-07T16:18:51Z'
+      - 'Ref A: BEEE457C5253440EB099E57AA5E35695 Ref B: BN3EDGE0912 Ref C: 2024-01-10T14:41:17Z'
       Apim-Request-Id:
-      - 780b02fa-4581-4125-a142-cf4d1acdf64f
+      - 795f5616-41d7-4d36-bb42-0b4b41187855
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -63,219 +67,227 @@ http_interactions:
       Csp-Billing-Usage:
       - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Tue, 07 Sep 2021 16:18:51 GMT
+      - Wed, 10 Jan 2024 14:41:17 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "hippopotomonstrosesquippedaliophobia
         (site:nih.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=hippopotomonstrosesquippedaliophobia+(site%3anih.gov)",
-        "totalEstimatedMatches": 2, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "Age of onset of mental disorders: a review of recent ...", "url":
-        "https:\/\/pubmed.ncbi.nlm.nih.gov\/17551351\/", "isFamilyFriendly": true,
-        "displayUrl": "https:\/\/pubmed.ncbi.nlm.nih.gov\/17551351", "snippet":
+        "totalEstimatedMatches": 4800, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Specific Phobia - StatPearls - NCBI Bookshelf", "url": "https:\/\/www.ncbi.nlm.nih.gov\/books\/NBK499923\/",
+        "datePublished": "2023-05-01T00:00:00.0000000", "datePublishedDisplayText":
+        "May 1, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/books\/NBK499923",
+        "snippet": "Patients with a specific phobia experience high levels of anxiety
+        along with excessive and unreasonable fear due to either exposure to a phobic
+        stimulus, the anticipation of exposure to a phobic stimulus, and even speaking
+        about the feared stimulus. As a result, these patients will try to avoid the
+        anxiety-provoking stimulus to any extent possible. Many patients have a strong
+        family history of ...", "dateLastCrawled": "2024-01-05T21:05:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Specific phobias - PMC - National Center for Biotechnology Information",
+        "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC7233312\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC7233312",
+        "snippet": "Specific phobias are irrational and persistent fears of certain
+        objects or situations that pose little or no actual danger. This article reviews
+        the epidemiology, etiology, diagnosis, and treatment of specific phobias,
+        as well as the neurobiological mechanisms underlying them. The article also
+        discusses how specific phobias differ from other types of fear-related disorders,
+        such as PTSD.", "dateLastCrawled": "2024-01-09T21:08:00.0000000Z", "language":
+        "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Neurobiology of fear and specific phobias - PMC - National Center
+        for ...", "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC5580526\/",
+        "datePublished": "2017-03-20T00:00:00.0000000", "datePublishedDisplayText":
+        "Mar 20, 2017", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC5580526",
+        "snippet": "Abstract. Fear, which can be expressed innately or after conditioning,
+        is triggered when a danger or a stimulus predicting immediate danger is perceived.
+        Its role is to prepare the body to face this danger. However, dysfunction
+        in fear processing can lead to psychiatric disorders in which fear outweighs
+        the danger or possibility of harm.", "dateLastCrawled": "2024-01-09T03:26:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Social Anxiety Disorder: More Than Just Shyness - NIMH", "url": "https:\/\/www.nimh.nih.gov\/health\/publications\/social-anxiety-disorder-more-than-just-shyness",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nimh.nih.gov\/health\/publications\/social-anxiety-disorder-more-than-just...",
+        "snippet": "Social anxiety disorder is an intense, persistent fear of being
+        watched and judged by others. This fear can affect work, school, and other
+        daily activities. It can even make it hard to make and keep friends. The good
+        news is social anxiety disorder is treatable. Learn more about the symptoms
+        of social anxiety disorder and how to find help.", "dateLastCrawled": "2024-01-09T13:04:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=hippopotomonstrosesquippedaliophobia+(site%3anih.gov)&d=5054296387769366&mkt=en-US&setlang=en-US&w=1in7qN0TjFT6benhV49Z21nmDgzb3pPp",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Anxiety Disorders - National Institute of Mental Health (NIMH)",
+        "url": "https:\/\/www.nimh.nih.gov\/health\/topics\/anxiety-disorders", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.nimh.nih.gov\/health\/topics\/anxiety-disorders",
+        "snippet": "Cognitive Behavioral Therapy (CBT) is an example of one type of
+        psychotherapy that can help people with anxiety disorders. It teaches people
+        different ways of thinking, behaving, and reacting to situations to help you
+        feel less anxious and fearful. CBT has been well studied and is the gold standard
+        for psychotherapy.", "dateLastCrawled": "2024-01-09T08:09:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=hippopotomonstrosesquippedaliophobia+(site%3anih.gov)&d=4993552667639860&mkt=en-US&setlang=en-US&w=UKZl6m54qSzezgYZH3mLd2SWDEuMvSOY",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Age of onset of mental disorders: a review of recent literature",
+        "url": "https:\/\/pubmed.ncbi.nlm.nih.gov\/17551351\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/pubmed.ncbi.nlm.nih.gov\/17551351", "snippet":
         "Purpose of review: The aim of this article is to review recent epidemiological
-        research on age-of-onset of mental disorders, focusing on the WHO World Mental
-        Health surveys. Recent findings: Median and inter-quartile range (IQR; 25th-75th
-        percentiles) of age-of-onset is much earlier for phobias (7-14, IQR 4-20)
-        and impulse-control disorders (7-15; IQR 4-35) than other anxiety disorders
-        (25-53 ...", "dateLastCrawled": "2021-08-31T19:38:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "Pseudopseudohypoparathyroidism | Genetic and Rare Diseases ...",
-        "url": "https:\/\/rarediseases.info.nih.gov\/diseases\/7860\/pseudopseudohypoparathyroidism",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/rarediseases.info.nih.gov\/diseases\/7860\/pseudopseudohypoparathyroidism",
-        "snippet": "Pseudopseudohypoparathyroidism (PPHP) is an inherited condition
-        that causes short stature, round face, and short hand bones. PPHP causes joints
-        and other soft tissues in the body to harden. It also affects how bones are
-        formed. As a result, PPHP can cause bone, joint, and nerve damage, and this
-        damage can cause lasting pain. Some people with PPHP (10%) also have learning
-        disability.", "dateLastCrawled": "2021-09-03T12:07:00.0000000Z", "language":
-        "en", "isNavigational": false}]}, "rankingResponse": {"mainline": {"items":
-        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}}]}}}'
-  recorded_at: Tue, 07 Sep 2021 16:18:52 GMT
-- request:
-    method: get
-    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=hippopotomonstrosesquippedaliophobia%20(site:nih.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V7_SUBSCRIPTION_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Transfer-Encoding:
-      - chunked
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Tue, 07 Sep 2021 16:17:52 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
-      Bingapis-Traceid:
-      - EBD113881EF34CBC8B4B9C0D045EE804
-      Bingapis-Sessionid:
-      - 37E6CF8254DD43C19C88EA54F2D262C9
-      X-Msedge-Clientid:
-      - 31256888769B687B02967823776669A1
-      X-Msapi-Userstate:
-      - dc98
-      Bingapis-Market:
-      - en-US
-      X-Search-Responseinfo:
-      - InternalResponseTime=165,MSDatacenter=BN2B
-      X-Cache:
-      - CONFIG_NOCACHE
-      X-Msedge-Ref:
-      - 'Ref A: EBD113881EF34CBC8B4B9C0D045EE804 Ref B: BLUEDGE0116 Ref C: 2021-09-07T16:18:52Z'
-      Apim-Request-Id:
-      - c8bd905f-6809-4840-8347-8f348ad35b9a
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
-      X-Content-Type-Options:
-      - nosniff
-      Csp-Billing-Usage:
-      - CognitiveServices.BingSearchV7.Transaction=1
-      Date:
-      - Tue, 07 Sep 2021 16:18:52 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "hippopotomonstrosesquippedaliophobia
-        (site:nih.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=hippopotomonstrosesquippedaliophobia+(site%3anih.gov)",
-        "totalEstimatedMatches": 2, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "Pseudopseudohypoparathyroidism | Genetic and Rare Diseases ...",
-        "url": "https:\/\/rarediseases.info.nih.gov\/diseases\/7860\/pseudopseudohypoparathyroidism",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/rarediseases.info.nih.gov\/diseases\/7860\/pseudopseudohypoparathyroidism",
-        "snippet": "Pseudopseudohypoparathyroidism (PPHP) is an inherited condition
-        that causes short stature, round face, and short hand bones. PPHP causes joints
-        and other soft tissues in the body to harden. It also affects how bones are
-        formed. As a result, PPHP can cause bone, joint, and nerve damage, and this
-        damage can cause lasting pain. Some people with PPHP (10%) also have learning
-        disability.", "dateLastCrawled": "2021-09-03T12:07:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "Age of onset of mental disorders: a review of recent ...", "url":
-        "https:\/\/pubmed.ncbi.nlm.nih.gov\/17551351\/", "isFamilyFriendly": true,
-        "displayUrl": "https:\/\/pubmed.ncbi.nlm.nih.gov\/17551351", "snippet":
-        "Purpose of review: The aim of this article is to review recent epidemiological
-        research on age-of-onset of mental disorders, focusing on the WHO World Mental
-        Health surveys. Recent findings: Median and inter-quartile range (IQR; 25th-75th
-        percentiles) of age-of-onset is much earlier for phobias (7-14, IQR 4-20)
-        and impulse-control disorders (7-15; IQR 4-35) than other anxiety disorders
-        (25-53 ...", "dateLastCrawled": "2021-08-31T19:38:00.0000000Z", "language":
-        "en", "isNavigational": false}]}, "rankingResponse": {"mainline": {"items":
-        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}}]}}}'
-  recorded_at: Tue, 07 Sep 2021 16:18:52 GMT
-- request:
-    method: get
-    uri: https://api.cognitive.microsoft.com/bing/v7.0/search?count=20&mkt=en-US&offset=0&q=hippopotomonstrosesquippedaliophobia%20(site:nih.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V7_SUBSCRIPTION_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Transfer-Encoding:
-      - chunked
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Tue, 07 Sep 2021 16:17:54 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
-      Bingapis-Traceid:
-      - AB3184A6ECDF4F73A4DB3F1AA7844B22
-      Bingapis-Sessionid:
-      - CC5A7C26D7B84401B6918A7F9208E3FE
-      X-Msedge-Clientid:
-      - 1458AABAFD2C6D3C3725BA11FC636C72
-      X-Msapi-Userstate:
-      - '7516'
-      Bingapis-Market:
-      - en-US
-      X-Search-Responseinfo:
-      - InternalResponseTime=196,MSDatacenter=BN2B
-      X-Cache:
-      - CONFIG_NOCACHE
-      X-Msedge-Ref:
-      - 'Ref A: AB3184A6ECDF4F73A4DB3F1AA7844B22 Ref B: BLUEDGE1822 Ref C: 2021-09-07T16:18:54Z'
-      Apim-Request-Id:
-      - e42aeaa4-e7b7-446a-a0ea-14d8feaf9801
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
-      X-Content-Type-Options:
-      - nosniff
-      Csp-Billing-Usage:
-      - CognitiveServices.BingSearchV7.Transaction=1
-      Date:
-      - Tue, 07 Sep 2021 16:18:54 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "hippopotomonstrosesquippedaliophobia
-        (site:nih.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=hippopotomonstrosesquippedaliophobia+(site%3anih.gov)",
-        "totalEstimatedMatches": 2, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "Age of onset of mental disorders: a review of recent ...", "url":
-        "https:\/\/pubmed.ncbi.nlm.nih.gov\/17551351\/", "isFamilyFriendly": true,
-        "displayUrl": "https:\/\/pubmed.ncbi.nlm.nih.gov\/17551351", "snippet":
-        "Purpose of review: The aim of this article is to review recent epidemiological
-        research on age-of-onset of mental disorders, focusing on the WHO World Mental
-        Health surveys. Recent findings: Median and inter-quartile range (IQR; 25th-75th
-        percentiles) of age-of-onset is much earlier for phobias (7-14, IQR 4-20)
-        and impulse-control disorders (7-15; IQR 4-35) than other anxiety disorders
-        (25-53 ...", "dateLastCrawled": "2021-08-31T19:38:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "Pseudopseudohypoparathyroidism | Genetic and Rare Diseases ...",
-        "url": "https:\/\/rarediseases.info.nih.gov\/diseases\/7860\/pseudopseudohypoparathyroidism",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/rarediseases.info.nih.gov\/diseases\/7860\/pseudopseudohypoparathyroidism",
-        "snippet": "Pseudopseudohypoparathyroidism (PPHP) is an inherited condition
-        that causes short stature, round face, and short hand bones. PPHP causes joints
-        and other soft tissues in the body to harden. It also affects how bones are
-        formed. As a result, PPHP can cause bone, joint, and nerve damage, and this
-        damage can cause lasting pain. Some people with PPHP (10%) also have learning
-        disability.", "dateLastCrawled": "2021-09-03T12:07:00.0000000Z", "language":
-        "en", "isNavigational": false}]}, "rankingResponse": {"mainline": {"items":
-        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/#WebPages.1"}}]}}}'
-  recorded_at: Tue, 07 Sep 2021 16:18:54 GMT
+        research on age-of-onset of mental disorders, focusing on the WHO World
+        Mental Health surveys. Recent findings: Median and inter-quartile range (IQR;
+        25th-75th percentiles) of age-of-onset is much earlier for phobias (7-14,
+        IQR 4-20) and impulse-control disorders (7-15; IQR 4-35) than other anxiety
+        disorders (25-53 ...", "dateLastCrawled": "2024-01-06T21:48:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Cognitive-behavioral group therapy versus phenelzine in social
+        phobia ...", "url": "https:\/\/pubmed.ncbi.nlm.nih.gov\/10604081\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/pubmed.ncbi.nlm.nih.gov\/10604081", "snippet":
+        "To evaluate the effects of maintenance treatment and durability of gains
+        after treatment discontinuation, responders to either phenelzine (PZ) or cognitive-behavioral
+        group therapy (CBGT) from an acute trial comparing these two treatments as
+        well as pill placebo and a psychotherapy control (educational supportive group
+        therapy) were enrolled into maintenance and treatment-free follow-up phases.",
+        "dateLastCrawled": "2023-04-06T08:29:00.0000000Z", "language": "en", "isNavigational":
+        <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Treatment of specific phobia in adults - PubMed", "url": "https:\/\/pubmed.ncbi.nlm.nih.gov\/17112646\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/pubmed.ncbi.nlm.nih.gov\/17112646",
+        "snippet": "Treatment gains are generally maintained for one year, but longer
+        follow-up studies are needed to better understand and prevent relapse. Acutely,
+        the treatments are not equally effective among the phobia subtypes. Most phobias
+        respond robustly to in vivo exposure, but it is associated with high dropout
+        rates and low treatment acceptance.", "dateLastCrawled": "2023-12-21T06:26:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Anxiety - StatPearls - NCBI Bookshelf", "url": "https:\/\/www.ncbi.nlm.nih.gov\/books\/NBK470361\/",
+        "datePublished": "2023-04-24T00:00:00.0000000", "datePublishedDisplayText":
+        "Apr 24, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/books\/NBK470361",
+        "snippet": "Fear is an automatic neurophysiological state of alarm characterized
+        by a fight or flight response to a cognitive appraisal of present or imminent
+        danger (real or perceived). Anxiety is linked to fear and manifests as a future-oriented
+        mood state that consists of a complex cognitive, affective, physiological,
+        and behavioral response system associated with preparation for the anticipated
+        events ...", "dateLastCrawled": "2024-01-10T01:33:00.0000000Z", "language":
+        "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "WCA recommendations for the long-term treatment of social phobia",
+        "url": "https:\/\/pubmed.ncbi.nlm.nih.gov\/14767397\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/pubmed.ncbi.nlm.nih.gov\/14767397", "snippet":
+        "Treatment of social phobia may need to be continued for several months to
+        consolidate response and achieve full remission. The SSRIs have shown benefit
+        in long-term treatment trials, while long-term treatment data from clinical
+        studies of clonazepam are limited but support the drug''s efficacy. There
+        is also evidence for the effectiveness of ...", "dateLastCrawled": "2022-03-21T21:24:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Optimal treatment of social phobia: systematic review and meta-analysis",
+        "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC3363138\/", "datePublished":
+        "2012-05-03T00:00:00.0000000", "datePublishedDisplayText": "May 3, 2012",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC3363138",
+        "snippet": "This article proposes a number of recommendations for the treatment
+        of generalized social phobia, based on a systematic literature review and
+        meta-analysis. An optimal treatment regimen would include a combination of
+        medication and psychotherapy, along with an assertive clinical management
+        program. For medications, selective serotonin reuptake ...", "dateLastCrawled":
+        "2024-01-10T04:15:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "SOCIAL ANXIETY DISORDER - Social Anxiety Disorder - NCBI Bookshelf",
+        "url": "https:\/\/www.ncbi.nlm.nih.gov\/books\/NBK327674\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/books\/NBK327674",
+        "snippet": "Social anxiety disorder (previously termed ‘social phobia’)
+        was formally recognised as a separate phobic disorder in the mid-1960s (Marks
+        & Gelder, 1965). The term ‘social anxiety disorder’ reflects current understanding,
+        including in diagnostic manuals, and is used throughout the guideline. As
+        set out in the International Classification of Diseases, 10th Revision (ICD-10)
+        (World ...", "dateLastCrawled": "2024-01-06T19:03:00.0000000Z", "language":
+        "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Titin (TTN): from molecule to modifications, mechanics, and medical
+        ...", "url": "https:\/\/pubmed.ncbi.nlm.nih.gov\/34662387\/", "datePublished":
+        "2022-11-10T00:00:00.0000000", "datePublishedDisplayText": "Nov 10, 2022",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/pubmed.ncbi.nlm.nih.gov\/34662387",
+        "snippet": "The giant sarcomere protein titin is a major determinant of cardiomyocyte
+        stiffness and contributor to cardiac strain sensing. Titin-based forces are
+        highly regulated in health and disease, which aids in the regulation of myocardial
+        function, including cardiac filling and output. Due to the enormous size,
+        complexity, and malleability of the ...", "dateLastCrawled": "2024-01-07T21:02:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Trypophobia: What Do We Know So Far? A Case Report and Comprehensive
+        ...", "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC5811467\/",
+        "datePublished": "2018-02-09T00:00:00.0000000", "datePublishedDisplayText":
+        "Feb 9, 2018", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC5811467",
+        "snippet": "A particular type of phobia, known as “trypophobia” ( 2 ), is
+        described as fear or repulsion to patterns of holes. The word derives from
+        the Greek trypa (τρύπα), which means “drilling” or “hole.”. Trypophobia
+        is basically referred to by people who suffer from it, through communications
+        such as social networks and personal blogs.", "dateLastCrawled": "2024-01-08T07:01:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Treatment of generalized social phobia: results at long-term ...
+        - PubMed", "url": "https:\/\/pubmed.ncbi.nlm.nih.gov\/8687366\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/pubmed.ncbi.nlm.nih.gov\/8687366", "snippet":
+        "This study investigated the long-term follow-up effectiveness of (cognitive-)
+        behavioural group and individual treatments for generalized social phobia.
+        Patients were reassessed 18 months after they had finished one of the following
+        treatment packages: (1) exposure in vivo; (2) cognitive therapy fol …", "dateLastCrawled":
+        "2022-07-06T02:04:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15", "name":
+        "Strategies to manage patients with dental anxiety and dental phobia ...",
+        "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC4790493\/", "datePublished":
+        "2016-03-10T00:00:00.0000000", "datePublishedDisplayText": "Mar 10, 2016",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC4790493",
+        "snippet": "Introduction. Fear and anxiety toward the dentist and dental treatment
+        are both significant characteristics that contribute to avoidance of dental
+        care.1,2 Anxiety associated with the thought of visiting the dentist for preventive
+        care and over dental procedures is referred to as dental anxiety. It has been
+        cited as the fifth-most common cause of anxiety by Agras et al.3 Anxiety is
+        an ...", "dateLastCrawled": "2024-01-09T18:28:00.0000000Z", "language": "en",
+        "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Social phobia. Longitudinal course and long-term outcome of ...
+        - PubMed", "url": "https:\/\/pubmed.ncbi.nlm.nih.gov\/8748383\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/pubmed.ncbi.nlm.nih.gov\/8748383", "snippet":
+        "Longitudinal course and long-term outcome of cognitive-behavioral treatment.
+        Psychiatr Clin North Am1995 Dec;18 (4):821-42. , Social Phobia Program, Center
+        for Stress and Anxiety Disorders, University at Albany, State University of
+        New York, USA. PMID: 8748383.", "dateLastCrawled": "2023-05-16T07:36:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Choking Phobia : An Uncommon Phobic Disorder, Treated with Behavior
+        ...", "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC5434294\/",
+        "datePublished": "2016-12-12T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 12, 2016", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC5434294",
+        "snippet": "2. Case history. Miss X, a 20 year old girl, 2 nd in birth order,
+        an engineering student living in a hostel, and hailing from a urban background
+        was referred to our Psychiatry Outpatient department from the Otorhinolaryngology
+        department for detailed assessment and management. Exploration of history
+        revealed that she had developed a constant fear of swallowing solid\/semi-
+        solid foods and pills ...", "dateLastCrawled": "2024-01-05T03:15:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "The long-term treatment of social phobia with moclobemide", "url":
+        "https:\/\/pubmed.ncbi.nlm.nih.gov\/8923115\/", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/pubmed.ncbi.nlm.nih.gov\/8923115", "snippet": "These
+        patients were treated for 2 years with moclobemide (phase I) followed by drug
+        withdrawal, in most cases abruptly (phase II). Those who relapsed entered
+        phase III for a further period of 2 years of treatment. During phase I 40
+        patients (39.6%) withdrew due to inefficacy or relapse. Two patients were
+        removed from the study because of other ...", "dateLastCrawled": "2024-01-08T03:39:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "NOMOPHOBIA: NO MObile PHone PhoBIA - PMC - National Center for ...",
+        "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC6510111\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC6510111",
+        "snippet": "The term NOMOPHOBIA or NO MObile PHone PhoBIA is used to describe
+        a psychological condition when people have a fear of being detached from mobile
+        phone connectivity. The term NOMOPHOBIA is constructed on definitions described
+        in the DSM-IV, it has been labelled as a “phobia for a particular\/specific
+        things”.", "dateLastCrawled": "2024-01-07T04:06:00.0000000Z", "language":
+        "en", "isNavigational": <DATADOG_API_ENABLED>}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 10 Jan 2024 14:41:18 GMT
 - request:
     method: get
     uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=hippopotomonstrosesquippedaliophobia%20(site:nih.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
@@ -307,31 +319,35 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Wed, 06 Oct 2021 15:37:46 GMT
+      - Wed, 10 Jan 2024 14:40:18 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
+      X-Eventid:
+      - 659eac8e78fb4fd196a18f7014ebf005
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
       Bingapis-Traceid:
-      - 73E9D4209D63409EA0E3AF038B9F67E6
+      - 659eac8e78fb4fd196a18f7014ebf005
       Bingapis-Sessionid:
-      - 47505E4BF0B44A99A0346C6BB4C16C23
+      - DDB940EC3989467584F6580E1A7FE05C
       X-Msedge-Clientid:
-      - 00BEBCD20E616E070B91AC1A0F9C6F46
+      - 1B021F81B9BA6AFF3DCB0B83B8106BB5
       X-Msapi-Userstate:
-      - 0da6
+      - 779f
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=294,MSDatacenter=BN2B
+      - InternalResponseTime=206,MSDatacenter=BNZE01
       X-Cache:
       - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
       X-Msedge-Ref:
-      - 'Ref A: 73E9D4209D63409EA0E3AF038B9F67E6 Ref B: BLUEDGE0211 Ref C: 2021-10-06T15:38:46Z'
+      - 'Ref A: 074320BBDC9C4381B5D76F582DA4AD20 Ref B: BN3EDGE0912 Ref C: 2024-01-10T14:41:18Z'
       Apim-Request-Id:
-      - b89efe11-64b5-497c-b12b-13464fc22980
+      - dcc82e97-7f75-4f38-b6ec-6fc0bb8f8279
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -339,35 +355,236 @@ http_interactions:
       Csp-Billing-Usage:
       - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Wed, 06 Oct 2021 15:38:47 GMT
+      - Wed, 10 Jan 2024 14:41:18 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "hippopotomonstrosesquippedaliophobia
         (site:nih.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=hippopotomonstrosesquippedaliophobia+(site%3anih.gov)",
-        "totalEstimatedMatches": 2, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "Pseudopseudohypoparathyroidism | Genetic and Rare Diseases ...",
-        "url": "https:\/\/rarediseases.info.nih.gov\/diseases\/7860\/pseudopseudohypoparathyroidism",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/rarediseases.info.nih.gov\/diseases\/7860\/pseudopseudohypoparathyroidism",
-        "snippet": "Pseudopseudohypoparathyroidism (PPHP) is an inherited condition
-        that causes short stature, round face, and short hand bones. PPHP causes joints
-        and other soft tissues in the body to harden. It also affects how bones are
-        formed. As a result, PPHP can cause bone, joint, and nerve damage, and this
-        damage can cause lasting pain. Some people with PPHP (10%) also have learning
-        disability.", "dateLastCrawled": "2021-10-02T02:07:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "Age of onset of mental disorders: a review of recent ...", "url":
-        "https:\/\/pubmed.ncbi.nlm.nih.gov\/17551351\/", "isFamilyFriendly": true,
-        "displayUrl": "https:\/\/pubmed.ncbi.nlm.nih.gov\/17551351", "snippet":
+        "totalEstimatedMatches": 4800, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Specific Phobia - StatPearls - NCBI Bookshelf", "url": "https:\/\/www.ncbi.nlm.nih.gov\/books\/NBK499923\/",
+        "datePublished": "2023-05-01T00:00:00.0000000", "datePublishedDisplayText":
+        "May 1, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/books\/NBK499923",
+        "snippet": "Patients with a specific phobia experience high levels of anxiety
+        along with excessive and unreasonable fear due to either exposure to a phobic
+        stimulus, the anticipation of exposure to a phobic stimulus, and even speaking
+        about the feared stimulus. As a result, these patients will try to avoid the
+        anxiety-provoking stimulus to any extent possible. Many patients have a strong
+        family history of ...", "dateLastCrawled": "2024-01-05T21:05:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Treatment of anxiety disorders - PMC - National Center for ...",
+        "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC5573566\/", "datePublished":
+        "2020-06-17T00:00:00.0000000", "datePublishedDisplayText": "Jun 17, 2020",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC5573566",
+        "snippet": "Introduction. Anxiety disorders are the most prevalent psychiatric
+        disorders and are associated with a high burden of illness. 1-3 With a 12-month
+        prevalence of 10.3%, specific (isolated) phobias are the most common anxiety
+        disorders, 4 although persons suffering from isolated phobias rarely seek
+        treatment. Panic disorder with or without agoraphobia (PDA) is the next most
+        common type with a ...", "dateLastCrawled": "2024-01-09T09:07:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Anxiety - StatPearls - NCBI Bookshelf", "url": "https:\/\/www.ncbi.nlm.nih.gov\/books\/NBK470361\/",
+        "datePublished": "2023-04-24T00:00:00.0000000", "datePublishedDisplayText":
+        "Apr 24, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/books\/NBK470361",
+        "snippet": "Fear is an automatic neurophysiological state of alarm characterized
+        by a fight or flight response to a cognitive appraisal of present or imminent
+        danger (real or perceived). Anxiety is linked to fear and manifests as a future-oriented
+        mood state that consists of a complex cognitive, affective, physiological,
+        and behavioral response system associated with preparation for the anticipated
+        events ...", "dateLastCrawled": "2024-01-10T01:33:00.0000000Z", "language":
+        "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Anxiety Disorders - National Institute of Mental Health (NIMH)",
+        "url": "https:\/\/www.nimh.nih.gov\/health\/topics\/anxiety-disorders", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.nimh.nih.gov\/health\/topics\/anxiety-disorders",
+        "snippet": "Cognitive Behavioral Therapy (CBT) is an example of one type of
+        psychotherapy that can help people with anxiety disorders. It teaches people
+        different ways of thinking, behaving, and reacting to situations to help you
+        feel less anxious and fearful. CBT has been well studied and is the gold standard
+        for psychotherapy.", "dateLastCrawled": "2024-01-08T07:08:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=hippopotomonstrosesquippedaliophobia+(site%3anih.gov)&d=4993552667639860&mkt=en-US&setlang=en-US&w=UKZl6m54qSzezgYZH3mLd2SWDEuMvSOY",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Social Anxiety Disorder: More Than Just Shyness - NIMH", "url": "https:\/\/www.nimh.nih.gov\/health\/publications\/social-anxiety-disorder-more-than-just-shyness",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nimh.nih.gov\/health\/publications\/social-anxiety-disorder-more-than-just...",
+        "snippet": "Social anxiety disorder is an intense, persistent fear of being
+        watched and judged by others. This fear can affect work, school, and other
+        daily activities. It can even make it hard to make and keep friends. The good
+        news is social anxiety disorder is treatable. Learn more about the symptoms
+        of social anxiety disorder and how to find help.", "dateLastCrawled": "2024-01-08T12:05:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=hippopotomonstrosesquippedaliophobia+(site%3anih.gov)&d=5054296387769366&mkt=en-US&setlang=en-US&w=1in7qN0TjFT6benhV49Z21nmDgzb3pPp",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Age of onset of mental disorders: a review of recent literature",
+        "url": "https:\/\/pubmed.ncbi.nlm.nih.gov\/17551351\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/pubmed.ncbi.nlm.nih.gov\/17551351", "snippet":
         "Purpose of review: The aim of this article is to review recent epidemiological
-        research on age-of-onset of mental disorders, focusing on the WHO World Mental
-        Health surveys. Recent findings: Median and inter-quartile range (IQR; 25th-75th
-        percentiles) of age-of-onset is much earlier for phobias (7-14, IQR 4-20)
-        and impulse-control disorders (7-15; IQR 4-35) than other anxiety disorders
-        (25-53 ...", "dateLastCrawled": "2021-09-21T17:44:00.0000000Z", "language":
-        "en", "isNavigational": false}]}, "rankingResponse": {"mainline": {"items":
-        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}}]}}}'
-  recorded_at: Wed, 06 Oct 2021 15:38:47 GMT
+        research on age-of-onset of mental disorders, focusing on the WHO World
+        Mental Health surveys. Recent findings: Median and inter-quartile range (IQR;
+        25th-75th percentiles) of age-of-onset is much earlier for phobias (7-14,
+        IQR 4-20) and impulse-control disorders (7-15; IQR 4-35) than other anxiety
+        disorders (25-53 ...", "dateLastCrawled": "2024-01-06T21:48:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Current Diagnosis and Treatment of Anxiety Disorders - PMC", "url":
+        "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC3628173\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC3628173",
+        "snippet": "Schematic detailing the “ABC” model of anxiety. In this model,
+        a variety of triggering events can elicit responses at the levels of A larm
+        sensations, B eliefs, and associated C oping (ABC) strategies, including behaviors.
+        Each of these processes originates in discrete brain circuits that are functionally
+        connected.", "dateLastCrawled": "2024-01-06T18:17:00.0000000Z", "language":
+        "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Treatment of specific phobia in adults - PubMed", "url": "https:\/\/pubmed.ncbi.nlm.nih.gov\/17112646\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/pubmed.ncbi.nlm.nih.gov\/17112646",
+        "snippet": "Treatment gains are generally maintained for one year, but longer
+        follow-up studies are needed to better understand and prevent relapse. Acutely,
+        the treatments are not equally effective among the phobia subtypes. Most phobias
+        respond robustly to in vivo exposure, but it is associated with high dropout
+        rates and low treatment acceptance.", "dateLastCrawled": "2023-12-21T06:26:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Illness Anxiety Disorder - StatPearls - NCBI Bookshelf", "url": "https:\/\/www.ncbi.nlm.nih.gov\/books\/NBK554399\/",
+        "datePublished": "2023-07-16T00:00:00.0000000", "datePublishedDisplayText":
+        "Jul 16, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/books\/NBK554399",
+        "snippet": "Illness anxiety disorder (previously called hypochondriasis, a
+        term which has been revised in the DSM-5 due to its disparaging connotation)
+        is a psychiatric disorder defined by excessive worry about having or developing
+        a serious undiagnosed medical condition.[1] People with an illness anxiety
+        disorder (IAD) experience persistent anxiety or fear of developing or having
+        a serious medical ...", "dateLastCrawled": "2024-01-06T09:16:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Titin (TTN): from molecule to modifications, mechanics, and medical
+        ...", "url": "https:\/\/pubmed.ncbi.nlm.nih.gov\/34662387\/", "datePublished":
+        "2022-11-10T00:00:00.0000000", "datePublishedDisplayText": "Nov 10, 2022",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/pubmed.ncbi.nlm.nih.gov\/34662387",
+        "snippet": "The giant sarcomere protein titin is a major determinant of cardiomyocyte
+        stiffness and contributor to cardiac strain sensing. Titin-based forces are
+        highly regulated in health and disease, which aids in the regulation of myocardial
+        function, including cardiac filling and output. Due to the enormous size,
+        complexity, and malleability of the ...", "dateLastCrawled": "2024-01-07T21:02:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Clinical Practice Guidelines for Cognitive-Behavioral Therapies in
+        ...", "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC7001348\/",
+        "datePublished": "2020-01-17T00:00:00.0000000", "datePublishedDisplayText":
+        "Jan 17, 2020", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC7001348",
+        "snippet": "PANIC DISORDER. PD is often a chronic illness with waxing and
+        waning course characterized by recurrent and unexpected panic attacks. The
+        panic attacks are usually associated with anticipatory anxiety\/worry of having
+        another panic attack or consequences of the attack and maladaptive behaviors
+        such as avoidance, safety behaviors, and changes in daily routine.", "dateLastCrawled":
+        "2024-01-04T07:10:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11", "name":
+        "Cognitive-behavioral group therapy versus phenelzine in social phobia ...",
+        "url": "https:\/\/pubmed.ncbi.nlm.nih.gov\/10604081\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/pubmed.ncbi.nlm.nih.gov\/10604081", "snippet":
+        "To evaluate the effects of maintenance treatment and durability of gains
+        after treatment discontinuation, responders to either phenelzine (PZ) or cognitive-behavioral
+        group therapy (CBGT) from an acute trial comparing these two treatments as
+        well as pill placebo and a psychotherapy control (educational supportive group
+        therapy) were enrolled into maintenance and treatment-free follow-up phases.",
+        "dateLastCrawled": "2023-04-06T08:29:00.0000000Z", "language": "en", "isNavigational":
+        <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Recent developments in the intervention of specific phobia among
+        adults ...", "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC7096216\/",
+        "datePublished": "2020-03-19T00:00:00.0000000", "datePublishedDisplayText":
+        "Mar 19, 2020", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC7096216",
+        "snippet": "Recent developments in the intervention of specific phobia among
+        adults: a rapid review. Specific phobia, which has a lifetime prevalence of
+        7.4%, is one of the most common disorders 1.It is defined in the Diagnostic
+        and Statistical Manual of Mental Disorders, 5th edition (DSM-5) as a marked
+        fear or anxiety about a specific object or situation (for example, flying,
+        heights, animals, receiving ...", "dateLastCrawled": "2024-01-03T02:22:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Trypophobia: What Do We Know So Far? A Case Report and Comprehensive
+        ...", "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC5811467\/",
+        "datePublished": "2018-02-09T00:00:00.0000000", "datePublishedDisplayText":
+        "Feb 9, 2018", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC5811467",
+        "snippet": "A particular type of phobia, known as “trypophobia” ( 2 ), is
+        described as fear or repulsion to patterns of holes. The word derives from
+        the Greek trypa (τρύπα), which means “drilling” or “hole.”. Trypophobia
+        is basically referred to by people who suffer from it, through communications
+        such as social networks and personal blogs.", "dateLastCrawled": "2024-01-08T07:01:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Understanding Social Anxiety Disorder in Adolescents and Improving
+        ...", "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC6447508\/",
+        "datePublished": "2018-04-13T00:00:00.0000000", "datePublishedDisplayText":
+        "Apr 13, 2018", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC6447508",
+        "snippet": "Introduction. Social anxiety disorder (SAD) is a debilitating
+        condition characterised by a marked and persistent fear of being humiliated
+        or scrutinised by others (World Health Organization 1992; American Psychiatric
+        Association 2013).Individuals fear a range of social interactions, such as
+        conversations with strangers, joining in groups or speaking on the telephone.",
+        "dateLastCrawled": "2024-01-09T07:41:00.0000000Z", "language": "en", "isNavigational":
+        <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Optimal treatment of social phobia: systematic review and meta-analysis",
+        "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC3363138\/", "datePublished":
+        "2012-05-03T00:00:00.0000000", "datePublishedDisplayText": "May 3, 2012",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC3363138",
+        "snippet": "This article proposes a number of recommendations for the treatment
+        of generalized social phobia, based on a systematic literature review and
+        meta-analysis. An optimal treatment regimen would include a combination of
+        medication and psychotherapy, along with an assertive clinical management
+        program. For medications, selective serotonin reuptake ...", "dateLastCrawled":
+        "2024-01-10T04:15:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16", "name":
+        "Claustrophobia - StatPearls - NCBI Bookshelf", "url": "https:\/\/www.ncbi.nlm.nih.gov\/books\/NBK542327\/",
+        "datePublished": "2023-02-08T00:00:00.0000000", "datePublishedDisplayText":
+        "Feb 8, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/books\/NBK542327",
+        "snippet": "A phobia is a fear which causes significant impairment in a person''s
+        ability to live everyday life. An example of life impairment is avoiding the
+        feared object or scenario.[1] According to the Diagnostic and Statistical
+        Manual of Mental Disorders (DSM-5), there are many categories of anxiety disorders.
+        These include separation anxiety disorder, social anxiety disorder, panic
+        disorder ...", "dateLastCrawled": "2024-01-09T18:39:00.0000000Z", "language":
+        "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "SOCIAL ANXIETY DISORDER - Social Anxiety Disorder - NCBI Bookshelf",
+        "url": "https:\/\/www.ncbi.nlm.nih.gov\/books\/NBK327674\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/books\/NBK327674",
+        "snippet": "Social anxiety disorder (previously termed ‘social phobia’)
+        was formally recognised as a separate phobic disorder in the mid-1960s (Marks
+        & Gelder, 1965). The term ‘social anxiety disorder’ reflects current understanding,
+        including in diagnostic manuals, and is used throughout the guideline. As
+        set out in the International Classification of Diseases, 10th Revision (ICD-10)
+        (World ...", "dateLastCrawled": "2024-01-08T20:07:00.0000000Z", "language":
+        "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Acrophobia and visual height intolerance: advances in epidemiology
+        and ...", "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC7718183\/",
+        "datePublished": "2020-05-22T00:00:00.0000000", "datePublishedDisplayText":
+        "May 22, 2020", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC7718183",
+        "snippet": "The frequency of acrophobia has a lifetime prevalence of 3.1–6.4%
+        [ 14 – 21 ]. In two representative Germany-wide studies ( n = 3517, n = 2012),
+        the lifetime prevalence of the more broadly defined visual height intolerance
+        was 28% in adults, slightly higher in women with 32% than in men (25%). The
+        risk of developing visual height ...", "dateLastCrawled": "2023-12-06T11:32:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Choking Phobia : An Uncommon Phobic Disorder, Treated with Behavior
+        ...", "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC5434294\/",
+        "datePublished": "2016-12-12T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 12, 2016", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC5434294",
+        "snippet": "2. Case history. Miss X, a 20 year old girl, 2 nd in birth order,
+        an engineering student living in a hostel, and hailing from a urban background
+        was referred to our Psychiatry Outpatient department from the Otorhinolaryngology
+        department for detailed assessment and management. Exploration of history
+        revealed that she had developed a constant fear of swallowing solid\/semi-
+        solid foods and pills ...", "dateLastCrawled": "2024-01-05T03:15:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 10 Jan 2024 14:41:18 GMT
 - request:
     method: get
     uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=hippopotomonstrosesquippedaliophobia%20(site:nih.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
@@ -399,31 +616,35 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Wed, 06 Oct 2021 15:37:47 GMT
+      - Wed, 10 Jan 2024 14:40:20 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
+      X-Eventid:
+      - 659eac90e37e441cbf3e73a31f254d67
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
       Bingapis-Traceid:
-      - F63AFC2DD780424795E41EADC0513AFC
+      - 659eac90e37e441cbf3e73a31f254d67
       Bingapis-Sessionid:
-      - D5254533881E47E89EA83CC76D8B6F65
+      - 34230EBF55224D73A68FF934D09022A6
       X-Msedge-Clientid:
-      - 11B09DBA8FAB69D0033E8D728E1B6865
+      - 2F95C5EA901D68E00E86D1E891B769BE
       X-Msapi-Userstate:
-      - 5b75
+      - '9767'
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=230,MSDatacenter=BN2B
+      - InternalResponseTime=242,MSDatacenter=BNZE01
       X-Cache:
       - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
       X-Msedge-Ref:
-      - 'Ref A: F63AFC2DD780424795E41EADC0513AFC Ref B: BLUEDGE1410 Ref C: 2021-10-06T15:38:47Z'
+      - 'Ref A: 0F38F6500D5349BBB09279FE626CF97E Ref B: BN3EDGE0909 Ref C: 2024-01-10T14:41:20Z'
       Apim-Request-Id:
-      - 88c7c0c0-3827-4dc9-8a6d-828a5cff2d3e
+      - 0e1dd4d7-85b4-465c-a3f0-d32dedf248a4
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -431,125 +652,233 @@ http_interactions:
       Csp-Billing-Usage:
       - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Wed, 06 Oct 2021 15:38:48 GMT
+      - Wed, 10 Jan 2024 14:41:20 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "hippopotomonstrosesquippedaliophobia
         (site:nih.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=hippopotomonstrosesquippedaliophobia+(site%3anih.gov)",
-        "totalEstimatedMatches": 2, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "Pseudopseudohypoparathyroidism | Genetic and Rare Diseases ...",
-        "url": "https:\/\/rarediseases.info.nih.gov\/diseases\/7860\/pseudopseudohypoparathyroidism",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/rarediseases.info.nih.gov\/diseases\/7860\/pseudopseudohypoparathyroidism",
-        "snippet": "Pseudopseudohypoparathyroidism (PPHP) is an inherited condition
-        that causes short stature, round face, and short hand bones. PPHP causes joints
-        and other soft tissues in the body to harden. It also affects how bones are
-        formed. As a result, PPHP can cause bone, joint, and nerve damage, and this
-        damage can cause lasting pain. Some people with PPHP (10%) also have learning
-        disability.", "dateLastCrawled": "2021-10-02T02:07:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "Age of onset of mental disorders: a review of recent ...", "url":
-        "https:\/\/pubmed.ncbi.nlm.nih.gov\/17551351\/", "isFamilyFriendly": true,
-        "displayUrl": "https:\/\/pubmed.ncbi.nlm.nih.gov\/17551351", "snippet":
+        "totalEstimatedMatches": 4790, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Specific Phobia - StatPearls - NCBI Bookshelf", "url": "https:\/\/www.ncbi.nlm.nih.gov\/books\/NBK499923\/",
+        "datePublished": "2023-05-01T00:00:00.0000000", "datePublishedDisplayText":
+        "May 1, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/books\/NBK499923",
+        "snippet": "Patients with a specific phobia experience high levels of anxiety
+        along with excessive and unreasonable fear due to either exposure to a phobic
+        stimulus, the anticipation of exposure to a phobic stimulus, and even speaking
+        about the feared stimulus. As a result, these patients will try to avoid the
+        anxiety-provoking stimulus to any extent possible. Many patients have a strong
+        family history of ...", "dateLastCrawled": "2024-01-05T21:05:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Anxiety - StatPearls - NCBI Bookshelf", "url": "https:\/\/www.ncbi.nlm.nih.gov\/books\/NBK470361\/",
+        "datePublished": "2023-04-24T00:00:00.0000000", "datePublishedDisplayText":
+        "Apr 24, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/books\/NBK470361",
+        "snippet": "Fear is an automatic neurophysiological state of alarm characterized
+        by a fight or flight response to a cognitive appraisal of present or imminent
+        danger (real or perceived). Anxiety is linked to fear and manifests as a future-oriented
+        mood state that consists of a complex cognitive, affective, physiological,
+        and behavioral response system associated with preparation for the anticipated
+        events ...", "dateLastCrawled": "2024-01-08T04:23:00.0000000Z", "language":
+        "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Specific phobias - PMC - National Center for Biotechnology Information",
+        "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC7233312\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC7233312",
+        "snippet": "Specific phobias are irrational and persistent fears of certain
+        objects or situations that pose little or no actual danger. This article reviews
+        the epidemiology, etiology, diagnosis, and treatment of specific phobias,
+        as well as the neurobiological mechanisms underlying them. The article also
+        discusses how specific phobias differ from other types of fear-related disorders,
+        such as PTSD.", "dateLastCrawled": "2024-01-09T21:08:00.0000000Z", "language":
+        "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Anxiety Disorders - National Institute of Mental Health (NIMH)",
+        "url": "https:\/\/www.nimh.nih.gov\/health\/topics\/anxiety-disorders", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.nimh.nih.gov\/health\/topics\/anxiety-disorders",
+        "snippet": "Cognitive Behavioral Therapy (CBT) is an example of one type of
+        psychotherapy that can help people with anxiety disorders. It teaches people
+        different ways of thinking, behaving, and reacting to situations to help you
+        feel less anxious and fearful. CBT has been well studied and is the gold standard
+        for psychotherapy.", "dateLastCrawled": "2024-01-08T07:08:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=hippopotomonstrosesquippedaliophobia+(site%3anih.gov)&d=4993552667639860&mkt=en-US&setlang=en-US&w=UKZl6m54qSzezgYZH3mLd2SWDEuMvSOY",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Current Diagnosis and Treatment of Anxiety Disorders - PMC", "url":
+        "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC3628173\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC3628173",
+        "snippet": "Schematic detailing the “ABC” model of anxiety. In this model,
+        a variety of triggering events can elicit responses at the levels of A larm
+        sensations, B eliefs, and associated C oping (ABC) strategies, including behaviors.
+        Each of these processes originates in discrete brain circuits that are functionally
+        connected.", "dateLastCrawled": "2024-01-06T18:17:00.0000000Z", "language":
+        "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Clinical Practice Guidelines for Cognitive-Behavioral Therapies in
+        ...", "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC7001348\/",
+        "datePublished": "2020-01-17T00:00:00.0000000", "datePublishedDisplayText":
+        "Jan 17, 2020", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC7001348",
+        "snippet": "PANIC DISORDER. PD is often a chronic illness with waxing and
+        waning course characterized by recurrent and unexpected panic attacks. The
+        panic attacks are usually associated with anticipatory anxiety\/worry of having
+        another panic attack or consequences of the attack and maladaptive behaviors
+        such as avoidance, safety behaviors, and changes in daily routine.", "dateLastCrawled":
+        "2024-01-04T07:10:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6", "name": "Claustrophobia
+        - StatPearls - NCBI Bookshelf", "url": "https:\/\/www.ncbi.nlm.nih.gov\/books\/NBK542327\/",
+        "datePublished": "2023-02-08T00:00:00.0000000", "datePublishedDisplayText":
+        "Feb 8, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/books\/NBK542327",
+        "snippet": "A phobia is a fear which causes significant impairment in a person''s
+        ability to live everyday life. An example of life impairment is avoiding the
+        feared object or scenario.[1] According to the Diagnostic and Statistical
+        Manual of Mental Disorders (DSM-5), there are many categories of anxiety disorders.
+        These include separation anxiety disorder, social anxiety disorder, panic
+        disorder ...", "dateLastCrawled": "2024-01-09T18:39:00.0000000Z", "language":
+        "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Illness Anxiety Disorder - StatPearls - NCBI Bookshelf", "url": "https:\/\/www.ncbi.nlm.nih.gov\/books\/NBK554399\/",
+        "datePublished": "2023-07-16T00:00:00.0000000", "datePublishedDisplayText":
+        "Jul 16, 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/books\/NBK554399",
+        "snippet": "Illness anxiety disorder (previously called hypochondriasis, a
+        term which has been revised in the DSM-5 due to its disparaging connotation)
+        is a psychiatric disorder defined by excessive worry about having or developing
+        a serious undiagnosed medical condition.[1] People with an illness anxiety
+        disorder (IAD) experience persistent anxiety or fear of developing or having
+        a serious medical ...", "dateLastCrawled": "2024-01-06T09:16:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Recent developments in the intervention of specific phobia among
+        adults ...", "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC7096216\/",
+        "datePublished": "2020-03-19T00:00:00.0000000", "datePublishedDisplayText":
+        "Mar 19, 2020", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC7096216",
+        "snippet": "Recent developments in the intervention of specific phobia among
+        adults: a rapid review. Specific phobia, which has a lifetime prevalence of
+        7.4%, is one of the most common disorders 1.It is defined in the Diagnostic
+        and Statistical Manual of Mental Disorders, 5th edition (DSM-5) as a marked
+        fear or anxiety about a specific object or situation (for example, flying,
+        heights, animals, receiving ...", "dateLastCrawled": "2024-01-03T02:22:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Treatment of specific phobia in adults - PubMed", "url": "https:\/\/pubmed.ncbi.nlm.nih.gov\/17112646\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/pubmed.ncbi.nlm.nih.gov\/17112646",
+        "snippet": "Treatment gains are generally maintained for one year, but longer
+        follow-up studies are needed to better understand and prevent relapse. Acutely,
+        the treatments are not equally effective among the phobia subtypes. Most phobias
+        respond robustly to in vivo exposure, but it is associated with high dropout
+        rates and low treatment acceptance.", "dateLastCrawled": "2023-12-21T06:26:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Trypophobia: What Do We Know So Far? A Case Report and Comprehensive
+        ...", "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC5811467\/",
+        "datePublished": "2018-02-09T00:00:00.0000000", "datePublishedDisplayText":
+        "Feb 9, 2018", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC5811467",
+        "snippet": "A particular type of phobia, known as “trypophobia” ( 2 ), is
+        described as fear or repulsion to patterns of holes. The word derives from
+        the Greek trypa (τρύπα), which means “drilling” or “hole.”. Trypophobia
+        is basically referred to by people who suffer from it, through communications
+        such as social networks and personal blogs.", "dateLastCrawled": "2024-01-08T07:01:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "SOCIAL ANXIETY DISORDER - Social Anxiety Disorder - NCBI Bookshelf",
+        "url": "https:\/\/www.ncbi.nlm.nih.gov\/books\/NBK327674\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/books\/NBK327674",
+        "snippet": "Social anxiety disorder (previously termed ‘social phobia’)
+        was formally recognised as a separate phobic disorder in the mid-1960s (Marks
+        & Gelder, 1965). The term ‘social anxiety disorder’ reflects current understanding,
+        including in diagnostic manuals, and is used throughout the guideline. As
+        set out in the International Classification of Diseases, 10th Revision (ICD-10)
+        (World ...", "dateLastCrawled": "2024-01-08T20:07:00.0000000Z", "language":
+        "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Optimal treatment of social phobia: systematic review and meta-analysis",
+        "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC3363138\/", "datePublished":
+        "2012-05-03T00:00:00.0000000", "datePublishedDisplayText": "May 3, 2012",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC3363138",
+        "snippet": "This article proposes a number of recommendations for the treatment
+        of generalized social phobia, based on a systematic literature review and
+        meta-analysis. An optimal treatment regimen would include a combination of
+        medication and psychotherapy, along with an assertive clinical management
+        program. For medications, selective serotonin reuptake ...", "dateLastCrawled":
+        "2024-01-10T04:15:00.0000000Z", "language": "en", "isNavigational": <DATADOG_API_ENABLED>},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13", "name":
+        "Understanding Social Anxiety Disorder in Adolescents and Improving ...",
+        "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC6447508\/", "datePublished":
+        "2018-04-13T00:00:00.0000000", "datePublishedDisplayText": "Apr 13, 2018",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC6447508",
+        "snippet": "Introduction. Social anxiety disorder (SAD) is a debilitating
+        condition characterised by a marked and persistent fear of being humiliated
+        or scrutinised by others (World Health Organization 1992; American Psychiatric
+        Association 2013).Individuals fear a range of social interactions, such as
+        conversations with strangers, joining in groups or speaking on the telephone.",
+        "dateLastCrawled": "2024-01-09T07:41:00.0000000Z", "language": "en", "isNavigational":
+        <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Social Anxiety Disorder: More Than Just Shyness - NIMH", "url": "https:\/\/www.nimh.nih.gov\/health\/publications\/social-anxiety-disorder-more-than-just-shyness",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.nimh.nih.gov\/health\/publications\/social-anxiety-disorder-more-than-just...",
+        "snippet": "Social anxiety disorder is an intense, persistent fear of being
+        watched and judged by others. This fear can affect work, school, and other
+        daily activities. It can even make it hard to make and keep friends. The good
+        news is social anxiety disorder is treatable. Learn more about the symptoms
+        of social anxiety disorder and how to find help.", "dateLastCrawled": "2024-01-09T13:04:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=hippopotomonstrosesquippedaliophobia+(site%3anih.gov)&d=5054296387769366&mkt=en-US&setlang=en-US&w=1in7qN0TjFT6benhV49Z21nmDgzb3pPp",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Age of onset of mental disorders: a review of recent literature",
+        "url": "https:\/\/pubmed.ncbi.nlm.nih.gov\/17551351\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/pubmed.ncbi.nlm.nih.gov\/17551351", "snippet":
         "Purpose of review: The aim of this article is to review recent epidemiological
-        research on age-of-onset of mental disorders, focusing on the WHO World Mental
-        Health surveys. Recent findings: Median and inter-quartile range (IQR; 25th-75th
-        percentiles) of age-of-onset is much earlier for phobias (7-14, IQR 4-20)
-        and impulse-control disorders (7-15; IQR 4-35) than other anxiety disorders
-        (25-53 ...", "dateLastCrawled": "2021-09-21T17:44:00.0000000Z", "language":
-        "en", "isNavigational": false}]}, "rankingResponse": {"mainline": {"items":
-        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}}]}}}'
-  recorded_at: Wed, 06 Oct 2021 15:38:48 GMT
-- request:
-    method: get
-    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=hippopotomonstrosesquippedaliophobia%20(site:nih.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Transfer-Encoding:
-      - chunked
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Wed, 06 Oct 2021 15:37:49 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Snr-Routing:
-      - '1'
-      Bingapis-Traceid:
-      - 3FA530A405B545E2B653353CE57B61EB
-      Bingapis-Sessionid:
-      - 3A4B53978A09416AA6CE03901BCC0B4E
-      X-Msedge-Clientid:
-      - 0231D1B7A73168A62CECC17FA67E6973
-      X-Msapi-Userstate:
-      - a423
-      Bingapis-Market:
-      - en-US
-      X-Search-Responseinfo:
-      - InternalResponseTime=246,MSDatacenter=BN2B
-      X-Cache:
-      - CONFIG_NOCACHE
-      X-Msedge-Ref:
-      - 'Ref A: 3FA530A405B545E2B653353CE57B61EB Ref B: BLUEDGE1116 Ref C: 2021-10-06T15:38:49Z'
-      Apim-Request-Id:
-      - 4967da6b-a427-46e7-a517-dfa0de11bb5c
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
-      X-Content-Type-Options:
-      - nosniff
-      Csp-Billing-Usage:
-      - CognitiveServices.BingSearchV7.Transaction=1
-      Date:
-      - Wed, 06 Oct 2021 15:38:49 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "hippopotomonstrosesquippedaliophobia
-        (site:nih.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=hippopotomonstrosesquippedaliophobia+(site%3anih.gov)",
-        "totalEstimatedMatches": 2, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "Pseudopseudohypoparathyroidism | Genetic and Rare Diseases ...",
-        "url": "https:\/\/rarediseases.info.nih.gov\/diseases\/7860\/pseudopseudohypoparathyroidism",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/rarediseases.info.nih.gov\/diseases\/7860\/pseudopseudohypoparathyroidism",
-        "snippet": "Pseudopseudohypoparathyroidism (PPHP) is an inherited condition
-        that causes short stature, round face, and short hand bones. PPHP causes joints
-        and other soft tissues in the body to harden. It also affects how bones are
-        formed. As a result, PPHP can cause bone, joint, and nerve damage, and this
-        damage can cause lasting pain. Some people with PPHP (10%) also have learning
-        disability.", "dateLastCrawled": "2021-10-02T02:07:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "Age of onset of mental disorders: a review of recent ...", "url":
-        "https:\/\/pubmed.ncbi.nlm.nih.gov\/17551351\/", "isFamilyFriendly": true,
-        "displayUrl": "https:\/\/pubmed.ncbi.nlm.nih.gov\/17551351", "snippet":
-        "Purpose of review: The aim of this article is to review recent epidemiological
-        research on age-of-onset of mental disorders, focusing on the WHO World Mental
-        Health surveys. Recent findings: Median and inter-quartile range (IQR; 25th-75th
-        percentiles) of age-of-onset is much earlier for phobias (7-14, IQR 4-20)
-        and impulse-control disorders (7-15; IQR 4-35) than other anxiety disorders
-        (25-53 ...", "dateLastCrawled": "2021-09-21T17:44:00.0000000Z", "language":
-        "en", "isNavigational": false}]}, "rankingResponse": {"mainline": {"items":
-        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}}]}}}'
-  recorded_at: Wed, 06 Oct 2021 15:38:50 GMT
-recorded_with: VCR 6.0.0
+        research on age-of-onset of mental disorders, focusing on the WHO World
+        Mental Health surveys. Recent findings: Median and inter-quartile range (IQR;
+        25th-75th percentiles) of age-of-onset is much earlier for phobias (7-14,
+        IQR 4-20) and impulse-control disorders (7-15; IQR 4-35) than other anxiety
+        disorders (25-53 ...", "dateLastCrawled": "2024-01-06T21:48:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Acrophobia and visual height intolerance: advances in epidemiology
+        and ...", "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC7718183\/",
+        "datePublished": "2020-05-22T00:00:00.0000000", "datePublishedDisplayText":
+        "May 22, 2020", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC7718183",
+        "snippet": "The frequency of acrophobia has a lifetime prevalence of 3.1–6.4%
+        [ 14 – 21 ]. In two representative Germany-wide studies ( n = 3517, n = 2012),
+        the lifetime prevalence of the more broadly defined visual height intolerance
+        was 28% in adults, slightly higher in women with 32% than in men (25%). The
+        risk of developing visual height ...", "dateLastCrawled": "2023-12-06T11:32:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Choking Phobia : An Uncommon Phobic Disorder, Treated with Behavior
+        ...", "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC5434294\/",
+        "datePublished": "2016-12-12T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 12, 2016", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC5434294",
+        "snippet": "2. Case history. Miss X, a 20 year old girl, 2 nd in birth order,
+        an engineering student living in a hostel, and hailing from a urban background
+        was referred to our Psychiatry Outpatient department from the Otorhinolaryngology
+        department for detailed assessment and management. Exploration of history
+        revealed that she had developed a constant fear of swallowing solid\/semi-
+        solid foods and pills ...", "dateLastCrawled": "2024-01-05T03:15:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Why Are People Afraid of the Dentist? Observations and Explanations",
+        "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC5586885\/", "datePublished":
+        "2013-12-20T00:00:00.0000000", "datePublishedDisplayText": "Dec 20, 2013",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC5586885",
+        "snippet": "Coriat [ 6] suggested that a fear of the dentist was ‘anticipatory
+        anxiety’ because it stemmed from a fear of real danger and an anticipated
+        unknown danger. The terms ‘dental fear’ and ‘dental anxiety’ are frequently
+        used interchangeably, and the umbrella term ‘dental fear and anxiety’ (DFA)
+        will be used in this paper.", "dateLastCrawled": "2024-01-09T05:04:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Strategies to manage patients with dental anxiety and dental phobia
+        ...", "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC4790493\/",
+        "datePublished": "2016-03-10T00:00:00.0000000", "datePublishedDisplayText":
+        "Mar 10, 2016", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC4790493",
+        "snippet": "Introduction. Fear and anxiety toward the dentist and dental treatment
+        are both significant characteristics that contribute to avoidance of dental
+        care.1,2 Anxiety associated with the thought of visiting the dentist for preventive
+        care and over dental procedures is referred to as dental anxiety. It has been
+        cited as the fifth-most common cause of anxiety by Agras et al.3 Anxiety is
+        an ...", "dateLastCrawled": "2024-01-09T18:28:00.0000000Z", "language": "en",
+        "isNavigational": <DATADOG_API_ENABLED>}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 10 Jan 2024 14:41:20 GMT
+recorded_with: VCR 6.2.0
