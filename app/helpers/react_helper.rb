@@ -35,6 +35,7 @@ module ReactHelper
 
   def page_data(affiliate)
     {
+      display_logo_only: affiliate.display_logo_only,
       title: affiliate.display_name,
       logo: {
         text: logo_text(affiliate.header_logo_blob),
