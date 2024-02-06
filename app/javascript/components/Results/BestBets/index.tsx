@@ -38,9 +38,6 @@ const StyledWrapper = styled.div.attrs<{ styles: { bestBetBackgroundColor: strin
   .result-desc > p {
     color: ${(props) => props.styles.resultDescriptionColor} !important;
   }
-  .result-url-text{
-    color: ${(props) => props.styles.resultUrlColor};
-  }
 `;
 
 export const BestBets = ({ recommendedBy, textBestBets = [], graphicsBestBet }: BestBetsProps) => {
