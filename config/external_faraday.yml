@@ -20,19 +20,11 @@ test:
   i14y:
     <<: *I14Y_DEFAULT
 
-bing_v5_prod: &BING_V5_PROD
-  options:
-    open_timeout: 3 # http://stackoverflow.com/questions/7987584/curl-timeout-less-than-1000ms-always-fails
-    timeout: 6
-  adapter: :typhoeus
-
 production: &PRODUCTION
   options:
     open_timeout: 0.5
     timeout: 2
   adapter: :net_http_persistent
 
-  bing_v5_api:
-    <<: *BING_V5_PROD
   i14y:
     <<: *I14Y_DEFAULT

@@ -84,7 +84,6 @@ class Admin::AffiliatesController < Admin::AdminController
     update_columns = %i[
       active
       agency
-      bing_v5_key
       dap_enabled
       display_name
       domain_control_validation_code
@@ -110,16 +109,16 @@ class Admin::AffiliatesController < Admin::AdminController
       website
     ]
     config.update.columns = []
-    enable_disable_column_regex = /^(is_|dap_enabled|gets_blended_results|gets_commercial_results_on_blended_search|jobs_enabled|raw_log_access_enabled|gets_i14y_results)/.freeze
+    enable_disable_column_regex = /^(is_|dap_enabled|gets_blended_results|gets_commercial_results_on_blended_search|jobs_enabled|raw_log_access_enabled|gets_i14y_results)/
 
     config.update.columns.add_subgroup 'Settings' do |name_group|
-      name_group.add *update_columns.reject { |column| column =~ enable_disable_column_regex }
+      name_group.add(*update_columns.grep_v(enable_disable_column_regex))
       name_group.add :affiliate_feature_addition, :excluded_domains, :i14y_memberships
       name_group.collapsed = true
     end
 
     config.update.columns.add_subgroup 'Enable/disable Settings' do |name_group|
-      name_group.add *update_columns.select { |column| column =~ enable_disable_column_regex }
+      name_group.add(*update_columns.grep(enable_disable_column_regex))
       name_group.collapsed = true
     end
 
@@ -134,7 +133,7 @@ class Admin::AffiliatesController < Admin::AdminController
                            page_one_more_results_pointer
                            navigation_dropdown_label
                            related_sites_dropdown_label]
-      name_group.add *display_columns
+      name_group.add(*display_columns)
       name_group.collapsed = true
     end
 
