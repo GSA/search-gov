@@ -232,9 +232,12 @@ class Affiliate < ApplicationRecord
 
   # SRCH-4142 settings used for 2023 SERP redesign
   FONT_FIELDS = %w[
-    header_links_font_family
     footer_and_results_font_family
+    header_links_font_family
+    identifier_font_family
+    search_tabs_font_family
   ].freeze
+
   DEFAULT_FONT = "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
   USWDS_FONTS = [
     "'Georgia', 'Cambria', 'Times New Roman', 'Times', serif",
@@ -246,6 +249,7 @@ class Affiliate < ApplicationRecord
     "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
     "'Tahoma', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
   ].freeze
+
   DEFAULT_COLORS = {
     banner_background_color: '#F0F0F0',
     banner_text_color: '#1B1B1B',
@@ -270,9 +274,12 @@ class Affiliate < ApplicationRecord
     identifier_heading_color: '#FFFFFF',
     identifier_link_color: '#A9AEB1'
   }.freeze
+
   DEFAULT_VISUAL_DESIGN = {
+    footer_and_results_font_family: DEFAULT_FONT,
     header_links_font_family: DEFAULT_FONT,
-    footer_and_results_font_family: DEFAULT_FONT
+    identifier_font_family: DEFAULT_FONT,
+    search_tabs_font_family: DEFAULT_FONT
   }.merge(DEFAULT_COLORS)
 
   CUSTOM_INDEXING_LANGUAGES = %w[en es].freeze
