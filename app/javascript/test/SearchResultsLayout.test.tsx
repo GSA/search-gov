@@ -20,6 +20,7 @@ const fontsAndColors = {
   headerSecondaryLinkColor: '#c8155d',
   healthBenefitsHeaderBackgroundColor: '#abb178',
   identifierBackgroundColor: '#be1c21',
+  identifierFontFamily: '"Public Sans Web"',
   identifierHeadingColor: '#f48a4c',
   identifierLinkColor: '#5d5a6f',
   pageBackgroundColor: '#761816',
@@ -28,6 +29,8 @@ const fontsAndColors = {
   resultTitleLinkVisitedColor: '#4a97ad',
   resultUrlColor: '#475830',
   searchTabNavigationLinkColor: '#aea9f7',
+  searchTabsFontFamily: '"Public Sans Web"',
+  searchTabsFontWeight: 'bold',
   secondaryHeaderBackgroundColor: '#83df0a',
   sectionTitleColor: '#8b4a35'
 };
