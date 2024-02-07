@@ -10,19 +10,26 @@ import { StyleContext } from '../../contexts/StyleContext';
 
 import './VerticalNav.css';
 
-const StyledPrimaryNav = styled(PrimaryNav).attrs<{ styles: { searchTabNavigationLinkColor: string; activeSearchTabNavigationColor: string; }; }>((props) => ({
+const StyledPrimaryNav = styled(PrimaryNav).attrs<{ styles: { searchTabNavigationLinkColor: string; activeSearchTabNavigationColor: string; searchTabsFontFamily: string; searchTabsFontWeight: string; }; }>((props) => ({
   styles: props.styles
 }))`
   li.usa-nav__primary-item:not(li.usa-nav__submenu-item) > a,
   .usa-nav__primary > .usa-nav__primary-item button[aria-expanded=false] {
     color: ${(props) => props.styles.searchTabNavigationLinkColor} !important;
   }
+
   .usa-current::after,
   .usa-nav__primary > .usa-nav__primary-item button[aria-expanded=true] {
     background-color: ${(props) => props.styles.searchTabNavigationLinkColor} !important;
   }
+
   .vertical-wrapper .usa-nav__submenu{
     background-color: ${(props) => props.styles.searchTabNavigationLinkColor} !important;
+  }
+
+  .usa-nav__primary a {
+    font-family: ${(props) => props.styles.searchTabsFontFamily} !important;
+    font-weight: ${(props) => props.styles.searchTabsFontWeight} !important;
   }
 `;
 
