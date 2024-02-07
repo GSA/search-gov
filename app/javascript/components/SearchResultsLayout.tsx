@@ -166,6 +166,7 @@ interface SearchResultsLayoutProps {
     headerSecondaryLinkColor: string;
     healthBenefitsHeaderBackgroundColor: string;
     identifierBackgroundColor: string;
+    identifierFontFamily: string;
     identifierHeadingColor: string;
     identifierLinkColor: string;
     pageBackgroundColor: string;
@@ -174,6 +175,8 @@ interface SearchResultsLayoutProps {
     resultTitleLinkVisitedColor: string;
     resultUrlColor: string;
     searchTabNavigationLinkColor: string;
+    searchTabsFontFamily: string;
+    searchTabsFontWeight: string;
     secondaryHeaderBackgroundColor: string;
     sectionTitleColor: string;
   };
