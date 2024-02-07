@@ -3,6 +3,20 @@ en:
   admin_center:
     actions:
       toggle_on: 'ON'
+    font_weight_bold: bold
+    font_weight_normal: normal
+    fonts:
+      "'Georgia', 'Cambria', 'Times New Roman', 'Times', serif": Georgia
+      "'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif": Helvetica neue
+      "'Merriweather Web', 'Georgia', 'Cambria', 'Times New Roman', 'Times', serif": Merriweather
+      ? "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
+      : Public sans
+      "'Roboto Mono Web', 'Bitstream Vera Sans Mono', 'Consolas', 'Courier', monospace": Roboto mono
+      "'Source Sans Pro','Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif": Source sans pro
+      ? "'Tahoma', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
+      : Tahoma
+      ? "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
+      : System
     footer_and_results_font_family: Footer and Results Font Family
     footer_links: Footer links
     header_links_font_family: Header Links Font Family
@@ -10,6 +24,7 @@ en:
     identifier_links: Identifier links
     primary_header_links: Primary header links
     search_tabs_font_family: Search Tabs Font Family
+    search_tabs_font_weight: Search Tabs Font Weight
     secondary_header_links: Secondary header links
     sites:
       displays:
@@ -95,15 +110,3 @@ en:
           name: Name
           results_format: Results format
           setting: Setting
-    fonts:
-      "'Georgia', 'Cambria', 'Times New Roman', 'Times', serif": Georgia
-      "'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif": Helvetica neue
-      "'Merriweather Web', 'Georgia', 'Cambria', 'Times New Roman', 'Times', serif": Merriweather
-      ? "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
-      : Public sans
-      "'Roboto Mono Web', 'Bitstream Vera Sans Mono', 'Consolas', 'Courier', monospace": Roboto mono
-      "'Source Sans Pro','Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif": Source sans pro
-      ? "'Tahoma', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
-      : Tahoma
-      ? "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
-      : System
