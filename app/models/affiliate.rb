@@ -105,6 +105,10 @@ class Affiliate < ApplicationRecord
   has_attached_file :header_tagline_logo,
                     AWS_IMAGE_SETTINGS.merge(path: "#{Rails.env}/site/:id/header_tagline_logo/:updated_at/:style/:filename")
 
+  after_initialize do
+    self.visual_design_json = visual_design_json&.reverse_merge(DEFAULT_VISUAL_DESIGN) || DEFAULT_VISUAL_DESIGN
+  end
+
   before_validation :set_default_fields, on: :create
   before_validation :downcase_name
   before_validation :set_managed_header_links, :set_managed_footer_links
