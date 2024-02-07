@@ -166,12 +166,15 @@ class Affiliate < ApplicationRecord
 
   validates :secondary_header_links, length: { maximum: 3 }
 
-  before_validation :set_visual_design_json
   after_validation :update_error_keys
   before_save :set_css_properties, :generate_look_and_feel_css, :set_json_fields, :set_search_labels
   before_update :clear_existing_attachments
   after_commit :normalize_site_domains,             on: :create
   after_commit :remove_boosted_contents_from_index, on: :destroy
+
+  after_initialize do
+    self.visual_design_json = visual_design_json.merge(DEFAULT_VISUAL_DESIGN)
+  end
 
   scope :ordered, -> { order('display_name ASC') }
   scope :active, -> { where(active: true) }
@@ -279,8 +282,9 @@ class Affiliate < ApplicationRecord
     footer_and_results_font_family: DEFAULT_FONT,
     header_links_font_family: DEFAULT_FONT,
     identifier_font_family: DEFAULT_FONT,
-    search_tabs_font_family: DEFAULT_FONT
-  }.merge(DEFAULT_COLORS)
+    search_tabs_font_family: DEFAULT_FONT,
+    search_tabs_font_weight: 'normal'
+  }.merge(DEFAULT_COLORS).freeze
 
   CUSTOM_INDEXING_LANGUAGES = %w[en es].freeze
 
@@ -626,14 +630,6 @@ class Affiliate < ApplicationRecord
 
   def set_css_properties
     self.css_properties = @css_property_hash.to_json if @css_property_hash.present?
-  end
-
-  def set_visual_design_json
-    self.visual_design_json = if visual_design_json.blank?
-                                DEFAULT_VISUAL_DESIGN
-                              else
-                                visual_design_json.reverse_merge(DEFAULT_VISUAL_DESIGN)
-                              end
   end
 
   def language_valid

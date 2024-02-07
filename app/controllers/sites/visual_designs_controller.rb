@@ -37,7 +37,9 @@ class Sites::VisualDesignsController < Sites::SetupSiteController
       identifier_logo_blob_attributes: blob_attributes,
       visual_design_json: [
         :header_links_font_family,
-        :footer_and_results_font_family,
+        :identifier_font_family,
+        :search_tabs_font_family,
+        :search_tabs_font_weight,
         color_params
       ],
       primary_header_links_attributes: %i[title url position id _destroy],
