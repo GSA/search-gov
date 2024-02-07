@@ -172,10 +172,6 @@ class Affiliate < ApplicationRecord
   after_commit :normalize_site_domains,             on: :create
   after_commit :remove_boosted_contents_from_index, on: :destroy
 
-  after_initialize do
-    self.visual_design_json = visual_design_json.merge(DEFAULT_VISUAL_DESIGN)
-  end
-
   scope :ordered, -> { order('display_name ASC') }
   scope :active, -> { where(active: true) }
 
