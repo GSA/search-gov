@@ -1,0 +1,300 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=mars%20(site:nasa.gov)%20(-site:mars.nasa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 06 Feb 2024 14:16:30 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Eventid:
+      - 65c23f7ae4194aa2a9d1fb9ea0d01e6f
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      Bingapis-Traceid:
+      - 65c23f7ae4194aa2a9d1fb9ea0d01e6f
+      Bingapis-Sessionid:
+      - 785712CB49D74382A4E02B6BE6118ACF
+      X-Msedge-Clientid:
+      - '0095E8932D8B6D93010BFC8E2C8A6C08'
+      X-Msapi-Userstate:
+      - fa01
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=259,MSDatacenter=BNZE01
+      X-Cache:
+      - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      X-Msedge-Ref:
+      - 'Ref A: F8861ECBD84F4FF9B1AE89EC271E5579 Ref B: BL2AA2030102021 Ref C: 2024-02-06T14:17:30Z'
+      Apim-Request-Id:
+      - a529ee89-c774-46df-8f65-9fe4afe1819b
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Tue, 06 Feb 2024 14:17:30 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "mars
+        (site:nasa.gov) (-site:mars.nasa.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=mars+(site%3anasa.gov)+(-site%3amars.nasa.gov)",
+        "totalEstimatedMatches": 9380000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Mars: Facts - NASA Science", "url": "https:\/\/science.nasa.gov\/mars\/facts\/",
+        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/science.nasa.gov\/mars\/facts",
+        "snippet": "Mars has a dense core at its center between 930 and 1,300 miles
+        (1,500 to 2,100 kilometers) in radius. It''s made of iron, nickel, and sulfur.
+        Surrounding the core is a rocky mantle between 770 and 1,170 miles (1,240
+        to 1,880 kilometers) thick, and above that, a crust made of iron, magnesium,
+        aluminum, calcium, and potassium.", "dateLastCrawled": "2024-02-06T05:26:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=mars+(site%3anasa.gov)+(-site%3amars.nasa.gov)&d=4526002536593198&mkt=en-US&setlang=en-US&w=VLeibBH6d1AKMGBMpUTLXo5l2iLSNbDn",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Mars - NASA Science", "url": "https:\/\/science.nasa.gov\/mars\/",
+        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/science.nasa.gov\/mars",
+        "snippet": "Mars is no place for the faint-hearted. It’s dry, rocky, and bitter
+        cold. The fourth planet from the Sun, Mars is one of Earth''s two closest
+        planetary neighbors (Venus is the other). Mars is one of the easiest planets
+        to spot in the night sky – it looks like a bright red point of light. Despite
+        being inhospitable to humans, robotic ...", "dateLastCrawled": "2024-02-05T18:05:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=mars+(site%3anasa.gov)+(-site%3amars.nasa.gov)&d=5046668533057702&mkt=en-US&setlang=en-US&w=-K-OEf9sMaf29fPCzODma7RHXhEUFEpC",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "All About Mars | NASA Space Place – NASA Science for Kids", "url":
+        "https:\/\/spaceplace.nasa.gov\/all-about-mars\/en\/", "datePublished": "2024-01-25T00:00:00.0000000",
+        "datePublishedDisplayText": "Jan 25, 2024", "isFamilyFriendly": <DATADOG_API_ENABLED>,
+        "displayUrl": "https:\/\/spaceplace.nasa.gov\/all-about-mars\/en", "snippet":
+        "Mars is a cold desert world. The average temperature on Mars is minus 85
+        degrees Fahrenheit – way below freezing. It is half the size of Earth. Mars
+        is sometimes called the Red Planet. It''s red because of rusty iron in the
+        ground. Like Earth, Mars has seasons, polar ice caps, volcanoes, canyons,
+        and weather. It has a very thin atmosphere made ...", "dateLastCrawled": "2024-02-05T09:07:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=mars+(site%3anasa.gov)+(-site%3amars.nasa.gov)&d=4919361407511714&mkt=en-US&setlang=en-US&w=XXmlfIMfsQ69ETOvK40oFRFPHabBDLWW",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Humans to Mars - NASA", "url": "https:\/\/www.nasa.gov\/humans-in-space\/humans-to-mars\/",
+        "datePublished": "2023-09-26T00:00:00.0000000", "datePublishedDisplayText":
+        "Sep 26, 2023", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nasa.gov\/humans-in-space\/humans-to-mars",
+        "snippet": "Temperatures on Mars can range from -284 degrees F to 86 degrees
+        F. The atmosphere on Mars is 96% carbon dioxide. One day on Mars lasts about
+        37 minutes longer than an Earth day. A year on Mars is almost twice as long
+        as a year on Earth. Gravity on Mars is about one-third of the gravity on Earth.
+        If you weigh 100 pounds on Earth, you would ...", "dateLastCrawled": "2024-02-06T06:02:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=mars+(site%3anasa.gov)+(-site%3amars.nasa.gov)&d=4921457357046797&mkt=en-US&setlang=en-US&w=x02TA_zh8Au-BXHETQK7ExQgOA9CKTQ2",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "In Depth | Mars – NASA Solar System Exploration", "url": "https:\/\/solarsystem.nasa.gov\/planets\/mars\/in-depth.amp",
+        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/solarsystem.nasa.gov\/planets\/mars\/in-depth.amp",
+        "snippet": "As Mars orbits the Sun, it completes one rotation every 24.6 hours,
+        which is very similar to one day on Earth (23.9 hours). Martian days are called
+        sols – short for \"solar day.\" A year on Mars lasts 669.6 sols, which is
+        the same as 687 Earth days. Mars'' axis of rotation is tilted 25 degrees with
+        respect to the plane of its orbit around the Sun.", "dateLastCrawled": "2024-02-03T22:10:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=mars+(site%3anasa.gov)+(-site%3amars.nasa.gov)&d=4549504469237930&mkt=en-US&setlang=en-US&w=oFfWDqWahWEU4CETZzQLnsLRion83CRY",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Mars: Exploration - NASA Science", "url": "https:\/\/science.nasa.gov\/mars\/exploration\/",
+        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/science.nasa.gov\/mars\/exploration",
+        "snippet": "Mars: Exploration. No planet beyond Earth has been studied as
+        intensely as Mars. Recorded observations of Mars date back more than 4,000
+        years. Today, an international fleet of robotic spacecraft are studying Mars
+        from all angles. A carefully selected international fleet of robotic orbiters,
+        landers and rovers keep a continuous flow of ...", "dateLastCrawled": "2024-02-05T03:07:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=mars+(site%3anasa.gov)+(-site%3amars.nasa.gov)&d=4890821357753768&mkt=en-US&setlang=en-US&w=XNijc3nw_jOwFrXQYTW0sI0Wo0L6HRFI",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "Mars 2020 - NASA Jet Propulsion Laboratory", "url": "https:\/\/www.jpl.nasa.gov\/missions\/mars-2020-perseverance-rover",
+        "datePublished": "2020-07-30T00:00:00.0000000", "datePublishedDisplayText":
+        "Jul 30, 2020", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.jpl.nasa.gov\/missions\/mars-2020-perseverance-rover",
+        "snippet": "The Perseverance Mars rover is part of NASA’s Mars Exploration
+        Program, a long-term effort of robotic exploration of the Red Planet. A key
+        objective for Perseverance’s mission on Mars is astrobiology, including the
+        search for signs of ancient microbial life.. Perseverance is investigating
+        Jezero Crater – a region of Mars where the ancient environment may have been
+        favorable for microbial ...", "dateLastCrawled": "2024-02-06T03:10:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=mars+(site%3anasa.gov)+(-site%3amars.nasa.gov)&d=4531603168771224&mkt=en-US&setlang=en-US&w=tjT-yOU04EgMvCvoRr9qHkiQqxYFCbXY",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Mars Fact Sheet - NSSDCA", "url": "https:\/\/nssdc.gsfc.nasa.gov\/planetary\/factsheet\/marsfact.html",
+        "datePublished": "2024-01-11T00:00:00.0000000", "datePublishedDisplayText":
+        "Jan 11, 2024", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/nssdc.gsfc.nasa.gov\/planetary\/factsheet\/marsfact.html",
+        "snippet": "Mars Observational Parameters Discoverer: Unknown Discovery Date:
+        Prehistoric Distance from Earth Minimum (10 6 km) 54.6 Maximum (10 6 km) 401.4
+        Apparent diameter from Earth Maximum (seconds of arc) 25.6 Minimum (seconds
+        of arc) 3.5 Mean values at opposition from Earth Distance from Earth (10 6
+        km) 78.34 Apparent diameter (seconds of arc) 17.8 Apparent visual magnitude
+        -2.0 Maximum apparent ...", "dateLastCrawled": "2024-02-05T18:25:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=mars+(site%3anasa.gov)+(-site%3amars.nasa.gov)&d=4591964643072733&mkt=en-US&setlang=en-US&w=lItY32rAyQ8oL2bUJgNyiG9lP-pfB7Ad",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "NASA’s Perseverance Rover Sends Sneak Peek of Mars Landing", "url":
+        "https:\/\/www.nasa.gov\/news-release\/nasas-perseverance-rover-sends-sneak-peek-of-mars-landing\/",
+        "datePublished": "2021-02-19T00:00:00.0000000", "datePublishedDisplayText":
+        "Feb 19, 2021", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nasa.gov\/news-release\/nasas-perseverance-rover-sends-sneak-peek-of-mars...",
+        "snippet": "Feb 19, 2021. RELEASE 21-020. This high-resolution still image
+        is part of a video taken by several cameras as NASA’s Perseverance rover touched
+        down on Mars on Feb. 18, 2021. A camera aboard the descent stage captured
+        this shot. A key objective for Perseverance’s mission on Mars is astrobiology,
+        including the search for signs of ancient ...", "dateLastCrawled": "2024-02-03T14:06:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=mars+(site%3anasa.gov)+(-site%3amars.nasa.gov)&d=4910213127420310&mkt=en-US&setlang=en-US&w=0VAwxB49Iv246ECC0HIRfm3PVfKqr6fg",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Mars Is Mighty in First Webb Observations of Red Planet", "url":
+        "https:\/\/blogs.nasa.gov\/webb\/2022\/09\/19\/mars-is-mighty-in-first-webb-observations-of-red-planet\/",
+        "datePublished": "2022-09-19T00:00:00.0000000", "datePublishedDisplayText":
+        "Sep 19, 2022", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/blogs.nasa.gov\/webb\/2022\/09\/19\/mars-is-mighty-in-first-webb-observations-of...",
+        "snippet": "Webb’s first near-infrared spectrum of Mars, captured by the Near-Infrared
+        Spectrograph (NIRSpec) Sept. 5, 2022, as part of the Guaranteed Time Observation
+        Program 1415, over 3 slit gratings (G140H, G235H, G395H). The spectrum is
+        dominated by reflected sunlight at wavelengths shorter than 3 microns and
+        thermal emission at longer wavelengths.", "dateLastCrawled": "2024-02-03T09:16:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=mars+(site%3anasa.gov)+(-site%3amars.nasa.gov)&d=4797985631073027&mkt=en-US&setlang=en-US&w=Ha3N00gzCi6F31BNQ1_Ah072Gefeil1c",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "NASA Confirms Evidence That Liquid Water Flows on Today’s Mars",
+        "url": "https:\/\/www.nasa.gov\/news-release\/nasa-confirms-evidence-that-liquid-water-flows-on-todays-mars\/",
+        "datePublished": "2015-09-28T00:00:00.0000000", "datePublishedDisplayText":
+        "Sep 28, 2015", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nasa.gov\/...\/nasa-confirms-evidence-that-liquid-water-flows-on-todays-mars",
+        "snippet": "NASA. These dark, narrow, 100 meter-long streaks called recurring
+        slope lineae flowing downhill on Mars are inferred to have been formed by
+        contemporary flowing water. Recently, planetary scientists detected hydrated
+        salts on these slopes at Hale crater, corroborating their original hypothesis
+        that the streaks are indeed formed by liquid water.", "dateLastCrawled": "2024-02-06T08:07:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=mars+(site%3anasa.gov)+(-site%3amars.nasa.gov)&d=4773031878994038&mkt=en-US&setlang=en-US&w=dq6A30F2qaB6hg_9nKJYSy4wS3yR3p5A",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Signs of Life on Mars? NASA’s Perseverance Rover Begins the Hunt",
+        "url": "https:\/\/www.jpl.nasa.gov\/news\/signs-of-life-on-mars-nasas-perseverance-rover-begins-the-hunt",
+        "datePublished": "2021-07-20T00:00:00.0000000", "datePublishedDisplayText":
+        "Jul 20, 2021", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.jpl.nasa.gov\/news\/signs-of-life-on-mars-nasas-perseverance-rover-begins...",
+        "snippet": "The Mars 2020 Perseverance mission is part of NASA’s Moon to Mars
+        exploration approach, which includes Artemis missions to the Moon that will
+        help prepare for human exploration of the Red Planet. JPL, which is managed
+        for NASA by Caltech in Pasadena, California, built and manages operations
+        of the Perseverance rover. For more about Perseverance:", "dateLastCrawled":
+        "2024-02-05T10:29:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=mars+(site%3anasa.gov)+(-site%3amars.nasa.gov)&d=4736494590758412&mkt=en-US&setlang=en-US&w=fo10CaivgWxp6N7ujCY-aWrQZZnKP_Na",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "NASA’s Perseverance Drives on Mars’ Terrain for First Time", "url":
+        "https:\/\/www.nasa.gov\/news-release\/nasas-perseverance-drives-on-mars-terrain-for-first-time\/",
+        "datePublished": "2021-03-05T00:00:00.0000000", "datePublishedDisplayText":
+        "Mar 5, 2021", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nasa.gov\/news-release\/nasas-perseverance-drives-on-mars-terrain-for-first-time",
+        "snippet": "The Mars 2020 Perseverance mission is part of NASA’s Moon to Mars
+        exploration approach, which includes Artemis missions to the Moon that will
+        help prepare for human exploration of the Red Planet. JPL, which is managed
+        for NASA by Caltech in Pasadena, built and manages operations of the Perseverance
+        rover. For more about Perseverance:", "dateLastCrawled": "2024-02-03T07:19:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=mars+(site%3anasa.gov)+(-site%3amars.nasa.gov)&d=4919928350586086&mkt=en-US&setlang=en-US&w=ccVg1NrkqYK9Uw7-5RQjmmQjCeZedSu-",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Mars Trek - NASA", "url": "https:\/\/trek.nasa.gov\/mars\/", "isFamilyFriendly":
+        <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/trek.nasa.gov\/mars", "snippet":
+        "Mars Trek. Trek is a NASA web-based portal for exploration of Mars. This
+        portal showcases data collected by NASA at various landing sites and features
+        an easy-to-use browsing tool that provides layering and viewing of high resolution
+        data.", "dateLastCrawled": "2024-02-06T06:04:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Take a 3D Spin on Mars and Track NASA’s Perseverance Rover", "url":
+        "https:\/\/www.nasa.gov\/solar-system\/take-a-3d-spin-on-mars-and-track-nasas-perseverance-rover\/",
+        "datePublished": "2021-09-16T00:00:00.0000000", "datePublishedDisplayText":
+        "Sep 16, 2021", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nasa.gov\/solar-system\/take-a-3d-spin-on-mars-and-track-nasas-perseverance...",
+        "snippet": "The Mars 2020 Perseverance mission is part of NASA’s Moon to Mars
+        exploration approach, which includes Artemis missions to the Moon that will
+        help prepare for human exploration of the Red Planet. JPL, which is managed
+        for NASA by Caltech in Pasadena, California, built and manages operations
+        of the Perseverance rover. For more about Perseverance:", "dateLastCrawled":
+        "2024-02-05T22:25:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=mars+(site%3anasa.gov)+(-site%3amars.nasa.gov)&d=4562750280791671&mkt=en-US&setlang=en-US&w=klyBUBkP43Ua5nd-yjlW05sCPh7bUkfb",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Mars Exploration - NASA Science", "url": "https:\/\/science.nasa.gov\/planetary-science\/programs\/mars-exploration\/",
+        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/science.nasa.gov\/planetary-science\/programs\/mars-exploration",
+        "snippet": "The Mars Exploration Program is a science-driven program that
+        seeks to understand whether Mars was, is, or can be, a habitable world. To
+        find out, we need to understand how geologic, climatic, and other processes
+        have worked to shape Mars and its environment over time, as well as how they
+        interact today.", "dateLastCrawled": "2024-02-02T02:52:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=mars+(site%3anasa.gov)+(-site%3amars.nasa.gov)&d=4743744490905195&mkt=en-US&setlang=en-US&w=4DWrDRdfP6dtNO3JU2PtOzt3ngoJbWDV",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Explore Mars: A Mars Rover Game - NASA Space Place", "url": "https:\/\/spaceplace.nasa.gov\/explore-mars\/en\/",
+        "datePublished": "2024-01-25T00:00:00.0000000", "datePublishedDisplayText":
+        "Jan 25, 2024", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/spaceplace.nasa.gov\/explore-mars\/en",
+        "snippet": "The Mars helicopter is an experiment for NASA’s scientists and
+        engineers. It will be a test to see if small aircraft can be used to do science
+        on future Mars missions. This artist''s concept shows the Mars Helicopter,
+        which will travel with NASA''s Perseverance rover. Credit: NASA\/JPL-Caltech",
+        "dateLastCrawled": "2024-02-05T09:03:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=mars+(site%3anasa.gov)+(-site%3amars.nasa.gov)&d=4563922804605457&mkt=en-US&setlang=en-US&w=c74A2Uvp_7sbbsz9pK5u58kDW_slnLo5",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "NASA’s Perseverance Makes New Discoveries in Mars’ Jezero Crater",
+        "url": "https:\/\/www.nasa.gov\/missions\/mars-2020-perseverance\/perseverance-rover\/nasas-perseverance-makes-new-discoveries-in-mars-jezero-crater\/",
+        "datePublished": "2022-08-25T00:00:00.0000000", "datePublishedDisplayText":
+        "Aug 25, 2022", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nasa.gov\/missions\/mars-2020-perseverance\/perseverance-rover\/nasas...",
+        "snippet": "The Mars 2020 Perseverance mission is part of NASA’s Moon to Mars
+        exploration approach, which includes Artemis missions to the Moon that will
+        help prepare for human exploration of the Red Planet. JPL, which is managed
+        for NASA by Caltech in Pasadena, California, built and manages operations
+        of the Perseverance rover. For more about Perseverance:", "dateLastCrawled":
+        "2024-02-01T06:34:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=mars+(site%3anasa.gov)+(-site%3amars.nasa.gov)&d=4762225610915849&mkt=en-US&setlang=en-US&w=QpylBf7yD-R1nAZtYqsSNVURi-2b6iJF",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Life on Mars: A Definite Possibility | News | Astrobiology", "url":
+        "https:\/\/astrobiology.nasa.gov\/news\/check-type-life-on-mars-a-definite-possibility\/",
+        "datePublished": "2024-02-03T00:00:00.0000000", "datePublishedFreshnessText":
+        "3 days ago", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/astrobiology.nasa.gov\/news\/check-type-life-on-mars-a-definite-possibility",
+        "snippet": "Tilting toward Life. But Mars goes through cycles of obliquity,
+        or changes in its orbital tilt. Currently, Mars is wobbling back and forth
+        between 15 and 35 degrees’ obliquity, on a timescale of about 100,000 years.
+        But every million years or so, it leans over as much as 60 degrees. Along
+        with these changes in obliquity come changes in ...", "dateLastCrawled": "2024-02-05T03:19:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=mars+(site%3anasa.gov)+(-site%3amars.nasa.gov)&d=4774629600526757&mkt=en-US&setlang=en-US&w=UO90DpDzoAV7QBKM27ua803Ss-uHHd6b",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "NASA’s Perseverance Rover Investigates Geologically Rich Mars Terrain",
+        "url": "https:\/\/www.nasa.gov\/news-release\/nasas-perseverance-rover-investigates-geologically-rich-mars-terrain\/",
+        "datePublished": "2022-09-15T00:00:00.0000000", "datePublishedDisplayText":
+        "Sep 15, 2022", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nasa.gov\/news-release\/nasas-perseverance-rover-investigates-geologically...",
+        "snippet": "The Mars 2020 Perseverance mission is part of NASA’s Moon to Mars
+        exploration approach, which includes Artemis missions to the Moon that will
+        help prepare for human exploration of the Red Planet. JPL, which is managed
+        for NASA by Caltech, built and manages operations of the Perseverance rover.
+        Lee esta nota de prensa en español aquí.", "dateLastCrawled": "2024-02-05T05:38:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=mars+(site%3anasa.gov)+(-site%3amars.nasa.gov)&d=4594837977957742&mkt=en-US&setlang=en-US&w=uVT8EI-VUjwpfaq9GDh8cJU3AusiqKIA",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Tue, 06 Feb 2024 14:17:30 GMT
+recorded_with: VCR 6.2.0
