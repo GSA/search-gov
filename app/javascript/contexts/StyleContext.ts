@@ -28,7 +28,7 @@ export const styles = {
   secondaryHeaderBackgroundColor: '#FFFFFF',
   sectionTitleColor: '#565C65',
   searchTabsFontFamily: '"Public Sans Web", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
-  searchTabsFontWeight: 'bold',
+  searchTabsFontWeight: 'bold'
 };
 
 export const StyleContext = createContext(styles);

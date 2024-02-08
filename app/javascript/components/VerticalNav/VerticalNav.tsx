@@ -19,7 +19,7 @@ interface Styles {
   };
 }
 
-const StyledPrimaryNav = styled(PrimaryNav).attrs<Styles>((props) => ({styles: props.styles}))`
+const StyledPrimaryNav = styled(PrimaryNav).attrs<Styles>((props) => ({ styles: props.styles }))`
   li.usa-nav__primary-item:not(li.usa-nav__submenu-item) > a,
   .usa-nav__primary > .usa-nav__primary-item button[aria-expanded=false] {
     color: ${(props) => props.styles.searchTabNavigationLinkColor} !important;
