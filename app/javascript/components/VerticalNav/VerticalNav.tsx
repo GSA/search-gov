@@ -10,9 +10,16 @@ import { StyleContext } from '../../contexts/StyleContext';
 
 import './VerticalNav.css';
 
-const StyledPrimaryNav = styled(PrimaryNav).attrs<{ styles: { searchTabNavigationLinkColor: string; activeSearchTabNavigationColor: string; searchTabsFontFamily: string; searchTabsFontWeight: string; }; }>((props) => ({
-  styles: props.styles
-}))`
+interface Styles {
+  styles: {
+    activeSearchTabNavigationColor: string;
+    searchTabNavigationLinkColor:   string;
+    searchTabsFontFamily:           string;
+    searchTabsFontWeight:           string;
+  };
+}
+
+const StyledPrimaryNav = styled(PrimaryNav).attrs<Styles>((props) => ({styles: props.styles}))`
   li.usa-nav__primary-item:not(li.usa-nav__submenu-item) > a,
   .usa-nav__primary > .usa-nav__primary-item button[aria-expanded=false] {
     color: ${(props) => props.styles.searchTabNavigationLinkColor} !important;
