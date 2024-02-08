@@ -59,8 +59,7 @@ export const GraphicsBestBet = ({ title, titleUrl, imageUrl, imageAltText, links
                     <a href={link.url}>{parse(link.title)}</a>
                   </Grid>
                 );
-                })
-              }
+              })}
             </Grid>
           )}
         </Grid>
