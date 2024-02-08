@@ -87,7 +87,7 @@ describe Affiliate do
       }
     end
 
-    it { is_expected.to validate_inclusion_of(:search_engine).in_array(%w[BingV6 BingV7 SearchGov]) }
+    it { is_expected.to validate_inclusion_of(:search_engine).in_array(%w[BingV7 SearchGov]) }
 
     it { is_expected.to have_many :boosted_contents }
     it { is_expected.to have_many(:connections).inverse_of(:affiliate) }
@@ -490,74 +490,6 @@ describe Affiliate do
         it 'is invalid' do
           expect(affiliate).not_to be_valid
           expect(affiliate.errors[:header_tagline_url]).to include 'is not a valid URL'
-        end
-      end
-    end
-
-    describe 'bing v5 key stripping' do
-      subject(:affiliate) { described_class.new(valid_create_attributes.merge(bing_v5_key: bing_v5_key)) }
-
-      before { affiliate.save }
-
-      [
-        nil,
-        '',
-        '    '
-      ].each do |blank_key|
-        context "when given a blank key '#{blank_key}'" do
-          let(:bing_v5_key) { blank_key }
-
-          it 'sets it to nil' do
-            expect(affiliate.bing_v5_key).to be_nil
-          end
-        end
-      end
-
-      {
-        '  foo  ' => 'foo',
-        ' da076306990394a250f5f2ecd8cfc323  ' => 'da076306990394a250f5f2ecd8cfc323'
-      }.each do |initial_value, result|
-        context "when given a space-padded key '#{initial_value}'" do
-          let(:bing_v5_key) { initial_value }
-
-          it "strips it to '#{result}'" do
-            expect(affiliate.bing_v5_key).to eql(result)
-          end
-        end
-      end
-    end
-
-    describe 'bing v5 key validation' do
-      subject(:affiliate) { described_class.new(valid_create_attributes.merge(bing_v5_key: bing_v5_key)) }
-
-      [
-        nil,
-        'da076306990394a250f5f2ecd8cfc323',
-        '961546ffc05c341247ec71e38459820a',
-        '50e4b73b2e11f25377fd088d0154c50a',
-        '27b0bb273f48f29f8683e9a9a2285e70'
-      ].each do |valid_bing_v5_key|
-        context "when given valid key '#{valid_bing_v5_key}'" do
-          let(:bing_v5_key) { valid_bing_v5_key }
-
-          it 'validates bing_v5_key is valid' do
-            expect(affiliate.save).to be true
-          end
-        end
-      end
-
-      %w[
-        lolkey
-        abc123
-        somestringthatis32charsbutnothex
-      ].each do |invalid_bing_v5_key|
-        context "when given invalid key '#{invalid_bing_v5_key}'" do
-          let(:bing_v5_key) { invalid_bing_v5_key }
-
-          it 'validates bing_v5_key is not valid' do
-            expect(affiliate.save).to be false
-            expect(affiliate.errors[:bing_v5_key]).to include('is invalid')
-          end
         end
       end
     end

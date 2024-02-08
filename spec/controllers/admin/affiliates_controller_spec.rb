@@ -25,15 +25,16 @@ describe Admin::AffiliatesController do
 
   describe '#analytics' do
     context 'when logged in as an affiliate admin' do
+      let(:affiliate) { affiliates('basic_affiliate') }
+
       before do
         activate_authlogic
         UserSession.create(users('affiliate_admin'))
-        @affiliate = affiliates('basic_affiliate')
       end
 
       it 'redirects to the affiliate analytics page for the affiliate id passed' do
-        get :analytics, params: { id: @affiliate.id }
-        expect(response).to redirect_to new_site_queries_path(@affiliate)
+        get :analytics, params: { id: affiliate.id }
+        expect(response).to redirect_to new_site_queries_path(affiliate)
       end
     end
   end
@@ -66,16 +67,13 @@ describe Admin::AffiliatesController do
 
       describe 'subgroups' do
         it 'contains the specified subgroups' do
-          expect(update_columns.map(&:label)).to match_array(['Settings',
-                                                              'Enable/disable Settings',
-                                                              'Display Settings',
-                                                              'Analytics-Tracking Code'])
+          expect(update_columns.map(&:label)).to contain_exactly('Settings', 'Enable/disable Settings', 'Display Settings', 'Analytics-Tracking Code')
         end
       end
 
       describe 'Settings subgroup' do
         let(:settings_columns) do
-          %i[ active agency bing_v5_key display_name domain_control_validation_code
+          %i[ active agency display_name domain_control_validation_code
               fetch_concurrency ga_web_property_id i14y_date_stamp_enabled locale name
               search_engine website affiliate_feature_addition excluded_domains i14y_memberships ]
         end
@@ -135,10 +133,10 @@ describe Admin::AffiliatesController do
         %i[ active
             agency
             api_access_key
-            bing_v5_key
             created_at
             dap_enabled
             display_name
+            display_logo_only
             domain_control_validation_code
             external_tracking_code
             favicon_url

@@ -42,7 +42,7 @@ describe Api::V2::SearchesController do
       it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
-        expect(JSON.parse(response.body)['foo']).to eq('bar')
+        expect(response.parsed_body['foo']).to eq('bar')
       end
     end
 
@@ -69,7 +69,7 @@ describe Api::V2::SearchesController do
       it { is_expected.to respond_with :bad_request }
 
       it 'returns errors in JSON' do
-        errors = JSON.parse(response.body)['errors']
+        errors = response.parsed_body['errors']
         expect(errors).to include('access_key must be present')
       end
     end
@@ -221,7 +221,7 @@ describe Api::V2::SearchesController do
       it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
-        expect(JSON.parse(response.body)['route_to']).to eq('https://www.usa.gov/unclaimed_money')
+        expect(response.parsed_body['route_to']).to eq('https://www.usa.gov/unclaimed_money')
       end
     end
   end
@@ -240,7 +240,7 @@ describe Api::V2::SearchesController do
       it { is_expected.to respond_with :bad_request }
 
       it 'returns errors in JSON' do
-        errors = JSON.parse(response.body)['errors']
+        errors = response.parsed_body['errors']
         expect(errors).to include('access_key must be present')
       end
     end
@@ -271,7 +271,7 @@ describe Api::V2::SearchesController do
       it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
-        expect(JSON.parse(response.body)['foo']).to eq('bar')
+        expect(response.parsed_body['foo']).to eq('bar')
       end
     end
 
@@ -286,11 +286,12 @@ describe Api::V2::SearchesController do
       it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
-        expect(JSON.parse(response.body)['route_to']).to eq('https://www.usa.gov/unclaimed_money')
+        expect(response.parsed_body['route_to']).to eq('https://www.usa.gov/unclaimed_money')
       end
     end
   end
 
+  # Per the comment in app/controllers/api/v2/searches_controller.rb, this endpoint is currently unused.
   describe '#docs' do
     let(:docs_params) { search_params.merge({ dc: 1 }) }
 
@@ -300,17 +301,17 @@ describe Api::V2::SearchesController do
       it { is_expected.to respond_with :bad_request }
 
       it 'returns errors in JSON' do
-        expect(JSON.parse(response.body)['errors']).to eq(['dc must be present'])
+        expect(response.parsed_body['errors']).to eq(['dc must be present'])
       end
     end
 
-    context 'when the search options are valid, the affiliate is using BingV6, and the collection is deep' do
+    context 'when the search options are valid, the affiliate is using BingV7, and the collection is deep' do
       let!(:search) { instance_double(ApiI14ySearch, as_json: { foo: 'bar' }, modules: %w[I14Y]) }
       let!(:document_collection) { instance_double(DocumentCollection, too_deep_for_bing?: true) }
 
       before do
         allow(Affiliate).to receive(:find_by_name).and_return(affiliate)
-        allow(affiliate).to receive(:search_engine).and_return('BingV6')
+        allow(affiliate).to receive(:search_engine).and_return('BingV7')
         allow(DocumentCollection).to receive(:find).and_return(document_collection)
         allow(ApiI14ySearch).to receive(:new).with(hash_including(query_params)).and_return(search)
         allow(search).to receive(:run)
@@ -325,7 +326,7 @@ describe Api::V2::SearchesController do
       it { is_expected.to respond_with :success }
 
       it 'uses I14y' do
-        expect(JSON.parse(response.body)['foo']).to eq('bar')
+        expect(response.parsed_body['foo']).to eq('bar')
       end
     end
 
@@ -340,7 +341,7 @@ describe Api::V2::SearchesController do
       it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
-        expect(JSON.parse(response.body)['route_to']).to eq('https://www.usa.gov/unclaimed_money')
+        expect(response.parsed_body['route_to']).to eq('https://www.usa.gov/unclaimed_money')
       end
     end
   end
