@@ -5,7 +5,7 @@ module VisualDesignHelper
     if visual_design_json.present? && visual_design_json[property.to_s]
       visual_design_json[property.to_s]
     else
-      Affiliate::DEFAULT_VISUAL_DESIGN[property]
+      Affiliate::DEFAULT_VISUAL_DESIGN[property.to_s]
     end
   end
 
