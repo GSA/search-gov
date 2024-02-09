@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Identifier as UswdsIdentifier, IdentifierMasthead, IdentifierLinks, IdentifierIdentity, Link, IdentifierGov, IdentifierLinkItem, IdentifierLink } from '@trussworks/react-uswds';
 import { LanguageContext } from '../../contexts/LanguageContext';
 import { StyleContext } from '../../contexts/StyleContext';
+import { FontsAndColors } from '../SearchResultsLayout';
 
 import { IdentifierLogoWrapper } from './IdentifierLogoWrapper';
 
@@ -20,10 +21,12 @@ interface IdentifierProps {
   }[] | null;
 }
 
-const StyledUswdsIdentifier = styled(UswdsIdentifier).attrs<{ styles: { identifierBackgroundColor: string, identifierHeadingColor: string; identifierLinkColor: string; }; }>((props) => ({
+const StyledUswdsIdentifier = styled(UswdsIdentifier).attrs<{ styles: FontsAndColors; }>((props) => ({
   styles: props.styles
 }))`
   background-color: ${(props) => props.styles.identifierBackgroundColor};
+  font-family: ${(props) => props.styles.identifierFontFamily} !important;
+
   .usa-identifier__container, .usa-identifier__container > a, .usa-identifier__identity-disclaimer, .usa-identifier__identity-disclaimer > a {
     color: ${(props) => props.styles.identifierHeadingColor};
   }
@@ -56,8 +59,8 @@ export const Identifier = ({ identifierContent, identifierLinks }: IdentifierPro
     </> : <></>;
 
   return (
-    <div id="serp-identifier-wrapper">
-      <StyledUswdsIdentifier styles={styles}>
+    <StyledUswdsIdentifier styles={styles}>
+      <div id="serp-identifier-wrapper">
         <IdentifierMasthead aria-label="Agency identifier">
           {identifierContent?.logoUrl && (
             <IdentifierLogoWrapper
@@ -81,7 +84,7 @@ export const Identifier = ({ identifierContent, identifierLinks }: IdentifierPro
             {i18n.t('visitUsaDotGov')}
           </Link>
         </IdentifierGov>
-      </StyledUswdsIdentifier>
-    </div>
+      </div>
+    </StyledUswdsIdentifier>
   );
 };

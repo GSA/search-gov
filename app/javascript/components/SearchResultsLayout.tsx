@@ -32,6 +32,36 @@ export interface Language {
   rtl: boolean;
 }
 
+export interface FontsAndColors {
+  activeSearchTabNavigationColor: string;
+  bannerBackgroundColor: string;
+  bannerTextColor: string;
+  bestBetBackgroundColor: string;
+  buttonBackgroundColor: string;
+  footerAndResultsFontFamily: string;
+  footerBackgroundColor: string;
+  footerLinksTextColor: string;
+  headerBackgroundColor: string;
+  headerLinksFontFamily: string;
+  headerPrimaryLinkColor: string;
+  headerSecondaryLinkColor: string;
+  healthBenefitsHeaderBackgroundColor: string;
+  identifierBackgroundColor: string;
+  identifierFontFamily: string;
+  identifierHeadingColor: string;
+  identifierLinkColor: string;
+  pageBackgroundColor: string;
+  resultDescriptionColor: string;
+  resultTitleColor: string;
+  resultTitleLinkVisitedColor: string;
+  resultUrlColor: string;
+  searchTabNavigationLinkColor: string;
+  searchTabsFontFamily: string;
+  searchTabsFontWeight: string;
+  secondaryHeaderBackgroundColor: string;
+  sectionTitleColor: string;
+}
+
 interface SearchResultsLayoutProps {
   page: PageData;
   resultsData?: {
@@ -151,35 +181,7 @@ interface SearchResultsLayoutProps {
   };
   navigationLinks: NavigationLink[];
   extendedHeader: boolean;
-  fontsAndColors: {
-    activeSearchTabNavigationColor: string;
-    bannerBackgroundColor: string;
-    bannerTextColor: string;
-    bestBetBackgroundColor: string;
-    buttonBackgroundColor: string;
-    footerAndResultsFontFamily: string;
-    footerBackgroundColor: string;
-    footerLinksTextColor: string;
-    headerBackgroundColor: string;
-    headerLinksFontFamily: string;
-    headerPrimaryLinkColor: string;
-    headerSecondaryLinkColor: string;
-    healthBenefitsHeaderBackgroundColor: string;
-    identifierBackgroundColor: string;
-    identifierFontFamily: string;
-    identifierHeadingColor: string;
-    identifierLinkColor: string;
-    pageBackgroundColor: string;
-    resultDescriptionColor: string;
-    resultTitleColor: string;
-    resultTitleLinkVisitedColor: string;
-    resultUrlColor: string;
-    searchTabNavigationLinkColor: string;
-    searchTabsFontFamily: string;
-    searchTabsFontWeight: string;
-    secondaryHeaderBackgroundColor: string;
-    sectionTitleColor: string;
-  };
+  fontsAndColors: FontsAndColors;
   footerLinks?: {
     title: string,
     url: string

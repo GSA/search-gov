@@ -281,7 +281,7 @@ class Affiliate < ApplicationRecord
   DEFAULT_VISUAL_DESIGN = {
     footer_and_results_font_family: DEFAULT_FONT,
     header_links_font_family: DEFAULT_FONT,
-    identifier_font_family: DEFAULT_FONT,
+    identifier_font_family: "'Source Sans Pro','Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif",
     search_tabs_font_family: DEFAULT_FONT,
     search_tabs_font_weight: 'bold'
   }.merge(DEFAULT_COLORS).transform_keys(&:to_s).freeze
