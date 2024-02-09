@@ -106,7 +106,7 @@ class Affiliate < ApplicationRecord
                     AWS_IMAGE_SETTINGS.merge(path: "#{Rails.env}/site/:id/header_tagline_logo/:updated_at/:style/:filename")
 
   after_initialize do
-    self.visual_design_json = visual_design_json&.reverse_merge(DEFAULT_VISUAL_DESIGN) || DEFAULT_VISUAL_DESIGN if has_attribute?(:visual_design_json)
+    self.visual_design_json = DEFAULT_VISUAL_DESIGN.merge(visual_design_json || {}) if has_attribute?(:visual_design_json)
   end
 
   before_validation :set_default_fields, on: :create
