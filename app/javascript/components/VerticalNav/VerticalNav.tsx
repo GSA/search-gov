@@ -4,10 +4,9 @@ import { GridContainer, Header, PrimaryNav } from '@trussworks/react-uswds';
 
 import { DropDownMenu } from './DropDownMenu';
 import { LanguageContext } from '../../contexts/LanguageContext';
-import { NavigationLink } from '../SearchResultsLayout';
+import { NavigationLink, FontsAndColors  } from '../SearchResultsLayout';
 import { getTextWidth, move } from '../../utils';
 import { StyleContext } from '../../contexts/StyleContext';
-import { FontsAndColors } from '../SearchResultsLayout';
 
 import './VerticalNav.css';
 
