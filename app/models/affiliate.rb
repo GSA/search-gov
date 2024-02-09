@@ -276,7 +276,7 @@ class Affiliate < ApplicationRecord
     identifier_background_color: '#1B1B1B',
     identifier_heading_color: '#FFFFFF',
     identifier_link_color: '#A9AEB1'
-  }.freeze
+  }.transform_keys(&:to_s).freeze
 
   DEFAULT_VISUAL_DESIGN = {
     footer_and_results_font_family: DEFAULT_FONT,
@@ -537,7 +537,6 @@ class Affiliate < ApplicationRecord
 
   def validate_visual_design_colors(visual_design_json)
     DEFAULT_COLORS.each_key do |color|
-      color = color.to_s
       next if visual_design_json[color]&.match?(/^#([0-9A-F]{3}|[0-9A-F]{6})$/i)
 
       errors.add(:base, "#{color.humanize} value is not a valid hex code")
