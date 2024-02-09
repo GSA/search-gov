@@ -6,10 +6,11 @@ import { Header as UswdsHeader, PrimaryNav, NavMenuButton } from '@trussworks/re
 import { HeaderProps } from './../props';
 import { StyleContext } from '../../contexts/StyleContext';
 import { Logo } from './Logo';
+import { FontsAndColors } from '../SearchResultsLayout';
 
 import './BasicHeader.css';
 
-const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: { buttonBackgroundColor: string; headerLinksFontFamily: string, headerBackgroundColor: string, headerPrimaryLinkColor: string, headerSecondaryLinkColor: string; }; }>((props) => ({
+const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: FontsAndColors; }>((props) => ({
   styles: props.styles
 }))`
   background-color: ${(props) => props.styles.headerBackgroundColor};

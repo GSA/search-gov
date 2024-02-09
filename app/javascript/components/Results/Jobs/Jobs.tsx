@@ -9,6 +9,7 @@ import { NoResults } from '../NoResults/NoResults';
 import './Jobs.css';
 
 import usajobsImage from 'searches/usajobs.jpg';
+import { FontsAndColors } from '../../SearchResultsLayout';
 
 type Job = {
   positionTitle: string;
@@ -30,7 +31,7 @@ const numberToCurrency = new Intl.NumberFormat('en-US', {
   currency: 'USD'
 });
 
-const StyledWrapper = styled.div.attrs<{ styles: { sectionTitleColor: string }; }>((props) => ({
+const StyledWrapper = styled.div.attrs<{ styles: FontsAndColors; }>((props) => ({
   styles: props.styles
 }))`
   .jobs-title-wrapper-label {
