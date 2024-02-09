@@ -36,6 +36,7 @@ class Sites::VisualDesignsController < Sites::SetupSiteController
       identifier_logo_attachment_attributes: attachment_attributes,
       identifier_logo_blob_attributes: blob_attributes,
       visual_design_json: [
+        :footer_and_results_font_family,
         :header_links_font_family,
         :identifier_font_family,
         :search_tabs_font_family,

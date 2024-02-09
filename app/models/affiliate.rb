@@ -283,7 +283,7 @@ class Affiliate < ApplicationRecord
     header_links_font_family: DEFAULT_FONT,
     identifier_font_family: DEFAULT_FONT,
     search_tabs_font_family: DEFAULT_FONT,
-    search_tabs_font_weight: 'normal'
+    search_tabs_font_weight: 'bold'
   }.merge(DEFAULT_COLORS).transform_keys(&:to_s).freeze
 
   CUSTOM_INDEXING_LANGUAGES = %w[en es].freeze

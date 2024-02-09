@@ -27,8 +27,33 @@ describe Sites::VisualDesignsController do
             site_id: site.id,
             site: {
               visual_design_json: {
-                header_links_font_family: "'Georgia', 'Cambria', 'Times New Roman', 'Times', serif",
-                footer_and_results_font_family: "'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif"
+                active_search_tab_navigation_color:      '#D077ED',
+                banner_background_color:                 '#D0661E',
+                banner_text_color:                       '#DEBB1E',
+                best_bet_background_color:               '#C0A1A5',
+                button_background_color:                 '#E57AFA',
+                footer_and_results_font_family:          "'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif",
+                footer_background_color:                 '#C171E5',
+                footer_links_text_color:                 '#C4EE5E',
+                header_background_color:                 '#B0771E',
+                header_links_font_family:                "'Georgia', 'Cambria', 'Times New Roman', 'Times', serif",
+                header_primary_link_color:               '#BA771E',
+                header_secondary_link_color:             '#B0BB1E',
+                health_benefits_header_background_color: '#BE11EF',
+                identifier_background_color:             '#AD1DA5',
+                identifier_font_family:                  "'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif",
+                identifier_heading_color:                '#D15C05',
+                identifier_link_color:                   '#DE1E7E',
+                page_background_color:                   '#DE7EC7',
+                result_description_color:                '#F0FEAF',
+                result_title_color:                      '#005EAF',
+                result_title_link_visited_color:         '#AC1D1C',
+                result_url_color:                        '#FACADE',
+                search_tab_navigation_link_color:        '#0FF1CE',
+                search_tabs_font_family:                 "'Georgia', 'Cambria', 'Times New Roman', 'Times', serif",
+                search_tabs_font_weight:                 'normal',
+                secondary_header_background_color:       '#C0FFEE',
+                section_title_color:                     '#BADA55'
               }
             }
           }
