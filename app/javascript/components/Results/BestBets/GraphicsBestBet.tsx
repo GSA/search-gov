@@ -14,6 +14,30 @@ interface GraphicsBestBetProps {
 }
 
 export const GraphicsBestBet = ({ title, titleUrl, imageUrl, imageAltText, links }: GraphicsBestBetProps) => {
+  // This method reorders links so that they appear in column order.
+  const sortedLinks = (links: {title: string, url: string}[]) => {
+    if (links.length <= 2) {
+      return links;
+    }
+
+    const order = [];
+    let rightColumnIndex = 1;
+    for (let index = 0; index < links.length; index += 1) {
+      if (index < Math.ceil(links.length/2)) {
+        order.push(2 * index);  
+      } else {
+        order.push(rightColumnIndex);
+        rightColumnIndex += 2;
+      }
+    }
+
+    const reorderedLinks = [];
+    for (let index = 0; index < links.length; index += 1) {
+      reorderedLinks[order[index]] = links[index];
+    }
+    return reorderedLinks;
+  };
+
   return (
     <GridContainer className='result search-result-item graphics-best-bets featured-collection'>
       <Grid row gap="md">
@@ -29,7 +53,7 @@ export const GraphicsBestBet = ({ title, titleUrl, imageUrl, imageAltText, links
           </div>
           {links && links.length > 0 && (
             <Grid row gap="md">
-              {links.map((link, index) => {
+              {sortedLinks(links).map((link, index) => {
                 return (
                   <Grid key={index} mobileLg={{ col: (index as number) % 2 === 0 ? 7 : 5 }} className='graphics-best-bets-link-wrapper'>
                     <a href={link.url}>{parse(link.title)}</a>
