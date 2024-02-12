@@ -195,39 +195,39 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
         )}
 
         <div id="results" className="search-result-item-wrapper">
-          {additionalResults?.healthTopic && 
-            <HealthTopics 
-              {...additionalResults.healthTopic}
-            />
-          }
+          <StyledWrapper styles={styles}>
+            {additionalResults?.healthTopic && 
+              <HealthTopics 
+                {...additionalResults.healthTopic}
+              />
+            }
 
-          {jobsEnabled &&
-            <Jobs 
-              jobs={additionalResults?.jobs}
-              agencyName={agencyName}
-            />
-          }
+            {jobsEnabled &&
+              <Jobs 
+                jobs={additionalResults?.jobs}
+                agencyName={agencyName}
+              />
+            }
 
-          {/* Video module */}
-          {additionalResults?.youtubeNewsItems && 
-            <VideosModule videos={additionalResults.youtubeNewsItems} query={query} videosUrl={videosUrl} />
-          }
+            {/* Video module */}
+            {additionalResults?.youtubeNewsItems && 
+              <VideosModule videos={additionalResults.youtubeNewsItems} query={query} videosUrl={videosUrl} />
+            }
 
-          {/* RSS - new news */}
-          {additionalResults?.newNews && 
-            <RssNews 
-              news={additionalResults.newNews} 
-              newsLabel={newsAboutQuery}
-            />
-          }
-          
-          {/* Results: Images */}
-          {imagesResults.length > 0 && <ImagesPage images={imagesResults}/>}
-          
-          {/* Results */}
-          {results && results.length > 0 ? 
-            <> 
-              <StyledWrapper styles={styles}>
+            {/* RSS - new news */}
+            {additionalResults?.newNews && 
+              <RssNews 
+                news={additionalResults.newNews} 
+                newsLabel={newsAboutQuery}
+              />
+            }
+
+            {/* Results: Images */}
+            {imagesResults.length > 0 && <ImagesPage images={imagesResults}/>}
+            
+            {/* Results */}
+            {results && results.length > 0 ? 
+              <> 
                 {results.map((result, index) => {
                   if (result.image) {
                     return null;
@@ -249,36 +249,36 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
                     <ResultGrid key={index} result={result} />
                   );
                 })}
-              </StyledWrapper>
-              <GridContainer className='result-divider'>
-                <Grid row gap="md">
-                </Grid>
-              </GridContainer></> : (
-              <NoResults 
-                errorMsg={i18n.t('noResultsForAndTry', { query })}
-                noResultsMessage={noResultsMessage}
+                <GridContainer className='result-divider'>
+                  <Grid row gap="md">
+                  </Grid>
+                </GridContainer></> : (
+                <NoResults 
+                  errorMsg={i18n.t('noResultsForAndTry', { query })}
+                  noResultsMessage={noResultsMessage}
+                />
+              )}
+
+            {/* Federal register */}
+            {additionalResults?.federalRegisterDocuments && 
+              <FedRegister 
+                fedRegisterDocs={additionalResults.federalRegisterDocuments}
+                query={query}
               />
-            )}
+            }
 
-          {/* Federal register */}
-          {additionalResults?.federalRegisterDocuments && 
-            <FedRegister 
-              fedRegisterDocs={additionalResults.federalRegisterDocuments}
-              query={query}
-            />
-          }
+            {/* RSS - old news */}
+            {additionalResults?.oldNews && 
+              <RssNews 
+                news={additionalResults.oldNews} 
+                newsLabel={newsAboutQuery}
+              />
+            }
 
-          {/* RSS - old news */}
-          {additionalResults?.oldNews && 
-            <RssNews 
-              news={additionalResults.oldNews} 
-              newsLabel={newsAboutQuery}
-            />
-          }
-
-          {relatedSearches && relatedSearches.length > 0 && 
-            <RelatedSearches relatedSearches={relatedSearches}/>
-          }
+            {relatedSearches && relatedSearches.length > 0 && 
+              <RelatedSearches relatedSearches={relatedSearches}/>
+            }
+          </StyledWrapper>
         </div>
       </div>
       <Pagination 
