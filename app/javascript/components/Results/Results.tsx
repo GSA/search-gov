@@ -197,30 +197,30 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
 
         <div id="results" className="search-result-item-wrapper">
           <StyledWrapper styles={styles}>
-            {/* RSS - new news */}
-            {additionalResults?.newNews && 
-              <RssNews 
-                news={additionalResults.newNews} 
-                newsLabel={newsAboutQuery}
-              />
-            }
-            {/* additionalResults?.jobs */}
-            {jobsEnabled &&
-              <Jobs 
-                jobs={additionalResults?.jobs}
-                agencyName={agencyName}
-              />
-            }
-            
             {additionalResults?.healthTopic && 
               <HealthTopics 
                 {...additionalResults.healthTopic}
               />
             }
 
+            {jobsEnabled &&
+              <Jobs 
+                jobs={additionalResults?.jobs}
+                agencyName={agencyName}
+              />
+            }
+
             {/* Video module */}
             {additionalResults?.youtubeNewsItems && 
               <VideosModule videos={additionalResults.youtubeNewsItems} query={query} videosUrl={videosUrl} />
+            }
+
+            {/* RSS - new news */}
+            {additionalResults?.newNews && 
+              <RssNews 
+                news={additionalResults.newNews} 
+                newsLabel={newsAboutQuery}
+              />
             }
 
             {/* Results: Images */}
