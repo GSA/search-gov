@@ -24,13 +24,13 @@ const fontsAndColors = {
   identifierHeadingColor: '#f48a4c',
   identifierLinkColor: '#5d5a6f',
   pageBackgroundColor: '#761816',
+  primaryNavigationFontFamily: '"Public Sans Web"',
+  primaryNavigationFontWeight: 'bold',
   resultDescriptionColor: '#2bd4c7',
   resultTitleColor: '#33f0aa',
   resultTitleLinkVisitedColor: '#4a97ad',
   resultUrlColor: '#475830',
   searchTabNavigationLinkColor: '#aea9f7',
-  searchTabsFontFamily: '"Public Sans Web"',
-  searchTabsFontWeight: 'bold',
   secondaryHeaderBackgroundColor: '#83df0a',
   sectionTitleColor: '#8b4a35'
 };

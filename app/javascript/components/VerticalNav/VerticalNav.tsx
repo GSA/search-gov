@@ -26,8 +26,8 @@ const StyledPrimaryNav = styled(PrimaryNav).attrs<{ styles: FontsAndColors }>((p
   }
 
   .usa-nav__primary a {
-    font-family: ${(props) => props.styles.searchTabsFontFamily} !important;
-    font-weight: ${(props) => props.styles.searchTabsFontWeight} !important;
+    font-family: ${(props) => props.styles.primaryNavigationFontFamily} !important;
+    font-weight: ${(props) => props.styles.primaryNavigationFontWeight} !important;
   }
 `;
 

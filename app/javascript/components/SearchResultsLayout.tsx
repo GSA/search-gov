@@ -51,13 +51,13 @@ export interface FontsAndColors {
   identifierHeadingColor: string;
   identifierLinkColor: string;
   pageBackgroundColor: string;
+  primaryNavigationFontFamily: string;
+  primaryNavigationFontWeight: string;
   resultDescriptionColor: string;
   resultTitleColor: string;
   resultTitleLinkVisitedColor: string;
   resultUrlColor: string;
   searchTabNavigationLinkColor: string;
-  searchTabsFontFamily: string;
-  searchTabsFontWeight: string;
   secondaryHeaderBackgroundColor: string;
   sectionTitleColor: string;
 }

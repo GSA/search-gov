@@ -45,13 +45,13 @@ describe Sites::VisualDesignsController do
                 identifier_heading_color:                '#D15C05',
                 identifier_link_color:                   '#DE1E7E',
                 page_background_color:                   '#DE7EC7',
+                primary_navigation_font_family:          "'Georgia', 'Cambria', 'Times New Roman', 'Times', serif",
+                primary_navigation_font_weight:          'normal',
                 result_description_color:                '#F0FEAF',
                 result_title_color:                      '#005EAF',
                 result_title_link_visited_color:         '#AC1D1C',
                 result_url_color:                        '#FACADE',
                 search_tab_navigation_link_color:        '#0FF1CE',
-                search_tabs_font_family:                 "'Georgia', 'Cambria', 'Times New Roman', 'Times', serif",
-                search_tabs_font_weight:                 'normal',
                 secondary_header_background_color:       '#C0FFEE',
                 section_title_color:                     '#BADA55'
               }

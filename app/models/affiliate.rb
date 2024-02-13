@@ -238,7 +238,7 @@ class Affiliate < ApplicationRecord
     footer_and_results_font_family
     header_links_font_family
     identifier_font_family
-    search_tabs_font_family
+    primary_navigation_font_family
   ].freeze
 
   DEFAULT_FONT = "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
@@ -282,8 +282,8 @@ class Affiliate < ApplicationRecord
     footer_and_results_font_family: DEFAULT_FONT,
     header_links_font_family: DEFAULT_FONT,
     identifier_font_family: "'Source Sans Pro','Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif",
-    search_tabs_font_family: DEFAULT_FONT,
-    search_tabs_font_weight: 'bold'
+    primary_navigation_font_family: DEFAULT_FONT,
+    primary_navigation_font_weight: 'bold'
   }.merge(DEFAULT_COLORS).transform_keys(&:to_s).freeze
 
   CUSTOM_INDEXING_LANGUAGES = %w[en es].freeze
