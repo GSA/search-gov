@@ -28,7 +28,7 @@ const fontsAndColors = {
   resultTitleLinkVisitedColor: '#4a97ad',
   resultUrlColor: '#475830',
   searchTabNavigationLinkColor: '#aea9f7',
-  primaryNavigationBackgroundColor: '#83df0a',
+  headerNavigationBackgroundColor: '#83df0a',
   sectionTitleColor: '#8b4a35'
 };
 

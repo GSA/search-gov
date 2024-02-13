@@ -9,7 +9,7 @@ import { Logo } from './Logo';
 
 import './ExtendedHeader.css';
 
-const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: { buttonBackgroundColor: string; headerLinksFontFamily: string, headerBackgroundColor: string, headerPrimaryLinkColor: string, headerSecondaryLinkColor: string; primaryNavigationBackgroundColor: string; }; }>((props) => ({
+const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: { buttonBackgroundColor: string; headerLinksFontFamily: string, headerBackgroundColor: string, headerPrimaryLinkColor: string, headerSecondaryLinkColor: string; headerNavigationBackgroundColor: string; }; }>((props) => ({
   styles: props.styles
 }))`
   background-color: ${(props) => props.styles.headerBackgroundColor};
@@ -17,7 +17,7 @@ const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: { buttonBackground
     font-family: ${(props) => props.styles.headerLinksFontFamily};
   }
   .usa-nav {
-    background-color: ${(props) => props.styles.primaryNavigationBackgroundColor};
+    background-color: ${(props) => props.styles.headerNavigationBackgroundColor};
   }
   a.usa-nav__link {
     color: ${(props) => props.styles.headerPrimaryLinkColor};
