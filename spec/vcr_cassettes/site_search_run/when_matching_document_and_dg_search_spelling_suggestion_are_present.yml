@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=scientost%20(site:www100.whitehouse.gov/)&responseFilter=WebPages&safeSearch=moderate&textDecorations=<DATADOG_API_ENABLED>&traffictype=test
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=scientost%20(site:www100.whitehouse.gov/)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
@@ -31,35 +31,35 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 08 Jan 2024 19:32:43 GMT
+      - Thu, 25 Jan 2024 23:24:47 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       X-Eventid:
-      - 659c4e17c52440d88ae654c9c996a83e
+      - 65b2edfb57a14c73a1c638515810b15c
       Useragentreductionoptout:
       - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
       Bingapis-Traceid:
-      - 659c4e17c52440d88ae654c9c996a83e
+      - 65b2edfb57a14c73a1c638515810b15c
       Bingapis-Sessionid:
-      - 6EA13377634047FB8CE2C074589E6E7F
+      - 9F26882A11524A069A97D224B08515DB
       X-Msedge-Clientid:
-      - 2D5B46959DF564D320AF52959C616504
+      - '090EDF15A4946F75094FCB04A53E6E4C'
       X-Msapi-Userstate:
-      - 0ba4
+      - '1548'
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=137,MSDatacenter=BNZE01
+      - InternalResponseTime=115,MSDatacenter=BNZE01
       X-Cache:
       - CONFIG_NOCACHE
       Accept-Ch:
       - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
       X-Msedge-Ref:
-      - 'Ref A: 1585A39BFB524832A3A92D89A00C8895 Ref B: BL2AA2030101039 Ref C: 2024-01-08T19:33:43Z'
+      - 'Ref A: 15771BE0D2194F2E8B3E38958FB7B307 Ref B: BN3EDGE0814 Ref C: 2024-01-25T23:25:47Z'
       Apim-Request-Id:
-      - e419ae5f-3f1d-45d3-8396-dc2ca3d12c15
+      - 2b4df70e-eab6-4f46-a41f-840c389baabd
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -67,10 +67,10 @@ http_interactions:
       Csp-Billing-Usage:
       - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Mon, 08 Jan 2024 19:33:43 GMT
+      - Thu, 25 Jan 2024 23:25:47 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "scientost
         (site:www100.whitehouse.gov\/)"}, "rankingResponse": {}}'
-  recorded_at: Mon, 08 Jan 2024 19:33:43 GMT
+  recorded_at: Thu, 25 Jan 2024 23:25:47 GMT
 recorded_with: VCR 6.2.0

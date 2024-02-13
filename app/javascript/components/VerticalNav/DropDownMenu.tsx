@@ -1,5 +1,15 @@
-import React, { useState, ReactNode, createRef, useEffect, RefObject, useId } from 'react';
+import React, { useState, ReactNode, createRef, useEffect, RefObject, useId, useContext } from 'react';
+import styled from 'styled-components';
 import { NavDropDownButton, Menu } from '@trussworks/react-uswds';
+import { StyleContext } from '../../contexts/StyleContext';
+
+const StyledDiv = styled('div').attrs<{ styles: { searchTabNavigationLinkColor: string; }; }>((props) => ({
+  styles: props.styles
+}))`
+  .usa-nav__submenu{
+    background-color: ${(props) => props.styles.searchTabNavigationLinkColor} !important;
+  }
+`;
 
 interface DropDownMenuProps {
   label: string,
@@ -7,7 +17,8 @@ interface DropDownMenuProps {
 }
 
 export const DropDownMenu = ({ label, items }: DropDownMenuProps) => {
-  const id = useId();
+  const id      = useId();
+  const styles  = useContext(StyleContext);
   const [openMore, setOpenMore] = useState(false);
   const btnRef: RefObject<HTMLDivElement> = createRef();
 
@@ -24,7 +35,7 @@ export const DropDownMenu = ({ label, items }: DropDownMenuProps) => {
   });
 
   return (
-    <div ref={btnRef}>
+    <StyledDiv ref={btnRef} styles={styles}>
       <NavDropDownButton
         menuId={id}
         onToggle={() => setOpenMore((prev) => !prev)}
@@ -32,6 +43,6 @@ export const DropDownMenu = ({ label, items }: DropDownMenuProps) => {
         label={label}
       />
       <Menu items={items} isOpen={openMore} id={id} />
-    </div>
+    </StyledDiv>
   );
 };
