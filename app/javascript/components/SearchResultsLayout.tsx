@@ -174,7 +174,7 @@ interface SearchResultsLayoutProps {
     resultTitleLinkVisitedColor: string;
     resultUrlColor: string;
     searchTabNavigationLinkColor: string;
-    secondaryHeaderBackgroundColor: string;
+    primaryNavigationBackgroundColor: string;
     sectionTitleColor: string;
   };
   footerLinks?: {

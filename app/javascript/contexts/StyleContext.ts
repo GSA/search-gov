@@ -24,7 +24,7 @@ export const styles = {
   resultTitleLinkVisitedColor: '#54278F',
   resultUrlColor: '#446443',
   searchTabNavigationLinkColor: '#005EA2',
-  secondaryHeaderBackgroundColor: '#FFFFFF',
+  primaryNavigationBackgroundColor: '#FFFFFF',
   sectionTitleColor: '#565C65'
 };
 
