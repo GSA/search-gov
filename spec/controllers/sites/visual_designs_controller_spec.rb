@@ -37,6 +37,7 @@ describe Sites::VisualDesignsController do
                 footer_links_text_color:                 '#C4EE5E',
                 header_background_color:                 '#B0771E',
                 header_links_font_family:                "'Georgia', 'Cambria', 'Times New Roman', 'Times', serif",
+                header_navigation_background_color:      '#C0FFEE',
                 header_primary_link_color:               '#BA771E',
                 header_secondary_link_color:             '#B0BB1E',
                 health_benefits_header_background_color: '#BE11EF',
@@ -52,7 +53,6 @@ describe Sites::VisualDesignsController do
                 result_title_link_visited_color:         '#AC1D1C',
                 result_url_color:                        '#FACADE',
                 search_tab_navigation_link_color:        '#0FF1CE',
-                secondary_header_background_color:       '#C0FFEE',
                 section_title_color:                     '#BADA55'
               }
             }
