@@ -43,6 +43,7 @@ export interface FontsAndColors {
   footerLinksTextColor: string;
   headerBackgroundColor: string;
   headerLinksFontFamily: string;
+  headerNavigationBackgroundColor: string;
   headerPrimaryLinkColor: string;
   headerSecondaryLinkColor: string;
   healthBenefitsHeaderBackgroundColor: string;
@@ -58,7 +59,6 @@ export interface FontsAndColors {
   resultTitleLinkVisitedColor: string;
   resultUrlColor: string;
   searchTabNavigationLinkColor: string;
-  secondaryHeaderBackgroundColor: string;
   sectionTitleColor: string;
 }
 

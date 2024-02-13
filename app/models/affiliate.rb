@@ -257,7 +257,7 @@ class Affiliate < ApplicationRecord
     banner_background_color: '#F0F0F0',
     banner_text_color: '#1B1B1B',
     header_background_color: '#FFFFFF',
-    secondary_header_background_color: '#FFFFFF',
+    header_navigation_background_color: '#FFFFFF',
     header_primary_link_color: '#565C65',
     header_secondary_link_color: '#71767A',
     page_background_color: '#FFFFFF',
