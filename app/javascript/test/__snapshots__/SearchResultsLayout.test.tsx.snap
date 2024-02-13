@@ -12,7 +12,8 @@ exports[`SearchResultsLayout renders basic header styles properly 1`] = `
     .bjAgsI .usa-nav__secondary-item&gt;a{color:#c8155d;}
     .bjAgsI button.usa-menu-btn{background-color:#cfcd03;}
     .bjAgsI button.usa-menu-btn:hover{background-color:#9d9b02;}
-    .hTCXlM .usa-banner__header{background-color:#643617;color:#dacb1b;}
+    .jbisHc .usa-banner__header,.jbisHc .usa-banner__button-text{background-color:#643617;color:#dacb1b;}
+    .jbisHc .usa-banner__button::after,.jbisHc .usa-banner__button[aria-expanded=true]:hover::after{background-color:#dacb1b;}
     .dFcNuA li.usa-nav__primary-item:not(li.usa-nav__submenu-item)&gt;a,.dFcNuA .usa-nav__primary&gt;.usa-nav__primary-item button[aria-expanded=false]{color:#aea9f7!important;}
     .dFcNuA .usa-current::after,.dFcNuA .usa-nav__primary&gt;.usa-nav__primary-item button[aria-expanded=true]{background-color:#aea9f7!important;}
     .dFcNuA .vertical-wrapper .usa-nav__submenu{background-color:#aea9f7!important;}
@@ -46,7 +47,8 @@ exports[`SearchResultsLayout renders extended header styles properly 1`] = `
     .kqnXCS .usa-nav__secondary-item&gt;a{color:#c8155d;}
     .kqnXCS button.usa-menu-btn{background-color:#cfcd03;}
     .kqnXCS button.usa-menu-btn:hover{background-color:#9d9b02;}
-    .hTCXlM .usa-banner__header{background-color:#643617;color:#dacb1b;}
+    .jbisHc .usa-banner__header,.jbisHc .usa-banner__button-text{background-color:#643617;color:#dacb1b;}
+    .jbisHc .usa-banner__button::after,.jbisHc .usa-banner__button[aria-expanded=true]:hover::after{background-color:#dacb1b;}
     .dFcNuA li.usa-nav__primary-item:not(li.usa-nav__submenu-item)&gt;a,.dFcNuA .usa-nav__primary&gt;.usa-nav__primary-item button[aria-expanded=false]{color:#aea9f7!important;}
     .dFcNuA .usa-current::after,.dFcNuA .usa-nav__primary&gt;.usa-nav__primary-item button[aria-expanded=true]{background-color:#aea9f7!important;}
     .dFcNuA .vertical-wrapper .usa-nav__submenu{background-color:#aea9f7!important;}
@@ -80,7 +82,8 @@ exports[`SearchResultsLayout renders search with results styles properly 1`] = `
     .kqnXCS .usa-nav__secondary-item&gt;a{color:#c8155d;}
     .kqnXCS button.usa-menu-btn{background-color:#cfcd03;}
     .kqnXCS button.usa-menu-btn:hover{background-color:#9d9b02;}
-    .hTCXlM .usa-banner__header{background-color:#643617;color:#dacb1b;}
+    .jbisHc .usa-banner__header,.jbisHc .usa-banner__button-text{background-color:#643617;color:#dacb1b;}
+    .jbisHc .usa-banner__button::after,.jbisHc .usa-banner__button[aria-expanded=true]:hover::after{background-color:#dacb1b;}
     .dFcNuA li.usa-nav__primary-item:not(li.usa-nav__submenu-item)&gt;a,.dFcNuA .usa-nav__primary&gt;.usa-nav__primary-item button[aria-expanded=false]{color:#aea9f7!important;}
     .dFcNuA .usa-current::after,.dFcNuA .usa-nav__primary&gt;.usa-nav__primary-item button[aria-expanded=true]{background-color:#aea9f7!important;}
     .dFcNuA .vertical-wrapper .usa-nav__submenu{background-color:#aea9f7!important;}
