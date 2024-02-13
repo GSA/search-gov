@@ -16,6 +16,7 @@ const fontsAndColors = {
   footerLinksTextColor: '#46f966',
   headerBackgroundColor: '#4a402b',
   headerLinksFontFamily: '"Georgia", "Cambria", "Times New Roman", "Times", serif',
+  headerNavigationBackgroundColor: '#83df0a',
   headerPrimaryLinkColor: '#594973',
   headerSecondaryLinkColor: '#c8155d',
   healthBenefitsHeaderBackgroundColor: '#abb178',
@@ -28,7 +29,6 @@ const fontsAndColors = {
   resultTitleLinkVisitedColor: '#4a97ad',
   resultUrlColor: '#475830',
   searchTabNavigationLinkColor: '#aea9f7',
-  headerNavigationBackgroundColor: '#83df0a',
   sectionTitleColor: '#8b4a35'
 };
 
