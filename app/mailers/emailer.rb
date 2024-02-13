@@ -2,6 +2,7 @@
 
 class Emailer < ApplicationMailer
   include ActionView::Helpers::TextHelper
+  include ActionView::Helpers::NumberHelper
   default_url_options[:host] = Rails.application.secrets.organization[:app_host]
   default_url_options[:protocol] = 'https'
 
