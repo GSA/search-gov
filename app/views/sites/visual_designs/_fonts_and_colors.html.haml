@@ -2,7 +2,6 @@
 %h3= t('.fonts_and_colors', scope: 'admin_center')
 
 = f.fields_for :visual_design_json do |visual_design|
-  = render 'font_selector', field: :header_links_font_family,        visual_design: visual_design
   = render 'font_selector', field: :primary_navigation_font_family,  visual_design: visual_design
 
   %fieldset
@@ -14,6 +13,7 @@
       = visual_design.radio_button :primary_navigation_font_weight, 'bold', checked: @site.visual_design_json['primary_navigation_font_weight'] == "bold"
       = t(:font_weight_bold, scope: :admin_center)
 
+  = render 'font_selector', field: :header_links_font_family,       visual_design: visual_design
   = render 'font_selector', field: :footer_and_results_font_family, visual_design: visual_design
   = render 'font_selector', field: :identifier_font_family,         visual_design: visual_design
 
