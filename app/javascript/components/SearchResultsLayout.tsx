@@ -19,6 +19,7 @@ export interface NavigationLink {
 }
 
 export interface PageData {
+  displayLogoOnly: boolean;
   title: string;
   logo: {
     url: string;
@@ -161,6 +162,7 @@ interface SearchResultsLayoutProps {
     footerLinksTextColor: string;
     headerBackgroundColor: string;
     headerLinksFontFamily: string;
+    headerNavigationBackgroundColor: string;
     headerPrimaryLinkColor: string;
     headerSecondaryLinkColor: string;
     healthBenefitsHeaderBackgroundColor: string;
@@ -173,7 +175,6 @@ interface SearchResultsLayoutProps {
     resultTitleLinkVisitedColor: string;
     resultUrlColor: string;
     searchTabNavigationLinkColor: string;
-    secondaryHeaderBackgroundColor: string;
     sectionTitleColor: string;
   };
   footerLinks?: {

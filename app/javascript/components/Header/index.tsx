@@ -26,9 +26,12 @@ interface HeaderProps {
 const StyledGovBanner = styled(GovBanner).attrs<{ styles: { bannerBackgroundColor: string; bannerTextColor: string; }; }>((props) => ({
   styles: props.styles
 }))`
-  .usa-banner__header {
+  .usa-banner__header, .usa-banner__button-text {
     background-color: ${(props) => props.styles.bannerBackgroundColor};
     color: ${(props) => props.styles.bannerTextColor};
+  }
+  .usa-banner__button::after, .usa-banner__button[aria-expanded=true]:hover::after {
+    background-color: ${(props) => props.styles.bannerTextColor};
   }
 `;
 

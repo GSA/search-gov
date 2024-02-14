@@ -1,14 +1,15 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { darken } from 'polished';
-import { Header as UswdsHeader, Logo, Title, NavMenuButton, ExtendedNav } from '@trussworks/react-uswds';
+import { Header as UswdsHeader, NavMenuButton, ExtendedNav } from '@trussworks/react-uswds';
 import { StyleContext } from '../../contexts/StyleContext';
 
 import { HeaderProps } from './../props';
+import { Logo } from './Logo';
 
 import './ExtendedHeader.css';
 
-const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: { buttonBackgroundColor: string; headerLinksFontFamily: string, headerBackgroundColor: string, headerPrimaryLinkColor: string, headerSecondaryLinkColor: string; secondaryHeaderBackgroundColor: string; }; }>((props) => ({
+const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: { buttonBackgroundColor: string; headerLinksFontFamily: string, headerBackgroundColor: string, headerPrimaryLinkColor: string, headerSecondaryLinkColor: string; headerNavigationBackgroundColor: string; }; }>((props) => ({
   styles: props.styles
 }))`
   background-color: ${(props) => props.styles.headerBackgroundColor};
@@ -16,7 +17,7 @@ const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: { buttonBackground
     font-family: ${(props) => props.styles.headerLinksFontFamily};
   }
   .usa-nav {
-    background-color: ${(props) => props.styles.secondaryHeaderBackgroundColor};
+    background-color: ${(props) => props.styles.headerNavigationBackgroundColor};
   }
   a.usa-nav__link {
     color: ${(props) => props.styles.headerPrimaryLinkColor};
@@ -62,21 +63,12 @@ export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHe
     );
   
   const showMobileMenu = (primaryHeaderLinks && primaryHeaderLinks.length > 0) || (secondaryHeaderLinks && secondaryHeaderLinks.length > 0);
-  
+
   return (
     <>
       <StyledUswdsHeader extended={true} styles={styles}>
         <div className="usa-navbar">
-          <Logo
-            className="width-full"
-            size="slim"
-            image={
-              page.logo?.url ? <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} /> : null
-            }
-            heading={
-              <Title>{page.title}</Title>
-            }
-          />
+          <Logo page={page} />
           {showMobileMenu && <NavMenuButton onClick={toggleMobileNav} label="Menu" />}
         </div>
         <ExtendedNav
