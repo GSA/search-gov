@@ -24,11 +24,6 @@ const StyledPrimaryNav = styled(PrimaryNav).attrs<{ styles: FontsAndColors }>((p
   .vertical-wrapper .usa-nav__submenu{
     background-color: ${(props) => props.styles.searchTabNavigationLinkColor} !important;
   }
-
-  .usa-nav__primary a {
-    font-family: ${(props) => props.styles.primaryNavigationFontFamily} !important;
-    font-weight: ${(props) => props.styles.primaryNavigationFontWeight} !important;
-  }
 `;
 
 const buildLink = ({ active, label, url }: NavigationLink, key = 0) => <a href={url} key={key} className={ active && 'usa-current' || '' }>{label}</a>;

@@ -4,27 +4,38 @@ import { darken } from 'polished';
 import { Header as UswdsHeader, NavMenuButton, ExtendedNav } from '@trussworks/react-uswds';
 import { StyleContext } from '../../contexts/StyleContext';
 
+import { FontsAndColors } from '../SearchResultsLayout';
 import { HeaderProps } from './../props';
 import { Logo } from './Logo';
 
 import './ExtendedHeader.css';
 
-const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: { buttonBackgroundColor: string; headerLinksFontFamily: string, headerBackgroundColor: string, headerPrimaryLinkColor: string, headerSecondaryLinkColor: string; headerNavigationBackgroundColor: string; }; }>((props) => ({
+const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: FontsAndColors; }>((props) => ({
   styles: props.styles
 }))`
   background-color: ${(props) => props.styles.headerBackgroundColor};
-  .usa-nav__primary, .usa-nav__secondary {
+
+  .usa-nav__primary {
+    font-family: ${(props) => props.styles.primaryNavigationFontFamily} !important;
+    font-weight: ${(props) => props.styles.primaryNavigationFontWeight} !important;
+  }
+
+  .usa-nav__secondary {
     font-family: ${(props) => props.styles.headerLinksFontFamily};
   }
+
   .usa-nav {
     background-color: ${(props) => props.styles.headerNavigationBackgroundColor};
   }
+
   a.usa-nav__link {
     color: ${(props) => props.styles.headerPrimaryLinkColor};
   }
+
   .usa-nav__secondary-item > a {
     color: ${(props) => props.styles.headerSecondaryLinkColor};
   }
+
   button.usa-menu-btn {
     background-color: ${(props) => props.styles.buttonBackgroundColor};
     &:hover {
@@ -48,19 +59,17 @@ export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHe
   const showMobileMenu = (primaryHeaderLinks && primaryHeaderLinks.length > 0) || (secondaryHeaderLinks && secondaryHeaderLinks.length > 0);
 
   return (
-    <>
-      <StyledUswdsHeader extended={true} styles={styles}>
-        <div className="usa-navbar">
-          <Logo page={page} />
-          {showMobileMenu && <NavMenuButton onClick={toggleMobileNav} label="Menu" />}
-        </div>
-        <ExtendedNav
-          primaryItems={primaryLinkItems}
-          secondaryItems={secondaryLinkItems}
-          mobileExpanded={mobileNavOpen}
-          onToggleMobileNav={toggleMobileNav}
-        />
-      </StyledUswdsHeader>
-    </>
+    <StyledUswdsHeader extended={true} styles={styles}>
+      <div className="usa-navbar">
+        <Logo page={page} />
+        {showMobileMenu && <NavMenuButton onClick={toggleMobileNav} label="Menu" />}
+      </div>
+      <ExtendedNav
+        primaryItems={primaryLinkItems}
+        secondaryItems={secondaryLinkItems}
+        mobileExpanded={mobileNavOpen}
+        onToggleMobileNav={toggleMobileNav}
+      />
+    </StyledUswdsHeader>
   );
 };
