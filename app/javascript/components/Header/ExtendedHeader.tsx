@@ -33,34 +33,17 @@ const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: { buttonBackground
   }
 `;
 
+const buildLink = (links: { title: string; url: string; }[], className?: string) => links.map((link, index) => (
+  <a href={link.url} key={index} className={className} >
+    <span>{link.title}</span>
+  </a>
+));
+
 export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeaderLinks, secondaryHeaderLinks }: HeaderProps) => {
   const styles = useContext(StyleContext);
 
-  const secondaryLinkItems =
-    secondaryHeaderLinks && secondaryHeaderLinks.length > 0 ? (secondaryHeaderLinks.map((link, index) => {
-      return (
-        <a href={link.url} key={index}>
-          <span>{link.title}</span>
-        </a>
-      );
-    })) : (
-      [
-        <></>
-      ]
-    );
-
-  const primaryLinkItems =
-    primaryHeaderLinks && primaryHeaderLinks.length > 0 ? (primaryHeaderLinks.map((link, index) => {
-      return (
-        <a className="usa-nav__link" href={link.url} key={index}>
-          <span>{link.title}</span>
-        </a>
-      );
-    })) : (
-      [
-        <></>
-      ]
-    );
+  const secondaryLinkItems = secondaryHeaderLinks ? buildLink(secondaryHeaderLinks) : []
+  const primaryLinkItems = primaryHeaderLinks ? buildLink(primaryHeaderLinks, 'usa-nav__link') : []
   
   const showMobileMenu = (primaryHeaderLinks && primaryHeaderLinks.length > 0) || (secondaryHeaderLinks && secondaryHeaderLinks.length > 0);
 
