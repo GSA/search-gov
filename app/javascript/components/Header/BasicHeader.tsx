@@ -69,21 +69,18 @@ export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeade
             onToggleMobileNav={toggleMobileNav}
             mobileExpanded={mobileNavOpen}
           >
-            <ul  className="usa-nav__secondary-links">
-              { secondaryHeaderLinks && secondaryHeaderLinks.length > 0 ? (secondaryHeaderLinks.map((link, index) => {
-                return (
-                  <li className="usa-nav__secondary-item" key={index}>
-                    <a href={link.url} key={index}>
-                      {link.title}
-                    </a>
-                  </li>
-                );
-              })) : (
-                [
-                  <></>
-                ]
-              ) }
-            </ul>
+            { secondaryHeaderLinks &&
+              <ul  className="usa-nav__secondary-links">
+                { secondaryHeaderLinks.map((link, index) => (
+                    <li className="usa-nav__secondary-item" key={index}>
+                      <a href={link.url} key={index}>
+                        {link.title}
+                      </a>
+                    </li>
+                  ))
+                }
+              </ul>
+            }
           </PrimaryNav>
         </div>
       </StyledUswdsHeader>
