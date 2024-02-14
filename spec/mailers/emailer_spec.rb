@@ -257,7 +257,7 @@ describe Emailer do
     before do
       allow(UserMonthlyReport).to receive(:new).and_return user_monthly_report
       as1 = { affiliate: affiliates(:basic_affiliate), total_unfiltered_queries: 102, total_queries: 100, last_month_percent_change: 33.33, last_year_percent_change: -33.33, total_clicks: 100, popular_queries: [['query5', 54, 53], ['query6', 55, 43], ['query4', 53, 42]], popular_clicks: [['click5', 44, 43], ['click6', 45, 33], ['click4', 43, 32]] }
-      as2 = { affiliate: affiliates(:power_affiliate), total_unfiltered_queries: 50, total_queries: 40, last_month_percent_change: 12, last_year_percent_change: -9, total_clicks: 35, popular_queries: [['query1', 100, 80], ['query2', 101, 75], ['query3', 102, 0]], popular_clicks: [['click1', 90, 70], ['click2', 91, 65], ['click3', 92, 2]] }
+      as2 = { affiliate: affiliates(:power_affiliate), total_unfiltered_queries: 50, total_queries: 40, last_month_percent_change: 12, last_year_percent_change: -9, total_clicks: 35, popular_queries: [['query1', 100_000, 80_000], ['query2', 101, 75], ['query3', 102, 0]], popular_clicks: [['click1', 90, 70], ['click2', 91, 65], ['click3', 92, 2]] }
       as3 = { affiliate: affiliates(:spanish_affiliate), total_unfiltered_queries: 0, total_queries: 0, last_month_percent_change: 0, last_year_percent_change: 0, total_clicks: 0, popular_queries: RtuQueryRawHumanArray::INSUFFICIENT_DATA, popular_clicks: RtuClickRawHumanArray::INSUFFICIENT_DATA }
       total = { total_unfiltered_queries: 152, total_queries: 140, last_month_percent_change: 24, last_year_percent_change: -29, total_clicks: 135 }
       allow(user_monthly_report).to receive(:report_date).and_return report_date
@@ -277,7 +277,7 @@ describe Emailer do
       expect(body).to include('152 140 24.00% -29.00% 135')
       expect(body).to include('Top 10 Searches for April 2012')
       expect(body).to include('NPEspanol Site Not enough historic data to compute most popular')
-      expect(body).to include('query1 100 80')
+      expect(body).to include('query1 100,000 80,000')
       expect(body).to include('query2 101 75')
       expect(body).to include('query3 102 0')
       expect(body).to include('query5 54 53')
@@ -295,7 +295,7 @@ describe Emailer do
     before do
       affiliate = affiliates(:basic_affiliate)
       report_date = Date.civil(report_year, 1, 1)
-      nps_top_queries = [['query5', 54, 53], ['query6', 55, 43], ['query4', 53, 42]]
+      nps_top_queries = [['query5', 54_000, 53_321], ['query6', 55, 43], ['query4', 53, 42]]
       insufficient = RtuQueryRawHumanArray::INSUFFICIENT_DATA
       allow(RtuQueryRawHumanArray).to receive(:new).and_return double(RtuQueryRawHumanArray, top_queries: insufficient)
       allow(RtuQueryRawHumanArray).to receive(:new).with('nps.gov', Date.parse('2012-01-01'), Date.parse('2012-12-31'), 100).and_return double(RtuQueryRawHumanArray, top_queries: nps_top_queries)
@@ -308,7 +308,7 @@ describe Emailer do
       body = Sanitizer.sanitize(email.default_part_body)
       expect(body).to include('Most Popular Queries for 2012')
       expect(body).to include('NPEspanol Site Not enough historic data to compute most popular')
-      expect(body).to include('query5 54 53')
+      expect(body).to include('query5 54,000 53,321')
       expect(body).to include('query6 55 43')
       expect(body).to include('query4 53 42')
     end
