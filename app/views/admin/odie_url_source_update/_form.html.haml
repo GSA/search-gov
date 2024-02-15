@@ -1,0 +1,38 @@
+%p
+  =t('.instructions', scope: 'super_admin')
+%div.actions
+  =link_to(t('.search_again', scope: 'super_admin'), admin_odie_url_source_update_index_path, class: 'show_search')
+
+= form_with url: update_job_admin_odie_url_source_update_index_path, method: :post, action: :update_job do |form|
+  %p
+    %div.as_content
+      %table
+        %thead
+          %tr
+            %th
+              %p= t('.affiliate_id', scope: 'super_admin')
+            %th
+              %p= t('.handle', scope: 'super_admin')
+            %th
+              %p= t('.display_name', scope: 'super_admin')
+            %th
+              %p= t('.total_indexed_documents', scope: 'super_admin')
+            %th
+              %p= t('.rss_sourced_indexed_documents', scope: 'super_admin')
+            %th
+              %p= t('.actions', scope: 'super_admin')
+        %tbody.records
+          %tr.record
+            %td
+              = affiliate.id
+            %td
+              = affiliate.name
+            %td
+              = affiliate.display_name
+            %td
+              = affiliate.indexed_documents&.count
+            %td
+              = affiliate.indexed_documents.where(source: 'rss')&.count
+            %td
+              = form.hidden_field :affiliate_id, { value: affiliate.id }
+              = form.submit update_label(affiliate), disabled: disable_update_button?(affiliate), id: 'run_update_job'
