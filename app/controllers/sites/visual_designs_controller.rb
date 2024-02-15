@@ -38,7 +38,6 @@ class Sites::VisualDesignsController < Sites::SetupSiteController
       visual_design_json: [
         :footer_and_results_font_family,
         :header_links_font_family,
-        :header_text_color,
         :identifier_font_family,
         :primary_navigation_font_family,
         :primary_navigation_font_weight,
