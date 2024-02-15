@@ -40,6 +40,7 @@ describe Sites::VisualDesignsController do
                 header_navigation_background_color:      '#C0FFEE',
                 header_primary_link_color:               '#BA771E',
                 header_secondary_link_color:             '#B0BB1E',
+                header_text_color:                       '#CAB1E7',
                 health_benefits_header_background_color: '#BE11EF',
                 identifier_background_color:             '#AD1DA5',
                 identifier_font_family:                  "'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif",

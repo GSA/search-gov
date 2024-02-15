@@ -19,6 +19,7 @@ const fontsAndColors = {
   headerNavigationBackgroundColor: '#83df0a',
   headerPrimaryLinkColor: '#594973',
   headerSecondaryLinkColor: '#c8155d',
+  headerTextColor: '#C000FE',
   healthBenefitsHeaderBackgroundColor: '#abb178',
   identifierBackgroundColor: '#be1c21',
   identifierFontFamily: '"Public Sans Web"',

@@ -46,6 +46,7 @@ export interface FontsAndColors {
   headerNavigationBackgroundColor: string;
   headerPrimaryLinkColor: string;
   headerSecondaryLinkColor: string;
+  headerTextColor: string;
   healthBenefitsHeaderBackgroundColor: string;
   identifierBackgroundColor: string;
   identifierFontFamily: string;

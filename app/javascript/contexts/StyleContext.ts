@@ -15,6 +15,7 @@ export const styles = {
   headerLinksFontFamily: '"Public Sans Web", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
   headerPrimaryLinkColor: '#565C65',
   headerSecondaryLinkColor: '#71767A',
+  headerTextColor: '#1B1B1B',
   healthBenefitsHeaderBackgroundColor: '#EFF6FB',
   identifierBackgroundColor: '#1B1B1B',
   identifierFontFamily: '"Public Sans Web", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
