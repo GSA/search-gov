@@ -15,7 +15,7 @@ const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: FontsAndColors; }>
 }))`
   background-color: ${(props) => props.styles.headerBackgroundColor};
 
-  .usa-nav__primary {
+  .usa-nav__primary a {
     font-family: ${(props) => props.styles.primaryNavigationFontFamily} !important;
     font-weight: ${(props) => props.styles.primaryNavigationFontWeight} !important;
   }
