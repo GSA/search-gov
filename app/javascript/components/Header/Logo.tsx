@@ -2,8 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Logo as UswdsLogo, Title } from '@trussworks/react-uswds';
 
-import { PageData } from '../SearchResultsLayout';
-import { FontsAndColors } from '../SearchResultsLayout';
+import { FontsAndColors, PageData } from '../SearchResultsLayout';
 import { StyleContext } from '../../contexts/StyleContext';
 
 interface LogoProps {
@@ -23,5 +22,5 @@ export const Logo = ({ page }: LogoProps) => {
     image={page.logo?.url ? <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} /> : null}
     size="slim"
     styles={styles}
-  />
+  />;
 };
