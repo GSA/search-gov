@@ -22,6 +22,7 @@ data:
     ## More files:
     - config/locales/**/*.%{locale}.yml
     - config/locales/admin_center/%{locale}.yml
+    - config/locales/super_admin/%{locale}.yml
 
   # Locale files to write new keys to, based on a list of key pattern => file rules. Matched from top to bottom:
   # `i18n-tasks normalize -p` will force move the keys according to these rules
@@ -30,8 +31,9 @@ data:
     # - ['{devise, simple_form}.*', 'config/locales/\1.%{locale}.yml']
     ## Catch-all default:
     # - config/locales/%{locale}.yml
-    ## Write admin_center keys to their respective file(s):
+    ## Write admin_center and super_admin keys to their respective file(s):
     - ['{admin_center}.*', 'config/locales/admin_center/%{locale}.yml']
+    - ['{super_admin}.*', 'config/locales/super_admin/%{locale}.yml']
 
   # External locale data (e.g. gems).
   # This data is not considered unused and is never written to.
