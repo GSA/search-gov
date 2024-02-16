@@ -1,0 +1,22 @@
+---
+en:
+  super_admin:
+    admin:
+      odie_url_source_update:
+        form:
+          actions: Actions
+          affiliate_id: Affiliate ID
+          handle: Handle
+          display_name: Display Name
+          instructions: Update ODIE url source to manual for the following affiliate?
+          no_documents: No indexed documents to update
+          rss_sourced_indexed_documents: RSS Sourced Indexed Documents
+          search_again: Search for a different affiliate
+          total_indexed_documents: Total Indexed Documents
+          update_affiliate: Update Affiliate %{affiliate_name}
+        index:
+          enter_affiliate_handle: Enter affiliate handle
+          job_enqueued: ODIE URL Source Update job enqueued for affiliate %{affiliate_name}.
+          no_affiliate: No affiliate matches the handle %{affiliate_name}.
+          search: Search
+          title: ODIE URL Source Update

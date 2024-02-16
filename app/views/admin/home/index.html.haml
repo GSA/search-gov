@@ -10,6 +10,13 @@
   %li=link_to("Excluded Domains", admin_excluded_domains_path)
   %li=link_to("Search.gov Domains", admin_searchgov_domains_path)
 
+%h2 URL Management
+%ul
+  %li=link_to("Superfresh Urls", admin_superfresh_urls_path)
+  %li=link_to("Superfresh Bulk Upload", admin_superfresh_urls_bulk_upload_index_path)
+  %li=link_to("Bulk Search.gov URL Upload", admin_bulk_url_upload_index_path)
+  %li=link_to("ODIE URL Source Update", admin_odie_url_source_update_index_path)
+
 %h2 Type Ahead & Query Routing
 %ul
   %li=link_to("Filters", admin_sayt_filters_path)
@@ -51,9 +58,3 @@
   %li=link_to("Site RSS Feed Quotas", admin_site_feed_urls_path)
   %li=link_to("I14y Drawers", admin_i14y_drawers_path)
   %li=link_to("Analytics Alerts", admin_watchers_path)
-
-%h2 URL Management
-%ul
-  %li=link_to("Superfresh Urls", admin_superfresh_urls_path)
-  %li=link_to("Superfresh Bulk Upload", admin_superfresh_urls_bulk_upload_index_path)
-  %li=link_to("Bulk Search.gov URL Upload", admin_bulk_url_upload_index_path)

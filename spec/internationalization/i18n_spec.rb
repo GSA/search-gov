@@ -9,7 +9,7 @@ require 'i18n/tasks'
 RSpec.describe I18n do
   let(:i18n) { I18n::Tasks::BaseTask.new }
   let(:missing_keys) { i18n.missing_keys }
-  let(:missing_admin_keys) { i18n.missing_keys(**{ locales: %w[en], types: %w[used] }) }
+  let(:missing_admin_keys) { i18n.missing_keys(locales: %w[en], types: %w[used]) }
   let(:unused_keys) { i18n.unused_keys }
   let(:inconsistent_interpolations) { i18n.inconsistent_interpolations }
 

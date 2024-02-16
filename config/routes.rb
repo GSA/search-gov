@@ -181,6 +181,12 @@ Rails.application.routes.draw do
         post :upload
       end
     end
+    resources :odie_url_source_update, only: [:index] do
+      collection do
+        get :affiliate_lookup
+        post :update_job
+      end
+    end
     resources :agencies, concerns: :active_scaffold
     resources :agency_organization_codes, concerns: :active_scaffold
     resources :federal_register_agencies, concerns: :active_scaffold do
