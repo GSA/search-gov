@@ -182,7 +182,7 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
           <SiteLimitAlert {...sitelimit} query={query} />
         )}
 
-        {total && <ResultsCount total={total}/>}
+        {total && total > 0 ? <ResultsCount total={total}/>  : <></>}
 
         {spellingSuggestion && (
           <SpellingSuggestion {...spellingSuggestion}/>

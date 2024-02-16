@@ -5,6 +5,7 @@ import { LanguageContext } from '../../contexts/LanguageContext';
 import { StyleContext } from '../../contexts/StyleContext';
 
 import { IdentifierLogoWrapper } from './IdentifierLogoWrapper';
+import './Identifier.css';
 
 interface IdentifierProps {
   identifierContent?: {
