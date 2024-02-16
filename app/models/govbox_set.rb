@@ -106,7 +106,7 @@ class GovboxSet
     @news_items&.results&.first(3)&.map do |news_item|
       {
         title: translate_highlights(news_item.title),
-        description: news_item.description,
+        description: truncate_description(news_item.description),
         link: news_item.link,
         publishedAt: news_item.published_at.to_date
       }
@@ -119,7 +119,7 @@ class GovboxSet
     @news_items&.results&.first(3)&.map do |news_item|
       {
         title: translate_highlights(news_item.title),
-        description: news_item.description,
+        description: truncate_description(news_item.description),
         link: news_item.link,
         publishedAt: news_item.published_at.to_date
       }
