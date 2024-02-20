@@ -2,8 +2,9 @@ import React, { useState, ReactNode, createRef, useEffect, RefObject, useId, use
 import styled from 'styled-components';
 import { NavDropDownButton, Menu } from '@trussworks/react-uswds';
 import { StyleContext } from '../../contexts/StyleContext';
+import { FontsAndColors } from '../SearchResultsLayout';
 
-const StyledDiv = styled('div').attrs<{ styles: { searchTabNavigationLinkColor: string; }; }>((props) => ({
+const StyledDiv = styled('div').attrs<{ styles: FontsAndColors; }>((props) => ({
   styles: props.styles
 }))`
   .usa-nav__submenu{
