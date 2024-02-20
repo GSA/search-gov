@@ -177,7 +177,7 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
   
   return (
     <>
-      <div className='search-result-wrapper'>
+      <div id="main-content" className='search-result-wrapper'>
         {sitelimit && (
           <SiteLimitAlert {...sitelimit} query={query} />
         )}

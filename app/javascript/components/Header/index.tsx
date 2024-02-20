@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { GovBanner } from '@trussworks/react-uswds';
 import { StyleContext } from '../../contexts/StyleContext';
@@ -37,13 +37,10 @@ const StyledGovBanner = styled(GovBanner).attrs<{ styles: { bannerBackgroundColo
 
 export const Header = ({ page, isBasic, primaryHeaderLinks, secondaryHeaderLinks }: HeaderProps) => {
   const styles = useContext(StyleContext);
-
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
-
   const toggleMobileNav = (): void => {
     setMobileNavOpen((prevOpen) => !prevOpen);
   };
-
   const headerProps = {
     page,
     toggleMobileNav,
@@ -51,6 +48,14 @@ export const Header = ({ page, isBasic, primaryHeaderLinks, secondaryHeaderLinks
     primaryHeaderLinks,
     secondaryHeaderLinks
   };
+
+  // useEffect(() => {
+  //   const closeDropDown = () => {
+  //     document.getElementById('main-content')?.scrollIntoView();
+  //   };
+  //   document.getElementById('usa-skipnav')?.addEventListener('click', closeDropDown);
+  //   return () => document.getElementById('usa-skipnav')?.removeEventListener('click', closeDropDown);
+  // });
  
   return (
     <>
