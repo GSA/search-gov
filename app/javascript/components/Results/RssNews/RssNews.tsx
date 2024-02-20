@@ -4,6 +4,8 @@ import Moment from 'react-moment';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
 import parse from 'html-react-parser';
 import { StyleContext } from '../../../contexts/StyleContext';
+import { FontsAndColors } from '../../SearchResultsLayout';
+
 interface RssNewsProps {
   newsLabel: string;
   news?: {
@@ -14,7 +16,7 @@ interface RssNewsProps {
   }[];
 }
 
-const StyledWrapper = styled.div.attrs<{ styles: { sectionTitleColor: string }; }>((props) => ({
+const StyledWrapper = styled.div.attrs<{ styles: FontsAndColors; }>((props) => ({
   styles: props.styles
 }))`
   .news-title-wrapper-label {

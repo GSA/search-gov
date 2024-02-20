@@ -8,6 +8,22 @@ inherit_mode:
     - Exclude
     - AllowedMethods
 
+Layout/AlignHash:
+  EnforcedHashRocketStyle:
+    - key
+    - table
+  EnforcedColonStyle:
+    - key
+    - table
+
+Layout/HashAlignment:
+  EnforcedHashRocketStyle:
+    - key
+    - table
+  EnforcedColonStyle:
+    - key
+    - table
+
 Layout/FirstHashElementIndentation:
   Exclude:
     # These files use Kibana's JSON style for easier side-to-side comparison, copy/pasting, etc.

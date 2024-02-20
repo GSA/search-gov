@@ -105,6 +105,10 @@ class Affiliate < ApplicationRecord
   has_attached_file :header_tagline_logo,
                     AWS_IMAGE_SETTINGS.merge(path: "#{Rails.env}/site/:id/header_tagline_logo/:updated_at/:style/:filename")
 
+  after_initialize do
+    self.visual_design_json = DEFAULT_VISUAL_DESIGN.merge(visual_design_json || {}) if has_attribute?(:visual_design_json)
+  end
+
   before_validation :set_default_fields, on: :create
   before_validation :downcase_name
   before_validation :set_managed_header_links, :set_managed_footer_links
@@ -166,7 +170,6 @@ class Affiliate < ApplicationRecord
 
   validates :secondary_header_links, length: { maximum: 3 }
 
-  before_validation :set_visual_design_json
   after_validation :update_error_keys
   before_save :set_css_properties, :generate_look_and_feel_css, :set_json_fields, :set_search_labels
   before_update :clear_existing_attachments
@@ -232,9 +235,12 @@ class Affiliate < ApplicationRecord
 
   # SRCH-4142 settings used for 2023 SERP redesign
   FONT_FIELDS = %w[
-    header_links_font_family
     footer_and_results_font_family
+    header_links_font_family
+    identifier_font_family
+    primary_navigation_font_family
   ].freeze
+
   DEFAULT_FONT = "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
   USWDS_FONTS = [
     "'Georgia', 'Cambria', 'Times New Roman', 'Times', serif",
@@ -246,10 +252,12 @@ class Affiliate < ApplicationRecord
     "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
     "'Tahoma', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
   ].freeze
+
   DEFAULT_COLORS = {
     banner_background_color: '#F0F0F0',
     banner_text_color: '#1B1B1B',
     header_background_color: '#FFFFFF',
+    header_text_color: '#1B1B1B',
     header_navigation_background_color: '#FFFFFF',
     header_primary_link_color: '#565C65',
     header_secondary_link_color: '#71767A',
@@ -269,11 +277,15 @@ class Affiliate < ApplicationRecord
     identifier_background_color: '#1B1B1B',
     identifier_heading_color: '#FFFFFF',
     identifier_link_color: '#A9AEB1'
-  }.freeze
+  }.transform_keys(&:to_s).freeze
+
   DEFAULT_VISUAL_DESIGN = {
+    footer_and_results_font_family: DEFAULT_FONT,
     header_links_font_family: DEFAULT_FONT,
-    footer_and_results_font_family: DEFAULT_FONT
-  }.merge(DEFAULT_COLORS)
+    identifier_font_family: "'Source Sans Pro','Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif",
+    primary_navigation_font_family: DEFAULT_FONT,
+    primary_navigation_font_weight: 'bold'
+  }.merge(DEFAULT_COLORS).transform_keys(&:to_s).freeze
 
   CUSTOM_INDEXING_LANGUAGES = %w[en es].freeze
 
@@ -526,7 +538,6 @@ class Affiliate < ApplicationRecord
 
   def validate_visual_design_colors(visual_design_json)
     DEFAULT_COLORS.each_key do |color|
-      color = color.to_s
       next if visual_design_json[color]&.match?(/^#([0-9A-F]{3}|[0-9A-F]{6})$/i)
 
       errors.add(:base, "#{color.humanize} value is not a valid hex code")
@@ -619,14 +630,6 @@ class Affiliate < ApplicationRecord
 
   def set_css_properties
     self.css_properties = @css_property_hash.to_json if @css_property_hash.present?
-  end
-
-  def set_visual_design_json
-    self.visual_design_json = if visual_design_json.blank?
-                                DEFAULT_VISUAL_DESIGN
-                              else
-                                visual_design_json.reverse_merge(DEFAULT_VISUAL_DESIGN)
-                              end
   end
 
   def language_valid
