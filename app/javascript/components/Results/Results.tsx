@@ -20,6 +20,7 @@ import { Jobs } from './Jobs/Jobs';
 import { SiteLimitAlert } from './SiteLimitAlert/SiteLimitAlert';
 import { RelatedSearches } from './RelatedSearches/RelatedSearches';
 import { SpellingSuggestion } from './SpellingSuggestion/SpellingSuggestion';
+import { FontsAndColors } from '../SearchResultsLayout';
 
 import './Results.css';
 
@@ -141,7 +142,7 @@ interface ResultsProps {
   agencyName?: string
 }
 
-const StyledWrapper = styled.div.attrs<{ styles: { footerAndResultsFontFamily: string; resultDescriptionColor: string; resultTitleColor: string; resultTitleLinkVisitedColor: string; resultUrlColor: string; }; }>((props) => ({
+const StyledWrapper = styled.div.attrs<{ styles: FontsAndColors; }>((props) => ({
   styles: props.styles
 }))`
   font-family: ${(props) => props.styles.footerAndResultsFontFamily};
