@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import { GovBanner } from '@trussworks/react-uswds';
 import { StyleContext } from '../../contexts/StyleContext';
@@ -26,21 +26,21 @@ interface HeaderProps {
 const StyledGovBanner = styled(GovBanner).attrs<{ styles: { bannerBackgroundColor: string; bannerTextColor: string; }; }>((props) => ({
   styles: props.styles
 }))`
-  .usa-banner__header, .usa-banner__button-text {
+  .usa-banner__header {
     background-color: ${(props) => props.styles.bannerBackgroundColor};
     color: ${(props) => props.styles.bannerTextColor};
-  }
-  .usa-banner__button::after, .usa-banner__button[aria-expanded=true]:hover::after {
-    background-color: ${(props) => props.styles.bannerTextColor};
   }
 `;
 
 export const Header = ({ page, isBasic, primaryHeaderLinks, secondaryHeaderLinks }: HeaderProps) => {
   const styles = useContext(StyleContext);
+
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+
   const toggleMobileNav = (): void => {
     setMobileNavOpen((prevOpen) => !prevOpen);
   };
+
   const headerProps = {
     page,
     toggleMobileNav,
@@ -48,14 +48,6 @@ export const Header = ({ page, isBasic, primaryHeaderLinks, secondaryHeaderLinks
     primaryHeaderLinks,
     secondaryHeaderLinks
   };
-
-  // useEffect(() => {
-  //   const closeDropDown = () => {
-  //     document.getElementById('main-content')?.scrollIntoView();
-  //   };
-  //   document.getElementById('usa-skipnav')?.addEventListener('click', closeDropDown);
-  //   return () => document.getElementById('usa-skipnav')?.removeEventListener('click', closeDropDown);
-  // });
  
   return (
     <>
