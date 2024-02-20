@@ -6,6 +6,7 @@ import { StyleContext } from '../../contexts/StyleContext';
 import { FontsAndColors } from '../SearchResultsLayout';
 
 import { IdentifierLogoWrapper } from './IdentifierLogoWrapper';
+import './Identifier.css';
 
 interface IdentifierProps {
   identifierContent?: {
