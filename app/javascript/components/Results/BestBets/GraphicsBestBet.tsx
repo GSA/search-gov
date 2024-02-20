@@ -49,8 +49,14 @@ export const GraphicsBestBet = ({ title, titleUrl, imageUrl, imageAltText, links
         <Grid col={true} className='result-meta-data'>
           <div className='graphics-best-bets-title result-title'>
             {titleUrl ? (
-              <a href={titleUrl} className='result-title-link'><h2 className='result-title-label'>{parse(title)}</h2></a>) : <h2 className='result-title-label'>{parse(title)}</h2>}
+              <h2 className='result-title-label'><a href={titleUrl} className='result-title-link'>{parse(title)}</a></h2>) : <h2 className='result-title-label'>{parse(title)}</h2>}
           </div>
+          {/* 
+          <div className='graphics-best-bets-title result-title'>
+            {titleUrl ? (
+              <a href={titleUrl} className='result-title-link'><h2 className='result-title-label'>{parse(title)}</h2></a>) : <h2 className='result-title-label'>{parse(title)}</h2>}
+          </div> 
+          */}
           {links && links.length > 0 && (
             <Grid row gap="md">
               {sortedLinks(links).map((link, index) => {

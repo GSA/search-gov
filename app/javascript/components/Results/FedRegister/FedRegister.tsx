@@ -114,11 +114,20 @@ export const FedRegister = ({ fedRegisterDocs=[], query='' }: FedRegisterDocsPro
                       <span className='published-date'>{fedRegisterDoc.publicationDate}</span>
                       
                       <div className='result-title'>
+
+                        <h2 className='result-title-label'>
+                          <a href={fedRegisterDoc.htmlUrl} className='result-title-link'>
+                            {parse(fedRegisterDoc.title)}
+                          </a>
+                        </h2>
+                        
+                        {/* 
                         <a href={fedRegisterDoc.htmlUrl} className='result-title-link'>
                           <h2 className='result-title-label'>
                             {parse(fedRegisterDoc.title)} 
                           </h2>
-                        </a>
+                        </a> 
+                        */}
                       </div>
                       <div className='result-desc'>
                         <p>{getFedRegDocInfo(fedRegisterDoc)}</p>
@@ -136,11 +145,17 @@ export const FedRegister = ({ fedRegisterDocs=[], query='' }: FedRegisterDocsPro
               <Grid row gap="md">
                 <Grid col={true} className='result-meta-data'>
                   <div className='result-title'>
-                    <a href={getAgencyFedUrl(query)} className='result-title-link more-title-link'>
+                    
+                    <h2 className='result-title-label'>
+                      <a href={getAgencyFedUrl(query)} className='result-title-link more-title-link'>
+                        More agency documents on FederalRegister.gov
+                      </a>
+                    </h2>
+                    {/* <a href={getAgencyFedUrl(query)} className='result-title-link more-title-link'>
                       <h2 className='result-title-label'>
                         More agency documents on FederalRegister.gov
                       </h2>
-                    </a>
+                    </a> */}
                   </div>
                 </Grid>
               </Grid>

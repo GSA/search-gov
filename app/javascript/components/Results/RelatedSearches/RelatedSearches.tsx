@@ -33,11 +33,18 @@ export const RelatedSearches = ({ relatedSearches=[] }: RelatedSearchesProps) =>
                 <Grid row gap="md">
                   <Grid col={true} className='result-meta-data'>
                     <div className='result-title'>
-                      <a href={relatedSearch.link} className='result-title-link'>
+                      
+                      <h2 className='result-title-label'>
+                        <a href={relatedSearch.link} className='result-title-link'>
+                          {parse(relatedSearch.label)}
+                        </a>
+                      </h2>
+
+                      {/* <a href={relatedSearch.link} className='result-title-link'>
                         <h2 className='result-title-label'>
                           {parse(relatedSearch.label)}
                         </h2>
-                      </a>
+                      </a> */}
                     </div>
                   </Grid>
                 </Grid>

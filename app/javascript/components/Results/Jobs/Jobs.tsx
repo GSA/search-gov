@@ -105,11 +105,18 @@ export const Jobs = ({ jobs=[], agencyName }: JobsProps) => {
                   <Grid row gap="md">
                     <Grid col={true} className='result-meta-data'>
                       <div className='result-title'>
+                        
+                        <h2 className='result-title-label'>
+                          <a href={job.positionUri} className='result-title-link'>{job.positionTitle}</a>
+                        </h2>
+                        
+                        {/* 
                         <a href={job.positionUri} className='result-title-link'>
                           <h2 className='result-title-label'>
                             {job.positionTitle}
                           </h2>
-                        </a>
+                        </a> 
+                        */}
                       </div>
                       <div className='result-desc'>
                         <p>{job.organizationName}</p>
@@ -134,11 +141,19 @@ export const Jobs = ({ jobs=[], agencyName }: JobsProps) => {
                       <Grid row gap="md">
                         <Grid col={true} className='result-meta-data'>
                           <div className='result-title'>
+                            
+                            <h2 className='result-title-label'>
+                              <a href={job.positionUri} className='result-title-link'>
+                                {job.positionTitle}
+                              </a>
+                            </h2>
+                            {/* 
                             <a href={job.positionUri} className='result-title-link'>
                               <h2 className='result-title-label'>
                                 {job.positionTitle}
                               </h2>
-                            </a>
+                            </a> 
+                            */}
                           </div>
                           <div className='result-desc'>
                             <p>{job.organizationName}</p>
@@ -175,11 +190,15 @@ export const Jobs = ({ jobs=[], agencyName }: JobsProps) => {
             <Grid row gap="md">
               <Grid col={true} className='result-meta-data'>
                 <div className='result-title'>
-                  <a href="https://www.usajobs.gov/Search/Results?hp=public" className='result-title-link more-title-link'>
+                  <h2 className='result-title-label'>
+                    <a href="https://www.usajobs.gov/Search/Results?hp=public" className='result-title-link more-title-link'>{i18n.t('searches.moreFederalJobOpenings')}</a>
+                  </h2>
+
+                  {/* <a href="https://www.usajobs.gov/Search/Results?hp=public" className='result-title-link more-title-link'>
                     <h2 className='result-title-label'>
                       {i18n.t('searches.moreFederalJobOpenings')}
                     </h2>
-                  </a>
+                  </a> */}
                 </div>
               </Grid>
             </Grid>

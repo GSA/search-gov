@@ -145,17 +145,17 @@ const StyledWrapper = styled.div.attrs<{ styles: { footerAndResultsFontFamily: s
   styles: props.styles
 }))`
   font-family: ${(props) => props.styles.footerAndResultsFontFamily};
-  .result-title-link > .result-title-label{
-    color: ${(props) => props.styles.resultTitleColor} !important;
+  .result-title-label > .result-title-link {
+    color: ${(props) => props.styles.resultTitleColor};
   }
-  .result-title-link:visited > .result-title-label{
-    color: ${(props) => props.styles.resultTitleLinkVisitedColor} !important;
+  .result-title-label > .result-title-link:visited {
+    color: ${(props) => props.styles.resultTitleLinkVisitedColor};
   }
   .result-desc > p {
-    color: ${(props) => props.styles.resultDescriptionColor} !important;
+    color: ${(props) => props.styles.resultDescriptionColor};
   }
-  .result-url-text {
-    color: ${(props) => props.styles.resultUrlColor} !important;
+  .result-desc .result-url-text {
+    color: ${(props) => props.styles.resultUrlColor};
   }
 `;
 
