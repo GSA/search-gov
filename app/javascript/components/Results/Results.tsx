@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
+import parse from 'html-react-parser';
 
 import { Pagination } from './../Pagination/Pagination';
 import { BestBets } from './BestBets';
@@ -175,6 +176,10 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
   const i18n = useContext(LanguageContext);
   const styles = useContext(StyleContext);
   const imagesResults = getImages(results);
+  // Using unboundedResults as a shortcut to determining the search engine is possible since presently all successful
+  // image searches are served by Searchgov. Depending on the outcome of SAT-1507, this may need to be updated to
+  // account for Bing-delivered image search results where unboundedResults would be false.
+  const isBing = unboundedResults === true;
   
   return (
     <>
@@ -250,6 +255,10 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
                     <ResultGrid key={index} result={result} />
                   );
                 })}
+                <GridContainer className={`content-provider ${isBing ? 'bing' : ''}`}>
+                  <span className='powered-by'>{parse(i18n.t('poweredBy'))} </span>
+                  <span className='engine'>{isBing ? 'Bing' : 'Search.gov'}</span>
+                </GridContainer>
                 <GridContainer className='result-divider'>
                   <Grid row gap="md">
                   </Grid>
