@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
 import parse from 'html-react-parser';
 import moment from 'moment';
+
 import { StyleContext } from '../../../contexts/StyleContext';
+import { FontsAndColors } from '../../SearchResultsLayout';
 
 type FedRegisterDoc = {
   commentsCloseOn: string | null;
@@ -23,7 +25,7 @@ interface FedRegisterDocsProps {
   query?:string;
 }
 
-const StyledWrapper = styled.div.attrs<{ styles: { sectionTitleColor: string }; }>((props) => ({
+const StyledWrapper = styled.div.attrs<{ styles: FontsAndColors }>((props) => ({
   styles: props.styles
 }))`
   .fed-register-label {
