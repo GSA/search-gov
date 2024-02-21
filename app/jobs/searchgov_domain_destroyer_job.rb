@@ -12,7 +12,6 @@ class SearchgovDomainDestroyerJob < ApplicationJob
     end
   rescue StandardError => e
     Rails.logger.error "Failed to destroy SearchgovDomain #{searchgov_domain.id}: #{e.message}"
-
     raise e
   end
 end

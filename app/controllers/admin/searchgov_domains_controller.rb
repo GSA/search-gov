@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Admin::SearchgovDomainsController < Admin::AdminController
+  before_action :find_searchgov_domain, only: [:confirm_delete, :delete_domain, :show, :reindex]
+
   active_scaffold :searchgov_domain do |config|
     config.label = 'Search.gov Domains'
     config.actions = %i[create update list search export nested]
@@ -35,22 +37,17 @@ class Admin::SearchgovDomainsController < Admin::AdminController
   end
 
   def confirm_delete
-    @searchgov_domain = SearchgovDomain.find(params[:id])
     render :delete_domain
   end
 
   def delete_domain
-    searchgov_domain = SearchgovDomain.find(params[:id])
-
-    if params[:confirmation].casecmp("DESTROY DOMAIN").zero?
-      # Enqueue the deletion job
-      SearchgovDomainDestroyerJob.perform_later(searchgov_domain)
-
-      flash[:success] = I18n.t('flash_messages.searchgov_domains.delete.success', domain: searchgov_domain.domain)
+    if destroy_domain_confirmation_valid?
+      enqueue_deletion_job
+      set_flash_message(:success)
       redirect_to action: :index
     else
-      flash[:error] = I18n.t('flash_messages.searchgov_domains.delete.error')
-      redirect_to action: :show, id: searchgov_domain.id
+      set_flash_message(:error)
+      redirect_to_show
     end
   end
 
@@ -60,9 +57,33 @@ class Admin::SearchgovDomainsController < Admin::AdminController
 
   def reindex
     process_action_link_action do |searchgov_domain|
-      SearchgovDomainReindexerJob.perform_later(searchgov_domain: searchgov_domain)
+      SearchgovDomainReindexerJob.perform_later(searchgov_domain: @searchgov_domain)
 
-      flash[:info] = "Reindexing has been enqueued for #{searchgov_domain.domain}"
+      flash[:info] = "Reindexing has been enqueued for #{@searchgov_domain.domain}"
     end
+  end
+
+  private
+
+  def find_searchgov_domain
+    @searchgov_domain = SearchgovDomain.find(params[:id])
+  end
+
+  def destroy_domain_confirmation_valid?
+    params[:confirmation].casecmp('DESTROY DOMAIN').zero?
+  end
+
+  def enqueue_deletion_job
+    SearchgovDomainDestroyerJob.perform_later(@searchgov_domain)
+  end
+
+  def set_flash_message(type)
+    key = "flash_messages.searchgov_domains.delete.#{type}"
+    message = I18n.t(key, domain: @searchgov_domain.domain)
+    flash[type] = message
+  end
+
+  def redirect_to_show
+    redirect_to action: :show, id: @searchgov_domain.id
   end
 end

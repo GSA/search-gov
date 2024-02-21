@@ -3,7 +3,7 @@ require 'spec_helper'
 describe SearchgovDomainDestroyerJob do
   subject(:perform) { described_class.perform_now(searchgov_domain) }
 
-  let!(:searchgov_domain) { SearchgovDomain.create!(domain: 'www.archive.gov', status: '200 OK') }
+  let(:searchgov_domain) { SearchgovDomain.create!(domain: 'www.archive.gov', status: '200 OK') }
 
   describe '#perform' do
     it 'requires a searchgov_domain as an argument' do
@@ -20,8 +20,8 @@ describe SearchgovDomainDestroyerJob do
         allow(SearchgovUrl).to receive(:find_each).and_yield(searchgov_url1).and_yield(searchgov_url2)
       end
 
-      let!(:searchgov_url1) { searchgov_domain.searchgov_urls.create!(url: 'https://www.archive.gov/info', hashed_url: 'hash1') }
-      let!(:searchgov_url2) { searchgov_domain.searchgov_urls.create!(url: 'https://www.archive.gov/hmmm', hashed_url: 'hash2') }
+      let(:searchgov_url1) { searchgov_domain.searchgov_urls.create!(url: 'https://www.archive.gov/info', hashed_url: 'hash1') }
+      let(:searchgov_url2) { searchgov_domain.searchgov_urls.create!(url: 'https://www.archive.gov/hmmm', hashed_url: 'hash2') }
 
       it 'destroys all associated searchgov_urls' do
         perform
@@ -32,6 +32,7 @@ describe SearchgovDomainDestroyerJob do
 
     context 'with an acceptable number of URLs' do
       let(:batch) { 10_000 }
+
       before do
         batch.times do |n|
           searchgov_domain.searchgov_urls.create!(url: "https://www.archive.gov/page#{n}", hashed_url: "hash#{n}")
