@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
+import parse from 'html-react-parser';
+
 import { LanguageContext } from '../../../contexts/LanguageContext';
 import { StyleContext } from '../../../contexts/StyleContext';
-import parse from 'html-react-parser';
+import { FontsAndColors } from '../../SearchResultsLayout';
 
 import './HealthTopics.css';
 
@@ -24,7 +26,7 @@ interface HealthTopicProps {
   }[];
 }
 
-const StyledWrapper = styled.div.attrs<{ styles: { healthBenefitsHeaderBackgroundColor: string }; }>((props) => ({
+const StyledWrapper = styled.div.attrs<{ styles: FontsAndColors }>((props) => ({
   styles: props.styles
 }))`
   .health-topic-title {

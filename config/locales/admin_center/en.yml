@@ -3,9 +3,28 @@ en:
   admin_center:
     actions:
       toggle_on: 'ON'
+    font_weight_bold: bold
+    font_weight_normal: normal
+    fonts:
+      "'Georgia', 'Cambria', 'Times New Roman', 'Times', serif": Georgia
+      "'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif": Helvetica neue
+      "'Merriweather Web', 'Georgia', 'Cambria', 'Times New Roman', 'Times', serif": Merriweather
+      ? "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
+      : Public sans
+      "'Roboto Mono Web', 'Bitstream Vera Sans Mono', 'Consolas', 'Courier', monospace": Roboto mono
+      "'Source Sans Pro','Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif": Source sans pro
+      ? "'Tahoma', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
+      : Tahoma
+      ? "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
+      : System
+    footer_and_results_font_family: Footer and Results Font Family
     footer_links: Footer links
+    header_links_font_family: Header Secondary Links Font Family
+    identifier_font_family: Identifer Font Family
     identifier_links: Identifier links
     primary_header_links: Primary header links
+    primary_navigation_font_family: Primary Navigation Family
+    primary_navigation_font_weight: Primary Navigation Font Weight
     secondary_header_links: Secondary header links
     sites:
       displays:
@@ -47,6 +66,7 @@ en:
             header_navigation_background_color: Header navigation background color
             header_primary_link_color: Header primary link color
             header_secondary_link_color: Header secondary link color
+            header_text_color: Header Text Color
             health_benefits_header_background_color: Health topics module header background color
             identifier_background_color: Identifier background color
             identifier_heading_color: Identifier heading color
@@ -58,21 +78,7 @@ en:
             result_url_color: Result URL color
             search_tab_navigation_link_color: Search tab navigation link color
             section_title_color: Section title color
-          fonts:
-            "'Georgia', 'Cambria', 'Times New Roman', 'Times', serif": Georgia
-            "'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif": Helvetica neue
-            "'Merriweather Web', 'Georgia', 'Cambria', 'Times New Roman', 'Times', serif": Merriweather
-            ? "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
-            : Public sans
-            "'Roboto Mono Web', 'Bitstream Vera Sans Mono', 'Consolas', 'Courier', monospace": Roboto mono
-            "'Source Sans Pro','Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif": Source sans pro
-            ? "'Tahoma', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
-            : Tahoma
-            ? "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
-            : System
           fonts_and_colors: Fonts & Colors
-          footer_and_results_font_family: Footer and Results Font Family
-          header_links_font_family: Header Links Font Family
         header_and_footer:
           header_and_footer: Header and footer
           header_layout: Header layout
