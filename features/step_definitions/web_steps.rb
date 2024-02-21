@@ -210,9 +210,11 @@ When /^(?:|I )press "([^"]*)" and confirm "([^"]*)"$/ do |button, msg|
   end
 end
 
-When /^(?:|I )follow "([^"]*)" and confirm "([^"]*)"$/ do |link, msg|
-  accept_confirm msg do
-    click_link(link)
+When /^(?:|I )follow "([^"]*)" within "([^"]*)" and confirm "([^"]*)"$/ do |link, scope_selector, msg|
+  within(scope_selector) do
+    accept_confirm msg do
+      click_link(link)
+    end
   end
 end
 

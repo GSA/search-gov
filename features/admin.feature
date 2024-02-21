@@ -203,7 +203,7 @@ Feature:  Administration
     And I should see "Export"
     And I should see "Search"
     And I should see "Create New"
-    And I should not see "Delete"
+    And I should see "Delete"
     And I should see "search.gov"
     And I should see "old.gov"
     And I should see "new.gov"
