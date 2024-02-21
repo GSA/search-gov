@@ -33,8 +33,8 @@ describe Admin::SearchgovDomainsController do
   describe '#delete_domain' do
     context 'with correct confirmation text' do
       it 'enqueues the deletion job and redirects to index' do
-        expect { post :delete_domain, params: { id: basic_domain.id, confirmation: 'DESTROY DOMAIN' } }
-          .to have_enqueued_job(SearchgovDomainDestroyerJob).with(basic_domain)
+        expect { post :delete_domain, params: { id: basic_domain.id, confirmation: 'DESTROY DOMAIN' } }.
+          to have_enqueued_job(SearchgovDomainDestroyerJob).with(basic_domain)
 
         expect(flash[:success]).to eq("Deletion has been enqueued for #{basic_domain.domain}")
         expect(response).to redirect_to(action: :index)
@@ -43,8 +43,8 @@ describe Admin::SearchgovDomainsController do
 
     context 'with incorrect confirmation text' do
       it 'does not enqueue the deletion job and redirects to show' do
-        expect { post :delete_domain, params: { id: basic_domain.id, confirmation: 'INCORRECT TEXT' } }
-          .not_to have_enqueued_job(SearchgovDomainDestroyerJob)
+        expect { post :delete_domain, params: { id: basic_domain.id, confirmation: 'INCORRECT TEXT' } }.
+          not_to have_enqueued_job(SearchgovDomainDestroyerJob)
 
         expect(flash[:error]).to eq('Incorrect confirmation text. Deletion aborted.')
         expect(response).to redirect_to(action: :show, id: basic_domain.id)
