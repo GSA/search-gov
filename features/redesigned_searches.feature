@@ -37,6 +37,7 @@ Feature: Search - redesign
     And I should see exactly "20" web search results
     And I should see a link to the "Next" page
     And I should not see a link to the "Previous" page
+    And I should see Powered by Bing
 
   @javascript @a11y 
   Scenario: Search with I14y results with pagination
@@ -61,6 +62,7 @@ Feature: Search - redesign
     And I should be on page "14" of results
     And I should not see a link to the "Next" page
     And I should see a link to the "Previous" page
+    And I should see Powered by Search.gov
 
   @javascript @a11y
   Scenario: Search with blended results
@@ -83,6 +85,7 @@ Feature: Search - redesign
     And I should see "Within the last hour article on item"
     And I should not see pagination
     And I should see "6 results"
+    And I should see Powered by Search.gov
 
   @javascript @a11y 
   Scenario: Search with best bets
@@ -124,6 +127,7 @@ Feature: Search - redesign
     And I should see "Second"
     And I should see exactly "2" web search results
     And I should see "2 results"
+    And I should see Powered by Search.gov
 
   @javascript @a11y 
   Scenario: Docs search
@@ -363,6 +367,7 @@ Feature: Search - redesign
     Then I should see exactly "20" redesigned video search result
     And I should see a link to "2" with class "usa-pagination__button"
     And I should see a link to "Next"
+    And I should see Powered by Search.gov
 
     When I follow "Next"
     Then I should see exactly "20" redesigned video search results

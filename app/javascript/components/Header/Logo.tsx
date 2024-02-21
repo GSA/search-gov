@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import styled from 'styled-components';
 import { Logo as UswdsLogo, Link, Title } from '@trussworks/react-uswds';
 
-import { PageData } from '../SearchResultsLayout';
+import { FontsAndColors, PageData } from '../SearchResultsLayout';
+import { StyleContext } from '../../contexts/StyleContext';
 
 interface LogoProps {
   page: PageData;
 }
 
+const StyledLogo = styled(UswdsLogo).attrs<{ styles: FontsAndColors; }>((props) => ({ styles: props.styles }))`
+  color: ${(props) => props.styles.headerTextColor} !important;
+`;
+
 export const Logo = ({ page }: LogoProps) => {
+  const styles = useContext(StyleContext);
   const imageContent = page.logo?.url ? 
     <Link className='logo-link' href={page.homepageUrl}>
       <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title}/>
@@ -20,12 +27,11 @@ export const Logo = ({ page }: LogoProps) => {
     </Title>
     ;
 
-  return (
-    <UswdsLogo
-      className="width-full"
-      size="slim"
-      image={imageContent}
-      heading={titleContent}
-    />
-  );
+  return <StyledLogo
+    className="width-full"
+    heading={titleContent}
+    image={imageContent}
+    size="slim"
+    styles={styles}
+  />;
 };

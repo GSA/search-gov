@@ -17,3 +17,27 @@ a.logo-link, a.logo-link:hover, a.logo-link:visited {
   display: block;
   text-decoration: none;
 }
+
+.content-provider {
+  margin-bottom: 1rem;
+  padding-right: 2.5rem;
+  text-align: right;
+}
+
+.bing {
+  background: url('searches/bing_logo.png') right no-repeat;
+  background-origin: content-box;
+}
+
+.bing > .powered-by {
+  padding-right: 56px;
+}
+
+.bing > .engine {
+  height:1px;
+  left:-10000px;
+  overflow:hidden;
+  position:absolute;
+  top:auto;
+  width:1px;
+}
