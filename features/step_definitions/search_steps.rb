@@ -23,6 +23,10 @@ Then /^I should see exactly "([^"]*)" video govbox search results in the redesig
   page.should have_selector selector, count: count
 end
 
+Then /^I should see "(.+?)" in the video govbox?$/ do |string|
+  page.should have_selector('.search-result-video-item', text: string)
+end
+
 Then /^I should see (Powered by|Generado por) Bing logo$/ do |text|
   page.should have_selector '.content-provider .bing', text: text
 end

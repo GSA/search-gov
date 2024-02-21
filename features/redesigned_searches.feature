@@ -481,5 +481,5 @@ Feature: Search - redesign
     When I am on en.agency.gov's redesigned search page
     And I search for "video" in the redesigned search page
     Then I should see exactly "1" video govbox search results in the redesigned SERP
-    And I should see "7 days ago"
+    And I should see "7 days ago" in the video govbox
     And I should see "More videos about video"
