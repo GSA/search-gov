@@ -24,7 +24,8 @@ export interface PageData {
   logo: {
     url: string;
     text: string;
-  }
+  };
+  homepageUrl: string;
 }
 
 export interface Language {
