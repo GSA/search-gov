@@ -54,22 +54,12 @@ export const ResultGrid = ({ result }: ResultProps) => {
           {result.updatedDate   && <span className='published-date'>{' '}&#40;Updated on {result.updatedDate}&#41;</span>}
           {result.publishedAt   && <span className='published-date'>{result.publishedAt}</span>}
           <div className='result-title'>
-            
             <h2 className='result-title-label'>
               <a href={result.url} className='result-title-link'>
               {parse(result.title)} 
               {getFileType(result.fileType)}
               </a>
             </h2>
-
-            {/* 
-            <a href={result.url} className='result-title-link'>
-              <h2 className='result-title-label'>
-                {parse(result.title)} 
-                {getFileType(result.fileType)}
-              </h2>
-            </a> 
-            */}
           </div>
           <div className='result-desc'>
             {getDescription(result.description)}

@@ -30,18 +30,9 @@ export const Video = (video: VideoProps) => {
             <Moment fromNow>{video.publishedAt}</Moment> 
           </span>
           <div className='result-title'>
-            
             <h2 className='result-title-label'>
               <a href={video.link} className='result-title-link'>{parse(video.title)}</a>
             </h2>
-
-            {/* 
-            <a href={video.link} className='result-title-link'>
-              <h2 className='result-title-label'>
-                {parse(video.title)}
-              </h2>
-            </a> 
-            */}
           </div>
           <div className='result-desc'>
             {video.description && <p>{parse(video.description)}</p>}
