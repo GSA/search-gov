@@ -56,8 +56,8 @@ export const ResultGrid = ({ result }: ResultProps) => {
           <div className='result-title'>
             <h2 className='result-title-label'>
               <a href={result.url} className='result-title-link'>
-              {parse(result.title)} 
-              {getFileType(result.fileType)}
+                {parse(result.title)} 
+                {getFileType(result.fileType)}
               </a>
             </h2>
           </div>
