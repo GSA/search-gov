@@ -123,8 +123,7 @@ class Admin::AffiliatesController < Admin::AdminController
     end
 
     config.update.columns.add_subgroup 'Display Settings' do |name_group|
-      display_columns = %i[show_redesign_display_settings
-                           use_redesigned_results_page
+      display_columns = %i[use_redesigned_results_page
                            footer_fragment
                            header_tagline_font_family
                            header_tagline_font_size
