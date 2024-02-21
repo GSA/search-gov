@@ -20,12 +20,12 @@ export const Logo = ({ page }: LogoProps) => {
       <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title}/>
     </Link> : 
     null;
-  const titleContent = page.displayLogoOnly ? 
-    <></> : 
+  const titleContent =  (!page.displayLogoOnly) ? (page.homepageUrl) ? 
     <Title>
       <Link className='logo-link' href={page.homepageUrl}>{page.title}</Link>
-    </Title>
-    ;
+    </Title> : 
+    <Title>{page.title}</Title> : 
+    <></>;
 
   return <StyledLogo
     className="width-full"
