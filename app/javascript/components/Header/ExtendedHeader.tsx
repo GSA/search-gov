@@ -29,11 +29,17 @@ const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: FontsAndColors; }>
   }
 
   a.usa-nav__link {
-    color: ${(props) => props.styles.headerPrimaryLinkColor};
+    color: ${(props) => props.styles.headerPrimaryLinkColor} !important;
   }
 
   .usa-nav__secondary-item > a {
     color: ${(props) => props.styles.headerSecondaryLinkColor};
+  }
+
+  @media (max-width: 63.99em){
+    .usa-nav__secondary-item > a {
+      color: ${(props) => props.styles.headerPrimaryLinkColor};
+    }
   }
 
   button.usa-menu-btn {
