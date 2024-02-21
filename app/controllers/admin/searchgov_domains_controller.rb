@@ -21,8 +21,37 @@ class Admin::SearchgovDomainsController < Admin::AdminController
       inline: true,
       confirm: 'Are you sure you want to reindex this entire domain?'
     )
+    config.action_links.add(
+      'confirm_delete',
+      label: 'Delete',
+      type: :member,
+      crud_type: :delete,
+      method: :get,
+      position: :after,
+      inline: false
+    )
     config.update.columns = %i[js_renderer]
     config.columns[:js_renderer].label = 'Render Javascript'
+  end
+
+  def confirm_delete
+    @searchgov_domain = SearchgovDomain.find(params[:id])
+    render :delete_domain
+  end
+
+  def delete_domain
+    searchgov_domain = SearchgovDomain.find(params[:id])
+
+    if params[:confirmation].upcase == "DESTROY DOMAIN"
+      # Enqueue the deletion job
+      SearchgovDomainDestroyerJob.perform_later(searchgov_domain)
+
+      flash[:success] = "Deletion has been enqueued for #{searchgov_domain.domain}"
+      redirect_to action: :index
+    else
+      flash[:error] = "Incorrect confirmation text. Deletion aborted."
+      redirect_to action: :show, id: searchgov_domain.id
+    end
   end
 
   def after_create_save(record)
