@@ -42,14 +42,14 @@ class Admin::SearchgovDomainsController < Admin::AdminController
   def delete_domain
     searchgov_domain = SearchgovDomain.find(params[:id])
 
-    if params[:confirmation].upcase == "DESTROY DOMAIN"
+    if params[:confirmation].casecmp("DESTROY DOMAIN").zero?
       # Enqueue the deletion job
       SearchgovDomainDestroyerJob.perform_later(searchgov_domain)
 
-      flash[:success] = "Deletion has been enqueued for #{searchgov_domain.domain}"
+      flash[:success] = I18n.t('flash_messages.searchgov_domains.delete.success', domain: searchgov_domain.domain)
       redirect_to action: :index
     else
-      flash[:error] = "Incorrect confirmation text. Deletion aborted."
+      flash[:error] = I18n.t('flash_messages.searchgov_domains.delete.error')
       redirect_to action: :show, id: searchgov_domain.id
     end
   end

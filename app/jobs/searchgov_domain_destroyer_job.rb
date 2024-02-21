@@ -8,7 +8,6 @@ class SearchgovDomainDestroyerJob < ApplicationJob
       rescue StandardError => e
         Rails.logger.error "Failed to destroy URL #{url.id}: #{e.message}"
       end
-
       searchgov_domain.destroy!
     end
   rescue StandardError => e
@@ -17,4 +16,3 @@ class SearchgovDomainDestroyerJob < ApplicationJob
     raise e
   end
 end
-
