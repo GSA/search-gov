@@ -134,3 +134,9 @@ And /^the "([^"]*)" input should( not)? be required$/ do |id, negate|
   page.should have_selector(sel)
   page.find(sel)[:required].should eq(negate ? nil : 'required')
 end
+
+And /^the "([^"]*)" input should( not)? be disabled$/ do |id, negate|
+  sel = "input##{id}"
+  page.should(have_selector(sel))
+  page.find(sel)['disabled'].should == (negate ? nil : 'disabled')
+end

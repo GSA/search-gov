@@ -32,20 +32,20 @@
   <% @user_monthly_report.affiliate_stats.each do |affiliate_name, affiliate_stats| %>
     <tr style="<%= cycle('', tr_even_style) %>">
       <td style="<%= td_text_style %>"><%= affiliate_stats[:affiliate].display_name %></td>
-      <td style="<%= td_style %>"><%= affiliate_stats[:total_unfiltered_queries] %></td>
-      <td style="<%= td_style %>"><%= affiliate_stats[:total_queries] %></td>
-      <td style="<%= td_style %>"><%= "%.2f" % affiliate_stats[:last_month_percent_change] %>%</td>
-      <td style="<%= td_style %>"><%= "%.2f" % affiliate_stats[:last_year_percent_change] %>%</td>
-      <td style="<%= td_style %>"><%= affiliate_stats[:total_clicks] %></td>
+      <td style="<%= td_style %>"><%= number_with_delimiter(affiliate_stats[:total_unfiltered_queries]) %></td>
+      <td style="<%= td_style %>"><%= number_with_delimiter(affiliate_stats[:total_queries]) %></td>
+      <td style="<%= td_style %>"><%= number_to_percentage(affiliate_stats[:last_month_percent_change], :precision => 2) %></td>
+      <td style="<%= td_style %>"><%= number_to_percentage(affiliate_stats[:last_year_percent_change], :precision => 2) %></td>
+      <td style="<%= td_style %>"><%= number_with_delimiter(affiliate_stats[:total_clicks]) %></td>
     </tr>
   <% end %>
   <tr style="<%= cycle('', tr_even_style) %>">
     <td style="<%= td_text_style %>">TOTAL</td>
-    <td style="<%= td_style %>"><%= @user_monthly_report.total_stats[:total_unfiltered_queries] %></td>
-    <td style="<%= td_style %>"><%= @user_monthly_report.total_stats[:total_queries] %></td>
-    <td style="<%= td_style %>"><%= "%.2f" % @user_monthly_report.total_stats[:last_month_percent_change] %>%</td>
-    <td style="<%= td_style %>"><%= "%.2f" % @user_monthly_report.total_stats[:last_year_percent_change] %>%</td>
-    <td style="<%= td_style %>"><%= @user_monthly_report.total_stats[:total_clicks] %></td>
+    <td style="<%= td_style %>"><%= number_with_delimiter(@user_monthly_report.total_stats[:total_unfiltered_queries]) %></td>
+    <td style="<%= td_style %>"><%= number_with_delimiter(@user_monthly_report.total_stats[:total_queries]) %></td>
+    <td style="<%= td_style %>"><%= number_to_percentage(@user_monthly_report.total_stats[:last_month_percent_change], :precision => 2) %></td>
+    <td style="<%= td_style %>"><%= number_to_percentage(@user_monthly_report.total_stats[:last_year_percent_change], :precision => 2) %></td>
+    <td style="<%= td_style %>"><%= number_with_delimiter(@user_monthly_report.total_stats[:total_clicks]) %></td>
   </tr>
   </tbody>
 </table>
@@ -67,11 +67,11 @@
         <th style="<%= th_style %>">Total Queries (Bots + Humans)</th>
         <th style="<%= th_style %>">Real Queries</th>
       </tr>
-      <% affiliate_stats[:popular_queries].each do |popular_query| %>
+      <% affiliate_stats[:popular_queries].each do |(term, total_queries, real_queries)| %>
         <tr style="<%= cycle('', tr_even_style, :name => 'colors') %>">
-          <td style="<%= td_text_style %>"><%= popular_query[0] %></td>
-          <td style="<%= td_style %>"><%= popular_query[1] %></td>
-          <td style="<%= td_style %>"><%= popular_query[2] %></td>
+          <td style="<%= td_text_style %>"><%= term %></td>
+          <td style="<%= td_style %>"><%= number_with_delimiter(total_queries) %></td>
+          <td style="<%= td_style %>"><%= number_with_delimiter(real_queries) %></td>
         </tr>
       <% end %>
       <% reset_cycle('colors') %>
@@ -100,11 +100,11 @@
         <th style="<%= th_style %>">Total Clicks (Bots + Humans)</th>
         <th style="<%= th_style %>">Real Clicks</th>
       </tr>
-      <% affiliate_stats[:popular_clicks].each do |popular_click| %>
+      <% affiliate_stats[:popular_clicks].each do |(url, total_clicks, real_clicks)| %>
         <tr style="<%= cycle('', tr_even_style, :name => 'colors') %>">
-          <td style="<%= td_text_style %>"><%= popular_click[0] %></td>
-          <td style="<%= td_style %>"><%= popular_click[1] %></td>
-          <td style="<%= td_style %>"><%= popular_click[2] %></td>
+          <td style="<%= td_text_style %>"><%= url %></td>
+          <td style="<%= td_style %>"><%= number_with_delimiter(total_clicks) %></td>
+          <td style="<%= td_style %>"><%= number_with_delimiter(real_clicks) %></td>
         </tr>
       <% end %>
       <% reset_cycle('colors') %>
