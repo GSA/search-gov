@@ -43,16 +43,12 @@ class Admin::SearchgovDomainsController < Admin::AdminController
   def delete_domain
     if destroy_domain_confirmation_valid?
       enqueue_deletion_job
-      flash[:success] = "Deletion has been enqueued for #{@searchgov_domain.domain}."
+      flash[:success] = I18n.t('flash_messages.searchgov_domains.delete.success', domain: @searchgov_domain.domain)
       redirect_to action: :index
     else
-      flash[:error] = 'Incorrect confirmation text. Deletion aborted.'
+      flash[:error] = I18n.t('flash_messages.searchgov_domains.delete.error')
       redirect_to_show
     end
-  end
-
-  def after_create_save(record)
-    flash[:info] = "#{record.domain} has been created. Sitemaps will automatically begin indexing."
   end
 
   def reindex

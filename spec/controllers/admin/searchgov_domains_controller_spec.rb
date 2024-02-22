@@ -30,7 +30,7 @@ describe Admin::SearchgovDomainsController do
         delete :delete_domain, params: { id: basic_domain.id, confirmation: 'DESTROY DOMAIN' }
 
         expect(response).to redirect_to(action: :index)
-        expect(flash[:success]).to eq("Deletion has been enqueued for #{basic_domain.domain}.")
+        expect(flash[:success]).to eq("Deletion has been enqueued for #{basic_domain.domain}")
         expect(SearchgovDomainDestroyerJob).to have_been_enqueued.with(basic_domain)
       end
     end
