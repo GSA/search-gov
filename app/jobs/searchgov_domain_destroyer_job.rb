@@ -3,32 +3,37 @@ class SearchgovDomainDestroyerJob < ApplicationJob
 
   def perform(searchgov_domain)
     ActiveRecord::Base.transaction do
-      destroy_searchgov_urls(searchgov_domain)
-      destroy_searchgov_domain(searchgov_domain)
+      if destroy_associated_records(searchgov_domain.searchgov_urls, 'URL') &&
+        destroy_record(searchgov_domain, 'SearchgovDomain')
+        Rails.logger.info("Successfully destroyed SearchgovDomain #{searchgov_domain.id} and its URLs.")
+      else
+        Rails.logger.error("Failed to completely destroy SearchgovDomain #{searchgov_domain.id} and its URLs.")
+      end
     end
-  rescue StandardError => e
-    Rails.logger.error("Failed to destroy SearchgovDomain #{searchgov_domain.id}: #{e.message}")
-    raise e
   end
 
   private
 
-  def destroy_searchgov_urls(searchgov_domain)
-    searchgov_domain.searchgov_urls.find_each(batch_size: 100) do |url|
-      destroy_with_rescue(url)
+  def destroy_associated_records(records, record_type)
+    records.find_each(batch_size: 100) do |record|
+      unless destroy_record(record, record_type)
+        return false
+      end
     end
+
+    true
   end
 
-  def destroy_with_rescue(record)
-    record.destroy!
-  rescue StandardError => e
-    Rails.logger.error("Failed to destroy URL #{record.id}: #{e.message}")
+  def destroy_record(record, record_type)
+    unless record.destroy
+      log_failure(record_type, record.id)
+      return false
+    end
+
+    true
   end
 
-  def destroy_searchgov_domain(searchgov_domain)
-    searchgov_domain.destroy!
-  rescue StandardError => e
-    Rails.logger.error("Failed to destroy SearchgovDomain #{searchgov_domain.id}: #{e.message}")
-    raise e
+  def log_failure(record_type, record_id)
+    Rails.logger.error("Failed to destroy #{record_type} #{record_id}")
   end
 end

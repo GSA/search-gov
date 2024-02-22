@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Admin::SearchgovDomainsController < Admin::AdminController
-  before_action :find_searchgov_domain, only: %i[confirm_delete delete_domain reindex]
+  before_action :set_searchgov_domain, only: %i[confirm_delete delete_domain]
 
   active_scaffold :searchgov_domain do |config|
     config.label = 'Search.gov Domains'
@@ -65,7 +65,7 @@ class Admin::SearchgovDomainsController < Admin::AdminController
 
   private
 
-  def find_searchgov_domain
+  def set_searchgov_domain
     @searchgov_domain = SearchgovDomain.find(params[:id])
   end
 

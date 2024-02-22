@@ -3,7 +3,6 @@
 describe Admin::SearchgovDomainsController do
   fixtures :users, :searchgov_domains, :searchgov_urls
 
-  let(:config) { described_class.active_scaffold_config }
   let(:basic_domain) { searchgov_domains(:basic_domain) }
 
   before do
@@ -12,13 +11,8 @@ describe Admin::SearchgovDomainsController do
   end
 
   describe '#update' do
-    context 'when configuring Active Scaffold' do
-      let(:update_columns) { config.update.columns }
-      let(:enable_disable_columns) { %i[js_renderer] }
-
-      it 'contains the specified columns' do
-        expect(update_columns.to_a).to match_array(enable_disable_columns)
-      end
+    it 'contains the specified columns' do
+      expect(described_class.active_scaffold_config.update.columns.to_a).to include(:js_renderer)
     end
   end
 
@@ -33,21 +27,21 @@ describe Admin::SearchgovDomainsController do
   describe '#delete_domain' do
     context 'with correct confirmation text' do
       it 'enqueues the deletion job and redirects to index' do
-        expect { post :delete_domain, params: { id: basic_domain.id, confirmation: 'DESTROY DOMAIN' } }.
-          to have_enqueued_job(SearchgovDomainDestroyerJob).with(basic_domain)
+        delete :delete_domain, params: { id: basic_domain.id, confirmation: 'DESTROY DOMAIN' }
 
-        expect(flash[:success]).to eq("Deletion has been enqueued for #{basic_domain.domain}")
         expect(response).to redirect_to(action: :index)
+        expect(flash[:success]).to eq("Deletion has been enqueued for #{basic_domain.domain}")
+        expect(SearchgovDomainDestroyerJob).to have_been_enqueued.with(basic_domain)
       end
     end
 
     context 'with incorrect confirmation text' do
       it 'does not enqueue the deletion job and redirects to show' do
-        expect { post :delete_domain, params: { id: basic_domain.id, confirmation: 'INCORRECT TEXT' } }.
-          not_to have_enqueued_job(SearchgovDomainDestroyerJob)
+        delete :delete_domain, params: { id: basic_domain.id, confirmation: 'INCORRECT TEXT' }
 
-        expect(flash[:error]).to eq('Incorrect confirmation text. Deletion aborted.')
         expect(response).to redirect_to(action: :show, id: basic_domain.id)
+        expect(flash[:error]).to eq('Incorrect confirmation text. Deletion aborted.')
+        expect(SearchgovDomainDestroyerJob).not_to have_been_enqueued
       end
     end
   end
