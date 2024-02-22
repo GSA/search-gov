@@ -38,7 +38,7 @@ describe SearchgovDomainDestroyerJob do
         it 'logs an error and continues' do
           perform
 
-          expect(error_logged?("Failed to destroy URL")).to be true
+          expect(error_logged?('Failed to destroy URL')).to be true
           expect(SearchgovDomain.exists?(searchgov_domain.id)).to be false
         end
       end
