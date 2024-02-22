@@ -33,6 +33,6 @@ class SearchgovDomainDestroyerJob < ApplicationJob
   end
 
   def log_failure(type, id, message)
-    Rails.logger.error "Failed to destroy #{type} #{id}: #{message}"
+    Rails.logger.error("Failed to destroy #{type} #{id}: #{message}")
   end
 end
