@@ -43,10 +43,10 @@ class Admin::SearchgovDomainsController < Admin::AdminController
   def delete_domain
     if destroy_domain_confirmation_valid?
       enqueue_deletion_job
-      flash_message(:success)
+      flash[:success] = "Deletion has been enqueued for #{@searchgov_domain.domain}."
       redirect_to action: :index
     else
-      flash_message(:error)
+      flash[:error] = 'Incorrect confirmation text. Deletion aborted.'
       redirect_to_show
     end
   end
@@ -58,8 +58,7 @@ class Admin::SearchgovDomainsController < Admin::AdminController
   def reindex
     process_action_link_action do |searchgov_domain|
       SearchgovDomainReindexerJob.perform_later(searchgov_domain: searchgov_domain)
-
-      flash[:info] = "Reindexing has been enqueued for #{searchgov_domain.domain}"
+      flash[:info] = "Reindexing has been enqueued for #{searchgov_domain.domain}."
     end
   end
 
@@ -75,12 +74,6 @@ class Admin::SearchgovDomainsController < Admin::AdminController
 
   def enqueue_deletion_job
     SearchgovDomainDestroyerJob.perform_later(@searchgov_domain)
-  end
-
-  def flash_message(type)
-    key = "flash_messages.searchgov_domains.delete.#{type}"
-    message = I18n.t(key, domain: @searchgov_domain.domain)
-    flash[type] = message
   end
 
   def redirect_to_show

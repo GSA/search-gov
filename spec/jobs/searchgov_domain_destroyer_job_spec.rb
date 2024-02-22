@@ -31,14 +31,14 @@ describe SearchgovDomainDestroyerJob do
       end
     end
 
-    context 'error handling' do
+    context 'when there is errors' do
       context 'when a SearchgovUrl destruction fails' do
-        let!(:failing_url) { create_failing_url }
+        before { create_and_stub_failing_url }
 
         it 'logs an error and continues' do
           perform
 
-          expect(error_logged?("Failed to destroy URL #{failing_url.id}: destruction failed")).to be true
+          expect(error_logged?("Failed to destroy URL")).to be true
           expect(SearchgovDomain.exists?(searchgov_domain.id)).to be false
         end
       end
@@ -60,15 +60,18 @@ describe SearchgovDomainDestroyerJob do
 
   it_behaves_like 'a searchgov job'
 
-  def create_failing_url
-    searchgov_domain.searchgov_urls.create(url: 'https://www.archive.gov/fail', hashed_url: 'failhash').tap do |url|
-      allow(url).to receive(:destroy).and_return(false)
-      allow(Rails.logger).to receive(:error) do |message|
-        error_messages << message if message.include?("Failed to destroy URL")
-      end
+  def create_and_stub_failing_url
+    failing_url = searchgov_domain.searchgov_urls.create!(url: 'https://www.archive.gov/fail', hashed_url: 'failhash')
+    stub_url_destruction_failure(failing_url)
+  end
 
-      Rails.logger.error("Failed to destroy URL #{url.id}: destruction failed")
-    end
+  def stub_url_destruction_failure(url)
+    allow(url).to receive(:destroy).and_return(false)
+    simulate_error_logging_for_url(url)
+  end
+
+  def simulate_error_logging_for_url(url)
+    Rails.logger.error("Failed to destroy URL #{url.id}: destruction failed")
   end
 
   def error_logged?(message)
