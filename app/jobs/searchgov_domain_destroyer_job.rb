@@ -22,7 +22,7 @@ class SearchgovDomainDestroyerJob < ApplicationJob
   def destroy_with_rescue(record)
     record.destroy!
   rescue StandardError => e
-    log_failure('URL', record.id, e.message)
+    Rails.logger.error("Failed to destroy #{type} #{id}: #{message}")
   end
 
   def destroy_searchgov_domain(searchgov_domain)
@@ -30,9 +30,5 @@ class SearchgovDomainDestroyerJob < ApplicationJob
   rescue StandardError => e
     log_failure('SearchgovDomain', searchgov_domain.id, e.message)
     raise e
-  end
-
-  def log_failure(type, id, message)
-    Rails.logger.error("Failed to destroy #{type} #{id}: #{message}")
   end
 end
