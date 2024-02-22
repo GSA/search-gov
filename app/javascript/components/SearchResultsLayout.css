@@ -12,6 +12,16 @@ div[data-react-class="SearchResultsLayout"] {
   max-width: 50rem;
 }
 
+a.logo-link, a.logo-link:hover, a.logo-link:visited {
+  color: inherit;
+  display: block;
+  text-decoration: none;
+}
+
+.usa-logo__text {
+  cursor: default;
+}
+
 .content-provider {
   margin-bottom: 1rem;
   padding-right: 2.5rem;
