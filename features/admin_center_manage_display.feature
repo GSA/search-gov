@@ -466,14 +466,6 @@ Feature: Manage Display
     And I should see "Image Assets" within the navigation tabs
     And I should see "Header & Footer" within the navigation tabs
 
-    Given the following SearchGov Affiliates exist:
-      | display_name    | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
-      | searchgov site  | agency.gov | john@agency.gov | John       | Bar       | false                        |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Visual Design page
-    Then I should see "Visual design (new)"
-    And the page body should contain "These settings are for preview purposes only."
-
     When I follow "Fonts & Colors" within the navigation tabs
     Then I should see "Header Secondary Links Font Family"
     And the "Header Secondary Links Font Family" field should contain "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
@@ -641,6 +633,15 @@ Feature: Manage Display
     And I follow "Add new secondary header link"
     Then I should be able to access 3 "new_secondary_header_link" rows
     And I should not see "Add new secondary header link"
+
+  Scenario: Editing the Visual Design Settings when "Use Redesigned Results Page" is false
+    Given the following SearchGov Affiliates exist:
+      | display_name    | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | searchgov site  | agency.gov | john@agency.gov | John       | Bar       | false                        |
+    And I am logged in with email "john@agency.gov"
+    When I go to the agency.gov's Visual Design page
+    Then I should see "Visual design (new)"
+    And the page body should contain "These settings are for preview purposes only."
 
   Scenario: Display sub navigation links when "Use Redesigned Results Page" is true
     Given the following Affiliates exist:
