@@ -21,8 +21,8 @@ describe SearchgovDomainDestroyerJob do
     end
 
     context 'when the searchgov_domain has associated searchgov_url records' do
-      let!(:searchgov_url1) { searchgov_domain.searchgov_urls.create(url: "https://www.archive.gov/info", hashed_url: "hash1") }
-      let!(:searchgov_url2) { searchgov_domain.searchgov_urls.create(url: "https://www.archive.gov/hmmm", hashed_url: "hash2") }
+      let!(:searchgov_url1) { searchgov_domain.searchgov_urls.create(url: 'https://www.archive.gov/info', hashed_url: 'hash1') }
+      let!(:searchgov_url2) { searchgov_domain.searchgov_urls.create(url: 'https://www.archive.gov/hmmm', hashed_url: 'hash2') }
 
       it 'destroys all associated searchgov_urls' do
         perform
@@ -43,7 +43,7 @@ describe SearchgovDomainDestroyerJob do
       end
     end
 
-    context 'error handling' do
+    context 'when there is errors' do
       context 'when a SearchgovUrl destruction fails' do
         let(:failing_url) { create_failing_url }
 
