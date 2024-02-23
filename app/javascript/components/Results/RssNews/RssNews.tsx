@@ -49,11 +49,11 @@ export const RssNews = ({ newsLabel, news=[] }: RssNewsProps) => {
                         <Moment fromNow>{newsItem.publishedAt}</Moment>
                       </span>
                       <div className='result-title'>
-                        <a href={newsItem.link} className='result-title-link'>
-                          <h2 className='result-title-label'>
+                        <h2 className='result-title-label'>
+                          <a href={newsItem.link} className='result-title-link'>
                             {parse(newsItem.title)}
-                          </h2>
-                        </a>
+                          </a>
+                        </h2> 
                       </div>
                       <div className='result-desc'>
                         <p>{parse(newsItem.description)}</p>

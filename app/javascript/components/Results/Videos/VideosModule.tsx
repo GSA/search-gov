@@ -33,11 +33,9 @@ export const VideosModule = ({ query, videos=[], videosUrl }: VideosModuleProps)
               <Grid row gap="md">
                 <Grid col={true} className='result-meta-data'>
                   <div className='result-title'>
-                    <a href={videosUrl} className='result-title-link more-title-link'>
-                      <h2 className='result-title-label'>
-                        {i18n.t('searches.moreNewsAboutQuery', { news_label: 'videos', query })}
-                      </h2>
-                    </a>
+                    <h2 className='result-title-label'>
+                      <a href={videosUrl} className='result-title-link more-title-link'>{i18n.t('searches.moreNewsAboutQuery', { news_label: 'videos', query })}</a>
+                    </h2>
                   </div>
                 </Grid>
               </Grid>

@@ -40,7 +40,8 @@ module ReactHelper
       logo: {
         text: logo_text(affiliate.header_logo_blob),
         url: header_logo_url(affiliate.header_logo)
-      }
+      },
+      homepageUrl: affiliate.website
     }
   end
 
