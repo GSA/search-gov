@@ -14,9 +14,9 @@ export const TextBestBet = ({ title, url, description }: TextBestBetProps) => {
       <Grid row gap="md">
         <Grid col={true} className='result-meta-data'>
           <div className='result-title'>
-            <a href={url} className='result-title-link'>
-              <h2 className='result-title-label'>{parse(title)}</h2>
-            </a>
+            <h2 className='result-title-label'>
+              <a href={url} className='result-title-link'>{parse(title)}</a>
+            </h2>
           </div>
           <div className='result-desc'>
             <p>{parse(description)}</p>
