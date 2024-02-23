@@ -1,0 +1,387 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.datadoghq.com/api/v1/events?api_key=<DATADOG_API_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"msg_text":"%%%\n### **Backtrace**\n````\nlib/faraday_middleware/exception_notifier.rb:14:in
+        `call''\napp/engines/cached_search_api_connection.rb:36:in `get_from_api''\napp/engines/cached_search_api_connection.rb:28:in
+        `get''\n````\n___\n%%%","date_happened":1708527205,"msg_title":" (Faraday::TimeoutError)
+        \"too many connection resets (due to Net::ReadTimeout with #<TCPSocket:(closed)>
+        - Net::ReadTime...","priority":"normal","parent":null,"tags":["bing_v7"],"aggregation_key":"[\"
+        (Faraday::TimeoutError) \\\"too many connection resets (due to Net::ReadTimeout
+        with #<TCPSocket:(closed)> - Net::ReadTime...\"]","alert_type":"error","event_type":null,"source_type_name":null,"title":"
+        (Faraday::TimeoutError) \"too many connection resets (due to Net::ReadTimeout
+        with #<TCPSocket:(clos","text":"%%%\n### **Backtrace**\n````\nlib/faraday_middleware/exception_notifier.rb:14:in
+        `call''\napp/engines/cached_search_api_connection.rb:36:in `get_from_api''\napp/engines/cached_search_api_connection.rb:28:in
+        `get''\n````\n___\n%%%","host":"dariuszdzien-C02D1CQTMD6M","device":null}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - dogapi-rb/1.45.0 (ruby 3.0.6; os darwin22; arch x86_64)
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Date:
+      - Wed, 21 Feb 2024 14:53:26 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '607'
+      Connection:
+      - keep-alive
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"status":"ok","event":{"id":7453518793973590101,"id_str":"7453518793973590101","title":"
+        (Faraday::TimeoutError) \"too many connection resets (due to Net::ReadTimeout
+        with #\u003cTCPSocket:(clos","text":"%%%\n### **Backtrace**\n````\nlib/faraday_middleware/exception_notifier.rb:14:in
+        `call''\napp/engines/cached_search_api_connection.rb:36:in `get_from_api''\napp/engines/cached_search_api_connection.rb:28:in
+        `get''\n````\n___\n%%%","date_happened":1708527205,"handle":null,"priority":"normal","related_event_id":null,"tags":["bing_v7"],"url":"https://app.datadoghq.com/event/event?id=7453518793973590101"}}'
+  recorded_at: Wed, 21 Feb 2024 14:53:25 GMT
+- request:
+    method: post
+    uri: https://api.datadoghq.com/api/v1/events?api_key=<DATADOG_API_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"msg_text":"%%%\n### **Backtrace**\n````\nlib/faraday_middleware/exception_notifier.rb:14:in
+        `call''\napp/engines/cached_search_api_connection.rb:36:in `get_from_api''\napp/engines/cached_search_api_connection.rb:28:in
+        `get''\n````\n___\n%%%","date_happened":1708527212,"msg_title":" (Faraday::TimeoutError)
+        \"too many connection resets (due to Net::ReadTimeout with #<TCPSocket:(closed)>
+        - Net::ReadTime...","priority":"normal","parent":null,"tags":["bing_v7"],"aggregation_key":"[\"
+        (Faraday::TimeoutError) \\\"too many connection resets (due to Net::ReadTimeout
+        with #<TCPSocket:(closed)> - Net::ReadTime...\"]","alert_type":"error","event_type":null,"source_type_name":null,"title":"
+        (Faraday::TimeoutError) \"too many connection resets (due to Net::ReadTimeout
+        with #<TCPSocket:(clos","text":"%%%\n### **Backtrace**\n````\nlib/faraday_middleware/exception_notifier.rb:14:in
+        `call''\napp/engines/cached_search_api_connection.rb:36:in `get_from_api''\napp/engines/cached_search_api_connection.rb:28:in
+        `get''\n````\n___\n%%%","host":"dariuszdzien-C02D1CQTMD6M","device":null}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - dogapi-rb/1.45.0 (ruby 3.0.6; os darwin22; arch x86_64)
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Date:
+      - Wed, 21 Feb 2024 14:53:32 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '607'
+      Connection:
+      - keep-alive
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"status":"ok","event":{"id":7453518899453134227,"id_str":"7453518899453134227","title":"
+        (Faraday::TimeoutError) \"too many connection resets (due to Net::ReadTimeout
+        with #\u003cTCPSocket:(clos","text":"%%%\n### **Backtrace**\n````\nlib/faraday_middleware/exception_notifier.rb:14:in
+        `call''\napp/engines/cached_search_api_connection.rb:36:in `get_from_api''\napp/engines/cached_search_api_connection.rb:28:in
+        `get''\n````\n___\n%%%","date_happened":1708527212,"handle":null,"priority":"normal","related_event_id":null,"tags":["bing_v7"],"url":"https://app.datadoghq.com/event/event?id=7453518899453134227"}}'
+  recorded_at: Wed, 21 Feb 2024 14:53:32 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=video%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=<DATADOG_API_ENABLED>&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 21 Feb 2024 14:53:52 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Eventid:
+      - 65d60ebcc0b44c2b8966edca8f0d75e2
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      Bingapis-Traceid:
+      - 65d60ebcc0b44c2b8966edca8f0d75e2
+      Bingapis-Sessionid:
+      - D1E800EC6640494F8965EE2960E9F5EE
+      X-Msedge-Clientid:
+      - 3E6A1786845C6F45226E03AA85446E16
+      X-Msapi-Userstate:
+      - 14bb
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=278,MSDatacenter=BNZE01
+      X-Cache:
+      - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      X-Msedge-Ref:
+      - 'Ref A: 4E1A838F5FFE4E85B3A3E77B89402836 Ref B: CH1EDGE1919 Ref C: 2024-02-21T14:54:52Z'
+      Apim-Request-Id:
+      - 0fb7a464-48f4-4e9a-9c43-25cb04e33613
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 21 Feb 2024 14:54:51 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "video
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=video+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 21500000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Videos - U.S. Department of Defense", "url": "https:\/\/www.defense.gov\/Multimedia\/Videos\/",
+        "datePublished": "2024-02-15T00:00:00.0000000", "datePublishedFreshnessText":
+        "6 days ago", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.defense.gov\/Multimedia\/Videos",
+        "snippet": "FY 2024 Defense Budget. National Defense Strategy. The Department
+        of Defense provides the military forces needed to deter war and ensure our
+        nation''s security. Hosted by Defense Media Activity ...", "dateLastCrawled":
+        "2024-02-19T09:06:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=video+(site%3agov+OR+site%3amil)&d=4789794802434517&mkt=en-US&setlang=en-US&w=NFvONfzv3TCCJb1c-hARxEXBHBZcZ-jg",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Posting of Informational Video: Cybersecurity Maturity Model ...",
+        "url": "https:\/\/www.federalregister.gov\/documents\/2024\/02\/21\/2024-03460\/posting-of-informational-video-cybersecurity-maturity-model-certification-cmmc-program",
+        "datePublished": "2024-02-21T00:00:00.0000000", "datePublishedFreshnessText":
+        "14 hours ago", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.federalregister.gov\/documents\/2024\/02\/21\/2024-03460\/posting-of...",
+        "snippet": "This document announces that a video file containing an overview
+        briefing of the CMMC proposed rule, presented by leadership and staff from
+        the Office of the DoD Deputy CIO for Cybersecurity, was posted on the internet
+        on February 14, 2024. DATES: The video is available as of February 14, 2024.
+        ADDRESSES:", "dateLastCrawled": "2024-02-21T09:34:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=video+(site%3agov+OR+site%3amil)&d=2053807824404&mkt=en-US&setlang=en-US&w=0I9c9uBfBglI6euGSMMST6vR0OCuVWu2",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Video Gallery: Perseverance Rover - NASA Mars", "url": "https:\/\/mars.nasa.gov\/mars2020\/multimedia\/videos\/",
+        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/mars.nasa.gov\/mars2020\/multimedia\/videos",
+        "snippet": "Meet the 23rd Martian sample collected by NASA''s Mars Perseverance
+        rover - \"Lefroy Bay,\" a sample from a region of Jezero Crater that is especially
+        rich in carbonate, a mineral linked to habitability. Video gallery for the
+        Perseverance rover mission that includes animations and mission trailer for
+        all aspects of the mission.", "dateLastCrawled": "2024-02-21T09:29:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=video+(site%3agov+OR+site%3amil)&d=4610544340762699&mkt=en-US&setlang=en-US&w=fqTjGdkCNQUwohEgGYQkt-Vchj5w3Dua",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "How to Use VA Video Connect - My HealtheVet - My HealtheVet", "url":
+        "https:\/\/www.myhealth.va.gov\/mhv-portal-web\/ss20200320-va-video-connect",
+        "datePublished": "2020-03-20T00:00:00.0000000", "datePublishedDisplayText":
+        "Mar 20, 2020", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.myhealth.va.gov\/mhv-portal-web\/ss20200320-va-video-connect",
+        "snippet": "Step three: Test your device. Open an Internet browser, and then
+        click on this link so you can visit the VA Video Connect test site to make
+        sure your device''s camera and microphone are fully functioning. Step four:
+        Join your visit. You’ll receive email reminders a week, 3 days, 1 day, and
+        the day of your appointment.", "dateLastCrawled": "2024-02-20T19:00:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=video+(site%3agov+OR+site%3amil)&d=4588820738477887&mkt=en-US&setlang=en-US&w=y3MS7GLjjHwmwRVQIxXjRDAyg5Eqzvr9",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "U.S. Department of State - Videos", "url": "https:\/\/video.state.gov\/",
+        "datePublished": "2024-02-16T00:00:00.0000000", "datePublishedFreshnessText":
+        "5 days ago", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/video.state.gov",
+        "snippet": "54:46. Secretary Blinken and Albanian Prime Minister Edi Rama
+        hold a joint press availability. 33:42. Department of State Daily Press Briefing
+        - February 14, 2024. 44:29. Department of State Daily Press Briefing - February
+        13, 2024. 3:34. Secretary Blinken meets with Canadian Foreign Minister Melanie
+        Joly. 11:13.", "dateLastCrawled": "2024-02-16T10:53:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=video+(site%3agov+OR+site%3amil)&d=4726500206147338&mkt=en-US&setlang=en-US&w=CzmT3Qb2Ei1lXVZ5NsW_5lm0H1f5G6o0",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "VA Video Connect | VA Mobile", "url": "https:\/\/mobile.va.gov\/app\/va-video-connect",
+        "datePublished": "2024-02-19T00:00:00.0000000", "datePublishedFreshnessText":
+        "2 days ago", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/mobile.va.gov\/app\/va-video-connect",
+        "snippet": "The 4-minute video provides tips to troubleshoot and resolve
+        each of seven main issues that users commonly face: Tip 1: I can’t find my
+        VA Video Connect appointment email. ( 0:11) Tip 2: My appointment link won’t
+        work. ( 0:42) Tip 3: The virtual medical room page won’t load in the browser.
+        ( 1:27) Tip 4: The virtual medical room takes a ...", "dateLastCrawled": "2024-02-20T15:11:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=video+(site%3agov+OR+site%3amil)&d=4803036520591290&mkt=en-US&setlang=en-US&w=6SQOKqqhg02IK2OsGTcVFja2sfR-JeFh",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "NASA’s Tech Demo Streams First Video From Deep Space via Laser",
+        "url": "https:\/\/www.jpl.nasa.gov\/news\/nasas-tech-demo-streams-first-video-from-deep-space-via-laser",
+        "datePublished": "2023-12-18T00:00:00.0000000", "datePublishedDisplayText":
+        "Dec 18, 2023", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.jpl.nasa.gov\/news\/nasas-tech-demo-streams-first-video-from-deep-space-via...",
+        "snippet": "NASA’s Deep Space Optical Communications experiment beamed an
+        ultra-high definition streaming video on Dec. 11 from a record-setting 19
+        million miles away (31 million kilometers, or about 80 times the Earth-Moon
+        distance). The milestone is part of a NASA technology demonstration aimed
+        at streaming very high-bandwidth video and other data from deep space –
+        enabling future human missions ...", "dateLastCrawled": "2024-02-19T05:20:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=video+(site%3agov+OR+site%3amil)&d=4911531693048540&mkt=en-US&setlang=en-US&w=lac3xeYgmI25gaEWFwYMqLQEn9hIW03w",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Video: Global Warming from 1880 to 2022 - Climate Change: Vital
+        Signs ...", "url": "https:\/\/climate.nasa.gov\/climate_resources\/139\/video-global-warming-from-1880-to-2022\/",
+        "datePublished": "2023-01-12T00:00:00.0000000", "datePublishedDisplayText":
+        "Jan 12, 2023", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/climate.nasa.gov\/climate_resources\/139",
+        "snippet": "Earth''s average surface temperature in 2022 tied with 2015 as
+        the fifth warmest on record, according to an analysis by NASA. Continuing
+        the planet''s long-term warming trend, global temperatures in 2022 were 1.6
+        degrees Fahrenheit (0.89 degrees Celsius) above the average for NASA''s baseline
+        period (1951-1980), scientists from NASA''s Goddard ...", "dateLastCrawled":
+        "2024-02-20T01:21:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=video+(site%3agov+OR+site%3amil)&d=4510158408341356&mkt=en-US&setlang=en-US&w=-zO2OIGuYqcC-7ohpqLIVo4ly10BsWV2",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Video Evidence A Law Enforcement Guide to Resources and Best Practices",
+        "url": "https:\/\/bja.ojp.gov\/sites\/g\/files\/xyckuh186\/files\/media\/document\/video_evidence_le_guide_to_resources_and_best_practices2.pdf",
+        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/bja.ojp.gov\/sites\/g\/files\/xyckuh186\/files\/media\/document\/video_evidence_le...",
+        "snippet": "Video evidence is a valuable tool for law enforcement, but it
+        also poses many challenges in terms of collection, analysis, and presentation.
+        This guide provides resources and best practices for law enforcement agencies
+        to enhance their video evidence capabilities and overcome common obstacles.
+        Learn how to use video evidence effectively and ethically in this comprehensive
+        guide.", "dateLastCrawled": "2024-02-18T07:08:00.0000000Z", "language": "en",
+        "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Federal Reserve Board - Videos", "url": "https:\/\/www.federalreserve.gov\/videos.htm",
+        "datePublished": "2023-10-03T00:00:00.0000000", "datePublishedDisplayText":
+        "Oct 3, 2023", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.federalreserve.gov\/videos.htm",
+        "snippet": "Board of Governors of the Federal Reserve System. The Federal
+        Reserve, the central bank of the United States, provides the nation with
+        a safe, flexible, and stable monetary and financial system. About.", "dateLastCrawled":
+        "2024-02-19T15:44:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=video+(site%3agov+OR+site%3amil)&d=4889446634946567&mkt=en-US&setlang=en-US&w=5YC5krltUsGvdoKQoeSAUHEw-h3X7t-_",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "NASA Image and Video Library", "url": "https:\/\/images.nasa.gov\/",
+        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/images.nasa.gov",
+        "snippet": "NASA Image and Video Library, serving up consolidated imagery
+        and videos in one searchable location. Users can download content in multiple
+        sizes and resolutions and see the metadata associated with images, including
+        EXIF\/camera data on many images.", "dateLastCrawled": "2024-02-20T18:59:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=video+(site%3agov+OR+site%3amil)&d=4682270631592178&mkt=en-US&setlang=en-US&w=SBfh559vCsdRQA6kFqn5WKcqIFoi-Inb",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Videos About Infection Control | Project Firstline | CDC", "url":
+        "https:\/\/www.cdc.gov\/infectioncontrol\/projectfirstline\/resources\/videos.html",
+        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.cdc.gov\/infectioncontrol\/projectfirstline\/resources\/videos.html",
+        "snippet": "Project Firstline Inside Infection Control Series. Check out
+        these videos with CDC’s Dr. Abby Carlson to learn the basic ideas behind infection
+        control, how they work to prevent COVID-19, and how using infection control
+        actions while you’re at work can protect you, your patients, your coworkers
+        and your community.", "dateLastCrawled": "2024-02-19T20:23:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=video+(site%3agov+OR+site%3amil)&d=4873237427258020&mkt=en-US&setlang=en-US&w=6N80UKgrivCoF-NCi1jje6ZKzfJAPCow",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "VA Video Connect (VVC) - Veterans Affairs", "url": "https:\/\/care.va.gov\/vvc-app\/",
+        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/care.va.gov",
+        "snippet": "Welcome toVA Video Connect (VVC) Get Immediate Help >>. * Required.
+        * Person or Conference to Call. * Your Name. By connecting I agree to using
+        video telehealth for this appointment.", "dateLastCrawled": "2024-02-20T06:22:00.0000000Z",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Subcommittee on Oversight releases USCP Video Public Access Policy
+        ...", "url": "https:\/\/cha.house.gov\/2023\/11\/subcommittee-on-oversight-releases-uscp-video-public-access-policy",
+        "datePublished": "2023-11-17T00:00:00.0000000", "datePublishedDisplayText":
+        "Nov 17, 2023", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/cha.house.gov\/2023\/11\/subcommittee-on-oversight-releases-uscp-video-public...",
+        "snippet": "WASHINGTON - Today, Rep. Barry Loudermilk (GA-11), Chairman of
+        the Committee on House Administration Subcommittee on Oversight, announced
+        that United States Capitol Police video footage from January 6, 2021 will
+        be made available to the public through two methods, a new online viewing
+        room and in person at the subcommittee’s offices in Washington, D.C.", "dateLastCrawled":
+        "2024-02-20T23:22:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=video+(site%3agov+OR+site%3amil)&d=4993797158338764&mkt=en-US&setlang=en-US&w=NTGEWjrWCuTe6rTL90Hz4GuLNqESAIy3",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Videos | Multimedia Section – NASA Mars Exploration", "url": "https:\/\/mars.nasa.gov\/multimedia\/videos\/",
+        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/mars.nasa.gov\/multimedia\/videos",
+        "snippet": "After Three Years on Mars, NASA''s Ingenuity Helicopter Mission
+        Ends. NASA Releases Independent Review''s Mars Sample Return Report. NASA
+        InSight Study Provides Clearest Look Ever at Martian Core. NASA’s real-time
+        portal for Mars exploration, featuring the latest news, images, and discoveries
+        from the Red Planet.", "dateLastCrawled": "2024-02-20T21:19:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=video+(site%3agov+OR+site%3amil)&d=4986491417133313&mkt=en-US&setlang=en-US&w=pBXQW-vA5XLbmEGYV_a84c1xGZx6xuvI",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "President Joseph R. Biden, Jr. Approves California Disaster", "url":
+        "https:\/\/www.whitehouse.gov\/briefing-room\/presidential-actions\/2024\/02\/19\/president-joseph-r-biden-jr-approves-california-disaster-declaration-6\/",
+        "datePublished": "2024-02-19T00:00:00.0000000", "datePublishedFreshnessText":
+        "2 days ago", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/presidential-actions\/2024\/02\/19\/president...",
+        "snippet": "Declaration. Today, President Joseph R. Biden, Jr. declared that
+        a major disaster exists in the State of California and ordered Federal assistance
+        to supplement state, tribal, and local recovery ...", "dateLastCrawled": "2024-02-21T10:09:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=video+(site%3agov+OR+site%3amil)&d=3565600789076&mkt=en-US&setlang=en-US&w=vI0Fhb7fqAg1JmkQBH4YlnS8FTrzKx0v",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "OSHA Videos | Occupational Safety and Health Administration",
+        "url": "https:\/\/www.osha.gov\/video\/", "isFamilyFriendly": <DATADOG_API_ENABLED>,
+        "displayUrl": "https:\/\/www.osha.gov\/video", "snippet": "NMSA and OSHA
+        Alliance: Longshore Safety Video #1 - Top Loader. 05:44 mins | January 2009.
+        NMSA and OSHA Alliance: Longshore Safety Video #2 - Container Loading and
+        Unloading Operations. 06:06 mins | January 2009. NMSA and OSHA Alliance: Longshore
+        Safety Video #3 - Yard Tractor Tip-over. 06:08 mins | January 2009.", "dateLastCrawled":
+        "2024-02-20T09:10:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=video+(site%3agov+OR+site%3amil)&d=4618026174709926&mkt=en-US&setlang=en-US&w=M_cV7U7_BQE0CS_WPRwlGw4kwclIxJ1S",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "KCPD and FBI seeking any video from the Super Bowl Parade shooting.",
+        "url": "https:\/\/tips.fbi.gov\/digitalmedia\/a396def35e7b432", "datePublished":
+        "2024-02-15T03:39:53.0000000", "datePublishedFreshnessText": "6 days ago",
+        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/tips.fbi.gov\/digitalmedia\/a396def35e7b432",
+        "snippet": "FBI and KCPD are requesting any videos from the Super Bowl shooting
+        and any video of the shooters attempting to flee the scene. Note: File size
+        may not exceed 5000 megabytes (mb). If a file exceeds this limit, please call
+        1-800-CALL-FBI (1-800-225-5324) for additional instructions. You are limited
+        to uploading 4 files.", "dateLastCrawled": "2024-02-20T09:12:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=video+(site%3agov+OR+site%3amil)&d=4458909278263&mkt=en-US&setlang=en-US&w=fpWJuPsf_e7OCcSMg_6KWYLkp60M9OoH",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "NASA TV Live - NASA", "url": "https:\/\/www.nasa.gov\/nasatv\/",
+        "datePublished": "2024-02-20T00:00:00.0000000", "datePublishedFreshnessText":
+        "1 day ago", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nasa.gov\/nasatv",
+        "snippet": "NASA Television is our official free-to-air broadcast network
+        for live events and original content, including launches, spacewalks, mission
+        events, the latest news briefings, and videos showcasing our missions. You
+        can access NASA TV through your local provider, as well as through third-party
+        distribution platforms such as Apple TV, Roku, Hulu ...", "dateLastCrawled":
+        "2024-02-21T06:22:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=video+(site%3agov+OR+site%3amil)&d=4558893400094581&mkt=en-US&setlang=en-US&w=RtacnRQCSsoZJWUpICJN5ly-mEiBY2Fo",
+        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Run. Hide. Fight. — FBI", "url": "https:\/\/www.fbi.gov\/video-repository\/run-hide-fight-092120.mp4\/view",
+        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.fbi.gov\/video-repository\/run-hide-fight-092120.mp4\/view",
+        "snippet": "In this FBI training video, customers at a bar are caught in
+        an active shooter event. By employing the run, hide, and fight tactics, as
+        well as knowing the basics of rendering first aid to others ...", "dateLastCrawled":
+        "2024-02-20T22:15:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=video+(site%3agov+OR+site%3amil)&d=4618872284119175&mkt=en-US&setlang=en-US&w=YbAvQ2Ju5Rw0a5lJZ1EW3t3DrHLSXr8c",
+        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 21 Feb 2024 14:54:52 GMT
+recorded_with: VCR 6.2.0
