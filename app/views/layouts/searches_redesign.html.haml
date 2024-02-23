@@ -15,6 +15,6 @@
     = javascript_pack_tag 'application'
     = stylesheet_pack_tag 'application'
   %body
-    #main-content= yield
+    #serp-main-content= yield
     = render "/shared/google_tag_manager_noscript"
     = raw @affiliate.external_tracking_code
