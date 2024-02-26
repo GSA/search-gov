@@ -890,6 +890,75 @@ describe SearchgovUrl do
       end
     end
 
+    context 'when url has different canonical_url' do
+      let(:canonical_url) { 'https://www.agency.gov/new.html' }
+
+      before do
+        expect(I14yDocument).not_to receive(:create).
+          with(hash_including(title: 'My Title', description: 'My description'))
+        stub_request(:get, url).
+          to_return(status: 301,
+                    body: html,
+                    headers: { location: canonical_url })
+        stub_request(:get, canonical_url).
+          to_return(status: 200,
+                    body: html,
+                    headers: { content_type: 'text/html' })
+      end
+
+      it 'creates a new url' do
+        expect(described_class).to receive(:create).with(url: canonical_url)
+        fetch
+      end
+    end
+
+    context 'when canonical_url is created' do
+      let(:canonical_url) { 'https://www.agency.gov/canonical' }
+      let(:searchgov_document) { searchgov_url.searchgov_document }
+
+      before do
+        allow(searchgov_url).to receive(:document).and_return(searchgov_document)
+        allow(searchgov_document).to receive(:canonical_url).and_return(canonical_url)
+        allow(described_class).to receive(:create).with(url: canonical_url).and_return(true)
+      end
+
+      it 'updates last_crawl_status with canonical URL info' do
+        expect { searchgov_url.send(:use_canonical_url) }.
+          to raise_error(SearchgovUrl::SearchgovUrlError, "Created canonical url #{canonical_url}")
+        expect(searchgov_url.last_crawl_status).to include("Canonical URL: #{canonical_url}")
+      end
+    end
+
+    describe '#check_canonical_url' do
+      let(:searchgov_document) { searchgov_url.searchgov_document }
+
+      before do
+        allow(searchgov_url).to receive(:document).and_return(searchgov_document)
+        allow(searchgov_document).to receive(:canonical_url).and_return(nil)
+      end
+
+      context 'when document has no canonical URL' do
+        it 'indexes the document' do
+          expect(searchgov_url).to receive(:index_document)
+          searchgov_url.send(:check_canonical_url)
+        end
+      end
+
+      context 'when document has a canonical URL' do
+        let(:canonical_url) { 'http://www.example.com/canonical' }
+
+        before do
+          allow(searchgov_document).to receive(:canonical_url).and_return(canonical_url)
+          allow(searchgov_url).to receive(:use_canonical_url)
+        end
+
+        it 'uses the canonical URL' do
+          expect(searchgov_url).to receive(:use_canonical_url)
+          searchgov_url.send(:check_canonical_url)
+        end
+      end
+    end
+
     context 'when the content type is unsupported' do
       before do
         stub_request(:get, url).
