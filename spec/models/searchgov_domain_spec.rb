@@ -470,4 +470,19 @@ describe SearchgovDomain do
       it { is_expected.to eq ['https://searchgov.gov/sitemap_record.xml'] }
     end
   end
+
+  describe '#stop_indexing!' do
+    it 'stops indexing job and updates statuses' do
+      resque_job = class_spy(Resque::Job).as_stubbed_const
+
+      searchgov_domain.stop_indexing!
+
+      expect(resque_job).to have_received(:destroy)
+        .with(:searchgov, 'SearchgovDomainIndexerJob', searchgov_domain: searchgov_domain, delay: searchgov_domain.delay)
+
+      expect(searchgov_domain.status).to eq('indexing stopped')
+      expect(searchgov_domain).to be_idle
+      expect(searchgov_domain).to be_persisted
+    end
+  end
 end
