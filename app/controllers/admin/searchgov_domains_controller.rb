@@ -21,16 +21,17 @@ class Admin::SearchgovDomainsController < Admin::AdminController
       inline: true,
       confirm: 'Are you sure you want to reindex this entire domain?'
     )
-    config.action_links.add(
-      'stop_indexing',
-      label: 'stop indexing',
-      type: :member,
+
+    config.action_links.add('stop_indexing',
+      confirm:   'Are you sure you want to stop indexing this domain?',
       crud_type: :update,
-      method: :post,
-      position: false,
-      inline: true,
-      confirm: 'Are you sure you want to stop indexing this domain?'
+      inline:    true,
+      label:     'stop indexing',
+      method:    :post,
+      position:  false,
+      type:      :member
     )
+
     config.update.columns = %i[js_renderer]
     config.columns[:js_renderer].label = 'Render Javascript'
   end

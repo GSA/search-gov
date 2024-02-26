@@ -3,6 +3,9 @@
 inherit_from:
   - https://raw.githubusercontent.com/GSA/searchgov_style/main/.default.yml
 
+Layout/DotPosition:
+  EnforcedStyle: trailing
+
 inherit_mode:
   merge:
     - Exclude
