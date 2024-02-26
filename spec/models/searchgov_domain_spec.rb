@@ -477,8 +477,8 @@ describe SearchgovDomain do
 
       searchgov_domain.stop_indexing!
 
-      expect(resque_job).to have_received(:destroy)
-        .with(:searchgov, 'SearchgovDomainIndexerJob', searchgov_domain: searchgov_domain, delay: searchgov_domain.delay)
+      expect(resque_job).to have_received(:destroy).
+        with(:searchgov, 'SearchgovDomainIndexerJob', searchgov_domain: searchgov_domain, delay: searchgov_domain.delay)
 
       expect(searchgov_domain.status).to eq('indexing stopped')
       expect(searchgov_domain).to be_idle

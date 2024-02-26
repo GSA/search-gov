@@ -22,7 +22,8 @@ class Admin::SearchgovDomainsController < Admin::AdminController
       confirm: 'Are you sure you want to reindex this entire domain?'
     )
 
-    config.action_links.add('stop_indexing',
+    config.action_links.add(
+      'stop_indexing',
       confirm:   'Are you sure you want to stop indexing this domain?',
       crud_type: :update,
       inline:    true,
