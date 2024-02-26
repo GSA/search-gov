@@ -71,6 +71,16 @@ class SearchgovDomain < ApplicationRecord
     urls.presence || ["#{url}sitemap.xml"]
   end
 
+  def stop_indexing!
+    Resque::Job.destroy(:searchgov, 'SearchgovDomainIndexerJob', searchgov_domain: self, delay: delay)
+
+    self.status = 'indexing stopped'
+
+    done_indexing
+
+    save
+  end
+
   private
 
   def robotex
