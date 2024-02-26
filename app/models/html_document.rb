@@ -48,6 +48,11 @@ class HtmlDocument < WebDocument
     end
   end
 
+  def canonical_url
+    return nil if url == extract_canonical_url
+    extract_canonical_url
+  end
+
   private
 
   def html
@@ -106,6 +111,16 @@ class HtmlDocument < WebDocument
      metadata['article:section']].map { |k| k&.join(', ') }
   end
 
+  def extract_linkdata
+    linkdata = {}
+    link_nodes = html.xpath('//link')
+    link_nodes.each do |node|
+      property = node['rel']
+      (linkdata[property.downcase] ||= []) << node['href'] unless property.nil?
+    end
+    linkdata
+  end
+
   def extract_language
     html_attributes['lang']&.content
   end
@@ -142,5 +157,9 @@ class HtmlDocument < WebDocument
 
   def dcterms_data
     metadata.select { |k, _v| /^dcterms\./.match?(k) }
+  end
+
+  def extract_canonical_url
+    linkdata['canonical']&.first
   end
 end

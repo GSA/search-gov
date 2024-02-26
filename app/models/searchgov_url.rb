@@ -73,9 +73,7 @@ class SearchgovUrl < ApplicationRecord
         # SRCH-3134 Temporarily adding save/no save logic until we have documented how this functionality
         # behaves in production setting.
         save_document if ENV['SAVE_SEARCHGOV_DOCUMENT'] == 'true'
-        index_document
-
-        self.last_crawl_status = OK_STATUS
+        check_canonical_url
       rescue => error
         delete_document if indexed? && searchgov_domain.available?
         self.last_crawl_status = error.message.first(255)
@@ -142,6 +140,25 @@ class SearchgovUrl < ApplicationRecord
     handle_redirection(document.redirect_url) if document.redirect_url
     raise SearchgovUrlError.new(404) if /page not found|404 error/i === document.title
     raise SearchgovUrlError.new('Noindex per HTML metadata') if document.noindex?
+  end
+
+  def use_canonical_url
+    canonical_url = document.canonical_url
+    raise SearchgovUrlError, "Record creation forbidden to #{canonical_url}" if redirected_outside_domain?(canonical_url)
+    return unless SearchgovUrl.create(url: canonical_url)
+
+    update(last_crawl_status: "Canonical URL: #{canonical_url}")
+    raise SearchgovUrlError, "Created canonical url #{canonical_url}"
+  end
+
+  def check_canonical_url
+    if document.canonical_url.present?
+      use_canonical_url
+    else
+      index_document
+
+      self.last_crawl_status = OK_STATUS
+    end
   end
 
   def save_document
