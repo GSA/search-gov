@@ -36,8 +36,7 @@ class Admin::SearchgovDomainsController < Admin::AdminController
   end
 
   def stop_indexing
-    @searchgov_domain = SearchDomain.find(params[:id])
-    @searchgov_domain.stop_indexing!
+    SearchDomain.find(params[:id]).stop_indexing!
   end
 
   def after_create_save(record)
