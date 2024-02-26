@@ -3,8 +3,6 @@
 describe Admin::SearchgovDomainsController do
   fixtures :users, :searchgov_domains
 
-  let(:config) { described_class.active_scaffold_config }
-
   before do
     activate_authlogic
 
@@ -12,6 +10,7 @@ describe Admin::SearchgovDomainsController do
   end
 
   describe '#update' do
+    let(:config) { described_class.active_scaffold_config }
 
     context 'when configuring Active Scaffold' do
       let(:update_columns) { config.update.columns }
@@ -27,11 +26,9 @@ describe Admin::SearchgovDomainsController do
     let(:domain) { searchgov_domains(:agency_gov) }
  
     it 'calls stop_indexing! on domain' do
-      allow(SearchDomain).to receive(:find).and_return(domain)
+      expect_any_instance_of(SearchgovDomain).to receive(:stop_indexing!)
 
-      post stop_indexing_admin_searchgov_domain_path(domain)
-
-      expect(domain).to receive(:stop_indexing!)
+      post :stop_indexing, params: {id: domain.id}
     end
   end
 end
