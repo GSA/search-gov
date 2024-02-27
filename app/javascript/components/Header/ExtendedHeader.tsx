@@ -32,6 +32,10 @@ const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: FontsAndColors; }>
     color: ${(props) => props.styles.headerPrimaryLinkColor} !important;
   }
 
+  a.usa-nav__link:hover::after {
+    background-color: ${(props) => props.styles.headerPrimaryLinkColor} !important;
+  }
+
   .usa-nav__secondary-item > a {
     color: ${(props) => props.styles.headerSecondaryLinkColor};
   }

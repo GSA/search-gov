@@ -71,13 +71,11 @@ Feature:  Administration
     And I should see "Display Settings (Show)"
     And I should see "Analytics-Tracking Code (Show)"
     When I follow "Show" within the third subsection row
-    When I check "Show redesign display settings"
     And I check "Use redesigned results page"
     And I press "Update"
     Then I should see "agency site"
     When I follow "Edit" within the first scaffold row
     When I follow "Show" within the third subsection row
-    Then the "Show redesign display settings" checkbox should be checked
     And the "Use redesigned results page" checkbox should be checked
 
   Scenario: Visiting the users admin page as an admin
