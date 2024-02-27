@@ -51,6 +51,10 @@ class Admin::SearchgovDomainsController < Admin::AdminController
     end
   end
 
+  def after_create_save(record)
+    flash[:info] = "#{record.domain} has been created. Sitemaps will automatically begin indexing."
+  end
+
   def reindex
     process_action_link_action do |searchgov_domain|
       SearchgovDomainReindexerJob.perform_later(searchgov_domain: searchgov_domain)

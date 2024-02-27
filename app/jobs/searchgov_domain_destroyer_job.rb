@@ -14,11 +14,7 @@ class SearchgovDomainDestroyerJob < ApplicationJob
   private
 
   def destroy_associated_records(records, record_type)
-    records.find_each(batch_size: 100) do |record|
-      unless destroy_record(record, record_type)
-        return false
-      end
-    end
+    records.find_each(batch_size: 100) { |record| return false unless destroy_record(record, record_type) }
 
     true
   end
