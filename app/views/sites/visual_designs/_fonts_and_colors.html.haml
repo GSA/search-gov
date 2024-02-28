@@ -2,21 +2,26 @@
 %h3= t('.fonts_and_colors', scope: 'admin_center')
 
 = f.fields_for :visual_design_json do |visual_design|
-  = visual_design.label :header_links_font_family, t('.header_links_font_family', scope: 'admin_center')
-  = visual_design.select :header_links_font_family,
-    options_for_select(Affiliate::USWDS_FONTS.index_by { |font| t(".fonts.#{font}", scope: 'admin_center') },
-    render_affiliate_visual_design_value(@site.visual_design_json, :header_links_font_family))
-  = visual_design.label :footer_and_results_font_family, t('.footer_and_results_font_family', scope: 'admin_center')
-  = visual_design.select :footer_and_results_font_family,
-    options_for_select(Affiliate::USWDS_FONTS.index_by { |font| t(".fonts.#{font}", scope: 'admin_center') },
-    render_affiliate_visual_design_value(@site.visual_design_json, :footer_and_results_font_family))
+  = render 'font_selector', field: :primary_navigation_font_family,  visual_design: visual_design
+
+  %fieldset
+    %legend.section-heading= t('primary_navigation_font_weight', scope: 'admin_center')
+    = visual_design.label :primary_navigation_font_weight, value: 'normal', class: 'radio' do
+      = visual_design.radio_button :primary_navigation_font_weight, 'normal', checked: @site.visual_design_json['primary_navigation_font_weight'] == "normal"
+      = t(:font_weight_normal, scope: :admin_center)
+    = visual_design.label :primary_navigation_font_weight, value: 'bold', class: 'radio' do
+      = visual_design.radio_button :primary_navigation_font_weight, 'bold', checked: @site.visual_design_json['primary_navigation_font_weight'] == "bold"
+      = t(:font_weight_bold, scope: :admin_center)
+
+  = render 'font_selector', field: :header_links_font_family,       visual_design: visual_design
+  = render 'font_selector', field: :footer_and_results_font_family, visual_design: visual_design
+  = render 'font_selector', field: :identifier_font_family,         visual_design: visual_design
 
   %fieldset
     %legend= t('.color_scheme', scope: 'admin_center')
 
     - Affiliate::DEFAULT_COLORS.each_key do |color|
       = visual_design.label color, t(".colors.#{color}", scope: 'admin_center')
-      = visual_design.text_field color,
-          value: render_affiliate_visual_design_value(@site.visual_design_json, color)
+      = visual_design.text_field color, value: @site.visual_design_json[color]
 
 %hr

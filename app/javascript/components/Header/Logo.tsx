@@ -1,17 +1,37 @@
-import React from 'react';
-import { Logo as UswdsLogo, Title } from '@trussworks/react-uswds';
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import { Logo as UswdsLogo, Link, Title } from '@trussworks/react-uswds';
 
-import { PageData } from '../SearchResultsLayout';
+import { FontsAndColors, PageData } from '../SearchResultsLayout';
+import { StyleContext } from '../../contexts/StyleContext';
 
 interface LogoProps {
   page: PageData;
 }
 
-export const Logo = ({ page }: LogoProps) => (
-  <UswdsLogo
+const StyledLogo = styled(UswdsLogo).attrs<{ styles: FontsAndColors; }>((props) => ({ styles: props.styles }))`
+  color: ${(props) => props.styles.headerTextColor} !important;
+`;
+
+export const Logo = ({ page }: LogoProps) => {
+  const styles = useContext(StyleContext);
+  const imageContent = page.logo?.url ? 
+    <Link className='logo-link' href={page.homepageUrl}>
+      <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title}/>
+    </Link> : 
+    null;
+  const titleContent =  (!page.displayLogoOnly) ? (page.homepageUrl) ? 
+    <Title>
+      <Link className='logo-link' href={page.homepageUrl}>{page.title}</Link>
+    </Title> : 
+    <Title>{page.title}</Title> : 
+    <></>;
+
+  return <StyledLogo
     className="width-full"
+    heading={titleContent}
+    image={imageContent}
     size="slim"
-    image={page.logo?.url ? <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title} /> : null}
-    heading={page.displayLogoOnly ? <></> : <Title>{page.title}</Title>}
-  />
-);
+    styles={styles}
+  />;
+};

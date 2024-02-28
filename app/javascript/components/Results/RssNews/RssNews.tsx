@@ -4,6 +4,8 @@ import Moment from 'react-moment';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
 import parse from 'html-react-parser';
 import { StyleContext } from '../../../contexts/StyleContext';
+import { FontsAndColors } from '../../SearchResultsLayout';
+
 interface RssNewsProps {
   newsLabel: string;
   news?: {
@@ -14,7 +16,7 @@ interface RssNewsProps {
   }[];
 }
 
-const StyledWrapper = styled.div.attrs<{ styles: { sectionTitleColor: string }; }>((props) => ({
+const StyledWrapper = styled.div.attrs<{ styles: FontsAndColors; }>((props) => ({
   styles: props.styles
 }))`
   .news-title-wrapper-label {
@@ -47,11 +49,11 @@ export const RssNews = ({ newsLabel, news=[] }: RssNewsProps) => {
                         <Moment fromNow>{newsItem.publishedAt}</Moment>
                       </span>
                       <div className='result-title'>
-                        <a href={newsItem.link} className='result-title-link'>
-                          <h2 className='result-title-label'>
+                        <h2 className='result-title-label'>
+                          <a href={newsItem.link} className='result-title-link'>
                             {parse(newsItem.title)}
-                          </h2>
-                        </a>
+                          </a>
+                        </h2> 
                       </div>
                       <div className='result-desc'>
                         <p>{parse(newsItem.description)}</p>

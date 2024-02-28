@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
+import parse from 'html-react-parser';
 
 import { Pagination } from './../Pagination/Pagination';
 import { BestBets } from './BestBets';
@@ -20,6 +21,7 @@ import { Jobs } from './Jobs/Jobs';
 import { SiteLimitAlert } from './SiteLimitAlert/SiteLimitAlert';
 import { RelatedSearches } from './RelatedSearches/RelatedSearches';
 import { SpellingSuggestion } from './SpellingSuggestion/SpellingSuggestion';
+import { FontsAndColors } from '../SearchResultsLayout';
 
 import './Results.css';
 
@@ -141,21 +143,21 @@ interface ResultsProps {
   agencyName?: string
 }
 
-const StyledWrapper = styled.div.attrs<{ styles: { footerAndResultsFontFamily: string; resultDescriptionColor: string; resultTitleColor: string; resultTitleLinkVisitedColor: string; resultUrlColor: string; }; }>((props) => ({
+const StyledWrapper = styled.div.attrs<{ styles: FontsAndColors; }>((props) => ({
   styles: props.styles
 }))`
   font-family: ${(props) => props.styles.footerAndResultsFontFamily};
-  .result-title-link > .result-title-label{
-    color: ${(props) => props.styles.resultTitleColor} !important;
+  .result-title-label > .result-title-link {
+    color: ${(props) => props.styles.resultTitleColor};
   }
-  .result-title-link:visited > .result-title-label{
-    color: ${(props) => props.styles.resultTitleLinkVisitedColor} !important;
+  .result-title-label > .result-title-link:visited {
+    color: ${(props) => props.styles.resultTitleLinkVisitedColor};
   }
   .result-desc > p {
-    color: ${(props) => props.styles.resultDescriptionColor} !important;
+    color: ${(props) => props.styles.resultDescriptionColor};
   }
-  .result-url-text {
-    color: ${(props) => props.styles.resultUrlColor} !important;
+  .result-desc .result-url-text {
+    color: ${(props) => props.styles.resultUrlColor};
   }
 `;
 
@@ -174,15 +176,19 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
   const i18n = useContext(LanguageContext);
   const styles = useContext(StyleContext);
   const imagesResults = getImages(results);
+  // Using unboundedResults as a shortcut to determining the search engine is possible since presently all successful
+  // image searches are served by Searchgov. Depending on the outcome of SAT-1507, this may need to be updated to
+  // account for Bing-delivered image search results where unboundedResults would be false.
+  const isBing = unboundedResults === true;
   
   return (
     <>
-      <div className='search-result-wrapper'>
+      <div className='search-result-wrapper' id='main-content'>
         {sitelimit && (
           <SiteLimitAlert {...sitelimit} query={query} />
         )}
 
-        {total && <ResultsCount total={total}/>}
+        {total && total > 0 ? <ResultsCount total={total}/>  : <></>}
 
         {spellingSuggestion && (
           <SpellingSuggestion {...spellingSuggestion}/>
@@ -249,6 +255,10 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
                     <ResultGrid key={index} result={result} />
                   );
                 })}
+                <GridContainer className={`content-provider ${isBing ? 'bing' : ''}`}>
+                  <span className='powered-by'>{parse(i18n.t('poweredBy'))} </span>
+                  <span className='engine'>{isBing ? 'Bing' : 'Search.gov'}</span>
+                </GridContainer>
                 <GridContainer className='result-divider'>
                   <Grid row gap="md">
                   </Grid>

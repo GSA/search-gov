@@ -18,8 +18,23 @@ Then /^I should see (exactly|at least) "([^"]*)" video( govbox)? search results?
   end
 end
 
-Then(/^I should see (Powered by|Generado por) Bing logo$/) do |text|
-  page.should have_selector ".content-provider .bing", text: text
+Then /^I should see exactly "([^"]*)" video govbox search results in the redesigned SERP?$/ do |count|
+  selector = '.search-result-video-item'
+  page.should have_selector selector, count: count
+end
+
+Then /^I should see "(.+?)" in the video govbox?$/ do |string|
+  page.should have_selector('.search-result-video-item', text: string)
+end
+
+Then /^I should see (Powered by|Generado por) Bing logo$/ do |text|
+  page.should have_selector '.content-provider .bing', text: text
+end
+
+Then /^I should see (Powered by|Generado por) (Bing|Search.gov)$/ do |text, engine|
+  page.should have_selector('.powered-by', text: text)
+  visibility = engine == 'Bing' ? 'hidden' : ''
+  page.should have_selector('.engine', text: engine, visible: visibility.to_sym)
 end
 
 Then /^I should see a (left|right) aligned SERP logo$/ do |alignment|

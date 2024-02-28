@@ -1,0 +1,4 @@
+= visual_design.label field, t(field, scope: 'admin_center')
+= visual_design.select field,
+  options_for_select(Affiliate::USWDS_FONTS.index_by { |font| t("fonts.#{font}", scope: 'admin_center') },
+  @site.visual_design_json[field.to_s])

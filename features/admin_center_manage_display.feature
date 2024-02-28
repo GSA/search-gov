@@ -452,53 +452,35 @@ Feature: Manage Display
     And the "Status" field should contain "Inactive"
     And I should see "The alert for this site has been updated."
 
-  Scenario: Editing the Visual Design Settings when "Show Redesign Display Settings" is false
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Visual Design page
-    Then I should see "Visual design (new)"
-    Then I should see a link to "Preview Redesigned Display" with url that ends with "/search?affiliate=agency.gov&redesign=true"
-    And the page body should not contain "These settings are for preview purposes only."
-
   @javascript
-  Scenario: Editing the Visual Design Settings when "Show Redesign Display Settings" is true
+  Scenario: Editing the Visual Design Settings when "Use Redesigned Results Page" is true
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | show_redesign_display_settings |
-      | bing site    | agency.gov | john@agency.gov | John       | Bar       | true                           |
+      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page | search_engine |
+      | bing site    | agency.gov | john@agency.gov | John       | Bar       | true                        | SearchGov     |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Visual Design page
     Then I should see "Visual design (new)"
-    And the page body should contain "These settings are for preview purposes only."
+    And the page body should not contain "These settings are for preview purposes only."
     And I should see "Fonts & Colors" within the navigation tabs
-    And I should not see "Results Format" within the navigation tabs
+    And I should see "Results Format" within the navigation tabs
     And I should see "Image Assets" within the navigation tabs
     And I should see "Header & Footer" within the navigation tabs
 
-    Given the following SearchGov Affiliates exist:
-      | display_name    | name       | contact_email   | first_name | last_name | show_redesign_display_settings |
-      | searchgov site  | agency.gov | john@agency.gov | John       | Bar       | true                           |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Visual Design page
-    Then I should see "Visual design (new)"
-    And the page body should contain "These settings are for preview purposes only."
-
     When I follow "Fonts & Colors" within the navigation tabs
-    Then I should see "Header Links Font Family"
-    And the "Header Links Font Family" field should contain "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
+    Then I should see "Header Secondary Links Font Family"
+    And the "Header Secondary Links Font Family" field should contain "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
     And I should see "Footer and Results Font Family"
     And the "Footer and Results Font Family" field should contain "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
 
-    When I select "Georgia" from "Header Links Font Family"
+    When I select "Georgia" from "Header Secondary Links Font Family"
     And I submit the form by pressing "Save"
     Then I should see "You have updated your visual design settings."
-    And the "Header Links Font Family" field should contain "'Georgia', 'Cambria', 'Times New Roman', 'Times', serif"
+    And the "Header Secondary Links Font Family" field should contain "'Georgia', 'Cambria', 'Times New Roman', 'Times', serif"
 
     When I select "Roboto mono" from "Footer and Results Font Family"
     And I submit the form by pressing "Save"
     Then I should see "You have updated your visual design settings."
-    And the "Header Links Font Family" field should contain "'Georgia', 'Cambria', 'Times New Roman', 'Times', serif"
+    And the "Header Secondary Links Font Family" field should contain "'Georgia', 'Cambria', 'Times New Roman', 'Times', serif"
     And the "Footer and Results Font Family" field should contain "'Roboto Mono Web', 'Bitstream Vera Sans Mono', 'Consolas', 'Courier', monospace"
 
     When I follow "Fonts & Colors" within the navigation tabs
@@ -652,50 +634,37 @@ Feature: Manage Display
     Then I should be able to access 3 "new_secondary_header_link" rows
     And I should not see "Add new secondary header link"
 
-  Scenario: Display sub navigation links when both "Show Redesign Display Settings" and "Use Redesigned Results Page" are true
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | show_redesign_display_settings | use_redesigned_results_page |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | true                           | true                        |
+  Scenario: Editing the Visual Design Settings when "Use Redesigned Results Page" is false
+    Given the following SearchGov Affiliates exist:
+      | display_name    | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | searchgov site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Visual Design page
     Then I should see "Visual design (new)"
-    And the page body should not contain "These settings are for preview purposes only."
-    And I should not see a link to "Font & Colors" in the active site sub navigation
-    And I should not see a link to "Image Assets" in the active site sub navigation
-    And I should not see a link to "Header & Footer" in the active site sub navigation
-  
-  Scenario: Display sub navigation links when "Show Redesign Display Settings" is true and "Use Redesigned Results Page" is false
+    And the page body should contain "These settings are for preview purposes only."
+
+  Scenario: Display sub navigation links when "Use Redesigned Results Page" is true
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | show_redesign_display_settings |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | true                           |
+      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | true                        |
+    And I am logged in with email "john@agency.gov"
+    When I go to the agency.gov's Visual Design page
+    Then I should see "Visual design (new)"
+    And I should not see a link to "Legacy Font & Colors" in the active site sub navigation
+    And I should not see a link to "Legacy Image Assets" in the active site sub navigation
+    And I should not see a link to "Legacy Header & Footer" in the active site sub navigation
+
+  Scenario: Display sub navigation links when "Use Redesigned Results Page" is false
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | first_name | last_name |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Display page
+    Then I should see "Visual design (new)"
+    And the page body should not contain "These settings are for preview purposes only."
     And I follow "Legacy Font & Colors"
     And I should see a link to "Legacy Font & Colors" in the active site sub navigation
     And I follow "Legacy Image Assets"
     And I should see a link to "Legacy Image Assets" in the active site sub navigation
     And I follow "Legacy Header & Footer"
     And I should see a link to "Legacy Header & Footer" in the active site sub navigation
-
-  Scenario: Display sub navigation links when "Show Redesign Display Settings" is false and "Use Redesigned Results Page" is true  
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | true                        |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Manage Display page
-    And I should not see a link to "Font & Colors" in the active site sub navigation
-    And I should not see a link to "Image Assets" in the active site sub navigation
-    And I should not see a link to "Header & Footer" in the active site sub navigation
-
-  Scenario: Display sub navigation links when both "Show Redesign Display Settings" and "Use Redesigned Results Page" are false
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Manage Display page
-    And I follow "Font & Colors"
-    And I should see a link to "Font & Colors" in the active site sub navigation
-    And I follow "Image Assets"
-    And I should see a link to "Image Assets" in the active site sub navigation
-    And I follow "Header & Footer"
-    And I should see a link to "Header & Footer" in the active site sub navigation

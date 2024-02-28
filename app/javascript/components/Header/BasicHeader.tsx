@@ -3,13 +3,15 @@ import styled from 'styled-components';
 import { darken } from 'polished';
 import { Header as UswdsHeader, PrimaryNav, NavMenuButton } from '@trussworks/react-uswds';
 
+import { FontsAndColors } from '../SearchResultsLayout';
 import { HeaderProps } from './../props';
-import { StyleContext } from '../../contexts/StyleContext';
 import { Logo } from './Logo';
+import { StyleContext } from '../../contexts/StyleContext';
+import { buildLink } from './ExtendedHeader';
 
 import './BasicHeader.css';
 
-const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: { buttonBackgroundColor: string; headerLinksFontFamily: string, headerBackgroundColor: string, headerPrimaryLinkColor: string, headerSecondaryLinkColor: string; }; }>((props) => ({
+const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: FontsAndColors; }>((props) => ({
   styles: props.styles
 }))`
   background-color: ${(props) => props.styles.headerBackgroundColor};
@@ -33,19 +35,7 @@ const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: { buttonBackground
 export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeaderLinks, secondaryHeaderLinks }: HeaderProps) => {
   const styles = useContext(StyleContext);
 
-  const primaryNavItems =
-    primaryHeaderLinks && primaryHeaderLinks.length > 0 ? (primaryHeaderLinks.map((link, index) => {
-      return (
-        <a className="usa-nav__link" href={link.url} key={index}>
-          <span>{link.title}</span>
-        </a>
-      );
-    })) : (
-      [
-        <></>
-      ]
-    );
-
+  const primaryNavItems = primaryHeaderLinks ? buildLink(primaryHeaderLinks, 'usa-nav__link') : [];
   const showMobileMenu = (primaryHeaderLinks && primaryHeaderLinks.length > 0) || (secondaryHeaderLinks && secondaryHeaderLinks.length > 0);
 
   return (
@@ -68,21 +58,17 @@ export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeade
             onToggleMobileNav={toggleMobileNav}
             mobileExpanded={mobileNavOpen}
           >
-            <ul  className="usa-nav__secondary-links">
-              { secondaryHeaderLinks && secondaryHeaderLinks.length > 0 ? (secondaryHeaderLinks.map((link, index) => {
-                return (
+            { secondaryHeaderLinks &&
+              <ul  className="usa-nav__secondary-links">
+                { secondaryHeaderLinks.map((link, index) => (
                   <li className="usa-nav__secondary-item" key={index}>
                     <a href={link.url} key={index}>
                       {link.title}
                     </a>
-                  </li>
-                );
-              })) : (
-                [
-                  <></>
-                ]
-              ) }
-            </ul>
+                  </li>))
+                }
+              </ul>
+            }
           </PrimaryNav>
         </div>
       </StyledUswdsHeader>

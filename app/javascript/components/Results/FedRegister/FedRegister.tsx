@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
 import parse from 'html-react-parser';
 import moment from 'moment';
+
 import { StyleContext } from '../../../contexts/StyleContext';
+import { FontsAndColors } from '../../SearchResultsLayout';
 
 type FedRegisterDoc = {
   commentsCloseOn: string | null;
@@ -23,7 +25,7 @@ interface FedRegisterDocsProps {
   query?:string;
 }
 
-const StyledWrapper = styled.div.attrs<{ styles: { sectionTitleColor: string }; }>((props) => ({
+const StyledWrapper = styled.div.attrs<{ styles: FontsAndColors }>((props) => ({
   styles: props.styles
 }))`
   .fed-register-label {
@@ -112,13 +114,12 @@ export const FedRegister = ({ fedRegisterDocs=[], query='' }: FedRegisterDocsPro
                   <Grid row gap="md">
                     <Grid col={true} className='result-meta-data'>
                       <span className='published-date'>{fedRegisterDoc.publicationDate}</span>
-                      
                       <div className='result-title'>
-                        <a href={fedRegisterDoc.htmlUrl} className='result-title-link'>
-                          <h2 className='result-title-label'>
-                            {parse(fedRegisterDoc.title)} 
-                          </h2>
-                        </a>
+                        <h2 className='result-title-label'>
+                          <a href={fedRegisterDoc.htmlUrl} className='result-title-link'>
+                            {parse(fedRegisterDoc.title)}
+                          </a>
+                        </h2>
                       </div>
                       <div className='result-desc'>
                         <p>{getFedRegDocInfo(fedRegisterDoc)}</p>
@@ -136,11 +137,11 @@ export const FedRegister = ({ fedRegisterDocs=[], query='' }: FedRegisterDocsPro
               <Grid row gap="md">
                 <Grid col={true} className='result-meta-data'>
                   <div className='result-title'>
-                    <a href={getAgencyFedUrl(query)} className='result-title-link more-title-link'>
-                      <h2 className='result-title-label'>
+                    <h2 className='result-title-label'>
+                      <a href={getAgencyFedUrl(query)} className='result-title-link more-title-link'>
                         More agency documents on FederalRegister.gov
-                      </h2>
-                    </a>
+                      </a>
+                    </h2>
                   </div>
                 </Grid>
               </Grid>

@@ -40,7 +40,8 @@ module ReactHelper
       logo: {
         text: logo_text(affiliate.header_logo_blob),
         url: header_logo_url(affiliate.header_logo)
-      }
+      },
+      homepageUrl: affiliate.website
     }
   end
 
@@ -216,7 +217,6 @@ module ReactHelper
     if show_results_format?(affiliate) && !affiliate.display_created_date_on_search_results?
       reject_keys_from_hash(govbox_set_json[:federalRegisterDocuments], 'publication_date') if govbox_set_json[:federalRegisterDocuments].present?
       reject_keys_from_hash(govbox_set_json[:newsItems], 'published_at') if govbox_set_json[:newsItems].present?
-      reject_keys_from_hash(govbox_set_json[:youtubeNewsItems], 'published_at') if govbox_set_json[:youtubeNewsItems].present?
     end
     govbox_set_json
   end

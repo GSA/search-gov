@@ -19,11 +19,15 @@ const fontsAndColors = {
   headerNavigationBackgroundColor: '#83df0a',
   headerPrimaryLinkColor: '#594973',
   headerSecondaryLinkColor: '#c8155d',
+  headerTextColor: '#C000FE',
   healthBenefitsHeaderBackgroundColor: '#abb178',
   identifierBackgroundColor: '#be1c21',
+  identifierFontFamily: '"Public Sans Web"',
   identifierHeadingColor: '#f48a4c',
   identifierLinkColor: '#5d5a6f',
   pageBackgroundColor: '#761816',
+  primaryNavigationFontFamily: '"Public Sans Web"',
+  primaryNavigationFontWeight: 'bold',
   resultDescriptionColor: '#2bd4c7',
   resultTitleColor: '#33f0aa',
   resultTitleLinkVisitedColor: '#4a97ad',
@@ -68,7 +72,8 @@ describe('SearchResultsLayout', () => {
     logo: {
       url: 'https://search.gov/assets/gsa-logo-893b811a49f74b06b2bddbd1cde232d2922349c8c8c6aad1d88594f3e8fe42bd097e980c57c5e28eff4d3a9256adb4fcd88bf73a5112833b2efe2e56791aad9d.svg',
       text: 'Search.gov'
-    }
+    },
+    homepageUrl: 'https://search.gov'
   };
 
   it('renders the correct header type and content', () => {

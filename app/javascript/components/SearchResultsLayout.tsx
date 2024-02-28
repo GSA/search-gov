@@ -24,12 +24,44 @@ export interface PageData {
   logo: {
     url: string;
     text: string;
-  }
+  };
+  homepageUrl: string;
 }
 
 export interface Language {
   code: string;
   rtl: boolean;
+}
+
+export interface FontsAndColors {
+  activeSearchTabNavigationColor: string;
+  bannerBackgroundColor: string;
+  bannerTextColor: string;
+  bestBetBackgroundColor: string;
+  buttonBackgroundColor: string;
+  footerAndResultsFontFamily: string;
+  footerBackgroundColor: string;
+  footerLinksTextColor: string;
+  headerBackgroundColor: string;
+  headerLinksFontFamily: string;
+  headerNavigationBackgroundColor: string;
+  headerPrimaryLinkColor: string;
+  headerSecondaryLinkColor: string;
+  headerTextColor: string;
+  healthBenefitsHeaderBackgroundColor: string;
+  identifierBackgroundColor: string;
+  identifierFontFamily: string;
+  identifierHeadingColor: string;
+  identifierLinkColor: string;
+  pageBackgroundColor: string;
+  primaryNavigationFontFamily: string;
+  primaryNavigationFontWeight: string;
+  resultDescriptionColor: string;
+  resultTitleColor: string;
+  resultTitleLinkVisitedColor: string;
+  resultUrlColor: string;
+  searchTabNavigationLinkColor: string;
+  sectionTitleColor: string;
 }
 
 interface SearchResultsLayoutProps {
@@ -151,32 +183,7 @@ interface SearchResultsLayoutProps {
   };
   navigationLinks: NavigationLink[];
   extendedHeader: boolean;
-  fontsAndColors: {
-    activeSearchTabNavigationColor: string;
-    bannerBackgroundColor: string;
-    bannerTextColor: string;
-    bestBetBackgroundColor: string;
-    buttonBackgroundColor: string;
-    footerAndResultsFontFamily: string;
-    footerBackgroundColor: string;
-    footerLinksTextColor: string;
-    headerBackgroundColor: string;
-    headerLinksFontFamily: string;
-    headerNavigationBackgroundColor: string;
-    headerPrimaryLinkColor: string;
-    headerSecondaryLinkColor: string;
-    healthBenefitsHeaderBackgroundColor: string;
-    identifierBackgroundColor: string;
-    identifierHeadingColor: string;
-    identifierLinkColor: string;
-    pageBackgroundColor: string;
-    resultDescriptionColor: string;
-    resultTitleColor: string;
-    resultTitleLinkVisitedColor: string;
-    resultUrlColor: string;
-    searchTabNavigationLinkColor: string;
-    sectionTitleColor: string;
-  };
+  fontsAndColors: FontsAndColors;
   footerLinks?: {
     title: string,
     url: string
