@@ -49,9 +49,7 @@ class HtmlDocument < WebDocument
   end
 
   def canonical_url
-    return nil if url == extract_canonical_url
-
-    linkdata['canonical']&.first
+    url == linkdata['canonical']&.first ? nil : linkdata['canonical']&.first
   end
 
   private
@@ -113,13 +111,10 @@ class HtmlDocument < WebDocument
   end
 
   def extract_linkdata
-    linkdata = {}
-    link_nodes = html.xpath('//link')
-    link_nodes.each do |node|
-      property = node['rel']
-      (linkdata[property.downcase] ||= []) << node['href'] unless property.nil?
+    html.xpath('//link').each_with_object({}) do |node, linkdata|
+      property = node['rel']&.downcase
+      linkdata[property] = (linkdata[property] || []) << node['href'] if property
     end
-    linkdata
   end
 
   def extract_language
@@ -158,9 +153,5 @@ class HtmlDocument < WebDocument
 
   def dcterms_data
     metadata.select { |k, _v| /^dcterms\./.match?(k) }
-  end
-
-  def extract_canonical_url
-    linkdata['canonical']&.first
   end
 end
