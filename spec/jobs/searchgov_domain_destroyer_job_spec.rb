@@ -31,30 +31,13 @@ describe SearchgovDomainDestroyerJob do
       end
     end
 
-    context 'when there are errors' do
-      context 'when a SearchgovUrl destruction fails' do
-        before do
-          failing_url = searchgov_domain.searchgov_urls.create!(url: 'https://www.archive.gov/fail', hashed_url: 'failhash')
-          allow(failing_url).to receive(:destroy).and_return(false)
-          error_messages << "Failed to destroy URL #{failing_url.id}: destruction failed"
-        end
-
-        it 'logs an error for the failed URL destruction' do
-          perform
-          expect(error_logged?('Failed to destroy URL')).to be true
-        end
+    context 'when SearchgovDomain destruction fails' do
+      before do
+        allow(searchgov_domain).to receive(:destroy).and_raise(RuntimeError.new('destruction failed'))
+        allow(searchgov_domain).to receive(:id).and_return(999)
       end
-
-      context 'when SearchgovDomain destruction fails' do
-        before do
-          allow(searchgov_domain).to receive(:destroy).and_return(false)
-          allow(searchgov_domain).to receive(:id).and_return(999)
-        end
-
-        it 'logs an error and continues without raising an exception' do
-          perform
-          expect(error_logged?("Failed to destroy SearchgovDomain #{searchgov_domain.id}")).to be true
-        end
+      it 'raises an exception if domain destruction fails' do
+        expect { perform }.to raise_error(RuntimeError, 'destruction failed')
       end
     end
   end

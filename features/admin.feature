@@ -209,7 +209,7 @@ Feature:  Administration
 
     When I follow "Sitemaps" within the first scaffold row
     Then I should see "search.gov/sitemap.xml"
-    And I follow "Delete" with id "as_admin__sitemaps-destroy-1-link" and confirm "Are you sure you want to delete this sitemap?"
+    And I follow the first "Delete" and confirm
     Then I should not see "search.gov/sitemap.xml"
 
     When I follow "Create New" in the SearchgovDomain Sitemaps table

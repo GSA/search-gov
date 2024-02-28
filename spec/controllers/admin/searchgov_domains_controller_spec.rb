@@ -15,7 +15,6 @@ describe Admin::SearchgovDomainsController do
       expect { post :create, params: { record: { domain: 'www.usa.gov' } } }.
         to change { SearchgovDomain.count }.by(1)
 
-      # Validate flash message
       expect(flash[:info]).to include(SearchgovDomain.last.domain.to_s)
     end
   end
@@ -40,7 +39,7 @@ describe Admin::SearchgovDomainsController do
         delete :delete_domain, params: { id: basic_domain.id, confirmation: 'DESTROY DOMAIN' }
 
         expect(response).to redirect_to(action: :index)
-        expect(flash[:success]).to eq("Deletion has been enqueued for #{basic_domain.domain}")
+        expect(flash[:success]).to eq(I18n.t('flash_messages.searchgov_domains.delete.success', domain: basic_domain.domain))
         expect(SearchgovDomainDestroyerJob).to have_been_enqueued.with(basic_domain)
       end
     end
