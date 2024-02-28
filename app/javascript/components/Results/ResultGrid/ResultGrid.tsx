@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
 import parse from 'html-react-parser';
 import { truncateUrl } from '../../../utils';
@@ -40,9 +40,25 @@ const getFileType = (fileType?: string) => {
 
 export const ResultGrid = ({ result }: ResultProps) => {  
   const URL_LENGTH = 80;
+  const [isClickable, setIsClickable] = useState(false);
+
+  // Detect if the device is a mobile device
+  const isMobile = () => {
+    return window.innerWidth <= 480;
+  };
+
+  // Update the state of the div based on the device type
+  useEffect(() => {
+    setIsClickable(isMobile());
+  }, []);
+
+  const handleClick = () => {
+  // Do something when the div is clicked
+    console.log('Div was clicked!');
+  };
 
   return (
-    <GridContainer className='result search-result-item'>
+    <GridContainer className='result search-result-item' onClick={isClickable ? handleClick : null}>
       <Grid row gap="md">
         {result.thumbnailUrl &&
         <Grid mobileLg={{ col: 4 }} className='result-thumbnail'>
