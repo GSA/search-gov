@@ -10,6 +10,17 @@ describe Admin::SearchgovDomainsController do
     UserSession.create(users(:affiliate_admin))
   end
 
+  describe 'after_create_save' do
+    it 'sets flash[:info] message correctly' do
+      expect {
+        post :create, params: { record: { domain: 'www.usa.gov' } }
+      }.to change(SearchgovDomain, :count).by(1)
+
+      # Validate flash message
+      expect(flash[:info].include?("#{SearchgovDomain.last.domain}")).to eq(true)
+    end
+  end
+
   describe '#update' do
     it 'contains the specified columns' do
       expect(described_class.active_scaffold_config.update.columns.to_a).to include(:js_renderer)
