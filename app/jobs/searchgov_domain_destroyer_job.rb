@@ -3,7 +3,7 @@ class SearchgovDomainDestroyerJob < ApplicationJob
 
   def perform(searchgov_domain)
     ActiveRecord::Base.transaction do
-      if destroy_associated_records(searchgov_domain.searchgov_urls, 'URL') && destroy_record(searchgov_domain, 'SearchgovDomain')
+      if destroy_associated_records(searchgov_domain.searchgov_urls) && destroy_record(searchgov_domain)
         Rails.logger.info("Successfully destroyed SearchgovDomain #{searchgov_domain.id} and its URLs.")
       else
         Rails.logger.error("Failed to completely destroy SearchgovDomain #{searchgov_domain.id} and its URLs.")
@@ -13,22 +13,17 @@ class SearchgovDomainDestroyerJob < ApplicationJob
 
   private
 
-  def destroy_associated_records(records, record_type)
-    records.find_each(batch_size: 100) { |record| return false unless destroy_record(record, record_type) }
-
-    true
-  end
-
-  def destroy_record(record, record_type)
-    unless record.destroy
-      log_failure(record_type, record.id)
-      return false
+  def destroy_associated_records(records)
+    records.find_each(batch_size: 100) do |record|
+      return false unless destroy_record(record)
     end
 
     true
   end
 
-  def log_failure(record_type, record_id)
-    Rails.logger.error("Failed to destroy #{record_type} #{record_id}")
+  def destroy_record(record)
+    return false unless record.destroy
+
+    true
   end
 end
