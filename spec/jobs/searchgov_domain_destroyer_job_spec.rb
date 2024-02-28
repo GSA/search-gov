@@ -36,6 +36,7 @@ describe SearchgovDomainDestroyerJob do
         allow(searchgov_domain).to receive(:destroy).and_raise(RuntimeError.new('destruction failed'))
         allow(searchgov_domain).to receive(:id).and_return(999)
       end
+
       it 'raises an exception if domain destruction fails' do
         expect { perform }.to raise_error(RuntimeError, 'destruction failed')
       end
