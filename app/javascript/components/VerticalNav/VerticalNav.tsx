@@ -16,6 +16,10 @@ const StyledPrimaryNav = styled(PrimaryNav).attrs<{ styles: FontsAndColors }>((p
     color: ${(props) => props.styles.searchTabNavigationLinkColor} !important;
   }
 
+  .usa-nav__primary > .usa-nav__primary-item .usa-nav__link:hover::after{
+    background-color: ${(props) => props.styles.searchTabNavigationLinkColor} !important;
+  }
+
   .usa-current::after,
   .usa-nav__primary > .usa-nav__primary-item button[aria-expanded=true] {
     background-color: ${(props) => props.styles.searchTabNavigationLinkColor} !important;
