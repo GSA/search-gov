@@ -50,7 +50,8 @@ class HtmlDocument < WebDocument
 
   def canonical_url
     return nil if url == extract_canonical_url
-    extract_canonical_url
+
+    linkdata['canonical']&.first
   end
 
   private
