@@ -142,23 +142,23 @@ class SearchgovUrl < ApplicationRecord
     raise SearchgovUrlError.new('Noindex per HTML metadata') if document.noindex?
   end
 
+  def check_canonical_url
+    document.canonical_url.present? ? use_canonical_url : index_and_update_status
+  end
+
   def use_canonical_url
     canonical_url = document.canonical_url
     raise SearchgovUrlError, "Record creation forbidden to #{canonical_url}" if redirected_outside_domain?(canonical_url)
-    return unless SearchgovUrl.create(url: canonical_url)
-
-    update(last_crawl_status: "Canonical URL: #{canonical_url}")
-    raise SearchgovUrlError, "Created canonical url #{canonical_url}"
+    
+    if SearchgovUrl.create(url: canonical_url)
+      update(last_crawl_status: "Canonical URL: #{canonical_url}")
+      raise SearchgovUrlError, "Created canonical url #{canonical_url}"
+    end
   end
 
-  def check_canonical_url
-    if document.canonical_url.present?
-      use_canonical_url
-    else
-      index_document
-
-      self.last_crawl_status = OK_STATUS
-    end
+  def index_and_update_status
+    index_document
+    self.last_crawl_status = OK_STATUS
   end
 
   def save_document
