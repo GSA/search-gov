@@ -210,12 +210,21 @@ When /^(?:|I )press "([^"]*)" and confirm "([^"]*)"$/ do |button, msg|
   end
 end
 
-When /^(?:|I )follow "([^"]*)" within "([^"]*)" and confirm "([^"]*)"$/ do |link, scope_selector, msg|
-  within(scope_selector) do
-    accept_confirm msg do
-      click_link(link)
-    end
+When /^(?:|I )follow "([^"]*)" and confirm "([^"]*)"$/ do |link, msg|
+  accept_confirm msg do
+    click_link(link)
   end
+end
+
+When /^(?:|I )follow "([^"]*)" with "([^"]*)" id and confirm "([^"]*)"$/ do |link, id, msg|
+  find("a[id='#{id}']", text: link).click
+  a = page.driver.browser.switch_to.alert
+  expect(a.text).to eq msg
+  a.accept
+end
+
+When /^(?:|I )follow "([^"]*)" first and confirm "([^"]*)"$/ do |link, msg|
+  first(:link, link).click
 end
 
 Then "I wait for ajax"  do
