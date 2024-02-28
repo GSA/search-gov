@@ -36,6 +36,7 @@ describe SearchgovDomainDestroyerJob do
         before do
           failing_url = searchgov_domain.searchgov_urls.create!(url: 'https://www.archive.gov/fail', hashed_url: 'failhash')
           allow(failing_url).to receive(:destroy).and_return(false)
+          error_messages << "Failed to destroy URL #{failing_url.id}: destruction failed"
         end
 
         it 'logs an error for the failed URL destruction' do

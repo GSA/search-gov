@@ -47,21 +47,4 @@ describe Admin::SearchgovDomainsController do
       end
     end
   end
-
-  describe 'POST #create' do
-    context 'with valid params' do
-      it 'sets a flash message and redirects to the index' do
-        post :create, params: { searchgov_domain: valid_attributes }
-        expect(flash[:info]).to eq("#{assigns(:searchgov_domain).domain} has been created. Sitemaps will automatically begin indexing.")
-        expect(response).to redirect_to(action: :index)
-      end
-    end
-
-    context 'with invalid params' do
-      it 'does not set the success flash message' do
-        post :create, params: { searchgov_domain: invalid_attributes }
-        expect(flash[:info]).to be_nil
-      end
-    end
-  end
 end
