@@ -12,11 +12,11 @@ describe Admin::SearchgovDomainsController do
 
   describe 'after_create_save' do
     it 'sets flash[:info] message correctly' do
-      expect { post :create, params: { record: { domain: 'www.usa.gov' } } }
-        .to change { SearchgovDomain.count }.by(1)
+      expect { post :create, params: { record: { domain: 'www.usa.gov' } } }.
+        to change { SearchgovDomain.count }.by(1)
 
       # Validate flash message
-      expect(flash[:info].include?(SearchgovDomain.last.domain.to_s)).to be_truthy
+      expect(flash[:info]).to include(SearchgovDomain.last.domain.to_s)
     end
   end
 
