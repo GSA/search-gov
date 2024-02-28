@@ -4,8 +4,6 @@ describe Admin::SearchgovDomainsController do
   fixtures :users, :searchgov_domains, :searchgov_urls
 
   let(:basic_domain) { searchgov_domains(:basic_domain) }
-  let(:valid_attributes) { { domain: 'newdomain.gov', status: '200 OK' } }
-  let(:invalid_attributes) { { domain: nil } }
 
   before do
     activate_authlogic

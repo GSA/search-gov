@@ -222,7 +222,7 @@ Feature:  Administration
     When I follow "Create New"
     And I fill in "Domain" with "www.state.gov"
     And I press "Create"
-    Then I should see "www.state.gov has been created"
+    Then I should see "www.state.gov has been created. Sitemaps will automatically begin indexing."
 
     When I follow "Reindex" within the first scaffold row and confirm "Are you sure you want to reindex this entire domain?"
     And I wait for ajax
