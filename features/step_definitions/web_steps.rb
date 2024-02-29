@@ -216,13 +216,6 @@ When /^(?:|I )follow "([^"]*)" and confirm "([^"]*)"$/ do |link, msg|
   end
 end
 
-When /^(?:|I )follow "([^"]*)" with "([^"]*)" id and confirm "([^"]*)"$/ do |link, id, msg|
-  find("a[id='#{id}']", text: link).click
-  a = page.driver.browser.switch_to.alert
-  expect(a.text).to eq msg
-  a.accept
-end
-
 When /^(?:|I )follow first "([^"]*)" and confirm$/ do |link|
   first(:link, link).click
   a = page.driver.browser.switch_to.alert
