@@ -31,7 +31,11 @@ const StyledUswdsIdentifier = styled(UswdsIdentifier).attrs<{ styles: FontsAndCo
   .usa-identifier__container, .usa-identifier__container > a, .usa-identifier__identity-disclaimer, .usa-identifier__identity-disclaimer > a {
     color: ${(props) => props.styles.identifierHeadingColor};
   }
-  .usa-identifier__required-links-item > a, .usa-identifier__identity-domain {
+  .usa-identifier__required-link, .usa-identifier__identity-domain {
+    color: ${(props) => props.styles.identifierLinkColor};
+  }
+  .usa-identifier__required-link:hover, .usa-identifier__required-link:active, 
+  .usa-identifier__required-link:visited {
     color: ${(props) => props.styles.identifierLinkColor};
   }
 `;
