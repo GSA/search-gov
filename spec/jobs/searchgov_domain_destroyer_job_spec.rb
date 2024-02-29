@@ -41,11 +41,22 @@ describe SearchgovDomainDestroyerJob do
         expect { perform }.to raise_error(RuntimeError, 'destruction failed')
       end
     end
+
+    context 'when destruction of associated records fails' do
+      let!(:searchgov_url) { searchgov_domain.searchgov_urls.create(url: 'https://www.archive.gov/info', hashed_url: 'hash1') }
+
+      before do
+        allow_any_instance_of(SearchgovUrl).to receive(:destroy).and_return(false)
+        allow(searchgov_domain).to receive(:id).and_return(999)
+
+        expect(Rails.logger).to receive(:error).with("Failed to completely destroy SearchgovDomain #{searchgov_domain.id} and its URLs.")
+      end
+
+      it 'logs an error if destruction of associated records fails' do
+        perform
+      end
+    end
   end
 
   it_behaves_like 'a searchgov job'
-
-  def error_logged?(message)
-    error_messages.any? { |msg| msg.include?(message) }
-  end
 end
