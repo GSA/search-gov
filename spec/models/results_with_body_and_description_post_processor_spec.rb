@@ -68,5 +68,37 @@ describe ResultsWithBodyAndDescriptionPostProcessor do
         end
       end
     end
+
+    context 'when there are news item results' do
+      subject(:normalized_results) { described_class.new(results, _val: nil).normalized_results(5) }
+
+      let(:results) do
+        results = []
+        5.times { |index| results << NewsItem.new(title: "title #{index}", description: "content #{index}", link: "http://foo.gov/#{index}") }
+        results
+      end
+
+      it 'returns the news results the module code' do
+        normalized_results[:results].each_with_index do |result, index|
+          expect(result[:blendedModule]).to eq('NEWS')
+        end
+      end
+    end
+
+    context 'when there are indexed document results' do
+      subject(:normalized_results) { described_class.new(results, _val: nil).normalized_results(5) }
+
+      let(:results) do
+        results = []
+        5.times { |index| results << IndexedDocument.new(title: "title #{index}", description: "content #{index}", url: "http://foo.gov/#{index}") }
+        results
+      end
+
+      it 'returns the news results the module code' do
+        normalized_results[:results].each_with_index do |result, index|
+          expect(result[:blendedModule]).to eq('AIDOC')
+        end
+      end
+    end
   end
 end

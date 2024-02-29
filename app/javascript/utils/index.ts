@@ -56,3 +56,26 @@ export const move = <T>(input: T[], from: number, to: number): T[] => {
 
   return input.splice(to, numberOfDeletedElm, elm);
 };
+
+export const clickData = (affiliate: string, module: string, query: string, position: number, url: string, vertical: string): string => {
+  return JSON.stringify({
+    affiliate: affiliate,
+    url: url,
+    module_code: module,
+    position: position,
+    query: query,
+    vertical: vertical
+  });
+};
+
+export const clickTracking = (clickData: string) => {
+  fetch('/clicked', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    mode: 'cors',
+    body: clickData
+  })
+};

@@ -23,6 +23,7 @@ class ClickedController < ApplicationController
   end
 
   def permitted_params
+    params.delete(:clicked)
     params.permit(
       :url,
       :query,

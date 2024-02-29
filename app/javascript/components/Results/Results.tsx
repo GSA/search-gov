@@ -22,6 +22,7 @@ import { SiteLimitAlert } from './SiteLimitAlert/SiteLimitAlert';
 import { RelatedSearches } from './RelatedSearches/RelatedSearches';
 import { SpellingSuggestion } from './SpellingSuggestion/SpellingSuggestion';
 import { FontsAndColors } from '../SearchResultsLayout';
+import { PageData } from '../SearchResultsLayout';
 
 import './Results.css';
 
@@ -39,10 +40,12 @@ type Result = {
   youtube?: boolean,
   youtubePublishedAt?: string,
   youtubeThumbnailUrl?: string,
-  youtubeDuration?: string
+  youtubeDuration?: string,
+  blendedModule?: string
 };
 interface ResultsProps {
-  query?: string
+  page: PageData;
+  query?: string;
   results?: Result[] | null;
   additionalResults?: {
     recommendedBy: string;
@@ -172,7 +175,7 @@ const getImages = (result: Result[] | null) => {
 };
 
 // eslint-disable-next-line complexity
-export const Results = ({ query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, newsAboutQuery = '', spellingSuggestion, videosUrl, relatedSearches, sitelimit, noResultsMessage, total, jobsEnabled, agencyName }: ResultsProps) => {
+export const Results = ({ page, query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, newsAboutQuery = '', spellingSuggestion, videosUrl, relatedSearches, sitelimit, noResultsMessage, total, jobsEnabled, agencyName, vertical }: ResultsProps) => {
   const i18n = useContext(LanguageContext);
   const styles = useContext(StyleContext);
   const imagesResults = getImages(results);
@@ -252,7 +255,12 @@ export const Results = ({ query = '', results = null, additionalResults = null, 
                     );
                   }
                   return (
-                    <ResultGrid key={index} result={result} />
+                    <ResultGrid key={index}
+                                result={result}
+                                affiliate={page?.affiliate ?? ''}
+                                query={query}
+                                vertical={vertical}
+                                position={index+1} />
                   );
                 })}
                 <GridContainer className={`content-provider ${isBing ? 'bing' : ''}`}>
