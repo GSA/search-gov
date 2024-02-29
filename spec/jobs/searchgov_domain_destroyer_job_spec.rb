@@ -28,7 +28,7 @@ describe SearchgovDomainDestroyerJob do
 
     context 'when SearchgovDomain destruction fails' do
       before do
-        allow_any_instance_of(SearchgovDomain).to receive(:destroy!).and_raise(ActiveRecord::RecordNotDestroyed)
+        allow(searchgov_domain).to receive(:destroy!).and_raise(ActiveRecord::RecordNotDestroyed)
       end
 
       it 'raises an exception if domain destruction fails' do
