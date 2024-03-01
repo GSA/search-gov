@@ -1,8 +1,12 @@
 import React from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
 import parse from 'html-react-parser';
+import ResultTitle from '../ResultGrid/ResultTitle';
+import { clickTracking } from '../../../utils';
+import { moduleCode } from '../../../utils/constants';
 
 interface GraphicsBestBetProps {
+  affiliate: string;
   title: string;
   titleUrl?: string;
   imageUrl?: string;
@@ -11,9 +15,11 @@ interface GraphicsBestBetProps {
     title: string;
     url: string;
   }[];
+  query: string;
+  vertical: string;
 }
 
-export const GraphicsBestBet = ({ title, titleUrl, imageUrl, imageAltText, links }: GraphicsBestBetProps) => {
+export const GraphicsBestBet = ({ title, titleUrl, imageUrl, imageAltText, links, query, affiliate, vertical }: GraphicsBestBetProps) => {
   // This method reorders links so that they appear in column order.
   const sortedLinks = (links: {title: string, url: string}[]) => {
     if (links.length <= 2) {
@@ -49,14 +55,28 @@ export const GraphicsBestBet = ({ title, titleUrl, imageUrl, imageAltText, links
         <Grid col={true} className='result-meta-data'>
           <div className='graphics-best-bets-title result-title'>
             {titleUrl ? (
-              <h2 className='result-title-label'><a href={titleUrl} className='result-title-link'>{parse(title)}</a></h2>) : <h2 className='result-title-label'>{parse(title)}</h2>}
+              <h2 className='result-title-label'>
+                <ResultTitle 
+                  url={titleUrl}
+                  className='result-title-link'  
+                  clickTracking={() => clickTracking(affiliate, moduleCode.bestBetsGraphics, query, 1, titleUrl, vertical)}>
+                  {parse(title)}
+                </ResultTitle>
+              </h2>) : 
+              <h2 className='result-title-label'>
+                {parse(title)}
+              </h2>}
           </div>
           {links && links.length > 0 && (
             <Grid row gap="md">
               {sortedLinks(links).map((link, index) => {
                 return (
                   <Grid key={index} mobileLg={{ col: 6 }} className='graphics-best-bets-link-wrapper'>
-                    <a href={link.url}>{parse(link.title)}</a>
+                    <ResultTitle 
+                      url={link.url}
+                      clickTracking={() => clickTracking(affiliate, moduleCode.bestBetsGraphics, query, titleUrl ? index + 2 : index + 1, link.url, vertical)}>
+                      {parse(link.title)}
+                    </ResultTitle>
                   </Grid>
                 );
               })}

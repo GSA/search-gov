@@ -199,6 +199,9 @@ export const Results = ({ page, query = '', results = null, additionalResults = 
         {additionalResults && (
           <BestBets
             {...additionalResults}
+            affiliate={page?.affiliate ?? ''}
+            query={query}
+            vertical={vertical}
           />
         )}
 

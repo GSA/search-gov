@@ -74,6 +74,7 @@ export const ResultGrid = ({ result, affiliate, query, position, vertical }: Res
             <h2 className='result-title-label'>
               <ResultTitle 
                 url={result.url}
+                className='result-title-link'
                 clickTracking={() => clickTracking(affiliate, module, query, position, result.url, vertical)}>
                 {parse(result.title)} 
                 {getFileType(result.fileType)}
