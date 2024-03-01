@@ -1,7 +1,7 @@
 import React from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
 import parse from 'html-react-parser';
-import { clickData, clickTracking, truncateUrl } from '../../../utils';
+import { clickTracking, truncateUrl } from '../../../utils';
 import { moduleCode } from '../../../utils/constants';
 
 type Result = {
@@ -70,8 +70,7 @@ export const ResultGrid = ({ result, affiliate, query, position, vertical }: Res
             <h2 className='result-title-label'>
               <a href={result.url}
                 className='result-title-link'
-                data-click={clickData(affiliate, module, query, position, result.url, vertical)}
-                onClick={(event) => clickTracking((event.target as HTMLLinkElement).getAttribute('data-click') || '{}')}>
+                onClick={() => clickTracking(affiliate, module, query, position, result.url, vertical)}>
                 {parse(result.title)} 
                 {getFileType(result.fileType)}
               </a>

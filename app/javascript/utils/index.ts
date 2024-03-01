@@ -59,18 +59,7 @@ export const move = <T>(input: T[], from: number, to: number): T[] => {
   return input.splice(to, numberOfDeletedElm, elm);
 };
 
-export const clickData = (affiliate: string, module: string, query: string, position: number, url: string, vertical: string): string => {
-  return JSON.stringify({
-    affiliate,
-    url,
-    module_code: module,
-    position,
-    query,
-    vertical
-  });
-};
-
-export const clickTracking = (clickData: string) => {
+export const clickTracking = (affiliate: string, module: string, query: string, position: number, url: string, vertical: string) => {
   fetch('/clicked', {
     method: 'POST',
     headers: {
@@ -78,6 +67,13 @@ export const clickTracking = (clickData: string) => {
       'Content-Type': 'application/json'
     },
     mode: 'cors',
-    body: clickData
+    body: JSON.stringify({
+      affiliate,
+      url,
+      module_code: module,
+      position,
+      query,
+      vertical
+    })
   });
 };
