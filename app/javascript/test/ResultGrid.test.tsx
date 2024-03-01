@@ -1,7 +1,9 @@
 import '@testing-library/jest-dom';
-import { render } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import { ResultGrid } from '../components/Results/ResultGrid/ResultGrid';
+import { enableFetchMocks } from 'jest-fetch-mock';
+enableFetchMocks();
 
 describe('Result Grid', () => {
   const result = {
@@ -27,6 +29,9 @@ describe('Result Grid', () => {
     expect(clickDataJson.position).toBe(1);
     expect(clickDataJson.query).toBe('query');
     expect(clickDataJson.vertical).toBe('web');
+
+    const title = screen.getByText(/test result 1/i);
+    fireEvent.click(title);
   });
 
   it('sets correct Searchgov click data', () => {
@@ -40,6 +45,9 @@ describe('Result Grid', () => {
     expect(clickDataJson.position).toBe(2);
     expect(clickDataJson.query).toBe('query');
     expect(clickDataJson.vertical).toBe('i14y');
+
+    const title = screen.getByText(/test result 1/i);
+    fireEvent.click(title);
   });
 
   it('sets correct Blended click data', () => {
@@ -53,5 +61,8 @@ describe('Result Grid', () => {
     expect(clickDataJson.position).toBe(3);
     expect(clickDataJson.query).toBe('query');
     expect(clickDataJson.vertical).toBe('blended');
+
+    const title = screen.getByText(/test result 1/i);
+    fireEvent.click(title);
   });
 });
