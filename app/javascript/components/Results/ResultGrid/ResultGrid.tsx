@@ -41,6 +41,7 @@ const getFileType = (fileType?: string) => {
 export const ResultGrid = ({ result }: ResultProps) => {  
   const URL_LENGTH = 80;
   const [isClickable, setIsClickable] = useState(false);
+  const [mobileDivStyle, setMobileDivStyle] = useState("");
 
   // Detect if the device is a mobile device
   const isMobile = () => {
@@ -52,14 +53,17 @@ export const ResultGrid = ({ result }: ResultProps) => {
     setIsClickable(isMobile());
   }, []);
 
-  const handleClick = () => {
-  // Do something when the div is clicked
-    console.log('Div was clicked!');
+  const handleClick = (url: string) => {
+    if (mobileDivStyle !== "") 
+      setMobileDivStyle("");
+    else 
+      setMobileDivStyle("mobile-outline");
+    window.location.href = url;
   };
 
   return (
-    <GridContainer className='result search-result-item' onClick={isClickable ? handleClick : null}>
-      <Grid row gap="md">
+    <GridContainer className='result search-result-item'>
+      <Grid row gap="md" onClick={isClickable ? handleClick.bind(this, result.url) : ()=>{}} className={mobileDivStyle}>
         {result.thumbnailUrl &&
         <Grid mobileLg={{ col: 4 }} className='result-thumbnail'>
           <img src={result.thumbnailUrl} className="result-image" alt={result.title}/>
