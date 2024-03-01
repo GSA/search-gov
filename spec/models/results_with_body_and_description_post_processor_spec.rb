@@ -73,9 +73,7 @@ describe ResultsWithBodyAndDescriptionPostProcessor do
       subject(:normalized_results) { described_class.new(results, _val: nil).normalized_results(5) }
 
       let(:results) do
-        results = []
-        5.times { |index| results << NewsItem.new(title: "title #{index}", description: "content #{index}", link: "http://foo.gov/#{index}") }
-        results
+        5.times.map { |index| NewsItem.new(title: "title #{index}", description: "content #{index}", link: "http://foo.gov/#{index}") }
       end
 
       it 'returns the news results the module code' do
@@ -89,9 +87,7 @@ describe ResultsWithBodyAndDescriptionPostProcessor do
       subject(:normalized_results) { described_class.new(results, _val: nil).normalized_results(5) }
 
       let(:results) do
-        results = []
-        5.times { |index| results << IndexedDocument.new(title: "title #{index}", description: "content #{index}", url: "http://foo.gov/#{index}") }
-        results
+        5.times.map { |index| IndexedDocument.new(title: "title #{index}", description: "content #{index}", url: "http://foo.gov/#{index}") }
       end
 
       it 'returns the news results the module code' do
