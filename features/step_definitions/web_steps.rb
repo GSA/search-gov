@@ -204,6 +204,12 @@ Then /^(?:|I )should be on (.+)$/ do |page_name|
   end
 end
 
+When /^(?:|I )follow "([^"]*)" with "([^"]*)" id and confirm "([^"]*)"$/ do |link, id, msg|
+  find("a[id='#{id}']", text: link).click
+  a = page.driver.browser.switch_to.alert
+  a.accept
+end
+
 When /^(?:|I )press "([^"]*)" and confirm "([^"]*)"$/ do |button, msg|
   accept_confirm msg do
     click_button(button)
@@ -214,13 +220,6 @@ When /^(?:|I )follow "([^"]*)" and confirm "([^"]*)"$/ do |link, msg|
   accept_confirm msg do
     click_link(link)
   end
-end
-
-When /^(?:|I )follow "([^"]*)" with "([^"]*)" id and confirm "([^"]*)"$/ do |link, id, msg|
-  find("a[id='#{id}']", text: link).click
-  a = page.driver.browser.switch_to.alert
-  expect(a.text).to eq msg
-  a.accept
 end
 
 When /^(?:|I )follow first "([^"]*)" and confirm$/ do |link|

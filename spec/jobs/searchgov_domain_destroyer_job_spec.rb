@@ -7,7 +7,7 @@ describe SearchgovDomainDestroyerJob do
 
   describe '#perform' do
     it 'requires a searchgov_domain as an argument' do
-      expect { described_class.perform_now }.to raise_error(ArgumentError)
+      expect { described_class.perform_now }.to raise_error(ArgumentError, 'wrong number of arguments (given 0, expected 1)')
     end
 
     it 'destroys the searchgov domain' do
