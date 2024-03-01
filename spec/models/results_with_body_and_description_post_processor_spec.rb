@@ -79,7 +79,7 @@ describe ResultsWithBodyAndDescriptionPostProcessor do
       end
 
       it 'returns the news results the module code' do
-        normalized_results[:results].each_with_index do |result, index|
+        normalized_results[:results].each do |result|
           expect(result[:blendedModule]).to eq('NEWS')
         end
       end
@@ -95,7 +95,7 @@ describe ResultsWithBodyAndDescriptionPostProcessor do
       end
 
       it 'returns the news results the module code' do
-        normalized_results[:results].each_with_index do |result, index|
+        normalized_results[:results].each do |result|
           expect(result[:blendedModule]).to eq('AIDOC')
         end
       end

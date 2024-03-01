@@ -21,8 +21,7 @@ import { Jobs } from './Jobs/Jobs';
 import { SiteLimitAlert } from './SiteLimitAlert/SiteLimitAlert';
 import { RelatedSearches } from './RelatedSearches/RelatedSearches';
 import { SpellingSuggestion } from './SpellingSuggestion/SpellingSuggestion';
-import { FontsAndColors } from '../SearchResultsLayout';
-import { PageData } from '../SearchResultsLayout';
+import { FontsAndColors, PageData } from '../SearchResultsLayout';
 
 import './Results.css';
 
@@ -256,11 +255,11 @@ export const Results = ({ page, query = '', results = null, additionalResults = 
                   }
                   return (
                     <ResultGrid key={index}
-                                result={result}
-                                affiliate={page?.affiliate ?? ''}
-                                query={query}
-                                vertical={vertical}
-                                position={index+1} />
+                      result={result}
+                      affiliate={page?.affiliate ?? ''}
+                      query={query}
+                      vertical={vertical}
+                      position={index+1} />
                   );
                 })}
                 <GridContainer className={`content-provider ${isBing ? 'bing' : ''}`}>

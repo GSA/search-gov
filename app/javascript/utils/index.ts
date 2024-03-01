@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+
 export const getUriWithParam = (baseUrl: string, urlParam: string, urlParamQuery: string): string => {
   const Url = new URL(baseUrl);
   const urlParams: URLSearchParams = new URLSearchParams(Url.search);
@@ -59,12 +61,12 @@ export const move = <T>(input: T[], from: number, to: number): T[] => {
 
 export const clickData = (affiliate: string, module: string, query: string, position: number, url: string, vertical: string): string => {
   return JSON.stringify({
-    affiliate: affiliate,
-    url: url,
+    affiliate,
+    url,
     module_code: module,
-    position: position,
-    query: query,
-    vertical: vertical
+    position,
+    query,
+    vertical
   });
 };
 
@@ -72,10 +74,10 @@ export const clickTracking = (clickData: string) => {
   fetch('/clicked', {
     method: 'POST',
     headers: {
-      'Accept': 'application/json',
+      Accept: 'application/json',
       'Content-Type': 'application/json'
     },
     mode: 'cors',
     body: clickData
-  })
+  });
 };

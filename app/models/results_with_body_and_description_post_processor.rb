@@ -73,7 +73,7 @@ class ResultsWithBodyAndDescriptionPostProcessor < ResultsPostProcessor
 
   def result_module_for_blended(result)
     search_class = result.class.name
-    return unless search_class == 'IndexedDocument' || 'NewsItem'
+    return unless %w[IndexedDocument NewsItem].include?(search_class)
 
     BlendedSearch::KLASS_MODULE_MAPPING[search_class.underscore.to_sym]
   end
