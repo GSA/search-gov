@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
 import parse from 'html-react-parser';
 import { clickTracking, truncateUrl } from '../../../utils';
@@ -54,9 +54,32 @@ export const ResultGrid = ({ result, affiliate, query, position, vertical }: Res
     return moduleCode[moduleKey as keyof typeof moduleCode];
   })();
 
+  const [isResultDivClickable, setIsResultDivClickable] = useState(false);
+  const [mobileResultDivStyle, setMobileResultDivStyle] = useState("");
+  const isMobile = () => {
+    return window.innerWidth <= 480;
+  };
+  const resultDivClick = (affiliate: string, module: string, query: string, position: number, url: string, vertical: string) => {
+    clickTracking(affiliate, module, query, position, url, vertical);
+    if (mobileResultDivStyle !== "") 
+      setMobileResultDivStyle("");
+    else 
+      setMobileResultDivStyle("mobile-outline");
+
+    window.location.href = url;
+  };
+  useEffect(() => {
+    setIsResultDivClickable(isMobile());
+  }, []);
+
   return (
     <GridContainer className='result search-result-item'>
-      <Grid row gap="md">
+      <Grid 
+        row gap="md" 
+        onClick={isResultDivClickable ? 
+          () => resultDivClick(affiliate, module, query, position, result.url, vertical) : 
+          () => {}}
+        className={mobileResultDivStyle}>
         {result.thumbnailUrl &&
         <Grid mobileLg={{ col: 4 }} className='result-thumbnail'>
           <img src={result.thumbnailUrl} className="result-image" alt={result.title}/>
