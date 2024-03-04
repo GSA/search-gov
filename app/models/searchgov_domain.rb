@@ -76,8 +76,6 @@ class SearchgovDomain < ApplicationRecord
   end
 
   def stop_indexing!
-    Resque::Job.destroy(:searchgov, 'SearchgovDomainIndexerJob', searchgov_domain: self, delay: delay)
-
     done_indexing
     self.status = INDEXING_STOPPED
 
