@@ -55,14 +55,14 @@ export const ResultGrid = ({ result, affiliate, query, position, vertical }: Res
   })();
 
   const [isResultDivClickable, setIsResultDivClickable] = useState(false);
-  const [mobileResultDivStyle, setMobileResultDivStyle] = useState("");
+  const [mobileResultDivStyle, setMobileResultDivStyle] = useState('');
   
   const isMobile = () => {
     return window.innerWidth <= 480;
   };
   
   const handleResultDivClick = (affiliate: string, module: string, query: string, position: number, url: string, vertical: string) => {
-    if(isResultDivClickable){
+    if (isResultDivClickable) {
       clickTracking(affiliate, module, query, position, url, vertical);
       if (mobileResultDivStyle !== '') 
         setMobileResultDivStyle('');
