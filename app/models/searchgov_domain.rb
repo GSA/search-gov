@@ -10,7 +10,7 @@ class SearchgovDomain < ApplicationRecord
   INDEXING_STARTED = 'indexing started'
   INDEXING_STOPPED = 'indexing stopped'
 
-  GOOD_STATUS = [OK_STATUS, INDEXING_STARTED, INDEXING_STOPPED]
+  GOOD_STATUS = [OK_STATUS, INDEXING_STARTED, INDEXING_STOPPED].freeze
 
   before_validation(on: :create) { self.domain = domain&.downcase&.strip }
 
@@ -47,7 +47,7 @@ class SearchgovDomain < ApplicationRecord
   end
 
   def available?
-     GOOD_STATUS.include? (status || check_status)
+    GOOD_STATUS.include?(status || check_status)
   end
 
   def check_status
