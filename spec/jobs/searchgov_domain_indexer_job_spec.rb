@@ -78,5 +78,15 @@ describe SearchgovDomainIndexerJob do
           with(searchgov_domain: searchgov_domain, delay: 10).at(10.seconds.from_now)
       end
     end
+
+    context 'when a domain is not indexing' do
+      let!(:searchgov_url) { SearchgovUrl.create(url: 'https://agency.gov/') }
+
+      before do
+        searchgov_domain.done_indexing
+      end
+
+      it { expect { perform }.not_to have_enqueued_job(described_class) }
+    end
   end
 end
