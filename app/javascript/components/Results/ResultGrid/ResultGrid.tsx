@@ -1,7 +1,8 @@
 import React from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
 import parse from 'html-react-parser';
-import { truncateUrl } from '../../../utils';
+import { clickTracking, truncateUrl } from '../../../utils';
+import { moduleCode } from '../../../utils/constants';
 
 type Result = {
   title: string,
@@ -17,11 +18,16 @@ type Result = {
   youtube?: boolean,
   youtubePublishedAt?: string,
   youtubeThumbnailUrl?: string,
-  youtubeDuration?: string
+  youtubeDuration?: string,
+  blendedModule?: string
 };
 
 interface ResultProps {
   result: Result;
+  affiliate: string;
+  position: number;
+  query: string;
+  vertical: string
 }
 
 const getDescription = (description: string) => {
@@ -38,8 +44,15 @@ const getFileType = (fileType?: string) => {
   return (<span className='filetype-label'>{fileType}</span>);
 };
 
-export const ResultGrid = ({ result }: ResultProps) => {  
+export const ResultGrid = ({ result, affiliate, query, position, vertical }: ResultProps) => {  
   const URL_LENGTH = 80;
+  const module = (() => {
+    if (vertical === 'blended') {
+      return `${result.blendedModule}`;
+    }
+    const moduleKey = `web${vertical.charAt(0).toUpperCase() + vertical.slice(1)}`;
+    return moduleCode[moduleKey as keyof typeof moduleCode];
+  })();
 
   return (
     <GridContainer className='result search-result-item'>
@@ -55,7 +68,9 @@ export const ResultGrid = ({ result }: ResultProps) => {
           {result.publishedAt   && <span className='published-date'>{result.publishedAt}</span>}
           <div className='result-title'>
             <h2 className='result-title-label'>
-              <a href={result.url} className='result-title-link'>
+              <a href={result.url}
+                className='result-title-link'
+                onClick={() => clickTracking(affiliate, module, query, position, result.url, vertical)}>
                 {parse(result.title)} 
                 {getFileType(result.fileType)}
               </a>

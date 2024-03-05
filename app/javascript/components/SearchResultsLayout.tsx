@@ -19,6 +19,7 @@ export interface NavigationLink {
 }
 
 export interface PageData {
+  affiliate: string;
   displayLogoOnly: boolean;
   title: string;
   logo: {
@@ -82,6 +83,7 @@ interface SearchResultsLayoutProps {
       youtubePublishedAt?: string;
       youtubeThumbnailUrl?: string;
       youtubeDuration?: string;
+      blendedModule?: string;
     }[] | null;
   } | null;
   additionalResults?: {
@@ -272,7 +274,8 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
 
           {/* This ternary is needed to handle the case when Bing pagination leads to a page with no results */}
           {resultsData ? (
-            <Results 
+            <Results
+              page={page}
               results={resultsData.results}
               vertical={vertical}
               totalPages={resultsData.totalPages}
@@ -289,7 +292,8 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
               jobsEnabled={jobsEnabled}
               agencyName={agencyName}
             />) : params.query ? (
-            <Results 
+            <Results
+              page={page}
               vertical={vertical}
               totalPages={null}
               query={params.query}
