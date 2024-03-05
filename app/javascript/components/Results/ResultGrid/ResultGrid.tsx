@@ -60,7 +60,7 @@ export const ResultGrid = ({ result, affiliate, query, position, vertical }: Res
     <GridContainer className='result search-result-item'>
       <ResultGridWrapper
         url={result.url}
-        clickTracking={()=> clickTracking(affiliate, module, query, position, result.url, vertical)}>
+        clickTracking={() => clickTracking(affiliate, module, query, position, result.url, vertical)}>
         {result.thumbnailUrl &&
         <Grid mobileLg={{ col: 4 }} className='result-thumbnail'>
           <img src={result.thumbnailUrl} className="result-image" alt={result.title}/>
@@ -74,7 +74,7 @@ export const ResultGrid = ({ result, affiliate, query, position, vertical }: Res
             <h2 className='result-title-label'>
               <ResultTitle 
                 url={result.url}
-                clickTracking={()=> clickTracking(affiliate, module, query, position, result.url, vertical)}>
+                clickTracking={() => clickTracking(affiliate, module, query, position, result.url, vertical)}>
                 {parse(result.title)} 
                 {getFileType(result.fileType)}
               </ResultTitle>

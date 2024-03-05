@@ -15,8 +15,9 @@ const ResultGridWrapper = ({ url, clickTracking, children }: ResultGridWrapperPr
   };
   
   const handleResultDivClick = (url: string) => {
-    if(isResultDivClickable){
-      clickTracking && clickTracking();
+    if (isResultDivClickable) {
+      if (clickTracking)  
+        clickTracking();
       setMobileResultDivStyle('mobile-outline');
       window.location.href = url;
     }
@@ -27,11 +28,11 @@ const ResultGridWrapper = ({ url, clickTracking, children }: ResultGridWrapperPr
   }, []);
   
   return (
-   <Grid 
+    <Grid 
       row gap="md" 
       onClick={() => handleResultDivClick(url)}
       className={mobileResultDivStyle}>
-    {children}
+      {children}
     </Grid>
   );
 };
