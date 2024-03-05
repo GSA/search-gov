@@ -335,6 +335,14 @@
   .usa-header .is-visible {
       z-index: 501;
   }
+
+  .search-result-item .result-title-link{
+    pointer-events: none;
+  }
+
+  .search-result-item .result-title-link:focus{
+    outline: none;
+  }
 }
 
 @media (min-width: 30em){

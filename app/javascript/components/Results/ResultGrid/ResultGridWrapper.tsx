@@ -1,6 +1,5 @@
 import React, { useState, useEffect, ReactNode } from 'react';
 import { Grid } from '@trussworks/react-uswds';
-
 interface ResultGridWrapperProps {
   url: string;
   clickTracking?: () => void;
@@ -12,20 +11,15 @@ const ResultGridWrapper = ({ url, clickTracking, children }: ResultGridWrapperPr
   const [mobileResultDivStyle, setMobileResultDivStyle] = useState('');
   
   const isMobile = () => {
-    return window.innerWidth >= 480;
+    return window.innerWidth <= 480;
   };
   
   const handleResultDivClick = (url: string) => {
-    //if(isResultDivClickable){
+    if(isResultDivClickable){
       clickTracking && clickTracking();
-      if (isResultDivClickable) {
-        if (mobileResultDivStyle !== '') 
-          setMobileResultDivStyle('');
-        else 
-          setMobileResultDivStyle('mobile-outline');
-        window.location.href = url;
-      }
-    //}
+      setMobileResultDivStyle('mobile-outline');
+      window.location.href = url;
+    }
   };
 
   useEffect(() => {
@@ -35,7 +29,7 @@ const ResultGridWrapper = ({ url, clickTracking, children }: ResultGridWrapperPr
   return (
    <Grid 
       row gap="md" 
-      onClick={() => isResultDivClickable && handleResultDivClick(url)}
+      onClick={() => handleResultDivClick(url)}
       className={mobileResultDivStyle}>
     {children}
     </Grid>
