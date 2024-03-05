@@ -73,7 +73,8 @@ export const clickTracking = (affiliate: string, module: string, query: string, 
       module_code: module,
       position,
       query,
-      vertical
+      vertical,
+      type: 'click'
     })
   });
 };
