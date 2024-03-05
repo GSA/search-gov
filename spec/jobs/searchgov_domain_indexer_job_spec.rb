@@ -80,9 +80,8 @@ describe SearchgovDomainIndexerJob do
     end
 
     context 'when a domain is not indexing' do
-      let!(:searchgov_url) { SearchgovUrl.create(url: 'https://agency.gov/') }
-
       before do
+        SearchgovUrl.create(url: 'https://agency.gov/') 
         searchgov_domain.done_indexing
       end
 
