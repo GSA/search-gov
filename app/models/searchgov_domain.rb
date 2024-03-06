@@ -7,8 +7,8 @@ class SearchgovDomain < ApplicationRecord
   class DomainError < StandardError; end
 
   OK_STATUS        = '200 OK'
-  INDEXING_STARTED = 'indexing started'
-  INDEXING_STOPPED = 'indexing stopped'
+  INDEXING_STARTED = 'indexing started manually'
+  INDEXING_STOPPED = 'indexing stopped manually'
 
   GOOD_STATUS = [OK_STATUS, INDEXING_STARTED, INDEXING_STOPPED].freeze
 
