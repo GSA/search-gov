@@ -19,7 +19,11 @@ const ResultGridWrapper = ({ url, clickTracking, children }: ResultGridWrapperPr
       if (clickTracking)  
         clickTracking();
       setMobileResultDivStyle('mobile-outline');
-      window.location.href = url;
+      
+      setTimeout(function(){
+        setMobileResultDivStyle('');
+        window.location.href = url;
+      }, 300)
     }
   };
 
@@ -31,9 +35,6 @@ const ResultGridWrapper = ({ url, clickTracking, children }: ResultGridWrapperPr
     <Grid 
       row gap="md" 
       onClick={() => handleResultDivClick(url)}
-      onTouchStart={() => handleResultDivClick(url)}
-      onMouseUp={() => setMobileResultDivStyle('')}
-      onTouchEnd={() => setMobileResultDivStyle('')}
       className={mobileResultDivStyle}>
       {children}
     </Grid>
