@@ -54,7 +54,8 @@ class ResultsWithBodyAndDescriptionPostProcessor < ResultsPostProcessor
         youtube: @youtube,
         youtubePublishedAt: (result&.published_at if @youtube),
         youtubeThumbnailUrl: (result&.youtube_thumbnail_url if @youtube),
-        youtubeDuration: (result&.duration if @youtube)
+        youtubeDuration: (result&.duration if @youtube),
+        blendedModule: result_module_for_blended(result)
       }.compact_blank
     end
   end
@@ -68,5 +69,12 @@ class ResultsWithBodyAndDescriptionPostProcessor < ResultsPostProcessor
 
     ext_name = File.extname(url)[1..]
     ext_name.upcase if SPECIAL_URL_PATH_EXT_NAMES.include?(ext_name&.downcase)
+  end
+
+  def result_module_for_blended(result)
+    search_class = result.class.name
+    return unless %w[IndexedDocument NewsItem].include?(search_class)
+
+    BlendedSearch::KLASS_MODULE_MAPPING[search_class.underscore.to_sym]
   end
 end
