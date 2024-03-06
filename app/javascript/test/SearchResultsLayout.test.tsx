@@ -67,6 +67,7 @@ jest.mock('styled-components', () =>
 
 describe('SearchResultsLayout', () => {
   const page = {
+    affiliate: 'searchgov',
     displayLogoOnly: false,
     title: 'Search.gov',
     logo: {

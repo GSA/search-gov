@@ -2,6 +2,7 @@
 
 class ClickedController < ApplicationController
   skip_before_action :verify_authenticity_token
+  wrap_parameters false
 
   attr_reader :click
 
@@ -10,7 +11,7 @@ class ClickedController < ApplicationController
 
     if click.valid?
       click.log
-      head :ok
+      head(:ok)
     else
       render json: click.errors.full_messages, status: invalid_click_status
     end
