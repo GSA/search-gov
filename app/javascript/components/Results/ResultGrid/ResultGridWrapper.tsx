@@ -18,10 +18,6 @@ const ResultGridWrapper = ({ url, clickTracking, children }: ResultGridWrapperPr
     if (isResultDivClickable) {
       if (clickTracking)  
         clickTracking();
-
-      
-      //[...document.getElementsByClassName('mobile-outline')].forEach((c)=>c.)
-      //[...document.getElementsByClassName('mobile-outline')][0].classList.remove('mobile-outline')
       setMobileResultDivStyle('mobile-outline');
       window.location.href = url;
     }
