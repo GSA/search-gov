@@ -49,12 +49,10 @@ class HtmlDocument < WebDocument
   end
 
   def canonical_url
-    canonical_url = linkdata['canonical']&.first
-    return if canonical_url.blank?
+    canon_url = extract_canonical_url
+    return if canon_url.blank?
 
-    host = URI(canonical_url).host
-    canonical_url = "#{URI(url).scheme}://#{URI(url).host}#{canonical_url}" if host.nil?
-    URI(url).path == URI(canonical_url).path ? nil : canonical_url
+    URI(url).path == URI(canon_url).path ? nil : canon_url
   end
 
   private
@@ -158,5 +156,12 @@ class HtmlDocument < WebDocument
 
   def dcterms_data
     metadata.select { |k, _v| /^dcterms\./.match?(k) }
+  end
+
+  def extract_canonical_url
+    canonical_url = linkdata['canonical']&.first
+    return if canonical_url.blank?
+
+    URI(canonical_url).host.nil? ? "#{URI(url).scheme}://#{URI(url).host}#{canonical_url}" : canonical_url
   end
 end
