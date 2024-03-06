@@ -49,7 +49,12 @@ class HtmlDocument < WebDocument
   end
 
   def canonical_url
-    url == linkdata['canonical']&.first ? nil : linkdata['canonical']&.first
+    canonical_url = linkdata['canonical']&.first
+    return if canonical_url.blank?
+
+    host = URI(canonical_url).host
+    canonical_url = "#{URI(url).scheme}://#{URI(url).host}#{canonical_url}" if host.nil?
+    URI(url).path == URI(canonical_url).path ? nil : canonical_url
   end
 
   private

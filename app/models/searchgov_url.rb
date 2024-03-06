@@ -149,11 +149,13 @@ class SearchgovUrl < ApplicationRecord
   def use_canonical_url
     canonical_url = document.canonical_url
     raise SearchgovUrlError, "Record creation forbidden to #{canonical_url}" if redirected_outside_domain?(canonical_url)
-    
-    if SearchgovUrl.create(url: canonical_url)
-      update(last_crawl_status: "Canonical URL: #{canonical_url}")
-      raise SearchgovUrlError, "Created canonical url #{canonical_url}"
-    end
+
+    searchgov_url = SearchgovUrl.create(url: canonical_url)
+
+    return unless searchgov_url.persisted?
+
+    update(last_crawl_status: "Canonical URL: #{canonical_url}")
+    raise SearchgovUrlError, "Created canonical url #{canonical_url}"
   end
 
   def index_and_update_status

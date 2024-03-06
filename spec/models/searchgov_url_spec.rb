@@ -919,7 +919,7 @@ describe SearchgovUrl do
       before do
         allow(searchgov_url).to receive(:document).and_return(searchgov_document)
         allow(searchgov_document).to receive(:canonical_url).and_return(canonical_url)
-        allow(described_class).to receive(:create).with(url: canonical_url).and_return(true)
+        allow(described_class).to receive(:persisted?).and_return(true)
       end
 
       it 'updates last_crawl_status with canonical URL info' do
