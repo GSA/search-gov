@@ -31,6 +31,9 @@ const ResultGridWrapper = ({ url, clickTracking, children }: ResultGridWrapperPr
     <Grid 
       row gap="md" 
       onClick={() => handleResultDivClick(url)}
+      onTouchStart={() => handleResultDivClick(url)}
+      onMouseUp={() => setMobileResultDivStyle('')}
+      onTouchEnd={() => setMobileResultDivStyle('')}
       className={mobileResultDivStyle}>
       {children}
     </Grid>
