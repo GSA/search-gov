@@ -8,7 +8,6 @@ interface ResultGridWrapperProps {
 
 const ResultGridWrapper = ({ url, clickTracking, children }: ResultGridWrapperProps) => {
   const [isResultDivClickable, setIsResultDivClickable] = useState(false);
-  const [mobileResultDivStyle, setMobileResultDivStyle] = useState('');
   
   const isMobile = () => {
     return window.innerWidth <= 767;
@@ -18,12 +17,7 @@ const ResultGridWrapper = ({ url, clickTracking, children }: ResultGridWrapperPr
     if (isResultDivClickable) {
       if (clickTracking)  
         clickTracking();
-      setMobileResultDivStyle('mobile-outline');
-      
-      setTimeout(function(){
-        setMobileResultDivStyle('');
-        window.location.href = url;
-      }, 300)
+      window.location.href = url;
     }
   };
 
@@ -33,9 +27,9 @@ const ResultGridWrapper = ({ url, clickTracking, children }: ResultGridWrapperPr
   
   return (
     <Grid 
-      row gap="md" 
-      onClick={() => handleResultDivClick(url)}
-      className={mobileResultDivStyle}>
+      row gap='md' 
+      className='result-meta-grid-wrapper'
+      onClick={() => handleResultDivClick(url)}>
       {children}
     </Grid>
   );

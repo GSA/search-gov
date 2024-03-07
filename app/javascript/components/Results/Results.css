@@ -274,10 +274,6 @@
   align-items: center;
 }
 
-.mobile-outline{
-  outline: 0.25rem solid #2491ff;
-}
-
 /* Media Queries */
 @media (max-width: 767.98px) {
   .search-result-item{
@@ -344,6 +340,10 @@
 }
 
 @media (max-width: 767px){
+  .result-meta-grid-wrapper:active{
+    outline: 0.25rem solid #2491ff;
+  }
+
   .search-result-item .result-title-link{
     pointer-events: none;
   }

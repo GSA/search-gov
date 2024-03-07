@@ -211,14 +211,4 @@ describe('Result Grid: Mobile view, clicking the result div', () => {
     });
     expect(fetch).toHaveBeenCalledTimes(1);
   });
-
-  it('when the result div is clicked, outline is present', () => {
-    render(<ResultGrid result={result} affiliate='bing_affiliate' query='query' position={1} vertical='web' />);
-
-    const desc = screen.getByText(/A description/i);
-    fireEvent.click(desc);
-
-    const resultGrid = Array.from(document.getElementsByClassName('mobile-outline'));
-    expect(resultGrid.length).toBe(1);
-  });
 });
