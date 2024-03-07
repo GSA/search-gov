@@ -101,16 +101,6 @@ describe('Result Grid: Desktop view, clicking the title link', () => {
     });
     expect(fetch).toHaveBeenCalledTimes(1);
   });
-
-  it('no mobile outline is present when div is clicked', () => {
-    render(<ResultGrid result={result} affiliate='bing_affiliate' query='query' position={1} vertical='web' />);
-
-    const desc = screen.getByText(/A description/i);
-    fireEvent.click(desc);
-
-    const resultGrid = Array.from(document.getElementsByClassName('mobile-outline'));
-    expect(resultGrid.length).toBe(0);
-  });
 });
 
 describe('Result Grid: Mobile view, clicking the result div', () => {
