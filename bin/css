@@ -1,9 +1,21 @@
 #!/usr/bin/env bash
 
-files=(application searches sites_base)
+lessfiles=(application searches sites_base)
 
-for file in ${files[@]}; do
+for file in ${lessfiles[@]}; do
   echo Processing $file
 
   FILE=$file yarn run build:less
 done
+
+scssfiles=(admin admin_ie sayt)
+
+for file in ${lessfiles[@]}; do
+  echo Processing $file
+
+  FILE=$file yarn run build:less
+
+  ./bin/sass "./app/assets/stylesheets/$file.css:./app/assets/builds/application.css" --no-source-map --load-path=node_modules
+done
+
+./bin/sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules
