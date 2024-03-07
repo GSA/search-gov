@@ -172,7 +172,7 @@ describe('Mobile view: FedRegister component clicking the content div', () => {
   ) as jest.Mock;
 
   it('calls fetch with correct federal reg document click data', () => {
-    render(<FedRegister fedRegisterDocs={fedRegisterDocs} query='government' affiliate='boos_affiliate' vertical='web'/>);;
+    render(<FedRegister fedRegisterDocs={fedRegisterDocs} query='government' affiliate='boos_affiliate' vertical='web'/>);
 
     const desc = screen.getByText(/Proposed Rule/i);
     fireEvent.click(desc);
