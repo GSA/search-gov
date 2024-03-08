@@ -20,6 +20,9 @@ interface GraphicsBestBetProps {
 }
 
 export const GraphicsBestBet = ({ title, titleUrl, imageUrl, imageAltText, links, query, affiliate, vertical }: GraphicsBestBetProps) => {
+  const module = (() => {
+    return moduleCode.bestBetsGraphics;
+  })();
   // This method reorders links so that they appear in column order.
   const sortedLinks = (links: {title: string, url: string}[]) => {
     if (links.length <= 2) {
@@ -59,7 +62,7 @@ export const GraphicsBestBet = ({ title, titleUrl, imageUrl, imageAltText, links
                 <ResultTitle 
                   url={titleUrl}
                   className='result-title-link'  
-                  clickTracking={() => clickTracking(affiliate, moduleCode.bestBetsGraphics, query, 1, titleUrl, vertical)}>
+                  clickTracking={() => clickTracking(affiliate, module, query, 1, titleUrl, vertical)}>
                   {parse(title)}
                 </ResultTitle>
               </h2>) : 
@@ -74,7 +77,7 @@ export const GraphicsBestBet = ({ title, titleUrl, imageUrl, imageAltText, links
                   <Grid key={index} mobileLg={{ col: 6 }} className='graphics-best-bets-link-wrapper'>
                     <ResultTitle 
                       url={link.url}
-                      clickTracking={() => clickTracking(affiliate, moduleCode.bestBetsGraphics, query, titleUrl ? index + 2 : index + 1, link.url, vertical)}>
+                      clickTracking={() => clickTracking(affiliate, module, query, titleUrl ? index+2 : index+1, link.url, vertical)}>
                       {parse(link.title)}
                     </ResultTitle>
                   </Grid>

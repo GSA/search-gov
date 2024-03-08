@@ -16,6 +16,10 @@ interface TextBestBetProps {
 }
 
 export const TextBestBet = ({ affiliate, title, url, description, position, query, vertical }: TextBestBetProps) => {
+  const module = (() => {
+    return moduleCode.bestBetsText;
+  })();
+
   return (
     <GridContainer className='result search-result-item boosted-content'>
       <Grid row gap="md">
@@ -25,7 +29,7 @@ export const TextBestBet = ({ affiliate, title, url, description, position, quer
               <ResultTitle 
                 url={url}  
                 className='result-title-link'
-                clickTracking={() => clickTracking(affiliate, moduleCode.bestBetsText, query, position, url, vertical)}>
+                clickTracking={() => clickTracking(affiliate, module, query, position, url, vertical)}>
                 {parse(title)}
               </ResultTitle>
             </h2>
