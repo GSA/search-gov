@@ -75,6 +75,7 @@ export const HealthTopics = ({ description, title, url, relatedTopics=[], studie
                           {relatedTopics.map((relatedTopic, count) => [count > 0 && ', ',
                             <ResultTitle
                               url={relatedTopic.url}
+                              key={count}
                               className='usa-link'
                               clickTracking={() => clickTracking(affiliate, moduleCode.healthTopics, query, count+2, relatedTopic.url, vertical)} >
                               {parse(relatedTopic.title)}
@@ -88,6 +89,7 @@ export const HealthTopics = ({ description, title, url, relatedTopics=[], studie
                           {studiesAndTrials.map((studiesAndTrial, count) => [count > 0 && ', ',
                             <ResultTitle
                               url={studiesAndTrial.url}
+                              key={count}
                               className='usa-link'
                               clickTracking={() => clickTracking(affiliate, moduleCode.healthTopics, query, relatedTopicsCount + 2, studiesAndTrial.url, vertical)} >
                               {parse(studiesAndTrial.title)}
