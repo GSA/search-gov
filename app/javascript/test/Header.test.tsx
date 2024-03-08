@@ -5,6 +5,7 @@ import { Header } from '../components/Header';
 
 describe('Header', () => {
   const page = {
+    affiliate: 'searchgov',
     displayLogoOnly: false,
     title: 'Search.gov',
     logo: {

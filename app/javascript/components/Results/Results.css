@@ -338,3 +338,13 @@
     width: 21%;
   }
 }
+
+@media (max-width: 767px){
+  .result-meta-grid-wrapper:active{
+    outline: 0.25rem solid #2491ff;
+  }
+
+  .search-result-item .result-title-link{
+    pointer-events: none;
+  }
+}
