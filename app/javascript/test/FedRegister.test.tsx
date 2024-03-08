@@ -117,8 +117,7 @@ describe('FedRegister component', () => {
       module_code: 'FRDOC',
       position: 1,
       query: 'government',
-      vertical: 'web',
-      type: 'click'
+      vertical: 'web'
     };
 
     expect(fetch).toHaveBeenCalledWith('/clicked', {
@@ -141,8 +140,7 @@ describe('FedRegister component', () => {
       module_code: 'FRDOC',
       position: fedRegisterDocs.length + 1,
       query: 'government',
-      vertical: 'web',
-      type: 'click'
+      vertical: 'web'
     };
 
     expect(fetch).toHaveBeenCalledWith('/clicked', {
@@ -182,8 +180,7 @@ describe('Mobile view: FedRegister component clicking the content div', () => {
       module_code: 'FRDOC',
       position: 1,
       query: 'government',
-      vertical: 'web',
-      type: 'click'
+      vertical: 'web'
     };
 
     expect(fetch).toHaveBeenCalledWith('/clicked', {

@@ -26,7 +26,7 @@ type FedRegisterDoc = {
 
 interface FedRegisterDocsProps {
   fedRegisterDocs?: FedRegisterDoc[];
-  query:string;
+  query?:string;
   affiliate: string;
   vertical: string;
 }
