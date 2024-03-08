@@ -44,6 +44,9 @@ export const HealthTopics = ({ description, title, url, relatedTopics=[], studie
   const i18n = useContext(LanguageContext);
   const styles = useContext(StyleContext);
   const relatedTopicsCount = relatedTopics.length;
+  const module = (() => {
+    return moduleCode.healthTopics;
+  })();
 
   return (
     <div className='search-item-wrapper'>
@@ -54,7 +57,7 @@ export const HealthTopics = ({ description, title, url, relatedTopics=[], studie
               <GridContainer className='health-topic-title'>
                 <ResultTitle
                   url={url} 
-                  clickTracking={() => clickTracking(affiliate, moduleCode.healthTopics, query, 1, url, vertical)} >
+                  clickTracking={() => clickTracking(affiliate, module, query, 1, url, vertical)} >
                   {parse(title)}
                 </ResultTitle>
                 <a href={i18n.t('searches.medTopic.homepageUrl')} aria-label="MedlinePlus">
@@ -77,7 +80,7 @@ export const HealthTopics = ({ description, title, url, relatedTopics=[], studie
                               url={relatedTopic.url}
                               key={count}
                               className='usa-link'
-                              clickTracking={() => clickTracking(affiliate, moduleCode.healthTopics, query, count+2, relatedTopic.url, vertical)} >
+                              clickTracking={() => clickTracking(affiliate, module, query, count+2, relatedTopic.url, vertical)} >
                               {parse(relatedTopic.title)}
                             </ResultTitle>
                           ])}
@@ -91,7 +94,7 @@ export const HealthTopics = ({ description, title, url, relatedTopics=[], studie
                               url={studiesAndTrial.url}
                               key={count}
                               className='usa-link'
-                              clickTracking={() => clickTracking(affiliate, moduleCode.healthTopics, query, relatedTopicsCount + 2, studiesAndTrial.url, vertical)} >
+                              clickTracking={() => clickTracking(affiliate, module, query, relatedTopicsCount+2, studiesAndTrial.url, vertical)} >
                               {parse(studiesAndTrial.title)}
                             </ResultTitle>
                           ])}
