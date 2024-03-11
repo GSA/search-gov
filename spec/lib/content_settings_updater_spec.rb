@@ -1,6 +1,6 @@
-require 'rake'
+require 'spec_helper'
 
-describe 'searchgov:content_settings_updater' do
+describe ContentSettingsUpdater do
   let(:content_settings_updater) { instance_double(ContentSettingsUpdater) }
   let(:run_task) do
     Rake.application.invoke_task "searchgov:content_settings_updater[#{ids}]"
