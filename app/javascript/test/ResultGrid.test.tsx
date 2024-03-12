@@ -41,8 +41,7 @@ describe('Result Grid: Desktop view, clicking the title link', () => {
       module_code: 'BWEB',
       position: 1,
       query: 'query',
-      vertical: 'web',
-      type: 'click'
+      vertical: 'web'
     };
 
     expect(fetch).toHaveBeenCalledWith('/clicked', {
@@ -65,8 +64,7 @@ describe('Result Grid: Desktop view, clicking the title link', () => {
       module_code: 'I14Y',
       position: 2,
       query: 'query',
-      vertical: 'i14y',
-      type: 'click'
+      vertical: 'i14y'
     };
 
     expect(fetch).toHaveBeenCalledWith('/clicked', {
@@ -89,8 +87,7 @@ describe('Result Grid: Desktop view, clicking the title link', () => {
       module_code: 'AIDOC',
       position: 3,
       query: 'query',
-      vertical: 'blended',
-      type: 'click'
+      vertical: 'blended'
     };
 
     expect(fetch).toHaveBeenCalledWith('/clicked', {
@@ -141,8 +138,7 @@ describe('Result Grid: Mobile view, clicking the result div', () => {
       module_code: 'BWEB',
       position: 1,
       query: 'query',
-      vertical: 'web',
-      type: 'click'
+      vertical: 'web'
     };
 
     expect(fetch).toHaveBeenCalledWith('/clicked', {
@@ -165,8 +161,7 @@ describe('Result Grid: Mobile view, clicking the result div', () => {
       module_code: 'I14Y',
       position: 2,
       query: 'query',
-      vertical: 'i14y',
-      type: 'click'
+      vertical: 'i14y'
     };
 
     expect(fetch).toHaveBeenCalledWith('/clicked', {
@@ -189,8 +184,7 @@ describe('Result Grid: Mobile view, clicking the result div', () => {
       module_code: 'AIDOC',
       position: 3,
       query: 'query',
-      vertical: 'blended',
-      type: 'click'
+      vertical: 'blended'
     };
 
     expect(fetch).toHaveBeenCalledWith('/clicked', {
