@@ -41,7 +41,7 @@ class ContentSettingsUpdater
   end
 
   def update_alt_text(affiliate)
-    affiliate.header_logo_blob.metadata.merge!({ 'custom' => { 'alt_data' => affiliate.logo_alt_text.to_s } }) if affiliate.logo_alt_text.present?
+    affiliate.header_logo_blob.metadata.merge!({ 'custom' => { 'alt_text' => affiliate.logo_alt_text.to_s } }) if affiliate.logo_alt_text.present?
   end
 
   def update_header_links(affiliate)
