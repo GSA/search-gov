@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ContentSettingsUpdater do
-  let(:content_settings_updater) { instance_double(ContentSettingsUpdater) }
+  let(:content_settings_updater) { instance_double(described_class) }
   let(:run_task) do
     Rake.application.invoke_task "searchgov:content_settings_updater[#{ids}]"
   end
@@ -13,7 +13,7 @@ describe ContentSettingsUpdater do
   before do
     Rake.application.rake_require('tasks/content_settings_updater')
     Rake::Task.define_task(:environment)
-    allow(ContentSettingsUpdater).to receive(:new).and_return(content_settings_updater)
+    allow(described_class).to receive(:new).and_return(content_settings_updater)
     allow(content_settings_updater).to receive(:update)
   end
 
@@ -27,7 +27,7 @@ describe ContentSettingsUpdater do
     it 'calls the updater on those ids' do
       run_task
 
-      expect(ContentSettingsUpdater).to have_received(:new)
+      expect(described_class).to have_received(:new)
       expect(content_settings_updater).to have_received(:update).with('all')
     end
   end
@@ -42,7 +42,7 @@ describe ContentSettingsUpdater do
     it 'calls the updater on those ids' do
       run_task
 
-      expect(ContentSettingsUpdater).to have_received(:new)
+      expect(described_class).to have_received(:new)
       expect(content_settings_updater).to have_received(:update).with(ids)
     end
   end

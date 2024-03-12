@@ -25,6 +25,7 @@ class ContentSettingsUpdater
 
   def update_affiliate_content_setings(affiliate)
     migrate_paperclip_image_to_active_storage(affiliate)
+    update_alt_text(affiliate)
     update_header_links(affiliate)
     update_footer_links(affiliate)
     affiliate.save
@@ -55,7 +56,7 @@ class ContentSettingsUpdater
   end
 
   def update_footer_links(affiliate)
-    return if affiliate.managed_footer_links.present?
+    return if affiliate.managed_footer_links.blank?
 
     new_footer_urls = affiliate.footer_links.map(&:url)
     affiliate.managed_footer_links.each do |link|
