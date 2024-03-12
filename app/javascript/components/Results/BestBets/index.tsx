@@ -8,7 +8,9 @@ import { TextBestBet } from './TextBestBet';
 import { GraphicsBestBet } from './GraphicsBestBet';
 
 interface BestBetsProps {
+  affiliate: string;
   recommendedBy: string;
+  vertical: string;
   textBestBets?: {
     title: string;
     url: string;
@@ -23,7 +25,8 @@ interface BestBetsProps {
       title: string;
       url: string;
     }[];
-  }
+  };
+  query: string;
 }
 
 const StyledWrapper = styled.div.attrs<{ styles: { bestBetBackgroundColor: string; sectionTitleColor: string; resultUrlColor: string; resultDescriptionColor: string; }; }>((props) => ({
@@ -43,7 +46,7 @@ const StyledWrapper = styled.div.attrs<{ styles: { bestBetBackgroundColor: strin
   }
 `;
 
-export const BestBets = ({ recommendedBy, textBestBets = [], graphicsBestBet }: BestBetsProps) => {
+export const BestBets = ({ affiliate, recommendedBy, vertical, textBestBets = [], graphicsBestBet, query }: BestBetsProps) => {
   const i18n = useContext(LanguageContext);
   const styles = useContext(StyleContext);
 
@@ -62,6 +65,10 @@ export const BestBets = ({ recommendedBy, textBestBets = [], graphicsBestBet }: 
                     <React.Fragment key={index}>
                       <TextBestBet
                         {...textBestBet}
+                        affiliate={affiliate}
+                        position={index+1}
+                        query={query}
+                        vertical={vertical}
                       />
                     </React.Fragment>
                   );
@@ -69,6 +76,9 @@ export const BestBets = ({ recommendedBy, textBestBets = [], graphicsBestBet }: 
                 {graphicsBestBet && (
                   <GraphicsBestBet
                     {...graphicsBestBet}
+                    affiliate={affiliate}
+                    query={query}
+                    vertical={vertical}
                   />
                 )}
               </Grid>
