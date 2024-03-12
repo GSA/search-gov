@@ -74,6 +74,7 @@ class SearchgovUrl < ApplicationRecord
         # behaves in production setting.
         save_document if ENV['SAVE_SEARCHGOV_DOCUMENT'] == 'true'
         check_canonical_url
+        # index_and_update_status
       rescue => error
         delete_document if indexed? && searchgov_domain.available?
         self.last_crawl_status = error.message.first(255)
@@ -88,6 +89,11 @@ class SearchgovUrl < ApplicationRecord
 
   def document_id
     Digest::SHA256.hexdigest(url_without_protocol)
+  end
+
+  def index_and_update_status
+    index_document
+    self.last_crawl_status = OK_STATUS
   end
 
   private
@@ -124,9 +130,13 @@ class SearchgovUrl < ApplicationRecord
   end
 
   def handle_redirection(new_url)
-    raise SearchgovUrlError.new("Redirection forbidden to #{new_url}") if redirected_outside_domain?(new_url)
+    check_for_redirection(new_url)
     SearchgovUrl.create(url: new_url)
     raise SearchgovUrlError.new("Redirected to #{new_url}")
+  end
+
+  def check_for_redirection(url)
+    raise SearchgovUrlError, "Redirection forbidden to #{url}" if redirected_outside_domain?(url)
   end
 
   def validate_content_type
@@ -148,19 +158,22 @@ class SearchgovUrl < ApplicationRecord
 
   def use_canonical_url
     canonical_url = document.canonical_url
-    raise SearchgovUrlError, "Record creation forbidden to #{canonical_url}" if redirected_outside_domain?(canonical_url)
+    return if canonical_url.nil?
 
-    searchgov_url = SearchgovUrl.create(url: canonical_url)
-
-    return unless searchgov_url.persisted?
-
-    update(last_crawl_status: "Canonical URL: #{canonical_url}")
-    raise SearchgovUrlError, "Created canonical url #{canonical_url}"
+    check_for_redirection(canonical_url)
+    create_canonical_url(canonical_url)
   end
 
-  def index_and_update_status
-    index_document
-    self.last_crawl_status = OK_STATUS
+  def create_canonical_url(canonical_url)
+    searchgov_url = SearchgovUrl.create!(url: canonical_url)
+    return unless searchgov_url.persisted?
+
+    fetch_canonical(searchgov_url)
+  end
+
+  def fetch_canonical(searchgov_url)
+    update(last_crawl_status: "Canonical URL: #{searchgov_url.url}")
+    searchgov_url.fetch
   end
 
   def save_document
