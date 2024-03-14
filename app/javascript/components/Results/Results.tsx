@@ -210,6 +210,9 @@ export const Results = ({ page, query = '', results = null, additionalResults = 
             {additionalResults?.healthTopic && 
               <HealthTopics 
                 {...additionalResults.healthTopic}
+                affiliate={page?.affiliate ?? ''}
+                query={query}
+                vertical={vertical}
               />
             }
 
@@ -283,7 +286,9 @@ export const Results = ({ page, query = '', results = null, additionalResults = 
             {additionalResults?.federalRegisterDocuments && 
               <FedRegister 
                 fedRegisterDocs={additionalResults.federalRegisterDocuments}
+                affiliate={page?.affiliate ?? ''}
                 query={query}
+                vertical={vertical}
               />
             }
 

@@ -3,6 +3,10 @@ import styled from 'styled-components';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
 import parse from 'html-react-parser';
 import moment from 'moment';
+import { clickTracking } from '../../../utils';
+import { moduleCode } from '../../../utils/constants';
+import ResultGridWrapper from '../ResultGrid/ResultGridWrapper';
+import ResultTitle from '../ResultGrid/ResultTitle';
 
 import { StyleContext } from '../../../contexts/StyleContext';
 import { FontsAndColors } from '../../SearchResultsLayout';
@@ -23,6 +27,8 @@ type FedRegisterDoc = {
 interface FedRegisterDocsProps {
   fedRegisterDocs?: FedRegisterDoc[];
   query?:string;
+  affiliate: string;
+  vertical: string;
 }
 
 const StyledWrapper = styled.div.attrs<{ styles: FontsAndColors }>((props) => ({
@@ -92,8 +98,12 @@ const getAgencyFedUrl = (query: string) => {
   return encodeURI(moreFedUrl);
 };
 
-export const FedRegister = ({ fedRegisterDocs=[], query='' }: FedRegisterDocsProps) => {
+export const FedRegister = ({ fedRegisterDocs=[], query='', affiliate, vertical }: FedRegisterDocsProps) => {
   const styles = useContext(StyleContext);
+
+  const module = (() => {
+    return moduleCode.federalRegisterDocuments;
+  })();
 
   return (
     <>
@@ -111,14 +121,19 @@ export const FedRegister = ({ fedRegisterDocs=[], query='' }: FedRegisterDocsPro
             {fedRegisterDocs?.map((fedRegisterDoc, index) => {
               return (
                 <GridContainer className='result search-result-item' key={index}>
-                  <Grid row gap="md">
+                  <ResultGridWrapper
+                    url={fedRegisterDoc.htmlUrl}
+                    clickTracking={() => clickTracking(affiliate, module, query, index+1, fedRegisterDoc.htmlUrl, vertical)}>
                     <Grid col={true} className='result-meta-data'>
                       <span className='published-date'>{fedRegisterDoc.publicationDate}</span>
                       <div className='result-title'>
                         <h2 className='result-title-label'>
-                          <a href={fedRegisterDoc.htmlUrl} className='result-title-link'>
+                          <ResultTitle 
+                            url={fedRegisterDoc.htmlUrl}
+                            className='result-title-link'
+                            clickTracking={() => clickTracking(affiliate, module, query, index+1, fedRegisterDoc.htmlUrl, vertical)}>
                             {parse(fedRegisterDoc.title)}
-                          </a>
+                          </ResultTitle>
                         </h2>
                       </div>
                       <div className='result-desc'>
@@ -127,7 +142,7 @@ export const FedRegister = ({ fedRegisterDocs=[], query='' }: FedRegisterDocsPro
                         {getFedRegDocCommentPeriod(fedRegisterDoc)}
                       </div>
                     </Grid>
-                  </Grid>
+                  </ResultGridWrapper>
                   <Grid row className="row-mobile-divider"></Grid>
                 </GridContainer>
               );
@@ -138,9 +153,12 @@ export const FedRegister = ({ fedRegisterDocs=[], query='' }: FedRegisterDocsPro
                 <Grid col={true} className='result-meta-data'>
                   <div className='result-title'>
                     <h2 className='result-title-label'>
-                      <a href={getAgencyFedUrl(query)} className='result-title-link more-title-link'>
-                        More agency documents on FederalRegister.gov
-                      </a>
+                      <ResultTitle 
+                        url={getAgencyFedUrl(query)}
+                        className='result-title-link more-title-link'
+                        clickTracking={() => clickTracking(affiliate, module, query, fedRegisterDocs.length+1, getAgencyFedUrl(query), vertical)}>
+                          More agency documents on FederalRegister.gov
+                      </ResultTitle>
                     </h2>
                   </div>
                 </Grid>
