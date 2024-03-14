@@ -217,6 +217,10 @@ export const Results = ({ page, query = '', results = null, additionalResults = 
               <Jobs 
                 jobs={additionalResults?.jobs}
                 agencyName={agencyName}
+                
+                affiliate={page?.affiliate ?? ''}
+                query={query}
+                vertical={vertical}
               />
             }
 
