@@ -3,6 +3,8 @@ import { GridContainer, Grid } from '@trussworks/react-uswds';
 import parse from 'html-react-parser';
 import { clickTracking, truncateUrl } from '../../../utils';
 import { moduleCode } from '../../../utils/constants';
+import ResultGridWrapper from './ResultGridWrapper';
+import ResultTitle from './ResultTitle';
 
 type Result = {
   title: string,
@@ -56,7 +58,9 @@ export const ResultGrid = ({ result, affiliate, query, position, vertical }: Res
 
   return (
     <GridContainer className='result search-result-item'>
-      <Grid row gap="md">
+      <ResultGridWrapper
+        url={result.url}
+        clickTracking={() => clickTracking(affiliate, module, query, position, result.url, vertical)}>
         {result.thumbnailUrl &&
         <Grid mobileLg={{ col: 4 }} className='result-thumbnail'>
           <img src={result.thumbnailUrl} className="result-image" alt={result.title}/>
@@ -68,12 +72,13 @@ export const ResultGrid = ({ result, affiliate, query, position, vertical }: Res
           {result.publishedAt   && <span className='published-date'>{result.publishedAt}</span>}
           <div className='result-title'>
             <h2 className='result-title-label'>
-              <a href={result.url}
+              <ResultTitle 
+                url={result.url}
                 className='result-title-link'
-                onClick={() => clickTracking(affiliate, module, query, position, result.url, vertical)}>
+                clickTracking={() => clickTracking(affiliate, module, query, position, result.url, vertical)}>
                 {parse(result.title)} 
                 {getFileType(result.fileType)}
-              </a>
+              </ResultTitle>
             </h2>
           </div>
           <div className='result-desc'>
@@ -81,7 +86,7 @@ export const ResultGrid = ({ result, affiliate, query, position, vertical }: Res
             <div className='result-url-text'>{truncateUrl(result.url, URL_LENGTH)}</div>
           </div>
         </Grid>
-      </Grid>
+      </ResultGridWrapper>
       <Grid row className="row-mobile-divider"></Grid>
     </GridContainer>
   );
