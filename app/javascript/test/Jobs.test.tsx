@@ -16,7 +16,7 @@ const locale = {
     atAgency: 'at %{agency}',
     federalJobOpenings: 'Federal Job Openings',
     searches: {
-      moreFederalJobOpenings: 'More federal job openings on USAJobs.gov',
+      moreFederalJobOpenings: 'More federal job openings on USAJobs.gov'
     }
   }
 };
