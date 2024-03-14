@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
@@ -10,11 +12,11 @@ enableFetchMocks();
 
 const locale = {
   en: {
-      jobOpenings: "Job Openings",
-      atAgency: "at %{agency}",
-      federalJobOpenings: "Federal Job Openings",
-      searches: {
-        moreFederalJobOpenings: "More federal job openings on USAJobs.gov",
+    jobOpenings: "Job Openings",
+    atAgency: "at %{agency}",
+    federalJobOpenings: "Federal Job Openings",
+    searches: {
+      moreFederalJobOpenings: "More federal job openings on USAJobs.gov",
     }
   }
 };
@@ -122,10 +124,10 @@ const jobsProps = {
       applicationCloseDate: 'September 24, 2023'
     }
   ],
-  agencyName:'USA.gov',
-  query: "jobs",
-  affiliate: "boos_affiliate",
-  vertical: "web"
+  agencyName: 'USA.gov',
+  query: 'jobs',
+  affiliate: 'boos_affiliate',
+  vertical: 'web'
 };
 
 const jobsProps2 = { 
@@ -141,9 +143,9 @@ const jobsProps2 = {
       applicationCloseDate: 'September 24, 2023'
     }
   ],
-  query: "jobs",
-  affiliate: "boos_affiliate",
-  vertical: "web"
+  query: 'jobs',
+  affiliate: 'boos_affiliate',
+  vertical: 'web'
 };
 
 describe('Jobs component', () => {
@@ -158,9 +160,11 @@ describe('Jobs component', () => {
   ) as jest.Mock;
 
   it('renders Jobs component', () => {
-    render(<LanguageContext.Provider value={i18n} >
+    render(
+      <LanguageContext.Provider value={i18n} >
         <Jobs {...jobsProps} />
-      </LanguageContext.Provider>)
+      </LanguageContext.Provider>
+    );
     expect(screen.getByText('Job Openings at USA.gov')).toBeInTheDocument();
   });
 
@@ -178,7 +182,7 @@ describe('Jobs component', () => {
   });
 
   it('calls fetch with correct jobs click data', () => {
-    render(<Jobs {...jobsProps} />)
+    render(<Jobs {...jobsProps} />);
 
     const link = screen.getByText(/Contract Specialist 1/i);
     fireEvent.click(link);
@@ -189,7 +193,7 @@ describe('Jobs component', () => {
       position: 1,
       query: 'jobs',
       vertical: 'web'
-    }
+    };
 
     expect(fetch).toHaveBeenCalledWith('/clicked', {
       body: JSON.stringify(clickBody),
@@ -231,7 +235,7 @@ describe('Jobs component', () => {
     render(
       <Jobs {...jobsProps} />
     );
-    
+
     expect(screen.getByText('Contract Specialist 8')).toBeInTheDocument();
     expect(screen.getByText('Office of Acquisition and Logistics 5')).toBeInTheDocument();
 
@@ -244,7 +248,7 @@ describe('Jobs component', () => {
       position: 8,
       query: 'jobs',
       vertical: 'web'
-    }
+    };
 
     expect(fetch).toHaveBeenCalledWith('/clicked', {
       body: JSON.stringify(clickBody),
@@ -284,7 +288,7 @@ describe('Mobile view: Jobs component clicking the content div', () => {
       position: 1,
       query: 'jobs',
       vertical: 'web'
-    }
+    };
 
     expect(fetch).toHaveBeenCalledWith('/clicked', {
       body: JSON.stringify(clickBody),
@@ -307,7 +311,7 @@ describe('Mobile view: Jobs component clicking the content div', () => {
       position: 8,
       query: 'jobs',
       vertical: 'web'
-    }
+    };
 
     expect(fetch).toHaveBeenCalledWith('/clicked', {
       body: JSON.stringify(clickBody),
