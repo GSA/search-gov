@@ -228,6 +228,7 @@ Rails.application.routes.draw do
     resources :searchgov_domains, concerns: :active_scaffold do
       member do
         post 'reindex'
+        post 'stop_indexing'
       end
       resources :searchgov_urls, concerns: :active_scaffold do
         member do
