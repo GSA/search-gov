@@ -475,7 +475,7 @@ describe SearchgovDomain do
     it 'stops indexing job and updates statuses' do
       searchgov_domain.stop_indexing!
 
-      expect(searchgov_domain.status).to eq('indexing stopped')
+      expect(searchgov_domain.status).to eq('indexing stopped manually')
       expect(searchgov_domain).to be_idle
       expect(searchgov_domain).to be_persisted
     end
