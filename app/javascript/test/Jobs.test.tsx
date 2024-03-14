@@ -12,11 +12,11 @@ enableFetchMocks();
 
 const locale = {
   en: {
-    jobOpenings: "Job Openings",
-    atAgency: "at %{agency}",
-    federalJobOpenings: "Federal Job Openings",
+    jobOpenings: 'Job Openings',
+    atAgency: 'at %{agency}',
+    federalJobOpenings: 'Federal Job Openings',
     searches: {
-      moreFederalJobOpenings: "More federal job openings on USAJobs.gov",
+      moreFederalJobOpenings: 'More federal job openings on USAJobs.gov',
     }
   }
 };
@@ -277,7 +277,7 @@ describe('Mobile view: Jobs component clicking the content div', () => {
   ) as jest.Mock;
 
   it('calls fetch with correct jobs click data', () => {
-    render(<Jobs {...jobsProps} />)
+    render(<Jobs {...jobsProps} />);
 
     const body = screen.getByText(/Office of Acquisition and Logistics 1/i);
     fireEvent.click(body);
@@ -300,7 +300,7 @@ describe('Mobile view: Jobs component clicking the content div', () => {
   });
 
   it('more jobs: calls fetch with correct jobs click data', () => {
-    render(<Jobs {...jobsProps} />)
+    render(<Jobs {...jobsProps} />);
 
     const body = screen.getByText(/Office of Acquisition and Logistics 8/i);
     fireEvent.click(body);
