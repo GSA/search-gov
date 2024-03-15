@@ -233,6 +233,9 @@ export const Results = ({ page, query = '', results = null, additionalResults = 
               <RssNews 
                 news={additionalResults.newNews} 
                 newsLabel={newsAboutQuery}
+                affiliate={page?.affiliate ?? ''}
+                query={query}
+                vertical={vertical}
               />
             }
 
@@ -297,6 +300,9 @@ export const Results = ({ page, query = '', results = null, additionalResults = 
               <RssNews 
                 news={additionalResults.oldNews} 
                 newsLabel={newsAboutQuery}
+                affiliate={page?.affiliate ?? ''}
+                query={query}
+                vertical={vertical}
               />
             }
 

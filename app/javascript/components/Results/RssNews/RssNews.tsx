@@ -5,8 +5,13 @@ import { GridContainer, Grid } from '@trussworks/react-uswds';
 import parse from 'html-react-parser';
 import { StyleContext } from '../../../contexts/StyleContext';
 import { FontsAndColors } from '../../SearchResultsLayout';
+import { clickTracking } from '../../../utils';
+import { moduleCode } from '../../../utils/constants';
+import ResultGridWrapper from '../ResultGrid/ResultGridWrapper';
+import ResultTitle from '../ResultGrid/ResultTitle';
 
 interface RssNewsProps {
+  affiliate: string;
   newsLabel: string;
   news?: {
     title: string;
@@ -14,6 +19,8 @@ interface RssNewsProps {
     description: string;
     publishedAt: string;
   }[];
+  query: string;
+  vertical: string;
 }
 
 const StyledWrapper = styled.div.attrs<{ styles: FontsAndColors; }>((props) => ({
@@ -24,8 +31,12 @@ const StyledWrapper = styled.div.attrs<{ styles: FontsAndColors; }>((props) => (
   }
 `;
 
-export const RssNews = ({ newsLabel, news=[] }: RssNewsProps) => {
+export const RssNews = ({ affiliate, newsLabel, news=[], query, vertical }: RssNewsProps) => {
   const styles = useContext(StyleContext);
+
+  const module = (() => {
+    return moduleCode.rssFeeds;
+  })();
 
   return (
     <>
@@ -43,16 +54,21 @@ export const RssNews = ({ newsLabel, news=[] }: RssNewsProps) => {
             {news?.map((newsItem, index) => {
               return (
                 <GridContainer className='result search-result-item' key={index}>
-                  <Grid row gap="md">
+                  <ResultGridWrapper
+                    url={newsItem.link}
+                    clickTracking={() => clickTracking(affiliate, module, query, index+1, newsItem.link, vertical)}>
                     <Grid col={true} className='result-meta-data'>
                       <span className='published-date'>
                         <Moment fromNow>{newsItem.publishedAt}</Moment>
                       </span>
                       <div className='result-title'>
                         <h2 className='result-title-label'>
-                          <a href={newsItem.link} className='result-title-link'>
+                          <ResultTitle 
+                              url={newsItem.link}
+                              className='result-title-link'
+                              clickTracking={() => clickTracking(affiliate, module, query, index+1, newsItem.link, vertical)}>
                             {parse(newsItem.title)}
-                          </a>
+                          </ResultTitle>
                         </h2> 
                       </div>
                       <div className='result-desc'>
@@ -60,7 +76,7 @@ export const RssNews = ({ newsLabel, news=[] }: RssNewsProps) => {
                         <div className='result-url-text'>{newsItem.link}</div>
                       </div>
                     </Grid>
-                  </Grid>
+                  </ResultGridWrapper>
                   <Grid row className="row-mobile-divider"></Grid>
                 </GridContainer>
               );
