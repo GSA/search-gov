@@ -470,4 +470,14 @@ describe SearchgovDomain do
       it { is_expected.to eq ['https://searchgov.gov/sitemap_record.xml'] }
     end
   end
+
+  describe '#stop_indexing!' do
+    it 'stops indexing job and updates statuses' do
+      searchgov_domain.stop_indexing!
+
+      expect(searchgov_domain.status).to eq('indexing stopped manually')
+      expect(searchgov_domain).to be_idle
+      expect(searchgov_domain).to be_persisted
+    end
+  end
 end

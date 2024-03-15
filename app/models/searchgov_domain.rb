@@ -6,7 +6,11 @@ class SearchgovDomain < ApplicationRecord
   include AASM
   class DomainError < StandardError; end
 
-  OK_STATUS = '200 OK'
+  OK_STATUS        = '200 OK'
+  INDEXING_STARTED = 'indexing started manually'
+  INDEXING_STOPPED = 'indexing stopped manually'
+
+  GOOD_STATUS = [OK_STATUS, INDEXING_STARTED, INDEXING_STOPPED].freeze
 
   before_validation(on: :create) { self.domain = domain&.downcase&.strip }
 
@@ -22,8 +26,8 @@ class SearchgovDomain < ApplicationRecord
   attr_readonly :domain
   attr_reader :response
 
-  scope :ok, -> { where(status: OK_STATUS) }
-  scope :not_ok, -> { where.not(status: OK_STATUS).or(where(status: nil)) }
+  scope :ok, -> { where(status: GOOD_STATUS) }
+  scope :not_ok, -> { where.not(status: GOOD_STATUS).or(where(status: nil)) }
 
   def to_label
     domain
@@ -43,7 +47,7 @@ class SearchgovDomain < ApplicationRecord
   end
 
   def available?
-    (status || check_status) == OK_STATUS
+    GOOD_STATUS.include?(status || check_status)
   end
 
   def check_status
@@ -69,6 +73,13 @@ class SearchgovDomain < ApplicationRecord
     urls = sitemaps.pluck(:url)
     urls += robotex.sitemaps(url).uniq.map { |url| UrlParser.update_scheme(url, 'https') }
     urls.presence || ["#{url}sitemap.xml"]
+  end
+
+  def stop_indexing!
+    done_indexing
+    self.status = INDEXING_STOPPED
+
+    save
   end
 
   private
