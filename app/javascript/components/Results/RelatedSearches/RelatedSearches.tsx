@@ -1,6 +1,10 @@
 import React, { useContext } from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
 import parse from 'html-react-parser';
+import { clickTracking } from '../../../utils';
+import { moduleCode } from '../../../utils/constants';
+import ResultGridWrapper from '../ResultGrid/ResultGridWrapper';
+import ResultTitle from '../ResultGrid/ResultTitle';
 import { LanguageContext } from '../../../contexts/LanguageContext';
 
 type RelatedSearch = {
@@ -9,11 +13,18 @@ type RelatedSearch = {
 };
 
 interface RelatedSearchesProps {
+  affiliate: string;
   relatedSearches?: RelatedSearch[];
+  query: string;
+  vertical: string;
 }
 
-export const RelatedSearches = ({ relatedSearches=[] }: RelatedSearchesProps) => {
+export const RelatedSearches = ({ affiliate, relatedSearches=[], query, vertical }: RelatedSearchesProps) => {
   const i18n = useContext(LanguageContext);
+
+  const module = (() => {
+    return moduleCode.relatedSearches;
+  })();
 
   return (
     <>
@@ -30,17 +41,22 @@ export const RelatedSearches = ({ relatedSearches=[] }: RelatedSearchesProps) =>
           {relatedSearches?.map((relatedSearch, index) => {
             return (
               <GridContainer className='result search-result-item' key={index}>
-                <Grid row gap="md">
+                <ResultGridWrapper
+                  url={relatedSearch.link}
+                  clickTracking={() => clickTracking(affiliate, module, query, index+1, `${window.location.origin}${relatedSearch.link}`, vertical)}>
                   <Grid col={true} className='result-meta-data'>
                     <div className='result-title'>
                       <h2 className='result-title-label'>
-                        <a href={relatedSearch.link} className='result-title-link'>
+                        <ResultTitle 
+                          url={relatedSearch.link}
+                          className='result-title-link'
+                          clickTracking={() => clickTracking(affiliate, module, query, index+1, `${window.location.origin}${relatedSearch.link}`, vertical)}>
                           {parse(relatedSearch.label)}
-                        </a>
+                        </ResultTitle>
                       </h2>
                     </div>
                   </Grid>
-                </Grid>
+                </ResultGridWrapper>
               </GridContainer>
             );
           })}

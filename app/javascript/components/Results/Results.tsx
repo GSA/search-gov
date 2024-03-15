@@ -301,7 +301,11 @@ export const Results = ({ page, query = '', results = null, additionalResults = 
             }
 
             {relatedSearches && relatedSearches.length > 0 && 
-              <RelatedSearches relatedSearches={relatedSearches}/>
+              <RelatedSearches 
+                affiliate={page?.affiliate ?? ''}
+                query={query}
+                relatedSearches={relatedSearches}
+                vertical={vertical}/>
             }
           </StyledWrapper>
         </div>
