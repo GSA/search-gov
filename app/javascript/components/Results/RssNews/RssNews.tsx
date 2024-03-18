@@ -34,9 +34,7 @@ const StyledWrapper = styled.div.attrs<{ styles: FontsAndColors; }>((props) => (
 export const RssNews = ({ affiliate, newsLabel, news=[], query, vertical }: RssNewsProps) => {
   const styles = useContext(StyleContext);
 
-  const module = (() => {
-    return moduleCode.rssFeeds;
-  })();
+  const module = moduleCode.rssFeeds;
 
   return (
     <>
