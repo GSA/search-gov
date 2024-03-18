@@ -130,7 +130,7 @@ const jobsProps = {
   vertical: 'web'
 };
 
-const jobsProps2 = { 
+const noAgencyJobsProps = { 
   jobs: [
     {
       positionTitle: 'Contract Specialist 5',
@@ -159,7 +159,7 @@ describe('Jobs component', () => {
     })
   ) as jest.Mock;
 
-  it('renders Jobs component', () => {
+  it('renders Jobs component and show Job Openings at agency as title', () => {
     render(
       <LanguageContext.Provider value={i18n} >
         <Jobs {...jobsProps} />
@@ -168,13 +168,21 @@ describe('Jobs component', () => {
     expect(screen.getByText('Job Openings at USA.gov')).toBeInTheDocument();
   });
 
-  it('shows Jobs details', () => {
+  it('renders Jobs component with no agency and show Federal Job Openings title', () => {
     render(
       <LanguageContext.Provider value={i18n} >
-        <Jobs {...jobsProps2} />
+        <Jobs {...noAgencyJobsProps} />
       </LanguageContext.Provider>
     );
     expect(screen.getByText('Federal Job Openings')).toBeInTheDocument();
+  });
+
+  it('Show Job details', () => {
+    render(
+      <LanguageContext.Provider value={i18n} >
+        <Jobs {...noAgencyJobsProps} />
+      </LanguageContext.Provider>
+    );
 
     expect(screen.getByText('$122,000.00+/yr')).toBeInTheDocument();
     expect(screen.getByText('Contract Specialist 5')).toBeInTheDocument();

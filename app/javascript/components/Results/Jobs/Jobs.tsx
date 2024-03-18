@@ -69,9 +69,7 @@ const formatSalary = (job: { minimumPay: number, maximumPay: number, rateInterva
 export const Jobs = ({ jobs=[], agencyName, query, affiliate, vertical }: JobsProps) => {
   const i18n    = useContext(LanguageContext);
   const styles  = useContext(StyleContext);
-  const module  = (() => {
-    return moduleCode.jobs;
-  })();
+  const module  = moduleCode.jobs;
 
   const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
   const MAX_JOBS_IN_COLLAPSE_VIEW = 3;
