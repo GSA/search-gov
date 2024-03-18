@@ -23,9 +23,7 @@ interface VideoProps {
 }
 
 export const Video = (video: VideoProps) => {
-  const module = (() => {
-    return moduleCode.videos;
-  })();
+  const module = moduleCode.videos;
 
   return (
     <GridContainer className='result search-result-item search-result-video-item'>

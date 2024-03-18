@@ -25,9 +25,7 @@ interface VideosModuleProps {
 
 export const VideosModule = ({ affiliate, query, vertical, videos=[], videosUrl }: VideosModuleProps) => {
   const i18n = useContext(LanguageContext);
-  const module = (() => {
-    return moduleCode.videos;
-  })();
+  const module = moduleCode.videos;
 
   return (
     <>
