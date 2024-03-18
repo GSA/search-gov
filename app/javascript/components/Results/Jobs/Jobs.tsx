@@ -135,7 +135,6 @@ export const Jobs = ({ jobs=[], agencyName, query, affiliate, vertical }: JobsPr
                       </div>
                     </Grid>
                   </ResultGridWrapper>
-
                   <Grid row className="row-mobile-divider"></Grid>
                 </GridContainer>
               );
