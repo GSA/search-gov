@@ -22,9 +22,7 @@ interface RelatedSearchesProps {
 export const RelatedSearches = ({ affiliate, relatedSearches=[], query, vertical }: RelatedSearchesProps) => {
   const i18n = useContext(LanguageContext);
 
-  const module = (() => {
-    return moduleCode.relatedSearches;
-  })();
+  const module = moduleCode.relatedSearches;
 
   return (
     <>
