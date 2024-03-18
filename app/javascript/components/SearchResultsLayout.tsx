@@ -274,7 +274,7 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
 
           {/* This ternary is needed to handle the case when Bing pagination leads to a page with no results */}
           {resultsData ? (
-            <Results 
+            <Results
               page={page}
               results={resultsData.results}
               vertical={vertical}
@@ -291,8 +291,7 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
               sitelimit={sitelimit}
               jobsEnabled={jobsEnabled}
               agencyName={agencyName}
-            />
-            ) : params.query ? (
+            />) : params.query ? (
             <Results
               page={page}
               vertical={vertical}
