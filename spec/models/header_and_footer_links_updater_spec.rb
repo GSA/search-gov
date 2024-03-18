@@ -5,7 +5,7 @@ describe HeaderAndFooterLinksUpdater do
     before do
       3.times do |i|
         affiliate = Affiliate.create!(name: "header_and_footer_affiliate_#{i}",
-                          display_name: "Header and Footer Affiliate #{i}")
+                                      display_name: "Header and Footer Affiliate #{i}")
 
         affiliate.update(managed_header_links_attributes: { '0' => { position: '0', title: 'Header', url: 'http://www.acpt.nsf.gov/statistics/2016/nsb20161/' } })
         affiliate.update(managed_footer_links_attributes: { '0' => { position: '0', title: 'Footer', url: 'http://www.acpt.nsf.gov/statistics/2016/nsb20161/#/report' } })
