@@ -224,8 +224,13 @@ export const Results = ({ page, query = '', results = null, additionalResults = 
             }
 
             {/* Video module */}
-            {additionalResults?.youtubeNewsItems && 
-              <VideosModule videos={additionalResults.youtubeNewsItems} query={query} videosUrl={videosUrl} />
+            {additionalResults?.youtubeNewsItems &&
+              <VideosModule
+                affiliate={page?.affiliate ?? ''}
+                query={query}
+                vertical={vertical}
+                videos={additionalResults.youtubeNewsItems}
+                videosUrl={videosUrl} />
             }
 
             {/* RSS - new news */}
@@ -248,14 +253,18 @@ export const Results = ({ page, query = '', results = null, additionalResults = 
                   }
                   if (result?.youtube) {
                     return (
-                      <Video 
+                      <Video
+                        affiliate={page?.affiliate ?? ''}
+                        description={result.description}
+                        duration={result.youtubeDuration}
                         key={index}
                         link={result.url}
-                        title={result.title}
-                        description={result.description}
+                        position={index+1}
                         publishedAt={result.youtubePublishedAt}
+                        query={query}
+                        title={result.title}
+                        vertical={vertical}
                         youtubeThumbnailUrl={result.youtubeThumbnailUrl} 
-                        duration={result.youtubeDuration}
                       />
                     );
                   }
