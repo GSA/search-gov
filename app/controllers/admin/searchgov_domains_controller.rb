@@ -21,8 +21,28 @@ class Admin::SearchgovDomainsController < Admin::AdminController
       inline: true,
       confirm: 'Are you sure you want to reindex this entire domain?'
     )
+
+    config.action_links.add(
+      'stop_indexing',
+      confirm:   'Are you sure you want to stop indexing this domain?',
+      crud_type: :update,
+      inline:    true,
+      label:     'stop indexing',
+      method:    :post,
+      position:  false,
+      type:      :member
+    )
+
     config.update.columns = %i[js_renderer]
     config.columns[:js_renderer].label = 'Render Javascript'
+  end
+
+  def stop_indexing
+    process_action_link_action do |searchgov_domain|
+      searchgov_domain.stop_indexing!
+
+      flash[:info] = t(:'.indexing_stopped', name: searchgov_domain.domain)
+    end
   end
 
   def after_create_save(record)
@@ -32,6 +52,8 @@ class Admin::SearchgovDomainsController < Admin::AdminController
   def reindex
     process_action_link_action do |searchgov_domain|
       SearchgovDomainReindexerJob.perform_later(searchgov_domain: searchgov_domain)
+
+      searchgov_domain.update(status: SearchgovDomain::INDEXING_STARTED)
 
       flash[:info] = "Reindexing has been enqueued for #{searchgov_domain.domain}"
     end

@@ -2,13 +2,15 @@
 
 describe Admin::SearchgovDomainsController do
   fixtures :users, :searchgov_domains
-  let(:config) { described_class.active_scaffold_config }
+
+  before do
+    activate_authlogic
+
+    UserSession.create(users(:affiliate_admin))
+  end
 
   describe '#update' do
-    before do
-      activate_authlogic
-      UserSession.create(users(:affiliate_admin))
-    end
+    let(:config) { described_class.active_scaffold_config }
 
     context 'when configuring Active Scaffold' do
       let(:update_columns) { config.update.columns }
@@ -19,4 +21,16 @@ describe Admin::SearchgovDomainsController do
       end
     end
   end
+
+  # rubocop:disable RSpec/AnyInstance
+  describe 'stop_indexing' do
+    let(:domain) { searchgov_domains(:agency_gov) }
+
+    it 'calls stop_indexing! on domain' do
+      expect_any_instance_of(SearchgovDomain).to receive(:stop_indexing!)
+
+      post :stop_indexing, params: { id: domain.id }
+    end
+  end
+  # rubocop:enable RSpec/AnyInstance
 end
