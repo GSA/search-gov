@@ -121,8 +121,12 @@ module ReactHelper
 
     spelling_suggestion_links(search, search_options) do |suggested_query, suggested_url, original_url|
       {
-        suggested: link_to(suggested_query, suggested_url),
-        original: link_to(search.query, original_url)
+        suggested: link_to(suggested_query, suggested_url, class: 'suggestedQuery'),
+        original: link_to(search.query, original_url, class: 'originalQuery'),
+        originalUrl: original_url,
+        originalQuery: search.query,
+        suggestedQuery: suggested_query,
+        suggestedUrl: suggested_url
       }
     end
   end

@@ -127,6 +127,10 @@ interface ResultsProps {
   spellingSuggestion?: {
     suggested: string;
     original: string;
+    originalUrl: string;
+    originalQuery: string;
+    suggestedQuery: string;
+    suggestedUrl: string;
   };
   videosUrl?: string;
   relatedSearches?: { label: string; link: string; }[];
