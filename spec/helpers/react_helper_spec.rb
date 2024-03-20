@@ -311,7 +311,11 @@ describe ReactHelper do
           with('SearchResultsLayout', hash_including(spellingSuggestion:
           {
             original: '<a href="/search?affiliate=usagov&amp;query=%2Bchocolate">chocolate</a>',
-            suggested: '<a href="/search?affiliate=usagov&amp;query=chalkcolate">chalkcolate</a>'
+            suggested: '<a href="/search?affiliate=usagov&amp;query=chalkcolate">chalkcolate</a>',
+            originalUrl: '/search?affiliate=usagov&amp;query=%2Bchocolate',
+            originalQuery: 'chocolate',
+            suggestedQuery: 'chalkcolate',
+            suggestedUrl: '/search?affiliate=usagov&amp;query=chalkcolate'
           }))
       end
 
