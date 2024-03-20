@@ -312,10 +312,10 @@ describe ReactHelper do
           {
             original: '<a href="/search?affiliate=usagov&amp;query=%2Bchocolate">chocolate</a>',
             suggested: '<a href="/search?affiliate=usagov&amp;query=chalkcolate">chalkcolate</a>',
-            originalUrl: '/search?affiliate=usagov&amp;query=%2Bchocolate',
+            originalUrl: '/search?affiliate=usagov&query=%2Bchocolate',
             originalQuery: 'chocolate',
             suggestedQuery: 'chalkcolate',
-            suggestedUrl: '/search?affiliate=usagov&amp;query=chalkcolate'
+            suggestedUrl: '/search?affiliate=usagov&query=chalkcolate'
           }))
       end
 
