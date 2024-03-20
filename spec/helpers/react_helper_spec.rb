@@ -310,8 +310,8 @@ describe ReactHelper do
         expect(helper).to have_received(:react_component).
           with('SearchResultsLayout', hash_including(spellingSuggestion:
           {
-            original: '<a href="/search?affiliate=usagov&amp;query=%2Bchocolate">chocolate</a>',
-            suggested: '<a href="/search?affiliate=usagov&amp;query=chalkcolate">chalkcolate</a>',
+            original: '<a class="originalQuery" href="/search?affiliate=usagov&amp;query=%2Bchocolate">chocolate</a>',
+            suggested: '<a class="suggestedQuery" href="/search?affiliate=usagov&amp;query=chalkcolate">chalkcolate</a>',
             originalUrl: '/search?affiliate=usagov&query=%2Bchocolate',
             originalQuery: 'chocolate',
             suggestedQuery: 'chalkcolate',
