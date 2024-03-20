@@ -5,6 +5,10 @@ import { useCollapse } from 'react-collapsed';
 import { LanguageContext } from '../../../contexts/LanguageContext';
 import { StyleContext } from '../../../contexts/StyleContext';
 import { NoResults } from '../NoResults/NoResults';
+import { clickTracking } from '../../../utils';
+import { moduleCode } from '../../../utils/constants';
+import ResultGridWrapper from '../ResultGrid/ResultGridWrapper';
+import ResultTitle from '../ResultGrid/ResultTitle';
 
 import './Jobs.css';
 
@@ -24,6 +28,9 @@ type Job = {
 interface JobsProps {
   jobs?: Job;
   agencyName?: string;
+  query: string;
+  affiliate: string;
+  vertical: string;
 }
 
 const numberToCurrency = new Intl.NumberFormat('en-US', {
@@ -59,9 +66,10 @@ const formatSalary = (job: { minimumPay: number, maximumPay: number, rateInterva
   return minStr + withMax + job.rateIntervalCode;
 };
 
-export const Jobs = ({ jobs=[], agencyName }: JobsProps) => {
-  const i18n = useContext(LanguageContext);
-  const styles = useContext(StyleContext);
+export const Jobs = ({ jobs=[], agencyName, query, affiliate, vertical }: JobsProps) => {
+  const i18n    = useContext(LanguageContext);
+  const styles  = useContext(StyleContext);
+  const module  = moduleCode.jobs;
 
   const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
   const MAX_JOBS_IN_COLLAPSE_VIEW = 3;
@@ -103,11 +111,18 @@ export const Jobs = ({ jobs=[], agencyName }: JobsProps) => {
             {lessJobs?.map((job, index) => {
               return (
                 <GridContainer className='result search-result-item' key={index}>
-                  <Grid row gap="md">
+                  <ResultGridWrapper
+                    url={job.positionUri}
+                    clickTracking={() => clickTracking(affiliate, module, query, index+1, job.positionUri, vertical)}>
                     <Grid col={true} className='result-meta-data'>
                       <div className='result-title'>
                         <h2 className='result-title-label'>
-                          <a href={job.positionUri} className='result-title-link'>{job.positionTitle}</a>
+                          <ResultTitle 
+                            url={job.positionUri}
+                            className='result-title-link'
+                            clickTracking={() => clickTracking(affiliate, module, query, index+1, job.positionUri, vertical)}>
+                            {job.positionTitle}
+                          </ResultTitle>
                         </h2>
                       </div>
                       <div className='result-desc'>
@@ -119,7 +134,7 @@ export const Jobs = ({ jobs=[], agencyName }: JobsProps) => {
                         </ul>
                       </div>
                     </Grid>
-                  </Grid>
+                  </ResultGridWrapper>
                   <Grid row className="row-mobile-divider"></Grid>
                 </GridContainer>
               );
@@ -130,13 +145,18 @@ export const Jobs = ({ jobs=[], agencyName }: JobsProps) => {
                 {moreJobs?.map((job, index) => {
                   return (
                     <GridContainer className='result search-result-item' key={index}>
-                      <Grid row gap="md">
+                      <ResultGridWrapper
+                        url={job.positionUri}
+                        clickTracking={() => clickTracking(affiliate, module, query, MAX_JOBS_IN_COLLAPSE_VIEW+index+1, job.positionUri, vertical)}>
                         <Grid col={true} className='result-meta-data'>
                           <div className='result-title'>
                             <h2 className='result-title-label'>
-                              <a href={job.positionUri} className='result-title-link'>
+                              <ResultTitle 
+                                url={job.positionUri}
+                                className='result-title-link'
+                                clickTracking={() => clickTracking(affiliate, module, query, MAX_JOBS_IN_COLLAPSE_VIEW+index+1, job.positionUri, vertical)}>
                                 {job.positionTitle}
-                              </a>
+                              </ResultTitle>
                             </h2>
                           </div>
                           <div className='result-desc'>
@@ -148,7 +168,8 @@ export const Jobs = ({ jobs=[], agencyName }: JobsProps) => {
                             </ul>
                           </div>
                         </Grid>
-                      </Grid>
+                      </ResultGridWrapper>
+
                       <Grid row className="row-mobile-divider"></Grid>
                     </GridContainer>
                   );
@@ -175,7 +196,12 @@ export const Jobs = ({ jobs=[], agencyName }: JobsProps) => {
               <Grid col={true} className='result-meta-data'>
                 <div className='result-title'>
                   <h2 className='result-title-label'>
-                    <a href="https://www.usajobs.gov/Search/Results?hp=public" className='result-title-link more-title-link'>{i18n.t('searches.moreFederalJobOpenings')}</a>
+                    <ResultTitle 
+                      url='https://www.usajobs.gov/Search/Results?hp=public'
+                      className='result-title-link more-title-link'
+                      clickTracking={() => clickTracking(affiliate, module, query, jobs.length+1, 'https://www.usajobs.gov/Search/Results?hp=public', vertical)}>
+                      {i18n.t('searches.moreFederalJobOpenings')}
+                    </ResultTitle>
                   </h2>
                 </div>
               </Grid>
