@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-files=(application searches sites_base)
+files=(application searches sites)
 
 for file in ${files[@]}; do
   echo Processing $file
