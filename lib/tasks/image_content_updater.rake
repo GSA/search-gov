@@ -13,6 +13,8 @@ namespace :searchgov do
       next
     end
 
+    puts "Using #{Rails.application.secrets.aws_image_bucket} images bucket on S3"
+
     image_content_updater = ImageContentUpdater.new
     updated, failed = image_content_updater.update(args[:ids])
 
@@ -20,4 +22,3 @@ namespace :searchgov do
     puts "#{failed.count} affiliate(s) failed to update.  Consult logs for more info." if failed.present?
   end
 end
-  
