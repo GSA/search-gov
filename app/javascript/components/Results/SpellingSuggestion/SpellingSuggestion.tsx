@@ -13,18 +13,22 @@ interface SpellingSuggestionProps {
   originalQuery: string;
   suggestedQuery: string;
   suggestedUrl: string;
+  affiliate: string;
+  vertical: string;
 }
 
-export const SpellingSuggestion = ({ suggested, original, originalQuery, originalUrl, suggestedUrl, suggestedQuery  }: SpellingSuggestionProps) => {
+export const SpellingSuggestion = ({ suggested, original, originalQuery, originalUrl, suggestedUrl, suggestedQuery, affiliate, vertical  }: SpellingSuggestionProps) => {
   const i18n = useContext(LanguageContext);
+
+  const getUrl = (url: string) => window.location.origin + url;
   
   useEffect(() => {
-    document.getElementsByClassName('suggestedQuery')[0].addEventListener("click", function(){
-      clickTracking("affiliate", "module", suggestedQuery, 1, suggestedUrl, "vertical")
+    document.getElementsByClassName('suggestedQuery')[0].addEventListener('click', () => {
+      clickTracking(affiliate, 'BWEB', suggestedQuery, 1, getUrl(suggestedUrl), vertical)
     });
 
-    document.getElementsByClassName('originalQuery')[0].addEventListener("click", function(){
-      clickTracking("affiliate", "module", originalQuery, 1, originalUrl, "vertical")
+    document.getElementsByClassName('originalQuery')[0].addEventListener('click', () => {
+      clickTracking(affiliate, 'BWEB', originalQuery, 1, getUrl(originalUrl), vertical)
     });
   }, []);
 

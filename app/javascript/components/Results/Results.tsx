@@ -197,7 +197,11 @@ export const Results = ({ page, query = '', results = null, additionalResults = 
         {total && total > 0 ? <ResultsCount total={total}/>  : <></>}
 
         {spellingSuggestion && (
-          <SpellingSuggestion {...spellingSuggestion}/>
+          <SpellingSuggestion 
+            {...spellingSuggestion}
+            affiliate={page?.affiliate ?? ''}
+            vertical={vertical}
+          />
         )}
 
         {additionalResults && (
