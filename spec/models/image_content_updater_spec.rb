@@ -1,13 +1,15 @@
 # spec/models/image_content_updater_spec.rb
 
 describe ImageContentUpdater do
-  context 'when updating header and footer links' do
+  context 'when updating image content' do
     before do
       3.times do |i|
-        Affiliate.create!(name: "image_content_affiliate_#{i}",
-                                      display_name: "Header and Footer Affiliate #{i}",
+        affiliate = Affiliate.create!(name: "image_content_affiliate_#{i}",
+                                      display_name: "Image content Affiliate #{i}",
                                       mobile_logo_file_name: "logo_#{i}.png",
                                       mobile_logo_content_type: 'image/png')
+        stub_request(:get, affiliate.mobile_logo_url).
+          to_return(status: 200, body: ->(_request) { File.new('spec/fixtures/images/dog.jpg') })
       end
       allow(Rails.logger).to receive(:info)
       allow(Rails.logger).to receive(:error)
@@ -43,9 +45,9 @@ describe ImageContentUpdater do
     context 'when all ids are passed to update' do
       let(:ids) { 'all' }
 
-      it 'updates all affiliate header and footer links' do
+      it 'updates logo attachments for all affiliates' do
         expect { image_content_updater.update(ids) }.
-          to change { third_affiliate.reload.header_logo_attachment }
+          to change { third_affiliate.reload.header_logo.attached? }.from(false).to(true)
       end
 
       it 'logs successes' do
