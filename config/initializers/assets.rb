@@ -8,7 +8,7 @@ end
 Rails.application.config.assets.version = '1.0'
 
 # These are our compressors
-Rails.application.config.assets.css_compressor = nil
+Rails.application.config.assets.css_compressor = :yui
 Rails.application.config.assets.js_compressor = Uglifier.new(harmony: true)
 
 # Add additional assets to the asset load path.
@@ -20,6 +20,10 @@ Rails.application.config.assets.js_compressor = Uglifier.new(harmony: true)
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 Rails.application.config.assets.precompile += %w(font-awesome-grunticon-rails.js)
 Rails.application.config.assets.precompile += %w(*.png *.gif)
-Rails.application.config.assets.precompile += %w(application.css searches.css sites.css)
+Rails.application.config.assets.precompile += %w(application.css searches.css sites_base.css)
 Rails.application.config.assets.precompile += Dir.entries("#{Rails.root}/app/assets/javascripts/").select { |e| e =~ /^(?!application\.js).+\.js$/ }
 Rails.application.config.assets.precompile += Dir.entries("#{Rails.root}/app/assets/stylesheets/").select { |e| e =~ /^(?!application\.css).+\.css$/ }
+# Added CSS and JS for USWDS banner and footer
+Rails.application.config.assets.precompile += %w( uswds.css )
+Rails.application.config.assets.precompile += %w( uswds_override.css )
+Rails.application.config.assets.precompile += %w( uswds.js )

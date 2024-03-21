@@ -1,0 +1,395 @@
+@import "compass/reset"
+@import "compass/typography/links"
+@import "blueprint"
+@import "blueprint/scaffolding"
+@import "blueprint/fancy-type"
+@import "blueprint/liquid"
+@import "skiplink"
++blueprint
++blueprint-scaffolding
++blueprint-liquid-grid
++fancy-type
+$site_base_color: "#fff"
+
+.container
+  :width 99%
+  .span-8,.span-11,.span-13,.span-21,.span-3
+    :margin 0
+
+p+p
+  :text-indent 0
+  :margin-top 0
+
+table.querycounts
+  :padding-right .75em
+div.span-8.last table.querycounts
+  :padding-right 0
+
+body
+  :font-size 95%
+  min-width: 980px
+
+.loud
+  :font-weight bold
+h1
+  :margin-bottom 0.5em
+  :font-size 1.5em
+  :vertical-align 40%
+  :font-weight bold
+  :color #1c3f94
+
+h2
+  :font-size 1.25em
+  :margin-bottom 0
+  :font-weight bold
+  :color #333
+  & img
+    :vertical-align text-bottom
+
+h3
+  :font-size 1.1em
+  :margin-bottom 0
+  :padding-left 0.2em
+
+th
+  :background-color lightgray
+  :font-size 1em
+  :font-weight normal
+  :padding 0 0.5em 0 0.5em
+  :margin 0
+
+td
+  :padding-top 0
+  :padding-bottom 0
+
+td.total
+  :font-weight bold
+
+hr
+  :margin-bottom 1em
+
+div.headertitle
+  :margin-bottom 0.25em
+  :background-color $site_base_color
+
+table table
+  :border 1px solid lightgray
+  :margin-bottom 0
+  :background cornsilk
+  :-moz-border-radius 10px
+  :-webkit-border-radius 10px
+
+div.auto_complete ul li
+  :text-align left
+  &.selected strong.highlight
+    :background-color #FFFFBB
+div.auto_complete ul strong.highlight
+  :background-color white
+
+
+form.bordered
+  :border 1px solid #bdbdbd
+  :padding 15px
+  ul
+    :list-style none
+  input.text
+    :width inherit
+  dl dd
+    textarea
+      :width 95%
+    input.text
+      :width 50%
+
+.sublabel
+  :font-weight normal
+
+.success
+  :margin 0
+  :padding 0.25em 1em
+
+.faq
+  :color #333333
+  h1
+    :font-size 2.0em
+    :font-weight bold
+  h2
+    :color #2200cc
+    :font-weight bold
+    :font-size 1.3em
+    :padding 0
+  p
+    :color #333333
+    :font-size 1.0em
+    :margin-bottom 1em
+
+
+pre
+  :background-color $site_base_color
+  :color darkslategray
+  :padding 0 .2em
+  :border 1px solid gainsboro
+
+
+.cross-promotion
+  :background-color #FFFBD7
+
+.boosted-sites
+  .span-18
+    :margin 0
+  sup
+    :vertical-align super
+    :font-size .7em
+  form
+    textarea#boosted_content_description
+      :height 3em
+      :width 95%
+    input#boosted_content_title, input#boosted_content_url, input#boosted_content_keywords
+      :width 95%
+  h4
+    :font-weight bold
+    :margin 10px 0 5px 0
+  pre
+    :margin-top 0
+    :font-size .7em
+    :word-wrap break-word
+  dt
+    :margin-top 10px
+    label
+      :color #5D5D5D
+      :font-weight normal
+  .admin-table
+    col
+      &.actions
+        :width 75px
+    thead tr th
+      :background-color #444444
+      :color white
+      a
+        :text-decoration none
+    tbody th
+      :color #3D3D3D
+    th, td
+      :padding 10px
+    .error
+      :display block
+  .field-value
+    :margin 0
+  #bulk_upload
+    h3
+      :background-color #444
+      :color white
+      :font
+        :size 15px
+        :weight bold
+      :padding 10px
+    h4
+      :margin-top 0
+
+/* begin rcr redesign classes */
+.main
+  :overflow auto
+
+.custom_look_and_feel
+  :clear both
+  :padding 20px 0
+
+.admin-content
+  :float left
+  :overflow auto
+  :width 100%
+
+.right-sidebar
+  :width 240px
+
+.submitLink
+  :color #00f
+  :background-color transparent
+  :text-decoration underline
+  :border none
+  :cursor pointer
+  :cursor hand
+
+table.admin-table
+  :border-width 0 0 1px 1px
+  :border-spacing 0
+  :border-collapse collapse
+  :border-style solid
+  :border-color #bdbdbd
+  :table-layout fixed
+  th
+    :background-color #e5e5e5
+    :padding 8px 5px
+    :border-width 1px 1px 0 0
+    :border-style solid
+    :border-color #bdbdbd
+    :color #000
+    :font-weight bolder
+  td
+    :margin 0
+    :padding 10px 5px
+    :border-width 1px 1px 0 0
+    :border-style solid
+    :border-color #bdbdbd
+    :word-wrap break-word
+    form.button-to
+      :display inline
+    div
+      :display inline
+
+table.account-table
+  :border-width 0 0 1px 1px
+  :border-spacing 0
+  :border-collapse collapse
+  :border-style solid
+  :border-color #bdbdbd
+  th
+    :background-color #e5e5e5
+    :padding 8px 5px
+    :border-style solid
+    :border-color #bdbdbd
+    :color #000
+    :font-weight bolder
+  td
+    :margin 0
+    :padding 10px 5px
+    :border-style solid
+    :border-color #bdbdbd
+  td.label
+    :width 150px
+    :font-weight bold
+  tr
+    :margin 0
+    :padding 10px 5px
+    :border-width 1px 1px 0 0
+    :border-style solid
+    :border-color #bdbdbd
+    form.button-to
+      :display inline
+    div
+      :display inline
+
+tr.even td
+  :background-color #E5ECF9
+
+.header-box
+  :overflow auto
+  :background-color #e5e5e5
+  :padding 8px 5px
+  :border-width 1px 1px 0 1px
+  :border-style solid
+  :border-color #bdbdbd
+  :color #000
+  :font-weight bolder
+.content-box
+  :overflow auto
+  :border-width 1px
+  :border-spacing 0
+  :border-collapse collapse
+  :border-style solid
+  :border-color #bdbdbd
+  :margin 0 0 20px 10px
+  :padding 10px 5px
+  .tos-centered
+    :text-align center
+    :margin 0px
+  &.image
+    background: none
+    border: 0
+
+.left
+  :float left
+
+.right
+  :float right
+
+.title-row
+  :overflow auto
+  :padding 0.15em 0.5em
+  :color #fff
+  :background-color #555
+  h2
+    :color #fff
+    :margin 0
+  a
+    :color #fff
+
+#flash_message
+  :margin-bottom 10px
+
+.pad10
+  :padding 10px
+
+.pad20
+  :padding 20px
+
+.center-outer
+  :margin 50px 0px
+  :text-align center
+  :padding 0
+.center-inner
+  :margin 0 auto
+
+#embed_code_english, #embed_code_spanish
+  textarea
+    :width 95%
+    :height 200px
+    margin-bottom: 10px
+
+#embed_stats_code
+  textarea
+    :width 95%
+    :height 100px
+    margin-bottom: 10px
+
+.sliding_content
+  :display none
+
+.steps_header
+  :line-height 2
+  :margin-bottom 15px
+  .step
+    :background #E5EEF9
+    :color #666
+    :font-size 1.1em
+    :font-weight bold
+    :margin-right 5px
+    :padding 5px 10px
+  .current_step
+    :background #1C3F94
+    :color white
+
+.container .active-scaffold
+  :overflow auto
+
+.complete-registration
+  overflow: hidden
+  width: 680px
+  h2
+    color: #285D8F
+    font-size: 27px
+    margin-bottom: 15px
+
+.add-new-user
+  float: left
+  overflow: hidden
+  width: 100%
+  h3
+    font-size: 24px
+    font-weight: normal
+    margin-top: 10px
+    margin-bottom: 10px
+  form.generic-form
+    ul.fields
+      width: 400px
+      li
+        clear: both
+        display: inline
+        float: left
+        &.submit
+          margin: 0 0 0 110px
+  label.inner
+    width: 100px
+
+#boosted_content_bulk_upload_form
+  .select-boosted-content-file
+    margin-top: 1em
