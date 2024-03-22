@@ -199,6 +199,9 @@ export const Results = ({ page, query = '', results = null, additionalResults = 
         {additionalResults && (
           <BestBets
             {...additionalResults}
+            affiliate={page?.affiliate ?? ''}
+            query={query}
+            vertical={vertical}
           />
         )}
 
@@ -207,6 +210,9 @@ export const Results = ({ page, query = '', results = null, additionalResults = 
             {additionalResults?.healthTopic && 
               <HealthTopics 
                 {...additionalResults.healthTopic}
+                affiliate={page?.affiliate ?? ''}
+                query={query}
+                vertical={vertical}
               />
             }
 
@@ -214,12 +220,20 @@ export const Results = ({ page, query = '', results = null, additionalResults = 
               <Jobs 
                 jobs={additionalResults?.jobs}
                 agencyName={agencyName}
+                affiliate={page?.affiliate ?? ''}
+                query={query}
+                vertical={vertical}
               />
             }
 
             {/* Video module */}
-            {additionalResults?.youtubeNewsItems && 
-              <VideosModule videos={additionalResults.youtubeNewsItems} query={query} videosUrl={videosUrl} />
+            {additionalResults?.youtubeNewsItems &&
+              <VideosModule
+                affiliate={page?.affiliate ?? ''}
+                query={query}
+                vertical={vertical}
+                videos={additionalResults.youtubeNewsItems}
+                videosUrl={videosUrl} />
             }
 
             {/* RSS - new news */}
@@ -227,6 +241,9 @@ export const Results = ({ page, query = '', results = null, additionalResults = 
               <RssNews 
                 news={additionalResults.newNews} 
                 newsLabel={newsAboutQuery}
+                affiliate={page?.affiliate ?? ''}
+                query={query}
+                vertical={vertical}
               />
             }
 
@@ -242,14 +259,18 @@ export const Results = ({ page, query = '', results = null, additionalResults = 
                   }
                   if (result?.youtube) {
                     return (
-                      <Video 
+                      <Video
+                        affiliate={page?.affiliate ?? ''}
+                        description={result.description}
+                        duration={result.youtubeDuration}
                         key={index}
                         link={result.url}
-                        title={result.title}
-                        description={result.description}
+                        position={index+1}
                         publishedAt={result.youtubePublishedAt}
+                        query={query}
+                        title={result.title}
+                        vertical={vertical}
                         youtubeThumbnailUrl={result.youtubeThumbnailUrl} 
-                        duration={result.youtubeDuration}
                       />
                     );
                   }
@@ -280,7 +301,9 @@ export const Results = ({ page, query = '', results = null, additionalResults = 
             {additionalResults?.federalRegisterDocuments && 
               <FedRegister 
                 fedRegisterDocs={additionalResults.federalRegisterDocuments}
+                affiliate={page?.affiliate ?? ''}
                 query={query}
+                vertical={vertical}
               />
             }
 
@@ -289,6 +312,9 @@ export const Results = ({ page, query = '', results = null, additionalResults = 
               <RssNews 
                 news={additionalResults.oldNews} 
                 newsLabel={newsAboutQuery}
+                affiliate={page?.affiliate ?? ''}
+                query={query}
+                vertical={vertical}
               />
             }
 

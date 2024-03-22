@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 7.0.0', '>= 7.0.5.1'
+gem 'rails', '~> 7.0.8'
 
 gem 'rake', '~> 13.0.6'
 gem 'rack-contrib', '~> 2.1.0'
@@ -125,7 +125,6 @@ gem 'compass-rails', '~> 4.0.0'
 gem 'compass-blueprint', '~> 1.0.0'
 gem 'jquery-ui-rails', '~> 6.0.1'
 gem 'jquery-rails', '~> 4.4.0'
-gem 'yui-compressor', '~> 0.12.0'
 gem 'twitter-typeahead-rails', '~> 0.11.1'
 # Why do we have two versions of Font Awesome?
 # One is for general use around the app, in places where

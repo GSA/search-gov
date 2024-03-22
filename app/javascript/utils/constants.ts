@@ -15,5 +15,6 @@ export const moduleCode = {
   spellingSuggestionsSearch: 'SPEL',
   videos: 'VIDS',
   webI14y: 'I14Y',
+  webNews: 'NEWS',
   webWeb: 'BWEB'
 } as const;
