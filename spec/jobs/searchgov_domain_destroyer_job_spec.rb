@@ -7,7 +7,8 @@ describe SearchgovDomainDestroyerJob do
   let(:delay) { 10 }
 
   before do
-    allow(Resque::Job).to receive(:destroy).and_return(true)
+    SearchgovDomainIndexerJob.perform_later(searchgov_domain: searchgov_domain, delay: delay)
+    allow(Resque::Job).to receive(:destroy).and_call_original
     allow(searchgov_domain).to receive(:delay).and_return(delay)
   end
 
@@ -23,7 +24,15 @@ describe SearchgovDomainDestroyerJob do
 
     it 'removes the domain indexing job from the queue' do
       perform
-      expect(Resque::Job).to have_received(:destroy).with('searchgov', 'SearchgovDomainIndexerJob', searchgov_domain_id: searchgov_domain.id, delay: delay)
+      expect(Resque::Job).to have_received(:destroy).with('searchgov',
+                                                          'SearchgovDomainIndexerJob',
+                                                          searchgov_domain_id: searchgov_domain.id,
+                                                          delay: delay)
+    end
+
+    it 'ensures the queue is empty for this domain after execution' do
+      perform
+      expect(Resque.size('searchgov')).to eq(0)
     end
 
     context 'when the searchgov_domain has associated searchgov_url records' do
