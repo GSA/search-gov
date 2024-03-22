@@ -13,6 +13,7 @@ export const moduleCode = {
   spellingSuggestionsBing: 'BSPEL',
   spellingSuggestionsImages: 'OSPEL',
   spellingSuggestionsSearch: 'SPEL',
+  spellingOverridesI14: 'ISPEL',
   videos: 'VIDS',
   webI14y: 'I14Y',
   webWeb: 'BWEB'

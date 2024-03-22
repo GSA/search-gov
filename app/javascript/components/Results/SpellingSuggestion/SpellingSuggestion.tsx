@@ -17,19 +17,50 @@ interface SpellingSuggestionProps {
   vertical: string;
 }
 
-export const SpellingSuggestion = ({ suggested, original, originalQuery, originalUrl, suggestedUrl, suggestedQuery, affiliate, vertical  }: SpellingSuggestionProps) => {
+export const SpellingSuggestion = ({ suggested, original, originalQuery, originalUrl, suggestedUrl, suggestedQuery, affiliate, vertical }: SpellingSuggestionProps) => {
   const i18n = useContext(LanguageContext);
-
   const getUrl = (url: string) => window.location.origin + url;
+  const position = 1;
+
+  let clickTrackingModuleMap = {
+    web: {
+      suggestedQueryModule: moduleCode.spellingSuggestionsBing,
+      originalQueryModule: moduleCode.spellingOverridesBing
+    },
+    blended: {
+      suggestedQueryModule: moduleCode.spellingSuggestionsSearch
+    },
+    i14y: {
+      suggestedQueryModule: moduleCode.spellingSuggestionsSearch,
+      originalQueryModule: moduleCode.spellingOverridesI14
+    },
+    images: {
+      suggestedQueryModule: moduleCode.spellingSuggestionsImages
+    }
+    // UNABLE TO FIND THE MODULE CODE
+    // docs: {
+      // suggestedQueryModule: ?????,
+      // originalQueryModule: ?????
+    // }
+  }
+
+  const clickTrackingModule = (vertical: string, queryType: string): string => clickTrackingModuleMap[vertical] && clickTrackingModuleMap[vertical][queryType];
+
   
   useEffect(() => {
-    document.getElementsByClassName('suggestedQuery')[0].addEventListener('click', () => {
-      clickTracking(affiliate, 'BWEB', suggestedQuery, 1, getUrl(suggestedUrl), vertical)
-    });
+    // Corrected: Clicking on the corrected query ("Showing results for <correctly spelled query>"):
+    if(clickTrackingModule(vertical, 'suggestedQueryModule')){
+      document.getElementsByClassName('suggestedQuery')[0].addEventListener('click', () => {
+        clickTracking(affiliate, clickTrackingModule(vertical, 'suggestedQueryModule'), suggestedQuery, position, getUrl(suggestedUrl), vertical);
+      });
+    }
 
-    document.getElementsByClassName('originalQuery')[0].addEventListener('click', () => {
-      clickTracking(affiliate, 'BWEB', originalQuery, 1, getUrl(originalUrl), vertical)
-    });
+    // Override: Clicking on the original query ("Search instead for <misspelled query>"):
+    if(clickTrackingModule(vertical, 'originalQueryModule')){
+      document.getElementsByClassName('originalQuery')[0].addEventListener('click', () => {
+        clickTracking(affiliate, clickTrackingModule(vertical, 'originalQueryModule'), originalQuery, position, getUrl(originalUrl), vertical);
+      });
+    }
   }, []);
 
   return (
