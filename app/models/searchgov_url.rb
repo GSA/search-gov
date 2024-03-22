@@ -73,8 +73,7 @@ class SearchgovUrl < ApplicationRecord
         # SRCH-3134 Temporarily adding save/no save logic until we have documented how this functionality
         # behaves in production setting.
         save_document if ENV['SAVE_SEARCHGOV_DOCUMENT'] == 'true'
-        check_canonical_url
-        # index_and_update_status
+        check_canonical_and_index_document
       rescue => error
         delete_document if indexed? && searchgov_domain.available?
         self.last_crawl_status = error.message.first(255)
@@ -152,7 +151,7 @@ class SearchgovUrl < ApplicationRecord
     raise SearchgovUrlError.new('Noindex per HTML metadata') if document.noindex?
   end
 
-  def check_canonical_url
+  def check_canonical_and_index_document
     document.canonical_url.present? ? use_canonical_url : index_and_update_status
   end
 
