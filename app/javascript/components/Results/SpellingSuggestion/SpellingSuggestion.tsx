@@ -34,7 +34,7 @@ export const SpellingSuggestion = ({ suggested, original, originalQuery, origina
       suggestedQueryModule: moduleCode.spellingSuggestionsSearch,
       originalQueryModule: moduleCode.spellingOverridesI14
     },
-    images: {
+    image: {
       suggestedQueryModule: moduleCode.spellingSuggestionsImages
     }
     // UNABLE TO FIND THE MODULE CODE
