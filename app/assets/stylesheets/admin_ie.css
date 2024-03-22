@@ -1,4 +1,58 @@
-/*
- *= require active_scaffold-ie
- *= require export-stylesheet-ie
- */
+* html .active-scaffold-header, .active-scaffold li.form-element, .active-scaffold li.sub-section {
+  zoom: 1;
+}
+
+* html .active-scaffold td .messages-container {
+  border-top: 1px solid #daffcd;
+}
+
+* html .active-scaffold-header div.actions a.show_search {
+  filter: progid:DXImageTransform. Microsoft. AlphaImageLoader(src= "/assets/active_scaffold/magnifier.png", sizingMethod= "crop");
+  background-image: none;
+}
+
+* html .active-scaffold .sub-form .association-record a.destroy {
+  filter: progid:DXImageTransform. Microsoft. AlphaImageLoader(src= "/assets/active_scaffold/cross.png", sizingMethod= "crop");
+  background-image: none;
+}
+
+* html .active-scaffold-header div.actions a.new, * html .active-scaffold-header div.actions a.new_existing {
+  filter: progid:DXImageTransform. Microsoft. AlphaImageLoader(src= "/assets/active_scaffold/add.png", sizingMethod= "crop");
+  background-image: none;
+}
+
+* html .active-scaffold-header th.asc a, * html .active-scaffold-header th.asc a:hover {
+  filter: progid:DXImageTransform. Microsoft. AlphaImageLoader(src= "/assets/active_scaffold/arrow_up.png", sizingMethod= "crop");
+  background-image: none;
+}
+
+* html .active-scaffold-header th.desc a, * html .active-scaffold-header th.desc a:hover {
+  filter: progid:DXImageTransform. Microsoft. AlphaImageLoader(src= "/assets/active_scaffold/arrow_down.png", sizingMethod= "crop");
+  background-image: none;
+}
+
+* html .active-scaffold-header a.inline-adapter-close {
+  filter: progid:DXImageTransform. Microsoft. AlphaImageLoader(src= "/assets/active_scaffold/close.png", sizingMethod= "crop");
+  background-image: none;
+}
+
+.active-scaffold-header div.actions a.disabled {
+  filter: alpha(opacity= 50);
+}
+
+.active-scaffold .show-view dd, .active-scaffold li.form-element dd {
+  float: none;
+}
+
+.active-scaffold li.form-element dt {
+  padding: 4px 0;
+}
+
+.as-slider.ui-state-disabled {
+  filter: alpha(Opacity= 100);
+}
+
+.active-scaffold-header div.actions a.export {
+  filter: progid:DXImageTransform. Microsoft. AlphaImageLoader(src= "../images/active_scaffold/default/export.png", sizingMethod= "crop");
+  background-image: none;
+}

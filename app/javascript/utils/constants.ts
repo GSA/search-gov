@@ -16,5 +16,6 @@ export const moduleCode = {
   spellingOverridesI14: 'ISPEL',
   videos: 'VIDS',
   webI14y: 'I14Y',
+  webNews: 'NEWS',
   webWeb: 'BWEB'
 } as const;
