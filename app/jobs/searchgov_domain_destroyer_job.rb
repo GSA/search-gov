@@ -2,10 +2,11 @@ class SearchgovDomainDestroyerJob < ApplicationJob
   queue_as :searchgov
 
   def perform(searchgov_domain)
-    searchgov_domain.searchgov_urls.find_each do |url|
-      url.destroy!
-    end
-
+    searchgov_domain.searchgov_urls.find_each { |url| url.destroy! }
     searchgov_domain.destroy!
+    Resque::Job.destroy('searchgov',
+                        'SearchgovDomainIndexerJob',
+                        searchgov_domain_id: searchgov_domain.id,
+                        delay: searchgov_domain.delay)
   end
 end

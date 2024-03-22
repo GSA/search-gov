@@ -4,6 +4,12 @@ describe SearchgovDomainDestroyerJob do
   subject(:perform) { described_class.perform_now(searchgov_domain) }
 
   let(:searchgov_domain) { SearchgovDomain.create(domain: 'www.archive.gov', status: '200 OK') }
+  let(:delay) { 10 }
+
+  before do
+    allow(Resque::Job).to receive(:destroy).and_return(true)
+    allow(searchgov_domain).to receive(:delay).and_return(delay)
+  end
 
   describe '#perform' do
     it 'requires a searchgov_domain as an argument' do
@@ -13,6 +19,11 @@ describe SearchgovDomainDestroyerJob do
     it 'destroys the searchgov domain' do
       perform
       expect(SearchgovDomain.exists?(searchgov_domain.id)).to be false
+    end
+
+    it 'removes the domain indexing job from the queue' do
+      perform
+      expect(Resque::Job).to have_received(:destroy).with('searchgov', 'SearchgovDomainIndexerJob', searchgov_domain_id: searchgov_domain.id, delay: delay)
     end
 
     context 'when the searchgov_domain has associated searchgov_url records' do
