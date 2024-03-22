@@ -22,7 +22,7 @@ export const SpellingSuggestion = ({ suggested, original, originalQuery, origina
   const getUrl = (url: string) => window.location.origin + url;
   const position = 1;
 
-  let clickTrackingModuleMap = {
+  const clickTrackingModuleMap = {
     web: {
       suggestedQueryModule: moduleCode.spellingSuggestionsBing,
       originalQueryModule: moduleCode.spellingOverridesBing
