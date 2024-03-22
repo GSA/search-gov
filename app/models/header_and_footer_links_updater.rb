@@ -30,23 +30,17 @@ class HeaderAndFooterLinksUpdater
   end
 
   def update_header_links(affiliate)
-    return if affiliate.managed_header_links.blank?
+    return if affiliate.managed_header_links.blank? || affiliate.primary_header_links.present?
 
-    new_header_urls = affiliate.primary_header_links.map(&:url)
     affiliate.managed_header_links.each do |link|
-      next if new_header_urls.include?(link[:url])
-
       PrimaryHeaderLink.create(position: link[:position], type: 'PrimaryHeaderLink', title: link[:title], url: link[:url], affiliate_id: affiliate.id)
     end
   end
 
   def update_footer_links(affiliate)
-    return if affiliate.managed_footer_links.blank?
+    return if affiliate.managed_footer_links.blank? || affiliate.footer_links.present? || affiliate.identifier_links.present?
 
-    new_footer_urls = affiliate.footer_links.map(&:url)
     affiliate.managed_footer_links.each do |link|
-      next if new_footer_urls.include?(link[:url])
-
       FooterLink.create(position: link[:position], type: 'FooterLink', title: link[:title], url: link[:url], affiliate_id: affiliate.id)
     end
   end
