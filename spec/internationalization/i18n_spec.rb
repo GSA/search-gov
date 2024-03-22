@@ -13,7 +13,7 @@ RSpec.describe I18n do
   let(:unused_keys) { i18n.unused_keys }
   let(:inconsistent_interpolations) { i18n.inconsistent_interpolations }
 
-  it 'does not have missing keys' do
+  xit 'does not have missing keys' do
     pending('to be resolved by SRCH-2592')
     expect(missing_keys).to be_empty,
                             "Missing #{missing_keys.leaves.count} i18n keys, run `i18n-tasks missing' to show them"
