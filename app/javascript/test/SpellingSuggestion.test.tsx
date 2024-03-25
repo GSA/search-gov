@@ -250,5 +250,4 @@ describe('SpellingSuggestion component', () => {
     });
     expect(fetch).toHaveBeenCalledTimes(2);
   });
-
 });
