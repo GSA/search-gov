@@ -21,46 +21,37 @@ export const SpellingSuggestion = ({ suggested, original, originalQuery, origina
   const i18n = useContext(LanguageContext);
   const getUrl = (url: string) => window.location.origin + url;
   const position = 1;
+  
+  const module = (vertical: string) => {
+    //blended, docs, news: to use the default
+    let suggestedQueryModule: string = moduleCode.spellingSuggestionsSearch;
+    let originalQueryModule: string = moduleCode.spellingOverridesSearch;
 
-  const clickTrackingModuleMap = {
-    web: {
-      suggestedQueryModule: moduleCode.spellingSuggestionsBing,
-      originalQueryModule: moduleCode.spellingOverridesBing
-    },
-    blended: {
-      suggestedQueryModule: moduleCode.spellingSuggestionsSearch
-    },
-    i14y: {
-      suggestedQueryModule: moduleCode.spellingSuggestionsSearch,
-      originalQueryModule: moduleCode.spellingOverridesI14
-    },
-    image: {
-      suggestedQueryModule: moduleCode.spellingSuggestionsImages
+    if (vertical === 'web') {
+      suggestedQueryModule = moduleCode.spellingSuggestionsBing;
+      originalQueryModule = moduleCode.spellingOverridesBing;
+    } 
+    else if (vertical == 'i14y')
+      originalQueryModule = moduleCode.spellingOverridesI14y;
+    else if (vertical == 'images')
+      suggestedQueryModule = moduleCode.spellingSuggestionsImages;
+    
+    return {
+      suggestedQueryModule,
+      originalQueryModule
     }
-    // UNABLE TO FIND THE MODULE CODE
-    // docs: {
-      // suggestedQueryModule: ?????,
-      // originalQueryModule: ?????
-    // }
   }
 
-  const clickTrackingModule = (vertical: string, queryType: string): string => clickTrackingModuleMap[vertical] && clickTrackingModuleMap[vertical][queryType];
-
-  
   useEffect(() => {
     // Corrected: Clicking on the corrected query ("Showing results for <correctly spelled query>"):
-    if(clickTrackingModule(vertical, 'suggestedQueryModule')){
-      document.getElementsByClassName('suggestedQuery')[0].addEventListener('click', () => {
-        clickTracking(affiliate, clickTrackingModule(vertical, 'suggestedQueryModule'), suggestedQuery, position, getUrl(suggestedUrl), vertical);
-      });
-    }
+    document.getElementsByClassName('suggestedQuery')[0].addEventListener('click', () => {
+      clickTracking(affiliate, module(vertical).suggestedQueryModule, suggestedQuery, position, getUrl(suggestedUrl), vertical);
+    });
 
     // Override: Clicking on the original query ("Search instead for <misspelled query>"):
-    if(clickTrackingModule(vertical, 'originalQueryModule')){
-      document.getElementsByClassName('originalQuery')[0].addEventListener('click', () => {
-        clickTracking(affiliate, clickTrackingModule(vertical, 'originalQueryModule'), originalQuery, position, getUrl(originalUrl), vertical);
-      });
-    }
+    document.getElementsByClassName('originalQuery')[0].addEventListener('click', () => {
+      clickTracking(affiliate, module(vertical).originalQueryModule, originalQuery, position, getUrl(originalUrl), vertical);
+    });
   }, []);
 
   return (
