@@ -43,15 +43,19 @@ export const SpellingSuggestion = ({ suggested, original, originalQuery, origina
   };
 
   useEffect(() => {
-    // Corrected: Clicking on the corrected query ("Showing results for <correctly spelled query>"):
-    document.getElementsByClassName('suggestedQuery')[0].addEventListener('click', () => {
-      clickTracking(affiliate, module(vertical).suggestedQueryModule, suggestedQuery, position, getUrl(suggestedUrl), vertical);
-    });
+    // Corrected: Clicking on the corrected/suggested query ("Showing results for <correctly spelled query>"):
+    if (document.getElementsByClassName('suggestedQuery').length > 0) {
+      document.getElementsByClassName('suggestedQuery')[0].addEventListener('click', () => {
+        clickTracking(affiliate, module(vertical).suggestedQueryModule, suggestedQuery, position, getUrl(suggestedUrl), vertical);
+      });
+    }
 
     // Override: Clicking on the original query ("Search instead for <misspelled query>"):
-    document.getElementsByClassName('originalQuery')[0].addEventListener('click', () => {
-      clickTracking(affiliate, module(vertical).originalQueryModule, originalQuery, position, getUrl(originalUrl), vertical);
-    });
+    if (document.getElementsByClassName('originalQuery').length > 0) {
+      document.getElementsByClassName('originalQuery')[0].addEventListener('click', () => {
+        clickTracking(affiliate, module(vertical).originalQueryModule, originalQuery, position, getUrl(originalUrl), vertical);
+      });
+    }
   }, []);
 
   return (
