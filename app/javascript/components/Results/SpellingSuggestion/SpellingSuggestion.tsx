@@ -23,24 +23,24 @@ export const SpellingSuggestion = ({ suggested, original, originalQuery, origina
   const position = 1;
   
   const module = (vertical: string) => {
-    //blended, docs, news: to use the default
+    // blended, docs, news: to use the default
     let suggestedQueryModule: string = moduleCode.spellingSuggestionsSearch;
     let originalQueryModule: string = moduleCode.spellingOverridesSearch;
 
     if (vertical === 'web') {
       suggestedQueryModule = moduleCode.spellingSuggestionsBing;
       originalQueryModule = moduleCode.spellingOverridesBing;
-    } 
-    else if (vertical == 'i14y')
+    } else if (vertical === 'i14y') {
       originalQueryModule = moduleCode.spellingOverridesI14y;
-    else if (vertical == 'images')
+    } else if (vertical === 'images') {
       suggestedQueryModule = moduleCode.spellingSuggestionsImages;
-    
+    }
+
     return {
       suggestedQueryModule,
       originalQueryModule
-    }
-  }
+    };
+  };
 
   useEffect(() => {
     // Corrected: Clicking on the corrected query ("Showing results for <correctly spelled query>"):
