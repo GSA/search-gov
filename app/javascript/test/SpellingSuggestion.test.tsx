@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
@@ -9,8 +10,8 @@ enableFetchMocks();
 
 const locale = {
   en: {
-    showingResultsFor: "Showing results for %{corrected_query}",
-    searchInsteadFor: "Search instead for %{original_query}"
+    showingResultsFor: 'Showing results for %{corrected_query}',
+    searchInsteadFor: 'Search instead for %{original_query}'
   }
 };
 
@@ -32,19 +33,19 @@ describe('SpellingSuggestion component', () => {
   ) as jest.Mock;
 
   const spellingSuggestionProps = {
-    suggested: '<a class=\"suggestedQuery\" href=\"/search?affiliate=test_affiliate&amp;query=medical\">medical</a>',
-    original: '<a class=\"originalQuery\" href=\"/search?affiliate=test_affiliate&amp;query=mecidal\">mecidal</a>',
+    suggested: '<a class="suggestedQuery" href="/search?affiliate=test_affiliate&amp;query=medical">medical</a>',
+    original: '<a class="originalQuery" href="/search?affiliate=test_affiliate&amp;query=mecidal">mecidal</a>',
     originalUrl: '/search?affiliate=test_affiliate&query=mecidal',
     originalQuery: 'mecidal',
     suggestedQuery: 'medical',
     suggestedUrl: '/search?affiliate=test_affiliate&query=medical',
     affiliate: 'test_affiliate'
-  }
+  };
 
   it('renders SpellingSuggestion component', () => {
     render(
       <LanguageContext.Provider value={i18n} >
-         <SpellingSuggestion {...spellingSuggestionProps} vertical='web' />
+        <SpellingSuggestion {...spellingSuggestionProps} vertical='web' />
       </LanguageContext.Provider>
     );
   });
@@ -52,7 +53,7 @@ describe('SpellingSuggestion component', () => {
   it('Show original and suggested query', () => {
     render(
       <LanguageContext.Provider value={i18n} >
-         <SpellingSuggestion {...spellingSuggestionProps} vertical='web'/>
+        <SpellingSuggestion {...spellingSuggestionProps} vertical='web'/>
       </LanguageContext.Provider>
     );
 
@@ -70,7 +71,7 @@ describe('SpellingSuggestion component', () => {
   it('clickTracking for suggestedQuery and originalQuery: web vertical', () => {
     render(
       <LanguageContext.Provider value={i18n} >
-         <SpellingSuggestion {...spellingSuggestionProps} vertical='web'/>
+        <SpellingSuggestion {...spellingSuggestionProps} vertical='web'/>
       </LanguageContext.Provider>
     );
 
@@ -116,7 +117,7 @@ describe('SpellingSuggestion component', () => {
   it('clickTracking for suggestedQuery and originalQuery: i14y vertical', () => {
     render(
       <LanguageContext.Provider value={i18n} >
-         <SpellingSuggestion {...spellingSuggestionProps} vertical='i14y'/>
+        <SpellingSuggestion {...spellingSuggestionProps} vertical='i14y'/>
       </LanguageContext.Provider>
     );
 
@@ -162,7 +163,7 @@ describe('SpellingSuggestion component', () => {
   it('clickTracking for suggestedQuery and originalQuery: images vertical', () => {
     render(
       <LanguageContext.Provider value={i18n} >
-         <SpellingSuggestion {...spellingSuggestionProps} vertical='images'/>
+        <SpellingSuggestion {...spellingSuggestionProps} vertical='images'/>
       </LanguageContext.Provider>
     );
 
@@ -208,7 +209,7 @@ describe('SpellingSuggestion component', () => {
   it('clickTracking for suggestedQuery and originalQuery: blended (or docs, news) vertical', () => {
     render(
       <LanguageContext.Provider value={i18n} >
-         <SpellingSuggestion {...spellingSuggestionProps} vertical='blended'/>
+        <SpellingSuggestion {...spellingSuggestionProps} vertical='blended'/>
       </LanguageContext.Provider>
     );
 
