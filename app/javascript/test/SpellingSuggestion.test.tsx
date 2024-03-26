@@ -35,10 +35,10 @@ describe('SpellingSuggestion component', () => {
   const spellingSuggestionProps = {
     suggested: '<a class="suggestedQuery" href="/search?affiliate=test_affiliate&amp;query=medical">medical</a>',
     original: '<a class="originalQuery" href="/search?affiliate=test_affiliate&amp;query=mecidal">mecidal</a>',
-    originalUrl: '/search?affiliate=test_affiliate&query=mecidal',
+    originalUrl: 'http://localhost/search?affiliate=test_affiliate&query=mecidal',
     originalQuery: 'mecidal',
     suggestedQuery: 'medical',
-    suggestedUrl: '/search?affiliate=test_affiliate&query=medical',
+    suggestedUrl: 'http://localhost/search?affiliate=test_affiliate&query=medical',
     affiliate: 'test_affiliate'
   };
 
