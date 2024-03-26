@@ -21,11 +21,30 @@ jest.mock('i18n-js', () => {
   return jest.requireActual('i18n-js/dist/require/index');
 });
 
+interface clickDataProps {
+  affiliate: string;
+  url: string;
+  module_code: string;
+  position: number;
+  query: string;
+  vertical: string;
+}
+
 describe('SpellingSuggestion component', () => {
   const headers = {
     Accept: 'application/json',
     'Content-Type': 'application/json'
   };
+
+  const expectFetchtoHaveBeenCalledWith = ( data: clickDataProps ) => {
+    expect(fetch).toHaveBeenCalledWith('/clicked', {
+      body: JSON.stringify(data),
+      headers,
+      method: 'POST',
+      mode: 'cors'
+    });
+  }
+
   global.fetch = jest.fn(() =>
     Promise.resolve({
       json: () => Promise.resolve({})
@@ -85,14 +104,7 @@ describe('SpellingSuggestion component', () => {
       query: 'medical',
       vertical: 'web'
     };
- 
-    expect(fetch).toHaveBeenCalledWith('/clicked', {
-      body: JSON.stringify(clickBodySuggestedQuery),
-      headers,
-      method: 'POST',
-      mode: 'cors'
-    });
-    expect(fetch).toHaveBeenCalledTimes(1);
+    expectFetchtoHaveBeenCalledWith(clickBodySuggestedQuery);
 
     const originalQueryLink = screen.getByText(/mecidal/i);
     fireEvent.click(originalQueryLink);
@@ -104,14 +116,7 @@ describe('SpellingSuggestion component', () => {
       query: 'mecidal',
       vertical: 'web'
     };
- 
-    expect(fetch).toHaveBeenCalledWith('/clicked', {
-      body: JSON.stringify(clickBodyOriginalQuery),
-      headers,
-      method: 'POST',
-      mode: 'cors'
-    });
-    expect(fetch).toHaveBeenCalledTimes(2);
+    expectFetchtoHaveBeenCalledWith(clickBodyOriginalQuery);
   });
 
   it('clickTracking for suggestedQuery and originalQuery: i14y vertical', () => {
@@ -131,14 +136,7 @@ describe('SpellingSuggestion component', () => {
       query: 'medical',
       vertical: 'i14y'
     };
- 
-    expect(fetch).toHaveBeenCalledWith('/clicked', {
-      body: JSON.stringify(clickBodySuggestedQuery),
-      headers,
-      method: 'POST',
-      mode: 'cors'
-    });
-    expect(fetch).toHaveBeenCalledTimes(1);
+    expectFetchtoHaveBeenCalledWith(clickBodySuggestedQuery);
 
     const originalQueryLink = screen.getByText(/mecidal/i);
     fireEvent.click(originalQueryLink);
@@ -150,14 +148,7 @@ describe('SpellingSuggestion component', () => {
       query: 'mecidal',
       vertical: 'i14y'
     };
- 
-    expect(fetch).toHaveBeenCalledWith('/clicked', {
-      body: JSON.stringify(clickBodyOriginalQuery),
-      headers,
-      method: 'POST',
-      mode: 'cors'
-    });
-    expect(fetch).toHaveBeenCalledTimes(2);
+    expectFetchtoHaveBeenCalledWith(clickBodyOriginalQuery);
   });
 
   it('clickTracking for suggestedQuery and originalQuery: images vertical', () => {
@@ -177,14 +168,7 @@ describe('SpellingSuggestion component', () => {
       query: 'medical',
       vertical: 'images'
     };
- 
-    expect(fetch).toHaveBeenCalledWith('/clicked', {
-      body: JSON.stringify(clickBodySuggestedQuery),
-      headers,
-      method: 'POST',
-      mode: 'cors'
-    });
-    expect(fetch).toHaveBeenCalledTimes(1);
+    expectFetchtoHaveBeenCalledWith(clickBodySuggestedQuery);
 
     const originalQueryLink = screen.getByText(/mecidal/i);
     fireEvent.click(originalQueryLink);
@@ -196,14 +180,7 @@ describe('SpellingSuggestion component', () => {
       query: 'mecidal',
       vertical: 'images'
     };
- 
-    expect(fetch).toHaveBeenCalledWith('/clicked', {
-      body: JSON.stringify(clickBodyOriginalQuery),
-      headers,
-      method: 'POST',
-      mode: 'cors'
-    });
-    expect(fetch).toHaveBeenCalledTimes(2);
+    expectFetchtoHaveBeenCalledWith(clickBodyOriginalQuery);
   });
 
   it('clickTracking for suggestedQuery and originalQuery: blended (or docs, news) vertical', () => {
@@ -223,14 +200,7 @@ describe('SpellingSuggestion component', () => {
       query: 'medical',
       vertical: 'blended'
     };
- 
-    expect(fetch).toHaveBeenCalledWith('/clicked', {
-      body: JSON.stringify(clickBodySuggestedQuery),
-      headers,
-      method: 'POST',
-      mode: 'cors'
-    });
-    expect(fetch).toHaveBeenCalledTimes(1);
+    expectFetchtoHaveBeenCalledWith(clickBodySuggestedQuery);
 
     const originalQueryLink = screen.getByText(/mecidal/i);
     fireEvent.click(originalQueryLink);
@@ -241,14 +211,7 @@ describe('SpellingSuggestion component', () => {
       position: 1,
       query: 'mecidal',
       vertical: 'blended'
-    };
- 
-    expect(fetch).toHaveBeenCalledWith('/clicked', {
-      body: JSON.stringify(clickBodyOriginalQuery),
-      headers,
-      method: 'POST',
-      mode: 'cors'
-    });
-    expect(fetch).toHaveBeenCalledTimes(2);
+    }; 
+    expectFetchtoHaveBeenCalledWith(clickBodyOriginalQuery);
   });
 });

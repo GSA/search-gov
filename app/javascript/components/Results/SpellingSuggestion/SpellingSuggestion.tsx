@@ -19,7 +19,6 @@ interface SpellingSuggestionProps {
 
 export const SpellingSuggestion = ({ suggested, original, originalQuery, originalUrl, suggestedUrl, suggestedQuery, affiliate, vertical }: SpellingSuggestionProps) => {
   const i18n = useContext(LanguageContext);
-  const getUrl = (url: string) => window.location.origin + url;
   const position = 1;
   
   const module = (vertical: string) => {
