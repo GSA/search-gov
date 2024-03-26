@@ -36,14 +36,14 @@ describe('SpellingSuggestion component', () => {
     'Content-Type': 'application/json'
   };
 
-  const expectFetchtoHaveBeenCalledWith = ( data: clickDataProps ) => {
+  const expectFetchtoHaveBeenCalledWith = (data: clickDataProps) => {
     expect(fetch).toHaveBeenCalledWith('/clicked', {
       body: JSON.stringify(data),
       headers,
       method: 'POST',
       mode: 'cors'
     });
-  }
+  };
 
   global.fetch = jest.fn(() =>
     Promise.resolve({
