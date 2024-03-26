@@ -892,44 +892,60 @@ describe SearchgovUrl do
 
     context 'when searchgov url page has different canonical_url' do
       let(:canonical_url) { 'https://www.agency.gov/canonical' }
-
-      before do
-        allow(described_class).to receive(:create)
-        stub_request(:get, url).
-          to_return(status: 301,
-                    body: html,
-                    headers: { location: canonical_url })
+      let(:canon) { described_class.new(url: canonical_url) }
+      let(:html) do
+        <<~HTML
+          <!doctype html>
+          <html lang="en">
+            <head>
+              <title>Canonical Title</title>
+              <link rel="canonical" href="#{canonical_url}">
+            </head>
+            <body>
+              <p>Canonical content.</p>
+            </body>
+          </html>
+        HTML
       end
 
-      it 'creates a new url' do
-        fetch
-        expect(described_class).to have_received(:create).with(url: canonical_url)
+      before do
+        allow(described_class).to receive(:create!).and_call_original
+        stub_request(:get, url).
+          to_return(status: 200,
+                    body: html,
+                    headers: { content_type: 'text/html' })
       end
 
       it 'does not fetch the original url' do
         fetch
-        expect(described_class).not_to have_received(:create).with(url: url)
-      end
-    end
-
-    context 'when canonical_url is created' do
-      let(:canonical_url) { 'https://www.agency.gov/canonical' }
-      let(:canonical_tag) { '<link rel="canonical" href="https://www.agency.gov/canonical" />' }
-      let(:canonical_html) { html.sub('</head>', "#{canonical_tag}\n</head>") }
-
-      before do
-        allow(searchgov_document).to receive(:canonical_url).and_return(canonical_url)
-        allow(described_class).to receive(:create)
-        allow(described_class).to receive(:persisted?).and_return(true)
-        stub_request(:get, url).
-          to_return(status: 200,
-                    body: canonical_html,
-                    headers: { content_type: 'text/html' })
+        expect(described_class).not_to have_received(:create!).with(url: url)
       end
 
-      it 'updates last_crawl_status with canonical URL info' do
-        fetch
-        expect(searchgov_url.last_crawl_status).to include("Canonical URL: #{canonical_url}")
+      context 'when canonical url already exists' do
+        before do
+          allow(canon).to receive(:persisted?).and_return(false)
+        end
+
+        it 'updates last_crawl_status with canonical URL info' do
+          fetch
+          expect(searchgov_url.last_crawl_status).to include("Canonical URL: #{canonical_url}")
+        end
+
+        it 'fetches the canonical url' do
+          expect(searchgov_url).to receive(:fetch)
+          fetch
+        end
+      end
+
+      context 'when canonical does not already exist' do
+        before do
+          allow(canon).to receive(:persisted?).and_return(false)
+        end
+
+        it 'creates and fetch a new canonical url' do
+          fetch
+          expect(described_class).to have_received(:create!).with(url: canonical_url)
+        end
       end
     end
 
