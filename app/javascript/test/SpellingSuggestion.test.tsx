@@ -70,21 +70,17 @@ describe('SpellingSuggestion component', () => {
   });
 
   it('Show original and suggested query', () => {
-    render(
+    const { container } = render(
       <LanguageContext.Provider value={i18n} >
         <SpellingSuggestion {...spellingSuggestionProps} vertical='web'/>
       </LanguageContext.Provider>
     );
 
-    expect(screen.getByText('Showing results for')).toBeInTheDocument();
-    expect(screen.getByText('medical')).toBeInTheDocument();
-    const [suggestedQuery] = Array.from(document.getElementsByClassName('suggestedQuery'));
-    expect(suggestedQuery).toHaveAttribute('href', '/search?affiliate=test_affiliate&query=medical');
+    const suggestedQueryHtmlString = 'Showing results for <a class="suggestedQuery" href="/search?affiliate=test_affiliate&amp;query=medical">medical</a>';
+    expect(container.innerHTML).toContain(suggestedQueryHtmlString);
 
-    expect(screen.getByText('Search instead for')).toBeInTheDocument();
-    expect(screen.getByText('mecidal')).toBeInTheDocument();
-    const [originalQuery] = Array.from(document.getElementsByClassName('originalQuery'));
-    expect(originalQuery).toHaveAttribute('href', '/search?affiliate=test_affiliate&query=mecidal');
+    const originalQueryHtmlString = 'Search instead for <a class="originalQuery" href="/search?affiliate=test_affiliate&amp;query=mecidal">mecidal</a>';
+    expect(container.innerHTML).toContain(originalQueryHtmlString);
   });
 
   it('clickTracking for suggestedQuery and originalQuery: web vertical', () => {
