@@ -147,10 +147,10 @@ describe('SpellingSuggestion component', () => {
     expectFetchtoHaveBeenCalledWith(clickBodyOriginalQuery);
   });
 
-  it('clickTracking for suggestedQuery and originalQuery: images vertical', () => {
+  it('clickTracking for suggestedQuery and originalQuery: image vertical', () => {
     render(
       <LanguageContext.Provider value={i18n} >
-        <SpellingSuggestion {...spellingSuggestionProps} vertical='images'/>
+        <SpellingSuggestion {...spellingSuggestionProps} vertical='image'/>
       </LanguageContext.Provider>
     );
 
@@ -162,7 +162,7 @@ describe('SpellingSuggestion component', () => {
       module_code: 'OSPEL',
       position: 1,
       query: 'medical',
-      vertical: 'images'
+      vertical: 'image'
     };
     expectFetchtoHaveBeenCalledWith(clickBodySuggestedQuery);
 
@@ -174,7 +174,7 @@ describe('SpellingSuggestion component', () => {
       module_code: 'LOVER',
       position: 1,
       query: 'mecidal',
-      vertical: 'images'
+      vertical: 'image'
     };
     expectFetchtoHaveBeenCalledWith(clickBodyOriginalQuery);
   });
