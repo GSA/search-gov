@@ -178,6 +178,10 @@ interface SearchResultsLayoutProps {
   spellingSuggestion?: {
     suggested: string;
     original: string;
+    originalUrl: string;
+    originalQuery: string;
+    suggestedQuery: string;
+    suggestedUrl: string;
   };
   sitelimit?: {
     sitelimit: string;
