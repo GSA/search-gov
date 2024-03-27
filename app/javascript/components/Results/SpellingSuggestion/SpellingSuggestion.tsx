@@ -23,7 +23,7 @@ export const SpellingSuggestion = ({ suggested, original, originalQuery, origina
   const position = 1;
   
   const module = (vertical: string) => {
-    // blended, docs, news: to use the default
+    // blended, docs: to use the default
     let suggestedQueryModule: string = moduleCode.spellingSuggestionsSearch;
     let originalQueryModule: string = moduleCode.spellingOverridesSearch;
 
@@ -32,7 +32,7 @@ export const SpellingSuggestion = ({ suggested, original, originalQuery, origina
       originalQueryModule = moduleCode.spellingOverridesBing;
     } else if (vertical === 'i14y') {
       originalQueryModule = moduleCode.spellingOverridesI14y;
-    } else if (vertical === 'images') {
+    } else if (vertical === 'image') {
       suggestedQueryModule = moduleCode.spellingSuggestionsImages;
     }
 
