@@ -164,16 +164,15 @@ class SearchgovUrl < ApplicationRecord
   end
 
   def create_canonical_url(canonical_url)
-    searchgov_url = SearchgovUrl.find_by(url: canonical_url)
-    searchgov_url = SearchgovUrl.create!(url: canonical_url) if searchgov_url.blank?
-    return unless searchgov_url.persisted?
+    canon = SearchgovUrl.find_or_create_by!(url: canonical_url)
+    return unless canon.persisted?
 
-    fetch_canonical(searchgov_url)
+    fetch_canonical(canon)
   end
 
-  def fetch_canonical(searchgov_url)
-    update(last_crawl_status: "Canonical URL: #{searchgov_url.url}")
-    searchgov_url.fetch
+  def fetch_canonical(canon)
+    update(last_crawl_status: "Canonical URL: #{canon.url}")
+    canon.fetch
   end
 
   def save_document
