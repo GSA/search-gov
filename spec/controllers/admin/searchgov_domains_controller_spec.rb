@@ -38,7 +38,7 @@ describe Admin::SearchgovDomainsController do
       it 'enqueues the deletion job and redirects to index' do
         delete :delete_domain, params: { id: basic_domain.id, confirmation: 'DESTROY DOMAIN' }
 
-        expect(response).to redirect_to(action: :index)
+        expect(response).to redirect_to('/admin/searchgov_domains')
         expect(flash[:success]).to eq(I18n.t('flash_messages.searchgov_domains.delete.success', domain: basic_domain.domain))
         expect(SearchgovDomainDestroyerJob).to have_been_enqueued.with(basic_domain)
       end
