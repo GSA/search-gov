@@ -62,7 +62,7 @@ class Admin::SearchgovDomainsController < Admin::AdminController
     if destroy_domain_confirmation_valid?
       enqueue_deletion_job
       flash[:success] = I18n.t('flash_messages.searchgov_domains.delete.success', domain: @searchgov_domain.domain)
-      redirect_to action: :index
+      redirect_to admin_searchgov_domains_path
     else
       flash[:error] = I18n.t('flash_messages.searchgov_domains.delete.error')
       redirect_to_show
