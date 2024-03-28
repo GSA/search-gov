@@ -48,6 +48,13 @@ class HtmlDocument < WebDocument
     end
   end
 
+  def canonical_url
+    canon_url = extract_canonical_url
+    return if canon_url.blank?
+
+    URI(url).path == URI(canon_url).path ? nil : canon_url
+  end
+
   private
 
   def html
@@ -106,6 +113,13 @@ class HtmlDocument < WebDocument
      metadata['article:section']].map { |k| k&.join(', ') }
   end
 
+  def extract_linkdata
+    html.xpath('//link').each_with_object({}) do |node, linkdata|
+      property = node['rel']&.downcase
+      linkdata[property] = (linkdata[property] || []) << node['href'] if property
+    end
+  end
+
   def extract_language
     html_attributes['lang']&.content
   end
@@ -142,5 +156,12 @@ class HtmlDocument < WebDocument
 
   def dcterms_data
     metadata.select { |k, _v| /^dcterms\./.match?(k) }
+  end
+
+  def extract_canonical_url
+    canonical_url = linkdata['canonical']&.first
+    return if canonical_url.blank?
+
+    URI(canonical_url).host.nil? ? "#{URI(url).scheme}://#{URI(url).host}#{canonical_url}" : canonical_url
   end
 end

@@ -14,6 +14,10 @@ class WebDocument
     @metadata ||= extract_metadata
   end
 
+  def linkdata
+    @linkdata ||= extract_linkdata
+  end
+
   def language
     @language ||= (Language.iso_639_1(extract_language) || detect_language)
   end
@@ -41,6 +45,10 @@ class WebDocument
   end
 
   def extract_metadata
+    #implemented by subclasses
+  end
+
+  def extract_linkdata
     #implemented by subclasses
   end
 

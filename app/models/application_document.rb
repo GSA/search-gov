@@ -29,6 +29,10 @@ class ApplicationDocument < WebDocument
     nil
   end
 
+  def canonical_url
+    nil
+  end
+
   def searchgov_custom(_number)
     nil
   end
