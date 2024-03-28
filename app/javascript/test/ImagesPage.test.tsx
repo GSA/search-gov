@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { render, fireEvent, screen } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import React from 'react';
 import { enableFetchMocks } from 'jest-fetch-mock';
 enableFetchMocks();
@@ -39,6 +39,7 @@ describe('Images Page component', () => {
 
     const image = Array.from(document.getElementsByClassName('result-image')).pop() as HTMLImageElement;
     fireEvent.click(image);
+    /* eslint-disable camelcase */
     const clickBody = {
       affiliate: 'searchgov',
       url: 'https://www.gsa.gov/real-estate/historic-preservation/explore-historic-buildings/heritage-tourism',
@@ -47,7 +48,7 @@ describe('Images Page component', () => {
       query: 'test query',
       vertical: 'IMAG'
     };
-
+    /* eslint-enable camelcase */
     expect(fetch).toHaveBeenCalledWith('/clicked', {
       body: JSON.stringify(clickBody),
       headers,
