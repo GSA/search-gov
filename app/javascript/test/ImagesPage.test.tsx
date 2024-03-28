@@ -45,8 +45,7 @@ describe('Images Page component', () => {
       module_code: 'IMAG',
       position: 1,
       query: 'test query',
-      vertical: 'IMAG',
-      type: 'click'
+      vertical: 'IMAG'
     };
 
     expect(fetch).toHaveBeenCalledWith('/clicked', {
