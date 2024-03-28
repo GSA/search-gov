@@ -127,6 +127,10 @@ interface ResultsProps {
   spellingSuggestion?: {
     suggested: string;
     original: string;
+    originalUrl: string;
+    originalQuery: string;
+    suggestedQuery: string;
+    suggestedUrl: string;
   };
   videosUrl?: string;
   relatedSearches?: { label: string; link: string; }[];
@@ -193,7 +197,11 @@ export const Results = ({ page, query = '', results = null, additionalResults = 
         {total && total > 0 ? <ResultsCount total={total}/>  : <></>}
 
         {spellingSuggestion && (
-          <SpellingSuggestion {...spellingSuggestion}/>
+          <SpellingSuggestion 
+            {...spellingSuggestion}
+            affiliate={page?.affiliate ?? ''}
+            vertical={vertical}
+          />
         )}
 
         {additionalResults && (
