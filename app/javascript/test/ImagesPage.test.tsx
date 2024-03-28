@@ -21,13 +21,13 @@ describe('Images Page component', () => {
   ];
   it('renders images component', () => {
     render(
-      <ImagesPage images={images} />
+      <ImagesPage images={images} affiliate={'searchgov'} query={'test query'} vertical={'IMAG'} />
     );
   });
 
   it('shows image title and src', () => {
     render(
-      <ImagesPage images={images} />
+      <ImagesPage images={images} affiliate={'searchgov'} query={'test query'} vertical={'IMAG'}/>
     );
     const img = Array.from(document.getElementsByClassName('result-image')).pop() as HTMLImageElement;
     expect(img).toHaveAttribute('src', 'https://plus.unsplash.com/premium_photo-1664303499312-917c50e4047b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dG9ybmFkb3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60');
