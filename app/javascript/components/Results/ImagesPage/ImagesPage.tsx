@@ -1,7 +1,6 @@
 import React from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
 import { clickTracking } from '../../../utils';
-import { PageData } from '../../SearchResultsLayout';
 
 type Image = {
   url: string;
