@@ -216,6 +216,12 @@ When /^(?:|I )follow "([^"]*)" and confirm "([^"]*)"$/ do |link, msg|
   end
 end
 
+When /^(?:|I )follow first "([^"]*)" and confirm$/ do |link|
+  first(:link, link).click
+  a = page.driver.browser.switch_to.alert
+  a.accept
+end
+
 Then "I wait for ajax"  do
   Timeout.timeout(Capybara.default_max_wait_time) do
     loop do
