@@ -103,6 +103,7 @@ class Admin::AffiliatesController < Admin::AdminController
       is_video_govbox_enabled
       jobs_enabled
       locale
+      looking_for_government_services
       name
       raw_log_access_enabled
       search_engine
