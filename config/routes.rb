@@ -229,6 +229,8 @@ Rails.application.routes.draw do
       member do
         post 'reindex'
         post 'stop_indexing'
+        get 'confirm_delete'
+        delete 'delete_domain'
       end
       resources :searchgov_urls, concerns: :active_scaffold do
         member do

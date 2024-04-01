@@ -201,7 +201,7 @@ Feature:  Administration
     And I should see "Export"
     And I should see "Search"
     And I should see "Create New"
-    And I should not see "Delete"
+    And I should see "Delete"
     And I should see "search.gov"
     And I should see "old.gov"
     And I should see "new.gov"
@@ -209,7 +209,7 @@ Feature:  Administration
 
     When I follow "Sitemaps" within the first scaffold row
     Then I should see "search.gov/sitemap.xml"
-    And I follow "Delete" and confirm "Are you sure you want to delete this sitemap?"
+    And I follow the first "Delete" and confirm
     Then I should not see "search.gov/sitemap.xml"
 
     When I follow "Create New" in the SearchgovDomain Sitemaps table
@@ -220,7 +220,7 @@ Feature:  Administration
     When I follow "Create New"
     And I fill in "Domain" with "www.state.gov"
     And I press "Create"
-    Then I should see "www.state.gov has been created"
+    Then I should see "www.state.gov has been created. Sitemaps will automatically begin indexing."
 
     When I follow "Reindex" within the first scaffold row and confirm "Are you sure you want to reindex this entire domain?"
     And I wait for ajax
@@ -252,7 +252,7 @@ Feature:  Administration
     Then I should see "Your URL has been added to the fetching queue"
 
     When I follow "Close" in the SearchgovDomain URLs table
-    And I follow "Delete" and confirm "Are you sure"
+    And I follow the first "Delete"
     Then I should not see "https://search.gov/page1"
 
     When I follow "Search" in the SearchgovDomain URLs table
