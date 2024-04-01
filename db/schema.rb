@@ -103,7 +103,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_01_142629) do
     t.boolean "display_created_date_on_search_results", default: false, null: false
     t.boolean "display_updated_date_on_search_results", default: false, null: false
     t.boolean "display_logo_only", default: false
-    t.boolean "looking_for_government_services", default: true
+    t.boolean "looking_for_government_services", default: true, null: false
     t.index ["name"], name: "index_affiliates_on_name", unique: true
   end
 
