@@ -12,7 +12,7 @@ class LoginDotGovSettings
   UNUSED_STATE_DATA = '1234567890123456789012'
   HOST = URI(Rails.application.secrets.login_dot_gov[:idp_base_url]).host
 
-  def self.logout_redirect_uri(_id_token, login_uri)
+  def self.logout_redirect_uri(login_uri)
     query = {
       client_id: Rails.application.secrets.login_dot_gov[:client_id],
       post_logout_redirect_uri: login_uri,
