@@ -149,7 +149,7 @@ gem 'cssbundling-rails', '~> 1.2' # Management of css (Less) files conversion
 # https://github.com/rails/rails/pull/46650
 gem 'mail', '~> 2.7.1'
 gem 'feedjira', '~> 3.2'
-gem "bootsnap", require: false
+gem 'bootsnap', require: false
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
