@@ -68,7 +68,7 @@ USER 1000:1000
 
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
-ENV PORT=${PORT:-80}
+ENV PORT=${PORT:-3000}
 EXPOSE ${PORT}
 
 # Start the server by default, this can be overwritten at runtime
