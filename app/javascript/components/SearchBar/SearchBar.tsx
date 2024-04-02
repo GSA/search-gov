@@ -55,7 +55,7 @@ const calculateRatio = (bgColor: string, fgColor: string) => {
   return ratio;
 };
 
-const setButtonTextColor = () => {
+const checkSearchIconColorContrast = () => {
   const svgBtn = Array.from(document.getElementsByClassName('usa-button'))[0] as HTMLElement;
   const svgMagnifyIcon = Array.from(document.getElementsByClassName('search-icon-glass'))[0] as HTMLElement;
 
@@ -103,7 +103,7 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [],
   };
 
   useEffect(() => {
-    setButtonTextColor();
+    checkSearchIconColorContrast();
   }, []);
 
   return (
