@@ -1,10 +1,18 @@
-@media (min-width: 64em){
-  .usa-nav__secondary-links {
-      margin-left: 2rem;
-  }
+.usa-identifier__logo {
+  height: 3rem;
+  max-height: none;
 }
 
-.usa-identifier__logo {
-  margin-bottom: 1.5rem;
-  margin-top: 1.5rem;
+/* Media Queries */
+@media (min-width: 64em){
+  .usa-nav__secondary-links {
+    margin-left: 2rem;
+  }
+
+  .usa-identifier__logo {
+    height: auto;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+    max-height: 100px;
+  }
 }
