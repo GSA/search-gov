@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# Based on Search.gov GSA Container Security Benchmark https://docs.google.com/spreadsheets/d/1_UeKZHJGF8ZfoCSnDCux5lx1fUKSFVlYE6MmmVdeS-U/edit#gid=594625648
+
+# There is no need for the container to mount volumes or devices with fstab. Removing default items reduces the attack surface.
+rm -f /etc/fstab 
+
+# Be informative after successful login.
+echo "echo -e '************WARNING************'" >> /home/rails/.bashrc
+echo "echo -e 'This is a U.S. General Services Administration Federal Government computer system that is FOR OFFICIAL USE ONLY. This system is subject to monitoring. Therefore, no expectation of privacy is to be assumed. Individuals found performing unauthorized activities may be subject to disciplinary action including criminal prosecution.\n'" >> /home/rails/.bashrc
+
+# Remove kernel tunable items since they are not needed. 
+rm -fr /etc/sysctl* /etc/modprobe.d /etc/modules /etc/mdev.conf /etc/acpi
+
+# Remove suid & sgid files to enforce simple permission sets. 
+RUN find /bin /etc /lib /sbin /usr -xdev -type f -a \( -perm +4000 -o -perm +2000 \) -delete
+
+# Check for calls out of the dockerfile to download software externally
+apt-get remove -y --auto-remove curl
+
+# Remove any broken symlinks, if any.
+find /bin /etc /lib /sbin /usr -xdev -type l -exec test ! -e {} \; -delete
