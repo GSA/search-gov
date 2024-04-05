@@ -33,7 +33,7 @@ describe UserSessionsController do
         host: 'idp.int.identitysandbox.gov',
         path: '/openid_connect/logout',
         query: {
-          id_token_hint: id_token,
+          client_id: Rails.application.secrets.login_dot_gov[:client_id],
           post_logout_redirect_uri: login_uri,
           state: '1234567890123456789012'
         }.to_query
