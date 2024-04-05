@@ -7,10 +7,12 @@ WORKDIR /rails
 # Install base packages
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y \
-    curl libjemalloc2 libcurl4-openssl-dev default-libmysqlclient-dev
+    curl libjemalloc2 libcurl4-openssl-dev default-libmysqlclient-dev && \
+    apt-get clean
 
 # Set production environment
 ENV RAILS_ENV="production" \
+    RAILS_LOG_TO_STDOUT="1" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
     BUNDLE_WITHOUT="development"
