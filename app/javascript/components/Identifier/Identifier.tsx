@@ -41,6 +41,7 @@ const StyledUswdsIdentifier = styled(UswdsIdentifier).attrs<{ styles: FontsAndCo
   }
 `;
 
+// eslint-disable-next-line complexity
 export const Identifier = ({ identifierContent, identifierLinks }: IdentifierProps) => {
   const i18n = useContext(LanguageContext);
   const styles = useContext(StyleContext);

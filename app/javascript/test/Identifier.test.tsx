@@ -79,9 +79,11 @@ describe('Identifier', () => {
   });
 
   it('has a link for more US Government services', () => {
-    render(<LanguageContext.Provider value={i18n} >
-            <Identifier identifierContent={identifierContent} identifierLinks={identifierLinks} />
-          </LanguageContext.Provider>);
+    render(
+      <LanguageContext.Provider value={i18n} >
+        <Identifier identifierContent={identifierContent} identifierLinks={identifierLinks} />
+      </LanguageContext.Provider>
+    );
 
     const identityGovContent = Array.from(document.getElementsByClassName('usa-identifier__usagov-description')).pop() as HTMLParagraphElement;
     expect(identityGovContent).toHaveTextContent('Looking for U.S. Government information and services?');
@@ -90,9 +92,11 @@ describe('Identifier', () => {
   });
 
   it('does not have a link for more US Government services when the link is disabled', () => {
-    render(<LanguageContext.Provider value={i18n} >
-            <Identifier identifierContent={identifierContentWithoutGovServices} identifierLinks={identifierLinks} />
-          </LanguageContext.Provider>);
+    render(
+      <LanguageContext.Provider value={i18n} >
+        <Identifier identifierContent={identifierContentWithoutGovServices} identifierLinks={identifierLinks} />
+      </LanguageContext.Provider>
+    );
 
     const identifier = document.getElementById('serp-identifier-wrapper');
     expect(identifier).not.toHaveTextContent('Looking for U.S. Government information and services?');
