@@ -44,7 +44,7 @@ describe('Images Page component', () => {
       affiliate: 'searchgov',
       url: 'https://www.gsa.gov/real-estate/historic-preservation/explore-historic-buildings/heritage-tourism',
       module_code: 'IMAG',
-      position: 1,
+      position: 2,
       query: 'test query',
       vertical: 'IMAG'
     };
