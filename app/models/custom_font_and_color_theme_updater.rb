@@ -3,7 +3,7 @@
 class CustomFontAndColorThemeUpdater
   VISUAL_DESIGN_FONT = %w[primary_navigation_font_family header_links_font_family footer_and_results_font_family identifier_font_family].freeze
   VISUAL_DESIGN_COLOR = %w[button_background_color header_background_color header_secondary_link_color footer_background_color identifier_background_color footer_links_text_color identifier_heading_color identifier_link_color header_navigation_background_color active_search_tab_navigation_color header_primary_link_color search_tab_navigation_link_color banner_background_color banner_text_color result_title_color result_title_link_visited_color result_url_color result_description_color].freeze
-  CSS_PROPERTY_COLOR  = [:search_button_background_color, :header_links_background_color, :header_text_color, :footer_background_color, :footer_background_color, :footer_links_text_color, :footer_links_text_color, :footer_links_text_color, :navigation_background_color, :left_tab_text_color, :navigation_link_color, :navigation_link_color, :header_tagline_background_color, :header_tagline_color, :title_link_color, :visited_title_link_color, :url_link_color, :description_text_color].freeze
+  CSS_PROPERTY_COLOR  = %i[search_button_background_color header_links_background_color header_text_color footer_background_color footer_background_color footer_links_text_color footer_links_text_color footer_links_text_color navigation_background_color left_tab_text_color navigation_link_color navigation_link_color header_tagline_background_color header_tagline_color title_link_color visited_title_link_color url_link_color description_text_color].freeze
 
   def update(args)
     ids = args == 'all' ? Affiliate.all.ids : args.split
@@ -53,7 +53,7 @@ class CustomFontAndColorThemeUpdater
       css_property = affiliate.css_property_hash[CSS_PROPERTY_COLOR[index]] || Affiliate::THEMES[:default][CSS_PROPERTY_COLOR[index]]
       affiliate.visual_design_json[vd] = css_property
     end
-    affiliate.visual_design_json['best_bet_background_color'] = '#ffffff'
+    affiliate.visual_design_json['best_bet_background_color'] = '#ffffff' # update color directly here since there is no corresponding key in css_property_hash
     affiliate.visual_design_json
   end
 
