@@ -24,7 +24,7 @@ export const ImagesPage = ({ images=[], affiliate, query, vertical }: ImagesPage
             <Grid key={index} mobileLg={{ col: 3 }} col={6} className='result-thumbnail margin-bottom-4'>
               <a
                 href={image.url}
-                onClick={() => clickTracking(affiliate, 'IMAG', query, index, image.url, vertical)}
+                onClick={() => clickTracking(affiliate, 'IMAG', query, index + 1, image.url, vertical)}
               >
                 <img src={image.thumbnailUrl} className="result-image" alt={image.altText} />
               </a>
