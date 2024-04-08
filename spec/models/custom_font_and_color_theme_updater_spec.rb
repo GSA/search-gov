@@ -84,7 +84,7 @@ describe CustomFontAndColorThemeUpdater do
 
     context 'when something goes wrong' do
       before do
-        allow(custom_font_and_color_theme_updater).to receive(:update_custom_font_and_color_theme).and_raise(StandardError)
+        allow(custom_font_and_color_theme_updater).to receive(:update_font_and_color).and_raise(StandardError)
       end
 
       let(:ids) { [default_first_affiliate.id] }
