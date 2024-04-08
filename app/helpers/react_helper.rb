@@ -198,7 +198,8 @@ module ReactHelper
       parentAgencyName: affiliate.parent_agency_name,
       parentAgencyLink: affiliate.parent_agency_link,
       logoUrl: identifier_logo_url(affiliate.identifier_logo),
-      logoAltText: logo_text(affiliate.identifier_logo_blob)
+      logoAltText: logo_text(affiliate.identifier_logo_blob),
+      lookingForGovernmentServices: affiliate.looking_for_government_services,
     }
   end
 

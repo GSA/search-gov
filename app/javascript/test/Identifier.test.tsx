@@ -1,15 +1,27 @@
 import '@testing-library/jest-dom';
 import { render, within } from '@testing-library/react';
+import { I18n } from 'i18n-js';
 import React from 'react';
 
 import { Identifier } from '../components/Identifier/Identifier';
+import { LanguageContext } from '../contexts/LanguageContext';
 
 const identifierContent = { 
   domainName: 'example domain name',
   parentAgencyName: 'My Agency',
   parentAgencyLink: 'https://agency.gov',
   logoUrl: 'https://www.search.gov/logo.png',
-  logoAltText: 'identifier alt text'
+  logoAltText: 'identifier alt text',
+  lookingForGovernmentServices: true
+};
+
+const identifierContentWithoutGovServices = { 
+  domainName: 'example domain name',
+  parentAgencyName: 'My Agency',
+  parentAgencyLink: 'https://agency.gov',
+  logoUrl: 'https://www.search.gov/logo.png',
+  logoAltText: 'identifier alt text',
+  lookingForGovernmentServices: false
 };
 
 const identifierLinks = [
@@ -17,9 +29,17 @@ const identifierLinks = [
   { title: 'second footer link', url: 'https://second.gov' }
 ];
 
+const locale = {
+  en: {
+    lookingForUsGovInfo: 'Looking for U.S. Government information and services?'
+  }
+};
+
 jest.mock('i18n-js', () => {
   return jest.requireActual('i18n-js/dist/require/index');
 });
+
+const i18n = new I18n(locale);
 
 describe('Identifier', () => {
   it('uses declared domainName', () => {
@@ -56,5 +76,25 @@ describe('Identifier', () => {
 
     expect(img).toHaveAttribute('src', 'https://www.search.gov/logo.png');
     expect(img).toHaveAttribute('alt', 'identifier alt text');
+  });
+
+  it('has a link for more US Government services', () => {
+    render(<LanguageContext.Provider value={i18n} >
+            <Identifier identifierContent={identifierContent} identifierLinks={identifierLinks} />
+          </LanguageContext.Provider>);
+
+    const identityGovContent = Array.from(document.getElementsByClassName('usa-identifier__usagov-description')).pop() as HTMLParagraphElement;
+    expect(identityGovContent).toHaveTextContent('Looking for U.S. Government information and services?');
+    const UsaLink = Array.from(document.getElementsByClassName('usa-link')).pop();
+    expect(UsaLink).toHaveAttribute('href', 'https://www.usa.gov/');
+  });
+
+  it('does not have a link for more US Government services when the link is disabled', () => {
+    render(<LanguageContext.Provider value={i18n} >
+            <Identifier identifierContent={identifierContentWithoutGovServices} identifierLinks={identifierLinks} />
+          </LanguageContext.Provider>);
+
+    const identifier = document.getElementById('serp-identifier-wrapper');
+    expect(identifier).not.toHaveTextContent('Looking for U.S. Government information and services?');
   });
 });
