@@ -22,30 +22,43 @@ describe CustomFontAndColorThemeUpdater do
     let(:custom_font_and_color_theme_updater) { described_class.new }
     let(:default_visual_design) { { banner_background_color: '#F0F0F0' } }
     let(:modified_visual_design) { { banner_background_color: '#1B1B1B' } }
-    let(:css_property_hash) { { font_family: 'Arial, sans-serif' } }
+    let(:css_property_hash) { { font_family: 'Helvetica, sans-serif' } }
     let(:default_first_affiliate) { Affiliate.find_by(name: 'default_visual_design_0') }
     let(:default_second_affiliate) { Affiliate.find_by(name: 'default_visual_design_1') }
     let(:modified_first_affiliate) { Affiliate.find_by(name: 'modified_visual_design_0') }
     let(:modified_second_affiliate) { Affiliate.find_by(name: 'modified_visual_design_1') }
+    let(:expected_font_family) { "'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif" }
+    let(:default_font_family) { "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'" }
     let(:success_message) { '[custom_font_and_color_theme_updater_task] The following affiliates were updated successfully:' }
 
     context 'when specific ids are passed to update' do
       let(:ids) { [default_first_affiliate.id, modified_first_affiliate.id] }
 
-      it 'updates those affiliates default visual design colors with legacy colors' do
-        expect { custom_font_and_color_theme_updater.update(ids) }.
-          to change { default_first_affiliate.reload.visual_design_json['banner_background_color'] }.
-          from('#F0F0F0').to('#000000')
+      context 'when updating font colors' do
+        it 'updates those affiliates default visual design colors with legacy colors' do
+          expect { custom_font_and_color_theme_updater.update(ids) }.
+            to change { default_first_affiliate.reload.visual_design_json['banner_background_color'] }.
+            from('#F0F0F0').to('#000000')
+        end
       end
 
-      it 'does not update those affiliates with modified visual design colors with legacy colors' do
-        expect { custom_font_and_color_theme_updater.update(ids) }.
-          not_to change { modified_first_affiliate.reload.visual_design_json['banner_background_color'] }
+      context 'when updating font family' do
+        it 'updates the visual_design_json with the new font family' do
+          expect { custom_font_and_color_theme_updater.update(ids) }.to change { default_first_affiliate.reload.visual_design_json['primary_navigation_font_family'] }.from(default_font_family).to(expected_font_family).
+            and change { default_first_affiliate.reload.visual_design_json['header_links_font_family'] }.from(default_font_family).to(expected_font_family).
+            and change { default_first_affiliate.reload.visual_design_json['footer_and_results_font_family'] }.from(default_font_family).to(expected_font_family).
+            and change { default_first_affiliate.reload.visual_design_json['identifier_font_family'] }.from("'Source Sans Pro','Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif").to(expected_font_family)
+        end
       end
 
-      it 'does not update other affiliate visual design colors with legacy colors' do
+      it 'does not update the modified visual_design_json with the new font colors and font family' do
         expect { custom_font_and_color_theme_updater.update(ids) }.
-          not_to change { default_second_affiliate.reload.visual_design_json['banner_background_color'] }
+          not_to change { modified_first_affiliate.reload.visual_design_json }
+      end
+
+      it 'does not update other affiliates visual_design_json with the new font colors and font family' do
+        expect { custom_font_and_color_theme_updater.update(ids) }.
+          not_to change { default_second_affiliate.reload.visual_design_json }
       end
 
       it 'logs successes' do
@@ -70,9 +83,24 @@ describe CustomFontAndColorThemeUpdater do
           from('#F0F0F0').to('#000000')
       end
 
-      it 'does not update those affiliates with modified visual design colors with legacy colors' do
+      context 'when updating font family' do
+        it 'updates the visual_design_json with the new font family' do
+          expect { custom_font_and_color_theme_updater.update(ids) }.to change { default_second_affiliate.reload.visual_design_json['primary_navigation_font_family'] }.from(default_font_family).to(expected_font_family).
+            and change { default_second_affiliate.reload.visual_design_json['header_links_font_family'] }.from(default_font_family).to(expected_font_family).
+            and change { default_second_affiliate.reload.visual_design_json['footer_and_results_font_family'] }.from(default_font_family).to(expected_font_family).
+            and change { default_second_affiliate.reload.visual_design_json['identifier_font_family'] }.from("'Source Sans Pro','Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif").to(expected_font_family)
+        end
+      end
+
+      it 'updates all affiliate fonts to defaults' do
         expect { custom_font_and_color_theme_updater.update(ids) }.
-          not_to change { modified_second_affiliate.reload.visual_design_json['banner_background_color'] }
+          to change { default_second_affiliate.reload.visual_design_json['footer_and_results_font_family'] }.
+          from("'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'").to("'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif")
+      end
+
+      it 'does not update the modified visual_design_json with the new font colors and font family' do
+        expect { custom_font_and_color_theme_updater.update(ids) }.
+          not_to change { modified_second_affiliate.reload.visual_design_json }
       end
 
       it 'logs successes' do
