@@ -43,9 +43,15 @@ class CustomFontAndColorThemeUpdater
   end
 
   def get_font_family(font_family)
-    return "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'" if font_family == ('Arial, sans-serif' || '"Trebuchet MS", sans-serif' || 'Verdana, sans-serif')
-    return "'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif" if font_family == 'Helvetica, sans-serif'
-    return "'Tahoma', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'" if font_family == 'Tahoma, Verdana, Arial, sans-serif'
+    font_families = {
+      'Arial, sans-serif' => "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+      '"Trebuchet MS", sans-serif' => "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+      'Verdana, sans-serif' => "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+      'Helvetica, sans-serif' => "'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif",
+      'Tahoma, Verdana, Arial, sans-serif' => "'Tahoma', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
+    }
+
+    font_families[font_family] || font_family
   end
 
   def update_affiliate_custom_color_theme(affiliate)
