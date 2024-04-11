@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# DELETE ME: This file can be deleted after SRCH-4873 data migration
 namespace :searchgov do
   # To update ALL affiliates custom font and color theme columns
   # rake "searchgov:custom_font_and_color_theme_updater[all]"
