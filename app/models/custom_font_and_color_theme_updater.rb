@@ -37,7 +37,7 @@ class CustomFontAndColorThemeUpdater
 
   def update_font_family(affiliate)
     font_family = affiliate.css_property_hash[:font_family]
-    VISUAL_DESIGN_FONT.each do |font_key|
+    Affiliate::FONT_FIELDS.each do |font_key|
       affiliate.visual_design_json[font_key] = get_font_family(font_family)
     end
   end
