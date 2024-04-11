@@ -124,6 +124,7 @@ class Admin::AffiliatesController < Admin::AdminController
 
     config.update.columns.add_subgroup 'Display Settings' do |name_group|
       display_columns = %i[use_redesigned_results_page
+                           looking_for_government_services
                            footer_fragment
                            header_tagline_font_family
                            header_tagline_font_size

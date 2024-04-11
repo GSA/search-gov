@@ -208,6 +208,7 @@ interface SearchResultsLayoutProps {
     parentAgencyLink: string | null;
     logoUrl: string | null;
     logoAltText: string | null;
+    lookingForGovernmentServices: boolean | null;
   };
   identifierLinks?: {
     title: string,

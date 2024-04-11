@@ -97,7 +97,8 @@ describe ReactHelper do
           parentAgencyName: 'My Agency',
           parentAgencyLink: 'https://agency.gov',
           logoAltText: nil,
-          logoUrl: nil
+          logoUrl: nil,
+          lookingForGovernmentServices: true
         }
       end
 
@@ -124,7 +125,8 @@ describe ReactHelper do
           parentAgencyName: 'My Agency',
           parentAgencyLink: 'https://agency.gov',
           logoAltText: nil,
-          logoUrl: 'https://www.search.gov'
+          logoUrl: 'https://www.search.gov',
+          lookingForGovernmentServices: true
         }
       end
 

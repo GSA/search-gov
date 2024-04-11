@@ -15,6 +15,7 @@ interface IdentifierProps {
     parentAgencyLink: string | null;
     logoUrl: string | null;
     logoAltText: string | null;
+    lookingForGovernmentServices: boolean | null;
   };
   identifierLinks?: {
     title: string,
@@ -40,6 +41,7 @@ const StyledUswdsIdentifier = styled(UswdsIdentifier).attrs<{ styles: FontsAndCo
   }
 `;
 
+// eslint-disable-next-line complexity
 export const Identifier = ({ identifierContent, identifierLinks }: IdentifierProps) => {
   const i18n = useContext(LanguageContext);
   const styles = useContext(StyleContext);
@@ -80,15 +82,17 @@ export const Identifier = ({ identifierContent, identifierLinks }: IdentifierPro
         <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
           {primaryIdentifierLinks}
         </IdentifierLinks>
-        <IdentifierGov aria-label="U.S. government information and services">
-          <div className="usa-identifier__usagov-description">
-            {i18n.t('lookingForUsGovInfo')}
-          </div>
-          &nbsp;
-          <Link href="https://www.usa.gov/" className="usa-link">
-            {i18n.t('visitUsaDotGov')}
-          </Link>
-        </IdentifierGov>
+        {identifierContent?.lookingForGovernmentServices && (
+          <IdentifierGov aria-label="U.S. government information and services">
+            <div className="usa-identifier__usagov-description">
+              {i18n.t('lookingForUsGovInfo')}
+            </div>
+            &nbsp;
+            <Link href="https://www.usa.gov/" className="usa-link">
+              {i18n.t('visitUsaDotGov')}
+            </Link>
+          </IdentifierGov>
+        )}
       </div>
     </StyledUswdsIdentifier>
   );
