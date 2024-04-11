@@ -1,0 +1,27 @@
+.usa-header--basic .usa-identifier__logo,
+.usa-header--extended .usa-identifier__logo {
+  height: 3rem;
+  max-height: none;
+}
+
+@media (min-width: 64em){
+  .usa-header--basic .usa-identifier__logo,
+  .usa-header--extended .usa-identifier__logo {
+    height: auto;
+    margin-bottom: .75rem;
+    margin-top: .75rem;
+    max-height: 100px;
+  }
+}
+
+@media (max-width: 63.99em) {
+  /* Mobile overlay fix for menu tabs */
+  .usa-header .is-visible {
+    z-index: 501;
+  }
+
+  .usa-header--basic .usa-logo,
+  .usa-header--extended .usa-logo {
+    margin-left: 0rem;
+  }
+}
