@@ -9,7 +9,7 @@ describe I14yPostProcessor do
     context 'when results have all attributes' do
       let(:results) do
         results = []
-        5.times { |index| results << Hashie::Mash::Rash.new(title: "title #{index}", content: "content #{index}", path: "http://foo.gov/#{index}", changed: '2020-09-09 00:00:00 UTC', created: '2020-09-09 00:00:00 UTC', thumbnail_url: 'https://search.gov/img.svg') }
+        5.times { |index| results << Hashie::Mash::Rash.new(title: "title #{index}", content: "\uE000content\uE001 #{index}", path: "http://foo.gov/#{index}", changed: '2020-09-09 00:00:00 UTC', created: '2020-09-09 00:00:00 UTC', thumbnail_url: 'https://search.gov/img.svg') }
         results
       end
 
@@ -58,7 +58,7 @@ describe I14yPostProcessor do
     context 'when results are missing some attributes' do
       let(:results) do
         results = []
-        5.times { |index| results << Hashie::Mash::Rash.new(title: "title #{index}", content: "content #{index}", path: "http://foo.gov/#{index}") }
+        5.times { |index| results << Hashie::Mash::Rash.new(title: "title #{index}", content: "\uE000content\uE001 #{index}", path: "http://foo.gov/#{index}") }
         results
       end
 
