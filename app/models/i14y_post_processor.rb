@@ -59,12 +59,19 @@ class I14yPostProcessor < ResultsWithBodyAndDescriptionPostProcessor
     date ? Date.parse(date).to_fs(:long_ordinal) : nil
   end
 
+  def formatted_result_description(desc, body)
+    description = []
+    description << desc if highlighted?(desc)
+    description << body if highlighted?(body)
+    truncate_description(translate_highlights(description.join('...')))
+  end
+
   def format_results
     @results.map do |result|
       {
         title: translate_highlights(result['title']),
         url: result['link'],
-        description: truncate_description(translate_highlights(result['body'])),
+        description: formatted_result_description(result['description'], result['body']),
         updatedDate: parse_result_date(result['changed']),
         publishedDate: parse_result_date(result['published_at']),
         thumbnailUrl: result['thumbnail_url'],
