@@ -32,8 +32,7 @@ shared_examples 'a search with normalized results' do
     it 'returns normalized results for the title, description, and URL' do
       normalized_results[:results].each_with_index do |result, index|
         expect(result[:title]).to eq("title #{index}")
-        expect(result[:description]).to include('content')
-        expect(result[:description]).to include(index.to_s)
+        expect(result[:description]).to eq("content #{index}")
         expect(result[:url]).to eq("http://foo.gov/#{index}")
       end
     end
