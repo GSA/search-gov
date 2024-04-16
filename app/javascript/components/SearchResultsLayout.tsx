@@ -1,4 +1,5 @@
 import React from 'react';
+import { Grid } from '@trussworks/react-uswds';
 import { createGlobalStyle } from 'styled-components';
 import { darken } from 'polished';
 import { I18n } from 'i18n-js';
@@ -273,8 +274,14 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
         />
       
         <div className="usa-section serp-result-wrapper">
+        <Grid row>
+          <Grid tablet={{col: 2}} style={{"width": "12.5%"}}></Grid>
+          <Grid tablet={{col: 2}}>
           <Facets />
-  
+          </Grid>
+         
+          
+          <Grid tablet={{col: 6}}>
           <SearchBar query={params.query} relatedSites={relatedSites} navigationLinks={navigationLinks} relatedSitesDropdownLabel={relatedSitesDropdownLabel} alert={alert}/>
 
           {/* This ternary is needed to handle the case when Bing pagination leads to a page with no results */}
@@ -305,6 +312,9 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
               unboundedResults={true}
               noResultsMessage = {noResultsMessage}
             />) : <></>}
+          </Grid>
+          <Grid tablet={{col: 2}}></Grid>
+        </Grid>
         </div>
 
         <Footer 
