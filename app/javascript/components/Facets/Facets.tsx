@@ -40,6 +40,8 @@ const StyledWrapper = styled.div.attrs<{ styles: FontsAndColors; }>((props) => (
 	}
 `;
 
+type HeadingLevel = "h1" | "h2" | "h3" | "h4" | "h5" | "h6"; 
+
 export const Facets = () => {
 	const styles = useContext(StyleContext);
 
@@ -93,7 +95,7 @@ export const Facets = () => {
 			),
 			expanded: true,
 			id: 'audienceItems',
-			headingLevel: 'h4',
+			headingLevel: 'h4' as HeadingLevel,
 		}
 	];
 
@@ -147,7 +149,7 @@ export const Facets = () => {
 			),
 			expanded: true,
 			id: 'contentTypeItems',
-			headingLevel: 'h4',
+			headingLevel: 'h4' as HeadingLevel,
 		}
 	];
 
@@ -201,7 +203,7 @@ export const Facets = () => {
 			),
 			expanded: true,
 			id: 'fileTypeItems',
-			headingLevel: 'h4',
+			headingLevel: 'h4' as HeadingLevel,
 		}
 	];
 
@@ -235,7 +237,7 @@ export const Facets = () => {
 			),
 			expanded: true,
 			id: 'tagsItems',
-			headingLevel: 'h4',
+			headingLevel: 'h4' as HeadingLevel,
 		}
 	];
 
@@ -305,7 +307,7 @@ export const Facets = () => {
 			),
 			expanded: true,
 			id: 'dateRangeItems',
-			headingLevel: 'h4',
+			headingLevel: 'h4' as HeadingLevel,
 		}
 	];
 
