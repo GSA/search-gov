@@ -38,3 +38,5 @@ ENV BUNDLE_PATH /gems
 RUN bundle install
 
 COPY . /usr/src/app/
+
+CMD  ["bundle", "exec", "rails", "server", "--binding" "0.0.0.0", "-p", "3100"]
