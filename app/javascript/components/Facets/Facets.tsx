@@ -19,6 +19,7 @@ const searchFilterSvgIcon = () => {
 const StyledWrapper = styled.div.attrs<{ styles: FontsAndColors; }>((props) => ({
   styles: props.styles
 }))`
+
 	path.search-filer-icon {
 		fill: ${(props) => props.styles.buttonBackgroundColor};
 	}
