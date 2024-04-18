@@ -7,7 +7,7 @@ shared_examples 'a search with normalized results' do
   let(:total_pages) { 1 }
 
   it 'has a normalized set of keys' do
-    expect(normalized_results.keys).to contain_exactly(*normalized_result_data_keys)
+    expect(normalized_results.keys).to match_array(normalized_result_data_keys)
   end
 
   it 'returns the correct total' do
