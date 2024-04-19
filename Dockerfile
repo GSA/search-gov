@@ -1,6 +1,6 @@
 ARG RUBY_VERSION=3.0.6
-FROM public.ecr.aws/docker/library/ruby:$RUBY_VERSION-slim as base
-
+# FROM public.ecr.aws/docker/library/ruby:$RUBY_VERSION-slim as base
+FROM ruby:3.0.6-slim as base
 # Rails app lives here
 WORKDIR /rails
 
