@@ -53,7 +53,7 @@ module Es
           password: ENV['ES_PASSWORD'],
         }.freeze
       else
-        Rails.application.secrets.dig(:analytics, :elasticsearch, mode)
+        Rails.application.secrets.dig(:analytics, :elasticsearch, mode).freeze
       end
     end
   end
@@ -66,7 +66,7 @@ module Es
       if ENV['ES_HOSTS']
         { hosts: ENV['ES_HOSTS'].split(',').map(&:strip) }.freeze
       else
-        Rails.application.secrets.dig(:custom_indices, :elasticsearch, mode)
+        Rails.application.secrets.dig(:custom_indices, :elasticsearch, mode).freeze
       end
     end
   end
