@@ -40,6 +40,6 @@ workflows:
             branches:
               only:
                 # - staging
-                # - main
+                - main
                 - container-pipeline
       
