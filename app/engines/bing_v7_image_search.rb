@@ -14,6 +14,6 @@ class BingV7ImageSearch < BingSearch
 
   def hosted_subscription_key
     @hosted_subscription_key ||=
-      ENV['BING_IMAGE_SUBSCRIPTION'] || Rails.application.secrets.bing_v7[:image_subscription_id].freeze
+      ENV['BING_IMAGE_SUBSCRIPTION'] || Rails.application.secrets.dig(:bing_v7, :image_subscription_id)
   end
 end

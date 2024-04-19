@@ -257,7 +257,7 @@ Rails.application.routes.draw do
 
   get '/user/developer_redirect' => 'users#developer_redirect', :as => :developer_redirect
   get '/program' => redirect(
-    ENV['BLOG_URL'] || Rails.application.secrets.organization[:blog_url],
+    ENV['BLOG_URL'] || Rails.application.secrets.dig(:organization, :blog_url),
     status: 302
   )
 
