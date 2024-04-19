@@ -13,7 +13,7 @@ module HelpDoc
 
   def self.prefix_links_with_scheme_and_host(doc)
     doc.css('#main-container a[@href^="/"]').each do |a|
-      a['href'] = "#{Rails.application.secrets.organization[:blog_url]}#{a['href']}"
+      a['href'] = "#{ENV['BLOG_URL'] || Rails.application.secrets.organization[:blog_url]}#{a['href']}"
     end
   end
 end

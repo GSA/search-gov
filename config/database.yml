@@ -19,10 +19,11 @@ development:
 
 production:
   <<: *DEFAULT
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
-  host: <%= ENV['DB_HOST'] %>
-  port: <%= ENV['DB_PORT'] %>
+  database: usasearch_development
+
+staging:
+  <<: *DEFAULT
+  database: usasearch_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

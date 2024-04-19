@@ -8,10 +8,10 @@ local:
 
 amazon:
   service: S3
-  access_key_id: <%= Rails.application.secrets.aws_image_bucket[:access_key_id] %>
-  secret_access_key: <%= Rails.application.secrets.aws_image_bucket[:secret_access_key] %>
-  region: <%= Rails.application.secrets.aws_image_bucket[:s3_region] %>
-  bucket: <%= Rails.application.secrets.aws_image_bucket[:bucket] %>
+  access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] || Rails.application.secrets.aws_image_bucket[:access_key_id] %>
+  secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] || Rails.application.secrets.aws_image_bucket[:secret_access_key] %>
+  region: <%= ENV['AWS_REGION'] || Rails.application.secrets.aws_image_bucket[:s3_region] %>
+  bucket: <%= ENV['AWS_BUCKET'] || Rails.application.secrets.aws_image_bucket[:bucket] %>
 
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:

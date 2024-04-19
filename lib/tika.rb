@@ -24,11 +24,11 @@ module Tika
   end
 
   def self.host
-    Rails.application.secrets.tika[:host]
+    ENV['TIKA_HOST'] || Rails.application.secrets.tika[:host]
   end
 
   def self.port
-    Rails.application.secrets.tika[:port]
+    ENV['TIKA_PORT'] || Rails.application.secrets.tika[:port]
   end
 
   def self.client

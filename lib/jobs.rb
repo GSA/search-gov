@@ -26,16 +26,20 @@ module Jobs
   SEARCH_RADIUS = 75
 
   def self.establish_connection!
-    usajobs_api_config = Rails.application.secrets.jobs
-    @endpoint = usajobs_api_config[:endpoint]
-    @usajobs_api_connection = Faraday.new(usajobs_api_config[:host]) do |conn|
-      conn.headers['Authorization-Key'] = usajobs_api_config[:authorization_key]
-      conn.headers['User-Agent'] = usajobs_api_config[:user_agent]
+    @endpoint  = ENV['USAJOBS_ENDPOINT']          || Rails.application.secrets.jobs[:endpoint]
+    host       = ENV['USAJOBS_HOST']              || Rails.application.secrets.jobs[:host]
+    key        = ENV['USAJOBS_AUTHORIZATION_KEY'] || Rails.application.secrets.jobs[:authorization_key]
+    user_agent = ENV['USAJOBS_USER_AGENT']        || Rails.application.secrets.jobs[:user_agent]
+    adapter    = ENV['USAJOBS_ADAPTER']           || Rails.application.secrets.jobs[:adapter]
+
+    @usajobs_api_connection = Faraday.new(host) do |conn|
+      conn.headers['Authorization-Key'] = key
+      conn.headers['User-Agent'] = user_agent
       conn.request(:json)
       conn.response(:rashify)
       conn.response(:json)
       conn.use(:instrumentation)
-      conn.adapter(usajobs_api_config[:adapter] || Faraday.default_adapter)
+      conn.adapter(adapter || Faraday.default_adapter)
     end
   end
 

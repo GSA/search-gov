@@ -257,11 +257,11 @@ Rails.application.routes.draw do
 
   get '/user/developer_redirect' => 'users#developer_redirect', :as => :developer_redirect
   get '/program' => redirect(
-    Rails.application.secrets.organization[:blog_url],
+    ENV['BLOG_URL'] || Rails.application.secrets.organization[:blog_url],
     status: 302
   )
 
-  get "*path", to: redirect(Rails.application.secrets.organization[:page_not_found_url],
+  get "*path", to: redirect(ENV['PAGE_NOT_FOUND_URL'] || Rails.application.secrets.organization[:page_not_found_url],
                             status: 302),
                constraints: lambda { |req| req.path.exclude? 'rails/active_storage' }
 end

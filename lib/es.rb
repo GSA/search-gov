@@ -46,7 +46,15 @@ module Es
     private
 
     def self.client_config(mode)
-      Rails.application.secrets[:analytics][:elasticsearch][mode].freeze
+      if ENV['ES_HOSTS']
+        {
+          hosts:    ENV['ES_HOSTS'].split(',').map(&:strip),
+          user:     ENV['ES_USER'],
+          password: ENV['ES_PASSWORD'],
+        }.freeze
+      else
+        Rails.application.secrets[:analytics][:elasticsearch][mode].freeze
+      end
     end
   end
 
@@ -55,7 +63,11 @@ module Es
     private
 
     def self.client_config(mode)
-      Rails.application.secrets[:custom_indices][:elasticsearch][mode].freeze
+      if ENV['ES_HOSTS']
+        { hosts: ENV['ES_HOSTS'].split(',').map(&:strip) }.freeze
+      else
+        Rails.application.secrets[:custom_indices][:elasticsearch][mode].freeze
+      end
     end
   end
 end
