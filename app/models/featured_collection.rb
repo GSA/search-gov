@@ -23,7 +23,7 @@ class FeaturedCollection < ApplicationRecord
                     url: ':s3_alias_url',
                     s3_host_alias: ENV['AWS_S3_HOST_ALIAS'] || Rails.application.secrets.dig(:aws_image_bucket, :s3_host_alias),
                     s3_protocol: 'https',
-                    s3_region: ENV['AWS_S3_REGION'] || Rails.application.secrets.dig(:aws_image_bucket, :s3_region)
+                    s3_region: ENV['AWS_REGION'] || Rails.application.secrets.dig(:aws_image_bucket, :s3_region)
 
   validates_attachment_size :image,
                             in: (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes),
