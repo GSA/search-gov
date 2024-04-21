@@ -1,5 +1,6 @@
 ARG RUBY_VERSION=3.0.6
-FROM public.ecr.aws/docker/library/ruby:$RUBY_VERSION-slim as base
+# FROM public.ecr.aws/docker/library/ruby:$RUBY_VERSION-slim as base
+FROM ruby:3.0.6 as base
 
 # Rails app lives here
 WORKDIR /rails
@@ -66,16 +67,21 @@ COPY --from=build /rails /rails
 # Run and own only the runtime files as a non-root user for security
 RUN groupadd --system --gid 1000 rails && \
     useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
-    chown -R rails:rails db log storage tmp
+    mkdir -p db log storage tmp && \
+    chown -R rails:rails db log storage tmp "${BUNDLE_PATH}"
 
 RUN bin/secure_docker
+RUN gem install rails
 
 USER 1000:1000
 
-ENTRYPOINT ["/rails/bin/docker-entrypoint"]
+ENTRYPOINT []
 
 ENV PORT=${PORT:-3000}
 EXPOSE ${PORT}
 
 # Start the server by default, this can be overwritten at runtime
-CMD ./bin/rails server -p ${PORT}
+
+CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0", "-p", "3000"]
+
+

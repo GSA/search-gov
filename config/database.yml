@@ -32,5 +32,3 @@ production:
   host:     <%= ENV['DB_HOST'] %>
   port:     <%= ENV['DB_PORT'] %>
 
-staging:
-  <<: *DEFAULT
