@@ -49,8 +49,8 @@ module Es
       if ENV['ES_HOSTS']
         {
           hosts:    ENV['ES_HOSTS'].split(',').map(&:strip),
-          user:     ENV['ES_USER'],
-          password: ENV['ES_PASSWORD'],
+          user:     ENV.fetch('ES_USER'),
+          password: ENV.fetch('ES_PASSWORD')
         }.freeze
       else
         Rails.application.secrets.dig(:analytics, :elasticsearch, mode).freeze
