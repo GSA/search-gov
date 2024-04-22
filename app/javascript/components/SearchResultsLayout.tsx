@@ -275,9 +275,9 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
   let facetsEnabled = true;
   // THIS IS JUST FOR LOCAL TESTING
   // facetsEnabled to come from SearchResultsLayout props from backend
-  // if(page.affiliate === 'test_filters'){
-  //   facetsEnabled = true;
-  // }
+  if(page.affiliate === 'test_filters'){
+    facetsEnabled = true;
+  }
 
   return (
     <LanguageContext.Provider value={i18n}>
