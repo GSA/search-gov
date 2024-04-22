@@ -272,18 +272,18 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
   i18n.enableFallback = true;
   i18n.locale = language.code;
 
-  let facetsEnabled = false;
+  const facetsEnabled = false;
   // THIS IS JUST FOR LOCAL TESTING
   // facetsEnabled to come from SearchResultsLayout props from backend
-  if(page.affiliate === 'test_filters'){
-    facetsEnabled = true;
-  }
+  // if(page.affiliate === 'test_filters'){
+  //   facetsEnabled = true;
+  // }
 
   return (
     <LanguageContext.Provider value={i18n}>
       <StyleContext.Provider value={ fontsAndColors ? fontsAndColors : styles }>
         <StyleContext.Consumer>
-          {(value) => <GlobalStyle styles={{...value, facetsEnabled}} />}
+          {(value) => <GlobalStyle styles={{ ...value, facetsEnabled }} />}
         </StyleContext.Consumer>
         <Header 
           page={page}
@@ -296,11 +296,11 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
           <GridContainer>
             <Grid row>
               {facetsEnabled && 
-              <Grid tablet={{col: 3}}>
-                <Facets  />
+              <Grid tablet={{ col: 3 }}>
+                <Facets />
               </Grid>}
          
-              <Grid tablet={{col: facetsEnabled ? 9 : 12 }}>
+              <Grid tablet={{ col: facetsEnabled ? 9 : 12 }}>
                 <SearchBar query={params.query} relatedSites={relatedSites} navigationLinks={navigationLinks} relatedSitesDropdownLabel={relatedSitesDropdownLabel} alert={alert}/>
 
                 {/* This ternary is needed to handle the case when Bing pagination leads to a page with no results */}
