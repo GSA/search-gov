@@ -1,6 +1,6 @@
 ARG RUBY_VERSION=3.0.6
-# FROM public.ecr.aws/docker/library/ruby:$RUBY_VERSION-slim as base
-FROM ruby:3.0.6 as base
+FROM public.ecr.aws/docker/library/ruby:$RUBY_VERSION-slim as base
+# FROM ruby:3.0.6 as base
 
 # Rails app lives here
 WORKDIR /rails
@@ -71,7 +71,6 @@ RUN groupadd --system --gid 1000 rails && \
     chown -R rails:rails db log storage tmp "${BUNDLE_PATH}"
 
 RUN bin/secure_docker
-RUN gem install rails
 
 USER 1000:1000
 
