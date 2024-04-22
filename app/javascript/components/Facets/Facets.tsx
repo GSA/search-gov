@@ -51,20 +51,19 @@ export const Facets = () => {
       title: 'Audience',
       content: (
         <fieldset className="usa-fieldset">
-          <div className="usa-checkbox">
+					<div className="usa-checkbox">
             <input
-              id="check-historical-truth"
+              className="usa-checkbox__input"
               type="checkbox"
               name="audience"
               value="small_business"
-              defaultChecked={true}
+							defaultChecked={true}
             />
             <label className="usa-checkbox__label">Small business <Tag>1024</Tag></label>
           </div>
           <div className="usa-checkbox">
             <input
               className="usa-checkbox__input"
-              id="check-historical-douglass"
               type="checkbox"
               name="audience"
               value="real_estate"
@@ -74,7 +73,6 @@ export const Facets = () => {
           <div className="usa-checkbox">
             <input
               className="usa-checkbox__input"
-              id="check-historical-washington"
               type="checkbox"
               name="audience"
               value="technologists"
@@ -84,7 +82,6 @@ export const Facets = () => {
           <div className="usa-checkbox">
             <input
               className="usa-checkbox__input"
-              id="check-historical-carver"
               type="checkbox"
               name="audience"
               value="real-estate"
@@ -107,7 +104,6 @@ export const Facets = () => {
           <div className="usa-checkbox">
             <input
               className="usa-checkbox__input"
-              id="check-historical-truth"
               type="checkbox"
               name="content_type"
               value="press_release"
@@ -118,7 +114,6 @@ export const Facets = () => {
           <div className="usa-checkbox">
             <input
               className="usa-checkbox__input"
-              id="check-historical-douglass"
               type="checkbox"
               name="content_type"
               value="blogs"
@@ -128,7 +123,6 @@ export const Facets = () => {
           <div className="usa-checkbox">
             <input
               className="usa-checkbox__input"
-              id="check-historical-washington"
               type="checkbox"
               name="content_type"
               value="policies"
@@ -138,7 +132,6 @@ export const Facets = () => {
           <div className="usa-checkbox">
             <input
               className="usa-checkbox__input"
-              id="check-historical-carver"
               type="checkbox"
               name="content_type"
               value="directives"
@@ -161,7 +154,6 @@ export const Facets = () => {
           <div className="usa-checkbox">
             <input
               className="usa-checkbox__input"
-              id="check-historical-truth"
               type="checkbox"
               name="file_type"
               value="pdf"
@@ -172,7 +164,6 @@ export const Facets = () => {
           <div className="usa-checkbox">
             <input
               className="usa-checkbox__input"
-              id="check-historical-douglass"
               type="checkbox"
               name="file_type"
               value="excel"
@@ -182,7 +173,6 @@ export const Facets = () => {
           <div className="usa-checkbox">
             <input
               className="usa-checkbox__input"
-              id="check-historical-washington"
               type="checkbox"
               name="file_type"
               value="word"
@@ -192,7 +182,6 @@ export const Facets = () => {
           <div className="usa-checkbox">
             <input
               className="usa-checkbox__input"
-              id="check-historical-carver"
               type="checkbox"
               name="file_type"
               value="text"
@@ -215,7 +204,6 @@ export const Facets = () => {
           <div className="usa-checkbox">
             <input
               className="usa-checkbox__input"
-              id="check-historical-truth"
               type="checkbox"
               name="tags"
               value="contracts"
@@ -226,7 +214,6 @@ export const Facets = () => {
           <div className="usa-checkbox">
             <input
               className="usa-checkbox__input"
-              id="check-historical-douglass"
               type="checkbox"
               name="tags"
               value="bpa"
@@ -249,7 +236,6 @@ export const Facets = () => {
           <div className="usa-radio">
             <input
               className="usa-radio__input"
-              id="historical-truth"
               type="radio"
               name="date_range"
               value="last_year"
@@ -260,7 +246,6 @@ export const Facets = () => {
           <div className="usa-radio">
             <input
               className="usa-radio__input"
-              id="historical-douglass"
               type="radio"
               name="date_range"
               value="last_month"
@@ -270,7 +255,6 @@ export const Facets = () => {
           <div className="usa-radio">
             <input
               className="usa-radio__input"
-              id="historical-washington"
               type="radio"
               name="date_range"
               value="last_week"
@@ -280,7 +264,6 @@ export const Facets = () => {
           <div className="usa-radio">
             <input
               className="usa-radio__input"
-              id="historical-carver"
               type="radio"
               name="date_range"
               value="custom_date"

@@ -16,17 +16,14 @@
 }
 
 .serp-facets-wrapper .usa-accordion__button:focus{
-  outline: none !important;
+  /* outline: none !important; */
 }
 
 .serp-facets-wrapper .usa-accordion__content{
   border-bottom: 1px solid #DFE1E2;
-  margin-top: -5px;
   margin-right: 1.5rem;
-  padding-bottom: 1.25rem;
-  padding-left: 0.75rem;
-  padding-top: 0;
-  padding-right: 0;
+  margin-top: -5px;
+  padding: 0 0 1.25rem 0.75rem;
 }
 
 .serp-facets-wrapper .usa-accordion:last-of-type .usa-accordion__content{
@@ -40,8 +37,8 @@
 
 .serp-facets-wrapper .filter-heading-label{
   color: #71767A;
-  font-weight: 500;
   font-size: 1rem;
+  font-weight: 500;
   margin-left: 5px;
   position: absolute;
   top: 4px;
@@ -50,18 +47,18 @@
 .serp-facets-wrapper .usa-tag{
   background: #F0F0F0;
   color: #005EA2;
+  font-size: .90rem;
   margin-left: 5px;
   padding-left: 5px;
   padding-right: 5px;
-  font-size: .90rem;
 }
 
 .serp-facets-wrapper .usa-button-group{
   display: flex; 
   justify-content: space-between;
   margin-left: 0.5rem;
-  margin-top: 2rem;
   margin-right: 1.5rem;
+  margin-top: 2rem;
 }
 
 .serp-facets-wrapper .usa-button--unstyled,
