@@ -51,13 +51,13 @@ export const Facets = () => {
       title: 'Audience',
       content: (
         <fieldset className="usa-fieldset">
-					<div className="usa-checkbox">
+          <div className="usa-checkbox">
             <input
               className="usa-checkbox__input"
               type="checkbox"
               name="audience"
               value="small_business"
-							defaultChecked={true}
+              defaultChecked={true}
             />
             <label className="usa-checkbox__label">Small business <Tag>1024</Tag></label>
           </div>
