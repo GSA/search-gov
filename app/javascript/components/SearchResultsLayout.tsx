@@ -14,7 +14,6 @@ import { Footer } from './Footer/Footer';
 import { Identifier } from './Identifier/Identifier';
 import { LanguageContext } from '../contexts/LanguageContext';
 import { StyleContext, styles } from '../contexts/StyleContext';
-
 export interface NavigationLink {
   active: boolean; label: string; url: string, facet: string;
 }
@@ -273,11 +272,12 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
   i18n.enableFallback = true;
   i18n.locale = language.code;
 
-  // THIS IS JUST FOR TESTING
+  let facetsEnabled = true;
+  // THIS IS JUST FOR LOCAL TESTING
   // facetsEnabled to come from SearchResultsLayout props from backend
-  let facetsEnabled = false;
-  if(page.affiliate === 'test_filters')
-    facetsEnabled = true;
+  // if(page.affiliate === 'test_filters'){
+  //   facetsEnabled = true;
+  // }
 
   return (
     <LanguageContext.Provider value={i18n}>
@@ -297,7 +297,7 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
             <Grid row>
               {facetsEnabled && 
               <Grid tablet={{col: 3}}>
-                <Facets />
+                <Facets  />
               </Grid>}
          
               <Grid tablet={{col: facetsEnabled ? 9 : 12 }}>

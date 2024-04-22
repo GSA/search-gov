@@ -335,9 +335,7 @@ export const Facets = () => {
 						<button type="button" className="usa-button see-results-button">See Results</button>
 					</li>
 				</ul>
-
 			</div>
 		 </StyledWrapper>
-    
   );
 };
