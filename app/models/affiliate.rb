@@ -171,7 +171,7 @@ class Affiliate < ApplicationRecord
   validates :secondary_header_links, length: { maximum: 3 }
 
   after_validation :update_error_keys
-  before_save :set_css_properties, :generate_look_and_feel_css, :set_json_fields, :set_search_labels
+  before_save :set_css_properties, :generate_look_and_feel_css, :set_json_fields, :set_search_labels, :set_show_search_filter_settings
   before_update :clear_existing_attachments
   after_commit :normalize_site_domains,             on: :create
   after_commit :remove_boosted_contents_from_index, on: :destroy
@@ -491,6 +491,10 @@ class Affiliate < ApplicationRecord
     }.compact_blank
   end
 
+  def show_search_filter_settings_authorized?
+    self.search_engine == 'SearchGov'
+  end
+
   private
 
   def batch_size(scope)
@@ -725,5 +729,11 @@ class Affiliate < ApplicationRecord
     return unless managed_no_results_pages_alt_links.present? && additional_guidance_text.blank?
 
     errors.add(:base, 'Additional guidance text is required when links are present.')
+  end
+
+  def set_show_search_filter_settings
+    if self.search_engine == 'BingV7'
+      self.show_search_filter_settings = false
+    end
   end
 end

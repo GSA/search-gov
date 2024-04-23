@@ -124,6 +124,7 @@ class Admin::AffiliatesController < Admin::AdminController
 
     config.update.columns.add_subgroup 'Display Settings' do |name_group|
       display_columns = %i[use_redesigned_results_page
+                           show_search_filter_settings
                            looking_for_government_services
                            footer_fragment
                            header_tagline_font_family
@@ -133,7 +134,7 @@ class Admin::AffiliatesController < Admin::AdminController
                            page_one_more_results_pointer
                            navigation_dropdown_label
                            related_sites_dropdown_label]
-      display_columns << :show_search_filter_settings if affiliate.search_engine == 'SearchGov'
+      # display_columns << :show_search_filter_settings if Affiliate.find(params[:id]).search_engine == 'SearchGov'
       name_group.add(*display_columns)
       name_group.collapsed = true
     end
@@ -189,11 +190,5 @@ class Admin::AffiliatesController < Admin::AdminController
 
   def analytics
     redirect_to new_site_queries_path(Affiliate.find(params[:id]))
-  end
-
-  private
-
-  def affiliate
-    Affiliate.find(params[:id])
   end
 end
