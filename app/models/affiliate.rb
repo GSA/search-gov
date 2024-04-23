@@ -131,7 +131,7 @@ class Affiliate < ApplicationRecord
 
   before_validation :set_api_access_key, unless: :api_access_key?
   validates :display_name, :name, :locale, :theme, presence: true
-  validates :api_access_key, :name, uniqueness: { case_sensitive: false }
+  validates_uniqueness_of :api_access_key, :name, case_sensitive: false
   validates :name, length: { within: (2..MAX_NAME_LENGTH) }
   validates :name, format: { with: /\A[a-z0-9._-]+\z/ }
   validates :search_engine, inclusion: { in: SEARCH_ENGINES }
@@ -448,7 +448,7 @@ class Affiliate < ApplicationRecord
   end
 
   def mobile_logo_url
-    return unless mobile_logo_file_name.present?
+    return if mobile_logo_file_name.blank?
 
     begin
       mobile_logo.url
