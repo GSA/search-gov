@@ -134,7 +134,6 @@ class Admin::AffiliatesController < Admin::AdminController
                            page_one_more_results_pointer
                            navigation_dropdown_label
                            related_sites_dropdown_label]
-      # display_columns << :show_search_filter_settings if Affiliate.find(params[:id]).search_engine == 'SearchGov'
       name_group.add(*display_columns)
       name_group.collapsed = true
     end
