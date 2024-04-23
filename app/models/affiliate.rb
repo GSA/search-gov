@@ -130,11 +130,11 @@ class Affiliate < ApplicationRecord
   end
 
   before_validation :set_api_access_key, unless: :api_access_key?
-  validates_presence_of :display_name, :name, :locale, :theme
-  validates_uniqueness_of :api_access_key, :name, case_sensitive: false
-  validates_length_of :name, within: (2..MAX_NAME_LENGTH)
-  validates_format_of :name, with: /\A[a-z0-9._-]+\z/
-  validates_inclusion_of :search_engine, in: SEARCH_ENGINES
+  validates :display_name, :name, :locale, :theme, presence: true
+  validates :api_access_key, :name, uniqueness: { case_sensitive: false }
+  validates :name, length: { within: (2..MAX_NAME_LENGTH) }
+  validates :name, format: { with: /\A[a-z0-9._-]+\z/ }
+  validates :search_engine, inclusion: { in: SEARCH_ENGINES }
   validates_url :header_tagline_url, allow_blank: true
 
   validates_attachment_content_type :mobile_logo,
@@ -448,7 +448,13 @@ class Affiliate < ApplicationRecord
   end
 
   def mobile_logo_url
-    mobile_logo.url rescue 'unable to retrieve mobile logo url' if mobile_logo_file_name.present?
+    return unless mobile_logo_file_name.present?
+
+    begin
+      mobile_logo.url
+    rescue
+      'unable to retrieve mobile logo url'
+    end
   end
 
   def last_month_query_count
@@ -492,7 +498,7 @@ class Affiliate < ApplicationRecord
   end
 
   def show_search_filter_settings_authorized?
-    self.search_engine == 'SearchGov'
+    search_engine == 'SearchGov'
   end
 
   private
@@ -732,8 +738,8 @@ class Affiliate < ApplicationRecord
   end
 
   def set_show_search_filter_settings
-    if self.search_engine == 'BingV7'
-      self.show_search_filter_settings = false
-    end
+    return unless search_engine == 'BingV7'
+
+    self.show_search_filter_settings = false
   end
 end
