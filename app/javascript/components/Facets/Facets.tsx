@@ -25,7 +25,7 @@ const StyledWrapper = styled.div.attrs<{ styles: FontsAndColors; }>((props) => (
   }
 
   .usa-accordion__button {
-    color: ${(props) => props.styles.searchTabNavigationLinkColor};
+    color: ${(props) => props.styles.sectionTitleColor};
   }
 
   .serp-facets-wrapper .usa-tag{
