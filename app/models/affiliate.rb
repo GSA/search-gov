@@ -448,13 +448,7 @@ class Affiliate < ApplicationRecord
   end
 
   def mobile_logo_url
-    return if mobile_logo_file_name.blank?
-
-    begin
-      mobile_logo.url
-    rescue
-      'unable to retrieve mobile logo url'
-    end
+    mobile_logo.url rescue 'unable to retrieve mobile logo url' if mobile_logo_file_name.present?
   end
 
   def last_month_query_count
