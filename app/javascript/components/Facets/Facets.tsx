@@ -41,7 +41,7 @@ const StyledWrapper = styled.div.attrs<{ styles: FontsAndColors; }>((props) => (
   }
 `;
 
-type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'; 
+type HeadingLevel = 'h4'; 
 
 export const Facets = () => {
   const styles = useContext(StyleContext);
