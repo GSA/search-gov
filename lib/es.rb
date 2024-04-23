@@ -18,9 +18,9 @@ module Es
 
   def self.env_client_config
     {
-      hosts:    ENV['ES_HOSTS'].split(',').map(&:strip),
-      user:     ENV['ES_USER'],
-      password: ENV['ES_PASSWORD']
+      hosts:    ENV.fetch('ES_HOSTS', '').split(',').map(&:strip),
+      user:     ENV.fetch('ES_USER', ''),
+      password: ENV.fetch('ES_PASSWORD', '')
     }
   end
 
@@ -35,7 +35,7 @@ module Es
   end
 
   def initialize_client(config)
-    Elasticsearch::Client.new(config.merge(ENV['ES_HOST'] ? env_client_config() : CLIENT_CONFIG)).tap do |client|
+    Elasticsearch::Client.new(config.merge(ENV['ES_HOST'] ? env_client_config : CLIENT_CONFIG)).tap do |client|
       client.transport.logger = logger
     end
   end
