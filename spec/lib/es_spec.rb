@@ -3,6 +3,16 @@
 require 'spec_helper'
 
 describe Es do
+  context '.env_client_config' do
+    before do
+      ENV['ES_HOSTS'] = 'localhost:9207, localhost:9208'
+    end
+
+    it 'returns host array' do
+      expect(Es.env_client_config[:hosts]).to eq(%w[localhost:9207 localhost:9208])
+    end
+  end
+
   context 'when working in Es submodules' do
     let(:elk_objs) { Array.new(3, Es::ELK.client_reader) }
     let(:ci_objs) { Array.new(3, Es::ELK.client_reader) }

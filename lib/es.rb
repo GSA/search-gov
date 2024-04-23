@@ -16,6 +16,14 @@ module Es
     @client_writers ||= writer_config.map { |config| initialize_client(config) }
   end
 
+  def self.env_client_config
+    {
+      hosts:    ENV['ES_HOSTS'].split(',').map(&:strip),
+      user:     ENV['ES_USER'],
+      password: ENV['ES_PASSWORD']
+    }
+  end
+
   private
 
   def reader_config
@@ -27,7 +35,7 @@ module Es
   end
 
   def initialize_client(config)
-    Elasticsearch::Client.new(config.merge(CLIENT_CONFIG)).tap do |client|
+    Elasticsearch::Client.new(config.merge(ENV['ES_HOST'] ? env_client_config() : CLIENT_CONFIG)).tap do |client|
       client.transport.logger = logger
     end
   end
@@ -46,15 +54,7 @@ module Es
     private
 
     def self.client_config(mode)
-      if ENV['ES_HOSTS']
-        {
-          hosts:    ENV['ES_HOSTS'].split(',').map(&:strip),
-          user:     ENV.fetch('ES_USER'),
-          password: ENV.fetch('ES_PASSWORD')
-        }.freeze
-      else
-        Rails.application.secrets.dig(:analytics, :elasticsearch, mode).freeze
-      end
+      Rails.application.secrets.dig(:analytics, :elasticsearch, mode).freeze
     end
   end
 
@@ -63,11 +63,7 @@ module Es
     private
 
     def self.client_config(mode)
-      if ENV['ES_HOSTS']
-        { hosts: ENV['ES_HOSTS'].split(',').map(&:strip) }.freeze
-      else
-        Rails.application.secrets.dig(:custom_indices, :elasticsearch, mode).freeze
-      end
+      Rails.application.secrets.dig(:custom_indices, :elasticsearch, mode).freeze
     end
   end
 end
