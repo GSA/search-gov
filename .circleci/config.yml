@@ -322,7 +322,7 @@ workflows:
           matrix:
             parameters:
               ruby_version:
-                - 3.1.5
+                - 3.1.4
               elasticsearch_version:
                 - 7.17.7
                 # not yet compatible with Elasticsearch 8
@@ -337,7 +337,7 @@ workflows:
           matrix:
             parameters:
               ruby_version:
-                - 3.1.5
+                - 3.1.4
               elasticsearch_version:
                 - 7.17.7
               mysql_version:
@@ -351,7 +351,7 @@ workflows:
           matrix:
             parameters:
               ruby_version:
-                - 3.1.5
+                - 3.1.4
               elasticsearch_version:
                 - 7.17.7
               mysql_version:
@@ -365,7 +365,7 @@ workflows:
           matrix:
             parameters:
               ruby_version:
-                - 3.1.5
+                - 3.1.4
               elasticsearch_version:
                 - 7.17.7
               mysql_version:
@@ -382,7 +382,7 @@ workflows:
           matrix:
             parameters:
               ruby_version:
-                - 3.1.5
+                - 3.1.4
               elasticsearch_version:
                 - 7.17.7
               mysql_version:
