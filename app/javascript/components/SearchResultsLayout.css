@@ -8,10 +8,6 @@ div[data-react-class="SearchResultsLayout"] {
   overflow-x: hidden;
 }
 
-.grid-container {
-  max-width: 50rem;
-}
-
 a.logo-link, a.logo-link:hover, a.logo-link:visited {
   color: inherit;
   display: block;
@@ -44,4 +40,11 @@ a.logo-link, a.logo-link:hover, a.logo-link:visited {
   position:absolute;
   top:auto;
   width:1px;
+}
+
+@media (max-width: 767.98px){
+  .serp-result-wrapper > .grid-container {
+      padding-left: 0;
+      padding-right: 0;
+  }
 }
