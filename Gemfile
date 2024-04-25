@@ -109,7 +109,7 @@ gem 'activejob-uniqueness', '~> 0.2.1'
 # Temporarily locking the version to resolve SRCH-3788.
 # The fix for the bug in SRCH-3788 is NOT covered by automated specs.
 # A spec will be added (if possible) per SRCH-3790
-gem 'selenium-webdriver', '4.7.1'
+gem 'selenium-webdriver', '4.10.0'
 gem 'webdrivers', '~> 5.3.1'
 gem 'exception_notification', '~> 4.5'
 gem 'dogapi', '~> 1.45'
