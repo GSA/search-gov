@@ -130,12 +130,13 @@ class Affiliate < ApplicationRecord
   end
 
   before_validation :set_api_access_key, unless: :api_access_key?
-  validates_presence_of :display_name, :name, :locale, :theme
+  validates :display_name, :name, :locale, :theme, presence: true
   validates_uniqueness_of :api_access_key, :name, case_sensitive: false
-  validates_length_of :name, within: (2..MAX_NAME_LENGTH)
-  validates_format_of :name, with: /\A[a-z0-9._-]+\z/
-  validates_inclusion_of :search_engine, in: SEARCH_ENGINES
+  validates :name, length: { within: (2..MAX_NAME_LENGTH) }
+  validates :name, format: { with: /\A[a-z0-9._-]+\z/ }
+  validates :search_engine, inclusion: { in: SEARCH_ENGINES }
   validates_url :header_tagline_url, allow_blank: true
+  validates :show_search_filter_settings, absence: { message: I18n.t('super_admin.affiliate.show_search_filter_settings') }, if: :bing7_search_engine?
 
   validates_attachment_content_type :mobile_logo,
                                     content_type: VALID_IMAGE_CONTENT_TYPES,
@@ -491,6 +492,10 @@ class Affiliate < ApplicationRecord
     }.compact_blank
   end
 
+  def show_search_filter_settings_authorized?
+    search_engine == 'SearchGov'
+  end
+
   private
 
   def batch_size(scope)
@@ -725,5 +730,9 @@ class Affiliate < ApplicationRecord
     return unless managed_no_results_pages_alt_links.present? && additional_guidance_text.blank?
 
     errors.add(:base, 'Additional guidance text is required when links are present.')
+  end
+
+  def bing7_search_engine?
+    search_engine == 'BingV7'
   end
 end
