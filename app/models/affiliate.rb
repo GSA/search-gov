@@ -136,6 +136,7 @@ class Affiliate < ApplicationRecord
   validates :name, format: { with: /\A[a-z0-9._-]+\z/ }
   validates :search_engine, inclusion: { in: SEARCH_ENGINES }
   validates_url :header_tagline_url, allow_blank: true
+  validates :show_search_filter_settings, absence: { message: "should be false when search engine is BingV7" }, if: :bing7_search_engine?
 
   validates_attachment_content_type :mobile_logo,
                                     content_type: VALID_IMAGE_CONTENT_TYPES,
@@ -171,7 +172,7 @@ class Affiliate < ApplicationRecord
   validates :secondary_header_links, length: { maximum: 3 }
 
   after_validation :update_error_keys
-  before_save :set_css_properties, :generate_look_and_feel_css, :set_json_fields, :set_search_labels, :set_show_search_filter_settings
+  before_save :set_css_properties, :generate_look_and_feel_css, :set_json_fields, :set_search_labels
   before_update :clear_existing_attachments
   after_commit :normalize_site_domains,             on: :create
   after_commit :remove_boosted_contents_from_index, on: :destroy
@@ -731,9 +732,7 @@ class Affiliate < ApplicationRecord
     errors.add(:base, 'Additional guidance text is required when links are present.')
   end
 
-  def set_show_search_filter_settings
-    return unless search_engine == 'BingV7'
-
-    self.show_search_filter_settings = false
+  def bing7_search_engine?
+    search_engine == 'BingV7'
   end
 end
