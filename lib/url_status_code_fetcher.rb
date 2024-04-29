@@ -29,11 +29,10 @@ module UrlStatusCodeFetcher
 
   def self.load_config
     begin
-      cfg = YAML.load_file(Rails.root.join('config', 'url_status_code_fetcher.yml'), aliases: true)
+      cfg = YAML.load_file(Rails.root.join('config/url_status_code_fetcher.yml'), aliases: true)
     rescue ArgumentError
-      cfg = YAML.load_file(Rails.root.join('config', 'url_status_code_fetcher.yml'))
+      cfg = YAML.load_file(Rails.root.join('config/url_status_code_fetcher.yml'))
     end
-    return cfg
   end
 
   def self.fetch_with_timeout(timeout_in_seconds, &block)
