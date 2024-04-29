@@ -136,7 +136,7 @@ class Affiliate < ApplicationRecord
   validates :name, format: { with: /\A[a-z0-9._-]+\z/ }
   validates :search_engine, inclusion: { in: SEARCH_ENGINES }
   validates_url :header_tagline_url, allow_blank: true
-  validates :show_search_filter_settings, absence: { message: "should be false when search engine is BingV7" }, if: :bing7_search_engine?
+  validates :show_search_filter_settings, absence: { message: I18n.t('super_admin.affiliate.show_search_filter_settings') }, if: :bing7_search_engine?
 
   validates_attachment_content_type :mobile_logo,
                                     content_type: VALID_IMAGE_CONTENT_TYPES,
