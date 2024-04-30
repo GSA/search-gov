@@ -11,7 +11,7 @@ class CachedSearchApiConnection
     @cache_duration = cache_duration
   end
 
-  def get(api_endpoint, param_hash)
+  def get(api_endpoint, param_hash = {})
     Rails.cache.fetch(cache_key(api_endpoint, param_hash), expires_in: @cache_duration) do
       connection.get(api_endpoint, param_hash)
     end
@@ -32,7 +32,7 @@ class CachedSearchApiConnection
 
   def cache_key(api_endpoint, http_params)
     uri_args = { path: api_endpoint, host: @host }
-    uri_args[:query] = http_params.to_param if http_params.present?
-    URI::HTTP.build(uri_args).request_uri
+    uri_args[:query] = http_params.to_param
+    URI::HTTP.build(uri_args).to_s.gsub(/[^a-zA-Z0-9]+/, '/')
   end
 end
