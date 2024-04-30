@@ -18,8 +18,10 @@ describe BingV7ImageSearch do
     let(:options) { {} }
 
     before do
-      allow(Rails.application.secrets).to receive(:bing_v7).
-        and_return({ image_subscription_id: 'image key' })
+      # allow(Rails.application.secrets).to receive(:bing_v7).
+      #   and_return({ image_subscription_id: 'image key' })
+
+      Rails.application.secrets[:bing_v7] = { image_subscription_id: 'image key' }
     end
 
     it 'uses the image search key' do
