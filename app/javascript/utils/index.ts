@@ -78,7 +78,7 @@ export const clickTracking = (affiliate: string, module: string, query: string, 
   });
 };
 
-export const luminance = (red: number, green: number, blue: number) => {
+const getLuminance = (red: number, green: number, blue: number) => {
   const rgb = [red, green, blue].map((index) => {
     const value = index / 255;
     return value <= 0.03928
@@ -88,7 +88,7 @@ export const luminance = (red: number, green: number, blue: number) => {
   return rgb[0] * 0.2126 + rgb[1] * 0.7152 + rgb[2] * 0.0722;
 };
 
-export const rgbToColorObject = (color: string) => {
+const getRgbColorObject = (color: string) => {
   const rgbStrLen = 'rgb('.length;
   const colorArr = color.substring(rgbStrLen, color.lastIndexOf(')')).split(', ');
   return {
@@ -98,13 +98,19 @@ export const rgbToColorObject = (color: string) => {
   };
 };
 
-export const calculateRatio = (bgColor: string, fgColor: string) => {
-  const color1rgb = rgbToColorObject(fgColor);
-  const color2rgb = rgbToColorObject(bgColor);
+/*
+  AA-level small text: ${contrastRatio < 1/4.5 ? 'PASS' : 'FAIL' }
+  AAA-level small text: ${contrastRatio < 1/7 ? 'PASS' : 'FAIL' }
+  AAA-level large text: ${contrastRatio < 1/4.5 ? 'PASS' : 'FAIL' }
+  AA-level large text: ${contrastRatio < 1/3 ? 'PASS' : 'FAIL' }
+*/
+const calculateContrastRatio = (bgColor: string, fgColor: string) => {
+  const color1rgb = getRgbColorObject(fgColor);
+  const color2rgb = getRgbColorObject(bgColor);
 
   // calculate the relative luminance
-  const color1luminance = luminance(color1rgb.red, color1rgb.green, color1rgb.blue);
-  const color2luminance = luminance(color2rgb.red, color2rgb.green, color2rgb.blue);
+  const color1luminance = getLuminance(color1rgb.red, color1rgb.green, color1rgb.blue);
+  const color2luminance = getLuminance(color2rgb.red, color2rgb.green, color2rgb.blue);
 
   // calculate the color contrast ratio
   const ratio = color1luminance > color2luminance 
@@ -114,12 +120,6 @@ export const calculateRatio = (bgColor: string, fgColor: string) => {
   return ratio;
 };
 
-/*
-  AA-level small text: ${contrastRatio < 1/4.5 ? 'PASS' : 'FAIL' }
-  AAA-level small text: ${contrastRatio < 1/7 ? 'PASS' : 'FAIL' }
-  AAA-level large text: ${contrastRatio < 1/4.5 ? 'PASS' : 'FAIL' }
-  AA-level large text: ${contrastRatio < 1/3 ? 'PASS' : 'FAIL' }
-*/
 interface colorContrastItemProps {
   backgroundItemClass: string, 
   foregroundItemClass: string
@@ -136,7 +136,7 @@ export const checkColorContrast = ({ backgroundItemClass, foregroundItemClass }:
   const backgroundItemColor = window.getComputedStyle(backgroundItem).getPropertyValue('background-color');
   const foregroundItemColor = window.getComputedStyle(foregroundItem).getPropertyValue('fill');
 
-  const contrastRatio = calculateRatio(backgroundItemColor, foregroundItemColor);
+  const contrastRatio = calculateContrastRatio(backgroundItemColor, foregroundItemColor);
   if (contrastRatio >= 1/4.5) {
     foregroundItem.style.filter = 'invert(1)';
   }
