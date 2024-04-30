@@ -124,7 +124,7 @@ export const checkSearchIconColorContrast = (bgItemClass: string, fgItemClass: s
   const backgroundItem = Array.from(document.getElementsByClassName(bgItemClass))[0] as HTMLElement;
   const foregroundItem = Array.from(document.getElementsByClassName(fgItemClass))[0] as HTMLElement;
 
-  if ( !backgroundItem || !foregroundItem ){
+  if (!backgroundItem || !foregroundItem) {
     return;
   }
 
