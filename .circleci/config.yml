@@ -364,7 +364,7 @@ workflows:
       - jest:
           requires:
             - checkout_code
-          name: "jest: NodeJS << matrix.node_version >>, MySQL << matrix.mysql_version >>"
+          name: "jest: NodeJS << matrix.node_version >>, Ruby << matrix.ruby_version >>, MySQL << matrix.mysql_version >>"
           matrix:
             parameters:
               ruby_version:
