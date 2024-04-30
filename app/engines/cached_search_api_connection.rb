@@ -31,8 +31,8 @@ class CachedSearchApiConnection
   end
 
   def cache_key(api_endpoint, http_params)
-    uri_args = { path: api_endpoint, host: @host }
-    uri_args[:query] = http_params.to_param
-    URI::HTTP.build(uri_args).to_s.gsub(/[^a-zA-Z0-9]+/, '/')
+    uri = URI::HTTP.build(path: api_endpoint, query: http_params.to_param)
+
+    "#{@host}#{uri.request_uri}".gsub(/[^a-zA-Z0-9]+/, '/')
   end
 end
