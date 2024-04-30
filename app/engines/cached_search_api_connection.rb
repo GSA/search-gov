@@ -2,8 +2,8 @@
 
 class CachedSearchApiConnection
   extend Forwardable
-  def_delegator :@connection, :basic_auth # optional
-  attr_reader :connection
+
+  def_delegator :connection, :basic_auth # optional
 
   def initialize(namespace, host, cache_duration = DEFAULT_CACHE_DURATION)
     @namespace      = namespace
@@ -16,8 +16,6 @@ class CachedSearchApiConnection
       connection.get(api_endpoint, param_hash)
     end
   end
-
-  protected
 
   def connection
     @connection ||= Faraday.new(@host) do |conn|
