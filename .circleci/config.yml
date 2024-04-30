@@ -273,7 +273,7 @@ jobs:
             yarn test:coverage
 
             ./cc-test-reporter format-coverage \
-              --output coverage/codeclimate.jest.$CIRCLE_NODE_INDEX.<< parameters.node_version >>_<< parameters.mysql_version >>.json
+              --output coverage/codeclimate.jest.$CIRCLE_NODE_INDEX.<< parameters.node_version >>_<< parameters.ruby_version >>_<< parameters.mysql_version >>.json
 
       - persist_to_workspace:
           root: ~/search-gov/coverage
