@@ -29,7 +29,7 @@ module UrlStatusCodeFetcher
 
   def self.load_config
     YAML.load_file(Rails.root.join('config/url_status_code_fetcher.yml'), aliases: true)
-    rescue ArgumentError
+    rescue
       YAML.load_file(Rails.root.join('config/url_status_code_fetcher.yml'))
   end
 
