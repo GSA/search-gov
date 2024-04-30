@@ -3,10 +3,9 @@ import { GridContainer, Grid } from '@trussworks/react-uswds';
 
 import { VerticalNav } from './../VerticalNav/VerticalNav';
 import { Alert } from './../Alert/Alert';
-import { getUriWithParam } from '../../utils';
+import { getUriWithParam, checkSearchIconColorContrast } from '../../utils';
 import { LanguageContext } from '../../contexts/LanguageContext';
 import { NavigationLink } from '../SearchResultsLayout';
-import { checkSearchIconColorContrast } from '../../utils';
 
 import './SearchBar.css';
 

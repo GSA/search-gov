@@ -114,22 +114,25 @@ export const calculateRatio = (bgColor: string, fgColor: string) => {
   return ratio;
 };
 
+/*
+  AA-level small text: ${contrastRatio < 1/4.5 ? 'PASS' : 'FAIL' }
+  AAA-level small text: ${contrastRatio < 1/7 ? 'PASS' : 'FAIL' }
+  AAA-level large text: ${contrastRatio < 1/4.5 ? 'PASS' : 'FAIL' }
+  AA-level large text: ${contrastRatio < 1/3 ? 'PASS' : 'FAIL' }
+*/
 export const checkSearchIconColorContrast = (bgItemClass: string, fgItemClass: string) => {
   const backgroundItem = Array.from(document.getElementsByClassName(bgItemClass))[0] as HTMLElement;
-  const backgroundItemColor = window.getComputedStyle(backgroundItem).getPropertyValue('background-color');
-
   const foregroundItem = Array.from(document.getElementsByClassName(fgItemClass))[0] as HTMLElement;
+
+  if ( !backgroundItem || !foregroundItem ){
+    return;
+  }
+
+  const backgroundItemColor = window.getComputedStyle(backgroundItem).getPropertyValue('background-color');
   const foregroundItemColor = window.getComputedStyle(foregroundItem).getPropertyValue('fill');
 
   const contrastRatio = calculateRatio(backgroundItemColor, foregroundItemColor);
   if (contrastRatio >= 1/4.5) {
     foregroundItem.style.filter = 'invert(1)';
   }
-  
-  /*
-  AA-level small text: ${contrastRatio < 1/4.5 ? 'PASS' : 'FAIL' }
-  AAA-level small text: ${contrastRatio < 1/7 ? 'PASS' : 'FAIL' }
-  AAA-level large text: ${contrastRatio < 1/4.5 ? 'PASS' : 'FAIL' }
-  AA-level large text: ${contrastRatio < 1/3 ? 'PASS' : 'FAIL' }
-  */
 };

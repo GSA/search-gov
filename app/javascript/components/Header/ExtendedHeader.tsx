@@ -9,7 +9,6 @@ import { Logo } from './Logo';
 import { StyleContext } from '../../contexts/StyleContext';
 import { checkSearchIconColorContrast } from '../../utils';
 
-
 import './ExtendedHeader.css';
 
 const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: FontsAndColors; }>((props) => ({

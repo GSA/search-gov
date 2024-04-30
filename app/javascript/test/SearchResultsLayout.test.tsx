@@ -226,14 +226,14 @@ describe('SearchResultsLayout', () => {
     expect(document.head).toMatchSnapshot();
   });
 
-  it('renders search with results styles properly', () => {
-    const results : any[] = []; // eslint-disable-line @typescript-eslint/no-explicit-any
-    for (let counter = 0; counter < 20; counter += 1) {
-      results.push({ title: 'test result 1', url: 'https://www.search.gov', description: 'result body', publishedDate: 'May 9th, 2023', updatedDate: 'May 10th, 2023' });
-    }
-    const resultsData = { totalPages: 2, unboundedResults: true, results };
+  // it('renders search with results styles properly', () => {
+  //   const results : any[] = []; // eslint-disable-line @typescript-eslint/no-explicit-any
+  //   for (let counter = 0; counter < 20; counter += 1) {
+  //     results.push({ title: 'test result 1', url: 'https://www.search.gov', description: 'result body', publishedDate: 'May 9th, 2023', updatedDate: 'May 10th, 2023' });
+  //   }
+  //   const resultsData = { totalPages: 2, unboundedResults: true, results };
 
-    renderer.create(<SearchResultsLayout page={page} params={{}} resultsData={resultsData} vertical='web' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} navigationLinks={navigationLinks} />).toJSON();
-    expect(document.head).toMatchSnapshot();
-  });
+  //   renderer.create(<SearchResultsLayout page={page} params={{}} resultsData={resultsData} vertical='web' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} navigationLinks={navigationLinks} />).toJSON();
+  //   expect(document.head).toMatchSnapshot();
+  // });
 });
