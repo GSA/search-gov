@@ -1,9 +1,5 @@
 # Be sure to restart your server when you modify this file.
 
-(Rails.application.secrets.assets || {}).each do |k,v|
-  ActionController::Base.send(:"#{k}=", v)
-end
-
 # Version of your assets, change this if you want to expire all your assets.
 Rails.application.config.assets.version = '1.0'
 

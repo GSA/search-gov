@@ -7,8 +7,10 @@ require 'resque/scheduler/server'
 require 'resque/server'
 require 'resque/job_timeout'
 
-config = Rails.application.secrets.system_redis
-Resque.redis = [config[:host], config[:port]].join(':')
+host = ENV['REDIS_HOST'] || Rails.application.secrets.dig(:system_redis, :host)
+port = ENV['REDIS_PORT'] || Rails.application.secrets.dig(:system_redis, :port)
+
+Resque.redis = "#{host}:#{port}"
 
 Resque::Failure::Multiple.classes = [Resque::Failure::Redis]
 Resque::Failure.backend = Resque::Failure::Multiple
