@@ -1,4 +1,5 @@
 import React from 'react';
+import { Grid, GridContainer } from '@trussworks/react-uswds';
 import { createGlobalStyle } from 'styled-components';
 import { darken } from 'polished';
 import { I18n } from 'i18n-js';
@@ -13,7 +14,6 @@ import { Footer } from './Footer/Footer';
 import { Identifier } from './Identifier/Identifier';
 import { LanguageContext } from '../contexts/LanguageContext';
 import { StyleContext, styles } from '../contexts/StyleContext';
-
 export interface NavigationLink {
   active: boolean; label: string; url: string, facet: string;
 }
@@ -208,6 +208,7 @@ interface SearchResultsLayoutProps {
     parentAgencyLink: string | null;
     logoUrl: string | null;
     logoAltText: string | null;
+    lookingForGovernmentServices: boolean | null;
   };
   identifierLinks?: {
     title: string,
@@ -232,9 +233,22 @@ interface SearchResultsLayoutProps {
       url: string;
     }[];
   };
+  facetsEnabled?: boolean
 }
 
-const GlobalStyle = createGlobalStyle<{ styles: { pageBackgroundColor: string; buttonBackgroundColor: string; } }>`
+const GlobalStyle = createGlobalStyle<{ styles: { pageBackgroundColor: string; buttonBackgroundColor: string; facetsEnabled: boolean } }>`
+
+  @media (min-width: 64em){
+    .usa-header--extended .usa-navbar,
+    .usa-header--extended .usa-nav__inner,
+    .usa-banner__inner {
+      max-width: ${(props) => props.styles.facetsEnabled === true ? '70rem': '64rem'};
+    }
+  }
+  .serp-result-wrapper > .grid-container {
+    max-width: ${(props) => props.styles.facetsEnabled === true ? '65rem': '54rem'}
+  }
+
   .serp-result-wrapper {
     background-color: ${(props) => props.styles.pageBackgroundColor};
   }
@@ -258,11 +272,14 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
   i18n.enableFallback = true;
   i18n.locale = language.code;
 
+  // facetsEnabled to come from SearchResultsLayout props from backend
+  const facetsEnabled = false;
+  
   return (
     <LanguageContext.Provider value={i18n}>
       <StyleContext.Provider value={ fontsAndColors ? fontsAndColors : styles }>
         <StyleContext.Consumer>
-          {(value) => <GlobalStyle styles={value} />}
+          {(value) => <GlobalStyle styles={{ ...value, facetsEnabled }} />}
         </StyleContext.Consumer>
         <Header 
           page={page}
@@ -272,38 +289,47 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
         />
       
         <div className="usa-section serp-result-wrapper">
-          <Facets />
-  
-          <SearchBar query={params.query} relatedSites={relatedSites} navigationLinks={navigationLinks} relatedSitesDropdownLabel={relatedSitesDropdownLabel} alert={alert}/>
+          <GridContainer>
+            <Grid row>
+              {facetsEnabled && 
+              <Grid tablet={{ col: 3 }}>
+                <Facets />
+              </Grid>}
+         
+              <Grid tablet={{ col: facetsEnabled ? 9 : 12 }}>
+                <SearchBar query={params.query} relatedSites={relatedSites} navigationLinks={navigationLinks} relatedSitesDropdownLabel={relatedSitesDropdownLabel} alert={alert}/>
 
-          {/* This ternary is needed to handle the case when Bing pagination leads to a page with no results */}
-          {resultsData ? (
-            <Results
-              page={page}
-              results={resultsData.results}
-              vertical={vertical}
-              totalPages={resultsData.totalPages}
-              total={resultsData.total}
-              query={params.query}
-              unboundedResults={resultsData.unboundedResults}
-              additionalResults={additionalResults}
-              newsAboutQuery={newsLabel?.newsAboutQuery}
-              spellingSuggestion={spellingSuggestion}
-              videosUrl= {videosUrl(navigationLinks)}
-              relatedSearches = {relatedSearches}
-              noResultsMessage = {noResultsMessage}
-              sitelimit={sitelimit}
-              jobsEnabled={jobsEnabled}
-              agencyName={agencyName}
-            />) : params.query ? (
-            <Results
-              page={page}
-              vertical={vertical}
-              totalPages={null}
-              query={params.query}
-              unboundedResults={true}
-              noResultsMessage = {noResultsMessage}
-            />) : <></>}
+                {/* This ternary is needed to handle the case when Bing pagination leads to a page with no results */}
+                {resultsData ? (
+                  <Results
+                    page={page}
+                    results={resultsData.results}
+                    vertical={vertical}
+                    totalPages={resultsData.totalPages}
+                    total={resultsData.total}
+                    query={params.query}
+                    unboundedResults={resultsData.unboundedResults}
+                    additionalResults={additionalResults}
+                    newsAboutQuery={newsLabel?.newsAboutQuery}
+                    spellingSuggestion={spellingSuggestion}
+                    videosUrl= {videosUrl(navigationLinks)}
+                    relatedSearches = {relatedSearches}
+                    noResultsMessage = {noResultsMessage}
+                    sitelimit={sitelimit}
+                    jobsEnabled={jobsEnabled}
+                    agencyName={agencyName}
+                  />) : params.query ? (
+                  <Results
+                    page={page}
+                    vertical={vertical}
+                    totalPages={null}
+                    query={params.query}
+                    unboundedResults={true}
+                    noResultsMessage = {noResultsMessage}
+                  />) : <></>}
+              </Grid>
+            </Grid>
+          </GridContainer>
         </div>
 
         <Footer 

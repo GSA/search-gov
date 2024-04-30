@@ -256,7 +256,14 @@ export const Results = ({ page, query = '', results = null, additionalResults = 
             }
 
             {/* Results: Images */}
-            {imagesResults.length > 0 && <ImagesPage images={imagesResults}/>}
+            {imagesResults.length > 0 && 
+              <ImagesPage
+                images={imagesResults}
+                query={query}
+                affiliate={page.affiliate}
+                vertical={vertical}
+              />  
+            }
             
             {/* Results */}
             {results && results.length > 0 ? 
