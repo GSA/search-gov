@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import { darken } from 'polished';
 import { Header as UswdsHeader, NavMenuButton, ExtendedNav } from '@trussworks/react-uswds';
@@ -7,6 +7,8 @@ import { FontsAndColors } from '../SearchResultsLayout';
 import { HeaderProps } from './../props';
 import { Logo } from './Logo';
 import { StyleContext } from '../../contexts/StyleContext';
+import { checkSearchIconColorContrast } from '../../utils';
+
 
 import './ExtendedHeader.css';
 
@@ -67,6 +69,10 @@ export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHe
   const primaryLinkItems = primaryHeaderLinks ? buildLink(primaryHeaderLinks, 'usa-nav__link') : [];
   
   const showMobileMenu = (primaryHeaderLinks && primaryHeaderLinks.length > 0) || (secondaryHeaderLinks && secondaryHeaderLinks.length > 0);
+
+  useEffect(() => {
+    checkSearchIconColorContrast('usa-nav', 'usa-icon--size-3');
+  }, []);
 
   return (
     <StyledUswdsHeader extended={true} styles={styles}>

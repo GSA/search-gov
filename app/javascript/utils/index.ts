@@ -77,3 +77,59 @@ export const clickTracking = (affiliate: string, module: string, query: string, 
     })
   });
 };
+
+export const luminance = (red: number, green: number, blue: number) => {
+  const rgb = [red, green, blue].map((index) => {
+    const value = index / 255;
+    return value <= 0.03928
+      ? value / 12.92
+      : Math.pow((value + 0.055) / 1.055, 2.4);
+  });
+  return rgb[0] * 0.2126 + rgb[1] * 0.7152 + rgb[2] * 0.0722;
+};
+
+export const rgbToColorObject = (color: string) => {
+  const rgbStrLen = 'rgb('.length;
+  const colorArr = color.substring(rgbStrLen, color.lastIndexOf(')')).split(', ');
+  return {
+    red: parseInt(colorArr[0], 10),
+    green: parseInt(colorArr[1], 10),
+    blue: parseInt(colorArr[2], 10)
+  };
+};
+
+export const calculateRatio = (bgColor: string, fgColor: string) => {
+  const color1rgb = rgbToColorObject(fgColor);
+  const color2rgb = rgbToColorObject(bgColor);
+
+  // calculate the relative luminance
+  const color1luminance = luminance(color1rgb.red, color1rgb.green, color1rgb.blue);
+  const color2luminance = luminance(color2rgb.red, color2rgb.green, color2rgb.blue);
+
+  // calculate the color contrast ratio
+  const ratio = color1luminance > color2luminance 
+    ? ((color2luminance + 0.05) / (color1luminance + 0.05))
+    : ((color1luminance + 0.05) / (color2luminance + 0.05));
+
+  return ratio;
+};
+
+export const checkSearchIconColorContrast = (bgItemClass: string, fgItemClass: string) => {
+  const backgroundItem = Array.from(document.getElementsByClassName(bgItemClass))[0] as HTMLElement;
+  const backgroundItemColor = window.getComputedStyle(backgroundItem).getPropertyValue('background-color');
+
+  const foregroundItem = Array.from(document.getElementsByClassName(fgItemClass))[0] as HTMLElement;
+  const foregroundItemColor = window.getComputedStyle(foregroundItem).getPropertyValue('fill');
+
+  const contrastRatio = calculateRatio(backgroundItemColor, foregroundItemColor);
+  if (contrastRatio >= 1/4.5) {
+    foregroundItem.style.filter = 'invert(1)';
+  }
+  
+  /*
+  AA-level small text: ${contrastRatio < 1/4.5 ? 'PASS' : 'FAIL' }
+  AAA-level small text: ${contrastRatio < 1/7 ? 'PASS' : 'FAIL' }
+  AAA-level large text: ${contrastRatio < 1/4.5 ? 'PASS' : 'FAIL' }
+  AA-level large text: ${contrastRatio < 1/3 ? 'PASS' : 'FAIL' }
+  */
+};
