@@ -14,15 +14,15 @@ module I14y
   end
 
   def self.host
-    ENV['I14Y_HOST'] || Rails.application.secrets.dig(:i14y, :host)
+    Rails.application.secrets.i14y[:host]
   end
 
   def self.admin_user
-    ENV['I14Y_ADMIN_USER'] || Rails.application.secrets.dig(:i14y, :admin_user)
+    Rails.application.secrets.i14y[:admin_user]
   end
 
   def self.admin_password
-    ENV['I14Y_ADMIN_PASSWORD'] || Rails.application.secrets.dig(:i14y, :admin_password)
+    Rails.application.secrets.i14y[:admin_password]
   end
 
   def self.cached_connection

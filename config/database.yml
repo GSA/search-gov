@@ -13,24 +13,20 @@ default: &DEFAULT
   collation: utf8mb4_unicode_ci
   host: <%= ENV['DB_HOST'] || '127.0.0.1' %>
 
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
-test: &TEST
-  <<: *DEFAULT
-  database: usasearch_test
-
 development:
   <<: *DEFAULT
   database: usasearch_development
 
 production:
   <<: *DEFAULT
-  database: <%= ENV['DB_NAME'] %>
   username: <%= ENV['DB_USERNAME'] %>
   password: <%= ENV['DB_PASSWORD'] %>
-  host:     <%= ENV['DB_HOST'] %>
-  port:     <%= ENV['DB_PORT'] %>
+  host: <%= ENV['DB_HOST'] %>
+  port: <%= ENV['DB_PORT'] %>
 
-staging:
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test: &TEST
   <<: *DEFAULT
+  database: usasearch_test
