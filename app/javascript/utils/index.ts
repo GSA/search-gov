@@ -120,9 +120,14 @@ export const calculateRatio = (bgColor: string, fgColor: string) => {
   AAA-level large text: ${contrastRatio < 1/4.5 ? 'PASS' : 'FAIL' }
   AA-level large text: ${contrastRatio < 1/3 ? 'PASS' : 'FAIL' }
 */
-export const checkSearchIconColorContrast = (bgItemClass: string, fgItemClass: string) => {
-  const backgroundItem = Array.from(document.getElementsByClassName(bgItemClass))[0] as HTMLElement;
-  const foregroundItem = Array.from(document.getElementsByClassName(fgItemClass))[0] as HTMLElement;
+interface colorContrastItemProps {
+  backgroundItemClass: string, 
+  foregroundItemClass: string
+}
+
+export const checkColorContrast = ({ backgroundItemClass, foregroundItemClass }: colorContrastItemProps) => {
+  const backgroundItem = Array.from(document.getElementsByClassName(backgroundItemClass))[0] as HTMLElement;
+  const foregroundItem = Array.from(document.getElementsByClassName(foregroundItemClass))[0] as HTMLElement;
 
   if (!backgroundItem || !foregroundItem) {
     return;

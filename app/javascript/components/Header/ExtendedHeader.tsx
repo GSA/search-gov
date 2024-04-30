@@ -7,7 +7,7 @@ import { FontsAndColors } from '../SearchResultsLayout';
 import { HeaderProps } from './../props';
 import { Logo } from './Logo';
 import { StyleContext } from '../../contexts/StyleContext';
-import { checkSearchIconColorContrast } from '../../utils';
+import { checkColorContrast } from '../../utils';
 
 import './ExtendedHeader.css';
 
@@ -70,7 +70,10 @@ export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHe
   const showMobileMenu = (primaryHeaderLinks && primaryHeaderLinks.length > 0) || (secondaryHeaderLinks && secondaryHeaderLinks.length > 0);
 
   useEffect(() => {
-    checkSearchIconColorContrast('usa-nav', 'usa-icon--size-3');
+    checkColorContrast({
+      backgroundItemClass: 'usa-nav',
+      foregroundItemClass: 'usa-icon--size-3'
+    });
   }, []);
 
   return (

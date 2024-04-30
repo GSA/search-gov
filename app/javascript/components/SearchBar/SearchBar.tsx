@@ -3,7 +3,7 @@ import { GridContainer, Grid } from '@trussworks/react-uswds';
 
 import { VerticalNav } from './../VerticalNav/VerticalNav';
 import { Alert } from './../Alert/Alert';
-import { getUriWithParam, checkSearchIconColorContrast } from '../../utils';
+import { getUriWithParam, checkColorContrast } from '../../utils';
 import { LanguageContext } from '../../contexts/LanguageContext';
 import { NavigationLink } from '../SearchResultsLayout';
 
@@ -47,7 +47,10 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [],
   };
 
   useEffect(() => {
-    checkSearchIconColorContrast('usa-button', 'search-icon-glass');
+    checkColorContrast({
+      backgroundItemClass: 'usa-button',
+      foregroundItemClass: 'search-icon-glass'
+    });
   }, []);
 
   return (
