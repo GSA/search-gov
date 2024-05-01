@@ -14,5 +14,5 @@
   = recaptcha_tags display: { theme: 'white' }
 .tos
   By clicking Sign up, you agree to the
-  = link_to 'Terms of Service', ENV['TOS_URL'] || Rails.application.secrets.dig(:organization, :tos_url), target: '_blank'
+  = link_to 'Terms of Service', Rails.application.secrets.organization[:tos_url], target: '_blank'
   and that you're a federal government employee or contractor acting within the scope of your federal government contract.
