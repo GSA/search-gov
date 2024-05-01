@@ -71,8 +71,8 @@ export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHe
 
   useEffect(() => {
     checkColorContrast({
-      backgroundItemClass: 'usa-nav',
-      foregroundItemClass: 'usa-icon--size-3'
+      backgroundItemClass: '.usa-header--extended .usa-nav',
+      foregroundItemClass: '.usa-header--extended .usa-nav .usa-icon--size-3'
     });
   }, []);
 

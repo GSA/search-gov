@@ -122,22 +122,27 @@ const calculateContrastRatio = (bgColor: string, fgColor: string) => {
 
 interface colorContrastItemProps {
   backgroundItemClass: string, 
-  foregroundItemClass: string
+  foregroundItemClass: string,
+  isForegroundItemBtn?: boolean
 }
 
-export const checkColorContrast = ({ backgroundItemClass, foregroundItemClass }: colorContrastItemProps) => {
-  const backgroundItem = Array.from(document.getElementsByClassName(backgroundItemClass))[0] as HTMLElement;
-  const foregroundItem = Array.from(document.getElementsByClassName(foregroundItemClass))[0] as HTMLElement;
+export const checkColorContrast = ({ backgroundItemClass, foregroundItemClass, isForegroundItemBtn = false }: colorContrastItemProps) => {
+  const backgroundItem = Array.from(document.querySelectorAll(backgroundItemClass))[0] as HTMLElement;
+  const foregroundItem = Array.from(document.querySelectorAll(foregroundItemClass))[0] as HTMLElement;
 
   if (!backgroundItem || !foregroundItem) {
     return;
   }
 
   const backgroundItemColor = window.getComputedStyle(backgroundItem).getPropertyValue('background-color');
-  const foregroundItemColor = window.getComputedStyle(foregroundItem).getPropertyValue('fill');
+  const foregroundItemColor = isForegroundItemBtn ? window.getComputedStyle(foregroundItem).getPropertyValue('color'): window.getComputedStyle(foregroundItem).getPropertyValue('fill');
 
   const contrastRatio = calculateContrastRatio(backgroundItemColor, foregroundItemColor);
   if (contrastRatio >= 1/4.5) {
-    foregroundItem.style.filter = 'invert(1)';
+    if (isForegroundItemBtn) {
+      foregroundItem.style.color = '#000000';
+    } else {
+      foregroundItem.style.filter = 'invert(1)';
+    }
   }
 };

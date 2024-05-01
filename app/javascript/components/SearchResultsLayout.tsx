@@ -273,7 +273,9 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
   i18n.locale = language.code;
 
   // facetsEnabled to come from SearchResultsLayout props from backend
-  const facetsEnabled = false;
+  let facetsEnabled = false;
+  if(page.affiliate === "test_filters")
+    facetsEnabled = true;
   
   return (
     <LanguageContext.Provider value={i18n}>

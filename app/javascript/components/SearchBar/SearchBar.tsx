@@ -48,8 +48,8 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [],
 
   useEffect(() => {
     checkColorContrast({
-      backgroundItemClass: 'usa-button',
-      foregroundItemClass: 'search-icon-glass'
+      backgroundItemClass: '.usa-search .usa-button',
+      foregroundItemClass: '.usa-search .usa-button .search-icon-glass'
     });
   }, []);
 
