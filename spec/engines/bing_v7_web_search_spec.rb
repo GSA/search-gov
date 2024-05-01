@@ -18,8 +18,7 @@ describe BingV7WebSearch do
     let(:options) { {} }
 
     before do
-      allow(Rails.application.secrets).to receive(:bing_v7).
-        and_return({ web_subscription_id: 'web key' })
+      Rails.application.secrets[:bing_v7] = { web_subscription_id: 'web key' }
     end
 
     it 'uses the web search key' do
