@@ -45,7 +45,11 @@ VCR.configure do |config|
   config.ignore_request { |request| URI(request.uri).port.between?(9200,9299) } #Elasticsearch
   config.ignore_request { |request| URI(request.uri).port == 9998 } # Tika
 
-  secrets = YAML.load(ERB.new(File.read(Rails.root.join('config', 'secrets.yml'))).result)
+  begin
+    secrets = YAML.load(ERB.new(File.read(Rails.root.join('config', 'secrets.yml'))).result, aliases: true)
+  rescue ArgumentError
+    secrets = YAML.load(ERB.new(File.read(Rails.root.join('config', 'secrets.yml'))).result)
+  end
   secrets['secret_keys'].each do |service, keys|
     keys.each do |name, key|
       config.filter_sensitive_data("<#{service.upcase}_#{name.upcase}>") { key }
