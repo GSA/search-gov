@@ -49,8 +49,6 @@ class RssFeedUrl < ApplicationRecord
   end
 
   def self.throttled_hosts
-    return ENV['THROTTLED_RSS_FEED_HOSTS'].split(',') if ENV['THROTTLED_RSS_FEED_HOSTS']
-
     Rails.application.secrets.throttled_rss_feed_hosts || []
   end
 

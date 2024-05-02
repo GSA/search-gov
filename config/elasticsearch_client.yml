@@ -5,8 +5,6 @@ default: &DEFAULT
   reload_connections: false
   reload_on_failure: false
   retry_on_failure: 1
-  user: elastic
-  password: changeme
 
 development:
   <<: *DEFAULT
@@ -21,6 +19,4 @@ production:
   transport_options:
     ssl:
       verify: false
-  ca_fingerprint: <%= ENV['ES_CA_FINGERPRINT'] || Rails.application.secrets[:ca_fingerprint] %>
-  user: <%= ENV['ES_USER'] %>
-  passwrod: <%= ENV['ES_PASSWORD'] %>
+  ca_fingerprint: <%= Rails.application.secrets[:ca_fingerprint] %>

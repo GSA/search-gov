@@ -14,6 +14,6 @@ class BingV7WebSearch < BingSearch
 
   def hosted_subscription_key
     @hosted_subscription_key ||=
-      ENV['BING_WEB_SUBSCRIPTION_ID'] || Rails.application.secrets.dig(:bing_v7, :web_subscription_id)
+      Rails.application.secrets.bing_v7[:web_subscription_id].freeze
   end
 end
