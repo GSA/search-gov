@@ -6,7 +6,7 @@ version: 2.1
 
 orbs:
   ruby: circleci/ruby@2.0.0
-  browser-tools: circleci/browser-tools@1.4.3
+  browser-tools: circleci/browser-tools@1.4.8
   nodejs: circleci/node@5.1.1
 
 executors:
@@ -273,7 +273,7 @@ jobs:
             yarn test:coverage
 
             ./cc-test-reporter format-coverage \
-              --output coverage/codeclimate.jest.$CIRCLE_NODE_INDEX.<< parameters.node_version >>_<< parameters.mysql_version >>.json
+              --output coverage/codeclimate.jest.$CIRCLE_NODE_INDEX.<< parameters.node_version >>_<< parameters.ruby_version >>_<< parameters.mysql_version >>.json
 
       - persist_to_workspace:
           root: ~/search-gov/coverage
@@ -323,6 +323,7 @@ workflows:
             parameters:
               ruby_version:
                 - 3.0.6
+                - 3.1.4
               elasticsearch_version:
                 - 7.17.7
                 # not yet compatible with Elasticsearch 8
@@ -338,6 +339,7 @@ workflows:
             parameters:
               ruby_version:
                 - 3.0.6
+                - 3.1.4
               elasticsearch_version:
                 - 7.17.7
               mysql_version:
@@ -352,6 +354,7 @@ workflows:
             parameters:
               ruby_version:
                 - 3.0.6
+                - 3.1.4
               elasticsearch_version:
                 - 7.17.7
               mysql_version:
@@ -361,11 +364,12 @@ workflows:
       - jest:
           requires:
             - checkout_code
-          name: "jest: NodeJS << matrix.node_version >>, MySQL << matrix.mysql_version >>"
+          name: "jest: NodeJS << matrix.node_version >>, Ruby << matrix.ruby_version >>, MySQL << matrix.mysql_version >>"
           matrix:
             parameters:
               ruby_version:
                 - 3.0.6
+                - 3.1.4
               elasticsearch_version:
                 - 7.17.7
               mysql_version:
@@ -383,6 +387,7 @@ workflows:
             parameters:
               ruby_version:
                 - 3.0.6
+                - 3.1.4
               elasticsearch_version:
                 - 7.17.7
               mysql_version:
