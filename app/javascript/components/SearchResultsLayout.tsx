@@ -274,7 +274,7 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
 
   // facetsEnabled to come from SearchResultsLayout props from backend
   let facetsEnabled = false;
-  if(page.affiliate === "test_filters")
+  if (page.affiliate === 'test_filters')
     facetsEnabled = true;
   
   return (

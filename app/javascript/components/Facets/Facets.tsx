@@ -48,11 +48,6 @@ export const Facets = () => {
   const styles = useContext(StyleContext);
 
   useEffect(() => {
-    // checkColorContrast({
-    //   backgroundItemClass: '.serp-result-wrapper',
-    //   foregroundItemClass: '.search-filer-icon'
-    // });
-
     checkColorContrast({
       backgroundItemClass: '.serp-result-wrapper',
       foregroundItemClass: '.clear-results-button',
@@ -64,7 +59,6 @@ export const Facets = () => {
       foregroundItemClass: '.serp-facets-wrapper .see-results-button',
       isForegroundItemBtn: true
     });
-
   }, []);
 
   const audienceItems = [
