@@ -322,13 +322,11 @@ workflows:
           matrix:
             parameters:
               ruby_version:
-                - 3.0.6
                 - 3.1.4
               elasticsearch_version:
                 - 7.17.7
                 # not yet compatible with Elasticsearch 8
               mysql_version:
-                - "5.7"
                 - "8.0"
 
       - rspec:
@@ -338,12 +336,10 @@ workflows:
           matrix:
             parameters:
               ruby_version:
-                - 3.0.6
                 - 3.1.4
               elasticsearch_version:
                 - 7.17.7
               mysql_version:
-                - "5.7"
                 - "8.0"
 
       - cucumber:
@@ -353,12 +349,10 @@ workflows:
           matrix:
             parameters:
               ruby_version:
-                - 3.0.6
                 - 3.1.4
               elasticsearch_version:
                 - 7.17.7
               mysql_version:
-                - "5.7"
                 - "8.0"
 
       - jest:
@@ -368,7 +362,6 @@ workflows:
           matrix:
             parameters:
               ruby_version:
-                - 3.0.6
                 - 3.1.4
               elasticsearch_version:
                 - 7.17.7
@@ -386,10 +379,8 @@ workflows:
           matrix:
             parameters:
               ruby_version:
-                - 3.0.6
                 - 3.1.4
               elasticsearch_version:
                 - 7.17.7
               mysql_version:
-                - "5.7"
                 - "8.0"
