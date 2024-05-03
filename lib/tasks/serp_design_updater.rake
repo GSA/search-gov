@@ -82,6 +82,7 @@ namespace :searchgov do
         affiliate.save!
       else
         puts "Affiliate #{affiliate_id} could not be updated due to the following errors: #{affiliate.errors.to_s}"
+      end
     end
   end
 end
