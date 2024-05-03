@@ -274,6 +274,7 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
 
   // facetsEnabled to come from SearchResultsLayout props from backend
   const facetsEnabled = false;
+  
   return (
     <LanguageContext.Provider value={i18n}>
       <StyleContext.Provider value={ fontsAndColors ? fontsAndColors : styles }>
