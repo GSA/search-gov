@@ -4,6 +4,7 @@ require 'typhoeus/adapters/faraday'
 
 module Es
   INDEX_PREFIX = "#{Rails.env}-usasearch"
+
   CLIENT_CONFIG = Rails.application.config_for(
     :elasticsearch_client
   ).deep_symbolize_keys.freeze
@@ -36,6 +37,7 @@ module Es
 
   def initialize_client(config)
     Elasticsearch::Client.new(config.merge(ENV['ES_HOST'] ? env_client_config : CLIENT_CONFIG)).tap do |client|
+      # Make sure elasticsearch host are been setup correctly throughw env and secrets
       client.transport.logger = logger
     end
   end
