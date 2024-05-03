@@ -17,14 +17,6 @@ module Es
     @client_writers ||= writer_config.map { |config| initialize_client(config) }
   end
 
-  def self.env_client_config
-    {
-      hosts:    ENV.fetch('ES_HOSTS', '').split(',').map(&:strip),
-      user:     ENV.fetch('ES_USER', ''),
-      password: ENV.fetch('ES_PASSWORD', '')
-    }
-  end
-
   private
 
   def reader_config
@@ -36,8 +28,7 @@ module Es
   end
 
   def initialize_client(config)
-    Elasticsearch::Client.new(config.merge(ENV['ES_HOST'] ? env_client_config : CLIENT_CONFIG)).tap do |client|
-      # Make sure elasticsearch host are been setup correctly throughw env and secrets
+    Elasticsearch::Client.new(config.merge(CLIENT_CONFIG)).tap do |client|
       client.transport.logger = logger
     end
   end

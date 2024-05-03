@@ -24,3 +24,7 @@ production:
   ca_fingerprint: <%= ENV['ES_CA_FINGERPRINT'] || Rails.application.secrets[:ca_fingerprint] %>
   user: <%= ENV['ES_USER'] || Rails.application.secrets.dig(:analytics, :elasticsearch, :reader, :user) %>
   password: <%= ENV['ES_PASSWORD'] || Rails.application.secrets.dig(:analytics, :elasticsearch, :reader, :password) %>
+  hosts:
+  <% (ENV['ES_HOSTS'] && ENV['ES_HOSTS'].split(',').map(&:strip) || Rails.application.secrets.dig(:analytics, :elasticsearch, :reader, :hosts) || []).each do |host| %>
+    - <%= host %>
+  <% end %>
