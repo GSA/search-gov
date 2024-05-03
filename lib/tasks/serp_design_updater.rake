@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# rubocop:disable Metrics/BlockLength
 namespace :searchgov do
   desc 'Migrate design settings for the redesigned SERP via CSV'
   # Usage: rake searchgov:migrate_designs[site_attributes.csv]
@@ -10,28 +13,28 @@ namespace :searchgov do
       affiliate = Affiliate.find(affiliate_id)
 
       # Create all links
-      for index in 0..11
+      12.times do |index|
         title_key = "primary_header_links #{index} - title"
         url_key = "primary_header_links #{index} - url"
         primary_header_link = PrimaryHeaderLink.create(position: index, type: 'PrimaryHeaderLink', title: row[title_key], url: row[url_key])
         affiliate.primary_header_links << primary_header_link if primary_header_link.valid?
       end
 
-      for index in 0..2
+      3.times do |index|
         title_key = "secondary_header_links #{index} - title"
         url_key = "secondary_header_links #{index} - url"
         secondary_header_link = SecondaryHeaderLink.create(position: index, type: 'SeconaryHeaderLink', title: row[title_key], url: row[url_key])
         affiliate.secondary_header_links << secondary_header_link if secondary_header_link.valid?
       end
 
-      for index in 0..12
+      13.times do |index|
         title_key = "footer_links #{index} - title"
         url_key = "footer_links #{index} - url"
         footer_link = FooterLink.create(position: index, type: 'FooterLink', title: row[title_key], url: row[url_key])
         affiliate.footer_links << footer_link if footer_link.valid?
       end
 
-      for index in 0..6
+      7.times do |index|
         title_key = "identifier_links #{index} - title"
         url_key = "identifier_links #{index} - url"
         identifier_link = IdentifierLink.create(position: index, type: 'IdentifierLink', title: row[title_key], url: row[url_key])
@@ -69,7 +72,7 @@ namespace :searchgov do
         primary_navigation_font_family: row['primary_navigation_font_family'],
         primary_navigation_font_weight: row['Primary_navigation_font_weight']
       }.transform_keys(&:to_s)
-    
+
       affiliate.visual_design_json = visual_design_settings
 
       # Miscellaneous settings
@@ -81,8 +84,9 @@ namespace :searchgov do
       if affiliate.valid?
         affiliate.save!
       else
-        puts "Affiliate #{affiliate_id} could not be updated due to the following errors: #{affiliate.errors.to_s}"
+        puts "Affiliate #{affiliate_id} could not be updated due to the following errors: #{affiliate.errors}"
       end
     end
   end
 end
+# rubocop:enable Metrics/BlockLength
