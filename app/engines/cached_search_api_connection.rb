@@ -5,6 +5,8 @@ class CachedSearchApiConnection
 
   def_delegator :connection, :basic_auth # optional
 
+  attr_reader :namespace
+
   def initialize(namespace, host, cache_duration = DEFAULT_CACHE_DURATION)
     @namespace      = namespace
     @host           = host
@@ -20,13 +22,13 @@ class CachedSearchApiConnection
   def connection
     @connection ||= Faraday.new(@host) do |conn|
       conn.request(:json)
-      conn.use(FaradayMiddleware::ExceptionNotifier, [@namespace])
+      conn.use(FaradayMiddleware::ExceptionNotifier, [namespace])
       conn.response(:raise_error)
       conn.response(:rashify)
       conn.response(:json)
       conn.headers[:user_agent] = 'USASearch'
 
-      ExternalFaraday.configure_connection(@namespace, conn)
+      ExternalFaraday.configure_connection(namespace, conn)
     end
   end
 
