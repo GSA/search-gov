@@ -78,6 +78,7 @@ export const clickTracking = (affiliate: string, module: string, query: string, 
   });
 };
 
+// Below calculation is as per https://www.w3.org/WAI/GL/wiki/Relative_luminance
 const getLuminance = (red: number, green: number, blue: number) => {
   const rgb = [red, green, blue].map((index) => {
     const value = index / 255;
@@ -89,7 +90,8 @@ const getLuminance = (red: number, green: number, blue: number) => {
 };
 
 const getRgbColorObject = (color: string) => {
-  const rgbStrLen = 'rgb('.length;
+  const rgbStrLen = 4;
+  // extracting red, green and blue from rgb(red, green, blue)
   const colorArr = color.substring(rgbStrLen, color.lastIndexOf(')')).split(', ');
   return {
     red: parseInt(colorArr[0], 10),
@@ -126,7 +128,7 @@ interface colorContrastItemProps {
   isForegroundItemBtn?: boolean
 }
 
-export const checkColorContrast = ({ backgroundItemClass, foregroundItemClass, isForegroundItemBtn = false }: colorContrastItemProps) => {
+export const checkColorContrastAndUpdateStyle = ({ backgroundItemClass, foregroundItemClass, isForegroundItemBtn = false }: colorContrastItemProps) => {
   const backgroundItem = Array.from(document.querySelectorAll(backgroundItemClass))[0] as HTMLElement;
   const foregroundItem = Array.from(document.querySelectorAll(foregroundItemClass))[0] as HTMLElement;
 

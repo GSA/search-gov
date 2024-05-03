@@ -4,7 +4,7 @@ import { Accordion, DateRangePicker, Tag } from '@trussworks/react-uswds';
 
 import { StyleContext } from '../../contexts/StyleContext';
 import { FontsAndColors  } from '../SearchResultsLayout';
-import { checkColorContrast } from '../../utils';
+import { checkColorContrastAndUpdateStyle } from '../../utils';
 
 import './Facets.css';
 
@@ -48,13 +48,13 @@ export const Facets = () => {
   const styles = useContext(StyleContext);
 
   useEffect(() => {
-    checkColorContrast({
+    checkColorContrastAndUpdateStyle({
       backgroundItemClass: '.serp-result-wrapper',
       foregroundItemClass: '.clear-results-button',
       isForegroundItemBtn: true
     });
 
-    checkColorContrast({
+    checkColorContrastAndUpdateStyle({
       backgroundItemClass: '.serp-facets-wrapper .see-results-button',
       foregroundItemClass: '.serp-facets-wrapper .see-results-button',
       isForegroundItemBtn: true
