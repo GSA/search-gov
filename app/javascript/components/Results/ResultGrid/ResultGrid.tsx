@@ -30,6 +30,7 @@ interface ResultProps {
   position: number;
   query: string;
   vertical: string
+  facetsEnabled?: boolean
 }
 
 const getDescription = (description: string) => {
@@ -46,7 +47,7 @@ const getFileType = (fileType?: string) => {
   return (<span className='filetype-label'>{fileType}</span>);
 };
 
-export const ResultGrid = ({ result, affiliate, query, position, vertical }: ResultProps) => {  
+export const ResultGrid = ({ result, affiliate, query, position, vertical, facetsEnabled }: ResultProps) => {  
   const URL_LENGTH = 80;
   const module = (() => {
     if (vertical === 'blended') {
@@ -84,6 +85,13 @@ export const ResultGrid = ({ result, affiliate, query, position, vertical }: Res
           <div className='result-desc'>
             {getDescription(result.description)}
             <div className='result-url-text'>{truncateUrl(result.url, URL_LENGTH)}</div>
+            {/* Filter tags UI - to be updated with integration once backend starts sending the data */}
+            {facetsEnabled && 
+            <div className='filter-tags-wrapper'>
+              <span className='filter-tag'>Small Business</span>
+              <span className='filter-tag'>Contracts</span>
+            </div>
+            }
           </div>
         </Grid>
       </ResultGridWrapper>
