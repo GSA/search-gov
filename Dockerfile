@@ -50,7 +50,7 @@ COPY . .
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
-# AWS access needed on build stage for assets compilation
+# AWS access for assets compilation
 ARG AWS_ACCESS_KEY_ID
 ARG AWS_REGION
 ARG AWS_S3_BUCKET

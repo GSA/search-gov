@@ -7,6 +7,6 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     idp_base_url: ENV['LOGIN_IDP_BASE_URL'] || Rails.application.secrets.dig(:login_dot_gov, :idp_base_url),
     ial:          1,
     private_key:  ENV['LOGIN_CERT'] || OpenSSL::PKey::RSA.new(File.read('config/logindotgov.pem')),
-    redirect_uri: "#{protocol}#{ENV['LOGING_HOST'] || Rails.application.secrets.dig(:login_dot_gov, :host)}/auth/logindotgov/callback"
+    redirect_uri: "#{protocol}#{ENV['LOGIN_HOST'] || Rails.application.secrets.dig(:login_dot_gov, :host)}/auth/logindotgov/callback"
   }
 end
