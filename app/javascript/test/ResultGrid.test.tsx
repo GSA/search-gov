@@ -196,3 +196,17 @@ describe('Result Grid: Mobile view, clicking the result div', () => {
     expect(fetch).toHaveBeenCalledTimes(1);
   });
 });
+
+describe('Result Grid: Filter tags', () => {
+  const result = {
+    title: 'test result 1',
+    url: 'https://www.search.gov',
+    description: 'A description'
+  };
+
+  it('filter tag is visible', () => {
+    render(<ResultGrid result={result} affiliate='bing_affiliate' query='query' position={1} vertical='web' facetsEnabled={true} />);
+    const filterTag = screen.getByText(/Small Business/i);
+    expect(filterTag).toBeInTheDocument();
+  });
+});
