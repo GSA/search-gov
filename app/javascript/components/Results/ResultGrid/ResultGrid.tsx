@@ -47,6 +47,18 @@ const getFileType = (fileType?: string) => {
   return (<span className='filetype-label'>{fileType}</span>);
 };
 
+{/* Filter tags UI - to be updated with integration once backend starts sending the data */}
+const getFilterTags = () => {
+  const filterTags = ['Small Business', 'Contracts'];
+  return (
+    <div className='filter-tags-wrapper'>
+      {
+        filterTags.map((filterTag) => <span className='filter-tag'>{filterTag}</span>)
+      }
+    </div>
+  );
+};
+
 export const ResultGrid = ({ result, affiliate, query, position, vertical, facetsEnabled }: ResultProps) => {  
   const URL_LENGTH = 80;
   const module = (() => {
@@ -85,13 +97,7 @@ export const ResultGrid = ({ result, affiliate, query, position, vertical, facet
           <div className='result-desc'>
             {getDescription(result.description)}
             <div className='result-url-text'>{truncateUrl(result.url, URL_LENGTH)}</div>
-            {/* Filter tags UI - to be updated with integration once backend starts sending the data */}
-            {facetsEnabled && 
-            <div className='filter-tags-wrapper'>
-              <span className='filter-tag'>Small Business</span>
-              <span className='filter-tag'>Contracts</span>
-            </div>
-            }
+            {facetsEnabled && getFilterTags()}
           </div>
         </Grid>
       </ResultGridWrapper>
