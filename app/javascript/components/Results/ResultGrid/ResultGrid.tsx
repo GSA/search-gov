@@ -47,13 +47,13 @@ const getFileType = (fileType?: string) => {
   return (<span className='filetype-label'>{fileType}</span>);
 };
 
-{/* Filter tags UI - to be updated with integration once backend starts sending the data */}
+// Filter tags UI - to be updated with integration once backend starts sending the data
 const getFilterTags = () => {
   const filterTags = ['Small Business', 'Contracts'];
   return (
     <div className='filter-tags-wrapper'>
       {
-        filterTags.map((filterTag) => <span className='filter-tag'>{filterTag}</span>)
+        filterTags.map((filterTag, index) => <span className='filter-tag' key={index}>{filterTag}</span>)
       }
     </div>
   );
