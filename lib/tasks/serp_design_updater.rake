@@ -8,41 +8,44 @@ namespace :searchgov do
   task :migrate_designs, [:csv_file] => [:environment] do |_t, args|
     csv_file = args.csv_file
 
-    CSV.foreach(csv_file, headers: true) do |row|
-      affiliate_id = row['ID']
-      affiliate = Affiliate.find(affiliate_id)
-
-      # Create all links
+    def create_primary_header_links(row, affiliate)
       12.times do |index|
         title_key = "primary_header_links #{index} - title"
         url_key = "primary_header_links #{index} - url"
         primary_header_link = PrimaryHeaderLink.create(position: index, type: 'PrimaryHeaderLink', title: row[title_key], url: row[url_key])
         affiliate.primary_header_links << primary_header_link if primary_header_link.valid?
       end
+    end
 
+    def create_secondary_header_links(row, affiliate)
       3.times do |index|
         title_key = "secondary_header_links #{index} - title"
         url_key = "secondary_header_links #{index} - url"
         secondary_header_link = SecondaryHeaderLink.create(position: index, type: 'SeconaryHeaderLink', title: row[title_key], url: row[url_key])
         affiliate.secondary_header_links << secondary_header_link if secondary_header_link.valid?
       end
+    end
 
+    def create_footer_links(row, affiliate)
       13.times do |index|
         title_key = "footer_links #{index} - title"
         url_key = "footer_links #{index} - url"
         footer_link = FooterLink.create(position: index, type: 'FooterLink', title: row[title_key], url: row[url_key])
         affiliate.footer_links << footer_link if footer_link.valid?
       end
+    end
 
+    def create_identifier_links(row, affiliate)
       7.times do |index|
         title_key = "identifier_links #{index} - title"
         url_key = "identifier_links #{index} - url"
         identifier_link = IdentifierLink.create(position: index, type: 'IdentifierLink', title: row[title_key], url: row[url_key])
         affiliate.identifier_links << identifier_link if identifier_link.valid?
       end
+    end
 
-      # Colors and fonts
-      visual_design_settings = {
+    def visual_design_settings(row)
+      {
         banner_background_color: row['banner_background_color'],
         banner_text_color: row['banner_text_color'],
         header_background_color: row['header_bg_color'],
@@ -72,14 +75,25 @@ namespace :searchgov do
         primary_navigation_font_family: row['primary_navigation_font_family'],
         primary_navigation_font_weight: row['Primary_navigation_font_weight']
       }.transform_keys(&:to_s)
+    end
 
-      affiliate.visual_design_json = visual_design_settings
-
-      # Miscellaneous settings
+    def misc_settings(affiliate, row)
       affiliate.display_logo_only = row['display_logo_only']
       affiliate.identifier_domain_name = row['site_identifier_domain_name']
       affiliate.agency&.name = row['site_parent_agency_name']
       affiliate.agency&.url = row['site_parent_agency_link']
+    end
+
+    CSV.foreach(csv_file, headers: true) do |row|
+      affiliate_id = row['ID']
+      affiliate = Affiliate.find(affiliate_id)
+
+      create_primary_header_links(row, affiliate)
+      create_secondary_header_links(row, affiliate)
+      create_footer_links(row, affiliate)
+      create_identifier_links(row, affiliate)
+
+      affiliate.visual_design_json = visual_design_settings(row)
 
       if affiliate.valid?
         affiliate.save!
