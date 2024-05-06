@@ -34,16 +34,6 @@ RUN apt-get install --no-install-recommends -y build-essential git libvips pkg-c
 # Install JavaScript dependencies
 RUN npm install -g yarn@$YARN_VERSION && rm -rf /tmp/node-build-master
 
-ARG AWS_ACCESS_KEY_ID
-ARG AWS_REGION
-ARG AWS_S3_BUCKET
-ARG AWS_SECRET_ACCESS_KEY
-
-ENV AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} \
-    AWS_REGION=${AWS_REGION} \
-    AWS_S3_BUCKET=${AWS_S3_BUCKET} \
-    AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
-
 # Install application gems
 COPY Gemfile Gemfile.lock ./
 RUN bundle install && \
@@ -59,6 +49,17 @@ COPY . .
 
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
+
+# AWS access needed on build stage for assets compilation
+ARG AWS_ACCESS_KEY_ID
+ARG AWS_REGION
+ARG AWS_S3_BUCKET
+ARG AWS_SECRET_ACCESS_KEY
+
+ENV AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} \
+    AWS_REGION=${AWS_REGION} \
+    AWS_S3_BUCKET=${AWS_S3_BUCKET} \
+    AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
 RUN SECRET_KEY_BASE=1 ./bin/rails assets:precompile
