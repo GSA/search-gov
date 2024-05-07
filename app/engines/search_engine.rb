@@ -63,7 +63,7 @@ class SearchEngine
   end
 
   def process_cached_response(attempt)
-    response = parse_search_engine_response(cached_response.response)
+    response = parse_search_engine_response(cached_response)
     result_count = response.results.size
     retry_count = attempt - 1
 
