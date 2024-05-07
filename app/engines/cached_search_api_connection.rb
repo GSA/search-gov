@@ -14,7 +14,7 @@ class CachedSearchApiConnection
   end
 
   def get(api_endpoint, param_hash = {})
-    Rails.cache.fetch(cache_key(api_endpoint, param_hash), expires_in: @cache_duration) do
+    Rails.cache.fetch(cache_key(api_endpoint, param_hash), expires_in: @cache_duration, namespace: namespace) do
       connection.get(api_endpoint, param_hash)
     end
   end

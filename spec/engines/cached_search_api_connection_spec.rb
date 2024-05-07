@@ -1,15 +1,10 @@
 # frozen_string_literal: true
 
 describe CachedSearchApiConnection do
-  let(:cache) { double(ApiCache, namespace: 'some_cache') }
   let(:cached_connection) { described_class.new('my_api', 'http://localhost', 1000) }
   let(:endpoint) { '/search.json' }
   let(:params) { { query: 'gov' } }
   let(:response) { double('response', status: 200 ) }
-
-  before do
-    expect(ApiCache).to receive(:new).with('my_api', 1000).and_return(cache)
-  end
 
   describe '#connection' do
     subject(:connection) { cached_connection.connection }
@@ -35,29 +30,20 @@ describe CachedSearchApiConnection do
     end
   end
 
-  describe '#get', vcr: { record: :skip } do
-    context 'on cache hit' do
-      before do
-        expect(cache).to receive(:read).with(endpoint, params).and_return(response)
-      end
+  describe '#get' do
+    context 'when response has not been cached' do
+      it 'calls the api' do
+        expect(cached_connection.connection).to receive(:get).with(endpoint, params)
 
-      it 'returns a cached response' do
-        expect(cached_connection.get(endpoint, params)).
-          to eq(CachedSearchApiConnectionResponse.new(response, 'some_cache'))
+        cached_connection.get(endpoint, params)
       end
     end
 
-    context 'on cache miss' do
-      before do
-        allow(cache).to receive(:read).with(endpoint, params).and_return(nil)
-      end
+    context 'when response has been cached' do
+      it 'calls the api' do
+        allow(Rails.cache).to receive(:fetch).and_return(response)
 
-      it 'sends outbound request and cache response' do
-        allow(cached_connection.connection).to receive(:get).with(endpoint, params).and_return(response)
-        allow(cache).to receive(:write).with(endpoint, params, response)
-
-        expect(cached_connection.get(endpoint, params)).
-          to eq(CachedSearchApiConnectionResponse.new(response, 'none'))
+        expect(cached_connection.get(endpoint, params)).to eq response
       end
     end
   end
