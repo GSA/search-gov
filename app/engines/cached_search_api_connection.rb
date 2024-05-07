@@ -3,9 +3,10 @@
 class CachedSearchApiConnection
   extend Forwardable
 
-  def_delegator :connection, :basic_auth # optional
-
   attr_reader :namespace
+  alias :cache_namespace :namespace
+
+  def_delegator :connection, :basic_auth # optional
 
   def initialize(namespace, host, cache_duration = DEFAULT_CACHE_DURATION)
     @namespace      = namespace
