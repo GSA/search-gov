@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import { Accordion, DateRangePicker, Tag } from '@trussworks/react-uswds';
 
 import { StyleContext } from '../../contexts/StyleContext';
 import { FontsAndColors  } from '../SearchResultsLayout';
+import { checkColorContrastAndUpdateStyle } from '../../utils';
 
 import './Facets.css';
 
@@ -45,6 +46,20 @@ type HeadingLevel = 'h4';
 
 export const Facets = () => {
   const styles = useContext(StyleContext);
+
+  useEffect(() => {
+    checkColorContrastAndUpdateStyle({
+      backgroundItemClass: '.serp-result-wrapper',
+      foregroundItemClass: '.clear-results-button',
+      isForegroundItemBtn: true
+    });
+
+    checkColorContrastAndUpdateStyle({
+      backgroundItemClass: '.serp-facets-wrapper .see-results-button',
+      foregroundItemClass: '.serp-facets-wrapper .see-results-button',
+      isForegroundItemBtn: true
+    });
+  }, []);
 
   const audienceItems = [
     {
