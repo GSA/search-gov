@@ -4,7 +4,6 @@ class CachedSearchApiConnection
   extend Forwardable
 
   attr_reader :namespace
-  alias :cache_namespace :namespace
 
   def_delegator :connection, :basic_auth # optional
 
