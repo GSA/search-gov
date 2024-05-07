@@ -49,7 +49,7 @@ const getFileType = (fileType?: string) => {
 };
 
 const getFilterTags = (result: Result) => {
-  // To be updated with integration once backend starts sending the data
+  // To remove the dummy tags with integration once backend starts sending the data
   const filterTags = result.tags || ['Small Business', 'Contracts'];
   return (
     <div className='filter-tags-wrapper'>
