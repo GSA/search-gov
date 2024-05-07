@@ -201,7 +201,8 @@ describe('Result Grid: Filter tags', () => {
   const result = {
     title: 'test result 1',
     url: 'https://www.search.gov',
-    description: 'A description'
+    description: 'A description',
+    tags: ['Small Business', 'Contracts']
   };
 
   it('filter tag is visible', () => {

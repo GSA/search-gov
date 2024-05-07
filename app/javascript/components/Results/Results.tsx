@@ -40,7 +40,8 @@ type Result = {
   youtubePublishedAt?: string,
   youtubeThumbnailUrl?: string,
   youtubeDuration?: string,
-  blendedModule?: string
+  blendedModule?: string,
+  tags?: string[]
 };
 interface ResultsProps {
   page: PageData;
@@ -147,7 +148,7 @@ interface ResultsProps {
   };
   jobsEnabled?: boolean
   agencyName?: string
-  facetsEnabled?: boolean
+  facetsEnabled?:boolean
 }
 
 const StyledWrapper = styled.div.attrs<{ styles: FontsAndColors; }>((props) => ({
@@ -302,7 +303,7 @@ export const Results = ({ page, query = '', results = null, additionalResults = 
                       affiliate={page?.affiliate ?? ''}
                       query={query}
                       vertical={vertical}
-                      position={index+1} 
+                      position={index+1}
                       facetsEnabled={facetsEnabled}
                     />
                   );
