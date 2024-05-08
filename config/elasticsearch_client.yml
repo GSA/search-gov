@@ -25,6 +25,6 @@ production:
   user: <%= ENV['ES_USER'] || Rails.application.secrets.dig(:analytics, :elasticsearch, :reader, :user) %>
   password: <%= ENV['ES_PASSWORD'] || Rails.application.secrets.dig(:analytics, :elasticsearch, :reader, :password) %>
   hosts:
-  <% (ENV['ES_HOSTS'] && ENV['ES_HOSTS'].split(',').map(&:strip) || Rails.application.secrets.dig(:analytics, :elasticsearch, :reader, :hosts) || []).each do |host| %>
+  <% (ENV['ES_HOSTS'] && JSON.parse(ENV['ES_HOSTS']) || Rails.application.secrets.dig(:analytics, :elasticsearch, :reader, :hosts) || []).each do |host| %>
     - <%= host %>
   <% end %>
