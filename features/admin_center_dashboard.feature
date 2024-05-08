@@ -229,7 +229,7 @@ Feature: Dashboard
     Then the "Discover and add the RSS feeds and social media accounts listed on the following page:" field should contain "https://www.nih.gov"
 
     When I follow "Display"
-    And I follow "Image Assets"
+    And I follow "Visual design (new)"
     Then the "Favicon URL" field should contain "https://www.nih.gov/favicon.ico"
 
     When I open the email
