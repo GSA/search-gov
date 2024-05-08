@@ -177,8 +177,8 @@ Feature: Manage Display
   @javascript
   Scenario: Editing Image Assets
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |  website                |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |  http://main.agency.gov |
+      | display_name | name       | contact_email   | first_name | last_name |  website                | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       |  http://main.agency.gov | false                       |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Image Assets page
     And I fill in "Favicon URL" with "https://d3qcdigd1fhos0.cloudfront.net/blog/img/favicon.ico"
@@ -216,8 +216,8 @@ Feature: Manage Display
   @javascript
   Scenario: Editing Header & Footer
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | footer_fragment                   |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | <strong>my HTML fragment</strong> |
+      | display_name | name       | contact_email   | first_name | last_name | footer_fragment                   | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | <strong>my HTML fragment</strong> | false                       |
     And affiliate "agency.gov" has the following document collections:
       | name                 | prefixes             | position | is_navigable |
       | Active site search   | http://apps.usa.gov/ | 3        | true         |
@@ -656,8 +656,8 @@ Feature: Manage Display
 
   Scenario: Display sub navigation links when "Use Redesigned Results Page" is false
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
+      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Display page
     Then I should see "Visual design (new)"
