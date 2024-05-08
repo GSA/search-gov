@@ -10,7 +10,8 @@ describe 'A user searches', js: true, vcr: { preserve_exact_body_bytes: true } d
 
     context 'for a best bet' do
       before do
-        affiliate.update!(use_redesigned_results_page: false)
+        affiliate.use_redesigned_results_page = false
+        affiliate.save(validate: false)
         affiliate.boosted_contents.create!(title: 'A boosted search result',
                                           description: 'An example description',
                                           url: 'http://example.com',

@@ -4,7 +4,8 @@ describe SearchesController do
   let(:affiliate) { affiliates(:usagov_affiliate) }
 
   before do
-    affiliate.update!(use_redesigned_results_page: false)
+    affiliate.use_redesigned_results_page = false
+    affiliate.save(validate: false)
   end
 
   context 'when showing a new search' do
