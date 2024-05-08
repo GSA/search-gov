@@ -58,6 +58,11 @@ describe 'A user searches', js: true, vcr: { preserve_exact_body_bytes: true } d
   context 'a bing site' do
     let!(:affiliate) { affiliates(:bing_v7_affiliate) }
 
+    before do
+      affiliate.use_redesigned_results_page = false
+      affiliate.save(validate: false)
+    end
+
     context 'for a regular result' do
       before do
         visit '/search?affiliate=bingV7affiliate&query=va%20welcome%20kit'

@@ -92,7 +92,8 @@ describe SearchesController do
     let(:affiliate) { affiliates(:inactive_affiliate) }
 
     before do
-      affiliate.update!(use_redesigned_results_page: false)
+      affiliate.use_redesigned_results_page = false
+      affiliate.save(validate: false)
       get :index,
           params: {
             query: 'gov',
