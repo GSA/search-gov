@@ -5,8 +5,8 @@ Feature: Watchers (aka Analytics Alerts)
 
   Scenario: View watchers
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name  |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar        |
+      | display_name | name       | contact_email   | first_name | last_name  | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar        | false                       |
     And the following Users exist:
       | first_name | last_name | email               |
       | John       | Admin     | admin1@fixtures.gov |
@@ -40,8 +40,8 @@ Feature: Watchers (aka Analytics Alerts)
   @javascript
   Scenario: Add/edit/remove watchers
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
+      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And the following Hints exist:
       | name                         | value                               |
       | watcher.name                 | Enter a short, meaningful name.     |
