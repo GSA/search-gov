@@ -84,6 +84,7 @@ interface SearchResultsLayoutProps {
       youtubeThumbnailUrl?: string;
       youtubeDuration?: string;
       blendedModule?: string;
+      tags?: string[]
     }[] | null;
   } | null;
   additionalResults?: {
@@ -318,6 +319,7 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
                     sitelimit={sitelimit}
                     jobsEnabled={jobsEnabled}
                     agencyName={agencyName}
+                    facetsEnabled={facetsEnabled}
                   />) : params.query ? (
                   <Results
                     page={page}
