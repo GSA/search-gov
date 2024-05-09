@@ -16,6 +16,7 @@ describe ImageSearchesController do
       end
 
       before do
+        affiliate.update!(use_redesigned_results_page: false)
         allow(Affiliate).to receive(:find_by_name).with('nps.gov').and_return(affiliate)
         allow(ImageSearch).to receive(:new).
           with(hash_including(affiliate: affiliate, query: 'thunder & lightning')).
