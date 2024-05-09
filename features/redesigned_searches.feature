@@ -6,8 +6,8 @@ Feature: Search - redesign
   @javascript @a11y
   Scenario: Search with no query on an affiliate page
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | first_name | last_name | domains        | use_redesigned_results_page |
-      | bar site         | bar.gov          | aff@bar.gov           | John       | Bar       | whitehouse.gov | true                        |
+      | display_name     | name             | contact_email         | first_name | last_name | domains        |
+      | bar site         | bar.gov          | aff@bar.gov           | John       | Bar       | whitehouse.gov |
     When I am on bar.gov's redesigned search page
     Then I should see "Please enter a search term in the box above."
     And I should not see pagination
@@ -15,8 +15,8 @@ Feature: Search - redesign
   @javascript @a11y 
   Scenario: Searching a domain with Bing results with pagination
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | first_name | last_name | domains        | use_redesigned_results_page |
-      | bar site         | bar.gov          | aff@bar.gov           | John       | Bar       | whitehouse.gov | true                        |
+      | display_name     | name             | contact_email         | first_name | last_name | domains        |
+      | bar site         | bar.gov          | aff@bar.gov           | John       | Bar       | whitehouse.gov |
     When I am on bar.gov's redesigned search page
     And I search for "white house" in the redesigned search page
     Then I should see exactly "20" web search results
@@ -42,8 +42,8 @@ Feature: Search - redesign
   @javascript @a11y 
   Scenario: Search with I14y results with pagination
     Given the following SearchGov Affiliates exist:
-      | display_name   | name           | contact_email      | first_name | last_name | domains            | use_redesigned_results_page |
-      | HealthCare.gov | healthcare.gov | aff@healthcare.gov | Jane       | Bar       | www.healthcare.gov | true                        |
+      | display_name   | name           | contact_email      | first_name | last_name | domains            |
+      | HealthCare.gov | healthcare.gov | aff@healthcare.gov | Jane       | Bar       | www.healthcare.gov |
     Given there are results for the "searchgov" drawer
     When I am on healthcare.gov's redesigned search page
     And I search for "marketplace" in the redesigned search page
@@ -67,8 +67,8 @@ Feature: Search - redesign
   @javascript @a11y
   Scenario: Search with blended results
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | first_name | last_name | gets_blended_results    | use_redesigned_results_page |
-      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | true                    | true                        |
+      | display_name | name    | contact_email | first_name | last_name | gets_blended_results    |
+      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | true                    |
     And the following IndexedDocuments exist:
       | title                   | description                          | url                                 | affiliate | last_crawl_status | published_ago  |
       | The last hour article   | Within the last hour article on item | http://p.whitehouse.gov/hour.html   | bar.gov   | OK                | 30 minutes ago |
@@ -90,8 +90,8 @@ Feature: Search - redesign
   @javascript @a11y 
   Scenario: Search with best bets
     Given the following SearchGov Affiliates exist:
-      | display_name   | name           | contact_email      | first_name | last_name | domains            | use_redesigned_results_page |
-      | HealthCare.gov | healthcare.gov | aff@healthcare.gov | Jane       | Bar       | www.healthcare.gov | true                        |
+      | display_name   | name           | contact_email      | first_name | last_name | domains            |
+      | HealthCare.gov | healthcare.gov | aff@healthcare.gov | Jane       | Bar       | www.healthcare.gov |
     Given the following Boosted Content entries exist for the affiliate "healthcare.gov"
       | url                                          | title             | description                                            |
       | http://healthcare.gov/hippopotamus-amphibius | Hippopotamus item | large, mostly herbivorous mammal in sub-Saharan Africa |
@@ -112,8 +112,8 @@ Feature: Search - redesign
   @javascript @a11y
   Scenario: News search
     Given the following Affiliates exist:
-      | display_name     | name       | contact_email | first_name | last_name | use_redesigned_results_page |
-      | bar site         | bar.gov    | aff@bar.gov   | John       | Bar       | true                        |
+      | display_name     | name       | contact_email | first_name | last_name |
+      | bar site         | bar.gov    | aff@bar.gov   | John       | Bar       |
     And affiliate "bar.gov" has the following RSS feeds:
       | name   | url                                  | is_navigable |
       | Press  | http://www.whitehouse.gov/feed/press | true         |
@@ -132,8 +132,8 @@ Feature: Search - redesign
   @javascript @a11y 
   Scenario: Docs search
     Given the following Affiliates exist:
-      | display_name | name       | contact_email | first_name | last_name | domains | use_redesigned_results_page |
-      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov | true                        |
+      | display_name | name       | contact_email | first_name | last_name | domains |
+      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov |
     When I am on agency.gov's redesigned docs search page
     And I search for "USA" in the redesigned search page
     Then I should see exactly "20" web search results
@@ -141,9 +141,9 @@ Feature: Search - redesign
   @javascript @a11y 
   Scenario: Job search
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name |locale | jobs_enabled | use_redesigned_results_page |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en    | 1            | true  |
-      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es    | 1            | true  |
+      | display_name | name          | contact_email    | first_name | last_name |locale | jobs_enabled |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en    | 1            |
+      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es    | 1            |
 
     When I am on en.agency.gov's search page
     And I fill in "Enter your search term" with "jobs"
@@ -157,9 +157,9 @@ Feature: Search - redesign
   @javascript @a11y 
   Scenario: News search
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | locale | use_redesigned_results_page |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | true                        |
-      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | true                        |
+      | display_name | name          | contact_email    | first_name | last_name | locale |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     |
+      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     |
 
     And affiliate "en.agency.gov" has the following RSS feeds:
       | name   | url                              |
@@ -194,8 +194,8 @@ Feature: Search - redesign
   @javascript @a11y
   Scenario: Searchers see English Medline Govbox
     Given the following Affiliates exist:
-      | display_name | name        | contact_email | first_name | last_name | domains | is_medline_govbox_enabled | use_redesigned_results_page |
-      | english site | english-nih | aff@bar.gov   | John       | Bar       | nih.gov | true                      |  true         |
+      | display_name | name        | contact_email | first_name | last_name | domains | is_medline_govbox_enabled |
+      | english site | english-nih | aff@bar.gov   | John       | Bar       | nih.gov | true                      |
     And the following Medline Topics exist:
       | medline_title                        | medline_tid | locale | summary_html                                                     |
       | Hippopotomonstrosesquippedaliophobia | 67890       | es     | Hippopotomonstrosesquippedaliophobia y otros miedos irracionales |
@@ -219,8 +219,8 @@ Feature: Search - redesign
   @javascript @a11y 
   Scenario: Searchers see Spanish Medline Govbox
     Given the following Affiliates exist:
-      | display_name | name        | contact_email | first_name | last_name | domains | is_medline_govbox_enabled | locale |  use_redesigned_results_page |
-      | spanish site | spanish-nih | aff@bar.gov   | John       | Bar       | nih.gov | true                      | es     |  true  |
+      | display_name | name        | contact_email | first_name | last_name | domains | is_medline_govbox_enabled | locale |
+      | spanish site | spanish-nih | aff@bar.gov   | John       | Bar       | nih.gov | true                      | es     |
     And the following Medline Topics exist:
       | medline_title                        | medline_tid | locale | summary_html                                                     |
       | Hippopotomonstrosesquippedaliophobia | 12345       | en     | Hippopotomonstrosesquippedaliophobia and Other Irrational Fears  |
@@ -241,22 +241,22 @@ Feature: Search - redesign
   @javascript @a11y
   Scenario: Searching with custom visual design settings
     Given the following Affiliates exist:
-      | display_name | name       | contact_email | first_name | last_name | domains | use_extended_header | use_redesigned_results_page |
-      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov | false               | true                        |
+      | display_name | name       | contact_email | first_name | last_name | domains | use_extended_header |
+      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov | false               |
     When I am on agency.gov's redesigned docs search page
     Then I should see the basic header
 
     Given the following Affiliates exist:
-      | display_name | name       | contact_email | first_name | last_name | domains | use_extended_header | use_redesigned_results_page |
-      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov | true                | true                        |
+      | display_name | name       | contact_email | first_name | last_name | domains | use_extended_header |
+      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov | true                |
     When I am on agency.gov's redesigned docs search page
     Then I should see the extended header
 
   @javascript @a11y 
   Scenario: Searching on sites with federal register documents
     And the following Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | agency_abbreviation | is_federal_register_document_govbox_enabled | domains  | use_redesigned_results_page | display_created_date_on_search_results |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | DOC                 | true                                        | noaa.gov | true                        | true                                   |
+      | display_name | name          | contact_email    | first_name | last_name | agency_abbreviation | is_federal_register_document_govbox_enabled | domains  | display_created_date_on_search_results |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | DOC                 | true                                        | noaa.gov | true                                   |
     And the following Federal Register Document entries exist:
       | federal_register_agencies | document_number | document_type | title                                                              | publication_date | comments_close_in_days | start_page | end_page | page_length | html_url                                                                                                                         |
       | DOC,IRS,ITA,NOAA          | 2014-13420      | Notice        | Proposed Information Collection; Comment Request                   | 2014-06-09       | 7                      | 33040      | 33041    | 2           | https://www.federalregister.gov/articles/2014/06/09/2014-13420/proposed-information-collection-comment-request                   |
@@ -271,8 +271,8 @@ Feature: Search - redesign
   @javascript @a11y
   Scenario: Search without tabs nor related searches
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | first_name | last_name | domains        | use_redesigned_results_page |
-      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | whitehouse.gov | true                        |
+      | display_name | name    | contact_email | first_name | last_name | domains        |
+      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | whitehouse.gov |
     When I am on bar.gov's redesigned search page
     Then I should see "Everything"
     And I should not see "More"
@@ -281,9 +281,9 @@ Feature: Search - redesign
   @javascript @a11y
   Scenario: Search with tabs and one related site on menu
     Given the following Affiliates exist:
-      | display_name | name      | contact_email | first_name | last_name | domains        | use_redesigned_results_page |
-      | bar site     | bar.gov   | aff@bar.gov   | John       | Bar       | whitehouse.gov | true                        |
-      | other site   | other.gov | aff@bad.gov   | John       | Bad       | cdc.gov        | true                        |
+      | display_name | name      | contact_email | first_name | last_name | domains        |
+      | bar site     | bar.gov   | aff@bar.gov   | John       | Bar       | whitehouse.gov |
+      | other site   | other.gov | aff@bad.gov   | John       | Bad       | cdc.gov        |
     And affiliate "bar.gov" has the following document collections:
       | name   | prefixes               | is_navigable |
       | Topics | http://bar.gov/topics/ | true         |
@@ -298,10 +298,10 @@ Feature: Search - redesign
   @javascript @a11y
   Scenario: Search with tabs and more than one related site on menu
     Given the following Affiliates exist:
-      | display_name | name      | contact_email | first_name | last_name | domains        | use_redesigned_results_page |
-      | bar site     | bar.gov   | aff@bar.gov   | John       | Bar       | whitehouse.gov | true                        |
-      | other site   | other.gov | aff@bad.gov   | John       | Bad       | cdc.gov        | true                        |
-      | third site   | third.gov | third@bad.gov | Steven     | The Third | third.gov      | true                        |
+      | display_name | name      | contact_email | first_name | last_name | domains        |
+      | bar site     | bar.gov   | aff@bar.gov   | John       | Bar       | whitehouse.gov |
+      | other site   | other.gov | aff@bad.gov   | John       | Bad       | cdc.gov        |
+      | third site   | third.gov | third@bad.gov | Steven     | The Third | third.gov      |
     And affiliate "bar.gov" has the following document collections:
       | name   | prefixes               | is_navigable |
       | Topics | http://bar.gov/topics/ | true         |
@@ -319,10 +319,10 @@ Feature: Search - redesign
   @javascript @a11y
   Scenario: Search with too many tabs and multiple related sites
     Given the following Affiliates exist:
-      | display_name | name      | contact_email | first_name | last_name | domains        | use_redesigned_results_page |
-      | bar site     | bar.gov   | aff@bar.gov   | John       | Bar       | whitehouse.gov | true                        |
-      | other site   | other.gov | aff@bad.gov   | John       | Bad       | cdc.gov        | true                        |
-      | third site   | third.gov | third@bad.gov | Steven     | The Third | third.gov      | true                        |
+      | display_name | name      | contact_email | first_name | last_name | domains        |
+      | bar site     | bar.gov   | aff@bar.gov   | John       | Bar       | whitehouse.gov |
+      | other site   | other.gov | aff@bad.gov   | John       | Bad       | cdc.gov        |
+      | third site   | third.gov | third@bad.gov | Steven     | The Third | third.gov      |
     And affiliate "bar.gov" has the following document collections:
       | name                                | prefixes               | is_navigable |
       | Topics                              | http://bar.gov/topics/ | true         |
@@ -345,9 +345,9 @@ Feature: Search - redesign
   @javascript @a11y 
   Scenario: Video news search
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | locale | youtube_handles | use_redesigned_results_page     |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | usgovernment,whitehouse | true |
-      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | gobiernousa             | true |
+      | display_name | name          | contact_email    | first_name | last_name | locale | youtube_handles         |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | usgovernment,whitehouse |
+      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | gobiernousa             |
     And affiliate "en.agency.gov" has the following RSS feeds:
       | name   | url | is_navigable | is_managed |
       | Videos |     | true         | true       |
@@ -384,8 +384,8 @@ Feature: Search - redesign
   @javascript @a11y
   Scenario: Display an Alert on search page
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | locale |  use_redesigned_results_page |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     |       true                   |
+      | display_name | name          | contact_email    | first_name | last_name | locale |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     |
     Given the following Alert exists:
       | affiliate    | text                       | status   | title        |
       | en.agency.gov| New alert for the test aff | Active   |  Test Title  |
@@ -395,8 +395,8 @@ Feature: Search - redesign
   @javascript @a11y
   Scenario: Hide an Alert on search page
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | locale |  use_redesigned_results_page |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     |       true                   |
+      | display_name | name          | contact_email    | first_name | last_name | locale |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     |
     Given the following Alert exists:
       | affiliate    | text                       | status   | title      |
       | en.agency.gov| New alert for the test aff | Inactive | Test Title |
@@ -406,8 +406,8 @@ Feature: Search - redesign
   @javascript @a11y 
   Scenario: Searching with spelling suggestions
     Given the following Affiliates exist:
-      | display_name | name       | contact_email | first_name | last_name | domains | use_redesigned_results_page |
-      | agency site  | agency.gov | aff@bar.gov   | Jane       | Bar       | usa.gov | true |
+      | display_name | name       | contact_email | first_name | last_name | domains |
+      | agency site  | agency.gov | aff@bar.gov   | Jane       | Bar       | usa.gov |
     When I am on agency.gov's search page
     And I search for "qeury" in the redesigned search page
     Then I should see "Showing results for query"
@@ -416,8 +416,8 @@ Feature: Search - redesign
   @javascript @a11y 
   Scenario: Related searches module
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | locale | use_redesigned_results_page |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar     | en     | true  |
+      | display_name | name          | contact_email    | first_name | last_name | locale |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     |
     And the following SAYT Suggestions exist for en.agency.gov:
       | phrase                 |
       | president list         |
@@ -430,8 +430,8 @@ Feature: Search - redesign
   @javascript @a11y
   Scenario: Search for the results with file extension
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | first_name | last_name | gets_blended_results    | use_redesigned_results_page |
-      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | true                    | true                        |
+      | display_name | name    | contact_email | first_name | last_name | gets_blended_results    |
+      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | true                    |
     And the following IndexedDocuments exist:
       | title                   | description                          | url                               | affiliate | last_crawl_status | published_ago  |
       | The PDF document        | Within the last hour PDF on item     | http://p.whitehouse.gov/hour.pdf  | bar.gov   | OK                | 30 minutes ago |
@@ -448,8 +448,8 @@ Feature: Search - redesign
   @javascript @a11y
   Scenario: Search with site limits
     Given the following Affiliates exist:
-      | display_name | name       | contact_email | first_name | last_name | domains | use_redesigned_results_page |
-      | agency site  | agency.gov | aff@bar.gov   | Jane       | Bar       | usa.gov | true                        |
+      | display_name | name       | contact_email | first_name | last_name | domains |
+      | agency site  | agency.gov | aff@bar.gov   | Jane       | Bar       | usa.gov |
     When I am on agency.gov's search page with site limited to "www.epa.gov/news"
     And I fill in "Enter your search term" with "carbon emissions"
     And I press "Search"
@@ -458,8 +458,8 @@ Feature: Search - redesign
   @javascript @a11y
   Scenario: Search with custom no results page
     Given the following Affiliates exist:
-      | display_name | name           | contact_email    | first_name   | last_name | domains    | locale | additional_guidance_text     | use_redesigned_results_page |
-      | English site | search.gov     | admin@agency.gov | John         | Bar       | search.gov | en     | Sorry, there are no results. | true                        |
+      | display_name | name           | contact_email    | first_name   | last_name | domains    | locale | additional_guidance_text     |
+      | English site | search.gov     | admin@agency.gov | John         | Bar       | search.gov | en     | Sorry, there are no results. |
     And the "search.gov" affiliate has additional links for the no results module
     When I am on search.gov's search page
     And I fill in "Enter your search term" with "lkssldfkjsldfkjsld kfj"
