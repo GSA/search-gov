@@ -11,6 +11,7 @@ class SearchgovDomain < ApplicationRecord
   INDEXING_STOPPED = 'indexing stopped manually'
 
   GOOD_STATUS = [OK_STATUS, INDEXING_STARTED, INDEXING_STOPPED].freeze
+  INDEXABLE_STATUS = [OK_STATUS, INDEXING_STARTED].freeze
 
   before_validation(on: :create) { self.domain = domain&.downcase&.strip }
 
@@ -26,7 +27,7 @@ class SearchgovDomain < ApplicationRecord
   attr_readonly :domain
   attr_reader :response
 
-  scope :ok, -> { where(status: GOOD_STATUS) }
+  scope :ok, -> { where(status: INDEXABLE_STATUS) }
   scope :not_ok, -> { where.not(status: GOOD_STATUS).or(where(status: nil)) }
 
   def to_label
