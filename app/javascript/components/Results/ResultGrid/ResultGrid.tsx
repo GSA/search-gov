@@ -21,7 +21,8 @@ type Result = {
   youtubePublishedAt?: string,
   youtubeThumbnailUrl?: string,
   youtubeDuration?: string,
-  blendedModule?: string
+  blendedModule?: string,
+  tags?: string[]
 };
 
 interface ResultProps {
@@ -30,6 +31,7 @@ interface ResultProps {
   position: number;
   query: string;
   vertical: string
+  facetsEnabled?: boolean
 }
 
 const getDescription = (description: string) => {
@@ -46,7 +48,19 @@ const getFileType = (fileType?: string) => {
   return (<span className='filetype-label'>{fileType}</span>);
 };
 
-export const ResultGrid = ({ result, affiliate, query, position, vertical }: ResultProps) => {  
+const getFilterTags = (result: Result) => {
+  // To remove the dummy tags with integration once backend starts sending the data
+  const filterTags = result.tags || ['Small Business', 'Contracts'];
+  return (
+    <div className='filter-tags-wrapper'>
+      {
+        filterTags.map((filterTag, index) => <span className='filter-tag' key={index}>{filterTag}</span>)
+      }
+    </div>
+  );
+};
+
+export const ResultGrid = ({ result, affiliate, query, position, vertical, facetsEnabled }: ResultProps) => {  
   const URL_LENGTH = 80;
   const module = (() => {
     if (vertical === 'blended') {
@@ -84,6 +98,7 @@ export const ResultGrid = ({ result, affiliate, query, position, vertical }: Res
           <div className='result-desc'>
             {getDescription(result.description)}
             <div className='result-url-text'>{truncateUrl(result.url, URL_LENGTH)}</div>
+            {facetsEnabled && getFilterTags(result)}
           </div>
         </Grid>
       </ResultGridWrapper>
