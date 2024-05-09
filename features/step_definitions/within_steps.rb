@@ -10,6 +10,7 @@
   'in the active site main navigation': '.l-site-nav.main .active',
   'in the active site sub navigation': '.l-site-nav.sub .active',
   'in the SearchgovDomain URLs table': '#as_admin__searchgov_urls-active-scaffold',
+  'in the SearchgovDomain URLs header': '#as_admin__searchgov_urls-tbody',
   'in the SearchgovDomain Sitemaps table': '#as_admin__sitemaps-active-scaffold',
   # Named to avoid confusion with the SERP search form
   'in the super admin search form': '.search'
