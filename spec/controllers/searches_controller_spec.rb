@@ -3,6 +3,11 @@
 describe SearchesController do
   let(:affiliate) { affiliates(:usagov_affiliate) }
 
+  before do
+    affiliate.use_redesigned_results_page = false
+    affiliate.save(validate: false)
+  end
+
   context 'when showing a new search' do
     render_views
     context 'when searching in English' do
@@ -87,6 +92,8 @@ describe SearchesController do
     let(:affiliate) { affiliates(:inactive_affiliate) }
 
     before do
+      affiliate.use_redesigned_results_page = false
+      affiliate.save(validate: false)
       get :index,
           params: {
             query: 'gov',
