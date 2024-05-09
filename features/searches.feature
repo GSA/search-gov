@@ -7,16 +7,16 @@ Feature: Search
 
   Scenario: Search with a blank query on an affiliate page
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | first_name | last_name |
-      | bar site         | bar.gov          | aff@bar.gov           | John       | Bar       |
+      | display_name     | name             | contact_email         | first_name | last_name | use_redesigned_results_page |
+      | bar site         | bar.gov          | aff@bar.gov           | John       | Bar       | false                       |
     When I am on bar.gov's search page
     And I press "Search" within the search box
     Then I should see "Please enter a search term in the box above."
 
   Scenario: Search with no results
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | first_name | last_name |
-      | bar site         | bar.gov          | aff@bar.gov           | John       | Bar       |
+      | display_name     | name             | contact_email         | first_name | last_name | use_redesigned_results_page |
+      | bar site         | bar.gov          | aff@bar.gov           | John       | Bar       | false                       |
     When I am on bar.gov's search page
     And I fill in "Enter your search term" with "foobarbazbiz"
     And I press "Search" within the search box
@@ -27,8 +27,8 @@ Feature: Search
     # So if it breaks, check the urls in the VCR cassette recording from the search:
     # features/vcr_cassettes/Legacy_Search/Searching_a_domain_with_Bing_results_that_match_a_specific_news_item.yml
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | first_name | last_name | domains        |
-      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | whitehouse.gov |
+      | display_name | name    | contact_email | first_name | last_name | domains        | use_redesigned_results_page |
+      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | whitehouse.gov | false                       |
     And affiliate "bar.gov" has the following RSS feeds:
       | name  | url                                  | is_navigable |
       | Press | http://www.whitehouse.gov/feed/press | true         |
@@ -41,8 +41,8 @@ Feature: Search
 
   Scenario: No results when searching with active RSS feeds
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | first_name | last_name    |
-      | bar site     | bar.gov | aff@bar.gov   | John       |Bar           |
+      | display_name | name    | contact_email | first_name | last_name    | use_redesigned_results_page |
+      | bar site     | bar.gov | aff@bar.gov   | John       |Bar           | false                       |
     And affiliate "bar.gov" has the following RSS feeds:
       | name          | url                                                | is_navigable |
       | Press         | http://www.whitehouse.gov/feed/press               | true         |
@@ -67,8 +67,8 @@ Feature: Search
 
   Scenario: No results when searching on Spanish site with active RSS feeds
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | first_name | last_name | locale |
-      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | es     |
+      | display_name | name    | contact_email | first_name | last_name | locale | use_redesigned_results_page |
+      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | es     | false                       |
     And affiliate "bar.gov" has the following RSS feeds:
       | name          | url                                                | is_navigable |
       | Press         | http://www.whitehouse.gov/feed/press               | true         |
@@ -93,8 +93,8 @@ Feature: Search
 
   Scenario: Searching on a site with media RSS
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | first_name | last_name |
-      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       |
+      | display_name | name    | contact_email | first_name | last_name | use_redesigned_results_page |
+      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | false                       |
     And affiliate "bar.gov" has the following RSS feeds:
       | name   | url                                   | is_navigable | show_only_media_content |
       | Photos | http://www.whitehouse.gov/feed/photos | true         | true                    |
@@ -110,8 +110,8 @@ Feature: Search
 
   Scenario: Visiting English affiliate search with multiple domains
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | first_name | last_name | domains                |
-      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | whitehouse.gov,usa.gov |
+      | display_name | name    | contact_email | first_name | last_name | domains                | use_redesigned_results_page |
+      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | whitehouse.gov,usa.gov | false                       |
     When I am on bar.gov's search page
     And I fill in "Enter your search term" with "president"
     And I press "Search" within the search box
@@ -119,8 +119,8 @@ Feature: Search
 
   Scenario: Visiting Spanish affiliate search with multiple domains
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | first_name | last_name | domains                | locale | is_image_search_navigable | is_bing_image_search_enabled |
-      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | whitehouse.gov,usa.gov | es     | true                      | true                         |
+      | display_name | name    | contact_email | first_name | last_name | domains                | locale | is_image_search_navigable | is_bing_image_search_enabled | use_redesigned_results_page |
+      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | whitehouse.gov,usa.gov | es     | true                      | true                         | false                       |
     When I am on bar.gov's search page
     And I fill in "Ingrese su búsqueda" with "president"
     And I press "Buscar" within the search box
@@ -133,8 +133,8 @@ Feature: Search
   @javascript
   Scenario: Searchers see English Medline Govbox
     Given the following Affiliates exist:
-      | display_name | name        | contact_email | first_name | last_name | domains | is_medline_govbox_enabled |
-      | english site | english-nih | aff@bar.gov   | John       | Bar       | nih.gov | true                      |
+      | display_name | name        | contact_email | first_name | last_name | domains | is_medline_govbox_enabled | use_redesigned_results_page |
+      | english site | english-nih | aff@bar.gov   | John       | Bar       | nih.gov | true                      | false                       |
     And the following Medline Topics exist:
       | medline_title                        | medline_tid | locale | summary_html                                                     |
       | Hippopotomonstrosesquippedaliophobia | 67890       | es     | Hippopotomonstrosesquippedaliophobia y otros miedos irracionales |
@@ -168,8 +168,8 @@ Feature: Search
   @javascript
   Scenario: Searchers see Spanish Medline Govbox
     Given the following Affiliates exist:
-      | display_name | name        | contact_email | first_name | last_name | domains | is_medline_govbox_enabled | locale |
-      | spanish site | spanish-nih | aff@bar.gov   | John       | Bar       | nih.gov | true                      | es     |
+      | display_name | name        | contact_email | first_name | last_name | domains | is_medline_govbox_enabled | locale | use_redesigned_results_page |
+      | spanish site | spanish-nih | aff@bar.gov   | John       | Bar       | nih.gov | true                      | es     | false                       |
     And the following Medline Topics exist:
       | medline_title                        | medline_tid | locale | summary_html                                                     |
       | Hippopotomonstrosesquippedaliophobia | 12345       | en     | Hippopotomonstrosesquippedaliophobia and Other Irrational Fears  |
@@ -198,8 +198,8 @@ Feature: Search
 
   Scenario: When a searcher clicks on a collection and the query is blank
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | first_name | last_name  |
-      | aff site     | aff.gov | aff@bar.gov   | John       | Bar        |
+      | display_name | name    | contact_email | first_name | last_name  | use_redesigned_results_page |
+      | aff site     | aff.gov | aff@bar.gov   | John       | Bar        | false                       |
     And affiliate "aff.gov" has the following document collections:
       | name   | prefixes               | is_navigable |
       | Topics | http://aff.gov/topics/ | true         |
@@ -209,8 +209,8 @@ Feature: Search
 
   Scenario: When a searcher on an English site clicks on an RSS Feed and the query is blank
     Given the following Affiliates exist:
-      | display_name     | name       | contact_email | first_name | last_name | locale | youtube_handles |
-      | bar site         | bar.gov    | aff@bar.gov   | John       | Bar       | en     | en_agency       |
+      | display_name     | name       | contact_email | first_name | last_name | locale | youtube_handles | use_redesigned_results_page |
+      | bar site         | bar.gov    | aff@bar.gov   | John       | Bar       | en     | en_agency       | false                       |
     And affiliate "bar.gov" has the following RSS feeds:
       | name   | url                                  | is_navigable | is_managed |
       | Press  | http://www.whitehouse.gov/feed/press | true         |            |
@@ -242,8 +242,8 @@ Feature: Search
 
   Scenario: When a searcher on a Spanish site clicks on an RSS Feed and the query is blank
     Given the following Affiliates exist:
-      | display_name     | name       | contact_email | first_name | last_name | locale | youtube_handles |
-      | Spanish bar site | es.bar.gov | aff@bar.gov   | John       | Bar       | es     | es_agency       |
+      | display_name     | name       | contact_email | first_name | last_name | locale | youtube_handles | use_redesigned_results_page |
+      | Spanish bar site | es.bar.gov | aff@bar.gov   | John       | Bar       | es     | es_agency       | false                       |
     And affiliate "es.bar.gov" has the following RSS feeds:
       | name           | url                                  | is_navigable | is_managed |
       | Press          | http://www.whitehouse.gov/feed/press | true         |            |
@@ -274,8 +274,8 @@ Feature: Search
 
   Scenario: Searching indexed document collections
     Given the following Affiliates exist:
-      | display_name | name       | contact_email | first_name | last_name | domains        |
-      | agency site  | agency.gov | aff@bar.gov   | John       | Bar     | whitehouse.gov |
+      | display_name | name       | contact_email | first_name | last_name | domains        | use_redesigned_results_page |
+      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | whitehouse.gov | false                       |
     And affiliate "agency.gov" has the following document collections:
       | name      | prefixes                 | is_navigable |
       | Petitions | petitions.whitehouse.gov | true         |
@@ -291,8 +291,8 @@ Feature: Search
 
   Scenario: Searching on non navigable document collection
     Given the following Affiliates exist:
-      | display_name | name       | contact_email | first_name | last_name | domains |
-      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov |
+      | display_name | name       | contact_email | first_name | last_name | domains | use_redesigned_results_page |
+      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov | false                       |
     And affiliate "agency.gov" has the following document collections:
       | name | prefixes                  | is_navigable |
       | Blog | https://www.sba.gov/blogs | false        |
@@ -307,8 +307,8 @@ Feature: Search
 
   Scenario: Searching with malformed query
     Given the following Affiliates exist:
-      | display_name | name       | contact_email | first_name | last_name | is_image_search_navigable | is_bing_image_search_enabled |
-      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | true                      | true                         |
+      | display_name | name       | contact_email | first_name | last_name | is_image_search_navigable | is_bing_image_search_enabled | use_redesigned_results_page |
+      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | true                      | true                         | false                       |
     When I am on agency.gov's search page
     And I search for "<b>hello</b><script>script</script>"
     Then I should see "hello"
@@ -317,8 +317,8 @@ Feature: Search
 
   Scenario: Searching for site specific results using query
     Given the following Affiliates exist:
-      | display_name | name       | contact_email | first_name | last_name | domains |
-      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov |
+      | display_name | name       | contact_email | first_name | last_name | domains | use_redesigned_results_page |
+      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov | false                       |
     When I am on agency.gov's search page
     And I search for "jobs site:www.usa.gov"
     Then every result URL should match "usa.gov"
@@ -327,9 +327,9 @@ Feature: Search
 
   Scenario: Affiliate search on affiliate with connections
     Given the following Affiliates exist:
-      | display_name | name       | contact_email | first_name | last_name | domains |
-      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | epa.gov |
-      | other site   | other.gov  | aff@bad.gov   | John       | Bad       | cdc.gov |
+      | display_name | name       | contact_email | first_name | last_name | domains | use_redesigned_results_page |
+      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | epa.gov | false                       |
+      | other site   | other.gov  | aff@bad.gov   | John       | Bad       | cdc.gov | false                       |
     And the following Connections exist for the affiliate "agency.gov":
     | connected_affiliate   |   display_name    |
     | other.gov             |  Other Site       |
@@ -345,8 +345,8 @@ Feature: Search
 
   Scenario: Searching on sites with Featured Collections
     Given the following Affiliates exist:
-      | display_name   | name          | contact_email   | first_name | last_name | locale |
-      | agency site    | agency.gov    | john@agency.gov | John       | Bar       | en     |
+      | display_name   | name          | contact_email   | first_name | last_name | locale | use_redesigned_results_page |
+      | agency site    | agency.gov    | john@agency.gov | John       | Bar       | en     | false                       |
     And the following featured collections exist for the affiliate "agency.gov":
       | title           | title_url                         | status   | publish_start_on | publish_end_on |
       | Tornado Warning | http://agency.gov/tornado-warning | active   | 2013-07-01       |                |
@@ -366,9 +366,9 @@ Feature: Search
 
   Scenario: Searching on sites with Boosted Contents
     Given the following Affiliates exist:
-      | display_name   | name          | contact_email   | first_name| last_name | locale |
-      | agency site    | agency.gov    | john@agency.gov | John      | Bar       | en     |
-      | es agency site | es.agency.gov | john@agency.gov | John      | Bar       | es     |
+      | display_name   | name          | contact_email   | first_name| last_name | locale | use_redesigned_results_page |
+      | agency site    | agency.gov    | john@agency.gov | John      | Bar       | en     | false                       |
+      | es agency site | es.agency.gov | john@agency.gov | John      | Bar       | es     | false                       |
     And the following Boosted Content entries exist for the affiliate "agency.gov"
       | url                                        | title                               | description        | status   | publish_start_on | publish_end_on |
       | http://search.gov/releases/2013-05-31.html | Notes for Week Ending May 31, 2013  | multimedia gallery | active   | 2013-08-01       | 2032-01-01     |
@@ -389,8 +389,8 @@ Feature: Search
 
   Scenario: Entering a blank advanced search
     Given the following Affiliates exist:
-      | display_name | name   | contact_email | first_name | last_name |
-      | USA.gov      | usagov | aff@bar.gov   | John       | Bar       |
+      | display_name | name   | contact_email | first_name | last_name | use_redesigned_results_page |
+      | USA.gov      | usagov | aff@bar.gov   | John       | Bar       | false                       |
     When I am on usagov's advanced search page
     And I press "Search"
     Then I should be on the search page
@@ -399,8 +399,8 @@ Feature: Search
   @javascript
   Scenario: Searching with type-ahead suggestions
     Given the following Affiliates exist:
-      | display_name | name       | contact_email | first_name | last_name | domains |
-      | agency site  | agency.gov | aff@bar.gov   | Jane       | Bar       | usa.gov |
+      | display_name | name       | contact_email | first_name | last_name | domains | use_redesigned_results_page |
+      | agency site  | agency.gov | aff@bar.gov   | Jane       | Bar       | usa.gov | false                       |
     And the following SAYT Suggestions exist for agency.gov:
       | phrase                |
       | popular search phrase |
@@ -410,8 +410,8 @@ Feature: Search
 
   Scenario: Searching with spelling suggestions
     Given the following Affiliates exist:
-      | display_name | name       | contact_email | first_name | last_name | domains |
-      | agency site  | agency.gov | aff@bar.gov   | Jane       | Bar       | usa.gov |
+      | display_name | name       | contact_email | first_name | last_name | domains | use_redesigned_results_page |
+      | agency site  | agency.gov | aff@bar.gov   | Jane       | Bar       | usa.gov | false                       |
     When I am on agency.gov's search page
     And I search for "qeury"
     Then I should see "Showing results for query"

@@ -9,8 +9,8 @@ Feature: Manage Content
 
   Scenario: View best bets graphics
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
+      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And the following featured collections exist for the affiliate "agency.gov":
       | title           | title_url                         | status   | publish_start_on | publish_end_on | keywords     |
       | Tornado Warning | http://agency.gov/tornado-warning | active   | 2013-07-01       |                |              |
@@ -29,8 +29,8 @@ Feature: Manage Content
 
   Scenario: Filtering best bets graphics
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
+      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And the following featured collections exist for the affiliate "agency.gov":
       | title           | title_url                         | status   | publish_start_on | publish_end_on | keywords     |
       | Tornado Warning | http://agency.gov/tornado-warning | active   | 2013-07-01       |                |              |
@@ -52,8 +52,8 @@ Feature: Manage Content
 
   Scenario: Add/edit/remove best bets graphics
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
+      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "Best Bets: Graphics" within the Admin Center content
@@ -119,8 +119,8 @@ Feature: Manage Content
 
   Scenario: View best bets texts
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
+      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     When the following Boosted Content entries exist for the affiliate "agency.gov"
       | url                                        | title                               | description        | status   | publish_start_on | publish_end_on |
       | http://search.gov/releases/2013-05-31.html | Notes for Week Ending May 31, 2013  | multimedia gallery | active   | 2013-08-01       | 2022-01-01     |
@@ -136,8 +136,8 @@ Feature: Manage Content
 
   Scenario: Filtering best bets texts
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
+      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     When the following Boosted Content entries exist for the affiliate "agency.gov"
       | url                                        | title                               | description        | status   | publish_start_on | publish_end_on |
       | http://search.gov/releases/2013-05-31.html | Notes for Week Ending May 31, 2013  | multimedia gallery | active   | 2013-08-01       | 2022-01-01     |
@@ -158,8 +158,8 @@ Feature: Manage Content
 
   Scenario: Add/edit/remove best bets texts
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
+      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "Best Bets: Text" within the Admin Center content
@@ -197,8 +197,8 @@ Feature: Manage Content
 
   Scenario: Bulk upload best bets texts
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
+      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "Best Bets: Text" within the Admin Center content
@@ -210,8 +210,8 @@ Feature: Manage Content
 
   Scenario: View Collections
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   |first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John      | Bar       |
+      | display_name | name       | contact_email   |first_name | last_name | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John      | Bar       | false                       |
     And affiliate "agency.gov" has the following document collections:
       | name | prefixes                            |
       | News | agency1.gov/news/                   |
@@ -228,8 +228,8 @@ Feature: Manage Content
 
   Scenario: Add/edit/remove Collection
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
+      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "Collection" within the Admin Center content
@@ -265,8 +265,8 @@ Feature: Manage Content
 
   Scenario: View Routed Queries
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
+      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And affiliate "agency.gov" has the following routed queries:
       | description                     | url                                                                            | keywords                        |
       | Free Money                      | https://www.usa.gov/unclaimed-money                                            | free money, unclaimed money     | 
@@ -280,8 +280,8 @@ Feature: Manage Content
 
   Scenario: Add/Edit/Remove Routed Query
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar          |
+      | display_name | name       | contact_email   | first_name | last_name    | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar          | false                       |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "Routed Queries" within the Admin Center content
@@ -308,8 +308,8 @@ Feature: Manage Content
 
   Scenario: View domains
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
+      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     When the following "site domains" exist for the affiliate agency.gov:
       | domain          |
       | whitehouse.gov  |
@@ -328,8 +328,8 @@ Feature: Manage Content
 
   Scenario: Add/edit/remove domains
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
+      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "Domains" within the Admin Center content
@@ -351,8 +351,8 @@ Feature: Manage Content
 
   Scenario: View i14y drawers
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | gets_i14y_results |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | true              |
+      | display_name | name       | contact_email   | first_name | last_name | gets_i14y_results | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | true              | false                       |
     And the following "i14y drawers" exist for the affiliate agency.gov:
       | handle      | token         | description           |
       | blog_posts  | token 1       | All our blog posts    |
@@ -378,8 +378,8 @@ Feature: Manage Content
 
   Scenario: Add/edit/remove i14y drawers
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | gets_i14y_results |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | true              |
+      | display_name | name       | contact_email   | first_name | last_name | gets_i14y_results | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | true              | false                       |
     And we don't want observers to run during these cucumber scenarios
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
@@ -405,9 +405,9 @@ Feature: Manage Content
 
   Scenario: Sharing i14y drawers
     Given the following Affiliates exist:
-      | display_name | name        | contact_email    | first_name | last_name | gets_i14y_results |
-      | agency site  | agency.gov  | john@agency.gov  | John Bar   | bar       | true              |
-      | another site | another.gov | jane@another.gov | Jane Bar   | bar       | true              |
+      | display_name | name        | contact_email    | first_name | last_name | gets_i14y_results | use_redesigned_results_page |
+      | agency site  | agency.gov  | john@agency.gov  | John Bar   | bar       | true              | false                       |
+      | another site | another.gov | jane@another.gov | Jane Bar   | bar       | true              | false                       |
     And I am logged in with email "affiliate_admin@fixtures.org"
     And we don't want observers to run during these cucumber scenarios
     And the following "i14y drawers" exist for the affiliate agency.gov:
@@ -425,8 +425,8 @@ Feature: Manage Content
 
   Scenario: View Filter URLs
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
+      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And the following Excluded URLs exist for the site "agency.gov":
       | url                     |
       | http://aff.gov/bad-url1 |
@@ -439,8 +439,8 @@ Feature: Manage Content
 
   Scenario: Add/remove Filter URL
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
+      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Filter URLs page
     And I follow "Add Filter URL"
@@ -454,8 +454,8 @@ Feature: Manage Content
 
   Scenario: Add/remove Filter Tag
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | gets_i14y_results |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | true              |
+      | display_name | name       | contact_email   | first_name | last_name | gets_i14y_results | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | true              | false                       |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Filter Tags page
     And I follow "Add Filter Tag"
@@ -483,8 +483,8 @@ Feature: Manage Content
 
   Scenario: View Flickr URLs
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
+      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     When the following flickr URLs exist for the site "agency.gov":
       | url                                      |
       | http://www.flickr.com/photos/whitehouse/ |
@@ -498,8 +498,8 @@ Feature: Manage Content
 
   Scenario: Add/remove Flickr URL
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
+      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "Flickr" within the Admin Center content
@@ -512,8 +512,8 @@ Feature: Manage Content
 
   Scenario: View RSS
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
+      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And affiliate "agency.gov" has the following RSS feeds:
       | name   | url                                                     | last_crawl_status | last_crawled_at | show_only_media_content | is_managed |
       | News   | search.gov/all.atom                                     | OK                | 2013-01-01      |                         |            |
@@ -539,8 +539,8 @@ Feature: Manage Content
 
   Scenario: Add/edit/remove RSS Feed
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
+      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
     And www.fda.gov has valid RSS feeds
     When I go to the agency.gov's Manage Content page
@@ -570,8 +570,8 @@ Feature: Manage Content
 
   Scenario: Edit/remove Supplemental Feed
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
+      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Supplemental URLs page
     And I access the "Advanced" dropdown menu
@@ -591,8 +591,8 @@ Feature: Manage Content
 
   Scenario: View Supplemental URLs
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
+      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And the following IndexedDocuments exist:
       | url                                             | title                | description                     | affiliate  | last_crawled_at | last_crawl_status | source |
       | http://aff.gov/extremelysuperlongurl/space-suit | Space Suit Evolution | description text for space suit | agency.gov | 11/02/2011      | OK                | manual |
@@ -608,8 +608,8 @@ Feature: Manage Content
 
   Scenario: Filtering Supplemental URLs
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
+      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And the following IndexedDocuments exist:
       | url                                             | title                | description                     | affiliate  | last_crawled_at | last_crawl_status | source |
       | http://aff.gov/extremelysuperlongurl/space-suit | Space Suit Evolution | description text for space suit | agency.gov | 11/02/2011      | OK                | manual |
@@ -630,8 +630,8 @@ Feature: Manage Content
 
   Scenario: Add/edit/remove Supplemental URL
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
+      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Supplemental URLs page
     And I follow "Add Supplemental URL"
@@ -652,8 +652,8 @@ Feature: Manage Content
 
   Scenario: View YouTube Channels
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
+      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And the following YouTube channels exist for the site "agency.gov":
       | title        | channel_id              |
       | USGovernment | usgovernment_channel_id |
@@ -667,8 +667,8 @@ Feature: Manage Content
 
   Scenario: Add/remove YouTube Channel
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
+      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "YouTube" within the Admin Center content
