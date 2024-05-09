@@ -1,15 +1,23 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
 
 import { VerticalNav } from './../VerticalNav/VerticalNav';
 import { Alert } from './../Alert/Alert';
-import { getUriWithParam } from '../../utils';
+import { getUriWithParam, checkColorContrastAndUpdateStyle } from '../../utils';
 import { LanguageContext } from '../../contexts/LanguageContext';
 import { NavigationLink } from '../SearchResultsLayout';
 
 import './SearchBar.css';
 
-const logoImg = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0Ij48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PHBhdGggZmlsbD0iI2ZmZmZmZiIgZD0iTTE1LjUgMTRoLS43OWwtLjI4LS4yN0MxNS40MSAxMi41OSAxNiAxMS4xMSAxNiA5LjUgMTYgNS45MSAxMy4wOSAzIDkuNSAzUzMgNS45MSAzIDkuNSA1LjkxIDE2IDkuNSAxNmMxLjYxIDAgMy4wOS0uNTkgNC4yMy0xLjU3bC4yNy4yOHYuNzlsNSA0Ljk5TDIwLjQ5IDE5bC00Ljk5LTV6bS02IDBDNy4wMSAxNCA1IDExLjk5IDUgOS41UzcuMDEgNSA5LjUgNSAxNCA3LjAxIDE0IDkuNSAxMS45OSAxNCA5LjUgMTR6Ii8+PC9zdmc+';
+const searchMagnifySvgIcon = () => {
+  return (
+    <svg role="img" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" className="usa-search__submit-icon">
+      <title>Search</title>
+      <path d="M0 0h24v24H0z" fill="none"/>
+      <path className="search-icon-glass" fill="#FFFFFF" d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    </svg>
+  );
+};
 
 interface SearchBarProps {
   query?: string;
@@ -38,6 +46,13 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [],
     window.location.assign(getUriWithParam(window.location.href, searchUrlParam, searchQuery));
   };
 
+  useEffect(() => {
+    checkColorContrastAndUpdateStyle({
+      backgroundItemClass: '.usa-search .usa-button',
+      foregroundItemClass: '.usa-search .usa-button .search-icon-glass'
+    });
+  }, []);
+
   return (
     <div id="serp-search-bar-wrapper">
       <GridContainer>
@@ -61,7 +76,7 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [],
                 data-testid="search-field" 
               />
               <button className="usa-button" type="submit" data-testid="search-submit-btn">
-                <img src={logoImg} className="usa-search__submit-icon" alt="Search"/>
+                {searchMagnifySvgIcon()}
               </button>
             </form>
           </Grid>

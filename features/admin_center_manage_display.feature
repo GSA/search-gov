@@ -1,8 +1,8 @@
 Feature: Manage Display
   Scenario: Editing Sidebar Settings on a new site
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | is_bing_image_search_enabled |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | true                         |
+      | display_name | name       | contact_email   | first_name | last_name | is_bing_image_search_enabled | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | true                         | false                       |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Display page
     Then I should see "Image Search Label 0"
@@ -26,8 +26,8 @@ Feature: Manage Display
     And I should see "Rss Feed 1"
 
     When the following Affiliates exist:
-      | display_name | name             | contact_email   | first_name | last_name | is_bing_image_search_enabled |
-      | agency site  | bingimageenabled | john@agency.gov | John       | Bar       | true                         |
+      | display_name | name             | contact_email   | first_name | last_name | is_bing_image_search_enabled | use_redesigned_results_page |
+      | agency site  | bingimageenabled | john@agency.gov | John       | Bar       | true                         | false                       |
     And affiliate "bingimageenabled" has the following RSS feeds:
       | name  | url                 | show_only_media_content | position | oasis_mrss_name |
       | Media | photos.gov/all.atom | true                    | 200      | 100             |
@@ -37,8 +37,8 @@ Feature: Manage Display
     And I should not see "Rss Feed 1"
 
     When the following Affiliates exist:
-      | display_name | name                | contact_email   | first_name | last_name | is_bing_image_search_enabled |
-      | agency site  | bing-image-disabled | john@agency.gov | John       | Bar       | false                        |
+      | display_name | name                | contact_email   | first_name | last_name | is_bing_image_search_enabled | use_redesigned_results_page |
+      | agency site  | bing-image-disabled | john@agency.gov | John       | Bar       | false                        | false                       |
     And affiliate "bing-image-disabled" has the following RSS feeds:
       | name   | url                 | show_only_media_content | position | oasis_mrss_name |
       | Photos | photos.gov/all.atom | true                    | 200      | 100             |
@@ -52,8 +52,8 @@ Feature: Manage Display
   @javascript
   Scenario: Editing GovBoxes Settings
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | agency_abbreviation | gets_i14y_results |
-      | agency site  | agency.gov | john@agency.gov | John       |Bar        | DOC                 | true              |
+      | display_name | name       | contact_email   | first_name | last_name | agency_abbreviation | gets_i14y_results | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       |Bar        | DOC                 | true              | false                       |
     And affiliate "agency.gov" has the following document collections:
       | name | prefixes         |
       | Blog | agency.gov/blog/ |
@@ -104,10 +104,10 @@ Feature: Manage Display
   @javascript
   Scenario: Editing Related Sites
     Given the following Affiliates exist:
-      | display_name  | name         | contact_email   | first_name | last_name |
-      | agency site 1 | 1.agency.gov | john@agency.gov | John       | Bar       |
-      | agency site 2 | 2.agency.gov | john@agency.gov | John       | Bar       |
-      | agency site 3 | 3.agency.gov | john@agency.gov | John       | Bar       |
+      | display_name  | name         | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | agency site 1 | 1.agency.gov | john@agency.gov | John       | Bar       | false                       |
+      | agency site 2 | 2.agency.gov | john@agency.gov | John       | Bar       | false                       |
+      | agency site 3 | 3.agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
     When I go to the 1.agency.gov's Manage Display page
     And I fill in the following:
@@ -136,8 +136,8 @@ Feature: Manage Display
   @javascript
   Scenario: Editing Font & Colors on Affiliate
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
+      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Font & Colors page
     Then the "Font Family" field should contain "Default"
@@ -177,8 +177,8 @@ Feature: Manage Display
   @javascript
   Scenario: Editing Image Assets
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |  website                |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |  http://main.agency.gov |
+      | display_name | name       | contact_email   | first_name | last_name |  website                | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       |  http://main.agency.gov | false                       |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Image Assets page
     And I fill in "Favicon URL" with "https://d3qcdigd1fhos0.cloudfront.net/blog/img/favicon.ico"
@@ -216,8 +216,8 @@ Feature: Manage Display
   @javascript
   Scenario: Editing Header & Footer
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | footer_fragment                   |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | <strong>my HTML fragment</strong> |
+      | display_name | name       | contact_email   | first_name | last_name | footer_fragment                   | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | <strong>my HTML fragment</strong> | false                       |
     And affiliate "agency.gov" has the following document collections:
       | name                 | prefixes             | position | is_navigable |
       | Active site search   | http://apps.usa.gov/ | 3        | true         |
@@ -311,8 +311,8 @@ Feature: Manage Display
   @javascript
   Scenario: Error when Editing Header & Footer
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name   | last_name |
-      | agency site  | agency.gov | john@agency.gov | John         | Bar       |
+      | display_name | name       | contact_email   | first_name   | last_name | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John         | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Header & Footer page
     And I fill in the following:
@@ -325,8 +325,8 @@ Feature: Manage Display
     @javascript
     Scenario: Editing No Results Page
       Given the following Affiliates exist:
-        | display_name | name       | contact_email   | first_name   | last_name | website                    |
-        | agency site  | agency.gov | john@agency.gov | John         | Bar       | http://main.agency.gov     |
+        | display_name | name       | contact_email   | first_name   | last_name | website                    | use_redesigned_results_page |
+        | agency site  | agency.gov | john@agency.gov | John         | Bar       | http://main.agency.gov     | false                       |
       And I am logged in with email "john@agency.gov"
       When I go to the agency.gov's No Results Page page
 
@@ -384,8 +384,8 @@ Feature: Manage Display
   @javascript
   Scenario: Errors when Editing No Results Page
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | website                |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | http://main.agency.gov |
+      | display_name | name       | contact_email   | first_name | last_name | website                | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | http://main.agency.gov | false                       |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's No Results Page page
 
@@ -416,8 +416,8 @@ Feature: Manage Display
   @javascript
   Scenario: Add/edit/remove search page alert
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name   | last_name |
-      | agency site  | agency.gov | john@agency.gov | John         | Bar       |
+      | display_name | name       | contact_email   | first_name   | last_name | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John         | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Display page
     And I follow "Search Page Alert"
@@ -656,8 +656,8 @@ Feature: Manage Display
 
   Scenario: Display sub navigation links when "Use Redesigned Results Page" is false
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
+      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Display page
     Then I should see "Visual design (new)"
