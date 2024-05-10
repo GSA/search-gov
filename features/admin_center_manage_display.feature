@@ -460,7 +460,6 @@ Feature: Manage Display
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Visual Design page
     Then I should see "Visual design (new)"
-    And the page body should not contain "These settings are for preview purposes only."
     And I should see "Fonts & Colors" within the navigation tabs
     And I should see "Results Format" within the navigation tabs
     And I should see "Image Assets" within the navigation tabs
@@ -641,7 +640,6 @@ Feature: Manage Display
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Visual Design page
     Then I should see "Visual design (new)"
-    And the page body should contain "These settings are for preview purposes only."
 
   Scenario: Display sub navigation links when "Use Redesigned Results Page" is true
     Given the following Affiliates exist:
@@ -653,18 +651,3 @@ Feature: Manage Display
     And I should not see a link to "Legacy Font & Colors" in the active site sub navigation
     And I should not see a link to "Legacy Image Assets" in the active site sub navigation
     And I should not see a link to "Legacy Header & Footer" in the active site sub navigation
-
-  Scenario: Display sub navigation links when "Use Redesigned Results Page" is false
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Manage Display page
-    Then I should see "Visual design (new)"
-    And the page body should not contain "These settings are for preview purposes only."
-    And I follow "Legacy Font & Colors"
-    And I should see a link to "Legacy Font & Colors" in the active site sub navigation
-    And I follow "Legacy Image Assets"
-    And I should see a link to "Legacy Image Assets" in the active site sub navigation
-    And I follow "Legacy Header & Footer"
-    And I should see a link to "Legacy Header & Footer" in the active site sub navigation

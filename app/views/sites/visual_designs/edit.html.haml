@@ -13,9 +13,6 @@
   = render_flash_message
   = render_error_messages(@site)
 
-  - unless @site.use_redesigned_results_page
-    %p= t('admin_center.sites.visual_designs.edit.preview_warning', email: mail_to(SUPPORT_EMAIL_ADDRESS)).html_safe
-
   %ul.navigation_tabs
     %li
       %h3
