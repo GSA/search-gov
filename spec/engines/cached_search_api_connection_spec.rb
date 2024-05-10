@@ -33,16 +33,18 @@ describe CachedSearchApiConnection do
   describe '#get' do
     context 'when response has not been cached' do
       it 'calls the api' do
-        expect(cached_connection.connection).to receive(:get).with(endpoint, params)
+        expect(cached_connection.connection).to have_received(:get).with(endpoint, params)
 
         cached_connection.get(endpoint, params)
       end
     end
 
     context 'when response has been cached' do
-      it 'calls the api' do
+      before do
         allow(Rails.cache).to receive(:fetch).and_return(response)
+      end
 
+      it 'returns cached response' do
         expect(cached_connection.get(endpoint, params)).to eq response
       end
     end
