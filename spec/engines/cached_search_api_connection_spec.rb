@@ -12,6 +12,7 @@ describe CachedSearchApiConnection do
     it 'uses the desired handlers in the expected order' do
       expect(connection.builder.handlers).to eq(
         [
+          Faraday::Response::Logger,
           FaradayMiddleware::EncodeJson,
           FaradayMiddleware::ExceptionNotifier,
           Faraday::Response::RaiseError,

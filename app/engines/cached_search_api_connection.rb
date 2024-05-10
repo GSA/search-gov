@@ -21,12 +21,12 @@ class CachedSearchApiConnection
 
   def connection
     @connection ||= Faraday.new(@host) do |conn|
+      conn.response(:logger)
       conn.request(:json)
       conn.use(FaradayMiddleware::ExceptionNotifier, [namespace])
       conn.response(:raise_error)
       conn.response(:rashify)
       conn.response(:json)
-      conn.response(:logger)
       conn.headers[:user_agent] = 'USASearch'
 
       ExternalFaraday.configure_connection(namespace, conn)
