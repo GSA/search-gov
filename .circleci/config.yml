@@ -288,6 +288,8 @@ jobs:
         type: string
       mysql_version:
         type: string
+      node_version:
+        type: string
 
     executor: 
       name: test_executor
