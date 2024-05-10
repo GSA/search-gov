@@ -21,8 +21,8 @@ Feature:  Administration
 
   Scenario: Visiting the affiliate admin page as an admin
     Given the following Affiliates exist:
-      | display_name | name       | contact_email | first_name | last_name | website                |
-      | agency site  | agency.gov | one@foo.gov   | One        | Foo       | http://beta.agency.gov |
+      | display_name | name       | contact_email | first_name | last_name | website                | use_redesigned_results_page |
+      | agency site  | agency.gov | one@foo.gov   | One        | Foo       | http://beta.agency.gov | false                       |
     And the following "site domains" exist for the affiliate agency.gov:
       | domain               | site_name      |
       | www1.agency-site.gov | Agency Website |
@@ -46,8 +46,8 @@ Feature:  Administration
   @javascript
   Scenario: Editing an affiliate as an admin
     Given the following Affiliates exist:
-      | display_name | name       | contact_email | first_name | last_name | website                |
-      | agency site  | agency.gov | one@foo.gov   | One        | Foo       | http://beta.agency.gov |
+      | display_name | name       | contact_email | first_name | last_name | website                | use_redesigned_results_page |
+      | agency site  | agency.gov | one@foo.gov   | One        | Foo       | http://beta.agency.gov | false                       |
     When I go to the admin sites page
     When I follow "Edit" within the first scaffold row
     Then I should see "Settings (Show)"
@@ -62,8 +62,8 @@ Feature:  Administration
   @javascript
   Scenario: Editing an affiliate's Display Settings as an admin
     Given the following Affiliates exist:
-      | display_name | name       | contact_email | first_name | last_name | website                |
-      | agency site  | agency.gov | one@foo.gov   | One        | Foo       | http://beta.agency.gov |
+      | display_name | name       | contact_email | first_name | last_name | website                | use_redesigned_results_page |
+      | agency site  | agency.gov | one@foo.gov   | One        | Foo       | http://beta.agency.gov | false                       |
     When I go to the admin sites page
     When I follow "Edit" within the first scaffold row
     Then I should see "Settings (Show)"
@@ -94,8 +94,8 @@ Feature:  Administration
 
   Scenario: Viewing Boosted Content (both affiliate and Search.USA.gov)
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | first_name | last_name |
-      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       |
+      | display_name | name    | contact_email | first_name | last_name | use_redesigned_results_page |
+      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | false                       |
     And the following Boosted Content entries exist for the affiliate "bar.gov"
       | title              | url                    | description                        | keywords |
       | Bar Emergency Page | http://www.bar.gov/911 | This should not show up in results | safety   |

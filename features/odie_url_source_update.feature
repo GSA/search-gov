@@ -5,8 +5,8 @@ Feature: ODIE URL Source Update
 
   Scenario: Bulk updating indexed document source as an admin
     Given the following Affiliates exist:
-      | display_name | name   | contact_email                  |
-      | USA.gov      | usagov | affiliate_admin@fixtures.org   |
+      | display_name | name   | contact_email                  | use_redesigned_results_page |
+      | USA.gov      | usagov | affiliate_admin@fixtures.org   | false                       |
     Given I am logged in with email "affiliate_admin@fixtures.org"
     When I go to the the odie url source update admin page
     Then I should see "ODIE URL Source Update"

@@ -40,7 +40,8 @@ type Result = {
   youtubePublishedAt?: string,
   youtubeThumbnailUrl?: string,
   youtubeDuration?: string,
-  blendedModule?: string
+  blendedModule?: string,
+  tags?: string[]
 };
 interface ResultsProps {
   page: PageData;
@@ -147,6 +148,7 @@ interface ResultsProps {
   };
   jobsEnabled?: boolean
   agencyName?: string
+  facetsEnabled?:boolean
 }
 
 const StyledWrapper = styled.div.attrs<{ styles: FontsAndColors; }>((props) => ({
@@ -165,6 +167,12 @@ const StyledWrapper = styled.div.attrs<{ styles: FontsAndColors; }>((props) => (
   .result-desc .result-url-text {
     color: ${(props) => props.styles.resultUrlColor};
   }
+  .result-desc .result-url-text {
+    color: ${(props) => props.styles.resultUrlColor};
+  }
+  .filter-tags-wrapper .filter-tag {
+    color: ${(props) => props.styles.resultTitleColor};
+  }
 `;
 
 const getImages = (result: Result[] | null) => {
@@ -178,7 +186,7 @@ const getImages = (result: Result[] | null) => {
 };
 
 // eslint-disable-next-line complexity
-export const Results = ({ page, query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, newsAboutQuery = '', spellingSuggestion, videosUrl, relatedSearches, sitelimit, noResultsMessage, total, jobsEnabled, agencyName, vertical }: ResultsProps) => {
+export const Results = ({ page, query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, newsAboutQuery = '', spellingSuggestion, videosUrl, relatedSearches, sitelimit, noResultsMessage, total, jobsEnabled, agencyName, vertical, facetsEnabled }: ResultsProps) => {
   const i18n = useContext(LanguageContext);
   const styles = useContext(StyleContext);
   const imagesResults = getImages(results);
@@ -295,7 +303,9 @@ export const Results = ({ page, query = '', results = null, additionalResults = 
                       affiliate={page?.affiliate ?? ''}
                       query={query}
                       vertical={vertical}
-                      position={index+1} />
+                      position={index+1}
+                      facetsEnabled={facetsEnabled}
+                    />
                   );
                 })}
                 <GridContainer className={`content-provider ${isBing ? 'bing' : ''}`}>
