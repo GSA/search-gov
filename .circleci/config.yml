@@ -372,10 +372,10 @@ workflows:
 
       - report_coverage:
           requires:
-            - rspec
-            - cucumber
-            - jest
-          name: "report coverage: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>, MySQL << matrix.mysql_version >>"
+            - "rspec: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>, MySQL << matrix.mysql_version >>"
+            - "cucumber: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>, MySQL << matrix.mysql_version >>"
+            - "jest: NodeJS << matrix.node_version >>, Ruby << matrix.ruby_version >>, MySQL << matrix.mysql_version >>"
+          name: "report coverage: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>, MySQL << matrix.mysql_version >>, NodeJS << matrix.node_version >>"
           matrix:
             parameters:
               ruby_version:
@@ -384,3 +384,5 @@ workflows:
                 - 7.17.7
               mysql_version:
                 - "8.0"
+              node_version:
+                - 16.20.2
