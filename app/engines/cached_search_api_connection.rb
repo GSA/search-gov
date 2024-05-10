@@ -26,6 +26,7 @@ class CachedSearchApiConnection
       conn.response(:raise_error)
       conn.response(:rashify)
       conn.response(:json)
+      conn.response(:logger)
       conn.headers[:user_agent] = 'USASearch'
 
       ExternalFaraday.configure_connection(namespace, conn)
