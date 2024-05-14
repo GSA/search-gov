@@ -51,6 +51,8 @@ class ImageSearch
   end
 
   def format_results
+    return if results.blank?
+
     post_processor = ImageResultsPostProcessor.new(total, results)
     post_processor.normalized_results
   end
@@ -59,15 +61,19 @@ class ImageSearch
     if @error_message
       { error: @error_message }
     else
-      { total: total,
-        startrecord: startrecord,
-        endrecord: endrecord,
-        results: results }
+      { total:,
+        startrecord:,
+        endrecord:,
+        results: }
     end
   end
 
   def spelling_suggestion
     @search_instance.spelling_suggestion if @spelling_suggestion_eligible
+  # SRCH-5169: BingV7ImageSearch is currently broken, resulting in @search_instance returning false.  Since the
+  # future of commercial image searches is uncertain, this addresses that scenario with a minimum of effort.
+  rescue
+    nil
   end
 
   def commercial_results?
