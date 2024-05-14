@@ -6,6 +6,7 @@ import { Alert } from './../Alert/Alert';
 import { getUriWithParam, checkColorContrastAndUpdateStyle } from '../../utils';
 import { LanguageContext } from '../../contexts/LanguageContext';
 import { NavigationLink } from '../SearchResultsLayout';
+import { FacetsLabel } from '../Facets/FacetsLabel';
 
 import './SearchBar.css';
 
@@ -80,6 +81,7 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [],
               </button>
             </form>
           </Grid>
+          <FacetsLabel />
         </Grid>
         
         <Grid row>

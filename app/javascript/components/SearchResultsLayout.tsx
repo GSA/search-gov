@@ -259,6 +259,15 @@ const GlobalStyle = createGlobalStyle<{ styles: { pageBackgroundColor: string; b
       background-color: ${(props) => darken(0.10, props.styles.buttonBackgroundColor)};
     }
   }
+
+  @media (max-width: 768px){
+    .serp-facets-container{
+      display: ${(props) => props.styles.facetsEnabled === true ? 'none': 'block'};
+    }
+    .serp-main-container{
+       width: ${(props) => props.styles.facetsEnabled === true ? '100%': '75%'};
+    }
+  }
 `;
 
 const isBasicHeader = (extendedHeader: boolean): boolean => {
@@ -274,7 +283,7 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
   i18n.locale = language.code;
 
   // facetsEnabled to come from SearchResultsLayout props from backend
-  const facetsEnabled = false;
+  const facetsEnabled = true;
   
   return (
     <LanguageContext.Provider value={i18n}>
@@ -293,11 +302,11 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
           <GridContainer>
             <Grid row>
               {facetsEnabled && 
-              <Grid tablet={{ col: 3 }}>
+              <Grid tablet={{ col: 3 }} className='serp-facets-container'>
                 <Facets />
               </Grid>}
          
-              <Grid tablet={{ col: facetsEnabled ? 9 : 12 }}>
+              <Grid tablet={{ col: facetsEnabled ? 9 : 12 }} className='serp-main-container'>
                 <SearchBar query={params.query} relatedSites={relatedSites} navigationLinks={navigationLinks} relatedSitesDropdownLabel={relatedSitesDropdownLabel} alert={alert}/>
 
                 {/* This ternary is needed to handle the case when Bing pagination leads to a page with no results */}
