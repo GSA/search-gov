@@ -49,7 +49,7 @@ namespace :searchgov do
     3.times do |index|
       title_key = "secondary_header_links #{index} - title"
       url_key = "secondary_header_links #{index} - url"
-      secondary_header_link = SecondaryHeaderLink.create(position: index, type: 'SeconaryHeaderLink', title: row[title_key], url: row[url_key])
+      secondary_header_link = SecondaryHeaderLink.create(position: index, type: 'SecondaryHeaderLink', title: row[title_key], url: row[url_key])
       affiliate.secondary_header_links << secondary_header_link if secondary_header_link.valid?
     end
   end
