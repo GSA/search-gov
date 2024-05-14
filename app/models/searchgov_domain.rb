@@ -10,6 +10,9 @@ class SearchgovDomain < ApplicationRecord
   INDEXING_STARTED = 'indexing started manually'
   INDEXING_STOPPED = 'indexing stopped manually'
 
+  # SRCH-5042 What's the difference between "good" and "indexable"?  A "good" domain will not throw an error or update
+  # the last_crawl_status of urls with that error, but a "good" domain may not actually be one that is indexable.
+  # Only "indexable" domains are eligible to be indexed/reindexed.
   GOOD_STATUS = [OK_STATUS, INDEXING_STARTED, INDEXING_STOPPED].freeze
   INDEXABLE_STATUS = [OK_STATUS, INDEXING_STARTED].freeze
 
