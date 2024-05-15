@@ -2,6 +2,47 @@
 
 # rubocop:disable Metrics/BlockLength
 namespace :searchgov do
+  desc 'Migrate design settings for the redesigned SERP via CSV'
+  # Usage: rake searchgov:migrate_designs[site_attributes.csv]
+
+  task :migrate_designs, [:csv_file] => [:environment] do |_t, args|
+    csv_file = args.csv_file
+
+    ActiveRecord::Base.transaction do
+      CSV.foreach(csv_file, headers: true) do |row|
+        affiliate_id = row['ID']
+        affiliate = Affiliate.find(affiliate_id)
+
+        create_primary_header_links(row, affiliate)
+        create_secondary_header_links(row, affiliate)
+        create_footer_links(row, affiliate)
+        create_identifier_links(row, affiliate)
+
+        affiliate.visual_design_json = visual_design_settings(row)
+        misc_settings(row, affiliate)
+
+        affiliate.save!
+      end
+    end
+  end
+
+  desc 'Set the display_logo_only setting for a list of Affiliates via CSV'
+  # Usage: rake searchgov:set_display_logo_only[site_attributes.csv]
+
+  task :set_display_logo_only, [:csv_file] => [:environment] do |_t, args|
+    csv_file = args.csv_file
+
+    ActiveRecord::Base.transaction do
+      CSV.foreach(csv_file, headers: true) do |row|
+        affiliate_id = row['ID']
+        affiliate = Affiliate.find(affiliate_id)
+        affiliate.display_logo_only = row['display_logo_only']
+
+        affiliate.save!
+      end
+    end
+  end
+
   def create_identifier_links(row, affiliate)
     12.times do |index|
       title_key = "identifier_links #{index} - title"
@@ -76,47 +117,6 @@ namespace :searchgov do
     affiliate.identifier_domain_name = row['site_identifier_domain_name']
     affiliate.parent_agency_name = row['site_parent_agency_name']
     affiliate.parent_agency_link = row['site_parent_agency_link']
-  end
-
-  desc 'Migrate design settings for the redesigned SERP via CSV'
-  # Usage: rake searchgov:migrate_designs[site_attributes.csv]
-
-  task :migrate_designs, [:csv_file] => [:environment] do |_t, args|
-    csv_file = args.csv_file
-
-    ActiveRecord::Base.transaction do
-      CSV.foreach(csv_file, headers: true) do |row|
-        affiliate_id = row['ID']
-        affiliate = Affiliate.find(affiliate_id)
-
-        create_primary_header_links(row, affiliate)
-        create_secondary_header_links(row, affiliate)
-        create_footer_links(row, affiliate)
-        create_identifier_links(row, affiliate)
-
-        affiliate.visual_design_json = visual_design_settings(row)
-        misc_settings(row, affiliate)
-
-        affiliate.save!
-      end
-    end
-  end
-
-  desc 'Set the display_logo_only setting for a list of Affiliates via CSV'
-  # Usage: rake searchgov:set_display_logo_only[site_attributes.csv]
-
-  task :set_display_logo_only, [:csv_file] => [:environment] do |_t, args|
-    csv_file = args.csv_file
-
-    ActiveRecord::Base.transaction do
-      CSV.foreach(csv_file, headers: true) do |row|
-        affiliate_id = row['ID']
-        affiliate = Affiliate.find(affiliate_id)
-        affiliate.display_logo_only = row['display_logo_only']
-
-        affiliate.save!
-      end
-    end
   end
 end
 # rubocop:enable Metrics/BlockLength
