@@ -26,6 +26,23 @@ namespace :searchgov do
     end
   end
 
+  desc 'Set the display_logo_only setting for a list of Affiliates via CSV'
+  # Usage: rake searchgov:set_display_logo_only[site_attributes.csv]
+
+  task :set_display_logo_only, [:csv_file] => [:environment] do |_t, args|
+    csv_file = args.csv_file
+
+    ActiveRecord::Base.transaction do
+      CSV.foreach(csv_file, headers: true) do |row|
+        affiliate_id = row['ID']
+        affiliate = Affiliate.find(affiliate_id)
+        affiliate.display_logo_only = row['display_logo_only']
+
+        affiliate.save!
+      end
+    end
+  end
+
   def create_identifier_links(row, affiliate)
     12.times do |index|
       title_key = "identifier_links #{index} - title"
