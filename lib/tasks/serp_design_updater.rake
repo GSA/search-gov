@@ -8,30 +8,29 @@ namespace :searchgov do
   task :migrate_designs, [:csv_file] => [:environment] do |_t, args|
     csv_file = args.csv_file
 
-    CSV.foreach(csv_file, headers: true) do |row|
-      affiliate_id = row['ID']
-      affiliate = Affiliate.find(affiliate_id)
+    ActiveRecord::Base.transaction do
+      CSV.foreach(csv_file, headers: true) do |row|
+        affiliate_id = row['ID']
+        affiliate = Affiliate.find(affiliate_id)
 
-      create_primary_header_links(row, affiliate)
-      create_secondary_header_links(row, affiliate)
-      create_footer_links(row, affiliate)
-      create_identifier_links(row, affiliate)
+        create_primary_header_links(row, affiliate)
+        create_secondary_header_links(row, affiliate)
+        create_footer_links(row, affiliate)
+        create_identifier_links(row, affiliate)
 
-      affiliate.visual_design_json = visual_design_settings(row)
+        affiliate.visual_design_json = visual_design_settings(row)
+        misc_settings(row, affiliate)
 
-      if affiliate.valid?
         affiliate.save!
-      else
-        puts "Affiliate #{affiliate_id} could not be updated due to the following errors: #{affiliate.errors}"
       end
     end
   end
 
   def create_identifier_links(row, affiliate)
-    7.times do |index|
+    12.times do |index|
       title_key = "identifier_links #{index} - title"
       url_key = "identifier_links #{index} - url"
-      identifier_link = IdentifierLink.create(position: index, type: 'IdentifierLink', title: row[title_key], url: row[url_key])
+      identifier_link = IdentifierLink.create(position: index, type: 'IdentifierLink', title: row[title_key], url: row[url_key], affiliate_id: row['ID'])
       affiliate.identifier_links << identifier_link if identifier_link.valid?
     end
   end
@@ -40,7 +39,7 @@ namespace :searchgov do
     13.times do |index|
       title_key = "footer_links #{index} - title"
       url_key = "footer_links #{index} - url"
-      footer_link = FooterLink.create(position: index, type: 'FooterLink', title: row[title_key], url: row[url_key])
+      footer_link = FooterLink.create(position: index, type: 'FooterLink', title: row[title_key], url: row[url_key], affiliate_id: row['ID'])
       affiliate.footer_links << footer_link if footer_link.valid?
     end
   end
@@ -49,7 +48,7 @@ namespace :searchgov do
     3.times do |index|
       title_key = "secondary_header_links #{index} - title"
       url_key = "secondary_header_links #{index} - url"
-      secondary_header_link = SecondaryHeaderLink.create(position: index, type: 'SecondaryHeaderLink', title: row[title_key], url: row[url_key])
+      secondary_header_link = SecondaryHeaderLink.create(position: index, type: 'SecondaryHeaderLink', title: row[title_key], url: row[url_key], affiliate_id: row['ID'])
       affiliate.secondary_header_links << secondary_header_link if secondary_header_link.valid?
     end
   end
@@ -58,7 +57,7 @@ namespace :searchgov do
     12.times do |index|
       title_key = "primary_header_links #{index} - title"
       url_key = "primary_header_links #{index} - url"
-      primary_header_link = PrimaryHeaderLink.create(position: index, type: 'PrimaryHeaderLink', title: row[title_key], url: row[url_key])
+      primary_header_link = PrimaryHeaderLink.create(position: index, type: 'PrimaryHeaderLink', title: row[title_key], url: row[url_key], affiliate_id: row['ID'])
       affiliate.primary_header_links << primary_header_link if primary_header_link.valid?
     end
   end
@@ -96,11 +95,11 @@ namespace :searchgov do
     }.transform_keys(&:to_s)
   end
 
-  def misc_settings(affiliate, row)
+  def misc_settings(row, affiliate)
     affiliate.display_logo_only = row['display_logo_only']
     affiliate.identifier_domain_name = row['site_identifier_domain_name']
-    affiliate.agency&.name = row['site_parent_agency_name']
-    affiliate.agency&.url = row['site_parent_agency_link']
+    affiliate.parent_agency_name = row['site_parent_agency_name']
+    affiliate.parent_agency_link = row['site_parent_agency_link']
   end
 end
 # rubocop:enable Metrics/BlockLength
