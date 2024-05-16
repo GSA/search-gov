@@ -20,11 +20,11 @@ describe SearchEngine do
   subject { DummySearchEngine.new(options) }
 
   let(:options) { {} }
-  let(:api_connection) { double(:api_connection, get: cached_response) }
+  let(:cache_name) { 'some_cache' }
+  let(:api_connection) { instance_double(CachedSearchApiConnection, get: cached_response, namespace: cache_name) }
   let(:cached_response) { CachedSearchApiConnectionResponse.new(:response, cache_name) }
   let(:parsed_response) { double(SearchEngineResponse, results: [:foo, :bar, :baz], 'diagnostics=': nil, 'tracking_information': 'trackery') }
   let(:statsd) { double(Datadog::Statsd, decrement: nil, gauge: nil, increment: nil) }
-  let(:cache_name) { 'some_cache' }
 
   before do
     subject.api_connection = api_connection
