@@ -6,7 +6,11 @@ import { Alert } from './../Alert/Alert';
 import { getUriWithParam, checkColorContrastAndUpdateStyle } from '../../utils';
 import { LanguageContext } from '../../contexts/LanguageContext';
 import { NavigationLink } from '../SearchResultsLayout';
+
+import SlidingPane from "react-sliding-pane";
 import { FacetsLabel } from '../Facets/FacetsLabel';
+import { Facets } from '../../components/Facets/Facets';
+import "react-sliding-pane/dist/react-sliding-pane.css";
 
 import './SearchBar.css';
 
@@ -32,6 +36,7 @@ interface SearchBarProps {
 }
 
 export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [], relatedSitesDropdownLabel = '', alert }: SearchBarProps) => {
+  const [isPaneOpen, setIsPaneOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState(query);
   const searchUrlParam = 'query';
 
@@ -81,7 +86,22 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [],
               </button>
             </form>
           </Grid>
-          <FacetsLabel />
+          
+          <div onClick={() => setIsPaneOpen(true)}>
+            <FacetsLabel />
+          </div>
+
+          <SlidingPane
+            className="facets-mobile-panel"
+            closeIcon={<div>Close Icon</div>}
+            overlayClassName="facets-mobile-panel-overlay"
+            isOpen={isPaneOpen}
+            onRequestClose={() => {
+              setIsPaneOpen(false);
+            }}
+          >
+            <Facets />
+          </SlidingPane>
         </Grid>
         
         <Grid row>
