@@ -33,9 +33,10 @@ interface SearchBarProps {
     title: string;
     text: string;
   }
+  facetsEnabled?: boolean
 }
 
-export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [], relatedSitesDropdownLabel = '', alert }: SearchBarProps) => {
+export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [], relatedSitesDropdownLabel = '', alert, facetsEnabled }: SearchBarProps) => {
   const [isPaneOpen, setIsPaneOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState(query);
   const searchUrlParam = 'query';
@@ -60,12 +61,12 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [],
   }, []);
 
   return (
-    <div id="serp-search-bar-wrapper">
+    <div id="serp-search-bar-wrapper" className={facetsEnabled ? "search-bar-mobile-facets-wrapper" : ''}>
       <GridContainer>
         {alert && <Alert title={alert.title} text={alert.text}/>}
 
         <Grid row>
-          <Grid tablet={{ col: true }}>
+          <Grid tablet={{ col: true }} className="search-bar-wrapper">
             <form 
               className="usa-search usa-search--small" 
               role="search" 
@@ -87,13 +88,16 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [],
             </form>
           </Grid>
           
-          <div onClick={() => setIsPaneOpen(true)}>
-            <FacetsLabel />
-          </div>
+          {facetsEnabled &&
+            <div onClick={() => setIsPaneOpen(true)} className="mobile-facets-wrapper">
+              <FacetsLabel />
+            </div>
+          }
 
           <SlidingPane
             className="facets-mobile-panel"
-            closeIcon={<div>Close Icon</div>}
+            title={<div>Filter Search </div>}
+            closeIcon={<div>Close Icon </div>}
             overlayClassName="facets-mobile-panel-overlay"
             isOpen={isPaneOpen}
             onRequestClose={() => {

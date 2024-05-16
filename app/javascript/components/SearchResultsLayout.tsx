@@ -265,7 +265,7 @@ const GlobalStyle = createGlobalStyle<{ styles: { pageBackgroundColor: string; b
       display: ${(props) => props.styles.facetsEnabled === true ? 'none': 'block'};
     }
     .serp-main-container{
-       width: ${(props) => props.styles.facetsEnabled === true ? '100%': '75%'};
+       width: ${(props) => props.styles.facetsEnabled === true ? '100%': '100%'};
     }
   }
 `;
@@ -283,7 +283,9 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
   i18n.locale = language.code;
 
   // facetsEnabled to come from SearchResultsLayout props from backend
-  const facetsEnabled = true;
+  let facetsEnabled = false;
+  if (page.affiliate === 'test_filters')
+    facetsEnabled = true;
   
   return (
     <LanguageContext.Provider value={i18n}>
@@ -307,7 +309,7 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
               </Grid>}
          
               <Grid tablet={{ col: facetsEnabled ? 9 : 12 }} className='serp-main-container'>
-                <SearchBar query={params.query} relatedSites={relatedSites} navigationLinks={navigationLinks} relatedSitesDropdownLabel={relatedSitesDropdownLabel} alert={alert}/>
+                <SearchBar query={params.query} relatedSites={relatedSites} navigationLinks={navigationLinks} relatedSitesDropdownLabel={relatedSitesDropdownLabel} alert={alert} facetsEnabled={facetsEnabled} />
 
                 {/* This ternary is needed to handle the case when Bing pagination leads to a page with no results */}
                 {resultsData ? (
