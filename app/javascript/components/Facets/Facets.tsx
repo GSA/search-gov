@@ -305,9 +305,10 @@ export const Facets = () => {
         <Accordion bordered={false} items={fileTypeItems} />
         <Accordion bordered={false} items={tagsItems} />
         <Accordion bordered={false} items={dateRangeItems} />
-
+      </div>
+      <div className="facets-action-btn-wrapper">
         <ul className="usa-button-group">
-          <li className="usa-button-group__item">
+          <li className="usa-button-group__item clear-results-button-wrapper">
             <button className="usa-button usa-button--unstyled clear-results-button" type="button">
               Clear
             </button>
