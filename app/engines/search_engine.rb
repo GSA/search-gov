@@ -59,23 +59,23 @@ class SearchEngine
   end
 
   def record_outgoing_timing
-    statsd.gauge('outgoing_duration_ms', elapsed_ms) if cached_response.cache_namespace == 'none'
+    statsd.gauge('outgoing_duration_ms', elapsed_ms) if api_connection.namespace == 'none'
   end
 
   def process_cached_response(attempt)
-    response = parse_search_engine_response(cached_response.response)
+    response = parse_search_engine_response(cached_response)
     result_count = response.results.size
     retry_count = attempt - 1
 
     response.diagnostics = {
       result_count: result_count,
-      from_cache: cached_response.cache_namespace,
+      from_cache: api_connection.namespace,
       retry_count: retry_count,
       elapsed_time_ms: elapsed_ms,
       tracking_information: response.tracking_information,
     }
 
-    if cached_response.cache_namespace == 'none'
+    if api_connection.namespace == 'none'
       statsd.batch do |s|
         s.gauge('retry_count', retry_count)
         s.gauge('result_count', result_count)

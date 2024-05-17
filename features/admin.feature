@@ -209,7 +209,7 @@ Feature:  Administration
 
     When I follow "Sitemaps" within the first scaffold row
     Then I should see "search.gov/sitemap.xml"
-    And I follow the first "Delete" and confirm
+    And I follow the first "Delete" and confirm in the SearchgovDomain Sitemaps table
     Then I should not see "search.gov/sitemap.xml"
 
     When I follow "Create New" in the SearchgovDomain Sitemaps table
@@ -251,12 +251,16 @@ Feature:  Administration
     And I wait for ajax
     Then I should see "Your URL has been added to the fetching queue"
 
-    When I follow "Close" in the SearchgovDomain URLs table
-    And I follow the first "Delete"
+    When I follow the first "Delete" and confirm in the SearchgovDomain URLs header
     Then I should not see "https://search.gov/page1"
 
     When I follow "Search" in the SearchgovDomain URLs table
     Then I should see "Enqueued for reindex" in the super admin search form
+
+    When I follow "Delete" within the first scaffold row
+    And I fill in "confirmation" with "DESTROY DOMAIN"
+    And I press "Confirm Deletion"
+    Then I should see "Deletion has been enqueued for search.gov"
 
   @javascript
   Scenario: Adding a system alert
