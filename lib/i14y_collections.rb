@@ -30,6 +30,6 @@ module I14yCollections
 
   def self.search(params)
     response = cached_connection.get("#{API_ENDPOINT}/search", params)
-    response.response.body
+    response.body
   end
 end
