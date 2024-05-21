@@ -89,11 +89,11 @@ class Affiliate < ApplicationRecord
   AWS_IMAGE_SETTINGS = {
     styles: { large: '300x150>' },
     storage: :s3,
-    s3_credentials: Rails.application.secrets.aws_image_bucket,
+    s3_credentials: ENV['AWS_ACCESS_KEY_ID'] ? S3_CREDENTIALS : Rails.application.secrets.aws_image_bucket,
     url: ':s3_alias_url',
-    s3_host_alias: Rails.application.secrets.aws_image_bucket[:s3_host_alias],
+    s3_host_alias: ENV['AWS_S3_HOST_ALIAS'] || Rails.application.secrets.dig(:aws_image_bucket, :s3_host_alias),
     s3_protocol: 'https',
-    s3_region: Rails.application.secrets.aws_image_bucket[:s3_region]
+    s3_region: ENV['AWS_REGION'] || Rails.application.secrets.dig(:aws_image_bucket, :s3_region)
   }.freeze
 
   # The "mobile_" and "managed_" prefixes in "mobile_logo", "managed_header", etc.,
