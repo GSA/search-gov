@@ -13,10 +13,16 @@ echo "echo -e 'This is a U.S. General Services Administration Federal Government
 rm -fr /etc/sysctl* /etc/modprobe.d /etc/modules /etc/mdev.conf /etc/acpi
 
 # Remove suid & sgid files to enforce simple permission sets. 
-find /bin /etc /lib /sbin /usr -xdev -type f -a \( -perm +4000 -o -perm +2000 \) -delete
+find /bin /etc /lib /sbin /usr -xdev -type f -a \( -perm /4000 -o -perm /2000 \) -delete
 
 # Check for calls out of the dockerfile to download software externally
 apt-get remove -y --auto-remove curl
 
 # Remove any broken symlinks, if any.
 find /bin /etc /lib /sbin /usr -xdev -type l -exec test ! -e {} \; -delete
+
+# Remove existing crontabs
+rm -rf /etc/cron.d /etc/cron.daily
+
+# Remove init scripts since we do not use them.
+rm -fr /etc/init.d /lib/rc /etc/conf.d /etc/inittab /etc/runlevels /etc/rc.conf /etc/logrotate.d
