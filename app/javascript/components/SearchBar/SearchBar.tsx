@@ -107,7 +107,7 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [],
           <SlidingPane
             className="facets-mobile-panel"
             title={<div className="facets-mobile-panel-label">Filter Search </div>}
-            closeIcon={<div className="facets-panel-close-icon-wrapper"><div className="facets-panel-close-icon-label">Close</div>{facetsCloseSvgIcon()}</div>}
+            closeIcon={<div className="facets-panel-close-icon-wrapper" data-testid="filter-panel-close-btn"><div className="facets-panel-close-icon-label">Close</div>{facetsCloseSvgIcon()}</div>}
             overlayClassName="facets-mobile-panel-overlay"
             isOpen={isPaneOpen}
             onRequestClose={() => {
