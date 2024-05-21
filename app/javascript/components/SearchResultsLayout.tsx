@@ -268,6 +268,10 @@ const GlobalStyle = createGlobalStyle<{ styles: { pageBackgroundColor: string; b
        width: ${(props) => props.styles.facetsEnabled === true ? '100%': '100%'};
     }
   }
+  
+  .usa-search__facets-clone-icon {
+    fill: ${(props) => props.styles.buttonBackgroundColor};
+  }
 `;
 
 const isBasicHeader = (extendedHeader: boolean): boolean => {

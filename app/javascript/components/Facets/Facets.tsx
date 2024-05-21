@@ -27,6 +27,10 @@ const StyledWrapper = styled.div.attrs<{ styles: FontsAndColors; }>((props) => (
   .clear-results-button{
     color: ${(props) => props.styles.buttonBackgroundColor};
   }
+  .usa-search__facets-clone-icon {
+    fill: ${(props) => props.styles.buttonBackgroundColor};
+  }
+  
 `;
 
 type HeadingLevel = 'h4'; 
