@@ -50,25 +50,23 @@
 
 @media (max-width: 768px){
   .facets-mobile-panel .serp-facets-wrapper{
-    padding-left: 15px;
     padding-bottom: 110px;
+    padding-left: 15px;
   }
 
   .facets-mobile-panel .facets-action-btn-wrapper{
-    position: fixed;
-    bottom: 0;
     background: #EFF6FC;
+    bottom: 0;
+    position: fixed;
     width: 100%;
   }
 
   .facets-mobile-panel .facets-action-btn-wrapper .usa-button-group{
     flex-direction: row;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin: 0 1.5rem 0 1.5rem;
     padding-left: 3rem;
     padding-right: 3rem;
-    margin-right: 0;
-    margin-left: 0;
+    
   }
 
   .facets-mobile-panel .facets-action-btn-wrapper .clear-results-button{

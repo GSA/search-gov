@@ -7,10 +7,10 @@ import { getUriWithParam, checkColorContrastAndUpdateStyle } from '../../utils';
 import { LanguageContext } from '../../contexts/LanguageContext';
 import { NavigationLink } from '../SearchResultsLayout';
 
-import SlidingPane from "react-sliding-pane";
+import SlidingPane from 'react-sliding-pane';
 import { FacetsLabel } from '../Facets/FacetsLabel';
 import { Facets } from '../../components/Facets/Facets';
-import "react-sliding-pane/dist/react-sliding-pane.css";
+import 'react-sliding-pane/dist/react-sliding-pane.css';
 
 import './SearchBar.css';
 
@@ -71,7 +71,7 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [],
   }, []);
 
   return (
-    <div id="serp-search-bar-wrapper" className={facetsEnabled ? "search-bar-mobile-facets-wrapper" : ''}>
+    <div id="serp-search-bar-wrapper" className={facetsEnabled ? 'search-bar-mobile-facets-wrapper' : ''}>
       <GridContainer>
         {alert && <Alert title={alert.title} text={alert.text}/>}
 
@@ -107,10 +107,7 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [],
           <SlidingPane
             className="facets-mobile-panel"
             title={<div className="facets-mobile-panel-label">Filter Search </div>}
-            closeIcon={<div className="facets-panel-close-icon-wrapper"> 
-                        <div className="facets-panel-close-icon-label">Close</div> 
-                        {facetsCloseSvgIcon()}
-                      </div>}
+            closeIcon={<div className="facets-panel-close-icon-wrapper"><div className="facets-panel-close-icon-label">Close</div>{facetsCloseSvgIcon()}</div>}
             overlayClassName="facets-mobile-panel-overlay"
             isOpen={isPaneOpen}
             onRequestClose={() => {
