@@ -47,7 +47,7 @@ exports[`SearchResultsLayout renders basic header styles properly 1`] = `
     .usa-button{background-color:#cfcd03;}
     .usa-button:hover{background-color:#9d9b02;}
     @media (max-width: 768px){.serp-facets-container{display:block;}.serp-main-container{width:100%;}}
-    .usa-search__facets-clone-icon{fill:#cfcd03;}
+    .facets-clone-icon-wrapper{background-color:#cfcd03;}
   </style>
 </head>
 `;
@@ -107,7 +107,7 @@ exports[`SearchResultsLayout renders extended header styles properly 1`] = `
     .usa-button{background-color:#cfcd03;}
     .usa-button:hover{background-color:#9d9b02;}
     @media (max-width: 768px){.serp-facets-container{display:block;}.serp-main-container{width:100%;}}
-    .usa-search__facets-clone-icon{fill:#cfcd03;}
+    .facets-clone-icon-wrapper{background-color:#cfcd03;}
   </style>
 </head>
 `;
@@ -167,7 +167,7 @@ exports[`SearchResultsLayout renders search with results styles properly 1`] = `
     .usa-button{background-color:#cfcd03;}
     .usa-button:hover{background-color:#9d9b02;}
     @media (max-width: 768px){.serp-facets-container{display:block;}.serp-main-container{width:100%;}}
-    .usa-search__facets-clone-icon{fill:#cfcd03;}
+    .facets-clone-icon-wrapper{background-color:#cfcd03;}
   </style>
 </head>
 `;

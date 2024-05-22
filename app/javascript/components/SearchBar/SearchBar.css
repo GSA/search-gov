@@ -46,9 +46,16 @@
   opacity: 1;
 }
 
-.facets-mobile-panel-overlay .slide-pane__close .usa-search__facets-clone-icon{
-  height: 2rem;
-  width: 2rem;
+.facets-mobile-panel-overlay .slide-pane__close .facets-clone-icon-wrapper{
+  border: 1px solid #565c65;
+  border-radius: 50%;
+  float: right;
+}
+
+.facets-mobile-panel-overlay .slide-pane__close .facets-clone-icon-svg{
+  height: 1.35rem;
+  width: 1.65rem;
+  margin-top: 3px;
 }
 
 .facets-panel-close-icon-label{
@@ -97,7 +104,7 @@
   }
 
   .facets-mobile-panel-overlay .slide-pane_from_right{
-    width: 50% !important;
+    width: 55%;
   }
 }
 
@@ -112,6 +119,6 @@
   }
 
   .facets-mobile-panel-overlay .slide-pane_from_right{
-    width: 80%;
+    width: 88%;
   }
 }

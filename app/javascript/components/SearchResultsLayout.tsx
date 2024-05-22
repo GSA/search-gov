@@ -269,8 +269,8 @@ const GlobalStyle = createGlobalStyle<{ styles: { pageBackgroundColor: string; b
     }
   }
   
-  .usa-search__facets-clone-icon {
-    fill: ${(props) => props.styles.buttonBackgroundColor};
+  .facets-clone-icon-wrapper{
+    background-color: ${(props) => props.styles.buttonBackgroundColor};
   }
 `;
 
