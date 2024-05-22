@@ -67,7 +67,7 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [],
   };
 
   useEffect(() => {
-    if(window.innerWidth < 640){
+    if (window.innerWidth < 640) {
       setMobileView(true);
     }
 
@@ -135,7 +135,7 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [],
             onRequestClose={() => {
               setIsPaneOpen(false);
             }}
-            width={isMobileView ? "80" : "50"}
+            width={isMobileView ? '80' : '50'}
           >
             <Facets />
           </SlidingPane>
