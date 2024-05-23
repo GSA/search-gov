@@ -29,16 +29,7 @@ module Es
 
   def initialize_client(config)
     Elasticsearch::Client.new(config.merge(CLIENT_CONFIG)).tap do |client|
-      client.transport.logger = logger
-    end
-  end
-
-  def logger
-    ActiveSupport::Logger.new("log/#{Rails.env}.log").tap do |logger|
-      logger.level = CLIENT_CONFIG[:log_level]
-      logger.formatter = proc do |severity, time, _progname, msg|
-        "\e[2m[ES][#{time.utc.iso8601(4)}][#{severity}] #{msg}\n\e[0m"
-      end
+      client.transport.logger = Rails.logger
     end
   end
 
