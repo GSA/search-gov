@@ -24,7 +24,7 @@ module Es
   end
 
   def writer_config
-    client_config(:writers) || {}
+    client_config(:writers) || [{}]
   end
 
   def initialize_client(config)
