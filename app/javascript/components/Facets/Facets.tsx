@@ -8,6 +8,10 @@ import { checkColorContrastAndUpdateStyle } from '../../utils';
 
 import './Facets.css';
 
+interface FacetsProps {
+  aggregations?: any;
+}
+
 const searchFilterSvgIcon = () => {
   return (
     <svg role="img" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
@@ -44,8 +48,35 @@ const StyledWrapper = styled.div.attrs<{ styles: FontsAndColors; }>((props) => (
 
 type HeadingLevel = 'h4'; 
 
-export const Facets = () => {
+const getAggregations = (aggregations: any) => {
+  // To remove the dummy tags with integration once backend starts sending the data
+  const dummyAggregationsData = [
+  {"searchgov_custom3":[
+   {"agg_key": "press-release","doc_count": 3225},
+   {"agg_key": "post","doc_count": 2632}]
+  },
+  {"content_type":[
+   {"agg_key": "article","doc_count": 20387},
+   {"agg_key": "website","doc_count": 5108}]
+  }
+ ]
+  const aggregationsData = aggregations || dummyAggregationsData;
+  console.log({aggregationsData});
+  
+  // return (
+  //   <div className='filter-tags-wrapper'>
+  //     {
+  //       filterTags.map((filterTag, index) => <span className='filter-tag' key={index}>{filterTag}</span>)
+  //     }
+  //   </div>
+  // );
+};
+
+export const Facets = ({ aggregations }: FacetsProps) => {
   const styles = useContext(StyleContext);
+
+  console.log({aggregations});
+  getAggregations(aggregations);
 
   useEffect(() => {
     checkColorContrastAndUpdateStyle({
