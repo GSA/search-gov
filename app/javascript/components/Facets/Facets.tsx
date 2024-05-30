@@ -48,36 +48,132 @@ const StyledWrapper = styled.div.attrs<{ styles: FontsAndColors; }>((props) => (
 
 type HeadingLevel = 'h4'; 
 
+const getAccordionItems = (aggregationsData: any) => {
+  return aggregationsData.map((aggregation:any) => {
+    return {
+      title: Object.keys(aggregation)[0],
+      expanded: true,
+      id: Object.keys(aggregation)[0].replace(/\s+/g, ''),
+      headingLevel: 'h4' as HeadingLevel,
+      content: getAccordionItemContent(aggregation)
+    }
+  });
+};
+
+const getAccordionItemContent = (aggregation: any) => {
+  return (
+    <fieldset className="usa-fieldset">
+      {Object.values(aggregation).map((filters:any) => {
+        return (
+          filters.map((filter:any, index:any)=>{
+            return (
+              <div className="usa-checkbox" key={index}>
+                <input
+                  className="usa-checkbox__input"
+                  type="checkbox"
+                  name={Object.keys(aggregation)[0]}
+                  value={filter.agg_key}
+                  defaultChecked={true}
+                />
+                <label className="usa-checkbox__label">{filter.agg_key} <Tag>{filter.doc_count}</Tag></label>
+              </div>
+            )
+          })
+        )
+      })}
+    </fieldset>
+  );
+};
+
 const getAggregations = (aggregations: any) => {
   // To remove the dummy tags with integration once backend starts sending the data
   const dummyAggregationsData = [
-  {"searchgov_custom3":[
-   {"agg_key": "press-release","doc_count": 3225},
-   {"agg_key": "post","doc_count": 2632}]
-  },
-  {"content_type":[
-   {"agg_key": "article","doc_count": 20387},
-   {"agg_key": "website","doc_count": 5108}]
-  }
+    {
+      "Audience": [
+        {
+          "agg_key": "Small business",
+          "doc_count": 1024
+        },
+        {
+          "agg_key": "Real estate",
+          "doc_count": 1234
+        },
+        {
+          "agg_key": "Technologists",
+          "doc_count": 1764
+        },
+        {
+          "agg_key": "Factories",
+          "doc_count": 1298
+        }
+      ]
+    },
+    {
+      "Content Type": [
+        {
+          "agg_key": "Press release",
+          "doc_count": 2876
+        },
+        {
+          "agg_key": "Blogs",
+          "doc_count": 1923
+        },
+        {
+          "agg_key": "Policies",
+          "doc_count": 1244
+        },
+        {
+          "agg_key": "Directives",
+          "doc_count": 876
+        }
+      ]
+    },
+    {
+      "File Type": [
+        {
+          "agg_key": "PDF",
+          "doc_count": 23
+        },
+        {
+          "agg_key": "Excel",
+          "doc_count": 76
+        },
+        {
+          "agg_key": "Word",
+          "doc_count": 11
+        },
+        {
+          "agg_key": "Text",
+          "doc_count": 12
+        }
+      ]
+    },
+    {
+      "Tags": [
+        {
+          "agg_key": "Contracts",
+          "doc_count": 703
+        },
+        {
+          "agg_key": "BPA",
+          "doc_count": 22
+        }
+      ]
+    }
  ]
   const aggregationsData = aggregations || dummyAggregationsData;
-  console.log({aggregationsData});
   
-  // return (
-  //   <div className='filter-tags-wrapper'>
-  //     {
-  //       filterTags.map((filterTag, index) => <span className='filter-tag' key={index}>{filterTag}</span>)
-  //     }
-  //   </div>
-  // );
+  return (
+    <Accordion 
+      bordered={false} 
+      items={getAccordionItems(aggregationsData)} 
+    />
+  );
 };
 
 export const Facets = ({ aggregations }: FacetsProps) => {
   const styles = useContext(StyleContext);
-
-  console.log({aggregations});
-  getAggregations(aggregations);
-
+  
   useEffect(() => {
     checkColorContrastAndUpdateStyle({
       backgroundItemClass: '.serp-result-wrapper',
@@ -347,10 +443,17 @@ export const Facets = ({ aggregations }: FacetsProps) => {
           {searchFilterSvgIcon()} 
           <span className="filter-heading-label">Filter search</span>
         </h3>
+
+
+        {getAggregations(aggregations)}
+
+        {/* 
         <Accordion bordered={false} items={audienceItems} />
         <Accordion bordered={false} items={contentTypeItems} />
         <Accordion bordered={false} items={fileTypeItems} />
-        <Accordion bordered={false} items={tagsItems} />
+        <Accordion bordered={false} items={tagsItems} /> 
+        */}
+
         <Accordion bordered={false} items={dateRangeItems} />
 
         <ul className="usa-button-group">
