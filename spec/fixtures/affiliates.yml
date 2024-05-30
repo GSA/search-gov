@@ -142,3 +142,17 @@ redesigned_usagov_affiliate:
   search_engine: BingV7
   use_redesigned_results_page: true
   api_access_key: redesigned_api_key
+
+usagov_affiliate_header_bg_color:
+  <<: *DEFAULTS
+  display_name: USA.gov
+  name: redesigned_usagov_bg_color
+  website: https://www.usa.gov
+  search_engine: SearchGov
+  use_redesigned_results_page: true
+  api_access_key: usagov_affiliate_header_bg_color_key
+  visual_design_json: {
+    header_links_background_color: '#0068c4',
+    header_background_color: '#0068c4',
+    banner_background_color: '#123456'
+  }

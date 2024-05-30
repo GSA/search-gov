@@ -7,14 +7,28 @@ import { getUriWithParam, checkColorContrastAndUpdateStyle } from '../../utils';
 import { LanguageContext } from '../../contexts/LanguageContext';
 import { NavigationLink } from '../SearchResultsLayout';
 
+import SlidingPane from 'react-sliding-pane';
+import { FacetsLabel } from '../Facets/FacetsLabel';
+import { Facets } from '../../components/Facets/Facets';
+import 'react-sliding-pane/dist/react-sliding-pane.css';
+
 import './SearchBar.css';
 
 const searchMagnifySvgIcon = () => {
   return (
-    <svg role="img" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" className="usa-search__submit-icon">
+    <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="usa-search__submit-icon">
       <title>Search</title>
       <path d="M0 0h24v24H0z" fill="none"/>
       <path className="search-icon-glass" fill="#FFFFFF" d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    </svg>
+  );
+};
+
+const facetsCloseSvgIcon = () => {
+  return (
+    <svg role="img" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" focusable="false" className="facets-clone-icon-svg">
+      <title>Close Filter Panel</title>
+      <path className="facets-clone-icon" fill="#FFFFFF" d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
     </svg>
   );
 };
@@ -28,10 +42,16 @@ interface SearchBarProps {
     title: string;
     text: string;
   }
+  facetsEnabled?: boolean
 }
 
-export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [], relatedSitesDropdownLabel = '', alert }: SearchBarProps) => {
+export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [], relatedSitesDropdownLabel = '', alert, facetsEnabled }: SearchBarProps) => {
+  const [isPaneOpen, setIsPaneOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState(query);
+
+  const [isMobileView, setMobileView] = useState(false);
+  
+
   const searchUrlParam = 'query';
 
   const i18n = useContext(LanguageContext);
@@ -47,19 +67,38 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [],
   };
 
   useEffect(() => {
+    if (window.innerWidth < 640) {
+      setMobileView(true);
+    }
+
     checkColorContrastAndUpdateStyle({
       backgroundItemClass: '.usa-search .usa-button',
       foregroundItemClass: '.usa-search .usa-button .search-icon-glass'
     });
+
+    checkColorContrastAndUpdateStyle({
+      backgroundItemClass: '.facets-clone-icon-wrapper',
+      foregroundItemClass: '.facets-clone-icon'
+    });
+    checkColorContrastAndUpdateStyle({
+      backgroundItemClass: '.serp-result-wrapper',
+      foregroundItemClass: '.clear-results-button',
+      isForegroundItemBtn: true
+    });
+    checkColorContrastAndUpdateStyle({
+      backgroundItemClass: '.serp-facets-wrapper .see-results-button',
+      foregroundItemClass: '.serp-facets-wrapper .see-results-button',
+      isForegroundItemBtn: true
+    });
   }, []);
 
   return (
-    <div id="serp-search-bar-wrapper">
+    <div id="serp-search-bar-wrapper" className={facetsEnabled ? 'search-bar-mobile-facets-wrapper' : ''}>
       <GridContainer>
         {alert && <Alert title={alert.title} text={alert.text}/>}
 
         <Grid row>
-          <Grid tablet={{ col: true }}>
+          <Grid tablet={{ col: true }} className="search-bar-wrapper">
             <form 
               className="usa-search usa-search--small" 
               role="search" 
@@ -80,6 +119,26 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [],
               </button>
             </form>
           </Grid>
+          
+          {facetsEnabled &&
+            <div onClick={() => setIsPaneOpen(true)} className="mobile-facets-wrapper">
+              <FacetsLabel />
+            </div>
+          }
+
+          <SlidingPane
+            className="facets-mobile-panel"
+            title={<div className="facets-mobile-panel-label">Filter Search </div>}
+            closeIcon={<div className="facets-panel-close-icon-wrapper" data-testid="filter-panel-close-btn"><div className="facets-panel-close-icon-label">Close</div><div className="facets-clone-icon-wrapper">{facetsCloseSvgIcon()}</div></div>}
+            overlayClassName="facets-mobile-panel-overlay"
+            isOpen={isPaneOpen}
+            onRequestClose={() => {
+              setIsPaneOpen(false);
+            }}
+            width={isMobileView ? '80' : '50'}
+          >
+            <Facets />
+          </SlidingPane>
         </Grid>
         
         <Grid row>
