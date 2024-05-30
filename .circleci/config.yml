@@ -469,7 +469,6 @@ workflows:
             branches:
               only:
                 - main
-                - SRCH-5020-image-pipeline
       - update-prod:
           context:
             - aws-client-keys
