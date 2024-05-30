@@ -1,4 +1,5 @@
 /* eslint-disable camelcase */
+/* eslint-disable quote-props */
 import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import { Accordion, DateRangePicker, Tag } from '@trussworks/react-uswds';
@@ -11,7 +12,18 @@ import { FacetsLabel } from './FacetsLabel';
 import './Facets.css';
 
 interface FacetsProps {
-  aggregations?: any;
+  aggregations?: AggregationData[];
+}
+
+interface AggregationItem {
+  agg_key: string;
+  doc_count: number;
+}
+
+type AggregationCategory = string;
+
+type AggregationData = {
+  [key in AggregationCategory]: AggregationItem[];
 }
 
 const StyledWrapper = styled.div.attrs<{ styles: FontsAndColors; }>((props) => ({
@@ -41,7 +53,9 @@ const StyledWrapper = styled.div.attrs<{ styles: FontsAndColors; }>((props) => (
 type HeadingLevel = 'h4'; 
 
 const getAccordionItems = (aggregationsData: any) => {
-  return aggregationsData.map((aggregation:any) => {
+  console.log({ aggregationsData });
+  return aggregationsData.map((aggregation: AggregationItem) => {
+    console.log({ aggregation });
     return {
       title: Object.keys(aggregation)[0],
       expanded: true,
@@ -56,8 +70,10 @@ const getAccordionItemContent = (aggregation: any) => {
   return (
     <fieldset className="usa-fieldset">
       {Object.values(aggregation).map((filters:any) => {
+        console.log({ filters });
         return (
-          filters.map((filter:any, index:any) => {
+          filters.map((filter:AggregationItem, index:number) => {
+            console.log({ filter });
             return (
               <div className="usa-checkbox" key={index}>
                 <input
@@ -77,11 +93,11 @@ const getAccordionItemContent = (aggregation: any) => {
   );
 };
 
-const getAggregations = (aggregations: any) => {
+const getAggregations = (aggregations: AggregationData[]) => {
   // To remove the dummy aggregations with integration once backend starts sending the data
   const dummyAggregationsData = [
     {
-      Audience: [
+      'Audience': [
         {
           agg_key: 'Small business',
           doc_count: 1024
@@ -141,7 +157,7 @@ const getAggregations = (aggregations: any) => {
       ]
     },
     {
-      Tags: [
+      'Tags': [
         {
           agg_key: 'Contracts',
           doc_count: 703
@@ -252,7 +268,7 @@ export const Facets = ({ aggregations }: FacetsProps) => {
       <div className="serp-facets-wrapper">
         <FacetsLabel />
 
-        {getAggregations(aggregations)}
+        {aggregations && getAggregations(aggregations)}
 
         <Accordion bordered={false} items={dateRangeItems} />
       </div>
