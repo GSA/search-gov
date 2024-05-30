@@ -314,6 +314,54 @@ jobs:
             ./cc-test-reporter upload-coverage --input coverage/codeclimate_full_report.json
 
             ruby scripts/check_coverage.rb ${PWD}/coverage/codeclimate_full_report.json
+  update-staging:
+    docker:
+      - image: cimg/aws:2023.01
+    steps:
+      - checkout
+      - setup_remote_docker
+      - aws-cli/setup:
+          aws-region: STAGING_AWS_REGION
+          aws-access-key-id: CIRCLE_CI_USER_ACCESS_KEY_ID 
+          aws-secret-access-key: CIRCLE_CI_USER_SECRET_ACCESS_KEY
+      - run: docker build -t searchgov .
+      - run: docker tag searchgov:latest 213305845712.dkr.ecr.us-east-2.amazonaws.com/searchgov:latest
+      - run: docker tag searchgov:latest 213305845712.dkr.ecr.us-east-2.amazonaws.com/searchgov:${CIRCLE_BUILD_NUM}
+      - run: aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 213305845712.dkr.ecr.us-east-2.amazonaws.com
+      - run: docker push 213305845712.dkr.ecr.us-east-2.amazonaws.com/searchgov:latest
+      - run: docker push 213305845712.dkr.ecr.us-east-2.amazonaws.com/searchgov:${CIRCLE_BUILD_NUM}
+      - run: 
+          name: update searchgov k8s deployment
+          command: |
+            aws ssm send-command \
+            --document-name "searchgov-deployment-ssm-document" \
+            --targets "Key=tag:Name,Values=jumphost-staging-search-instance" \
+            --parameters '{"DeploymentName":["search-staging-searchgov-deploy"], "Namespace":["search"]}' \
+            --comment "restart searchgov staging deployment"
+  update-prod:
+    docker:
+      - image: cimg/aws:2023.01
+    steps:
+      - checkout
+      - setup_remote_docker
+      - aws-cli/setup:
+          aws-region: PROD_AWS_REGION
+          aws-access-key-id: CIRCLE_CI_USER_ACCESS_KEY_ID 
+          aws-secret-access-key: CIRCLE_CI_USER_SECRET_ACCESS_KEY
+      - run: docker build -t searchgov .
+      - run: docker tag searchgov:latest 213305845712.dkr.ecr.us-east-1.amazonaws.com/searchgov:latest
+      - run: docker tag searchgov:latest 213305845712.dkr.ecr.us-east-1.amazonaws.com/searchgov:${CIRCLE_BUILD_NUM}
+      - run: aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 213305845712.dkr.ecr.us-east-1.amazonaws.com
+      - run: docker push 213305845712.dkr.ecr.us-east-1.amazonaws.com/searchgov:latest
+      - run: docker push 213305845712.dkr.ecr.us-east-1.amazonaws.com/searchgov:${CIRCLE_BUILD_NUM}
+      - run: 
+          name: update searchgov k8s deployment
+          command: |
+            aws ssm send-command \
+            --document-name "searchgov-deployment-ssm-document" \
+            --targets "Key=tag:Name,Values=jumphost-prod-search-instance" \
+            --parameters '{"DeploymentName":["search-prod-searchgov-deploy"], "Namespace":["search"]}' \
+            --comment "restart searchgov prod deployment"
 
 workflows:
   version: 2
@@ -388,3 +436,22 @@ workflows:
                 - "8.0"
               node_version:
                 - 16.20.2
+
+  build_image_and_deploy:
+    jobs:
+      - update-staging:
+          context:
+            - aws-client-keys
+          filters:
+            branches:
+              only:
+                - main
+                - SRCH-5020-image-pipeline
+      - update-prod:
+          context:
+            - aws-client-keys
+          filters:
+            branches:
+              only:
+                - production
+        
