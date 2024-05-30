@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import { Accordion, DateRangePicker, Tag } from '@trussworks/react-uswds';
@@ -47,7 +48,7 @@ const getAccordionItems = (aggregationsData: any) => {
       id: Object.keys(aggregation)[0].replace(/\s+/g, ''),
       headingLevel: 'h4' as HeadingLevel,
       content: getAccordionItemContent(aggregation)
-    }
+    };
   });
 };
 
@@ -56,7 +57,7 @@ const getAccordionItemContent = (aggregation: any) => {
     <fieldset className="usa-fieldset">
       {Object.values(aggregation).map((filters:any) => {
         return (
-          filters.map((filter:any, index:any)=>{
+          filters.map((filter:any, index:any) => {
             return (
               <div className="usa-checkbox" key={index}>
                 <input
@@ -68,9 +69,9 @@ const getAccordionItemContent = (aggregation: any) => {
                 />
                 <label className="usa-checkbox__label">{filter.agg_key} <Tag>{filter.doc_count}</Tag></label>
               </div>
-            )
+            );
           })
-        )
+        );
       })}
     </fieldset>
   );
@@ -80,74 +81,74 @@ const getAggregations = (aggregations: any) => {
   // To remove the dummy aggregations with integration once backend starts sending the data
   const dummyAggregationsData = [
     {
-      "Audience": [
+      Audience: [
         {
-          "agg_key": "Small business",
-          "doc_count": 1024
+          agg_key: 'Small business',
+          doc_count: 1024
         },
         {
-          "agg_key": "Real estate",
-          "doc_count": 1234
+          agg_key: 'Real estate',
+          doc_count: 1234
         },
         {
-          "agg_key": "Technologists",
-          "doc_count": 1764
+          agg_key: 'Technologists',
+          doc_count: 1764
         },
         {
-          "agg_key": "Factories",
-          "doc_count": 1298
+          agg_key: 'Factories',
+          doc_count: 1298
         }
       ]
     },
     {
-      "Content Type": [
+      'Content Type': [
         {
-          "agg_key": "Press release",
-          "doc_count": 2876
+          agg_key: 'Press release',
+          doc_count: 2876
         },
         {
-          "agg_key": "Blogs",
-          "doc_count": 1923
+          agg_key: 'Blogs',
+          doc_count: 1923
         },
         {
-          "agg_key": "Policies",
-          "doc_count": 1244
+          agg_key: 'Policies',
+          doc_count: 1244
         },
         {
-          "agg_key": "Directives",
-          "doc_count": 876
+          agg_key: 'Directives',
+          doc_count: 876
         }
       ]
     },
     {
-      "File Type": [
+      'File Type': [
         {
-          "agg_key": "PDF",
-          "doc_count": 23
+          agg_key: 'PDF',
+          doc_count: 23
         },
         {
-          "agg_key": "Excel",
-          "doc_count": 76
+          agg_key: 'Excel',
+          doc_count: 76
         },
         {
-          "agg_key": "Word",
-          "doc_count": 11
+          agg_key: 'Word',
+          doc_count: 11
         },
         {
-          "agg_key": "Text",
-          "doc_count": 12
+          agg_key: 'Text',
+          doc_count: 12
         }
       ]
     },
     {
-      "Tags": [
+      Tags: [
         {
-          "agg_key": "Contracts",
-          "doc_count": 703
+          agg_key: 'Contracts',
+          doc_count: 703
         },
         {
-          "agg_key": "BPA",
-          "doc_count": 22
+          agg_key: 'BPA',
+          doc_count: 22
         }
       ]
     }
