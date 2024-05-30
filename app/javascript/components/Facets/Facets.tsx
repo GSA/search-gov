@@ -23,7 +23,7 @@ interface AggregationItem {
 type AggregationCategory = string;
 
 type AggregationData = {
-  [key in AggregationCategory]: AggregationItem[];
+  [key in string]: AggregationItem[];
 }
 
 const StyledWrapper = styled.div.attrs<{ styles: FontsAndColors; }>((props) => ({
