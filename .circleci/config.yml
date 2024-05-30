@@ -334,7 +334,7 @@ jobs:
           command: |
             docker build --build-arg AWS_ACCESS_KEY_ID=${CIRCLE_CI_USER_ACCESS_KEY_ID} \
             --build-arg AWS_REGION=us-east-1 \
-            --build-arg AWS_BUCKET=dgsearch-images \
+            --build-arg AWS_BUCKET=dgsearch-images-dev \
             --build-arg AWS_SECRET_ACCESS_KEY=${CIRCLE_CI_USER_SECRET_ACCESS_KEY} \
             --build-arg ASSET_HOST=https://d15vqlr7iz6e8x.cloudfront.net \
             -t searchgov .
