@@ -12,7 +12,6 @@ class BingSearch < SearchEngine
     super
     @options = options
     @api_connection = self.class.api_connection
-    Rails.logger.error("CACHE_LIFETIME: #{CACHE_LIFETIME}")
   end
 
   def execute_query

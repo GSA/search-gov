@@ -100,7 +100,8 @@ describe Admin::AffiliatesController do
         let(:display_columns) do
           %i[ use_redesigned_results_page footer_fragment header_tagline_font_family
               header_tagline_font_size header_tagline_font_style no_results_pointer
-              page_one_more_results_pointer navigation_dropdown_label related_sites_dropdown_label ]
+              page_one_more_results_pointer navigation_dropdown_label related_sites_dropdown_label
+              looking_for_government_services show_search_filter_settings ]
         end
 
         it 'contains the specified columns' do
@@ -163,12 +164,14 @@ describe Admin::AffiliatesController do
             jobs_enabled
             last_month_query_count
             locale
+            looking_for_government_services
             mobile_logo_url
             name
             raw_log_access_enabled
             recent_user_activity
             related_sites_dropdown_label
             search_engine
+            show_search_filter_settings
             site_domains
             submitted_external_tracking_code
             theme

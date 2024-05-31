@@ -21,8 +21,8 @@ Feature:  Administration
 
   Scenario: Visiting the affiliate admin page as an admin
     Given the following Affiliates exist:
-      | display_name | name       | contact_email | first_name | last_name | website                |
-      | agency site  | agency.gov | one@foo.gov   | One        | Foo       | http://beta.agency.gov |
+      | display_name | name       | contact_email | first_name | last_name | website                | use_redesigned_results_page |
+      | agency site  | agency.gov | one@foo.gov   | One        | Foo       | http://beta.agency.gov | false                       |
     And the following "site domains" exist for the affiliate agency.gov:
       | domain               | site_name      |
       | www1.agency-site.gov | Agency Website |
@@ -46,8 +46,8 @@ Feature:  Administration
   @javascript
   Scenario: Editing an affiliate as an admin
     Given the following Affiliates exist:
-      | display_name | name       | contact_email | first_name | last_name | website                |
-      | agency site  | agency.gov | one@foo.gov   | One        | Foo       | http://beta.agency.gov |
+      | display_name | name       | contact_email | first_name | last_name | website                | use_redesigned_results_page |
+      | agency site  | agency.gov | one@foo.gov   | One        | Foo       | http://beta.agency.gov | false                       |
     When I go to the admin sites page
     When I follow "Edit" within the first scaffold row
     Then I should see "Settings (Show)"
@@ -62,8 +62,8 @@ Feature:  Administration
   @javascript
   Scenario: Editing an affiliate's Display Settings as an admin
     Given the following Affiliates exist:
-      | display_name | name       | contact_email | first_name | last_name | website                |
-      | agency site  | agency.gov | one@foo.gov   | One        | Foo       | http://beta.agency.gov |
+      | display_name | name       | contact_email | first_name | last_name | website                | use_redesigned_results_page |
+      | agency site  | agency.gov | one@foo.gov   | One        | Foo       | http://beta.agency.gov | false                       |
     When I go to the admin sites page
     When I follow "Edit" within the first scaffold row
     Then I should see "Settings (Show)"
@@ -94,8 +94,8 @@ Feature:  Administration
 
   Scenario: Viewing Boosted Content (both affiliate and Search.USA.gov)
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | first_name | last_name |
-      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       |
+      | display_name | name    | contact_email | first_name | last_name | use_redesigned_results_page |
+      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | false                       |
     And the following Boosted Content entries exist for the affiliate "bar.gov"
       | title              | url                    | description                        | keywords |
       | Bar Emergency Page | http://www.bar.gov/911 | This should not show up in results | safety   |
@@ -209,7 +209,7 @@ Feature:  Administration
 
     When I follow "Sitemaps" within the first scaffold row
     Then I should see "search.gov/sitemap.xml"
-    And I follow the first "Delete" and confirm
+    And I follow the first "Delete" and confirm in the SearchgovDomain Sitemaps table
     Then I should not see "search.gov/sitemap.xml"
 
     When I follow "Create New" in the SearchgovDomain Sitemaps table
@@ -251,12 +251,16 @@ Feature:  Administration
     And I wait for ajax
     Then I should see "Your URL has been added to the fetching queue"
 
-    When I follow "Close" in the SearchgovDomain URLs table
-    And I follow the first "Delete"
+    When I follow the first "Delete" and confirm in the SearchgovDomain URLs header
     Then I should not see "https://search.gov/page1"
 
     When I follow "Search" in the SearchgovDomain URLs table
     Then I should see "Enqueued for reindex" in the super admin search form
+
+    When I follow "Delete" within the first scaffold row
+    And I fill in "confirmation" with "DESTROY DOMAIN"
+    And I press "Confirm Deletion"
+    Then I should see "Deletion has been enqueued for search.gov"
 
   @javascript
   Scenario: Adding a system alert

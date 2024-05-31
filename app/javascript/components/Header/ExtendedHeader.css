@@ -1,5 +1,14 @@
 @media (min-width: 64em){
   .usa-nav__secondary {
-      bottom: 5rem;
+    bottom: 5rem;
   }
+
+  .usa-header--extended .usa-logo {
+    margin: 1.5rem 0 1.5rem;
+    max-width: 100%;
+  }
+}
+
+.usa-header--extended .is-visible .usa-nav__link:hover {
+  background-color: unset;
 }

@@ -1,0 +1,79 @@
+.serp-facets-wrapper .usa-accordion__button,
+.serp-facets-wrapper .usa-accordion__button:hover{
+  background-color: #ffffff;
+  font-size: 0.93rem;
+  padding-left: 0.75rem;
+}
+
+.serp-facets-wrapper .usa-accordion__button[aria-expanded=false],
+.serp-facets-wrapper .usa-accordion__button[aria-expanded=false]:hover{
+  background-image: url("data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%3e%3cpath%20d='M16.59%208.59%2012%2013.17%207.41%208.59%206%2010l6%206%206-6z'/%3e%3c/svg%3e"),linear-gradient(transparent,transparent)
+}
+
+.serp-facets-wrapper .usa-accordion__button[aria-expanded=true],
+.serp-facets-wrapper .usa-accordion__button[aria-expanded=true]:hover{
+  background-image: url("data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%3e%3cpath%20d='m12%208-6%206%201.41%201.41L12%2010.83l4.59%204.58L18%2014z'/%3e%3c/svg%3e"),linear-gradient(transparent,transparent)
+}
+
+.serp-facets-wrapper .usa-accordion__content{
+  border-bottom: 1px solid #DFE1E2;
+  margin-right: 1.5rem;
+  margin-top: -5px;
+  padding: 0 0 1.25rem 0.75rem;
+}
+
+.serp-facets-wrapper .usa-accordion:last-of-type .usa-accordion__content{
+  border-bottom: 1px solid #71767A;
+}
+
+.serp-facets-wrapper .usa-tag{
+  background: #F0F0F0;
+  color: #005EA2;
+  font-size: .90rem;
+  margin-left: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.facets-action-btn-wrapper .usa-button-group{
+  display: flex; 
+  justify-content: space-between;
+  margin-left: 0.5rem;
+  margin-right: 1.5rem;
+  margin-top: 2rem;
+}
+
+.facets-action-btn-wrapper .usa-button--unstyled,
+.facets-action-btn-wrapper .usa-button--unstyled:hover{
+  background: none;
+}
+
+@media (max-width: 768px){
+  .facets-mobile-panel .serp-facets-wrapper{
+    padding-bottom: 110px;
+    padding-left: 15px;
+  }
+
+  .facets-mobile-panel .facets-action-btn-wrapper{
+    background: #EFF6FC;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+  }
+
+  .facets-mobile-panel .facets-action-btn-wrapper .usa-button-group{
+    flex-direction: row;
+    margin: 1rem 3rem 1rem 3rem;
+  }
+
+  .facets-mobile-panel .facets-action-btn-wrapper .clear-results-button{
+    font-weight: 600;
+    text-decoration: none;
+  }
+}
+
+@media (max-width: 640px){
+  .facets-mobile-panel .facets-action-btn-wrapper .clear-results-button-wrapper{
+    margin-top: 15px;
+  }  
+}
