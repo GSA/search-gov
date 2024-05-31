@@ -322,6 +322,7 @@ jobs:
   update-staging:
     docker:
       - image: cimg/aws:2023.01
+    resource_class: xlarge
     steps:
       - checkout
       - setup_remote_docker
@@ -340,10 +341,10 @@ jobs:
             -t searchgov .
 
       - run: docker tag searchgov:latest 213305845712.dkr.ecr.us-east-2.amazonaws.com/searchgov:latest
-      - run: docker tag searchgov:latest 213305845712.dkr.ecr.us-east-2.amazonaws.com/searchgov:${CIRCLE_BUILD_NUM}
+      - run: docker tag searchgov:latest 213305845712.dkr.ecr.us-east-2.amazonaws.com/searchgov:${CIRCLE_SHA1:0:7}
       - run: aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 213305845712.dkr.ecr.us-east-2.amazonaws.com
       - run: docker push 213305845712.dkr.ecr.us-east-2.amazonaws.com/searchgov:latest
-      - run: docker push 213305845712.dkr.ecr.us-east-2.amazonaws.com/searchgov:${CIRCLE_BUILD_NUM}
+      - run: docker push 213305845712.dkr.ecr.us-east-2.amazonaws.com/searchgov:${CIRCLE_SHA1:0:7}
       - run: 
           name: update searchgov k8s deployment
           command: |
@@ -355,6 +356,7 @@ jobs:
   update-prod:
     docker:
       - image: cimg/aws:2023.01
+    resource_class: xlarge
     steps:
       - checkout
       - setup_remote_docker
@@ -373,10 +375,10 @@ jobs:
             -t searchgov .
 
       - run: docker tag searchgov:latest 213305845712.dkr.ecr.us-east-1.amazonaws.com/searchgov:latest
-      - run: docker tag searchgov:latest 213305845712.dkr.ecr.us-east-1.amazonaws.com/searchgov:${CIRCLE_BUILD_NUM}
+      - run: docker tag searchgov:latest 213305845712.dkr.ecr.us-east-1.amazonaws.com/searchgov:${CIRCLE_SHA1:0:7}
       - run: aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 213305845712.dkr.ecr.us-east-1.amazonaws.com
       - run: docker push 213305845712.dkr.ecr.us-east-1.amazonaws.com/searchgov:latest
-      - run: docker push 213305845712.dkr.ecr.us-east-1.amazonaws.com/searchgov:${CIRCLE_BUILD_NUM}
+      - run: docker push 213305845712.dkr.ecr.us-east-1.amazonaws.com/searchgov:${CIRCLE_SHA1:0:7}
       - run: 
           name: update searchgov k8s deployment
           command: |
