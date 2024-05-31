@@ -1,4 +1,4 @@
-ARG RUBY_VERSION=3.0.6
+ARG RUBY_VERSION=3.1.4
 FROM public.ecr.aws/docker/library/ruby:$RUBY_VERSION-slim as base
 
 # Rails app lives here
@@ -49,6 +49,19 @@ COPY . .
 
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
+
+# AWS access for assets compilation
+ARG ASSET_HOST
+ARG AWS_ACCESS_KEY_ID
+ARG AWS_REGION
+ARG AWS_S3_BUCKET
+ARG AWS_SECRET_ACCESS_KEY
+
+ENV ASSET_HOST=${ASSET_HOST} \
+    AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} \
+    AWS_REGION=${AWS_REGION} \
+    AWS_S3_BUCKET=${AWS_S3_BUCKET} \
+    AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
 RUN SECRET_KEY_BASE=1 ./bin/rails assets:precompile

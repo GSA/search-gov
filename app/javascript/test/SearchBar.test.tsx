@@ -17,7 +17,7 @@ jest.mock('i18n-js', () => {
 
 const i18n = new I18n(locale);
 
-describe('SearchBar', () => {
+describe('SearchBar with no facets', () => {
   it('Search Bar with No Query', () => {
     render(
       <LanguageContext.Provider value={i18n} >
@@ -33,5 +33,48 @@ describe('SearchBar', () => {
 
     const inputTextWithResults = screen.getByText(/Please enter a search term in the box above./i);
     expect(inputTextWithResults).toBeInTheDocument();
+  });
+});
+
+describe('Tablet & Mobile view: SearchBar with facets', () => {
+  beforeAll(() => {
+    window.innerWidth = 400;
+  });
+
+  it('Filter search label and filter button is present', () => {
+    render(
+      <LanguageContext.Provider value={i18n} >
+        <SearchBar query="" navigationLinks={[]} facetsEnabled={true} />
+      </LanguageContext.Provider>
+    );
+
+    const filterLabel = screen.getByText(/Filter search/i);
+    expect(filterLabel).toBeInTheDocument();
+    
+    const filterSearchBtn = screen.getByTestId('filter-search-btn');
+    fireEvent.click(filterSearchBtn);
+  });
+
+  it('Filter type, action buttons are present', () => {
+    render(
+      <LanguageContext.Provider value={i18n} >
+        <SearchBar query="" navigationLinks={[]} facetsEnabled={true} />
+      </LanguageContext.Provider>
+    );
+
+    const filterSearchBtn = screen.getByTestId('filter-search-btn');
+    fireEvent.click(filterSearchBtn);
+
+    const filterTypeLabel = screen.getByText(/Audience/i);
+    expect(filterTypeLabel).toBeInTheDocument();
+
+    const clearBtnLabel = screen.getByText(/Clear/i);
+    expect(clearBtnLabel).toBeInTheDocument();
+
+    const seeResultsBtnLabel = screen.getByText(/See Results/i);
+    expect(seeResultsBtnLabel).toBeInTheDocument();
+
+    const filterPanelCloseBtn = screen.getByTestId('filter-panel-close-btn');
+    fireEvent.click(filterPanelCloseBtn);
   });
 });

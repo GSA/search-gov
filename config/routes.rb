@@ -256,12 +256,10 @@ Rails.application.routes.draw do
   get '/superfresh/:feed_id' => 'superfresh#index', :as => :superfresh_feed
 
   get '/user/developer_redirect' => 'users#developer_redirect', :as => :developer_redirect
-  get '/program' => redirect(
-    Rails.application.secrets.organization[:blog_url],
-    status: 302
-  )
 
-  get "*path", to: redirect(Rails.application.secrets.organization[:page_not_found_url],
-                            status: 302),
-               constraints: lambda { |req| req.path.exclude? 'rails/active_storage' }
+  BLOG_URL           = ENV['BLOG_URL']           || Rails.application.secrets.dig(:organization, :blog_url)
+  PAGE_NOT_FOUND_URL = ENV['PAGE_NOT_FOUND_URL'] || Rails.application.secrets.dig(:organization, :page_not_found_url)
+
+  get '/program', to: redirect(BLOG_URL || '', status: 302)
+  get '*path',    to: redirect(PAGE_NOT_FOUND_URL || '', status: 302), constraints: lambda { |req| req.path.exclude? 'rails/active_storage' }
 end
