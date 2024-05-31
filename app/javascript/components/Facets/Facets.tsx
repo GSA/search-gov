@@ -5,26 +5,13 @@ import { Accordion, DateRangePicker, Tag } from '@trussworks/react-uswds';
 import { StyleContext } from '../../contexts/StyleContext';
 import { FontsAndColors  } from '../SearchResultsLayout';
 import { checkColorContrastAndUpdateStyle } from '../../utils';
+import { FacetsLabel } from './FacetsLabel';
 
 import './Facets.css';
-
-const searchFilterSvgIcon = () => {
-  return (
-    <svg role="img" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
-      <title>Filter</title>
-      <path className="search-filer-icon" fill="#005EA2" d="M4.25 5.61C6.27 8.2 10 13 10 13v6c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-6s3.72-4.8 5.74-7.39A.998.998 0 0 0 18.95 4H5.04c-.83 0-1.3.95-.79 1.61z"/>
-    </svg>
-  );
-};
 
 const StyledWrapper = styled.div.attrs<{ styles: FontsAndColors; }>((props) => ({
   styles: props.styles
 }))`
-
-  path.search-filer-icon {
-    fill: ${(props) => props.styles.buttonBackgroundColor};
-  }
-
   .usa-accordion__button {
     color: ${(props) => props.styles.sectionTitleColor};
   }
@@ -40,6 +27,10 @@ const StyledWrapper = styled.div.attrs<{ styles: FontsAndColors; }>((props) => (
   .clear-results-button{
     color: ${(props) => props.styles.buttonBackgroundColor};
   }
+  .usa-search__facets-clone-icon {
+    fill: ${(props) => props.styles.buttonBackgroundColor};
+  }
+  
 `;
 
 type HeadingLevel = 'h4'; 
@@ -312,18 +303,16 @@ export const Facets = () => {
   return (
     <StyledWrapper styles={styles}>
       <div className="serp-facets-wrapper">
-        <h3 className="filter-heading">
-          {searchFilterSvgIcon()} 
-          <span className="filter-heading-label">Filter search</span>
-        </h3>
+        <FacetsLabel />
         <Accordion bordered={false} items={audienceItems} />
         <Accordion bordered={false} items={contentTypeItems} />
         <Accordion bordered={false} items={fileTypeItems} />
         <Accordion bordered={false} items={tagsItems} />
         <Accordion bordered={false} items={dateRangeItems} />
-
+      </div>
+      <div className="facets-action-btn-wrapper">
         <ul className="usa-button-group">
-          <li className="usa-button-group__item">
+          <li className="usa-button-group__item clear-results-button-wrapper">
             <button className="usa-button usa-button--unstyled clear-results-button" type="button">
               Clear
             </button>

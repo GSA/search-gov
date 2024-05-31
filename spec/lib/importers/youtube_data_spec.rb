@@ -244,6 +244,10 @@ describe YoutubeData do
     end
     let(:news_item_ids) { [news_item_1.id, news_item_2.id, news_item_3.id] }
 
+    before do
+      allow(Rails.logger).to receive(:warn)
+    end
+
     it 'imports playlists items' do
       expect(YoutubeAdapter).to receive(:each_playlist_item).
         with(playlist_1).
@@ -256,10 +260,10 @@ describe YoutubeData do
         and_yield(playlist_item_3).
         and_return(second_result)
 
-      expect(Rails.logger).to receive(:warn).
-        with(/YoutubeData#create_or_update/)
-
       youtube_data.import_playlists_items
+
+      expect(Rails.logger).to have_received(:warn).
+        with(/YoutubeData#create_or_update/)
 
       expect(youtube_data.all_news_item_ids).to eq(news_item_ids)
 

@@ -3,7 +3,7 @@
 describe FontAndColorUpdater do
   context 'when custom colors are set for an existing affiliate' do
     before do
-      3.times do |i|
+      2.times do |i|
         Affiliate.create!(name: "custom_color_affiliate_#{i}",
                           display_name: "Custom Color Affiliate #{i}",
                           visual_design_json: starting_visual_design)
@@ -14,9 +14,9 @@ describe FontAndColorUpdater do
 
     let(:font_and_color_updater) { described_class.new }
     let(:starting_visual_design) { { banner_background_color: '#123456' } }
-    let(:first_affiliate) { Affiliate.find_by(name: 'custom_color_affiliate_0') }
-    let(:second_affiliate) { Affiliate.find_by(name: 'custom_color_affiliate_1') }
-    let(:third_affiliate) { Affiliate.find_by(name: 'custom_color_affiliate_2') }
+    let(:first_affiliate) { affiliates(:usagov_affiliate_header_bg_color) }
+    let(:second_affiliate) { Affiliate.find_by(name: 'custom_color_affiliate_0') }
+    let(:third_affiliate) { Affiliate.find_by(name: 'custom_color_affiliate_1') }
     let(:success_message) { '[font_and_color_updater_task] The following affiliates were updated successfully:' }
 
     context 'when specific ids are passed to update' do
