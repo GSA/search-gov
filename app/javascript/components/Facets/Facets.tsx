@@ -10,7 +10,6 @@ import { checkColorContrastAndUpdateStyle } from '../../utils';
 import { FacetsLabel } from './FacetsLabel';
 
 import './Facets.css';
-import { number, string } from 'prop-types';
 
 interface FacetsProps {
   aggregations?: AggregationData[];
@@ -126,26 +125,54 @@ const dummyAggregationsData = [
   }
 ];
 
+function transformArray(inputArray) {
+  let outputArray = {};
+
+  inputArray.forEach(item => {
+    for (let key in item) {
+      if (item.hasOwnProperty(key)) {
+        outputArray[key] = item[key].map(innerItem => innerItem.agg_key);
+      }
+    }
+  });
+
+  return outputArray;
+}
+
 export const Facets = ({ aggregations }: FacetsProps) => {
   const styles = useContext(StyleContext);
-
   const [selectedIds, setSelectedIds] = useState({});
 
+  const aggregationsProps = transformArray(dummyAggregationsData);
+  console.log({aggregationsProps});
+
+  const aggregationsSelected = [];
+  const nonAggregations = {};
+  const searchParams = new URLSearchParams(window.location.search);
+  for (const [filter, value] of searchParams) {
+    // console.log(st);
+    if(filter in aggregationsProps)
+      aggregationsSelected[filter] = value.split(",");
+    else
+      nonAggregations[filter] = value.split(",");
+  }
+  // console.log({aggregationsSelected, nonAggregations});
+  
   const handleCheckboxChange = (event:any) => {
-    const filterValue  = event.target.value;
-    const filterName = event.target.name;
+    const filterValue2  = event.target.value;
+    const filterName2 = event.target.name;
 
     if(event.target.checked){
-      if(selectedIds[filterName]!==undefined){
-        selectedIds[filterName].push(filterValue);
+      if(selectedIds[filterName2]!==undefined){
+        selectedIds[filterName2].push(filterValue2);
       }else{
-        selectedIds[filterName] = [filterValue];
+        selectedIds[filterName2] = [filterValue2];
       }
     }else{
-      selectedIds[filterName] = selectedIds[filterName].filter(id=>id !== filterValue);;
+      selectedIds[filterName2] = selectedIds[filterName2].filter(id=>id !== filterValue2);
     }
     setSelectedIds(selectedIds);
-    console.log({selectedIds})
+    // console.log({selectedIds})
   }
 
   const getAccordionItemContent = (aggregation: any) => {
@@ -164,8 +191,37 @@ export const Facets = ({ aggregations }: FacetsProps) => {
                     name={Object.keys(aggregation)[0]} 
                     value={filter.agg_key}
                     //checked={selectedIds.includes(filter.agg_key)}
+                    defaultChecked={(()=>{
+                      const hasFilterLabel = Object.keys(aggregation)[0] in aggregationsSelected;
+                      //console.log({hasFilterLabel, aggregationsSelected}, "keys: ", Object.keys(aggregation)[0]);
+                      if(!hasFilterLabel)
+                        return false;
+
+                      //console.log("filter.agg_key", filter.agg_key, aggregationsSelected[Object.keys(aggregation)[0]])
+                      const hasFilterValue = aggregationsSelected[Object.keys(aggregation)[0]].includes(filter.agg_key);
+                      if(!hasFilterValue)
+                        return false;
+
+                      return true;
+
+                      //if(aggregationsSelected.includes(Object.keys(aggregation)[0]) && //aggregationsSelected[filter.agg_key].includes(filter.agg_key))
+                    })()}
+                    // defaultChecked={(()=>{
+                    //   const hasFilterLabel = Object.keys(aggregation)[0] in aggregationsSelected;
+                    //   //console.log({hasFilterLabel, aggregationsSelected}, "keys: ", Object.keys(aggregation)[0]);
+                    //   if(!hasFilterLabel)
+                    //     return false;
+
+                    //   //console.log("filter.agg_key", filter.agg_key, aggregationsSelected[Object.keys(aggregation)[0]])
+                    //   const hasFilterValue = aggregationsSelected[Object.keys(aggregation)[0]].includes(filter.agg_key);
+                    //   if(!hasFilterValue)
+                    //     return false;
+
+                    //   return true;
+
+                    //   //if(aggregationsSelected.includes(Object.keys(aggregation)[0]) && //aggregationsSelected[filter.agg_key].includes(filter.agg_key))
+                    // })()}
                     onChange={(e) => { handleCheckboxChange(e) }}
-                    //defaultChecked={true}
                   />
                 </div>
               );
@@ -193,6 +249,8 @@ export const Facets = ({ aggregations }: FacetsProps) => {
   const getAggregations = (aggregations: AggregationData[]) => {
     // To remove the dummy aggregations with integration once backend starts sending the data
     const aggregationsData = aggregations || dummyAggregationsData;
+
+   //console.log({aggregationsData});
     
     return (
       <Accordion 
@@ -203,39 +261,39 @@ export const Facets = ({ aggregations }: FacetsProps) => {
   };
 
   function convertObjectToString(obj) {
-  // Initialize an array to hold the key-value pairs
-  let paramsArray = [];
-  
-  // Iterate over the keys of the object
-  for (let key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      // Join the values of each key with a comma
-      if(obj[key].length > 0){
-        let values = obj[key].join(',');
-        // Construct the key-value pair string
-        let keyValueString = `${key}=${values}`;
-        // Push the key-value pair string to the array
-        paramsArray.push(keyValueString);
+    // Initialize an array to hold the key-value pairs
+    let paramsArray = [];
+    
+    // Iterate over the keys of the object
+    for (let key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        // Join the values of each key with a comma
+        if(obj[key].length > 0){
+          let values = obj[key].join(',');
+          // Construct the key-value pair string
+          let keyValueString = `${key}=${values}`;
+          // Push the key-value pair string to the array
+          paramsArray.push(keyValueString);
+        }
+        
       }
-      
     }
+    // Join all the key-value pairs with an ampersand
+    return paramsArray.join('&');
   }
-  
-  // Join all the key-value pairs with an ampersand
-  return paramsArray.join('&');
-}
 
   const seeResults = () => {
-    console.log("seeResults");
-    window.location.assign(window.location.href + "&"+convertObjectToString(selectedIds));
+    console.log(window.location.origin + window.location.pathname + "&"+convertObjectToString({...nonAggregations, ...selectedIds}))
+    
+    window.location.replace(window.location.origin + window.location.pathname + "?"+convertObjectToString({...nonAggregations, ...selectedIds}));
+  }
+
+  const clearResults = () => {
+    window.location.replace(window.location.origin + window.location.pathname + "?"+convertObjectToString(nonAggregations));
   }
     
   useEffect(() => {
-
-    const urlParams = new URLSearchParams(window.location.search);
-    //urlParams.get('Audience').split(",");
-    //console.log(urlParams.get('Audience').split(","));
-
+    setSelectedIds(aggregationsSelected);
 
     checkColorContrastAndUpdateStyle({
       backgroundItemClass: '.serp-result-wrapper',
@@ -328,7 +386,10 @@ export const Facets = ({ aggregations }: FacetsProps) => {
       <div className="facets-action-btn-wrapper">
         <ul className="usa-button-group">
           <li className="usa-button-group__item clear-results-button-wrapper">
-            <button className="usa-button usa-button--unstyled clear-results-button" type="button">
+            <button 
+              className="usa-button usa-button--unstyled clear-results-button" 
+              type="button" 
+              onClick={()=>clearResults()}>
               Clear
             </button>
           </li>
