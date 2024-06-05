@@ -86,6 +86,7 @@ interface SearchResultsLayoutProps {
       blendedModule?: string;
       tags?: string[]
     }[] | null;
+    aggregations?: any
   } | null;
   additionalResults?: {
     recommendedBy: string;
@@ -287,7 +288,7 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
   i18n.locale = language.code;
 
   // facetsEnabled to come from SearchResultsLayout props from backend
-  const facetsEnabled = false;
+  const facetsEnabled = true;
   
   return (
     <LanguageContext.Provider value={i18n}>
