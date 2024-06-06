@@ -151,6 +151,8 @@ gem 'mail', '~> 2.7.1'
 gem 'feedjira', '~> 3.2'
 gem 'bootsnap', require: false
 
+gem 'rails_semantic_logger', '~> 4.14'
+
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
