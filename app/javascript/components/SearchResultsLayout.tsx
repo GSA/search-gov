@@ -308,7 +308,7 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
             <Grid row>
               {facetsEnabled && 
               <Grid tablet={{ col: 3 }} className='serp-facets-container'>
-                <Facets />
+                <Facets facetsEnabled={facetsEnabled} />
               </Grid>}
          
               <Grid tablet={{ col: facetsEnabled ? 9 : 12 }} className='serp-main-container'>

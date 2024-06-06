@@ -13,6 +13,7 @@ import './Facets.css';
 
 interface FacetsProps {
   aggregations?: AggregationData[];
+  facetsEnabled?: boolean;
 }
 
 interface AggregationItem {
@@ -125,64 +126,65 @@ const dummyAggregationsData = [
   }
 ];
 
-function transformArray(inputArray) {
-  let outputArray = {};
+const getAggregationsFromProps = (inputArray: any) => {
+  const outputArray: any = {};
 
-  inputArray.forEach(item => {
-    for (let key in item) {
-      if (item.hasOwnProperty(key)) {
-        outputArray[key] = item[key].map(innerItem => innerItem.agg_key);
+  inputArray.forEach((item: any) => {
+    for (const key in item) {
+      // if (item.hasOwnProperty(key)) {
+      if (Object.prototype.hasOwnProperty.call(item, key)) {
+        outputArray[key] = item[key].map((innerItem: any) => innerItem.agg_key);
       }
     }
   });
 
   return outputArray;
-}
+};
 
-export const Facets = ({ aggregations }: FacetsProps) => {
+export const Facets = ({ aggregations, facetsEnabled }: FacetsProps) => {
   const styles = useContext(StyleContext);
-  const [selectedIds, setSelectedIds] = useState({});
+  const [selectedIds, setSelectedIds] = useState<any>({});
 
-  const aggregationsProps = transformArray(dummyAggregationsData);
-  console.log({aggregationsProps});
+  const aggregationsProps = getAggregationsFromProps(dummyAggregationsData);
+  // console.log({ aggregationsProps });
 
-  const aggregationsSelected = [];
-  const nonAggregations = {};
+  const aggregationsSelected: any = [];
+  const nonAggregations: any = {};
   const searchParams = new URLSearchParams(window.location.search);
   for (const [filter, value] of searchParams) {
     // console.log(st);
-    if(filter in aggregationsProps)
-      aggregationsSelected[filter] = value.split(",");
+    if (filter in aggregationsProps)
+      aggregationsSelected[filter] = value.split(',');
     else
-      nonAggregations[filter] = value.split(",");
+      nonAggregations[filter] = value.split(',');
   }
   // console.log({aggregationsSelected, nonAggregations});
   
   const handleCheckboxChange = (event:any) => {
-    const filterValue2  = event.target.value;
-    const filterName2 = event.target.name;
+    const filterVal  = event.target.value;
+    const filterName = event.target.name;
 
-    if(event.target.checked){
-      if(selectedIds[filterName2]!==undefined){
-        selectedIds[filterName2].push(filterValue2);
-      }else{
-        selectedIds[filterName2] = [filterValue2];
+    if (event.target.checked) {
+      if (selectedIds[filterName]!==undefined) {
+        selectedIds[filterName].push(filterVal);
+      } else {
+        selectedIds[filterName] = [filterVal];
       }
-    }else{
-      selectedIds[filterName2] = selectedIds[filterName2].filter(id=>id !== filterValue2);
+    } else {
+      selectedIds[filterName] = selectedIds[filterName].filter((id: string) => id !== filterVal);
     }
     setSelectedIds(selectedIds);
-    // console.log({selectedIds})
-  }
+    console.log({selectedIds})
+  };
 
   const getAccordionItemContent = (aggregation: any) => {
     return (
       <fieldset className="usa-fieldset">
         {Object.values(aggregation).map((filters: any) => {
-          //console.log({ filters });
+          // console.log({ filters });
           return (
             filters.map((filter: AggregationItem, index: number) => {
-              //console.log({ filter });
+              // console.log({ filter });
               return (
                 <div className="usa-checkbox" key={index} >
                   <Checkbox 
@@ -190,38 +192,23 @@ export const Facets = ({ aggregations }: FacetsProps) => {
                     label={<>{filter.agg_key} <Tag>{filter.doc_count}</Tag></>}
                     name={Object.keys(aggregation)[0]} 
                     value={filter.agg_key}
-                    //checked={selectedIds.includes(filter.agg_key)}
-                    defaultChecked={(()=>{
+                    // checked={selectedIds.includes(filter.agg_key)}
+                    defaultChecked={(() => {
                       const hasFilterLabel = Object.keys(aggregation)[0] in aggregationsSelected;
-                      //console.log({hasFilterLabel, aggregationsSelected}, "keys: ", Object.keys(aggregation)[0]);
-                      if(!hasFilterLabel)
+                      // console.log({hasFilterLabel, aggregationsSelected}, "keys: ", Object.keys(aggregation)[0]);
+                      if (hasFilterLabel === false)
                         return false;
 
-                      //console.log("filter.agg_key", filter.agg_key, aggregationsSelected[Object.keys(aggregation)[0]])
+                      // console.log("filter.agg_key", filter.agg_key, aggregationsSelected[Object.keys(aggregation)[0]])
                       const hasFilterValue = aggregationsSelected[Object.keys(aggregation)[0]].includes(filter.agg_key);
-                      if(!hasFilterValue)
+                      if (hasFilterValue === false)
                         return false;
 
                       return true;
-
-                      //if(aggregationsSelected.includes(Object.keys(aggregation)[0]) && //aggregationsSelected[filter.agg_key].includes(filter.agg_key))
                     })()}
-                    // defaultChecked={(()=>{
-                    //   const hasFilterLabel = Object.keys(aggregation)[0] in aggregationsSelected;
-                    //   //console.log({hasFilterLabel, aggregationsSelected}, "keys: ", Object.keys(aggregation)[0]);
-                    //   if(!hasFilterLabel)
-                    //     return false;
-
-                    //   //console.log("filter.agg_key", filter.agg_key, aggregationsSelected[Object.keys(aggregation)[0]])
-                    //   const hasFilterValue = aggregationsSelected[Object.keys(aggregation)[0]].includes(filter.agg_key);
-                    //   if(!hasFilterValue)
-                    //     return false;
-
-                    //   return true;
-
-                    //   //if(aggregationsSelected.includes(Object.keys(aggregation)[0]) && //aggregationsSelected[filter.agg_key].includes(filter.agg_key))
-                    // })()}
-                    onChange={(e) => { handleCheckboxChange(e) }}
+                    onChange={
+                      (event) => handleCheckboxChange(event)
+                    }
                   />
                 </div>
               );
@@ -233,9 +220,9 @@ export const Facets = ({ aggregations }: FacetsProps) => {
   };
 
   const getAccordionItems = (aggregationsData: any) => {
-    //console.log({ aggregationsData });
+    // console.log({ aggregationsData });
     return aggregationsData.map((aggregation: AggregationItem) => {
-      //console.log({ aggregation });
+      // console.log({ aggregation });
       return {
         title: Object.keys(aggregation)[0],
         expanded: true,
@@ -246,11 +233,11 @@ export const Facets = ({ aggregations }: FacetsProps) => {
     });
   };
 
-  const getAggregations = (aggregations: AggregationData[]) => {
+  const getAggregations = (aggregations?: AggregationData[]) => {
     // To remove the dummy aggregations with integration once backend starts sending the data
     const aggregationsData = aggregations || dummyAggregationsData;
 
-   //console.log({aggregationsData});
+    // console.log({aggregationsData});
     
     return (
       <Accordion 
@@ -260,37 +247,37 @@ export const Facets = ({ aggregations }: FacetsProps) => {
     );
   };
 
-  function convertObjectToString(obj) {
+  const convertObjectToString = (obj: any) => {
     // Initialize an array to hold the key-value pairs
-    let paramsArray = [];
+    const paramsArray = [];
     
     // Iterate over the keys of the object
-    for (let key in obj) {
-      if (obj.hasOwnProperty(key)) {
+    for (const key in obj) {
+      // if (obj.hasOwnProperty(key)) {
+      if (Object.prototype.hasOwnProperty.call(obj, key)) {
         // Join the values of each key with a comma
-        if(obj[key].length > 0){
-          let values = obj[key].join(',');
+        if (obj[key].length > 0) {
+          const values = obj[key].join(',');
           // Construct the key-value pair string
-          let keyValueString = `${key}=${values}`;
+          const keyValueString = `${key}=${values}`;
           // Push the key-value pair string to the array
           paramsArray.push(keyValueString);
         }
-        
       }
     }
     // Join all the key-value pairs with an ampersand
     return paramsArray.join('&');
-  }
+  };
 
   const seeResults = () => {
-    console.log(window.location.origin + window.location.pathname + "&"+convertObjectToString({...nonAggregations, ...selectedIds}))
-    
-    window.location.replace(window.location.origin + window.location.pathname + "?"+convertObjectToString({...nonAggregations, ...selectedIds}));
-  }
+    const url = `${window.location.origin}${window.location.pathname}?${convertObjectToString({ ...nonAggregations, ...selectedIds })}`;
+    window.location.replace(url);
+  };
 
   const clearResults = () => {
-    window.location.replace(window.location.origin + window.location.pathname + "?"+convertObjectToString(nonAggregations));
-  }
+    const url = `${window.location.origin}${window.location.pathname}?${convertObjectToString(nonAggregations)}`;
+    window.location.replace(url);
+  };
     
   useEffect(() => {
     setSelectedIds(aggregationsSelected);
@@ -379,7 +366,7 @@ export const Facets = ({ aggregations }: FacetsProps) => {
       <div className="serp-facets-wrapper">
         <FacetsLabel />
 
-        {getAggregations(aggregations)}
+        {facetsEnabled && getAggregations(aggregations)}
 
         <Accordion bordered={false} items={dateRangeItems} />
       </div>
@@ -389,7 +376,7 @@ export const Facets = ({ aggregations }: FacetsProps) => {
             <button 
               className="usa-button usa-button--unstyled clear-results-button" 
               type="button" 
-              onClick={()=>clearResults()}>
+              onClick={() => clearResults()}>
               Clear
             </button>
           </li>
@@ -397,7 +384,7 @@ export const Facets = ({ aggregations }: FacetsProps) => {
             <button 
               type="button" 
               className="usa-button see-results-button" 
-              onClick={()=>seeResults()}>
+              onClick={() => seeResults()}>
                 See Results
             </button>
           </li>
