@@ -337,7 +337,7 @@ jobs:
             --build-arg AWS_REGION=us-east-1 \
             --build-arg AWS_BUCKET=dgsearch-image \
             --build-arg AWS_SECRET_ACCESS_KEY=${CIRCLE_CI_USER_SECRET_ACCESS_KEY} \
-            --build-arg ASSET_HOST=https://d3qcdigd1fhos0.cloudfront.net \
+            --build-arg ASSET_HOST=https://d15vqlr7iz6e8x.cloudfront.net \
             -t searchgov .
 
       - run: docker tag searchgov:latest 213305845712.dkr.ecr.us-east-2.amazonaws.com/searchgov:latest
@@ -371,7 +371,7 @@ jobs:
             --build-arg AWS_REGION=us-east-1 \
             --build-arg AWS_BUCKET=dgsearch-images \
             --build-arg AWS_SECRET_ACCESS_KEY=${CIRCLE_CI_USER_SECRET_ACCESS_KEY} \
-            --build-arg ASSET_HOST=https://d3qcdigd1fhos0.cloudfront.net \
+            --build-arg ASSET_HOST=https://d15vqlr7iz6e8x.cloudfront.net \
             -t searchgov .
 
       - run: docker tag searchgov:latest 213305845712.dkr.ecr.us-east-1.amazonaws.com/searchgov:latest
