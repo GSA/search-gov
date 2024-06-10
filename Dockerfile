@@ -8,6 +8,7 @@ WORKDIR /rails
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y \
     curl libjemalloc2 libcurl4-openssl-dev default-libmysqlclient-dev chromium-driver && \
+    apache2 libapache2-mod-passenger libapache2-mod-xsendfile a2enmod remoteip headers xsendfile expires ssl rewrite \
     apt-get clean
 
 # Set production environment
