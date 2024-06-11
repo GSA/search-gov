@@ -38,8 +38,7 @@ Rails.application.configure do
   config.asset_host = ENV['ASSET_HOST'] || Rails.application.secrets.dig(:assets, :asset_host)
 
   # Specifies the header that your server uses for sending files.
-  config.action_dispatch.x_sendfile_header = "X-Sendfile" # for Apache
-  # config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # for NGINX
+  config.action_dispatch.x_sendfile_header = "X-Sendfile" unless ENV['NO_X_SENDFILE_HEADER'].present?
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :amazon
