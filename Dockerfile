@@ -26,6 +26,9 @@ RUN curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz
     /tmp/node-build-master/bin/node-build "${NODE_VERSION}" /usr/local/node && \
     rm -rf /tmp/* /usr/local/share/.cache
 
+# Setup apache
+COPY apache2.conf /etc/apache2/apache2.conf
+
 # Throw-away build stage to reduce size of final image
 FROM base as build
 
