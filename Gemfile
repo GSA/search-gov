@@ -43,7 +43,7 @@ gem 'active_scaffold_export', git: 'https://github.com/technorama/active_scaffol
                               branch: 'rails3'
 gem 'active_storage_validations', '~> 1.0', '>= 1.0.4'
 gem 'recaptcha', '~> 4.6.3', require: 'recaptcha/rails'
-gem 'newrelic_rpm', '~> 8.12.0'
+gem 'newrelic_rpm', '~> 9.10'
 gem 'american_date', '~> 1.1.1'
 # sassc-rails is now the Rails default. Consider replacing:
 # https://guides.rubyonrails.org/asset_pipeline.html
