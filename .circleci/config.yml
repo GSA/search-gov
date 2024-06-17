@@ -27,8 +27,8 @@ executors:
     working_directory: ~/search-gov
 
     docker:
-      # using custom images, see .circleci/images/primary/
-      - image: searchgov/ruby:<< parameters.ruby_version >>
+      # Use base images instead of custom images
+      - image: circleci/ruby:<< parameters.ruby_version >>
         environment:
           RAILS_ENV: test
 
@@ -51,7 +51,6 @@ executors:
           ES_JAVA_OPTS: '-Xms256m -Xmx256m'
 
       - image: apache/tika:2.4.1
-
 
 commands:
   install_chrome:
@@ -144,9 +143,25 @@ jobs:
 
       - install_chrome
 
+      # Added installation steps for Ruby dependencies
+      - run:
+          name: Install Ruby Dependencies
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y default-mysql-client libprotobuf-dev protobuf-compiler
+
       - prepare_database
 
       - precompile_assets
+
+      # Added installation steps for Elasticsearch plugins
+      - run:
+          name: Install Elasticsearch Plugins
+          command: |
+            until curl -sS localhost:9200; do sleep 1; done
+            elasticsearch-plugin install analysis-kuromoji
+            elasticsearch-plugin install analysis-icu
+            elasticsearch-plugin install analysis-smartcn
 
       - run:
           name: Run Tests
@@ -206,9 +221,25 @@ jobs:
 
       - install_chrome
 
+      # Added installation steps for Ruby dependencies
+      - run:
+          name: Install Ruby Dependencies
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y default-mysql-client libprotobuf-dev protobuf-compiler
+
       - prepare_database
 
       - precompile_assets
+
+      # Added installation steps for Elasticsearch plugins
+      - run:
+          name: Install Elasticsearch Plugins
+          command: |
+            until curl -sS localhost:9200; do sleep 1; done
+            elasticsearch-plugin install analysis-kuromoji
+            elasticsearch-plugin install analysis-icu
+            elasticsearch-plugin install analysis-smartcn
 
       - run:
           name: Run Tests
@@ -301,6 +332,7 @@ jobs:
       ruby_version: << parameters.ruby_version >>
       elasticsearch_version: << parameters.elasticsearch_version >>
       mysql_version: << parameters.mysql_version >>
+      node_version: << parameters.node_version >>
 
     steps:
       - restore_cache:
@@ -319,6 +351,7 @@ jobs:
             ./cc-test-reporter upload-coverage --input coverage/codeclimate_full_report.json
 
             ruby scripts/check_coverage.rb ${PWD}/coverage/codeclimate_full_report.json
+
   update-staging:
     docker:
       - image: cimg/aws:2023.01
@@ -353,6 +386,7 @@ jobs:
             --targets "Key=tag:Name,Values=jumphost-staging-search-instance" \
             --parameters '{"DeploymentName":["search-staging-searchgov-deploy"], "Namespace":["search"]}' \
             --comment "restart searchgov staging deployment"
+
   update-prod:
     docker:
       - image: cimg/aws:2023.01
@@ -478,4 +512,3 @@ workflows:
             branches:
               only:
                 - production
-        
