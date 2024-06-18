@@ -275,13 +275,13 @@ jobs:
 
   jest:
     parameters:
+      node_version:
+        type: string
       ruby_version:
         type: string
       elasticsearch_version:
         type: string
       mysql_version:
-        type: string
-      node_version:
         type: string
 
     executor: 
@@ -424,7 +424,7 @@ workflows:
   build_and_test:
     jobs:
       - checkout_code:
-          name: "checkout code: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>, MySQL << matrix.mysql_version >>"
+          name: checkout_code
           matrix:
             parameters:
               ruby_version:
@@ -438,7 +438,7 @@ workflows:
       - rspec:
           requires:
             - checkout_code
-          name: "rspec: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>, MySQL << matrix.mysql_version >>"
+          name: rspec
           matrix:
             parameters:
               ruby_version:
@@ -451,7 +451,7 @@ workflows:
       - cucumber:
           requires:
             - checkout_code
-          name: "cucumber: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>, MySQL << matrix.mysql_version >>"
+          name: cucumber
           matrix:
             parameters:
               ruby_version:
@@ -464,7 +464,7 @@ workflows:
       - jest:
           requires:
             - checkout_code
-          name: "jest: NodeJS << matrix.node_version >>, Ruby << matrix.ruby_version >>, MySQL << matrix.mysql_version >>"
+          name: jest
           matrix:
             parameters:
               node_version:
@@ -478,10 +478,10 @@ workflows:
 
       - report_coverage:
           requires:
-            - "rspec: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>, MySQL << matrix.mysql_version >>"
-            - "cucumber: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>, MySQL << matrix.mysql_version >>"
-            - "jest: NodeJS << matrix.node_version >>, Ruby << matrix.ruby_version >>, MySQL << matrix.mysql_version >>"
-          name: "report coverage: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>, MySQL << matrix.mysql_version >>"
+            - rspec
+            - cucumber
+            - jest
+          name: report_coverage
           matrix:
             parameters:
               ruby_version:
