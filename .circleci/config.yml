@@ -467,14 +467,14 @@ workflows:
           name: "jest: NodeJS << matrix.node_version >>, Ruby << matrix.ruby_version >>, MySQL << matrix.mysql_version >>"
           matrix:
             parameters:
+              node_version:
+                - 16.20.2
               ruby_version:
                 - 3.1.4
               elasticsearch_version:
                 - 7.17.7
               mysql_version:
                 - "8.0"
-              node_version:
-                - 16.20.2
 
       - report_coverage:
           requires:
