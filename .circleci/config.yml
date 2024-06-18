@@ -426,6 +426,7 @@ workflows:
       - checkout_code:
           name: checkout_code
           matrix:
+            alias: checkout_code_alias
             parameters:
               ruby_version:
                 - 3.1.4
@@ -437,9 +438,10 @@ workflows:
 
       - rspec:
           requires:
-            - checkout_code
+            - checkout_code_alias
           name: rspec
           matrix:
+            alias: rspec_alias
             parameters:
               ruby_version:
                 - 3.1.4
@@ -450,9 +452,10 @@ workflows:
 
       - cucumber:
           requires:
-            - checkout_code
+            - checkout_code_alias
           name: cucumber
           matrix:
+            alias: cucumber_alias
             parameters:
               ruby_version:
                 - 3.1.4
@@ -463,9 +466,10 @@ workflows:
 
       - jest:
           requires:
-            - checkout_code
+            - checkout_code_alias
           name: jest
           matrix:
+            alias: jest_alias
             parameters:
               node_version:
                 - 16.20.2
@@ -478,11 +482,12 @@ workflows:
 
       - report_coverage:
           requires:
-            - rspec
-            - cucumber
-            - jest
+            - rspec_alias
+            - cucumber_alias
+            - jest_alias
           name: report_coverage
           matrix:
+            alias: report_coverage_alias
             parameters:
               ruby_version:
                 - 3.1.4
