@@ -28,7 +28,7 @@ executors:
 
     docker:
       # Use base images instead of custom images
-      - image: circleci/ruby:<< parameters.ruby_version >>
+      - image: cimg/ruby:<< parameters.ruby_version >>
         environment:
           RAILS_ENV: test
 
