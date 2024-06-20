@@ -138,17 +138,16 @@ jobs:
 
       - ruby/install-deps:
           key: gems-ruby-<< parameters.ruby_version >>-v{{ .Environment.CACHE_VERSION }}
-
-      - install_js_dependencies
-
-      - install_chrome
-
       # Added installation steps for Ruby dependencies
       - run:
           name: Install Ruby Dependencies
           command: |
             sudo apt-get update
             sudo apt-get install -y default-mysql-client libprotobuf-dev protobuf-compiler
+
+      - install_js_dependencies
+
+      - install_chrome
 
       - prepare_database
 
