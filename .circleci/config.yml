@@ -235,12 +235,17 @@ jobs:
       - precompile_assets
 
       - run:
+          name: Wait for Elasticsearch
+          command: dockerize -wait tcp://localhost:9200 -timeout 1m
+
+      - run:
           name: Install Elasticsearch Plugins
           command: |
             until curl -sS localhost:9200; do sleep 1; done
-            elasticsearch-plugin install analysis-kuromoji
-            elasticsearch-plugin install analysis-icu
-            elasticsearch-plugin install analysis-smartcn
+            elasticsearch_container_id=$(docker ps -qf "ancestor=docker.elastic.co/elasticsearch/elasticsearch:<< parameters.elasticsearch_version >>")
+            docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-kuromoji
+            docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-icu
+            docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-smartcn
 
       - run:
           name: Run Tests
