@@ -66,7 +66,18 @@ commands:
   install_js_dependencies:
     description: 'Install JavaScript dependencies'
     steps:
-      - run: yarn install --frozen-lockfile
+      - run:
+          name: Clean node_modules
+          command: rm -rf node_modules
+      - run:
+          name: Install Node.js and Yarn
+          command: |
+            curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+            sudo apt-get install -y nodejs
+            npm install -g yarn
+      - run:
+          name: Yarn Install
+          command: yarn install --frozen-lockfile
   precompile_assets:
     description: 'Pre-compile assets'
     steps:
@@ -144,17 +155,6 @@ jobs:
           command: |
             sudo apt-get update
             sudo apt-get install -y default-mysql-client libprotobuf-dev protobuf-compiler
-      # Install Node.js and Yarn
-      - run:
-          name: Install Node.js and Yarn
-          command: |
-            curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-            sudo apt-get install -y nodejs
-            npm install -g yarn
-       # Remove node_modules folder
-      - run:
-          name: Clean node_modules
-          command: rm -rf node_modules
 
       - install_js_dependencies
 
