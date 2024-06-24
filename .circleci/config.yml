@@ -70,11 +70,14 @@ commands:
           name: Clean node_modules
           command: rm -rf node_modules
       - run:
-          name: Install Node.js and Yarn
-          command: |
-            curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-            sudo apt-get install -y nodejs
-            npm install -g yarn
+        name: Install Node.js and Yarn
+        command: |
+          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+          nvm install 16
+          nvm use 16
+          npm install -g yarn
       - run:
           name: Yarn Install
           command: yarn install --frozen-lockfile
