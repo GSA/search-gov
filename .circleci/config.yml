@@ -145,16 +145,16 @@ jobs:
             sudo apt-get update
             sudo apt-get install -y default-mysql-client libprotobuf-dev protobuf-compiler
       # Install Node.js and Yarn
-       - run:
+      - run:
           name: Install Node.js and Yarn
           command: |
             curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
             sudo apt-get install -y nodejs
             npm install -g yarn
        # Remove node_modules folder
-        - run:
-            name: Clean node_modules
-            command: rm -rf node_modules
+      - run:
+          name: Clean node_modules
+          command: rm -rf node_modules
 
       - install_js_dependencies
 
