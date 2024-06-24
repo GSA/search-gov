@@ -140,6 +140,7 @@ jobs:
     parallelism: 6
 
     steps:
+      - setup_remote_docker
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
