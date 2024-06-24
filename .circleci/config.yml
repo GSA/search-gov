@@ -27,7 +27,6 @@ executors:
     working_directory: ~/search-gov
 
     docker:
-      # Use base images instead of custom images
       - image: cimg/ruby:<< parameters.ruby_version >>
         environment:
           RAILS_ENV: test
@@ -70,14 +69,14 @@ commands:
           name: Clean node_modules
           command: rm -rf node_modules
       - run:
-        name: Install Node.js and Yarn
-        command: |
-          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-          export NVM_DIR="$HOME/.nvm"
-          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-          nvm install 16
-          nvm use 16
-          npm install -g yarn
+          name: Install Node.js and Yarn
+          command: |
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            nvm install 16
+            nvm use 16
+            npm install -g yarn
       - run:
           name: Yarn Install
           command: yarn install --frozen-lockfile
@@ -152,7 +151,7 @@ jobs:
 
       - ruby/install-deps:
           key: gems-ruby-<< parameters.ruby_version >>-v{{ .Environment.CACHE_VERSION }}
-      # Added installation steps for Ruby dependencies
+
       - run:
           name: Install Ruby Dependencies
           command: |
@@ -167,7 +166,6 @@ jobs:
 
       - precompile_assets
 
-      # Added installation steps for Elasticsearch plugins
       - run:
           name: Install Elasticsearch Plugins
           command: |
@@ -184,7 +182,6 @@ jobs:
             mkdir /tmp/test-results
             ./cc-test-reporter before-build
 
-            # Run Rspec tests
             bundle exec rspec --format progress \
                               --format RspecJunitFormatter \
                               --out /tmp/test-results/rspec.xml \
@@ -197,9 +194,8 @@ jobs:
       - persist_to_workspace:
           root: ~/search-gov/coverage
           paths:
-          - codeclimate.rspec.*.json
+            - codeclimate.rspec.*.json
 
-      # collect reports
       - store_test_results:
           path: /tmp/test-results
       - store_artifacts:
@@ -230,22 +226,20 @@ jobs:
       - ruby/install-deps:
           key: gems-ruby-<< parameters.ruby_version >>-v{{ .Environment.CACHE_VERSION }}
 
-      - install_js_dependencies
-
-      - install_chrome
-
-      # Added installation steps for Ruby dependencies
       - run:
           name: Install Ruby Dependencies
           command: |
             sudo apt-get update
             sudo apt-get install -y default-mysql-client libprotobuf-dev protobuf-compiler
 
+      - install_js_dependencies
+
+      - install_chrome
+
       - prepare_database
 
       - precompile_assets
 
-      # Added installation steps for Elasticsearch plugins
       - run:
           name: Install Elasticsearch Plugins
           command: |
@@ -264,7 +258,6 @@ jobs:
             mkdir /tmp/test-results
             ./cc-test-reporter before-build
 
-            # Run cucumber tests
             bundle exec cucumber --format progress \
                                 --format junit \
                                 --out /tmp/test-results/cucumber.xml \
@@ -277,9 +270,8 @@ jobs:
       - persist_to_workspace:
           root: ~/search-gov/coverage
           paths:
-          - codeclimate.cucumber.*.json
+            - codeclimate.cucumber.*.json
 
-      # collect reports
       - store_test_results:
           path: /tmp/test-results
       - store_artifacts:
@@ -318,7 +310,6 @@ jobs:
           command: |
             ./cc-test-reporter before-build
 
-            # Run jest tests
             yarn test:coverage
 
             ./cc-test-reporter format-coverage \
@@ -327,7 +318,7 @@ jobs:
       - persist_to_workspace:
           root: ~/search-gov/coverage
           paths:
-          - codeclimate.jest.*.json
+            - codeclimate.jest.*.json
 
   report_coverage:
     parameters:
