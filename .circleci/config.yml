@@ -161,7 +161,26 @@ jobs:
             sudo apt-get update
             sudo apt-get install -y default-mysql-client libprotobuf-dev protobuf-compiler
 
-      - install_js_dependencies
+      - run:
+          name: Clean node_modules
+          command: rm -rf node_modules
+
+      - run:
+          name: Install Node.js and Yarn
+          command: |
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            nvm install 16
+            nvm use 16
+            npm install -g yarn
+
+      - run:
+          name: Yarn Install
+          command: |
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            yarn install --frozen-lockfile
 
       - install_chrome
 
@@ -235,7 +254,26 @@ jobs:
             sudo apt-get update
             sudo apt-get install -y default-mysql-client libprotobuf-dev protobuf-compiler
 
-      - install_js_dependencies
+      - run:
+          name: Clean node_modules
+          command: rm -rf node_modules
+
+      - run:
+          name: Install Node.js and Yarn
+          command: |
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            nvm install 16
+            nvm use 16
+            npm install -g yarn
+
+      - run:
+          name: Yarn Install
+          command: |
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            yarn install --frozen-lockfile
 
       - install_chrome
 
@@ -306,7 +344,26 @@ jobs:
           install-yarn: true
           node-version: << parameters.node_version >>
 
-      - install_js_dependencies
+      - run:
+          name: Clean node_modules
+          command: rm -rf node_modules
+
+      - run:
+          name: Install Node.js and Yarn
+          command: |
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            nvm install 16
+            nvm use 16
+            npm install -g yarn
+
+      - run:
+          name: Yarn Install
+          command: |
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            yarn install --frozen-lockfile
 
       - run:
           name: Run Tests
