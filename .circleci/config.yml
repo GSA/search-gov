@@ -68,21 +68,12 @@ commands:
       - run:
           name: Clean node_modules
           command: rm -rf node_modules
-      - run:
-          name: Install Node.js and Yarn
-          command: |
-            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-            export NVM_DIR="$HOME/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-            nvm install 16
-            nvm use 16
-            npm install -g yarn
+      - nodejs/install:
+          node-version: '16'
+          install-yarn: true
       - run:
           name: Yarn Install
-          command: |
-            export NVM_DIR="$HOME/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-            yarn install --frozen-lockfile
+          command: yarn install --frozen-lockfile
   precompile_assets:
     description: 'Pre-compile assets'
     steps:
@@ -161,26 +152,7 @@ jobs:
             sudo apt-get update
             sudo apt-get install -y default-mysql-client libprotobuf-dev protobuf-compiler
 
-      - run:
-          name: Clean node_modules
-          command: rm -rf node_modules
-
-      - run:
-          name: Install Node.js and Yarn
-          command: |
-            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-            export NVM_DIR="$HOME/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-            nvm install 16
-            nvm use 16
-            npm install -g yarn
-
-      - run:
-          name: Yarn Install
-          command: |
-            export NVM_DIR="$HOME/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-            yarn install --frozen-lockfile
+      - install_js_dependencies
 
       - install_chrome
 
@@ -248,34 +220,15 @@ jobs:
       - ruby/install-deps:
           key: gems-ruby-<< parameters.ruby_version >>-v{{ .Environment.CACHE_VERSION }}
 
+      - install_js_dependencies
+
+      - install_chrome
+
       - run:
           name: Install Ruby Dependencies
           command: |
             sudo apt-get update
             sudo apt-get install -y default-mysql-client libprotobuf-dev protobuf-compiler
-
-      - run:
-          name: Clean node_modules
-          command: rm -rf node_modules
-
-      - run:
-          name: Install Node.js and Yarn
-          command: |
-            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-            export NVM_DIR="$HOME/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-            nvm install 16
-            nvm use 16
-            npm install -g yarn
-
-      - run:
-          name: Yarn Install
-          command: |
-            export NVM_DIR="$HOME/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-            yarn install --frozen-lockfile
-
-      - install_chrome
 
       - prepare_database
 
@@ -344,26 +297,7 @@ jobs:
           install-yarn: true
           node-version: << parameters.node_version >>
 
-      - run:
-          name: Clean node_modules
-          command: rm -rf node_modules
-
-      - run:
-          name: Install Node.js and Yarn
-          command: |
-            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-            export NVM_DIR="$HOME/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-            nvm install 16
-            nvm use 16
-            npm install -g yarn
-
-      - run:
-          name: Yarn Install
-          command: |
-            export NVM_DIR="$HOME/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-            yarn install --frozen-lockfile
+      - install_js_dependencies
 
       - run:
           name: Run Tests
@@ -458,14 +392,14 @@ jobs:
       - aws-cli/setup:
           aws-region: PROD_AWS_REGION
           aws-access-key-id: CIRCLE_CI_USER_ACCESS_KEY_ID 
-          aws-secret-access-key: CIRCLE_CI_USER_SECRET_ACCESS_KEY
+          aws-secret-access-key: CIRCLE_CI_USER_SECRET_ACCESS KEY
       - run: 
           name: build searchgov image
           command: |
             docker build --build-arg AWS_ACCESS_KEY_ID=${CIRCLE_CI_USER_ACCESS_KEY_ID} \
             --build-arg AWS_REGION=us-east-1 \
             --build-arg AWS_BUCKET=dgsearch-images \
-            --build-arg AWS_SECRET_ACCESS_KEY=${CIRCLE_CI_USER_SECRET_ACCESS_KEY} \
+            --build-arg AWS_SECRET_ACCESS KEY=${CIRCLE_CI_USER_SECRET_ACCESS_KEY} \
             --build-arg ASSET_HOST=https://d15vqlr7iz6e8x.cloudfront.net \
             -t searchgov .
 
