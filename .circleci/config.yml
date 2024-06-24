@@ -68,9 +68,9 @@ commands:
       - run:
           name: Clean node_modules
           command: rm -rf node_modules
-      - nodejs/install:  # Changed here
+      - nodejs/install:
           node-version: '16'
-          install-yarn: true  # This ensures Yarn is installed
+          install-yarn: true
       - run:
           name: Yarn Install
           command: yarn install --frozen-lockfile
@@ -93,7 +93,7 @@ jobs:
       mysql_version:
         type: string
 
-    executor: 
+    executor:
       name: test_executor
       ruby_version: << parameters.ruby_version >>
       elasticsearch_version: << parameters.elasticsearch_version >>
@@ -131,7 +131,7 @@ jobs:
       mysql_version:
         type: string
 
-    executor: 
+    executor:
       name: test_executor
       ruby_version: << parameters.ruby_version >>
       elasticsearch_version: << parameters.elasticsearch_version >>
@@ -140,7 +140,7 @@ jobs:
     parallelism: 6
 
     steps:
-      - setup_remote_docker
+      - setup_remote_docker  # Added here
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
@@ -162,12 +162,17 @@ jobs:
       - precompile_assets
 
       - run:
+          name: Wait for Elasticsearch
+          command: dockerize -wait tcp://localhost:9200 -timeout 1m
+
+      - run:
           name: Install Elasticsearch Plugins
           command: |
             until curl -sS localhost:9200; do sleep 1; done
-            elasticsearch-plugin install analysis-kuromoji
-            elasticsearch-plugin install analysis-icu
-            elasticsearch-plugin install analysis-smartcn
+            elasticsearch_container_id=$(docker ps -qf "ancestor=docker.elastic.co/elasticsearch/elasticsearch:<< parameters.elasticsearch_version >>")
+            docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-kuromoji
+            docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-icu
+            docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-smartcn
 
       - run:
           name: Run Tests
@@ -206,7 +211,7 @@ jobs:
       mysql_version:
         type: string
 
-    executor: 
+    executor:
       name: test_executor
       ruby_version: << parameters.ruby_version >>
       elasticsearch_version: << parameters.elasticsearch_version >>
@@ -215,6 +220,7 @@ jobs:
     parallelism: 10
 
     steps:
+      - setup_remote_docker  # Added here
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
@@ -289,13 +295,14 @@ jobs:
       mysql_version:
         type: string
 
-    executor: 
+    executor:
       name: test_executor
       ruby_version: << parameters.ruby_version >>
       elasticsearch_version: << parameters.elasticsearch_version >>
       mysql_version: << parameters.mysql_version >>
 
     steps:
+      - setup_remote_docker  # Added here
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
@@ -329,7 +336,7 @@ jobs:
       mysql_version:
         type: string
 
-    executor: 
+    executor:
       name: test_executor
       ruby_version: << parameters.ruby_version >>
       elasticsearch_version: << parameters.elasticsearch_version >>
@@ -362,9 +369,9 @@ jobs:
       - setup_remote_docker
       - aws-cli/setup:
           aws-region: STAGING_AWS_REGION
-          aws-access-key-id: CIRCLE_CI_USER_ACCESS_KEY_ID 
+          aws-access-key-id: CIRCLE_CI_USER_ACCESS_KEY_ID
           aws-secret-access-key: CIRCLE_CI_USER_SECRET_ACCESS_KEY
-      - run: 
+      - run:
           name: build searchgov image
           command: |
             docker build --build-arg AWS_ACCESS_KEY_ID=${CIRCLE_CI_USER_ACCESS_KEY_ID} \
@@ -379,7 +386,7 @@ jobs:
       - run: aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 213305845712.dkr.ecr.us-east-2.amazonaws.com
       - run: docker push 213305845712.dkr.ecr.us-east-2.amazonaws.com/searchgov:latest
       - run: docker push 213305845712.dkr.ecr.us-east-2.amazonaws.com/searchgov:${CIRCLE_SHA1:0:7}
-      - run: 
+      - run:
           name: update searchgov k8s deployment
           command: |
             aws ssm send-command \
@@ -397,9 +404,9 @@ jobs:
       - setup_remote_docker
       - aws-cli/setup:
           aws-region: PROD_AWS_REGION
-          aws-access-key-id: CIRCLE_CI_USER_ACCESS_KEY_ID 
+          aws-access-key-id: CIRCLE_CI_USER_ACCESS_KEY_ID
           aws-secret-access-key: CIRCLE_CI_USER_SECRET_ACCESS_KEY
-      - run: 
+      - run:
           name: build searchgov image
           command: |
             docker build --build-arg AWS_ACCESS_KEY_ID=${CIRCLE_CI_USER_ACCESS_KEY_ID} \
@@ -414,7 +421,7 @@ jobs:
       - run: aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 213305845712.dkr.ecr.us-east-1.amazonaws.com
       - run: docker push 213305845712.dkr.ecr.us-east-1.amazonaws.com/searchgov:latest
       - run: docker push 213305845712.dkr.ecr.us-east-1.amazonaws.com/searchgov:${CIRCLE_SHA1:0:7}
-      - run: 
+      - run:
           name: update searchgov k8s deployment
           command: |
             aws ssm send-command \
