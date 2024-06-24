@@ -144,6 +144,10 @@ jobs:
           command: |
             sudo apt-get update
             sudo apt-get install -y default-mysql-client libprotobuf-dev protobuf-compiler
+      # Install Node.js and Yarn
+      - nodejs/install:
+          install-yarn: true
+          node-version: "16.20.2"
 
       - install_js_dependencies
 
