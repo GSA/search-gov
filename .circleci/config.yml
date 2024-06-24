@@ -68,9 +68,9 @@ commands:
       - run:
           name: Clean node_modules
           command: rm -rf node_modules
-      - nodejs/install:
+      - nodejs/install:  # Changed here
           node-version: '16'
-          install-yarn: true
+          install-yarn: true  # This ensures Yarn is installed
       - run:
           name: Yarn Install
           command: yarn install --frozen-lockfile
@@ -392,14 +392,14 @@ jobs:
       - aws-cli/setup:
           aws-region: PROD_AWS_REGION
           aws-access-key-id: CIRCLE_CI_USER_ACCESS_KEY_ID 
-          aws-secret-access-key: CIRCLE_CI_USER_SECRET_ACCESS KEY
+          aws-secret-access-key: CIRCLE_CI_USER_SECRET_ACCESS_KEY
       - run: 
           name: build searchgov image
           command: |
             docker build --build-arg AWS_ACCESS_KEY_ID=${CIRCLE_CI_USER_ACCESS_KEY_ID} \
             --build-arg AWS_REGION=us-east-1 \
             --build-arg AWS_BUCKET=dgsearch-images \
-            --build-arg AWS_SECRET_ACCESS KEY=${CIRCLE_CI_USER_SECRET_ACCESS_KEY} \
+            --build-arg AWS_SECRET_ACCESS_KEY=${CIRCLE_CI_USER_SECRET_ACCESS_KEY} \
             --build-arg ASSET_HOST=https://d15vqlr7iz6e8x.cloudfront.net \
             -t searchgov .
 
