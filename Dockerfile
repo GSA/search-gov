@@ -7,7 +7,7 @@ WORKDIR /rails
 # Install base packages
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y \
-    curl libjemalloc2 libcurl4-openssl-dev default-libmysqlclient-dev && \
+    curl libjemalloc2 libcurl4-openssl-dev default-libmysqlclient-dev chromium-driver sendmail && \
     apt-get clean
 
 # Set production environment
