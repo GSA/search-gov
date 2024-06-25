@@ -61,6 +61,8 @@ module Usasearch
     config.middleware.use AdjustClientIp
     config.middleware.use FilteredJSONP
 
+    config.semantic_logger.application = ENV.fetch('APP_NAME', 'searchgov-web')
+
     # Activate observers that should always be running, except during DB migrations.
     unless File.basename($0) == "rake" && ARGV.include?("db:migrate")
       config.active_record.observers = :sayt_filter_observer, :misspelling_observer, :indexed_document_observer,
