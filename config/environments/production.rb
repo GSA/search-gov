@@ -38,8 +38,7 @@ Rails.application.configure do
   config.asset_host = ENV['ASSET_HOST'] || Rails.application.secrets.dig(:assets, :asset_host)
 
   # Specifies the header that your server uses for sending files.
-  config.action_dispatch.x_sendfile_header = "X-Sendfile" # for Apache
-  # config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # for NGINX
+  config.action_dispatch.x_sendfile_header = "X-Sendfile" unless ENV['NO_X_SENDFILE_HEADER'].present?
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :amazon
@@ -81,17 +80,15 @@ Rails.application.configure do
   # Don't log any deprecations.
   config.active_support.report_deprecations = false
 
-  # Use default logging formatter so that PID and timestamp are not suppressed.
-  config.log_formatter = ::Logger::Formatter.new
-
   # Use a different logger for distributed setups.
   # require "syslog/logger"
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new "app-name")
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
-    logger           = ActiveSupport::Logger.new(STDOUT)
-    logger.formatter = config.log_formatter
-    config.logger    = ActiveSupport::TaggedLogging.new(logger)
+    $stdout.sync = true
+    config.rails_semantic_logger.add_file_appender = false
+    config.rails_semantic_logger.format = :json
+    config.semantic_logger.add_appender(io: $stdout, formatter: config.rails_semantic_logger.format)
   end
 
   # Do not dump schema after migrations.

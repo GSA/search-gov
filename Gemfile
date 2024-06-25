@@ -43,7 +43,7 @@ gem 'active_scaffold_export', git: 'https://github.com/technorama/active_scaffol
                               branch: 'rails3'
 gem 'active_storage_validations', '~> 1.0', '>= 1.0.4'
 gem 'recaptcha', '~> 4.6.3', require: 'recaptcha/rails'
-gem 'newrelic_rpm', '~> 8.12.0'
+gem 'newrelic_rpm', '~> 9.10'
 gem 'american_date', '~> 1.1.1'
 # sassc-rails is now the Rails default. Consider replacing:
 # https://guides.rubyonrails.org/asset_pipeline.html
@@ -136,6 +136,10 @@ gem 'font-awesome-rails', '~> 4.7.0'
 # icons compiled into SVG/CSS+PNG using Grunticon. See
 # https://github.com/gsa/font-awesome-grunticon-rails
 # for instructions on how to add more icons to this set
+
+gem 'sidekiq', '~> 7.1.3'
+gem 'sidekiq-failures', '~> 1.0.0'
+
 gem 'font-awesome-grunticon-rails',
     git: 'https://github.com/gsa/font-awesome-grunticon-rails',
     ref: '8ad9734a65f7e2d2de934bebe4ee7b460734f96e'
@@ -150,6 +154,8 @@ gem 'cssbundling-rails', '~> 1.2' # Management of css (Less) files conversion
 gem 'mail', '~> 2.7.1'
 gem 'feedjira', '~> 3.2'
 gem 'bootsnap', require: false
+
+gem 'rails_semantic_logger', '~> 4.14'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators

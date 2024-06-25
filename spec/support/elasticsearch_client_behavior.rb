@@ -30,10 +30,6 @@ shared_examples 'an Elasticsearch client' do
       allow(logger).to receive(:info)
     end
 
-    it 'is an ActiveSupport logger' do
-      expect(logger.class).to eq(ActiveSupport::Logger)
-    end
-
     it 'logs the Elasticsearch request' do
       client.count
       expect(logger).to have_received(:info).with(%r{localhost:9200/_count})
