@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '~> 7.0.8'
 
 gem 'rake', '~> 13.0.6'
-gem 'rack-contrib', '~> 2.1.0'
+gem 'rack-contrib', '~> 2.5.0'
 gem 'rails-observers', '~> 0.1.5'
 gem 'responders', '~> 3.0.1'
 gem 'mysql2', '~> 0.5.5'
