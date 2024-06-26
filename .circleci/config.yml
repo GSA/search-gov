@@ -140,7 +140,7 @@ jobs:
     parallelism: 6
 
     steps:
-      - setup_remote_docker  # Added here
+      - setup_remote_docker  
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
@@ -220,7 +220,7 @@ jobs:
     parallelism: 10
 
     steps:
-      - setup_remote_docker  # Added here
+      - setup_remote_docker  
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
@@ -302,7 +302,7 @@ jobs:
       mysql_version: << parameters.mysql_version >>
 
     steps:
-      - setup_remote_docker  # Added here
+      - setup_remote_docker 
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
