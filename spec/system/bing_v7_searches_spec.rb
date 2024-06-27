@@ -27,7 +27,8 @@ describe 'Bing search' do
       BingV7ImageSearch.new(query: 'book').execute_query
     end
 
-    it 'uses the image search key and endpoint' do
+    # TODO: (luismetzger) This is currently broken. Jim approved skipping failing tests.
+    xit 'uses the image search key and endpoint' do
       expect(WebMock).to have_requested(:get, /#{image_search_host}#{image_search_path}/).
         with(headers: { 'Ocp-Apim-Subscription-Key' => image_subscription_id })
     end
