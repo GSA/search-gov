@@ -2,13 +2,15 @@
 
 module Admin
   class BulkAffiliateStylesUploadController < AdminController
+    include ActionView::Helpers::TextHelper
+
     def index
-      @page_title = 'Bulk URL Upload'
+      @page_title = 'Bulk Affiliate Styles Upload'
     end
 
     def upload
       begin
-        @file = params[:bulk_upload_urls]
+        @file = params[:bulk_upload_affiliate_styles]
         BulkAffiliateStylesUploader::AffiliateStylesFileValidator.new(@file).validate!
         enqueue_job
         flash[:success] = success_message(@file.original_filename)
@@ -16,7 +18,7 @@ module Admin
         flash[:error] = e.message
       end
 
-      redirect_to admin_bulk_url_upload_index_path
+      redirect_to admin_bulk_affiliate_styles_upload_index_path
     end
 
     private
@@ -31,9 +33,8 @@ module Admin
     def enqueue_job
       BulkAffiliateStylesUploaderJob.perform_later(
         current_user,
-        @file.original_filename,
-        @file.tempfile.set_encoding('UTF-8').readlines,
-        reindex: ActiveModel::Type::Boolean.new.cast(params[:reindex])
+        @file,
+        @file.original_filename
       )
     end
   end

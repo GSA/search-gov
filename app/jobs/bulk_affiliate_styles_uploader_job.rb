@@ -3,13 +3,10 @@
 class BulkAffiliateStylesUploaderJob < ApplicationJob
   queue_as :searchgov
 
-  delegate :upload_and_index, to: :@uploader
-
-  def perform(user, filename, urls, reindex: false)
+  def perform(user, file, file_name)
     @user = user
-    @uploader = BulkAffiliateStylesUploader.new(filename, urls, reindex: reindex)
-
-    upload_and_index
+    @uploader = BulkAffiliateStylesUploader.new(file)
+    @uploader.upload
     report_results
   end
 
@@ -21,7 +18,7 @@ class BulkAffiliateStylesUploaderJob < ApplicationJob
   def log_results
     results = @uploader.results
     Rails.logger.info "BulkAffiliateStylesUploaderJob: #{results.name}"
-    Rails.logger.info "    #{results.total_count} URLs"
+    Rails.logger.info "    #{results.total_count} affiliates"
     Rails.logger.info "    #{results.error_count} errors"
   end
 
