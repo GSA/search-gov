@@ -150,9 +150,9 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [],
         {!query &&
         <Grid row>
           <Grid tablet={{ col: true }}>
-            <h1 className='no-result-error'>
+            <h4 className='no-result-error'>
               {i18n.t('emptyQuery')}
-            </h1>
+            </h4>
           </Grid>
         </Grid>}
       </GridContainer>
