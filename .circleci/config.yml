@@ -104,7 +104,7 @@ jobs:
 
       - run:
           name: Wait for Elasticsearch
-          command: dockerize -wait tcp://localhost:9200 -timeout 1m
+          command: dockerize -wait tcp://localhost:9200 -timeout 2m
 
       - run:
           name: Use developer secrets
@@ -123,6 +123,7 @@ jobs:
             - ~/search-gov
 
   rspec:
+    resource_class: xlarge
     parameters:
       ruby_version:
         type: string
@@ -163,7 +164,7 @@ jobs:
 
       - run:
           name: Wait for Elasticsearch
-          command: dockerize -wait tcp://localhost:9200 -timeout 1m
+          command: dockerize -wait tcp://localhost:9200 -timeout 2m
 
       - run:
           name: Install Elasticsearch Plugins
@@ -173,6 +174,14 @@ jobs:
             docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-kuromoji
             docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-icu
             docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-smartcn
+
+      - run:
+          name: Print Environment Variables
+          command: printenv
+
+      - run:
+          name: Check Elasticsearch Status
+          command: curl -X GET "localhost:9200/"
 
       - run:
           name: Run Tests
@@ -243,7 +252,7 @@ jobs:
 
       - run:
           name: Wait for Elasticsearch
-          command: dockerize -wait tcp://localhost:9200 -timeout 1m
+          command: dockerize -wait tcp://localhost:9200 -timeout 2m
 
       - run:
           name: Install Elasticsearch Plugins
@@ -253,6 +262,14 @@ jobs:
             docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-kuromoji
             docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-icu
             docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-smartcn
+
+      - run:
+          name: Print Environment Variables
+          command: printenv
+
+      - run:
+          name: Check Elasticsearch Status
+          command: curl -X GET "localhost:9200/"
 
       - run:
           name: Run Tests
