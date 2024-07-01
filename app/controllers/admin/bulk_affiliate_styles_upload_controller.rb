@@ -2,7 +2,6 @@
 
 module Admin
   class BulkAffiliateStylesUploadController < AdminController
-    include ActionView::Helpers::TextHelper
 
     def index
       @page_title = 'Bulk Affiliate Styles Upload'
@@ -33,8 +32,8 @@ module Admin
     def enqueue_job
       BulkAffiliateStylesUploaderJob.perform_later(
         current_user,
-        @file,
-        @file.original_filename
+        @file.original_filename,
+        @file.read
       )
     end
   end

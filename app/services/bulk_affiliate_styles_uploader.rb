@@ -11,11 +11,10 @@ class BulkAffiliateStylesUploader
   end
 
   class Results
-    attr_accessor :affiliates, :ok_count, :total_count, :error_count, :file
+    attr_accessor :affiliates, :ok_count, :total_count, :error_count, :file_name
 
-    def initialize(file)
-      @file = file
-      @file_name = file.original_filename
+    def initialize(filename)
+      @file_name = filename
       @ok_count = 0
       @error_count = 0
       @affiliates = Set.new
@@ -84,14 +83,14 @@ class BulkAffiliateStylesUploader
     end
   end
 
-  def initialize(file)
-    @file = file
-    @file_name = @file.original_filename
+  def initialize(filename, file_data)
+    @file_name = filename
+    @file_data = file_data
   end
 
   def upload
-    filename = @file.original_filename.downcase
-    raise ArgumentError unless filename =~ /\.(csv|txt)$/
+    raise ArgumentError unless @file_name =~ /\.(csv|txt)$/
+    @results = Results.new(@file_name)
     import_affiliate_styles
   rescue ArgumentError
     @results[:error_message] = "Your filename should have .csv extension."
@@ -106,7 +105,7 @@ class BulkAffiliateStylesUploader
   private
 
   def import_affiliate_styles
-    CSV.foreach(@file, headers: true) do |row|
+    CSV.foreach(@file_data, headers: true) do |row|
       begin
         affiliate_id = row['ID']
         affiliate = Affiliate.find(affiliate_id)
@@ -119,9 +118,8 @@ class BulkAffiliateStylesUploader
         create_identifier_links(row, affiliate)
         misc_settings(row, affiliate)
 
-        # affiliate.visual_design_json = visual_design_settings(row)
+        affiliate.visual_design_json = visual_design_settings(row)
         affiliate.save!
-        @results = Results.new(@file)
         @results.add_ok(affiliate_id)
         @results[:updated] += 1
       rescue StandardError => error
