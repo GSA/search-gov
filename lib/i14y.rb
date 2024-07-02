@@ -4,6 +4,7 @@
 module I14y
   def self.establish_connection!(user: admin_user, password: admin_password)
     Faraday.new(host) do |conn|
+      conn.response(:logger)
       conn.request(:json)
       conn.response(:mashify)
       conn.response(:json)

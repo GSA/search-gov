@@ -1,4 +1,4 @@
-ARG RUBY_VERSION=3.0.6
+ARG RUBY_VERSION=3.1.4
 FROM public.ecr.aws/docker/library/ruby:$RUBY_VERSION-slim as base
 
 # Rails app lives here
@@ -7,7 +7,7 @@ WORKDIR /rails
 # Install base packages
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y \
-    curl libjemalloc2 libcurl4-openssl-dev default-libmysqlclient-dev && \
+    curl libjemalloc2 libcurl4-openssl-dev default-libmysqlclient-dev chromium-driver sendmail && \
     apt-get clean
 
 # Set production environment
@@ -51,12 +51,14 @@ COPY . .
 RUN bundle exec bootsnap precompile app/ lib/
 
 # AWS access for assets compilation
+ARG ASSET_HOST
 ARG AWS_ACCESS_KEY_ID
 ARG AWS_REGION
 ARG AWS_S3_BUCKET
 ARG AWS_SECRET_ACCESS_KEY
 
-ENV AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} \
+ENV ASSET_HOST=${ASSET_HOST} \
+    AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} \
     AWS_REGION=${AWS_REGION} \
     AWS_S3_BUCKET=${AWS_S3_BUCKET} \
     AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}

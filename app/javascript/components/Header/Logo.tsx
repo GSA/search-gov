@@ -16,9 +16,11 @@ const StyledLogo = styled(UswdsLogo).attrs<{ styles: FontsAndColors; }>((props) 
 export const Logo = ({ page }: LogoProps) => {
   const styles = useContext(StyleContext);
   const imageContent = page.logo?.url ? 
-    <Link className='logo-link' href={page.homepageUrl}>
-      <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title}/>
-    </Link> : 
+    <h1 className='margin-0'>
+      <Link className='logo-link' href={page.homepageUrl}>
+        <img className="usa-identifier__logo" src={page.logo.url} alt={page.logo.text || page.title}/>
+      </Link>
+    </h1> : 
     null;
   const titleContent =  (!page.displayLogoOnly) ? (page.homepageUrl) ? 
     <Title>
