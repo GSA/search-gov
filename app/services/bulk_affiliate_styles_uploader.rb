@@ -107,7 +107,7 @@ class BulkAffiliateStylesUploader
 
   def update_styles(row, affiliate_id)
     affiliate = Affiliate.find(affiliate_id)
-    next if affiliate.nil?
+    return if affiliate.nil?
 
     delete_exiting_links(affiliate)
     create_primary_header_links(row, affiliate)
