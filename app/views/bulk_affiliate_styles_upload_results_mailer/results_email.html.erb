@@ -4,7 +4,7 @@
 </p>
 
 <p>
-  There were <%= @results.total_count %> URLs.
+  There were <%= @results.total_count %> afiliates.
 </p>
 
 <% if @results.error_count == 0 %>
@@ -13,17 +13,17 @@
   </p>
 <% else %>
   <p>
-    <%= @results.ok_count %> URLs were created or enqueued successfully.
+    <%= @results.ok_count %> affiliates were updated successfully.
   </p>
 
   <p>
-    <%= @results.error_count %> URLs failed validation.
+    <%= @results.error_count %> affiliates failed validation.
   </p>
 
-  <% @results.error_messages.each do |error_message| %>
-    <h3><%= error_message %></h3>
-    <% @results.affiliates_with(error_message).each do |id| %>
-      <%= id %>
+  <% @results.affiliates.each do |id| %>
+    <h3><%= id %></h3>
+    <% @results.affiliates_with(id).each do |error_message| %>
+      <%= error_message %>
       <br />
     <% end %>
   <% end %>

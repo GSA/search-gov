@@ -2,7 +2,6 @@
 
 module Admin
   class BulkAffiliateStylesUploadController < AdminController
-
     def index
       @page_title = 'Bulk Affiliate Styles Upload'
     end
@@ -30,10 +29,10 @@ module Admin
     end
 
     def enqueue_job
-      BulkAffiliateStylesUploaderJob.perform_later(
+      BulkAffiliateStylesUploaderJob.perform_now(
         current_user,
         @file.original_filename,
-        @file.read
+        @file.tempfile.path
       )
     end
   end

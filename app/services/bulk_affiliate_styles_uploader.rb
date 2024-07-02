@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'English'
 class BulkAffiliateStylesUploader
   MAXIMUM_FILE_SIZE = 4.megabytes
   VALID_CONTENT_TYPES = %w[text/csv].freeze
@@ -11,7 +12,7 @@ class BulkAffiliateStylesUploader
   end
 
   class Results
-    attr_accessor :affiliates, :ok_count, :total_count, :error_count, :file_name
+    attr_accessor :affiliates, :ok_count, :error_count, :file_name
 
     def initialize(filename)
       @file_name = filename
@@ -28,21 +29,11 @@ class BulkAffiliateStylesUploader
 
     def add_error(error_message, affiliate_id)
       self.error_count += 1
-      @errors[error_message] << affiliate_id
+      @errors[affiliate_id] = error_message
     end
 
     def total_count
       ok_count + error_count
-    end
-
-    def error_messages
-      # Make sure the 'URL already taken' errors show up last, so as
-      # not to obscure more actionable errors
-      already_taken = ->(error) { error == URL_ALREADY_TAKEN_MESSAGE }
-      errors = @errors.keys
-      errors.reject(&already_taken) + errors.select(&already_taken)
-
-      # @errors.keys
     end
 
     def affiliates_with(error_message)
@@ -83,51 +74,50 @@ class BulkAffiliateStylesUploader
     end
   end
 
-  def initialize(filename, file_data)
+  def initialize(filename, filepath)
     @file_name = filename
-    @file_data = file_data
+    @file_path = filepath
   end
 
   def upload
-    raise ArgumentError unless @file_name =~ /\.(csv|txt)$/
-    @results = Results.new(@file_name)
-    import_affiliate_styles
-  rescue ArgumentError
-    @results[:error_message] = "Your filename should have .csv extension."
-    Rails.logger.error "Problem processing boosted Content document: ArgumentError: #{$!}"
-  rescue
-    @results[:error_message] = "Your document could not be processed. Please check the format and try again."
-    Rails.logger.error "Problem processing boosted Content document: #{$!}"
-  ensure
-    return @results
+    begin
+      @results = Results.new(@file_name)
+      import_affiliate_styles
+    rescue
+      @results[:error_message] = 'Your document could not be processed. Please check the format and try again.'
+      Rails.logger.error "Problem processing boosted Content document: #{$ERROR_INFO}"
+    end
+    @results
   end
 
   private
 
   def import_affiliate_styles
-    CSV.foreach(@file_data, headers: true) do |row|
-      begin
-        affiliate_id = row['ID']
-        affiliate = Affiliate.find(affiliate_id)
-        next if affiliate.nil?
-
-        delete_exiting_links(affiliate)
-        create_primary_header_links(row, affiliate)
-        create_secondary_header_links(row, affiliate)
-        create_footer_links(row, affiliate)
-        create_identifier_links(row, affiliate)
-        misc_settings(row, affiliate)
-
-        affiliate.visual_design_json = visual_design_settings(row)
-        affiliate.save!
-        @results.add_ok(affiliate_id)
-        @results[:updated] += 1
-      rescue StandardError => error
-        @results.add_error(error.message, affiliate_id)
-        Rails.logger.error "Failure to process bulk upload affiliate styles row:\n#{row}\n#{error.message}\n#{error.backtrace.join("\n")}"
-        @results[:failed] += 1
-      end
+    CSV.parse(File.read(@file_path), headers: true) do |row|
+      affiliate_id = row['ID']
+      update_styles(row, affiliate_id)
+      @results.add_ok(affiliate_id)
+      @results[:updated] += 1
+    rescue StandardError => e
+      @results.add_error(e.message, affiliate_id)
+      Rails.logger.error "Failure to process bulk upload affiliate styles row:\n#{row}\n#{e.message}\n#{e.backtrace.join("\n")}"
+      @results[:failed] += 1
     end
+  end
+
+  def update_styles(row, affiliate_id)
+    affiliate = Affiliate.find(affiliate_id)
+    next if affiliate.nil?
+
+    delete_exiting_links(affiliate)
+    create_primary_header_links(row, affiliate)
+    create_secondary_header_links(row, affiliate)
+    create_footer_links(row, affiliate)
+    create_identifier_links(row, affiliate)
+    misc_settings(row, affiliate)
+
+    affiliate.visual_design_json = visual_design_settings(row)
+    affiliate.save!
   end
 
   def delete_exiting_links(affiliate)
@@ -145,7 +135,6 @@ class BulkAffiliateStylesUploader
       affiliate.primary_header_links << primary_header_link if primary_header_link.valid?
     end
   end
-
 
   def create_secondary_header_links(row, affiliate)
     3.times do |index|

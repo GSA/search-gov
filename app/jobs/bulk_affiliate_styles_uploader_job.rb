@@ -3,17 +3,17 @@
 class BulkAffiliateStylesUploaderJob < ApplicationJob
   queue_as :searchgov
 
-  def perform(user, filename, file_data)
+  def perform(user, filename, filepath)
     @user = user
     @filename = filename
-    @uploader = BulkAffiliateStylesUploader.new(filename, file_data)
+    @uploader = BulkAffiliateStylesUploader.new(filename, filepath)
     @uploader.upload
     report_results
   end
 
   def report_results
     log_results
-    send_results_email
+    # send_results_email
   end
 
   def log_results
@@ -25,7 +25,7 @@ class BulkAffiliateStylesUploaderJob < ApplicationJob
 
   def send_results_email
     results = @uploader.results
-    email = BulkAffiliateStylesUploadResultsMailer.with(user: @user, results: results).results_email
+    email = BulkAffiliateStylesUploadResultsMailer.with(user: @user, results:).results_email
     email.deliver_now!
   end
 end

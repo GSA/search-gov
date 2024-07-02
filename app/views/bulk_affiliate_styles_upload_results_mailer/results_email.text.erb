@@ -1,18 +1,18 @@
 The bulk upload job for <%= @results.file_name %> has
 finished.
 
-There were <%= @results.total_count %> URLs.
+There were <%= @results.total_count %> affiliates.
 
 <% if @results.error_count == 0 %>
 There were no errors.
 <% else %>
-<%= @results.ok_count %> URLs were created successfully.
-<%= @results.error_count %> URLs failed validation.
+<%= @results.ok_count %> affiliates were updated successfully.
+<%= @results.error_count %> affiliates failed validation.
 
-<% @results.error_messages.each do |error_message| %>
-  <%= error_message %>
-    <% @results.affiliates_with(error_message).each do |id| %>
-      <%= id %>
+<% @results.affiliates.each do |id| %>
+  <%= id %>
+    <% @results.affiliates_with(id).each do |error_message| %>
+      <%= error_message %>
     <% end %>
   <% end %>
 <% end %>
