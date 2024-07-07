@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'English'
 class BulkAffiliateStylesUploader
   MAXIMUM_FILE_SIZE = 4.megabytes
   VALID_CONTENT_TYPES = %w[text/csv].freeze
@@ -36,8 +35,8 @@ class BulkAffiliateStylesUploader
       ok_count + error_count
     end
 
-    def affiliates_with(error_message)
-      @errors[error_message]
+    def affiliates_with(id)
+      @errors[id]
     end
   end
 
@@ -80,12 +79,12 @@ class BulkAffiliateStylesUploader
   end
 
   def upload
+    @results = Results.new(@file_name)
     begin
-      @results = Results.new(@file_name)
       import_affiliate_styles
     rescue
-      @results[:error_message] = 'Your document could not be processed. Please check the format and try again.'
-      Rails.logger.error "Problem processing boosted Content document: #{$ERROR_INFO}"
+      error_message = 'Your document could not be processed. Please check the format and try again.'
+      Rails.logger.error "Problem processing boosted Content document: #{error_message}"
     end
     @results
   end

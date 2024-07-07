@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.datadoghq.com/api/v1/events?api_key=<DATADOG_API_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"msg_text":"%%%\n### **Request**\n**URL:** http://www.example.com/admin/bulk_affiliate_styles_upload/upload\n**HTTP
+        Method:** POST\n**IP Address:** 127.0.0.1\n**Parameters:** {\"bulk_upload_affiliate_styles\"=>#<ActionDispatch::Http::UploadedFile:0x000000011a7916c8
+        @tempfile=#<Tempfile:/var/folders/t3/hxs04khx25bf9yffft0klndh0000gn/T/RackMultipart20240707-64700-5bmmyc.csv>,
+        @content_type=\"text/csv\", @original_filename=\"bulk_affiliate_styles_upload.csv\",
+        @headers=\"content-disposition: form-data; name=\\\"bulk_upload_affiliate_styles\\\";
+        filename=\\\"bulk_affiliate_styles_upload.csv\\\"\\r\\ncontent-type: text/csv\\r\\ncontent-length:
+        5300\\r\\n\">, \"commit\"=>\"Upload\", \"controller\"=>\"admin/bulk_affiliate_styles_upload\",
+        \"action\"=>\"upload\"}\n**Timestamp:** 2024-07-07 16:06:11 UTC\n**Server:**
+        Bhaviths-MBP-2.attlocal.net\n**Rails root:** /Users/bhavith/workspace/search-gov\n**Process:**
+        64700\n___\n### **Session**\n**Data:** {\"id_token\"=>\"mock_id_token\", \"user_credentials\"=>\"affiliate_admin_persistence_token\",
+        \"user_credentials_id\"=>1033898154}\n___\n### **Backtrace**\n````\napp/services/bulk_affiliate_styles_uploader.rb:88:in
+        `rescue in upload''\napp/services/bulk_affiliate_styles_uploader.rb:83:in
+        `upload''\napp/jobs/bulk_affiliate_styles_uploader_job.rb:10:in `perform''\n````\n___\n%%%","date_happened":1720368371,"msg_title":"bulk_affiliate_styles_upload
+        upload (NoMethodError) \"undefined method `[]='' for #<BulkAffiliateStylesUploader::Results:0...","priority":"normal","parent":null,"tags":[],"aggregation_key":"[\"bulk_affiliate_styles_upload
+        upload (NoMethodError) \\\"undefined method `[]='' for #<BulkAffiliateStylesUploader::Results:0...\"]","alert_type":"error","event_type":null,"source_type_name":null,"title":"bulk_affiliate_styles_upload
+        upload (NoMethodError) \"undefined method `[]='' for #<BulkAffiliateStyle","text":"%%%\n###
+        **Request**\n**URL:** http://www.example.com/admin/bulk_affiliate_styles_upload/upload\n**HTTP
+        Method:** POST\n**IP Address:** 127.0.0.1\n**Parameters:** {\"bulk_upload_affiliate_styles\"=>#<ActionDispatch::Http::UploadedFile:0x000000011a7916c8
+        @tempfile=#<Tempfile:/var/folders/t3/hxs04khx25bf9yffft0klndh0000gn/T/RackMultipart20240707-64700-5bmmyc.csv>,
+        @content_type=\"text/csv\", @original_filename=\"bulk_affiliate_styles_upload.csv\",
+        @headers=\"content-disposition: form-data; name=\\\"bulk_upload_affiliate_styles\\\";
+        filename=\\\"bulk_affiliate_styles_upload.csv\\\"\\r\\ncontent-type: text/csv\\r\\ncontent-length:
+        5300\\r\\n\">, \"commit\"=>\"Upload\", \"controller\"=>\"admin/bulk_affiliate_styles_upload\",
+        \"action\"=>\"upload\"}\n**Timestamp:** 2024-07-07 16:06:11 UTC\n**Server:**
+        Bhaviths-MBP-2.attlocal.net\n**Rails root:** /Users/bhavith/workspace/search-gov\n**Process:**
+        64700\n___\n### **Session**\n**Data:** {\"id_token\"=>\"mock_id_token\", \"user_credentials\"=>\"affiliate_admin_persistence_token\",
+        \"user_credentials_id\"=>1033898154}\n___\n### **Backtrace**\n````\napp/services/bulk_affiliate_styles_uploader.rb:88:in
+        `rescue in upload''\napp/services/bulk_affiliate_styles_uploader.rb:83:in
+        `upload''\napp/jobs/bulk_affiliate_styles_uploader_job.rb:10:in `perform''\n````\n___\n%%%","host":"Bhaviths-MBP-2.attlocal.net","device":null}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - dogapi-rb/1.45.0 (ruby 3.1.4; os darwin22; arch x86_64)
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      Date:
+      - Sun, 07 Jul 2024 16:06:11 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '169'
+      Connection:
+      - keep-alive
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"status":"error","code":403,"errors":["Forbidden"],"statuspage":"http://status.datadoghq.com","twitter":"http://twitter.com/datadogops","email":"support@datadoghq.com"}'
+  recorded_at: Sun, 07 Jul 2024 16:06:11 GMT
+recorded_with: VCR 6.2.0
