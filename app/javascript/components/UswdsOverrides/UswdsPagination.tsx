@@ -25,20 +25,21 @@ type PaginationProps = {
 const PaginationPage = ({
   page,
   isCurrent,
-  label,
   onClickPageNumber
 }: {
   page: number
   isCurrent?: boolean
-  label: string
   onClickPageNumber?: (
     event: React.MouseEvent<HTMLButtonElement>,
     page: number
   ) => void
 }) => {
+  const i18n = useContext(LanguageContext);
+
   const linkClasses = classnames('usa-pagination__button', {
     'usa-current': isCurrent
   });
+  const label = `${i18n.t("page")} ${page}`
 
   return (
     <li
@@ -219,7 +220,6 @@ export const UswdsPagination = ({
               key={`pagination_page_${pageNum}`}
               page={pageNum}
               isCurrent={pageNum === currentPage}
-              label={`${i18n.t("page")} ${pageNum}`}
               onClickPageNumber={onClickPageNumber}
             />
           )
