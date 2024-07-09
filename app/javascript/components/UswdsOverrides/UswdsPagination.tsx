@@ -90,9 +90,8 @@ export const UswdsPagination = ({
   ...props
 }: PaginationProps & JSX.IntrinsicElements['nav']): React.ReactElement => {
   const i18n = useContext(LanguageContext);
-
+  
   const navClasses = classnames('usa-pagination', className);
-
   const isOnFirstPage = currentPage === 1;
   const isOnLastPage = currentPage === totalPages;
 
