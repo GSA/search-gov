@@ -25,10 +25,12 @@ type PaginationProps = {
 const PaginationPage = ({
   page,
   isCurrent,
+  label,
   onClickPageNumber
 }: {
   page: number
   isCurrent?: boolean
+  label: string
   onClickPageNumber?: (
     event: React.MouseEvent<HTMLButtonElement>,
     page: number
@@ -48,7 +50,7 @@ const PaginationPage = ({
           unstyled
           data-testid="pagination-page-number"
           className={linkClasses}
-          aria-label={`Page ${page}`}
+          aria-label={label}
           aria-current={isCurrent ? 'page' : undefined}
           onClick={(event) => {
             onClickPageNumber(event, page);
@@ -59,7 +61,7 @@ const PaginationPage = ({
         <Link
           href={getUriWithParam(window.location.href, 'page', page.toString())}  
           className={linkClasses}
-          aria-label={`Page ${page}`}
+          aria-label={label}
           aria-current={isCurrent ? 'page' : undefined}>
           {page}
         </Link>
@@ -192,7 +194,7 @@ export const UswdsPagination = ({
                 type="button"
                 unstyled
                 className="usa-pagination__link usa-pagination__previous-page"
-                aria-label="Previous page"
+                aria-label={i18n.t("prevLabel")}
                 data-testid="pagination-previous"
                 onClick={onClickPrevious}>
                 <Icon.NavigateBefore />
@@ -202,7 +204,7 @@ export const UswdsPagination = ({
               <Link
                 href={getUriWithParam(window.location.href, 'page', prevPage.toString())}
                 className="usa-pagination__link usa-pagination__previous-page"
-                aria-label="Previous page">
+                aria-label={i18n.t("prevLabel")}>
                 <Icon.NavigateBefore />
                 <span className="usa-pagination__link-text">{i18n.t("prevLabel")}</span>
               </Link>
@@ -218,6 +220,7 @@ export const UswdsPagination = ({
               key={`pagination_page_${pageNum}`}
               page={pageNum}
               isCurrent={pageNum === currentPage}
+              label={`${i18n.t("page")} ${pageNum}`}
               onClickPageNumber={onClickPageNumber}
             />
           )
@@ -230,7 +233,7 @@ export const UswdsPagination = ({
                 type="button"
                 unstyled
                 className="usa-pagination__link usa-pagination__next-page"
-                aria-label="Next page"
+                aria-label={i18n.t("nextLabel")}
                 data-testid="pagination-next"
                 onClick={onClickNext}>
                 <span className="usa-pagination__link-text">
@@ -242,7 +245,7 @@ export const UswdsPagination = ({
               <Link
                 href={getUriWithParam(window.location.href, 'page', nextPage.toString())}
                 className="usa-pagination__link usa-pagination__next-page"
-                aria-label="Next page">
+                aria-label={i18n.t("nextLabel")}>
                 <span className="usa-pagination__link-text">
                   {i18n.t("nextLabel")}
                 </span>
