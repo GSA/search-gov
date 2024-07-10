@@ -11,11 +11,12 @@ class BulkAffiliateStylesUploader
   end
 
   class Results
-    attr_accessor :affiliates, :ok_count, :error_count, :file_name
+    attr_accessor :affiliates, :ok_count, :updated, :error_count, :file_name
 
     def initialize(filename)
       @file_name = filename
       @ok_count = 0
+      @updated = 0
       @error_count = 0
       @affiliates = Set.new
       @errors = Hash.new { |hash, key| hash[key] = [] }
@@ -84,7 +85,7 @@ class BulkAffiliateStylesUploader
       import_affiliate_styles
     rescue
       error_message = 'Your document could not be processed. Please check the format and try again.'
-      Rails.logger.error "Problem processing boosted Content document: #{error_message}"
+      Rails.logger.error "Problem processing affiliate styles document: #{error_message}"
     end
     @results
   end
@@ -92,11 +93,11 @@ class BulkAffiliateStylesUploader
   private
 
   def import_affiliate_styles
-    CSV.parse(File.read(@file_path), headers: true) do |row|
+    CSV.parse(File.read(@file_path), headers: true).each do |row|
       affiliate_id = row['ID']
       update_styles(row, affiliate_id)
       @results.add_ok(affiliate_id)
-      @results[:updated] += 1
+      @results.updated += 1
     rescue StandardError => e
       @results.add_error(e.message, affiliate_id)
       Rails.logger.error "Failure to process bulk upload affiliate styles row:\n#{row}\n#{e.message}\n#{e.backtrace.join("\n")}"

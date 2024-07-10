@@ -13,7 +13,7 @@ class BulkAffiliateStylesUploaderJob < ApplicationJob
 
   def report_results
     log_results
-    # send_results_email
+    send_results_email
   end
 
   def log_results

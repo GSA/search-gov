@@ -3,17 +3,33 @@ require 'spec_helper'
 describe BulkAffiliateStylesUploadResultsMailer do
   describe '#results_email' do
     let(:user) { users(:affiliate_admin) }
-    let(:results) { instance_double('Results', file_name: 'test_file.csv') }
-    let(:mail) { described_class.with(user: user, results: results).results_email }
+    let(:filename) { 'test_file.csv' }
+    let(:results) do
+      results = BulkAffiliateStylesUploader::Results.new(filename)
+      results.add_ok(1)
+      results.add_ok(2)
+      results
+    end
+    let(:mail) { described_class.with(user:, results:).results_email }
 
-    it 'renders the headers' do
-      expect(mail.subject).to eq("Bulk affiliate styles upload results for test_file.csv")
-      expect(mail.to).to eq(['user@example.com'])
-      expect(mail.from).to eq([Rails.configuration.action_mailer.default_options[:from]])
+    it 'has the correct subject' do
+      expect(mail.subject).to eq("Bulk affiliate styles upload results for #{filename}")
     end
 
-    it 'renders the body' do
-      expect(mail.body.encoded).to match("Bulk affiliate styles upload results for test_file.csv")
+    it 'has the correct recepient' do
+      expect(mail.to).to eq([user.email])
+    end
+
+    it 'has the correct from header' do
+      expect(mail.from).to eq([DELIVER_FROM_EMAIL_ADDRESS])
+    end
+
+    it 'has the correct reply-to' do
+      expect(mail.reply_to).to eq([SUPPORT_EMAIL_ADDRESS])
+    end
+
+    it 'has the correct total number of URLs' do
+      expect(mail.body.encoded).to match(/There were #{results.total_count} affiliates/)
     end
   end
 end

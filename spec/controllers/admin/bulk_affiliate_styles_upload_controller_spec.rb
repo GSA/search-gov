@@ -1,41 +1,64 @@
 require 'spec_helper'
 
 describe Admin::BulkAffiliateStylesUploadController do
-  let(:user) { users(:affiliate_admin) }
-  let(:file) { fixture_file_upload('files/test_file.csv', 'text/csv') }
+  fixtures :users
+  let(:user) { users('affiliate_admin') }
 
   before do
-    sign_in user
+    activate_authlogic
   end
 
-  describe 'GET #index' do
-    it 'assigns @page_title' do
-      get :index
-      expect(assigns(:@page_title)).to eq('Bulk Affiliate Styles Upload')
+  describe "GET 'index'" do
+    context 'when not logged in' do
+      it 'redirects to the home page' do
+        get :index
+        expect(response).to redirect_to login_path
+      end
+    end
+
+    context 'when logged in as an admin' do
+      before do
+        UserSession.create(user)
+      end
+
+      it 'allows the admin to manage superfresh urls' do
+        get :index
+        expect(response).to be_successful
+      end
     end
   end
 
   describe 'POST #upload' do
+    let(:file) { fixture_file_upload('/csv/affiliate_styles.csv', 'text/csv') }
+    let(:upload) do
+      post :upload, params: { bulk_upload_affiliate_styles: file }
+    end
+
+    before do
+      UserSession.create(user)
+    end
+
     context 'when the upload is successful' do
       before do
-        allow(BulkAffiliateStylesUploader::AffiliateStylesFileValidator).to have_received(:new).and_return(instance_double(BulkAffiliateStylesUploader::AffiliateStylesFileValidator, validate!: true))
-        allow(BulkAffiliateStylesUploaderJob).to have_received(:perform_now)
+        allow_any_instance_of(BulkAffiliateStylesUploader::AffiliateStylesFileValidator).to receive(:validate!).and_return(true)
+        allow(BulkAffiliateStylesUploaderJob).to receive(:perform_now)
       end
 
       it 'enqueues the job' do
-        expect(BulkAffiliateStylesUploaderJob).to have_received(:perform_now).with(user, file.original_filename, file.tempfile.path)
+        upload
+        uploaded_file = assigns(:file)
 
-        post :upload, params: { bulk_upload_affiliate_styles: file }
+        expect(BulkAffiliateStylesUploaderJob).to have_received(:perform_now).with(user, uploaded_file.original_filename, uploaded_file.tempfile.path)
       end
 
       it 'sets a success flash message' do
-        post :upload, params: { bulk_upload_affiliate_styles: file }
+        upload
 
         expect(flash[:success]).to eq("Successfully uploaded #{file.original_filename} for processing.\nThe results will be emailed to you.\n")
       end
 
       it 'redirects to the index path' do
-        post :upload, params: { bulk_upload_affiliate_styles: file }
+        upload
 
         expect(response).to redirect_to admin_bulk_affiliate_styles_upload_index_path
       end
@@ -43,18 +66,18 @@ describe Admin::BulkAffiliateStylesUploadController do
 
     context 'when the upload fails' do
       before do
-        allow(BulkAffiliateStylesUploader::AffiliateStylesFileValidator).to have_received(:new).and_return(instance_double(BulkAffiliateStylesUploader::AffiliateStylesFileValidator, validate!: true))
-        allow(BulkAffiliateStylesUploaderJob).to have_received(:perform_now).and_raise(BulkAffiliateStylesUploader::Error, 'Upload failed')
+        allow_any_instance_of(BulkAffiliateStylesUploader::AffiliateStylesFileValidator).to receive(:validate!).and_raise(BulkAffiliateStylesUploader::Error, 'Invalid file format')
+        allow(BulkAffiliateStylesUploaderJob).to receive(:perform_now).and_raise(BulkAffiliateStylesUploader::Error, 'Upload failed')
       end
 
       it 'sets an error flash message' do
-        post :upload, params: { bulk_upload_affiliate_styles: file }
+        upload
 
-        expect(flash[:error]).to eq('Upload failed')
+        expect(flash[:error]).to eq('Invalid file format')
       end
 
       it 'redirects to the index path' do
-        post :upload, params: { bulk_upload_affiliate_styles: file }
+        upload
 
         expect(response).to redirect_to admin_bulk_affiliate_styles_upload_index_path
       end

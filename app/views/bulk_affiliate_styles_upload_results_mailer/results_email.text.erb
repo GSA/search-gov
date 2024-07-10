@@ -6,8 +6,10 @@ There were <%= @results.total_count %> affiliates.
 <% if @results.error_count == 0 %>
 There were no errors.
 <% else %>
-<%= @results.ok_count %> affiliates were updated successfully.
 <%= @results.error_count %> affiliates failed validation.
+<% end %>
+
+<%= @results.ok_count %> affiliates were updated successfully.
 
 <% @results.affiliates.each do |id| %>
   <%= id %>
@@ -15,4 +17,4 @@ There were no errors.
       <%= error_message %>
     <% end %>
   <% end %>
-<% end %>
+
