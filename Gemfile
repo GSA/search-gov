@@ -31,6 +31,7 @@ gem 'resque-scheduler', '~> 4.10.2'
 # Using a third-party fork as an interim measure.
 gem 'kt-paperclip', '~> 7.1.0'
 gem 'aws-sdk-s3', '~> 1.102.0'
+gem 'aws-sdk-ssm', '~> 1.173'
 gem 'googlecharts', '~> 1.6.12'
 gem 'flickraw', '~> 0.9.9'
 # SRCH-3837: We need this change: https://github.com/activescaffold/active_scaffold/pull/666
@@ -117,6 +118,12 @@ gem 'dogapi', '~> 1.45'
 # https://github.com/ruby/net-protocol/issues/10
 # This gem can be removed once we upgrade to Ruby 3.1.
 gem 'net-http'
+
+# Deployment
+gem 'capistrano', '~> 3.19', '>= 3.19.1'
+gem 'capistrano-rails', '~> 1.6', '>= 1.6.3'
+gem 'capistrano-rbenv', '~> 2.2'
+gem 'capistrano3-puma', '~> 5.2'
 
 # Assets-related gems
 gem 'coffee-rails', '~> 5.0.0'
