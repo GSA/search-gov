@@ -30,17 +30,19 @@ describe Admin::BulkAffiliateStylesUploadController do
 
   describe 'POST #upload' do
     let(:file) { fixture_file_upload('/csv/affiliate_styles.csv', 'text/csv') }
+    let(:validator_instance) { instance_double(BulkAffiliateStylesUploader::AffiliateStylesFileValidator) }
     let(:upload) do
       post :upload, params: { bulk_upload_affiliate_styles: file }
     end
 
     before do
       UserSession.create(user)
+      allow(BulkAffiliateStylesUploader::AffiliateStylesFileValidator).to receive(:new).and_return(validator_instance)
     end
 
     context 'when the upload is successful' do
       before do
-        allow_any_instance_of(BulkAffiliateStylesUploader::AffiliateStylesFileValidator).to receive(:validate!).and_return(true)
+        allow(validator_instance).to receive(:validate!).and_return(true)
         allow(BulkAffiliateStylesUploaderJob).to receive(:perform_now)
       end
 
@@ -66,7 +68,7 @@ describe Admin::BulkAffiliateStylesUploadController do
 
     context 'when the upload fails' do
       before do
-        allow_any_instance_of(BulkAffiliateStylesUploader::AffiliateStylesFileValidator).to receive(:validate!).and_raise(BulkAffiliateStylesUploader::Error, 'Invalid file format')
+        allow(validator_instance).to receive(:validate!).and_raise(BulkAffiliateStylesUploader::Error, 'Invalid file format')
         allow(BulkAffiliateStylesUploaderJob).to receive(:perform_now).and_raise(BulkAffiliateStylesUploader::Error, 'Upload failed')
       end
 
