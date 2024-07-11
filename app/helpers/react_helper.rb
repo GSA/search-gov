@@ -70,7 +70,7 @@ module ReactHelper
       navigationLinks: navigation_links(search, params),
       noResultsMessage: no_result_message(search),
       page: page_data(affiliate),
-      params: params,
+      params:,
       primaryHeaderLinks: links(affiliate, :primary_header_links),
       relatedSites: related_sites(search),
       relatedSitesDropdownLabel: affiliate.related_sites_dropdown_label,
@@ -78,7 +78,7 @@ module ReactHelper
       secondaryHeaderLinks: links(affiliate, :secondary_header_links),
       spellingSuggestion: spelling_text(search, search_options),
       translations: translations(affiliate.locale),
-      vertical: vertical
+      vertical:
     }
 
     react_component('SearchResultsLayout', data.compact_blank)
