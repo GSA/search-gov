@@ -131,7 +131,7 @@ describe ImageSearch do
     end
 
     context 'when a suggestion block exists for the given query' do
-      let (:suggestion_block_exists) { true }
+      let(:suggestion_block_exists) { true }
 
       it 'returns nil' do
         image_search.run
