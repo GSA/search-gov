@@ -84,7 +84,8 @@ class ImageSearch
 
   def initialize_search_instance(uses_cr)
     params = search_params(uses_cr)
-    uses_cr ? search_engine_adapter(params) : OdieImageSearch.new(params)
+    OdieImageSearch.new(params)
+    # uses_cr ? search_engine_adapter(params) : OdieImageSearch.new(params) turn off Bing Image search
   end
 
   def search_params(uses_cr)
