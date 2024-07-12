@@ -182,12 +182,12 @@ GEM
       activerecord (>= 5.2, < 7.1)
       activesupport (>= 5.2, < 7.1)
       request_store (~> 1.0)
-    aws-eventstream (1.2.0)
+    aws-eventstream (1.3.0)
     aws-partitions (1.810.0)
-    aws-sdk-core (3.181.0)
-      aws-eventstream (~> 1, >= 1.0.2)
+    aws-sdk-core (3.201.1)
+      aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.651.0)
-      aws-sigv4 (~> 1.5)
+      aws-sigv4 (~> 1.8)
       jmespath (~> 1, >= 1.6.1)
     aws-sdk-kms (1.71.0)
       aws-sdk-core (~> 3, >= 3.177.0)
@@ -196,7 +196,10 @@ GEM
       aws-sdk-core (~> 3, >= 3.120.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.4)
-    aws-sigv4 (1.6.0)
+    aws-sdk-ssm (1.173.0)
+      aws-sdk-core (~> 3, >= 3.201.0)
+      aws-sigv4 (~> 1.5)
+    aws-sigv4 (1.8.0)
       aws-eventstream (~> 1, >= 1.0.2)
     axe-core-api (4.7.0)
       dumb_delegator
@@ -890,6 +893,7 @@ DEPENDENCIES
   american_date (~> 1.1.1)
   authlogic (~> 6.4.1)
   aws-sdk-s3 (~> 1.102.0)
+  aws-sdk-ssm (~> 1.173)
   axe-core-capybara
   axe-core-cucumber
   bootsnap

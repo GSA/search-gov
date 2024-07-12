@@ -6,7 +6,7 @@ set :repo_url, "https://github.com/GSA/search-gov"
 set :branch, "main"
 
 # Set the directory to deploy to
-set :deploy_to, '/var/www/my_app_name'
+set :deploy_to, ENV['DEPLOYMENT_PATH']
 
 # Use rbenv to manage Ruby versions
 set :rbenv_type, :user
@@ -26,13 +26,14 @@ namespace :deploy do
       within release_path do
         execute :bundle, :exec, :ruby, '-e', %Q{
           require 'aws-sdk-ssm'
-          client = Aws::SSM::Client.new(region: 'us-east-1')
-          path = fetch(:aws_ssm_path)
+          require 'rails'
+          client = Aws::SSM::Client.new(region: "#{ENV['AWS_REGION']}")
+          path = "#{ENV['AWS_SSM_PATH']}"
           env_vars = client.get_parameters_by_path({
             path: path,
             with_decryption: true
           }).parameters
-          File.open('.env', 'w') do |file|
+          File.open(Rails.root.join('.env'), 'w') do |file|
             env_vars.each do |param|
               file.puts "#{param.name.split('/').last}=#{param.value}"
             end
@@ -47,6 +48,5 @@ namespace :deploy do
   after :finishing, 'deploy:cleanup'
   after :finishing, 'deploy:restart'
   after :rollback, 'deploy:restart'
-  after :finishing, 'datadog:notify'
-  after :rollback, 'datadog:notify'
 end
+
