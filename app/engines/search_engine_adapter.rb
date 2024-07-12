@@ -14,7 +14,7 @@ class SearchEngineAdapter
     @query = @options[:query]
     @site_limits = @options[:site_limits]
     @search_class = klass
-    @search_engine = klass.new search_params
+    @search_engine = klass.new(search_params)
     @search_engine_response = SearchEngineResponse.new
   end
 
@@ -67,7 +67,7 @@ class SearchEngineAdapter
   end
 
   def build_formatted_query
-    formatted_query_instance = BingFormattedQuery.new @query, domains_scope_options
+    formatted_query_instance = BingFormattedQuery.new(@query, domains_scope_options)
     formatted_query_instance.query
   end
 
