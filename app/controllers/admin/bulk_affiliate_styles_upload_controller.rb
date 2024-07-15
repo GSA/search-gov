@@ -29,7 +29,7 @@ module Admin
     end
 
     def enqueue_job
-      BulkAffiliateStylesUploaderJob.perform_now(
+      BulkAffiliateStylesUploaderJob.perform_later(
         current_user,
         @file.original_filename,
         @file.tempfile.path

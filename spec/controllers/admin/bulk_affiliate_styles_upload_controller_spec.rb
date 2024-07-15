@@ -43,14 +43,14 @@ describe Admin::BulkAffiliateStylesUploadController do
     context 'when the upload is successful' do
       before do
         allow(validator_instance).to receive(:validate!).and_return(true)
-        allow(BulkAffiliateStylesUploaderJob).to receive(:perform_now)
+        allow(BulkAffiliateStylesUploaderJob).to receive(:perform_later)
       end
 
       it 'enqueues the job' do
         upload
         uploaded_file = assigns(:file)
 
-        expect(BulkAffiliateStylesUploaderJob).to have_received(:perform_now).with(user, uploaded_file.original_filename, uploaded_file.tempfile.path)
+        expect(BulkAffiliateStylesUploaderJob).to have_received(:perform_later).with(user, uploaded_file.original_filename, uploaded_file.tempfile.path)
       end
 
       it 'sets a success flash message' do
@@ -69,7 +69,7 @@ describe Admin::BulkAffiliateStylesUploadController do
     context 'when the upload fails' do
       before do
         allow(validator_instance).to receive(:validate!).and_raise(BulkAffiliateStylesUploader::Error, 'Invalid file format')
-        allow(BulkAffiliateStylesUploaderJob).to receive(:perform_now).and_raise(BulkAffiliateStylesUploader::Error, 'Upload failed')
+        allow(BulkAffiliateStylesUploaderJob).to receive(:perform_later).and_raise(BulkAffiliateStylesUploader::Error, 'Upload failed')
       end
 
       it 'sets an error flash message' do
