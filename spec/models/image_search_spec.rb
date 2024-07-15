@@ -71,10 +71,10 @@ describe ImageSearch do
       # let(:search_engine_adapter) { double(SearchEngineAdapter, results: nil) }
       let(:odie_image_search) { instance_double(OdieImageSearch, results: nil) }
 
-      before do
-        affiliate.is_bing_image_search_enabled = true
-        allow(affiliate).to receive(:has_no_social_image_feeds?).and_return false
-      end
+      # before do
+      #   affiliate.is_bing_image_search_enabled = true
+      #   allow(affiliate).to receive(:has_no_social_image_feeds?).and_return false
+      # end
 
       # context 'when search_engine is BingV7' do
       #   before { affiliate.search_engine = 'BingV7' }
@@ -100,13 +100,12 @@ describe ImageSearch do
         end
 
         it 'performs a ODIE image search' do
-          expect(OdieImageSearch).to receive(:new).
+          image_search.run
+          expect(OdieImageSearch).to have_received(:new).
             with(hash_including(affiliate:,
                                 page: 1,
                                 per_page: 20,
-                                query: 'lsdkjflskjflskjdf')).
-            and_return(odie_image_search)
-          image_search.run
+                                query: 'lsdkjflskjflskjdf'))
         end
       end
     end
