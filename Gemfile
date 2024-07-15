@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 7.0.8'
+gem 'rails', '~> 7.1.0'
 
 gem 'rake', '~> 13.0.6'
 gem 'rack-contrib', '~> 2.5.0'
@@ -89,7 +89,7 @@ gem 'colorize', '~> 0.8.1'
 gem 'dogstatsd-ruby', '~> 3.2.0'
 gem 'http', '~> 5.0'
 gem 'robots_tag_parser', '~> 0.1.0'
-gem 'loofah', '~> 2.19.1'
+gem 'loofah', '~> 2.19'
 # Locking ref, as later versions (after being renamed & released as "medusa-crawler")
 # include breaking changes
 gem 'medusa', git: 'https://github.com/brutuscat/medusa-crawler',
@@ -105,7 +105,7 @@ gem 'aasm', '~> 5.5'
 gem 'active_scheduler', '~> 0.7.0'
 gem 'retriable', '~> 3.1'
 gem 'cld3', '~> 3.5.0'
-gem 'activejob-uniqueness', '~> 0.2.1'
+gem 'activejob-uniqueness', '~> 0.2'
 # Temporarily locking the version to resolve SRCH-3788.
 # The fix for the bug in SRCH-3788 is NOT covered by automated specs.
 # A spec will be added (if possible) per SRCH-3790
