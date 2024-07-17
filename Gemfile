@@ -119,12 +119,6 @@ gem 'dogapi', '~> 1.45'
 # This gem can be removed once we upgrade to Ruby 3.1.
 gem 'net-http'
 
-# Deployment
-gem 'capistrano', '~> 3.19', '>= 3.19.1'
-gem 'capistrano-rails', '~> 1.6', '>= 1.6.3'
-gem 'capistrano-rbenv', '~> 2.2'
-gem 'capistrano3-puma', '~> 5.2'
-
 # Assets-related gems
 gem 'coffee-rails', '~> 5.0.0'
 gem 'uglifier', '~> 4.2.0'
@@ -178,6 +172,12 @@ group :development do
   # gem 'web-console'
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
+
+  # Deployment
+  gem 'capistrano', '~> 3.19', '>= 3.19.1'
+  gem 'capistrano-rails', '~> 1.6', '>= 1.6.3'
+  gem 'capistrano-rbenv', '~> 2.2'
+  gem 'capistrano3-puma', '~> 5.2'
 end
 
 group :development, :test do

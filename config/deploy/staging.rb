@@ -15,8 +15,15 @@ server ENV['SERVER_ADDRESS'], user: ENV['SERVER_DEPLOYMENT_USER'], roles: %w{app
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customize your setup.
 
-set :rails_env, 'staging'
+set :rails_env, 'production'
 set :aws_ssm_path, ENV['AWS_SSM_PATH']
+set :bundle_without, %w{development test}.join(' ')
+
+
+# Fetch and set environment variables
+# fetch(:default_env).merge!(
+#   'SECRET_KEY_BASE' => '1'
+# )
 
 # Custom SSH Options
 # ==================
