@@ -9,7 +9,7 @@ module Admin
     def upload
       begin
         @file = params[:bulk_upload_affiliate_styles]
-        BulkAffiliateStylesUploader::AffiliateStylesFileValidator.new(@file).validate!
+        BulkAffiliateStyles::FileValidator.new(@file).validate!
         enqueue_job
         flash[:success] = success_message(@file.original_filename)
       rescue BulkAffiliateStylesUploader::Error => e
