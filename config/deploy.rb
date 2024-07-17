@@ -23,6 +23,33 @@ append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/syst
 set :keep_releases, 5
 
 namespace :deploy do
+
+  task :fetch_env_vars do
+    on roles(:app) do
+      within release_path do
+        info "Fetching environment variables from AWS SSM..."
+        require 'aws-sdk-ssm'
+        require 'fileutils'
+
+        client = Aws::SSM::Client.new(region: ENV['AWS_REGION'])
+        path = ENV['AWS_SSM_PATH']
+        env_vars = client.get_parameters_by_path({
+                                                   path: path,
+                                                   with_decryption: true
+                                                 }).parameters
+
+        # parse env_vars
+        # and set to default_envs using
+        # the following pattern:
+        # source: https://capistranorb.com/documentation/getting-started/configuration/
+        #  fetch(:default_env).merge!(
+        #    'SECRET_KEY_BASE' => '1'
+        #  )
+      end
+    end
+  end
+
+
   task :use_node_version do
     on roles(:app) do
       within release_path do
@@ -58,5 +85,6 @@ namespace :deploy do
   after :finishing, 'deploy:restart'
   after :rollback, 'deploy:restart'
 end
+
 
 
