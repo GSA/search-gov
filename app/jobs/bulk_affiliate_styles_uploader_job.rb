@@ -11,6 +11,8 @@ class BulkAffiliateStylesUploaderJob < ApplicationJob
     report_results
   end
 
+  private
+
   def report_results
     log_results
     send_results_email

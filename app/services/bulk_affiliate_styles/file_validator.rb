@@ -14,6 +14,8 @@ class BulkAffiliateStyles::FileValidator
     ensure_not_too_big
   end
 
+  private
+
   def ensure_valid_content_type
     return if VALID_CONTENT_TYPES.include?(@uploaded_file.content_type)
 
