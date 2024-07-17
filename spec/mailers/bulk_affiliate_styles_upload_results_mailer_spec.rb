@@ -5,7 +5,7 @@ describe BulkAffiliateStylesUploadResultsMailer do
     let(:user) { users(:affiliate_admin) }
     let(:filename) { 'test_file.csv' }
     let(:results) do
-      results = BulkAffiliateStylesUploader::Results.new(filename)
+      results = BulkAffiliateStyles::Results.new(filename)
       results.add_ok(1)
       results.add_ok(2)
       results
