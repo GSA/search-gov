@@ -95,9 +95,9 @@ class ImageSearch
     params
   end
 
-  def search_engine_adapter(options)
-    SearchEngineAdapter.new(engine_klass, options)
-  end
+  # def search_engine_adapter(options)
+  #   SearchEngineAdapter.new(engine_klass, options)
+  # end
 
   def engine_klass
     if @affiliate.search_engine.start_with?('Bing')
