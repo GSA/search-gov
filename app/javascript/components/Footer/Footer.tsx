@@ -32,7 +32,7 @@ export const Footer = ({ footerLinks = [] }: FooterProps) => {
 
   const returnToTop = (
     <GridContainer className="usa-footer__return-to-top">
-      <a href="#">
+      <a href="#main-content">
         {i18n.t('returnToTop')}
       </a>
     </GridContainer>
