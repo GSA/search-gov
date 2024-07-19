@@ -123,7 +123,7 @@ jobs:
             - ~/search-gov
 
   rspec:
-    resource_class: xlarge
+    resource_class: large
     parameters:
       ruby_version:
         type: string
