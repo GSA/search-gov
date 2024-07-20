@@ -158,6 +158,9 @@ gem 'bootsnap', require: false
 
 gem 'rails_semantic_logger', '~> 4.14'
 
+# web server
+gem 'puma', '~> 5.6'
+
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
@@ -172,9 +175,6 @@ group :development do
   # gem 'web-console'
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
-
-  # web server
-  gem 'puma', '~> 5.6'
 
   # Deployment
   gem 'capistrano', '~> 3.19', '>= 3.19.1'

@@ -53,7 +53,6 @@ namespace :deploy do
     on roles(:app) do
       within release_path do
         unless test("[ -d #{release_path}/app/assets/builds ]")
-          error "Precompiled assets not found in #{release_path}/app/assets/builds"
           exit 1
         end
       end
@@ -67,3 +66,6 @@ namespace :deploy do
   after :finishing, 'puma:restart'
   after :rollback, 'puma:restart'
 end
+
+
+
