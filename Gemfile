@@ -173,6 +173,9 @@ group :development do
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
+  # web server
+  gem 'puma', '~> 5.6'
+
   # Deployment
   gem 'capistrano', '~> 3.19', '>= 3.19.1'
   gem 'capistrano-rails', '~> 1.6', '>= 1.6.3'
@@ -194,7 +197,6 @@ group :development, :test do
   # For improved console readability:
   # https://github.com/amazing-print/amazing_print
   gem 'amazing_print', '~> 1.4'
-  gem 'puma', '~> 5.6'
   gem 'debug'
 end
 

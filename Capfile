@@ -35,8 +35,12 @@ require "capistrano/bundler"
 # require "capistrano/rails/assets"
 # require "capistrano/rails/migrations"
 # require "capistrano/passenger"
-require 'capistrano/rails'
+# require 'capistrano/rails'
+
+# Web server plugins
 require 'capistrano/puma'
+require 'capistrano/puma/workers'
+
 
 install_plugin Capistrano::Puma  # Default puma tasks
 

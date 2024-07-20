@@ -21,9 +21,10 @@ set :bundle_without, %w{development test}.join(' ')
 
 
 # Fetch and set environment variables
-# fetch(:default_env).merge!(
-#   'SECRET_KEY_BASE' => '1'
-# )
+fetch(:default_env).merge!(
+  'SECRET_KEY_BASE' => '1',
+  'SKIP_CSS_BUILD' => '1'
+)
 
 # Custom SSH Options
 # ==================
