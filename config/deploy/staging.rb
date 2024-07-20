@@ -51,3 +51,20 @@ set :ssh_options, {
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
+
+
+# Keep only the last 5 releases to save disk space
+set :keep_releases, 5
+
+# Configurations for Capistrano and Puma
+set :puma_threads, [4, 16]
+set :puma_workers, 0
+
+set :puma_bind, "tcp://0.0.0.0:3000" # or "unix://#{shared_path}/tmp/sockets/puma.sock"
+set :puma_state, "#{shared_path}/tmp/pids/puma.state"
+set :puma_pid, "#{shared_path}/tmp/pids/puma.pid"
+set :puma_access_log, "#{release_path}/log/puma.error.log"
+set :puma_error_log, "#{release_path}/log/puma.access.log"
+set :puma_preload_app, true
+set :puma_worker_timeout, nil
+set :puma_init_active_record, true  # Change to false when not using ActiveRecord
