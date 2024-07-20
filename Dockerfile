@@ -4,6 +4,8 @@ FROM public.ecr.aws/docker/library/ruby:$RUBY_VERSION-slim as base
 # Rails app lives here
 WORKDIR /rails
 
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
 # Install base packages
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y \
