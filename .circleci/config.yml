@@ -63,7 +63,16 @@ commands:
   install_js_dependencies:
     description: 'Install JavaScript dependencies'
     steps:
-      - run: yarn install --frozen-lockfile
+      steps:
+      - run:
+          name: Clean node_modules
+          command: rm -rf node_modules
+      - nodejs/install:
+          node-version: '16'
+          install-yarn: true
+      - run:
+          name: Yarn Install
+          command: yarn install --frozen-lockfile
   precompile_assets:
     description: 'Pre-compile assets'
     steps:
