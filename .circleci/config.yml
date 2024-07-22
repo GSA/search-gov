@@ -23,6 +23,7 @@ executors:
     working_directory: ~/search-gov
 
     docker:
+      # using custom images, see .circleci/images/primary/
       - image: cimg/ruby:<< parameters.ruby_version >>
         environment:
           RAILS_ENV: test
@@ -47,6 +48,7 @@ executors:
 
       - image: apache/tika:2.4.1
 
+
 commands:
   install_chrome:
     description: 'Install latest Chrome and ChromeDriver'
@@ -61,15 +63,7 @@ commands:
   install_js_dependencies:
     description: 'Install JavaScript dependencies'
     steps:
-      - run:
-          name: Clean node_modules
-          command: rm -rf node_modules
-      - nodejs/install:
-          node-version: '16'
-          install-yarn: true
-      - run:
-          name: Yarn Install
-          command: yarn install --frozen-lockfile
+      - run: yarn install --frozen-lockfile
   precompile_assets:
     description: 'Pre-compile assets'
     steps:
@@ -89,7 +83,7 @@ jobs:
       mysql_version:
         type: string
 
-    executor:
+    executor: 
       name: test_executor
       ruby_version: << parameters.ruby_version >>
       elasticsearch_version: << parameters.elasticsearch_version >>
@@ -100,7 +94,7 @@ jobs:
 
       - run:
           name: Wait for Elasticsearch
-          command: dockerize -wait tcp://localhost:9200 -timeout 2m
+          command: dockerize -wait tcp://localhost:9200 -timeout 1m
 
       - run:
           name: Use developer secrets
@@ -119,7 +113,6 @@ jobs:
             - ~/search-gov
 
   rspec:
-    resource_class: xlarge
     parameters:
       ruby_version:
         type: string
@@ -128,7 +121,7 @@ jobs:
       mysql_version:
         type: string
 
-    executor:
+    executor: 
       name: test_executor
       ruby_version: << parameters.ruby_version >>
       elasticsearch_version: << parameters.elasticsearch_version >>
@@ -137,18 +130,11 @@ jobs:
     parallelism: 6
 
     steps:
-      - setup_remote_docker  
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
       - ruby/install-deps:
           key: gems-ruby-<< parameters.ruby_version >>-v{{ .Environment.CACHE_VERSION }}
-
-      - run:
-          name: Install Ruby Dependencies
-          command: |
-            sudo apt-get update
-            sudo apt-get install -y default-mysql-client libprotobuf-dev protobuf-compiler
 
       - install_js_dependencies
 
@@ -159,27 +145,6 @@ jobs:
       - precompile_assets
 
       - run:
-          name: Wait for Elasticsearch
-          command: dockerize -wait tcp://localhost:9200 -timeout 2m
-
-      - run:
-          name: Install Elasticsearch Plugins
-          command: |
-            until curl -sS localhost:9200; do sleep 1; done
-            elasticsearch_container_id=$(docker ps -qf "ancestor=docker.elastic.co/elasticsearch/elasticsearch:<< parameters.elasticsearch_version >>")
-            docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-kuromoji
-            docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-icu
-            docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-smartcn
-
-      - run:
-          name: Print Environment Variables
-          command: printenv
-
-      - run:
-          name: Check Elasticsearch Status
-          command: curl -X GET "localhost:9200/"
-
-      - run:
           name: Run Tests
           command: |
             bundle exec rake usasearch:elasticsearch:create_indexes
@@ -187,6 +152,7 @@ jobs:
             mkdir /tmp/test-results
             ./cc-test-reporter before-build
 
+            # Run Rspec tests
             bundle exec rspec --format progress \
                               --format RspecJunitFormatter \
                               --out /tmp/test-results/rspec.xml \
@@ -199,8 +165,9 @@ jobs:
       - persist_to_workspace:
           root: ~/search-gov/coverage
           paths:
-            - codeclimate.rspec.*.json
+          - codeclimate.rspec.*.json
 
+      # collect reports
       - store_test_results:
           path: /tmp/test-results
       - store_artifacts:
@@ -216,7 +183,7 @@ jobs:
       mysql_version:
         type: string
 
-    executor:
+    executor: 
       name: test_executor
       ruby_version: << parameters.ruby_version >>
       elasticsearch_version: << parameters.elasticsearch_version >>
@@ -225,7 +192,6 @@ jobs:
     parallelism: 10
 
     steps:
-      - setup_remote_docker  
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
@@ -236,36 +202,9 @@ jobs:
 
       - install_chrome
 
-      - run:
-          name: Install Ruby Dependencies
-          command: |
-            sudo apt-get update
-            sudo apt-get install -y default-mysql-client libprotobuf-dev protobuf-compiler
-
       - prepare_database
 
       - precompile_assets
-
-      - run:
-          name: Wait for Elasticsearch
-          command: dockerize -wait tcp://localhost:9200 -timeout 2m
-
-      - run:
-          name: Install Elasticsearch Plugins
-          command: |
-            until curl -sS localhost:9200; do sleep 1; done
-            elasticsearch_container_id=$(docker ps -qf "ancestor=docker.elastic.co/elasticsearch/elasticsearch:<< parameters.elasticsearch_version >>")
-            docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-kuromoji
-            docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-icu
-            docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-smartcn
-
-      - run:
-          name: Print Environment Variables
-          command: printenv
-
-      - run:
-          name: Check Elasticsearch Status
-          command: curl -X GET "localhost:9200/"
 
       - run:
           name: Run Tests
@@ -277,6 +216,7 @@ jobs:
             mkdir /tmp/test-results
             ./cc-test-reporter before-build
 
+            # Run cucumber tests
             bundle exec cucumber --format progress \
                                 --format junit \
                                 --out /tmp/test-results/cucumber.xml \
@@ -289,8 +229,9 @@ jobs:
       - persist_to_workspace:
           root: ~/search-gov/coverage
           paths:
-            - codeclimate.cucumber.*.json
+          - codeclimate.cucumber.*.json
 
+      # collect reports
       - store_test_results:
           path: /tmp/test-results
       - store_artifacts:
@@ -299,23 +240,22 @@ jobs:
 
   jest:
     parameters:
-      node_version:
-        type: string
       ruby_version:
         type: string
       elasticsearch_version:
         type: string
       mysql_version:
         type: string
+      node_version:
+        type: string
 
-    executor:
+    executor: 
       name: test_executor
       ruby_version: << parameters.ruby_version >>
       elasticsearch_version: << parameters.elasticsearch_version >>
       mysql_version: << parameters.mysql_version >>
 
     steps:
-      - setup_remote_docker 
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
@@ -330,6 +270,7 @@ jobs:
           command: |
             ./cc-test-reporter before-build
 
+            # Run jest tests
             yarn test:coverage
 
             ./cc-test-reporter format-coverage \
@@ -338,7 +279,7 @@ jobs:
       - persist_to_workspace:
           root: ~/search-gov/coverage
           paths:
-            - codeclimate.jest.*.json
+          - codeclimate.jest.*.json
 
   report_coverage:
     parameters:
@@ -348,8 +289,10 @@ jobs:
         type: string
       mysql_version:
         type: string
+      node_version:
+        type: string
 
-    executor:
+    executor: 
       name: test_executor
       ruby_version: << parameters.ruby_version >>
       elasticsearch_version: << parameters.elasticsearch_version >>
@@ -378,9 +321,8 @@ workflows:
   build_and_test:
     jobs:
       - checkout_code:
-          name: checkout_code
+          name: "checkout code: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>, MySQL << matrix.mysql_version >>"
           matrix:
-            alias: checkout_code_alias
             parameters:
               ruby_version:
                 - 3.1.4
@@ -392,10 +334,9 @@ workflows:
 
       - rspec:
           requires:
-            - checkout_code_alias
-          name: rspec
+            - checkout_code
+          name: "rspec: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>, MySQL << matrix.mysql_version >>"
           matrix:
-            alias: rspec_alias
             parameters:
               ruby_version:
                 - 3.1.4
@@ -406,10 +347,9 @@ workflows:
 
       - cucumber:
           requires:
-            - checkout_code_alias
-          name: cucumber
+            - checkout_code
+          name: "cucumber: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>, MySQL << matrix.mysql_version >>"
           matrix:
-            alias: cucumber_alias
             parameters:
               ruby_version:
                 - 3.1.4
@@ -420,28 +360,26 @@ workflows:
 
       - jest:
           requires:
-            - checkout_code_alias
-          name: jest
+            - checkout_code
+          name: "jest: NodeJS << matrix.node_version >>, Ruby << matrix.ruby_version >>, MySQL << matrix.mysql_version >>"
           matrix:
-            alias: jest_alias
             parameters:
-              node_version:
-                - 16.20.2
               ruby_version:
                 - 3.1.4
               elasticsearch_version:
                 - 7.17.7
               mysql_version:
                 - "8.0"
+              node_version:
+                - 16.20.2
 
       - report_coverage:
           requires:
-            - rspec_alias
-            - cucumber_alias
-            - jest_alias
-          name: report_coverage
+            - "rspec: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>, MySQL << matrix.mysql_version >>"
+            - "cucumber: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>, MySQL << matrix.mysql_version >>"
+            - "jest: NodeJS << matrix.node_version >>, Ruby << matrix.ruby_version >>, MySQL << matrix.mysql_version >>"
+          name: "report coverage: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>, MySQL << matrix.mysql_version >>, NodeJS << matrix.node_version >>"
           matrix:
-            alias: report_coverage_alias
             parameters:
               ruby_version:
                 - 3.1.4
@@ -449,3 +387,5 @@ workflows:
                 - 7.17.7
               mysql_version:
                 - "8.0"
+              node_version:
+                - 16.20.2
