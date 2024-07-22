@@ -27,7 +27,8 @@ executors:
     working_directory: ~/search-gov
 
     docker:
-      - image: cimg/ruby:<< parameters.ruby_version >>
+      # using custom images, see .circleci/images/primary/
+      - image: searchgov/ruby:<< parameters.ruby_version >>
         environment:
           RAILS_ENV: test
 
@@ -51,6 +52,7 @@ executors:
 
       - image: apache/tika:2.4.1
 
+
 commands:
   install_chrome:
     description: 'Install latest Chrome and ChromeDriver'
@@ -65,15 +67,7 @@ commands:
   install_js_dependencies:
     description: 'Install JavaScript dependencies'
     steps:
-      - run:
-          name: Clean node_modules
-          command: rm -rf node_modules
-      - nodejs/install:
-          node-version: '16'
-          install-yarn: true
-      - run:
-          name: Yarn Install
-          command: yarn install --frozen-lockfile
+      - run: yarn install --frozen-lockfile
   precompile_assets:
     description: 'Pre-compile assets'
     steps:
@@ -93,7 +87,7 @@ jobs:
       mysql_version:
         type: string
 
-    executor:
+    executor: 
       name: test_executor
       ruby_version: << parameters.ruby_version >>
       elasticsearch_version: << parameters.elasticsearch_version >>
@@ -104,7 +98,7 @@ jobs:
 
       - run:
           name: Wait for Elasticsearch
-          command: dockerize -wait tcp://localhost:9200 -timeout 2m
+          command: dockerize -wait tcp://localhost:9200 -timeout 1m
 
       - run:
           name: Use developer secrets
@@ -123,7 +117,6 @@ jobs:
             - ~/search-gov
 
   rspec:
-    resource_class: medium
     parameters:
       ruby_version:
         type: string
@@ -132,7 +125,7 @@ jobs:
       mysql_version:
         type: string
 
-    executor:
+    executor: 
       name: test_executor
       ruby_version: << parameters.ruby_version >>
       elasticsearch_version: << parameters.elasticsearch_version >>
@@ -141,18 +134,11 @@ jobs:
     parallelism: 6
 
     steps:
-      - setup_remote_docker  
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
       - ruby/install-deps:
           key: gems-ruby-<< parameters.ruby_version >>-v{{ .Environment.CACHE_VERSION }}
-
-      - run:
-          name: Install Ruby Dependencies
-          command: |
-            sudo apt-get update
-            sudo apt-get install -y default-mysql-client libprotobuf-dev protobuf-compiler
 
       - install_js_dependencies
 
@@ -163,27 +149,6 @@ jobs:
       - precompile_assets
 
       - run:
-          name: Wait for Elasticsearch
-          command: dockerize -wait tcp://localhost:9200 -timeout 2m
-
-      - run:
-          name: Install Elasticsearch Plugins
-          command: |
-            until curl -sS localhost:9200; do sleep 1; done
-            elasticsearch_container_id=$(docker ps -qf "ancestor=docker.elastic.co/elasticsearch/elasticsearch:<< parameters.elasticsearch_version >>")
-            docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-kuromoji
-            docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-icu
-            docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-smartcn
-
-      - run:
-          name: Print Environment Variables
-          command: printenv
-
-      - run:
-          name: Check Elasticsearch Status
-          command: curl -X GET "localhost:9200/"
-
-      - run:
           name: Run Tests
           command: |
             bundle exec rake usasearch:elasticsearch:create_indexes
@@ -191,6 +156,7 @@ jobs:
             mkdir /tmp/test-results
             ./cc-test-reporter before-build
 
+            # Run Rspec tests
             bundle exec rspec --format progress \
                               --format RspecJunitFormatter \
                               --out /tmp/test-results/rspec.xml \
@@ -203,8 +169,9 @@ jobs:
       - persist_to_workspace:
           root: ~/search-gov/coverage
           paths:
-            - codeclimate.rspec.*.json
+          - codeclimate.rspec.*.json
 
+      # collect reports
       - store_test_results:
           path: /tmp/test-results
       - store_artifacts:
@@ -220,7 +187,7 @@ jobs:
       mysql_version:
         type: string
 
-    executor:
+    executor: 
       name: test_executor
       ruby_version: << parameters.ruby_version >>
       elasticsearch_version: << parameters.elasticsearch_version >>
@@ -229,7 +196,6 @@ jobs:
     parallelism: 10
 
     steps:
-      - setup_remote_docker  
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
@@ -240,36 +206,9 @@ jobs:
 
       - install_chrome
 
-      - run:
-          name: Install Ruby Dependencies
-          command: |
-            sudo apt-get update
-            sudo apt-get install -y default-mysql-client libprotobuf-dev protobuf-compiler
-
       - prepare_database
 
       - precompile_assets
-
-      - run:
-          name: Wait for Elasticsearch
-          command: dockerize -wait tcp://localhost:9200 -timeout 2m
-
-      - run:
-          name: Install Elasticsearch Plugins
-          command: |
-            until curl -sS localhost:9200; do sleep 1; done
-            elasticsearch_container_id=$(docker ps -qf "ancestor=docker.elastic.co/elasticsearch/elasticsearch:<< parameters.elasticsearch_version >>")
-            docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-kuromoji
-            docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-icu
-            docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-smartcn
-
-      - run:
-          name: Print Environment Variables
-          command: printenv
-
-      - run:
-          name: Check Elasticsearch Status
-          command: curl -X GET "localhost:9200/"
 
       - run:
           name: Run Tests
@@ -281,6 +220,7 @@ jobs:
             mkdir /tmp/test-results
             ./cc-test-reporter before-build
 
+            # Run cucumber tests
             bundle exec cucumber --format progress \
                                 --format junit \
                                 --out /tmp/test-results/cucumber.xml \
@@ -293,8 +233,9 @@ jobs:
       - persist_to_workspace:
           root: ~/search-gov/coverage
           paths:
-            - codeclimate.cucumber.*.json
+          - codeclimate.cucumber.*.json
 
+      # collect reports
       - store_test_results:
           path: /tmp/test-results
       - store_artifacts:
@@ -303,23 +244,22 @@ jobs:
 
   jest:
     parameters:
-      node_version:
-        type: string
       ruby_version:
         type: string
       elasticsearch_version:
         type: string
       mysql_version:
         type: string
+      node_version:
+        type: string
 
-    executor:
+    executor: 
       name: test_executor
       ruby_version: << parameters.ruby_version >>
       elasticsearch_version: << parameters.elasticsearch_version >>
       mysql_version: << parameters.mysql_version >>
 
     steps:
-      - setup_remote_docker 
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
@@ -334,6 +274,7 @@ jobs:
           command: |
             ./cc-test-reporter before-build
 
+            # Run jest tests
             yarn test:coverage
 
             ./cc-test-reporter format-coverage \
@@ -342,7 +283,7 @@ jobs:
       - persist_to_workspace:
           root: ~/search-gov/coverage
           paths:
-            - codeclimate.jest.*.json
+          - codeclimate.jest.*.json
 
   report_coverage:
     parameters:
@@ -352,8 +293,10 @@ jobs:
         type: string
       mysql_version:
         type: string
+      node_version:
+        type: string
 
-    executor:
+    executor: 
       name: test_executor
       ruby_version: << parameters.ruby_version >>
       elasticsearch_version: << parameters.elasticsearch_version >>
@@ -376,85 +319,82 @@ jobs:
             ./cc-test-reporter upload-coverage --input coverage/codeclimate_full_report.json
 
             ruby scripts/check_coverage.rb ${PWD}/coverage/codeclimate_full_report.json
+  # update-staging:
+  #   docker:
+  #     - image: cimg/aws:2023.01
+  #   resource_class: xlarge
+  #   steps:
+  #     - checkout
+  #     - setup_remote_docker
+  #     - aws-cli/setup:
+  #         aws-region: STAGING_AWS_REGION
+  #         aws-access-key-id: CIRCLE_CI_USER_ACCESS_KEY_ID 
+  #         aws-secret-access-key: CIRCLE_CI_USER_SECRET_ACCESS_KEY
+  #     - run: 
+  #         name: build searchgov image
+  #         command: |
+  #           docker build --build-arg AWS_ACCESS_KEY_ID=${CIRCLE_CI_USER_ACCESS_KEY_ID} \
+  #           --build-arg AWS_REGION=us-east-1 \
+  #           --build-arg AWS_BUCKET=dgsearch-image \
+  #           --build-arg AWS_SECRET_ACCESS_KEY=${CIRCLE_CI_USER_SECRET_ACCESS_KEY} \
+  #           --build-arg ASSET_HOST=https://d2nlddtcvx68lt.cloudfront.net \
+  #           -t searchgov .
 
-  update-staging:
-    docker:
-      - image: cimg/aws:2023.01
-    resource_class: xlarge
-    steps:
-      - checkout
-      - setup_remote_docker
-      - aws-cli/setup:
-          aws-region: STAGING_AWS_REGION
-          aws-access-key-id: CIRCLE_CI_USER_ACCESS_KEY_ID
-          aws-secret-access-key: CIRCLE_CI_USER_SECRET_ACCESS_KEY
-      - run:
-          name: build searchgov image
-          command: |
-            docker build --build-arg AWS_ACCESS_KEY_ID=${CIRCLE_CI_USER_ACCESS_KEY_ID} \
-            --build-arg AWS_REGION=us-east-1 \
-            --build-arg AWS_BUCKET=dgsearch-image \
-            --build-arg AWS_SECRET_ACCESS_KEY=${CIRCLE_CI_USER_SECRET_ACCESS_KEY} \
-            --build-arg ASSET_HOST=https://d2nlddtcvx68lt.cloudfront.net \
-            -t searchgov .
+  #     - run: docker tag searchgov:latest 213305845712.dkr.ecr.us-east-2.amazonaws.com/searchgov:latest
+  #     - run: docker tag searchgov:latest 213305845712.dkr.ecr.us-east-2.amazonaws.com/searchgov:${CIRCLE_SHA1:0:7}
+  #     - run: aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 213305845712.dkr.ecr.us-east-2.amazonaws.com
+  #     - run: docker push 213305845712.dkr.ecr.us-east-2.amazonaws.com/searchgov:latest
+  #     - run: docker push 213305845712.dkr.ecr.us-east-2.amazonaws.com/searchgov:${CIRCLE_SHA1:0:7}
+  #     - run: 
+  #         name: update searchgov k8s deployment
+  #         command: |
+  #           aws ssm send-command \
+  #           --document-name "searchgov-deployment-ssm-document" \
+  #           --targets "Key=tag:Name,Values=jumphost-staging-search-instance" \
+  #           --parameters '{"DeploymentName":["search-staging-searchgov-deploy"], "Namespace":["search"]}' \
+  #           --comment "restart searchgov staging deployment"
+  # update-prod:
+  #   docker:
+  #     - image: cimg/aws:2023.01
+  #   resource_class: xlarge
+  #   steps:
+  #     - checkout
+  #     - setup_remote_docker
+  #     - aws-cli/setup:
+  #         aws-region: PROD_AWS_REGION
+  #         aws-access-key-id: CIRCLE_CI_USER_ACCESS_KEY_ID 
+  #         aws-secret-access-key: CIRCLE_CI_USER_SECRET_ACCESS_KEY
+  #     - run: 
+  #         name: build searchgov image
+  #         command: |
+  #           docker build --build-arg AWS_ACCESS_KEY_ID=${CIRCLE_CI_USER_ACCESS_KEY_ID} \
+  #           --build-arg AWS_REGION=us-east-1 \
+  #           --build-arg AWS_BUCKET=dgsearch-images \
+  #           --build-arg AWS_SECRET_ACCESS_KEY=${CIRCLE_CI_USER_SECRET_ACCESS_KEY} \
+  #           --build-arg ASSET_HOST=https://d15vqlr7iz6e8x.cloudfront.net \
+  #           -t searchgov .
 
-      - run: docker tag searchgov:latest 213305845712.dkr.ecr.us-east-2.amazonaws.com/searchgov:latest
-      - run: docker tag searchgov:latest 213305845712.dkr.ecr.us-east-2.amazonaws.com/searchgov:${CIRCLE_SHA1:0:7}
-      - run: aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 213305845712.dkr.ecr.us-east-2.amazonaws.com
-      - run: docker push 213305845712.dkr.ecr.us-east-2.amazonaws.com/searchgov:latest
-      - run: docker push 213305845712.dkr.ecr.us-east-2.amazonaws.com/searchgov:${CIRCLE_SHA1:0:7}
-      - run:
-          name: update searchgov k8s deployment
-          command: |
-            aws ssm send-command \
-            --document-name "searchgov-deployment-ssm-document" \
-            --targets "Key=tag:Name,Values=jumphost-staging-search-instance" \
-            --parameters '{"DeploymentName":["search-staging-searchgov-deploy"], "Namespace":["search"]}' \
-            --comment "restart searchgov staging deployment"
-
-  update-prod:
-    docker:
-      - image: cimg/aws:2023.01
-    resource_class: xlarge
-    steps:
-      - checkout
-      - setup_remote_docker
-      - aws-cli/setup:
-          aws-region: PROD_AWS_REGION
-          aws-access-key-id: CIRCLE_CI_USER_ACCESS_KEY_ID
-          aws-secret-access-key: CIRCLE_CI_USER_SECRET_ACCESS_KEY
-      - run:
-          name: build searchgov image
-          command: |
-            docker build --build-arg AWS_ACCESS_KEY_ID=${CIRCLE_CI_USER_ACCESS_KEY_ID} \
-            --build-arg AWS_REGION=us-east-1 \
-            --build-arg AWS_BUCKET=dgsearch-images \
-            --build-arg AWS_SECRET_ACCESS_KEY=${CIRCLE_CI_USER_SECRET_ACCESS_KEY} \
-            --build-arg ASSET_HOST=https://d15vqlr7iz6e8x.cloudfront.net \
-            -t searchgov .
-
-      - run: docker tag searchgov:latest 213305845712.dkr.ecr.us-east-1.amazonaws.com/searchgov:latest
-      - run: docker tag searchgov:latest 213305845712.dkr.ecr.us-east-1.amazonaws.com/searchgov:${CIRCLE_SHA1:0:7}
-      - run: aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 213305845712.dkr.ecr.us-east-1.amazonaws.com
-      - run: docker push 213305845712.dkr.ecr.us-east-1.amazonaws.com/searchgov:latest
-      - run: docker push 213305845712.dkr.ecr.us-east-1.amazonaws.com/searchgov:${CIRCLE_SHA1:0:7}
-      - run:
-          name: update searchgov k8s deployment
-          command: |
-            aws ssm send-command \
-            --document-name "searchgov-deployment-ssm-document" \
-            --targets "Key=tag:Name,Values=jumphost-prod-search-instance" \
-            --parameters '{"DeploymentName":["search-prod-searchgov-deploy"], "Namespace":["search"]}' \
-            --comment "restart searchgov prod deployment"
+  #     - run: docker tag searchgov:latest 213305845712.dkr.ecr.us-east-1.amazonaws.com/searchgov:latest
+  #     - run: docker tag searchgov:latest 213305845712.dkr.ecr.us-east-1.amazonaws.com/searchgov:${CIRCLE_SHA1:0:7}
+  #     - run: aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 213305845712.dkr.ecr.us-east-1.amazonaws.com
+  #     - run: docker push 213305845712.dkr.ecr.us-east-1.amazonaws.com/searchgov:latest
+  #     - run: docker push 213305845712.dkr.ecr.us-east-1.amazonaws.com/searchgov:${CIRCLE_SHA1:0:7}
+  #     - run: 
+  #         name: update searchgov k8s deployment
+  #         command: |
+  #           aws ssm send-command \
+  #           --document-name "searchgov-deployment-ssm-document" \
+  #           --targets "Key=tag:Name,Values=jumphost-prod-search-instance" \
+  #           --parameters '{"DeploymentName":["search-prod-searchgov-deploy"], "Namespace":["search"]}' \
+  #           --comment "restart searchgov prod deployment"
 
 workflows:
   version: 2
   build_and_test:
     jobs:
       - checkout_code:
-          name: checkout_code
+          name: "checkout code: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>, MySQL << matrix.mysql_version >>"
           matrix:
-            alias: checkout_code_alias
             parameters:
               ruby_version:
                 - 3.1.4
@@ -466,10 +406,9 @@ workflows:
 
       - rspec:
           requires:
-            - checkout_code_alias
-          name: rspec
+            - checkout_code
+          name: "rspec: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>, MySQL << matrix.mysql_version >>"
           matrix:
-            alias: rspec_alias
             parameters:
               ruby_version:
                 - 3.1.4
@@ -480,10 +419,9 @@ workflows:
 
       - cucumber:
           requires:
-            - checkout_code_alias
-          name: cucumber
+            - checkout_code
+          name: "cucumber: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>, MySQL << matrix.mysql_version >>"
           matrix:
-            alias: cucumber_alias
             parameters:
               ruby_version:
                 - 3.1.4
@@ -494,28 +432,26 @@ workflows:
 
       - jest:
           requires:
-            - checkout_code_alias
-          name: jest
+            - checkout_code
+          name: "jest: NodeJS << matrix.node_version >>, Ruby << matrix.ruby_version >>, MySQL << matrix.mysql_version >>"
           matrix:
-            alias: jest_alias
             parameters:
-              node_version:
-                - 16.20.2
               ruby_version:
                 - 3.1.4
               elasticsearch_version:
                 - 7.17.7
               mysql_version:
                 - "8.0"
+              node_version:
+                - 16.20.2
 
       - report_coverage:
           requires:
-            - rspec_alias
-            - cucumber_alias
-            - jest_alias
-          name: report_coverage
+            - "rspec: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>, MySQL << matrix.mysql_version >>"
+            - "cucumber: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>, MySQL << matrix.mysql_version >>"
+            - "jest: NodeJS << matrix.node_version >>, Ruby << matrix.ruby_version >>, MySQL << matrix.mysql_version >>"
+          name: "report coverage: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>, MySQL << matrix.mysql_version >>, NodeJS << matrix.node_version >>"
           matrix:
-            alias: report_coverage_alias
             parameters:
               ruby_version:
                 - 3.1.4
@@ -523,6 +459,8 @@ workflows:
                 - 7.17.7
               mysql_version:
                 - "8.0"
+              node_version:
+                - 16.20.2
 
   # build_image_and_deploy:
   #   jobs:
@@ -540,3 +478,4 @@ workflows:
   #           branches:
   #             only:
   #               - production
+        
