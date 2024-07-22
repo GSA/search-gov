@@ -1,7 +1,3 @@
-# Ruby CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-ruby/ for more details
-
 version: 2.1
 
 orbs:
@@ -23,7 +19,6 @@ executors:
     working_directory: ~/search-gov
 
     docker:
-      # using custom images, see .circleci/images/primary/
       - image: cimg/ruby:<< parameters.ruby_version >>
         environment:
           RAILS_ENV: test
@@ -48,7 +43,6 @@ executors:
 
       - image: apache/tika:2.4.1
 
-
 commands:
   install_chrome:
     description: 'Install latest Chrome and ChromeDriver'
@@ -63,7 +57,6 @@ commands:
   install_js_dependencies:
     description: 'Install JavaScript dependencies'
     steps:
-      steps:
       - run:
           name: Clean node_modules
           command: rm -rf node_modules
@@ -139,6 +132,7 @@ jobs:
     parallelism: 6
 
     steps:
+      - setup_remote_docker  # Ensure Docker is set up for this job
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
@@ -174,7 +168,7 @@ jobs:
       - persist_to_workspace:
           root: ~/search-gov/coverage
           paths:
-          - codeclimate.rspec.*.json
+            - codeclimate.rspec.*.json
 
       # collect reports
       - store_test_results:
@@ -201,6 +195,7 @@ jobs:
     parallelism: 10
 
     steps:
+      - setup_remote_docker  # Ensure Docker is set up for this job
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
@@ -238,7 +233,7 @@ jobs:
       - persist_to_workspace:
           root: ~/search-gov/coverage
           paths:
-          - codeclimate.cucumber.*.json
+            - codeclimate.cucumber.*.json
 
       # collect reports
       - store_test_results:
@@ -265,6 +260,7 @@ jobs:
       mysql_version: << parameters.mysql_version >>
 
     steps:
+      - setup_remote_docker  # Ensure Docker is set up for this job
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
@@ -288,7 +284,7 @@ jobs:
       - persist_to_workspace:
           root: ~/search-gov/coverage
           paths:
-          - codeclimate.jest.*.json
+            - codeclimate.jest.*.json
 
   report_coverage:
     parameters:
