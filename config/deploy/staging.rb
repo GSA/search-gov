@@ -48,3 +48,20 @@ set :puma_access_log, "#{release_path}/log/puma.error.log"
 set :puma_error_log, "#{release_path}/log/puma.access.log"
 set :puma_preload_app, true
 set :puma_enable_socket_service, true
+
+
+namespace :deploy do
+  task :start_rails_server do
+    on roles(:app) do
+      within release_path do
+        with rails_env: fetch(:rails_env) do
+          execute :bundle, 'exec rails server -e production'
+        end
+      end
+    end
+  end
+
+  after :finishing, 'deploy:cleanup'
+  after :finishing, 'deploy:start_rails_server'
+  after :rollback, 'deploy:start_rails_server'
+end
