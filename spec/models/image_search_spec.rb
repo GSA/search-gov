@@ -36,15 +36,6 @@ describe ImageSearch do
     context 'when commercial search results are specified' do
       let(:use_commercial_results) { 'true' }
 
-      # context 'when the affiliate search_engine is BingV7' do
-      #   let(:search_engine) { 'BingV7' }
-      #   let(:underlying_search_class) { SearchEngineAdapter }
-
-      #   it 'delegates to SearchEngineAdapter#diagnostics' do
-      #     expect(image_search.diagnostics).to be(:underlying_diagnostics)
-      #   end
-      # end
-
       context "when the affiliate's search_engine is SearchGov" do
         let(:search_engine) { 'SearchGov' }
         let(:underlying_search_class) { OdieImageSearch }
@@ -68,29 +59,7 @@ describe ImageSearch do
   describe '#run' do
     context 'when Oasis results are blank AND we are on page 1 AND no commercial results override is set AND Bing image results are enabled' do
       let(:image_search) { described_class.new(affiliate:, query: 'lsdkjflskjflskjdf') }
-      # let(:search_engine_adapter) { double(SearchEngineAdapter, results: nil) }
       let(:odie_image_search) { instance_double(OdieImageSearch, results: nil) }
-
-      # before do
-      #   affiliate.is_bing_image_search_enabled = true
-      #   allow(affiliate).to receive(:has_no_social_image_feeds?).and_return false
-      # end
-
-      # context 'when search_engine is BingV7' do
-      #   before { affiliate.search_engine = 'BingV7' }
-
-      #   it 'should perform a Bing image search' do
-      #     expect(SearchEngineAdapter).to receive(:new).
-      #       with(BingV7ImageSearch,
-      #            hash_including(affiliate: affiliate,
-      #                           page: 1,
-      #                           per_page: 20,
-      #                           query: 'lsdkjflskjflskjdf')).
-      #       and_return(search_engine_adapter)
-      #     expect(search_engine_adapter).to receive(:run)
-      #     image_search.run
-      #   end
-      # end
 
       context 'when search_engine is SearchGov' do
         before do
