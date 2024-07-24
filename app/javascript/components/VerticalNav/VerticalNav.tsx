@@ -30,7 +30,7 @@ const StyledPrimaryNav = styled(PrimaryNav).attrs<{ styles: FontsAndColors }>((p
   }
 `;
 
-const buildLink = ({ active, label, url }: NavigationLink, key = 0) => <a href={url} key={key} className={ active && 'usa-current' || '' } aria-current={active ? "page" : undefined}>{label}</a>;
+const buildLink = ({ active, label, url }: NavigationLink, key = 0) => <a href={url} key={key} className={ active && 'usa-current' || '' } aria-current={active ? 'page' : undefined}>{label}</a>;
 
 export const isThereEnoughSpace = (itemToAddWidth: number) => {
   const container = document.getElementById('tabs-container');
