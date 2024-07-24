@@ -21,6 +21,10 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 # Specifies the `pidfile` that Puma will use.
 pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 
+bind "tcp://0.0.0.0:3000"
+
+stdout_redirect "#{shared_path}/log/puma.access.log", "#{shared_path}/log/puma.error.log", true
+
 # Allow puma to be restarted by `bin/rails restart` command.
 plugin :tmp_restart
 
