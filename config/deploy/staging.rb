@@ -19,13 +19,6 @@ set :rails_env, 'production'
 set :aws_ssm_path, ENV['AWS_SSM_PATH']
 set :bundle_without, %w{development test}.join(' ')
 
-
-# Fetch and set environment variables
-fetch(:default_env).merge!(
-  'SECRET_KEY_BASE' => '1',
-  'SKIP_CSS_BUILD' => '1'
-)
-
 # Custom SSH Options
 # ==================
 # You may pass any option but keep in mind that net/ssh understands a limited set of options, consult the Net/SSH documentation.
@@ -42,26 +35,14 @@ set :ssh_options, {
 # Keep only the last 5 releases to save disk space
 set :keep_releases, 5
 
+set :puma_rackup, -> { File.join(current_path, 'config.ru') }
 set :puma_state, "#{shared_path}/tmp/pids/puma.state"
 set :puma_pid, "#{shared_path}/tmp/pids/puma.pid"
-set :puma_access_log, "#{release_path}/log/puma.error.log"
-set :puma_error_log, "#{release_path}/log/puma.access.log"
-set :puma_preload_app, true
-set :puma_enable_socket_service, true
-
-
-namespace :deploy do
-  task :start_rails_server do
-    on roles(:app) do
-      within release_path do
-        with rails_env: fetch(:rails_env) do
-          execute :bundle, 'exec rails server -e production'
-        end
-      end
-    end
-  end
-
-  after :finishing, 'deploy:cleanup'
-  after :finishing, 'deploy:start_rails_server'
-  after :rollback, 'deploy:start_rails_server'
-end
+set :puma_access_log, "#{release_path}/log/puma.access.log"
+set :puma_error_log, "#{release_path}/log/puma.error.log"
+set :puma_threads, [0, 8]
+set :puma_workers, 0
+set :puma_worker_timeout, nil
+set :puma_init_active_record, true
+set :puma_preload_app, false
+set :puma_bind, "tcp://0.0.0.0:3000"
