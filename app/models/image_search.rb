@@ -84,7 +84,7 @@ class ImageSearch
 
   def initialize_search_instance(uses_cr)
     params = search_params(uses_cr)
-    uses_cr ? search_engine_adapter(params) : OdieImageSearch.new(params)
+    OdieImageSearch.new(params)
   end
 
   def search_params(uses_cr)
@@ -92,10 +92,6 @@ class ImageSearch
                                                       per_page: @per_page)
     params[:skip_log_serp_impressions] = true unless uses_cr
     params
-  end
-
-  def search_engine_adapter(options)
-    SearchEngineAdapter.new(engine_klass, options)
   end
 
   def engine_klass
