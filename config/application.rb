@@ -17,44 +17,10 @@ module Usasearch
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
 
-    # Configuration for the application, engines, and railties goes here.
-    #
-    # These settings can be overridden in specific environments using the files
-    # in config/environments, which are processed later.
-    #
-    # config.time_zone = "Central Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
-    #
-    # Introduced during upgrade to zeitwerk (SRCH-2503).  Ideally, we
-    # wouldn't set any autoload paths explicitly. However, we have a
-    # good deal of existing code that doesn't conform to zeitwerk's
-    # naming conventions, so here's the necessary hackery to live with
-    # that.
-    #
-    # We should try to reduce this list by changing existing code to
-    # conform to the proper naming conventions.
-    #
-    # We should definitely *not* introduce any new code that needs an
-    # entry here; conform to the proper naming convention(s) instead.
-    #
-    # See https://github.com/fxn/zeitwerk#file-structure
-    #
-    # Custom directories with classes and modules you want to be autoloadable.
-    config.autoload_paths += Dir[config.root.join('lib').to_s]
-    config.autoload_paths += Dir[config.root.join('lib', 'active_job', 'uniqueness', 'strategies').to_s]
-    config.autoload_paths += Dir[config.root.join('lib', 'callbacks').to_s]
-    config.autoload_paths += Dir[config.root.join('lib', 'extensions').to_s]
-    config.autoload_paths += Dir[config.root.join('lib', 'importers').to_s]
-    config.autoload_paths += Dir[config.root.join('lib', 'middlewares').to_s]
-    config.autoload_paths += Dir[config.root.join('lib', 'parsers').to_s]
-    config.autoload_paths += Dir[config.root.join('lib', 'renderers').to_s]
-
-    # Our legacy, Resque-based jobs that should be refactored to inherit from ActiveJob
-    config.autoload_paths += Dir[config.root.join('app', 'jobs', 'legacy').to_s]
-
-    config.autoload_paths += Dir[config.root.join('app', 'models', 'custom_index_queries').to_s]
-    config.autoload_paths += Dir[config.root.join('app', 'models', 'elastic_data').to_s]
-    config.autoload_paths += Dir[config.root.join('app', 'models', 'logstash_queries').to_s]
+    # Please, add to the `ignore` list any other `lib` subdirectories that do
+    # not contain `.rb` files, or that should not be reloaded or eager loaded.
+    # Common ones are `templates`, `generators`, or `middleware`, for example.
+    config.autoload_lib(ignore: %w(assets tasks))
 
     config.middleware.use RejectInvalidRequestUri
     config.middleware.use DowncaseRoute
@@ -76,9 +42,6 @@ module Usasearch
 
     config.i18n.enforce_available_locales = false
 
-    config.ssl_options[:redirect] =
-      { exclude: ->(request) { request.path == '/healthcheck' } }
-
     config.active_job.queue_adapter = :resque
     config.active_storage.queues.analysis = :searchgov
     config.active_storage.queues.purge = :searchgov
@@ -87,10 +50,6 @@ module Usasearch
     # Rails 5.0 had false.
     config.active_record.belongs_to_required_by_default = false
 
-    # Temporary workaround for:
-    # https://discuss.rubyonrails.org/t/cve-2022-32224-possible-rce-escalation-bug-with-serialized-columns-in-active-record/81017
-    # A permanent solution will be implemented in https://cm-jira.usa.gov/browse/SRCH-3206
-    config.active_record.use_yaml_unsafe_load = true
     config.react.camelize_props = true
   end
 end
