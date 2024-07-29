@@ -23,7 +23,14 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 
 # Use the bind directive to specify the address and port to listen on
-bind "tcp://0.0.0.0:3000"
+# bind "tcp://0.0.0.0:3000"
+
+ssl_bind '0.0.0.0', 3000, {
+  key: File.read('/etc/ssl/private/apache-selfsigned.key'),
+  cert: File.read('/etc/ssl/certs/apache-selfsigned.crt'),
+  verify_mode: 'none'
+}
+
 
 # Allow puma to be restarted by `bin/rails restart` command.
 plugin :tmp_restart
