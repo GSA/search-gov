@@ -83,6 +83,7 @@ export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHe
         {showMobileMenu && <NavMenuButton onClick={toggleMobileNav} label="Menu" />}
       </div>
       <ExtendedNav
+        aria-label="Primary navigation"
         primaryItems={primaryLinkItems}
         secondaryItems={secondaryLinkItems}
         mobileExpanded={mobileNavOpen}

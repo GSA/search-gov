@@ -135,7 +135,7 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [], relatedSi
       <GridContainer>
         <Header basic={true} className="vertical-wrapper">
           <div className="usa-nav-container" id="tabs-container">
-            <StyledPrimaryNav items={navItems} styles={styles} />
+            <StyledPrimaryNav items={navItems} styles={styles} aria-label="Vertical navigation" />
           </div>
         </Header>
       </GridContainer>
