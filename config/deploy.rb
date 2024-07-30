@@ -3,7 +3,7 @@ lock '~> 3.19.1'
 
 set :application, 'search-gov'
 set :repo_url, 'https://github.com/GSA/search-gov'
-set :branch, 'main'
+set :branch, 'staging'
 
 # Set the directory to deploy to
 set :deploy_to, ENV['DEPLOYMENT_PATH']
