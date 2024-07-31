@@ -22,7 +22,7 @@ describe DocumentFetcher do
       easy = double('easy')
       expect(Curl::Easy).to receive(:new).and_return(easy)
       expect(easy).to receive(:perform).and_raise(Curl::Err::TooManyRedirectsError)
-      expect(described_class.fetch('http://healthcare.gov')).to eq(error: 'Curl::Err::TooManyRedirectsError')
+      expect(described_class.fetch('http://healthcare.gov')[:error]).to be_a(Curl::Err::TooManyRedirectsError)
     end
 
     it 'returns empty hash when the execution expired' do

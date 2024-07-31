@@ -116,6 +116,6 @@ class BulkUrlUploader
     searchgov_url.save!
     @results.add_ok(searchgov_url)
   rescue StandardError => e
-    @results.add_error(e.message, raw_url)
+    @results.add_error(e, raw_url)
   end
 end

@@ -137,7 +137,7 @@ class RssFeedUrl < ApplicationRecord
       begin
         document.valid? ? self.language = document.language : errors.add(:url, "does not appear to be a valid RSS feed.")
       rescue Exception => e
-        errors.add(:url, "does not appear to be a valid RSS feed. Additional information: " + e.message)
+        errors.add(:url, "does not appear to be a valid RSS feed. Additional information: " + e.to_s)
       end
     else
       errors.add(:url, "is invalid")

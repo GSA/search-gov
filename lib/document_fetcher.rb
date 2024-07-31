@@ -16,8 +16,8 @@ module DocumentFetcher
     easy.perform
     { error: "Unable to fetch #{url}" }
   rescue => e
-    Rails.logger.warn "#{self.name} fetch error url: #{url} error: #{e.message}"
-    { error: e.message }
+    Rails.logger.warn "#{self.name} fetch error url: #{url} error: #{e}"
+    { error: e }
   end
 
   private

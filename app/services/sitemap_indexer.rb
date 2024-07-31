@@ -82,7 +82,7 @@ class SitemapIndexer
     sitemap_url = txt_sitemap? ? https_url(entry) : https_url(entry[:loc])
     save_sitemap_urls(sitemap_url, entry)
   rescue => e
-    error_info = log_info.merge(sitemap_entry_failed: sitemap_url, error: e.message)
+    error_info = log_info.merge(sitemap_entry_failed: sitemap_url, error: e)
     Rails.logger.error "[Searchgov SitemapIndexer] #{error_info.to_json}".red
   end
 
@@ -116,7 +116,7 @@ class SitemapIndexer
       HTTP.headers(user_agent: DEFAULT_USER_AGENT).
         timeout(connect: 20, read: 60).follow.get(sitemap_url).to_s
     rescue => e
-      error_info = log_info.merge(error: e.message)
+      error_info = log_info.merge(error: e)
       log_line = "[Searchgov SitemapIndexer] #{error_info.to_json}"
       Rails.logger.warn log_line.red
       ''

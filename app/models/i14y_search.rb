@@ -33,7 +33,7 @@ class I14ySearch < FilterableSearch
 
     I14yCollections.search(search_options)
   rescue Faraday::ClientError => e
-    Rails.logger.error "I14y search problem: #{e.message}"
+    Rails.logger.error "I14y search problem: #{e}"
     false
   end
 
