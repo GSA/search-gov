@@ -25,3 +25,7 @@ set :linked_dirs, %w{
   log
   tmp
 }
+
+set :default_env, { 
+  'SECRET_KEY_BASE' => '1',
+}
