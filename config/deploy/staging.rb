@@ -7,6 +7,10 @@
 
 server ENV['SERVER_ADDRESS'], user: ENV['SERVER_DEPLOYMENT_USER'], roles: %w{app db web}
 
+set :application, 'search-gov'
+set :repo_url, 'https://github.com/GSA/search-gov'
+set :branch, 'staging'
+
 # Configuration
 # =============
 # You can set any configuration variable like in config/deploy.rb.
@@ -16,7 +20,6 @@ server ENV['SERVER_ADDRESS'], user: ENV['SERVER_DEPLOYMENT_USER'], roles: %w{app
 # Feel free to add new variables to customize your setup.
 
 set :rails_env, 'production'
-set :aws_ssm_path, ENV['AWS_SSM_PATH']
 set :bundle_without, %w{development test}.join(' ')
 
 # Custom SSH Options
