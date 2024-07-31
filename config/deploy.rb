@@ -27,5 +27,6 @@ set :linked_dirs, %w{
 }
 
 set :default_env, { 
-  'SECRET_KEY_BASE' => '1',
+  'SECRET_KEY_BASE'          => '1',
+  'RAILS_SERVE_STATIC_FILES' => 'true'
 }
