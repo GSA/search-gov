@@ -136,11 +136,11 @@ class RssFeedUrl < ApplicationRecord
     if url =~ /(\A\z)|(\A(http|https):\/\/[a-z0-9]+([-.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/].*)?\z)/ix
       begin
         document.valid? ? self.language = document.language : errors.add(:url, "does not appear to be a valid RSS feed.")
-      rescue Exception => e
-        errors.add(:url, "does not appear to be a valid RSS feed. Additional information: " + e.to_s)
+      rescue StandardError => e
+        errors.add(:url, "does not appear to be a valid RSS feed. Additional information: #{e}")
       end
     else
-      errors.add(:url, "is invalid")
+      errors.add(:url, 'is invalid')
     end
   end
 
