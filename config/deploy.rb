@@ -6,6 +6,7 @@ set :branch,      :staging
 set :deploy_to,   ENV['DEPLOYMENT_PATH']
 set :repo_url,    'https://github.com/GSA/search-gov'
 set :format,      :pretty
+set :user,        :search
 
 # Use rbenv to manage Ruby versions
 set :rbenv_ruby, '3.1.4'

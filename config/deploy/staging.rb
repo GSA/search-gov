@@ -15,10 +15,6 @@ server ENV['SERVER_ADDRESS'], user: ENV['SERVER_DEPLOYMENT_USER'], roles: %w{app
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customize your setup.
 
-set :rails_env, 'production'
-set :aws_ssm_path, ENV['AWS_SSM_PATH']
-set :bundle_without, %w{development test}.join(' ')
-
 # Custom SSH Options
 # ==================
 # You may pass any option but keep in mind that net/ssh understands a limited set of options, consult the Net/SSH documentation.
@@ -31,9 +27,6 @@ set :ssh_options, {
   forward_agent: false,
   auth_methods: %w(publickey)
 }
-
-# Keep only the last 5 releases to save disk space
-set :keep_releases, 5
 
 set :puma_rackup, -> { File.join(current_path, 'config.ru') }
 set :puma_state, "#{shared_path}/tmp/pids/puma.state"
