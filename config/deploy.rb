@@ -12,7 +12,7 @@ set :rbenv_ruby, '3.1.4'
 set :rbenv_type, :user
 
 append :linked_dirs,  'log', 'tmp', 'node_modules'
-append :linked_files, '.env.production'
+append :linked_files, '.env'
 
 set :rails_env,   :production
 set :default_env, { SECRET_KEY_BASE: '1' }
