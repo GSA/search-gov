@@ -2,31 +2,17 @@
 lock '~> 3.19.1'
 
 set :application, 'search-gov'
-set :repo_url, 'https://github.com/GSA/search-gov'
-set :branch, 'staging'
-
-# Set the directory to deploy to
-set :deploy_to, ENV['DEPLOYMENT_PATH']
+set :branch,      :staging
+set :deploy_to,   ENV['DEPLOYMENT_PATH']
+set :repo_url,    'https://github.com/GSA/search-gov'
+set :format,      :pretty
 
 # Use rbenv to manage Ruby versions
-set :rbenv_type, :user
 set :rbenv_ruby, '3.1.4'
+set :rbenv_type, :user
 
-# Linked files and directories (these will be shared across releases)
-# set :linked_files, %w{
-#   config/database.yml
-# }
+append :linked_dirs,  'log', 'tmp', 'node_modules'
+append :linked_files, '.env'
 
-set :optional_linked_files, %w{
-  config/secrets.yml
-}
-
-set :linked_dirs, %w{
-  log
-  tmp
-}
-
-set :default_env, { 
-  'SECRET_KEY_BASE'          => '1',
-  'RAILS_SERVE_STATIC_FILES' => 'true'
-}
+set :rails_env,   :production
+set :default_env, { SECRET_KEY_BASE: '1' }

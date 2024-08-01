@@ -149,7 +149,6 @@ gem 'react-rails', '~> 3.0.0'
 # See https://github.com/shakacode/shakapacker#upgrading
 gem 'shakapacker', '~> 6.5.4'
 gem 'cssbundling-rails', '~> 1.2' # Management of css (Less) files conversion
-
 # Temporarily locking the 'mail' version until the next version of Rails is released
 # https://github.com/rails/rails/pull/46650
 gem 'mail', '~> 2.7.1'
@@ -157,6 +156,8 @@ gem 'feedjira', '~> 3.2'
 gem 'bootsnap', require: false
 
 gem 'rails_semantic_logger', '~> 4.14'
+
+gem 'dotenv', '~> 3.1'
 
 # web server
 gem 'puma', '~> 5.6'
@@ -218,3 +219,4 @@ group :test do
   gem 'vcr', '~> 6.0'
   gem 'webmock', '~> 3.8'
 end
+
