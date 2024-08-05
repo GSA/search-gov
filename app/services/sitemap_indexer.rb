@@ -72,7 +72,7 @@ class SitemapIndexer
       process_entry(entry) if entry_matches_domain?(entry)
     end
   rescue => e
-    Rails.logger.error("Error processing sitemap entries for #{sitemap_url}: #{e}")
+    Rails.logger.error("Error processing sitemap entries for #{sitemap_url}:", e)
   ensure
     searchgov_domain.reload.index_urls
     set_counter_callbacks
@@ -82,8 +82,7 @@ class SitemapIndexer
     sitemap_url = txt_sitemap? ? https_url(entry) : https_url(entry[:loc])
     save_sitemap_urls(sitemap_url, entry)
   rescue => e
-    error_info = log_info.merge(sitemap_entry_failed: sitemap_url, error: e)
-    Rails.logger.error "[Searchgov SitemapIndexer] #{error_info.to_json}".red
+    Rails.logger.error log_info, e
   end
 
   def save_sitemap_urls(sitemap_url, entry)
@@ -116,9 +115,7 @@ class SitemapIndexer
       HTTP.headers(user_agent: DEFAULT_USER_AGENT).
         timeout(connect: 20, read: 60).follow.get(sitemap_url).to_s
     rescue => e
-      error_info = log_info.merge(error: e)
-      log_line = "[Searchgov SitemapIndexer] #{error_info.to_json}"
-      Rails.logger.warn log_line.red
+      Rails.logger.warn log_info, e
       ''
     end
   end

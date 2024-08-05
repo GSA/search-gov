@@ -239,11 +239,14 @@ describe SiteAutodiscoverer do
     end
 
     context 'when something goes horribly wrong' do
-      it 'should log an error' do
-        expect(DocumentFetcher).to receive(:fetch).with('https://www.usa.gov').and_return({})
+      before do
+        allow(autodiscoverer).to receive(:extract_favicon_url).and_raise(NoMethodError)
+        allow(Rails.logger).to receive(:error)
+      end
 
-        expect(Rails.logger).to receive(:error).with(/Error when autodiscovering favicon/)
+      it 'logs an error' do
         autodiscoverer.autodiscover_favicon_url
+        expect(Rails.logger).to have_received(:error).with("Error when autodiscovering favicon for #{site.name}", instance_of(NoMethodError))
       end
     end
   end
@@ -283,12 +286,13 @@ describe SiteAutodiscoverer do
 
     context 'when something goes horribly wrong' do
       before do
-        expect(DocumentFetcher).to receive(:fetch).with(url).and_return({})
+        allow(autodiscoverer).to receive(:website_doc).and_raise(StandardError.new('Some error'))
+        allow(Rails.logger).to receive(:error)
       end
 
-      it 'should log an error' do
-        expect(Rails.logger).to receive(:error).with(/Error when autodiscovering rss feeds/)
+      it 'logs an error' do
         autodiscoverer.autodiscover_rss_feeds
+        expect(Rails.logger).to have_received(:error).with("Error when autodiscovering rss feeds for #{site.name}", instance_of(StandardError))
       end
     end
   end
@@ -347,12 +351,13 @@ describe SiteAutodiscoverer do
 
     context 'when something goes horribly wrong' do
       before do
-        expect(DocumentFetcher).to receive(:fetch).with('https://www.usa.gov').and_return({})
+        allow(autodiscoverer).to receive(:website_doc).and_raise(NoMethodError)
+        allow(Rails.logger).to receive(:error)
       end
-
-      it 'should log an error' do
-        expect(Rails.logger).to receive(:error).with(/Error when autodiscovering social media/)
+  
+      it 'logs an error' do
         autodiscoverer.autodiscover_social_media
+        expect(Rails.logger).to have_received(:error).with("Error when autodiscovering social media for #{site.name}", instance_of(NoMethodError))
       end
     end
   end
