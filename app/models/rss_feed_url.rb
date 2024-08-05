@@ -133,16 +133,18 @@ class RssFeedUrl < ApplicationRecord
   def url_must_point_to_a_feed
     return true if is_video?
 
-    if url =~ /(\A\z)|(\A(http|https):\/\/[a-z0-9]+([-.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/].*)?\z)/ix
-      begin
-        document.valid? ? self.language = document.language : errors.add(:url, "does not appear to be a valid RSS feed.")
-      rescue StandardError => e
-        errors.add(:url, "does not appear to be a valid RSS feed. Additional information: " + e.message)
-        Rails.logger.error "Not a valid RSS feed #{url}", e
-      end
+    if %r{(\A\z)|(\A(http|https)://[a-z0-9]+([-.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(/.*)?\z)}ix.match?(url)
+      valid_rss_feed?
     else
       errors.add(:url, 'is invalid')
     end
+  end
+
+  def valid_rss_feed?
+    document.valid? ? self.language = document.language : errors.add(:url, 'does not appear to be a valid RSS feed.')
+  rescue StandardError => e
+    errors.add(:url, "does not appear to be a valid RSS feed. Additional information: #{e.message}")
+    Rails.logger.error "Not a valid RSS feed #{url}", e
   end
 
   def url_is_readonly

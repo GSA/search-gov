@@ -354,7 +354,7 @@ describe SiteAutodiscoverer do
         allow(autodiscoverer).to receive(:website_doc).and_raise(NoMethodError)
         allow(Rails.logger).to receive(:error)
       end
-  
+
       it 'logs an error' do
         autodiscoverer.autodiscover_social_media
         expect(Rails.logger).to have_received(:error).with("Error when autodiscovering social media for #{site.name}", instance_of(NoMethodError))

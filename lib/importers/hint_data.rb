@@ -10,7 +10,7 @@ module HintData
       hint_json
     end
   rescue => e
-    Rails.logger.error "HintData.reload failed", e
+    Rails.logger.error 'HintData.reload failed', e
     { error: e.message }
   end
 

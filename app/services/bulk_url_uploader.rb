@@ -116,7 +116,7 @@ class BulkUrlUploader
     searchgov_url.save!
     @results.add_ok(searchgov_url)
   rescue StandardError => e
-    @results.add_error(e, raw_url)
+    @results.add_error(e.message, raw_url)
     Rails.logger.error "Failed to process url: #{raw_url}", e
   end
 end

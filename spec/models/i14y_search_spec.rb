@@ -222,7 +222,7 @@ describe I14ySearch do
 
     it 'logs the error' do
       i14y_search.run
-      expect(Rails.logger).to have_received(:error).with("I14y search problem", instance_of(Faraday::ClientError))
+      expect(Rails.logger).to have_received(:error).with('I14y search problem', instance_of(Faraday::ClientError))
     end
 
     # semi-integration spec to confirm that we send i14y search client errors to Datadog

@@ -16,6 +16,7 @@ describe RtuCount do
       before do
         allow(Es::ELK.client_reader).to receive(:count).
           and_raise(StandardError, 'something went wrong')
+        allow(Rails.logger).to receive(:error)
       end
 
       it 'returns nil' do
@@ -23,9 +24,9 @@ describe RtuCount do
       end
 
       it 'logs the error' do
-        expect(Rails.logger).to receive(:error).
-          with(/something went wrong/)
         count
+        expect(Rails.logger).to have_received(:error).
+          with('Error extracting RtuCount:', instance_of(StandardError))
       end
     end
   end

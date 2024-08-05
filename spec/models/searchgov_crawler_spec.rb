@@ -137,16 +137,19 @@ describe SearchgovCrawler do
 
       context 'when the crawler hits a snag' do
         before do
-          expect(crawler).to receive(:indexable?).with(anything()).at_least(1).times.and_raise('boom')
+          allow(crawler).to receive(:indexable?).with(anything()).and_raise(RuntimeError, 'boom')
+          allow(Rails.logger).to receive(:error)
         end
 
         it 'logs the error' do
-          expect(Rails.logger).to receive(:error).with(/Error crawling/).at_least(1).times
           crawl
+          expect(Rails.logger).to have_received(:error).with(
+            "[SearchgovCrawler] Error crawling http://www.agency.gov/:", instance_of(RuntimeError)
+          ).at_least(1).times
         end
 
-        it 'suceeds' do
-          expect{ crawl }.not_to raise_error
+        it 'succeeds' do
+          expect { crawl }.not_to raise_error
         end
       end
 

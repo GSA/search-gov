@@ -79,7 +79,7 @@ describe AffiliateIndexedDocumentFetcherJob do
 
     it 'logs the problem and moves on' do
       described_class.perform_now(affiliate.id, 1, 2**30, 'unfetched')
-      expect(Rails.logger).to have_received(:warn).with("Cannot find IndexedDocument to fetch:", instance_of(ActiveRecord::RecordNotFound))
+      expect(Rails.logger).to have_received(:warn).with('Cannot find IndexedDocument to fetch:', instance_of(ActiveRecord::RecordNotFound))
     end
 
     it 'fetches the good document' do
@@ -101,7 +101,7 @@ describe AffiliateIndexedDocumentFetcherJob do
 
     it 'logs the problem and moves on' do
       described_class.perform_now(affiliate.id, 1, 2**30, 'unfetched')
-      expect(Rails.logger).to have_received(:warn).with("Ignoring race condition in AffiliateIndexedDocumentFetcherJob:", instance_of(ActiveRecord::RecordNotFound))
+      expect(Rails.logger).to have_received(:warn).with('Ignoring race condition in AffiliateIndexedDocumentFetcherJob:', instance_of(ActiveRecord::RecordNotFound))
     end
   end
 end

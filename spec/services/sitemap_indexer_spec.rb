@@ -145,11 +145,11 @@ describe SitemapIndexer do
         allow(SearchgovUrl).to receive(:find_or_initialize_by).and_raise(StandardError)
         allow(Rails.logger).to receive(:error)
       end
-    
+
       it 'rescues the error' do
         expect { indexer.index }.not_to raise_error
       end
-    
+
       it 'logs the error' do
         indexer.index
         expect(Rails.logger).to have_received(:error).with(hash_including(:domain, :sitemap, :time), instance_of(StandardError))
@@ -217,11 +217,11 @@ describe SitemapIndexer do
         stub_request(:get, sitemap_url).to_raise(StandardError.new('kaboom'))
         allow(Rails.logger).to receive(:warn)
       end
-    
+
       it 'does not raise an error' do
         expect { indexer.index }.not_to raise_error
       end
-    
+
       it 'logs the error' do
         indexer.index
         expect(Rails.logger).to have_received(:warn).with(hash_including(:domain, :sitemap, :time), instance_of(StandardError))
@@ -251,7 +251,7 @@ describe SitemapIndexer do
 
       it 'logs the error' do
         index
-        expect(Rails.logger).to have_received(:error).with(/Error processing sitemap entries for https:\/\/agency.gov\/sitemap.xml:/, instance_of(Saxerator::ParseException))
+        expect(Rails.logger).to have_received(:error).with(%r{Error processing sitemap entries for https://agency.gov/sitemap.xml:}, instance_of(Saxerator::ParseException))
       end
 
       it 'kicks off indexing' do

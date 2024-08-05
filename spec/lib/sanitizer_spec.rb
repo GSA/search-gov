@@ -26,7 +26,7 @@ describe Sanitizer, '.sanitize' do
 
     it 'logs the error' do
       expect(Rails.logger).to receive(:error).with(
-        "Error sanitizing string foo\xF3: invalid byte sequence in UTF-8"
+        "Error sanitizing string foo\xF3:", instance_of(ArgumentError)
       )
       sanitize
     end
