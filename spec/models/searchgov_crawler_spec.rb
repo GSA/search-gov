@@ -144,7 +144,7 @@ describe SearchgovCrawler do
         it 'logs the error' do
           crawl
           expect(Rails.logger).to have_received(:error).with(
-            "[SearchgovCrawler] Error crawling http://www.agency.gov/:", instance_of(RuntimeError)
+            '[SearchgovCrawler] Error crawling http://www.agency.gov/:', instance_of(RuntimeError)
           ).at_least(1).times
         end
 
