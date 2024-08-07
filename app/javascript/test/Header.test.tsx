@@ -1,7 +1,20 @@
 import '@testing-library/jest-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
 import React from 'react';
+import { I18n } from 'i18n-js';
 import { Header } from '../components/Header';
+import { LanguageContext } from '../contexts/LanguageContext';
+
+jest.mock('i18n-js', () => jest.requireActual('i18n-js/dist/require/index'));
+
+const locale = {
+  en: {
+    searches: { menu: 'Menu' },
+    ariaLabelHeader: 'Primary navigation'
+  }
+};
+
+const i18n = new I18n(locale);
 
 describe('Header', () => {
   const page = {
@@ -26,7 +39,11 @@ describe('Header', () => {
   ];
 
   it('shows agency title and links in the basic header', () => {
-    render(<Header page={page} isBasic={true} primaryHeaderLinks={primaryHeaderLinks} secondaryHeaderLinks={secondaryHeaderLinks} />);
+    render(
+      <LanguageContext.Provider value={i18n} >
+        <Header page={page} isBasic={true} primaryHeaderLinks={primaryHeaderLinks} secondaryHeaderLinks={secondaryHeaderLinks} />
+      </LanguageContext.Provider>
+    );
     const title = screen.getByText(/Search.gov/i);
     expect(title).toBeInTheDocument();
 
@@ -55,7 +72,11 @@ describe('Header', () => {
   });
 
   it('shows agency title and links in the extended header', () => {
-    render(<Header page={page} isBasic={false} primaryHeaderLinks={primaryHeaderLinks} secondaryHeaderLinks={secondaryHeaderLinks} />);
+    render(
+      <LanguageContext.Provider value={i18n} >
+        <Header page={page} isBasic={false} primaryHeaderLinks={primaryHeaderLinks} secondaryHeaderLinks={secondaryHeaderLinks} />
+      </LanguageContext.Provider>
+    );
 
     const title = screen.getByText(/Search.gov/i);
     expect(title).toBeInTheDocument();
@@ -80,7 +101,11 @@ describe('Header', () => {
   });
 
   it('shows agency logo and alt text in the basic header', () => {
-    render(<Header page={page} isBasic={true} />);
+    render(
+      <LanguageContext.Provider value={i18n} >
+        <Header page={page} isBasic={true} />
+      </LanguageContext.Provider>
+    );
 
     const img = Array.from(document.getElementsByClassName('usa-identifier__logo')).pop() as HTMLImageElement;
 
@@ -89,7 +114,11 @@ describe('Header', () => {
   });
 
   it('shows agency logo and alt text in the basic header', () => {
-    render(<Header page={page} isBasic={false} />);
+    render(
+      <LanguageContext.Provider value={i18n} >
+        <Header page={page} isBasic={false} />
+      </LanguageContext.Provider>
+    );
 
     const img = Array.from(document.getElementsByClassName('usa-identifier__logo')).pop() as HTMLImageElement;
 
