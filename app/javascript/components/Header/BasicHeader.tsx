@@ -7,6 +7,7 @@ import { FontsAndColors } from '../SearchResultsLayout';
 import { HeaderProps } from './../props';
 import { Logo } from './Logo';
 import { StyleContext } from '../../contexts/StyleContext';
+import { LanguageContext } from '../../contexts/LanguageContext';
 import { buildLink } from './ExtendedHeader';
 
 import './BasicHeader.css';
@@ -34,6 +35,7 @@ const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: FontsAndColors; }>
 
 export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeaderLinks, secondaryHeaderLinks }: HeaderProps) => {
   const styles = useContext(StyleContext);
+  const i18n = useContext(LanguageContext);
 
   const primaryNavItems = primaryHeaderLinks ? buildLink(primaryHeaderLinks, 'usa-nav__link') : [];
   const showMobileMenu = (primaryHeaderLinks && primaryHeaderLinks.length > 0) || (secondaryHeaderLinks && secondaryHeaderLinks.length > 0);
@@ -45,7 +47,7 @@ export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeade
           <div className="usa-navbar">
             <Logo page={page} />
             {showMobileMenu && <NavMenuButton
-              label="Menu"
+              label={i18n.t("searches.menu")}
               onClick={toggleMobileNav}
               className="usa-menu-btn"
               data-testid="usa-menu-mob-btn"
@@ -53,7 +55,7 @@ export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeade
           </div>
 
           <PrimaryNav
-            aria-label="Primary navigation"
+            aria-label={i18n.t("ariaLabelHeader")}
             items={primaryNavItems}
             onToggleMobileNav={toggleMobileNav}
             mobileExpanded={mobileNavOpen}

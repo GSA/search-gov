@@ -7,6 +7,7 @@ import { FontsAndColors } from '../SearchResultsLayout';
 import { HeaderProps } from './../props';
 import { Logo } from './Logo';
 import { StyleContext } from '../../contexts/StyleContext';
+import { LanguageContext } from '../../contexts/LanguageContext';
 import { checkColorContrastAndUpdateStyle } from '../../utils';
 
 import './ExtendedHeader.css';
@@ -63,6 +64,7 @@ export const buildLink = (links: { title: string; url: string; }[], className?: 
 
 export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeaderLinks, secondaryHeaderLinks }: HeaderProps) => {
   const styles = useContext(StyleContext);
+  const i18n = useContext(LanguageContext);
 
   const secondaryLinkItems = secondaryHeaderLinks ? buildLink(secondaryHeaderLinks) : [];
   const primaryLinkItems = primaryHeaderLinks ? buildLink(primaryHeaderLinks, 'usa-nav__link') : [];
@@ -80,10 +82,10 @@ export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHe
     <StyledUswdsHeader extended={true} styles={styles}>
       <div className="usa-navbar">
         <Logo page={page} />
-        {showMobileMenu && <NavMenuButton onClick={toggleMobileNav} label="Menu" />}
+        {showMobileMenu && <NavMenuButton onClick={toggleMobileNav} label={i18n.t("searches.menu")} />}
       </div>
       <ExtendedNav
-        aria-label="Primary navigation"
+        aria-label={i18n.t("ariaLabelHeader")}
         primaryItems={primaryLinkItems}
         secondaryItems={secondaryLinkItems}
         mobileExpanded={mobileNavOpen}
