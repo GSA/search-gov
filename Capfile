@@ -30,6 +30,9 @@ install_plugin Capistrano::SCM::Git
 #
 # require "capistrano/rvm"
 require "capistrano/rbenv"
+
+set :rbenv_prefix, "env RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+
 # require "capistrano/chruby"
 require "capistrano/bundler"
 require "capistrano/rails/assets"

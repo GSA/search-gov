@@ -41,6 +41,6 @@ set :puma_preload_app, false
 set :puma_bind, "tcp://0.0.0.0:3000"
 
 
-role :resque, [ENV['RESQUE_SERVER']]
+role :resque_worker, [ENV['RESQUE_SERVER']]
 
 set :workers, { "searchgov" => 1 }
