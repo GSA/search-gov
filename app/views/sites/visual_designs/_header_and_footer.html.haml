@@ -13,6 +13,12 @@
 
 = render 'links', attribute_name: 'primary_header_links', f: f
 = render 'links', attribute_name: 'secondary_header_links', f: f
+
+%fieldset
+  = f.label :show_vote_org_link
+  = f.check_box :show_vote_org_link
+  = t('.show_vote_org_link', scope: 'admin_center')
+
 = render 'links', attribute_name: 'footer_links', f: f
 
 %fieldset

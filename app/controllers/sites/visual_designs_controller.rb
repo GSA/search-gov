@@ -45,6 +45,7 @@ class Sites::VisualDesignsController < Sites::SetupSiteController
       ],
       primary_header_links_attributes: %i[title url position id _destroy],
       secondary_header_links_attributes: %i[title url position id _destroy],
+      # :show_vote_org_link,
       footer_links_attributes: %i[title url position id _destroy],
       identifier_links_attributes: %i[title url position id _destroy]
     )
