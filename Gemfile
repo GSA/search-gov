@@ -178,10 +178,11 @@ group :development do
   # gem "rack-mini-profiler"
 
   # Deployment
-  gem 'capistrano', '~> 3.19', '>= 3.19.1'
-  gem 'capistrano-rails', '~> 1.6', '>= 1.6.3'
-  gem 'capistrano-rbenv', '~> 2.2'
-  gem 'capistrano3-puma', '~> 5.2'
+  gem "capistrano-resque", "~> 0.2.3", require: false
+  gem 'capistrano',        '~> 3.19', '>= 3.19.1', require: false
+  gem 'capistrano-rails',  '~> 1.6',  '>= 1.6.3', require: false
+  gem 'capistrano-rbenv',  '~> 2.2', require: false
+  gem 'capistrano3-puma',  '~> 5.2', require: false
 end
 
 group :development, :test do
@@ -219,4 +220,5 @@ group :test do
   gem 'vcr', '~> 6.0'
   gem 'webmock', '~> 3.8'
 end
+
 
