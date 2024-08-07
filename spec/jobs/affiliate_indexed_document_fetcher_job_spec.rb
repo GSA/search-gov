@@ -74,12 +74,12 @@ describe AffiliateIndexedDocumentFetcherJob do
       allow(IndexedDocument).to receive(:find).with(unfetched.id).and_raise(ActiveRecord::RecordNotFound)
       allow(IndexedDocument).to receive(:find).with(unfetched2.id).and_return(unfetched2)
       allow(unfetched2).to receive(:fetch)
-      allow(Rails.logger).to receive(:warn)
+      allow(Rails.logger).to receive(:error)
     end
 
     it 'logs the problem and moves on' do
       described_class.perform_now(affiliate.id, 1, 2**30, 'unfetched')
-      expect(Rails.logger).to have_received(:warn).with('Cannot find IndexedDocument to fetch:', instance_of(ActiveRecord::RecordNotFound))
+      expect(Rails.logger).to have_received(:error).with('Cannot find IndexedDocument to fetch:', instance_of(ActiveRecord::RecordNotFound))
     end
 
     it 'fetches the good document' do
@@ -96,12 +96,12 @@ describe AffiliateIndexedDocumentFetcherJob do
   context 'when the affiliate has disappeared before job runs' do
     before do
       allow(Affiliate).to receive(:find).and_raise(ActiveRecord::RecordNotFound)
-      allow(Rails.logger).to receive(:warn)
+      allow(Rails.logger).to receive(:error)
     end
 
     it 'logs the problem and moves on' do
       described_class.perform_now(affiliate.id, 1, 2**30, 'unfetched')
-      expect(Rails.logger).to have_received(:warn).with('Ignoring race condition in AffiliateIndexedDocumentFetcherJob:', instance_of(ActiveRecord::RecordNotFound))
+      expect(Rails.logger).to have_received(:error).with('Ignoring race condition in AffiliateIndexedDocumentFetcherJob:', instance_of(ActiveRecord::RecordNotFound))
     end
   end
 end
