@@ -82,10 +82,10 @@ export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHe
     <StyledUswdsHeader extended={true} styles={styles}>
       <div className="usa-navbar">
         <Logo page={page} />
-        {showMobileMenu && <NavMenuButton onClick={toggleMobileNav} label={i18n.t("searches.menu")} />}
+        {showMobileMenu && <NavMenuButton onClick={toggleMobileNav} label={i18n.t('searches.menu')} />}
       </div>
       <ExtendedNav
-        aria-label={i18n.t("ariaLabelHeader")}
+        aria-label={i18n.t('ariaLabelHeader')}
         primaryItems={primaryLinkItems}
         secondaryItems={secondaryLinkItems}
         mobileExpanded={mobileNavOpen}

@@ -47,7 +47,7 @@ export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeade
           <div className="usa-navbar">
             <Logo page={page} />
             {showMobileMenu && <NavMenuButton
-              label={i18n.t("searches.menu")}
+              label={i18n.t('searches.menu')}
               onClick={toggleMobileNav}
               className="usa-menu-btn"
               data-testid="usa-menu-mob-btn"
@@ -55,7 +55,7 @@ export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeade
           </div>
 
           <PrimaryNav
-            aria-label={i18n.t("ariaLabelHeader")}
+            aria-label={i18n.t('ariaLabelHeader')}
             items={primaryNavItems}
             onToggleMobileNav={toggleMobileNav}
             mobileExpanded={mobileNavOpen}
