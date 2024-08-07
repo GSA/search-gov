@@ -37,6 +37,7 @@ module ReactHelper
     {
       affiliate: affiliate.name,
       display_logo_only: affiliate.display_logo_only,
+      showVoteOrgLink: affiliate.show_vote_org_link,
       title: affiliate.display_name,
       logo: {
         text: logo_text(affiliate.header_logo_blob),
