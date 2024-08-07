@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import { GovBanner } from '@trussworks/react-uswds';
 import { StyleContext } from '../../contexts/StyleContext';
+import { LanguageContext } from '../../contexts/LanguageContext';
 
 import '@trussworks/react-uswds/lib/uswds.css';
 import '@trussworks/react-uswds/lib/index.css';
@@ -38,6 +39,7 @@ const StyledGovBanner = styled(GovBanner).attrs<{ styles: { bannerBackgroundColo
 
 export const Header = ({ page, isBasic, primaryHeaderLinks, secondaryHeaderLinks }: HeaderProps) => {
   const styles = useContext(StyleContext);
+  const i18n = useContext(LanguageContext);
 
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
@@ -56,9 +58,9 @@ export const Header = ({ page, isBasic, primaryHeaderLinks, secondaryHeaderLinks
   return (
     <>
       <a className="usa-skipnav" href="#main-content">
-        Skip to main content
+        {i18n.t('searches.skip_to_main_content')}
       </a>
-      <StyledGovBanner styles={styles} />
+      <StyledGovBanner language={i18n.locale === 'es' ? 'spanish' : 'english'} styles={styles} />
       <div className={`usa-overlay ${mobileNavOpen ? 'is-visible' : ''}`}></div>
 
       {isBasic ? 
