@@ -227,7 +227,7 @@ Feature: Search - redesign
     When I am on spanish-nih's search page
     
     And I fill in "searchQuery" with "hippopotomonstrosesquippedaliophobia"
-    And I press "Search"
+    And I press "Buscar"
     Then I should not see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears"
 
     Given the following Medline Topics exist:
@@ -235,7 +235,7 @@ Feature: Search - redesign
       | Hippopotomonstrosesquippedaliophobia | 67890       | es     | Hippopotomonstrosesquippedaliophobia y otros miedos irracionales |
     When I am on spanish-nih's search page
     And I fill in "searchQuery" with "hippopotomonstrosesquippedaliophobia"
-    And I press "Search"
+    And I press "Buscar"
     Then I should see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales" within the serp med topic govbox
 
   @javascript @a11y
