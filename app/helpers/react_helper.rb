@@ -17,7 +17,7 @@ module ReactHelper
       newsLabel: news_label(search),
       noResultsMessage: no_result_message(search),
       page: page_data(affiliate),
-      params: params,
+      params:,
       primaryHeaderLinks: links(affiliate, :primary_header_links),
       relatedSearches: related_searches(search),
       relatedSites: related_sites(search),
@@ -27,7 +27,7 @@ module ReactHelper
       sitelimit: sitelimit_alert(search, params),
       spellingSuggestion: spelling_text(search, search_options),
       translations: translations(affiliate.locale),
-      vertical: vertical
+      vertical:
     }
 
     react_component('SearchResultsLayout', data.compact_blank)
@@ -36,7 +36,7 @@ module ReactHelper
   def page_data(affiliate)
     {
       affiliate: affiliate.name,
-      showVoteOrgLink: affiliate.show_vote_org_link && ENV['ENABLE_VOTE_ORG_LINK'],
+      showVoteOrgLink: affiliate.show_vote_org_link && ENV.fetch('ENABLE_VOTE_ORG_LINK'),
       title: affiliate.display_name,
       logo: {
         text: logo_text(affiliate.header_logo_blob),
