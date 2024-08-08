@@ -38,19 +38,33 @@ module Es
 
   module ELK
     extend Es
+
     private
 
     def self.client_config(mode)
-      Rails.application.secrets.dig(:analytics, :elasticsearch, mode).freeze
+      config = {
+        hosts: ENV['ES_HOSTS'] ? JSON.parse(ENV['ES_HOSTS']) : Rails.application.secrets.dig(:analytics, :elasticsearch, mode, :hosts),
+        user: ENV['ES_USER'] || Rails.application.secrets.dig(:analytics, :elasticsearch, mode, :user),
+        password: ENV['ES_PASSWORD'] || Rails.application.secrets.dig(:analytics, :elasticsearch, mode, :password)
+      }.compact
+
+      config.freeze
     end
   end
 
   module CustomIndices
     extend Es
+
     private
 
     def self.client_config(mode)
-      Rails.application.secrets.dig(:custom_indices, :elasticsearch, mode).freeze
+      config = {
+        hosts: ENV['ES_HOSTS'] ? JSON.parse(ENV['ES_HOSTS']) : Rails.application.secrets.dig(:custom_indices, :elasticsearch, mode, :hosts),
+        user: ENV['ES_USER'] || Rails.application.secrets.dig(:custom_indices, :elasticsearch, mode, :user),
+        password: ENV['ES_PASSWORD'] || Rails.application.secrets.dig(:custom_indices, :elasticsearch, mode, :password)
+      }.compact
+
+      config.freeze
     end
   end
 end
