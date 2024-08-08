@@ -31,6 +31,7 @@ gem 'resque-scheduler', '~> 4.10.2'
 # Using a third-party fork as an interim measure.
 gem 'kt-paperclip', '~> 7.1.0'
 gem 'aws-sdk-s3', '~> 1.102.0'
+gem 'aws-sdk-ssm', '~> 1.173'
 gem 'googlecharts', '~> 1.6.12'
 gem 'flickraw', '~> 0.9.9'
 # SRCH-3837: We need this change: https://github.com/activescaffold/active_scaffold/pull/666
@@ -157,6 +158,9 @@ gem 'bootsnap', require: false
 
 gem 'rails_semantic_logger', '~> 4.14'
 
+# web server
+gem 'puma', '~> 5.6'
+
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
@@ -171,6 +175,12 @@ group :development do
   # gem 'web-console'
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
+
+  # Deployment
+  gem 'capistrano', '~> 3.19', '>= 3.19.1'
+  gem 'capistrano-rails', '~> 1.6', '>= 1.6.3'
+  gem 'capistrano-rbenv', '~> 2.2'
+  gem 'capistrano3-puma', '~> 5.2'
 end
 
 group :development, :test do
@@ -187,7 +197,6 @@ group :development, :test do
   # For improved console readability:
   # https://github.com/amazing-print/amazing_print
   gem 'amazing_print', '~> 1.4'
-  gem 'puma', '~> 5.6'
   gem 'debug'
 end
 

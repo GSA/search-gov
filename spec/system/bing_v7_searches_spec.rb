@@ -12,6 +12,8 @@ describe 'Bing search' do
     end
 
     it 'uses the web search key and end point' do
+      skip 'Bing is failing and Jim has approved skipping of Bing tests.'
+
       expect(WebMock).to have_requested(:get, /#{web_search_host}#{web_search_path}/).
         with(headers: { 'Ocp-Apim-Subscription-Key' => web_subscription_id })
     end
