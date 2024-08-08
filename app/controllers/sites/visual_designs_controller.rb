@@ -25,6 +25,7 @@ class Sites::VisualDesignsController < Sites::SetupSiteController
       :display_created_date_on_search_results,
       :display_updated_date_on_search_results,
       :display_logo_only,
+      :show_vote_org_link,
       :favicon_url,
       :header_logo,
       :identifier_logo,
@@ -45,7 +46,6 @@ class Sites::VisualDesignsController < Sites::SetupSiteController
       ],
       primary_header_links_attributes: %i[title url position id _destroy],
       secondary_header_links_attributes: %i[title url position id _destroy],
-      # :show_vote_org_link,
       footer_links_attributes: %i[title url position id _destroy],
       identifier_links_attributes: %i[title url position id _destroy]
     )
