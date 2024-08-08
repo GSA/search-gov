@@ -36,6 +36,7 @@ module ReactHelper
   def page_data(affiliate)
     {
       affiliate: affiliate.name,
+      display_logo_only: affiliate.display_logo_only,
       showVoteOrgLink: affiliate.show_vote_org_link && ENV.fetch('ENABLE_VOTE_ORG_LINK'),
       title: affiliate.display_name,
       logo: {
