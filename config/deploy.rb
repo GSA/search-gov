@@ -17,3 +17,5 @@ append :linked_files, '.env'
 
 set :rails_env,   'production'
 set :default_env, { SECRET_KEY_BASE: '1' }
+
+set :resque_environment_task, true

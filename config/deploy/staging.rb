@@ -40,6 +40,6 @@ set :puma_init_active_record, true
 set :puma_preload_app, false
 set :puma_bind, "tcp://0.0.0.0:3000"
 
-role :resque_worker, [ENV['RESQUE_ADDRESS']], user: ENV['SERVER_DEPLOYMENT_USER']
+role :resque_worker, JSON.parse(ENV.fetch('RESQUE_SERVER_ADDRESSES', '')), user: ENV['SERVER_DEPLOYMENT_USER']
 
-set :workers, { searchgov: 1, sitemap: 1 }
+set :workers, { searchgov: 1, sitemap: 1, primary: 1, '*' => 1 }
