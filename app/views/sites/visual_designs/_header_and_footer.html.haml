@@ -13,6 +13,13 @@
 
 = render 'links', attribute_name: 'primary_header_links', f: f
 = render 'links', attribute_name: 'secondary_header_links', f: f
+
+%fieldset
+  %legend.section-heading= t('.vote_gov_footer_message', scope: 'admin_center')
+  = f.label :show_vote_org_link, class: 'checkbox' do
+    = f.check_box :show_vote_org_link
+    = t('.show_vote_gov_message_in_footer', scope: 'admin_center')
+
 = render 'links', attribute_name: 'footer_links', f: f
 
 %fieldset

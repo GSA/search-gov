@@ -25,6 +25,7 @@ class Sites::VisualDesignsController < Sites::SetupSiteController
       :display_created_date_on_search_results,
       :display_updated_date_on_search_results,
       :display_logo_only,
+      :show_vote_org_link,
       :favicon_url,
       :header_logo,
       :identifier_logo,
