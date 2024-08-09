@@ -36,7 +36,8 @@ describe RequestDrilldown do
     context 'when something goes wrong' do
       before do
         allow(Es::ELK.client_reader).to receive(:search).
-          and_raise(StandardError, 'failure')
+          and_raise(StandardError.new('search failure'))
+        allow(Rails.logger).to receive(:error)
       end
 
       it 'returns an empty array' do
@@ -44,9 +45,9 @@ describe RequestDrilldown do
       end
 
       it 'logs the error' do
-        expect(Rails.logger).to receive(:error).
-          with('Error extracting drilldown hits: failure')
         docs
+        expect(Rails.logger).to have_received(:error).
+          with('Error extracting drilldown hits:', instance_of(StandardError))
       end
     end
   end

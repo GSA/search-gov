@@ -28,13 +28,15 @@ describe Jobs do
 
     context 'when there is some problem' do
       before do
-        stub_request(:get, %r{data.usajobs.gov}).to_raise(StandardError)
+        stub_request(:get, %r{data.usajobs.gov}).to_raise(StandardError.new('Exception from WebMock'))
+        allow(Rails.logger).to receive(:error)
       end
 
       it 'should log any errors that occur and return nil' do
-        expect(Rails.logger).to receive(:error).
-          with(/Trouble fetching jobs information/)
         expect(search).to be_nil
+        expect(Rails.logger).to have_received(:error).with(
+          'Trouble fetching jobs information:', instance_of(StandardError)
+        )
       end
     end
   end

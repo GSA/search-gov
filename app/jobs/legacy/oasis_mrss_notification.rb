@@ -12,8 +12,8 @@ class OasisMrssNotification
     return "Missing media thumbnails" if rss_doc.xpath("//item/media:thumbnail").empty?
     mrss_profile_json = Oasis.subscribe_to_mrss(rss_feed_url.url)
     rss_feed_url.update_attribute(:oasis_mrss_name, mrss_profile_json['name'])
-  rescue Exception => e
-    Rails.logger.warn("Trouble linking up MRSS feed to Oasis: #{e}")
+  rescue StandardError => e
+    Rails.logger.warn 'Trouble linking up MRSS feed to Oasis:', e
   end
 
 end

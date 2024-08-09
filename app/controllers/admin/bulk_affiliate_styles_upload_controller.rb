@@ -13,6 +13,7 @@ module Admin
         enqueue_job
         flash[:success] = success_message(@file.original_filename)
       rescue BulkAffiliateStylesUploader::Error => e
+        Rails.logger.error e
         flash[:error] = e.message
       end
 

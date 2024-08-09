@@ -16,6 +16,7 @@ class Admin::SuperfreshUrlsBulkUploadController < Admin::AdminController
           flash[:error] = "No urls uploaded; please check your file and try again."
         end
       rescue StandardError => error
+        Rails.logger.error error
         flash[:error] = error.message
       end
     else

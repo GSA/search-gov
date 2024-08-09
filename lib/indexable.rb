@@ -114,7 +114,7 @@ module Indexable
       search(query)
     end
   rescue StandardError => e
-    Rails.logger.error "Problem in #{name}#search_for(): #{e}"
+    Rails.logger.error "Problem in #{name}#search_for():", e
     "#{name}Results".constantize.new(NO_HITS)
   end
 

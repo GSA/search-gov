@@ -52,7 +52,7 @@ module Jobs
       @usajobs_api_connection.get(@endpoint, params(job_options)).body
     end
   rescue => error
-    Rails.logger.error("Trouble fetching jobs information: #{error}")
+    Rails.logger.error('Trouble fetching jobs information:', error)
     nil
   end
 
