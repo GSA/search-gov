@@ -98,7 +98,7 @@ describe Admin::AffiliatesController do
 
       describe 'Display Settings subgroup' do
         let(:display_columns) do
-          %i[ use_redesigned_results_page footer_fragment header_tagline_font_family
+          %i[ footer_fragment header_tagline_font_family
               header_tagline_font_size header_tagline_font_style no_results_pointer
               page_one_more_results_pointer navigation_dropdown_label related_sites_dropdown_label
               looking_for_government_services show_search_filter_settings ]
