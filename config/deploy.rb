@@ -22,9 +22,3 @@ set :resque_environment_task, true
 
 role :resque_worker,    JSON.parse(ENV.fetch('RESQUE_SERVER_ADDRESSES', '[]')), user: ENV['SERVER_DEPLOYMENT_USER']
 role :resque_scheduler, JSON.parse(ENV.fetch('CRON_SERVER_ADDRESSES', '[]')), user: ENV['SERVER_DEPLOYMENT_USER']
-
-namespace :deploy do
-  task :check do
-    run "touch #{ shared_path }/.env"
-  end
-end

@@ -1,5 +1,13 @@
 production:
-  SitemapMonitorJob:
-    cron: "0 9 * * *"
-  ClickMonitorJob:
-    cron: "0 7 * * 0"
+  usesearch:reports:email_monthly_reports:
+    cron: "0 0 1 * *"
+    class: "Resque::Job"
+  usasearch:reports:email_yearly_reports:
+    cron: "35 21 18 12 *"
+    class: "Resque::Job"
+  usasearch:federal_register:import_agencies
+    cron: "18 9 * * 1-5"
+    class: "Resque::Job"
+  usasearch:federal_register:import_documents:
+    cron: "18 9 * * 1-5"
+    class: "Resque::Job"
