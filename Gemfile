@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 7.0.8'
 
-# gem 'base64', '~> 0.2.0'
+gem 'base64', '~> 0.2.0'
 
 gem 'rake', '~> 13.0.6'
 gem 'rack-contrib', '~> 2.5.0'
@@ -126,7 +126,6 @@ gem 'net-http'
 # Assets-related gems
 gem 'coffee-rails', '~> 5.0.0'
 gem 'uglifier', '~> 4.2.0'
-# gem 'compass-rails', '~> 4.0.0'
 gem 'compass-blueprint', '~> 1.0.0'
 gem 'jquery-ui-rails', '~> 7.0.0'
 gem 'jquery-rails', '~> 4.4.0'
