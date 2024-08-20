@@ -1,9 +1,10 @@
+/* USWDS override from https://github.com/trussworks/react-uswds/blob/main/src/components/header/PrimaryNav/PrimaryNav.tsx to implement focus trap */
+
 import React from 'react';
 import classnames from 'classnames';
 import FocusTrap from 'focus-trap-react';
-import { Options as FocusTrapOptions } from 'focus-trap';
-
 import { NavCloseButton, NavList } from '@trussworks/react-uswds';
+import { focusTrapOptions } from '../../utils';
 
 type PrimaryNavProps = {
   items: React.ReactNode[]
@@ -12,23 +13,6 @@ type PrimaryNavProps = {
   ) => void
   mobileExpanded?: boolean
 }
-
-const focusTrapOptions: any = {
-  checkCanFocusTrap: (trapContainers: any) => {
-    const results = trapContainers.map((trapContainer: any) => {
-      return new Promise<void>((resolve) => {
-        const interval = setInterval(() => {
-          if (getComputedStyle(trapContainer).visibility !== 'hidden') {
-            resolve();
-            clearInterval(interval);
-          }
-        }, 5);
-      });
-    });
-    // Return a promise that resolves when all the trap containers are able to receive focus
-    return Promise.all(results);
-  }
-};
 
 export const UswdsPrimaryNav = ({
   items,

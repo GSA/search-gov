@@ -148,3 +148,19 @@ export const checkColorContrastAndUpdateStyle = ({ backgroundItemClass, foregrou
     }
   }
 };
+
+export const focusTrapOptions: any = {
+  checkCanFocusTrap: (trapContainers: any) => {
+    const results = trapContainers.map((trapContainer: any) => {
+      return new Promise<void>((resolve) => {
+        const interval = setInterval(() => {
+          if (getComputedStyle(trapContainer).visibility !== 'hidden') {
+            resolve();
+            clearInterval(interval);
+          }
+        }, 5);
+      });
+    });
+    return Promise.all(results);
+  }
+};

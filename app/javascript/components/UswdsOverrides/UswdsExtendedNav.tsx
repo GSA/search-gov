@@ -1,8 +1,10 @@
+/* USWDS override from https://github.com/trussworks/react-uswds/blob/main/src/components/header/ExtendedNav/ExtendedNav.tsx to implement focus trap */
+
 import React from 'react';
 import classnames from 'classnames';
 import FocusTrap from 'focus-trap-react';
-
 import { NavCloseButton, NavList } from '@trussworks/react-uswds';
+import { focusTrapOptions } from '../../utils';
 
 type ExtendedNavProps = {
   primaryItems: React.ReactNode[]
@@ -12,22 +14,6 @@ type ExtendedNavProps = {
   ) => void
   mobileExpanded?: boolean
 }
-
-const focusTrapOptions: any = {
-  checkCanFocusTrap: (trapContainers: any) => {
-    const results = trapContainers.map((trapContainer: any) => {
-      return new Promise<void>((resolve) => {
-        const interval = setInterval(() => {
-          if (getComputedStyle(trapContainer).visibility !== 'hidden') {
-            resolve();
-            clearInterval(interval);
-          }
-        }, 5);
-      });
-    });
-    return Promise.all(results);
-  }
-};
 
 export const UswdsExtendedNav = ({
   primaryItems,
