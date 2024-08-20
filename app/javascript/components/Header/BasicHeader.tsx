@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { darken } from 'polished';
-import { Header as UswdsHeader, PrimaryNav, NavMenuButton } from '@trussworks/react-uswds';
+import { Header as UswdsHeader, NavMenuButton } from '@trussworks/react-uswds';
 
 import { FontsAndColors } from '../SearchResultsLayout';
 import { HeaderProps } from './../props';

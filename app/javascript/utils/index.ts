@@ -1,5 +1,4 @@
 /* eslint-disable camelcase */
-
 export const getUriWithParam = (baseUrl: string, urlParam: string, urlParamQuery: string): string => {
   const Url = new URL(baseUrl);
   const urlParams: URLSearchParams = new URLSearchParams(Url.search);
@@ -149,18 +148,21 @@ export const checkColorContrastAndUpdateStyle = ({ backgroundItemClass, foregrou
   }
 };
 
-export const focusTrapOptions: any = {
-  checkCanFocusTrap: (trapContainers: any) => {
-    const results = trapContainers.map((trapContainer: any) => {
+export const focusTrapOptions: {
+  checkCanFocusTrap: (trapContainers: HTMLElement[]) => Promise<void[]>;
+} = {
+  checkCanFocusTrap: (trapContainers: HTMLElement[]) => {
+    const results = trapContainers.map((trapContainer: HTMLElement) => {
       return new Promise<void>((resolve) => {
         const interval = setInterval(() => {
           if (getComputedStyle(trapContainer).visibility !== 'hidden') {
             resolve();
             clearInterval(interval);
           }
-        }, 5);
+        }, 0);
       });
     });
+    // Return a promise that resolves when all the trap containers are able to receive focus
     return Promise.all(results);
   }
 };
