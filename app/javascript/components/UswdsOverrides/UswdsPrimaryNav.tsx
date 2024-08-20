@@ -1,12 +1,11 @@
-import React from 'react';
-import classnames from 'classnames';
+import React from 'react'
+import classnames from 'classnames'
 import FocusTrap from 'focus-trap-react';
 
 import { NavCloseButton, NavList } from '@trussworks/react-uswds';
 
-type ExtendedNavProps = {
-  primaryItems: React.ReactNode[]
-  secondaryItems: React.ReactNode[]
+type PrimaryNavProps = {
+  items: React.ReactNode[]
   onToggleMobileNav?: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => void
@@ -30,15 +29,14 @@ const focusTrapOptions = {
   }
 };
 
-export const UswdsExtendedNav = ({
-  primaryItems,
-  secondaryItems,
-  mobileExpanded = false,
+export const UswdsPrimaryNav = ({
+  items,
+  onToggleMobileNav,
+  mobileExpanded,
   children,
   className,
-  onToggleMobileNav,
   ...navProps
-}: ExtendedNavProps & JSX.IntrinsicElements['nav']): React.ReactElement => {
+}: PrimaryNavProps & JSX.IntrinsicElements['nav']): React.ReactElement => {
   const classes = classnames(
     'usa-nav',
     {
@@ -50,17 +48,12 @@ export const UswdsExtendedNav = ({
   return (
     <FocusTrap active={mobileExpanded} focusTrapOptions={focusTrapOptions}>
       <nav className={classes} {...navProps}>
-        <div className="usa-nav__inner">
-          <NavCloseButton onClick={onToggleMobileNav} />
-          <NavList items={primaryItems} type="primary" />
-          <div className="usa-nav__secondary">
-            <NavList items={secondaryItems} type="secondary" />
-            {children}
-          </div>
-        </div>
+        <NavCloseButton onClick={onToggleMobileNav} />
+        <NavList items={items} type="primary" />
+        {children}
       </nav>
     </FocusTrap>
   )
 }
 
-export default UswdsExtendedNav;
+export default UswdsPrimaryNav;

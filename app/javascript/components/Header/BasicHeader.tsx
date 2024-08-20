@@ -9,6 +9,7 @@ import { Logo } from './Logo';
 import { StyleContext } from '../../contexts/StyleContext';
 import { LanguageContext } from '../../contexts/LanguageContext';
 import { buildLink } from './ExtendedHeader';
+import UswdsPrimaryNav from 'components/UswdsOverrides/UswdsPrimaryNav';
 
 import './BasicHeader.css';
 
@@ -54,7 +55,7 @@ export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeade
             />}
           </div>
 
-          <PrimaryNav
+          <UswdsPrimaryNav
             aria-label={i18n.t('ariaLabelHeader')}
             items={primaryNavItems}
             onToggleMobileNav={toggleMobileNav}
@@ -71,7 +72,7 @@ export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeade
                 }
               </ul>
             }
-          </PrimaryNav>
+          </UswdsPrimaryNav>
         </div>
       </StyledUswdsHeader>
     </>
