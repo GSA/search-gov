@@ -148,11 +148,9 @@ export const checkColorContrastAndUpdateStyle = ({ backgroundItemClass, foregrou
   }
 };
 
-export const focusTrapOptions: {
-  checkCanFocusTrap: (trapContainers: HTMLElement[]) => Promise<void[]>;
-} = {
-  checkCanFocusTrap: (trapContainers: HTMLElement[]) => {
-    const results = trapContainers.map((trapContainer: HTMLElement) => {
+export const focusTrapOptions: any = {
+  checkCanFocusTrap: (trapContainers: Array<HTMLElement | SVGElement>) => {
+    const results = trapContainers.map((trapContainer: HTMLElement | SVGElement) => {
       return new Promise<void>((resolve) => {
         const interval = setInterval(() => {
           if (getComputedStyle(trapContainer).visibility !== 'hidden') {
