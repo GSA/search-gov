@@ -99,11 +99,6 @@ jobs:
           command: dockerize -wait tcp://localhost:9200 -timeout 1m
 
       - run:
-          name: Use developer secrets
-          command: |
-            mv config/secrets.yml.dev config/secrets.yml
-
-      - run:
           name: Install Code Climate Test Reporter
           command: |
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter

@@ -178,6 +178,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'dotenv', '~> 3.1', '>= 3.1.2'
   gem 'rspec-rails', '~> 5.0'
   gem 'rspec-its', '~> 1.3'
   gem 'email_spec', '~> 2.2'

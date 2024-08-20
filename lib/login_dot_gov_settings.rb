@@ -10,8 +10,8 @@ class LoginDotGovSettings
   # use of that whatsoever, so here's a constant value that we always
   # use when making such API calls.
   UNUSED_STATE_DATA  = '1234567890123456789012'
-  LOGIN_IDP_BASE_URL = ENV['LOGIN_IDP_BASE_URL'] || Rails.application.secrets.login_dot_gov[:idp_base_url]
-  LOGIN_CLIENT_ID    = ENV['LOGIN_CLIENT_ID']    || Rails.application.secrets.login_dot_gov[:client_id]
+  LOGIN_IDP_BASE_URL = ENV['LOGIN_IDP_BASE_URL']
+  LOGIN_CLIENT_ID    = ENV['LOGIN_CLIENT_ID']
   HOST               = URI(LOGIN_IDP_BASE_URL).host
 
   def self.logout_redirect_uri(login_uri)

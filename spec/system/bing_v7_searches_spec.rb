@@ -2,7 +2,7 @@
 
 describe 'Bing search' do
   describe 'web search' do
-    let(:web_subscription_id) { Rails.application.secrets.bing_v7[:web_subscription_id] }
+    let(:web_subscription_id) { ENV['BING_WEB_SUBSCRIPTION_ID'] }
     let(:web_search_host) { 'api.bing.microsoft.com' }
     let(:web_search_path) { '/v7.0/search' }
 
@@ -18,7 +18,7 @@ describe 'Bing search' do
   end
 
   describe 'image search' do
-    let(:image_subscription_id) { Rails.application.secrets.bing_v7[:image_subscription_id] }
+    let(:image_subscription_id) { ENV['BING_IMAGE_SUBSCRIPTION'] }
     let(:image_search_host) { 'api.cognitive.microsoft.com' }
     let(:image_search_path) { '/bing/v7.0/images/search' }
 

@@ -49,9 +49,10 @@ class RssFeedUrl < ApplicationRecord
   end
 
   def self.throttled_hosts
-    return JSON.parse(ENV['THROTTLED_RSS_FEED_HOSTS']) if ENV['THROTTLED_RSS_FEED_HOSTS']
-
-    Rails.application.secrets.throttled_rss_feed_hosts || []
+    hosts = ENV['THROTTLED_RSS_FEED_HOSTS']
+    return [] unless hosts
+  
+    parse_hosts(hosts)
   end
 
   def self.enqueue_destroy_all_news_items_with_404_by_hosts(hosts, is_throttled = false)
@@ -159,5 +160,12 @@ class RssFeedUrl < ApplicationRecord
 
   def blocking_destroy_news_items
     NewsItemsDestroyer.perform(id)
+  end
+
+  def self.parse_hosts(hosts)
+    JSON.parse(hosts)
+  rescue JSON::ParserError => e
+    Rails.logger.error("Failed to parse THROTTLED_RSS_FEED_HOSTS: #{e}")
+    []
   end
 end

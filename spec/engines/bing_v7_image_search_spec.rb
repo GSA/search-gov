@@ -18,7 +18,7 @@ describe BingV7ImageSearch do
     let(:options) { {} }
 
     before do
-      Rails.application.secrets[:bing_v7] = { image_subscription_id: 'image key' }
+      {image_subscription_id: ENV['BING_IMAGE_SUBSCRIPTION']} = { image_subscription_id: 'image key' }
     end
 
     it 'uses the image search key' do

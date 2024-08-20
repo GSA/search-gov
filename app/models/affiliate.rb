@@ -89,12 +89,11 @@ class Affiliate < ApplicationRecord
   AWS_IMAGE_SETTINGS = {
     styles: { large: '300x150>' },
     storage: :s3,
-    s3_credentials: ENV['AWS_ACCESS_KEY_ID'] ? S3_CREDENTIALS : Rails.application.secrets.aws_image_bucket,
     url: ':s3_alias_url',
-    s3_host_alias: ENV['AWS_S3_HOST_ALIAS'] || Rails.application.secrets.dig(:aws_image_bucket, :s3_host_alias),
+    s3_host_alias: ENV['AWS_S3_HOST_ALIAS'],
     s3_protocol: 'https',
-    s3_region: ENV['AWS_REGION'] || Rails.application.secrets.dig(:aws_image_bucket, :s3_region)
-  }.freeze
+    s3_region: ENV['AWS_REGION']
+  }.merge(s3_credentials: S3_CREDENTIALS).freeze if ENV['AWS_ACCESS_KEY_ID'].present?
 
   # The "mobile_" and "managed_" prefixes in "mobile_logo", "managed_header", etc.,
   # are remnants from the days of the "legacy" SERP. We have left the prefixes as-is

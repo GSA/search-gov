@@ -18,7 +18,10 @@ describe BingV7WebSearch do
     let(:options) { {} }
 
     before do
-      Rails.application.secrets[:bing_v7] = { web_subscription_id: 'web key' }
+      {
+        web_subscription_id: ENV['BING_WEB_SUBSCRIPTION_ID'],
+        image_subscription_id: ENV['BING_IMAGE_SUBSCRIPTION']
+      } = { web_subscription_id: 'web key' }
     end
 
     it 'uses the web search key' do
