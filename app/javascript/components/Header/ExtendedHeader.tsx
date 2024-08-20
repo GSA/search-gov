@@ -9,7 +9,7 @@ import { Logo } from './Logo';
 import { StyleContext } from '../../contexts/StyleContext';
 import { LanguageContext } from '../../contexts/LanguageContext';
 import { checkColorContrastAndUpdateStyle } from '../../utils';
-import UswdsExtendedNav from 'components/UswdsOverrides/UswdsExtendedNav';
+import { UswdsExtendedNav } from '../UswdsOverrides/UswdsExtendedNav';
 
 import './ExtendedHeader.css';
 

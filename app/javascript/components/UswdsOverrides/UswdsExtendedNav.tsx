@@ -13,10 +13,10 @@ type ExtendedNavProps = {
   mobileExpanded?: boolean
 }
 
-const focusTrapOptions = {
-  checkCanFocusTrap: (trapContainers) => {
-    const results = trapContainers.map((trapContainer) => {
-      return new Promise((resolve) => {
+const focusTrapOptions: any = {
+  checkCanFocusTrap: (trapContainers: any) => {
+    const results = trapContainers.map((trapContainer: any) => {
+      return new Promise<void>((resolve) => {
         const interval = setInterval(() => {
           if (getComputedStyle(trapContainer).visibility !== 'hidden') {
             resolve();
@@ -25,7 +25,6 @@ const focusTrapOptions = {
         }, 5);
       });
     });
-    // Return a promise that resolves when all the trap containers are able to receive focus
     return Promise.all(results);
   }
 };
@@ -61,6 +60,4 @@ export const UswdsExtendedNav = ({
       </nav>
     </FocusTrap>
   )
-}
-
-export default UswdsExtendedNav;
+};

@@ -1,6 +1,7 @@
-import React from 'react'
-import classnames from 'classnames'
+import React from 'react';
+import classnames from 'classnames';
 import FocusTrap from 'focus-trap-react';
+import { Options as FocusTrapOptions } from 'focus-trap';
 
 import { NavCloseButton, NavList } from '@trussworks/react-uswds';
 
@@ -12,10 +13,10 @@ type PrimaryNavProps = {
   mobileExpanded?: boolean
 }
 
-const focusTrapOptions = {
-  checkCanFocusTrap: (trapContainers) => {
-    const results = trapContainers.map((trapContainer) => {
-      return new Promise((resolve) => {
+const focusTrapOptions: any = {
+  checkCanFocusTrap: (trapContainers: any) => {
+    const results = trapContainers.map((trapContainer: any) => {
+      return new Promise<void>((resolve) => {
         const interval = setInterval(() => {
           if (getComputedStyle(trapContainer).visibility !== 'hidden') {
             resolve();
@@ -54,6 +55,4 @@ export const UswdsPrimaryNav = ({
       </nav>
     </FocusTrap>
   )
-}
-
-export default UswdsPrimaryNav;
+};

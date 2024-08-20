@@ -9,7 +9,7 @@ import { Logo } from './Logo';
 import { StyleContext } from '../../contexts/StyleContext';
 import { LanguageContext } from '../../contexts/LanguageContext';
 import { buildLink } from './ExtendedHeader';
-import UswdsPrimaryNav from 'components/UswdsOverrides/UswdsPrimaryNav';
+import { UswdsPrimaryNav } from '../UswdsOverrides/UswdsPrimaryNav';
 
 import './BasicHeader.css';
 
