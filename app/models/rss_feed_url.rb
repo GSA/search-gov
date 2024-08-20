@@ -49,7 +49,7 @@ class RssFeedUrl < ApplicationRecord
   end
 
   def self.throttled_hosts
-    hosts = ENV['THROTTLED_RSS_FEED_HOSTS']
+    hosts = ENV.fetch('THROTTLED_RSS_FEED_HOSTS')
     return [] unless hosts
   
     parse_hosts(hosts)

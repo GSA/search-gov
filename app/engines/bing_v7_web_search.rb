@@ -14,6 +14,6 @@ class BingV7WebSearch < BingSearch
 
   def hosted_subscription_key
     @hosted_subscription_key ||=
-      ENV['BING_WEB_SUBSCRIPTION_ID']
+      ENV.fetch('BING_WEB_SUBSCRIPTION_ID')
   end
 end

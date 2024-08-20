@@ -90,10 +90,11 @@ class Affiliate < ApplicationRecord
     styles: { large: '300x150>' },
     storage: :s3,
     url: ':s3_alias_url',
-    s3_host_alias: ENV['AWS_S3_HOST_ALIAS'],
+    s3_credentials: (ENV.fetch('AWS_ACCESS_KEY_ID').present? ? S3_CREDENTIALS : nil),
+    s3_host_alias: ENV.fetch('AWS_S3_HOST_ALIAS'),
     s3_protocol: 'https',
-    s3_region: ENV['AWS_REGION']
-  }.merge(s3_credentials: S3_CREDENTIALS).freeze if ENV['AWS_ACCESS_KEY_ID'].present?
+    s3_region: ENV.fetch('AWS_REGION')
+  }.freeze
 
   # The "mobile_" and "managed_" prefixes in "mobile_logo", "managed_header", etc.,
   # are remnants from the days of the "legacy" SERP. We have left the prefixes as-is

@@ -14,6 +14,6 @@ class BingV7ImageSearch < BingSearch
 
   def hosted_subscription_key
     @hosted_subscription_key ||=
-      ENV['BING_IMAGE_SUBSCRIPTION']
+      ENV.fetch('BING_IMAGE_SUBSCRIPTION')
   end
 end

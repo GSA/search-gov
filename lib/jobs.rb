@@ -26,11 +26,11 @@ module Jobs
   SEARCH_RADIUS = 75
 
   def self.establish_connection!
-    @endpoint  = ENV['USAJOBS_ENDPOINT']
-    host       = ENV['USAJOBS_HOST']
-    key        = ENV['USAJOBS_AUTHORIZATION_KEY']
-    user_agent = ENV['USAJOBS_USER_AGENT']
-    adapter    = ENV['USAJOBS_ADAPTER']
+    @endpoint  = ENV.fetch('USAJOBS_ENDPOINT')
+    host       = ENV.fetch('USAJOBS_HOST')
+    key        = ENV.fetch('USAJOBS_AUTHORIZATION_KEY')
+    user_agent = ENV.fetch('USAJOBS_USER_AGENT')
+    adapter    = ENV.fetch('USAJOBS_ADAPTER').to_sym
 
     @usajobs_api_connection = Faraday.new(host) do |conn|
       conn.headers['Authorization-Key'] = key

@@ -24,11 +24,11 @@ module Tika
   end
 
   def self.host
-    ENV['TIKA_HOST']
+    ENV.fetch('TIKA_HOST')
   end
 
   def self.port
-    ENV['TIKA_PORT']
+    ENV.fetch('TIKA_PORT')
   end
 
   def self.client

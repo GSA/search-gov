@@ -15,15 +15,15 @@ module I14y
   end
 
   def self.host
-    ENV['I14Y_HOST']
+    ENV.fetch('I14Y_HOST')
   end
 
   def self.admin_user
-    ENV['I14Y_ADMIN_USER']
+    ENV.fetch('I14Y_ADMIN_USER')
   end
 
   def self.admin_password
-    ENV['I14Y_ADMIN_PASSWORD']
+    ENV.fetch('I14Y_ADMIN_PASSWORD')
   end
 
   def self.cached_connection

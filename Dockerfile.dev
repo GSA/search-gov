@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 ruby:3.0.6
+FROM --platform=linux/amd64 ruby:3.3.4
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 WORKDIR /usr/src/app
 EXPOSE 3100
@@ -13,13 +13,13 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
 # Workaround for PhantomJS: https://github.com/DMOJ/online-judge/pull/1270
 ENV OPENSSL_CONF /etc/ssl/
 
-ENV NODE_VERSION 16.18.1
+ENV NODE_VERSION 16.20.2
 ENV NVM_DIR=/root/.nvm
 
 COPY package.json yarn.lock ./
 
 RUN apt install -y curl \
-  && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash \
+  && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash \
   && . "$NVM_DIR/nvm.sh" \
   && nvm install $NODE_VERSION \
   && nvm alias default $NODE_VERSION \

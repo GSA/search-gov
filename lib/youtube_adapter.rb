@@ -75,7 +75,7 @@ module YoutubeAdapter
     return @@client if @@client
 
     @@client = Google::Apis::YoutubeV3::YouTubeService.new
-    @@client.key = ENV['YOUTUBE_KEY']
+    @@client.key = ENV.fetch('YOUTUBE_KEY')
     @@client.client_options.application_name = 'DGSearch'
     @@client.client_options.open_timeout_sec = 2
     @@client.client_options.read_timeout_sec = 5

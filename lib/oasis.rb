@@ -13,7 +13,7 @@ module Oasis
   end
 
   def self.host
-    ENV['ASIS_HOST']
+    ENV.fetch('ASIS_HOST')
   end
 
   private

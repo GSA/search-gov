@@ -18,10 +18,7 @@ describe BingV7WebSearch do
     let(:options) { {} }
 
     before do
-      {
-        web_subscription_id: ENV['BING_WEB_SUBSCRIPTION_ID'],
-        image_subscription_id: ENV['BING_IMAGE_SUBSCRIPTION']
-      } = { web_subscription_id: 'web key' }
+      ENV.fetch('BING_WEB_SUBSCRIPTION_ID') = 'web key'
     end
 
     it 'uses the web search key' do

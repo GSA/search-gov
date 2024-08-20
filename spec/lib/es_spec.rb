@@ -41,8 +41,8 @@ describe Es do
       let(:host) { client.transport.hosts.first }
 
       it 'uses the values from the secrets.yml analytics[elasticsearch][reader] entry' do
-        expect(host[:host]).to eq(URI(ENV['ES_READER_HOSTS'].first).host)
-        expect(host[:user]).to eq(ENV['ES_USER'])
+        expect(host[:host]).to eq(URI(ENV.fetch('ES_READER_HOSTS').split(',').first).host)
+        expect(host[:user]).to eq(ENV.fetch('ES_USER'))
       end
 
       it_behaves_like 'an Elasticsearch client'
@@ -54,12 +54,12 @@ describe Es do
       let(:client) { client_writers.first }
 
       it 'uses the value(s) from the secrets.yml analytics[elasticsearch][writers] entry' do
-        count = ENV['ES_WRITERS_COUNT']
+        count = ENV.fetch('ES_WRITERS_COUNT')
         expect(client_writers.size).to eq(count)
         count.times do |i|
           host = client.transport.hosts[i]
-          expect(host[:host]).to eq(URI(ENV['ES_WRITERS_HOSTS'].first).host)
-          expect(host[:user]).to eq(ENV['ES_USER'])
+          expect(host[:host]).to eq(URI(ENV.fetch('ES_WRITERS_HOSTS').split(',').first).host)
+          expect(host[:user]).to eq(ENV.fetch('ES_USER'))
         end
       end
 
@@ -78,8 +78,8 @@ describe Es do
       let(:host) { client.transport.hosts.first }
 
       it 'uses the values from the secrets.yml custom_indices[elasticsearch][reader] entry' do
-        expect(host[:host]).to eq(URI(ENV['ES_READER_HOSTS'].first).host)
-        expect(host[:user]).to eq(ENV['ES_USER'])
+        expect(host[:host]).to eq(URI(ENV.fetch('ES_READER_HOSTS').split(',').first).host)
+        expect(host[:user]).to eq(ENV.fetch('ES_USER'))
       end
 
       it_behaves_like 'an Elasticsearch client'
@@ -89,12 +89,12 @@ describe Es do
       let(:client) { Es::CustomIndices.client_writers.first }
 
       it 'uses the value(s) from the secrets.yml custom_indices[elasticsearch][writers] entry' do
-        count = ENV['ES_WRITERS_COUNT']
+        count = ENV.fetch('ES_WRITERS_COUNT')
         expect(Es::CustomIndices.client_writers.size).to eq(count)
         count.times do |i|
           host = client.transport.hosts[i]
-          expect(host[:host]).to eq(URI(ENV['ES_WRITERS_HOSTS'].first).host)
-          expect(host[:user]).to eq(ENV['ES_USER'])
+          expect(host[:host]).to eq(URI(ENV.fetch('ES_WRITERS_HOSTS').split(',').first).host)
+          expect(host[:user]).to eq(ENV.fetch('ES_USER'))
         end
       end
 

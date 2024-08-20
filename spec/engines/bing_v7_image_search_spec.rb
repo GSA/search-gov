@@ -18,7 +18,7 @@ describe BingV7ImageSearch do
     let(:options) { {} }
 
     before do
-      {image_subscription_id: ENV['BING_IMAGE_SUBSCRIPTION']} = { image_subscription_id: 'image key' }
+      ENV.fetch('BING_IMAGE_SUBSCRIPTION') = 'image key'
     end
 
     it 'uses the image search key' do
