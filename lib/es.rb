@@ -41,7 +41,7 @@ module Es
     private
 
     def self.client_config(mode)
-      Rails.application.secrets.dig(:analytics, :elasticsearch, mode).freeze
+      Rails.application.config.secret_keys.dig(:analytics, :elasticsearch, mode).freeze
     end
   end
 
@@ -50,7 +50,7 @@ module Es
     private
 
     def self.client_config(mode)
-      Rails.application.secrets.dig(:custom_indices, :elasticsearch, mode).freeze
+      Rails.application.config.secret_keys.dig(:custom_indices, :elasticsearch, mode).freeze
     end
   end
 end
