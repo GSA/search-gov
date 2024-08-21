@@ -54,7 +54,7 @@ describe Es do
       let(:client) { client_writers.first }
 
       it 'uses the value(s) from the .env analytics[elasticsearch][writers] entry' do
-        count = ENV.fetch('ES_WRITERS_COUNT')
+        count = Rails.application.config.secret_keys.dig(:analytics, :elasticsearch, :writers).count
         expect(client_writers.size).to eq(count)
         count.times do |i|
           host = client.transport.hosts[i]
@@ -89,7 +89,7 @@ describe Es do
       let(:client) { Es::CustomIndices.client_writers.first }
 
       it 'uses the value(s) from the .env custom_indices[elasticsearch][writers] entry' do
-        count = ENV.fetch('ES_WRITERS_COUNT')
+        count = Rails.application.config.secret_keys.dig(:custom_indices, :elasticsearch, :writers).count
         expect(Es::CustomIndices.client_writers.size).to eq(count)
         count.times do |i|
           host = client.transport.hosts[i]

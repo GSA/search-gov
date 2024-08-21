@@ -49,9 +49,9 @@ class RssFeedUrl < ApplicationRecord
   end
 
   def self.throttled_hosts
-    hosts = ENV.fetch('THROTTLED_RSS_FEED_HOSTS')
+    hosts = ENV.fetch('THROTTLED_RSS_FEED_HOSTS').split(',')
     return [] unless hosts
-  
+
     parse_hosts(hosts)
   end
 
@@ -162,7 +162,7 @@ class RssFeedUrl < ApplicationRecord
     NewsItemsDestroyer.perform(id)
   end
 
-  def self.parse_hosts(hosts)
+  def parse_hosts(hosts)
     JSON.parse(hosts)
   rescue JSON::ParserError => e
     Rails.logger.error("Failed to parse THROTTLED_RSS_FEED_HOSTS: #{e}")
