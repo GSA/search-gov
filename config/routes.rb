@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     end
   end
 
+  post '/index_urls' => 'index_urls#start'
   get '/sayt' => 'sayt#index'
   post '/clicked' => 'clicked#create'
   get '/healthcheck' => 'health_checks#new'
