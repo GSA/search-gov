@@ -29,9 +29,9 @@ phases:
 
   pre_build:
     commands:
-      - echo "Fetching PEM key from AWS Secrets Manager..."
-      - aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' --output text > $HOME/$SEARCH_ENV_EC2_KEY
-      - chmod 400 playbooks/common/$SEARCH_ENV_EC2_KEY
+      - echo $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME && echo $SEARCH_AWS_REGION
+      - aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' --output text > $SEARCH_ENV_EC2_KEY
+      - pwd && ls -al
       - echo "test"
 
   build:
@@ -39,6 +39,8 @@ phases:
       # - echo "Running Ansible Common Playbook..............."
       # - cd playbooks/common
       # - ansible-playbook common.yaml -i $ANSIBLE_INVENTORY --private-key=$SEARCH_ENV_EC2_KEY -e branch=$SEARCH_ENV -vv
+      - pwd && ls -al
+      - echo $SERVER_DEPLOYMENT_USER
       - echo "test"
 
 artifacts:
