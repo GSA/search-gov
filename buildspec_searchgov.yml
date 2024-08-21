@@ -10,7 +10,7 @@ env:
     RESQUE_SERVER_ADDRESSES: "DEPLOY_RESQUE_SERVER_ADDRESSES"
     DEPLOYMENT_PATH: "DEPLOY_DEPLOYMENT_PATH"
     SERVER_DEPLOYMENT_USER: "DEPLOY_SERVER_DEPLOYMENT_USER"
-    # SSH_KEY_PATH: "DEPLOY_SSH_KEY_PATH"
+    # SSH_KEY_PATH: "DEPLOY_SSH_KEY_PATH" - defined below
 
     # shared deployment variables with subsequent stages - might not to export adn we will not use codedeploy
 exported-variables:
@@ -31,8 +31,6 @@ phases:
     commands:
       - echo $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME && echo $SEARCH_AWS_REGION
       - aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' --output text > $SEARCH_ENV_EC2_KEY
-      - pwd && ls -al
-      - echo "test"
 
   build:
     commands:
@@ -41,7 +39,9 @@ phases:
       - SSH_KEY_PATH="${CURRENT_LOCATION}/${SEARCH_ENV_EC2_KEY}"
       - echo $SSH_KEY_PATH
       - echo $SERVER_DEPLOYMENT_USER
-      - echo "test"
+      - echo $SERVER_ADDRESS
+      - echo $RESQUE_SERVER_ADDRESSES
+      - echo "add capistrano command below"
 
 artifacts:
   files:
