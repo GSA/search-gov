@@ -1,1 +1,46 @@
 
+version: 0.2
+env:
+  # variables:
+  #   # defined in buildspec
+  #   SEARCH_ENV: SEARCH_ENV
+  parameter-store:
+    # env_used_in_app: "env_in_param_store"
+    SERVER_ADDRESS: "DEPLOY_SERVER_ADDRESS"
+    RESQUE_SERVER_ADDRESSES: "DEPLOY_RESQUE_SERVER_ADDRESSES"
+    DEPLOYMENT_PATH: "DEPLOY_DEPLOYMENT_PATH"
+    SERVER_DEPLOYMENT_USER: "DEPLOY_SERVER_DEPLOYMENT_USER"
+    SSH_KEY_PATH: "DEPLOY_SSH_KEY_PATH"
+
+    # shared deployment variables with subsequent stages
+exported-variables:
+    - SERVER_ADDRESS
+    - RESQUE_SERVER_ADDRESSES
+    - DEPLOYMENT_PATH
+    - SERVER_DEPLOYMENT_USER
+    - SSH_KEY_PATH
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.x
+    commands:
+      - echo "test"
+
+  pre_build:
+    commands:
+      - echo "Fetching PEM key from AWS Secrets Manager..."
+      - aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' --output text > $HOME/$SEARCH_ENV_EC2_KEY
+      - chmod 400 playbooks/common/$SEARCH_ENV_EC2_KEY
+      - echo "test"
+
+  build:
+    commands:
+      # - echo "Running Ansible Common Playbook..............."
+      # - cd playbooks/common
+      # - ansible-playbook common.yaml -i $ANSIBLE_INVENTORY --private-key=$SEARCH_ENV_EC2_KEY -e branch=$SEARCH_ENV -vv
+      - echo "test"
+
+artifacts:
+  files:
+    - '**/*'
