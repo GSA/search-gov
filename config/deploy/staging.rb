@@ -6,6 +6,7 @@
 # You can define all roles on a single server, or split them:
 
 server ENV['SERVER_ADDRESS'], user: ENV['SERVER_DEPLOYMENT_USER'], roles: %w{app db web}
+role :cron, JSON.parse(ENV.fetch('CRON_SERVER_ADDRESSES', '[]')), user: ENV['SERVER_DEPLOYMENT_USER']
 
 # Configuration
 # =============
@@ -23,6 +24,7 @@ server ENV['SERVER_ADDRESS'], user: ENV['SERVER_DEPLOYMENT_USER'], roles: %w{app
 # Global options
 # --------------
 set :ssh_options, {
+  user: ENV['SERVER_DEPLOYMENT_USER'],
   keys: [ENV['SSH_KEY_PATH']],
   forward_agent: false,
   auth_methods: %w(publickey)
@@ -41,3 +43,5 @@ set :puma_preload_app, false
 set :puma_bind, "tcp://0.0.0.0:3000"
 
 set :workers, { searchgov: 1, sitemap: 1, primary: 1, '*' => 1 }
+
+set :whenever_roles, :cron

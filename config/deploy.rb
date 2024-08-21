@@ -13,7 +13,7 @@ set :rbenv_ruby, '3.1.4'
 set :rbenv_type, :user
 
 append :linked_dirs,  'log', 'tmp', 'node_modules', 'public'
-append :linked_files, '.env'
+append :linked_files, '.env', 'config/logindotgov.pem'
 
 set :rails_env,   'production'
 set :default_env, { SECRET_KEY_BASE: '1' }
@@ -21,4 +21,3 @@ set :default_env, { SECRET_KEY_BASE: '1' }
 set :resque_environment_task, true
 
 role :resque_worker,    JSON.parse(ENV.fetch('RESQUE_SERVER_ADDRESSES', '[]')), user: ENV['SERVER_DEPLOYMENT_USER']
-role :resque_scheduler, JSON.parse(ENV.fetch('CRON_SERVER_ADDRESSES', '[]')), user: ENV['SERVER_DEPLOYMENT_USER']
