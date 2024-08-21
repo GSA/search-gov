@@ -10,9 +10,9 @@ env:
     RESQUE_SERVER_ADDRESSES: "DEPLOY_RESQUE_SERVER_ADDRESSES"
     DEPLOYMENT_PATH: "DEPLOY_DEPLOYMENT_PATH"
     SERVER_DEPLOYMENT_USER: "DEPLOY_SERVER_DEPLOYMENT_USER"
-    SSH_KEY_PATH: "DEPLOY_SSH_KEY_PATH"
+    # SSH_KEY_PATH: "DEPLOY_SSH_KEY_PATH"
 
-    # shared deployment variables with subsequent stages
+    # shared deployment variables with subsequent stages - might not to export adn we will not use codedeploy
 exported-variables:
     - SERVER_ADDRESS
     - RESQUE_SERVER_ADDRESSES
@@ -36,10 +36,10 @@ phases:
 
   build:
     commands:
-      # - echo "Running Ansible Common Playbook..............."
-      # - cd playbooks/common
-      # - ansible-playbook common.yaml -i $ANSIBLE_INVENTORY --private-key=$SEARCH_ENV_EC2_KEY -e branch=$SEARCH_ENV -vv
       - pwd && ls -al
+      - CURRENT_LOCATION=$(pwd)  # would look something like this - /codebuild/output/src559980389/src - a temp dir created by codebuild
+      - SSH_KEY_PATH="${CURRENT_LOCATION}/${SEARCH_ENV_EC2_KEY}"
+      - echo $SSH_KEY_PATH
       - echo $SERVER_DEPLOYMENT_USER
       - echo "test"
 
