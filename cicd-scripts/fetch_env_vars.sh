@@ -20,8 +20,8 @@ echo "Fetched parameter keys: $PARAM_KEYS"
 
 # Loop through each parameter key
 for PARAM in $PARAM_KEYS; do
-    # Exclude parameters that start with "DEPLOY_" or match "*_EC2_PEM_KEY"
-    if [[ $PARAM != DEPLOY_* && ! $PARAM =~ .*_EC2_PEM_KEY$ ]]; then
+    # Exclude parameters that start with "DEPLOY_" or match "*_EC2_PEM_KEY" or match LOGIN_DOT_GOV_PEM
+    if [[ $PARAM != DEPLOY_* && ! $PARAM =~ .*_EC2_PEM_KEY$ && $PARAM != "LOGIN_DOT_GOV_PEM" ]]; then
         # Fetch the parameter value from SSM
         VALUE=$(aws ssm get-parameter --name "$PARAM" --with-decryption --query "Parameter.Value" --output text)
         
