@@ -12,9 +12,9 @@ PARAM_PATH=""
 
 # Fetch all parameter names in the region
 if [ -n "$PARAM_PATH" ]; then
-    PARAM_KEYS=$(aws ssm get-parameters-by-path --path "$PARAM_PATH" --recursive --query "Parameters[*].Name" --output text)
+    PARAM_KEYS=$(aws ssm get-parameters-by-path --path "$PARAM_PATH" --region us-east-2 --recursive --query "Parameters[*].Name" --output text)
 else
-    PARAM_KEYS=$(aws ssm describe-parameters --query "Parameters[*].Name" --output text)
+    PARAM_KEYS=$(aws ssm describe-parameters --region us-east-2 --query "Parameters[*].Name" --output text)
 fi
 
 # Loop through each parameter key
