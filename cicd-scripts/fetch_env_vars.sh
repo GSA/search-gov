@@ -7,7 +7,8 @@ cd /home/search/cicd_temp
 PARAM_PATH=""
 
 # Clear the .env file if it exists
-> .env
+# > .env
+
 
 # Fetch all parameter names in the region
 if [ -n "$PARAM_PATH" ]; then
