@@ -33,4 +33,5 @@ done
 # Output the result
 echo ".env file created with the following content:"
 cat .env
+cp .env /home/search
 
