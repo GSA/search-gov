@@ -43,3 +43,6 @@ cp /home/search/cicd_temp/.env /home/search/searchgov/shared
 
 aws ssm get-parameter --name "LOGIN_DOT_GOV_PEM" --region us-east-2 --with-decryption --query "Parameter.Value" --output text > /home/search/searchgov/logindotgov.pem
 
+sudo mkdir -p /home/ubuntu/deployment/
+sudo cp /home/search/searchgov/logindotgov.pem /home/ubuntu/deployment/
+
