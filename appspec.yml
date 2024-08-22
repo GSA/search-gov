@@ -12,9 +12,9 @@ hooks:
       timeout: 300
       runas: search
 
-  # AfterInstall:
-  #   - location: cicd-scripts/after_install.sh
-  #     timeout: 300
-  #     runas: root
+  AfterInstall:
+    - location: cicd-scripts/deploy_with_capistrano.sh
+      timeout: 300
+      runas: search
 
 
