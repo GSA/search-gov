@@ -25,9 +25,9 @@ for PARAM in $PARAM_KEYS; do
         # Fetch the parameter value from SSM
         VALUE=$(aws ssm get-parameter --name "$PARAM" --with-decryption --query "Parameter.Value" --output text)
         
-        # If using a path, remove the path from the parameter name (not needed here, since no path)
-        if [ -n "$PARAM_PATH" ]; then
-            PARAM=$(echo "$PARAM" | sed "s|$PARAM_PATH||g")
+        # Rename parameters that start with "SEARCH_AWS_" to "AWS_"
+        if [[ $PARAM == SEARCH_AWS_* ]]; then
+            PARAM=${PARAM/SEARCH_AWS_/AWS_}
         fi
 
         # Write the key=value pair to the .env file
@@ -40,9 +40,5 @@ echo ".env file created with the following content:"
 cat .env
 cp /home/search/cicd_temp/.env /home/search/searchgov/shared
 
-
+# Fetch a specific parameter and save it to a file
 aws ssm get-parameter --name "LOGIN_DOT_GOV_PEM" --region us-east-2 --with-decryption --query "Parameter.Value" --output text > /home/search/searchgov/logindotgov.pem
-
-# sudo mkdir -p /home/ubuntu/deployment/
-# sudo cp /home/search/searchgov/logindotgov.pem /home/ubuntu/deployment/
-
