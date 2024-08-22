@@ -39,3 +39,6 @@ done
 echo ".env file created with the following content:"
 cat .env
 cp /home/search/cicd_temp/.env /home/search/searchgov/shared
+
+
+aws secretsmanager get-secret-value --secret-id LOGIN_DOT_GOV_PEM --region us-east-2 --query 'SecretString' --output text > /home/search/searchgov/logindotgov.pem 
