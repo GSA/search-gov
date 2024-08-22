@@ -38,4 +38,4 @@ done
 # Output the result
 echo ".env file created with the following content:"
 cat .env
-cp /home/search/cicd_temp/.env /home/search
+cp /home/search/cicd_temp/.env /home/search/shared
