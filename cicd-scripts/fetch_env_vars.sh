@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 #move to a writtable location
 cd /home/search/cicd_temp 
 
@@ -9,14 +9,14 @@ PARAM_PATH=""
 # Clear the .env file if it exists
 # > .env
 
-
+echo "Starting the script"
 # Fetch all parameter names in the region
 if [ -n "$PARAM_PATH" ]; then
     PARAM_KEYS=$(aws ssm get-parameters-by-path --path "$PARAM_PATH" --region us-east-2 --recursive --query "Parameters[*].Name" --output text)
 else
     PARAM_KEYS=$(aws ssm describe-parameters --region us-east-2 --query "Parameters[*].Name" --output text)
 fi
-
+echo "Fetched parameter keys: $PARAM_KEYS"
 # Loop through each parameter key
 for PARAM in $PARAM_KEYS; do
     # Exclude parameters that start with "DEPLOY_"
