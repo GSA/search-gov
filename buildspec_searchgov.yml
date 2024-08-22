@@ -42,6 +42,11 @@ phases:
       - echo $SERVER_ADDRESS
       - echo $RESQUE_SERVER_ADDRESSES
       - echo "add capistrano command below"
+      - bundle install
+      - cap staging deploy
+      - cap staging --tasks
+      - cap staging resque:start
+      - cap staging puma:restart
 
 artifacts:
   files:
