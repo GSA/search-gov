@@ -21,6 +21,7 @@ interface IdentifierProps {
     title: string,
     url: string
   }[] | null;
+  showVoteOrgLink: boolean;
 }
 
 const StyledUswdsIdentifier = styled(UswdsIdentifier).attrs<{ styles: FontsAndColors; }>((props) => ({
@@ -42,7 +43,7 @@ const StyledUswdsIdentifier = styled(UswdsIdentifier).attrs<{ styles: FontsAndCo
 `;
 
 // eslint-disable-next-line complexity
-export const Identifier = ({ identifierContent, identifierLinks }: IdentifierProps) => {
+export const Identifier = ({ identifierContent, identifierLinks, showVoteOrgLink }: IdentifierProps) => {
   const i18n = useContext(LanguageContext);
   const styles = useContext(StyleContext);
 
@@ -67,7 +68,7 @@ export const Identifier = ({ identifierContent, identifierLinks }: IdentifierPro
 
   return (
     <StyledUswdsIdentifier styles={styles}>
-      <div id="serp-identifier-wrapper">
+      <div id="serp-identifier-wrapper" className="padding-bottom-2">
         <IdentifierMasthead aria-label="Agency identifier">
           {identifierContent?.logoUrl && (
             <IdentifierLogoWrapper
@@ -83,7 +84,7 @@ export const Identifier = ({ identifierContent, identifierLinks }: IdentifierPro
           {primaryIdentifierLinks}
         </IdentifierLinks>
         {identifierContent?.lookingForGovernmentServices && (
-          <IdentifierGov aria-label="U.S. government information and services">
+          <IdentifierGov aria-label="U.S. government information and services" className="padding-bottom-0">
             <div className="usa-identifier__usagov-description">
               {i18n.t('lookingForUsGovInfo')}
             </div>
@@ -93,15 +94,17 @@ export const Identifier = ({ identifierContent, identifierLinks }: IdentifierPro
             </Link>
           </IdentifierGov>
         )}
-        <IdentifierGov aria-label="U.S. government information and services">
-          <div className="usa-identifier__usagov-description">
-            {i18n.t('lookingForVoterRegInfo')}
-          </div>
-          &nbsp;
-          <Link href="https://www.vote.gov/" className="usa-link">
-            {i18n.t('visitVoteDotGov')}
-          </Link>
-        </IdentifierGov>
+        {showVoteOrgLink && (
+          <IdentifierGov aria-label="U.S. government information and services" className="padding-bottom-0 padding-top-0">
+            <div className="usa-identifier__usagov-description">
+              {i18n.t('lookingForVoterRegInfo')}
+            </div>
+            &nbsp;
+            <Link href="https://www.vote.gov/" className="usa-link">
+              {i18n.t('visitVoteDotGov')}
+            </Link>
+          </IdentifierGov>
+        )}
       </div>
     </StyledUswdsIdentifier>
   );
