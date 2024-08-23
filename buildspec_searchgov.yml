@@ -1,9 +1,6 @@
 
 version: 0.2
 env:
-  # variables:
-  #   # defined in buildspec
-  #   SEARCH_ENV: SEARCH_ENV
   parameter-store:
     # env_used_in_app: "env_in_param_store"
     SERVER_ADDRESS: "DEPLOY_SERVER_ADDRESS"
@@ -12,7 +9,7 @@ env:
     SERVER_DEPLOYMENT_USER: "DEPLOY_SERVER_DEPLOYMENT_USER"
     # SSH_KEY_PATH: "DEPLOY_SSH_KEY_PATH" - defined below
 
-    # shared deployment variables with subsequent stages - might not to export adn we will not use codedeploy
+    # shared deployment variables with subsequent stages - might not to export as this is the final stage
 exported-variables:
     - SERVER_ADDRESS
     - RESQUE_SERVER_ADDRESSES
@@ -33,20 +30,17 @@ phases:
 
   pre_build:
     commands:
-      - echo $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME && echo $SEARCH_AWS_REGION
       - aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' --output text > $SEARCH_ENV_EC2_KEY
   build:
     commands:
-      - pwd && ls -al
       - CURRENT_LOCATION=$(pwd)  # would look something like this - /codebuild/output/src559980389/src - a temp dir created by codebuild
       - SSH_KEY_PATH="${CURRENT_LOCATION}/${SEARCH_ENV_EC2_KEY}"
       - echo $SSH_KEY_PATH
-      - echo $SERVER_DEPLOYMENT_USER
-      - echo $SERVER_ADDRESS
-      - echo $RESQUE_SERVER_ADDRESSES
-      - echo "add capistrano command below"
+      - echo "deploying searchgov appw ith capistrano"
       - bundle install
       - cap staging puma:config puma:systemd:config puma:systemd:enable
+      - sudo chown search:search /home/search/searchgov/current/log/puma.access.log
+      - sudo chmod 664 /home/search/searchgov/current/log/puma.access.log
       - cap staging deploy
       - cap staging --tasks
       - cap staging resque:start
