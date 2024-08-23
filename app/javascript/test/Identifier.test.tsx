@@ -112,6 +112,5 @@ describe('Identifier', () => {
     );
     expect(screen.getByText('Looking for voter registration information?')).toBeInTheDocument();
     expect(screen.getByText('Visit Vote.gov')).toBeInTheDocument();
-
   });
 });
