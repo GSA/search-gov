@@ -39,8 +39,6 @@ phases:
       - echo "deploying searchgov appw ith capistrano"
       - bundle install
       - cap staging puma:config puma:systemd:config puma:systemd:enable
-      - sudo chown search:search /home/search/searchgov/current/log/puma.access.log
-      - sudo chmod 664 /home/search/searchgov/current/log/puma.access.log
       - cap staging deploy
       - cap staging --tasks
       - cap staging resque:start
