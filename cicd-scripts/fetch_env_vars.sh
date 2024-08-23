@@ -44,10 +44,15 @@ cp /home/search/cicd_temp/.env /home/search/searchgov/shared
 aws ssm get-parameter --name "LOGIN_DOT_GOV_PEM" --region us-east-2 --with-decryption --query "Parameter.Value" --output text > /home/search/searchgov/logindotgov.pem
 
 # create puma folders and files
-mkdir -p /home/search/searchgov/shared/tmp/pids/
-mkdir -p /home/search/searchgov/shared/log
-touch    /home/search/searchgov/shared/log/puma_access.log
-touch    /home/search/searchgov/shared/log/puma_error.log
+
+# Create  directories if they do not already exist
+[ ! -d /home/search/searchgov/shared/tmp/pids/ ] && mkdir -p /home/search/searchgov/shared/tmp/pids/
+[ ! -d /home/search/searchgov/shared/log ] && mkdir -p /home/search/searchgov/shared/log
+
+# Create log files if they do not already exist
+[ ! -f /home/search/searchgov/shared/log/puma_access.log ] && touch /home/search/searchgov/shared/log/puma_access.log
+[ ! -f /home/search/searchgov/shared/log/puma_error.log ] && touch /home/search/searchgov/shared/log/puma_error.log
+
 
 # Set ownership and permissions
 chown -R search:search /home/search/searchgov/
