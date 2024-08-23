@@ -93,6 +93,15 @@ export const Identifier = ({ identifierContent, identifierLinks }: IdentifierPro
             </Link>
           </IdentifierGov>
         )}
+        <IdentifierGov aria-label="U.S. government information and services">
+          <div className="usa-identifier__usagov-description">
+            {i18n.t('lookingForVoterRegInfo')}
+          </div>
+          &nbsp;
+          <Link href="https://www.vote.gov/" className="usa-link">
+            {i18n.t('visitVoteDotGov')}
+          </Link>
+        </IdentifierGov>
       </div>
     </StyledUswdsIdentifier>
   );
