@@ -3,13 +3,13 @@
 analytics = {
   elasticsearch: {
     reader: {
-      hosts: ENV['ES_READER_HOSTS'].split(','),
+      hosts: ENV['ES_HOSTS'].split(','),
       user: ENV.fetch('ES_USER', nil),
       password: ENV.fetch('ES_PASSWORD', nil)
     },
     writers: [
       {
-        hosts: ENV['ES_WRITERS_HOSTS'].split(','),
+        hosts: ENV['ES_HOSTS'].split(','),
         user: ENV.fetch('ES_USER', nil),
         password: ENV.fetch('ES_PASSWORD', nil)
       }
@@ -33,13 +33,13 @@ bing_v7 = {
 custom_indices = {
   elasticsearch: {
     reader: {
-      hosts: ENV['ES_READER_HOSTS'].split(','),
+      hosts: ENV['ES_HOSTS'].split(','),
       user: ENV.fetch('ES_USER', nil),
       password: ENV.fetch('ES_PASSWORD', nil)
     },
     writers: [
       {
-        hosts: ENV['ES_WRITERS_HOSTS'].split(','),
+        hosts: ENV['ES_HOSTS'].split(','),
         user: ENV.fetch('ES_USER', nil),
         password: ENV.fetch('ES_PASSWORD', nil)
       }

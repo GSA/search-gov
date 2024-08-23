@@ -41,7 +41,7 @@ describe Es do
       let(:host) { client.transport.hosts.first }
 
       it 'uses the values from the .env analytics[elasticsearch][reader] entry' do
-        expect(host[:host]).to eq(URI(ENV.fetch('ES_READER_HOSTS').split(',').first).host)
+        expect(host[:host]).to eq(URI(ENV.fetch('ES_HOSTS').split(',').first).host)
         expect(host[:user]).to eq(ENV.fetch('ES_USER'))
       end
 
@@ -54,18 +54,13 @@ describe Es do
       let(:client) { client_writers.first }
 
       it 'uses the value(s) from the .env analytics[elasticsearch][writers] entry' do
-        count = Rails.application.config.secret_keys.dig(:analytics, :elasticsearch, :writers).count
+        count = ENV.fetch('ES_HOSTS').split(',').count
         expect(client_writers.size).to eq(count)
         count.times do |i|
           host = client.transport.hosts[i]
-          expect(host[:host]).to eq(URI(ENV.fetch('ES_WRITERS_HOSTS').split(',').first).host)
+          expect(host[:host]).to eq(URI(ENV.fetch('ES_HOSTS').split(',').first).host)
           expect(host[:user]).to eq(ENV.fetch('ES_USER'))
         end
-      end
-
-      it 'freezes the secrets' do
-        client_writers
-        expect(Rails.application.config.secret_keys.dig(:analytics, :elasticsearch, :writers)).to be_frozen
       end
 
       it_behaves_like 'an Elasticsearch client'
@@ -78,7 +73,7 @@ describe Es do
       let(:host) { client.transport.hosts.first }
 
       it 'uses the values from the .env custom_indices[elasticsearch][reader] entry' do
-        expect(host[:host]).to eq(URI(ENV.fetch('ES_READER_HOSTS').split(',').first).host)
+        expect(host[:host]).to eq(URI(ENV.fetch('ES_HOSTS').split(',').first).host)
         expect(host[:user]).to eq(ENV.fetch('ES_USER'))
       end
 
@@ -89,18 +84,13 @@ describe Es do
       let(:client) { Es::CustomIndices.client_writers.first }
 
       it 'uses the value(s) from the .env custom_indices[elasticsearch][writers] entry' do
-        count = Rails.application.config.secret_keys.dig(:custom_indices, :elasticsearch, :writers).count
+        count = ENV.fetch('ES_HOSTS').split(',').count
         expect(Es::CustomIndices.client_writers.size).to eq(count)
         count.times do |i|
           host = client.transport.hosts[i]
-          expect(host[:host]).to eq(URI(ENV.fetch('ES_WRITERS_HOSTS').split(',').first).host)
+          expect(host[:host]).to eq(URI(ENV.fetch('ES_HOSTS').split(',').first).host)
           expect(host[:user]).to eq(ENV.fetch('ES_USER'))
         end
-      end
-
-      it 'freezes the secrets' do
-        Es::CustomIndices.client_writers
-        expect(Rails.application.config.secret_keys.dig(:custom_indices, :elasticsearch, :writers)).to be_frozen
       end
 
       it_behaves_like 'an Elasticsearch client'

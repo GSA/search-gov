@@ -49,6 +49,10 @@ VCR.configure do |config|
     end
   end
 
+  # ENV.each do |key, value|
+  #   config.filter_sensitive_data("<#{key.upcase}>") { value }
+  # end
+
   config.before_record do |i|
     i.response.body.force_encoding('UTF-8')
   end

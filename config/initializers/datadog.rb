@@ -5,7 +5,7 @@ if ENV['DATADOG_API_ENABLED']
 
   Rails.application.config.middleware.use(ExceptionNotification::Rack, datadog: { client: datadog_api_client })
 else
-  datadog_api_config = {:api_enabled=>ENV['DATADOG_ENABLED'], :api_key=>ENV['DATADOG_API_KEY'], :application_key=>ENV['DATADOG_APPLICATION_KEY']} || {}
+  datadog_api_config = {api_enabled: ENV['DATADOG_ENABLED'], api_key: ENV['DATADOG_API_KEY'], application_key: ENV['DATADOG_APPLICATION_KEY']} || {}
 
   if datadog_api_config[:api_enabled]
     datadog_api_client = Dogapi::Client.new(
