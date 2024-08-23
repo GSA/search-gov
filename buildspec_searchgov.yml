@@ -46,6 +46,7 @@ phases:
       - echo $RESQUE_SERVER_ADDRESSES
       - echo "add capistrano command below"
       - bundle install
+      - cap staging puma:config puma:systemd:config puma:systemd:enable
       - cap staging deploy
       - cap staging --tasks
       - cap staging resque:start
