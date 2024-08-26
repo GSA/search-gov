@@ -2,14 +2,12 @@
 
 class SearchgovIndexURLsJob < ApplicationJob
   queue_as :searchgov
-  delegate :upload_and_index, to: :@uploader
 
   def perform(job_id, urls)
     @time_started = Time.zone.now
     @total_count = urls.count
     @uploader = BulkUrlUploader.new(job_id, urls)
-
-    upload_and_index
+    @uploader.upload_and_index
     log_results
   end
 
@@ -28,8 +26,6 @@ class SearchgovIndexURLsJob < ApplicationJob
 
   def log_results
     results = @uploader.results
-    Rails.logger.info "SearchgovIndexURLsJob: #{results.name}"
-    Rails.logger.info "    #{results.total_count} URLs"
-    Rails.logger.info "    #{results.error_count} errors"
+    Rails.logger.info "SearchgovIndexURLsJob: #{results.name}", total_count: results.total_count, errors_count: results.error_count
   end
 end
