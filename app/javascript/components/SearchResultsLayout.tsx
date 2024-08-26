@@ -27,7 +27,7 @@ export interface PageData {
     text: string;
   };
   homepageUrl: string;
-  showVoteOrgLink: boolean;
+  showVoteOrgLink?: boolean;
 }
 
 export interface Language {
