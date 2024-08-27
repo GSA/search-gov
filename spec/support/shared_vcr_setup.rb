@@ -43,15 +43,29 @@ VCR.configure do |config|
   config.ignore_request { |request| URI(request.uri).port.between?(9200, 9299) } # Elasticsearch
   config.ignore_request { |request| URI(request.uri).port == 9998 } # Tika
 
-  Rails.application.config.secret_keys.each do |service, keys|
-    keys.each do |name, key|
-      config.filter_sensitive_data("<#{service.upcase}_#{name.upcase}>") { key }
-    end
-  end
-
-  # ENV.each do |key, value|
-  #   config.filter_sensitive_data("<#{key.upcase}>") { value }
-  # end
+  # Filter env variables used by VCR
+  config.filter_sensitive_data('<ANALYTICS_ELASTICSEARCH>') { { reader: { hosts: [ENV['ES_HOSTS']], user: ENV['ES_USER'], password: ENV['ES_PASSWORD'] }, writers: [{ hosts: [ENV['ES_HOSTS']], user: ENV['ES_USER'], password: ENV['ES_PASSWORD'] }] } }
+  config.filter_sensitive_data('<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>') { ENV['AWS_ACCESS_KEY_ID'] }
+  config.filter_sensitive_data('<AWS_IMAGE_BUCKET_SECRET_ACCESS_KEY>') { ENV['AWS_SECRET_ACCESS_KEY'] }
+  config.filter_sensitive_data('<AWS_IMAGE_BUCKET_BUCKET>') { ENV['AWS_BUCKET'] }
+  config.filter_sensitive_data('<AWS_IMAGE_BUCKET_S3_HOST_ALIAS>') { ENV['AWS_S3_HOST_ALIAS'] }
+  config.filter_sensitive_data('<AWS_IMAGE_BUCKET_S3_REGION>') { ENV['AWS_REGION'] }
+  config.filter_sensitive_data('<BING_V7_WEB_SUBSCRIPTION_ID>') { ENV['BING_WEB_SUBSCRIPTION_ID'] }
+  config.filter_sensitive_data('<BING_V7_IMAGE_SUBSCRIPTION_ID>') { ENV['BING_IMAGE_SUBSCRIPTION'] }
+  config.filter_sensitive_data('<CUSTOM_INDICES_ELASTICSEARCH>') { { reader: { hosts: [ENV['ES_HOSTS']], user: ENV['ES_USER'], password: ENV['ES_PASSWORD'] }, writers: [{ hosts: [ENV['ES_HOSTS']], user: ENV['ES_USER'], password: ENV['ES_PASSWORD'] }] } }
+  config.filter_sensitive_data('<DATADOG_API_ENABLED>') { ENV['DATADOG_ENABLED'] }
+  config.filter_sensitive_data('<DATADOG_API_KEY>') { ENV['DATADOG_API_KEY'] }
+  config.filter_sensitive_data('<DATADOG_APPLICATION_KEY>') { ENV['DATADOG_APPLICATION_KEY'] }
+  config.filter_sensitive_data('<EMAIL_ACTION_MAILER>') { { perform_deliveries: false, raise_delivery_errors: false } }
+  config.filter_sensitive_data('<FLICKR_API_KEY>') { ENV['FLICKR_API_KEY'] }
+  config.filter_sensitive_data('<FLICKR_SHARED_SECRET>') { ENV['FLICKR_SHARED_SECRET'] }
+  config.filter_sensitive_data('<JOBS_SECRETS_USER_AGENT>') { ENV['USAJOBS_USER_AGENT'] }
+  config.filter_sensitive_data('<JOBS_SECRETS_AUTHORIZATION_KEY>') { ENV['USAJOBS_AUTHORIZATION_KEY'] }
+  config.filter_sensitive_data('<LOGIN_DOT_GOV_CLIENT_ID>') { ENV['LOGIN_CLIENT_ID'] }
+  config.filter_sensitive_data('<LOGIN_DOT_GOV_IDP_BASE_URL>') { ENV['LOGIN_IDP_BASE_URL'] }
+  config.filter_sensitive_data('<LOGIN_DOT_GOV_HOST>') { ENV['LOGIN_HOST'] }
+  config.filter_sensitive_data('<NEWRELIC_SECRETS_LICENSE_KEY>') { ENV['NEWRELIC_LICENSE_KEY'] }
+  config.filter_sensitive_data('<YOUTUBE_KEY>') { ENV['YOUTUBE_KEY'] }
 
   config.before_record do |i|
     i.response.body.force_encoding('UTF-8')
