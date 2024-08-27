@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=pdf%20(site:nps.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=<DATADOG_API_ENABLED>&traffictype=test
+    uri: https://api.bing.microsoft.com/v7.<XPC_SERVICE_NAME>/search?count=2<XPC_SERVICE_NAME>&mkt=en-US&offset=<XPC_SERVICE_NAME>&q=pdf%2<XPC_SERVICE_NAME>(site:nps.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=<DATADOG_API_ENABLED>&traffictype=<RAILS_ENV>
     body:
       encoding: US-ASCII
       string: ''
@@ -12,241 +12,273 @@ http_interactions:
       Ocp-Apim-Subscription-Key:
       - "<BING_V7_WEB_SUBSCRIPTION_ID>"
       Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      - gzip;q=<SHLVL>.<XPC_SERVICE_NAME>,deflate;q=<XPC_SERVICE_NAME>.6,identity;q=<XPC_SERVICE_NAME>.3
       Accept:
-      - "*/*"
+      - "<QUEUE>/<QUEUE>"
       Connection:
       - keep-alive
       Keep-Alive:
-      - '30'
+      - 3<XPC_SERVICE_NAME>
   response:
     status:
       code: 200
       message: OK
     headers:
       Cache-Control:
-      - private, max-age=0
+      - private, max-age=<XPC_SERVICE_NAME>
       Transfer-Encoding:
       - chunked
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 08 Jan 2024 22:35:13 GMT
+      - Mon, <XPC_SERVICE_NAME>8 Jan 2<XPC_SERVICE_NAME>24 22:35:<SHLVL>3 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       X-Eventid:
-      - 659c78dd2e004a508d43739569dbfda4
+      - 659c78dd2e<XPC_SERVICE_NAME><XPC_SERVICE_NAME>4a5<XPC_SERVICE_NAME>8d43739569dbfda4
       Useragentreductionoptout:
-      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      - A7kgTC5xdZ2WIVGZEfb<SHLVL>hUoNuvjzOZX3VIV/BA6C<SHLVL>8kQOOF5<XPC_SERVICE_NAME>Q<XPC_SERVICE_NAME>D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo<XPC_SERVICE_NAME>NDMiLCJmZWF<XPC_SERVICE_NAME>dXJlIjoiU2VuZEZ<SHLVL>bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb2<SHLVL>haW4iOnRydWUsImlzVGhpcmRQYXJ<XPC_SERVICE_NAME>eSI6dHJ<SHLVL>ZX<XPC_SERVICE_NAME>=
       Bingapis-Traceid:
-      - 659c78dd2e004a508d43739569dbfda4
+      - 659c78dd2e<XPC_SERVICE_NAME><XPC_SERVICE_NAME>4a5<XPC_SERVICE_NAME>8d43739569dbfda4
       Bingapis-Sessionid:
-      - 0B5ECF9463F64F04A63998062D37F339
+      - "<XPC_SERVICE_NAME>B5ECF9463F64F<XPC_SERVICE_NAME>4A63998<XPC_SERVICE_NAME>62D37F339"
       X-Msedge-Clientid:
-      - 32235CC42D8C6906145548C42C2668FF
+      - 32235CC42D8C69<XPC_SERVICE_NAME>6<SHLVL>45548C42C2668FF
       X-Msapi-Userstate:
-      - b0fa
+      - b<XPC_SERVICE_NAME>fa
       Bingapis-Market:
       - en-US
-      X-Search-Responseinfo:
-      - InternalResponseTime=264,MSDatacenter=BNZE01
       X-Cache:
       - CONFIG_NOCACHE
       Accept-Ch:
       - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
       X-Msedge-Ref:
-      - 'Ref A: AD62978F474E429181DC48011FD07DFA Ref B: BN3EDGE0917 Ref C: 2024-01-08T22:36:13Z'
+      - 'Ref A: AD62978F474E429<SHLVL>8<SHLVL>DC48<XPC_SERVICE_NAME><SHLVL><SHLVL>FD<XPC_SERVICE_NAME>7DFA
+        Ref B: BN3EDGE<XPC_SERVICE_NAME>9<SHLVL>7 Ref C: 2<XPC_SERVICE_NAME>24-<XPC_SERVICE_NAME><SHLVL>-<XPC_SERVICE_NAME>8T22:36:<SHLVL>3Z'
       Apim-Request-Id:
-      - 9d7c1bff-66ce-43bb-b43a-be00c7044033
+      - 9d7c<SHLVL>bff-66ce-43bb-b43a-be<XPC_SERVICE_NAME><XPC_SERVICE_NAME>c7<XPC_SERVICE_NAME>44<XPC_SERVICE_NAME>33
       Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
+      - max-age=3<SHLVL>536<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>;
+        includeSubDomains; preload
       X-Content-Type-Options:
       - nosniff
       Csp-Billing-Usage:
-      - CognitiveServices.BingSearchV7.Transaction=1
+      - CognitiveServices.BingSearchV7.Transaction=<SHLVL>
       Date:
-      - Mon, 08 Jan 2024 22:36:13 GMT
+      - Mon, <XPC_SERVICE_NAME>8 Jan 2<XPC_SERVICE_NAME>24 22:36:<SHLVL>3 GMT
+      X-Search-Response<NEWRELIC_LOG_LEVEL>:
+      - InternalResponseTime=264,MSDatacenter=BNZE<XPC_SERVICE_NAME><SHLVL>
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "pdf
         (site:nps.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=pdf+(site%3anps.gov)",
-        "totalEstimatedMatches": 1290000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "totalEstimatedMatches": <SHLVL>29<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>,
+        "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.<XPC_SERVICE_NAME>",
         "name": "Maps - Yellowstone National Park (U.S. National Park Service)",
         "url": "https:\/\/www.nps.gov\/yell\/planyourvisit\/maps.htm", "datePublished":
-        "2023-03-31T00:00:00.0000000", "datePublishedDisplayText": "Mar 31, 2023",
-        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nps.gov\/yell\/planyourvisit\/maps.htm",
+        "2<XPC_SERVICE_NAME>23-<XPC_SERVICE_NAME>3-3<SHLVL>T<XPC_SERVICE_NAME><XPC_SERVICE_NAME>:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>.<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>",
+        "datePublishedDisplayText": "Mar 3<SHLVL>, 2<XPC_SERVICE_NAME>23", "isFamilyFriendly":
+        <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nps.gov\/yell\/planyourvisit\/maps.htm",
         "snippet": "We also have a printable full map (848 KB PDF) of Yellowstone
-        and Grand Teton parks. This double-sided map is 11\" X 17\" so you''ll need
-        to set your printer accordingly. To download official maps in PDF, Illustrator,
-        or Photoshop file formats, visit the National Park Service cartography site..
-        The free, official NPS app includes an interactive park map. The map is easy
-        to use while outdoors and ...", "dateLastCrawled": "2024-01-05T09:40:00.0000000Z",
-        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=pdf+(site%3anps.gov)&d=5005853448551199&mkt=en-US&setlang=en-US&w=RYrQgfUiy7bkZlnY5TBpiaTCfLqWGcrR",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "Resource Library - U.S. National Park Service", "url": "https:\/\/www.nps.gov\/orgs\/1548\/resource-library.htm",
-        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nps.gov\/orgs\/1548\/resource-library.htm",
+        and Grand Teton parks. This double-sided map is <SHLVL><SHLVL>\" X <SHLVL>7\"
+        so you''ll need to set your printer accordingly. To download official maps
+        in PDF, Illustrator, or Photoshop file formats, visit the National Park
+        Service cartography site.. The free, official NPS app includes an interactive
+        park map. The map is easy to use while outdoors and ...", "dateLastCrawled":
+        "2<XPC_SERVICE_NAME>24-<XPC_SERVICE_NAME><SHLVL>-<XPC_SERVICE_NAME>5T<XPC_SERVICE_NAME>9:4<XPC_SERVICE_NAME>:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>.<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=pdf+(site%3anps.gov)&d=5<XPC_SERVICE_NAME><XPC_SERVICE_NAME>585344855<SHLVL><SHLVL>99&mkt=en-US&setlang=en-US&w=RYrQgfUiy7bkZlnY5TBpiaTCfLqWGcrR",
+        "language": "en", "isNavigational": <ENABLE_VOTE_ORG_LINK>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.<SHLVL>",
+        "name": "Resource Library - U.S. National Park Service", "url": "https:\/\/www.nps.gov\/orgs\/<SHLVL>548\/resource-library.htm",
+        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nps.gov\/orgs\/<SHLVL>548\/resource-library.htm",
         "snippet": "Managing Congestion: A Toolkit for Parks (pdf | 5.7 mB) — December
-        2020 Traffic congestion and visitor use patterns are evolving at national
-        parks. Once traffic congestion is persistent, a park enters a new management
-        era, requiring a new, holistic approach. A balance of operational changes,
-        adjusting capacity (or using existing capacity more ...", "dateLastCrawled":
-        "2023-12-24T03:34:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=pdf+(site%3anps.gov)&d=4711029558870076&mkt=en-US&setlang=en-US&w=HgG46wVdOPVeVAUxxR0_YF9xMY5HU3fs",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        2<XPC_SERVICE_NAME>2<XPC_SERVICE_NAME> Traffic congestion and visitor use
+        patterns are evolving at national parks. Once traffic congestion is persistent,
+        a park enters a new management era, requiring a new, holistic approach. A
+        balance of operational changes, adjusting capacity (or using existing capacity
+        more ...", "dateLastCrawled": "2<XPC_SERVICE_NAME>23-<SHLVL>2-24T<XPC_SERVICE_NAME>3:34:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>.<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=pdf+(site%3anps.gov)&d=47<SHLVL><SHLVL><XPC_SERVICE_NAME>2955887<XPC_SERVICE_NAME><XPC_SERVICE_NAME>76&mkt=en-US&setlang=en-US&w=HgG46wVdOPVeVAUxxR<XPC_SERVICE_NAME>_YF9xMY5HU3fs",
+        "language": "en", "isNavigational": <ENABLE_VOTE_ORG_LINK>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
         "name": "Maps - U.S. National Park Service", "url": "https:\/\/www.nps.gov\/planyourvisit\/maps.htm",
-        "datePublished": "2023-11-15T00:00:00.0000000", "datePublishedDisplayText":
-        "Nov 15, 2023", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nps.gov\/planyourvisit\/maps.htm",
+        "datePublished": "2<XPC_SERVICE_NAME>23-<SHLVL><SHLVL>-<SHLVL>5T<XPC_SERVICE_NAME><XPC_SERVICE_NAME>:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>.<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>",
+        "datePublishedDisplayText": "Nov <SHLVL>5, 2<XPC_SERVICE_NAME>23", "isFamilyFriendly":
+        <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nps.gov\/planyourvisit\/maps.htm",
         "snippet": "Web mapping tools. Thematic map resources such as land status,
         vegetation mapping, sound mapping, geodiversity atlas, and more. Maps will
         help you plan your trip to and in national parks. NPS\/Hannah Schwalbe. Last
-        updated: November 15, 2023.", "dateLastCrawled": "2024-01-07T14:14:00.0000000Z",
-        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=pdf+(site%3anps.gov)&d=5010513487538345&mkt=en-US&setlang=en-US&w=7Bo0N8LPyhPmhJ-pnphFeYFtvpkXbAg8",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        updated: November <SHLVL>5, 2<XPC_SERVICE_NAME>23.", "dateLastCrawled": "2<XPC_SERVICE_NAME>24-<XPC_SERVICE_NAME><SHLVL>-<XPC_SERVICE_NAME>7T<SHLVL>4:<SHLVL>4:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>.<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=pdf+(site%3anps.gov)&d=5<XPC_SERVICE_NAME><SHLVL><XPC_SERVICE_NAME>5<SHLVL>3487538345&mkt=en-US&setlang=en-US&w=7Bo<XPC_SERVICE_NAME>N8LPyhPmhJ-pnphFeYFtvpkXbAg8",
+        "language": "en", "isNavigational": <ENABLE_VOTE_ORG_LINK>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
         "name": "Paradise Winter Recreation - U.S. National Park Service", "url":
-        "https:\/\/www.nps.gov\/mora\/planyourvisit\/upload\/23-24-Paradise-Winter-Recreation-wUpdatedMap-1-4-2024_508.pdf",
-        "datePublished": "2024-01-04T00:00:00.0000000", "datePublishedFreshnessText":
-        "4 days ago", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nps.gov\/...\/23-24-Paradise-Winter-Recreation-wUpdatedMap-1-4-2024_508.pdf",
-        "snippet": "7000 6500 6500 6000 6000 5500 5500 5000 5000 5500 4500 5000 5000
-        5000 4500 5500 6500 o Longmire 8 mi. Paradise Water Supply No Camping. No
-        Camping. National Park Service", "dateLastCrawled": "2024-01-05T08:59:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "https:\/\/www.nps.gov\/mora\/planyourvisit\/upload\/23-24-Paradise-Winter-Recreation-wUpdatedMap-<SHLVL>-4-2<XPC_SERVICE_NAME>24_5<XPC_SERVICE_NAME>8.pdf",
+        "datePublished": "2<XPC_SERVICE_NAME>24-<XPC_SERVICE_NAME><SHLVL>-<XPC_SERVICE_NAME>4T<XPC_SERVICE_NAME><XPC_SERVICE_NAME>:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>.<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>",
+        "datePublishedFreshnessText": "4 days ago", "isFamilyFriendly": <DATADOG_API_ENABLED>,
+        "displayUrl": "https:\/\/www.nps.gov\/...\/23-24-Paradise-Winter-Recreation-wUpdatedMap-<SHLVL>-4-2<XPC_SERVICE_NAME>24_5<XPC_SERVICE_NAME>8.pdf",
+        "snippet": "7<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME> 65<XPC_SERVICE_NAME><XPC_SERVICE_NAME>
+        65<XPC_SERVICE_NAME><XPC_SERVICE_NAME> 6<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>
+        6<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME> 55<XPC_SERVICE_NAME><XPC_SERVICE_NAME>
+        55<XPC_SERVICE_NAME><XPC_SERVICE_NAME> 5<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>
+        5<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME> 55<XPC_SERVICE_NAME><XPC_SERVICE_NAME>
+        45<XPC_SERVICE_NAME><XPC_SERVICE_NAME> 5<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>
+        5<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME> 5<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>
+        45<XPC_SERVICE_NAME><XPC_SERVICE_NAME> 55<XPC_SERVICE_NAME><XPC_SERVICE_NAME>
+        65<XPC_SERVICE_NAME><XPC_SERVICE_NAME> o Longmire 8 mi. Paradise Water Supply
+        No Camping. No Camping. National Park Service", "dateLastCrawled": "2<XPC_SERVICE_NAME>24-<XPC_SERVICE_NAME><SHLVL>-<XPC_SERVICE_NAME>5T<XPC_SERVICE_NAME>8:59:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>.<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>Z",
+        "language": "en", "isNavigational": <ENABLE_VOTE_ORG_LINK>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
         "name": "Brochures - U.S. National Park Service", "url": "https:\/\/www.nps.gov\/yell\/planyourvisit\/brochures.htm",
-        "datePublished": "2023-11-07T00:00:00.0000000", "datePublishedDisplayText":
-        "Nov 7, 2023", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nps.gov\/yell\/planyourvisit\/brochures.htm",
+        "datePublished": "2<XPC_SERVICE_NAME>23-<SHLVL><SHLVL>-<XPC_SERVICE_NAME>7T<XPC_SERVICE_NAME><XPC_SERVICE_NAME>:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>.<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>",
+        "datePublishedDisplayText": "Nov 7, 2<XPC_SERVICE_NAME>23", "isFamilyFriendly":
+        <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nps.gov\/yell\/planyourvisit\/brochures.htm",
         "snippet": "Brochures. Plan your visit using the publications below to familiarize
         yourself with Yellowstone before you even get here. Below you''ll find a list
         of publications that will help you plan a safe, enjoyable Yellowstone adventure.
         Most of these publications are in PDF format and can be viewed or printed
-        using Adobe Acrobat and other PDF readers.", "dateLastCrawled": "2024-01-06T01:00:00.0000000Z",
-        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=pdf+(site%3anps.gov)&d=4663084998815751&mkt=en-US&setlang=en-US&w=GoZUHXxWmxpIhujm9CmeYRRcUBCqLteT",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        using Adobe Acrobat and other PDF readers.", "dateLastCrawled": "2<XPC_SERVICE_NAME>24-<XPC_SERVICE_NAME><SHLVL>-<XPC_SERVICE_NAME>6T<XPC_SERVICE_NAME><SHLVL>:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>.<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=pdf+(site%3anps.gov)&d=4663<XPC_SERVICE_NAME>849988<SHLVL>575<SHLVL>&mkt=en-US&setlang=en-US&w=GoZUHXxWmxpIhujm9CmeYRRcUBCqLteT",
+        "language": "en", "isNavigational": <ENABLE_VOTE_ORG_LINK>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
         "name": "Find a National Park Service Map", "url": "https:\/\/www.nps.gov\/carto\/app\/#!\/parks",
-        "datePublished": "2023-12-05T00:00:00.0000000", "datePublishedDisplayText":
-        "Dec 5, 2023", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nps.gov\/carto\/app\/#!\/parks",
+        "datePublished": "2<XPC_SERVICE_NAME>23-<SHLVL>2-<XPC_SERVICE_NAME>5T<XPC_SERVICE_NAME><XPC_SERVICE_NAME>:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>.<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>",
+        "datePublishedDisplayText": "Dec 5, 2<XPC_SERVICE_NAME>23", "isFamilyFriendly":
+        <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nps.gov\/carto\/app\/#!\/parks",
         "snippet": "Find a National Park Service Map. Find a National Park Service
-        map to plan your next park visit. Search and download our catalog of +1000
-        maps directly to your mobile device or print and hang on your wall at home.
-        All NPS maps produced by Harpers Ferry Center are free and available as JPEGs,
-        PDFs, or Adobe production files.", "dateLastCrawled": "2024-01-05T16:33:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        map to plan your next park visit. Search and download our catalog of +<SHLVL><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>
+        maps directly to your mobile <I14Y_ADMIN_USER>ice or print and hang on your
+        wall at home. All NPS maps produced by Harpers Ferry Center are free and available
+        as JPEGs, PDFs, or Adobe production files.", "dateLastCrawled": "2<XPC_SERVICE_NAME>24-<XPC_SERVICE_NAME><SHLVL>-<XPC_SERVICE_NAME>5T<SHLVL>6:33:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>.<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>Z",
+        "language": "en", "isNavigational": <ENABLE_VOTE_ORG_LINK>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
         "name": "Yellowstone Map & Guide - U.S. National Park Service", "url":
         "https:\/\/www.nps.gov\/yell\/planyourvisit\/yellowstone-map-and-guide.htm",
-        "datePublished": "2019-07-15T00:00:00.0000000", "datePublishedDisplayText":
-        "Jul 15, 2019", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nps.gov\/yell\/planyourvisit\/yellowstone-map-and-guide.htm",
+        "datePublished": "2<XPC_SERVICE_NAME><SHLVL>9-<XPC_SERVICE_NAME>7-<SHLVL>5T<XPC_SERVICE_NAME><XPC_SERVICE_NAME>:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>.<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>",
+        "datePublishedDisplayText": "Jul <SHLVL>5, 2<XPC_SERVICE_NAME><SHLVL>9", "isFamilyFriendly":
+        <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nps.gov\/yell\/planyourvisit\/yellowstone-map-and-guide.htm",
         "snippet": "Overall Brochure Description. This brochure provides a detailed
         map of Yellowstone, its geographic features, and services. The first side
         of the brochure is composed of a large map with five small inset maps of Mammoth
         Hot Springs; Old Faithful; Canyon Village; West Thumb and Grant Village; and
         Fishing Bridge, Lake Village, and Bridge Bay. The ...", "dateLastCrawled":
-        "2024-01-08T02:03:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=pdf+(site%3anps.gov)&d=4552931967831396&mkt=en-US&setlang=en-US&w=Q9x9ugsM2Y4WbwbnBHhFGfOv-xrjdOhf",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "2<XPC_SERVICE_NAME>24-<XPC_SERVICE_NAME><SHLVL>-<XPC_SERVICE_NAME>8T<XPC_SERVICE_NAME>2:<XPC_SERVICE_NAME>3:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>.<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=pdf+(site%3anps.gov)&d=455293<SHLVL>96783<SHLVL>396&mkt=en-US&setlang=en-US&w=Q9x9ugsM2Y4WbwbnBHhFGfOv-xrjdOhf",
+        "language": "en", "isNavigational": <ENABLE_VOTE_ORG_LINK>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
         "name": "Grand Canyon Area Map - U.S. National Park Service", "url": "https:\/\/www.nps.gov\/grca\/planyourvisit\/upload\/GRCAmap2.pdf",
         "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nps.gov\/grca\/planyourvisit\/upload\/GRCAmap2.pdf",
         "snippet": "Title: Grand Canyon Area Map Author: Grand Canyon National Park
         Subject: Grand Canyon Area Map shows highways - cities - towns - public and
-        tribal lands.", "dateLastCrawled": "2024-01-08T01:37:00.0000000Z", "language":
-        "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        tribal lands.", "dateLastCrawled": "2<XPC_SERVICE_NAME>24-<XPC_SERVICE_NAME><SHLVL>-<XPC_SERVICE_NAME>8T<XPC_SERVICE_NAME><SHLVL>:37:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>.<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>Z",
+        "language": "en", "isNavigational": <ENABLE_VOTE_ORG_LINK>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
         "name": "B A S L F o A W M U O Tr a i l P A G SU R A I N T N L R A C I N T
         N I A ...", "url": "https:\/\/www.nps.gov\/grsm\/planyourvisit\/upload\/grsmmap2-2.pdf",
         "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nps.gov\/grsm\/planyourvisit\/upload\/grsmmap2-2.pdf",
         "snippet": "Title: Great Smoky Mountains National Park Author: National
         Park Service U.S. Department of the Interior Subject: Great Smoky Mountains
-        National Park Map - National Park Service", "dateLastCrawled": "2024-01-04T15:31:00.0000000Z",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        National Park Map - National Park Service", "dateLastCrawled": "2<XPC_SERVICE_NAME>24-<XPC_SERVICE_NAME><SHLVL>-<XPC_SERVICE_NAME>4T<SHLVL>5:3<SHLVL>:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>.<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>Z",
+        "language": "en", "isNavigational": <ENABLE_VOTE_ORG_LINK>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
         "name": "Maps - Rocky Mountain National Park (U.S. National Park Service)",
         "url": "https:\/\/www.nps.gov\/romo\/planyourvisit\/maps.htm", "datePublished":
-        "2023-12-20T00:00:00.0000000", "datePublishedDisplayText": "Dec 20, 2023",
+        "2<XPC_SERVICE_NAME>23-<SHLVL>2-2<XPC_SERVICE_NAME>T<XPC_SERVICE_NAME><XPC_SERVICE_NAME>:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>.<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>",
+        "datePublishedDisplayText": "Dec 2<XPC_SERVICE_NAME>, 2<XPC_SERVICE_NAME>23",
         "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nps.gov\/romo\/planyourvisit\/maps.htm",
         "snippet": "Trail Maps. Learn more about hiking in Rocky ›. Bear Lake Trail
         Guide - Summer (PDF 3.8 MB) Bear Lake Trail Guide - Winter (PDF 3.9 MB)
         Fall River Trail Guide (PDF 3.3 MB) Kawuneeche Valley Trail Guide (PDF
-        1.4 MB) Longs Peak Trail Guide (PDF 0.2 MB) Wild Basin Trail Guide - Summer
-        (PDF 0.7 MB) Wild Basin Trail Guide - Winter (PDF 3.1 MB)", "dateLastCrawled":
-        "2024-01-08T04:01:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=pdf+(site%3anps.gov)&d=4609419386505735&mkt=en-US&setlang=en-US&w=NCfGYwcI_O0wH0ykGzLQ0WcZ1snzibNR",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        <SHLVL>.4 MB) Longs Peak Trail Guide (PDF <XPC_SERVICE_NAME>.2 MB) Wild
+        Basin Trail Guide - Summer (PDF <XPC_SERVICE_NAME>.7 MB) Wild Basin Trail
+        Guide - Winter (PDF 3.<SHLVL> MB)", "dateLastCrawled": "2<XPC_SERVICE_NAME>24-<XPC_SERVICE_NAME><SHLVL>-<XPC_SERVICE_NAME>8T<XPC_SERVICE_NAME>4:<XPC_SERVICE_NAME><SHLVL>:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>.<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=pdf+(site%3anps.gov)&d=46<XPC_SERVICE_NAME>94<SHLVL>93865<XPC_SERVICE_NAME>5735&mkt=en-US&setlang=en-US&w=NCfGYwcI_O<XPC_SERVICE_NAME>wH<XPC_SERVICE_NAME>ykGzLQ<XPC_SERVICE_NAME>WcZ<SHLVL>snzibNR",
+        "language": "en", "isNavigational": <ENABLE_VOTE_ORG_LINK>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.<SHLVL><XPC_SERVICE_NAME>",
         "name": "Maps - Blue Ridge Parkway (U.S. National Park Service)", "url":
-        "https:\/\/www.nps.gov\/blri\/planyourvisit\/maps.htm", "datePublished": "2023-11-13T00:00:00.0000000",
-        "datePublishedDisplayText": "Nov 13, 2023", "isFamilyFriendly": <DATADOG_API_ENABLED>,
-        "displayUrl": "https:\/\/www.nps.gov\/blri\/planyourvisit\/maps.htm",
+        "https:\/\/www.nps.gov\/blri\/planyourvisit\/maps.htm", "datePublished": "2<XPC_SERVICE_NAME>23-<SHLVL><SHLVL>-<SHLVL>3T<XPC_SERVICE_NAME><XPC_SERVICE_NAME>:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>.<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>",
+        "datePublishedDisplayText": "Nov <SHLVL>3, 2<XPC_SERVICE_NAME>23", "isFamilyFriendly":
+        <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nps.gov\/blri\/planyourvisit\/maps.htm",
         "snippet": "Official Parkway Maps. To download official maps in PDF,
         Illustrator, or Photoshop file formats, visit the National Park Service
         cartography site, or pick up a copy at any of our visitor centers. Below:
         Toggle between two maps with different features, Park Tiles or Brochure
         Map, using the picklist on the top left corner of the map.", "dateLastCrawled":
-        "2024-01-07T03:43:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=pdf+(site%3anps.gov)&d=4650513626972777&mkt=en-US&setlang=en-US&w=2iEffBDGdm9Cz0YPXP4uQswkJfNAmWNS",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "2<XPC_SERVICE_NAME>24-<XPC_SERVICE_NAME><SHLVL>-<XPC_SERVICE_NAME>7T<XPC_SERVICE_NAME>3:43:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>.<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=pdf+(site%3anps.gov)&d=465<XPC_SERVICE_NAME>5<SHLVL>3626972777&mkt=en-US&setlang=en-US&w=2iEffBDGdm9Cz<XPC_SERVICE_NAME>YPXP4uQswkJfNAmWNS",
+        "language": "en", "isNavigational": <ENABLE_VOTE_ORG_LINK>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.<SHLVL><SHLVL>",
         "name": "Park Brochure - U.S. National Park Service", "url": "https:\/\/www.nps.gov\/jotr\/planyourvisit\/park-brochure.htm",
-        "datePublished": "2023-01-05T00:00:00.0000000", "datePublishedDisplayText":
-        "Jan 5, 2023", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nps.gov\/jotr\/planyourvisit\/park-brochure.htm",
-        "snippet": "The brochure also provides information for planning your visit.This
-        official brochure is identified with a top-to-bottom black band on the left
-        edge of side one of the brochure. Inside the band, the words Joshua Tree in
-        bold white letters are at the bottom. At the top of the black band, is the
-        National Park Service arrowhead logo accompanied by ...", "dateLastCrawled":
-        "2024-01-07T08:33:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=pdf+(site%3anps.gov)&d=5061855525412328&mkt=en-US&setlang=en-US&w=yXhTvMkp5uz93butnOOk2vCx65seEX4E",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "datePublished": "2<XPC_SERVICE_NAME>23-<XPC_SERVICE_NAME><SHLVL>-<XPC_SERVICE_NAME>5T<XPC_SERVICE_NAME><XPC_SERVICE_NAME>:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>.<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>",
+        "datePublishedDisplayText": "Jan 5, 2<XPC_SERVICE_NAME>23", "isFamilyFriendly":
+        <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nps.gov\/jotr\/planyourvisit\/park-brochure.htm",
+        "snippet": "The brochure also provides <NEWRELIC_LOG_LEVEL>rmation for planning
+        your visit.This official brochure is identified with a top-to-bottom black
+        band on the left edge of side one of the brochure. Inside the band, the words
+        Joshua Tree in bold white letters are at the bottom. At the top of the black
+        band, is the National Park Service arrowhead logo accompanied by ...", "dateLastCrawled":
+        "2<XPC_SERVICE_NAME>24-<XPC_SERVICE_NAME><SHLVL>-<XPC_SERVICE_NAME>7T<XPC_SERVICE_NAME>8:33:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>.<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=pdf+(site%3anps.gov)&d=5<XPC_SERVICE_NAME>6<SHLVL>8555254<SHLVL>2328&mkt=en-US&setlang=en-US&w=yXhTvMkp5uz93butnOOk2vCx65seEX4E",
+        "language": "en", "isNavigational": <ENABLE_VOTE_ORG_LINK>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.<SHLVL>2",
         "name": "Brochures - Grand Canyon National Park (U.S. National Park Service)",
         "url": "https:\/\/www.nps.gov\/grca\/planyourvisit\/brochures.htm", "datePublished":
-        "2023-12-11T00:00:00.0000000", "datePublishedDisplayText": "Dec 11, 2023",
-        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nps.gov\/grca\/planyourvisit\/brochures.htm",
-        "snippet": "North Rim Trail Brochures. Bright Angel Point (1.45MB PDF)
-        Arrival at Bright Angel Point by the Grand Canyon Lodge on the North Rim places
-        you on the edge of a vastness of scenery, time, and opportunity. The view
-        confirms the tremendous uplift that has occurred, leaving the canyon''s North
-        Rim 1,000 feet\/300 meters higher than the South Rim.", "dateLastCrawled":
-        "2024-01-05T03:24:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=pdf+(site%3anps.gov)&d=4619718572769540&mkt=en-US&setlang=en-US&w=4pdgZS5dEo00ziu6p1yDhCZFXvMMkP_k",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "2<XPC_SERVICE_NAME>23-<SHLVL>2-<SHLVL><SHLVL>T<XPC_SERVICE_NAME><XPC_SERVICE_NAME>:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>.<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>",
+        "datePublishedDisplayText": "Dec <SHLVL><SHLVL>, 2<XPC_SERVICE_NAME>23", "isFamilyFriendly":
+        <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nps.gov\/grca\/planyourvisit\/brochures.htm",
+        "snippet": "North Rim Trail Brochures. Bright Angel Point (<SHLVL>.45MB
+        PDF) Arrival at Bright Angel Point by the Grand Canyon Lodge on the North
+        Rim places you on the edge of a vastness of scenery, time, and opportunity.
+        The view confirms the tremendous uplift that has occurred, leaving the canyon''s
+        North Rim <SHLVL>,<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME> feet\/3<XPC_SERVICE_NAME><XPC_SERVICE_NAME>
+        meters higher than the South Rim.", "dateLastCrawled": "2<XPC_SERVICE_NAME>24-<XPC_SERVICE_NAME><SHLVL>-<XPC_SERVICE_NAME>5T<XPC_SERVICE_NAME>3:24:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>.<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=pdf+(site%3anps.gov)&d=46<SHLVL>97<SHLVL>857276954<XPC_SERVICE_NAME>&mkt=en-US&setlang=en-US&w=4pdgZS5dEo<XPC_SERVICE_NAME><XPC_SERVICE_NAME>ziu6p<SHLVL>yDhCZFXvMMkP_k",
+        "language": "en", "isNavigational": <ENABLE_VOTE_ORG_LINK>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.<SHLVL>3",
         "name": "Maps - Yosemite National Park (U.S. National Park Service)",
         "url": "https:\/\/www.nps.gov\/yose\/planyourvisit\/maps.htm", "datePublished":
-        "2023-10-27T00:00:00.0000000", "datePublishedDisplayText": "Oct 27, 2023",
-        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nps.gov\/yose\/planyourvisit\/maps.htm",
+        "2<XPC_SERVICE_NAME>23-<SHLVL><XPC_SERVICE_NAME>-27T<XPC_SERVICE_NAME><XPC_SERVICE_NAME>:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>.<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>",
+        "datePublishedDisplayText": "Oct 27, 2<XPC_SERVICE_NAME>23", "isFamilyFriendly":
+        <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nps.gov\/yose\/planyourvisit\/maps.htm",
         "snippet": "Download a simple park map (highlighting campgrounds) [ 2 MB PDF]
-        [ 100 kb JPG] Download the official park map. Download the official map for
-        Yosemite Valley. Topographic maps for the entire park.", "dateLastCrawled":
-        "2024-01-08T02:04:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=pdf+(site%3anps.gov)&d=4582197877146575&mkt=en-US&setlang=en-US&w=kTQPCmqCPIcjvkfJ_2OVqNUmlurZmJAs",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        [ <SHLVL><XPC_SERVICE_NAME><XPC_SERVICE_NAME> kb JPG] Download the official
+        park map. Download the official map for Yosemite Valley. Topographic maps
+        for the entire park.", "dateLastCrawled": "2<XPC_SERVICE_NAME>24-<XPC_SERVICE_NAME><SHLVL>-<XPC_SERVICE_NAME>8T<XPC_SERVICE_NAME>2:<XPC_SERVICE_NAME>4:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>.<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=pdf+(site%3anps.gov)&d=4582<SHLVL>97877<SHLVL>46575&mkt=en-US&setlang=en-US&w=kTQPCmqCPIcjvkfJ_2OVqNUmlurZmJAs",
+        "language": "en", "isNavigational": <ENABLE_VOTE_ORG_LINK>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.<SHLVL>4",
         "name": "Pines Campgrounds - U.S. National Park Service", "url": "https:\/\/www.nps.gov\/yose\/planyourvisit\/pinescampgrounds.htm",
-        "datePublished": "2012-04-13T00:00:00.0000000", "datePublishedDisplayText":
-        "Apr 13, 2012", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nps.gov\/yose\/planyourvisit\/pinescampgrounds.htm",
+        "datePublished": "2<XPC_SERVICE_NAME><SHLVL>2-<XPC_SERVICE_NAME>4-<SHLVL>3T<XPC_SERVICE_NAME><XPC_SERVICE_NAME>:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>.<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>",
+        "datePublishedDisplayText": "Apr <SHLVL>3, 2<XPC_SERVICE_NAME><SHLVL>2", "isFamilyFriendly":
+        <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nps.gov\/yose\/planyourvisit\/pinescampgrounds.htm",
         "snippet": "Other Information. Be sure to read the site details when making
         a reservation on recreation.gov to ensure your equipment will fit into the
         site you''re reserving. You can also find answers to frequently asked questions
         about length limits and site types or call the Yosemite Valley Campgrounds
-        Office at 209\/372-8502.", "dateLastCrawled": "2024-01-07T11:51:00.0000000Z",
-        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=pdf+(site%3anps.gov)&d=4914654113254252&mkt=en-US&setlang=en-US&w=87tIwD-DuXO67V69cBfAFw2CVLexR4Se",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        Office at 2<XPC_SERVICE_NAME>9\/372-85<XPC_SERVICE_NAME>2.", "dateLastCrawled":
+        "2<XPC_SERVICE_NAME>24-<XPC_SERVICE_NAME><SHLVL>-<XPC_SERVICE_NAME>7T<SHLVL><SHLVL>:5<SHLVL>:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>.<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=pdf+(site%3anps.gov)&d=49<SHLVL>4654<SHLVL><SHLVL>3254252&mkt=en-US&setlang=en-US&w=87tIwD-DuXO67V69cBfAFw2CVLexR4Se",
+        "language": "en", "isNavigational": <ENABLE_VOTE_ORG_LINK>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.<SHLVL>5",
         "name": "Publications of the National Register of Historic Places", "url":
         "https:\/\/www.nps.gov\/subjects\/nationalregister\/publications.htm", "isFamilyFriendly":
         <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nps.gov\/subjects\/nationalregister\/publications.htm",
         "snippet": "The National Register of Historic Places is the official list
         of the Nation''s historic places worthy of preservation. Authorized by the
-        National Historic Preservation Act of 1966, the National Park Service''s
+        National Historic Preservation Act of <SHLVL>966, the National Park Service''s
         National Register of Historic Places is part of a national program to coordinate
         and support public and private efforts to identify, evaluate, and protect
-        America''s historic and ...", "dateLastCrawled": "2024-01-06T04:00:00.0000000Z",
-        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=pdf+(site%3anps.gov)&d=5023741989300800&mkt=en-US&setlang=en-US&w=3b7kekxLA4HsiKhlJqsVB_VIvYtEa730",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        America''s historic and ...", "dateLastCrawled": "2<XPC_SERVICE_NAME>24-<XPC_SERVICE_NAME><SHLVL>-<XPC_SERVICE_NAME>6T<XPC_SERVICE_NAME>4:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>.<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=pdf+(site%3anps.gov)&d=5<XPC_SERVICE_NAME>2374<SHLVL>9893<XPC_SERVICE_NAME><XPC_SERVICE_NAME>8<XPC_SERVICE_NAME><XPC_SERVICE_NAME>&mkt=en-US&setlang=en-US&w=3b7kekxLA4HsiKhlJqsVB_VIvYtEa73<XPC_SERVICE_NAME>",
+        "language": "en", "isNavigational": <ENABLE_VOTE_ORG_LINK>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.<SHLVL>6",
         "name": "National Mall Plan Maps - U.S. National Park Service", "url": "https:\/\/www.nps.gov\/nationalmallplan\/maps.html",
         "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nps.gov\/nationalmallplan\/maps.html",
         "snippet": "National Mall & Memorial Visitor Information Map (pdf) Newsletter
         #3 Maps. Newsletter #4 Maps. Reserve Area Map (pdf) Area of Potential Affect
-        Map (5.6 MB pdf) Jefferson Memorial and FDR Memorial Base Map (1 mb pdf)
-        The Mall and Pennsylvania Avenue Base Map (778 kb pdf) Washington Monument
-        and West Potomac Park Base Map (1 mb pdf)", "dateLastCrawled": "2024-01-07T21:09:00.0000000Z",
-        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=pdf+(site%3anps.gov)&d=4772026701775156&mkt=en-US&setlang=en-US&w=7NDdvRVl6S16EVYlzPtQzRCa8OYlNgVA",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        Map (5.6 MB pdf) Jefferson Memorial and FDR Memorial Base Map (<SHLVL> mb
+        pdf) The Mall and Pennsylvania Avenue Base Map (778 kb pdf) Washington
+        Monument and West Potomac Park Base Map (<SHLVL> mb pdf)", "dateLastCrawled":
+        "2<XPC_SERVICE_NAME>24-<XPC_SERVICE_NAME><SHLVL>-<XPC_SERVICE_NAME>7T2<SHLVL>:<XPC_SERVICE_NAME>9:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>.<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=pdf+(site%3anps.gov)&d=4772<XPC_SERVICE_NAME>267<XPC_SERVICE_NAME><SHLVL>775<SHLVL>56&mkt=en-US&setlang=en-US&w=7NDdvRVl6S<SHLVL>6EVYlzPtQzRCa8OYlNgVA",
+        "language": "en", "isNavigational": <ENABLE_VOTE_ORG_LINK>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.<SHLVL>7",
         "name": "Maps - Grand Canyon National Park (U.S. National Park Service)",
         "url": "https:\/\/www.nps.gov\/grca\/planyourvisit\/maps.htm", "datePublished":
-        "2023-12-13T00:00:00.0000000", "datePublishedDisplayText": "Dec 13, 2023",
-        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nps.gov\/grca\/planyourvisit\/maps.htm",
+        "2<XPC_SERVICE_NAME>23-<SHLVL>2-<SHLVL>3T<XPC_SERVICE_NAME><XPC_SERVICE_NAME>:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>.<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>",
+        "datePublishedDisplayText": "Dec <SHLVL>3, 2<XPC_SERVICE_NAME>23", "isFamilyFriendly":
+        <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nps.gov\/grca\/planyourvisit\/maps.htm",
         "snippet": "A wide variety of Grand Canyon Maps, Trail Guides and Field
         Guides are available online from our non-profit partner Grand Canyon Conservancy.
         Your purchase goes towards protecting and enhancing Grand Canyon National
         Park for present and future generations. These products complement the interpretive
-        themes you experience when visiting the park.", "dateLastCrawled": "2024-01-08T08:08:00.0000000Z",
-        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=pdf+(site%3anps.gov)&d=4527239471326874&mkt=en-US&setlang=en-US&w=3LaQ_mTytHUKwFVahuO5X4aZ4F7MVvZ2",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        themes you experience when visiting the park.", "dateLastCrawled": "2<XPC_SERVICE_NAME>24-<XPC_SERVICE_NAME><SHLVL>-<XPC_SERVICE_NAME>8T<XPC_SERVICE_NAME>8:<XPC_SERVICE_NAME>8:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>.<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=pdf+(site%3anps.gov)&d=452723947<SHLVL>326874&mkt=en-US&setlang=en-US&w=3LaQ_mTytHUKwFVahuO5X4aZ4F7MVvZ2",
+        "language": "en", "isNavigational": <ENABLE_VOTE_ORG_LINK>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.<SHLVL>8",
         "name": "Director''s Orders and Related Guidance - U.S. National Park Service",
         "url": "https:\/\/www.nps.gov\/subjects\/policy\/directors-orders.htm", "isFamilyFriendly":
         <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nps.gov\/subjects\/policy\/directors-orders.htm",
@@ -254,21 +286,22 @@ http_interactions:
         and procedures. Director’s Orders that: outline requirements for National
         Park Service functions, programs, and activities, delegate specific authorities
         and responsibilities to subordinate staff, may articulate new or revised policy
-        between updates of Management Policies.", "dateLastCrawled": "2024-01-06T06:32:00.0000000Z",
-        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=pdf+(site%3anps.gov)&d=4785293989916152&mkt=en-US&setlang=en-US&w=xQHm2dGCHFGAGe1xK6Uv9L0Et5H1gYxC",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        between updates of Management Policies.", "dateLastCrawled": "2<XPC_SERVICE_NAME>24-<XPC_SERVICE_NAME><SHLVL>-<XPC_SERVICE_NAME>6T<XPC_SERVICE_NAME>6:32:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>.<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=pdf+(site%3anps.gov)&d=47852939899<SHLVL>6<SHLVL>52&mkt=en-US&setlang=en-US&w=xQHm2dGCHFGAGe<SHLVL>xK6Uv9L<XPC_SERVICE_NAME>Et5H<SHLVL>gYxC",
+        "language": "en", "isNavigational": <ENABLE_VOTE_ORG_LINK>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.<SHLVL>9",
         "name": "Park Histories | Park History Program - U.S. National Park Service",
         "url": "https:\/\/www.nps.gov\/parkhistory\/parkhistories.htm", "isFamilyFriendly":
         <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nps.gov\/parkhistory\/parkhistories.htm",
-        "snippet": "Yellowstone History: 125 Years and More to Tell (pdf) The Yellowstone
-        Lake Crises: Confronting a Lake Trout Invasion (1995) (pdf) Old Faithful
-        Inn: Centennial of a Beloved Landmark (pdf) Yellowstone in the Afterglow.
-        Fauna of the National Parks of the United States: Ecology of the Coyote in
-        the Yellowstone.", "dateLastCrawled": "2024-01-06T00:26:00.0000000Z", "cachedPageUrl":
-        "http:\/\/cc.bingj.com\/cache.aspx?q=pdf+(site%3anps.gov)&d=4544152916263104&mkt=en-US&setlang=en-US&w=PUTPlGKl3BMScUROhOezFa-Hne0Y38MU",
-        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
-        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        "snippet": "Yellowstone History: <SHLVL>25 Years and More to Tell (pdf)
+        The Yellowstone Lake Crises: Confronting a Lake Trout Invasion (<SHLVL>995)
+        (pdf) Old Faithful Inn: Centennial of a Beloved Landmark (pdf) Yellowstone
+        in the Afterglow. Fauna of the National Parks of the United States: Ecology
+        of the Coyote in the Yellowstone.", "dateLastCrawled": "2<XPC_SERVICE_NAME>24-<XPC_SERVICE_NAME><SHLVL>-<XPC_SERVICE_NAME>6T<XPC_SERVICE_NAME><XPC_SERVICE_NAME>:26:<XPC_SERVICE_NAME><XPC_SERVICE_NAME>.<XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME><XPC_SERVICE_NAME>Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=pdf+(site%3anps.gov)&d=4544<SHLVL>529<SHLVL>6263<SHLVL><XPC_SERVICE_NAME>4&mkt=en-US&setlang=en-US&w=PUTPlGKl3BMScUROhOezFa-Hne<XPC_SERVICE_NAME>Y38MU",
+        "language": "en", "isNavigational": <ENABLE_VOTE_ORG_LINK>}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": <XPC_SERVICE_NAME>,
+        "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.<XPC_SERVICE_NAME>"}},
+        {"answerType": "WebPages", "resultIndex": <SHLVL>, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.<SHLVL>"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
@@ -277,15 +310,52 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
         {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
         {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+        {"answerType": "WebPages", "resultIndex": <SHLVL><XPC_SERVICE_NAME>, "value":
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.<SHLVL><XPC_SERVICE_NAME>"}},
+        {"answerType": "WebPages", "resultIndex": <SHLVL><SHLVL>, "value": {"id":
+        "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.<SHLVL><SHLVL>"}}, {"answerType":
+        "WebPages", "resultIndex": <SHLVL>2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.<SHLVL>2"}},
+        {"answerType": "WebPages", "resultIndex": <SHLVL>3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.<SHLVL>3"}},
+        {"answerType": "WebPages", "resultIndex": <SHLVL>4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.<SHLVL>4"}},
+        {"answerType": "WebPages", "resultIndex": <SHLVL>5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.<SHLVL>5"}},
+        {"answerType": "WebPages", "resultIndex": <SHLVL>6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.<SHLVL>6"}},
+        {"answerType": "WebPages", "resultIndex": <SHLVL>7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.<SHLVL>7"}},
+        {"answerType": "WebPages", "resultIndex": <SHLVL>8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.<SHLVL>8"}},
+        {"answerType": "WebPages", "resultIndex": <SHLVL>9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.<SHLVL>9"}}]}}}'
   recorded_at: Mon, 08 Jan 2024 22:36:14 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.<XPC_SERVICE_NAME>/search?count=2<XPC_SERVICE_NAME>&mkt=en-US&offset=<XPC_SERVICE_NAME>&q=pdf%2<XPC_SERVICE_NAME>(site:nps.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=<VERBOSE>&traffictype=<RAILS_ENV>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=<SHLVL>.<XPC_SERVICE_NAME>,deflate;q=<XPC_SERVICE_NAME>.6,identity;q=<XPC_SERVICE_NAME>.3
+      Accept:
+      - "<QUEUE>/<QUEUE>"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 3<XPC_SERVICE_NAME>
+  response:
+    status:
+      code: 401
+      message: PermissionDenied
+    headers:
+      Content-Length:
+      - '224'
+      Date:
+      - Fri, 23 Aug 2<XPC_SERVICE_NAME>24 <SHLVL>4:47:<XPC_SERVICE_NAME>8 GMT
+    body:
+      encoding: UTF-8
+      string: '{"error":{"code":"4<XPC_SERVICE_NAME><SHLVL>","message":"Access denied
+        due to invalid subscription key or wrong API endpoint. Make sure to provide
+        a valid key for an active subscription and use a correct regional API endpoint
+        for your resource."}}'
+  recorded_at: Fri, 23 Aug 2024 14:47:09 GMT
 recorded_with: VCR 6.2.0

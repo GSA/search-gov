@@ -193,12 +193,51 @@ describe RssFeedUrl do
 
   describe '.enqueue_destroy_all_news_items_with_404' do
     it 'enqueues affiliate own active RssFeedUrls' do
-      non_throttled_hosts = %w(www.whitehouse.gov some.agency.gov)
-      expect(described_class).to receive(:unique_non_throttled_hosts).and_return(non_throttled_hosts)
+      non_throttled_hosts = %w[www.whitehouse.gov some.agency.gov]
+      throttled_hosts = %w[www.army.mil]
+
+      allow(described_class).to receive_messages(unique_non_throttled_hosts: non_throttled_hosts, throttled_hosts:)
+
       expect(described_class).to receive(:enqueue_destroy_all_news_items_with_404_by_hosts).with(non_throttled_hosts)
-      expect(described_class).to receive(:enqueue_destroy_all_news_items_with_404_by_hosts).with(%w(www.army.mil), true)
+      expect(described_class).to receive(:enqueue_destroy_all_news_items_with_404_by_hosts).with(throttled_hosts, true)
 
       described_class.enqueue_destroy_all_news_items_with_404
+    end
+  end
+
+  describe '.throttled_hosts' do
+    context 'when the THROTTLED_RSS_FEED_HOSTS environment variable is not set' do
+      before do
+        allow(ENV).to receive(:fetch).with('THROTTLED_RSS_FEED_HOSTS', '').and_return('')
+      end
+
+      it 'returns an empty array' do
+        expect(described_class.throttled_hosts).to eq([])
+      end
+    end
+
+    context 'when the THROTTLED_RSS_FEED_HOSTS environment variable is set to a comma-separated string' do
+      let(:hosts) { 'www.example.com, www.test.com' }
+
+      before do
+        allow(ENV).to receive(:fetch).with('THROTTLED_RSS_FEED_HOSTS', '').and_return(hosts)
+      end
+
+      it 'returns the parsed array of hosts' do
+        expect(described_class.throttled_hosts).to eq(['www.example.com', 'www.test.com'])
+      end
+    end
+
+    context 'when the THROTTLED_RSS_FEED_HOSTS environment variable contains extra spaces' do
+      let(:hosts) { ' www.example.com , www.test.com ' }
+
+      before do
+        allow(ENV).to receive(:fetch).with('THROTTLED_RSS_FEED_HOSTS', '').and_return(hosts)
+      end
+
+      it 'returns the array of hosts with spaces stripped' do
+        expect(described_class.throttled_hosts).to eq(['www.example.com', 'www.test.com'])
+      end
     end
   end
 
@@ -248,16 +287,15 @@ describe RssFeedUrl do
   end
 
   describe '.unique_non_throttled_hosts' do
-    it 'return unique non throttled hosts' do
+    it 'returns unique non-throttled hosts' do
       allow(described_class).to receive_message_chain(:rss_feed_owned_by_affiliate, :active).
-          and_return([mock_model(described_class, url: 'http://www.whitehouse.gov/rss/1.xml'),
-                      mock_model(described_class, url: 'http://www.army.mil/rss/2.xml'),
-                      mock_model(described_class, url: 'https://www.usa.gov/rss/3.xml')])
-      expect(described_class.unique_non_throttled_hosts).to include('www.whitehouse.gov')
-      expect(described_class.unique_non_throttled_hosts).to include('www.usa.gov')
-      expect(described_class.unique_non_throttled_hosts).not_to include('www.army.mil')
+        and_return([mock_model(described_class, url: 'http://www.whitehouse.gov/rss/1.xml'),
+                    mock_model(described_class, url: 'http://www.army.mil/rss/2.xml'),
+                    mock_model(described_class, url: 'https://www.usa.gov/rss/3.xml')])
 
-      described_class.unique_non_throttled_hosts
+      allow(described_class).to receive(:throttled_hosts).and_return(['www.army.mil'])
+
+      expect(described_class.unique_non_throttled_hosts).to contain_exactly('www.whitehouse.gov', 'www.usa.gov')
     end
   end
 
