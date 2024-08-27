@@ -205,6 +205,42 @@ describe RssFeedUrl do
     end
   end
 
+  describe '.throttled_hosts' do
+    context 'when the THROTTLED_RSS_FEED_HOSTS environment variable is not set' do
+      before do
+        allow(ENV).to receive(:fetch).with('THROTTLED_RSS_FEED_HOSTS', '').and_return('')
+      end
+
+      it 'returns an empty array' do
+        expect(described_class.throttled_hosts).to eq([])
+      end
+    end
+
+    context 'when the THROTTLED_RSS_FEED_HOSTS environment variable is set to a comma-separated string' do
+      let(:hosts) { 'www.example.com, www.test.com' }
+
+      before do
+        allow(ENV).to receive(:fetch).with('THROTTLED_RSS_FEED_HOSTS', '').and_return(hosts)
+      end
+
+      it 'returns the parsed array of hosts' do
+        expect(described_class.throttled_hosts).to eq(['www.example.com', 'www.test.com'])
+      end
+    end
+
+    context 'when the THROTTLED_RSS_FEED_HOSTS environment variable contains extra spaces' do
+      let(:hosts) { ' www.example.com , www.test.com ' }
+
+      before do
+        allow(ENV).to receive(:fetch).with('THROTTLED_RSS_FEED_HOSTS', '').and_return(hosts)
+      end
+
+      it 'returns the array of hosts with spaces stripped' do
+        expect(described_class.throttled_hosts).to eq(['www.example.com', 'www.test.com'])
+      end
+    end
+  end
+
   describe '.enqueue_destroy_all_news_items_with_404_by_hosts' do
     let(:rss_feed_url1) { rss_feed_urls(:white_house_blog_url) }
     let(:rss_feed_url2) { rss_feed_urls(:basic_url) }

@@ -49,10 +49,10 @@ class RssFeedUrl < ApplicationRecord
   end
 
   def self.throttled_hosts
-    hosts = ENV.fetch('THROTTLED_RSS_FEED_HOSTS').split(',')
-    return [] unless hosts
+    hosts = ENV.fetch('THROTTLED_RSS_FEED_HOSTS', '')
+    return [] if hosts.empty?
 
-    JSON.parse(hosts)
+    hosts.split(',').map(&:strip)
   end
 
   def self.enqueue_destroy_all_news_items_with_404_by_hosts(hosts, is_throttled = false)
