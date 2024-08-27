@@ -7,7 +7,7 @@ describe Admin::SiteCtrsController do
 
   before do
     activate_authlogic
-    allow(SiteCtr).to receive(:new).with(instance_of(Fixnum), 'BOOS').and_return site_ctr
+    allow(SiteCtr).to receive(:new).with(instance_of(Integer), 'BOOS').and_return site_ctr
   end
 
   describe "GET 'show'" do

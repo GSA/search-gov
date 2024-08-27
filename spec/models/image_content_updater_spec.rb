@@ -53,7 +53,8 @@ describe ImageContentUpdater do
       it 'logs successes' do
         image_content_updater.update(ids)
         expect(Rails.logger).to have_received(:info).at_least(:once) do |message|
-          message =~ /\[image_content_updater_task\] The following affiliates were updated successfully: \[#{[first_affiliate.id, second_affiliate.id, third_affiliate.id].join(', ')}\]\./
+          pattern = /\[image_content_updater_task\] The following affiliates were updated successfully: \[#{[first_affiliate.id, second_affiliate.id, third_affiliate.id].join(', ')}\]\./
+          message.is_a?(String) && message.match?(pattern)
         end
       end
     end
