@@ -4,6 +4,7 @@ class Sites::MonthlyReportsController < Sites::SetupSiteController
     month, year = (params[:mmyyyy] || default_mm_yyyy).split('/')
     @monthly_report = monthly_report(month, year)
   rescue ArgumentError => e
+    Rails.logger.error e
     month, year = default_mm_yyyy.split('/')
     @monthly_report = monthly_report(month, year)
   end

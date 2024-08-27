@@ -13,7 +13,7 @@ class RequestDrilldown
     response = Es::ELK.client_reader.search(query_opts)
     response['hits']['hits']&.map { |hit| hit['_source'] }
   rescue StandardError => error
-    Rails.logger.error("Error extracting drilldown hits: #{error}")
+    Rails.logger.error('Error extracting drilldown hits:', error)
     []
   end
 

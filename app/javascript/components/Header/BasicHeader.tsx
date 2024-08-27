@@ -1,13 +1,15 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { darken } from 'polished';
-import { Header as UswdsHeader, PrimaryNav, NavMenuButton } from '@trussworks/react-uswds';
+import { Header as UswdsHeader, NavMenuButton } from '@trussworks/react-uswds';
 
 import { FontsAndColors } from '../SearchResultsLayout';
 import { HeaderProps } from './../props';
 import { Logo } from './Logo';
 import { StyleContext } from '../../contexts/StyleContext';
+import { LanguageContext } from '../../contexts/LanguageContext';
 import { buildLink } from './ExtendedHeader';
+import { UswdsPrimaryNav } from '../UswdsOverrides/UswdsPrimaryNav';
 
 import './BasicHeader.css';
 
@@ -34,6 +36,7 @@ const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: FontsAndColors; }>
 
 export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeaderLinks, secondaryHeaderLinks }: HeaderProps) => {
   const styles = useContext(StyleContext);
+  const i18n = useContext(LanguageContext);
 
   const primaryNavItems = primaryHeaderLinks ? buildLink(primaryHeaderLinks, 'usa-nav__link') : [];
   const showMobileMenu = (primaryHeaderLinks && primaryHeaderLinks.length > 0) || (secondaryHeaderLinks && secondaryHeaderLinks.length > 0);
@@ -45,15 +48,15 @@ export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeade
           <div className="usa-navbar">
             <Logo page={page} />
             {showMobileMenu && <NavMenuButton
-              label="Menu"
+              label={i18n.t('searches.menu')}
               onClick={toggleMobileNav}
               className="usa-menu-btn"
               data-testid="usa-menu-mob-btn"
             />}
           </div>
 
-          <PrimaryNav
-            aria-label="Primary navigation"
+          <UswdsPrimaryNav
+            aria-label={i18n.t('ariaLabelHeader')}
             items={primaryNavItems}
             onToggleMobileNav={toggleMobileNav}
             mobileExpanded={mobileNavOpen}
@@ -69,7 +72,7 @@ export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeade
                 }
               </ul>
             }
-          </PrimaryNav>
+          </UswdsPrimaryNav>
         </div>
       </StyledUswdsHeader>
     </>
