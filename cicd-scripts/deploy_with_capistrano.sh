@@ -1,7 +1,7 @@
 
-#!/bin/bash
-echo "Capistrano test!"
-pwd
-ls -al
-ls -al /home/search
+# #!/bin/bash
+# echo "Capistrano test!"
+# pwd
+# ls -al
+# ls -al /home/search
 
