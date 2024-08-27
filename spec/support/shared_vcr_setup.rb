@@ -44,28 +44,28 @@ VCR.configure do |config|
   config.ignore_request { |request| URI(request.uri).port == 9998 } # Tika
 
   # Filter env variables used by VCR
-  config.filter_sensitive_data('<ANALYTICS_ELASTICSEARCH>') { { reader: { hosts: [ENV['ES_HOSTS']], user: ENV['ES_USER'], password: ENV['ES_PASSWORD'] }, writers: [{ hosts: [ENV['ES_HOSTS']], user: ENV['ES_USER'], password: ENV['ES_PASSWORD'] }] } }
-  config.filter_sensitive_data('<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>') { ENV['AWS_ACCESS_KEY_ID'] }
-  config.filter_sensitive_data('<AWS_IMAGE_BUCKET_SECRET_ACCESS_KEY>') { ENV['AWS_SECRET_ACCESS_KEY'] }
-  config.filter_sensitive_data('<AWS_IMAGE_BUCKET_BUCKET>') { ENV['AWS_BUCKET'] }
-  config.filter_sensitive_data('<AWS_IMAGE_BUCKET_S3_HOST_ALIAS>') { ENV['AWS_S3_HOST_ALIAS'] }
-  config.filter_sensitive_data('<AWS_IMAGE_BUCKET_S3_REGION>') { ENV['AWS_REGION'] }
-  config.filter_sensitive_data('<BING_V7_WEB_SUBSCRIPTION_ID>') { ENV['BING_WEB_SUBSCRIPTION_ID'] }
-  config.filter_sensitive_data('<BING_V7_IMAGE_SUBSCRIPTION_ID>') { ENV['BING_IMAGE_SUBSCRIPTION'] }
-  config.filter_sensitive_data('<CUSTOM_INDICES_ELASTICSEARCH>') { { reader: { hosts: [ENV['ES_HOSTS']], user: ENV['ES_USER'], password: ENV['ES_PASSWORD'] }, writers: [{ hosts: [ENV['ES_HOSTS']], user: ENV['ES_USER'], password: ENV['ES_PASSWORD'] }] } }
-  config.filter_sensitive_data('<DATADOG_API_ENABLED>') { ENV['DATADOG_ENABLED'] }
-  config.filter_sensitive_data('<DATADOG_API_KEY>') { ENV['DATADOG_API_KEY'] }
-  config.filter_sensitive_data('<DATADOG_APPLICATION_KEY>') { ENV['DATADOG_APPLICATION_KEY'] }
+  config.filter_sensitive_data('<ANALYTICS_ELASTICSEARCH>') { { reader: { hosts: [ENV.fetch('ES_HOSTS', nil)], user: ENV.fetch('ES_USER', nil), password: ENV.fetch('ES_PASSWORD', nil) }, writers: [{ hosts: [ENV.fetch('ES_HOSTS', nil)], user: ENV.fetch('ES_USER', nil), password: ENV.fetch('ES_PASSWORD', nil) }] } }
+  config.filter_sensitive_data('<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>') { ENV.fetch('AWS_ACCESS_KEY_ID', nil) }
+  config.filter_sensitive_data('<AWS_IMAGE_BUCKET_SECRET_ACCESS_KEY>') { ENV.fetch('AWS_SECRET_ACCESS_KEY', nil) }
+  config.filter_sensitive_data('<AWS_IMAGE_BUCKET_BUCKET>') { ENV.fetch('AWS_BUCKET', nil) }
+  config.filter_sensitive_data('<AWS_IMAGE_BUCKET_S3_HOST_ALIAS>') { ENV.fetch('AWS_S3_HOST_ALIAS', nil) }
+  config.filter_sensitive_data('<AWS_IMAGE_BUCKET_S3_REGION>') { ENV.fetch('AWS_REGION', nil) }
+  config.filter_sensitive_data('<BING_V7_WEB_SUBSCRIPTION_ID>') { ENV.fetch('BING_WEB_SUBSCRIPTION_ID', nil) }
+  config.filter_sensitive_data('<BING_V7_IMAGE_SUBSCRIPTION_ID>') { ENV.fetch('BING_IMAGE_SUBSCRIPTION', nil) }
+  config.filter_sensitive_data('<CUSTOM_INDICES_ELASTICSEARCH>') { { reader: { hosts: [ENV.fetch('ES_HOSTS', nil)], user: ENV.fetch('ES_USER', nil), password: ENV.fetch('ES_PASSWORD', nil) }, writers: [{ hosts: [ENV.fetch('ES_HOSTS', nil)], user: ENV.fetch('ES_USER', nil), password: ENV.fetch('ES_PASSWORD', nil) }] } }
+  config.filter_sensitive_data('<DATADOG_API_ENABLED>') { ENV.fetch('DATADOG_ENABLED', nil) }
+  config.filter_sensitive_data('<DATADOG_API_KEY>') { ENV.fetch('DATADOG_API_KEY', nil) }
+  config.filter_sensitive_data('<DATADOG_APPLICATION_KEY>') { ENV.fetch('DATADOG_APPLICATION_KEY', nil) }
   config.filter_sensitive_data('<EMAIL_ACTION_MAILER>') { { perform_deliveries: false, raise_delivery_errors: false } }
-  config.filter_sensitive_data('<FLICKR_API_KEY>') { ENV['FLICKR_API_KEY'] }
-  config.filter_sensitive_data('<FLICKR_SHARED_SECRET>') { ENV['FLICKR_SHARED_SECRET'] }
-  config.filter_sensitive_data('<JOBS_SECRETS_USER_AGENT>') { ENV['USAJOBS_USER_AGENT'] }
-  config.filter_sensitive_data('<JOBS_SECRETS_AUTHORIZATION_KEY>') { ENV['USAJOBS_AUTHORIZATION_KEY'] }
-  config.filter_sensitive_data('<LOGIN_DOT_GOV_CLIENT_ID>') { ENV['LOGIN_CLIENT_ID'] }
-  config.filter_sensitive_data('<LOGIN_DOT_GOV_IDP_BASE_URL>') { ENV['LOGIN_IDP_BASE_URL'] }
-  config.filter_sensitive_data('<LOGIN_DOT_GOV_HOST>') { ENV['LOGIN_HOST'] }
-  config.filter_sensitive_data('<NEWRELIC_SECRETS_LICENSE_KEY>') { ENV['NEWRELIC_LICENSE_KEY'] }
-  config.filter_sensitive_data('<YOUTUBE_KEY>') { ENV['YOUTUBE_KEY'] }
+  config.filter_sensitive_data('<FLICKR_API_KEY>') { ENV.fetch('FLICKR_API_KEY', nil) }
+  config.filter_sensitive_data('<FLICKR_SHARED_SECRET>') { ENV.fetch('FLICKR_SHARED_SECRET', nil) }
+  config.filter_sensitive_data('<JOBS_SECRETS_USER_AGENT>') { ENV.fetch('USAJOBS_USER_AGENT', nil) }
+  config.filter_sensitive_data('<JOBS_SECRETS_AUTHORIZATION_KEY>') { ENV.fetch('USAJOBS_AUTHORIZATION_KEY', nil) }
+  config.filter_sensitive_data('<LOGIN_DOT_GOV_CLIENT_ID>') { ENV.fetch('LOGIN_CLIENT_ID', nil) }
+  config.filter_sensitive_data('<LOGIN_DOT_GOV_IDP_BASE_URL>') { ENV.fetch('LOGIN_IDP_BASE_URL', nil) }
+  config.filter_sensitive_data('<LOGIN_DOT_GOV_HOST>') { ENV.fetch('LOGIN_HOST', nil) }
+  config.filter_sensitive_data('<NEWRELIC_SECRETS_LICENSE_KEY>') { ENV.fetch('NEWRELIC_LICENSE_KEY', nil) }
+  config.filter_sensitive_data('<YOUTUBE_KEY>') { ENV.fetch('YOUTUBE_KEY', nil) }
 
   config.before_record do |i|
     i.response.body.force_encoding('UTF-8')
