@@ -3,9 +3,9 @@ version: 0.2
 env:
   parameter-store:
     # env_used_in_app: "env_in_param_store"
-    SERVER_ADDRESS: "DEPLOY_SERVER_ADDRESS"
+    SERVER_ADDRESS: "DEPLOY_SEARCHGOV_SERVER_ADDRESS "
     RESQUE_SERVER_ADDRESSES: "DEPLOY_RESQUE_SERVER_ADDRESSES"
-    DEPLOYMENT_PATH: "DEPLOY_DEPLOYMENT_PATH"
+    DEPLOYMENT_PATH: "DEPLOY_SEARCHGOV_DEPLOYMENT_PATH"
     SERVER_DEPLOYMENT_USER: "DEPLOY_SERVER_DEPLOYMENT_USER"
     # SSH_KEY_PATH: "DEPLOY_SSH_KEY_PATH" - defined below
 
@@ -36,7 +36,7 @@ phases:
       - CURRENT_LOCATION=$(pwd)  # would look something like this - /codebuild/output/src559980389/src - a temp dir created by codebuild
       - SSH_KEY_PATH="${CURRENT_LOCATION}/${SEARCH_ENV_EC2_KEY}"
       - echo $SSH_KEY_PATH
-      - echo "deploying searchgov appw ith capistrano"
+      - echo "deploying searchgov app with capistrano"
       - bundle install
       - cap staging puma:config puma:systemd:config puma:systemd:enable
       - cap staging deploy
