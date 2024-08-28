@@ -23,9 +23,9 @@ phases:
       python: 3.x
     commands:
       - echo "test"
-      - rbenv install 3.1.4  
-      - rbenv global 3.1.4   
-      - rbenv rehash 
+      # - rbenv install 3.1.4  
+      # - rbenv global 3.1.4   
+      # - rbenv rehash 
       - ruby -v
 
   pre_build:
