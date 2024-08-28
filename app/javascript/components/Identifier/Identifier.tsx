@@ -21,6 +21,7 @@ interface IdentifierProps {
     title: string,
     url: string
   }[] | null;
+  showVoteOrgLink?: boolean;
 }
 
 const StyledUswdsIdentifier = styled(UswdsIdentifier).attrs<{ styles: FontsAndColors; }>((props) => ({
@@ -42,7 +43,7 @@ const StyledUswdsIdentifier = styled(UswdsIdentifier).attrs<{ styles: FontsAndCo
 `;
 
 // eslint-disable-next-line complexity
-export const Identifier = ({ identifierContent, identifierLinks }: IdentifierProps) => {
+export const Identifier = ({ identifierContent, identifierLinks, showVoteOrgLink=false }: IdentifierProps) => {
   const i18n = useContext(LanguageContext);
   const styles = useContext(StyleContext);
 
@@ -53,6 +54,9 @@ export const Identifier = ({ identifierContent, identifierLinks }: IdentifierPro
         {identifierContent.parentAgencyName}
       </Link>
     </> : <></>;
+
+  const agencyIdentifierAriaLabel = (identifierContent?.parentAgencyLink && identifierContent?.parentAgencyName) ?
+    `${i18n.t('officialWebsiteOf')} ${identifierContent.parentAgencyName}`: '';
 
   const primaryIdentifierLinks = identifierLinks ? 
     <>
@@ -67,8 +71,8 @@ export const Identifier = ({ identifierContent, identifierLinks }: IdentifierPro
 
   return (
     <StyledUswdsIdentifier styles={styles}>
-      <div id="serp-identifier-wrapper">
-        <IdentifierMasthead aria-label="Agency identifier">
+      <div id="serp-identifier-wrapper" className="padding-bottom-2">
+        <IdentifierMasthead aria-label={agencyIdentifierAriaLabel}>
           {identifierContent?.logoUrl && (
             <IdentifierLogoWrapper
               logoUrl={identifierContent.logoUrl}
@@ -79,17 +83,28 @@ export const Identifier = ({ identifierContent, identifierLinks }: IdentifierPro
             {primaryIdentifierContent}
           </IdentifierIdentity>
         </IdentifierMasthead>
-        <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
+        <IdentifierLinks navProps={{ 'aria-label': `${i18n.t('ariaLabelIdentifierLinks')}` }}>
           {primaryIdentifierLinks}
         </IdentifierLinks>
         {identifierContent?.lookingForGovernmentServices && (
-          <IdentifierGov aria-label="U.S. government information and services">
+          <IdentifierGov aria-label={i18n.t('ariaLabelUsGovInfo')} className="padding-bottom-0">
             <div className="usa-identifier__usagov-description">
               {i18n.t('lookingForUsGovInfo')}
             </div>
             &nbsp;
             <Link href="https://www.usa.gov/" className="usa-link">
               {i18n.t('visitUsaDotGov')}
+            </Link>
+          </IdentifierGov>
+        )}
+        {showVoteOrgLink && (
+          <IdentifierGov aria-label={i18n.t('ariaLabelVoteDotGovInfo')} className="padding-bottom-0 padding-top-0">
+            <div className="usa-identifier__usagov-description">
+              {i18n.t('lookingForVoterRegInfo')}
+            </div>
+            &nbsp;
+            <Link href="https://www.vote.gov/" className="usa-link">
+              {i18n.t('visitVoteDotGov')}
             </Link>
           </IdentifierGov>
         )}

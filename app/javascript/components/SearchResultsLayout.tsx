@@ -27,6 +27,7 @@ export interface PageData {
     text: string;
   };
   homepageUrl: string;
+  showVoteOrgLink?: boolean;
 }
 
 export interface Language {
@@ -353,6 +354,7 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
         <Identifier
           identifierContent={identifierContent}
           identifierLinks={identifierLinks}
+          showVoteOrgLink={page.showVoteOrgLink}
         />
       </StyleContext.Provider>
     </LanguageContext.Provider>
