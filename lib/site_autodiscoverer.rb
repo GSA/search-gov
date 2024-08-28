@@ -39,22 +39,23 @@ class SiteAutodiscoverer
   end
 
   def autodiscover_favicon_url
-    favicon_url = extract_favicon_url
-    favicon_url ||= detect_default_favicon
+    favicon_url = extract_favicon_url || detect_default_favicon
     if favicon_url.present? && @site.favicon_url != favicon_url
-      @site.update!(favicon_url: favicon_url)
+      @site.update!(favicon_url:)
       @discovered_resources['Favicon URL'] << favicon_url
     end
   rescue => e
-    Rails.logger.error("Error when autodiscovering favicon for #{@site.name}: #{e.message}")
+    Rails.logger.error("Error when autodiscovering favicon for #{@site.name}", e)
   end
 
   def autodiscover_rss_feeds
+    return unless website_doc
+
     website_doc.xpath(RSS_LINK_XPATH).each do |link_element|
       create_rss_feed(*extract_title_and_valid_url_from_rss_feed_link(link_element))
     end
   rescue => e
-    Rails.logger.error("Error when autodiscovering rss feeds for #{@site.name}: #{e.message}")
+    Rails.logger.error("Error when autodiscovering rss feeds for #{@site.name}", e)
   end
 
   def autodiscover_social_media
@@ -63,7 +64,7 @@ class SiteAutodiscoverer
       uniq.
       each { |href| create_social_media_profile(href) }
   rescue => e
-    Rails.logger.error("Error when autodiscovering social media for #{@site.name}: #{e.message}")
+    Rails.logger.error("Error when autodiscovering social media for #{@site.name}", e)
   end
 
   def create_social_media_profile(href)

@@ -20,7 +20,7 @@ class I14yDrawer < ApplicationRecord
   rescue StandardError => error
     Rails.logger.error(
       "Trouble fetching statistics for the #{handle} drawer:\n" \
-      "#{error.class}: #{error}"
+      "#{error.class}:", error
     )
     nil
   end

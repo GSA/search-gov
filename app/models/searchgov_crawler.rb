@@ -34,7 +34,7 @@ class SearchgovCrawler
           begin
             process_page(page)
           rescue => e
-            Rails.logger.error("[SearchgovCrawler] Error crawling #{page.url}: #{e}".red)
+            Rails.logger.error("[SearchgovCrawler] Error crawling #{page.url}:", e)
           end
         end
       end

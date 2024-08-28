@@ -30,7 +30,7 @@ const StyledPrimaryNav = styled(PrimaryNav).attrs<{ styles: FontsAndColors }>((p
   }
 `;
 
-const buildLink = ({ active, label, url }: NavigationLink, key = 0) => <a href={url} key={key} className={ active && 'usa-current' || '' }>{label}</a>;
+const buildLink = ({ active, label, url }: NavigationLink, key = 0) => <a href={url} key={key} className={ active && 'usa-current' || '' } aria-current={active ? 'page' : undefined}>{label}</a>;
 
 export const isThereEnoughSpace = (itemToAddWidth: number) => {
   const container = document.getElementById('tabs-container');
@@ -135,7 +135,7 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [], relatedSi
       <GridContainer>
         <Header basic={true} className="vertical-wrapper">
           <div className="usa-nav-container" id="tabs-container">
-            <StyledPrimaryNav items={navItems} styles={styles} />
+            <StyledPrimaryNav items={navItems} styles={styles} aria-label={i18n.t('ariaLabelVerticalNav')} />
           </div>
         </Header>
       </GridContainer>

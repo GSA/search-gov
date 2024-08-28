@@ -84,7 +84,7 @@ class RtuMonthlyReport
       size: 0
     )['aggregations']['agg']['buckets']
   rescue StandardError => error
-    Rails.logger.error("Error querying top_n data: #{error}")
+    Rails.logger.error('Error querying top_n data:', error)
     []
   end
 end

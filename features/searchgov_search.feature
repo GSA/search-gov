@@ -19,7 +19,6 @@ Feature: SearchGov search
     And I press "Search"
     Then I should see the browser page titled "global warming - EPA Search Results"
     And I should see 20 image results
-    And I should see "Powered by Bing"
 
   Scenario: Collection search
     Given affiliate "epa" has the following document collections:

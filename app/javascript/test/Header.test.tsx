@@ -1,7 +1,20 @@
 import '@testing-library/jest-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
 import React from 'react';
+import { I18n } from 'i18n-js';
 import { Header } from '../components/Header';
+import { LanguageContext } from '../contexts/LanguageContext';
+
+jest.mock('i18n-js', () => jest.requireActual('i18n-js/dist/require/index'));
+
+const locale = {
+  en: {
+    searches: { menu: 'Menu' },
+    ariaLabelHeader: 'Primary navigation'
+  }
+};
+
+const i18n = new I18n(locale);
 
 describe('Header', () => {
   const page = {
@@ -12,7 +25,8 @@ describe('Header', () => {
       url: 'https://search.gov/assets/gsa-logo-893b811a49f74b06b2bddbd1cde232d2922349c8c8c6aad1d88594f3e8fe42bd097e980c57c5e28eff4d3a9256adb4fcd88bf73a5112833b2efe2e56791aad9d.svg',
       text: 'search.gov'
     },
-    homepageUrl: 'https://search.gov'
+    homepageUrl: 'https://search.gov',
+    showVoteOrgLink: false
   };
 
   const primaryHeaderLinks = [
@@ -26,7 +40,11 @@ describe('Header', () => {
   ];
 
   it('shows agency title and links in the basic header', () => {
-    render(<Header page={page} isBasic={true} primaryHeaderLinks={primaryHeaderLinks} secondaryHeaderLinks={secondaryHeaderLinks} />);
+    render(
+      <LanguageContext.Provider value={i18n} >
+        <Header page={page} isBasic={true} primaryHeaderLinks={primaryHeaderLinks} secondaryHeaderLinks={secondaryHeaderLinks} />
+      </LanguageContext.Provider>
+    );
     const title = screen.getByText(/Search.gov/i);
     expect(title).toBeInTheDocument();
 
@@ -55,7 +73,11 @@ describe('Header', () => {
   });
 
   it('shows agency title and links in the extended header', () => {
-    render(<Header page={page} isBasic={false} primaryHeaderLinks={primaryHeaderLinks} secondaryHeaderLinks={secondaryHeaderLinks} />);
+    render(
+      <LanguageContext.Provider value={i18n} >
+        <Header page={page} isBasic={false} primaryHeaderLinks={primaryHeaderLinks} secondaryHeaderLinks={secondaryHeaderLinks} />
+      </LanguageContext.Provider>
+    );
 
     const title = screen.getByText(/Search.gov/i);
     expect(title).toBeInTheDocument();
@@ -80,7 +102,11 @@ describe('Header', () => {
   });
 
   it('shows agency logo and alt text in the basic header', () => {
-    render(<Header page={page} isBasic={true} />);
+    render(
+      <LanguageContext.Provider value={i18n} >
+        <Header page={page} isBasic={true} />
+      </LanguageContext.Provider>
+    );
 
     const img = Array.from(document.getElementsByClassName('usa-identifier__logo')).pop() as HTMLImageElement;
 
@@ -89,7 +115,11 @@ describe('Header', () => {
   });
 
   it('shows agency logo and alt text in the basic header', () => {
-    render(<Header page={page} isBasic={false} />);
+    render(
+      <LanguageContext.Provider value={i18n} >
+        <Header page={page} isBasic={false} />
+      </LanguageContext.Provider>
+    );
 
     const img = Array.from(document.getElementsByClassName('usa-identifier__logo')).pop() as HTMLImageElement;
 

@@ -15,9 +15,11 @@ import 'react-sliding-pane/dist/react-sliding-pane.css';
 import './SearchBar.css';
 
 const searchMagnifySvgIcon = () => {
+  const i18n = useContext(LanguageContext);
+  
   return (
     <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="usa-search__submit-icon">
-      <title>Search</title>
+      <title>{i18n.t('search')}</title>
       <path d="M0 0h24v24H0z" fill="none"/>
       <path className="search-icon-glass" fill="#FFFFFF" d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
     </svg>
@@ -50,7 +52,6 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [],
   const [searchQuery, setSearchQuery] = useState(query);
 
   const [isMobileView, setMobileView] = useState(false);
-  
 
   const searchUrlParam = 'query';
 
@@ -103,7 +104,7 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [],
               className="usa-search usa-search--small" 
               role="search" 
               onSubmit={querySubmit}>
-              <label className="usa-sr-only" htmlFor="search-field">Search</label>
+              <label className="usa-sr-only" htmlFor="search-field">{i18n.t('search')}</label>
               <input 
                 className="usa-input" 
                 id="search-field" 

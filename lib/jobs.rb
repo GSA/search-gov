@@ -26,11 +26,11 @@ module Jobs
   SEARCH_RADIUS = 75
 
   def self.establish_connection!
-    @endpoint  = ENV['USAJOBS_ENDPOINT']          || Rails.application.secrets.dig(:jobs, :endpoint)
-    host       = ENV['USAJOBS_HOST']              || Rails.application.secrets.dig(:jobs, :host)
-    key        = ENV['USAJOBS_AUTHORIZATION_KEY'] || Rails.application.secrets.dig(:jobs, :authorization_key)
-    user_agent = ENV['USAJOBS_USER_AGENT']        || Rails.application.secrets.dig(:jobs, :user_agent)
-    adapter    = ENV['USAJOBS_ADAPTER']           || Rails.application.secrets.dig(:jobs, :adapter)
+    @endpoint  = ENV.fetch('USAJOBS_ENDPOINT')
+    host       = ENV.fetch('USAJOBS_HOST')
+    key        = ENV.fetch('USAJOBS_AUTHORIZATION_KEY')
+    user_agent = ENV.fetch('USAJOBS_USER_AGENT')
+    adapter    = ENV.fetch('USAJOBS_ADAPTER').to_sym
 
     @usajobs_api_connection = Faraday.new(host) do |conn|
       conn.headers['Authorization-Key'] = key
@@ -52,7 +52,7 @@ module Jobs
       @usajobs_api_connection.get(@endpoint, params(job_options)).body
     end
   rescue => error
-    Rails.logger.error("Trouble fetching jobs information: #{error}")
+    Rails.logger.error('Trouble fetching jobs information:', error)
     nil
   end
 

@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 7.1.0'
+gem 'dotenv', '~> 3.1', '>= 3.1.2'
+
+gem 'base64', '~> 0.2.0'
 
 gem 'rake', '~> 13.0.6'
 gem 'rack-contrib', '~> 2.5.0'
@@ -33,6 +36,9 @@ gem 'kt-paperclip', '~> 7.1.0'
 gem 'aws-sdk-s3', '~> 1.102.0'
 gem 'googlecharts', '~> 1.6.12'
 gem 'flickraw', '~> 0.9.9'
+gem 'mutex_m', '~> 0.2.0'
+gem 'bigdecimal', '~> 3.1', '>= 3.1.8'
+gem 'csv', '~> 3.3'
 # SRCH-3837: We need this change: https://github.com/activescaffold/active_scaffold/pull/666
 # for ruby 3, but all current releases require Rails < 6.2 (though main is looser).
 gem 'active_scaffold', git: 'https://github.com/activescaffold/active_scaffold',
@@ -104,7 +110,7 @@ gem 'after_commit_action', '~> 1.1'
 gem 'aasm', '~> 5.5'
 gem 'active_scheduler', '~> 0.7.0'
 gem 'retriable', '~> 3.1'
-gem 'cld3', '~> 3.5.0'
+gem 'cld3', '~> 3.6.0'
 gem 'activejob-uniqueness', '~> 0.2'
 # Temporarily locking the version to resolve SRCH-3788.
 # The fix for the bug in SRCH-3788 is NOT covered by automated specs.
@@ -121,7 +127,6 @@ gem 'net-http'
 # Assets-related gems
 gem 'coffee-rails', '~> 5.0.0'
 gem 'uglifier', '~> 4.2.0'
-gem 'compass-rails', '~> 4.0.0'
 gem 'compass-blueprint', '~> 1.0.0'
 gem 'jquery-ui-rails', '~> 7.0.0'
 gem 'jquery-rails', '~> 4.4.0'

@@ -1,4 +1,4 @@
-ARG RUBY_VERSION=3.1.4
+ARG RUBY_VERSION=3.3.4
 FROM public.ecr.aws/docker/library/ruby:$RUBY_VERSION-slim as base
 
 # Rails app lives here

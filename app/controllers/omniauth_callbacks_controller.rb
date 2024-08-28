@@ -7,10 +7,11 @@ class OmniauthCallbacksController < ApplicationController
   def login_dot_gov
     try_to_login
   rescue LandingPageFinder::Error => e
+    Rails.logger.error e
     flash[:error] = e.message
     redirect_to('/login')
   rescue OmniauthError => e
-    Rails.logger.error e.message
+    Rails.logger.error e
     flash[:error] = <<~MESSAGE
       Error logging in. Please reach out to
       #{SUPPORT_EMAIL_ADDRESS} if the problem persists.
