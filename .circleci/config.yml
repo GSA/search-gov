@@ -99,11 +99,6 @@ jobs:
           command: dockerize -wait tcp://localhost:9200 -timeout 1m
 
       - run:
-          name: Use developer secrets
-          command: |
-            mv config/secrets.yml.dev config/secrets.yml
-
-      - run:
           name: Install Code Climate Test Reporter
           command: |
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
@@ -331,6 +326,7 @@ workflows:
             parameters:
               ruby_version:
                 - 3.1.4
+                - 3.3.4
               elasticsearch_version:
                 - 7.17.7
                 # not yet compatible with Elasticsearch 8
@@ -345,6 +341,7 @@ workflows:
             parameters:
               ruby_version:
                 - 3.1.4
+                - 3.3.4
               elasticsearch_version:
                 - 7.17.7
               mysql_version:
@@ -358,6 +355,7 @@ workflows:
             parameters:
               ruby_version:
                 - 3.1.4
+                - 3.3.4
               elasticsearch_version:
                 - 7.17.7
               mysql_version:
@@ -371,6 +369,7 @@ workflows:
             parameters:
               ruby_version:
                 - 3.1.4
+                - 3.3.4
               elasticsearch_version:
                 - 7.17.7
               mysql_version:
@@ -388,6 +387,7 @@ workflows:
             parameters:
               ruby_version:
                 - 3.1.4
+                - 3.3.4
               elasticsearch_version:
                 - 7.17.7
               mysql_version:

@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { render, within } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import { I18n } from 'i18n-js';
 import React from 'react';
 
@@ -31,7 +31,9 @@ const identifierLinks = [
 
 const locale = {
   en: {
-    lookingForUsGovInfo: 'Looking for U.S. Government information and services?'
+    lookingForUsGovInfo: 'Looking for U.S. Government information and services?',
+    lookingForVoterRegInfo: 'Looking for voter registration information?',
+    visitVoteDotGov: 'Visit Vote.gov'
   }
 };
 
@@ -43,14 +45,14 @@ const i18n = new I18n(locale);
 
 describe('Identifier', () => {
   it('uses declared domainName', () => {
-    render(<Identifier identifierContent={identifierContent} identifierLinks={identifierLinks} />);
+    render(<Identifier identifierContent={identifierContent} identifierLinks={identifierLinks} showVoteOrgLink={false} />);
 
     const [identifierDomainName] = Array.from(document.getElementsByClassName('usa-identifier__identity-domain'));
     expect(identifierDomainName).toHaveTextContent('example domain name');
   });
 
   it('uses declared parentAgencyName and parentAgencyLink', () => {
-    render(<Identifier identifierContent={identifierContent} identifierLinks={identifierLinks} />);
+    render(<Identifier identifierContent={identifierContent} identifierLinks={identifierLinks} showVoteOrgLink={false} />);
 
     const identityDisclaimer = Array.from(document.getElementsByClassName('usa-identifier__identity-disclaimer')).pop() as HTMLParagraphElement;
     expect(identityDisclaimer).toHaveTextContent('My Agency');
@@ -58,7 +60,7 @@ describe('Identifier', () => {
   });
 
   it('uses declared identifierLinks', () => {
-    render(<Identifier identifierContent={identifierContent} identifierLinks={identifierLinks} />);
+    render(<Identifier identifierContent={identifierContent} identifierLinks={identifierLinks} showVoteOrgLink={false} />);
 
     const linksArray = Array.from(document.getElementsByClassName('usa-identifier__required-link'));
     const [firstLink, secondLink] = linksArray.slice(linksArray.length - 2);
@@ -70,7 +72,7 @@ describe('Identifier', () => {
   });
 
   it('has a logo with alt text', () => {
-    render(<Identifier identifierContent={identifierContent} identifierLinks={identifierLinks} />);
+    render(<Identifier identifierContent={identifierContent} identifierLinks={identifierLinks} showVoteOrgLink={false} />);
 
     const img = Array.from(document.getElementsByClassName('usa-identifier__logo-img')).pop() as HTMLImageElement;
 
@@ -81,7 +83,7 @@ describe('Identifier', () => {
   it('has a link for more US Government services', () => {
     render(
       <LanguageContext.Provider value={i18n} >
-        <Identifier identifierContent={identifierContent} identifierLinks={identifierLinks} />
+        <Identifier identifierContent={identifierContent} identifierLinks={identifierLinks} showVoteOrgLink={false} />
       </LanguageContext.Provider>
     );
 
@@ -94,11 +96,21 @@ describe('Identifier', () => {
   it('does not have a link for more US Government services when the link is disabled', () => {
     render(
       <LanguageContext.Provider value={i18n} >
-        <Identifier identifierContent={identifierContentWithoutGovServices} identifierLinks={identifierLinks} />
+        <Identifier identifierContent={identifierContentWithoutGovServices} identifierLinks={identifierLinks} showVoteOrgLink={false} />
       </LanguageContext.Provider>
     );
 
     const identifier = document.getElementById('serp-identifier-wrapper');
     expect(identifier).not.toHaveTextContent('Looking for U.S. Government information and services?');
+  });
+
+  it('has a link for vote.gov', () => {
+    render(
+      <LanguageContext.Provider value={i18n} >
+        <Identifier identifierContent={identifierContent} identifierLinks={identifierLinks} showVoteOrgLink={true} />
+      </LanguageContext.Provider>
+    );
+    expect(screen.getByText('Looking for voter registration information?')).toBeInTheDocument();
+    expect(screen.getByText('Visit Vote.gov')).toBeInTheDocument();
   });
 });

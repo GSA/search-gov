@@ -29,9 +29,9 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 4353eeca-6aa6-4c7d-b26b-caa170b2891b
+      - 79d92474-b61d-4978-b250-325ab6923b06
       X-Runtime:
-      - '0.214242'
+      - '0.037791'
       Vary:
       - Origin
       Transfer-Encoding:
@@ -39,7 +39,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"developer_message":"Unauthorized","status":400}'
-  recorded_at: Tue, 30 Jul 2024 14:13:09 GMT
+  recorded_at: Wed, 14 Aug 2024 15:51:52 GMT
 - request:
     method: delete
     uri: http://localhost:8081/api/v1/documents/e8600f0ddb1fb3af8d19cd417bc0cff80220aa86254468b20363fa6cb603ce4e
@@ -69,9 +69,9 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - d61e68d2-481a-47fe-a390-333199575606
+      - 21956e8c-92fe-40b1-8f28-f2698fd4839b
       X-Runtime:
-      - '0.010124'
+      - '0.015506'
       Vary:
       - Origin
       Transfer-Encoding:
@@ -79,5 +79,5 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"developer_message":"Unauthorized","status":400}'
-  recorded_at: Tue, 30 Jul 2024 14:13:09 GMT
+  recorded_at: Wed, 14 Aug 2024 15:51:52 GMT
 recorded_with: VCR 6.2.0

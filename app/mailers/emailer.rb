@@ -3,7 +3,7 @@
 class Emailer < ApplicationMailer
   include ActionView::Helpers::TextHelper
   include ActionView::Helpers::NumberHelper
-  default_url_options[:host] = ENV['APP_HOST'] || Rails.application.secrets.dig(:organization, :app_host)
+  default_url_options[:host] = ENV.fetch('APP_HOST')
   default_url_options[:protocol] = 'https'
 
   def new_user_to_admin(user)
