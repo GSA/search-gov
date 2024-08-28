@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe UrlsController do
-  urls_example = ['http://example.com']
+  let(:urls_example) { ['http://example.com'] }
+
   describe 'test controller #create' do
     it 'returns a JSON response with a job_id' do
       post :create, params: { urls: urls_example }
@@ -11,7 +12,9 @@ describe UrlsController do
     end
 
     it 'enqueues a SearchgovUrlsJob with the provided URLs' do
-      allow(SearchgovUrlsJob).to receive(:perform_later)
+      mock_scheduled_job = double
+      allow(mock_scheduled_job).to receive(:job_id).and_return('12345')
+      allow(SearchgovUrlsJob).to receive(:perform_later).and_return(mock_scheduled_job)
       post :create, params: { urls: urls_example }
       expect(SearchgovUrlsJob).to have_received(:perform_later).with(anything, urls_example)
     end
