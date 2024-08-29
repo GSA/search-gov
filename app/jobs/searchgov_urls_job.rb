@@ -3,10 +3,10 @@
 class SearchgovUrlsJob < ApplicationJob
   queue_as :searchgov
 
-  def perform(job_id, urls)
+  def perform(name, urls)
     @time_started = Time.zone.now
     @total_count = urls.count
-    @uploader = BulkUrlUploader.new(job_id, urls)
+    @uploader = BulkUrlUploader.new(name, urls)
     @uploader.upload_and_index
     log_results
   end

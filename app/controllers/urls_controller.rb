@@ -21,6 +21,6 @@ class UrlsController < ApplicationController
   private
 
   def enqueue_job(urls)
-    SearchgovUrlsJob.perform_later('bulk_url_indexer_endpoint', urls)
+    SearchgovUrlsJob.perform_later('bulk_urls_indexing_endpoint', urls)
   end
 end
