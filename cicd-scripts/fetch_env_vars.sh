@@ -63,4 +63,4 @@ find /home/search/searchgov/ -type d -exec chmod 2777 {} \;
 
 umask 000
 
-rm -rf /home/search/cicd_temp/*
+sudo rm -rf /home/search/cicd_temp/*
