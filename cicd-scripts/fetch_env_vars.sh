@@ -64,4 +64,3 @@ find /home/search/searchgov/ -type d -exec chmod 2777 {} \;
 umask 000
 
 sudo rm -rf /home/search/cicd_temp/*
-sleep 10
