@@ -20,12 +20,6 @@ class UrlsController < ApplicationController
 
   private
 
-  def permitted_params
-    params.permit(
-      :urls
-    )
-  end
-
   def enqueue_job(urls)
     SearchgovUrlsJob.perform_later('bulk_url_indexer_endpoint', urls)
   end
