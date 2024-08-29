@@ -59,8 +59,8 @@ aws ssm get-parameter --name "LOGIN_DOT_GOV_PEM" --region us-east-2 --with-decry
 chown -R search:search /home/search/searchgov/
 chmod -R 777 /home/search/searchgov/
 
-# Set setgid bit on directories - new files or directories created will inherit the group ownership of the parent directory.
 find /home/search/searchgov/ -type d -exec chmod 2777 {} \;
 
-# Ensure new files are created with rwxrwxrw- permissions
 umask 000
+
+rm -rf /home/search/cicd_temp/*
