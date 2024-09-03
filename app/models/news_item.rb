@@ -30,7 +30,7 @@ class NewsItem < ApplicationRecord
   }
   validate :unique_link
   belongs_to :rss_feed_url
-  serialize :properties, Hash
+  serialize :properties, JSON
   store_accessor :properties, :duration
 
   alias_attribute :url, :link
@@ -45,10 +45,9 @@ class NewsItem < ApplicationRecord
   # When that is done, we can remove any code related to image properties.
   # The 'duration' property is still used for videos.
   def tags
-    if properties.key?(:media_content) and
-       properties[:media_content][:url].present? and
-       properties.key?(:media_thumbnail) and
-       properties[:media_thumbnail][:url].present?
+    if properties.present? &&
+       properties.key?(:media_content) && properties[:media_content].is_a?(Hash) && properties[:media_content][:url].present? &&
+       properties.key?(:media_thumbnail) && properties[:media_thumbnail].is_a?(Hash) && properties[:media_thumbnail][:url].present?
       %w[image]
     else
       []
