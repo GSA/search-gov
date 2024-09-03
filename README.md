@@ -186,10 +186,9 @@ We use [Rubocop](https://rubocop.org/) for static code analysis. Settings specif
 
 To run test searches, you will need a working Bing API key. You can request one from Bing, or ask a friendly coworker.
 
-1. Add the Bing `web_subscription_id` to `.env` file:
-```yaml
-  bing_v7:
-    web_subscription_id: *****
+1. Add the Bing `BING_WEB_SUBSCRIPTION_ID` to `.env` file:
+```  
+BING_WEB_SUBSCRIPTION_ID: *****
 ```
 2. Start your local development environment:
 ```
