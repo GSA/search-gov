@@ -13,6 +13,7 @@ module Admin
         enqueue_job
         flash[:success] = success_message(@file.original_filename)
       rescue BulkUrlUploader::Error => e
+        Rails.logger.error 'Url upload failed', e
         flash[:error] = e.message
       end
 

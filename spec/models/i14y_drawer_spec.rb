@@ -99,6 +99,7 @@ describe I14yDrawer do
       before do
         allow(I14yCollections).to receive(:get).with('one').
           and_raise StandardError.new('fail')
+        allow(Rails.logger).to receive(:error)
       end
 
       it 'returns nil' do
@@ -106,9 +107,10 @@ describe I14yDrawer do
       end
 
       it 'logs the error' do
-        expect(Rails.logger).to receive(:error).
-          with(/Trouble fetching statistics for the one drawer/)
         drawer.stats
+        expect(Rails.logger).to have_received(:error).with(
+          "Trouble fetching statistics for the one drawer:\nStandardError:", instance_of(StandardError)
+        )
       end
     end
   end

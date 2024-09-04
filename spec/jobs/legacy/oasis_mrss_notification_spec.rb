@@ -67,7 +67,7 @@ describe OasisMrssNotification, '.perform' do
 
   context 'when something goes wrong' do
     before do
-      allow(HttpConnection).to receive(:get).and_raise Exception
+      allow(HttpConnection).to receive(:get).and_raise StandardError
     end
 
     it 'should log warning' do

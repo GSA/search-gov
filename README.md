@@ -108,18 +108,6 @@ Use [Yarn](https://classic.yarnpkg.com/en/) to install the required JavaScript d
     $ npm install --global yarn
     $ yarn install
 
-## Service credentials; how we protect secrets
-
-The app does its best to avoid interacting with most remote services during the test phase through heavy use of the [VCR](/wiki/Editing-Recording-and-Re-recording-API-calls-with-VCR-(WIP)) gem.
-
-Run this command to get a valid `secrets.yml` file that will work for running existing specs:
-
-    $ cp config/secrets.yml.dev config/secrets.yml
-
-If you find that you need to run specs that interact with a remote service, you'll need to put valid credentials into your `secrets.yml` file.
-
-Anything listed in the `secret_keys` entry of that file will automatically be masked by VCR in newly-recorded cassettes.
-
 ## Data
 
 ### Elasticsearch Indexes
@@ -198,10 +186,9 @@ We use [Rubocop](https://rubocop.org/) for static code analysis. Settings specif
 
 To run test searches, you will need a working Bing API key. You can request one from Bing, or ask a friendly coworker.
 
-1. Add the Bing `web_subscription_id` to `config/secrets.yml`:
-```yaml
-  bing_v7:
-    web_subscription_id: *****
+1. Add the Bing `BING_WEB_SUBSCRIPTION_ID` to `.env` file:
+```  
+BING_WEB_SUBSCRIPTION_ID: *****
 ```
 2. Start your local development environment:
 ```

@@ -8,7 +8,7 @@ describe Admin::QueryCtrsController do
 
   before do
     activate_authlogic
-    allow(QueryCtr).to receive(:new).with(instance_of(Fixnum), 'BOOS', 'usagov').and_return query_ctr
+    allow(QueryCtr).to receive(:new).with(instance_of(Integer), 'BOOS', 'usagov').and_return query_ctr
   end
 
   describe "GET 'show'" do

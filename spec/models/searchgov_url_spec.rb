@@ -786,11 +786,10 @@ describe SearchgovUrl do
       end
 
       context 'when the url had previously been indexed' do
-        before { searchgov_url.stub(:indexed?).and_return(true) }
+        before { allow(searchgov_url).to receive(:indexed?).and_return(true) }
 
         it 'deletes the document' do
-          expect(I14yDocument).to receive(:delete).
-            with(handle: 'searchgov', document_id: searchgov_url.document_id)
+          expect(I14yDocument).to receive(:delete).with(handle: 'searchgov', document_id: searchgov_url.document_id)
           fetch
         end
 
@@ -802,9 +801,7 @@ describe SearchgovUrl do
 
           it 'logs the error' do
             fetch
-            expect(Rails.logger).to have_received(:error).with(
-              /Unable to delete Searchgov i14y document.*something went wrong/
-            )
+            expect(Rails.logger).to have_received(:error).with("[SearchgovUrl] Unable to delete Searchgov i14y document #{searchgov_url.document_id}:", instance_of(RuntimeError))
           end
         end
       end

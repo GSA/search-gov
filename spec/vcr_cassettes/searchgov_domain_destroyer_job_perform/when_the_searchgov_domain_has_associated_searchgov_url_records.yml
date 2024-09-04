@@ -1,0 +1,83 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: http://localhost:8081/api/v1/documents/f726a124ef2927d21d01e81377b94ede7ae51ea1444ff5e1638f7d5cdfdcf343
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic c2VhcmNoZ292OnNlYXJjaGdvdl90b2tlbg==
+      User-Agent:
+      - Faraday v0.17.6
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 79d92474-b61d-4978-b250-325ab6923b06
+      X-Runtime:
+      - '0.037791'
+      Vary:
+      - Origin
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"developer_message":"Unauthorized","status":400}'
+  recorded_at: Wed, 14 Aug 2024 15:51:52 GMT
+- request:
+    method: delete
+    uri: http://localhost:8081/api/v1/documents/e8600f0ddb1fb3af8d19cd417bc0cff80220aa86254468b20363fa6cb603ce4e
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic c2VhcmNoZ292OnNlYXJjaGdvdl90b2tlbg==
+      User-Agent:
+      - Faraday v0.17.6
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 21956e8c-92fe-40b1-8f28-f2698fd4839b
+      X-Runtime:
+      - '0.015506'
+      Vary:
+      - Origin
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"developer_message":"Unauthorized","status":400}'
+  recorded_at: Wed, 14 Aug 2024 15:51:52 GMT
+recorded_with: VCR 6.2.0

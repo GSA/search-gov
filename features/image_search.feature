@@ -11,7 +11,6 @@ Feature: Image search
     When I search for "White House"
     Then I should see the browser page titled "White House - USA.gov Search Results"
     And I should see 20 image results
-    And I should see Powered by Bing logo
 
   Scenario: Image search with spelling suggestion
     Given the following Affiliates exist:

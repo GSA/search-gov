@@ -26,7 +26,7 @@ class RtuTopN
   def response
     Es::ELK.client_reader.search(query_opts)
   rescue StandardError => error
-    Rails.logger.error("Error querying top_n data: #{error}")
+    Rails.logger.error('Error querying top_n data:', error)
     {}
   end
 

@@ -7,8 +7,8 @@ require 'resque/scheduler/server'
 require 'resque/server'
 require 'resque/job_timeout'
 
-host = ENV['REDIS_HOST'] || Rails.application.secrets.dig(:system_redis, :host)
-port = ENV['REDIS_PORT'] || Rails.application.secrets.dig(:system_redis, :port)
+host = ENV['REDIS_HOST']
+port = ENV['REDIS_PORT']
 
 Resque.redis = "#{host}:#{port}"
 

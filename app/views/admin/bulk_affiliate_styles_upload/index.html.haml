@@ -1,0 +1,41 @@
+%h2
+  Bulk Affiliate Styles Upload
+%p
+  To upload a list of URLs to be crawled, follow these instructions:
+  %ul.bulk-upload-instructions
+    %li
+      Create a new CSV file containing styles of one affiliate per line. An example of this format
+      is shown below.
+    %li
+      Save the file on your computer; you can name the file whatever you like, as
+      long as it's plain text and has a .csv extension.
+    %li
+      The maximum file size is #{number_to_human_size(BulkAffiliateStyles::FileValidator::MAXIMUM_FILE_SIZE)}.
+    %li
+      Browse for the file on your computer.
+    %li
+      Upload the file to Search.gov using the upload button below.
+    %li
+      You will receive an email when processing of your URLs is complete.
+  %p
+    %ul.bulk-upload-instructions
+      %li
+        %strong
+          Sample file format:
+      %li
+        %strong
+          Headers Section:
+      %li
+        %textarea
+          ID,Handle,primary_header_links 0 - title,primary_header_links 0 - url,primary_header_links 1 - title,primary_header_links 1 - url,primary_header_links 2 - title,primary_header_links 2 - url,primary_header_links 3 - title,primary_header_links 3 - url,primary_header_links 4 - title,primary_header_links 4 - url,primary_header_links 5 - title,primary_header_links 5 - url,primary_header_links 6 - title,primary_header_links 6 - url,primary_header_links 7 - title,primary_header_links 7 - url,primary_header_links 8 - title,primary_header_links 8 - url,primary_header_links 9 - title,primary_header_links 9 - url,primary_header_links 10 - title,primary_header_links 10 - url,secondary_header_links 0 - title,secondary_header_links 0 - url,secondary_header_links 1 - title,secondary_header_links 1 - url,secondary_header_links 2 - url,secondary_header_links 2 - url,logo lookup,display_logo_only,footer_links 0 - title,footer_links 0 - url,footer_links 1 - title,footer_links 1 - url,footer_links 2 - title,footer_links 2 - url,footer_links 3 - title,footer_links 3 - url,footer_links 4 - title,footer_links 4 - url,footer_links 5 - title,footer_links 5 - url,footer_links 6 - title,footer_links 6 - url,footer_links 7 - title,footer_links 7 - url,footer_links 8 - title,footer_links 8 - url,footer_links 9 - title,footer_links 9 - url,footer_links 10 - title,footer_links 10 - url,footer_links 11 - title,footer_links 11 - url,footer_links 12 - title,footer_links 12 - url,identifier_links 0 - title,identifier_links 0 - url,identifier_links 1 - title,identifier_links 1 - url,identifier_links 2 - title,identifier_links 2 - url,identifier_links 3 - title,identifier_links 3 - url,identifier_links 4 - title,identifier_links 4 - url,identifier_links 5 - title,identifier_links 5 - url,identifier_links 6 - title,identifier_links 6 - url,site_parent_agency_name,site_parent_agency_link,site_identifier_domain_name,primary_navigation_font_family,Primary_navigation_font_weight,"header_links_font_family (""header secondary links"")",footer_and_results_font_family,Identifier_font_family,banner_background_color,banner_text_color,header_bg_color,header_text_color,header_navigation_background_color,header_primary_link_color,header_secondary_link_color,page_background_color,button_background_color,active_search_tab_navigation_color,search_tab_navigation_link_color,best_bet_background_color,health_benefits_header_background_color,result_title_color,result_title_link_visited_color,result_description_color,result_url_color,section_title_color,footer_background_color,footer_link_text_color,identifier_background_color,identifier_heading_color,identifier_link_color
+      %li
+        %strong
+          Sample Affiliate data row:
+      %li
+        %textarea
+          3,116acw,,,,,,,,,,,,,,,,,,,,,,,,,,,,,3,TRUE,,,,,,,,,,,,,,,,,,,,,,,,,,,Open Government,,No Fear Act,,508 Compliance,,Plain Writing,,Privacy Policy,,Information Quality,,,,,,,"""'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'""",normal,"""'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'""","""'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'""","""'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'""",#144a75,#000000,#144a75,#FFFFFF,#144a75,#000000,#000000,#FFFFFF,"#d8d8d8
+
+    = form_tag upload_admin_bulk_affiliate_styles_upload_index_path, :multipart => true, :class => 'form' do
+      = file_field_tag 'bulk_upload_affiliate_styles', :accept => 'text/csv'
+      %p
+      = submit_tag "Upload", :class => 'submit btn-upload'
