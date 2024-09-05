@@ -1,10 +1,10 @@
 import React from 'react';
 import { GridContainer, Grid } from '@trussworks/react-uswds';
 import parse from 'html-react-parser';
-import ResultTitle from '../ResultGrid/ResultTitle';
 import { clickTracking } from '../../../utils';
 import { moduleCode } from '../../../utils/constants';
-
+import ResultGridWrapper from '../ResultGrid/ResultGridWrapper';
+import ResultTitle from '../ResultGrid/ResultTitle';
 interface TextBestBetProps {
   affiliate: string;
   title: string;
@@ -22,7 +22,9 @@ export const TextBestBet = ({ affiliate, title, url, description, position, quer
 
   return (
     <GridContainer className='result search-result-item boosted-content'>
-      <Grid row gap="md">
+      <ResultGridWrapper
+        url={url}
+        clickTracking={() => clickTracking(affiliate, module, query, position, url, vertical)}>
         <Grid col={true} className='result-meta-data'>
           <div className='result-title'>
             <h2 className='result-title-label'>
@@ -39,7 +41,7 @@ export const TextBestBet = ({ affiliate, title, url, description, position, quer
             <div className='result-url-text'>{url}</div>
           </div>
         </Grid>
-      </Grid>
+      </ResultGridWrapper>
     </GridContainer>
   );
 };

@@ -101,3 +101,60 @@ describe('Best Bets', () => {
     expect(fetch).toHaveBeenCalledTimes(2);
   });
 });
+
+describe('Mobile view: Best Bets', () => {
+  beforeAll(() => {
+    window.innerWidth = 450;
+  });
+
+  const additionalResults = { recommendedBy: 'USA.gov', 
+    textBestBets: [{
+      title: 'A best bet',
+      description: 'This is the best bet',
+      url: 'http://www.example.com'
+    }],
+    graphicsBestBet: {
+      title: 'Search support',
+      titleUrl: 'https://search.gov/support.html',
+      imageUrl: 'https://search.gov/support.jpg',
+      imageAltText: 'support alt text',
+      links: [{ 
+        title: 'Learning', 
+        url: 'https://search.gov/learn' }] 
+    } 
+  };
+  const headers = {
+    Accept: 'application/json',
+    'Content-Type': 'application/json'
+  };
+  global.fetch = jest.fn(() =>
+    Promise.resolve({
+      json: () => Promise.resolve({})
+    })
+  ) as jest.Mock;
+
+  it('calls fetch with correct Text Best Bet click data', () => {
+    render(<BestBets {...additionalResults} affiliate='boos_affiliate' query='query' vertical='web' />);
+    
+    const link = screen.getByText(/This is the best bet/i);
+    fireEvent.click(link);
+    const clickBody = {
+      affiliate: 'boos_affiliate',
+      url: 'http://www.example.com',
+      module_code: 'BOOS',
+      position: 1,
+      query: 'query',
+      vertical: 'web'
+    };
+
+    expect(fetch).toHaveBeenCalledWith('/clicked', {
+      body: JSON.stringify(clickBody),
+      headers,
+      method: 'POST',
+      mode: 'cors'
+    });
+    expect(fetch).toHaveBeenCalledTimes(1);
+  });
+});
+
+
