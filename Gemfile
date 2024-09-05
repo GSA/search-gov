@@ -62,7 +62,6 @@ gem 'faraday_middleware', '~> 0.14.0'
 gem 'net-http-persistent', '~> 2.9.3'
 gem 'rash_alt', '~> 0.4.12', require: 'rash'
 gem 'geoip', '~> 1.6.4'
-# gem 'geoip2', '~> 3.0'
 gem 'htmlentities', '~> 4.3.4' # deprecated - only used in Google web search
 gem 'html_truncator', '~> 0.4.2'
 gem 'addressable', '~> 2.8.0'

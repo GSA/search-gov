@@ -1,1 +1,1 @@
-require 'geoip_extensions'
+# require 'geoip_extensions'
