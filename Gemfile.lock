@@ -382,6 +382,7 @@ GEM
       et-orbi (~> 1, >= 1.2.7)
       raabro (~> 1.4)
     gems (1.2.0)
+    geoip (1.6.4)
     globalid (1.2.1)
       activesupport (>= 6.1)
     google-api-client (0.53.0)
@@ -492,6 +493,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2023.0808)
     mini_mime (1.1.5)
+    mini_portile2 (2.8.7)
     minitest (5.25.1)
     moneta (1.6.0)
     mono_logger (1.1.2)
@@ -518,7 +520,8 @@ GEM
       net-protocol
     newrelic_rpm (9.10.2)
     nio4r (2.7.3)
-    nokogiri (1.16.7-x86_64-darwin)
+    nokogiri (1.16.7)
+      mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     omniauth (2.1.1)
       hashie (>= 3.4.6)
@@ -865,7 +868,7 @@ GEM
     zeitwerk (2.6.17)
 
 PLATFORMS
-  x86_64-darwin-22
+  ruby
 
 DEPENDENCIES
   aasm (~> 5.5)
@@ -914,6 +917,7 @@ DEPENDENCIES
   flickraw (~> 0.9.9)
   font-awesome-grunticon-rails!
   font-awesome-rails (~> 4.7.0)
+  geoip (~> 1.6.4)
   google-api-client (~> 0.53.0)
   google_visualr!
   googlecharts (~> 1.6.12)

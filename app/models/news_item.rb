@@ -30,7 +30,7 @@ class NewsItem < ApplicationRecord
   }
   validate :unique_link
   belongs_to :rss_feed_url
-  serialize :properties, JSON
+  # serialize :properties, JSON
   store_accessor :properties, :duration
 
   alias_attribute :url, :link

@@ -1,10 +1,10 @@
 require_relative "boot"
 
 require "rails/all"
-require './lib/middlewares/reject_invalid_request_uri.rb'
-require './lib/middlewares/downcase_route.rb'
-require './lib/middlewares/adjust_client_ip.rb'
-require './lib/middlewares/filtered_jsonp.rb'
+require './lib/middlewares/reject_invalid_request_uri'
+require './lib/middlewares/downcase_route'
+require './lib/middlewares/adjust_client_ip'
+require './lib/middlewares/filtered_jsonp'
 require 'resque/plugins/priority'
 
 
@@ -22,10 +22,25 @@ module Usasearch
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w(assets tasks))
 
-    config.middleware.use RejectInvalidRequestUri
-    config.middleware.use DowncaseRoute
-    config.middleware.use AdjustClientIp
-    config.middleware.use FilteredJSONP
+    config.autoload_paths += Dir[config.root.join('lib', 'active_job', 'uniqueness', 'strategies').to_s]
+    config.autoload_paths += Dir[config.root.join('lib', 'callbacks').to_s]
+    config.autoload_paths += Dir[config.root.join('lib', 'extensions').to_s]
+    config.autoload_paths += Dir[config.root.join('lib', 'importers').to_s]
+    config.autoload_paths += Dir[config.root.join('lib', 'middlewares').to_s]
+    config.autoload_paths += Dir[config.root.join('lib', 'parsers').to_s]
+    config.autoload_paths += Dir[config.root.join('lib', 'renderers').to_s]
+
+    # Our legacy, Resque-based jobs that should be refactored to inherit from ActiveJob
+    config.autoload_paths += Dir[config.root.join('app', 'jobs', 'legacy').to_s]
+
+    config.autoload_paths += Dir[config.root.join('app', 'models', 'custom_index_queries').to_s]
+    config.autoload_paths += Dir[config.root.join('app', 'models', 'elastic_data').to_s]
+    config.autoload_paths += Dir[config.root.join('app', 'models', 'logstash_queries').to_s]
+
+    # config.middleware.use RejectInvalidRequestUri
+    # config.middleware.use DowncaseRoute
+    # config.middleware.use AdjustClientIp
+    # config.middleware.use FilteredJSONP
 
     config.semantic_logger.application = ENV.fetch('APP_NAME', 'searchgov-web')
 
@@ -51,5 +66,12 @@ module Usasearch
     config.active_record.belongs_to_required_by_default = false
 
     config.react.camelize_props = true
+    # Configuration for the application, engines, and railties goes here.
+    #
+    # These settings can be overridden in specific environments using the files
+    # in config/environments, which are processed later.
+    #
+    # config.time_zone = "Central Time (US & Canada)"
+    # config.eager_load_paths << Rails.root.join("extras")
   end
 end
