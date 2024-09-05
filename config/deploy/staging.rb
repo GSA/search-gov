@@ -5,8 +5,6 @@
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 
-server ENV['SERVER_ADDRESS'], user: ENV['SERVER_DEPLOYMENT_USER'], roles: %w{app db web}
-
 # Configuration
 # =============
 # You can set any configuration variable like in config/deploy.rb.

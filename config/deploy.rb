@@ -23,6 +23,7 @@ role :app,           JSON.parse(ENV.fetch('APP_SERVER_ADDRESSES', '[]')),       
 role :cron,          JSON.parse(ENV.fetch('CRON_SERVER_ADDRESSES', '[]')),      user: ENV['SERVER_DEPLOYMENT_USER']
 role :db,            JSON.parse(ENV.fetch('APP_SERVER_ADDRESSES', '[]')).first, user: ENV['SERVER_DEPLOYMENT_USER']
 role :resque_worker, JSON.parse(ENV.fetch('RESQUE_SERVER_ADDRESSES', '[]')),    user: ENV['SERVER_DEPLOYMENT_USER']
+role :web,           JSON.parse(ENV.fetch('APP_SERVER_ADDRESSES', '[]')),       user: ENV['SERVER_DEPLOYMENT_USER']
 
 set :ssh_options, {
   auth_methods:  %w(publickey),
