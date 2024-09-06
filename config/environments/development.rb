@@ -74,3 +74,9 @@ Rails.application.configure do
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
 end
+
+ADDITIONAL_BING_PARAMS = { 'traffictype' => 'test' }
+
+DEFAULT_CACHE_DURATION = 6.hours
+BING_CACHE_DURATION = 1.day
+I14Y_CACHE_DURATION = 1.day

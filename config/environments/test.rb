@@ -1,5 +1,4 @@
 require "active_support/core_ext/integer/time"
-require 'dotenv/load'
 
 # The test environment is used exclusively to run your application's
 # test suite. You never need to work with it otherwise. Remember that
@@ -32,13 +31,14 @@ Rails.application.configure do
   config.cache_store = :null_store
 
   # Raise exceptions instead of rendering exception templates.
-  config.action_dispatch.show_exceptions = :none
+  config.action_dispatch.show_exceptions = :rescuable
 
   # Disable request forgery protection in test environment.
   config.action_controller.allow_forgery_protection = false
 
   # Store uploaded files on the local file system in a temporary directory.
   config.active_storage.service = :test
+  config.active_record.raise_on_assign_to_attr_readonly = false
 
   config.action_mailer.perform_caching = false
 
@@ -50,7 +50,10 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :test
 
   # Print deprecation notices to the stderr.
-  config.active_support.deprecation = :stderr
+  # config.active_support.deprecation = :stderr
+
+  # Temporarily silence deprecation warnings
+  config.active_support.deprecation = :silence
 
   # Raise exceptions for disallowed deprecations.
   config.active_support.disallowed_deprecation = :raise
@@ -67,9 +70,6 @@ Rails.application.configure do
   config.active_job.queue_adapter = :test
 
   config.ssl_options[:secure_cookies] = false
-
-  # Temporarily silence deprecation warnings
-  config.active_support.deprecation = :silence
 end
 
 ADDITIONAL_BING_PARAMS = { 'traffictype' => 'test' }
