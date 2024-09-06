@@ -3,7 +3,7 @@ version: 0.2
 env:
   parameter-store:
     # env_used_in_app: "env_in_param_store"
-    SERVER_ADDRESS: "DEPLOY_SEARCHGOV_SERVER_ADDRESS "
+    APP_SERVER_ADDRESSES: "DEPLOY_SEARCHGOV_SERVER_ADDRESS "
     RESQUE_SERVER_ADDRESSES: "DEPLOY_RESQUE_SERVER_ADDRESSES"
     DEPLOYMENT_PATH: "DEPLOY_SEARCHGOV_DEPLOYMENT_PATH"
     SERVER_DEPLOYMENT_USER: "DEPLOY_SERVER_DEPLOYMENT_USER"
@@ -11,7 +11,7 @@ env:
 
     # shared deployment variables with subsequent stages - might not to export as this is the final stage
 exported-variables:
-    - SERVER_ADDRESS
+    - APP_SERVER_ADDRESSES
     - RESQUE_SERVER_ADDRESSES
     - DEPLOYMENT_PATH
     - SERVER_DEPLOYMENT_USER
