@@ -34,12 +34,12 @@ const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: FontsAndColors; }>
   }
 `;
 
-export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeaderLinks, secondaryHeaderLinks }: HeaderProps) => {
+export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeaderLinks }: HeaderProps) => {
   const styles = useContext(StyleContext);
   const i18n = useContext(LanguageContext);
 
   const primaryNavItems = primaryHeaderLinks ? buildLink(primaryHeaderLinks, 'usa-nav__link') : [];
-  const showMobileMenu = (primaryHeaderLinks && primaryHeaderLinks.length > 0) || (secondaryHeaderLinks && secondaryHeaderLinks.length > 0);
+  const showMobileMenu = primaryHeaderLinks && primaryHeaderLinks.length > 0;
 
   return (
     <>
@@ -60,19 +60,7 @@ export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeade
             items={primaryNavItems}
             onToggleMobileNav={toggleMobileNav}
             mobileExpanded={mobileNavOpen}
-          >
-            { secondaryHeaderLinks &&
-              <ul  className="usa-nav__secondary-links">
-                { secondaryHeaderLinks.map((link, index) => (
-                  <li className="usa-nav__secondary-item" key={index}>
-                    <a href={link.url} key={index}>
-                      {link.title}
-                    </a>
-                  </li>))
-                }
-              </ul>
-            }
-          </UswdsPrimaryNav>
+          />
         </div>
       </StyledUswdsHeader>
     </>
