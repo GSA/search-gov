@@ -7,6 +7,7 @@ env:
     RESQUE_SERVER_ADDRESSES: "DEPLOY_RESQUE_SERVER_ADDRESSES"
     DEPLOYMENT_PATH: "DEPLOY_SEARCHGOV_DEPLOYMENT_PATH"
     SERVER_DEPLOYMENT_USER: "DEPLOY_SERVER_DEPLOYMENT_USER"
+    RESQUE_WORKERS_COUNT: "DEPLOY_RESQUE_WORKERS_COUNT"
     # SSH_KEY_PATH: "DEPLOY_SSH_KEY_PATH" - defined below
 
     # shared deployment variables with subsequent stages - might not to export as this is the final stage
