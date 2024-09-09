@@ -57,6 +57,9 @@ module Usasearch
 
     config.i18n.enforce_available_locales = false
 
+    config.ssl_options[:redirect] =
+      { exclude: ->(request) { request.path == '/healthcheck' } }
+
     config.active_job.queue_adapter = :resque
     config.active_storage.queues.analysis = :searchgov
     config.active_storage.queues.purge = :searchgov
@@ -77,5 +80,10 @@ module Usasearch
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.action_controller.allow_deprecated_parameters_hash_equality = false
+
+    # Disable deprecated singular associations names.
+    config.active_record.allow_deprecated_singular_associations_name = false
   end
 end
