@@ -135,7 +135,7 @@ describe NewsItem do
 
     it 'raises an error for non-hash values' do
       expect { news_item.properties = 'not a hash' }.
-        to raise_error(ActiveRecord::SerializationTypeMismatch)
+        to raise_error(ActiveRecord::SerializationTypeMismatch, "Properties must be a Hash")
     end
   end
 
@@ -152,15 +152,17 @@ describe NewsItem do
     subject(:duration) { news_item.duration }
 
     context 'when the news item is a video with a duration' do
-      let(:news_item) { described_class.new(duration: '0:39') }
+      let(:news_item) { described_class.new(properties: { duration: '0:39' }) }
 
       it { is_expected.to eq('0:39') }
     end
 
     # Temporary - will be removed per SRCH-3465
     context 'when deploying SRCH-3718' do
+      let(:news_item) { described_class.new }
+
       before do
-        allow(news_item).to receive(:properties).and_return('{"duration": "5:54"}')
+        allow(news_item).to receive(:properties).and_return({ 'duration' => '5:54' })
       end
 
       it { is_expected.to eq('5:54') }
@@ -169,7 +171,7 @@ describe NewsItem do
 
   describe '#duration=' do
     it 'sets duration' do
-      news_item = described_class.create!(valid_attributes)
+      news_item = described_class.create!(valid_attributes.merge(properties: { duration: '0:39' }))
       news_item.duration = '1:00'
       news_item.save!
       expect(described_class.find(news_item.id).duration).to eq('1:00')

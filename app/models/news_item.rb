@@ -35,6 +35,18 @@ class NewsItem < ApplicationRecord
 
   alias_attribute :url, :link
 
+  def properties
+    super || {}
+  end
+
+  def properties=(value)
+    unless value.is_a?(Hash)
+      raise ActiveRecord::SerializationTypeMismatch, "Properties must be a Hash"
+    end
+
+    super(value)
+  end
+
   def is_video?
     link =~ %r{\Ahttps?://www\.youtube\.com/watch\?v=}
   end
@@ -45,17 +57,13 @@ class NewsItem < ApplicationRecord
   # When that is done, we can remove any code related to image properties.
   # The 'duration' property is still used for videos.
   def tags
-    if properties.present? &&
-       properties.key?(:media_content) && properties[:media_content].is_a?(Hash) && properties[:media_content][:url].present? &&
-       properties.key?(:media_thumbnail) && properties[:media_thumbnail].is_a?(Hash) && properties[:media_thumbnail][:url].present?
-      %w[image]
-    else
-      []
-    end
+    return [] unless properties_present_and_valid?
+
+    %w[image]
   end
 
   def thumbnail_url
-    properties[:media_thumbnail][:url] if properties[:media_thumbnail]
+    properties['media_thumbnail']['url'] if properties['media_thumbnail']
   end
 
   # This method should be removed entirely per SRCH-3465. It is temporary
@@ -64,7 +72,7 @@ class NewsItem < ApplicationRecord
     if properties.is_a?(String)
       JSON.parse(properties)['duration']
     else
-      properties.with_indifferent_access[:duration]
+      properties.with_indifferent_access['duration']
     end
   end
 
@@ -86,6 +94,22 @@ class NewsItem < ApplicationRecord
   end
 
   private
+
+  def properties_present_and_valid?
+    properties.present? &&
+      valid_media_content? &&
+      valid_media_thumbnail?
+  end
+
+  def valid_media_content?
+    properties['media_content'].is_a?(Hash) &&
+      properties['media_content']['url'].present?
+  end
+
+  def valid_media_thumbnail?
+    properties['media_thumbnail'].is_a?(Hash) &&
+      properties['media_thumbnail']['url'].present?
+  end
 
   def unique_link
     link_without_protocol = UrlParser.strip_http_protocols(link)

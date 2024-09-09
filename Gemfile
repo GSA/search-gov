@@ -48,7 +48,7 @@ gem 'newrelic_rpm', '~> 9.10'
 gem 'american_date', '~> 1.1.1'
 # sassc-rails is now the Rails default. Consider replacing:
 # https://guides.rubyonrails.org/asset_pipeline.html
-gem 'sass-rails', '~> 5.0.7'
+gem 'sass-rails', '~> 6.0'
 # Gem no longer being maintained. See https://cm-jira.usa.gov/browse/SRCH-694
 gem 'google_visualr',
     git: 'https://github.com/winston/google_visualr',
@@ -104,6 +104,9 @@ gem 'active_scheduler', '~> 0.7.0'
 gem 'retriable', '~> 3.1'
 gem 'cld3', '~> 3.6.0'
 gem 'activejob-uniqueness', '~> 0.2'
+# Temporarily locking the version to resolve SRCH-3788.
+# The fix for the bug in SRCH-3788 is NOT covered by automated specs.
+# A spec will be added (if possible) per SRCH-3790
 gem 'selenium-webdriver', '4.8.1'
 gem 'webdrivers', '~> 5.0'
 gem 'exception_notification', '~> 4.5'

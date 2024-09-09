@@ -37,10 +37,10 @@ module Usasearch
     config.autoload_paths += Dir[config.root.join('app', 'models', 'elastic_data').to_s]
     config.autoload_paths += Dir[config.root.join('app', 'models', 'logstash_queries').to_s]
 
-    # config.middleware.use RejectInvalidRequestUri
-    # config.middleware.use DowncaseRoute
-    # config.middleware.use AdjustClientIp
-    # config.middleware.use FilteredJSONP
+    config.middleware.use RejectInvalidRequestUri
+    config.middleware.use DowncaseRoute
+    config.middleware.use AdjustClientIp
+    config.middleware.use FilteredJSONP
 
     config.semantic_logger.application = ENV.fetch('APP_NAME', 'searchgov-web')
 
@@ -65,6 +65,10 @@ module Usasearch
     # Rails 5.0 had false.
     config.active_record.belongs_to_required_by_default = false
 
+    # Temporary workaround for:
+    # https://discuss.rubyonrails.org/t/cve-2022-32224-possible-rce-escalation-bug-with-serialized-columns-in-active-record/81017
+    # A permanent solution will be implemented in https://cm-jira.usa.gov/browse/SRCH-3206
+    config.active_record.use_yaml_unsafe_load = true
     config.react.camelize_props = true
     # Configuration for the application, engines, and railties goes here.
     #
