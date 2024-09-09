@@ -5,9 +5,9 @@ class Sites::QueryDrilldownsController < Sites::SetupSiteController
   HEADER_FIELDS = ['Date', 'Time', 'Request', 'Referrer', 'Vertical', 'Modules', 'Device', 'Browser', 'OS', 'Country Code', 'Region', 'Client IP', 'User Agent']
 
   def show
-    query = request["query"]
-    end_date = request["end_date"].to_date
-    start_date = request["start_date"].to_date
+    query = params["query"]
+    end_date = params["end_date"].to_date
+    start_date = params["start_date"].to_date
     sanitized_query = sanitize_for_filename(query)
     filename = [@site.name, sanitized_query, start_date, end_date].join('_')
     drilldown_query = DrilldownQuery.new(@site.name,
