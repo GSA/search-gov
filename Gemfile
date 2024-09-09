@@ -181,7 +181,7 @@ group :development, :test do
   # For improved console readability:
   # https://github.com/amazing-print/amazing_print
   gem 'amazing_print', '~> 1.4'
-  gem 'puma', '~> 5.6'
+  gem 'puma', '~> 6.0'
   gem 'debug'
 end
 
