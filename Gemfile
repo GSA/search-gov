@@ -3,7 +3,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 7.0.8'
-gem 'dotenv', '~> 3.1', '>= 3.1.2'
 
 gem 'base64', '~> 0.2.0'
 
@@ -36,7 +35,6 @@ gem 'resque-scheduler', '~> 4.10.2'
 # Using a third-party fork as an interim measure.
 gem 'kt-paperclip', '~> 7.1.0'
 gem 'aws-sdk-s3', '~> 1.102.0'
-gem 'aws-sdk-ssm', '~> 1.173'
 gem 'googlecharts', '~> 1.6.12'
 gem 'flickraw', '~> 0.9.9'
 gem 'mutex_m', '~> 0.2.0'
