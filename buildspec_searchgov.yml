@@ -22,11 +22,11 @@ phases:
     runtime-versions:
       python: 3.x
     commands:
-      - echo "test"
       # - rbenv install 3.1.4  
       # - rbenv global 3.1.4   
       # - rbenv rehash 
-      - ruby -v
+      # - ruby -v
+      - echo "checking runtime"
 
   pre_build:
     commands:
