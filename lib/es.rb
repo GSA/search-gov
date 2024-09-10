@@ -3,7 +3,7 @@
 require 'typhoeus/adapters/faraday'
 
 module Es
-  INDEX_PREFIX = "#{Rails.env}-usasearch"
+  INDEX_PREFIX = "#{Rails.env}-usasearch".freeze
 
   CLIENT_CONFIG = Rails.application.config_for(
     :elasticsearch_client

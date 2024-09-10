@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     end
   end
 
+  post '/urls' => 'urls#create'
   get '/sayt' => 'sayt#index'
   post '/clicked' => 'clicked#create'
   get '/healthcheck' => 'health_checks#new'
@@ -265,8 +266,8 @@ Rails.application.routes.draw do
 
   get '/user/developer_redirect' => 'users#developer_redirect', :as => :developer_redirect
 
-  BLOG_URL           = ENV['BLOG_URL']           || Rails.application.secrets.dig(:organization, :blog_url)
-  PAGE_NOT_FOUND_URL = ENV['PAGE_NOT_FOUND_URL'] || Rails.application.secrets.dig(:organization, :page_not_found_url)
+  BLOG_URL           = ENV['BLOG_URL']
+  PAGE_NOT_FOUND_URL = ENV['PAGE_NOT_FOUND_URL']
 
   get '/program', to: redirect(BLOG_URL || '', status: 302)
   get '*path',    to: redirect(PAGE_NOT_FOUND_URL || '', status: 302), constraints: lambda { |req| req.path.exclude? 'rails/active_storage' }

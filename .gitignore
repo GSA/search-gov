@@ -38,7 +38,6 @@
 # Ignore the rubocop YAML file that is downloaded when running `rubocop` locally
 .rubocop*default-yml
 config/logindotgov.pem
-config/secrets.yml
 coverage.data
 coverage/
 mkmf.log
@@ -55,3 +54,4 @@ yarn-debug.log*
 !/app/assets/builds/.keep
 
 .env
+.DS_Store

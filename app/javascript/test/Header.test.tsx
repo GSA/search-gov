@@ -25,7 +25,8 @@ describe('Header', () => {
       url: 'https://search.gov/assets/gsa-logo-893b811a49f74b06b2bddbd1cde232d2922349c8c8c6aad1d88594f3e8fe42bd097e980c57c5e28eff4d3a9256adb4fcd88bf73a5112833b2efe2e56791aad9d.svg',
       text: 'search.gov'
     },
-    homepageUrl: 'https://search.gov'
+    homepageUrl: 'https://search.gov',
+    showVoteOrgLink: false
   };
 
   const primaryHeaderLinks = [
@@ -57,13 +58,6 @@ describe('Header', () => {
 
     expect(secondPrimaryHeaderLink).toHaveAttribute('href', 'https://second.gov');
     expect(secondPrimaryHeaderLink).toHaveTextContent('second primary header link');
-
-    const [firstSecondaryHeaderLink, secondSecondaryHeaderLink] = Array.from(document.getElementsByClassName('usa-nav__secondary-item'));
-    expect(firstSecondaryHeaderLink.childNodes[0]).toHaveAttribute('href', 'https://first.gov');
-    expect(firstSecondaryHeaderLink.childNodes[0]).toHaveTextContent('first secondary header link');
-
-    expect(secondSecondaryHeaderLink.childNodes[0]).toHaveAttribute('href', 'https://second.gov');
-    expect(secondSecondaryHeaderLink.childNodes[0]).toHaveTextContent('second secondary header link');
 
     // To Do - investigate test cases for responsive
     const btn = screen.getByTestId('usa-menu-mob-btn'); // Menu button for mobile
