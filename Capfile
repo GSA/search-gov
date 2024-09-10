@@ -29,14 +29,14 @@ install_plugin Capistrano::SCM::Git
 #   https://github.com/capistrano/passenger
 #
 # require "capistrano/rvm"
-require "capistrano/rbenv"
+require 'capistrano/rbenv'
 
 # set :rbenv_prefix, "env RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
 
 # require "capistrano/chruby"
-require "capistrano/bundler"
-require "capistrano/rails/assets"
-require "capistrano/rails/migrations"
+require 'capistrano/bundler'
+require 'capistrano/rails/assets'
+require 'capistrano/rails/migrations'
 # require "capistrano/passenger"
 # require 'capistrano/rails'
 
@@ -44,8 +44,7 @@ require "capistrano/rails/migrations"
 require 'capistrano/puma'
 require 'capistrano/puma/workers'
 
-
-install_plugin Capistrano::Puma  # Default puma tasks
+install_plugin Capistrano::Puma # Default puma tasks
 install_plugin Capistrano::Puma::Systemd
 
 require 'capistrano-resque'
