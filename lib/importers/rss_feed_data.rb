@@ -22,7 +22,10 @@ class RssFeedData
     rss_feed_url.touch(:last_crawled_at)
     @document = rss_feed_url.document
 
-    return unless validate_redirection if rss_feed_url.redirected?
+    if rss_feed_url.redirected?
+      return unless validate_redirection
+    end
+
     return unless validate_document
     return unless validate_rss_items
 

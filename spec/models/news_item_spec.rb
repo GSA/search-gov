@@ -126,19 +126,6 @@ describe NewsItem do
     end
   end
 
-  # These specs are just sanity-checks. The 'properties' hash should not be accessed
-  # directly. Data getters and setters can be added via the 'store_accessor' method.
-  describe '#properties' do
-    subject(:properties) { news_item.properties }
-
-    it { is_expected.to be_a Hash }
-
-    it 'raises an error for non-hash values' do
-      expect { news_item.properties = 'not a hash' }.
-        to raise_error(ActiveRecord::SerializationTypeMismatch, "Properties must be a Hash")
-    end
-  end
-
   describe '#fast_delete' do
     it 'delete from mysql and elasticsearch' do
       ids = [news_items(:item1).id, news_items(:item2).id].freeze

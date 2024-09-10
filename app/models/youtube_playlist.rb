@@ -9,7 +9,8 @@ class YoutubePlaylist < ApplicationRecord
   end
 
   def news_item_ids=(value)
-    raise ActiveRecord::SerializationTypeMismatch, "news_item_ids must be an Array" unless value.is_a?(Array)
+    raise ActiveRecord::SerializationTypeMismatch, 'news_item_ids must be an Array' unless value.is_a?(Array)
+
     super(value)
   end
 end

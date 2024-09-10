@@ -168,7 +168,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 6.1', '>= 6.1.5' 
+  gem 'rspec-rails', '~> 6.1', '>= 6.1.5'
   gem 'rspec-its', '~> 1.3'
   gem 'email_spec', '~> 2.2'
   gem 'database_cleaner', '~> 2.0'

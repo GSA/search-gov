@@ -85,5 +85,6 @@ module Usasearch
 
     # Disable deprecated singular associations names.
     config.active_record.allow_deprecated_singular_associations_name = false
+    config.precompile_filter_parameters = true
   end
 end

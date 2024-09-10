@@ -30,22 +30,9 @@ class NewsItem < ApplicationRecord
   }
   validate :unique_link
   belongs_to :rss_feed_url
-  # serialize :properties, JSON
   store_accessor :properties, :duration
 
   alias_attribute :url, :link
-
-  def properties
-    super || {}
-  end
-
-  def properties=(value)
-    unless value.is_a?(Hash)
-      raise ActiveRecord::SerializationTypeMismatch, "Properties must be a Hash"
-    end
-
-    super(value)
-  end
 
   def is_video?
     link =~ %r{\Ahttps?://www\.youtube\.com/watch\?v=}
