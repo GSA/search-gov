@@ -2,7 +2,7 @@
 lock '~> 3.19.1'
 
 set :application,             'search-gov'
-set :branch,                  :staging
+set :branch,                  ENV.fetch('SEARCH_ENV', 'staging')
 set :default_env,             { SECRET_KEY_BASE: '1' }
 set :deploy_to,               ENV['DEPLOYMENT_PATH']
 set :format,                  :pretty
