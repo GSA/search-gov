@@ -6,7 +6,9 @@ set :branch,                  :staging
 set :default_env,             { SECRET_KEY_BASE: '1' }
 set :deploy_to,               ENV['DEPLOYMENT_PATH']
 set :format,                  :pretty
-set :puma_bind,               "tcp://0.0.0.0:3000"
+set :puma_access_log,         "#{release_path}/log/puma.access.log"
+set :puma_bind,               'tcp://0.0.0.0:3300'
+set :puma_error_log,          "#{release_path}/log/puma.error.log"
 set :rails_env,               'production'
 set :rbenv_ruby,              '3.1.4'
 set :rbenv_type,              :user
