@@ -3,7 +3,7 @@ version: 0.2
 env:
   parameter-store:
     # env_used_in_app: "env_in_param_store"
-    APP_SERVER_ADDRESSES: "DEPLOY_SEARCHGOV_SERVER_ADDRESS "
+    APP_SERVER_ADDRESSES: "DEPLOY_SEARCHGOV_SERVER_ADDRESS"
     RESQUE_SERVER_ADDRESSES: "DEPLOY_RESQUE_SERVER_ADDRESSES"
     DEPLOYMENT_PATH: "DEPLOY_SEARCHGOV_DEPLOYMENT_PATH"
     SERVER_DEPLOYMENT_USER: "DEPLOY_SERVER_DEPLOYMENT_USER"
@@ -22,16 +22,6 @@ phases:
     runtime-versions:
       python: 3.x
     commands:
-      # - echo "Installing rbenv and Ruby"
-      # - git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-      # - echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-      # - echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-      # - source ~/.bashrc
-      # - git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-      # - rbenv install 3.1.4  
-      # - rbenv global 3.1.4   
-      # - rbenv rehash 
-      # - ruby -v
       - export PATH="$HOME/.rbenv/bin:$PATH"
       - eval "$(rbenv init -)"
 
