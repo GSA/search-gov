@@ -5,7 +5,7 @@
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 
-server "production.server.com", user: "deploy", roles: %w{app db web}
+# server "production.server.com", user: "deploy", roles: %w{app db web}
 
 # Role-based syntax
 # ==================
@@ -25,8 +25,8 @@ server "production.server.com", user: "deploy", roles: %w{app db web}
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customize your setup.
 
-set :rails_env, 'production'
-set :aws_ssm_path, '/your/application/env/production/'
+# set :rails_env, 'production'
+# set :aws_ssm_path, '/your/application/env/production/'
 
 # Custom SSH Options
 # ==================
