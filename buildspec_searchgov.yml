@@ -3,7 +3,7 @@ version: 0.2
 env:
   parameter-store:
     # env_used_in_app: "env_in_param_store"
-    APP_SERVER_ADDRESSES: "DEPLOY_SEARCHGOV_SERVER_ADDRESS "
+    APP_SERVER_ADDRESSES: "DEPLOY_SEARCHGOV_SERVER_ADDRESS"
     RESQUE_SERVER_ADDRESSES: "DEPLOY_RESQUE_SERVER_ADDRESSES"
     DEPLOYMENT_PATH: "DEPLOY_SEARCHGOV_DEPLOYMENT_PATH"
     SERVER_DEPLOYMENT_USER: "DEPLOY_SERVER_DEPLOYMENT_USER"
@@ -22,11 +22,9 @@ phases:
     runtime-versions:
       python: 3.x
     commands:
-      # - rbenv install 3.1.4  
-      # - rbenv global 3.1.4   
-      # - rbenv rehash 
-      # - ruby -v
-      - echo "checking runtime"
+      - export PATH="$HOME/.rbenv/bin:$PATH"
+      - eval "$(rbenv init -)"
+
 
   pre_build:
     commands:
