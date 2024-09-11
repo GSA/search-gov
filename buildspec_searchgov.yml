@@ -22,6 +22,12 @@ phases:
     runtime-versions:
       python: 3.x
     commands:
+      - echo "Installing rbenv and Ruby"
+      - git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+      - echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+      - echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+      - source ~/.bashrc
+      - git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
       - rbenv install 3.1.4  
       - rbenv global 3.1.4   
       - rbenv rehash 
