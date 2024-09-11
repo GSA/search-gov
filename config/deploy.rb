@@ -16,7 +16,7 @@ set :repo_url,                'https://github.com/GSA/search-gov'
 set :resque_environment_task, true
 set :user,                    ENV['SERVER_DEPLOYMENT_USER']
 set :whenever_roles,          :cron
-set :workers,                 { '*' => ENV.fetch('RESQUE_WORKERS_COUNT', '5') }
+set :workers,                 { '*' => ENV.fetch('RESQUE_WORKERS_COUNT', '5').to_i }
 
 append :linked_dirs,  'log', 'tmp', 'node_modules', 'public'
 append :linked_files, '.env', 'config/logindotgov.pem'
