@@ -5,7 +5,9 @@ describe 'ActiveSupport::ParameterFilter' do
   let(:parameter_filter) { ActiveSupport::ParameterFilter.new(config.filter_parameters) }
 
   it 'filters passwords from logs' do
-    expect(config.filter_parameters).to match(array_including(/passw/))
+    filtered_parameters = config.filter_parameters.reject { |param| param.is_a?(Proc) }
+
+    expect(filtered_parameters).to match(array_including(/passw/))
   end
 
   it 'filters sayt q parameter' do
