@@ -5,8 +5,18 @@ http_interactions:
     uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/site/1057602728/header_tagline_logo/1631031327/original/mini_logo.png
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        iVBORw0KGgoAAAANSUhEUgAAABYAAAAZCAQAAACf6xZlAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAZFJREFUGBmNwU1oDQAcAPD/PlrKPmSzw9R2mraDj7JWWsqSJZMhJDsoivemXJgoioOGpu1gB60cdqF2WUk4rRltlFLKDoRpBzVqeW8bZfv5KLX1ZtvvF7EsrquL5bHfTwdiafJ1oU+eW7E4DUZNabVKr1T8n0LdGFCp3keTDsb/aDTmmxYrdZo1rCoWplgPHiq3zVvftSqwIxZil8++OqpQF4ZVqfXG1chkixn3lWrwybRWBTrNGFAUmfQbkacdgyrVe2/KWTmRSQUSGtGmyG30q4yFOWXWGnd9kO25lBOyYj4VEvapUeaJp7KM61CLpsjkmX8m1MmV0u4IymI+zbqdUWyd7ZoUR2iTVq7PqNyYzw33/DDhmrL4y16cVoM9kUmpy76Y1qEkwgrjXkZ4Z0RSt8faVcVc8l2UlnJengfSElokbbXTC3+8sinmslYvXtusWhJD8Zsch1xQHZkcljJptY3SjsVS3DHkkh4lsThZzrkpgfWxFFekZTuJR5picQbN2CBX0nFFsTjNUsbsjgX9AtZabdMhQhzuAAAAAElFTkSuQmCC
+      base64_string: |
+        iVBORw0KGgoAAAANSUhEUgAAABYAAAAZCAQAAACf6xZlAAAAGXRFWHRTb2Z0
+        d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAZFJREFUGBmNwU1oDQAcAPD/
+        PlrKPmSzw9R2mraDj7JWWsqSJZMhJDsoivemXJgoioOGpu1gB60cdqF2WUk4
+        rRltlFLKDoRpBzVqeW8bZfv5KLX1ZtvvF7EsrquL5bHfTwdiafJ1oU+eW7E4
+        DUZNabVKr1T8n0LdGFCp3keTDsb/aDTmmxYrdZo1rCoWplgPHiq3zVvftSqw
+        IxZil8++OqpQF4ZVqfXG1chkixn3lWrwybRWBTrNGFAUmfQbkacdgyrVe2/K
+        WTmRSQUSGtGmyG30q4yFOWXWGnd9kO25lBOyYj4VEvapUeaJp7KM61CLpsjk
+        mX8m1MmV0u4IymI+zbqdUWyd7ZoUR2iTVq7PqNyYzw33/DDhmrL4y16cVoM9
+        kUmpy76Y1qEkwgrjXkZ4Z0RSt8faVcVc8l2UlnJengfSElokbbXTC3+8sinm
+        slYvXtusWhJD8Zsch1xQHZkcljJptY3SjsVS3DHkkh4lsThZzrkpgfWxFFek
+        ZTuJR5picQbN2CBX0nFFsTjNUsbsjgX9AtZabdMhQhzuAAAAAElFTkSuQmCC
     headers:
       Content-Type:
       - image/png
@@ -60,8 +70,23 @@ http_interactions:
     uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/site/1057602728/header_tagline_logo/1631031327/large/mini_logo.png
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        iVBORw0KGgoAAAANSUhEUgAAABYAAAAZCAQAAACf6xZlAAAABGdBTUEAALGPC/xhBQAAAAJiS0dEAP+Hj8y/AAAAB3RJTUUH5QkHEA8bC0EMCgAAAAFvck5UAc+id5oAAAG2SURBVDjLjdFPaA5wGAfw593Wmmwj86em5uLVVkJZK6SMLJn8C6kdlAPblAPeohw4aGi1HSxpcXBA7bKSf6f5V4aUWnEgTDuoTeF9Z8h8XCbt9W723H6/5/N7+j19I6ZUzlg1NRm2+2nHVGCxDnQrdO5/tE6/r1Jm6pKeDJbqxD1Jtd4ZtnNiWm/AF82ma/dLr8qJYJnLuKXCGq98k1JifW660Qcf7VGqA70q1XjhVC66wqjr5qrz3oiUEu1G3TMjF+7xUqFWPJBU642vjsjPRRegUT1azHABPZITrXbAL3Nc9Vaex9L2Sfw7r9E21crd91DCoDY12DLeFURExJVYOXb+HPWRH0UxGgsj4mn21AadDiuzyDpblEVokVGhW7+CbHzWNd99clr52M1WHFSNzbnWmuuEISPazI5QZNCzCK+91KTTHa1ZYSt2XEbaUYVuyGjUrMlqGzwBzy0b/2C+LvRZrkoTHkVEyLfLMVW5vrRb2rBZlsrYO76XyMEvRVXcjGQcSgxNiiUiFfPiVZyPJYm+mLyclJFnP25n5/cnwb+1NqbF4rgYefEj7v5vcoO0AZtyd38D5zlNAMd7TrMAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjEtMDktMDdUMTY6MTU6MjcrMDA6MDClwXRGAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIxLTA5LTA3VDE2OjE1OjI3KzAwOjAw1JzM+gAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAASUVORK5CYII=
+      base64_string: |
+        iVBORw0KGgoAAAANSUhEUgAAABYAAAAZCAQAAACf6xZlAAAABGdBTUEAALGP
+        C/xhBQAAAAJiS0dEAP+Hj8y/AAAAB3RJTUUH5QkHEA8bC0EMCgAAAAFvck5U
+        Ac+id5oAAAG2SURBVDjLjdFPaA5wGAfw593Wmmwj86em5uLVVkJZK6SMLJn8
+        C6kdlAPblAPeohw4aGi1HSxpcXBA7bKSf6f5V4aUWnEgTDuoTeF9Z8h8XCbt
+        9W723H6/5/N7+j19I6ZUzlg1NRm2+2nHVGCxDnQrdO5/tE6/r1Jm6pKeDJbq
+        xD1Jtd4ZtnNiWm/AF82ma/dLr8qJYJnLuKXCGq98k1JifW660Qcf7VGqA70q
+        1XjhVC66wqjr5qrz3oiUEu1G3TMjF+7xUqFWPJBU642vjsjPRRegUT1azHAB
+        PZITrXbAL3Nc9Vaex9L2Sfw7r9E21crd91DCoDY12DLeFURExJVYOXb+HPWR
+        H0UxGgsj4mn21AadDiuzyDpblEVokVGhW7+CbHzWNd99clr52M1WHFSNzbnW
+        muuEISPazI5QZNCzCK+91KTTHa1ZYSt2XEbaUYVuyGjUrMlqGzwBzy0b/2C+
+        LvRZrkoTHkVEyLfLMVW5vrRb2rBZlsrYO76XyMEvRVXcjGQcSgxNiiUiFfPi
+        VZyPJYm+mLyclJFnP25n5/cnwb+1NqbF4rgYefEj7v5vcoO0AZtyd38D5zlN
+        AMd7TrMAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjEtMDktMDdUMTY6MTU6Mjcr
+        MDA6MDClwXRGAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIxLTA5LTA3VDE2OjE1
+        OjI3KzAwOjAw1JzM+gAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFk
+        eXHJZTwAAAAASUVORK5CYII=
     headers:
       Content-Type:
       - image/png
@@ -302,4 +327,82 @@ http_interactions:
       encoding: UTF-8
       string: ''
   recorded_at: Tue, 07 Sep 2021 16:15:30 GMT
-recorded_with: VCR 6.0.0
+- request:
+    method: post
+    uri: https://api.datadoghq.com/api/v1/events?api_key=<DATADOG_API_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"msg_text":"%%%\n### **Request**\n**URL:** http://127.0.0.1:61138/sites/1073485086/header_and_footer\n**HTTP
+        Method:** PATCH\n**IP Address:** 127.0.0.1\n**Parameters:** {\"_method\"=>\"patch\",
+        \"commit\"=>\"Save\", \"site\"=>{\"header_tagline\"=>\"Office website of the
+        Awesome Agency\", \"header_tagline_url\"=>\"http://awesomeagency.gov\", \"header_tagline_logo\"=>#<ActionDispatch::Http::UploadedFile:0x000000013a87aa10
+        @tempfile=#<Tempfile:/var/folders/t3/hxs04khx25bf9yffft0klndh0000gn/T/RackMultipart20240912-96414-zr3hrf.png>,
+        @content_type=\"image/png\", @original_filename=\"mini_logo.png\", @headers=\"Content-Disposition:
+        form-data; name=\\\"site[header_tagline_logo]\\\"; filename=\\\"mini_logo.png\\\"\\r\\nContent-Type:
+        image/png\\r\\n\">, \"css_property_hash\"=>{\"menu_button_alignment\"=>\"left\"},
+        \"managed_header_links_attributes\"=>{\"0\"=>{\"title\"=>\"News\", \"position\"=>\"0\",
+        \"url\"=>\"news.agency.gov\"}, \"1\"=>{\"title\"=>\"Blog\", \"position\"=>\"1\",
+        \"url\"=>\"blog.agency.gov\"}}, \"managed_footer_links_attributes\"=>{\"0\"=>{\"title\"=>\"Contact\",
+        \"position\"=>\"0\", \"url\"=>\"mailto:contact@agency.gov\"}, \"1\"=>{\"title\"=>\"Terms
+        of Service\", \"position\"=>\"1\", \"url\"=>\"tos.agency.gov\"}}}, \"controller\"=>\"sites/header_and_footers\",
+        \"action\"=>\"update\", \"site_id\"=>\"1073485086\"}\n**Timestamp:** 2024-09-12
+        17:53:43 UTC\n**Server:** Bhaviths-MBP-2.attlocal.net\n**Rails root:** /Users/bhavith/workspace/search-gov\n**Process:**
+        96414\n___\n### **Session**\n**Data:** {\"id_token\"=>\"mock_id_token\", \"user_credentials\"=>\"e037d4039bfa87098b01e979a462700fd03a1c7475c9ed60dd6a54a2645a5866aad34234fbf6cb584e90208b4cfac47dce66eac9143edad00370b90a0a22f898\",
+        \"user_credentials_id\"=>1033898155}\n___\n### **Backtrace**\n````\napp/controllers/sites/header_and_footers_controller.rb:21:in
+        `update''\nlib/middlewares/filtered_jsonp.rb:12:in `call''\nlib/middlewares/adjust_client_ip.rb:9:in
+        `call''\n````\n___\n%%%","date_happened":1726163623,"msg_title":"header_and_footers
+        update (Paperclip::Errors::CommandNotFoundError) \"Could not run the `identify`
+        command. Please instal...","priority":"normal","parent":null,"tags":[],"aggregation_key":"[\"header_and_footers
+        update (Paperclip::Errors::CommandNotFoundError) \\\"Could not run the `identify`
+        command. Please instal...\"]","alert_type":"error","event_type":null,"source_type_name":null,"title":"header_and_footers
+        update (Paperclip::Errors::CommandNotFoundError) \"Could not run the `identify`
+        co","text":"%%%\n### **Request**\n**URL:** http://127.0.0.1:61138/sites/1073485086/header_and_footer\n**HTTP
+        Method:** PATCH\n**IP Address:** 127.0.0.1\n**Parameters:** {\"_method\"=>\"patch\",
+        \"commit\"=>\"Save\", \"site\"=>{\"header_tagline\"=>\"Office website of the
+        Awesome Agency\", \"header_tagline_url\"=>\"http://awesomeagency.gov\", \"header_tagline_logo\"=>#<ActionDispatch::Http::UploadedFile:0x000000013a87aa10
+        @tempfile=#<Tempfile:/var/folders/t3/hxs04khx25bf9yffft0klndh0000gn/T/RackMultipart20240912-96414-zr3hrf.png>,
+        @content_type=\"image/png\", @original_filename=\"mini_logo.png\", @headers=\"Content-Disposition:
+        form-data; name=\\\"site[header_tagline_logo]\\\"; filename=\\\"mini_logo.png\\\"\\r\\nContent-Type:
+        image/png\\r\\n\">, \"css_property_hash\"=>{\"menu_button_alignment\"=>\"left\"},
+        \"managed_header_links_attributes\"=>{\"0\"=>{\"title\"=>\"News\", \"position\"=>\"0\",
+        \"url\"=>\"news.agency.gov\"}, \"1\"=>{\"title\"=>\"Blog\", \"position\"=>\"1\",
+        \"url\"=>\"blog.agency.gov\"}}, \"managed_footer_links_attributes\"=>{\"0\"=>{\"title\"=>\"Contact\",
+        \"position\"=>\"0\", \"url\"=>\"mailto:contact@agency.gov\"}, \"1\"=>{\"title\"=>\"Terms
+        of Service\", \"position\"=>\"1\", \"url\"=>\"tos.agency.gov\"}}}, \"controller\"=>\"sites/header_and_footers\",
+        \"action\"=>\"update\", \"site_id\"=>\"1073485086\"}\n**Timestamp:** 2024-09-12
+        17:53:43 UTC\n**Server:** Bhaviths-MBP-2.attlocal.net\n**Rails root:** /Users/bhavith/workspace/search-gov\n**Process:**
+        96414\n___\n### **Session**\n**Data:** {\"id_token\"=>\"mock_id_token\", \"user_credentials\"=>\"e037d4039bfa87098b01e979a462700fd03a1c7475c9ed60dd6a54a2645a5866aad34234fbf6cb584e90208b4cfac47dce66eac9143edad00370b90a0a22f898\",
+        \"user_credentials_id\"=>1033898155}\n___\n### **Backtrace**\n````\napp/controllers/sites/header_and_footers_controller.rb:21:in
+        `update''\nlib/middlewares/filtered_jsonp.rb:12:in `call''\nlib/middlewares/adjust_client_ip.rb:9:in
+        `call''\n````\n___\n%%%","host":"Bhaviths-MBP-2.attlocal.net","device":null}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - dogapi-rb/1.45.0 (ruby 3.3.4; os darwin22; arch x86_64)
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      Date:
+      - Thu, 12 Sep 2024 17:53:43 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '169'
+      Connection:
+      - keep-alive
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"status":"error","code":403,"errors":["Forbidden"],"statuspage":"http://status.datadoghq.com","twitter":"http://twitter.com/datadogops","email":"support@datadoghq.com"}'
+  recorded_at: Thu, 12 Sep 2024 17:53:43 GMT
+recorded_with: VCR 6.3.1
