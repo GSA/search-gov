@@ -11,11 +11,12 @@ PARAM_PATH=""
 
 echo "Starting the script"
 # Fetch all parameter names in the region
-echo $AWS_REGION
+REGION=$(curl -s http://169.254.169.254/latest/meta-data/placement/region)
+echo $REGION
 if [ -n "$PARAM_PATH" ]; then
-    PARAM_KEYS=$(aws ssm get-parameters-by-path --path "$PARAM_PATH"  --recursive --query "Parameters[*].Name" --output text)
+    PARAM_KEYS=$(aws ssm get-parameters-by-path --path "$PARAM_PATH"  --recursive --query "Parameters[*].Name" --output text --region $REGION)
 else
-    PARAM_KEYS=$(aws ssm describe-parameters  --query "Parameters[*].Name" --output text)
+    PARAM_KEYS=$(aws ssm describe-parameters  --query "Parameters[*].Name" --output text --region $REGION)
 fi
 echo "Fetched parameter keys: $PARAM_KEYS"
 
@@ -24,7 +25,7 @@ for PARAM in $PARAM_KEYS; do
     # Exclude parameters that start with "DEPLOY_" or match "*_EC2_PEM_KEY" or match LOGIN_DOT_GOV_PEM
     if [[ $PARAM != DEPLOY_* && ! $PARAM =~ .*_EC2_PEM_KEY$ && $PARAM != "LOGIN_DOT_GOV_PEM" ]]; then
         # Fetch the parameter value from SSM
-        VALUE=$(aws ssm get-parameter --name "$PARAM" --with-decryption --query "Parameter.Value" --output text)
+        VALUE=$(aws ssm get-parameter --name "$PARAM" --with-decryption --query "Parameter.Value" --output text --region $REGION)
         
         # Rename parameters that start with "SEARCH_AWS_" to "AWS_"
         if [[ $PARAM == SEARCH_AWS_* ]]; then
