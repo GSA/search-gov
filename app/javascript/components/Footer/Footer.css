@@ -2,3 +2,9 @@
 .usa-footer__secondary-section{
   display: none;
 }
+
+@media (min-width: 64em){
+  nav.usa-footer__nav ul.grid-row li.usa-footer__primary-content{
+    width: 25%;
+  }
+}
