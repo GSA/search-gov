@@ -16,8 +16,8 @@ class SearchImpression
                                modules: search.modules.join('|'),
                                params: clean_params(params))
 
+    impression_logger.info("[Search Impression] #{hash.to_json}")
     Rails.logger.info('[Search Impression]', search_data: hash)
-    impression_logger.info(hash)
   end
 
   def self.clean_params(params)
