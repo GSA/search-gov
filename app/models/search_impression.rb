@@ -39,7 +39,7 @@ class SearchImpression
     diagnostics_hash.keys.sort.map { |k| diagnostics_hash[k].merge(module: k) }
   end
 
-  def impression_logger
+  def self.impression_logger
     @@logger ||= Logger.new('log/impressions.log')
   end
 end
