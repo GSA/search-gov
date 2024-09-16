@@ -59,7 +59,7 @@ export const Footer = ({ footerLinks = [] }: FooterProps) => {
           returnToTop={returnToTop}
           primary={
             <div className="usa-footer__primary-container grid-row">
-              <div className="mobile-lg:grid-col-8">
+              <div className="mobile-lg:grid-col-12">
                 <FooterNav
                   size="slim"
                   links={primaryFooterLinks}

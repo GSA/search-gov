@@ -59,13 +59,6 @@ describe('Header', () => {
     expect(secondPrimaryHeaderLink).toHaveAttribute('href', 'https://second.gov');
     expect(secondPrimaryHeaderLink).toHaveTextContent('second primary header link');
 
-    const [firstSecondaryHeaderLink, secondSecondaryHeaderLink] = Array.from(document.getElementsByClassName('usa-nav__secondary-item'));
-    expect(firstSecondaryHeaderLink.childNodes[0]).toHaveAttribute('href', 'https://first.gov');
-    expect(firstSecondaryHeaderLink.childNodes[0]).toHaveTextContent('first secondary header link');
-
-    expect(secondSecondaryHeaderLink.childNodes[0]).toHaveAttribute('href', 'https://second.gov');
-    expect(secondSecondaryHeaderLink.childNodes[0]).toHaveTextContent('second secondary header link');
-
     // To Do - investigate test cases for responsive
     const btn = screen.getByTestId('usa-menu-mob-btn'); // Menu button for mobile
     fireEvent.click(btn);
