@@ -17,6 +17,7 @@ class SearchImpression
                                params: clean_params(params))
 
     Rails.logger.info('[Search Impression]', search_data: hash)
+    impression_logger.info(hash)
   end
 
   def self.clean_params(params)
@@ -36,5 +37,9 @@ class SearchImpression
 
   def self.flatten_diagnostics_hash(diagnostics_hash)
     diagnostics_hash.keys.sort.map { |k| diagnostics_hash[k].merge(module: k) }
+  end
+
+  def impression_logger
+    @@logger ||= Logger.new('log/impressions.log')
   end
 end

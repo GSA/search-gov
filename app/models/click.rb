@@ -35,9 +35,14 @@ class Click
 
   def log
     Rails.logger.info('[Click]', search_data: click_hash)
+    clicks_logger.info(click_hash)
   end
 
   private
+
+  def clicks_logger
+    @@logger ||= Logger.new('log/clicks.log')
+  end
 
   # prevent validation from choking on "invalid byte sequence in UTF-8"
   def validate_url_encoding
