@@ -138,8 +138,16 @@ describe NewsItem do
   describe '#duration' do
     subject(:duration) { news_item.duration }
 
-    context 'when the news item is a video with a duration' do
-      let(:news_item) { described_class.new(properties: { duration: '0:39' }) }
+    context 'when properties is a JSON string' do
+      let(:news_item) { described_class.new(properties: '{"duration":"2:30"}') }
+
+      it 'parses the JSON and returns the duration' do
+        expect(duration).to eq('2:30')
+      end
+    end
+
+    context 'when properties is a hash with duration' do
+      let(:news_item) { described_class.new(properties: { 'duration' => '0:39' }) }
 
       it { is_expected.to eq('0:39') }
     end
