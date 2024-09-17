@@ -4,8 +4,8 @@
 # the maximum value specified for Puma. Default is set to 5 threads for minimum
 # and maximum; this matches the default thread size of Active Record.
 #
-max_threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }
-min_threads_count = ENV.fetch("RAILS_MIN_THREADS") { max_threads_count }
+max_threads_count = ENV.fetch("RAILS_MAX_THREADS") { 16 }
+min_threads_count = ENV.fetch("RAILS_MIN_THREADS") { 5 }
 threads min_threads_count, max_threads_count
 
 # Specifies the `worker_timeout` threshold that Puma will use to wait before
@@ -21,6 +21,15 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 
 # Specifies the `pidfile` that Puma will use.
 pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
+
+# Preload application before forking workers for enhanced performance
+preload_app!
+
+before_fork do
+  if defined?($split_factory)
+    $split_factory.instance_variable_get(:@config).threads.each { |_, t| t.exit }
+  end
+end
 
 # Use the bind directive to specify the address and port to listen on
 bind "tcp://0.0.0.0:3000"

@@ -21,6 +21,10 @@ set :workers,                 { '*' => ENV.fetch('RESQUE_WORKERS_COUNT', '5').to
 append :linked_dirs,  'log', 'tmp', 'node_modules', 'public'
 append :linked_files, '.env', 'config/logindotgov.pem'
 
+# Puma-specific configuration
+set :puma_threads, [5, 16]
+set :puma_preload_app, true
+
 role :app,           JSON.parse(ENV.fetch('APP_SERVER_ADDRESSES', '[]')),    user: ENV['SERVER_DEPLOYMENT_USER']
 role :cron,          JSON.parse(ENV.fetch('CRON_SERVER_ADDRESSES', '[]')),   user: ENV['SERVER_DEPLOYMENT_USER']
 role :db,            JSON.parse(ENV.fetch('APP_SERVER_ADDRESSES', '[]')),    user: ENV['SERVER_DEPLOYMENT_USER']
