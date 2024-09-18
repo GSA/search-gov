@@ -40,6 +40,6 @@ class SearchImpression
   end
 
   def self.impression_logger
-    @logger ||= Logger.new('log/impressions.log')
+    @impression_logger ||= Logger.new('log/impressions.log')
   end
 end
