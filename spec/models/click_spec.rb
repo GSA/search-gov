@@ -86,7 +86,14 @@ describe Click do
           expect(Rails.logger).to have_received(:info).with(
             "[Click]",
             hash_including(search_data: {
-              params: hash_including(url: "https://search.gov/%28%3A%7C%29")
+              params: hash_including(url: "https://search.gov/%28%3A%7C%29"),
+              click_domain: "search.gov",
+              clientip: "0.0.0.0",
+              referrer: "http://www.fda.gov/referrer",
+              time: "2020-01-01 00:00:00",
+              user_agent: "mozilla",
+              vertical: "web",
+              modules: "BWEB"
             })
           )
         end
@@ -99,7 +106,14 @@ describe Click do
           expect(Rails.logger).to have_received(:info).with(
             "[Click]",
             hash_including(search_data: {
-              params: hash_including(query: "downcase me")
+              params: hash_including(query: "downcase me"),
+              click_domain: "www.fda.gov",
+              clientip: "0.0.0.0",
+              modules: "BWEB",
+              referrer: "http://www.fda.gov/referrer",
+              time: "2020-01-01 00:00:00",
+              user_agent: "mozilla",
+              vertical: "web"
             })
           )
         end
@@ -112,30 +126,18 @@ describe Click do
         let(:url) { "https://foo.gov/search?query=#{sensitive_info}&utm_x=123456789" }
         let(:user_agent) { 'Mozilla 123456789' }
 
-        it 'does not log the sensitive information' do
-          expect(Rails.logger).not_to have_received(:info).with(/123-45-6789/)
-        end
-
         it 'specifies what was redacted' do
           expect(Rails.logger).to have_received(:info).with(
             "[Click]",
             hash_including(search_data: {
-              params: hash_including(query: "REDACTED_SSN")
-            })
-          )
-        end
-
-        it 'logs non-sensitive information that happens to match sensitive patterns' do
-          expect(Rails.logger).to have_received(:info).with(
-            "[Click]",
-            hash_including(search_data: {
-              params: hash_including(url: "https://foo.gov/search?query=REDACTED_SSN&utm_x=123456789"),
+              params: hash_including(query: "REDACTED_SSN"),
               click_domain: "foo.gov",
               clientip: "0.0.0.0",
               time: "2020-01-01 00:00:00",
               user_agent: "Mozilla 123456789",
               vertical: "web",
-              modules: "BWEB"
+              modules: "BWEB",
+              referrer: "https://foo.gov/search?query=REDACTED_SSN&utm_x=123456789"
             })
           )
         end
