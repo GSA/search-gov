@@ -17,7 +17,7 @@ class SearchImpression
                                params: clean_params(params))
 
     impression_logger.info("[Search Impression] #{hash.to_json}")
-    Rails.logger.info('[Search Impression]', search_data: hash)
+    Rails.logger.info("[Search Impression] #{hash.to_json}")
   end
 
   def self.clean_params(params)
@@ -40,6 +40,6 @@ class SearchImpression
   end
 
   def self.impression_logger
-    @@logger ||= Logger.new('log/impressions.log')
+    @impression_logger ||= Logger.new('log/impressions.log')
   end
 end

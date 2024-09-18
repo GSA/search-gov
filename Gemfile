@@ -117,7 +117,6 @@ gem 'dogapi', '~> 1.45'
 # https://github.com/ruby/net-protocol/issues/10
 # This gem can be removed once we upgrade to Ruby 3.1.
 gem 'net-http'
-
 # Assets-related gems
 gem 'coffee-rails', '~> 5.0.0'
 gem 'uglifier', '~> 4.2.0'
@@ -135,10 +134,8 @@ gem 'font-awesome-rails', '~> 4.7.0'
 # icons compiled into SVG/CSS+PNG using Grunticon. See
 # https://github.com/gsa/font-awesome-grunticon-rails
 # for instructions on how to add more icons to this set
-
 gem 'sidekiq', '~> 7.1.3'
 gem 'sidekiq-failures', '~> 1.0.0'
-
 gem 'font-awesome-grunticon-rails', git: 'https://github.com/gsa/font-awesome-grunticon-rails', ref: '8ad9734a65f7e2d2de934bebe4ee7b460734f96e'
 gem 'react-rails', '~> 3.0.0'
 # Locking to prevent a version mismatch between the gem and the NPM package version
@@ -151,8 +148,9 @@ gem 'mail', '~> 2.7.1'
 gem 'feedjira', '~> 3.2'
 gem 'bootsnap', require: false
 gem 'rails_semantic_logger', '~> 4.14'
-
+gem 'dotenv', '~> 3.1'
 gem 'whenever', '~> 1.0', require: false
+gem 'puma', '~> 5.6'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
