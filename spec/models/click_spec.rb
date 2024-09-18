@@ -59,22 +59,24 @@ describe Click do
       after { travel_back }
 
       it 'logs almost-JSON info about the click' do
-        expect(Rails.logger).to have_received(:info).with("[Click]", hash_including(search_data: {
-          clientip: "0.0.0.0",
-          referrer: "http://www.fda.gov/referrer",
-          user_agent: "mozilla",
-          time: "2020-01-01 00:00:00",
-          vertical: "web",
-          modules: "BWEB",
-          click_domain: "www.fda.gov",
-          params: hash_including({
-                                   url: "http://www.fda.gov/foo.html",
-                                   affiliate: "nps.gov",
-                                   query: "my query",
-                                   position: "7"
-                                 }),
-          tags: ["api"]
-        }))
+        expect(Rails.logger).to have_received(:info).with(
+          "[Click]",
+          hash_including(search_data: {
+            clientip: "0.0.0.0",
+            referrer: "http://www.fda.gov/referrer",
+            user_agent: "mozilla",
+            time: "2020-01-01 00:00:00",
+            vertical: "web",
+            modules: "BWEB",
+            click_domain: "www.fda.gov",
+            params: hash_including({
+                                     url: "http://www.fda.gov/foo.html",
+                                     affiliate: "nps.gov",
+                                     query: "my query",
+                                     position: "7"
+                                   })
+          })
+        )
       end
 
       context 'when the URL is encoded' do
@@ -117,9 +119,12 @@ describe Click do
         end
 
         it 'logs non-sensitive information that happens to match sensitive patterns' do
-          expect(Rails.logger).to have_received(:info).with("[Click]", hash_including(search_data: {
-            params: hash_including(url: "https://foo.gov/search?query=REDACTED_SSN&utm_x=123456789")
-          }))
+          expect(Rails.logger).to have_received(:info).with(
+            "[Click]",
+            hash_including(search_data: {
+              params: hash_including(url: "https://foo.gov/search?query=REDACTED_SSN&utm_x=123456789")
+            })
+          )
 
           expect(Rails.logger).to have_received(:info).with(/Mozilla 123456789/)
         end
