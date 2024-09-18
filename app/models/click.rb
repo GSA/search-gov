@@ -41,7 +41,7 @@ class Click
   private
 
   def clicks_logger
-    @@logger ||= Logger.new('log/clicks.log')
+    @logger ||= Logger.new('log/clicks.log')
   end
 
   # prevent validation from choking on "invalid byte sequence in UTF-8"
