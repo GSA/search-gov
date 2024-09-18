@@ -58,7 +58,7 @@ export const Header = ({ page, isBasic, primaryHeaderLinks, secondaryHeaderLinks
   return (
     <>
       <a className="usa-skipnav" href="#main-content">
-        {i18n.t('searches.skip_to_main_content')}
+        {i18n.t('searches.skipToMainContent')}
       </a>
       <StyledGovBanner language={i18n.locale === 'es' ? 'spanish' : 'english'} styles={styles} />
       <div className={`usa-overlay ${mobileNavOpen ? 'is-visible' : ''}`}></div>
