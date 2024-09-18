@@ -59,63 +59,25 @@ describe Click do
       after { travel_back }
 
       it 'logs almost-JSON info about the click' do
-        expect(Rails.logger).to have_received(:info).with(
-          "[Click]",
-          hash_including(search_data: {
-            clientip: "0.0.0.0",
-            referrer: "http://www.fda.gov/referrer",
-            user_agent: "mozilla",
-            time: "2020-01-01 00:00:00",
-            vertical: "web",
-            modules: "BWEB",
-            click_domain: "www.fda.gov",
-            params: hash_including({
-                                     url: "http://www.fda.gov/foo.html",
-                                     affiliate: "nps.gov",
-                                     query: "my query",
-                                     position: "7"
-                                   })
-          })
-        )
+        expect(Rails.logger).to have_received(:info).with("[Click] #{click_json}")
       end
 
       context 'when the URL is encoded' do
-        let(:url) { 'https://search.gov/%28%3A%7C%29' }
+        let(:url) { 'https://search.gov/%28%3A%7C%29'  }
 
         it 'logs the encoded URL' do
-          expect(Rails.logger).to have_received(:info).with(
-            "[Click]",
-            hash_including(search_data: {
-              params: hash_including(url: "https://search.gov/%28%3A%7C%29"),
-              click_domain: "search.gov",
-              clientip: "0.0.0.0",
-              referrer: "http://www.fda.gov/referrer",
-              time: "2020-01-01 00:00:00",
-              user_agent: "mozilla",
-              vertical: "web",
-              modules: "BWEB"
-            })
-          )
+          expect(Rails.logger).to have_received(:info).
+            with(%r{https://search.gov/%28%3A%7C%29})
         end
       end
 
+      # The different search engines use different formatters, but for simplicity's
+      # sake, we simply downcase the query that we log for logstash
       context 'when the URL contains capital letters' do
         let(:query) { 'DOWNCASE ME' }
 
         it 'downcases the query' do
-          expect(Rails.logger).to have_received(:info).with(
-            "[Click]",
-            hash_including(search_data: {
-              params: hash_including(query: "downcase me"),
-              click_domain: "www.fda.gov",
-              clientip: "0.0.0.0",
-              modules: "BWEB",
-              referrer: "http://www.fda.gov/referrer",
-              time: "2020-01-01 00:00:00",
-              user_agent: "mozilla",
-              vertical: "web"
-            })
-          )
+          expect(Rails.logger).to have_received(:info).with(/downcase me/)
         end
       end
 
@@ -126,20 +88,17 @@ describe Click do
         let(:url) { "https://foo.gov/search?query=#{sensitive_info}&utm_x=123456789" }
         let(:user_agent) { 'Mozilla 123456789' }
 
+        it 'does not log the information' do
+          expect(Rails.logger).not_to have_received(:info).with(/123-45-6789/)
+        end
+
         it 'specifies what was redacted' do
-          expect(Rails.logger).to have_received(:info).with(
-            "[Click]",
-            hash_including(search_data: {
-              params: hash_including(query: "REDACTED_SSN"),
-              click_domain: "foo.gov",
-              clientip: "0.0.0.0",
-              time: "2020-01-01 00:00:00",
-              user_agent: "Mozilla 123456789",
-              vertical: "web",
-              modules: "BWEB",
-              referrer: "https://foo.gov/search?query=REDACTED_SSN&utm_x=123456789"
-            })
-          )
+          expect(Rails.logger).to have_received(:info).with(/REDACTED_SSN/)
+        end
+
+        it 'logs non-sensitive information that happens to match sensitive patterns' do
+          expect(Rails.logger).to have_received(:info).with(/utm_x=123456789/)
+          expect(Rails.logger).to have_received(:info).with(/Mozilla 123456789/)
         end
       end
     end
@@ -166,14 +125,12 @@ describe Click do
     describe '#errors' do
       it 'has expected errors' do
         click.validate
-        expected_errors = [
-          "Client ip can't be blank",
-          "Module code can't be blank",
-          "Position can't be blank",
-          "Query can't be blank",
-          "Url can't be blank",
-          "User agent can't be blank"
-        ]
+        expected_errors = ["Client ip can't be blank",
+                           "Module code can't be blank",
+                           "Position can't be blank",
+                           "Query can't be blank",
+                           "Url can't be blank",
+                           "User agent can't be blank"]
         expect(click.errors.full_messages).to eq expected_errors
       end
     end
@@ -181,6 +138,7 @@ describe Click do
 
   describe '#url_encoding_validation' do
     context 'with invalid utf-8 in the url' do
+      # https://cm-jira.usa.gov/browse/SRCHAR-415
       let(:url) { "https://example.com/wymiana teflon\xF3w" }
 
       it 'has expected errors' do
@@ -208,7 +166,7 @@ describe Click do
     end
 
     context 'when the URL contains a space' do
-      let(:url) { 'https://search.gov/foo%20bar' }
+      let(:url) { 'https://search.gov/foo%20bar'  }
 
       it { is_expected.to be_valid }
     end
@@ -222,7 +180,7 @@ describe Click do
     end
 
     context 'with valid ip6' do
-      let(:ip) { '2600:1f18:f88:4313:6df7:f986:f915:78d6' }
+      let(:ip) { '2600:1f18:f88:4313:6df7:f986:f915:78d6' } # gsa.gov?
 
       it { is_expected.to be_valid }
     end
@@ -247,7 +205,8 @@ describe Click do
 
       it 'has expected errors' do
         click.validate
-        expect(click.errors.full_messages).to eq ['Position must be greater than or equal to 0']
+        error_msg = ['Position must be greater than or equal to 0']
+        expect(click.errors.full_messages).to eq error_msg
       end
     end
 
@@ -269,7 +228,8 @@ describe Click do
 
       it 'has expected errors' do
         click.validate
-        expect(click.errors.full_messages).to eq ['Position is not a number']
+        error_msg = ['Position is not a number']
+        expect(click.errors.full_messages).to eq error_msg
       end
     end
   end
@@ -282,7 +242,8 @@ describe Click do
 
       it 'has expected errors' do
         click.validate
-        expect(click.errors.full_messages).to eq ['Module code whatever is not a valid module']
+        error_msg = ['Module code whatever is not a valid module']
+        expect(click.errors.full_messages).to eq error_msg
       end
     end
   end
