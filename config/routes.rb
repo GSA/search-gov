@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   get '/sayt' => 'sayt#index'
   post '/clicked' => 'clicked#create'
   get '/healthcheck' => 'health_checks#new'
+  get '/up' => 'health_checks#new'
   get '/login' => 'user_sessions#security_notification', as: :login
   get '/signup' => 'user_sessions#security_notification', as: :signup
   get '/dcv/:affiliate.txt' => 'statuses#domain_control_validation',
