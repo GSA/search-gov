@@ -107,5 +107,4 @@ class RtuDashboard
       result
     end
   end
-
 end
