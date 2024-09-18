@@ -149,6 +149,7 @@ gem 'feedjira', '~> 3.2'
 gem 'bootsnap', require: false
 gem 'rails_semantic_logger', '~> 4.14'
 gem 'whenever', '~> 1.0', require: false
+gem 'puma', '~> 5.6'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
@@ -187,7 +188,6 @@ group :development, :test do
   # For improved console readability:
   # https://github.com/amazing-print/amazing_print
   gem 'amazing_print', '~> 1.4'
-  gem 'puma', '~> 6.0'
   gem 'debug'
 end
 

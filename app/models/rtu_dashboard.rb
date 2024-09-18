@@ -109,6 +109,3 @@ class RtuDashboard
   end
 
 end
-
-
-2 > 1
