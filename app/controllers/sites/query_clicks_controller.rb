@@ -2,7 +2,7 @@
 
 class Sites::QueryClicksController < Sites::AnalyticsController
   def show
-    @query = request['query']
+    @query = params[:query]
     @top_urls = top_urls
   end
 
