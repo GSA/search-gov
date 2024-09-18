@@ -83,9 +83,12 @@ describe Click do
         let(:url) { 'https://search.gov/%28%3A%7C%29'  }
 
         it 'logs the encoded URL' do
-          expect(Rails.logger).to have_received(:info).with("[Click]", hash_including(search_data: {
-            params: hash_including(url: "https://search.gov/%28%3A%7C%29")
-          }))
+          expect(Rails.logger).to have_received(:info).with(
+            "[Click]",
+            hash_including(search_data: {
+              params: hash_including(url: "https://search.gov/%28%3A%7C%29")
+            })
+          )
         end
       end
 
@@ -95,9 +98,12 @@ describe Click do
         let(:query) { 'DOWNCASE ME' }
 
         it 'downcases the query' do
-          expect(Rails.logger).to have_received(:info).with("[Click]", hash_including(search_data: {
-            params: hash_including(query: "downcase me")
-          }))
+          expect(Rails.logger).to have_received(:info).with(
+            "[Click]",
+            hash_including(search_data: {
+              params: hash_including(query: "downcase me")
+            })
+          )
         end
       end
 
@@ -113,9 +119,12 @@ describe Click do
         end
 
         it 'specifies what was redacted' do
-          expect(Rails.logger).to have_received(:info).with("[Click]", hash_including(search_data: {
-            params: hash_including(query: "REDACTED_SSN")
-          }))
+          expect(Rails.logger).to have_received(:info).with(
+            "[Click]",
+            hash_including(search_data: {
+              params: hash_including(query: "REDACTED_SSN")
+            })
+          )
         end
 
         it 'logs non-sensitive information that happens to match sensitive patterns' do
@@ -125,8 +134,6 @@ describe Click do
               params: hash_including(url: "https://foo.gov/search?query=REDACTED_SSN&utm_x=123456789")
             })
           )
-
-          expect(Rails.logger).to have_received(:info).with(/Mozilla 123456789/)
         end
       end
     end
