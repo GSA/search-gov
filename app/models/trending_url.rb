@@ -6,7 +6,7 @@ class TrendingUrl
   attr_accessor :affiliate, :url
 
   cattr_reader :redis
-  @@redis = Redis.new(:host => REDIS_HOST, :port => REDIS_PORT)
+  @@redis = Redis.new(url: ENV.fetch('REDIS_SYSTEM_URL'))
 
   def self.all
     sorted_trending_affiliate_keys = @@redis.keys("TrendingUrls:*").sort
