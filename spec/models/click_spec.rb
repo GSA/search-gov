@@ -72,7 +72,8 @@ describe Click do
                                    affiliate: "nps.gov",
                                    query: "my query",
                                    position: "7"
-                                 })
+                                 }),
+          tags: ["api"]
         }))
       end
 
