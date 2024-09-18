@@ -6,11 +6,11 @@ describe RssFeedData do
   describe '#import' do
     let(:rss_feed_url) { rss_feed_urls(:basic_url) }
 
-    before { allow(UrlStatusCodeFetcher).to receive(:fetch) { '200 OK' } }
+    before { allow(UrlStatusCodeFetcher).to receive(:fetch).and_return('200 OK') }
 
     context 'when the feed is empty' do
       let(:rss_feed_content) do
-        File.read(Rails.root.to_s + '/spec/fixtures/rss/empty.xml')
+        File.read(Rails.root.join('spec/fixtures/rss/empty.xml').to_s)
       end
 
       before do
@@ -26,37 +26,37 @@ describe RssFeedData do
 
     context 'when the feed has an item that fails HTTP HEAD validation' do
       let(:rss_feed_content) do
-        File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_missing_description.xml')
+        File.read(Rails.root.join('spec/fixtures/rss/wh_blog_missing_description.xml').to_s)
       end
 
       before do
         stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
         allow(UrlStatusCodeFetcher).to receive(:fetch) do |arg|
           status_code =
-              case arg
-                when 'http://www.whitehouse.gov/blog/2011/09/26/famine-horn-africa-be-part-solution'
-                  '404 Not Found'
-                else
-                  '200 OK'
-              end
+            case arg
+            when 'http://www.whitehouse.gov/blog/2011/09/26/famine-horn-africa-be-part-solution'
+              '404 Not Found'
+            else
+              '200 OK'
+            end
           { arg => status_code }
         end
         rss_feed_url.news_items.destroy_all
         described_class.new(rss_feed_url).import
       end
 
-      it 'should populate and index just the news items that are valid' do
+      it 'populates and index just the news items that are valid' do
         expect(rss_feed_url.news_items.count).to eq(1)
       end
 
-      it 'should reflect that 404 in the feed status' do
+      it 'reflects that 404 in the feed status' do
         expect(rss_feed_url.last_crawl_status).to eq('Linked URL does not exist (HTTP 404)')
       end
     end
 
     context 'when the feed has an item that is missing the pubDate field' do
       let(:rss_feed_content) do
-        File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_missing_pubdate.xml')
+        File.read(Rails.root.join('spec/fixtures/rss/wh_blog_missing_pubdate.xml').to_s)
       end
 
       before do
@@ -65,18 +65,18 @@ describe RssFeedData do
         described_class.new(rss_feed_url).import
       end
 
-      it 'should populate and index just the news items that are valid' do
+      it 'populates and index just the news items that are valid' do
         expect(rss_feed_url.news_items.count).to eq(2)
       end
 
-      it 'should reflect the missing pubDate in the last_crawl_status field' do
+      it 'reflects the missing pubDate in the last_crawl_status field' do
         expect(rss_feed_url.last_crawl_status).to eq('Missing pubDate field')
       end
     end
 
     context 'when the feed has an item that is missing the link field' do
       let(:rss_feed_content) do
-        File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_missing_link.xml')
+        File.read(Rails.root.join('spec/fixtures/rss/wh_blog_missing_link.xml').to_s)
       end
 
       before do
@@ -85,36 +85,36 @@ describe RssFeedData do
         described_class.new(rss_feed_url).import
       end
 
-      it 'should populate and index just the news items that are valid' do
+      it 'populates and index just the news items that are valid' do
         expect(rss_feed_url.news_items.count).to eq(2)
       end
 
-      it 'should reflect the missing link field in the last_crawl_status field' do
+      it 'reflects the missing link field in the last_crawl_status field' do
         expect(rss_feed_url.last_crawl_status).to eq('Missing link field')
       end
     end
 
     context 'when the feed items have multiple types of problems' do
       before do
-        rss_feed_content = File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_2titles_1pubdate.xml')
+        rss_feed_content = File.read(Rails.root.join('spec/fixtures/rss/wh_blog_2titles_1pubdate.xml').to_s)
         stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
         rss_feed_url.news_items.destroy_all
         described_class.new(rss_feed_url).import
       end
 
-      it 'should reflect the most common problem in the last_crawl_status field' do
+      it 'reflects the most common problem in the last_crawl_status field' do
         expect(rss_feed_url.last_crawl_status).to eq("Title can't be blank")
       end
     end
 
     context 'when a dublin core element is specified multiple times' do
       before do
-        rss_feed_content = File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_multiple_dublin_core.xml')
+        rss_feed_content = File.read(Rails.root.join('spec/fixtures/rss/wh_blog_multiple_dublin_core.xml').to_s)
         stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
         rss_feed_url.news_items.destroy_all
       end
 
-      it 'should create a single comma-separated list' do
+      it 'creates a single comma-separated list' do
         described_class.new(rss_feed_url).import
         u = RssFeedUrl.find rss_feed_url.id
         newest = u.news_items.first
@@ -124,14 +124,14 @@ describe RssFeedData do
 
     context 'when the feed is in the RSS 2.0 format' do
       before do
-        rss_feed_content = File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')
+        rss_feed_content = File.read(Rails.root.join('spec/fixtures/rss/wh_blog.xml').to_s)
         stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
       end
 
       context 'when there are no news items associated with the source' do
         before { rss_feed_url.news_items.destroy_all }
 
-        it 'should populate news items from the RSS feed source with HTML stripped from the description' do
+        it 'populates news items from the RSS feed source with HTML stripped from the description' do
           described_class.new(rss_feed_url).import
           u = RssFeedUrl.find rss_feed_url.id
           expect(u.last_crawl_status).to eq('OK')
@@ -162,11 +162,12 @@ describe RssFeedData do
             title: 'Big story here',
             description: 'Corps volunteers have promoted blah blah blah.',
             published_at: DateTime.parse('26 Sep 2011 18:31:23 +0000'),
-            guid: 'unique')
+            guid: 'unique'
+          )
         end
 
         context 'when ignore_older_items set to true (default)' do
-          it 'should populate news items with only the new ones from the RSS feed source based on the pubDate' do
+          it 'populates news items with only the new ones from the RSS feed source based on the pubDate' do
             described_class.new(rss_feed_url, true).import
             rss_feed_url.reload
             expect(rss_feed_url.last_crawl_status).to eq('OK')
@@ -175,7 +176,7 @@ describe RssFeedData do
         end
 
         context 'when ignore_older_items set to false' do
-          it 'should populate news items with both the new and old ones from the RSS feed source based on the pubDate' do
+          it 'populates news items with both the new and old ones from the RSS feed source based on the pubDate' do
             described_class.new(rss_feed_url, false).import
             rss_feed_url.reload
             expect(rss_feed_url.last_crawl_status).to eq('OK')
@@ -192,10 +193,11 @@ describe RssFeedData do
             title: 'Big story here',
             description: 'Corps volunteers have promoted blah blah blah.',
             published_at: DateTime.parse('26 Sep 2011 18:31:21 +0000'),
-            guid: '80671 at http://www.whitehouse.gov')
+            guid: '80671 at http://www.whitehouse.gov'
+          )
         end
 
-        it 'should ignore them' do
+        it 'ignores them' do
           described_class.new(rss_feed_url, true).import
           rss_feed_url.reload
           expect(rss_feed_url.last_crawl_status).to eq('OK')
@@ -204,7 +206,7 @@ describe RssFeedData do
 
         context 'when the item links differ only in protocol' do
           let(:rss_feed_content) do
-            File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_diff_protocol.xml')
+            File.read(Rails.root.join('spec/fixtures/rss/wh_blog_diff_protocol.xml').to_s)
           end
 
           before do
@@ -212,7 +214,7 @@ describe RssFeedData do
             NewsItem.destroy_all
           end
 
-          it 'should ignore them' do
+          it 'ignores them' do
             described_class.new(rss_feed_url, true).import
             rss_feed_url.reload
             expect(rss_feed_url.news_items.count).to eq(1)
@@ -226,7 +228,7 @@ describe RssFeedData do
         expect(rss_feed_url).to receive(:touch).with(:last_crawled_at).and_raise StandardError.new('Error Message!')
       end
 
-      it 'should log it and move on' do
+      it 'logs it and move on' do
         expect(Rails.logger).to receive(:warn).once.with(an_instance_of(StandardError))
         described_class.new(rss_feed_url, true).import
         rss_feed_url.reload
@@ -236,7 +238,7 @@ describe RssFeedData do
 
     context 'when the feed uses RSS content module' do
       let(:rss_feed_content) do
-        File.read(Rails.root.to_s + '/spec/fixtures/rss/rss_with_content_module.xml')
+        File.read(Rails.root.join('spec/fixtures/rss/rss_with_content_module.xml').to_s)
       end
 
       before do
@@ -259,12 +261,12 @@ describe RssFeedData do
 
     context 'when the feed uses media:text and not content:encoded' do
       before do
-        rss_feed_content = File.read(Rails.root.to_s + '/spec/fixtures/rss/video_rss.xml')
+        rss_feed_content = File.read(Rails.root.join('spec/fixtures/rss/video_rss.xml').to_s)
         stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
         rss_feed_url.news_items.destroy_all
       end
 
-      it 'should use the media:text for the body' do
+      it 'uses the media:text for the body' do
         described_class.new(rss_feed_url).import
         u = RssFeedUrl.find rss_feed_url.id
         expect(u.last_crawl_status).to eq('OK')
@@ -279,7 +281,7 @@ describe RssFeedData do
 
     context 'when the feed does not contain dublin core namespace' do
       before do
-        rss_feed_content = File.read(Rails.root.to_s + '/spec/fixtures/rss/rss_without_dublin_core_ns.xml')
+        rss_feed_content = File.read(Rails.root.join('spec/fixtures/rss/rss_without_dublin_core_ns.xml').to_s)
         stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
       end
 
@@ -292,61 +294,80 @@ describe RssFeedData do
     end
 
     context 'when the feed uses Media RSS with media:content@type' do
-      let(:media_rss_url) { rss_feed_urls :media_feed_url }
-      let(:rss_feed) { rss_feeds :media_feed }
-      let(:affiliate) { affiliates :basic_affiliate }
+      let(:media_rss_url) { rss_feed_urls(:media_feed_url) }
+      let(:rss_feed) { rss_feeds(:media_feed) }
+      let(:affiliate) { affiliates(:basic_affiliate) }
       let(:rss_feed_content) do
-        File.open "#{Rails.root}/spec/fixtures/rss/media_rss_with_media_content_type.xml"
+        File.open(Rails.root.join('spec/fixtures/rss/media_rss_with_media_content_type.xml').to_s)
       end
 
       before do
-        stub_request(:get, media_rss_url.url).to_return({ status: 200, body: rss_feed_content })
+        stub_request(:get, media_rss_url.url).to_return(status: 200, body: rss_feed_content)
       end
 
-      it 'should persist media thumbnail and media content properties' do
+      it 'persists media thumbnail and media content properties' do
         described_class.new(media_rss_url).import
         expect(media_rss_url.news_items.reload.count).to eq(3)
-        item_with_media_props = media_rss_url.news_items.find_by_link 'http://www.flickr.com/photos/usgeologicalsurvey/8594929349/'
 
-        media_content = item_with_media_props.properties[:media_content]
-        expect(media_content).to eq({ url: 'http://farm9.staticflickr.com/8381/8594929349_f6d8163c36_b.jpg',
-                                  type: 'image/jpeg' })
+        item_with_media_props = media_rss_url.news_items.find_by(
+          link: 'http://www.flickr.com/photos/usgeologicalsurvey/8594929349/'
+        )
+        expect(item_with_media_props).not_to be_nil
 
-        media_thumbnail = item_with_media_props.properties[:media_thumbnail]
-        expect(media_thumbnail).to eq({ url: 'http://farm9.staticflickr.com/8381/8594929349_f6d8163c36_s.jpg' })
-        expect(item_with_media_props.tags).to eq(%w(image))
+        media_content = item_with_media_props.properties['media_content']
+        expect(media_content).to eq({
+                                      'url' => 'http://farm9.staticflickr.com/8381/8594929349_f6d8163c36_b.jpg',
+                                      'type' => 'image/jpeg'
+                                    })
 
-        no_media_content_url_item = media_rss_url.news_items.find_by_link 'http://www.flickr.com/photos/usgeologicalsurvey/8547777933/'
+        media_thumbnail = item_with_media_props.properties['media_thumbnail']
+        expect(media_thumbnail).to eq({
+                                        'url' => 'http://farm9.staticflickr.com/8381/8594929349_f6d8163c36_s.jpg'
+                                      })
+
+        expect(item_with_media_props.tags).to eq(%w[image])
+
+        no_media_content_url_item = media_rss_url.news_items.find_by(
+          link: 'http://www.flickr.com/photos/usgeologicalsurvey/8547777933/'
+        )
+        expect(no_media_content_url_item).not_to be_nil
         expect(no_media_content_url_item.properties).to be_empty
         expect(no_media_content_url_item.tags).to be_empty
       end
     end
 
     context 'when the feed uses Media RSS without media:content@type' do
-      let(:media_rss_url) { rss_feed_urls :media_feed_url }
-      let(:rss_feed) { rss_feeds :media_feed }
-      let(:affiliate) { affiliates :basic_affiliate }
+      let(:media_rss_url) { rss_feed_urls(:media_feed_url) }
+      let(:rss_feed) { rss_feeds(:media_feed) }
+      let(:affiliate) { affiliates(:basic_affiliate) }
       let(:rss_feed_content) do
-        File.open "#{Rails.root}/spec/fixtures/rss/media_rss_without_media_content_type.xml"
+        File.open(Rails.root.join('spec/fixtures/rss/media_rss_without_media_content_type.xml').to_s)
       end
 
       before do
-        stub_request(:get, media_rss_url.url).to_return({ status: 200, body: rss_feed_content })
+        stub_request(:get, media_rss_url.url).to_return(status: 200, body: rss_feed_content)
       end
 
-      it 'should persist media thumbnail and media content properties' do
+      it 'persists media thumbnail and media content properties' do
         described_class.new(media_rss_url).import
         expect(media_rss_url.news_items.reload.count).to eq(3)
+
         link = 'http://www.usgs.gov/blogs/features/usgs_top_story/national-groundwater-awareness-week-2/'
-        item_with_media_props = media_rss_url.news_items.find_by_link link
+        item_with_media_props = media_rss_url.news_items.find_by(link:)
+        expect(item_with_media_props).not_to be_nil
 
-        media_content = item_with_media_props.properties[:media_content]
-        expect(media_content).to eq({ url: 'http://www.usgs.gov/blogs/features/files/2014/03/crosssec.jpg',
-                                  type: 'image/jpeg' })
+        media_content = item_with_media_props.properties['media_content']
+        expect(media_content).to eq({
+                                      'url' => 'http://www.usgs.gov/blogs/features/files/2014/03/crosssec.jpg',
+                                      'type' => 'image/jpeg'
+                                    })
 
-        media_thumbnail = item_with_media_props.properties[:media_thumbnail]
-        expect(media_thumbnail).to eq({ url: 'http://www.usgs.gov/blogs/features/files/2014/03/crosssec-150x150.jpg' })
-        expect(item_with_media_props.tags).to eq(%w(image))
+        media_thumbnail = item_with_media_props.properties['media_thumbnail']
+        expect(media_thumbnail).to eq({
+                                        'url' => 'http://www.usgs.gov/blogs/features/files/2014/03/crosssec-150x150.jpg'
+                                      })
+
+        expect(item_with_media_props.tags).to eq(%w[image])
       end
     end
 
@@ -354,7 +375,7 @@ describe RssFeedData do
       let(:atom_feed_url) { rss_feed_urls(:atom_feed_url) }
       let(:url) { 'http://www.icpsr.umich.edu/icpsrweb/ICPSR/feeds/studies?fundingAgency=United+States+Department+of+Justice.+Office+of+Justice+Programs.+National+Institute+of+Justice' }
       let(:rss_feed_content) do
-        File.open(Rails.root.to_s + '/spec/fixtures/rss/atom_feed.xml')
+        File.open(Rails.root.join('spec/fixtures/rss/atom_feed.xml').to_s)
       end
 
       before do
@@ -362,7 +383,7 @@ describe RssFeedData do
       end
 
       context 'when there are no news items associated with the source' do
-        it 'should populate news items from the RSS feed source with HTML stripped from the description' do
+        it 'populates news items from the RSS feed source with HTML stripped from the description' do
           described_class.new(atom_feed_url, true).import
           atom_feed_url.reload
           expect(atom_feed_url.news_items.count).to eq(25)
@@ -399,7 +420,7 @@ describe RssFeedData do
 
     context 'when the RSS feed format can not be determined' do
       let(:rss_feed_content) do
-        File.open(Rails.root.to_s + '/spec/fixtures/rss/unknown_feed_type.xml')
+        File.open(Rails.root.join('spec/fixtures/rss/unknown_feed_type.xml').to_s)
       end
 
       before do
@@ -407,7 +428,7 @@ describe RssFeedData do
         stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
       end
 
-      it 'should not change the number of news items, and update the crawl status' do
+      it 'does not change the number of news items, and update the crawl status' do
         importer = described_class.new(rss_feed_url, true)
         importer.import
         rss_feed_url.reload
@@ -419,7 +440,7 @@ describe RssFeedData do
     context 'when the url has been redirected' do
       let(:rss_feed_url) { rss_feed_urls(:white_house_blog_url) }
       let(:rss_feed_content) do
-        File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')
+        File.read(Rails.root.join('spec/fixtures/rss/wh_blog.xml').to_s)
       end
 
       context 'when the redirection is for a protocol change' do
@@ -429,14 +450,14 @@ describe RssFeedData do
         end
 
         it 'updates the url' do
-           expect{ described_class.new(rss_feed_url, true).import }.to change{ rss_feed_url.reload.url }.
-             from('http://www.whitehouse.gov/feed/blog/white-house').
-             to('https://www.whitehouse.gov/feed/blog/white-house')
+          expect { described_class.new(rss_feed_url, true).import }.to change { rss_feed_url.reload.url }.
+            from('http://www.whitehouse.gov/feed/blog/white-house').
+            to('https://www.whitehouse.gov/feed/blog/white-house')
         end
 
         it 'creates news items' do
-          expect{ described_class.new(rss_feed_url, true).import }.to change{ rss_feed_url.news_items.count }.
-             from(0).to(3)
+          expect { described_class.new(rss_feed_url, true).import }.to change { rss_feed_url.news_items.count }.
+            from(0).to(3)
         end
       end
 

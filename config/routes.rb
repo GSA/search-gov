@@ -266,9 +266,6 @@ Rails.application.routes.draw do
 
   get '/user/developer_redirect' => 'users#developer_redirect', :as => :developer_redirect
 
-  BLOG_URL           = ENV['BLOG_URL']
-  PAGE_NOT_FOUND_URL = ENV['PAGE_NOT_FOUND_URL']
-
   get '/program', to: redirect(BLOG_URL || '', status: 302)
   get '*path',    to: redirect(PAGE_NOT_FOUND_URL || '', status: 302), constraints: lambda { |req| req.path.exclude? 'rails/active_storage' }
 end

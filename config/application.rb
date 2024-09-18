@@ -1,10 +1,10 @@
 require_relative "boot"
 
 require "rails/all"
-require './lib/middlewares/reject_invalid_request_uri.rb'
-require './lib/middlewares/downcase_route.rb'
-require './lib/middlewares/adjust_client_ip.rb'
-require './lib/middlewares/filtered_jsonp.rb'
+require './lib/middlewares/reject_invalid_request_uri'
+require './lib/middlewares/downcase_route'
+require './lib/middlewares/adjust_client_ip'
+require './lib/middlewares/filtered_jsonp'
 require 'resque/plugins/priority'
 
 
@@ -15,32 +15,13 @@ Bundler.require(*Rails.groups)
 module Usasearch
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.0
+    config.load_defaults 7.1
 
-    # Configuration for the application, engines, and railties goes here.
-    #
-    # These settings can be overridden in specific environments using the files
-    # in config/environments, which are processed later.
-    #
-    # config.time_zone = "Central Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
-    #
-    # Introduced during upgrade to zeitwerk (SRCH-2503).  Ideally, we
-    # wouldn't set any autoload paths explicitly. However, we have a
-    # good deal of existing code that doesn't conform to zeitwerk's
-    # naming conventions, so here's the necessary hackery to live with
-    # that.
-    #
-    # We should try to reduce this list by changing existing code to
-    # conform to the proper naming conventions.
-    #
-    # We should definitely *not* introduce any new code that needs an
-    # entry here; conform to the proper naming convention(s) instead.
-    #
-    # See https://github.com/fxn/zeitwerk#file-structure
-    #
-    # Custom directories with classes and modules you want to be autoloadable.
-    config.autoload_paths += Dir[config.root.join('lib').to_s]
+    # Please, add to the `ignore` list any other `lib` subdirectories that do
+    # not contain `.rb` files, or that should not be reloaded or eager loaded.
+    # Common ones are `templates`, `generators`, or `middleware`, for example.
+    config.autoload_lib(ignore: %w(assets tasks))
+
     config.autoload_paths += Dir[config.root.join('lib', 'active_job', 'uniqueness', 'strategies').to_s]
     config.autoload_paths += Dir[config.root.join('lib', 'callbacks').to_s]
     config.autoload_paths += Dir[config.root.join('lib', 'extensions').to_s]
@@ -92,5 +73,17 @@ module Usasearch
     # A permanent solution will be implemented in https://cm-jira.usa.gov/browse/SRCH-3206
     config.active_record.use_yaml_unsafe_load = true
     config.react.camelize_props = true
+    # Configuration for the application, engines, and railties goes here.
+    #
+    # These settings can be overridden in specific environments using the files
+    # in config/environments, which are processed later.
+    #
+    # config.time_zone = "Central Time (US & Canada)"
+    # config.eager_load_paths << Rails.root.join("extras")
+
+    config.action_controller.allow_deprecated_parameters_hash_equality = false
+
+    # Disable deprecated singular associations names.
+    config.active_record.allow_deprecated_singular_associations_name = false
   end
 end

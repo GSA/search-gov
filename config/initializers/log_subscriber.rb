@@ -28,7 +28,7 @@ module Instrumentation
       # as 9-digit IDs. We may need to fine-tune the redaction if it is redacting too much
       # necessary information from the logs.
       query = Redactor.redact(event.payload[:query])
-      info "  #{color(name, color, true)}  #{query}"
+      info "  #{color(name, color, bold: true)}  #{query}"
     end
   end
 end

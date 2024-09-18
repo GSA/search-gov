@@ -2,28 +2,24 @@
 
 source 'https://rubygems.org'
 
-gem 'rails', '~> 7.0.8'
-
-gem 'base64', '~> 0.2.0'
-
+gem 'rails', '~> 7.1.4'
 gem 'rake', '~> 13.0.6'
 gem 'rack-contrib', '~> 2.5.0'
 gem 'rails-observers', '~> 0.1.5'
-gem 'responders', '~> 3.0.1'
+gem 'responders', '~> 3.1.0'
 gem 'mysql2', '~> 0.5.5'
 gem 'curb', '~> 1.0.1'
 gem 'haml', '~> 5.2.1'
-gem 'will_paginate', '~> 3.3.0'
+gem 'will_paginate', '~> 3.3.1'
 gem 'nokogiri', '~> 1.16'
-gem 'authlogic', '~> 6.4.1'
-gem 'omniauth_login_dot_gov', git: 'https://github.com/18f/omniauth_login_dot_gov',
-                              ref: '6e117a9c68b19a1fbc70533613b74b0d8affd641'
+gem 'authlogic', '~> 6.4', '>= 6.4.3'
+gem 'omniauth_login_dot_gov', git: 'https://github.com/18f/omniauth_login_dot_gov', ref: '6e117a9c68b19a1fbc70533613b74b0d8affd641'
 # It's not clear that this gem is still required. I'm leaving it for the time being,
 # but we may be able to remove it in the future:
 # https://github.com/omniauth/omniauth/issues/1031
 gem 'omniauth-rails_csrf_protection', '~> 1.0.1'
 gem 'omniauth', '~> 2.1.0'
-gem 'redis', '~> 4.0.1'
+gem 'redis', '~> 4.8.1'
 gem 'redis-namespace', '~> 1.6.0'
 gem 'redis-rails', '~> 5.0.2'
 gem 'resque', '~> 2.6.0'
@@ -40,21 +36,20 @@ gem 'flickraw', '~> 0.9.9'
 gem 'mutex_m', '~> 0.2.0'
 gem 'bigdecimal', '~> 3.1', '>= 3.1.8'
 gem 'csv', '~> 3.3'
-# SRCH-3837: We need this change: https://github.com/activescaffold/active_scaffold/pull/666
-# for ruby 3, but all current releases require Rails < 6.2 (though main is looser).
-gem 'active_scaffold', git: 'https://github.com/activescaffold/active_scaffold',
-                       branch: 'master'
+gem 'active_scaffold', '~> 3.7', '>= 3.7.6'
+# # SRCH-3837: We need this change: https://github.com/activescaffold/active_scaffold/pull/666
+# # for ruby 3, but all current releases require Rails < 6.2 (though main is looser).
+# gem 'active_scaffold', git: 'https://github.com/activescaffold/active_scaffold', branch: 'master'
 # SRCH-3846: We need the change PRed from this branch for ruby 3, but the latest gem release
 # has yet to accept the PR: https://github.com/activescaffold/active_scaffold_export/pull/5
-gem 'active_scaffold_export', git: 'https://github.com/technorama/active_scaffold_export',
-                              branch: 'rails3'
+gem 'active_scaffold_export', git: 'https://github.com/technorama/active_scaffold_export', branch: 'rails3'
 gem 'active_storage_validations', '~> 1.0', '>= 1.0.4'
-gem 'recaptcha', '~> 4.6.3', require: 'recaptcha/rails'
+gem 'recaptcha', '~> 5.16'
 gem 'newrelic_rpm', '~> 9.10'
 gem 'american_date', '~> 1.1.1'
 # sassc-rails is now the Rails default. Consider replacing:
 # https://guides.rubyonrails.org/asset_pipeline.html
-gem 'sass-rails', '~> 5.0.7'
+gem 'sass-rails', '~> 6.0'
 # Gem no longer being maintained. See https://cm-jira.usa.gov/browse/SRCH-694
 gem 'google_visualr',
     git: 'https://github.com/winston/google_visualr',
@@ -62,7 +57,7 @@ gem 'google_visualr',
 gem 'faraday_middleware', '~> 0.14.0'
 gem 'net-http-persistent', '~> 2.9.3'
 gem 'rash_alt', '~> 0.4.12', require: 'rash'
-gem 'geoip', '~> 1.6.3'
+gem 'geoip', '~> 1.6.4'
 gem 'htmlentities', '~> 4.3.4' # deprecated - only used in Google web search
 gem 'html_truncator', '~> 0.4.2'
 gem 'addressable', '~> 2.8.0'
@@ -85,9 +80,7 @@ gem 'google-api-client', '~> 0.53.0'
 gem 'iso8601', '~> 0.10.1'
 gem 'jbuilder', '~> 2.11.5'
 gem 'typhoeus', '~> 1.3.0'
-gem 'activerecord-validate_unique_child_attribute',
-    require: 'active_record/validate_unique_child_attribute'
-
+gem 'activerecord-validate_unique_child_attribute', require: 'active_record/validate_unique_child_attribute'
 gem 'rack-cors', '~> 1.1.0', require: 'rack/cors'
 gem 'hashie', '~> 5.0.0'
 # retry_block is unsupported - consider replacing with retriable
@@ -96,11 +89,10 @@ gem 'colorize', '~> 0.8.1'
 gem 'dogstatsd-ruby', '~> 3.2.0'
 gem 'http', '~> 5.0'
 gem 'robots_tag_parser', '~> 0.1.0'
-gem 'loofah', '~> 2.19.1'
+gem 'loofah', '~> 2.19'
 # Locking ref, as later versions (after being renamed & released as "medusa-crawler")
 # include breaking changes
-gem 'medusa', git: 'https://github.com/brutuscat/medusa-crawler',
-              ref: '82299f2700ac56b4af2b14d707f35d6af466ad8e'
+gem 'medusa', git: 'https://github.com/brutuscat/medusa-crawler', ref: '82299f2700ac56b4af2b14d707f35d6af466ad8e'
 # Robotex is required by Medusa. Specifying fork until https://github.com/chriskite/robotex/issues/4
 # is resolved
 gem 'robotex', git: 'https://github.com/GSA/robotex'
@@ -112,11 +104,11 @@ gem 'aasm', '~> 5.5'
 gem 'active_scheduler', '~> 0.7.0'
 gem 'retriable', '~> 3.1'
 gem 'cld3', '~> 3.6.0'
-gem 'activejob-uniqueness', '~> 0.2.1'
+gem 'activejob-uniqueness', '~> 0.2'
 # Temporarily locking the version to resolve SRCH-3788.
 # The fix for the bug in SRCH-3788 is NOT covered by automated specs.
 # A spec will be added (if possible) per SRCH-3790
-gem 'selenium-webdriver', '4.7.1'
+gem 'selenium-webdriver', '4.8.1'
 gem 'webdrivers', '~> 5.0'
 gem 'exception_notification', '~> 4.5'
 gem 'dogapi', '~> 1.45'
@@ -124,7 +116,6 @@ gem 'dogapi', '~> 1.45'
 # https://github.com/ruby/net-protocol/issues/10
 # This gem can be removed once we upgrade to Ruby 3.1.
 gem 'net-http'
-
 # Assets-related gems
 gem 'coffee-rails', '~> 5.0.0'
 gem 'uglifier', '~> 4.2.0'
@@ -142,13 +133,9 @@ gem 'font-awesome-rails', '~> 4.7.0'
 # icons compiled into SVG/CSS+PNG using Grunticon. See
 # https://github.com/gsa/font-awesome-grunticon-rails
 # for instructions on how to add more icons to this set
-
 gem 'sidekiq', '~> 7.1.3'
 gem 'sidekiq-failures', '~> 1.0.0'
-
-gem 'font-awesome-grunticon-rails',
-    git: 'https://github.com/gsa/font-awesome-grunticon-rails',
-    ref: '8ad9734a65f7e2d2de934bebe4ee7b460734f96e'
+gem 'font-awesome-grunticon-rails', git: 'https://github.com/gsa/font-awesome-grunticon-rails', ref: '8ad9734a65f7e2d2de934bebe4ee7b460734f96e'
 gem 'react-rails', '~> 3.0.0'
 # Locking to prevent a version mismatch between the gem and the NPM package version
 # See https://github.com/shakacode/shakapacker#upgrading
@@ -159,13 +146,9 @@ gem 'cssbundling-rails', '~> 1.2' # Management of css (Less) files conversion
 gem 'mail', '~> 2.7.1'
 gem 'feedjira', '~> 3.2'
 gem 'bootsnap', require: false
-
 gem 'rails_semantic_logger', '~> 4.14'
-
 gem 'dotenv', '~> 3.1'
 gem 'whenever', '~> 1.0', require: false
-
-# web server
 gem 'puma', '~> 5.6'
 
 # Bundle gems for the local environment. Make sure to
@@ -192,11 +175,11 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 5.0'
+  gem 'rspec-rails', '~> 6.1', '>= 6.1.5'
   gem 'rspec-its', '~> 1.3'
   gem 'email_spec', '~> 2.2'
   gem 'database_cleaner', '~> 2.0'
-  gem 'capybara', '~> 3.26'
+  gem 'capybara', '~> 3.40'
   gem 'launchy', '~> 2.5'
   gem 'i18n-tasks', '~> 0.9.19'
   gem 'pry-byebug', '~> 3.5'
@@ -223,6 +206,6 @@ group :test do
   gem 'shoulda-kept-assign-to', '~> 1.1'
   gem 'shoulda-matchers', '~> 5.0'
   gem 'simplecov', '~> 0.17.0', require: false
-  gem 'vcr', '~> 6.0'
-  gem 'webmock', '~> 3.8'
+  gem 'vcr', '~> 6.2'
+  gem 'webmock', '~> 3.23', '>= 3.23.1'
 end
