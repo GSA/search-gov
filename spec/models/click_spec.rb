@@ -80,7 +80,7 @@ describe Click do
       end
 
       context 'when the URL is encoded' do
-        let(:url) { 'https://search.gov/%28%3A%7C%29'  }
+        let(:url) { 'https://search.gov/%28%3A%7C%29' }
 
         it 'logs the encoded URL' do
           expect(Rails.logger).to have_received(:info).with(
@@ -92,8 +92,6 @@ describe Click do
         end
       end
 
-      # The different search engines use different formatters, but for simplicity's
-      # sake, we simply downcase the query that we log for logstash
       context 'when the URL contains capital letters' do
         let(:query) { 'DOWNCASE ME' }
 
@@ -114,7 +112,7 @@ describe Click do
         let(:url) { "https://foo.gov/search?query=#{sensitive_info}&utm_x=123456789" }
         let(:user_agent) { 'Mozilla 123456789' }
 
-        it 'does not log the information' do
+        it 'does not log the sensitive information' do
           expect(Rails.logger).not_to have_received(:info).with(/123-45-6789/)
         end
 
@@ -131,7 +129,13 @@ describe Click do
           expect(Rails.logger).to have_received(:info).with(
             "[Click]",
             hash_including(search_data: {
-              params: hash_including(url: "https://foo.gov/search?query=REDACTED_SSN&utm_x=123456789")
+              params: hash_including(url: "https://foo.gov/search?query=REDACTED_SSN&utm_x=123456789"),
+              click_domain: "foo.gov",
+              clientip: "0.0.0.0",
+              time: "2020-01-01 00:00:00",
+              user_agent: "Mozilla 123456789",
+              vertical: "web",
+              modules: "BWEB"
             })
           )
         end
@@ -160,12 +164,14 @@ describe Click do
     describe '#errors' do
       it 'has expected errors' do
         click.validate
-        expected_errors = ["Client ip can't be blank",
-                           "Module code can't be blank",
-                           "Position can't be blank",
-                           "Query can't be blank",
-                           "Url can't be blank",
-                           "User agent can't be blank"]
+        expected_errors = [
+          "Client ip can't be blank",
+          "Module code can't be blank",
+          "Position can't be blank",
+          "Query can't be blank",
+          "Url can't be blank",
+          "User agent can't be blank"
+        ]
         expect(click.errors.full_messages).to eq expected_errors
       end
     end
@@ -173,7 +179,6 @@ describe Click do
 
   describe '#url_encoding_validation' do
     context 'with invalid utf-8 in the url' do
-      # https://cm-jira.usa.gov/browse/SRCHAR-415
       let(:url) { "https://example.com/wymiana teflon\xF3w" }
 
       it 'has expected errors' do
@@ -201,7 +206,7 @@ describe Click do
     end
 
     context 'when the URL contains a space' do
-      let(:url) { 'https://search.gov/foo%20bar'  }
+      let(:url) { 'https://search.gov/foo%20bar' }
 
       it { is_expected.to be_valid }
     end
@@ -215,7 +220,7 @@ describe Click do
     end
 
     context 'with valid ip6' do
-      let(:ip) { '2600:1f18:f88:4313:6df7:f986:f915:78d6' } # gsa.gov?
+      let(:ip) { '2600:1f18:f88:4313:6df7:f986:f915:78d6' }
 
       it { is_expected.to be_valid }
     end
@@ -240,8 +245,7 @@ describe Click do
 
       it 'has expected errors' do
         click.validate
-        error_msg = ['Position must be greater than or equal to 0']
-        expect(click.errors.full_messages).to eq error_msg
+        expect(click.errors.full_messages).to eq ['Position must be greater than or equal to 0']
       end
     end
 
@@ -263,8 +267,7 @@ describe Click do
 
       it 'has expected errors' do
         click.validate
-        error_msg = ['Position is not a number']
-        expect(click.errors.full_messages).to eq error_msg
+        expect(click.errors.full_messages).to eq ['Position is not a number']
       end
     end
   end
@@ -277,8 +280,7 @@ describe Click do
 
       it 'has expected errors' do
         click.validate
-        error_msg = ['Module code whatever is not a valid module']
-        expect(click.errors.full_messages).to eq error_msg
+        expect(click.errors.full_messages).to eq ['Module code whatever is not a valid module']
       end
     end
   end
