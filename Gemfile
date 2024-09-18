@@ -152,7 +152,6 @@ gem 'feedjira', '~> 3.2'
 gem 'bootsnap', require: false
 gem 'rails_semantic_logger', '~> 4.14'
 
-gem 'dotenv', '~> 3.1'
 gem 'whenever', '~> 1.0', require: false
 
 # Bundle gems for the local environment. Make sure to
@@ -175,7 +174,7 @@ group :development do
   gem 'capistrano',        '~> 3.19',  require: false
   gem 'capistrano-rails',  '~> 1.6',   require: false
   gem 'capistrano-rbenv',  '~> 2.2',   require: false
-  gem 'capistrano3-puma',  '~> 5.2',   require: false
+  gem 'capistrano3-puma',              require: false
 end
 
 group :development, :test do
