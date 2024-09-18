@@ -50,7 +50,7 @@ Rails.application.configure do
   # config.assume_ssl = true
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  config.force_ssl = true
+  config.force_ssl = false
 
   # Log to STDOUT by default
   config.logger = ActiveSupport::Logger.new(STDOUT)
@@ -84,14 +84,10 @@ Rails.application.configure do
   # Don't log any deprecations.
   config.active_support.report_deprecations = false
 
-  # Use a different logger for distributed setups.
-  # require "syslog/logger"
-  # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new "app-name")
-
-  config.rails_semantic_logger.format = :json
-
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.rails_semantic_logger.format = :json
 
   # Enable DNS rebinding protection and other `Host` header attacks.
   # config.hosts = [

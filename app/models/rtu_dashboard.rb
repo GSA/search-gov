@@ -29,7 +29,7 @@ class RtuDashboard
   end
 
   def trending_urls
-    redis = Redis.new(:host => REDIS_HOST, :port => REDIS_PORT)
+    redis = Redis.new(url: REDIS_SYSTEM_URL)
     trending_urls_key = ['TrendingUrls', @site.name].join(':')
     redis.smembers(trending_urls_key)
   end

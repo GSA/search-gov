@@ -3,6 +3,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 7.1.4'
+gem 'dotenv', '~> 3.1', '>= 3.1.2'
 gem 'rake', '~> 13.0.6'
 gem 'rack-contrib', '~> 2.5.0'
 gem 'rails-observers', '~> 0.1.5'
@@ -147,7 +148,6 @@ gem 'mail', '~> 2.7.1'
 gem 'feedjira', '~> 3.2'
 gem 'bootsnap', require: false
 gem 'rails_semantic_logger', '~> 4.14'
-gem 'dotenv', '~> 3.1'
 gem 'whenever', '~> 1.0', require: false
 gem 'puma', '~> 5.6'
 
@@ -171,7 +171,7 @@ group :development do
   gem 'capistrano',        '~> 3.19',  require: false
   gem 'capistrano-rails',  '~> 1.6',   require: false
   gem 'capistrano-rbenv',  '~> 2.2',   require: false
-  gem 'capistrano3-puma',  '~> 5.2',   require: false
+  gem 'capistrano3-puma',              require: false
 end
 
 group :development, :test do
