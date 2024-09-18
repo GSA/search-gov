@@ -6,7 +6,7 @@ describe TrendingUrl do
   describe '.all' do
     context 'when affiliate does not actually exist' do
       before do
-        redis = Redis.new(host: REDIS_SYSTEM_URL)
+        redis = Redis.new(url: REDIS_SYSTEM_URL)
         redis.sadd('TrendingUrls:some_unknown_aff', %w{http://www.gov.gov/url3 http://www.gov.gov/url1})
       end
 
