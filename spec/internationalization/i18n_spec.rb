@@ -5,6 +5,7 @@
 # https://github.com/glebm/i18n-tasks#installation
 
 require 'i18n/tasks'
+require 'i18n_jsx_scanners/i18n_jsx_scanner'
 
 RSpec.describe I18n do
   let(:i18n) { I18n::Tasks::BaseTask.new }
