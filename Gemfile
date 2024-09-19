@@ -167,11 +167,11 @@ group :development do
   # gem "rack-mini-profiler"
 
   # Deployment
-  gem 'capistrano-resque', '~> 0.2.3', require: false
-  gem 'capistrano',        '~> 3.19',  require: false
-  gem 'capistrano-rails',  '~> 1.6',   require: false
-  gem 'capistrano-rbenv',  '~> 2.2',   require: false
-  gem 'capistrano3-puma',              require: false
+  gem 'capistrano-resque', '~> 0.2.3',       require: false
+  gem 'capistrano',        '~> 3.19',        require: false
+  gem 'capistrano-rails',  '~> 1.6',         require: false
+  gem 'capistrano-rbenv',  '~> 2.2',         require: false
+  gem 'capistrano3-puma',  '6.0.0.beta.1',   require: false
 end
 
 group :development, :test do

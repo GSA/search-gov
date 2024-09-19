@@ -243,9 +243,10 @@ GEM
       capistrano
       resque
       resque-scheduler
-    capistrano3-puma (1.2.1)
-      capistrano (~> 3.0)
-      puma (>= 2.6)
+    capistrano3-puma (6.0.0.beta.1)
+      capistrano (~> 3.7)
+      capistrano-bundler
+      puma (>= 5.1, < 7.0)
     capybara (3.40.0)
       addressable
       matrix
@@ -932,7 +933,7 @@ DEPENDENCIES
   capistrano-rails (~> 1.6)
   capistrano-rbenv (~> 2.2)
   capistrano-resque (~> 0.2.3)
-  capistrano3-puma
+  capistrano3-puma (= 6.0.0.beta.1)
   capybara (~> 3.40)
   capybara-screenshot
   cld3 (~> 3.6.0)
