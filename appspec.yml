@@ -1,0 +1,15 @@
+
+version: 0.0
+os: linux
+# files:
+#   - source: /
+#     destination: /home/search/cicd_temp 
+
+hooks:
+
+  BeforeInstall:
+    - location: cicd-scripts/fetch_env_vars.sh
+      timeout: 300
+      runas: search
+
+

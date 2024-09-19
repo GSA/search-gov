@@ -1,6 +1,6 @@
 default: &DEFAULT
   namespace: oasis
-  url: <%= ENV['REDIS_HOST'] || 'redis://localhost:6379' %>
+  url: <%= ENV.fetch('REDIS_SYSTEM_URL') %>
 
 development:
   <<: *DEFAULT

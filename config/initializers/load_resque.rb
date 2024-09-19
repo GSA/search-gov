@@ -7,10 +7,9 @@ require 'resque/scheduler/server'
 require 'resque/server'
 require 'resque/job_timeout'
 
-host = ENV['REDIS_HOST']
-port = ENV['REDIS_PORT']
+redis_url = ENV['REDIS_SYSTEM_URL']
 
-Resque.redis = "#{host}:#{port}"
+Resque.redis = redis_url
 
 Resque::Failure::Multiple.classes = [Resque::Failure::Redis]
 Resque::Failure.backend = Resque::Failure::Multiple

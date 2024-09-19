@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 gem 'rails', '~> 7.1.4'
@@ -115,7 +117,6 @@ gem 'dogapi', '~> 1.45'
 # https://github.com/ruby/net-protocol/issues/10
 # This gem can be removed once we upgrade to Ruby 3.1.
 gem 'net-http'
-
 # Assets-related gems
 gem 'coffee-rails', '~> 5.0.0'
 gem 'uglifier', '~> 4.2.0'
@@ -133,23 +134,22 @@ gem 'font-awesome-rails', '~> 4.7.0'
 # icons compiled into SVG/CSS+PNG using Grunticon. See
 # https://github.com/gsa/font-awesome-grunticon-rails
 # for instructions on how to add more icons to this set
-
 gem 'sidekiq', '~> 7.1.3'
 gem 'sidekiq-failures', '~> 1.0.0'
-
 gem 'font-awesome-grunticon-rails', git: 'https://github.com/gsa/font-awesome-grunticon-rails', ref: '8ad9734a65f7e2d2de934bebe4ee7b460734f96e'
 gem 'react-rails', '~> 3.0.0'
 # Locking to prevent a version mismatch between the gem and the NPM package version
 # See https://github.com/shakacode/shakapacker#upgrading
 gem 'shakapacker', '~> 6.5.4'
 gem 'cssbundling-rails', '~> 1.2' # Management of css (Less) files conversion
-
 # Temporarily locking the 'mail' version until the next version of Rails is released
 # https://github.com/rails/rails/pull/46650
 gem 'mail', '~> 2.7.1'
 gem 'feedjira', '~> 3.2'
 gem 'bootsnap', require: false
 gem 'rails_semantic_logger', '~> 4.14'
+gem 'whenever', '~> 1.0', require: false
+gem 'puma', '~> 6.4', '>= 6.4.2'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
@@ -165,6 +165,13 @@ group :development do
   # gem 'web-console'
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
+
+  # Deployment
+  gem 'capistrano-resque', '~> 0.2.3', require: false
+  gem 'capistrano',        '~> 3.19',  require: false
+  gem 'capistrano-rails',  '~> 1.6',   require: false
+  gem 'capistrano-rbenv',  '~> 2.2',   require: false
+  gem 'capistrano3-puma',              require: false
 end
 
 group :development, :test do
@@ -181,7 +188,6 @@ group :development, :test do
   # For improved console readability:
   # https://github.com/amazing-print/amazing_print
   gem 'amazing_print', '~> 1.4'
-  gem 'puma', '~> 6.0'
   gem 'debug'
 end
 

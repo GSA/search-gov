@@ -10,28 +10,16 @@ module Es
   ).deep_symbolize_keys.freeze
 
   def client_reader
-    @client_reader ||= initialize_client(reader_config)
+    @client_reader ||= initialize_client
   end
 
   def client_writers
-    @client_writers ||= writer_config.map { |config| initialize_client(config) }
+    @client_writers ||= [initialize_client]
   end
 
   private
 
-  def reader_config
-    {
-      hosts: ENV.fetch('ES_HOSTS', '').split(',').map(&:strip)
-    }
-  end
-
-  def writer_config
-    [{
-      hosts: ENV.fetch('ES_HOSTS', '').split(',').map(&:strip)
-    }]
-  end
-
-  def initialize_client(config)
+  def initialize_client(config = {})
     Elasticsearch::Client.new(config.merge(CLIENT_CONFIG)).tap do |client|
       client.transport.logger = Rails.logger.clone
       client.transport.logger.formatter = proc do |severity, time, _progname, msg|
