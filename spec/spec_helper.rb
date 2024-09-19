@@ -11,6 +11,10 @@ require 'paperclip/matchers'
 require 'active_storage_validations/matchers'
 require 'webmock/rspec'
 
+if Rails.env.test?
+  require Rails.root.join('lib', 'i18n_scanners', 'i18n_jsx_scanner')
+end
+
 include Authlogic::TestCase
 WebMock.disable_net_connect!(allow_localhost: true)
 
