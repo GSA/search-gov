@@ -1,4 +1,5 @@
 require "active_support/core_ext/integer/time"
+require 'i18n_jsx_scanners/i18n_jsx_scanner'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
