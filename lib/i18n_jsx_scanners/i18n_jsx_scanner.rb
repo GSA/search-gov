@@ -11,7 +11,9 @@ if Rails.env.development? || Rails.env.test?
       text = read_file(path)
       text.scan(/i18n\.t\(["']([\w.]+)/).map do |match|
         raw_key = match.first.underscore
+        # rubocop:disable Style/HashSyntax
         occurrence = occurrence_from_position(path, text, Regexp.last_match.offset(0).first, raw_key: raw_key)
+        # rubocop:enable Style/HashSyntax
 
         [raw_key, occurrence]
       end
