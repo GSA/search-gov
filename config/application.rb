@@ -7,7 +7,6 @@ require './lib/middlewares/adjust_client_ip'
 require './lib/middlewares/filtered_jsonp'
 require 'resque/plugins/priority'
 
-
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -29,6 +28,7 @@ module Usasearch
     config.autoload_paths += Dir[config.root.join('lib', 'middlewares').to_s]
     config.autoload_paths += Dir[config.root.join('lib', 'parsers').to_s]
     config.autoload_paths += Dir[config.root.join('lib', 'renderers').to_s]
+    config.autoload_paths += Dir[config.root.join('lib', 'i18n_scanners').to_s]
 
     # Our legacy, Resque-based jobs that should be refactored to inherit from ActiveJob
     config.autoload_paths += Dir[config.root.join('app', 'jobs', 'legacy').to_s]
