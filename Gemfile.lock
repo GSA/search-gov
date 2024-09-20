@@ -428,8 +428,9 @@ GEM
       os (>= 0.9, < 2.0)
       signet (>= 0.16, < 2.a)
     googlecharts (1.6.12)
-    haml (5.2.2)
-      temple (>= 0.8.0)
+    haml (6.3.0)
+      temple (>= 0.8.2)
+      thor
       tilt
     hashdiff (1.1.1)
     hashie (5.0.0)
@@ -965,7 +966,7 @@ DEPENDENCIES
   google-api-client (~> 0.53.0)
   google_visualr!
   googlecharts (~> 1.6.12)
-  haml (~> 5.2.1)
+  haml (~> 6)
   hashie (~> 5.0.0)
   html_truncator (~> 0.4.2)
   htmlentities (~> 4.3.4)
