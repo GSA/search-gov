@@ -171,7 +171,7 @@ group :development do
   gem 'capistrano',        '~> 3.19',        require: false
   gem 'capistrano-rails',  '~> 1.6',         require: false
   gem 'capistrano-rbenv',  '~> 2.2',         require: false
-  gem 'capistrano3-puma',  github: 'seuros/capistrano-puma',   require: false
+  gem 'capistrano3-puma', github: 'seuros/capistrano-puma', require: false
 end
 
 group :development, :test do
