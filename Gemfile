@@ -149,7 +149,7 @@ gem 'feedjira', '~> 3.2'
 gem 'bootsnap', require: false
 gem 'rails_semantic_logger', '~> 4.14'
 gem 'whenever', '~> 1.0', require: false
-gem 'puma', '~> 6.4', '>= 6.4.2'
+gem 'puma', '~> 6.4'
 # Dummy Generator
 gem 'faker', '~> 1.8'
 
