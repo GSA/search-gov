@@ -1,0 +1,34 @@
+.sub-nav-heading
+  %h2 Sites List
+  .action-bar
+    %ul
+      %li= link_to 'Export CSV', user_sites_path(format: :csv), class: 'btn submit btn-primary'
+%br/
+
+%table.table.table-striped.table-bordered.table-kv-pairs
+  %thead
+    %tr
+      %th ID
+      %th Display Name
+      %th Site Handle
+      %th Admin Home Page
+      %th Homepage URL
+      %th Site Search Page
+  %tbody
+    - @affiliates.each do |affiliate|
+      %tr
+        %td
+          = link_to affiliate.id, site_path(affiliate), class: 'btn btn-link'
+        %td= affiliate.display_name
+        %td= affiliate.name
+        %td
+          = link_to site_path(affiliate), site_path(affiliate), class: 'btn btn-link'
+        %td
+          - if affiliate.website.present?
+            = link_to affiliate.website, affiliate.website, target: '_blank'
+          - else
+            No Website
+        %td
+          = link_to 'Preview', search_path(affiliate: affiliate.name), class: 'btn btn-primary', target: '_blank'
+
+= will_paginate @affiliates, renderer: BootstrapPagination::Rails
