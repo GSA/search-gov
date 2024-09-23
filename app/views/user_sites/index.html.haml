@@ -22,7 +22,7 @@
         %td= affiliate.display_name
         %td= affiliate.name
         %td
-          = link_to site_path(affiliate), site_path(affiliate), class: 'btn btn-link'
+          = link_to site_url(affiliate), site_path(affiliate), class: 'btn btn-link', target: '_blank'
         %td
           - if affiliate.website.present?
             = link_to affiliate.website, affiliate.website, target: '_blank'

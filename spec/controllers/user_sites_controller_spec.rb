@@ -7,13 +7,13 @@ describe UserSitesController do
   before do
     allow(controller).to receive(:current_user).and_return(current_user)
 
-    3.times do |i|
-      affiliate = Affiliate.create!(
+    2.times do |i|
+      Affiliate.create!(
         name: "user_site_#{i}",
         display_name: "User Site #{i}",
-        website: "http://example#{i}.com"
+        website: "http://example#{i}.com",
+        users: [current_user]
       )
-      affiliate.users << current_user
     end
   end
 
@@ -24,6 +24,7 @@ describe UserSitesController do
 
         expect(assigns(:affiliates)).to eq(current_user.affiliates.paginate(page: 1, per_page: 100))
         expect(response).to render_template(:index)
+        expect(response).to have_http_status(:ok)
       end
     end
 
@@ -31,9 +32,10 @@ describe UserSitesController do
       it 'sends a CSV file with the correct filename' do
         get :index, params: { format: :csv }
 
-        expected_filename = "affiliates-#{Date.today}.csv"
+        expected_filename = "affiliates-#{Time.zone.today}.csv"
         expect(response.headers['Content-Disposition']).to include("filename=\"#{expected_filename}\"")
         expect(response.content_type).to eq('text/csv')
+        expect(response).to have_http_status(:ok)
       end
 
       it 'generates CSV with correct headers and data' do
@@ -44,14 +46,12 @@ describe UserSitesController do
         expect(csv[0]).to eq(%w[id display_name site_handle admin_home_page homepage_url site_search_page])
 
         affiliate = current_user.affiliates.first
-        expect(csv[1]).to eq([
-          affiliate.id.to_s,
-          affiliate.display_name,
-          affiliate.name,
-          site_path(affiliate),
-          affiliate.website,
-          search_path(affiliate: affiliate.name)
-        ])
+        expect(csv[1]).to eq([affiliate.id.to_s,
+                              affiliate.display_name,
+                              affiliate.name,
+                              site_url(affiliate),
+                              affiliate.website,
+                              search_url(affiliate: affiliate.name)])
       end
     end
   end
@@ -60,6 +60,7 @@ describe UserSitesController do
     it 'sets @user to the current user' do
       get :index
       expect(assigns(:user)).to eq(current_user)
+      expect(response).to have_http_status(:ok)
     end
   end
 end
