@@ -48,6 +48,8 @@ Rails.application.routes.draw do
     post 'update_account' => 'users#update_account'
   end
 
+  resources :user_sites, only: [:index]
+
   resource :user_session
   resource :human_session, only: [:new, :create]
 

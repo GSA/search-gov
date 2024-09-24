@@ -41,6 +41,10 @@
                     %i.fa.fa-user-black{'data-grunticon-embed' => 'toggle_me'}
                     My account
                 %li
+                  = link_to user_sites_path do
+                    %i.fa.fa-user-black{'data-grunticon-embed' => 'toggle_me'}
+                    My sites
+                %li
                   = link_to url_for_logout, method: :delete do
                     %i.fa.fa-sign-out-black{'data-grunticon-embed' => 'toggle_me'}
                     Sign out
