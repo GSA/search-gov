@@ -150,6 +150,8 @@ gem 'bootsnap', require: false
 gem 'rails_semantic_logger', '~> 4.14'
 gem 'whenever', '~> 1.0', require: false
 gem 'puma', '~> 6.4', '>= 6.4.2'
+# Dummy Generator
+gem 'faker', '~> 1.8'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
@@ -167,11 +169,11 @@ group :development do
   # gem "rack-mini-profiler"
 
   # Deployment
-  gem 'capistrano-resque', '~> 0.2.3', require: false
-  gem 'capistrano',        '~> 3.19',  require: false
-  gem 'capistrano-rails',  '~> 1.6',   require: false
-  gem 'capistrano-rbenv',  '~> 2.2',   require: false
-  gem 'capistrano3-puma',              require: false
+  gem 'capistrano-resque', '~> 0.2.3',       require: false
+  gem 'capistrano',        '~> 3.19',        require: false
+  gem 'capistrano-rails',  '~> 1.6',         require: false
+  gem 'capistrano-rbenv',  '~> 2.2',         require: false
+  gem 'capistrano3-puma', github: 'seuros/capistrano-puma', require: false
 end
 
 group :development, :test do
@@ -183,7 +185,6 @@ group :development, :test do
   gem 'launchy', '~> 2.5'
   gem 'i18n-tasks', '~> 0.9.19'
   gem 'pry-byebug', '~> 3.5'
-  gem 'faker', '~> 1.8'
   gem 'pry-rails', '~> 0.3.6'
   # For improved console readability:
   # https://github.com/amazing-print/amazing_print

@@ -56,6 +56,15 @@ GIT
       railties (>= 3.2)
 
 GIT
+  remote: https://github.com/seuros/capistrano-puma.git
+  revision: 9cd5e5df4dec324d75493d24b498d91285ddea9e
+  specs:
+    capistrano3-puma (6.0.0.beta.1)
+      capistrano (~> 3.7)
+      capistrano-bundler
+      puma (>= 5.1, < 7.0)
+
+GIT
   remote: https://github.com/technorama/active_scaffold_export
   revision: 85caf5b74f0997e64445c762fee5d93009a290fe
   branch: rails3
@@ -243,9 +252,6 @@ GEM
       capistrano
       resque
       resque-scheduler
-    capistrano3-puma (1.2.1)
-      capistrano (~> 3.0)
-      puma (>= 2.6)
     capybara (3.40.0)
       addressable
       matrix
@@ -933,7 +939,7 @@ DEPENDENCIES
   capistrano-rails (~> 1.6)
   capistrano-rbenv (~> 2.2)
   capistrano-resque (~> 0.2.3)
-  capistrano3-puma
+  capistrano3-puma!
   capybara (~> 3.40)
   capybara-screenshot
   cld3 (~> 3.6.0)
