@@ -149,7 +149,7 @@ gem 'feedjira', '~> 3.2'
 gem 'bootsnap', require: false
 gem 'rails_semantic_logger', '~> 4.14'
 gem 'whenever', '~> 1.0', require: false
-gem 'puma', '~> 6.4', '>= 6.4.2'
+gem 'puma', '~> 5.6.9'
 # Dummy Generator
 gem 'faker', '~> 1.8'
 
@@ -173,7 +173,7 @@ group :development do
   gem 'capistrano',        '~> 3.19',        require: false
   gem 'capistrano-rails',  '~> 1.6',         require: false
   gem 'capistrano-rbenv',  '~> 2.2',         require: false
-  gem 'capistrano3-puma', github: 'seuros/capistrano-puma', require: false
+  gem 'capistrano3-puma', '6.0.0.beta.1',    require: false
 end
 
 group :development, :test do
