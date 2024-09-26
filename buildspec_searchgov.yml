@@ -37,9 +37,8 @@ phases:
       - echo $SSH_KEY_PATH
       - echo "deploying searchgov app with capistrano"
       - bundle install
-      - cap $SEARCH_ENV puma:config puma:systemd:config puma:systemd:enable
+      - cap $SEARCH_ENV puma:install
       - cap $SEARCH_ENV deploy
-      - cap $SEARCH_ENV --tasks
       - cap $SEARCH_ENV resque:restart
       - cap $SEARCH_ENV puma:restart
 
