@@ -40,7 +40,7 @@ phases:
       - cap $SEARCH_ENV puma:config puma:systemd:config puma:systemd:enable
       - cap $SEARCH_ENV deploy
       - cap $SEARCH_ENV --tasks
-      - cap $SEARCH_ENV resque:start
+      - cap $SEARCH_ENV resque:restart
       - cap $SEARCH_ENV puma:restart
 
 artifacts:
