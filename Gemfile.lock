@@ -56,6 +56,15 @@ GIT
       railties (>= 3.2)
 
 GIT
+  remote: https://github.com/seuros/capistrano-puma.git
+  revision: 9cd5e5df4dec324d75493d24b498d91285ddea9e
+  specs:
+    capistrano3-puma (6.0.0.beta.1)
+      capistrano (~> 3.7)
+      capistrano-bundler
+      puma (>= 5.1, < 7.0)
+
+GIT
   remote: https://github.com/technorama/active_scaffold_export
   revision: 85caf5b74f0997e64445c762fee5d93009a290fe
   branch: rails3
