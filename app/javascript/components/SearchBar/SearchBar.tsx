@@ -28,9 +28,9 @@ const searchMagnifySvgIcon = () => {
 
 const facetsCloseSvgIcon = () => {
   return (
-    <svg role="img" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" focusable="false" className="facets-clone-icon-svg">
+    <svg role="img" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" focusable="false" className="facets-close-icon-svg">
       <title>Close Filter Panel</title>
-      <path className="facets-clone-icon" fill="#FFFFFF" d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+      <path className="facets-close-icon" fill="#FFFFFF" d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
     </svg>
   );
 };
@@ -78,14 +78,10 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [],
     });
 
     checkColorContrastAndUpdateStyle({
-      backgroundItemClass: '.facets-clone-icon-wrapper',
-      foregroundItemClass: '.facets-clone-icon'
+      backgroundItemClass: '.facets-close-icon-wrapper',
+      foregroundItemClass: '.facets-close-icon'
     });
-    checkColorContrastAndUpdateStyle({
-      backgroundItemClass: '.serp-result-wrapper',
-      foregroundItemClass: '.clear-results-button',
-      isForegroundItemBtn: true
-    });
+   
     checkColorContrastAndUpdateStyle({
       backgroundItemClass: '.serp-facets-wrapper .see-results-button',
       foregroundItemClass: '.serp-facets-wrapper .see-results-button',
@@ -130,7 +126,7 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [],
           <SlidingPane
             className="facets-mobile-panel"
             title={<div className="facets-mobile-panel-label">Filter Search </div>}
-            closeIcon={<div className="facets-panel-close-icon-wrapper" data-testid="filter-panel-close-btn"><div className="facets-panel-close-icon-label">Close</div><div className="facets-clone-icon-wrapper">{facetsCloseSvgIcon()}</div></div>}
+            closeIcon={<div className="facets-panel-close-icon-wrapper" data-testid="filter-panel-close-btn"><div className="facets-panel-close-icon-label">Close</div><div className="facets-close-icon-wrapper">{facetsCloseSvgIcon()}</div></div>}
             overlayClassName="facets-mobile-panel-overlay"
             isOpen={isPaneOpen}
             onRequestClose={() => {

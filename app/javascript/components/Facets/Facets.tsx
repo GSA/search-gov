@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
+import { darken } from 'polished';
 import { Accordion, DateRangePicker, Tag } from '@trussworks/react-uswds';
 
 import { StyleContext } from '../../contexts/StyleContext';
@@ -22,12 +23,15 @@ const StyledWrapper = styled.div.attrs<{ styles: FontsAndColors; }>((props) => (
 
   .see-results-button {
     background: ${(props) => props.styles.buttonBackgroundColor};
+    &:hover {
+      background-color: ${(props) => darken(0.10, props.styles.buttonBackgroundColor)};
+    }
   }
 
   .clear-results-button{
     color: ${(props) => props.styles.buttonBackgroundColor};
   }
-  .usa-search__facets-clone-icon {
+  .usa-search__facets-close-icon {
     fill: ${(props) => props.styles.buttonBackgroundColor};
   }
   
@@ -46,8 +50,8 @@ export const Facets = () => {
     });
 
     checkColorContrastAndUpdateStyle({
-      backgroundItemClass: '.serp-facets-wrapper .see-results-button',
-      foregroundItemClass: '.serp-facets-wrapper .see-results-button',
+      backgroundItemClass: '.facets-action-btn-wrapper .see-results-button',
+      foregroundItemClass: '.facets-action-btn-wrapper .see-results-button',
       isForegroundItemBtn: true
     });
   }, []);
