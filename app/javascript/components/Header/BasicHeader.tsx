@@ -17,15 +17,23 @@ const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: FontsAndColors; }>
   styles: props.styles
 }))`
   background-color: ${(props) => props.styles.headerBackgroundColor};
+
+  .usa-logo .usa-logo__text {
+    font-family: ${(props) => props.styles.primaryNavigationFontFamily} !important;
+  }
+
   .usa-nav__primary, .usa-nav__secondary-links {
     font-family: ${(props) => props.styles.headerLinksFontFamily};
   }
+
   a.usa-nav__link {
     color: ${(props) => props.styles.headerPrimaryLinkColor};
   }
+
   .usa-nav__secondary-item > a {
     color: ${(props) => props.styles.headerSecondaryLinkColor};
   }
+    
   button.usa-menu-btn {
     background-color: ${(props) => props.styles.buttonBackgroundColor};
     &:hover {
