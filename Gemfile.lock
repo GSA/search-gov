@@ -56,15 +56,6 @@ GIT
       railties (>= 3.2)
 
 GIT
-  remote: https://github.com/seuros/capistrano-puma.git
-  revision: 9cd5e5df4dec324d75493d24b498d91285ddea9e
-  specs:
-    capistrano3-puma (6.0.0.beta.1)
-      capistrano (~> 3.7)
-      capistrano-bundler
-      puma (>= 5.1, < 7.0)
-
-GIT
   remote: https://github.com/technorama/active_scaffold_export
   revision: 85caf5b74f0997e64445c762fee5d93009a290fe
   branch: rails3
@@ -252,6 +243,10 @@ GEM
       capistrano
       resque
       resque-scheduler
+    capistrano3-puma (6.0.0.beta.1)
+      capistrano (~> 3.7)
+      capistrano-bundler
+      puma (>= 5.1, < 7.0)
     capybara (3.40.0)
       addressable
       matrix
@@ -579,27 +574,27 @@ GEM
     psych (5.1.2)
       stringio
     public_suffix (6.0.1)
-    puma (6.4.2)
+    puma (5.6.9)
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.8.1)
-    rack (3.1.7)
+    rack (2.2.9)
     rack-contrib (2.5.0)
       rack (< 4)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
-    rack-protection (4.0.0)
+    rack-protection (3.2.0)
       base64 (>= 0.1.0)
-      rack (>= 3.0.0, < 4)
+      rack (~> 2.2, >= 2.2.4)
     rack-proxy (0.7.7)
       rack
-    rack-session (2.0.0)
-      rack (>= 3.0.0)
+    rack-session (1.0.2)
+      rack (< 3)
     rack-test (2.1.0)
       rack (>= 1.3)
-    rackup (2.1.0)
-      rack (>= 3)
-      webrick (~> 1.8)
+    rackup (1.0.0)
+      rack (< 3)
+      webrick
     rails (7.1.4)
       actioncable (= 7.1.4)
       actionmailbox (= 7.1.4)
@@ -833,11 +828,10 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
-    sinatra (4.0.0)
+    sinatra (3.2.0)
       mustermann (~> 3.0)
-      rack (>= 3.0.0, < 4)
-      rack-protection (= 4.0.0)
-      rack-session (>= 2.0.0, < 3)
+      rack (~> 2.2, >= 2.2.4)
+      rack-protection (= 3.2.0)
       tilt (~> 2.0)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
@@ -939,7 +933,7 @@ DEPENDENCIES
   capistrano-rails (~> 1.6)
   capistrano-rbenv (~> 2.2)
   capistrano-resque (~> 0.2.3)
-  capistrano3-puma!
+  capistrano3-puma (= 6.0.0.beta.1)
   capybara (~> 3.40)
   capybara-screenshot
   cld3 (~> 3.6.0)
@@ -998,7 +992,8 @@ DEPENDENCIES
   omniauth_login_dot_gov!
   pry-byebug (~> 3.5)
   pry-rails (~> 0.3.6)
-  puma (~> 6.4, >= 6.4.2)
+  puma (~> 5.6.9)
+  rack (~> 2.2)
   rack-contrib (~> 2.5.0)
   rack-cors (~> 1.1.0)
   rails (~> 7.1.4)

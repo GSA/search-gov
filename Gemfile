@@ -15,6 +15,8 @@ gem 'will_paginate', '~> 3.3.1'
 gem 'nokogiri', '~> 1.16'
 gem 'authlogic', '~> 6.4', '>= 6.4.3'
 gem 'omniauth_login_dot_gov', git: 'https://github.com/18f/omniauth_login_dot_gov', ref: '6e117a9c68b19a1fbc70533613b74b0d8affd641'
+gem 'rack', '~> 2.2'
+
 # It's not clear that this gem is still required. I'm leaving it for the time being,
 # but we may be able to remove it in the future:
 # https://github.com/omniauth/omniauth/issues/1031
@@ -149,7 +151,7 @@ gem 'feedjira', '~> 3.2'
 gem 'bootsnap', require: false
 gem 'rails_semantic_logger', '~> 4.14'
 gem 'whenever', '~> 1.0', require: false
-gem 'puma', '~> 6.4', '>= 6.4.2'
+gem 'puma', '~> 5.6.9'
 # Dummy Generator
 gem 'faker', '~> 1.8'
 
@@ -173,7 +175,7 @@ group :development do
   gem 'capistrano',        '~> 3.19',        require: false
   gem 'capistrano-rails',  '~> 1.6',         require: false
   gem 'capistrano-rbenv',  '~> 2.2',         require: false
-  gem 'capistrano3-puma', github: 'seuros/capistrano-puma', require: false
+  gem 'capistrano3-puma', '6.0.0.beta.1',    require: false
 end
 
 group :development, :test do
