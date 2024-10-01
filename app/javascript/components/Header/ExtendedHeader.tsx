@@ -18,6 +18,10 @@ const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: FontsAndColors; }>
 }))`
   background-color: ${(props) => props.styles.headerBackgroundColor};
 
+  .usa-logo .usa-logo__text {
+    font-family: ${(props) => props.styles.primaryNavigationFontFamily} !important;
+  }
+
   .usa-nav__primary a {
     font-family: ${(props) => props.styles.primaryNavigationFontFamily} !important;
     font-weight: ${(props) => props.styles.primaryNavigationFontWeight} !important;
