@@ -42,19 +42,22 @@ echo ".env file created with the following content:"
 cat .env
 cp /home/search/cicd_temp/.env /home/search/searchgov/shared/
 
-# Fetch a specific parameter and save it to a file
-aws ssm get-parameter --name "LOGIN_DOT_GOV_PEM" --region us-east-2 --with-decryption --query "Parameter.Value" --output text > /home/search/searchgov/logindotgov.pem
+
 
 # create puma folders and files
 
 # Create  directories if they do not already exist
 [ ! -d /home/search/searchgov/shared/tmp/pids/ ] && mkdir -p /home/search/searchgov/shared/tmp/pids/
 [ ! -d /home/search/searchgov/shared/log ] && mkdir -p /home/search/searchgov/shared/log
+[ ! -d /home/search/searchgov/shared/config ] && mkdir -p /home/search/searchgov/shared/config
 
 # Create log files if they do not already exist
 [ ! -f /home/search/searchgov/shared/log/puma_access.log ] && touch /home/search/searchgov/shared/log/puma_access.log
 [ ! -f /home/search/searchgov/shared/log/puma_error.log ] && touch /home/search/searchgov/shared/log/puma_error.log
 
+# Fetch a specific parameter and save it to a file
+aws ssm get-parameter --name "LOGIN_DOT_GOV_PEM" --region us-east-2 --with-decryption --query "Parameter.Value" --output text > /home/search/searchgov/shared/config/logindotgov.pem
+aws ssm get-parameter --name "LOGIN_DOT_GOV_PEM" --region us-east-2 --with-decryption --query "Parameter.Value" --output text > /home/search/logindotgov.pem
 
 # Set ownership and permissions
 chown -R search:search /home/search/searchgov/
