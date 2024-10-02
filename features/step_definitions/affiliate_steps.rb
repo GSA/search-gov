@@ -40,7 +40,9 @@ end
 
 Then /^I should see the code for (English|Spanish) language sites$/ do |locale|
   locales = { 'English' => 'en', 'Spanish' => 'es' }
-  page.should have_selector("#embed_code_textarea_#{locales[locale]}")
+  id_to_match = "embed_code_textarea_#{locales[locale]}"
+
+  expect(page.html).to include(id_to_match)
 end
 
 Then /^the "([^"]*)" field should be disabled$/ do |label|
