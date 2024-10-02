@@ -9,13 +9,13 @@ set :format,                  :pretty
 set :puma_access_log,         "#{release_path}/log/puma.access.log"
 set :puma_bind,               'tcp://0.0.0.0:3000'
 set :puma_error_log,          "#{release_path}/log/puma.error.log"
-set :puma_systemctl_user,     :system
 set :rails_env,               'production'
 set :rbenv_ruby,              '3.1.4'
 set :rbenv_type,              :user
 set :repo_url,                'https://github.com/GSA/search-gov'
 set :resque_environment_task, true
 set :resque_extra_env,        "RAILS_ROOT=#{ENV['DEPLOYMENT_PATH']}current"
+set :systemctl_user,          :system
 set :user,                    ENV['SERVER_DEPLOYMENT_USER']
 set :whenever_roles,          :cron
 set :workers,                 { '*' => ENV.fetch('RESQUE_WORKERS_COUNT', '5').to_i }
