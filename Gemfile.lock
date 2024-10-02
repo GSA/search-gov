@@ -231,7 +231,7 @@ GEM
       i18n
       rake (>= 10.0.0)
       sshkit (>= 1.9.0)
-    capistrano-bundler (2.1.1)
+    capistrano-bundler (2.1.0)
       capistrano (~> 3.1)
     capistrano-rails (1.6.3)
       capistrano (~> 3.1)
@@ -243,10 +243,10 @@ GEM
       capistrano
       resque
       resque-scheduler
-    capistrano3-puma (6.0.0.beta.1)
+    capistrano3-puma (5.2.0)
       capistrano (~> 3.7)
       capistrano-bundler
-      puma (>= 5.1, < 7.0)
+      puma (>= 4.0, < 6.0)
     capybara (3.40.0)
       addressable
       matrix
