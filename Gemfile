@@ -151,7 +151,7 @@ gem 'feedjira', '~> 3.2'
 gem 'bootsnap', require: false
 gem 'rails_semantic_logger', '~> 4.14'
 gem 'whenever', '~> 1.0', require: false
-gem 'puma', '~> 5.6.9'
+gem 'puma', '~> 5.6'
 # Dummy Generator
 gem 'faker', '~> 1.8'
 
@@ -171,11 +171,11 @@ group :development do
   # gem "rack-mini-profiler"
 
   # Deployment
-  gem 'capistrano-resque', '~> 0.2.3',       require: false
-  gem 'capistrano',        '~> 3.19',        require: false
-  gem 'capistrano-rails',  '~> 1.6',         require: false
-  gem 'capistrano-rbenv',  '~> 2.2',         require: false
-  gem 'capistrano3-puma', '6.0.0.beta.1',    require: false
+  gem 'capistrano',        require: false
+  gem 'capistrano-rails',  require: false
+  gem 'capistrano-rbenv',  require: false
+  gem 'capistrano-resque', require: false
+  gem 'capistrano3-puma',  require: false
 end
 
 group :development, :test do
