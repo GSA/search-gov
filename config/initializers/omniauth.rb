@@ -1,7 +1,7 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
   private_key_path = ENV['LOGIN_CERT_LOCATION'] || 'config/logindotgov.pem'
 
-  if File.exists?(private_key_path)
+  if File.exist?(private_key_path)
     protocol = Rails.env.development? ? 'http://' : 'https://'
     provider :login_dot_gov, {
       name:         :logindotgov,
