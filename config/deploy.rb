@@ -19,6 +19,7 @@ set :systemctl_user,          :system
 set :user,                    ENV['SERVER_DEPLOYMENT_USER']
 set :whenever_roles,          :cron
 set :workers,                 { '*' => ENV.fetch('RESQUE_WORKERS_COUNT', '5').to_i }
+set :resque_log_file,         "log/resque.log"
 
 append :linked_dirs,  'log', 'tmp', 'node_modules', 'public'
 append :linked_files, '.env', 'config/logindotgov.pem'
