@@ -356,7 +356,7 @@ class Affiliate < ApplicationRecord
 
   def css_property_hash(reload = false)
     @css_property_hash = nil if reload
-    @css_property_hash ||= if theme.to_sym == :default
+    @css_property_hash ||= if theme && theme.to_sym == :default
                              THEMES[:default].reverse_merge(load_css_properties)
                            else
                              load_css_properties
