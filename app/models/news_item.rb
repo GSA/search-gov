@@ -57,7 +57,7 @@ class NewsItem < ApplicationRecord
   # code to prevent video searches from failing during deployment of SRCH-3718.
   def duration
     if properties.is_a?(String)
-      JSON.parse(properties)['duration']
+      YAML.parse(properties).to_ruby[:duration]
     else
       properties.with_indifferent_access['duration']
     end
