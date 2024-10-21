@@ -18,11 +18,12 @@ describe DocumentFetcher do
       end
     end
 
-    it 'returns empty hash when Curl::Easy raises error' do
+    it 'returns error message when Curl::Easy raises error' do
       easy = double('easy')
       expect(Curl::Easy).to receive(:new).and_return(easy)
-      expect(easy).to receive(:perform).and_raise(Curl::Err::TooManyRedirectsError)
-      expect(described_class.fetch('http://healthcare.gov')).to eq(error: 'Curl::Err::TooManyRedirectsError')
+      expect(easy).to receive(:perform).and_raise(Curl::Err::TooManyRedirectsError.new('Too many redirects'))
+      result = described_class.fetch('http://healthcare.gov')
+      expect(result[:error]).to eq('Too many redirects')
     end
 
     it 'returns empty hash when the execution expired' do

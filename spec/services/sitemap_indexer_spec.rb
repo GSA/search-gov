@@ -143,6 +143,7 @@ describe SitemapIndexer do
     context 'when a SearchgovUrl record raises an error' do
       before do
         allow(SearchgovUrl).to receive(:find_or_initialize_by).and_raise(StandardError)
+        allow(Rails.logger).to receive(:error)
       end
 
       it 'rescues the error' do
@@ -150,8 +151,8 @@ describe SitemapIndexer do
       end
 
       it 'logs the error' do
-        expect(Rails.logger).to receive(:error).with(%r{"sitemap_entry_failed":"https://agency.gov/doc1"})
         indexer.index
+        expect(Rails.logger).to have_received(:error).with(hash_including(:domain, :sitemap, :time), instance_of(StandardError))
       end
     end
 
@@ -214,16 +215,16 @@ describe SitemapIndexer do
     context 'when fetching the sitemap raises an error' do
       before do
         stub_request(:get, sitemap_url).to_raise(StandardError.new('kaboom'))
+        allow(Rails.logger).to receive(:warn)
       end
 
       it 'does not raise an error' do
-        expect { index }.not_to raise_error
+        expect { indexer.index }.not_to raise_error
       end
 
       it 'logs the error' do
-        expect(Rails.logger).to receive(:warn).
-          with(%r{"sitemap":"https://agency.gov/sitemap.xml","error":"kaboom"})
-        index
+        indexer.index
+        expect(Rails.logger).to have_received(:warn).with(hash_including(:domain, :sitemap, :time), instance_of(StandardError))
       end
     end
 
@@ -233,6 +234,10 @@ describe SitemapIndexer do
           <url><loc>https://agency.gov/good</loc></url>'
           <url><loc>https://agency.gov/bad</loc></bad_tag>'
         SITEMAP_ENTRIES
+      end
+
+      before do
+        allow(Rails.logger).to receive(:error)
       end
 
       it 'does not raise an error' do
@@ -245,8 +250,8 @@ describe SitemapIndexer do
       end
 
       it 'logs the error' do
-        expect(Rails.logger).to receive(:error).with(/Missing end tag for 'url'/)
         index
+        expect(Rails.logger).to have_received(:error).with(%r{Error processing sitemap entries for https://agency.gov/sitemap.xml:}, instance_of(Saxerator::ParseException))
       end
 
       it 'kicks off indexing' do

@@ -15,9 +15,11 @@ import 'react-sliding-pane/dist/react-sliding-pane.css';
 import './SearchBar.css';
 
 const searchMagnifySvgIcon = () => {
+  const i18n = useContext(LanguageContext);
+  
   return (
     <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="usa-search__submit-icon">
-      <title>Search</title>
+      <title>{i18n.t('search')}</title>
       <path d="M0 0h24v24H0z" fill="none"/>
       <path className="search-icon-glass" fill="#FFFFFF" d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
     </svg>
@@ -26,9 +28,9 @@ const searchMagnifySvgIcon = () => {
 
 const facetsCloseSvgIcon = () => {
   return (
-    <svg role="img" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" focusable="false" className="facets-clone-icon-svg">
+    <svg role="img" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" focusable="false" className="facets-close-icon-svg">
       <title>Close Filter Panel</title>
-      <path className="facets-clone-icon" fill="#FFFFFF" d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+      <path className="facets-close-icon" fill="#FFFFFF" d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
     </svg>
   );
 };
@@ -50,7 +52,6 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [],
   const [searchQuery, setSearchQuery] = useState(query);
 
   const [isMobileView, setMobileView] = useState(false);
-  
 
   const searchUrlParam = 'query';
 
@@ -77,14 +78,10 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [],
     });
 
     checkColorContrastAndUpdateStyle({
-      backgroundItemClass: '.facets-clone-icon-wrapper',
-      foregroundItemClass: '.facets-clone-icon'
+      backgroundItemClass: '.facets-close-icon-wrapper',
+      foregroundItemClass: '.facets-close-icon'
     });
-    checkColorContrastAndUpdateStyle({
-      backgroundItemClass: '.serp-result-wrapper',
-      foregroundItemClass: '.clear-results-button',
-      isForegroundItemBtn: true
-    });
+   
     checkColorContrastAndUpdateStyle({
       backgroundItemClass: '.serp-facets-wrapper .see-results-button',
       foregroundItemClass: '.serp-facets-wrapper .see-results-button',
@@ -103,7 +100,7 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [],
               className="usa-search usa-search--small" 
               role="search" 
               onSubmit={querySubmit}>
-              <label className="usa-sr-only" htmlFor="search-field">Search</label>
+              <label className="usa-sr-only" htmlFor="search-field">{i18n.t('search')}</label>
               <input 
                 className="usa-input" 
                 id="search-field" 
@@ -129,7 +126,7 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [],
           <SlidingPane
             className="facets-mobile-panel"
             title={<div className="facets-mobile-panel-label">Filter Search </div>}
-            closeIcon={<div className="facets-panel-close-icon-wrapper" data-testid="filter-panel-close-btn"><div className="facets-panel-close-icon-label">Close</div><div className="facets-clone-icon-wrapper">{facetsCloseSvgIcon()}</div></div>}
+            closeIcon={<div className="facets-panel-close-icon-wrapper" data-testid="filter-panel-close-btn"><div className="facets-panel-close-icon-label">Close</div><div className="facets-close-icon-wrapper">{facetsCloseSvgIcon()}</div></div>}
             overlayClassName="facets-mobile-panel-overlay"
             isOpen={isPaneOpen}
             onRequestClose={() => {

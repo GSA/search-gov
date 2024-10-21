@@ -126,19 +126,6 @@ describe NewsItem do
     end
   end
 
-  # These specs are just sanity-checks. The 'properties' hash should not be accessed
-  # directly. Data getters and setters can be added via the 'store_accessor' method.
-  describe '#properties' do
-    subject(:properties) { news_item.properties }
-
-    it { is_expected.to be_a Hash }
-
-    it 'raises an error for non-hash values' do
-      expect { news_item.properties = 'not a hash' }.
-        to raise_error(ActiveRecord::SerializationTypeMismatch)
-    end
-  end
-
   describe '#fast_delete' do
     it 'delete from mysql and elasticsearch' do
       ids = [news_items(:item1).id, news_items(:item2).id].freeze
@@ -151,16 +138,26 @@ describe NewsItem do
   describe '#duration' do
     subject(:duration) { news_item.duration }
 
-    context 'when the news item is a video with a duration' do
-      let(:news_item) { described_class.new(duration: '0:39') }
+    context 'when properties is a YAML string' do
+      let(:news_item) { described_class.new(properties: "---\n:duration: '2:30'\n") }
+
+      it 'parses the YAML and returns the duration' do
+        expect(duration).to eq('2:30')
+      end
+    end
+
+    context 'when properties is a hash with duration' do
+      let(:news_item) { described_class.new(properties: { 'duration' => '0:39' }) }
 
       it { is_expected.to eq('0:39') }
     end
 
     # Temporary - will be removed per SRCH-3465
     context 'when deploying SRCH-3718' do
+      let(:news_item) { described_class.new }
+
       before do
-        allow(news_item).to receive(:properties).and_return('{"duration": "5:54"}')
+        allow(news_item).to receive(:properties).and_return({ 'duration' => '5:54' })
       end
 
       it { is_expected.to eq('5:54') }
@@ -169,7 +166,7 @@ describe NewsItem do
 
   describe '#duration=' do
     it 'sets duration' do
-      news_item = described_class.create!(valid_attributes)
+      news_item = described_class.create!(valid_attributes.merge(properties: { duration: '0:39' }))
       news_item.duration = '1:00'
       news_item.save!
       expect(described_class.find(news_item.id).duration).to eq('1:00')

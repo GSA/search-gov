@@ -375,12 +375,6 @@ describe '/api/v2/search' do
     end
   end
 
-  describe '#azure' do
-    let(:endpoint) { '/api/v2/search/azure' }
-
-    it_behaves_like 'a request with CORS support', 'GET'
-  end
-
   describe '#docs' do
     let(:endpoint) { '/api/v2/search/docs' }
 

@@ -1,13 +1,15 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { darken } from 'polished';
-import { Header as UswdsHeader, PrimaryNav, NavMenuButton } from '@trussworks/react-uswds';
+import { Header as UswdsHeader, NavMenuButton } from '@trussworks/react-uswds';
 
 import { FontsAndColors } from '../SearchResultsLayout';
 import { HeaderProps } from './../props';
 import { Logo } from './Logo';
 import { StyleContext } from '../../contexts/StyleContext';
+import { LanguageContext } from '../../contexts/LanguageContext';
 import { buildLink } from './ExtendedHeader';
+import { UswdsPrimaryNav } from '../UswdsOverrides/UswdsPrimaryNav';
 
 import './BasicHeader.css';
 
@@ -15,15 +17,23 @@ const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: FontsAndColors; }>
   styles: props.styles
 }))`
   background-color: ${(props) => props.styles.headerBackgroundColor};
+
+  .usa-logo .usa-logo__text {
+    font-family: ${(props) => props.styles.primaryNavigationFontFamily} !important;
+  }
+
   .usa-nav__primary, .usa-nav__secondary-links {
     font-family: ${(props) => props.styles.headerLinksFontFamily};
   }
+
   a.usa-nav__link {
     color: ${(props) => props.styles.headerPrimaryLinkColor};
   }
+
   .usa-nav__secondary-item > a {
     color: ${(props) => props.styles.headerSecondaryLinkColor};
   }
+    
   button.usa-menu-btn {
     background-color: ${(props) => props.styles.buttonBackgroundColor};
     &:hover {
@@ -32,11 +42,12 @@ const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: FontsAndColors; }>
   }
 `;
 
-export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeaderLinks, secondaryHeaderLinks }: HeaderProps) => {
+export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeaderLinks }: HeaderProps) => {
   const styles = useContext(StyleContext);
+  const i18n = useContext(LanguageContext);
 
   const primaryNavItems = primaryHeaderLinks ? buildLink(primaryHeaderLinks, 'usa-nav__link') : [];
-  const showMobileMenu = (primaryHeaderLinks && primaryHeaderLinks.length > 0) || (secondaryHeaderLinks && secondaryHeaderLinks.length > 0);
+  const showMobileMenu = primaryHeaderLinks && primaryHeaderLinks.length > 0;
 
   return (
     <>
@@ -45,31 +56,19 @@ export const BasicHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeade
           <div className="usa-navbar">
             <Logo page={page} />
             {showMobileMenu && <NavMenuButton
-              label="Menu"
+              label={i18n.t('searches.menu')}
               onClick={toggleMobileNav}
               className="usa-menu-btn"
               data-testid="usa-menu-mob-btn"
             />}
           </div>
 
-          <PrimaryNav
-            aria-label="Primary navigation"
+          <UswdsPrimaryNav
+            aria-label={i18n.t('ariaLabelHeader')}
             items={primaryNavItems}
             onToggleMobileNav={toggleMobileNav}
             mobileExpanded={mobileNavOpen}
-          >
-            { secondaryHeaderLinks &&
-              <ul  className="usa-nav__secondary-links">
-                { secondaryHeaderLinks.map((link, index) => (
-                  <li className="usa-nav__secondary-item" key={index}>
-                    <a href={link.url} key={index}>
-                      {link.title}
-                    </a>
-                  </li>))
-                }
-              </ul>
-            }
-          </PrimaryNav>
+          />
         </div>
       </StyledUswdsHeader>
     </>

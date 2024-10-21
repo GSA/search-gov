@@ -40,12 +40,13 @@ describe HintData do
 
     context 'when JSON.parse raises error' do
       before do
-        expect(DocumentFetcher).to receive(:fetch).and_return(body: '[bad json}')
+        allow(DocumentFetcher).to receive(:fetch).and_return(body: '[bad json}')
+        allow(Rails.logger).to receive(:error)
       end
 
       it 'returns error' do
-        expect(Rails.logger).to receive(:error).with(/HintData\.reload failed/)
         status = described_class.reload
+        expect(Rails.logger).to have_received(:error).with('HintData.reload failed', instance_of(JSON::ParserError))
         expect(status[:error]).to match(/unexpected token/)
       end
     end

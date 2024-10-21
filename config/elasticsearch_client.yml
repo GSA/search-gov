@@ -21,10 +21,10 @@ production:
   transport_options:
     ssl:
       verify: false
-  ca_fingerprint: <%= ENV['ES_CA_FINGERPRINT'] || Rails.application.secrets[:ca_fingerprint] %>
-  user: <%= ENV['ES_USER'] || Rails.application.secrets.dig(:analytics, :elasticsearch, :reader, :user) %>
-  password: <%= ENV['ES_PASSWORD'] || Rails.application.secrets.dig(:analytics, :elasticsearch, :reader, :password) %>
+  ca_fingerprint: <%= ENV['ES_CA_FINGERPRINT'] %>
+  user: <%= ENV['ES_USER'] %>
+  password: <%= ENV['ES_PASSWORD'] %>
   hosts:
-  <% (ENV['ES_HOSTS'] && JSON.parse(ENV['ES_HOSTS']) || Rails.application.secrets.dig(:analytics, :elasticsearch, :reader, :hosts) || []).each do |host| %>
+  <% (ENV['ES_HOSTS'].split(',') || []).each do |host| %>
     - <%= host %>
   <% end %>

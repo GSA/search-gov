@@ -27,6 +27,7 @@ export interface PageData {
     text: string;
   };
   homepageUrl: string;
+  showVoteOrgLink?: boolean;
 }
 
 export interface Language {
@@ -260,6 +261,13 @@ const GlobalStyle = createGlobalStyle<{ styles: { pageBackgroundColor: string; b
     }
   }
 
+  .usa-search .usa-button {
+    background-color: ${(props) => props.styles.buttonBackgroundColor};
+    &:hover {
+      background-color: ${(props) => darken(0.10, props.styles.buttonBackgroundColor)};
+    }
+  }
+
   @media (max-width: 768px){
     .serp-facets-container{
       display: ${(props) => props.styles.facetsEnabled === true ? 'none': 'block'};
@@ -269,7 +277,7 @@ const GlobalStyle = createGlobalStyle<{ styles: { pageBackgroundColor: string; b
     }
   }
   
-  .facets-clone-icon-wrapper{
+  .facets-close-icon-wrapper{
     background-color: ${(props) => props.styles.buttonBackgroundColor};
   }
 `;
@@ -353,6 +361,7 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
         <Identifier
           identifierContent={identifierContent}
           identifierLinks={identifierLinks}
+          showVoteOrgLink={page.showVoteOrgLink}
         />
       </StyleContext.Provider>
     </LanguageContext.Provider>

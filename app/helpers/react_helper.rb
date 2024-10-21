@@ -17,7 +17,7 @@ module ReactHelper
       newsLabel: news_label(search),
       noResultsMessage: no_result_message(search),
       page: page_data(affiliate),
-      params: params,
+      params:,
       primaryHeaderLinks: links(affiliate, :primary_header_links),
       relatedSearches: related_searches(search),
       relatedSites: related_sites(search),
@@ -27,7 +27,7 @@ module ReactHelper
       sitelimit: sitelimit_alert(search, params),
       spellingSuggestion: spelling_text(search, search_options),
       translations: translations(affiliate.locale),
-      vertical: vertical
+      vertical:
     }
 
     react_component('SearchResultsLayout', data.compact_blank)
@@ -37,6 +37,7 @@ module ReactHelper
     {
       affiliate: affiliate.name,
       display_logo_only: affiliate.display_logo_only,
+      showVoteOrgLink: affiliate.show_vote_org_link && ENV.fetch('ENABLE_VOTE_ORG_LINK'),
       title: affiliate.display_name,
       logo: {
         text: logo_text(affiliate.header_logo_blob),
@@ -70,7 +71,7 @@ module ReactHelper
       navigationLinks: navigation_links(search, params),
       noResultsMessage: no_result_message(search),
       page: page_data(affiliate),
-      params: params,
+      params:,
       primaryHeaderLinks: links(affiliate, :primary_header_links),
       relatedSites: related_sites(search),
       relatedSitesDropdownLabel: affiliate.related_sites_dropdown_label,
@@ -78,7 +79,7 @@ module ReactHelper
       secondaryHeaderLinks: links(affiliate, :secondary_header_links),
       spellingSuggestion: spelling_text(search, search_options),
       translations: translations(affiliate.locale),
-      vertical: vertical
+      vertical:
     }
 
     react_component('SearchResultsLayout', data.compact_blank)

@@ -77,7 +77,7 @@ describe RtuDashboard do
 
       it 'logs the error' do
         expect(Rails.logger).to receive(:error).
-          with(/Error querying top_n data: failure/)
+          with('Error querying top_n data:', instance_of(StandardError))
         dashboard.top_urls
       end
     end

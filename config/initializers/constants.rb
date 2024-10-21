@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
-ADMIN_EMAIL_ADDRESS               = ENV['ADMIN_EMAIL_ADDRESS'] || Rails.application.secrets.dig(:organization, :admin_email_address)
-DEFAULT_USER_AGENT                = ENV['DEFAULT_USER_AGENT'] || Rails.application.secrets.dig(:organization, :default_user_agent)
+ADMIN_EMAIL_ADDRESS               = ENV['ADMIN_EMAIL_ADDRESS']
+DEFAULT_USER_AGENT                = ENV['DEFAULT_USER_AGENT']
 DELIVER_FROM_EMAIL_ADDRESS        = 'no-reply@support.digitalgov.gov'
 NOTIFICATION_SENDER_EMAIL_ADDRESS = 'notification@support.digitalgov.gov'
 SEARCH_ENGINES                    = %w[BingV7 SearchGov].freeze
-SUPPORT_EMAIL_ADDRESS             = ENV['SUPPORT_EMAIL_ADDRESS'] || Rails.application.secrets.dig(:organization, :support_email_address)
+SUPPORT_EMAIL_ADDRESS             = ENV['SUPPORT_EMAIL_ADDRESS']
+BLOG_URL                          = ENV['BLOG_URL']
+PAGE_NOT_FOUND_URL                = ENV['PAGE_NOT_FOUND_URL']

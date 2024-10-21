@@ -13,7 +13,7 @@ namespace :searchgov do
       next
     end
 
-    puts "Using #{Rails.application.secrets.aws_image_bucket} images bucket on S3"
+    puts "Using #{ENV.fetch('AWS_BUCKET')} images bucket on S3"
 
     image_content_updater = ImageContentUpdater.new
     updated, failed = image_content_updater.update(args[:ids])

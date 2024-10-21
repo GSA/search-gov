@@ -5,7 +5,7 @@ http_interactions:
     uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/featured_collection/1/image/1520342652/original/small.jpg
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
+      base64_string: |
         /9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAABQ
         AAD/4QMraHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQg
         YmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8
@@ -191,14 +191,13 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
   recorded_at: Tue, 06 Mar 2018 13:24:15 GMT
 - request:
     method: put
     uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/featured_collection/1/image/1520342652/medium/small.jpg
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
+      base64_string: |
         /9j/4AAQSkZJRgABAQAAAQABAAD/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAA
         AP/hAytodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvADw/eHBhY2tldCBi
         ZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4
@@ -423,14 +422,13 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
   recorded_at: Tue, 06 Mar 2018 13:24:18 GMT
 - request:
     method: put
     uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/featured_collection/1/image/1520342652/small/small.jpg
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
+      base64_string: |
         /9j/4AAQSkZJRgABAQAAAQABAAD/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAA
         AP/hAytodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvADw/eHBhY2tldCBi
         ZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4
@@ -621,7 +619,6 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
   recorded_at: Tue, 06 Mar 2018 13:24:21 GMT
 - request:
     method: get
@@ -661,7 +658,7 @@ http_interactions:
       - AmazonS3
     body:
       encoding: UTF-8
-      string: !binary |-
+      base64_string: |
         /9j/4AAQSkZJRgABAQAAAQABAAD/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAA
         AP/hAytodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvADw/eHBhY2tldCBi
         ZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4
@@ -841,14 +838,13 @@ http_interactions:
         +xAdUvMuGtQLksbmksDY/wDWJ/8AmJW0emrlFITnQrqvPZ7n9bWvnj9GPGjJ
         3coc42TdzPR0fexrn1+rH5emHexN81GSui88XB97GT+mP0YUUYJxlITlIO55
         ODpTGR+mP0YmFAPeSLSM08yF3K/CKoiGu5SscnCd9yPRi7S0wbnVQyHZf//Z
-    http_version: 
   recorded_at: Tue, 06 Mar 2018 13:24:25 GMT
 - request:
     method: head
     uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/featured_collection/1/image/1520342652/original/small.jpg
     body:
       encoding: ASCII-8BIT
-      string: ''
+      base64_string: ''
     headers:
       Content-Type:
       - ''
@@ -893,14 +889,13 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
   recorded_at: Tue, 06 Mar 2018 13:24:27 GMT
 - request:
     method: head
     uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/featured_collection/1/image/1520342652/medium/small.jpg
     body:
       encoding: ASCII-8BIT
-      string: ''
+      base64_string: ''
     headers:
       Content-Type:
       - ''
@@ -945,14 +940,13 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
   recorded_at: Tue, 06 Mar 2018 13:24:28 GMT
 - request:
     method: head
     uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/featured_collection/1/image/1520342652/small/small.jpg
     body:
       encoding: ASCII-8BIT
-      string: ''
+      base64_string: ''
     headers:
       Content-Type:
       - ''
@@ -997,14 +991,13 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
   recorded_at: Tue, 06 Mar 2018 13:24:30 GMT
 - request:
     method: delete
     uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/featured_collection/1/image/1520342652/original/small.jpg
     body:
       encoding: ASCII-8BIT
-      string: ''
+      base64_string: ''
     headers:
       Content-Type:
       - ''
@@ -1039,14 +1032,13 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
   recorded_at: Tue, 06 Mar 2018 13:24:31 GMT
 - request:
     method: delete
     uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/featured_collection/1/image/1520342652/medium/small.jpg
     body:
       encoding: ASCII-8BIT
-      string: ''
+      base64_string: ''
     headers:
       Content-Type:
       - ''
@@ -1081,14 +1073,13 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
   recorded_at: Tue, 06 Mar 2018 13:24:33 GMT
 - request:
     method: delete
     uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/featured_collection/1/image/1520342652/small/small.jpg
     body:
       encoding: ASCII-8BIT
-      string: ''
+      base64_string: ''
     headers:
       Content-Type:
       - ''
@@ -1123,6 +1114,83 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
   recorded_at: Tue, 06 Mar 2018 13:24:34 GMT
-recorded_with: VCR 4.0.0
+- request:
+    method: post
+    uri: https://api.datadoghq.com/api/v1/events?api_key=<DATADOG_API_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"msg_text":"%%%\n### **Request**\n**URL:** http://127.0.0.1:63513/sites/1073485086/best_bets_graphics\n**HTTP
+        Method:** POST\n**IP Address:** 127.0.0.1\n**Parameters:** {\"commit\"=>\"Add\",
+        \"featured_collection\"=>{\"title\"=>\"2010 Atlantic Hurricane Season\", \"title_url\"=>\"http://www.nhc.noaa.gov/2010atlan.shtml\",
+        \"status\"=>\"active\", \"publish_start_on\"=>\"09/12/2024\", \"publish_end_on\"=>\"07/01/2030\",
+        \"image\"=>#<ActionDispatch::Http::UploadedFile:0x000000013a7f84e8 @tempfile=#<Tempfile:/var/folders/t3/hxs04khx25bf9yffft0klndh0000gn/T/RackMultipart20240912-781-lpg8zm.jpg>,
+        @content_type=\"image/jpeg\", @original_filename=\"small.jpg\", @headers=\"Content-Disposition:
+        form-data; name=\\\"featured_collection[image]\\\"; filename=\\\"small.jpg\\\"\\r\\nContent-Type:
+        image/jpeg\\r\\n\">, \"image_alt_text\"=>\"hurricane logo\", \"match_keyword_values_only\"=>\"[FILTERED]\",
+        \"featured_collection_keywords_attributes\"=>\"[FILTERED]\", \"featured_collection_links_attributes\"=>{\"0\"=>{\"position\"=>\"0\",
+        \"title\"=>\"\", \"url\"=>\"\"}, \"1\"=>{\"position\"=>\"1\", \"title\"=>\"Hurricane
+        Alex\", \"url\"=>\"http://www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf\"}, \"2\"=>{\"position\"=>\"2\",
+        \"title\"=>\"Hurricane Danielle\", \"url\"=>\"http://www.nhc.noaa.gov/pdf/TCR-AL062010_Danielle.pdf\"}}},
+        \"controller\"=>\"sites/featured_collections\", \"action\"=>\"create\", \"site_id\"=>\"1073485086\"}\n**Timestamp:**
+        2024-09-12 20:17:18 UTC\n**Server:** Bhaviths-MBP-2.attlocal.net\n**Rails
+        root:** /Users/bhavith/workspace/search-gov\n**Process:** 781\n___\n### **Session**\n**Data:**
+        {\"id_token\"=>\"mock_id_token\", \"user_credentials\"=>\"ee6bd36d621a4d8828000ded85021911900bbebe29d552eb14caa7c01aab2fa7f8f2659408ef411d4b93bc22ea10ac0f5de3ad928203475fbb1b44262b0dd264\",
+        \"user_credentials_id\"=>1033898155}\n___\n### **Backtrace**\n````\napp/controllers/sites/featured_collections_controller.rb:19:in
+        `create''\nlib/middlewares/filtered_jsonp.rb:12:in `call''\nlib/middlewares/adjust_client_ip.rb:9:in
+        `call''\n````\n___\n%%%","date_happened":1726172238,"msg_title":"featured_collections
+        create (Paperclip::Errors::CommandNotFoundError) \"Could not run the `identify`
+        command. Please inst...","priority":"normal","parent":null,"tags":[],"aggregation_key":"[\"featured_collections
+        create (Paperclip::Errors::CommandNotFoundError) \\\"Could not run the `identify`
+        command. Please inst...\"]","alert_type":"error","event_type":null,"source_type_name":null,"title":"featured_collections
+        create (Paperclip::Errors::CommandNotFoundError) \"Could not run the `identify`
+        ","text":"%%%\n### **Request**\n**URL:** http://127.0.0.1:63513/sites/1073485086/best_bets_graphics\n**HTTP
+        Method:** POST\n**IP Address:** 127.0.0.1\n**Parameters:** {\"commit\"=>\"Add\",
+        \"featured_collection\"=>{\"title\"=>\"2010 Atlantic Hurricane Season\", \"title_url\"=>\"http://www.nhc.noaa.gov/2010atlan.shtml\",
+        \"status\"=>\"active\", \"publish_start_on\"=>\"09/12/2024\", \"publish_end_on\"=>\"07/01/2030\",
+        \"image\"=>#<ActionDispatch::Http::UploadedFile:0x000000013a7f84e8 @tempfile=#<Tempfile:/var/folders/t3/hxs04khx25bf9yffft0klndh0000gn/T/RackMultipart20240912-781-lpg8zm.jpg>,
+        @content_type=\"image/jpeg\", @original_filename=\"small.jpg\", @headers=\"Content-Disposition:
+        form-data; name=\\\"featured_collection[image]\\\"; filename=\\\"small.jpg\\\"\\r\\nContent-Type:
+        image/jpeg\\r\\n\">, \"image_alt_text\"=>\"hurricane logo\", \"match_keyword_values_only\"=>\"[FILTERED]\",
+        \"featured_collection_keywords_attributes\"=>\"[FILTERED]\", \"featured_collection_links_attributes\"=>{\"0\"=>{\"position\"=>\"0\",
+        \"title\"=>\"\", \"url\"=>\"\"}, \"1\"=>{\"position\"=>\"1\", \"title\"=>\"Hurricane
+        Alex\", \"url\"=>\"http://www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf\"}, \"2\"=>{\"position\"=>\"2\",
+        \"title\"=>\"Hurricane Danielle\", \"url\"=>\"http://www.nhc.noaa.gov/pdf/TCR-AL062010_Danielle.pdf\"}}},
+        \"controller\"=>\"sites/featured_collections\", \"action\"=>\"create\", \"site_id\"=>\"1073485086\"}\n**Timestamp:**
+        2024-09-12 20:17:18 UTC\n**Server:** Bhaviths-MBP-2.attlocal.net\n**Rails
+        root:** /Users/bhavith/workspace/search-gov\n**Process:** 781\n___\n### **Session**\n**Data:**
+        {\"id_token\"=>\"mock_id_token\", \"user_credentials\"=>\"ee6bd36d621a4d8828000ded85021911900bbebe29d552eb14caa7c01aab2fa7f8f2659408ef411d4b93bc22ea10ac0f5de3ad928203475fbb1b44262b0dd264\",
+        \"user_credentials_id\"=>1033898155}\n___\n### **Backtrace**\n````\napp/controllers/sites/featured_collections_controller.rb:19:in
+        `create''\nlib/middlewares/filtered_jsonp.rb:12:in `call''\nlib/middlewares/adjust_client_ip.rb:9:in
+        `call''\n````\n___\n%%%","host":"Bhaviths-MBP-2.attlocal.net","device":null}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - dogapi-rb/1.45.0 (ruby 3.3.4; os darwin22; arch x86_64)
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      Date:
+      - Thu, 12 Sep 2024 20:17:18 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '169'
+      Connection:
+      - keep-alive
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"status":"error","code":403,"errors":["Forbidden"],"statuspage":"http://status.datadoghq.com","twitter":"http://twitter.com/datadogops","email":"support@datadoghq.com"}'
+  recorded_at: Thu, 12 Sep 2024 20:17:18 GMT
+recorded_with: VCR 6.3.1

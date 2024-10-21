@@ -11,7 +11,7 @@ describe ImageSearch do
       end
 
       it 'uses commercial results instead of Oasis' do
-        image_search = described_class.new(affiliate: affiliate, query: 'some query')
+        image_search = described_class.new(affiliate:, query: 'some query')
         expect(image_search.uses_cr).to be true
       end
     end
@@ -19,37 +19,28 @@ describe ImageSearch do
 
   describe '#diagnostics' do
     subject(:image_search) do
-      described_class.new(affiliate: affiliate, query: 'corgis', cr: use_commercial_results)
+      described_class.new(affiliate:, query: 'corgis', cr: use_commercial_results)
     end
 
     let(:use_commercial_results) { nil }
     let(:affiliate) { affiliates(:basic_affiliate) }
     let(:search_engine) { nil }
+    let(:underlying_search_instance) { instance_double(OdieImageSearch) }
 
     before do
-      allow(affiliate).to receive(:search_engine).and_return(search_engine)
-      allow(affiliate).to receive(:has_no_social_image_feeds?).and_return false
-      allow_any_instance_of(underlying_search_class).
-        to receive(:diagnostics).and_return(:underlying_diagnostics)
+      allow(affiliate).to receive_messages(search_engine:, has_no_social_image_feeds?: false)
+      allow(underlying_search_instance).to receive(:diagnostics).and_return(:underlying_diagnostics)
+      allow(underlying_search_class).to receive(:new).and_return(underlying_search_instance)
     end
 
     context 'when commercial search results are specified' do
       let(:use_commercial_results) { 'true' }
 
-      context 'when the affiliate search_engine is BingV7' do
-        let(:search_engine) { 'BingV7' }
-        let(:underlying_search_class) { SearchEngineAdapter }
-
-        it 'delegates to SearchEngineAdapter#diagnostics' do
-          expect(image_search.diagnostics).to be(:underlying_diagnostics)
-        end
-      end
-
-      context "and the affiliate's search_engine is SearchGov" do
+      context "when the affiliate's search_engine is SearchGov" do
         let(:search_engine) { 'SearchGov' }
-        let(:underlying_search_class) { SearchEngineAdapter }
+        let(:underlying_search_class) { OdieImageSearch }
 
-        it 'delegates to SearchEngineAdapter#diagnostics' do
+        it 'delegates to OdieImageSearch#diagnostics' do
           expect(image_search.diagnostics).to be(:underlying_diagnostics)
         end
       end
@@ -67,58 +58,98 @@ describe ImageSearch do
 
   describe '#run' do
     context 'when Oasis results are blank AND we are on page 1 AND no commercial results override is set AND Bing image results are enabled' do
-      let(:image_search) { described_class.new(affiliate: affiliate, query: 'lsdkjflskjflskjdf') }
-      let(:search_engine_adapter) { double(SearchEngineAdapter, results: nil) }
-
-      before do
-        affiliate.update_attribute(:is_bing_image_search_enabled, true)
-        allow(affiliate).to receive(:has_no_social_image_feeds?).and_return false
-      end
-
-      context 'when search_engine is BingV7' do
-        before { affiliate.search_engine = 'BingV7' }
-
-        it 'should perform a Bing image search' do
-          expect(SearchEngineAdapter).to receive(:new).
-            with(BingV7ImageSearch,
-                 hash_including(affiliate: affiliate,
-                                page: 1,
-                                per_page: 20,
-                                query: 'lsdkjflskjflskjdf')).
-            and_return(search_engine_adapter)
-          expect(search_engine_adapter).to receive(:run)
-          image_search.run
-        end
-      end
+      let(:image_search) { described_class.new(affiliate:, query: 'lsdkjflskjflskjdf') }
+      let(:odie_image_search) { instance_double(OdieImageSearch, results: nil) }
 
       context 'when search_engine is SearchGov' do
-        before { affiliate.search_engine = 'SearchGov' }
+        before do
+          affiliate.search_engine = 'SearchGov'
+          allow(OdieImageSearch).to receive(:new).and_return(odie_image_search)
+          allow(odie_image_search).to receive(:run)
+        end
 
-        it 'performs a BingV7 image search' do
-          expect(SearchEngineAdapter).to receive(:new).
-            with(BingV7ImageSearch,
-                 hash_including(affiliate: affiliate,
+        it 'performs a ODIE image search' do
+          image_search.run
+          expect(OdieImageSearch).to have_received(:new).
+            with(hash_including(affiliate:,
                                 page: 1,
                                 per_page: 20,
-                                query: 'lsdkjflskjflskjdf')).
-            and_return(search_engine_adapter)
-          expect(search_engine_adapter).to receive(:run)
-          image_search.run
+                                query: 'lsdkjflskjflskjdf'))
         end
       end
     end
   end
 
-  describe '#spelling_suggestion' do
-    subject(:image_search) { described_class.new(affiliate: affiliate, query: 'lsdkjflskjflskjdf') }
+  describe '#format_results' do
+    subject(:image_search) { described_class.new(affiliate:, query: 'some query') }
 
-    let(:search_engine_adapter) { double(SearchEngineAdapter, default_module_tag: 'module_tag', results: [], spelling_suggestion: 'spel') }
+    let(:total) { 10 }
+    let(:search_instance) { instance_double(OdieImageSearch, results:, total:) }
+    let(:post_processor) { instance_double(ImageResultsPostProcessor, normalized_results: nil) }
+    let(:results) { 'true' }
 
     before do
-      affiliate.update_attribute(:is_bing_image_search_enabled, true)
+      image_search.instance_variable_set(:@search_instance, search_instance)
+      allow(ImageResultsPostProcessor).to receive(:new).and_return(post_processor)
+      allow(post_processor).to receive(:normalized_results)
+    end
+
+    it 'formats results using ImageResultsPostProcessor' do
+      image_search.format_results
+      expect(ImageResultsPostProcessor).to have_received(:new).with(total, results)
+    end
+  end
+
+  describe '#commercial_results?' do
+    subject(:image_search) { described_class.new(affiliate:, query: 'some query') }
+
+    context 'when module_tag includes IMAG' do
+      before { image_search.instance_variable_set(:@module_tag, 'IMAG') }
+
+      it 'returns true' do
+        expect(image_search.commercial_results?).to be true
+      end
+    end
+
+    context 'when module_tag does not include IMAG' do
+      before { image_search.instance_variable_set(:@module_tag, 'OtherTag') }
+
+      it 'returns false' do
+        expect(image_search.commercial_results?).to be false
+      end
+    end
+  end
+
+  describe '#engine_klass' do
+    subject(:image_search) { described_class.new(affiliate:, query: 'some query') }
+
+    context 'when affiliate search engine starts with Bing' do
+      before { affiliate.search_engine = 'BingV7' }
+
+      it 'returns the appropriate search engine class' do
+        expect(image_search.send(:engine_klass)).to eq(BingV7ImageSearch)
+      end
+    end
+
+    context 'when affiliate search engine does not start with Bing' do
+      before { affiliate.search_engine = 'SearchGov' }
+
+      it 'returns the latest BingV7ImageSearch class' do
+        expect(image_search.send(:engine_klass)).to eq(BingV7ImageSearch)
+      end
+    end
+  end
+
+  describe '#spelling_suggestion' do
+    subject(:image_search) { described_class.new(affiliate:, query: 'lsdkjflskjflskjdf') }
+
+    let(:odie_image_search) { instance_double(OdieImageSearch, default_module_tag: 'module_tag', results: [], spelling_suggestion: 'spel') }
+
+    before do
+      affiliate.is_bing_image_search_enabled = true
       allow(SuggestionBlock).to receive(:exists?).and_return(suggestion_block_exists)
-      allow(SearchEngineAdapter).to receive(:new).and_return(search_engine_adapter)
-      allow(search_engine_adapter).to receive(:run)
+      allow(OdieImageSearch).to receive(:new).and_return(odie_image_search)
+      allow(odie_image_search).to receive(:run)
     end
 
     context 'when no suggestion block exists for the given query' do
@@ -131,7 +162,7 @@ describe ImageSearch do
     end
 
     context 'when a suggestion block exists for the given query' do
-      let (:suggestion_block_exists) { true }
+      let(:suggestion_block_exists) { true }
 
       it 'returns nil' do
         image_search.run

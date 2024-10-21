@@ -29,9 +29,11 @@ Rails.application.routes.draw do
     end
   end
 
+  post '/urls' => 'urls#create'
   get '/sayt' => 'sayt#index'
   post '/clicked' => 'clicked#create'
   get '/healthcheck' => 'health_checks#new'
+  get '/up' => 'health_checks#new'
   get '/login' => 'user_sessions#security_notification', as: :login
   get '/signup' => 'user_sessions#security_notification', as: :signup
   get '/dcv/:affiliate.txt' => 'statuses#domain_control_validation',
@@ -45,6 +47,8 @@ Rails.application.routes.draw do
   resources :users do
     post 'update_account' => 'users#update_account'
   end
+
+  resources :user_sites, only: [:index]
 
   resource :user_session
   resource :human_session, only: [:new, :create]
@@ -181,6 +185,11 @@ Rails.application.routes.draw do
         post :upload
       end
     end
+    resources :bulk_affiliate_styles_upload, only: :index do
+      collection do
+        post :upload
+      end
+    end
     resources :odie_url_source_update, only: [:index] do
       collection do
         get :affiliate_lookup
@@ -246,6 +255,8 @@ Rails.application.routes.draw do
 
     mount Resque::Server.new, at: '/resque', constraints: AffiliateAdminConstraint
     get '/resque/(*all)', to: redirect(path: '/login')
+
+    mount Sidekiq::Web => '/sidekiq', constraints: AffiliateAdminConstraint
   end
 
   match '/admin/affiliates/:id/analytics' => 'admin/affiliates#analytics', :as => :affiliate_analytics_redirect, via: :get
@@ -256,9 +267,6 @@ Rails.application.routes.draw do
   get '/superfresh/:feed_id' => 'superfresh#index', :as => :superfresh_feed
 
   get '/user/developer_redirect' => 'users#developer_redirect', :as => :developer_redirect
-
-  BLOG_URL           = ENV['BLOG_URL']           || Rails.application.secrets.dig(:organization, :blog_url)
-  PAGE_NOT_FOUND_URL = ENV['PAGE_NOT_FOUND_URL'] || Rails.application.secrets.dig(:organization, :page_not_found_url)
 
   get '/program', to: redirect(BLOG_URL || '', status: 302)
   get '*path',    to: redirect(PAGE_NOT_FOUND_URL || '', status: 302), constraints: lambda { |req| req.path.exclude? 'rails/active_storage' }

@@ -89,11 +89,11 @@ class Affiliate < ApplicationRecord
   AWS_IMAGE_SETTINGS = {
     styles: { large: '300x150>' },
     storage: :s3,
-    s3_credentials: ENV['AWS_ACCESS_KEY_ID'] ? S3_CREDENTIALS : Rails.application.secrets.aws_image_bucket,
     url: ':s3_alias_url',
-    s3_host_alias: ENV['AWS_S3_HOST_ALIAS'] || Rails.application.secrets.dig(:aws_image_bucket, :s3_host_alias),
+    s3_credentials: (ENV.fetch('AWS_ACCESS_KEY_ID').present? ? S3_CREDENTIALS : nil),
+    s3_host_alias: ENV.fetch('AWS_S3_HOST_ALIAS'),
     s3_protocol: 'https',
-    s3_region: ENV['AWS_REGION'] || Rails.application.secrets.dig(:aws_image_bucket, :s3_region)
+    s3_region: ENV.fetch('AWS_REGION')
   }.freeze
 
   # The "mobile_" and "managed_" prefixes in "mobile_logo", "managed_header", etc.,
@@ -356,7 +356,7 @@ class Affiliate < ApplicationRecord
 
   def css_property_hash(reload = false)
     @css_property_hash = nil if reload
-    @css_property_hash ||= if theme.to_sym == :default
+    @css_property_hash ||= if theme && theme.to_sym == :default
                              THEMES[:default].reverse_merge(load_css_properties)
                            else
                              load_css_properties

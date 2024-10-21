@@ -6,7 +6,7 @@ describe Admin::SearchModuleCtrsController do
 
   before do
     activate_authlogic
-    allow(SearchModuleCtr).to receive(:new).with(instance_of(Fixnum)).and_return search_module_ctr
+    allow(SearchModuleCtr).to receive(:new).with(instance_of(Integer)).and_return search_module_ctr
   end
 
   describe "GET 'show'" do

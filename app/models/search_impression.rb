@@ -16,6 +16,7 @@ class SearchImpression
                                modules: search.modules.join('|'),
                                params: clean_params(params))
 
+    impression_logger.info("[Search Impression] #{hash.to_json}")
     Rails.logger.info("[Search Impression] #{hash.to_json}")
   end
 
@@ -36,5 +37,9 @@ class SearchImpression
 
   def self.flatten_diagnostics_hash(diagnostics_hash)
     diagnostics_hash.keys.sort.map { |k| diagnostics_hash[k].merge(module: k) }
+  end
+
+  def self.impression_logger
+    @impression_logger ||= Logger.new('log/impressions.log')
   end
 end

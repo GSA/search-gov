@@ -20,9 +20,9 @@ class Sites::ClickDrilldownsController < Sites::SetupSiteController
   ].freeze
 
   def show
-    url = request['url']
-    end_date = request['end_date'].to_date
-    start_date = request['start_date'].to_date
+    url = params['url']
+    end_date = params['end_date'].to_date
+    start_date = params['start_date'].to_date
     filename = [@site.name, url.first(50), start_date, end_date].join('_')
     drilldown_query = DrilldownQuery.new(@site.name,
                                          start_date,

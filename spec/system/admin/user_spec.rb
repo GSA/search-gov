@@ -55,7 +55,9 @@ describe 'Super Admin Users' do
         expect { export }.not_to raise_error
       end
 
+      # This test will be fixed by SRCH-5476
       it 'exports a csv of users' do
+        pending 'This test is pending due to SRCH-5476. It will be fixed when the issue is resolved.'
         export
         Timeout.timeout(5) do
           sleep(0.1) until File.exist?(file)

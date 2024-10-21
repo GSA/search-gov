@@ -1,0 +1,15 @@
+default: &DEFAULT
+  namespace: oasis
+  url: <%= ENV.fetch('REDIS_SYSTEM_URL') %>
+
+development:
+  <<: *DEFAULT
+
+test:
+  <<: *DEFAULT
+
+staging:
+  <<: *DEFAULT
+
+production:
+  <<: *DEFAULT

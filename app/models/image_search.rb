@@ -51,6 +51,8 @@ class ImageSearch
   end
 
   def format_results
+    return if results.blank?
+
     post_processor = ImageResultsPostProcessor.new(total, results)
     post_processor.normalized_results
   end
@@ -59,15 +61,19 @@ class ImageSearch
     if @error_message
       { error: @error_message }
     else
-      { total: total,
-        startrecord: startrecord,
-        endrecord: endrecord,
-        results: results }
+      { total:,
+        startrecord:,
+        endrecord:,
+        results: }
     end
   end
 
   def spelling_suggestion
-    @search_instance.spelling_suggestion if @spelling_suggestion_eligible
+    return nil unless @spelling_suggestion_eligible
+
+    @search_instance&.spelling_suggestion
+    # SRCH-5169: BingV7ImageSearch is currently broken, resulting in @search_instance returning false.  Since the
+    # future of commercial image searches is uncertain, this addresses that scenario with a minimum of effort.
   end
 
   def commercial_results?
@@ -78,7 +84,7 @@ class ImageSearch
 
   def initialize_search_instance(uses_cr)
     params = search_params(uses_cr)
-    uses_cr ? search_engine_adapter(params) : OdieImageSearch.new(params)
+    OdieImageSearch.new(params)
   end
 
   def search_params(uses_cr)
@@ -86,10 +92,6 @@ class ImageSearch
                                                       per_page: @per_page)
     params[:skip_log_serp_impressions] = true unless uses_cr
     params
-  end
-
-  def search_engine_adapter(options)
-    SearchEngineAdapter.new(engine_klass, options)
   end
 
   def engine_klass

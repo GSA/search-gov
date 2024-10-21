@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_08_122013) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_03_164404) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -51,21 +51,21 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_08_122013) do
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
     t.string "website"
-    t.boolean "is_sayt_enabled", default: true
+    t.boolean "is_sayt_enabled", default: true, null: false
     t.string "display_name", null: false
     t.string "favicon_url"
     t.text "css_properties", size: :medium
     t.string "theme"
     t.string "locale", default: "en", null: false
     t.text "scope_ids", size: :medium
-    t.boolean "is_medline_govbox_enabled", default: false
+    t.boolean "is_medline_govbox_enabled", default: false, null: false
     t.text "live_fields_json", size: :long
     t.integer "fetch_concurrency", default: 1, null: false
     t.string "default_search_label", limit: 20, null: false
-    t.boolean "is_related_searches_enabled", default: true
+    t.boolean "is_related_searches_enabled", default: true, null: false
     t.string "left_nav_label", limit: 20
     t.string "ga_web_property_id", limit: 20
-    t.boolean "is_photo_govbox_enabled", default: false
+    t.boolean "is_photo_govbox_enabled", default: false, null: false
     t.boolean "jobs_enabled", default: false, null: false
     t.integer "agency_id"
     t.boolean "raw_log_access_enabled", default: false, null: false
@@ -92,7 +92,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_08_122013) do
     t.integer "header_tagline_logo_file_size"
     t.datetime "header_tagline_logo_updated_at", precision: nil
     t.boolean "active", default: true, null: false
-    t.boolean "use_redesigned_results_page", default: true
+    t.boolean "use_redesigned_results_page", default: true, null: false
     t.json "visual_design_json"
     t.boolean "use_extended_header", default: true, null: false
     t.string "identifier_domain_name"
@@ -102,9 +102,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_08_122013) do
     t.boolean "display_filetype_on_search_results", default: false, null: false
     t.boolean "display_created_date_on_search_results", default: false, null: false
     t.boolean "display_updated_date_on_search_results", default: false, null: false
-    t.boolean "display_logo_only", default: false
+    t.boolean "display_logo_only", default: false, null: false
     t.boolean "looking_for_government_services", default: true, null: false
     t.boolean "show_search_filter_settings", default: false, null: false
+    t.boolean "show_vote_org_link", default: false, null: false
     t.index ["name"], name: "index_affiliates_on_name", unique: true
   end
 
@@ -159,7 +160,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_08_122013) do
     t.string "status", null: false
     t.date "publish_start_on", null: false
     t.date "publish_end_on"
-    t.boolean "match_keyword_values_only", default: false
+    t.boolean "match_keyword_values_only", default: false, null: false
     t.index ["affiliate_id", "title"], name: "index_boosted_contents_on_affiliate_id_and_title"
   end
 
@@ -243,7 +244,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_08_122013) do
     t.integer "rackspace_image_file_size"
     t.datetime "rackspace_image_updated_at", precision: nil
     t.string "image_alt_text"
-    t.boolean "match_keyword_values_only", default: false
+    t.boolean "match_keyword_values_only", default: false, null: false
     t.string "image_file_name"
     t.string "image_content_type"
     t.integer "image_file_size"
@@ -538,7 +539,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_08_122013) do
     t.integer "popularity", default: 1, null: false
     t.datetime "updated_at", precision: nil
     t.integer "affiliate_id"
-    t.boolean "is_protected", default: false
+    t.boolean "is_protected", default: false, null: false
     t.datetime "deleted_at", precision: nil
     t.boolean "is_whitelisted", default: false, null: false
     t.index ["affiliate_id", "phrase"], name: "index_sayt_suggestions_on_affiliate_id_and_phrase", unique: true
@@ -573,7 +574,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_08_122013) do
     t.datetime "updated_at", precision: nil, null: false
     t.string "activity", limit: 100, default: "idle", null: false
     t.string "canonical_domain"
-    t.boolean "js_renderer", default: false
+    t.boolean "js_renderer", default: false, null: false
     t.index ["activity"], name: "index_searchgov_domains_on_activity"
     t.index ["domain"], name: "index_searchgov_domains_on_domain", unique: true, length: 100
     t.index ["status"], name: "index_searchgov_domains_on_status", length: 100
@@ -696,7 +697,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_08_122013) do
     t.string "api_key", limit: 32
     t.string "approval_status", null: false
     t.boolean "welcome_email_sent", default: false, null: false
-    t.boolean "requires_manual_approval", default: false
+    t.boolean "requires_manual_approval", default: false, null: false
     t.integer "default_affiliate_id"
     t.boolean "sees_filtered_totals", default: true, null: false
     t.string "uid"

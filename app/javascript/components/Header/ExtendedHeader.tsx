@@ -1,13 +1,15 @@
 import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import { darken } from 'polished';
-import { Header as UswdsHeader, NavMenuButton, ExtendedNav } from '@trussworks/react-uswds';
+import { Header as UswdsHeader, NavMenuButton } from '@trussworks/react-uswds';
 
 import { FontsAndColors } from '../SearchResultsLayout';
 import { HeaderProps } from './../props';
 import { Logo } from './Logo';
 import { StyleContext } from '../../contexts/StyleContext';
+import { LanguageContext } from '../../contexts/LanguageContext';
 import { checkColorContrastAndUpdateStyle } from '../../utils';
+import { UswdsExtendedNav } from '../UswdsOverrides/UswdsExtendedNav';
 
 import './ExtendedHeader.css';
 
@@ -15,6 +17,10 @@ const StyledUswdsHeader = styled(UswdsHeader).attrs<{ styles: FontsAndColors; }>
   styles: props.styles
 }))`
   background-color: ${(props) => props.styles.headerBackgroundColor};
+
+  .usa-logo .usa-logo__text {
+    font-family: ${(props) => props.styles.primaryNavigationFontFamily} !important;
+  }
 
   .usa-nav__primary a {
     font-family: ${(props) => props.styles.primaryNavigationFontFamily} !important;
@@ -63,6 +69,7 @@ export const buildLink = (links: { title: string; url: string; }[], className?: 
 
 export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHeaderLinks, secondaryHeaderLinks }: HeaderProps) => {
   const styles = useContext(StyleContext);
+  const i18n = useContext(LanguageContext);
 
   const secondaryLinkItems = secondaryHeaderLinks ? buildLink(secondaryHeaderLinks) : [];
   const primaryLinkItems = primaryHeaderLinks ? buildLink(primaryHeaderLinks, 'usa-nav__link') : [];
@@ -80,9 +87,11 @@ export const ExtendedHeader = ({ page, toggleMobileNav, mobileNavOpen, primaryHe
     <StyledUswdsHeader extended={true} styles={styles}>
       <div className="usa-navbar">
         <Logo page={page} />
-        {showMobileMenu && <NavMenuButton onClick={toggleMobileNav} label="Menu" />}
+        {showMobileMenu && <NavMenuButton onClick={toggleMobileNav} label={i18n.t('searches.menu')} />}
       </div>
-      <ExtendedNav
+
+      <UswdsExtendedNav
+        aria-label={i18n.t('ariaLabelHeader')}
         primaryItems={primaryLinkItems}
         secondaryItems={secondaryLinkItems}
         mobileExpanded={mobileNavOpen}

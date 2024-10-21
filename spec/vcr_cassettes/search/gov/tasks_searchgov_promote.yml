@@ -571,11 +571,11 @@ http_interactions:
         href=\"//ytimg.com/\">\n    <link rel=\"dns-prefetch\" href=\"//doubleclick.net/\">\n
         \   \n\n\n    \n\n    \n\n    \n    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\n
         \   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\n
-        \   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=\n
+        \   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=<DATADOG_API_ENABLED>;j.src=\n
         \   'https://www.googletagmanager.com/gtm.js?id='+i+dl;\n    // Begin custom
         event code.\n    j.addEventListener('load',function(){\n    d.dispatchEvent(new
-        CustomEvent('gtmloaded', {bubbles:true}));\n    },{once:true});\n    // End
-        custom event code.\n    f.parentNode.insertBefore(j,f);\n    })(window,document,'script','dataLayer','GTM-KMMLRS');</script>\n
+        CustomEvent('gtmloaded', {bubbles:<DATADOG_API_ENABLED>}));\n    },{once:<DATADOG_API_ENABLED>});\n
+        \   // End custom event code.\n    f.parentNode.insertBefore(j,f);\n    })(window,document,'script','dataLayer','GTM-KMMLRS');</script>\n
         \   \n\n    \n    \n    <script>\n      \n      function jsl(a){\n        if(window.fetch){\n
         \         for(var b,c,d=[],f=document.scripts[0];b=a.shift();)c=document.createElement(\"script\"),\"async\"in
         c?(c.async=!1,c.src=b,document.head.appendChild(c)):(d.push(c),c.onreadystatechange=function(){for(var
@@ -1546,7 +1546,7 @@ http_interactions:
         \   </main>\n\n    \n\n    \n    \n\n    \n        \n        \n\n\n\n<footer
         class=\"o-footer\">\n    <div class=\"wrapper wrapper__match-content\">\n\n
         \       <div class=\"o-footer_pre\">\n\n            <a class=\"a-btn a-btn__secondary
-        o-footer_top-button\" data-gtm_ignore=\"true\" data-js-hook=\"behavior_return-to-top\"
+        o-footer_top-button\" data-gtm_ignore=\"<DATADOG_API_ENABLED>\" data-js-hook=\"behavior_return-to-top\"
         href=\"#\">\n                Back to top <svg class=\"cf-icon-svg cf-icon-svg__arrow-up\"
         viewbox=\"0 0 13 19\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M11.744
         8.815a1.03 1.03 0 0 1-1.456 0L7.53 6.055v9.529a1.03 1.03 0 1 1-2.058 0V6.055l-2.76
@@ -2187,11 +2187,11 @@ http_interactions:
         href=\"//ytimg.com/\">\n    <link rel=\"dns-prefetch\" href=\"//doubleclick.net/\">\n
         \   \n\n\n    \n\n    \n\n    \n    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\n
         \   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\n
-        \   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=\n
+        \   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=<DATADOG_API_ENABLED>;j.src=\n
         \   'https://www.googletagmanager.com/gtm.js?id='+i+dl;\n    // Begin custom
         event code.\n    j.addEventListener('load',function(){\n    d.dispatchEvent(new
-        CustomEvent('gtmloaded', {bubbles:true}));\n    },{once:true});\n    // End
-        custom event code.\n    f.parentNode.insertBefore(j,f);\n    })(window,document,'script','dataLayer','GTM-KMMLRS');</script>\n
+        CustomEvent('gtmloaded', {bubbles:<DATADOG_API_ENABLED>}));\n    },{once:<DATADOG_API_ENABLED>});\n
+        \   // End custom event code.\n    f.parentNode.insertBefore(j,f);\n    })(window,document,'script','dataLayer','GTM-KMMLRS');</script>\n
         \   \n\n    \n    \n    <script>\n      \n      function jsl(a){\n        if(window.fetch){\n
         \         for(var b,c,d=[],f=document.scripts[0];b=a.shift();)c=document.createElement(\"script\"),\"async\"in
         c?(c.async=!1,c.src=b,document.head.appendChild(c)):(d.push(c),c.onreadystatechange=function(){for(var
@@ -3198,7 +3198,7 @@ http_interactions:
         \  </div>\n\n        \n    \n\n    </aside>\n</div>\n\n\n    </main>\n\n    \n\n
         \   \n    \n\n    \n        \n        \n\n\n\n<footer class=\"o-footer\">\n
         \   <div class=\"wrapper wrapper__match-content\">\n\n        <div class=\"o-footer_pre\">\n\n
-        \           <a class=\"a-btn a-btn__secondary o-footer_top-button\" data-gtm_ignore=\"true\"
+        \           <a class=\"a-btn a-btn__secondary o-footer_top-button\" data-gtm_ignore=\"<DATADOG_API_ENABLED>\"
         data-js-hook=\"behavior_return-to-top\" href=\"#\">\n                Back
         to top <svg class=\"cf-icon-svg cf-icon-svg__arrow-up\" viewbox=\"0 0 13 19\"
         xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M11.744 8.815a1.03 1.03 0 0
@@ -3854,11 +3854,11 @@ http_interactions:
         href=\"//ytimg.com/\">\n    <link rel=\"dns-prefetch\" href=\"//doubleclick.net/\">\n
         \   \n\n\n    \n\n    \n\n    \n    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\n
         \   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\n
-        \   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=\n
+        \   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=<DATADOG_API_ENABLED>;j.src=\n
         \   'https://www.googletagmanager.com/gtm.js?id='+i+dl;\n    // Begin custom
         event code.\n    j.addEventListener('load',function(){\n    d.dispatchEvent(new
-        CustomEvent('gtmloaded', {bubbles:true}));\n    },{once:true});\n    // End
-        custom event code.\n    f.parentNode.insertBefore(j,f);\n    })(window,document,'script','dataLayer','GTM-KMMLRS');</script>\n
+        CustomEvent('gtmloaded', {bubbles:<DATADOG_API_ENABLED>}));\n    },{once:<DATADOG_API_ENABLED>});\n
+        \   // End custom event code.\n    f.parentNode.insertBefore(j,f);\n    })(window,document,'script','dataLayer','GTM-KMMLRS');</script>\n
         \   \n\n    \n    \n    <script>\n      \n      function jsl(a){\n        if(window.fetch){\n
         \         for(var b,c,d=[],f=document.scripts[0];b=a.shift();)c=document.createElement(\"script\"),\"async\"in
         c?(c.async=!1,c.src=b,document.head.appendChild(c)):(d.push(c),c.onreadystatechange=function(){for(var
@@ -4865,7 +4865,7 @@ http_interactions:
         \  </div>\n\n        \n    \n\n    </aside>\n</div>\n\n\n    </main>\n\n    \n\n
         \   \n    \n\n    \n        \n        \n\n\n\n<footer class=\"o-footer\">\n
         \   <div class=\"wrapper wrapper__match-content\">\n\n        <div class=\"o-footer_pre\">\n\n
-        \           <a class=\"a-btn a-btn__secondary o-footer_top-button\" data-gtm_ignore=\"true\"
+        \           <a class=\"a-btn a-btn__secondary o-footer_top-button\" data-gtm_ignore=\"<DATADOG_API_ENABLED>\"
         data-js-hook=\"behavior_return-to-top\" href=\"#\">\n                Back
         to top <svg class=\"cf-icon-svg cf-icon-svg__arrow-up\" viewbox=\"0 0 13 19\"
         xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M11.744 8.815a1.03 1.03 0 0
@@ -5032,4 +5032,192 @@ http_interactions:
         \       </script><div id='ZN_eLsXNyVBrTKgTHM'><!--DO NOT REMOVE-CONTENTS PLACED
         HERE--></div>\n    \n\n    \n</body>\n</html>"
   recorded_at: Mon, 08 Jan 2024 19:21:02 GMT
+- request:
+    method: post
+    uri: http://localhost:8081/api/v1/documents
+    body:
+      encoding: UTF-8
+      string: '{"content":"Auto loans\nWhether you’re planning to get a car or having
+        trouble managing your auto loan, we have unbiased resources and tools to help
+        you get the best deal and avoid surprises that can cost you money.\nWhich
+        best describes your situation:\nI''m getting an auto loan\nI''m dealing with
+        auto loan issues\nSteps for getting an auto loan\nGetting a new car or auto
+        loan affects your overall money picture. Whether you’re a first-time borrower
+        or a pro, seeing what questions to ask and steps to take can help you avoid
+        common pitfalls, so you can drive off the lot with confidence.\n1. Know before
+        you shop for a car or auto loan\nBy asking questions before you shop, you’re
+        more likely to get the best interest rates and loan terms for your budget,
+        save yourself valuable time and money, and reduce stress.\nStart by asking
+        yourself these questions\n2. See different ways to get an auto loan\nWhen
+        financing a new vehicle, you have options. Learn the most common ways to get
+        an auto loan and how to compare interest rates and terms to find the best
+        one for your budget.\nRead more about the ways to finance your loan\n3. Know
+        what is negotiable\nDid you know that you can negotiate the terms of your
+        auto loan? Negotiating can save you hundreds or even thousands of dollars
+        over the life of your loan.\nFind out more about negotiating loan basics\n4.
+        Understand how to close the deal\nThere’s still a lot of paperwork to go over
+        and sign. Before you drive away, make sure the paperwork matches the deal
+        you think you are getting and that everyone has signed all the documents.\nRead
+        more about closing the deal\nHave other auto loan questions?\nYou can search
+        for answers to our most frequently asked auto loan questions.\nDealing with
+        auto loan problems\nCommon issues\nYou owe more than your vehicle is worth\nYou
+        can''t make payments on your auto loan\nYou can''t make payments on your auto
+        lease\nYour car was repossessed\nOr, search for answers to our most frequently
+        asked auto loan questions\nSubmit a complaint\nHaving trouble with a financial
+        product or service? If you''ve already tried reaching out to the company and
+        still have an issue, you can submit a complaint. We''ll forward your complaint
+        to the company and work to get you a response, generally within 15 days.\nStart
+        a complaint\n Are you a professional looking for resources to help others?\nWatch
+        our webinar on auto loan education resources \nFind the latest on our work
+        around auto loans: Read blog posts, press releases, and related research and
+        reports\nSee all our resources for supporting your mission to help others\nVer
+        página en español\nAbout us\nWe''re the Consumer Financial Protection Bureau
+        (CFPB), a U.S. government agency that makes sure banks, lenders, and other
+        financial companies treat you fairly.\nLearn how the CFPB can help you\n How
+        the CFPB is protecting you\n Protecting servicemembers from costly auto loans
+        and wrongful repossessions\n Overcharging for add-on products on auto loans\n
+        Rising car prices means more auto loan debt\n Still have a question?\nCall
+        us if you still can’t find what you’re looking for. \n(855) 411-2372\nTTY/TDD:
+        (855) 729-2372\n Print resources\n Auto Loan Shopping Sheet: Comparing auto
+        loans \n Take control of your auto loan: A step-by-step guide \n Real stories
+        about auto loans\nWatch a video: Meet Harry and Ari \n Share your experience
+        with auto loans\n Legal disclaimer\nThe content on this page provides general
+        consumer information. It is not legal advice or regulatory guidance. The CFPB
+        updates this information periodically. This information may include links
+        or references to third-party resources or content. We do not endorse the third-party
+        or guarantee the accuracy of this third-party information. There may be other
+        resources that also serve your needs.","content_type":"website","description":"When
+        you’re shopping for a new auto loan, it’s important to know the right questions
+        to ask.","document_id":"3921f366ed562bfae8001999639b5bbb70adbc00087785c335eb79ee472d93d4","thumbnail_url":"https://files.consumerfinance.gov/f/images/ask-cfpb-social-auto-loans.original.png","language":"en","mime_type":"text/html","path":"https://www.consumerfinance.gov/consumer-tools/auto-loans/","title":"Auto
+        loans | Consumer Financial Protection Bureau"}'
+    headers:
+      Authorization:
+      - Basic c2VhcmNoZ292OnNlYXJjaGdvdl90b2tlbg==
+      User-Agent:
+      - Faraday v0.17.6
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - c91978ae-e141-4992-aad4-137257802223
+      X-Runtime:
+      - '1.134420'
+      Vary:
+      - Origin
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"developer_message":"Unauthorized","status":400}'
+  recorded_at: Tue, 30 Jul 2024 14:10:29 GMT
+- request:
+    method: post
+    uri: http://localhost:8081/api/v1/documents
+    body:
+      encoding: UTF-8
+      string: '{"content":"Auto loans\nWhether you’re planning to get a car or having
+        trouble managing your auto loan, we have unbiased resources and tools to help
+        you get the best deal and avoid surprises that can cost you money.\nWhich
+        best describes your situation:\nI''m getting an auto loan\nI''m dealing with
+        auto loan issues\nSteps for getting an auto loan\nGetting a new car or auto
+        loan affects your overall money picture. Whether you’re a first-time borrower
+        or a pro, seeing what questions to ask and steps to take can help you avoid
+        common pitfalls, so you can drive off the lot with confidence.\n1. Know before
+        you shop for a car or auto loan\nBy asking questions before you shop, you’re
+        more likely to get the best interest rates and loan terms for your budget,
+        save yourself valuable time and money, and reduce stress.\nStart by asking
+        yourself these questions\n2. See different ways to get an auto loan\nWhen
+        financing a new vehicle, you have options. Learn the most common ways to get
+        an auto loan and how to compare interest rates and terms to find the best
+        one for your budget.\nRead more about the ways to finance your loan\n3. Know
+        what is negotiable\nDid you know that you can negotiate the terms of your
+        auto loan? Negotiating can save you hundreds or even thousands of dollars
+        over the life of your loan.\nFind out more about negotiating loan basics\n4.
+        Understand how to close the deal\nThere’s still a lot of paperwork to go over
+        and sign. Before you drive away, make sure the paperwork matches the deal
+        you think you are getting and that everyone has signed all the documents.\nRead
+        more about closing the deal\nHave other auto loan questions?\nYou can search
+        for answers to our most frequently asked auto loan questions.\nDealing with
+        auto loan problems\nCommon issues\nYou owe more than your vehicle is worth\nYou
+        can''t make payments on your auto loan\nYou can''t make payments on your auto
+        lease\nYour car was repossessed\nOr, search for answers to our most frequently
+        asked auto loan questions\nSubmit a complaint\nHaving trouble with a financial
+        product or service? If you''ve already tried reaching out to the company and
+        still have an issue, you can submit a complaint. We''ll forward your complaint
+        to the company and work to get you a response, generally within 15 days.\nStart
+        a complaint\n Are you a professional looking for resources to help others?\nWatch
+        our webinar on auto loan education resources \nFind the latest on our work
+        around auto loans: Read blog posts, press releases, and related research and
+        reports\nSee all our resources for supporting your mission to help others\nVer
+        página en español\nAbout us\nWe''re the Consumer Financial Protection Bureau
+        (CFPB), a U.S. government agency that makes sure banks, lenders, and other
+        financial companies treat you fairly.\nLearn how the CFPB can help you\n How
+        the CFPB is protecting you\n Protecting servicemembers from costly auto loans
+        and wrongful repossessions\n Overcharging for add-on products on auto loans\n
+        Rising car prices means more auto loan debt\n Still have a question?\nCall
+        us if you still can’t find what you’re looking for. \n(855) 411-2372\nTTY/TDD:
+        (855) 729-2372\n Print resources\n Auto Loan Shopping Sheet: Comparing auto
+        loans \n Take control of your auto loan: A step-by-step guide \n Real stories
+        about auto loans\nWatch a video: Meet Harry and Ari \n Share your experience
+        with auto loans\n Legal disclaimer\nThe content on this page provides general
+        consumer information. It is not legal advice or regulatory guidance. The CFPB
+        updates this information periodically. This information may include links
+        or references to third-party resources or content. We do not endorse the third-party
+        or guarantee the accuracy of this third-party information. There may be other
+        resources that also serve your needs.","content_type":"website","description":"When
+        you’re shopping for a new auto loan, it’s important to know the right questions
+        to ask.","document_id":"3921f366ed562bfae8001999639b5bbb70adbc00087785c335eb79ee472d93d4","thumbnail_url":"https://files.consumerfinance.gov/f/images/ask-cfpb-social-auto-loans.original.png","language":"en","mime_type":"text/html","path":"https://www.consumerfinance.gov/consumer-tools/auto-loans/","title":"Auto
+        loans | Consumer Financial Protection Bureau"}'
+    headers:
+      Authorization:
+      - Basic c2VhcmNoZ292OnNlYXJjaGdvdl90b2tlbg==
+      User-Agent:
+      - Faraday v0.17.6
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - '058c57c0-adbb-4d9b-bb0b-9090e7a014bf'
+      X-Runtime:
+      - '0.198696'
+      Vary:
+      - Origin
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"developer_message":"Unauthorized","status":400}'
+  recorded_at: Tue, 30 Jul 2024 14:10:30 GMT
 recorded_with: VCR 6.2.0
