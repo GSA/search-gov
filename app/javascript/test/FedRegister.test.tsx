@@ -13,7 +13,7 @@ const fedRegisterDocs = [
   {
     title: 'Expand the Definition of a Public Assistance Household',
     htmlUrl: 'https://gsa.gov/',
-    commentsCloseOn: 'October 12, 2024',
+    commentsCloseOn: 'October 12, 3024',
     contributingAgencyNames: ['Social Security Administarion', 'GSA'],
     documentNumber: '2016-10932',
     documentType: 'Proposed Rule',
