@@ -10,7 +10,7 @@ module VisualDesignHelper
     if logo_metadata.present? && logo_metadata.key?('alt_text')
       logo_metadata['alt_text']
     else
-      t('sites.visual_designs.image_assets.logo', scope: 'admin_center')
+      nil
     end
   end
 
