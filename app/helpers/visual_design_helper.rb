@@ -8,6 +8,7 @@ module VisualDesignHelper
 
   def render_logo_alt_text(logo_metadata)
     return unless logo_metadata.present? && logo_metadata.key?('alt_text')
+    
     logo_metadata['alt_text']
   end
 
