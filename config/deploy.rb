@@ -20,6 +20,7 @@ set :user,                    ENV['SERVER_DEPLOYMENT_USER']
 set :whenever_roles,          :cron
 set :workers,                 { '*' => ENV.fetch('RESQUE_WORKERS_COUNT', '5').to_i }
 set :resque_log_file,         "log/resque.log"
+set :puma_threads,            [1, ENV.fetch('RAILS_MAX_THREADS') { 5 }]
 
 append :linked_dirs,  'log', 'tmp', 'node_modules', 'public'
 append :linked_files, '.env', 'config/logindotgov.pem'
