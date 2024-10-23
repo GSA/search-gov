@@ -1,7 +1,7 @@
 default: &DEFAULT
   namespace: oasis
   url: <%= ENV.fetch('REDIS_SYSTEM_URL') %>
-  :concurrency: <%= ENV['SIDEKIQ_CONCURRENCY'] %>
+  :concurrency: <%= ENV.fetch('SIDEKIQ_CONCURRENCY', 4) %>
 
 development:
   <<: *DEFAULT
