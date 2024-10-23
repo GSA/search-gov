@@ -1,0 +1,36 @@
+#!/bin/bash -l
+
+echo "Starting adjust_fetch_concurrency at "`date`
+
+# Every day before fetching new Odie docs, we look at an aff's average load_time's
+# for the last 24 hrs' updated docs, if any. If avg < 1.5 secs, increase
+# concurrency by 1 up to 20 max. If avg > 3.5 secs, decrease by 2 down to 1 min.
+
+# Read from replicas and update on primary, otherwise replicas fall behind
+
+echo "Looking for affiliates to incr at "`date`
+echo "select affiliate_id from (select affiliate_id, count(*) total_cnt, avg(load_time) average_load_time from indexed_documents i join affiliates a on a.id=i.affiliate_id where last_crawled_at > date_sub(now(), INTERVAL 1 DAY) group by affiliate_id having average_load_time < 1.5 and total_cnt >= 100) t" | mysql --skip-column-names -u $DB_USER $DB_PASSWORD -h $DB_HOST $DB_NAME > /tmp/fetch_concurrency_ids.txt
+
+# if there is anything to incr, do so
+if test -s /tmp/fetch_concurrency_ids.txt
+then
+    echo "Processing incr entries at "`date`
+    IDS=`cat /tmp/fetch_concurrency_ids.txt`
+    IDSTR=`echo $IDS | sed s/\ /,/g`
+    echo "update affiliates set fetch_concurrency = least(20, fetch_concurrency+1) where id in ($IDSTR)" | mysql -u $DB_USER $DB_PASSWORD -h $DB_HOST $DB_NAME
+    rm -f /tmp/fetch_concurrency_ids.txt
+fi
+
+echo "Looking for affiliates to decr at "`date`
+echo "select affiliate_id from (select affiliate_id, count(*) total_cnt, avg(load_time) average_load_time from indexed_documents i join affiliates a on a.id=i.affiliate_id where last_crawled_at > date_sub(now(), INTERVAL 1 DAY) group by affiliate_id having average_load_time > 3.5 and total_cnt >= 100) t" | mysql --skip-column-names -u $DB_USER $DB_PASSWORD -h $DB_HOST $DB_NAME > /tmp/fetch_concurrency_ids.txt
+
+# if there is anything to decr, do so
+if test -s /tmp/fetch_concurrency_ids.txt
+then
+    echo "Processing decr entries at "`date`
+    IDS=`cat /tmp/fetch_concurrency_ids.txt`
+    IDSTR=`echo $IDS | sed s/\ /,/g`
+    echo "update affiliates set fetch_concurrency = greatest(1, fetch_concurrency-2) where id in ($IDSTR)" | mysql -u $DB_USER $DB_PASSWORD -h $DB_HOST $DB_NAME
+    rm -f /tmp/fetch_concurrency_ids.txt
+fi
+echo "Finished adjust_fetch_concurrency at "`date`
