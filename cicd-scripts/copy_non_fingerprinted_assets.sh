@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Navigate to the current release path (replace with your actual path)
 cd /home/search/searchgov/current
 
 # Copy non-fingerprinted JS and CSS assets
