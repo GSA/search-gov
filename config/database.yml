@@ -10,6 +10,7 @@ default: &DEFAULT
   adapter: mysql2
   username: root
   encoding: utf8mb4
+  reconnect: <%= ENV['DB_RECONNECT'] %>
   collation: utf8mb4_unicode_ci
   host: <%= ENV['DB_HOST'] || '127.0.0.1' %>
 
