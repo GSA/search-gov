@@ -52,7 +52,11 @@ every '5 0 * * *', roles: [:cron] do
 end
 
 every '5 0 * * *', roles: [:cron] do
- command 'bin/detect_future_usage'
+ command "DB_USER=#{ENV['DB_USER']} DB_PASSWORD=#{ENV['DB_PASSWORD']} DB_HOST=#{ENV['DB_HOST']} DB_NAME=#{ENV['DB_NAME']} bin/detect_future_usage"
+end
+
+every '5 0 * * *', roles: [:cron] do
+ command "DB_USER=#{ENV['DB_USER']} DB_PASSWORD=#{ENV['DB_PASSWORD']} DB_HOST=#{ENV['DB_HOST']} DB_NAME=#{ENV['DB_NAME']} bin/adjust_fetch_concurrency"
 end
 
 every '25 2 * * 0', roles: [:cron] do
