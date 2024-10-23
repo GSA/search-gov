@@ -1,0 +1,58 @@
+#!/bin/bash -l
+
+echo "Starting detect_feature_usage at "`date`
+YYMMDD_DASHES=`date -d '1 day ago' +'%Y-%m-%d'`
+
+echo "Starting daily snapshot at "`date`
+echo "select distinct affiliate_id from memberships where gets_daily_snapshot_email =1" | mysql --skip-column-names -u $DB_USER $DB_PASSWORD -h $DB_HOST $DB_NAME > /tmp/affiliate_feature_addition.txt
+if test -s /tmp/affiliate_feature_addition.txt
+then
+  bin/rake usasearch:features:record_feature_usage[daily_snapshot,/tmp/affiliate_feature_addition.txt]
+fi
+
+echo "Starting rss at "`date`
+echo "select distinct owner_id from rss_feeds where owner_type='Affiliate'" | mysql --skip-column-names -u $DB_USER $DB_PASSWORD -h $DB_HOST $DB_NAME > /tmp/affiliate_feature_addition.txt
+if test -s /tmp/affiliate_feature_addition.txt
+then
+  bin/rake usasearch:features:record_feature_usage[rss,/tmp/affiliate_feature_addition.txt]
+fi
+
+echo "Starting best_bets graphics at "`date`
+echo "select affiliate_id from featured_collections" | mysql --skip-column-names -u $DB_USER $DB_PASSWORD -h $DB_HOST $DB_NAME > /tmp/affiliate_feature_addition.txt
+if test -s /tmp/affiliate_feature_addition.txt
+then
+  bin/rake usasearch:features:record_feature_usage[best_bets,/tmp/affiliate_feature_addition.txt]
+fi
+
+echo "Starting best_bets text at "`date`
+echo "select affiliate_id from boosted_contents" | mysql --skip-column-names -u $DB_USER $DB_PASSWORD -h $DB_HOST $DB_NAME > /tmp/affiliate_feature_addition.txt
+if test -s /tmp/affiliate_feature_addition.txt
+then
+  bin/rake usasearch:features:record_feature_usage[best_bets_text,/tmp/affiliate_feature_addition.txt]
+fi
+
+echo "Starting odie at "`date`
+echo "select distinct affiliate_id from indexed_documents" | mysql --skip-column-names -u $DB_USER $DB_PASSWORD -h $DB_HOST $DB_NAME > /tmp/affiliate_feature_addition.txt
+if test -s /tmp/affiliate_feature_addition.txt
+then
+  bin/rake usasearch:features:record_feature_usage[odie,/tmp/affiliate_feature_addition.txt]
+fi
+
+echo "Starting collections at "`date`
+echo "select distinct affiliate_id from document_collections" | mysql --skip-column-names -u $DB_USER $DB_PASSWORD -h $DB_HOST $DB_NAME > /tmp/affiliate_feature_addition.txt
+if test -s /tmp/affiliate_feature_addition.txt
+then
+  bin/rake usasearch:features:record_feature_usage[collections,/tmp/affiliate_feature_addition.txt]
+fi
+
+echo "Starting social at "`date`
+echo "select affiliate_id from affiliates_youtube_profiles UNION select affiliate_id from flickr_profiles order by affiliate_id" | mysql --skip-column-names -u $DB_USER $DB_PASSWORD -h $DB_HOST $DB_NAME > /tmp/affiliate_feature_addition.txt
+if test -s /tmp/affiliate_feature_addition.txt
+then
+  bin/rake usasearch:features:record_feature_usage[social,/tmp/affiliate_feature_addition.txt]
+fi
+
+echo "Alerting admin of feature adoption at "`date`
+bin/rake usasearch:features:email_admin_about_new_feature_usage
+
+echo "Finished detect_feature_usage at "`date`
