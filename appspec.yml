@@ -12,4 +12,9 @@ hooks:
       timeout: 300
       runas: search
 
+  AfterInstall:
+    - location: cicd-scripts/copy_non_fingerprinted_assets.sh
+      timeout: 300
+      runas: search
+
 
