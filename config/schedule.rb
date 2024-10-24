@@ -14,15 +14,15 @@ every '18 9 * * 1-5', roles: [:cron]  do
   rake 'search:federal_register:import_documents'
 end
 
-every '0 2-20 * * * ', roles: [:cron] do
+every '0 2-20 * * *', roles: [:cron] do
   rake "usasearch:sayt_suggestions:compute[#{Time.now.strftime('%Y%m%d')},1000]"
 end
 
-every '0 2-20 * * * ', roles: [:cron] do
+every '0 2-20 * * *', roles: [:cron] do
   runner 'SearchgovUrl.counter_culture_fix_counts'
 end
 
-every '0 2-20 * * * ', roles: [:cron] do
+every '0 2-20 * * *', roles: [:cron] do
   runner 'usasearch:rss_feed:refresh_affiliate_feeds'
 end
 
