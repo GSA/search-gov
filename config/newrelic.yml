@@ -14,7 +14,7 @@ common: &default_settings
 
   # Your application name. Renaming here affects where data displays in New
   # Relic. For more details, see https://docs.newrelic.com/docs/apm/new-relic-apm/maintenance/renaming-applications
-  app_name: searchgov (<%= ENV.fetch('SEARCH_ENV', 'dev') %>)
+  app_name: search.gov (<%= ENV.fetch('SEARCH_ENV', 'dev') %>)
 
   # FedRAMP-complaint endpoint
   # https://docs.newrelic.com/docs/security/security-privacy/compliance/fedramp-compliant-endpoints/
