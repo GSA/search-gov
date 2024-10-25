@@ -14,7 +14,7 @@ common: &default_settings
 
   # Your application name. Renaming here affects where data displays in New
   # Relic. For more details, see https://docs.newrelic.com/docs/apm/new-relic-apm/maintenance/renaming-applications
-  app_name: <%= ENV['NEWRELIC_APP_NAME'] %>
+  app_name: searchgov (<%= ENV.fetch('SEARCH_ENV', 'dev') %>)
 
   # FedRAMP-complaint endpoint
   # https://docs.newrelic.com/docs/security/security-privacy/compliance/fedramp-compliant-endpoints/
@@ -25,7 +25,7 @@ common: &default_settings
 
   # Logging level for log/newrelic_agent.log; options are error, warn, info, or
   # debug.
-  log_level: <%= ENV['NEWRELIC_LOG_LEVEL'] %>
+  log_level: <%= ENV.fetch('NEWRELIC_LOG_LEVEL', 'debug') %>
 
   # All of the following configuration options are optional. Review them, and
   # uncomment or edit them if they appear relevant to your application needs.
@@ -35,7 +35,7 @@ common: &default_settings
   # application_logging.enabled: true
 
   # If `true`, the agent captures log records emitted by this application.
-  application_logging.forwarding.enabled: false
+  application_logging.forwarding.enabled: <%= ENV.fetch('NEW_RELIC_APPLICATION_LOGGING_FORWARDING_ENABLED', 'false') %>
 
   # Defines the maximum number of log records to buffer in memory at a time.
   # application_logging.forwarding.max_samples_stored: 10000
@@ -217,7 +217,8 @@ common: &default_settings
 
   # Distributed tracing tracks and observes service requests as they flow through distributed systems.
   # With distributed tracing data, you can quickly pinpoint failures or performance issues and fix them.
-  distributed_tracing.enabled: false
+  # Set environment variable NEW_RELIC_DISTRIBUTED_TRACING_ENABLED=false to disable it. Gem already supports it directly.
+  # distributed_tracing.enabled: true
 
   # If true, the agent captures attributes from error collection.
   # error_collector.attributes.enabled: false
@@ -474,7 +475,8 @@ common: &default_settings
   # elasticsearch.obfuscate_queries: true
 
   # When true, the agent transmits data about your app to the New Relic collector.
-  monitor_mode: <%= ENV['NEWRELIC_MONITOR_ENABLED'] ? 'true' : 'false' %>
+  # Gem supports the NEW_RELIC_MONITOR_MODE environment variable already!
+  # monitor_mode: true
 
   # If true, uses Module#prepend rather than alias_method for Active Record
   # instrumentation.
