@@ -1,7 +1,7 @@
 # config valid for current version and patch releases of Capistrano
 lock '~> 3.19.1'
 
-RAILS_MAX_THREADS = ENV.fetch('RAILS_MAX_THREADS') { 5 }
+SEARCHGOV_THREADS = ENV.fetch('SEARCHGOV_THREADS') { 5 }
 
 set :application,             'search-gov'
 set :branch,                  ENV.fetch('SEARCH_ENV', 'staging')
@@ -11,8 +11,8 @@ set :format,                  :pretty
 set :puma_access_log,         "#{release_path}/log/puma.access.log"
 set :puma_bind,               'tcp://0.0.0.0:3000'
 set :puma_error_log,          "#{release_path}/log/puma.error.log"
-set :puma_threads,            [ENV.fetch('RAILS_MIN_THREADS', RAILS_MAX_THREADS), RAILS_MAX_THREADS]
-set :puma_workers,            ENV.fetch('WEB_CONCURRENCY') { 0 }
+set :puma_threads,            [ENV.fetch('SEARCHGOV_MIN_THREADS', SEARCHGOV_THREADS), SEARCHGOV_THREADS]
+set :puma_workers,            ENV.fetch('SEARCHGOV_WORKERS') { 0 }
 set :rails_env,               'production'
 set :rbenv_ruby,              '3.1.4'
 set :rbenv_type,              :user

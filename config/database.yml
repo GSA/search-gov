@@ -10,10 +10,10 @@ default: &DEFAULT
   adapter: mysql2
   username: root
   encoding: utf8mb4
-  reconnect: <%= ENV['DB_RECONNECT'] %>
+  reconnect: <%= ENV.fetch('DB_RECONNECT', 'false') %>
   collation: utf8mb4_unicode_ci
   host: <%= ENV['DB_HOST'] || '127.0.0.1' %>
-  pool: <%= ENV.fetch('RAILS_MAX_THREADS', 5) %>
+  pool: <%= ENV.fetch('SEARCHGOV_THREADS', 5) %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
