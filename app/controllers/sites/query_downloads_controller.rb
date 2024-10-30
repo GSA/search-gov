@@ -5,8 +5,8 @@ class Sites::QueryDownloadsController < Sites::SetupSiteController
   MAX_RESULTS = 50_000
 
   def show
-    @end_date = request['end_date'].to_date
-    @start_date = request['start_date'].to_date
+    @end_date = params['end_date'].to_date
+    @start_date = params['start_date'].to_date
     filename = [@site.name, @start_date, @end_date].join('_')
     header = [
       'Search Term',

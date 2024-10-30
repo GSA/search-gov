@@ -2,7 +2,7 @@
 
 class Sites::ClickQueriesController < Sites::AnalyticsController
   def show
-    @url = request['url']
+    @url = params['url']
     @top_queries = top_queries
   end
 

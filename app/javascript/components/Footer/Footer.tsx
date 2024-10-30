@@ -32,7 +32,7 @@ export const Footer = ({ footerLinks = [] }: FooterProps) => {
 
   const returnToTop = (
     <GridContainer className="usa-footer__return-to-top">
-      <a href="#main-content" aria-labelledby={i18n.t('returnToTop')}>
+      <a href="#main-content">
         {i18n.t('returnToTop')}
       </a>
     </GridContainer>
@@ -59,7 +59,7 @@ export const Footer = ({ footerLinks = [] }: FooterProps) => {
           returnToTop={returnToTop}
           primary={
             <div className="usa-footer__primary-container grid-row">
-              <div className="mobile-lg:grid-col-8">
+              <div className="mobile-lg:grid-col-12">
                 <FooterNav
                   size="slim"
                   links={primaryFooterLinks}

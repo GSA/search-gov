@@ -24,7 +24,7 @@ Rails.application.reloader.to_prepare do
 
     # Array of redis servers for Redlock quorum.
     # Read more at https://github.com/leandromoreira/redlock-rb#redis-client-configuration
-    config.redlock_servers = ["redis://#{REDIS_HOST}:#{REDIS_PORT}"]
+    config.redlock_servers = ["#{REDIS_SYSTEM_URL}"]
 
     # Custom options for Redlock.
     # Read more at https://github.com/leandromoreira/redlock-rb#redlock-configuration

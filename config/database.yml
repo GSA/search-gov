@@ -10,8 +10,10 @@ default: &DEFAULT
   adapter: mysql2
   username: root
   encoding: utf8mb4
+  reconnect: <%= ENV['DB_RECONNECT'] %>
   collation: utf8mb4_unicode_ci
   host: <%= ENV['DB_HOST'] || '127.0.0.1' %>
+  pool: <%= ENV.fetch('RAILS_MAX_THREADS', 5) %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -27,7 +29,7 @@ development:
 production:
   <<: *DEFAULT
   database: <%= ENV['DB_NAME'] %>
-  username: <%= ENV['DB_USERNAME'] %>
+  username: <%= ENV['DB_USER'] %>
   password: <%= ENV['DB_PASSWORD'] %>
   host:     <%= ENV['DB_HOST'] %>
   port:     <%= ENV['DB_PORT'] %>

@@ -7,20 +7,20 @@ import { Facets } from '../components/Facets/Facets';
 describe('Facets component', () => {
   it('renders Facets component', () => {
     render(
-      <Facets />
+      <Facets aggregations={[]} facetsEnabled={true} />
     );
   });
 
   it('shows Filter search label', () => {
     render(
-      <Facets />
+      <Facets aggregations={[]} facetsEnabled={true} />
     );
     expect(screen.getByText('Filter search')).toBeInTheDocument();
   });
 
   it('shows aggegations', () => {
     render(
-      <Facets />
+      <Facets aggregations={[]} facetsEnabled={true} />
     );
     expect(screen.getByText('Audience')).toBeInTheDocument();
     expect(screen.getByText('Small business')).toBeInTheDocument();
@@ -40,7 +40,7 @@ describe('Facets component', () => {
 
   it('shows Clear and See Results button', () => {
     render(
-      <Facets />
+      <Facets aggregations={[]} facetsEnabled={true} />
     );
     expect(screen.getByText('Clear')).toBeInTheDocument();
     expect(screen.getByText('See Results')).toBeInTheDocument();

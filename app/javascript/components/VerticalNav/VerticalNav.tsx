@@ -11,22 +11,37 @@ import { StyleContext } from '../../contexts/StyleContext';
 import './VerticalNav.css';
 
 const StyledPrimaryNav = styled(PrimaryNav).attrs<{ styles: FontsAndColors }>((props) => ({ styles: props.styles }))`
-  li.usa-nav__primary-item:not(li.usa-nav__submenu-item) > a,
+  li.usa-nav__primary-item:not(li.usa-nav__submenu-item) > a{
+    color: ${(props) => props.styles.searchTabNavigationLinkColor};
+    font-family: ${(props) => props.styles.primaryNavigationFontFamily};
+  }
+
   .usa-nav__primary > .usa-nav__primary-item button[aria-expanded=false] {
-    color: ${(props) => props.styles.searchTabNavigationLinkColor} !important;
+    color: ${(props) => props.styles.searchTabNavigationLinkColor};
+  }
+
+  li.usa-nav__primary-item:not(li.usa-nav__submenu-item) > a::after{
+    background-color: ${(props) => props.styles.searchTabNavigationLinkColor} !important;
   }
 
   .usa-nav__primary > .usa-nav__primary-item .usa-nav__link:hover::after{
     background-color: ${(props) => props.styles.searchTabNavigationLinkColor} !important;
   }
 
-  .usa-current::after,
   .usa-nav__primary > .usa-nav__primary-item button[aria-expanded=true] {
     background-color: ${(props) => props.styles.searchTabNavigationLinkColor} !important;
   }
 
   .vertical-wrapper .usa-nav__submenu{
     background-color: ${(props) => props.styles.searchTabNavigationLinkColor} !important;
+  }
+
+  li.usa-nav__primary-item:not(li.usa-nav__submenu-item) > a.usa-current{
+    color: ${(props) => props.styles.activeSearchTabNavigationColor} !important;
+  }
+
+  li.usa-nav__primary-item:not(li.usa-nav__submenu-item) > a.usa-current::after{
+    background-color: ${(props) => props.styles.activeSearchTabNavigationColor} !important;
   }
 `;
 

@@ -1,6 +1,7 @@
 default: &DEFAULT
   namespace: oasis
-  url: <%= ENV['REDIS_HOST'] || 'redis://localhost:6379' %>
+  url: <%= ENV.fetch('REDIS_SYSTEM_URL') %>
+  :concurrency: <%= ENV.fetch('SIDEKIQ_CONCURRENCY', 4) %>
 
 development:
   <<: *DEFAULT
