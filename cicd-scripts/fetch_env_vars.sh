@@ -52,8 +52,8 @@ aws ssm get-parameter --name "LOGIN_DOT_GOV_PEM" --region us-east-2 --with-decry
 [ ! -d /home/search/searchgov/shared/log ] && mkdir -p /home/search/searchgov/shared/log
 
 # Create log files if they do not already exist
-[ ! -f /home/search/searchgov/shared/log/puma_access.log ] && touch /home/search/searchgov/shared/log/puma_access.log
-[ ! -f /home/search/searchgov/shared/log/puma_error.log ] && touch /home/search/searchgov/shared/log/puma_error.log
+[ ! -f /home/search/searchgov/shared/log/puma_access.log ]
+[ ! -f /home/search/searchgov/shared/log/puma_error.log ]
 
 
 # Set ownership and permissions
