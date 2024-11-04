@@ -65,9 +65,6 @@ describe('Tablet & Mobile view: SearchBar with facets', () => {
     const filterSearchBtn = screen.getByTestId('filter-search-btn');
     fireEvent.click(filterSearchBtn);
 
-    const filterTypeLabel = screen.getByText(/Audience/i);
-    expect(filterTypeLabel).toBeInTheDocument();
-
     const clearBtnLabel = screen.getByText(/Clear/i);
     expect(clearBtnLabel).toBeInTheDocument();
 

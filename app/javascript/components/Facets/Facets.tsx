@@ -7,7 +7,7 @@ import { Accordion, DateRangePicker, Tag, Checkbox } from '@trussworks/react-usw
 
 import { StyleContext } from '../../contexts/StyleContext';
 import { FontsAndColors  } from '../SearchResultsLayout';
-import { checkColorContrastAndUpdateStyle } from '../../utils';
+import { checkColorContrastAndUpdateStyle, convertObjectToString, viewResults } from '../../utils';
 import { FacetsLabel } from './FacetsLabel';
 
 import './Facets.css';
@@ -99,7 +99,7 @@ const dummyAggregationsData = [
   {
     'File Type': [
       {
-        agg_key: 'PDF',
+        agg_key: 'CSV',
         doc_count: 23
       },
       {
@@ -178,7 +178,7 @@ export const Facets = ({ aggregations, facetsEnabled }: FacetsProps) => {
       selectedIds[filterName] = selectedIds[filterName].filter((id: string) => id !== filterVal);
     }
     setSelectedIds(selectedIds);
-    console.log({selectedIds})
+    //console.log({selectedIds})
   };
 
   const getAccordionItemContent = (aggregation: any) => {
@@ -193,10 +193,10 @@ export const Facets = ({ aggregations, facetsEnabled }: FacetsProps) => {
                 <div className="usa-checkbox" key={index} >
                   <Checkbox 
                     id={index+filter.agg_key} 
+                    data-testid={index+filter.agg_key}
                     label={<>{filter.agg_key} <Tag>{filter.doc_count}</Tag></>}
                     name={Object.keys(aggregation)[0]} 
                     value={filter.agg_key}
-                    // checked={selectedIds.includes(filter.agg_key)}
                     defaultChecked={(() => {
                       const hasFilterLabel = Object.keys(aggregation)[0] in aggregationsSelected;
                       // console.log({hasFilterLabel, aggregationsSelected}, "keys: ", Object.keys(aggregation)[0]);
@@ -251,37 +251,43 @@ export const Facets = ({ aggregations, facetsEnabled }: FacetsProps) => {
     );
   };
 
-  const convertObjectToString = (obj: any) => {
-    // Initialize an array to hold the key-value pairs
-    const paramsArray = [];
+  // const convertObjectToString = (obj: any) => {
+  //   // Initialize an array to hold the key-value pairs
+  //   const paramsArray = [];
     
-    // Iterate over the keys of the object
-    for (const key in obj) {
-      // if (obj.hasOwnProperty(key)) {
-      if (Object.prototype.hasOwnProperty.call(obj, key)) {
-        // Join the values of each key with a comma
-        if (obj[key].length > 0) {
-          const values = obj[key].join(',');
-          // Construct the key-value pair string
-          const keyValueString = `${key}=${values}`;
-          // Push the key-value pair string to the array
-          paramsArray.push(keyValueString);
-        }
-      }
-    }
-    // Join all the key-value pairs with an ampersand
-    return paramsArray.join('&');
-  };
+  //   // Iterate over the keys of the object
+  //   for (const key in obj) {
+  //     // if (obj.hasOwnProperty(key)) {
+  //     if (Object.prototype.hasOwnProperty.call(obj, key)) {
+  //       // Join the values of each key with a comma
+  //       if (obj[key].length > 0) {
+  //         const values = obj[key].join(',');
+  //         // Construct the key-value pair string
+  //         const keyValueString = `${key}=${values}`;
+  //         // Push the key-value pair string to the array
+  //         paramsArray.push(keyValueString);
+  //       }
+  //     }
+  //   }
+  //   // Join all the key-value pairs with an ampersand
+  //   return paramsArray.join('&');
+  // };
 
-  const seeResults = () => {
-    const url = `${window.location.origin}${window.location.pathname}?${convertObjectToString({ ...nonAggregations, ...selectedIds })}`;
-    window.location.replace(url);
-  };
+  // const seeResults = () => {
+  //   const url = `${window.location.origin}${window.location.pathname}?${convertObjectToString({ ...nonAggregations, ...selectedIds })}`;
+  //   window.location.replace(url);
+  // };
 
-  const clearResults = () => {
-    const url = `${window.location.origin}${window.location.pathname}?${convertObjectToString(nonAggregations)}`;
-    window.location.replace(url);
-  };
+  // const clearResults = () => {
+  //   const url = `${window.location.origin}${window.location.pathname}?${convertObjectToString(nonAggregations)}`;
+  //   window.location.replace(url);
+  // };
+
+  // const viewResults = (query: string) => {
+  //   const url = `${window.location.origin}${window.location.pathname}?${query}`;
+  //   window.location.replace(url);
+  // };
+
     
   useEffect(() => {
     setSelectedIds(aggregationsSelected);
@@ -380,7 +386,8 @@ export const Facets = ({ aggregations, facetsEnabled }: FacetsProps) => {
             <button 
               className="usa-button usa-button--unstyled clear-results-button" 
               type="button" 
-              onClick={() => clearResults()}>
+              //onClick={() => viewResults(convertObjectToString(nonAggregations))}
+              >
               Clear
             </button>
           </li>
@@ -388,7 +395,8 @@ export const Facets = ({ aggregations, facetsEnabled }: FacetsProps) => {
             <button 
               type="button" 
               className="usa-button see-results-button" 
-              onClick={() => seeResults()}>
+              onClick={() => viewResults(convertObjectToString({ ...nonAggregations, ...selectedIds }))}
+              >
                 See Results
             </button>
           </li>

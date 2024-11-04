@@ -164,3 +164,30 @@ export const focusTrapOptions: any = {
     return Promise.all(results);
   }
 };
+
+export const convertObjectToString = (obj: any) => {
+  // Initialize an array to hold the key-value pairs
+  const paramsArray = [];
+  
+  // Iterate over the keys of the object
+  for (const key in obj) {
+    // if (obj.hasOwnProperty(key)) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      // Join the values of each key with a comma
+      if (obj[key].length > 0) {
+        const values = obj[key].join(',');
+        // Construct the key-value pair string
+        const keyValueString = `${key}=${values}`;
+        // Push the key-value pair string to the array
+        paramsArray.push(keyValueString);
+      }
+    }
+  }
+  // Join all the key-value pairs with an ampersand
+  return paramsArray.join('&');
+};
+
+export const viewResults = (query: string) => {
+  const url = `${window.location.origin}${window.location.pathname}?${query}`;
+  window.location.replace(url);
+};
