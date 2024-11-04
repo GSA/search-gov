@@ -7,7 +7,7 @@ import { Accordion, DateRangePicker, Tag, Checkbox } from '@trussworks/react-usw
 
 import { StyleContext } from '../../contexts/StyleContext';
 import { FontsAndColors  } from '../SearchResultsLayout';
-import { checkColorContrastAndUpdateStyle } from '../../utils';
+import { checkColorContrastAndUpdateStyle, getFacetsQueryParamString, loadQueryUrl } from '../../utils';
 import { FacetsLabel } from './FacetsLabel';
 
 import './Facets.css';
@@ -135,7 +135,6 @@ const getAggregationsFromProps = (inputArray: any) => {
 
   inputArray.forEach((item: any) => {
     for (const key in item) {
-      // if (item.hasOwnProperty(key)) {
       if (Object.prototype.hasOwnProperty.call(item, key)) {
         outputArray[key] = item[key].map((innerItem: any) => innerItem.agg_key);
       }
@@ -145,51 +144,21 @@ const getAggregationsFromProps = (inputArray: any) => {
   return outputArray;
 };
 
-const convertObjectToString = (obj: any) => {
-  // Initialize an array to hold the key-value pairs
-  const paramsArray = [];
-  
-  // Iterate over the keys of the object
-  for (const key in obj) {
-    // if (obj.hasOwnProperty(key)) {
-    if (Object.prototype.hasOwnProperty.call(obj, key)) {
-      // Join the values of each key with a comma
-      if (obj[key].length > 0) {
-        const values = obj[key].join(',');
-        // Construct the key-value pair string
-        const keyValueString = `${key}=${values}`;
-        // Push the key-value pair string to the array
-        paramsArray.push(keyValueString);
-      }
-    }
-  }
-  // Join all the key-value pairs with an ampersand
-  return paramsArray.join('&');
-};
-
-const viewResults = (query: string) => {
-  const url = `${window.location.origin}${window.location.pathname}?${query}`;
-  window.location.replace(url);
-};
-
 export const Facets = ({ aggregations, facetsEnabled }: FacetsProps) => {
   const styles = useContext(StyleContext);
   const [selectedIds, setSelectedIds] = useState<any>({});
 
   const aggregationsProps = getAggregationsFromProps(dummyAggregationsData);
-  // console.log({ aggregationsProps });
-
   const aggregationsSelected: any = [];
   const nonAggregations: any = {};
   const searchParams = new URLSearchParams(window.location.search);
+  
   for (const [filter, value] of searchParams) {
-    // console.log(st);
     if (filter in aggregationsProps)
       aggregationsSelected[filter] = value.split(',');
     else
       nonAggregations[filter] = value.split(',');
   }
-  // console.log({aggregationsSelected, nonAggregations});
   
   const handleCheckboxChange = (event:any) => {
     const filterVal  = event.target.value;
@@ -204,18 +173,16 @@ export const Facets = ({ aggregations, facetsEnabled }: FacetsProps) => {
     } else {
       selectedIds[filterName] = selectedIds[filterName].filter((id: string) => id !== filterVal);
     }
+
     setSelectedIds(selectedIds);
-    //console.log({selectedIds})
   };
 
   const getAccordionItemContent = (aggregation: any) => {
     return (
       <fieldset className="usa-fieldset">
         {Object.values(aggregation).map((filters: any) => {
-          // console.log({ filters });
           return (
             filters.map((filter: AggregationItem, index: number) => {
-              // console.log({ filter });
               return (
                 <div className="usa-checkbox" key={index} >
                   <Checkbox 
@@ -226,11 +193,9 @@ export const Facets = ({ aggregations, facetsEnabled }: FacetsProps) => {
                     value={filter.agg_key}
                     defaultChecked={(() => {
                       const hasFilterLabel = Object.keys(aggregation)[0] in aggregationsSelected;
-                      // console.log({hasFilterLabel, aggregationsSelected}, "keys: ", Object.keys(aggregation)[0]);
                       if (hasFilterLabel === false)
                         return false;
 
-                      // console.log("filter.agg_key", filter.agg_key, aggregationsSelected[Object.keys(aggregation)[0]])
                       const hasFilterValue = aggregationsSelected[Object.keys(aggregation)[0]].includes(filter.agg_key);
                       if (hasFilterValue === false)
                         return false;
@@ -251,9 +216,7 @@ export const Facets = ({ aggregations, facetsEnabled }: FacetsProps) => {
   };
 
   const getAccordionItems = (aggregationsData: any) => {
-    // console.log({ aggregationsData });
     return aggregationsData.map((aggregation: AggregationItem) => {
-      // console.log({ aggregation });
       return {
         title: Object.keys(aggregation)[0],
         expanded: true,
@@ -267,9 +230,6 @@ export const Facets = ({ aggregations, facetsEnabled }: FacetsProps) => {
   const getAggregations = (aggregations?: AggregationData[]) => {
     // To remove the dummy aggregations with integration once backend starts sending the data
     const aggregationsData = aggregations || dummyAggregationsData;
-
-    // console.log({aggregationsData});
-    
     return (
       <Accordion 
         bordered={false} 
@@ -278,44 +238,6 @@ export const Facets = ({ aggregations, facetsEnabled }: FacetsProps) => {
     );
   };
 
-  // const convertObjectToString = (obj: any) => {
-  //   // Initialize an array to hold the key-value pairs
-  //   const paramsArray = [];
-    
-  //   // Iterate over the keys of the object
-  //   for (const key in obj) {
-  //     // if (obj.hasOwnProperty(key)) {
-  //     if (Object.prototype.hasOwnProperty.call(obj, key)) {
-  //       // Join the values of each key with a comma
-  //       if (obj[key].length > 0) {
-  //         const values = obj[key].join(',');
-  //         // Construct the key-value pair string
-  //         const keyValueString = `${key}=${values}`;
-  //         // Push the key-value pair string to the array
-  //         paramsArray.push(keyValueString);
-  //       }
-  //     }
-  //   }
-  //   // Join all the key-value pairs with an ampersand
-  //   return paramsArray.join('&');
-  // };
-
-  // const seeResults = () => {
-  //   const url = `${window.location.origin}${window.location.pathname}?${convertObjectToString({ ...nonAggregations, ...selectedIds })}`;
-  //   window.location.replace(url);
-  // };
-
-  // const clearResults = () => {
-  //   const url = `${window.location.origin}${window.location.pathname}?${convertObjectToString(nonAggregations)}`;
-  //   window.location.replace(url);
-  // };
-
-  // const viewResults = (query: string) => {
-  //   const url = `${window.location.origin}${window.location.pathname}?${query}`;
-  //   window.location.replace(url);
-  // };
-
-    
   useEffect(() => {
     setSelectedIds(aggregationsSelected);
 
@@ -407,13 +329,14 @@ export const Facets = ({ aggregations, facetsEnabled }: FacetsProps) => {
 
         <Accordion bordered={false} items={dateRangeItems} />
       </div>
+      
       <div className="facets-action-btn-wrapper">
         <ul className="usa-button-group">
           <li className="usa-button-group__item clear-results-button-wrapper">
             <button 
               className="usa-button usa-button--unstyled clear-results-button" 
               type="button" 
-              //onClick={() => viewResults(convertObjectToString(nonAggregations))}
+              onClick={() => loadQueryUrl(getFacetsQueryParamString(nonAggregations))}
               >
               Clear
             </button>
@@ -422,7 +345,7 @@ export const Facets = ({ aggregations, facetsEnabled }: FacetsProps) => {
             <button 
               type="button" 
               className="usa-button see-results-button" 
-              onClick={() => viewResults(convertObjectToString({ ...nonAggregations, ...selectedIds }))}
+              onClick={() => loadQueryUrl(getFacetsQueryParamString({ ...nonAggregations, ...selectedIds }))}
               >
                 See Results
             </button>
