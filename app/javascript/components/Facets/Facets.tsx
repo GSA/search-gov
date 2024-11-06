@@ -148,7 +148,7 @@ export const Facets = ({ aggregations }: FacetsProps) => {
   const [selectedIds, setSelectedIds] = useState<any>({});
 
   const aggregationsProps = getAggregationsFromProps(dummyAggregationsData);
-  const { aggregationsSelected, nonAggregations } = getSelectedAggregationsFromUrlParams(aggregationsProps)
+  const { aggregationsSelected, nonAggregations } = getSelectedAggregationsFromUrlParams(aggregationsProps);
   
   const handleCheckboxChange = (event:any) => {
     const filterVal  = event.target.value;
@@ -329,7 +329,7 @@ export const Facets = ({ aggregations }: FacetsProps) => {
               type="button" 
               // onClick={() => loadQueryUrl(getFacetsQueryParamString(nonAggregations))}
               >
-              Clear
+                Clear
             </button>
           </li>
           <li className="usa-button-group__item">
@@ -337,8 +337,8 @@ export const Facets = ({ aggregations }: FacetsProps) => {
               type="button" 
               className="usa-button see-results-button" 
               onClick={() => loadQueryUrl(getFacetsQueryParamString({ ...nonAggregations, ...selectedIds }))}
-              >
-                See Results
+            >
+              See Results
             </button>
           </li>
         </ul>

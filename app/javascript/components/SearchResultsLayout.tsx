@@ -289,6 +289,7 @@ const isBasicHeader = (extendedHeader: boolean): boolean => {
 
 const videosUrl = (links: NavigationLink[]) => links.find((link) => link.facet === 'YouTube')?.url ;
 
+// eslint-disable-next-line complexity
 const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, params = {}, translations, language = { code: 'en', rtl: false }, relatedSites = [], extendedHeader, footerLinks, primaryHeaderLinks, secondaryHeaderLinks, fontsAndColors, newsLabel, identifierContent, identifierLinks, navigationLinks, relatedSitesDropdownLabel = '', alert, spellingSuggestion, relatedSearches, sitelimit, noResultsMessage, jobsEnabled, agencyName }: SearchResultsLayoutProps) => {
   const [isMobileView, setMobileView] = useState(false);
 
@@ -324,9 +325,7 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
             <Grid row>
               {facetsEnabled && 
               <Grid tablet={{ col: 3 }} className='serp-facets-container'>
-                {!isMobileView && <Facets 
-                  //facetsEnabled={facetsEnabled} 
-                />}
+                {!isMobileView && <Facets/>}
               </Grid>}
          
               <Grid tablet={{ col: facetsEnabled ? 9 : 12 }} className='serp-main-container'>

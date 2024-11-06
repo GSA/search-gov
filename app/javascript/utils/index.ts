@@ -199,7 +199,7 @@ export const getSelectedAggregationsFromUrlParams = (aggregationsProps: any) => 
   }
 
   return { aggregationsSelected, nonAggregations };
-}
+};
 
 export const testFunc = (filter:any, aggregation: any, aggregationsSelected: any) => {
   const hasFilterLabel = Object.keys(aggregation)[0] in aggregationsSelected;
@@ -211,4 +211,4 @@ export const testFunc = (filter:any, aggregation: any, aggregationsSelected: any
     return false;
 
   return true;
-}
+};
