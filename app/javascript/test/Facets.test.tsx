@@ -7,20 +7,20 @@ import { Facets } from '../components/Facets/Facets';
 describe('Facets component', () => {
   it('renders Facets component', () => {
     render(
-      <Facets facetsEnabled={true} />
+      <Facets />
     );
   });
 
   it('shows Filter search label', () => {
     render(
-      <Facets facetsEnabled={true} />
+      <Facets />
     );
     expect(screen.getByText('Filter search')).toBeInTheDocument();
   });
 
   it('shows aggegations', () => {
     render(
-      <Facets facetsEnabled={true} />
+      <Facets />
     );
     expect(screen.getByText('Audience')).toBeInTheDocument();
     expect(screen.getByText('Small business')).toBeInTheDocument();
@@ -37,19 +37,35 @@ describe('Facets component', () => {
     expect(screen.getByText('Date Range')).toBeInTheDocument();
     expect(screen.getByText('Last year')).toBeInTheDocument();
     
-    const checkboxElement = screen.getByRole('checkbox', { name: /small business/i });
-    expect(checkboxElement).not.toBeChecked();
+    const checkbox1 = screen.getByRole('checkbox', { name: /small business/i });
+    expect(checkbox1).not.toBeChecked();
 
-    fireEvent.click(checkboxElement);
-    expect(checkboxElement).toBeChecked();
+    fireEvent.click(checkbox1);
+    expect(checkbox1).toBeChecked();
     
-    fireEvent.click(checkboxElement);
-    expect(checkboxElement).not.toBeChecked();
+    fireEvent.click(checkbox1);
+    expect(checkbox1).not.toBeChecked();
+
+
+    const checkbox2 = screen.getByRole('checkbox', { name: /real estate/i });
+    const checkbox3 = screen.getByRole('checkbox', { name: /technologists/i });
+
+    // Initially, selectedIds should be empty
+    expect(checkbox2).not.toBeChecked();
+    expect(checkbox3).not.toBeChecked();
+
+    // Simulate checking the first checkbox
+    fireEvent.click(checkbox2);
+    expect(checkbox2).toBeChecked();
+
+    // After selecting checkbox1, selectedIds should contain "1" under "category"
+    fireEvent.click(checkbox2);
+    expect(checkbox2).not.toBeChecked();
   });
 
   it('shows Clear and See Results button', () => {
     render(
-      <Facets facetsEnabled={true} />
+      <Facets />
     );
     expect(screen.getByText('Clear')).toBeInTheDocument();
     expect(screen.getByText('See Results')).toBeInTheDocument();

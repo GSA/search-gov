@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Grid, GridContainer } from '@trussworks/react-uswds';
 import { createGlobalStyle } from 'styled-components';
 import { darken } from 'polished';
@@ -290,6 +290,8 @@ const isBasicHeader = (extendedHeader: boolean): boolean => {
 const videosUrl = (links: NavigationLink[]) => links.find((link) => link.facet === 'YouTube')?.url ;
 
 const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, params = {}, translations, language = { code: 'en', rtl: false }, relatedSites = [], extendedHeader, footerLinks, primaryHeaderLinks, secondaryHeaderLinks, fontsAndColors, newsLabel, identifierContent, identifierLinks, navigationLinks, relatedSitesDropdownLabel = '', alert, spellingSuggestion, relatedSearches, sitelimit, noResultsMessage, jobsEnabled, agencyName }: SearchResultsLayoutProps) => {
+  const [isMobileView, setMobileView] = useState(false);
+
   const i18n = new I18n(translations);
   i18n.defaultLocale = 'en';
   i18n.enableFallback = true;
@@ -297,6 +299,12 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
 
   // facetsEnabled to come from SearchResultsLayout props from backend
   const facetsEnabled = false;
+
+  useEffect(() => {
+    if (window.innerWidth < 640) {
+      setMobileView(true);
+    }
+  }, []);
   
   return (
     <LanguageContext.Provider value={i18n}>
@@ -316,11 +324,13 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
             <Grid row>
               {facetsEnabled && 
               <Grid tablet={{ col: 3 }} className='serp-facets-container'>
-                <Facets facetsEnabled={facetsEnabled} />
+                {!isMobileView && <Facets 
+                  //facetsEnabled={facetsEnabled} 
+                />}
               </Grid>}
          
               <Grid tablet={{ col: facetsEnabled ? 9 : 12 }} className='serp-main-container'>
-                <SearchBar query={params.query} relatedSites={relatedSites} navigationLinks={navigationLinks} relatedSitesDropdownLabel={relatedSitesDropdownLabel} alert={alert} facetsEnabled={facetsEnabled} />
+                <SearchBar query={params.query} relatedSites={relatedSites} navigationLinks={navigationLinks} relatedSitesDropdownLabel={relatedSitesDropdownLabel} alert={alert} facetsEnabled={facetsEnabled} mobileView={isMobileView} />
 
                 {/* This ternary is needed to handle the case when Bing pagination leads to a page with no results */}
                 {resultsData ? (

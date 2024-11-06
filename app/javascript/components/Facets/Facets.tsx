@@ -7,14 +7,13 @@ import { Accordion, DateRangePicker, Tag, Checkbox } from '@trussworks/react-usw
 
 import { StyleContext } from '../../contexts/StyleContext';
 import { FontsAndColors  } from '../SearchResultsLayout';
-import { checkColorContrastAndUpdateStyle, getFacetsQueryParamString, loadQueryUrl } from '../../utils';
+import { checkColorContrastAndUpdateStyle, getFacetsQueryParamString, loadQueryUrl, getSelectedAggregationsFromUrlParams, testFunc } from '../../utils';
 import { FacetsLabel } from './FacetsLabel';
 
 import './Facets.css';
 
 interface FacetsProps {
   aggregations?: AggregationData[];
-  facetsEnabled?: boolean;
 }
 
 interface AggregationItem {
@@ -144,21 +143,12 @@ const getAggregationsFromProps = (inputArray: any) => {
   return outputArray;
 };
 
-export const Facets = ({ aggregations, facetsEnabled }: FacetsProps) => {
+export const Facets = ({ aggregations }: FacetsProps) => {
   const styles = useContext(StyleContext);
   const [selectedIds, setSelectedIds] = useState<any>({});
 
   const aggregationsProps = getAggregationsFromProps(dummyAggregationsData);
-  const aggregationsSelected: any = [];
-  const nonAggregations: any = {};
-  const searchParams = new URLSearchParams(window.location.search);
-  
-  for (const [filter, value] of searchParams) {
-    if (filter in aggregationsProps)
-      aggregationsSelected[filter] = value.split(',');
-    else
-      nonAggregations[filter] = value.split(',');
-  }
+  const { aggregationsSelected, nonAggregations } = getSelectedAggregationsFromUrlParams(aggregationsProps)
   
   const handleCheckboxChange = (event:any) => {
     const filterVal  = event.target.value;
@@ -191,17 +181,18 @@ export const Facets = ({ aggregations, facetsEnabled }: FacetsProps) => {
                     label={<>{filter.agg_key} <Tag>{filter.doc_count}</Tag></>}
                     name={Object.keys(aggregation)[0]} 
                     value={filter.agg_key}
-                    defaultChecked={(() => {
-                      const hasFilterLabel = Object.keys(aggregation)[0] in aggregationsSelected;
-                      if (hasFilterLabel === false)
-                        return false;
+                    // defaultChecked={(() => {
+                    //   const hasFilterLabel = Object.keys(aggregation)[0] in aggregationsSelected;
+                    //   if (hasFilterLabel === false)
+                    //     return false;
 
-                      const hasFilterValue = aggregationsSelected[Object.keys(aggregation)[0]].includes(filter.agg_key);
-                      if (hasFilterValue === false)
-                        return false;
+                    //   const hasFilterValue = aggregationsSelected[Object.keys(aggregation)[0]].includes(filter.agg_key);
+                    //   if (hasFilterValue === false)
+                    //     return false;
 
-                      return true;
-                    })()}
+                    //   return true;
+                    // })()} 
+                    defaultChecked={testFunc(filter, aggregation, aggregationsSelected)}
                     onChange={
                       (event) => handleCheckboxChange(event)
                     }
@@ -325,18 +316,18 @@ export const Facets = ({ aggregations, facetsEnabled }: FacetsProps) => {
       <div className="serp-facets-wrapper">
         <FacetsLabel />
 
-        {facetsEnabled && getAggregations(aggregations)}
+        {getAggregations(aggregations)}
 
         <Accordion bordered={false} items={dateRangeItems} />
       </div>
-      
+
       <div className="facets-action-btn-wrapper">
         <ul className="usa-button-group">
           <li className="usa-button-group__item clear-results-button-wrapper">
             <button 
               className="usa-button usa-button--unstyled clear-results-button" 
               type="button" 
-              onClick={() => loadQueryUrl(getFacetsQueryParamString(nonAggregations))}
+              // onClick={() => loadQueryUrl(getFacetsQueryParamString(nonAggregations))}
               >
               Clear
             </button>

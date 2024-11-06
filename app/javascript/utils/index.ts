@@ -184,3 +184,31 @@ export const loadQueryUrl = (query: string) => {
   const url = `${window.location.origin}${window.location.pathname}?${query}`;
   window.location.replace(url);
 };
+
+export const getSelectedAggregationsFromUrlParams = (aggregationsProps: any) => {
+  const aggregationsSelected: any = [];
+  const nonAggregations: any = {};
+  
+  const searchParams = new URLSearchParams(window.location.search);
+
+  for (const [filter, value] of searchParams) {
+    if (filter in aggregationsProps)
+      aggregationsSelected[filter] = value.split(',');
+    else
+      nonAggregations[filter] = value.split(',');
+  }
+
+  return { aggregationsSelected, nonAggregations };
+}
+
+export const testFunc = (filter:any, aggregation: any, aggregationsSelected: any) => {
+  const hasFilterLabel = Object.keys(aggregation)[0] in aggregationsSelected;
+  if (hasFilterLabel === false)
+    return false;
+
+  const hasFilterValue = aggregationsSelected[Object.keys(aggregation)[0]].includes(filter.agg_key);
+  if (hasFilterValue === false)
+    return false;
+
+  return true;
+}

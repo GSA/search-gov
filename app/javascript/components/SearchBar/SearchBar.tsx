@@ -45,13 +45,14 @@ interface SearchBarProps {
     text: string;
   }
   facetsEnabled?: boolean
+  mobileView?: boolean
 }
 
-export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [], relatedSitesDropdownLabel = '', alert, facetsEnabled }: SearchBarProps) => {
+export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [], relatedSitesDropdownLabel = '', alert, facetsEnabled, mobileView }: SearchBarProps) => {
   const [isPaneOpen, setIsPaneOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState(query);
 
-  const [isMobileView, setMobileView] = useState(false);
+  // const [isMobileView, setMobileView] = useState(false);
 
   const searchUrlParam = 'query';
 
@@ -68,9 +69,9 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [],
   };
 
   useEffect(() => {
-    if (window.innerWidth < 640) {
-      setMobileView(true);
-    }
+    // if (window.innerWidth < 640) {
+    //   setMobileView(true);
+    // }
 
     checkColorContrastAndUpdateStyle({
       backgroundItemClass: '.usa-search .usa-button',
@@ -132,7 +133,7 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [],
             onRequestClose={() => {
               setIsPaneOpen(false);
             }}
-            width={isMobileView ? '80' : '50'}
+            width={mobileView ? '80' : '50'}
           >
             <Facets />
           </SlidingPane>
