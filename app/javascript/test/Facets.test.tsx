@@ -46,7 +46,6 @@ describe('Facets component', () => {
     fireEvent.click(checkbox1);
     expect(checkbox1).not.toBeChecked();
 
-
     const checkbox2 = screen.getByRole('checkbox', { name: /real estate/i });
     const checkbox3 = screen.getByRole('checkbox', { name: /technologists/i });
 
@@ -54,11 +53,9 @@ describe('Facets component', () => {
     expect(checkbox2).not.toBeChecked();
     expect(checkbox3).not.toBeChecked();
 
-    // Simulate checking the first checkbox
     fireEvent.click(checkbox2);
     expect(checkbox2).toBeChecked();
 
-    // After selecting checkbox1, selectedIds should contain "1" under "category"
     fireEvent.click(checkbox2);
     expect(checkbox2).not.toBeChecked();
   });
