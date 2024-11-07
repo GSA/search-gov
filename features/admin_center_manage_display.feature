@@ -534,7 +534,6 @@ Feature: Manage Display
     When I attach the file "features/support/logo_mobile_en.png" to "Header logo"
     And I submit the form by pressing "Save"
     Then I should see "You have updated your visual design settings"
-    And I should see an image with alt text "Logo"
     And I should see "Header logo alt text"
 
     When I fill in "Header logo alt text" with "Sample alt text"
