@@ -35,6 +35,19 @@ export interface Language {
   rtl: boolean;
 }
 
+interface FacetsProps {
+  aggregations?: AggregationData[];
+}
+
+interface AggregationItem {
+  agg_key: string;
+  doc_count: number;
+}
+
+type AggregationData = {
+  [key in string]: AggregationItem[];
+}
+
 export interface FontsAndColors {
   activeSearchTabNavigationColor: string;
   bannerBackgroundColor: string;
@@ -87,7 +100,7 @@ interface SearchResultsLayoutProps {
       blendedModule?: string;
       tags?: string[]
     }[] | null;
-    aggregations?: any
+    aggregations?: FacetsProps
   } | null;
   additionalResults?: {
     recommendedBy: string;
@@ -299,7 +312,7 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
   i18n.locale = language.code;
 
   // facetsEnabled to come from SearchResultsLayout props from backend
-  const facetsEnabled = true;
+  const facetsEnabled = false;
 
   useEffect(() => {
     // checking/setting the mobile view for handling mobile facets UI
