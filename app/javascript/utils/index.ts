@@ -186,6 +186,8 @@ export const loadQueryUrl = (query: string) => {
 };
 
 export const getSelectedAggregationsFromUrlParams = (aggregationsProps: any) => {
+  console.log({aggregationsProps});
+
   const aggregationsSelected: any = [];
   const nonAggregations: any = {};
   
@@ -201,7 +203,7 @@ export const getSelectedAggregationsFromUrlParams = (aggregationsProps: any) => 
   return { aggregationsSelected, nonAggregations };
 };
 
-export const testFunc = (filter:any, aggregation: any, aggregationsSelected: any) => {
+export const getDefaultCheckedFacet = (filter:any, aggregation: any, aggregationsSelected: any) => {
   const hasFilterLabel = Object.keys(aggregation)[0] in aggregationsSelected;
   if (hasFilterLabel === false)
     return false;

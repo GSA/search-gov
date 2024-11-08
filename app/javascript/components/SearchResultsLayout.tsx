@@ -302,6 +302,7 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
   const facetsEnabled = false;
 
   useEffect(() => {
+    // checking/setting the mobile view for handling mobile facets UI
     if (window.innerWidth < 640) {
       setMobileView(true);
     }
@@ -325,7 +326,7 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
             <Grid row>
               {facetsEnabled && 
               <Grid tablet={{ col: 3 }} className='serp-facets-container'>
-                {!isMobileView && <Facets/>}
+                {!isMobileView && <Facets />}
               </Grid>}
          
               <Grid tablet={{ col: facetsEnabled ? 9 : 12 }} className='serp-main-container'>

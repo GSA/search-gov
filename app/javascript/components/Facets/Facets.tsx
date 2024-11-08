@@ -7,7 +7,7 @@ import { Accordion, DateRangePicker, Tag, Checkbox } from '@trussworks/react-usw
 
 import { StyleContext } from '../../contexts/StyleContext';
 import { FontsAndColors  } from '../SearchResultsLayout';
-import { checkColorContrastAndUpdateStyle, getFacetsQueryParamString, loadQueryUrl, getSelectedAggregationsFromUrlParams, testFunc } from '../../utils';
+import { checkColorContrastAndUpdateStyle, getFacetsQueryParamString, loadQueryUrl, getSelectedAggregationsFromUrlParams, getDefaultCheckedFacet } from '../../utils';
 import { FacetsLabel } from './FacetsLabel';
 
 import './Facets.css';
@@ -54,7 +54,7 @@ const StyledWrapper = styled.div.attrs<{ styles: FontsAndColors; }>((props) => (
 
 type HeadingLevel = 'h4'; 
 
-const dummyAggregationsData = [
+const dummyAggregationsData: AggregationData[] = [
   {
     'Audience': [
       {
@@ -129,7 +129,7 @@ const dummyAggregationsData = [
   }
 ];
 
-const getAggregationsFromProps = (inputArray: any) => {
+const getAggregationsFromProps = (inputArray: AggregationData[]) => {
   const outputArray: any = {};
 
   inputArray.forEach((item: any) => {
@@ -192,7 +192,7 @@ export const Facets = ({ aggregations }: FacetsProps) => {
 
                     //   return true;
                     // })()} 
-                    defaultChecked={testFunc(filter, aggregation, aggregationsSelected)}
+                    defaultChecked={getDefaultCheckedFacet(filter, aggregation, aggregationsSelected)}
                     onChange={
                       (event) => handleCheckboxChange(event)
                     }
