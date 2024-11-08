@@ -136,10 +136,10 @@ const getAggregationsFromProps = (inputArray: AggregationData[]) => {
 
   const outputArray: outputArrayType = {};
 
-  inputArray.forEach((item: any) => {
+  inputArray.forEach((item: AggregationData) => {
     for (const key in item) {
       if (Object.prototype.hasOwnProperty.call(item, key)) {
-        outputArray[key] = item[key].map((innerItem: any) => innerItem.agg_key);
+        outputArray[key] = item[key].map((innerItem: AggregationItem) => innerItem.agg_key);
       }
     }
   });
@@ -151,12 +151,12 @@ const getAggregationsFromProps = (inputArray: AggregationData[]) => {
 
 export const Facets = ({ aggregations }: FacetsProps) => {
   const styles = useContext(StyleContext);
-  const [selectedIds, setSelectedIds] = useState<any>({});
+  const [selectedIds, setSelectedIds] = useState<Record<string, string[]>>({});
 
   const aggregationsProps = getAggregationsFromProps(dummyAggregationsData);
   const { aggregationsSelected, nonAggregations } = getSelectedAggregationsFromUrlParams(aggregationsProps);
   
-  const handleCheckboxChange = (event:any) => {
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const filterVal  = event.target.value;
     const filterName = event.target.name;
 
@@ -173,10 +173,10 @@ export const Facets = ({ aggregations }: FacetsProps) => {
     setSelectedIds(selectedIds);
   };
 
-  const getAccordionItemContent = (aggregation: any) => {
+  const getAccordionItemContent = (aggregation: Record<string, AggregationItem[]>) => {
     return (
       <fieldset className="usa-fieldset">
-        {Object.values(aggregation).map((filters: any) => {
+        {Object.values(aggregation).map((filters: AggregationItem[]) => {
           return (
             filters.map((filter: AggregationItem, index: number) => {
               return (
@@ -212,8 +212,8 @@ export const Facets = ({ aggregations }: FacetsProps) => {
     );
   };
 
-  const getAccordionItems = (aggregationsData: any) => {
-    return aggregationsData.map((aggregation: AggregationItem) => {
+  const getAccordionItems = (aggregationsData: AggregationData[]) => {
+    return aggregationsData.map((aggregation: AggregationData) => {
       return {
         title: Object.keys(aggregation)[0],
         expanded: true,
