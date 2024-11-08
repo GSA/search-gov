@@ -186,7 +186,7 @@ export const loadQueryUrl = (query: string) => {
 };
 
 export const getSelectedAggregationsFromUrlParams = (aggregationsProps: any) => {
-  console.log({aggregationsProps});
+  console.log({ aggregationsProps });
 
   const aggregationsSelected: any = [];
   const nonAggregations: any = {};

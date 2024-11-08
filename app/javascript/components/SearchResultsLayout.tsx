@@ -299,7 +299,7 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
   i18n.locale = language.code;
 
   // facetsEnabled to come from SearchResultsLayout props from backend
-  const facetsEnabled = false;
+  const facetsEnabled = true;
 
   useEffect(() => {
     // checking/setting the mobile view for handling mobile facets UI

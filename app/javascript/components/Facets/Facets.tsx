@@ -130,7 +130,11 @@ const dummyAggregationsData: AggregationData[] = [
 ];
 
 const getAggregationsFromProps = (inputArray: AggregationData[]) => {
-  const outputArray: any = {};
+  type outputArrayType = {
+    [key: string]: string[];
+  };
+
+  const outputArray: outputArrayType = {};
 
   inputArray.forEach((item: any) => {
     for (const key in item) {
@@ -139,6 +143,8 @@ const getAggregationsFromProps = (inputArray: AggregationData[]) => {
       }
     }
   });
+
+  console.log({ outputArray });
 
   return outputArray;
 };
