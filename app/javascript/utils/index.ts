@@ -167,7 +167,6 @@ export const focusTrapOptions: any = {
 
 export const getFacetsQueryParamString = (obj: any) => {
   const paramsArray = [];
-  
   for (const key in obj) {
     if (Object.prototype.hasOwnProperty.call(obj, key)) {
       if (obj[key].length > 0) {
@@ -186,11 +185,8 @@ export const loadQueryUrl = (query: string) => {
 };
 
 export const getSelectedAggregationsFromUrlParams = (aggregationsProps: any) => {
-  console.log({ aggregationsProps });
-
   const aggregationsSelected: any = [];
   const nonAggregations: any = {};
-  
   const searchParams = new URLSearchParams(window.location.search);
 
   for (const [filter, value] of searchParams) {

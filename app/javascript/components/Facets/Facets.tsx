@@ -130,23 +130,21 @@ const dummyAggregationsData: AggregationData[] = [
 ];
 
 const getAggregationsFromProps = (inputArray: AggregationData[]) => {
-  type outputArrayType = {
+  type aggregationsFromPropsType = {
     [key: string]: string[];
   };
 
-  const outputArray: outputArrayType = {};
+  const aggregationsFromProps: aggregationsFromPropsType = {};
 
   inputArray.forEach((item: AggregationData) => {
     for (const key in item) {
       if (Object.prototype.hasOwnProperty.call(item, key)) {
-        outputArray[key] = item[key].map((innerItem: AggregationItem) => innerItem.agg_key);
+        aggregationsFromProps[key] = item[key].map((innerItem: AggregationItem) => innerItem.agg_key);
       }
     }
   });
 
-  console.log({ outputArray });
-
-  return outputArray;
+  return aggregationsFromProps;
 };
 
 export const Facets = ({ aggregations }: FacetsProps) => {
@@ -187,17 +185,6 @@ export const Facets = ({ aggregations }: FacetsProps) => {
                     label={<>{filter.agg_key} <Tag>{filter.doc_count}</Tag></>}
                     name={Object.keys(aggregation)[0]} 
                     value={filter.agg_key}
-                    // defaultChecked={(() => {
-                    //   const hasFilterLabel = Object.keys(aggregation)[0] in aggregationsSelected;
-                    //   if (hasFilterLabel === false)
-                    //     return false;
-
-                    //   const hasFilterValue = aggregationsSelected[Object.keys(aggregation)[0]].includes(filter.agg_key);
-                    //   if (hasFilterValue === false)
-                    //     return false;
-
-                    //   return true;
-                    // })()} 
                     defaultChecked={getDefaultCheckedFacet(filter, aggregation, aggregationsSelected)}
                     onChange={
                       (event) => handleCheckboxChange(event)
@@ -332,8 +319,7 @@ export const Facets = ({ aggregations }: FacetsProps) => {
           <li className="usa-button-group__item clear-results-button-wrapper">
             <button 
               className="usa-button usa-button--unstyled clear-results-button" 
-              type="button" 
-              // onClick={() => loadQueryUrl(getFacetsQueryParamString(nonAggregations))}
+              type="button"
             >
               Clear
             </button>

@@ -37,10 +37,6 @@ describe('SearchBar with no facets', () => {
 });
 
 describe('Tablet & Mobile view: SearchBar with facets', () => {
-  // beforeAll(() => {
-  //   window.innerWidth = 400;
-  // });
-
   it('Filter search label and filter button is present', () => {
     render(
       <LanguageContext.Provider value={i18n} >

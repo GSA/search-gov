@@ -69,10 +69,6 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [],
   };
 
   useEffect(() => {
-    // if (window.innerWidth < 640) {
-    //   setMobileView(true);
-    // }
-
     checkColorContrastAndUpdateStyle({
       backgroundItemClass: '.usa-search .usa-button',
       foregroundItemClass: '.usa-search .usa-button .search-icon-glass'
