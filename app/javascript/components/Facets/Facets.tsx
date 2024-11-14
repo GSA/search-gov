@@ -1,14 +1,29 @@
-import React, { useContext, useEffect } from 'react';
+/* eslint-disable camelcase */
+/* eslint-disable quote-props */
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { darken } from 'polished';
-import { Accordion, DateRangePicker, Tag } from '@trussworks/react-uswds';
+import { Accordion, DateRangePicker, Tag, Checkbox } from '@trussworks/react-uswds';
 
 import { StyleContext } from '../../contexts/StyleContext';
 import { FontsAndColors  } from '../SearchResultsLayout';
-import { checkColorContrastAndUpdateStyle } from '../../utils';
+import { checkColorContrastAndUpdateStyle, getFacetsQueryParamString, loadQueryUrl, getSelectedAggregationsFromUrlParams, getDefaultCheckedFacet } from '../../utils';
 import { FacetsLabel } from './FacetsLabel';
 
 import './Facets.css';
+
+interface FacetsProps {
+  aggregations?: AggregationData[];
+}
+
+interface AggregationItem {
+  agg_key: string;
+  doc_count: number;
+}
+
+type AggregationData = {
+  [key in string]: AggregationItem[];
+}
 
 const StyledWrapper = styled.div.attrs<{ styles: FontsAndColors; }>((props) => ({
   styles: props.styles
@@ -39,10 +54,177 @@ const StyledWrapper = styled.div.attrs<{ styles: FontsAndColors; }>((props) => (
 
 type HeadingLevel = 'h4'; 
 
-export const Facets = () => {
+const dummyAggregationsData: AggregationData[] = [
+  {
+    'Audience': [
+      {
+        agg_key: 'Small business',
+        doc_count: 1024
+      },
+      {
+        agg_key: 'Real estate',
+        doc_count: 1234
+      },
+      {
+        agg_key: 'Technologists',
+        doc_count: 1764
+      },
+      {
+        agg_key: 'Factories',
+        doc_count: 1298
+      }
+    ]
+  },
+  {
+    'Content Type': [
+      {
+        agg_key: 'Press release',
+        doc_count: 2876
+      },
+      {
+        agg_key: 'Blogs',
+        doc_count: 1923
+      },
+      {
+        agg_key: 'Policies',
+        doc_count: 1244
+      },
+      {
+        agg_key: 'Directives',
+        doc_count: 876
+      }
+    ]
+  },
+  {
+    'File Type': [
+      {
+        agg_key: 'CSV',
+        doc_count: 23
+      },
+      {
+        agg_key: 'Excel',
+        doc_count: 76
+      },
+      {
+        agg_key: 'Word',
+        doc_count: 11
+      },
+      {
+        agg_key: 'Text',
+        doc_count: 12
+      }
+    ]
+  },
+  {
+    'Tags': [
+      {
+        agg_key: 'Contracts',
+        doc_count: 703
+      },
+      {
+        agg_key: 'BPA',
+        doc_count: 22
+      }
+    ]
+  }
+];
+
+const getAggregationsFromProps = (inputArray: AggregationData[]) => {
+  type aggregationsFromPropsType = {
+    [key: string]: string[];
+  };
+
+  const aggregationsFromProps: aggregationsFromPropsType = {};
+
+  inputArray.forEach((item: AggregationData) => {
+    for (const key in item) {
+      if (Object.prototype.hasOwnProperty.call(item, key)) {
+        aggregationsFromProps[key] = item[key].map((innerItem: AggregationItem) => innerItem.agg_key);
+      }
+    }
+  });
+
+  return aggregationsFromProps;
+};
+
+export const Facets = ({ aggregations }: FacetsProps) => {
   const styles = useContext(StyleContext);
+  const [selectedIds, setSelectedIds] = useState<Record<string, string[]>>({});
+
+  const aggregationsProps = getAggregationsFromProps(dummyAggregationsData);
+  const { aggregationsSelected, nonAggregations } = getSelectedAggregationsFromUrlParams(aggregationsProps);
+  
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const filterVal  = event.target.value;
+    const filterName = event.target.name;
+
+    if (event.target.checked) {
+      if (selectedIds[filterName]!==undefined) {
+        selectedIds[filterName].push(filterVal);
+      } else {
+        selectedIds[filterName] = [filterVal];
+      }
+    } else {
+      selectedIds[filterName] = selectedIds[filterName].filter((id: string) => id !== filterVal);
+    }
+
+    setSelectedIds(selectedIds);
+  };
+
+  const getAccordionItemContent = (aggregation: Record<string, AggregationItem[]>) => {
+    return (
+      <fieldset className="usa-fieldset">
+        {Object.values(aggregation).map((filters: AggregationItem[]) => {
+          return (
+            filters.map((filter: AggregationItem, index: number) => {
+              return (
+                <div className="usa-checkbox" key={index} >
+                  <Checkbox 
+                    id={index+filter.agg_key} 
+                    data-testid={index+filter.agg_key}
+                    label={<>{filter.agg_key} <Tag>{filter.doc_count}</Tag></>}
+                    name={Object.keys(aggregation)[0]} 
+                    value={filter.agg_key}
+                    defaultChecked={getDefaultCheckedFacet(filter, aggregation, aggregationsSelected)}
+                    onChange={
+                      (event) => handleCheckboxChange(event)
+                    }
+                  />
+                </div>
+              );
+            })
+          );
+        })}
+      </fieldset>
+    );
+  };
+
+  const getAccordionItems = (aggregationsData: AggregationData[]) => {
+    return aggregationsData.map((aggregation: AggregationData) => {
+      return {
+        title: Object.keys(aggregation)[0],
+        expanded: true,
+        id: Object.keys(aggregation)[0].replace(/\s+/g, ''),
+        headingLevel: 'h4' as HeadingLevel,
+        content: getAccordionItemContent(aggregation)
+      };
+    });
+  };
+
+  const getAggregations = (aggregations?: AggregationData[]) => {
+    // To remove the dummy aggregations with integration once backend starts sending the data
+    const aggregationsData = aggregations || dummyAggregationsData;
+    return (
+      <Accordion 
+        bordered={false} 
+        items={getAccordionItems(aggregationsData)} 
+      />
+    );
+  };
 
   useEffect(() => {
+    setSelectedIds(aggregationsSelected);
+
     checkColorContrastAndUpdateStyle({
       backgroundItemClass: '.serp-result-wrapper',
       foregroundItemClass: '.clear-results-button',
@@ -55,188 +237,6 @@ export const Facets = () => {
       isForegroundItemBtn: true
     });
   }, []);
-
-  const audienceItems = [
-    {
-      title: 'Audience',
-      content: (
-        <fieldset className="usa-fieldset">
-          <div className="usa-checkbox">
-            <input
-              className="usa-checkbox__input"
-              type="checkbox"
-              name="audience"
-              value="small_business"
-              defaultChecked={true}
-            />
-            <label className="usa-checkbox__label">Small business <Tag>1024</Tag></label>
-          </div>
-          <div className="usa-checkbox">
-            <input
-              className="usa-checkbox__input"
-              type="checkbox"
-              name="audience"
-              value="real_estate"
-            />
-            <label className="usa-checkbox__label">Real estate <Tag>1234</Tag></label>
-          </div>
-          <div className="usa-checkbox">
-            <input
-              className="usa-checkbox__input"
-              type="checkbox"
-              name="audience"
-              value="technologists"
-            />
-            <label className="usa-checkbox__label">Technologists <Tag>1764</Tag></label>
-          </div>
-          <div className="usa-checkbox">
-            <input
-              className="usa-checkbox__input"
-              type="checkbox"
-              name="audience"
-              value="real-estate"
-            />
-            <label className="usa-checkbox__label">Real estate <Tag>1298</Tag></label>
-          </div>
-        </fieldset>
-      ),
-      expanded: true,
-      id: 'audienceItems',
-      headingLevel: 'h4' as HeadingLevel
-    }
-  ];
-
-  const contentTypeItems = [
-    {
-      title: 'Content Type',
-      content: (
-        <fieldset className="usa-fieldset">
-          <div className="usa-checkbox">
-            <input
-              className="usa-checkbox__input"
-              type="checkbox"
-              name="content_type"
-              value="press_release"
-              defaultChecked={true}
-            />
-            <label className="usa-checkbox__label">Press release <Tag>2876</Tag></label>
-          </div>
-          <div className="usa-checkbox">
-            <input
-              className="usa-checkbox__input"
-              type="checkbox"
-              name="content_type"
-              value="blogs"
-            />
-            <label className="usa-checkbox__label">Blogs <Tag>1923</Tag></label>
-          </div>
-          <div className="usa-checkbox">
-            <input
-              className="usa-checkbox__input"
-              type="checkbox"
-              name="content_type"
-              value="policies"
-            />
-            <label className="usa-checkbox__label">Policies <Tag>1244</Tag></label>
-          </div>
-          <div className="usa-checkbox">
-            <input
-              className="usa-checkbox__input"
-              type="checkbox"
-              name="content_type"
-              value="directives"
-            />
-            <label className="usa-checkbox__label">Directives <Tag>876</Tag></label>
-          </div>
-        </fieldset>
-      ),
-      expanded: true,
-      id: 'contentTypeItems',
-      headingLevel: 'h4' as HeadingLevel
-    }
-  ];
-
-  const fileTypeItems = [
-    {
-      title: 'File Type',
-      content: (
-        <fieldset className="usa-fieldset">
-          <div className="usa-checkbox">
-            <input
-              className="usa-checkbox__input"
-              type="checkbox"
-              name="file_type"
-              value="pdf"
-              defaultChecked={true}
-            />
-            <label className="usa-checkbox__label">PDF <Tag>23</Tag></label>
-          </div>
-          <div className="usa-checkbox">
-            <input
-              className="usa-checkbox__input"
-              type="checkbox"
-              name="file_type"
-              value="excel"
-            />
-            <label className="usa-checkbox__label">Excel <Tag>76</Tag></label>
-          </div>
-          <div className="usa-checkbox">
-            <input
-              className="usa-checkbox__input"
-              type="checkbox"
-              name="file_type"
-              value="word"
-            />
-            <label className="usa-checkbox__label">Word <Tag>11</Tag></label>
-          </div>
-          <div className="usa-checkbox">
-            <input
-              className="usa-checkbox__input"
-              type="checkbox"
-              name="file_type"
-              value="text"
-            />
-            <label className="usa-checkbox__label">Text <Tag>123</Tag></label>
-          </div>
-        </fieldset>
-      ),
-      expanded: true,
-      id: 'fileTypeItems',
-      headingLevel: 'h4' as HeadingLevel
-    }
-  ];
-
-  const tagsItems = [
-    {
-      title: 'Tags',
-      content: (
-        <fieldset className="usa-fieldset">
-          <div className="usa-checkbox">
-            <input
-              className="usa-checkbox__input"
-              type="checkbox"
-              name="tags"
-              value="contracts"
-              defaultChecked={true}
-            />
-            <label className="usa-checkbox__label">Contracts <Tag>703</Tag></label>
-          </div>
-          <div className="usa-checkbox">
-            <input
-              className="usa-checkbox__input"
-              type="checkbox"
-              name="tags"
-              value="bpa"
-            />
-            <label className="usa-checkbox__label">BPA <Tag>232</Tag></label>
-          </div>
-        </fieldset>
-      ),
-      expanded: true,
-      id: 'tagsItems',
-      headingLevel: 'h4' as HeadingLevel
-    }
-  ];
 
   const dateRangeItems = [
     {
@@ -308,21 +308,30 @@ export const Facets = () => {
     <StyledWrapper styles={styles}>
       <div className="serp-facets-wrapper">
         <FacetsLabel />
-        <Accordion bordered={false} items={audienceItems} />
-        <Accordion bordered={false} items={contentTypeItems} />
-        <Accordion bordered={false} items={fileTypeItems} />
-        <Accordion bordered={false} items={tagsItems} />
+
+        {getAggregations(aggregations)}
+
         <Accordion bordered={false} items={dateRangeItems} />
       </div>
+
       <div className="facets-action-btn-wrapper">
         <ul className="usa-button-group">
           <li className="usa-button-group__item clear-results-button-wrapper">
-            <button className="usa-button usa-button--unstyled clear-results-button" type="button">
+            <button 
+              className="usa-button usa-button--unstyled clear-results-button" 
+              type="button"
+            >
               Clear
             </button>
           </li>
           <li className="usa-button-group__item">
-            <button type="button" className="usa-button see-results-button">See Results</button>
+            <button 
+              type="button" 
+              className="usa-button see-results-button" 
+              onClick={() => loadQueryUrl(getFacetsQueryParamString({ ...nonAggregations, ...selectedIds }))}
+            >
+              See Results
+            </button>
           </li>
         </ul>
       </div>
