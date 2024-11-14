@@ -52,10 +52,7 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [],
   const [isPaneOpen, setIsPaneOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState(query);
 
-  // const [isMobileView, setMobileView] = useState(false);
-
   const searchUrlParam = 'query';
-
   const i18n = useContext(LanguageContext);
 
   const handleSearchQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
