@@ -69,5 +69,8 @@ describe('Facets component', () => {
 
     const seeResultsBtnLabel = screen.getByText(/See Results/i);
     fireEvent.click(seeResultsBtnLabel);
+
+    const clearBtnLabel = screen.getByText(/Clear/i);
+    fireEvent.click(clearBtnLabel);
   });
 });
