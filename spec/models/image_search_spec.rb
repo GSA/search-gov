@@ -120,26 +120,6 @@ describe ImageSearch do
     end
   end
 
-  describe '#engine_klass' do
-    subject(:image_search) { described_class.new(affiliate:, query: 'some query') }
-
-    context 'when affiliate search engine starts with Bing' do
-      before { affiliate.search_engine = 'BingV7' }
-
-      it 'returns the appropriate search engine class' do
-        expect(image_search.send(:engine_klass)).to eq(BingV7ImageSearch)
-      end
-    end
-
-    context 'when affiliate search engine does not start with Bing' do
-      before { affiliate.search_engine = 'SearchGov' }
-
-      it 'returns the latest BingV7ImageSearch class' do
-        expect(image_search.send(:engine_klass)).to eq(BingV7ImageSearch)
-      end
-    end
-  end
-
   describe '#spelling_suggestion' do
     subject(:image_search) { described_class.new(affiliate:, query: 'lsdkjflskjflskjdf') }
 

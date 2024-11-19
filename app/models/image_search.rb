@@ -72,7 +72,7 @@ class ImageSearch
     return nil unless @spelling_suggestion_eligible
 
     @search_instance&.spelling_suggestion
-    # SRCH-5169: BingV7ImageSearch is currently broken, resulting in @search_instance returning false.  Since the
+    # SRCH-5169: BingV7ImageSearch is currently broken, resulting in @search_instance returning false. Since the
     # future of commercial image searches is uncertain, this addresses that scenario with a minimum of effort.
   end
 
@@ -97,13 +97,7 @@ class ImageSearch
   def engine_klass
     if @affiliate.search_engine.start_with?('Bing')
       "#{@affiliate.search_engine}ImageSearch".constantize
-    else
-      latest_bing_image_search_class
     end
-  end
-
-  def latest_bing_image_search_class
-    BingV7ImageSearch
   end
 
   def assign_module_tag

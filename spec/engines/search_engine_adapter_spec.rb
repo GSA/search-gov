@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe SearchEngineAdapter do
   fixtures :affiliates
-  subject(:search_engine_adapter) { described_class.new(BingV7ImageSearch, { affiliate:, query:, page: 1, per_page: 10 }) }
+  subject(:search_engine_adapter) { described_class.new(OdieImageSearch, { affiliate:, query:, page: 1, per_page: 10 }) }
 
   let(:affiliate) { affiliates(:basic_affiliate) }
   let(:query) { 'test' }
@@ -69,7 +69,7 @@ describe SearchEngineAdapter do
   end
 
   describe '#default_spelling_module_tag' do
-    subject(:search_engine_adapter_module_tag) { described_class.new(BingV7ImageSearch, { affiliate:, query: '', page: 1, per_page: 10 }) }
+    subject(:search_engine_adapter_module_tag) { described_class.new(OdieImageSearch, { affiliate:, query: '', page: 1, per_page: 10 }) }
 
     it 'is BSPEL' do
       expect(search_engine_adapter_module_tag.default_spelling_module_tag).to eq('BSPEL')
