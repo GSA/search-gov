@@ -36,11 +36,30 @@ module Api::V2::SearchAsJson
   end
 
   def as_json_result_hash(result)
-    pub_date = result&.published_at&.to_date || nil
-    { title: result.title,
-      url: result_url(result),
+    base_hash = {
+      publication_date: result&.published_at&.to_date,
       snippet: as_json_build_snippet(result.description),
-      publication_date: pub_date }
+      thumbnail_url: result.thumbnail_url,
+      title: result.title,
+      url: result_url(result)
+    }
+
+    return base_hash unless @include_facets
+
+    base_hash.merge(facets_to_results(result))
+  end
+
+  def facets_to_results(result)
+    I14ySearch::FACET_FIELDS.each_with_object({}) do |field, fields|
+      next if field == 'created' || result[field].nil?
+
+      field_sym = field.to_sym
+      if field_sym == :changed
+        fields[:updated_date] = result['changed'].to_date
+      else
+        fields[field_sym] = result[field]
+      end
+    end
   end
 
   def as_json_build_snippet(description)
