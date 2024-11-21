@@ -20,12 +20,11 @@ class WebDocument
 
   def language
     @language ||= begin
-                    extracted = Language.iso_639_1(extract_language)
-                    detected = detect_language
-                    result = validate_language(extracted || detected || 'en')
-                    Rails.logger.debug "Detected language: #{detected}, Final language: #{result}"
-                    result
-                  end
+      extracted = Language.iso_639_1(extract_language)
+      detected = detect_language
+      result = validate_language(extracted || detected || 'en')
+      result
+    end
   end
 
   def created

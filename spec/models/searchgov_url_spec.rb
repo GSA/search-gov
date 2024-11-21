@@ -17,7 +17,8 @@ describe SearchgovUrl do
 
       let(:response_headers) { { 'Content-Type' => 'text/html', 'Content-Length' => html_content.bytesize.to_s } }
       let(:response_uri) { URI.parse(url) }
-      let(:response) { instance_double(HTTP::Response, body: html_content, headers: response_headers, code: 200, content_type: OpenStruct.new(mime_type: 'text/html'), uri: response_uri) }
+      ContentTypeStruct = Struct.new(:mime_type)
+      let(:response) { instance_double(HTTP::Response, body: html_content, headers: response_headers, code: 200, content_type: ContentTypeStruct.new('text/html'), uri: response_uri) }
 
       let(:raw_document) { open_fixture_file('/pdf/test.pdf') }
       let(:document) do
@@ -29,15 +30,14 @@ describe SearchgovUrl do
                         description: 'Sample Page',
                         keywords: 'sample',
                         title: 'Sample Page',
-                        created: Time.now,
-                        changed: Time.now,
+                        created: Time.current,
+                        changed: Time.current,
                         thumbnail_url: nil,
-                        searchgov_custom: Proc.new { |_number| nil },
+                        searchgov_custom: proc {},
                         document: raw_document,
                         redirect_url: nil,
                         noindex?: false,
-                        canonical_url: nil
-        )
+                        canonical_url: nil)
       end
 
       let(:searchgov_domain) { instance_double(SearchgovDomain, check_status: '200 OK', available?: true, js_renderer: false, valid?: true, domain: 'agency.gov', status: 'ok') }
@@ -49,7 +49,7 @@ describe SearchgovUrl do
         allow(searchgov_domain).to receive(:marked_for_destruction?).and_return(false)
 
         stub_request(:put, %r{http://localhost:8081/api/v1/documents/.*})
-          .to_return(status: 200, body: "", headers: {})
+          .to_return(status: 200, body: '', headers: {})
 
         allow(I14yDocument).to receive(:create).and_call_original
 
