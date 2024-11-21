@@ -94,12 +94,6 @@ class ImageSearch
     params
   end
 
-  def engine_klass
-    if @affiliate.search_engine.start_with?('Bing')
-      "#{@affiliate.search_engine}ImageSearch".constantize
-    end
-  end
-
   def assign_module_tag
     @module_tag = @search_instance.default_module_tag
     @modules << @module_tag
