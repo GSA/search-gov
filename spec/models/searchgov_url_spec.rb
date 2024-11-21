@@ -7,49 +7,45 @@ describe SearchgovUrl do
   let(:html) { read_fixture_file('/html/page_with_og_metadata.html') }
   let(:valid_attributes) { { url: url } }
   let(:searchgov_url) { described_class.new(valid_attributes) }
+  let(:html_content) { '<html lang="en"><head><title>Sample Page</title></head><body>Hello World</body></html>' }
+  let(:response_headers) { { 'Content-Type' => 'text/html', 'Content-Length' => html_content.bytesize.to_s } }
+  let(:response_uri) { URI.parse(url) }
+  ContentTypeStruct = Struct.new(:mime_type)
+  let(:response) { instance_double(HTTP::Response, body: html_content, headers: response_headers, code: 200, content_type: ContentTypeStruct.new('text/html'), uri: response_uri) }
+  let(:raw_document) { open_fixture_file('/pdf/test.pdf') }
+  let(:document) do
+    instance_double(ApplicationDocument,
+                    audience: nil,
+                    language: 'en',
+                    parsed_content: 'Hello World',
+                    content_type: 'text/html',
+                    description: 'Sample Page',
+                    keywords: 'sample',
+                    title: 'Sample Page',
+                    created: Time.current,
+                    changed: Time.current,
+                    thumbnail_url: nil,
+                    searchgov_custom: proc {},
+                    document: raw_document,
+                    redirect_url: nil,
+                    noindex?: false,
+                    canonical_url: nil)
+  end
+
+  let(:searchgov_domain) { instance_double(SearchgovDomain, check_status: '200 OK', available?: true, js_renderer: false, valid?: true, domain: 'agency.gov', status: 'ok') }
 
   it { is_expected.to have_readonly_attribute(:hashed_url) }
   it { is_expected.to have_readonly_attribute(:url) }
 
   describe '#index_and_update_status' do
     context 'when language is detected correctly' do
-      let(:html_content) { '<html lang="en"><head><title>Sample Page</title></head><body>Hello World</body></html>' }
-
-      let(:response_headers) { { 'Content-Type' => 'text/html', 'Content-Length' => html_content.bytesize.to_s } }
-      let(:response_uri) { URI.parse(url) }
-      ContentTypeStruct = Struct.new(:mime_type)
-      let(:response) { instance_double(HTTP::Response, body: html_content, headers: response_headers, code: 200, content_type: ContentTypeStruct.new('text/html'), uri: response_uri) }
-
-      let(:raw_document) { open_fixture_file('/pdf/test.pdf') }
-      let(:document) do
-        instance_double(ApplicationDocument,
-                        audience: nil,
-                        language: 'en',
-                        parsed_content: 'Hello World',
-                        content_type: 'text/html',
-                        description: 'Sample Page',
-                        keywords: 'sample',
-                        title: 'Sample Page',
-                        created: Time.current,
-                        changed: Time.current,
-                        thumbnail_url: nil,
-                        searchgov_custom: proc {},
-                        document: raw_document,
-                        redirect_url: nil,
-                        noindex?: false,
-                        canonical_url: nil)
-      end
-
-      let(:searchgov_domain) { instance_double(SearchgovDomain, check_status: '200 OK', available?: true, js_renderer: false, valid?: true, domain: 'agency.gov', status: 'ok') }
-
       before do
         allow(HTTP).to receive_message_chain(:headers, :timeout, :follow, :get).and_return(response)
         allow(searchgov_url).to receive(:parse_document).and_return(document)
         allow(searchgov_url).to receive(:searchgov_domain).and_return(searchgov_domain)
         allow(searchgov_domain).to receive(:marked_for_destruction?).and_return(false)
 
-        stub_request(:put, %r{http://localhost:8081/api/v1/documents/.*})
-          .to_return(status: 200, body: '', headers: {})
+        stub_request(:put, %r{http://localhost:8081/api/v1/documents/.*}).to_return(status: 200, body: '', headers: {})
 
         allow(I14yDocument).to receive(:create).and_call_original
 
