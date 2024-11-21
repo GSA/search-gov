@@ -11,13 +11,14 @@ module Api::V2::SearchAsJson
   protected
 
   def as_json_append_web(hash)
-    hash[:web] = {
-      total: @total,
-      next_offset: @next_offset,
-      include_facets: @include_facets,
-      results: as_json_results_to_hash,
-      aggregations: @include_facets ? @aggregations : nil
-    }.compact.tap { |web| yield web if block_given? }
+    web_hash = {}
+    web_hash[:total] = @total if @total
+    web_hash[:next_offset] = @next_offset
+    web_hash[:include_facets] = @include_facets unless @include_facets.nil?
+    yield web_hash if block_given?
+    web_hash[:results] = as_json_results_to_hash
+    web_hash[:aggregations] = @aggregations if @include_facets
+    hash[:web] = web_hash
   end
 
   def as_json_append_govbox_set(hash)
@@ -35,34 +36,39 @@ module Api::V2::SearchAsJson
   end
 
   def as_json_result_hash(result)
-    build_base_hash(result).tap { |hash| hash.merge!(facets_to_results(result)) if @include_facets }
-  end
-
-  def build_base_hash(result)
-    {
+    base_hash = {
       publication_date: result&.published_at&.to_date,
       snippet: as_json_build_snippet(result.description),
       thumbnail_url: result.thumbnail_url,
       title: result.title,
       url: result_url(result)
     }
+
+    return base_hash unless @include_facets
+
+    base_hash.merge(facets_to_results(result))
   end
 
   def facets_to_results(result)
     I14ySearch::FACET_FIELDS.each_with_object({}) do |field, fields|
       next if field == 'created' || result[field].nil?
 
-      field_key = field.to_sym == :changed ? :updated_date : field.to_sym
-      field_value = is_changed_field ? result['changed'].to_date : result[field]
-
-      fields[field_key] = field_value
+      field_sym = field.to_sym
+      if field_sym == :changed
+        fields[:updated_date] = result['changed'].to_date
+      else
+        fields[field_sym] = result[field]
+      end
     end
   end
 
   def as_json_build_snippet(description)
-    return description.sub!(/^([^A-Z<])/, '...\1') if description =~ /\uE000/
-
-    description.truncate(150, separator: ' ')
+    if description =~ /\uE000/
+      description.sub!(/^([^A-Z<])/, '...\1')
+    else
+      description = description.truncate(150, separator: ' ')
+    end
+    description
   end
 
   def as_json_video_news(news_items)
