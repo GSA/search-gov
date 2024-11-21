@@ -1,0 +1,254 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=president%20(site:whitehouse.gov%20OR%20site:usa.gov)&responseFilter=WebPages&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 10 Jan 2024 14:40:11 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Eventid:
+      - 659eac875a1140a7a552e87d7049aa41
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      Bingapis-Traceid:
+      - 659eac875a1140a7a552e87d7049aa41
+      Bingapis-Sessionid:
+      - D45C01D40CB8488EB1818064D1712773
+      X-Msedge-Clientid:
+      - 32CD358D8A3F651512DA218F8B9564E8
+      X-Msapi-Userstate:
+      - 4ced
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=246,MSDatacenter=BNZE01
+      X-Cache:
+      - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      X-Msedge-Ref:
+      - 'Ref A: 8082E7D4B313480BAEC4B08DA7428797 Ref B: BN3EDGE0912 Ref C: 2024-01-10T14:41:11Z'
+      Apim-Request-Id:
+      - 73c54ce1-b36f-46da-abb0-b2eaf9af2aa9
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Wed, 10 Jan 2024 14:41:11 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "president
+        (site:whitehouse.gov OR site:usa.gov)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=president+(site%3awhitehouse.gov+OR+site%3ausa.gov)",
+        "totalEstimatedMatches": 77100, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Presidents | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents",
+        "snippet": "Learn more about the Presidents of the United States from WhiteHouse.gov.",
+        "dateLastCrawled": "2024-01-09T22:04:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=president+(site%3awhitehouse.gov+OR+site%3ausa.gov)&d=4950499911417626&mkt=en-US&setlang=en-US&w=nTkqDHeiK4_LOnLvkQtw3Qp9bp0lJwoL",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Joe Biden: The President | The White House", "url": "https:\/\/www.whitehouse.gov\/administration\/president-biden\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/administration\/president-biden",
+        "snippet": "President Biden represented Delaware for 36 years in the U.S.
+        Senate before becoming the 47th Vice President of the United States. As
+        President, Biden will restore America’s leadership and build ...", "dateLastCrawled":
+        "2024-01-08T10:06:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=president+(site%3awhitehouse.gov+OR+site%3ausa.gov)&d=4543474451163781&mkt=en-US&setlang=en-US&w=dO8DXeXkj_ESIiYYliuBhxKE29ffPmtS",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "The White House", "url": "https:\/\/www.whitehouse.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.whitehouse.gov", "snippet": "President
+        Biden and Vice President Harris promised to move quickly to deliver results
+        for working families. That’s what they’ve done.", "dateLastCrawled": "2024-01-09T09:11:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=president+(site%3awhitehouse.gov+OR+site%3ausa.gov)&d=4598634721068856&mkt=en-US&setlang=en-US&w=b4eY5d6EREkrN-Fg3rTwilDZHt3uuc-_",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Presidents, vice presidents, and first ladies | USAGov", "url":
+        "https:\/\/www.usa.gov\/presidents", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.usa.gov\/presidents", "snippet": "The president of the
+        United States is the: U.S. head of state; Chief executive of the federal government;
+        Commander-in-Chief of the armed forces; Current president. The 46th and
+        current president of the United States is Joseph R. Biden, Jr. He was sworn
+        into office on January 20, 2021. Former U.S. presidents. The United States
+        has had 45 former ...", "dateLastCrawled": "2024-01-09T20:27:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=president+(site%3awhitehouse.gov+OR+site%3ausa.gov)&d=4769771984326495&mkt=en-US&setlang=en-US&w=DDBoPlfhk2V5Cq7r1mEygAHccVyBTDYi",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Inauguration of the president of the United States | USAGov", "url":
+        "https:\/\/www.usa.gov\/inauguration", "datePublished": "2023-12-11T00:00:00.0000000",
+        "datePublishedDisplayText": "Dec 11, 2023", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.usa.gov\/inauguration", "snippet": "Around noon, the president-elect
+        recites the following oath, in accordance with Article II, Section I of the
+        U.S. Constitution: \"I do solemnly swear (or affirm) that I will faithfully
+        execute the Office of President of the United States, and will to the best
+        of my ability, preserve, protect and defend the Constitution of the United
+        States.\"", "dateLastCrawled": "2024-01-09T08:14:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=president+(site%3awhitehouse.gov+OR+site%3ausa.gov)&d=4705106952734938&mkt=en-US&setlang=en-US&w=JXoCwso9mY5bouj_kp-N9XmNvAb-ZJZk",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "The Biden-Harris Record | The White House", "url": "https:\/\/www.whitehouse.gov\/therecord\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/therecord",
+        "snippet": "The Biden-Harris Record. When President Biden and Vice President
+        Harris took office, our country faced unprecedented crises - a raging pandemic,
+        economic crisis, climate crisis, and racial injustice.", "dateLastCrawled":
+        "2024-01-09T23:24:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=president+(site%3awhitehouse.gov+OR+site%3ausa.gov)&d=5017497106794813&mkt=en-US&setlang=en-US&w=PUd72gzUyS7pseC6X6jWiQLrVCGurN-q",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "President Biden Names Forty-Fourth Round of Judicial Nominees",
+        "url": "https:\/\/www.whitehouse.gov\/briefing-room\/presidential-actions\/2024\/01\/10\/president-biden-names-forty-fourth-round-of-judicial-nominees\/",
+        "datePublished": "2024-01-10T00:00:00.0000000", "datePublishedFreshnessText":
+        "14 hours ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/presidential-actions\/2024\/01\/10\/president...",
+        "snippet": "This will be President Biden’s forty-fourth round of nominees
+        for federal judicial positions, bringing the number of announced federal judicial
+        nominees to 215. Amir H. Ali: Nominee for the ...", "dateLastCrawled": "2024-01-10T14:01:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=president+(site%3awhitehouse.gov+OR+site%3ausa.gov)&d=258341182523&mkt=en-US&setlang=en-US&w=uqhgCuinfMoEfatdlPIk9R1Yn7x3AiAG",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "The Biden-Harris Administration | The White House", "url": "https:\/\/www.whitehouse.gov\/administration\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/administration",
+        "snippet": "Harris Administration. Thousands of people work in the West
+        Wing, the East Wing, the Cabinet, and the Executive Office of the President.
+        Learn more about the people who carry out the priorities of ...", "dateLastCrawled":
+        "2024-01-10T05:04:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=president+(site%3awhitehouse.gov+OR+site%3ausa.gov)&d=4718515843432639&mkt=en-US&setlang=en-US&w=DXVhGO0fLYVhu4vVfm7v0S3ug9rWa0T7",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "The Executive Branch | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/our-government\/the-executive-branch\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/our-government\/the-executive-branch",
+        "snippet": "The President has the power either to sign legislation into
+        law or to veto bills enacted by Congress, although Congress may override a
+        veto with a two-thirds vote of both houses. The Executive ...", "dateLastCrawled":
+        "2024-01-10T02:23:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=president+(site%3awhitehouse.gov+OR+site%3ausa.gov)&d=4644891519692939&mkt=en-US&setlang=en-US&w=JxjHTKeZ_kxAQOGTrigqpc4ib2jFB-ha",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Statement from President Joe - The White House", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2024\/01\/07\/statement-from-president-joe-biden-on-the-bipartisan-funding-framework\/",
+        "datePublished": "2024-01-07T00:00:00.0000000", "datePublishedFreshnessText":
+        "3 days ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2024\/01\/07\/statement-from...",
+        "snippet": "Statement from President Joe. Biden on the Bipartisan Funding.
+        Framework. The bipartisan funding framework congressional leaders have reached
+        moves us one step closer to preventing a needless ...", "dateLastCrawled":
+        "2024-01-10T08:15:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=president+(site%3awhitehouse.gov+OR+site%3ausa.gov)&d=3419413479685&mkt=en-US&setlang=en-US&w=Hg4dlaGa3qfxrYaoDyXX0sQPQlxV38ub",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Executive Office of the President | The White House", "url":
+        "https:\/\/www.whitehouse.gov\/administration\/executive-office-of-the-president\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/administration\/executive-office-of-the-president",
+        "snippet": "To provide the President with the support that he or she needs
+        to govern effectively, the Executive Office of the President (EOP) was created
+        in 1939 by President Franklin D. Roosevelt. The EOP ...", "dateLastCrawled":
+        "2024-01-10T10:02:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=president+(site%3awhitehouse.gov+OR+site%3ausa.gov)&d=4520195727057817&mkt=en-US&setlang=en-US&w=cmAX3PihLwkHjGRZGT9nBa9_PFMIPUcU",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Statement from President Joe Biden on Mitch Landrieu", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2024\/01\/08\/statement-from-president-joe-biden-on-mitch-landrieu\/",
+        "datePublished": "2024-01-08T00:00:00.0000000", "datePublishedFreshnessText":
+        "2 days ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/...\/01\/08\/statement-from-president-joe-biden-on-mitch-landrieu",
+        "snippet": "We''ll be in touch with the latest information on how President
+        Biden and his administration are working for the American people, as well
+        as ways you can get involved and help our country build ...", "dateLastCrawled":
+        "2024-01-08T14:11:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=president+(site%3awhitehouse.gov+OR+site%3ausa.gov)&d=4587056483616&mkt=en-US&setlang=en-US&w=bpZipGrANAJuGgoK_Q2zT6CxG0_Ob5Vv",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Remarks by President Biden at a Political Event | Charleston, SC",
+        "url": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-remarks\/2024\/01\/08\/remarks-by-president-biden-at-a-political-event-charleston-sc\/",
+        "datePublished": "2024-01-08T00:00:00.0000000", "datePublishedFreshnessText":
+        "2 days ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-remarks\/2024\/01\/08\/remarks-by...",
+        "snippet": "I don’t quite get these guys. Thank you, Jim, for your friendship
+        and, above all, for your — your fellowship. And, Bishop Green, thank you for
+        those kind words. I mean that sincerely. And ...", "dateLastCrawled": "2024-01-10T13:02:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=president+(site%3awhitehouse.gov+OR+site%3ausa.gov)&d=670643864497&mkt=en-US&setlang=en-US&w=CxnLap0o32_w4X7sMdj3zz6lfsE57VDn",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "Statement from President Joe Biden on the Passing of former ...",
+        "url": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/12\/31\/statement-from-president-joe-biden-on-the-passing-of-former-congresswoman-eddie-bernice-johnson\/",
+        "datePublished": "2024-01-01T01:17:35.0000000", "datePublishedDisplayText":
+        "Jan 1, 2024", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/statements-releases\/2023\/12\/31\/statement-from...",
+        "snippet": "Eddie Bernice Johnson was a dedicated nurse, state legislator,
+        and longtime U.S. congresswoman with immense courage and a commitment to the
+        promise of America. She had unwavering dedication to the ...", "dateLastCrawled":
+        "2024-01-09T04:17:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=president+(site%3awhitehouse.gov+OR+site%3ausa.gov)&d=4175278349169&mkt=en-US&setlang=en-US&w=ru_Pq6EmOEvXPY5oQ5w4sQL4GqAyGIv8",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Barack Obama | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/barack-obama\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/barack-obama",
+        "snippet": "Barack Obama served as the 44th President of the United States.
+        His story is the American story — values from the heartland, a middle-class
+        upbringing in a strong family, hard work and education ...", "dateLastCrawled":
+        "2024-01-09T03:26:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=president+(site%3awhitehouse.gov+OR+site%3ausa.gov)&d=4587192925563967&mkt=en-US&setlang=en-US&w=X7M4EC8rimAmA8OoKE9gtb4ErMmgRrIp",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Nominations Sent to the Senate | The White House", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/presidential-actions\/2024\/01\/08\/nominations-sent-to-the-senate-133\/",
+        "datePublished": "2024-01-08T00:00:00.0000000", "datePublishedFreshnessText":
+        "2 days ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/presidential-actions\/2024\/01\/08\/nominations...",
+        "snippet": "Seth Robert Aframe, of New Hampshire, to be United States Circuit
+        Judge for the First Circuit, vice Jeffrey R. Howard, retired. Irving W. Bailey
+        II, of Florida, to be a Member of the Board of ...", "dateLastCrawled": "2024-01-10T00:54:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=president+(site%3awhitehouse.gov+OR+site%3ausa.gov)&d=1701240453421&mkt=en-US&setlang=en-US&w=SASjSbcQCVCjiBKj99VE9LbY3_l4SriO",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "President Biden’s Affordable Connectivity Program is Delivering
+        in Illinois", "url": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2024\/01\/Illinois-ACP-Fact-Sheet.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/wp-content\/uploads\/2024\/01\/Illinois-ACP-Fact-Sheet.pdf",
+        "snippet": "State . Congressional District Households Enrolled Estimated Percent
+        of Households Estimated Fraction Total Funding IL 02 73,866 25% 1 in 4 $35,583,379
+        IL 03 28,926 10% 1 in 10 $13,348,468 IL 04 ...", "dateLastCrawled": "2024-01-09T23:20:00.0000000Z",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "President Joseph R. Biden, Jr. Approves Rhode Island Disaster",
+        "url": "https:\/\/www.whitehouse.gov\/briefing-room\/presidential-actions\/2024\/01\/07\/president-joseph-r-biden-jr-approves-rhode-island-disaster-declaration-2\/",
+        "datePublished": "2024-01-07T00:00:00.0000000", "datePublishedFreshnessText":
+        "3 days ago", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/presidential-actions\/2024\/01\/07\/president...",
+        "snippet": "Declaration. Today, President Joseph R. Biden, Jr. declared
+        that a major disaster exists in the State of Rhode Island and ordered Federal
+        assistance to supplement state, tribal, and local recovery ...", "dateLastCrawled":
+        "2024-01-07T20:49:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=president+(site%3awhitehouse.gov+OR+site%3ausa.gov)&d=1701016923275&mkt=en-US&setlang=en-US&w=l7g-j2ZvrLZARwwBE71IQqAq0NwkJjBi",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Donald J. Trump | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/donald-j-trump\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/donald-j-trump",
+        "snippet": "The biography for President Trump and past presidents is courtesy
+        of the White House Historical Association. Donald John Trump was born in
+        Queens, New York, on June 14, 1946.", "dateLastCrawled": "2024-01-08T22:33:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=president+(site%3awhitehouse.gov+OR+site%3ausa.gov)&d=4936768899667606&mkt=en-US&setlang=en-US&w=hombKLfOGW_E--2y64f1eUNj7_qyG1tJ",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "George Washington | The White House", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/george-washington\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/presidents\/george-washington",
+        "snippet": "The 1st President of the United States. The biography for President
+        Washington and past presidents is courtesy of the White House Historical
+        Association. On April 30, 1789, George Washington ...", "dateLastCrawled":
+        "2024-01-09T19:35:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=president+(site%3awhitehouse.gov+OR+site%3ausa.gov)&d=4801146722077216&mkt=en-US&setlang=en-US&w=DH6hUG7-ov6HT2yo4hStF8_YvS1bJqPM",
+        "language": "en", "isNavigational": <DATADOG_API_ENABLED>}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Wed, 10 Jan 2024 14:41:11 GMT
+recorded_with: VCR 6.2.0

@@ -1,0 +1,723 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v7.0/images/search?count=20&mkt=en-US&offset=0&q=barcelona%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Pragma:
+      - no-cache
+      Content-Length:
+      - '99309'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Snr-Routing:
+      - '1'
+      Bingapis-Traceid:
+      - 455BA766B14D483FAEA90B003716A675
+      X-Msedge-Clientid:
+      - 38A6D53B7DF66B240B21C5907CB96A92
+      X-Msapi-Userstate:
+      - b206
+      X-Search-Responseinfo:
+      - InternalResponseTime=215,MSDatacenter=BN2B
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 455BA766B14D483FAEA90B003716A675 Ref B: BLUEDGE1222 Ref C: 2021-09-07T16:16:40Z'
+      Apim-Request-Id:
+      - eebe6414-470e-404e-b9ed-ba8b50d73b6a
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Tue, 07 Sep 2021 16:16:40 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "Images", "instrumentation": {"_type": "ResponseInstrumentation"},
+        "readLink": "images\/search?q=barcelona (site:gov OR site:mil)", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=barcelona (site:gov OR site:mil)&FORM=OIIARP",
+        "queryContext": {"originalQuery": "barcelona (site:gov OR site:mil)", "alterationDisplayQuery":
+        "barcelona", "alterationOverrideQuery": "+barcelona (site:gov OR site:mil)",
+        "alterationMethod": "AM_JustChangeIt", "alterationType": "CombinedAlterationsChained"},
+        "totalEstimatedMatches": 103, "nextOffset": 24, "currentOffset": 0, "value":
+        [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=93F8EE23F43ADE53AF0CF2ADCCA10CCC9F91BBFB&simid=608013965895678106",
+        "name": "(Miss)adventures: Streets of Barcelona > Royal Air Force ...", "thumbnailUrl":
+        "https:\/\/tse1.mm.bing.net\/th?id=OIP.dZuL1RDLWpvaXGBxAy-qJAHaFS&pid=Api",
+        "datePublished": "2020-07-15T13:36:00.0000000Z", "isFamilyFriendly": <DATADOG_API_ENABLED>,
+        "contentUrl": "https:\/\/media.defense.gov\/2019\/Feb\/06\/2002086838\/-1\/-1\/0\/181231-F-ZB805-0457.JPG",
+        "hostPageUrl": "https:\/\/www.lakenheath.af.mil\/News\/Article-Display\/Article\/1749503\/missadventures-streets-of-barcelona\/",
+        "contentSize": "6481871 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/www.lakenheath.af.mil\/News\/Article-Display\/Article\/1749503\/missadventures...",
+        "width": 4444, "height": 3175, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.rTXDQZe7X_vnIk5tbI3WFQ&pid=Api",
+        "hostPageDomainFriendlyName": "AF.mil", "hostPageDiscoveredDate": "2019-02-09T00:00:00.0000000Z",
+        "thumbnail": {"width": 474, "height": 338}, "imageInsightsToken": "ccid_dZuL1RDL*cp_B1977939EF46A4A06C47F44EC90981A8*mid_93F8EE23F43ADE53AF0CF2ADCCA10CCC9F91BBFB*simid_608013965895678106*thid_OIP.dZuL1RDLWpvaXGBxAy-qJAHaFS",
+        "insightsMetadata": {"pagesIncludingCount": 2, "availableSizesCount": 3},
+        "imageId": "93F8EE23F43ADE53AF0CF2ADCCA10CCC9F91BBFB", "accentColor": "0D64BE"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=C4C53F714E6B34D1FD160E57A9816C01E94348B4&simid=608020747655334849",
+        "name": "Barcelona, Spain : Image of the Day", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.bXoVxXWEqTBfEW9DCn7jUQHaE5&pid=Api",
+        "datePublished": "2018-04-08T00:17:00.0000000Z", "isFamilyFriendly": <DATADOG_API_ENABLED>,
+        "contentUrl": "https:\/\/eoimages.gsfc.nasa.gov\/images\/imagerecords\/4000\/4627\/ISS009-E-9987_lrg.jpg",
+        "hostPageUrl": "https:\/\/earthobservatory.nasa.gov\/IOTD\/view.php?id=4627&eocn=image&eoci=moreiotd",
+        "contentSize": "499979 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/earthobservatory.nasa.gov\/IOTD\/view.php?id=4627&eocn=image&eoci=moreiotd",
+        "width": 1000, "height": 662, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.5zxVvlA0OWF-n6V_axbwXQ&pid=Api",
+        "hostPageDomainFriendlyName": "NASA''s Earth Observatory", "hostPageDiscoveredDate":
+        "2017-04-05T00:00:00.0000000Z", "thumbnail": {"width": 474, "height": 313},
+        "imageInsightsToken": "ccid_bXoVxXWE*cp_66FADDD21E8512F05929031534B35579*mid_C4C53F714E6B34D1FD160E57A9816C01E94348B4*simid_608020747655334849*thid_OIP.bXoVxXWEqTBfEW9DCn7jUQHaE5",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 35, "availableSizesCount":
+        16}, "imageId": "C4C53F714E6B34D1FD160E57A9816C01E94348B4", "accentColor":
+        "22446B"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=7A54A3A6F1E98BAF2692221096CB6E11950374A2&simid=608011272955572445",
+        "name": "Barcelona, Spain : Image of the Day", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.kuEdKYM1VepA1LQtTVGOBAHaFj&pid=Api",
+        "datePublished": "2010-01-30T18:21:00.0000000Z", "isFamilyFriendly": <DATADOG_API_ENABLED>,
+        "contentUrl": "http:\/\/eoimages.gsfc.nasa.gov\/images\/imagerecords\/7000\/7421\/ISS014-E-10547_lrg.jpg",
+        "hostPageUrl": "http:\/\/earthobservatory.nasa.gov\/IOTD\/view.php?id=7421",
+        "contentSize": "680604 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "earthobservatory.nasa.gov\/IOTD\/view.php?id=7421", "width": 1000, "height":
+        750, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.5zxVvlA0OWF-n6V_axbwXQ&pid=Api",
+        "hostPageDomainFriendlyName": "NASA''s Earth Observatory", "hostPageDiscoveredDate":
+        "2010-01-30T18:21:00.0000000Z", "thumbnail": {"width": 474, "height": 355},
+        "imageInsightsToken": "ccid_kuEdKYM1*cp_807029231EE75D54B7E565A53CB787E8*mid_7A54A3A6F1E98BAF2692221096CB6E11950374A2*simid_608011272955572445*thid_OIP.kuEdKYM1VepA1LQtTVGOBAHaFj",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 47, "availableSizesCount":
+        16}, "imageId": "7A54A3A6F1E98BAF2692221096CB6E11950374A2", "accentColor":
+        "1D455A"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=C187BFBD49196AEC79DDF5A3A2C90654E0CC77C8&simid=608003413168694452",
+        "name": "The Barcelona | Beaverton, OR - Official Website", "thumbnailUrl":
+        "https:\/\/tse2.mm.bing.net\/th?id=OIP.VCvnp7eTMg_88gENn7y67AHaE7&pid=Api",
+        "datePublished": "2021-01-01T13:50:00.0000000Z", "isFamilyFriendly": <DATADOG_API_ENABLED>,
+        "contentUrl": "https:\/\/www.beavertonoregon.gov\/ImageRepository\/Path?filePath=%2fDocuments%5cContent%5c598%5c1199%5c1214%5c1230%2fBarcelona-name-above-the-main-entrance.jpg",
+        "hostPageUrl": "https:\/\/www.beavertonoregon.gov\/1279\/The-Barcelona", "contentSize":
+        "31862 B", "encodingFormat": "jpeg", "hostPageDisplayUrl": "https:\/\/www.beavertonoregon.gov\/1279\/The-Barcelona",
+        "width": 600, "height": 399, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.T_tAx-VxYsUoo1CEfhZrog&pid=Api",
+        "hostPageDomainFriendlyName": "Beaverton, Oregon", "hostPageDiscoveredDate":
+        "2017-11-25T00:00:00.0000000Z", "thumbnail": {"width": 474, "height": 315},
+        "imageInsightsToken": "ccid_VCvnp7eT*cp_22FEECE2DA03290A85150579AB0124D1*mid_C187BFBD49196AEC79DDF5A3A2C90654E0CC77C8*simid_608003413168694452*thid_OIP.VCvnp7eTMg!_88gENn7y67AHaE7",
+        "insightsMetadata": {"pagesIncludingCount": 1, "availableSizesCount": 1},
+        "imageId": "C187BFBD49196AEC79DDF5A3A2C90654E0CC77C8", "accentColor": "6D4524"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=F2E0E21D8A9B69412B74B03743EFA5F6E7A9D9BC&simid=607991692208390991",
+        "name": "Barcelona’s Biblioteca Jaume Fuster – Pic of the Week | In ...",
+        "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.TUcHW-ff8PEI0Gl_TUjingHaFj&pid=Api",
+        "datePublished": "2019-04-12T13:00:00.0000000Z", "isFamilyFriendly": <DATADOG_API_ENABLED>,
+        "contentUrl": "https:\/\/blogs.loc.gov\/law\/files\/2019\/04\/barcelona-library.jpg",
+        "hostPageUrl": "https:\/\/blogs.loc.gov\/law\/2019\/04\/barcelonas-biblioteca-jaume-fuster-pic-of-the-week\/",
+        "contentSize": "629851 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/blogs.loc.gov\/law\/2019\/04\/barcelonas-biblioteca-jaume-fuster-pic-of-the-week",
+        "width": 2016, "height": 1512, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.gQfFP1q6cHk9AMzjZVDVKg&pid=Api",
+        "hostPageDomainFriendlyName": "blogs.loc.gov", "hostPageDiscoveredDate": "2019-04-12T13:00:00.0000000Z",
+        "thumbnail": {"width": 474, "height": 355}, "imageInsightsToken": "ccid_TUcHW+ff*cp_9B53A82BF96D60CC84F70B4CAFA929A2*mid_F2E0E21D8A9B69412B74B03743EFA5F6E7A9D9BC*simid_607991692208390991*thid_OIP.TUcHW-ff8PEI0Gl!_TUjingHaFj",
+        "insightsMetadata": {"pagesIncludingCount": 1, "availableSizesCount": 2},
+        "imageId": "F2E0E21D8A9B69412B74B03743EFA5F6E7A9D9BC", "accentColor": "1A4FB1"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=3E1DE216EE7DE5DC27368126FCF77F67050E5913&simid=608005960081763191",
+        "name": "Panoramic Photography | Panoramic view of the Barcelona ...", "thumbnailUrl":
+        "https:\/\/tse4.mm.bing.net\/th?id=OIP.xEQK7JcqcXU49qBwsbwD0wHaBr&pid=Api",
+        "datePublished": "2010-02-06T12:57:00.0000000Z", "isFamilyFriendly": <DATADOG_API_ENABLED>,
+        "contentUrl": "http:\/\/www.archives.gov\/exhibits\/panoramic_photography\/images\/barcelona_exposition_1929.jpg",
+        "hostPageUrl": "http:\/\/www.archives.gov\/exhibits\/panoramic_photography\/images\/barcelona_exposition_1929.html",
+        "contentSize": "114275 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "www.archives.gov\/exhibits\/panoramic_photography\/images\/barcelona_exposition_1929.html",
+        "width": 1770, "height": 400, "hostPageDiscoveredDate": "2010-02-06T12:57:00.0000000Z",
+        "thumbnail": {"width": 474, "height": 107}, "imageInsightsToken": "ccid_xEQK7Jcq*cp_382319A41A37E64BE95260C6886E1B74*mid_3E1DE216EE7DE5DC27368126FCF77F67050E5913*simid_608005960081763191*thid_OIP.xEQK7JcqcXU49qBwsbwD0wHaBr",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 51, "availableSizesCount":
+        23}, "imageId": "3E1DE216EE7DE5DC27368126FCF77F67050E5913", "accentColor":
+        "414141"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=926CA819D1EBDF77618D252DF2230A5AF281D363&simid=608026867981314989",
+        "name": "ACB_7063 | U.S. Embassy & Consulate in Spain and Andorra", "thumbnailUrl":
+        "https:\/\/tse1.mm.bing.net\/th?id=OIP.VBRh1oNqaDbTVw0Y015GkgHaGS&pid=Api",
+        "datePublished": "2018-11-05T06:30:00.0000000Z", "isFamilyFriendly": <DATADOG_API_ENABLED>,
+        "contentUrl": "https:\/\/es.usembassy.gov\/wp-content\/uploads\/sites\/260\/2017\/02\/ACB_7063.jpg",
+        "hostPageUrl": "https:\/\/es.usembassy.gov\/shortcode\/news-events-consulate-general\/acb_7063\/",
+        "contentSize": "839505 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/es.usembassy.gov\/shortcode\/news-events-consulate-general\/acb_7063",
+        "width": 4713, "height": 4000, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.bmq-VTMib8y3Q4EAMY8Qiw&pid=Api",
+        "hostPageDomainFriendlyName": "U.S", "hostPageDiscoveredDate": "2018-04-13T00:00:00.0000000Z",
+        "thumbnail": {"width": 474, "height": 402}, "imageInsightsToken": "ccid_VBRh1oNq*cp_7A53BA1C10A5273E46601248DC9B4421*mid_926CA819D1EBDF77618D252DF2230A5AF281D363*simid_608026867981314989*thid_OIP.VBRh1oNqaDbTVw0Y015GkgHaGS",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 6, "availableSizesCount":
+        2}, "imageId": "926CA819D1EBDF77618D252DF2230A5AF281D363", "accentColor":
+        "4E647D"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=7EBFA45AE15D88969A4B80BF79972AC7EDE89F90&simid=607989098051948448",
+        "name": "Barcelona. Vista panoràmica de Barcelona, desde Monjuich ...", "thumbnailUrl":
+        "https:\/\/tse2.mm.bing.net\/th?id=OIP.X-L9UnRQcSRLc4r1XzISVwHaF7&pid=Api",
+        "datePublished": "2021-02-15T01:36:00.0000000Z", "isFamilyFriendly": <DATADOG_API_ENABLED>,
+        "contentUrl": "http:\/\/tile.loc.gov\/storage-services\/service\/pnp\/cph\/3c00000\/3c08000\/3c08700\/3c08736v.jpg",
+        "hostPageUrl": "https:\/\/www.loc.gov\/item\/94512269\/", "contentSize": "94049
+        B", "encodingFormat": "jpeg", "hostPageDisplayUrl": "https:\/\/www.loc.gov\/item\/94512269",
+        "width": 1024, "height": 820, "hostPageDiscoveredDate": "2017-02-14T00:00:00.0000000Z",
+        "thumbnail": {"width": 474, "height": 379}, "imageInsightsToken": "ccid_X+L9UnRQ*cp_D72DD859AD3264E27DF0856B07880BCE*mid_7EBFA45AE15D88969A4B80BF79972AC7EDE89F90*simid_607989098051948448*thid_OIP.X-L9UnRQcSRLc4r1XzISVwHaF7",
+        "insightsMetadata": {"pagesIncludingCount": 1, "availableSizesCount": 1},
+        "imageId": "7EBFA45AE15D88969A4B80BF79972AC7EDE89F90", "accentColor": "242424"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=93F8EE23F43ADE53AF0CE073763B50149A15D41D&simid=608037253215313446",
+        "name": "(Miss)adventures: Streets of Barcelona > Royal Air Force ...", "thumbnailUrl":
+        "https:\/\/tse4.mm.bing.net\/th?id=OIP.8Nwv0Hr1e0cSEZmYCscBKAHaE8&pid=Api",
+        "datePublished": "2020-07-15T13:36:00.0000000Z", "isFamilyFriendly": <DATADOG_API_ENABLED>,
+        "contentUrl": "https:\/\/media.defense.gov\/2019\/Feb\/06\/2002086839\/-1\/-1\/0\/181231-F-ZB805-0490.JPG",
+        "hostPageUrl": "https:\/\/www.lakenheath.af.mil\/News\/Article-Display\/Article\/1749503\/missadventures-streets-of-barcelona\/",
+        "contentSize": "3360607 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/www.lakenheath.af.mil\/News\/Article-Display\/Article\/1749503\/missadventures...",
+        "width": 4972, "height": 3315, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.rTXDQZe7X_vnIk5tbI3WFQ&pid=Api",
+        "hostPageDomainFriendlyName": "AF.mil", "hostPageDiscoveredDate": "2019-02-09T00:00:00.0000000Z",
+        "thumbnail": {"width": 474, "height": 316}, "imageInsightsToken": "ccid_8Nwv0Hr1*cp_9CEAD6E707FE0910F5D70334AADB2D77*mid_93F8EE23F43ADE53AF0CE073763B50149A15D41D*simid_608037253215313446*thid_OIP.8Nwv0Hr1e0cSEZmYCscBKAHaE8",
+        "insightsMetadata": {"pagesIncludingCount": 1, "availableSizesCount": 1},
+        "imageId": "93F8EE23F43ADE53AF0CE073763B50149A15D41D", "accentColor": "135BB8"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=93F8EE23F43ADE53AF0CFD940C40FF8BC8782B0A&simid=608011590792123160",
+        "name": "(Miss)adventures: Streets of Barcelona > Royal Air Force ...", "thumbnailUrl":
+        "https:\/\/tse4.mm.bing.net\/th?id=OIP.FQSxxmnji_k_CWtK-SsNrwHaEc&pid=Api",
+        "datePublished": "2020-07-15T13:36:00.0000000Z", "isFamilyFriendly": <DATADOG_API_ENABLED>,
+        "contentUrl": "https:\/\/media.defense.gov\/2019\/Feb\/06\/2002086840\/-1\/-1\/0\/181231-F-ZB805-0530.JPG",
+        "hostPageUrl": "https:\/\/www.lakenheath.af.mil\/News\/Article-Display\/Article\/1749503\/missadventures-streets-of-barcelona\/",
+        "contentSize": "5523390 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/www.lakenheath.af.mil\/News\/Article-Display\/Article\/1749503\/missadventures...",
+        "width": 5358, "height": 3215, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.rTXDQZe7X_vnIk5tbI3WFQ&pid=Api",
+        "hostPageDomainFriendlyName": "AF.mil", "hostPageDiscoveredDate": "2019-02-09T00:00:00.0000000Z",
+        "thumbnail": {"width": 474, "height": 284}, "imageInsightsToken": "ccid_FQSxxmnj*cp_2575B522112AF2A433D253F1328B85D7*mid_93F8EE23F43ADE53AF0CFD940C40FF8BC8782B0A*simid_608011590792123160*thid_OIP.FQSxxmnji!_k!_CWtK-SsNrwHaEc",
+        "insightsMetadata": {"pagesIncludingCount": 1, "availableSizesCount": 2},
+        "imageId": "93F8EE23F43ADE53AF0CFD940C40FF8BC8782B0A", "accentColor": "897B42"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=D36F6F785E6DA3ECF2B4C9E52EE1B5E81B99F95F&simid=608008292257506648",
+        "name": "Jersey Nike FC Barcelona Vapor Match 2020-2021 Away Black ...", "thumbnailUrl":
+        "https:\/\/tse4.mm.bing.net\/th?id=OIP.ZBbH8WJOXA9Nuj6JXbhrCAHaHa&pid=Api",
+        "datePublished": "2021-07-31T02:51:00.0000000Z", "isFamilyFriendly": <DATADOG_API_ENABLED>,
+        "contentUrl": "https:\/\/www.futbolemotion.com\/imagesarticulos\/146052\/grandes\/camiseta-nike-fc-barcelona-vapor-match-segunda-equipacion-2020-2021-black-metallic-gold-0.jpg",
+        "hostPageUrl": "http:\/\/www.plumascourt.ca.gov\/?en\/buy\/jersey\/nike\/fc-barcelona-vapor-match-segunda-equipacion-2020-2021-black-metallic-gold",
+        "contentSize": "105312 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "www.plumascourt.ca.gov\/?en\/buy\/jersey\/nike\/fc-barcelona-vapor-match-segunda-equipacion...",
+        "width": 1200, "height": 1200, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.FG4Z6RxhVOQhBYmOLt1HkQ&pid=Api",
+        "hostPageDiscoveredDate": "2020-10-14T00:00:00.0000000Z", "thumbnail": {"width":
+        474, "height": 474}, "imageInsightsToken": "ccid_ZBbH8WJO*cp_2A4541F0C53A3E3FC36A82BC19477D94*mid_D36F6F785E6DA3ECF2B4C9E52EE1B5E81B99F95F*simid_608008292257506648*thid_OIP.ZBbH8WJOXA9Nuj6JXbhrCAHaHa",
+        "insightsMetadata": {"pagesIncludingCount": 17, "availableSizesCount": 11},
+        "imageId": "D36F6F785E6DA3ECF2B4C9E52EE1B5E81B99F95F", "accentColor": "BF690C"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=879C5B5E1A8DFF18E7E505C1D9AE42838E21F644&simid=608004967946929422",
+        "name": "Plano de Barcelona y sus alrededores en 1890 : aprobado ...", "thumbnailUrl":
+        "https:\/\/tse1.mm.bing.net\/th?id=OIP.amFnhz-UIVY850x6gFiFtgHaFW&pid=Api",
+        "datePublished": "2016-05-08T06:33:00.0000000Z", "isFamilyFriendly": <DATADOG_API_ENABLED>,
+        "contentUrl": "https:\/\/tile.loc.gov\/image-services\/iiif\/service:gmd:gmd6:g6564:g6564b:ct003195\/full\/pct:12.5\/0\/default.jpg",
+        "hostPageUrl": "https:\/\/www.loc.gov\/item\/2011590006", "contentSize": "715154
+        B", "encodingFormat": "jpeg", "hostPageDisplayUrl": "https:\/\/www.loc.gov\/item\/2011590006",
+        "width": 1841, "height": 1330, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.y7yiL7B5scgYIKYfaz3KMg&pid=Api",
+        "hostPageDomainFriendlyName": "Library of Congress", "hostPageDiscoveredDate":
+        "2016-05-08T06:33:00.0000000Z", "thumbnail": {"width": 474, "height": 342},
+        "imageInsightsToken": "ccid_amFnhz+U*cp_C3149942720177F6BCFD0226FC42829B*mid_879C5B5E1A8DFF18E7E505C1D9AE42838E21F644*simid_608004967946929422*thid_OIP.amFnhz-UIVY850x6gFiFtgHaFW",
+        "insightsMetadata": {"pagesIncludingCount": 7, "availableSizesCount": 4},
+        "imageId": "879C5B5E1A8DFF18E7E505C1D9AE42838E21F644", "accentColor": "A07D2B"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=3C0B9E9089724F10DF491CF5C469E59688633D16&simid=607995360105872097",
+        "name": "¡Olé! : Spain and Its “Fiesta Nacional” | 4 Corners of the ...",
+        "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.sFFLFcurxGO9qW7QR2S9EAHaFb&pid=Api",
+        "datePublished": "2017-07-20T20:32:00.0000000Z", "isFamilyFriendly": <DATADOG_API_ENABLED>,
+        "contentUrl": "https:\/\/blogs.loc.gov\/international-collections\/files\/2017\/07\/Spectators-1024x750.jpg",
+        "hostPageUrl": "https:\/\/blogs.loc.gov\/international-collections\/2017\/07\/ol-spain-and-its-fiesta-nacional\/",
+        "contentSize": "258041 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/blogs.loc.gov\/international-collections\/2017\/07\/ol-spain-and-its-fiesta-nacional",
+        "width": 1024, "height": 750, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.gQfFP1q6cHk9AMzjZVDVKg&pid=Api",
+        "hostPageDomainFriendlyName": "blogs.loc.gov", "hostPageDiscoveredDate": "2017-07-20T20:32:00.0000000Z",
+        "thumbnail": {"width": 474, "height": 347}, "imageInsightsToken": "ccid_sFFLFcur*cp_FB882066625713B29AE53C11B5E4AB87*mid_3C0B9E9089724F10DF491CF5C469E59688633D16*simid_607995360105872097*thid_OIP.sFFLFcurxGO9qW7QR2S9EAHaFb",
+        "insightsMetadata": {"pagesIncludingCount": 5, "availableSizesCount": 4},
+        "imageId": "3C0B9E9089724F10DF491CF5C469E59688633D16", "accentColor": "B28819"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=93F8EE23F43ADE53AF0C59B6C5806A8F58EAF9E9&simid=608006801890503601",
+        "name": "(Miss)adventures: Streets of Barcelona > Royal Air Force ...", "thumbnailUrl":
+        "https:\/\/tse3.mm.bing.net\/th?id=OIP.NAZMQRJOXAJOEBzKI3R7NgHaE8&pid=Api",
+        "datePublished": "2020-07-15T13:36:00.0000000Z", "isFamilyFriendly": <DATADOG_API_ENABLED>,
+        "contentUrl": "https:\/\/media.defense.gov\/2019\/Feb\/06\/2002086837\/-1\/-1\/0\/181230-F-ZB805-0428.JPG",
+        "hostPageUrl": "https:\/\/www.lakenheath.af.mil\/News\/Article-Display\/Article\/1749503\/missadventures-streets-of-barcelona\/",
+        "contentSize": "4207325 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/www.lakenheath.af.mil\/News\/Article-Display\/Article\/1749503\/missadventures...",
+        "width": 5202, "height": 3468, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.rTXDQZe7X_vnIk5tbI3WFQ&pid=Api",
+        "hostPageDomainFriendlyName": "AF.mil", "hostPageDiscoveredDate": "2019-02-09T00:00:00.0000000Z",
+        "thumbnail": {"width": 474, "height": 316}, "imageInsightsToken": "ccid_NAZMQRJO*cp_7F2F0D680046E7DF4DDDB33C38EBE019*mid_93F8EE23F43ADE53AF0C59B6C5806A8F58EAF9E9*simid_608006801890503601*thid_OIP.NAZMQRJOXAJOEBzKI3R7NgHaE8",
+        "insightsMetadata": {"pagesIncludingCount": 1, "availableSizesCount": 2},
+        "imageId": "93F8EE23F43ADE53AF0C59B6C5806A8F58EAF9E9", "accentColor": "406B8B"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=3AEE7E55ABFA4F7EBA9546CEED291B4E7B4C992B&simid=608050348572808897",
+        "name": "U.S. Consulate General Barcelona | U.S. Embassy ...", "thumbnailUrl":
+        "https:\/\/tse1.mm.bing.net\/th?id=OIP.awx3LiSzgEH7BSpkLgVwfAHaEc&pid=Api",
+        "datePublished": "2021-01-09T01:51:00.0000000Z", "isFamilyFriendly": <DATADOG_API_ENABLED>,
+        "contentUrl": "https:\/\/d2v9ipibika81v.cloudfront.net\/uploads\/sites\/260\/2015\/06\/Fotos_Web-2017-1140x684.jpg",
+        "hostPageUrl": "https:\/\/es.usembassy.gov\/embassy-consulates\/barcelona\/",
+        "contentSize": "112159 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/es.usembassy.gov\/embassy-consulates\/barcelona", "width": 1140,
+        "height": 684, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.bmq-VTMib8y3Q4EAMY8Qiw&pid=Api",
+        "hostPageDomainFriendlyName": "U.S", "hostPageDiscoveredDate": "2017-02-14T00:00:00.0000000Z",
+        "thumbnail": {"width": 474, "height": 284}, "imageInsightsToken": "ccid_awx3LiSz*cp_2CA9F380577D3AF1994527750ECD5C32*mid_3AEE7E55ABFA4F7EBA9546CEED291B4E7B4C992B*simid_608050348572808897*thid_OIP.awx3LiSzgEH7BSpkLgVwfAHaEc",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 4, "availableSizesCount":
+        1}, "imageId": "3AEE7E55ABFA4F7EBA9546CEED291B4E7B4C992B", "accentColor":
+        "4E5934"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=753DD79C6E6ECFA35CD168DB7F57D99CB81BC5C8&simid=608029831513140339",
+        "name": "Multipurpose Complex to host FC Barcelona for youth soccer ...",
+        "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.jsNLG85IRlhmD2eLnbN7YAHaE8&pid=Api",
+        "datePublished": "2020-07-12T18:19:00.0000000Z", "isFamilyFriendly": <DATADOG_API_ENABLED>,
+        "contentUrl": "https:\/\/www.roundrocktexas.gov\/wp-content\/uploads\/2017\/03\/2016FCBEscolaCamp-CharlotteRound2-June202016-15-1948x1300.jpg",
+        "hostPageUrl": "https:\/\/www.roundrocktexas.gov\/news\/official-fc-barcelona-soccer-school-opening-round-rock-austin\/",
+        "contentSize": "198990 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/www.roundrocktexas.gov\/news\/official-fc-barcelona-soccer-school-opening-round...",
+        "width": 1948, "height": 1300, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.DkMnCnltFFhoQiwU6f3R4w&pid=Api",
+        "hostPageDomainFriendlyName": "Round Rock, Texas", "hostPageDiscoveredDate":
+        "2017-03-04T00:00:00.0000000Z", "thumbnail": {"width": 474, "height": 316},
+        "imageInsightsToken": "ccid_jsNLG85I*cp_907EEA5C5472212D4A3921EED413E6F8*mid_753DD79C6E6ECFA35CD168DB7F57D99CB81BC5C8*simid_608029831513140339*thid_OIP.jsNLG85IRlhmD2eLnbN7YAHaE8",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 13, "availableSizesCount":
+        7}, "imageId": "753DD79C6E6ECFA35CD168DB7F57D99CB81BC5C8", "accentColor":
+        "B91228"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=92BB1C9B82C0FD7C4FA09D519C4640633A821F14&simid=608026369768828536",
+        "name": "NASA - Members of the FC Barcelona Soccer Team", "thumbnailUrl":
+        "https:\/\/tse3.mm.bing.net\/th?id=OIP.eyJX5eLaSaDJ00ORE_dOtgHaE6&pid=Api",
+        "datePublished": "2010-02-04T03:13:00.0000000Z", "isFamilyFriendly": <DATADOG_API_ENABLED>,
+        "contentUrl": "http:\/\/www.nasa.gov\/images\/content\/154346main_jsc2006e33427_high.jpg",
+        "hostPageUrl": "http:\/\/www.nasa.gov\/mission_pages\/station\/multimedia\/Barcelona_soccer_team.html",
+        "contentSize": "2231422 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "www.nasa.gov\/mission_pages\/station\/multimedia\/Barcelona_soccer_team.html",
+        "width": 3072, "height": 2040, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.OX0AsTxA43cR2cvqf6Yb0A&pid=Api",
+        "hostPageDomainFriendlyName": "NASA", "hostPageDiscoveredDate": "2010-02-04T03:13:00.0000000Z",
+        "thumbnail": {"width": 474, "height": 314}, "imageInsightsToken": "ccid_eyJX5eLa*cp_374CC69EA2BA448D776A19F635B3B8C0*mid_92BB1C9B82C0FD7C4FA09D519C4640633A821F14*simid_608026369768828536*thid_OIP.eyJX5eLaSaDJ00ORE!_dOtgHaE6",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 21, "availableSizesCount":
+        10}, "imageId": "92BB1C9B82C0FD7C4FA09D519C4640633A821F14", "accentColor":
+        "154274"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=D54F3C1B5B0029ADBF3E2F34449217B335F34679&simid=608006342332653113",
+        "name": "Tienda Louis Vuitton Corte Ingles Barcelona | City of ...", "thumbnailUrl":
+        "https:\/\/tse2.mm.bing.net\/th?id=OIP.lBVWniaLSTewiZ3pNcbYnAHaE8&pid=Api",
+        "datePublished": "2020-05-31T09:08:00.0000000Z", "isFamilyFriendly": <DATADOG_API_ENABLED>,
+        "contentUrl": "https:\/\/a.mktgcdn.com\/p\/9YNGCOcKFzc5U_tdncmwOEf72-7u2gS10uvIOMaNqJA\/1382x922.jpg",
+        "hostPageUrl": "http:\/\/kenmorewa.gov\/tienda-louis-vuitton-corte-ingles-barcelona\/",
+        "contentSize": "324675 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "kenmorewa.gov\/tienda-louis-vuitton-corte-ingles-barcelona", "width": 1382,
+        "height": 922, "hostPageDiscoveredDate": "2019-08-17T00:00:00.0000000Z", "thumbnail":
+        {"width": 474, "height": 316}, "imageInsightsToken": "ccid_lBVWniaL*cp_CB285D84E0E33895F9A6B4EA02E20E2F*mid_D54F3C1B5B0029ADBF3E2F34449217B335F34679*simid_608006342332653113*thid_OIP.lBVWniaLSTewiZ3pNcbYnAHaE8",
+        "insightsMetadata": {"pagesIncludingCount": 2, "availableSizesCount": 2},
+        "imageId": "D54F3C1B5B0029ADBF3E2F34449217B335F34679", "accentColor": "AA6021"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=B5B2F672CB18258D00783D138088C6EC791CAA23&simid=608034087823631608",
+        "name": "Barcelona, Spain : Image of the Day", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.EZULIVLaHlryH2w1UhKNsAHaFj&pid=Api",
+        "datePublished": "2010-02-07T20:42:00.0000000Z", "isFamilyFriendly": <DATADOG_API_ENABLED>,
+        "contentUrl": "http:\/\/eoimages.gsfc.nasa.gov\/images\/imagerecords\/4000\/4627\/ISS009-E-9987.jpg",
+        "hostPageUrl": "http:\/\/earthobservatory.nasa.gov\/IOTD\/view.php?id=4627",
+        "contentSize": "87386 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "earthobservatory.nasa.gov\/IOTD\/view.php?id=4627", "width": 540, "height":
+        405, "hostPageFavIconUrl": "https:\/\/www.bing.com\/th?id=ODF.5zxVvlA0OWF-n6V_axbwXQ&pid=Api",
+        "hostPageDomainFriendlyName": "NASA''s Earth Observatory", "hostPageDiscoveredDate":
+        "2010-02-07T20:42:00.0000000Z", "thumbnail": {"width": 474, "height": 355},
+        "imageInsightsToken": "ccid_EZULIVLa*cp_89BCE68DE34CAFDABA6ABC9660A773F7*mid_B5B2F672CB18258D00783D138088C6EC791CAA23*simid_608034087823631608*thid_OIP.EZULIVLaHlryH2w1UhKNsAHaFj",
+        "insightsMetadata": {"recipeSourcesCount": 0, "pagesIncludingCount": 3, "availableSizesCount":
+        1}, "imageId": "B5B2F672CB18258D00783D138088C6EC791CAA23", "accentColor":
+        "2A496C"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=BDAA2DC618A261F3949EBA5F709050922EBA2511&simid=607998362288326392",
+        "name": "Beautiful Barcelona beckons travelers | Article | The ...", "thumbnailUrl":
+        "https:\/\/tse4.mm.bing.net\/th?id=OIP.-WbhikEXXQLpLxcKB0_waAHaEI&pid=Api",
+        "datePublished": "2021-04-24T15:17:00.0000000Z", "isFamilyFriendly": <DATADOG_API_ENABLED>,
+        "contentUrl": "https:\/\/api.army.mil\/e2\/c\/images\/2014\/09\/04\/361325\/size0-full.jpg",
+        "hostPageUrl": "https:\/\/www.army.mil\/article\/133067\/Beautiful_Barcelona_beckons_travelers\/",
+        "contentSize": "43488 B", "encodingFormat": "jpeg", "hostPageDisplayUrl":
+        "https:\/\/www.army.mil\/article\/133067\/Beautiful_Barcelona_beckons_travelers",
+        "width": 640, "height": 357, "hostPageDiscoveredDate": "2017-03-08T00:00:00.0000000Z",
+        "thumbnail": {"width": 474, "height": 264}, "imageInsightsToken": "ccid_+WbhikEX*cp_AEB450486FE8997B307134FDB30D47AC*mid_BDAA2DC618A261F3949EBA5F709050922EBA2511*simid_607998362288326392*thid_OIP.-WbhikEXXQLpLxcKB0!_waAHaEI",
+        "insightsMetadata": {"pagesIncludingCount": 1, "availableSizesCount": 1},
+        "imageId": "BDAA2DC618A261F3949EBA5F709050922EBA2511", "accentColor": "2D749E"}],
+        "queryExpansions": [{"text": "Beautiful Barcelona", "displayText": "Beautiful",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Beautiful+Barcelona&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Beautiful%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Beautiful+Barcelona&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Beautiful%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Beautiful+Barcelona&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Montjuic Barcelona", "displayText": "Montjuic", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Montjuic+Barcelona&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Montjuic%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Montjuic+Barcelona&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Montjuic%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Montjuic+Barcelona&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Cartoon", "displayText": "Cartoon", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Barcelona+Cartoon&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Cartoon%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Cartoon&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Cartoon%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Barcelona+Cartoon&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Art", "displayText": "Art", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Barcelona+Art&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Art%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Art&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Art%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Barcelona+Art&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Poster", "displayText": "Poster", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Barcelona+Poster&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Poster%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Poster&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Poster%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Barcelona+Poster&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "City of Barcelona", "displayText": "City", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=City+of+Barcelona&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22City%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=City+of+Barcelona&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22City%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=City+of+Barcelona&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Visit Barcelona", "displayText": "Visit", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Visit+Barcelona&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Visit%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Visit+Barcelona&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Visit%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Visit+Barcelona&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Coast", "displayText": "Coast", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Barcelona+Coast&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Coast%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Coast&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Coast%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Barcelona+Coast&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Spain Beach", "displayText": "Spain Beach", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+Spain+Beach&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Spain+Beach%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Spain+Beach&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Spain+Beach%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Barcelona+Spain+Beach&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Homes", "displayText": "Homes", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Barcelona+Homes&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Homes%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Homes&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Homes%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Barcelona+Homes&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona History", "displayText": "History", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Barcelona+History&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22History%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+History&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22History%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Barcelona+History&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Catalonia", "displayText": "Catalonia", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+Catalonia&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Catalonia%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Catalonia&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Catalonia%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Barcelona+Catalonia&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Symbol", "displayText": "Symbol", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Barcelona+Symbol&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Symbol%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Symbol&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Symbol%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Barcelona+Symbol&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona View", "displayText": "View", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Barcelona+View&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22View%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+View&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22View%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Barcelona+View&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Landscape", "displayText": "Landscape", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+Landscape&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Landscape%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Landscape&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Landscape%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Barcelona+Landscape&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Park", "displayText": "Park", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Barcelona+Park&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Park%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Park&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Park%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Barcelona+Park&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Soccer Team Logo", "displayText": "Soccer Team Logo",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Barcelona+Soccer+Team+Logo&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Soccer+Team+Logo%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Soccer+Team+Logo&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Soccer+Team+Logo%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Barcelona+Soccer+Team+Logo&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Monuments", "displayText": "Monuments", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+Monuments&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Monuments%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Monuments&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Monuments%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Barcelona+Monuments&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Food", "displayText": "Food", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Barcelona+Food&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Food%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Food&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Food%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Barcelona+Food&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona From the Air", "displayText": "Air", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Barcelona+From+the+Air&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Air%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+From+the+Air&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Air%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Barcelona+From+the+Air&pid=Api&mkt=en-US&adlt=moderate&t=1"}}],
+        "pivotSuggestions": [{"pivot": "barcelona", "suggestions": [{"text": "Seville,
+        Spain", "displayText": "Seville, Spain", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Seville%2c+Spain&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Seville%2c+Spain%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Seville%2c+Spain&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Seville%2c+Spain%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Seville%2c+Spain&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Paris", "displayText": "Paris", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Paris&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Paris%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Paris&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Paris%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Paris&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Rome", "displayText": "Rome", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Rome&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Rome%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Rome&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Rome%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Rome&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "London", "displayText": "London", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=London&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22London%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=London&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22London%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=London&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Malaga, Spain", "displayText": "Malaga, Spain", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Malaga%2c+Spain&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Malaga%2c+Spain%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Malaga%2c+Spain&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Malaga%2c+Spain%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Malaga%2c+Spain&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Lisbon Portugal", "displayText": "Lisbon Portugal", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Lisbon+Portugal&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Lisbon+Portugal%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Lisbon+Portugal&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Lisbon+Portugal%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Lisbon+Portugal&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Milan Italy", "displayText": "Milan Italy", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Milan+Italy&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Milan+Italy%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Milan+Italy&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Milan+Italy%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Milan+Italy&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Granada, Spain", "displayText": "Granada, Spain", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Granada%2c+Spain&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Granada%2c+Spain%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Granada%2c+Spain&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Granada%2c+Spain%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Granada%2c+Spain&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Classis of Amsterdam", "displayText": "Classis of Amsterdam", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Classis+of+Amsterdam&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Classis+of+Amsterdam%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Classis+of+Amsterdam&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Classis+of+Amsterdam%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Classis+of+Amsterdam&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Berlin Germany", "displayText": "Berlin Germany", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Berlin+Germany&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Berlin+Germany%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Berlin+Germany&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Berlin+Germany%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Berlin+Germany&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Istanbul", "displayText": "Istanbul", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Istanbul&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Istanbul%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Istanbul&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Istanbul%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Istanbul&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Prague", "displayText": "Prague", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Prague&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Prague%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Prague&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Prague%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Prague&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Park Güell", "displayText": "Park Güell", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Park+G%C3%BCell&tq=%7B%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7B%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7D%2c%7B%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7D%2c%7B%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7D%2c%7B%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7D%2c%7B%22cv%22%3a%22Park+G%C3%BCell%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7D%5d%7D&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Park+G%C3%BCell&tq=%7B%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7B%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7D%2c%7B%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7D%2c%7B%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7D%2c%7B%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7D%2c%7B%22cv%22%3a%22Park+G%C3%BCell%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7D%5d%7D",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Park+G%c3%bcell&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "FC Barcelona", "displayText": "FC Barcelona", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=FC+Barcelona&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22FC+Barcelona%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=FC+Barcelona&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22FC+Barcelona%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=FC+Barcelona&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Spain", "displayText": "Spain", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Spain&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Spain%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d&FORM=IRQBPS",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Spain&tq=%7b%22pq%22%3a%22barcelona+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22barcelona%22%2c%22pv%22%3a%22barcelona%22%2c%22hps%22%3a<DATADOG_API_ENABLED>%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Spain%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3a<DATADOG_API_ENABLED>%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Spain&pid=Api&mkt=en-US&adlt=moderate&t=1"}}]},
+        {"pivot": "(site:gov", "suggestions": []}, {"pivot": "OR", "suggestions":
+        []}, {"pivot": "site:mil)", "suggestions": []}], "relatedSearches": [{"text":
+        "Beautiful Barcelona", "displayText": "Beautiful Barcelona", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Beautiful+Barcelona&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Beautiful+Barcelona",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Beautiful+Barcelona&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Montjuic Barcelona", "displayText": "Montjuic Barcelona", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Montjuic+Barcelona&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Montjuic+Barcelona",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Montjuic+Barcelona&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Cartoon", "displayText": "Barcelona Cartoon", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+Cartoon&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Cartoon",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Barcelona+Cartoon&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Poster", "displayText": "Barcelona Poster", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+Poster&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Poster",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Barcelona+Poster&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Coast", "displayText": "Barcelona Coast", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+Coast&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Coast",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Barcelona+Coast&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Art", "displayText": "Barcelona Art", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+Art&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Art",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Barcelona+Art&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "City of Barcelona", "displayText": "City of Barcelona", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=City+of+Barcelona&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=City+of+Barcelona",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=City+of+Barcelona&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Visit Barcelona", "displayText": "Visit Barcelona", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Visit+Barcelona&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Visit+Barcelona",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Visit+Barcelona&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Homes", "displayText": "Barcelona Homes", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+Homes&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Homes",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Barcelona+Homes&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona History", "displayText": "Barcelona History", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+History&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+History",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Barcelona+History&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Doors", "displayText": "Barcelona Doors", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+Doors&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Doors",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Barcelona+Doors&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Symbol", "displayText": "Barcelona Symbol", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+Symbol&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Symbol",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Barcelona+Symbol&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Catalonia", "displayText": "Barcelona Catalonia", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+Catalonia&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Catalonia",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Barcelona+Catalonia&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Landscape", "displayText": "Barcelona Landscape", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+Landscape&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Landscape",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Barcelona+Landscape&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Soccer Team Logo", "displayText": "Barcelona Soccer Team
+        Logo", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Barcelona+Soccer+Team+Logo&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Soccer+Team+Logo",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Barcelona+Soccer+Team+Logo&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona City View", "displayText": "Barcelona City View", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+City+View&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+City+View",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Barcelona+City+View&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona From the Air", "displayText": "Barcelona From the Air",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Barcelona+From+the+Air&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+From+the+Air",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Barcelona+From+the+Air&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Spain Beach", "displayText": "Barcelona Spain Beach",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Barcelona+Spain+Beach&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Spain+Beach",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Barcelona+Spain+Beach&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Park", "displayText": "Barcelona Park", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+Park&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Park",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Barcelona+Park&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Food", "displayText": "Barcelona Food", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+Food&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Food",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Barcelona+Food&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Vacation", "displayText": "Barcelona Vacation", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+Vacation&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Vacation",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Barcelona+Vacation&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Futbol", "displayText": "Barcelona Futbol", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+Futbol&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Futbol",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Barcelona+Futbol&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Sunset", "displayText": "Barcelona Sunset", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+Sunset&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Sunset",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Barcelona+Sunset&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Fans", "displayText": "Barcelona Fans", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+Fans&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Fans",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Barcelona+Fans&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Design", "displayText": "Barcelona Design", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+Design&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Design",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Barcelona+Design&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Monuments", "displayText": "Barcelona Monuments", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+Monuments&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Monuments",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Barcelona+Monuments&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "La Catedral Barcelona", "displayText": "La Catedral Barcelona",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=La+Catedral+Barcelona&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=La+Catedral+Barcelona",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=La+Catedral+Barcelona&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Nightlife", "displayText": "Barcelona Nightlife", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+Nightlife&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Nightlife",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Barcelona+Nightlife&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Museum", "displayText": "Barcelona Museum", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+Museum&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Museum",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Barcelona+Museum&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Black and White", "displayText": "Barcelona Black and
+        White", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Barcelona+Black+and+White&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Black+and+White",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Barcelona+Black+and+White&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Town", "displayText": "Barcelona Town", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+Town&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Town",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Barcelona+Town&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Sign", "displayText": "Barcelona Sign", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+Sign&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Sign",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Barcelona+Sign&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Castle", "displayText": "Barcelona Castle", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+Castle&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Castle",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Barcelona+Castle&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Buildings", "displayText": "Barcelona Buildings", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+Buildings&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Buildings",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Barcelona+Buildings&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Restaurant", "displayText": "Barcelona Restaurant", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+Restaurant&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Restaurant",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Barcelona+Restaurant&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Spain Tourism", "displayText": "Barcelona Spain Tourism",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Barcelona+Spain+Tourism&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Spain+Tourism",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Barcelona+Spain+Tourism&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "FC Barcelona", "displayText": "FC Barcelona", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=FC+Barcelona&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=FC+Barcelona",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=FC+Barcelona&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Sea", "displayText": "Barcelona Sea", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+Sea&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Sea",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Barcelona+Sea&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Mountains", "displayText": "Barcelona Mountains", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+Mountains&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Mountains",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Barcelona+Mountains&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Ecuador", "displayText": "Barcelona Ecuador", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+Ecuador&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Ecuador",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Barcelona+Ecuador&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona City Streets", "displayText": "Barcelona City Streets",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Barcelona+City+Streets&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+City+Streets",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Barcelona+City+Streets&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Arc De Triomf Barcelona", "displayText": "Arc De Triomf Barcelona",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Arc+De+Triomf+Barcelona&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Arc+De+Triomf+Barcelona",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Arc+De+Triomf+Barcelona&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Places", "displayText": "Barcelona Places", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+Places&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Places",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Barcelona+Places&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Travel", "displayText": "Barcelona Travel", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+Travel&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Travel",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Barcelona+Travel&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Barcelona Squad", "displayText": "Barcelona Squad", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Barcelona+Squad&FORM=IRPATC", "searchLink":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Barcelona+Squad",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Barcelona+Squad&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Bilbao", "displayText": "Bilbao", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Bilbao&FORM=IRPATC",
+        "searchLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/images\/search?q=Bilbao",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Bilbao&pid=Api&mkt=en-US&adlt=moderate&t=1"}}]}'
+  recorded_at: Tue, 07 Sep 2021 16:16:40 GMT
+- request:
+    method: post
+    uri: https://api.datadoghq.com/api/v1/events?api_key=<DATADOG_API_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"msg_text":"%%%\n### **Backtrace**\n````\nlib/faraday_middleware/exception_notifier.rb:14:in
+        `call''\napp/engines/cached_search_api_connection.rb:18:in `block in get''\napp/engines/cached_search_api_connection.rb:17:in
+        `get''\n````\n___\n%%%","date_happened":1720719544,"msg_title":" (Faraday::ConnectionFailed)
+        \"Failed to open TCP connection to localhost:8080 (Connection refused - connect(2)
+        for \\\"loc...","priority":"normal","parent":null,"tags":["oasis_api"],"aggregation_key":"[\"
+        (Faraday::ConnectionFailed) \\\"Failed to open TCP connection to localhost:8080
+        (Connection refused - connect(2) for \\\\\\\"loc...\"]","alert_type":"error","event_type":null,"source_type_name":null,"title":"
+        (Faraday::ConnectionFailed) \"Failed to open TCP connection to localhost:8080
+        (Connection refused - ","text":"%%%\n### **Backtrace**\n````\nlib/faraday_middleware/exception_notifier.rb:14:in
+        `call''\napp/engines/cached_search_api_connection.rb:18:in `block in get''\napp/engines/cached_search_api_connection.rb:17:in
+        `get''\n````\n___\n%%%","host":"Bhaviths-MBP-2.attlocal.net","device":null}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - dogapi-rb/1.45.0 (ruby 3.1.4; os darwin22; arch x86_64)
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      Date:
+      - Thu, 11 Jul 2024 17:39:04 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '169'
+      Connection:
+      - keep-alive
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"status":"error","code":403,"errors":["Forbidden"],"statuspage":"http://status.datadoghq.com","twitter":"http://twitter.com/datadogops","email":"support@datadoghq.com"}'
+  recorded_at: Thu, 11 Jul 2024 17:39:04 GMT
+- request:
+    method: post
+    uri: https://api.datadoghq.com/api/v1/events?api_key=<DATADOG_API_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"msg_text":"%%%\n### **Backtrace**\n````\nlib/faraday_middleware/exception_notifier.rb:14:in
+        `call''\napp/engines/cached_search_api_connection.rb:18:in `block in get''\napp/engines/cached_search_api_connection.rb:17:in
+        `get''\n````\n___\n%%%","date_happened":1720719544,"msg_title":" (Faraday::ConnectionFailed)
+        \"Failed to open TCP connection to localhost:8080 (Connection refused - connect(2)
+        for \\\"loc...","priority":"normal","parent":null,"tags":["oasis_api"],"aggregation_key":"[\"
+        (Faraday::ConnectionFailed) \\\"Failed to open TCP connection to localhost:8080
+        (Connection refused - connect(2) for \\\\\\\"loc...\"]","alert_type":"error","event_type":null,"source_type_name":null,"title":"
+        (Faraday::ConnectionFailed) \"Failed to open TCP connection to localhost:8080
+        (Connection refused - ","text":"%%%\n### **Backtrace**\n````\nlib/faraday_middleware/exception_notifier.rb:14:in
+        `call''\napp/engines/cached_search_api_connection.rb:18:in `block in get''\napp/engines/cached_search_api_connection.rb:17:in
+        `get''\n````\n___\n%%%","host":"Bhaviths-MBP-2.attlocal.net","device":null}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - dogapi-rb/1.45.0 (ruby 3.1.4; os darwin22; arch x86_64)
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      Date:
+      - Thu, 11 Jul 2024 17:39:04 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '169'
+      Connection:
+      - keep-alive
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"status":"error","code":403,"errors":["Forbidden"],"statuspage":"http://status.datadoghq.com","twitter":"http://twitter.com/datadogops","email":"support@datadoghq.com"}'
+  recorded_at: Thu, 11 Jul 2024 17:39:04 GMT
+recorded_with: VCR 6.2.0

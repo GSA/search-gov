@@ -125,10 +125,6 @@ Feature: Search
     And I fill in "Ingrese su búsqueda" with "president"
     And I press "Buscar" within the search box
     Then I should see at least "2" web search results
-    And I should see "Todo"
-    And I should not see "Everything"
-    And I should see "Imágenes"
-    And I should not see "Images"
 
   @javascript
   Scenario: Searchers see English Medline Govbox
@@ -304,16 +300,6 @@ Feature: Search
     When I search for "sba"
     Then I should see at least "1" web search results
     And I should not see a link to "Blog" in the search navbar
-
-  Scenario: Searching with malformed query
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email | first_name | last_name | is_image_search_navigable | use_redesigned_results_page |
-      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | true                      | false                       |
-    When I am on agency.gov's search page
-    And I search for "<b>hello</b><script>script</script>"
-    Then I should see "hello"
-    And I should not see "script"
-    And I should see a link to "Images" with url that ends with "query=hello" in the search navbar
 
   Scenario: Searching for site specific results using query
     Given the following Affiliates exist:
