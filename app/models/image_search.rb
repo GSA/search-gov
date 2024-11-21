@@ -39,7 +39,7 @@ class ImageSearch
     if @query.present?
       @search_instance.run
 
-      if results.blank? && (@page == 1) && !@uses_cr && @affiliate.is_bing_image_search_enabled?
+      if results.blank? && (@page == 1) && !@uses_cr
         @search_instance = initialize_search_instance(true)
         @search_instance.run
       end

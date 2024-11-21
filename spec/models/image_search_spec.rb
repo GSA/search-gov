@@ -57,7 +57,7 @@ describe ImageSearch do
   end
 
   describe '#run' do
-    context 'when Oasis results are blank AND we are on page 1 AND no commercial results override is set AND Bing image results are enabled' do
+    context 'when there are Oasis results AND we are on page 1 AND no commercial results override is set' do
       let(:image_search) { described_class.new(affiliate:, query: 'lsdkjflskjflskjdf') }
       let(:odie_image_search) { instance_double(OdieImageSearch, results: nil) }
 
@@ -126,7 +126,6 @@ describe ImageSearch do
     let(:odie_image_search) { instance_double(OdieImageSearch, default_module_tag: 'module_tag', results: [], spelling_suggestion: 'spel') }
 
     before do
-      affiliate.is_bing_image_search_enabled = true
       allow(SuggestionBlock).to receive(:exists?).and_return(suggestion_block_exists)
       allow(OdieImageSearch).to receive(:new).and_return(odie_image_search)
       allow(odie_image_search).to receive(:run)

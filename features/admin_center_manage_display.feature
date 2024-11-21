@@ -1,8 +1,8 @@
 Feature: Manage Display
   Scenario: Editing Sidebar Settings on a new site
     Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | is_bing_image_search_enabled | use_redesigned_results_page |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | true                         | false                       |
+      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Display page
     Then I should see "Image Search Label 0"
@@ -26,8 +26,8 @@ Feature: Manage Display
     And I should see "Rss Feed 1"
 
     When the following Affiliates exist:
-      | display_name | name             | contact_email   | first_name | last_name | is_bing_image_search_enabled | use_redesigned_results_page |
-      | agency site  | bingimageenabled | john@agency.gov | John       | Bar       | true                         | false                       |
+      | display_name | name             | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | agency site  | bingimageenabled | john@agency.gov | John       | Bar       | false                       |
     And affiliate "bingimageenabled" has the following RSS feeds:
       | name  | url                 | show_only_media_content | position | oasis_mrss_name |
       | Media | photos.gov/all.atom | true                    | 200      | 100             |
@@ -37,8 +37,8 @@ Feature: Manage Display
     And I should not see "Rss Feed 1"
 
     When the following Affiliates exist:
-      | display_name | name                | contact_email   | first_name | last_name | is_bing_image_search_enabled | use_redesigned_results_page |
-      | agency site  | bing-image-disabled | john@agency.gov | John       | Bar       | false                        | false                       |
+      | display_name | name                | contact_email   | first_name | last_name | use_redesigned_results_page |
+      | agency site  | bing-image-disabled | john@agency.gov | John       | Bar       | false                       |
     And affiliate "bing-image-disabled" has the following RSS feeds:
       | name   | url                 | show_only_media_content | position | oasis_mrss_name |
       | Photos | photos.gov/all.atom | true                    | 200      | 100             |
