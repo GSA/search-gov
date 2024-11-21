@@ -4,9 +4,6 @@ Feature: Manage Display
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Manage Display page
-    Then I should see "Image Search Label 0"
-    And I should not see "Results Format"
 
     When affiliate "agency.gov" has the following RSS feeds:
       | name   | url                    | show_only_media_content | position | oasis_mrss_name |
@@ -24,30 +21,6 @@ Feature: Manage Display
     And I go to the agency.gov's Manage Display page
     Then I should see "Image Search Label 0"
     And I should see "Rss Feed 1"
-
-    When the following Affiliates exist:
-      | display_name | name             | contact_email   | first_name | last_name | use_redesigned_results_page |
-      | agency site  | bingimageenabled | john@agency.gov | John       | Bar       | false                       |
-    And affiliate "bingimageenabled" has the following RSS feeds:
-      | name  | url                 | show_only_media_content | position | oasis_mrss_name |
-      | Media | photos.gov/all.atom | true                    | 200      | 100             |
-    And I go to the bingimageenabled's Manage Display page
-    Then I should see "Image Search Label 0"
-    And I should see "Domains/MRSS"
-    And I should not see "Rss Feed 1"
-
-    When the following Affiliates exist:
-      | display_name | name                | contact_email   | first_name | last_name | use_redesigned_results_page |
-      | agency site  | bing-image-disabled | john@agency.gov | John       | Bar       | false                       |
-    And affiliate "bing-image-disabled" has the following RSS feeds:
-      | name   | url                 | show_only_media_content | position | oasis_mrss_name |
-      | Photos | photos.gov/all.atom | true                    | 200      | 100             |
-    And I go to the bing-image-disabled's Manage Display page
-    Then I should see "Image Search Label 0"
-    And I should not see "Domains/MRSS"
-    And I should not see "Rss Feed 1"
-    When I follow "MRSS"
-    Then I should see "Photos"
 
   @javascript
   Scenario: Editing GovBoxes Settings

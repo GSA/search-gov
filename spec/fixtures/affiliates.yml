@@ -79,6 +79,13 @@ spanish_affiliate:
   locale: es
   api_access_key: spanish_key
 
+site_with_one_user:
+  <<: *DEFAULTS
+  display_name: site with one user
+  name: site_with_one_user
+  website: https://www.usa.gov
+  api_access_key: one_user_key
+
 dcv_affiliate:
   <<: *DEFAULTS
   display_name: Domain Control Validation Site
