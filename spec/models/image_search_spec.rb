@@ -71,12 +71,10 @@ describe ImageSearch do
         it 'performs an ODIE image search' do
           image_search.run
           expect(OdieImageSearch).to have_received(:new).
-            with(hash_including(
-              affiliate: affiliate,
-              page: 1,
-              per_page: 20,
-              query: 'lsdkjflskjflskjdf'
-            ))
+            with(hash_including(affiliate:,
+                                page: 1,
+                                per_page: 20,
+                                query: 'lsdkjflskjflskjdf'))
         end
       end
     end

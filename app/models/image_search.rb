@@ -36,18 +36,11 @@ class ImageSearch
                           :total
 
   def run
-    return @error_message = I18n.t(:empty_query) unless @query.present?
+    return handle_empty_query if @query.blank?
 
-    @search_instance ||= initialize_search_instance(false)
-    @search_instance.run
-
-    # Reinitialize only if no results, page is 1, and no commercial results
-    if results.blank? && (@page == 1) && !@uses_cr
-      @search_instance ||= initialize_search_instance(true)
-      @search_instance.run
-    end
-
-    assign_module_tag if results.present?
+    initialize_and_run_search
+    reinitialize_and_run_search_if_needed
+    assign_module_tag_if_results_present
   end
 
   def format_results
@@ -81,6 +74,26 @@ class ImageSearch
   end
 
   private
+
+  def handle_empty_query
+    @error_message = I18n.t(:empty_query)
+  end
+
+  def initialize_and_run_search
+    @search_instance ||= initialize_search_instance(false)
+    @search_instance.run
+  end
+
+  def reinitialize_and_run_search_if_needed
+    return unless results.blank? && (@page == 1) && !@uses_cr
+
+    @search_instance ||= initialize_search_instance(true)
+    @search_instance.run
+  end
+
+  def assign_module_tag_if_results_present
+    assign_module_tag if results.present?
+  end
 
   def initialize_search_instance(uses_cr)
     params = search_params(uses_cr)
