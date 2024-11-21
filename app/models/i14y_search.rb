@@ -1,8 +1,6 @@
 class I14ySearch < FilterableSearch
-  include Api::V2::NonCommercialSearch
-  include Govboxable
   include SearchInitializer
-
+  include Govboxable
   I14Y_SUCCESS = 200
   FACET_FIELDS = %w[audience
                     changed
@@ -62,10 +60,6 @@ class I14ySearch < FilterableSearch
   end
 
   protected
-
-  def result_url(result)
-    result.link
-  end
 
   def include_facet_fields(filter_options)
     filter_options[:include] = "title,path,thumbnail_url,#{FACET_FIELDS.join(',')}"
