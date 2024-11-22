@@ -7,7 +7,7 @@ module Api::V2::NonCommercialSearch
   attr_reader :next_offset
 
   def initialize(options = {})
-    super(options.merge(Api::V2::HighlightOptions::DEFAULT))
+    super
     @next_offset_within_limit = options[:next_offset_within_limit]
   end
 
