@@ -42,6 +42,11 @@ describe NavigationsHelper do
   end
 
   describe '#filter_navigations' do
+    before do
+      expect(affiliate).to receive(:has_social_image_feeds?).and_return(false)
+      expect(affiliate).to receive(:navigations).and_return([image_nav, media_nav, press_nav])
+    end
+
     let(:image_search_label) { mock_model(ImageSearchLabel, name: 'Images') }
 
     let(:image_nav) do
@@ -70,27 +75,8 @@ describe NavigationsHelper do
                                  default_search_label: 'Everything',
                                  name: 'myaff') }
 
-    context 'when is_bing_image_search_enabled=true' do
-      before do
-        expect(affiliate).to receive(:has_social_image_feeds?).and_return(true)
-        expect(affiliate).to receive(:navigations).and_return([image_nav, media_nav, press_nav])
-      end
-
-      it 'returns only the image nav' do
-        expect(helper.filter_navigations(affiliate, affiliate.navigations)).to eq([image_nav, press_nav])
-      end
-    end
-
-    context 'when is_bing_image_search_enabled=false' do
-      before do
-        expect(affiliate).to receive(:has_social_image_feeds?).and_return(false)
-        expect(affiliate).to receive(:is_bing_image_search_enabled?).and_return(false)
-        expect(affiliate).to receive(:navigations).and_return([image_nav, media_nav, press_nav])
-      end
-
-      it 'returns only the press nav' do
-        expect(helper.filter_navigations(affiliate, affiliate.navigations)).to eq([press_nav])
-      end
+    it 'returns only the press nav' do
+      expect(helper.filter_navigations(affiliate, affiliate.navigations)).to eq([press_nav])
     end
   end
 end
