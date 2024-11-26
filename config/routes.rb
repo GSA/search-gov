@@ -185,6 +185,11 @@ Rails.application.routes.draw do
         post :upload
       end
     end
+    resources :bulk_zombie_url_upload, only: :index do
+      collection do
+        post :upload
+      end
+    end
     resources :bulk_affiliate_styles_upload, only: :index do
       collection do
         post :upload
