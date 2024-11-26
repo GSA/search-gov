@@ -2,7 +2,6 @@ class I14ySearch < FilterableSearch
   include SearchInitializer
   include Govboxable
 
-  I14Y_SUCCESS = 200
   FACET_FIELDS = %w[audience
                     changed
                     content_type
@@ -12,6 +11,7 @@ class I14ySearch < FilterableSearch
                     searchgov_custom2
                     searchgov_custom3
                     tags].freeze
+
   attr_reader :aggregations, :collection, :matching_site_limits
 
   def initialize(options = {})
