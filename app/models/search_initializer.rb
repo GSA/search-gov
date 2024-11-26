@@ -1,6 +1,8 @@
 module SearchInitializer
   include Api::V2::NonCommercialSearch
 
+  I14Y_SUCCESS = 200
+
   def initialize(options)
     super
     @options = options
@@ -22,23 +24,22 @@ module SearchInitializer
     @total = response.metadata.total
     post_processor = I14yPostProcessor.new(@enable_highlighting, response.results, @affiliate.excluded_urls_set)
     post_processor.post_process_results
-    set_pagination_values(post_processor, response)
-    set_metadata_values(response)
+    process_pagination_values(post_processor, response)
+    process_metadata_values(response)
   end
 
-  def set_pagination_values(post_processor, response)
+  def process_pagination_values(post_processor, response)
     @results = paginate(response.results)
     @normalized_results = process_data_for_redesign(post_processor)
     @startrecord = ((@page - 1) * @per_page) + 1
     @endrecord = @startrecord + @results.size - 1
   end
 
-  def set_metadata_values(response)
+  def process_metadata_values(response)
     @spelling_suggestion = response.metadata.suggestion.text if response.metadata.suggestion.present?
     @aggregations = response.metadata.aggregations if response.metadata.aggregations.present?
     @next_offset = @offset + @limit if @next_offset_within_limit && @total > (@offset + @limit)
   end
-  protected
 
   def result_url(result)
     result.link
@@ -50,11 +51,10 @@ module SearchInitializer
   end
 
   def add_facets_to_results(result)
-    I14ySearch::FACET_FIELDS.reject{ |f| f == 'created' || result[f].nil? }
-      .each_with_object({}) do |field, fields|
-        field_key = field.to_sym == :changed ? :updated_date : field.to_sym
-        field_value = field.to_sym == :changed ? result['changed'].to_date : result[field]
-        fields[field_key] = field_value
-      end
+    I14ySearch::FACET_FIELDS.reject{ |f| f == 'created' || result[f].nil? }.each_with_object({}) do |field, fields|
+      field_key = field.to_sym == :changed ? :updated_date : field.to_sym
+      field_value = field.to_sym == :changed ? result['changed'].to_date : result[field]
+      fields[field_key] = field_value
+    end
   end
 end
