@@ -66,7 +66,7 @@ interface VerticalNavProps {
 export const VerticalNav = ({ relatedSites = [], navigationLinks = [], relatedSitesDropdownLabel = '' }: VerticalNavProps) => {
   const i18n             = useContext(LanguageContext);
   const styles           = useContext(StyleContext);
-  const showDefaultTabs  = () => !(navigationLinks.length === 1 && navigationLinks[0].facet === 'Default');
+  const showDefaultTabs  = () => !(navigationLinks.length === 1 && relatedSites.length === 0 && navigationLinks[0].facet === 'Default');
 
   const arrowWidth       = 16;
   const padding          = 32;
@@ -152,9 +152,10 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [], relatedSi
       <GridContainer>
         <Header basic={true} className="vertical-wrapper">
           {showDefaultTabs() && (
-          <div className="usa-nav-container" id="tabs-container">
-            <StyledPrimaryNav items={navItems} styles={styles} aria-label={i18n.t('ariaLabelVerticalNav')} />
-          </div>)}
+            <div className="usa-nav-container" id="tabs-container">
+              <StyledPrimaryNav items={navItems} styles={styles} aria-label={i18n.t('ariaLabelVerticalNav')} />
+            </div>
+          )}
         </Header>
       </GridContainer>
     </div>
