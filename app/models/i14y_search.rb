@@ -97,21 +97,6 @@ class I14ySearch < FilterableSearch
     handles.join(',')
   end
 
-  def handle_response(response)
-    return unless response && response.status == I14Y_SUCCESS
-
-    @total = response.metadata.total
-    post_processor = I14yPostProcessor.new(@enable_highlighting, response.results, @affiliate.excluded_urls_set)
-    post_processor.post_process_results
-    @results = paginate(response.results)
-    @normalized_results = process_data_for_redesign(post_processor)
-    @startrecord = ((@page - 1) * @per_page) + 1
-    @endrecord = @startrecord + @results.size - 1
-    @spelling_suggestion = response.metadata.suggestion.text if response.metadata.suggestion.present?
-    @aggregations = response.metadata.aggregations if response.metadata.aggregations.present?
-    @next_offset = @offset + @limit if @next_offset_within_limit && @total > (@offset + @limit)
-  end
-
   def process_data_for_redesign(post_processor)
     post_processor.normalized_results(@total)
   end
