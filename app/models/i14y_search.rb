@@ -1,6 +1,7 @@
 class I14ySearch < FilterableSearch
   include SearchInitializer
   include Govboxable
+
   I14Y_SUCCESS = 200
   FACET_FIELDS = %w[audience
                     changed
@@ -108,6 +109,7 @@ class I14ySearch < FilterableSearch
     @endrecord = @startrecord + @results.size - 1
     @spelling_suggestion = response.metadata.suggestion.text if response.metadata.suggestion.present?
     @aggregations = response.metadata.aggregations if response.metadata.aggregations.present?
+    @next_offset = @offset + @limit if @next_offset_within_limit && @total > (@offset + @limit)
   end
 
   def process_data_for_redesign(post_processor)
