@@ -19,12 +19,7 @@ class WebDocument
   end
 
   def language
-    @language ||= begin
-      extracted = Language.iso_639_1(extract_language)
-      detected = detect_language
-      result = validate_language(extracted || detected || 'en')
-      result
-    end
+    @language ||= Language.iso_639_1(extract_language) || detect_language || 'en'
   end
 
   def created
@@ -69,12 +64,6 @@ class WebDocument
     detector = CLD3::NNetLanguageIdentifier.new(0, 1000)
     detected = detector.find_language(parsed_content)
     detected[:reliable?] ? detected[:language].to_s : nil
-  end
-
-  def validate_language(lang)
-    return 'en' if lang.nil? || lang == 'en'
-
-    Language.iso_639_1(lang) || 'en'
   end
 
   def timestamp(timestamp)
