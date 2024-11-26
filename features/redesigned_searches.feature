@@ -274,7 +274,7 @@ Feature: Search - redesign
       | display_name | name    | contact_email | first_name | last_name | domains        |
       | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | whitehouse.gov |
     When I am on bar.gov's redesigned search page
-    Then I should see "Everything"
+    Then I should not see "Everything"
     And I should not see "More"
     And I should not see "Related Searches"
 
