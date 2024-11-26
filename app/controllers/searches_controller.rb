@@ -73,7 +73,7 @@ class SearchesController < ApplicationController
     if get_commercial_results?
       [WebSearch, :web, :index]
     elsif gets_i14y_results?
-      [ApiI14ySearch, :i14y, :i14y]
+      [I14ySearch, :i14y, :i14y]
     elsif @affiliate.gets_blended_results
       [BlendedSearch, :blended, :blended]
     else
