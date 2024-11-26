@@ -2,6 +2,8 @@
 
 require 'spec_helper'
 
+ContentTypeStruct = Struct.new(:mime_type)
+
 describe SearchgovUrl do
   let(:url) { 'https://www.agency.gov/boring.html' }
   let(:html) { read_fixture_file('/html/page_with_og_metadata.html') }
@@ -10,7 +12,6 @@ describe SearchgovUrl do
   let(:html_content) { '<html lang="en"><head><title>Sample Page</title></head><body>Hello World</body></html>' }
   let(:response_headers) { { 'Content-Type' => 'text/html', 'Content-Length' => html_content.bytesize.to_s } }
   let(:response_uri) { URI.parse(url) }
-  ContentTypeStruct = Struct.new(:mime_type)
   let(:response) { instance_double(HTTP::Response, body: html_content, headers: response_headers, code: 200, content_type: ContentTypeStruct.new('text/html'), uri: response_uri) }
   let(:raw_document) { open_fixture_file('/pdf/test.pdf') }
   let(:document) do
@@ -31,7 +32,6 @@ describe SearchgovUrl do
                     noindex?: false,
                     canonical_url: nil)
   end
-
   let(:searchgov_domain) { instance_double(SearchgovDomain, check_status: '200 OK', available?: true, js_renderer: false, valid?: true, domain: 'agency.gov', status: 'ok') }
 
   it { is_expected.to have_readonly_attribute(:hashed_url) }
