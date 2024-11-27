@@ -1,5 +1,4 @@
-class BlendedSearch < FilterableSearch
-  include SearchInitializer
+class BlendedSearch < I14ySearch
   include Govboxable
 
   self.default_sort_by = 'r'.freeze
