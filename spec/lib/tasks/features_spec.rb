@@ -32,7 +32,7 @@ describe 'Features-related rake tasks' do
           AffiliateFeatureAddition.delete_all
           @a1 = affiliates(:basic_affiliate)
           @a2 = affiliates(:power_affiliate)
-          @f1 = features(:disco)
+          @f1 = Feature.create(internal_name: 'faceted_search', display_name: 'Faceted Search')
           @a1.features << @f1
           @input_file_name = ::Rails.root.to_s + '/affiliate_feature_addition.txt'
           File.open(@input_file_name, 'w+') do |file|
