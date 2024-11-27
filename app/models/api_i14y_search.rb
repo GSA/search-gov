@@ -9,6 +9,6 @@ class ApiI14ySearch < I14ySearch
   end
 
   def as_json_result_hash(result)
-    result.respond_to?(:thumbnail_url) ? super.merge(thumbnail_url: result.thumbnail_url) : super
+    super.merge(thumbnail_url: result.thumbnail_url)
   end
 end
