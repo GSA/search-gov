@@ -47,6 +47,7 @@ class BlendedSearch < FilterableSearch
     return unless response
 
     @total = response.total
+    @next_offset = @offset + @limit if @next_offset_within_limit && @total > (@offset + @limit)
     post_processor = ResultsWithBodyAndDescriptionPostProcessor.new(response.results)
     post_processor.post_process_results
     @results = paginate(response.results)
