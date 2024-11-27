@@ -27,7 +27,8 @@ module ReactHelper
       sitelimit: sitelimit_alert(search, params),
       spellingSuggestion: spelling_text(search, search_options),
       translations: translations(affiliate.locale),
-      vertical:
+      vertical: vertical,
+      facetsEnabled: ENV.fetch('FACETED_SEARCH_ENABLED', 'false')
     }
 
     react_component('SearchResultsLayout', data.compact_blank)
