@@ -23,6 +23,7 @@ module SearchInitializer
 
   def process_valid_response(response)
     @total = response.metadata.total
+    @next_offset = @offset + @limit if @next_offset_within_limit && @total > (@offset + @limit)
     post_processor = I14yPostProcessor.new(@enable_highlighting, response.results, @affiliate.excluded_urls_set)
     post_processor.post_process_results
     process_pagination_values(post_processor, response)
@@ -39,16 +40,14 @@ module SearchInitializer
   def process_metadata_values(response)
     @spelling_suggestion = response.metadata.suggestion.text if response.metadata.suggestion.present?
     @aggregations = response.metadata.aggregations if response.metadata.aggregations.present?
-    @next_offset = @offset + @limit if @next_offset_within_limit && @total > (@offset + @limit)
   end
 
   def result_url(result)
-    result.link
+    result.link if result.respond_to?(:link)
   end
 
   def as_json_result_hash(result)
-    base_hash = super.merge(thumbnail_url: result.thumbnail_url)
-    @include_facets ? base_hash.merge(add_facets_to_results(result)) : base_hash
+    @include_facets ? super.merge(add_facets_to_results(result)) : super
   end
 
   def add_facets_to_results(result)
