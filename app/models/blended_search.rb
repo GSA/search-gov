@@ -19,6 +19,7 @@ class BlendedSearch < I14ySearch
     }.reverse_merge(@highlight_options)
 
     elastic_blended_results = ElasticBlended.search_for(search_options)
+
     ensure_no_suggestion_when_results_present(elastic_blended_results)
     if elastic_blended_results && elastic_blended_results.total.zero? && elastic_blended_results.suggestion.present?
       suggestion = elastic_blended_results.suggestion
