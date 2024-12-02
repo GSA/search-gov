@@ -3,15 +3,15 @@
 class BulkZombieUrlUploaderJob < ApplicationJob
   queue_as :searchgov
 
-  delegate :upload, to: :@uploader
-
-  def perform(user, filename, urls, reindex: false)
+  def perform(user, filename, filepath)
     @user = user
-    @uploader = BulkZombieUrlUploader.new(filename, urls)
-
-    upload
+    @filename = filename
+    @uploader = BulkZombieUrlUploader.new(filename, filepath)
+    @uploader.upload
     report_results
   end
+
+  private
 
   def report_results
     log_results
@@ -20,14 +20,14 @@ class BulkZombieUrlUploaderJob < ApplicationJob
 
   def log_results
     results = @uploader.results
-    Rails.logger.info "BulkZombieUrlUploaderJob: #{results.name}"
+    Rails.logger.info "BulkZombieUrlUploaderJob: #{results.file_name}"
     Rails.logger.info "    #{results.total_count} URLs"
     Rails.logger.info "    #{results.error_count} errors"
   end
 
   def send_results_email
     results = @uploader.results
-    email = BulkZombieUrlUploadResultsMailer.with(user: @user, results: results).results_email
+    email = BulkZombieUrlUploadResultsMailer.with(user: @user, results:).results_email
     email.deliver_now!
   end
 end

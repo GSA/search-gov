@@ -1,43 +1,62 @@
-# frozen_string_literal: true
+RSpec.describe BulkZombieUrlUploader do
+  let(:filename) { 'bulk_zombie_urls.csv' }
+  let(:filepath) { Rails.root.join('features/support/bulk_zombie_urls.csv') }
+  let(:uploader) { described_class.new(filename, filepath) }
+  let(:valid_csv_content) { "URL,DOC_ID\nhttp://example.com,123\nhttp://test.com,456" }
 
-describe BulkZombieUrlUploader do
-  let(:raw_urls) { [] }
-  let(:urls) { StringIO.new(raw_urls.join("\n")) }
-  let(:uploader) { described_class.new('the-uploader', urls) }
+  before do
+    allow(File).to receive(:read).and_return(valid_csv_content)
+  end
 
   describe '#upload' do
-    context 'with two good URls' do
-      let(:raw_urls) do
-        [
-          'https://agency.gov/a-url',
-          'https://agency.gov/another-url'
-        ]
+    context 'when a row fails to process' do
+      let(:row) { { 'URL' => 'http://example.com', 'DOC_ID' => '123' } }
+
+      before do
+        allow(CSV).to receive(:parse).and_return([row])
+        allow(SearchgovUrl).to receive(:find_by).and_raise(StandardError, 'Test error')
+        allow(Rails.logger).to receive(:error)
       end
 
-      before { uploader.upload }
+      it 'logs the error and updates the results' do
+        results = uploader.upload
 
-      it 'deletes the first SearchgovUrl' do
-        expect(SearchgovUrl.find_by(url: raw_urls.first)).not_to be_nil
+        expect(results.errors['http://example.com']).to include('Test error')
+        expect(results.error_count).to eq(1)
+        expect(Rails.logger).to have_received(:error).with(/Failure to process bulk upload zombie URL row:/)
+      end
+    end
+  end
+
+  describe '#process_url' do
+    let(:url) { 'http://example.com' }
+    let(:document_id) { '123' }
+
+    context 'when SearchgovUrl exists' do
+      let(:searchgov_url) { instance_double(SearchgovUrl) }
+
+      before do
+        allow(SearchgovUrl).to receive(:find_by).with(url: url).and_return(searchgov_url)
+        allow(searchgov_url).to receive(:destroy)
       end
 
-      it 'deletes the second SearchgovUrl' do
-        expect(SearchgovUrl.find_by(url: raw_urls.second)).not_to be_nil
+      it 'destroys the existing SearchgovUrl' do
+        uploader.send(:process_url, url, document_id)
+
+        expect(searchgov_url).to have_received(:destroy)
+      end
+    end
+
+    context 'when SearchgovUrl does not exist' do
+      before do
+        allow(SearchgovUrl).to receive(:find_by).with(url: url).and_return(nil)
+        allow(I14yDocument).to receive(:delete)
       end
 
-      it 'reports the number of URLs processed' do
-        expect(uploader.results.total_count).to eq(raw_urls.length)
-      end
+      it 'deletes the I14yDocument with the given document_id' do
+        uploader.send(:process_url, url, document_id)
 
-      it 'reports the number of URLs created' do
-        expect(uploader.results.ok_count).to eq(raw_urls.length)
-      end
-
-      it 'reports the number of errors' do
-        expect(uploader.results.error_count).to eq(0)
-      end
-
-      it 'does not report any errors' do
-        expect(uploader.results.error_messages).to be_empty
+        expect(I14yDocument).to have_received(:delete).with(handle: 'searchgov', document_id: document_id)
       end
     end
   end

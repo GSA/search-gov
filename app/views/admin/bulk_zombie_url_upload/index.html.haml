@@ -1,5 +1,5 @@
 %h2
-  Bulk Zombie URL Upload
+  Bulk Zombie Url Upload
 %p
   To upload a list of URLs to be deleted, follow these instructions:
   %ul.bulk-upload-instructions
@@ -20,18 +20,15 @@
       Upload the file to Search.gov using the upload button below.
     %li
       You will receive an email when processing of your URLs is complete.
-  %p
-    %strong
-      Sample file format:
-    %code
-      %pre
-        http://www.sample.gov/1.html
-        http://www.sample.gov/2.html
-        http://www.sample.gov/3.html
-    = form_tag upload_admin_bulk_zombie_url_upload_index_path, :multipart => true do
-      = file_field_tag 'bulk_zombie_upload_urls', :accept => 'text/plain', :class => 'file'
-      %p
-      = check_box_tag :reindex
-      = label_tag :reindex, 'Reindex existing URLs?'
-      %p
-      = submit_tag "Upload", :class => 'submit btn-upload'
+  %strong
+    Sample file format:
+  %code
+    %pre
+      URL,DOC_ID
+      http://www.sample.gov/1.html,sample121
+      http://www.sample.gov/2.html,sample122
+      http://www.sample.gov/3.html,sample123
+  = form_tag upload_admin_bulk_zombie_url_upload_index_path, :multipart => true, :class => 'form' do
+    = file_field_tag 'bulk_upload_zombie_urls', :accept => 'text/csv'
+    %p
+    = submit_tag "Upload", :class => 'submit btn-upload'
