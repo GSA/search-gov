@@ -3,17 +3,17 @@
 module Admin
   class BulkZombieUrlUploadController < AdminController
     def index
-      @page_title = 'Bulk Zombie URL Upload'
+      @page_title = 'Bulk Zombie Url Upload'
     end
 
     def upload
       begin
-        @file = params[:bulk_upload_urls]
-        BulkZombieUrlUploader::UrlFileValidator.new(@file).validate!
+        @file = params[:bulk_upload_zombie_urls]
+        BulkZombieUrls::FileValidator.new(@file).validate!
         enqueue_job
         flash[:success] = success_message(@file.original_filename)
       rescue BulkZombieUrlUploader::Error => e
-        Rails.logger.error 'Url upload failed', e
+        Rails.logger.error 'Zombie Url upload failed', e
         flash[:error] = e.message
       end
 
@@ -33,8 +33,7 @@ module Admin
       BulkZombieUrlUploaderJob.perform_later(
         current_user,
         @file.original_filename,
-        @file.tempfile.set_encoding('UTF-8').readlines,
-        reindex: ActiveModel::Type::Boolean.new.cast(params[:reindex])
+        @file.tempfile.path
       )
     end
   end
