@@ -3,7 +3,6 @@ class I14ySearch < FilterableSearch
   include Govboxable
 
   I14Y_SUCCESS = 200
-
   FACET_FIELDS = %w[audience
                     changed
                     content_type
@@ -30,28 +29,23 @@ class I14ySearch < FilterableSearch
       handles: handles,
       language: @affiliate.locale,
       query: formatted_query,
-      size: detect_size,
+      size: @limit || @per_page,
       offset: detect_offset
     }.merge!(filter_options)
 
     I14yCollections.search(search_options)
   rescue Faraday::ClientError => e
     Rails.logger.error 'I14y search problem', e
+
     false
   end
-
   def filter_options
-    filter_options = {}
-    date_filter_options(filter_options)
-    facet_filter_options(filter_options)
-    filter_options[:ignore_tags] = @affiliate.tag_filters.excluded.pluck(:tag).join(',') if @affiliate.tag_filters.excluded.present?
-    filter_options[:tags] = included_tags if @tags || @affiliate.tag_filters.required.present?
-    include_facet_fields(filter_options) if @include_facets
-    filter_options
-  end
-
-  def detect_size
-    @limit || @per_page
+    options = {}.tap do |opts|
+      opts.merge!(date_filter_hash, facet_filter_hash)
+      opts[:ignore_tags] = @affiliate.tag_filters.excluded.pluck(:tag).join(',') if @affiliate.tag_filters.excluded.present?
+      opts[:tags] = included_tags if @tags || @affiliate.tag_filters.required.present?
+      opts[:include] = "title,path,thumbnail_url,#{FACET_FIELDS.join(',')}" if @include_facets
+    end
   end
 
   def detect_offset
@@ -64,25 +58,22 @@ class I14ySearch < FilterableSearch
 
   protected
 
-  def include_facet_fields(filter_options)
-    filter_options[:include] = "title,path,thumbnail_url,#{FACET_FIELDS.join(',')}"
+  def date_filter_hash
+    {}.tap do |opts|
+      opts[:sort_by_date] = 1 if @sort_by == 'date'
+      opts[:min_timestamp] = @since if @since
+      opts[:max_timestamp] = @until if @until
+      opts[:min_timestamp_created] = @created_since if @created_since
+      opts[:max_timestamp_created] = @created_until if @created_until
+    end
   end
 
-  def date_filter_options(filter_options)
-    filter_options[:sort_by_date] = 1 if @sort_by == 'date'
-    filter_options[:min_timestamp] = @since if @since
-    filter_options[:max_timestamp] = @until if @until
-    filter_options[:min_timestamp_created] = @created_since if @created_since
-    filter_options[:max_timestamp_created] = @created_until if @created_until
-  end
-
-  def facet_filter_options(filter_options)
-    filter_options[:audience] = @audience if @audience
-    filter_options[:content_type] = @content_type if @content_type
-    filter_options[:mime_type] = @mime_type if @mime_type
-    filter_options[:searchgov_custom1] = @searchgov_custom1 if @searchgov_custom1
-    filter_options[:searchgov_custom2] = @searchgov_custom2 if @searchgov_custom2
-    filter_options[:searchgov_custom3] = @searchgov_custom3 if @searchgov_custom3
+  def facet_filter_hash
+    {}.tap do |opts|
+      %i[audience content_type mime_type searchgov_custom1 searchgov_custom2 searchgov_custom3].each do |field|
+        opts[field] = instance_variable_get("@#{field}") if instance_variable_get("@#{field}")
+      end
+    end
   end
 
   def included_tags
