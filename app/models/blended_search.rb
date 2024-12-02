@@ -41,6 +41,10 @@ class BlendedSearch < I14ySearch
     @offset ? @offset.zero? : super
   end
 
+  def result_url(result)
+    result.url
+  end
+
   protected
 
   def handle_response(response)
