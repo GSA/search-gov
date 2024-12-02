@@ -12,7 +12,7 @@ class BlendedSearch < I14ySearch
       offset: detect_offset,
       q: @query,
       rss_feed_url_ids: @affiliate.rss_feed_urls.pluck(:id),
-      size: detect_size,
+      size: @limit || @per_page,
       sort: @sort,
       since: @since,
       until: @until
@@ -29,9 +29,7 @@ class BlendedSearch < I14ySearch
     elastic_blended_results
   end
 
-  def detect_size
-    @limit || @per_page
-  end
+
 
   def detect_offset
     @offset || ((@page - 1) * @per_page)
