@@ -2,7 +2,6 @@ class I14ySearch < FilterableSearch
   include SearchInitializer
   include Govboxable
 
-  I14Y_SUCCESS = 200
   FACET_FIELDS = %w[audience
                     changed
                     content_type
@@ -77,10 +76,7 @@ class I14ySearch < FilterableSearch
   end
 
   def included_tags
-    tags = []
-    tags << @affiliate.tag_filters.required.pluck(:tag) if @affiliate.tag_filters.required.present?
-    tags << @tags if @tags
-    tags.join(',')
+    [@affiliate.tag_filters.required&.pluck(:tag), @tags].compact.flatten.join(',')
   end
 
   def handles
@@ -91,7 +87,7 @@ class I14ySearch < FilterableSearch
   end
 
   def handle_response(response)
-    return unless response && response.status == I14Y_SUCCESS
+    return unless response && response.status == 200
 
     process_valid_response(response)
   end
