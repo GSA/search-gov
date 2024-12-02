@@ -36,7 +36,7 @@ RSpec.describe BulkZombieUrlUploader do
       let(:searchgov_url) { instance_double(SearchgovUrl) }
 
       before do
-        allow(SearchgovUrl).to receive(:find_by).with(url: url).and_return(searchgov_url)
+        allow(SearchgovUrl).to receive(:find_by).with(url:).and_return(searchgov_url)
         allow(searchgov_url).to receive(:destroy)
       end
 
@@ -49,14 +49,14 @@ RSpec.describe BulkZombieUrlUploader do
 
     context 'when SearchgovUrl does not exist' do
       before do
-        allow(SearchgovUrl).to receive(:find_by).with(url: url).and_return(nil)
+        allow(SearchgovUrl).to receive(:find_by).with(url:).and_return(nil)
         allow(I14yDocument).to receive(:delete)
       end
 
       it 'deletes the I14yDocument with the given document_id' do
         uploader.send(:process_url, url, document_id)
 
-        expect(I14yDocument).to have_received(:delete).with(handle: 'searchgov', document_id: document_id)
+        expect(I14yDocument).to have_received(:delete).with(handle: 'searchgov', document_id:)
       end
     end
   end

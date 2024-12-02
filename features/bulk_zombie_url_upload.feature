@@ -12,7 +12,7 @@ Feature: Bulk Zombie URL Upload
     When I attach the file "features/support/bulk_zombie_urls.csv" to "bulk_upload_zombie_urls"
     And I press "Upload"
     Then I should be on the bulk zombie url upload admin page
-    And I should see "Successfully uploaded bulk_zombie_upload_urls.txt"
+    And I should see "Successfully uploaded bulk_zombie_urls.csv for processing."
     And I should see "The results will be emailed to you."
 
     When I do not attach a file to "bulk_upload_zombie_urls"

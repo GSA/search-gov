@@ -2,25 +2,26 @@
 
 module Admin
   class BulkZombieUrlUploadController < AdminController
-    def index
-      @page_title = 'Bulk Zombie Url Upload'
-    end
+    include BulkUploadHandler
+    before_action :set_page_title
+
+    def index; end
 
     def upload
-      begin
-        @file = params[:bulk_upload_zombie_urls]
-        BulkZombieUrls::FileValidator.new(@file).validate!
-        enqueue_job
-        flash[:success] = success_message(@file.original_filename)
-      rescue BulkZombieUrlUploader::Error => e
-        Rails.logger.error 'Zombie Url upload failed', e
-        flash[:error] = e.message
-      end
-
-      redirect_to admin_bulk_zombie_url_upload_index_path
+      handle_bulk_upload(
+        params_key: :bulk_upload_zombie_urls,
+        validator_class: BulkZombieUrls::FileValidator,
+        error_class: BulkZombieUrlUploader::Error,
+        success_path: admin_bulk_zombie_url_upload_index_path,
+        logger_message: 'Zombie Url upload failed'
+      )
     end
 
     private
+
+    def set_page_title
+      @page_title = 'Bulk Affiliate Styles Upload'
+    end
 
     def success_message(filename)
       <<~SUCCESS_MESSAGE

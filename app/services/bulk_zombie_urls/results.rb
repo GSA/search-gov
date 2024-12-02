@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 module BulkZombieUrls
   class Results
     attr_accessor :ok_count, :updated, :error_count, :file_name
+    attr_reader :errors
 
     def initialize(filename)
       @file_name = filename
@@ -17,10 +20,6 @@ module BulkZombieUrls
     def add_error(error_message, key)
       @error_count += 1
       @errors[key] << error_message
-    end
-
-    def errors
-      @errors
     end
 
     def total_count
