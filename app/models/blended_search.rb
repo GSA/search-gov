@@ -29,8 +29,6 @@ class BlendedSearch < I14ySearch
     elastic_blended_results
   end
 
-
-
   def detect_offset
     @offset || ((@page - 1) * @per_page)
   end
