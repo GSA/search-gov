@@ -320,6 +320,7 @@ export const Facets = ({ aggregations }: FacetsProps) => {
             <button 
               className="usa-button usa-button--unstyled clear-results-button" 
               type="button"
+              onClick={() => loadQueryUrl(getFacetsQueryParamString(nonAggregations))}
             >
               Clear
             </button>

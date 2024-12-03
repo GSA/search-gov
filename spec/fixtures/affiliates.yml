@@ -79,18 +79,9 @@ spanish_affiliate:
   locale: es
   api_access_key: spanish_key
 
-bing_image_search_enabled_affiliate:
-  <<: *DEFAULTS
-  display_name: USA.gov with commercial image results
-  is_bing_image_search_enabled: true
-  name: cr.images.gov
-  website: https://www.usa.gov
-  api_access_key: bing_image_search_enabled_key
-
 site_with_one_user:
   <<: *DEFAULTS
   display_name: site with one user
-  is_bing_image_search_enabled: true
   name: site_with_one_user
   website: https://www.usa.gov
   api_access_key: one_user_key
