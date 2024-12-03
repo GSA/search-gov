@@ -13,27 +13,21 @@ class I14ySearch < FilterableSearch
                     tags].freeze
 
   def search
-    search_options = {
+    I14yCollections.search(build_search_params)
+  rescue Faraday::ClientError => e
+    Rails.logger.error 'I14y search problem', e
+    false
+  end
+
+  def build_search_params
+    {
       handles: handles,
       language: @affiliate.locale,
       query: formatted_query,
       size: @limit || @per_page,
       offset: detect_offset
-    }.merge!(filter_options)
-
-    I14yCollections.search(search_options)
-  rescue Faraday::ClientError => e
-    Rails.logger.error 'I14y search problem', e
-
-    false
-  end
-
-  def filter_options
-    filter_options = {}
-    filter_options.merge!(date_filter_hash, facet_filter_hash)
-    filter_options.merge!(tag_filters)
-    filter_options.merge!(facet_includes) if @include_facets
-    filter_options
+    }.merge!(date_filter_hash, facet_filter_hash, tag_filters)
+     .tap { |f| f.merge!(facet_includes) if @include_facets }
   end
 
   def tag_filters
