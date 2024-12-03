@@ -26,8 +26,8 @@ class I14ySearch < FilterableSearch
       query: formatted_query,
       size: @limit || @per_page,
       offset: detect_offset
-    }.merge!(date_filter_hash, facet_filter_hash, tag_filters)
-      .tap { |f| f.merge!(facet_includes) if @include_facets }
+    }.merge!(date_filter_hash, facet_filter_hash, tag_filters).
+      tap { |f| f.merge!(facet_includes) if @include_facets }
   end
 
   def tag_filters
