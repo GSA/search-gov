@@ -12,17 +12,6 @@ class I14ySearch < FilterableSearch
                     searchgov_custom3
                     tags].freeze
 
-  attr_reader :aggregations, :collection, :matching_site_limits
-
-  def initialize(options = {})
-    super
-    @enable_highlighting = options[:enable_highlighting] != false
-    @include_facets = options[:include_facets] == 'true'
-    @collection = options[:document_collection]
-    @site_limits = options[:site_limits]
-    @matching_site_limits = formatted_query_instance.matching_site_limits
-  end
-
   def search
     search_options = {
       handles: handles,
@@ -142,13 +131,5 @@ class I14ySearch < FilterableSearch
     DomainScopeOptionsBuilder.build(site: @affiliate,
                                     collection: collection,
                                     site_limits: @site_limits)
-  end
-
-  def formatted_query
-    formatted_query_instance.query
-  end
-
-  def formatted_query_instance
-    @formatted_query_instance ||= I14yFormattedQuery.new(@query, domains_scope_options)
   end
 end
