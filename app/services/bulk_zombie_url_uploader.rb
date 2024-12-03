@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 class BulkZombieUrlUploader
-  MAXIMUM_FILE_SIZE = 4.megabytes
-  VALID_CONTENT_TYPES = %w[text/csv].freeze
-
   attr_reader :results
 
   class Error < StandardError; end
@@ -40,7 +37,13 @@ class BulkZombieUrlUploader
 
   def process_row(row)
     url = row['URL']&.strip
-    document_id = row['DOC_ID']
+    document_id = row['DOC_ID']&.strip
+
+    if document_id.blank?
+      @results.add_error('Document ID is missing', url || 'Unknown')
+      Rails.logger.error("Skipping row: #{row.inspect}. Document ID is mandatory.")
+      return
+    end
 
     process_url_with_rescue(url, document_id, row)
   end
@@ -59,16 +62,29 @@ class BulkZombieUrlUploader
   end
 
   def handle_processing_error(error, url, document_id, row)
-    @results.add_error(error.message, url || document_id)
+    key = url.presence || document_id
+    @results.add_error(error.message, key)
     Rails.logger.error "Failure to process bulk upload zombie URL row: #{row.inspect}\n#{error.message}\n#{error.backtrace.join("\n")}"
-  end  
+  end
 
   def process_url(url, document_id)
+    if url.present?
+      process_url_with_searchgov(url, document_id)
+    else
+      delete_document(document_id)
+    end
+  end
+
+  def process_url_with_searchgov(url, document_id)
     searchgov_url = SearchgovUrl.find_by(url:)
     if searchgov_url
       searchgov_url.destroy
     else
-      I14yDocument.delete(handle: 'searchgov', document_id:)
+      delete_document(document_id)
     end
+  end
+
+  def delete_document(document_id)
+    I14yDocument.delete(handle: 'searchgov', document_id:)
   end
 end

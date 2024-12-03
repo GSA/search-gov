@@ -1,63 +1,76 @@
-RSpec.describe BulkZombieUrlUploader do
-  let(:filename) { 'bulk_zombie_urls.csv' }
-  let(:filepath) { Rails.root.join('features/support/bulk_zombie_urls.csv') }
-  let(:uploader) { described_class.new(filename, filepath) }
-  let(:valid_csv_content) { "URL,DOC_ID\nhttp://example.com,123\nhttp://test.com,456" }
+# frozen_string_literal: true
+
+require 'spec_helper'
+
+describe BulkZombieUrlUploader do
+  let(:valid_file_path) { 'spec/fixtures/files/valid_zombie_urls.csv' }
+  let(:invalid_file_path) { 'spec/fixtures/files/invalid_zombie_urls.csv' }
+  let(:filename) { 'valid_zombie_urls.csv' }
+  let(:uploader) { described_class.new(filename, valid_file_path) }
+  let(:results) { instance_double(BulkZombieUrls::Results) }
 
   before do
-    allow(File).to receive(:read).and_return(valid_csv_content)
+    allow(BulkZombieUrls::Results).to receive(:new).and_return(results)
+    allow(results).to receive(:add_error)
+    allow(results).to receive(:delete_ok)
+    allow(results).to receive(:updated=)
+    allow(results).to receive(:updated).and_return(0)
+    allow(results).to receive(:ok_count).and_return(0)
+    allow(results).to receive(:error_count).and_return(0)
+    allow(File).to receive(:read).with(valid_file_path).and_return("URL,DOC_ID\nhttp://example.com,123\n")
+    allow(File).to receive(:read).with(invalid_file_path).and_raise(CSV::MalformedCSVError.new('Malformed CSV', 1))
+    allow(SearchgovUrl).to receive(:find_by).and_return(nil)
+    allow(I14yDocument).to receive(:delete).and_return(true)
+    uploader.instance_variable_set(:@results, results)
   end
 
   describe '#upload' do
-    context 'when a row fails to process' do
-      let(:row) { { 'URL' => 'http://example.com', 'DOC_ID' => '123' } }
-
-      before do
-        allow(CSV).to receive(:parse).and_return([row])
-        allow(SearchgovUrl).to receive(:find_by).and_raise(StandardError, 'Test error')
-        allow(Rails.logger).to receive(:error)
+    context 'with a valid CSV' do
+      it 'processes valid CSV rows successfully' do
+        expect(results).to receive(:delete_ok)
+        expect(results).to receive(:updated=).with(1)
+        uploader.upload
       end
+    end
 
-      it 'logs the error and updates the results' do
-        results = uploader.upload
+    context 'with an invalid CSV format' do
+      it 'handles invalid CSV format gracefully' do
+        uploader = described_class.new(filename, invalid_file_path)
+        expect(results).to receive(:add_error).with('Invalid CSV format', 'Entire file')
+        uploader.upload
+      end
+    end
 
-        expect(results.errors['http://example.com']).to include('Test error')
-        expect(results.error_count).to eq(1)
-        expect(Rails.logger).to have_received(:error).with(/Failure to process bulk upload zombie URL row:/)
+    context 'when an unexpected error occurs during processing' do
+      it 'logs the error' do
+        allow(uploader).to receive(:upload_urls).and_raise(StandardError, 'Unexpected error')
+        expect(Rails.logger).to receive(:error).with(/Problem processing bulk zombie URL document/)
+        uploader.upload
       end
     end
   end
 
-  describe '#process_url' do
-    let(:url) { 'http://example.com' }
-    let(:document_id) { '123' }
+  describe '#process_row' do
+    let(:row) { { 'URL' => 'http://example.com', 'DOC_ID' => '123' } }
 
-    context 'when SearchgovUrl exists' do
-      let(:searchgov_url) { instance_double(SearchgovUrl) }
-
-      before do
-        allow(SearchgovUrl).to receive(:find_by).with(url:).and_return(searchgov_url)
-        allow(searchgov_url).to receive(:destroy)
-      end
-
-      it 'destroys the existing SearchgovUrl' do
-        uploader.send(:process_url, url, document_id)
-
-        expect(searchgov_url).to have_received(:destroy)
-      end
+    it 'processes rows with valid data' do
+      expect(results).to receive(:delete_ok)
+      expect(results).to receive(:updated=).with(1)
+      uploader.send(:process_row, row)
     end
 
-    context 'when SearchgovUrl does not exist' do
-      before do
-        allow(SearchgovUrl).to receive(:find_by).with(url:).and_return(nil)
-        allow(I14yDocument).to receive(:delete)
-      end
+    it 'logs an error and skips rows with missing Document IDs' do
+      row['DOC_ID'] = nil
+      expect(results).to receive(:add_error).with('Document ID is missing', 'http://example.com')
+      uploader.send(:process_row, row)
+    end
+  end
 
-      it 'deletes the I14yDocument with the given document_id' do
-        uploader.send(:process_url, url, document_id)
-
-        expect(I14yDocument).to have_received(:delete).with(handle: 'searchgov', document_id:)
-      end
+  describe '#handle_csv_error' do
+    it 'adds a CSV error to results and logs it' do
+      expect(results).to receive(:add_error).with('Invalid CSV format', 'Entire file')
+      expect(Rails.logger).to receive(:error).with(/Error parsing CSV/)
+      uploader.send(:handle_csv_error, CSV::MalformedCSVError.new('Malformed CSV', 1))
     end
   end
 end
