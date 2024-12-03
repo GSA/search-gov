@@ -27,11 +27,12 @@ class I14ySearch < FilterableSearch
 
     false
   end
+
   def filter_options
-    options = {}.tap do |opts|
+    {}.tap do |opts|
       opts.merge!(date_filter_hash, facet_filter_hash)
       opts[:ignore_tags] = @affiliate.tag_filters.excluded.pluck(:tag).join(',') if @affiliate.tag_filters.excluded.present?
-      opts[:tags] = included_tags if @tags || @affiliate.tag_filters.required.present?
+      opts[:tags] = included_tags unless included_tags.blank?
       opts[:include] = "title,path,thumbnail_url,#{FACET_FIELDS.join(',')}" if @include_facets
     end
   end
@@ -65,7 +66,7 @@ class I14ySearch < FilterableSearch
   end
 
   def included_tags
-    [@affiliate.tag_filters.required&.pluck(:tag), @tags].compact.flatten.join(',')
+    @included_tags ||= [@affiliate.tag_filters.required&.pluck(:tag), @tags].compact.flatten.join(',')
   end
 
   def handles
