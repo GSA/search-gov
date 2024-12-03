@@ -29,12 +29,22 @@ class I14ySearch < FilterableSearch
   end
 
   def filter_options
+    filter_options = {}
+    filter_options.merge!(date_filter_hash, facet_filter_hash)
+    filter_options.merge!(tag_filters)
+    filter_options.merge!(facet_includes) if @include_facets
+    filter_options
+  end
+
+  def tag_filters
     {}.tap do |opts|
-      opts.merge!(date_filter_hash, facet_filter_hash)
       opts[:ignore_tags] = @affiliate.tag_filters.excluded.pluck(:tag).join(',') if @affiliate.tag_filters.excluded.present?
-      opts[:tags] = included_tags unless included_tags.blank?
-      opts[:include] = "title,path,thumbnail_url,#{FACET_FIELDS.join(',')}" if @include_facets
+      opts[:tags] = included_tags if included_tags.present?
     end
+  end
+
+  def facet_includes
+    { include: "title,path,thumbnail_url,#{FACET_FIELDS.join(',')}" }
   end
 
   def detect_offset
