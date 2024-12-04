@@ -17,7 +17,6 @@ test:
 
 production:
   <<: *DEFAULT
-  log_level: <%= ENV.fetch('ES_LOG_LEVEL') %>
   transport_options:
     ssl:
       verify: false
