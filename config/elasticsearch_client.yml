@@ -1,6 +1,6 @@
 default: &DEFAULT
   log: true
-  log_level: <%= ENV.fetch('ES_LOG_LEVEL') %>
+  log_level: <%= ENV.fetch('ES_LOG_LEVEL', 'ERROR') %>
   randomize_hosts: true
   reload_connections: false
   reload_on_failure: false
