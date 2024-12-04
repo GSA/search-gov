@@ -1,6 +1,6 @@
 default: &DEFAULT
   log: true
-  log_level: INFO
+  log_level: <%= ENV.fetch('ES_LOG_LEVEL', 'ERROR') %>
   randomize_hosts: true
   reload_connections: false
   reload_on_failure: false
@@ -17,7 +17,6 @@ test:
 
 production:
   <<: *DEFAULT
-  log_level: WARN
   transport_options:
     ssl:
       verify: false
