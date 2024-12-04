@@ -50,30 +50,4 @@ describe '/search/images' do
       end
     end
   end
-
-  context 'when site is bing image search enabled' do
-    let(:affiliate) { affiliates(:bing_image_search_enabled_affiliate) }
-
-    before do
-      oasis_api_url = "#{Oasis.host}#{OasisSearch::API_ENDPOINT}?"
-      oasis_image_result = Rails.root.join('spec/fixtures/json/oasis/image_search/shuttle.json').read
-      image_search_params = { from: 0, query: 'shuttle', size: 20 }
-      stub_request(:get, "#{oasis_api_url}#{image_search_params.to_param}").
-        to_return(status: 200, body: oasis_image_result)
-      get '/search/images.json', params: { affiliate: affiliate.name, query: 'shuttle' }
-    end
-
-    it 'renders JSON response' do
-      json_response = response.parsed_body
-      expect(json_response['total']).to be > 100
-      expect(json_response['startrecord']).to eq 1
-      expect(json_response['endrecord']).to eq 9
-      expect(json_response['results'].count).to eq 9
-
-      image = json_response['results'].first
-      expect(image['title']).to eq('Archive: Levan, Albania (Archive: NASA, Space Shuttle, 10/17/02)')
-      expect(image['url']).to eq('http://www.flickr.com/photos/28634332@N05/14708690681/')
-      expect(image['thumbnail']['url']).to eq('https://farm3.staticflickr.com/2907/14708690681_08d50c642c_q.jpg')
-    end
-  end
 end

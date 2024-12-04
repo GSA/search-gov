@@ -19,7 +19,7 @@ class WebDocument
   end
 
   def language
-    @language ||= (Language.iso_639_1(extract_language) || detect_language)
+    @language ||= Language.iso_639_1(extract_language) || detect_language || 'en'
   end
 
   def created
