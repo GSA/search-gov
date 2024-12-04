@@ -2,15 +2,19 @@
 
 module BulkZombieUrls
   class Results
-    attr_accessor :ok_count, :updated, :error_count, :file_name
-    attr_reader :errors
+    attr_accessor :ok_count, :error_count, :file_name
+    attr_reader :errors, :updated
 
     def initialize(filename)
       @file_name = filename
       @ok_count = 0
-      @updated = 0
       @error_count = 0
+      @updated = 0
       @errors = Hash.new { |hash, key| hash[key] = [] }
+    end
+
+    def increment_updated
+      @updated += 1
     end
 
     def delete_ok

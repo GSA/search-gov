@@ -26,7 +26,7 @@ describe BulkZombieUrls::FileValidator do
       it 'raises an error' do
         expect { validator.validate! }.to raise_error(
           BulkZombieUrlUploader::Error,
-          /Please choose a file to upload/
+          %r{Please choose a file to upload}
         )
       end
     end
@@ -37,7 +37,7 @@ describe BulkZombieUrls::FileValidator do
       it 'raises an error' do
         expect { validator.validate! }.to raise_error(
           BulkZombieUrlUploader::Error,
-          /file.csv is too big; please split it/
+          %r{file.csv is too big; please split it}
         )
       end
     end
@@ -48,7 +48,7 @@ describe BulkZombieUrls::FileValidator do
       it 'raises an error' do
         expect { validator.validate! }.to raise_error(
           BulkZombieUrlUploader::Error,
-          /Files of type application\/pdf are not supported/
+          %r{Files of type application/pdf are not supported}
         )
       end
     end

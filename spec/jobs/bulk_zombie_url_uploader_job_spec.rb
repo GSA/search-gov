@@ -5,7 +5,7 @@ describe BulkZombieUrlUploaderJob do
   let(:filename) { 'bulk_zombie_urls.csv' }
   let(:filepath) { '/path/to/bulk_zombie_urls.csv' }
   let(:uploader) { instance_double(BulkZombieUrlUploader, upload: nil, results:) }
-  let(:results) { instance_double(BulkZombieUrls::Results, file_name:, total_count: 10, error_count: 2) }
+  let(:results) { instance_double(BulkZombieUrls::Results, file_name: filename, total_count: 10, error_count: 2) }
 
   before do
     allow(BulkZombieUrlUploader).to receive(:new).and_return(uploader)
