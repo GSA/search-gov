@@ -51,7 +51,7 @@ class BulkZombieUrlUploader
   def process_url_with_rescue(url, document_id, row)
     process_url(url, document_id)
     @results.delete_ok
-    @results.updated += 1
+    @results.increment_updated
   rescue StandardError => e
     handle_processing_error(e, url, document_id, row)
   end
