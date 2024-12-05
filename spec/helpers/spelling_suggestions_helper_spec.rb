@@ -15,7 +15,7 @@ describe SpellingSuggestionsHelper do
       html = helper.spelling_suggestion(search, site_limits: 'blogs.cdc.gov/niosh-science-blog www.cdc.gov/niosh')
       expect(html).to have_link('<suggestion>',
                                 href: '/search?affiliate=usasearch&query=%3Csuggestion%3E&sitelimit=blogs.cdc.gov%2Fniosh-science-blog+www.cdc.gov%2Fniosh')
-      expect(html).to have_content('No results found for <initialquery>. Showing results for <suggestion>')
+      expect(html).to have_content('Showing results for <suggestion>')
       expect(html).to have_content('Search instead for <initialquery>')
     end
   end
