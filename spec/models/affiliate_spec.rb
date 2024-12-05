@@ -10,6 +10,10 @@ describe Affiliate do
   let(:valid_attributes) { valid_create_attributes.merge(name: 'someaffiliate.gov').freeze }
   let(:affiliate) { described_class.new(valid_create_attributes) }
 
+  describe 'Associations' do
+    it { is_expected.to have_one(:filter_setting).dependent(:destroy) }
+  end
+
   describe 'schema' do
     describe 'columns' do
       it do
