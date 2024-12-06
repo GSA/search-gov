@@ -65,7 +65,7 @@ export const SpellingSuggestion = ({ suggested, original, originalQuery, origina
           <Grid tablet={{ col: true }}>
             <div className='spelling-suggestion-wrapper'>
               <div>
-                {parse(i18n.t('showingResultsFor', { corrected_query: suggested }))}
+                {parse(i18n.t('showingResultsForMsg', { original_query: originalQuery, corrected_query: suggested }))}
               </div>
               <div className='spelling-search-instead-for'>
                 {parse(i18n.t('searchInsteadFor', { original_query: original }))}

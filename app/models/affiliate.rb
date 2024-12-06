@@ -62,6 +62,7 @@ class Affiliate < ApplicationRecord
     assoc.has_many :secondary_header_links, -> { order :position }, inverse_of: :affiliate
     assoc.has_many :footer_links, -> { order :position }, inverse_of: :affiliate
     assoc.has_many :identifier_links, -> { order :position }, inverse_of: :affiliate
+    assoc.has_one  :filter_setting
   end
 
   has_one_attached :header_logo
