@@ -4,16 +4,18 @@
   To upload a list of URLs to be deleted, follow these instructions:
   %ul.bulk-upload-instructions
     %li
-      Create a new text file containing one URL per line. An example of this format
+      Create a new CSV file containing one URL and Document id per line.
+    %li
+      Document ID is mandatorily required to delete URL from Kibana when URL is not present in Search DB. An example of this format
       is shown below.
     %li
       Save the file on your computer; you can name the file whatever you like, as
-      long as it's plain text and has a .txt extension.
+      long as it has a .txt extension.
     %li
       %b
         Do not use Microsoft Word files, or any other file type except plain text.
     %li
-      The maximum file size is #{number_to_human_size(BulkUrlUploader::MAXIMUM_FILE_SIZE)}.
+      The maximum file size is #{number_to_human_size(BulkZombieUrls::FileValidator::MAXIMUM_FILE_SIZE)}.
     %li
       Browse for the file on your computer.
     %li
@@ -25,9 +27,10 @@
   %code
     %pre
       URL,DOC_ID
-      http://www.sample.gov/1.html,sample121
-      http://www.sample.gov/2.html,sample122
-      http://www.sample.gov/3.html,sample123
+      http://www.sample.gov/1.html,docid121
+      http://www.sample.gov/2.html,docid122
+      http://www.sample.gov/3.html,docid123
+      ,docid124
   = form_tag upload_admin_bulk_zombie_url_upload_index_path, :multipart => true, :class => 'form' do
     = file_field_tag 'bulk_upload_zombie_urls', :accept => 'text/csv'
     %p

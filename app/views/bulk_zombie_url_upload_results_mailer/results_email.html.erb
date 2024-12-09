@@ -19,12 +19,9 @@
   <p>
     <%= @results.error_count %> URLs failed validation.
   </p>
-
-  <% @results.error_messages.each do |error_message| %>
-    <h3><%= error_message %></h3>
-    <% @results.urls_with(error_message).each do |url| %>
-      <%= url %>
-      <br />
-    <% end %>
+  <% @results.errors.each do |k,error_message| %>
+    <h3><%= k %></h3>
+    <%= error_message %>
+    <br />
   <% end %>
 <% end %>

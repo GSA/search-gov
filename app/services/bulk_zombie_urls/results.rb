@@ -22,16 +22,12 @@ module BulkZombieUrls
     end
 
     def add_error(error_message, key)
-      @error_count += 1
+      self.error_count += 1
       @errors[key] << error_message
     end
 
     def total_count
       ok_count + error_count
-    end
-
-    def urls_with(id)
-      @errors[id]
     end
   end
 end
