@@ -2,25 +2,26 @@
 
 module Admin
   class BulkUrlUploadController < AdminController
-    def index
-      @page_title = 'Bulk URL Upload'
-    end
+    include BulkUploadHandler
+    before_action :set_page_title
+
+    def index; end
 
     def upload
-      begin
-        @file = params[:bulk_upload_urls]
-        BulkUrlUploader::UrlFileValidator.new(@file).validate!
-        enqueue_job
-        flash[:success] = success_message(@file.original_filename)
-      rescue BulkUrlUploader::Error => e
-        Rails.logger.error 'Url upload failed', e
-        flash[:error] = e.message
-      end
-
-      redirect_to admin_bulk_url_upload_index_path
+      handle_bulk_upload(
+        params_key: :bulk_upload_urls,
+        validator_class: BulkUrlUploader::UrlFileValidator,
+        error_class: BulkUrlUploader::Error,
+        success_path: admin_bulk_url_upload_index_path,
+        logger_message: 'Url upload failed'
+      )
     end
 
     private
+
+    def set_page_title
+      @page_title = 'Bulk URL Upload'
+    end
 
     def success_message(filename)
       <<~SUCCESS_MESSAGE
