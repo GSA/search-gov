@@ -12,6 +12,8 @@ class BulkZombieUrlUploader
 
   def upload
     @results = BulkZombieUrls::Results.new(@file_name)
+    raise 'Results object not initialized' if @results.nil?
+
     begin
       upload_urls
     rescue => e

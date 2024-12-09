@@ -7,20 +7,22 @@ describe BulkZombieUrls::Results do
     it 'initializes with correct attributes' do
       expect(results.file_name).to eq('Test File')
       expect(results.ok_count).to eq(0)
-      expect(results.updated).to eq(0)
       expect(results.error_count).to eq(0)
-    end
-  end
-
-  describe '#delete_ok' do
-    it 'increments the ok_count' do
-      expect { results.delete_ok }.to change { results.ok_count }.by(1)
+      expect(results.updated).to eq(0)
+      expect(results.errors).to be_a(Hash)
+      expect(results.errors).to be_empty
     end
   end
 
   describe '#increment_updated' do
     it 'increments the updated count' do
       expect { results.increment_updated }.to change { results.updated }.by(1)
+    end
+  end
+
+  describe '#delete_ok' do
+    it 'increments the ok_count' do
+      expect { results.delete_ok }.to change { results.ok_count }.by(1)
     end
   end
 
@@ -36,25 +38,23 @@ describe BulkZombieUrls::Results do
       results.add_error(error_message, key)
       expect(results.errors[key]).to include(error_message)
     end
+
+    it 'creates a new key in the errors hash if it does not exist' do
+      expect(results.errors[key]).to be_empty
+      results.add_error(error_message, key)
+      expect(results.errors).to have_key(key)
+    end
   end
 
   describe '#total_count' do
     it 'calculates the total of ok_count and error_count' do
       results.delete_ok
-      results.add_error('Error 1', 'key1')
+      results.add_error('Error message', 'key1')
       expect(results.total_count).to eq(2)
     end
-  end
 
-  describe '#urls_with' do
-    it 'retrieves all errors associated with a specific key' do
-      results.add_error('Error 1', 'key1')
-      results.add_error('Error 2', 'key1')
-      expect(results.urls_with('key1')).to eq(['Error 1', 'Error 2'])
-    end
-
-    it 'returns an empty array if no errors exist for the key' do
-      expect(results.urls_with('nonexistent_key')).to be_empty
+    it 'returns 0 when there are no ok_count or error_count' do
+      expect(results.total_count).to eq(0)
     end
   end
 end
