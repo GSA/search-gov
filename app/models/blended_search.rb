@@ -1,5 +1,4 @@
-class BlendedSearch < FilterableSearch
-  include SearchInitializer
+class BlendedSearch < I14ySearch
   include Govboxable
 
   self.default_sort_by = 'r'.freeze
@@ -13,13 +12,14 @@ class BlendedSearch < FilterableSearch
       offset: detect_offset,
       q: @query,
       rss_feed_url_ids: @affiliate.rss_feed_urls.pluck(:id),
-      size: detect_size,
+      size: @limit || @per_page,
       sort: @sort,
       since: @since,
       until: @until
     }.reverse_merge(@highlight_options)
 
     elastic_blended_results = ElasticBlended.search_for(search_options)
+
     ensure_no_suggestion_when_results_present(elastic_blended_results)
     if elastic_blended_results && elastic_blended_results.total.zero? && elastic_blended_results.suggestion.present?
       suggestion = elastic_blended_results.suggestion
@@ -27,10 +27,6 @@ class BlendedSearch < FilterableSearch
       elastic_blended_results.override_suggestion(suggestion) if elastic_blended_results
     end
     elastic_blended_results
-  end
-
-  def detect_size
-    @limit || @per_page
   end
 
   def detect_offset
@@ -41,12 +37,17 @@ class BlendedSearch < FilterableSearch
     @offset ? @offset.zero? : super
   end
 
+  def result_url(result)
+    result.url
+  end
+
   protected
 
   def handle_response(response)
     return unless response
 
     @total = response.total
+    @next_offset = @offset + @limit if @next_offset_within_limit && @total > (@offset + @limit)
     post_processor = ResultsWithBodyAndDescriptionPostProcessor.new(response.results)
     post_processor.post_process_results
     @results = paginate(response.results)
