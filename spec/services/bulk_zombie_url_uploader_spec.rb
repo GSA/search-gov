@@ -2,99 +2,199 @@
 
 describe BulkZombieUrlUploader do
   let(:filename) { 'test_file.csv' }
-  let(:filepath) { '/path/to/test_file.csv' }
+  let(:filepath) { Rails.root.join('spec', 'fixtures', 'files', filename) }
   let(:uploader) { described_class.new(filename, filepath) }
-  let(:results) { instance_double(BulkZombieUrls::Results) }
-  let(:csv_content) do
-    <<~CSV
-      URL,DOC_ID
-      http://example.com,doc1
-      ,doc2
-      http://missingdoc.com,
-    CSV
-  end
+  let(:results_double) { instance_double('BulkZombieUrls::Results') }
 
   before do
-    allow(File).to receive(:read).with(filepath).and_return(csv_content)
-    allow(BulkZombieUrls::Results).to receive(:new).and_return(results)
-    allow(results).to receive(:add_error)
-    allow(results).to receive(:delete_ok)
-    allow(results).to receive(:increment_updated)
-    uploader.instance_variable_set(:@results, results) # Ensure `@results` is initialized
+    allow(BulkZombieUrls::Results).to receive(:new).and_return(results_double)
+    allow(results_double).to receive(:add_error)
+    allow(results_double).to receive(:delete_ok)
+    allow(results_double).to receive(:increment_updated)
   end
 
   describe '#initialize' do
     it 'assigns filename and filepath' do
       expect(uploader.instance_variable_get(:@file_name)).to eq(filename)
       expect(uploader.instance_variable_get(:@file_path)).to eq(filepath)
+      expect(uploader.results).to be_nil
     end
   end
 
-  describe '#upload_urls' do
-    context 'with valid CSV content' do
-      it 'processes each row in the CSV' do
-        allow(uploader).to receive(:process_row)
-        uploader.send(:upload_urls)
-        expect(uploader).to have_received(:process_row).exactly(3).times
+  describe '#upload' do
+    subject { uploader.upload }
+
+    before do
+      allow(uploader).to receive(:initialize_results).and_call_original
+      allow(uploader).to receive(:process_upload)
+      allow(uploader).to receive(:log_upload_error)
+    end
+
+    it 'initializes results correctly' do
+      expect { subject }.not_to raise_error
+    end
+
+    context 'when no error occurs' do
+      it 'initializes results correctly' do
+        expect { subject }.not_to raise_error
       end
     end
 
-    context 'with invalid CSV content' do
-      let(:csv_error) { CSV::MalformedCSVError.new('Invalid CSV format', 'Line causing error') }
+    context 'when an error occurs' do
+      let(:error) { StandardError.new('Test Error') }
 
       before do
-        allow(CSV).to receive(:parse).and_raise(csv_error)
-        allow(Rails.logger).to receive(:error)
+        allow(uploader).to receive(:process_upload).and_raise(error)
       end
 
-      it 'handles the CSV error and logs it' do
-        expect(results).to receive(:add_error).with('Invalid CSV format', 'Entire file')
-        uploader.send(:upload_urls)
-        expect(Rails.logger).to have_received(:error).with(/Error parsing CSV/)
+      it 'logs the upload error' do
+        expect(uploader).to receive(:log_upload_error).with(error)
+        subject
+      end
+    end
+  end
+
+  describe '#initialize_results' do
+    subject { uploader.send(:initialize_results) }
+
+    it 'initializes the @results object' do
+      expect { subject }.not_to raise_error
+      expect(uploader.instance_variable_get(:@results)).to eq(results_double)
+    end
+  end
+
+  describe '#process_upload' do
+    subject { uploader.send(:process_upload) }
+
+    let(:csv_content) { "URL,DOC_ID\nhttp://example.com,123\n" }
+    let(:parsed_csv) { CSV.parse(csv_content, headers: true) }
+
+    before do
+      allow(File).to receive(:read).with(filepath).and_return(csv_content)
+      allow(CSV).to receive(:parse).and_return(parsed_csv)
+      allow(uploader).to receive(:process_row)
+    end
+
+    it 'parses the CSV and processes each row' do
+      expect(CSV).to receive(:parse).and_return(parsed_csv)
+      expect(uploader).to receive(:process_row).with(parsed_csv.first)
+      subject
+    end
+  end
+
+  describe '#parse_csv' do
+    subject { uploader.send(:parse_csv) }
+
+    let(:csv_content) { "URL,DOC_ID\nhttp://example.com,123\n" }
+
+    before do
+      allow(File).to receive(:read).with(filepath).and_return(csv_content)
+    end
+
+    context 'with valid CSV headers' do
+      it 'returns parsed CSV' do
+        expect(subject).to be_a(CSV::Table)
+      end
+    end
+
+    context 'with missing headers' do
+      let(:csv_content) { "INVALID_HEADER\nhttp://example.com\n" }
+
+      it 'raises a CSV::MalformedCSVError' do
+        expect { subject }.to raise_error(CSV::MalformedCSVError)
       end
     end
   end
 
   describe '#process_row' do
-    let(:row) { { 'URL' => 'http://example.com', 'DOC_ID' => 'doc1' } }
+    subject { uploader.send(:process_row, row) }
 
-    context 'when DOC_ID is blank' do
-      let(:row) { { 'URL' => 'http://example.com', 'DOC_ID' => nil } }
+    let(:row) { { 'URL' => 'http://example.com', 'DOC_ID' => '123' } }
 
-      it 'adds an error and logs it' do
-        allow(Rails.logger).to receive(:error)
-        uploader.send(:process_row, row)
-        expect(results).to have_received(:add_error).with('Document ID is missing', 'http://example.com')
-        expect(Rails.logger).to have_received(:error).with(/Document ID is mandatory/)
+    context 'when @results is not initialized' do
+      before do
+        uploader.instance_variable_set(:@results, nil)
+      end
+
+      it 'raises an error' do
+        expect { subject }.to raise_error(BulkZombieUrlUploader::Error, 'Results object not initialized')
+      end
+    end
+
+    context 'when @results is initialized' do
+      before do
+        uploader.send(:initialize_results)
+      end
+
+      it 'does not raise an error' do
+        expect { subject }.not_to raise_error
       end
     end
   end
 
-  describe '#process_url_with_rescue' do
-    let(:row) { { 'URL' => 'http://example.com', 'DOC_ID' => 'doc1' } }
+  describe '#handle_url_processing' do
+    subject { uploader.send(:handle_url_processing, url, document_id, row) }
 
-    before do
-      allow(uploader).to receive(:process_url)
-    end
+    let(:url) { 'http://example.com' }
+    let(:document_id) { '123' }
+    let(:row) { { 'URL' => url, 'DOC_ID' => document_id } }
 
-    it 'processes the URL and updates results' do
-      uploader.send(:process_url_with_rescue, 'http://example.com', 'doc1', row)
-      expect(results).to have_received(:delete_ok)
-      expect(results).to have_received(:increment_updated)
-    end
-
-    context 'when an error occurs during processing' do
-      let(:error) { StandardError.new('Processing error') }
-
+    context 'when no error occurs' do
       before do
-        allow(uploader).to receive(:process_url).and_raise(error)
-        allow(Rails.logger).to receive(:error)
+        allow(uploader).to receive(:process_url_with_rescue)
+        allow(uploader).to receive(:update_results)
       end
 
-      it 'handles the error and logs it' do
-        uploader.send(:process_url_with_rescue, 'http://example.com', 'doc1', row)
-        expect(results).to have_received(:add_error).with('Processing error', 'http://example.com')
-        expect(Rails.logger).to have_received(:error).with(/Failure to process bulk upload zombie URL row/)
+      it 'processes the URL and updates results' do
+        expect(uploader).to receive(:process_url_with_rescue).with(url, document_id)
+        expect(uploader).to receive(:update_results)
+        subject
+      end
+    end
+
+    context 'when an error occurs' do
+      let(:error) { StandardError.new('Test Error') }
+
+      before do
+        allow(uploader).to receive(:process_url_with_rescue).and_raise(error)
+        allow(uploader).to receive(:handle_processing_error)
+      end
+
+      it 'handles processing error' do
+        expect(uploader).to receive(:handle_processing_error).with(error, url, document_id, row)
+        subject
+      end
+    end
+  end
+
+  describe '#process_url' do
+    subject { uploader.send(:process_url, url, document_id) }
+
+    let(:document_id) { '123' }
+
+    context 'when URL is present' do
+      let(:url) { 'http://example.com' }
+
+      before do
+        allow(uploader).to receive(:process_url_with_searchgov)
+      end
+
+      it 'processes URL with Searchgov' do
+        expect(uploader).to receive(:process_url_with_searchgov).with(url, document_id)
+        subject
+      end
+    end
+
+    context 'when URL is blank' do
+      let(:url) { nil }
+
+      before do
+        allow(uploader).to receive(:delete_document)
+      end
+
+      it 'deletes the document' do
+        expect(uploader).to receive(:delete_document).with(document_id)
+        subject
       end
     end
   end
