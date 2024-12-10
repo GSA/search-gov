@@ -29,9 +29,3 @@ crawled_more_than_month:
   hashed_url: 367f5717e22c0484a557326a6ff68c8974cf7865e927803739f860c21f0f7456
   last_crawled_at: <%= 45.days.ago.to_fs(:db) %>
   last_crawl_status: 'OK'
-
-failed_more_than_month:
-  url: https://www.agency.gov/failed_more_than_month
-  hashed_url: aHR0cHM6Ly93d3cuYWdlbmN5Lmdvdi9mYWlsZWRfbW9yZV90aGFuX21vbnRo
-  last_crawled_at: <%= 45.days.ago.to_fs(:db) %>
-  last_crawl_status: '404'

@@ -9,11 +9,10 @@ class SearchgovDomainIndexerJob < ApplicationJob
   unique :until_executing, lock_ttl: 30.minutes
 
   def perform(searchgov_domain:, delay:)
-    if searchgov_domain.indexing? && (url = searchgov_domain.searchgov_urls.fetch_required.first)
+    searchgov_domain.searchgov_urls.fetch_required.first&.fetch
+    if searchgov_domain.searchgov_urls.fetch_required.any?
       SearchgovDomainIndexerJob.set(wait: delay.seconds).
         perform_later(searchgov_domain: searchgov_domain, delay: delay)
-
-      url.fetch
     else
       Rails.logger.info("Done indexing #{searchgov_domain.domain}")
       searchgov_domain.done_indexing!

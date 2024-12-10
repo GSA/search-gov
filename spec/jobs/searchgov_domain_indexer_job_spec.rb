@@ -31,29 +31,6 @@ describe SearchgovDomainIndexerJob do
       perform
       expect(searchgov_url.reload.last_crawl_status).not_to be_nil
     end
-  end
-
-  context 'when a domain has outdated urls' do
-    let!(:searchgov_url) do
-      SearchgovUrl.create!(url: 'https://agency.gov/',
-                           last_crawled_at: 1.week.ago,
-                           lastmod: 1.day.ago)
-    end
-
-    it 'fetches the url' do
-      expect { perform }.to(change{ searchgov_url.reload.last_crawled_at })
-    end
-  end
-
-  context 'when a domain has no unfetched urls' do
-    it 'does not raise an error' do
-      expect { perform }.not_to raise_error
-    end
-
-    it 'does not enqueue subsequent jobs' do
-      expect { perform }.
-        not_to have_enqueued_job(described_class)
-    end
 
     it 'transitions the domain activity back to "idle"' do
       expect { perform }.to change { searchgov_domain.activity }.
@@ -86,6 +63,27 @@ describe SearchgovDomainIndexerJob do
       end
 
       it { expect { perform }.not_to have_enqueued_job(described_class) }
+    end
+  end
+
+  context 'when a domain has outdated urls' do
+    let!(:searchgov_url) do
+      SearchgovUrl.create!(url: 'https://agency.gov/',
+                           last_crawled_at: 1.week.ago,
+                           lastmod: 1.day.ago)
+    end
+    it 'fetches the url' do
+      expect { perform }.to(change{ searchgov_url.reload.last_crawled_at })
+    end
+  end
+
+  context 'when a domain has no unfetched urls' do
+    it 'does not raise an error' do
+      expect { perform }.not_to raise_error
+    end
+    it 'does not enqueue subsequent jobs' do
+      expect { perform }.
+        not_to have_enqueued_job(described_class)
     end
   end
 end
