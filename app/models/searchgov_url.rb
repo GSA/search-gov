@@ -46,13 +46,13 @@ class SearchgovUrl < ApplicationRecord
 
   has_one :searchgov_document, dependent: :destroy
 
-  scope :fetch_required, lambda {
+  scope :fetch_required, -> do
     where('last_crawled_at IS NULL
-           OR enqueued_for_reindex
            OR lastmod > last_crawled_at
+           OR enqueued_for_reindex
            OR (last_crawl_status = "OK" AND last_crawled_at < ?)', 1.month.ago).
-      order(Arel.sql('last_crawled_at IS NULL DESC'), enqueued_for_reindex: :DESC, lastmod: :DESC)
-  }
+           order(last_crawled_at: :ASC)
+  end
 
   class SearchgovUrlError < StandardError; end
   class DomainError < StandardError; end
