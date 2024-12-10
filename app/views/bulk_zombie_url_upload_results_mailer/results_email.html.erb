@@ -1,0 +1,27 @@
+<p>
+  The bulk zombie url upload job for <%= @results.file_name %> has
+  finished.
+</p>
+
+<p>
+  There were <%= @results.total_count %> URLs.
+</p>
+
+<% if @results.error_count == 0 %>
+  <p>
+    There were no errors.
+  </p>
+<% else %>
+  <p>
+    <%= @results.ok_count %> URLs were deleted successfully.
+  </p>
+
+  <p>
+    <%= @results.error_count %> URLs failed validation.
+  </p>
+  <% @results.errors.each do |k,error_message| %>
+    <h3><%= k %></h3>
+    <%= error_message %>
+    <br />
+  <% end %>
+<% end %>
