@@ -43,7 +43,7 @@ phases:
       - cap $SEARCH_ENV puma:config puma:systemd:config puma:systemd:enable
       - cap $SEARCH_ENV deploy
       - cap $SEARCH_ENV resque:restart
-      - cap $SEARCH_ENV puma:restart
+      - cap $SEARCH_ENV resque:scheduler:restart
 
 artifacts:
   files:
