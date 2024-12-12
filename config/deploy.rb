@@ -41,5 +41,3 @@ set :ssh_options, {
   keys:          [ENV['SSH_KEY_PATH']],
   user:          ENV['SERVER_DEPLOYMENT_USER'],
 }
-
-after 'deploy:finished', 'resque:restart'
