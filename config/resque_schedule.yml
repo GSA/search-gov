@@ -1,5 +1,5 @@
 production:
   SitemapMonitorJob:
-    cron: "0 9 * * *"
+    cron: "0 */4 * * *"
   ClickMonitorJob:
     cron: "0 7 * * 0"
