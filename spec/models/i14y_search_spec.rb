@@ -34,6 +34,53 @@ describe I14ySearch do
     end
   end
 
+  describe '#search' do
+    subject(:search) do
+      described_class.new(affiliate: affiliate,
+                          enable_highlighting: true,
+                          limit: 20,
+                          offset: 0,
+                          query: 'fap',
+                          include_facets: include_facets)
+    end
+
+    let(:results) { search.normalized_results }
+
+    context 'when include_facets is true' do
+      let(:include_facets) { 'true' }
+
+      before do
+        allow(I14ySearch).to receive(:new).with(search)
+        search.run
+      end
+
+      it 'includes facet fields in response' do
+        first_result = results[:results].first
+
+        expect(first_result.keys).to include(:audience,
+                                             :contentType,
+                                             :mimeType,
+                                             :searchgovCustom1,
+                                             :searchgovCustom2,
+                                             :searchgovCustom3,
+                                             :tags,
+                                             :updatedDate)
+      end
+
+      it 'returns aggregations' do
+        expect(results).to include(:aggregations)
+      end
+
+      it 'returns agg_key string and doc_count' do
+        aggs_hash = results[:aggregations].first
+        random_agg = aggs_hash.keys.sample
+        expect(aggs_hash[random_agg].first).
+          to match hash_including(agg_key: be_a(String),
+                                  doc_count: be_an(Integer))
+      end
+    end
+  end
+
   context 'when results are available' do
     before { i14y_search.run }
 

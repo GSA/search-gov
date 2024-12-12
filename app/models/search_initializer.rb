@@ -30,7 +30,7 @@ module SearchInitializer
     @limit = options[:limit]
     @offset = options[:offset]
     @next_offset_within_limit = options[:next_offset_within_limit]
-    @include_facets = options[:include_facets] == 'true'
+    @include_facets = options[:include_facets].is_a?(String) ? options[:include_facets] == 'true' : options[:include_facets]
     @matching_site_limits = formatted_query_instance.matching_site_limits
   end
 
