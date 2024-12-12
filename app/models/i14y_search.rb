@@ -91,13 +91,14 @@ class I14ySearch < FilterableSearch
     @next_offset = @offset + @limit if @next_offset_within_limit && @total > (@offset + @limit)
     post_processor = I14yPostProcessor.new(@enable_highlighting, response.results, @affiliate.excluded_urls_set)
     post_processor.post_process_results
-    process_pagination_values(post_processor, response)
     process_metadata_values(response)
+    process_pagination_values(post_processor, response)
   end
 
   def process_pagination_values(post_processor, response)
     @results = paginate(response.results)
     @normalized_results = process_data_for_redesign(post_processor)
+    @normalized_results[:aggregations] = @aggregations if @include_facets
     @startrecord = ((@page - 1) * @per_page) + 1
     @endrecord = @startrecord + @results.size - 1
   end
