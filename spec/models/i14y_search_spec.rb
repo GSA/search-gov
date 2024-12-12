@@ -40,7 +40,7 @@ describe I14ySearch do
                           enable_highlighting: true,
                           limit: 20,
                           offset: 0,
-                          query: 'fap',
+                          query: 'faq',
                           include_facets: include_facets)
     end
 

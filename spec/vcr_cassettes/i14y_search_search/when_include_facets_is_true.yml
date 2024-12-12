@@ -1,0 +1,25 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/search?handles=one,two&include=title,path,thumbnail_url,audience,changed,content_type,created,mime_type,searchgov_custom1,searchgov_custom2,searchgov_custom3,tags&language=en&offset=0&query=fap&size=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Authorization:
+      - Basic ZGV2OmRldnB3ZA==
+      Expect:
+      - ''
+  response:
+    status:
+      code: 0
+      message:
+    headers: {}
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Thu, 12 Dec 2024 17:48:55 GMT
+recorded_with: VCR 6.3.1
