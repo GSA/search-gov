@@ -1,3 +1,12 @@
 .usa-identifier{
   background-color: transparent;
 }
+
+.usa-identifier .usa-identifier__logo{
+  margin-right: 1rem;
+}
+
+[dir="rtl"] .usa-identifier .usa-identifier__logo{
+  margin-left: 1rem;
+  margin-right: 0;
+}

@@ -6,7 +6,7 @@ module NavigationsHelper
     items.reject! do |n|
       n.navigable.is_a?(RssFeed) && n.navigable.show_only_media_content?
     end
-    unless site.has_social_image_feeds? || site.is_bing_image_search_enabled?
+    unless site.has_social_image_feeds?
       items.reject! { |n| n.navigable.is_a?(ImageSearchLabel) }
     end
     items
@@ -28,10 +28,6 @@ module NavigationsHelper
   def build_image_search_navigable_label(navigable)
     labels = +''
     site = navigable.affiliate
-    if site.is_bing_image_search_enabled?
-      append_navigation_label(labels,
-                              link_to('Domains', site_domains_path(site)))
-    end
     if site.flickr_profiles.exists?
       append_navigation_label labels,
                               link_to('Flickr', site_flickr_urls_path(site))

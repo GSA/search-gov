@@ -57,7 +57,7 @@ describe ImageSearch do
   end
 
   describe '#run' do
-    context 'when Oasis results are blank AND we are on page 1 AND no commercial results override is set AND Bing image results are enabled' do
+    context 'when there are Oasis results AND we are on page 1 AND no commercial results override is set' do
       let(:image_search) { described_class.new(affiliate:, query: 'lsdkjflskjflskjdf') }
       let(:odie_image_search) { instance_double(OdieImageSearch, results: nil) }
 
@@ -68,7 +68,7 @@ describe ImageSearch do
           allow(odie_image_search).to receive(:run)
         end
 
-        it 'performs a ODIE image search' do
+        it 'performs an ODIE image search' do
           image_search.run
           expect(OdieImageSearch).to have_received(:new).
             with(hash_including(affiliate:,
@@ -120,33 +120,12 @@ describe ImageSearch do
     end
   end
 
-  describe '#engine_klass' do
-    subject(:image_search) { described_class.new(affiliate:, query: 'some query') }
-
-    context 'when affiliate search engine starts with Bing' do
-      before { affiliate.search_engine = 'BingV7' }
-
-      it 'returns the appropriate search engine class' do
-        expect(image_search.send(:engine_klass)).to eq(BingV7ImageSearch)
-      end
-    end
-
-    context 'when affiliate search engine does not start with Bing' do
-      before { affiliate.search_engine = 'SearchGov' }
-
-      it 'returns the latest BingV7ImageSearch class' do
-        expect(image_search.send(:engine_klass)).to eq(BingV7ImageSearch)
-      end
-    end
-  end
-
   describe '#spelling_suggestion' do
     subject(:image_search) { described_class.new(affiliate:, query: 'lsdkjflskjflskjdf') }
 
     let(:odie_image_search) { instance_double(OdieImageSearch, default_module_tag: 'module_tag', results: [], spelling_suggestion: 'spel') }
 
     before do
-      affiliate.is_bing_image_search_enabled = true
       allow(SuggestionBlock).to receive(:exists?).and_return(suggestion_block_exists)
       allow(OdieImageSearch).to receive(:new).and_return(odie_image_search)
       allow(odie_image_search).to receive(:run)

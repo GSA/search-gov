@@ -93,7 +93,6 @@ class Admin::AffiliatesController < Admin::AdminController
       gets_commercial_results_on_blended_search
       gets_i14y_results
       i14y_date_stamp_enabled
-      is_bing_image_search_enabled
       is_federal_register_document_govbox_enabled
       is_medline_govbox_enabled
       is_photo_govbox_enabled
