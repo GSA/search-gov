@@ -76,13 +76,15 @@ class BulkZombieUrlUploader
 
   def log_upload_error(error)
     error_message = "Failed to process bulk zombie URL document (file: #{@file_name})."
-    Rails.logger.error("#{error_message} Error: #{error.message}\n#{error.backtrace.join("\n")}")
+    backtrace = error.backtrace ? error.backtrace.join("\n") : 'No backtrace available'
+    Rails.logger.error("#{error_message} Error: #{error.message}\n#{backtrace}")
   end
 
   def handle_processing_error(error, url, document_id, row)
     key = url.presence || document_id
     @results&.add_error(error.message, key)
-    Rails.logger.error("Failure to process bulk upload zombie URL row: #{row.inspect}\n#{error.message}\n#{error.backtrace.join("\n")}")
+    backtrace = error.backtrace ? error.backtrace.join("\n") : 'No backtrace available'
+    Rails.logger.error("Failure to process bulk upload zombie URL row: #{row.inspect}\n#{error.message}\n#{backtrace}")
   end
 
   def process_url_with_rescue(url, document_id)
