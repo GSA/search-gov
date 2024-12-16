@@ -113,6 +113,22 @@ describe SearchgovUrl do
         expect(fetch_required.pluck(:url)).
           to include 'https://www.agency.gov/crawled_more_than_month'
       end
+
+      it 'does not include urls last crawled more than 30 days ago and crawl status is not ok' do
+        expect(fetch_required.pluck(:url)).
+        not_to include 'https://www.agency.gov/failed_more_than_month'
+      end
+
+      it 'prioritizes unfetched, enqueued, and recently modified URLs' do
+        expect(fetch_required.pluck(:url)).to eq(
+          %w[
+            https://www.agency.gov/new
+            https://www.agency.gov/crawled_more_than_month
+            https://www.agency.gov/outdated
+            https://www.agency.gov/enqueued
+          ]
+        )
+      end
     end
   end
 
