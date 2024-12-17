@@ -62,13 +62,20 @@ class I14yPostProcessor < ResultsWithBodyAndDescriptionPostProcessor
   def format_results
     @results.map do |result|
       {
-        title: translate_highlights(result['title']),
-        url: result['link'],
-        description: truncate_description(translate_highlights(result['description'])),
-        updatedDate: parse_result_date(result['changed']),
-        publishedDate: parse_result_date(result['published_at']),
-        thumbnailUrl: result['thumbnail_url'],
-        fileType: file_type(result['link'])
+        title: translate_highlights(result[:title]),
+        url: result[:link],
+        description: truncate_description(translate_highlights(result[:description])),
+        updatedDate: parse_result_date(result[:changed]),
+        publishedDate: parse_result_date(result[:published_at]),
+        thumbnailUrl: result[:thumbnail_url],
+        fileType: file_type(result[:link]),
+        audience: result[:audience],
+        contentType: result[:content_type],
+        mimeType: result[:mime_type],
+        searchgovCustom1: result[:searchgov_custom1],
+        searchgovCustom2: result[:searchgov_custom2],
+        searchgovCustom3: result[:searchgov_custom3],
+        tags: result[:tags]
       }.compact
     end
   end
