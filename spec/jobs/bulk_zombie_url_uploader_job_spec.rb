@@ -20,7 +20,13 @@ describe BulkZombieUrlUploaderJob do
       expect(BulkZombieUrlUploader).to have_received(:new).with(filename, filepath)
       expect(uploader).to have_received(:upload)
       expect(BulkZombieUrlUploadResultsMailer).to have_received(:with).with(user:, results:)
-      expect(Rails.logger).to have_received(:info).with(/BulkZombieUrlUploaderJob:/)
+      expect(Rails.logger).to have_received(:info).with(
+        hash_including(
+          BulkZombieUrlUploaderJob: filename,
+          total_urls: 10,
+          errors: 2
+        )
+      )
     end
   end
 end

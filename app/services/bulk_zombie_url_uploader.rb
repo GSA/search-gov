@@ -28,17 +28,7 @@ class BulkZombieUrlUploader
   end
 
   def process_upload
-    parse_csv.each { |row| process_row(row) }
-  rescue CSV::MalformedCSVError => e
-    handle_csv_error(e)
-  end
-
-  def parse_csv
-    csv = CSV.parse(File.read(@file_path), headers: true)
-    raise CSV::MalformedCSVError, "Missing required headers" unless %w[URL DOC_ID].all? { |col| csv.headers.include?(col) }
-    csv
-  rescue CSV::MalformedCSVError, ArgumentError => e
-    raise CSV::MalformedCSVError.new('CSV', "Malformed or invalid CSV: #{e.message}")
+    CSV.parse(File.read(@file_path), headers: true).each { |row| process_row(row) }
   end
 
   def process_row(row)
@@ -53,7 +43,7 @@ class BulkZombieUrlUploader
   end
 
   def handle_url_processing(url, document_id, row)
-    process_url_with_rescue(url, document_id)
+    process_url(url, document_id)
     update_results
   rescue StandardError => e
     handle_processing_error(e, url, document_id, row)
@@ -69,26 +59,15 @@ class BulkZombieUrlUploader
     Rails.logger.error("Skipping row: #{row.inspect}. Document ID is mandatory.")
   end
 
-  def handle_csv_error(error)
-    @results.add_error('Invalid CSV format', 'Entire file')
-    Rails.logger.error("Error parsing CSV: #{error.message}")
-  end
-
   def log_upload_error(error)
     error_message = "Failed to process bulk zombie URL document (file: #{@file_name})."
-    backtrace = error.backtrace ? error.backtrace.join("\n") : 'No backtrace available'
-    Rails.logger.error("#{error_message} Error: #{error.message}\n#{backtrace}")
+    Rails.logger.error(error_message, error)
   end
 
   def handle_processing_error(error, url, document_id, row)
     key = url.presence || document_id
     @results&.add_error(error.message, key)
-    backtrace = error.backtrace ? error.backtrace.join("\n") : 'No backtrace available'
-    Rails.logger.error("Failure to process bulk upload zombie URL row: #{row.inspect}\n#{error.message}\n#{backtrace}")
-  end
-
-  def process_url_with_rescue(url, document_id)
-    process_url(url, document_id)
+    Rails.logger.error('Failure to process bulk upload zombie URL row:', error)
   end
 
   def process_url(url, document_id)

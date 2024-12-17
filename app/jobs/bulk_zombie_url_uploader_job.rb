@@ -20,9 +20,7 @@ class BulkZombieUrlUploaderJob < ApplicationJob
 
   def log_results
     results = @uploader.results
-    Rails.logger.info "BulkZombieUrlUploaderJob: #{results.file_name}"
-    Rails.logger.info "    #{results.total_count} URLs"
-    Rails.logger.info "    #{results.error_count} errors"
+    Rails.logger.info(BulkZombieUrlUploaderJob: results.file_name, total_urls: results.total_count, errors:  results.error_count)
   end
 
   def send_results_email
