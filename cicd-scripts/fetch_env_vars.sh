@@ -43,7 +43,7 @@ cat .env
 cp /home/search/cicd_temp/.env /home/search/searchgov/shared/
 
 # Fetch a specific parameter and save it to a file
-aws ssm get-parameter --name "LOGIN_DOT_GOV_PEM" --region us-east-2 --with-decryption --query "Parameter.Value" --output text > /home/search/searchgov/logindotgov.pem
+aws ssm get-parameter --name "LOGIN_DOT_GOV_PEM" --region us-east-2 --with-decryption --query "Parameter.Value" --output text > /home/search/searchgov/shared/config/logindotgov.pem
 
 # create puma folders and files
 
@@ -58,10 +58,10 @@ aws ssm get-parameter --name "LOGIN_DOT_GOV_PEM" --region us-east-2 --with-decry
 
 # Set ownership and permissions
 chown -R search:search /home/search/searchgov/
-chmod -R 777 /home/search/searchgov/
+chmod -R 755 /home/search/searchgov/
 
-find /home/search/searchgov/ -type d -exec chmod 2777 {} \;
+find /home/search/searchgov/ -type d -exec chmod 2755 {} \;
 
-umask 000
+umask 022
 
 sudo rm -rf /home/search/cicd_temp/*
