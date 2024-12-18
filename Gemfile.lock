@@ -173,6 +173,9 @@ GEM
       mutex_m
       securerandom (>= 0.3)
       tzinfo (~> 2.0)
+    acts_as_list (1.2.4)
+      activerecord (>= 6.1)
+      activesupport (>= 6.1)
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
     aes_key_wrap (1.1.0)
@@ -946,6 +949,7 @@ DEPENDENCIES
   active_storage_validations (~> 1.0, >= 1.0.4)
   activejob-uniqueness (~> 0.2)
   activerecord-validate_unique_child_attribute
+  acts_as_list (~> 1.2, >= 1.2.4)
   addressable (~> 2.8.0)
   after_commit_action (~> 1.1)
   amazing_print (~> 1.4)

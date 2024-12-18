@@ -1,1 +1,18 @@
 %h3 Search Filters
+%table#govfilters.table.table-draggable
+  %thead
+    %tr.nodrag.nodrop
+      %th Name
+      %th Source
+      %th Setting
+  %tbody
+    = f.fields_for :filter_setting do |fs_form|
+      - @site.filter_setting.filters.each do |filter|
+        = fs_form.fields_for :filters, filter do |filter_form|
+          %tr{id: "filter-#{filter.id}"}
+            %td.label-cell
+              %i.draggable.fa.fa-reorder-black
+              = filter_form.hidden_field :position, value: filter.position, class: 'position'
+              = filter_form.text_field :label, maxlength: 20, class: 'form-control form-control-sm'
+            %td #{filter.type}
+            = switch_cell filter_form, :enabled, "#{filter.label}_#{filter.id}_enabled"

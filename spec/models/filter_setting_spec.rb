@@ -14,4 +14,13 @@ RSpec.describe FilterSetting, type: :model do
     it { should have_one(:custom_2).class_name('CustomFilter') }
     it { should have_one(:custom_3).class_name('CustomFilter') }
   end
+
+  describe 'after_create callback' do
+    it 'creates default filters for a new FilterSetting' do
+      filter_setting = FilterSetting.create(affiliate_id: 1)
+      filter_names = filter_setting.filters.pluck(:label)
+
+      expect(filter_names).to match_array(%w[Topic FileType ContentType Audience Date Custom1 Custom2 Custom3])
+    end
+  end
 end

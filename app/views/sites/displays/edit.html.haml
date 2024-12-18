@@ -12,8 +12,8 @@
 
   = render partial: 'sidebar', locals: { f: f }
   = render partial: 'govboxes', locals: { f: f }
+  - if @site.search_engine == 'SearchGov' && @site.show_search_filter_settings
+    = render partial: 'search_filters', locals: { f: f }
   = render partial: 'related_sites', locals: { f: f }
   - if @site.gets_i14y_results || @site.gets_blended_results
     = render partial: 'results_format', locals: { f: f }
-  - if @site.search_engine == 'SearchGov' && @site.show_search_filter_settings
-    = render partial: 'search_filters', locals: { f: f }

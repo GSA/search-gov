@@ -1,6 +1,18 @@
 ---
 en:
   admin_center:
+    filters:
+      default_labels:
+        topic: "Topic"
+        file_type: "File Type"
+        content_type: "Content Type"
+        audience: "Audience"
+        date: "Date"
+        custom1: "Custom Filter 1"
+        custom2: "Custom Filter 2"
+        custom3: "Custom Filter 3"
+      validation:
+        must_customize_custom_filter: "You must customize the label for this custom filter."
     actions:
       toggle_on: 'ON'
     font_weight_bold: bold
