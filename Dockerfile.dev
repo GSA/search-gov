@@ -13,7 +13,7 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
 # Workaround for PhantomJS: https://github.com/DMOJ/online-judge/pull/1270
 ENV OPENSSL_CONF /etc/ssl/
 
-ENV NODE_VERSION 16.20.2
+ENV NODE_VERSION 20.10.0
 ENV NVM_DIR=/root/.nvm
 
 COPY package.json yarn.lock ./
