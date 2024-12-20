@@ -36,18 +36,11 @@ class ImageSearch
                           :total
 
   def run
-    if @query.present?
-      @search_instance.run
+    return handle_empty_query if @query.blank?
 
-      if results.blank? && (@page == 1) && !@uses_cr && @affiliate.is_bing_image_search_enabled?
-        @search_instance = initialize_search_instance(true)
-        @search_instance.run
-      end
-
-      assign_module_tag if results.present?
-    else
-      @error_message = I18n.t(:empty_query)
-    end
+    initialize_and_run_search
+    reinitialize_and_run_search_if_needed
+    assign_module_tag_if_results_present
   end
 
   def format_results
@@ -72,7 +65,7 @@ class ImageSearch
     return nil unless @spelling_suggestion_eligible
 
     @search_instance&.spelling_suggestion
-    # SRCH-5169: BingV7ImageSearch is currently broken, resulting in @search_instance returning false.  Since the
+    # SRCH-5169: BingV7ImageSearch is currently broken, resulting in @search_instance returning false. Since the
     # future of commercial image searches is uncertain, this addresses that scenario with a minimum of effort.
   end
 
@@ -81,6 +74,26 @@ class ImageSearch
   end
 
   private
+
+  def handle_empty_query
+    @error_message = I18n.t(:empty_query)
+  end
+
+  def initialize_and_run_search
+    @search_instance ||= initialize_search_instance(false)
+    @search_instance.run
+  end
+
+  def reinitialize_and_run_search_if_needed
+    return unless results.blank? && (@page == 1) && !@uses_cr
+
+    @search_instance ||= initialize_search_instance(true)
+    @search_instance.run
+  end
+
+  def assign_module_tag_if_results_present
+    assign_module_tag if results.present?
+  end
 
   def initialize_search_instance(uses_cr)
     params = search_params(uses_cr)
@@ -92,18 +105,6 @@ class ImageSearch
                                                       per_page: @per_page)
     params[:skip_log_serp_impressions] = true unless uses_cr
     params
-  end
-
-  def engine_klass
-    if @affiliate.search_engine.start_with?('Bing')
-      "#{@affiliate.search_engine}ImageSearch".constantize
-    else
-      latest_bing_image_search_class
-    end
-  end
-
-  def latest_bing_image_search_class
-    BingV7ImageSearch
   end
 
   def assign_module_tag
