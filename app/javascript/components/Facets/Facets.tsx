@@ -148,52 +148,65 @@ const getAggregationsFromProps = (inputArray: AggregationData[]) => {
 };
 
 export const Facets = ({ aggregations }: FacetsProps) => {
+  console.log("******************************");
+  console.log(aggregations);
+  console.log("******************************");
+
   const styles = useContext(StyleContext);
   const [selectedIds, setSelectedIds] = useState<Record<string, string[]>>({});
 
-  const aggregationsProps = getAggregationsFromProps(dummyAggregationsData);
-  const { aggregationsSelected, nonAggregations } = getSelectedAggregationsFromUrlParams(aggregationsProps);
-  
+  const aggregationsProps = getAggregationsFromProps(aggregations);
+  const { aggregationsSelected, nonAggregations } =
+    getSelectedAggregationsFromUrlParams(aggregationsProps);
+
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const filterVal  = event.target.value;
+    const filterVal = event.target.value;
     const filterName = event.target.name;
 
     if (event.target.checked) {
-      if (selectedIds[filterName]!==undefined) {
+      if (selectedIds[filterName] !== undefined) {
         selectedIds[filterName].push(filterVal);
       } else {
         selectedIds[filterName] = [filterVal];
       }
     } else {
-      selectedIds[filterName] = selectedIds[filterName].filter((id: string) => id !== filterVal);
+      selectedIds[filterName] = selectedIds[filterName].filter(
+        (id: string) => id !== filterVal,
+      );
     }
 
     setSelectedIds(selectedIds);
   };
 
-  const getAccordionItemContent = (aggregation: Record<string, AggregationItem[]>) => {
+  const getAccordionItemContent = (
+    aggregation: Record<string, AggregationItem[]>,
+  ) => {
     return (
       <fieldset className="usa-fieldset">
         {Object.values(aggregation).map((filters: AggregationItem[]) => {
-          return (
-            filters.map((filter: AggregationItem, index: number) => {
-              return (
-                <div className="usa-checkbox" key={index} >
-                  <Checkbox 
-                    id={index+filter.agg_key} 
-                    data-testid={index+filter.agg_key}
-                    label={<>{filter.agg_key} <Tag>{filter.doc_count}</Tag></>}
-                    name={Object.keys(aggregation)[0]} 
-                    value={filter.agg_key}
-                    defaultChecked={getDefaultCheckedFacet(filter, aggregation, aggregationsSelected)}
-                    onChange={
-                      (event) => handleCheckboxChange(event)
-                    }
-                  />
-                </div>
-              );
-            })
-          );
+          return filters.map((filter: AggregationItem, index: number) => {
+            return (
+              <div className="usa-checkbox" key={index}>
+                <Checkbox
+                  id={index + filter.agg_key}
+                  data-testid={index + filter.agg_key}
+                  label={
+                    <>
+                      {filter.agg_key} <Tag>{filter.doc_count}</Tag>
+                    </>
+                  }
+                  name={Object.keys(aggregation)[0]}
+                  value={filter.agg_key}
+                  defaultChecked={getDefaultCheckedFacet(
+                    filter,
+                    aggregation,
+                    aggregationsSelected,
+                  )}
+                  onChange={(event) => handleCheckboxChange(event)}
+                />
+              </div>
+            );
+          });
         })}
       </fieldset>
     );
@@ -215,10 +228,7 @@ export const Facets = ({ aggregations }: FacetsProps) => {
     // To remove the dummy aggregations with integration once backend starts sending the data
     const aggregationsData = aggregations || dummyAggregationsData;
     return (
-      <Accordion 
-        bordered={false} 
-        items={getAccordionItems(aggregationsData)} 
-      />
+      <Accordion bordered={false} items={getAccordionItems(aggregationsData)} />
     );
   };
 

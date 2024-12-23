@@ -46,7 +46,7 @@ interface AggregationItem {
 
 type AggregationData = {
   [key in string]: AggregationItem[];
-}
+};
 
 export interface FontsAndColors {
   activeSearchTabNavigationColor: string;
@@ -177,10 +177,10 @@ interface SearchResultsLayoutProps {
   } | null;
   vertical: string;
   params?: {
-    query?: string
+    query?: string;
   };
   translations: {
-    en?: { noResultsForAndTry: string }
+    en?: { noResultsForAndTry: string };
   };
   language?: Language;
   relatedSites?: {
@@ -207,16 +207,16 @@ interface SearchResultsLayoutProps {
   extendedHeader: boolean;
   fontsAndColors: FontsAndColors;
   footerLinks?: {
-    title: string,
-    url: string
+    title: string;
+    url: string;
   }[];
   primaryHeaderLinks?: {
-    title: string,
-    url: string
+    title: string;
+    url: string;
   }[];
   secondaryHeaderLinks?: {
-    title: string,
-    url: string
+    title: string;
+    url: string;
   }[];
   identifierContent?: {
     domainName: string | null;
@@ -226,18 +226,22 @@ interface SearchResultsLayoutProps {
     logoAltText: string | null;
     lookingForGovernmentServices: boolean | null;
   };
-  identifierLinks?: {
-    title: string,
-    url: string
-  }[] | null;
-  relatedSearches?: { label: string; link: string; }[];
+  identifierLinks?:
+    | {
+        title: string;
+        url: string;
+      }[]
+    | null;
+  relatedSearches?: { label: string; link: string }[];
   newsLabel?: {
     newsAboutQuery: string;
-    results: {
-      title: string;
-      feedName: string,
-      publishedAt: string
-    }[] | null;
+    results:
+      | {
+          title: string;
+          feedName: string;
+          publishedAt: string;
+        }[]
+      | null;
   } | null;
   relatedSitesDropdownLabel?: string;
   agencyName?: string;
@@ -320,30 +324,43 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
       setMobileView(true);
     }
   }, []);
-  
+
   return (
     <LanguageContext.Provider value={i18n}>
-      <StyleContext.Provider value={ fontsAndColors ? fontsAndColors : styles }>
+      <StyleContext.Provider value={fontsAndColors ? fontsAndColors : styles}>
         <StyleContext.Consumer>
           {(value) => <GlobalStyle styles={{ ...value, facetsEnabled }} />}
         </StyleContext.Consumer>
-        <Header 
+        <Header
           page={page}
           isBasic={isBasicHeader(extendedHeader)}
           primaryHeaderLinks={primaryHeaderLinks}
           secondaryHeaderLinks={secondaryHeaderLinks}
         />
-      
+
         <div className="usa-section serp-result-wrapper">
           <GridContainer>
             <Grid row>
-              {facetsEnabled && 
-              <Grid tablet={{ col: 3 }} className='serp-facets-container'>
-                {!isMobileView && <Facets />}
-              </Grid>}
-         
-              <Grid tablet={{ col: facetsEnabled ? 9 : 12 }} className='serp-main-container'>
-                <SearchBar query={params.query} relatedSites={relatedSites} navigationLinks={navigationLinks} relatedSitesDropdownLabel={relatedSitesDropdownLabel} alert={alert} facetsEnabled={facetsEnabled} mobileView={isMobileView} />
+              {facetsEnabled && resultsData && (
+                <Grid tablet={{ col: 3 }} className="serp-facets-container">
+                  {!isMobileView && (
+                    <Facets aggregations={resultsData.aggregations || []} />
+                  )}
+                </Grid>
+              )}
+              <Grid
+                tablet={{ col: facetsEnabled ? 9 : 12 }}
+                className="serp-main-container"
+              >
+                <SearchBar
+                  query={params.query}
+                  relatedSites={relatedSites}
+                  navigationLinks={navigationLinks}
+                  relatedSitesDropdownLabel={relatedSitesDropdownLabel}
+                  alert={alert}
+                  facetsEnabled={facetsEnabled}
+                  mobileView={isMobileView}
+                />
 
                 {/* This ternary is needed to handle the case when Bing pagination leads to a page with no results */}
                 {resultsData ? (
@@ -358,30 +375,32 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
                     additionalResults={additionalResults}
                     newsAboutQuery={newsLabel?.newsAboutQuery}
                     spellingSuggestion={spellingSuggestion}
-                    videosUrl= {videosUrl(navigationLinks)}
-                    relatedSearches = {relatedSearches}
-                    noResultsMessage = {noResultsMessage}
+                    videosUrl={videosUrl(navigationLinks)}
+                    relatedSearches={relatedSearches}
+                    noResultsMessage={noResultsMessage}
                     sitelimit={sitelimit}
                     jobsEnabled={jobsEnabled}
                     agencyName={agencyName}
                     facetsEnabled={facetsEnabled}
-                  />) : params.query ? (
+                  />
+                ) : params.query ? (
                   <Results
                     page={page}
                     vertical={vertical}
                     totalPages={null}
                     query={params.query}
                     unboundedResults={true}
-                    noResultsMessage = {noResultsMessage}
-                  />) : <></>}
+                    noResultsMessage={noResultsMessage}
+                  />
+                ) : (
+                  <></>
+                )}
               </Grid>
             </Grid>
           </GridContainer>
         </div>
 
-        <Footer 
-          footerLinks={footerLinks}
-        />
+        <Footer footerLinks={footerLinks} />
         <Identifier
           identifierContent={identifierContent}
           identifierLinks={identifierLinks}
