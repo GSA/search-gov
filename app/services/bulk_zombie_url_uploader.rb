@@ -15,7 +15,7 @@ class BulkZombieUrlUploader
     initialize_results
     process_upload
   rescue StandardError => e
-    log_upload_error(e)
+    Rails.logger.error("Failed to process bulk zombie URL document", e, filename: @file_name)
   ensure
     @results ||= BulkZombieUrls::Results.new(@file_name) 
   end
@@ -59,31 +59,22 @@ class BulkZombieUrlUploader
     Rails.logger.error("Skipping row: #{row.inspect}. Document ID is mandatory.")
   end
 
-  def log_upload_error(error)
-    error_message = "Failed to process bulk zombie URL document (file: #{@file_name})."
-    Rails.logger.error(error_message, error)
-  end
-
   def handle_processing_error(error, url, document_id, row)
     key = url.presence || document_id
     @results&.add_error(error.message, key)
-    Rails.logger.error('Failure to process bulk upload zombie URL row:', error)
+    Rails.logger.error('Failure to process bulk upload zombie URL row:', error, url:, document_id:)
   end
 
   def process_url(url, document_id)
     if url.present?
       process_url_with_searchgov(url, document_id)
     else
-      delete_document(document_id)
+      I14yDocument.delete(handle: 'searchgov', document_id:)
     end
   end
 
   def process_url_with_searchgov(url, document_id)
     searchgov_url = SearchgovUrl.find_by(url:)
-    searchgov_url ? searchgov_url.destroy : delete_document(document_id)
-  end
-
-  def delete_document(document_id)
-    I14yDocument.delete(handle: 'searchgov', document_id:)
+    searchgov_url.destroy if searchgov_url
   end
 end
