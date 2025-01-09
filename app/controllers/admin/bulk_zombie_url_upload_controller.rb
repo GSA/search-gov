@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class Admin::BulkZombieUrlUploadController < Admin::BulkUploadController
+  include BulkUploadHandler
+  before_action :set_page_title
+
   def upload
     handle_bulk_upload(
       params_key: :bulk_upload_zombie_urls,
@@ -25,10 +28,19 @@ class Admin::BulkZombieUrlUploadController < Admin::BulkUploadController
   end
 
   def enqueue_job
-    BulkZombieUrlUploaderJob.perform_later(
+    s3_client = Aws::S3::Client.new(region: ENV['AWS_REGION'])
+    filepath = "#{Rails.env}/file_uploads/#{SecureRandom.uuid}/#{@file.original_filename}"
+
+    s3_client.put_object(
+      bucket: ENV['AWS_BUCKET'],
+      key: filepath,
+      body: @file.tempfile.set_encoding('UTF-8')
+    )
+
+    BulkZombieUrlUploaderJob.perform_now(
       current_user,
       @file.original_filename,
-      @file.tempfile.path
+      filepath,
     )
   end
 end

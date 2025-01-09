@@ -3,11 +3,22 @@
 class BulkZombieUrlUploaderJob < ApplicationJob
   queue_as :searchgov
 
+  delegate :upload, to: :@uploader
+
   def perform(user, filename, filepath)
     @user = user
     @filename = filename
-    @uploader = BulkZombieUrlUploader.new(filename, filepath)
-    @uploader.upload
+
+    s3_client = Aws::S3::Client.new(region: ENV['AWS_REGION'])
+    response = s3_client.get_object(bucket: ENV['AWS_BUCKET'], key: filepath)
+
+    local_filepath = Rails.root.join('tmp', filename)
+    File.open(local_filepath, 'wb') { |file| file.write(response.body.read) }
+
+    @uploader = BulkZombieUrlUploader.new(filename, local_filepath)
+    upload
+
+    File.delete(local_filepath) if File.exist?(local_filepath)
     report_results
   end
 
