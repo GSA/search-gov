@@ -1,40 +1,34 @@
 # frozen_string_literal: true
 
-module Admin
-  class BulkAffiliateStylesUploadController < AdminController
-    def index
-      @page_title = 'Bulk Affiliate Styles Upload'
-    end
+class Admin::BulkAffiliateStylesUploadController < Admin::BulkUploadController
+  def upload
+    handle_bulk_upload(
+      params_key: :bulk_upload_affiliate_styles,
+      validator_class: BulkAffiliateStyles::FileValidator,
+      error_class: BulkAffiliateStylesUploader::Error,
+      success_path: admin_bulk_affiliate_styles_upload_index_path,
+      logger_message: 'Bulk Affiliate Styles upload failed'
+    )
+  end
 
-    def upload
-      begin
-        @file = params[:bulk_upload_affiliate_styles]
-        BulkAffiliateStyles::FileValidator.new(@file).validate!
-        enqueue_job
-        flash[:success] = success_message(@file.original_filename)
-      rescue BulkAffiliateStylesUploader::Error => e
-        Rails.logger.error e
-        flash[:error] = e.message
-      end
+  private
 
-      redirect_to admin_bulk_affiliate_styles_upload_index_path
-    end
+  def set_page_title
+    @page_title = 'Bulk Affiliate Styles Upload'
+  end
 
-    private
+  def success_message(filename)
+    <<~SUCCESS_MESSAGE
+      Successfully uploaded #{filename} for processing.
+      The results will be emailed to you.
+    SUCCESS_MESSAGE
+  end
 
-    def success_message(filename)
-      <<~SUCCESS_MESSAGE
-        Successfully uploaded #{filename} for processing.
-        The results will be emailed to you.
-      SUCCESS_MESSAGE
-    end
-
-    def enqueue_job
-      BulkAffiliateStylesUploaderJob.perform_later(
-        current_user,
-        @file.original_filename,
-        @file.tempfile.path
-      )
-    end
+  def enqueue_job
+    BulkAffiliateStylesUploaderJob.perform_later(
+      current_user,
+      @file.original_filename,
+      @file.tempfile.path
+    )
   end
 end
