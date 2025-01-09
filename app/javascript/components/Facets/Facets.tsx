@@ -6,9 +6,12 @@ import { darken } from 'polished';
 import { Accordion, DateRangePicker, Tag, Checkbox } from '@trussworks/react-uswds';
 
 import { StyleContext } from '../../contexts/StyleContext';
+import { LanguageContext } from '../../contexts/LanguageContext';
 import { FontsAndColors  } from '../SearchResultsLayout';
 import { checkColorContrastAndUpdateStyle, getFacetsQueryParamString, loadQueryUrl, getSelectedAggregationsFromUrlParams, getDefaultCheckedFacet } from '../../utils';
 import { FacetsLabel } from './FacetsLabel';
+
+import { camelToSnake } from '../../utils';
 
 import './Facets.css';
 
@@ -17,8 +20,8 @@ interface FacetsProps {
 }
 
 interface AggregationItem {
-  agg_key: string;
-  doc_count: number;
+  aggKey: string;
+  docCount: number;
 }
 
 type AggregationData = {
@@ -56,74 +59,74 @@ type HeadingLevel = 'h4';
 
 const dummyAggregationsData: AggregationData[] = [
   {
-    'Audience': [
+    'contentType': [
       {
-        agg_key: 'Small business',
-        doc_count: 1024
+        aggKey: 'Small business',
+        docCount: 1024
       },
       {
-        agg_key: 'Real estate',
-        doc_count: 1234
+        aggKey: 'Real estate',
+        docCount: 1234
       },
       {
-        agg_key: 'Technologists',
-        doc_count: 1764
+        aggKey: 'Technologists',
+        docCount: 1764
       },
       {
-        agg_key: 'Factories',
-        doc_count: 1298
+        aggKey: 'Factories',
+        docCount: 1298
       }
     ]
   },
   {
-    'Content Type': [
+    'searchgovCustom3': [
       {
-        agg_key: 'Press release',
-        doc_count: 2876
+        aggKey: 'Press release',
+        docCount: 2876
       },
       {
-        agg_key: 'Blogs',
-        doc_count: 1923
+        aggKey: 'Blogs',
+        docCount: 1923
       },
       {
-        agg_key: 'Policies',
-        doc_count: 1244
+        aggKey: 'Policies',
+        docCount: 1244
       },
       {
-        agg_key: 'Directives',
-        doc_count: 876
+        aggKey: 'Directives',
+        docCount: 876
       }
     ]
   },
   {
-    'File Type': [
+    'fileType': [
       {
-        agg_key: 'CSV',
-        doc_count: 23
+        aggKey: 'CSV',
+        docCount: 23
       },
       {
-        agg_key: 'Excel',
-        doc_count: 76
+        aggKey: 'Excel',
+        docCount: 76
       },
       {
-        agg_key: 'Word',
-        doc_count: 11
+        aggKey: 'Word',
+        docCount: 11
       },
       {
-        agg_key: 'Text',
-        doc_count: 12
+        aggKey: 'Text',
+        docCount: 12
       }
     ]
   },
   {
-    'Tags': [
+    'tagsType': [
       {
-        agg_key: 'Contracts',
-        doc_count: 703
+        aggKey: 'Contracts',
+        docCount: 703
       },
       {
-        agg_key: 'BPA',
-        doc_count: 22
+        aggKey: 'BPA',
+        docCount: 22
       }
     ]
   }
@@ -139,7 +142,7 @@ const getAggregationsFromProps = (inputArray: AggregationData[]) => {
   inputArray.forEach((item: AggregationData) => {
     for (const key in item) {
       if (Object.prototype.hasOwnProperty.call(item, key)) {
-        aggregationsFromProps[key] = item[key].map((innerItem: AggregationItem) => innerItem.agg_key);
+        aggregationsFromProps[camelToSnake(key)] = item[key].map((innerItem: AggregationItem) => innerItem.aggKey);
       }
     }
   });
@@ -153,9 +156,10 @@ export const Facets = ({ aggregations }: FacetsProps) => {
   console.log("******************************");
 
   const styles = useContext(StyleContext);
+  const i18n = useContext(LanguageContext);
   const [selectedIds, setSelectedIds] = useState<Record<string, string[]>>({});
 
-  const aggregationsProps = getAggregationsFromProps(aggregations);
+  const aggregationsProps = getAggregationsFromProps(dummyAggregationsData);
   const { aggregationsSelected, nonAggregations } =
     getSelectedAggregationsFromUrlParams(aggregationsProps);
 
@@ -174,7 +178,6 @@ export const Facets = ({ aggregations }: FacetsProps) => {
         (id: string) => id !== filterVal,
       );
     }
-
     setSelectedIds(selectedIds);
   };
 
@@ -188,15 +191,16 @@ export const Facets = ({ aggregations }: FacetsProps) => {
             return (
               <div className="usa-checkbox" key={index}>
                 <Checkbox
-                  id={index + filter.agg_key}
-                  data-testid={index + filter.agg_key}
+                  id={index + filter.aggKey}
+                  data-testid={index + filter.aggKey}
                   label={
                     <>
-                      {filter.agg_key} <Tag>{filter.doc_count}</Tag>
+                      {filter.aggKey} <Tag>{filter.docCount}</Tag>
                     </>
                   }
-                  name={Object.keys(aggregation)[0]}
-                  value={filter.agg_key}
+                  name={camelToSnake(Object.keys(aggregation)[0])}
+                  //name={Object.keys(aggregation)[0]}
+                  value={filter.aggKey}
                   defaultChecked={getDefaultCheckedFacet(
                     filter,
                     aggregation,
@@ -215,7 +219,8 @@ export const Facets = ({ aggregations }: FacetsProps) => {
   const getAccordionItems = (aggregationsData: AggregationData[]) => {
     return aggregationsData.map((aggregation: AggregationData) => {
       return {
-        title: Object.keys(aggregation)[0],
+        //title: Object.keys(aggregation)[0],
+        title: i18n.t(`facets.${Object.keys(aggregation)[0]}`),
         expanded: true,
         id: Object.keys(aggregation)[0].replace(/\s+/g, ''),
         headingLevel: 'h4' as HeadingLevel,
@@ -226,7 +231,7 @@ export const Facets = ({ aggregations }: FacetsProps) => {
 
   const getAggregations = (aggregations?: AggregationData[]) => {
     // To remove the dummy aggregations with integration once backend starts sending the data
-    const aggregationsData = aggregations || dummyAggregationsData;
+    const aggregationsData = dummyAggregationsData;
     return (
       <Accordion bordered={false} items={getAccordionItems(aggregationsData)} />
     );

@@ -40,8 +40,8 @@ interface FacetsProps {
 }
 
 interface AggregationItem {
-  agg_key: string;
-  doc_count: number;
+  aggKey: string;
+  docCount: number;
 }
 
 type AggregationData = {
