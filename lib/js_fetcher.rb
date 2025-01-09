@@ -4,10 +4,9 @@ require 'selenium-webdriver'
 
 module JsFetcher
   def self.fetch(url)
-    options = Selenium::WebDriver::Chrome::Options.new
-    options.add_argument('--headless')
-    options.add_argument('--disable-blink-features=AutomationControlled')
-    driver = Selenium::WebDriver.for(:chrome, options: options)
+    options = Selenium::WebDriver::Options.firefox
+    options.args << '-headless'
+    driver = Selenium::WebDriver.for :firefox, options: options
     driver.manage.timeouts.implicit_wait = 5
 
     begin
