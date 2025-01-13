@@ -21,17 +21,15 @@ require 'axe-cucumber-steps'
 Capybara.default_max_wait_time = 10
 Capybara::Screenshot.autosave_on_failure = false
 
-Capybara.register_driver :selenium_chrome_headless do |app|
-  options = Selenium::WebDriver::Chrome::Options.new
-  options.add_argument('--headless')
-  options.add_argument('--window-size=1200,768')
+Capybara.register_driver :selenium_firefox_headless do |app|
+  options = Selenium::WebDriver::Options.firefox
+  options.args << '-headless'
+  options.args << '--window-size=1200,768'
 
-  Capybara::Selenium::Driver.new(app,
-                                 browser: :chrome,
-                                 options: options)
+  Capybara::Selenium::Driver.new(app, browser: :firefox, options: options)
 end
 
-Capybara.javascript_driver = :selenium_chrome_headless
+Capybara.javascript_driver = :selenium_firefox_headless
 
 # By default, any exception happening in your Rails application will bubble up
 # to Cucumber so that your scenario will fail. This is a different from how
