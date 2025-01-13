@@ -1,4 +1,4 @@
-require 'features/support/env'
+require_relative 'firefox_setup'
 
 RSpec.configure do |config|
   config.before(:each, type: :system) do
@@ -10,6 +10,6 @@ RSpec.configure do |config|
   end
 
   config.after(:each, js: true, type: :system) do
-    Capybara.current_session.driver.quit
+    Capybara.current_session.quit
   end
 end
