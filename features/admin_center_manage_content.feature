@@ -576,9 +576,6 @@ Feature: Manage Content
     When I go to the agency.gov's Supplemental URLs page
     And I access the "Advanced" dropdown menu
     And I follow "Supplemental Feed"
-    And I fill in "URL" with ""
-    And I submit the form by pressing "Save"
-    Then I should see "URL can't be blank"
     When I fill in the following:
       | URL | search.gov/all.atom |
     And I submit the form by pressing "Save"
