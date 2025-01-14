@@ -7,20 +7,20 @@ import { Facets } from '../components/Facets/Facets';
 describe('Facets component', () => {
   it('renders Facets component', () => {
     render(
-      <Facets />
+      <Facets aggregations={[]} />
     );
   });
 
   it('shows Filter search label', () => {
     render(
-      <Facets />
+      <Facets aggregations={[]} />
     );
     expect(screen.getByText('Filter search')).toBeInTheDocument();
   });
 
   it('shows aggegations', () => {
     render(
-      <Facets />
+      <Facets aggregations={[]} />
     );
     expect(screen.getByText('Audience')).toBeInTheDocument();
     expect(screen.getByText('Small business')).toBeInTheDocument();
@@ -36,13 +36,13 @@ describe('Facets component', () => {
 
     expect(screen.getByText('Date Range')).toBeInTheDocument();
     expect(screen.getByText('Last year')).toBeInTheDocument();
-    
+
     const checkbox1 = screen.getByRole('checkbox', { name: /small business/i });
     expect(checkbox1).not.toBeChecked();
 
     fireEvent.click(checkbox1);
     expect(checkbox1).toBeChecked();
-    
+
     fireEvent.click(checkbox1);
     expect(checkbox1).not.toBeChecked();
 
@@ -62,7 +62,7 @@ describe('Facets component', () => {
 
   it('shows Clear and See Results button', () => {
     render(
-      <Facets />
+      <Facets aggregations={[]} />
     );
     expect(screen.getByText('Clear')).toBeInTheDocument();
     expect(screen.getByText('See Results')).toBeInTheDocument();
