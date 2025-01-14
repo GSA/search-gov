@@ -120,7 +120,6 @@ export const Facets = ({ aggregations }: FacetsProps) => {
                     </>
                   }
                   name={camelToSnake(Object.keys(aggregation)[0])}
-                  //name={Object.keys(aggregation)[0]}
                   value={filter.aggKey}
                   defaultChecked={getDefaultCheckedFacet(
                     filter,
