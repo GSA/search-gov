@@ -22,11 +22,32 @@ const locale = {
 
 const i18n = new I18n(locale);
 
+const dummnyAggregations = [{
+  'contentType': [
+    {
+      aggKey: 'Press release',
+      docCount: 2876
+    },
+    {
+      aggKey: 'Blogs',
+      docCount: 1923
+    },
+    {
+      aggKey: 'Policies',
+      docCount: 1244
+    },
+    {
+      aggKey: 'Directives',
+      docCount: 876
+    }
+  ]
+}];
+
 describe('Facets component', () => {
   it('renders Facets component', () => {
     render(
       <LanguageContext.Provider value={i18n} >
-        <Facets aggregations={[]} />
+        <Facets aggregations={dummnyAggregations} />
       </LanguageContext.Provider>
     );
   });
@@ -34,7 +55,7 @@ describe('Facets component', () => {
   it('shows Filter search label', () => {
     render(
       <LanguageContext.Provider value={i18n} >
-        <Facets aggregations={[]} />
+        <Facets aggregations={dummnyAggregations} />
       </LanguageContext.Provider>
     );
     expect(screen.getByText('Filter search')).toBeInTheDocument();
@@ -43,7 +64,7 @@ describe('Facets component', () => {
   it('shows aggegations', () => {
     render(
       <LanguageContext.Provider value={i18n} >
-        <Facets aggregations={[]} />
+        <Facets aggregations={dummnyAggregations} />
       </LanguageContext.Provider>
     );
     expect(screen.getByText('Audience')).toBeInTheDocument();
@@ -87,7 +108,7 @@ describe('Facets component', () => {
   it('shows Clear and See Results button', () => {
     render(
       <LanguageContext.Provider value={i18n} >
-        <Facets aggregations={[]} />
+        <Facets aggregations={dummnyAggregations} />
       </LanguageContext.Provider>
     );
     expect(screen.getByText('Clear')).toBeInTheDocument();
