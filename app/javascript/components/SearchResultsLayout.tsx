@@ -100,7 +100,7 @@ interface SearchResultsLayoutProps {
       blendedModule?: string;
       tags?: string[]
     }[] | null;
-    aggregations?: FacetsProps
+    aggregations?: AggregationData[];
   } | null;
   additionalResults?: {
     recommendedBy: string;
@@ -253,7 +253,7 @@ interface SearchResultsLayoutProps {
       url: string;
     }[];
   };
-  facetsEnabled?: boolean
+  facetsEnabled: boolean
 }
 
 const GlobalStyle = createGlobalStyle<{ styles: { pageBackgroundColor: string; buttonBackgroundColor: string; facetsEnabled: boolean } }>`
@@ -307,16 +307,13 @@ const isBasicHeader = (extendedHeader: boolean): boolean => {
 const videosUrl = (links: NavigationLink[]) => links.find((link) => link.facet === 'YouTube')?.url ;
 
 // eslint-disable-next-line complexity
-const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, params = {}, translations, language = { code: 'en', rtl: false }, relatedSites = [], extendedHeader, footerLinks, primaryHeaderLinks, secondaryHeaderLinks, fontsAndColors, newsLabel, identifierContent, identifierLinks, navigationLinks, relatedSitesDropdownLabel = '', alert, spellingSuggestion, relatedSearches, sitelimit, noResultsMessage, jobsEnabled, agencyName }: SearchResultsLayoutProps) => {
+const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, params = {}, translations, language = { code: 'en', rtl: false }, relatedSites = [], extendedHeader, footerLinks, primaryHeaderLinks, secondaryHeaderLinks, fontsAndColors, newsLabel, identifierContent, identifierLinks, navigationLinks, relatedSitesDropdownLabel = '', alert, spellingSuggestion, relatedSearches, sitelimit, noResultsMessage, jobsEnabled, agencyName, facetsEnabled }: SearchResultsLayoutProps) => {
   const [isMobileView, setMobileView] = useState(false);
 
   const i18n = new I18n(translations);
   i18n.defaultLocale = 'en';
   i18n.enableFallback = true;
   i18n.locale = language.code;
-
-  // facetsEnabled to come from SearchResultsLayout props from backend
-  const facetsEnabled = false;
 
   useEffect(() => {
     // checking/setting the mobile view for handling mobile facets UI
@@ -343,8 +340,8 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
             <Grid row>
               {facetsEnabled && resultsData && (
                 <Grid tablet={{ col: 3 }} className="serp-facets-container">
-                  {!isMobileView && (
-                    <Facets aggregations={resultsData.aggregations || []} />
+                  {!isMobileView && resultsData.aggregations && (
+                    <Facets aggregations={resultsData.aggregations} />
                   )}
                 </Grid>
               )}

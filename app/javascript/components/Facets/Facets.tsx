@@ -16,7 +16,7 @@ import { camelToSnake } from '../../utils';
 import './Facets.css';
 
 interface FacetsProps {
-  aggregations?: AggregationData[];
+  aggregations: AggregationData[];
 }
 
 interface AggregationItem {
@@ -52,85 +52,10 @@ const StyledWrapper = styled.div.attrs<{ styles: FontsAndColors; }>((props) => (
   .usa-search__facets-close-icon {
     fill: ${(props) => props.styles.buttonBackgroundColor};
   }
-  
+
 `;
 
-type HeadingLevel = 'h4'; 
-
-const dummyAggregationsData: AggregationData[] = [
-  {
-    'contentType': [
-      {
-        aggKey: 'Small business',
-        docCount: 1024
-      },
-      {
-        aggKey: 'Real estate',
-        docCount: 1234
-      },
-      {
-        aggKey: 'Technologists',
-        docCount: 1764
-      },
-      {
-        aggKey: 'Factories',
-        docCount: 1298
-      }
-    ]
-  },
-  {
-    'searchgovCustom3': [
-      {
-        aggKey: 'Press release',
-        docCount: 2876
-      },
-      {
-        aggKey: 'Blogs',
-        docCount: 1923
-      },
-      {
-        aggKey: 'Policies',
-        docCount: 1244
-      },
-      {
-        aggKey: 'Directives',
-        docCount: 876
-      }
-    ]
-  },
-  {
-    'fileType': [
-      {
-        aggKey: 'CSV',
-        docCount: 23
-      },
-      {
-        aggKey: 'Excel',
-        docCount: 76
-      },
-      {
-        aggKey: 'Word',
-        docCount: 11
-      },
-      {
-        aggKey: 'Text',
-        docCount: 12
-      }
-    ]
-  },
-  {
-    'tagsType': [
-      {
-        aggKey: 'Contracts',
-        docCount: 703
-      },
-      {
-        aggKey: 'BPA',
-        docCount: 22
-      }
-    ]
-  }
-];
+type HeadingLevel = 'h4';
 
 const getAggregationsFromProps = (inputArray: AggregationData[]) => {
   type aggregationsFromPropsType = {
@@ -151,15 +76,11 @@ const getAggregationsFromProps = (inputArray: AggregationData[]) => {
 };
 
 export const Facets = ({ aggregations }: FacetsProps) => {
-  console.log("******************************");
-  console.log(aggregations);
-  console.log("******************************");
-
   const styles = useContext(StyleContext);
   const i18n = useContext(LanguageContext);
   const [selectedIds, setSelectedIds] = useState<Record<string, string[]>>({});
 
-  const aggregationsProps = getAggregationsFromProps(dummyAggregationsData);
+  const aggregationsProps = getAggregationsFromProps(aggregations);
   const { aggregationsSelected, nonAggregations } =
     getSelectedAggregationsFromUrlParams(aggregationsProps);
 
@@ -219,7 +140,6 @@ export const Facets = ({ aggregations }: FacetsProps) => {
   const getAccordionItems = (aggregationsData: AggregationData[]) => {
     return aggregationsData.map((aggregation: AggregationData) => {
       return {
-        //title: Object.keys(aggregation)[0],
         title: i18n.t(`facets.${Object.keys(aggregation)[0]}`),
         expanded: true,
         id: Object.keys(aggregation)[0].replace(/\s+/g, ''),
@@ -229,11 +149,9 @@ export const Facets = ({ aggregations }: FacetsProps) => {
     });
   };
 
-  const getAggregations = (aggregations?: AggregationData[]) => {
-    // To remove the dummy aggregations with integration once backend starts sending the data
-    const aggregationsData = dummyAggregationsData;
+  const getAggregations = (aggregations: AggregationData[]) => {
     return (
-      <Accordion bordered={false} items={getAccordionItems(aggregationsData)} />
+      <Accordion bordered={false} items={getAccordionItems(aggregations)} />
     );
   };
 
@@ -332,8 +250,8 @@ export const Facets = ({ aggregations }: FacetsProps) => {
       <div className="facets-action-btn-wrapper">
         <ul className="usa-button-group">
           <li className="usa-button-group__item clear-results-button-wrapper">
-            <button 
-              className="usa-button usa-button--unstyled clear-results-button" 
+            <button
+              className="usa-button usa-button--unstyled clear-results-button"
               type="button"
               onClick={() => loadQueryUrl(getFacetsQueryParamString(nonAggregations))}
             >
@@ -341,9 +259,9 @@ export const Facets = ({ aggregations }: FacetsProps) => {
             </button>
           </li>
           <li className="usa-button-group__item">
-            <button 
-              type="button" 
-              className="usa-button see-results-button" 
+            <button
+              type="button"
+              className="usa-button see-results-button"
               onClick={() => loadQueryUrl(getFacetsQueryParamString({ ...nonAggregations, ...selectedIds }))}
             >
               See Results
