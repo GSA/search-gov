@@ -24,7 +24,7 @@ interface AggregationItem {
   docCount: number;
 }
 
-type AggregationData = {
+export type AggregationData = {
   [key in string]: AggregationItem[];
 }
 

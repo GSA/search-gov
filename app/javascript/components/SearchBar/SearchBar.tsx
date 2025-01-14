@@ -9,14 +9,14 @@ import { NavigationLink } from '../SearchResultsLayout';
 
 import SlidingPane from 'react-sliding-pane';
 import { FacetsLabel } from '../Facets/FacetsLabel';
-import { Facets } from '../../components/Facets/Facets';
+import { Facets, AggregationData } from '../../components/Facets/Facets';
 import 'react-sliding-pane/dist/react-sliding-pane.css';
 
 import './SearchBar.css';
 
 const searchMagnifySvgIcon = () => {
   const i18n = useContext(LanguageContext);
-  
+
   return (
     <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="usa-search__submit-icon">
       <title>{i18n.t('search')}</title>
@@ -36,6 +36,7 @@ const facetsCloseSvgIcon = () => {
 };
 
 interface SearchBarProps {
+  agregations?: AggregationData[];
   query?: string;
   relatedSites?: {label: string, link: string}[];
   navigationLinks: NavigationLink[];
@@ -48,7 +49,7 @@ interface SearchBarProps {
   mobileView?: boolean
 }
 
-export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [], relatedSitesDropdownLabel = '', alert, facetsEnabled, mobileView }: SearchBarProps) => {
+export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [], relatedSitesDropdownLabel = '', alert, facetsEnabled, mobileView, agregations }: SearchBarProps) => {
   const [isPaneOpen, setIsPaneOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState(query);
 
@@ -75,7 +76,7 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [],
       backgroundItemClass: '.facets-close-icon-wrapper',
       foregroundItemClass: '.facets-close-icon'
     });
-   
+
     checkColorContrastAndUpdateStyle({
       backgroundItemClass: '.serp-facets-wrapper .see-results-button',
       foregroundItemClass: '.serp-facets-wrapper .see-results-button',
@@ -128,16 +129,16 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [],
             }}
             width={mobileView ? '80' : '50'}
           >
-            <Facets />
+            {agregations && <Facets aggregations={agregations} />}
           </SlidingPane>
         </Grid>
-        
+
         <Grid row>
           <Grid tablet={{ col: true }}>
             <VerticalNav relatedSites={relatedSites} navigationLinks={navigationLinks} relatedSitesDropdownLabel={relatedSitesDropdownLabel} />
           </Grid>
         </Grid>
-        
+
         {!query &&
         <Grid row>
           <Grid tablet={{ col: true }}>

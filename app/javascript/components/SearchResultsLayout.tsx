@@ -294,7 +294,7 @@ const GlobalStyle = createGlobalStyle<{ styles: { pageBackgroundColor: string; b
        width: ${(props) => props.styles.facetsEnabled === true ? '100%': '100%'};
     }
   }
-  
+
   .facets-close-icon-wrapper{
     background-color: ${(props) => props.styles.buttonBackgroundColor};
   }
@@ -350,6 +350,7 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
                 className="serp-main-container"
               >
                 <SearchBar
+                  agregations={resultsData?.aggregations}
                   query={params.query}
                   relatedSites={relatedSites}
                   navigationLinks={navigationLinks}
