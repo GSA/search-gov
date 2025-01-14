@@ -1,26 +1,50 @@
 import '@testing-library/jest-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
 import React from 'react';
+import { I18n } from 'i18n-js';
 
 import { Facets } from '../components/Facets/Facets';
+import { LanguageContext } from '../contexts/LanguageContext';
+
+const locale = {
+  en: {
+    facets: {
+      "changed": 'Last Updated',
+      "conten_type": 'Content Type',
+      "mime_type": "MIME Type",
+      "searchgov_custom1": "Search Gov Custom 1",
+      "searchgov_custom2": "Search Gov Custom 2",
+      "searchgov_custom3": "Search Gov Custom 3",
+      "tags": "Tags"
+    },
+  }
+};
+
+const i18n = new I18n(locale);
 
 describe('Facets component', () => {
   it('renders Facets component', () => {
     render(
-      <Facets aggregations={[]} />
+      <LanguageContext.Provider value={i18n} >
+        <Facets aggregations={[]} />
+      </LanguageContext.Provider>
     );
   });
 
   it('shows Filter search label', () => {
     render(
-      <Facets aggregations={[]} />
+      <LanguageContext.Provider value={i18n} >
+        <Facets aggregations={[]} />
+      </LanguageContext.Provider>
     );
     expect(screen.getByText('Filter search')).toBeInTheDocument();
   });
 
   it('shows aggegations', () => {
     render(
-      <Facets aggregations={[]} />
+      <LanguageContext.Provider value={i18n} >
+        <Facets aggregations={[]} />
+      </LanguageContext.Provider>
     );
     expect(screen.getByText('Audience')).toBeInTheDocument();
     expect(screen.getByText('Small business')).toBeInTheDocument();
@@ -62,7 +86,9 @@ describe('Facets component', () => {
 
   it('shows Clear and See Results button', () => {
     render(
-      <Facets aggregations={[]} />
+      <LanguageContext.Provider value={i18n} >
+        <Facets aggregations={[]} />
+      </LanguageContext.Provider>
     );
     expect(screen.getByText('Clear')).toBeInTheDocument();
     expect(screen.getByText('See Results')).toBeInTheDocument();
