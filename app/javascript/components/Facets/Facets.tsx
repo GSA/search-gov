@@ -139,7 +139,7 @@ export const Facets = ({ aggregations }: FacetsProps) => {
   const getAccordionItems = (aggregationsData: AggregationData[]) => {
     return aggregationsData.map((aggregation: AggregationData) => {
       return {
-        title: i18n.t(`facets.${Object.keys(aggregation)[0]}`),
+        title: i18n.t(`facets.${Object.keys(aggregation)[0]}`) || "",
         expanded: true,
         id: Object.keys(aggregation)[0].replace(/\s+/g, ''),
         headingLevel: 'h4' as HeadingLevel,

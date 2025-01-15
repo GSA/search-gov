@@ -6,12 +6,13 @@ import React from 'react';
 import { BestBets } from '../components/Results/BestBets/index';
 import { enableFetchMocks } from 'jest-fetch-mock';
 enableFetchMocks();
+
 jest.mock('i18n-js', () => {
   return jest.requireActual('i18n-js/dist/require/index');
 });
 
 describe('Best Bets', () => {
-  const additionalResults = { recommendedBy: 'USA.gov', 
+  const additionalResults = { recommendedBy: 'USA.gov',
     textBestBets: [{
       title: 'A best bet',
       description: 'This is the best bet',
@@ -22,10 +23,10 @@ describe('Best Bets', () => {
       titleUrl: 'https://search.gov/support.html',
       imageUrl: 'https://search.gov/support.jpg',
       imageAltText: 'support alt text',
-      links: [{ 
-        title: 'Learning', 
-        url: 'https://search.gov/learn' }] 
-    } 
+      links: [{
+        title: 'Learning',
+        url: 'https://search.gov/learn' }]
+    }
   };
   const headers = {
     Accept: 'application/json',
@@ -39,7 +40,7 @@ describe('Best Bets', () => {
 
   it('calls fetch with correct Text Best Bet click data', () => {
     render(<BestBets {...additionalResults} affiliate='boos_affiliate' query='query' vertical='web' />);
-    
+
     const link = screen.getByText(/A best bet/i);
     fireEvent.click(link);
     const clickBody = {
@@ -78,7 +79,7 @@ describe('Best Bets', () => {
       query: 'query',
       vertical: 'web'
     };
-    
+
     const image = screen.getByText(/Search support/i);
     fireEvent.click(image);
 
@@ -107,7 +108,7 @@ describe('Mobile view: Best Bets', () => {
     window.innerWidth = 450;
   });
 
-  const additionalResults = { recommendedBy: 'USA.gov', 
+  const additionalResults = { recommendedBy: 'USA.gov',
     textBestBets: [{
       title: 'A best bet',
       description: 'This is the best bet',
@@ -118,10 +119,10 @@ describe('Mobile view: Best Bets', () => {
       titleUrl: 'https://search.gov/support.html',
       imageUrl: 'https://search.gov/support.jpg',
       imageAltText: 'support alt text',
-      links: [{ 
-        title: 'Learning', 
-        url: 'https://search.gov/learn' }] 
-    } 
+      links: [{
+        title: 'Learning',
+        url: 'https://search.gov/learn' }]
+    }
   };
   const headers = {
     Accept: 'application/json',
@@ -135,7 +136,7 @@ describe('Mobile view: Best Bets', () => {
 
   it('calls fetch with correct Text Best Bet click data', () => {
     render(<BestBets {...additionalResults} affiliate='boos_affiliate' query='query' vertical='web' />);
-    
+
     const link = screen.getByText(/This is the best bet/i);
     fireEvent.click(link);
     const clickBody = {
@@ -156,5 +157,3 @@ describe('Mobile view: Best Bets', () => {
     expect(fetch).toHaveBeenCalledTimes(1);
   });
 });
-
-

@@ -91,27 +91,27 @@ export const SearchBar = ({ query = '', relatedSites = [], navigationLinks = [],
 
         <Grid row>
           <Grid tablet={{ col: true }} className="search-bar-wrapper">
-            <form 
-              className="usa-search usa-search--small" 
-              role="search" 
+            <form
+              className="usa-search usa-search--small"
+              role="search"
               onSubmit={querySubmit}>
               <label className="usa-sr-only" htmlFor="search-field">{i18n.t('search')}</label>
-              <input 
-                className="usa-input" 
-                id="search-field" 
+              <input
+                className="usa-input"
+                id="search-field"
                 placeholder={i18n.t('searchLabel')}
-                type="search" 
-                name="searchQuery" 
-                value={searchQuery} 
+                type="search"
+                name="searchQuery"
+                value={searchQuery}
                 onChange={handleSearchQueryChange}
-                data-testid="search-field" 
+                data-testid="search-field"
               />
               <button className="usa-button" type="submit" data-testid="search-submit-btn">
                 {searchMagnifySvgIcon()}
               </button>
             </form>
           </Grid>
-          
+
           {facetsEnabled &&
             <div onClick={() => setIsPaneOpen(true)} className="mobile-facets-wrapper">
               <FacetsLabel />
