@@ -6,22 +6,25 @@ import { darken } from 'polished';
 import { Accordion, DateRangePicker, Tag, Checkbox } from '@trussworks/react-uswds';
 
 import { StyleContext } from '../../contexts/StyleContext';
+import { LanguageContext } from '../../contexts/LanguageContext';
 import { FontsAndColors  } from '../SearchResultsLayout';
 import { checkColorContrastAndUpdateStyle, getFacetsQueryParamString, loadQueryUrl, getSelectedAggregationsFromUrlParams, getDefaultCheckedFacet } from '../../utils';
 import { FacetsLabel } from './FacetsLabel';
 
+import { camelToSnake } from '../../utils';
+
 import './Facets.css';
 
 interface FacetsProps {
-  aggregations?: AggregationData[];
+  aggregations: AggregationData[];
 }
 
 interface AggregationItem {
-  agg_key: string;
-  doc_count: number;
+  aggKey: string;
+  docCount: number;
 }
 
-type AggregationData = {
+export type AggregationData = {
   [key in string]: AggregationItem[];
 }
 
@@ -49,85 +52,10 @@ const StyledWrapper = styled.div.attrs<{ styles: FontsAndColors; }>((props) => (
   .usa-search__facets-close-icon {
     fill: ${(props) => props.styles.buttonBackgroundColor};
   }
-  
+
 `;
 
-type HeadingLevel = 'h4'; 
-
-const dummyAggregationsData: AggregationData[] = [
-  {
-    'Audience': [
-      {
-        agg_key: 'Small business',
-        doc_count: 1024
-      },
-      {
-        agg_key: 'Real estate',
-        doc_count: 1234
-      },
-      {
-        agg_key: 'Technologists',
-        doc_count: 1764
-      },
-      {
-        agg_key: 'Factories',
-        doc_count: 1298
-      }
-    ]
-  },
-  {
-    'Content Type': [
-      {
-        agg_key: 'Press release',
-        doc_count: 2876
-      },
-      {
-        agg_key: 'Blogs',
-        doc_count: 1923
-      },
-      {
-        agg_key: 'Policies',
-        doc_count: 1244
-      },
-      {
-        agg_key: 'Directives',
-        doc_count: 876
-      }
-    ]
-  },
-  {
-    'File Type': [
-      {
-        agg_key: 'CSV',
-        doc_count: 23
-      },
-      {
-        agg_key: 'Excel',
-        doc_count: 76
-      },
-      {
-        agg_key: 'Word',
-        doc_count: 11
-      },
-      {
-        agg_key: 'Text',
-        doc_count: 12
-      }
-    ]
-  },
-  {
-    'Tags': [
-      {
-        agg_key: 'Contracts',
-        doc_count: 703
-      },
-      {
-        agg_key: 'BPA',
-        doc_count: 22
-      }
-    ]
-  }
-];
+type HeadingLevel = 'h4';
 
 const getAggregationsFromProps = (inputArray: AggregationData[]) => {
   type aggregationsFromPropsType = {
@@ -139,7 +67,7 @@ const getAggregationsFromProps = (inputArray: AggregationData[]) => {
   inputArray.forEach((item: AggregationData) => {
     for (const key in item) {
       if (Object.prototype.hasOwnProperty.call(item, key)) {
-        aggregationsFromProps[key] = item[key].map((innerItem: AggregationItem) => innerItem.agg_key);
+        aggregationsFromProps[camelToSnake(key)] = item[key].map((innerItem: AggregationItem) => innerItem.aggKey);
       }
     }
   });
@@ -149,51 +77,60 @@ const getAggregationsFromProps = (inputArray: AggregationData[]) => {
 
 export const Facets = ({ aggregations }: FacetsProps) => {
   const styles = useContext(StyleContext);
+  const i18n = useContext(LanguageContext);
   const [selectedIds, setSelectedIds] = useState<Record<string, string[]>>({});
 
-  const aggregationsProps = getAggregationsFromProps(dummyAggregationsData);
-  const { aggregationsSelected, nonAggregations } = getSelectedAggregationsFromUrlParams(aggregationsProps);
-  
+  const aggregationsProps = getAggregationsFromProps(aggregations);
+  const { aggregationsSelected, nonAggregations } =
+    getSelectedAggregationsFromUrlParams(aggregationsProps);
+
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const filterVal  = event.target.value;
+    const filterVal = event.target.value;
     const filterName = event.target.name;
 
     if (event.target.checked) {
-      if (selectedIds[filterName]!==undefined) {
+      if (selectedIds[filterName] !== undefined) {
         selectedIds[filterName].push(filterVal);
       } else {
         selectedIds[filterName] = [filterVal];
       }
     } else {
-      selectedIds[filterName] = selectedIds[filterName].filter((id: string) => id !== filterVal);
+      selectedIds[filterName] = selectedIds[filterName].filter(
+        (id: string) => id !== filterVal,
+      );
     }
-
     setSelectedIds(selectedIds);
   };
 
-  const getAccordionItemContent = (aggregation: Record<string, AggregationItem[]>) => {
+  const getAccordionItemContent = (
+    aggregation: Record<string, AggregationItem[]>,
+  ) => {
     return (
       <fieldset className="usa-fieldset">
         {Object.values(aggregation).map((filters: AggregationItem[]) => {
-          return (
-            filters.map((filter: AggregationItem, index: number) => {
-              return (
-                <div className="usa-checkbox" key={index} >
-                  <Checkbox 
-                    id={index+filter.agg_key} 
-                    data-testid={index+filter.agg_key}
-                    label={<>{filter.agg_key} <Tag>{filter.doc_count}</Tag></>}
-                    name={Object.keys(aggregation)[0]} 
-                    value={filter.agg_key}
-                    defaultChecked={getDefaultCheckedFacet(filter, aggregation, aggregationsSelected)}
-                    onChange={
-                      (event) => handleCheckboxChange(event)
-                    }
-                  />
-                </div>
-              );
-            })
-          );
+          return filters.map((filter: AggregationItem, index: number) => {
+            return (
+              <div className="usa-checkbox" key={index}>
+                <Checkbox
+                  id={index + filter.aggKey}
+                  data-testid={index + filter.aggKey}
+                  label={
+                    <>
+                      {filter.aggKey} <Tag>{filter.docCount}</Tag>
+                    </>
+                  }
+                  name={camelToSnake(Object.keys(aggregation)[0])}
+                  value={filter.aggKey}
+                  defaultChecked={getDefaultCheckedFacet(
+                    filter,
+                    aggregation,
+                    aggregationsSelected,
+                  )}
+                  onChange={(event) => handleCheckboxChange(event)}
+                />
+              </div>
+            );
+          });
         })}
       </fieldset>
     );
@@ -202,7 +139,7 @@ export const Facets = ({ aggregations }: FacetsProps) => {
   const getAccordionItems = (aggregationsData: AggregationData[]) => {
     return aggregationsData.map((aggregation: AggregationData) => {
       return {
-        title: Object.keys(aggregation)[0],
+        title: i18n.t(`facets.${Object.keys(aggregation)[0]}`) || "",
         expanded: true,
         id: Object.keys(aggregation)[0].replace(/\s+/g, ''),
         headingLevel: 'h4' as HeadingLevel,
@@ -211,14 +148,9 @@ export const Facets = ({ aggregations }: FacetsProps) => {
     });
   };
 
-  const getAggregations = (aggregations?: AggregationData[]) => {
-    // To remove the dummy aggregations with integration once backend starts sending the data
-    const aggregationsData = aggregations || dummyAggregationsData;
+  const getAggregations = (aggregations: AggregationData[]) => {
     return (
-      <Accordion 
-        bordered={false} 
-        items={getAccordionItems(aggregationsData)} 
-      />
+      <Accordion bordered={false} items={getAccordionItems(aggregations)} />
     );
   };
 
@@ -317,8 +249,8 @@ export const Facets = ({ aggregations }: FacetsProps) => {
       <div className="facets-action-btn-wrapper">
         <ul className="usa-button-group">
           <li className="usa-button-group__item clear-results-button-wrapper">
-            <button 
-              className="usa-button usa-button--unstyled clear-results-button" 
+            <button
+              className="usa-button usa-button--unstyled clear-results-button"
               type="button"
               onClick={() => loadQueryUrl(getFacetsQueryParamString(nonAggregations))}
             >
@@ -326,9 +258,9 @@ export const Facets = ({ aggregations }: FacetsProps) => {
             </button>
           </li>
           <li className="usa-button-group__item">
-            <button 
-              type="button" 
-              className="usa-button see-results-button" 
+            <button
+              type="button"
+              className="usa-button see-results-button"
               onClick={() => loadQueryUrl(getFacetsQueryParamString({ ...nonAggregations, ...selectedIds }))}
             >
               See Results

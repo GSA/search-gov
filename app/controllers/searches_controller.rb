@@ -94,7 +94,8 @@ class SearchesController < ApplicationController
                                                  :since_date,
                                                  :sort_by,
                                                  :tbs,
-                                                 :until_date
+                                                 :until_date,
+                                                 :include_facets
   end
 
   def set_docs_search_options

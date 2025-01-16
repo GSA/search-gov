@@ -40,13 +40,13 @@ describe('Tablet & Mobile view: SearchBar with facets', () => {
   it('Filter search label and filter button is present', () => {
     render(
       <LanguageContext.Provider value={i18n} >
-        <SearchBar query="" navigationLinks={[]} facetsEnabled={true} mobileView={true} />
+        <SearchBar query="" navigationLinks={[]} facetsEnabled={true} mobileView={true} agregations={[]} />
       </LanguageContext.Provider>
     );
 
     const filterLabel = screen.getByText(/Filter search/i);
     expect(filterLabel).toBeInTheDocument();
-    
+
     const filterSearchBtn = screen.getByTestId('filter-search-btn');
     fireEvent.click(filterSearchBtn);
   });
@@ -54,7 +54,7 @@ describe('Tablet & Mobile view: SearchBar with facets', () => {
   it('Filter type, action buttons are present', () => {
     render(
       <LanguageContext.Provider value={i18n} >
-        <SearchBar query="" navigationLinks={[]} facetsEnabled={true} mobileView={true} />
+        <SearchBar query="" navigationLinks={[]} facetsEnabled={true} mobileView={true} agregations={[]} />
       </LanguageContext.Provider>
     );
 
