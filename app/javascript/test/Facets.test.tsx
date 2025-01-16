@@ -105,6 +105,9 @@ describe('Facets component', () => {
     fireEvent.click(checkbox2);
     expect(checkbox2).toBeChecked();
 
+    fireEvent.click(checkbox3);
+    expect(checkbox3).toBeChecked();
+
     fireEvent.click(checkbox2);
     expect(checkbox2).not.toBeChecked();
   });
