@@ -12,7 +12,7 @@ You can edit existing files or create new files directly via the [Github web int
 1. Start with `non_es_en_template.yml` and copy it into your new locale file. The reason you are using `non_es_en_template.yml` and not `en.yml` or `es.yml` is because the English and Spanish locale files contain many translations that are not used in other locales.
 1. Change the two letter locale in line 1 of your new file from `non_es_en_template` to match the locale of the filename.
 1. Be sure to follow the instructions for date-related fields like `cdr_format`, `date_format`, and `slashes`. Case is important!
-1. Be careful with preserving any opening/closing quotes around strings.
+1. Be careful with preserving any opening/closing quotes around strings.1
 1. Once you have the file ready, copy/paste it into a [YAML validator](http://www.yamllint.com) to ensure what you have is valid YAML.
 1. Commit the change in Github to a feature branch.
 
