@@ -12,7 +12,7 @@ Feature: Search - redesign
     Then I should see "Please enter a search term in the box above."
     And I should not see pagination
 
-  @javascript @a11y 
+  @javascript @a11y
   Scenario: Searching a domain with Bing results with pagination
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | first_name | last_name | domains        |
@@ -39,7 +39,7 @@ Feature: Search - redesign
     And I should not see a link to the "Previous" page
     And I should see Powered by Bing
 
-  @javascript @a11y 
+  @javascript @a11y
   Scenario: Search with I14y results with pagination
     Given the following SearchGov Affiliates exist:
       | display_name   | name           | contact_email      | first_name | last_name | domains            |
@@ -87,7 +87,7 @@ Feature: Search - redesign
     And I should see "6 results"
     And I should see Powered by Search.gov
 
-  @javascript @a11y 
+  @javascript @a11y
   Scenario: Search with best bets
     Given the following SearchGov Affiliates exist:
       | display_name   | name           | contact_email      | first_name | last_name | domains            |
@@ -129,7 +129,7 @@ Feature: Search - redesign
     And I should see "2 results"
     And I should see Powered by Search.gov
 
-  @javascript @a11y 
+  @javascript @a11y
   Scenario: Docs search
     Given the following Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | domains |
@@ -138,7 +138,7 @@ Feature: Search - redesign
     And I search for "USA" in the redesigned search page
     Then I should see exactly "20" web search results
 
-  @javascript @a11y 
+  @javascript @a11y
   Scenario: Job search
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name |locale | jobs_enabled |
@@ -154,7 +154,7 @@ Feature: Search - redesign
     And I should see an image link to "USAJobs.gov" with url for "https://www.usajobs.gov/"
     And I should see a link to "More federal job openings on USAJobs.gov" with url for "https://www.usajobs.gov/Search/Results?hp=public"
 
-  @javascript @a11y 
+  @javascript @a11y
   Scenario: News search
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale |
@@ -190,7 +190,7 @@ Feature: Search - redesign
 
     When I am on es.agency.gov's "Noticias-1" news search page
     And I should see exactly "5" web search results
-  
+
   @javascript @a11y
   Scenario: Searchers see English Medline Govbox
     Given the following Affiliates exist:
@@ -216,7 +216,7 @@ Feature: Search - redesign
     Then I should see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears" within the serp med topic govbox
     And I should see a link to "Hippo1" with url for "https://www.nlm.nih.gov/medlineplus/Hippopotomonstrosesquippedaliophobia.html"
 
-  @javascript @a11y 
+  @javascript @a11y
   Scenario: Searchers see Spanish Medline Govbox
     Given the following Affiliates exist:
       | display_name | name        | contact_email | first_name | last_name | domains | is_medline_govbox_enabled | locale |
@@ -225,7 +225,7 @@ Feature: Search - redesign
       | medline_title                        | medline_tid | locale | summary_html                                                     |
       | Hippopotomonstrosesquippedaliophobia | 12345       | en     | Hippopotomonstrosesquippedaliophobia and Other Irrational Fears  |
     When I am on spanish-nih's search page
-    
+
     And I fill in "searchQuery" with "hippopotomonstrosesquippedaliophobia"
     And I press "Buscar"
     Then I should not see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears"
@@ -252,7 +252,7 @@ Feature: Search - redesign
     When I am on agency.gov's redesigned docs search page
     Then I should see the extended header
 
-  @javascript @a11y 
+  @javascript @a11y
   Scenario: Searching on sites with federal register documents
     And the following Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | agency_abbreviation | is_federal_register_document_govbox_enabled | domains  | display_created_date_on_search_results |
@@ -342,7 +342,7 @@ Feature: Search - redesign
     And I should see "View topic"
     And I should see "Other Site"
 
-  @javascript @a11y 
+  @javascript @a11y
   Scenario: Video news search
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale | youtube_handles         |
@@ -403,7 +403,7 @@ Feature: Search - redesign
     When I am on en.agency.gov's search page
     Then I should not see "New alert for the test aff"
 
-  @javascript @a11y 
+  @javascript @a11y
   Scenario: Searching with spelling suggestions
     Given the following Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | domains |
@@ -413,7 +413,7 @@ Feature: Search - redesign
     Then I should see "Showing results for query"
     And I should see "Search instead for qeury"
 
-  @javascript @a11y 
+  @javascript @a11y
   Scenario: Related searches module
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale |
