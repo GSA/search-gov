@@ -14,24 +14,15 @@ require 'capybara-screenshot/cucumber'
 require 'axe-capybara'
 require 'axe-cucumber-steps'
 
+require_relative '../../spec/support/firefox_setup'
+
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
 # order to ease the transition to Capybara we set the default here. If you'd
 # prefer to use XPath just remove this line and adjust any selectors in your
 # steps to use the XPath syntax.
 Capybara.default_max_wait_time = 10
 Capybara::Screenshot.autosave_on_failure = false
-
-Capybara.register_driver :selenium_chrome_headless do |app|
-  options = Selenium::WebDriver::Chrome::Options.new
-  options.add_argument('--headless')
-  options.add_argument('--window-size=1200,768')
-
-  Capybara::Selenium::Driver.new(app,
-                                 browser: :chrome,
-                                 options: options)
-end
-
-Capybara.javascript_driver = :selenium_chrome_headless
+Capybara.javascript_driver = :selenium_firefox_headless
 
 # By default, any exception happening in your Rails application will bubble up
 # to Cucumber so that your scenario will fail. This is a different from how
