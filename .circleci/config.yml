@@ -83,7 +83,7 @@ jobs:
       mysql_version:
         type: string
 
-    executor: 
+    executor:
       name: test_executor
       ruby_version: << parameters.ruby_version >>
       elasticsearch_version: << parameters.elasticsearch_version >>
@@ -116,7 +116,7 @@ jobs:
       mysql_version:
         type: string
 
-    executor: 
+    executor:
       name: test_executor
       ruby_version: << parameters.ruby_version >>
       elasticsearch_version: << parameters.elasticsearch_version >>
@@ -179,7 +179,7 @@ jobs:
       mysql_version:
         type: string
 
-    executor: 
+    executor:
       name: test_executor
       ruby_version: << parameters.ruby_version >>
       elasticsearch_version: << parameters.elasticsearch_version >>
@@ -246,7 +246,7 @@ jobs:
       node_version:
         type: string
 
-    executor: 
+    executor:
       name: test_executor
       ruby_version: << parameters.ruby_version >>
       elasticsearch_version: << parameters.elasticsearch_version >>
@@ -290,7 +290,7 @@ jobs:
       node_version:
         type: string
 
-    executor: 
+    executor:
       name: test_executor
       ruby_version: << parameters.ruby_version >>
       elasticsearch_version: << parameters.elasticsearch_version >>
@@ -324,7 +324,7 @@ workflows:
             parameters:
               ruby_version:
                 - 3.1.4
-                - 3.3.4
+                - 3.3.7
               elasticsearch_version:
                 - 7.17.7
                 # not yet compatible with Elasticsearch 8
@@ -339,7 +339,7 @@ workflows:
             parameters:
               ruby_version:
                 - 3.1.4
-                - 3.3.4
+                - 3.3.7
               elasticsearch_version:
                 - 7.17.7
               mysql_version:
@@ -353,7 +353,7 @@ workflows:
             parameters:
               ruby_version:
                 - 3.1.4
-                - 3.3.4
+                - 3.3.7
               elasticsearch_version:
                 - 7.17.7
               mysql_version:
@@ -367,7 +367,7 @@ workflows:
             parameters:
               ruby_version:
                 - 3.1.4
-                - 3.3.4
+                - 3.3.7
               elasticsearch_version:
                 - 7.17.7
               mysql_version:
@@ -385,7 +385,7 @@ workflows:
             parameters:
               ruby_version:
                 - 3.1.4
-                - 3.3.4
+                - 3.3.7
               elasticsearch_version:
                 - 7.17.7
               mysql_version:
