@@ -165,6 +165,12 @@ export const focusTrapOptions: any = {
   }
 };
 
+export function camelToSnake(camelStr: string) {
+  return camelStr
+    .replace(/([a-z])([A-Z])/g, '$1_$2')
+    .toLowerCase();
+}
+
 export const getFacetsQueryParamString = (obj: any) => {
   const paramsArray = [];
   for (const key in obj) {
@@ -200,11 +206,11 @@ export const getSelectedAggregationsFromUrlParams = (aggregationsProps: any) => 
 };
 
 export const getDefaultCheckedFacet = (filter:any, aggregation: any, aggregationsSelected: any) => {
-  const hasFilterLabel = Object.keys(aggregation)[0] in aggregationsSelected;
+  const hasFilterLabel = camelToSnake(Object.keys(aggregation)[0]) in aggregationsSelected;
   if (hasFilterLabel === false)
     return false;
 
-  const hasFilterValue = aggregationsSelected[Object.keys(aggregation)[0]].includes(filter.agg_key);
+  const hasFilterValue = aggregationsSelected[camelToSnake(Object.keys(aggregation)[0])].includes(filter.aggKey);
   if (hasFilterValue === false)
     return false;
 
