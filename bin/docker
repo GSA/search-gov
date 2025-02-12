@@ -12,6 +12,7 @@ setup() {
     docker run -it --env-file ${ENV_FILE} --network host ${IMAGE_NAME} bin/rails db:create
     docker run -it --env-file ${ENV_FILE} --network host ${IMAGE_NAME} bin/rails db:schema:load
     docker run -it --env-file ${ENV_FILE} --network host ${IMAGE_NAME} bin/rails db:seed
+    docker run -it --env-file ${ENV_FILE} --network host ${IMAGE_NAME} bin/rails usasearch:elasticsearch:create_indexes
 }
 
 build() {
