@@ -6,7 +6,8 @@ module JsFetcher
   def self.fetch(url)
     options = Selenium::WebDriver::Options.firefox
     options.add_argument('-headless')
-    options.add_argument("-user-agent=#{DEFAULT_USER_AGENT}")
+    options.add_preference('general.useragent.override', DEFAULT_USER_AGENT)
+
     driver = Selenium::WebDriver.for :firefox, options: options
     driver.manage.timeouts.implicit_wait = 5
 
