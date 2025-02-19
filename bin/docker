@@ -9,10 +9,8 @@ setup() {
     echo "Setting up Docker environment..."
     echo "Make sure searchgov-services are up and running"
     docker build -f ${DOCKERFILE} -t ${IMAGE_NAME} .
-    docker run -it --env-file ${ENV_FILE} --network host ${IMAGE_NAME} bin/rails db:create
-    docker run -it --env-file ${ENV_FILE} --network host ${IMAGE_NAME} bin/rails db:schema:load
-    docker run -it --env-file ${ENV_FILE} --network host ${IMAGE_NAME} bin/rails db:seed
     docker run -it --env-file ${ENV_FILE} --network host ${IMAGE_NAME} bin/rails usasearch:elasticsearch:create_indexes
+    docker run -it --env-file ${ENV_FILE} --network host ${IMAGE_NAME} bin/rails db:setup
 }
 
 build() {
