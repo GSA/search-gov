@@ -1,0 +1,76 @@
+#!/bin/bash
+
+IMAGE_NAME="search-gov-dev"
+DOCKERFILE="Dockerfile.dev"
+ENV_FILE=".env.development"
+VOLUME_MOUNT="$(pwd):/usr/src/app"
+
+setup() {
+    echo "Setting up Docker environment..."
+    echo "Make sure searchgov-services are up and running"
+    docker build -f ${DOCKERFILE} -t ${IMAGE_NAME} .
+    docker run -it --env-file ${ENV_FILE} --network host ${IMAGE_NAME} bin/rails usasearch:elasticsearch:create_indexes
+    docker run -it --env-file ${ENV_FILE} --network host ${IMAGE_NAME} bin/rails db:setup
+}
+
+build() {
+    echo "Building Docker image..."
+    docker build -f ${DOCKERFILE} -t ${IMAGE_NAME} .
+}
+
+server() {
+    echo "Starting Rails server..."
+    docker run -it --env-file ${ENV_FILE} --network host --volume "${VOLUME_MOUNT}" ${IMAGE_NAME} bin/rails s
+}
+
+console() {
+    echo "Opening Rails console..."
+    docker run -it --env-file ${ENV_FILE} --network host --volume "${VOLUME_MOUNT}" ${IMAGE_NAME} bin/rails console
+}
+
+bash_console() {
+    echo "SSHing into container..."
+    docker run -it --env-file ${ENV_FILE} --network host --volume "${VOLUME_MOUNT}" ${IMAGE_NAME} bash
+}
+
+catch_em_all() {
+    docker run -it --env-file ${ENV_FILE} --network host --volume "${VOLUME_MOUNT}" ${IMAGE_NAME} "$@"
+}
+
+show_help() {
+    echo "Available commands:"
+    echo "setup     : build image and setup database"
+    echo "build     : build image"
+    echo "server    : run rails server"
+    echo "console   : open rails console"
+    echo "<empty>   : open bash console"
+    echo "[command] : runs the command inside the container"
+    echo "ssh       : open bash console"
+}
+
+case "$1" in
+    "setup")
+        setup
+        ;;
+    "build")
+        build
+        ;;
+    "server")
+        server
+        ;;
+    "console")
+        console
+        ;;
+    "help")
+        show_help
+        ;;
+    "ssh")
+        bash_console
+        ;;
+    "")
+        bash_console
+        ;;
+    *)
+        catch_em_all "$@"
+        ;;
+esac

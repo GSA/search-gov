@@ -18,7 +18,7 @@ ENV RAILS_ENV="production" \
     BUNDLE_WITHOUT="development"
 
 # Install JavaScript dependencies | Needed in base due coffee-rails gem
-ARG NODE_VERSION=16.20.2
+ARG NODE_VERSION=20.10.0
 ARG YARN_VERSION=latest
 ENV PATH=/usr/local/node/bin:$PATH
 RUN curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz -C /tmp/ && \

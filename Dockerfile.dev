@@ -1,5 +1,4 @@
-FROM --platform=linux/amd64 ruby:3.3.4
-RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+FROM --platform=linux/amd64 ruby:3.3.7
 WORKDIR /usr/src/app
 EXPOSE 3100
 
@@ -8,12 +7,13 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
   default-mysql-client \
   imagemagick \
   libprotobuf-dev \
-  protobuf-compiler 
+  protobuf-compiler \
+  firefox-esr
 
 # Workaround for PhantomJS: https://github.com/DMOJ/online-judge/pull/1270
 ENV OPENSSL_CONF /etc/ssl/
 
-ENV NODE_VERSION 16.20.2
+ENV NODE_VERSION 20.10.0
 ENV NVM_DIR=/root/.nvm
 
 COPY package.json yarn.lock ./
@@ -29,9 +29,6 @@ RUN apt install -y curl \
 
 ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
 ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
-
-RUN gem install bundler:2.5.9 \
-  && gem install therubyracer -v '0.12.3' --source 'https://rubygems.org/' -- --with-system-v8
 
 COPY Gemfile* /usr/src/app/
 ENV BUNDLE_PATH /gems
