@@ -175,7 +175,7 @@ group :development do
   gem 'capistrano-rails',  require: false
   gem 'capistrano-rbenv',  require: false
   gem 'capistrano-resque', require: false
-  gem 'capistrano3-puma',  require: false
+  gem 'capistrano3-puma',  '~>5.2',  require: false
 end
 
 group :development, :test do
