@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   ruby: circleci/ruby@2.0.0
-  browser-tools: circleci/browser-tools@1.4.8
+  browser-tools: circleci/browser-tools@1.5.2
   nodejs: circleci/node@5.1.1
   docker: circleci/docker@1.5.0
 
@@ -59,7 +59,7 @@ commands:
           name: Clean node_modules
           command: rm -rf node_modules
       - nodejs/install:
-          node-version: '16'
+          node-version: '20.10.0'
           install-yarn: true
       - run:
           name: Yarn Install
@@ -83,7 +83,7 @@ jobs:
       mysql_version:
         type: string
 
-    executor: 
+    executor:
       name: test_executor
       ruby_version: << parameters.ruby_version >>
       elasticsearch_version: << parameters.elasticsearch_version >>
@@ -116,7 +116,7 @@ jobs:
       mysql_version:
         type: string
 
-    executor: 
+    executor:
       name: test_executor
       ruby_version: << parameters.ruby_version >>
       elasticsearch_version: << parameters.elasticsearch_version >>
@@ -179,7 +179,7 @@ jobs:
       mysql_version:
         type: string
 
-    executor: 
+    executor:
       name: test_executor
       ruby_version: << parameters.ruby_version >>
       elasticsearch_version: << parameters.elasticsearch_version >>
@@ -246,7 +246,7 @@ jobs:
       node_version:
         type: string
 
-    executor: 
+    executor:
       name: test_executor
       ruby_version: << parameters.ruby_version >>
       elasticsearch_version: << parameters.elasticsearch_version >>
@@ -290,7 +290,7 @@ jobs:
       node_version:
         type: string
 
-    executor: 
+    executor:
       name: test_executor
       ruby_version: << parameters.ruby_version >>
       elasticsearch_version: << parameters.elasticsearch_version >>
@@ -323,8 +323,7 @@ workflows:
           matrix:
             parameters:
               ruby_version:
-                - 3.1.4
-                - 3.3.4
+                - 3.3.7
               elasticsearch_version:
                 - 7.17.7
                 # not yet compatible with Elasticsearch 8
@@ -338,8 +337,7 @@ workflows:
           matrix:
             parameters:
               ruby_version:
-                - 3.1.4
-                - 3.3.4
+                - 3.3.7
               elasticsearch_version:
                 - 7.17.7
               mysql_version:
@@ -352,8 +350,7 @@ workflows:
           matrix:
             parameters:
               ruby_version:
-                - 3.1.4
-                - 3.3.4
+                - 3.3.7
               elasticsearch_version:
                 - 7.17.7
               mysql_version:
@@ -366,14 +363,13 @@ workflows:
           matrix:
             parameters:
               ruby_version:
-                - 3.1.4
-                - 3.3.4
+                - 3.3.7
               elasticsearch_version:
                 - 7.17.7
               mysql_version:
                 - "8.0"
               node_version:
-                - 16.20.2
+                - 20.10.0
 
       - report_coverage:
           requires:
@@ -384,11 +380,10 @@ workflows:
           matrix:
             parameters:
               ruby_version:
-                - 3.1.4
-                - 3.3.4
+                - 3.3.7
               elasticsearch_version:
                 - 7.17.7
               mysql_version:
                 - "8.0"
               node_version:
-                - 16.20.2
+                - 20.10.0
