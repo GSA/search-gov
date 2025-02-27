@@ -33,11 +33,11 @@ class SearchElasticEngine < I14ySearch
   end
 
   def build_metadata(search_results)
-    Hashie::Mash::Rash.new({
+    {
       aggregations: search_results.aggregations,
       offset: search_results.offset,
       suggestion: search_results.suggestion,
       total: search_results.total
-    })
+    }
   end
 end
