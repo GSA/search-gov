@@ -72,6 +72,8 @@ class SearchesController < ApplicationController
   def pick_klass_vertical_template
     if get_commercial_results?
       [WebSearch, :web, :index]
+    elsif @affiliate.search_engine == 'SearchElastic'
+      [SearchElasticEngine, :i14y, :i14y]
     elsif gets_i14y_results?
       [I14ySearch, :i14y, :i14y]
     elsif @affiliate.gets_blended_results
