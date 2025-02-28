@@ -125,7 +125,7 @@ Given('there are urls indexed for nasa') do
     extension: '',
     id: '35f9bf2d4dfb0a5c5c3b0aea3badb54d21cf5f54c9cd3dc1b0bafbda0fed6f04',
     language: 'en',
-    mime_type: 'text/html',
+    # mime_type: 'text/html',
     path: 'https://www.nasa.gov/solar-system/nasa-extends-hubble-operations-contract-provides-mission-update/',
     tags: ['goddard space flight center', 'hubble space telescope', 'the solar system', 'goddard space flight center'],
     thumbnail_url: 'https://www.nasa.gov/wp-content/uploads/2020/11/nasa-logo-web-rgb.jpg',
