@@ -74,6 +74,9 @@ commands:
       - run: bundle exec rake db:setup
   install_elasticsearch_plugins:
     description: 'Install Elasticsearch Plugins'
+    parameters:
+      elasticsearch_version:
+        type: string
     steps:
       - run:
           name: Install Elasticsearch Plugins
