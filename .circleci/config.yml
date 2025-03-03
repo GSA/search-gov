@@ -72,6 +72,21 @@ commands:
     description: 'Prepare the test database'
     steps:
       - run: bundle exec rake db:setup
+  install_elasticsearch_plugins:
+    description: 'Install Elasticsearch Plugins'
+    steps:
+      - run:
+          name: Install Elasticsearch Plugins
+          command: |
+            until curl -sS localhost:9200; do sleep 1; done
+            elasticsearch_container_id=$(docker ps -qf "ancestor=docker.elastic.co/elasticsearch/elasticsearch:<< parameters.elasticsearch_version >>")
+            docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-kuromoji
+            docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-icu
+            docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-smartcn
+            # Restart Elasticsearch to apply the plugins
+            docker restart $elasticsearch_container_id
+            # Wait for Elasticsearch to be ready after restart
+            dockerize -wait tcp://localhost:9200 -timeout 1m
 
 jobs:
   checkout_code:
@@ -136,6 +151,8 @@ jobs:
 
       - install_firefox
 
+      - install_elasticsearch_plugins
+
       - prepare_database
 
       - precompile_assets
@@ -198,6 +215,8 @@ jobs:
       - install_js_dependencies
 
       - install_firefox
+
+      - install_elasticsearch_plugins
 
       - prepare_database
 
