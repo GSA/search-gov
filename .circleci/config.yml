@@ -154,7 +154,8 @@ jobs:
 
       - install_firefox
 
-      - install_elasticsearch_plugins
+      - install_elasticsearch_plugins:
+          elasticsearch_version: << parameters.elasticsearch_version >>
 
       - prepare_database
 
@@ -219,7 +220,8 @@ jobs:
 
       - install_firefox
 
-      - install_elasticsearch_plugins
+      - install_elasticsearch_plugins:
+          elasticsearch_version: << parameters.elasticsearch_version >>
 
       - prepare_database
 
