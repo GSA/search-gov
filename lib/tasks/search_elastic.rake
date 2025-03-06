@@ -5,6 +5,6 @@ end
 namespace :search_elastic do
   desc 'Create an index for search_elastic engine'
   task create_index: :environment do
-    Es.create_index()
+    ES.create_index()
   end
 end
