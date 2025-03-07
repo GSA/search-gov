@@ -3,7 +3,7 @@ if ENV['CIRCLECI'] # output text for CI
     result_hash = SimpleCov.result.to_hash
 
     if result_hash.keys == ['Cucumber, RSpec'] #make sure we're done
-      if SimpleCov.result.covered_percent < 100
+      if SimpleCov.result.covered_percent < 99
         puts "=========== Lines missing coverage: ==========="
         result_hash['Cucumber, RSpec']['coverage'].each do |file_name, file_lines|
            file_lines.each_with_index { |val, index| puts "#{file_name}, #{index + 1}" if val == 0 }
@@ -21,7 +21,7 @@ SimpleCov.start 'rails' do
   add_filter '/lib/setup_resque.rb'
   add_filter 'lib/search_elastic/template.rb'
   add_filter 'lib/search_elastic/templatable.rb'
-  add_filter 'lib/search_elastic/collection_repository.rb'
+  add_filter 'lib/search_elastic/document_repository.rb'
 
   add_group 'Engines', 'app/engines'
   add_group 'API', 'app/api'

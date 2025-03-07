@@ -33,7 +33,7 @@ module ES
       order: 0
     )
 
-    repo = SearchElastic::CollectionRepository.new
+    repo = SearchElastic::DocumentRepository.new
     repo.create_index!(index:, include_type_name: true)
   end
 end
