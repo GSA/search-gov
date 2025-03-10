@@ -76,7 +76,9 @@ gem 'validate_url', '= 0.2.0' # Newer versions use Addressable::URI for validati
 # We are temporarily using a custom branch in order to access the deprecation logging
 # functionality that is available in the official 7.16 release.
 gem 'elasticsearch', git: 'https://github.com/GSA/elasticsearch-ruby', branch: '7.4'
+gem 'elasticsearch-dsl', '~> 0.1.9'
 gem 'elasticsearch-xpack', '~> 7.4.0'
+gem "elasticsearch-persistence"
 gem 'federal_register', '~> 0.6.3'
 gem 'redcarpet', '~> 3.6'
 gem 'google-api-client', '~> 0.53.0'
