@@ -92,6 +92,7 @@ class Admin::AffiliatesController < Admin::AdminController
       gets_blended_results
       gets_commercial_results_on_blended_search
       gets_i14y_results
+      gets_results_from_all_domains
       i14y_date_stamp_enabled
       is_federal_register_document_govbox_enabled
       is_medline_govbox_enabled
@@ -108,7 +109,7 @@ class Admin::AffiliatesController < Admin::AdminController
       website
     ]
     config.update.columns = []
-    enable_disable_column_regex = /^(is_|dap_enabled|gets_blended_results|gets_commercial_results_on_blended_search|jobs_enabled|raw_log_access_enabled|gets_i14y_results)/
+    enable_disable_column_regex = /^(is_|dap_enabled|gets_blended_results|gets_commercial_results_on_blended_search|jobs_enabled|raw_log_access_enabled|gets_i14y_results|gets_results_from_all_domains)/
 
     config.update.columns.add_subgroup 'Settings' do |name_group|
       name_group.add(*update_columns.grep_v(enable_disable_column_regex))
