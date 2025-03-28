@@ -3,11 +3,13 @@
 require 'spec_helper'
 
 describe SearchElastic::DocumentQuery do
+  fixtures :affiliates
   let(:query) { 'test' }
   let(:options) do
     { query: query }
   end
-  let(:document_query) { described_class.new(options) }
+  let(:affiliate) { affiliates(:searchgov_affiliate) }
+  let(:document_query) { described_class.new(options, affiliate:) }
   let(:body) { document_query.body.to_hash }
 
   describe '#body' do
