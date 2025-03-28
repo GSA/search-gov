@@ -1,7 +1,8 @@
 class SearchElasticEngine < I14ySearch
   def search
-    params = process_array_parameters(build_search_params)
-    search_results = SearchElastic::DocumentSearch.new(params.merge(indices: ENV.fetch('SEARCHELASTIC_INDEX'))).search
+
+    params = process_array_parameters(build_search_params).merge(indices: ENV.fetch('SEARCHELASTIC_INDEX'))
+    search_results = SearchElastic::DocumentSearch.new(params, affiliate: @affiliate).search
     build_response(search_results)
   end
 
