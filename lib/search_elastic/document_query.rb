@@ -43,7 +43,8 @@ class SearchElastic::DocumentQuery
   attr_accessor :query,
                 :search
 
-  def initialize(options)
+  def initialize(options, affiliate:)
+    @affiliate = affiliate
     @options = options
     @date_range = { gte: @options[:min_timestamp], lt: @options[:max_timestamp] }
     @date_range_created = { gte: @options[:min_timestamp_created], lt: @options[:max_timestamp_created] }
@@ -61,6 +62,7 @@ class SearchElastic::DocumentQuery
     if query.present?
       query_options
     end
+
     build_search_query
     search.explain true if Rails.logger.debug? # scoring details
     search
@@ -262,6 +264,7 @@ class SearchElastic::DocumentQuery
   # rubocop:disable Metrics/MethodLength, Metrics/BlockLength
   def build_search_query
     doc_query = self
+    affiliate = @affiliate
 
     search.query do
       function_score do
@@ -317,16 +320,19 @@ class SearchElastic::DocumentQuery
                 must { term language: doc_query.language } if doc_query.language.present?
 
                 minimum_should_match '100%'
-                should do
-                  bool do
-                    if doc_query.included_sites.any?
-                      minimum_should_match 1
 
-                      doc_query.included_sites.each do |site_filter|
-                        should do
-                          bool do
-                            must { term domain_name: site_filter.domain_name }
-                            must { term url_path: site_filter.url_path } if site_filter.url_path.present?
+                unless affiliate.gets_results_from_all_domains
+                  should do
+                    bool do
+                      if doc_query.included_sites.any?
+                        minimum_should_match 1
+
+                        doc_query.included_sites.each do |site_filter|
+                          should do
+                            bool do
+                              must { term domain_name: site_filter.domain_name }
+                              must { term url_path: site_filter.url_path } if site_filter.url_path.present?
+                            end
                           end
                         end
                       end

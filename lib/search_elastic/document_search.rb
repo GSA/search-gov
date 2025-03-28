@@ -3,8 +3,8 @@ class SearchElastic::DocumentSearch
 
   attr_reader :doc_query, :offset, :size, :indices
 
-  def initialize(options)
-    @doc_query = SearchElastic::DocumentQuery.new(options)
+  def initialize(options, affiliate:)
+    @doc_query = SearchElastic::DocumentQuery.new(options, affiliate:)
     @indices = options[:indices]
     @offset = options[:offset] || 0
     @size = options[:size]
