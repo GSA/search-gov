@@ -161,12 +161,6 @@ gem 'faker', '~> 1.8'
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development do
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem 'spring', '~> 3.1'
-  # Bumping searchgov_style? Be sure to update rubocop, if possible,
-  # and the Rubocop channel in .codeclimate.yml to match the updated rubocop version
-  gem 'searchgov_style', '~> 0.1', require: false
-  gem 'rubocop', '1.48.1', require: false
   # Use console on exceptions pages [https://github.com/rails/web-console]
   # gem 'web-console'
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
@@ -194,6 +188,13 @@ group :development, :test do
   # https://github.com/amazing-print/amazing_print
   gem 'amazing_print', '~> 1.4'
   gem 'debug'
+  gem 'rubocop', '~> 1.65.0', require: false
+  gem 'rubocop-discourse',    require: false
+  gem 'rubocop-minitest',     require: false
+  gem 'rubocop-performance',  require: false
+  gem 'rubocop-rails',        require: false
+  gem 'rubocop-rake',         require: false
+  gem 'rubocop-rspec',        require: false
 end
 
 group :test do
