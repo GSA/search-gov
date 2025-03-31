@@ -44,6 +44,10 @@ class SearchEngine
     raise SearchError.new(error)
   end
 
+  def from_cache
+    false
+  end
+
   protected
 
   def reset_timer
@@ -69,7 +73,7 @@ class SearchEngine
 
     response.diagnostics = {
       result_count: result_count,
-      from_cache: api_connection.namespace,
+      from_cache: from_cache ? 'none' : true,
       retry_count: retry_count,
       elapsed_time_ms: elapsed_ms,
       tracking_information: response.tracking_information,

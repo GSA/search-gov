@@ -3,7 +3,7 @@
 class CachedSearchApiConnection
   extend Forwardable
 
-  attr_reader :namespace
+  attr_reader :namespace, :from_cache
 
   def_delegator :connection, :basic_auth # optional
 
@@ -14,7 +14,11 @@ class CachedSearchApiConnection
   end
 
   def get(api_endpoint, param_hash = {})
+    @from_cache = true
+
     Rails.cache.fetch(cache_key(api_endpoint, param_hash), expires_in: @cache_duration, namespace:) do
+      @from_cache = false
+
       connection.get(api_endpoint, param_hash)
     end
   end

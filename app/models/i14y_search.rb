@@ -12,6 +12,8 @@ class I14ySearch < FilterableSearch
                     searchgov_custom3
                     tags].freeze
 
+  delegate :from_cache, to: :api_connection
+
   def search
     I14yCollections.search(build_search_params)
   rescue Faraday::ClientError => e
@@ -47,6 +49,10 @@ class I14ySearch < FilterableSearch
 
   def first_page?
     @offset ? @offset.zero? : super
+  end
+
+  def api_connection
+    I14yCollections.cached_connection
   end
 
   protected
