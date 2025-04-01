@@ -21,8 +21,8 @@ describe SearchEngine do
 
   let(:options) { {} }
   let(:cache_name) { 'some_cache' }
-  let(:api_connection) { instance_double(CachedSearchApiConnection, get: cached_response, namespace: cache_name) }
-  let(:cached_response) { CachedSearchApiConnectionResponse.new(:response, cache_name) }
+  let(:api_connection) { instance_double(CachedSearchApiConnection, get: reponse, namespace: cache_name) }
+  let(:reponse) { CachedSearchApiConnectionResponse.new(:response, cache_name) }
   let(:parsed_response) { double(SearchEngineResponse, results: [:foo, :bar, :baz], 'diagnostics=': nil, 'tracking_information': 'trackery') }
   let(:statsd) { double(Datadog::Statsd, decrement: nil, gauge: nil, increment: nil) }
 
@@ -37,7 +37,7 @@ describe SearchEngine do
   describe '#execute_query' do
     context 'when no errors occur' do
       before do
-        allow(api_connection).to receive(:get) { cached_response }
+        allow(api_connection).to receive(:get) { reponse }
       end
 
       it 'returns the parsed response' do
@@ -47,7 +47,7 @@ describe SearchEngine do
       it 'adds api diagnostics to the response' do
         expect(parsed_response).to receive(:'diagnostics=').with({
           result_count: 3,
-          from_cache: 'some_cache',
+          from_cache: true,
           retry_count: 0,
           elapsed_time_ms: 2000,
           tracking_information: 'trackery'
@@ -129,7 +129,7 @@ describe SearchEngine do
         allow(api_connection).to receive(:get) do
           @error_count += 1
           raise Faraday::TimeoutError.new('nope') if @error_count < 2
-          cached_response
+          reponse
         end
       end
 
@@ -138,9 +138,11 @@ describe SearchEngine do
       end
 
       it 'adds api diagnostics to the response' do
+        binding.pry
+
         expect(parsed_response).to receive(:'diagnostics=').with({
           result_count: 3,
-          from_cache: 'none',
+          from_cache: true,
           retry_count: 1,
           elapsed_time_ms: 4000,
           tracking_information: 'trackery'
