@@ -11,7 +11,7 @@ class SearchEngine
   class_attribute :api_endpoint, instance_writer: false
 
   attr_reader :start_time,
-              :reponse
+              :response
 
   attr_accessor :query,
                 :offset,
@@ -35,9 +35,9 @@ class SearchEngine
     retry_block(attempts: MAX_ATTEMPT_COUNT, catch: [Faraday::TimeoutError, Faraday::ConnectionFailed]) do |attempt|
       statsd.increment('outgoing_count')
       reset_timer
-      @reponse = api_connection.get(api_endpoint, http_params)
+      @response = api_connection.get(api_endpoint, http_params)
       record_outgoing_timing
-      process_reponse(attempt)
+      process_response(attempt)
     end
   rescue => error
     statsd.increment('error_count')
@@ -66,8 +66,8 @@ class SearchEngine
     statsd.gauge('outgoing_duration_ms', elapsed_ms) if api_connection.namespace == 'none'
   end
 
-  def process_reponse(attempt)
-    response = parse_search_engine_response(reponse)
+  def process_response(attempt)
+    response = parse_search_engine_response(response)
     result_count = response.results.size
     retry_count = attempt - 1
 

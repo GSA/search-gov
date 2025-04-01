@@ -21,8 +21,8 @@ describe SearchEngine do
 
   let(:options) { {} }
   let(:cache_name) { 'some_cache' }
-  let(:api_connection) { instance_double(CachedSearchApiConnection, get: reponse, namespace: cache_name) }
-  let(:reponse) { CachedSearchApiConnectionResponse.new(:response, cache_name) }
+  let(:api_connection) { instance_double(CachedSearchApiConnection, get: response, namespace: cache_name) }
+  let(:response) { CachedSearchApiConnectionResponse.new(:response, cache_name) }
   let(:parsed_response) { double(SearchEngineResponse, results: [:foo, :bar, :baz], 'diagnostics=': nil, 'tracking_information': 'trackery') }
   let(:statsd) { double(Datadog::Statsd, decrement: nil, gauge: nil, increment: nil) }
 
@@ -37,7 +37,7 @@ describe SearchEngine do
   describe '#execute_query' do
     context 'when no errors occur' do
       before do
-        allow(api_connection).to receive(:get) { reponse }
+        allow(api_connection).to receive(:get) { response }
       end
 
       it 'returns the parsed response' do
@@ -129,7 +129,7 @@ describe SearchEngine do
         allow(api_connection).to receive(:get) do
           @error_count += 1
           raise Faraday::TimeoutError.new('nope') if @error_count < 2
-          reponse
+          response
         end
       end
 
