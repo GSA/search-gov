@@ -188,9 +188,8 @@ group :development, :test do
   # https://github.com/amazing-print/amazing_print
   gem 'amazing_print', '~> 1.4'
   gem 'debug'
-  gem 'rubocop', '~> 1.65.0', require: false
+  gem 'rubocop',              require: false
   gem 'rubocop-discourse',    require: false
-  gem 'rubocop-minitest',     require: false
   gem 'rubocop-performance',  require: false
   gem 'rubocop-rails',        require: false
   gem 'rubocop-rake',         require: false
