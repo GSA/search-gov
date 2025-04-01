@@ -1,16 +1,23 @@
 version: '2'
+# Work around CodeClimate's inability to use Rubocop's inherit_gem directive:
+# https://github.com/codeclimate/codeclimate-rubocop/issues/71#issuecomment-635055223
+prepare:
+  fetch:
+    - url: https://raw.githubusercontent.com/GSA/searchgov_style/main/.default.yml
+      path: .rubocop-https---raw-githubusercontent-com-GSA-searchgov-style-main--default-yml
 checks:
   file-lines:
+    enabled: true
     config:
       threshold: 300
-    enabled: true
   method-lines:
     enabled: false
   method-count:
     enabled: false
   method-complexity:
     enabled: false
-
+  file-lines:
+    enabled: false
 plugins:
   brakeman:
     enabled: true
@@ -46,7 +53,7 @@ plugins:
   # Rubocop is configured in .rubocop.yml
   rubocop:
     enabled: true
-    channel: rubocop-1-65-0
+    channel: rubocop-1-48-1
 exclude_patterns:
 - config/
 - db/
