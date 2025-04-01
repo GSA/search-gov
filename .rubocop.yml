@@ -1,14 +1,11 @@
 inherit_from: .rubocop_todo.yml
-
 AllCops:
   NewCops: enable
-
 require:
   - rubocop-performance
   - rubocop-rails
   - rubocop-rake
   - rubocop-rspec
-
 inherit_mode:
   merge:
     - Exclude
