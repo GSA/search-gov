@@ -138,8 +138,6 @@ describe SearchEngine do
       end
 
       it 'adds api diagnostics to the response' do
-        binding.pry
-
         expect(parsed_response).to receive(:'diagnostics=').with({
           result_count: 3,
           from_cache: true,
@@ -147,6 +145,7 @@ describe SearchEngine do
           elapsed_time_ms: 4000,
           tracking_information: 'trackery'
         })
+
         subject.execute_query
       end
 
