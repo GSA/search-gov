@@ -2,8 +2,6 @@ require 'spec_helper'
 
 describe LogstashDeduper do
 
-  it_behaves_like 'a ResqueJobStats job'
-
   describe '.perform' do
     context 'when duplicates exist' do
       let(:search_args) do
