@@ -8,6 +8,8 @@ class BingSearch < SearchEngine
   class_attribute :api_cache_namespace
   class_attribute :response_parser_class
 
+  delegate :from_cache, to: :api_connection
+
   def initialize(options = { })
     super
     @options = options
