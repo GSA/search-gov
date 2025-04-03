@@ -12,6 +12,8 @@ class I14ySearch < FilterableSearch
                     searchgov_custom3
                     tags].freeze
 
+  delegate :from_cache, to: :api_connection
+
   def search
     I14yCollections.search(build_search_params)
   rescue Faraday::ClientError => e
@@ -50,6 +52,10 @@ class I14ySearch < FilterableSearch
   end
 
   protected
+
+  def api_connection
+    I14yCollections.cached_connection
+  end
 
   def date_filter_hash
     {}.tap do |opts|
