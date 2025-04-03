@@ -4,8 +4,6 @@ describe OasisMrssNotification, '.perform' do
   fixtures :rss_feed_urls
   let(:media_feed_url) { rss_feed_urls(:media_feed_url) }
 
-  it_behaves_like 'a ResqueJobStats job'
-
   context 'when feed looks like a photo feed' do
     before do
       allow(HttpConnection).to receive(:get).and_return Rails.root.join('spec/fixtures/rss/media_rss_with_media_content_type.xml').read

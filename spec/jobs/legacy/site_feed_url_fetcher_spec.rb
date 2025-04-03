@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe SiteFeedUrlFetcher do
-  it_behaves_like 'a ResqueJobStats job'
-
   describe '.perform' do
     it 'should import the SiteFeedUrl' do
       site_feed_url = mock_model SiteFeedUrl

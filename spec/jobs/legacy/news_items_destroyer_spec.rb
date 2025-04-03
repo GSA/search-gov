@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe NewsItemsDestroyer do
-  it_behaves_like 'a ResqueJobStats job'
-
   describe '.perform' do
     let(:batch_group) do
       [mock_model(NewsItem, id: 100),

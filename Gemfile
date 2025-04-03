@@ -91,7 +91,6 @@ gem 'hashie', '~> 5.0.0'
 # retry_block is unsupported - consider replacing with retriable
 gem 'retry_block', '~> 1.2.0'
 gem 'colorize', '~> 0.8.1'
-gem 'dogstatsd-ruby', '~> 3.2.0'
 gem 'http', '~> 5.0'
 gem 'robots_tag_parser', '~> 0.1.0'
 gem 'loofah', '~> 2.19'
@@ -116,7 +115,6 @@ gem 'activejob-uniqueness', '~> 0.2'
 gem 'selenium-webdriver', '4.8.1'
 gem 'webdrivers', '~> 5.0'
 gem 'exception_notification', '~> 4.5'
-gem 'dogapi', '~> 1.45'
 # Temporary fix to remove warnings seen in Rails 7:
 # https://github.com/ruby/net-protocol/issues/10
 # This gem can be removed once we upgrade to Ruby 3.1.
