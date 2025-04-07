@@ -47,7 +47,7 @@ describe SearchEngine do
       it 'adds api diagnostics to the response' do
         expect(parsed_response).to receive(:'diagnostics=').with({
           result_count: 3,
-          from_cache: 'some_cache',
+          from_cache: true,
           retry_count: 0,
           elapsed_time_ms: 2000,
           tracking_information: 'trackery'
@@ -140,7 +140,7 @@ describe SearchEngine do
       it 'adds api diagnostics to the response' do
         expect(parsed_response).to receive(:'diagnostics=').with({
           result_count: 3,
-          from_cache: 'none',
+          from_cache: true,
           retry_count: 1,
           elapsed_time_ms: 4000,
           tracking_information: 'trackery'
