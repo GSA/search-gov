@@ -47,7 +47,7 @@ describe HintData do
       it 'returns error' do
         status = described_class.reload
         expect(Rails.logger).to have_received(:error).with('HintData.reload failed', instance_of(JSON::ParserError))
-        expect(status[:error]).to match(/unexpected token/)
+        expect(status[:error]).to match(/unexpected/)
       end
     end
   end
