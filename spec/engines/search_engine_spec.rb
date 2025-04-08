@@ -52,53 +52,54 @@ describe SearchEngine do
         subject.execute_query
       end
 
-    context 'when a non-timeout error occurs' do
-      before do
-        allow(api_connection).to receive(:get).and_raise('nope')
-      end
+      context 'when a non-timeout error occurs' do
+        before do
+          allow(api_connection).to receive(:get).and_raise('nope')
+        end
 
-      it 'raises a SearchError' do
-        expect { subject.execute_query }.to raise_error(SearchEngine::SearchError, 'nope')
-      end
-    end
-
-    context 'when a timeout error occurs once' do
-      let(:cache_name) { 'none' }
-
-      before do
-        @error_count = 0
-        allow(api_connection).to receive(:get) do
-          @error_count += 1
-          raise Faraday::TimeoutError.new('nope') if @error_count < 2
-          cached_response
+        it 'raises a SearchError' do
+          expect { subject.execute_query }.to raise_error(SearchEngine::SearchError, 'nope')
         end
       end
 
-      it 'still returns the parsed response' do
-        expect(subject.execute_query).to eq(parsed_response)
+      context 'when a timeout error occurs once' do
+        let(:cache_name) { 'none' }
+
+        before do
+          @error_count = 0
+          allow(api_connection).to receive(:get) do
+            @error_count += 1
+            raise Faraday::TimeoutError.new('nope') if @error_count < 2
+            cached_response
+          end
+        end
+
+        it 'still returns the parsed response' do
+          expect(subject.execute_query).to eq(parsed_response)
+        end
+
+        it 'adds api diagnostics to the response' do
+          expect(parsed_response).to receive(:'diagnostics=').with({
+            result_count: 3,
+            from_cache: true,
+            retry_count: 1,
+            elapsed_time_ms: 4000,
+            tracking_information: 'trackery'
+          })
+          subject.execute_query
+        end
       end
 
-      it 'adds api diagnostics to the response' do
-        expect(parsed_response).to receive(:'diagnostics=').with({
-          result_count: 3,
-          from_cache: true,
-          retry_count: 1,
-          elapsed_time_ms: 4000,
-          tracking_information: 'trackery'
-        })
-        subject.execute_query
-      end
-    end
+      context 'when a timeout error occurs repeatedly' do
+        let(:cache_name) { 'none' }
 
-    context 'when a timeout error occurs repeatedly' do
-      let(:cache_name) { 'none' }
+        before do
+          allow(api_connection).to receive(:get).and_raise(Faraday::TimeoutError.new('nope'))
+        end
 
-      before do
-        allow(api_connection).to receive(:get).and_raise(Faraday::TimeoutError.new('nope'))
-      end
-
-      it 'raises a SearchError' do
-        expect { subject.execute_query }.to raise_error(SearchEngine::SearchError, 'nope')
+        it 'raises a SearchError' do
+          expect { subject.execute_query }.to raise_error(SearchEngine::SearchError, 'nope')
+        end
       end
     end
   end
