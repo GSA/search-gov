@@ -7,18 +7,14 @@ class HumanSessionsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def new
-    record_captcha_activity('challenge')
     @redirect_to = CGI::escape(params[:r])
   end
 
   def create
     if verify_recaptcha
-      record_captcha_activity('success')
       timestamp = Time.now.to_i
       digest = Digest::SHA256.hexdigest("#{client_ip}:#{timestamp}:#{secret}")
       cookies[:bon] = "#{client_ip}:#{timestamp}:#{digest}"
-    else
-      record_captcha_activity('failure')
     end
 
     redirect_to(redirect_destination, allow_other_host: true)
@@ -28,10 +24,6 @@ class HumanSessionsController < ApplicationController
 
   def client_ip
     request.remote_ip
-  end
-
-  def record_captcha_activity(activity)
-    CaptchaMetrics.new(request).increment_counter_for(activity)
   end
 
   def redirect_destination

@@ -1,6 +1,5 @@
 class SiteFeedUrlFetcher
   extend Resque::Plugins::Priority
-  extend ResqueJobStats
 
   @queue = :primary
 

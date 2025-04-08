@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe NewsItemsChecker do
-  it_behaves_like 'a ResqueJobStats job'
-
   describe '.perform' do
     let(:rss_feed_url) { mock_model(RssFeedUrl, url: 'http://www.example.com/rss/1.xml') }
     let(:news_item_with_404_link) { mock_model(NewsItem, link: 'http://www.example.com/page2') }

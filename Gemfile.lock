@@ -364,9 +364,6 @@ GEM
       thread_safe (~> 0.3, >= 0.3.1)
     diff-lcs (1.6.1)
     docile (1.4.1)
-    dogapi (1.45.0)
-      multi_json
-    dogstatsd-ruby (3.2.0)
     domain_name (0.6.20240107)
     dotenv (3.1.7)
     drb (2.2.1)
@@ -975,8 +972,6 @@ DEPENDENCIES
   curb (~> 1.0.1)
   database_cleaner (~> 2.0)
   debug
-  dogapi (~> 1.45)
-  dogstatsd-ruby (~> 3.2.0)
   dotenv (~> 3.1, >= 3.1.2)
   elasticsearch!
   elasticsearch-dsl (~> 0.1.9)

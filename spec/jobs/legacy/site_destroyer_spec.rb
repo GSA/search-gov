@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe SiteDestroyer, '#perform(site_id)' do
-  it_behaves_like 'a ResqueJobStats job'
-
   context 'when site is located' do
     let(:affiliate) { mock_model(Affiliate, name: 'goner', id: 1234) }
 

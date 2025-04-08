@@ -8,8 +8,6 @@ describe SpellcheckSaytSuggestions, '#perform(wrong,rite)' do
     SaytSuggestion.create!(phrase: 'exhaust', affiliate: affiliates(:basic_affiliate))
   end
 
-  it_behaves_like 'a ResqueJobStats job'
-
   it 'should apply the correction to existing SaytSuggestions containing the misspelled word' do
     wrong = 'haus'
     rite = 'house'
