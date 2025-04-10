@@ -1,8 +1,9 @@
 /*
 Instructions:
-Place the following code in your template file
-  <div id="search-gov-results" affiliate={affliate_name}></div>
-  You can find your affliate name in your search site admin dashbord.
+1. Place the following code in your template file
+  <div id="search-gov-results" affiliate={affliate_name} key={}></div>
+  You can find your affliate name and key in your search site admin dashbord.
+2. Load search.js into your template file
 */
 
 async function callAPI(url) {
@@ -21,7 +22,7 @@ async function callAPI(url) {
     }
   }
 
-async function printResults(query, affilate){
+async function printResults(query, affilate, key){
     //clear the old results
     const list = document.getElementById('results-list');
     if (list) {
@@ -32,10 +33,11 @@ async function printResults(query, affilate){
     const div = document.getElementById('search-gov-results');
     const resultsList = document.createElement('ul');
     resultsList.id = "results-list";
+    resultsList.classList.add("usa-list", "usa-list--unstyled");
 
     //Call the search API with custom params
     const data = await callAPI(
-        `https://api.gsa.gov/technology/searchgov/v2/results/i14y?affiliate=${affilate}&access_key=cM3JPrBscRlP0tiNVLlMmhCRw7QYk82Lp6IARURoR6o=&query=${query}`
+        `https://api.gsa.gov/technology/searchgov/v2/results/i14y?affiliate=${affilate}&access_key=${key}&query=${query}`
     );
 
     //create a link item for each result and append to ul
@@ -63,7 +65,8 @@ function submitSearch(event) {
   //get affilate from div attribute
   const div = document.getElementById('search-gov-results');
   const affliate = div.getAttribute("affiliate");
-  printResults(query, affliate);
+  const key = div.getAttribute("key");
+  printResults(query, affliate, key);
 }
 
 function addSearchForm(){
