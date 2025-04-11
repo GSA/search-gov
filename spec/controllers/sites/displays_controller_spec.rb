@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Sites::DisplaysController do
   fixtures :users, :affiliates, :memberships
   before { activate_authlogic }
+  let(:site) { affiliates(:basic_affiliate) }
 
   describe '#update' do
     it_should_behave_like 'restricted to approved user', :put, :update, site_id: 100
@@ -48,7 +49,9 @@ describe Sites::DisplaysController do
     end
 
     context 'when updating filter settings' do
-      let(:filter_setting) { site.filter_setting }
+      include_context 'approved user logged in to a site'
+
+      let(:filter_setting) { FilterSetting.create!(affiliate_id: site.id) }
       let(:filter) { filter_setting.filters.first }
 
       let(:filter_params) do
@@ -68,27 +71,29 @@ describe Sites::DisplaysController do
       end
 
       before do
+        allow(controller).to receive(:site).and_return(site)
+        @site = site
+
         allow(site).to receive(:destroy_and_update_attributes).and_return(true)
         allow(site).to receive_message_chain(:connections, :build)
 
-        put :update,
-            params: {
-              site_id: site.id,
-              id: 100,
-              site: filter_params
-            }
+        put :update, params: {
+          site_id: site.id,
+          site: filter_params
+        }
       end
 
       it 'updates nested filter attributes correctly' do
-        expect(site).to have_received(:destroy_and_update_attributes).with(
-          ActionController::Parameters.new(filter_params).permit!
-        )
+        expected_params = filter_params.deep_stringify_keys
+        permitted_params = ActionController::Parameters.new(expected_params).permit!
+
+        expect(site).to have_received(:destroy_and_update_attributes).with(permitted_params)
       end
 
       it { is_expected.to redirect_to(edit_site_display_path(site)) }
 
-      it 'sets flash success message' do
-        expect(flash[:success]).to match('You have updated your site display settings.')
+      it 'sets the success flash' do
+        expect(flash[:success]).to eq('You have updated your site display settings.')
       end
     end
   end
