@@ -84,8 +84,19 @@ describe Sites::DisplaysController do
       end
 
       it 'updates nested filter attributes correctly' do
-        expected_params = filter_params.deep_stringify_keys
-        permitted_params = ActionController::Parameters.new(expected_params).permit!
+        permitted_params = ActionController::Parameters.new(
+          filter_setting_attributes: {
+            id: filter_setting.id.to_s,
+            filters_attributes: {
+              '0': {
+                id: filter.id.to_s,
+                position: '1',
+                label: 'Updated Label',
+                enabled: 'true'
+              }
+            }
+          }
+        ).permit!
 
         expect(site).to have_received(:destroy_and_update_attributes).with(permitted_params)
       end
