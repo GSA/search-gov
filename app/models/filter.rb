@@ -1,10 +1,9 @@
 class Filter < ApplicationRecord
   belongs_to :filter_setting
 
-  acts_as_list scope: :filter_setting
-
   validates :label, presence: true
   validate :must_customize_custom_filter
+  validates :label, presence: true, if: :enabled?
 
   private
 
