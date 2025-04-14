@@ -9,10 +9,20 @@ describe FileTypeFilter, type: :model do
       expect(file_type_filter).to be_valid
     end
 
-    it 'is invalid without a label when enabled' do
+    it 'uses the default label if none is provided but enabled is true' do
       file_type_filter = described_class.new(enabled: true)
-      expect(file_type_filter).not_to be_valid
-      expect(file_type_filter.errors[:label]).to include("can't be blank")
+      expect(file_type_filter).to be_valid
+      expect(file_type_filter.label).to eq('FileTypeFilter')
+    end
+
+    context 'when label is blank and enabled is true' do
+      it 'uses the default label' do
+        file_type_filter = described_class.new(label: '', enabled: true)
+        file_type_filter.save
+        file_type_filter.reload
+
+        expect(file_type_filter.label).to eq('FileTypeFilter') 
+      end
     end
   end
 end

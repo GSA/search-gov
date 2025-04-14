@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Sites::DisplaysController do
   fixtures :users, :affiliates, :memberships
   before { activate_authlogic }
+
   let(:site) { affiliates(:basic_affiliate) }
 
   describe '#update' do

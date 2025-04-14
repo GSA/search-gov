@@ -9,10 +9,34 @@ describe TopicFilter, type: :model do
       expect(topic_filter).to be_valid
     end
 
-    it 'is invalid without a label when enabled' do
+    it 'uses the default label if none is provided but enabled is true' do
       topic_filter = described_class.new(enabled: true)
-      expect(topic_filter).not_to be_valid
-      expect(topic_filter.errors[:label]).to include("can't be blank")
+      expect(topic_filter).to be_valid
+      expect(topic_filter.label).to eq('TopicFilter')
+    end
+
+    context 'when label is blank and enabled is true' do
+      it 'uses the default label' do
+        topic_filter = described_class.new(label: '', enabled: true)
+        topic_filter.save
+        topic_filter.reload
+
+        expect(topic_filter.label).to eq('TopicFilter')
+      end
+    end
+
+    it 'does not set a default label when not enabled' do
+      topic_filter = described_class.new(enabled: false, label: nil)
+      topic_filter.valid?
+
+      expect(topic_filter.label).to be_nil
+    end
+
+    it 'does not overwrite an existing label' do
+      topic_filter = described_class.new(enabled: true, label: 'Custom Label')
+      topic_filter.valid?
+
+      expect(topic_filter.label).to eq('Custom Label')
     end
   end
 end

@@ -1,11 +1,16 @@
 class Filter < ApplicationRecord
   belongs_to :filter_setting
 
-  validates :label, presence: true
-  validate :must_customize_custom_filter
+  before_validation :set_default_label, if: -> { label.blank? && enabled }
+
   validates :label, presence: true, if: :enabled?
+  validate :must_customize_custom_filter
 
   private
+
+  def set_default_label
+    self.label = type.presence
+  end
 
   def must_customize_custom_filter
     return if label.nil?
