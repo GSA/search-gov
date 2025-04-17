@@ -1,0 +1,3 @@
+class AudienceFilter < Filter
+
+end

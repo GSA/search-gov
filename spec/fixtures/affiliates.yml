@@ -7,6 +7,7 @@ DEFAULTS: &DEFAULTS
 
 searchgov_affiliate:
   <<: *DEFAULTS
+  id: 323015273
   search_engine: SearchGov
   display_name: SearchGov Affiliate
   name: searchgovaffiliate
@@ -147,3 +148,10 @@ usagov_affiliate_header_bg_color:
     header_background_color: '#0068c4',
     banner_background_color: '#123456'
   }
+
+custom_affiliate:
+  <<: *DEFAULTS
+  id: 173942944
+  display_name: "Custom Affiliate"
+  locale: "en"
+  name: "custom-affiliate"

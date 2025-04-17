@@ -40,7 +40,12 @@ class Sites::DisplaysController < Sites::SetupSiteController
         connections_attributes: [:id, :affiliate_name, :label, :position],
         document_collections_attributes: navigable_attributes,
         image_search_label_attributes: navigable_attributes,
-        rss_feeds_attributes: navigable_attributes)
+        rss_feeds_attributes: navigable_attributes,
+        filter_setting_attributes: [
+          :id,
+          {filters_attributes: [:id, :position, :label, :enabled]}
+        ]
+    )
   end
 
   def navigable_attributes
