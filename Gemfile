@@ -154,8 +154,6 @@ gem 'bootsnap', require: false
 gem 'rails_semantic_logger', '~> 4.14'
 gem 'whenever', '~> 1.0', require: false
 gem 'puma', '~> 5.6'
-# Dummy Generator
-gem 'faker', '~> 1.8'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
@@ -180,6 +178,7 @@ group :development, :test do
   gem 'email_spec', '~> 2.2'
   gem 'database_cleaner', '~> 2.0'
   gem 'capybara', '~> 3.40'
+  gem 'faker', '~> 1.8'
   gem 'launchy', '~> 2.5'
   gem 'i18n-tasks', '~> 0.9.19'
   gem 'pry-byebug', '~> 3.5'
