@@ -1,4 +1,4 @@
-require 'datadog/statsd'
+# require 'datadog/statsd'
 
 class SearchEngine
   class SearchError < RuntimeError;
@@ -29,18 +29,14 @@ class SearchEngine
   end
 
   def execute_query
-    statsd.increment('incoming_count')
     http_params = params
     Rails.logger.debug "#{self.class.name} Url: #{api_endpoint}\nParams: #{http_params}"
     retry_block(attempts: MAX_ATTEMPT_COUNT, catch: [Faraday::TimeoutError, Faraday::ConnectionFailed]) do |attempt|
-      statsd.increment('outgoing_count')
       reset_timer
       @cached_response = api_connection.get(api_endpoint, http_params)
-      record_outgoing_timing
       process_cached_response(attempt)
     end
   rescue => error
-    statsd.increment('error_count')
     raise SearchError.new(error)
   end
 
@@ -62,10 +58,6 @@ class SearchEngine
     ((now - start_time) * 1000).to_i
   end
 
-  def record_outgoing_timing
-    statsd.gauge('outgoing_duration_ms', elapsed_ms) if api_connection.namespace == 'none'
-  end
-
   def process_cached_response(attempt)
     response = parse_search_engine_response(cached_response)
     result_count = response.results.size
@@ -78,18 +70,6 @@ class SearchEngine
       elapsed_time_ms: elapsed_ms,
       tracking_information: response.tracking_information,
     }
-
-    if api_connection.namespace == 'none'
-      statsd.batch do |s|
-        s.gauge('retry_count', retry_count)
-        s.gauge('result_count', result_count)
-      end
-    else
-      statsd.batch do |s|
-        s.increment('cache_hit_count')
-        s.decrement('outgoing_count')
-      end
-    end
 
     response
   end
@@ -109,12 +89,5 @@ class SearchEngine
 
   def engine_tag_value
     self.class.name.split('::').last.underscore
-  end
-
-  def statsd
-    @statsd ||= Datadog::Statsd.new('127.0.0.1', 8125, {
-      namespace: 'dgsearch_commercial_api_searches',
-      tags: ["engine:#{engine_tag_value}"],
-    })
   end
 end
