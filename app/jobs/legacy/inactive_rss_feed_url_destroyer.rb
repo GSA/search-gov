@@ -1,6 +1,5 @@
 class InactiveRssFeedUrlDestroyer
   extend Resque::Plugins::Priority
-  extend ResqueJobStats
   @queue = :primary
 
   def self.perform(rss_feed_url_id)

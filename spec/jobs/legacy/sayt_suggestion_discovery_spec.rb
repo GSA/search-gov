@@ -23,8 +23,6 @@ describe SaytSuggestionDiscovery, '#perform(affiliate_name, affiliate_id, date_i
                             ['today term3', 4]])
   end
 
-  it_behaves_like 'a ResqueJobStats job'
-
   context 'when searches with results exist for an affiliate' do
     before do
       expect(TopNExistsQuery).to receive(:new).with(*top_n_exists_args).and_call_original
