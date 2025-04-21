@@ -1,5 +1,3 @@
-# require 'datadog/statsd'
-
 class SearchEngine
   class SearchError < RuntimeError;
   end
