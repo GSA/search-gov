@@ -1,5 +1,6 @@
 class Sites::DisplaysController < Sites::SetupSiteController
   def edit
+    build_filter_setting
     build_connection
   end
 
@@ -13,12 +14,20 @@ class Sites::DisplaysController < Sites::SetupSiteController
       redirect_to edit_site_display_path(@site),
                   flash: { success: 'You have updated your site display settings.' }
     else
+      build_filter_setting
       build_connection
       render :edit
     end
   end
 
   private
+
+  def build_filter_setting
+    unless @site.filter_setting
+      @site.build_filter_setting
+      @site.filter_setting.filters = FilterSetting.new.initialize_default_filters_preview
+    end
+  end
 
   def build_connection
     @site.connections.build if @site.connections.blank?
