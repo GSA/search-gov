@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Sites::DisplaysController do
   fixtures :users, :affiliates, :memberships
+
   before { activate_authlogic }
 
   let(:site) { affiliates(:basic_affiliate) }
@@ -14,38 +15,31 @@ describe Sites::DisplaysController do
 
       context 'when site params are valid' do
         before do
-          expect(site).to receive(:destroy_and_update_attributes).and_return(true)
+          allow(controller).to receive(:site).and_return(site)
+          allow(site).to receive(:destroy_and_update_attributes).and_return(true)
           allow(site).to receive_message_chain(:connections, :build)
-
-          put :update,
-              params: {
-                site_id: site.id,
-                id: 100,
-                site: { default_search_label: 'Search' }
-              }
         end
 
-        it { is_expected.to redirect_to(edit_site_display_path(site)) }
+        it 'redirects to the edit page with a success message' do
+          put :update, params: { site_id: site.id, site: { default_search_label: 'Search' } }
 
-        it 'sets the flash success message' do
+          expect(response).to redirect_to(edit_site_display_path(site))
           expect(flash[:success]).to match('You have updated your site display settings.')
         end
       end
 
       context 'when site params are not valid' do
         before do
-          expect(site).to receive(:destroy_and_update_attributes).and_return(false)
+          allow(controller).to receive(:site).and_return(site)
+          allow(site).to receive(:destroy_and_update_attributes).and_return(false)
           allow(site).to receive_message_chain(:connections, :build)
-
-          put :update,
-              params: {
-                site_id: site.id,
-                id: 100,
-                site: { default_search_label: 'Search' }
-              }
         end
 
-        it { is_expected.to render_template(:edit) }
+        it 'renders the edit template' do
+          put :update, params: { site_id: site.id, site: { default_search_label: 'Search' } }
+
+          expect(response).to render_template(:edit)
+        end
       end
     end
 
@@ -53,7 +47,14 @@ describe Sites::DisplaysController do
       include_context 'approved user logged in to a site'
 
       let(:filter_setting) { FilterSetting.create!(affiliate_id: site.id) }
-      let(:filter) { filter_setting.filters.first }
+      let(:filter) do
+        filter_setting.filters.create!(
+          label: 'Original Label',
+          type: 'CustomFilter',
+          position: 0,
+          enabled: false
+        )
+      end
 
       let(:filter_params) do
         {
@@ -73,18 +74,13 @@ describe Sites::DisplaysController do
 
       before do
         allow(controller).to receive(:site).and_return(site)
-        @site = site
-
-        allow(site).to receive(:destroy_and_update_attributes).and_return(true)
+        allow(site).to receive_messages(filter_setting: filter_setting, destroy_and_update_attributes: true)
         allow(site).to receive_message_chain(:connections, :build)
-
-        put :update, params: {
-          site_id: site.id,
-          site: filter_params
-        }
       end
 
       it 'updates nested filter attributes correctly' do
+        put :update, params: { site_id: site.id, site: filter_params }
+
         permitted_params = ActionController::Parameters.new(
           filter_setting_attributes: {
             id: filter_setting.id.to_s,
@@ -102,9 +98,10 @@ describe Sites::DisplaysController do
         expect(site).to have_received(:destroy_and_update_attributes).with(permitted_params)
       end
 
-      it { is_expected.to redirect_to(edit_site_display_path(site)) }
-
       it 'sets the success flash' do
+        put :update, params: { site_id: site.id, site: filter_params }
+
+        expect(response).to redirect_to(edit_site_display_path(site))
         expect(flash[:success]).to eq('You have updated your site display settings.')
       end
     end
