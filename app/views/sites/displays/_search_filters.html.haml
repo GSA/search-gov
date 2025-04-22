@@ -7,12 +7,13 @@
       %th Setting
   %tbody
     = f.fields_for :filter_setting do |fs_form|
-      - @site.filter_setting.filters.each do |filter|
+      - filters = initialize_filters_for_display(@site)
+      - filters.each_with_index do |filter, index|
         = fs_form.fields_for :filters, filter do |filter_form|
-          %tr{id: "filter-#{filter.id}"}
+          %tr{id: filter.id ? "filter-#{filter.id}" : "filter-temp-#{index}"}
             %td.label-cell
               %i.draggable.fa.fa-reorder-black
               = filter_form.hidden_field :position, value: filter.position, class: 'position'
               = filter_form.text_field :label, maxlength: 20, class: 'form-control form-control-sm'
             %td #{filter.type}
-            = switch_cell filter_form, :enabled, "#{filter.label}_#{filter.id}_enabled"
+            = switch_cell filter_form, :enabled, "#{filter.label.downcase}_#{filter.id || "temp-#{index}"}_enabled"
