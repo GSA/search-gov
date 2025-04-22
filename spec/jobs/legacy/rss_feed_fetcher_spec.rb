@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 describe RssFeedFetcher do
-  it_behaves_like 'a ResqueJobStats job'
-
   describe '.perform' do
     it 'imports the RssFeedUrl' do
       rss_feed_url = mock_model RssFeedUrl

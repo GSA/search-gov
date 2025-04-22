@@ -1,6 +1,5 @@
 class SpellcheckSaytSuggestions
   extend Resque::Plugins::Priority
-  extend ResqueJobStats
   @queue = :primary
 
   def self.perform(wrong, rite)
