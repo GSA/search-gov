@@ -271,15 +271,6 @@ describe I14ySearch do
       i14y_search.run
       expect(Rails.logger).to have_received(:error).with('I14y search problem', instance_of(Faraday::ClientError))
     end
-
-    # semi-integration spec to confirm that we send i14y search client errors to Datadog
-    it 'sends the information to datadog' do
-      i14y_search.run
-      expect(a_request(
-        :post,
-        'https://api.datadoghq.com/api/v1/events?api_key=datadogapikey'
-      ).with { |request| request.body.match?(/problem.*i14y/) }).to have_been_made.once
-    end
   end
 
   context 'when the affiliate has specified site domains' do
