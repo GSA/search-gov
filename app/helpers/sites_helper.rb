@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 module SitesHelper
+  def initialize_filters_for_display(site)
+    site.filter_setting&.filters || FilterSetting.new.initialize_default_filters_preview
+  end
+
   def site_data
     {
       user: {

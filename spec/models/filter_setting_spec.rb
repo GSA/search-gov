@@ -15,12 +15,18 @@ RSpec.describe FilterSetting, type: :model do
     it { should have_one(:custom_3).class_name('CustomFilter') }
   end
 
-  describe 'after_create callback' do
-    it 'creates default filters for a new FilterSetting' do
-      filter_setting = FilterSetting.create(affiliate_id: 1)
-      filter_names = filter_setting.filters.pluck(:label)
+  describe '#initialize_default_filters_preview' do
+    subject(:filter_setting) { described_class.new }
 
-      expect(filter_names).to match_array(%w[Topic FileType ContentType Audience Date Custom1 Custom2 Custom3])
+    it 'returns dynamically generated default filters' do
+      filters = filter_setting.initialize_default_filters_preview
+
+      expect(filters.size).to eq(8) # 8 filters: 5 default + 3 custom
+      expect(filters.map(&:label)).to match_array(%w[Topic FileType ContentType Audience Date Custom1 Custom2 Custom3])
+      expect(filters.map(&:type)).to match_array(%w[TopicFilter FileTypeFilter ContentTypeFilter AudienceFilter DateFilter
+                                                    CustomFilter CustomFilter CustomFilter])
+      expect(filters.map(&:position)).to eq([0, 1, 2, 3, 4, 5, 6, 7])
+      expect(filters.all? { |filter| filter.enabled == false }).to be(true)
     end
   end
 end
