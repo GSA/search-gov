@@ -69,7 +69,7 @@ class Affiliate < ApplicationRecord
   has_one_attached :identifier_logo
 
   accepts_nested_attributes_for :header_logo_attachment, :identifier_logo_attachment, allow_destroy: true
-  accepts_nested_attributes_for :header_logo_blob, :identifier_logo_blob
+  accepts_nested_attributes_for :header_logo_blob, :identifier_logo_blob, :filter_setting
 
   has_many :users, -> { order 'first_name' }, through: :memberships
 
