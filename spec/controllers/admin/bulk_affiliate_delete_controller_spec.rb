@@ -47,7 +47,7 @@ describe Admin::BulkAffiliateDeleteController, type: :controller do
     context 'when logged in as an admin' do
       before do
         UserSession.create(user)
-        allow(BulkAffiliateDeleteJob).to receive(:perform_now)
+        allow(BulkAffiliateDeleteJob).to receive(:perform_later)
         allow(controller.logger).to receive(:error)
       end
 
@@ -64,7 +64,7 @@ describe Admin::BulkAffiliateDeleteController, type: :controller do
 
         it 'does not call the BulkAffiliateDeleteJob' do
           upload_without_file
-          expect(BulkAffiliateDeleteJob).not_to have_received(:perform_now)
+          expect(BulkAffiliateDeleteJob).not_to have_received(:perform_later)
         end
       end
 
@@ -73,7 +73,7 @@ describe Admin::BulkAffiliateDeleteController, type: :controller do
           upload_with_file
           uploaded_file = assigns(:file)
           expect(uploaded_file).not_to be_nil
-          expect(BulkAffiliateDeleteJob).to have_received(:perform_now).with(
+          expect(BulkAffiliateDeleteJob).to have_received(:perform_later).with(
             user.email,
             uploaded_file.original_filename,
             uploaded_file.tempfile.path
@@ -95,8 +95,7 @@ describe Admin::BulkAffiliateDeleteController, type: :controller do
         let(:error_message) { 'Something went wrong during processing' }
 
         before do
-          # Make the stubbed job raise an error
-          allow(BulkAffiliateDeleteJob).to receive(:perform_now).and_raise(StandardError.new(error_message))
+          allow(BulkAffiliateDeleteJob).to receive(:perform_later).and_raise(StandardError.new(error_message))
         end
 
         it 'logs the error' do
