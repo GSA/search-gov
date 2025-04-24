@@ -216,8 +216,13 @@ en:
       delete:
         success: "Deletion has been enqueued for %{domain}"
         error: "Incorrect confirmation text. Deletion aborted."
+    admin:
+      bulk_affiliate_delete:
+        upload:
+          no_file_selected: "Please select a CSV file."
+          queue_error: "An error occurred while trying to queue the file for processing. Please try again later or contact support."
 
-# Aria labels
+  # Aria labels
   aria_label_header: "Primary navigation"
   aria_label_vertical_nav: "Secondary navigation"
   aria_label_identifier_links: "Identifier links"
