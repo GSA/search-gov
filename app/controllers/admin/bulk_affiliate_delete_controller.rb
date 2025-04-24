@@ -13,7 +13,7 @@ class Admin::BulkAffiliateDeleteController < Admin::AdminController
     end
 
     begin
-      BulkAffiliateDeleteJob.perform_now(
+      BulkAffiliateDeleteJob.perform_later(
         current_user.email,
         @file.original_filename,
         @file.tempfile.path
