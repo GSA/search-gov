@@ -11,7 +11,7 @@ class BulkAffiliateDeleteJob < ApplicationJob
     results = uploader.parse_file
 
     if results.errors? || results.valid_affiliate_ids.empty?
-      Rails.logger.warn <<~WARN.squish
+      logger.warn <<~WARN.squish
         BulkAffiliateDeleteJob: Parsing failed or no valid IDs found for #{file_name}.
         User: #{requesting_user_email}.
         Summary: #{results.summary_message}.
