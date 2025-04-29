@@ -7,7 +7,7 @@ class BulkAffiliateDeleteJob < ApplicationJob
       return
     end
 
-    uploader = BulkAffiliateDeleteUploader.new(file_name, file_path, requesting_user_email)
+    uploader = BulkAffiliateDeleteUploader.new(file_name, file_path)
     results = uploader.parse_file
 
     if results.errors? || results.valid_affiliate_ids.empty?
@@ -18,6 +18,13 @@ class BulkAffiliateDeleteJob < ApplicationJob
         General Errors: #{results.general_errors.join('; ')}.
         Row Errors: #{results.error_details.count}.
       WARN
+
+      BulkAffiliateDeleteMailer.notify_parsing_failure(
+        requesting_user_email,
+        file_name,
+        results.general_errors,
+        results.error_details
+      ).deliver_now
 
       return
     end

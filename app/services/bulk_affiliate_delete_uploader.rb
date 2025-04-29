@@ -1,5 +1,5 @@
 class BulkAffiliateDeleteUploader < BulkUploaderBase
-  def initialize(filename, filepath, _requesting_user_email = nil)
+  def initialize(filename, filepath)
     super(filename, filepath, nil)
   end
 

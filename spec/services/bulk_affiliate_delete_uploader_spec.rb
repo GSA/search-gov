@@ -1,11 +1,11 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
-describe BulkAffiliateDeleteUploader, type: :service do
+describe BulkAffiliateDeleteUploader do
   let(:filename) { 'delete_test.csv' }
   let(:requesting_user_email) { 'test@example.com' }
   let(:csv_content) { "" }
   let(:file_path) { StringIO.new(csv_content) }
-  let(:uploader) { described_class.new(filename, file_path, requesting_user_email) }
+  let(:uploader) { described_class.new(filename, file_path) }
   let(:logger_double) { instance_double(ActiveSupport::Logger, warn: nil, error: nil) }
 
   before do
@@ -64,9 +64,9 @@ describe BulkAffiliateDeleteUploader, type: :service do
       it 'reports failures for non-numeric IDs' do
         expect(results.failed_count).to eq(2)
         expect(results.error_details).to contain_exactly(
-          { identifier: 'abc', error: 'Invalid format: Affiliate ID must be numeric.' },
+                                           { identifier: 'abc', error: 'Invalid format: Affiliate ID must be numeric.' },
                                            { identifier: 'def', error: 'Invalid format: Affiliate ID must be numeric.' }
-        )
+                                         )
         expect(results.general_errors).to be_empty
       end
 
@@ -100,10 +100,10 @@ describe BulkAffiliateDeleteUploader, type: :service do
       it 'reports failures for rows without valid IDs or with non-numeric IDs' do
         expect(results.failed_count).to eq(3)
         expect(results.error_details).to contain_exactly(
-          { identifier: 'N/A', error: 'Row contained no Affiliate ID.' },
+                                           { identifier: 'N/A', error: 'Row contained no Affiliate ID.' },
                                            { identifier: 'N/A', error: 'Row contained no Affiliate ID.' },
                                            { identifier: 'N/A', error: 'Row contained no Affiliate ID.' }
-        )
+                                         )
         expect(results.general_errors).to be_empty
       end
 
@@ -131,9 +131,9 @@ describe BulkAffiliateDeleteUploader, type: :service do
       it 'reports failures for all rows' do
         expect(results.failed_count).to eq(2)
         expect(results.error_details).to contain_exactly(
-          { identifier: 'abc', error: 'Invalid format: Affiliate ID must be numeric.' },
+                                           { identifier: 'abc', error: 'Invalid format: Affiliate ID must be numeric.' },
                                            { identifier: 'def', error: 'Invalid format: Affiliate ID must be numeric.' }
-        )
+                                         )
         expect(results.general_errors).to be_empty
       end
 
@@ -213,8 +213,8 @@ describe BulkAffiliateDeleteUploader, type: :service do
       it 'reports a failure for the row that caused the error' do
         expect(results.failed_count).to eq(1)
         expect(results.error_details).to contain_exactly(
-          { identifier: '102', error: "Error processing row: #{error_message}" }
-        )
+                                           { identifier: '102', error: "Error processing row: #{error_message}" }
+                                         )
         expect(results.general_errors).to be_empty
       end
 

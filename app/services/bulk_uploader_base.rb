@@ -73,18 +73,15 @@ class BulkUploaderBase
   end
 
   def parse_file
-    processing_completed = false
-
     begin
       process_file_rows
-      processing_completed = true
     rescue CSV::MalformedCSVError => e
       @results.add_general_error("CSV file is malformed: #{e.message}")
     rescue StandardError => e
       log_unexpected_error(e)
       @results.add_general_error("An unexpected error occurred during processing.")
     ensure
-      finalize_results if processing_completed || @results.errors?
+      finalize_results
     end
 
     @results
