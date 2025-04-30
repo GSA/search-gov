@@ -1,0 +1,19 @@
+%p
+  %strong Bulk Affiliate Deletion Process Completed
+%p The request to delete affiliates via CSV upload has been processed.
+
+- if @deleted_ids.any?
+  %p Successfully Deleted IDs:
+  %ul
+    - @deleted_ids.each do |id|
+      %li= id
+- else
+  %p No affiliates were successfully deleted.
+
+- if @failed_deletions.any?
+  %p Failed to Delete:
+  %ul
+    - @failed_deletions.each do |id, err|
+      %li= "#{id}: #{err}"
+
+%p If you have any questions, please contact support.
