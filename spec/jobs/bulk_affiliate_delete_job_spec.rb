@@ -20,7 +20,7 @@ describe BulkAffiliateDeleteJob, type: :job do
   }
   let(:affiliate1) { instance_double(Affiliate, id: 1) }
   let(:affiliate3) { instance_double(Affiliate, id: 3) }
-  let(:mailer_double) { instance_double(ActionMailer::MessageDelivery, deliver_now: true) }
+  let(:mailer_double) { instance_double(ActionMailer::MessageDelivery, deliver_now!: true) }
 
   before do
     FileUtils.touch(file_path)
@@ -29,6 +29,7 @@ describe BulkAffiliateDeleteJob, type: :job do
                                             .with(file_name, file_path)
                                             .and_return(uploader_double)
     allow(uploader_double).to receive(:parse_file).and_return(results_double)
+
     allow(BulkAffiliateDeleteMailer).to receive(:notify).and_return(mailer_double)
     allow(BulkAffiliateDeleteMailer).to receive(:notify_parsing_failure).and_return(mailer_double)
 
@@ -56,6 +57,7 @@ describe BulkAffiliateDeleteJob, type: :job do
         expect(BulkAffiliateDeleteUploader).not_to have_received(:new)
         expect(BulkAffiliateDeleteMailer).not_to have_received(:notify)
         expect(BulkAffiliateDeleteMailer).not_to have_received(:notify_parsing_failure)
+        expect(mailer_double).not_to have_received(:deliver_now!)
 
         expect(FileUtils).not_to have_received(:rm_f)
       end
@@ -87,7 +89,7 @@ describe BulkAffiliateDeleteJob, type: :job do
           general_errors,
           error_details
         )
-        expect(mailer_double).to have_received(:deliver_now)
+        expect(mailer_double).to have_received(:deliver_now!)
         expect(BulkAffiliateDeleteMailer).not_to have_received(:notify)
 
         expect(FileUtils).to have_received(:rm_f).with(file_path)
@@ -119,7 +121,7 @@ describe BulkAffiliateDeleteJob, type: :job do
           [],
           []
         )
-        expect(mailer_double).to have_received(:deliver_now)
+        expect(mailer_double).to have_received(:deliver_now!)
         expect(BulkAffiliateDeleteMailer).not_to have_received(:notify)
         expect(FileUtils).to have_received(:rm_f).with(file_path)
       end
@@ -149,7 +151,7 @@ describe BulkAffiliateDeleteJob, type: :job do
         expect(BulkAffiliateDeleteMailer).to have_received(:notify).with(
           requesting_user_email, file_name, valid_ids, []
         )
-        expect(mailer_double).to have_received(:deliver_now)
+        expect(mailer_double).to have_received(:deliver_now!)
         expect(BulkAffiliateDeleteMailer).not_to have_received(:notify_parsing_failure)
       end
 
@@ -193,7 +195,7 @@ describe BulkAffiliateDeleteJob, type: :job do
         expect(BulkAffiliateDeleteMailer).to have_received(:notify).with(
           requesting_user_email, file_name, expected_deleted, expected_failed
         )
-        expect(mailer_double).to have_received(:deliver_now)
+        expect(mailer_double).to have_received(:deliver_now!)
         expect(BulkAffiliateDeleteMailer).not_to have_received(:notify_parsing_failure)
       end
 
@@ -214,6 +216,7 @@ describe BulkAffiliateDeleteJob, type: :job do
 
           expect(FileUtils).to have_received(:rm_f).with(file_path)
           expect(BulkAffiliateDeleteMailer).to have_received(:notify_parsing_failure)
+          expect(mailer_double).to have_received(:deliver_now!)
         end
       end
 
@@ -228,6 +231,7 @@ describe BulkAffiliateDeleteJob, type: :job do
           expect { job.perform(requesting_user_email, file_name, file_path) }.not_to raise_error
           expect(FileUtils).to have_received(:rm_f).with(file_path)
           expect(BulkAffiliateDeleteMailer).to have_received(:notify).with(requesting_user_email, file_name, [], [['1', 'Deletion Boom!']])
+          expect(mailer_double).to have_received(:deliver_now!)
         end
       end
 
@@ -239,6 +243,7 @@ describe BulkAffiliateDeleteJob, type: :job do
         it 'does not call FileUtils.rm_f' do
           job.perform(requesting_user_email, file_name, file_path)
           expect(FileUtils).not_to have_received(:rm_f)
+          expect(mailer_double).not_to have_received(:deliver_now!)
         end
       end
     end
