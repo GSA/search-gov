@@ -3,7 +3,7 @@ class BulkAffiliateDeleteJob < ApplicationJob
 
   def perform(requesting_user_email, file_name, file_path)
     unless File.exist?(file_path)
-      logger.error "BulkAffiliateDeleteJob: File not found - #{file_path} for user #{requesting_user_email}"
+      Rails.logger.error "BulkAffiliateDeleteJob: File not found - #{file_path} for user #{requesting_user_email}"
       return
     end
 
@@ -11,7 +11,7 @@ class BulkAffiliateDeleteJob < ApplicationJob
     results = uploader.parse_file
 
     if results.errors? || results.valid_affiliate_ids.empty?
-      logger.warn <<~WARN.squish
+      Rails.logger.warn <<~WARN.squish
         BulkAffiliateDeleteJob: Parsing failed or no valid IDs found for #{file_name}.
         User: #{requesting_user_email}.
         Summary: #{results.summary_message}.
@@ -24,7 +24,7 @@ class BulkAffiliateDeleteJob < ApplicationJob
         file_name,
         results.general_errors,
         results.error_details
-      ).deliver_now
+      ).deliver_now!
 
       return
     end
@@ -42,11 +42,11 @@ class BulkAffiliateDeleteJob < ApplicationJob
           deleted_ids << id_text
         rescue StandardError => e
           failed_deletions << [id_text, e.message]
-          logger.error "BulkAffiliateDeleteJob: Failed to delete Affiliate #{id_text}: #{e.message}"
+          Rails.logger.error "BulkAffiliateDeleteJob: Failed to delete Affiliate #{id_text}: #{e.message}"
         end
       else
         failed_deletions << [id_text, "Not Found"]
-        logger.warn "BulkAffiliateDeleteJob: Affiliate #{id_text} not found for deletion."
+        Rails.logger.warn "BulkAffiliateDeleteJob: Affiliate #{id_text} not found for deletion."
       end
     end
 
@@ -55,7 +55,7 @@ class BulkAffiliateDeleteJob < ApplicationJob
       file_name,
       deleted_ids,
       failed_deletions
-    ).deliver_now
+    ).deliver_now!
 
   ensure
     FileUtils.rm_f(file_path) if file_path && File.exist?(file_path)

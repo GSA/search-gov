@@ -128,7 +128,7 @@ class BulkUploaderBase
   end
 
   def log_unexpected_error(error)
-    logger.error <<~LOG.squish
+    Rails.logger.error <<~LOG.squish
       Bulk Upload Error (#{self.class.name} - File: #{@file_name}):
       #{error.message}
       Backtrace: #{error.backtrace.first(10).join("\n")}
@@ -136,7 +136,7 @@ class BulkUploaderBase
   end
 
   def log_row_processing_error(row, error)
-    logger.error <<~LOG.squish
+    Rails.logger.error <<~LOG.squish
       Error processing bulk upload row for #{self.class.name} (File: #{@file_name}):
       Row: #{row.inspect} - Error: #{error.message}
     LOG
