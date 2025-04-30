@@ -3,10 +3,15 @@ require 'spec_helper'
 describe Admin::BulkAffiliateDeleteController, type: :controller do
   fixtures :users
   let(:user) { users('affiliate_admin') }
+  let(:persistent_upload_dir) { Rails.root.join('tmp', 'bulk_delete_uploads_test') }
 
   before do
     activate_authlogic
+    stub_const("Admin::BulkAffiliateDeleteController::PERSISTENT_UPLOAD_DIR", persistent_upload_dir)
+    FileUtils.rm_rf(persistent_upload_dir)
+    FileUtils.mkdir_p(persistent_upload_dir)
   end
+
 
   describe "GET #index" do
     context 'when not logged in' do
@@ -35,7 +40,7 @@ describe Admin::BulkAffiliateDeleteController, type: :controller do
   end
 
   describe 'POST #upload' do
-    let(:file) { fixture_file_upload('/csv/delete_affiliates.csv', 'text/csv')  }
+    let(:file) { fixture_file_upload('/csv/delete_affiliates.csv', 'text/csv') }
     let(:upload_with_file) { post :upload, params: { file: file } }
     let(:upload_without_file) { post :upload, params: {} }
 
@@ -69,16 +74,18 @@ describe Admin::BulkAffiliateDeleteController, type: :controller do
       end
 
       context 'when a file is provided and enqueuing the job is successful' do
+        let(:expected_persistent_path_regex) do
+          %r{#{persistent_upload_dir}/.*-#{file.original_filename}$}
+        end
+
         before { allow(BulkAffiliateDeleteJob).to receive(:perform_later) }
 
         it 'calls BulkAffiliateDeleteJob.perform_later with correct arguments' do
           upload_with_file
-          uploaded_file = assigns(:file)
-          expect(uploaded_file).not_to be_nil
           expect(BulkAffiliateDeleteJob).to have_received(:perform_later).with(
             user.email,
-            uploaded_file.original_filename,
-            uploaded_file.tempfile.path
+            file.original_filename, # Use the original file object from the let block
+            a_string_matching(expected_persistent_path_regex) # Check the path format
           )
         end
 
