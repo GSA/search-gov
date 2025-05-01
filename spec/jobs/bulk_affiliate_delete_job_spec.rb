@@ -8,7 +8,6 @@ describe BulkAffiliateDeleteJob, type: :job do
   let(:file_path_pn) { Rails.root.join('tmp', "test_#{file_name}") }
   let(:file_path) { file_path_pn.to_s }
   let(:job) { described_class.new }
-
   let(:uploader_double) { instance_double(BulkAffiliateDeleteUploader) }
   let(:results_double) {
     instance_double(BulkUploaderBase::Results,
