@@ -2,8 +2,7 @@
 
 module VisualDesignHelper
   def show_results_format?(site)
-    (site.gets_i14y_results || site.gets_blended_results || site.search_engine == 'SearchGov') &&
-      site.search_engine != 'BingV7'
+    (site.gets_i14y_results || site.gets_blended_results || site.search_gov_engine?) && !site.bing_v7_engine?
   end
 
   def render_logo_alt_text(logo_metadata)

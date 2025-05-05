@@ -106,6 +106,8 @@ class Affiliate < ApplicationRecord
   has_attached_file :header_tagline_logo,
                     AWS_IMAGE_SETTINGS.merge(path: "#{Rails.env}/site/:id/header_tagline_logo/:updated_at/:style/:filename")
 
+  enum :search_engine, SEARCH_ENGINES.map(&:underscore).zip(SEARCH_ENGINES).to_h, suffix: :engine
+
   after_initialize do
     self.visual_design_json = DEFAULT_VISUAL_DESIGN.merge(visual_design_json || {}) if has_attribute?(:visual_design_json)
   end
@@ -135,9 +137,9 @@ class Affiliate < ApplicationRecord
   validates_uniqueness_of :api_access_key, :name, case_sensitive: false
   validates :name, length: { within: (2..MAX_NAME_LENGTH) }
   validates :name, format: { with: /\A[a-z0-9._-]+\z/ }
-  validates :search_engine, inclusion: { in: SEARCH_ENGINES }
+  validates :search_engine, inclusion: { in: SEARCH_ENGINES.map(&:underscore) }
   validates_url :header_tagline_url, allow_blank: true
-  validates :show_search_filter_settings, absence: { message: I18n.t('super_admin.affiliate.show_search_filter_settings') }, if: :bing7_search_engine?
+  validates :show_search_filter_settings, absence: { message: I18n.t('super_admin.affiliate.show_search_filter_settings') }, if: :bing_v7_engine?
 
   validates_attachment_content_type :mobile_logo,
                                     content_type: VALID_IMAGE_CONTENT_TYPES,
@@ -494,7 +496,7 @@ class Affiliate < ApplicationRecord
   end
 
   def show_search_filter_settings_authorized?
-    search_engine == 'SearchGov'
+    search_gov_engine?
   end
 
   private
@@ -731,9 +733,5 @@ class Affiliate < ApplicationRecord
     return unless managed_no_results_pages_alt_links.present? && additional_guidance_text.blank?
 
     errors.add(:base, 'Additional guidance text is required when links are present.')
-  end
-
-  def bing7_search_engine?
-    search_engine == 'BingV7'
   end
 end
