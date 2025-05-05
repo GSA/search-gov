@@ -180,6 +180,11 @@ Rails.application.routes.draw do
         post :upload
       end
     end
+    resources :bulk_affiliate_delete, only: :index do
+      collection do
+        post :upload
+      end
+    end
     resources :bulk_url_upload, only: :index do
       collection do
         post :upload
