@@ -55,7 +55,7 @@ class BulkAffiliateDeleteJob < ApplicationJob
     ).deliver_now!
 
   ensure
-    FileUtils.rm_f(file_path) if file_path && File.exist?(file_path)
+    FileUtils.rm_f(temp_file.path) if temp_file && File.exist?(temp_file.path)
   end
 
   private
