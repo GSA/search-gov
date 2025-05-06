@@ -15,7 +15,7 @@ Given /^the following (SearchGov|SearchElastic)?\s?Affiliates exist:$/ do |affil
 
     excluded_keys = %w[agency_abbreviation contact_email first_name last_name domains youtube_handles is_image_search_navigable]
     affiliate_attributes = hash.except *excluded_keys
-    affiliate_attributes['search_engine'] = affiliate_type unless affiliate_type.blank?
+    affiliate_attributes['search_engine'] = affiliate_type.underscore unless affiliate_type.blank?
     affiliate = Affiliate.create! affiliate_attributes
     affiliate.image_search_label.navigation.update!(is_active: true) if hash[:is_image_search_navigable] == 'true'
     affiliate.users << user
