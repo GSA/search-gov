@@ -1,13 +1,10 @@
 class BulkAffiliateDeleteJob < ApplicationJob
   queue_as :searchgov
 
-  def perform(requesting_user_email, file_name, file_path)
-    unless File.exist?(file_path)
-      Rails.logger.error "BulkAffiliateDeleteJob: File not found - #{file_path} for user #{requesting_user_email}"
-      return
-    end
+  def perform(requesting_user_email, file_name, s3_object_key)
+    temp_file = download_from_s3(s3_object_key)
 
-    uploader = BulkAffiliateDeleteUploader.new(file_name, file_path)
+    uploader = BulkAffiliateDeleteUploader.new(file_name, temp_file.path)
     results = uploader.parse_file
 
     if results.errors? || results.valid_affiliate_ids.empty?
@@ -59,5 +56,30 @@ class BulkAffiliateDeleteJob < ApplicationJob
 
   ensure
     FileUtils.rm_f(file_path) if file_path && File.exist?(file_path)
+  end
+
+  private
+
+  def s3_client
+    Aws::S3::Client.new(
+      region: S3_CREDENTIALS[:s3_region],
+      access_key_id: S3_CREDENTIALS[:access_key_id],
+      secret_access_key: S3_CREDENTIALS[:secret_access_key]
+    )
+  end
+
+  def download_from_s3(s3_key)
+    temp_file = Tempfile.new(%w[bulk_delete_download.csv])
+    temp_file.binmode
+
+    s3_client.get_object(
+      bucket: S3_CREDENTIALS[:bucket],
+      key: s3_key
+    ) do |chunk|
+      temp_file.write(chunk)
+    end
+
+    temp_file.rewind
+    temp_file
   end
 end
