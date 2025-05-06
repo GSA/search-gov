@@ -3,14 +3,8 @@ require 'spec_helper'
 describe Admin::BulkAffiliateDeleteController, type: :controller do
   fixtures :users
   let(:user) { users('affiliate_admin') }
-  let(:persistent_upload_dir) { Rails.root.join('tmp', 'bulk_delete_uploads_test') }
 
-  before do
-    activate_authlogic
-    stub_const("Admin::BulkAffiliateDeleteController::PERSISTENT_UPLOAD_DIR", persistent_upload_dir)
-    FileUtils.rm_rf(persistent_upload_dir)
-    FileUtils.mkdir_p(persistent_upload_dir)
-  end
+  before { activate_authlogic }
 
 
   describe "GET #index" do
@@ -74,18 +68,23 @@ describe Admin::BulkAffiliateDeleteController, type: :controller do
       end
 
       context 'when a file is provided and enqueuing the job is successful' do
-        let(:expected_persistent_path_regex) do
-          %r{#{persistent_upload_dir}/.*-#{file.original_filename}$}
+        let(:mock_s3_client) { instance_double(Aws::S3::Client) }
+        let(:expected_s3_key_regex) do
+          %r{^bulk-delete-uploads/\d+-[\da-fA-F]{16}-#{Regexp.escape(file.original_filename)}$}
         end
 
-        before { allow(BulkAffiliateDeleteJob).to receive(:perform_later) }
+        before do
+          allow(Aws::S3::Client).to receive(:new).and_return(mock_s3_client)
+          allow(mock_s3_client).to receive(:put_object)
+          allow(BulkAffiliateDeleteJob).to receive(:perform_later)
+        end
 
         it 'calls BulkAffiliateDeleteJob.perform_later with correct arguments' do
           upload_with_file
           expect(BulkAffiliateDeleteJob).to have_received(:perform_later).with(
             user.email,
-            file.original_filename, # Use the original file object from the let block
-            a_string_matching(expected_persistent_path_regex) # Check the path format
+            file.original_filename,
+            a_string_matching(expected_s3_key_regex)
           )
         end
 
@@ -98,12 +97,24 @@ describe Admin::BulkAffiliateDeleteController, type: :controller do
           upload_with_file
           expect(response).to redirect_to admin_bulk_affiliate_delete_index_path
         end
+
+        it 'attempts to upload the file to S3' do
+          upload_with_file
+          expect(mock_s3_client).to have_received(:put_object).with(
+            bucket: S3_CREDENTIALS[:bucket], # This seems to resolve consistently in your test's context
+            key: a_string_matching(expected_s3_key_regex),
+            body: an_instance_of(Tempfile) # Changed from file.tempfile
+          )
+        end
       end
 
       context 'when enqueuing the job raises an error' do
         let(:error_message) { 'Something went wrong during enqueueing' }
+        let(:mock_s3_client) { instance_double(Aws::S3::Client) }
 
         before do
+          allow(Aws::S3::Client).to receive(:new).and_return(mock_s3_client)
+          allow(mock_s3_client).to receive(:put_object)
           allow(BulkAffiliateDeleteJob).to receive(:perform_later).and_raise(StandardError.new(error_message))
         end
 
