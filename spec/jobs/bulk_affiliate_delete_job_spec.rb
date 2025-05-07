@@ -20,7 +20,7 @@ describe BulkAffiliateDeleteJob, type: :job do
   end
   let(:affiliate1) { instance_double(Affiliate, id: 1) }
   let(:affiliate3) { instance_double(Affiliate, id: 3) }
-  let(:mailer_double) { instance_double(ActionMailer::MessageDelivery, deliver_now!: true) }
+  let(:mailer_double) { instance_double(ActionMailer::MessageDelivery, deliver_later: true) }
 
   let(:s3_client_double) { instance_double(Aws::S3::Client) }
   let(:temp_file_double) do
@@ -105,7 +105,7 @@ describe BulkAffiliateDeleteJob, type: :job do
           general_errors,
           error_details
         )
-        expect(mailer_double).to have_received(:deliver_now!)
+        expect(mailer_double).to have_received(:deliver_later)
         expect(FileUtils).to have_received(:rm_f).with(downloaded_temp_file_path)
       end
     end
@@ -133,7 +133,7 @@ describe BulkAffiliateDeleteJob, type: :job do
           [],
           []
         )
-        expect(mailer_double).to have_received(:deliver_now!)
+        expect(mailer_double).to have_received(:deliver_later)
         expect(FileUtils).to have_received(:rm_f).with(downloaded_temp_file_path)
       end
     end
@@ -156,7 +156,7 @@ describe BulkAffiliateDeleteJob, type: :job do
         expect(BulkAffiliateDeleteMailer).to have_received(:notify).with(
           requesting_user_email, file_name, valid_ids, []
         )
-        expect(mailer_double).to have_received(:deliver_now!)
+        expect(mailer_double).to have_received(:deliver_later)
         expect(FileUtils).to have_received(:rm_f).with(downloaded_temp_file_path)
       end
     end
@@ -185,7 +185,7 @@ describe BulkAffiliateDeleteJob, type: :job do
         expect(BulkAffiliateDeleteMailer).to have_received(:notify).with(
           requesting_user_email, file_name, expected_deleted, expected_failed
         )
-        expect(mailer_double).to have_received(:deliver_now!)
+        expect(mailer_double).to have_received(:deliver_later)
         expect(FileUtils).to have_received(:rm_f).with(downloaded_temp_file_path)
       end
     end
