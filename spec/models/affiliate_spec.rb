@@ -23,7 +23,7 @@ describe Affiliate do
 
       it do
         is_expected.to have_db_column(:search_engine).of_type(:string).
-          with_options(default: 'BingV7', null: false)
+          with_options(default: 'bing_v7', null: false)
       end
 
       it do
@@ -90,8 +90,6 @@ describe Affiliate do
           rejecting(nil, %w[text/plain text/xml application/pdf])
       }
     end
-
-    it { is_expected.to validate_inclusion_of(:search_engine).in_array(%w[BingV7 SearchGov]) }
 
     it { is_expected.to have_many :boosted_contents }
     it { is_expected.to have_many(:connections).inverse_of(:affiliate) }

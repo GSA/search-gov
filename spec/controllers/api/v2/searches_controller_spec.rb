@@ -311,7 +311,7 @@ describe Api::V2::SearchesController do
 
       before do
         allow(Affiliate).to receive(:find_by_name).and_return(affiliate)
-        allow(affiliate).to receive(:search_engine).and_return('BingV7')
+        allow(affiliate).to receive(:search_engine).and_return('bing_v7')
         allow(DocumentCollection).to receive(:find).and_return(document_collection)
         allow(ApiI14ySearch).to receive(:new).with(hash_including(query_params)).and_return(search)
         allow(search).to receive(:run)

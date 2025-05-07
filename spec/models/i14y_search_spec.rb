@@ -301,7 +301,8 @@ describe I14ySearch do
   describe 'handles' do
     context 'when the affiliate is using SearchGov as a search engine' do
       before do
-        allow(affiliate).to receive(:search_engine).and_return('SearchGov')
+        affiliate.search_engine = :search_gov
+
         allow(I14yCollections).to receive(:search)
       end
 
