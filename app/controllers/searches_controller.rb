@@ -72,7 +72,7 @@ class SearchesController < ApplicationController
   def pick_klass_vertical_template
     if get_commercial_results?
       [WebSearch, :web, :index]
-    elsif @affiliate.search_engine == 'SearchElastic'
+    elsif @affiliate.search_elastic_engine?
       [SearchElasticEngine, :i14y, :i14y]
     elsif gets_i14y_results?
       [I14ySearch, :i14y, :i14y]
@@ -128,7 +128,7 @@ class SearchesController < ApplicationController
   def gets_i14y_results?
     return false if @affiliate.gets_blended_results
 
-    @affiliate.search_engine == 'SearchGov' ||
+    @affiliate.search_gov_engine? ||
       @affiliate.gets_i14y_results ||
       @search_options[:document_collection]&.too_deep_for_bing?
   end
@@ -139,6 +139,8 @@ class SearchesController < ApplicationController
 
   def docs_search_klass
     return I14ySearch if gets_i14y_results?
+    return SearchElasticEngine if @affiliate.search_elastic_engine?
+
     @search_options[:document_collection] ? SiteSearch : WebSearch
   end
 
