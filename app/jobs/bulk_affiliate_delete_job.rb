@@ -21,7 +21,7 @@ class BulkAffiliateDeleteJob < ApplicationJob
         file_name,
         results.general_errors,
         results.error_details
-      ).deliver_now!
+      ).deliver_later
 
       return
     end
@@ -39,11 +39,11 @@ class BulkAffiliateDeleteJob < ApplicationJob
           deleted_ids << id_text
         rescue StandardError => e
           failed_deletions << [id_text, e.message]
-          Rails.logger.error "BulkAffiliateDeleteJob: Failed to delete Affiliate #{id_text}: #{e.message}"
+          logger.error "BulkAffiliateDeleteJob: Failed to delete Affiliate #{id_text}: #{e.message}"
         end
       else
         failed_deletions << [id_text, "Not Found"]
-        Rails.logger.warn "BulkAffiliateDeleteJob: Affiliate #{id_text} not found for deletion."
+        logger.warn "BulkAffiliateDeleteJob: Affiliate #{id_text} not found for deletion."
       end
     end
 
@@ -52,7 +52,7 @@ class BulkAffiliateDeleteJob < ApplicationJob
       file_name,
       deleted_ids,
       failed_deletions
-    ).deliver_now!
+    ).deliver_later
 
   ensure
     FileUtils.rm_f(temp_file.path) if temp_file && File.exist?(temp_file.path)
