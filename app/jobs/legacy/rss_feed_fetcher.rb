@@ -3,7 +3,6 @@ require 'resque/plugins/lock'
 class RssFeedFetcher
   extend Resque::Plugins::Priority
   extend Resque::Plugins::Lock
-  extend ResqueJobStats
 
   @queue = :primary
   @loner = true

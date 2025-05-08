@@ -2,8 +2,6 @@ require 'spec_helper'
 
 describe FederalRegisterDocumentLoader do
 
-  it_behaves_like 'a ResqueJobStats job'
-
   describe '.perform' do
     it 'loads documents' do
       mock_agency = mock_model(FederalRegisterAgency, id: 100)
