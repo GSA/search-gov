@@ -4,6 +4,12 @@
     %meta{ charset: 'UTF-8' }
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
     %meta{ 'http-equiv' => 'X-UA-Compatible', :content => 'IE=edge' }
+
+    :javascript
+      window.dataLayer = window.dataLayer || [];
+      dataLayer.push({"SERP_version": "legacy", "site_id": "#{@affiliate.id}"});
+    = render "/shared/google_tag_manager_script"
+
     = render_robots_meta_tag
     = attribution
     != "<!-- aid: #{@search.affiliate.id} handle: #{@search.affiliate.name} -->"
@@ -21,6 +27,7 @@
       = javascript_include_tag 'searches_ie_lt9'
 
   %body{ body_class_hash(@search.affiliate) }
+    = render "/shared/google_tag_manager_noscript"
     - if $git_info.show_header
       #git-info-header= render partial: 'shared/git_info_header'
     %a#skiplink{ href: '#main-content', tabindex: 1 }= t 'searches.skip_to_main_content'
