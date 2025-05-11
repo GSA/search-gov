@@ -413,7 +413,7 @@ describe ReactHelper do
 
       context 'when display_created_date_on_search_results is false' do
         before do
-          allow(affiliate).to receive(:search_engine).and_return('SearchGov')
+          affiliate.search_engine = :search_gov
         end
 
         it 'filters out the created date from federal_register_documents results' do
