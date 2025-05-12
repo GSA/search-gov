@@ -2,7 +2,12 @@
 %html{ html_class_hash(@search.affiliate.language) }
   %head
     = attribution
+
+    :javascript
+      window.dataLayer = window.dataLayer || [];
+      dataLayer.push({"SERP_version": "version_2024", "site_id": "#{@affiliate.id}"});
     = render "/shared/google_tag_manager_script"
+
     = render "/shared/affiliate_google_analytics"
     %meta{ charset: 'UTF-8' }
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
