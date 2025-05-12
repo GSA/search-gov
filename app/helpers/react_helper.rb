@@ -4,9 +4,11 @@ module ReactHelper
   def search_results_layout(search, params, vertical, affiliate, search_options)
     data = {
       additionalResults: govbox_set_data(search),
+      affiliate: affiliate_data(affiliate),
       agencyName: agency_name(affiliate.agency),
       alert: search_page_alert(affiliate.alert),
       extendedHeader: affiliate.use_extended_header,
+      facetsEnabled: ENV.fetch('FACETED_SEARCH_ENABLED', 'false') == 'true',
       fontsAndColors: affiliate.visual_design_json,
       footerLinks: links(affiliate, :footer_links),
       identifierContent: identifier_content(affiliate),
@@ -27,11 +29,14 @@ module ReactHelper
       sitelimit: sitelimit_alert(search, params),
       spellingSuggestion: spelling_text(search, search_options),
       translations: translations(affiliate.locale),
-      facetsEnabled: ENV.fetch('FACETED_SEARCH_ENABLED', 'false') == 'true',
       vertical:
     }
 
     react_component('SearchResultsLayout', data.compact_blank)
+  end
+
+  def affiliate_data(affiliate)
+    affiliate.slice(:id, :name)
   end
 
   def page_data(affiliate)
