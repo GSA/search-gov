@@ -7,7 +7,7 @@ class Admin::BulkAffiliateDeleteController < Admin::AdminController
     uploaded_file = params[:file]
 
     unless uploaded_file
-      flash[:error] = t('flash_messages.admin.bulk_affiliate_delete.upload.no_file_selected')
+      flash[:error] = t('flash_messages.admin.bulk_upload.no_file_selected', action: 'delete')
       return redirect_to admin_bulk_affiliate_delete_index_path
     end
 

@@ -3,13 +3,10 @@
 class BulkAffiliateDeactivateJob < ApplicationJob
   queue_as :searchgov
 
-  def perform(requesting_user_email, file_name, file_path)
-    unless File.exist?(file_path)
-      Rails.logger.error "BulkAffiliateDeactivateJob: File not found - #{file_path} for user #{requesting_user_email}"
-      return
-    end
+  def perform(requesting_user_email, file_name, s3_object_key)
+    temp_file = download_from_s3(s3_object_key)
 
-    uploader = BulkAffiliateDeactivateUploader.new(file_name, file_path)
+    uploader = BulkAffiliateDeactivateUploader.new(file_name, temp_file.path)
     results = uploader.parse_file
 
     if results.errors? || results.valid_affiliate_ids.empty?
@@ -19,16 +16,40 @@ class BulkAffiliateDeactivateJob < ApplicationJob
         file_name,
         results.general_errors,
         results.error_details
-      ).deliver_now
+      ).deliver_later
+
       return
     end
 
     process_affiliate_deactivations(requesting_user_email, file_name, results.valid_affiliate_ids)
   ensure
-    FileUtils.rm_f(file_path) if file_path && File.exist?(file_path)
+    FileUtils.rm_f(temp_file.path) if temp_file && File.exist?(temp_file.path)
   end
 
   private
+
+  def s3_client
+    Aws::S3::Client.new(
+      region: S3_CREDENTIALS[:s3_region],
+      access_key_id: S3_CREDENTIALS[:access_key_id],
+      secret_access_key: S3_CREDENTIALS[:secret_access_key]
+    )
+  end
+
+  def download_from_s3(s3_key)
+    temp_file = Tempfile.new(%w[bulk_deactivate_download.csv])
+    temp_file.binmode
+
+    s3_client.get_object(
+      bucket: S3_CREDENTIALS[:bucket],
+      key: s3_key
+    ) do |chunk|
+      temp_file.write(chunk)
+    end
+
+    temp_file.rewind
+    temp_file
+  end
 
   def process_affiliate_deactivations(requesting_user_email, file_name, valid_affiliate_ids)
     successful_deactivations = []
@@ -62,7 +83,7 @@ class BulkAffiliateDeactivateJob < ApplicationJob
       file_name,
       successful_deactivations,
       failed_deactivations
-    ).deliver_now
+    ).deliver_later
   end
 
   def log_parsing_failure(email, filename, results)

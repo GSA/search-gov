@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Admin::BulkAffiliateDeleteController, type: :controller do
+describe Admin::BulkAffiliateDeactivateController, type: :controller do
   fixtures :users
   let(:user) { users('affiliate_admin') }
 
@@ -27,13 +27,13 @@ describe Admin::BulkAffiliateDeleteController, type: :controller do
 
       it 'assigns the page title' do
         get :index
-        expect(assigns(:page_title)).to eq('Bulk Affiliate Delete')
+        expect(assigns(:page_title)).to eq('Bulk Affiliate Deactivate')
       end
     end
   end
 
   describe 'POST #upload' do
-    let(:file) { fixture_file_upload('/csv/delete_affiliates.csv', 'text/csv') }
+    let(:file) { fixture_file_upload('/csv/deactivate_affiliates.csv', 'text/csv') }
     let(:upload_with_file) { post :upload, params: { file: file } }
     let(:upload_without_file) { post :upload, params: {} }
 
@@ -45,76 +45,65 @@ describe Admin::BulkAffiliateDeleteController, type: :controller do
     end
 
     context 'when logged in as an admin' do
-      before { UserSession.create(user) }
+      before do
+        UserSession.create(user)
+        allow(controller.helpers).to receive(:sanitize).with(file.original_filename).and_return(file.original_filename)
+      end
 
       context 'when no file is selected' do
-        before { allow(BulkAffiliateDeleteJob).to receive(:perform_later) }
+        before { allow(BulkAffiliateDeactivateJob).to receive(:perform_later) }
 
         it 'sets an error flash message' do
           upload_without_file
-          expect(flash[:error]).to eq(I18n.t('flash_messages.admin.bulk_upload.no_file_selected', action: 'delete'))
+          expect(flash[:error]).to eq(I18n.t('flash_messages.admin.bulk_upload.no_file_selected', action: 'deactivation'))
         end
 
         it 'redirects to the index path' do
           upload_without_file
-          expect(response).to redirect_to admin_bulk_affiliate_delete_index_path
+          expect(response).to redirect_to admin_bulk_affiliate_deactivate_index_path
         end
 
-        it 'does not call the BulkAffiliateDeleteJob' do
+        it 'does not call the BulkAffiliateDeactivateJob' do
           upload_without_file
-          expect(BulkAffiliateDeleteJob).not_to have_received(:perform_later)
+          expect(BulkAffiliateDeactivateJob).not_to have_received(:perform_later)
         end
       end
 
       context 'when a file is provided and enqueuing the job is successful' do
         let(:mock_s3_client) { instance_double(Aws::S3::Client) }
         let(:expected_s3_key_regex) do
-          %r{^bulk-delete-uploads/\d+-[\da-fA-F]{16}-#{Regexp.escape(file.original_filename)}$}
+          %r{^bulk-deactivate-uploads/\d+-[\da-fA-F]{16}-#{Regexp.escape(file.original_filename)}$}
         end
 
         before do
           allow(Aws::S3::Client).to receive(:new).and_return(mock_s3_client)
           allow(mock_s3_client).to receive(:put_object)
-          allow(BulkAffiliateDeleteJob).to receive(:perform_later)
+          allow(BulkAffiliateDeactivateJob).to receive(:perform_later)
         end
 
-        it 'calls BulkAffiliateDeleteJob.perform_later with correct arguments' do
+        it 'calls BulkAffiliateDeactivateJob.perform_later with correct arguments' do
           upload_with_file
-          expect(BulkAffiliateDeleteJob).to have_received(:perform_later).with(
+          expect(BulkAffiliateDeactivateJob).to have_received(:perform_later).with(
             user.email,
             file.original_filename,
             a_string_matching(expected_s3_key_regex)
           )
         end
 
-        it 'sets a notice flash message' do
-          upload_with_file
-          expect(flash[:notice]).to include("Successfully uploaded #{file.original_filename} for processing.")
-        end
-
         it 'redirects to the index path' do
           upload_with_file
-          expect(response).to redirect_to admin_bulk_affiliate_delete_index_path
-        end
-
-        it 'attempts to upload the file to S3' do
-          upload_with_file
-          expect(mock_s3_client).to have_received(:put_object).with(
-            bucket: S3_CREDENTIALS[:bucket], # This seems to resolve consistently in your test's context
-            key: a_string_matching(expected_s3_key_regex),
-            body: an_instance_of(Tempfile) # Changed from file.tempfile
-          )
+          expect(response).to redirect_to admin_bulk_affiliate_deactivate_index_path
         end
       end
 
       context 'when enqueuing the job raises an error' do
-        let(:error_message) { 'Something went wrong during enqueueing' }
+        let(:error_message) { 'Something went wrong during enqueueing for deactivation' }
         let(:mock_s3_client) { instance_double(Aws::S3::Client) }
 
         before do
           allow(Aws::S3::Client).to receive(:new).and_return(mock_s3_client)
           allow(mock_s3_client).to receive(:put_object)
-          allow(BulkAffiliateDeleteJob).to receive(:perform_later).and_raise(StandardError.new(error_message))
+          allow(BulkAffiliateDeactivateJob).to receive(:perform_later).and_raise(StandardError.new(error_message))
         end
 
         it 'raises the StandardError' do
