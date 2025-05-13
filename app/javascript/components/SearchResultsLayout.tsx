@@ -66,7 +66,13 @@ export interface FontsAndColors {
   sectionTitleColor: string;
 }
 
+export interface Affiliate {
+  id: number;
+  name: string,
+}
+
 interface SearchResultsLayoutProps {
+  affiliate: Affiliate,
   page: PageData;
   resultsData?: {
     total?: number;
