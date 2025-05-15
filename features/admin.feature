@@ -59,25 +59,6 @@ Feature:  Administration
     And I press "Update"
     Then I should see "New Name"
 
-  @javascript
-  Scenario: Editing an affiliate's Display Settings as an admin
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email | first_name | last_name | website                | use_redesigned_results_page |
-      | agency site  | agency.gov | one@foo.gov   | One        | Foo       | http://beta.agency.gov | false                       |
-    When I go to the admin sites page
-    When I follow "Edit" within the first scaffold row
-    Then I should see "Settings (Show)"
-    And I should see "Enable/disable Settings (Show)"
-    And I should see "Display Settings (Show)"
-    And I should see "Analytics-Tracking Code (Show)"
-    When I follow "Show" within the third subsection row
-    And I check "Use redesigned results page"
-    And I press "Update"
-    Then I should see "agency site"
-    When I follow "Edit" within the first scaffold row
-    When I follow "Show" within the third subsection row
-    And the "Use redesigned results page" checkbox should be checked
-
   Scenario: Visiting the users admin page as an admin
     When I go to the admin home page
     And I follow "Users" within ".main"

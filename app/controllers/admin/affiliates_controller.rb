@@ -123,8 +123,7 @@ class Admin::AffiliatesController < Admin::AdminController
     end
 
     config.update.columns.add_subgroup 'Display Settings' do |name_group|
-      display_columns = %i[use_redesigned_results_page
-                           show_search_filter_settings
+      display_columns = %i[show_search_filter_settings
                            looking_for_government_services
                            footer_fragment
                            header_tagline_font_family
