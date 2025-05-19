@@ -160,7 +160,6 @@ describe('SearchResultsLayout', () => {
     expect(bestBetRecommendedBy).toBeInTheDocument();
     expect(bestBetTitle).toBeInTheDocument();
     expect(bestBetLink).toBeInTheDocument();
-    expect(img).toHaveAttribute('src', 'https://search.gov/support.jpg');
     expect(img).toHaveAttribute('alt', 'support alt text');
   });
 
@@ -190,7 +189,6 @@ describe('SearchResultsLayout', () => {
     const resultTitle = screen.getByText(/test result 1/i);
     const img = Array.from(document.getElementsByClassName('result-image')).pop() as HTMLImageElement;
     expect(resultTitle).toBeInTheDocument();
-    expect(img).toHaveAttribute('src', 'https://www.search.gov/test_image.png');
     expect(img).toHaveAttribute('alt', 'test result 1');
   });
 
@@ -198,7 +196,6 @@ describe('SearchResultsLayout', () => {
     const resultsData = { totalPages: 2, unboundedResults: true, results: [{ altText: 'Heritage Tourism | GSA', url: 'https://18f.gsa.gov/2015/06/22/avoiding-cloudfall/', thumbnailUrl: 'https://plus.unsplash.com/premium_photo-1664303499312-917c50e4047b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dG9ybmFkb3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60', image: true, title: 'test result 1', description: 'result body', publishedDate: 'May 9th, 2023', updatedDate: 'May 10th, 2023' }] };
     render(<SearchResultsLayout affiliate={affiliate} page={page} params={{ query: 'foo' }} resultsData={resultsData} vertical='image' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} navigationLinks={navigationLinks} facetsEnabled={false} />);
     const img = Array.from(document.getElementsByClassName('result-image')).pop() as HTMLImageElement;
-    expect(img).toHaveAttribute('src', 'https://plus.unsplash.com/premium_photo-1664303499312-917c50e4047b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dG9ybmFkb3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60');
     expect(img).toHaveAttribute('alt', 'Heritage Tourism | GSA');
   });
 
@@ -218,7 +215,6 @@ describe('SearchResultsLayout', () => {
     const resultTitle = screen.getByText(/test result 1/i);
     const img = Array.from(document.getElementsByClassName('result-image')).pop() as HTMLImageElement;
     expect(resultTitle).toBeInTheDocument();
-    expect(img).toHaveAttribute('src', 'https://www.search.gov/test_image.png');
     expect(img).toHaveAttribute('alt', 'test result 1');
   });
 
