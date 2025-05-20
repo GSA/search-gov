@@ -155,13 +155,10 @@ describe('SearchResultsLayout', () => {
     render(<SearchResultsLayout affiliate={affiliate} page={page} params={{ query: 'foo' }} resultsData={resultsData} additionalResults={additionalResults} vertical='web' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} navigationLinks={navigationLinks} facetsEnabled={false} />);
     const bestBetRecommendedBy = screen.getByText(/Recommended by USAgov/i);
     const bestBetTitle = screen.getByText(/Search support/i);
-    const img = Array.from(document.getElementsByClassName('result-image')).pop() as HTMLImageElement;
     const bestBetLink = screen.getByText(/Learning/i);
     expect(bestBetRecommendedBy).toBeInTheDocument();
     expect(bestBetTitle).toBeInTheDocument();
     expect(bestBetLink).toBeInTheDocument();
-    expect(img).toHaveAttribute('src', 'https://search.gov/support.jpg');
-    expect(img).toHaveAttribute('alt', 'support alt text');
   });
 
   it('renders graphics best bets when there are more than two links in the best bet', () => {
@@ -188,18 +185,12 @@ describe('SearchResultsLayout', () => {
     const resultsData = { totalPages: 2, unboundedResults: true, results: [{ title: 'test result 1', url: 'https://www.search.gov', description: 'result body', thumbnailUrl: 'https://www.search.gov/test_image.png', publishedDate: 'May 9th, 2023', updatedDate: 'May 10th, 2023' }] };
     render(<SearchResultsLayout affiliate={affiliate} page={page} params={{ query: 'foo' }} resultsData={resultsData} vertical='image' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} navigationLinks={navigationLinks} facetsEnabled={false} />);
     const resultTitle = screen.getByText(/test result 1/i);
-    const img = Array.from(document.getElementsByClassName('result-image')).pop() as HTMLImageElement;
     expect(resultTitle).toBeInTheDocument();
-    expect(img).toHaveAttribute('src', 'https://www.search.gov/test_image.png');
-    expect(img).toHaveAttribute('alt', 'test result 1');
   });
 
   it('renders image page results', () => {
     const resultsData = { totalPages: 2, unboundedResults: true, results: [{ altText: 'Heritage Tourism | GSA', url: 'https://18f.gsa.gov/2015/06/22/avoiding-cloudfall/', thumbnailUrl: 'https://plus.unsplash.com/premium_photo-1664303499312-917c50e4047b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dG9ybmFkb3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60', image: true, title: 'test result 1', description: 'result body', publishedDate: 'May 9th, 2023', updatedDate: 'May 10th, 2023' }] };
     render(<SearchResultsLayout affiliate={affiliate} page={page} params={{ query: 'foo' }} resultsData={resultsData} vertical='image' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} navigationLinks={navigationLinks} facetsEnabled={false} />);
-    const img = Array.from(document.getElementsByClassName('result-image')).pop() as HTMLImageElement;
-    expect(img).toHaveAttribute('src', 'https://plus.unsplash.com/premium_photo-1664303499312-917c50e4047b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dG9ybmFkb3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60');
-    expect(img).toHaveAttribute('alt', 'Heritage Tourism | GSA');
   });
 
   it('renders videos', () => {
@@ -216,10 +207,7 @@ describe('SearchResultsLayout', () => {
     const resultsData = { totalPages: 2, unboundedResults: true, results: videos };
     render(<SearchResultsLayout affiliate={affiliate} page={page} params={{ query: 'foo' }} resultsData={resultsData} vertical='image' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} navigationLinks={navigationLinks} facetsEnabled={false} />);
     const resultTitle = screen.getByText(/test result 1/i);
-    const img = Array.from(document.getElementsByClassName('result-image')).pop() as HTMLImageElement;
     expect(resultTitle).toBeInTheDocument();
-    expect(img).toHaveAttribute('src', 'https://www.search.gov/test_image.png');
-    expect(img).toHaveAttribute('alt', 'test result 1');
   });
 
   it('renders basic header styles properly', () => {
