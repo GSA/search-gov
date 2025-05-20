@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Admin::BulkAffiliateDeactivateController < Admin::AdminController
+  include BulkOperationS3Uploadable
+
   def index
     @page_title = 'Bulk Affiliate Deactivate'
   end
@@ -28,30 +30,11 @@ class Admin::BulkAffiliateDeactivateController < Admin::AdminController
 
   private
 
-  def s3_client
-    @s3_client ||= Aws::S3::Client.new(
-      region: S3_CREDENTIALS[:s3_region],
-      access_key_id: S3_CREDENTIALS[:access_key_id],
-      secret_access_key: S3_CREDENTIALS[:secret_access_key]
-    )
+  def s3_object_key_prefix
+    "bulk-deactivate-uploads"
   end
 
-  def upload_to_s3(uploaded_file)
-    s3_key = "bulk-deactivate-uploads/#{Time.now.to_i}-#{SecureRandom.hex(8)}-#{uploaded_file.original_filename}"
-
-    s3_client.put_object(
-      bucket: S3_CREDENTIALS[:bucket],
-      key: s3_key,
-      body: uploaded_file.tempfile
-    )
-
-    s3_key
-  end
-
-  def success_message(filename)
-    <<~SUCCESS_MESSAGE
-      Successfully uploaded #{helpers.sanitize(filename)} for processing.
-      The affiliate deactivation results will be emailed to you.
-    SUCCESS_MESSAGE
+  def bulk_action_description
+    "deactivation"
   end
 end

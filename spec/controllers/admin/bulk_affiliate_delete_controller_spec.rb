@@ -76,6 +76,7 @@ describe Admin::BulkAffiliateDeleteController, type: :controller do
           allow(Aws::S3::Client).to receive(:new).and_return(mock_s3_client)
           allow(mock_s3_client).to receive(:put_object)
           allow(BulkAffiliateDeleteJob).to receive(:perform_later)
+          allow(controller.helpers).to receive(:sanitize).with(file.original_filename).and_return(file.original_filename)
         end
 
         it 'calls BulkAffiliateDeleteJob.perform_later with correct arguments' do
@@ -89,7 +90,11 @@ describe Admin::BulkAffiliateDeleteController, type: :controller do
 
         it 'sets a notice flash message' do
           upload_with_file
-          expect(flash[:notice]).to include("Successfully uploaded #{file.original_filename} for processing.")
+          expected_message = <<~SUCCESS_MESSAGE
+            Successfully uploaded #{file.original_filename} for processing.
+            The affiliate deletion results will be emailed to you.
+          SUCCESS_MESSAGE
+          expect(flash[:notice]).to eq(expected_message)
         end
 
         it 'redirects to the index path' do
@@ -100,9 +105,9 @@ describe Admin::BulkAffiliateDeleteController, type: :controller do
         it 'attempts to upload the file to S3' do
           upload_with_file
           expect(mock_s3_client).to have_received(:put_object).with(
-            bucket: S3_CREDENTIALS[:bucket], # This seems to resolve consistently in your test's context
+            bucket: S3_CREDENTIALS[:bucket],
             key: a_string_matching(expected_s3_key_regex),
-            body: an_instance_of(Tempfile) # Changed from file.tempfile
+            body: an_instance_of(Tempfile)
           )
         end
       end

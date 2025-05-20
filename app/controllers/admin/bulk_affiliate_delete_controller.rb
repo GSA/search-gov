@@ -1,4 +1,6 @@
 class Admin::BulkAffiliateDeleteController < Admin::AdminController
+  include BulkOperationS3Uploadable
+
   def index
     @page_title = 'Bulk Affiliate Delete'
   end
@@ -26,31 +28,12 @@ class Admin::BulkAffiliateDeleteController < Admin::AdminController
 
   private
 
-  def s3_client
-    @s3_client ||= Aws::S3::Client.new(
-      region: S3_CREDENTIALS[:s3_region],
-      access_key_id: S3_CREDENTIALS[:access_key_id],
-      secret_access_key: S3_CREDENTIALS[:secret_access_key]
-    )
+  def s3_object_key_prefix
+    "bulk-delete-uploads"
   end
 
-  def upload_to_s3(uploaded_file)
-    s3_key = "bulk-delete-uploads/#{Time.now.to_i}-#{SecureRandom.hex(8)}-#{uploaded_file.original_filename}"
-
-    s3_client.put_object(
-      bucket: S3_CREDENTIALS[:bucket],
-      key: s3_key,
-      body: uploaded_file.tempfile
-    )
-
-    s3_key
-  end
-
-  def success_message(filename)
-    <<~SUCCESS_MESSAGE
-      Successfully uploaded #{filename} for processing.
-      The deletion results will be emailed to you.
-    SUCCESS_MESSAGE
+  def bulk_action_description
+    "deletion"
   end
 end
 
