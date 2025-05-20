@@ -33,7 +33,7 @@ export const GraphicsBestBet = ({ title, titleUrl, imageUrl, imageAltText, links
     let rightColumnIndex = 1;
     for (let index = 0; index < links.length; index += 1) {
       if (index < Math.ceil(links.length/2)) {
-        order.push(2 * index);  
+        order.push(2 * index);
       } else {
         order.push(rightColumnIndex);
         rightColumnIndex += 2;
@@ -59,13 +59,13 @@ export const GraphicsBestBet = ({ title, titleUrl, imageUrl, imageAltText, links
           <div className='graphics-best-bets-title result-title'>
             {titleUrl ? (
               <h2 className='result-title-label'>
-                <ResultTitle 
+                <ResultTitle
                   url={titleUrl}
-                  className='result-title-link'  
+                  className='result-title-link'
                   clickTracking={() => clickTracking(affiliate, module, query, 1, titleUrl, vertical)}>
                   {parse(title)}
                 </ResultTitle>
-              </h2>) : 
+              </h2>) :
               <h2 className='result-title-label'>
                 {parse(title)}
               </h2>}
@@ -75,7 +75,7 @@ export const GraphicsBestBet = ({ title, titleUrl, imageUrl, imageAltText, links
               {sortedLinks(links).map((link, index) => {
                 return (
                   <Grid key={index} mobileLg={{ col: 6 }} className='graphics-best-bets-link-wrapper'>
-                    <ResultTitle 
+                    <ResultTitle
                       url={link.url}
                       clickTracking={() => clickTracking(affiliate, module, query, titleUrl ? index+2 : index+1, link.url, vertical)}>
                       {parse(link.title)}
