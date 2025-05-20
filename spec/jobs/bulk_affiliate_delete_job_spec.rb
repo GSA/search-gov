@@ -127,6 +127,7 @@ describe BulkAffiliateDeleteJob, type: :job do
         expect(Rails.logger).to have_received(:warn).with(
           a_string_matching(/BulkAffiliateDeleteJob: Parsing failed or no valid IDs found.*User: #{requesting_user_email}.*Summary: No valid IDs found.*General Errors:.*Row Errors: 0/)
         )
+
         expect(BulkAffiliateDeleteMailer).to have_received(:notify_parsing_failure).with(
           requesting_user_email,
           file_name,

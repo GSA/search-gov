@@ -1,8 +1,9 @@
-class BulkAffiliateDeleteUploader < BulkUploaderBase
+# frozen_string_literal: true
+
+class BulkAffiliateDeactivateUploader < BulkUploaderBase
   def initialize(filename, filepath)
     super(filename, filepath, nil)
   end
-
 
   private
 
@@ -17,18 +18,15 @@ class BulkAffiliateDeleteUploader < BulkUploaderBase
         logger.warn "Skipping row with non-numeric Affiliate ID '#{affiliate_id_text}' in #{self.class.name} for file: #{@file_name}"
       end
     else
-      # Handle rows where the ID might be missing or blank
       raw_identifier = row.is_a?(Array) ? row[0].to_s.strip : 'N/A'
       @results.add_failure(raw_identifier.presence || 'N/A', 'Row contained no Affiliate ID.')
-      logger.warn "Skipping row with missing Affiliate ID in #{self.class.name} for file: #{@file_name}"
+      Rails.logger.warn "Skipping row with missing Affiliate ID in #{self.class.name} for file: #{@file_name}"
     end
   end
 
   def finalize_results
-    if !@results.errors? && @results.valid_affiliate_ids.empty? && @results.processed_count > 0
+    if !@results.errors? && @results.valid_affiliate_ids.empty? && @results.processed_count.positive?
       @results.add_general_error('File parsed successfully, but no valid Affiliate IDs were found.')
     end
-
-    @results.summary_message
   end
 end
