@@ -1,0 +1,29 @@
+%p
+  The bulk affiliate deactivation process for the file
+  %strong= @file_name
+  has completed.
+
+  %h2 Summary
+  %ul
+    %li
+      Successfully Deactivated:
+      = @successful_count
+    %li
+      Failed Updates:
+      = @failed_count
+
+  - if @failed_count > 0
+    %h2 Failed Updates Details
+    %table{ border: "1", cellpadding: "5", cellspacing: "0" }
+      %thead
+        %tr
+          %th Affiliate ID
+          %th Error
+      %tbody
+        - @failed_updates.each do |failure|
+          %tr
+            %td= failure[:identifier]
+            %td= failure[:error]
+
+  %p
+    If you have any questions, please contact the support team.

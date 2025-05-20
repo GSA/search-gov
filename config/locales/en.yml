@@ -217,9 +217,8 @@ en:
         success: "Deletion has been enqueued for %{domain}"
         error: "Incorrect confirmation text. Deletion aborted."
     admin:
-      bulk_affiliate_delete:
-        upload:
-          no_file_selected: "Please select a CSV file."
+      bulk_upload:
+        no_file_selected: "No file was selected for %{action}. Please choose a CSV file to upload."
 
   # Aria labels
   aria_label_header: "Primary navigation"
