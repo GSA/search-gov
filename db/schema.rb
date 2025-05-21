@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_27_175328) do
+ActiveRecord::Schema[7.1].define(version: 2025_05_20_171901) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -399,6 +399,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_27_175328) do
     t.integer "affiliate_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["type", "affiliate_id"], name: "index_links_on_type_and_affiliate_id"
   end
 
   create_table "med_related_topics", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
