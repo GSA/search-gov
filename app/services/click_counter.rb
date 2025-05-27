@@ -5,8 +5,9 @@
 class ClickCounter
   attr_reader :domain
 
-  def initialize(domain:)
+  def initialize(domain:, index_name: nil)
     @domain = domain
+    @index_name = index_name
   end
 
   def update_click_counts
@@ -33,6 +34,7 @@ class ClickCounter
   def update_click_count(url:, count:)
     searchgov_url = SearchgovUrl.find_by!(url: url)
     I14yDocument.update(document_id: searchgov_url.document_id,
+                        index_name: @index_name,
                         click_count: count,
                         handle: 'searchgov')
   rescue ActiveRecord::RecordNotFound
