@@ -1,0 +1,26 @@
+%p
+  The bulk affiliate search engine update process for file
+  %strong= @file_name
+  could not be completed due to parsing errors.
+
+- if @general_errors.any?
+  %h2 General Errors
+  %ul
+    - @general_errors.each do |error|
+      %li= error
+
+- if @error_details.any?
+  %h2 Row-specific Errors
+  %table{border: 1, cellpadding: 5, style: 'border-collapse: collapse;'}
+    %thead
+      %tr
+        %th Row Number
+        %th Row Content
+        %th Error
+    %tbody
+      - @error_details.each do |error_row|
+        %tr
+          %td= error_row[:row_number]
+          %td= error_row[:row_content]
+          %td= error_row[:message]
+%p Please correct the errors and try uploading the file again.
