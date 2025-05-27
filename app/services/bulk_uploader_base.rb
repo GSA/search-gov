@@ -2,7 +2,7 @@ class BulkUploaderBase
   attr_reader :results, :file_name, :file_path, :requesting_user
 
   class Results
-    attr_accessor :processed_count, :failed_count, :success_items, :error_details, :general_errors, :valid_affiliate_ids
+    attr_accessor :processed_count, :failed_count, :success_items, :error_details, :general_errors, :valid_affiliate_ids, :valid_affiliate_data
     attr_writer :summary_message
 
     def initialize(file_name)
@@ -14,6 +14,7 @@ class BulkUploaderBase
       @general_errors = []
       @summary_message = nil
       @valid_affiliate_ids = []
+      @valid_affiliate_data = []
     end
 
     def add_valid_id(id)
