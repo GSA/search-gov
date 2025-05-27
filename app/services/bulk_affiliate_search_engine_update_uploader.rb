@@ -37,7 +37,7 @@ class BulkAffiliateSearchEngineUpdateUploader < BulkUploaderBase
       return
     end
 
-    @results.valid_affiliate_data << { id: affiliate_id_text, search_engine: search_engine_text }
+    @results.success_items << { id: affiliate_id_text, search_engine: search_engine_text }
   end
 
   def finalize_results

@@ -13,7 +13,7 @@ describe BulkAffiliateSearchEngineUpdateJob, type: :job do
   let(:results_double) do
     instance_double(BulkUploaderBase::Results,
                     errors?: false,
-                    valid_affiliate_data: [],
+                    success_items: [],
                     summary_message: 'Parsed.',
                     general_errors: [],
                     error_details: [])
@@ -105,8 +105,7 @@ describe BulkAffiliateSearchEngineUpdateJob, type: :job do
       before do
         allow(results_double).to receive_messages(
                                    errors?: false,
-                                   valid_affiliate_data: [],
-                                   summary_message: 'No valid data found.'
+                                   success_items: []
                                  )
       end
 
@@ -128,10 +127,10 @@ describe BulkAffiliateSearchEngineUpdateJob, type: :job do
     end
 
     context 'when processing is successful' do
-      let(:valid_affiliate_data) { [{ id: '1', search_engine: 'searchgov' }] }
+      let(:success_items) { [{ id: '1', search_engine: 'searchgov' }] }
 
       before do
-        allow(results_double).to receive_messages(valid_affiliate_data: valid_affiliate_data)
+        allow(results_double).to receive_messages(success_items: success_items)
         allow(Affiliate).to receive(:find_by).with(id: 1).and_return(affiliate)
         allow(affiliate).to receive(:update).with(search_engine: 'searchgov').and_return(true)
       end
@@ -150,11 +149,11 @@ describe BulkAffiliateSearchEngineUpdateJob, type: :job do
     end
 
     context 'when some affiliates fail to update' do
-      let(:valid_affiliate_data) { [{ id: '1', search_engine: 'searchgov' }, { id: '2', search_engine: 'bing_v7' }] }
+      let(:success_items) { [{ id: '1', search_engine: 'searchgov' }, { id: '2', search_engine: 'bing_v7' }] }
       let(:affiliate2) { instance_double(Affiliate, id: 2, errors: double('errors', full_messages: ['Validation failed'])) }
 
       before do
-        allow(results_double).to receive_messages(valid_affiliate_data: valid_affiliate_data)
+        allow(results_double).to receive_messages(success_items: success_items)
         allow(Affiliate).to receive(:find_by).with(id: 1).and_return(affiliate)
         allow(Affiliate).to receive(:find_by).with(id: 2).and_return(affiliate2)
 

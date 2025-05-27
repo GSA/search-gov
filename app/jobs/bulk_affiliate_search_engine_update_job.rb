@@ -11,7 +11,7 @@ class BulkAffiliateSearchEngineUpdateJob < ApplicationJob
     uploader = BulkAffiliateSearchEngineUpdateUploader.new(file_name, temp_file.path)
     results = uploader.parse_file
 
-    if results.errors? || results.valid_affiliate_data.empty?
+    if results.errors? || results.success_items.empty?
       log_parsing_failure(requesting_user_email, file_name, results)
       BulkAffiliateSearchEngineUpdateMailer.notify_parsing_failure(
         requesting_user_email,
@@ -23,7 +23,7 @@ class BulkAffiliateSearchEngineUpdateJob < ApplicationJob
       return
     end
 
-    process_affiliate_search_engine_updates(requesting_user_email, file_name, results.valid_affiliate_data)
+    process_affiliate_search_engine_updates(requesting_user_email, file_name, results.success_items)
   ensure
     FileUtils.rm_f(temp_file.path) if temp_file && File.exist?(temp_file.path)
   end
