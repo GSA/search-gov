@@ -1,0 +1,36 @@
+%p
+  The bulk affiliate search engine update process for file
+  %strong= @file_name
+  has completed.
+
+- if @successful_updates.any?
+  %h2 Successful Updates
+  %table{border: 1, cellpadding: 5, style: 'border-collapse: collapse;'}
+    %thead
+      %tr
+        %th Affiliate ID
+        %th New Search Engine
+    %tbody
+      - @successful_updates.each do |update|
+        %tr
+          %td= update[:identifier]
+          %td= update[:search_engine]
+- else
+  %p No affiliates were successfully updated.
+
+- if @failed_updates.any?
+  %h2 Failed Updates
+  %table{border: 1, cellpadding: 5, style: 'border-collapse: collapse;'}
+    %thead
+      %tr
+        %th Affiliate ID
+        %th Attempted Search Engine
+        %th Error
+    %tbody
+      - @failed_updates.each do |failure|
+        %tr
+          %td= failure[:identifier]
+          %td= failure[:search_engine]
+          %td= failure[:error]
+- else
+  %p No affiliates failed to update.
