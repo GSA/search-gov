@@ -5,6 +5,10 @@ class SearchElasticEngine < I14ySearch
     build_response(search_results)
   end
 
+  def log_serp_impressions
+    modules << 'SRCH' if @total.positive?
+  end
+
   private
 
   def process_array_parameters(params)
