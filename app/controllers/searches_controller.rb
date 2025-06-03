@@ -73,7 +73,7 @@ class SearchesController < ApplicationController
     if get_commercial_results?
       [WebSearch, :web, :index]
     elsif @affiliate.search_elastic_engine?
-      [SearchElasticEngine, :i14y, :i14y]
+      [SearchElasticEngine, :SRCH, :i14y]
     elsif gets_i14y_results?
       [I14ySearch, :i14y, :i14y]
     elsif @affiliate.gets_blended_results
