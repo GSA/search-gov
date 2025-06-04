@@ -4,7 +4,7 @@ Feature: Blended Search
   I want to be able to search for information
 
   Scenario: Simple search across news and indexed documents
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name | gets_blended_results    | is_rss_govbox_enabled | use_redesigned_results_page |
       | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | true                    | false                 | false                       |
     And affiliate "bar.gov" has the following RSS feeds:
@@ -115,7 +115,7 @@ Feature: Blended Search
     And I should see exactly "20" web search results
 
   Scenario: Custom date range blended search
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale | gets_blended_results | is_rss_govbox_enabled | use_redesigned_results_page |
       | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | true                 | false                 | false                       |
       | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | true                 | false                 | false                       |
@@ -247,7 +247,7 @@ Feature: Blended Search
     Then I should see "8 resultados"
 
   Scenario: User misspells a query
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name | gets_blended_results    | is_rss_govbox_enabled | use_redesigned_results_page |
       | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | true                    | false                 | false                       |
     And the following IndexedDocuments exist:
@@ -260,7 +260,7 @@ Feature: Blended Search
     Then I should see "Showing results for barack obama article"
 
   Scenario: Custom page 1 results pointer
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name               | contact_email    | first_name   | last_name | locale | page_one_more_results_pointer                                                                           | gets_blended_results | use_redesigned_results_page |
       | Blended site | blended.agency.gov | admin@agency.gov | John         | Bar       | en     | Wherever. <a href="https://duckduckgo.com/?q={QUERY}&ia=about">Try your search again</a> to see results | true                 | false                       |
     And affiliate "blended.agency.gov" has the following RSS feeds:
@@ -276,7 +276,7 @@ Feature: Blended Search
     Then I should not see "Wherever. Try your search again to see results"
 
   Scenario: When there are matching results for a different affiliate
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name               | contact_email    | first_name   | last_name            | gets_blended_results | gets_commercial_results_on_blended_search | use_redesigned_results_page |
       | Blended site | blended.agency.gov | admin@agency.gov | John         | Bar                  | true                 | false                                     | false                       |
       | Another site | other.agency.gov   | admin@agency.gov | John         | Bar                  | true                 | false                                     | false                       |
@@ -297,7 +297,7 @@ Feature: Blended Search
     Then I should see "Sorry, no results found for 'item'."
 
   Scenario: A site without commercial results
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name               | contact_email    | first_name   | last_name            | gets_blended_results | gets_commercial_results_on_blended_search | use_redesigned_results_page |
       | Blended site | blended.agency.gov | admin@agency.gov | John         | Bar                  | true                 | false                                     | false                       |
     And affiliate "blended.agency.gov" has the following RSS feeds:
@@ -310,7 +310,7 @@ Feature: Blended Search
     Then I should not see "Try your search again"
 
   Scenario: A site that gets commercial results
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name               | contact_email    | first_name   | last_name | gets_blended_results | gets_commercial_results_on_blended_search | use_redesigned_results_page |
       | Blended site | blended.agency.gov | admin@agency.gov | John         | Bar       | true                 | true                                      | false                       |
     And affiliate "blended.agency.gov" has the following RSS feeds:
@@ -326,7 +326,7 @@ Feature: Blended Search
     Then I should see exactly "20" web search results
 
   Scenario: A site that gets commercial results and has a document collection
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name               | contact_email    | first_name   | last_name | gets_blended_results | gets_commercial_results_on_blended_search | use_redesigned_results_page |
       | Blended site | blended.agency.gov | admin@agency.gov | John         | Bar       | true                 | true                                      | false                       |
     And there are 21 manual indexed documents for affiliate "blended.agency.gov"
@@ -357,7 +357,7 @@ Feature: Blended Search
     And I should not see a link to "1" with class "pagination-numbered-link"
 
   Scenario: Search with only stopwords
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name               | contact_email    | first_name | last_name | gets_blended_results | use_redesigned_results_page |
       | Blended site | blended.agency.gov | admin@agency.gov | John       | Bar       | true                 | false                       |
     And affiliate "blended.agency.gov" has the following RSS feeds:
@@ -373,7 +373,7 @@ Feature: Blended Search
     Then I should see "Sorry, no results found for 'the with and'."
 
   Scenario: Display an Alert on search page
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name               | contact_email    | first_name | last_name | gets_blended_results | use_redesigned_results_page |
       | Blended site | blended.agency.gov | admin@agency.gov | John       | Bar       | true                 | false                       |
     And the following Alert exists:
@@ -388,7 +388,7 @@ Feature: Blended Search
     Then I should not see "New alert for the test aff"
 
   Scenario: Searching a deep collection
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name               | contact_email    | first_name | last_name | gets_blended_results | use_redesigned_results_page |
       | Blended site | blended.agency.gov | admin@agency.gov | John       | Bar       | true                 | false                       |
     And the following IndexedDocuments exist:

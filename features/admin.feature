@@ -37,9 +37,8 @@ Feature:  Administration
     And I should see "agency site"
     And I should see "agency.gov"
     And I should see "www1.agency-site.gov"
-    And I should see "Bing v7"
+    And I should see "Search elastic"
     And I should see a link to "beta.agency.gov" with url for "http://beta.agency.gov"
-
     When I follow "www1.agency-site.gov"
     Then I should see "Agency Website"
 

@@ -1,6 +1,6 @@
 Feature: Manage Display
   Scenario: Editing Sidebar Settings on a new site
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
@@ -24,7 +24,7 @@ Feature: Manage Display
 
   @javascript
   Scenario: Editing GovBoxes Settings
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | agency_abbreviation | gets_i14y_results | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       |Bar        | DOC                 | true              | false                       |
     And affiliate "agency.gov" has the following document collections:
@@ -76,7 +76,7 @@ Feature: Manage Display
 
   @javascript
   Scenario: Editing Related Sites
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name  | name         | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site 1 | 1.agency.gov | john@agency.gov | John       | Bar       | false                       |
       | agency site 2 | 2.agency.gov | john@agency.gov | John       | Bar       | false                       |
@@ -108,7 +108,7 @@ Feature: Manage Display
 
   @javascript
   Scenario: Editing Font & Colors on Affiliate
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
@@ -149,7 +149,7 @@ Feature: Manage Display
 
   @javascript
   Scenario: Editing Image Assets
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name |  website                | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       |  http://main.agency.gov | false                       |
     And I am logged in with email "john@agency.gov"
@@ -188,7 +188,7 @@ Feature: Manage Display
 
   @javascript
   Scenario: Editing Header & Footer
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | footer_fragment                   | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | <strong>my HTML fragment</strong> | false                       |
     And affiliate "agency.gov" has the following document collections:
@@ -283,7 +283,7 @@ Feature: Manage Display
 
   @javascript
   Scenario: Error when Editing Header & Footer
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name   | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John         | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
@@ -297,7 +297,7 @@ Feature: Manage Display
 
     @javascript
     Scenario: Editing No Results Page
-      Given the following Affiliates exist:
+      Given the following BingV7 Affiliates exist:
         | display_name | name       | contact_email   | first_name   | last_name | website                    | use_redesigned_results_page |
         | agency site  | agency.gov | john@agency.gov | John         | Bar       | http://main.agency.gov     | false                       |
       And I am logged in with email "john@agency.gov"
@@ -356,7 +356,7 @@ Feature: Manage Display
 
   @javascript
   Scenario: Errors when Editing No Results Page
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | website                | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | http://main.agency.gov | false                       |
     And I am logged in with email "john@agency.gov"
@@ -388,7 +388,7 @@ Feature: Manage Display
 
   @javascript
   Scenario: Add/edit/remove search page alert
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name   | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John         | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
@@ -482,7 +482,7 @@ Feature: Manage Display
     Then I should see "Display updated date on search results?"
     And I switch on "display image on search results"
     And I switch on "display filetype on search results"
-    
+
     When I submit the form by pressing "Save"
     Then I should see "You have updated your visual design settings"
     And the "display image on search results" should be switched on
@@ -616,7 +616,7 @@ Feature: Manage Display
     And the page body should contain "These settings are for preview purposes only."
 
   Scenario: Display sub navigation links when "Use Redesigned Results Page" is true
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | true                        |
     And I am logged in with email "john@agency.gov"
@@ -627,7 +627,7 @@ Feature: Manage Display
     And I should not see a link to "Legacy Header & Footer" in the active site sub navigation
 
   Scenario: Display sub navigation links when "Use Redesigned Results Page" is false
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"

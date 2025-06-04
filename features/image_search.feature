@@ -4,7 +4,7 @@ Feature: Image search
   I want to search for images
 
   Scenario: English Image search
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name   | contact_email | first_name | last_name | domains        | use_redesigned_results_page |
       | USA.gov      | usagov | aff@bar.gov   | John       | Bar       | whitehouse.gov | false                       |
     When I am on usagov's image search page
@@ -13,7 +13,7 @@ Feature: Image search
     And I should see 20 image results
 
   Scenario: Image search with spelling suggestion
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name   | contact_email | first_name | last_name | use_redesigned_results_page |
       | USA.gov      | usagov | aff@bar.gov   | John       | Bar       | false                       |
     And the following Suggestion Blocks exist:
@@ -25,7 +25,7 @@ Feature: Image search
     Then I should not see "Showing results for ebay"
 
   Scenario: Spanish image search
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name    | name        | contact_email | first_name | last_name | locale | use_redesigned_results_page |
       | GobiernoUSA.gov | gobiernousa | aff@bar.gov   | John       | Bar       | es     | false                       |
     When I am on gobiernousa's image search page

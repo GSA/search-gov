@@ -1,6 +1,6 @@
 require 'ostruct'
 
-Given /^the following (SearchGov|SearchElastic)?\s?Affiliates exist:$/ do |affiliate_type, table|
+Given /^the following (SearchGov|SearchElastic|BingV7)?\s?Affiliates exist:$/ do |affiliate_type, table|
   Affiliate.destroy_all
   table.hashes.each do |hash|
     valid_options = {

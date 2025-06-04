@@ -23,7 +23,7 @@ describe Affiliate do
 
       it do
         is_expected.to have_db_column(:search_engine).of_type(:string).
-          with_options(default: 'bing_v7', null: false)
+          with_options(default: 'search_elastic', null: false)
       end
 
       it do

@@ -4,7 +4,7 @@ Feature: Watchers (aka Analytics Alerts)
   I want to set up and manage various alerts
 
   Scenario: View watchers
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name  | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar        | false                       |
     And the following Users exist:
@@ -39,7 +39,7 @@ Feature: Watchers (aka Analytics Alerts)
 
   @javascript
   Scenario: Add/edit/remove watchers
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And the following Hints exist:
