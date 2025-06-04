@@ -5,7 +5,7 @@
 
 Feature: Searches using mobile device
   Scenario: Web search
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale | domains              | use_redesigned_results_page | search_engine |
       | English site | en.agency.gov | admin@agency.gov | John       | Bar     | en       |                      | false                       | bing_v7       |
       | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar     | es       |                      | false                       | bing_v7       |
@@ -85,7 +85,7 @@ Feature: Searches using mobile device
     And I should see "Hippopotamus amphibius"
 
   Scenario: News search
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale | use_redesigned_results_page | search_engine |
       | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | false                       | bing_v7       |
       | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | false                       | bing_v7       |
@@ -153,7 +153,7 @@ Feature: Searches using mobile device
     And I should see at least "5" web search results
 
   Scenario: Custom date range news search
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale | use_redesigned_results_page | search_engine |
       | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | false                       | bing_v7       |
       | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | false                       | bing_v7       |
@@ -269,7 +269,7 @@ Feature: Searches using mobile device
     And I should see "Más recientes" within the current sort by filter
 
   Scenario: Video news search
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale | youtube_handles         | use_redesigned_results_page | search_engine |
       | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | usgovernment,whitehouse | false                       | bing_v7       |
       | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | gobiernousa             | false                       | bing_v7       |
@@ -328,7 +328,7 @@ Feature: Searches using mobile device
     And I should see at least "5" video search results
 
   Scenario: Collections search
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale | use_redesigned_results_page | search_engine |
       | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | false                       | BingV7        |
       | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | false                       | BingV7        |
@@ -356,7 +356,7 @@ Feature: Searches using mobile device
     And every result URL should match "www.usa.gov/espanol"
 
   Scenario: Site navigations without dropdown menu
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale | use_redesigned_results_page | search_engine |
       | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | false                       | bing_v7       |
     And affiliate "en.agency.gov" has the following document collections:
@@ -384,7 +384,7 @@ Feature: Searches using mobile device
     And I should see at least "10" web search results
 
   Scenario: Site navigations with dropdown menu
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale | navigation_dropdown_label | use_redesigned_results_page | search_engine |
       | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | My-awesome-label          | false                       | bing_v7       |
     And affiliate "en.agency.gov" has the following document collections:
@@ -429,7 +429,7 @@ Feature: Searches using mobile device
     Then I should see "Inactive news search" within the SERP active navigation
 
   Scenario: Job search
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name |locale | jobs_enabled | use_redesigned_results_page | search_engine |
       | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en    | 1            | false                       | bing_v7       |
       | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es    | 1            | false                       | bing_v7       |
@@ -462,7 +462,7 @@ Feature: Searches using mobile device
     Given the following Agencies exist:
       | name                            | abbreviation | organization_codes |
       | General Services Administration | GSA          | GS                 |
-    And the following Affiliates exist:
+    And the following BingV7 Affiliates exist:
       | display_name | name       | agency_abbreviation | jobs_enabled | contact_email                | use_redesigned_results_page | search_engine |
       | English site | agency.gov | GSA                 | true         | affiliate_admin@fixtures.org | false                       | BingV7        |
     When I am on agency.gov's search page
@@ -472,7 +472,7 @@ Feature: Searches using mobile device
     And I should see a link to "More GSA job openings on USAJobs.gov" with url for "https://www.usajobs.gov/Search/Results?a=GS&hp=public"
 
   Scenario: Searching with sitelimit
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale | domains | use_redesigned_results_page | search_engine |
       | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | .gov    | false                       | BingV7        |
       | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | .gov    | false                       | BingV7        |
@@ -500,7 +500,7 @@ Feature: Searches using mobile device
     Then I should not see "Los resultados para gobierno son solo de usa.gov."
 
   Scenario: Searching with matching results on news govbox
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale | use_redesigned_results_page | search_engine |
       | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | false                       | BingV7        |
       | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | false                       | BingV7        |
@@ -540,7 +540,7 @@ Feature: Searches using mobile device
     And I should see "Noticias Ayer"
 
   Scenario: Searching on sites with related sites
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name           | contact_email    | first_name | last_name | locale | related_sites_dropdown_label | use_redesigned_results_page | search_engine |
       | English site | en.agency.gov  | admin@agency.gov | John       | Bar       | en     | Search  On                   | false                       | BingV7        |
       | All sites    | all.agency.gov | admin@agency.gov | John       | Bar       | en     |                              | false                       | BingV7        |
@@ -559,7 +559,7 @@ Feature: Searches using mobile device
     Then I should see the browser page titled "gobierno - Spanish site resultados de la búsqueda"
 
   Scenario: Searching on sites with federal register documents
-    And the following Affiliates exist:
+    And the following BingV7 Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | agency_abbreviation | is_federal_register_document_govbox_enabled | domains  | use_redesigned_results_page | search_engine |
       | English site | en.agency.gov | admin@agency.gov | John       | Bar       | DOC                 | true                                        | noaa.gov | false                       | BingV7        |
     And the following Federal Register Document entries exist:
@@ -580,7 +580,7 @@ Feature: Searches using mobile device
     And I should see "A Rule by the National Oceanic and Atmospheric Administration posted on August 19, 2013."
 
   Scenario: Advanced search
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale | use_redesigned_results_page | search_engine |
       | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | false                       | BingV7        |
       | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | false                       | BingV7        |
@@ -603,7 +603,7 @@ Feature: Searches using mobile device
     And the "Enter your search term" field should contain "allofit \"exact\" \-bad \(any\) filetype:pdf"
 
   Scenario: Custom page 1 results pointer
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name           | contact_email    | first_name | last_name | locale | page_one_more_results_pointer                                                                           | use_redesigned_results_page | search_engine |
       | English site | en.agency.gov  | admin@agency.gov | John       | Bar       | en     | Wherever. <a href="https://duckduckgo.com/?q={QUERY}&ia=about">Try your search again</a> to see results | false                       | BingV7        |
     When I am on en.agency.gov's search page
@@ -615,7 +615,7 @@ Feature: Searches using mobile device
     Then I should not see "Wherever. Try your search again to see results"
 
   Scenario: Custom no results pointer
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name           | contact_email    | first_name   | last_name | locale | no_results_pointer                                                                                       | use_redesigned_results_page | search_engine |
       | English site | en.agency.gov  | admin@agency.gov | John         | Bar       | en     | NORESULTS. <a href="https://duckduckgo.com/?q={QUERY}&ia=about">Try your search again</a> to see results | false                       | BingV7        |
     When I am on en.agency.gov's search page
@@ -624,14 +624,14 @@ Feature: Searches using mobile device
     Then I should see "NORESULTS. Try your search again to see results"
 
   Scenario: Web search on Kalaallisut site
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name     | name          | contact_email    | first_name | last_name | locale | domains              | use_redesigned_results_page | search_engine |
       | Kalaallisut site | kl.agency.gov | admin@agency.gov | John       | Bar       | kl     |                      | false                       | BingV7        |
     When I am on kl.agency.gov's search page
     Then I should see "Ujarniakkat ataani allaffissamut allaguk"
 
   Scenario: Web search using Bing engine
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name          | contact_email    | first_name   | last_name | locale | search_engine | domains | use_redesigned_results_page |
       | English site | en.agency.gov | admin@agency.gov | John         | Bar       | en     | BingV7        | .gov    | false                       |
     And affiliate "en.agency.gov" has the following document collections:
@@ -649,7 +649,7 @@ Feature: Searches using mobile device
     And I should see Powered by Bing logo
 
   Scenario: Active facet display using SearchGov
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale | search_engine | domains | use_redesigned_results_page |
       | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | SearchGov     | .gov    | false                       |
     And affiliate "en.agency.gov" has the following document collections:
@@ -660,7 +660,7 @@ Feature: Searches using mobile device
     Then I should see the "USA.gov" Collection as the active facet
 
   Scenario: Display an Alert on search page
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale | domains              | use_redesigned_results_page | search_engine |
       | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     |                      | false                       | BingV7        |
     Given the following Alert exists:

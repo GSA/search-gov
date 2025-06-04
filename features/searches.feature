@@ -6,7 +6,7 @@ Feature: Search
   I want to be able to search for information
 
   Scenario: Search with a blank query on an affiliate page
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name     | name             | contact_email         | first_name | last_name | use_redesigned_results_page |
       | bar site         | bar.gov          | aff@bar.gov           | John       | Bar       | false                       |
     When I am on bar.gov's search page
@@ -14,7 +14,7 @@ Feature: Search
     Then I should see "Please enter a search term in the box above."
 
   Scenario: Search with no results
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name     | name             | contact_email         | first_name | last_name | use_redesigned_results_page |
       | bar site         | bar.gov          | aff@bar.gov           | John       | Bar       | false                       |
     When I am on bar.gov's search page
@@ -26,7 +26,7 @@ Feature: Search
     # ACHTUNG! This test will fail unless the news item URL matches a url returned by the web search.
     # So if it breaks, check the urls in the VCR cassette recording from the search:
     # features/vcr_cassettes/Legacy_Search/Searching_a_domain_with_Bing_results_that_match_a_specific_news_item.yml
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name | domains        | use_redesigned_results_page |
       | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | whitehouse.gov | false                       |
     And affiliate "bar.gov" has the following RSS feeds:
@@ -40,7 +40,7 @@ Feature: Search
     Then I should see "Clinton RSS Test"
 
   Scenario: No results when searching with active RSS feeds
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name    | use_redesigned_results_page |
       | bar site     | bar.gov | aff@bar.gov   | John       |Bar           | false                       |
     And affiliate "bar.gov" has the following RSS feeds:
@@ -66,7 +66,7 @@ Feature: Search
     Then I should see at least "2" web search results
 
   Scenario: No results when searching on Spanish site with active RSS feeds
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name | locale | use_redesigned_results_page |
       | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | es     | false                       |
     And affiliate "bar.gov" has the following RSS feeds:
@@ -92,7 +92,7 @@ Feature: Search
     Then I should see at least "2" web search results
 
   Scenario: Searching on a site with media RSS
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name | use_redesigned_results_page |
       | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | false                       |
     And affiliate "bar.gov" has the following RSS feeds:
@@ -109,7 +109,7 @@ Feature: Search
     And I should see "Powered by Search.gov"
 
   Scenario: Visiting English affiliate search with multiple domains
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name | domains                | use_redesigned_results_page |
       | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | whitehouse.gov,usa.gov | false                       |
     When I am on bar.gov's search page
@@ -118,7 +118,7 @@ Feature: Search
     Then I should see at least "2" web search results
 
   Scenario: Visiting Spanish affiliate search with multiple domains
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name | domains                | locale | is_image_search_navigable | use_redesigned_results_page |
       | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | whitehouse.gov,usa.gov | es     | true                      | false                       |
     When I am on bar.gov's search page
@@ -128,7 +128,7 @@ Feature: Search
 
   @javascript
   Scenario: Searchers see English Medline Govbox
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name        | contact_email | first_name | last_name | domains | is_medline_govbox_enabled | use_redesigned_results_page |
       | english site | english-nih | aff@bar.gov   | John       | Bar       | nih.gov | true                      | false                       |
     And the following Medline Topics exist:
@@ -163,7 +163,7 @@ Feature: Search
 
   @javascript
   Scenario: Searchers see Spanish Medline Govbox
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name        | contact_email | first_name | last_name | domains | is_medline_govbox_enabled | locale | use_redesigned_results_page |
       | spanish site | spanish-nih | aff@bar.gov   | John       | Bar       | nih.gov | true                      | es     | false                       |
     And the following Medline Topics exist:
@@ -193,7 +193,7 @@ Feature: Search
     Then I should not see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales"
 
   Scenario: When a searcher clicks on a collection and the query is blank
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name  | use_redesigned_results_page |
       | aff site     | aff.gov | aff@bar.gov   | John       | Bar        | false                       |
     And affiliate "aff.gov" has the following document collections:
@@ -204,7 +204,7 @@ Feature: Search
     Then I should see "Please enter a search term"
 
   Scenario: When a searcher on an English site clicks on an RSS Feed and the query is blank
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name     | name       | contact_email | first_name | last_name | locale | youtube_handles | use_redesigned_results_page |
       | bar site         | bar.gov    | aff@bar.gov   | John       | Bar       | en     | en_agency       | false                       |
     And affiliate "bar.gov" has the following RSS feeds:
@@ -237,7 +237,7 @@ Feature: Search
     And I should see "First video item"
 
   Scenario: When a searcher on a Spanish site clicks on an RSS Feed and the query is blank
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name     | name       | contact_email | first_name | last_name | locale | youtube_handles | use_redesigned_results_page |
       | Spanish bar site | es.bar.gov | aff@bar.gov   | John       | Bar       | es     | es_agency       | false                       |
     And affiliate "es.bar.gov" has the following RSS feeds:
@@ -269,7 +269,7 @@ Feature: Search
     And I should see "Noticia video uno"
 
   Scenario: Searching indexed document collections
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | domains        | use_redesigned_results_page |
       | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | whitehouse.gov | false                       |
     And affiliate "agency.gov" has the following document collections:
@@ -286,7 +286,7 @@ Feature: Search
     And I should see a link to "Second petition article" with url for "http://petitions.whitehouse.gov/petition-2.html"
 
   Scenario: Searching on non navigable document collection
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | domains | use_redesigned_results_page |
       | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov | false                       |
     And affiliate "agency.gov" has the following document collections:
@@ -302,7 +302,7 @@ Feature: Search
     And I should not see a link to "Blog" in the search navbar
 
   Scenario: Searching for site specific results using query
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | domains | use_redesigned_results_page |
       | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov | false                       |
     When I am on agency.gov's search page
@@ -312,7 +312,7 @@ Feature: Search
     Then every result URL should match "usa.gov"
 
   Scenario: Affiliate search on affiliate with connections
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | domains | use_redesigned_results_page |
       | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | epa.gov | false                       |
       | other site   | other.gov  | aff@bad.gov   | John       | Bad       | cdc.gov | false                       |
@@ -330,7 +330,7 @@ Feature: Search
     And every result URL should match "cdc.gov"
 
   Scenario: Searching on sites with Featured Collections
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name   | name          | contact_email   | first_name | last_name | locale | use_redesigned_results_page |
       | agency site    | agency.gov    | john@agency.gov | John       | Bar       | en     | false                       |
     And the following featured collections exist for the affiliate "agency.gov":
@@ -351,7 +351,7 @@ Feature: Search
     Then I should see a featured collection link title with "Atlantic" highlighted
 
   Scenario: Searching on sites with Boosted Contents
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name   | name          | contact_email   | first_name| last_name | locale | use_redesigned_results_page |
       | agency site    | agency.gov    | john@agency.gov | John      | Bar       | en     | false                       |
       | es agency site | es.agency.gov | john@agency.gov | John      | Bar       | es     | false                       |
@@ -374,7 +374,7 @@ Feature: Search
     Then I should see a link to "la página de prueba de Emergencia" with url for "http://www.agency.gov/911" in the boosted contents section
 
   Scenario: Entering a blank advanced search
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name   | contact_email | first_name | last_name | use_redesigned_results_page |
       | USA.gov      | usagov | aff@bar.gov   | John       | Bar       | false                       |
     When I am on usagov's advanced search page
@@ -384,7 +384,7 @@ Feature: Search
 
   @javascript
   Scenario: Searching with type-ahead suggestions
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | domains | use_redesigned_results_page |
       | agency site  | agency.gov | aff@bar.gov   | Jane       | Bar       | usa.gov | false                       |
     And the following SAYT Suggestions exist for agency.gov:
@@ -395,7 +395,7 @@ Feature: Search
     Then I should see a suggestion to search for "popular search phrase"
 
   Scenario: Searching with spelling suggestions
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | domains | use_redesigned_results_page |
       | agency site  | agency.gov | aff@bar.gov   | Jane       | Bar       | usa.gov | false                       |
     When I am on agency.gov's search page

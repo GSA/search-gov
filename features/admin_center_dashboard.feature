@@ -1,7 +1,7 @@
 Feature: Dashboard
 
   Scenario: Visiting /sites for user with existing sites
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name         | contact_email      | first_name   | last_name | use_redesigned_results_page |
       | agency1 site | 1.agency.gov | manager@agency.gov | John         | Manager   | false                       |
       | agency3 site | 3.agency.gov | manager@agency.gov | John         | Manager   | false                       |
@@ -81,7 +81,7 @@ Feature: Dashboard
 
   @javascript
   Scenario: Cloning a site
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name         | contact_email      | first_name | last_name | use_redesigned_results_page |
       | origin site  | origin_site  | john@agency.gov    | John       | Manager   | false                       |
     And I am logged in with email "john@agency.gov"
@@ -189,7 +189,7 @@ Feature: Dashboard
 
   @javascript
   Scenario: Preview
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name              | contact_email   | first_name | last_name | website               | use_redesigned_results_page |
       | agency site  | www.agency.gov    | john@agency.gov | John       | Bar       | http://www.agency.gov | false                       |
     And I am logged in with email "john@agency.gov"
@@ -239,7 +239,7 @@ Feature: Dashboard
     And I should see "Handle: agencygov" in the email body
 
   Scenario: Performing site autodiscovery
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
