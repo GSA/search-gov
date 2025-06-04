@@ -427,7 +427,7 @@ Feature: Manage Display
 
   @javascript
   Scenario: Editing the Visual Design Settings when "Use Redesigned Results Page" is true
-    Given the following BingV7 Affiliates exist:
+    Given the following Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page | search_engine |
       | bing site    | agency.gov | john@agency.gov | John       | Bar       | true                        | SearchGov     |
     And I am logged in with email "john@agency.gov"
@@ -482,7 +482,7 @@ Feature: Manage Display
     Then I should see "Display updated date on search results?"
     And I switch on "display image on search results"
     And I switch on "display filetype on search results"
-    
+
     When I submit the form by pressing "Save"
     Then I should see "You have updated your visual design settings"
     And the "display image on search results" should be switched on
