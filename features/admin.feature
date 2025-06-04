@@ -20,7 +20,7 @@ Feature:  Administration
     And I should see "Admin Center" in the user menu
 
   Scenario: Visiting the affiliate admin page as an admin
-    Given the following BingV7 Affiliates exist:
+    Given the following Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | website                | use_redesigned_results_page |
       | agency site  | agency.gov | one@foo.gov   | One        | Foo       | http://beta.agency.gov | false                       |
     And the following "site domains" exist for the affiliate agency.gov:
@@ -44,7 +44,7 @@ Feature:  Administration
 
   @javascript
   Scenario: Editing an affiliate as an admin
-    Given the following BingV7 Affiliates exist:
+    Given the following Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | website                | use_redesigned_results_page |
       | agency site  | agency.gov | one@foo.gov   | One        | Foo       | http://beta.agency.gov | false                       |
     When I go to the admin sites page
@@ -60,7 +60,7 @@ Feature:  Administration
 
   @javascript
   Scenario: Editing an affiliate's Display Settings as an admin
-    Given the following BingV7 Affiliates exist:
+    Given the following Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | website                | use_redesigned_results_page |
       | agency site  | agency.gov | one@foo.gov   | One        | Foo       | http://beta.agency.gov | false                       |
     When I go to the admin sites page
@@ -92,7 +92,7 @@ Feature:  Administration
     And I should see the following breadcrumbs: Super Admin > Type Ahead Filters
 
   Scenario: Viewing Boosted Content (both affiliate and Search.USA.gov)
-    Given the following BingV7 Affiliates exist:
+    Given the following Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name | use_redesigned_results_page |
       | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | false                       |
     And the following Boosted Content entries exist for the affiliate "bar.gov"
