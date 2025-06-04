@@ -6,10 +6,10 @@
 Feature: Searches using mobile device
   Scenario: Web search
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | locale | domains              | use_redesigned_results_page |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar     | en       |                      | false                       |
-      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar     | es       |                      | false                       |
-      | Hippo site   | hippo         | admin@agency.gov | John       | Bar     | en       | hippo.whitehouse.gov | false                       |
+      | display_name | name          | contact_email    | first_name | last_name | locale | domains              | use_redesigned_results_page | search_engine |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar     | en       |                      | false                       | bing_v7       |
+      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar     | es       |                      | false                       | bing_v7       |
+      | Hippo site   | hippo         | admin@agency.gov | John       | Bar     | en       | hippo.whitehouse.gov | false                       | bing_v7       |
     And the following Boosted Content entries exist for the affiliate "en.agency.gov"
       | url                                                             | title                  | description                             |
       | http://http://www.whitehouse.gov/administration/president-obama | President Barack Obama | the 44th President of the United States |
@@ -86,9 +86,9 @@ Feature: Searches using mobile device
 
   Scenario: News search
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | locale | use_redesigned_results_page |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | false                       |
-      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | false                       |
+      | display_name | name          | contact_email    | first_name | last_name | locale | use_redesigned_results_page | search_engine |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | false                       | bing_v7       |
+      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | false                       | bing_v7       |
 
     And affiliate "en.agency.gov" has the following RSS feeds:
       | name   | url                              |
@@ -154,9 +154,9 @@ Feature: Searches using mobile device
 
   Scenario: Custom date range news search
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | locale | use_redesigned_results_page |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | false                       |
-      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | false                       |
+      | display_name | name          | contact_email    | first_name | last_name | locale | use_redesigned_results_page | search_engine |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | false                       | bing_v7       |
+      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | false                       | bing_v7       |
     And affiliate "en.agency.gov" has the following RSS feeds:
       | name  | url                                  | is_navigable |
       | Press | http://www.whitehouse.gov/feed/press | true         |
@@ -270,9 +270,9 @@ Feature: Searches using mobile device
 
   Scenario: Video news search
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | locale | youtube_handles         | use_redesigned_results_page |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | usgovernment,whitehouse | false                       |
-      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | gobiernousa             | false                       |
+      | display_name | name          | contact_email    | first_name | last_name | locale | youtube_handles         | use_redesigned_results_page | search_engine |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | usgovernment,whitehouse | false                       | bing_v7       |
+      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | gobiernousa             | false                       | bing_v7       |
     And affiliate "en.agency.gov" has the following RSS feeds:
       | name   | url | is_navigable | is_managed |
       | Videos |     | true         | true       |
@@ -329,9 +329,9 @@ Feature: Searches using mobile device
 
   Scenario: Collections search
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | locale | use_redesigned_results_page |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | false                       |
-      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | false                       |
+      | display_name | name          | contact_email    | first_name | last_name | locale | use_redesigned_results_page | search_engine |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | false                       | BingV7        |
+      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | false                       | BingV7        |
 
     And affiliate "en.agency.gov" has the following document collections:
       | name    | prefixes            |
@@ -357,8 +357,8 @@ Feature: Searches using mobile device
 
   Scenario: Site navigations without dropdown menu
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | locale | use_redesigned_results_page |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | false                       |
+      | display_name | name          | contact_email    | first_name | last_name | locale | use_redesigned_results_page | search_engine |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | false                       | bing_v7       |
     And affiliate "en.agency.gov" has the following document collections:
       | name | prefixes             |
       | Blog | http://blog.usa.gov/ |
@@ -385,8 +385,8 @@ Feature: Searches using mobile device
 
   Scenario: Site navigations with dropdown menu
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | locale | navigation_dropdown_label | use_redesigned_results_page |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | My-awesome-label          | false                       |
+      | display_name | name          | contact_email    | first_name | last_name | locale | navigation_dropdown_label | use_redesigned_results_page | search_engine |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | My-awesome-label          | false                       | bing_v7       |
     And affiliate "en.agency.gov" has the following document collections:
       | name                 | prefixes                | position | is_navigable |
       | FAQs                 | http://answers.usa.gov/ | 0        | true         |
@@ -430,9 +430,9 @@ Feature: Searches using mobile device
 
   Scenario: Job search
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name |locale | jobs_enabled | use_redesigned_results_page |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en    | 1            | false                       |
-      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es    | 1            | false                       |
+      | display_name | name          | contact_email    | first_name | last_name |locale | jobs_enabled | use_redesigned_results_page | search_engine |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en    | 1            | false                       | bing_v7       |
+      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es    | 1            | false                       | bing_v7       |
 
     When I am on en.agency.gov's search page
     And I fill in "Enter your search term" with "jobs"
@@ -463,8 +463,8 @@ Feature: Searches using mobile device
       | name                            | abbreviation | organization_codes |
       | General Services Administration | GSA          | GS                 |
     And the following Affiliates exist:
-      | display_name | name       | agency_abbreviation | jobs_enabled | contact_email                | use_redesigned_results_page |
-      | English site | agency.gov | GSA                 | true         | affiliate_admin@fixtures.org | false                       |
+      | display_name | name       | agency_abbreviation | jobs_enabled | contact_email                | use_redesigned_results_page | search_engine |
+      | English site | agency.gov | GSA                 | true         | affiliate_admin@fixtures.org | false                       | BingV7        |
     When I am on agency.gov's search page
     And I search for "jobs"
     Then I should see "Job Openings at GSA"
@@ -473,9 +473,9 @@ Feature: Searches using mobile device
 
   Scenario: Searching with sitelimit
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | locale | domains | use_redesigned_results_page |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | .gov    | false                       |
-      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | .gov    | false                       |
+      | display_name | name          | contact_email    | first_name | last_name | locale | domains | use_redesigned_results_page | search_engine |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | .gov    | false                       | BingV7        |
+      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | .gov    | false                       | BingV7        |
     And affiliate "en.agency.gov" has the following document collections:
       | name | prefixes                 | is_navigable |
       | Blog | https://search.gov/blog/ | true         |
@@ -501,9 +501,9 @@ Feature: Searches using mobile device
 
   Scenario: Searching with matching results on news govbox
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | locale | use_redesigned_results_page |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | false                       |
-      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | false                       |
+      | display_name | name          | contact_email    | first_name | last_name | locale | use_redesigned_results_page | search_engine |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | false                       | BingV7        |
+      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | false                       | BingV7        |
     And affiliate "en.agency.gov" has the following RSS feeds:
       | name   | url                              | is_navigable |
       | Press  | http://en.agency.gov/feed/press  | true         |
@@ -541,10 +541,10 @@ Feature: Searches using mobile device
 
   Scenario: Searching on sites with related sites
     Given the following Affiliates exist:
-      | display_name | name           | contact_email    | first_name | last_name | locale | related_sites_dropdown_label | use_redesigned_results_page |
-      | English site | en.agency.gov  | admin@agency.gov | John       | Bar       | en     | Search  On                   | false                       |
-      | All sites    | all.agency.gov | admin@agency.gov | John       | Bar       | en     |                              | false                       |
-      | Spanish site | es.agency.gov  | admin@agency.gov | John       | Bar       | es     |                              | false                       |
+      | display_name | name           | contact_email    | first_name | last_name | locale | related_sites_dropdown_label | use_redesigned_results_page | search_engine |
+      | English site | en.agency.gov  | admin@agency.gov | John       | Bar       | en     | Search  On                   | false                       | BingV7        |
+      | All sites    | all.agency.gov | admin@agency.gov | John       | Bar       | en     |                              | false                       | BingV7        |
+      | Spanish site | es.agency.gov  | admin@agency.gov | John       | Bar       | es     |                              | false                       | BingV7        |
     And the following Connections exist for the affiliate "en.agency.gov":
       | connected_affiliate | display_name         |
       | es.agency.gov       | Este tema en español |
@@ -560,8 +560,8 @@ Feature: Searches using mobile device
 
   Scenario: Searching on sites with federal register documents
     And the following Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | agency_abbreviation | is_federal_register_document_govbox_enabled | domains  | use_redesigned_results_page |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | DOC                 | true                                        | noaa.gov | false                       |
+      | display_name | name          | contact_email    | first_name | last_name | agency_abbreviation | is_federal_register_document_govbox_enabled | domains  | use_redesigned_results_page | search_engine |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | DOC                 | true                                        | noaa.gov | false                       | BingV7        |
     And the following Federal Register Document entries exist:
       | federal_register_agencies | document_number | document_type | title                                                              | publication_date | comments_close_in_days | start_page | end_page | page_length | html_url                                                                                                                         |
       | DOC,IRS,ITA,NOAA          | 2014-13420      | Notice        | Proposed Information Collection; Comment Request                   | 2014-06-09       | 7                      | 33040      | 33041    | 2           | https://www.federalregister.gov/articles/2014/06/09/2014-13420/proposed-information-collection-comment-request                   |
@@ -581,9 +581,9 @@ Feature: Searches using mobile device
 
   Scenario: Advanced search
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | locale | use_redesigned_results_page |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | false                       |
-      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | false                       |
+      | display_name | name          | contact_email    | first_name | last_name | locale | use_redesigned_results_page | search_engine |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | false                       | BingV7        |
+      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | false                       | BingV7        |
     And affiliate "en.agency.gov" has the following RSS feeds:
       | name     | url                                | is_navigable |
       | Articles | http://en.agency.gov/feed/articles | true         |
@@ -604,8 +604,8 @@ Feature: Searches using mobile device
 
   Scenario: Custom page 1 results pointer
     Given the following Affiliates exist:
-      | display_name | name           | contact_email    | first_name | last_name | locale | page_one_more_results_pointer                                                                           | use_redesigned_results_page |
-      | English site | en.agency.gov  | admin@agency.gov | John       | Bar       | en     | Wherever. <a href="https://duckduckgo.com/?q={QUERY}&ia=about">Try your search again</a> to see results | false                       |
+      | display_name | name           | contact_email    | first_name | last_name | locale | page_one_more_results_pointer                                                                           | use_redesigned_results_page | search_engine |
+      | English site | en.agency.gov  | admin@agency.gov | John       | Bar       | en     | Wherever. <a href="https://duckduckgo.com/?q={QUERY}&ia=about">Try your search again</a> to see results | false                       | BingV7        |
     When I am on en.agency.gov's search page
     And I fill in "Enter your search term" with "gov"
     And I press "Search"
@@ -616,8 +616,8 @@ Feature: Searches using mobile device
 
   Scenario: Custom no results pointer
     Given the following Affiliates exist:
-      | display_name | name           | contact_email    | first_name   | last_name | locale | no_results_pointer                                                                                       | use_redesigned_results_page |
-      | English site | en.agency.gov  | admin@agency.gov | John         | Bar       | en     | NORESULTS. <a href="https://duckduckgo.com/?q={QUERY}&ia=about">Try your search again</a> to see results | false                       |
+      | display_name | name           | contact_email    | first_name   | last_name | locale | no_results_pointer                                                                                       | use_redesigned_results_page | search_engine |
+      | English site | en.agency.gov  | admin@agency.gov | John         | Bar       | en     | NORESULTS. <a href="https://duckduckgo.com/?q={QUERY}&ia=about">Try your search again</a> to see results | false                       | BingV7        |
     When I am on en.agency.gov's search page
     And I fill in "Enter your search term" with "lkssldfkjsldfkjsldkfjsldkjflsdkjflskdjfwer"
     And I press "Search"
@@ -625,8 +625,8 @@ Feature: Searches using mobile device
 
   Scenario: Web search on Kalaallisut site
     Given the following Affiliates exist:
-      | display_name     | name          | contact_email    | first_name | last_name | locale | domains              | use_redesigned_results_page |
-      | Kalaallisut site | kl.agency.gov | admin@agency.gov | John       | Bar       | kl     |                      | false                       |
+      | display_name     | name          | contact_email    | first_name | last_name | locale | domains              | use_redesigned_results_page | search_engine |
+      | Kalaallisut site | kl.agency.gov | admin@agency.gov | John       | Bar       | kl     |                      | false                       | BingV7        |
     When I am on kl.agency.gov's search page
     Then I should see "Ujarniakkat ataani allaffissamut allaguk"
 
@@ -661,8 +661,8 @@ Feature: Searches using mobile device
 
   Scenario: Display an Alert on search page
     Given the following Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | locale | domains              | use_redesigned_results_page |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     |                      | false                       |
+      | display_name | name          | contact_email    | first_name | last_name | locale | domains              | use_redesigned_results_page | search_engine |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     |                      | false                       | BingV7        |
     Given the following Alert exists:
       | affiliate    | text                       | status   | title     |
       | en.agency.gov| New alert for the test aff | Active   |  Test Title |
