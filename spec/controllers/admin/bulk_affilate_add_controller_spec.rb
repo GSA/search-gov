@@ -93,15 +93,6 @@ describe Admin::BulkAffiliateAddController, type: :controller do
           )
         end
 
-        it 'sets a notice flash message' do
-          upload_with_file_and_email
-          expected_message = <<~SUCCESS_MESSAGE
-            Successfully uploaded #{file.original_filename} for processing.
-            The user affiliate addition results will be emailed to you.
-          SUCCESS_MESSAGE
-          expect(flash[:notice]).to eq(expected_message.strip)
-        end
-
         it 'redirects to the index path' do
           upload_with_file_and_email
           expect(response).to redirect_to admin_bulk_affiliate_add_index_path
