@@ -205,6 +205,11 @@ Rails.application.routes.draw do
         post :upload
       end
     end
+    resources :bulk_affiliate_add, only: :index do
+      collection do
+        post :upload
+      end
+    end
     resources :odie_url_source_update, only: [:index] do
       collection do
         get :affiliate_lookup
