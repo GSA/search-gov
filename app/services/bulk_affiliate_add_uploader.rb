@@ -1,11 +1,6 @@
 class BulkAffiliateAddUploader < BulkUploaderBase
   def initialize(filename, filepath, email_address)
     super(filename, filepath, email_address)
-    @valid_affiliate_names = []
-  end
-
-  def valid_affiliate_names
-    @valid_affiliate_names
   end
 
   private
@@ -27,7 +22,7 @@ class BulkAffiliateAddUploader < BulkUploaderBase
   end
 
   def finalize_results
-    if !@results.errors? && @results.valid_affiliate_names.empty? && @results.processed_count > 0
+    if !@results.errors? && @results.valid_affiliate_ids.empty? && @results.processed_count > 0
       @results.add_general_error('File parsed successfully, but no valid Affiliate names were found.')
     end
 
