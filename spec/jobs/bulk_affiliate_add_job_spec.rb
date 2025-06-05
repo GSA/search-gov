@@ -14,7 +14,7 @@ describe BulkAffiliateAddJob, type: :job do
   let(:results_double) do
     instance_double(BulkUploaderBase::Results,
                     errors?: false,
-                    valid_affiliate_names: [],
+                    valid_affiliate_ids: [],
                     summary_message: 'Parsed.',
                     general_errors: [],
                     error_details: [])
@@ -150,7 +150,7 @@ describe BulkAffiliateAddJob, type: :job do
 
       before do
         allow(results_double).to receive_messages(
-                                   valid_affiliate_names: valid_affiliate_names,
+                                   valid_affiliate_ids: valid_affiliate_names,
                                    errors?: false
                                  )
       end
