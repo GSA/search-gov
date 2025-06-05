@@ -4,15 +4,18 @@
   To bulk add a user to affiliates using a CSV file, follow these instructions:
   %ul.bulk-upload-instructions
     %li Create a plain text file with a .csv extension.
-    %li List one affiliate name per row in the first column. Headers are optional and will be ignored.
-    %li Example format:
+    %li List one affiliate name per row in the first column. Only the affiliate names are required in the file. Headers are optional and will be ignored.
+    %li Example format (valid affiliate names):
     %li
-      %textarea{ rows: 2, readonly: true }
-        Example Affiliate 1
-        Example Affiliate 2
+      %textarea{ rows: 4, readonly: true }
+        Affiliate Name 1
+        Affiliate Name 2
+        Affiliate Name 3
+        Affiliate Name 4
+    %li Ensure that affiliate names match the exact names stored in the system. Names are case-sensitive, and misspelled entries will not be processed.
     %li Save the file on your computer.
     %li Browse for the file using the field below.
-    %li Enter the user’s email address.
+    %li Enter the user’s email address that will be added to these affiliates.
     %li Click "Upload and Queue Additions".
     %li You will receive an email confirmation once the process is complete.
 
