@@ -10,7 +10,7 @@ class Admin::BulkAffiliateAddController < Admin::AdminController
     user_email = params[:email]
 
     unless uploaded_file && user_email.present?
-      flash[:error] = t('flash_messages.admin.bulk_upload.missing_data', action: 'add')
+      flash[:error] = t('flash_messages.admin.bulk_upload.no_file_selected', action: 'add')
       return redirect_to admin_bulk_affiliate_add_index_path
     end
 
