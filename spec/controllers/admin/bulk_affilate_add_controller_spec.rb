@@ -49,7 +49,7 @@ describe Admin::BulkAffiliateAddController, type: :controller do
       context 'when no file is selected' do
         it 'sets an error flash message' do
           upload_without_file
-          expect(flash[:error]).to eq(I18n.t('flash_messages.admin.bulk_upload.missing_data', action: 'add'))
+          expect(flash[:error]).to eq(I18n.t('flash_messages.admin.bulk_upload.no_file_selected', action: 'add'))
         end
 
         it 'redirects to the index path' do
@@ -61,7 +61,7 @@ describe Admin::BulkAffiliateAddController, type: :controller do
       context 'when no email is provided' do
         it 'sets an error flash message' do
           upload_without_email
-          expect(flash[:error]).to eq(I18n.t('flash_messages.admin.bulk_upload.missing_data', action: 'add'))
+          expect(flash[:error]).to eq(I18n.t('flash_messages.admin.bulk_upload.no_file_selected', action: 'add'))
         end
 
         it 'redirects to the index path' do
