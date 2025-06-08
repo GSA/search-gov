@@ -192,5 +192,31 @@ describe BulkAffiliateAddUploader do
         expect(results.summary_message).to eq("File parsing partially completed. 1 valid ID(s) found, 1 row(s) had errors. Deletion job proceeding. Check email for final results.")
       end
     end
+
+    context 'when the file contains valid names but no matching Affiliates exist' do
+      let(:csv_content) do
+        <<~CSV
+          NonExistentAffiliate1
+          NonExistentAffiliate2
+        CSV
+      end
+
+      before do
+        allow(Affiliate).to receive(:exists?).with(name: 'NonExistentAffiliate1').and_return(false)
+        allow(Affiliate).to receive(:exists?).with(name: 'NonExistentAffiliate2').and_return(false)
+      end
+
+      it 'processes all rows' do
+        expect(results.processed_count).to eq(2)
+      end
+
+      it 'does not identify any valid affiliate names' do
+        expect(results.valid_affiliate_ids).to be_empty
+      end
+
+      it 'reports a general error for no valid Affiliate names found' do
+        expect(results.general_errors).to contain_exactly('File parsed successfully, but no valid Affiliate names were found.')
+      end
+    end
   end
 end

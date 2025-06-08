@@ -22,8 +22,10 @@ class BulkAffiliateAddUploader < BulkUploaderBase
   end
 
   def finalize_results
-    if !@results.errors? && @results.valid_affiliate_ids.empty? && @results.processed_count > 0
-      @results.add_general_error('File parsed successfully, but no valid Affiliate names were found.')
+    if @results.valid_affiliate_ids.empty? && @results.processed_count > 0
+      if !@results.errors? || @results.failed_count == @results.processed_count
+        @results.add_general_error('File parsed successfully, but no valid Affiliate names were found.')
+      end
     end
 
     @results.summary_message
