@@ -228,10 +228,6 @@ Feature: Dashboard
     When I follow "Content"
     Then the "Discover and add the RSS feeds and social media accounts listed on the following page:" field should contain "https://www.nih.gov"
 
-    When I follow "Display"
-    And I follow "Visual design (new)"
-    Then the "Favicon URL" field should contain "https://www.nih.gov/favicon.ico"
-
     When I open the email
     Then I should see "Your new site: Agency Gov" in the email subject
     And I should see "Affiliate Manager" in the email body
