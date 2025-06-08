@@ -7,9 +7,9 @@ class BulkAffiliateAddJob < ApplicationJob
     uploader = BulkAffiliateAddUploader.new(file_name, temp_file.path, email_address)
     results = uploader.parse_file
 
-    if results.errors? || results.valid_affiliate_names.empty?
+    if results.errors? || results.valid_affiliate_ids.empty?
       Rails.logger.warn <<~WARN.squish
-        BulkAffiliateAddJob: Parsing failed or no valid names found for #{file_name}.
+        BulkAffiliateAddJob: Parsing failed or no valid IDs found for #{file_name}.
         User: #{requesting_user_email}.
         Summary: #{results.summary_message}.
         General Errors: #{results.general_errors.join('; ')}.
@@ -28,7 +28,7 @@ class BulkAffiliateAddJob < ApplicationJob
 
     added_sites = []
     failed_additions = []
-    affiliate_names_to_process = results.valid_affiliate_names
+    affiliate_ids_to_process = results.valid_affiliate_ids
 
     user = User.find_by_email(email_address)
     if user.nil?
@@ -36,23 +36,23 @@ class BulkAffiliateAddJob < ApplicationJob
       return
     end
 
-    affiliate_names_to_process.each do |name|
-      affiliate = Affiliate.find_by_name(name)
+    affiliate_ids_to_process.each do |affiliate_name|
+      affiliate = Affiliate.find_by_name(affiliate_name)
       if affiliate
         unless affiliate.users.exists?(id: user.id)
           begin
             user.add_to_affiliate(affiliate, 'Bulk upload script')
-            added_sites << name
+            added_sites << affiliate_name
           rescue StandardError => e
-            failed_additions << [name, e.message]
-            logger.error "BulkAffiliateAddJob: Failed to add user to Affiliate #{name}: #{e.message}"
+            failed_additions << [affiliate_name, e.message]
+            logger.error "BulkAffiliateAddJob: Failed to add user to Affiliate #{affiliate_name}: #{e.message}"
           end
         else
-          failed_additions << [name, "User already a member."]
+          failed_additions << [affiliate_name, "User already a member."]
         end
       else
-        failed_additions << [name, "Not Found"]
-        logger.warn "BulkAffiliateAddJob: Affiliate #{name} not found."
+        failed_additions << [affiliate_name, "Not Found"]
+        Rails.logger.warn "BulkAffiliateAddJob: Affiliate #{affiliate_name} not found."
       end
     end
 

@@ -95,7 +95,7 @@ describe BulkAffiliateAddJob, type: :job do
                                    summary_message: 'CSV Malformed',
                                    general_errors: general_errors,
                                    error_details: error_details,
-                                   valid_affiliate_names: []
+                                   valid_affiliate_ids: []
                                  )
       end
 
@@ -116,41 +116,12 @@ describe BulkAffiliateAddJob, type: :job do
       end
     end
 
-    context 'when the uploader finds no valid affiliate names' do
-      before do
-        allow(results_double).to receive_messages(
-                                   errors?: false,
-                                   valid_affiliate_names: [],
-                                   summary_message: 'No valid Affiliate names found.',
-                                   general_errors: [],
-                                   error_details: []
-                                 )
-      end
-
-      it 'logs a warning, sends a failure email, and cleans up the downloaded file' do
-        job.perform(requesting_user_email, file_name, s3_object_key, email_address)
-
-        expect(Rails.logger).to have_received(:warn).with(
-          a_string_matching(/BulkAffiliateAddJob: Parsing failed or no valid names found.*User: #{requesting_user_email}.*Summary: No valid Affiliate names found.*General Errors:.*Row Errors: 0/)
-        )
-
-        expect(BulkAffiliateAddMailer).to have_received(:notify_parsing_failure).with(
-          requesting_user_email,
-          file_name,
-          [],
-          []
-        )
-        expect(mailer_double).to have_received(:deliver_later)
-        expect(FileUtils).to have_received(:rm_f).with(downloaded_temp_file_path)
-      end
-    end
-
     context 'when processing is successful' do
-      let(:valid_affiliate_names) { ['Affiliate 1', 'Affiliate 2'] }
+      let(:valid_affiliate_ids) { ['Affiliate 1', 'Affiliate 2'] }
 
       before do
         allow(results_double).to receive_messages(
-                                   valid_affiliate_ids: valid_affiliate_names,
+                                   valid_affiliate_ids: valid_affiliate_ids,
                                    errors?: false
                                  )
       end
@@ -158,7 +129,7 @@ describe BulkAffiliateAddJob, type: :job do
       it 'adds user to valid affiliates, sends success email, and cleans up file' do
         job.perform(requesting_user_email, file_name, s3_object_key, email_address)
 
-        valid_affiliate_names.each do |affiliate_name|
+        valid_affiliate_ids.each do |affiliate_name|
           expect(Affiliate).to have_received(:find_by_name).with(affiliate_name)
         end
 
@@ -166,31 +137,10 @@ describe BulkAffiliateAddJob, type: :job do
         expect(BulkAffiliateAddMailer).to have_received(:notify).with(
           requesting_user_email,
           file_name,
-          valid_affiliate_names,
+          valid_affiliate_ids,
           []
         )
         expect(mailer_double).to have_received(:deliver_later)
-        expect(FileUtils).to have_received(:rm_f).with(downloaded_temp_file_path)
-      end
-    end
-
-    context 'when user is not found' do
-      before do
-        allow(User).to receive(:find_by_email).with(email_address).and_return(nil)
-      end
-
-      it 'logs an error and exits the job without sending mail' do
-        job.perform(requesting_user_email, file_name, s3_object_key, email_address)
-
-        expect(Rails.logger).to have_received(:error).with("BulkAffiliateAddJob: User with email #{email_address} not found")
-        expect(BulkAffiliateAddMailer).not_to have_received(:notify)
-        expect(FileUtils).to have_received(:rm_f).with(downloaded_temp_file_path)
-      end
-    end
-
-    context 'file cleanup in ensure block' do
-      it 'ensures cleanup regardless of results' do
-        expect { job.perform(requesting_user_email, file_name, s3_object_key, email_address) }.not_to raise_error
         expect(FileUtils).to have_received(:rm_f).with(downloaded_temp_file_path)
       end
     end

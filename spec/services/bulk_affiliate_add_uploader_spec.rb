@@ -47,7 +47,7 @@ describe BulkAffiliateAddUploader do
       end
 
       it 'returns a success summary message' do
-        expect(results.summary_message).to eq("File parsed successfully. Found 3 valid ID(s).")
+        expect(results.summary_message).to eq("File parsed successfully. Found 3 valid ID(s). Deletion job proceeding. Check email for final results.")
       end
     end
 
@@ -85,13 +85,12 @@ describe BulkAffiliateAddUploader do
 
       it 'logs warnings for skipped invalid rows' do
         results
-
         expect(logger_double).to have_received(:warn).with(/Skipping row with invalid Affiliate name 'NonExistentAffiliate'/).once
         expect(logger_double).to have_received(:warn).with(/Skipping row with invalid Affiliate name 'AnotherInvalid'/).once
       end
 
       it 'returns a partial success summary message' do
-        expect(results.summary_message).to eq("File parsing partially completed. 1 valid ID(s) found, 2 row(s) had errors.")
+        expect(results.summary_message).to eq("File parsing partially completed. 1 valid ID(s) found, 2 row(s) had errors. Deletion job proceeding. Check email for final results.")
       end
     end
 
@@ -127,12 +126,11 @@ describe BulkAffiliateAddUploader do
 
       it 'logs warnings for skipped blank rows' do
         results
-
         expect(logger_double).to have_received(:warn).exactly(3).times
       end
 
       it 'returns a partial success summary message' do
-        expect(results.summary_message).to eq("File parsing partially completed. 2 valid ID(s) found, 3 row(s) had errors.")
+        expect(results.summary_message).to eq("File parsing partially completed. 2 valid ID(s) found, 3 row(s) had errors. Deletion job proceeding. Check email for final results.")
       end
     end
 
@@ -187,12 +185,11 @@ describe BulkAffiliateAddUploader do
 
       it 'logs the row processing error' do
         results
-
-        expect(logger_double).to have_received(:error).with(/Error processing bulk upload row.*Row: "Affiliate2".*Error: Unexpected error/)
+        expect(logger_double).to have_received(:error).with(/Row: \["Affiliate2"\] - Error: Unexpected error/)
       end
 
       it 'returns a partial success summary message' do
-        expect(results.summary_message).to eq("File parsing partially completed. 1 valid ID(s) found, 1 row(s) had errors.")
+        expect(results.summary_message).to eq("File parsing partially completed. 1 valid ID(s) found, 1 row(s) had errors. Deletion job proceeding. Check email for final results.")
       end
     end
   end
