@@ -4,7 +4,7 @@ Feature: Clicks and Queries stats
   I want to see top clicked URLs, the queries that led to them, and the clicked URLs that came from those queries
 
   Scenario: Viewing the Site's Analytics
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name    | contact_email | first_name   | last_name | use_redesigned_results_page |
       | aff site     | aff.gov | aff@bar.gov   | John         | Bar       | false                       |
     And I am logged in with email "aff@bar.gov"
