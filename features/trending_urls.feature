@@ -5,7 +5,7 @@ Feature: Trending URLs Snapshot
 
   Scenario: Viewing the trending URLs page when data is available
     Given I am logged in with email "affiliate_admin@fixtures.org"
-    And the following Affiliates exist:
+    And the following BingV7 Affiliates exist:
     | name           | display_name     | contact_email | first_name | last_name | use_redesigned_results_page |
     | aff1           | bureau.gov       | two@bar.gov   | Two        | Bar       | false                       |
     | aff2           | otheraff.govy    | two@bar.gov   | Two        | Bar       | false                       |

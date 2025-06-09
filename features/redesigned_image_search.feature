@@ -5,7 +5,7 @@ Feature: Image search - redesign
 
   @javascript @a11y
   Scenario: English Image search
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name   | contact_email | first_name | last_name | domains        |
       | USA.gov      | usagov | aff@bar.gov   | John       | Bar       | whitehouse.gov |
     When I am on usagov's redesigned image search page
