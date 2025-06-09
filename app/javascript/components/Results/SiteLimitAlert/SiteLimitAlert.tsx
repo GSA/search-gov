@@ -29,9 +29,7 @@ export const SiteLimitAlert = ({ sitelimit, url, query }: SiteLimitAlertProps) =
                 {i18n.t('searches.siteLimits.includingResultsForQueryFromMatchingSites', { query, matching_sites: sitelimit })}
               </div>
               <div className='sitelimit-search-instead-for'>
-                {
-                  parse(i18n.t('searches.siteLimits.doYouWantToSeeResultsFor', { query_from_all_sites: query_from_all_sites() }))
-                }
+                {i18n.t('searches.siteLimits.doYouWantToSeeResultsFor', { query_from_all_sites: query_from_all_sites() })}
               </div>
             </div>
           </Grid>
