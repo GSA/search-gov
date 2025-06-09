@@ -6,6 +6,13 @@ import parse from 'html-react-parser';
 
 import './SiteLimitAlert.css';
 
+// HTML escape function to prevent XSS
+const escapeHtml = (text: string): string => {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+};
+
 interface SiteLimitAlertProps {
   sitelimit: string;
   url: string;
@@ -15,8 +22,10 @@ interface SiteLimitAlertProps {
 export const SiteLimitAlert = ({ sitelimit, url, query }: SiteLimitAlertProps) => {
   const i18n = useContext(LanguageContext);
 
-  const query_from_all_sites = () => {
-    return `<a class='usa-link' href=${url}>${i18n.t('searches.siteLimits.queryFromAllSites', { query })}</a>`;
+  const createSafeQueryLink = () => {
+    const escapedQuery = escapeHtml(query);
+    const linkText = i18n.t('searches.siteLimits.queryFromAllSites', { query: escapedQuery });
+    return `<a class='usa-link' href='${url}'>${linkText}</a>`;
   };
 
   return (
@@ -29,7 +38,7 @@ export const SiteLimitAlert = ({ sitelimit, url, query }: SiteLimitAlertProps) =
                 {i18n.t('searches.siteLimits.includingResultsForQueryFromMatchingSites', { query, matching_sites: sitelimit })}
               </div>
               <div className='sitelimit-search-instead-for'>
-                {i18n.t('searches.siteLimits.doYouWantToSeeResultsFor', { query_from_all_sites: query_from_all_sites() })}
+                { parse(i18n.t('searches.siteLimits.doYouWantToSeeResultsFor', { query_from_all_sites: createSafeQueryLink() })) }
               </div>
             </div>
           </Grid>
