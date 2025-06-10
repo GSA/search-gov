@@ -1,0 +1,19 @@
+%p
+  %strong Bulk Affiliate Addition Process Completed
+%p The request to add a user to affiliates via CSV upload has been processed.
+
+- if @added_sites.any?
+  %p Successfully Added to the Following Affiliates:
+  %ul
+    - @added_sites.each do |site|
+      %li= site
+- else
+  %p No affiliates were successfully added for the user.
+
+- if @failed_additions.any?
+  %p Failed to Add to the Following Affiliates:
+  %ul
+    - @failed_additions.each do |site, err|
+      %li= "#{site}: #{err}"
+
+%p If you have any questions, please contact support.

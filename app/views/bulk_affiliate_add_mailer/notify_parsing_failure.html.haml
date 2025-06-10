@@ -1,0 +1,23 @@
+%p
+  %strong Bulk Affiliate Addition Processing Failed
+%p
+  The request to add affiliates via CSV upload for file
+  %strong= @file_name
+  failed during the initial parsing stage. No affiliations were created.
+
+- if @general_errors.any?
+  %p General Errors:
+  %ul
+    - @general_errors.each do |err|
+      %li= err
+
+- if @error_details.any?
+  %p Row-specific Errors (#{@error_details.count}):
+  %ul
+    - @error_details.each do |detail|
+      - identifier = detail[:identifier].presence || 'N/A'
+      - error_msg = detail[:error]
+      %li= "Identifier '#{identifier}': #{error_msg}"
+
+%p Please review the errors, correct your CSV file, and try uploading again.
+%p If you continue to experience issues, please contact support.
