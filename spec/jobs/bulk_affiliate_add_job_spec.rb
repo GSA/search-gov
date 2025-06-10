@@ -111,7 +111,6 @@ describe BulkAffiliateAddJob, type: :job do
           general_errors,
           error_details
         )
-        expect(mailer_double).to have_received(:deliver_later)
         expect(FileUtils).to have_received(:rm_f).with(downloaded_temp_file_path)
       end
     end

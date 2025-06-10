@@ -22,8 +22,6 @@ class BulkAffiliateAddJob < ApplicationJob
         results.general_errors,
         results.error_details
       ).deliver_later
-
-      return
     end
 
     added_sites = []
@@ -33,7 +31,6 @@ class BulkAffiliateAddJob < ApplicationJob
     user = User.find_by_email(email_address)
     if user.nil?
       Rails.logger.error "BulkAffiliateAddJob: User with email #{email_address} not found"
-      return
     end
 
     affiliate_ids_to_process.each do |affiliate_name|
