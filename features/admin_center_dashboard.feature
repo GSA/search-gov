@@ -19,7 +19,7 @@ Feature: Dashboard
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org"
     When I go to the sites page
     Then I should see "Add a New Site"
-    
+
   Scenario: Viewing a site after logging in
     Given I am logged in with email "affiliate_manager@fixtures.org"
     When I go to the usagov's Dashboard page
@@ -230,7 +230,7 @@ Feature: Dashboard
 
     When I follow "Display"
     And I follow "Visual design (new)"
-    Then the "Favicon URL" field should contain "https://www.nih.gov/favicon.ico"
+    Then the "Favicon URL" field should contain "http://www.nih.gov/themes/custom/nih2_uswds/assets/img/favicons/custom/favicon-192x192.png"
 
     When I open the email
     Then I should see "Your new site: Agency Gov" in the email subject

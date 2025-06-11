@@ -8,7 +8,7 @@ Feature: Manage Content
     And I should see a link to "Content Overview" in the active site sub navigation
 
   Scenario: View best bets graphics
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And the following featured collections exist for the affiliate "agency.gov":
@@ -28,7 +28,7 @@ Feature: Manage Content
     And I should see "Status: Inactive"
 
   Scenario: Filtering best bets graphics
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And the following featured collections exist for the affiliate "agency.gov":
@@ -51,7 +51,7 @@ Feature: Manage Content
     Then I should be on the agency.gov's Best Bets Graphics page
 
   Scenario: Add/edit/remove best bets graphics
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
@@ -118,7 +118,7 @@ Feature: Manage Content
     Then I should see "You have removed 2011 Atlantic Hurricane Season from this site"
 
   Scenario: View best bets texts
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     When the following Boosted Content entries exist for the affiliate "agency.gov"
@@ -135,7 +135,7 @@ Feature: Manage Content
     And I should see "Published between 08/01/2013 and 01/01/2022"
 
   Scenario: Filtering best bets texts
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     When the following Boosted Content entries exist for the affiliate "agency.gov"
@@ -157,7 +157,7 @@ Feature: Manage Content
     Then I should be on the agency.gov's Best Bets Texts page
 
   Scenario: Add/edit/remove best bets texts
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
@@ -196,7 +196,7 @@ Feature: Manage Content
     Then I should see "You have removed Release for Week Ending June 21, 2013 from this site"
 
   Scenario: Bulk upload best bets texts
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
@@ -209,7 +209,7 @@ Feature: Manage Content
     And I should see "1 Text Best Bet was not uploaded. Please ensure the URLs are properly formatted, including the http:// or https:// prefix."
 
   Scenario: View Collections
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   |first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John      | Bar       | false                       |
     And affiliate "agency.gov" has the following document collections:
@@ -227,7 +227,7 @@ Feature: Manage Content
     And I should find "agency3.gov/blog/" in the Collection URL Prefixes modal
 
   Scenario: Add/edit/remove Collection
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
@@ -264,7 +264,7 @@ Feature: Manage Content
     Then I should see "You have removed News and Blog from this site"
 
   Scenario: View Routed Queries
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And affiliate "agency.gov" has the following routed queries:
@@ -279,7 +279,7 @@ Feature: Manage Content
       | Disable Rails Asset Compression |
 
   Scenario: Add/Edit/Remove Routed Query
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name    | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar          | false                       |
     And I am logged in with email "john@agency.gov"
@@ -307,7 +307,7 @@ Feature: Manage Content
     Then I should see "You have removed query routing for the following search term: 'moar money'"
 
   Scenario: View domains
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     When the following "site domains" exist for the affiliate agency.gov:
@@ -327,7 +327,7 @@ Feature: Manage Content
     Then the "Discover and add the RSS feeds and social media accounts listed on the following page:" field should be empty
 
   Scenario: Add/edit/remove domains
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
@@ -350,7 +350,7 @@ Feature: Manage Content
     Then I should see "You have removed gobiernousa.gov from this site"
 
   Scenario: View i14y drawers
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | gets_i14y_results | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | true              | false                       |
     And the following "i14y drawers" exist for the affiliate agency.gov:
@@ -377,7 +377,7 @@ Feature: Manage Content
     And I should not see "document 1"
 
   Scenario: Add/edit/remove i14y drawers
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | gets_i14y_results | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | true              | false                       |
     And we don't want observers to run during these cucumber scenarios
@@ -404,7 +404,7 @@ Feature: Manage Content
     And we want observers to run during the rest of these cucumber scenarios
 
   Scenario: Sharing i14y drawers
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name        | contact_email    | first_name | last_name | gets_i14y_results | use_redesigned_results_page |
       | agency site  | agency.gov  | john@agency.gov  | John Bar   | bar       | true              | false                       |
       | another site | another.gov | jane@another.gov | Jane Bar   | bar       | true              | false                       |
@@ -424,7 +424,7 @@ Feature: Manage Content
     And we want observers to run during the rest of these cucumber scenarios
 
   Scenario: View Filter URLs
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And the following Excluded URLs exist for the site "agency.gov":
@@ -438,7 +438,7 @@ Feature: Manage Content
       | aff.gov/bad-url2 |
 
   Scenario: Add/remove Filter URL
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
@@ -453,7 +453,7 @@ Feature: Manage Content
     Then I should see "You have removed agency.gov/exclude-me.html from this site"
 
   Scenario: Add/remove Filter Tag
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | gets_i14y_results | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | true              | false                       |
     And I am logged in with email "john@agency.gov"
@@ -482,7 +482,7 @@ Feature: Manage Content
     Then I should see "Tag has already been taken"
 
   Scenario: View Flickr URLs
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     When the following flickr URLs exist for the site "agency.gov":
@@ -497,7 +497,7 @@ Feature: Manage Content
       | www.flickr.com/photos/whitehouse/ |
 
   Scenario: Add/remove Flickr URL
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
@@ -511,7 +511,7 @@ Feature: Manage Content
     Then I should see "You have removed www.flickr.com/groups/usagov/ from this site"
 
   Scenario: View RSS
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And affiliate "agency.gov" has the following RSS feeds:
@@ -538,7 +538,7 @@ Feature: Manage Content
     Then I should find "404 Not Found" in the RSS URL last crawl status error message
 
   Scenario: Add/edit/remove RSS Feed
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
@@ -569,7 +569,7 @@ Feature: Manage Content
     Then I should see "You have removed Food, Safety and Pet Health Recalls from this site"
 
   Scenario: Edit/remove Supplemental Feed
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
@@ -587,7 +587,7 @@ Feature: Manage Content
     Then I should see "You have removed your supplemental feed from this site"
 
   Scenario: View Supplemental URLs
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And the following IndexedDocuments exist:
@@ -604,7 +604,7 @@ Feature: Manage Content
     Then I should find "404 Not Found" in the Supplemental URL last crawl status error message
 
   Scenario: Filtering Supplemental URLs
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And the following IndexedDocuments exist:
@@ -626,7 +626,7 @@ Feature: Manage Content
     Then I should be on the agency.gov's Supplemental URLs page
 
   Scenario: Add/edit/remove Supplemental URL
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
@@ -648,7 +648,7 @@ Feature: Manage Content
     Then I should see "You have removed search.gov/developer/jobs.html from this site"
 
   Scenario: View YouTube Channels
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And the following YouTube channels exist for the site "agency.gov":
@@ -663,7 +663,7 @@ Feature: Manage Content
       | USGovernment |
 
   Scenario: Add/remove YouTube Channel
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
