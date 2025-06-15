@@ -115,6 +115,68 @@ describe BulkAffiliateAddJob, type: :job do
       end
     end
 
+    context 'when the user is not found' do
+      let(:valid_affiliate_ids) { ['Affiliate 1'] }
+      let(:error_message) { "User with email '#{email_address}' not found. No affiliates were processed." }
+
+      before do
+        allow(results_double).to receive(:valid_affiliate_ids).and_return(valid_affiliate_ids)
+        allow(User).to receive(:find_by_email).with(email_address).and_return(nil)
+      end
+
+      it 'logs an error and sends a failure notification' do
+        job.perform(requesting_user_email, file_name, s3_object_key, email_address)
+
+        expect(BulkAffiliateAddMailer).to have_received(:notify_parsing_failure).with(
+          requesting_user_email,
+          file_name,
+          [error_message],
+          []
+        )
+        expect(mailer_double).to have_received(:deliver_later)
+        expect(BulkAffiliateAddMailer).not_to have_received(:notify)
+        expect(FileUtils).to have_received(:rm_f).with(downloaded_temp_file_path)
+      end
+    end
+
+    context 'when processing affiliates has mixed results' do
+      let(:valid_affiliate_ids) { ['Existing Site', 'Not Found Site', 'Already Member Site', 'Error Site'] }
+      let(:existing_affiliate) { instance_double(Affiliate, name: 'Existing Site', users: double('users', exists?: false)) }
+      let(:already_member_affiliate) { instance_double(Affiliate, name: 'Already Member Site', users: double('users', exists?: true)) }
+      let(:error_affiliate) { instance_double(Affiliate, name: 'Error Site', users: double('users', exists?: false)) }
+
+      before do
+        allow(results_double).to receive(:valid_affiliate_ids).and_return(valid_affiliate_ids)
+
+        allow(Affiliate).to receive(:find_by_name).with('Existing Site').and_return(existing_affiliate)
+        allow(Affiliate).to receive(:find_by_name).with('Not Found Site').and_return(nil)
+        allow(Affiliate).to receive(:find_by_name).with('Already Member Site').and_return(already_member_affiliate)
+        allow(Affiliate).to receive(:find_by_name).with('Error Site').and_return(error_affiliate)
+
+        allow(user_double).to receive(:add_to_affiliate).with(existing_affiliate, 'Bulk upload script')
+        allow(user_double).to receive(:add_to_affiliate).with(error_affiliate, 'Bulk upload script').and_raise(StandardError, 'Something went wrong')
+      end
+
+      it 'correctly categorizes added and failed sites' do
+        job.perform(requesting_user_email, file_name, s3_object_key, email_address)
+
+        expect(user_double).to have_received(:add_to_affiliate).once.with(existing_affiliate, 'Bulk upload script')
+        expect(Rails.logger).to have_received(:warn).with("BulkAffiliateAddJob: Affiliate Not Found Site not found.")
+        expect(Rails.logger).to have_received(:error).with("BulkAffiliateAddJob: Failed to add user to Affiliate Error Site: Something went wrong")
+
+        expect(BulkAffiliateAddMailer).to have_received(:notify).with(
+          requesting_user_email,
+          file_name,
+          ['Existing Site'],
+          a_collection_containing_exactly(
+            ['Not Found Site', 'Not Found'],
+            ['Already Member Site', 'User already a member.'],
+            ['Error Site', 'Something went wrong']
+          )
+        )
+      end
+    end
+
     context 'when processing is successful' do
       let(:valid_affiliate_ids) { ['Affiliate 1', 'Affiliate 2'] }
 
