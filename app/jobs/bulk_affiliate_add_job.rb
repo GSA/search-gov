@@ -31,8 +31,7 @@ class BulkAffiliateAddJob < ApplicationJob
     user = User.find_by_email(email_address)
     if user.nil?
       error_message = "User with email '#{email_address}' not found. No affiliates were processed."
-      p "BulkAffiliateAddJob: #{error_message}"
-      p "---- requestor email: #{requesting_user_email}"
+      Rails.logger.error "BulkAffiliateAddJob: #{error_message}"
       BulkAffiliateAddMailer.notify_parsing_failure(
         requesting_user_email,
         file_name,
