@@ -4,7 +4,7 @@ Feature: ODIE URL Source Update
   I want to update the source of all of a specific affiliate's indexed documents from rss to manual
 
   Scenario: Bulk updating indexed document source as an admin
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name   | contact_email                  | use_redesigned_results_page |
       | USA.gov      | usagov | affiliate_admin@fixtures.org   | false                       |
     Given I am logged in with email "affiliate_admin@fixtures.org"
