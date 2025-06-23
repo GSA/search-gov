@@ -38,10 +38,8 @@ class Affiliate < ApplicationRecord
     assoc.has_many :excluded_urls
     assoc.has_many :featured_collections
     assoc.has_many(:features, through: :affiliate_feature_addition)
-    assoc.has_many :flickr_profiles, -> { order 'flickr_profiles.url ASC' },
-                   inverse_of: :affiliate
+
     assoc.has_many :i14y_memberships
-    assoc.has_one :image_search_label
     assoc.has_many :indexed_documents
     assoc.has_many :memberships
     assoc.has_many :navigations,
@@ -191,11 +189,10 @@ class Affiliate < ApplicationRecord
                 :managed_no_results_pages_alt_links_attributes
 
   accepts_nested_attributes_for :site_domains, reject_if: :all_blank
-  accepts_nested_attributes_for :image_search_label
   accepts_nested_attributes_for :rss_feeds
   accepts_nested_attributes_for :document_collections, reject_if: :all_blank
   accepts_nested_attributes_for :connections, allow_destroy: true, reject_if: proc { |a| a[:affiliate_name].blank? and a[:label].blank? }
-  accepts_nested_attributes_for :flickr_profiles, allow_destroy: true
+
   accepts_nested_attributes_for :primary_header_links, :secondary_header_links, :footer_links, :identifier_links, allow_destroy: true, reject_if: :empty_link?
 
   USAGOV_AFFILIATE_NAME = 'usagov'

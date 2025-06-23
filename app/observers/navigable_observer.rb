@@ -1,6 +1,6 @@
 class NavigableObserver < ActiveRecord::Observer
   DEFAULT_POSITION_AND_IS_ACTIVE_FLAG = [100, false]
-  observe :image_search_label, :document_collection, :rss_feed
+  observe :document_collection, :rss_feed
 
   def after_create(model)
     position, is_active = DEFAULT_POSITION_AND_IS_ACTIVE_FLAG
