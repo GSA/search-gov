@@ -20,10 +20,7 @@ module NavigationHelpers
       search_path(:affiliate => $1, :query => "<b>#{$2}</b><script>script</script>")
     when /^(.*)'s search page with site limited to "([^"]*)"$/
       search_path(:affiliate => $1, :sitelimit => $2)
-    when /^(.*)'s image search page$/
-      image_search_path(:affiliate => $1)
-    when /^(.*)'s redesigned image search page$/
-      image_search_path(:affiliate => $1, :redesign => 'true')
+
     when /^(.*)'s news search page$/
       news_search_path(:affiliate => $1)
     when /^(.*)'s redesigned news search page$/

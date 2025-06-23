@@ -199,17 +199,6 @@ describe SiteCloner do
       end
     end
 
-    it 'copies the Flickr profiles' do
-      expect(cloned_site.flickr_profiles.count).to eq(1)
-
-      origin_site.flickr_profiles.each_with_index do |fp, index|
-        cloned_fp = cloned_site.flickr_profiles[index]
-        expect(cloned_fp.profile_id).to eq(fp.profile_id)
-        expect(cloned_fp.profile_type).to eq(fp.profile_type)
-        expect(cloned_fp.url).to eq(fp.url)
-      end
-    end
-
     context 'when the origin site has i14y memberships' do
       before do
         origin_site.i14y_memberships.create!(i14y_drawer: i14y_drawers(:one))
@@ -218,23 +207,6 @@ describe SiteCloner do
       it 'copies the i14y drawers' do
         expect(cloned_site.i14y_drawers.count).to eq(1)
         expect(cloned_site.i14y_drawers.pluck(:handle)).to eq(origin_site.i14y_drawers.pluck(:handle))
-      end
-    end
-
-    context 'when the origin site has image search label with customized attributes' do
-      before do
-        origin_site.image_search_label.update!(name: 'my images')
-        origin_site.image_search_label.navigation.update!(is_active: true)
-      end
-
-      it 'copies image search label' do
-        actual_label = cloned_site.image_search_label
-        expected_label = origin_site.image_search_label
-        expect(actual_label.name).to eq(expected_label.name)
-
-        actual_nav_attrs = actual_label.navigation.attributes.slice(*nav_attr_keys)
-        expected_nav_attrs = expected_label.navigation.attributes.slice(*nav_attr_keys)
-        expect(actual_nav_attrs).to eq(expected_nav_attrs)
       end
     end
 

@@ -44,15 +44,7 @@ describe NavigationsHelper do
   describe '#filter_navigations' do
     before do
       expect(affiliate).to receive(:has_social_image_feeds?).and_return(false)
-      expect(affiliate).to receive(:navigations).and_return([image_nav, media_nav, press_nav])
-    end
-
-    let(:image_search_label) { mock_model(ImageSearchLabel, name: 'Images') }
-
-    let(:image_nav) do
-      mock_model(Navigation,
-                 navigable: image_search_label,
-                 navigable_type: image_search_label.class.name)
+      expect(affiliate).to receive(:navigations).and_return([media_nav, press_nav])
     end
 
     let(:media_nav) do

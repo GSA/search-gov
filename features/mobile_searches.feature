@@ -393,12 +393,12 @@ Feature: Searches using mobile device
       | Apps                 | https://www.data.gov    | 2        | true         |
       | Inactive site search | http://apps.usa.gov/    | 6        | false        |
     And affiliate "en.agency.gov" has the following RSS feeds:
-      | name                 | url                                | is_navigable | position | show_only_media_content | oasis_mrss_name |
-      | Articles             | http://en.agency.gov/feed/articles | true         | 1        | false                   |                 |
-      | Blog                 | http://en.agency.gov/feed/blog     | true         | 3        | false                   |                 |
-      | Media RSS            | http://en.agency.gov/feed/images   | true         | 4        | true                    | 100             |
-      | Inactive news search | http://en.agency.gov/feed/news1    | false        | 5        | false                   |                 |
-      | News                 | http://en.agency.gov/feed/news2    | true         | 7        | false                   |                 |
+      | name                 | url                                | is_navigable | position | show_only_media_content |
+      | Articles             | http://en.agency.gov/feed/articles | true         | 1        | false                   |
+      | Blog                 | http://en.agency.gov/feed/blog     | true         | 3        | false                   |
+      | Media RSS            | http://en.agency.gov/feed/images   | true         | 4        | true                    |
+      | Inactive news search | http://en.agency.gov/feed/news1    | false        | 5        | false                   |
+      | News                 | http://en.agency.gov/feed/news2    | true         | 7        | false                   |
     And there are 10 news items for "News"
 
     When I am on en.agency.gov's search page

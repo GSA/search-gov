@@ -6,11 +6,10 @@ Feature: Manage Display
     And I am logged in with email "john@agency.gov"
 
     When affiliate "agency.gov" has the following RSS feeds:
-      | name   | url                    | show_only_media_content | position | oasis_mrss_name |
-      | Photos | www.dma.mil/photos.xml | true                    | 101      | 1               |
+      | name   | url                    | show_only_media_content | position |
+      | Photos | www.dma.mil/photos.xml | true                    | 101      |
     And I go to the agency.gov's Manage Display page
-    Then I should see "Image Search Label 0"
-    And I should not see "Rss Feed 1"
+    Then I should not see "Rss Feed 1"
 
     When affiliate "agency.gov" has the following RSS feeds:
       | name   | url                    | show_only_media_content | position |

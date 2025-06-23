@@ -40,8 +40,6 @@ module MobileNavigationsHelper
     case search
       when is_default_search?(search)
         nil
-      when ImageSearch
-        search.affiliate.image_search_label
       when I14ySearch
         search.collection
       when SiteSearch
@@ -91,8 +89,6 @@ module MobileNavigationsHelper
 
   def navigable_path(navigable, search, search_params)
     case navigable
-      when ImageSearchLabel
-        path_for_image_search(search_params, search.query)
       when DocumentCollection
         path_for_document_collection_search(search_params, navigable, search.query)
       when RssFeed

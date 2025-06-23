@@ -16,9 +16,8 @@ module MobileSearchHelper
   end
 
   def extra_pagination_params(search)
-    if search.is_a?(ImageSearch) && search.module_tag == 'IMAG'
-      { cr: true }
-    end
+    # Image search functionality removed
+    nil
   end
 
   def eligible_for_commercial_results?(search)
@@ -26,8 +25,6 @@ module MobileSearchHelper
     return unless is_last_page
 
     case search
-      when ImageSearch
-        search.module_tag == 'OASIS'
       when BlendedSearch
         search.affiliate.gets_commercial_results_on_blended_search?
       else

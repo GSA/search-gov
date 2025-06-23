@@ -16,8 +16,6 @@ class SiteCloner
     clone_boosted_contents(cloned_site)
     clone_document_collections(cloned_site)
     clone_featured_collections(cloned_site)
-    clone_flickr_profiles(cloned_site)
-    clone_image_search_label(cloned_site)
     clone_routed_queries(cloned_site)
     clone_rss_feeds(cloned_site)
     clone_site_feed_url(cloned_site)
@@ -48,13 +46,6 @@ class SiteCloner
                        :site_domains)
   end
 
-  def clone_image_search_label(cloned_site)
-    origin_label = @origin_site.image_search_label
-    cloned_label = cloned_site.image_search_label
-    cloned_label.update!(name: origin_label.name)
-    copy_navigation_attributes(origin_label.navigation, cloned_label.navigation)
-  end
-
   def clone_boosted_contents(cloned_site)
     clone_association_with_children(@origin_site,
                                     cloned_site,
@@ -78,13 +69,6 @@ class SiteCloner
                                     :featured_collections,
                                     :featured_collection_keywords,
                                     :featured_collection_links)
-  end
-
-  def clone_flickr_profiles(cloned_site)
-    @origin_site.flickr_profiles.map(&:dup).each do |cloned_fp|
-      cloned_fp.affiliate = cloned_site
-      cloned_fp.save(validate: false)
-    end
   end
 
   def clone_memberships(cloned_site)

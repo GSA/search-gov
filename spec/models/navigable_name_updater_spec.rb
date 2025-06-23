@@ -9,10 +9,6 @@ describe NavigableNameUpdater do
       affiliates(:basic_affiliate).update_attribute(:locale, 'kl')
     end
 
-    it 'updates all image search labels except for English/Spanish sites' do
-      expect { navigable_name_updater.update }.to change { ImageSearchLabel.where(name: 'Assit').count }.from(0).to(1)
-    end
-
     context 'when a video feed label is outdated' do
       before { video_feed.update!(name: 'outdated') }
 

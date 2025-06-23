@@ -1,8 +1,0 @@
-#results.images
-  .content-block-item.content-block-item-header
-    %h3.content-heading= search_results_by_text search.module_tag
-  .results-wrapper
-    - search.results.each_with_index do |result, index|
-      = render partial: 'result', locals: { search: search, result: result, position: search.startrecord + index }
-  .content-block-item.content-block-item-footer
-    .content-provider= serp_attribution search.module_tag
