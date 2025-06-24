@@ -81,14 +81,8 @@ module NavigationHelpers
       admin_bulk_url_upload_index_path
     when /the bulk affiliate styles upload admin page/
       admin_bulk_affiliate_styles_upload_index_path
-    when /the odie url source update admin page/
-      admin_odie_url_source_update_index_path
-    when /the odie url source update affiliate lookup page/
-      affiliate_lookup_admin_odie_url_source_update_index_path
-    when /the odie url source update update job page/      
-      update_job_admin_odie_url_source_update_index_path
-    when /^(.*)'s new (flickr|youtube) profile page$/
-      affiliate_social_media_path(Affiliate.find_by_name($1), :profile_type => "#{$2.camelize}Profile")
+    when /^(.*)'s new youtube profile page$/
+      affiliate_social_media_path(Affiliate.find_by_name($1), :profile_type => "YoutubeProfile")
     when /^the (.*)'s Dashboard page$/
       site_path(Affiliate.find_by_name($1))
     when /^the (.*)'s Manage Content page$/

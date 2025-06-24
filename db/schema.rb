@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_06_02_213821) do
+ActiveRecord::Schema[7.1].define(version: 2025_06_13_164324) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -311,13 +311,13 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_02_213821) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "flickr_profiles", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+  create_table "flickr_profiles", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "url"
     t.string "profile_type"
     t.string "profile_id"
     t.integer "affiliate_id"
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["affiliate_id"], name: "index_flickr_profiles_on_affiliate_id"
   end
 
@@ -354,11 +354,11 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_02_213821) do
     t.index ["i14y_drawer_id"], name: "index_i14y_memberships_on_i14y_drawer_id"
   end
 
-  create_table "image_search_labels", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+  create_table "image_search_labels", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "affiliate_id", null: false
     t.string "name", null: false
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["affiliate_id"], name: "index_image_search_labels_on_affiliate_id", unique: true
   end
 
@@ -764,7 +764,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_02_213821) do
     t.index ["id", "imported_at"], name: "index_youtube_profiles_on_id_and_imported_at"
   end
 
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "searchgov_documents", "searchgov_urls"
   add_foreign_key "searchgov_urls", "searchgov_domains"
