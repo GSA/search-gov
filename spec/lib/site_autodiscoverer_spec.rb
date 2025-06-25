@@ -336,18 +336,7 @@ describe SiteAutodiscoverer do
       end
     end
 
-    context 'when the home page has malformed social media URLs' do
-      before do
-        FlickrProfile.delete_all
-        page_with_bad_social_media_urls = Rails.root.join('spec/fixtures/html/home_page_with_bad_social_media_urls.html').read
-        expect(DocumentFetcher).to receive(:fetch).with('https://www.usa.gov').and_return(body: page_with_bad_social_media_urls)
-      end
 
-      it 'should not create the feed' do
-        autodiscoverer.autodiscover_social_media
-        expect(FlickrProfile.count).to be_zero
-      end
-    end
 
     context 'when something goes horribly wrong' do
       before do

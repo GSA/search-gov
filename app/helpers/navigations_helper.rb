@@ -6,9 +6,7 @@ module NavigationsHelper
     items.reject! do |n|
       n.navigable.is_a?(RssFeed) && n.navigable.show_only_media_content?
     end
-    unless site.has_social_image_feeds?
-      items.reject! { |n| n.navigable.is_a?(ImageSearchLabel) }
-    end
+    # Image search functionality removed
     items
   end
 
@@ -20,18 +18,13 @@ module NavigationsHelper
       link_to('YouTube', site_youtube_channels_path(nav.navigable.owner))
     when 'RSS'
       link_to('RSS', edit_site_rss_feed_path(nav.navigable.owner, nav.navigable))
-    when 'ImageSearchLabel'
-      build_image_search_navigable_label nav.navigable
+
     end
   end
 
   def build_image_search_navigable_label(navigable)
     labels = +''
     site = navigable.affiliate
-    if site.flickr_profiles.exists?
-      append_navigation_label labels,
-                              link_to('Flickr', site_flickr_urls_path(site))
-    end
     if site.rss_feeds.mrss.exists?
       append_navigation_label labels,
                               link_to('MRSS', site_rss_feeds_path(site))
@@ -45,6 +38,6 @@ module NavigationsHelper
   end
 
   def render_navigable_field_name_for(navigation)
-    navigation.navigable.instance_of?(ImageSearchLabel) ? navigation.navigable_type.underscore : navigation.navigable_type.underscore.pluralize
+    navigation.navigable_type.underscore.pluralize
   end
 end

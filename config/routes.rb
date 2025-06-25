@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     get '/search/advanced', to: redirect(path: '/search')
   end
   get '/search/advanced' => 'searches#advanced', as: :advanced_search
-  get '/search/images' => 'image_searches#index', as: :image_search
+
   get '/search/docs' => 'searches#docs', as: :docs_search
   get '/search/news' => 'searches#news', as: :news_search
   # Provide some backward compatibility for searchers using the legacy video news search URL
@@ -136,9 +136,7 @@ Rails.application.routes.draw do
                 controller: 'excluded_urls',
                 only: [:index, :new, :create, :destroy]
       resources :tag_filters, only: [:index, :new, :create, :destroy]
-      resources :flickr_urls,
-                controller: 'flickr_profiles',
-                only: [:index, :new, :create, :destroy]
+
       resources :rss_feeds do
         collection { get :new_url }
       end
