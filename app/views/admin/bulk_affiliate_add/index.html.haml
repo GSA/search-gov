@@ -1,0 +1,30 @@
+%h2=@page_title
+
+%p
+  To bulk add a user to affiliates using a CSV file, follow these instructions:
+  %ul.bulk-upload-instructions
+    %li Create a plain text file with a .csv extension.
+    %li List one affiliate name per row in the first column. Only the affiliate names are required in the file. Headers are optional and will be ignored.
+    %li Example format (valid affiliate names):
+    %li
+      %textarea{ rows: 4, readonly: true }
+        Affiliate Name 1
+        Affiliate Name 2
+        Affiliate Name 3
+        Affiliate Name 4
+    %li Ensure that affiliate names match the exact names stored in the system. Names are case-sensitive, and misspelled entries will not be processed.
+    %li Save the file on your computer.
+    %li Browse for the file using the field below.
+    %li Enter the user’s email address that will be added to these affiliates.
+    %li Click "Upload and Queue Additions".
+    %li You will receive an email confirmation once the process is complete.
+
+= form_with url: upload_admin_bulk_affiliate_add_index_path, local: true, multipart: true, class: 'form' do |f|
+  .form-group
+    = f.label :email, "User Email (Required):", class: 'usa-label'
+    = f.text_field :email, required: true, class: 'usa-input'
+  .form-group
+    = f.label :file, "Select CSV file of Affiliate Names:", class: 'usa-label'
+    = f.file_field :file, required: true, accept: '.csv', class: 'usa-file-input'
+  %p
+  = f.submit "Upload and Queue Additions", class: 'usa-button usa-button--secondary'
