@@ -1,0 +1,25 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/search?handles=searchgov&language=en&offset=0&query=api&size=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Authorization:
+      - Basic ZGV2OmRldnB3ZA==
+      Expect:
+      - ''
+  response:
+    status:
+      code: 0
+      message:
+    headers: {}
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Wed, 25 Jun 2025 06:07:24 GMT
+recorded_with: VCR 6.3.1

@@ -1,0 +1,25 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/search?audience=everyone&handles=searchgov&ignore_tags=no%20way,nope&language=en&offset=0&query=api%20%22barack%20obama%22%20-excluded%20(alternative)%20filetype:pdf%20site:nps.gov&size=20&sort_by_date=1&tags=important,must%20have
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Authorization:
+      - Basic ZGV2OmRldnB3ZA==
+      Expect:
+      - ''
+  response:
+    status:
+      code: 0
+      message:
+    headers: {}
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Wed, 25 Jun 2025 06:06:13 GMT
+recorded_with: VCR 6.3.1
