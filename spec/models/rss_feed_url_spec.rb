@@ -36,12 +36,7 @@ describe RssFeedUrl do
         end
       end
 
-      context 'on create' do
-        it 'should enqueue the possible notification to Oasis' do
-          expect(Resque).to receive(:enqueue_with_priority).with(:high, OasisMrssNotification, be_a(Integer))
-          described_class.create!(rss_feed_owner_type: 'Affiliate', url: 'http://bogus.example.gov/feed/blog')
-        end
-      end
+
     end
 
     context 'when the URL does not point to an RSS feed' do

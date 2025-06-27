@@ -2,7 +2,7 @@ class FlickrProfile < ApplicationRecord
   include Dupable
   include FlickrDsl
 
-  attr_accessor :skip_notify_oasis
+
   attr_readonly :url, :profile_type, :profile_id
   belongs_to :affiliate
 
@@ -26,16 +26,11 @@ class FlickrProfile < ApplicationRecord
                           message: 'has already been added',
                           if: Proc.new { |fp| fp.affiliate_id? && fp.profile_type? && fp.profile_id? }
 
-  after_create :notify_oasis,
-               unless: -> { skip_notify_oasis }
+
   scope :users, -> { where(profile_type: 'user') }
   scope :groups, -> { where(profile_type: 'group') }
 
-  def dup
-    dup_instance = super
-    dup_instance.skip_notify_oasis = true
-    dup_instance
-  end
+
 
   private
 
@@ -45,8 +40,5 @@ class FlickrProfile < ApplicationRecord
     self.profile_id = lookup_flickr_profile_id(profile_type, url) if profile_type.present? && profile_id.blank?
   end
 
-  def notify_oasis
-    Oasis.subscribe_to_flickr(self.profile_id, self.url.sub(/\/$/,'').split('/').last, self.profile_type)
-  end
 
 end

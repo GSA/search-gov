@@ -73,29 +73,4 @@ describe 'image_searches/index' do
       expect(rendered).to have_content('no results found')
     end
   end
-
-  describe 'spelling suggestions' do
-    context 'when it is from Oasis' do
-      before do
-        assign(:affiliate, affiliate)
-        results = (1..2).map do |i|
-          Hashie::Mash::Rash.new(title: "title #{i}", url: "http://flickr/#{i}", display_url: "http://flickr/#{i}",
-                           thumbnail: { url: "http://flickr/thumbnail/#{i}" })
-        end
-        allow(results).to receive(:total_pages).and_return(1)
-        @search = double(ImageSearch, commercial_results?: false, query: 'test', affiliate: affiliate, module_tag: 'OASIS',
-                         queried_at_seconds: 1_271_978_870, results: results, startrecord: 1, total: 2, per_page: 20,
-                         page: 1, spelling_suggestion: 'tsetse')
-        assign(:search, @search)
-        assign(:search_params, { affiliate: affiliate.name, query: 'test' })
-        allow(controller).to receive(:controller_name).and_return('image_searches')
-      end
-
-      it 'should have a link to redo search with Oasis spelling correction' do
-        render
-        expect(rendered).to have_selector('a[href="/search/images?affiliate=usagov&query=tsetse"]', text: 'tsetse')
-      end
-    end
-  end
-
 end

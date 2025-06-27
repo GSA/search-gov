@@ -598,33 +598,6 @@ describe Affiliate do
     end
   end
 
-  describe '#has_no_social_image_feeds?' do
-    let(:affiliate) { affiliates(:basic_affiliate) }
-
-    context 'when affiliate has no ASIS profiles' do
-      before do
-        affiliate.flickr_profiles.delete_all
-        affiliate.rss_feeds.mrss.delete_all
-      end
-
-      specify { expect(affiliate).to have_no_social_image_feeds }
-    end
-
-    context 'when affiliate has MRSS feed but the RSS feed URL has no Oasis MRSS name' do
-      before do
-        affiliate.flickr_profiles.delete_all
-        affiliate.rss_feeds.mrss.delete_all
-        feed = affiliate.rss_feeds.build(name: 'mrss', show_only_media_content: true)
-        feed.rss_feed_urls.build(url: 'http://www.defense.gov/news/mrss_leadphotos.xml', last_crawl_status: 'OK',
-                                 oasis_mrss_name: nil, rss_feed_owner_type: 'Affiliate')
-        allow(feed.rss_feed_urls.first).to receive(:url_must_point_to_a_feed).and_return(true)
-        feed.save!
-      end
-
-      specify { expect(affiliate).to have_no_social_image_feeds }
-    end
-  end
-
   describe '#css_property_hash' do
     context 'when theme is custom' do
       let(:css_property_hash) { { title_link_color: '#33ff33', visited_title_link_color: '#0000ff' }.reverse_merge(Affiliate::DEFAULT_CSS_PROPERTIES) }

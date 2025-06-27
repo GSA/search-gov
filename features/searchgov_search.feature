@@ -13,13 +13,6 @@ Feature: SearchGov search
     Then I should see "Please enter a search term in the box above."
     And I should not see "Refine your search"
 
-  Scenario: Image search
-    When I am on epa's image search page
-    When I fill in "query" with "global warming"
-    And I press "Search"
-    Then I should see the browser page titled "global warming - EPA Search Results"
-    And I should see 20 image results
-
   Scenario: Collection search
     Given affiliate "epa" has the following document collections:
       | name | prefixes             |
