@@ -101,7 +101,13 @@ describe SearchesController do
           }
     end
 
-    it { is_expected.to redirect_to 'https://www.usa.gov/search-error' }
+    it { is_expected.to respond_with(:success) }
+    it { is_expected.to render_template(:inactive_affiliate) }
+    it { is_expected.to render_template('layouts/application') }
+
+    it 'sets the correct page title' do
+      expect(assigns[:page_title]).to eq("Search Temporarily Unavailable - #{affiliate.display_name}")
+    end
   end
 
   context 'when searching with non scalar query' do

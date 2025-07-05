@@ -41,6 +41,12 @@ class ApplicationController < ActionController::Base
 
   def set_affiliate
     @affiliate = Affiliate.active.find_by_name(permitted_params[:affiliate])
+
+    if @affiliate.nil?
+      @inactive_affiliate = Affiliate.find_by(name: permitted_params[:affiliate], active: false)
+      return if @inactive_affiliate
+    end
+
     redirect_unless_affiliate
   end
 

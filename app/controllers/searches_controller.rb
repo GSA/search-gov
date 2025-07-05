@@ -16,8 +16,16 @@ class SearchesController < ApplicationController
   include QueryRoutableController
 
   def index
+    if @inactive_affiliate
+      @page_title = "Search Temporarily Unavailable - #{@inactive_affiliate.display_name}"
+      respond_to do |format|
+        format.html { render :inactive_affiliate, layout: 'application' }
+        format.json { render json: { error: "This search affiliate has been turned off" }, status: :service_unavailable }
+      end
+      return
+    end
+
     search_klass, @search_vertical, template = pick_klass_vertical_template
-    # For the SERP redesign, we override the template set in the previous line.
     template = :index_redesign if redesign?
     @search = search_klass.new(@search_options.merge(geoip_info: GeoipLookup.lookup(request.remote_ip)))
     @search.run
