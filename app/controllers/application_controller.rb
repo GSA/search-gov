@@ -57,6 +57,9 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale_based_on_affiliate_locale
+    affiliate_to_use = @affiliate || @inactive_affiliate
+    return if affiliate_to_use.nil?
+
     I18n.locale = @affiliate.locale.to_sym
   end
 
