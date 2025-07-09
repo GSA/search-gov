@@ -3,9 +3,9 @@
 module ResultsHelper
   def search_data(search, search_vertical)
     { data: {
-      affiliate: search&.affiliate&.name,
+      affiliate: search.affiliate&.name,
       vertical: search_vertical,
-      query: search&.query
+      query: search.query
     } }
   end
 
