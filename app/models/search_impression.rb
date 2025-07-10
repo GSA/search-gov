@@ -10,10 +10,10 @@ class SearchImpression
       referrer: UrlParser.redact_query(request.referer),
       user_agent: request.user_agent
     }
-    request_pairs[:diagnostics] = flatten_diagnostics_hash(search.diagnostics)
+    request_pairs[:diagnostics] = flatten_diagnostics_hash(search&.diagnostics)
     hash = request_pairs.merge(time: Time.now.to_fs(:db),
                                vertical: vertical,
-                               modules: search.modules.join('|'),
+                               modules: search&.modules&.join('|'),
                                params: clean_params(params))
 
     impression_logger.info("[Search Impression] #{hash.to_json}")
@@ -36,7 +36,7 @@ class SearchImpression
   end
 
   def self.flatten_diagnostics_hash(diagnostics_hash)
-    diagnostics_hash.keys.sort.map { |k| diagnostics_hash[k].merge(module: k) }
+    diagnostics_hash&.keys&.sort&.map { |k| diagnostics_hash[k].merge(module: k) }
   end
 
   def self.impression_logger
