@@ -43,7 +43,6 @@ describe NavigationsHelper do
 
   describe '#filter_navigations' do
     before do
-      expect(affiliate).to receive(:has_social_image_feeds?).and_return(false)
       expect(affiliate).to receive(:navigations).and_return([image_nav, media_nav, press_nav])
     end
 
