@@ -75,7 +75,7 @@ describe NavigationsHelper do
                                  name: 'myaff') }
 
     it 'returns only the press nav' do
-      expect(helper.filter_navigations(affiliate, affiliate.navigations)).to eq([press_nav])
+      expect(helper.filter_navigations(affiliate.navigations)).to eq([press_nav])
     end
   end
 end
