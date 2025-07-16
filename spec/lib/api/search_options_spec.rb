@@ -92,8 +92,9 @@ describe Api::SearchOptions, type: :model do
       end
 
       before do
-        expect(Affiliate).to receive(:active).twice
-        allow(Affiliate).to receive_message_chain(:active, :find_by_name).with('my_site_handle').and_return(nil)
+        relation = double('relation')
+        allow(Affiliate).to receive(:active).and_return(relation)
+        allow(relation).to receive(:find_by_name).with('my_site_handle').and_return(nil)
       end
 
       it 'returns false' do
