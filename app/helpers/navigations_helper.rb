@@ -1,15 +1,12 @@
 # frozen_string_literal: true
 
 module NavigationsHelper
-  def filter_navigations(site, navigations)
+  def filter_navigations(navigations)
     items = navigations.to_a
     items.reject! do |n|
       n.navigable.is_a?(RssFeed) && n.navigable.show_only_media_content?
     end
-    unless site.has_social_image_feeds?
-      items.reject! { |n| n.navigable.is_a?(ImageSearchLabel) }
-    end
-    items
+    items.reject { |n| n.navigable.is_a?(ImageSearchLabel) }
   end
 
   def link_to_navigable_facet_type(nav)

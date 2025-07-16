@@ -7,20 +7,9 @@ Feature: Manage Display
 
     When affiliate "agency.gov" has the following RSS feeds:
       | name   | url                    | show_only_media_content | position | oasis_mrss_name |
-      | Photos | www.dma.mil/photos.xml | true                    | 101      | 1               |
+      | Photos | www.dma.mil/photos.xml | false                   | 101      | 1               |
     And I go to the agency.gov's Manage Display page
-    Then I should see "Image Search Label 0"
     And I should not see "Rss Feed 1"
-
-    When affiliate "agency.gov" has the following RSS feeds:
-      | name   | url                    | show_only_media_content | position |
-      | Photos | www.dma.mil/photos.xml | false                   | 101      |
-    And the following flickr URLs exist for the site "agency.gov":
-      | url                                      | profile_type | profile_id   |
-      | http://www.flickr.com/photos/whitehouse/ | user         | 35591378@N03 |
-    And I go to the agency.gov's Manage Display page
-    Then I should see "Image Search Label 0"
-    And I should see "Rss Feed 1"
 
   @javascript
   Scenario: Editing GovBoxes Settings
