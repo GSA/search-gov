@@ -123,7 +123,7 @@ gem 'net-http'
 gem 'coffee-rails', '~> 5.0.0'
 gem 'uglifier', '~> 4.2.0'
 gem 'compass-blueprint', '~> 1.0.0'
-gem 'jquery-ui-rails', '~> 7.0.0'
+gem 'jquery-ui-rails', '~> 8.0.0'
 gem 'jquery-rails', '~> 4.4.0'
 gem 'twitter-typeahead-rails', '~> 0.11.1'
 # Why do we have two versions of Font Awesome?
