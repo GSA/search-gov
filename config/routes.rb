@@ -275,7 +275,7 @@ Rails.application.routes.draw do
     mount Resque::Server.new, at: '/resque', constraints: AffiliateAdminConstraint
     get '/resque/(*all)', to: redirect(path: '/login')
 
-    mount Sidekiq::Web => '/sidekiq', constraints: AffiliateAdminConstraint
+
   end
 
   match '/admin/affiliates/:id/analytics' => 'admin/affiliates#analytics', :as => :affiliate_analytics_redirect, via: :get
