@@ -17,7 +17,7 @@ module Api
       end
 
       def i14y
-        @search = ApiI14ySearch.new(@search_options.attributes)
+        @search = selected_engine.new(@search_options.attributes)
         @search.run
         respond_with(@search)
       end
@@ -38,6 +38,14 @@ module Api
       end
 
       private
+
+      def selected_engine
+        if @search_options.site.search_elastic_engine?
+          ApiSearchElastic
+        else
+          ApiI14ySearch
+        end
+      end
 
       def handle_query_routing
         affiliate = @search_options.site
