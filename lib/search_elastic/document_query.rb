@@ -268,6 +268,7 @@ class SearchElastic::DocumentQuery
   # Disabling length-related cops, as this method is intended to mimic the structure
   # of a complex Elasticsearch query using the Elasticsearch DSL
   # https://github.com/elastic/elasticsearch-ruby/tree/master/elasticsearch-dsl
+  # rubocop:disable Metrics/MethodLength, Metrics/BlockLength
   def build_search_query
     doc_query = self
     affiliate = @affiliate
@@ -382,4 +383,5 @@ class SearchElastic::DocumentQuery
       end
     end
   end
+  # rubocop:enable Metrics/MethodLength, Metrics/BlockLength
 end
