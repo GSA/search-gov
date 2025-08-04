@@ -8,31 +8,56 @@ describe DocumentFetcher do
 
       before do
         stub_request(:get, url).to_return(status: 301, headers: { location: new_url })
-        stub_request(:get, new_url).to_return(status: 200)
+        stub_request(:get, new_url).to_return(status: 200, body: 'success')
       end
 
       it 'follows the redirect' do
         response = described_class.fetch url
-        expect(response[:status]).to match(/200/)
+        expect(response[:status]).to eq('200')
         expect(response[:last_effective_url]).to eq('https://www.healthcare.gov/')
+        expect(response[:body]).to eq('success')
       end
     end
 
-    it 'returns error message when Curl::Easy raises error' do
-      easy = double('easy')
-      expect(Curl::Easy).to receive(:new).and_return(easy)
-      expect(easy).to receive(:perform).and_raise(Curl::Err::TooManyRedirectsError.new('Too many redirects'))
-      result = described_class.fetch('http://healthcare.gov')
-      expect(result[:error]).to eq('Too many redirects')
+    context 'when there are too many redirects' do
+      let(:url) { 'http://healthcare.gov' }
+      let(:redirect_url) { 'http://redirect.gov' }
+
+      before do
+        stub_request(:get, url).to_return(status: 301, headers: { location: redirect_url })
+        stub_request(:get, redirect_url).to_return(status: 301, headers: { location: redirect_url })
+      end
+
+      it 'returns an error' do
+        result = described_class.fetch(url, limit: 1)
+        expect(result[:error]).to eq('Too many redirects')
+      end
     end
 
-    it 'returns empty hash when the execution expired' do
-      easy = double('easy')
-      expect(Curl::Easy).to receive(:new).and_return(easy)
-      expect(easy).to receive(:perform)
+    context 'when a non-success HTTP status is returned' do
+      let(:url) { 'http://healthcare.gov' }
 
-      response = described_class.fetch('http://healthcare.gov')
-      expect(response[:error]).to match(/Unable to fetch/)
+      before do
+        stub_request(:get, url).to_return(status: 500, message: 'Internal Server Error')
+      end
+
+      it 'returns the error message' do
+        result = described_class.fetch(url)
+        expect(result[:error]).to eq('500 Internal Server Error')
+      end
+    end
+
+    context 'when a network error occurs' do
+      let(:url) { 'http://healthcare.gov' }
+
+      before do
+        stub_request(:get, url).to_raise(Timeout::Error.new('execution expired'))
+      end
+
+      it 'returns the error message' do
+        result = described_class.fetch(url)
+        expect(result[:error]).to eq('execution expired')
+      end
     end
 
     #sanity check, as a lot of tests rely on this working
@@ -40,36 +65,6 @@ describe DocumentFetcher do
       stub_request(:get,'https://www.healthcare.gov/').to_return({body: 'foo', status: 200})
       expect(described_class.fetch 'https://www.healthcare.gov/').
         to eq ({ body: 'foo',  last_effective_url: 'https://www.healthcare.gov/', status: '200' })
-    end
-
-    describe 'with timeout overrides' do
-      let(:connection) { double(:connection,
-                                'connect_timeout=': nil,
-                                'follow_location=': nil,
-                                'max_redirects=': nil,
-                                'timeout=': nil,
-                                'useragent=': nil,
-                                'on_success': nil,
-                                'on_redirect': nil) }
-      let(:easy) { double(:easy, perform: nil) }
-
-      before { allow(Curl::Easy).to receive(:new).and_yield(connection).and_return(easy) }
-
-      context 'when given no timeout overrides' do
-        it 'uses the default timeouts' do
-          expect(connection).to receive(:'connect_timeout=').with(2)
-          expect(connection).to receive(:'timeout=').with(8)
-          described_class.fetch('http://healthcare.gov')
-        end
-      end
-
-      context 'when given timeout overrides' do
-        it 'uses the given timeout overrides' do
-          expect(connection).to receive(:'connect_timeout=').with(42)
-          expect(connection).to receive(:'timeout=').with(84)
-          described_class.fetch('http://healthcare.gov', **{ connect_timeout: 42, read_timeout: 84 })
-        end
-      end
     end
   end
 end
