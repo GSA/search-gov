@@ -143,6 +143,13 @@ class SearchElastic::DocumentQuery
         field_value_factor: {
           field: 'click_count', modifier: 'log1p', factor: 2, missing: 1
         }
+      },
+
+      # Prefer documents that have more DAP domain visits
+      {
+        field_value_factor: {
+          field: 'dap_domain_visits_count', modifier: 'log1p', factor: 2, missing: 1
+        }
       }
     ]
   end
