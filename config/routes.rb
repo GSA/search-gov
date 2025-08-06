@@ -272,6 +272,12 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :users do
+      member do
+        get :reactivate
+      end
+    end
+
     mount Resque::Server.new, at: '/resque', constraints: AffiliateAdminConstraint
     get '/resque/(*all)', to: redirect(path: '/login')
 

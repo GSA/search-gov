@@ -1,0 +1,8 @@
+- active_scaffold_config.list.columns.each do |column_name|
+  - column = active_scaffold_config.columns[column_name]
+  %td{class: "col-#{column_name}"}
+    .content= get_column_value(record, column)
+
+- unless active_scaffold_config.action_links.empty?
+  %td.actions
+    = render partial: 'list_actions', locals: {record: record}
