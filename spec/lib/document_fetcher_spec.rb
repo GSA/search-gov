@@ -38,7 +38,7 @@ describe DocumentFetcher do
       let(:url) { 'http://healthcare.gov' }
 
       before do
-        stub_request(:get, url).to_return(status: 500, message: 'Internal Server Error')
+        stub_request(:get, url).to_return(status: 500, body: 'Internal Server Error')
       end
 
       it 'returns the error message' do

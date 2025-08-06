@@ -78,10 +78,7 @@ describe SiteCloner do
     let(:origin_site) do
       affiliate = affiliates(:basic_affiliate)
       affiliate.agency = agencies(:irs)
-      affiliate.css_property_hash = {
-        'title_link_color' => '#33ff33',
-        'visited_title_link_color' => '#0000ff'
-      }
+      affiliate.css_property_hash = { title_link_color: '#33ff33', visited_title_link_color: '#0000ff' }
       affiliate.external_tracking_code = '<script>var foo;</script>'
       affiliate.locale = 'ar'
       affiliate.theme = 'custom'
