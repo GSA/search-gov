@@ -51,14 +51,11 @@ class User < ApplicationRecord
   scope :approved, -> { where(approval_status: 'approved') }
 
   scope :timed_out, -> { where(approval_status: 'timed_out') }
-  scope :not_active,
-        lambda {
-          users = where('current_login_at <= ? OR (current_login_at IS NULL AND created_at <=? )',
-                        90.days.ago,
-                        90.days.ago)
-          users.update_all(approval_status: 'timed_out')
-          users
-        }
+  scope :not_active, lambda {
+    where('current_login_at <= ? OR (current_login_at IS NULL AND created_at <= ?)',
+          90.days.ago, 90.days.ago)
+  }
+
 
   scope :not_active_since,
         lambda { |date|
@@ -87,13 +84,16 @@ class User < ApplicationRecord
   #   end
   # end
 
+  def self.mark_inactive_as_timed_out!
+    not_active.update_all(approval_status: 'timed_out', updated_at: Time.current)
+  end
+
   def timed_out?
     approval_status == 'timed_out'
   end
 
   def reactivate!
-    self.approval_status = 'approved'
-    self.current_login_at = nil # Reset login timestamp
+    set_approval_status_to_approved
     save!
   end
 

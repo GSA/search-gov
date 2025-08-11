@@ -72,11 +72,8 @@ describe User do
       user
     end
 
-    it 'persists the changes' do
-      user.reactivate!
-      user.reload
-      expect(user.approval_status).to eq('approved')
-      expect(user.current_login_at).to be_nil
+    it 'changes approval status to approved' do
+      expect { user.reactivate! }.to change { user.reload.approval_status }.from('timed_out').to('approved')
     end
   end
 
