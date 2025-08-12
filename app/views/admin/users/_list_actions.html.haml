@@ -1,6 +1,0 @@
-- actions = active_scaffold_config.action_links.member
-- actions.each do |action|
-  - if action.action == 'reactivate' && record.timed_out?
-    = link_to action.label, reactivate_admin_user_path(record), class: 'reactivate'
-  - elsif action.action != 'reactivate'
-    = render_action_link(action, record)

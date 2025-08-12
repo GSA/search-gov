@@ -1,18 +1,8 @@
 # frozen_string_literal: true
 
 class Admin::UsersController < Admin::AdminController
-  include ActiveScaffold::Helpers::ListColumnHelpers
-  include ActiveScaffold::Helpers::ActionLinkHelpers
-
   active_scaffold :user do |config|
     config.actions.exclude :create, :delete, :search
-
-    config.action_links.add 'reactivate',
-                            label: 'Reactivate',
-                            type: :member,
-                            position: false,
-                            condition: ->(record) { record.timed_out? }
-
     config.columns = %I[
       email
       first_name
@@ -52,22 +42,5 @@ class Admin::UsersController < Admin::AdminController
       approval_status
       welcome_email_sent
     ]
-  end
-
-  def reactivate
-    @record = User.find(params[:id])
-    @record.reactivate!
-    flash[:info] = "User #{@record.email} has been reactivated."
-    redirect_to action: :index
-  end
-
-  protected
-
-  def conditions_for_collection
-    if params[:status] == 'timed_out'
-      { approval_status: 'timed_out' }
-    else
-      {}
-    end
   end
 end

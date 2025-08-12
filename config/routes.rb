@@ -144,7 +144,11 @@ Rails.application.routes.draw do
       resources :supplemental_urls,
                 controller: 'indexed_documents',
                 except: [:show, :edit, :update]
-      resources :users, only: [:index, :new, :create, :destroy]
+      resources :users, only: [:index, :new, :create, :destroy] do
+        member do
+          post :reactivate
+        end
+      end
       resources :youtube_channels,
                 controller: 'youtube_profiles',
                 only: [:index, :new, :create, :destroy]
@@ -269,12 +273,6 @@ Rails.application.routes.draw do
         member do
           post 'fetch'
         end
-      end
-    end
-
-    resources :users do
-      member do
-        get :reactivate
       end
     end
 

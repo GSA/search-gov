@@ -1,5 +1,0 @@
-- record = list_record
-%tr{class: "record#{' timed-out' if record.timed_out?}",
-    id: element_row_id(action: :list, id: record.id),
-    style: record.timed_out? ? "background-color: #fff3cd !important;" : nil}
-  = render partial: 'list_record_columns', locals: {record: record}
