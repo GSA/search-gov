@@ -7,18 +7,29 @@
       %li= link_to 'Add User', new_site_user_path(@site)
 
 = render_flash_message
-%table.table.table-no-header
+%table.table
+  %thead
+    %tr
+      %th User
+      %th Timed Out
+      %th.actions Actions
   %tbody
     - @users.each do |user|
       %tr{ user_row_css_class_hash(user) }
         %td
-          %span #{user.first_name}
-          %span #{user.last_name}
+          %span= user.first_name
+          %span= user.last_name
           %br
           %span.muted
-            #{user.email}
-            - unless user.is_approved?
+            = user.email
+            - if user.timed_out?
+              (Timed Out)
+            - elsif !user.is_approved?
               (#{user.approval_status.humanize})
+        %td
+          = user.timed_out? ? 'Yes' : 'No'
         %td.actions
-          %ul
+          %ul.action-buttons
+            - if user.timed_out?
+              %li= button_to 'Reactivate', reactivate_site_user_path(@site, user.id), method: :post, class: 'btn btn-small'
             %li= button_to 'Remove', site_user_path(@site, user.id), method: :delete, data: { confirm: "Are you sure you wish to remove #{user.email} from this site?" }, class: 'btn btn-small'
