@@ -77,10 +77,9 @@ describe 'User rake tasks' do
     end
 
     it 'does not log not_approved change anymore' do
+      @rake[task_name].invoke
       allow(Rails.logger).to receive(:info)
       expect(Rails.logger).not_to receive(:info).with(/has been not active for 90 days.*"not_approved"/)
-
-      @rake[task_name].invoke
     end
   end
 
