@@ -183,3 +183,13 @@ no_first_last_name_3:
 no_first_last_name_4:
   <<: *DEFAULTS
   email: no_first_last_name_4@email.gov
+
+timed_out_user:
+  email: timed_out@example.gov
+  first_name: Timed
+  last_name: Out
+  organization_name: Test Org
+  approval_status: timed_out
+  current_login_at: <%= 100.days.ago %>
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>

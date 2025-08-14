@@ -13,7 +13,7 @@ class User < ApplicationRecord
     \z
   /ix.freeze
 
-  APPROVAL_STATUSES = %w[pending_approval approved not_approved].freeze
+  APPROVAL_STATUSES = %w[pending_approval approved not_approved timed_out].freeze
 
   validates :approval_status, inclusion: APPROVAL_STATUSES
   validates :first_name, presence: true, on: :update_account
@@ -49,12 +49,13 @@ class User < ApplicationRecord
   }
   scope :not_approved, -> { where(approval_status: 'not_approved') }
   scope :approved, -> { where(approval_status: 'approved') }
-  scope :not_active,
-        lambda {
-          where('current_login_at <= ? OR (current_login_at IS NULL AND created_at <=? )',
-                90.days.ago,
-                90.days.ago)
-        }
+
+  scope :timed_out, -> { where(approval_status: 'timed_out') }
+  scope :not_active, lambda {
+    where('current_login_at <= ? OR (current_login_at IS NULL AND created_at <= ?)',
+          90.days.ago, 90.days.ago)
+  }
+
 
   scope :not_active_since,
         lambda { |date|
@@ -82,6 +83,19 @@ class User < ApplicationRecord
   #     user.errors.add(:base, "Federal government agency can't be blank")
   #   end
   # end
+
+  def self.mark_inactive_as_timed_out!
+    not_active.update_all(approval_status: 'timed_out', updated_at: Time.current)
+  end
+
+  def timed_out?
+    approval_status == 'timed_out'
+  end
+
+  def reactivate!
+    set_approval_status_to_approved
+    save!
+  end
 
   def complete?
     last_name.present? && first_name.present? && organization_name.present?
