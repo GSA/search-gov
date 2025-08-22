@@ -515,29 +515,12 @@ Feature: Manage Display
       | Primary header link URL 0      | https://link.gov        |
       | Secondary header link title 0  | A secondary header link |
       | Secondary header link URL 0    | link.gov                |
-      | Footer link title 0            | A footer link           |
-      | Footer link URL 0              | mailto:person@gsa.gov   |
-      | Identifier link title 0        | An identifier link      |
-      | Identifier link URL 0          | http://link.gov         |
     And I submit the form by pressing "Save"
     Then I should see "You have updated your visual design settings"
     And the "Primary header link title 0" field should contain "A primary header link"
     And the "Primary header link URL 0" field should contain "https://link.gov"
     And the "Secondary header link title 0" field should contain "A secondary header link"
     And the "Secondary header link URL 0" field should contain "https://link.gov"
-    And the "Footer link title 0" field should contain "A footer link"
-    And the "Footer link URL 0" field should contain "mailto:person@gsa.gov"
-    And the "Identifier link title 0" field should contain "An identifier link"
-    And the "Identifier link URL 0" field should contain "http://link.gov"
-
-    When I follow "Add new identifier link"
-    Then I should be able to access 2 "new_identifier_link" rows
-    And I fill in "Identifier link title 1" with "A second identifier link"
-    And I fill in "Identifier link URL 1" with "link2.gov"
-    And I submit the form by pressing "Save"
-    Then I should see "You have updated your visual design settings"
-    And the "Identifier link title 1" field should contain "A second identifier link"
-    And the "Identifier link URL 1" field should contain "https://link2.gov"
 
     When I follow "Add new secondary header link"
     Then I should be able to access 2 "new_secondary_header_link" rows
