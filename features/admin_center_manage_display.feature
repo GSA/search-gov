@@ -46,7 +46,6 @@ Feature: Manage Display
     And I switch off "Is video govbox enabled"
     And I switch on "Jobs enabled"
     And I switch on "Is federal register document govbox enabled"
-    And I switch off "Is related searches enabled"
     And I switch on "Is medline govbox enabled"
     And I switch off "Is sayt enabled"
     And I switch on "i14y date stamp enabled"
