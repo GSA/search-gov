@@ -42,11 +42,11 @@ class LandingPageFinder
   end
 
   def destination_site_page
-    if @user.default_affiliate && @user.default_affiliate.active?
-      site_path(@user.default_affiliate)
-    elsif !@user.affiliates.empty?
-      affiliate = @user.affiliates.active.first || @user.affiliates.first
-      site_path(affiliate)
-    end
+    affiliate = find_appropriate_affiliate
+    site_path(affiliate) if affiliate
+  end
+
+  def find_appropriate_affiliate
+    @user.default_affiliate&.active? ? @user.default_affiliate : (@user.affiliates.active.first || @user.affiliates.first)
   end
 end
