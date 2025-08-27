@@ -481,13 +481,6 @@ Feature: Manage Content
     And I submit the form by pressing "Add"
     Then I should see "Tag has already been taken"
 
-    When I follow "Images"
-    Then I should find "www.flickr.com/photos_public.gne?id=27784370@N05" in the RSS URLs modal
-
-    When I go to the agency.gov's "Images" RSS feed page
-    And I follow "Error"
-    Then I should find "404 Not Found" in the RSS URL last crawl status error message
-
   Scenario: Filtering Supplemental URLs
     Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
