@@ -21,14 +21,12 @@ Feature: Manage Display
       | Blog | agency.gov/blog/ |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Display page
-    And the "Rss govbox label" field should contain "News"
     And the "Jobs enabled" should be switched off
     And the "Is federal register document govbox enabled" should be switched off
     And the "Is sayt enabled" should be switched on
     And the "Is medline govbox enabled" should be switched off
     And the "i14y date stamp enabled" should be switched off
 
-    When I fill in "Rss govbox label" with "Latest News"
     And I switch on "Jobs enabled"
     And I switch on "Is federal register document govbox enabled"
     And I switch on "Is medline govbox enabled"
@@ -37,7 +35,6 @@ Feature: Manage Display
 
     And I submit the form by pressing "Save"
     Then I should see "You have updated your site display settings"
-    And the "Rss govbox label" field should contain "Latest News"
     And the "Jobs enabled" should be switched on
     And the "Is federal register document govbox enabled" should be switched on
     And the "Is medline govbox enabled" should be switched on
