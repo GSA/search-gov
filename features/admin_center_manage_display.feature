@@ -26,7 +26,6 @@ Feature: Manage Display
     And the "Is sayt enabled" should be switched on
     And the "Is medline govbox enabled" should be switched off
     And the "i14y date stamp enabled" should be switched off
-
     And I switch on "Jobs enabled"
     And I switch on "Is federal register document govbox enabled"
     And I switch on "Is medline govbox enabled"
