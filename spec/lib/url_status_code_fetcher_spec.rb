@@ -5,7 +5,6 @@ describe UrlStatusCodeFetcher do
   # Webmock or VCR. We might consider swapping out Curb in favor of Faraday, which
   # has more dev support, is more easily stubbed, and is already used extensively
   # in our code.
-
   let(:valid_url) { 'https://digital.gov/guides/search' }
   let(:invalid_url) { 'https://www.google.com/404' }
 
