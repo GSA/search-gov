@@ -22,6 +22,7 @@ executors:
       - image: cimg/ruby:<< parameters.ruby_version >>
         environment:
           RAILS_ENV: test
+          BUNDLER_VERSION: "2.6.3"
 
       - image: cimg/mysql:<< parameters.mysql_version >>
         environment:
@@ -100,7 +101,14 @@ commands:
             docker restart $elasticsearch_container_id
             # Wait for Elasticsearch to be ready after restart
             dockerize -wait tcp://localhost:9200 -timeout 1m
-
+    install_bundler_263:
+      description: 'Ensure Bundler 2.6.3 is installed and selected'
+      steps:
+        - run:
+            name: Install Bundler 2.6.3
+            command: |
+              gem list -i bundler -v 2.6.3 || gem install bundler -v 2.6.3
+              bundle _2.6.3_ --version
 jobs:
   checkout_code:
     parameters:
@@ -178,6 +186,9 @@ jobs:
                               --out /tmp/test-results/rspec.xml \
                               --format progress \
                               $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+      - install_bundler_263
+      - ruby/install-deps:
+          key: gems-ruby-<< parameters.ruby_version >>-v{{ .Environment.CACHE_VERSION }}
 
       # collect reports
       - store_test_results:
@@ -237,6 +248,9 @@ jobs:
                                 --out /tmp/test-results/cucumber.xml \
                                 --format progress \
                                 -- $(circleci tests glob "features/*.feature" | circleci tests split --split-by=timings)
+      - install_bundler_263
+      - ruby/install-deps:
+          key: gems-ruby-<< parameters.ruby_version >>-v{{ .Environment.CACHE_VERSION }}
 
       # collect reports
       - store_test_results:
