@@ -5,7 +5,6 @@ require 'spec_helper'
 describe JsFetcher do
   describe '.fetch' do
     let(:url) { 'https://digital.gov/guides/search/' }
-
     let(:options) { instance_double('Selenium::WebDriver::Firefox::Options') }
     let(:driver)  { instance_double('Selenium::WebDriver::Driver') }
     let(:manage)  { instance_double('Selenium::WebDriver::Driver::Manage') }
