@@ -22,7 +22,6 @@ executors:
       - image: cimg/ruby:<< parameters.ruby_version >>
         environment:
           RAILS_ENV: test
-          BUNDLER_VERSION: "2.6.3"
 
       - image: cimg/mysql:<< parameters.mysql_version >>
         environment:
