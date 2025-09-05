@@ -112,10 +112,6 @@ Feature:  Administration
     And I should see the following breadcrumbs: Super Admin > Users
 
     When I go to the admin home page
-    And I follow "Rss Feeds"
-    Then I should see "An Agency Feed"
-
-    When I go to the admin home page
     And I follow "Rss Feed Urls"
     And I should see the following breadcrumbs: Super Admin > Rss Feed Urls
     When I follow "Show" within the first scaffold row
