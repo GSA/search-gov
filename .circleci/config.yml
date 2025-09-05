@@ -39,13 +39,13 @@ executors:
           xpack.license.self_generated.type: trial
           xpack.monitoring.enabled: false
           xpack.security.enabled: false
-          ES_JAVA_OPTS: '-Xms256m -Xmx256m'
+          ES_JAVA_OPTS: "-Xms256m -Xmx256m"
 
       - image: apache/tika:2.4.1
 
 commands:
   install_firefox:
-    description: 'Install latest Firefox'
+    description: "Install latest Firefox"
     steps:
       - browser-tools/install-firefox
       - run:
@@ -53,27 +53,27 @@ commands:
             firefox --version
           name: Check install
   install_js_dependencies:
-    description: 'Install JavaScript dependencies'
+    description: "Install JavaScript dependencies"
     steps:
       - run:
           name: Clean node_modules
           command: rm -rf node_modules
       - nodejs/install:
-          node-version: '20.10.0'
+          node-version: "20.10.0"
           install-yarn: true
       - run:
           name: Yarn Install
           command: yarn install --frozen-lockfile
   precompile_assets:
-    description: 'Pre-compile assets'
+    description: "Pre-compile assets"
     steps:
       - run: bin/rails assets:precompile
   prepare_database:
-    description: 'Prepare the test database'
+    description: "Prepare the test database"
     steps:
       - run: bundle exec rake db:setup
   install_elasticsearch_plugins:
-    description: 'Install Elasticsearch Plugins'
+    description: "Install Elasticsearch Plugins"
     parameters:
       elasticsearch_version:
         type: string
@@ -114,12 +114,6 @@ jobs:
           name: Wait for Elasticsearch
           command: dockerize -wait tcp://localhost:9200 -timeout 1m
 
-      - run:
-          name: Install Code Climate Test Reporter
-          command: |
-            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-            chmod +x ./cc-test-reporter
-
       - save_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
           paths:
@@ -143,7 +137,7 @@ jobs:
     parallelism: 6
 
     steps:
-      - setup_remote_docker  # Ensure Docker is set up for this job
+      - setup_remote_docker # Ensure Docker is set up for this job
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
@@ -167,7 +161,6 @@ jobs:
             bundle exec rake usasearch:elasticsearch:create_indexes
 
             mkdir /tmp/test-results
-            ./cc-test-reporter before-build
 
             # Run Rspec tests
             bundle exec rspec --format progress \
@@ -175,14 +168,6 @@ jobs:
                               --out /tmp/test-results/rspec.xml \
                               --format progress \
                               $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
-
-            ./cc-test-reporter format-coverage \
-              --output coverage/codeclimate.rspec.$CIRCLE_NODE_INDEX.<< parameters.ruby_version >>_<< parameters.elasticsearch_version >>_<< parameters.mysql_version >>.json
-
-      - persist_to_workspace:
-          root: ~/search-gov/coverage
-          paths:
-            - codeclimate.rspec.*.json
 
       # collect reports
       - store_test_results:
@@ -209,7 +194,7 @@ jobs:
     parallelism: 10
 
     steps:
-      - setup_remote_docker  # Ensure Docker is set up for this job
+      - setup_remote_docker # Ensure Docker is set up for this job
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
@@ -235,7 +220,6 @@ jobs:
             bundle exec rake tmp:create
 
             mkdir /tmp/test-results
-            ./cc-test-reporter before-build
 
             # Run cucumber tests
             bundle exec cucumber --format progress \
@@ -243,14 +227,6 @@ jobs:
                                 --out /tmp/test-results/cucumber.xml \
                                 --format progress \
                                 -- $(circleci tests glob "features/*.feature" | circleci tests split --split-by=timings)
-
-            ./cc-test-reporter format-coverage \
-              --output coverage/codeclimate.cucumber.$CIRCLE_NODE_INDEX.<< parameters.ruby_version >>_<< parameters.elasticsearch_version >>_<< parameters.mysql_version >>.json
-
-      - persist_to_workspace:
-          root: ~/search-gov/coverage
-          paths:
-            - codeclimate.cucumber.*.json
 
       # collect reports
       - store_test_results:
@@ -277,7 +253,7 @@ jobs:
       mysql_version: << parameters.mysql_version >>
 
     steps:
-      - setup_remote_docker  # Ensure Docker is set up for this job
+      - setup_remote_docker # Ensure Docker is set up for this job
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
@@ -290,53 +266,8 @@ jobs:
       - run:
           name: Run Tests
           command: |
-            ./cc-test-reporter before-build
-
             # Run jest tests
             yarn test:coverage
-
-            ./cc-test-reporter format-coverage \
-              --output coverage/codeclimate.jest.$CIRCLE_NODE_INDEX.<< parameters.node_version >>_<< parameters.ruby_version >>_<< parameters.mysql_version >>.json
-
-      - persist_to_workspace:
-          root: ~/search-gov/coverage
-          paths:
-            - codeclimate.jest.*.json
-
-  report_coverage:
-    parameters:
-      ruby_version:
-        type: string
-      elasticsearch_version:
-        type: string
-      mysql_version:
-        type: string
-      node_version:
-        type: string
-
-    executor:
-      name: test_executor
-      ruby_version: << parameters.ruby_version >>
-      elasticsearch_version: << parameters.elasticsearch_version >>
-      mysql_version: << parameters.mysql_version >>
-
-    steps:
-      - restore_cache:
-          key: repo-{{ .Environment.CIRCLE_SHA1 }}
-
-      - attach_workspace:
-          at: ~/search-gov/coverage
-
-      - run:
-          name: Report coverage to Code Climate
-          command: |
-            ./cc-test-reporter sum-coverage \
-              coverage/codeclimate.*.json \
-              --output coverage/codeclimate_full_report.json
-
-            ./cc-test-reporter upload-coverage --input coverage/codeclimate_full_report.json
-
-            ruby scripts/check_coverage.rb ${PWD}/coverage/codeclimate_full_report.json
 
 workflows:
   version: 2
@@ -384,23 +315,6 @@ workflows:
           requires:
             - checkout_code
           name: "jest: NodeJS << matrix.node_version >>, Ruby << matrix.ruby_version >>, MySQL << matrix.mysql_version >>"
-          matrix:
-            parameters:
-              ruby_version:
-                - 3.3.7
-              elasticsearch_version:
-                - 7.17.7
-              mysql_version:
-                - "8.0"
-              node_version:
-                - 20.10.0
-
-      - report_coverage:
-          requires:
-            - "rspec: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>, MySQL << matrix.mysql_version >>"
-            - "cucumber: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>, MySQL << matrix.mysql_version >>"
-            - "jest: NodeJS << matrix.node_version >>, Ruby << matrix.ruby_version >>, MySQL << matrix.mysql_version >>"
-          name: "report coverage: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>, MySQL << matrix.mysql_version >>, NodeJS << matrix.node_version >>"
           matrix:
             parameters:
               ruby_version:

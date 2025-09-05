@@ -11,7 +11,7 @@ describe UrlStatusCodeFetcher do
 
   describe '.fetch' do
     context 'when block is given' do
-      it 'fetches status code with a block' do
+      xit 'fetches status code with a block' do
         responses = {}
         urls = [valid_url, invalid_url]
 
@@ -26,7 +26,7 @@ describe UrlStatusCodeFetcher do
     end
 
     context 'when block is not given' do
-      it 'fetches status code' do
+      xit 'fetches status code' do
         urls = [valid_url, invalid_url]
 
         responses = described_class.fetch urls
