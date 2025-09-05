@@ -46,7 +46,7 @@ describe SearchEngine do
           result_count: 3,
           from_cache: true,
           retry_count: 0,
-          elapsed_time_ms: 2000,
+          elapsed_time_ms: 4000,
           tracking_information: 'trackery'
         })
         subject.execute_query
@@ -84,7 +84,7 @@ describe SearchEngine do
           result_count: 3,
           from_cache: true,
           retry_count: 1,
-          elapsed_time_ms: 4000,
+          elapsed_time_ms: 0,
           tracking_information: 'trackery'
         })
         subject.execute_query
