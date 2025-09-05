@@ -12,11 +12,9 @@ namespace :usasearch do
         )
     end
 
-    desc 'Set accounts that are not active for more than 90 days to not_approved'
+    desc 'Set accounts that are not active for more than 90 days to timed_out'
     task update_not_active_approval_status: :environment do
-      UserApproval.set_to_not_approved(User.approved.not_active,
-                                       'has been not active for 90 days',
-                                       'inactive')
+      User.mark_inactive_as_timed_out!
     end
 
     desc 'Warns not active users account will be deactivated'

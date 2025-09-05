@@ -71,20 +71,15 @@ describe 'User rake tasks' do
       expect(@rake[task_name].prerequisites).to include('environment')
     end
 
-    it 'sets not active users to not_approved' do
+    it 'sets not active users to timed_out' do
       @rake[task_name].invoke
-      expect(not_active_user.is_not_approved?).to be true
+      expect(not_active_user.reload.timed_out?).to be true
     end
 
-    it 'logs the change' do
-      expected_message = <<~MESSAGE.squish
-        User #{not_active_user.id}, not_active_user@fixtures.org, has been not active for 90 days,
-        so their approval status has been set to "not_approved".
-      MESSAGE
-
-      allow(Rails.logger).to receive(:info)
-      expect(Rails.logger).to receive(:info).with(expected_message)
+    it 'does not log not_approved change anymore' do
       @rake[task_name].invoke
+      allow(Rails.logger).to receive(:info)
+      expect(Rails.logger).not_to receive(:info).with(/has been not active for 90 days.*"not_approved"/)
     end
   end
 
