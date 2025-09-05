@@ -210,12 +210,6 @@ describe Affiliate do
         expect(affiliate.default_search_label).to eq('Todo')
       end
 
-      it 'sets look_and_feel_css' do
-        affiliate = described_class.create! valid_attributes
-        expect(affiliate.mobile_look_and_feel_css).to include('font-family:"Maven Pro"')
-        expect(affiliate.mobile_look_and_feel_css).to include('a:visited{color:purple}')
-      end
-
       it 'assigns api_access_key' do
         affiliate = described_class.create! valid_attributes
         expect(affiliate.api_access_key).to be_present

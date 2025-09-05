@@ -9,7 +9,6 @@ gem 'rack-contrib', '~> 2.5.0'
 gem 'rails-observers', '~> 0.1.5'
 gem 'responders', '~> 3.1.0'
 gem 'mysql2', '~> 0.5.5'
-gem 'curb', '~> 1.0.1'
 gem 'haml', '~> 6'
 gem 'will_paginate', '~> 3.3.1'
 gem 'nokogiri', '~> 1.16'
@@ -61,7 +60,6 @@ gem 'faraday_middleware', '~> 0.14.0'
 gem 'net-http-persistent', '~> 2.9.3'
 gem 'rash_alt', '~> 0.4.12', require: 'rash'
 gem 'geoip', '~> 1.6.4'
-gem 'htmlentities', '~> 4.3.4' # deprecated - only used in Google web search
 gem 'html_truncator', '~> 0.4.2'
 gem 'addressable', '~> 2.8.0'
 gem 'select2-rails', '~> 4.0.3'
@@ -89,7 +87,6 @@ gem 'activerecord-validate_unique_child_attribute', require: 'active_record/vali
 gem 'rack-cors', '~> 1.1.0', require: 'rack/cors'
 gem 'hashie', '~> 5.0.0'
 # retry_block is unsupported - consider replacing with retriable
-gem 'retry_block', '~> 1.2.0'
 gem 'colorize', '~> 0.8.1'
 gem 'http', '~> 5.0'
 gem 'robots_tag_parser', '~> 0.1.0'
@@ -118,11 +115,9 @@ gem 'exception_notification', '~> 4.5'
 # Temporary fix to remove warnings seen in Rails 7:
 # https://github.com/ruby/net-protocol/issues/10
 # This gem can be removed once we upgrade to Ruby 3.1.
-gem 'net-http'
 # Assets-related gems
 gem 'coffee-rails', '~> 5.0.0'
 gem 'uglifier', '~> 4.2.0'
-gem 'compass-blueprint', '~> 1.0.0'
 gem 'jquery-ui-rails', '~> 7.0.0'
 gem 'jquery-rails', '~> 4.4.0'
 gem 'twitter-typeahead-rails', '~> 0.11.1'
@@ -136,8 +131,6 @@ gem 'font-awesome-rails', '~> 4.7.0'
 # icons compiled into SVG/CSS+PNG using Grunticon. See
 # https://github.com/gsa/font-awesome-grunticon-rails
 # for instructions on how to add more icons to this set
-gem 'sidekiq', '~> 7.1.3'
-gem 'sidekiq-failures', '~> 1.0.0'
 gem 'font-awesome-grunticon-rails', git: 'https://github.com/gsa/font-awesome-grunticon-rails', ref: '8ad9734a65f7e2d2de934bebe4ee7b460734f96e'
 gem 'react-rails', '~> 3.0.0'
 # Locking to prevent a version mismatch between the gem and the NPM package version
