@@ -73,7 +73,7 @@ describe Sites::SitesController do
 
       before { get :show, params: { id: -1 } }
 
-      it { is_expected.to redirect_to(sites_path) }
+      it { is_expected.to redirect_to(user_sites_path) }
     end
 
     context 'when logged in as super admin' do
