@@ -1,7 +1,12 @@
 require 'spec_helper'
 
 describe UrlStatusCodeFetcher do
-  let(:valid_url) { 'https://search.gov/' }
+  # UrlStatusCodeFetcher uses Curl::Multi, which does not play nicely with either
+  # Webmock or VCR. We might consider swapping out Curb in favor of Faraday, which
+  # has more dev support, is more easily stubbed, and is already used extensively
+  # in our code.
+
+  let(:valid_url) { 'https://digital.gov/guides/search' }
   let(:invalid_url) { 'https://www.google.com/404' }
 
   describe '.fetch' do
@@ -16,6 +21,7 @@ describe UrlStatusCodeFetcher do
 
         expect(responses).to eq({ valid_url => '200',
                               invalid_url => '404' })
+        expect(responses[invalid_url]).to eq('404')
       end
     end
 
