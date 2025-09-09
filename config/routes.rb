@@ -144,7 +144,11 @@ Rails.application.routes.draw do
       resources :supplemental_urls,
                 controller: 'indexed_documents',
                 except: [:show, :edit, :update]
-      resources :users, only: [:index, :new, :create, :destroy]
+      resources :users, only: [:index, :new, :create, :destroy] do
+        member do
+          post :reactivate
+        end
+      end
       resources :youtube_channels,
                 controller: 'youtube_profiles',
                 only: [:index, :new, :create, :destroy]
@@ -275,7 +279,7 @@ Rails.application.routes.draw do
     mount Resque::Server.new, at: '/resque', constraints: AffiliateAdminConstraint
     get '/resque/(*all)', to: redirect(path: '/login')
 
-    mount Sidekiq::Web => '/sidekiq', constraints: AffiliateAdminConstraint
+
   end
 
   match '/admin/affiliates/:id/analytics' => 'admin/affiliates#analytics', :as => :affiliate_analytics_redirect, via: :get

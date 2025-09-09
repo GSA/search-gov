@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'digest'
-require 'sass/css'
+
 
 class Affiliate < ApplicationRecord
   extend HumanAttributeName
@@ -175,7 +175,7 @@ class Affiliate < ApplicationRecord
   validates :secondary_header_links, length: { maximum: 3 }
 
   after_validation :update_error_keys
-  before_save :set_css_properties, :generate_look_and_feel_css, :set_json_fields, :set_search_labels
+  before_save :set_css_properties, :set_json_fields, :set_search_labels
   before_update :clear_existing_attachments
   after_commit :normalize_site_domains,             on: :create
   after_commit :remove_boosted_contents_from_index, on: :destroy
@@ -304,7 +304,6 @@ class Affiliate < ApplicationRecord
                                            managed_footer_links
                                            external_tracking_code
                                            submitted_external_tracking_code
-                                           mobile_look_and_feel_css
                                            logo_alt_text
                                            header_tagline
                                            header_tagline_url
@@ -713,10 +712,7 @@ class Affiliate < ApplicationRecord
     self.api_access_key = Digest::SHA256.base64digest("#{name}:#{Time.current.to_i}:#{rand}").tr('+/', '-_')
   end
 
-  def generate_look_and_feel_css
-    renderer = AffiliateCss.new(build_css_hash)
-    self.mobile_look_and_feel_css = renderer.render_mobile_css
-  end
+
 
   def build_css_hash
     css_hash = {}
