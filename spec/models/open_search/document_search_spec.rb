@@ -25,7 +25,7 @@ describe OpenSearch::DocumentSearch do
     end
 
     before do
-      allow(ES_OS).to receive(:search).and_return(search_results)
+      allow(OPENSEARCH_CLIENT).to receive(:search).and_return(search_results)
     end
 
     it 'returns an OpenSearch::DocumentSearchResults object' do
@@ -34,7 +34,7 @@ describe OpenSearch::DocumentSearch do
 
     it 'calls the search client with the correct arguments' do
       search.search
-      expect(ES_OS).to have_received(:search).with(
+      expect(OPENSEARCH_CLIENT).to have_received(:search).with(
         index: ['test_index'],
         body: anything,
         from: 0,

@@ -56,7 +56,7 @@ gem 'sass-rails', '~> 6.0'
 gem 'google_visualr',
     git: 'https://github.com/winston/google_visualr',
     ref: '17b97114a345baadd011e7b442b9a6c91a2b7ab5'
-gem 'faraday_middleware', '~> 0.14.0'
+gem 'faraday_middleware'
 gem 'net-http-persistent', '~> 2.9.3'
 gem 'rash_alt', '~> 0.4.12', require: 'rash'
 gem 'geoip', '~> 1.6.4'
@@ -77,6 +77,7 @@ gem 'elasticsearch', git: 'https://github.com/GSA/elasticsearch-ruby', branch: '
 gem 'elasticsearch-dsl', '~> 0.1.9'
 gem 'elasticsearch-xpack', '~> 7.4.0'
 gem "elasticsearch-persistence"
+gem 'opensearch-dsl'
 gem 'federal_register', '~> 0.6.3'
 gem 'redcarpet', '~> 3.6'
 gem 'google-api-client', '~> 0.53.0'

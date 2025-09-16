@@ -13,7 +13,7 @@ class OpenSearch::DocumentSearch < SearchElastic::DocumentSearch
   def execute_client_search
     Rails.logger.debug "Query: *****\n#{doc_query.body.to_json}\n*****"
 
-    result = ES_OS.search({
+    result = OPENSEARCH_CLIENT.search({
       index: indices,
       body: doc_query.body,
       from: offset,

@@ -1,0 +1,17 @@
+development:
+  host: <%= ENV['OPENSEARCH_HOST'] %>
+  index: <%= ENV['OPENSEARCH_INDEX'] %>
+  user: <%= ENV['OPENSEARCH_USER'] %>
+  password: <%= ENV['OPENSEARCH_PASSWORD'] %>
+
+test:
+  host: <%= ENV['OPENSEARCH_HOST'] %>
+  index: <%= ENV['OPENSEARCH_INDEX'] %>
+  user: <%= ENV['OPENSEARCH_USER'] %>
+  password: <%= ENV['OPENSEARCH_PASSWORD'] %>
+
+production:
+  host: <%= ENV['OPENSEARCH_HOST'] %>
+  index: <%= ENV['OPENSEARCH_INDEX'] %>
+  user: <%= ENV['OPENSEARCH_USER'] %>
+  password: <%= ENV['OPENSEARCH_PASSWORD'] %>
