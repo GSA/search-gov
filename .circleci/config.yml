@@ -54,25 +54,6 @@ executors:
       - image: apache/tika:2.4.1
 
 commands:
-  install_elasticsearch_plugins:
-    description: "Install Elasticsearch Plugins"
-    parameters:
-      elasticsearch_version:
-        type: string
-    steps:
-      - run:
-          name: Install Elasticsearch Plugins
-          command: |
-            until curl -sS localhost:9200; do sleep 1; done
-            elasticsearch_container_id=$(docker ps -qf "ancestor=docker.elastic.co/elasticsearch/elasticsearch:<< parameters.elasticsearch_version >>")
-            docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-kuromoji
-            docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-icu
-            docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-smartcn
-            # Restart Elasticsearch to apply the plugins
-            docker restart $elasticsearch_container_id
-            # Wait for Elasticsearch to be ready after restart
-            dockerize -wait tcp://localhost:9200 -timeout 1m
-
   install_firefox:
     description: "Install latest Firefox"
     steps:
@@ -101,14 +82,24 @@ commands:
     description: "Prepare the test database"
     steps:
       - run: bundle exec rake db:setup
-  install_bundler_263:
-    description: "Ensure Bundler 2.6.3 is installed and selected"
+  install_elasticsearch_plugins:
+    description: "Install Elasticsearch Plugins"
+    parameters:
+      elasticsearch_version:
+        type: string
     steps:
       - run:
-          name: Install Bundler 2.6.3
+          name: Install Elasticsearch Plugins
           command: |
-            gem list -i bundler -v 2.6.3 || gem install bundler -v 2.6.3
-            bundle _2.6.3_ --version
+            until curl -sS localhost:9200; do sleep 1; done
+            elasticsearch_container_id=$(docker ps -qf "ancestor=docker.elastic.co/elasticsearch/elasticsearch:<< parameters.elasticsearch_version >>")
+            docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-kuromoji
+            docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-icu
+            docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-smartcn
+            # Restart Elasticsearch to apply the plugins
+            docker restart $elasticsearch_container_id
+            # Wait for Elasticsearch to be ready after restart
+            dockerize -wait tcp://localhost:9200 -timeout 1m
 
 jobs:
   checkout_code:
@@ -159,7 +150,7 @@ jobs:
       - setup_remote_docker # Ensure Docker is set up for this job
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
-      - install_bundler_263
+
       - ruby/install-deps:
           key: gems-ruby-<< parameters.ruby_version >>-v{{ .Environment.CACHE_VERSION }}
 
@@ -187,8 +178,6 @@ jobs:
                               --out /tmp/test-results/rspec.xml \
                               --format progress \
                               $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
-      - ruby/install-deps:
-          key: gems-ruby-<< parameters.ruby_version >>-v{{ .Environment.CACHE_VERSION }}
 
       # collect reports
       - store_test_results:
@@ -218,7 +207,7 @@ jobs:
       - setup_remote_docker # Ensure Docker is set up for this job
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
-      - install_bundler_263
+
       - ruby/install-deps:
           key: gems-ruby-<< parameters.ruby_version >>-v{{ .Environment.CACHE_VERSION }}
 
@@ -248,8 +237,6 @@ jobs:
                                 --out /tmp/test-results/cucumber.xml \
                                 --format progress \
                                 -- $(circleci tests glob "features/*.feature" | circleci tests split --split-by=timings)
-      - ruby/install-deps:
-          key: gems-ruby-<< parameters.ruby_version >>-v{{ .Environment.CACHE_VERSION }}
 
       # collect reports
       - store_test_results:
