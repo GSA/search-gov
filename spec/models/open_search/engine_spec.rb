@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe OpenSearchEngine do
+describe OpenSearch::Engine do
   let(:affiliate) { affiliates(:basic_affiliate) }
   let(:search_options) do
     {
