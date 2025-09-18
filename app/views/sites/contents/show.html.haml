@@ -27,18 +27,6 @@
   %li.content-item.routed-queries
     = link_to site_routed_queries_path(@site) do
       %span.no-icon Routed Queries
-  %li.content-item.rss
-    = link_to site_rss_feeds_path(@site) do
-      = image_tag 'sites/rss_logo.png', alt: 'YouTube logo', style: 'text-align: center'
-      %div.name RSS
-  %li.content-item.youtube
-    = link_to site_youtube_channels_path(@site) do
-      = image_tag 'sites/youtube_logo.png', alt: 'YouTube logo'
-      %div.name YouTube
-  %li.content-item.flickr
-    = link_to site_flickr_urls_path(@site) do
-      = image_tag 'sites/flickr_logo.png', alt: 'Flickr logo'
-      %div.name Flickr
 
 = form_tag site_autodiscovery_path(@site), id: 'autodiscovery'
 = label_tag :autodiscovery_url, 'Discover and add the RSS feeds and social media accounts listed on the following page:'

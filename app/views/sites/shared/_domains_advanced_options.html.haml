@@ -1,9 +1,0 @@
-%li#advanced-menu.dropdown
-  = link_to '#advanced-menu', data: { toggle: 'dropdown' } do
-    Advanced
-    %i.fa.fa-caret-down-inactive{'data-grunticon-embed' => 'toggle_me'}
-  %ul.dropdown-menu
-    %li= link_to 'Supplemental Feed', edit_site_supplemental_feed_path(@site)
-    %li= link_to 'Supplemental URLs', site_supplemental_urls_path(@site)
-    %li= link_to 'Filter URLs', site_filter_urls_path(@site)
-    %li= link_to 'Filter Tags', site_tag_filters_path(@site) if @site.gets_i14y_results
