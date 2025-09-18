@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-class OpenSearchIndexer
+class OpenSearch::Indexer
   def self.create_index
     index_name = ENV.fetch('OPENSEARCH_INDEX')
 
-    template_generator = SearchOpenSearch::Template.new("*#{index_name}*")
+    template_generator = OpenSearch::Template.new("*#{index_name}*")
 
     OPENSEARCH_CLIENT.indices.put_template(
       body: template_generator.body,
@@ -13,7 +13,7 @@ class OpenSearchIndexer
       order: 0
     )
 
-    repo = SearchOpenSearch::DocumentRepository.new
+    repo = OpenSearch::DocumentRepository.new
     repo.create_index!(index: index_name)
   end
 end
