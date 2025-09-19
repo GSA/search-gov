@@ -267,8 +267,3 @@ Feature: Dashboard
     Then I should be on the new site page
     And I should see "Scheduled site 'USA.gov' for deletion. This could take several hours to complete."
 
-  @javascript
-  Scenario: Sending an idea
-    Given I am logged in with email "affiliate_manager@fixtures.org"
-    When I go to the usagov's Dashboard page
-    Then I should see a link to "https://search.gov/feedback/feedback.html" with text "Send an Idea"

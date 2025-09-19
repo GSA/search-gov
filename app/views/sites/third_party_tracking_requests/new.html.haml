@@ -23,3 +23,8 @@
         %p The tracking code you submitted will be reviewed shortly. You can submit an updated version below to overwrite it.
 
   = text_area_tag :submitted_external_tracking_code, nil, required: true, class: 'required input-primary', placeholder: "Please insert your web analytics JavaScript code here.", id: 'external_tracking_code'
+
+  %dl
+    %dd
+      %p When developing your third party tracking code, make sure to encode special characters such as question marks.
+      %p After submitting a third party tracking request, email search@gsa.gov to let the team know about the change.
