@@ -59,6 +59,7 @@ Feature: Search - redesign
     And I should see "270 results"
     When I click on the last page ("14")
     Then I should see exactly "20" web search results
+    And I should be on page "14" of results
     And I should not see a link to the "Next" page
     And I should see a link to the "Previous" page
     And I should see Powered by Search.gov
