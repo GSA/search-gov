@@ -13,10 +13,6 @@ module NavigationsHelper
     case nav.navigable_facet_type
     when 'DocumentCollection'
       link_to('Collection', edit_site_collection_path(nav.navigable.affiliate, nav.navigable))
-    when 'YouTube'
-      link_to('YouTube', site_youtube_channels_path(nav.navigable.owner))
-    when 'RSS'
-      link_to('RSS', edit_site_rss_feed_path(nav.navigable.owner, nav.navigable))
     when 'ImageSearchLabel'
       build_image_search_navigable_label nav.navigable
     end
