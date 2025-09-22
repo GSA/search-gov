@@ -11,6 +11,6 @@ Feature: SearchElastic engine search
 
   @javascript
   Scenario: Search on an affiliate using the SearchElastic search engine
-  When I am on nasa's search page
-  And I search for "hubble" in the redesigned search page
-  Then I should see "NASA Extends Hubble Operations Contract"
+    When I am on nasa's search page
+    And I search for "hubble" in the redesigned search page
+    Then I should see "NASA Extends Hubble Operations Contract"
