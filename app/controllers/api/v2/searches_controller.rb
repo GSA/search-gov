@@ -40,7 +40,10 @@ module Api
       private
 
       def selected_engine
-        if @search_options.site.search_elastic_engine?
+        case @search_options.site.search_engine
+        when "open_search"
+          OpenSearch::ApiEngine
+        when "search_elastic"
           ApiSearchElastic
         else
           ApiI14ySearch
