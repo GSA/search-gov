@@ -2,7 +2,7 @@
 
 class OpenSearch::Indexer
   def self.create_index
-    index_name = ENV.fetch('OPENSEARCH_INDEX')
+    index_name = ENV.fetch('OPENSEARCH_SEARCH_INDEX')
 
     template_generator = OpenSearch::Template.new("*#{index_name}*")
 
