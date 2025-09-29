@@ -173,7 +173,7 @@
 
 .row-mobile-divider{
   border-top: 1px solid #DFE1E2;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   margin-top: 1rem;
   visibility: hidden;
 }
@@ -337,4 +337,8 @@
   .search-result-item .result-title-link{
     pointer-events: none;
   }
+}
+
+.result-meta-grid-wrapper {
+  padding-bottom: 0.5rem;
 }

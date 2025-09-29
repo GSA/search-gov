@@ -9,10 +9,15 @@ interface ResultGridWrapperProps {
 const ResultGridWrapper = ({ url, clickTracking, children }: ResultGridWrapperProps) => {
   const [isResultDivClickable, setIsResultDivClickable] = useState(false);
   
-  const isMobile = () => {
-    return window.innerWidth <= 767;
+  // Handle keydown events for accessibility
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    // Only trigger on Enter or Space key presses
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault(); // Prevent default behavior for space key
+      handleResultDivClick(url)
+    }
   };
-  
+
   const handleResultDivClick = (url: string) => {
     if (isResultDivClickable) {
       if (clickTracking)  
@@ -22,14 +27,17 @@ const ResultGridWrapper = ({ url, clickTracking, children }: ResultGridWrapperPr
   };
 
   useEffect(() => {
-    setIsResultDivClickable(isMobile());
+    setIsResultDivClickable(true);
   }, []);
   
   return (
     <Grid 
-      row gap='md' 
+      tabIndex={0} // Make the div focusable
+      row gap='md'
       className='result-meta-grid-wrapper'
-      onClick={() => handleResultDivClick(url)}>
+      onClick={() => handleResultDivClick(url)}
+      onKeyDown={handleKeyDown} // Add keydown event listener
+      >
       {children}
     </Grid>
   );
