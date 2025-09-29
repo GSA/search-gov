@@ -8,8 +8,8 @@ require 'elasticsearch'
 #
 # The elasticsearch-ruby gem is compatible with OpenSearch.
 OPENSEARCH_CLIENT = Elasticsearch::Client.new(
-  url: ENV.fetch('OPENSEARCH_HOST', 'http://localhost:9300'),
-  user: ENV['OPENSEARCH_USER'],
-  password: ENV['OPENSEARCH_PASSWORD'],
+  url: ENV.fetch('OPENSEARCH_SEARCH_HOST', 'http://localhost:9300'),
+  user: ENV.fetch('OPENSEARCH_SEARCH_USER', 'admin'),
+  password: ENV['OPENSEARCH_SEARCH_PASSWORD'],
   log: Rails.env.development?
 )
