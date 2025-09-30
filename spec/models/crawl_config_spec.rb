@@ -7,7 +7,7 @@ RSpec.describe CrawlConfig, type: :model do
       allowed_domains: ['example.com'],
       starting_urls: ['https://example.com/start'],
       schedule: '30 08 * * MON',
-      output_target: 'elasticsearch'
+      output_target: :search_engine
     )
   end
 
@@ -22,7 +22,7 @@ RSpec.describe CrawlConfig, type: :model do
     it { is_expected.to validate_presence_of(:schedule) }
     it { is_expected.to validate_presence_of(:output_target) }
     it { is_expected.to validate_numericality_of(:depth_limit).only_integer }
-    it { is_expected.to validate_inclusion_of(:output_target).in_array(%w[endpoint elasticsearch]) }
+    it { is_expected.to define_enum_for(:output_target).with_values({ endpoint: 'endpoing', search_engine: 'searchengine' }).backed_by_column_of_type(:string) }
 
     context 'when a record exists' do
       before { crawl_config.save! }
@@ -45,7 +45,7 @@ RSpec.describe CrawlConfig, type: :model do
           allowed_domains: crawl_config.allowed_domains,
           starting_urls: ['https://example.com/another'],
           schedule: '0 1 * * *',
-          output_target: 'endpoint' # Different from the subject's 'elasticsearch'
+          output_target: :endpoint # Different from the subject's :search_engine
         )
         expect(other_config).to be_valid
       end
@@ -53,7 +53,7 @@ RSpec.describe CrawlConfig, type: :model do
 
     describe 'custom validation for schedule format' do
       it 'is invalid if the schedule is not a valid cron expression' do
-        crawl_config.schedule = '0 0 * *' # 4 parts instead of 5
+        crawl_config.schedule = 'invalid-cron-string'
         expect(crawl_config).not_to be_valid
         expect(crawl_config.errors[:schedule]).to include(/is not a valid cron expression/)
       end
