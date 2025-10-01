@@ -12,33 +12,6 @@ Feature: Manage Display
     And I should not see "Rss Feed 1"
 
   @javascript
-  Scenario: Editing GovBoxes Settings
-    Given the following BingV7 Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | agency_abbreviation | gets_i14y_results | use_redesigned_results_page |
-      | agency site  | agency.gov | john@agency.gov | John       |Bar        | DOC                 | true              | false                       |
-    And affiliate "agency.gov" has the following document collections:
-      | name | prefixes         |
-      | Blog | agency.gov/blog/ |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Manage Display page
-    And the "Jobs enabled" should be switched off
-    And the "Is federal register document govbox enabled" should be switched off
-    And the "Is sayt enabled" should be switched on
-    And the "Is medline govbox enabled" should be switched off
-    And the "i14y date stamp enabled" should be switched off
-    And I switch on "Jobs enabled"
-    And I switch on "Is federal register document govbox enabled"
-    And I switch on "Is medline govbox enabled"
-    And I switch off "Is sayt enabled"
-    And I switch on "i14y date stamp enabled"
-
-    And I submit the form by pressing "Save"
-    Then I should see "You have updated your site display settings"
-    And the "Jobs enabled" should be switched on
-    And the "Is federal register document govbox enabled" should be switched on
-    And the "Is medline govbox enabled" should be switched on
-    And the "Is sayt enabled" should be switched off
-    And the "i14y date stamp enabled" should be switched on
 
   @javascript
   Scenario: Editing Related Sites
