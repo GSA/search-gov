@@ -222,6 +222,11 @@ class SearchElastic::Template
     json.domain_name do
       json.type('text')
       json.analyzer('domain_name_analyzer')
+      json.fields do
+        json.keyword do
+          json.type('keyword')
+        end
+      end
     end
   end
 
