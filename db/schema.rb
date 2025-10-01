@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_06_02_213821) do
+ActiveRecord::Schema[7.1].define(version: 2025_09_29_205000) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -178,6 +178,24 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_02_213821) do
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
     t.index ["affiliate_id"], name: "index_connections_on_affiliate_id"
+  end
+
+  create_table "crawl_configs", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.boolean "active", default: true, null: false
+    t.string "allowed_domains", limit: 2048, null: false
+    t.text "starting_urls", null: false
+    t.text "sitemap_urls"
+    t.text "deny_paths"
+    t.integer "depth_limit", default: 3, null: false
+    t.integer "sitemap_check_hours"
+    t.boolean "allow_query_string", default: false, null: false
+    t.boolean "handle_javascript", default: false, null: false
+    t.string "schedule", null: false
+    t.string "output_target", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["output_target", "allowed_domains"], name: "index_crawl_configs_on_output_target_and_allowed_domains", unique: true, length: { allowed_domains: 255 }
   end
 
   create_table "document_collections", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
