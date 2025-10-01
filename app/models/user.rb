@@ -85,7 +85,10 @@ class User < ApplicationRecord
   # end
 
   def self.mark_inactive_as_timed_out!
-    not_active.update_all(approval_status: 'timed_out', updated_at: Time.current)
+    approved.not_active.update_all(
+      approval_status: 'timed_out',
+      updated_at: Time.current
+    )
   end
 
   def timed_out?
