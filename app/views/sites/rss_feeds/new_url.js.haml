@@ -1,5 +1,0 @@
-= fields_for "rss_feed[rss_feed_urls_attributes][#{@index}]" do |f|
-  :plain
-    jQuery('.form .urls').append("#{escape_javascript(render('url', f: f, keyword: RssFeedUrl.new, index: @index))}");
-    jQuery('#new-url-trigger').data({ params: { index: "#{@index + 1}" } });
-    jQuery('.form .urls input').last().focus();
