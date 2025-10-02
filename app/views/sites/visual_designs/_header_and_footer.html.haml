@@ -14,4 +14,18 @@
 = render 'links', attribute_name: 'primary_header_links', f: f
 = render 'links', attribute_name: 'secondary_header_links', f: f
 
+%fieldset
+  %legend.section-heading= t('.identifier_content', scope: 'admin_center')
+  
+  = f.label :parent_agency_name, t('.parent_agency_name', scope: 'admin_center')
+  = f.text_field :parent_agency_name
+  
+  = f.label :parent_agency_link, t('.parent_agency_link', scope: 'admin_center')
+  = f.text_field :parent_agency_link
+  
+  = f.label :identifier_domain_name, t('.identifier_domain_name', scope: 'admin_center')
+  = f.text_field :identifier_domain_name
+
+= render 'links', attribute_name: 'identifier_links', f: f
+
 %hr

@@ -23,6 +23,24 @@
         = metadata.text_field :alt_text, value: render_logo_alt_text(@site.header_logo.custom_metadata)
 
 %fieldset
+  = f.label :identifier_logo, t('.identifier_logo', scope: 'admin_center')
+  = f.file_field :identifier_logo
+  %span.help-block= t('.image_help_text', scope: 'admin_center', max_file_size: "#{Affiliate::MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB}") 
+  - if @site.identifier_logo.attached? && @site.identifier_logo.persisted?
+    .image= image_tag(@site.identifier_logo, alt: render_logo_alt_text(@site.identifier_logo.custom_metadata))
+    = f.fields_for :identifier_logo_attachment_attributes do |identifier_logo_attachment|
+      = identifier_logo_attachment.hidden_field :id, value: @site.identifier_logo.id
+      = identifier_logo_attachment.label :_destroy, class: 'checkbox' do
+        = identifier_logo_attachment.check_box :_destroy
+        = t('.mark_for_deletion', scope: 'admin_center', image_type: t('.identifier_logo', scope: 'admin_center').downcase)
+    = f.fields_for :identifier_logo_blob_attributes do |identifier_logo_blob|
+      = identifier_logo_blob.hidden_field :id, value: @site.identifier_logo.blob.id
+      = identifier_logo_blob.hidden_field :checksum, value: @site.identifier_logo.blob.checksum
+      = identifier_logo_blob.fields_for :custom_metadata do |metadata|
+        = metadata.label :alt_text, t('.alt_text', scope: 'admin_center', image_type: t('.identifier_logo', scope: 'admin_center'))
+        = metadata.text_field :alt_text, value: render_logo_alt_text(@site.identifier_logo.custom_metadata)
+
+%fieldset
   = f.label :display_logo_only, class: 'checkbox' do
     = f.check_box :display_logo_only
     = t('.display_logo_only', scope: 'admin_center')
