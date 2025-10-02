@@ -83,7 +83,7 @@ When /I click on the "(.+?)" page/ do |link|
 end
 
 Then /I should be on page "(.+?)" of results/ do |page|
-  current_page = find('a[class="usa-link usa-pagination__button usa-current"]').text
+  current_page = find('a.usa-pagination__button.usa-current').text
   expect(current_page).to eq(page)
 end
 
