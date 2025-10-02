@@ -80,6 +80,19 @@ EmailTemplate.load_default_templates
 
 TestServices::create_es_indexes
 
+# Create SearchElastic index for tests
+begin
+  if ENV['SEARCHELASTIC_INDEX'].present?
+    index_name = ENV['SEARCHELASTIC_INDEX']
+    # Delete existing index if it exists
+    ES.client.indices.delete(index: index_name, ignore_unavailable: true)
+    # Create new index with correct mapping
+    ES.create_index
+  end
+rescue StandardError => e
+  Rails.logger.warn "Could not create SearchElastic index: #{e.message}"
+end
+
 at_exit do
   TestServices::delete_es_indexes
   exit ScenarioStatusTracker.success
