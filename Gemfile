@@ -145,6 +145,7 @@ gem 'feedjira', '~> 3.2'
 gem 'bootsnap', require: false
 gem 'rails_semantic_logger', '~> 4.14'
 gem 'whenever', '~> 1.0', require: false
+gem 'fugit', '~> 1.8'
 gem 'puma', '~> 5.6'
 
 # Bundle gems for the local environment. Make sure to
