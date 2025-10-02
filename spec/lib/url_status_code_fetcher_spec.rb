@@ -16,6 +16,7 @@ describe UrlStatusCodeFetcher do
 
         expect(responses).to eq({ valid_url => '200',
                               invalid_url => '404' })
+
         expect(responses[invalid_url]).to eq('404')
       end
     end
