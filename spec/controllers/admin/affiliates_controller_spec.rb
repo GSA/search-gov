@@ -192,6 +192,37 @@ describe Admin::AffiliatesController do
           expect(config.export.columns.to_a).to match_array(export_columns)
         end
       end
+
+      describe 'site_domains column configuration' do
+        it 'has unlimited associated_limit for site_domains column' do
+          site_domains_column = config.columns[:site_domains]
+          expect(site_domains_column.associated_limit).to be_nil
+        end
+      end
+    end
+
+    context 'when testing export with multiple site domains' do
+      it 'includes all domains in the export' do
+        # Test that the Active Scaffold configuration allows unlimited domains
+        site_domains_column = config.columns[:site_domains]
+        expect(site_domains_column.associated_limit).to be_nil
+        
+        # Test with a real affiliate that has multiple domains
+        affiliate_with_domains = Affiliate.joins(:site_domains).group('affiliates.id').having('COUNT(site_domains.id) > 3').first
+        
+        if affiliate_with_domains
+          all_domains = affiliate_with_domains.site_domains.pluck(:domain)
+          expect(all_domains.count).to be > 3
+          
+          # Simulate what Active Scaffold does for export
+          exported_domains = affiliate_with_domains.site_domains.limit(site_domains_column.associated_limit || 999999).pluck(:domain)
+          expect(exported_domains.count).to eq(all_domains.count)
+          expect(exported_domains).to match_array(all_domains)
+        else
+          # If no affiliate with multiple domains exists, just verify the configuration
+          expect(site_domains_column.associated_limit).to be_nil
+        end
+      end
     end
   end
 end

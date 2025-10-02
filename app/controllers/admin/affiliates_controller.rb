@@ -161,6 +161,7 @@ class Admin::AffiliatesController < Admin::AdminController
 
     config.columns[:favicon_url].label = 'Favicon URL'
     config.columns[:features].associated_limit = nil
+    config.columns[:site_domains].associated_limit = nil
 
     config.columns[:footer_fragment].form_ui = :textarea
 
