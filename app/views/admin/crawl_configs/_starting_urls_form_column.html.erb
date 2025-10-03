@@ -1,0 +1,7 @@
+<dl>
+  <dt><%= label :record, :starting_urls, column.label %></dt>
+  <dd>
+    <%= text_area :record, :starting_urls, value: (record.starting_urls.is_a?(Array) ? record.starting_urls.join("\n") : record.starting_urls), cols: 60, rows: 5 %>
+    <span class="description">Enter one URL per line</span>
+  </dd>
+</dl>

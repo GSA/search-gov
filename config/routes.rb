@@ -178,6 +178,7 @@ Rails.application.routes.draw do
     resources :catalog_prefixes, concerns: :active_scaffold
     resources :site_feed_urls, concerns: :active_scaffold
     resources :superfresh_urls, concerns: :active_scaffold
+    resources :crawl_configs, concerns: :active_scaffold
     resources :superfresh_urls_bulk_upload, only: :index do
       collection do
         post :upload

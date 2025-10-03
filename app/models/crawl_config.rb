@@ -6,7 +6,7 @@ class CrawlConfig < ApplicationRecord
   serialize :sitemap_urls, coder: JSON
   serialize :starting_urls, coder: JSON
 
-  enum :output_target, { endpoint: 'endpoing', search_engine: 'searchengine' }
+  enum :output_target, { endpoint: 'endpoing', search_engine: 'searchengine' }, prefix: :target
 
   before_validation :initialize_empty_arrays
   before_validation :normalize_domains_and_urls

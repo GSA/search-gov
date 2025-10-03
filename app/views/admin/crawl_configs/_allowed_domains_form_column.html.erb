@@ -1,0 +1,7 @@
+<dl>
+  <dt><%= label :record, :allowed_domains, column.label %></dt>
+  <dd>
+    <%= text_area :record, :allowed_domains, value: (record.allowed_domains.is_a?(Array) ? record.allowed_domains.join("\n") : record.allowed_domains), cols: 60, rows: 5 %>
+    <span class="description">Enter one domain per line (e.g., example.gov)</span>
+  </dd>
+</dl>
