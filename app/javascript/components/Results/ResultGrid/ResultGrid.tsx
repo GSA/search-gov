@@ -69,6 +69,7 @@ export const ResultGrid = ({ result, affiliate, query, position, vertical, facet
     const moduleKey = `web${vertical.charAt(0).toUpperCase() + vertical.slice(1)}`;
     return moduleCode[moduleKey as keyof typeof moduleCode];
   })();
+  const finalTitle = result.title || result.url;
 
   return (
     <GridContainer className='result search-result-item'>
@@ -92,7 +93,7 @@ export const ResultGrid = ({ result, affiliate, query, position, vertical, facet
                 url={result.url}
                 className='result-title-link'
                 clickTracking={() => clickTracking(affiliate, module, query, position, result.url, vertical)}>
-                {parse(result.title)}
+                {parse(finalTitle)}
                 {getFileType(result.fileType)}
               </ResultTitle>
             </h2>
