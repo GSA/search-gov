@@ -1,0 +1,7 @@
+<dl>
+  <dt><%= label :record, :deny_paths, column.label %></dt>
+  <dd>
+    <%= text_area :record, :deny_paths, value: (record.deny_paths.is_a?(Array) ? record.deny_paths.join("\n") : record.deny_paths), cols: 60, rows: 3 %>
+    <span class="description">Optional: Enter one path pattern per line to exclude</span>
+  </dd>
+</dl>
