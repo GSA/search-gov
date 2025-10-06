@@ -32,6 +32,10 @@ phases:
 
   pre_build:
     commands:
+      - echo "Cleaning up Git environment..."
+      - git config --global --add safe.directory '*' || true
+      - git config --global gc.auto 0 || true
+      - rm -rf ~/.bundle || true
       - aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' --output text > $SEARCH_ENV_EC2_KEY
   build:
     commands:
