@@ -1,7 +1,1 @@
-<dl>
-  <dt><%= label :record, :sitemap_urls, column.label %></dt>
-  <dd>
-    <%= text_area :record, :sitemap_urls, value: (record.sitemap_urls.is_a?(Array) ? record.sitemap_urls.join("\n") : record.sitemap_urls), cols: 60, rows: 3 %>
-    <span class="description">Optional: Enter one sitemap URL per line</span>
-  </dd>
-</dl>
+<%= render partial: 'array_field_form_column', locals: { column: column, record: record } %>
