@@ -43,7 +43,8 @@ phases:
       - echo "deploying ***gov app with capistrano"
       - bundle install --no-cache
       # - cap $SEARCH_ENV puma:config puma:systemd:config puma:systemd:enable
-      - cap $SEARCH_ENV deploy
+      - cap $SEARCH_ENV invoke "sudo rm -rf /var/www/caps/repo && sudo mkdir -p /var/www/caps/repo && sudo chown -R ssm-user:ssm-user /var/www/caps" || true
+      - cap $SEARCH_ENV deploy      
       - cap $SEARCH_ENV resque:restart
       - cap $SEARCH_ENV resque:scheduler:restart
 
