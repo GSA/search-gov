@@ -3,11 +3,15 @@ class Admin::CrawlConfigsController < Admin::AdminController
     config.label = 'Crawl Configs'
     config.columns = [
       :name,
+      :active,
       :allowed_domains,
       :starting_urls,
       :sitemap_urls,
       :deny_paths,
       :depth_limit,
+      :sitemap_check_hours,
+      :allow_query_string,
+      :handle_javascript,
       :schedule,
       :output_target,
       :created_at,
@@ -15,6 +19,9 @@ class Admin::CrawlConfigsController < Admin::AdminController
     ]
 
     # Form configuration
+    config.columns[:active].form_ui = :checkbox
+    config.columns[:active].description = 'Enable or disable this crawl configuration'
+
     config.columns[:allowed_domains].form_ui = :textarea
     config.columns[:allowed_domains].options = { cols: 60, rows: 5 }
     config.columns[:allowed_domains].description = 'Enter one domain per line (e.g., example.gov)'
@@ -32,12 +39,17 @@ class Admin::CrawlConfigsController < Admin::AdminController
     config.columns[:deny_paths].description = 'Optional: Enter one path pattern per line to exclude'
 
     config.columns[:depth_limit].description = 'Maximum crawl depth (integer)'
+    config.columns[:sitemap_check_hours].description = 'Optional: Hours between sitemap checks (integer)'
+    config.columns[:allow_query_string].form_ui = :checkbox
+    config.columns[:allow_query_string].description = 'Allow URLs with query strings'
+    config.columns[:handle_javascript].form_ui = :checkbox
+    config.columns[:handle_javascript].description = 'Enable JavaScript rendering during crawl'
     config.columns[:schedule].description = 'Cron expression (e.g., "0 0 * * *" for daily at midnight)'
     config.columns[:output_target].form_ui = :select
 
     # List configuration
     config.list.sorting = { name: :asc }
-    config.list.columns = [:name, :allowed_domains, :depth_limit, :schedule, :output_target, :created_at]
+    config.list.columns = [:name, :allowed_domains, :starting_urls, :sitemap_urls, :depth_limit, :schedule, :output_target]
 
     # Actions
     config.actions.exclude :search
