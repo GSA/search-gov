@@ -1,5 +1,6 @@
 
 version: 0.2
+
 env:
   parameter-store:
     APP_SERVER_ADDRESSES: "DEPLOY_SEARCHGOV_SERVER_ADDRESS"
@@ -10,6 +11,7 @@ env:
     SEARCHGOV_THREADS: "SEARCHGOV_THREADS"
     SEARCHGOV_WORKERS: "SEARCHGOV_WORKERS"
     SERVER_DEPLOYMENT_USER: "DEPLOY_SERVER_DEPLOYMENT_USER"
+
   exported-variables:
     - APP_SERVER_ADDRESSES
     - DEPLOYMENT_PATH
@@ -33,21 +35,81 @@ phases:
     commands:
       - rm -rf ~/.bundle/cache || true
       - rm -rf vendor/bundle || true
-      - aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' --output text > $SEARCH_ENV_EC2_KEY
+      - aws secretsmanager get-secret-value --secret-id "$SEARCH_SECRETSMANAGER_KEY_SECRET_NAME" --region "$SEARCH_AWS_REGION" --query 'SecretString' --output text > "$SEARCH_ENV_EC2_KEY"
 
   build:
     commands:
-      - CURRENT_LOCATION=$(pwd)
+      - CURRENT_LOCATION="$(pwd)"
       - SSH_KEY_PATH="${CURRENT_LOCATION}/${SEARCH_ENV_EC2_KEY}"
-      - echo $SSH_KEY_PATH
-      - echo "deploying ***gov app with capistrano"
+      - echo "$SSH_KEY_PATH"
+
+      - echo "cleaning remote Capistrano mirror at \$DEPLOYMENT_PATH/repo …"
+      - |
+        cap "$SEARCH_ENV" invoke "bash -lc 'set -euo pipefail
+          DEPLOYMENT_PATH=${DEPLOYMENT_PATH}
+          REPO_PATH=\"${DEPLOYMENT_PATH%/}/repo\"
+
+          sudo mkdir -p \"$DEPLOYMENT_PATH\"
+          sudo chown -R $SERVER_DEPLOYMENT_USER:$SERVER_DEPLOYMENT_USER \"$DEPLOYMENT_PATH\"
+
+          sudo -u $SERVER_DEPLOYMENT_USER bash -lc \"
+            set -euo pipefail
+            # ensure a bare repo exists (origin will already be set by prior deploys)
+            if [ ! -d \\\"$REPO_PATH\\\" ]; then
+              mkdir -p \\\"$REPO_PATH\\\"
+              cd \\\"$REPO_PATH\\\"
+              git init --bare
+            fi
+
+            cd \\\"$REPO_PATH\\\"
+
+            # if origin is missing for some reason, bail with a clear message
+            if ! git remote get-url origin >/dev/null 2>&1; then
+              echo 'ERROR: remote mirror has no origin. Run one successful deploy (or set :repo_url) to seed the mirror.' >&2
+              exit 1
+            fi
+
+            # sanitize refspecs: heads + tags only; no PR refs
+            git config remote.origin.fetch \\\"+refs/heads/*:refs/heads/*\\\"
+            git config --unset-all remote.origin.fetch '^\\\+\\?refs/pull/.*' 2>/dev/null || true
+            git config --add remote.origin.fetch \\\"+refs/tags/*:refs/tags/*\\\"
+
+            # purge any stray PR refs from the mirror
+            find . -type f -path ./refs/pull/'*' -print -delete || true
+            sed -i '/refs\\/pull\\//d' packed-refs 2>/dev/null || true
+
+            # fetch fresh; on failure, recreate mirror preserving origin URL
+            origin_url=\\\$(git remote get-url origin)
+            if ! git fetch origin --prune --tags --force; then
+              cd \\\"$DEPLOYMENT_PATH\\\"
+              rm -rf repo
+              mkdir -p repo
+              cd repo
+              git init --bare
+              git remote add origin \\\"$origin_url\\\"
+              git config remote.origin.fetch \\\"+refs/heads/*:refs/heads/*\\\"
+              git config --add remote.origin.fetch \\\"+refs/tags/*:refs/tags/*\\\"
+              git fetch origin --prune --tags --force
+            fi
+
+            # quick health check & debug
+            git fsck --no-dangling || true
+            echo \\\"Remote: \\\" \\\"$origin_url\\\"
+            echo \\\"Refspecs:\\\"
+            git config --get-all remote.origin.fetch
+            echo \\\"Heads (sample):\\\"
+            git show-ref --heads | head -20
+          \"
+        '"
+
+      - echo "installing gems…"
       - bundle install --no-cache
-      # - cap $SEARCH_ENV puma:config puma:systemd:config puma:systemd:enable
-      - cap $SEARCH_ENV invoke "sudo rm -rf /var/www/caps/repo && sudo mkdir -p /var/www/caps/repo && sudo chown -R ssm-user:ssm-user /var/www/caps" || true
-      - cap $SEARCH_ENV deploy      
-      - cap $SEARCH_ENV resque:restart
-      - cap $SEARCH_ENV resque:scheduler:restart
+
+      - echo "deploying with capistrano…"
+      - cap "$SEARCH_ENV" deploy
+      - cap "$SEARCH_ENV" resque:restart
+      - cap "$SEARCH_ENV" resque:scheduler:restart
 
 artifacts:
   files:
-    - '**/*'
+    - "**/*"
