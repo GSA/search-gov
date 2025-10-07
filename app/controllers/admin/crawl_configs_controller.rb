@@ -1,22 +1,24 @@
 class Admin::CrawlConfigsController < Admin::AdminController
+  COLUMNS = %i[
+    name
+    active
+    allowed_domains
+    starting_urls
+    sitemap_urls
+    deny_paths
+    depth_limit
+    sitemap_check_hours
+    allow_query_string
+    handle_javascript
+    schedule
+    output_target
+    created_at
+    updated_at
+  ].freeze
+
   active_scaffold :crawl_config do |config|
     config.label = 'Crawl Configs'
-    config.columns = [
-      :name,
-      :active,
-      :allowed_domains,
-      :starting_urls,
-      :sitemap_urls,
-      :deny_paths,
-      :depth_limit,
-      :sitemap_check_hours,
-      :allow_query_string,
-      :handle_javascript,
-      :schedule,
-      :output_target,
-      :created_at,
-      :updated_at
-    ]
+    config.columns = COLUMNS
 
     # Form configuration
     config.columns[:active].form_ui = :checkbox
@@ -49,14 +51,13 @@ class Admin::CrawlConfigsController < Admin::AdminController
 
     # List configuration
     config.list.sorting = { name: :asc }
-    config.list.columns = [:name, :allowed_domains, :starting_urls, :sitemap_urls, :depth_limit, :schedule, :output_target]
+    config.list.columns = %i[name allowed_domains starting_urls sitemap_urls depth_limit schedule output_target]
 
     # Actions
     config.actions.exclude :search
     config.actions.add :field_search, :export
-    config.field_search.columns = [:name, :allowed_domains, :output_target]
-
-    config.export.columns = config.columns
+    config.field_search.columns = %i[name allowed_domains output_target]
+    config.export.columns = COLUMNS
   end
 
   # Override to handle array inputs from textarea
