@@ -36,8 +36,9 @@ phases:
 
   pre_build:
     commands:
-      - rm -rf ~/.bundle || true
       - rm -rf vendor/bundle || true
+      - rm -rf /root/.rbenv/versions/3.3.7/lib/ruby/gems/3.3.0/cache/bundler/git/omniauth_login_dot_gov-* || true
+      - rm -rf /root/.rbenv/versions/3.3.7/lib/ruby/gems/3.3.0/bundler/gems/omniauth_login_dot_gov-* || true
       - aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' --output text > $SEARCH_ENV_EC2_KEY
   build:
     commands:
@@ -45,7 +46,8 @@ phases:
       - SSH_KEY_PATH="${CURRENT_LOCATION}/${SEARCH_ENV_EC2_KEY}"
       - echo $SSH_KEY_PATH
       - echo "deploying searchgov app with capistrano"
-      - bundle install --clean --no-cache
+      - bundle config set clean true
+      - bundle install --no-cache     
       # - cap $SEARCH_ENV puma:config puma:systemd:config puma:systemd:enable
       - cap $SEARCH_ENV invoke "sudo rm -rf /var/www/caps/repo && sudo mkdir -p /var/www/caps/repo && sudo chown -R ssm-user:ssm-user /var/www/caps" || true
       - cap $SEARCH_ENV deploy
