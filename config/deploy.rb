@@ -15,7 +15,7 @@ set :puma_threads,            [ENV.fetch('SEARCHGOV_MIN_THREADS', SEARCHGOV_THRE
 set :puma_workers,            ENV.fetch('SEARCHGOV_WORKERS') { 0 }
 set :rails_env,               'production'
 set :rbenv_type,              :user
-set :repo_url,                'https://github.com/GSA/search-gov'
+set :repo_url,                'git@github.com:GSA/search-gov.git'
 set :resque_environment_task, true
 set :resque_extra_env,        "RAILS_ROOT=#{ENV['DEPLOYMENT_PATH']}current"
 set :systemctl_user,          :system
@@ -36,7 +36,7 @@ role :web,              JSON.parse(ENV.fetch('APP_SERVER_ADDRESSES', '[]')),    
 
 set :ssh_options, {
   auth_methods:  %w(publickey),
-  forward_agent: false,
+  forward_agent: true,
   keys:          [ENV['SSH_KEY_PATH']],
   user:          ENV['SERVER_DEPLOYMENT_USER'],
 }
