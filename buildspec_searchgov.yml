@@ -28,7 +28,7 @@ phases:
     commands:
       - export PATH="$HOME/.rbenv/bin:$PATH"
       - eval "$(rbenv init -)"
-      - git config --global remote.origin.fetch '+refs/heads/:refs/remotes/origin/*'
+      - git config --global remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
       - git config --global --add safe.directory '*'
       - git config --global gc.auto 0
 
