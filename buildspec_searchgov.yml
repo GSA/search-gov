@@ -48,7 +48,7 @@ phases:
       - bundle config set --local path 'vendor/bundle'
       - bundle install --jobs=4 --retry=3
       # - cap $SEARCH_ENV puma:config puma:systemd:config puma:systemd:enable
-      - bundle exec cap $SEARCH_ENV invoke "sudo rm -rf /var/www/caps/repo && sudo mkdir -p /var/www/caps/repo && sudo chown -R ssm-user:ssm-user /var/www/caps" || true
+      - bundle exec cap $SEARCH_ENV invoke "sudo rm -rf /var/www/caps && sudo mkdir -p /var/www/caps/repo && sudo chown -R ssm-user:ssm-user /var/www/caps" || true
       - bundle exec cap $SEARCH_ENV deploy
       - bundle exec cap $SEARCH_ENV resque:restart
       - bundle exec cap $SEARCH_ENV resque:scheduler:restart
