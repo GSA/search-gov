@@ -30,13 +30,12 @@ phases:
       - eval "$(rbenv init -)"
       - git config --global remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
       - git config --global --add safe.directory '*'
-      - git config --global gc.auto 0
 
 
   pre_build:
     commands:
       - rm -rf ~/.bundle || true
-      - rm -rf vendor/bundle || true
+      - BUNDLE_ALLOW_ROOT=true bundle install --no-cache
       - aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' --output text > $SEARCH_ENV_EC2_KEY
   build:
     commands:
