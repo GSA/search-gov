@@ -1,0 +1,7 @@
+<dl>
+  <dt><%= label :record, column.name, column.label %></dt>
+  <dd>
+    <%= text_area :record, column.name, value: (record.send(column.name).is_a?(Array) ? record.send(column.name).join("\n") : record.send(column.name)), cols: column.options[:cols], rows: column.options[:rows] %>
+    <span class="description"><%= column.description %></span>
+  </dd>
+</dl>
