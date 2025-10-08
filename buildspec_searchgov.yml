@@ -37,7 +37,8 @@ phases:
       - rm -rf ~/.bundle || true
       - rm -rf vendor/bundle || true
       - aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' --output text > $SEARCH_ENV_EC2_KEY
-      - chmod 600 /tmp/key
+      - chmod 600 "$KEY_PATH"
+      - export SSH_KEY_PATH="$KEY_PATH"
       
   build:
     commands:
