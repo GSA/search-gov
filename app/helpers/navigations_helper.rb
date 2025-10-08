@@ -21,14 +21,6 @@ module NavigationsHelper
   def build_image_search_navigable_label(navigable)
     labels = +''
     site = navigable.affiliate
-    if site.flickr_profiles.exists?
-      append_navigation_label labels,
-                              link_to('Flickr', site_flickr_urls_path(site))
-    end
-    if site.rss_feeds.mrss.exists?
-      append_navigation_label labels,
-                              link_to('MRSS', site_rss_feeds_path(site))
-    end
     labels.html_safe
   end
 
