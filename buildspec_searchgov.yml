@@ -35,7 +35,7 @@ phases:
   pre_build:
     commands:
       - rm -rf ~/.bundle || true
-      - BUNDLE_ALLOW_ROOT=true bundle install --no-cache
+      - rm -rf vendor/bundle || true
       - aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' --output text > $SEARCH_ENV_EC2_KEY
   build:
     commands:
@@ -44,8 +44,10 @@ phases:
       - echo $SSH_KEY_PATH
       - echo "deploying searchgov app with capistrano"
       - rm -rf vendor/bundle .bundle
-      - bundle install --no-cache
-  #   - cap $SEARCH_ENV puma:config puma:systemd:config puma:systemd:enable
+      - bundle config set --local silence_root_warning true
+      - bundle config set --local path 'vendor/bundle'
+      - bundle install --jobs=4 --retry=3
+      # - cap $SEARCH_ENV puma:config puma:systemd:config puma:systemd:enable
       - cap $SEARCH_ENV invoke "sudo rm -rf /var/www/caps/repo && sudo mkdir -p /var/www/caps/repo && sudo chown -R ssm-user:ssm-user /var/www/caps" || true
       - cap $SEARCH_ENV deploy
       - cap $SEARCH_ENV resque:restart
