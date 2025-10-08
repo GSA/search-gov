@@ -51,7 +51,6 @@ phases:
       - mkdir -p ~/.ssh
       - chmod 700 ~/.ssh
       - eval $(ssh-agent -s)
-      - ssh-add /tmp/key
       - echo "Host *" > ~/.ssh/config
       - echo "  StrictHostKeyChecking no" >> ~/.ssh/config
       - echo "  UserKnownHostsFile=/dev/null" >> ~/.ssh/config
