@@ -37,6 +37,8 @@ phases:
       - rm -rf ~/.bundle || true
       - rm -rf vendor/bundle || true
       - aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' --output text > $SEARCH_ENV_EC2_KEY
+      - chmod 600 /tmp/key
+      
   build:
     commands:
       - CURRENT_LOCATION=$(pwd)  # would look something like this - /codebuild/output/src559980389/src - a temp dir created by codebuild
@@ -47,6 +49,15 @@ phases:
       - bundle config set --local silence_root_warning true
       - bundle config set --local path 'vendor/bundle'
       - bundle install --jobs=4 --retry=3
+      - mkdir -p ~/.ssh
+      - chmod 700 ~/.ssh
+      - eval $(ssh-agent -s)
+      - ssh-add /tmp/key
+      - echo "Host *" > ~/.ssh/config
+      - echo "  StrictHostKeyChecking no" >> ~/.ssh/config
+      - echo "  UserKnownHostsFile=/dev/null" >> ~/.ssh/config
+      - echo "  ForwardAgent yes" >> ~/.ssh/config
+      - chmod 600 ~/.ssh/config
       # - cap $SEARCH_ENV puma:config puma:systemd:config puma:systemd:enable
       - bundle exec cap $SEARCH_ENV invoke "sudo rm -rf /var/www/caps && sudo mkdir -p /var/www/caps/repo && sudo chown -R ssm-user:ssm-user /var/www/caps" || true
       - bundle exec cap $SEARCH_ENV deploy
