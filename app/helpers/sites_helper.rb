@@ -106,7 +106,6 @@ module SitesHelper
        api_instructions
        embed_codes
        i14y_api_instructions
-       type_ahead_api_instructions
        click_tracking_api_instructions]
   end
 
