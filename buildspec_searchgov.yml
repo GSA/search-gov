@@ -28,10 +28,15 @@ phases:
     commands:
       - export PATH="$HOME/.rbenv/bin:$PATH"
       - eval "$(rbenv init -)"
+      - git config --global remote.origin.fetch '+refs/heads/:refs/remotes/origin/'
+      - git config --global --add safe.directory '*'
+      - git config --global gc.auto 0
 
 
   pre_build:
     commands:
+      - rm -rf ~/.bundle || true
+      - rm -rf vendor/bundle || true
       - aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' --output text > $SEARCH_ENV_EC2_KEY
   build:
     commands:
@@ -39,8 +44,10 @@ phases:
       - SSH_KEY_PATH="${CURRENT_LOCATION}/${SEARCH_ENV_EC2_KEY}"
       - echo $SSH_KEY_PATH
       - echo "deploying searchgov app with capistrano"
-      - bundle install
-      - cap $SEARCH_ENV puma:config puma:systemd:config puma:systemd:enable
+      - rm -rf vendor/bundle .bundle
+      - bundle install --no-cache
+  #   - cap $SEARCH_ENV puma:config puma:systemd:config puma:systemd:enable
+      - cap $SEARCH_ENV invoke "sudo rm -rf /var/www/caps/repo && sudo mkdir -p /var/www/caps/repo && sudo chown -R ssm-user:ssm-user /var/www/caps" || true
       - cap $SEARCH_ENV deploy
       - cap $SEARCH_ENV resque:restart
       - cap $SEARCH_ENV resque:scheduler:restart
