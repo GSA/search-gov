@@ -22,7 +22,7 @@ RSpec.describe CrawlConfig, type: :model do
     it { is_expected.to validate_presence_of(:schedule) }
     it { is_expected.to validate_presence_of(:output_target) }
     it { is_expected.to validate_numericality_of(:depth_limit).only_integer }
-    it { is_expected.to define_enum_for(:output_target).with_values({ endpoint: 'endpoing', search_engine: 'searchengine' }).backed_by_column_of_type(:string) }
+    it { is_expected.to define_enum_for(:output_target).with_values(endpoint: 'endpoint', search_engine: 'searchengine').backed_by_column_of_type(:string).with_prefix(:target) }
 
     context 'when a record exists' do
       before { crawl_config.save! }
