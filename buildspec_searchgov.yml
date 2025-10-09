@@ -45,7 +45,9 @@ phases:
       - echo $SSH_KEY_PATH
       - echo "deploying searchgov app with capistrano"
       - rm -rf vendor/bundle .bundle
-      - bundle install --no-cache
+      - bundle config set --local silence_root_warning true
+      - bundle config set --local path 'vendor/bundle'
+      - bundle install --jobs=4 --retry=3
   #   - cap $SEARCH_ENV puma:config puma:systemd:config puma:systemd:enable
       - cap $SEARCH_ENV invoke "sudo rm -rf /var/www/caps/repo && sudo mkdir -p /var/www/caps/repo && sudo chown -R ssm-user:ssm-user /var/www/caps" || true
       - cap $SEARCH_ENV deploy
