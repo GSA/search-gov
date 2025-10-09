@@ -1,5 +1,6 @@
 
 version: 0.2
+
 env:
   parameter-store:
     APP_SERVER_ADDRESSES: "DEPLOY_SEARCHGOV_SERVER_ADDRESS"
@@ -10,16 +11,13 @@ env:
     SEARCHGOV_THREADS: "SEARCHGOV_THREADS"
     SEARCHGOV_WORKERS: "SEARCHGOV_WORKERS"
     SERVER_DEPLOYMENT_USER: "DEPLOY_SERVER_DEPLOYMENT_USER"
-
-    # shared deployment variables with subsequent stages - might not to export as this is the final stage
-exported-variables:
+  exported-variables:
     - APP_SERVER_ADDRESSES
     - DEPLOYMENT_PATH
     - RESQUE_SERVER_ADDRESSES
     - SEARCHGOV_THREADS
     - SEARCHGOV_WORKERS
     - SERVER_DEPLOYMENT_USER
-    - SSH_KEY_PATH
 
 phases:
   install:
@@ -31,36 +29,87 @@ phases:
       - git config --global --add safe.directory '*'
       - git config --global advice.detachedHead false
 
-
   pre_build:
     commands:
-      - rm -rf ~/.bundle || true
-      - rm -rf vendor/bundle || true
-      - aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' --output text > $SEARCH_ENV_EC2_KEY
-      
+      - rm -rf ~/.bundle vendor/bundle || true
+      # Write SSH key for server access
+      - aws secretsmanager get-secret-value --secret-id "$SEARCH_SECRETSMANAGER_KEY_SECRET_NAME" --region "$SEARCH_AWS_REGION" --query 'SecretString' --output text > "$SEARCH_ENV_EC2_KEY"
+      - chmod 600 "$SEARCH_ENV_EC2_KEY"
+
   build:
     commands:
-      - CURRENT_LOCATION=$(pwd)  # would look something like this - /codebuild/output/src559980389/src - a temp dir created by codebuild
-      - SSH_KEY_PATH="${CURRENT_LOCATION}/${SEARCH_ENV_EC2_KEY}"
-      - echo $SSH_KEY_PATH
       - echo "deploying searchgov app with capistrano"
-      - rm -rf vendor/bundle .bundle
+      # Bundle setup (local vendor dir avoids global gems)
       - bundle config set --local silence_root_warning true
       - bundle config set --local path 'vendor/bundle'
       - bundle install --jobs=4 --retry=3
-      - mkdir -p ~/.ssh
-      - chmod 700 ~/.ssh
-      - eval $(ssh-agent -s)
-      - echo "Host *" > ~/.ssh/config
-      - echo "  StrictHostKeyChecking no" >> ~/.ssh/config
-      - echo "  UserKnownHostsFile=/dev/null" >> ~/.ssh/config
-      - echo "  ForwardAgent yes" >> ~/.ssh/config
+
+      # SSH agent + config for remote servers
+      - eval "$(ssh-agent -s)"
+      - ssh-add "$SEARCH_ENV_EC2_KEY"
+      - mkdir -p ~/.ssh && chmod 700 ~/.ssh
+      - |
+        cat > ~/.ssh/config <<'CFG'
+        Host *
+          StrictHostKeyChecking no
+          UserKnownHostsFile /dev/null
+          ForwardAgent yes
+        CFG
       - chmod 600 ~/.ssh/config
-      # - cap $SEARCH_ENV puma:config puma:systemd:config puma:systemd:enable
-      - bundle exec cap $SEARCH_ENV invoke "sudo rm -rf /var/www/caps && sudo mkdir -p /var/www/caps/repo && sudo chown -R ssm-user:ssm-user /var/www/caps" || true
-      - bundle exec cap $SEARCH_ENV deploy
-      - bundle exec cap $SEARCH_ENV resque:restart
-      - bundle exec cap $SEARCH_ENV resque:scheduler:restart
+
+      # Ensure deployment path exists & is owned by the deploy user
+      - bundle exec cap "$SEARCH_ENV" invoke "sudo mkdir -p \"$DEPLOYMENT_PATH\" && sudo chown -R $SERVER_DEPLOYMENT_USER:$SERVER_DEPLOYMENT_USER \"$DEPLOYMENT_PATH\""
+
+      # --- SANITIZE/REPAIR REMOTE GIT MIRROR (fixes 'reference broken') ---
+      - >
+        bundle exec cap "$SEARCH_ENV" invoke
+        "bash -lc 'set -euo pipefail
+          REPO_PATH=\"${DEPLOYMENT_PATH%/}/repo\"
+          mkdir -p \"$REPO_PATH\"
+          cd \"$REPO_PATH\"
+
+          # Create bare repo if missing
+          if [ ! -d objects ]; then
+            git init --bare
+          fi
+
+          # Must have origin set by prior deploy / :repo_url
+          if ! git remote get-url origin >/dev/null 2>&1; then
+            echo \"ERROR: remote mirror has no origin. Seed it by running a normal deploy once (sets :repo_url).\" >&2
+            exit 1
+          fi
+
+          # Limit refspecs to heads & tags only (no PR refs)
+          git config remote.origin.fetch \"+refs/heads/*:refs/heads/*\"
+          git config --unset-all remote.origin.fetch '^\\+\\?refs/pull/.*' 2>/dev/null || true
+          git config --add remote.origin.fetch \"+refs/tags/*:refs/tags/*\"
+
+          # Purge any lingering PR refs from mirror
+          find refs -type d -path \"*/pull\" -prune -exec rm -rf {} + 2>/dev/null || true
+          find refs -type f -path \"refs/pull/*\" -print -delete 2>/dev/null || true
+          sed -i \"/^.*refs\\/pull\\//d\" packed-refs 2>/dev/null || true
+
+          # Fresh fetch with prune/force; if still bad, recreate mirror
+          origin_url=$(git remote get-url origin)
+          if ! git fetch origin --prune --tags --force; then
+            cd \"${DEPLOYMENT_PATH}\"
+            rm -rf repo
+            git init --bare repo
+            cd repo
+            git remote add origin \"$origin_url\"
+            git config remote.origin.fetch \"+refs/heads/*:refs/heads/*\"
+            git config --add remote.origin.fetch \"+refs/tags/*:refs/tags/*\"
+            git fetch origin --prune --tags --force
+          fi
+
+          git gc --prune=now --aggressive || true
+          git fsck --no-dangling || true
+        '"
+
+      # Deploy + workers restart
+      - bundle exec cap "$SEARCH_ENV" deploy
+      - bundle exec cap "$SEARCH_ENV" resque:restart
+      - bundle exec cap "$SEARCH_ENV" resque:scheduler:restart
 
 artifacts:
   files:
