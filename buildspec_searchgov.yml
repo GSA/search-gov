@@ -35,25 +35,20 @@ phases:
     commands:
       - rm -rf ~/.bundle || true
       - rm -rf vendor/bundle || true
-      - aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' | tr -d '"' > /tmp/key
-      - chmod 600 /tmp/key
-      - echo "Configuring HTTPS Git authentication using Github token"
+       aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' --output text > $SEARCH_ENV_EC2_KEY      - echo "Configuring HTTPS Git authentication using Github token"
       - git config --global credential.helper store
       - echo "https://${GITHUB_TOKEN}:x-oauth-basic@github.com" > ~/.git-credentials
       
   build:
     commands:
       - CURRENT_LOCATION=$(pwd)  
-      - SSH_KEY_PATH="${CURRENT_LOCATION}/${SEARCH_ENV_EC2_KEY}"
+       - SSH_KEY_PATH="${CURRENT_LOCATION}/${SEARCH_ENV_EC2_KEY}"
       - echo $SSH_KEY_PATH
       - echo "deploying searchgov app with capistrano (HTTPS-based auth)"
       - rm -rf vendor/bundle .bundle
       - bundle config set --local silence_root_warning true
-      - bundle config set --local path 'vendor/bundle'
+      - bundle config set--local path 'vendor/bundle'
       - bundle install --jobs=4 --retry=3
-      - eval $(ssh-agent -s)
-      - ssh-add /tmp/key
-      - mkdir -p ~/.ssh && echo -e "Host *\n StrictHostKeyChecking no\n UserKnownHostsFile=/dev/null" > ~/.ssh/config
   #   - cap $SEARCH_ENV puma:config puma:systemd:config puma:systemd:enable
       - bundle cap $SEARCH_ENV invoke "sudo rm -rf /var/www/caps/repo && sudo mkdir -p /var/www/caps/repo && sudo chown -R ssm-user:ssm-user /var/www/caps" || true
       - bundle cap $SEARCH_ENV deploy
