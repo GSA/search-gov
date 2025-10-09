@@ -34,11 +34,13 @@ phases:
       - eval "$(rbenv init -)"
       - git config --global --add safe.directory '*'
       
-
   pre_build:
     commands:
       - echo "Cleaning up Git repository"
-      - git gc --prune=now
+      - find .git/refs/remotes -type f -delete || true
+      - git remote prune origin
+      - git fetch --prune
+      - git gc --auto
       - git remote prune origin
       - rm -rf ~/.bundle || true
       - rm -rf vendor/bundle || true
