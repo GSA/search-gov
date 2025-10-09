@@ -10,6 +10,7 @@ env:
     SEARCHGOV_THREADS: "SEARCHGOV_THREADS"
     SEARCHGOV_WORKERS: "SEARCHGOV_WORKERS"
     SERVER_DEPLOYMENT_USER: "DEPLOY_SERVER_DEPLOYMENT_USER"
+    GITHUB_TOKEN: "GITHUB_TOKEN"
 
     # shared deployment variables with subsequent stages - might not to export as this is the final stage
 exported-variables:
@@ -28,31 +29,41 @@ phases:
     commands:
       - export PATH="$HOME/.rbenv/bin:$PATH"
       - eval "$(rbenv init -)"
-      - git config --global remote.origin.fetch '+refs/heads/:refs/remotes/origin/'
       - git config --global --add safe.directory '*'
-      - git config --global gc.auto 0
-
 
   pre_build:
     commands:
       - rm -rf ~/.bundle || true
       - rm -rf vendor/bundle || true
       - aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' --output text > $SEARCH_ENV_EC2_KEY
+      - chmod 600 /tmp/key
+      - echo "Configuring HTTPS Git authentication using Github token"
+      - git config --global credential.helper store
+      - echo "https://${GITHUB_TOKEN}:x-oauth-basic@github.com" > ~/.git-credentials
+      
   build:
     commands:
-      - CURRENT_LOCATION=$(pwd)  # would look something like this - /codebuild/output/src559980389/src - a temp dir created by codebuild
+      - CURRENT_LOCATION=$(pwd)  
       - SSH_KEY_PATH="${CURRENT_LOCATION}/${SEARCH_ENV_EC2_KEY}"
       - echo $SSH_KEY_PATH
-      - echo "deploying searchgov app with capistrano"
+      - echo "deploying searchgov app with capistrano (HTTPS-based auth)"
       - rm -rf vendor/bundle .bundle
       - bundle config set --local silence_root_warning true
       - bundle config set --local path 'vendor/bundle'
       - bundle install --jobs=4 --retry=3
+      - mkdir -p ~./ssh
+      - chmod 700 ~/.ssh
+      - cp /tmp/key ~/.ssh/id_rsa
+      - chmod 600 ~/.ssh/config
+      - echo "Host *" > ~/.ssh/config
+      - echo " StrictHostKeyChecking no" >> ~/.ssh/config
+      - echo " UserKnownHostsFile=/dev/null" >> ~/.ssh/config
+      - chmod 600 ~/.ssh/config
   #   - cap $SEARCH_ENV puma:config puma:systemd:config puma:systemd:enable
-      - cap $SEARCH_ENV invoke "sudo rm -rf /var/www/caps/repo && sudo mkdir -p /var/www/caps/repo && sudo chown -R ssm-user:ssm-user /var/www/caps" || true
-      - cap $SEARCH_ENV deploy
-      - cap $SEARCH_ENV resque:restart
-      - cap $SEARCH_ENV resque:scheduler:restart
+      - bundle cap $SEARCH_ENV invoke "sudo rm -rf /var/www/caps/repo && sudo mkdir -p /var/www/caps/repo && sudo chown -R ssm-user:ssm-user /var/www/caps" || true
+      - bundle cap $SEARCH_ENV deploy
+      - bundle cap $SEARCH_ENV resque:restart
+      - bundle cap $SEARCH_ENV resque:scheduler:restart
 
 artifacts:
   files:
