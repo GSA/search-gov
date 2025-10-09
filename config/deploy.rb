@@ -15,7 +15,7 @@ set :puma_threads,            [ENV.fetch('SEARCHGOV_MIN_THREADS', SEARCHGOV_THRE
 set :puma_workers,            ENV.fetch('SEARCHGOV_WORKERS') { 0 }
 set :rails_env,               'production'
 set :rbenv_type,              :user
-set :repo_url,                'git@github.com:GSA/search-gov.git'
+set :repo_url,                'https://github.com/GSA/search-gov'
 set :resque_environment_task, true
 set :resque_extra_env,        "RAILS_ROOT=#{ENV['DEPLOYMENT_PATH']}current"
 set :systemctl_user,          :system
