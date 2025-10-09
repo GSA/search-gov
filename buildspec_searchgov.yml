@@ -27,38 +27,47 @@ phases:
     runtime-versions:
       python: 3.x
     commands:
-      - echo "Cleaning up stale Git refs" 
-      - rm -rf .git/refs/remotes/pull || true
-      - rm -rf .git/refs/pull || true
-      - export PATH="$HOME/.rbenv/bin:$PATH"
-      - eval "$(rbenv init -)"
-      - git config --global --add safe.directory '*'
+      - echo "Installing dependencies"
       
   pre_build:
     commands:
-      - echo "Cleaning up Git repository"
-      - find .git/refs/remotes -type f -delete || true
-      - git fetch --prune
-      - git gc --auto
+      - echo "=== Fixing Git ref corruption issues ==="
+      - find .git/refs -type f -size 0 -print -delete || true
+      - |
+        if [ -f .git/refs/pull ]; then
+          rm -f .git/refs/pull
+          mkdir -p .git/refs/pull
+        fi
+      - rm -rf .gits/refs/remotes || true
+      - rm -rf .git/refs/pull || true
+      - |
+        if [ -f .git/packed-refs ];then
+          cp .git/packed-refs .git/packed-refs.bak
+          grep -v "^refs/pull/" .git/packed-refs.bak > .git/packed-refs || true
+        fi
       - git remote prune origin
+      - git fetch --prune --tags origin '+refs/heads/*:refs/remotes/origin/*' '+refs/tags/*:refs/tags/*'
+      - git gc --auto
       - rm -rf ~/.bundle || true
-      - rm -rf vendor/bundle || true
-      - aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' --output text > $SEARCH_ENV_EC2_KEY 
-      - echo "Configuring HTTPS Git authentication using Github token"
-      - git config --global credential.helper store
-      - echo "https://${GITHUB_TOKEN}:x-oauth-basic@github.com" > ~/.git-credentials
-      
+      - echo "=== Git cleanup completed ==="
+      - export PATH="$HOME/.rbenv/bin:$PATH"
+      - eval "$(rbenv init -)"
+      - git config --global --add safe.directory '*'
+        
   build:
     commands:
-      - export SSH_KEY_PATH="$(pwd)/${SEARCH_ENV_EC2_KEY}"
-      - echo $SSH_KEY_PATH
-      - echo "deploying searchgov app with capistrano (HTTPS-based auth)"
-      - rm -rf vendor/bundle .bundle
-      - bundle config set --local silence_root_warning true
+      - echo "Starting build phase"
       - bundle config set--local path 'vendor/bundle'
       - bundle install --jobs=4 --retry=3
-  #   - cap $SEARCH_ENV puma:config puma:systemd:config puma:systemd:enable
-      - bundle exec cap $SEARCH_ENV invoke "sudo rm -rf /var/www/caps/repo && sudo mkdir -p /var/www/caps/repo && sudo chown -R ssm-user:ssm-user /var/www/caps" || true
+      - |
+        aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' --output text > $SEARCH_ENV_EC2_KEY
+      - export SSH_KEY_PATH="$pwd)/$SEARCH_ENV}.pem"
+      - echo "$SSH_KEY_PATH"
+      - git config --global credential.helper store
+      - echo "https://${GITHUB_TOKEN}:x-oauth-basic@github.com" > ~/.git-credentials  
+      - rm -rf vendor/bundle/.bundle
+      - bundle config set --local silence_root_warning true
+      - bundle exec cap $SEARCH_ENV puma:config puma:systemd:config puma:systemd:enable
       - bundle exec cap $SEARCH_ENV deploy
       - bundle exec cap $SEARCH_ENV resque:restart
       - bundle exec cap $SEARCH_ENV resque:scheduler:restart
