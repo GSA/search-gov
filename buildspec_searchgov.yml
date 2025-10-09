@@ -41,8 +41,7 @@ phases:
       
   build:
     commands:
-      - CURRENT_LOCATION=$(pwd)  
-       - SSH_KEY_PATH="${CURRENT_LOCATION}/${SEARCH_ENV_EC2_KEY}"
+      - export SSH_KEY_PATH="$(pwd)/${SEARCH_ENV_EC2_KEY}"
       - echo $SSH_KEY_PATH
       - echo "deploying searchgov app with capistrano (HTTPS-based auth)"
       - rm -rf vendor/bundle .bundle
@@ -58,3 +57,5 @@ phases:
 artifacts:
   files:
     - '**/*'
+
+
