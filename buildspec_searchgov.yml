@@ -27,9 +27,14 @@ phases:
     runtime-versions:
       python: 3.x
     commands:
+      - echo "Cleaning up stale Git refs" 
+      - rm -rf .git/refs/remotes/pull || true
+      - rm -rf .git/refs/pull || true
+      - git config remote.origin.fetch'+refs/heads/:refs/remotes/origin/'
       - export PATH="$HOME/.rbenv/bin:$PATH"
       - eval "$(rbenv init -)"
       - git config --global --add safe.directory '*'
+      
 
   pre_build:
     commands:
