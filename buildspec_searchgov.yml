@@ -51,7 +51,7 @@ phases:
       - bundle config set --local silence_root_warning true
       - bundle config set --local path 'vendor/bundle'
       - bundle install --jobs=4 --retry=3
-      - mkdir -p ~./ssh
+      - mkdir -p ~/.ssh
       - chmod 700 ~/.ssh
       - cp /tmp/key ~/.ssh/id_rsa
       - chmod 600 ~/.ssh/config
