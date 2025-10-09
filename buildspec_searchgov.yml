@@ -51,17 +51,9 @@ phases:
       - bundle config set --local silence_root_warning true
       - bundle config set --local path 'vendor/bundle'
       - bundle install --jobs=4 --retry=3
-      - mkdir -p ~/.ssh
-      - chmod 700 ~/.ssh
-      - cp /tmp/key ~/.ssh/id_rsa
-      - chmod 600 ~/.ssh/config
-      - echo "Host *" > ~/.ssh/id_rsa
-      - |
-         cat > ~/.ssh/config << 'EOF'
-         Host *
-           StrictHostKeyChecking no
-           UserKnownHostsFile=/dev/null
-      - chmod 600 ~/.ssh/config
+      - eval $(ssh-agent -s)
+      - ssh-add /tmp/key
+      - mkdir -p ~/.ssh && echo -e "Host *\n StrictHostKeyChecking no\n UserKnownHostsFile=/dev/null" > ~/.ssh/config
   #   - cap $SEARCH_ENV puma:config puma:systemd:config puma:systemd:enable
       - bundle cap $SEARCH_ENV invoke "sudo rm -rf /var/www/caps/repo && sudo mkdir -p /var/www/caps/repo && sudo chown -R ssm-user:ssm-user /var/www/caps" || true
       - bundle cap $SEARCH_ENV deploy
