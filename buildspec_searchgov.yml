@@ -10,7 +10,7 @@ env:
     SEARCHGOV_THREADS: "SEARCHGOV_THREADS"
     SEARCHGOV_WORKERS: "SEARCHGOV_WORKERS"
     SERVER_DEPLOYMENT_USER: "DEPLOY_SERVER_DEPLOYMENT_USER"
-    GITHUB_TOKEN: "GITHUB_TOKEN"
+    GITHUB_TOKEN: "DEPLOY_GITHUB_TOKEN"
 
     # shared deployment variables with subsequent stages - might not to export as this is the final stage
 exported-variables:
