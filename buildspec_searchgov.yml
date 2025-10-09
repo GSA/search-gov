@@ -38,7 +38,6 @@ phases:
     commands:
       - echo "Cleaning up Git repository"
       - find .git/refs/remotes -type f -delete || true
-      - git remote prune origin
       - git fetch --prune
       - git gc --auto
       - git remote prune origin
