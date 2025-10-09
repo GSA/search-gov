@@ -35,7 +35,7 @@ phases:
     commands:
       - rm -rf ~/.bundle || true
       - rm -rf vendor/bundle || true
-      - aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' --output text > $SEARCH_ENV_EC2_KEY
+      - aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' | tr -d '"' > /tmp/key
       - chmod 600 /tmp/key
       - echo "Configuring HTTPS Git authentication using Github token"
       - git config --global credential.helper store
