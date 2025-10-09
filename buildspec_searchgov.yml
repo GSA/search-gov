@@ -35,7 +35,7 @@ phases:
     commands:
       - rm -rf ~/.bundle || true
       - rm -rf vendor/bundle || true
-       aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' --output text > $SEARCH_ENV_EC2_KEY      - echo "Configuring HTTPS Git authentication using Github token"
+      - aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' --output text > $SEARCH_ENV_EC2_KEY      - echo "Configuring HTTPS Git authentication using Github token"
       - git config --global credential.helper store
       - echo "https://${GITHUB_TOKEN}:x-oauth-basic@github.com" > ~/.git-credentials
       
@@ -49,10 +49,10 @@ phases:
       - bundle config set--local path 'vendor/bundle'
       - bundle install --jobs=4 --retry=3
   #   - cap $SEARCH_ENV puma:config puma:systemd:config puma:systemd:enable
-      - bundle cap $SEARCH_ENV invoke "sudo rm -rf /var/www/caps/repo && sudo mkdir -p /var/www/caps/repo && sudo chown -R ssm-user:ssm-user /var/www/caps" || true
-      - bundle cap $SEARCH_ENV deploy
-      - bundle cap $SEARCH_ENV resque:restart
-      - bundle cap $SEARCH_ENV resque:scheduler:restart
+      - bundle exec cap $SEARCH_ENV invoke "sudo rm -rf /var/www/caps/repo && sudo mkdir -p /var/www/caps/repo && sudo chown -R ssm-user:ssm-user /var/www/caps" || true
+      - bundle exec cap $SEARCH_ENV deploy
+      - bundle exec cap $SEARCH_ENV resque:restart
+      - bundle exec cap $SEARCH_ENV resque:scheduler:restart
 
 artifacts:
   files:
