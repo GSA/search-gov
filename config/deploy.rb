@@ -36,7 +36,7 @@ role :web,              JSON.parse(ENV.fetch('APP_SERVER_ADDRESSES', '[]')),    
 
 set :ssh_options, {
   auth_methods:  %w(publickey),
-  forward_agent: true,
+  forward_agent: false,
   keys:          [ENV['SSH_KEY_PATH']],
   user:          ENV['SERVER_DEPLOYMENT_USER'],
 }
