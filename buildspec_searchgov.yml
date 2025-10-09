@@ -33,6 +33,9 @@ phases:
 
   pre_build:
     commands:
+      - echo "Cleaning up Git repository"
+      - git gc --prune=now
+      - git remote prune origin
       - rm -rf ~/.bundle || true
       - rm -rf vendor/bundle || true
       - aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' --output text > $SEARCH_ENV_EC2_KEY 
