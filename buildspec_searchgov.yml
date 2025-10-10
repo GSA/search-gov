@@ -40,7 +40,6 @@ phases:
       - ls -la
       - echo "=== Fixing Git ref corruption issues ==="
       - |
-        set -euo pipefail
         if [ -d .git ]; then
           git gc --auto || true
           find .git/refs -type f -size 0 -delete 2>/dev/null || true
