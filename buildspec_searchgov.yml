@@ -43,7 +43,9 @@ phases:
           set -euo pipefail
           git gc --auto || true
           find .git/refs -type f -size 0 -delete 2>/dev/null || true
-          if [ -f .git/refs/pull ]; then rm -f .git/refs/pull; fi
+          if [ -f .git/refs/pull ]; then
+            rm -f .git/refs/pull; 
+          fi
           mkdir -p .git/refs/pull
           if [ -f .git/packed-refs ]; then
             cp .git/packed-refs .git/packed-refs.bak
