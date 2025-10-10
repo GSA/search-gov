@@ -37,26 +37,20 @@ phases:
       - git config --global --add safe.directory '*'
       - pwd
       - ls -la
-      
       - echo "=== Fixing Git ref corruption issues ==="
       - |
         if [ -d .git ]; then
           set -euo pipefail
           git gc --auto || true
-
           find .git/refs -type f -size 0 -delete 2>/dev/null || true
-
           if [ -f .git/refs/pull ]; then rm -f .git/refs/pull; fi
           mkdir -p .git/refs/pull
-
           if [ -f .git/packed-refs ]; then
             cp .git/packed-refs .git/packed-refs.bak
             grep -v "^refs/pull/" .git/packed-refs.bak > .git/packed-refs || true          
         fi
-      
-     - git remote prune origin 2>/dev/null || echo "Remote prune skipped"
-     - git fetch --prune --tags origin '+refs/heads/*:refs/remotes/origin/*' '+refs/tags/*:refs/tags/*' 2>/dev/null || echo "Fetch skipped"
-
+      - git remote prune origin 2>/dev/null || echo "Remote prune skipped"
+      - git fetch --prune --tags origin '+refs/heads/*:refs/remotes/origin/*' '+refs/tags/*:refs/tags/*' 2>/dev/null || echo "Fetch skipped"
         if ! git fsck --full; then
           echo "Git integrity check failed -resetting repository..."
           rm -rf .git
@@ -65,7 +59,6 @@ phases:
           git fetch --depth=50 origin '+refs/heads/*:refs/remotes/origin/*'
           git checkout -B $CODEBUILD_SOURCE_VERSION origin/$CODEBUILD_SOURCE_VERSION || git checkout main
         fi
-
         echo "=== Git cleanup completed ==="
       else
         echo "WARNING: .git directory not found, skipping Git cleanup"
@@ -75,19 +68,16 @@ phases:
     commands:
       - echo "=== Starting build phase ==="    
       - rm -rf ~/.bundle || true     
-      
       - echo "=== Installing Ruby gems ==="
       - bundle config set --local silence_root_warning true
       - bundle config set--local path 'vendor/bundle'
       - bundle install --jobs=4 --retry=3
-
       - echo "=== Retrieving secrets from AWS Secrets Manager ==="
       - aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' --output text > $SEARCH_ENV_EC2_KEY
       - export SSH_KEY_PATH="$pwd)/$SEARCH_ENV}.pem"
       - echo "$SSH_KEY_PATH"
       - git config --global credential.helper store
       - echo "https://${GITHUB_TOKEN}:x-oauth-basic@github.com" > ~/.git-credentials  
-    
       - echo "=== Running Capistrano deployment for $SEARCH_ENV ==="
       - bundle exec cap $SEARCH_ENV puma:config puma:systemd:config puma:systemd:enable
       - bundle exec cap $SEARCH_ENV deploy
