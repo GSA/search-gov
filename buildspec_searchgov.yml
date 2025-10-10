@@ -1,5 +1,6 @@
 
 version: 0.2
+
 env:
   parameter-store:
     APP_SERVER_ADDRESSES: "DEPLOY_SEARCHGOV_SERVER_ADDRESS"
@@ -11,6 +12,9 @@ env:
     SEARCHGOV_WORKERS: "SEARCHGOV_WORKERS"
     SERVER_DEPLOYMENT_USER: "DEPLOY_SERVER_DEPLOYMENT_USER"
     GITHUB_TOKEN: "DEPLOY_GITHUB_TOKEN"
+    SEARCH_SECRETSMANAGER_KEY_SECRET_NAME: "SEARCH_SECRETSMANAGER_KEY_SECRET_NAME"
+    SEARCH_AWS_REGION: "SEARCH_AWS_REGION"
+    SEARCH_ENV_EC2_KEY: "SEARCH_ENV_EC2_KEY"
 
 exported-variables:
   - APP_SERVER_ADDRESSES
@@ -26,60 +30,72 @@ phases:
     runtime-versions:
       python: 3.x
     commands:
-      - echo "Installing dependencies"
+      - echo "=== Install phase ==="
+      - export PATH="$HOME/.rbenv/bin:$PATH" || true
+      - eval "$(rbenv init -)" || true
+      - git config --global --add safe.directory '*'
+      - git config --global advice.detachedHead false
 
   pre_build:
     commands:
-      - echo "=== Pre-build phase - Setting up environment ==="
-      - export PATH="$HOME/.rbenv/bin:$PATH"
-      - eval "$(rbenv init -)"
-      - git config --global --add safe.directory '*'
-      - pwd
-      - ls -la
-      - echo "=== Fixing Git ref corruption issues ==="
-      - |
-        if [ -d .git ]; then
-          git gc --auto || true
-          find .git/refs -type f -size 0 -delete 2>/dev/null || true
-          if [ -f .git/refs/pull ]; then
-            rm -f .git/refs/pull
-          fi
-          mkdir -p .git/refs/pull
-          if [ -f .git/packed-refs ]; then
-            cp .git/packed-refs .git/packed-refs.bak
-            grep -v "^refs/pull/" .git/packed-refs.bak > .git/packed-refs || true
-          fi
-          git remote prune origin 2>/dev/null || echo "Remote prune skipped"
-          git fetch --prune --tags origin '+refs/heads/*:refs/remotes/origin/*' '+refs/tags/*:refs/tags/*' 2>/dev/null || echo "Fetch skipped"
-          if ! git fsck --full; then
-            echo "Git integrity check failed - resetting repository..."
-            rm -rf .git
-            git init
-            git remote add origin "$(git config --get remote.origin.url)"
-            git fetch --depth=50 origin '+refs/heads/*:refs/remotes/origin/*'
-            git checkout -B "$CODEBUILD_SOURCE_VERSION" "origin/$CODEBUILD_SOURCE_VERSION" || git checkout main
-          fi
-          echo "=== Git cleanup completed ==="
-        else
-          echo "WARNING: .git directory not found, skipping Git cleanup"
-        fi
+      - echo "=== Pre-build phase ==="
+      - rm -rf ~/.bundle vendor/bundle .bundle || true
+      - echo "Fetching SSH key from Secrets Manager"
+      - aws secretsmanager get-secret-value --secret-id "$SEARCH_SECRETSMANAGER_KEY_SECRET_NAME" --region "$SEARCH_AWS_REGION" --query 'SecretString' --output text > "$SEARCH_ENV_EC2_KEY"
+      - chmod 600 "$SEARCH_ENV_EC2_KEY"
+      - export SSH_KEY_PATH="$(pwd)/$SEARCH_ENV_EC2_KEY"
+      - echo "SSH_KEY_PATH=$SSH_KEY_PATH"
 
   build:
     commands:
-      - echo "=== Starting build phase ==="
-      - rm -rf ~/.bundle || true
-      - echo "=== Installing Ruby gems ==="
+      - echo "=== Build phase: bundle install ==="
       - bundle config set --local silence_root_warning true
       - bundle config set --local path 'vendor/bundle'
       - bundle install --jobs=4 --retry=3
-      - echo "=== Retrieving secrets from AWS Secrets Manager ==="
-      - aws secretsmanager get-secret-value --secret-id "$SEARCH_SECRETSMANAGER_KEY_SECRET_NAME" --region "$SEARCH_AWS_REGION" --query 'SecretString' --output text > "$SEARCH_ENV_EC2_KEY"
-      - export SSH_KEY_PATH="$(pwd)/$SEARCH_ENV_EC2_KEY"
-      - echo "$SSH_KEY_PATH"
-      - git config --global credential.helper store
-      - echo "https://${GITHUB_TOKEN}:x-oauth-basic@github.com" > ~/.git-credentials
-      - echo "=== Running Capistrano deployment for $SEARCH_ENV ==="
-      - bundle exec cap "$SEARCH_ENV" puma:config puma:systemd:config puma:systemd:enable
+
+      - echo "=== SSH setup ==="
+      - mkdir -p ~/.ssh
+      - |
+        cat > ~/.ssh/config <<'EOF'
+        Host *
+          StrictHostKeyChecking no
+          UserKnownHostsFile /dev/null
+          ForwardAgent yes
+        EOF
+      - chmod 700 ~/.ssh
+      - chmod 600 ~/.ssh/config
+      - eval "$(ssh-agent -s)"
+      - ssh-add "$SSH_KEY_PATH"
+
+      - |
+        if [ -n "${GITHUB_TOKEN:-}" ]; then
+          echo "Configuring GitHub token helper"
+          git config --global credential.helper store
+          printf "https://%s:x-oauth-basic@github.com\n" "$GITHUB_TOKEN" > ~/.git-credentials
+          chmod 600 ~/.git-credentials
+        fi
+
+      - echo "=== Repair remote git mirror(s) on Capistrano targets ==="
+      - |
+        bundle exec cap "$SEARCH_ENV" invoke "bash -lc 'set -euo pipefail; \
+          DEPLOYMENT_PATH=\${DEPLOYMENT_PATH:-/var/www/caps}; \
+          SERVER_DEPLOYMENT_USER=\${SERVER_DEPLOYMENT_USER:-ssm-user}; \
+          REPO_PATH=\"\$DEPLOYMENT_PATH/repo\"; \
+          ORIGIN_URL=\${CODEBUILD_SOURCE_REPO_URL:-\$(git remote get-url origin 2>/dev/null || true)}; \
+          [ -n \"\$ORIGIN_URL\" ] || { echo \"No origin URL found\" >&2; exit 1; }; \
+          sudo mkdir -p \"\$DEPLOYMENT_PATH\"; \
+          sudo chown -R \"\$SERVER_DEPLOYMENT_USER:\$SERVER_DEPLOYMENT_USER\" \"\$DEPLOYMENT_PATH\"; \
+          sudo -u \"\$SERVER_DEPLOYMENT_USER\" bash -lc \"rm -rf \\\"\$REPO_PATH\\\"; \
+            mkdir -p \\\"\$REPO_PATH\\\" && cd \\\"\$REPO_PATH\\\"; \
+            git init --bare; \
+            git remote add origin \\\"\$ORIGIN_URL\\\" || git remote set-url origin \\\"\$ORIGIN_URL\\\"; \
+            git config --unset-all remote.origin.fetch || true; \
+            git config --add remote.origin.fetch '+refs/heads/*:refs/heads/*'; \
+            git config --add remote.origin.fetch '+refs/tags/*:refs/tags/*'; \
+            git fetch origin --prune --tags --force; \
+            git fsck --no-dangling || true\"'"
+
+      - echo "=== Deploy ==="
       - bundle exec cap "$SEARCH_ENV" deploy
       - bundle exec cap "$SEARCH_ENV" resque:restart
       - bundle exec cap "$SEARCH_ENV" resque:scheduler:restart
@@ -87,3 +103,4 @@ phases:
 artifacts:
   files:
     - '**/*'
+
