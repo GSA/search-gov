@@ -50,4 +50,27 @@ phases:
     commands:
       - echo "=== Build phase: bundle install ==="
       - bundle config set --local silence_root_warning true
-      - bundle config set --local path 'ven
+      - bundle config set --local path 'vendor/bundle'
+      - bundle install --jobs=4 --retry=3
+
+      - echo "=== SSH setup ==="
+      - mkdir -p ~/.ssh
+      - printf "Host *\n  StrictHostKeyChecking no\n  UserKnownHostsFile /dev/null\n  ForwardAgent yes\n" > ~/.ssh/config
+      - chmod 700 ~/.ssh
+      - chmod 600 ~/.ssh/config
+      - eval "$(ssh-agent -s)"
+      - ssh-add "$SSH_KEY_PATH"
+
+      - if [ -n "${GITHUB_TOKEN:-}" ]; then echo "Configuring GitHub token helper"; git config --global credential.helper store; printf "https://%s:x-oauth-basic@github.com\n" "$GITHUB_TOKEN" > ~/.git-credentials; chmod 600 ~/.git-credentials; fi
+
+      - echo "=== Repair remote git mirror(s) on Capistrano targets ==="
+      - bundle exec cap "$SEARCH_ENV" invoke "bash -lc 'set -euo pipefail; DEPLOYMENT_PATH=\${DEPLOYMENT_PATH:-/var/www/caps}; SERVER_DEPLOYMENT_USER=\${SERVER_DEPLOYMENT_USER:-ssm-user}; REPO_PATH=\"\$DEPLOYMENT_PATH/repo\"; ORIGIN_URL=\${CODEBUILD_SOURCE_REPO_URL:-\$(git remote get-url origin 2>/dev/null || true)}; [ -n \"\$ORIGIN_URL\" ] || { echo No origin URL found >&2; exit 1; }; sudo mkdir -p \"\$DEPLOYMENT_PATH\"; sudo chown -R \"\$SERVER_DEPLOYMENT_USER:\$SERVER_DEPLOYMENT_USER\" \"\$DEPLOYMENT_PATH\"; sudo -u \"\$SERVER_DEPLOYMENT_USER\" bash -lc \"rm -rf \\\"\$REPO_PATH\\\"; mkdir -p \\\"\$REPO_PATH\\\" && cd \\\"\$REPO_PATH\\\"; git init --bare; git remote add origin \\\"\$ORIGIN_URL\\\" || git remote set-url origin \\\"\$ORIGIN_URL\\\"; git config --unset-all remote.origin.fetch || true; git config --add remote.origin.fetch '+refs/heads/*:refs/heads/*'; git config --add remote.origin.fetch '+refs/tags/*:refs/tags/*'; git fetch origin --prune --tags --force; git fsck --no-dangling || true\"'"
+
+      - echo "=== Deploy ==="
+      - bundle exec cap "$SEARCH_ENV" deploy
+      - bundle exec cap "$SEARCH_ENV" resque:restart
+      - bundle exec cap "$SEARCH_ENV" resque:scheduler:restart
+
+artifacts:
+  files:
+    - '**/*'
