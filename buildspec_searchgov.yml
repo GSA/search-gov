@@ -50,15 +50,10 @@ phases:
             grep -v "^refs/pull/" .git/packed-refs.bak > .git/packed-refs || true
           fi
           git remote prune origin 2>/dev/null || echo "Remote prune skipped"
-          git fetch --prune --tags origin '+refs/heads/*:refs/remotes/origin/*' '+refs/tags/*:refs/tags/*' 2>/dev/null || echo "Fetch skipped"
-          if ! git fsck --full; then
-            echo "Git integrity check failed - resetting repository..."
-            rm -rf .git
-            git init
-            git remote add origin "$(git config --get remote.origin.url)"
-            git fetch --depth=50 origin '+refs/heads/*:refs/remotes/origin/*'
-            git checkout -B "$CODEBUILD_SOURCE_VERSION" "origin/$CODEBUILD_SOURCE_VERSION" || git checkout main
-          fi
+          BRANCH_NAME="${CODEBUILD_SOURCE_VERSION##*/}"
+          echo "Fetching only branch: $BRANCH_NAME"
+          git fetch --prune origin "$BRANCH_NAME:refs/remotes/origin/$BRANCH_NAME" 2>/dev/null || echo "Fetch failed, trying alternative..."
+            git fetch --depth=1 origin "$BRANCH_NAME" 2>/dev/null || true
           echo "=== Git cleanup completed ==="
         else
           echo "WARNING: .git directory not found, skipping Git cleanup"
