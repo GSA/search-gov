@@ -14,13 +14,13 @@ env:
 
     # shared deployment variables with subsequent stages - might not to export as this is the final stage
 exported-variables:
-    - APP_SERVER_ADDRESSES
-    - DEPLOYMENT_PATH
-    - RESQUE_SERVER_ADDRESSES
-    - SEARCHGOV_THREADS
-    - SEARCHGOV_WORKERS
-    - SERVER_DEPLOYMENT_USER
-    - SSH_KEY_PATH
+  - APP_SERVER_ADDRESSES
+  - DEPLOYMENT_PATH
+  - RESQUE_SERVER_ADDRESSES
+  - SEARCHGOV_THREADS
+  - SEARCHGOV_WORKERS
+  - SERVER_DEPLOYMENT_USER
+  - SSH_KEY_PATH
 
 phases:
   install:
@@ -28,7 +28,7 @@ phases:
       python: 3.x
     commands:
       - echo "Installing dependencies"
-      
+
   pre_build:
     commands:
       - echo "=== Pre-build phase -Setting up environment ==="
@@ -44,12 +44,12 @@ phases:
           git gc --auto || true
           find .git/refs -type f -size 0 -delete 2>/dev/null || true
           if [ -f .git/refs/pull ]; then
-            rm -f .git/refs/pull; 
+            rm -f .git/refs/pull;
           fi
           mkdir -p .git/refs/pull
           if [ -f .git/packed-refs ]; then
             cp .git/packed-refs .git/packed-refs.bak
-            grep -v "^refs/pull/" .git/packed-refs.bak > .git/packed-refs || true          
+            grep -v "^refs/pull/" .git/packed-refs.bak > .git/packed-refs || true
         fi
       - git remote prune origin 2>/dev/null || echo "Remote prune skipped"
       - git fetch --prune --tags origin '+refs/heads/*:refs/remotes/origin/*' '+refs/tags/*:refs/tags/*' 2>/dev/null || echo "Fetch skipped"
@@ -62,14 +62,14 @@ phases:
           git checkout -B $CODEBUILD_SOURCE_VERSION origin/$CODEBUILD_SOURCE_VERSION || git checkout main
         fi
         echo "=== Git cleanup completed ==="
-      else
+       else
         echo "WARNING: .git directory not found, skipping Git cleanup"
       fi
-      
+
   build:
     commands:
-      - echo "=== Starting build phase ==="    
-      - rm -rf ~/.bundle || true     
+      - echo "=== Starting build phase ==="
+      - rm -rf ~/.bundle || true
       - echo "=== Installing Ruby gems ==="
       - bundle config set --local silence_root_warning true
       - bundle config set--local path 'vendor/bundle'
@@ -79,7 +79,7 @@ phases:
       - export SSH_KEY_PATH="$pwd)/$SEARCH_ENV}.pem"
       - echo "$SSH_KEY_PATH"
       - git config --global credential.helper store
-      - echo "https://${GITHUB_TOKEN}:x-oauth-basic@github.com" > ~/.git-credentials  
+      - echo "https://${GITHUB_TOKEN}:x-oauth-basic@github.com" > ~/.git-credentials
       - echo "=== Running Capistrano deployment for $SEARCH_ENV ==="
       - bundle exec cap $SEARCH_ENV puma:config puma:systemd:config puma:systemd:enable
       - bundle exec cap $SEARCH_ENV deploy
@@ -89,5 +89,3 @@ phases:
 artifacts:
   files:
     - '**/*'
-
-
