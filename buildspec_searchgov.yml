@@ -31,6 +31,13 @@ phases:
       
   pre_build:
     commands:
+      - echo "=== Pre-build phase -Setting up environment ==="
+      - export PATH="$HOME/.rbenv/bin:$PATH"
+      - eval "$(rbenv init -)"
+      - git config --global --add safe.directory '*'
+        
+  build:
+    commands:
       - echo "=== Fixing Git ref corruption issues ==="
       - find .git/refs -type f -size 0 -print -delete || true
       - |
@@ -48,15 +55,9 @@ phases:
       - git remote prune origin
       - git fetch --prune --tags origin '+refs/heads/*:refs/remotes/origin/*' '+refs/tags/*:refs/tags/*'
       - git gc --auto
-      - rm -rf ~/.bundle || true
+      - rm -rf ~/.bundle || true      
       - echo "=== Git cleanup completed ==="
-      - export PATH="$HOME/.rbenv/bin:$PATH"
-      - eval "$(rbenv init -)"
-      - git config --global --add safe.directory '*'
-        
-  build:
-    commands:
-      - echo "Starting build phase"
+      - echo "=== Starting build phase ==="
       - bundle config set--local path 'vendor/bundle'
       - bundle install --jobs=4 --retry=3
       - |
