@@ -73,6 +73,8 @@ phases:
       - echo "$SSH_KEY_PATH"
       - git config --global credential.helper store
       - echo "https://${GITHUB_TOKEN}:x-oauth-basic@github.com" > ~/.git-credentials
+      - echo "=== Setting up deployment directory permissions ===="
+      - bundle exec cap $SEARCHGOV_ENV invoke "sudo mkdir -p /home/search/searchgov && sudo chown -R ssm-user:ssm-user /home/search/searchgov && sudo chmod -R 755 /home/search/searchgov"
       - echo "=== Running Capistrano deployment for $SEARCH_ENV ==="
       - bundle exec cap $SEARCH_ENV deploy
       - bundle exec cap $SEARCH_ENV puma:systemd:config
