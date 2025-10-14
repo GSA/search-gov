@@ -21,5 +21,4 @@
     %dt Site Language
     %dd= site_locale @site
 .l-inner-content
-  = link_to 'Clone this Site', new_site_clone_path(@site)
   = button_to('Delete', site_path(@site), :data => {:confirm => "Are you sure you want to delete this site?"}, :method => :delete, :class => 'btn btn-danger')

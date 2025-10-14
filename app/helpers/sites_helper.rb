@@ -141,8 +141,7 @@ module SitesHelper
   end
 
   def list_item_with_link_to_current_help_page
-    help_link = HelpLink.lookup(request, controller.action_name)
-    content_tag(:li, link_to('Help Manual', help_link.help_page_url, class: 'help-link menu')) if help_link
+    nil
   end
 
   def site_dashboard_controllers
