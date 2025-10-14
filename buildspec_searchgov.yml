@@ -11,7 +11,6 @@ env:
     SEARCHGOV_WORKERS: "SEARCHGOV_WORKERS"
     SERVER_DEPLOYMENT_USER: "DEPLOY_SERVER_DEPLOYMENT_USER"
     GITHUB_TOKEN: "DEPLOY_GITHUB_TOKEN"
-    SEARCH_ENV: "DEPLOY_SEARCHGOV_ENV"   # <-- must exist in Parameter Store (e.g., 'production' or 'staging')
 
 exported-variables:
   - APP_SERVER_ADDRESSES
@@ -21,7 +20,6 @@ exported-variables:
   - SEARCHGOV_WORKERS
   - SERVER_DEPLOYMENT_USER
   - SSH_KEY_PATH
-  - SEARCH_ENV
 
 phases:
   install:
@@ -36,8 +34,6 @@ phases:
       - export PATH="$HOME/.rbenv/bin:$PATH"
       - eval "$(rbenv init -)"
       - git config --global --add safe.directory '*'
-      - test -n "$SEARCH_ENV" || { echo "ERROR: SEARCH_ENV not set"; exit 1; }
-      - echo "Using Capistrano stage: $SEARCH_ENV"
       - pwd
       - ls -la
       - echo "=== Fixing Git ref corruption issues ==="
@@ -45,7 +41,9 @@ phases:
         if [ -d .git ]; then
           git gc --auto || true
           find .git/refs -type f -size 0 -delete 2>/dev/null || true
-          if [ -f .git/refs/pull ]; then rm -f .git/refs/pull; fi
+          if [ -f .git/refs/pull ]; then
+            rm -f .git/refs/pull
+          fi
           mkdir -p .git/refs/pull
           if [ -f .git/packed-refs ]; then
             cp .git/packed-refs .git/packed-refs.bak
@@ -75,13 +73,9 @@ phases:
       - echo "$SSH_KEY_PATH"
       - git config --global credential.helper store
       - echo "https://${GITHUB_TOKEN}:x-oauth-basic@github.com" > ~/.git-credentials
-      - echo "=== Setting up deployment directory permissions ==="
-      - bundle exec cap "$SEARCH_ENV" invoke COMMAND='sudo mkdir -p /home/search/searchgov && sudo chown -R ssm-user:ssm-user /home/search/searchgov && sudo chmod -R 755 /home/search/searchgov'
       - echo "=== Running Capistrano deployment for $SEARCH_ENV ==="
+      - bundle exec cap "$SEARCH_ENV" puma:config puma:systemd:config puma:systemd:enable
       - bundle exec cap "$SEARCH_ENV" deploy
-      - bundle exec cap "$SEARCH_ENV" puma:systemd:config
-      - bundle exec cap "$SEARCH_ENV" puma:systemd:enable
-      - bundle exec cap "$SEARCH_ENV" puma:restart
       - bundle exec cap "$SEARCH_ENV" resque:restart
       - bundle exec cap "$SEARCH_ENV" resque:scheduler:restart
 
