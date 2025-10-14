@@ -78,7 +78,7 @@ phases:
        - bundle exec cap "$SEARCH_ENV" deploy
       - bundle exec cap "$SEARCH_ENV" puma:systemd:config
       - bundle exec cap "$SEARCH_ENV" puma:systemd:enable
-      - bundle exec cap "$SEARCH_ENV" puma:restart
+      - bundle exec cap "$SEARCH_ENV" puma:start
       - bundle exec cap "$SEARCH_ENV" resque:restart
       - bundle exec cap "$SEARCH_ENV" resque:scheduler:restart
 
