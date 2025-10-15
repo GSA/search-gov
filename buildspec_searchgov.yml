@@ -80,6 +80,7 @@ phases:
       - bundle exec cap "$SEARCH_ENV" puma:start
       - bundle exec cap "$SEARCH_ENV" resque:restart
       - bundle exec cap "$SEARCH_ENV" resque:scheduler:restart
+      
 artifacts:
   files:
     - '**/*'
