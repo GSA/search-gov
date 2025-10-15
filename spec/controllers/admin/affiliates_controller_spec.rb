@@ -199,6 +199,13 @@ describe Admin::AffiliatesController do
           expect(site_domains_column.associated_limit).to be_nil
         end
       end
+
+      describe 'site_domains export method' do
+        it 'has a custom export method for site_domains' do
+          helper = Admin::ExportColumnsHelper
+          expect(helper.instance_methods).to include(:site_domains_export_column)
+        end
+      end
     end
 
     context 'when testing export with multiple site domains' do
