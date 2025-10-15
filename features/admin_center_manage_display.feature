@@ -327,7 +327,6 @@ Feature: Manage Display
 
     When I fill in the following:
       | Text               | New text alert for the search page. |
-    And I select "Active" from "Status"
     And I submit the form by pressing "Save"
     Then I should see "Title can't be blank"
 
