@@ -357,19 +357,11 @@ Feature: Manage Display
     When I follow "Fonts & Colors" within the navigation tabs
     Then I should see "Header Secondary Links Font Family"
     And the "Header Secondary Links Font Family" field should contain "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
-    And I should see "Footer and Results Font Family"
-    And the "Footer and Results Font Family" field should contain "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
 
     When I select "Georgia" from "Header Secondary Links Font Family"
     And I submit the form by pressing "Save"
     Then I should see "You have updated your visual design settings."
     And the "Header Secondary Links Font Family" field should contain "'Georgia', 'Cambria', 'Times New Roman', 'Times', serif"
-
-    When I select "Roboto mono" from "Footer and Results Font Family"
-    And I submit the form by pressing "Save"
-    Then I should see "You have updated your visual design settings."
-    And the "Header Secondary Links Font Family" field should contain "'Georgia', 'Cambria', 'Times New Roman', 'Times', serif"
-    And the "Footer and Results Font Family" field should contain "'Roboto Mono Web', 'Bitstream Vera Sans Mono', 'Consolas', 'Courier', monospace"
 
     When I follow "Fonts & Colors" within the navigation tabs
     Then I should see "Banner background color"
@@ -408,11 +400,8 @@ Feature: Manage Display
     When I follow "Image Assets" within the navigation tabs
     Then I should see "Favicon URL"
     And I should see "Header logo"
-    And I should see "Identifier logo"
     And I should not see "Mark header logo for deletion"
     And I should not see "Header logo alt text"
-    And I should not see "Mark identifier logo for deletion"
-    And I should not see "Identifier logo alt text"
 
     When I fill in "Favicon URL" with "https://d3qcdigd1fhos0.cloudfront.net/blog/img/favicon.ico"
     And I submit the form by pressing "Save"
@@ -437,27 +426,13 @@ Feature: Manage Display
     And I should see an image with src that contains "logo_mobile_en.png"
     And I should see an image with alt text "Sample alt text"
 
-    When I attach the file "features/support/gsa-logo.svg" to "Identifier logo"
-    And I submit the form by pressing "Save"
-    Then I should see "1 error prohibited this affiliate from being saved"
-    Then I should see "There were problems with the following fields:"
-    Then I should see "Identifier logo must be GIF, JPG, or PNG"
-    And I should see "Identifier logo"
-    And I should not see "Mark identifier logo for deletion"
-    And I should not see "Identifier logo alt text"
-    And I should see an image with src that contains "logo_mobile_en.png"
-    And I should see an image with alt text "Sample alt text"
-
     When I check "Mark header logo for deletion"
     And I submit the form by pressing "Save"
     Then I should see "You have updated your visual design settings"
     And I should see "Header logo"
     And I should not see an image with src that contains "logo_mobile_en.png"
-    And I should see "Identifier logo"
     And I should not see "Mark header logo for deletion"
     And I should not see "Header logo alt text"
-    And I should not see "Mark identifier logo for deletion"
-    And I should not see "Identifier logo alt text"
 
     When I follow "Header & Footer" within the navigation tabs
     Then I should see "Header layout"
