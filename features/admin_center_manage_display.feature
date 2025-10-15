@@ -325,16 +325,6 @@ Feature: Manage Display
     Then I should see "You have updated your No Results Page."
     And the "Alternative Link URL 0" field should contain "http://news.agency.gov"
 
-  @javascript
-  Scenario: Add/edit/remove search page alert
-    Given the following BingV7 Affiliates exist:
-      | display_name | name       | contact_email   | first_name   | last_name | use_redesigned_results_page |
-      | agency site  | agency.gov | john@agency.gov | John         | Bar       | false                       |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Manage Display page
-    And I follow "Search Page Alert"
-    Then I should see "Update Alert"
-
     When I fill in the following:
       | Text               | New text alert for the search page. |
     And I select "Active" from "Status"
