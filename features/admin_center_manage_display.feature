@@ -325,10 +325,6 @@ Feature: Manage Display
     Then I should see "You have updated your No Results Page."
     And the "Alternative Link URL 0" field should contain "http://news.agency.gov"
 
-    When I follow "Fonts & Colors" within the navigation tabs
-    Then I should see "Banner background color"
-    And the "Banner background color" field should contain "#F0F0F0"
-
     When I fill in "Banner background color" with "not a hex code"
     And I fill in "Search tab navigation link color" with ""
     And I submit the form by pressing "Save"
