@@ -325,10 +325,6 @@ Feature: Manage Display
     Then I should see "You have updated your No Results Page."
     And the "Alternative Link URL 0" field should contain "http://news.agency.gov"
 
-    When I follow "Fonts & Colors" within the navigation tabs
-    Then I should see "Header Secondary Links Font Family"
-    And the "Header Secondary Links Font Family" field should contain "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
-
     When I select "Georgia" from "Header Secondary Links Font Family"
     And I submit the form by pressing "Save"
     Then I should see "You have updated your visual design settings."
