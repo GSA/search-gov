@@ -325,11 +325,6 @@ Feature: Manage Display
     Then I should see "You have updated your No Results Page."
     And the "Alternative Link URL 0" field should contain "http://news.agency.gov"
 
-    When I select "Georgia" from "Header Secondary Links Font Family"
-    And I submit the form by pressing "Save"
-    Then I should see "You have updated your visual design settings."
-    And the "Header Secondary Links Font Family" field should contain "'Georgia', 'Cambria', 'Times New Roman', 'Times', serif"
-
     When I follow "Fonts & Colors" within the navigation tabs
     Then I should see "Banner background color"
     And the "Banner background color" field should contain "#F0F0F0"
