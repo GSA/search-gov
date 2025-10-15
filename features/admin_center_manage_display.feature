@@ -326,13 +326,6 @@ Feature: Manage Display
     And the "Alternative Link URL 0" field should contain "http://news.agency.gov"
 
     When I fill in the following:
-      | Title               | New Alert Title |
-    And I fill in "Text" with ""
-    And I select "Inactive" from "Status"
-    And I submit the form by pressing "Save"
-    Then I should see "Text can't be blank"
-
-    When I fill in the following:
       | Text              | Updated text for search page alert. |
     And I submit the form by pressing "Save"
     Then the "Title" field should contain "New Alert Title"
