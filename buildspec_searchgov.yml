@@ -26,60 +26,23 @@ phases:
     runtime-versions:
       python: 3.x
     commands:
-      - echo "Installing dependencies"
-
-  pre_build:
-    commands:
-      - echo "=== Pre-build phase - Setting up environment ==="
       - export PATH="$HOME/.rbenv/bin:$PATH"
       - eval "$(rbenv init -)"
-      - git config --global --add safe.directory '*'
-      - pwd
-      - ls -la
-      - echo "=== Fixing Git ref corruption issues ==="
-      - |
-        if [ -d .git ]; then
-          git gc --auto || true
-          find .git/refs -type f -size 0 -delete 2>/dev/null || true
-          if [ -f .git/refs/pull ]; then
-            rm -f .git/refs/pull
-          fi
-          mkdir -p .git/refs/pull
-          if [ -f .git/packed-refs ]; then
-            cp .git/packed-refs .git/packed-refs.bak
-            grep -v "^refs/pull/" .git/packed-refs.bak > .git/packed-refs || true
-          fi
-          git remote prune origin 2>/dev/null || echo "Remote prune skipped"
-          BRANCH_NAME="${CODEBUILD_SOURCE_VERSION##*/}"
-          echo "Fetching only branch: $BRANCH_NAME"
-          git fetch --prune origin "$BRANCH_NAME:refs/remotes/origin/$BRANCH_NAME" 2>/dev/null || echo "Fetch failed, trying alternative..."
-          git fetch --depth=1 origin "$BRANCH_NAME" 2>/dev/null || true
-          echo "=== Git cleanup completed ==="
-        else
-          echo "WARNING: .git directory not found, skipping Git cleanup"
-        fi
-
+      
+  pre_build:
+    commands:
+      - aws secretsmanager get-secret-value --secret-id "$SEARCH_SECRETSMANAGER_KEY_SECRET_NAME" --region "$SEARCH_AWS_REGION" --query 'SecretString' --output text > "$SEARCH_ENV_EC2_KEY  
   build:
     commands:
-      - echo "=== Starting build phase ==="
-      - rm -rf ~/.bundle || true
-      - echo "=== Installing Ruby gems ==="
-      - bundle config set --local silence_root_warning true
-      - bundle config set --local path 'vendor/bundle'
-      - bundle install --jobs=4 --retry=3
-      - echo "=== Retrieving secrets from AWS Secrets Manager ==="
-      - aws secretsmanager get-secret-value --secret-id "$SEARCH_SECRETSMANAGER_KEY_SECRET_NAME" --region "$SEARCH_AWS_REGION" --query 'SecretString' --output text > "$SEARCH_ENV_EC2_KEY"
-      - export SSH_KEY_PATH="$(pwd)/$SEARCH_ENV_EC2_KEY"
-      - echo "$SSH_KEY_PATH"
-      - git config --global credential.helper store
-      - echo "https://${GITHUB_TOKEN}:x-oauth-basic@github.com" > ~/.git-credentials
-      - echo "=== Running Capistrano deployment for $SEARCH_ENV ==="
-      - bundle exec cap "$SEARCH_ENV" deploy
-      - bundle exec cap "$SEARCH_ENV" puma:systemd:config
-      - bundle exec cap "$SEARCH_ENV" puma:systemd:enable
-      - bundle exec cap "$SEARCH_ENV" puma:start
-      - bundle exec cap "$SEARCH_ENV" resque:restart
-      - bundle exec cap "$SEARCH_ENV" resque:scheduler:restart
+      - CURRRENT_LOCATION=$(pwd)   # would look something like this - /codebuild/output/src559980389/src - a temp dir created by codebuild
+      - SSH_KEY_PATH="${CURRENT_LOCATION}/${SEARCH_ENV_EC2_KEY}"
+      - echo $SSH_KEY_PATH
+      - echo "deploying searchgov app with capistrano"
+      - bundle install
+      - cap $SEARCH_ENV puma:config puma:systemd:config puma:systemd:enable
+      - cap $SEARCH_ENV deploy
+      - cap $SEARCH_ENV resque:restart
+      - cap $SEARCH_ENV resque:scheduler:restart
       
 artifacts:
   files:
