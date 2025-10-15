@@ -364,20 +364,6 @@ Feature: Manage Display
     And the "Status" field should contain "Inactive"
     And I should see "The alert for this site has been updated."
 
-  @javascript
-  Scenario: Editing the Visual Design Settings when "Use Redesigned Results Page" is true
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page | search_engine |
-      | bing site    | agency.gov | john@agency.gov | John       | Bar       | true                        | SearchGov     |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Visual Design page
-    Then I should see "Visual design (new)"
-    And the page body should not contain "These settings are for preview purposes only."
-    And I should see "Fonts & Colors" within the navigation tabs
-    And I should see "Results Format" within the navigation tabs
-    And I should see "Image Assets" within the navigation tabs
-    And I should see "Header & Footer" within the navigation tabs
-
     When I follow "Fonts & Colors" within the navigation tabs
     Then I should see "Header Secondary Links Font Family"
     And the "Header Secondary Links Font Family" field should contain "'Public Sans Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"

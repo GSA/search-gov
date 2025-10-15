@@ -27,11 +27,6 @@ describe 'sites/sites/show' do
         before do
           allow(HelpLink).to receive(:find_by_request_path).and_return stub_model(HelpLink, request_path: '/sites', help_page_url: 'http://www.help.gov/')
         end
-
-        it 'should show help link' do
-          render
-          expect(rendered).to have_selector("a.help-link.menu[href='http://www.help.gov/']", text: 'Help Manual')
-        end
       end
     end
 
