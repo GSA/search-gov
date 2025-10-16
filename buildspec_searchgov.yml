@@ -10,7 +10,10 @@ env:
     SEARCHGOV_THREADS: "SEARCHGOV_THREADS"
     SEARCHGOV_WORKERS: "SEARCHGOV_WORKERS"
     SERVER_DEPLOYMENT_USER: "DEPLOY_SERVER_DEPLOYMENT_USER"
-
+variables:
+SEARCH_ENV: "development"
+SEARCH_AWS_REGION: "us-west-1"
+SEARCH_SECRETSMANAGER_KEY_SECRET_NAME: "search/packer/dev-ec2-pem-key"
 exported-variables:
   - APP_SERVER_ADDRESSES
   - DEPLOYMENT_PATH
@@ -27,7 +30,7 @@ phases:
       python: 3.x
     commands:
       - export PATH="$HOME/.rbenv/bin:$PATH"
-      - eval "$(rbenv init - true)"
+      - eval "$(rbenv init -)"
       - ruby --version
       - gem --version
       
@@ -35,7 +38,9 @@ phases:
     commands:
       - echo "Setting up SSH keys"
       - mkdir -p ~/.ssh
+      - chmod 700 ~/.ssh
       - aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' --output text > $SEARCH_ENV_EC2_KEY
+      - ls -la ~/.ssh/
       - chmod 600 ~/.ssh/id_rsa
       
   build:
