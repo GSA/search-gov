@@ -10,33 +10,33 @@ env:
     SEARCHGOV_THREADS: "SEARCHGOV_THREADS"
     SEARCHGOV_WORKERS: "SEARCHGOV_WORKERS"
     SERVER_DEPLOYMENT_USER: "DEPLOY_SERVER_DEPLOYMENT_USER"
-    SSL_KEY_PATH: "DEPLOY_SSL_KEY_PATH"
-    
 
+    # shared deployment variables with subsequent stages - might not to export as this is the final stage
 exported-variables:
-  - APP_SERVER_ADDRESSES
-  - DEPLOYMENT_PATH
-  - RESQUE_SERVER_ADDRESSES
-  - SEARCHGOV_THREADS
-  - SEARCHGOV_WORKERS
-  - SERVER_DEPLOYMENT_USER
-  - SSH_KEY_PATH
+    - APP_SERVER_ADDRESSES
+    - DEPLOYMENT_PATH
+    - RESQUE_SERVER_ADDRESSES
+    - SEARCHGOV_THREADS
+    - SEARCHGOV_WORKERS
+    - SERVER_DEPLOYMENT_USER
+    - SSH_KEY_PATH
 
 phases:
   install:
     runtime-versions:
       python: 3.x
     commands:
-      - eval "$(rbenv init -)"
-      
+      - export PATH="$HOME/.rbenv/bin:$PATH"
+      - eval "$(rbenv init -)"      
   pre_build:
     commands:
       - aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' --output text > $SEARCH_ENV_EC2_KEY      
       - echo $SSH_KEY_PATH
   build:
     commands:
-      - eval "$(ssh-agent -s)"
-      - ssh-add ~/.ssh/id_rsa
+      - CURRENT_LOCATION=$(pwd)  # would look something like this - /codebuild/output/src559980389/src - a temp dir created by codebuild
+      - SSH_KEY_PATH="${CURRENT_LOCATION}/${SEARCH_ENV_EC2_KEY}"
+      - echo $SSH_KEY_PATH   
       - echo "deploying searchgov app with capistrano"
       - bundle install
       # - cap $SEARCH_ENV puma:config puma:systemd:config puma:systemd:enable
