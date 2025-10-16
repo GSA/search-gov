@@ -149,6 +149,16 @@ const noAgencyJobsProps = {
 };
 
 describe('Jobs component', () => {
+
+  beforeEach(() => {
+    // Prevent nagivation error in jsdom
+    Object.defineProperty(window, 'location', {
+      writable: true,
+      value: { href: '', assign: jest.fn() },
+    });
+    fetchMock.resetMocks();
+  });
+
   const headers = {
     Accept: 'application/json',
     'Content-Type': 'application/json'
@@ -221,6 +231,7 @@ describe('Jobs component', () => {
 
     const link = screen.getByText(/More federal job openings on USAJobs.gov/i);
     fireEvent.click(link);
+    console.log(link.parentElement?.parentElement?.parentElement?.parentElement?.parentElement?.outerHTML);
     const clickBody = {
       affiliate: 'boos_affiliate',
       url: 'https://www.usajobs.gov/Search/Results?hp=public',
