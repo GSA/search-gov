@@ -33,7 +33,7 @@ phases:
   pre_build:
     commands:
       - aws secretsmanager get-secret-value --secret-id "$SEARCH_SECRETSMANAGER_KEY_SECRET_NAME" --region "$SEARCH_AWS_REGION" --query 'SecretString' --output text > ~/.ssh/id_rsa
-      - CHMOD 600 ~/.ssh/id_rsa
+      - chmod 600 ~/.ssh/id_rsa
   build:
     commands:
       - eval "$(ssh-agent -s)"
