@@ -27,13 +27,12 @@ phases:
     runtime-versions:
       python: 3.x
     commands:
-      - export PATH="$HOME/.rbenv/bin:$PATH"
       - eval "$(rbenv init -)"
       
   pre_build:
     commands:
-      - aws secretsmanager get-secret-value --secret-id "$SEARCH_SECRETSMANAGER_KEY_SECRET_NAME" --region "$SEARCH_AWS_REGION" --query 'SecretString' --output text > ~/.ssh/id_rsa
-      - chmod 600 ~/.ssh/id_rsa
+      - aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' --output text > $SEARCH_ENV_EC2_KEY      
+      - echo $SSH_KEY_PATH
   build:
     commands:
       - eval "$(ssh-agent -s)"
