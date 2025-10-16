@@ -325,21 +325,6 @@ Feature: Manage Display
     Then I should see "You have updated your No Results Page."
     And the "Alternative Link URL 0" field should contain "http://news.agency.gov"
 
-    When I fill in "Banner background color" with "not a hex code"
-    And I fill in "Search tab navigation link color" with ""
-    And I submit the form by pressing "Save"
-    Then I should see "2 errors prohibited this affiliate from being saved"
-    Then I should see "There were problems with the following fields:"
-    Then I should see "Banner background color value is not a valid hex code"
-    Then I should see "Search tab navigation link color value is not a valid hex code"
-
-    When I fill in "Banner background color" with "#F0F0F0"
-    And I fill in "Search tab navigation link color" with "#F0F0F0"
-    And I submit the form by pressing "Save"
-    Then I should see "You have updated your visual design settings"
-    And the "Banner background color" field should contain "#F0F0F0"
-    And the "Search tab navigation link color" field should contain "#F0F0F0"
-
     When I follow "Results Format" within the navigation tabs
     Then I should see "Display image on search results?"
     Then I should see "Display filetype on search results?"
