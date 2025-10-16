@@ -28,7 +28,7 @@ phases:
     commands:
       - export PATH="$HOME/.rbenv/bin:$PATH"
       - eval "$(rbenv init - true)"
-      - ruby version
+      - ruby --version
       - gem --version
       
   pre_build:
