@@ -20,6 +20,7 @@ exported-variables:
     - SEARCHGOV_WORKERS
     - SERVER_DEPLOYMENT_USER
     - SSH_KEY_PATH
+    - SEARCH_ENV
 
 phases:
   install:
@@ -27,27 +28,23 @@ phases:
       python: 3.x
     commands:
       - export PATH="$HOME/.rbenv/bin:$PATH"
-      - eval "$(rbenv init -)"
-      
+      - eval "$(rbenv init -)"      
   pre_build:
     commands:
-      - rm -rf ~/.bundle || true
-      - rm -rf vendor/bundle || true
-      - aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' --output text > $SEARCH_ENV_EC2_KEY
+      - aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' --output text > $SEARCH_ENV_EC2_KEY      
   build:
     commands:
       - CURRENT_LOCATION=$(pwd)  # would look something like this - /codebuild/output/src559980389/src - a temp dir created by codebuild
       - SSH_KEY_PATH="${CURRENT_LOCATION}/${SEARCH_ENV_EC2_KEY}"
-      - echo $SSH_KEY_PATH
+      - echo $SSH_KEY_PATH   
       - echo "deploying searchgov app with capistrano"
       - rm -rf vendor/bundle .bundle
-      - bundle install --no-cache
-  #   - cap $SEARCH_ENV puma:config puma:systemd:config puma:systemd:enable
-      - cap $SEARCH_ENV invoke "sudo rm -rf /var/www/caps/repo && sudo mkdir -p /var/www/caps/repo && sudo chown -R ssm-user:ssm-user /var/www/caps" || true
-      - cap $SEARCH_ENV deploy
+      - bundle install
+      - cap $SEARCH_ENV puma:config puma:systemd:config puma:systemd:enable
+      - cap development deploy
       - cap $SEARCH_ENV resque:restart
       - cap $SEARCH_ENV resque:scheduler:restart
-
+      
 artifacts:
   files:
     - '**/*'
