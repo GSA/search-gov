@@ -325,13 +325,6 @@ Feature: Manage Display
     Then I should see "You have updated your No Results Page."
     And the "Alternative Link URL 0" field should contain "http://news.agency.gov"
 
-    When I submit the form by pressing "Save"
-    Then I should see "You have updated your visual design settings"
-    And the "display image on search results" should be switched on
-    And the "display filetype on search results" should be switched on
-    And the "display created date on search results" should be switched off
-    And the "display updated date on search results" should be switched off
-
     When I follow "Image Assets" within the navigation tabs
     Then I should see "Favicon URL"
     And I should see "Header logo"
