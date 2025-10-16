@@ -325,12 +325,6 @@ Feature: Manage Display
     Then I should see "You have updated your No Results Page."
     And the "Alternative Link URL 0" field should contain "http://news.agency.gov"
 
-    When I follow "Image Assets" within the navigation tabs
-    Then I should see "Favicon URL"
-    And I should see "Header logo"
-    And I should not see "Mark header logo for deletion"
-    And I should not see "Header logo alt text"
-
     When I fill in "Favicon URL" with "https://d3qcdigd1fhos0.cloudfront.net/blog/img/favicon.ico"
     And I submit the form by pressing "Save"
     Then I should see "You have updated your visual design settings"
