@@ -42,7 +42,7 @@ phases:
       - bundle install
       - cap $SEARCH_ENV puma:config puma:systemd:config puma:systemd:enable
       - cap $SEARCH_ENV development deploy:check
-      - cap $SEARCH_ENV  developmentdeploy
+      - cap $SEARCH_ENV  development deploy
       - cap $SEARCH_ENV resque:restart
       - cap $SEARCH_ENV resque:scheduler:restart
       
