@@ -10,7 +10,8 @@ env:
     SEARCHGOV_THREADS: "SEARCHGOV_THREADS"
     SEARCHGOV_WORKERS: "SEARCHGOV_WORKERS"
     SERVER_DEPLOYMENT_USER: "DEPLOY_SERVER_DEPLOYMENT_USER"
-    GITHUB_TOKEN: "DEPLOY_GITHUB_TOKEN"
+    SSL_KEY_PATH: "DEPLOY_SSL_KEY_PATH"
+    
 
 exported-variables:
   - APP_SERVER_ADDRESSES
@@ -31,12 +32,13 @@ phases:
       
   pre_build:
     commands:
-      - aws secretsmanager get-secret-value --secret-id "$SEARCH_SECRETSMANAGER_KEY_SECRET_NAME" --region "$SEARCH_AWS_REGION" --query 'SecretString' --output text
+      - aws secretsmanager get-secret-value --secret-id "$SEARCH_SECRETSMANAGER_KEY_SECRET_NAME" --region "$SEARCH_AWS_REGION" --query 'SecretString' --output text > ~/.ssh/id_rsa
+      - CHMOD 600 ~/.ssh/id_rsa
   build:
     commands:
-      - CURRRENT_LOCATION=$(pwd)   # would look something like this - /codebuild/output/src559980389/src - a temp dir created by codebuild
-      - SSH_KEY_PATH="${CURRENT_LOCATION}/${SEARCH_ENV_EC2_KEY}"
-      - echo $SSH_KEY_PATH
+      - eval "$(ssh-agent -s)"
+      - ssh-add ~/.ssh/id_rsa
+      - echo "SSL_KEY_PATH: "$SSL_KEY_PATH"
       - echo "deploying searchgov app with capistrano"
       - bundle install
       # - cap $SEARCH_ENV puma:config puma:systemd:config puma:systemd:enable
