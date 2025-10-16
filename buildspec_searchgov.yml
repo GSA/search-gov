@@ -40,7 +40,7 @@ phases:
       - echo "deploying searchgov app with capistrano"
       - rm -rf vendor/bundle .bundle
       - bundle install
-      # - cap $SEARCH_ENV puma:config puma:systemd:config puma:systemd:enable
+      - cap $SEARCH_ENV puma:config puma:systemd:config puma:systemd:enable
       - cap $SEARCH_ENV deploy
       - cap $SEARCH_ENV resque:restart
       - cap $SEARCH_ENV resque:scheduler:restart
