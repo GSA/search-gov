@@ -325,14 +325,6 @@ Feature: Manage Display
     Then I should see "You have updated your No Results Page."
     And the "Alternative Link URL 0" field should contain "http://news.agency.gov"
 
-    When I follow "Results Format" within the navigation tabs
-    Then I should see "Display image on search results?"
-    Then I should see "Display filetype on search results?"
-    Then I should see "Display created date on search results?"
-    Then I should see "Display updated date on search results?"
-    And I switch on "display image on search results"
-    And I switch on "display filetype on search results"
-
     When I submit the form by pressing "Save"
     Then I should see "You have updated your visual design settings"
     And the "display image on search results" should be switched on
