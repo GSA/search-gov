@@ -31,7 +31,7 @@ phases:
       
   pre_build:
     commands:
-      - aws secretsmanager get-secret-value --secret-id "$SEARCH_SECRETSMANAGER_KEY_SECRET_NAME" --region "$SEARCH_AWS_REGION" --query 'SecretString' 
+      - aws secretsmanager get-secret-value --secret-id "$SEARCH_SECRETSMANAGER_KEY_SECRET_NAME" --region "$SEARCH_AWS_REGION" --query 'SecretString' --output text
   build:
     commands:
       - CURRRENT_LOCATION=$(pwd)   # would look something like this - /codebuild/output/src559980389/src - a temp dir created by codebuild
