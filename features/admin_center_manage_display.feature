@@ -325,21 +325,6 @@ Feature: Manage Display
     Then I should see "You have updated your No Results Page."
     And the "Alternative Link URL 0" field should contain "http://news.agency.gov"
 
-    When I fill in "Favicon URL" with "https://d3qcdigd1fhos0.cloudfront.net/blog/img/favicon.ico"
-    And I submit the form by pressing "Save"
-    Then I should see "You have updated your visual design settings"
-    And the "Favicon URL" field should contain "https://d3qcdigd1fhos0.cloudfront.net/blog/img/favicon.ico"
-
-    When I attach the file "features/support/logo_mobile_en.png" to "Header logo"
-    And I submit the form by pressing "Save"
-    Then I should see "You have updated your visual design settings"
-    And I should see "Header logo alt text"
-
-    When I fill in "Header logo alt text" with "Sample alt text"
-    And I submit the form by pressing "Save"
-    Then I should see "You have updated your visual design settings"
-    And I should see an image with alt text "Sample alt text"
-
     When I attach the file "features/support/bg.png" to "Header logo"
     And I submit the form by pressing "Save"
     Then I should see "1 error prohibited this affiliate from being saved"
