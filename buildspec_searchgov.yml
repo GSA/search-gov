@@ -40,8 +40,8 @@ phases:
   
   build:
     commands:
-      - CURRENT_LOCATION=$(pwd)  # would look something like this - /codebuild/output/src559980389/src - a temp dir created by codebuild
-      - SSH_KEY_PATH="${CURRENT_LOCATION}/${SEARCH_ENV_EC2_KEY}"
+      - export CURRENT_LOCATION=$(pwd)  # would look something like this - /codebuild/output/src559980389/src - a temp dir created by codebuild
+      - export SSH_KEY_PATH="${CURRENT_LOCATION}/${SEARCH_ENV_EC2_KEY}"
       - echo "SSH Key Path in build: $SSH_KEY_PATH"
       - eval "$(ssh-agent -s)"
       - echo "deploying searchgov app with capistrano"
