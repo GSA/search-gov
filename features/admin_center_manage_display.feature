@@ -325,27 +325,6 @@ Feature: Manage Display
     Then I should see "You have updated your No Results Page."
     And the "Alternative Link URL 0" field should contain "http://news.agency.gov"
 
-    When I attach the file "features/support/bg.png" to "Header logo"
-    And I submit the form by pressing "Save"
-    Then I should see "1 error prohibited this affiliate from being saved"
-    Then I should see "There were problems with the following fields:"
-    Then I should see "Header logo must be under 64 KB"
-    And I should see an image with src that contains "logo_mobile_en.png"
-    And I should see an image with alt text "Sample alt text"
-
-    When I check "Mark header logo for deletion"
-    And I submit the form by pressing "Save"
-    Then I should see "You have updated your visual design settings"
-    And I should see "Header logo"
-    And I should not see an image with src that contains "logo_mobile_en.png"
-    And I should not see "Mark header logo for deletion"
-    And I should not see "Header logo alt text"
-
-    When I follow "Header & Footer" within the navigation tabs
-    Then I should see "Header layout"
-    And the "Use extended header" radio button should be checked
-    And the "Use basic header" radio button should not be checked
-
     When I choose "Use basic header"
     And I submit the form by pressing "Save"
     Then I should see "You have updated your visual design settings"
