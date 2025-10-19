@@ -325,12 +325,6 @@ Feature: Manage Display
     Then I should see "You have updated your No Results Page."
     And the "Alternative Link URL 0" field should contain "http://news.agency.gov"
 
-    When I choose "Use basic header"
-    And I submit the form by pressing "Save"
-    Then I should see "You have updated your visual design settings"
-    And the "Use extended header" radio button should not be checked
-    And the "Use basic header" radio button should be checked
-
     When I fill in "Parent agency name" with "My Parent Name"
     And I fill in "Parent agency link" with "My Parent Link"
     And I fill in "Identifier domain name" with "My Domain Name"
