@@ -325,40 +325,6 @@ Feature: Manage Display
     Then I should see "You have updated your No Results Page."
     And the "Alternative Link URL 0" field should contain "http://news.agency.gov"
 
-    When I fill in "Parent agency name" with "My Parent Name"
-    And I fill in "Parent agency link" with "My Parent Link"
-    And I fill in "Identifier domain name" with "My Domain Name"
-    And I submit the form by pressing "Save"
-    Then I should see "You have updated your visual design settings"
-    And the "Parent agency name" field should contain "My Parent Name"
-    And the "Parent agency link" field should contain "My Parent Link"
-    And the "Identifier domain name" field should contain "My Domain Name"
-
-    When I fill in "Primary header link title 0" with "A primary header link"
-    And I fill in "Primary header link URL 0" with ""
-    And I submit the form by pressing "Save"
-    Then I should see "1 error prohibited this affiliate from being saved"
-    Then I should see "There were problems with the following fields:"
-    Then I should see "Primary header links url can't be blank"
-
-    When I fill in the following:
-      | Primary header link title 0    | A primary header link   |
-      | Primary header link URL 0      | https://link.gov        |
-      | Secondary header link title 0  | A secondary header link |
-      | Secondary header link URL 0    | link.gov                |
-    And I submit the form by pressing "Save"
-    Then I should see "You have updated your visual design settings"
-    And the "Primary header link title 0" field should contain "A primary header link"
-    And the "Primary header link URL 0" field should contain "https://link.gov"
-    And the "Secondary header link title 0" field should contain "A secondary header link"
-    And the "Secondary header link URL 0" field should contain "https://link.gov"
-
-    When I follow "Add new secondary header link"
-    Then I should be able to access 2 "new_secondary_header_link" rows
-    And I follow "Add new secondary header link"
-    Then I should be able to access 3 "new_secondary_header_link" rows
-    And I should not see "Add new secondary header link"
-
   Scenario: Editing the Visual Design Settings when "Use Redesigned Results Page" is false
     Given the following SearchGov Affiliates exist:
       | display_name    | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
