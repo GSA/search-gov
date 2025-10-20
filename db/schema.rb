@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_09_29_205000) do
+ActiveRecord::Schema[7.1].define(version: 2025_10_10_184908) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -195,7 +195,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_09_29_205000) do
     t.string "output_target", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_crawl_configs_on_name", unique: true
     t.index ["output_target", "allowed_domains"], name: "index_crawl_configs_on_output_target_and_allowed_domains", unique: true, length: { allowed_domains: 255 }
+    t.check_constraint "(`depth_limit` >= 0) and (`depth_limit` <= 150)", name: "crawl_configs_depth_limit_range"
   end
 
   create_table "document_collections", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
@@ -782,7 +784,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_09_29_205000) do
     t.index ["id", "imported_at"], name: "index_youtube_profiles_on_id_and_imported_at"
   end
 
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "searchgov_documents", "searchgov_urls"
   add_foreign_key "searchgov_urls", "searchgov_domains"
