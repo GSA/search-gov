@@ -21,11 +21,23 @@ RSpec.describe CrawlConfig, type: :model do
     it { is_expected.to validate_presence_of(:starting_urls) }
     it { is_expected.to validate_presence_of(:schedule) }
     it { is_expected.to validate_presence_of(:output_target) }
-    it { is_expected.to validate_numericality_of(:depth_limit).only_integer }
+    it { is_expected.to validate_numericality_of(:depth_limit).only_integer.is_greater_than_or_equal_to(0).is_less_than_or_equal_to(150) }
     it { is_expected.to define_enum_for(:output_target).with_values(endpoint: 'endpoint', search_engine: 'searchengine').backed_by_column_of_type(:string).with_prefix(:target) }
 
     context 'when a record exists' do
       before { crawl_config.save! }
+
+      it 'validates uniqueness of name' do
+        duplicate_config = described_class.new(
+          name: crawl_config.name,
+          allowed_domains: ['different.com'],
+          starting_urls: ['https://different.com'],
+          schedule: '0 1 * * *',
+          output_target: :endpoint
+        )
+        expect(duplicate_config).not_to be_valid
+        expect(duplicate_config.errors[:name]).to include('has already been taken')
+      end
 
       it 'validates uniqueness of allowed_domains scoped to output_target' do
         duplicate_config = described_class.new(
@@ -51,11 +63,62 @@ RSpec.describe CrawlConfig, type: :model do
       end
     end
 
+    describe 'depth_limit validation' do
+      it 'is valid with depth_limit of 0' do
+        crawl_config.depth_limit = 0
+        expect(crawl_config).to be_valid
+      end
+
+      it 'is valid with depth_limit of 150' do
+        crawl_config.depth_limit = 150
+        expect(crawl_config).to be_valid
+      end
+
+      it 'is invalid with depth_limit less than 0' do
+        crawl_config.depth_limit = -1
+        expect(crawl_config).not_to be_valid
+        expect(crawl_config.errors[:depth_limit]).to include('must be greater than or equal to 0')
+      end
+
+      it 'is invalid with depth_limit greater than 150' do
+        crawl_config.depth_limit = 151
+        expect(crawl_config).not_to be_valid
+        expect(crawl_config.errors[:depth_limit]).to include('must be less than or equal to 150')
+      end
+    end
+
     describe 'custom validation for schedule format' do
+      it 'is valid with a 5-field cron expression' do
+        crawl_config.schedule = '0 0 * * *'
+        expect(crawl_config).to be_valid
+      end
+
+      it 'is valid with a 5-field cron expression with steps' do
+        crawl_config.schedule = '*/15 * * * *'
+        expect(crawl_config).to be_valid
+      end
+
+      it 'is invalid with a 6-field cron expression' do
+        crawl_config.schedule = '0 0 * * * *'
+        expect(crawl_config).not_to be_valid
+        expect(crawl_config.errors[:schedule]).to include('must be a 5-field cron expression (minute hour day month weekday)')
+      end
+
+      it 'is invalid with a 4-field cron expression' do
+        crawl_config.schedule = '0 0 * *'
+        expect(crawl_config).not_to be_valid
+        expect(crawl_config.errors[:schedule]).to include('must be a 5-field cron expression (minute hour day month weekday)')
+      end
+
       it 'is invalid if the schedule is not a valid cron expression' do
         crawl_config.schedule = 'invalid-cron-string'
         expect(crawl_config).not_to be_valid
-        expect(crawl_config.errors[:schedule]).to include(/is not a valid cron expression/)
+        expect(crawl_config.errors[:schedule]).to include('must be a 5-field cron expression (minute hour day month weekday)')
+      end
+
+      it 'is valid with extra whitespace' do
+        crawl_config.schedule = '  0  0  *  *  *  '
+        expect(crawl_config).to be_valid
       end
     end
 

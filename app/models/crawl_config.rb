@@ -13,8 +13,8 @@ class CrawlConfig < ApplicationRecord
 
   validates :allowed_domains, presence: true
   validates :allowed_domains, uniqueness: { scope: :output_target, message: "and output target combination must be unique" }
-  validates :depth_limit, presence: true, numericality: { only_integer: true }
-  validates :name, presence: true
+  validates :depth_limit, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 150 }
+  validates :name, presence: true, uniqueness: true
   validates :output_target, presence: true
   validates :schedule, presence: true
   validates :starting_urls, presence: true
@@ -38,8 +38,15 @@ class CrawlConfig < ApplicationRecord
   def validate_schedule_format
     return if schedule.blank?
 
+    # Check that the cron expression has exactly 5 fields (standard cron format)
+    field_count = schedule.strip.split(/\s+/).length
+    unless field_count == 5
+      errors.add(:schedule, "must be a 5-field cron expression (minute hour day month weekday)")
+      return
+    end
+
     begin
-      Fugit.do_parse(schedule)
+      Fugit.do_parse_cron(schedule)
     rescue ArgumentError => e
       errors.add(:schedule, "is not a valid cron expression: #{e.message}")
     end
