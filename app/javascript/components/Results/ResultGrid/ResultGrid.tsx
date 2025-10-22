@@ -72,7 +72,7 @@ export const ResultGrid = ({ result, affiliate, query, position, vertical, facet
   const finalTitle = result.title || result.url;
 
   return (
-    <GridContainer className='result search-result-item'>
+    <GridContainer className='result search-result-item cursor-pointer'>
       <ResultGridWrapper
         url={result.url}
         clickTracking={() => clickTracking(affiliate, module, query, position, result.url, vertical)}>
@@ -90,9 +90,7 @@ export const ResultGrid = ({ result, affiliate, query, position, vertical, facet
           <div className='result-title'>
             <h2 className='result-title-label'>
               <ResultTitle
-                url={result.url}
-                className='result-title-link'
-                clickTracking={() => clickTracking(affiliate, module, query, position, result.url, vertical)}>
+                className='result-title-link'>
                 {parse(finalTitle)}
                 {getFileType(result.fileType)}
               </ResultTitle>

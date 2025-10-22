@@ -28,12 +28,7 @@ export const TextBestBet = ({ affiliate, title, url, description, position, quer
         <Grid col={true} className='result-meta-data'>
           <div className='result-title'>
             <h2 className='result-title-label'>
-              <ResultTitle 
-                url={url}  
-                className='result-title-link'
-                clickTracking={() => clickTracking(affiliate, module, query, position, url, vertical)}>
-                {parse(title)}
-              </ResultTitle>
+              {parse(title)}
             </h2>
           </div>
           <div className='result-desc'>

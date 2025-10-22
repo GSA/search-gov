@@ -128,12 +128,7 @@ export const FedRegister = ({ fedRegisterDocs=[], query='', affiliate, vertical 
                       <span className='published-date'>{fedRegisterDoc.publicationDate}</span>
                       <div className='result-title'>
                         <h2 className='result-title-label'>
-                          <ResultTitle 
-                            url={fedRegisterDoc.htmlUrl}
-                            className='result-title-link'
-                            clickTracking={() => clickTracking(affiliate, module, query, index+1, fedRegisterDoc.htmlUrl, vertical)}>
-                            {parse(fedRegisterDoc.title)}
-                          </ResultTitle>
+                          {parse(fedRegisterDoc.title)}
                         </h2>
                       </div>
                       <div className='result-desc'>

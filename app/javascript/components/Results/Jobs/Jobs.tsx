@@ -117,12 +117,7 @@ export const Jobs = ({ jobs=[], agencyName, query, affiliate, vertical }: JobsPr
                     <Grid col={true} className='result-meta-data'>
                       <div className='result-title'>
                         <h2 className='result-title-label'>
-                          <ResultTitle 
-                            url={job.positionUri}
-                            className='result-title-link'
-                            clickTracking={() => clickTracking(affiliate, module, query, index+1, job.positionUri, vertical)}>
-                            {job.positionTitle}
-                          </ResultTitle>
+                           {job.positionTitle}
                         </h2>
                       </div>
                       <div className='result-desc'>
@@ -152,9 +147,7 @@ export const Jobs = ({ jobs=[], agencyName, query, affiliate, vertical }: JobsPr
                           <div className='result-title'>
                             <h2 className='result-title-label'>
                               <ResultTitle 
-                                url={job.positionUri}
-                                className='result-title-link'
-                                clickTracking={() => clickTracking(affiliate, module, query, MAX_JOBS_IN_COLLAPSE_VIEW+index+1, job.positionUri, vertical)}>
+                                className='result-title-link'>
                                 {job.positionTitle}
                               </ResultTitle>
                             </h2>

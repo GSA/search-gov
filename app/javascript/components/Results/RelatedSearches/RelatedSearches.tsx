@@ -45,12 +45,7 @@ export const RelatedSearches = ({ affiliate, relatedSearches=[], query, vertical
                   <Grid col={true} className='result-meta-data'>
                     <div className='result-title'>
                       <h2 className='result-title-label'>
-                        <ResultTitle 
-                          url={relatedSearch.link}
-                          className='result-title-link'
-                          clickTracking={() => clickTracking(affiliate, module, query, index+1, `${window.location.origin}${relatedSearch.link}`, vertical)}>
-                          {parse(relatedSearch.label)}
-                        </ResultTitle>
+                        {parse(relatedSearch.label)}
                       </h2>
                     </div>
                   </Grid>

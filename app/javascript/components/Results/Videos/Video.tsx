@@ -43,12 +43,7 @@ export const Video = (video: VideoProps) => {
           </span>
           <div className='result-title'>
             <h2 className='result-title-label'>
-              <ResultTitle 
-                url={video.link}
-                className='result-title-link'
-                clickTracking={() => clickTracking(video.affiliate, module, video.query, video.position, video.link, video.vertical)}>
-                {parse(video.title)}
-              </ResultTitle>
+              {parse(video.title)}
             </h2>
           </div>
           <div className='result-desc'>

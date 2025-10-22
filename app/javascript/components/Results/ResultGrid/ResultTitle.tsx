@@ -1,7 +1,8 @@
 import React, { ReactNode } from 'react';
+import { clickTracking } from 'utils';
 
 interface ResultTitleProps {
-  url: string;
+  url?: string;
   className?: string;
   clickTracking?: () => void;
   children: ReactNode;
@@ -9,12 +10,22 @@ interface ResultTitleProps {
 
 const ResultTitle = ({ url, clickTracking, className, children }: ResultTitleProps) => {
   return (
-    <a 
-      href={url}
-      className={className}
-      onClick={() => clickTracking && clickTracking()}>
-      {children}
-    </a>
+    <>
+      {url && clickTracking?
+        <a 
+          href={url}
+          className={className}
+          onClick={() => clickTracking && clickTracking()}>
+          {children}
+        </a>
+        :
+        <div
+          className={className}
+          >
+          {children}
+        </div>
+      }
+    </>
   );
 };
 
