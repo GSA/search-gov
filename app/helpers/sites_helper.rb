@@ -140,10 +140,6 @@ module SitesHelper
        alerts]
   end
 
-  def list_item_with_link_to_current_help_page
-    nil
-  end
-
   def site_dashboard_controllers
     %w[settings sites users clones]
   end
