@@ -3,7 +3,6 @@
   %h2 Collection
   .action-bar
     %ul
-      = list_item_with_link_to_current_help_page
       %li= link_to 'View All', site_collections_path(@site)
       %li= link_to 'Edit', edit_site_collection_path(@site, @document_collection)
 .primary-content

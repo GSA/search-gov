@@ -40,6 +40,12 @@ const StyledUswdsIdentifier = styled(UswdsIdentifier).attrs<{ styles: FontsAndCo
   .usa-identifier__required-link:visited {
     color: ${(props) => props.styles.identifierLinkColor};
   }
+  .usa-link {
+    color: #005EA2 !important; /* Dark blue that meets WCAG AA contrast requirements */
+  }
+  .usa-link:hover, .usa-link:active, .usa-link:visited {
+    color: #005EA2 !important;
+  }
 `;
 
 // eslint-disable-next-line complexity

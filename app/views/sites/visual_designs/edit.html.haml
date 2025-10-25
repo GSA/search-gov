@@ -4,7 +4,6 @@
     %h2= t('.visual_design', scope: 'admin_center')
     .action-bar
       %ul
-        = list_item_with_link_to_current_help_page
         %li=link_to(t('.preview_button', scope: 'admin_center'), 
                     search_path(affiliate: @site.name, redesign: true),
                     class: 'btn btn-primary',

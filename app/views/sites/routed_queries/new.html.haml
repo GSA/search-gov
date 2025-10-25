@@ -4,7 +4,6 @@
     %h2 Add Routed Query
     .action-bar
       %ul
-        = list_item_with_link_to_current_help_page
         %li= link_to 'View All', site_routed_queries_path(@site)
         %li= form.submit 'Add', class: 'btn submit disabled', disabled: true
   = render form
