@@ -23,11 +23,6 @@ describe 'sites/monthly_reports/show' do
         expect(rendered).to have_content %{Monthly Usage Stats for June 2014}
       end
 
-      context 'when help link is available' do
-        before do
-          allow(HelpLink).to receive(:find_by_request_path).and_return stub_model(HelpLink, request_path: '/sites', help_page_url: 'http://www.help.gov/')
-        end
-      end
     end
 
     context 'when there is data' do
