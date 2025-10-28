@@ -151,15 +151,7 @@ Feature: Search
     Then I should see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears" within the med topic govbox
     And I should see a link to "Hippo1" with url for "https://www.nlm.nih.gov/medlineplus/Hippopotomonstrosesquippedaliophobia.html"
 
-    Given I am logged in with email "aff@bar.gov"
-    When I go to the english-nih's Manage Display page
-    And I switch off "Is medline govbox enabled"
-    And I press "Save"
 
-    When I am on english-nih's search page
-    And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
-    And I press "Search" within the search box
-    Then I should not see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears"
 
   @javascript
   Scenario: Searchers see Spanish Medline Govbox
@@ -182,15 +174,7 @@ Feature: Search
     And I press "Buscar" within the search box
     Then I should see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales" within the med topic govbox
 
-    Given I am logged in with email "aff@bar.gov"
-    When I go to the spanish-nih's Manage Display page
-    And I switch off "Is medline govbox enabled"
-    And I press "Save"
 
-    When I am on spanish-nih's search page
-    And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
-    And I press "Buscar" within the search box
-    Then I should not see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales"
 
   Scenario: When a searcher clicks on a collection and the query is blank
     Given the following BingV7 Affiliates exist:

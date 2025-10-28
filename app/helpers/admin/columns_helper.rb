@@ -34,4 +34,46 @@ module Admin::ColumnsHelper
   def website_column(record, column)
     link_to_url_without_protocol record.website, target: '_blank'
   end
+
+  def allowed_domains_column(record, column)
+    format_array_column(record, column.name)
+  end
+
+  def starting_urls_column(record, column)
+    format_array_column(record, column.name)
+  end
+
+  def sitemap_urls_column(record, column)
+    format_array_column(record, column.name, show_empty: true)
+  end
+
+  def deny_paths_column(record, column)
+    format_array_column(record, column.name, show_empty: true)
+  end
+
+  # Show column helpers (for show view)
+  def allowed_domains_show_column(record, column)
+    format_array_column(record, column.name)
+  end
+
+  def starting_urls_show_column(record, column)
+    format_array_column(record, column.name)
+  end
+
+  def sitemap_urls_show_column(record, column)
+    format_array_column(record, column.name, show_empty: true)
+  end
+
+  def deny_paths_show_column(record, column)
+    format_array_column(record, column.name, show_empty: true)
+  end
+
+  private
+
+  def format_array_column(record, field_name, show_empty: false)
+    value = record[field_name]
+    return value unless value.is_a?(Array)
+    return content_tag(:span, 'None', class: 'crawl-config-empty') if show_empty && value.empty?
+    value.map { |item| content_tag(:span, item, class: 'crawl-config-array-item') }.join.html_safe
+  end
 end

@@ -35,6 +35,14 @@ module Admin::ExportColumnsHelper
     record.user_emails.html_safe if record.is_a? Affiliate
   end
 
+  def site_domains_export_column(record)
+    if record.is_a?(Affiliate)
+      record.site_domains.pluck(:domain).join(',')
+    else
+      record.site_domains
+    end
+  end
+
   def export_time_column(column, column_value)
     return unless column_value
     format = column.is_a?(User) ? '%Y-%m-%d' : :default

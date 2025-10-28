@@ -41,6 +41,16 @@ executors:
           xpack.security.enabled: false
           ES_JAVA_OPTS: "-Xms256m -Xmx256m"
 
+      - image: opensearchproject/opensearch:3
+        environment:
+          cluster.name: os-cluster
+          discovery.type: single-node
+          bootstrap.memory_lock: true
+          http.port: 9300
+          plugins.security.disabled: "true"
+          OPENSEARCH_JAVA_OPTS: "-Xms256m -Xmx256m"
+          OPENSEARCH_INITIAL_ADMIN_PASSWORD: S3venDr4gon!
+
       - image: apache/tika:2.4.1
 
 commands:

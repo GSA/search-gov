@@ -564,6 +564,7 @@ GEM
       actionpack (>= 4.2)
       omniauth (~> 2.0)
     open_uri_redirections (0.2.1)
+    opensearch-dsl (0.2.1)
     os (1.1.4)
     ostruct (0.6.3)
     parallel (1.27.0)
@@ -811,10 +812,10 @@ GEM
       shoulda-matchers (>= 2.1.0)
     shoulda-matchers (5.3.0)
       activesupport (>= 5.2.0)
-    signet (0.20.0)
+    signet (0.21.0)
       addressable (~> 2.8)
       faraday (>= 0.17.5, < 3.a)
-      jwt (>= 1.5, < 3.0)
+      jwt (>= 1.5, < 4.0)
       multi_json (~> 1.10)
     simplecov (0.17.1)
       docile (~> 1.1)
@@ -951,12 +952,13 @@ DEPENDENCIES
   email_spec (~> 2.2)
   exception_notification (~> 4.5)
   faker (~> 1.8)
-  faraday_middleware (~> 0.14.0)
+  faraday_middleware
   federal_register (~> 0.6.3)
   feedjira (~> 3.2)
   flickraw (~> 0.9.9)
   font-awesome-grunticon-rails!
   font-awesome-rails (~> 4.7.0)
+  fugit (~> 1.8)
   geoip (~> 1.6.4)
   google-api-client (~> 0.53.0)
   google_visualr!
@@ -983,6 +985,7 @@ DEPENDENCIES
   omniauth (~> 2.1.0)
   omniauth-rails_csrf_protection (~> 1.0.1)
   omniauth_login_dot_gov!
+  opensearch-dsl
   pry-byebug (~> 3.5)
   pry-rails (~> 0.3.6)
   puma (~> 5.6)

@@ -106,7 +106,6 @@ module SitesHelper
        api_instructions
        embed_codes
        i14y_api_instructions
-       type_ahead_api_instructions
        click_tracking_api_instructions]
   end
 
@@ -126,7 +125,7 @@ module SitesHelper
   def site_manage_content_controllers
     %w[boosted_contents boosted_contents_bulk_uploads
        contents document_collections routed_queries excluded_urls
-       flickr_profiles indexed_documents rss_feeds
+       flickr_profiles indexed_documents
        site_domains site_feed_urls i14y_drawers
        youtube_profiles featured_collections]
   end

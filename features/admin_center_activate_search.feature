@@ -7,7 +7,6 @@ Feature: Activate Search
     And I am logged in with email "aff@bar.gov"
     When I go to the aff.gov's Activate Search page
     Then I should see "Form Snippet"
-    And I should see "Type-ahead search and Search.gov Tag Snippet"
     And I should see the code for English language sites
 
   Scenario: Getting an embed code for my affiliate site search in Spanish
@@ -31,17 +30,11 @@ Feature: Activate Search
     Given the following BingV7 Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name | use_redesigned_results_page |
       | aff site     | aff.gov | aff@bar.gov   | John       | Bar       | false                       |
-    And affiliate "aff.gov" has the following RSS feeds:
-      | name   | url                            |
-      | News-1 | https://www.usa.gov/feed/news-1 |
     And I am logged in with email "aff@bar.gov"
     When I go to the aff.gov's Activate Search page
     And I follow "Search Results API Instructions"
     Then I should see "API Instructions" within the Admin Center content
 
-    When I go to the aff.gov's Activate Search page
-    And I follow "Type-ahead API Instructions"
-    Then I should see "Type-ahead API Instructions" within the Admin Center content
 
   Scenario: Visiting the Site i14y Content Indexing API Instructions
     Given the following BingV7 Affiliates exist:

@@ -11,6 +11,8 @@ setup() {
     docker build -f ${DOCKERFILE} -t ${IMAGE_NAME} .
     docker run -it --env-file ${ENV_FILE} --network host ${IMAGE_NAME} bin/rails usasearch:elasticsearch:create_indexes
     docker run -it --env-file ${ENV_FILE} --network host ${IMAGE_NAME} bin/rails db:setup
+    docker run -it --env-file ${ENV_FILE} --network host ${IMAGE_NAME} bin/rails css:build
+    docker run -it --env-file ${ENV_FILE} --network host ${IMAGE_NAME} bin/rails opensearch:create_index
 }
 
 build() {
