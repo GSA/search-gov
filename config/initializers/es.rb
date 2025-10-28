@@ -27,19 +27,17 @@ module ES
 
     template_generator = SearchElastic::Template.new("*#{index_name}*")
 
-    self.client.indices.put_template(
-      body: template_generator.body,
-      # create: true,
-      include_type_name: false,
-      name: index_name,
-      order: 0
-    )
-
     if self.client.indices.exists?(index: index_name)
-      Rails.logger.info { "Index #{index_name} already exists. Updating mapping..." }
+      Rails.logger.info { "Index #{index_name} already exists in Elasticsearch. Updating mapping..." }
       self.update_index_mapping(index_name)
     else
-      Rails.logger.info { "Creating new index: #{index_name}" }
+      Rails.logger.info { "Creating new Elasticsearch index: #{index_name}" }
+      self.client.indices.put_template(
+        body: template_generator.body,
+        include_type_name: false,
+        name: index_name,
+        order: 0
+      )
       repo = SearchElastic::DocumentRepository.new
       repo.create_index!(index: index_name, include_type_name: false)
     end
@@ -66,24 +64,13 @@ module ES
       include_type_name: false
     )
 
-    Rails.logger.info { "Successfully updated mapping for index: #{index_name}" }
+    Rails.logger.info { "Successfully updated Elasticsearch mapping for index: #{index_name}" }
   rescue Elasticsearch::Transport::Transport::Errors::BadRequest => e
     # Common reasons include attempting to change an existing field type — handle gracefully.
     if e.message =~ /mapper_parsing_exception|illegal_argument_exception/
-      Rails.logger.warn { "Cannot update domain_name field mapping for #{index_name}: #{e.message}" }
+      Rails.logger.warn { "Cannot update Elasticsearch domain_name field mapping for #{index_name}: #{e.message}" }
     else
       raise
-    end
-  end
-
-  def self.check_current_mapping(index_name)
-    begin
-      mapping = self.client.indices.get_mapping(index: index_name)
-      Rails.logger.info "Current mapping for #{index_name}: #{mapping.to_json}"
-      mapping
-    rescue => e
-      Rails.logger.error "Failed to get mapping: #{e.message}"
-      nil
     end
   end
 end
