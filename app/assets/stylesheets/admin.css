@@ -4006,3 +4006,19 @@ a:visited, a:focus, a:active {
 .active-scaffold a:hover, .active-scaffold div.hover, .active-scaffold td span.hover, .active-scaffold .actions .action_group div:hover, .active-scaffold form .checkbox-list.draggable-list {
   background-color: #ff8;
 }
+
+/* Custom styles for crawl config array display */
+.crawl-config-array-item {
+    background-color: #e5ecf9;
+    border: 1px solid #bdbdbd;
+    border-radius: 3px;
+    padding: 2px 4px;
+    margin: 2px;
+    display: inline-block;
+    font-size: 0.9em;
+}
+
+.crawl-config-empty {
+    color: #666;
+    font-style: italic;
+}
