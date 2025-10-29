@@ -131,4 +131,858 @@ http_interactions:
       string: '{"stat":"fail","code":100,"message":"Invalid API Key (Key has invalid
         format)"}'
   recorded_at: Mon, 17 Apr 2023 15:00:04 GMT
-recorded_with: VCR 6.1.0
+- request:
+    method: get
+    uri: http://www.nih.gov/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - usasearch
+  response:
+    status:
+      code: 301
+      message: Moved Permanently
+    headers:
+      Content-Length:
+      - '0'
+      Location:
+      - https://www.nih.gov/
+      Expires:
+      - Mon, 22 Sep 2025 20:16:10 GMT
+      Cache-Control:
+      - max-age=0, no-cache, no-store
+      Pragma:
+      - no-cache
+      Date:
+      - Mon, 22 Sep 2025 20:16:10 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Mon, 22 Sep 2025 20:16:10 GMT
+- request:
+    method: get
+    uri: https://www.nih.gov/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - usasearch
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Language:
+      - en
+      Content-Security-Policy:
+      - 'default-src ''self''; script-src ''self'' ''unsafe-inline'' ''unsafe-eval''
+        *.nih.gov *.googleapis.com *.govdelivery.com *.hatchbuck.com *.youtube.com
+        *.here.com search.usa.gov *.jquery.com *.crazyegg.com *.addthis.com *.addthisedge.com
+        cdn.jsdelivr.net *.google-analytics.com *.moatads.com *.newrelic.com bam.nr-data.net
+        *.feedgrabbr.com *.recaptcha.net *.gstatic.com *.foresee.com *.4seeresults.com
+        *.answerscloud.com *.foreseeresults.com *.googletagmanager.com *.digitalgov.gov
+        code.ctpprojects.com platform.twitter.com connect.facebook.net assets.pinterest.com
+        unpkg.com *.verint-cdn.com; style-src ''self'' ''unsafe-inline'' *.nih.gov
+        search.usa.gov *.googleapis.com *.here.com cdn.jsdelivr.net *.feedgrabbr.com
+        *.foresee.com style.ctpprojects.com; img-src ''self'' *.nih.gov *.google-analytics.com
+        data: *.foresee.com nih.hostexp.com i.vimeocdn.com log.pinterest.com *.verint-cdn.com
+        *.googletagmanager.com; media-src nih.hostexp.com; frame-src ''self'' *.nih.gov
+        *.youtube.com *.youtube-nocookie.com *.addthis.com *.recaptcha.net analytics.ctpprojects.com
+        player.vimeo.com *.googletagmanager.com; frame-ancestors ''self'' *.nih.gov
+        *.youtube.com *.youtube-nocookie.com *.addthis.com *.recaptcha.net; child-src
+        ''self'' blob: *.nih.gov *.youtube.com *.youtube-nocookie.com *.addthis.com
+        *.recaptcha.net; font-src ''self'' *.nih.gov *.googleapis.com *.gstatic.com
+        *.feedgrabbr.com *.foresee.com style.ctpprojects.com; connect-src ''self''
+        *.nih.gov *.crazyegg.com *.google-analytics.com *.addthis.com stats.g.doubleclick.net
+        bam.nr-data.net *.foresee.com *.4seeresults.com *.answerscloud.com *.foreseeresults.com
+        maps.googleapis.com nih.hostexp.com vimeo.com *.googletagmanager.com; report-uri
+        /report-csp-violation'
+      Content-Type:
+      - text/html; charset=UTF-8
+      Etag:
+      - '"1758562972-gzip"'
+      Last-Modified:
+      - Mon, 22 Sep 2025 17:42:52 GMT
+      X-Age:
+      - '57'
+      X-Ah-Environment:
+      - prod
+      X-Cache-Hits:
+      - '140'
+      X-Content-Type-Options:
+      - nosniff
+      X-Drupal-Cache:
+      - HIT
+      X-Drupal-Dynamic-Cache:
+      - UNCACHEABLE (poor cacheability)
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Generator:
+      - Drupal 10 (https://www.drupal.org)
+      X-Request-Id:
+      - v-d8c7b0ac-97f0-11f0-9fd4-0783e6a0ca8b
+      X-Xss-Protection:
+      - 1; mode=block
+      Vary:
+      - Accept-Encoding
+      Expires:
+      - Mon, 22 Sep 2025 20:16:10 GMT
+      Cache-Control:
+      - max-age=0, no-cache, no-store
+      Pragma:
+      - no-cache
+      Date:
+      - Mon, 22 Sep 2025 20:16:10 GMT
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - Transfer-Encoding
+      - keep-alive
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: "<!DOCTYPE html>\n<html lang=\"en\" dir=\"ltr\" prefix=\"og: https://ogp.me/ns#\">\n
+        \ <head>\n    <meta charset=\"utf-8\" />\n<meta name=\"description\" content=\"Official
+        website of the National Institutes of Health (NIH). NIH is one of the world&#039;s
+        foremost medical research centers. An agency of the U.S. Department of Health
+        and Human Services, the NIH is the Federal focal point for health and medical
+        research. The NIH website offers health information for the public, scientists,
+        researchers, medical professionals, patients, educators,\" />\n<meta name=\"keywords\"
+        content=\"NIH, Health, research funding, medical research, medical information,
+        grants, biomedical, disease prevention, biological science, clinical trials\"
+        />\n<meta name=\"robots\" content=\"index, follow\" />\n<link rel=\"canonical\"
+        href=\"https://www.nih.gov/\" />\n<link rel=\"shortlink\" href=\"https://www.nih.gov/\"
+        />\n<link rel=\"image_src\" href=\"/sites/default/files/styles/thumbnail_large/public/2025-01/thumbnail-generic.png\"
+        />\n<meta property=\"og:site_name\" content=\"National Institutes of Health
+        (NIH)\" />\n<meta property=\"og:type\" content=\"Article\" />\n<meta property=\"og:url\"
+        content=\"https://www.nih.gov/node\" />\n<meta property=\"og:description\"
+        content=\"Official website of the National Institutes of Health (NIH). NIH
+        is one of the world&#039;s foremost medical research centers. An agency of
+        the U.S. Department of Health and Human Services, the NIH is the Federal focal
+        point for health and medical research. The NIH website offers health information
+        for the public, scientists, researchers, medical professionals, patients,
+        educators,\" />\n<meta property=\"og:image\" content=\"https://www.nih.gov/sites/default/files/styles/thumbnail_large/public/2025-01/thumbnail-generic.png\"
+        />\n<meta name=\"twitter:card\" content=\"summary\" />\n<meta name=\"Generator\"
+        content=\"Drupal 10 (https://www.drupal.org)\" />\n<meta name=\"MobileOptimized\"
+        content=\"width\" />\n<meta name=\"HandheldFriendly\" content=\"<DATADOG_API_ENABLED>\"
+        />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"
+        />\n<link rel=\"icon\" href=\"/themes/custom/nih2_uswds/assets/img/favicons/custom/favicon-192x192.png\"
+        type=\"image/png\" />\n<link rel=\"alternate\" type=\"application/rss+xml\"
+        title=\"\" href=\"https://www.nih.gov/rss.xml\" />\n\n    <title>National
+        Institutes of Health (NIH) |</title>\n    <link rel=\"stylesheet\" media=\"all\"
+        href=\"/sites/default/files/css/css_nTZzVV0LsLVxmxXdLTGxvjouVfn31AzT0bze53_rVlY.css?delta=0&amp;language=en&amp;theme=nih2_uswds&amp;include=eJxFjGsOwiAQhC-0lsQLmS1sAOUVBmzx9JrSxj-TfPPSgYGhogBsBaRzFWVqLxwWfvI-jZRr5OA_QrK34NPrqpxIybv7o2MzULqj5XhDG7_EUuHKtnJxuDZ_Z-mp9DV4ODGEgSZRrQyh-TT7JxxKby8b1KFLzKYH-QKRDUum\"
+        />\n<link rel=\"stylesheet\" media=\"all\" href=\"/sites/default/files/css/css_zvnmitdxF7Azlr40tTVTUAnwywPlL_yNojzXeI2geVM.css?delta=1&amp;language=en&amp;theme=nih2_uswds&amp;include=eJxFjGsOwiAQhC-0lsQLmS1sAOUVBmzx9JrSxj-TfPPSgYGhogBsBaRzFWVqLxwWfvI-jZRr5OA_QrK34NPrqpxIybv7o2MzULqj5XhDG7_EUuHKtnJxuDZ_Z-mp9DV4ODGEgSZRrQyh-TT7JxxKby8b1KFLzKYH-QKRDUum\"
+        />\n\n    <script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"pathPrefix\":\"\",\"currentPath\":\"node\",\"currentPathIsAdmin\":false,\"isFront\":<DATADOG_API_ENABLED>,\"currentLanguage\":\"en\"},\"pluralDelimiter\":\"\\u0003\",\"suppressDeprecationErrors\":<DATADOG_API_ENABLED>,\"gtag\":{\"tagId\":\"\",\"consentMode\":false,\"otherIds\":[],\"events\":[],\"additionalConfigInfo\":[]},\"ajaxPageState\":{\"libraries\":\"eJxdkAuOwyAMRC9EgtQLVS64jnf5CZu06emLmmQ3qYQGzzxky7gAIou9gaBxax1RBAjFuFzRplwjBH51XOG1IJHdC4NPDZx-ra-tQBg3a-6sM3ux2_3nObEaypkCXhXIUpdvP8IPPM9hNImny7XJo_dwTTTHQXTpo-hI7oHL4KD6Y1hRUIfS1zmn2moaNPdTjkDYY4K5x9Tnn4niAAGr7rBABapQJtn3_0_Glkq7BZYJvZFFFOP6xWuz9f1mPmpmxofYj44x-xbwDTz3nqQ\",\"theme\":\"nih2_uswds\",\"theme_token\":null},\"ajaxTrustedUrl\":[],\"gtm\":{\"tagId\":null,\"settings\":{\"data_layer\":\"dataLayer\",\"include_classes\":false,\"allowlist_classes\":\"\",\"blocklist_classes\":\"\",\"include_environment\":false,\"environment_id\":\"\",\"environment_token\":\"\"},\"tagIds\":[\"GTM-5CBCNW2\"]},\"fitvids\":{\"selectors\":\".node\\r,.field--name-field-media-oembed-video\",\"custom_vendors\":\"iframe[src^=\\u0022https:\\/\\/youtu.be\\u0022],iframe[src^=\\u0022https:\\/\\/youtu.be\\u0022],iframe[src^=\\u0022https:\\/\\/www.youtube.com\\u0022],iframe[src^=\\u0022\\/media\\/oembed?url=https:\\/\\/youtu.be\\u0022],iframe[src^=\\u0022\\/media\\/oembed?url=https%3A\\/\\/youtu.be\\u0022],iframe[src^=\\u0022\\/media\\/oembed?url=https:\\/\\/youtube.com\\u0022],iframe[src^=\\u0022\\/media\\/oembed?url=https%3A\\/\\/youtube.com\\u0022]\",\"ignore_selectors\":\"\"},\"data\":{\"extlink\":{\"extTarget\":<DATADOG_API_ENABLED>,\"extTargetAppendNewWindowLabel\":\"(opens
+        in a new window)\",\"extTargetNoOverride\":false,\"extNofollow\":<DATADOG_API_ENABLED>,\"extTitleNoOverride\":false,\"extNoreferrer\":<DATADOG_API_ENABLED>,\"extFollowNoOverride\":false,\"extClass\":\"ext\",\"extLabel\":\"(link
+        is external)\",\"extImgClass\":false,\"extSubdomains\":false,\"extExclude\":\"\",\"extInclude\":\"\",\"extCssExclude\":\".usa-nav,
+        .usa-sidenav, .usa-button, .icon-link, .share-buttons, .usa-footer__social-links,
+        .teaser-list, .usa-card-group, .link--no-tag\",\"extCssInclude\":\"\",\"extCssExplicit\":\"\",\"extAlert\":false,\"extAlertText\":\"You
+        are leaving the NIH website.\\r\\n\\r\\nThis external link provides additional
+        information that is consistent with the intended purpose of this site. NIH
+        cannot attest to the accuracy of a non-federal site.\\r\\n\\r\\nLinking to
+        a non-federal site does not constitute an endorsement by NIH or any of its
+        employees of the sponsors or the information and products presented on the
+        site. You will be subject to the destination site\\u2019s privacy policy when
+        you follow the link.\",\"extHideIcons\":false,\"mailtoClass\":\"mailto\",\"telClass\":\"0\",\"mailtoLabel\":\"(link
+        sends email)\",\"telLabel\":\"\",\"extUseFontAwesome\":false,\"extIconPlacement\":\"after\",\"extPreventOrphan\":false,\"extFaLinkClasses\":\"fa
+        fa-external-link\",\"extFaMailtoClasses\":\"fa fa-envelope-o\",\"extAdditionalLinkClasses\":\"\",\"extAdditionalMailtoClasses\":\"\",\"extAdditionalTelClasses\":\"\",\"extFaTelClasses\":\"fa
+        fa-phone\",\"whitelistedDomains\":[\"www.nih.gov\",\"salud.nih.gov\",\"ned.nih.gov\",\"calendar.nih.gov\",\"search.usa.gov\",\"search.nih.gov\",\"search.gov\",\"cloud.acquia.com\"],\"extExcludeNoreferrer\":\"\"}},\"user\":{\"uid\":0,\"permissionsHash\":\"52c204d27c77368827b33df801757282ad522f57fc486a23070b7ac529ab2eeb\"}}</script>\n<script
+        src=\"/sites/default/files/js/js_I8yN2jcadLwQ2UnJhfoYhgH0rMoIYFCge7ov_eWFMGQ.js?scope=header&amp;delta=0&amp;language=en&amp;theme=nih2_uswds&amp;include=eJxdjYEOwiAMRH8IRuIPLQ3UWkUgpczp14uKZjNprr13ydULPO5I5Pw4DK4aOV1ckFYgTsOaI-vCobqxf54Tq6GcKeKsQI66_PsJzrDu4dUkPh3mVm-vzsjFepCwhYIV1RYg3FNtkqzmPmUbVA6YYOmY-pd9omghoug3_PC3PgGlVmKC\"></script>\n<script
+        src=\"https://script.crazyegg.com/pages/scripts/0011/2616.js\" async></script>\n<script
+        src=\"/modules/contrib/google_tag/js/gtag.js?t0h3vu\"></script>\n<script src=\"/modules/contrib/google_tag/js/gtm.js?t0h3vu\"></script>\n\n\n
+        \   <script type=\"text/javascript\">\n    // Verint Unified WebSDK Integration
+        Snippet v2.4\n    //\n    // Instructions: please embed this snippet directly
+        into every page of your website template.\n    // For optimal performance,
+        this should be embedded directly into the template, not referenced as\n    //
+        an external file.\n    //\n    // DO NOT MODIFY BELOW THIS LINE *****************************************\n
+        \   (function () {\n      var cookies = document.cookie.split(\"; \").reduce(function
+        (o, i) { var p = i.split(\"=\"); o[p[0]] = p[1]; return o; }, {});\n      var
+        containerValue = cookies.uws_container_override && JSON.parse(decodeURIComponent(cookies.uws_container_override));\n
+        \     var config = window._vrntSdkInit = {\n        varName: \"unifiedSDK\",\n
+        \       moduleHost: \"ucm-us.verint-cdn.com\",\n        configHost: \"ucm-us.verint-cdn.com\",\n
+        \       siteKey: \"nih-gov\",\n        container: containerValue || \"live\",\n
+        \       loadTime: Date.now()\n      };\n      var readyCallbacks = []; window.uwsReady
+        = function (callback) { readyCallbacks.push(callback); };\n      var sdkPath
+        = \"//\" + [config.moduleHost, \"files/sites\", config.siteKey, config.container,
+        \"sdk.js\"].join(\"/\");\n      var script = document.createElement(\"script\");
+        script.src = sdkPath; script.async = <DATADOG_API_ENABLED>; script.type =
+        \"module\";\n      script.addEventListener(\"load\", function () { window[config.varName].start(config,
+        readyCallbacks); });\n      document.head.appendChild(script);\n    })();\n
+        \   // DO NOT MODIFY ABOVE THIS LINE *****************************************\n\n
+        \   // Un-comment out the function below when you are ready to input your
+        variable\n    /*fsReady(function() {\n      FSR.CPPS.set('name','value');
+        // use single quotes when passing a static-value\n      FSR.CPPS.set('name2',somevariable);
+        // don't use quotes for a dynamic value\n      FSR.CPPS.set('name3',othervariable);
+        // add as many CPPs as you like in this way\n    });*/\n  </script>\n\n  </head>\n
+        \ <body class=\"path-frontpage\">\n        <a href=\"#main-content\" class=\"visually-hidden
+        focusable skip-link\">\n      Skip to main content\n    </a>\n    <noscript><iframe
+        src=\"https://www.googletagmanager.com/ns.html?id=GTM-5CBCNW2\"\n                  height=\"0\"
+        width=\"0\" style=\"display:none;visibility:hidden\"></iframe></noscript>\n\n
+        \     <div class=\"dialog-off-canvas-main-canvas\" data-off-canvas-main-canvas>\n
+        \   \n  <section class=\"usa-banner\" aria-label=\"Official government website\">\n
+        \ <div class=\"usa-accordion\">\n    <header class=\"usa-banner__header\">\n
+        \     <div class=\"usa-banner__inner\">\n        <div class=\"grid-col-auto\">\n
+        \         <img class=\"usa-banner__header-flag\" src=\"/themes/custom/nih2_uswds/assets/img/us_flag.svg\"
+        alt=\"U.S. flag\">\n        </div>\n        <div class=\"grid-col-fill tablet:grid-col-auto\">\n
+        \         <p class=\"usa-banner__header-text\">An official website of the
+        United States government</p>\n          <p class=\"usa-banner__header-action\"
+        aria-hidden=\"<DATADOG_API_ENABLED>\">Here’s how you know</p>\n        </div>\n
+        \       <button class=\"usa-accordion__button usa-banner__button\"\n          aria-expanded=\"false\"
+        aria-controls=\"gov-banner\">\n          <span class=\"usa-banner__button-text\">Here’s
+        how you know</span>\n        </button>\n      </div>\n    </header>\n    <div
+        class=\"usa-banner__content usa-accordion__content\" id=\"gov-banner\" hidden>\n
+        \     <div class=\"grid-row grid-gap-lg\">\n        <div class=\"usa-banner__guidance
+        tablet:grid-col-6\">\n          <img class=\"usa-banner__icon usa-media-block__img\"
+        src=\"/themes/custom/nih2_uswds/assets/img/icon-dot-gov.svg\" role=\"img\"
+        alt=\"Dot gov\">\n          <div class=\"usa-media-block__body\">\n            <p>\n
+        \             <strong>\n                Official websites use .gov              </strong>\n
+        \             <br/>\n                              A <strong>.gov</strong>
+        website belongs to an official government organization in the United States.\n
+        \                         </p>\n          </div>\n        </div>\n        <div
+        class=\"usa-banner__guidance tablet:grid-col-6\">\n          <img class=\"usa-banner__icon
+        usa-media-block__img\" src=\"/themes/custom/nih2_uswds/assets/img/icon-https.svg\"
+        role=\"img\" alt=\"Https\">\n          <div class=\"usa-media-block__body\">\n
+        \           <p>\n              <strong>\n                Secure .gov websites
+        use HTTPS              </strong>\n              <br/>\n              A <strong>lock</strong>\n
+        \               (<span class=\"icon-lock\"><svg xmlns=\"http://www.w3.org/2000/svg\"
+        width=\"52\" height=\"64\" viewBox=\"0 0 52 64\" class=\"usa-banner__lock-image\"
+        role=\"img\" aria-labelledby=\"banner-lock-title banner-lock-description\"><title
+        id=\"banner-lock-title\">Lock</title><desc id=\"banner-lock-description\">A
+        locked padlock</desc><path fill=\"#000000\" fill-rule=\"evenodd\" d=\"M26
+        0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4
+        4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15
+        19v9h22v-9c0-6.075-4.925-11-11-11z\"/></svg></span>)\n                or <strong>https://</strong>
+        means you’ve safely connected to the .gov website. Share sensitive information
+        only on official, secure websites.            </p>\n          </div>\n        </div>\n
+        \     </div>\n    </div>\n  </div>\n</section>\n\n\n\n<div class=\"usa-overlay\"></div>\n\n
+        \ <div class=\"grid-container\">\n      <div class=\"region region-header-top\">\n
+        \   <div id=\"block-nih2-uswds-verintforesee\" class=\"block block-block-content
+        block-block-content8bfdb0cc-3b85-4c96-95c1-f93aa5201854\">\n  \n    \n      \n
+        \ </div>\n\n  </div>\n\n  </div>\n\n<header class=\"usa-header usa-header--extended\"
+        role=\"banner\">\n        <div class=\"usa-navbar\">\n          <div class=\"region
+        region-header\">\n    <div class=\"usa-logo\" id=\"logo\">\n\n    <a class=\"logo-img\"
+        href=\"/\" accesskey=\"1\" title=\"Home\" aria-label=\"Home\">\n    <img src=\"/themes/custom/nih2_uswds/assets/img/nih-logo.png\"
+        alt=\"Home\" />\n  </a>\n    \n</div>\n\n  </div>\n\n        <button class=\"usa-menu-btn\">Menu</button>\n
+        \     </div>\n\n      <nav aria-label=\"Primary navigation\" class=\"usa-nav\"
+        role=\"navigation\">\n        <button class=\"usa-nav__close\">\n          <img
+        src=\"/themes/custom/nih2_uswds/assets/img/close.svg\" alt=\"close\" />\n
+        \       </button>\n                  <div class=\"usa-nav__inner\">\n        \n
+        \                   <div class=\"region region-primary-menu\">\n      \n  \n
+        \         <ul class=\"usa-nav__primary usa-accordion\">\n    \n    \n              <li
+        class=\"usa-nav__primary-item\">\n      \n              <button class=\"usa-accordion__button
+        usa-nav__link \" aria-expanded=\"false\" aria-controls=\"basic-nav-section-1\">\n
+        \         <span>Health Information</span>\n        </button>\n      \n                \n
+        \ \n          <ul id=\"basic-nav-section-1\" class=\"usa-nav__submenu\" hidden=\"\">\n\n
+        \             <li class=\"usa-nav__submenu-item\">\n          <a href=\"/health-information\"
+        data-drupal-link-system-path=\"node/96\">Health Information</a> \n        </li>\n
+        \         \n    \n              <li class=\"usa-nav__submenu-item\">\n      \n
+        \     \n                     \n                          <a href=\"/health-information/health-info-lines\">\n
+        \                   <span>Health Info Lines</span>\n                  </a>\n
+        \               \n              \n              </li>\n      \n    \n              <li
+        class=\"usa-nav__submenu-item\">\n      \n      \n                     \n
+        \                         <a href=\"https://medlineplus.gov/\">\n                    <span>MedlinePlus
+        Health Info</span>\n                  </a>\n                \n              \n
+        \             </li>\n      \n    \n              <li class=\"usa-nav__submenu-item\">\n
+        \     \n      \n                     \n                          <a href=\"https://science.education.nih.gov/\">\n
+        \                   <span>Science Education Resources</span>\n                  </a>\n
+        \               \n              \n              </li>\n      \n    \n              <li
+        class=\"usa-nav__submenu-item\">\n      \n      \n                     \n
+        \                         <a href=\"/health-information/nih-clinical-research-trials-you\">\n
+        \                   <span>NIH Clinical Research Trials and You</span>\n                  </a>\n
+        \               \n              \n              </li>\n      \n    \n              <li
+        class=\"usa-nav__submenu-item\">\n      \n      \n                     \n
+        \                         <a href=\"/health-information/your-healthiest-self-wellness-toolkits\">\n
+        \                   <span>Your Healthiest Self: Wellness Toolkits</span>\n
+        \                 </a>\n                \n              \n              </li>\n
+        \     \n    \n              <li class=\"usa-nav__submenu-item\">\n      \n
+        \     \n                     \n                          <a href=\"https://newsinhealth.nih.gov/\">\n
+        \                   <span>NIH News in Health</span>\n                  </a>\n
+        \               \n              \n              </li>\n      \n    \n              <li
+        class=\"usa-nav__submenu-item\">\n      \n      \n                     \n
+        \                         <a href=\"/institutes-nih/office-communications-public-liaison/clear-communication/talking-your-doctor-or-health-care-provider\">\n
+        \                   <span>Talking With Your Doctor or Health Care Provider</span>\n
+        \                 </a>\n                \n              \n              </li>\n
+        \     \n    \n          </ul>\n    \n  \n\n      \n              </li>\n      \n
+        \   \n              <li class=\"usa-nav__primary-item\">\n      \n              <button
+        class=\"usa-accordion__button usa-nav__link \" aria-expanded=\"false\" aria-controls=\"basic-nav-section-2\">\n
+        \         <span>Grants &amp; Funding</span>\n        </button>\n      \n                \n
+        \ \n          <ul id=\"basic-nav-section-2\" class=\"usa-nav__submenu\" hidden=\"\">\n\n
+        \             <li class=\"usa-nav__submenu-item\">\n          <a href=\"/grants-funding\"
+        data-drupal-link-system-path=\"node/101\">Grants &amp; Funding</a> \n        </li>\n
+        \         \n    \n              <li class=\"usa-nav__submenu-item\">\n      \n
+        \     \n                     \n                          <a href=\"https://grants.nih.gov/\">\n
+        \                   <span>Grants Home Page</span>\n                  </a>\n
+        \               \n              \n              </li>\n      \n    \n              <li
+        class=\"usa-nav__submenu-item\">\n      \n      \n                     \n
+        \                         <a href=\"https://grants.nih.gov/funding/index.htm\">\n
+        \                   <span>Find Funding</span>\n                  </a>\n                \n
+        \             \n              </li>\n      \n    \n              <li class=\"usa-nav__submenu-item\">\n
+        \     \n      \n                     \n                          <a href=\"https://grants.nih.gov/grants/how-to-apply-application-guide/due-dates-and-submission-policies/due-dates.htm\">\n
+        \                   <span>Due Dates</span>\n                  </a>\n                \n
+        \             \n              </li>\n      \n    \n              <li class=\"usa-nav__submenu-item\">\n
+        \     \n      \n                     \n                          <a href=\"https://grants.nih.gov/grants/how-to-apply-application-guide.html\">\n
+        \                   <span>How to Apply</span>\n                  </a>\n                \n
+        \             \n              </li>\n      \n    \n              <li class=\"usa-nav__submenu-item\">\n
+        \     \n      \n                     \n                          <a href=\"https://grants.nih.gov/new-to-nih\">\n
+        \                   <span>New to NIH</span>\n                  </a>\n                \n
+        \             \n              </li>\n      \n    \n              <li class=\"usa-nav__submenu-item\">\n
+        \     \n      \n                     \n                          <a href=\"https://grants.nih.gov/grants/about_grants.htm\">\n
+        \                   <span>Policy &amp; Compliance</span>\n                  </a>\n
+        \               \n              \n              </li>\n      \n    \n              <li
+        class=\"usa-nav__submenu-item\">\n      \n      \n                     \n
+        \                         <a href=\"https://nexus.od.nih.gov/all/\">\n                    <span>Grants
+        News/Blog</span>\n                  </a>\n                \n              \n
+        \             </li>\n      \n    \n              <li class=\"usa-nav__submenu-item\">\n
+        \     \n      \n                     \n                          <a href=\"https://grants.nih.gov/funding/contracts.htm\">\n
+        \                   <span>Contracts</span>\n                  </a>\n                \n
+        \             \n              </li>\n      \n    \n              <li class=\"usa-nav__submenu-item\">\n
+        \     \n      \n                     \n                          <a href=\"https://www.lrp.nih.gov/\">\n
+        \                   <span>Loan Repayment</span>\n                  </a>\n
+        \               \n              \n              </li>\n      \n    \n          </ul>\n
+        \   \n  \n\n      \n              </li>\n      \n    \n              <li class=\"usa-nav__primary-item\">\n
+        \     \n              <button class=\"usa-accordion__button usa-nav__link
+        \" aria-expanded=\"false\" aria-controls=\"basic-nav-section-3\">\n          <span>News
+        &amp; Events</span>\n        </button>\n      \n                \n  \n          <ul
+        id=\"basic-nav-section-3\" class=\"usa-nav__submenu\" hidden=\"\">\n\n              <li
+        class=\"usa-nav__submenu-item\">\n          <a href=\"/news-events\" data-drupal-link-system-path=\"node/121\">News
+        &amp; Events</a> \n        </li>\n          \n    \n              <li class=\"usa-nav__submenu-item\">\n
+        \     \n      \n                     \n                          <a href=\"/news-events/news-releases\">\n
+        \                   <span>News Releases</span>\n                  </a>\n                \n
+        \             \n              </li>\n      \n    \n              <li class=\"usa-nav__submenu-item\">\n
+        \     \n      \n                     \n                          <a href=\"/news-events/media-inquiries\">\n
+        \                   <span>Media Inquiries</span>\n                  </a>\n
+        \               \n              \n              </li>\n      \n    \n              <li
+        class=\"usa-nav__submenu-item\">\n      \n      \n                     \n
+        \                         <a href=\"/news-events/nih-social-media\">\n                    <span>NIH
+        on Social Media</span>\n                  </a>\n                \n              \n
+        \             </li>\n      \n    \n              <li class=\"usa-nav__submenu-item\">\n
+        \     \n      \n                     \n                          <a href=\"/news-events/images-b-roll\">\n
+        \                   <span>Images and B-roll</span>\n                  </a>\n
+        \               \n              \n              </li>\n      \n    \n              <li
+        class=\"usa-nav__submenu-item\">\n      \n      \n                     \n
+        \                         <a href=\"https://calendar.nih.gov/\">\n                    <span>Calendar
+        of Events</span>\n                  </a>\n                \n              \n
+        \             </li>\n      \n    \n              <li class=\"usa-nav__submenu-item\">\n
+        \     \n      \n                     \n                          <a href=\"/news-events/nih-news-publications\">\n
+        \                   <span>NIH News Publications</span>\n                  </a>\n
+        \               \n              \n              </li>\n      \n    \n          </ul>\n
+        \   \n  \n\n      \n              </li>\n      \n    \n              <li class=\"usa-nav__primary-item\">\n
+        \     \n              <button class=\"usa-accordion__button usa-nav__link
+        \" aria-expanded=\"false\" aria-controls=\"basic-nav-section-4\">\n          <span>Research
+        &amp; Training</span>\n        </button>\n      \n                \n  \n          <ul
+        id=\"basic-nav-section-4\" class=\"usa-nav__submenu\" hidden=\"\">\n\n              <li
+        class=\"usa-nav__submenu-item\">\n          <a href=\"/research-training\"
+        data-drupal-link-system-path=\"node/106\">Research &amp; Training</a> \n        </li>\n
+        \         \n    \n              <li class=\"usa-nav__submenu-item\">\n      \n
+        \     \n                     \n                          <a href=\"/research-training/medical-research-initiatives\">\n
+        \                   <span>Medical Research Initiatives</span>\n                  </a>\n
+        \               \n              \n              </li>\n      \n    \n              <li
+        class=\"usa-nav__submenu-item\">\n      \n      \n                     \n
+        \                         <a href=\"/research-training/science-highlights\">\n
+        \                   <span>Science Highlights</span>\n                  </a>\n
+        \               \n              \n              </li>\n      \n    \n              <li
+        class=\"usa-nav__submenu-item\">\n      \n      \n                     \n
+        \                         <a href=\"https://science.education.nih.gov/\">\n
+        \                   <span>Science Education</span>\n                  </a>\n
+        \               \n              \n              </li>\n      \n    \n              <li
+        class=\"usa-nav__submenu-item\">\n      \n      \n                     \n
+        \                         <a href=\"/research-training/research-nih-labs-clinics\">\n
+        \                   <span>Research in NIH Labs &amp; Clinics</span>\n                  </a>\n
+        \               \n              \n              </li>\n      \n    \n              <li
+        class=\"usa-nav__submenu-item\">\n      \n      \n                     \n
+        \                         <a href=\"/research-training/training-opportunities\">\n
+        \                   <span>Training Opportunities</span>\n                  </a>\n
+        \               \n              \n              </li>\n      \n    \n              <li
+        class=\"usa-nav__submenu-item\">\n      \n      \n                     \n
+        \                         <a href=\"/research-training/library-resources\">\n
+        \                   <span>Library Resources</span>\n                  </a>\n
+        \               \n              \n              </li>\n      \n    \n              <li
+        class=\"usa-nav__submenu-item\">\n      \n      \n                     \n
+        \                         <a href=\"/research-training/research-resources\">\n
+        \                   <span>Research Resources</span>\n                  </a>\n
+        \               \n              \n              </li>\n      \n    \n              <li
+        class=\"usa-nav__submenu-item\">\n      \n      \n                     \n
+        \                         <a href=\"/research-training/clinical-research-resources\">\n
+        \                   <span>Clinical Research Resources</span>\n                  </a>\n
+        \               \n              \n              </li>\n      \n    \n              <li
+        class=\"usa-nav__submenu-item\">\n      \n      \n                     \n
+        \                         <a href=\"/research-training/safety-regulation-guidance\">\n
+        \                   <span>Safety, Regulation &amp; Guidance</span>\n                  </a>\n
+        \               \n              \n              </li>\n      \n    \n              <li
+        class=\"usa-nav__submenu-item\">\n      \n      \n                     \n
+        \                         <a href=\"/research-training/lasker-clinical-research-scholars\">\n
+        \                   <span>Lasker Clinical Research Scholars</span>\n                  </a>\n
+        \               \n              \n              </li>\n      \n    \n          </ul>\n
+        \   \n  \n\n      \n              </li>\n      \n    \n              <li class=\"usa-nav__primary-item\">\n
+        \     \n              <button class=\"usa-accordion__button usa-nav__link
+        \" aria-expanded=\"false\" aria-controls=\"basic-nav-section-5\">\n          <span>Institutes
+        at NIH</span>\n        </button>\n      \n                \n  \n          <ul
+        id=\"basic-nav-section-5\" class=\"usa-nav__submenu\" hidden=\"\">\n\n              <li
+        class=\"usa-nav__submenu-item\">\n          <a href=\"/institutes-nih\" data-drupal-link-system-path=\"node/111\">Institutes
+        at NIH</a> \n        </li>\n          \n    \n              <li class=\"usa-nav__submenu-item\">\n
+        \     \n      \n                     \n                          <a href=\"/institutes-nih/list-institutes-centers\">\n
+        \                   <span>List of Institutes and Centers</span>\n                  </a>\n
+        \               \n              \n              </li>\n      \n    \n              <li
+        class=\"usa-nav__submenu-item\">\n      \n      \n                     \n
+        \                         <a href=\"/institutes-nih/nih-office-director\">\n
+        \                   <span>NIH Office of the Director</span>\n                  </a>\n
+        \               \n              \n              </li>\n      \n    \n              <li
+        class=\"usa-nav__submenu-item\">\n      \n      \n                     \n
+        \                         <a href=\"/institutes-nih/directors-nih-institutes-centers\">\n
+        \                   <span>Directors of NIH Institutes and Centers</span>\n
+        \                 </a>\n                \n              \n              </li>\n
+        \     \n    \n              <li class=\"usa-nav__submenu-item\">\n      \n
+        \     \n                     \n                          <a href=\"/institutes-nih/nih-institute-center-contact-information\">\n
+        \                   <span>NIH Institute and Center Contact Information</span>\n
+        \                 </a>\n                \n              \n              </li>\n
+        \     \n    \n          </ul>\n    \n  \n\n      \n              </li>\n      \n
+        \   \n              <li class=\"usa-nav__primary-item\">\n      \n              <button
+        class=\"usa-accordion__button usa-nav__link \" aria-expanded=\"false\" aria-controls=\"basic-nav-section-6\">\n
+        \         <span>About NIH</span>\n        </button>\n      \n                \n
+        \ \n          <ul id=\"basic-nav-section-6\" class=\"usa-nav__submenu\" hidden=\"\">\n\n
+        \             <li class=\"usa-nav__submenu-item\">\n          <a href=\"/about-nih\"
+        data-drupal-link-system-path=\"node/116\">About NIH</a> \n        </li>\n
+        \         \n    \n              <li class=\"usa-nav__submenu-item\">\n      \n
+        \     \n                     \n                          <a href=\"/about-nih/mission-goals\">\n
+        \                   <span>Mission and Goals</span>\n                  </a>\n
+        \               \n              \n              </li>\n      \n    \n              <li
+        class=\"usa-nav__submenu-item\">\n      \n      \n                     \n
+        \                         <a href=\"/about-nih/organization\">\n                    <span>Organization</span>\n
+        \                 </a>\n                \n              \n              </li>\n
+        \     \n    \n              <li class=\"usa-nav__submenu-item\">\n      \n
+        \     \n                     \n                          <a href=\"/about-nih/nih-director\">\n
+        \                   <span>The NIH Director</span>\n                  </a>\n
+        \               \n              \n              </li>\n      \n    \n              <li
+        class=\"usa-nav__submenu-item\">\n      \n      \n                     \n
+        \                         <a href=\"/about-nih/nih-almanac\">\n                    <span>The
+        NIH Almanac</span>\n                  </a>\n                \n              \n
+        \             </li>\n      \n    \n              <li class=\"usa-nav__submenu-item\">\n
+        \     \n      \n                     \n                          <a href=\"/about-nih/nih-turning-discovery-into-health\">\n
+        \                   <span>NIH...Turning Discovery Into Health®</span>\n                  </a>\n
+        \               \n              \n              </li>\n      \n    \n              <li
+        class=\"usa-nav__submenu-item\">\n      \n      \n                     \n
+        \                         <a href=\"/about-nih/impact-nih-research\">\n                    <span>Impact
+        of NIH Research</span>\n                  </a>\n                \n              \n
+        \             </li>\n      \n    \n              <li class=\"usa-nav__submenu-item\">\n
+        \     \n      \n                     \n                          <a href=\"/about-nih/science-health-public-trust\">\n
+        \                   <span>Science, Health, and Public Trust</span>\n                  </a>\n
+        \               \n              \n              </li>\n      \n    \n              <li
+        class=\"usa-nav__submenu-item\">\n      \n      \n                     \n
+        \                         <a href=\"/about-nih/visitor-information\">\n                    <span>Visitor
+        Information</span>\n                  </a>\n                \n              \n
+        \             </li>\n      \n    \n              <li class=\"usa-nav__submenu-item\">\n
+        \     \n      \n                     \n                          <a href=\"/about-nih/get-involved-nih\">\n
+        \                   <span>Get Involved at NIH</span>\n                  </a>\n
+        \               \n              \n              </li>\n      \n    \n              <li
+        class=\"usa-nav__submenu-item\">\n      \n      \n                     \n
+        \                         <a href=\"https://hr.nih.gov/jobs\">\n                    <span>Jobs
+        at NIH</span>\n                  </a>\n                \n              \n
+        \             </li>\n      \n    \n              <li class=\"usa-nav__submenu-item\">\n
+        \     \n      \n                     \n                          <a href=\"/about-nih/contact-us\">\n
+        \                   <span>Contact Us</span>\n                  </a>\n                \n
+        \             \n              </li>\n      \n    \n          </ul>\n    \n
+        \ \n\n      \n              </li>\n      \n    \n          </ul>\n    \n  \n\n\n\n\n
+        \ </div>\n\n        \n                  <div class=\"usa-nav__secondary\">\n
+        \             <div class=\"region region-secondary-menu\">\n    \n\n<ul class=\"usa-nav__secondary-links\">\n
+        \ <li class=\"usa-nav__secondary-item\">\n    \n                  \n    <a
+        href=\"/virtual-tour\">Virtual Tour</a>\n  </li>\n  <li class=\"usa-nav__secondary-item\">\n
+        \   \n                  \n    <a href=\"https://salud.nih.gov/\">En Español</a>\n
+        \ </li>\n</ul>\n\n<div class=\"search-block-form usa-form block block-search
+        container-inline\" data-drupal-selector=\"search-block-form\" id=\"block-nih2-uswds-search\"
+        role=\"search\">\n  \n    \n  <form class=\"usa-search\" role=\"search\" id=\"search_form\"
+        action=\"https://search.usa.gov/search\" accept-charset=\"UTF-8\" method=\"get\">\n
+        \   <input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" />\n    <input
+        type=\"hidden\" name=\"affiliate\" id=\"affiliate\" value=\"nih\" />\n    <label
+        class=\"usa-sr-only\" for=\"extended-search-field-en-small\">Search</label>\n
+        \   <input class=\"usa-input usagov-search-autocomplete\" id=\"extended-search-field-en-small\"
+        type=\"search\" name=\"query\" autocomplete=\"off\" placeholder=\"Search NIH\"
+        />\n    <button class=\"usa-button\" type=\"submit\" name=\"commit\" data-disable-with=\"Search\"><span
+        class=\"usa-search__submit-text\">Search</span><img src=\"/themes/custom/nih2_uswds/assets/img/usa-icons-bg/search--white.svg\"
+        class=\"usa-search__submit-icon\" alt=\"Search the NIH Website\" /></button>\n
+        \ </form>\n</div>\n\n  </div>\n\n          </div>\n        \n                  </div>\n
+        \            </nav>\n\n  \n</header>\n\n<div class=\"grid-row grid-gap\">\n
+        \ <div class=\"grid-col-12\">\n      <div class=\"region region-highlighted\">\n
+        \   <div data-drupal-messages-fallback class=\"hidden\"></div>\n\n  </div>\n\n
+        \     </div>\n</div>\n\n    <div class=\"region region-hero\">\n    \n  <section
+        class=\"usa-hero\" style=\"background-image:url(/sites/default/files/2025-09/Recovery%20Month.png);\">\n
+        \   <div id=\"block-herohomepage\" class=\"block block-block-content block-block-content399c9b75-dd6a-4db7-badc-c9e998495037\">\n
+        \     \n            \n\n      \n        <div class=\"hero-image\" style=\"background-image:url(/sites/default/files/2025-09/Recovery%20Month.png);\">\n
+        \       </div>\n        <div class=\"grid-container\">\n          <div class=\"grid-row
+        flex-column flex-align-end\">\n                      <div class=\"usa-hero__callout\">\n
+        \             <h2 class=\"usa-hero__heading heading--without-rule\">September
+        is National Recovery Month</h2>\n              <p>Learn about treatments to
+        help people recover from alcohol use disorder.</p>\n              <a class=\"usa-button\"
+        href=\"https://alcoholtreatment.niaaa.nih.gov/\">Learn more</a>\n            </div>\n
+        \         </div>\n        </div>\n\n      \n    </div>\n  </section>\n\n    \n\n\n
+        \ </div>\n\n\n <main class=\"usa-section\" id=\"main-content\">\n   <div class=\"grid-container\">\n\n
+        \    <div class=\"grid-row grid-gap\">\n\n      <div class=\"region-content
+        tablet:grid-col-12\">\n          <div class=\"region region-content\">\n    <div
+        id=\"block-homepagefeatured\" class=\"block block-block-content block-block-contentc260e5b3-bdde-47e6-bc0d-f3a1ebc76772\">\n
+        \ \n    \n      \n      <div class=\"field field--name-field-component field--type-entity-reference-revisions
+        field--label-hidden field__items\">\n              <div class=\"field__item\">
+        \   <div class=\"paragraph paragraph--type--card-group paragraph--view-mode--default\">\n
+        \   <ul class=\"usa-card-group\">\n      \n        \n                          <li
+        class=\"usa-card\n                                                                                                    usa-card--3col
+        \                                                                               usa-card--hide-media-on-mobile
+        \         \">\n              \n            <a class=\"usa-card__container
+        usa-card__container--clickable link--no-tag\" typeof=\"schema:WebPage\" href=\"https://www.nhlbi.nih.gov/education/sickle-cell-month\"
+        title=\"Get to Know Sickle Cell Disease\">\n          <div class=\"usa-card__header\">\n
+        \       <h3 class=\"usa-card__heading\">Get to Know Sickle Cell Disease</h3>\n
+        \     </div>\n            <div class=\"usa-card__media\">\n        <div class=\"usa-card__img\"><article
+        class=\"media media--type-image media--view-mode-card\">\n  \n      \n  <div
+        class=\"field field--name-field-media-image field--type-image field--label-visually_hidden\">\n
+        \   <div class=\"field__label visually-hidden\">Image</div>\n              <div
+        class=\"field__item\">    <img loading=\"eager\" srcset=\"/sites/default/files/styles/max_325x325/public/2025-09/09022025-hero-sickle-cell.jpg?itok=1tMgxZFa
+        325w, /sites/default/files/styles/max_650x650/public/2025-09/09022025-hero-sickle-cell.jpg?itok=3bSo-E47
+        650w, /sites/default/files/styles/max_1300x1300/public/2025-09/09022025-hero-sickle-cell.jpg?itok=W9-ywukz
+        1200w\" sizes=\"(min-width: 1024px) 325px, (min-width: 851px) 25vw, (min-width:
+        560px) 50vw, 100vw\" width=\"650\" height=\"auto\" src=\"/sites/default/files/styles/max_650x650/public/2025-09/09022025-hero-sickle-cell.jpg?itok=3bSo-E47\"
+        alt=\"sickle cells\"/>\n\n\n\n</div>\n          </div>\n\n  </article>\n</div>\n
+        \     </div>\n                  <div class=\"usa-card__body\">\n        <p><span>Sickle
+        cell disease is the most common inherited blood disorder in the U.S.</span></p>\n
+        \     </div>\n                    </a>\n    \n  \n    \n\n\n          </li>\n
+        \                 <li class=\"usa-card\n                                                                                                    usa-card--3col
+        \                                                                               usa-card--hide-media-on-mobile
+        \         \">\n              \n            <a class=\"usa-card__container
+        usa-card__container--clickable link--no-tag\" typeof=\"schema:WebPage\" href=\"https://www.niaaa.nih.gov/publications/brochures-and-fact-sheets/understanding-fetal-alcohol-spectrum-disorders\"
+        title=\"Fetal Alcohol Spectrum Disorders\">\n          <div class=\"usa-card__header\">\n
+        \       <h3 class=\"usa-card__heading\">Fetal Alcohol Spectrum Disorders</h3>\n
+        \     </div>\n            <div class=\"usa-card__media\">\n        <div class=\"usa-card__img\"><article
+        class=\"media media--type-image media--view-mode-card\">\n  \n      \n  <div
+        class=\"field field--name-field-media-image field--type-image field--label-visually_hidden\">\n
+        \   <div class=\"field__label visually-hidden\">Image</div>\n              <div
+        class=\"field__item\">    <img loading=\"eager\" srcset=\"/sites/default/files/styles/max_325x325/public/2025-09/09022025-smallfeature-fasb_1.jpg?itok=97Aa1YRq
+        325w, /sites/default/files/styles/max_650x650/public/2025-09/09022025-smallfeature-fasb_1.jpg?itok=koJc_cTg
+        650w\" sizes=\"(min-width: 1024px) 325px, (min-width: 851px) 25vw, (min-width:
+        560px) 50vw, 100vw\" width=\"650\" height=\"auto\" src=\"/sites/default/files/styles/max_650x650/public/2025-09/09022025-smallfeature-fasb_1.jpg?itok=koJc_cTg\"
+        alt=\"pregnant woman at the seashore\"/>\n\n\n\n</div>\n          </div>\n\n
+        \ </article>\n</div>\n      </div>\n                  <div class=\"usa-card__body\">\n
+        \       <p><span>FASD refers to lifelong chronic health conditions that occur
+        due to alcohol exposure before birth.</span></p>\n      </div>\n                    </a>\n
+        \   \n  \n    \n\n\n          </li>\n                  <li class=\"usa-card\n
+        \                                                                                                   usa-card--3col
+        \                                                                               usa-card--hide-media-on-mobile
+        \         \">\n              \n            <a class=\"usa-card__container
+        usa-card__container--clickable link--no-tag\" typeof=\"schema:WebPage\" href=\"https://grants.nih.gov/funding/funding-categories/lrp\"
+        title=\"NIH Loan Repayment Programs\">\n          <div class=\"usa-card__header\">\n
+        \       <h3 class=\"usa-card__heading\">NIH Loan Repayment Programs</h3>\n
+        \     </div>\n            <div class=\"usa-card__media\">\n        <div class=\"usa-card__img\"><article
+        class=\"media media--type-image media--view-mode-card\">\n  \n      \n  <div
+        class=\"field field--name-field-media-image field--type-image field--label-visually_hidden\">\n
+        \   <div class=\"field__label visually-hidden\">Image</div>\n              <div
+        class=\"field__item\">    <img loading=\"eager\" srcset=\"/sites/default/files/styles/max_325x325/public/2025-09/09022025-small-feature-lrp_1.jpg?itok=sZbuphzP
+        325w, /sites/default/files/styles/max_650x650/public/2025-09/09022025-small-feature-lrp_1.jpg?itok=jJvH6yzc
+        650w\" sizes=\"(min-width: 1024px) 325px, (min-width: 851px) 25vw, (min-width:
+        560px) 50vw, 100vw\" width=\"650\" height=\"auto\" src=\"/sites/default/files/styles/max_650x650/public/2025-09/09022025-small-feature-lrp_1.jpg?itok=jJvH6yzc\"
+        alt=\"Scientist wearing gloves pointing at charts, graphs on a paper document
+        while analyzing medical research data using a tablet in a laboratory setting,
+        with a microscope and beakers nearby\"/>\n\n\n\n</div>\n          </div>\n\n
+        \ </article>\n</div>\n      </div>\n                  <div class=\"usa-card__body\">\n
+        \       <p>Researchers may be eligible for student loan repayment. Apply through
+        November 20, 2025.</p>\n      </div>\n                    </a>\n    \n  \n
+        \   \n\n\n          </li>\n        \n        \n          </ul>\n  </div>\n\n
+        \   \n\n</div>\n          </div>\n  \n  </div>\n<div id=\"block-homepagecontent\"
+        class=\"block block-block-content block-block-contentf3d46c32-cc0d-4c06-b1db-f8ba9c08efc1\">\n
+        \ \n    \n      \n      <div class=\"field field--name-field-component field--type-entity-reference-revisions
+        field--label-hidden field__items\">\n              <div class=\"field__item\">
+        \   <div class=\"paragraph paragraph--type--guide-card-group paragraph--view-mode--default\">\n
+        \   <ul class=\"guide-card-group\">\n      \n        \n                          <li
+        class=\"guide-card guide-card--header-first\n                                        guide-card--2col
+        \                                                           usa-card--hide-media-on-mobile
+        \         \">\n              \n    <div class=\"paragraph paragraph--type--guide-card
+        paragraph--view-mode--default guide-card__container\">\n            <div class=\"guide-card__header\">\n
+        \       <h2 class=\"guide-card__heading heading--without-rule\">NIH at a Glance</h2>\n
+        \     </div>\n            <div class=\"guide-card__content-container\">\n
+        \               <div class=\"guide-card__media\">\n          <div class=\"guide-card__img\"><article
+        class=\"media media--type-image media--view-mode-card-wide\">\n  \n      \n
+        \ <div class=\"field field--name-field-media-image field--type-image field--label-visually_hidden\">\n
+        \   <div class=\"field__label visually-hidden\">Image</div>\n              <div
+        class=\"field__item\">    <img loading=\"eager\" srcset=\"/sites/default/files/styles/max_325x325/public/2024-12/virtual-tour-screenshot-20x8.jpg?itok=P3YH8atM
+        325w, /sites/default/files/styles/max_650x650/public/2024-12/virtual-tour-screenshot-20x8.jpg?itok=e3ZO0v96
+        650w, /sites/default/files/styles/max_1300x1300/public/2024-12/virtual-tour-screenshot-20x8.jpg?itok=BCCuHQqt
+        1300w, /sites/default/files/styles/max_2600x2600/public/2024-12/virtual-tour-screenshot-20x8.jpg?itok=Q25jLsjP
+        2600w\" sizes=\"(min-width: 1024px) 512px, 100vw\" width=\"1300\" height=\"auto\"
+        src=\"/sites/default/files/styles/max_1300x1300/public/2024-12/virtual-tour-screenshot-20x8.jpg?itok=BCCuHQqt\"
+        alt=\"NIH Virtual Tour screenshot\"/>\n\n\n\n</div>\n          </div>\n\n
+        \ </article>\n</div>\n        </div>\n                        <div class=\"guide-card__body\">\n
+        \         <p>The National Institutes of Health (NIH), a part of the U.S. Department
+        of Health and Human Services, is the nation’s medical research agency — making
+        important discoveries that improve health and save lives.</p>\n        </div>\n
+        \                       <div class=\"guide-card__footer\">\n          <ul
+        class=\"usa-list usa-list--unstyled list--spaced\">\n                        <li><a
+        class=\"usa-button usa-button--outline usa-button--full-width\" href=\"/virtual-tour\">Take
+        the Virtual Tour</a></li>\n                        <li><a class=\"usa-button
+        usa-button--outline usa-button--full-width\" href=\"/about-nih/who-we-are/nih-director\">The
+        NIH Director</a></li>\n                        <li><a class=\"usa-button usa-button--outline
+        usa-button--full-width\" href=\"https://grants.nih.gov/\">Funding for Research</a></li>\n
+        \                       <li><a class=\"usa-button usa-button--outline usa-button--full-width\"
+        href=\"https://irp.nih.gov/\">Labs at NIH</a></li>\n                        <li><a
+        class=\"usa-button usa-button--outline usa-button--full-width\" href=\"/about-nih/what-we-do/impact-nih-research\">Impact
+        of NIH Research</a></li>\n                        <li><a class=\"usa-button
+        usa-button--outline usa-button--full-width\" href=\"https://www.jobs.nih.gov/\">Jobs
+        at NIH</a></li>\n                      </ul>\n        </div>\n              </div>\n
+        \   </div>\n\n  \n    \n\n\n          </li>\n                  <li class=\"guide-card
+        guide-card--header-first\n                                        guide-card--2col
+        \                                                           usa-card--hide-media-on-mobile
+        \         \">\n              \n    <div class=\"paragraph paragraph--type--guide-card
+        paragraph--view-mode--default guide-card__container\">\n            <div class=\"guide-card__header\">\n
+        \       <h2 class=\"guide-card__heading heading--without-rule\">Featured Resources
+        &amp; Initiatives</h2>\n      </div>\n            <div class=\"guide-card__content-container\">\n
+        \               <div class=\"guide-card__media\">\n          <div class=\"guide-card__img\"><article
+        class=\"media media--type-image media--view-mode-card-wide\">\n  \n      \n
+        \ <div class=\"field field--name-field-media-image field--type-image field--label-visually_hidden\">\n
+        \   <div class=\"field__label visually-hidden\">Image</div>\n              <div
+        class=\"field__item\">    <img loading=\"eager\" srcset=\"/sites/default/files/styles/max_325x325/public/2024-12/brain-connectome-20x8.jpg?itok=N-LilNiS
+        325w, /sites/default/files/styles/max_650x650/public/2024-12/brain-connectome-20x8.jpg?itok=BJjLHC8z
+        650w, /sites/default/files/styles/max_2600x2600/public/2024-12/brain-connectome-20x8.jpg?itok=KUJKjJnu
+        800w\" sizes=\"(min-width: 1024px) 512px, 100vw\" width=\"800\" height=\"auto\"
+        src=\"/sites/default/files/styles/max_1300x1300/public/2024-12/brain-connectome-20x8.jpg?itok=uLMeyXKp\"
+        alt=\"Map of the wiring diagram of specific brain circuits, now called the
+        &#039;connectome&#039; in the human brain.\"/>\n\n\n\n</div>\n          </div>\n\n
+        \ </article>\n</div>\n        </div>\n                        <div class=\"guide-card__body\">\n
+        \         <p><span><span><span>Explore NIH’s groundbreaking initiatives and
+        programs that are <span>advancing biomedical research, </span>accelerating
+        scientific discovery, and improving health <span>for all Americans. </span></span></span></span></p>\n
+        \       </div>\n                        <div class=\"guide-card__footer\">\n
+        \         <ul class=\"usa-list usa-list--unstyled list--spaced\">\n                        <li><a
+        class=\"usa-button usa-button--outline usa-button--full-width\" href=\"/health-information/nih-clinical-research-trials-you\">Clinical
+        Trials</a></li>\n                        <li><a class=\"usa-button usa-button--outline
+        usa-button--full-width\" href=\"/research-training/training-opportunities\">Training
+        at NIH</a></li>\n                        <li><a class=\"usa-button usa-button--outline
+        usa-button--full-width\" href=\"https://recovercovid.org/\">RECOVER</a></li>\n
+        \                       <li><a class=\"usa-button usa-button--outline usa-button--full-width\"
+        href=\"https://heal.nih.gov/\">NIH HEAL Initiative</a></li>\n                        <li><a
+        class=\"usa-button usa-button--outline usa-button--full-width\" href=\"/research-training/accelerating-medicines-partnership-amp\">Accelerating
+        Medicines Partnership</a></li>\n                        <li><a class=\"usa-button
+        usa-button--outline usa-button--full-width\" href=\"/research-training/medical-research-initiatives\">Medical
+        Research Initiatives</a></li>\n                      </ul>\n        </div>\n
+        \             </div>\n    </div>\n\n  \n    \n\n\n          </li>\n        \n
+        \       \n          </ul>\n  </div>\n\n    \n\n</div>\n          </div>\n
+        \ \n  </div>\n<div class=\"views-element-container\"><div class=\"js-view-dom-id-c5d6481dc71161966d47f1741308a05936edfe167da58a4c0177299e098c26e1\">\n
+        \ \n  \n  \n\n  \n  \n  \n\n  \n    \n\n  \n  \n\n  \n  \n\n\n</div>\n</div>\n\n
+        \ </div>\n\n      </div>\n    </div>\n   </div>\n\n   </main>\n\n<footer class=\"usa-footer
+        usa-footer--medium\" role=\"contentinfo\">\n          <div class=\"usa-footer__primary-section\">\n
+        \             <div class=\"grid-row grid-gap\">\n        <div class=\"mobile-lg:grid-col-12\">\n
+        \           <div class=\"region region-footer\">\n    <nav role=\"navigation\"
+        aria-labelledby=\"block-footer-menu\" id=\"block-footer\" class=\"block block-menu
+        navigation usa-footer__nav menu--footer\">\n            \n  <h2 class=\"visually-hidden\"
+        id=\"block-footer-menu\">Footer menu</h2>\n  \n\n        \n\n    \n                <ul
+        class=\"grid-row grid-gap add-list-reset flex-justify\">\n        \n    \n
+        \                 <li class=\"usa-footer__primary-content\">\n        <a href=\"/\"
+        class=\"usa-footer__primary-link is-active\" data-drupal-link-system-path=\"&lt;front&gt;\"
+        aria-current=\"page\">NIH Home</a>\n      </li>\n      \n    \n                  <li
+        class=\"usa-footer__primary-content\">\n        <a href=\"/about-nih/contact-us\"
+        class=\"usa-footer__primary-link\" data-drupal-link-system-path=\"node/1686\">Contact
+        Us</a>\n      </li>\n      \n    \n                  <li class=\"usa-footer__primary-content\">\n
+        \       <a href=\"https://salud.nih.gov/\" class=\"usa-footer__primary-link\">En
+        Español</a>\n      </li>\n      \n    \n                  <li class=\"usa-footer__primary-content\">\n
+        \       <a href=\"/virtual-tour\" class=\"usa-footer__primary-link\">Virtual
+        Tour</a>\n      </li>\n      \n    \n                  <li class=\"usa-footer__primary-content\">\n
+        \       <a href=\"/about-nih/visitor-information\" class=\"usa-footer__primary-link\"
+        data-drupal-link-system-path=\"node/911\">Visitor Information</a>\n      </li>\n
+        \     \n    \n                  <li class=\"usa-footer__primary-content\">\n
+        \       <a href=\"/about-nih/frequently-asked-questions\" class=\"usa-footer__primary-link\"
+        data-drupal-link-system-path=\"node/1691\">FAQs</a>\n      </li>\n      \n
+        \   \n                  <li class=\"usa-footer__primary-content\">\n        <a
+        href=\"/news-events/nih-social-media\" class=\"usa-footer__primary-link\"
+        data-drupal-link-system-path=\"node/186\">NIH on Social Media</a>\n      </li>\n
+        \     \n    \n                  <li class=\"usa-footer__primary-content\">\n
+        \       <a href=\"/press-room\" class=\"usa-footer__primary-link\" data-drupal-link-system-path=\"node/19366\">Press
+        Room</a>\n      </li>\n      \n    \n                  <li class=\"usa-footer__primary-content\">\n
+        \       <a href=\"/nih-website-archives\" class=\"usa-footer__primary-link\"
+        data-drupal-link-system-path=\"node/18211\">NIH Website Archives</a>\n      </li>\n
+        \     \n    \n        \n        </ul>\n        \n  \n\n\n  </nav>\n\n  </div>\n\n
+        \       </div>\n      </div>\n      </div>\n  <div class=\"usa-footer__secondary-section\">\n
+        \   <div class=\"grid-container\">\n      <div class=\"grid-row grid-gap\">\n
+        \                 <div class=\"usa-footer__logo grid-row mobile-lg:grid-col-6
+        mobile-lg:grid-gap-2\">\n                                      <div class=\"mobile-lg:grid-col-auto\">\n
+        \               <p class=\"usa-footer__logo-heading\">National Institutes
+        of Health</p>\n              </div>\n                      </div>\n                      </div>\n
+        \             <div class=\"grid-row grid-gap\">\n          <div class=\"mobile-lg:grid-col-12\">\n
+        \             <div class=\"region region-footer-secondary\">\n    \n<div id=\"block-secondaryfooter\"
+        class=\"block block-block-content block-block-content47fd288b-3b8e-4a6d-a175-073dee9475cb\">\n
+        \ \n    \n\n\n  <div class=\"grid-row grid-gap\">\n    <div class=\"usa-width-one-half\">\n
+        \           <div class=\"callout__text clearfix\">\n        <p>9000 Rockville
+        Pike<br>\nBethesda, Maryland 20892</p>\n\n<p>NIH…Turning Discovery Into Health<sup>®</sup></p>\n
+        \     </div>\n          </div>\n    <div class=\"usa-width-one-half\">\n      <div
+        class=\"usa-footer__social-links grid-row grid-gap-1\">\n        <div class=\"grid-col-auto\">\n
+        \         <p class=\"usa-footer__logo-heading\">Follow Us</p>\n        </div>\n
+        \     </div>\n      <div class=\"usa-footer__social-links grid-row grid-gap-1\">\n
+        \               <div class=\"grid-col-auto\">\n          <a class=\"usa-social-link\"
+        href=\"https://www.facebook.com/nih.gov\"\n            ><img\n              class=\"usa-social-link__icon\"\n
+        \             src=\"/themes/custom/nih2_uswds/assets/img/usa-icons/facebook.svg\"\n
+        \             alt=\"Facebook\"\n          /></a>\n        </div>\n                        <div
+        class=\"grid-col-auto\">\n          <a class=\"usa-social-link\" href=\"https://twitter.com/NIH\"\n
+        \           ><img\n              class=\"usa-social-link__icon\"\n              src=\"/themes/custom/nih2_uswds/assets/img/usa-icons/x.svg\"\n
+        \             alt=\"X\"\n          /></a>\n        </div>\n                        <div
+        class=\"grid-col-auto\">\n          <a class=\"usa-social-link\" href=\"https://www.youtube.com/user/nihod\"\n
+        \           ><img\n              class=\"usa-social-link__icon\"\n              src=\"/themes/custom/nih2_uswds/assets/img/usa-icons/youtube.svg\"\n
+        \             alt=\"YouTube\"\n          /></a>\n        </div>\n                        <div
+        class=\"grid-col-auto\">\n          <a class=\"usa-social-link\" href=\"https://www.instagram.com/nihgov/\"\n
+        \           ><img\n              class=\"usa-social-link__icon\"\n              src=\"/themes/custom/nih2_uswds/assets/img/usa-icons/instagram.svg\"\n
+        \             alt=\"Instagram\"\n          /></a>\n        </div>\n                        <div
+        class=\"grid-col-auto\">\n          <a class=\"usa-social-link\" href=\"https://www.flickr.com/photos/nihgov/\"\n
+        \           ><img\n              class=\"usa-social-link__icon\"\n              src=\"/themes/custom/nih2_uswds/assets/img/usa-icons/flickr.svg\"\n
+        \             alt=\"Flickr\"\n          /></a>\n        </div>\n                        <div
+        class=\"grid-col-auto\">\n          <a class=\"usa-social-link\" href=\"/news-releases/feed.xml\"\n
+        \           ><img\n              class=\"usa-social-link__icon\"\n              src=\"/themes/custom/nih2_uswds/assets/img/usa-icons/rss_feed.svg\"\n
+        \             alt=\"RSS\"\n          /></a>\n        </div>\n              </div>\n
+        \   </div>\n  </div>\n\n    \n\n  \n</div>\n\n  </div>\n\n          </div>\n
+        \       </div>\n          </div>\n  </div>\n  </footer>\n\n      <div class=\"region
+        region-identifier\">\n    \n<div id=\"block-identifier\" class=\"block block-block-content
+        block-block-content73e4ae9b-0020-48de-befe-3dda35d7590d usa-identifier\">\n
+        \ \n    \n\n  <section class=\"usa-identifier__section usa-identifier__section--masthead\"
+        aria-label=\"Agency Identifier\">\n    <div class=\"usa-identifier__container\">\n
+        \     <div class=\"usa-identifier__logos\">\n        <a href=\"http://www.nih.gov/\"
+        class=\"usa-identifier__logo\"><img class=\"usa-identifier__logo-img\" src=\"/themes/custom/nih2_uswds/assets/img/nih-mark-reversed.png\"
+        alt=\"Logo of the National Institutes of Health\" role=\"img\"></a>\n      </div>\n
+        \     <div class=\"usa-identifier__identity\" aria-label=\"Descripción de
+        la agencia\">\n        <p class=\"usa-identifier__identity-domain\"><a href=\"https://www.nih.gov\">www.nih.gov</a></p>\n
+        \       <p class=\"usa-identifier__identity-disclaimer\" aria-label=\"Official
+        website of the Department of Health and Human Services\">An official website
+        of the <a href=\"http://www.hhs.gov/\">Department of Health and Human Services</a></p>\n
+        \     </div>\n    </div>\n  </section>\n  <nav class=\"usa-identifier__section
+        usa-identifier__section--required-links\" aria-label=\"Important links\">\n
+        \   <div class=\"usa-identifier__container\">\n\n          \n      <div class=\"field
+        field--name-field-component field--type-entity-reference-revisions field--label-hidden
+        field__items\">\n              <div class=\"field__item\">  <div class=\"paragraph
+        paragraph--type--uswds-text paragraph--view-mode--default usa-section usa-content\">\n
+        \   \n            <div class=\"grid-col-fill\">\n      \n      \n            <div
+        class=\"clearfix text-formatted field field--name-field-uswds-body field--type-text-long
+        field--label-hidden field__item\"><ul>\n\t<li><a href=\"/privacy-policy\">Privacy
+        Policy</a></li>\n\t<li><a href=\"/disclaimers\">Disclaimers</a></li>\n\t<li><a
+        href=\"/accessibility\">Accessibility</a></li>\n\t<li><a href=\"/institutes-nih/nih-office-director/office-communications-public-liaison/freedom-information-act-office\">Freedom
+        of Information Act</a></li>\n\t<li><a href=\"https://eeo.nih.gov/no-fear-act\">No
+        Fear Act</a></li>\n\t<li><a href=\"https://www.hhs.gov/vulnerability-disclosure-policy/index.html\">HHS
+        Vulnerability Disclosure</a></li>\n\t<li><a href=\"https://oig.hhs.gov/\">Office
+        of Inspector General</a></li>\n\t<li><a href=\"/nondiscrimination-notice\">Nondiscrimination
+        Notice</a></li>\n</ul></div>\n      \n\n            </div>\n      \n      </div>\n</div>\n
+        \         </div>\n  \n    \n    </div>\n  </nav>\n<section class=\"usa-identifier__section
+        usa-identifier__section--usagov\" aria-label=\"U.S. government information
+        and services\">\n\n    <div class=\"usa-identifier__container\">\n<div class=\"usa-identifier__usagov-description\">Looking
+        for U.S. government information and services?</div>\n\n      <a href=\"https://www.usa.gov/\"
+        class=\"usa-link\">Visit USA.gov</a>\n    </div>\n  </section>\n\n</div>\n\n
+        \ </div>\n\n\n<div class=\"return-to-top\">\n  <a href=\"#\">\n    <svg class=\"usa-icon
+        usa-icon--size-5\" aria-labelledby=\"return-to-top\" focusable=\"false\" role=\"img\">\n
+        \     <title id=\"return-to-top\">Subir</title>\n      <use xlink:href=\"/themes/custom/nih2_uswds/assets/img/sprite.svg#arrow_upward\"></use>\n
+        \   </svg>\n  </a>\n</div>\n\n  </div>\n\n    \n    <script src=\"/sites/default/files/js/js_IkN42OOTk7DC0mohqXSgF8BQJgK5VfFJkR6y7o-mnQ8.js?scope=footer&amp;delta=0&amp;language=en&amp;theme=nih2_uswds&amp;include=eJxdjYEOwiAMRH8IRuIPLQ3UWkUgpczp14uKZjNprr13ydULPO5I5Pw4DK4aOV1ckFYgTsOaI-vCobqxf54Tq6GcKeKsQI66_PsJzrDu4dUkPh3mVm-vzsjFepCwhYIV1RYg3FNtkqzmPmUbVA6YYOmY-pd9omghoug3_PC3PgGlVmKC\"></script>\n\n\n
+        \       <script>\n    //<![CDATA[\n          var usasearch_config = { siteHandle:\"nih-espanol\"
+        };\n\n          var script = document.createElement(\"script\");\n          script.type
+        = \"text/javascript\";\n          script.src = \"//search.usa.gov/javascripts/remote.loader.js\";\n
+        \         document.getElementsByTagName(\"head\")[0].appendChild(script);\n\n
+        \   //]]>\n    </script>\n\n        <script type=\"text/javascript\" async
+        defer src=\"//assets.pinterest.com/js/pinit.js\"></script>\n\n  </body>\n</html>\n"
+  recorded_at: Mon, 22 Sep 2025 20:16:10 GMT
+- request:
+    method: get
+    uri: https://www.nih.gov/rss.xml
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - usasearch
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Accept-Ranges:
+      - bytes
+      Content-Language:
+      - en
+      Content-Security-Policy:
+      - 'default-src ''self''; script-src ''self'' ''unsafe-inline'' ''unsafe-eval''
+        *.nih.gov *.googleapis.com *.govdelivery.com *.hatchbuck.com *.youtube.com
+        *.here.com search.usa.gov *.jquery.com *.crazyegg.com *.addthis.com *.addthisedge.com
+        cdn.jsdelivr.net *.google-analytics.com *.moatads.com *.newrelic.com bam.nr-data.net
+        *.feedgrabbr.com *.recaptcha.net *.gstatic.com *.foresee.com *.4seeresults.com
+        *.answerscloud.com *.foreseeresults.com *.googletagmanager.com *.digitalgov.gov
+        code.ctpprojects.com platform.twitter.com connect.facebook.net assets.pinterest.com
+        unpkg.com *.verint-cdn.com; style-src ''self'' ''unsafe-inline'' *.nih.gov
+        search.usa.gov *.googleapis.com *.here.com cdn.jsdelivr.net *.feedgrabbr.com
+        *.foresee.com style.ctpprojects.com; img-src ''self'' *.nih.gov *.google-analytics.com
+        data: *.foresee.com nih.hostexp.com i.vimeocdn.com log.pinterest.com *.verint-cdn.com
+        *.googletagmanager.com; media-src nih.hostexp.com; frame-src ''self'' *.nih.gov
+        *.youtube.com *.youtube-nocookie.com *.addthis.com *.recaptcha.net analytics.ctpprojects.com
+        player.vimeo.com *.googletagmanager.com; frame-ancestors ''self'' *.nih.gov
+        *.youtube.com *.youtube-nocookie.com *.addthis.com *.recaptcha.net; child-src
+        ''self'' blob: *.nih.gov *.youtube.com *.youtube-nocookie.com *.addthis.com
+        *.recaptcha.net; font-src ''self'' *.nih.gov *.googleapis.com *.gstatic.com
+        *.feedgrabbr.com *.foresee.com style.ctpprojects.com; connect-src ''self''
+        *.nih.gov *.crazyegg.com *.google-analytics.com *.addthis.com stats.g.doubleclick.net
+        bam.nr-data.net *.foresee.com *.4seeresults.com *.answerscloud.com *.foreseeresults.com
+        maps.googleapis.com nih.hostexp.com vimeo.com *.googletagmanager.com; report-uri
+        /report-csp-violation'
+      Content-Type:
+      - application/rss+xml; charset=utf-8
+      Etag:
+      - '"1758562663"'
+      Last-Modified:
+      - Mon, 22 Sep 2025 17:37:43 GMT
+      X-Age:
+      - '738'
+      X-Ah-Environment:
+      - prod
+      X-Cache-Hits:
+      - '55'
+      X-Content-Type-Options:
+      - nosniff
+      X-Drupal-Cache:
+      - HIT
+      X-Drupal-Dynamic-Cache:
+      - MISS
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Generator:
+      - Drupal 10 (https://www.drupal.org)
+      X-Request-Id:
+      - v-432dad9a-97ef-11f0-810f-6f078ff9584f
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '338'
+      Expires:
+      - Mon, 22 Sep 2025 20:16:11 GMT
+      Cache-Control:
+      - max-age=0, no-cache, no-store
+      Pragma:
+      - no-cache
+      Date:
+      - Mon, 22 Sep 2025 20:16:11 GMT
+      Connection:
+      - keep-alive
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="utf-8"?>
+        <rss xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0" xml:base="https://www.nih.gov/">
+          <channel>
+            <title>National Institutes of Health (NIH)</title>
+            <link>https://www.nih.gov/</link>
+            <description><![CDATA[]]></description>
+            <language>en</language>
+                </channel>
+        </rss>
+  recorded_at: Mon, 22 Sep 2025 20:16:11 GMT
+recorded_with: VCR 6.3.1
