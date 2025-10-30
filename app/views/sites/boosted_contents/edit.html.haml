@@ -4,7 +4,6 @@
     %h2 Edit Best Bets: Text
     .action-bar
       %ul
-        = list_item_with_link_to_current_help_page
         %li= link_to 'View All', site_best_bets_texts_path(@site)
         %li= form.submit 'Save', class: 'btn submit disabled', disabled: true
   = render form
