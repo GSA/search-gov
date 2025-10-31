@@ -61,12 +61,7 @@ export const RssNews = ({ affiliate, newsLabel, news=[], query, vertical }: RssN
                       </span>
                       <div className='result-title'>
                         <h2 className='result-title-label'>
-                          <ResultTitle 
-                            url={newsItem.link}
-                            className='result-title-link'
-                            clickTracking={() => clickTracking(affiliate, module, query, index+1, newsItem.link, vertical)}>
-                            {parse(newsItem.title)}
-                          </ResultTitle>
+                          {parse(newsItem.title)}
                         </h2> 
                       </div>
                       <div className='result-desc'>
