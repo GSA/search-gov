@@ -270,17 +270,11 @@ class Affiliate < ApplicationRecord
     active_search_tab_navigation_color: '#005EA2',
     search_tab_navigation_link_color: '#005EA2',
     best_bet_background_color: '#EFF6FB',
-    health_benefits_header_background_color: '#1A4480',
     result_title_color: '#005EA2',
     result_title_link_visited_color: '#54278F',
     result_description_color: '#1B1B1B',
     result_url_color: '#446443',
-    section_title_color: '#565C65',
-    footer_background_color: '#F0F0F0',
-    footer_links_text_color: '#1B1B1B',
-    identifier_background_color: '#1B1B1B',
-    identifier_heading_color: '#FFFFFF',
-    identifier_link_color: '#A9AEB1'
+    section_title_color: '#565C65'
   }.transform_keys(&:to_s).freeze
 
   DEFAULT_VISUAL_DESIGN = {
