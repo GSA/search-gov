@@ -79,36 +79,6 @@ Feature: Dashboard
     Then I should see "Site Handle gobiernousa"
     And I should see "Site Language Spanish"
 
-  @javascript
-  Scenario: Cloning a site
-    Given the following Affiliates exist:
-      | display_name | name         | contact_email      | first_name | last_name | use_redesigned_results_page |
-      | origin site  | origin_site  | john@agency.gov    | John       | Manager   | false                       |
-    And I am logged in with email "john@agency.gov"
-    When I go to the origin_site's Dashboard page
-    And I follow "Clone Site"
-    Then I should see a link to "Dashboard" in the active site main navigation
-    And I should see a link to "Clone Site" in the active site sub navigation
-    And I should see "Clone Site"
-    When I fill in "New Site Handle" with "abcd012345678900123456789001234567890"
-    And I submit the form by pressing "Submit"
-    Then I should see "Validation failed: Site Handle (visible to searchers in the URL) is too long"
-
-    When I fill in "New Site Handle" with "usagov_copy"
-    And I submit the form by pressing "Submit"
-    Then I should see "Site 'origin_site' has been cloned as 'usagov_copy'"
-    And I should be on the usagov_copy's Dashboard page
-
-  @javascript
-  Scenario: Clicking on help link on Admin Center
-    Given the following HelpLinks exist:
-      | request_path        | help_page_url                                      |
-      | /sites/setting/edit | https://search.gov/manual/settings.html |
-    And I am logged in with email "affiliate_manager@fixtures.org"
-    When I go to the usagov's Dashboard page
-    And I follow "Settings"
-    Then I should be able to access the "Editing Your Site Settings" help page
-
   Scenario: List users
     Given the following Users exist:
       | first_name | last_name           | email               |

@@ -11,5 +11,6 @@ OPENSEARCH_CLIENT = Elasticsearch::Client.new(
   url: ENV.fetch('OPENSEARCH_SEARCH_HOST', 'http://localhost:9300'),
   user: ENV.fetch('OPENSEARCH_SEARCH_USER', 'admin'),
   password: ENV['OPENSEARCH_SEARCH_PASSWORD'],
+  port: ENV.fetch('OPENSEARCH_SEARCH_PORT', 9200),
   log: Rails.env.development?
 )
