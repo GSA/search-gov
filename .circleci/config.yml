@@ -23,7 +23,7 @@ executors:
         environment:
           RAILS_ENV: test
 
-      - image: cimg/mysql:<< parameters.mysql_version >>
+      - image: mysql:<< parameters.mysql_version >>
         environment:
           MYSQL_ALLOW_EMPTY_PASSWORD: true
           MYSQL_ROOT_HOST: "%"
@@ -293,7 +293,7 @@ workflows:
                 - 7.17.7
                 # not yet compatible with Elasticsearch 8
               mysql_version:
-                - "8.0"
+                - "8.0.40"
 
       - rspec:
           requires:
@@ -306,7 +306,7 @@ workflows:
               elasticsearch_version:
                 - 7.17.7
               mysql_version:
-                - "8.0"
+                - "8.0.40"
 
       - cucumber:
           requires:
@@ -319,7 +319,7 @@ workflows:
               elasticsearch_version:
                 - 7.17.7
               mysql_version:
-                - "8.0"
+                - "8.0.40"
 
       - jest:
           requires:
@@ -332,6 +332,6 @@ workflows:
               elasticsearch_version:
                 - 7.17.7
               mysql_version:
-                - "8.0"
+                - "8.0.40"
               node_version:
                 - 20.10.0

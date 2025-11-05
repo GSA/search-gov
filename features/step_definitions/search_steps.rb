@@ -82,9 +82,12 @@ When /I click on the "(.+?)" page/ do |link|
   click_link(link)
 end
 
-Then /I should be on page "(.+?)" of results/ do |page|
-  current_page = find('a[class="usa-link usa-pagination__button usa-current"]').text
-  expect(current_page).to eq(page)
+Then /I should be on page "(.+?)" of results/ do |page_number|
+  # Wait for the page to load and the pagination to update
+  # Use a more robust wait that checks for both the element and the correct text
+  within('.usa-pagination', wait: 15) do
+    expect(page).to have_css('a.usa-pagination__button.usa-current', text: page_number, wait: 15)
+  end
 end
 
 Then /I should see a link to the last page \("(.+?)"\)/ do |last_page|
