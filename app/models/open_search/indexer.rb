@@ -21,8 +21,6 @@ class OpenSearch::Indexer
     end
   end
 
-  private
-
   def self.update_index_mapping(index_name)
     mapping_update = {
       properties: {
@@ -50,6 +48,7 @@ class OpenSearch::Indexer
     end
   rescue OpenSearch::Transport::Transport::Errors::BadRequest => e
     Rails.logger.warn { "Cannot update OpenSearch domain_name field mapping for #{index_name}: #{e.message}" }
-    end
   end
+
+  private_class_method :update_index_mapping
 end
