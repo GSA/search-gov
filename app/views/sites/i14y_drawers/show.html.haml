@@ -3,7 +3,6 @@
   %h2 i14y Drawer
   .action-bar
     %ul
-      = list_item_with_link_to_current_help_page
       %li= link_to 'View All', site_i14y_drawers_path(@site)
       %li= link_to 'Edit', edit_site_i14y_drawer_path(@site, @i14y_drawer)
 = render partial: 'drawer_details' if (@i14y_documents.current_page == 1)
