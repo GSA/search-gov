@@ -12,12 +12,11 @@ class OpenSearch::Indexer
       template_generator = OpenSearch::Template.new("*#{index_name}*")
       OPENSEARCH_CLIENT.indices.put_template(
         body: template_generator.body,
-        include_type_name: false,
         name: index_name,
         order: 0
       )
       repo = OpenSearch::DocumentRepository.new
-      repo.create_index!(index: index_name, include_type_name: false)
+      repo.create_index!(index: index_name)
     end
   end
 
@@ -39,15 +38,20 @@ class OpenSearch::Indexer
     if OPENSEARCH_CLIENT.indices.exists?(index: index_name)
       OPENSEARCH_CLIENT.indices.put_mapping(
         index: index_name,
-        body: mapping_update,
-        include_type_name: false
+        body: mapping_update
       )
       Rails.logger.info { "Successfully updated OpenSearch mapping for index: #{index_name}" }
     else
       Rails.logger.warn { "Cannot update OpenSearch mapping for index: #{index_name} (index does not exist)" }
     end
-  rescue OpenSearch::Transport::Transport::Errors::BadRequest => e
-    Rails.logger.warn { "Cannot update OpenSearch domain_name field mapping for #{index_name}: #{e.message}" }
+  rescue => e
+    # Avoids referencing constants that might not be defined, since we are not using opensearch-ruby gems
+    # Treat any transport BadRequest from ES/OpenSearch as a mapping error; re-raise anything else.
+    if e.class.name =~ /Transport::Errors::BadRequest|Transport::Transport::Errors::BadRequest|BadRequest/
+      Rails.logger.warn { "Cannot update OpenSearch domain_name field mapping for #{index_name}: #{e.message}" }
+    else
+      raise
+    end
   end
 
   private_class_method :update_index_mapping
