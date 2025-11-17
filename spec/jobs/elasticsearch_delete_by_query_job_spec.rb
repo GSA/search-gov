@@ -8,7 +8,7 @@ describe ElasticsearchDeleteByQueryJob do
 
   before do
     allow(ENV).to receive(:fetch).with('SEARCHELASTIC_INDEX').and_return(index)
-    allow(ENV).to receive(:fetch).with('SEARCHELASTIC_RETENTION_DAYS').and_return(retention_days)
+    allow(ENV).to receive(:fetch).with('OPENSEARCH_SEARCH_RETENTION_DAYS').and_return(retention_days)
     allow(ENV).to receive(:fetch).and_call_original
   end
 
@@ -72,7 +72,7 @@ describe ElasticsearchDeleteByQueryJob do
       let(:retention_days) { 'abc' }
 
       it 'raises an ArgumentError' do
-        expect { perform }.to raise_error(ArgumentError, 'SEARCHELASTIC_RETENTION_DAYS must be a positive integer')
+        expect { perform }.to raise_error(ArgumentError, 'OPENSEARCH_SEARCH_RETENTION_DAYS must be a positive integer')
       end
     end
 
@@ -80,7 +80,7 @@ describe ElasticsearchDeleteByQueryJob do
       let(:retention_days) { '0' }
 
       it 'raises an ArgumentError' do
-        expect { perform }.to raise_error(ArgumentError, 'SEARCHELASTIC_RETENTION_DAYS must be greater than 0')
+        expect { perform }.to raise_error(ArgumentError, 'OPENSEARCH_SEARCH_RETENTION_DAYS must be greater than 0')
       end
     end
 

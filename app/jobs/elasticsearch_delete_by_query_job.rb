@@ -69,13 +69,13 @@ class ElasticsearchDeleteByQueryJob < ApplicationJob
   end
 
   def fetch_retention_days!
-    s = fetch_env!('SEARCHELASTIC_RETENTION_DAYS')
+    s = fetch_env!('OPENSEARCH_SEARCH_RETENTION_DAYS')
     unless s =~ /\A\d+\z/
-      raise ArgumentError, 'SEARCHELASTIC_RETENTION_DAYS must be a positive integer'
+      raise ArgumentError, 'OPENSEARCH_SEARCH_RETENTION_DAYS must be a positive integer'
     end
 
     days = s.to_i
-    raise ArgumentError, 'SEARCHELASTIC_RETENTION_DAYS must be greater than 0' if days <= 0
+    raise ArgumentError, 'OPENSEARCH_SEARCH_RETENTION_DAYS must be greater than 0' if days <= 0
 
     days
   end
@@ -95,7 +95,7 @@ class ElasticsearchDeleteByQueryJob < ApplicationJob
         wait_for_completion: false,
         timeout: '30m'
       )
-    rescue Elasticsearch::Transport::Transport::Errors::TooManyRequests, Elasticsearch::Transport::Transport::Errors::ServiceUnavailable, Faraday::TimeoutError, Errno::ETIMEDOUT => e
+    rescue Elasticsearch::Transport::Transport::Errors::ServiceUnavailable, Faraday::TimeoutError, Errno::ETIMEDOUT => e
       if attempt <= START_RETRY_ATTEMPTS
         sleep_time = 2**attempt
         Rails.logger.warn { "Transient error starting delete_by_query (attempt=#{attempt}) for index=#{index}: #{e.class}: #{e.message}; retrying in #{sleep_time}s" }

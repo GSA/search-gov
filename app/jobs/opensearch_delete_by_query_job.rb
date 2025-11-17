@@ -13,7 +13,7 @@ class OpensearchDeleteByQueryJob < ApplicationJob
   START_RETRY_ATTEMPTS = 3
 
   def perform
-    index = fetch_env!('SEARCHELASTIC_INDEX')
+    index = fetch_env!('OPENSEARCH_SEARCH_INDEX')
     retention_days = fetch_retention_days!
 
     Rails.logger.info { "OpenSearchDeleteByQueryJob starting for index=#{index}, retention_days=#{retention_days}" }
@@ -69,13 +69,13 @@ class OpensearchDeleteByQueryJob < ApplicationJob
   end
 
   def fetch_retention_days!
-    s = fetch_env!('SEARCHELASTIC_RETENTION_DAYS')
+    s = fetch_env!('OPENSEARCH_SEARCH_RETENTION_DAYS')
     unless s =~ /\A\d+\z/
-      raise ArgumentError, 'SEARCHELASTIC_RETENTION_DAYS must be a positive integer'
+      raise ArgumentError, 'OPENSEARCH_SEARCH_RETENTION_DAYS must be a positive integer'
     end
 
     days = s.to_i
-    raise ArgumentError, 'SEARCHELASTIC_RETENTION_DAYS must be greater than 0' if days <= 0
+    raise ArgumentError, 'OPENSEARCH_SEARCH_RETENTION_DAYS must be greater than 0' if days <= 0
 
     days
   end
