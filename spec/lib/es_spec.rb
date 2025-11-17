@@ -40,10 +40,10 @@ describe Es do
 
       let(:host) { client.transport.hosts.first }
 
-      context 'when OPENSEARCH_ANALYTICS_ENABLED is false' do
+      context 'when OPENSEARCH_ENABLED is false' do
         before do
           allow(ENV).to receive(:[]).and_call_original
-          allow(ENV).to receive(:[]).with('OPENSEARCH_ANALYTICS_ENABLED').and_return('false')
+          allow(ENV).to receive(:[]).with('OPENSEARCH_ENABLED').and_return('false')
           # Clear memoized client
           Es::ELK.instance_variable_set(:@client_reader, nil)
         end
@@ -61,10 +61,10 @@ describe Es do
         it_behaves_like 'an Elasticsearch client'
       end
 
-      context 'when OPENSEARCH_ANALYTICS_ENABLED is true' do
+      context 'when OPENSEARCH_ENABLED is true' do
         before do
           allow(ENV).to receive(:[]).and_call_original
-          allow(ENV).to receive(:[]).with('OPENSEARCH_ANALYTICS_ENABLED').and_return('true')
+          allow(ENV).to receive(:[]).with('OPENSEARCH_ENABLED').and_return('true')
           # Clear memoized client
           Es::ELK.instance_variable_set(:@client_reader, nil)
         end
@@ -107,7 +107,7 @@ describe Es do
           it 'raises an error with a helpful message' do
             expect { Es::ELK.client_reader }.to raise_error(
               RuntimeError,
-              /OPENSEARCH_ANALYTICS_ENABLED is true but OPENSEARCH_ANALYTICS_CLIENT is not initialized/
+              /OPENSEARCH_ENABLED is true but OPENSEARCH_ANALYTICS_CLIENT is not initialized/
             )
           end
         end

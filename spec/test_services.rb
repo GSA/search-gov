@@ -9,7 +9,7 @@ module TestServices
       klass.recreate_index if klass.is_a?(Indexable) && klass != ElasticBlended
     end
     logstash_index_range.each do |date|
-      if opensearch_analytics_enabled?
+      if opensearch_enabled?
         create_opensearch_logstash_index(date)
       else
         create_elasticsearch_logstash_index(date)
@@ -20,7 +20,7 @@ module TestServices
   def delete_es_indexes
     Es::CustomIndices.client_reader.indices.delete(index: 'test-usasearch-*')
     logstash_index_range.each do |date|
-      if opensearch_analytics_enabled?
+      if opensearch_enabled?
         delete_opensearch_logstash_index(date)
       else
         delete_elasticsearch_logstash_index(date)
@@ -38,7 +38,7 @@ module TestServices
 
   def verify_xpack_license
     # Skip X-Pack license check when using OpenSearch
-    return if opensearch_analytics_enabled?
+    return if opensearch_enabled?
 
     # An active trial license is required for the Watcher specs to pass.
     license = Es::ELK.client_reader.xpack.license.get['license']
@@ -54,8 +54,8 @@ module TestServices
 
   private
 
-  def opensearch_analytics_enabled?
-    ENV['OPENSEARCH_ANALYTICS_ENABLED'] == 'true'
+  def opensearch_enabled?
+    OpenSearchConfig.enabled?
   end
 
   def create_opensearch_logstash_index(date)
