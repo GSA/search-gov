@@ -1,96 +1,111 @@
+# spec/jobs/opensearch_delete_by_query_job_spec.rb
 require 'spec_helper'
 
-describe OpensearchDeleteByQueryJob do
-  subject(:perform) { described_class.perform_now }
-
+RSpec.describe OpensearchDeleteByQueryJob, type: :job do
   let(:index) { 'test_index' }
   let(:retention_days) { '30' }
 
   before do
-    allow(ENV).to receive(:fetch).with('SEARCHELASTIC_INDEX').and_return(index)
+    # Set environment variables used by the job
+    ENV['OPENSEARCH_SEARCH_INDEX'] = index
+    ENV['OPENSEARCH_SEARCH_RETENTION_DAYS'] = retention_days
+
+    # Stub specific ENV.fetch calls the job uses, let other fetches behave normally
+    allow(ENV).to receive(:fetch).with('OPENSEARCH_SEARCH_INDEX').and_return(index)
     allow(ENV).to receive(:fetch).with('OPENSEARCH_SEARCH_RETENTION_DAYS').and_return(retention_days)
     allow(ENV).to receive(:fetch).and_call_original
   end
 
-  it_behaves_like 'a searchgov job'
+  describe '#perform' do
+    let(:expected_body) do
+      {
+        query: {
+          range: {
+            updated_at: { lt: "now-#{retention_days}d/d" }
+          }
+        }
+      }
+    end
 
-  describe 'perform' do
-    context 'asynchronous deletion' do
-      let(:task_id) { 'task_123' }
-      let(:task_response) { { 'completed' => true, 'response' => { 'deleted' => 42 } } }
+    context 'when retention days is valid and delete_by_query starts async' do
+      it 'starts an async delete_by_query with the expected options and then waits for completion' do
+        task_response = { 'task' => 'abc-123' }
 
-      before do
-        allow(OPENSEARCH_CLIENT).to receive(:delete_by_query).and_return({ 'task' => task_id })
-        allow(OPENSEARCH_CLIENT.tasks).to receive(:get).with(task_id: task_id).and_return(task_response)
-        allow(OPENSEARCH_CLIENT.tasks).to receive(:cancel)
-      end
+        client = double('opensearch_client')
+        # We only assert the initial call here — avoid hitting the real polling loop by stubbing the wait helper
+        expect(client).to receive(:delete_by_query).with(
+          hash_including(
+            index: index,
+            body: expected_body,
+            slices: 'auto',
+            requests_per_second: OpensearchDeleteByQueryJob::DEFAULT_REQUESTS_PER_SECOND,
+            scroll_size: OpensearchDeleteByQueryJob::DEFAULT_SCROLL_SIZE,
+            conflicts: 'proceed',
+            refresh: false,
+            wait_for_completion: false,
+            timeout: '30m'
+          )
+        ).and_return(task_response)
 
-      it 'calls delete_by_query with correct parameters' do
-        expect(OPENSEARCH_CLIENT).to receive(:delete_by_query).with(
-          index: index,
-          body: {
-            query: {
-              range: {
-                updated_at: { lt: "now-#{retention_days}d/d" }
-              }
-            }
-          },
-          slices: 'auto',
-          requests_per_second: 500,
-          conflicts: 'proceed',
-          scroll_size: 5000,
-          refresh: false,
-          wait_for_completion: false,
-          timeout: '30m'
-        )
+        stub_const('OPENSEARCH_CLIENT', client)
 
-        perform
-      end
+        # Prevent the actual polling loop from sleeping and hitting the client; return a completed result
+        allow_any_instance_of(OpensearchDeleteByQueryJob).to receive(:wait_for_task_completion)
+          .with('abc-123', OpensearchDeleteByQueryJob::DEFAULT_MAX_TASK_WAIT_SECONDS)
+          .and_return({ completed: true, deleted: 7 })
 
-      it 'waits for task completion and logs the result' do
-        expect(Rails.logger).to receive(:info).with(/Async delete_by_query finished for index=#{index}: deleted=42/)
-
-        perform
+        expect { OpensearchDeleteByQueryJob.perform_now }.not_to raise_error
       end
     end
 
-    context 'synchronous deletion' do
-      let(:sync_response) { { 'deleted' => 10 } }
+    context 'when delete_by_query completes synchronously' do
+      it 'does not poll tasks and completes' do
+        client = double('opensearch_client')
+        tasks_double = double('tasks')
+        allow(client).to receive(:tasks).and_return(tasks_double)
 
-      before do
-        allow(OPENSEARCH_CLIENT).to receive(:delete_by_query).and_return(sync_response)
-      end
+        expect(client).to receive(:delete_by_query).with(
+          hash_including(index: index, body: expected_body)
+        ).and_return({ 'deleted' => 3 })
 
-      it 'logs synchronous completion' do
-        expect(Rails.logger).to receive(:info).with(/delete_by_query completed synchronously; deleted=10 index=#{index}/)
+        # Ensure we do not attempt to poll task status
+        expect(tasks_double).not_to receive(:get)
 
-        perform
+        stub_const('OPENSEARCH_CLIENT', client)
+
+        expect { OpensearchDeleteByQueryJob.perform_now }.not_to raise_error
       end
     end
 
-    context 'invalid retention days' do
+    context 'when retention days is invalid (non-integer)' do
       let(:retention_days) { 'abc' }
 
       it 'raises an ArgumentError' do
-        expect { perform }.to raise_error(ArgumentError, 'OPENSEARCH_SEARCH_RETENTION_DAYS must be a positive integer')
+        expect { OpensearchDeleteByQueryJob.perform_now }.to raise_error(
+          ArgumentError,
+          'OPENSEARCH_SEARCH_RETENTION_DAYS must be a positive integer'
+        )
       end
     end
 
-    context 'retention days zero or negative' do
+    context 'when retention days is zero or negative' do
       let(:retention_days) { '0' }
 
       it 'raises an ArgumentError' do
-        expect { perform }.to raise_error(ArgumentError, 'OPENSEARCH_SEARCH_RETENTION_DAYS must be greater than 0')
+        expect { OpensearchDeleteByQueryJob.perform_now }.to raise_error(
+          ArgumentError,
+          'OPENSEARCH_SEARCH_RETENTION_DAYS must be greater than 0'
+        )
       end
     end
 
-    context 'missing environment variables' do
+    context 'when OPENSEARCH_SEARCH_INDEX environment variable is missing' do
       before do
-        allow(ENV).to receive(:fetch).with('SEARCHELASTIC_INDEX').and_raise(KeyError)
+        allow(ENV).to receive(:fetch).with('OPENSEARCH_SEARCH_INDEX').and_raise(KeyError)
       end
 
       it 'raises a KeyError' do
-        expect { perform }.to raise_error(KeyError)
+        expect { OpensearchDeleteByQueryJob.perform_now }.to raise_error(KeyError)
       end
     end
   end

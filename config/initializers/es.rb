@@ -6,7 +6,6 @@ module ES
   def self.client
     Elasticsearch::Client.new(
       ES_CONFIG.merge(
-        # hosts: ['http://elasticsearch7:9200'], # TODO: REMOVE
         randomize_hosts: true,
         retry_on_failure: true,
         reload_connections: false,
