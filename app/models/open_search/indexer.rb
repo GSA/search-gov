@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-class OpenSearch::Indexer
   def self.create_index
     index_name = ENV.fetch('OPENSEARCH_SEARCH_INDEX')
 
@@ -10,10 +9,10 @@ class OpenSearch::Indexer
     else
       Rails.logger.info { "Creating new OpenSearch index: #{index_name}" }
       template_generator = OpenSearch::Template.new("*#{index_name}*")
-      OPENSEARCH_CLIENT.indices.put_template(
-        body: template_generator.body,
-        name: index_name,
-        order: 0
+      OPENSEARCH_CLIENT.indices.put_index_template(
+        index_patterns: template_generator.index_patterns,
+        template: template_generator.body,
+        priority: 0
       )
       repo = OpenSearch::DocumentRepository.new
       repo.create_index!(index: index_name)
