@@ -32,14 +32,13 @@ module ES
       self.update_index_mapping(index_name)
     else
       Rails.logger.info { "Creating new Elasticsearch index: #{index_name}" }
-      self.client.indices.put_template(
-        body: template_generator.body,
-        include_type_name: false,
-        name: index_name,
-        order: 0
+      self.client.indices.put_index_template(
+        index_patterns: template_generator.index_patterns,
+        template: template_generator.body,
+        priority: 0
       )
       repo = SearchElastic::DocumentRepository.new
-      repo.create_index!(index: index_name, include_type_name: false)
+      repo.create_index!(index: index_name)
     end
   end
 
