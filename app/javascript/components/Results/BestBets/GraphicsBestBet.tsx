@@ -57,18 +57,9 @@ export const GraphicsBestBet = ({ title, titleUrl, imageUrl, imageAltText, links
         )}
         <Grid col={true} className='result-meta-data'>
           <div className='graphics-best-bets-title result-title'>
-            {titleUrl ? (
-              <h2 className='result-title-label'>
-                <ResultTitle
-                  url={titleUrl}
-                  className='result-title-link'
-                  clickTracking={() => clickTracking(affiliate, module, query, 1, titleUrl, vertical)}>
-                  {parse(title)}
-                </ResultTitle>
-              </h2>) :
-              <h2 className='result-title-label'>
-                {parse(title)}
-              </h2>}
+            <h2 className='result-title-label'>
+              {parse(title)}
+            </h2>
           </div>
           {links && links.length > 0 && (
             <Grid row gap="md">
