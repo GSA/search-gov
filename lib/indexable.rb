@@ -36,11 +36,15 @@ module Indexable
 
   def create_index
     Es::CustomIndices.client_writers.each do |client|
-      client.indices.create(
+      index_mappings = OpenSearchConfig.enabled? ? mappings.values.first : mappings
+
+      create_params = {
         index: index_name,
-        body: { settings: settings, mappings: mappings },
-        include_type_name: true
-      )
+        body: { settings: settings, mappings: index_mappings }
+      }
+      create_params[:include_type_name] = true unless OpenSearchConfig.enabled?
+
+      client.indices.create(create_params)
       client.indices.put_alias(index: index_name, name: writer_alias)
       client.indices.put_alias(index: index_name, name: reader_alias)
     end
@@ -49,11 +53,15 @@ module Indexable
   def migrate_writer
     @index_name = nil
     Es::CustomIndices.client_writers.each do |client|
-      client.indices.create(
+      index_mappings = OpenSearchConfig.enabled? ? mappings.values.first : mappings
+
+      create_params = {
         index: index_name,
-        body: { settings: settings, mappings: mappings },
-        include_type_name: true
-      )
+        body: { settings: settings, mappings: index_mappings }
+      }
+      create_params[:include_type_name] = true unless OpenSearchConfig.enabled?
+
+      client.indices.create(create_params)
     end
     update_alias(writer_alias)
   end
@@ -95,7 +103,8 @@ module Indexable
 
   def bulkify(records)
     records.reduce([]) do |bulk_array, record|
-      meta_data = { _index: writer_alias, _type: index_type, _id: record[:id] }
+      meta_data = { _index: writer_alias, _id: record[:id] }
+      meta_data[:_type] = index_type unless OpenSearchConfig.enabled?
       meta_data.merge!(_ttl: record[:ttl]) if record[:ttl]
       bulk_array << { index: meta_data }
       bulk_array << record.except(:id, :ttl)
@@ -104,7 +113,9 @@ module Indexable
 
   def bulkify_delete(ids)
     ids.map do |id|
-      { delete: { _index: writer_alias, _type: index_type, _id: id } }
+      meta_data = { _index: writer_alias, _id: id }
+      meta_data[:_type] = index_type unless OpenSearchConfig.enabled?
+      { delete: meta_data }
     end
   end
 
@@ -135,13 +146,13 @@ module Indexable
   def search(query)
     params = { preference: '_local',
                index: reader_alias,
-               type: index_type,
                body: query.body,
                from: query.offset,
                size: query.size,
                # For compatibility with ES 6. This parameter will be removed in ES 8.
                # https://www.elastic.co/guide/en/elasticsearch/reference/current/breaking-changes-7.0.html#hits-total-now-object-search-response
                rest_total_hits_as_int: true }
+    params[:type] = index_type unless OpenSearchConfig.enabled?
     params[:sort] = query.sort if query.sort.present?
 
     result = Es::CustomIndices.client_reader.search(params)

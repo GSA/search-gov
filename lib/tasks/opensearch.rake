@@ -13,14 +13,23 @@ namespace :opensearch do
 
   desc 'Create all OpenSearch indexes (OpenSearch::Indexer and ElasticBoostedContent)'
   task create_all_indexes: :environment do
-    puts "Creating OpenSearch::Indexer index..."
-    OpenSearch::Indexer.create_index
-    puts "OpenSearch::Indexer index created successfully."
+    indexes = [OpenSearch::Indexer, ElasticBoostedContent]
+    errors = []
 
-    puts "Creating ElasticBoostedContent index..."
-    ElasticBoostedContent.create_index
-    puts "ElasticBoostedContent index created successfully."
+    indexes.each do |klass|
+      puts "Creating #{klass} index..."
+      klass.create_index
+      puts "#{klass} index created successfully."
+    rescue StandardError => e
+      error_msg = "Failed to create #{klass} error: #{e.message}"
+      errors << error_msg
+    end
 
-    puts "All OpenSearch indexes created successfully."
+    if errors.empty?
+      puts "All OpenSearch indexes created successfully."
+    else
+      puts "\nCompleted with #{errors.size} error(s):"
+      errors.each { |error| puts "  - #{error}" }
+    end
   end
 end
