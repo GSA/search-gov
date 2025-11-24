@@ -44,11 +44,15 @@ describe Es do
         before do
           allow(ENV).to receive(:[]).and_call_original
           allow(ENV).to receive(:[]).with('OPENSEARCH_ENABLED').and_return('false')
+          # Clear cached OpenSearch config
+          OpenSearchConfig.reset!
           # Clear memoized client
           Es::ELK.instance_variable_set(:@client_reader, nil)
         end
 
         after do
+          # Clear cached OpenSearch config
+          OpenSearchConfig.reset!
           # Clear memoized client
           Es::ELK.instance_variable_set(:@client_reader, nil)
         end
@@ -65,11 +69,15 @@ describe Es do
         before do
           allow(ENV).to receive(:[]).and_call_original
           allow(ENV).to receive(:[]).with('OPENSEARCH_ENABLED').and_return('true')
+          # Clear cached OpenSearch config
+          OpenSearchConfig.reset!
           # Clear memoized client
           Es::ELK.instance_variable_set(:@client_reader, nil)
         end
 
         after do
+          # Clear cached OpenSearch config
+          OpenSearchConfig.reset!
           # Clear memoized client
           Es::ELK.instance_variable_set(:@client_reader, nil)
         end

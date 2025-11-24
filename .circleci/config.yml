@@ -169,6 +169,7 @@ jobs:
           name: Run Tests
           command: |
             bundle exec rake usasearch:elasticsearch:create_indexes
+            bin/rails opensearch:create_all_indexes
 
             mkdir /tmp/test-results
 
@@ -226,6 +227,8 @@ jobs:
           name: Run Tests
           command: |
             bundle exec rake usasearch:elasticsearch:create_indexes
+            bin/rails opensearch:create_all_indexes
+
 
             bundle exec rake tmp:create
 
