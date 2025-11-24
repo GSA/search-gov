@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'search_elastic/index_create'
 
 module ES
   ES_CONFIG = Rails.application.config_for(:elasticsearch_client).freeze
@@ -20,56 +21,15 @@ module ES
     )
   end
 
+  @index_creator = SearchElasticIndexCreator.new(
+    service_name: 'ELASTICSEARCH',
+    index_name: ENV.fetch('SEARCHELASTIC_INDEX'),
+    shards: ENV.fetch('SEARCHELASTIC_INDEX_SHARDS', 1),
+    replicas: ENV.fetch('SEARCHELASTIC_INDEX_REPLICAS', 1)
+  )
+
   def self.create_index
-    index_name = ENV.fetch('SEARCHELASTIC_INDEX') do
-      raise KeyError, 'SEARCHELASTIC_INDEX must be set in environment'
-    end
-
-    template_generator = SearchElastic::Template.new("*#{index_name}*")
-
-    if self.client.indices.exists?(index: index_name)
-      Rails.logger.info { "Index #{index_name} already exists in Elasticsearch. Updating mapping..." }
-      self.update_index_mapping(index_name)
-    else
-      Rails.logger.info { "Creating new Elasticsearch index: #{index_name}" }
-      self.client.indices.put_index_template(
-        index_patterns: template_generator.index_patterns,
-        template: template_generator.body,
-        priority: 0
-      )
-      repo = SearchElastic::DocumentRepository.new
-      repo.create_index!(index: index_name)
-    end
+    @index_creator.create_or_update_index(self.client)
   end
 
-  def self.update_index_mapping(index_name)
-    mapping_update = {
-      properties: {
-        domain_name: {
-          type: 'text',
-          analyzer: 'domain_name_analyzer',
-          fields: {
-            keyword: {
-              type: 'keyword'
-            }
-          }
-        }
-      }
-    }
-
-    self.client.indices.put_mapping(
-      index: index_name,
-      body: mapping_update,
-      include_type_name: false
-    )
-
-    Rails.logger.info { "Successfully updated Elasticsearch mapping for index: #{index_name}" }
-  rescue Elasticsearch::Transport::Transport::Errors::BadRequest => e
-    # Common reasons include attempting to change an existing field type — handle gracefully.
-    if e.message =~ /mapper_parsing_exception|illegal_argument_exception/
-      Rails.logger.warn { "Cannot update Elasticsearch domain_name field mapping for #{index_name}: #{e.message}" }
-    else
-      raise
-    end
-  end
 end
