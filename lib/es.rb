@@ -30,6 +30,17 @@ module Es
 
   module ELK
     extend Es
+
+    def self.client_reader
+      if ENV['OPENSEARCH_ANALYTICS_ENABLED'] == 'true'
+        unless defined?(OPENSEARCH_ANALYTICS_CLIENT)
+          raise "OPENSEARCH_ANALYTICS_ENABLED is true but OPENSEARCH_ANALYTICS_CLIENT is not initialized."
+        end
+        OPENSEARCH_ANALYTICS_CLIENT
+      else
+        @client_reader ||= initialize_client
+      end
+    end
   end
 
   module CustomIndices

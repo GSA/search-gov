@@ -40,12 +40,78 @@ describe Es do
 
       let(:host) { client.transport.hosts.first }
 
-      it 'uses the values from the .env analytics[elasticsearch][reader] entry' do
-        expect(host[:host]).to eq(URI(ENV.fetch('ES_HOSTS').split(',').first).host)
-        expect(host[:user]).to eq(ENV.fetch('ES_USER'))
+      context 'when OPENSEARCH_ANALYTICS_ENABLED is false' do
+        before do
+          allow(ENV).to receive(:[]).and_call_original
+          allow(ENV).to receive(:[]).with('OPENSEARCH_ANALYTICS_ENABLED').and_return('false')
+          # Clear memoized client
+          Es::ELK.instance_variable_set(:@client_reader, nil)
+        end
+
+        after do
+          # Clear memoized client
+          Es::ELK.instance_variable_set(:@client_reader, nil)
+        end
+
+        it 'uses the values from the .env analytics[elasticsearch][reader] entry' do
+          expect(host[:host]).to eq(URI(ENV.fetch('ES_HOSTS').split(',').first).host)
+          expect(host[:user]).to eq(ENV.fetch('ES_USER'))
+        end
+
+        it_behaves_like 'an Elasticsearch client'
       end
 
-      it_behaves_like 'an Elasticsearch client'
+      context 'when OPENSEARCH_ANALYTICS_ENABLED is true' do
+        before do
+          allow(ENV).to receive(:[]).and_call_original
+          allow(ENV).to receive(:[]).with('OPENSEARCH_ANALYTICS_ENABLED').and_return('true')
+          # Clear memoized client
+          Es::ELK.instance_variable_set(:@client_reader, nil)
+        end
+
+        after do
+          # Clear memoized client
+          Es::ELK.instance_variable_set(:@client_reader, nil)
+        end
+
+        context 'when OPENSEARCH_ANALYTICS_CLIENT is defined' do
+          let(:mock_opensearch_client) { double('OpenSearchClient') }
+
+          before do
+            # Define the constant if it doesn't exist, or stub it if it does
+            unless defined?(OPENSEARCH_ANALYTICS_CLIENT)
+              stub_const('OPENSEARCH_ANALYTICS_CLIENT', mock_opensearch_client)
+            else
+              allow(Object).to receive(:const_defined?).with(:OPENSEARCH_ANALYTICS_CLIENT).and_return(true)
+              stub_const('OPENSEARCH_ANALYTICS_CLIENT', mock_opensearch_client)
+            end
+          end
+
+          it 'returns the OPENSEARCH_ANALYTICS_CLIENT' do
+            expect(Es::ELK.client_reader).to eq(mock_opensearch_client)
+          end
+
+          it 'does not use the ElasticSearch client' do
+            elasticsearch_client = Es::ELK.send(:initialize_client)
+            expect(Es::ELK.client_reader).not_to eq(elasticsearch_client)
+            expect(Es::ELK.client_reader).to eq(mock_opensearch_client)
+          end
+        end
+
+        context 'when OPENSEARCH_ANALYTICS_CLIENT is not defined' do
+          before do
+            # Hide the constant by stubbing defined? to return false
+            hide_const('OPENSEARCH_ANALYTICS_CLIENT')
+          end
+
+          it 'raises an error with a helpful message' do
+            expect { Es::ELK.client_reader }.to raise_error(
+              RuntimeError,
+              /OPENSEARCH_ANALYTICS_ENABLED is true but OPENSEARCH_ANALYTICS_CLIENT is not initialized/
+            )
+          end
+        end
+      end
     end
 
     describe '.client_writers' do
