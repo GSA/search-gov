@@ -6,6 +6,7 @@ module TestServices
   def create_es_indexes
     Dir[Rails.root.join('app/models/elastic_*.rb').to_s].each do |filename|
       klass = File.basename(filename, '.rb').camelize.constantize
+      # Each model uses its own client (Elasticsearch or OpenSearch) based on use_opensearch?
       klass.recreate_index if klass.is_a?(Indexable) && klass != ElasticBlended
     end
     logstash_index_range.each do |date|
@@ -18,7 +19,12 @@ module TestServices
   end
 
   def delete_es_indexes
+    # Delete Elasticsearch indices
     Es::CustomIndices.client_reader.indices.delete(index: 'test-usasearch-*')
+    # Delete OpenSearch indices if enabled
+    if opensearch_enabled? && defined?(OPENSEARCH_CLIENT)
+      OPENSEARCH_CLIENT.indices.delete(index: 'test-usasearch-*', ignore_unavailable: true)
+    end
     logstash_index_range.each do |date|
       if opensearch_enabled?
         delete_opensearch_logstash_index(date)

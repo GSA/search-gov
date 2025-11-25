@@ -6,6 +6,19 @@ module Indexable
   DELIMTER = '-'
   NO_HITS = { 'hits' => { 'total' => 0, 'offset' => 0, 'hits' => [] } }.freeze
 
+  # Override in subclass to use OpenSearch instead of Elasticsearch
+  def use_opensearch?
+    false
+  end
+
+  def client_reader
+    use_opensearch? ? OpenSearchConfig.search_client : Es::CustomIndices.client_reader
+  end
+
+  def client_writers
+    use_opensearch? ? [OpenSearchConfig.search_client] : Es::CustomIndices.client_writers
+  end
+
   def index_name
     @index_name ||= [base_index_name, Time.now.strftime('%Y%m%d%H%M%S%L')].join(DELIMTER)
   end
@@ -31,18 +44,18 @@ module Indexable
   end
 
   def delete_index
-    Es::CustomIndices.client_writers.each { |client| client.indices.delete(index: "#{base_index_name}#{DELIMTER}*") }
+    client_writers.each { |client| client.indices.delete(index: "#{base_index_name}#{DELIMTER}*") }
   end
 
   def create_index
-    Es::CustomIndices.client_writers.each do |client|
-      index_mappings = OpenSearchConfig.enabled? ? mappings.values.first : mappings
+    client_writers.each do |client|
+      index_mappings = use_opensearch? ? mappings.values.first : mappings
 
       create_params = {
         index: index_name,
         body: { settings: settings, mappings: index_mappings }
       }
-      create_params[:include_type_name] = true unless OpenSearchConfig.enabled?
+      create_params[:include_type_name] = true unless use_opensearch?
 
       client.indices.create(create_params)
       client.indices.put_alias(index: index_name, name: writer_alias)
@@ -52,14 +65,14 @@ module Indexable
 
   def migrate_writer
     @index_name = nil
-    Es::CustomIndices.client_writers.each do |client|
-      index_mappings = OpenSearchConfig.enabled? ? mappings.values.first : mappings
+    client_writers.each do |client|
+      index_mappings = use_opensearch? ? mappings.values.first : mappings
 
       create_params = {
         index: index_name,
         body: { settings: settings, mappings: index_mappings }
       }
-      create_params[:include_type_name] = true unless OpenSearchConfig.enabled?
+      create_params[:include_type_name] = true unless use_opensearch?
 
       client.indices.create(create_params)
     end
@@ -67,14 +80,14 @@ module Indexable
   end
 
   def migrate_reader
-    old_index = Es::CustomIndices.client_reader.indices.get_alias(name: reader_alias).keys.first
-    new_index = Es::CustomIndices.client_reader.indices.get_alias(name: writer_alias).keys.first
+    old_index = client_reader.indices.get_alias(name: reader_alias).keys.first
+    new_index = client_reader.indices.get_alias(name: writer_alias).keys.first
     update_alias(reader_alias, new_index)
-    Es::CustomIndices.client_writers.each { |client| client.indices.delete(index: old_index) }
+    client_writers.each { |client| client.indices.delete(index: old_index) }
   end
 
   def index_exists?
-    Es::CustomIndices.client_reader.indices.get_alias(name: writer_alias)
+    client_reader.indices.get_alias(name: writer_alias)
     true
   rescue Elasticsearch::Transport::Transport::Errors::NotFound
     false
@@ -98,13 +111,13 @@ module Indexable
 
   def delete_by_query(options)
     query = options.collect { |key, value| [key, value].join(':') }.join(' ')
-    Es::CustomIndices.client_writers.each { |client| client.delete_by_query(index: writer_alias, q: query, default_operator: 'AND') }
+    client_writers.each { |client| client.delete_by_query(index: writer_alias, q: query, default_operator: 'AND') }
   end
 
   def bulkify(records)
     records.reduce([]) do |bulk_array, record|
       meta_data = { _index: writer_alias, _id: record[:id] }
-      meta_data[:_type] = index_type unless OpenSearchConfig.enabled?
+      meta_data[:_type] = index_type unless use_opensearch?
       meta_data.merge!(_ttl: record[:ttl]) if record[:ttl]
       bulk_array << { index: meta_data }
       bulk_array << record.except(:id, :ttl)
@@ -114,7 +127,7 @@ module Indexable
   def bulkify_delete(ids)
     ids.map do |id|
       meta_data = { _index: writer_alias, _id: id }
-      meta_data[:_type] = index_type unless OpenSearchConfig.enabled?
+      meta_data[:_type] = index_type unless use_opensearch?
       { delete: meta_data }
     end
   end
@@ -130,15 +143,15 @@ module Indexable
   end
 
   def commit
-    Es::CustomIndices.client_writers.each { |client| client.indices.refresh(index: writer_alias) }
+    client_writers.each { |client| client.indices.refresh(index: writer_alias) }
   end
 
   def bulk(body)
-    Es::CustomIndices.client_writers.each { |client| client_bulk(client, body) }
+    client_writers.each { |client| client_bulk(client, body) }
   end
 
   def optimize
-    Es::CustomIndices.client_writers.each { |client| client.indices.optimize }
+    client_writers.each { |client| client.indices.optimize }
   end
 
   private
@@ -152,17 +165,17 @@ module Indexable
                # For compatibility with ES 6. This parameter will be removed in ES 8.
                # https://www.elastic.co/guide/en/elasticsearch/reference/current/breaking-changes-7.0.html#hits-total-now-object-search-response
                rest_total_hits_as_int: true }
-    params[:type] = index_type unless OpenSearchConfig.enabled?
+    params[:type] = index_type unless use_opensearch?
     params[:sort] = query.sort if query.sort.present?
 
-    result = Es::CustomIndices.client_reader.search(params)
+    result = client_reader.search(params)
     result['hits']['offset'] = query.offset
     "#{name}Results".constantize.new(result)
   end
 
   def update_alias(alias_name, new_index = index_name)
-    old_index = Es::CustomIndices.client_reader.indices.get_alias(name: alias_name).keys.first
-    Es::CustomIndices.client_writers.each do |client|
+    old_index = client_reader.indices.get_alias(name: alias_name).keys.first
+    client_writers.each do |client|
       client.indices.update_aliases(
         body: {
           actions: [

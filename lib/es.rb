@@ -41,23 +41,17 @@ module Es
     end
   end
 
+  # CustomIndices always uses Elasticsearch (for deprecated custom indices)
+  # OpenSearch-migrated indices (like ElasticBoostedContent) use their own client
   module CustomIndices
     extend Es
 
     def self.client_reader
-      if OpenSearchConfig.enabled?
-        OpenSearchConfig.search_client
-      else
-        @client_reader ||= initialize_client
-      end
+      @client_reader ||= initialize_client
     end
 
     def self.client_writers
-      if OpenSearchConfig.enabled?
-        [OpenSearchConfig.search_client]
-      else
-        @client_writers ||= [initialize_client]
-      end
+      @client_writers ||= [initialize_client]
     end
   end
 end

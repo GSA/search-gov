@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-shared_examples 'an Elasticsearch client' do |context_type: nil|
+# context_type: :analytics for ELK analytics client, nil for others
+# force_elasticsearch: true to always expect Elasticsearch behavior (for Es::CustomIndices)
+shared_examples 'an Elasticsearch client' do |context_type: nil, force_elasticsearch: false|
   describe 'configuration' do
     it 'uses an adapter that supports persistent connections' do
       handler = client.transport.connections.first.connection.builder.handlers.first
@@ -25,9 +27,10 @@ shared_examples 'an Elasticsearch client' do |context_type: nil|
 
   describe 'client logger' do
     let(:logger) { client.transport.logger }
-    let(:expected_port) { OpenSearchConfig.enabled? ? '9300' : '9200' }
+    let(:uses_opensearch) { !force_elasticsearch && OpenSearchConfig.enabled? }
+    let(:expected_port) { uses_opensearch ? '9300' : '9200' }
     let(:expected_tag) do
-      if OpenSearchConfig.enabled?
+      if uses_opensearch
         context_type == :analytics ? 'OPENSEARCH_ANALYTICS' : 'OPENSEARCH'
       else
         'ES'

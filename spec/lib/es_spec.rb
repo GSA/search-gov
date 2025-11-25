@@ -126,45 +126,36 @@ describe Es do
     end
   end
 
+  # Es::CustomIndices always uses Elasticsearch (for deprecated custom indices)
+  # OpenSearch-migrated models use their own client via use_opensearch? method
   describe 'when working in Es::CustomIndices submodule' do
     describe '.client_reader' do
       let(:client) { Es::CustomIndices.client_reader }
       let(:host) { client.transport.hosts.first }
 
-      it 'uses the correct configuration values based on OPENSEARCH_ENABLED flag' do
-        if OpenSearchConfig.enabled?
-          expect(host[:host]).to eq(URI(ENV.fetch('OPENSEARCH_SEARCH_HOST')).host)
-          expect(host[:user]).to eq(ENV.fetch('OPENSEARCH_SEARCH_USER'))
-        else
-          expect(host[:host]).to eq(URI(ENV.fetch('ES_HOSTS').split(',').first).host)
-          expect(host[:user]).to eq(ENV.fetch('ES_USER'))
-        end
+      it 'always uses Elasticsearch configuration (ignores OPENSEARCH_ENABLED)' do
+        expect(host[:host]).to eq(URI(ENV.fetch('ES_HOSTS').split(',').first).host)
+        expect(host[:user]).to eq(ENV.fetch('ES_USER'))
       end
 
-      it_behaves_like 'an Elasticsearch client'
+      it_behaves_like 'an Elasticsearch client', force_elasticsearch: true
     end
 
     describe '.client_writers' do
       let(:client) { Es::CustomIndices.client_writers.first }
       let(:host) { client.transport.hosts.first }
 
-      it 'uses the correct configuration values based on OPENSEARCH_ENABLED flag' do
-        if OpenSearchConfig.enabled?
-          expect(Es::CustomIndices.client_writers.size).to eq(1)
-          expect(host[:host]).to eq(URI(ENV.fetch('OPENSEARCH_SEARCH_HOST')).host)
-          expect(host[:user]).to eq(ENV.fetch('OPENSEARCH_SEARCH_USER'))
-        else
-          count = ENV.fetch('ES_HOSTS').split(',').count
-          expect(Es::CustomIndices.client_writers.size).to eq(count)
-          count.times do |i|
-            host = client.transport.hosts[i]
-            expect(host[:host]).to eq(URI(ENV.fetch('ES_HOSTS').split(',').first).host)
-            expect(host[:user]).to eq(ENV.fetch('ES_USER'))
-          end
+      it 'always uses Elasticsearch configuration (ignores OPENSEARCH_ENABLED)' do
+        count = ENV.fetch('ES_HOSTS').split(',').count
+        expect(Es::CustomIndices.client_writers.size).to eq(count)
+        count.times do |i|
+          host = client.transport.hosts[i]
+          expect(host[:host]).to eq(URI(ENV.fetch('ES_HOSTS').split(',').first).host)
+          expect(host[:user]).to eq(ENV.fetch('ES_USER'))
         end
       end
 
-      it_behaves_like 'an Elasticsearch client'
+      it_behaves_like 'an Elasticsearch client', force_elasticsearch: true
     end
   end
 end
