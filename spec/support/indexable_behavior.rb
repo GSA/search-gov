@@ -41,6 +41,7 @@ shared_examples 'an indexable' do
 
     before do
       allow(Es::CustomIndices).to receive(:client_writers).and_return [es1, es2]
+      allow(Es::CustomIndices).to receive(:client_reader).and_return es1
     end
 
     describe '.index_exists?' do
