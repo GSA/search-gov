@@ -39,6 +39,12 @@ module Es
         @client_writers ||= [initialize_client]
       end
     end
+
+    # Returns the Elasticsearch client directly, bypassing OpenSearch.
+    # Used for Elasticsearch-specific features like X-Pack Watcher.
+    def self.elasticsearch_client
+      @elasticsearch_client ||= initialize_client
+    end
   end
 
   # CustomIndices always uses Elasticsearch (for deprecated custom indices)
