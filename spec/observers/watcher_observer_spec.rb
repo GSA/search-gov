@@ -4,6 +4,11 @@ describe WatcherObserver do
   let(:watcher) { mock_model(Watcher, id: 123, body: 'body') }
   let(:observer) { described_class.instance }
 
+  # WatcherObserver is skipped when OpenSearch is enabled (no X-Pack Watcher support)
+  before do
+    allow(OpenSearchConfig).to receive(:enabled?).and_return(false)
+  end
+
   describe 'after_save' do
     it 'sets up the watch in Elasticsearch' do
       expect(Es::ELK.client_reader.xpack.watcher).

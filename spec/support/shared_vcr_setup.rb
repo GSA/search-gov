@@ -40,7 +40,7 @@ VCR.configure do |config|
     /codeclimate.com/ ===  URI(request.uri).host
   end
 
-  config.ignore_request { |request| URI(request.uri).port.between?(9200, 9299) } # Elasticsearch
+  config.ignore_request { |request| URI(request.uri).port.between?(9200, 9399) } # Elasticsearch and OpenSearch
   config.ignore_request { |request| URI(request.uri).port == 9998 } # Tika
 
   # Filter env variables used by VCR
