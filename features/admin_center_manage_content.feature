@@ -19,7 +19,9 @@ Feature: Manage Content
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "Best Bets: Graphics" within the Admin Center content
-    Then I should see the following table rows:
+    Then I should see "Graphic Best Bets are being deprecated due to low usage. Please use Text Best Bets instead."
+    And I should not see a link to "Add Best Bets: Graphics"
+    And I should see the following table rows:
       | Fire Safety     |
       | Flood Watches   |
       | Tornado Warning |
@@ -39,6 +41,8 @@ Feature: Manage Content
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "Best Bets: Graphics" within the Admin Center content
+    Then I should see "Graphic Best Bets are being deprecated due to low usage. Please use Text Best Bets instead."
+    And I should not see a link to "Add Best Bets: Graphics"
     And I fill in "query" with "lighter"
     And I press "Search"
     Then I should see the following table rows:
@@ -54,27 +58,18 @@ Feature: Manage Content
     Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
+    And the following featured collections exist for the affiliate "agency.gov":
+      | title                        | title_url                         | status | publish_start_on | publish_end_on | keywords     | image_file_path              | image_alt_text   | match_keyword_values_only |
+      | 2010 Atlantic Hurricane Season | http://www.nhc.noaa.gov/2010atlan.shtml | active | 2013-07-01       | 07/01/2030     | storm,weather | features/support/small.jpg | hurricane logo   | true                      |
+    And the following featured collection links exist for featured collection titled "2010 Atlantic Hurricane Season":
+      | title              | url                                                   | position |
+      | Hurricane Alex     | http://www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf     | 0        |
+      | Hurricane Danielle | http://www.nhc.noaa.gov/pdf/TCR-AL062010_Danielle.pdf | 1        |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "Best Bets: Graphics" within the Admin Center content
-    And I follow "Add Best Bets: Graphics"
-    When I fill in the following:
-      | Title                 | 2010 Atlantic Hurricane Season          |
-      | Title URL             | http://www.nhc.noaa.gov/2010atlan.shtml |
-      | Publish End Date      | 07/01/2030                              |
-      | Image Alt Text        | hurricane logo                          |
-    And I attach the file "features/support/small.jpg" to "Image"
-    And I add the following best bets keywords:
-      | keyword |
-      | storm   |
-      | weather |
-    And I check "Match Keywords Only?"
-    And I add the following best bets graphics links:
-      | title              | url                                                   |
-      | Hurricane Alex     | http://www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf     |
-      | Hurricane Danielle | http://www.nhc.noaa.gov/pdf/TCR-AL062010_Danielle.pdf |
-    And I submit the form by pressing "Add"
-    Then I should see "You have added 2010 Atlantic Hurricane Season to this site"
+    Then I should see "Graphic Best Bets are being deprecated due to low usage. Please use Text Best Bets instead."
+    And I should not see a link to "Add Best Bets: Graphics"
     And I should see a link to "2010 Atlantic Hurricane Season" with url for "http://www.nhc.noaa.gov/2010atlan.shtml"
     And I should see "Status: Active"
     And I should see "Match Keywords Only"

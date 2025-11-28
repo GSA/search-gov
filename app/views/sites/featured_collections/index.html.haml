@@ -3,9 +3,11 @@
   %h2 Best Bets: Graphics
   .action-bar
     %ul
-      %li= link_to 'Add Best Bets: Graphics', new_site_best_bets_graphic_path(@site)
 
 = render_flash_message
+
+.alert
+  Graphic Best Bets are being deprecated due to low usage. Please use Text Best Bets instead.
 
 = render partial: 'search'
 
