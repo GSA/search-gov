@@ -464,7 +464,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_10_10_184908) do
   create_table "memberships", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "affiliate_id", null: false
-    t.boolean "gets_daily_snapshot_email", default: false, null: false
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["affiliate_id", "user_id"], name: "index_memberships_on_affiliate_id_and_user_id", unique: true
