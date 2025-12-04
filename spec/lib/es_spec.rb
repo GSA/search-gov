@@ -93,7 +93,7 @@ describe Es do
           it 'raises an error with a helpful message' do
             expect { Es::ELK.client_reader }.to raise_error(
               RuntimeError,
-              /OPENSEARCH_ENABLED is true but OPENSEARCH_ANALYTICS_CLIENT is not initialized/
+              /OPENSEARCH_ANALYTICS_CLIENT is not initialized/
             )
           end
         end
