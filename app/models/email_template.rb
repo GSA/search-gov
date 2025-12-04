@@ -10,8 +10,6 @@ class EmailTemplate < ApplicationRecord
       '<%= Date::MONTHNAMES[@user_monthly_report.report_date.month.to_i] %>' \
       ' <%= @user_monthly_report.report_date.year %>',
     affiliate_yearly_report: '[Search.gov] <%= @report_year %> Year in Review',
-    daily_snapshot:
-      "[Search.gov] Today's Snapshot for <%= @site.name %> on <%= Date.yesterday %>",
     deep_collection_notification: '[Search.gov] Deep collection created',
     filtered_popular_terms_report: '[Search.gov] Filtered Popular Terms for Last Week',
     new_affiliate_site: '[Search.gov] Your new site: <%= @affiliate.display_name %>',

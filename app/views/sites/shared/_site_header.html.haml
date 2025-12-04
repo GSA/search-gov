@@ -5,5 +5,4 @@
         %span.label Display Name:
         #{@site.display_name} (#{@site.name})
         = site_pin @site
-        = daily_snapshot_toggle @site.memberships.find_by_user_id(current_user.id)
         = filtered_analytics_toggle current_user
