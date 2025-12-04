@@ -26,8 +26,10 @@ class SearchElastic::Template
   LANGUAGE_ANALYZER_LOCALES = [:bn, :de, :en, :es, :fi, :fr, :hi, :hu, :it, :ja, :ko, :pt, :ru, :sv, :zh]
   GENERIC_ANALYZER_LOCALES = LANGUAGE_ANALYZER_LOCALES - [:fr, :ja, :ko, :zh]
 
-  def initialize(index_pattern)
+  def initialize(index_pattern, shards = 1, replicas = 1)
     @index_pattern = index_pattern
+    @shards = shards
+    @replicas = replicas
     @synonym_filter_locales = Set.new
     @protected_filter_locales = Set.new
   end
@@ -36,6 +38,10 @@ class SearchElastic::Template
     Jbuilder.encode do |json|
       json.index_patterns(@index_pattern)
       json.settings do
+        json.index do
+          json.number_of_shards @shards
+          json.number_of_replicas @replicas
+        end
         json.analysis do
           char_filter(json)
           filter(json)
@@ -222,6 +228,11 @@ class SearchElastic::Template
     json.domain_name do
       json.type('text')
       json.analyzer('domain_name_analyzer')
+      json.fields do
+        json.keyword do
+          json.type('keyword')
+        end
+      end
     end
   end
 
