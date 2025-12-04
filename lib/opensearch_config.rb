@@ -15,7 +15,7 @@ module OpenSearchConfig
   # Returns the OpenSearch analytics client or raises an error if not initialized
   def self.analytics_client
     unless defined?(OPENSEARCH_ANALYTICS_CLIENT)
-      raise "OPENSEARCH_ENABLED is true but OPENSEARCH_ANALYTICS_CLIENT is not initialized."
+      raise "OPENSEARCH_ANALYTICS_CLIENT is not initialized."
     end
     OPENSEARCH_ANALYTICS_CLIENT
   end
@@ -23,7 +23,7 @@ module OpenSearchConfig
   # Returns the OpenSearch search client or raises an error if not initialized
   def self.search_client
     unless defined?(OPENSEARCH_CLIENT)
-      raise "OPENSEARCH_ENABLED is true but OPENSEARCH_CLIENT is not initialized."
+      raise "OPENSEARCH_CLIENT is not initialized."
     end
     OPENSEARCH_CLIENT
   end

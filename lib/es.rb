@@ -34,7 +34,7 @@ module Es
 
     def self.client_writers
       if OpenSearchConfig.enabled?
-        [OpenSearchConfig.analytics_client]
+        @open_search_client_writers ||= [OpenSearchConfig.analytics_client]
       else
         @client_writers ||= [initialize_client]
       end
