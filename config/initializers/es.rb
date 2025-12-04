@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'search_elastic/index_create'
 
 module ES
@@ -21,7 +22,7 @@ module ES
     )
   end
 
-  @index_creator = SearchElasticIndexCreator.new(
+  @index_creator = SearchElastic::IndexCreate.new(
     service_name: 'ELASTICSEARCH',
     index_name: ENV.fetch('SEARCHELASTIC_INDEX'),
     shards: ENV.fetch('SEARCHELASTIC_INDEX_SHARDS', 1),
