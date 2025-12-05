@@ -15,6 +15,10 @@
 #   inflect.acronym "RESTful"
 # end
 
+ActiveSupport::Inflector.inflections(:en) do |inflect|
+  inflect.acronym 'OpenSearch'
+end
+
 ActiveSupport::Inflector.inflections(:es) do |inflect|
   inflect.plural /([^djlnrs])([A-Z]|_|$)/, '\1s\2'
   inflect.plural /([djlnrs])([A-Z]|_|$)/, '\1es\2'
