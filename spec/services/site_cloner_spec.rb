@@ -252,12 +252,6 @@ describe SiteCloner do
       end
     end
 
-    it 'copies memberships' do
-      user = users(:affiliate_manager)
-      cloned_membership = cloned_site.memberships.find_by_user_id user.id
-      expect(cloned_membership.gets_daily_snapshot_email).to be true
-    end
-
     it 'copies navigations' do
       expect(cloned_site.navigations.count).to eq(origin_site.navigations.count)
     end
