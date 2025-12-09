@@ -142,6 +142,62 @@ Same thing, but using Resque to index in parallel:
 
     $ rake usasearch:elasticsearch:resque_migrate[FeaturedCollection]
 
+### OpenSearch Migration
+
+The application is in the process of migrating from Elasticsearch to OpenSearch. This migration is controlled by the `OPENSEARCH_ENABLED` environment variable, which allows for a gradual transition between the two search engines.
+
+When `OPENSEARCH_ENABLED=false`, the application uses Elasticsearch clients.
+When `OPENSEARCH_ENABLED=true`, the application uses OpenSearch clients for both search indices and analytics data.
+
+**OpenSearch is enabled by default** in local development and test environments (`.env.development` and `.env.test` have `OPENSEARCH_ENABLED=true`).
+
+**Note:** The application uses the `elasticsearch-ruby` gem to connect to OpenSearch, as it is API-compatible with OpenSearch. This avoids dependency conflicts with the `omniauth_login_dot_gov` gem.
+
+#### Environment Variables
+
+The following environment variables are required for OpenSearch configuration:
+
+**Feature Flag:**
+- `OPENSEARCH_ENABLED` - Set to `true` to enable OpenSearch, or `false` to use Elasticsearch (default: `true` in development/test environments)
+
+**Search Client Configuration:**
+- `OPENSEARCH_SEARCH_HOST` - OpenSearch host URL (default: `http://localhost:9300`)
+- `OPENSEARCH_SEARCH_USER` - OpenSearch username (default: `admin`)
+- `OPENSEARCH_SEARCH_PASSWORD` - OpenSearch password
+- `OPENSEARCH_LOG_LEVEL` - Log level for OpenSearch client (default: `ERROR`)
+- `OPENSEARCH_CA_FINGERPRINT` - CA fingerprint for SSL verification (production only)
+
+**Analytics Client Configuration:**
+- `OPENSEARCH_ANALYTICS_HOST` - OpenSearch analytics host URL (default: `http://localhost:9300`)
+- `OPENSEARCH_ANALYTICS_USER` - OpenSearch analytics username (default: `admin`)
+- `OPENSEARCH_ANALYTICS_PASSWORD` - OpenSearch analytics password (default: `changeme`)
+- `OPENSEARCH_ANALYTICS_LOG_LEVEL` - Log level for analytics client (default: `ERROR`)
+- `OPENSEARCH_ANALYTICS_CA_FINGERPRINT` - CA fingerprint for SSL verification (production only)
+
+#### Creating OpenSearch Indexes
+
+When `OPENSEARCH_ENABLED=true`, you can create OpenSearch indexes using the following rake tasks:
+
+**Create all OpenSearch indexes (both OpenSearch::Indexer and ElasticBoostedContent):**
+
+    $ rake opensearch:create_all_indexes
+
+**Create the OpenSearch::Indexer index (for regular domains search):**
+
+    $ rake opensearch:create_index
+
+**Create the ElasticBoostedContent index (for best bets text):**
+
+    $ rake opensearch:create_boosted_content_index
+
+
+**Current Migration Status:**
+- Spider domains indexing (OpenSearch::Indexer) is being migrated to OpenSearch
+- ElasticBoostedContent index supports both Elasticsearch and OpenSearch via the `Es::CustomIndices` module
+- Other custom indices (ElasticFeaturedCollection, ElasticFederalRegisterDocument, etc.) are being deprecated and will not be migrated to OpenSearch
+- Analytics data (logstash indices) support both Elasticsearch and OpenSearch via the `Es::ELK` module
+- The migration is controlled by the `OPENSEARCH_ENABLED` flag for simplified management
+
 ### MySQL Database
 
 Create and set up your development and test databases:
