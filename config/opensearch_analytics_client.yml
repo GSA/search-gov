@@ -20,9 +20,6 @@ test:
 
 production:
   <<: *DEFAULT
-  transport_options:
-    ssl:
-      verify: false
   ca_fingerprint: <%= ENV['OPENSEARCH_ANALYTICS_CA_FINGERPRINT'] %>
   user: <%= ENV['OPENSEARCH_ANALYTICS_USER'] %>
   password: <%= ENV['OPENSEARCH_ANALYTICS_PASSWORD'] %>
