@@ -19,7 +19,7 @@ module Usasearch
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
-    config.autoload_lib(ignore: %w(assets tasks middlewares))
+    config.autoload_lib(ignore: %w(assets tasks middlewares i18n_jsx_scanners))
 
     # Legacy directories with top-level constants (not following Zeitwerk naming conventions).
     # Added to both autoload_paths and eager_load_paths to enable top-level constant access
@@ -28,7 +28,6 @@ module Usasearch
       lib/active_job/uniqueness/strategies
       lib/callbacks
       lib/extensions
-      lib/i18n_jsx_scanners
       lib/importers
       lib/parsers
       lib/renderers
