@@ -25,29 +25,6 @@ describe 'sites/sites/show' do
 
     end
 
-    # Potential code zombie - the "trending URLs" feature has been broken for years,
-    # in both the admin center and super admin: https://search.usa.gov/admin/trending_urls
-    context 'when Discovery Tag trending URLs are available for today' do
-      let(:trending_urls) { %w[http://www.gov.gov/url1.html http://www.gov.gov/this/url/is/really/extremely/long/for/some/reason/url2.html] }
-
-      before do
-        assign :dashboard, double('RtuDashboard', trending_urls: trending_urls).as_null_object
-      end
-
-      it 'should show them truncated in an ordered list without URL protocol' do
-        render
-        expect(rendered).to have_selector('h3', text: 'Trending URLs')
-        expect(rendered).to have_selector('ol#trending_urls li', count: 2)
-        lis = Capybara.string(rendered).find_css('ol#trending_urls li')
-        expect(lis[0]).to have_link('www.gov.gov/url1.html', href: trending_urls[0])
-        expect(lis[1]).to have_link(
-          'www.gov.gov/this/url/is/really/.../long/for/some/reason/url2.html',
-          href: trending_urls[1]
-        )
-      end
-
-    end
-
     context 'when no-result queries are available for today' do
       before do
         no_results = [QueryCount.new('nr1', 100), QueryCount.new('nr2', 50)]

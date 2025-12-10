@@ -39,15 +39,6 @@ Feature: Dashboard
     And I should not see "Maintenace window 2"
 
   @javascript
-  Scenario: Toggling filtered analytics
-    Given I am logged in with email "affiliate_manager@fixtures.org"
-    When I go to the usagov's Dashboard page
-    And I follow "Stop filtering bot traffic"
-    Then I should see "You're no longer filtering bot traffic. Analytics include both humans and bots."
-    When I follow "Filter bot traffic"
-    Then I should see "You're now filtering bot traffic. Analytics include likely humans only."
-
-  @javascript
   Scenario: Updating Settings
     Given I am logged in with email "affiliate_manager@fixtures.org"
     When I go to the usagov's Dashboard page
