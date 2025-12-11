@@ -3,13 +3,6 @@
 echo "Starting detect_feature_usage at "`date`
 YYMMDD_DASHES=`date -d '1 day ago' +'%Y-%m-%d'`
 
-echo "Starting daily snapshot at "`date`
-echo "select distinct affiliate_id from memberships where gets_daily_snapshot_email =1" | mysql --skip-column-names -u $DB_USER $DB_PASSWORD -h $DB_HOST $DB_NAME > /tmp/affiliate_feature_addition.txt
-if test -s /tmp/affiliate_feature_addition.txt
-then
-  bin/rake usasearch:features:record_feature_usage[daily_snapshot,/tmp/affiliate_feature_addition.txt]
-fi
-
 echo "Starting rss at "`date`
 echo "select distinct owner_id from rss_feeds where owner_type='Affiliate'" | mysql --skip-column-names -u $DB_USER $DB_PASSWORD -h $DB_HOST $DB_NAME > /tmp/affiliate_feature_addition.txt
 if test -s /tmp/affiliate_feature_addition.txt

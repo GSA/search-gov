@@ -196,57 +196,6 @@ describe Emailer do
     it { should have_body_text(/https:\/\/localhost:3000\/sites/) }
   end
 
-  describe '#daily_snapshot' do
-    subject(:email) { described_class.daily_snapshot(membership) }
-
-    let(:membership) { memberships(:four) }
-    let(:dashboard) { double(RtuDashboard) }
-
-    before do
-      allow(RtuDashboard).to receive(:new).with(membership.affiliate, Date.yesterday, membership.user.sees_filtered_totals?).and_return dashboard
-      allow(dashboard).to receive(:top_queries).and_return [['query1', 100, 80], ['query2', 101, 75], ['query3', 102, 0]]
-      allow(dashboard).to receive(:top_urls).and_return [['http://www.nps.gov/query3', 8], ['http://www.nps.gov/query2', 7], ['http://www.nps.gov/query1', 6]]
-      allow(dashboard).to receive(:trending_queries).and_return %w(query3 query2 query1)
-      allow(dashboard).to receive(:no_results).and_return [QueryCount.new('query3blah', 3), QueryCount.new('query2blah', 2), QueryCount.new('query1blah', 1)]
-      allow(dashboard).to receive(:low_ctr_queries).and_return [['query1', 6], ['query2', 6], ['query3', 7]]
-    end
-
-    it { is_expected.to deliver_to(membership.user.email) }
-    it { is_expected.to have_subject(/Today's Snapshot for #{membership.affiliate.name} on #{Date.yesterday}/) }
-
-    it 'should contain the daily shapshot tables for yesterday' do
-      body = Sanitizer.sanitize(email.default_part_body)
-      expect(body).to include('Top Queries')
-      expect(body).to include('Search Term Total Queries (Bots + Humans) Real Queries')
-      expect(body).to include('1. query1 100 80')
-      expect(body).to include('2. query2 101 75')
-      expect(body).to include('3. query3 102 0')
-
-      expect(body).to include('Top Clicked URLs')
-      expect(body).to include('URL # of Clicks')
-      expect(body).to include('1. http://www.nps.gov/query3 8')
-      expect(body).to include('2. http://www.nps.gov/query2 7')
-      expect(body).to include('3. http://www.nps.gov/query1 6')
-
-      expect(body).to include('Trending Queries')
-      expect(body).to include('query3')
-      expect(body).to include('query2')
-      expect(body).to include('query1')
-
-      expect(body).to include('Queries with No Results')
-      expect(body).to include('Query # of Queries')
-      expect(body).to include('1. query3blah 3')
-      expect(body).to include('2. query2blah 2')
-      expect(body).to include('3. query1blah 1')
-
-      expect(body).to include('Top Queries with Low Click Thrus')
-      expect(body).to include('Query CTR %')
-      expect(body).to include('1. query1 6%')
-      expect(body).to include('2. query2 6%')
-      expect(body).to include('3. query3 7%')
-    end
-  end
-
   describe '#affiliate_monthly_report' do
     subject(:email) { described_class.affiliate_monthly_report(user, report_date) }
 

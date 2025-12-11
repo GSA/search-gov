@@ -12,37 +12,6 @@ describe 'Report generation rake tasks' do
 
   describe 'usasearch:reports' do
 
-    describe 'usasearch:reports:daily_snapshot' do
-      let(:task_name) { 'usasearch:reports:daily_snapshot' }
-      let(:membership1) { mock_model(Membership, user_id: 42) }
-      let(:membership2) { mock_model(Membership, user_id: 43) }
-
-      before do
-        @rake[task_name].reenable
-        @emailer = double(Emailer)
-        allow(@emailer).to receive(:deliver_now).and_return true
-        allow(Membership).to receive(:daily_snapshot_receivers).and_return [membership1, membership2]
-      end
-
-      it "should have 'environment' as a prereq" do
-        expect(@rake[task_name].prerequisites).to include('environment')
-      end
-
-      it 'should deliver an email to each daily_snapshot_receiver' do
-        expect(Emailer).to receive(:daily_snapshot).with(membership1).and_return @emailer
-        expect(Emailer).to receive(:daily_snapshot).with(membership2).and_return @emailer
-        @rake[task_name].invoke
-      end
-
-      context 'when Emailer raises an exception' do
-        it 'should log it and proceed to the next user' do
-          expect(Emailer).to receive(:daily_snapshot).with(anything()).exactly(2).times.and_raise Net::SMTPFatalError
-          expect(Rails.logger).to receive(:warn).exactly(2).times
-          @rake[task_name].invoke
-        end
-      end
-    end
-
     describe 'usasearch:reports:email_monthly_reports' do
       let(:task_name) { 'usasearch:reports:email_monthly_reports' }
 
