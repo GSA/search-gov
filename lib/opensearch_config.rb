@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 # Configuration module for OpenSearch feature flag
-# Caches the OPENSEARCH_ENABLED environment variable to avoid repeated lookups
+# Caches the APP_OPENSEARCH_ENABLED environment variable to avoid repeated lookups
 module OpenSearchConfig
   def self.enabled?
-    @enabled ||= ENV['OPENSEARCH_ENABLED']&.downcase == 'true'
+    @enabled ||= ENV['APP_OPENSEARCH_ENABLED']&.downcase == 'true'
   end
 
   # Reset the cached value (useful for testing)

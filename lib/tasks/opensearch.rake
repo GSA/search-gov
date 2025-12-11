@@ -4,7 +4,7 @@ namespace :opensearch do
     OpenSearch::Indexer.create_index
   end
 
-  desc 'Create ElasticBoostedContent index (supports OPENSEARCH_ENABLED flag)'
+  desc 'Create ElasticBoostedContent index (supports APP_OPENSEARCH_ENABLED flag)'
   task create_boosted_content_index: :environment do
     puts "Creating ElasticBoostedContent index..."
     ElasticBoostedContent.create_index
