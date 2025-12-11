@@ -102,14 +102,6 @@ class Emailer < ApplicationMailer
     send_mail(:html)
   end
 
-  def daily_snapshot(membership)
-    @site = membership.affiliate
-    headers['Content-Type'] = 'text/html'
-    @dashboard = RtuDashboard.new(membership.affiliate, Date.yesterday, membership.user.sees_filtered_totals?)
-    setup_email(membership.user.email, __method__)
-    send_mail(:html)
-  end
-
   def update_external_tracking_code(affiliate, current_user, external_tracking_code)
     @affiliate = affiliate
     @current_user = current_user

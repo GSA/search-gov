@@ -1,70 +1,60 @@
 = content_for_site_page_title @site, 'Site Overview'
 .sub-nav-heading
-  %h2 Site Overview | Today's Snapshot
-  .action-bar
-    %ul
+  %h2 Customize your search experience
 
 = show_system_alerts
 = render_flash_message
 
-.analytics_panel
-  %h3 Top Queries
-  - if @dashboard.top_queries.present?
-    %ol#top_queries
-      - @dashboard.top_queries.each do |top_query|
-        %li= query_times(top_query, current_user.sees_filtered_totals)
-  - else
-    %p Not enough query data available
+.welcome-content
+  Welcome to Search.gov! Use this Admin Center to set up, design, optimize, and analyze your search experience.
 
-.analytics_panel
-  %h3 Top Clicked URLs
-  - if @dashboard.top_urls.present?
-    %ol#top_urls
-      - @dashboard.top_urls.each do |url, count|
-        %li= "#{linked_shortened_url_without_protocol(url)} [#{count}]".html_safe
-  - else
-    %p Not enough click data available
+  %h3 Dashboard
+  Manage user accounts and other general settings in the Dashboard section.
+  %ul
+    %li Add other users to your site on the Manage Users page.
+    %li Reactivate timed-out users yourself without submitting a ticket.
+    %li Manage general settings on the Settings page.
+  Browse our guide to learn more about 
+  %a{href: "https://digital.gov/guides/search/set-up#manage-your-users-and-settings"}how to manage your users and settings.
 
-- if @dashboard.trending_urls.present?
-  .analytics_panel
-    %h3 Trending URLs
-    %ol#trending_urls
-      - @dashboard.trending_urls.each do |trending_url|
-        %li= linked_shortened_url_without_protocol(trending_url)
+  %h3 Analytics
+  Analyze your search analytics to gain a deeper understanding of your website and search experience. You can review the search terms, clicks, referrers, and monthly reports in the Analytics section.
+  %br
+  Browse our guide to learn more about 
+  %a{href: "https://digital.gov/guides/search/analyze#content-start"}how to analyze your search analytics.
 
-- if @dashboard.trending_queries.present?
-  .analytics_panel
-    %h3 Trending Queries
-    %ol#trending_queries
-      - @dashboard.trending_queries.each do |trending_query|
-        %li= trending_query
+  %h3 Content
+  There are many options to optimize your content in Content section. You must a your domain(s) on the Domains page. Optionally, you can also:
+  %ul
+    %li Create collections to search a narrower or broader scope than the default results page defined by the domains you added.
+    %li Create best bets to recommend and promote specific pages at the top of your search results page.
+  Browse our guide to learn more about 
+  %a{href: "https://digital.gov/guides/search/optimize#content-start"}how to optimize your content.
 
-.analytics_panel
-  %h3 Queries with No Results
-  - if @dashboard.no_results.present?
-    %ol#no_results
-      - @dashboard.no_results.each do |query_count|
-        %li= "#{query_count.query} [#{query_count.times}]"
-  - else
-    %p Not enough query data available
+  %h3 Design
+  Make the search results page match the design of your website. There are dozens of fields, so you may need to consult your style guide or ask your design team for help.
+  %br
+  Browse our guide to learn more about 
+  %a{href: "https://digital.gov/guides/search/design#content-start"}how to design your results page.
 
-.analytics_panel
-  %h3 Top Queries with Low Click Thrus
-  - if @dashboard.low_ctr_queries.present?
-    %ol#low_ctr_queries
-      - @dashboard.low_ctr_queries.each do |query, ctr|
-        %li= "#{query} [#{number_with_precision(ctr, precision: 1, strip_insignificant_zeros: true)}%]"
-  - else
-    %p Not enough query data available
+  %h3 Preview
+  Any updates you make to the design appear immediately on the search results page. Use the Preview option to review and update the design, as needed.
 
-#monthly_info
-  - if @dashboard.monthly_usage_chart.present?
-    .analytics_panel#chart
-      = render_chart(@dashboard.monthly_usage_chart, 'chart')
+  %h3 Activate
+  When you are ready to go live, you will need to modify the form code for the search box on your website. Use form code provided in the Activate section.
+  %br
+  Browse our guide to learn more about 
+  %a{href: "https://digital.gov/guides/search/set-up#go-live-with-search-gov"}how to go live with Search.gov.
 
-  .analytics_panel
-    %h3 This Month's Totals to Date
-    %p= "Dates: #{Date.current.beginning_of_month.to_formatted_s(:long).squish} - #{Date.current.to_formatted_s(:long).squish}"
-    %p= "Total Queries: #{number_with_delimiter(@dashboard.monthly_queries_to_date)}"
-    %p= "Total Clicks: #{number_with_delimiter(@dashboard.monthly_clicks_to_date)}"
-
+  %h3 Request support
+  Review our full guide, 
+  %a{href: "https://digital.gov/guides/search"}Optimizing site search with Search.gov
+  , for more information on how to customize the search experience on your website.
+  %br
+  You can also learn more about Search.gov in this guide, including 
+  %a{href:"https://digital.gov/guides/search/status"}checking the system status 
+  and understanding the 
+  %a{href: "https://digital.gov/guides/search/about#terms-of-service"}terms of service.
+  %br
+  If you have any other questions, 
+  %a{href: "mailto:search@gsa.gov"}please email us at search@gsa.gov.
