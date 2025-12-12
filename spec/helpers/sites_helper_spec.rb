@@ -77,14 +77,6 @@ describe SitesHelper do
     end
   end
 
-  describe '#daily_snapshot_toggle(membership)' do
-    context 'when membership is nil' do
-      it 'returns nil' do
-        expect(helper.daily_snapshot_toggle(nil)).to be_nil
-      end
-    end
-  end
-
   describe '#user_row_css_class_hash' do
     let(:approval_status) { RSpec.current_example.metadata[:approval_status] }
     let(:user) { mock_model(User, approval_status: approval_status) }
