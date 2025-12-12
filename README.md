@@ -144,12 +144,12 @@ Same thing, but using Resque to index in parallel:
 
 ### OpenSearch Migration
 
-The application is in the process of migrating from Elasticsearch to OpenSearch. This migration is controlled by the `OPENSEARCH_ENABLED` environment variable, which allows for a gradual transition between the two search engines.
+The application is in the process of migrating from Elasticsearch to OpenSearch. This migration is controlled by the `OPENSEARCH_APP_ENABLED` environment variable, which allows for a gradual transition between the two search engines.
 
-When `OPENSEARCH_ENABLED=false`, the application uses Elasticsearch clients.
-When `OPENSEARCH_ENABLED=true`, the application uses OpenSearch clients for both search indices and analytics data.
+When `OPENSEARCH_APP_ENABLED=false`, the application uses Elasticsearch clients.
+When `OPENSEARCH_APP_ENABLED=true`, the application uses OpenSearch clients for both search indices and analytics data.
 
-**OpenSearch is enabled by default** in local development and test environments (`.env.development` and `.env.test` have `OPENSEARCH_ENABLED=true`).
+**OpenSearch is enabled by default** in local development and test environments (`.env.development` and `.env.test` have `OPENSEARCH_APP_ENABLED=true`).
 
 **Note:** The application uses the `elasticsearch-ruby` gem to connect to OpenSearch, as it is API-compatible with OpenSearch. This avoids dependency conflicts with the `omniauth_login_dot_gov` gem.
 
@@ -158,7 +158,7 @@ When `OPENSEARCH_ENABLED=true`, the application uses OpenSearch clients for both
 The following environment variables are required for OpenSearch configuration:
 
 **Feature Flag:**
-- `OPENSEARCH_ENABLED` - Set to `true` to enable OpenSearch, or `false` to use Elasticsearch (default: `true` in development/test environments)
+- `OPENSEARCH_APP_ENABLED` - Set to `true` to enable OpenSearch, or `false` to use Elasticsearch (default: `true` in development/test environments)
 
 **Search Client Configuration:**
 - `OPENSEARCH_SEARCH_HOST` - OpenSearch host URL (default: `http://localhost:9300`)
@@ -176,7 +176,7 @@ The following environment variables are required for OpenSearch configuration:
 
 #### Creating OpenSearch Indexes
 
-When `OPENSEARCH_ENABLED=true`, you can create OpenSearch indexes using the following rake tasks:
+When `OPENSEARCH_APP_ENABLED=true`, you can create OpenSearch indexes using the following rake tasks:
 
 **Create all OpenSearch indexes (both OpenSearch::Indexer and ElasticBoostedContent):**
 
@@ -196,7 +196,7 @@ When `OPENSEARCH_ENABLED=true`, you can create OpenSearch indexes using the foll
 - ElasticBoostedContent index supports both Elasticsearch and OpenSearch via the `Es::CustomIndices` module
 - Other custom indices (ElasticFeaturedCollection, ElasticFederalRegisterDocument, etc.) are being deprecated and will not be migrated to OpenSearch
 - Analytics data (logstash indices) support both Elasticsearch and OpenSearch via the `Es::ELK` module
-- The migration is controlled by the `OPENSEARCH_ENABLED` flag for simplified management
+- The migration is controlled by the `OPENSEARCH_APP_ENABLED` flag for simplified management
 
 ### MySQL Database
 
