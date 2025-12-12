@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_10_10_184908) do
+ActiveRecord::Schema[7.1].define(version: 2025_12_10_172110) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -464,7 +464,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_10_10_184908) do
   create_table "memberships", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "affiliate_id", null: false
-    t.boolean "gets_daily_snapshot_email", default: false, null: false
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["affiliate_id", "user_id"], name: "index_memberships_on_affiliate_id_and_user_id", unique: true
