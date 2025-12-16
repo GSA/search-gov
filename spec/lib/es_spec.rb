@@ -40,10 +40,10 @@ describe Es do
 
       let(:host) { client.transport.hosts.first }
 
-      context 'when OPENSEARCH_ENABLED is false' do
+      context 'when OPENSEARCH_APP_ENABLED is false' do
         before do
           allow(ENV).to receive(:[]).and_call_original
-          allow(ENV).to receive(:[]).with('OPENSEARCH_ENABLED').and_return('false')
+          allow(ENV).to receive(:[]).with('OPENSEARCH_APP_ENABLED').and_return('false')
           # Clear cached OpenSearch config
           OpenSearchConfig.reset!
           # Clear memoized client
@@ -65,8 +65,8 @@ describe Es do
         it_behaves_like 'an Elasticsearch client', context_type: :analytics
       end
 
-      context 'when OPENSEARCH_ENABLED is true' do
-        # Since OPENSEARCH_ENABLED=true is now the default in test environment,
+      context 'when OPENSEARCH_APP_ENABLED is true' do
+        # Since OPENSEARCH_APP_ENABLED=true is now the default in test environment,
         # these tests verify the actual OpenSearch behavior
 
         it 'returns the OPENSEARCH_ANALYTICS_CLIENT' do
@@ -106,7 +106,7 @@ describe Es do
       let(:client) { client_writers.first }
       let(:host) { client.transport.hosts.first }
 
-      it 'uses the correct configuration values based on OPENSEARCH_ENABLED flag' do
+      it 'uses the correct configuration values based on OPENSEARCH_APP_ENABLED flag' do
         if OpenSearchConfig.enabled?
           expect(client_writers.size).to eq(1)
           expect(host[:host]).to eq(URI(ENV.fetch('OPENSEARCH_ANALYTICS_HOST')).host)
@@ -133,7 +133,7 @@ describe Es do
       let(:client) { Es::CustomIndices.client_reader }
       let(:host) { client.transport.hosts.first }
 
-      it 'always uses Elasticsearch configuration (ignores OPENSEARCH_ENABLED)' do
+      it 'always uses Elasticsearch configuration (ignores OPENSEARCH_APP_ENABLED)' do
         expect(host[:host]).to eq(URI(ENV.fetch('ES_HOSTS').split(',').first).host)
         expect(host[:user]).to eq(ENV.fetch('ES_USER'))
       end
@@ -145,7 +145,7 @@ describe Es do
       let(:client) { Es::CustomIndices.client_writers.first }
       let(:host) { client.transport.hosts.first }
 
-      it 'always uses Elasticsearch configuration (ignores OPENSEARCH_ENABLED)' do
+      it 'always uses Elasticsearch configuration (ignores OPENSEARCH_APP_ENABLED)' do
         count = ENV.fetch('ES_HOSTS').split(',').count
         expect(Es::CustomIndices.client_writers.size).to eq(count)
         count.times do |i|
