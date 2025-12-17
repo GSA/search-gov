@@ -4,7 +4,7 @@ class Admin::SearchgovDomainsController < Admin::AdminController
   before_action :set_searchgov_domain, only: %i[confirm_delete delete_domain]
 
   active_scaffold :searchgov_domain do |config|
-    config.label = 'Search.gov Domains'
+    config.label = 'SearchGov Domains'
     config.actions = %i[create update list search export nested]
     config.create.columns = [:domain]
     config.columns = %i[
