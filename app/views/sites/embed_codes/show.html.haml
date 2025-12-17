@@ -4,8 +4,11 @@
   .action-bar
     %ul
 
+- raw_html = render(partial: 'form_embed_code_text_area')
+- formatted_html = Nokogiri::HTML::DocumentFragment.parse(raw_html)
+
 %h3 Form Snippet
-= find_and_preserve do
-  = render 'form_embed_code_text_area'
-
-
+%pre{id: "embed_code_textarea_#{@site.locale}"}
+  %code
+    = preserve do
+      = formatted_html
