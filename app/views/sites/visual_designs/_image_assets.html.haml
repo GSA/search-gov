@@ -23,11 +23,6 @@
         = metadata.text_field :alt_text, value: render_logo_alt_text(@site.header_logo.custom_metadata)
 
 %fieldset
-  = f.label :display_logo_only, class: 'checkbox' do
-    = f.check_box :display_logo_only
-    = t('.display_logo_only', scope: 'admin_center')
-
-%fieldset
   = f.label :identifier_logo, t('.identifier_logo', scope: 'admin_center')
   = f.file_field :identifier_logo
   %span.help-block= t('.image_help_text', scope: 'admin_center', max_file_size: "#{Affiliate::MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB}") 
@@ -44,5 +39,10 @@
       = identifier_logo_blob.fields_for :custom_metadata do |metadata|
         = metadata.label :alt_text, t('.alt_text', scope: 'admin_center', image_type: t('.identifier_logo', scope: 'admin_center'))
         = metadata.text_field :alt_text, value: render_logo_alt_text(@site.identifier_logo.custom_metadata)
+
+%fieldset
+  = f.label :display_logo_only, class: 'checkbox' do
+    = f.check_box :display_logo_only
+    = t('.display_logo_only', scope: 'admin_center')
 
 %hr

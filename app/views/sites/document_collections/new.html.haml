@@ -4,7 +4,6 @@
     %h2 Add collection
     .action-bar
       %ul
-        = list_item_with_link_to_current_help_page
         %li= link_to 'View All', site_collections_path(@site)
         %li= form.submit 'Add', class: 'btn submit disabled', disabled: true
   = render form

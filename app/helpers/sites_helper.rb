@@ -24,33 +24,6 @@ module SitesHelper
     select('site', 'id', sites, select_options, html_options)
   end
 
-  def daily_snapshot_toggle(membership)
-    return if membership.nil?
-
-    description_class = 'description label off-screen-text'
-    if membership.gets_daily_snapshot_email?
-      description_class += ' label-warning'
-      verb = 'Stop sending'
-    else
-      verb = 'Send'
-    end
-    title = "#{verb} me today's snapshot as a daily email"
-    wrapper_options = { id: 'envelope-snapshot-toggle',
-                        'data-toggle': 'tooltip',
-                        'data-original-title': title,
-                        method: :put }
-
-    link_to(site_membership_path(@site, membership), wrapper_options) do
-      inner_html = stacked_envelope
-      inner_html << content_tag(:span, title, class: description_class)
-      if membership.gets_daily_snapshot_email?
-        content_tag(:div, inner_html, class: 'disabled')
-      else
-        inner_html
-      end
-    end
-  end
-
   def site_pin(site)
     if current_user.default_affiliate_id == site.id
       disabled_pin_site
@@ -138,11 +111,6 @@ module SitesHelper
        header_and_footers
        no_results_pages
        alerts]
-  end
-
-  def list_item_with_link_to_current_help_page
-    help_link = HelpLink.lookup(request, controller.action_name)
-    content_tag(:li, link_to('Help Manual', help_link.help_page_url, class: 'help-link menu')) if help_link
   end
 
   def site_dashboard_controllers

@@ -1,0 +1,567 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://search.gov/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - usasearch
+  response:
+    status:
+      code: 301
+      message: Moved Permanently
+    headers:
+      Content-Type:
+      - text/html
+      Content-Length:
+      - '169'
+      Connection:
+      - keep-alive
+      Date:
+      - Mon, 22 Sep 2025 00:52:37 GMT
+      X-Frame-Options:
+      - DENY
+      Location:
+      - https://digital.gov/guides/search
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      X-Vcap-Request-Id:
+      - 89d7ed20-8e15-447a-720c-cf8a511d33dc
+      X-Cache:
+      - Hit from cloudfront
+      Via:
+      - 1.1 77dfdef79344c95f75de8512042d4bac.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - DEN53-P1
+      X-Amz-Cf-Id:
+      - sREPNdNVVcEsWppYx0wha6OTPmWTrVvTwnmyaKvly-z9rQIgHj8-PA==
+      Age:
+      - '69816'
+    body:
+      encoding: UTF-8
+      string: "<html>\r\n<head><title>301 Moved Permanently</title></head>\r\n<body>\r\n<center><h1>301
+        Moved Permanently</h1></center>\r\n<hr><center>nginx/1.28.0</center>\r\n</body>\r\n</html>\r\n"
+  recorded_at: Mon, 22 Sep 2025 20:16:13 GMT
+- request:
+    method: get
+    uri: https://digital.gov/guides/search
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - usasearch
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/html; charset=utf-8
+      Content-Length:
+      - '32681'
+      Connection:
+      - keep-alive
+      Date:
+      - Mon, 22 Sep 2025 20:15:22 GMT
+      X-Frame-Options:
+      - DENY
+      Accept-Ranges:
+      - bytes
+      Cache-Control:
+      - max-age=60
+      Last-Modified:
+      - Mon, 22 Sep 2025 20:06:53 GMT
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Vcap-Request-Id:
+      - a2175ed3-79ab-4962-47d4-3514aaba8e9d
+      Etag:
+      - '"4fb6e6f2cd34f8d8be65c0970017fdcf"'
+      Vary:
+      - Accept-Encoding
+      X-Cache:
+      - Hit from cloudfront
+      Via:
+      - 1.1 8ebed69b9bff6cc42b0f52303f299b96.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - DEN53-P2
+      X-Amz-Cf-Id:
+      - LQWlrrKl0lzg0pRQPoZ4LQGFEXWYlGUAClg7HTMGMgP2ywi1kKlj6A==
+      Age:
+      - '51'
+    body:
+      encoding: UTF-8
+      string: "\n<!DOCTYPE html>\n<html lang=\"en\" dir=\"ltr\" prefix=\"og: https://ogp.me/ns#\">\n<head>\n
+        \ <meta charset=\"utf-8\" />\n<meta name=\"description\" content=\"Search.gov
+        is a configurable search engine built by the government, for the government,
+        with the government. \" />\n<link rel=\"canonical\" href=\"https://digital.gov/guides/search\"
+        />\n<meta name=\"robots\" content=\"index, follow\" />\n<meta property=\"og:site_name\"
+        content=\"Digital.gov\" />\n<meta property=\"og:type\" content=\"article\"
+        />\n<meta property=\"og:url\" content=\"https://digital.gov/guides/search\"
+        />\n<meta property=\"og:title\" content=\"Optimizing site search with Search.gov\"
+        />\n<meta property=\"og:description\" content=\"Search.gov is a configurable
+        search engine built by the government, for the government, with the government. \"
+        />\n<meta property=\"og:image\" content=\"https://digital.gov/s3/files/2025-08/search-gov-guide-fidsor-pixabay.png\"
+        />\n<meta property=\"og:image:alt\" content=\"\" />\n<meta property=\"og:locale\"
+        content=\"en_US\" />\n<meta property=\"article:publisher\" content=\"https://www.facebook.com/digitalgov\"
+        />\n<meta property=\"article:published_time\" content=\"2025-08-07T13:56:08-0400\"
+        />\n<meta property=\"fb:admins\" content=\"100000569454928\" />\n<meta name=\"twitter:card\"
+        content=\"summary_large_image\" />\n<meta name=\"twitter:description\" content=\"Search.gov
+        is a configurable search engine built by the government, for the government,
+        with the government. \" />\n<meta name=\"twitter:site\" content=\"@Digital_Gov\"
+        />\n<meta name=\"twitter:title\" content=\"Optimizing site search with Search.gov\"
+        />\n<meta name=\"twitter:creator\" content=\"@Digital_Gov\" />\n<meta name=\"twitter:image\"
+        content=\"https://digital.gov/s3/files/2025-08/search-gov-guide-fidsor-pixabay.png\"
+        />\n<meta name=\"Generator\" content=\"Drupal 10 (https://www.drupal.org)\"
+        />\n<meta name=\"MobileOptimized\" content=\"width\" />\n<meta name=\"HandheldFriendly\"
+        content=\"<DATADOG_API_ENABLED>\" />\n<meta name=\"viewport\" content=\"width=device-width,
+        initial-scale=1.0\" />\n<link rel=\"icon\" href=\"/themes/custom/digital_gov/favicon.ico\"
+        type=\"image/vnd.microsoft.icon\" />\n\n    <title>Optimizing site search
+        with Search.gov – Digital.gov</title>\n    <link rel=\"stylesheet\" media=\"all\"
+        href=\"/sites/default/files/css/css_eQJ0F5p7a-RSdWMRhu2OHfJn11qewfl_mYEGkUfE6vA.css?delta=0&amp;language=en&amp;theme=digital_gov&amp;include=eJxLzi9K1U8pKi1IzNFLzEqs0EnJTM8sScyJT88v00_PyU9KzNEpriwuSc3VT0osTgUAslISIw\"
+        />\n<link rel=\"stylesheet\" media=\"all\" href=\"/sites/default/files/css/css_83d2QdbkLJZV9eFH9Ji0fhAt5wSVfcFZw6o9slpyDzs.css?delta=1&amp;language=en&amp;theme=digital_gov&amp;include=eJxLzi9K1U8pKi1IzNFLzEqs0EnJTM8sScyJT88v00_PyU9KzNEpriwuSc3VT0osTgUAslISIw\"
+        />\n\n    <script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"pathPrefix\":\"\",\"currentPath\":\"node\\/4331\",\"currentPathIsAdmin\":false,\"isFront\":false,\"currentLanguage\":\"en\"},\"pluralDelimiter\":\"\\u0003\",\"gtag\":{\"tagId\":\"G-HYKJH4XGM2\",\"consentMode\":false,\"otherIds\":[\"\"],\"events\":[],\"additionalConfigInfo\":[]},\"suppressDeprecationErrors\":<DATADOG_API_ENABLED>,\"ajaxPageState\":{\"libraries\":\"eJxLyUzPLEnMiU_PL9NPz8lPSszRSc_PT89JjS9JTNdPBxLofL3ErMQKneLK4pLUXP2kxOJUAHJdGcM\",\"theme\":\"digital_gov\",\"theme_token\":null},\"ajaxTrustedUrl\":[],\"user\":{\"uid\":0,\"permissionsHash\":\"62ed4ce4505c52fe74ee5666b8b1df982979850c86874a7eeba28f14d695a6d8\"}}</script>\n<script
+        src=\"/sites/default/files/js/js_9OrcQ8epRD2fvELKAgbf6sDPWhIhhmSPw2aWXhM0HU0.js?scope=header&amp;delta=0&amp;language=en&amp;theme=digital_gov&amp;include=eJxLyUzPLEnMiU_PL9NPz8lPSszRSc_PT89JjS9JTNdPBxLofL3ErMQKAFbWFSg\"></script>\n<script
+        src=\"/modules/contrib/google_tag/js/gtag.js?t309oy\"></script>\n\n\n  <!--
+        Favicons & Icons -->\n    <link rel=\"apple-touch-icon\" sizes=\"180x180\"
+        href=\"https://digital.gov/themes/custom/digital_gov/static/digitalgov/img/apple-touch-icon.png?v=3\">\n
+        \ <link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"https://digital.gov/themes/custom/digital_gov/static/digitalgov/img/favicon-32x32.png?v=3\">\n
+        \ <link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"https://digital.gov/themes/custom/digital_gov/static/digitalgov/img/favicon-16x16.png?v=3\">\n
+        \ <link rel=\"manifest\" href=\"https://digital.gov/themes/custom/digital_gov/static/digitalgov/img/site.webmanifest?v=3\">\n
+        \ <link rel=\"mask-icon\" href=\"https://digital.gov/themes/custom/digital_gov/static/digitalgov/img/safari-pinned-tab.svg?v=3\"
+        color=\"#0076d6\">\n  <meta name=\"msapplication-TileColor\" content=\"#0076d6\">\n
+        \ <meta name=\"theme-color\" content=\"#656bd7\">\n  \n  <!-- Bing Validation
+        -->\n  <meta name=\"msvalidate.01\" content=\"A662823C2F59EB4F55F752CC752AC299\"
+        />\n</head>\n<body class=\"guides section\">\n<a href=\"#main-content\" class=\"visually-hidden
+        focusable\">\n  Skip to main content\n</a>\n\n  <div class=\"dialog-off-canvas-main-canvas\"
+        data-off-canvas-main-canvas>\n    <div class=\"paper\">\n\n  <a class=\"usa-skipnav\"
+        href=\"#main-content\">Skip to main content</a>\n\n    <div>\n    <div data-drupal-messages-fallback
+        class=\"hidden\"></div>\n<section\n      class=\"usa-banner gov-banner\"\n
+        \     aria-label=\"Official website of the United States government\"\n>\n
+        \ <div class=\"usa-accordion\">\n    <header class=\"usa-banner__header\">\n
+        \     <div class=\"usa-banner__inner\">\n        <div class=\"grid-col-auto\">\n
+        \         <img\n                  aria-hidden=\"<DATADOG_API_ENABLED>\"\n
+        \                 class=\"usa-banner__header-flag\"\n                  src=\"/themes/custom/digital_gov/static/uswds/img/us_flag.svg\"\n
+        \                 alt=\"\"\n                  width=\"16\"\n                  height=\"11\"\n
+        \         />\n        </div>\n        <div class=\"grid-col-fill tablet:grid-col-auto\"
+        aria-hidden=\"<DATADOG_API_ENABLED>\">\n          <p class=\"usa-banner__header-text\">\n
+        \           An official website of the United States government\n          </p>\n
+        \         <p class=\"usa-banner__header-action\">Here’s how you know</p>\n
+        \       </div>\n        <button\n                type=\"button\"\n                class=\"usa-accordion__button
+        usa-banner__button\"\n                aria-expanded=\"false\"\n                aria-controls=\"gov-banner-default-default\"\n
+        \       >\n          <span class=\"usa-banner__button-text\">Here’s how you
+        know</span>\n        </button>\n      </div>\n    </header>\n    <div\n            class=\"usa-banner__content
+        usa-accordion__content\"\n            id=\"gov-banner-default-default\"\n
+        \   >\n      <div class=\"grid-row grid-gap-lg\">\n        <div class=\"usa-banner__guidance
+        tablet:grid-col-6\">\n          <img\n                  class=\"usa-banner__icon
+        usa-media-block__img\"\n                  src=\"/themes/custom/digital_gov/static/uswds/img/icon-dot-gov.svg\"\n
+        \                 role=\"img\"\n                  alt=\"\"\n                  aria-hidden=\"<DATADOG_API_ENABLED>\"\n
+        \         />\n          <div class=\"usa-media-block__body\">\n            <p>\n
+        \             <strong>Official websites use .gov</strong>\n              <br
+        />\n              A <strong>.gov</strong> website belongs to an official government\n
+        \             organization in the United States.\n            </p>\n          </div>\n
+        \       </div>\n        <div class=\"usa-banner__guidance tablet:grid-col-6\">\n
+        \         <img\n                  class=\"usa-banner__icon usa-media-block__img\"\n
+        \                 src=\"/themes/custom/digital_gov/static/uswds/img/icon-https.svg\"\n
+        \                 role=\"img\"\n                  alt=\"\"\n                  aria-hidden=\"<DATADOG_API_ENABLED>\"\n
+        \         />\n          <div class=\"usa-media-block__body\">\n            <p>\n
+        \             <strong>Secure .gov websites use HTTPS</strong><br />A\n              <strong>lock</strong>
+        (\n              <span class=\"icon-lock\">\n                <svg\n                        xmlns=\"http://www.w3.org/2000/svg\"\n
+        \                       width=\"52\"\n                        height=\"64\"\n
+        \                       viewBox=\"0 0 52 64\"\n                        class=\"usa-banner__lock-image\"\n
+        \                       role=\"img\"\n                        aria-labelledby=\"banner-lock-description-default\"\n
+        \                       focusable=\"false\"\n                >\n                  <title
+        id=\"banner-lock-title-default\">Lock</title>\n                  <desc id=\"banner-lock-description-default\">\n
+        \                   Locked padlock\n                  </desc>\n                  <path\n
+        \                         fill=\"#000000\"\n                          fill-rule=\"evenodd\"\n
+        \                         d=\"M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1
+        4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507
+        0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z\"\n
+        \                 />\n                </svg> </span\n              >) or <strong>https://</strong>
+        means you’ve safely connected to\n              the .gov website. Share sensitive
+        information only on official,\n              secure websites.\n            </p>\n
+        \         </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</section>\n<div
+        class=\"usa-overlay\"></div>\n<header class=\"usa-header usa-header--extended\"
+        role=\"banner\">\n  <div class=\"usa-navbar\">\n    <div class=\"usa-logo\"
+        id=\"extended-logo\">\n      <em class=\"usa-logo__text\">\n        <a\n            href=\"/\"\n
+        \           title=\"Digital.gov Home\"\n            aria-label=\"Digital.gov
+        Home\"\n        >\n          <img\n            class=\"logo-black\"\n            src=\"/themes/custom/digital_gov/logo.svg\"\n
+        \           alt=\"\"\n            width=\"220\"\n            height=\"36\"\n
+        \       />\n        </a>\n      </em>\n      <p class=\"sub-head display-none\">Guidance
+        on building better digital services in government</p>\n    </div>\n\n    <button
+        class=\"usa-menu-btn\">\n      <svg\n          class=\"usa-icon dg-icon dg-icon--standard
+        margin-bottom-2px\"\n          aria-hidden=\"<DATADOG_API_ENABLED>\"\n          focusable=\"false\"\n
+        \         role=\"img\"\n      >\n        <use xlink:href=\"/themes/custom/digital_gov/static/uswds/img/sprite.svg#menu\"></use>\n
+        \     </svg>\n      Menu\n    </button>\n  </div>\n  <nav aria-label=\"Primary
+        navigation\" class=\"usa-nav\">\n    <div class=\"usa-nav__inner\">\n      <button
+        class=\"usa-nav__close\">\n        <img src=\"/themes/custom/digital_gov/static/uswds/img/usa-icons/close.svg\"
+        alt=\"close\" />\n      </button>\n      \n              <ul class=\"usa-nav__primary
+        usa-accordion\">\n              <li class=\"usa-nav__primary-item\">\n                <a
+        href=\"/news\" class=\"usa-nav__link\" data-drupal-link-system-path=\"node/9\">Blogs</a>\n
+        \             </li>\n          <li class=\"usa-nav__primary-item\">\n                <a
+        href=\"/events\" class=\"usa-nav__link\" data-drupal-link-system-path=\"node/5\">Events</a>\n
+        \             </li>\n          <li class=\"usa-nav__primary-item\">\n                <a
+        href=\"/resources\" class=\"usa-nav__link\" data-drupal-link-system-path=\"node/1\">Resources</a>\n
+        \             </li>\n          <li class=\"usa-nav__primary-item\">\n                <a
+        href=\"/communities\" class=\"usa-nav__link\" data-drupal-link-system-path=\"node/26\">Communities</a>\n
+        \             </li>\n          <li class=\"usa-nav__primary-item\">\n                <a
+        href=\"/guides\" class=\"usa-nav__link\" data-drupal-link-system-path=\"node/16\">Guides</a>\n
+        \             </li>\n        </ul>\n  \n\n\n      <div class=\"usa-nav__secondary\">\n
+        \       <ul class=\"usa-nav__secondary-links\">\n          <li class=\"usa-nav__secondary-item\">\n
+        \           <a href=\"/subscribe\"\n            ><span>Subscribe to our newsletter</span></a\n
+        \           >\n          </li>\n        </ul>\n        <form\n  accept-charset=\"UTF-8\"\n
+        \ action=\"https://find.digitalgov.gov/search\"\n  id=\"search_form\"\n  method=\"get\"\n
+        \ class=\"usa-search usa-search--small\"\n>\n  <input name=\"utf8\" type=\"hidden\"
+        value=\"&#x2713;\" />\n  <input\n    id=\"affiliate\"\n    name=\"affiliate\"\n
+        \   type=\"hidden\"\n    value=\"digitalgov\"\n  />\n  <div role=\"search\">\n
+        \   <label class=\"usa-sr-only\" for=\"query\">Search small</label>\n    <input
+        class=\"usa-input\" id=\"query\" type=\"search\" name=\"query\" />\n    <button
+        class=\"usa-button\" name=\"commit\" type=\"submit\">\n      <img\n        src=\"/themes/custom/digital_gov/static/uswds/img/usa-icons-bg/search--white.svg\"\n
+        \       class=\"usa-search__submit-icon\"\n        alt=\"Search\"\n      />\n
+        \   </button>\n  </div>\n</form>\n\n      </div>\n    </div>\n  </nav>\n</header>\n\n
+        \ </div>\n\n\n  \n\n  \n\n            <div>\n    <div id=\"block-digital-gov-content\">\n
+        \ \n    \n      <main role=\"main\" id=\"main-content\">\n  <article class=\"dg-guide\">\n
+        \       \n<header class=\"dg-guide__header grid-container grid-container-desktop\">\n
+        \ <div class=\"dg-guide__header-title\">\n        <p class=\"kicker\">Digital.gov
+        Guide</p>\n    \n    <h1>Optimizing site search with Search.gov</h1>\n    <div
+        class=\"deck\">\n       Search.gov is a configurable search engine built by
+        the government, for the government, with the government.&nbsp; \n    </div>\n
+        \     </div>\n\n    <div class=\"dg-guide__header-image\">\n    \n  <img alt=\"Illustration
+        of analytics and search graphics inside a large gear icon.\" class=\"dg-img-flexible\"
+        src=\"https://digital.gov/s3/files/2025-08/search-gov-guide-fidsor-pixabay.png\"
+        />\n\n  </div>\n  \n</header>\n\n    \n    \n  <div class=\"dg-guide__menu-bar\">\n
+        \   <div\n      class=\"dg-guide__menu-bar-container grid-container grid-container-desktop\"\n
+        \   >\n      <div class=\"dg-guide__menu-bar-image-container\" hidden>\n        <a
+        href=\"/\" title=\"Digital.gov Home\">\n          <picture class=\"dg-guide__menu-bar-image\">\n
+        \           <img\n              src=\"/themes/custom/digital_gov/static/digitalgov/img/digit-100.svg\"\n
+        \             alt=\"Digital Gov Logo\"\n            />\n          </picture>\n
+        \       </a>\n              </div>\n      <nav class=\"dg-guide__menu-bar-links\"
+        aria-label=\"Secondary menu bar\">\n                              <a\n    class=\"dg-guide__menu-bar-link
+        dg-current\"\n    href=\"/guides/search#content-start\"\n    title=\"Overview\"\n
+        \ >Overview</a\n  >\n\n                              <a\n    class=\"dg-guide__menu-bar-link
+        \"\n    href=\"/guides/search/set-up#content-start\"\n    title=\"Set up\"\n
+        \ >Set up</a\n  >\n\n                              <a\n    class=\"dg-guide__menu-bar-link
+        \"\n    href=\"/guides/search/design#content-start\"\n    title=\"Design\"\n
+        \ >Design</a\n  >\n\n                              <a\n    class=\"dg-guide__menu-bar-link
+        \"\n    href=\"/guides/search/optimize#content-start\"\n    title=\"Optimize\"\n
+        \ >Optimize</a\n  >\n\n                              <a\n    class=\"dg-guide__menu-bar-link
+        \"\n    href=\"/guides/search/analyze#content-start\"\n    title=\"Analyze\"\n
+        \ >Analyze</a\n  >\n\n                              <a\n    class=\"dg-guide__menu-bar-link
+        \"\n    href=\"/guides/search/about#content-start\"\n    title=\"About\"\n
+        \ >About</a\n  >\n\n                              <a\n    class=\"dg-guide__menu-bar-link
+        \"\n    href=\"/guides/search/status#content-start\"\n    title=\"System status\"\n
+        \ >System status</a\n  >\n\n              </nav>\n    </div>\n  </div>\n\n
+        \ <div class=\"usa-accordion guide-mobile-menu\">\n    <div class=\"usa-accordion__heading
+        guide-mobile-menu__heading\">\n      <div class=\"guide-mobile-menu__image-container\">\n
+        \       <a\n          class=\"guide-mobile-menu__image-dg-icon\"\n          href=\"/\"\n
+        \         title=\"Digital.gov Home\"\n        >\n          <picture class=\"guide-mobile-menu__image\">\n
+        \           <source\n              srcset=\"/themes/custom/digital_gov/static/digitalgov/img/digit-50.png\"\n
+        \             media=\"(min-width: 480px)\"\n            />\n            <img\n
+        \             class=\"guide-mobile-menu__image-icon\"\n              src=\"/themes/custom/digital_gov/static/digitalgov/img/digit-100.svg\"\n
+        \             alt=\"Digital Gov Logo\"\n            />\n          </picture>\n
+        \       </a>\n              </div>\n      <button\n        type=\"button\"\n
+        \       class=\"usa-accordion__button guide-mobile-menu__button\"\n        aria-expanded=\"false\"\n
+        \       aria-controls=\"a1\"\n      >\n        <h4 class=\"guide-mobile-menu__button-header\">Sections</h4>\n
+        \     </button>\n    </div>\n    <div\n      id=\"a1\"\n      class=\"usa-accordion__content
+        guide-mobile-menu__content usa-prose\"\n    >\n      <nav class=\"guide-mobile-menu__nav\"
+        aria-label=\"Secondary menu bar\">\n                              <a\n    class=\"dg-guide__menu-bar-link
+        dg-current\"\n    href=\"/guides/search#content-start\"\n    title=\"Overview\"\n
+        \ >Overview</a\n  >\n\n                              <a\n    class=\"dg-guide__menu-bar-link
+        \"\n    href=\"/guides/search/set-up#content-start\"\n    title=\"Set up\"\n
+        \ >Set up</a\n  >\n\n                              <a\n    class=\"dg-guide__menu-bar-link
+        \"\n    href=\"/guides/search/design#content-start\"\n    title=\"Design\"\n
+        \ >Design</a\n  >\n\n                              <a\n    class=\"dg-guide__menu-bar-link
+        \"\n    href=\"/guides/search/optimize#content-start\"\n    title=\"Optimize\"\n
+        \ >Optimize</a\n  >\n\n                              <a\n    class=\"dg-guide__menu-bar-link
+        \"\n    href=\"/guides/search/analyze#content-start\"\n    title=\"Analyze\"\n
+        \ >Analyze</a\n  >\n\n                              <a\n    class=\"dg-guide__menu-bar-link
+        \"\n    href=\"/guides/search/about#content-start\"\n    title=\"About\"\n
+        \ >About</a\n  >\n\n                              <a\n    class=\"dg-guide__menu-bar-link
+        \"\n    href=\"/guides/search/status#content-start\"\n    title=\"System status\"\n
+        \ >System status</a\n  >\n\n              </nav>\n    </div>\n  </div>\n\n\n\n
+        \         <section class=\"dg-guide__content grid-container-desktop\">\n  <div
+        class=\"dg-guide__content-header\" id=\"content-start\">\n          <h2 class=\"dg-guide__content-header-title\">Overview</h2>\n
+        \   \n      </div>\n\n  <div class=\"dg-guide__content-body usa-prose\">\n
+        \   <h2 id=\"what-is-search-gov\">What is Search.gov?</h2><p>Search.gov is
+        the search engine built specifically for federal websites.&nbsp;</p><p>Search.gov
+        supports over 200 million searches a year across one-third of federal domains
+        by providing a configurable search engine that allows you to customize search
+        experiences for the public.</p><p>The Search.gov team understands the needs
+        and challenges that government web practitioners face. They have designed
+        the service to meet you where you are.</p><ul><li><strong>Self-service. </strong>Use
+        an easy interface to customize your search experience, including optimizing
+        content, designing your results page, and analyzing your search analytics.</li><li><strong>Fed
+        friendly. </strong>Because Search.gov is a government-managed shared service,
+        it serves your unique needs, including compliance with federal security, accessibility,
+        and other web policies.</li><li><strong>Customer support. </strong>The Search.gov
+        team is available to help you with your questions. Your success is their mission.</li><li><strong>No
+        paperwork required. </strong>Search.gov is ready to use. There is no cost
+        to federal agencies. You do not need to worry about any interagency agreements,
+        payments, or other common procedural challenges.</li></ul><h2 id=\"sign-in-to-search-gov\">Sign
+        in to Search.gov</h2><p>If you already have an account with Search.gov, you
+        can <a href=\"https://search.usa.gov/login\">sign in to manage your account
+        and search experience</a>.</p><p>Don’t have an account? <a href=\"https://search.usa.gov/signup\">Create
+        a Search.gov account</a> to get started.</p><h2 id=\"request-support\">Request
+        support</h2><p>Review this guide for more information on how to <a href=\"/guides/search/set-up\">set
+        up</a>, <a href=\"/guides/search/design\">design</a>, <a href=\"/guides/search/optimize\">optimize</a>,
+        and <a href=\"/guides/search/analyze\">analyze</a> your search experience.</p><p>You
+        can also <a href=\"/guides/search/about\">learn more about Search.gov</a>
+        in this guide, including <a href=\"/guides/search/status\">checking the system
+        status</a> and understanding the <a href=\"/guides/search/about#terms-of-service\">terms
+        of service</a>.</p><p>If you have any other questions, please <a href=\"mailto:search@gsa.gov\">email
+        the Search.gov team</a>.</p>\n</div>\n\n</section>\n\n<section class=\"dg-guide__footer
+        grid-container-desktop\">\n      <div class=\"dg-guide__prev-next grid-row\">\n
+        \                   <a\n          class=\"dg-guide__prev-next-next-item usa-button\"\n
+        \         href=\"/guides/search/set-up#content-start\"\n          title=\"Set
+        up\"\n        >\n          <span>Set up</span>\n          <svg\n            class=\"usa-icon
+        dg-icon dg-icon--standard\"\n            aria-hidden=\"<DATADOG_API_ENABLED>\"\n
+        \           focusable=\"false\"\n            role=\"img\"\n          >\n            <use
+        xlink:href=\"/themes/custom/digital_gov/static/uswds/img/sprite.svg#arrow_forward\"></use>\n
+        \         </svg>\n        </a>\n          </div>\n  \n      <p class=\"dg-attribution\">Header
+        image credit: Fidsor, Pixabay</p>\n\n  \n  <script\n  src=\"https://touchpoints.app.cloud.gov/touchpoints/dc4265f6.js\"\n
+        \ async\n></script>\n<section class=\"touchpoints-form-container\">\n  <button
+        id=\"touchpoints-modal-button\" class=\"usa-button\" type=\"button\">\n    Was
+        this page helpful?\n  </button>\n</section>\n\n</section>\n\n    \n      </article>\n</main>\n\n
+        \ </div>\n\n  </div>\n\n  \n    <div>\n    <section\n        id=\"newsletter-signup\"\n
+        \       aria-label=\"Subscribe to the Digital.gov newsletter\"\n>\n  <div
+        class=\"grid-container grid-container-desktop\">\n    <div class=\"grid-row
+        tablet-lg:grid-gap-6\">\n      <div class=\"grid-col-12 tablet:grid-col-7\">\n
+        \       <section class=\"usa-sign-up\">\n          <p class=\"blurb\" id=\"newsletter-subscribe-description\">\n
+        \           <strong>Join 18,000 others in government</strong> and subscribe
+        to\n            our newsletter — a round-up of the best digital news in government\n
+        \           and across our field.\n          </p>\n        </section>\n      </div>\n
+        \     <div class=\"grid-col-12 tablet:grid-col-5\">\n        <section\n                class=\"usa-sign-up\"\n
+        \               aria-describedby=\"newsletter-subscribe-description\"\n        >\n
+        \         <script\n                  src=\"https://public.govdelivery.com/assets/Signup.js\"\n
+        \                 data-account-code=\"USGSA\"\n                  data-signup-id=\"34948\"\n
+        \         ></script>\n        </section>\n      </div>\n    </div>\n  </div>\n</section>\n<footer
+        class=\"usa-footer usa-footer--big\" role=\"contentinfo\">\n  <section class=\"return-to-top\">\n
+        \   <div\n            class=\"grid-container grid-container-desktop usa-footer__return-to-top\"\n
+        \   >\n      <a href=\"#\">\n        <span>Return to top</span>\n        <svg\n
+        \               class=\"usa-icon dg-icon dg-icon--standard margin-bottom-05\"\n
+        \               aria-hidden=\"<DATADOG_API_ENABLED>\"\n                focusable=\"false\"\n
+        \       >\n          <use\n                  xlink:href=\"/themes/custom/digital_gov/static/uswds/img/sprite.svg#arrow_upward\"\n
+        \         ></use>\n        </svg>\n      </a>\n    </div>\n  </section>\n
+        \ <div class=\"usa-footer__primary-section\">\n    <div class=\"grid-container
+        grid-container-desktop\">\n      <nav class=\"usa-footer__nav\" aria-label=\"Footer
+        navigation\">\n        <div class=\"grid-row grid-gap-4\">\n          <div
+        class=\"mobile-lg:grid-col-6 tablet-lg:grid-col-3\">\n            <section\n
+        \                   class=\"usa-footer__primary-content usa-footer__primary-content--collapsible\"\n
+        \           >\n              <h4 class=\"usa-footer__primary-link\">Learn</h4>\n
+        \             \n              <ul class=\"usa-list usa-list--unstyled\">\n
+        \             <li class=\"usa-footer__secondary-link\">\n        <a href=\"/news\"
+        data-drupal-link-system-path=\"node/9\">Blogs</a>\n              </li>\n          <li
+        class=\"usa-footer__secondary-link\">\n        <a href=\"/events\" data-drupal-link-system-path=\"node/5\">Events</a>\n
+        \             </li>\n          <li class=\"usa-footer__secondary-link\">\n
+        \       <a href=\"/resources\" data-drupal-link-system-path=\"node/1\">Resources</a>\n
+        \             </li>\n          <li class=\"usa-footer__secondary-link\">\n
+        \       <a href=\"/communities\" data-drupal-link-system-path=\"node/26\">Communities</a>\n
+        \             </li>\n          <li class=\"usa-footer__secondary-link\">\n
+        \       <a href=\"/guides\" data-drupal-link-system-path=\"node/16\">Guides</a>\n
+        \             </li>\n          <li class=\"usa-footer__secondary-link\">\n
+        \       <a href=\"/job-board\" data-drupal-link-system-path=\"node/12\">Job
+        board</a>\n              </li>\n        </ul>\n  \n\n\n                          </section>\n
+        \         </div>\n          <div class=\"mobile-lg:grid-col-6 tablet-lg:grid-col-3\">\n
+        \           <section\n                    class=\"usa-footer__primary-content
+        usa-footer__primary-content--collapsible\"\n            >\n              <h4
+        class=\"usa-footer__primary-link\">Grow</h4>\n              \n              <ul
+        class=\"usa-list usa-list--unstyled\">\n              <li class=\"usa-footer__secondary-link\">\n
+        \       <a href=\"/about/contribute\" data-drupal-link-system-path=\"node/3821\">Write
+        for us</a>\n              </li>\n          <li class=\"usa-footer__secondary-link\">\n
+        \       <a href=\"/about/contribute\" data-drupal-link-system-path=\"node/3821\">Host
+        an event</a>\n              </li>\n          <li class=\"usa-footer__secondary-link\">\n
+        \       <a href=\"https://github.com/GSA/digital-gov-drupal/issues\">Submit
+        GitHub issue</a>\n              </li>\n        </ul>\n  \n\n\n                          </section>\n
+        \         </div>\n          <div class=\"mobile-lg:grid-col-6 tablet-lg:grid-col-3\">\n
+        \           <section\n                    class=\"usa-footer__primary-content
+        usa-footer__primary-content--collapsible\"\n            >\n              <h4
+        class=\"usa-footer__primary-link\">Connect</h4>\n              \n              <ul
+        class=\"usa-list usa-list--unstyled\">\n              <li class=\"usa-footer__secondary-link\">\n
+        \       <a href=\"/about\" data-drupal-link-system-path=\"node/3826\">About
+        Us</a>\n              </li>\n          <li class=\"usa-footer__secondary-link\">\n
+        \       <a href=\"/policies\" data-drupal-link-system-path=\"node/3824\">Site
+        Policies</a>\n              </li>\n          <li class=\"usa-footer__secondary-link\">\n
+        \       <a href=\"/about/contact\" data-drupal-link-system-path=\"node/3820\">Contact
+        Us</a>\n              </li>\n          <li class=\"usa-footer__secondary-link\">\n
+        \       <a href=\"/about/manage-content\" data-drupal-link-system-path=\"node/3818\">Content
+        schedule</a>\n              </li>\n        </ul>\n  \n\n\n                          </section>\n
+        \         </div>\n          <div class=\"mobile-lg:grid-col-6 tablet-lg:grid-col-3\">\n
+        \           <section\n                    class=\"usa-footer__primary-content
+        usa-footer__primary-content--collapsible\"\n            >\n              <h4
+        class=\"usa-footer__primary-link\">Social</h4>\n              <ul class=\"usa-list
+        usa-list--unstyled social-links\">\n                <li class=\"usa-footer__secondary-link\">\n
+        \                 <svg\n                          class=\"usa-icon dg-icon
+        dg-icon--standard margin-bottom-05\"\n                          aria-hidden=\"<DATADOG_API_ENABLED>\"\n
+        \                         focusable=\"false\"\n                  >\n                    <use\n
+        \                           xlink:href=\"/themes/custom/digital_gov/static/uswds/img/sprite.svg#x\"\n
+        \                   ></use>\n                  </svg>\n                  <a\n
+        \                         class=\"text-ink hover:text-ink text-no-underline
+        hover:text-underline\"\n                          href=\"https://twitter.com/digital_gov\"\n
+        \                 >X (Formerly Twitter)</a\n                  >\n                </li>\n
+        \               <li class=\"usa-footer__secondary-link\">\n                  <svg\n
+        \                         class=\"usa-icon dg-icon dg-icon--standard margin-bottom-05\"\n
+        \                         aria-hidden=\"<DATADOG_API_ENABLED>\"\n                          focusable=\"false\"\n
+        \                 >\n                    <use\n                            xlink:href=\"/themes/custom/digital_gov/static/uswds/img/sprite.svg#facebook\"\n
+        \                   ></use>\n                  </svg>\n                  <a\n
+        \                         class=\"text-ink hover:text-ink text-no-underline
+        hover:text-underline\"\n                          href=\"https://www.facebook.com/digitalgov/\"\n
+        \                 >Facebook</a\n                  >\n                </li>\n
+        \               <li class=\"usa-footer__secondary-link\">\n                  <svg\n
+        \                         class=\"usa-icon dg-icon dg-icon--standard margin-bottom-05\"\n
+        \                         aria-hidden=\"<DATADOG_API_ENABLED>\"\n                          focusable=\"false\"\n
+        \                 >\n                    <use\n                            xlink:href=\"/themes/custom/digital_gov/static/uswds/img/sprite.svg#youtube\"\n
+        \                   ></use>\n                  </svg>\n                  <a\n
+        \                         class=\"text-ink hover:text-ink text-no-underline
+        hover:text-underline\"\n                          href=\"https://youtube.com/@DigitalGov\"\n
+        \                 >YouTube</a\n                  >\n                </li>\n
+        \               <li class=\"usa-footer__secondary-link\">\n                  <svg\n
+        \                         class=\"usa-icon dg-icon dg-icon--standard margin-bottom-05\"\n
+        \                         aria-hidden=\"<DATADOG_API_ENABLED>\"\n                          focusable=\"false\"\n
+        \                 >\n                    <use\n                            xlink:href=\"/themes/custom/digital_gov/static/uswds/img/sprite.svg#linkedin\"\n
+        \                   ></use>\n                  </svg>\n                  <a\n
+        \                         class=\"text-ink hover:text-ink text-no-underline
+        hover:text-underline\"\n                          href=\"https://www.linkedin.com/company/digitalgov-gsa/\"\n
+        \                 >LinkedIn</a\n                  >\n                </li>\n
+        \                             </ul>\n            </section>\n          </div>\n
+        \       </div>\n      </nav>\n    </div>\n  </div>\n</footer>\n<div id=\"block-digital-gov-config-pages\">\n
+        \ \n    \n      <div class=\"usa-identifier\">\n  <section\n    class=\"usa-identifier__section
+        usa-identifier__section--masthead\"\n    aria-label=\"Agency identifier,\"\n
+        \ >\n    <div class=\"usa-identifier__container\">\n              <div class=\"usa-identifier__logos\">\n
+        \         <a href=\"https://www.gsa.gov\" class=\"usa-identifier__logo\">\n
+        \           \n  <img role=\"img\" class=\"usa-identifier__logo-img\" alt=\"GSA
+        logo\" src=\"/s3/files/2025-03/gsa-logo-w100.png\" />\n\n          </a>\n
+        \       </div>\n                    <section\n          class=\"usa-identifier__identity\"\n
+        \         aria-label=\"Agency description,\"\n        >\n                      <p
+        class=\"usa-identifier__identity-domain\">Digital.gov</p>\n                                <p
+        class=\"usa-identifier__identity-disclaimer\">\n              An official
+        website of the\n              <a href=\"https://www.gsa.gov\">U.S. General
+        Services Administration</a>\n            </p>\n                  </section>\n
+        \         </div>\n  </section>\n  <nav class=\"usa-identifier__section usa-identifier__section--required-links\"
+        aria-label=\"Important links,\">\n  <div class=\"usa-identifier__container\">\n
+        \   <ul class=\"usa-identifier__required-links-list\">\n              <li
+        class=\"usa-identifier__required-links-item\">\n          <a href=\"http://www.gsa.gov/about\"
+        class=\"usa-identifier__required-link usa-link\">\n            About GSA\n
+        \         </a>\n        </li>\n              <li class=\"usa-identifier__required-links-item\">\n
+        \         <a href=\"https://www.gsa.gov/website-information/accessibility-statement\"
+        class=\"usa-identifier__required-link usa-link\">\n            Accessibility
+        statement\n          </a>\n        </li>\n              <li class=\"usa-identifier__required-links-item\">\n
+        \         <a href=\"https://www.gsa.gov/reference/freedom-of-information-act-foia\"
+        class=\"usa-identifier__required-link usa-link\">\n            FOIA requests
+        \n          </a>\n        </li>\n              <li class=\"usa-identifier__required-links-item\">\n
+        \         <a href=\"https://www.gsa.gov/reference/civil-rights-programs/the-no-fear-act\"
+        class=\"usa-identifier__required-link usa-link\">\n            No FEAR Act
+        data \n          </a>\n        </li>\n              <li class=\"usa-identifier__required-links-item\">\n
+        \         <a href=\"https://www.gsaig.gov/\" class=\"usa-identifier__required-link
+        usa-link\">\n            Office of the Inspector General\n          </a>\n
+        \       </li>\n              <li class=\"usa-identifier__required-links-item\">\n
+        \         <a href=\"https://www.gsa.gov/reference/reports/budget-performance\"
+        class=\"usa-identifier__required-link usa-link\">\n            Performance
+        reports\n          </a>\n        </li>\n              <li class=\"usa-identifier__required-links-item\">\n
+        \         <a href=\"https://www.gsa.gov/website-information/website-policies\"
+        class=\"usa-identifier__required-link usa-link\">\n            Privacy policy\n
+        \         </a>\n        </li>\n          </ul>\n  </div>\n</nav>\n\n      <section\n
+        \     class=\"usa-identifier__section usa-identifier__section--usagov\"\n
+        \     aria-label=\"U.S. government information and services\"\n    >\n      <div
+        class=\"usa-identifier__container\">\n                  <div class=\"usa-identifier__usagov-description\">\n
+        \           Looking for U.S. government information and services?\n          </div>\n
+        \               <a href=\"https://www.usa.gov/\" class=\"usa-link\">Visit
+        USA.gov</a>\n      </div>\n    </section>\n  </div>\n\n  </div>\n\n  </div>\n\n\n</div>\n\n<div
+        id=\"clicks_iframe\" class=\"display-none\"></div>\n\n  </div>\n\n\n<script
+        src=\"/sites/default/files/js/js_B_4Kb-SaGCTCdeycCx-GoT-aj59IqY-l8tfQatXGB70.js?scope=footer&amp;delta=0&amp;language=en&amp;theme=digital_gov&amp;include=eJxLyUzPLEnMiU_PL9NPz8lPSszRSc_PT89JjS9JTNdPBxLofL3ErMQKAFbWFSg\"></script>\n\n</body>\n</html>\n"
+  recorded_at: Mon, 22 Sep 2025 20:16:13 GMT
+- request:
+    method: get
+    uri: https://youtube.googleapis.com/youtube/v3/channels?forUsername=@digitalgov&key=<YOUTUBE_KEY>&part=id
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - DGSearch/0.0.0 google-api-ruby-client/0.11.3 Mac OS X/15.6 (gzip)
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Mon, 22 Sep 2025 20:16:13 GMT
+      X-Goog-Api-Client:
+      - gl-ruby/3.3.7 gdcl/1.11.3
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Encoding:
+      - gzip
+      Date:
+      - Mon, 22 Sep 2025 20:16:14 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "error": {
+            "code": 400,
+            "message": "API key not valid. Please pass a valid API key.",
+            "errors": [
+              {
+                "message": "API key not valid. Please pass a valid API key.",
+                "domain": "global",
+                "reason": "badRequest"
+              }
+            ],
+            "status": "INVALID_ARGUMENT",
+            "details": [
+              {
+                "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+                "reason": "API_KEY_INVALID",
+                "domain": "googleapis.com",
+                "metadata": {
+                  "service": "youtube.googleapis.com"
+                }
+              },
+              {
+                "@type": "type.googleapis.com/google.rpc.LocalizedMessage",
+                "locale": "en-US",
+                "message": "API key not valid. Please pass a valid API key."
+              }
+            ]
+          }
+        }
+  recorded_at: Mon, 22 Sep 2025 20:16:13 GMT
+recorded_with: VCR 6.3.1

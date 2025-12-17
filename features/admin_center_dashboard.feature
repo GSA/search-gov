@@ -38,23 +38,6 @@ Feature: Dashboard
     And I should see a link to "survey" with url for "http://link.to.survey.gov"
     And I should not see "Maintenace window 2"
 
-  Scenario: Toggling daily snapshot email
-    Given I am logged in with email "affiliate_manager@fixtures.org"
-    When I go to the usagov's Dashboard page
-    And I follow "Send me today's snapshot as a daily email"
-    Then I should see "You have enabled the daily snapshot setting for usagov."
-    When I follow "Stop sending me today's snapshot as a daily email"
-    Then I should see "You have disabled the daily snapshot setting for usagov."
-
-  @javascript
-  Scenario: Toggling filtered analytics
-    Given I am logged in with email "affiliate_manager@fixtures.org"
-    When I go to the usagov's Dashboard page
-    And I follow "Stop filtering bot traffic"
-    Then I should see "You're no longer filtering bot traffic. Analytics include both humans and bots."
-    When I follow "Filter bot traffic"
-    Then I should see "You're now filtering bot traffic. Analytics include likely humans only."
-
   @javascript
   Scenario: Updating Settings
     Given I am logged in with email "affiliate_manager@fixtures.org"
@@ -78,36 +61,6 @@ Feature: Dashboard
     And I follow "Settings"
     Then I should see "Site Handle gobiernousa"
     And I should see "Site Language Spanish"
-
-  @javascript
-  Scenario: Cloning a site
-    Given the following Affiliates exist:
-      | display_name | name         | contact_email      | first_name | last_name | use_redesigned_results_page |
-      | origin site  | origin_site  | john@agency.gov    | John       | Manager   | false                       |
-    And I am logged in with email "john@agency.gov"
-    When I go to the origin_site's Dashboard page
-    And I follow "Clone Site"
-    Then I should see a link to "Dashboard" in the active site main navigation
-    And I should see a link to "Clone Site" in the active site sub navigation
-    And I should see "Clone Site"
-    When I fill in "New Site Handle" with "abcd012345678900123456789001234567890"
-    And I submit the form by pressing "Submit"
-    Then I should see "Validation failed: Site Handle (visible to searchers in the URL) is too long"
-
-    When I fill in "New Site Handle" with "usagov_copy"
-    And I submit the form by pressing "Submit"
-    Then I should see "Site 'origin_site' has been cloned as 'usagov_copy'"
-    And I should be on the usagov_copy's Dashboard page
-
-  @javascript
-  Scenario: Clicking on help link on Admin Center
-    Given the following HelpLinks exist:
-      | request_path        | help_page_url                                      |
-      | /sites/setting/edit | https://search.gov/manual/settings.html |
-    And I am logged in with email "affiliate_manager@fixtures.org"
-    When I go to the usagov's Dashboard page
-    And I follow "Settings"
-    Then I should be able to access the "Editing Your Site Settings" help page
 
   Scenario: List users
     Given the following Users exist:

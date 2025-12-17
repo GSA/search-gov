@@ -12,7 +12,8 @@ shared_examples 'an indexable' do
 
     context 'when searching raises an exception' do
       it 'returns an appropriate result set with zero hits' do
-        expect(Es::CustomIndices.client_reader).to receive(:search).and_raise StandardError
+        allow(described_class).to receive(:client_reader).and_return(double('client', search: nil))
+        expect(described_class.client_reader).to receive(:search).and_raise StandardError
         expect(described_class.search_for(options)).to be_a(ElasticResults)
       end
     end
@@ -40,7 +41,9 @@ shared_examples 'an indexable' do
     let(:es2) { Elasticsearch::Client.new(host: 'localhost:9200') }
 
     before do
-      allow(Es::CustomIndices).to receive(:client_writers).and_return [es1, es2]
+      # Stub the model's client methods directly (works for both ES and OpenSearch models)
+      allow(described_class).to receive(:client_writers).and_return [es1, es2]
+      allow(described_class).to receive(:client_reader).and_return es1
     end
 
     describe '.index_exists?' do
