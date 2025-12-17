@@ -5,10 +5,9 @@
     %ul
 
 - raw_html = render(partial: 'form_embed_code_text_area')
-- formatted_html = Nokogiri::HTML::DocumentFragment.parse(raw_html)
+- formatted_html = HtmlBeautifier.beautify(raw_html)
 
 %h3 Form Snippet
 %pre{id: "embed_code_textarea_#{@site.locale}"}
   %code
-    = preserve do
-      = formatted_html
+    = formatted_html
