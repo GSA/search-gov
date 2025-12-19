@@ -10,9 +10,8 @@ module DataGenerator
 
     def index_search_and_clicks
       indices.each do |index|
-        es.index({
+        search_params = {
           index: index,
-          type: 'search',
           body: {
             '@version' => 1,
             '@timestamp' => search.timestamp.iso8601,
@@ -23,12 +22,13 @@ module DataGenerator
               query: search.query,
             },
           },
-        })
+        }
+        search_params[:type] = 'search' unless OpenSearchConfig.enabled?
+        es.index(search_params)
 
         search.clicks.each do |click|
-          es.index({
+          click_params = {
             index: index,
-            type: 'click',
             body: {
               '@version' => 1,
               '@timestamp' => search.timestamp.iso8601,
@@ -41,7 +41,9 @@ module DataGenerator
                 position: click.position,
               },
             },
-          })
+          }
+          click_params[:type] = 'click' unless OpenSearchConfig.enabled?
+          es.index(click_params)
         end
       end
     end
@@ -54,7 +56,7 @@ module DataGenerator
     end
 
     def es
-      Es.client_writers.first
+      Es::ELK.client_writers.first
     end
   end
 end

@@ -3,7 +3,7 @@
 class BulkAffiliateSearchEngineUpdateJob < ApplicationJob
   queue_as :searchgov
 
-  VALID_SEARCH_ENGINES = %w[bing_v7 search_gov search_elastic open_search].freeze
+  VALID_SEARCH_ENGINES = %w[bing_v7 search_gov search_elastic opensearch].freeze
 
   def perform(requesting_user_email, file_name, s3_object_key)
     temp_file = download_from_s3(s3_object_key)

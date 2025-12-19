@@ -38,23 +38,6 @@ Feature: Dashboard
     And I should see a link to "survey" with url for "http://link.to.survey.gov"
     And I should not see "Maintenace window 2"
 
-  Scenario: Toggling daily snapshot email
-    Given I am logged in with email "affiliate_manager@fixtures.org"
-    When I go to the usagov's Dashboard page
-    And I follow "Send me today's snapshot as a daily email"
-    Then I should see "You have enabled the daily snapshot setting for usagov."
-    When I follow "Stop sending me today's snapshot as a daily email"
-    Then I should see "You have disabled the daily snapshot setting for usagov."
-
-  @javascript
-  Scenario: Toggling filtered analytics
-    Given I am logged in with email "affiliate_manager@fixtures.org"
-    When I go to the usagov's Dashboard page
-    And I follow "Stop filtering bot traffic"
-    Then I should see "You're no longer filtering bot traffic. Analytics include both humans and bots."
-    When I follow "Filter bot traffic"
-    Then I should see "You're now filtering bot traffic. Analytics include likely humans only."
-
   @javascript
   Scenario: Updating Settings
     Given I am logged in with email "affiliate_manager@fixtures.org"

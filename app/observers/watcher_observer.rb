@@ -20,6 +20,6 @@ class WatcherObserver < ActiveRecord::Observer
   private
 
   def opensearch_analytics_enabled?
-    ENV['OPENSEARCH_ANALYTICS_ENABLED'] == 'true'
+    OpenSearchConfig.enabled?
   end
 end

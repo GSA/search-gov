@@ -1,9 +1,11 @@
 shared_examples_for 'a watcher' do
+  # Use Elasticsearch client directly for X-Pack Watcher (not supported in OpenSearch)
+  let(:elasticsearch_client) { Es::ELK.elasticsearch_client }
   let(:put_watcher) do
-    Es::ELK.client_reader.xpack.watcher.put_watch(id: watcher.id, body: watcher.body)
+    elasticsearch_client.xpack.watcher.put_watch(id: watcher.id, body: watcher.body)
   end
   let(:delete_watcher) do
-    Es::ELK.client_reader.xpack.watcher.delete_watch(id: watcher.id)
+    elasticsearch_client.xpack.watcher.delete_watch(id: watcher.id)
   rescue Elasticsearch::Transport::Transport::Errors::NotFound
   end
 
@@ -33,7 +35,7 @@ shared_examples_for 'a watcher' do
     after { delete_watcher }
 
     let(:execute_watcher) do
-      Es::ELK.client_reader.xpack.watcher.execute_watch(id: watcher.id)
+      elasticsearch_client.xpack.watcher.execute_watch(id: watcher.id)
     end
 
     it 'is successful' do
