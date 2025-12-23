@@ -111,13 +111,6 @@ To rollback:
 
 ## Troubleshooting
 
-### Connection Errors
-
-Verify environment variables are set correctly:
-```ruby
-Rails.application.config_for(:opensearch_analytics_client)
-```
-
 ### Missing Indices
 
 Re-run migration for specific dates:
@@ -132,9 +125,3 @@ The migration is idempotent - re-running will update existing documents:
 bundle exec rake "opensearch:analytics:migrate_index[logstash-2024.01.15]"
 ```
 
-## Technical Details
-
-- **Batch size**: 1000 documents per scroll request
-- **Scroll timeout**: 5 minutes
-- **Idempotent**: Uses document IDs, safe to re-run
-- **Index creation**: Copies mappings and settings from source
