@@ -22,6 +22,10 @@ executors:
       - image: cimg/ruby:<< parameters.ruby_version >>
         environment:
           RAILS_ENV: test
+          SEARCHELASTIC_INDEX: test_index
+          OPENSEARCH_SEARCH_INDEX: test_os_index
+          OPENSEARCH_SEARCH_RETENTION_DAYS: 30
+          REDIS_SYSTEM_URL: redis://localhost:6379/0
 
       - image: mysql:<< parameters.mysql_version >>
         environment:
