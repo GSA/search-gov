@@ -6,22 +6,25 @@ This document describes the process for migrating historical analytics data from
 
 Analytics data is stored in daily indices:
 - `logstash-YYYY.MM.DD` - All search/click events
-- `human-logstash-YYYY.MM.DD` - Filtered events (non-bot traffic)
 
-The migration copies 18 months of historical data to OpenSearch while preserving index structure and mappings.
+Note: `human-logstash-*` are **aliases** (not indices) that are created automatically by OpenSearch index templates configured via the ansible pipeline. They do not need to be migrated.
+
+The migration copies 18 months of historical `logstash-*` data to OpenSearch. Index settings and mappings are applied via OpenSearch index templates (must be configured before migration).
 
 ## Prerequisites
 
 1. **Logstash enabled**: Logstash must be configured to write new data to OpenSearch before migration to prevent having to migrate new data.
 
-2. **OpenSearch running**: The OpenSearch cluster must be accessible with the following environment variables configured:
+2. **OpenSearch index templates configured**: The `logstash*` index template must be applied in OpenSearch (via ansible pipeline) before running migration. This template defines proper settings for OpenSearch and creates the `human-logstash-*` aliases.
+
+3. **OpenSearch running**: The OpenSearch cluster must be accessible with the following environment variables configured:
    ```
    OPENSEARCH_ANALYTICS_HOST=https://opensearch-host:9200
    OPENSEARCH_ANALYTICS_USER=admin
    OPENSEARCH_ANALYTICS_PASSWORD=<password>
    ```
 
-3. **ElasticSearch accessible**: The source ElasticSearch cluster must remain accessible during migration.
+4. **ElasticSearch accessible**: The source ElasticSearch cluster must remain accessible during migration.
 
 ## Migration Steps
 

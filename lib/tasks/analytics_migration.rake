@@ -10,7 +10,7 @@ namespace :opensearch do
       end_date = parse_date(args.end_date, Date.today)
 
       puts "Migrating analytics data from #{start_date} to #{end_date}"
-      puts "This will migrate logstash-* and human-logstash-* indices"
+      puts "This will migrate logstash-* indices (human-logstash-* are aliases created by OpenSearch templates)"
       puts ""
 
       migrator = AnalyticsDataMigrator.new(
@@ -87,20 +87,18 @@ namespace :opensearch do
       missing_indices = []
 
       (start_date..end_date).each do |date|
-        %w[logstash human-logstash].each do |prefix|
-          index_name = "#{prefix}-#{date.strftime('%Y.%m.%d')}"
+        index_name = "logstash-#{date.strftime('%Y.%m.%d')}"
 
-          es_count = get_doc_count(es_client, index_name)
-          os_count = get_doc_count(os_client, index_name)
+        es_count = get_doc_count(es_client, index_name)
+        os_count = get_doc_count(os_client, index_name)
 
-          total_es += es_count
-          total_os += os_count
+        total_es += es_count
+        total_os += os_count
 
-          if es_count > 0 && os_count == 0
-            missing_indices << index_name
-          elsif es_count != os_count && es_count > 0
-            puts "#{index_name}: ES=#{es_count}, OS=#{os_count} (diff: #{es_count - os_count})"
-          end
+        if es_count > 0 && os_count == 0
+          missing_indices << index_name
+        elsif es_count != os_count && es_count > 0
+          puts "#{index_name}: ES=#{es_count}, OS=#{os_count} (diff: #{es_count - os_count})"
         end
       end
 

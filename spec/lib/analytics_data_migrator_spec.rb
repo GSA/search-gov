@@ -195,36 +195,37 @@ describe AnalyticsDataMigrator do
     before do
       allow(source_indices).to receive(:exists?).with(index: index_name).and_return(true)
       allow(destination_indices).to receive(:exists?).with(index: index_name).and_return(false)
-      allow(source_indices).to receive(:get_mapping).and_return(
-        index_name => { 'mappings' => { 'properties' => { 'query' => { 'type' => 'text' } } } }
-      )
-      allow(source_indices).to receive(:get_settings).and_return(
-        index_name => {
-          'settings' => {
-            'index' => {
-              'number_of_shards' => '5',
-              'number_of_replicas' => '1',
-              'creation_date' => '123456789'
-            }
-          }
-        }
-      )
-      allow(destination_indices).to receive(:create)
       allow(source_client).to receive(:search).and_return(
         '_scroll_id' => 'scroll123',
         'hits' => { 'hits' => [] }
       )
     end
 
-    it 'creates destination index with correct settings' do
-      expect(destination_indices).to receive(:create).with(
-        index: index_name,
-        body: hash_including(
-          settings: hash_including('number_of_shards' => '5', 'number_of_replicas' => '1'),
-          mappings: hash_including('properties' => { 'query' => { 'type' => 'text' } })
+    context 'when OpenSearch has index template' do
+      before do
+        allow(destination_indices).to receive(:get_index_template).with(name: 'logstash*').and_return(
+          'index_templates' => [{ 'name' => 'logstash' }]
         )
-      )
-      migrator.migrate_index(index_name)
+        allow(destination_indices).to receive(:create)
+      end
+
+      it 'creates destination index using OpenSearch template' do
+        expect(destination_indices).to receive(:create).with(index: index_name)
+        migrator.migrate_index(index_name)
+      end
+    end
+
+    context 'when OpenSearch has no index template' do
+      before do
+        allow(destination_indices).to receive(:get_index_template).and_raise(StandardError)
+        allow(destination_indices).to receive(:get_template).and_raise(StandardError)
+      end
+
+      it 'logs an error and does not create index' do
+        expect(logger).to receive(:error).with(/No logstash index template found/)
+        expect(destination_indices).not_to receive(:create)
+        migrator.migrate_index(index_name)
+      end
     end
   end
 end

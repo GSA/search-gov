@@ -5,7 +5,7 @@ require 'elasticsearch'
 class AnalyticsDataMigrator
   SCROLL_SIZE = 1000
   SCROLL_TIMEOUT = '5m'
-  INDEX_PREFIXES = %w[logstash human-logstash].freeze
+  INDEX_PREFIX = 'logstash'
 
   attr_reader :start_date, :end_date, :dry_run, :logger
 
@@ -26,12 +26,10 @@ class AnalyticsDataMigrator
     total_errors = 0
 
     each_date do |date|
-      INDEX_PREFIXES.each do |prefix|
-        index_name = "#{prefix}-#{date.strftime('%Y.%m.%d')}"
-        result = migrate_index(index_name)
-        total_migrated += result[:migrated]
-        total_errors += result[:errors]
-      end
+      index_name = "#{INDEX_PREFIX}-#{date.strftime('%Y.%m.%d')}"
+      result = migrate_index(index_name)
+      total_migrated += result[:migrated]
+      total_errors += result[:errors]
     end
 
     log_info("Migration complete. Total documents migrated: #{total_migrated}, errors: #{total_errors}")
@@ -114,27 +112,27 @@ class AnalyticsDataMigrator
     return if dry_run
     return if destination_client.indices.exists?(index: index_name)
 
-    mappings = source_client.indices.get_mapping(index: index_name)
-    settings = source_client.indices.get_settings(index: index_name)
+    unless destination_has_index_template?
+      log_error("No logstash index template found in OpenSearch. Ensure templates are configured.")
+      return
+    end
 
-    index_settings = settings.dig(index_name, 'settings', 'index') || {}
-    filtered_settings = index_settings.except(
-      'creation_date', 'uuid', 'version', 'provided_name',
-      'number_of_replicas', 'number_of_shards'
-    )
-
-    body = {
-      settings: filtered_settings.merge(
-        'number_of_shards' => index_settings['number_of_shards'] || 1,
-        'number_of_replicas' => index_settings['number_of_replicas'] || 1
-      ),
-      mappings: mappings.dig(index_name, 'mappings') || {}
-    }
-
-    destination_client.indices.create(index: index_name, body: body)
-    log_info("Created destination index: #{index_name}")
+    destination_client.indices.create(index: index_name)
+    log_info("Created destination index: #{index_name} (using OpenSearch template)")
   rescue StandardError => e
     log_error("Failed to create destination index #{index_name}: #{e.message}")
+  end
+
+  def destination_has_index_template?
+    @has_template ||= begin
+      templates = destination_client.indices.get_index_template(name: 'logstash*')
+      templates['index_templates']&.any?
+    rescue StandardError
+      legacy = destination_client.indices.get_template(name: 'logstash*')
+      legacy.any?
+    rescue StandardError
+      false
+    end
   end
 
   def process_batch(index_name, hits)
