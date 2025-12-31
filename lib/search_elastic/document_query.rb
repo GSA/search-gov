@@ -145,10 +145,11 @@ class SearchElastic::DocumentQuery
         }
       },
 
-      # Prefer documents that have more DAP domain visits
+      # Prefer documents that have more DAP domain visits, log2p accounts for default of 0 in document
+      # and setting `missing: 0` equates documents without the field and with field values of 0 and null
       {
         field_value_factor: {
-          field: 'dap_domain_visits_count', modifier: 'log1p', factor: 2, missing: 1
+          field: 'dap_domain_visits_count', modifier: 'log2p', factor: 2, missing: 0
         }
       }
     ]

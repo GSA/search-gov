@@ -1,7 +1,7 @@
 = form_for :searchgov_domain, url: delete_domain_admin_searchgov_domain_path(@searchgov_domain), method: :delete do |f|
   .field
     %p
-      WARNING: This will remove #{@searchgov_domain.urls_count} URLs from the Search.gov index. Are you sure you want to proceed? Type "DESTROY DOMAIN" to confirm.
+      WARNING: This will remove #{@searchgov_domain.urls_count} URLs from the SearchGov index. Are you sure you want to proceed? Type "DESTROY DOMAIN" to confirm.
     = label_tag :confirmation, 'Confirmation Text'
     = text_field_tag :confirmation
   .actions

@@ -1,4 +1,4 @@
-= content_for :title, 'Search.gov Login'
+= content_for :title, 'SearchGov Login'
 = content_for :navigation do
   %ul.nav.signup
     %li= link_to 'Sign up', signup_path
@@ -6,7 +6,7 @@
 #user-session-form
   %center
     %h2 Security Notification
-    %h2 Search.gov is a service of GSA
+    %h2 SearchGov is a service of GSA
     %p for managing search experiences on federal government websites.
     %p
       %strong> Members of the general public
@@ -25,6 +25,5 @@
     = form_tag '/auth/logindotgov', method: 'post', id: 'user-session-form' do
       = render_flash_message(false)
       = submit_tag 'Accept and proceed'
-      = link_to 'Cancel and return to Search.gov guide', 'https://digital.gov/guides/search'
+      = link_to 'Cancel and return to the SearchGov guide', 'https://digital.gov/guides/search'
       <br/>
-      = link_to 'Go to USA.gov', 'https://usa.gov'
