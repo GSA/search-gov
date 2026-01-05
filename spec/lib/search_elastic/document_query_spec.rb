@@ -61,5 +61,39 @@ describe SearchElastic::DocumentQuery do
         expect(body).not_to be_empty
       end
     end
+
+    context 'when a query runs' do
+      it 'includes scoring functions' do
+        functions = body.dig(:query, :function_score, :functions)
+        expect(functions).to be_an(Array)
+        expect(functions).not_to be_empty
+        expect(functions[0]).to eq(gauss: {
+          changed: {
+            origin: 'now',
+            scale: '1825d',
+            offset: '30d',
+            decay: 0.3
+          }
+        })
+        expect(functions[1]).to eq(filter: {
+          terms: {
+            extension: %w[doc docx pdf ppt pptx xls xlsx]
+          }
+        }, weight: '.75'
+        )
+        expect(functions[2]).to eq(field_value_factor: {
+          field: 'click_count',
+          modifier: 'log1p',
+          factor: 2,
+          missing: 1
+        })
+        expect(functions[3]).to eq(field_value_factor: {
+          field: 'dap_domain_visits_count',
+          modifier: 'log2p',
+          factor: 2,
+          missing: 0
+        })
+      end
+    end
   end
 end
