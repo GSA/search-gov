@@ -194,15 +194,27 @@ describe AnalyticsDataMigrator do
 
     before do
       allow(source_indices).to receive(:exists?).with(index: index_name).and_return(true)
-      allow(destination_indices).to receive(:exists?).with(index: index_name).and_return(false)
       allow(source_client).to receive(:search).and_return(
         '_scroll_id' => 'scroll123',
         'hits' => { 'hits' => [] }
       )
     end
 
-    context 'when OpenSearch has index template' do
+    context 'when destination index already exists' do
       before do
+        allow(destination_indices).to receive(:exists?).with(index: index_name).and_return(true)
+      end
+
+      it 'skips index creation' do
+        expect(destination_indices).not_to receive(:create)
+        expect(logger).to receive(:info).with(/already exists/)
+        migrator.migrate_index(index_name)
+      end
+    end
+
+    context 'when OpenSearch has composable index template' do
+      before do
+        allow(destination_indices).to receive(:exists?).with(index: index_name).and_return(false)
         allow(destination_indices).to receive(:get_index_template).with(name: 'logstash*').and_return(
           'index_templates' => [{ 'name' => 'logstash' }]
         )
@@ -215,8 +227,25 @@ describe AnalyticsDataMigrator do
       end
     end
 
+    context 'when OpenSearch has legacy template' do
+      before do
+        allow(destination_indices).to receive(:exists?).with(index: index_name).and_return(false)
+        allow(destination_indices).to receive(:get_index_template).and_raise(StandardError)
+        allow(destination_indices).to receive(:get_template).with(name: 'logstash*').and_return(
+          'logstash_template' => { 'mappings' => {} }
+        )
+        allow(destination_indices).to receive(:create)
+      end
+
+      it 'creates destination index using legacy template' do
+        expect(destination_indices).to receive(:create).with(index: index_name)
+        migrator.migrate_index(index_name)
+      end
+    end
+
     context 'when OpenSearch has no index template' do
       before do
+        allow(destination_indices).to receive(:exists?).with(index: index_name).and_return(false)
         allow(destination_indices).to receive(:get_index_template).and_raise(StandardError)
         allow(destination_indices).to receive(:get_template).and_raise(StandardError)
       end

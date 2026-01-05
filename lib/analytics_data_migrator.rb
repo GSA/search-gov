@@ -110,10 +110,15 @@ class AnalyticsDataMigrator
 
   def ensure_destination_index(index_name)
     return if dry_run
-    return if destination_client.indices.exists?(index: index_name)
+
+    if destination_client.indices.exists?(index: index_name)
+      log_info("Destination index #{index_name} already exists")
+      return
+    end
 
     unless destination_has_index_template?
-      log_error("No logstash index template found in OpenSearch. Ensure templates are configured.")
+      log_error("No logstash index template found in OpenSearch. Ensure templates are configured via ansible pipeline.")
+      log_error("Checked: GET /_index_template/logstash* and GET /_template/logstash*")
       return
     end
 
@@ -124,15 +129,23 @@ class AnalyticsDataMigrator
   end
 
   def destination_has_index_template?
-    @has_template ||= begin
-      templates = destination_client.indices.get_index_template(name: 'logstash*')
-      templates['index_templates']&.any?
-    rescue StandardError
-      legacy = destination_client.indices.get_template(name: 'logstash*')
-      legacy.any?
-    rescue StandardError
-      false
-    end
+    return @has_template if defined?(@has_template)
+
+    @has_template = check_composable_template || check_legacy_template
+  end
+
+  def check_composable_template
+    templates = destination_client.indices.get_index_template(name: 'logstash*')
+    templates['index_templates']&.any?
+  rescue StandardError
+    false
+  end
+
+  def check_legacy_template
+    templates = destination_client.indices.get_template(name: 'logstash*')
+    templates.any?
+  rescue StandardError
+    false
   end
 
   def process_batch(index_name, hits)
