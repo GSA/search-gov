@@ -1,15 +1,6 @@
 # frozen_string_literal: true
 
-class OpensearchDeleteByQueryJob < DeleteByQueryBaseJob
-  # specific OpenSearch errors
-  retry_on OpenSearch::Transport::Transport::Errors::ServiceUnavailable,
-           OpenSearch::Transport::Transport::Errors::TooManyRequests,
-           Faraday::TimeoutError,
-           Errno::ETIMEDOUT,
-           wait: ->(executions) { 2**executions },
-           attempts: START_RETRY_ATTEMPTS do |job, error|
-    Rails.logger.warn { "Transient error starting OS delete_by_query (attempt=#{job.executions + 1}): #{error.class}: #{error.message}; will retry" }
-  end
+class OpenSearchDeleteByQueryJob < DeleteByQueryBaseJob
 
   private
 

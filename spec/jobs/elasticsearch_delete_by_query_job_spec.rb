@@ -50,5 +50,6 @@ RSpec.describe ElasticsearchDeleteByQueryJob, type: :job do
     # Verify the correct doc remains
     expect(client.exists?(index: index_name, id: 'new1')).to be_truthy
     expect(client.exists?(index: index_name, id: 'old1')).to be_falsey
+    expect(client.exists?(index: index_name, id: 'old2')).to be_falsey
   end
 end

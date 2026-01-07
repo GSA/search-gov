@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'elasticsearch/transport'
+
 class DeleteByQueryBaseJob < ApplicationJob
   queue_as :searchgov
 
@@ -7,6 +9,17 @@ class DeleteByQueryBaseJob < ApplicationJob
   DEFAULT_SCROLL_SIZE = 5000
   START_RETRY_ATTEMPTS = 3
   REDIS_KEY_PREFIX = "delete_by_query:task_id"
+
+  # Generic "Safe List" of errors that exist in most gem versions and in both Elasticsearch and OpenSearch clients.
+  # Covers: Server overloaded (503), Network timeouts, and Connection failures
+  retry_on Elasticsearch::Transport::Transport::Errors::ServiceUnavailable,
+           Faraday::TimeoutError,
+           Faraday::ConnectionFailed,
+           Errno::ETIMEDOUT,
+           wait: ->(executions) { 2**executions },
+           attempts: START_RETRY_ATTEMPTS do |job, error|
+    Rails.logger.warn { "Transient error starting delete_by_query (attempt=#{job.executions + 1}) for #{job.class}: #{error.class}: #{error.message}; will retry" }
+  end
 
   def perform
     retention_days = ENV.fetch(retention_days_env_key).to_i

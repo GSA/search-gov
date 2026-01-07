@@ -44,6 +44,7 @@ RSpec.describe OpensearchDeleteByQueryJob, type: :job do
     
     # Ensure specific IDs were handled
     search_res = client.search(index: index_name, body: { query: { match_all: {} } })
+    expect(search_res['hits']['hits']).not_to be_empty
     remaining_id = search_res['hits']['hits'].first['_id']
     expect(remaining_id).to eq('os_new')
   end
