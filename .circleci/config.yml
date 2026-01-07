@@ -60,6 +60,12 @@ executors:
       - image: apache/tika:2.4.1
 
 commands:
+  wait_for_elasticsearch:
+    description: "Wait for Elasticsearch to be ready"
+    steps:
+      - run:
+          name: Wait for Elasticsearch
+          command: dockerize -wait tcp://localhost:9200 -timeout 2m
   wait_for_opensearch:
     description: "Wait for OpenSearch to be ready"
     steps:
@@ -173,6 +179,8 @@ jobs:
       - install_elasticsearch_plugins:
           elasticsearch_version: << parameters.elasticsearch_version >>
 
+      - wait_for_elasticsearch
+
       - wait_for_opensearch
 
       - prepare_database
@@ -232,6 +240,8 @@ jobs:
 
       - install_elasticsearch_plugins:
           elasticsearch_version: << parameters.elasticsearch_version >>
+
+      - wait_for_elasticsearch
 
       - wait_for_opensearch
 
