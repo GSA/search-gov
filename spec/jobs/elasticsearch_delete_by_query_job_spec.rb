@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require 'spec_helper'
 
 RSpec.describe ElasticsearchDeleteByQueryJob, type: :job do
   let(:index_name) { ENV.fetch('SEARCHELASTIC_INDEX') }

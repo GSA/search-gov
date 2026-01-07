@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require 'spec_helper'
 
-RSpec.describe OpensearchDeleteByQueryJob, type: :job do
+RSpec.describe OpenSearchDeleteByQueryJob, type: :job do
   let(:index_name) { ENV.fetch('OPENSEARCH_SEARCH_INDEX') }
   let(:client) { OPENSEARCH_CLIENT }
 
