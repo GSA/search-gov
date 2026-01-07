@@ -124,7 +124,7 @@ class AnalyticsDataMigrator
 
     unless destination_has_index_template?
       log_error("No logstash index template found in OpenSearch. Ensure templates are configured via ansible pipeline.")
-      log_error("Checked: GET /_index_template/logstash* and GET /_template/logstash*")
+      log_error("Checked: GET _index_template/logstash* and GET _template/logstash*")
       return false
     end
 
@@ -145,8 +145,8 @@ class AnalyticsDataMigrator
   end
 
   def check_composable_template
-    log_info("Checking for composable index template (/_index_template/logstash*)...")
-    response = destination_client.perform_request('GET', '/_index_template/logstash*')
+    log_info("Checking for composable index template (_index_template/logstash*)...")
+    response = destination_client.perform_request('GET', '_index_template/logstash*')
     templates = response.body
     found = templates['index_templates']&.any?
     log_info("Composable template found: #{found}")
