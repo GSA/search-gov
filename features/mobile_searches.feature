@@ -108,7 +108,7 @@ Feature: Searches using mobile device
     And I should see "Any time" within the current time filter
     And I should see "Most recent" within the current sort by filter
     And I should see "150 results"
-    And I should see "Powered by Search.gov"
+    And I should see "Powered by SearchGov"
     And I should see exactly "20" web search results
     And I should see "Previous"
     And I should see a link to "2" with class "pagination-numbered-link"
@@ -146,10 +146,10 @@ Feature: Searches using mobile device
     And I press "Search" within the search box
     Then I should see at least "10" web search results
     And I should see "news item 1 body for News-1"
-    And I should see "Powered by Search.gov"
+    And I should see "Powered by SearchGov"
 
     When I am on es.agency.gov's "Noticias-1" news search page
-    Then I should see "Generado por Search.gov"
+    Then I should see "Generado por SearchGov"
     And I should see at least "5" web search results
 
   Scenario: Custom date range news search
@@ -291,7 +291,7 @@ Feature: Searches using mobile device
 
     When I follow "Videos" within the SERP navigation
     Then I should see 1 search result title link with url for "http://www.youtube.com/watch?v=0_usgovernment_channel_id"
-    And I should see "Powered by Search.gov"
+    And I should see "Powered by SearchGov"
     And I should see exactly "20" video search results
     And I should see "Previous"
     And I should see a link to "2" with class "pagination-numbered-link"

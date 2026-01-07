@@ -106,7 +106,7 @@ Feature: Search
     When I am on bar.gov's "Photos" news search page
     And I search for "photo"
     Then I should see 2 image results
-    And I should see "Powered by Search.gov"
+    And I should see "Powered by SearchGov"
 
   Scenario: Visiting English affiliate search with multiple domains
     Given the following BingV7 Affiliates exist:
