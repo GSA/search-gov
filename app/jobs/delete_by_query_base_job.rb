@@ -18,7 +18,7 @@ class DeleteByQueryBaseJob < ApplicationJob
            Errno::ETIMEDOUT,
            wait: ->(executions) { 2**executions },
            attempts: START_RETRY_ATTEMPTS do |job, error|
-    Rails.logger.warn { "Transient error starting delete_by_query (attempt=#{job.executions + 1}) for #{job.class}: #{error.class}: #{error.message}; will retry" }
+    Rails.logger.error { "Transient error starting delete_by_query (attempt=#{job.executions + 1}) for #{job.class}: #{error.class}: #{error.message}; will retry" }
   end
 
   def perform
