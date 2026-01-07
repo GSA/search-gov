@@ -255,6 +255,17 @@ describe AnalyticsDataMigrator do
         expect(destination_indices).not_to receive(:create)
         migrator.migrate_index(index_name)
       end
+
+      it 'skips migration and returns error count' do
+        result = migrator.migrate_index(index_name)
+        expect(result[:migrated]).to eq(0)
+        expect(result[:errors]).to eq(1)
+      end
+
+      it 'does not attempt to migrate documents' do
+        expect(source_client).not_to receive(:search)
+        migrator.migrate_index(index_name)
+      end
     end
   end
 end

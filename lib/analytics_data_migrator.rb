@@ -42,7 +42,10 @@ class AnalyticsDataMigrator
       return { migrated: 0, errors: 0 }
     end
 
-    ensure_destination_index(index_name)
+    unless ensure_destination_index(index_name)
+      log_error("Skipping migration for #{index_name} - destination index not ready")
+      return { migrated: 0, errors: 1 }
+    end
 
     log_info("Migrating index: #{index_name}")
 
@@ -109,23 +112,25 @@ class AnalyticsDataMigrator
   end
 
   def ensure_destination_index(index_name)
-    return if dry_run
+    return true if dry_run
 
     if destination_client.indices.exists?(index: index_name)
       log_info("Destination index #{index_name} already exists")
-      return
+      return true
     end
 
     unless destination_has_index_template?
       log_error("No logstash index template found in OpenSearch. Ensure templates are configured via ansible pipeline.")
       log_error("Checked: GET /_index_template/logstash* and GET /_template/logstash*")
-      return
+      return false
     end
 
     destination_client.indices.create(index: index_name)
     log_info("Created destination index: #{index_name} (using OpenSearch template)")
+    true
   rescue StandardError => e
     log_error("Failed to create destination index #{index_name}: #{e.message}")
+    false
   end
 
   def destination_has_index_template?
