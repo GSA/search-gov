@@ -7,12 +7,13 @@ class AnalyticsDataMigrator
   SCROLL_TIMEOUT = '5m'
   INDEX_PREFIX = 'logstash'
 
-  attr_reader :start_date, :end_date, :dry_run, :logger
+  attr_reader :start_date, :end_date, :dry_run, :logger, :verbose
 
-  def initialize(start_date:, end_date:, dry_run: false, logger: Rails.logger)
+  def initialize(start_date:, end_date:, dry_run: false, verbose: false, logger: Rails.logger)
     @start_date = start_date
     @end_date = end_date
     @dry_run = dry_run
+    @verbose = verbose
     @logger = logger
   end
 
@@ -89,6 +90,7 @@ class AnalyticsDataMigrator
   def source_client
     @source_client ||= begin
       config = Rails.application.config_for(:elasticsearch_client).deep_symbolize_keys
+      config = config.merge(log: verbose) unless verbose
       Elasticsearch::Client.new(config)
     end
   end
@@ -96,6 +98,7 @@ class AnalyticsDataMigrator
   def destination_client
     @destination_client ||= begin
       config = Rails.application.config_for(:opensearch_analytics_client).deep_symbolize_keys
+      config = config.merge(log: verbose) unless verbose
       Elasticsearch::Client.new(config)
     end
   end
@@ -137,19 +140,30 @@ class AnalyticsDataMigrator
     return @has_template if defined?(@has_template)
 
     @has_template = check_composable_template || check_legacy_template
+    log_info("Template check result: #{@has_template}")
+    @has_template
   end
 
   def check_composable_template
-    templates = destination_client.indices.get_index_template(name: 'logstash*')
-    templates['index_templates']&.any?
-  rescue StandardError
+    log_info("Checking for composable index template (/_index_template/logstash*)...")
+    response = destination_client.perform_request('GET', '/_index_template/logstash*')
+    templates = response.body
+    found = templates['index_templates']&.any?
+    log_info("Composable template found: #{found}")
+    found
+  rescue StandardError => e
+    log_info("Composable template check failed: #{e.message}")
     false
   end
 
   def check_legacy_template
+    log_info("Checking for legacy template (/_template/logstash*)...")
     templates = destination_client.indices.get_template(name: 'logstash*')
-    templates.any?
-  rescue StandardError
+    found = templates.any?
+    log_info("Legacy template found: #{found}")
+    found
+  rescue StandardError => e
+    log_info("Legacy template check failed: #{e.message}")
     false
   end
 

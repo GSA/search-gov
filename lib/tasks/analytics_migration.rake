@@ -11,11 +11,13 @@ namespace :opensearch do
 
       puts "Migrating analytics data from #{start_date} to #{end_date}"
       puts "This will migrate logstash-* indices (human-logstash-* are aliases created by OpenSearch templates)"
+      puts "Tip: Set VERBOSE=true for detailed HTTP logging"
       puts ""
 
       migrator = AnalyticsDataMigrator.new(
         start_date: start_date,
-        end_date: end_date
+        end_date: end_date,
+        verbose: ENV['VERBOSE'] == 'true'
       )
 
       result = migrator.migrate
@@ -32,12 +34,14 @@ namespace :opensearch do
 
       puts "[DRY RUN] Simulating migration from #{start_date} to #{end_date}"
       puts "No data will be written to OpenSearch"
+      puts "Tip: Set VERBOSE=true for detailed HTTP logging"
       puts ""
 
       migrator = AnalyticsDataMigrator.new(
         start_date: start_date,
         end_date: end_date,
-        dry_run: true
+        dry_run: true,
+        verbose: ENV['VERBOSE'] == 'true'
       )
 
       result = migrator.migrate
@@ -55,10 +59,13 @@ namespace :opensearch do
       end
 
       puts "Migrating single index: #{args.index_name}"
+      puts "Tip: Set VERBOSE=true for detailed HTTP logging"
+      puts ""
 
       migrator = AnalyticsDataMigrator.new(
         start_date: Date.today,
-        end_date: Date.today
+        end_date: Date.today,
+        verbose: ENV['VERBOSE'] == 'true'
       )
 
       result = migrator.migrate_index(args.index_name)
@@ -76,8 +83,8 @@ namespace :opensearch do
       puts "Checking migration status from #{start_date} to #{end_date}"
       puts ""
 
-      es_config = Rails.application.config_for(:elasticsearch_client).deep_symbolize_keys
-      os_config = Rails.application.config_for(:opensearch_analytics_client).deep_symbolize_keys
+      es_config = Rails.application.config_for(:elasticsearch_client).deep_symbolize_keys.merge(log: false)
+      os_config = Rails.application.config_for(:opensearch_analytics_client).deep_symbolize_keys.merge(log: false)
 
       es_client = Elasticsearch::Client.new(es_config)
       os_client = Elasticsearch::Client.new(os_config)
