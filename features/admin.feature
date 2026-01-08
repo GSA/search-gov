@@ -182,7 +182,7 @@ Feature:  Administration
     Then I should see the following breadcrumbs: Super Admin > Hints
 
   @javascript
-  Scenario: Managing Search.gov Domains
+  Scenario: Managing SearchGov Domains
     Given the following "searchgov domains" exist:
       | domain     | status | canonical_domain |
       | search.gov | 200 OK |                  |
@@ -191,8 +191,8 @@ Feature:  Administration
       | url                             |
       | https://search.gov/sitemap.xml  |
     When I go to the admin home page
-    And I follow "Search.gov Domains"
-    Then I should see the following breadcrumbs: Super Admin > Search.gov Domains
+    And I follow "SearchGov Domains"
+    Then I should see the following breadcrumbs: Super Admin > SearchGov Domains
     And I should see "Export"
     And I should see "Search"
     And I should see "Create New"
@@ -237,7 +237,7 @@ Feature:  Administration
       | url                      |
       | https://search.gov/page1 |
     When I go to the admin home page
-    And I follow "Search.gov Domains"
+    And I follow "SearchGov Domains"
     And I follow "URLs" within the first scaffold row
     Then I should see "search.gov/page1"
     And I should see "Enqueued for reindex"
