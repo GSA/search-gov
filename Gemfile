@@ -147,6 +147,7 @@ gem 'rails_semantic_logger', '~> 4.14'
 gem 'whenever', '~> 1.0', require: false
 gem 'fugit', '~> 1.8'
 gem 'puma', '~> 5.6'
+gem 'htmlbeautifier', '~> 1.4', '>= 1.4.3'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
@@ -158,7 +159,7 @@ group :development do
   # gem "rack-mini-profiler"
 
   # Deployment
-  gem 'capistrano',        require: false
+  gem 'capistrano', '3.19.1', require: false
   gem 'capistrano-rails',  require: false
   gem 'capistrano-rbenv',  require: false
   gem 'capistrano-resque', require: false
