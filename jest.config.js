@@ -1,7 +1,10 @@
 module.exports = {
   transform: {
-    '^.+\\.(ts|tsx)$': 'ts-jest'
+    '^.+\\.(ts|tsx|js|jsx)$': 'ts-jest'
   },
+  transformIgnorePatterns: [
+    '/node_modules/(?!(make-plural|i18n-js)/)'
+  ],
   collectCoverage: true,
   collectCoverageFrom: ['app/javascript/components/**/*.{ts,tsx}'],
   coverageDirectory: 'coverage',

@@ -1,6 +1,6 @@
 class Admin::SearchgovUrlsController < Admin::AdminController
   active_scaffold :searchgov_url do |config|
-    config.label = 'Search.gov URLs'
+    config.label = 'SearchGov URLs'
     config.actions = %i[create list delete export field_search]
     config.columns = %i[
       id
@@ -18,7 +18,7 @@ class Admin::SearchgovUrlsController < Admin::AdminController
       method: :post,
       position: false,
       inline: true
-    config.delete.link.confirm = "This will remove this URL from the Search.gov index. Are you sure you want to do this?"
+    config.delete.link.confirm = "This will remove this URL from the SearchGov index. Are you sure you want to do this?"
     config.field_search.columns = %i[
       url
       last_crawl_status
