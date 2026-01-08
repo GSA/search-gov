@@ -17,11 +17,11 @@ describe AnalyticsDataMigrator do
   let(:end_date) { Date.new(2024, 1, 3) }
   let(:logger) { instance_double(Logger, info: nil, error: nil) }
 
-  let(:source_client) { instance_double(Elasticsearch::Client) }
-  let(:destination_client) { instance_double(Elasticsearch::Client) }
+  let(:source_client) { double('Elasticsearch::Client') }
+  let(:destination_client) { double('Elasticsearch::Client') }
 
-  let(:source_indices) { instance_double(Elasticsearch::API::Indices::IndicesClient) }
-  let(:destination_indices) { instance_double(Elasticsearch::API::Indices::IndicesClient) }
+  let(:source_indices) { double('IndicesClient') }
+  let(:destination_indices) { double('IndicesClient') }
 
   before do
     allow(migrator).to receive(:source_client).and_return(source_client)

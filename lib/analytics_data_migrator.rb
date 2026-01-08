@@ -90,7 +90,7 @@ class AnalyticsDataMigrator
   def source_client
     @source_client ||= begin
       config = Rails.application.config_for(:elasticsearch_client).deep_symbolize_keys
-      config = config.merge(log: verbose) unless verbose
+      config = config.merge(log: verbose)
       Elasticsearch::Client.new(config)
     end
   end
@@ -98,7 +98,7 @@ class AnalyticsDataMigrator
   def destination_client
     @destination_client ||= begin
       config = Rails.application.config_for(:opensearch_analytics_client).deep_symbolize_keys
-      config = config.merge(log: verbose) unless verbose
+      config = config.merge(log: verbose)
       Elasticsearch::Client.new(config)
     end
   end
