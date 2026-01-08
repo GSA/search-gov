@@ -213,11 +213,13 @@ describe AnalyticsDataMigrator do
     end
 
     context 'when OpenSearch has composable index template' do
+      let(:template_response) { double(body: { 'index_templates' => [{ 'name' => 'logstash' }] }) }
+
       before do
         allow(destination_indices).to receive(:exists?).with(index: index_name).and_return(false)
-        allow(destination_indices).to receive(:get_index_template).with(name: 'logstash*').and_return(
-          'index_templates' => [{ 'name' => 'logstash' }]
-        )
+        allow(destination_client).to receive(:perform_request)
+          .with('GET', '_index_template/logstash*')
+          .and_return(template_response)
         allow(destination_indices).to receive(:create)
       end
 
@@ -230,7 +232,9 @@ describe AnalyticsDataMigrator do
     context 'when OpenSearch has legacy template' do
       before do
         allow(destination_indices).to receive(:exists?).with(index: index_name).and_return(false)
-        allow(destination_indices).to receive(:get_index_template).and_raise(StandardError)
+        allow(destination_client).to receive(:perform_request)
+          .with('GET', '_index_template/logstash*')
+          .and_raise(StandardError.new('not found'))
         allow(destination_indices).to receive(:get_template).with(name: 'logstash*').and_return(
           'logstash_template' => { 'mappings' => {} }
         )
@@ -246,8 +250,10 @@ describe AnalyticsDataMigrator do
     context 'when OpenSearch has no index template' do
       before do
         allow(destination_indices).to receive(:exists?).with(index: index_name).and_return(false)
-        allow(destination_indices).to receive(:get_index_template).and_raise(StandardError)
-        allow(destination_indices).to receive(:get_template).and_raise(StandardError)
+        allow(destination_client).to receive(:perform_request)
+          .with('GET', '_index_template/logstash*')
+          .and_raise(StandardError.new('not found'))
+        allow(destination_indices).to receive(:get_template).and_raise(StandardError.new('not found'))
       end
 
       it 'logs an error and does not create index' do
