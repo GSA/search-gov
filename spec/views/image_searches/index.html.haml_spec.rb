@@ -52,9 +52,9 @@ describe 'image_searches/index' do
       expect(rendered).to have_selector(selector, count: 20)
     end
 
-    it 'should be Powered by SearchGov' do
+    it 'should be Powered by Search.gov' do
       render
-      expect(rendered).to have_content('Powered by SearchGov')
+      expect(rendered).to have_content('Powered by Search.gov')
     end
   end
 
