@@ -291,7 +291,7 @@ Feature: Searches using mobile device
 
     When I follow "Videos" within the SERP navigation
     Then I should see 1 search result title link with url for "http://www.youtube.com/watch?v=0_usgovernment_channel_id"
-    And I should see "Powered by SearchGov"
+    And I should see "Powered by Search.gov"
     And I should see exactly "20" video search results
     And I should see "Previous"
     And I should see a link to "2" with class "pagination-numbered-link"

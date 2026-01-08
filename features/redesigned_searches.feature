@@ -62,7 +62,7 @@ Feature: Search - redesign
     And I should be on page "14" of results
     And I should not see a link to the "Next" page
     And I should see a link to the "Previous" page
-    And I should see Powered by SearchGov
+    And I should see Powered by Search.gov
 
   @javascript @a11y
   Scenario: Search with blended results
