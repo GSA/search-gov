@@ -118,41 +118,6 @@ RSpec.configure do |config|
     OmniAuth.config.mock_auth[:default] = OmniAuth::AuthHash.new({})
   end
 
-  config.before(:suite) do
-    # Define the clusters to wait for
-    clusters = [
-      { name: 'Elasticsearch', client: ES.client },
-      { name: 'OpenSearch', client: OPENSEARCH_CLIENT }
-    ]
-
-    clusters.each do |cluster|
-      puts "Waiting for #{cluster[:name]} to be ready..."
-      
-      # Timeout after 30 seconds
-      Timeout.timeout(30) do
-        loop do
-          begin
-            # Check cluster health
-            health = cluster[:client].cluster.health
-            status = health['status']
-
-            # 'green' or 'yellow' are acceptable for our single-node CI clusters
-            if %w[green yellow].include?(status)
-              puts "#{cluster[:name]} is #{status}!"
-              break
-            end
-          rescue Faraday::ConnectionFailed, Elasticsearch::Transport::Transport::Error, OpenSearch::Transport::Transport::Error
-            # Keep waiting if connection fails or client isn't ready
-          end
-          print "."
-          sleep 1
-        end
-      end
-    rescue Timeout::Error
-      abort "\nERROR: #{cluster[:name]} failed to start within 30 seconds. Check CircleCI logs."
-    end
-  end
-
   config.after do
     ApplicationJob.queue_adapter.enqueued_jobs.clear
     ActiveJob::Uniqueness.unlock!

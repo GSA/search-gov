@@ -3,8 +3,9 @@
 require 'spec_helper'
 
 RSpec.describe ElasticsearchDeleteByQueryJob, type: :job do
-  let(:index_name) { ENV.fetch('SEARCHELASTIC_INDEX') }
+  let(:index_name) { "#{ENV.fetch('SEARCHELASTIC_INDEX')}_#{SecureRandom.uuid}" }
   let(:client) { ES.client }
+  let(:retention_days) { ENV.fetch('OPENSEARCH_SEARCH_RETENTION_DAYS', 30).to_i }
 
   before do
     # Reset Index
@@ -12,10 +13,10 @@ RSpec.describe ElasticsearchDeleteByQueryJob, type: :job do
     client.indices.create(index: index_name)
 
     # Seed Documents
-    # 2 Old documents (to be deleted), 1 New document (to stay)
+    # 2 Old documents (older than retention_days), 1 New document (within retention_days)
     documents = [
-      { id: 'old1', updated_at: 40.days.ago.iso8601 },
-      { id: 'old2', updated_at: 31.days.ago.iso8601 },
+      { id: 'old1', updated_at: (retention_days + 10).days.ago.iso8601 },
+      { id: 'old2', updated_at: (retention_days + 1).days.ago.iso8601 },
       { id: 'new1', updated_at: 2.days.ago.iso8601 }
     ]
 
