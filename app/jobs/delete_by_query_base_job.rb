@@ -24,6 +24,11 @@ class DeleteByQueryBaseJob < ApplicationJob
   def perform
     retention_days = ENV.fetch(retention_days_env_key).to_i
 
+    if retention_days == -1
+      Rails.logger.info { "#{self.class.name} skipping for index=#{index_name}, retention_days=#{retention_days}" }
+      return
+    end
+
     Rails.logger.info { "#{self.class.name} starting for index=#{index_name}, retention_days=#{retention_days}" }
 
     previous_task_id = redis_get_task_id(index_name)
