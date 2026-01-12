@@ -66,9 +66,9 @@ export const GraphicsBestBet = ({ title, titleUrl, imageUrl, imageAltText, links
                   {parse(title)}
                 </ResultTitle>
               </h2>) :
-            <h2 className='result-title-label'>
-              {parse(title)}
-            </h2>}
+              <h2 className='result-title-label'>
+                {parse(title)}
+              </h2>}
           </div>
           {links && links.length > 0 && (
             <Grid row gap="md">
