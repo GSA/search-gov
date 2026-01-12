@@ -36,10 +36,6 @@ every '5 0 * * *', roles: [:cron] do
 end
 
 every '5 0 * * *', roles: [:cron] do
-  rake 'usasearch:reports:daily_snapshot'
-end
-
-every '5 0 * * *', roles: [:cron] do
  rake 'usasearch:user:update_not_active_approval_status'
 end
 

@@ -41,7 +41,7 @@ module Api
 
       def selected_engine
         case @search_options.site.search_engine
-        when "open_search"
+        when "opensearch"
           OpenSearch::ApiEngine
         when "search_elastic"
           ApiSearchElastic

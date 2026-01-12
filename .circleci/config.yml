@@ -36,6 +36,7 @@ executors:
           cluster.name: es_<< parameters.elasticsearch_version >>
           discovery.type: single-node
           http.port: 9200
+          transport.port: 9400
           xpack.license.self_generated.type: trial
           xpack.monitoring.enabled: false
           xpack.security.enabled: false
@@ -45,8 +46,9 @@ executors:
         environment:
           cluster.name: os-cluster
           discovery.type: single-node
-          bootstrap.memory_lock: true
+          bootstrap.memory_lock: false
           http.port: 9300
+          transport.port: 9500
           plugins.security.disabled: "true"
           OPENSEARCH_JAVA_OPTS: "-Xms256m -Xmx256m"
           OPENSEARCH_INITIAL_ADMIN_PASSWORD: S3venDr4gon!
@@ -54,6 +56,12 @@ executors:
       - image: apache/tika:2.4.1
 
 commands:
+  wait_for_opensearch:
+    description: "Wait for OpenSearch to be ready"
+    steps:
+      - run:
+          name: Wait for OpenSearch
+          command: dockerize -wait tcp://localhost:9300 -timeout 2m
   install_firefox:
     description: "Install latest Firefox"
     steps:
@@ -161,6 +169,8 @@ jobs:
       - install_elasticsearch_plugins:
           elasticsearch_version: << parameters.elasticsearch_version >>
 
+      - wait_for_opensearch
+
       - prepare_database
 
       - precompile_assets
@@ -169,6 +179,7 @@ jobs:
           name: Run Tests
           command: |
             bundle exec rake usasearch:elasticsearch:create_indexes
+            bin/rails opensearch:create_all_indexes
 
             mkdir /tmp/test-results
 
@@ -218,6 +229,8 @@ jobs:
       - install_elasticsearch_plugins:
           elasticsearch_version: << parameters.elasticsearch_version >>
 
+      - wait_for_opensearch
+
       - prepare_database
 
       - precompile_assets
@@ -226,6 +239,8 @@ jobs:
           name: Run Tests
           command: |
             bundle exec rake usasearch:elasticsearch:create_indexes
+            bin/rails opensearch:create_all_indexes
+
 
             bundle exec rake tmp:create
 
