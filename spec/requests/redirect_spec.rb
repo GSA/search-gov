@@ -4,7 +4,7 @@ shared_examples 'a redirect to searchblog' do
   subject { response }
 
   before { get "#{path}" }
-  it { is_expected.to redirect_to('https://search.gov') }
+  it { is_expected.to redirect_to('https://digital.gov/guides/search') }
   its(:status) { should == Rack::Utils.status_code(:found) }
 end
 
