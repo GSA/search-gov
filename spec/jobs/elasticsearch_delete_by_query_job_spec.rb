@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 RSpec.describe ElasticsearchDeleteByQueryJob, type: :job do
-  let(:index_name) { "#{ENV.fetch('SEARCHELASTIC_INDEX')}_#{SecureRandom.uuid}" }
+  let(:index_name) { ENV.fetch('SEARCHELASTIC_INDEX') }
   let(:client) { ES.client }
   let(:retention_days) { ENV.fetch('OPENSEARCH_SEARCH_RETENTION_DAYS', 30).to_i }
 
