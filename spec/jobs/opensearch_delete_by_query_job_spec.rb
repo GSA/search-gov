@@ -30,10 +30,10 @@ RSpec.describe OpenSearchDeleteByQueryJob, type: :job do
     expect(client.count(index: index_name)['count']).to eq(2)
 
     # Run Job
-  # Run the job; it will use the configured retention period (read from ENV
-  # by the implementation). We seeded documents so one is older than
-  # retention_days and should be deleted.
-  described_class.perform_now
+    # Run the job; it will use the configured retention period (read from ENV
+    # by the implementation). We seeded documents so one is older than
+    # retention_days and should be deleted.
+    described_class.perform_now
 
     # delete_by_query is async in our job, but CircleCI is too fast sometimes,
     # so we need to poll for a few seconds until the count drops to 1.
