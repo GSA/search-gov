@@ -89,13 +89,8 @@ export const ResultGrid = ({ result, affiliate, query, position, vertical, facet
           {result.publishedAt   && <span className='published-date'>{result.publishedAt}</span>}
           <div className='result-title'>
             <h2 className='result-title-label'>
-              <ResultTitle
-                url={result.url}
-                className='result-title-link'
-                clickTracking={() => clickTracking(affiliate, module, query, position, result.url, vertical)}>
-                {parse(finalTitle)}
-                {getFileType(result.fileType)}
-              </ResultTitle>
+              {parse(finalTitle)}
+              {getFileType(result.fileType)}
             </h2>
           </div>
           <div className='result-desc'>

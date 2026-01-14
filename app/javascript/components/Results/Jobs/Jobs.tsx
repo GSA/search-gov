@@ -119,8 +119,7 @@ export const Jobs = ({ jobs=[], agencyName, query, affiliate, vertical }: JobsPr
                         <h2 className='result-title-label'>
                           <ResultTitle 
                             url={job.positionUri}
-                            className='result-title-link'
-                            clickTracking={() => clickTracking(affiliate, module, query, index+1, job.positionUri, vertical)}>
+                            className='result-title-link'>
                             {job.positionTitle}
                           </ResultTitle>
                         </h2>
@@ -153,8 +152,7 @@ export const Jobs = ({ jobs=[], agencyName, query, affiliate, vertical }: JobsPr
                             <h2 className='result-title-label'>
                               <ResultTitle 
                                 url={job.positionUri}
-                                className='result-title-link'
-                                clickTracking={() => clickTracking(affiliate, module, query, MAX_JOBS_IN_COLLAPSE_VIEW+index+1, job.positionUri, vertical)}>
+                                className='result-title-link'>
                                 {job.positionTitle}
                               </ResultTitle>
                             </h2>
