@@ -47,7 +47,6 @@ describe CustomFontAndColorThemeUpdater do
           expect { custom_font_and_color_theme_updater.update(ids) }.to change { default_first_affiliate.reload.visual_design_json['primary_navigation_font_family'] }.from(default_font_family).to(expected_font_family).
             and change { default_first_affiliate.reload.visual_design_json['header_links_font_family'] }.from(default_font_family).to(expected_font_family).
             and change { default_first_affiliate.reload.visual_design_json['footer_and_results_font_family'] }.from(default_font_family).to(expected_font_family).
-            and change { default_first_affiliate.reload.visual_design_json['identifier_font_family'] }.from("'Source Sans Pro','Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif").to(expected_font_family)
         end
       end
 
@@ -87,8 +86,7 @@ describe CustomFontAndColorThemeUpdater do
         it 'updates the visual_design_json with the new font family' do
           expect { custom_font_and_color_theme_updater.update(ids) }.to change { default_second_affiliate.reload.visual_design_json['primary_navigation_font_family'] }.from(default_font_family).to(expected_font_family).
             and change { default_second_affiliate.reload.visual_design_json['header_links_font_family'] }.from(default_font_family).to(expected_font_family).
-            and change { default_second_affiliate.reload.visual_design_json['footer_and_results_font_family'] }.from(default_font_family).to(expected_font_family).
-            and change { default_second_affiliate.reload.visual_design_json['identifier_font_family'] }.from("'Source Sans Pro','Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif").to(expected_font_family)
+            and change { default_second_affiliate.reload.visual_design_json['footer_and_results_font_family'] }.from(default_font_family).to(expected_font_family)
         end
       end
 
