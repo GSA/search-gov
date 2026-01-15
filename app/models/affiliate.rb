@@ -61,15 +61,13 @@ class Affiliate < ApplicationRecord
     assoc.has_many :primary_header_links, -> { order :position }, inverse_of: :affiliate
     assoc.has_many :secondary_header_links, -> { order :position }, inverse_of: :affiliate
     assoc.has_many :footer_links, -> { order :position }, inverse_of: :affiliate
-    assoc.has_many :identifier_links, -> { order :position }, inverse_of: :affiliate
     assoc.has_one  :filter_setting
   end
 
   has_one_attached :header_logo
-  has_one_attached :identifier_logo
 
-  accepts_nested_attributes_for :header_logo_attachment, :identifier_logo_attachment, allow_destroy: true
-  accepts_nested_attributes_for :header_logo_blob, :identifier_logo_blob, :filter_setting
+  accepts_nested_attributes_for :header_logo_attachment, allow_destroy: true
+  accepts_nested_attributes_for :header_logo_blob, :filter_setting
 
   has_many :users, -> { order 'first_name' }, through: :memberships
 
@@ -155,11 +153,11 @@ class Affiliate < ApplicationRecord
                             in: (1..MAXIMUM_HEADER_TAGLINE_LOGO_IMAGE_SIZE_IN_KB.kilobytes),
                             message: INVALID_HEADER_TAGLINE_LOGO_IMAGE_SIZE_MESSAGE
 
-  validates :header_logo, :identifier_logo,
+  validates :header_logo,
             size: { less_than: MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB.kilobytes,
                     message: INVALID_MOBILE_IMAGE_SIZE_MESSAGE }
 
-  validates :header_logo, :identifier_logo,
+  validates :header_logo,
             content_type: { in: VALID_IMAGE_CONTENT_TYPES,
                             message: INVALID_CONTENT_TYPE_MESSAGE }
 
@@ -196,7 +194,7 @@ class Affiliate < ApplicationRecord
   accepts_nested_attributes_for :document_collections, reject_if: :all_blank
   accepts_nested_attributes_for :connections, allow_destroy: true, reject_if: proc { |a| a[:affiliate_name].blank? and a[:label].blank? }
   accepts_nested_attributes_for :flickr_profiles, allow_destroy: true
-  accepts_nested_attributes_for :primary_header_links, :secondary_header_links, :footer_links, :identifier_links, allow_destroy: true, reject_if: :empty_link?
+  accepts_nested_attributes_for :primary_header_links, :secondary_header_links, :footer_links, allow_destroy: true, reject_if: :empty_link?
 
   USAGOV_AFFILIATE_NAME = 'usagov'
   GOBIERNO_AFFILIATE_NAME = 'gobiernousa'
@@ -241,7 +239,6 @@ class Affiliate < ApplicationRecord
   FONT_FIELDS = %w[
     footer_and_results_font_family
     header_links_font_family
-    identifier_font_family
     primary_navigation_font_family
   ].freeze
 
@@ -280,7 +277,6 @@ class Affiliate < ApplicationRecord
   DEFAULT_VISUAL_DESIGN = {
     footer_and_results_font_family: DEFAULT_FONT,
     header_links_font_family: DEFAULT_FONT,
-    identifier_font_family: "'Source Sans Pro','Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif",
     primary_navigation_font_family: DEFAULT_FONT,
     primary_navigation_font_weight: 'bold'
   }.merge(DEFAULT_COLORS).transform_keys(&:to_s).freeze
