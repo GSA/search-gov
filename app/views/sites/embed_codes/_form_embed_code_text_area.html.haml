@@ -1,5 +1,12 @@
-= form_tag search_url(protocol: 'https'), method: :get, id: 'search_form' do
-  = hidden_field_tag :affiliate, @site.name
-  = label_tag :query, "Enter Search Term(s):"
-  = text_field_tag :query, nil, autocomplete: 'off', class: 'usagov-search-autocomplete'
-  = submit_tag 'Search'
+%pre{id: "embed_code_textarea_#{@site.locale}"}
+  :escaped
+    <!DOCTYPE html>
+    <html>
+    <head><title>page title</title></head>
+    <body>
+      #{form_tag search_url(:protocol => 'https'), :method => :get, :id => 'search_form' }
+        #{hidden_field_tag :affiliate, @site.name}
+        #{label_tag :query, "Enter Search Term(s):"}
+        #{text_field_tag :query, nil, :autocomplete => 'off', :class => 'usagov-search-autocomplete'}
+        #{submit_tag 'Search'}
+      </form>
