@@ -158,7 +158,7 @@ group :development do
   # gem "rack-mini-profiler"
 
   # Deployment
-  gem 'capistrano', '3.19.2', require: false
+  gem 'capistrano', require: false
   gem 'capistrano-rails',  require: false
   gem 'capistrano-rbenv',  require: false
   gem 'capistrano-resque', require: false
