@@ -543,7 +543,6 @@ describe SearchesController do
     end
 
     context 'when the affiliate uses the OpenSearch engine' do
-      let(:affiliate) { affiliates(:basic_affiliate) }
       let(:opensearch_engine) { double(OpenSearch::Engine, query: 'gov', modules: %w(SRCH), diagnostics: {}) }
 
       before do
