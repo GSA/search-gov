@@ -56,12 +56,24 @@ executors:
       - image: apache/tika:2.4.1
 
 commands:
-  wait_for_opensearch:
-    description: "Wait for OpenSearch to be ready"
+  wait_for_elasticsearch:
+    description: "Wait for Elasticsearch cluster health"
     steps:
       - run:
-          name: Wait for OpenSearch
-          command: dockerize -wait tcp://localhost:9300 -timeout 2m
+          name: Wait for Elasticsearch cluster health
+          command: |
+            echo "Waiting for Elasticsearch cluster health..."
+            curl --fail --silent --show-error \
+              "http://localhost:9200/_cluster/health?wait_for_status=yellow&timeout=120s"
+  wait_for_opensearch:
+    description: "Wait for OpenSearch cluster health"
+    steps:
+      - run:
+          name: Wait for OpenSearch cluster health
+          command: |
+            echo "Waiting for OpenSearch cluster health..."
+            curl --fail --silent --show-error \
+              "http://localhost:9300/_cluster/health?wait_for_status=yellow&timeout=120s"
   install_firefox:
     description: "Install latest Firefox"
     steps:
@@ -131,6 +143,7 @@ jobs:
       - run:
           name: Wait for Elasticsearch
           command: dockerize -wait tcp://localhost:9200 -timeout 1m
+      - wait_for_elasticsearch
 
       - save_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
@@ -168,6 +181,8 @@ jobs:
 
       - install_elasticsearch_plugins:
           elasticsearch_version: << parameters.elasticsearch_version >>
+
+      - wait_for_elasticsearch
 
       - wait_for_opensearch
 
@@ -228,6 +243,8 @@ jobs:
 
       - install_elasticsearch_plugins:
           elasticsearch_version: << parameters.elasticsearch_version >>
+
+      - wait_for_elasticsearch
 
       - wait_for_opensearch
 

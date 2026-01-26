@@ -47,7 +47,7 @@ class SearchesController < ApplicationController
     @search_vertical = :docs
     set_search_page_title
     set_search_params
-    template = search_klass == I14ySearch ? :i14y : :docs
+    template = [I14ySearch, OpenSearch::Engine, SearchElasticEngine].include?(search_klass) ? :i14y : :docs
     template = :index_redesign if redesign?
     respond_to { |format| format.html { render template } }
   end
@@ -147,8 +147,9 @@ class SearchesController < ApplicationController
   end
 
   def docs_search_klass
-    return I14ySearch if gets_i14y_results?
+    return OpenSearch::Engine if @affiliate.opensearch_engine?
     return SearchElasticEngine if @affiliate.search_elastic_engine?
+    return I14ySearch if gets_i14y_results?
 
     @search_options[:document_collection] ? SiteSearch : WebSearch
   end

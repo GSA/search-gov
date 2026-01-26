@@ -1,4 +1,5 @@
 require 'simplecov'
+require 'timeout'
 SimpleCov.command_name 'RSpec'
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
