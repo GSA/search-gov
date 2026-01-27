@@ -10,14 +10,11 @@ HIDDEN_COLUMNS = /(_created_at|
                    display_image_on_search_results|
                    display_updated_date_on_search_results|
                    file_name|
-                   identifier_domain_name|
                    _image|
                    _json|
                    label|
                    _logo|
                    _mappings|
-                   parent_agency_link|
-                   parent_agency_name|
                    scope_ids|
                    size|
                    use_extended_header)\z/x

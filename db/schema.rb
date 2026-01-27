@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_12_10_172110) do
+ActiveRecord::Schema[7.1].define(version: 2026_01_15_163528) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -94,9 +94,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_12_10_172110) do
     t.boolean "use_redesigned_results_page", default: true, null: false
     t.json "visual_design_json"
     t.boolean "use_extended_header", default: true, null: false
-    t.string "identifier_domain_name"
-    t.string "parent_agency_name"
-    t.string "parent_agency_link"
     t.boolean "display_image_on_search_results", default: false, null: false
     t.boolean "display_filetype_on_search_results", default: false, null: false
     t.boolean "display_created_date_on_search_results", default: false, null: false

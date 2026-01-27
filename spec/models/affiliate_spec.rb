@@ -440,7 +440,7 @@ describe Affiliate do
     end
 
     describe 'attached image assets' do
-      %i[header_logo identifier_logo].each do |logo|
+      %i[header_logo].each do |logo|
         it { is_expected.to validate_content_type_of(logo).allowing(Affiliate::VALID_IMAGE_CONTENT_TYPES) }
 
         it {
