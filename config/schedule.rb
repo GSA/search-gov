@@ -70,3 +70,13 @@ end
 every '25 2 * * 0', roles: [:cron] do
  rake 'usasearch:user:update_approval_status'
 end
+
+# ElasticsearchDeleteByQueryJob - Run every day at 3AM UTC (10PM ET)
+every '0 3 * * *', roles: [:cron] do
+  runner 'ElasticsearchDeleteByQueryJob.perform_later'
+end
+
+# OpenSearchDeleteByQueryJob - Run every day at 4AM UTC (11PM ET)
+every '0 4 * * *', roles: [:cron] do
+  runner 'OpenSearchDeleteByQueryJob.perform_later'
+end
