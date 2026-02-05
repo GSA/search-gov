@@ -16,7 +16,6 @@ namespace :searchgov do
         create_primary_header_links(row, affiliate)
         create_secondary_header_links(row, affiliate)
         create_footer_links(row, affiliate)
-        create_identifier_links(row, affiliate)
 
         affiliate.visual_design_json = visual_design_settings(row)
         misc_settings(row, affiliate)
@@ -40,15 +39,6 @@ namespace :searchgov do
 
         affiliate.save!
       end
-    end
-  end
-
-  def create_identifier_links(row, affiliate)
-    12.times do |index|
-      title_key = "identifier_links #{index} - title"
-      url_key = "identifier_links #{index} - url"
-      identifier_link = IdentifierLink.create(position: index, type: 'IdentifierLink', title: row[title_key], url: row[url_key], affiliate_id: row['ID'])
-      affiliate.identifier_links << identifier_link if identifier_link.valid?
     end
   end
 
@@ -101,12 +91,8 @@ namespace :searchgov do
       section_title_color: row['section_title_color'],
       footer_background_color: row['footer_background_color'],
       footer_links_text_color: row['footer_link_text_color'],
-      identifier_background_color: row['identifier_background_color'],
-      identifier_heading_color: row['identifier_heading_color'],
-      identifier_link_color: row['identifier_link_color'],
       footer_and_results_font_family: row['footer_and_results_font_family'],
       header_links_font_family: row['header_links_font_family'],
-      identifier_font_family: row['Identifier_font_family'],
       primary_navigation_font_family: row['primary_navigation_font_family'],
       primary_navigation_font_weight: row['Primary_navigation_font_weight']
     }.transform_keys(&:to_s)
@@ -114,9 +100,6 @@ namespace :searchgov do
 
   def misc_settings(row, affiliate)
     affiliate.display_logo_only = row['display_logo_only']
-    affiliate.identifier_domain_name = row['site_identifier_domain_name']
-    affiliate.parent_agency_name = row['site_parent_agency_name']
-    affiliate.parent_agency_link = row['site_parent_agency_link']
   end
 end
 # rubocop:enable Metrics/BlockLength

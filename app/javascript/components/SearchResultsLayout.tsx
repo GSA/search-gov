@@ -11,7 +11,6 @@ import { Facets, AggregationData } from './Facets/Facets';
 import { SearchBar } from './SearchBar/SearchBar';
 import { Results } from './Results/Results';
 import { Footer } from './Footer/Footer';
-import { Identifier } from './Identifier/Identifier';
 import { LanguageContext } from '../contexts/LanguageContext';
 import { StyleContext, styles } from '../contexts/StyleContext';
 export interface NavigationLink {
@@ -51,10 +50,6 @@ export interface FontsAndColors {
   headerSecondaryLinkColor: string;
   headerTextColor: string;
   healthBenefitsHeaderBackgroundColor: string;
-  identifierBackgroundColor: string;
-  identifierFontFamily: string;
-  identifierHeadingColor: string;
-  identifierLinkColor: string;
   pageBackgroundColor: string;
   primaryNavigationFontFamily: string;
   primaryNavigationFontWeight: string;
@@ -211,20 +206,6 @@ interface SearchResultsLayoutProps {
     title: string;
     url: string;
   }[];
-  identifierContent?: {
-    domainName: string | null;
-    parentAgencyName: string | null;
-    parentAgencyLink: string | null;
-    logoUrl: string | null;
-    logoAltText: string | null;
-    lookingForGovernmentServices: boolean | null;
-  };
-  identifierLinks?:
-    | {
-        title: string;
-        url: string;
-      }[]
-    | null;
   relatedSearches?: { label: string; link: string }[];
   newsLabel?: {
     newsAboutQuery: string;
@@ -300,7 +281,7 @@ const isBasicHeader = (extendedHeader: boolean): boolean => {
 const videosUrl = (links: NavigationLink[]) => links.find((link) => link.facet === 'YouTube')?.url ;
 
 // eslint-disable-next-line complexity
-const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, params = {}, translations, language = { code: 'en', rtl: false }, relatedSites = [], extendedHeader, footerLinks, primaryHeaderLinks, secondaryHeaderLinks, fontsAndColors, newsLabel, identifierContent, identifierLinks, navigationLinks, relatedSitesDropdownLabel = '', alert, spellingSuggestion, relatedSearches, sitelimit, noResultsMessage, jobsEnabled, agencyName, facetsEnabled }: SearchResultsLayoutProps) => {
+const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, params = {}, translations, language = { code: 'en', rtl: false }, relatedSites = [], extendedHeader, footerLinks, primaryHeaderLinks, secondaryHeaderLinks, fontsAndColors, newsLabel, navigationLinks, relatedSitesDropdownLabel = '', alert, spellingSuggestion, relatedSearches, sitelimit, noResultsMessage, jobsEnabled, agencyName, facetsEnabled }: SearchResultsLayoutProps) => {
   const [isMobileView, setMobileView] = useState(false);
 
   const i18n = new I18n(translations);
@@ -392,11 +373,6 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
         </div>
 
         <Footer footerLinks={footerLinks} />
-        <Identifier
-          identifierContent={identifierContent}
-          identifierLinks={identifierLinks}
-          showVoteOrgLink={page.showVoteOrgLink}
-        />
       </StyleContext.Provider>
     </LanguageContext.Provider>
   );
