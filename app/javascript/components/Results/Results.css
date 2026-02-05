@@ -1,54 +1,68 @@
-.search-result-item-wrapper{
+.result-meta-grid-wrapper {
+  padding: 0.5rem;
+}
+
+.result-meta-grid-wrapper:focus {
+  outline: .25rem solid #2491ff;
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 2px #fff;
+}
+
+.result-meta-grid-wrapper:hover {
+  background-color: #ccecf2;
+}
+
+.search-result-item-wrapper {
   margin-top: 1.5rem;
 }
 
-.search-result-item{
+.search-result-item {
   /* margin-top: 3rem; */
   padding-left: 2.5rem;
   padding-right: 2.5rem;
 }
 
-.result-thumbnail .result-image{
+.result-thumbnail .result-image {
   border: 1px solid #eee;
 }
 
-.search-result-image-item .result-thumbnail .result-image{
+.search-result-image-item .result-thumbnail .result-image {
   height: 150px;
   width: 100%;
 }
 
-.search-result-item .published-date{
-  color: #565C65;
+.search-result-item .published-date {
+  color: #565c65;
   font-size: 0.95rem;
   line-height: 19px;
 }
 
-.search-result-item .result-title-link{
+.search-result-item .result-title-link {
   text-decoration: none;
 }
 
-.search-result-item .result-title-link{
-  color: #005EA2;
+.search-result-item .result-title-link {
+  color: #005ea2;
   /* font-size: 1.375rem;
   font-weight: 400;
   margin-bottom: 0.35rem;
   margin-top: 0.35rem; */
 }
 
-.search-result-item .result-title-label{
-  color: #005EA2;
+.search-result-item .result-title-label {
+  color: #005ea2;
   font-size: 1.375rem;
   font-weight: 400;
   margin-bottom: 0.35rem;
   margin-top: 0.35rem;
 }
 
-.search-result-item .result-title-label .result-title-link:visited{
-  color: #54278F;
+.search-result-item .result-title-label .result-title-link:visited {
+  color: #54278f;
 }
 
-.search-result-item .result-desc p{
-  color: #1B1B1B;
+.search-result-item .result-desc p {
+  color: #1b1b1b;
   font-size: 1rem;
   letter-spacing: 0.25px;
   line-height: 26px;
@@ -57,7 +71,7 @@
   word-wrap: break-word;
 }
 
-.search-result-item .result-desc .result-url-text{
+.search-result-item .result-desc .result-url-text {
   color: #446443;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -65,10 +79,10 @@
   word-wrap: break-word;
 }
 
-.filetype-label{
-  border: 1px solid #B6B6B6;
+.filetype-label {
+  border: 1px solid #b6b6b6;
   border-radius: 2px;
-  color: #71767A;
+  color: #71767a;
   display: inline-block;
   font-size: 0.75rem;
   font-weight: 300;
@@ -79,77 +93,77 @@
 }
 
 /* Best bet - text/graphics */
-.results-best-bets-wrapper{
+.results-best-bets-wrapper {
   margin-top: 2rem;
 }
 
-.results-best-bets-wrapper > .grid-row{
+.results-best-bets-wrapper > .grid-row {
   margin-left: 0;
   margin-right: 0;
 }
 
-.results-best-bets-wrapper > .grid-row > .grid-col{
+.results-best-bets-wrapper > .grid-row > .grid-col {
   border-radius: 8px;
   padding: 1.5rem 0 1.5rem 0;
 }
 
-.results-best-bets-wrapper .search-result-item{
+.results-best-bets-wrapper .search-result-item {
   margin-top: 2rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
 
-.results-best-bets-wrapper .search-result-item:nth-child(2){
+.results-best-bets-wrapper .search-result-item:nth-child(2) {
   margin-top: 1.75rem;
 }
 
-.results-best-bets-wrapper .search-result-item .result-desc .result-url-text{
+.results-best-bets-wrapper .search-result-item .result-desc .result-url-text {
   color: #446443;
 }
 
-.best-bets-title{
-  color: #565C65;
+.best-bets-title {
+  color: #565c65;
   font-size: 1rem;
   font-weight: 600;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
 
-.text-best-bets{
-  background: #EFF6FC;
+.text-best-bets {
+  background: #eff6fc;
   border-radius: 8px;
   padding: 25px;
 }
 
-.graphics-best-bets-title{
-  color: #3D4551;
+.graphics-best-bets-title {
+  color: #3d4551;
   font-size: 1.15rem;
   line-height: 19px;
 }
 
-.graphics-best-bets-link-wrapper{
+.graphics-best-bets-link-wrapper {
   margin-top: 0.75rem;
 }
 
-.graphics-best-bets-link-wrapper a{
-  color: #005EA2;
+.graphics-best-bets-link-wrapper a {
+  color: #005ea2;
   text-decoration: none;
 }
 
 .search-news-item-wrapper .search-result-item:nth-child(2),
 .fed-register-item-wrapper .search-result-item:nth-child(2),
-.related-searches-item-wrapper .search-result-item:nth-child(2){
+.related-searches-item-wrapper .search-result-item:nth-child(2) {
   margin-top: 1rem;
 }
 
-.related-searches-item-wrapper .result-divider{
+.related-searches-item-wrapper .result-divider {
   margin-top: 2rem;
 }
 
 .news-title-wrapper,
 .fed-register-wrapper,
 .jobs-title-wrapper,
-.related-searches-wrapper{
+.related-searches-wrapper {
   padding-left: 2.5rem;
   padding-right: 2.5rem;
 }
@@ -157,44 +171,44 @@
 .news-title-wrapper-label,
 .fed-register-label,
 .jobs-title-wrapper-label,
-.related-searches-label{
-  color: #565C65;
+.related-searches-label {
+  color: #565c65;
   font-size: 1.375rem;
   font-weight: 500;
   margin-top: 0;
 }
 
-.result-divider .grid-row{
-  border-bottom: 1px solid #A9AEB1;
+.result-divider .grid-row {
+  border-bottom: 1px solid #a9aeb1;
   margin-bottom: 3rem;
   margin-left: -0.25rem;
   margin-right: -0.25rem;
 }
 
-.row-mobile-divider{
-  border-top: 1px solid #DFE1E2;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
+.row-mobile-divider {
+  border-top: 1px solid #dfe1e2;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
   visibility: hidden;
 }
 
-.health-topic-wrapper{
+.health-topic-wrapper {
   margin-bottom: 2.5rem;
 }
 
-.health-topic-wrapper > .grid-row{
+.health-topic-wrapper > .grid-row {
   margin-left: 0;
   margin-right: 0;
 }
 
-.health-topic-wrapper > .grid-row > .grid-col{
+.health-topic-wrapper > .grid-row > .grid-col {
   background: rgb(239, 246, 252);
   border-radius: 8px;
   padding: 0 0 1.5rem 0;
 }
 
-.health-topic-wrapper .health-topic-title{
-  background: #1A4480;
+.health-topic-wrapper .health-topic-title {
+  background: #1a4480;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   font-size: 1.375rem;
@@ -203,22 +217,22 @@
   text-decoration: underline;
 }
 
-.health-topic-wrapper .health-topic-title a{
+.health-topic-wrapper .health-topic-title a {
   color: #fff;
 }
 
-.health-topic-wrapper .health-med-topic-title{
+.health-topic-wrapper .health-med-topic-title {
   display: none;
 }
 
-.health-topic-wrapper .health-topic-data{
+.health-topic-wrapper .health-topic-data {
   margin-top: 0.75rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
 
-.health-topic-wrapper .health-topic-desc p{
-  color: #1B1B1B;
+.health-topic-wrapper .health-topic-desc p {
+  color: #1b1b1b;
   font-size: 1rem;
   letter-spacing: 0.25px;
   line-height: 150%;
@@ -227,59 +241,60 @@
 }
 
 .health-topic-wrapper .related-topics,
-.health-topic-wrapper .clinical-studies{
-  color: #565C65;
+.health-topic-wrapper .clinical-studies {
+  color: #565c65;
   font-size: 0.875rem;
   letter-spacing: 0.5px;
   line-height: 150%;
 }
 
-.pages-count{
-  color: #71767A;
+.pages-count {
+  color: #71767a;
   letter-spacing: 0.5px;
   line-height: normal;
 }
 
-.comment-period{
+.comment-period {
   color: #446443;
   line-height: 162%;
   margin-top: 0.5rem;
 }
 
-.comment-period-ended{
-  color: #71767A;
+.comment-period-ended {
+  color: #71767a;
   line-height: 162%;
   margin-top: 0.5rem;
 }
 
-.more-fed-register-link{
-  color: #005EA2;
+.more-fed-register-link {
+  color: #005ea2;
   text-decoration: none;
 }
 
-.jobs-logo-wrapper{
+.jobs-logo-wrapper {
   text-align: right;
 }
 
-.result-title-label .more-title-link{
+.result-title-label .more-title-link {
   font-size: 1rem;
   margin-bottom: 2rem;
 }
 
-.fed-register-item-wrapper .search-result-item .result-desc p{
-  color: #1B1B1B;
+.fed-register-item-wrapper .search-result-item .result-desc p {
+  color: #1b1b1b;
 }
 
-.usa-navbar .usa-footer__logo{
+.usa-navbar .usa-footer__logo {
   align-items: center;
 }
 
 .filter-tags-wrapper {
   margin-top: 1.15rem;
+  margin-bottom: 0.35rem;
 }
 
 .filter-tags-wrapper .filter-tag {
-  background: #F0F0F0;
+  background: #f0f0f0;
   border-radius: 2px;
   font-size: 0.85rem;
   margin-right: 0.5rem;
@@ -288,7 +303,7 @@
 
 /* Media Queries */
 @media (max-width: 767.98px) {
-  .search-result-item{
+  .search-result-item {
     padding-left: 1rem;
     padding-right: 1rem;
   }
@@ -296,45 +311,47 @@
   .news-title-wrapper,
   .fed-register-wrapper,
   .jobs-title-wrapper,
-  .related-searches-wrapper{
+  .related-searches-wrapper {
     padding-left: 1rem;
   }
 
-  .jobs-title-wrapper .grid-row{
+  .jobs-title-wrapper .grid-row {
     flex-direction: column-reverse;
   }
 
-  .jobs-logo-wrapper{
+  .jobs-logo-wrapper {
     margin-bottom: 1rem;
     text-align: left;
   }
 
-  .row-mobile-divider{
+  .row-mobile-divider {
     visibility: visible;
   }
 
-  .search-item-wrapper .search-result-item:nth-last-child(2) .row-mobile-divider{
+  .search-item-wrapper
+    .search-result-item:nth-last-child(2)
+    .row-mobile-divider {
     margin-top: 0.5rem;
     visibility: hidden;
   }
 
-  .search-item-wrapper .result-divider .grid-row{
+  .search-item-wrapper .result-divider .grid-row {
     margin-bottom: 2rem;
   }
 }
 
-@media (min-width: 30em){
+@media (min-width: 30em) {
   .graphics-best-bets .result-thumbnail {
     width: 21%;
   }
 }
 
-@media (max-width: 767px){
-  .result-meta-grid-wrapper:active{
+@media (max-width: 767px) {
+  .result-meta-grid-wrapper:active {
     outline: 0.25rem solid #2491ff;
   }
 
-  .search-result-item .result-title-link{
+  .search-result-item .result-title-link {
     pointer-events: none;
   }
 }
