@@ -9,7 +9,11 @@
 }
 
 .result-meta-grid-wrapper:hover {
-  background-color: #ccecf2;
+  background-color: #EFF6FB;
+}
+
+.result-meta-grid-wrapper:hover .result-title-label {
+  text-decoration: underline;
 }
 
 .search-result-item-wrapper {
@@ -17,7 +21,6 @@
 }
 
 .search-result-item {
-  /* margin-top: 3rem; */
   padding-left: 2.5rem;
   padding-right: 2.5rem;
 }
@@ -39,15 +42,10 @@
 
 .search-result-item .result-title-link {
   text-decoration: none;
-  color: #0b4778;
   /* font-size: 1.375rem;
   font-weight: 400;
   margin-bottom: 0.35rem;
   margin-top: 0.35rem; */
-
-  &:hover {
-    text-decoration: underline;
-  }
 }
 
 .search-result-item .result-title-label {
@@ -73,7 +71,7 @@
 }
 
 .search-result-item .result-desc .result-url-text {
-  color: #446443;
+  color: #216E1F;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -119,7 +117,7 @@
 }
 
 .results-best-bets-wrapper .search-result-item .result-desc .result-url-text {
-  color: #446443;
+  color: #216E1F;
 }
 
 .best-bets-title {
@@ -256,7 +254,7 @@
 }
 
 .comment-period {
-  color: #446443;
+  color: #216E1F;
   line-height: 162%;
   margin-top: 0.5rem;
 }
