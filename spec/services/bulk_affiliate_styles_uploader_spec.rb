@@ -2,7 +2,7 @@ describe BulkAffiliateStylesUploader do
   let(:filename) { 'affiliate_styles.csv' }
   let(:filepath) { Rails.root.join('spec/fixtures/csv/affiliate_styles.csv') }
   let(:uploader) { described_class.new(filename, filepath) }
-  let(:affiliate) { instance_double(Affiliate, id: 1, primary_header_links: [], secondary_header_links: [], footer_links: [], identifier_links: [], visual_design_json: {}, display_logo_only: false, identifier_domain_name: '', parent_agency_name: '', parent_agency_link: '').as_null_object }
+  let(:affiliate) { instance_double(Affiliate, id: 1, primary_header_links: [], secondary_header_links: [], footer_links: [], visual_design_json: {}, display_logo_only: false).as_null_object }
 
   describe '#upload' do
     context 'when processing a valid file' do
