@@ -190,21 +190,22 @@ GEM
       activesupport (>= 5.2, < 8.1)
       request_store (~> 1.0)
     aws-eventstream (1.4.0)
-    aws-partitions (1.1134.0)
-    aws-sdk-core (3.227.0)
+    aws-partitions (1.1206.0)
+    aws-sdk-core (3.241.4)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
       aws-sigv4 (~> 1.9)
       base64
+      bigdecimal
       jmespath (~> 1, >= 1.6.1)
       logger
-    aws-sdk-kms (1.107.0)
-      aws-sdk-core (~> 3, >= 3.227.0)
+    aws-sdk-kms (1.121.0)
+      aws-sdk-core (~> 3, >= 3.241.4)
       aws-sigv4 (~> 1.5)
-    aws-sdk-s3 (1.102.0)
-      aws-sdk-core (~> 3, >= 3.120.0)
+    aws-sdk-s3 (1.208.0)
+      aws-sdk-core (~> 3, >= 3.234.0)
       aws-sdk-kms (~> 1)
-      aws-sigv4 (~> 1.4)
+      aws-sigv4 (~> 1.5)
     aws-sigv4 (1.12.1)
       aws-eventstream (~> 1, >= 1.0.2)
     axe-core-api (4.10.3)
@@ -923,7 +924,7 @@ DEPENDENCIES
   amazing_print (~> 1.4)
   american_date (~> 1.1.1)
   authlogic (~> 6.4, >= 6.4.3)
-  aws-sdk-s3 (~> 1.102.0)
+  aws-sdk-s3 (~> 1.208.0)
   axe-core-capybara
   axe-core-cucumber
   bigdecimal (~> 3.1, >= 3.1.8)
