@@ -197,7 +197,7 @@ export const Results = ({ page, query = '', results = null, additionalResults = 
   
   return (
     <>
-      <div className='search-result-wrapper' id='main-content' tabIndex={-1}>
+      <div className='search-result-wrapper' id='main-content'>
         {sitelimit && (
           <SiteLimitAlert {...sitelimit} query={query} />
         )}
@@ -310,7 +310,7 @@ export const Results = ({ page, query = '', results = null, additionalResults = 
                 })}
                 <GridContainer className={`content-provider ${isBing ? 'bing' : ''}`}>
                   <span className='powered-by'>{parse(i18n.t('poweredBy'))} </span>
-                  <span className='engine'>{isBing ? 'Bing' : 'Search.gov'}</span>
+                  <span className='engine'>{isBing ? 'Bing' : 'SearchGov'}</span>
                 </GridContainer>
                 <GridContainer className='result-divider'>
                   <Grid row gap="md">

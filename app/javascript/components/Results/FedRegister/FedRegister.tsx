@@ -130,8 +130,7 @@ export const FedRegister = ({ fedRegisterDocs=[], query='', affiliate, vertical 
                         <h2 className='result-title-label'>
                           <ResultTitle 
                             url={fedRegisterDoc.htmlUrl}
-                            className='result-title-link'
-                            clickTracking={() => clickTracking(affiliate, module, query, index+1, fedRegisterDoc.htmlUrl, vertical)}>
+                            className='result-title-link'>
                             {parse(fedRegisterDoc.title)}
                           </ResultTitle>
                         </h2>

@@ -31,7 +31,7 @@ Then /^I should see (Powered by|Generado por) Bing logo$/ do |text|
   page.should have_selector '.content-provider .bing', text: text
 end
 
-Then /^I should see (Powered by|Generado por) (Bing|Search.gov)$/ do |text, engine|
+Then /^I should see (Powered by|Generado por) (Bing|SearchGov)$/ do |text, engine|
   page.should have_selector('.powered-by', text: text)
   visibility = engine == 'Bing' ? 'hidden' : ''
   page.should have_selector('.engine', text: engine, visible: visibility.to_sym)
