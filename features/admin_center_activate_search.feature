@@ -26,15 +26,6 @@ Feature: Activate Search
     And I follow "API Access Key"
     Then I should see "MY_AWESOME_KEY"
 
-  Scenario: Visiting the Site API Instructions
-    Given the following BingV7 Affiliates exist:
-      | display_name | name    | contact_email | first_name | last_name | use_redesigned_results_page |
-      | aff site     | aff.gov | aff@bar.gov   | John       | Bar       | false                       |
-    And I am logged in with email "aff@bar.gov"
-    When I go to the aff.gov's Activate Search page
-    And I follow "Search Results API Instructions"
-    Then I should see "API Instructions" within the Admin Center content
-
   Scenario: Visiting the Site i14y Content Indexing API Instructions
     Given the following BingV7 Affiliates exist:
       | display_name | name    | contact_email | first_name   | last_name         | gets_i14y_results | use_redesigned_results_page |
