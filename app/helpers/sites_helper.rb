@@ -77,8 +77,7 @@ module SitesHelper
   def site_activate_search_controllers
     %w[api_access_keys
        embed_codes
-       i14y_api_instructions
-       click_tracking_api_instructions]
+       i14y_api_instructions]
   end
 
   def site_analytics_controllers
