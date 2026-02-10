@@ -6,3 +6,6 @@
         #{@site.display_name} (#{@site.name})
         = site_pin @site
         = filtered_analytics_toggle current_user
+    - if @site&.active? == false
+      = render 'sites/shared/inactive_banner_uswds'
+    
