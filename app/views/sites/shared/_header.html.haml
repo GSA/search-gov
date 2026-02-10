@@ -2,8 +2,6 @@
   - if $git_info.show_header
     #admin-system-warning-wrapper
       #git-info-header= render partial: 'shared/git_info_header'
-  - if @site&.active? == false
-    = render 'sites/shared/inactive_banner_uswds'
   .navbar-inner
     .container
       = render partial: 'shared/brand'
