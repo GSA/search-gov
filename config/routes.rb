@@ -59,7 +59,6 @@ Rails.application.routes.draw do
       resource :alert, only: [:edit, :create, :update]
 
       resource :api_access_key, only: [:show]
-      resource :i14y_api_instructions, only: [:show]
       resource :clicks, only: [:new, :create]
       resource :query_clicks, only: [:show]
       resource :query_referrers, only: [:show]
