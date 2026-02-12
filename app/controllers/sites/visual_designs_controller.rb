@@ -9,8 +9,7 @@ class Sites::VisualDesignsController < Sites::SetupSiteController
                   flash: { success: 'You have updated your visual design settings.' }
     else
       render :edit,
-             header_logo: @site.reload.header_logo,
-             identifier_logo: @site.reload.identifier_logo
+             header_logo: @site.reload.header_logo
     end
   end
 
@@ -27,15 +26,11 @@ class Sites::VisualDesignsController < Sites::SetupSiteController
       :show_vote_org_link,
       :favicon_url,
       :header_logo,
-      :identifier_logo,
       header_logo_attachment_attributes: attachment_attributes,
       header_logo_blob_attributes: blob_attributes,
-      identifier_logo_attachment_attributes: attachment_attributes,
-      identifier_logo_blob_attributes: blob_attributes,
       visual_design_json: [
         :footer_and_results_font_family,
         :header_links_font_family,
-        :identifier_font_family,
         :primary_navigation_font_family,
         :primary_navigation_font_weight,
         color_params

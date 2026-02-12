@@ -4,8 +4,7 @@
 
 VISUAL_DESIGN_COLOR = %w[
   button_background_color header_background_color header_secondary_link_color
-  footer_background_color identifier_background_color footer_links_text_color
-  identifier_heading_color identifier_link_color header_navigation_background_color
+  footer_background_color footer_links_text_color header_navigation_background_color
   active_search_tab_navigation_color header_primary_link_color search_tab_navigation_link_color
   banner_background_color banner_text_color result_title_color result_title_link_visited_color
   result_url_color result_description_color

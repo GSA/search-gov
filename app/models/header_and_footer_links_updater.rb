@@ -38,7 +38,7 @@ class HeaderAndFooterLinksUpdater
   end
 
   def update_footer_links(affiliate)
-    return if affiliate.managed_footer_links.blank? || affiliate.footer_links.present? || affiliate.identifier_links.present?
+    return if affiliate.managed_footer_links.blank? || affiliate.footer_links.present?
 
     affiliate.managed_footer_links.each do |link|
       FooterLink.create(position: link[:position], type: 'FooterLink', title: link[:title], url: link[:url], affiliate_id: affiliate.id)

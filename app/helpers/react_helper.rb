@@ -11,8 +11,6 @@ module ReactHelper
       facetsEnabled: ENV.fetch('FACETED_SEARCH_ENABLED', 'false') == 'true',
       fontsAndColors: affiliate.visual_design_json,
       footerLinks: links(affiliate, :footer_links),
-      identifierContent: identifier_content(affiliate),
-      identifierLinks: links(affiliate, :identifier_links),
       jobsEnabled: (affiliate.jobs_enabled? and search.modules.include?('JOBS')),
       language: affiliate.language.slice(:code, :rtl),
       navigationLinks: navigation_links(search, params),
@@ -171,23 +169,6 @@ module ReactHelper
         url: navigable_path(navigable, search, search_params)
       }
     end
-  end
-
-  def identifier_content(affiliate)
-    {
-      domainName: affiliate.identifier_domain_name,
-      parentAgencyName: affiliate.parent_agency_name,
-      parentAgencyLink: affiliate.parent_agency_link,
-      logoUrl: identifier_logo_url(affiliate.identifier_logo),
-      logoAltText: logo_text(affiliate.identifier_logo_blob),
-      lookingForGovernmentServices: affiliate.looking_for_government_services
-    }
-  end
-
-  def identifier_logo_url(identifier_logo)
-    return if identifier_logo.blank?
-
-    url_for(identifier_logo)
   end
 
   def agency_name(agency)
