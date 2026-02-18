@@ -2,19 +2,24 @@
   background-color: @white;
   z-index: @zindexStickyBar;
 }
+
 .l-site-header-inner {
   .clearfix();
   border-bottom: 1px solid @siteMainNavBackground;
-  height: 60px;
+  height: @siteSelectorHeight;
   padding-right: 28px;
-  padding-left: 20px;
+
+  &.--is-inactive {
+    height: @siteSelectorHeightForInactiveSite;
+  }
 
   .site-display-name {
     .muted();
     overflow: hidden;
     font-size: (@baseFontSize * 1.1);
     line-height: 20px;
-    padding: 20px 0 0;
+    padding: 1.25rem 0 0;
+    margin-left: 1.25rem; // Needs to be the same as the left padding of .site-header-inactive
     > span.label {
       .off-screen-text();
     }
@@ -87,5 +92,19 @@
 #envelope-snapshot-toggle, #filtered-analytics-toggle {
   .btn.disabled {
     cursor: pointer;
+  }
+}
+
+// Style for the inactive banner
+.site-header-inactive {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  color: #1b1b1b;
+  background-color: #faf3d1;
+  padding-bottom: .5rem;
+  padding-top: .5rem;
+
+  p {
+    margin: 0;
   }
 }

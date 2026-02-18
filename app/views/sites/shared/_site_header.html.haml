@@ -1,5 +1,5 @@
 .l-site-header
-  .l-site-header-inner
+  .l-site-header-inner{ class: ("--is-inactive" if @site&.active? == false) }
     - unless @site.nil? || @site.new_record?
       .site-display-name
         %span.label Display Name:

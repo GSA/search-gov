@@ -18,8 +18,12 @@
 
 @siteSelectorTop: @navbarHeight;
 @siteSelectorHeight: 60px;
+@siteInactiveHeader: 36px;
+@siteSelectorHeightForInactiveSite: (@siteSelectorHeight + @siteInactiveHeader);
 
 @siteNavTop: @navbarHeight + @siteSelectorHeight + 1;
+@siteNavTopForInactiveSite: (@siteNavTop + @siteInactiveHeader);
+
 @siteMainNavWidth: 80px;
 @siteMainNavItemHeight: 60px;
 @siteSubNavWidth: 199px;
@@ -29,6 +33,7 @@
 
 @subNavHeadingHeight: 60px;
 @contentTop: (@siteNavTop + @subNavHeadingHeight);
+@contentTopForInactiveSite: (@contentTop + @siteInactiveHeader);
 @contentWithoutSiteTop: @subNavHeadingHeight;
 @zindexStickyBar: 900;
 
