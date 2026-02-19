@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 class RtuQueriesRequest
-  MAX_RESULTS = 1000
+  # MAX_RESULTS is the maximum number of top queries to return. 
+  # This is used as the size parameter in the TopQueryMatchQuery, which is the number of buckets to return from the terms aggregation.
+  # Setting this to a high number may cause performance issues, so it should be set to a reasonable number based on expected traffic and performance requirements.
+  MAX_RESULTS = 100 
   include Virtus.model
 
   extend ActiveModel::Naming
