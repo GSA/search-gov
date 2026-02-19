@@ -1,8 +1,11 @@
 .l-site-header
-  .l-site-header-inner
+  .l-site-header-inner{ class: ("--is-inactive" if @site&.active? == false) }
     - unless @site.nil? || @site.new_record?
       .site-display-name
         %span.label Display Name:
         #{@site.display_name} (#{@site.name})
         = site_pin @site
         = filtered_analytics_toggle current_user
+    - if @site&.active? == false
+      = render 'sites/shared/inactive_banner_uswds'
+    
