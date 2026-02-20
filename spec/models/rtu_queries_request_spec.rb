@@ -27,7 +27,7 @@ describe RtuQueriesRequest do
           Date.parse('05/28/2014'),
           Date.parse('05/28/2014'),
           field: 'params.query.raw',
-          size: 1000
+          size: 100
         ).and_return(instance_double(TopQueryMatchQuery, body: 'query_body'))
       end
 
