@@ -3,3 +3,5 @@ production:
     cron: "0 */4 * * *"
   ClickMonitorJob:
     cron: "0 7 * * 0"
+  ClickMonitorSpiderJob:
+    cron: "0 7 * * 6"

@@ -4,7 +4,7 @@
 class ClickCounterJob < ApplicationJob
   queue_as :searchgov
 
-  def perform(domain:)
-    ClickCounter.new(domain: domain).update_click_counts
+  def perform(domain:, index_name: nil)
+    ClickCounter.new(domain: domain, index_name: index_name).update_click_counts
   end
 end
