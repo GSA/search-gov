@@ -111,4 +111,20 @@
   p {
     margin: 0;
   }
+
+  .usa-banner__content{
+    display: inline-flex;
+    align-items: center;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      margin-right: 5px;
+      background: asset-url('uswds/usa-icons/warning.svg');
+    }
+
+  }
+  
 }
