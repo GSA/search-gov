@@ -10,8 +10,15 @@ PARAM_PATH=""
 > .env
 
 echo "Starting the script"
-# Fetch all parameter names in the region
-REGION=$(curl -s http://169.254.169.254/latest/meta-data/placement/region)
+# Fetch all parameter names in the region. Use IMDSv2 method which new method
+TOKEN=$(curl -sS --fail --max-time 2 -X PUT "http://169.254.169.254/latest/api/token" \
+  -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
+
+REGION=$(curl -sS --fail --max-time 2 \
+  -H "X-aws-ec2-metadata-token: $TOKEN" \
+  "http://169.254.169.254/latest/dynamic/instance-identity/document" \
+  | sed -n 's/.*"region"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p')
+#REGION=$(curl -s http://169.254.169.254/latest/meta-data/placement/region)
 echo $REGION
 if [ -n "$PARAM_PATH" ]; then
     PARAM_KEYS=$(aws ssm get-parameters-by-path --path "$PARAM_PATH"  --recursive --query "Parameters[*].Name" --output text --region $REGION)
