@@ -18,8 +18,9 @@ REGION=$(curl -sS --fail --max-time 2 \
   -H "X-aws-ec2-metadata-token: $TOKEN" \
   "http://169.254.169.254/latest/dynamic/instance-identity/document" \
   | sed -n 's/.*"region"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p')
-#REGION=$(curl -s http://169.254.169.254/latest/meta-data/placement/region)
-echo $REGION
+
+echo "REGION is: $REGION"
+
 if [ -n "$PARAM_PATH" ]; then
     PARAM_KEYS=$(aws ssm get-parameters-by-path --path "$PARAM_PATH"  --recursive --query "Parameters[*].Name" --output text --region $REGION)
 else
