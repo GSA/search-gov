@@ -24,6 +24,6 @@ production:
   user: <%= ENV['ES_USER'] %>
   password: <%= ENV['ES_PASSWORD'] %>
   hosts:
-  <% (ENV['ES_HOSTS']&.split(',') || []).each do |host| %>
+  <% (ENV['ES_HOSTS'].split(',') || []).each do |host| %>
     - <%= host %>
   <% end %>
