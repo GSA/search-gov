@@ -53,8 +53,6 @@ cp /home/search/cicd_temp/.env /home/search/searchgov/shared/
 # Fetch a specific parameter and save it to a file
 aws ssm get-parameter --name "LOGIN_DOT_GOV_PEM" --region us-east-2 --with-decryption --query "Parameter.Value" --output text > /home/search/searchgov/shared/config/logindotgov.pem
 
-# create puma folders and files
-
 # Create  directories if they do not already exist
 [ ! -d /home/search/searchgov/shared/tmp/pids/ ] && mkdir -p /home/search/searchgov/shared/tmp/pids/
 [ ! -d /home/search/searchgov/shared/log ] && mkdir -p /home/search/searchgov/shared/log
