@@ -8,7 +8,6 @@ PARAM_PATH=""
 
 # Clear the .env file if it exists
 > .env
-
 echo "Starting the script"
 # Fetch all parameter names in the region. Use IMDSv2 method which new method
 TOKEN=$(curl -sS --fail --max-time 2 -X PUT "http://169.254.169.254/latest/api/token" \
