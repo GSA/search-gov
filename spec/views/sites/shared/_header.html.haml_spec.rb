@@ -19,7 +19,7 @@ describe 'sites/shared/_header' do
 
       it 'does not render the inactive banner' do
         render
-        expect(rendered).not_to have_selector('section[aria-label="Inactive affiliate notification"]')
+        expect(rendered).not_to have_selector('.site-header-inactive[aria-label="Inactive affiliate notification"]')
       end
     end
 
@@ -28,7 +28,7 @@ describe 'sites/shared/_header' do
 
       it 'renders the inactive banner' do
         render
-        expect(rendered).to have_selector('section[aria-label="Inactive affiliate notification"]')
+        expect(rendered).to have_selector('.site-header-inactive[aria-label="Inactive affiliate notification"]')
       end
     end
 
@@ -37,7 +37,7 @@ describe 'sites/shared/_header' do
 
       it 'does not render the inactive banner' do
         render
-        expect(rendered).not_to have_selector('section[aria-label="Inactive affiliate notification"]')
+        expect(rendered).not_to have_selector('.site-header-inactive[aria-label="Inactive affiliate notification"]')
       end
     end
   end
