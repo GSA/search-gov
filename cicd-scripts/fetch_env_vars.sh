@@ -5,7 +5,6 @@ cd /home/search/cicd_temp
 
 # Leave PARAM_PATH empty to fetch all parameters in the region
 PARAM_PATH=""
-
 # Clear the .env file if it exists
 > .env
 
