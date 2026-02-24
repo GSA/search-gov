@@ -11,7 +11,7 @@ Feature: Clicks and Queries stats
     When I go to the aff.gov's Analytics page
     And I follow "Queries"
     Then I should see "Queries"
-    And I should see "Your site has not received any search queries yet"
+    And I should see "Your site has not received any search queries yet. Or, your request may be too large for our database. Try limiting the duration of your request with the date picker and/or searching for a specific term with the Query field above."
 
     When I fill in "Query" with "nothing to see here"
     And I press "Generate Report"
