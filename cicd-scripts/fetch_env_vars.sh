@@ -1,19 +1,4 @@
 #!/bin/bash
-
-set -euo pipefail
-
-LOG_DIR="/home/search/codedeploy-logs"
-LOG_FILE="$LOG_DIR/fetch_env_vars.log"
-
-mkdir -p "$LOG_DIR"
-chmod 0755 "$LOG_DIR"
-
-# Log *everything* (stdout + stderr) with timestamps; also prints to CodeDeploy output
-exec > >(awk '{ print strftime("[%Y-%m-%d %H:%M:%S]"), $0 }' | tee -a "$LOG_FILE") 2>&1
-
-echo "=== fetch_env_vars start ==="
-echo "user=$(whoami) pwd=$(pwd)"
-
 set -x
 # Move to a writable location
 cd /home/search/cicd_temp
