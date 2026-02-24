@@ -18,7 +18,7 @@ REGION=$(curl -sS --fail --max-time 2 \
   -H "X-aws-ec2-metadata-token: $TOKEN" \
   "http://169.254.169.254/latest/dynamic/instance-identity/document" \
   | sed -n 's/.*"region"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p')
-
+# Print region
 echo "REGION is: $REGION"
 
 if [ -n "$PARAM_PATH" ]; then
