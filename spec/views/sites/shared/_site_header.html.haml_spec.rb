@@ -6,7 +6,7 @@ module ApplicationHelper
   end
 end
 
-describe 'sites/shared/_header' do
+describe 'sites/shared/_site_header' do
   before do
     @site = double('Site', active?: true)
   end
