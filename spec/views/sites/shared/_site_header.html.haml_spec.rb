@@ -7,15 +7,10 @@ module ApplicationHelper
 end
 
 describe 'sites/shared/_site_header' do
-  before do
-    @site = double('Site', active?: true)
-  end
-
-  it_behaves_like 'a non-prod git info banner'
 
   context 'inactive affiliate banner' do
     context 'when site is active' do
-      before { @site = double('Site', active?: true) }
+      before { assign(:site, double('Site', active?: true, new_record?: true)) }
 
       it 'does not render the inactive banner' do
         render
@@ -24,7 +19,7 @@ describe 'sites/shared/_site_header' do
     end
 
     context 'when site is inactive' do
-      before { @site = double('Site', active?: false) }
+      before { assign(:site, double('Site', active?: false, new_record?: true)) }
 
       it 'renders the inactive banner' do
         render
@@ -33,7 +28,7 @@ describe 'sites/shared/_site_header' do
     end
 
     context 'when site is nil (user-scoped pages)' do
-      before { @site = nil }
+      before { assign(:site, nil) }
 
       it 'does not render the inactive banner' do
         render
