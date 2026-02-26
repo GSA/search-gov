@@ -136,7 +136,7 @@ gem 'font-awesome-grunticon-rails', git: 'https://github.com/gsa/font-awesome-gr
 gem 'react-rails', '~> 3.0.0'
 # Locking to prevent a version mismatch between the gem and the NPM package version
 # See https://github.com/shakacode/shakapacker#upgrading
-gem 'shakapacker', '~> 6.5.4'
+gem 'shakapacker', '~> 9.5.0'
 gem 'cssbundling-rails', '~> 1.2' # Management of css (Less) files conversion
 # Temporarily locking the 'mail' version until the next version of Rails is released
 # https://github.com/rails/rails/pull/46650
