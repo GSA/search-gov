@@ -26,7 +26,7 @@ Docker can be used to:
 
 When running in a Docker container (option 2 above), the `search-gov` application is configured to run on port [3100](http://localhost:3100/). Required dependencies - ([Ruby](https://github.com/GSA/search-gov#ruby), [NodeJS](https://github.com/GSA/search-gov#nodejs), [Package Manager](https://github.com/GSA/search-gov#package-manager), [Packages](https://github.com/GSA/search-gov#packages), [Gems](https://github.com/GSA/search-gov#gems), [JavaScript dependencies](https://github.com/GSA/search-gov#javascript-dependencies)) - are installed using Docker. However, other data or configuration may need to be setup manually, which can be done in the running container using `bash`.
 
-Using bash to perform any operations on search-gov application running in Docker container, below command needs to be run in `search-services`.
+Using bash to perform any operations on search-gov application running in Docker container, below command needs to be run in `search-services`:
 
     $ docker compose run search-gov bash
 
