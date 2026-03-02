@@ -20,7 +20,9 @@ Use [NVM](https://github.com/nvm-sh/nvm#installing-and-updating) to install the 
 
 ### Docker
 
-Docker can be used to: 1) run just the required services (MySQL, Elasticsearch, etc.) while [running the search-gov application in your local machine](https://github.com/GSA/search-gov#running-the-app), and/or 2) run the entire `search-gov` application in a Docker container.  Please refer to [searchgov-services](https://github.com/GSA/search-services) for detailed instructions on centralized configuration for the services.
+Docker can be used to: 
+1. run just the required services (MySQL, Elasticsearch, etc.) while [running the search-gov application in your local machine](https://github.com/GSA/search-gov#running-the-app), and/or 
+2. run the entire `search-gov` application in a Docker container.  Please refer to [searchgov-services](https://github.com/GSA/search-services) for detailed instructions on centralized configuration for the services.
 
 When running in a Docker container (option 2 above), the `search-gov` application is configured to run on port [3100](http://localhost:3100/). Required dependencies - ([Ruby](https://github.com/GSA/search-gov#ruby), [NodeJS](https://github.com/GSA/search-gov#nodejs), [Package Manager](https://github.com/GSA/search-gov#package-manager), [Packages](https://github.com/GSA/search-gov#packages), [Gems](https://github.com/GSA/search-gov#gems), [JavaScript dependencies](https://github.com/GSA/search-gov#javascript-dependencies)) - are installed using Docker. However, other data or configuration may need to be setup manually, which can be done in the running container using `bash`.
 
