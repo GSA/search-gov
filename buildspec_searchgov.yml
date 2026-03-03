@@ -34,29 +34,29 @@ phases:
     commands:
       - aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' --output text > $SEARCH_ENV_EC2_KEY
       - |
-        # Clean up Git state on all target servers before Capistrano deploy
+        # Aggressively clean up repo directory on all target servers before Capistrano deploy
         CURRENT_LOCATION=$(pwd)
         SSH_KEY_PATH="${CURRENT_LOCATION}/${SEARCH_ENV_EC2_KEY}"
         chmod 600 $SSH_KEY_PATH
-        echo "Cleaning up Git state on target servers..."
+        echo "Cleaning up repo directories on target servers..."
         for server in $(echo $APP_SERVER_ADDRESSES | jq -r '.[]'); do
-          echo "Cleaning up Git state on $server..."
+          echo "Cleaning up repo on $server..."
           ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i $SSH_KEY_PATH $SERVER_DEPLOYMENT_USER@$server '
-            if [ -d "/home/search/searchgov/repo/.git" ]; then
-              cd /home/search/searchgov/repo
-              echo "Cleaning Git metadata and refs..."
-              find .git -name "*.lock" -type f -delete 2>/dev/null || true
-              rm -f .git/packed-refs 2>/dev/null || true
-              rm -rf .git/refs/heads/* 2>/dev/null || true
-              rm -rf .git/refs/remotes/* 2>/dev/null || true
-              git remote prune origin 2>/dev/null || true
-              echo "Git state cleaned successfully"
+            if [ -d "/home/search/searchgov/repo" ]; then
+              echo "Removing existing repo directory completely..."
+              cd /home/search/searchgov
+              chmod -R u+w repo 2>/dev/null || true
+              rm -rf repo
+              echo "Repo directory removed successfully"
             else
-              echo "No Git repo found - will be created fresh"
+              echo "No existing repo directory - will be created fresh"
             fi
+            # Ensure parent directory exists with correct permissions
+            mkdir -p /home/search/searchgov
+            echo "Ready for fresh clone"
           ' || echo "Cleanup on $server completed or skipped"
         done
-        echo "Git state cleanup completed on all servers"
+        echo "Repo cleanup completed on all servers"
   build:
     commands:
       - CURRENT_LOCATION=$(pwd)  # would look something like this - /codebuild/output/src559980389/src - a temp dir created by codebuild
