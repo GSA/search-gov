@@ -6,6 +6,10 @@ os: linux
 #     destination: /home/search/cicd_temp 
 
 hooks:
+  ApplicationStop:
+    - location: cicd-scripts/cleanup_deployment.sh
+      timeout: 300
+      runas: search
 
   BeforeInstall:
     - location: cicd-scripts/fetch_env_vars.sh
