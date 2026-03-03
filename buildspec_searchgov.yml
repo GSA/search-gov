@@ -34,16 +34,29 @@ phases:
     commands:
       - aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' --output text > $SEARCH_ENV_EC2_KEY
       - |
-        # Clean up repo directories on all target servers before Capistrano deploy
+        # Clean up Git state on all target servers before Capistrano deploy
         CURRENT_LOCATION=$(pwd)
         SSH_KEY_PATH="${CURRENT_LOCATION}/${SEARCH_ENV_EC2_KEY}"
         chmod 600 $SSH_KEY_PATH
-        echo "Cleaning up repo directories on target servers..."
+        echo "Cleaning up Git state on target servers..."
         for server in $(echo $APP_SERVER_ADDRESSES | jq -r '.[]'); do
-          echo "Cleaning up on $server..."
-          ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i $SSH_KEY_PATH $SERVER_DEPLOYMENT_USER@$server "rm -rf /home/search/searchgov/repo || true" || echo "Cleanup on $server completed or skipped"
+          echo "Cleaning up Git state on $server..."
+          ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i $SSH_KEY_PATH $SERVER_DEPLOYMENT_USER@$server '
+            if [ -d "/home/search/searchgov/repo/.git" ]; then
+              cd /home/search/searchgov/repo
+              echo "Cleaning Git metadata and refs..."
+              find .git -name "*.lock" -type f -delete 2>/dev/null || true
+              rm -f .git/packed-refs 2>/dev/null || true
+              rm -rf .git/refs/heads/* 2>/dev/null || true
+              rm -rf .git/refs/remotes/* 2>/dev/null || true
+              git remote prune origin 2>/dev/null || true
+              echo "Git state cleaned successfully"
+            else
+              echo "No Git repo found - will be created fresh"
+            fi
+          ' || echo "Cleanup on $server completed or skipped"
         done
-        echo "Cleanup completed on all servers"
+        echo "Git state cleanup completed on all servers"
   build:
     commands:
       - CURRENT_LOCATION=$(pwd)  # would look something like this - /codebuild/output/src559980389/src - a temp dir created by codebuild
