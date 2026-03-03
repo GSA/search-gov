@@ -34,12 +34,16 @@ phases:
     commands:
       - aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' --output text > $SEARCH_ENV_EC2_KEY
       - |
-        # Aggressively clean up repo directory on all target servers before Capistrano deploy
+        # Aggressively clean up repo directory on ALL target servers before Capistrano deploy
         CURRENT_LOCATION=$(pwd)
         SSH_KEY_PATH="${CURRENT_LOCATION}/${SEARCH_ENV_EC2_KEY}"
         chmod 600 $SSH_KEY_PATH
-        echo "Cleaning up repo directories on target servers..."
-        for server in $(echo $APP_SERVER_ADDRESSES | jq -r '.[]'); do
+        echo "Cleaning up repo directories on all target servers..."
+        
+        # Combine all server addresses into a single unique list
+        ALL_SERVERS=$(echo "$APP_SERVER_ADDRESSES $CRON_SERVER_ADDRESSES $RESQUE_SERVER_ADDRESSES" | jq -rs 'add | unique | .[]')
+        
+        for server in $ALL_SERVERS; do
           echo "Cleaning up repo on $server..."
           ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i $SSH_KEY_PATH $SERVER_DEPLOYMENT_USER@$server '
             if [ -d "/home/search/searchgov/repo" ]; then
@@ -56,7 +60,7 @@ phases:
             echo "Ready for fresh clone"
           ' || echo "Cleanup on $server completed or skipped"
         done
-        echo "Repo cleanup completed on all servers"
+        echo "Repo cleanup completed on all servers (APP, CRON, RESQUE)"
   build:
     commands:
       - CURRENT_LOCATION=$(pwd)  # would look something like this - /codebuild/output/src559980389/src - a temp dir created by codebuild
