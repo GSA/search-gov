@@ -3,7 +3,6 @@ set -x
 
 echo "Starting ApplicationStop cleanup"
 echo "whoami: $(whoami)"
-
 # Clean up Capistrano repo directory if it exists to prevent conflicts with CodeDeploy
 if [ -d "/home/search/searchgov/repo" ]; then
     echo "Found existing /home/search/searchgov/repo directory from previous Capistrano deployment"
