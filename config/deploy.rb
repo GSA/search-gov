@@ -41,28 +41,31 @@ rescue JSON::ParserError
   []
 end
 
-def normalize_and_dedupe_hosts(hosts)
-  seen = {}
-
-  hosts.each_with_object([]) do |host, normalized|
-    next if host.to_s.strip.empty?
-
-    canonical = begin
-      Resolv.getaddress(host)
-    rescue Resolv::ResolvError
-      host
-    end
-
-    next if seen[canonical]
-
-    seen[canonical] = true
-    normalized << host
-  end
+def canonical_host_key(host)
+  Resolv.getaddress(host)
+rescue Resolv::ResolvError
+  host
 end
 
-app_hosts = normalize_and_dedupe_hosts(parse_hosts('APP_SERVER_ADDRESSES'))
-cron_hosts = normalize_and_dedupe_hosts(parse_hosts('CRON_SERVER_ADDRESSES'))
-resque_hosts = normalize_and_dedupe_hosts(parse_hosts('RESQUE_SERVER_ADDRESSES'))
+app_hosts_raw = parse_hosts('APP_SERVER_ADDRESSES').reject { |host| host.to_s.strip.empty? }
+cron_hosts_raw = parse_hosts('CRON_SERVER_ADDRESSES').reject { |host| host.to_s.strip.empty? }
+resque_hosts_raw = parse_hosts('RESQUE_SERVER_ADDRESSES').reject { |host| host.to_s.strip.empty? }
+
+# Build a global alias map so one physical host appears only once across all roles.
+# The first alias encountered becomes the representative host for that machine.
+canonical_to_representative = {}
+(app_hosts_raw + cron_hosts_raw + resque_hosts_raw).each do |host|
+  canonical = canonical_host_key(host)
+  canonical_to_representative[canonical] ||= host
+end
+
+map_to_global_representative = lambda do |hosts|
+  hosts.map { |host| canonical_to_representative[canonical_host_key(host)] }.compact.uniq
+end
+
+app_hosts = map_to_global_representative.call(app_hosts_raw)
+cron_hosts = map_to_global_representative.call(cron_hosts_raw)
+resque_hosts = map_to_global_representative.call(resque_hosts_raw)
 
 role :app,              app_hosts,    user: ENV['SERVER_DEPLOYMENT_USER']
 role :cron,             cron_hosts,   user: ENV['SERVER_DEPLOYMENT_USER']
