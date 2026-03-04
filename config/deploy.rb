@@ -27,6 +27,8 @@ set :whenever_roles,          :cron
 set :workers,                 { '*' => ENV.fetch('RESQUE_WORKERS_COUNT', '5').to_i }
 set :resque_log_file,         "log/resque.log"
 set :deploy_lock_token,       ENV.fetch('DEPLOY_LOCK_TOKEN', SecureRandom.uuid)
+set :deploy_lock_wait_seconds, ENV.fetch('DEPLOY_LOCK_WAIT_SECONDS', '300').to_i
+set :deploy_lock_stale_seconds, ENV.fetch('DEPLOY_LOCK_STALE_SECONDS', '1800').to_i
 # Prevent concurrent git operations on the same host. Wait for 180 seconds if locked.
 SSHKit.config.command_map[:git] = "/usr/bin/flock -w 180 /tmp/git.lock /usr/bin/git"
 append :linked_dirs,  'log', 'tmp', 'node_modules', 'public'
@@ -52,17 +54,45 @@ namespace :deploy do
     on roles(:all), in: :sequence, wait: 1 do
       lock_dir = "#{fetch(:deploy_to)}/.deploy_lock"
       token = fetch(:deploy_lock_token)
+      wait_seconds = fetch(:deploy_lock_wait_seconds)
+      stale_seconds = fetch(:deploy_lock_stale_seconds)
+      started_at = Time.now
 
       execute :mkdir, '-p', fetch(:deploy_to)
 
-      begin
-        execute :mkdir, lock_dir
-        write_token_cmd = "printf '%s' #{Shellwords.escape(token)} > #{lock_dir}/token"
-        execute :bash, '-lc', Shellwords.escape(write_token_cmd)
-        info "Acquired deploy lock at #{lock_dir}"
-      rescue SSHKit::Command::Failed
-        error "Deploy lock already exists at #{lock_dir}. Another deployment may be running."
-        raise
+      loop do
+        begin
+          execute :mkdir, lock_dir
+          write_token_cmd = "printf '%s' #{Shellwords.escape(token)} > #{lock_dir}/token"
+          execute :bash, '-lc', Shellwords.escape(write_token_cmd)
+          info "Acquired deploy lock at #{lock_dir}"
+          break
+        rescue SSHKit::Command::Failed
+          if test("[ -f #{lock_dir}/token ]")
+            existing_token = capture(:cat, "#{lock_dir}/token").strip
+            lock_age_seconds = capture(:bash, '-lc', "echo $(( $(date +%s) - $(stat -c %Y #{lock_dir}/token) ))").strip.to_i
+
+            if lock_age_seconds > stale_seconds
+              info "Removing stale deploy lock at #{lock_dir} (age: #{lock_age_seconds}s)"
+              execute :rm, '-rf', lock_dir
+              next
+            end
+
+            if existing_token == token
+              info "Deploy lock already owned by this deployment at #{lock_dir}"
+              break
+            end
+          end
+
+          elapsed = (Time.now - started_at).to_i
+          if elapsed >= wait_seconds
+            error "Timed out waiting for deploy lock at #{lock_dir} after #{wait_seconds}s"
+            raise
+          end
+
+          info "Deploy lock busy at #{lock_dir}; waiting 5s (elapsed #{elapsed}s / #{wait_seconds}s)"
+          sleep 5
+        end
       end
     end
   end
