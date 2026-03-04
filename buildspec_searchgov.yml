@@ -38,29 +38,104 @@ phases:
         CURRENT_LOCATION=$(pwd)
         SSH_KEY_PATH="${CURRENT_LOCATION}/${SEARCH_ENV_EC2_KEY}"
         chmod 600 $SSH_KEY_PATH
-        echo "Cleaning up repo directories on all target servers..."
+        
+        echo "======================================================================"
+        echo "STARTING PRE-BUILD CLEANUP"
+        echo "======================================================================"
+        echo "Current directory: $(pwd)"
+        echo "SSH Key path: $SSH_KEY_PATH"
+        echo "Deployment user: $SERVER_DEPLOYMENT_USER"
         
         # Combine all server addresses into a single unique list
+        echo ""
+        echo "Combining server addresses from all roles..."
+        echo "APP_SERVER_ADDRESSES: $APP_SERVER_ADDRESSES"
+        echo "CRON_SERVER_ADDRESSES: $CRON_SERVER_ADDRESSES"
+        echo "RESQUE_SERVER_ADDRESSES: $RESQUE_SERVER_ADDRESSES"
+        
         ALL_SERVERS=$(echo "$APP_SERVER_ADDRESSES $CRON_SERVER_ADDRESSES $RESQUE_SERVER_ADDRESSES" | jq -rs 'add | unique | .[]')
         
+        echo ""
+        echo "Unique server list (ALL_SERVERS):"
+        echo "$ALL_SERVERS"
+        echo ""
+        
+        SERVER_COUNT=$(echo "$ALL_SERVERS" | wc -l | tr -d ' ')
+        echo "Total servers to clean: $SERVER_COUNT"
+        echo "======================================================================"
+        
+        CLEANUP_SUCCESS=0
+        CLEANUP_FAILED=0
+        
         for server in $ALL_SERVERS; do
-          echo "Cleaning up repo on $server..."
-          ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i $SSH_KEY_PATH $SERVER_DEPLOYMENT_USER@$server '
+          echo ""
+          echo "----------------------------------------------------------------------"
+          echo "Processing server: $server"
+          echo "----------------------------------------------------------------------"
+          
+          SSH_OUTPUT=$(ssh -v -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o ConnectTimeout=10 -i $SSH_KEY_PATH $SERVER_DEPLOYMENT_USER@$server '
+            echo "Connected to: $(hostname)"
+            echo "Current user: $(whoami)"
+            echo "Checking for repo directory..."
+            
             if [ -d "/home/search/searchgov/repo" ]; then
-              echo "Removing existing repo directory completely..."
-              cd /home/search/searchgov
-              chmod -R u+w repo 2>/dev/null || true
-              rm -rf repo
-              echo "Repo directory removed successfully"
+              echo "FOUND: /home/search/searchgov/repo exists"
+              echo "Listing contents before cleanup:"
+              ls -la /home/search/searchgov/ | grep repo || true
+              
+              echo "Changing to parent directory..."
+              cd /home/search/searchgov || exit 1
+              
+              echo "Adding write permissions..."
+              chmod -R u+w repo 2>&1 || true
+              
+              echo "Removing repo directory..."
+              rm -rfv repo 2>&1 | head -20
+              
+              if [ ! -d "repo" ]; then
+                echo "SUCCESS: Repo directory removed"
+                exit 0
+              else
+                echo "ERROR: Repo directory still exists after removal!"
+                ls -la /home/search/searchgov/ | grep repo
+                exit 1
+              fi
             else
-              echo "No existing repo directory - will be created fresh"
+              echo "NOT FOUND: No repo directory at /home/search/searchgov/repo"
+              echo "Listing /home/search/searchgov/ contents:"
+              ls -la /home/search/searchgov/ || true
             fi
-            # Ensure parent directory exists with correct permissions
+            
+            # Ensure parent directory exists
             mkdir -p /home/search/searchgov
-            echo "Ready for fresh clone"
-          ' || echo "Cleanup on $server completed or skipped"
+            echo "Parent directory ready"
+            exit 0
+          ' 2>&1)
+          
+          SSH_EXIT_CODE=$?
+          echo "$SSH_OUTPUT"
+          
+          if [ $SSH_EXIT_CODE -eq 0 ]; then
+            echo "✓ Cleanup successful on $server"
+            CLEANUP_SUCCESS=$((CLEANUP_SUCCESS + 1))
+          else
+            echo "✗ Cleanup failed on $server (exit code: $SSH_EXIT_CODE)"
+            CLEANUP_FAILED=$((CLEANUP_FAILED + 1))
+          fi
         done
-        echo "Repo cleanup completed on all servers (APP, CRON, RESQUE)"
+        
+        echo ""
+        echo "======================================================================"
+        echo "PRE-BUILD CLEANUP COMPLETE"
+        echo "======================================================================"
+        echo "Servers processed: $SERVER_COUNT"
+        echo "Successful: $CLEANUP_SUCCESS"
+        echo "Failed: $CLEANUP_FAILED"
+        echo "======================================================================"
+        
+        if [ $CLEANUP_FAILED -gt 0 ]; then
+          echo "WARNING: Some servers failed cleanup - deployment may encounter issues"
+        fi
   build:
     commands:
       - CURRENT_LOCATION=$(pwd)  # would look something like this - /codebuild/output/src559980389/src - a temp dir created by codebuild
