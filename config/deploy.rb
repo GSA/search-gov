@@ -2,6 +2,7 @@
 lock '~> 3.19.1'
 
 require 'securerandom'
+require 'shellwords'
 
 SEARCHGOV_THREADS = ENV.fetch('SEARCHGOV_THREADS') { 5 }
 
@@ -54,15 +55,14 @@ namespace :deploy do
 
       execute :mkdir, '-p', fetch(:deploy_to)
 
-      execute :bash, '-lc', <<~BASH
-        if mkdir #{lock_dir}; then
-          echo #{token} > #{lock_dir}/token;
-          echo "Acquired deploy lock at #{lock_dir}";
-        else
-          echo "ERROR: Deploy lock already exists at #{lock_dir}. Another deployment may be running.";
-          exit 1;
-        fi
-      BASH
+      begin
+        execute :mkdir, lock_dir
+        execute :sh, '-c', "printf '%s' #{Shellwords.escape(token)} > #{lock_dir}/token"
+        info "Acquired deploy lock at #{lock_dir}"
+      rescue SSHKit::Command::Failed
+        error "Deploy lock already exists at #{lock_dir}. Another deployment may be running."
+        raise
+      end
     end
   end
 
@@ -72,14 +72,17 @@ namespace :deploy do
       lock_dir = "#{fetch(:deploy_to)}/.deploy_lock"
       token = fetch(:deploy_lock_token)
 
-      execute :bash, '-lc', <<~BASH
-        if [ -f #{lock_dir}/token ] && [ "$(cat #{lock_dir}/token)" = "#{token}" ]; then
-          rm -rf #{lock_dir};
-          echo "Released deploy lock at #{lock_dir}";
+      if test("[ -f #{lock_dir}/token ]")
+        existing_token = capture(:cat, "#{lock_dir}/token").strip
+        if existing_token == token
+          execute :rm, '-rf', lock_dir
+          info "Released deploy lock at #{lock_dir}"
         else
-          echo "Skip lock release at #{lock_dir} (lock not owned by this deployment)";
-        fi
-      BASH
+          info "Skip lock release at #{lock_dir} (lock not owned by this deployment)"
+        end
+      else
+        info "Skip lock release at #{lock_dir} (no lock present)"
+      end
     end
   end
 end

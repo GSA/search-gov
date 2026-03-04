@@ -53,16 +53,41 @@ phases:
         echo "CRON_SERVER_ADDRESSES: $CRON_SERVER_ADDRESSES"
         echo "RESQUE_SERVER_ADDRESSES: $RESQUE_SERVER_ADDRESSES"
         
-        ALL_SERVERS=$(echo "$APP_SERVER_ADDRESSES $CRON_SERVER_ADDRESSES $RESQUE_SERVER_ADDRESSES" | jq -rs 'add | unique | .[]')
+        ALL_SERVERS=$(python3 - <<'PY'
+import json
+import os
+
+servers = []
+for key in ("APP_SERVER_ADDRESSES", "CRON_SERVER_ADDRESSES", "RESQUE_SERVER_ADDRESSES"):
+    raw = os.getenv(key, "[]")
+    try:
+        parsed = json.loads(raw)
+    except Exception:
+        parsed = []
+
+    if isinstance(parsed, str):
+        parsed = [parsed]
+    if isinstance(parsed, list):
+        servers.extend(parsed)
+
+for server in sorted({s for s in servers if s}):
+    print(server)
+PY
+)
         
         echo ""
         echo "Unique server list (ALL_SERVERS):"
         echo "$ALL_SERVERS"
         echo ""
         
-        SERVER_COUNT=$(echo "$ALL_SERVERS" | wc -l | tr -d ' ')
+        SERVER_COUNT=$(printf "%s\n" "$ALL_SERVERS" | sed '/^$/d' | wc -l | tr -d ' ')
         echo "Total servers to clean: $SERVER_COUNT"
         echo "======================================================================"
+
+        if [ "$SERVER_COUNT" -eq 0 ]; then
+          echo "ERROR: No deployment servers resolved from APP/CRON/RESQUE address variables"
+          exit 1
+        fi
         
         CLEANUP_SUCCESS=0
         CLEANUP_FAILED=0
