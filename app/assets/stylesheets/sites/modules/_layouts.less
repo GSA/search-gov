@@ -56,6 +56,10 @@ body {
 .l-site-wrapper {
   position: fixed;
   top: @siteNavTop;
+
+  &.--is-inactive {
+    top: @siteNavTopForInactiveSite;
+  }
 }
 
 .l-site-nav {
@@ -82,4 +86,8 @@ body {
   margin-left: (@siteMainNavWidth + @siteSubNavWidth + 1);
   padding-top: @siteNavTop;
   width: auto;
+
+  &.--is-inactive {
+    padding-top: @siteNavTopForInactiveSite;
+  }
 }

@@ -1,5 +1,5 @@
 = content_for_site_page_title @site, 'Site Overview'
-.sub-nav-heading
+.sub-nav-heading{ class: ("--is-inactive" if @site&.active? == false) }
   %h2 Customize your search experience
 
 = show_system_alerts
