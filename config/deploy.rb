@@ -57,7 +57,8 @@ namespace :deploy do
 
       begin
         execute :mkdir, lock_dir
-        execute :sh, '-c', "printf '%s' #{Shellwords.escape(token)} > #{lock_dir}/token"
+        write_token_cmd = "printf '%s' #{Shellwords.escape(token)} > #{lock_dir}/token"
+        execute :bash, '-lc', Shellwords.escape(write_token_cmd)
         info "Acquired deploy lock at #{lock_dir}"
       rescue SSHKit::Command::Failed
         error "Deploy lock already exists at #{lock_dir}. Another deployment may be running."
