@@ -12,6 +12,7 @@ set :branch,                  ENV.fetch('SEARCH_ENV', 'staging')
 set :default_env,             { SECRET_KEY_BASE: '1' }
 set :deploy_to,               ENV['DEPLOYMENT_PATH']
 set :format,                  :pretty
+set :sshkit_runner,           SSHKit::Runner::Sequential
 set :puma_access_log,         "#{release_path}/log/puma.access.log"
 set :puma_bind,               'tcp://0.0.0.0:3000'
 set :puma_error_log,          "#{release_path}/log/puma.error.log"
