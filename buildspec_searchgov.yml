@@ -77,14 +77,19 @@ phases:
             echo "Connected to: $(hostname)"
             echo "Current user: $(whoami)"
             echo "Checking for repo directory..."
+
+            DEPLOY_ROOT="'"$DEPLOYMENT_PATH"'"
+            REPO_DIR="${DEPLOY_ROOT%/}/repo"
+            echo "Using DEPLOYMENT_PATH: ${DEPLOY_ROOT}"
+            echo "Computed REPO_DIR: ${REPO_DIR}"
             
-            if [ -d "/home/search/searchgov/repo" ]; then
-              echo "FOUND: /home/search/searchgov/repo exists"
+            if [ -d "$REPO_DIR" ]; then
+              echo "FOUND: ${REPO_DIR} exists"
               echo "Listing contents before cleanup:"
-              ls -la /home/search/searchgov/ | grep repo || true
+              ls -la "$DEPLOY_ROOT" | grep repo || true
               
               echo "Changing to parent directory..."
-              cd /home/search/searchgov || exit 1
+              cd "$DEPLOY_ROOT" || exit 1
               
               echo "Adding write permissions..."
               chmod -R u+w repo 2>&1 || true
@@ -97,17 +102,17 @@ phases:
                 exit 0
               else
                 echo "ERROR: Repo directory still exists after removal!"
-                ls -la /home/search/searchgov/ | grep repo
+                ls -la "$DEPLOY_ROOT" | grep repo
                 exit 1
               fi
             else
-              echo "NOT FOUND: No repo directory at /home/search/searchgov/repo"
-              echo "Listing /home/search/searchgov/ contents:"
-              ls -la /home/search/searchgov/ || true
+              echo "NOT FOUND: No repo directory at ${REPO_DIR}"
+              echo "Listing ${DEPLOY_ROOT} contents:"
+              ls -la "$DEPLOY_ROOT" || true
             fi
             
             # Ensure parent directory exists
-            mkdir -p /home/search/searchgov
+            mkdir -p "$DEPLOY_ROOT"
             echo "Parent directory ready"
             exit 0
           ' 2>&1)
@@ -134,7 +139,8 @@ phases:
         echo "======================================================================"
         
         if [ $CLEANUP_FAILED -gt 0 ]; then
-          echo "WARNING: Some servers failed cleanup - deployment may encounter issues"
+          echo "ERROR: Some servers failed cleanup - aborting deployment to prevent git clone conflicts"
+          exit 1
         fi
   build:
     commands:

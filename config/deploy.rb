@@ -1,6 +1,8 @@
 # config valid for current version and patch releases of Capistrano
 lock '~> 3.19.1'
 
+require 'securerandom'
+
 SEARCHGOV_THREADS = ENV.fetch('SEARCHGOV_THREADS') { 5 }
 
 set :application,             'search-gov'
@@ -23,6 +25,7 @@ set :user,                    ENV['SERVER_DEPLOYMENT_USER']
 set :whenever_roles,          :cron
 set :workers,                 { '*' => ENV.fetch('RESQUE_WORKERS_COUNT', '5').to_i }
 set :resque_log_file,         "log/resque.log"
+set :deploy_lock_token,       ENV.fetch('DEPLOY_LOCK_TOKEN', SecureRandom.uuid)
 # Prevent concurrent git operations on the same host. Wait for 180 seconds if locked.
 SSHKit.config.command_map[:git] = "/usr/bin/flock -w 180 /tmp/git.lock /usr/bin/git"
 append :linked_dirs,  'log', 'tmp', 'node_modules', 'public'
@@ -41,3 +44,46 @@ set :ssh_options, {
   keys:          [ENV['SSH_KEY_PATH']],
   user:          ENV['SERVER_DEPLOYMENT_USER'],
 }
+
+namespace :deploy do
+  desc 'Acquire per-host deploy lock to prevent concurrent Capistrano runs'
+  task :acquire_host_lock do
+    on roles(:all), in: :sequence, wait: 1 do
+      lock_dir = "#{fetch(:deploy_to)}/.deploy_lock"
+      token = fetch(:deploy_lock_token)
+
+      execute :mkdir, '-p', fetch(:deploy_to)
+
+      execute :bash, '-lc', <<~BASH
+        if mkdir #{lock_dir}; then
+          echo #{token} > #{lock_dir}/token;
+          echo "Acquired deploy lock at #{lock_dir}";
+        else
+          echo "ERROR: Deploy lock already exists at #{lock_dir}. Another deployment may be running.";
+          exit 1;
+        fi
+      BASH
+    end
+  end
+
+  desc 'Release per-host deploy lock when this run owns it'
+  task :release_host_lock do
+    on roles(:all), in: :sequence, wait: 1 do
+      lock_dir = "#{fetch(:deploy_to)}/.deploy_lock"
+      token = fetch(:deploy_lock_token)
+
+      execute :bash, '-lc', <<~BASH
+        if [ -f #{lock_dir}/token ] && [ "$(cat #{lock_dir}/token)" = "#{token}" ]; then
+          rm -rf #{lock_dir};
+          echo "Released deploy lock at #{lock_dir}";
+        else
+          echo "Skip lock release at #{lock_dir} (lock not owned by this deployment)";
+        fi
+      BASH
+    end
+  end
+end
+
+before 'deploy:starting', 'deploy:acquire_host_lock'
+after 'deploy:finished', 'deploy:release_host_lock'
+after 'deploy:failed', 'deploy:release_host_lock'
