@@ -23,7 +23,8 @@ set :user,                    ENV['SERVER_DEPLOYMENT_USER']
 set :whenever_roles,          :cron
 set :workers,                 { '*' => ENV.fetch('RESQUE_WORKERS_COUNT', '5').to_i }
 set :resque_log_file,         "log/resque.log"
-
+# Prevent concurrent git operations on the same host. Wait for 180 seconds if locked.
+SSHKit.config.command_map[:git] = "/usr/bin/flock -w 180 /tmp/git.lock /usr/bin/git"
 append :linked_dirs,  'log', 'tmp', 'node_modules', 'public'
 append :linked_files, '.env', 'config/logindotgov.pem'
 
