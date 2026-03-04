@@ -89,8 +89,23 @@ phases:
 
             DEPLOY_ROOT="'"$DEPLOYMENT_PATH"'"
             REPO_DIR="${DEPLOY_ROOT%/}/repo"
+            LOCK_DIR="${DEPLOY_ROOT%/}/.deploy_lock"
             echo "Using DEPLOYMENT_PATH: ${DEPLOY_ROOT}"
             echo "Computed REPO_DIR: ${REPO_DIR}"
+            echo "Computed LOCK_DIR: ${LOCK_DIR}"
+
+            if [ -d "$LOCK_DIR" ]; then
+              echo "FOUND: ${LOCK_DIR} exists"
+              echo "Removing stale deploy lock directory..."
+              rm -rf "$LOCK_DIR"
+              if [ -d "$LOCK_DIR" ]; then
+                echo "ERROR: Failed to remove ${LOCK_DIR}"
+                exit 1
+              fi
+              echo "SUCCESS: Removed stale deploy lock"
+            else
+              echo "NOT FOUND: No deploy lock directory at ${LOCK_DIR}"
+            fi
             
             if [ -d "$REPO_DIR" ]; then
               echo "FOUND: ${REPO_DIR} exists"
