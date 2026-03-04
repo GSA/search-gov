@@ -3,6 +3,7 @@ lock '~> 3.19.1'
 
 require 'securerandom'
 require 'shellwords'
+require 'resolv'
 
 SEARCHGOV_THREADS = ENV.fetch('SEARCHGOV_THREADS') { 5 }
 
@@ -34,12 +35,41 @@ SSHKit.config.command_map[:git] = "/usr/bin/flock -w 180 /tmp/git.lock /usr/bin/
 append :linked_dirs,  'log', 'tmp', 'node_modules', 'public'
 append :linked_files, '.env', 'config/logindotgov.pem'
 
-role :app,              JSON.parse(ENV.fetch('APP_SERVER_ADDRESSES', '[]')),    user: ENV['SERVER_DEPLOYMENT_USER']
-role :cron,             JSON.parse(ENV.fetch('CRON_SERVER_ADDRESSES', '[]')),   user: ENV['SERVER_DEPLOYMENT_USER']
-role :db,               JSON.parse(ENV.fetch('APP_SERVER_ADDRESSES', '[]')),    user: ENV['SERVER_DEPLOYMENT_USER']
-role :resque_scheduler, JSON.parse(ENV.fetch('RESQUE_SERVER_ADDRESSES', '[]')), user: ENV['SERVER_DEPLOYMENT_USER']
-role :resque_worker,    JSON.parse(ENV.fetch('RESQUE_SERVER_ADDRESSES', '[]')), user: ENV['SERVER_DEPLOYMENT_USER']
-role :web,              JSON.parse(ENV.fetch('APP_SERVER_ADDRESSES', '[]')),    user: ENV['SERVER_DEPLOYMENT_USER']
+def parse_hosts(env_key)
+  JSON.parse(ENV.fetch(env_key, '[]'))
+rescue JSON::ParserError
+  []
+end
+
+def normalize_and_dedupe_hosts(hosts)
+  seen = {}
+
+  hosts.each_with_object([]) do |host, normalized|
+    next if host.to_s.strip.empty?
+
+    canonical = begin
+      Resolv.getaddress(host)
+    rescue Resolv::ResolvError
+      host
+    end
+
+    next if seen[canonical]
+
+    seen[canonical] = true
+    normalized << host
+  end
+end
+
+app_hosts = normalize_and_dedupe_hosts(parse_hosts('APP_SERVER_ADDRESSES'))
+cron_hosts = normalize_and_dedupe_hosts(parse_hosts('CRON_SERVER_ADDRESSES'))
+resque_hosts = normalize_and_dedupe_hosts(parse_hosts('RESQUE_SERVER_ADDRESSES'))
+
+role :app,              app_hosts,    user: ENV['SERVER_DEPLOYMENT_USER']
+role :cron,             cron_hosts,   user: ENV['SERVER_DEPLOYMENT_USER']
+role :db,               app_hosts,    user: ENV['SERVER_DEPLOYMENT_USER']
+role :resque_scheduler, resque_hosts, user: ENV['SERVER_DEPLOYMENT_USER']
+role :resque_worker,    resque_hosts, user: ENV['SERVER_DEPLOYMENT_USER']
+role :web,              app_hosts,    user: ENV['SERVER_DEPLOYMENT_USER']
 
 set :ssh_options, {
   auth_methods:  %w(publickey),
