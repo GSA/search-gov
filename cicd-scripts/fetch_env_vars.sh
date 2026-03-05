@@ -162,17 +162,28 @@ PEM_OUTPUT_FILE="/home/search/searchgov/shared/config/logindotgov.pem"
 
 # Direct write to file (preserves original formatting)
 log "Fetching parameter value from $CERT_REGION..."
-if ! aws ssm get-parameter \
+log "Running: aws ssm get-parameter --name LOGIN_DOT_GOV_PEM --region $CERT_REGION --with-decryption"
+
+FETCH_OUTPUT=$(aws ssm get-parameter \
   --name "LOGIN_DOT_GOV_PEM" \
   --region "$CERT_REGION" \
   --with-decryption \
   --query "Parameter.Value" \
-  --output text > "$PEM_OUTPUT_FILE" 2>&1; then
+  --output text 2>&1)
+FETCH_EXIT_CODE=$?
+
+log "Fetch command exit code: $FETCH_EXIT_CODE"
+
+if [ $FETCH_EXIT_CODE -ne 0 ]; then
   warn "Failed to fetch LOGIN_DOT_GOV_PEM from SSM (region: $CERT_REGION)"
+  warn "Exit code: $FETCH_EXIT_CODE"
+  warn "Error output: $FETCH_OUTPUT"
   warn "Login.gov authentication will be disabled"
   exit 0
 fi
 
+log "Fetch successful, writing to file..."
+echo "$FETCH_OUTPUT" > "$PEM_OUTPUT_FILE"
 log "PEM fetched and written to $PEM_OUTPUT_FILE"
 
 # CRITICAL: Show first line to diagnose if we're getting "placeholder"
