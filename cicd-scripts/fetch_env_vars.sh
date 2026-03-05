@@ -116,17 +116,28 @@ log "Fetching sensitive parameters from: $CERT_REGION (staging/prod region)"
 
 # Verify parameter exists and check KMS key
 log "Checking if LOGIN_DOT_GOV_PEM exists in region $CERT_REGION..."
-PARAM_DETAILS=$(aws ssm describe-parameters \
+if ! PARAM_DETAILS=$(aws ssm describe-parameters \
   --region "$CERT_REGION" \
   --parameter-filters "Key=Name,Values=LOGIN_DOT_GOV_PEM" \
   --query "Parameters[0]" \
-  --output json 2>&1)
-
-if [ $? -ne 0 ] || [ -z "$PARAM_DETAILS" ] || [ "$PARAM_DETAILS" == "null" ]; then
-  warn "Parameter LOGIN_DOT_GOV_PEM does NOT exist in region $CERT_REGION"
+  --output json 2>&1); then
+  warn "FAILED to describe parameters in region $CERT_REGION"
+  warn "Error: $PARAM_DETAILS"
+  warn "This might be a permissions issue or region access problem"
   warn "Login.gov authentication will be disabled"
   exit 0
 fi
+
+log "Raw parameter details response: $PARAM_DETAILS"
+
+if [ -z "$PARAM_DETAILS" ] || [ "$PARAM_DETAILS" == "null" ] || [ "$PARAM_DETAILS" == "None" ]; then
+  warn "Parameter LOGIN_DOT_GOV_PEM does NOT exist in region $CERT_REGION"
+  warn "Response was: $PARAM_DETAILS"
+  warn "Login.gov authentication will be disabled"
+  exit 0
+fi
+
+log "Parameter LOGIN_DOT_GOV_PEM found in region $CERT_REGION"
 
 # Extract KMS key ID if encrypted with customer managed key
 KMS_KEY_ID=$(echo "$PARAM_DETAILS" | grep -o '"KeyId": *"[^"]*"' | cut -d'"' -f4)
