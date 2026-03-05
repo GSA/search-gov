@@ -172,7 +172,7 @@ FETCH_OUTPUT=$(aws ssm get-parameter \
   --output text 2>&1)
 FETCH_EXIT_CODE=$?
 
-log "Fetch command exit code: $FETCH_EXIT_CODE"
+log "Fetch command exit code is: $FETCH_EXIT_CODE"
 
 if [ $FETCH_EXIT_CODE -ne 0 ]; then
   warn "Failed to fetch LOGIN_DOT_GOV_PEM from SSM (region: $CERT_REGION)"
