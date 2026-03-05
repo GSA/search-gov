@@ -110,27 +110,102 @@ log ".env file generated successfully"
 cp /home/search/cicd_temp/.env /home/search/searchgov/shared/
 
 # Fetch LOGIN_DOT_GOV_PEM and normalize escaped newlines so OpenSSL can parse it.
-LOGIN_DOT_GOV_PEM_VALUE=$(aws ssm get-parameter \
+log "Fetching LOGIN_DOT_GOV_PEM from SSM Parameter Store"
+if ! LOGIN_DOT_GOV_PEM_VALUE=$(aws ssm get-parameter \
   --name "LOGIN_DOT_GOV_PEM" \
   --region "$REGION" \
   --with-decryption \
   --query "Parameter.Value" \
-  --output text)
+  --output text 2>&1); then
+  warn "Failed to fetch LOGIN_DOT_GOV_PEM from SSM: $LOGIN_DOT_GOV_PEM_VALUE"
+  warn "Login.gov authentication will be disabled"
+  exit 0
+fi
 
 PEM_OUTPUT_FILE="/home/search/searchgov/shared/config/logindotgov.pem"
+log "Normalizing PEM content and writing to $PEM_OUTPUT_FILE"
 normalize_pem_value_to_file "$LOGIN_DOT_GOV_PEM_VALUE" "$PEM_OUTPUT_FILE"
 
-# Fallback: if key still does not parse, attempt one additional pass with printf %b.
-if ! openssl pkey -in "$PEM_OUTPUT_FILE" -noout >/dev/null 2>&1; then
+# Diagnostic: Check file size
+PEM_SIZE=$(wc -c < "$PEM_OUTPUT_FILE" | tr -d ' ')
+log "PEM file size: ${PEM_SIZE} bytes"
+
+if [ "$PEM_SIZE" -lt 100 ]; then
+  warn "PEM file is suspiciously small (${PEM_SIZE} bytes) - likely corrupt"
+fi
+
+# Check for required PEM markers
+if ! grep -q "^-----BEGIN" "$PEM_OUTPUT_FILE"; then
+  warn "PEM file missing BEGIN marker - showing first 3 lines:"
+  head -3 "$PEM_OUTPUT_FILE" | while IFS= read -r line; do
+    warn "  $line"
+  done
+fi
+
+if ! grep -q "^-----END" "$PEM_OUTPUT_FILE"; then
+  warn "PEM file missing END marker - showing last 3 lines:"
+  tail -3 "$PEM_OUTPUT_FILE" | while IFS= read -r line; do
+    warn "  $line"
+  done
+fi
+
+# Primary validation attempt
+if openssl pkey -in "$PEM_OUTPUT_FILE" -noout 2>/dev/null; then
+  log "PEM validation: PASSED (primary normalization)"
+else
   warn "Initial PEM normalization failed validation; attempting fallback decoding"
+  
+  # Fallback: try printf %b for different escape sequence handling
   printf '%b\n' "$LOGIN_DOT_GOV_PEM_VALUE" > "$PEM_OUTPUT_FILE"
+  
+  if openssl pkey -in "$PEM_OUTPUT_FILE" -noout 2>/dev/null; then
+    log "PEM validation: PASSED (fallback normalization)"
+  else
+    # Capture detailed error
+    PEM_ERROR=$(openssl pkey -in "$PEM_OUTPUT_FILE" -noout 2>&1 || true)
+    warn "LOGIN_DOT_GOV_PEM validation FAILED after all normalization attempts"
+    warn "OpenSSL error: $PEM_ERROR"
+    warn "This will prevent Login.gov authentication from working"
+    warn ""
+    warn "To diagnose this issue:"
+    warn "  1. SSH to the instance"
+    warn "  2. Run: /home/search/cicd_temp/cicd-scripts/verify_pem.sh $PEM_OUTPUT_FILE"
+    warn "  3. Check SSM Parameter Store value for corruption"
+    warn ""
+    warn "Common causes:"
+    warn "  - Incorrect line endings in SSM (must be Unix LF, not Windows CRLF)"
+    warn "  - Extra quotes or escape sequences in SSM value"
+    warn "  - Missing or corrupted BEGIN/END markers"
+    warn "  - Non-ASCII characters in the PEM content"
+    warn ""
+    warn "Continuing deployment - app will start but Login.gov auth will be disabled"
+  fi
 fi
 
-if ! openssl pkey -in "$PEM_OUTPUT_FILE" -noout >/dev/null 2>&1; then
-  warn "LOGIN_DOT_GOV_PEM is still invalid after normalization; app may disable Login.gov auth"
+# Additional Ruby validation check (simulates Rails loading)
+if command -v ruby >/dev/null 2>&1; then
+  log "Performing Ruby OpenSSL validation check..."
+  RUBY_CHECK=$(ruby -e "
+    require 'openssl'
+    begin
+      OpenSSL::PKey::RSA.new(File.read('$PEM_OUTPUT_FILE'))
+      puts 'PASS'
+    rescue => e
+      puts \"FAIL: #{e.class} - #{e.message}\"
+    end
+  " 2>&1)
+  
+  if echo "$RUBY_CHECK" | grep -q "PASS"; then
+    log "Ruby OpenSSL validation: PASSED"
+  else
+    warn "Ruby OpenSSL validation: FAILED"
+    warn "Ruby error: $RUBY_CHECK"
+    warn "This matches the error that will occur during Rails initialization"
+  fi
 fi
 
-chmod 600 /home/search/searchgov/shared/config/logindotgov.pem || true
+chmod 600 "$PEM_OUTPUT_FILE" || true
+log "Set PEM file permissions to 600"
 
 # Create  directories if they do not already exist
 [ ! -d /home/search/searchgov/shared/tmp/pids/ ] && mkdir -p /home/search/searchgov/shared/tmp/pids/
