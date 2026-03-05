@@ -51,8 +51,13 @@ PARAM_PATH=""
 # Clear the .env file if it exists
 > .env
 
+# CERT_REGION: Region where sensitive parameters (certs, keys) are stored
+# Dev environment fetches from staging since dev doesn't maintain sensitive params
+CERT_REGION="us-east-2"
+
 log "Starting script"
 log "whoami: $(whoami)"
+log "Sensitive parameters will be fetched from region: $CERT_REGION"
 
 # Ensure expected shared directories exist before writing files.
 mkdir -p /home/search/searchgov/shared/config /home/search/searchgov/shared/tmp/pids /home/search/searchgov/shared/log
@@ -105,22 +110,89 @@ log ".env file generated successfully"
 cp /home/search/cicd_temp/.env /home/search/searchgov/shared/
 
 # Fetch LOGIN_DOT_GOV_PEM - try direct write first to preserve format
-log "Fetching LOGIN_DOT_GOV_PEM from SSM Parameter Store (region: $REGION)"
+log "Fetching LOGIN_DOT_GOV_PEM from SSM Parameter Store"
+log "Instance region: $REGION"
+log "Fetching sensitive parameters from: $CERT_REGION (staging/prod region)"
+
+# Verify parameter exists and check KMS key
+log "Checking if LOGIN_DOT_GOV_PEM exists in region $CERT_REGION..."
+PARAM_DETAILS=$(aws ssm describe-parameters \
+  --region "$CERT_REGION" \
+  --parameter-filters "Key=Name,Values=LOGIN_DOT_GOV_PEM" \
+  --query "Parameters[0]" \
+  --output json 2>&1)
+
+if [ $? -ne 0 ] || [ -z "$PARAM_DETAILS" ] || [ "$PARAM_DETAILS" == "null" ]; then
+  warn "Parameter LOGIN_DOT_GOV_PEM does NOT exist in region $CERT_REGION"
+  warn "Login.gov authentication will be disabled"
+  exit 0
+fi
+
+# Extract KMS key ID if encrypted with customer managed key
+KMS_KEY_ID=$(echo "$PARAM_DETAILS" | grep -o '"KeyId": *"[^"]*"' | cut -d'"' -f4)
+
+if [ -n "$KMS_KEY_ID" ] && [ "$KMS_KEY_ID" != "alias/aws/ssm" ]; then
+  log "Parameter is encrypted with CUSTOMER MANAGED KMS key: $KMS_KEY_ID"
+  log "CRITICAL: IAM role must have kms:Decrypt permission for this key"
+  
+  # Try to check if we have access to the key (best effort)
+  if aws kms describe-key --key-id "$KMS_KEY_ID" --region "$CERT_REGION" >/dev/null 2>&1; then
+    log "KMS key is accessible (describe-key succeeded)"
+  else
+    warn "Cannot describe KMS key - may lack permissions"
+  fi
+else
+  log "Parameter uses default AWS managed key (alias/aws/ssm)"
+fi
+
+log "Parameter found in region $CERT_REGION"
+
 PEM_OUTPUT_FILE="/home/search/searchgov/shared/config/logindotgov.pem"
 
 # Direct write to file (preserves original formatting)
+log "Fetching parameter value from $CERT_REGION..."
 if ! aws ssm get-parameter \
   --name "LOGIN_DOT_GOV_PEM" \
-  --region "$REGION" \
+  --region "$CERT_REGION" \
   --with-decryption \
   --query "Parameter.Value" \
   --output text > "$PEM_OUTPUT_FILE" 2>&1; then
-  warn "Failed to fetch LOGIN_DOT_GOV_PEM from SSM"
+  warn "Failed to fetch LOGIN_DOT_GOV_PEM from SSM (region: $CERT_REGION)"
   warn "Login.gov authentication will be disabled"
   exit 0
 fi
 
 log "PEM fetched and written to $PEM_OUTPUT_FILE"
+
+# CRITICAL: Show first line to diagnose if we're getting "placeholder"
+FIRST_LINE=$(head -1 "$PEM_OUTPUT_FILE" | head -c 50)
+log "DIAGNOSTIC - First 50 chars of fetched PEM: $FIRST_LINE"
+
+if echo "$FIRST_LINE" | grep -qi "placeholder"; then
+  warn "!!!! CRITICAL ERROR - KMS DECRYPTION FAILURE !!!!"
+  warn "Fetched PEM contains 'placeholder' - this means KMS decryption FAILED"
+  warn ""
+  warn "Root Cause: The IAM role attached to this EC2 instance does NOT have"
+  warn "permission to decrypt the LOGIN_DOT_GOV_PEM parameter using its KMS key"
+  warn ""
+  warn "Fetching from region: $CERT_REGION"
+  if [ -n "$KMS_KEY_ID" ]; then
+    warn "KMS Key ID: $KMS_KEY_ID"
+  fi
+  warn ""
+  warn "To fix this:"
+  warn "1. Identify the IAM role attached to this EC2 instance"
+  warn "2. Add kms:Decrypt permission for the KMS key in region $CERT_REGION"
+  warn ""
+  warn "AWS CLI commands to fix:"
+  warn "  # Get instance role name"
+  warn "  ROLE=\$(aws iam list-instance-profiles | jq -r '.InstanceProfiles[] | select(.InstanceProfileName | contains(\"searchgov\")) | .Roles[0].RoleName')"
+  warn ""
+  warn "  # Add inline policy to grant KMS access"
+  warn "  aws iam put-role-policy --role-name \$ROLE --policy-name SSMKMSDecrypt --policy-document '{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":[\"kms:Decrypt\",\"kms:DescribeKey\"],\"Resource\":\"arn:aws:kms:$CERT_REGION:*:key/*\"}]}'"
+  warn ""
+  warn "Login.gov authentication will be disabled until KMS permissions are fixed"
+fi
 
 # Diagnostic: Check file size
 PEM_SIZE=$(wc -c < "$PEM_OUTPUT_FILE" | tr -d ' ')
@@ -176,17 +248,17 @@ else
       warn ""
       warn "CRITICAL: Your PEM validates correctly when downloaded locally,"
       warn "but fails during deployment. Possible causes:"
-      warn "  - Wrong AWS region (current: $REGION)"
-      warn "    Dev should be us-west-1, not us-east-2"
-      warn "  - Different PEM version in $REGION vs local"
+      warn "  - Fetching from wrong region (current: $CERT_REGION)"
+      warn "  - Different PEM version in $CERT_REGION vs local"
       warn "  - AWS CLI output formatting issue"
       warn "  - Character encoding problem during transfer"
+      warn "  - KMS decryption permissions"
       warn ""
       warn "To diagnose:"
       warn "  1. SSH to instance"
       warn "  2. Run: /home/search/cicd_temp/cicd-scripts/verify_pem.sh $PEM_OUTPUT_FILE"
-      warn "  3. Verify region: aws configure get region"
-      warn "  4. Check parameter exists: aws ssm describe-parameters --region $REGION | grep LOGIN_DOT_GOV_PEM"
+      warn "  3. Check parameter: aws ssm describe-parameters --region $CERT_REGION | grep LOGIN_DOT_GOV_PEM"
+      warn "  4. Test decrypt: aws ssm get-parameter --name LOGIN_DOT_GOV_PEM --region $CERT_REGION --with-decryption --query Parameter.Value --output text | head -1"
       warn ""
       warn "Continuing deployment - app will start but Login.gov auth will be disabled"
     fi
