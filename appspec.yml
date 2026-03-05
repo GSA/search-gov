@@ -1,18 +1,43 @@
 
 version: 0.0
 os: linux
-# files:
-#   - source: /
-#     destination: /home/search/cicd_temp 
+files:
+  # Stage the full build artifact in a temporary directory. Hooks will promote it
+  # into a timestamped release directory under /home/search/searchgov.
+  - source: /
+    destination: /home/search/cicd_temp
 
 hooks:
+  ApplicationStop:
+    - location: cicd-scripts/application_stop.sh
+      timeout: 300
+      runas: search
+
   BeforeInstall:
+    - location: cicd-scripts/before_install.sh
+      timeout: 300
+      runas: search
+
     - location: cicd-scripts/fetch_env_vars.sh
       timeout: 300
       runas: search
 
   AfterInstall:
+    - location: cicd-scripts/after_install.sh
+      timeout: 1200
+      runas: search
+
     - location: cicd-scripts/copy_non_fingerprinted_assets.sh
+      timeout: 300
+      runas: search
+
+  ApplicationStart:
+    - location: cicd-scripts/application_start.sh
+      timeout: 300
+      runas: search
+
+  ValidateService:
+    - location: cicd-scripts/validate_service.sh
       timeout: 300
       runas: search
 

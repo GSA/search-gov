@@ -1,14 +1,23 @@
 #!/bin/bash
-set -x
-# Move to a writable location
+set -euo pipefail
+
+# NOTE: This script runs during CodeDeploy BeforeInstall. Do not remove
+# /home/search/cicd_temp contents, because that directory contains the staged
+# deployment artifact downloaded by CodeDeploy.
+
+log() {
+  echo "[CODEDEPLOY][BEFORE_INSTALL][fetch_env_vars] $*"
+}
+
+# Move to a writable location for generating .env
 cd /home/search/cicd_temp
 # Leave PARAM_PATH empty to fetch all parameters in the region
 PARAM_PATH=""
 # Clear the .env file if it exists
 > .env
 
-echo "Starting the script"
-echo "whoami: " $(whoami)
+log "Starting script"
+log "whoami: $(whoami)"
 # Fetch all parameter names in the region using IMDSv2 method which new method
 TOKEN=$(curl -sS --fail --max-time 2 -X PUT "http://169.254.169.254/latest/api/token" \
   -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
@@ -18,15 +27,14 @@ REGION=$(curl -sS --fail --max-time 2 \
   "http://169.254.169.254/latest/dynamic/instance-identity/document" \
   | sed -n 's/.*"region"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p')
 
-# Print region
-echo "REGION is: $REGION"
+log "Detected AWS region: $REGION"
 
 if [ -n "$PARAM_PATH" ]; then
     PARAM_KEYS=$(aws ssm get-parameters-by-path --path "$PARAM_PATH"  --recursive --query "Parameters[*].Name" --output text --region $REGION)
 else
     PARAM_KEYS=$(aws ssm describe-parameters  --query "Parameters[*].Name" --output text --region $REGION)
 fi
-echo "Fetched parameter keys: $PARAM_KEYS"
+log "Fetched parameter keys from SSM"
 
 # Loop through each parameter key
 for PARAM in $PARAM_KEYS; do
@@ -45,9 +53,7 @@ for PARAM in $PARAM_KEYS; do
     fi
 done
 
-# Output the result
-echo ".env file created with the following content:"
-cat .env
+log ".env file generated successfully"
 cp /home/search/cicd_temp/.env /home/search/searchgov/shared/
 
 # Fetch a specific parameter and save it to a file
@@ -70,4 +76,4 @@ find /home/search/searchgov/ -type d -exec chmod 2755 {} \;
 
 umask 022
 
-sudo rm -rf /home/search/cicd_temp/*
+log "Completed successfully"

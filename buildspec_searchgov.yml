@@ -1,182 +1,54 @@
 
 version: 0.2
-env:
-  parameter-store:
-    APP_SERVER_ADDRESSES: "DEPLOY_SEARCHGOV_SERVER_ADDRESS"
-    CRON_SERVER_ADDRESSES: "DEPLOY_CRON_SERVER_ADDRESSES"
-    DEPLOYMENT_PATH: "DEPLOY_SEARCHGOV_DEPLOYMENT_PATH"
-    RESQUE_SERVER_ADDRESSES: "DEPLOY_RESQUE_SERVER_ADDRESSES"
-    RESQUE_WORKERS_COUNT: "DEPLOY_RESQUE_WORKERS_COUNT"
-    SEARCHGOV_THREADS: "SEARCHGOV_THREADS"
-    SEARCHGOV_WORKERS: "SEARCHGOV_WORKERS"
-    SERVER_DEPLOYMENT_USER: "DEPLOY_SERVER_DEPLOYMENT_USER"
-
-  # shared deployment variables with subsequent stages - might not to export as this is the final stage
-  exported-variables:
-    - APP_SERVER_ADDRESSES
-    - DEPLOYMENT_PATH
-    - RESQUE_SERVER_ADDRESSES
-    - SEARCHGOV_THREADS
-    - SEARCHGOV_WORKERS
-    - SERVER_DEPLOYMENT_USER
-    - SSH_KEY_PATH
 
 phases:
   install:
     runtime-versions:
-      python: 3.x
+      ruby: 3.3
+      nodejs: 20
     commands:
-      - export PATH="$HOME/.rbenv/bin:$PATH"
-      - eval "$(rbenv init -)"
-
+      - set -euo pipefail
+      - echo "[CODEDEPLOY][INSTALL] Starting install phase"
+      - echo "[CODEDEPLOY][INSTALL] Ruby version: $(ruby -v)"
+      - echo "[CODEDEPLOY][INSTALL] Node version: $(node -v)"
+      - echo "[CODEDEPLOY][INSTALL] Yarn version: $(yarn -v || true)"
 
   pre_build:
     commands:
-      - aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' --output text > $SEARCH_ENV_EC2_KEY
-      - |
-        # Aggressively clean up repo directory on ALL target servers before Capistrano deploy
-        CURRENT_LOCATION=$(pwd)
-        SSH_KEY_PATH="${CURRENT_LOCATION}/${SEARCH_ENV_EC2_KEY}"
-        chmod 600 $SSH_KEY_PATH
-        
-        echo "======================================================================"
-        echo "STARTING PRE-BUILD CLEANUP"
-        echo "======================================================================"
-        echo "Current directory: $(pwd)"
-        echo "SSH Key path: $SSH_KEY_PATH"
-        echo "Deployment user: $SERVER_DEPLOYMENT_USER"
-        
-        # Combine all server addresses into a single unique list
-        echo ""
-        echo "Combining server addresses from all roles..."
-        echo "APP_SERVER_ADDRESSES: $APP_SERVER_ADDRESSES"
-        echo "CRON_SERVER_ADDRESSES: $CRON_SERVER_ADDRESSES"
-        echo "RESQUE_SERVER_ADDRESSES: $RESQUE_SERVER_ADDRESSES"
-        
-        ALL_SERVERS=$(printf "%s\n%s\n%s\n" "$APP_SERVER_ADDRESSES" "$CRON_SERVER_ADDRESSES" "$RESQUE_SERVER_ADDRESSES" \
-          | tr -d '[]" ' \
-          | tr ',' '\n' \
-          | sed '/^$/d' \
-          | sort -u)
-        
-        echo ""
-        echo "Unique server list (ALL_SERVERS):"
-        echo "$ALL_SERVERS"
-        echo ""
-        
-        SERVER_COUNT=$(printf "%s\n" "$ALL_SERVERS" | sed '/^$/d' | wc -l | tr -d ' ')
-        echo "Total servers to clean: $SERVER_COUNT"
-        echo "======================================================================"
+      - set -euo pipefail
+      - echo "[CODEDEPLOY][PRE_BUILD] =================================================="
+      - echo "[CODEDEPLOY][PRE_BUILD] Build metadata"
+      - echo "[CODEDEPLOY][PRE_BUILD] Commit: ${CODEBUILD_RESOLVED_SOURCE_VERSION:-unknown}"
+      - echo "[CODEDEPLOY][PRE_BUILD] Build ID: ${CODEBUILD_BUILD_ID:-unknown}"
+      - echo "[CODEDEPLOY][PRE_BUILD] Environment: ${SEARCH_ENV:-unknown}"
+      - echo "[CODEDEPLOY][PRE_BUILD] Timestamp: $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+      - echo "[CODEDEPLOY][PRE_BUILD] =================================================="
 
-        if [ "$SERVER_COUNT" -eq 0 ]; then
-          echo "ERROR: No deployment servers resolved from APP/CRON/RESQUE address variables"
-          exit 1
-        fi
-        
-        CLEANUP_SUCCESS=0
-        CLEANUP_FAILED=0
-        
-        for server in $ALL_SERVERS; do
-          echo ""
-          echo "----------------------------------------------------------------------"
-          echo "Processing server: $server"
-          echo "----------------------------------------------------------------------"
-          
-          SSH_OUTPUT=$(ssh -v -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o ConnectTimeout=10 -i $SSH_KEY_PATH $SERVER_DEPLOYMENT_USER@$server '
-            echo "Connected to: $(hostname)"
-            echo "Current user: $(whoami)"
-            echo "Checking for repo directory..."
-
-            DEPLOY_ROOT="'"$DEPLOYMENT_PATH"'"
-            REPO_DIR="${DEPLOY_ROOT%/}/repo"
-            LOCK_DIR="${DEPLOY_ROOT%/}/.deploy_lock"
-            echo "Using DEPLOYMENT_PATH: ${DEPLOY_ROOT}"
-            echo "Computed REPO_DIR: ${REPO_DIR}"
-            echo "Computed LOCK_DIR: ${LOCK_DIR}"
-
-            if [ -d "$LOCK_DIR" ]; then
-              echo "FOUND: ${LOCK_DIR} exists"
-              echo "Removing stale deploy lock directory..."
-              rm -rf "$LOCK_DIR"
-              if [ -d "$LOCK_DIR" ]; then
-                echo "ERROR: Failed to remove ${LOCK_DIR}"
-                exit 1
-              fi
-              echo "SUCCESS: Removed stale deploy lock"
-            else
-              echo "NOT FOUND: No deploy lock directory at ${LOCK_DIR}"
-            fi
-            
-            if [ -d "$REPO_DIR" ]; then
-              echo "FOUND: ${REPO_DIR} exists"
-              echo "Listing contents before cleanup:"
-              ls -la "$DEPLOY_ROOT" | grep repo || true
-              
-              echo "Changing to parent directory..."
-              cd "$DEPLOY_ROOT" || exit 1
-              
-              echo "Adding write permissions..."
-              chmod -R u+w repo 2>&1 || true
-              
-              echo "Removing repo directory..."
-              rm -rfv repo 2>&1 | head -20
-              
-              if [ ! -d "repo" ]; then
-                echo "SUCCESS: Repo directory removed"
-                exit 0
-              else
-                echo "ERROR: Repo directory still exists after removal!"
-                ls -la "$DEPLOY_ROOT" | grep repo
-                exit 1
-              fi
-            else
-              echo "NOT FOUND: No repo directory at ${REPO_DIR}"
-              echo "Listing ${DEPLOY_ROOT} contents:"
-              ls -la "$DEPLOY_ROOT" || true
-            fi
-            
-            # Ensure parent directory exists
-            mkdir -p "$DEPLOY_ROOT"
-            echo "Parent directory ready"
-            exit 0
-          ' 2>&1)
-          
-          SSH_EXIT_CODE=$?
-          echo "$SSH_OUTPUT"
-          
-          if [ $SSH_EXIT_CODE -eq 0 ]; then
-            echo "✓ Cleanup successful on $server"
-            CLEANUP_SUCCESS=$((CLEANUP_SUCCESS + 1))
-          else
-            echo "✗ Cleanup failed on $server (exit code: $SSH_EXIT_CODE)"
-            CLEANUP_FAILED=$((CLEANUP_FAILED + 1))
-          fi
-        done
-        
-        echo ""
-        echo "======================================================================"
-        echo "PRE-BUILD CLEANUP COMPLETE"
-        echo "======================================================================"
-        echo "Servers processed: $SERVER_COUNT"
-        echo "Successful: $CLEANUP_SUCCESS"
-        echo "Failed: $CLEANUP_FAILED"
-        echo "======================================================================"
-        
-        if [ $CLEANUP_FAILED -gt 0 ]; then
-          echo "ERROR: Some servers failed cleanup - aborting deployment to prevent git clone conflicts"
-          exit 1
-        fi
   build:
     commands:
-      - CURRENT_LOCATION=$(pwd)  # would look something like this - /codebuild/output/src559980389/src - a temp dir created by codebuild
-      - SSH_KEY_PATH="${CURRENT_LOCATION}/${SEARCH_ENV_EC2_KEY}"
-      - echo $SSH_KEY_PATH
-      - echo "deploying searchgov app with capistrano"
-      - bundle install
-      - cap $SEARCH_ENV puma:config puma:systemd:config puma:systemd:enable
-      - cap $SEARCH_ENV deploy
-      - cap $SEARCH_ENV resque:restart
-      - cap $SEARCH_ENV resque:scheduler:restart
+      - set -euo pipefail
+      - echo "[CODEDEPLOY][BUILD] Installing Ruby gems for deployment artifact"
+      - bundle install --jobs 4 --retry 3
+      - echo "[CODEDEPLOY][BUILD] Creating deployment manifest for troubleshooting"
+      - |
+        cat > deployment_manifest.json <<MANIFEST
+        {
+          "application": "search-gov",
+          "commit": "${CODEBUILD_RESOLVED_SOURCE_VERSION:-unknown}",
+          "build_id": "${CODEBUILD_BUILD_ID:-unknown}",
+          "build_number": "${CODEBUILD_BUILD_NUMBER:-unknown}",
+          "generated_at_utc": "$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+        }
+        MANIFEST
+      - echo "[CODEDEPLOY][BUILD] Manifest created"
+
+  post_build:
+    commands:
+      - set -euo pipefail
+      - echo "[CODEDEPLOY][POST_BUILD] Listing key deployment files"
+      - ls -la appspec.yml buildspec_searchgov.yml deployment_manifest.json
+      - ls -la cicd-scripts
+      - echo "[CODEDEPLOY][POST_BUILD] Build completed successfully"
 
 artifacts:
   files:
