@@ -72,11 +72,6 @@ if [ -n "$TOKEN" ]; then
     | sed -n 's/.*"region"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' || true)
 fi
 
-if [ -z "$REGION" ]; then
-  REGION="${AWS_REGION:-${SEARCH_AWS_REGION:-us-east-2}}"
-  warn "Using fallback region: $REGION"
-fi
-
 log "Detected AWS region: $REGION"
 
 if [ -n "$PARAM_PATH" ]; then
@@ -109,22 +104,23 @@ done
 log ".env file generated successfully"
 cp /home/search/cicd_temp/.env /home/search/searchgov/shared/
 
-# Fetch LOGIN_DOT_GOV_PEM and normalize escaped newlines so OpenSSL can parse it.
-log "Fetching LOGIN_DOT_GOV_PEM from SSM Parameter Store"
-if ! LOGIN_DOT_GOV_PEM_VALUE=$(aws ssm get-parameter \
+# Fetch LOGIN_DOT_GOV_PEM - try direct write first to preserve format
+log "Fetching LOGIN_DOT_GOV_PEM from SSM Parameter Store (region: $REGION)"
+PEM_OUTPUT_FILE="/home/search/searchgov/shared/config/logindotgov.pem"
+
+# Direct write to file (preserves original formatting)
+if ! aws ssm get-parameter \
   --name "LOGIN_DOT_GOV_PEM" \
   --region "$REGION" \
   --with-decryption \
   --query "Parameter.Value" \
-  --output text 2>&1); then
-  warn "Failed to fetch LOGIN_DOT_GOV_PEM from SSM: $LOGIN_DOT_GOV_PEM_VALUE"
+  --output text > "$PEM_OUTPUT_FILE" 2>&1; then
+  warn "Failed to fetch LOGIN_DOT_GOV_PEM from SSM"
   warn "Login.gov authentication will be disabled"
   exit 0
 fi
 
-PEM_OUTPUT_FILE="/home/search/searchgov/shared/config/logindotgov.pem"
-log "Normalizing PEM content and writing to $PEM_OUTPUT_FILE"
-normalize_pem_value_to_file "$LOGIN_DOT_GOV_PEM_VALUE" "$PEM_OUTPUT_FILE"
+log "PEM fetched and written to $PEM_OUTPUT_FILE"
 
 # Diagnostic: Check file size
 PEM_SIZE=$(wc -c < "$PEM_OUTPUT_FILE" | tr -d ' ')
@@ -149,36 +145,51 @@ if ! grep -q "^-----END" "$PEM_OUTPUT_FILE"; then
   done
 fi
 
-# Primary validation attempt
+# Test direct write first (no normalization - THIS IS KEY!)
+log "Validating PEM with direct write (no normalization)..."
 if openssl pkey -in "$PEM_OUTPUT_FILE" -noout 2>/dev/null; then
-  log "PEM validation: PASSED (primary normalization)"
+  log "PEM validation: PASSED (direct write, no normalization needed)"
 else
-  warn "Initial PEM normalization failed validation; attempting fallback decoding"
+  warn "Direct write failed validation; PEM may have escaped sequences in SSM"
   
-  # Fallback: try printf %b for different escape sequence handling
-  printf '%b\n' "$LOGIN_DOT_GOV_PEM_VALUE" > "$PEM_OUTPUT_FILE"
+  # Read the content for normalization attempts
+  LOGIN_DOT_GOV_PEM_VALUE=$(cat "$PEM_OUTPUT_FILE")
+  
+  # Fallback 1: Try normalize_pem_value_to_file (handles \\n)
+  warn "Attempting normalization for escaped newline sequences..."
+  normalize_pem_value_to_file "$LOGIN_DOT_GOV_PEM_VALUE" "$PEM_OUTPUT_FILE"
   
   if openssl pkey -in "$PEM_OUTPUT_FILE" -noout 2>/dev/null; then
-    log "PEM validation: PASSED (fallback normalization)"
+    log "PEM validation: PASSED (after normalizing escaped sequences)"
   else
-    # Capture detailed error
-    PEM_ERROR=$(openssl pkey -in "$PEM_OUTPUT_FILE" -noout 2>&1 || true)
-    warn "LOGIN_DOT_GOV_PEM validation FAILED after all normalization attempts"
-    warn "OpenSSL error: $PEM_ERROR"
-    warn "This will prevent Login.gov authentication from working"
-    warn ""
-    warn "To diagnose this issue:"
-    warn "  1. SSH to the instance"
-    warn "  2. Run: /home/search/cicd_temp/cicd-scripts/verify_pem.sh $PEM_OUTPUT_FILE"
-    warn "  3. Check SSM Parameter Store value for corruption"
-    warn ""
-    warn "Common causes:"
-    warn "  - Incorrect line endings in SSM (must be Unix LF, not Windows CRLF)"
-    warn "  - Extra quotes or escape sequences in SSM value"
-    warn "  - Missing or corrupted BEGIN/END markers"
-    warn "  - Non-ASCII characters in the PEM content"
-    warn ""
-    warn "Continuing deployment - app will start but Login.gov auth will be disabled"
+    # Fallback 2: Try printf %b
+    warn "Normalization failed; attempting printf %b fallback..."
+    printf '%b\n' "$LOGIN_DOT_GOV_PEM_VALUE" > "$PEM_OUTPUT_FILE"
+    
+    if openssl pkey -in "$PEM_OUTPUT_FILE" -noout 2>/dev/null; then
+      log "PEM validation: PASSED (after printf %b fallback)"
+    else
+      # Capture detailed error
+      PEM_ERROR=$(openssl pkey -in "$PEM_OUTPUT_FILE" -noout 2>&1 || true)
+      warn "LOGIN_DOT_GOV_PEM validation FAILED after all attempts"
+      warn "OpenSSL error: $PEM_ERROR"
+      warn ""
+      warn "CRITICAL: Your PEM validates correctly when downloaded locally,"
+      warn "but fails during deployment. Possible causes:"
+      warn "  - Wrong AWS region (current: $REGION)"
+      warn "    Dev should be us-west-1, not us-east-2"
+      warn "  - Different PEM version in $REGION vs local"
+      warn "  - AWS CLI output formatting issue"
+      warn "  - Character encoding problem during transfer"
+      warn ""
+      warn "To diagnose:"
+      warn "  1. SSH to instance"
+      warn "  2. Run: /home/search/cicd_temp/cicd-scripts/verify_pem.sh $PEM_OUTPUT_FILE"
+      warn "  3. Verify region: aws configure get region"
+      warn "  4. Check parameter exists: aws ssm describe-parameters --region $REGION | grep LOGIN_DOT_GOV_PEM"
+      warn ""
+      warn "Continuing deployment - app will start but Login.gov auth will be disabled"
+    fi
   fi
 fi
 
