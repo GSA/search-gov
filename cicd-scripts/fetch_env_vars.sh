@@ -13,6 +13,21 @@ warn() {
   echo "[CODEDEPLOY][BEFORE_INSTALL][fetch_env_vars][WARN] $*"
 }
 
+normalize_pem_value_to_file() {
+  local pem_value="$1"
+  local output_file="$2"
+
+  # Trim one layer of surrounding quotes when present.
+  if [[ "$pem_value" == \"*\" ]]; then
+    pem_value="${pem_value#\"}"
+    pem_value="${pem_value%\"}"
+  fi
+
+  # Normalize carriage returns and convert escaped newlines.
+  # Some SSM values are stored with literal "\\n" sequences.
+  printf '%s' "$pem_value" | sed 's/\r//g' | awk '{gsub(/\\n/,"\n")}1' > "$output_file"
+}
+
 retry() {
   local attempts="$1"
   local delay_seconds="$2"
@@ -102,8 +117,19 @@ LOGIN_DOT_GOV_PEM_VALUE=$(aws ssm get-parameter \
   --query "Parameter.Value" \
   --output text)
 
-# Some SSM values are stored with literal "\n" sequences; interpret escapes.
-printf '%b\n' "$LOGIN_DOT_GOV_PEM_VALUE" > /home/search/searchgov/shared/config/logindotgov.pem
+PEM_OUTPUT_FILE="/home/search/searchgov/shared/config/logindotgov.pem"
+normalize_pem_value_to_file "$LOGIN_DOT_GOV_PEM_VALUE" "$PEM_OUTPUT_FILE"
+
+# Fallback: if key still does not parse, attempt one additional pass with printf %b.
+if ! openssl pkey -in "$PEM_OUTPUT_FILE" -noout >/dev/null 2>&1; then
+  warn "Initial PEM normalization failed validation; attempting fallback decoding"
+  printf '%b\n' "$LOGIN_DOT_GOV_PEM_VALUE" > "$PEM_OUTPUT_FILE"
+fi
+
+if ! openssl pkey -in "$PEM_OUTPUT_FILE" -noout >/dev/null 2>&1; then
+  warn "LOGIN_DOT_GOV_PEM is still invalid after normalization; app may disable Login.gov auth"
+fi
+
 chmod 600 /home/search/searchgov/shared/config/logindotgov.pem || true
 
 # Create  directories if they do not already exist
