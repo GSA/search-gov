@@ -5,6 +5,10 @@ log() {
   echo "[CODEDEPLOY][AFTER_INSTALL] $*"
 }
 
+warn() {
+  echo "[CODEDEPLOY][AFTER_INSTALL][WARN] $*"
+}
+
 APP_ROOT="${APP_ROOT:-/home/search/searchgov}"
 STAGING_ROOT="${STAGING_ROOT:-/home/search/cicd_temp}"
 RELEASES_DIR="${APP_ROOT}/releases"
@@ -16,6 +20,16 @@ RELEASE_DIR="${RELEASES_DIR}/${TIMESTAMP}"
 log "Starting AfterInstall hook"
 log "Host: $(hostname) | User: $(whoami)"
 log "Release dir: $RELEASE_DIR"
+
+# CodeDeploy hooks may run in a non-login shell where rbenv shims are not on PATH.
+# Add common rbenv paths so `bundle` is discoverable when installed for the deploy user.
+if [ -d "/home/search/.rbenv" ]; then
+  export RBENV_ROOT="/home/search/.rbenv"
+  export PATH="$RBENV_ROOT/bin:$RBENV_ROOT/shims:$PATH"
+  if command -v rbenv >/dev/null 2>&1; then
+    eval "$(rbenv init - bash)" || warn "rbenv init failed; continuing with PATH-based lookup"
+  fi
+fi
 
 mkdir -p "$RELEASE_DIR"
 
@@ -48,6 +62,12 @@ ln -sfn "$SHARED_DIR/tmp" "$RELEASE_DIR/tmp"
 cd "$RELEASE_DIR"
 
 log "Installing gems on target host"
+if ! command -v bundle >/dev/null 2>&1; then
+  log "ERROR: bundle command not found in PATH=$PATH"
+  log "ERROR: Ensure Ruby/Bundler are installed on hosts (via Ansible) or pre-bake in AMI"
+  exit 127
+fi
+
 bundle install --jobs 4 --retry 3 --without development test
 
 # Optional migration hook: set RUN_DB_MIGRATIONS=true in environment to enable.
