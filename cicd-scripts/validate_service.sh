@@ -5,6 +5,10 @@ log() {
   echo "[CODEDEPLOY][VALIDATE_SERVICE] $*"
 }
 
+warn() {
+  echo "[CODEDEPLOY][VALIDATE_SERVICE][WARN] $*"
+}
+
 service_exists() {
   local service_name="$1"
   systemctl list-unit-files --type=service --no-legend 2>/dev/null | awk '{print $1}' | grep -Fxq "${service_name}.service" || \
@@ -23,6 +27,29 @@ assert_service_active_if_present() {
   fi
 }
 
+wait_for_http_healthy() {
+  local url="$1"
+  local attempts="${2:-12}"
+  local sleep_seconds="${3:-5}"
+  local try=1
+
+  while [ "$try" -le "$attempts" ]; do
+    if curl --fail --silent --show-error --max-time 10 "$url" >/dev/null; then
+      log "HTTP health check passed on attempt ${try}/${attempts}"
+      return 0
+    fi
+
+    if [ "$try" -lt "$attempts" ]; then
+      warn "HTTP endpoint not ready (attempt ${try}/${attempts}); retrying in ${sleep_seconds}s"
+      sleep "$sleep_seconds"
+    fi
+
+    try=$((try + 1))
+  done
+
+  return 1
+}
+
 PUMA_SERVICE="${PUMA_SERVICE:-puma}"
 RESQUE_WORKER_SERVICE="${RESQUE_WORKER_SERVICE:-resque-worker}"
 RESQUE_SCHEDULER_SERVICE="${RESQUE_SCHEDULER_SERVICE:-resque-scheduler}"
@@ -36,7 +63,6 @@ assert_service_active_if_present "$RESQUE_WORKER_SERVICE"
 assert_service_active_if_present "$RESQUE_SCHEDULER_SERVICE"
 
 log "Validating HTTP endpoint: $APP_HEALTHCHECK_URL"
-curl --fail --silent --show-error --max-time 10 "$APP_HEALTHCHECK_URL" >/dev/null
-log "HTTP health check passed"
+wait_for_http_healthy "$APP_HEALTHCHECK_URL" "${HEALTHCHECK_ATTEMPTS:-12}" "${HEALTHCHECK_SLEEP_SECONDS:-5}"
 
 log "ValidateService hook completed"
