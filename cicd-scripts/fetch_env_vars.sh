@@ -94,8 +94,17 @@ done
 log ".env file generated successfully"
 cp /home/search/cicd_temp/.env /home/search/searchgov/shared/
 
-# Fetch a specific parameter and save it to a file
-aws ssm get-parameter --name "LOGIN_DOT_GOV_PEM" --region "$REGION" --with-decryption --query "Parameter.Value" --output text > /home/search/searchgov/shared/config/logindotgov.pem
+# Fetch LOGIN_DOT_GOV_PEM and normalize escaped newlines so OpenSSL can parse it.
+LOGIN_DOT_GOV_PEM_VALUE=$(aws ssm get-parameter \
+  --name "LOGIN_DOT_GOV_PEM" \
+  --region "$REGION" \
+  --with-decryption \
+  --query "Parameter.Value" \
+  --output text)
+
+# Some SSM values are stored with literal "\n" sequences; interpret escapes.
+printf '%b\n' "$LOGIN_DOT_GOV_PEM_VALUE" > /home/search/searchgov/shared/config/logindotgov.pem
+chmod 600 /home/search/searchgov/shared/config/logindotgov.pem || true
 
 # Create  directories if they do not already exist
 [ ! -d /home/search/searchgov/shared/tmp/pids/ ] && mkdir -p /home/search/searchgov/shared/tmp/pids/
