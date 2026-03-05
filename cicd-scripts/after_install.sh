@@ -20,11 +20,23 @@ log "Release dir: $RELEASE_DIR"
 mkdir -p "$RELEASE_DIR"
 
 # Copy staged artifact into a timestamped release directory.
-rsync -a --delete \
-  --exclude '.git' \
-  --exclude 'log/*' \
-  --exclude 'tmp/*' \
-  "$STAGING_ROOT/" "$RELEASE_DIR/"
+if command -v rsync >/dev/null 2>&1; then
+  log "Using rsync to copy staged artifact"
+  rsync -a --delete \
+    --exclude '.git' \
+    --exclude 'log/*' \
+    --exclude 'tmp/*' \
+    "$STAGING_ROOT/" "$RELEASE_DIR/"
+else
+  log "rsync not found; using tar fallback to copy staged artifact"
+  (
+    cd "$STAGING_ROOT"
+    tar --exclude='.git' --exclude='log' --exclude='tmp' -cf - .
+  ) | (
+    cd "$RELEASE_DIR"
+    tar -xf -
+  )
+fi
 
 # Link shared runtime files expected by the Rails app.
 mkdir -p "$RELEASE_DIR/config" "$RELEASE_DIR/tmp" "$RELEASE_DIR/log"
