@@ -51,6 +51,8 @@ start_puma_fallback() {
   local app_root="$1"
   local current_path="${app_root}/current"
   local puma_pidfile="${PUMA_PIDFILE:-${current_path}/tmp/pids/server.pid}"
+  local puma_stdout_log="${PUMA_STDOUT_LOG:-${current_path}/log/puma_stdout.log}"
+  local puma_stderr_log="${PUMA_STDERR_LOG:-${current_path}/log/puma_stderr.log}"
 
   if [ ! -d "$current_path" ]; then
     log "Current release path not found, skipping fallback puma start: $current_path"
@@ -84,11 +86,18 @@ start_puma_fallback() {
     return 127
   fi
 
-  log "Starting puma in daemon mode (fallback, no systemd service found)"
+  mkdir -p "$(dirname "$puma_pidfile")" "$(dirname "$puma_stdout_log")" "$(dirname "$puma_stderr_log")"
+
+  # NOTE: Puma 6+ can reject `-d` daemon mode depending on config/plugins.
+  # Start it in background from the shell and capture logs explicitly.
+  log "Starting puma in background (fallback, no systemd service found)"
   (
     cd "$current_path"
-    RAILS_ENV="${RAILS_ENV:-production}" bundle exec puma -C config/puma.rb -d
+    RAILS_ENV="${RAILS_ENV:-production}" bundle exec puma -C config/puma.rb >>"$puma_stdout_log" 2>>"$puma_stderr_log" &
   )
+
+  # Brief pause to surface immediate boot failures before health polling starts.
+  sleep 2
 }
 
 wait_for_http_healthy() {
@@ -136,6 +145,16 @@ dump_startup_diagnostics() {
   if [ -f "${current_path}/log/puma_error.log" ]; then
     warn "Tail of ${current_path}/log/puma_error.log"
     tail -n 80 "${current_path}/log/puma_error.log" || true
+  fi
+
+  if [ -f "${current_path}/log/puma_stdout.log" ]; then
+    warn "Tail of ${current_path}/log/puma_stdout.log"
+    tail -n 80 "${current_path}/log/puma_stdout.log" || true
+  fi
+
+  if [ -f "${current_path}/log/puma_stderr.log" ]; then
+    warn "Tail of ${current_path}/log/puma_stderr.log"
+    tail -n 80 "${current_path}/log/puma_stderr.log" || true
   fi
 
   if [ -f "${current_path}/log/production.log" ]; then
