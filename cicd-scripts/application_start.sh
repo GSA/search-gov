@@ -59,28 +59,6 @@ start_puma_fallback() {
     return 0
   fi
 
-  # Kill any process using port 3000 to avoid "Address already in use" errors
-  log "Checking for processes using port 3000..."
-  if command -v lsof >/dev/null 2>&1; then
-    PORT_3000_PID=$(lsof -ti:3000 2>/dev/null || true)
-    if [ -n "$PORT_3000_PID" ]; then
-      log "Found process(es) using port 3000: $PORT_3000_PID"
-      log "Killing process(es) on port 3000..."
-      kill -TERM $PORT_3000_PID 2>/dev/null || true
-      sleep 3
-      # Force kill if still running
-      if lsof -ti:3000 >/dev/null 2>&1; then
-        log "Force killing stubborn process on port 3000..."
-        kill -KILL $(lsof -ti:3000 2>/dev/null) 2>/dev/null || true
-        sleep 1
-      fi
-      log "Port 3000 cleared"
-    else
-      log "Port 3000 is available"
-    fi
-  else
-    warn "lsof command not found, cannot check port 3000"
-  fi
 
   # CodeDeploy hooks run in non-login shells; make rbenv shims available if present.
   if [ -d "/home/search/.rbenv" ]; then
@@ -91,6 +69,15 @@ start_puma_fallback() {
     fi
   fi
 
+  # Configure shared Bundler environment (same as after_install.sh)
+  log "Configuring shared Bundler environment for Puma"
+  export BUNDLE_WITHOUT="development:test"
+  export BUNDLE_PATH="${app_root}/shared/bundle"
+  export BUNDLE_APP_CONFIG="${app_root}/shared/.bundle"
+  export BUNDLE_DEPLOYMENT="false"
+  export BUNDLE_FROZEN="false"
+
+  # Stop existing Puma process from pidfile (preferred method)
   if [ -f "$puma_pidfile" ]; then
     local existing_pid
     existing_pid="$(cat "$puma_pidfile" 2>/dev/null || true)"
@@ -102,6 +89,34 @@ start_puma_fallback() {
       fi
     fi
     rm -f "$puma_pidfile"
+  else
+    # Fallback: If no pidfile exists, check if port 3000 is occupied by Puma
+    log "No pidfile found, checking for processes using port 3000..."
+    if command -v lsof >/dev/null 2>&1; then
+      PORT_3000_PID=$(lsof -ti:3000 2>/dev/null || true)
+      if [ -n "$PORT_3000_PID" ]; then
+        # Verify it's a Puma process before killing
+        if ps -p "$PORT_3000_PID" -o comm= 2>/dev/null | grep -qi puma; then
+          log "Found Puma process on port 3000: $PORT_3000_PID"
+          log "Killing Puma process on port 3000..."
+          kill -TERM "$PORT_3000_PID" 2>/dev/null || true
+          sleep 3
+          # Force kill if still running
+          if lsof -ti:3000 >/dev/null 2>&1; then
+            log "Force killing stubborn Puma process on port 3000..."
+            kill -KILL $(lsof -ti:3000 2>/dev/null) 2>/dev/null || true
+            sleep 1
+          fi
+          log "Port 3000 cleared"
+        else
+          warn "Process $PORT_3000_PID on port 3000 is not Puma - leaving it alone"
+        fi
+      else
+        log "Port 3000 is available"
+      fi
+    else
+      warn "lsof command not found, cannot check port 3000"
+    fi
   fi
 
   if ! command -v bundle >/dev/null 2>&1; then
@@ -109,15 +124,25 @@ start_puma_fallback() {
     return 127
   fi
 
+  # Change to current release directory
+  cd "$current_path"
+  
+  # Verify bundle dependencies are satisfied before starting Puma
+  log "Verifying bundle dependencies in $current_path"
+  if ! bundle check; then
+    warn "Bundle check failed - gems may be missing"
+    warn "This will likely cause Puma startup to fail"
+    return 1
+  fi
+  
+  log "Bundle check passed - all required gems are available"
+
   mkdir -p "$(dirname "$puma_pidfile")" "$(dirname "$puma_stdout_log")" "$(dirname "$puma_stderr_log")"
 
   # NOTE: Puma 6+ can reject `-d` daemon mode depending on config/plugins.
   # Start it in background from the shell and capture logs explicitly.
   log "Starting puma in background (fallback, no systemd service found)"
-  (
-    cd "$current_path"
-    RAILS_ENV="${RAILS_ENV:-production}" bundle exec puma -C config/puma.rb >>"$puma_stdout_log" 2>>"$puma_stderr_log" &
-  )
+  RAILS_ENV="${RAILS_ENV:-production}" bundle exec puma -C config/puma.rb >>"$puma_stdout_log" 2>>"$puma_stderr_log" &
 
   # Brief pause to surface immediate boot failures before health polling starts.
   sleep 2
