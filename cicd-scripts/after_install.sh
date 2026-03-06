@@ -17,9 +17,34 @@ CURRENT_LINK="${APP_ROOT}/current"
 TIMESTAMP="$(date +%Y%m%d%H%M%S)"
 RELEASE_DIR="${RELEASES_DIR}/${TIMESTAMP}"
 
+# ERR trap to clean up failed releases
+cleanup_on_error() {
+  local exit_code=$?
+  warn "Deployment failed with exit code $exit_code"
+  warn "Cleaning up incomplete release: $RELEASE_DIR"
+  
+  # Remove the failed release directory
+  if [ -d "$RELEASE_DIR" ]; then
+    rm -rf "$RELEASE_DIR"
+    log "Removed failed release directory"
+  fi
+  
+  exit $exit_code
+}
+
+trap cleanup_on_error ERR
+
 log "Starting AfterInstall hook"
 log "Host: $(hostname) | User: $(whoami)"
 log "Release dir: $RELEASE_DIR"
+
+# Log current symlink state
+if [ -L "$CURRENT_LINK" ]; then
+  CURRENT_TARGET=$(readlink -f "$CURRENT_LINK" || echo "unknown")
+  log "Current symlink points to: $CURRENT_TARGET"
+else
+  log "Current symlink does not exist yet"
+fi
 
 # CodeDeploy hooks may run in a non-login shell where rbenv shims are not on PATH.
 # Add common rbenv paths so `bundle` is discoverable when installed for the deploy user.
@@ -68,13 +93,57 @@ if ! command -v bundle >/dev/null 2>&1; then
   exit 127
 fi
 
-# Install gems (without --deployment flag for EC2 deployment)
-log "Running bundle install"
-bundle install --jobs 4 --retry 3 --without development test
+# Configure shared Bundler environment using environment variables
+log "Configuring shared Bundler environment"
+export BUNDLE_WITHOUT="development:test"
+export BUNDLE_PATH="$SHARED_DIR/bundle"
+export BUNDLE_APP_CONFIG="$SHARED_DIR/.bundle"
+export BUNDLE_DEPLOYMENT="false"
+export BUNDLE_FROZEN="false"
 
-# Ensure git gem dependencies are properly checked out
-log "Verifying gem dependencies including git gems"
-bundle check || bundle install --jobs 4 --retry 3 --without development test
+log "Bundler configuration:"
+log "  BUNDLE_WITHOUT=$BUNDLE_WITHOUT"
+log "  BUNDLE_PATH=$BUNDLE_PATH"
+log "  BUNDLE_APP_CONFIG=$BUNDLE_APP_CONFIG"
+log "  BUNDLE_DEPLOYMENT=$BUNDLE_DEPLOYMENT"
+log "  BUNDLE_FROZEN=$BUNDLE_FROZEN"
+
+# Create shared bundle directories if missing
+log "Ensuring shared bundle directories exist"
+mkdir -p "$SHARED_DIR/bundle" "$SHARED_DIR/.bundle"
+
+# Remove per-release .bundle directory to avoid config conflicts
+log "Removing per-release .bundle directory"
+rm -rf "$RELEASE_DIR/.bundle"
+
+# Optionally clean Bundler git cache to force fresh checkout of git gems
+if [ "${CLEAN_BUNDLER_GIT_CACHE:-false}" = "true" ]; then
+  log "Cleaning Bundler git cache for fresh gem checkouts"
+  rm -rf "$SHARED_DIR/bundle/ruby/"*/cache/bundler/git/* || true
+  rm -rf "$SHARED_DIR/bundle/ruby/"*/bundler/gems/* || true
+else
+  log "Skipping Bundler git cache cleanup (CLEAN_BUNDLER_GIT_CACHE != true)"
+fi
+
+# Log bundle environment for diagnostics
+log "Bundle environment before install:"
+bundle env || true
+
+# Run one authoritative bundle install
+log "Running bundle install"
+bundle install --jobs 4 --retry 3
+
+# Verify bundle state
+log "Verifying bundle installation"
+bundle check
+
+# Verify critical git gem is available
+log "Verifying omniauth_login_dot_gov gem"
+bundle info omniauth_login_dot_gov
+
+# Log bundle config after install
+log "Bundle configuration after install:"
+bundle config || true
 
 # Precompile bootsnap cache for faster boot times
 log "Precompiling bootsnap cache"
@@ -90,28 +159,30 @@ else
   warn "Asset compilation may fail if JavaScript dependencies are required"
 fi
 
-# Prepare bundle environment for asset compilation
-log "Configuring bundle for asset compilation"
-bundle config set --local frozen false
-bundle config set --local deployment false
+# Verify git gem one more time before asset compilation
+log "Final verification of omniauth_login_dot_gov before asset compilation"
+bundle info omniauth_login_dot_gov
 
-log "Re-running bundle install to ensure git gems are available for asset compilation"
-bundle install --quiet --jobs 4 --retry 3 --without development test
-
-# Precompile assets (JavaScript, CSS, images including favicon.ico)
-# Use dummy SECRET_KEY_BASE like Dockerfile does
+# Precompile assets using bundle exec for consistent environment
 log "Precompiling assets for production"
-SECRET_KEY_BASE=placeholder RAILS_ENV=production ./bin/rails assets:precompile
+RAILS_ENV=production SECRET_KEY_BASE=placeholder bundle exec rails assets:precompile
 
 # Optional migration hook: set RUN_DB_MIGRATIONS=true in environment to enable.
 if [ "${RUN_DB_MIGRATIONS:-false}" = "true" ]; then
   log "Running database migrations"
-  bundle exec rails db:migrate RAILS_ENV=production
+  RAILS_ENV=production bundle exec rails db:migrate
 else
   log "Skipping database migrations (RUN_DB_MIGRATIONS != true)"
 fi
 
-# Atomically promote this release.
-ln -sfn "$RELEASE_DIR" "$CURRENT_LINK"
+# Atomically promote this release (only if we got here without errors)
+log "Promoting release to current"
+TMP_LINK="${APP_ROOT}/.current_tmp"
+ln -sfn "$RELEASE_DIR" "$TMP_LINK"
+mv -Tf "$TMP_LINK" "$CURRENT_LINK"
 
-log "AfterInstall hook completed"
+# Log new symlink state
+NEW_CURRENT_TARGET=$(readlink -f "$CURRENT_LINK")
+log "Current symlink now points to: $NEW_CURRENT_TARGET"
+
+log "AfterInstall hook completed successfully"
