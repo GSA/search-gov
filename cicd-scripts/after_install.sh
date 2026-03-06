@@ -68,11 +68,32 @@ if ! command -v bundle >/dev/null 2>&1; then
   exit 127
 fi
 
-bundle install --jobs 4 --retry 3 --without development test
+# Install gems (matching Dockerfile approach with deployment flag)
+log "Running bundle install with deployment mode"
+bundle install --deployment --jobs 4 --retry 3 --without development test
+
+# Ensure git gem dependencies are properly checked out
+log "Verifying gem dependencies including git gems"
+bundle check || bundle install --deployment
+
+# Precompile bootsnap cache for faster boot times
+log "Precompiling bootsnap cache"
+bundle exec bootsnap precompile --gemfile || warn "Bootsnap gemfile precompile failed or not available"
+bundle exec bootsnap precompile app/ lib/ || warn "Bootsnap app/lib precompile failed or not available"
+
+# Install JavaScript dependencies (required for webpack/webpacker asset compilation)
+log "Installing JavaScript dependencies with yarn"
+if command -v yarn >/dev/null 2>&1; then
+  yarn install --frozen-lockfile
+else
+  warn "yarn command not found - JavaScript dependencies may not be installed"
+  warn "Asset compilation may fail if JavaScript dependencies are required"
+fi
 
 # Precompile assets (JavaScript, CSS, images including favicon.ico)
+# Use dummy SECRET_KEY_BASE like Dockerfile does
 log "Precompiling assets for production"
-RAILS_ENV=production bundle exec rails assets:precompile
+SECRET_KEY_BASE=placeholder RAILS_ENV=production ./bin/rails assets:precompile
 
 # Optional migration hook: set RUN_DB_MIGRATIONS=true in environment to enable.
 if [ "${RUN_DB_MIGRATIONS:-false}" = "true" ]; then
