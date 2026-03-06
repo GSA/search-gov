@@ -9,19 +9,20 @@ phases:
     commands:
       - set -euo pipefail
       - echo "[CODEDEPLOY][INSTALL] Starting install phase"
-      - echo "[CODEDEPLOY][INSTALL] Ruby version: $(ruby -v)"
-      - echo "[CODEDEPLOY][INSTALL] Node version: $(node -v)"
-      - echo "[CODEDEPLOY][INSTALL] Yarn version: $(yarn -v || true)"
+      - echo "[CODEDEPLOY][INSTALL] Ruby version - $(ruby -v)"
+      - echo "[CODEDEPLOY][INSTALL] Node version - $(node -v)"
+      - echo "[CODEDEPLOY][INSTALL] Yarn version - $(yarn -v || echo 'not found')"
 
   pre_build:
     commands:
       - set -euo pipefail
       - echo "[CODEDEPLOY][PRE_BUILD] =================================================="
       - echo "[CODEDEPLOY][PRE_BUILD] Build metadata"
-      - echo "[CODEDEPLOY][PRE_BUILD] Commit: ${CODEBUILD_RESOLVED_SOURCE_VERSION:-unknown}"
-      - echo "[CODEDEPLOY][PRE_BUILD] Build ID: ${CODEBUILD_BUILD_ID:-unknown}"
-      - echo "[CODEDEPLOY][PRE_BUILD] Environment: ${SEARCH_ENV:-unknown}"
-      - echo "[CODEDEPLOY][PRE_BUILD] Timestamp: $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+      - echo "[CODEDEPLOY][PRE_BUILD] Commit = ${CODEBUILD_RESOLVED_SOURCE_VERSION:-unknown}"
+      - echo "[CODEDEPLOY][PRE_BUILD] Build ID = ${CODEBUILD_BUILD_ID:-unknown}"
+      - echo "[CODEDEPLOY][PRE_BUILD] Build Number = ${CODEBUILD_BUILD_NUMBER:-unknown}"
+      - echo "[CODEDEPLOY][PRE_BUILD] Environment = ${SEARCH_ENV:-unknown}"
+      - echo "[CODEDEPLOY][PRE_BUILD] Timestamp = $(date -u +'%Y-%m-%dT%H-%M-%SZ')"
       - echo "[CODEDEPLOY][PRE_BUILD] =================================================="
 
   build:
@@ -29,22 +30,15 @@ phases:
       - set -euo pipefail
       - echo "[CODEDEPLOY][BUILD] Installing Ruby gems for deployment artifact"
       - bundle install --jobs 4 --retry 3
-      - echo "[CODEDEPLOY][BUILD] Creating deployment manifest for troubleshooting"
-      - echo "{" > deployment_manifest.json
-      - echo "  \"application\": \"search-gov\"," >> deployment_manifest.json
-      - echo "  \"commit\": \"${CODEBUILD_RESOLVED_SOURCE_VERSION:-unknown}\"," >> deployment_manifest.json
-      - echo "  \"build_id\": \"${CODEBUILD_BUILD_ID:-unknown}\"," >> deployment_manifest.json
-      - echo "  \"build_number\": \"${CODEBUILD_BUILD_NUMBER:-unknown}\"," >> deployment_manifest.json
-      - echo "  \"generated_at_utc\": \"$(date -u +'%Y-%m-%dT%H:%M:%SZ')\"" >> deployment_manifest.json
-      - echo "}" >> deployment_manifest.json
-      - echo "[CODEDEPLOY][BUILD] Manifest created"
+      - echo "[CODEDEPLOY][BUILD] Gems installed successfully"
+      - echo "[CODEDEPLOY][BUILD] Bundler version - $(bundle -v)"
+      - echo "[CODEDEPLOY][BUILD] Build completed successfully"
 
   post_build:
     commands:
       - set -euo pipefail
       - echo "[CODEDEPLOY][POST_BUILD] Listing key deployment files"
-      - ls -la appspec.yml buildspec_searchgov.yml deployment_manifest.json
-      - ls -la cicd-scripts
+      - ls -la appspec.yml buildspec_searchgov.yml cicd-scripts
       - echo "[CODEDEPLOY][POST_BUILD] Build completed successfully"
 
 artifacts:
