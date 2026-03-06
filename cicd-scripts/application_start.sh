@@ -59,6 +59,29 @@ start_puma_fallback() {
     return 0
   fi
 
+  # Kill any process using port 3000 to avoid "Address already in use" errors
+  log "Checking for processes using port 3000..."
+  if command -v lsof >/dev/null 2>&1; then
+    PORT_3000_PID=$(lsof -ti:3000 2>/dev/null || true)
+    if [ -n "$PORT_3000_PID" ]; then
+      log "Found process(es) using port 3000: $PORT_3000_PID"
+      log "Killing process(es) on port 3000..."
+      kill -TERM $PORT_3000_PID 2>/dev/null || true
+      sleep 3
+      # Force kill if still running
+      if lsof -ti:3000 >/dev/null 2>&1; then
+        log "Force killing stubborn process on port 3000..."
+        kill -KILL $(lsof -ti:3000 2>/dev/null) 2>/dev/null || true
+        sleep 1
+      fi
+      log "Port 3000 cleared"
+    else
+      log "Port 3000 is available"
+    fi
+  else
+    warn "lsof command not found, cannot check port 3000"
+  fi
+
   # CodeDeploy hooks run in non-login shells; make rbenv shims available if present.
   if [ -d "/home/search/.rbenv" ]; then
     export RBENV_ROOT="/home/search/.rbenv"
