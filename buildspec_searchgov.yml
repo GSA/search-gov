@@ -25,10 +25,9 @@ phases:
 
   build:
     commands:
-      - echo "[CODEDEPLOY][BUILD] Installing Ruby gems for deployment artifact"
-      - bundle install --jobs 4 --retry 3
-      - echo "[CODEDEPLOY][BUILD] Gems installed successfully"
-      - echo "[CODEDEPLOY][BUILD] Bundler version - $(bundle -v)"
+      - echo "[CODEDEPLOY][BUILD] Preparing deployment artifact"
+      - echo "[CODEDEPLOY][BUILD] Artifact will be deployed to target servers"
+      - echo "[CODEDEPLOY][BUILD] Gems will be installed on target servers via after_install.sh"
       - echo "[CODEDEPLOY][BUILD] Build completed successfully"
 
   post_build:
