@@ -70,6 +70,10 @@ fi
 
 bundle install --jobs 4 --retry 3 --without development test
 
+# Precompile assets (JavaScript, CSS, images including favicon.ico)
+log "Precompiling assets for production"
+RAILS_ENV=production bundle exec rails assets:precompile
+
 # Optional migration hook: set RUN_DB_MIGRATIONS=true in environment to enable.
 if [ "${RUN_DB_MIGRATIONS:-false}" = "true" ]; then
   log "Running database migrations"
