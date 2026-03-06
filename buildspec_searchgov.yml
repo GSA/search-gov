@@ -7,7 +7,6 @@ phases:
       ruby: 3.3
       nodejs: 20
     commands:
-      - set -euo pipefail
       - echo "[CODEDEPLOY][INSTALL] Starting install phase"
       - echo "[CODEDEPLOY][INSTALL] Ruby version - $(ruby -v)"
       - echo "[CODEDEPLOY][INSTALL] Node version - $(node -v)"
@@ -15,7 +14,6 @@ phases:
 
   pre_build:
     commands:
-      - set -euo pipefail
       - echo "[CODEDEPLOY][PRE_BUILD] =================================================="
       - echo "[CODEDEPLOY][PRE_BUILD] Build metadata"
       - echo "[CODEDEPLOY][PRE_BUILD] Commit = ${CODEBUILD_RESOLVED_SOURCE_VERSION:-unknown}"
@@ -27,7 +25,6 @@ phases:
 
   build:
     commands:
-      - set -euo pipefail
       - echo "[CODEDEPLOY][BUILD] Installing Ruby gems for deployment artifact"
       - bundle install --jobs 4 --retry 3
       - echo "[CODEDEPLOY][BUILD] Gems installed successfully"
@@ -36,7 +33,6 @@ phases:
 
   post_build:
     commands:
-      - set -euo pipefail
       - echo "[CODEDEPLOY][POST_BUILD] Listing key deployment files"
       - ls -la appspec.yml buildspec_searchgov.yml cicd-scripts
       - echo "[CODEDEPLOY][POST_BUILD] Build completed successfully"
