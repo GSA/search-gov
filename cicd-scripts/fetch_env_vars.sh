@@ -137,26 +137,7 @@ if [ -z "$PARAM_DETAILS" ] || [ "$PARAM_DETAILS" == "null" ] || [ "$PARAM_DETAIL
   exit 0
 fi
 
-log "Parameter LOGIN_DOT_GOV_PEM found in region $CERT_REGION"
-
-# Extract KMS key ID if encrypted with customer managed key
-KMS_KEY_ID=$(echo "$PARAM_DETAILS" | grep -o '"KeyId": *"[^"]*"' | cut -d'"' -f4)
-
-if [ -n "$KMS_KEY_ID" ] && [ "$KMS_KEY_ID" != "alias/aws/ssm" ]; then
-  log "Parameter is encrypted with CUSTOMER MANAGED KMS key: $KMS_KEY_ID"
-  log "CRITICAL: IAM role must have kms:Decrypt permission for this key"
-  
-  # Try to check if we have access to the key (best effort)
-  if aws kms describe-key --key-id "$KMS_KEY_ID" --region "$CERT_REGION" >/dev/null 2>&1; then
-    log "KMS key is accessible (describe-key succeeded)"
-  else
-    warn "Cannot describe KMS key - may lack permissions"
-  fi
-else
-  log "Parameter uses default AWS managed key (alias/aws/ssm)"
-fi
-
-log "Parameter found in region $CERT_REGION"
+log "Parameter $PARAM LOGIN_DOT_GOV_PEM found in region $CERT_REGION"
 
 PEM_OUTPUT_FILE="/home/search/searchgov/shared/config/logindotgov.pem"
 
