@@ -30,16 +30,13 @@ phases:
       - echo "[CODEDEPLOY][BUILD] Installing Ruby gems for deployment artifact"
       - bundle install --jobs 4 --retry 3
       - echo "[CODEDEPLOY][BUILD] Creating deployment manifest for troubleshooting"
-      - |
-        cat > deployment_manifest.json <<MANIFEST
-        {
-          "application": "search-gov",
-          "commit": "${CODEBUILD_RESOLVED_SOURCE_VERSION:-unknown}",
-          "build_id": "${CODEBUILD_BUILD_ID:-unknown}",
-          "build_number": "${CODEBUILD_BUILD_NUMBER:-unknown}",
-          "generated_at_utc": "$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
-        }
-        MANIFEST
+      - echo "{" > deployment_manifest.json
+      - echo "  \"application\": \"search-gov\"," >> deployment_manifest.json
+      - echo "  \"commit\": \"${CODEBUILD_RESOLVED_SOURCE_VERSION:-unknown}\"," >> deployment_manifest.json
+      - echo "  \"build_id\": \"${CODEBUILD_BUILD_ID:-unknown}\"," >> deployment_manifest.json
+      - echo "  \"build_number\": \"${CODEBUILD_BUILD_NUMBER:-unknown}\"," >> deployment_manifest.json
+      - echo "  \"generated_at_utc\": \"$(date -u +'%Y-%m-%dT%H:%M:%SZ')\"" >> deployment_manifest.json
+      - echo "}" >> deployment_manifest.json
       - echo "[CODEDEPLOY][BUILD] Manifest created"
 
   post_build:

@@ -124,19 +124,7 @@ start_puma_fallback() {
     return 127
   fi
 
-  # Change to current release directory
   cd "$current_path"
-  
-  # Verify bundle dependencies are satisfied before starting Puma
-  log "Verifying bundle dependencies in $current_path"
-  if ! bundle check; then
-    warn "Bundle check failed - gems may be missing"
-    warn "This will likely cause Puma startup to fail"
-    return 1
-  fi
-  
-  log "Bundle check passed - all required gems are available"
-
   mkdir -p "$(dirname "$puma_pidfile")" "$(dirname "$puma_stdout_log")" "$(dirname "$puma_stderr_log")"
 
   # NOTE: Puma 6+ can reject `-d` daemon mode depending on config/plugins.
