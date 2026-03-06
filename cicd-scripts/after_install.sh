@@ -90,6 +90,14 @@ else
   warn "Asset compilation may fail if JavaScript dependencies are required"
 fi
 
+# Prepare bundle environment for asset compilation
+log "Configuring bundle for asset compilation"
+bundle config set --local frozen false
+bundle config set --local deployment false
+
+log "Re-running bundle install to ensure git gems are available for asset compilation"
+bundle install --quiet --jobs 4 --retry 3 --without development test
+
 # Precompile assets (JavaScript, CSS, images including favicon.ico)
 # Use dummy SECRET_KEY_BASE like Dockerfile does
 log "Precompiling assets for production"
