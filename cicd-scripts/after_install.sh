@@ -68,13 +68,13 @@ if ! command -v bundle >/dev/null 2>&1; then
   exit 127
 fi
 
-# Install gems (matching Dockerfile approach with deployment flag)
-log "Running bundle install with deployment mode"
-bundle install --deployment --jobs 4 --retry 3 --without development test
+# Install gems (without --deployment flag for EC2 deployment)
+log "Running bundle install"
+bundle install --jobs 4 --retry 3 --without development test
 
 # Ensure git gem dependencies are properly checked out
 log "Verifying gem dependencies including git gems"
-bundle check || bundle install --deployment
+bundle check || bundle install --jobs 4 --retry 3 --without development test
 
 # Precompile bootsnap cache for faster boot times
 log "Precompiling bootsnap cache"
