@@ -135,4 +135,5 @@ Given('there are urls indexed for nasa') do
   }
 
   ES.client.index(index:, body: document)
+  ES.client.indices.refresh(index:)
 end
