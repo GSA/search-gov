@@ -13,9 +13,22 @@ error() {
 SEARCHGOV_ROOT="${SEARCHGOV_ROOT:-/home/search/searchgov}"
 CURRENT_PATH="${SEARCHGOV_ROOT}/current"
 ASSETS_DIR="${CURRENT_PATH}/public"
+SHARED_DIR="${SEARCHGOV_ROOT}/shared"
+
+# Source environment variables from .env file
+if [ -f "${SHARED_DIR}/.env" ]; then
+  log "Loading environment variables from ${SHARED_DIR}/.env"
+  set -a
+  source "${SHARED_DIR}/.env"
+  set +a
+else
+  error "Environment file not found: ${SHARED_DIR}/.env"
+  exit 1
+fi
 
 # S3 Configuration from environment variables
-S3_BUCKET="${AWS_S3_BUCKET:-${AWS_BUCKET:-}}"
+# The codebase uses AWS_BUCKET (see config/initializers/s3.rb)
+S3_BUCKET="${AWS_BUCKET:-}"
 AWS_REGION="${AWS_REGION:-us-east-1}"
 
 log "Starting asset upload to S3"
