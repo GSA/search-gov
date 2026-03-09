@@ -31,6 +31,10 @@ hooks:
       timeout: 300
       runas: search
 
+    - location: cicd-scripts/upload_assets_to_s3.sh
+      timeout: 600
+      runas: search
+
   ApplicationStart:
     - location: cicd-scripts/application_start.sh
       timeout: 300
