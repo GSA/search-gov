@@ -1,0 +1,617 @@
+{
+  "index_patterns": "*-i14y-documents-*",
+  "settings": {
+    "analysis": {
+      "char_filter": {
+        "quotes": {
+          "type": "mapping",
+          "mappings": [
+            "\\u0091=>\\u0027",
+            "\\u0092=>\\u0027",
+            "\\u2018=>\\u0027",
+            "\\u2019=>\\u0027",
+            "\\u201B=>\\u0027"
+          ]
+        }
+      },
+      "filter": {
+        "bigrams_filter": {
+          "type": "shingle"
+        },
+        "en_synonym": {
+          "type": "synonym",
+          "synonyms": [
+            "gas, petrol",
+            "healthcare, health care"
+          ]
+        },
+        "en_protected_filter": {
+          "type": "keyword_marker",
+          "keywords": [
+            "gas",
+            "fevs"
+          ]
+        },
+        "es_protected_filter": {
+          "type": "keyword_marker",
+          "keywords": [
+            "ronaldo"
+          ]
+        },
+        "de_stem_filter": {
+          "type": "stemmer",
+          "name": "light_german"
+        },
+        "es_stem_filter": {
+          "type": "stemmer",
+          "name": "light_spanish"
+        },
+        "fr_stem_filter": {
+          "type": "stemmer",
+          "name": "light_french"
+        },
+        "it_stem_filter": {
+          "type": "stemmer",
+          "name": "light_italian"
+        },
+        "pt_stem_filter": {
+          "type": "stemmer",
+          "name": "light_portuguese"
+        },
+        "bn_stem_filter": {
+          "type": "stemmer",
+          "name": "bengali"
+        },
+        "en_stem_filter": {
+          "type": "stemmer",
+          "name": "english"
+        },
+        "fi_stem_filter": {
+          "type": "stemmer",
+          "name": "finnish"
+        },
+        "hi_stem_filter": {
+          "type": "stemmer",
+          "name": "hindi"
+        },
+        "hu_stem_filter": {
+          "type": "stemmer",
+          "name": "hungarian"
+        },
+        "ru_stem_filter": {
+          "type": "stemmer",
+          "name": "russian"
+        },
+        "sv_stem_filter": {
+          "type": "stemmer",
+          "name": "swedish"
+        },
+        "ja_pos_filter": {
+          "type": "kuromoji_part_of_speech",
+          "stoptags": [
+            "\\u52a9\\u8a5e-\\u683c\\u52a9\\u8a5e-\\u4e00\\u822c",
+            "\\u52a9\\u8a5e-\\u7d42\\u52a9\\u8a5e"
+          ]
+        }
+      },
+      "analyzer": {
+        "bn_analyzer": {
+          "type": "custom",
+          "filter": [
+            "icu_normalizer",
+            "bn_stem_filter",
+            "icu_folding"
+          ],
+          "tokenizer": "icu_tokenizer",
+          "char_filter": [
+            "html_strip",
+            "quotes"
+          ]
+        },
+        "de_analyzer": {
+          "type": "custom",
+          "filter": [
+            "icu_normalizer",
+            "de_stem_filter",
+            "icu_folding"
+          ],
+          "tokenizer": "icu_tokenizer",
+          "char_filter": [
+            "html_strip",
+            "quotes"
+          ]
+        },
+        "en_analyzer": {
+          "type": "custom",
+          "filter": [
+            "icu_normalizer",
+            "en_protected_filter",
+            "en_stem_filter",
+            "en_synonym",
+            "icu_folding"
+          ],
+          "tokenizer": "icu_tokenizer",
+          "char_filter": [
+            "html_strip",
+            "quotes"
+          ]
+        },
+        "es_analyzer": {
+          "type": "custom",
+          "filter": [
+            "icu_normalizer",
+            "es_protected_filter",
+            "es_stem_filter",
+            "icu_folding"
+          ],
+          "tokenizer": "icu_tokenizer",
+          "char_filter": [
+            "html_strip",
+            "quotes"
+          ]
+        },
+        "fi_analyzer": {
+          "type": "custom",
+          "filter": [
+            "icu_normalizer",
+            "fi_stem_filter",
+            "icu_folding"
+          ],
+          "tokenizer": "icu_tokenizer",
+          "char_filter": [
+            "html_strip",
+            "quotes"
+          ]
+        },
+        "hi_analyzer": {
+          "type": "custom",
+          "filter": [
+            "icu_normalizer",
+            "hi_stem_filter",
+            "icu_folding"
+          ],
+          "tokenizer": "icu_tokenizer",
+          "char_filter": [
+            "html_strip",
+            "quotes"
+          ]
+        },
+        "hu_analyzer": {
+          "type": "custom",
+          "filter": [
+            "icu_normalizer",
+            "hu_stem_filter",
+            "icu_folding"
+          ],
+          "tokenizer": "icu_tokenizer",
+          "char_filter": [
+            "html_strip",
+            "quotes"
+          ]
+        },
+        "it_analyzer": {
+          "type": "custom",
+          "filter": [
+            "icu_normalizer",
+            "it_stem_filter",
+            "icu_folding"
+          ],
+          "tokenizer": "icu_tokenizer",
+          "char_filter": [
+            "html_strip",
+            "quotes"
+          ]
+        },
+        "pt_analyzer": {
+          "type": "custom",
+          "filter": [
+            "icu_normalizer",
+            "pt_stem_filter",
+            "icu_folding"
+          ],
+          "tokenizer": "icu_tokenizer",
+          "char_filter": [
+            "html_strip",
+            "quotes"
+          ]
+        },
+        "ru_analyzer": {
+          "type": "custom",
+          "filter": [
+            "icu_normalizer",
+            "ru_stem_filter",
+            "icu_folding"
+          ],
+          "tokenizer": "icu_tokenizer",
+          "char_filter": [
+            "html_strip",
+            "quotes"
+          ]
+        },
+        "sv_analyzer": {
+          "type": "custom",
+          "filter": [
+            "icu_normalizer",
+            "sv_stem_filter",
+            "icu_folding"
+          ],
+          "tokenizer": "icu_tokenizer",
+          "char_filter": [
+            "html_strip",
+            "quotes"
+          ]
+        },
+        "fr_analyzer": {
+          "type": "custom",
+          "filter": [
+            "icu_normalizer",
+            "elision",
+            "fr_stem_filter",
+            "icu_folding"
+          ],
+          "tokenizer": "icu_tokenizer",
+          "char_filter": [
+            "html_strip",
+            "quotes"
+          ]
+        },
+        "ja_analyzer": {
+          "type": "custom",
+          "filter": [
+            "kuromoji_baseform",
+            "ja_pos_filter",
+            "icu_normalizer",
+            "icu_folding",
+            "cjk_width"
+          ],
+          "tokenizer": "kuromoji_tokenizer",
+          "char_filter": [
+            "html_strip"
+          ]
+        },
+        "ko_analyzer": {
+          "type": "cjk",
+          "filter": []
+        },
+        "zh_analyzer": {
+          "type": "custom",
+          "filter": [
+            "smartcn_word",
+            "icu_normalizer",
+            "icu_folding"
+          ],
+          "tokenizer": "smartcn_sentence",
+          "char_filter": [
+            "html_strip"
+          ]
+        },
+        "bigrams_analyzer": {
+          "type": "custom",
+          "filter": [
+            "icu_normalizer",
+            "icu_folding",
+            "bigrams_filter"
+          ],
+          "tokenizer": "icu_tokenizer",
+          "char_filter": [
+            "html_strip",
+            "quotes"
+          ]
+        },
+        "url_path_analyzer": {
+          "type": "custom",
+          "filter": "lowercase",
+          "tokenizer": "url_path_tokenizer"
+        },
+        "domain_name_analyzer": {
+          "type": "custom",
+          "filter": "lowercase",
+          "tokenizer": "domain_name_tokenizer"
+        },
+        "default": {
+          "type": "custom",
+          "filter": [
+            "icu_normalizer",
+            "icu_folding"
+          ],
+          "tokenizer": "icu_tokenizer",
+          "char_filter": [
+            "html_strip",
+            "quotes"
+          ]
+        }
+      },
+      "tokenizer": {
+        "kuromoji": {
+          "type": "kuromoji_tokenizer",
+          "mode": "search",
+          "char_filter": [
+            "html_strip"
+          ]
+        },
+        "url_path_tokenizer": {
+          "type": "PathHierarchy"
+        },
+        "domain_name_tokenizer": {
+          "type": "PathHierarchy",
+          "delimiter": ".",
+          "reverse": true
+        }
+      }
+    }
+  },
+  "mappings": {
+    "dynamic_templates": [
+      {
+        "bn": {
+          "match": "*_bn",
+          "match_mapping_type": "string",
+          "mapping": {
+            "analyzer": "bn_analyzer",
+            "type": "text",
+            "term_vector": "with_positions_offsets",
+            "copy_to": "bigrams"
+          }
+        }
+      },
+      {
+        "de": {
+          "match": "*_de",
+          "match_mapping_type": "string",
+          "mapping": {
+            "analyzer": "de_analyzer",
+            "type": "text",
+            "term_vector": "with_positions_offsets",
+            "copy_to": "bigrams"
+          }
+        }
+      },
+      {
+        "en": {
+          "match": "*_en",
+          "match_mapping_type": "string",
+          "mapping": {
+            "analyzer": "en_analyzer",
+            "type": "text",
+            "term_vector": "with_positions_offsets",
+            "copy_to": "bigrams"
+          }
+        }
+      },
+      {
+        "es": {
+          "match": "*_es",
+          "match_mapping_type": "string",
+          "mapping": {
+            "analyzer": "es_analyzer",
+            "type": "text",
+            "term_vector": "with_positions_offsets",
+            "copy_to": "bigrams"
+          }
+        }
+      },
+      {
+        "fi": {
+          "match": "*_fi",
+          "match_mapping_type": "string",
+          "mapping": {
+            "analyzer": "fi_analyzer",
+            "type": "text",
+            "term_vector": "with_positions_offsets",
+            "copy_to": "bigrams"
+          }
+        }
+      },
+      {
+        "fr": {
+          "match": "*_fr",
+          "match_mapping_type": "string",
+          "mapping": {
+            "analyzer": "fr_analyzer",
+            "type": "text",
+            "term_vector": "with_positions_offsets",
+            "copy_to": "bigrams"
+          }
+        }
+      },
+      {
+        "hi": {
+          "match": "*_hi",
+          "match_mapping_type": "string",
+          "mapping": {
+            "analyzer": "hi_analyzer",
+            "type": "text",
+            "term_vector": "with_positions_offsets",
+            "copy_to": "bigrams"
+          }
+        }
+      },
+      {
+        "hu": {
+          "match": "*_hu",
+          "match_mapping_type": "string",
+          "mapping": {
+            "analyzer": "hu_analyzer",
+            "type": "text",
+            "term_vector": "with_positions_offsets",
+            "copy_to": "bigrams"
+          }
+        }
+      },
+      {
+        "it": {
+          "match": "*_it",
+          "match_mapping_type": "string",
+          "mapping": {
+            "analyzer": "it_analyzer",
+            "type": "text",
+            "term_vector": "with_positions_offsets",
+            "copy_to": "bigrams"
+          }
+        }
+      },
+      {
+        "ja": {
+          "match": "*_ja",
+          "match_mapping_type": "string",
+          "mapping": {
+            "analyzer": "ja_analyzer",
+            "type": "text",
+            "term_vector": "with_positions_offsets",
+            "copy_to": "bigrams"
+          }
+        }
+      },
+      {
+        "ko": {
+          "match": "*_ko",
+          "match_mapping_type": "string",
+          "mapping": {
+            "analyzer": "ko_analyzer",
+            "type": "text",
+            "term_vector": "with_positions_offsets",
+            "copy_to": "bigrams"
+          }
+        }
+      },
+      {
+        "pt": {
+          "match": "*_pt",
+          "match_mapping_type": "string",
+          "mapping": {
+            "analyzer": "pt_analyzer",
+            "type": "text",
+            "term_vector": "with_positions_offsets",
+            "copy_to": "bigrams"
+          }
+        }
+      },
+      {
+        "ru": {
+          "match": "*_ru",
+          "match_mapping_type": "string",
+          "mapping": {
+            "analyzer": "ru_analyzer",
+            "type": "text",
+            "term_vector": "with_positions_offsets",
+            "copy_to": "bigrams"
+          }
+        }
+      },
+      {
+        "sv": {
+          "match": "*_sv",
+          "match_mapping_type": "string",
+          "mapping": {
+            "analyzer": "sv_analyzer",
+            "type": "text",
+            "term_vector": "with_positions_offsets",
+            "copy_to": "bigrams"
+          }
+        }
+      },
+      {
+        "zh": {
+          "match": "*_zh",
+          "match_mapping_type": "string",
+          "mapping": {
+            "analyzer": "zh_analyzer",
+            "type": "text",
+            "term_vector": "with_positions_offsets",
+            "copy_to": "bigrams"
+          }
+        }
+      },
+      {
+        "string_fields": {
+          "mapping": {
+            "type": "text",
+            "index": true
+          },
+          "match_mapping_type": "string",
+          "match": "*"
+        }
+      }
+    ],
+    "properties": {
+      "updated": {
+        "type": "date"
+      },
+      "created": {
+        "type": "date"
+      },
+      "changed": {
+        "type": "date"
+      },
+      "audience": {
+        "type": "keyword",
+        "index": true
+      },
+      "content_type": {
+        "type": "keyword",
+        "index": true
+      },
+      "document_id": {
+        "type": "keyword",
+        "index": true
+      },
+      "extension": {
+        "type": "keyword",
+        "index": true
+      },
+      "thumbnail_url": {
+        "type": "keyword",
+        "index": true
+      },
+      "language": {
+        "type": "keyword",
+        "index": true
+      },
+      "mime_type": {
+        "type": "keyword",
+        "index": true
+      },
+      "path": {
+        "type": "keyword",
+        "index": true
+      },
+      "searchgov_custom1": {
+        "type": "keyword",
+        "index": true
+      },
+      "searchgov_custom2": {
+        "type": "keyword",
+        "index": true
+      },
+      "searchgov_custom3": {
+        "type": "keyword",
+        "index": true
+      },
+      "tags": {
+        "type": "keyword",
+        "index": true
+      },
+      "basename": {
+        "type": "text"
+      },
+      "url_path": {
+        "type": "text",
+        "analyzer": "url_path_analyzer"
+      },
+      "domain_name": {
+        "type": "text",
+        "analyzer": "domain_name_analyzer"
+      },
+      "promote": {
+        "type": "boolean"
+      },
+      "bigrams": {
+        "analyzer": "bigrams_analyzer",
+        "type": "text"
+      },
+      "click_count": {
+        "type": "integer"
+      }
+    }
+  }
+}
