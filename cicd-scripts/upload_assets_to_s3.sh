@@ -15,12 +15,17 @@ CURRENT_PATH="${SEARCHGOV_ROOT}/current"
 ASSETS_DIR="${CURRENT_PATH}/public"
 SHARED_DIR="${SEARCHGOV_ROOT}/shared"
 
-# Source environment variables from .env file
+# Load environment variables from .env file
+# Properly handle KEY=VALUE format where values may contain spaces
 if [ -f "${SHARED_DIR}/.env" ]; then
   log "Loading environment variables from ${SHARED_DIR}/.env"
-  set -a
-  source "${SHARED_DIR}/.env"
-  set +a
+  # Read .env splitting only on first '=' to handle values with spaces
+  while IFS='=' read -r key value || [ -n "$key" ]; do
+    # Skip empty lines and comments
+    [[ -z "$key" || "$key" =~ ^[[:space:]]*# ]] && continue
+    # Export the variable (handles values with spaces like cron schedules)
+    export "$key=$value"
+  done < "${SHARED_DIR}/.env"
 else
   error "Environment file not found: ${SHARED_DIR}/.env"
   exit 1
