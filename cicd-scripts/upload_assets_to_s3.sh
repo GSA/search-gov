@@ -79,51 +79,45 @@ sync_to_s3() {
   
   log "Syncing $source_dir to s3://${S3_BUCKET}${s3_path}"
   
-  # Sync assets to S3 with appropriate cache headers
-  # - Delete files in S3 that don't exist locally (cleanup old assets)
-  # - Set appropriate cache headers for fingerprinted assets (1 year)
-  # - Set shorter cache for non-fingerprinted assets (1 hour)
-  
-  # Upload fingerprinted assets with long cache (these have content hashes in filename)
+  # Upload ALL assets with long cache by default (most assets are fingerprinted)
+  # Using --size-only for faster comparisons since fingerprinted assets are immutable
   if aws s3 sync "$source_dir" "s3://${S3_BUCKET}${s3_path}" \
     --region "$AWS_REGION" \
-    --exclude "*" \
-    --include "*-*.js" \
-    --include "*-*.css" \
-    --include "*-*.js.gz" \
-    --include "*-*.css.gz" \
-    --include "*-*.png" \
-    --include "*-*.jpg" \
-    --include "*-*.jpeg" \
-    --include "*-*.gif" \
-    --include "*-*.svg" \
-    --include "*-*.woff" \
-    --include "*-*.woff2" \
-    --include "*-*.ttf" \
-    --include "*-*.eot" \
+    --exclude ".sprockets-manifest-*.json" \
+    --exclude "manifest.json.br" \
     --cache-control "public, max-age=31536000, immutable" \
     --acl public-read \
+    --size-only \
     --delete; then
-    log "Successfully synced fingerprinted assets from $source_dir"
+    log "Successfully synced all assets from $source_dir"
   else
-    error "Failed to sync fingerprinted assets from $source_dir"
+    error "Failed to sync assets from $source_dir"
     return 1
   fi
   
-  # Upload non-fingerprinted assets with shorter cache (these are stable filenames)
-  # These are created by copy_non_fingerprinted_assets.sh
-  if aws s3 sync "$source_dir" "s3://${S3_BUCKET}${s3_path}" \
-    --region "$AWS_REGION" \
-    --exclude "*-*.*" \
-    --exclude ".sprockets-manifest-*.json" \
-    --exclude "manifest.json" \
-    --cache-control "public, max-age=3600" \
-    --acl public-read; then
-    log "Successfully synced non-fingerprinted assets from $source_dir"
-  else
-    error "Failed to sync non-fingerprinted assets from $source_dir"
-    return 1
-  fi
+  # Override cache headers for non-fingerprinted assets (stable filenames without hashes)
+  # These are created by copy_non_fingerprinted_assets.sh for legacy support
+  local non_fingerprinted_files=(
+    "sayt_loader_libs.js" "sayt_loader_libs.js.gz"
+    "sayt_loader.js" "sayt_loader.js.gz"
+    "stats.js" "stats.js.gz"
+    "sayt.css" "sayt.css.gz"
+    "application.js" "application.js.gz" "application.css" "application.css.gz"
+    "runtime.js" "runtime.js.gz"
+  )
+  
+  for file in "${non_fingerprinted_files[@]}"; do
+    if [ -f "$source_dir/$file" ]; then
+      log "Updating cache headers for non-fingerprinted file: $file"
+      aws s3 cp "$source_dir/$file" "s3://${S3_BUCKET}${s3_path}/$file" \
+        --region "$AWS_REGION" \
+        --cache-control "public, max-age=3600" \
+        --acl public-read \
+        --metadata-directive REPLACE 2>/dev/null || true
+    fi
+  done
+  
+  log "Cache header updates completed for non-fingerprinted assets"
 }
 
 # Sync Sprockets assets (public/assets)
