@@ -22,7 +22,6 @@ describe LegacyOpenSearch::Engine do
                      offset: 0,
                      suggestion: nil,
                      aggregations: nil)
-      allow(results).to receive(:results).and_return(results.results)
       allow(results).to receive(:total).and_return(results.total)
       allow(results).to receive(:offset).and_return(results.offset)
       allow(results).to receive(:suggestion).and_return(results.suggestion)

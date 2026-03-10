@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LegacyOpenSearch::Engine < SearchElasticEngine
   def search
     params = process_array_parameters(build_search_params).merge(indices: ENV.fetch('LEGACY_OPENSEARCH_INDEX'))
