@@ -1,4 +1,4 @@
-.l-site-nav.main
+.l-site-nav.main{ class: ("--is-inactive" if @site&.active? == false) }
   - unless @site.nil? || @site.new_record?
     %ul.nav
       = main_nav_item 'Dashboard', site_path(@site), 'fa-dashboard', site_dashboard_controllers
@@ -7,7 +7,7 @@
       = main_nav_item 'Display', edit_site_display_path(@site), 'fa-desktop', site_manage_display_controllers
       = main_nav_item 'Preview', search_path(affiliate: @site.name), 'fa-eye', [], target: '_blank'
       = main_nav_item 'Activate', site_embed_code_path(@site), 'fa-code', site_activate_search_controllers
-.l-site-nav.sub
+.l-site-nav.sub{ class: ("--is-inactive" if @site&.active? == false) }
   - if @site.nil? || @site.new_record?
     = render('sites/shared/new_site_sub_nav') if controller_name == 'sites'
   - else
