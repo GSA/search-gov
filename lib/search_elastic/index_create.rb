@@ -6,8 +6,8 @@ module SearchElastic
       @client = nil
       @service_name = service_name.upcase
       raise ArgumentError, \
-        "service_name must be 'ELASTICSEARCH' or 'OPENSEARCH'" \
-        unless %w[ELASTICSEARCH OPENSEARCH].include?(@service_name)
+        "service_name must be 'ELASTICSEARCH' or 'OPENSEARCH' or 'LEGACY_OPENSEARCH'" \
+        unless %w[ELASTICSEARCH OPENSEARCH LEGACY_OPENSEARCH].include?(@service_name)
 
       @index_name = index_name
       @shards = shards
