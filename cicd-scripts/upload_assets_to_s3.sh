@@ -63,8 +63,9 @@ cd "$CURRENT_PATH"
 
 # Check if assets directories exist
 if [ ! -d "$ASSETS_DIR/assets" ] && [ ! -d "$ASSETS_DIR/packs" ]; then
-  error "Neither public/assets nor public/packs directories found"
-  exit 1
+  log "No assets directories found - skipping upload (this is normal for non-app servers like cron/crawl)"
+  log "Asset upload not applicable for this server type"
+  exit 0
 fi
 
 # Function to sync assets to S3
