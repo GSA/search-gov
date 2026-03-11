@@ -23,7 +23,7 @@ if [ -f "${SHARED_DIR}/.env" ]; then
   while IFS='=' read -r key value || [ -n "$key" ]; do
     # Skip empty lines and comments
     [[ -z "$key" || "$key" =~ ^[[:space:]]*# ]] && continue
-    # Export the variable (handles values with spaces like cron schedules)
+    # Export the variable (handles values with spaces like cron schedules).
     export "$key=$value"
   done < "${SHARED_DIR}/.env"
 else
