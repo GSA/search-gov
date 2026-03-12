@@ -23,8 +23,10 @@ if [ -f "${SHARED_DIR}/.env" ]; then
   while IFS='=' read -r key value || [ -n "$key" ]; do
     # Skip empty lines and comments
     [[ -z "$key" || "$key" =~ ^[[:space:]]*# ]] && continue
-    # Export the variable (handles values with spaces like cron schedules).
-    export "$key=$value"
+    # Only export valid shell variable names (start with letter/underscore, contain alphanumeric/_)
+    if [[ "$key" =~ ^[A-Za-z_][A-Za-z0-9_]*$ ]]; then
+      export "$key=$value"
+    fi
   done < "${SHARED_DIR}/.env"
 else
   error "Environment file not found: ${SHARED_DIR}/.env"
