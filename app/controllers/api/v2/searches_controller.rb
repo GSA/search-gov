@@ -43,6 +43,8 @@ module Api
         case @search_options.site.search_engine
         when "opensearch"
           OpenSearch::ApiEngine
+        when "legacy_opensearch"
+          LegacyOpenSearch::ApiEngine
         when "search_elastic"
           ApiSearchElastic
         else
