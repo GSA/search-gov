@@ -1,3 +1,7 @@
+# Configure OmniAuth to allow POST requests with CSRF protection
+# This is required for omniauth-rails_csrf_protection gem to work properly
+OmniAuth.config.allowed_request_methods = [:post]
+
 Rails.application.config.middleware.use OmniAuth::Builder do
   private_key_path = ENV['LOGIN_CERT_LOCATION'] || 'config/logindotgov.pem'
 
