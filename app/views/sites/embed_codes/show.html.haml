@@ -1,5 +1,5 @@
 = content_for_site_page_title @site, 'Code Snippets'
-.sub-nav-heading
+.sub-nav-heading{ class: ("--is-inactive" if @site&.active? == false) }
   %h2 Code Snippets
   .action-bar
     %ul

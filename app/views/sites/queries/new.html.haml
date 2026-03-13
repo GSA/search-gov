@@ -1,6 +1,6 @@
 = content_for_site_page_title @site, 'Queries'
 = form_for @queries_request, url: { action: :create }, html: { class: 'form form-search' }  do |form|
-  .sub-nav-heading
+  .sub-nav-heading{ class: ("--is-inactive" if @site&.active? == false) }
     %h2 Queries
     .action-bar
       %ul

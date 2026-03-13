@@ -1,6 +1,6 @@
 = content_for_site_page_title @site, 'Add Supplemental URL'
 = form_for @indexed_document, url: { action: :create }, html: { class: 'form' }  do |f|
-  .sub-nav-heading
+  .sub-nav-heading{ class: ("--is-inactive" if @site&.active? == false) }
     %h2 Add Supplemental URL
     .action-bar
       %ul
