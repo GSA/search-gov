@@ -34,7 +34,7 @@ Check that both clusters are accessible:
 
 ```bash
 # Check ElasticSearch
-curl -u elastic:YOUR_PASSWORD http://localhost:9200/_cluster/health
+curl -u elastic:changeme http://localhost:9200/_cluster/health
 
 # Check OpenSearch
 curl -u admin:password https://opensearch-host:9200/_cluster/health
