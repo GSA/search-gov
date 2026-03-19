@@ -45,17 +45,13 @@ describe SearchgovUrl do
         allow(searchgov_url).to receive(:searchgov_domain).and_return(searchgov_domain)
         allow(searchgov_domain).to receive(:marked_for_destruction?).and_return(false)
 
-        stub_request(:put, %r{http://localhost:8081/api/v1/documents/.*}).to_return(status: 200, body: '', headers: {})
-
-        allow(I14yDocument).to receive(:create).and_call_original
+        allow(LegacyOpenSearch::DocumentIndexer).to receive(:index)
 
         searchgov_url.fetch
-
-        allow(I14yDocument).to receive(:create).and_return(true)
       end
 
       it 'sets the language attribute correctly when indexing the document' do
-        expect(I14yDocument).to receive(:create).with(hash_including(language: 'en'))
+        expect(LegacyOpenSearch::DocumentIndexer).to receive(:index).with(hash_including(language: 'en'))
         searchgov_url.index_and_update_status
       end
     end
@@ -172,7 +168,7 @@ describe SearchgovUrl do
 
     context 'when destroying' do
       it 'deletes the document' do
-        expect(I14yDocument).to receive(:delete).
+        expect(LegacyOpenSearch::DocumentIndexer).to receive(:delete).
           with(handle: 'searchgov', document_id: searchgov_url.document_id)
         searchgov_url.destroy
       end
@@ -181,13 +177,26 @@ describe SearchgovUrl do
         let!(:searchgov_url) { described_class.create!(valid_attributes) }
 
         before do
-          allow(I14yDocument).to receive(:delete).
+          allow(LegacyOpenSearch::DocumentIndexer).to receive(:delete).
             with(handle: 'searchgov', document_id: searchgov_url.document_id).
-            and_raise(I14yDocument::I14yDocumentError.new('not found'))
+            and_raise(LegacyOpenSearch::DocumentIndexer::DocumentIndexerError.new('not found'))
         end
 
         it 'deletes the Searchgov Url' do
           expect { searchgov_url.destroy }.to change { described_class.count }.by(-1)
+        end
+      end
+
+      context 'when the document does not exist in OpenSearch' do
+        let!(:searchgov_url) { described_class.create!(valid_attributes) }
+
+        before do
+          allow(LegacyOpenSearch::DocumentIndexer).to receive(:delete).
+            with(handle: 'searchgov', document_id: searchgov_url.document_id)
+        end
+
+        it 'succeeds without error' do
+          expect { searchgov_url.destroy }.not_to raise_error
         end
       end
     end
@@ -210,7 +219,7 @@ describe SearchgovUrl do
 
     before do
       allow(searchgov_url).to receive(:searchgov_domain).and_return(searchgov_domain)
-      allow(I14yDocument).to receive(:create)
+      allow(LegacyOpenSearch::DocumentIndexer).to receive(:index)
     end
 
     context 'when the fetch is successful' do
@@ -223,7 +232,7 @@ describe SearchgovUrl do
       end
 
       it 'fetches and indexes the document' do
-        expect(I14yDocument).to receive(:create).
+        expect(LegacyOpenSearch::DocumentIndexer).to receive(:index).
           with(hash_including(
                  document_id: '1ff7dfd3cf763d08bee3546e2538cf0315578fbd7b1d3f28f014915983d4d7ef',
                  handle: 'searchgov',
@@ -239,6 +248,16 @@ describe SearchgovUrl do
                  changed: '2017-03-30T13:18:28-04:00',
                  mime_type: 'text/html'
                ))
+        fetch
+      end
+
+      it 'passes all expected i14y_params fields to the indexer' do
+        expect(LegacyOpenSearch::DocumentIndexer).to receive(:index) do |params|
+          %i[document_id handle language title path description content
+             content_type mime_type tags created changed].each do |key|
+            expect(params).to have_key(key), "expected params to include :#{key}"
+          end
+        end
         fetch
       end
 
@@ -320,7 +339,7 @@ describe SearchgovUrl do
           let(:valid_attributes) { { url: url, lastmod: '2018-01-01' } }
 
           it 'passes that as the changed value' do
-            expect(I14yDocument).to receive(:create).
+            expect(LegacyOpenSearch::DocumentIndexer).to receive(:index).
               with(hash_including(changed: '2018-01-01T00:00:00Z'))
             fetch
           end
@@ -334,7 +353,7 @@ describe SearchgovUrl do
             let(:valid_attributes) { { url: url, lastmod: '2018-01-01' } }
 
             it 'passes whichever value is more recent' do
-              expect(I14yDocument).to receive(:create).
+              expect(LegacyOpenSearch::DocumentIndexer).to receive(:index).
                 with(hash_including(changed: '2018-01-01T00:00:00Z'))
               fetch
             end
@@ -344,8 +363,8 @@ describe SearchgovUrl do
         context 'when the document has already been indexed' do
           before { allow(searchgov_url).to receive(:indexed?).and_return(true) }
 
-          it 'updates the document' do
-            expect(I14yDocument).to receive(:update).
+          it 'upserts the document via index' do
+            expect(LegacyOpenSearch::DocumentIndexer).to receive(:index).
               with(hash_including(
                      document_id: '1ff7dfd3cf763d08bee3546e2538cf0315578fbd7b1d3f28f014915983d4d7ef',
                      handle: 'searchgov',
@@ -364,7 +383,7 @@ describe SearchgovUrl do
 
         context 'when the document is successfully indexed' do
           before do
-            allow(I14yDocument).to receive(:create).with(anything).and_return(I14yDocument.new)
+            allow(LegacyOpenSearch::DocumentIndexer).to receive(:index).and_return({ '_id' => 'abc' })
           end
 
           it 'records the load time' do
@@ -387,11 +406,24 @@ describe SearchgovUrl do
         end
 
         context 'when the indexing fails' do
-          before { allow(I14yDocument).to receive(:create).and_raise(StandardError.new('Kaboom')) }
+          before { allow(LegacyOpenSearch::DocumentIndexer).to receive(:index).and_raise(StandardError.new('Kaboom')) }
 
           it 'records the error' do
             expect { fetch }.not_to raise_error
             expect(searchgov_url.last_crawl_status).to match(/Kaboom/)
+          end
+        end
+
+        context 'when the indexing fails with a DocumentIndexerError' do
+          before do
+            allow(LegacyOpenSearch::DocumentIndexer).to receive(:index).and_raise(
+              LegacyOpenSearch::DocumentIndexer::DocumentIndexerError.new('[503] unavailable')
+            )
+          end
+
+          it 'records the error gracefully' do
+            expect { fetch }.not_to raise_error
+            expect(searchgov_url.last_crawl_status).to match(/503/)
           end
         end
 
@@ -412,7 +444,7 @@ describe SearchgovUrl do
 
         context 'when the page should not be indexed' do
           before do
-            expect(I14yDocument).not_to receive(:create)
+            expect(LegacyOpenSearch::DocumentIndexer).not_to receive(:index)
           end
 
           context 'when noindex is specified in the page' do
@@ -471,8 +503,8 @@ describe SearchgovUrl do
       # In those cases, we log it, consider the #fetch to have been successful, and move on.
       context 'when the URL was indexed by a parallel process' do
         before do
-          allow(I14yDocument).to receive(:create).
-            and_raise(I14yDocument::DuplicateID, 'Document already exists with that ID')
+          allow(LegacyOpenSearch::DocumentIndexer).to receive(:index).
+            and_raise(LegacyOpenSearch::DocumentIndexer::DuplicateID, 'Document already exists with that ID')
           allow(Rails.logger).to receive(:warn)
         end
 
@@ -535,7 +567,7 @@ describe SearchgovUrl do
       end
 
       it 'fetches and indexes the document' do
-        expect(I14yDocument).to receive(:create).
+        expect(LegacyOpenSearch::DocumentIndexer).to receive(:index).
           with(hash_including(
                  handle: 'searchgov',
                  path: url,
@@ -622,7 +654,7 @@ describe SearchgovUrl do
       end
 
       it 'fetches and indexes the document' do
-        expect(I14yDocument).to receive(:create).
+        expect(LegacyOpenSearch::DocumentIndexer).to receive(:index).
           with(hash_including(
                  handle: 'searchgov',
                  path: url,
@@ -665,7 +697,7 @@ describe SearchgovUrl do
       end
 
       it 'fetches and indexes the document' do
-        expect(I14yDocument).to receive(:create).
+        expect(LegacyOpenSearch::DocumentIndexer).to receive(:index).
           with(hash_including(
                  handle: 'searchgov',
                  path: url,
@@ -708,7 +740,7 @@ describe SearchgovUrl do
       end
 
       it 'fetches and indexes the document' do
-        expect(I14yDocument).to receive(:create).
+        expect(LegacyOpenSearch::DocumentIndexer).to receive(:index).
           with(hash_including(
                  handle: 'searchgov',
                  path: url,
@@ -751,7 +783,7 @@ describe SearchgovUrl do
       end
 
       it 'fetches and indexes the document' do
-        expect(I14yDocument).to receive(:create).
+        expect(LegacyOpenSearch::DocumentIndexer).to receive(:index).
           with(hash_including(
                  handle: 'searchgov',
                  path: url,
@@ -794,7 +826,7 @@ describe SearchgovUrl do
       end
 
       it 'fetches and indexes the document' do
-        expect(I14yDocument).to receive(:create).
+        expect(LegacyOpenSearch::DocumentIndexer).to receive(:index).
           with(hash_including(
                  handle: 'searchgov',
                  path: 'https://agency.gov/test.txt',
@@ -839,19 +871,19 @@ describe SearchgovUrl do
         before { allow(searchgov_url).to receive(:indexed?).and_return(true) }
 
         it 'deletes the document' do
-          expect(I14yDocument).to receive(:delete).with(handle: 'searchgov', document_id: searchgov_url.document_id)
+          expect(LegacyOpenSearch::DocumentIndexer).to receive(:delete).with(handle: 'searchgov', document_id: searchgov_url.document_id)
           fetch
         end
 
         context 'when the document cannot be deleted' do
           before do
-            allow(I14yDocument).to receive(:delete).and_raise('something went wrong')
+            allow(LegacyOpenSearch::DocumentIndexer).to receive(:delete).and_raise('something went wrong')
             allow(Rails.logger).to receive(:error)
           end
 
           it 'logs the error' do
             fetch
-            expect(Rails.logger).to have_received(:error).with("[SearchgovUrl] Unable to delete Searchgov i14y document #{searchgov_url.document_id}:", instance_of(RuntimeError))
+            expect(Rails.logger).to have_received(:error).with(/Unable to delete document #{searchgov_url.document_id}/)
           end
         end
       end
@@ -866,7 +898,7 @@ describe SearchgovUrl do
       let(:new_url) { 'https://www.agency.gov/new.html' }
 
       before do
-        expect(I14yDocument).not_to receive(:create).
+        expect(LegacyOpenSearch::DocumentIndexer).not_to receive(:index).
           with(hash_including(title: 'My Title', description: 'My description'))
         stub_request(:get, url).
           to_return(status: 301,
@@ -897,7 +929,7 @@ describe SearchgovUrl do
         end
 
         it 'does not index the content' do
-          expect(I14yDocument).not_to receive(:create)
+          expect(LegacyOpenSearch::DocumentIndexer).not_to receive(:index)
           fetch
         end
 
@@ -931,7 +963,7 @@ describe SearchgovUrl do
       let(:url) { 'https://www.medicare.gov/find-a-plan/questions/home.aspx' }
 
       it 'can index the content' do
-        expect(I14yDocument).to receive(:create).
+        expect(LegacyOpenSearch::DocumentIndexer).to receive(:index).
           with(hash_including(title: 'Medicare Plan Finder for Health, Prescription Drug and Medigap plans'))
         fetch
       end
