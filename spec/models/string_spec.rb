@@ -22,12 +22,12 @@ describe String do
       expect('  foo ,  bar  , baz '.extract_array).to eq(%w[foo bar baz])
     end
 
-    it 'returns an array with one empty string for an empty string' do
-      expect(''.extract_array).to eq([''])
+    it 'returns an empty array for an empty string' do
+      expect(''.extract_array).to eq([])
     end
 
-    it 'handles trailing commas' do
-      expect('one, two,'.extract_array).to eq(['one', 'two', ''])
+    it 'handles trailing commas by dropping empty trailing elements' do
+      expect('one, two,'.extract_array).to eq(['one', 'two'])
     end
   end
 end
