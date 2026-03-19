@@ -1,125 +1,73 @@
 #!/bin/bash
-set -euo pipefail
-
-# NOTE: This script runs during CodeDeploy BeforeInstall. Do not remove
-# /home/search/cicd_temp contents, because that directory contains the staged
-# deployment artifact downloaded by CodeDeploy.
-
-log() {
-  echo "[CODEDEPLOY][BEFORE_INSTALL][fetch_env_vars] $*"
-}
-
-warn() {
-  echo "[CODEDEPLOY][BEFORE_INSTALL][fetch_env_vars][WARN] $*"
-}
-
-retry() {
-  local attempts="$1"
-  local delay_seconds="$2"
-  shift 2
-
-  local count=1
-  until "$@"; do
-    if [ "$count" -ge "$attempts" ]; then
-      return 1
-    fi
-    warn "Command failed (attempt ${count}/${attempts}): $*"
-    sleep "$delay_seconds"
-    count=$((count + 1))
-  done
-}
-
-# Move to a writable location for generating .env
+set -x
+# Move to a writable location
 cd /home/search/cicd_temp
+# Leave PARAM_PATH empty to fetch all parameters in the region
 PARAM_PATH=""
+# Clear the .env file if it exists
 > .env
 
-# CERT_REGION: Region where sensitive parameters (certs, keys) are stored
-CERT_REGION="us-east-2"
+echo "Starting the script"
+echo "whoami: " $(whoami)
+# Fetch all parameter names in the region using IMDSv2 method which new method
+TOKEN=$(curl -sS --fail --max-time 2 -X PUT "http://169.254.169.254/latest/api/token" \
+  -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
 
-log "Starting script"
-log "Sensitive parameters will be fetched from region: $CERT_REGION"
+REGION=$(curl -sS --fail --max-time 2 \
+  -H "X-aws-ec2-metadata-token: $TOKEN" \
+  "http://169.254.169.254/latest/dynamic/instance-identity/document" \
+  | sed -n 's/.*"region"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p')
 
-# Ensure expected shared directories exist before writing files.
-mkdir -p /home/search/searchgov/shared/config /home/search/searchgov/shared/tmp/pids /home/search/searchgov/shared/log
+# Print region
+echo "REGION is: $REGION"
 
-# Fetch all parameter names in the region using IMDSv2 method
-TOKEN=""
-if ! TOKEN=$(retry 3 1 curl -sS --fail --max-time 2 -X PUT "http://169.254.169.254/latest/api/token" \
-  -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"); then
-  warn "Failed to retrieve IMDSv2 token; will fall back to AWS_REGION/SEARCH_AWS_REGION"
-fi
-
-REGION=""
-if [ -n "$TOKEN" ]; then
-  REGION=$(curl -sS --fail --max-time 2 \
-    -H "X-aws-ec2-metadata-token: $TOKEN" \
-    "http://169.254.169.254/latest/dynamic/instance-identity/document" \
-    | sed -n 's/.*"region"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' || true)
-fi
-
-log "Instance region: $REGION"
-
-# Fetch parameters from instance region
 if [ -n "$PARAM_PATH" ]; then
-    PARAM_KEYS=$(aws ssm get-parameters-by-path --path "$PARAM_PATH" --recursive --query "Parameters[*].Name" --output text --region "$REGION")
+    PARAM_KEYS=$(aws ssm get-parameters-by-path --path "$PARAM_PATH"  --recursive --query "Parameters[*].Name" --output text --region $REGION)
 else
-    PARAM_KEYS=$(aws ssm describe-parameters --query "Parameters[*].Name" --output text --region "$REGION")
+    PARAM_KEYS=$(aws ssm describe-parameters  --query "Parameters[*].Name" --output text --region $REGION)
 fi
+echo "Fetched parameter keys: $PARAM_KEYS"
 
 # Loop through each parameter key
 for PARAM in $PARAM_KEYS; do
+    # Exclude parameters that start with "DEPLOY_" or match "*_EC2_PEM_KEY" or match LOGIN_DOT_GOV_PEM
     if [[ $PARAM != DEPLOY_* && ! $PARAM =~ .*_EC2_PEM_KEY$ && $PARAM != "LOGIN_DOT_GOV_PEM" ]]; then
-        if ! VALUE=$(aws ssm get-parameter --name "$PARAM" --with-decryption --query "Parameter.Value" --output text --region "$REGION" 2>/dev/null); then
-            warn "Skipping parameter: $PARAM"
-            continue
-        fi
+        # Fetch the parameter value from SSM
+        VALUE=$(aws ssm get-parameter --name "$PARAM" --with-decryption --query "Parameter.Value" --output text --region $REGION)
         
+        # Rename parameters that start with "SEARCH_AWS_" to "AWS_"
         if [[ $PARAM == SEARCH_AWS_* ]]; then
             PARAM=${PARAM/SEARCH_AWS_/AWS_}
         fi
 
+        # Write the key=value pair to the .env file
         echo "$PARAM=$VALUE" >> .env
     fi
 done
 
-log ".env file generated successfully"
+# Output the result
+echo ".env file created with the following content:"
+cat .env
 cp /home/search/cicd_temp/.env /home/search/searchgov/shared/
 
-# Fetch LOGIN_DOT_GOV_PEM from cert region
-log "Fetching LOGIN_DOT_GOV_PEM from region $CERT_REGION"
-PEM_OUTPUT_FILE="/home/search/searchgov/shared/config/logindotgov.pem"
+# Fetch a specific parameter and save it to a file
+aws ssm get-parameter --name "LOGIN_DOT_GOV_PEM" --region us-east-2 --with-decryption --query "Parameter.Value" --output text > /home/search/searchgov/shared/config/logindotgov.pem
 
-if ! aws ssm get-parameter \
-  --name "LOGIN_DOT_GOV_PEM" \
-  --region "$CERT_REGION" \
-  --with-decryption \
-  --query "Parameter.Value" \
-  --output text > "$PEM_OUTPUT_FILE" 2>&1; then
-  warn "Failed to fetch LOGIN_DOT_GOV_PEM from region $CERT_REGION"
-  warn "Login.gov authentication will be disabled"
-  exit 0
-fi
+# Create  directories if they do not already exist
+[ ! -d /home/search/searchgov/shared/tmp/pids/ ] && mkdir -p /home/search/searchgov/shared/tmp/pids/
+[ ! -d /home/search/searchgov/shared/log ] && mkdir -p /home/search/searchgov/shared/log
 
-# Quick PEM validation
-if openssl pkey -in "$PEM_OUTPUT_FILE" -noout 2>/dev/null; then
-  log "PEM validation: PASSED"
-else
-  warn "PEM validation failed - Login.gov auth will be disabled"
-fi
+# Create log files if they do not already exist
+[ ! -f /home/search/searchgov/shared/log/puma_access.log ] && touch /home/search/searchgov/shared/log/puma_access.log
+[ ! -f /home/search/searchgov/shared/log/puma_error.log ] && touch /home/search/searchgov/shared/log/puma_error.log
 
-chmod 600 "$PEM_OUTPUT_FILE"
 
-# Create directories and log files if needed
-mkdir -p /home/search/searchgov/shared/tmp/pids /home/search/searchgov/shared/log
-touch /home/search/searchgov/shared/log/puma_access.log /home/search/searchgov/shared/log/puma_error.log
+# Set ownership and permissions
+chown -R search:search /home/search/searchgov/
+chmod -R 755 /home/search/searchgov/
 
-# Set ownership and permissions only when running as root
-if [ "$(id -u)" -eq 0 ]; then
-  chown -R search:search /home/search/searchgov/
-  chmod -R 755 /home/search/searchgov/
-  find /home/search/searchgov/ -type d -exec chmod 2755 {} \;
-fi
+find /home/search/searchgov/ -type d -exec chmod 2755 {} \;
 
 umask 022
-log "Completed successfully"
+
+sudo rm -rf /home/search/cicd_temp/*

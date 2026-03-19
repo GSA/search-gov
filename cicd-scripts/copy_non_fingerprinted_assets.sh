@@ -1,31 +1,15 @@
 #!/bin/bash
-set -euo pipefail
 
-log() {
-  echo "[CODEDEPLOY][AFTER_INSTALL][copy_non_fingerprinted_assets] $*"
-}
+cd /home/search/searchgov/current
 
-SEARCHGOV_ROOT="${SEARCHGOV_ROOT:-/home/search/searchgov}"
-CURRENT_PATH="${SEARCHGOV_ROOT}/current"
+# Copy non-fingerprinted JS and CSS assets in public/packs
+for file in $(find public/packs -name "*-*.js" -or -name "*-*.css"); do
+  cp "$file" "${file%%-*}.${file##*.}"
+done
 
-cd "$CURRENT_PATH"
+# Copy non-fingerprinted assets in public/assets directory
+for file in $(find public/assets -name "*-*.js" -or -name "*-*.css" -or -name "*-*.js.gz" -or -name "*-*.css.gz"); do
+  cp "$file" "${file%%-*}.${file##*.}"
+done
 
-copy_assets_in_dir() {
-  local target_dir="$1"
-
-  if [ ! -d "$target_dir" ]; then
-    log "Directory not found, skipping: $target_dir"
-    return 0
-  fi
-
-  # We intentionally generate stable non-fingerprinted names for clients that
-  # still reference legacy file names.
-  while IFS= read -r file; do
-    cp "$file" "${file%%-*}.${file##*.}"
-  done < <(find "$target_dir" -type f \( -name "*-*.js" -o -name "*-*.css" -o -name "*-*.js.gz" -o -name "*-*.css.gz" \))
-}
-
-copy_assets_in_dir "public/packs"
-copy_assets_in_dir "public/assets"
-
-log "Completed successfully"
+echo "Non-fingerprinted assets copied successfully in both packs and assets directories."
