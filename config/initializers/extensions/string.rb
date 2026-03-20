@@ -8,4 +8,7 @@ class String
     gsub(/(\b|')[a-z]+/) { |w| NON_CAPITALIZED.include?(w) ? w : w.capitalize }.sub(/^[a-z]/) { |l| l.upcase }
   end
 
+  def extract_array
+    split(',').map(&:strip).map(&:downcase)
+  end
 end

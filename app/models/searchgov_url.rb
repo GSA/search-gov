@@ -209,8 +209,8 @@ class SearchgovUrl < ApplicationRecord
 
   def index_document
     Rails.logger.info "[Index SearchgovUrl] #{log_data}"
-    indexed? ? I14yDocument.update(i14y_params) : I14yDocument.create(i14y_params)
-  rescue I14yDocument::DuplicateID => e
+    LegacyOpenSearch::DocumentIndexer.index(i14y_params)
+  rescue LegacyOpenSearch::DocumentIndexer::DuplicateID => e
     Rails.logger.warn("#{e}: #{hashed_url}")
   end
 
@@ -283,8 +283,8 @@ class SearchgovUrl < ApplicationRecord
   end
 
   def delete_document
-    I14yDocument.delete(handle: 'searchgov', document_id: document_id)
+    LegacyOpenSearch::DocumentIndexer.delete(handle: 'searchgov', document_id: document_id)
   rescue => e
-    Rails.logger.error "[SearchgovUrl] Unable to delete Searchgov i14y document #{document_id}:", e
+    Rails.logger.error "[SearchgovUrl] Unable to delete document #{document_id}: #{e.message}"
   end
 end

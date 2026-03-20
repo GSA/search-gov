@@ -53,7 +53,7 @@ describe 'Search.gov tasks' do
     end
 
     it 'creates new urls' do
-      expect(I14yDocument).to receive(:create)
+      expect(LegacyOpenSearch::DocumentIndexer).to receive(:index)
       allow(I14yDocument).to receive(:promote).
         with(handle: 'searchgov', document_id: doc_id, bool: 'true').at_least(:once)
       promote_urls
