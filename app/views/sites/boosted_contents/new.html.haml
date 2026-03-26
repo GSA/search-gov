@@ -1,6 +1,6 @@
 = content_for_site_page_title @site, 'Add Best Bets: Text'
 = form_for @boosted_content, url: { action: :create }, html: { class: 'form' }  do |form|
-  .sub-nav-heading
+  .sub-nav-heading{ class: ("--is-inactive" if @site&.active? == false) }
     %h2 Add Best Bets: Text
     .action-bar
       %ul

@@ -1,6 +1,6 @@
 = content_for_site_page_title @site, 'Image Assets'
 = custom_form_for @site, as: :image_asset, url: site_image_assets_path(@site), html: { class: 'form', id: 'edit-image-assets' } do |f|
-  .sub-nav-heading
+  .sub-nav-heading{ class: ("--is-inactive" if @site&.active? == false) }
     %h2 Image Assets
     .action-bar
       %ul

@@ -1,6 +1,6 @@
 = content_for_site_page_title @site, 'Edit Alert'
 = form_for @alert, url: { action: :update }, html: { class: 'form' }  do |form|
-  .sub-nav-heading
+  .sub-nav-heading{ class: ("--is-inactive" if @site&.active? == false) }
     %h2 Update Alert
     .action-bar
       %ul

@@ -1,6 +1,6 @@
 = content_for_site_page_title @site, 'Clone Site'
 = form_tag site_clone_path, class: 'form' do
-  .sub-nav-heading
+  .{ class: ("--is-inactive" if @site&.active? == false) }
     %h2 Clone Site
     .action-bar
       %ul

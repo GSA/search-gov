@@ -1,6 +1,6 @@
 = content_for_site_page_title(@site, t('.visual_design', scope: 'admin_center'))
 = form_for(@site, as: :site, url: site_visual_design_path, html: { class: 'form', id: 'edit-visual-designs' }) do |f|
-  .sub-nav-heading
+  .sub-nav-heading{ class: ("--is-inactive" if @site&.active? == false) }
     %h2= t('.visual_design', scope: 'admin_center')
     .action-bar
       %ul
