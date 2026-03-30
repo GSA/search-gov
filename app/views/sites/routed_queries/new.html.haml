@@ -1,6 +1,6 @@
 = content_for_site_page_title @site, 'Add Routed Query'
 = custom_form_for @routed_query, url: { action: :create }, html: { class: 'form' } do |form|
-  .sub-nav-heading
+  .sub-nav-heading{ class: ("--is-inactive" if @site&.active? == false) }
     %h2 Add Routed Query
     .action-bar
       %ul

@@ -1,6 +1,6 @@
 = content_for_site_page_title @site, '3rd Party Tracking'
 = form_tag site_third_party_tracking_request_path, class: 'form' do
-  .sub-nav-heading
+  .sub-nav-heading{ class: ("--is-inactive" if @site&.active? == false) }
     %h2 3rd Party Tracking
     .action-bar
       %ul

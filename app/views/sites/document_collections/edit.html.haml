@@ -1,6 +1,6 @@
 = content_for_site_page_title @site, 'Edit Collection'
 = custom_form_for @document_collection, url: { action: :update }, html: { class: 'form' }  do |form|
-  .sub-nav-heading
+  .sub-nav-heading{ class: ("--is-inactive" if @site&.active? == false) }
     %h2 Edit Collection
     .action-bar
       %ul

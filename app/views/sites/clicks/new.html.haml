@@ -1,6 +1,6 @@
 = content_for_site_page_title @site, 'Clicks'
 = form_for @clicks_request, url: { action: :create }, html: { class: 'form' }  do |form|
-  .sub-nav-heading
+  .sub-nav-heading{ class: ("--is-inactive" if @site&.active? == false) }
     %h2 Clicks
     .action-bar
       %ul

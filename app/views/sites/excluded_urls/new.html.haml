@@ -1,6 +1,6 @@
 = content_for_site_page_title @site, 'Add Filter URL'
 = form_for @excluded_url, url: { action: :create }, html: { class: 'form' }  do |f|
-  .sub-nav-heading
+  .sub-nav-heading{ class: ("--is-inactive" if @site&.active? == false) }
     %h2 Add Filter URL
     .action-bar
       %ul

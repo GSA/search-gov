@@ -1,5 +1,5 @@
 = content_for_site_page_title @site, 'Analytics Alerts'
-.sub-nav-heading
+.sub-nav-heading{ class: ("--is-inactive" if @site&.active? == false) }
   %h2 Analytics Alerts Beta
   .action-bar
     %ul

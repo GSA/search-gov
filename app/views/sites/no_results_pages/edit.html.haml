@@ -1,6 +1,6 @@
 = content_for_site_page_title @site, 'No Results Page'
 = custom_form_for @site, as: :no_results_pages, url: site_no_results_pages_path(@site), html: { class: 'form', id: 'edit-no-results-pages' } do |f|
-  .sub-nav-heading
+  .sub-nav-heading{ class: ("--is-inactive" if @site&.active? == false) }
     %h2 No Results Page
     .action-bar
       %ul
