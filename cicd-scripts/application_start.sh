@@ -1,6 +1,13 @@
 #!/bin/bash
 set -euo pipefail
 
+if [ -f /home/search/.config/searchgov-codedeploy.env ]; then
+  set -a
+  # shellcheck disable=SC1090
+  source /home/search/.config/searchgov-codedeploy.env
+  set +a
+fi
+
 log() {
   echo "[CODEDEPLOY][APPLICATION_START] $*"
 }
