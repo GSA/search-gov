@@ -8,7 +8,6 @@ class SearchesController < ApplicationController
   skip_before_action :verify_authenticity_token, :set_default_locale
 
   before_action :set_affiliate, :set_locale_based_on_affiliate_locale
-  before_action :validate_page_number
   #eventually all the searches should be redirected, but currently we're doing it as-needed
   #to ensure that the correct params are being passed, etc.
   before_action :set_web_search_options, :only => [:advanced, :index]
@@ -84,19 +83,6 @@ class SearchesController < ApplicationController
   end
 
   private
-
-  # Ensures that the page number is within the valid range (1 to MAX_PAGES). If it's not, redirects to the appropriate page.
-  def validate_page_number
-    page = permitted_params[:page].to_i
-    # Redirect to the last page if the page number is greater than the maximum allowed.
-    if page > MAX_PAGES
-      redirect_to search_path(permitted_params.except(:page).merge(page: MAX_PAGES))
-
-    # Redirect to the first page if the page number is less than 1.
-    elsif page < 1
-      redirect_to search_path(permitted_params.except(:page).merge(page: 1))
-    end
-  end
 
   # Redirects to the last available page if the requested page number exceeds the total number of pages.
   def redirect_if_invalid_page_number
