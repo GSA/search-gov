@@ -33,7 +33,7 @@ export const Pagination = ({ pathname, totalPages = null, unboundedResults }: Pa
           <Grid tablet={{ col: true }}>
             <UswdsPagination 
               pathname={pathname} 
-              totalPages={totalPages} 
+              totalPages={cappedTotalPages} 
               currentPage={getCurrentPage()}
               unboundedResults={unboundedResults}
             />

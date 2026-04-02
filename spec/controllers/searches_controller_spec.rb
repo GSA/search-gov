@@ -331,6 +331,37 @@ describe SearchesController do
     end
   end
 
+  context "when page number is less than 1" do
+    it "redirects to page 1" do
+      get :index, params: { query: 'weather', page: 0, affiliate: 'usagov' }
+      expect(response).to redirect_to search_path(query: 'weather', page: 1, affiliate: 'usagov')
+    end
+  end
+
+  context "when a page number exceeds availale pages" do
+    before do
+      # Mock a search with only 3 pages of results.
+      allow_any_instance_of(WebSearch).to receive(:total_pages).and_return(3)
+    end
+
+    it "redirects to the last available page" do
+      get :index, params: { query: 'test', page: 4, affiliate: 'usagov' }
+      expect(response).to redirect_to search_path(query: 'test', page: 3, affiliate: 'usagov')
+    end
+  end
+  
+  context "when page number exceeds maximum allowed (10)" do
+    before do
+      # Mock a search with more than 10 pages of results.
+      allow_any_instance_of(WebSearch).to receive(:total_pages).and_return(15)
+    end
+
+    it "redirects to page 10" do
+      get :index, params: { query: 'test', page: 11, affiliate: 'usagov' }
+      expect(response).to redirect_to search_path(query: 'test', page: 10, affiliate: 'usagov')
+    end
+  end
+  
   context 'highlighting' do
     context 'when a client requests results without highlighting' do
       before do
