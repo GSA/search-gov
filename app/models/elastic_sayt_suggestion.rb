@@ -3,6 +3,12 @@
 class ElasticSaytSuggestion
   extend Indexable
 
+  def self.logger
+    Rails.logger
+  end
+  
+  # Set logger level to FATAL to avoid logging connection errors
+  self.logger.level = Logger::FATAL
   self.settings = ElasticSettings::COMMON
 
   self.mappings = {

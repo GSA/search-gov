@@ -292,6 +292,16 @@ describe ElasticNewsItem do
       end
     end
 
+    describe 'logging configuration' do
+      it 'returns Rails logger' do
+        expect(described_class.logger).to eq(Rails.logger)
+      end
+
+      it 'sets logger level to FATAL' do
+        expect(described_class.logger.level).to eq(Logger::FATAL)
+      end
+    end
+
     context 'synonyms and protected words' do
       it 'should use both' do
         search = described_class.search_for(q: 'gas', rss_feeds: [blog, gallery], language: 'en')

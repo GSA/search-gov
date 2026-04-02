@@ -221,6 +221,16 @@ describe ElasticSaytSuggestion do
 
   end
 
+  describe 'logging configuration' do
+    it 'returns Rails logger' do
+      expect(described_class.logger).to eq(Rails.logger)
+    end
+
+    it 'sets logger level to FATAL' do
+      expect(described_class.logger.level).to eq(Logger::FATAL)
+    end
+  end
+
   it_behaves_like 'an indexable'
 
 end
