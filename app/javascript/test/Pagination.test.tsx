@@ -8,7 +8,7 @@ jest.mock('i18n-js', () => {
 });
 
 describe('Pagination component', () => {
-  const testPages = 24;
+  const testPages = 10;
   const testThreePages = 3;
   const testSevenPages = 7;
   const testPathname = '/test-pathname';
@@ -17,7 +17,7 @@ describe('Pagination component', () => {
     render(
       <UswdsPagination
         totalPages={testPages}
-        currentPage={10}
+        currentPage={4}
         pathname={testPathname}
         unboundedResults={true}
       />
@@ -28,7 +28,7 @@ describe('Pagination component', () => {
     render(
       <UswdsPagination
         totalPages={testPages}
-        currentPage={10}
+        currentPage={5}
         pathname={testPathname}
         unboundedResults={false}
       />
@@ -51,7 +51,7 @@ describe('Pagination component', () => {
     render(
       <UswdsPagination
         totalPages={testPages}
-        currentPage={24}
+        currentPage={10}
         pathname={testPathname}
         unboundedResults={false}
       />
@@ -62,7 +62,7 @@ describe('Pagination component', () => {
     render(
       <UswdsPagination
         totalPages={testPages}
-        currentPage={24}
+        currentPage={10}
         pathname={testPathname}
         unboundedResults={true}
       />
@@ -73,7 +73,7 @@ describe('Pagination component', () => {
     render(
       <UswdsPagination
         totalPages={testPages}
-        currentPage={10}
+        currentPage={5}
         pathname={testPathname}
         unboundedResults={false}
       />
@@ -96,7 +96,7 @@ describe('Pagination component', () => {
     render(
       <UswdsPagination
         totalPages={testPages}
-        currentPage={21}
+        currentPage={9}
         pathname={testPathname}
         unboundedResults={false}
       />
@@ -112,7 +112,7 @@ describe('Pagination component', () => {
     const { getByTestId, getAllByTestId } = render(
       <UswdsPagination
         totalPages={testPages}
-        currentPage={21}
+        currentPage={9}
         pathname={testPathname}
         onClickPrevious={mockOnClickPrevious}
         onClickNext={mockOnClickNext}
