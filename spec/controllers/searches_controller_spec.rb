@@ -334,7 +334,8 @@ describe SearchesController do
   context "when a page number exceeds available pages" do
     before do
       # Mock a search with only 3 pages of results.
-      allow_any_instance_of(WebSearch).to receive(:total_pages).and_return(3)
+      allow_any_instance_of(WebSearch).to receive(:total).and_return(30)
+      allow_any_instance_of(WebSearch).to receive(:per_page).and_return(10)
     end
 
     it "redirects to the last available page" do

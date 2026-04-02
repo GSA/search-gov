@@ -86,7 +86,10 @@ class SearchesController < ApplicationController
 
   # Redirects to the last available page if the requested page number exceeds the total number of pages.
   def redirect_if_invalid_page_number
-    return unless @search&.total.present?
+    # I14ySearch handles page numbers differently, so we skip this check for it. Also, we are going to delete this code soon, so we don't want to spend time refactoring it for I14ySearch.
+    return if gets_i14y_results?
+
+    return unless @search.total.present?
 
     requested_page = params[:page].to_i
     total_pages = (@search.total.to_f / @search.per_page).ceil
