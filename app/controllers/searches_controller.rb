@@ -1,11 +1,14 @@
 # frozen_string_literal: true
 
 class SearchesController < ApplicationController
+  MAX_PAGES = 10
+
   layout :set_layout
 
   skip_before_action :verify_authenticity_token, :set_default_locale
 
   before_action :set_affiliate, :set_locale_based_on_affiliate_locale
+  before_action :validate_page_number
   #eventually all the searches should be redirected, but currently we're doing it as-needed
   #to ensure that the correct params are being passed, etc.
   before_action :set_web_search_options, :only => [:advanced, :index]
@@ -21,14 +24,20 @@ class SearchesController < ApplicationController
       template = :index_redesign if redesign?
       @search = search_klass.new(@search_options.merge(geoip_info: GeoipLookup.lookup(request.remote_ip)))
       @search.run
+
       @form_path = search_path
       @page_title = @search.query
       set_search_page_title
       set_search_params
+
+      # If the requested page number exceeds the total number of pages, redirect to the last available page.
+      redirect_if_invalid_page_number and return
+
       respond_to do |format|
         format.html { render template }
         format.json { render :json => @search }
       end
+
     else
       @page_title = "Search Temporarily Unavailable - #{@affiliate.display_name}"
       respond_to do |format|
@@ -75,6 +84,31 @@ class SearchesController < ApplicationController
   end
 
   private
+
+  # Ensures that the page number is within the valid range (1 to MAX_PAGES). If it's not, redirects to the appropriate page.
+  def validate_page_number
+    page = permitted_params[:page].to_i
+    # Redirect to the last page if the page number is greater than the maximum allowed.
+    if page > MAX_PAGES
+      redirect_to search_path(permitted_params.except(:page).merge(page: MAX_PAGES))
+
+    # Redirect to the first page if the page number is less than 1.
+    elsif page < 1
+      redirect_to search_path(permitted_params.except(:page).merge(page: 1))
+    end
+  end
+
+  # Redirects to the last available page if the requested page number exceeds the total number of pages.
+  def redirect_if_invalid_page_number
+    return unless @search&.total.present?
+
+    requested_page = params[:page].to_i
+    total_pages = (@search.total.to_f / @search.per_page).ceil
+
+    if requested_page > total_pages && total_pages > 0
+      redirect_to search_path(permitted_params.except(:page).merge(page: total_pages))
+    end
+  end
 
   def pick_klass_vertical_template
     if get_commercial_results?
