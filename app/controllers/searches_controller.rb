@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class SearchesController < ApplicationController
-  MAX_PAGES = 10
-
   layout :set_layout
 
   skip_before_action :verify_authenticity_token, :set_default_locale
