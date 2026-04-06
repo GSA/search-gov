@@ -165,13 +165,13 @@ describe('Pagination component', () => {
       render(
         <UswdsPagination
           totalPages={testPages}
-          currentPage={10}
+          currentPage={5}
           pathname={testPathname}
-          maxSlots={10}
+          maxSlots={5}
           unboundedResults={false}
         />
       );
-      expect(screen.getAllByRole('listitem')).toHaveLength(10);
+      expect(screen.getAllByRole('listitem')).toHaveLength(5);
     });
   });
 });
