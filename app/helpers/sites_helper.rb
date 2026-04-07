@@ -111,7 +111,7 @@ module SitesHelper
   end
 
   def site_dashboard_controllers
-    %w[settings sites users clones]
+    %w[settings sites users]
   end
 
   def site_nav_css_class_hash(*nav_names)
