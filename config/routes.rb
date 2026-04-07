@@ -92,7 +92,6 @@ Rails.application.routes.draw do
       end
       resource :monthly_reports, only: [:show]
       resource :setting, only: [:edit, :update]
-      resource :clone, only: [:new, :create]
       resource :supplemental_feed,
                controller: 'site_feed_urls',
                only: [:edit, :create, :update, :destroy]
