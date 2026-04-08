@@ -122,9 +122,6 @@ Rails.application.routes.draw do
       resources :routed_queries do
         collection { get :new_routed_query_keyword }
       end
-      resources :filter_urls,
-                controller: 'excluded_urls',
-                only: [:index, :new, :create, :destroy]
       resources :tag_filters, only: [:index, :new, :create, :destroy]
       resources :supplemental_urls,
                 controller: 'indexed_documents',
