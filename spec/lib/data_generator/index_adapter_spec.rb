@@ -14,7 +14,14 @@ module DataGenerator
     let(:es_client) { double(Elasticsearch::Transport::Client) }
 
     before do
-      allow(Es).to receive(:client_writers).and_return([es_client])
+      allow(Es::ELK).to receive(:client_writers).and_return([es_client])
+    end
+
+    # Helper method to build index params conditionally based on OpenSearch
+    def index_params(index:, doc_type:, body:)
+      params = { index: index, body: body }
+      params[:type] = doc_type unless OpenSearchConfig.enabled?
+      params
     end
 
     describe '#index_search_and_clicks' do
@@ -22,9 +29,9 @@ module DataGenerator
         let(:is_human) { true }
 
         it 'adds search and clicks to both the human-logstash- and logstash- indices' do
-          expect(es_client).to receive(:index).with({
+          expect(es_client).to receive(:index).with(index_params(
             index: 'human-logstash-2015.07.14',
-            type: 'search',
+            doc_type: 'search',
             body: {
               '@version' => 1,
               '@timestamp' => '2015-07-14T12:15:15+00:00',
@@ -35,10 +42,10 @@ module DataGenerator
                 query: 'the ants in france'
               }
             }
-          })
-          expect(es_client).to receive(:index).with({
+          ))
+          expect(es_client).to receive(:index).with(index_params(
             index: 'logstash-2015.07.14',
-            type: 'search',
+            doc_type: 'search',
             body: {
               '@version' => 1,
               '@timestamp' => '2015-07-14T12:15:15+00:00',
@@ -49,11 +56,11 @@ module DataGenerator
                 query: 'the ants in france'
               }
             }
-          })
+          ))
 
-          expect(es_client).to receive(:index).with({
+          expect(es_client).to receive(:index).with(index_params(
             index: 'human-logstash-2015.07.14',
-            type: 'click',
+            doc_type: 'click',
             body: {
               '@version' => 1,
               '@timestamp' => '2015-07-14T12:15:15+00:00',
@@ -66,10 +73,10 @@ module DataGenerator
                 position: 1
               }
             }
-          })
-          expect(es_client).to receive(:index).with({
+          ))
+          expect(es_client).to receive(:index).with(index_params(
             index: 'logstash-2015.07.14',
-            type: 'click',
+            doc_type: 'click',
             body: {
               '@version' => 1,
               '@timestamp' => '2015-07-14T12:15:15+00:00',
@@ -82,11 +89,11 @@ module DataGenerator
                 position: 1
               }
             }
-          })
+          ))
 
-          expect(es_client).to receive(:index).with({
+          expect(es_client).to receive(:index).with(index_params(
             index: 'human-logstash-2015.07.14',
-            type: 'click',
+            doc_type: 'click',
             body: {
               '@version' => 1,
               '@timestamp' => '2015-07-14T12:15:15+00:00',
@@ -99,10 +106,10 @@ module DataGenerator
                 position: 2
               }
             }
-          })
-          expect(es_client).to receive(:index).with({
+          ))
+          expect(es_client).to receive(:index).with(index_params(
             index: 'logstash-2015.07.14',
-            type: 'click',
+            doc_type: 'click',
             body: {
               '@version' => 1,
               '@timestamp' => '2015-07-14T12:15:15+00:00',
@@ -115,7 +122,7 @@ module DataGenerator
                 position: 2
               }
             }
-          })
+          ))
 
           subject.index_search_and_clicks
         end
@@ -125,9 +132,9 @@ module DataGenerator
         let(:is_human) { false }
 
         it 'adds search and clicks to just the logstash- index' do
-          expect(es_client).to receive(:index).with({
+          expect(es_client).to receive(:index).with(index_params(
             index: 'logstash-2015.07.14',
-            type: 'search',
+            doc_type: 'search',
             body: {
               '@version' => 1,
               '@timestamp' => '2015-07-14T12:15:15+00:00',
@@ -138,11 +145,11 @@ module DataGenerator
                 query: 'the ants in france'
               }
             }
-          })
+          ))
 
-          expect(es_client).to receive(:index).with({
+          expect(es_client).to receive(:index).with(index_params(
             index: 'logstash-2015.07.14',
-            type: 'click',
+            doc_type: 'click',
             body: {
               '@version' => 1,
               '@timestamp' => '2015-07-14T12:15:15+00:00',
@@ -155,11 +162,11 @@ module DataGenerator
                 position: 1
               }
             }
-          })
+          ))
 
-          expect(es_client).to receive(:index).with({
+          expect(es_client).to receive(:index).with(index_params(
             index: 'logstash-2015.07.14',
-            type: 'click',
+            doc_type: 'click',
             body: {
               '@version' => 1,
               '@timestamp' => '2015-07-14T12:15:15+00:00',
@@ -172,7 +179,7 @@ module DataGenerator
                 position: 2
               }
             }
-          })
+          ))
 
           subject.index_search_and_clicks
         end

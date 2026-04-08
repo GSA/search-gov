@@ -2,16 +2,13 @@
 
 module VisualDesignHelper
   def show_results_format?(site)
-    (site.gets_i14y_results || site.gets_blended_results || site.search_engine == 'SearchGov') &&
-      site.search_engine != 'BingV7'
+    (site.gets_i14y_results || site.gets_blended_results || site.search_gov_engine?) && !site.bing_v7_engine?
   end
 
   def render_logo_alt_text(logo_metadata)
-    if logo_metadata.present? && logo_metadata.key?('alt_text')
-      logo_metadata['alt_text']
-    else
-      t('sites.visual_designs.image_assets.logo', scope: 'admin_center')
-    end
+    return unless logo_metadata.present? && logo_metadata.key?('alt_text')
+
+    logo_metadata['alt_text']
   end
 
   def link_to_add_link(title, site, attribute)

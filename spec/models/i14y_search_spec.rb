@@ -34,6 +34,53 @@ describe I14ySearch do
     end
   end
 
+  describe '#search' do
+    subject(:search) do
+      described_class.new(affiliate: affiliate,
+                          enable_highlighting: true,
+                          limit: 20,
+                          offset: 0,
+                          query: 'faq',
+                          include_facets: include_facets)
+    end
+
+    let(:results) { search.normalized_results }
+
+    context 'when include_facets is true' do
+      let(:include_facets) { 'true' }
+
+      before do
+        allow(I14ySearch).to receive(:new).with(search)
+        search.run
+      end
+
+      it 'includes facet fields in response' do
+        first_result = results[:results].first
+
+        expect(first_result.keys).to include(:audience,
+                                             :contentType,
+                                             :mimeType,
+                                             :searchgovCustom1,
+                                             :searchgovCustom2,
+                                             :searchgovCustom3,
+                                             :tags,
+                                             :updatedDate)
+      end
+
+      it 'returns aggregations' do
+        expect(results).to include(:aggregations)
+      end
+
+      it 'returns agg_key string and doc_count' do
+        aggs_hash = results[:aggregations].first
+        random_agg = aggs_hash.keys.sample
+        expect(aggs_hash[random_agg].first).
+          to match hash_including(agg_key: be_a(String),
+                                  doc_count: be_an(Integer))
+      end
+    end
+  end
+
   context 'when results are available' do
     before { i14y_search.run }
 
@@ -224,15 +271,6 @@ describe I14ySearch do
       i14y_search.run
       expect(Rails.logger).to have_received(:error).with('I14y search problem', instance_of(Faraday::ClientError))
     end
-
-    # semi-integration spec to confirm that we send i14y search client errors to Datadog
-    it 'sends the information to datadog' do
-      i14y_search.run
-      expect(a_request(
-        :post,
-        'https://api.datadoghq.com/api/v1/events?api_key=datadogapikey'
-      ).with { |request| request.body.match?(/problem.*i14y/) }).to have_been_made.once
-    end
   end
 
   context 'when the affiliate has specified site domains' do
@@ -263,7 +301,8 @@ describe I14ySearch do
   describe 'handles' do
     context 'when the affiliate is using SearchGov as a search engine' do
       before do
-        allow(affiliate).to receive(:search_engine).and_return('SearchGov')
+        affiliate.search_engine = :search_gov
+
         allow(I14yCollections).to receive(:search)
       end
 

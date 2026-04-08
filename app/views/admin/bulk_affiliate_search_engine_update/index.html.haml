@@ -1,0 +1,36 @@
+%h2= @page_title
+
+%p
+  To bulk update affiliates' search engine using a CSV file, follow these instructions:
+  %ul.bulk-upload-instructions
+    %li
+      Create a plain text file with a .csv extension.
+    %li
+      List one Affiliate ID in the first column and the desired Search Engine in the second column, per row.
+    %li
+      Valid search engine values are:
+      %strong #{BulkAffiliateSearchEngineUpdateJob::VALID_SEARCH_ENGINES.join(', ')}.
+    %li Headers are optional and will be ignored.
+    %li
+      Ensure the IDs listed correspond to the affiliates you wish to update.
+    %li Example format:
+    %li
+      %textarea{ rows: 4, readonly: true }
+        123,search_elastic
+        456,search_gov
+        789,bing_v7
+    %li
+      Save the file on your computer.
+    %li
+      Browse for the file using the field below.
+    %li
+      Click "Upload and Queue Update".
+    %li
+      You will receive an email confirmation once the update process is complete. This may take some time depending on the number of affiliates.
+
+= form_with url: upload_admin_bulk_affiliate_search_engine_update_index_path, local: true, multipart: true, class: 'form' do |f|
+  .form-group
+    = f.label :file, "Select CSV file of Affiliate IDs and Search Engines:", class: 'usa-label'
+    = f.file_field :file, required: true, accept: '.csv, .txt', class: 'usa-file-input'
+  %p
+  = f.submit "Upload and Queue Update", class: 'usa-button usa-button--secondary'

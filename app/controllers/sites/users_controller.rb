@@ -39,6 +39,16 @@ class Sites::UsersController < Sites::SetupSiteController
     redirect_to site_users_path(@site), flash: { success: "You have removed #{@user.email} from this site." }
   end
 
+  def reactivate
+    @user = @site.users.find(params[:id])
+    if @user.timed_out?
+      @user.reactivate!
+      redirect_to site_users_path(@site), flash: { success: "#{@user.email} has been reactivated." }
+    else
+      redirect_to site_users_path(@site), flash: { info: "#{@user.email} is not timed out." }
+    end
+  end
+
   private
 
   def user_params

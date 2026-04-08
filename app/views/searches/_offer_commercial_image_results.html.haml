@@ -1,7 +1,0 @@
-#offer-commercial-results
-  .content-block-item
-    %div.search-again-btn
-      %a.search-again-icon#commercial-results-search-icon{ :href => url_for(affiliate: search.affiliate.name, query: search.query, cr: true) }
-        %i.icon-search.commercial-icon.icon
-    %div.search-again-message
-      = link_to_offer_commercial_image_results url_for(affiliate: search.affiliate.name, query: search.query, cr: true)

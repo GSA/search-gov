@@ -30,8 +30,7 @@ export const TextBestBet = ({ affiliate, title, url, description, position, quer
             <h2 className='result-title-label'>
               <ResultTitle 
                 url={url}  
-                className='result-title-link'
-                clickTracking={() => clickTracking(affiliate, module, query, position, url, vertical)}>
+                className='result-title-link'>
                 {parse(title)}
               </ResultTitle>
             </h2>

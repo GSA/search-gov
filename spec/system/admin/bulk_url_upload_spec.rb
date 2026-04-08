@@ -3,7 +3,7 @@
 shared_examples 'a failed bulk upload with error' do |error_message|
   it 'sends us back to the bulk upload page' do
     do_bulk_upload
-    expect(page).to have_text('Bulk Search.gov URL Upload')
+    expect(page).to have_text('Bulk SearchGov URL Upload')
   end
 
   it 'shows an error message' do
@@ -42,7 +42,7 @@ describe 'Bulk URL upload' do
 
       it 'sends us back to the bulk upload page' do
         do_bulk_upload
-        expect(page).to have_text('Bulk Search.gov URL Upload')
+        expect(page).to have_text('Bulk SearchGov URL Upload')
       end
 
       it 'shows a confirmation message' do

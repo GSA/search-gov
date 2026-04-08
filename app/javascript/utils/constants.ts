@@ -17,5 +17,6 @@ export const moduleCode = {
   videos: 'VIDS',
   webI14y: 'I14Y',
   webNews: 'NEWS',
-  webWeb: 'BWEB'
+  webWeb: 'BWEB',
+  webSRCH: 'SRCH',
 } as const;

@@ -10,7 +10,7 @@ enableFetchMocks();
 
 const locale = {
   en: {
-    showingResultsFor: 'Showing results for %{corrected_query}',
+    showingResultsForMsg: 'No results found for \'%{original_query}\'. Showing results for %{corrected_query}',
     searchInsteadFor: 'Search instead for %{original_query}'
   }
 };
@@ -102,7 +102,7 @@ describe('SpellingSuggestion component', () => {
     };
     expectFetchtoHaveBeenCalledWith(clickBodySuggestedQuery);
 
-    const originalQueryLink = screen.getByText(/mecidal/i);
+    const originalQueryLink = screen.getAllByText(/mecidal/i)[1];
     fireEvent.click(originalQueryLink);
     const clickBodyOriginalQuery = {
       affiliate: 'test_affiliate',
@@ -134,7 +134,7 @@ describe('SpellingSuggestion component', () => {
     };
     expectFetchtoHaveBeenCalledWith(clickBodySuggestedQuery);
 
-    const originalQueryLink = screen.getByText(/mecidal/i);
+    const originalQueryLink = screen.getAllByText(/mecidal/i)[1];
     fireEvent.click(originalQueryLink);
     const clickBodyOriginalQuery = {
       affiliate: 'test_affiliate',
@@ -166,7 +166,7 @@ describe('SpellingSuggestion component', () => {
     };
     expectFetchtoHaveBeenCalledWith(clickBodySuggestedQuery);
 
-    const originalQueryLink = screen.getByText(/mecidal/i);
+    const originalQueryLink = screen.getAllByText(/mecidal/i)[1];
     fireEvent.click(originalQueryLink);
     const clickBodyOriginalQuery = {
       affiliate: 'test_affiliate',
@@ -198,7 +198,7 @@ describe('SpellingSuggestion component', () => {
     };
     expectFetchtoHaveBeenCalledWith(clickBodySuggestedQuery);
 
-    const originalQueryLink = screen.getByText(/mecidal/i);
+    const originalQueryLink = screen.getAllByText(/mecidal/i)[1];
     fireEvent.click(originalQueryLink);
     const clickBodyOriginalQuery = {
       affiliate: 'test_affiliate',

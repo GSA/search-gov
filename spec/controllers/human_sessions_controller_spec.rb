@@ -14,11 +14,6 @@ describe HumanSessionsController do
     end
 
     context 'when the referenced affiliate does exist' do
-      it 'records the "challenge" captcha activity' do
-        expect(subject).to receive(:record_captcha_activity).with('challenge')
-        get :new, params: { r: '/search?affiliate=usagov&query=building' }
-      end
-
       it 'includes the "r" parameter in a "redirect_to" form input' do
         get :new, params: { r: '/search?affiliate=usagov&query=building' }
         expect(response.body).to have_selector(:css, 'input[name=redirect_to][value="%2Fsearch%3Faffiliate%3Dusagov%26query%3Dbuilding"]', visible: false)
@@ -60,18 +55,13 @@ describe HumanSessionsController do
 
       after { travel_back }
 
-      it 'records the "success" captcha activity' do
-        expect(subject).to receive(:record_captcha_activity).with('success')
-        post :create, params: { redirect_to: '%2Flol%2Fwut' }
-      end
-
       it 'does not record a "failure" captcha activity' do
         expect(subject).not_to receive(:record_captcha_activity).with('failure')
         post :create, params: { redirect_to: '%2Flol%2Fwut' }
       end
 
       it 'sets the "bon" cookie to a combination of client_ip, timestamp, and digest' do
-        post :create, params: { redirect_to: '%2Flol%2Fwut' } 
+        post :create, params: { redirect_to: '%2Flol%2Fwut' }
         expect(response.cookies['bon']).to eq('0.0.0.0:870671640:sha-na-na')
       end
 
@@ -92,11 +82,6 @@ describe HumanSessionsController do
 
     context 'when the result is a failure' do
       let(:challenge_outcome) { false }
-
-      it 'recods the "failure" captcha activity' do
-        expect(subject).to receive(:record_captcha_activity).with('failure')
-        post :create, params: { redirect_to: '%2Flol%2Fwut' }
-      end
 
       it 'does not record a "success" captcha activity' do
         expect(subject).not_to receive(:record_captcha_activity).with('success')

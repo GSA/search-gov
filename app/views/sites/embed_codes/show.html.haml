@@ -1,15 +1,13 @@
 = content_for_site_page_title @site, 'Code Snippets'
-.sub-nav-heading
+.sub-nav-heading{ class: ("--is-inactive" if @site&.active? == false) }
   %h2 Code Snippets
   .action-bar
     %ul
-      = list_item_with_link_to_current_help_page
+
+- raw_html = render(partial: 'form_embed_code_text_area')
+- formatted_html = HtmlBeautifier.beautify(raw_html)
 
 %h3 Form Snippet
-= find_and_preserve do
-  = render 'form_embed_code_text_area'
-
-%h3 Type-ahead search and Search.gov Tag Snippet
-= find_and_preserve do
-  = render 'bottom_page_embed_code_text_area'
-
+%pre{id: "embed_code_textarea_#{@site.locale}"}
+  %code
+    = formatted_html

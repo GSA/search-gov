@@ -1,0 +1,2 @@
+class CustomFilter < Filter
+end

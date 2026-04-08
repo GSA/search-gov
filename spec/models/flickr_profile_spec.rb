@@ -99,18 +99,9 @@ describe FlickrProfile do
     end
   end
 
-  it 'should notify Oasis after create' do
-    expect(Oasis).to receive(:subscribe_to_flickr).with('40927340@N03', 'marine_corps', 'user')
-    fp = described_class.new(url: url, affiliate: affiliate)
-    allow(fp).to receive(:lookup_flickr_profile_id).with('user', url).and_return('40927340@N03')
-    fp.save!
-  end
-
   describe '#dup' do
     let(:original_instance) { flickr_profiles(:group) }
 
     include_examples 'site dupable'
-
-    its(:skip_notify_oasis) { should be true }
   end
 end

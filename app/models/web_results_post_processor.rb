@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class WebResultsPostProcessor < ResultsPostProcessor
-  BING = 'BingV7'
   include ResultsRejector
   SPECIAL_URL_PATH_EXT_NAMES = %w[doc pdf ppt ps rtf swf txt xls docx pptx xlsx].freeze
 
@@ -34,9 +33,9 @@ class WebResultsPostProcessor < ResultsPostProcessor
   def normalized_results(total_results)
     {
       results: format_results,
-      total: @affiliate.search_engine == BING ? nil : total_results,
+      total: @affiliate.bing_v7_engine? ? nil : total_results,
       totalPages: total_pages(total_results),
-      unboundedResults: @affiliate.search_engine == BING
+      unboundedResults: @affiliate.bing_v7_engine?
     }
   end
 

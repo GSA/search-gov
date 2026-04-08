@@ -27,8 +27,10 @@ class ApplicationController < ActionController::Base
     sitelimit
     utf8
     redesign
+    include_facets
   ].concat(ADVANCED_PARAM_KEYS).
     concat(DUBLIN_CORE_PARAM_KEYS).
+    concat(I14ySearch::FACET_FIELDS).
     concat(FILTER_PARAM_KEYS).freeze
 
   def handle_unverified_request
@@ -38,7 +40,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def set_affiliate
-    @affiliate = Affiliate.active.find_by_name(permitted_params[:affiliate])
+    @affiliate = Affiliate.find_by_name(permitted_params[:affiliate])
     redirect_unless_affiliate
   end
 
@@ -95,7 +97,12 @@ class ApplicationController < ActionController::Base
              site_excludes: permitted_params[:siteexclude]
     h.merge! query_search_options
     h.merge! highlighting_option
+    h.merge! facets_params
     h.symbolize_keys
+  end
+
+  def facets_params
+    permitted_params.slice(*I14ySearch::FACET_FIELDS)
   end
 
   def query_search_options

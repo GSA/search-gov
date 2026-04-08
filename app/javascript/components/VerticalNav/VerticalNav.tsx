@@ -11,9 +11,13 @@ import { StyleContext } from '../../contexts/StyleContext';
 import './VerticalNav.css';
 
 const StyledPrimaryNav = styled(PrimaryNav).attrs<{ styles: FontsAndColors }>((props) => ({ styles: props.styles }))`
-  li.usa-nav__primary-item:not(li.usa-nav__submenu-item) > a,
+  li.usa-nav__primary-item:not(li.usa-nav__submenu-item) > a{
+    color: ${(props) => props.styles.searchTabNavigationLinkColor};
+    font-family: ${(props) => props.styles.primaryNavigationFontFamily};
+  }
+
   .usa-nav__primary > .usa-nav__primary-item button[aria-expanded=false] {
-    color: ${(props) => props.styles.searchTabNavigationLinkColor} !important;
+    color: ${(props) => props.styles.searchTabNavigationLinkColor};
   }
 
   li.usa-nav__primary-item:not(li.usa-nav__submenu-item) > a::after{
@@ -62,6 +66,8 @@ interface VerticalNavProps {
 export const VerticalNav = ({ relatedSites = [], navigationLinks = [], relatedSitesDropdownLabel = '' }: VerticalNavProps) => {
   const i18n             = useContext(LanguageContext);
   const styles           = useContext(StyleContext);
+  const showDefaultTabs  = () => !(navigationLinks.length === 1 && relatedSites.length === 0 && navigationLinks[0].facet === 'Default');
+
   const arrowWidth       = 16;
   const padding          = 32;
   const moreItemWidth    = useRef(getTextWidth(i18n.t('showMore')) + padding + arrowWidth);
@@ -145,9 +151,11 @@ export const VerticalNav = ({ relatedSites = [], navigationLinks = [], relatedSi
     <div className="vertical-nav-wrapper">
       <GridContainer>
         <Header basic={true} className="vertical-wrapper">
-          <div className="usa-nav-container" id="tabs-container">
-            <StyledPrimaryNav items={navItems} styles={styles} aria-label={i18n.t('ariaLabelVerticalNav')} />
-          </div>
+          {showDefaultTabs() && (
+            <div className="usa-nav-container" id="tabs-container">
+              <StyledPrimaryNav items={navItems} styles={styles} aria-label={i18n.t('ariaLabelVerticalNav')} />
+            </div>
+          )}
         </Header>
       </GridContainer>
     </div>

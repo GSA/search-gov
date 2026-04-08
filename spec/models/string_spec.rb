@@ -8,4 +8,26 @@ describe String do
       expect('Muammar al-Gaddafi'.sentence_case).to eq('Muammar al-Gaddafi')
     end
   end
+
+  describe '#extract_array' do
+    it 'splits on commas, strips whitespace, and downcases' do
+      expect('This, That, OTHER'.extract_array).to eq(%w[this that other])
+    end
+
+    it 'handles a single value with no comma' do
+      expect('single value'.extract_array).to eq(['single value'])
+    end
+
+    it 'handles extra whitespace around values' do
+      expect('  foo ,  bar  , baz '.extract_array).to eq(%w[foo bar baz])
+    end
+
+    it 'returns an empty array for an empty string' do
+      expect(''.extract_array).to eq([])
+    end
+
+    it 'handles trailing commas by dropping empty trailing elements' do
+      expect('one, two,'.extract_array).to eq(['one', 'two'])
+    end
+  end
 end

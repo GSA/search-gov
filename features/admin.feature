@@ -37,9 +37,8 @@ Feature:  Administration
     And I should see "agency site"
     And I should see "agency.gov"
     And I should see "www1.agency-site.gov"
-    And I should see "BingV7"
+    And I should see "OpenSearch"
     And I should see a link to "beta.agency.gov" with url for "http://beta.agency.gov"
-
     When I follow "www1.agency-site.gov"
     Then I should see "Agency Website"
 
@@ -113,10 +112,6 @@ Feature:  Administration
     And I should see the following breadcrumbs: Super Admin > Users
 
     When I go to the admin home page
-    And I follow "Rss Feeds"
-    Then I should see "An Agency Feed"
-
-    When I go to the admin home page
     And I follow "Rss Feed Urls"
     And I should see the following breadcrumbs: Super Admin > Rss Feed Urls
     When I follow "Show" within the first scaffold row
@@ -187,7 +182,7 @@ Feature:  Administration
     Then I should see the following breadcrumbs: Super Admin > Hints
 
   @javascript
-  Scenario: Managing Search.gov Domains
+  Scenario: Managing SearchGov Domains
     Given the following "searchgov domains" exist:
       | domain     | status | canonical_domain |
       | search.gov | 200 OK |                  |
@@ -196,8 +191,8 @@ Feature:  Administration
       | url                             |
       | https://search.gov/sitemap.xml  |
     When I go to the admin home page
-    And I follow "Search.gov Domains"
-    Then I should see the following breadcrumbs: Super Admin > Search.gov Domains
+    And I follow "SearchGov Domains"
+    Then I should see the following breadcrumbs: Super Admin > SearchGov Domains
     And I should see "Export"
     And I should see "Search"
     And I should see "Create New"
@@ -242,7 +237,7 @@ Feature:  Administration
       | url                      |
       | https://search.gov/page1 |
     When I go to the admin home page
-    And I follow "Search.gov Domains"
+    And I follow "SearchGov Domains"
     And I follow "URLs" within the first scaffold row
     Then I should see "search.gov/page1"
     And I should see "Enqueued for reindex"

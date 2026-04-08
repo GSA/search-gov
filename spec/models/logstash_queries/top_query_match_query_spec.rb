@@ -6,7 +6,7 @@ describe TopQueryMatchQuery do
                            'my query term',
                            Date.parse('2014-06-28'),
                            Date.parse('2014-06-29'),
-                           { field: 'params.query.raw', size: 1000 })
+                           { field: 'params.query.raw', size: 100 })
   end
   let(:expected_body) do
     {
@@ -52,7 +52,7 @@ describe TopQueryMatchQuery do
         "agg": {
           "terms": {
             "field": 'params.query.raw',
-            "size": 1000
+            "size": 100
           },
           "aggs": {
             "type": {

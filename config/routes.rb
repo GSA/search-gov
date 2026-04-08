@@ -8,7 +8,6 @@ Rails.application.routes.draw do
     get '/search/advanced', to: redirect(path: '/search')
   end
   get '/search/advanced' => 'searches#advanced', as: :advanced_search
-  get '/search/images' => 'image_searches#index', as: :image_search
   get '/search/docs' => 'searches#docs', as: :docs_search
   get '/search/news' => 'searches#news', as: :news_search
   # Provide some backward compatibility for searchers using the legacy video news search URL
@@ -60,14 +59,6 @@ Rails.application.routes.draw do
       resource :alert, only: [:edit, :create, :update]
 
       resource :api_access_key, only: [:show]
-      resource :api_instructions, only: [:show] do
-        collection do
-          get :commercial_keys
-        end
-      end
-      resource :i14y_api_instructions, only: [:show]
-      resource :type_ahead_api_instructions, only: [:show]
-      resource :click_tracking_api_instructions, only: [:show]
       resource :clicks, only: [:new, :create]
       resource :query_clicks, only: [:show]
       resource :query_referrers, only: [:show]
@@ -136,19 +127,14 @@ Rails.application.routes.draw do
                 controller: 'excluded_urls',
                 only: [:index, :new, :create, :destroy]
       resources :tag_filters, only: [:index, :new, :create, :destroy]
-      resources :flickr_urls,
-                controller: 'flickr_profiles',
-                only: [:index, :new, :create, :destroy]
-      resources :rss_feeds do
-        collection { get :new_url }
-      end
       resources :supplemental_urls,
                 controller: 'indexed_documents',
                 except: [:show, :edit, :update]
-      resources :users, only: [:index, :new, :create, :destroy]
-      resources :youtube_channels,
-                controller: 'youtube_profiles',
-                only: [:index, :new, :create, :destroy]
+      resources :users, only: [:index, :new, :create, :destroy] do
+        member do
+          post :reactivate
+        end
+      end
       resources :memberships, only: [:update]
       resources :i14y_drawers
       resource :filtered_analytics_toggle, only: :create
@@ -175,7 +161,23 @@ Rails.application.routes.draw do
     resources :catalog_prefixes, concerns: :active_scaffold
     resources :site_feed_urls, concerns: :active_scaffold
     resources :superfresh_urls, concerns: :active_scaffold
+    resources :crawl_configs, concerns: :active_scaffold
     resources :superfresh_urls_bulk_upload, only: :index do
+      collection do
+        post :upload
+      end
+    end
+    resources :bulk_affiliate_delete, only: :index do
+      collection do
+        post :upload
+      end
+    end
+    resources :bulk_affiliate_deactivate, only: :index do
+      collection do
+        post :upload
+      end
+    end
+    resources :bulk_affiliate_search_engine_update, only: :index do
       collection do
         post :upload
       end
@@ -186,6 +188,11 @@ Rails.application.routes.draw do
       end
     end
     resources :bulk_affiliate_styles_upload, only: :index do
+      collection do
+        post :upload
+      end
+    end
+    resources :bulk_affiliate_add, only: :index do
       collection do
         post :upload
       end
@@ -256,7 +263,6 @@ Rails.application.routes.draw do
     mount Resque::Server.new, at: '/resque', constraints: AffiliateAdminConstraint
     get '/resque/(*all)', to: redirect(path: '/login')
 
-    mount Sidekiq::Web => '/sidekiq', constraints: AffiliateAdminConstraint
   end
 
   match '/admin/affiliates/:id/analytics' => 'admin/affiliates#analytics', :as => :affiliate_analytics_redirect, via: :get

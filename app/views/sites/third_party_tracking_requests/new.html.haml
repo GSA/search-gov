@@ -1,10 +1,9 @@
 = content_for_site_page_title @site, '3rd Party Tracking'
 = form_tag site_third_party_tracking_request_path, class: 'form' do
-  .sub-nav-heading
+  .sub-nav-heading{ class: ("--is-inactive" if @site&.active? == false) }
     %h2 3rd Party Tracking
     .action-bar
       %ul
-        = list_item_with_link_to_current_help_page
         %li= submit_tag "Submit", class: 'btn submit disabled', disabled: true
 
   = render_flash_message
@@ -23,3 +22,8 @@
         %p The tracking code you submitted will be reviewed shortly. You can submit an updated version below to overwrite it.
 
   = text_area_tag :submitted_external_tracking_code, nil, required: true, class: 'required input-primary', placeholder: "Please insert your web analytics JavaScript code here.", id: 'external_tracking_code'
+
+  %dl
+    %dd
+      %p When developing your third party tracking code, make sure to encode special characters such as question marks.
+      %p After submitting a third party tracking request, email search@gsa.gov to let the team know about the change.

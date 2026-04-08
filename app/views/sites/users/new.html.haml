@@ -1,10 +1,9 @@
 = content_for_site_page_title @site, 'Add User'
 = custom_form_for @user, url: { action: :create }, html: { class: 'form' }  do |f|
-  .sub-nav-heading
+  .sub-nav-heading{ class: ("--is-inactive" if @site&.active? == false) }
     %h2 Add User
     .action-bar
       %ul
-        = list_item_with_link_to_current_help_page
         %li= link_to 'View All', site_users_path(@site)
         %li= f.submit 'Add', class: 'btn submit disabled', disabled: true
 

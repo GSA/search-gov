@@ -26,6 +26,57 @@ describe User do
     end
   end
 
+
+  # Add to the 'describe scopes' section
+  describe '.timed_out' do
+    subject(:timed_out) { described_class.timed_out }
+
+    let(:timed_out_user) { users(:timed_out_user) }
+    let(:active_user) { users(:active_user) }
+
+    it { is_expected.to include(timed_out_user) }
+    it { is_expected.not_to include(active_user) }
+  end
+
+  it { is_expected.to allow_value('timed_out').for(:approval_status) }
+
+  it { is_expected.to validate_inclusion_of(:approval_status).in_array(User::APPROVAL_STATUSES) }
+
+  describe '#timed_out?' do
+    let(:user) { described_class.new }
+
+    it 'returns true when approval_status is timed_out' do
+      user.approval_status = 'timed_out'
+      expect(user).to be_timed_out
+    end
+
+    it 'returns false when approval_status is not timed_out' do
+      %w[approved pending_approval not_approved].each do |status|
+        user.approval_status = status
+        expect(user).not_to be_timed_out
+      end
+    end
+  end
+
+  describe '#reactivate!' do
+    let(:user) do
+      user = described_class.new(
+        email: 'test@example.com',
+        first_name: 'Test',
+        last_name: 'User',
+        organization_name: 'Test Org',
+        approval_status: 'timed_out',
+        current_login_at: 100.days.ago
+      )
+      user.save(validate: false)
+      user
+    end
+
+    it 'changes approval status to approved' do
+      expect { user.reactivate! }.to change { user.reload.approval_status }.from('timed_out').to('approved')
+    end
+  end
+
   describe 'when validating' do
     before do
       allow_any_instance_of(described_class).to receive(:inviter) { users(:affiliate_manager) }

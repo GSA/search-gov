@@ -1,10 +1,9 @@
 = content_for_site_page_title @site, 'Queries'
 = form_for @queries_request, url: { action: :create }, html: { class: 'form form-search' }  do |form|
-  .sub-nav-heading
+  .sub-nav-heading{ class: ("--is-inactive" if @site&.active? == false) }
     %h2 Queries
     .action-bar
       %ul
-        = list_item_with_link_to_current_help_page
         %li= form.submit 'Generate Report', class: 'btn submit btn-primary'
   %ul.inline
     = render partial: 'sites/shared/analytics_date_picker',
@@ -50,4 +49,4 @@
 - elsif @queries_request.query.present?
   %p= "Sorry, no results found for '#{@queries_request.query}'."
 - else
-  %p Your site has not received any search queries yet.
+  %p Your site has not received any search queries yet. Or, your request may be too large for our database. Try limiting the duration of your request with the date picker and/or searching for a specific term with the Query field above. 

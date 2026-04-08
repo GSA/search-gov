@@ -4,14 +4,14 @@ Feature: Clicks and Queries stats
   I want to see top clicked URLs, the queries that led to them, and the clicked URLs that came from those queries
 
   Scenario: Viewing the Site's Analytics
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name    | contact_email | first_name   | last_name | use_redesigned_results_page |
       | aff site     | aff.gov | aff@bar.gov   | John         | Bar       | false                       |
     And I am logged in with email "aff@bar.gov"
     When I go to the aff.gov's Analytics page
     And I follow "Queries"
     Then I should see "Queries"
-    And I should see "Your site has not received any search queries yet"
+    And I should see "Your site has not received any search queries yet. Or, your request may be too large for our database. Try limiting the duration of your request with the date picker and/or searching for a specific term with the Query field above."
 
     When I fill in "Query" with "nothing to see here"
     And I press "Generate Report"

@@ -4,13 +4,13 @@ module ReactHelper
   def search_results_layout(search, params, vertical, affiliate, search_options)
     data = {
       additionalResults: govbox_set_data(search),
+      affiliate: affiliate_data(affiliate),
       agencyName: agency_name(affiliate.agency),
       alert: search_page_alert(affiliate.alert),
       extendedHeader: affiliate.use_extended_header,
+      facetsEnabled: ENV.fetch('FACETED_SEARCH_ENABLED', 'false') == 'true',
       fontsAndColors: affiliate.visual_design_json,
       footerLinks: links(affiliate, :footer_links),
-      identifierContent: identifier_content(affiliate),
-      identifierLinks: links(affiliate, :identifier_links),
       jobsEnabled: (affiliate.jobs_enabled? and search.modules.include?('JOBS')),
       language: affiliate.language.slice(:code, :rtl),
       navigationLinks: navigation_links(search, params),
@@ -31,6 +31,10 @@ module ReactHelper
     }
 
     react_component('SearchResultsLayout', data.compact_blank)
+  end
+
+  def affiliate_data(affiliate)
+    affiliate.slice(:id, :name)
   end
 
   def page_data(affiliate)
@@ -57,32 +61,6 @@ module ReactHelper
     return unless blob&.custom_metadata
 
     blob.custom_metadata[:alt_text]
-  end
-
-  def image_search_results_layout(search, params, vertical, affiliate, search_options)
-    data = {
-      agencyName: agency_name(affiliate.agency),
-      extendedHeader: affiliate.use_extended_header,
-      fontsAndColors: affiliate.visual_design_json,
-      footerLinks: links(affiliate, :footer_links),
-      identifierContent: identifier_content(affiliate),
-      identifierLinks: links(affiliate, :identifier_links),
-      language: affiliate.language.slice(:code, :rtl),
-      navigationLinks: navigation_links(search, params),
-      noResultsMessage: no_result_message(search),
-      page: page_data(affiliate),
-      params:,
-      primaryHeaderLinks: links(affiliate, :primary_header_links),
-      relatedSites: related_sites(search),
-      relatedSitesDropdownLabel: affiliate.related_sites_dropdown_label,
-      resultsData: search.format_results,
-      secondaryHeaderLinks: links(affiliate, :secondary_header_links),
-      spellingSuggestion: spelling_text(search, search_options),
-      translations: translations(affiliate.locale),
-      vertical:
-    }
-
-    react_component('SearchResultsLayout', data.compact_blank)
   end
 
   private
@@ -191,23 +169,6 @@ module ReactHelper
         url: navigable_path(navigable, search, search_params)
       }
     end
-  end
-
-  def identifier_content(affiliate)
-    {
-      domainName: affiliate.identifier_domain_name,
-      parentAgencyName: affiliate.parent_agency_name,
-      parentAgencyLink: affiliate.parent_agency_link,
-      logoUrl: identifier_logo_url(affiliate.identifier_logo),
-      logoAltText: logo_text(affiliate.identifier_logo_blob),
-      lookingForGovernmentServices: affiliate.looking_for_government_services
-    }
-  end
-
-  def identifier_logo_url(identifier_logo)
-    return if identifier_logo.blank?
-
-    url_for(identifier_logo)
   end
 
   def agency_name(agency)

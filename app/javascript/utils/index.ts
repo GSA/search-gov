@@ -164,3 +164,55 @@ export const focusTrapOptions: any = {
     return Promise.all(results);
   }
 };
+
+export function camelToSnake(camelStr: string) {
+  return camelStr
+    .replace(/([a-z])([A-Z])/g, '$1_$2')
+    .toLowerCase();
+}
+
+export const getFacetsQueryParamString = (obj: any) => {
+  const paramsArray = [];
+  for (const key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      if (obj[key].length > 0) {
+        const values = obj[key].join(',');
+        const keyValueString = `${key}=${values}`;
+        paramsArray.push(keyValueString);
+      }
+    }
+  }
+  return paramsArray.join('&');
+};
+
+export const loadQueryUrl = (query: string) => {
+  const url = `${window.location.origin}${window.location.pathname}?${query}`;
+  window.location.replace(url);
+};
+
+export const getSelectedAggregationsFromUrlParams = (aggregationsProps: any) => {
+  const aggregationsSelected: any = [];
+  const nonAggregations: any = {};
+  const searchParams = new URLSearchParams(window.location.search);
+
+  for (const [filter, value] of searchParams) {
+    if (filter in aggregationsProps)
+      aggregationsSelected[filter] = value.split(',');
+    else
+      nonAggregations[filter] = value.split(',');
+  }
+
+  return { aggregationsSelected, nonAggregations };
+};
+
+export const getDefaultCheckedFacet = (filter:any, aggregation: any, aggregationsSelected: any) => {
+  const hasFilterLabel = camelToSnake(Object.keys(aggregation)[0]) in aggregationsSelected;
+  if (hasFilterLabel === false)
+    return false;
+
+  const hasFilterValue = aggregationsSelected[camelToSnake(Object.keys(aggregation)[0])].includes(filter.aggKey);
+  if (hasFilterValue === false)
+    return false;
+
+  return true;
+};

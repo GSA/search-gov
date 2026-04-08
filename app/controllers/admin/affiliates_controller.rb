@@ -10,14 +10,11 @@ HIDDEN_COLUMNS = /(_created_at|
                    display_image_on_search_results|
                    display_updated_date_on_search_results|
                    file_name|
-                   identifier_domain_name|
                    _image|
                    _json|
                    label|
                    _logo|
                    _mappings|
-                   parent_agency_link|
-                   parent_agency_name|
                    scope_ids|
                    size|
                    use_extended_header)\z/x
@@ -92,8 +89,8 @@ class Admin::AffiliatesController < Admin::AdminController
       gets_blended_results
       gets_commercial_results_on_blended_search
       gets_i14y_results
+      gets_results_from_all_domains
       i14y_date_stamp_enabled
-      is_bing_image_search_enabled
       is_federal_register_document_govbox_enabled
       is_medline_govbox_enabled
       is_photo_govbox_enabled
@@ -109,7 +106,7 @@ class Admin::AffiliatesController < Admin::AdminController
       website
     ]
     config.update.columns = []
-    enable_disable_column_regex = /^(is_|dap_enabled|gets_blended_results|gets_commercial_results_on_blended_search|jobs_enabled|raw_log_access_enabled|gets_i14y_results)/
+    enable_disable_column_regex = /^(is_|dap_enabled|gets_blended_results|gets_commercial_results_on_blended_search|jobs_enabled|raw_log_access_enabled|gets_i14y_results|gets_results_from_all_domains)/
 
     config.update.columns.add_subgroup 'Settings' do |name_group|
       name_group.add(*update_columns.grep_v(enable_disable_column_regex))
@@ -161,6 +158,7 @@ class Admin::AffiliatesController < Admin::AdminController
 
     config.columns[:favicon_url].label = 'Favicon URL'
     config.columns[:features].associated_limit = nil
+    config.columns[:site_domains].associated_limit = nil
 
     config.columns[:footer_fragment].form_ui = :textarea
 
@@ -176,9 +174,6 @@ class Admin::AffiliatesController < Admin::AdminController
     config.columns[:locale].options = { options: Language.order(:name).pluck(:code) }
 
     config.columns[:mobile_logo_url].label = 'Logo URL'
-
-    config.columns[:search_engine].form_ui = :select
-    config.columns[:search_engine].options = { options: SEARCH_ENGINES }
 
     config.columns[:theme].form_ui = :select
     config.columns[:theme].options = { include_blank: '- select -',

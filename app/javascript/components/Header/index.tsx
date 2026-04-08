@@ -1,8 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { GovBanner } from '@trussworks/react-uswds';
 import { StyleContext } from '../../contexts/StyleContext';
 import { LanguageContext } from '../../contexts/LanguageContext';
+import { checkColorContrastAndUpdateStyle } from '../../utils';
 
 import '@trussworks/react-uswds/lib/uswds.css';
 import '@trussworks/react-uswds/lib/index.css';
@@ -54,6 +55,14 @@ export const Header = ({ page, isBasic, primaryHeaderLinks, secondaryHeaderLinks
     primaryHeaderLinks,
     secondaryHeaderLinks
   };
+
+  useEffect(() => {
+    checkColorContrastAndUpdateStyle({
+      backgroundItemClass: '.usa-menu-btn',
+      foregroundItemClass: '.usa-menu-btn',
+      isForegroundItemBtn: true
+    });
+  }, []);
  
   return (
     <>

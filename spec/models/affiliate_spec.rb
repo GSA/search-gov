@@ -10,6 +10,10 @@ describe Affiliate do
   let(:valid_attributes) { valid_create_attributes.merge(name: 'someaffiliate.gov').freeze }
   let(:affiliate) { described_class.new(valid_create_attributes) }
 
+  describe 'Associations' do
+    it { is_expected.to have_one(:filter_setting).dependent(:destroy) }
+  end
+
   describe 'schema' do
     describe 'columns' do
       it do
@@ -19,7 +23,7 @@ describe Affiliate do
 
       it do
         is_expected.to have_db_column(:search_engine).of_type(:string).
-          with_options(default: 'BingV7', null: false)
+          with_options(default: 'opensearch', null: false)
       end
 
       it do
@@ -86,8 +90,6 @@ describe Affiliate do
           rejecting(nil, %w[text/plain text/xml application/pdf])
       }
     end
-
-    it { is_expected.to validate_inclusion_of(:search_engine).in_array(%w[BingV7 SearchGov]) }
 
     it { is_expected.to have_many :boosted_contents }
     it { is_expected.to have_many(:connections).inverse_of(:affiliate) }
@@ -206,12 +208,6 @@ describe Affiliate do
       it 'populates default search labels for Spanish site' do
         affiliate = described_class.create!(valid_attributes.merge(locale: 'es'))
         expect(affiliate.default_search_label).to eq('Todo')
-      end
-
-      it 'sets look_and_feel_css' do
-        affiliate = described_class.create! valid_attributes
-        expect(affiliate.mobile_look_and_feel_css).to include('font-family:"Maven Pro"')
-        expect(affiliate.mobile_look_and_feel_css).to include('a:visited{color:purple}')
       end
 
       it 'assigns api_access_key' do
@@ -444,7 +440,7 @@ describe Affiliate do
     end
 
     describe 'attached image assets' do
-      %i[header_logo identifier_logo].each do |logo|
+      %i[header_logo].each do |logo|
         it { is_expected.to validate_content_type_of(logo).allowing(Affiliate::VALID_IMAGE_CONTENT_TYPES) }
 
         it {
@@ -593,33 +589,6 @@ describe Affiliate do
 
     it 'shows the max last_request_at date for the site users' do
       expect(affiliate.recent_user_activity.utc.to_s).to eq(recent_time.to_s)
-    end
-  end
-
-  describe '#has_no_social_image_feeds?' do
-    let(:affiliate) { affiliates(:basic_affiliate) }
-
-    context 'when affiliate has no ASIS profiles' do
-      before do
-        affiliate.flickr_profiles.delete_all
-        affiliate.rss_feeds.mrss.delete_all
-      end
-
-      specify { expect(affiliate).to have_no_social_image_feeds }
-    end
-
-    context 'when affiliate has MRSS feed but the RSS feed URL has no Oasis MRSS name' do
-      before do
-        affiliate.flickr_profiles.delete_all
-        affiliate.rss_feeds.mrss.delete_all
-        feed = affiliate.rss_feeds.build(name: 'mrss', show_only_media_content: true)
-        feed.rss_feed_urls.build(url: 'http://www.defense.gov/news/mrss_leadphotos.xml', last_crawl_status: 'OK',
-                                 oasis_mrss_name: nil, rss_feed_owner_type: 'Affiliate')
-        allow(feed.rss_feed_urls.first).to receive(:url_must_point_to_a_feed).and_return(true)
-        feed.save!
-      end
-
-      specify { expect(affiliate).to have_no_social_image_feeds }
     end
   end
 

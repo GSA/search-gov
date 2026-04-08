@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_12_153029) do
+ActiveRecord::Schema[7.1].define(version: 2026_03_17_205709) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -69,14 +69,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_12_153029) do
     t.boolean "jobs_enabled", default: false, null: false
     t.integer "agency_id"
     t.boolean "raw_log_access_enabled", default: false, null: false
-    t.string "search_engine", default: "BingV7", null: false
+    t.string "search_engine", default: "OpenSearch", null: false
     t.boolean "is_rss_govbox_enabled", default: false, null: false
     t.string "rss_govbox_label", null: false
     t.boolean "is_video_govbox_enabled", default: true, null: false
     t.boolean "dap_enabled", default: true, null: false
     t.text "dublin_core_mappings", size: :medium
     t.boolean "gets_blended_results", default: false, null: false
-    t.boolean "is_bing_image_search_enabled", default: false, null: false
     t.boolean "is_federal_register_document_govbox_enabled", default: false, null: false
     t.string "api_access_key", null: false
     t.boolean "gets_commercial_results_on_blended_search", default: true, null: false
@@ -95,9 +94,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_12_153029) do
     t.boolean "use_redesigned_results_page", default: true, null: false
     t.json "visual_design_json"
     t.boolean "use_extended_header", default: true, null: false
-    t.string "identifier_domain_name"
-    t.string "parent_agency_name"
-    t.string "parent_agency_link"
     t.boolean "display_image_on_search_results", default: false, null: false
     t.boolean "display_filetype_on_search_results", default: false, null: false
     t.boolean "display_created_date_on_search_results", default: false, null: false
@@ -106,6 +102,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_12_153029) do
     t.boolean "looking_for_government_services", default: true, null: false
     t.boolean "show_search_filter_settings", default: false, null: false
     t.boolean "show_vote_org_link", default: false, null: false
+    t.boolean "gets_results_from_all_domains", default: false, null: false
     t.index ["name"], name: "index_affiliates_on_name", unique: true
   end
 
@@ -178,6 +175,26 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_12_153029) do
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
     t.index ["affiliate_id"], name: "index_connections_on_affiliate_id"
+  end
+
+  create_table "crawl_configs", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.boolean "active", default: true, null: false
+    t.string "allowed_domains", limit: 2048, null: false
+    t.text "starting_urls", null: false
+    t.text "sitemap_urls"
+    t.text "deny_paths"
+    t.integer "depth_limit", default: 3, null: false
+    t.integer "sitemap_check_hours"
+    t.boolean "allow_query_string", default: false, null: false
+    t.boolean "handle_javascript", default: false, null: false
+    t.string "schedule", null: false
+    t.string "output_target", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_crawl_configs_on_name", unique: true
+    t.index ["output_target", "allowed_domains"], name: "index_crawl_configs_on_output_target_and_allowed_domains", unique: true, length: { allowed_domains: 255 }
+    t.check_constraint "(`depth_limit` >= 0) and (`depth_limit` <= 150)", name: "crawl_configs_depth_limit_range"
   end
 
   create_table "document_collections", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
@@ -295,6 +312,22 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_12_153029) do
     t.boolean "significant", default: false, null: false
   end
 
+  create_table "filter_settings", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+    t.integer "affiliate_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "filters", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+    t.integer "filter_setting_id"
+    t.string "type"
+    t.string "label"
+    t.boolean "enabled", default: false
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "flickr_profiles", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "url"
     t.string "profile_type"
@@ -383,6 +416,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_12_153029) do
     t.integer "affiliate_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["type", "affiliate_id"], name: "index_links_on_type_and_affiliate_id"
   end
 
   create_table "med_related_topics", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
@@ -427,7 +461,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_12_153029) do
   create_table "memberships", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "affiliate_id", null: false
-    t.boolean "gets_daily_snapshot_email", default: false, null: false
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["affiliate_id", "user_id"], name: "index_memberships_on_affiliate_id_and_user_id", unique: true
@@ -595,8 +628,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_12_153029) do
     t.index ["last_crawl_status"], name: "index_searchgov_urls_on_last_crawl_status"
     t.index ["searchgov_domain_id", "enqueued_for_reindex"], name: "searchgov_urls_on_searchgov_domain_id_and_enqueued_for_reindex"
     t.index ["searchgov_domain_id", "last_crawl_status"], name: "index_by_searchgov_domain_id_and_last_crawl_status"
-    t.index ["searchgov_domain_id", "last_crawled_at", "enqueued_for_reindex", "lastmod", "last_crawl_status"], name: "searchgov_urls_fetch_required"
+    t.index ["searchgov_domain_id", "last_crawl_status"], name: "searchgov_urls_on_searchgov_domain_id_and_last_crawl_status"
     t.index ["searchgov_domain_id", "last_crawled_at"], name: "index_searchgov_urls_on_searchgov_domain_id_and_last_crawled_at"
+    t.index ["searchgov_domain_id", "last_crawled_at"], name: "searchgov_urls_on_searchgov_domain_id_and_last_crawled_at"
+    t.index ["searchgov_domain_id", "lastmod"], name: "searchgov_urls_on_searchgov_domain_id_and_lastmod"
     t.index ["searchgov_domain_id"], name: "index_searchgov_urls_on_searchgov_domain_id"
     t.index ["url"], name: "index_searchgov_urls_on_url", length: 255
   end
@@ -745,7 +780,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_12_153029) do
     t.index ["id", "imported_at"], name: "index_youtube_profiles_on_id_and_imported_at"
   end
 
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "searchgov_documents", "searchgov_urls"
   add_foreign_key "searchgov_urls", "searchgov_domains"

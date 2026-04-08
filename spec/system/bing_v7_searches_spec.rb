@@ -18,21 +18,4 @@ describe 'Bing search' do
         with(headers: { 'Ocp-Apim-Subscription-Key' => web_subscription_id })
     end
   end
-
-  describe 'image search' do
-    let(:image_subscription_id) { ENV.fetch('BING_IMAGE_SUBSCRIPTION') }
-    let(:image_search_host) { 'api.cognitive.microsoft.com' }
-    let(:image_search_path) { '/bing/v7.0/images/search' }
-
-    before do
-      stub_request(:get, image_search_host)
-      BingV7ImageSearch.new(query: 'book').execute_query
-    end
-
-    it 'uses the image search key and endpoint' do
-      skip 'Skipping this test because the image search API endpoint is currently broken. Jim approved this skip on 06/26/24.'
-      expect(WebMock).to have_requested(:get, /#{image_search_host}#{image_search_path}/).
-        with(headers: { 'Ocp-Apim-Subscription-Key' => image_subscription_id })
-    end
-  end
 end

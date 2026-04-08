@@ -1,12 +1,13 @@
 = content_for_site_page_title @site, 'Best Bets: Graphics'
-.sub-nav-heading
+.sub-nav-heading{ class: ("--is-inactive" if @site&.active? == false) }
   %h2 Best Bets: Graphics
   .action-bar
     %ul
-      = list_item_with_link_to_current_help_page
-      %li= link_to 'Add Best Bets: Graphics', new_site_best_bets_graphic_path(@site)
 
 = render_flash_message
+
+.alert
+  Graphic Best Bets are being deprecated due to low usage. Please use Text Best Bets instead.
 
 = render partial: 'search'
 

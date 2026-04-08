@@ -1,11 +1,10 @@
 = content_for_site_page_title @site, 'Header & Footer'
 = form_for @site, as: :site, url: site_header_and_footer_path(@site),
   html: { class: 'form', id: 'edit-header-and-footer' } do |form|
-  .sub-nav-heading
+  .sub-nav-heading{ class: ("--is-inactive" if @site&.active? == false) }
     %h2 Header & Footer
     .action-bar
       %ul
-        = list_item_with_link_to_current_help_page
         %li= form.submit 'Save', class: 'btn submit disabled', disabled: true
   = render_flash_message
   = render_error_messages(@site)

@@ -1,9 +1,8 @@
 = form_for @site, as: :site, url: site_font_and_colors_path(@site), html: { class: 'form', id: 'edit-font-and-colors' } do |f|
-  .sub-nav-heading
+  .sub-nav-heading{ class: ("--is-inactive" if @site&.active? == false) }
     %h2 Font & Colors
     .action-bar
       %ul
-        = list_item_with_link_to_current_help_page
         %li= f.submit 'Save', class: 'btn submit disabled', disabled: true
   = render_flash_message
   = render_error_messages(@site)

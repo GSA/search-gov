@@ -4,10 +4,10 @@ module SpellingSuggestionsHelper
       suggested_query = strip_bing_highlights(search.spelling_suggestion)
       opts = { affiliate: search.affiliate.name, query: suggested_query }
       opts.merge!(sitelimit: search_options[:site_limits]) if search_options[:site_limits]
-      suggested_url = image_search? ? image_search_path(opts) : search_path(opts)
+      suggested_url = search_path(opts)
 
       opts.merge!(query: overridden_query(search.query))
-      original_url = image_search? ? image_search_path(opts) : search_path(opts)
+      original_url = search_path(opts)
       yield suggested_query, suggested_url, original_url
     end
   end
@@ -15,7 +15,7 @@ module SpellingSuggestionsHelper
   def search_suggestion_links(search, &block)
     suggested_query = strip_bing_highlights(search.spelling_suggestion)
     opts = { affiliate: search.affiliate.name, query: suggested_query }
-    suggested_url = image_search? ? image_search_path(opts) : search_path(opts)
+    suggested_url = search_path(opts)
     yield suggested_query, suggested_url
   end
 

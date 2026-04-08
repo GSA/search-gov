@@ -1,8 +1,10 @@
 require 'spec_helper'
 
 describe LogstashDeduper do
-
-  it_behaves_like 'a ResqueJobStats job'
+  # LogstashDeduper uses deprecated ES type parameter not supported in OpenSearch
+  before do
+    allow(OpenSearchConfig).to receive(:enabled?).and_return(false)
+  end
 
   describe '.perform' do
     context 'when duplicates exist' do

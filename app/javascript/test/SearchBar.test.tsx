@@ -37,20 +37,16 @@ describe('SearchBar with no facets', () => {
 });
 
 describe('Tablet & Mobile view: SearchBar with facets', () => {
-  beforeAll(() => {
-    window.innerWidth = 400;
-  });
-
   it('Filter search label and filter button is present', () => {
     render(
       <LanguageContext.Provider value={i18n} >
-        <SearchBar query="" navigationLinks={[]} facetsEnabled={true} />
+        <SearchBar query="" navigationLinks={[]} facetsEnabled={true} mobileView={true} agregations={[]} />
       </LanguageContext.Provider>
     );
 
     const filterLabel = screen.getByText(/Filter search/i);
     expect(filterLabel).toBeInTheDocument();
-    
+
     const filterSearchBtn = screen.getByTestId('filter-search-btn');
     fireEvent.click(filterSearchBtn);
   });
@@ -58,15 +54,12 @@ describe('Tablet & Mobile view: SearchBar with facets', () => {
   it('Filter type, action buttons are present', () => {
     render(
       <LanguageContext.Provider value={i18n} >
-        <SearchBar query="" navigationLinks={[]} facetsEnabled={true} />
+        <SearchBar query="" navigationLinks={[]} facetsEnabled={true} mobileView={true} agregations={[]} />
       </LanguageContext.Provider>
     );
 
     const filterSearchBtn = screen.getByTestId('filter-search-btn');
     fireEvent.click(filterSearchBtn);
-
-    const filterTypeLabel = screen.getByText(/Audience/i);
-    expect(filterTypeLabel).toBeInTheDocument();
 
     const clearBtnLabel = screen.getByText(/Clear/i);
     expect(clearBtnLabel).toBeInTheDocument();

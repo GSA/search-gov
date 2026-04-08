@@ -1,0 +1,27 @@
+%p
+  The uploaded file
+  %strong= @file_name
+  could not be processed correctly for bulk affiliate deactivation.
+
+  - unless @general_errors.empty?
+    %h2 General File Errors
+    %ul
+      - @general_errors.each do |error|
+        %li= error
+
+  - unless @error_details.empty?
+    %h2 Row-Specific Errors
+    %p No affiliates were deactivated due to the following errors found in the file:
+    %table{ border: "1", cellpadding: "5", cellspacing: "0" }
+      %thead
+        %tr
+          %th Row Identifier
+          %th Error
+      %tbody
+        - @error_details.each do |detail|
+          %tr
+            %td= detail[:identifier]
+            %td= detail[:error]
+
+  %p
+    Please correct the file and try uploading it again. If you continue to experience issues, please contact the support team.

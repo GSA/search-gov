@@ -1,0 +1,15 @@
+- content_for :title do
+  = @page_title
+
+.container
+  .row
+    .col-md-8.col-md-offset-2
+      .inactive-affiliate-message
+        %h1 Search Temporarily Unavailable
+        %p.lead
+          This U.S. government search page has been turned off. Please visit
+          = link_to "USA.gov", "https://www.usa.gov/", target: "_blank", class: "usa-link"
+          to search all government websites.
+        %p
+          %strong To the federal manager of this search page:
+          If you believe it has been turned off in error, please email the Search.gov team.

@@ -5,7 +5,7 @@ Feature: Affiliate 3rd party tracking
 
   @javascript
   Scenario: Setting 3rd Party Tracking
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name | use_redesigned_results_page |
       | aff site     | aff.gov | aff@bar.gov   | John       | Bar       | false                       |
     And I am logged in with email "aff@bar.gov"

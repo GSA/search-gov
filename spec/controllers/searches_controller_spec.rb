@@ -101,7 +101,13 @@ describe SearchesController do
           }
     end
 
-    it { is_expected.to redirect_to 'https://www.usa.gov/search-error' }
+    it { is_expected.to respond_with(:success) }
+    it { is_expected.to render_template(:inactive_affiliate) }
+    it { is_expected.to render_template('layouts/application') }
+
+    it 'sets the correct page title' do
+      expect(assigns[:page_title]).to eq("Search Temporarily Unavailable - #{affiliate.display_name}")
+    end
   end
 
   context 'when searching with non scalar query' do
@@ -325,6 +331,19 @@ describe SearchesController do
     end
   end
 
+  context "when a page number exceeds available pages" do
+    before do
+      # Mock a search with only 3 pages of results.
+      allow_any_instance_of(WebSearch).to receive(:total).and_return(30)
+      allow_any_instance_of(WebSearch).to receive(:per_page).and_return(10)
+    end
+
+    it "redirects to the last available page" do
+      get :index, params: { query: 'test', page: 4, affiliate: 'usagov' }
+      expect(response).to redirect_to search_path(query: 'test', page: 3, affiliate: 'usagov')
+    end
+  end
+  
   context 'highlighting' do
     context 'when a client requests results without highlighting' do
       before do
@@ -519,6 +538,83 @@ describe SearchesController do
         affiliate.search_engine = 'SearchGov'
         expect(I14ySearch).to receive(:new).and_return(i14y_search)
         expect(i14y_search).to receive(:run)
+        get :docs,
+            params: {
+              query: 'gov',
+              affiliate: affiliate.name,
+              dc: 100
+            }
+      end
+
+      it { is_expected.to render_template(:i14y) }
+
+      it 'should assign various variables' do
+        expect(assigns[:page_title]).to match(/gov/)
+        expect(assigns[:search_vertical]).to eq(:docs)
+        expect(assigns[:form_path]).to eq(docs_search_path)
+      end
+    end
+
+    context 'when the affiliate uses the OpenSearch engine' do
+      let(:opensearch_engine) { double(OpenSearch::Engine, query: 'gov', modules: %w(SRCH), diagnostics: {}) }
+
+      before do
+        expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
+        affiliate.search_engine = 'OpenSearch'
+        expect(OpenSearch::Engine).to receive(:new).and_return(opensearch_engine)
+        expect(opensearch_engine).to receive(:run)
+        get :docs,
+            params: {
+              query: 'gov',
+              affiliate: affiliate.name,
+              dc: 100
+            }
+      end
+
+      it { is_expected.to render_template(:i14y) }
+
+      it 'should assign various variables' do
+        expect(assigns[:page_title]).to match(/gov/)
+        expect(assigns[:search_vertical]).to eq(:docs)
+        expect(assigns[:form_path]).to eq(docs_search_path)
+      end
+    end
+
+
+    context 'when the affiliate uses the LegacyOpenSearch engine' do
+      let(:legacy_opensearch_engine) { double(LegacyOpenSearch::Engine, query: 'gov', modules: %w(SRCH), diagnostics: {}) }
+
+      before do
+        expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
+        affiliate.search_engine = 'LegacyOpenSearch'
+        expect(LegacyOpenSearch::Engine).to receive(:new).and_return(legacy_opensearch_engine)
+        expect(legacy_opensearch_engine).to receive(:run)
+        get :docs,
+            params: {
+              query: 'gov',
+              affiliate: affiliate.name,
+              dc: 100
+            }
+      end
+
+      it { is_expected.to render_template(:i14y) }
+
+      it 'should assign various variables' do
+        expect(assigns[:page_title]).to match(/gov/)
+        expect(assigns[:search_vertical]).to eq(:docs)
+        expect(assigns[:form_path]).to eq(docs_search_path)
+      end
+    end
+
+    context 'when the affiliate uses the SearchElastic engine' do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:search_elastic_engine) { double(SearchElasticEngine, query: 'gov', modules: %w(SRCH), diagnostics: {}) }
+
+      before do
+        expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
+        affiliate.search_engine = 'SearchElastic'
+        expect(SearchElasticEngine).to receive(:new).and_return(search_elastic_engine)
+        expect(search_elastic_engine).to receive(:run)
         get :docs,
             params: {
               query: 'gov',

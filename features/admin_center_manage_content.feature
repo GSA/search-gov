@@ -8,7 +8,7 @@ Feature: Manage Content
     And I should see a link to "Content Overview" in the active site sub navigation
 
   Scenario: View best bets graphics
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And the following featured collections exist for the affiliate "agency.gov":
@@ -19,7 +19,9 @@ Feature: Manage Content
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "Best Bets: Graphics" within the Admin Center content
-    Then I should see the following table rows:
+    Then I should see "Graphic Best Bets are being deprecated due to low usage. Please use Text Best Bets instead."
+    And I should not see a link to "Add Best Bets: Graphics"
+    And I should see the following table rows:
       | Fire Safety     |
       | Flood Watches   |
       | Tornado Warning |
@@ -28,7 +30,7 @@ Feature: Manage Content
     And I should see "Status: Inactive"
 
   Scenario: Filtering best bets graphics
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And the following featured collections exist for the affiliate "agency.gov":
@@ -39,6 +41,8 @@ Feature: Manage Content
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "Best Bets: Graphics" within the Admin Center content
+    Then I should see "Graphic Best Bets are being deprecated due to low usage. Please use Text Best Bets instead."
+    And I should not see a link to "Add Best Bets: Graphics"
     And I fill in "query" with "lighter"
     And I press "Search"
     Then I should see the following table rows:
@@ -51,30 +55,21 @@ Feature: Manage Content
     Then I should be on the agency.gov's Best Bets Graphics page
 
   Scenario: Add/edit/remove best bets graphics
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
+    And the following featured collections exist for the affiliate "agency.gov":
+      | title                        | title_url                         | status | publish_start_on | publish_end_on | keywords     | image_file_path              | image_alt_text   | match_keyword_values_only |
+      | 2010 Atlantic Hurricane Season | http://www.nhc.noaa.gov/2010atlan.shtml | active | 2013-07-01       | 07/01/2030     | storm,weather | features/support/small.jpg | hurricane logo   | true                      |
+    And the following featured collection links exist for featured collection titled "2010 Atlantic Hurricane Season":
+      | title              | url                                                   | position |
+      | Hurricane Alex     | http://www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf     | 0        |
+      | Hurricane Danielle | http://www.nhc.noaa.gov/pdf/TCR-AL062010_Danielle.pdf | 1        |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "Best Bets: Graphics" within the Admin Center content
-    And I follow "Add Best Bets: Graphics"
-    When I fill in the following:
-      | Title                 | 2010 Atlantic Hurricane Season          |
-      | Title URL             | http://www.nhc.noaa.gov/2010atlan.shtml |
-      | Publish End Date      | 07/01/2030                              |
-      | Image Alt Text        | hurricane logo                          |
-    And I attach the file "features/support/small.jpg" to "Image"
-    And I add the following best bets keywords:
-      | keyword |
-      | storm   |
-      | weather |
-    And I check "Match Keywords Only?"
-    And I add the following best bets graphics links:
-      | title              | url                                                   |
-      | Hurricane Alex     | http://www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf     |
-      | Hurricane Danielle | http://www.nhc.noaa.gov/pdf/TCR-AL062010_Danielle.pdf |
-    And I submit the form by pressing "Add"
-    Then I should see "You have added 2010 Atlantic Hurricane Season to this site"
+    Then I should see "Graphic Best Bets are being deprecated due to low usage. Please use Text Best Bets instead."
+    And I should not see a link to "Add Best Bets: Graphics"
     And I should see a link to "2010 Atlantic Hurricane Season" with url for "http://www.nhc.noaa.gov/2010atlan.shtml"
     And I should see "Status: Active"
     And I should see "Match Keywords Only"
@@ -118,7 +113,7 @@ Feature: Manage Content
     Then I should see "You have removed 2011 Atlantic Hurricane Season from this site"
 
   Scenario: View best bets texts
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     When the following Boosted Content entries exist for the affiliate "agency.gov"
@@ -135,7 +130,7 @@ Feature: Manage Content
     And I should see "Published between 08/01/2013 and 01/01/2022"
 
   Scenario: Filtering best bets texts
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     When the following Boosted Content entries exist for the affiliate "agency.gov"
@@ -157,7 +152,7 @@ Feature: Manage Content
     Then I should be on the agency.gov's Best Bets Texts page
 
   Scenario: Add/edit/remove best bets texts
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
@@ -196,7 +191,7 @@ Feature: Manage Content
     Then I should see "You have removed Release for Week Ending June 21, 2013 from this site"
 
   Scenario: Bulk upload best bets texts
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
@@ -209,7 +204,7 @@ Feature: Manage Content
     And I should see "1 Text Best Bet was not uploaded. Please ensure the URLs are properly formatted, including the http:// or https:// prefix."
 
   Scenario: View Collections
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   |first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John      | Bar       | false                       |
     And affiliate "agency.gov" has the following document collections:
@@ -227,7 +222,7 @@ Feature: Manage Content
     And I should find "agency3.gov/blog/" in the Collection URL Prefixes modal
 
   Scenario: Add/edit/remove Collection
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
@@ -264,7 +259,7 @@ Feature: Manage Content
     Then I should see "You have removed News and Blog from this site"
 
   Scenario: View Routed Queries
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And affiliate "agency.gov" has the following routed queries:
@@ -279,7 +274,7 @@ Feature: Manage Content
       | Disable Rails Asset Compression |
 
   Scenario: Add/Edit/Remove Routed Query
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name    | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar          | false                       |
     And I am logged in with email "john@agency.gov"
@@ -307,7 +302,7 @@ Feature: Manage Content
     Then I should see "You have removed query routing for the following search term: 'moar money'"
 
   Scenario: View domains
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     When the following "site domains" exist for the affiliate agency.gov:
@@ -327,7 +322,7 @@ Feature: Manage Content
     Then the "Discover and add the RSS feeds and social media accounts listed on the following page:" field should be empty
 
   Scenario: Add/edit/remove domains
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
@@ -350,7 +345,7 @@ Feature: Manage Content
     Then I should see "You have removed gobiernousa.gov from this site"
 
   Scenario: View i14y drawers
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | gets_i14y_results | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | true              | false                       |
     And the following "i14y drawers" exist for the affiliate agency.gov:
@@ -377,7 +372,7 @@ Feature: Manage Content
     And I should not see "document 1"
 
   Scenario: Add/edit/remove i14y drawers
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | gets_i14y_results | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | true              | false                       |
     And we don't want observers to run during these cucumber scenarios
@@ -404,7 +399,7 @@ Feature: Manage Content
     And we want observers to run during the rest of these cucumber scenarios
 
   Scenario: Sharing i14y drawers
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name        | contact_email    | first_name | last_name | gets_i14y_results | use_redesigned_results_page |
       | agency site  | agency.gov  | john@agency.gov  | John Bar   | bar       | true              | false                       |
       | another site | another.gov | jane@another.gov | Jane Bar   | bar       | true              | false                       |
@@ -424,7 +419,7 @@ Feature: Manage Content
     And we want observers to run during the rest of these cucumber scenarios
 
   Scenario: View Filter URLs
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And the following Excluded URLs exist for the site "agency.gov":
@@ -438,7 +433,7 @@ Feature: Manage Content
       | aff.gov/bad-url2 |
 
   Scenario: Add/remove Filter URL
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
@@ -453,7 +448,7 @@ Feature: Manage Content
     Then I should see "You have removed agency.gov/exclude-me.html from this site"
 
   Scenario: Add/remove Filter Tag
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | gets_i14y_results | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | true              | false                       |
     And I am logged in with email "john@agency.gov"
@@ -481,133 +476,8 @@ Feature: Manage Content
     And I submit the form by pressing "Add"
     Then I should see "Tag has already been taken"
 
-  Scenario: View Flickr URLs
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
-    When the following flickr URLs exist for the site "agency.gov":
-      | url                                      |
-      | http://www.flickr.com/photos/whitehouse/ |
-      | http://www.flickr.com/groups/usagov/     |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Manage Content page
-    And I follow "Flickr" within the Admin Center content
-    Then I should see the following table rows:
-      | www.flickr.com/groups/usagov/     |
-      | www.flickr.com/photos/whitehouse/ |
-
-  Scenario: Add/remove Flickr URL
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Manage Content page
-    And I follow "Flickr" within the Admin Center content
-    And I follow "Add Flickr URL"
-    When I fill in "Flickr URL" with "www.flickr.com/groups/usagov/"
-    And I submit the form by pressing "Add"
-    Then I should see "You have added www.flickr.com/groups/usagov/ to this site"
-    When I press "Remove" and confirm "Are you sure you wish to remove https://www.flickr.com/groups/usagov/ from this site?"
-    Then I should see "You have removed www.flickr.com/groups/usagov/ from this site"
-
-  Scenario: View RSS
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
-    And affiliate "agency.gov" has the following RSS feeds:
-      | name   | url                                                     | last_crawl_status | last_crawled_at | show_only_media_content | is_managed |
-      | News   | search.gov/all.atom                                     | OK                | 2013-01-01      |                         |            |
-      | Videos | gdata.youtube.com/feeds/base/videos?author=usgovernment | Pending           | Pending         |                         | true       |
-      | Images | www.flickr.com/photos_public.gne?id=27784370@N05        | 404 Not Found     | 2013-07-01      | true                    |            |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Manage Content page
-    And I follow "RSS" within the Admin Center content
-    Then I should see the following table rows:
-      | Images (Media RSS) |
-      | News               |
-      | Videos (YouTube)   |
-    And I should find "Images" in the first table body error row
-    And I should find "News" in the first table body success row
-    And I should find "Videos" in the first table body warning row
-
-    When I follow "Images"
-    Then I should find "www.flickr.com/photos_public.gne?id=27784370@N05" in the RSS URLs modal
-
-    When I go to the agency.gov's "Images" RSS feed page
-    And I follow "Error"
-    Then I should find "404 Not Found" in the RSS URL last crawl status error message
-
-  Scenario: Add/edit/remove RSS Feed
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
-    And I am logged in with email "john@agency.gov"
-    And www.fda.gov has valid RSS feeds
-    When I go to the agency.gov's Manage Content page
-    And I follow "RSS" within the Admin Center content
-    And I follow "Add RSS Feed"
-    When I fill in the following:
-      | Name  | Recalls                                                                                |
-      | URL 1 | https://www.fda.gov/rss/health-fraud/rss.xml |
-    And I choose "RSS"
-    And I add the following RSS Feed URLs:
-      | url                                                                                      |
-      | https://www.fda.gov/rss/food-allergies/rss.xml |
-    And I submit the form by pressing "Add"
-    Then I should see "You have added Recalls to this site"
-    When I follow "Edit"
-    Then the "Name" field should contain "Recalls"
-    And the "URL 1" field should contain "https://www.fda.gov/rss/food-allergies/rss.xml"
-    And the "URL 2" field should contain "https://www.fda.gov/rss/health-fraud/rss.xml"
-    When I fill in "Name" with "Food, Safety and Pet Health Recalls"
-    And I add the following RSS Feed URLs:
-      | url                                                                                           |
-      | https://www.fda.gov/rss/food-safety-recalls/rss.xml |
-    And I submit the form by pressing "Save"
-    Then I should see "You have updated Food, Safety and Pet Health Recalls"
-    When I press "Remove" and confirm "Are you sure you wish to remove Food, Safety and Pet Health Recalls from this site?"
-    Then I should see "You have removed Food, Safety and Pet Health Recalls from this site"
-
-  Scenario: Edit/remove Supplemental Feed
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Supplemental URLs page
-    And I access the "Advanced" dropdown menu
-    And I follow "Supplemental Feed"
-    And I fill in "URL" with ""
-    And I submit the form by pressing "Save"
-    Then I should see "URL can't be blank"
-    When I fill in the following:
-      | URL | search.gov/all.atom |
-    And I submit the form by pressing "Save"
-    Then I should see "You have updated your supplemental feed for this site"
-    And the "URL" field should contain "http://search.gov/all.atom"
-    And I should see "Last Crawled Pending"
-    And I should see "Status Pending"
-    When I press "Remove" and confirm "Are you sure you wish to remove your supplemental feed?"
-    Then I should see "You have removed your supplemental feed from this site"
-
-  Scenario: View Supplemental URLs
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
-    And the following IndexedDocuments exist:
-      | url                                             | title                | description                     | affiliate  | last_crawled_at | last_crawl_status | source |
-      | http://aff.gov/extremelysuperlongurl/space-suit | Space Suit Evolution | description text for space suit | agency.gov | 11/02/2011      | OK                | manual |
-      | http://aff.gov/extremelysuperlongurl/rocket     | Rocket Evolution     | description text for rocket     | agency.gov | 11/01/2011      | 404 Not Found     | rss    |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Supplemental URLs page
-    Then I should see the following table rows:
-      | URL                                      | Source | Last Crawled | Status |
-      | aff.gov/extremelysuperlongurl/rocket     | Feed   | 11/1/2011    | Error  |
-      | aff.gov/extremelysuperlongurl/space-suit | Manual | 11/2/2011    | OK     |
-    When I follow "Error"
-    Then I should find "404 Not Found" in the Supplemental URL last crawl status error message
-
   Scenario: Filtering Supplemental URLs
-    Given the following Affiliates exist:
+    Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And the following IndexedDocuments exist:
@@ -627,73 +497,3 @@ Feature: Manage Content
     Then I should see "No Supplemental URLs found matching 'lksdjflskdjf'"
     When I follow "Reset"
     Then I should be on the agency.gov's Supplemental URLs page
-
-  Scenario: Add/edit/remove Supplemental URL
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Supplemental URLs page
-    And I follow "Add Supplemental URL"
-    And I fill in the following:
-      | URL         | search.gov/developer/jobs.html                      |
-      | Title       | Jobs API                                            |
-      | Description | Helping job seekers land a job with the government. |
-    And I submit the form by pressing "Add"
-    Then I should see "You have added search.gov/developer/jobs.html to this site"
-    And I should see the following table rows:
-      | URL                            | Source |
-      | search.gov/developer/jobs.html | Manual |
-    And I should see the following table rows:
-      | Status     |
-      | Summarized |
-    When I press "Remove" and confirm "Are you sure you wish to remove search.gov/developer/jobs.html from this site?"
-    Then I should see "You have removed search.gov/developer/jobs.html from this site"
-
-  Scenario: View YouTube Channels
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
-    And the following YouTube channels exist for the site "agency.gov":
-      | title        | channel_id              |
-      | USGovernment | usgovernment_channel_id |
-      | GobiernoUSA  | gobiernousa_channel_id  |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Manage Content page
-    And I follow "YouTube" within the Admin Center content
-    Then I should see the following table rows:
-      | GobiernoUSA  |
-      | USGovernment |
-
-  Scenario: Add/remove YouTube Channel
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Manage Content page
-    And I follow "YouTube" within the Admin Center content
-    And I follow "Add YouTube Channel"
-    When I fill in "YouTube Channel URL" with " youtube.com/USGovernment "
-    And I submit the form by pressing "Add"
-    Then I should see "You have added usgovernment channel to this site"
-    And I should see a link to "usgovernment" with url for "https://www.youtube.com/channel/UCWjkPmmzCdPZEKtGciLf1mg"
-
-    When I follow "Display"
-    Then the "Is video govbox enabled" should be switched on
-
-    When I follow "Content" within the Admin Center main navigation list
-    And I follow "RSS" within the Admin Center content
-    And I follow "Videos"
-    Then I should see "www.youtube.com/channel/UCWjkPmmzCdPZEKtGciLf1mg"
-
-    When I go to the agency.gov's Manage Content page
-    And I follow "YouTube" within the Admin Center content
-    And I press "Remove" and confirm "Are you sure you wish to remove usgovernment channel from this site?"
-    Then I should see "You have removed usgovernment channel from this site"
-    When I follow "Add YouTube Channel"
-    When I fill in "YouTube Channel URL" with "http://www.youtube.com/usasearch"
-    And I submit the form by pressing "Add"
-    Then I should see "Url is not found"
-
-    When I follow "Display"
-    Then I should not see "Videos"

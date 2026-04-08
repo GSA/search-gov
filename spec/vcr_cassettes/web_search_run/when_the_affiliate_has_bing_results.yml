@@ -31,35 +31,38 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Thu, 25 Jan 2024 23:23:32 GMT
+      - Tue, 22 Apr 2025 18:42:04 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       X-Eventid:
-      - 65b2edb0a89a4653977adb43569f0a5c
+      - 6807e338a8f642139c5b7f753a5bacdc
       Useragentreductionoptout:
       - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      Content-Security-Policy:
+      - 'script-src https: ''strict-dynamic'' ''report-sample'' ''wasm-unsafe-eval''
+        ''nonce-XbZDrc2ltXZ0g6LUZM9QNBzQljeLzRtKubtMn6/+e2A=''; base-uri ''self'';'
       Bingapis-Traceid:
-      - 65b2edb0a89a4653977adb43569f0a5c
+      - 6807e338a8f642139c5b7f753a5bacdc
       Bingapis-Sessionid:
-      - 8BFF337C48E24476B73F92AD17B03CD9
+      - 29E210F467E94EB89EE0BF6870DDF547
       X-Msedge-Clientid:
-      - 0B79E54AF7F9676D2606F15BF6536699
+      - 2DA41AE78A13676F39FF0F318B5F6682
       X-Msapi-Userstate:
-      - af10
+      - b8d2
       Bingapis-Market:
       - en-US
       X-Search-Responseinfo:
-      - InternalResponseTime=237,MSDatacenter=BNZE01
+      - InternalResponseTime=207,MSDatacenter=MWHE01
       X-Cache:
       - CONFIG_NOCACHE
       Accept-Ch:
       - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
       X-Msedge-Ref:
-      - 'Ref A: 2CAE5D394E1248AAA307DC35DD7DA0CB Ref B: BN3EDGE0814 Ref C: 2024-01-25T23:24:32Z'
+      - 'Ref A: 889309EE634F4891A6C3084DB3553850 Ref B: BY3EDGE0210 Ref C: 2025-04-22T18:43:04Z'
       Apim-Request-Id:
-      - e60851d8-8f32-4d4c-91e5-1767e9412e9a
+      - e7c0a004-0177-413f-b117-36872ed79a68
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -67,213 +70,432 @@ http_interactions:
       Csp-Billing-Usage:
       - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Thu, 25 Jan 2024 23:24:32 GMT
+      - Tue, 22 Apr 2025 18:43:05 GMT
     body:
       encoding: UTF-8
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "english
         (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=english+(site%3agov+OR+site%3amil)",
-        "totalEstimatedMatches": 24400000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "Find courses to help you learn English | USAGov", "url": "https:\/\/www.usa.gov\/learn-english",
-        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.usa.gov\/learn-english",
-        "snippet": "Find literacy and ESL programs near you for learning or improving
-        your English. If you have children, ask their school staff about ESL classes
-        in their school district. In some communities, libraries offer English classes
-        and materials to study. Find a library near you. You may also visit the National
-        Literacy Directory to find literacy ...", "dateLastCrawled": "2024-01-24T18:12:00.0000000Z",
-        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=english+(site%3agov+OR+site%3amil)&d=4536598211686278&mkt=en-US&setlang=en-US&w=38OiTa8zH20PAd8hCCqTezY811g6HQ_v",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "IRS Free File is now available for the 2024 filing season", "url":
-        "https:\/\/www.irs.gov\/newsroom\/irs-free-file-is-now-available-for-the-2024-filing-season",
-        "datePublished": "2024-01-22T00:00:00.0000000", "datePublishedFreshnessText":
-        "3 days ago", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.irs.gov\/newsroom\/irs-free-file-is-now-available-for-the-2024-filing-season",
-        "snippet": "Tax Tip 2024-03, Jan. 22, 2024 — IRS Free File is now available
-        for the 2024 filing season. With this program, eligible taxpayers can prepare
-        and file their federal tax returns using free tax software from trusted IRS
-        Free File partners.", "dateLastCrawled": "2024-01-23T22:45:00.0000000Z", "cachedPageUrl":
-        "http:\/\/cc.bingj.com\/cache.aspx?q=english+(site%3agov+OR+site%3amil)&d=5278219729324&mkt=en-US&setlang=en-US&w=uQfwYBxegdxYVOUM9rCgf2uugBIvQ8iX",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
-        "name": "US Department of Labor recovers $168K in back wages for 51 storm
-        ...", "url": "https:\/\/www.dol.gov\/newsroom\/releases\/whd\/whd20240123",
-        "datePublished": "2024-01-23T00:00:00.0000000", "datePublishedFreshnessText":
-        "2 days ago", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.dol.gov\/newsroom\/releases\/whd\/whd20240123",
-        "snippet": "Read this news release En Español.. WILMINGTON, NC – The U.S.
-        Department of Labor has recovered $ 168,796 in back wages for 51 workers at
-        a Wilmington storm response contractor that misclassified them as independent
-        contractors and failed to pay them for several months after work was completed.
-        The department’s Wage and Hour Division found Utility Resource Services LLC,
-        which employs ...", "dateLastCrawled": "2024-01-25T08:57:00.0000000Z", "cachedPageUrl":
-        "http:\/\/cc.bingj.com\/cache.aspx?q=english+(site%3agov+OR+site%3amil)&d=2323121795420&mkt=en-US&setlang=en-US&w=ZkyYS23gYq6Ub0edBZ0u9WEBsVg4tNxi",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
-        "name": "Treasury, IRS announce special relief for certain rollovers to or
-        from ...", "url": "https:\/\/www.irs.gov\/newsroom\/treasury-irs-announce-special-relief-for-certain-rollovers-to-or-from-maryland-prepaid-college-trust-accounts",
-        "datePublished": "2024-01-25T00:00:00.0000000", "datePublishedFreshnessText":
-        "23 hours ago", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.irs.gov\/newsroom\/treasury-irs-announce-special-relief-for-certain...",
-        "snippet": "IR-2024-20, Jan. 25, 2024. WASHINGTON — The Department of the
-        Treasury and the Internal Revenue Service issued Notice 2024-23 PDF announcing
-        special relief for taxpayers impacted by recent system issues affecting the
-        Maryland Prepaid College Trust as described in the notice.. Generally, federal
-        tax law only allows one tax-free rollover in a 12-month period from one qualified
-        tuition program ...", "dateLastCrawled": "2024-01-25T22:42:00.0000000Z", "cachedPageUrl":
-        "http:\/\/cc.bingj.com\/cache.aspx?q=english+(site%3agov+OR+site%3amil)&d=3422751255295&mkt=en-US&setlang=en-US&w=KdRPHTJI2q3u0afV8D-ED-3r1dEL-F6y",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "totalEstimatedMatches": 35600000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Office of English Language Acquisition - U.S. Department of Education",
+        "url": "https:\/\/www.ed.gov\/about\/ed-offices\/oela", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.ed.gov\/about\/ed-offices\/oela", "snippet":
+        "Programs and Initiatives . Office of English Learners (OEL) The OEL has lead
+        responsibility for English learner (EL) activities and English Language Acquisition
+        State Grants – Title III, Part A programs and activities that will strengthen
+        and enhance the work of the office and others in supporting and addressing
+        services to EL students. The office will accomplish this mission by overseeing
+        ...", "dateLastCrawled": "2025-04-21T08:11:00.0000000Z", "language": "en",
+        "isNavigational": false, "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Find courses to help you learn English - USAGov", "url": "https:\/\/www.usa.gov\/learn-english",
+        "datePublished": "2025-04-09T00:00:00.0000000", "datePublishedDisplayText":
+        "Apr 9, 2025", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/learn-english",
+        "snippet": "Listen to audio conversations that help you learn English. Learn
+        English in person. Find literacy and ESL programs near you for learning or
+        improving your English. If you have children, ask their school staff about
+        ESL classes in their school district. In some communities, libraries offer
+        English classes and materials to study. Find a library ...", "dateLastCrawled":
+        "2025-04-22T04:12:00.0000000Z", "language": "en", "isNavigational": false,
+        "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
         "name": "American English | For English Language Teachers Around the World",
-        "url": "https:\/\/americanenglish.state.gov\/", "isFamilyFriendly": <DATADOG_API_ENABLED>,
-        "displayUrl": "https:\/\/americanenglish.state.gov", "snippet": "3. 4. This
-        website is a resource center for teaching and learning about American English
-        and American culture developed by the Office of English Language Programs
-        in Washington, D.C. All programs are implemented by Regional English Language
-        Officers (RELOs) at American Embassies or Consulates. Please contact your
-        nearest RELO for assistance or ...", "dateLastCrawled": "2024-01-24T02:09:00.0000000Z",
-        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=english+(site%3agov+OR+site%3amil)&d=4609595475377094&mkt=en-US&setlang=en-US&w=tYe6pHyACUUwM76CQIAszqr-5nddVxEi",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
-        "name": "Treasury and IRS announce that businesses do not have to report certain
-        ...", "url": "https:\/\/www.irs.gov\/newsroom\/treasury-and-irs-announce-that-businesses-do-not-have-to-report-certain-transactions-involving-digital-assets-until-regulations-are-issued",
-        "datePublished": "2024-01-16T20:54:15.0000000", "datePublishedDisplayText":
-        "Jan 16, 2024", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.irs.gov\/newsroom\/treasury-and-irs-announce-that-businesses-do-not-have-to...",
-        "snippet": "IR-2024-12, Jan. 16, 2024 — The Treasury Department and Internal
-        Revenue Service today issued an announcement informing businesses that they
-        do not have to report the receipt of digital assets the same way as they must
-        report the receipt of cash until Treasury and IRS issue regulations.", "dateLastCrawled":
-        "2024-01-24T23:30:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=english+(site%3agov+OR+site%3amil)&d=2323265844026&mkt=en-US&setlang=en-US&w=I2SQi81tCTYBEFHhYuvJCAUz4K-sK9dt",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
-        "name": "Language Use - Census.gov", "url": "https:\/\/www.census.gov\/topics\/population\/language-use.html",
-        "datePublished": "2022-07-06T00:00:00.0000000", "datePublishedDisplayText":
-        "Jul 6, 2022", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.census.gov\/topics\/population\/language-use.html",
-        "snippet": "Language Use. Most people in the United States speak English and
-        most governmental functions are in English. The bureau collects data on language
-        use to know what languages to use, and where, to get information to people
-        about public health, voting, and safety.", "dateLastCrawled": "2024-01-22T08:13:00.0000000Z",
-        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=english+(site%3agov+OR+site%3amil)&d=4509754537214096&mkt=en-US&setlang=en-US&w=z5gcJWLqJn0CzJoYf8sLnHkXLMtN2ZV9",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
-        "name": "Language Access in Clear Communication - National Institutes of Health
-        ...", "url": "https:\/\/www.nih.gov\/institutes-nih\/nih-office-director\/office-communications-public-liaison\/clear-communication\/language-access-clear-communication",
-        "datePublished": "2022-08-31T00:00:00.0000000", "datePublishedDisplayText":
-        "Aug 31, 2022", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nih.gov\/institutes-nih\/nih-office-director\/office-communications-public...",
-        "snippet": "On August 11, 2000, the President signed Executive Order 13166,
-        \"Improving Access to Services for Persons with Limited English Proficiency\".The
-        Executive Order requires Federal agencies to examine the services they provide,
-        identify any need for services to those with limited English proficiency (LEP),
-        and develop and implement a system to provide those services so LEP persons
-        can have ...", "dateLastCrawled": "2024-01-22T23:24:00.0000000Z", "cachedPageUrl":
-        "http:\/\/cc.bingj.com\/cache.aspx?q=english+(site%3agov+OR+site%3amil)&d=4843018233249895&mkt=en-US&setlang=en-US&w=LlASWryC1vSaWagBALnsLRAB_h_I3a3W",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
-        "name": "Testing Accommodations Guide: Part 2 (English Learners) | osse",
-        "url": "https:\/\/osse.dc.gov\/fr\/publication\/testing-accommodations-guide-part-2-english-learners",
-        "datePublished": "2021-01-27T00:00:00.0000000", "datePublishedDisplayText":
-        "Jan 27, 2021", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/osse.dc.gov\/fr\/publication\/testing-accommodations-guide-part-2-english-learners",
-        "snippet": "For more information regarding accommodations on English language
-        proficiency tests, visit the WIDA website. Part II of this guide provides
-        an overview of each accommodation for ELs, its intended use, and eligibility
-        criteria. Additionally, this manual connects each accommodation to its equivalent
-        accommodation, accessibility feature, or ...", "dateLastCrawled": "2024-01-25T19:24:00.0000000Z",
-        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=english+(site%3agov+OR+site%3amil)&d=1910874466313&mkt=en-US&setlang=en-US&w=AzAMkywm6FMFCXh3mHE9tL7WANzgZuYu",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
-        "name": "In 2024 State of the State Address, Burgum calls for action to address
-        ...", "url": "https:\/\/www.governor.nd.gov\/news\/2024-state-state-address-burgum-calls-action-address-housing-needs-announces-new-office",
-        "datePublished": "2024-01-23T00:00:00.0000000", "datePublishedFreshnessText":
-        "2 days ago", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.governor.nd.gov\/news\/2024-state-state-address-burgum-calls-action-address...",
-        "snippet": "Gov. Doug Burgum delivered his 2024 State of the State Address,
-        announcing an initiative to develop a comprehensive housing strategy for North
-        Dakota as well as the launch of a new Office of Community Development & Rural
-        Prosperity to empower communities through efficient development, economic
-        growth and enhanced quality of life.", "dateLastCrawled": "2024-01-25T07:10:00.0000000Z",
-        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=english+(site%3agov+OR+site%3amil)&d=399078950851&mkt=en-US&setlang=en-US&w=Fso0DSynHkM50wQPRAWO0h4dVj4pVQRC",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
-        "name": "English Language Arts (ELA) - doe.nv.gov", "url": "https:\/\/doe.nv.gov\/offices\/office-of-teaching-and-learning\/english-language-arts",
-        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/doe.nv.gov\/offices\/office-of-teaching-and-learning\/english-language-arts",
-        "snippet": "English language arts classes in schools aim to give students
-        the tools to be effective communicators: readers, writers, speakers, and listeners.
-        Students are taught to read by being trained in a variety of reading strategies
-        and processes and are given numerous opportunities to practice their skills.
-        Students write for a variety of purposes ...", "dateLastCrawled": "2024-01-25T16:14:00.0000000Z",
-        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=english+(site%3agov+OR+site%3amil)&d=4453516075655&mkt=en-US&setlang=en-US&w=Gi6MyogrGJGULif8R41gJYh1WsaqtuOJ",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
-        "name": "IRS: Connecticut taxpayers impacted by storms qualify for tax relief
-        ...", "url": "https:\/\/www.irs.gov\/newsroom\/irs-connecticut-taxpayers-impacted-by-storms-qualify-for-tax-relief-various-deadlines-postponed-to-june-17",
-        "datePublished": "2024-01-22T00:00:00.0000000", "datePublishedFreshnessText":
-        "3 days ago", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.irs.gov\/newsroom\/irs-connecticut-taxpayers-impacted-by-storms-qualify-for...",
-        "snippet": "IR-2024-17, Jan. 22, 2024 — The Internal Revenue Service announced
-        today tax relief for individuals and businesses in parts of Connecticut affected
-        by severe storms, flooding and a potential dam breach that began on Jan. 10.",
-        "dateLastCrawled": "2024-01-25T08:05:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=english+(site%3agov+OR+site%3amil)&d=2872097381439&mkt=en-US&setlang=en-US&w=pNckLVTpzuPFcUTyu_iN_ErvXxB4quWu",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
-        "name": "What Is American Sign Language (ASL)? | NIDCD", "url": "https:\/\/www.nidcd.nih.gov\/health\/american-sign-language",
-        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.nidcd.nih.gov\/health\/american-sign-language",
-        "snippet": "American Sign Language (ASL) is a complete, natural language that
-        has the same linguistic properties as spoken languages, with grammar that
-        differs from English. ASL is expressed by movements of the hands and face.
-        It is the primary language of many North Americans who are deaf and hard of
-        hearing and is used by some hearing people as well.", "dateLastCrawled": "2024-01-24T02:21:00.0000000Z",
-        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=english+(site%3agov+OR+site%3amil)&d=4983167306760253&mkt=en-US&setlang=en-US&w=YpjNyaAYhAHaFRYMqYliXuWvhsbCdYZn",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
-        "name": "English Language and Literature Teachers, Postsecondary", "url":
-        "https:\/\/www.bls.gov\/oes\/current\/oes251123.htm", "datePublished": "2023-04-25T00:00:00.0000000",
-        "datePublishedDisplayText": "Apr 25, 2023", "isFamilyFriendly": <DATADOG_API_ENABLED>,
-        "displayUrl": "https:\/\/www.bls.gov\/oes\/current\/oes251123.htm", "snippet":
-        "25-1123 English Language and Literature Teachers, Postsecondary. Teach courses
-        in English language and literature, including linguistics and comparative
-        literature. Includes both teachers primarily engaged in teaching and those
-        who do a combination of teaching and research. National estimates for English
-        Language and Literature Teachers ...", "dateLastCrawled": "2024-01-21T05:16:00.0000000Z",
-        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=english+(site%3agov+OR+site%3amil)&d=4817763813818583&mkt=en-US&setlang=en-US&w=xwMTJ6dSiu2O3c19pVC5SZ9Zul91b0fL",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
-        "name": "Coronavirus Disease 2019 (COVID-19) | CDC", "url": "https:\/\/www.cdc.gov\/coronavirus\/2019-ncov\/index.html",
-        "datePublished": "2023-07-13T00:00:00.0000000", "datePublishedDisplayText":
-        "Jul 13, 2023", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.cdc.gov\/coronavirus\/2019-ncov",
-        "snippet": "Links with this icon indicate that you are leaving the CDC website..
-        The Centers for Disease Control and Prevention (CDC) cannot attest to the
-        accuracy of a non-federal website. Linking to a non-federal website does not
-        constitute an endorsement by CDC or any of its employees of the sponsors or
-        the information and products presented on the website.", "dateLastCrawled":
-        "2024-01-22T20:29:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=english+(site%3agov+OR+site%3amil)&d=4930927747997828&mkt=en-US&setlang=en-US&w=rdgZk1Bs-vbCU9snSswNLNFL43KabQ5W",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
-        "name": "Automated Case Information - United States Department of Justice",
-        "url": "https:\/\/acis.eoir.justice.gov\/en\/", "datePublished": "2024-01-22T00:00:00.0000000",
-        "datePublishedFreshnessText": "3 days ago", "isFamilyFriendly": <DATADOG_API_ENABLED>,
-        "displayUrl": "https:\/\/acis.eoir.justice.gov\/en", "snippet": "Welcome to
-        the Automated Case Information System. The following information relates to
-        the primary case only. Please contact your local court if you need bond hearing
-        information. If you are a recent arrival and were apprehended between ports
-        of entry on or after May 28, 2021, placed in removal proceedings, and enrolled
-        in Alternatives to ...", "dateLastCrawled": "2024-01-22T20:32:00.0000000Z",
-        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=english+(site%3agov+OR+site%3amil)&d=4724636179974817&mkt=en-US&setlang=en-US&w=Rln6L-YiNkFkhEcIPT1WEWf_-yeDaL_c",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
-        "name": "About Form 1040, U.S. Individual Income Tax Return", "url": "https:\/\/www.irs.gov\/forms-pubs\/about-form-1040",
-        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.irs.gov\/forms-pubs\/about-form-1040",
-        "snippet": "Unemployment Exclusion Update for married taxpayers living in
-        a community property state -- 24-MAY-2021. Form 1040, 1040-SR, or 1040-NR,
-        line 3a, Qualified dividends -- 06-APR-2021. Face masks and other personal
-        protective equipment to prevent the spread of COVID-19 are tax deductible.
-        New Exclusion of up to $10,200 of Unemployment Compensation ...", "dateLastCrawled":
-        "2024-01-22T19:14:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=english+(site%3agov+OR+site%3amil)&d=4891435530610152&mkt=en-US&setlang=en-US&w=cXlL09fUm02wXnhKMd2v1LVzPkB9j8B8",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
-        "name": "U.S. Passports - Travel", "url": "https:\/\/travel.state.gov\/content\/travel\/en\/passports.html\/",
-        "datePublished": "2024-01-10T00:00:00.0000000", "datePublishedDisplayText":
-        "Jan 10, 2024", "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/travel.state.gov\/content\/travel\/en\/passports.html",
-        "snippet": "The total time to get your passport includes both processing and
-        mailing times. It may take up to 2 weeks for applications to arrive by mail
-        at a passport agency or center, and up to 2 weeks for you to receive a completed
-        passport in the mail after we print it. Consider the total time it will take
-        to receive your passport when you are booking ...", "dateLastCrawled": "2024-01-24T21:28:00.0000000Z",
-        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=english+(site%3agov+OR+site%3amil)&d=4703105501709154&mkt=en-US&setlang=en-US&w=sW0jfCK4S3FauZo86n9XoDICsdQ5cx0b",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
-        "name": "Welcome to Medicare | Medicare", "url": "https:\/\/www.medicare.gov\/",
-        "isFamilyFriendly": <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/www.medicare.gov",
-        "snippet": "Talk to someone. Contact Medicare & other helpful resources. Get
-        Help. In a Medicare Advantage Plan? You can still make a change! From Jan
-        1 – March 31, if you’re in a Medicare Advantage Plan, you can switch plans
-        or return to Original Medicare and join a separate Medicare drug plan. Find
-        Plans.", "dateLastCrawled": "2024-01-24T21:14:00.0000000Z", "cachedPageUrl":
-        "http:\/\/cc.bingj.com\/cache.aspx?q=english+(site%3agov+OR+site%3amil)&d=5043447301876812&mkt=en-US&setlang=en-US&w=9yaz3RBa3Cb1ftdfS6h_Acd8Ymw8jjhx",
-        "language": "en", "isNavigational": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
-        "name": "PubMed", "url": "https:\/\/pubmed.ncbi.nlm.nih.gov\/", "isFamilyFriendly":
-        <DATADOG_API_ENABLED>, "displayUrl": "https:\/\/pubmed.ncbi.nlm.nih.gov",
-        "snippet": "PubMed is a comprehensive database of biomedical literature from
-        various sources, including MEDLINE, life science journals, and online books.
-        You can search for citations, access full text content, and explore topics
-        related to health, medicine, and biology. PubMed also provides advanced search
-        options and tools for researchers and clinicians.", "dateLastCrawled": "2024-01-22T19:21:00.0000000Z",
-        "language": "en", "isNavigational": false}]}, "rankingResponse": {"mainline":
+        "url": "https:\/\/americanenglish.state.gov\/", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/americanenglish.state.gov", "snippet": "This website
+        is a resource center for teaching and learning about American English and
+        American culture developed by the Office of English Language Programs in Washington,
+        D.C. All programs are implemented by Regional English Language Officers (RELOs)
+        at American Embassies or Consulates.", "dateLastCrawled": "2025-04-21T08:37:00.0000000Z",
+        "language": "en", "isNavigational": false, "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Designating English as the Official Language of the United States",
+        "url": "https:\/\/www.federalregister.gov\/documents\/full_text\/html\/2025\/03\/06\/2025-03694.html",
+        "datePublished": "2025-03-06T00:00:00.0000000", "datePublishedDisplayText":
+        "Mar 6, 2025", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.federalregister.gov\/documents\/full_text\/html\/2025\/03\/06\/2025-03694.html",
+        "snippet": "(a) English is the official language of the United States. (b)
+        Executive Order 13166 of August 11, 2000 (Improving Access to Services for
+        Persons with Limited English Proficiency), is hereby revoked; nothing in this
+        order, however, requires or directs any change in the services provided by
+        any agency. Agency heads should make decisions as they ...", "dateLastCrawled":
+        "2025-04-22T00:25:00.0000000Z", "language": "en", "isNavigational": false,
+        "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "2024 Standards of Learning for English - Virginia", "url": "https:\/\/www.doe.virginia.gov\/teaching-learning-assessment\/k-12-standards-instruction\/english-reading-literacy\/standards-of-learning",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.doe.virginia.gov\/...\/english-reading-literacy\/standards-of-learning",
+        "snippet": "The Virginia Board of Education approved the 2024 English Standards
+        of Learning at their March 28, 2024, business meeting. Additional resources
+        will be posted as they become available. News and Announcements: Additional
+        updated materials can be found on the 2024 Instructional Resources webpage.
+        These materials include English Instructional ...", "dateLastCrawled": "2025-04-21T00:06:00.0000000Z",
+        "language": "en", "isNavigational": false, "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Study for the Test - USCIS", "url": "https:\/\/www.uscis.gov\/citizenship\/find-study-materials-and-resources\/study-for-the-test",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uscis.gov\/citizenship\/find-study-materials-and-resources\/study-for-the-test",
+        "snippet": "For the English portion of the naturalization test you must demonstrate
+        an understanding of the English language, including the ability to read, write,
+        and speak basic English. Your ability to speak and understand English will
+        be determined by a USCIS officer during your eligibility interview on Form
+        N-400, Application for Naturalization.", "dateLastCrawled": "2025-04-21T09:47:00.0000000Z",
+        "language": "en", "isNavigational": false, "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "A Reference Guide to American English Idioms", "url": "https:\/\/americanenglish.state.gov\/files\/ae\/resource_files\/in_the_loop_pages.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/americanenglish.state.gov\/files\/ae\/resource_files\/in_the_loop_pages.pdf",
+        "snippet": "idioms published by the Office of English Language Programs: Illustrated
+        American Idioms by Dean Curry and Something to Crow About by Shelley Vance
+        Laflin. In the Loop combines the popular aspects of the previous books, while
+        also updating the content by including idioms that have come into use more
+        recently and eliminating those that are ...", "dateLastCrawled": "2025-04-21T22:05:00.0000000Z",
+        "language": "en", "isNavigational": false, "noCache": true}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Current VISs | Vaccines & Immunizations | CDC", "url": "https:\/\/www.cdc.gov\/vaccines\/hcp\/current-vis\/index.html",
+        "datePublished": "2025-02-28T00:00:00.0000000", "datePublishedDisplayText":
+        "Feb 28, 2025", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/vaccines\/hcp\/current-vis",
+        "snippet": "Currently, providers are required by law to provide EUA fact sheets
+        to vaccine recipients or their caregivers for all uses of Novavax and when
+        Moderna or Pfizer vaccines are given to children 6 months through 11 years
+        of age. For recipients who are 12 or older receiving Pfizer or Moderna vaccine,
+        a provider may use the COVID-19 Vaccine Information Statement (VIS).", "dateLastCrawled":
+        "2025-04-22T00:55:00.0000000Z", "language": "en", "isNavigational": false,
+        "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Wake County launches free online learning platform for library ...",
+        "url": "https:\/\/www.wake.gov\/news\/wake-county-launches-free-online-learning-platform-library-cardholders",
+        "datePublished": "2025-04-15T00:00:00.0000000", "datePublishedDisplayText":
+        "Apr 15, 2025", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.wake.gov\/news\/wake-county-launches-free-online-learning-platform-library...",
+        "snippet": "The collection also includes specialized content for English language
+        learners and job seekers looking to gain or sharpen critical workplace skills.
+        Wake County Public Libraries cardholders now have free 24\/7 access to thousands
+        of on-demand video courses designed to support career growth, personal development
+        and lifelong learning. ...", "dateLastCrawled": "2025-04-22T06:14:00.0000000Z",
+        "language": "en", "isNavigational": false, "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "Official ESTA Application Website, U.S. Customs and Border Protection",
+        "url": "https:\/\/esta.cbp.dhs.gov\/?tick=fe2b77e2", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/esta.cbp.dhs.gov\/?tick=fe2b77e2", "snippet": "[1]
+        With respect to all references to \"country\" or \"countries\" in this document,
+        it should be noted that the Taiwan Relations Act of 1979, Pub. L. No. 96-8,
+        Section 4(b)(1), provides that \"[w]henever the laws of the United States
+        refer or relate to foreign countries, nations, states, governments, or similar
+        entities, such terms shall include and such laws shall apply with respect
+        to Taiwan.\"", "dateLastCrawled": "2025-04-22T04:47:00.0000000Z", "language":
+        "en", "isNavigational": false, "noCache": true}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "Exchange Programs", "url": "https:\/\/exchanges.state.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/exchanges.state.gov", "snippet": "Find U.S.
+        Department of State programs for U.S. and non-U.S. citizens wishing to participate
+        in cultural, educational, or professional exchanges.", "dateLastCrawled":
+        "2025-04-21T05:22:00.0000000Z", "language": "en", "isNavigational": false,
+        "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "English Learner Education - Minnesota", "url": "https:\/\/education.mn.gov\/MDE\/dse\/el\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/education.mn.gov\/MDE\/dse\/el",
+        "snippet": "The Minnesota Department of Education (MDE) ensures educational
+        equity and access for English learners (ELs) through high-quality language
+        instruction. We support local educational agencies (LEAs) as they develop,
+        implement and evaluate research-based language instruction education programs
+        for English learners to attain English proficiency and ...", "dateLastCrawled":
+        "2025-04-18T20:25:00.0000000Z", "language": "en", "isNavigational": false,
+        "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Practice and Released Tests - Texas Assessment", "url": "https:\/\/www.texasassessment.gov\/practice-tests.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.texasassessment.gov\/practice-tests.html",
+        "snippet": "Texas Education Agency Texas Assessment Visit TXSchools.gov. Practice
+        and Released Tests. Home; Educators; Practice and Released Tests", "dateLastCrawled":
+        "2025-04-20T10:26:00.0000000Z", "language": "en", "isNavigational": false,
+        "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "California Common Core State Standards - California Department of
+        Education", "url": "https:\/\/www.cde.ca.gov\/be\/st\/ss\/documents\/finalelaccssstandards.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cde.ca.gov\/be\/st\/ss\/documents\/finalelaccssstandards.pdf",
+        "snippet": "previous English language arts standards, incorporating current
+        research and input from other educational sources—including state departments
+        of education, scholars, professional organizations, teachers and other educators,
+        parents, and students. Also, California additions to the standards (identified
+        in bold typeface", "dateLastCrawled": "2025-04-22T00:07:00.0000000Z", "language":
+        "en", "isNavigational": false, "noCache": true}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "United States Army", "url": "https:\/\/www.atrrs.army.mil\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.atrrs.army.mil", "snippet": "The United
+        States Army''s official website provides information and resources for soldiers
+        and their families.", "dateLastCrawled": "2025-04-21T09:04:00.0000000Z", "language":
+        "en", "isNavigational": false, "noCache": true}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Passport Forms - U.S. Department of State", "url": "https:\/\/eforms.state.gov\/PassportForms.aspx",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/eforms.state.gov\/PassportForms.aspx",
+        "snippet": "Form Finder -- Passport Forms. If you are applying for a U.S.
+        passport, use the Passport Form Filler to fill out our primary forms (DS-11,
+        DS-82, DS-5504, and DS-64) online and print them. The Form Filler will save
+        you time and reduce the chance of errors on your form.", "dateLastCrawled":
+        "2025-04-21T09:06:00.0000000Z", "language": "en", "isNavigational": false,
+        "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "Get an employer identification number | Internal Revenue Service",
+        "url": "https:\/\/www.irs.gov\/businesses\/small-businesses-self-employed\/get-an-employer-identification-number",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/businesses\/small-businesses-self-employed\/get-an-employer...",
+        "snippet": "Use this tool to get an EIN directly from the IRS in minutes for
+        free. Answer questions, submit the application and, if approved, we’ll issue
+        your EIN immediately online.", "dateLastCrawled": "2025-04-21T09:16:00.0000000Z",
+        "language": "en", "isNavigational": false, "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Recertification for Calfresh Benefits - California Dept. of Social
+        Services", "url": "https:\/\/cdss.ca.gov\/cdssweb\/entres\/forms\/English\/CF37.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/cdss.ca.gov\/cdssweb\/entres\/forms\/English\/CF37.pdf",
+        "snippet": "If you prefer to speak, read, or write in a language other than
+        English, the County will get someone to help you at no cost to you. How do
+        I keep getting CalFresh? You must turn in this recertification application
+        and be interviewed before the end of your certification period to contin",
+        "dateLastCrawled": "2025-04-21T12:10:00.0000000Z", "language": "en", "isNavigational":
+        false, "noCache": true}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "English Language Arts\/Literacy Standards Review 2020 Resources",
+        "url": "https:\/\/www.maine.gov\/doe\/index.php\/standards\/ela\/resources",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.maine.gov\/doe\/index.php\/standards\/ela\/resources",
+        "snippet": "Maine DOE 23 State House Station Augusta, ME 04333-0023 Voice:
+        (207) 624-6600 Fax: (207) 624-6700 TTY: 711 (Maine Relay 711) Language Assistance:
+        (207) 624-6629. Contact Maine Department of Education", "dateLastCrawled":
+        "2025-04-22T11:50:00.0000000Z", "language": "en", "isNavigational": false,
+        "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Adult BMI Calculator | BMI | CDC - Centers for Disease Control and
+        ...", "url": "https:\/\/www.cdc.gov\/bmi\/adult-calculator\/index.html", "datePublished":
+        "2024-06-26T00:00:00.0000000", "datePublishedDisplayText": "Jun 26, 2024",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/bmi\/adult-calculator",
+        "snippet": "Adult BMI Calculator. This calculator provides BMI and the corresponding
+        BMI category for adults 20 and older. For children and teens 2 through 19
+        years, use the BMI Calculator for Children and Teens.. BMI is one potential
+        health indicator and should be considered with other factors when assessing
+        an individual''s health.", "dateLastCrawled": "2025-04-21T09:17:00.0000000Z",
+        "language": "en", "isNavigational": false, "noCache": false}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
+  recorded_at: Tue, 22 Apr 2025 18:43:05 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=20&mkt=en-US&offset=0&q=english%20(site:gov%20OR%20site:mil)&responseFilter=WebPages&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V7_WEB_SUBSCRIPTION_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 22 Apr 2025 18:42:08 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Eventid:
+      - 6807e33c81774a0db22527fd6df86c2b
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      Content-Security-Policy:
+      - 'script-src https: ''strict-dynamic'' ''report-sample'' ''wasm-unsafe-eval''
+        ''nonce-7TXujwNoO0XjAUVgEhfN9+74ZAO82m7XqhNKFkxb4Xc=''; base-uri ''self'';'
+      Bingapis-Traceid:
+      - 6807e33c81774a0db22527fd6df86c2b
+      Bingapis-Sessionid:
+      - 46B4374991CF4EBC9E973BA069732C75
+      X-Msedge-Clientid:
+      - 1D6D5C02E2FB632C185449D4E3B762E7
+      X-Msapi-Userstate:
+      - a438
+      Bingapis-Market:
+      - en-US
+      X-Search-Responseinfo:
+      - InternalResponseTime=223,MSDatacenter=MWHE01
+      X-Cache:
+      - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      X-Msedge-Ref:
+      - 'Ref A: 86759D0DFADD4C128865A32EF8EF19DE Ref B: BY3EDGE0417 Ref C: 2025-04-22T18:43:08Z'
+      Apim-Request-Id:
+      - a0bce4b4-f1bd-427a-9c9b-d9a67e5ad96b
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Tue, 22 Apr 2025 18:43:09 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "english
+        (site:gov OR site:mil)"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=english+(site%3agov+OR+site%3amil)",
+        "totalEstimatedMatches": 35400000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Find courses to help you learn English - USAGov", "url": "https:\/\/www.usa.gov\/learn-english",
+        "datePublished": "2025-04-09T00:00:00.0000000", "datePublishedDisplayText":
+        "Apr 9, 2025", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.usa.gov\/learn-english",
+        "snippet": "Learn English as a Second Language (ESL) with free or low-cost
+        programs, including local classes, and online lessons and videos.", "dateLastCrawled":
+        "2025-04-22T04:12:00.0000000Z", "language": "en", "isNavigational": false,
+        "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Office of English Language Acquisition (OELA)", "url": "https:\/\/www.ed.gov\/about\/ed-offices\/oela",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ed.gov\/about\/ed-offices\/oela",
+        "snippet": "Information about the U.S. Department of Education''s Office of
+        English Language Acquisition (OELA), including its mission, programs, and
+        staff contacts.", "dateLastCrawled": "2025-04-21T08:11:00.0000000Z", "language":
+        "en", "isNavigational": false, "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "American English | For English Language Teachers Around the World",
+        "url": "https:\/\/americanenglish.state.gov\/", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/americanenglish.state.gov", "snippet": "American
+        English is a website for teachers and learners of English as a foreign language
+        abroad.", "dateLastCrawled": "2025-04-21T08:37:00.0000000Z", "language": "en",
+        "isNavigational": false, "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Federal Register", "url": "https:\/\/www.federalregister.gov\/documents\/full_text\/html\/2025\/03\/06\/2025-03694.html",
+        "datePublished": "2025-03-06T00:00:00.0000000", "datePublishedDisplayText":
+        "Mar 6, 2025", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.federalregister.gov\/documents\/full_text\/html\/2025\/03\/06\/2025-03694.html",
+        "snippet": "To promote unity, cultivate a shared American culture for all
+        citizens, ensure consistency in government operations, and create a pathway
+        to civic engagement, it is in America''s best interest for the Federal Government
+        to designate one—and only one—official language. Establishing English as the
+        official language will not only streamline communication but also reinforce
+        shared national ...", "dateLastCrawled": "2025-04-22T00:25:00.0000000Z", "language":
+        "en", "isNavigational": false, "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Current VISs | Vaccines & Immunizations | CDC", "url": "https:\/\/www.cdc.gov\/vaccines\/hcp\/current-vis\/index.html",
+        "datePublished": "2025-02-28T00:00:00.0000000", "datePublishedDisplayText":
+        "Feb 28, 2025", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/vaccines\/hcp\/current-vis",
+        "snippet": "Access and download current Vaccine Information Statements (VISs).",
+        "dateLastCrawled": "2025-04-22T00:55:00.0000000Z", "language": "en", "isNavigational":
+        false, "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.5",
+        "name": "Study for the Test | USCIS", "url": "https:\/\/www.uscis.gov\/citizenship\/find-study-materials-and-resources\/study-for-the-test",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.uscis.gov\/citizenship\/find-study-materials-and-resources\/study-for-the-test",
+        "snippet": "Before your naturalization interview, study for the English and
+        civics test by using our free resources to help you prepare. English Test
+        Overview For the English portion of the naturalization test you must demonstrate
+        an understanding of the English language, including the ability to read, write,
+        and speak basic English.", "dateLastCrawled": "2025-04-22T12:04:00.0000000Z",
+        "language": "en", "isNavigational": false, "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.6",
+        "name": "2024 Standards of Learning for English - Virginia", "url": "https:\/\/www.doe.virginia.gov\/teaching-learning-assessment\/k-12-standards-instruction\/english-reading-literacy\/standards-of-learning",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.doe.virginia.gov\/...\/english-reading-literacy\/standards-of-learning",
+        "snippet": "The Virginia Board of Education approved the 2024 English Standards
+        of Learning at their March 28, 2024, business meeting. Additional resources
+        will be posted as they become available. News and Announcements: Additional
+        updated materials can be found on the 2024 Instructional Resources webpage.
+        These materials include English Instructional Guide video webinar recordings
+        and scripted slides to ...", "dateLastCrawled": "2025-04-22T04:32:00.0000000Z",
+        "language": "en", "isNavigational": false, "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.7",
+        "name": "Practice and Released Tests - Texas Assessment", "url": "https:\/\/www.texasassessment.gov\/practice-tests.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.texasassessment.gov\/practice-tests.html",
+        "snippet": "Practice and Released TestsHome Educators Practice and Released
+        Tests", "dateLastCrawled": "2025-04-22T12:40:00.0000000Z", "language": "en",
+        "isNavigational": false, "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.8",
+        "name": "Top Names Over the Last 100 Years", "url": "https:\/\/www.ssa.gov\/OACT\/babynames\/decades\/century.html",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ssa.gov\/OACT\/babynames\/decades\/century.html",
+        "snippet": "The following table shows the 100 most popular given names for
+        male and female babies born during the last 100 years, 1924-2023. For each
+        rank and sex, the table shows the name and the number of occurrences of that
+        name. These time-tested popular names were taken from a universe that includes
+        178,720,219 male births and 173,137,701 female births. Please note that popular
+        names listed below are ...", "dateLastCrawled": "2025-04-21T09:12:00.0000000Z",
+        "language": "en", "isNavigational": false, "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.9",
+        "name": "United States Army", "url": "https:\/\/www.atrrs.army.mil\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.atrrs.army.mil", "snippet": "The United
+        States Army''s official website provides information and resources for soldiers
+        and their families.", "dateLastCrawled": "2025-04-22T10:04:00.0000000Z", "language":
+        "en", "isNavigational": false, "noCache": true}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.10",
+        "name": "A Reference Guide to American English Idioms", "url": "https:\/\/americanenglish.state.gov\/files\/ae\/resource_files\/in_the_loop_pages.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/americanenglish.state.gov\/files\/ae\/resource_files\/in_the_loop_pages.pdf",
+        "snippet": "In the Loop is a collection of common idioms updated and compiled
+        from two previous books of idioms published by the Ofice of English Language
+        Programs: Illustrated American Idioms by Dean Curry and Something to Crow
+        About by Shelley Vance Laflin. In the Loop combines the popular aspects of
+        the previous books, while also updating the content by including idioms that
+        have come into use more ...", "dateLastCrawled": "2025-04-21T22:05:00.0000000Z",
+        "language": "en", "isNavigational": false, "noCache": true}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.11",
+        "name": "Get an employer identification number | Internal Revenue Service",
+        "url": "https:\/\/www.irs.gov\/businesses\/small-businesses-self-employed\/get-an-employer-identification-number",
+        "datePublished": "2025-03-10T00:00:00.0000000", "datePublishedDisplayText":
+        "Mar 10, 2025", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/businesses\/small-businesses-self-employed\/get-an-employer...",
+        "snippet": "Use this tool to get an EIN directly from the IRS in minutes for
+        free. Answer questions, submit the application and, if approved, we’ll issue
+        your EIN immediately online.", "dateLastCrawled": "2025-04-22T10:24:00.0000000Z",
+        "language": "en", "isNavigational": false, "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.12",
+        "name": "Exchange Programs", "url": "https:\/\/exchanges.state.gov\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/exchanges.state.gov", "snippet": "Find U.S.
+        Department of State programs for U.S. and non-U.S. citizens wishing to participate
+        in cultural, educational, or professional exchanges.", "dateLastCrawled":
+        "2025-04-21T22:27:00.0000000Z", "language": "en", "isNavigational": false,
+        "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.13",
+        "name": "English Learner Education - Minnesota", "url": "https:\/\/education.mn.gov\/MDE\/dse\/el\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/education.mn.gov\/MDE\/dse\/el",
+        "snippet": "The Minnesota Department of Education (MDE) ensures educational
+        equity and access for English learners (ELs) through high-quality language
+        instruction. We support local educational agencies (LEAs) as they develop,
+        implement and evaluate research-based language instruction education programs
+        for English learners to attain English proficiency and achieve state academic
+        content standards. We ...", "dateLastCrawled": "2025-04-22T04:29:00.0000000Z",
+        "language": "en", "isNavigational": false, "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.14",
+        "name": "Official ESTA Application Website, U.S. Customs and Border Protection",
+        "url": "https:\/\/esta.cbp.dhs.gov\/?tick=fe2b77e2", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/esta.cbp.dhs.gov\/?tick=fe2b77e2", "snippet": "Valid
+        passport (s) from a Visa Waiver Program country. List of Visa Waiver Countries
+        Traveler''s valid email address. Traveler''s home address and phone number.
+        Traveler''s emergency point of contact phone and email. Payment method: Fee
+        for application is $21.00 USD. Valid payment methods include MasterCard, VISA,
+        American Express, Discover (JCB or Diners Club only), and PayPal.", "dateLastCrawled":
+        "2025-04-22T04:47:00.0000000Z", "language": "en", "isNavigational": false,
+        "noCache": true}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.15",
+        "name": "Recertification for Calfresh Benefits", "url": "https:\/\/cdss.ca.gov\/cdssweb\/entres\/forms\/English\/CF37.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/cdss.ca.gov\/cdssweb\/entres\/forms\/English\/CF37.pdf",
+        "snippet": "RECERTIFICATION FOR CALFRESH BENEFITS If you have a disability
+        or need help with the recertification application, let the County Welfare
+        Department (County) know and someone will help you. If you prefer to speak,
+        read, or write in a language other than English, the County will get someone
+        to help you at no cost to you. How do I keep getting ...", "dateLastCrawled":
+        "2025-04-21T12:10:00.0000000Z", "language": "en", "isNavigational": false,
+        "noCache": true}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.16",
+        "name": "CCSS for ELA - Content Standards (CA Dept of Education)", "url":
+        "https:\/\/www.cde.ca.gov\/be\/st\/ss\/documents\/finalelaccssstandards.pdf",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cde.ca.gov\/be\/st\/ss\/documents\/finalelaccssstandards.pdf",
+        "snippet": "The CA CCSS for ELA\/Literacy build on the rigor of the state’s
+        previous English language arts standards, incorporating current research and
+        input from other educational sources—including state departments of education,
+        scholars, professional organizations, teachers and other educators, parents,
+        and students.", "dateLastCrawled": "2025-04-22T00:07:00.0000000Z", "language":
+        "en", "isNavigational": false, "noCache": true}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17",
+        "name": "Tdap (Tetanus, Diphtheria, Pertussis) Vaccine VIS | Vaccines ...",
+        "url": "https:\/\/www.cdc.gov\/vaccines\/hcp\/current-vis\/tdap.html", "datePublished":
+        "2025-01-31T00:00:00.0000000", "datePublishedDisplayText": "Jan 31, 2025",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/vaccines\/hcp\/current-vis\/tdap.html",
+        "snippet": "Access the current Vaccine Information Statement (VIS) for Tetanus,
+        Diphtheria, and Pertussis.", "dateLastCrawled": "2025-04-21T22:30:00.0000000Z",
+        "language": "en", "isNavigational": false, "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18",
+        "name": "Adult BMI Calculator | BMI | CDC", "url": "https:\/\/www.cdc.gov\/bmi\/adult-calculator\/index.html",
+        "datePublished": "2024-06-26T00:00:00.0000000", "datePublishedDisplayText":
+        "Jun 26, 2024", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.cdc.gov\/bmi\/adult-calculator",
+        "snippet": "Body mass index (BMI) is a calculated measure of weight relative
+        to height. For adults, BMI is categorized into underweight, healthy weight,
+        overweight, and obesity. Obesity is further subdivided into three classes.
+        This BMI calculator is for adults 20 and older.", "dateLastCrawled": "2025-04-21T09:17:00.0000000Z",
+        "language": "en", "isNavigational": false, "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19",
+        "name": "Federal income tax rates and brackets - Internal Revenue Service",
+        "url": "https:\/\/www.irs.gov\/filing\/federal-income-tax-rates-and-brackets",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.irs.gov\/filing\/federal-income-tax-rates-and-brackets",
+        "snippet": "See current federal tax brackets and rates based on your income
+        and filing status.", "dateLastCrawled": "2025-04-21T09:09:00.0000000Z", "language":
+        "en", "isNavigational": false, "noCache": false}]}, "rankingResponse": {"mainline":
         {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
         {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
@@ -294,5 +516,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.19"}}]}}}'
-  recorded_at: Thu, 25 Jan 2024 23:24:32 GMT
-recorded_with: VCR 6.2.0
+  recorded_at: Tue, 22 Apr 2025 18:43:09 GMT
+recorded_with: VCR 6.3.1

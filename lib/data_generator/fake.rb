@@ -1,5 +1,3 @@
-require 'faker'
-
 module DataGenerator
   class Fake
     attr_reader :start_date

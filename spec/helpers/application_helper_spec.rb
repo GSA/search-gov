@@ -1,9 +1,6 @@
 require 'spec_helper'
 
 describe ApplicationHelper do
-  before do
-    allow(helper).to receive(:image_search?).and_return false
-  end
 
   describe 'time_ago_in_words' do
     context 'English' do

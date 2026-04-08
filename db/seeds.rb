@@ -9,6 +9,8 @@ if Rails.env.development? || should_seed_staging
   require_relative 'seeds/affiliate.rb'
   require_relative 'seeds/email_template.rb'
   require_relative 'seeds/search_module.rb'
+  require_relative 'seeds/drawer.rb'
+  require_relative 'seeds/crawl_config.rb'
   puts 'Creating custom index data'
   Dir[File.join(seed_dir, 'custom_index_data', '*.rb')].each {|file| require file }
 elsif Rails.env.test?

@@ -19,23 +19,29 @@ module Usasearch
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
-    config.autoload_lib(ignore: %w(assets tasks))
+    config.autoload_lib(ignore: %w(assets tasks middlewares i18n_jsx_scanners))
 
-    config.autoload_paths += Dir[config.root.join('lib', 'active_job', 'uniqueness', 'strategies').to_s]
-    config.autoload_paths += Dir[config.root.join('lib', 'callbacks').to_s]
-    config.autoload_paths += Dir[config.root.join('lib', 'extensions').to_s]
-    config.autoload_paths += Dir[config.root.join('lib', 'importers').to_s]
-    config.autoload_paths += Dir[config.root.join('lib', 'middlewares').to_s]
-    config.autoload_paths += Dir[config.root.join('lib', 'parsers').to_s]
-    config.autoload_paths += Dir[config.root.join('lib', 'renderers').to_s]
-    config.autoload_paths += Dir[config.root.join('lib', 'i18n_jsx_scanners').to_s]
+    # Legacy directories with top-level constants (not following Zeitwerk naming conventions).
+    # Added to both autoload_paths and eager_load_paths to enable top-level constant access
+    # and ensure zeitwerk:check validates them.
+    legacy_lib_paths = %w[
+      lib/active_job/uniqueness/strategies
+      lib/callbacks
+      lib/extensions
+      lib/importers
+      lib/parsers
+      lib/renderers
+    ].map { |path| config.root.join(path).to_s }
 
-    # Our legacy, Resque-based jobs that should be refactored to inherit from ActiveJob
-    config.autoload_paths += Dir[config.root.join('app', 'jobs', 'legacy').to_s]
+    legacy_app_paths = %w[
+      app/jobs/legacy
+      app/models/custom_index_queries
+      app/models/elastic_data
+      app/models/logstash_queries
+    ].map { |path| config.root.join(path).to_s }
 
-    config.autoload_paths += Dir[config.root.join('app', 'models', 'custom_index_queries').to_s]
-    config.autoload_paths += Dir[config.root.join('app', 'models', 'elastic_data').to_s]
-    config.autoload_paths += Dir[config.root.join('app', 'models', 'logstash_queries').to_s]
+    config.autoload_paths += legacy_lib_paths + legacy_app_paths
+    config.eager_load_paths += legacy_lib_paths + legacy_app_paths
 
     config.middleware.use RejectInvalidRequestUri
     config.middleware.use DowncaseRoute
@@ -47,7 +53,7 @@ module Usasearch
     # Activate observers that should always be running, except during DB migrations.
     unless File.basename($0) == "rake" && ARGV.include?("db:migrate")
       config.active_record.observers = :sayt_filter_observer, :misspelling_observer, :indexed_document_observer,
-        :affiliate_observer, :navigable_observer, :searchable_observer, :rss_feed_url_observer,
+        :affiliate_observer, :navigable_observer, :searchable_observer,
         :i14y_drawer_observer, :routed_query_keyword_observer, :watcher_observer
     end
 
@@ -85,5 +91,7 @@ module Usasearch
 
     # Disable deprecated singular associations names.
     config.active_record.allow_deprecated_singular_associations_name = false
+
+    config.active_record.raise_on_assign_to_attr_readonly = false
   end
 end

@@ -210,6 +210,38 @@ describe Api::V2::SearchesController do
       end
     end
 
+    context 'when selecting the search engine' do
+      let(:i14y_search) { instance_double(ApiI14ySearch, run: true, as_json: {}, modules: []) }
+      let(:elastic_search) { instance_double(ApiSearchElastic, run: true, as_json: {}, modules: []) }
+
+      before do
+        allow(Affiliate).to receive(:find_by_name).and_return(affiliate)
+        allow(SearchImpression).to receive(:log)
+        allow(ApiI14ySearch).to receive(:new).and_return(i14y_search)
+        allow(ApiSearchElastic).to receive(:new).and_return(elastic_search)
+      end
+
+      context 'when the affiliate is configured to use i14y' do
+        it 'uses ApiI14ySearch' do
+          get :i14y, params: search_params
+          expect(ApiI14ySearch).to have_received(:new)
+          expect(ApiSearchElastic).not_to have_received(:new)
+        end
+      end
+
+      context 'when the affiliate is configured to use search_elastic' do
+        before do
+          affiliate.update!(search_engine: 'search_elastic')
+        end
+
+        it 'uses ApiSearchElastic' do
+          get :i14y, params: search_params
+          expect(ApiI14ySearch).not_to have_received(:new)
+          expect(ApiSearchElastic).to have_received(:new)
+        end
+      end
+    end
+
     context 'when a routed query term is matched' do
       before do
         allow(RoutedQueryImpressionLogger).to receive(:log).
@@ -311,7 +343,7 @@ describe Api::V2::SearchesController do
 
       before do
         allow(Affiliate).to receive(:find_by_name).and_return(affiliate)
-        allow(affiliate).to receive(:search_engine).and_return('BingV7')
+        allow(affiliate).to receive(:search_engine).and_return('bing_v7')
         allow(DocumentCollection).to receive(:find).and_return(document_collection)
         allow(ApiI14ySearch).to receive(:new).with(hash_including(query_params)).and_return(search)
         allow(search).to receive(:run)

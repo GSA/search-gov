@@ -4,9 +4,11 @@ DEFAULTS: &DEFAULTS
   locale: en
   default_search_label: search
   api_access_key: <%= SecureRandom.hex(8) %>
+  search_engine: BingV7
 
 searchgov_affiliate:
   <<: *DEFAULTS
+  id: 323015273
   search_engine: SearchGov
   display_name: SearchGov Affiliate
   name: searchgovaffiliate
@@ -79,18 +81,9 @@ spanish_affiliate:
   locale: es
   api_access_key: spanish_key
 
-bing_image_search_enabled_affiliate:
-  <<: *DEFAULTS
-  display_name: USA.gov with commercial image results
-  is_bing_image_search_enabled: true
-  name: cr.images.gov
-  website: https://www.usa.gov
-  api_access_key: bing_image_search_enabled_key
-
 site_with_one_user:
   <<: *DEFAULTS
   display_name: site with one user
-  is_bing_image_search_enabled: true
   name: site_with_one_user
   website: https://www.usa.gov
   api_access_key: one_user_key
@@ -156,3 +149,10 @@ usagov_affiliate_header_bg_color:
     header_background_color: '#0068c4',
     banner_background_color: '#123456'
   }
+
+custom_affiliate:
+  <<: *DEFAULTS
+  id: 173942944
+  display_name: "Custom Affiliate"
+  locale: "en"
+  name: "custom-affiliate"

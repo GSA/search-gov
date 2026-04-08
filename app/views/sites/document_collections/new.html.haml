@@ -1,10 +1,9 @@
 = content_for_site_page_title @site, 'Add collection'
 = custom_form_for @document_collection, url: { action: :create }, html: { class: 'form' }  do |form|
-  .sub-nav-heading
+  .sub-nav-heading{ class: ("--is-inactive" if @site&.active? == false) }
     %h2 Add collection
     .action-bar
       %ul
-        = list_item_with_link_to_current_help_page
         %li= link_to 'View All', site_collections_path(@site)
         %li= form.submit 'Add', class: 'btn submit disabled', disabled: true
   = render form

@@ -1,10 +1,9 @@
 = content_for_site_page_title @site, 'Bulk Upload'
 = form_tag site_best_bets_texts_bulk_upload_index_path(@site), multipart: true, class: 'form' do
-  .sub-nav-heading
+  .sub-nav-heading{ class: ("--is-inactive" if @site&.active? == false) }
     %h2 Bulk Upload
     .action-bar
       %ul
-        = list_item_with_link_to_current_help_page
         %li= link_to 'View All', site_best_bets_texts_path(@site)
         %li= submit_tag 'Upload', class: 'btn submit disabled', disabled: true
   = render_flash_message

@@ -35,12 +35,16 @@ a.menu:hover, a.menu:focus {
   padding-top: @contentTop;
   padding-right: 20px;
   padding-left: 20px;
+  padding-bottom: 20px;
 
   &.l-content-without-site {
     margin-left: 0;
     padding-top: @contentWithoutSiteTop;
   }
 
+  &.--is-inactive {
+    padding-top: @contentTopForInactiveSite;
+  }
   .outline-on-focus();
 }
 

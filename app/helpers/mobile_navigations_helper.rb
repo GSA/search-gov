@@ -2,7 +2,7 @@
 
 module MobileNavigationsHelper
   def renderable_navigations(search)
-    is_inactive_search?(search) ? [] : filter_navigations(search.affiliate, search.affiliate.navigations.active)
+    is_inactive_search?(search) ? [] : filter_navigations(search.affiliate.navigations.active)
   end
 
   def navigation_heading
@@ -91,8 +91,6 @@ module MobileNavigationsHelper
 
   def navigable_path(navigable, search, search_params)
     case navigable
-      when ImageSearchLabel
-        path_for_image_search(search_params, search.query)
       when DocumentCollection
         path_for_document_collection_search(search_params, navigable, search.query)
       when RssFeed

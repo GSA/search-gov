@@ -74,7 +74,7 @@ module ApplicationHelper
   def attribution
     txt = []
     txt << '<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->'
-    txt << '<!--                                  Powered by Search.gov                                          -->'
+    txt << '<!--                                  Powered by SearchGov                                           -->'
     txt << '<!-- helping government create a great search experience. Learn more at https://search.gov           -->'
     txt << txt.first
     txt.join("\n").html_safe

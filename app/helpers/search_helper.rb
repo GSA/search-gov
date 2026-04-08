@@ -4,16 +4,6 @@ module SearchHelper
   SPECIAL_URL_PATH_EXT_NAMES = %w{doc pdf ppt ps rtf swf txt xls docx pptx xlsx}
   EMPTY_STRING = ''
 
-  def link_to_offer_commercial_image_results(search_url)
-    link = link_to t('searches.commercial_results.search_again'), search_url, class: "search-again-link"
-
-    content_tag :div, :class => "" do
-      concat content_tag(:h6, t('searches.commercial_results.find_what_looking_for')) if
-        t('searches.commercial_results.find_what_looking_for', :default => EMPTY_STRING) != EMPTY_STRING
-      concat simple_format(t('searches.commercial_results.see_more_image_results', link: link).html_safe)
-    end
-  end
-
   def link_to_offer_commercial_web_results(search_url)
     link = link_to t('searches.commercial_results.search_again'), search_url, class: "search-again-link"
 
@@ -66,9 +56,7 @@ module SearchHelper
     body.gsub(/\uE000/, '').gsub(/\uE001/, '')
   end
 
-  def image_search?
-    controller.controller_name == 'image_searches'
-  end
+
 
   def render_feed_name_in_govbox(affiliate, rss_feed_url_id)
     feed_name = RssFeedUrl.find_parent_rss_feed_name(affiliate, rss_feed_url_id)

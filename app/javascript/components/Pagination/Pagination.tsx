@@ -12,6 +12,9 @@ interface PaginationProps {
 }
 
 export const Pagination = ({ pathname, totalPages = null, unboundedResults }: PaginationProps) => {
+  const MAX_PAGES = 10;
+  const cappedTotalPages = totalPages ? Math.min(totalPages, MAX_PAGES) : null;
+
   useEffect(() => {
     // SRCH-4102: added the  aria label to fix the accessibility violation
     Array.from(document.getElementsByClassName('usa-icon')).forEach((el) => { 
@@ -19,7 +22,7 @@ export const Pagination = ({ pathname, totalPages = null, unboundedResults }: Pa
     });
   });
   
-  if ((!totalPages || totalPages < 2 || getCurrentPage() > totalPages)) {
+  if((!cappedTotalPages || cappedTotalPages < 2 || getCurrentPage() > cappedTotalPages)) {
     return (<></>);
   }
 
@@ -30,7 +33,7 @@ export const Pagination = ({ pathname, totalPages = null, unboundedResults }: Pa
           <Grid tablet={{ col: true }}>
             <UswdsPagination 
               pathname={pathname} 
-              totalPages={totalPages} 
+              totalPages={cappedTotalPages} 
               currentPage={getCurrentPage()}
               unboundedResults={unboundedResults}
             />

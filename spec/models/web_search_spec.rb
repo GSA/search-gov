@@ -45,7 +45,7 @@ describe WebSearch do
     end
 
     it 'outputs a key based on the query, options (including affiliate id), and search engine parameters' do
-      expect(described_class.new(valid_options).cache_key).to eq("government (site:gov OR site:mil):{:query=>\"government\", :page=>5, :affiliate_id=>#{affiliate.id}}:BingV7")
+      expect(described_class.new(valid_options).cache_key).to eq("government (site:gov OR site:mil):{:query=>\"government\", :page=>5, :affiliate_id=>#{affiliate.id}}:bing_v7")
     end
   end
 
@@ -60,7 +60,7 @@ describe WebSearch do
       end
 
       it 'instruments the call to the search engine with the proper action.service namespace and query param hash' do
-        expect(affiliate.search_engine).to eq('BingV7')
+        expect(affiliate).to be_bing_v7_engine
         expect(ActiveSupport::Notifications).to receive(:instrument).
           with('bing_v7_web_search.usasearch', hash_including(query: hash_including(term: 'government')))
         described_class.new(valid_options).send(:search)

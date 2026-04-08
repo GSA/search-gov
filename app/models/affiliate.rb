@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'digest'
-require 'sass/css'
+
 
 class Affiliate < ApplicationRecord
   extend HumanAttributeName
@@ -61,14 +61,13 @@ class Affiliate < ApplicationRecord
     assoc.has_many :primary_header_links, -> { order :position }, inverse_of: :affiliate
     assoc.has_many :secondary_header_links, -> { order :position }, inverse_of: :affiliate
     assoc.has_many :footer_links, -> { order :position }, inverse_of: :affiliate
-    assoc.has_many :identifier_links, -> { order :position }, inverse_of: :affiliate
+    assoc.has_one  :filter_setting
   end
 
   has_one_attached :header_logo
-  has_one_attached :identifier_logo
 
-  accepts_nested_attributes_for :header_logo_attachment, :identifier_logo_attachment, allow_destroy: true
-  accepts_nested_attributes_for :header_logo_blob, :identifier_logo_blob
+  accepts_nested_attributes_for :header_logo_attachment, allow_destroy: true
+  accepts_nested_attributes_for :header_logo_blob, :filter_setting
 
   has_many :users, -> { order 'first_name' }, through: :memberships
 
@@ -105,6 +104,8 @@ class Affiliate < ApplicationRecord
   has_attached_file :header_tagline_logo,
                     AWS_IMAGE_SETTINGS.merge(path: "#{Rails.env}/site/:id/header_tagline_logo/:updated_at/:style/:filename")
 
+  enum :search_engine, SEARCH_ENGINES.map(&:underscore).zip(SEARCH_ENGINES).to_h, suffix: :engine
+
   after_initialize do
     self.visual_design_json = DEFAULT_VISUAL_DESIGN.merge(visual_design_json || {}) if has_attribute?(:visual_design_json)
   end
@@ -134,9 +135,9 @@ class Affiliate < ApplicationRecord
   validates_uniqueness_of :api_access_key, :name, case_sensitive: false
   validates :name, length: { within: (2..MAX_NAME_LENGTH) }
   validates :name, format: { with: /\A[a-z0-9._-]+\z/ }
-  validates :search_engine, inclusion: { in: SEARCH_ENGINES }
+  validates :search_engine, inclusion: { in: SEARCH_ENGINES.map(&:underscore) }
   validates_url :header_tagline_url, allow_blank: true
-  validates :show_search_filter_settings, absence: { message: I18n.t('super_admin.affiliate.show_search_filter_settings') }, if: :bing7_search_engine?
+  validates :show_search_filter_settings, absence: { message: I18n.t('super_admin.affiliate.show_search_filter_settings') }, if: :bing_v7_engine?
 
   validates_attachment_content_type :mobile_logo,
                                     content_type: VALID_IMAGE_CONTENT_TYPES,
@@ -152,11 +153,11 @@ class Affiliate < ApplicationRecord
                             in: (1..MAXIMUM_HEADER_TAGLINE_LOGO_IMAGE_SIZE_IN_KB.kilobytes),
                             message: INVALID_HEADER_TAGLINE_LOGO_IMAGE_SIZE_MESSAGE
 
-  validates :header_logo, :identifier_logo,
+  validates :header_logo,
             size: { less_than: MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB.kilobytes,
                     message: INVALID_MOBILE_IMAGE_SIZE_MESSAGE }
 
-  validates :header_logo, :identifier_logo,
+  validates :header_logo,
             content_type: { in: VALID_IMAGE_CONTENT_TYPES,
                             message: INVALID_CONTENT_TYPE_MESSAGE }
 
@@ -172,7 +173,7 @@ class Affiliate < ApplicationRecord
   validates :secondary_header_links, length: { maximum: 3 }
 
   after_validation :update_error_keys
-  before_save :set_css_properties, :generate_look_and_feel_css, :set_json_fields, :set_search_labels
+  before_save :set_css_properties, :set_json_fields, :set_search_labels
   before_update :clear_existing_attachments
   after_commit :normalize_site_domains,             on: :create
   after_commit :remove_boosted_contents_from_index, on: :destroy
@@ -193,7 +194,7 @@ class Affiliate < ApplicationRecord
   accepts_nested_attributes_for :document_collections, reject_if: :all_blank
   accepts_nested_attributes_for :connections, allow_destroy: true, reject_if: proc { |a| a[:affiliate_name].blank? and a[:label].blank? }
   accepts_nested_attributes_for :flickr_profiles, allow_destroy: true
-  accepts_nested_attributes_for :primary_header_links, :secondary_header_links, :footer_links, :identifier_links, allow_destroy: true, reject_if: :empty_link?
+  accepts_nested_attributes_for :primary_header_links, :secondary_header_links, :footer_links, allow_destroy: true, reject_if: :empty_link?
 
   USAGOV_AFFILIATE_NAME = 'usagov'
   GOBIERNO_AFFILIATE_NAME = 'gobiernousa'
@@ -238,7 +239,6 @@ class Affiliate < ApplicationRecord
   FONT_FIELDS = %w[
     footer_and_results_font_family
     header_links_font_family
-    identifier_font_family
     primary_navigation_font_family
   ].freeze
 
@@ -267,23 +267,16 @@ class Affiliate < ApplicationRecord
     active_search_tab_navigation_color: '#005EA2',
     search_tab_navigation_link_color: '#005EA2',
     best_bet_background_color: '#EFF6FB',
-    health_benefits_header_background_color: '#1A4480',
     result_title_color: '#005EA2',
     result_title_link_visited_color: '#54278F',
     result_description_color: '#1B1B1B',
     result_url_color: '#446443',
-    section_title_color: '#565C65',
-    footer_background_color: '#F0F0F0',
-    footer_links_text_color: '#1B1B1B',
-    identifier_background_color: '#1B1B1B',
-    identifier_heading_color: '#FFFFFF',
-    identifier_link_color: '#A9AEB1'
+    section_title_color: '#565C65'
   }.transform_keys(&:to_s).freeze
 
   DEFAULT_VISUAL_DESIGN = {
     footer_and_results_font_family: DEFAULT_FONT,
     header_links_font_family: DEFAULT_FONT,
-    identifier_font_family: "'Source Sans Pro','Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif",
     primary_navigation_font_family: DEFAULT_FONT,
     primary_navigation_font_weight: 'bold'
   }.merge(DEFAULT_COLORS).transform_keys(&:to_s).freeze
@@ -301,7 +294,6 @@ class Affiliate < ApplicationRecord
                                            managed_footer_links
                                            external_tracking_code
                                            submitted_external_tracking_code
-                                           mobile_look_and_feel_css
                                            logo_alt_text
                                            header_tagline
                                            header_tagline_url
@@ -356,7 +348,7 @@ class Affiliate < ApplicationRecord
 
   def css_property_hash(reload = false)
     @css_property_hash = nil if reload
-    @css_property_hash ||= if theme.to_sym == :default
+    @css_property_hash ||= if theme && theme.to_sym == :default
                              THEMES[:default].reverse_merge(load_css_properties)
                            else
                              load_css_properties
@@ -415,8 +407,7 @@ class Affiliate < ApplicationRecord
   end
 
   def has_no_social_image_feeds?
-    flickr_profiles.empty? &&
-      (rss_feeds.mrss.empty? || rss_feeds.mrss.collect(&:rss_feed_urls).flatten.collect(&:oasis_mrss_name).compact.empty?)
+    flickr_profiles.empty? && rss_feeds.mrss.empty?
   end
 
   def has_social_image_feeds?
@@ -493,7 +484,7 @@ class Affiliate < ApplicationRecord
   end
 
   def show_search_filter_settings_authorized?
-    search_engine == 'SearchGov'
+    search_gov_engine?
   end
 
   private
@@ -711,10 +702,7 @@ class Affiliate < ApplicationRecord
     self.api_access_key = Digest::SHA256.base64digest("#{name}:#{Time.current.to_i}:#{rand}").tr('+/', '-_')
   end
 
-  def generate_look_and_feel_css
-    renderer = AffiliateCss.new(build_css_hash)
-    self.mobile_look_and_feel_css = renderer.render_mobile_css
-  end
+
 
   def build_css_hash
     css_hash = {}
@@ -730,9 +718,5 @@ class Affiliate < ApplicationRecord
     return unless managed_no_results_pages_alt_links.present? && additional_guidance_text.blank?
 
     errors.add(:base, 'Additional guidance text is required when links are present.')
-  end
-
-  def bing7_search_engine?
-    search_engine == 'BingV7'
   end
 end

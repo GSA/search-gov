@@ -27,7 +27,6 @@
     .l-main-container
       #main-content.l-content.l-content-without-site
         = yield
-    = render 'sites/shared/footer'
     = javascript_include_tag 'application'
     /[if lte IE 9]
       = javascript_include_tag 'application_ie_lte9'

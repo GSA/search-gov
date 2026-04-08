@@ -138,10 +138,10 @@ describe NewsItem do
   describe '#duration' do
     subject(:duration) { news_item.duration }
 
-    context 'when properties is a JSON string' do
-      let(:news_item) { described_class.new(properties: '{"duration":"2:30"}') }
+    context 'when properties is a YAML string' do
+      let(:news_item) { described_class.new(properties: "---\n:duration: '2:30'\n") }
 
-      it 'parses the JSON and returns the duration' do
+      it 'parses the YAML and returns the duration' do
         expect(duration).to eq('2:30')
       end
     end

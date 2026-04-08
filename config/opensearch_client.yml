@@ -1,0 +1,27 @@
+default: &DEFAULT
+  log: true
+  log_level: <%= ENV.fetch('OPENSEARCH_LOG_LEVEL', 'ERROR') %>
+  randomize_hosts: true
+  reload_connections: false
+  reload_on_failure: false
+  retry_on_failure: 1
+  user: <%= ENV.fetch('OPENSEARCH_SEARCH_USER', 'admin') %>
+  password: <%= ENV.fetch('OPENSEARCH_SEARCH_PASSWORD', 'changeme') %>
+
+development:
+  <<: *DEFAULT
+  hosts:
+    - <%= ENV.fetch('OPENSEARCH_SEARCH_HOST', 'http://localhost:9300') %>
+
+test:
+  <<: *DEFAULT
+  hosts:
+    - <%= ENV.fetch('OPENSEARCH_SEARCH_HOST', 'http://localhost:9300') %>
+
+production:
+  <<: *DEFAULT
+  ca_fingerprint: <%= ENV['OPENSEARCH_CA_FINGERPRINT'] %>
+  user: <%= ENV['OPENSEARCH_SEARCH_USER'] %>
+  password: <%= ENV['OPENSEARCH_SEARCH_PASSWORD'] %>
+  hosts:
+    - <%= ENV['OPENSEARCH_SEARCH_HOST'] %>

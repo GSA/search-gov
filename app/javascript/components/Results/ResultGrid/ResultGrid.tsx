@@ -60,7 +60,7 @@ const getFilterTags = (result: Result) => {
   );
 };
 
-export const ResultGrid = ({ result, affiliate, query, position, vertical, facetsEnabled }: ResultProps) => {  
+export const ResultGrid = ({ result, affiliate, query, position, vertical, facetsEnabled }: ResultProps) => {
   const URL_LENGTH = 80;
   const module = (() => {
     if (vertical === 'blended') {
@@ -69,30 +69,28 @@ export const ResultGrid = ({ result, affiliate, query, position, vertical, facet
     const moduleKey = `web${vertical.charAt(0).toUpperCase() + vertical.slice(1)}`;
     return moduleCode[moduleKey as keyof typeof moduleCode];
   })();
+  const finalTitle = result.title || result.url;
 
   return (
     <GridContainer className='result search-result-item'>
       <ResultGridWrapper
         url={result.url}
         clickTracking={() => clickTracking(affiliate, module, query, position, result.url, vertical)}>
+        {/* Stop displaying image issue SRCH-6000
         {result.thumbnailUrl &&
         <Grid mobileLg={{ col: 4 }} className='result-thumbnail'>
           <img src={result.thumbnailUrl} className="result-image" alt={result.title}/>
         </Grid>
         }
+        */}
         <Grid col={true} className='result-meta-data'>
           {result.publishedDate && <span className='published-date'>{result.publishedDate}</span>}
           {result.updatedDate   && <span className='published-date'>{' '}&#40;Updated on {result.updatedDate}&#41;</span>}
           {result.publishedAt   && <span className='published-date'>{result.publishedAt}</span>}
           <div className='result-title'>
             <h2 className='result-title-label'>
-              <ResultTitle 
-                url={result.url}
-                className='result-title-link'
-                clickTracking={() => clickTracking(affiliate, module, query, position, result.url, vertical)}>
-                {parse(result.title)} 
-                {getFileType(result.fileType)}
-              </ResultTitle>
+              {parse(finalTitle)}
+              {getFileType(result.fileType)}
             </h2>
           </div>
           <div className='result-desc'>

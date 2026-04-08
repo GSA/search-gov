@@ -1,10 +1,8 @@
 = content_for_site_page_title @site, 'Supplemental URLs'
-.sub-nav-heading
+.sub-nav-heading{ class: ("--is-inactive" if @site&.active? == false) }
   %h2 Supplemental URLs
   .action-bar
     %ul
-      = list_item_with_link_to_current_help_page
-      = render 'sites/shared/domains_advanced_options'
       %li= link_to 'Add Supplemental URL', new_site_supplemental_url_path(@site)
 
 = render_flash_message

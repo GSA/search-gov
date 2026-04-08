@@ -13,22 +13,7 @@
           = link_to new_site_path do
             %i.fa.fa-plus-inactive{'data-grunticon-embed' => 'toggle_me'}
             Add Site
-        %li
-          = link_to 'https://search.gov/feedback/feedback.html' do
-            %i.fa.fa-lightbulb-o-inactive{'data-grunticon-embed' => 'toggle_me'}
-            Send an Idea
       %ul#auth-and-help.nav
-        %li
-          %ul.nav.help
-            %li#nav-help-menu.dropdown
-              = link_to '#nav-help-menu', { 'data-toggle' => 'dropdown' } do
-                Need Help?
-                %i.fa.fa-caret-down-inactive{'data-grunticon-embed' => 'toggle_me'}
-              %ul.dropdown-menu(data-no-turbolink)
-                %li= mail_to SUPPORT_EMAIL_ADDRESS, 'Contact us by email'
-                %li= link_to 'Call us: 202-969-7426', 'tel:202-969-7426'
-                %li= link_to 'Read the Help Manual', 'https://search.gov/manual'
-                %li= link_to 'Training Sessions', 'https://search.gov/manual/training.html'
         %li
           %ul.nav.auth
             %li#nav-auth-menu.dropdown

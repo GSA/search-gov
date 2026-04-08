@@ -82,85 +82,6 @@ describe ReactHelper do
       end
     end
 
-    context 'when an affiliate has identifier content' do
-      before do
-        affiliate.update!({ identifier_domain_name: 'Example Domain Name',
-                            parent_agency_name: 'My Agency',
-                            parent_agency_link: 'https://agency.gov',
-                            header_logo: nil })
-        allow(affiliate).to receive(:identifier_logo_blob).and_return(nil)
-      end
-
-      let(:identifier_content) do
-        {
-          domainName: 'Example Domain Name',
-          parentAgencyName: 'My Agency',
-          parentAgencyLink: 'https://agency.gov',
-          logoAltText: nil,
-          logoUrl: nil,
-          lookingForGovernmentServices: true
-        }
-      end
-
-      it 'sends identifier content to SearchResultsLayout component' do
-        helper.search_results_layout(search, {}, vertical, affiliate, search_options)
-
-        expect(helper).to have_received(:react_component).
-          with('SearchResultsLayout', hash_including(identifierContent: identifier_content))
-      end
-    end
-
-    context 'when an affiliate has identifier content with a logo' do
-      before do
-        affiliate.update!({ identifier_domain_name: 'Example Domain Name',
-                            parent_agency_name: 'My Agency',
-                            parent_agency_link: 'https://agency.gov',
-                            header_logo: nil })
-        allow(affiliate).to receive(:identifier_logo).and_return('https://www.search.gov')
-      end
-
-      let(:identifier_content) do
-        {
-          domainName: 'Example Domain Name',
-          parentAgencyName: 'My Agency',
-          parentAgencyLink: 'https://agency.gov',
-          logoAltText: nil,
-          logoUrl: 'https://www.search.gov',
-          lookingForGovernmentServices: true
-        }
-      end
-
-      it 'sends identifier content to SearchResultsLayout component' do
-        helper.search_results_layout(search, {}, vertical, affiliate, search_options)
-
-        expect(helper).to have_received(:react_component).
-          with('SearchResultsLayout', hash_including(identifierContent: identifier_content))
-      end
-    end
-
-    context 'when an affiliate has identifier links' do
-      before do
-        3.times do |i|
-          Link.create!(position: i,
-                       title: "Link #{i}",
-                       url: "https://link_#{i}.gov",
-                       type: IdentifierLink,
-                       affiliate_id: affiliate.id)
-        end
-      end
-
-      it 'sends the identifier links array to SearchResultsLayout component' do
-        helper.search_results_layout(search, {}, vertical, affiliate, search_options)
-
-        expect(helper).to have_received(:react_component).
-          with('SearchResultsLayout', hash_including(identifierLinks: [
-                                                       { title: 'Link 0', url: 'https://link_0.gov' },
-                                                       { title: 'Link 1', url: 'https://link_1.gov' },
-                                                       { title: 'Link 2', url: 'https://link_2.gov' }
-                                                     ]))
-      end
-    end
-
     context 'when an affiliate has connections' do
       let(:related_sites) do
         [{
@@ -413,116 +334,13 @@ describe ReactHelper do
 
       context 'when display_created_date_on_search_results is false' do
         before do
-          allow(affiliate).to receive(:search_engine).and_return('SearchGov')
+          affiliate.search_engine = :search_gov
         end
 
         it 'filters out the created date from federal_register_documents results' do
           search_var = helper.send(:govbox_set_data, search)
           expect(search_var.as_json['federalRegisterDocuments'].first).not_to include('publication_date')
         end
-      end
-    end
-  end
-
-  describe '#image_search_results_layout' do
-    let(:affiliate) { affiliates(:usagov_affiliate) }
-    let(:vertical) { 'vertical_nav' }
-    let(:search) { ImageSearch.new(query: 'chocolate', affiliate: affiliate) }
-    let(:search_options) { {} }
-
-    before do
-      allow(helper).to receive(:react_component)
-    end
-
-    context 'when an affiliate has primary header links' do
-      before do
-        3.times do |i|
-          Link.create!(position: i,
-                       title: "Link #{i}",
-                       url: "https://link_#{i}.gov",
-                       type: PrimaryHeaderLink,
-                       affiliate_id: affiliate.id)
-        end
-      end
-
-      it 'sends the primary header links array to SearchResultsLayout component' do
-        helper.image_search_results_layout(search, {}, vertical, affiliate, search_options)
-
-        expect(helper).to have_received(:react_component).
-          with('SearchResultsLayout', hash_including(primaryHeaderLinks: [
-                                                       { title: 'Link 0', url: 'https://link_0.gov' },
-                                                       { title: 'Link 1', url: 'https://link_1.gov' },
-                                                       { title: 'Link 2', url: 'https://link_2.gov' }
-                                                     ]))
-      end
-    end
-
-    context 'when an affiliate has secondary header links' do
-      before do
-        3.times do |i|
-          Link.create!(position: i,
-                       title: "Link #{i}",
-                       url: "https://link_#{i}.gov",
-                       type: SecondaryHeaderLink,
-                       affiliate_id: affiliate.id)
-        end
-      end
-
-      it 'sends the secondary header links array to SearchResultsLayout component' do
-        helper.image_search_results_layout(search, {}, vertical, affiliate, search_options)
-
-        expect(helper).to have_received(:react_component).
-          with('SearchResultsLayout', hash_including(secondaryHeaderLinks: [
-                                                       { title: 'Link 0', url: 'https://link_0.gov' },
-                                                       { title: 'Link 1', url: 'https://link_1.gov' },
-                                                       { title: 'Link 2', url: 'https://link_2.gov' }
-                                                     ]))
-      end
-    end
-
-    context 'when an affiliate has footer links' do
-      before do
-        3.times do |i|
-          Link.create!(position: i,
-                       title: "Link #{i}",
-                       url: "https://link_#{i}.gov",
-                       type: FooterLink,
-                       affiliate_id: affiliate.id)
-        end
-      end
-
-      it 'sends the footer links array to SearchResultsLayout component' do
-        helper.image_search_results_layout(search, {}, vertical, affiliate, search_options)
-
-        expect(helper).to have_received(:react_component).
-          with('SearchResultsLayout', hash_including(footerLinks: [
-                                                       { title: 'Link 0', url: 'https://link_0.gov' },
-                                                       { title: 'Link 1', url: 'https://link_1.gov' },
-                                                       { title: 'Link 2', url: 'https://link_2.gov' }
-                                                     ]))
-      end
-    end
-
-    context 'when an affiliate has identifier links' do
-      before do
-        3.times do |i|
-          Link.create!(position: i,
-                       title: "Link #{i}",
-                       url: "https://link_#{i}.gov",
-                       type: IdentifierLink,
-                       affiliate_id: affiliate.id)
-        end
-      end
-
-      it 'sends the identifier links array to SearchResultsLayout component' do
-        helper.image_search_results_layout(search, {}, vertical, affiliate, search_options)
-
-        expect(helper).to have_received(:react_component).
-          with('SearchResultsLayout', hash_including(identifierLinks: [
-                                                       { title: 'Link 0', url: 'https://link_0.gov' },
-                                                       { title: 'Link 1', url: 'https://link_1.gov' },
-                                                       { title: 'Link 2', url: 'https://link_2.gov' }
-                                                     ]))
       end
     end
   end

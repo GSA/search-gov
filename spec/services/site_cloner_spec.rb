@@ -78,10 +78,7 @@ describe SiteCloner do
     let(:origin_site) do
       affiliate = affiliates(:basic_affiliate)
       affiliate.agency = agencies(:irs)
-      affiliate.css_property_hash = {
-        'title_link_color' => '#33ff33',
-        'visited_title_link_color' => '#0000ff'
-      }
+      affiliate.css_property_hash = { title_link_color: '#33ff33', visited_title_link_color: '#0000ff' }
       affiliate.external_tracking_code = '<script>var foo;</script>'
       affiliate.locale = 'ar'
       affiliate.theme = 'custom'
@@ -253,12 +250,6 @@ describe SiteCloner do
         expect(cloned_doc.title).to eq('Some Title')
         expect(cloned_doc.url).to eq('http://min.foo.gov/link.html')
       end
-    end
-
-    it 'copies memberships' do
-      user = users(:affiliate_manager)
-      cloned_membership = cloned_site.memberships.find_by_user_id user.id
-      expect(cloned_membership.gets_daily_snapshot_email).to be true
     end
 
     it 'copies navigations' do

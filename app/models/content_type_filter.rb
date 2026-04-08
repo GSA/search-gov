@@ -1,0 +1,3 @@
+class ContentTypeFilter < Filter
+
+end

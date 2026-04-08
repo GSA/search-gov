@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 module SitesHelper
+  def initialize_filters_for_display(site)
+    site.filter_setting&.filters || FilterSetting.new.initialize_default_filters_preview
+  end
+
   def site_data
     {
       user: {
@@ -18,33 +22,6 @@ module SitesHelper
     select_options = { include_blank: true, selected: nil }
     html_options = { id: 'site_select', class: 'site-select' }
     select('site', 'id', sites, select_options, html_options)
-  end
-
-  def daily_snapshot_toggle(membership)
-    return if membership.nil?
-
-    description_class = 'description label off-screen-text'
-    if membership.gets_daily_snapshot_email?
-      description_class += ' label-warning'
-      verb = 'Stop sending'
-    else
-      verb = 'Send'
-    end
-    title = "#{verb} me today's snapshot as a daily email"
-    wrapper_options = { id: 'envelope-snapshot-toggle',
-                        'data-toggle': 'tooltip',
-                        'data-original-title': title,
-                        method: :put }
-
-    link_to(site_membership_path(@site, membership), wrapper_options) do
-      inner_html = stacked_envelope
-      inner_html << content_tag(:span, title, class: description_class)
-      if membership.gets_daily_snapshot_email?
-        content_tag(:div, inner_html, class: 'disabled')
-      else
-        inner_html
-      end
-    end
   end
 
   def site_pin(site)
@@ -99,11 +76,7 @@ module SitesHelper
 
   def site_activate_search_controllers
     %w[api_access_keys
-       api_instructions
-       embed_codes
-       i14y_api_instructions
-       type_ahead_api_instructions
-       click_tracking_api_instructions]
+       embed_codes]
   end
 
   def site_analytics_controllers
@@ -122,7 +95,7 @@ module SitesHelper
   def site_manage_content_controllers
     %w[boosted_contents boosted_contents_bulk_uploads
        contents document_collections routed_queries excluded_urls
-       flickr_profiles indexed_documents rss_feeds
+       flickr_profiles indexed_documents
        site_domains site_feed_urls i14y_drawers
        youtube_profiles featured_collections]
   end
@@ -135,11 +108,6 @@ module SitesHelper
        header_and_footers
        no_results_pages
        alerts]
-  end
-
-  def list_item_with_link_to_current_help_page
-    help_link = HelpLink.lookup(request, controller.action_name)
-    content_tag(:li, link_to('Help Manual', help_link.help_page_url, class: 'help-link menu')) if help_link
   end
 
   def site_dashboard_controllers

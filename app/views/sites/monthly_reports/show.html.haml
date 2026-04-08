@@ -1,10 +1,9 @@
 = content_for_site_page_title @site, 'Monthly Reports'
 = form_tag site_monthly_reports_path(@site), class: 'form', method: :get do
-  .sub-nav-heading
+  .sub-nav-heading{ class: ("--is-inactive" if @site&.active? == false) }
     %h2 Monthly Reports
     .action-bar
       %ul
-        = list_item_with_link_to_current_help_page
         %li= submit_tag 'Generate Report', class: 'btn submit disabled'
   .required= label_tag :pick_month, 'Change Month'
   .input-append.calendar

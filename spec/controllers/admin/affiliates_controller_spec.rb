@@ -86,7 +86,7 @@ describe Admin::AffiliatesController do
       describe "'Enable/disable Settings' subgroup" do
         let(:enable_disable_columns) do
           %i[ dap_enabled gets_blended_results gets_commercial_results_on_blended_search
-              gets_i14y_results is_bing_image_search_enabled is_federal_register_document_govbox_enabled
+              gets_i14y_results is_federal_register_document_govbox_enabled gets_results_from_all_domains
               is_medline_govbox_enabled is_photo_govbox_enabled is_related_searches_enabled
               is_rss_govbox_enabled is_sayt_enabled is_video_govbox_enabled jobs_enabled raw_log_access_enabled ]
         end
@@ -148,12 +148,12 @@ describe Admin::AffiliatesController do
             gets_blended_results
             gets_commercial_results_on_blended_search
             gets_i14y_results
+            gets_results_from_all_domains
             header_tagline_font_family
             header_tagline_font_size
             header_tagline_font_style
             i14y_date_stamp_enabled
             id
-            is_bing_image_search_enabled
             is_federal_register_document_govbox_enabled
             is_medline_govbox_enabled
             is_photo_govbox_enabled
@@ -190,6 +190,44 @@ describe Admin::AffiliatesController do
       describe 'columns' do
         it 'contains the specified columns' do
           expect(config.export.columns.to_a).to match_array(export_columns)
+        end
+      end
+
+      describe 'site_domains column configuration' do
+        it 'has unlimited associated_limit for site_domains column' do
+          site_domains_column = config.columns[:site_domains]
+          expect(site_domains_column.associated_limit).to be_nil
+        end
+      end
+
+      describe 'site_domains export method' do
+        it 'has a custom export method for site_domains' do
+          helper = Admin::ExportColumnsHelper
+          expect(helper.instance_methods).to include(:site_domains_export_column)
+        end
+      end
+    end
+
+    context 'when testing export with multiple site domains' do
+      it 'includes all domains in the export' do
+        # Test that the Active Scaffold configuration allows unlimited domains
+        site_domains_column = config.columns[:site_domains]
+        expect(site_domains_column.associated_limit).to be_nil
+        
+        # Test with a real affiliate that has multiple domains
+        affiliate_with_domains = Affiliate.joins(:site_domains).group('affiliates.id').having('COUNT(site_domains.id) > 3').first
+        
+        if affiliate_with_domains
+          all_domains = affiliate_with_domains.site_domains.pluck(:domain)
+          expect(all_domains.count).to be > 3
+          
+          # Simulate what Active Scaffold does for export
+          exported_domains = affiliate_with_domains.site_domains.limit(site_domains_column.associated_limit || 999999).pluck(:domain)
+          expect(exported_domains.count).to eq(all_domains.count)
+          expect(exported_domains).to match_array(all_domains)
+        else
+          # If no affiliate with multiple domains exists, just verify the configuration
+          expect(site_domains_column.associated_limit).to be_nil
         end
       end
     end

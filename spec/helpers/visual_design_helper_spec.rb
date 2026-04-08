@@ -30,7 +30,7 @@ describe VisualDesignHelper do
       let(:metadata) { { 'some_other_key' => 'Some other value' } }
 
       it 'renders the default alt_text' do
-        expect(helper.render_logo_alt_text(metadata)).to eq('Logo')
+        expect(helper.render_logo_alt_text(metadata)).to be_nil
       end
     end
   end

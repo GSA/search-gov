@@ -8,7 +8,7 @@ class WebSearch < Search
     super(options)
     @options = options
     offset = (@page - 1) * @per_page
-    formatted_query_instance = "#{@affiliate.search_engine}FormattedQuery".constantize.new(@query, domains_scope_options)
+    formatted_query_instance = "#{@affiliate.search_engine.classify}FormattedQuery".constantize.new(@query, domains_scope_options)
     @matching_site_limits = formatted_query_instance.matching_site_limits
     @formatted_query = formatted_query_instance.query
     search_engine_parameters = options.merge(language: @affiliate.locale,
@@ -39,7 +39,7 @@ class WebSearch < Search
   protected
 
   def search_engine_klass(search_engine_option)
-    "#{search_engine_option}#{get_vertical.to_s.classify}Search".constantize
+    "#{search_engine_option.classify}#{get_vertical.to_s.classify}Search".constantize
   end
 
   def domains_scope_options
