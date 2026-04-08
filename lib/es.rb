@@ -10,6 +10,10 @@ module Es
     :elasticsearch_client
   ).deep_symbolize_keys.freeze
 
+  def self.custom_indices_enabled?
+    ENV['ES_HOSTS'].present?
+  end
+
   private
 
   def initialize_client(config = {})

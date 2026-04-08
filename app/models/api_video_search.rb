@@ -24,6 +24,7 @@ class ApiVideoSearch < Search
 
   def search
     return unless @video_rss_feeds.present?
+    return unless Es.custom_indices_enabled?
 
     search_options = {
       language: @affiliate.indexing_locale,
