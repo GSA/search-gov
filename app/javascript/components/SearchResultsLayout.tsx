@@ -6,11 +6,9 @@ import { I18n } from 'i18n-js';
 
 import './SearchResultsLayout.css';
 
-import { Header } from './Header';
 import { Facets, AggregationData } from './Facets/Facets';
 import { SearchBar } from './SearchBar/SearchBar';
 import { Results } from './Results/Results';
-import { Footer } from './Footer/Footer';
 import { LanguageContext } from '../contexts/LanguageContext';
 import { StyleContext, styles } from '../contexts/StyleContext';
 export interface NavigationLink {
@@ -168,20 +166,7 @@ interface SearchResultsLayoutProps {
     url: string;
   };
   navigationLinks: NavigationLink[];
-  extendedHeader: boolean;
   fontsAndColors: FontsAndColors;
-  footerLinks?: {
-    title: string;
-    url: string;
-  }[];
-  primaryHeaderLinks?: {
-    title: string;
-    url: string;
-  }[];
-  secondaryHeaderLinks?: {
-    title: string;
-    url: string;
-  }[];
   relatedSearches?: { label: string; link: string }[];
   relatedSitesDropdownLabel?: string;
   agencyName?: string;
@@ -240,12 +225,8 @@ const GlobalStyle = createGlobalStyle<{ styles: { pageBackgroundColor: string; b
   }
 `;
 
-const isBasicHeader = (extendedHeader: boolean): boolean => {
-  return !extendedHeader;
-};
-
 // eslint-disable-next-line complexity
-const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, params = {}, translations, language = { code: 'en', rtl: false }, relatedSites = [], extendedHeader, footerLinks, primaryHeaderLinks, secondaryHeaderLinks, fontsAndColors, navigationLinks, relatedSitesDropdownLabel = '', alert, spellingSuggestion, relatedSearches, sitelimit, noResultsMessage, jobsEnabled, agencyName, facetsEnabled }: SearchResultsLayoutProps) => {
+const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, params = {}, translations, language = { code: 'en', rtl: false }, relatedSites = [], fontsAndColors, navigationLinks, relatedSitesDropdownLabel = '', alert, spellingSuggestion, relatedSearches, sitelimit, noResultsMessage, jobsEnabled, agencyName, facetsEnabled }: SearchResultsLayoutProps) => {
   const [isMobileView, setMobileView] = useState(false);
 
   const i18n = new I18n(translations);
@@ -266,12 +247,6 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
         <StyleContext.Consumer>
           {(value) => <GlobalStyle styles={{ ...value, facetsEnabled }} />}
         </StyleContext.Consumer>
-        <Header
-          page={page}
-          isBasic={isBasicHeader(extendedHeader)}
-          primaryHeaderLinks={primaryHeaderLinks}
-          secondaryHeaderLinks={secondaryHeaderLinks}
-        />
 
         <div className="usa-section serp-result-wrapper">
           <GridContainer>
@@ -333,8 +308,6 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
             </Grid>
           </GridContainer>
         </div>
-
-        <Footer footerLinks={footerLinks} />
       </StyleContext.Provider>
     </LanguageContext.Provider>
   );
