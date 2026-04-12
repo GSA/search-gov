@@ -79,10 +79,9 @@ describe('SearchResultsLayout', () => {
     showVoteOrgLink: false
   };
 
-  it('renders the correct header type and content', () => {
-    render(<SearchResultsLayout affiliate={affiliate} page={page} params={{}} resultsData={{ results: [], totalPages: 1, unboundedResults: false }} vertical='web' translations={translations} extendedHeader={false} fontsAndColors={fontsAndColors} navigationLinks={navigationLinks} facetsEnabled={false} />);
-    const [header] = screen.getAllByTestId('header');
-    expect(header).toHaveClass('usa-header--basic');
+  it('renders the search bar and results shell content', () => {
+    render(<SearchResultsLayout affiliate={affiliate} page={page} params={{}} resultsData={{ results: [], totalPages: 1, unboundedResults: false }} vertical='web' translations={translations} fontsAndColors={fontsAndColors} navigationLinks={navigationLinks} facetsEnabled={false} />);
+    expect(screen.getByTestId('search-field')).toBeInTheDocument();
   });
 
   it('renders search results', () => {
@@ -91,7 +90,7 @@ describe('SearchResultsLayout', () => {
       results.push({ title: 'test result 1', url: 'https://www.search.gov', description: 'result body', fileType: 'PDF', publishedDate: 'May 9th, 2023', updatedDate: 'May 10th, 2023' });
     }
     const resultsData = { totalPages: 2, unboundedResults: true, results };
-    render(<SearchResultsLayout affiliate={affiliate} page={page} params={{ query: 'foo' }} resultsData={resultsData} vertical='web' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} navigationLinks={navigationLinks} facetsEnabled={false} />);
+    render(<SearchResultsLayout affiliate={affiliate} page={page} params={{ query: 'foo' }} resultsData={resultsData} vertical='web' translations={translations} fontsAndColors={fontsAndColors} newsLabel={newsLabel} navigationLinks={navigationLinks} facetsEnabled={false} />);
     const resultTitle = screen.getAllByText(/test result 1/i);
     const resultUrl = screen.getAllByText(/www.search.gov/i);
     const resultBody = screen.getAllByText(/result body/i);
@@ -112,7 +111,7 @@ describe('SearchResultsLayout', () => {
       results.push({ title: 'test result 1', url: 'https://www.search.gov', publishedDate: 'May 9th, 2023', updatedDate: 'May 10th, 2023' });
     }
     const resultsData = { totalPages: 2, unboundedResults: true, results };
-    render(<SearchResultsLayout affiliate={affiliate} page={page} params={{ query: 'foo' }} resultsData={resultsData} vertical='web' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} navigationLinks={navigationLinks} facetsEnabled={false} />);
+    render(<SearchResultsLayout affiliate={affiliate} page={page} params={{ query: 'foo' }} resultsData={resultsData} vertical='web' translations={translations} fontsAndColors={fontsAndColors} newsLabel={newsLabel} navigationLinks={navigationLinks} facetsEnabled={false} />);
     const resultTitle = screen.getAllByText(/test result 1/i);
     const resultUrl = screen.getAllByText(/www.search.gov/i);
     const publishedDate = screen.getAllByText(/May 9th, 2023/i);
@@ -130,7 +129,7 @@ describe('SearchResultsLayout', () => {
     }
     const additionalResults = { recommendedBy: 'USAgov', textBestBets: [{ title: 'A best bet', description: 'This is the best bet', url: 'http://www.example.com' }] };
     const resultsData = { totalPages: 2, unboundedResults: true, results };
-    render(<SearchResultsLayout affiliate={affiliate} page={page} params={{ query: 'foo' }} resultsData={resultsData} additionalResults={additionalResults} vertical='web' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} navigationLinks={navigationLinks} facetsEnabled={false} />);
+    render(<SearchResultsLayout affiliate={affiliate} page={page} params={{ query: 'foo' }} resultsData={resultsData} additionalResults={additionalResults} vertical='web' translations={translations} fontsAndColors={fontsAndColors} newsLabel={newsLabel} navigationLinks={navigationLinks} facetsEnabled={false} />);
     const bestBetRecommendedBy = screen.getByText(/Recommended by USAgov/i);
     const bestBetTitle = screen.getByText(/A best bet/i);
     const bestBetDescription = screen.getByText(/This is the best bet/i);
@@ -148,7 +147,7 @@ describe('SearchResultsLayout', () => {
     }
     const additionalResults = { recommendedBy: 'USAgov', textBestBets: [], graphicsBestBet: { title: 'Search support', titleUrl: 'https://search.gov/support.html', imageUrl: 'https://search.gov/support.jpg', imageAltText: 'support alt text', links: [{ title: 'Learning', url: 'https://search.gov/learn' }] } };
     const resultsData = { totalPages: 2, unboundedResults: true, results };
-    render(<SearchResultsLayout affiliate={affiliate} page={page} params={{ query: 'foo' }} resultsData={resultsData} additionalResults={additionalResults} vertical='web' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} navigationLinks={navigationLinks} facetsEnabled={false} />);
+    render(<SearchResultsLayout affiliate={affiliate} page={page} params={{ query: 'foo' }} resultsData={resultsData} additionalResults={additionalResults} vertical='web' translations={translations} fontsAndColors={fontsAndColors} newsLabel={newsLabel} navigationLinks={navigationLinks} facetsEnabled={false} />);
     const bestBetRecommendedBy = screen.getByText(/Recommended by USAgov/i);
     const bestBetTitle = screen.getByText(/Search support/i);
     const bestBetLink = screen.getByText(/Learning/i);
@@ -164,7 +163,7 @@ describe('SearchResultsLayout', () => {
     }
     const additionalResults = { recommendedBy: 'USAgov', textBestBets: [], graphicsBestBet: { title: 'Search support', titleUrl: 'https://search.gov/support.html', imageUrl: 'https://search.gov/support.jpg', imageAltText: 'support alt text', links: [{ title: 'Learning', url: 'https://search.gov/learn' }, { title: 'The homepage', url: 'https://search.gov' }, { title: 'Another link', url: 'https://www.google.com' }] } };
     const resultsData = { totalPages: 2, unboundedResults: true, results };
-    render(<SearchResultsLayout affiliate={affiliate} page={page} params={{ query: 'foo' }} resultsData={resultsData} additionalResults={additionalResults} vertical='web' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} navigationLinks={navigationLinks} facetsEnabled={false} />);
+    render(<SearchResultsLayout affiliate={affiliate} page={page} params={{ query: 'foo' }} resultsData={resultsData} additionalResults={additionalResults} vertical='web' translations={translations} fontsAndColors={fontsAndColors} newsLabel={newsLabel} navigationLinks={navigationLinks} facetsEnabled={false} />);
     const bestBetRecommendedBy = screen.getByText(/Recommended by USAgov/i);
     const bestBetTitle = screen.getByText(/Search support/i);
     const bestBetLink1 = screen.getByText(/Learning/i);
@@ -179,14 +178,14 @@ describe('SearchResultsLayout', () => {
 
   it('renders image search results', () => {
     const resultsData = { totalPages: 2, unboundedResults: true, results: [{ title: 'test result 1', url: 'https://www.search.gov', description: 'result body', thumbnailUrl: 'https://www.search.gov/test_image.png', publishedDate: 'May 9th, 2023', updatedDate: 'May 10th, 2023' }] };
-    render(<SearchResultsLayout affiliate={affiliate} page={page} params={{ query: 'foo' }} resultsData={resultsData} vertical='image' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} navigationLinks={navigationLinks} facetsEnabled={false} />);
+    render(<SearchResultsLayout affiliate={affiliate} page={page} params={{ query: 'foo' }} resultsData={resultsData} vertical='image' translations={translations} fontsAndColors={fontsAndColors} newsLabel={newsLabel} navigationLinks={navigationLinks} facetsEnabled={false} />);
     const resultTitle = screen.getByText(/test result 1/i);
     expect(resultTitle).toBeInTheDocument();
   });
 
   it('renders image page results', () => {
     const resultsData = { totalPages: 2, unboundedResults: true, results: [{ altText: 'Heritage Tourism | GSA', url: 'https://18f.gsa.gov/2015/06/22/avoiding-cloudfall/', thumbnailUrl: 'https://plus.unsplash.com/premium_photo-1664303499312-917c50e4047b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dG9ybmFkb3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60', image: true, title: 'test result 1', description: 'result body', publishedDate: 'May 9th, 2023', updatedDate: 'May 10th, 2023' }] };
-    render(<SearchResultsLayout affiliate={affiliate} page={page} params={{ query: 'foo' }} resultsData={resultsData} vertical='image' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} navigationLinks={navigationLinks} facetsEnabled={false} />);
+    render(<SearchResultsLayout affiliate={affiliate} page={page} params={{ query: 'foo' }} resultsData={resultsData} vertical='image' translations={translations} fontsAndColors={fontsAndColors} newsLabel={newsLabel} navigationLinks={navigationLinks} facetsEnabled={false} />);
   });
 
   it('renders videos', () => {
@@ -201,18 +200,18 @@ describe('SearchResultsLayout', () => {
       youtubeDuration: '0:55'
     }];
     const resultsData = { totalPages: 2, unboundedResults: true, results: videos };
-    render(<SearchResultsLayout affiliate={affiliate} page={page} params={{ query: 'foo' }} resultsData={resultsData} vertical='image' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} newsLabel={newsLabel} navigationLinks={navigationLinks} facetsEnabled={false} />);
+    render(<SearchResultsLayout affiliate={affiliate} page={page} params={{ query: 'foo' }} resultsData={resultsData} vertical='image' translations={translations} fontsAndColors={fontsAndColors} newsLabel={newsLabel} navigationLinks={navigationLinks} facetsEnabled={false} />);
     const resultTitle = screen.getByText(/test result 1/i);
     expect(resultTitle).toBeInTheDocument();
   });
 
   it('renders basic header styles properly', () => {
-    renderer.create(<SearchResultsLayout affiliate={affiliate} page={page} params={{}} resultsData={{ results: [], totalPages: 1, unboundedResults: false }} vertical='web' translations={translations} extendedHeader={false} fontsAndColors={fontsAndColors} navigationLinks={navigationLinks} facetsEnabled={false} />).toJSON();
+    renderer.create(<SearchResultsLayout affiliate={affiliate} page={page} params={{}} resultsData={{ results: [], totalPages: 1, unboundedResults: false }} vertical='web' translations={translations} fontsAndColors={fontsAndColors} navigationLinks={navigationLinks} facetsEnabled={false} />).toJSON();
     expect(document.head).toMatchSnapshot();
   });
 
   it('renders extended header styles properly', () => {
-    renderer.create(<SearchResultsLayout affiliate={affiliate} page={page} params={{}} resultsData={{ results: [], totalPages: 1, unboundedResults: false }} vertical='web' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} navigationLinks={navigationLinks} facetsEnabled={false} />).toJSON();
+    renderer.create(<SearchResultsLayout affiliate={affiliate} page={page} params={{}} resultsData={{ results: [], totalPages: 1, unboundedResults: false }} vertical='web' translations={translations} fontsAndColors={fontsAndColors} navigationLinks={navigationLinks} facetsEnabled={false} />).toJSON();
     expect(document.head).toMatchSnapshot();
   });
 
@@ -223,7 +222,7 @@ describe('SearchResultsLayout', () => {
     }
     const resultsData = { totalPages: 2, unboundedResults: true, results };
 
-    renderer.create(<SearchResultsLayout affiliate={affiliate} page={page} params={{}} resultsData={resultsData} vertical='web' translations={translations} extendedHeader={true} fontsAndColors={fontsAndColors} navigationLinks={navigationLinks} facetsEnabled={false} />).toJSON();
+    renderer.create(<SearchResultsLayout affiliate={affiliate} page={page} params={{}} resultsData={resultsData} vertical='web' translations={translations} fontsAndColors={fontsAndColors} navigationLinks={navigationLinks} facetsEnabled={false} />).toJSON();
     expect(document.head).toMatchSnapshot();
   });
 });
@@ -246,7 +245,7 @@ describe('Tablet & Mobile view: SearchResultsLayout with facets', () => {
   };
 
   it('renders the facets', () => {
-    render(<SearchResultsLayout affiliate={affiliate} page={page} params={{}} resultsData={{ results: [], totalPages: 1, unboundedResults: false }} vertical='web' translations={translations} extendedHeader={false} fontsAndColors={fontsAndColors} navigationLinks={navigationLinks} facetsEnabled={false} />);
+    render(<SearchResultsLayout affiliate={affiliate} page={page} params={{}} resultsData={{ results: [], totalPages: 1, unboundedResults: false }} vertical='web' translations={translations} fontsAndColors={fontsAndColors} navigationLinks={navigationLinks} facetsEnabled={false} />);
     const filterLabel = screen.queryByText(/Filter search/i);
     // Below to be updated once facets backend is ready
     expect(filterLabel).not.toBeInTheDocument();
