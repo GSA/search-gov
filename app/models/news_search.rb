@@ -49,6 +49,7 @@ class NewsSearch < FilterableSearch
 
   def search
     return if @rss_feeds.blank?
+    return unless Es.custom_indices_enabled?
 
     ElasticNewsItem.search_for(q: @query, rss_feeds: @rss_feeds, excluded_urls: @affiliate.excluded_urls,
                                since: @since, until: @until,
