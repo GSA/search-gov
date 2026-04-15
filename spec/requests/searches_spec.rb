@@ -5,9 +5,11 @@ describe SearchesController do
 
   context '#news' do
     let(:news_search_params) do
-      { query: 'element',
+      { 
         affiliate: affiliate.name,
-        channel: rss_feeds(:white_house_blog).id }
+        channel: rss_feeds(:white_house_blog).id,
+        query: 'element'
+      }
     end
 
     before do
@@ -17,11 +19,7 @@ describe SearchesController do
     it 'sets the format to html' do
       expect(request.format.to_sym).to eq(:html)
     end
-
-    it 'responds sucessfully' do
-      expect(response).to have_http_status(:ok)
-    end
-
+    
     it { is_expected.to redirect_to search_url(news_search_params) }
 
   end
