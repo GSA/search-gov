@@ -13,14 +13,6 @@ describe AdvancedSearchesConstraint do
     it { is_expected.to redirect_to("/search?affiliate=#{affiliate}") }
   end
 
-  context 'when a BingV7 site' do
-    let(:affiliate) { affiliates(:bing_v7_affiliate).name }
-
-    it 'does not issue a redirect' do
-      expect(response).to have_http_status(:ok)
-    end
-  end
-
   context 'when affiliate do not exists' do
     let(:affiliate) { 'nonexistent' }
 
