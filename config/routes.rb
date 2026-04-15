@@ -7,6 +7,17 @@ Rails.application.routes.draw do
   constraints(AdvancedSearchesConstraint.new) do
     get '/search/advanced', to: redirect(path: '/search')
   end
+
+  get '/search/advanced', to: redirect { |params, request|
+    query_string = request.query_string.present? ? "?#{request.query_string}" : ""
+    "/search#{query_string}"
+  }
+
+  get '/search/news', to: redirect { |params, request|
+    query_string = request.query_string.present? ? "?#{request.query_string}" : ""
+    "/search#{query_string}"
+  }
+
   get '/search/advanced' => 'searches#advanced', as: :advanced_search
   get '/search/docs' => 'searches#docs', as: :docs_search
   get '/search/news' => 'searches#news', as: :news_search
