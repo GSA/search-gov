@@ -4,10 +4,14 @@ describe SearchesController do
   let(:affiliate) { affiliates(:basic_affiliate) }
 
   context '#news' do
+    let(:news_search_params) do
+      { query: 'element',
+        affiliate: affiliate.name,
+        channel: rss_feeds(:white_house_blog).id }
+    end
+
     before do
-      get '/search/news', params:  { query: 'element',
-                                     affiliate: affiliate.name,
-                                     channel: rss_feeds(:white_house_blog).id }
+      get '/search/news', params: news_search_params
     end
 
     it 'sets the format to html' do
@@ -17,6 +21,9 @@ describe SearchesController do
     it 'responds sucessfully' do
       expect(response).to have_http_status(:ok)
     end
+
+    it { is_expected.to redirect_to search_url(news_search_params) }
+
   end
 
   context '#docs' do
