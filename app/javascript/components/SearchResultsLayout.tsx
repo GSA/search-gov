@@ -88,18 +88,6 @@ interface SearchResultsLayoutProps {
   } | null;
   additionalResults?: {
     recommendedBy: string;
-    newNews?: {
-      title: string,
-      link: string,
-      description: string,
-      publishedAt: string
-    }[];
-    oldNews?: {
-      title: string,
-      link: string,
-      description: string,
-      publishedAt: string
-    }[];
     textBestBets?: {
       title: string;
       url: string;
@@ -195,16 +183,6 @@ interface SearchResultsLayoutProps {
     url: string;
   }[];
   relatedSearches?: { label: string; link: string }[];
-  newsLabel?: {
-    newsAboutQuery: string;
-    results:
-      | {
-          title: string;
-          feedName: string;
-          publishedAt: string;
-        }[]
-      | null;
-  } | null;
   relatedSitesDropdownLabel?: string;
   agencyName?: string;
   jobsEnabled?: boolean;
@@ -267,7 +245,7 @@ const isBasicHeader = (extendedHeader: boolean): boolean => {
 };
 
 // eslint-disable-next-line complexity
-const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, params = {}, translations, language = { code: 'en', rtl: false }, relatedSites = [], extendedHeader, footerLinks, primaryHeaderLinks, secondaryHeaderLinks, fontsAndColors, newsLabel, navigationLinks, relatedSitesDropdownLabel = '', alert, spellingSuggestion, relatedSearches, sitelimit, noResultsMessage, jobsEnabled, agencyName, facetsEnabled }: SearchResultsLayoutProps) => {
+const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, params = {}, translations, language = { code: 'en', rtl: false }, relatedSites = [], extendedHeader, footerLinks, primaryHeaderLinks, secondaryHeaderLinks, fontsAndColors, navigationLinks, relatedSitesDropdownLabel = '', alert, spellingSuggestion, relatedSearches, sitelimit, noResultsMessage, jobsEnabled, agencyName, facetsEnabled }: SearchResultsLayoutProps) => {
   const [isMobileView, setMobileView] = useState(false);
 
   const i18n = new I18n(translations);
@@ -331,7 +309,6 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
                     query={params.query}
                     unboundedResults={resultsData.unboundedResults}
                     additionalResults={additionalResults}
-                    newsAboutQuery={newsLabel?.newsAboutQuery}
                     spellingSuggestion={spellingSuggestion}
                     relatedSearches={relatedSearches}
                     noResultsMessage={noResultsMessage}

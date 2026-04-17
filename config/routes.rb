@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   }
 
   get '/search/docs' => 'searches#docs', as: :docs_search
-  get '/search/news/videos', to: redirect(path: '/search')
   get '/auth/logindotgov/callback', to: 'omniauth_callbacks#login_dot_gov'
 
   # Deprecated

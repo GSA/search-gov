@@ -13,7 +13,6 @@ import { ResultGrid } from './ResultGrid/ResultGrid';
 import { ResultsCount } from './ResultsCount/ResultsCount';
 import { HealthTopics } from './HealthTopics/HealthTopics';
 import { ImagesPage } from './ImagesPage/ImagesPage';
-import { RssNews } from './RssNews/RssNews';
 import { FedRegister } from './FedRegister/FedRegister';
 import { Jobs } from './Jobs/Jobs';
 import { SiteLimitAlert } from './SiteLimitAlert/SiteLimitAlert';
@@ -58,18 +57,6 @@ interface ResultsProps {
         url: string;
       }[];
     };
-    oldNews?: {
-      title: string;
-      link: string;
-      description: string;
-      publishedAt: string;
-    }[];
-    newNews?: {
-      title: string;
-      link: string;
-      description: string;
-      publishedAt: string;
-    }[];
     jobs?: {
       positionTitle: string;
       positionUri: string;
@@ -110,7 +97,6 @@ interface ResultsProps {
   totalPages: number | null;
   total?: number;
   vertical: string;
-  newsAboutQuery?: string;
   spellingSuggestion?: {
     suggested: string;
     original: string;
@@ -171,7 +157,7 @@ const getImages = (result: Result[] | null) => {
 };
 
 // eslint-disable-next-line complexity
-export const Results = ({ page, query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, newsAboutQuery = '', spellingSuggestion, relatedSearches, sitelimit, noResultsMessage, total, jobsEnabled, agencyName, vertical, facetsEnabled }: ResultsProps) => {
+export const Results = ({ page, query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, spellingSuggestion, relatedSearches, sitelimit, noResultsMessage, total, jobsEnabled, agencyName, vertical, facetsEnabled }: ResultsProps) => {
   const i18n = useContext(LanguageContext);
   const styles = useContext(StyleContext);
   const imagesResults = getImages(results);
@@ -227,17 +213,6 @@ export const Results = ({ page, query = '', results = null, additionalResults = 
               />
             }
 
-            {/* RSS - new news */}
-            {additionalResults?.newNews && 
-              <RssNews 
-                news={additionalResults.newNews} 
-                newsLabel={newsAboutQuery}
-                affiliate={page?.affiliate ?? ''}
-                query={query}
-                vertical={vertical}
-              />
-            }
-
             {/* Results: Images */}
             {imagesResults.length > 0 && 
               <ImagesPage
@@ -284,17 +259,6 @@ export const Results = ({ page, query = '', results = null, additionalResults = 
             {additionalResults?.federalRegisterDocuments && 
               <FedRegister 
                 fedRegisterDocs={additionalResults.federalRegisterDocuments}
-                affiliate={page?.affiliate ?? ''}
-                query={query}
-                vertical={vertical}
-              />
-            }
-
-            {/* RSS - old news */}
-            {additionalResults?.oldNews && 
-              <RssNews 
-                news={additionalResults.oldNews} 
-                newsLabel={newsAboutQuery}
                 affiliate={page?.affiliate ?? ''}
                 query={query}
                 vertical={vertical}
