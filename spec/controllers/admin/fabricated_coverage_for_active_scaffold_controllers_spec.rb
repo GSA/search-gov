@@ -10,7 +10,6 @@ require 'spec_helper'
 # that here by simply autoloading the controllers.
 describe Admin::I14yDrawersController do; end
 describe Admin::LanguagesController do; end
-describe Admin::NewsItemsController do; end
 describe Admin::RoutedQueriesController do; end
 describe Admin::RoutedQueryKeywordsController do; end
 describe Admin::SiteFeedUrlsController do; end
