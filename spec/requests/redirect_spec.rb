@@ -36,6 +36,11 @@ describe "/search/news" do
     get '/search/news'
     expect(response).to redirect_to('/search')
   end
+
+  it 'preserves query parameters' do  
+    get '/search/news?affiliate=usagov&query=money'  
+  expect(response).to redirect_to('/search?affiliate=usagov&query=money')  
+end  
 end
 
 describe "/search/advanced" do
@@ -43,5 +48,10 @@ describe "/search/advanced" do
     get '/search/advanced'
     expect(response).to redirect_to('/search')
   end
+
+  it 'preserves query parameters' do  
+    get '/search/advanced?affiliate=usagov&query=money'  
+    expect(response).to redirect_to('/search?affiliate=usagov&query=money')  
+  end  
 end
 

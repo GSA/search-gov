@@ -3,27 +3,6 @@
 describe SearchesController do
   let(:affiliate) { affiliates(:basic_affiliate) }
 
-  context '#news' do
-    let(:news_search_params) do
-      { 
-        affiliate: affiliate.name,
-        channel: rss_feeds(:white_house_blog).id,
-        query: 'element'
-      }
-    end
-
-    before do
-      get '/search/news', params: news_search_params
-    end
-
-    it 'sets the format to html' do
-      expect(request.format.to_sym).to eq(:html)
-    end
-    
-    it { is_expected.to redirect_to search_url(news_search_params) }
-
-  end
-
   context '#docs' do
     before do
       get '/search/docs', params: { query: 'pdf',
