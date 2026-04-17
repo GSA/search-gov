@@ -52,27 +52,6 @@ module Api::V2::SearchAsJson
     description
   end
 
-  def as_json_video_news(news_items)
-    return [] unless news_items
-
-    news_items.collect { |news_item| as_json_video_news_item(news_item) }
-  end
-
-  def as_json_video_news_item(news_item)
-    news_item_hash = as_json_news_item news_item, 'YouTube'
-    news_item_hash.merge!(duration: news_item.duration) if news_item.duration
-    news_item_hash.merge(thumbnail_url: news_item.youtube_thumbnail_url)
-  end
-
-  def as_json_news_item(news_item, source = nil)
-    source ||= RssFeedUrl.find_parent_rss_feed_name(@affiliate, news_item.rss_feed_url_id)
-    { title: news_item.title,
-      url: news_item.link,
-      snippet: news_item.description,
-      publication_date: news_item.published_at.to_date.to_fs(:db),
-      source: source }
-  end
-
   def as_json_federal_register_documents
     federal_register_documents.results.collect do |document|
       comments_close_on = document&.comments_close_on&.to_fs(:db) || nil

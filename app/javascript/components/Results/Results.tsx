@@ -14,8 +14,6 @@ import { ResultsCount } from './ResultsCount/ResultsCount';
 import { HealthTopics } from './HealthTopics/HealthTopics';
 import { ImagesPage } from './ImagesPage/ImagesPage';
 import { RssNews } from './RssNews/RssNews';
-import { VideosModule } from './Videos/VideosModule';
-import { Video } from './Videos/Video';
 import { FedRegister } from './FedRegister/FedRegister';
 import { Jobs } from './Jobs/Jobs';
 import { SiteLimitAlert } from './SiteLimitAlert/SiteLimitAlert';
@@ -36,10 +34,6 @@ type Result = {
   image?: boolean,
   fileType?: string,
   altText?: string,
-  youtube?: boolean,
-  youtubePublishedAt?: string,
-  youtubeThumbnailUrl?: string,
-  youtubeDuration?: string,
   blendedModule?: string,
   tags?: string[]
 };
@@ -111,14 +105,6 @@ interface ResultsProps {
       startPage: number;
       title: string;
     }[];
-    youtubeNewsItems?: {
-      link: string;
-      title: string;
-      description: string;
-      publishedAt: string;
-      youtubeThumbnailUrl: string;
-      duration: string;
-    }[];
   } | null;
   unboundedResults: boolean;
   totalPages: number | null;
@@ -133,7 +119,6 @@ interface ResultsProps {
     suggestedQuery: string;
     suggestedUrl: string;
   };
-  videosUrl?: string;
   relatedSearches?: { label: string; link: string; }[];
   noResultsMessage?: {
     text?: string;
@@ -186,7 +171,7 @@ const getImages = (result: Result[] | null) => {
 };
 
 // eslint-disable-next-line complexity
-export const Results = ({ page, query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, newsAboutQuery = '', spellingSuggestion, videosUrl, relatedSearches, sitelimit, noResultsMessage, total, jobsEnabled, agencyName, vertical, facetsEnabled }: ResultsProps) => {
+export const Results = ({ page, query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, newsAboutQuery = '', spellingSuggestion, relatedSearches, sitelimit, noResultsMessage, total, jobsEnabled, agencyName, vertical, facetsEnabled }: ResultsProps) => {
   const i18n = useContext(LanguageContext);
   const styles = useContext(StyleContext);
   const imagesResults = getImages(results);
@@ -242,16 +227,6 @@ export const Results = ({ page, query = '', results = null, additionalResults = 
               />
             }
 
-            {/* Video module */}
-            {additionalResults?.youtubeNewsItems &&
-              <VideosModule
-                affiliate={page?.affiliate ?? ''}
-                query={query}
-                vertical={vertical}
-                videos={additionalResults.youtubeNewsItems}
-                videosUrl={videosUrl} />
-            }
-
             {/* RSS - new news */}
             {additionalResults?.newNews && 
               <RssNews 
@@ -279,23 +254,6 @@ export const Results = ({ page, query = '', results = null, additionalResults = 
                 {results.map((result, index) => {
                   if (result.image) {
                     return null;
-                  }
-                  if (result?.youtube) {
-                    return (
-                      <Video
-                        affiliate={page?.affiliate ?? ''}
-                        description={result.description}
-                        duration={result.youtubeDuration}
-                        key={index}
-                        link={result.url}
-                        position={index+1}
-                        publishedAt={result.youtubePublishedAt}
-                        query={query}
-                        title={result.title}
-                        vertical={vertical}
-                        youtubeThumbnailUrl={result.youtubeThumbnailUrl} 
-                      />
-                    );
                   }
                   return (
                     <ResultGrid key={index}

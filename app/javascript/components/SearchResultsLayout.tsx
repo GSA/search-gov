@@ -81,10 +81,6 @@ interface SearchResultsLayoutProps {
       publishedDate?: string;
       thumbnailUrl?: string;
       fileType?: string,
-      youtube?: boolean;
-      youtubePublishedAt?: string;
-      youtubeThumbnailUrl?: string;
-      youtubeDuration?: string;
       blendedModule?: string;
       tags?: string[]
     }[] | null;
@@ -128,14 +124,6 @@ interface SearchResultsLayoutProps {
       maximumPay: number;
       rateIntervalCode: string;
       applicationCloseDate: string;
-    }[];
-    youtubeNewsItems?: {
-      link: string;
-      title: string;
-      description: string;
-      publishedAt: string;
-      youtubeThumbnailUrl: string;
-      duration: string;
     }[];
     federalRegisterDocuments?: {
       commentsCloseOn: string | null;
@@ -278,8 +266,6 @@ const isBasicHeader = (extendedHeader: boolean): boolean => {
   return !extendedHeader;
 };
 
-const videosUrl = (links: NavigationLink[]) => links.find((link) => link.facet === 'YouTube')?.url ;
-
 // eslint-disable-next-line complexity
 const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, params = {}, translations, language = { code: 'en', rtl: false }, relatedSites = [], extendedHeader, footerLinks, primaryHeaderLinks, secondaryHeaderLinks, fontsAndColors, newsLabel, navigationLinks, relatedSitesDropdownLabel = '', alert, spellingSuggestion, relatedSearches, sitelimit, noResultsMessage, jobsEnabled, agencyName, facetsEnabled }: SearchResultsLayoutProps) => {
   const [isMobileView, setMobileView] = useState(false);
@@ -347,7 +333,6 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
                     additionalResults={additionalResults}
                     newsAboutQuery={newsLabel?.newsAboutQuery}
                     spellingSuggestion={spellingSuggestion}
-                    videosUrl={videosUrl(navigationLinks)}
                     relatedSearches={relatedSearches}
                     noResultsMessage={noResultsMessage}
                     sitelimit={sitelimit}

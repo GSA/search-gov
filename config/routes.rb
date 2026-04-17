@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   }
 
   get '/search/docs' => 'searches#docs', as: :docs_search
-  # Provide some backward compatibility for searchers using the legacy video news search URL
   get '/search/news/videos', to: redirect(path: '/search')
   get '/auth/logindotgov/callback', to: 'omniauth_callbacks#login_dot_gov'
 
@@ -27,7 +26,6 @@ Rails.application.routes.draw do
       get '/search' => 'searches#blended'
       get '/search/bing' => 'searches#bing'
       get '/search/i14y' => 'searches#i14y'
-      get '/search/video' => 'searches#video'
       get '/search/docs' => 'searches#docs'
       post '/click' => 'click#create'
     end
@@ -226,15 +224,7 @@ Rails.application.routes.draw do
     resources :system_alerts, concerns: :active_scaffold
     resources :tags, concerns: :active_scaffold
     resources :trending_urls, only: :index
-    resources :news_items, concerns: :active_scaffold
     resources :suggestion_blocks, concerns: :active_scaffold
-    resources :rss_feeds, concerns: :active_scaffold
-    resources :rss_feed_urls, concerns: :active_scaffold do
-      member do
-        get 'destroy_news_items'
-        get 'news_items'
-      end
-    end
     resource :search_module_ctrs, only: [:show]
     resource :site_ctrs, only: [:show]
     resource :query_ctrs, only: [:show]

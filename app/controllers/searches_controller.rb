@@ -10,9 +10,8 @@ class SearchesController < ApplicationController
   #to ensure that the correct params are being passed, etc.
   before_action :set_web_search_options, :only => [:advanced, :index]
   before_action :set_docs_search_options, :only => :docs
-  before_action :set_news_search_options, :only => [:news]
-  before_action :force_request_format, :only => [:advanced, :docs, :index, :news]
-  after_action :log_search_impression, :only => [:index, :news, :docs]
+  before_action :force_request_format, :only => [:advanced, :docs, :index]
+  after_action :log_search_impression, :only => [:index, :docs]
   include QueryRoutableController
 
   def index
@@ -55,18 +54,6 @@ class SearchesController < ApplicationController
     set_search_params
     template = [I14ySearch, OpenSearch::Engine, LegacyOpenSearch::Engine, SearchElasticEngine].include?(search_klass) ? :i14y : :docs
     template = :index_redesign if redesign?
-    respond_to { |format| format.html { render template } }
-  end
-
-  def news
-    @search = NewsSearch.new(@search_options)
-    @search.run
-    @form_path = news_search_path
-    set_news_search_page_title
-    set_search_page_title
-    @search_vertical = :news
-    set_search_params
-    template = redesign? ? :index_redesign : :news
     respond_to { |format| format.html { render template } }
   end
 
@@ -115,14 +102,6 @@ class SearchesController < ApplicationController
     end
   end
 
-  def set_news_search_page_title
-    if permitted_params[:query].present?
-      @page_title = permitted_params[:query]
-    elsif @search.rss_feed and @search.total > 0
-      @page_title = @search.rss_feed.name
-    end
-  end
-
   def set_web_search_options
     @search_options = search_options_from_params :filter,
                                                  :since_date,
@@ -140,17 +119,6 @@ class SearchesController < ApplicationController
                                                  :until_date
     document_collection = @affiliate.document_collections.find_by_id(@search_options[:dc])
     @search_options.merge!(document_collection: document_collection)
-  end
-
-  def set_news_search_options
-    @search_options = search_options_from_params :channel,
-                                                 :contributor,
-                                                 :publisher,
-                                                 :since_date,
-                                                 :sort_by,
-                                                 :subject,
-                                                 :tbs,
-                                                 :until_date
   end
 
   def get_commercial_results?
