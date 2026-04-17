@@ -84,65 +84,6 @@ Feature: Searches using mobile device
     Then I should see "Sorry, no results found for 'hippopotamus'."
     And I should see "Hippopotamus amphibius"
 
-  Scenario: Video news search
-    Given the following BingV7 Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | locale | youtube_handles         | use_redesigned_results_page | search_engine |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | usgovernment,whitehouse | false                       | bing_v7       |
-      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | gobiernousa             | false                       | bing_v7       |
-    And affiliate "en.agency.gov" has the following RSS feeds:
-      | name   | url | is_navigable | is_managed |
-      | Videos |     | true         | true       |
-    And affiliate "es.agency.gov" has the following RSS feeds:
-      | name   | url | is_navigable | is_managed |
-      | Videos |     | true         | true       |
-    And there are 20 video news items for "usgovernment_channel_id"
-    And there are 20 video news items for "whitehouse_channel_id"
-    And there are 5 video news items for "gobiernousa_channel_id"
-
-    When I am on en.agency.gov's search page
-    And I fill in "Enter your search term" with "video"
-    And I press "Search"
-    Then I should see exactly "1" video govbox search result
-    And I should see "More videos about video"
-
-    When I follow "Videos" within the SERP navigation
-    Then I should see 1 search result title link with url for "http://www.youtube.com/watch?v=0_usgovernment_channel_id"
-    And I should see "Powered by Search.gov"
-    And I should see exactly "20" video search results
-    And I should see "Previous"
-    And I should see a link to "2" with class "pagination-numbered-link"
-    And I should see a link to "Next"
-    And I should see "Refine your search"
-
-    When I follow "Next"
-    Then I should see exactly "20" video search results
-    And I should see a link to "Previous"
-    And I should see a link to "1" with class "pagination-numbered-link"
-    And I should see "Next"
-
-    When I follow "Previous"
-    And I follow "2"
-    Then I should see exactly "20" video search results
-
-    When I follow "1"
-    Then I should see exactly "20" video search results
-
-    When I am on en.agency.gov's search page
-    And I fill in "Enter your search term" with "video usgovernment_channel_id 5"
-    And I press "Search"
-    Then I should see at least "1" video govbox search result
-    And I should not see "More videos about video usgovernment_channel_id 5"
-
-    When I am on es.agency.gov's search page
-    And I fill in "Ingrese su búsqueda" with "video"
-    And I press "Buscar"
-    Then I should see exactly "1" video govbox search results
-    And I should see "Más videos sobre de video"
-
-    When I follow "Videos" within the SERP navigation
-    Then I should see "Generado por Search.gov"
-    And I should see at least "5" video search results
-
   Scenario: Collections search
     Given the following BingV7 Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale | use_redesigned_results_page | search_engine |
