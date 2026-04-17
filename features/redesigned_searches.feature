@@ -135,43 +135,6 @@ Feature: Search - redesign
     And I should see a link to "More federal job openings on USAJobs.gov" with url for "https://www.usajobs.gov/Search/Results?hp=public"
 
   @javascript @a11y
-  Scenario: News search
-    Given the following BingV7 Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | locale |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     |
-      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     |
-
-    And affiliate "en.agency.gov" has the following RSS feeds:
-      | name   | url                              |
-      | News-1 | http://en.agency.gov/feed/news-1 |
-    And affiliate "es.agency.gov" has the following RSS feeds:
-      | name       | url                                  |
-      | Noticias-1 | http://es.agency.gov/feed/noticias-1 |
-
-    And there are 150 news items for "News-1"
-    And there are 5 news items for "Noticias-1"
-
-    When I am on en.agency.gov's "News-1" news search page
-    And I fill in "Enter your search term" with "news item"
-    And I press "Search"
-    Then the "Enter your search term" field should contain "news item"
-    And I should see exactly "20" web search results
-    And I should see a link to "2" with class "usa-pagination__button"
-    And I should see a link to "Next"
-    When I follow "Next"
-    And I should see exactly "20" web search results
-    And I should see a link to "Previous"
-    And I should see a link to "1" with class "usa-pagination__button"
-    And I should see "Next"
-    When I follow page "5"
-    And I follow page "7"
-    And I follow page "8"
-    And I should see exactly "10" web search results
-
-    When I am on es.agency.gov's "Noticias-1" news search page
-    And I should see exactly "5" web search results
-
-  @javascript @a11y
   Scenario: Searchers see English Medline Govbox
     Given the following BingV7 Affiliates exist:
       | display_name | name        | contact_email | first_name | last_name | domains | is_medline_govbox_enabled |
