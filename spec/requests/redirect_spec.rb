@@ -30,3 +30,18 @@ describe 'routes for Affiliates' do
     expect(response).to redirect_to('/sites')
   end
 end
+
+describe "/search/news" do
+  it 'redirects to /search' do
+    get '/search/news'
+    expect(response).to redirect_to('/search')
+  end
+end
+
+describe "/search/advanced" do
+  it 'redirects to /search' do
+    get '/search/advanced'
+    expect(response).to redirect_to('/search')
+  end
+end
+
