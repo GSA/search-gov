@@ -16,11 +16,7 @@ module Admin::ColumnsHelper
   end
 
   def name_column(record, column)
-    if record.is_a? RssFeed
-      link_to record.name, site_rss_feed_path(record.owner, record.id), target: '_blank'
-    else
-      record[column.name]
-    end
+    record[column.name]
   end
 
   def owner_column(record, column)

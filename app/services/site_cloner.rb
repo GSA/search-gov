@@ -19,11 +19,8 @@ class SiteCloner
     clone_flickr_profiles(cloned_site)
     clone_image_search_label(cloned_site)
     clone_routed_queries(cloned_site)
-    clone_rss_feeds(cloned_site)
     clone_site_feed_url(cloned_site)
     clone_images(cloned_site)
-
-    cloned_site.youtube_profile_ids = @origin_site.youtube_profile_ids
 
     clone_memberships(cloned_site)
 
@@ -100,16 +97,6 @@ class SiteCloner
                                     :routed_query_keywords)
   ensure
     ActiveRecord::Base.observers.enable(:routed_query_keyword_observer)
-  end
-
-  def clone_rss_feeds(cloned_site)
-    @origin_site.rss_feeds.each do |rss_feed|
-      cloned_feed = rss_feed.dup
-      cloned_feed.rss_feed_urls = rss_feed.rss_feed_urls
-      cloned_site.rss_feeds << cloned_feed
-
-      copy_navigation_attributes(rss_feed.navigation, cloned_feed.navigation)
-    end
   end
 
   def clone_site_feed_url(cloned_site)

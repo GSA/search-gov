@@ -74,29 +74,6 @@ describe '/api/v2/search' do
 
       ElasticIndexedDocument.commit
 
-      ElasticNewsItem.recreate_index
-      affiliate.rss_feeds.destroy_all
-
-      rss_feed = affiliate.rss_feeds.build(name: 'RSS')
-      url = 'https://search.gov/all.atom'
-      rss_feed_url = RssFeedUrl.rss_feed_owned_by_affiliate.build(url: url)
-      rss_feed_url.save!(validate: false)
-      rss_feed.rss_feed_urls = [rss_feed_url]
-      rss_feed.save!
-
-      (3..4).each do |i|
-        attributes = {
-          title: "api v2 title news-#{i}",
-          link: "https://search.gov/news-#{i}",
-          guid: "blog-#{i}",
-          description: "v2 description news-#{i}  #{'extremely long content ' * 8}",
-          published_at: current_time.advance(days: -i)
-        }
-        rss_feed_url.news_items.create! attributes
-      end
-
-      ElasticNewsItem.commit
-
       ElasticSaytSuggestion.recreate_index
       affiliate.sayt_suggestions.delete_all
 
