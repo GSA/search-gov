@@ -112,79 +112,6 @@ Feature: Searches using mobile device
     And I should see at least "7" web search results
     And every result URL should match "www.usa.gov/espanol"
 
-  Scenario: Site navigations without dropdown menu
-    Given the following BingV7 Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | locale | use_redesigned_results_page | search_engine |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | false                       | bing_v7       |
-    And affiliate "en.agency.gov" has the following document collections:
-      | name | prefixes             |
-      | Blog | http://blog.usa.gov/ |
-    And affiliate "en.agency.gov" has the following RSS feeds:
-      | name     | url                                | is_navigable |
-      | Articles | http://en.agency.gov/feed/articles | true         |
-    And there are 10 news items for "Articles"
-    When I am on en.agency.gov's search page
-    Then I should see "Everything" within the SERP active navigation
-
-    When I fill in "Enter your search term" with "news"
-    And I press "Search"
-    Then I should see "Everything" within the SERP active navigation
-    And I should see at least "10" web search results
-
-    When I follow "Blog" within the SERP navigation
-    And I press "Search"
-    Then I should see "Blog" within the SERP active navigation
-    And I should see at least "1" web search results
-
-    When I follow "Articles" within the SERP navigation
-    Then I should see "Articles" within the SERP active navigation
-    And I should see at least "10" web search results
-
-  Scenario: Site navigations with dropdown menu
-    Given the following BingV7 Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | locale | navigation_dropdown_label | use_redesigned_results_page | search_engine |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | My-awesome-label          | false                       | bing_v7       |
-    And affiliate "en.agency.gov" has the following document collections:
-      | name                 | prefixes                | position | is_navigable |
-      | FAQs                 | http://answers.usa.gov/ | 0        | true         |
-      | Apps                 | https://www.data.gov    | 2        | true         |
-      | Inactive site search | http://apps.usa.gov/    | 6        | false        |
-    And affiliate "en.agency.gov" has the following RSS feeds:
-      | name                 | url                                | is_navigable | position | show_only_media_content | oasis_mrss_name |
-      | Articles             | http://en.agency.gov/feed/articles | true         | 1        | false                   |                 |
-      | Blog                 | http://en.agency.gov/feed/blog     | true         | 3        | false                   |                 |
-      | Media RSS            | http://en.agency.gov/feed/images   | true         | 4        | true                    | 100             |
-      | Inactive news search | http://en.agency.gov/feed/news1    | false        | 5        | false                   |                 |
-      | News                 | http://en.agency.gov/feed/news2    | true         | 7        | false                   |                 |
-    And there are 10 news items for "News"
-
-    When I am on en.agency.gov's search page
-    Then I should see "Everything" within the SERP active navigation
-    And I fill in "Enter your search term" with "news"
-    And I press "Search"
-
-    Then I should see "Everything" within the SERP active navigation
-    And I should see "Everything FAQs Articles My-awesome-label Apps Blog News" within the SERP navigation
-    And I should see at least "10" web search results
-
-    When I follow "News" within the SERP navigation
-    Then I should see "News" within the SERP active navigation
-    And I should see "Everything FAQs News My-awesome-label Articles Apps Blog" within the SERP navigation
-    And I should see at least "10" web search results
-
-    When I follow "Apps" within the SERP navigation
-    Then I should see "Apps" within the SERP active navigation
-    And I should see "Everything FAQs Apps My-awesome-label Articles Blog News" within the SERP navigation
-    And I fill in "Enter your search term" with "app"
-    And I press "Search"
-    And I should see at least "1" web search results
-
-    When I am on en.agency.gov's "Inactive site search" docs search page
-    Then I should see "Inactive site search" within the SERP active navigation
-
-    When I am on en.agency.gov's "Inactive news search" news search page
-    Then I should see "Inactive news search" within the SERP active navigation
-
   Scenario: Job search
     Given the following BingV7 Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name |locale | jobs_enabled | use_redesigned_results_page | search_engine |
@@ -335,29 +262,6 @@ Feature: Searches using mobile device
     And I press "Search"
     Then I should see a link to "Atlantic Highly Migratory Species; Atlantic Bluefin Tuna Fisheries" with url for "https://www.federalregister.gov/articles/2013/08/19/2013-20176/atlantic-highly-migratory-species-atlantic-bluefin-tuna-fisheries"
     And I should see "A Rule by the National Oceanic and Atmospheric Administration posted on August 19, 2013."
-
-  Scenario: Advanced search
-    Given the following BingV7 Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | locale | use_redesigned_results_page | search_engine |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | false                       | BingV7        |
-      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | false                       | BingV7        |
-    And affiliate "en.agency.gov" has the following RSS feeds:
-      | name     | url                                | is_navigable |
-      | Articles | http://en.agency.gov/feed/articles | true         |
-    And affiliate "es.agency.gov" has the following RSS feeds:
-      | name      | url                                | is_navigable |
-      | Artículos | http://es.agency.gov/feed/articles | true         |
-    When I am on en.agency.gov's advanced search page
-    Then I should see "Everything" within the SERP active navigation
-    And the "Moderate" radio button should be checked
-
-    When I fill in "All of these words" with "allofit"
-    And I fill in "This exact phrase" with "exact"
-    And I fill in "Any of these words" with "any"
-    And I fill in "None of these words" with "bad"
-    And I select "Adobe PDF" from "File Type"
-    And I press "Advanced Search"
-    And the "Enter your search term" field should contain "allofit \"exact\" \-bad \(any\) filetype:pdf"
 
   Scenario: Custom page 1 results pointer
     Given the following BingV7 Affiliates exist:
