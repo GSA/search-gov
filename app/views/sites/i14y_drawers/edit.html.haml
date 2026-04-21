@@ -1,6 +1,6 @@
 = content_for_site_page_title @site, 'Edit i14y Drawer'
 = form_for @i14y_drawer, url: { action: :update }, html: { class: 'form' }  do |f|
-  .sub-nav-heading
+  .sub-nav-heading{ class: ("--is-inactive" if @site&.active? == false) }
     %h2 Edit i14y Drawer
     .action-bar
       %ul

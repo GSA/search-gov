@@ -331,6 +331,19 @@ describe SearchesController do
     end
   end
 
+  context "when a page number exceeds available pages" do
+    before do
+      # Mock a search with only 3 pages of results.
+      allow_any_instance_of(WebSearch).to receive(:total).and_return(30)
+      allow_any_instance_of(WebSearch).to receive(:per_page).and_return(10)
+    end
+
+    it "redirects to the last available page" do
+      get :index, params: { query: 'test', page: 4, affiliate: 'usagov' }
+      expect(response).to redirect_to search_path(query: 'test', page: 3, affiliate: 'usagov')
+    end
+  end
+  
   context 'highlighting' do
     context 'when a client requests results without highlighting' do
       before do

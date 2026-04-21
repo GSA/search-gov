@@ -1,6 +1,6 @@
 = content_for :title, 'New Site Setup'
 = form_for @site, as: :site, url: { action: :create }, html: { class: 'form' }  do |f|
-  .sub-nav-heading
+  .sub-nav-heading{ class: ("--is-inactive" if @site&.active? == false) }
     %h2 Add Site
     .action-bar
       %ul

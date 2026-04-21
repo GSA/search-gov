@@ -37,6 +37,7 @@ gem 'googlecharts', '~> 1.6.12'
 gem 'flickraw', '~> 0.9.9'
 gem 'mutex_m', '~> 0.2.0'
 gem 'bigdecimal', '~> 3.1', '>= 3.1.8'
+gem 'rexml', '>= 3.4.2'
 gem 'csv', '~> 3.3'
 gem 'active_scaffold', '~> 3.7', '>= 3.7.6'
 # # SRCH-3837: We need this change: https://github.com/activescaffold/active_scaffold/pull/666

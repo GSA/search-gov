@@ -1,6 +1,6 @@
 = content_for_site_page_title @site, 'Display Overview'
 = form_for @site, as: :site, url: site_display_path, html: { class: 'form', id: 'edit-display' } do |f|
-  .sub-nav-heading
+  .sub-nav-heading{ class: ("--is-inactive" if @site&.active? == false) }
     %h2 Display Overview
     .action-bar
       %ul

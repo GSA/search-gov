@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ResultsPostProcessor
-  MAX_PAGES = 500
+  MAX_PAGES = 10
   DEFAULT_TRUNCATED_HTML_LENGTH = 280
   DEFAULT_TRUNCATE_OPTIONS = { length_in_chars: true, ellipsis: ' ...' }.freeze
 
