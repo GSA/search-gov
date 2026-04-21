@@ -330,7 +330,8 @@ Feature: Manage Content
     When I fill in "Domain" with "usa.gov"
     And I submit the form by pressing "Add"
     Then I should see "You have added usa.gov to this site"
-    When I follow "Domains" within the Admin Center content
+    When I go to the agency.gov's Manage Content page
+    And I follow "Domains" within the Admin Center content
     And I follow "Edit"
     And I fill in "Domain" with "gobiernousa.gov"
     And I submit the form by pressing "Save"
