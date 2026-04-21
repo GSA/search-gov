@@ -1,6 +1,8 @@
 git_refs = git_sha = 'unknown'
 
-git_info = `git log -1 --format="%h %d"`.chomp
+# In CodeDeploy release directories we may not have a .git folder.
+# Suppress stderr noise from git command in that case.
+git_info = `git log -1 --format="%h %d" 2>/dev/null`.chomp
 if git_info.length > 0
   git_sha, refs = git_info.split(/\s+/, 2)
   git_refs = refs.gsub(/[\(\)]/, '').split(/[, ]+/).
