@@ -479,7 +479,9 @@ class Affiliate < ApplicationRecord
     self.name = name.downcase if name.present?
   end
 
-  def set_default_labels; end
+  def set_default_labels
+    self.rss_govbox_label = I18n.t(:default_rss_govbox_label, locale: locale) if rss_govbox_label.blank?
+  end
 
   def validate_css_property_hash
     return if @css_property_hash.blank?

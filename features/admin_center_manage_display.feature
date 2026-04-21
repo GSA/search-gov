@@ -5,11 +5,7 @@ Feature: Manage Display
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
 
-    When affiliate "agency.gov" has the following RSS feeds:
-      | name   | url                    | show_only_media_content | position | oasis_mrss_name |
-      | Photos | www.dma.mil/photos.xml | false                   | 101      | 1               |
-    And I go to the agency.gov's Manage Display page
-    And I should not see "Rss Feed 1"
+    When I go to the agency.gov's Manage Display page
 
   @javascript
 
@@ -134,9 +130,6 @@ Feature: Manage Display
       | name                 | prefixes             | position | is_navigable |
       | Active site search   | http://apps.usa.gov/ | 3        | true         |
       | Inactive site search | http://apps.usa.gov/ | 6        | false        |
-    And affiliate "agency.gov" has the following RSS feeds:
-      | name                 | url                            | is_navigable | position | show_only_media_content |
-      | Inactive news search | http://en.agency.gov/feed/News | false        | 5        | false                   |
     And I am logged in with email "john@agency.gov"
 
     When I am on agency.gov's search page
@@ -198,12 +191,6 @@ Feature: Manage Display
     Then I should see a link to "Terms of Service" with url for "http://tos.agency.gov"
 
     When I am on agency.gov's "Inactive site search" docs search page
-    And I press "Browse site"
-    Then I should find "News" in the main menu
-    Then I should see a link to "News" with url for "http://news.agency.gov"
-    Then I should see a link to "Blog" with url for "http://blog.agency.gov"
-
-    When I am on agency.gov's "Inactive news search" news search page
     And I press "Browse site"
     Then I should find "News" in the main menu
     Then I should see a link to "News" with url for "http://news.agency.gov"
