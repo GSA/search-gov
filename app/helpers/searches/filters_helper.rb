@@ -80,6 +80,22 @@ module Searches::FiltersHelper
     end
   end
 
+  def current_time_filter_description(search)
+    until_date = search.until ? search.until.to_date : Date.current
+
+    if search.tbs
+      I18n.t "last_#{FilterableSearch::TIME_BASED_SEARCH_OPTIONS[search.tbs]}"
+    elsif search.since
+      desc = I18n.l(search.since, format: '%b %-d, %Y')
+      desc << " - #{I18n.l(until_date, format: '%b %-d, %Y')}" unless search.since.to_date == until_date
+      desc
+    elsif search.until
+      "#{I18n.t :before} #{I18n.l(search.until, format: '%b %-d, %Y')}"
+    else
+      I18n.t :all_time
+    end
+  end
+
   def sort_filter_html(search, search_params)
     filter_options = build_sort_filter_options search.sort_by_relevance?
     path = path_for_filterable_search search,

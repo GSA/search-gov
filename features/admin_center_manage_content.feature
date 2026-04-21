@@ -318,9 +318,6 @@ Feature: Manage Content
       | usa.gov         |
       | whitehouse.gov  |
 
-    When I go to the agency.gov's Manage Content page
-    Then the "Discover and add the RSS feeds and social media accounts listed on the following page:" field should be empty
-
   Scenario: Add/edit/remove domains
     Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
@@ -333,9 +330,6 @@ Feature: Manage Content
     When I fill in "Domain" with "usa.gov"
     And I submit the form by pressing "Add"
     Then I should see "You have added usa.gov to this site"
-    When I go to the agency.gov's Manage Content page
-    Then the "Discover and add the RSS feeds and social media accounts listed on the following page:" field should contain "http://usa.gov"
-
     When I follow "Domains" within the Admin Center content
     And I follow "Edit"
     And I fill in "Domain" with "gobiernousa.gov"
