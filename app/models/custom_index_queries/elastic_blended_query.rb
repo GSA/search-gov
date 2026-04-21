@@ -45,7 +45,7 @@ class ElasticBlendedQuery < ElasticTextFilterByPublishedAtQuery
     json.filter do
       json.bool do
         json.must do
-          json.child! { published_at_filter(json) }
+          json.child! { published_at_filter(json) } if @since_ts || @until_ts
           json.child! { json.term { json.affiliate_id @affiliate_id } }
         end
       end
