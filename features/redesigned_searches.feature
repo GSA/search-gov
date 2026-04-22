@@ -110,26 +110,6 @@ Feature: Search - redesign
     And I should see "Hippopotamus graphic"
 
   @javascript @a11y
-  Scenario: News search
-    Given the following BingV7 Affiliates exist:
-      | display_name     | name       | contact_email | first_name | last_name |
-      | bar site         | bar.gov    | aff@bar.gov   | John       | Bar       |
-    And affiliate "bar.gov" has the following RSS feeds:
-      | name   | url                                  | is_navigable |
-      | Press  | http://www.whitehouse.gov/feed/press | true         |
-    And feed "Press" has the following news items:
-      | link                             | title       | guid  | published_ago | description                       |
-      | http://www.whitehouse.gov/news/1 | First item  | uuid1 | day           | item First news item for the feed |
-      | http://www.whitehouse.gov/news/2 | Second item | uuid2 | day           | item Next news item for the feed  |
-    When I am on bar.gov's redesigned news search page
-    And I search for "item" in the redesigned search page
-    Then I should see "First"
-    And I should see "Second"
-    And I should see exactly "2" web search results
-    And I should see "2 results"
-    And I should see Powered by SearchGov
-
-  @javascript @a11y
   Scenario: Docs search
     Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | domains |
@@ -153,43 +133,6 @@ Feature: Search - redesign
     And I should see "$64,660.00-$170,800.00 PA"
     And I should see an image link to "USAJobs.gov" with url for "https://www.usajobs.gov/"
     And I should see a link to "More federal job openings on USAJobs.gov" with url for "https://www.usajobs.gov/Search/Results?hp=public"
-
-  @javascript @a11y
-  Scenario: News search
-    Given the following BingV7 Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | locale |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     |
-      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     |
-
-    And affiliate "en.agency.gov" has the following RSS feeds:
-      | name   | url                              |
-      | News-1 | http://en.agency.gov/feed/news-1 |
-    And affiliate "es.agency.gov" has the following RSS feeds:
-      | name       | url                                  |
-      | Noticias-1 | http://es.agency.gov/feed/noticias-1 |
-
-    And there are 150 news items for "News-1"
-    And there are 5 news items for "Noticias-1"
-
-    When I am on en.agency.gov's "News-1" news search page
-    And I fill in "Enter your search term" with "news item"
-    And I press "Search"
-    Then the "Enter your search term" field should contain "news item"
-    And I should see exactly "20" web search results
-    And I should see a link to "2" with class "usa-pagination__button"
-    And I should see a link to "Next"
-    When I follow "Next"
-    And I should see exactly "20" web search results
-    And I should see a link to "Previous"
-    And I should see a link to "1" with class "usa-pagination__button"
-    And I should see "Next"
-    When I follow page "5"
-    And I follow page "7"
-    And I follow page "8"
-    And I should see exactly "10" web search results
-
-    When I am on es.agency.gov's "Noticias-1" news search page
-    And I should see exactly "5" web search results
 
   @javascript @a11y
   Scenario: Searchers see English Medline Govbox

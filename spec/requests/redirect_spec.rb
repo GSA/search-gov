@@ -30,3 +30,27 @@ describe 'routes for Affiliates' do
     expect(response).to redirect_to('/sites')
   end
 end
+
+describe "/search/news" do
+  it 'redirects to /search' do
+    get '/search/news'
+    expect(response).to redirect_to('/search')
+  end
+
+  it 'preserves query parameters' do  
+    get '/search/news?affiliate=usagov&query=money'  
+  expect(response).to redirect_to('/search?affiliate=usagov&query=money')  
+end  
+end
+
+describe "/search/advanced" do
+  it 'redirects to /search' do
+    get '/search/advanced'
+    expect(response).to redirect_to('/search')
+  end
+
+  it 'preserves query parameters' do  
+    get '/search/advanced?affiliate=usagov&query=money'  
+    expect(response).to redirect_to('/search?affiliate=usagov&query=money')  
+  end  
+end

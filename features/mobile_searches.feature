@@ -84,74 +84,6 @@ Feature: Searches using mobile device
     Then I should see "Sorry, no results found for 'hippopotamus'."
     And I should see "Hippopotamus amphibius"
 
-  Scenario: News search
-    Given the following BingV7 Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | locale | use_redesigned_results_page | search_engine |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | false                       | bing_v7       |
-      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | false                       | bing_v7       |
-
-    And affiliate "en.agency.gov" has the following RSS feeds:
-      | name   | url                              |
-      | News-1 | http://en.agency.gov/feed/news-1 |
-    And affiliate "es.agency.gov" has the following RSS feeds:
-      | name       | url                                  |
-      | Noticias-1 | http://es.agency.gov/feed/noticias-1 |
-
-    And there are 150 news items for "News-1"
-    And there are 5 news items for "Noticias-1"
-
-    When I am on en.agency.gov's "News-1" news search page
-    And I fill in "Enter your search term" with "news item"
-    And I press "Search" within the search box
-
-    Then the "Enter your search term" field should contain "news item"
-    And I should see "Any time" within the current time filter
-    And I should see "Most recent" within the current sort by filter
-    And I should see "150 results"
-    And I should see "Powered by Search.gov"
-    And I should see exactly "20" web search results
-    And I should see "Previous"
-    And I should see a link to "2" with class "pagination-numbered-link"
-    And I should see a link to "Next"
-    When I follow "Next"
-    Then I should see "150 results"
-    And I should see exactly "20" web search results
-    And I should see a link to "Previous"
-    And I should see a link to "1" with class "pagination-numbered-link"
-    And I should see "Next"
-    When I follow "5"
-    And I follow "7"
-    And I follow "8"
-    Then I should see "150 results"
-    And I should see exactly "10" web search results
-
-    When I follow "Last month"
-    Then the "Enter your search term" field should contain "news item"
-    And I should see "Last month" within the current time filter
-    And I should see "Most recent" within the current sort by filter
-    And I should see at least "10" web search results
-
-    When I follow "Best match"
-    Then the "Enter your search term" field should contain "news item"
-    And I should see "Last month" within the current time filter
-    And I should see "Best match" within the current sort by filter
-    And I should see at least "10" web search results
-
-    When I follow "Last hour"
-    Then the "Enter your search term" field should contain "news item"
-    And I should see "no results found"
-
-    When I follow "Clear"
-    And I fill in "Enter your search term" with "body"
-    And I press "Search" within the search box
-    Then I should see at least "10" web search results
-    And I should see "news item 1 body for News-1"
-    And I should see "Powered by Search.gov"
-
-    When I am on es.agency.gov's "Noticias-1" news search page
-    Then I should see "Generado por Search.gov"
-    And I should see at least "5" web search results
-
   Scenario: Custom date range news search
     Given the following BingV7 Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale | use_redesigned_results_page | search_engine |
@@ -499,46 +431,6 @@ Feature: Searches using mobile device
     When I follow "gobierno de todos los sitios" within the search all sites row
     Then I should not see "Los resultados para gobierno son solo de usa.gov."
 
-  Scenario: Searching with matching results on news govbox
-    Given the following BingV7 Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | locale | use_redesigned_results_page | search_engine |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | false                       | BingV7        |
-      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | false                       | BingV7        |
-    And affiliate "en.agency.gov" has the following RSS feeds:
-      | name   | url                              | is_navigable |
-      | Press  | http://en.agency.gov/feed/press  | true         |
-      | Photos | http://en.agency.gov/feed/photos | true         |
-    And the rss govbox is enabled for the site "en.agency.gov"
-    And affiliate "es.agency.gov" has the following RSS feeds:
-      | name     | url                                | is_navigable |
-      | Noticias | http://es.agency.gov/feed/noticias | true         |
-    And the rss govbox is enabled for the site "es.agency.gov"
-    And feed "Press" has the following news items:
-      | link                         | title                     | guid       | published_ago | multiplier | description                      |
-      | http://en.agency.gov/press/1 | First press <b> item </b> | pressuuid1 | day           | 1          | First news item for the feed     |
-      | http://en.agency.gov/press/2 | Second item               | pressuuid2 | day           | 1          | item Next news item for the feed |
-    And feed "Photos" has the following news items:
-      | link                          | title                               | guid       | published_ago | multiplier | description                      |
-      | http://en.agency.gov/photos/1 | First photo <b> item </b>           | photouuid1 | day           | 1          | First news item for the feed     |
-      | http://en.agency.gov/photos/2 | Second item                         | photouuid2 | day           | 1          | item Next news item for the feed |
-      | http://en.agency.gov/press/1  | First duplicate press <b> item </b> | pressuuid1 | day           | 7          | First news item for the feed     |
-    And feed "Noticias" has the following news items:
-      | link                            | title                     | guid         | published_ago | multiplier | description                      |
-      | http://es.agency.gov/noticias/1 | Noticia uno <b> item </b> | noticiauuid1 | day           | 1          | First news item for the feed     |
-      | http://es.agency.gov/noticias/2 | Second item               | noticiauuid2 | day           | 1          | item Next news item for the feed |
-    When I am on en.agency.gov's search page
-    And I fill in "Enter your search term" with "first item"
-    And I press "Search"
-    Then I should see "First press <b> item </b>"
-    And I should see "Press 1 day ago"
-    And I should not see "First duplicate"
-
-    When I am on es.agency.gov's search page
-    And I fill in "Ingrese su búsqueda" with "noticia uno"
-    And I press "Buscar"
-    Then I should see "Noticia uno <b> item </b>"
-    And I should see "Noticias Ayer"
-
   Scenario: Searching on sites with related sites
     Given the following BingV7 Affiliates exist:
       | display_name | name           | contact_email    | first_name | last_name | locale | related_sites_dropdown_label | use_redesigned_results_page | search_engine |
@@ -578,29 +470,6 @@ Feature: Searches using mobile device
     And I press "Search"
     Then I should see a link to "Atlantic Highly Migratory Species; Atlantic Bluefin Tuna Fisheries" with url for "https://www.federalregister.gov/articles/2013/08/19/2013-20176/atlantic-highly-migratory-species-atlantic-bluefin-tuna-fisheries"
     And I should see "A Rule by the National Oceanic and Atmospheric Administration posted on August 19, 2013."
-
-  Scenario: Advanced search
-    Given the following BingV7 Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | locale | use_redesigned_results_page | search_engine |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | false                       | BingV7        |
-      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | false                       | BingV7        |
-    And affiliate "en.agency.gov" has the following RSS feeds:
-      | name     | url                                | is_navigable |
-      | Articles | http://en.agency.gov/feed/articles | true         |
-    And affiliate "es.agency.gov" has the following RSS feeds:
-      | name      | url                                | is_navigable |
-      | Artículos | http://es.agency.gov/feed/articles | true         |
-    When I am on en.agency.gov's advanced search page
-    Then I should see "Everything" within the SERP active navigation
-    And the "Moderate" radio button should be checked
-
-    When I fill in "All of these words" with "allofit"
-    And I fill in "This exact phrase" with "exact"
-    And I fill in "Any of these words" with "any"
-    And I fill in "None of these words" with "bad"
-    And I select "Adobe PDF" from "File Type"
-    And I press "Advanced Search"
-    And the "Enter your search term" field should contain "allofit \"exact\" \-bad \(any\) filetype:pdf"
 
   Scenario: Custom page 1 results pointer
     Given the following BingV7 Affiliates exist:
