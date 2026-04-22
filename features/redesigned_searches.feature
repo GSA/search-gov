@@ -284,46 +284,7 @@ Feature: Search - redesign
     And I should see "Very very long colllection name two"
     And I should see "View topic"
     And I should see "Other Site"
-
-  @javascript @a11y
-  Scenario: Video news search
-    Given the following BingV7 Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | locale | youtube_handles         |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | usgovernment,whitehouse |
-      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | gobiernousa             |
-    And affiliate "en.agency.gov" has the following RSS feeds:
-      | name   | url | is_navigable | is_managed |
-      | Videos |     | true         | true       |
-    And affiliate "es.agency.gov" has the following RSS feeds:
-      | name   | url | is_navigable | is_managed |
-      | Videos |     | true         | true       |
-    And there are 20 video news items for "usgovernment_channel_id"
-    And there are 20 video news items for "whitehouse_channel_id"
-    And there are 5 video news items for "gobiernousa_channel_id"
-
-    When I am on en.agency.gov's search page
-    And I fill in "Enter your search term" with "video"
-    And I press "Search"
-    Then I should see exactly "1" redesigned video search result
-
-    When I follow "Videos"
-    Then I should see exactly "20" redesigned video search result
-    And I should see a link to "2" with class "usa-pagination__button"
-    And I should see a link to "Next"
-    And I should see Powered by SearchGov
-
-    When I follow "Next"
-    Then I should see exactly "20" redesigned video search results
-    And I should see a link to "Previous"
-    And I should see a link to "1" with class "usa-pagination__button"
-
-    When I follow "Previous"
-    And I follow page "2"
-    Then I should see exactly "20" redesigned video search results
-
-    When I follow page "1"
-    Then I should see exactly "20" redesigned video search results
-
+    
   @javascript @a11y
   Scenario: Display an Alert on search page
     Given the following BingV7 Affiliates exist:

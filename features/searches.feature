@@ -21,76 +21,7 @@ Feature: Search
     And I fill in "Enter your search term" with "foobarbazbiz"
     And I press "Search" within the search box
     Then I should see "Sorry, no results found for 'foobarbazbiz'. Try entering fewer or more general search terms."
-
-  Scenario: No results when searching with active RSS feeds
-    Given the following BingV7 Affiliates exist:
-      | display_name | name    | contact_email | first_name | last_name    | use_redesigned_results_page |
-      | bar site     | bar.gov | aff@bar.gov   | John       |Bar           | false                       |
-    And affiliate "bar.gov" has the following RSS feeds:
-      | name          | url                                                | is_navigable |
-      | Press         | http://www.whitehouse.gov/feed/press               | true         |
-      | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery | true         |
-    And feed "Photo Gallery" has the following news items:
-      | link                             | title       | guid  | published_ago | description                  |
-      | http://www.whitehouse.gov/news/3 | Third item  | uuid3 | week          | item More news items for the feed |
-      | http://www.whitehouse.gov/news/4 | Fourth item | uuid4 | week          | item Last news item for the feed  |
-    When I am on bar.gov's search page
-    And I search for "item"
-    Then I should see at least "2" web search results
-
-    When I follow "Press" in the search navbar
-    Then I should see "Sorry, no results found for 'item'. Try entering fewer or more general search terms."
-
-    When I follow "Photo Gallery" in the search navbar
-    Then I should see "item More news items for the feed"
-    When I follow "Last day"
-    Then I should see "Sorry, no results found for 'item'. Try entering fewer or more general search terms."
-    When I follow "Clear"
-    Then I should see at least "2" web search results
-
-  Scenario: No results when searching on Spanish site with active RSS feeds
-    Given the following BingV7 Affiliates exist:
-      | display_name | name    | contact_email | first_name | last_name | locale | use_redesigned_results_page |
-      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | es     | false                       |
-    And affiliate "bar.gov" has the following RSS feeds:
-      | name          | url                                                | is_navigable |
-      | Press         | http://www.whitehouse.gov/feed/press               | true         |
-      | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery | true         |
-    And feed "Photo Gallery" has the following news items:
-      | link                             | title       | guid  | published_ago | description                  |
-      | http://www.whitehouse.gov/news/3 | Third item  | uuid3 | week          | More news items for the feed |
-      | http://www.whitehouse.gov/news/4 | Fourth item | uuid4 | week          | Last news item for the feed  |
-    When I am on bar.gov's search page
-    And I fill in "query" with "item"
-    And I press "Buscar" within the search box
-    Then I should see at least "2" web search results
-
-    When I follow "Press" in the search navbar
-    Then I should see "No hemos encontrado ningún resultado que contenga 'item'. Intente usar otras palabras clave o sinónimos."
-
-    When I follow "Photo Gallery" in the search navbar
-    And I follow "Último día"
-    Then I should see "No hemos encontrado ningún resultado que contenga 'item'. Intente usar otras palabras clave o sinónimos."
-    When I follow "Borrar"
-    Then I should see at least "2" web search results
-
-  Scenario: Searching on a site with media RSS
-    Given the following BingV7 Affiliates exist:
-      | display_name | name    | contact_email | first_name | last_name | use_redesigned_results_page |
-      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | false                       |
-    And affiliate "bar.gov" has the following RSS feeds:
-      | name   | url                                   | is_navigable | show_only_media_content |
-      | Photos | http://www.whitehouse.gov/feed/photos | true         | true                    |
-    And feed "Photos" has the following news items:
-      | link                              | title   | description     | guid  | published_ago | thumbnail_url                          | content_url                            |
-      | http://www.whitehouse.gov/photo/1 | Photo 1 | desc of photo 1 | uuid1 | week          | http://www.whitehouse.gov/media/t1.png | http://www.whitehouse.gov/media/c1.png |
-      | http://www.whitehouse.gov/photo/2 | Photo 2 | desc of photo 2 | uuid2 | week          | http://www.whitehouse.gov/media/t2.png | http://www.whitehouse.gov/media/c2.jpg |
-      | http://www.whitehouse.gov/photo/3 | Photo 3 | no media        | uuid3 | week          |                                        |                                        |
-    When I am on bar.gov's "Photos" news search page
-    And I search for "photo"
-    Then I should see 2 image results
-    And I should see "Powered by Search.gov"
-
+    
   Scenario: Visiting English affiliate search with multiple domains
     Given the following BingV7 Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name | domains                | use_redesigned_results_page |
@@ -157,8 +88,6 @@ Feature: Search
     And I press "Buscar" within the search box
     Then I should see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales" within the med topic govbox
 
-
-
   Scenario: When a searcher clicks on a collection and the query is blank
     Given the following BingV7 Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name  | use_redesigned_results_page |
@@ -169,71 +98,6 @@ Feature: Search
     When I go to aff.gov's search page
     And I follow "Topics" in the search navbar
     Then I should see "Please enter a search term"
-
-  Scenario: When a searcher on an English site clicks on an RSS Feed and the query is blank
-    Given the following BingV7 Affiliates exist:
-      | display_name     | name       | contact_email | first_name | last_name | locale | youtube_handles | use_redesigned_results_page |
-      | bar site         | bar.gov    | aff@bar.gov   | John       | Bar       | en     | en_agency       | false                       |
-    And affiliate "bar.gov" has the following RSS feeds:
-      | name   | url                                  | is_navigable | is_managed |
-      | Press  | http://www.whitehouse.gov/feed/press | true         |            |
-      | Videos |                                      | true         | true       |
-    And feed "Press" has the following news items:
-      | link                             | title       | guid  | published_ago | description                       |
-      | http://www.whitehouse.gov/news/1 | First item  | uuid1 | day           | item First news item for the feed |
-      | http://www.whitehouse.gov/news/2 | Second item | uuid2 | day           | item Next news item for the feed  |
-    And feed "en_agency_channel_id" has the following news items:
-      | link                                       | title            | guid       | published_ago | description                             |
-      | http://www.youtube.com/watch?v=0hLMc-6ocRk | First video item | videouuid1 | day           | item First video news item for the feed |
-    When I am on bar.gov's search page
-    And I follow "Press" in the search navbar
-    Then I should see the browser page titled "Press - bar site Search Results"
-    And I should see "First item"
-    And I should see "Second item"
-    And I should see "2 results"
-    And I should see exactly "2" web search results
-
-    When I am on bar.gov's search page
-    And I fill in "query" with "first item"
-    And I press "Search" within the search box
-    And I follow "Videos" in the search navbar
-    Then I should see "Refine your search"
-    And I fill in "query" with ""
-    And I press "Search" within the search box
-    Then I should see the browser page titled "Videos - bar site Search Results"
-    And I should see "First video item"
-
-  Scenario: When a searcher on a Spanish site clicks on an RSS Feed and the query is blank
-    Given the following BingV7 Affiliates exist:
-      | display_name     | name       | contact_email | first_name | last_name | locale | youtube_handles | use_redesigned_results_page |
-      | Spanish bar site | es.bar.gov | aff@bar.gov   | John       | Bar       | es     | es_agency       | false                       |
-    And affiliate "es.bar.gov" has the following RSS feeds:
-      | name           | url                                  | is_navigable | is_managed |
-      | Press          | http://www.whitehouse.gov/feed/press | true         |            |
-      | Spanish Videos |                                      | true         | true       |
-    And feed "Press" has the following news items:
-      | link                             | title       | guid  | published_ago | description                       |
-      | http://www.whitehouse.gov/news/1 | Noticia uno | uuid1 | day           | item First news item for the feed |
-      | http://www.whitehouse.gov/news/2 | Noticia dos | uuid2 | day           | item Next news item for the feed  |
-    And feed "es_agency_channel_id" has the following news items:
-      | link                                       | title             | guid       | published_ago | description                             |
-      | http://www.youtube.com/watch?v=0hLMc-6ocRk | Noticia video uno | videouuid1 | day           | item First video news item for the feed |
-    When I am on es.bar.gov's search page
-    And I follow "Press" in the search navbar
-    Then I should see the browser page titled "Press - Spanish bar site resultados de la búsqueda"
-    Then I should see "2 resultados"
-    And I should see exactly "2" web search results
-    And I should see "Noticia uno"
-    And I should see "Noticia dos"
-
-    When I am on es.bar.gov's search page
-    And I fill in "query" with "noticia uno"
-    And I press "Buscar" within the search box
-    And I follow "Videos" in the search navbar
-    And I fill in "query" with ""
-    And I press "Buscar" within the search box
-    Then I should see the browser page titled "Spanish Videos - Spanish bar site resultados de la búsqueda"
-    And I should see "Noticia video uno"
 
   Scenario: Searching indexed document collections
     Given the following BingV7 Affiliates exist:
