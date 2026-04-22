@@ -11,6 +11,26 @@ service_exists() {
     systemctl list-unit-files --type=service --no-legend 2>/dev/null | awk '{print $1}' | grep -Fxq "$service_name"
 }
 
+resolve_puma_service() {
+  if [ -n "${PUMA_SERVICE:-}" ]; then
+    echo "$PUMA_SERVICE"
+    return 0
+  fi
+
+  local discovered_service
+  discovered_service="$(systemctl list-unit-files --type=service --no-legend 2>/dev/null \
+    | awk '{print $1}' \
+    | sed 's/\.service$//' \
+    | grep -E '^puma_search-gov_' \
+    | head -n 1 || true)"
+
+  if [ -n "$discovered_service" ]; then
+    echo "$discovered_service"
+  else
+    echo "puma"
+  fi
+}
+
 stop_service_if_present() {
   local service_name="$1"
 
@@ -23,7 +43,7 @@ stop_service_if_present() {
 }
 
 # These defaults are intentionally overridable per environment.
-PUMA_SERVICE="${PUMA_SERVICE:-puma}"
+PUMA_SERVICE="$(resolve_puma_service)"
 RESQUE_WORKER_SERVICE="${RESQUE_WORKER_SERVICE:-resque-worker}"
 RESQUE_SCHEDULER_SERVICE="${RESQUE_SCHEDULER_SERVICE:-resque-scheduler}"
 
