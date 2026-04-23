@@ -15,7 +15,7 @@ module NavigationHelpers
     when /^(.*)'s redesigned search page$/
       search_path(:affiliate => $1, :redesign => 'true')
     when /^(.*)'s advanced search page$/
-      advanced_search_path(:affiliate => $1)
+      search_path(:affiliate => $1)
     when /^(.*)'s search page with unsanitized "([^"]*)" query$/
       search_path(:affiliate => $1, :query => "<b>#{$2}</b><script>script</script>")
     when /^(.*)'s search page with site limited to "([^"]*)"$/
@@ -23,11 +23,11 @@ module NavigationHelpers
     when /^(.*)'s image search page$/
       image_search_path(:affiliate => $1)
     when /^(.*)'s news search page$/
-      news_search_path(:affiliate => $1)
+      search_path(:affiliate => $1)
     when /^(.*)'s redesigned news search page$/
-      news_search_path(:affiliate => $1, :redesign => 'true')
+      search_path(:affiliate => $1, :redesign => 'true')
     when /^(.*)'s "([^"]*)" news search page$/
-      news_search_path(:affiliate => $1, :channel => Affiliate.find_by_name($1).rss_feeds.find_by_name($2))
+      search_path(:affiliate => $1, :channel => Affiliate.find_by_name($1).rss_feeds.find_by_name($2))
     when /^(.*)'s docs search page$/
       docs_search_path(:affiliate => $1)
     when /^(.*)'s redesigned docs search page$/

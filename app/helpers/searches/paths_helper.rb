@@ -40,7 +40,7 @@ module Searches::PathsHelper
 
     rss_params.merge! extract_current_search_filter_params(search)
     rss_params.merge! extra_params
-    news_search_path rss_params
+    search_path rss_params
   end
 
   def navigable_params(search_params, id_sym, id, query, *keys)

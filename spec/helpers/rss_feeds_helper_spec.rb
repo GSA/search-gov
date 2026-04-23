@@ -8,7 +8,7 @@ describe RssFeedsHelper do
 
   describe '#link_to_preview_rss_feed' do
     let(:preview_link) do
-      "a[href=\"http://test.host/search/news?affiliate=usagov&channel=#{rss_feed.id}\"][target=\"_blank\"]"
+      "a[href=\"http://test.host/search?affiliate=usagov&channel=#{rss_feed.id}\"][target=\"_blank\"]"
     end
 
     it 'returns the preview link' do
