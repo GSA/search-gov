@@ -10,7 +10,18 @@ describe ReactHelper do
     let(:search_options) { {} }
 
     before do
-      allow(helper).to receive(:react_component)
+      allow(helper).to receive(:react_component).and_return('')
+    end
+
+    it 'renders search results header, body, and footer as separate components' do
+      helper.search_results_layout(search, {}, vertical, affiliate, search_options)
+
+      expect(helper).to have_received(:react_component).
+        with('SearchResultsHeader', hash_including(page: hash_including(title: affiliate.display_name)))
+      expect(helper).to have_received(:react_component).
+        with('SearchResultsLayout', hash_including(page: hash_including(title: affiliate.display_name)))
+      expect(helper).to have_received(:react_component).
+        with('SearchResultsFooter', hash_including(translations: anything))
     end
 
     context 'when an affiliate has primary header links' do
@@ -28,7 +39,7 @@ describe ReactHelper do
         helper.search_results_layout(search, {}, vertical, affiliate, search_options)
 
         expect(helper).to have_received(:react_component).
-          with('SearchResultsLayout', hash_including(primaryHeaderLinks: [
+          with('SearchResultsHeader', hash_including(primaryHeaderLinks: [
                                                        { title: 'Link 0', url: 'https://link_0.gov' },
                                                        { title: 'Link 1', url: 'https://link_1.gov' },
                                                        { title: 'Link 2', url: 'https://link_2.gov' }
@@ -51,7 +62,7 @@ describe ReactHelper do
         helper.search_results_layout(search, {}, vertical, affiliate, search_options)
 
         expect(helper).to have_received(:react_component).
-          with('SearchResultsLayout', hash_including(secondaryHeaderLinks: [
+          with('SearchResultsHeader', hash_including(secondaryHeaderLinks: [
                                                        { title: 'Link 0', url: 'https://link_0.gov' },
                                                        { title: 'Link 1', url: 'https://link_1.gov' },
                                                        { title: 'Link 2', url: 'https://link_2.gov' }
@@ -74,7 +85,7 @@ describe ReactHelper do
         helper.search_results_layout(search, {}, vertical, affiliate, search_options)
 
         expect(helper).to have_received(:react_component).
-          with('SearchResultsLayout', hash_including(footerLinks: [
+          with('SearchResultsFooter', hash_including(footerLinks: [
                                                        { title: 'Link 0', url: 'https://link_0.gov' },
                                                        { title: 'Link 1', url: 'https://link_1.gov' },
                                                        { title: 'Link 2', url: 'https://link_2.gov' }
