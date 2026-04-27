@@ -173,100 +173,6 @@ describe GovboxSet do
         end
       end
 
-      context 'when there are video results' do
-        before do
-          allow(affiliate).to receive(:is_video_govbox_enabled?).and_return(true)
-
-          youtube_profile = youtube_profiles(:whitehouse)
-          rss_feed_url = youtube_profile.rss_feed.rss_feed_urls.first
-          rss_feed_url.news_items.delete_all
-
-          news_items = (1..2).map do |i|
-            NewsItem.new(rss_feed_url: rss_feed_url,
-                         link: "http://www.youtube.com/watch?v=#{i}&feature=youtube_gdata",
-                         title: "video #{i}",
-                         description: "video news description #{i}",
-                         published_at: Date.new(2011, 9, 26),
-                         guid: "http://gdata.youtube.com/feeds/base/videos/#{i}",
-                         duration: "#{i}:0#{i}",
-                         updated_at: Time.current)
-          end
-
-          elastic_results = instance_double(ElasticNewsItemResults,
-                                            results: news_items,
-                                            total: 2)
-
-          allow(ElasticNewsItem).to receive(:search_for).and_return(elastic_results)
-          allow(affiliate).to receive(:is_video_govbox_enabled?).and_return(true)
-        end
-
-        after do
-          NewsItem.destroy_all
-        end
-
-        it 'returns the affiliate display name and an array of video news items' do
-          expect(govbox_set_json).to eq({
-                                          recommendedBy: affiliate.display_name,
-                                          youtubeNewsItems: [
-                                            {
-                                              'description' => 'video news description 1',
-                                              'link' => 'http://www.youtube.com/watch?v=1&feature=youtube_gdata',
-                                              'published_at' => 'September 26, 2011 00:00',
-                                              'title' => 'video 1',
-                                              'youtube_thumbnail_url' => 'https://i.ytimg.com/vi/1/default.jpg',
-                                              'duration' => '1:01'
-                                            }
-                                          ]
-                                        })
-        end
-      end
-
-      context 'when there are new news results' do
-        let(:news_item) { NewsItem.new(title: 'title', link: 'https://www.search.gov', description: 'description', published_at: Date.current - 2) }
-        let(:news_results) { instance_double(ElasticNewsItemResults, total: 1, results: [news_item]) }
-
-        before do
-          allow(affiliate).to receive(:is_video_govbox_enabled?).and_return(false)
-          allow(affiliate).to receive(:is_rss_govbox_enabled?).and_return(true)
-          allow(ElasticNewsItem).to receive(:search_for).and_return(news_results)
-        end
-
-        it 'returns the news results' do
-          expect(govbox_set_json).to eq({
-                                          recommendedBy: affiliate.display_name,
-                                          newNews: [{
-                                            description: news_item.description,
-                                            link: news_item.link,
-                                            publishedAt: news_item.published_at.to_date,
-                                            title: news_item.title
-                                          }]
-                                        })
-        end
-      end
-
-      context 'when there are old news results' do
-        let(:news_item) { NewsItem.new(title: 'title', link: 'https://www.search.gov', description: 'description', published_at: Date.current - 10) }
-        let(:news_results) { instance_double(ElasticNewsItemResults, total: 1, results: [news_item]) }
-
-        before do
-          allow(affiliate).to receive(:is_video_govbox_enabled?).and_return(false)
-          allow(affiliate).to receive(:is_rss_govbox_enabled?).and_return(true)
-          allow(ElasticNewsItem).to receive(:search_for).and_return(news_results)
-        end
-
-        it 'returns the news results' do
-          expect(govbox_set_json).to eq({
-                                          recommendedBy: affiliate.display_name,
-                                          oldNews: [{
-                                            description: news_item.description,
-                                            link: news_item.link,
-                                            publishedAt: news_item.published_at.to_date,
-                                            title: news_item.title
-                                          }]
-                                        })
-        end
-      end
-
       context 'when there is no additional result data' do
         it 'returns the affiliate display name' do
           expect(govbox_set_json).to eq({
@@ -484,81 +390,6 @@ describe GovboxSet do
       end
     end
 
-    context 'when an affiliate has news govbox enabled' do
-      let(:blog_feed) { mock_model(RssFeed, name: 'Blog', is_managed?: false) }
-      let(:news_feed) { mock_model(RssFeed, name: 'News', is_managed?: false) }
-      let(:non_video_results) { double('non video results', total: 3) }
-
-      before do
-        expect(affiliate).to receive(:is_rss_govbox_enabled?).and_return(true)
-        expect(affiliate).to receive(:is_video_govbox_enabled?).and_return(false)
-        non_managed_feeds = [news_feed, blog_feed]
-        allow(affiliate).to receive_message_chain(:rss_feeds, :non_mrss, :non_managed, :includes, :to_a).
-          and_return(non_managed_feeds)
-      end
-
-      it 'should retrieve non-video news items from the last 13 months' do
-        expect(ElasticNewsItem).to receive(:search_for).
-          with({ q: 'foo', rss_feeds: [news_feed, blog_feed], excluded_urls: affiliate.excluded_urls,
-                 since: 4.months.ago.beginning_of_day, language: 'en', title_only: true }).
-          and_return(non_video_results)
-
-        govbox_set = described_class.new('foo', affiliate, geoip_info)
-        expect(govbox_set.news_items).to eq(non_video_results)
-        expect(govbox_set.modules).to include('NEWS')
-      end
-
-      it 'uses highlight_options' do
-        expected_search_options = {
-          excluded_urls: affiliate.excluded_urls,
-          language: 'en',
-          q: 'foo',
-          rss_feeds: [news_feed, blog_feed],
-          since: 4.months.ago.beginning_of_day,
-          title_only: true
-        }.merge(highlighting_options)
-
-        expect(ElasticNewsItem).to receive(:search_for).
-          with(expected_search_options).
-          and_return(non_video_results)
-
-        govbox_set = described_class.new('foo', affiliate, geoip_info, highlighting_options)
-        expect(govbox_set.news_items).to eq(non_video_results)
-      end
-    end
-
-    context 'when an affiliate has video govbox enabled' do
-      let(:youtube_feed) { mock_model(RssFeed) }
-      let(:video_results) { double('video results', total: 3) }
-
-      before do
-        expect(affiliate).to receive(:is_rss_govbox_enabled?).and_return(false)
-        expect(affiliate).to receive(:is_video_govbox_enabled?).and_return(true)
-
-        youtube_profile_ids = double 'youtube profile ids'
-        expect(affiliate).to receive(:youtube_profile_ids).and_return youtube_profile_ids
-        allow(RssFeed).to receive_message_chain(:includes, :owned_by_youtube_profile, :where).and_return [youtube_feed]
-      end
-
-      it 'should retrieve video news items' do
-        expected_search_options = {
-          excluded_urls: affiliate.excluded_urls,
-          language: 'en',
-          q: 'foo',
-          rss_feeds: [youtube_feed],
-          since: 13.months.ago.beginning_of_day,
-          title_only: true
-        }.merge(highlighting_options)
-
-        expect(ElasticNewsItem).to receive(:search_for).with(expected_search_options).
-          and_return(video_results)
-
-        govbox_set = described_class.new('foo', affiliate, geoip_info, highlighting_options)
-        expect(govbox_set.video_news_items).to eq(video_results)
-        expect(govbox_set.modules).to include('VIDS')
-      end
-    end
-
     context 'med topics' do
       fixtures :med_topics
       context 'when the affiliate has the medline govbox enabled' do
@@ -647,8 +478,6 @@ describe GovboxSet do
         expect(ElasticFeaturedCollection).not_to receive(:search_for)
         expect(affiliate).not_to receive(:is_federal_register_document_govbox_enabled?)
         expect(affiliate).not_to receive(:is_medline_govbox_enabled?)
-        expect(affiliate).not_to receive(:is_rss_govbox_enabled?)
-        expect(affiliate).not_to receive(:is_video_govbox_enabled?)
         expect(affiliate).not_to receive(:jobs_enabled?)
         expect(SaytSuggestion).not_to receive(:related_search)
       end

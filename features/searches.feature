@@ -21,7 +21,8 @@ Feature: Search
     And I fill in "Enter your search term" with "foobarbazbiz"
     And I press "Search" within the search box
     Then I should see "Sorry, no results found for 'foobarbazbiz'. Try entering fewer or more general search terms."
-    
+
+
   Scenario: Visiting English affiliate search with multiple domains
     Given the following BingV7 Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name | domains                | use_redesigned_results_page |

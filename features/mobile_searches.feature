@@ -112,6 +112,62 @@ Feature: Searches using mobile device
     And I should see at least "7" web search results
     And every result URL should match "www.usa.gov/espanol"
 
+  Scenario: Site navigations without dropdown menu
+    Given the following BingV7 Affiliates exist:
+      | display_name | name          | contact_email    | first_name | last_name | locale | use_redesigned_results_page | search_engine |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | false                       | bing_v7       |
+    And affiliate "en.agency.gov" has the following document collections:
+      | name | prefixes             |
+      | Blog | http://blog.usa.gov/ |
+    When I am on en.agency.gov's search page
+    Then I should see "Everything" within the SERP active navigation
+
+    When I fill in "Enter your search term" with "news"
+    And I press "Search"
+    Then I should see "Everything" within the SERP active navigation
+    And I should see at least "10" web search results
+
+    When I follow "Blog" within the SERP navigation
+    And I press "Search"
+    Then I should see "Blog" within the SERP active navigation
+    And I should see at least "1" web search results
+
+  Scenario: Site navigations with dropdown menu
+    Given the following BingV7 Affiliates exist:
+      | display_name | name          | contact_email    | first_name | last_name | locale | navigation_dropdown_label | use_redesigned_results_page | search_engine |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | My-awesome-label          | false                       | bing_v7       |
+    And affiliate "en.agency.gov" has the following document collections:
+      | name                 | prefixes                 | position | is_navigable |
+      | FAQs                 | http://answers.usa.gov/  | 0        | true         |
+      | Articles             | https://www.usa.gov      | 1        | true         |
+      | Apps                 | https://www.data.gov     | 2        | true         |
+      | Blog                 | https://search.gov/blog/ | 3        | true         |
+      | Inactive site search | http://apps.usa.gov/     | 6        | false        |
+      | News                 | https://www.usa.gov/news | 7        | true         |
+
+    When I am on en.agency.gov's search page
+    Then I should see "Everything" within the SERP active navigation
+    And I fill in "Enter your search term" with "news"
+    And I press "Search"
+
+    Then I should see "Everything" within the SERP active navigation
+    And I should see "Everything FAQs Articles My-awesome-label Apps Blog News" within the SERP navigation
+    And I should see at least "10" web search results
+
+    When I follow "News" within the SERP navigation
+    Then I should see "News" within the SERP active navigation
+    And I should see "Everything FAQs News My-awesome-label Articles Apps Blog" within the SERP navigation
+
+    When I follow "Apps" within the SERP navigation
+    Then I should see "Apps" within the SERP active navigation
+    And I should see "Everything FAQs Apps My-awesome-label Articles Blog News" within the SERP navigation
+    And I fill in "Enter your search term" with "app"
+    And I press "Search"
+    And I should see at least "1" web search results
+
+    When I am on en.agency.gov's "Inactive site search" docs search page
+    Then I should see "Inactive site search" within the SERP active navigation
+
   Scenario: Job search
     Given the following BingV7 Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name |locale | jobs_enabled | use_redesigned_results_page | search_engine |

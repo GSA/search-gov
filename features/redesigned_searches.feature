@@ -284,7 +284,7 @@ Feature: Search - redesign
     And I should see "Very very long colllection name two"
     And I should see "View topic"
     And I should see "Other Site"
-    
+
   @javascript @a11y
   Scenario: Display an Alert on search page
     Given the following BingV7 Affiliates exist:
@@ -372,18 +372,3 @@ Feature: Search - redesign
     And I should see "First no results link"
     And I should see "Second no results link"
 
-  @javascript @a11y_wip
-  Scenario: Search with video results
-    Given the following BingV7 Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | locale | youtube_handles |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | whitehouse      |
-    And affiliate "en.agency.gov" has the following RSS feeds:
-      | name   | url | is_navigable | is_managed |
-      | Videos |     | true         | true       |
-    And there are 20 video news items for "whitehouse_channel_id"
-
-    When I am on en.agency.gov's redesigned search page
-    And I search for "video" in the redesigned search page
-    Then I should see exactly "1" video govbox search results in the redesigned SERP
-    And I should see "7 days ago" in the video govbox
-    And I should see "More videos about video"

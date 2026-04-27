@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class ResultsWithBodyAndDescriptionPostProcessor < ResultsPostProcessor
-  include NewsItemsHelper
+  include ActionView::Helpers::DateHelper
+
   attr_accessor :results
 
   SPECIAL_URL_PATH_EXT_NAMES = %w[doc pdf ppt ps rtf swf txt xls docx pptx xlsx].freeze
@@ -9,7 +10,6 @@ class ResultsWithBodyAndDescriptionPostProcessor < ResultsPostProcessor
   def initialize(results, _val: nil, youtube: false)
     super
     @results = results
-    @youtube = youtube
   end
 
   def post_process_results
@@ -49,15 +49,17 @@ class ResultsWithBodyAndDescriptionPostProcessor < ResultsPostProcessor
         title: translate_highlights(result['title']),
         url: result['url'] || result['link'],
         description: format_description(result),
-        publishedAt: news_item_time_ago_in_words(result['published_at']),
+        publishedAt: format_published_at(result['published_at']),
         fileType: file_type(result['url']),
-        youtube: @youtube,
-        youtubePublishedAt: (result&.published_at if @youtube),
-        youtubeThumbnailUrl: (result&.youtube_thumbnail_url if @youtube),
-        youtubeDuration: (result&.duration if @youtube),
         blendedModule: result_module_for_blended(result)
       }.compact_blank
     end
+  end
+
+  def format_published_at(published_at)
+    return unless published_at.present? && published_at < Time.current
+
+    time_ago_in_words(published_at, scope: 'datetime.time_ago_in_words')
   end
 
   def format_description(result)

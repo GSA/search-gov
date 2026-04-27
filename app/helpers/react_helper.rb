@@ -14,7 +14,6 @@ module ReactHelper
       jobsEnabled: (affiliate.jobs_enabled? and search.modules.include?('JOBS')),
       language: affiliate.language.slice(:code, :rtl),
       navigationLinks: navigation_links(search, params),
-      newsLabel: news_label(search),
       noResultsMessage: no_result_message(search),
       page: page_data(affiliate),
       params:,
@@ -66,7 +65,7 @@ module ReactHelper
   private
 
   def related_searches(search)
-    return [] if search.is_a?(NewsSearch) || search.related_search.nil?
+    return [] if search.related_search.nil?
 
     search.related_search.map do |related_term|
       {
@@ -74,16 +73,6 @@ module ReactHelper
         link: search_path(affiliate: search.affiliate.name, query: strip_tags(related_term))
       }
     end
-  end
-
-  def news_label(search)
-    return if search.query.blank? || search.is_a?(NewsSearch)
-
-    affiliate = search.affiliate
-    {
-      newsAboutQuery: news_about_query(affiliate, search.query),
-      results: news_items_results(affiliate, search)
-    }
   end
 
   def sitelimit_alert(search, params)

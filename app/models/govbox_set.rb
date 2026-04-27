@@ -15,8 +15,7 @@ class GovboxSet
               :med_topic,
               :modules,
               :news_items,
-              :related_search,
-              :video_news_items
+              :related_search
 
   def initialize(query, affiliate, geoip_info, options = {})
     @query = query
@@ -39,7 +38,6 @@ class GovboxSet
     init_federal_register_documents
     init_med_topic
     init_news_items
-    init_video_news_items
     init_jobs
     init_related_search
   end
@@ -52,7 +50,6 @@ class GovboxSet
       jobs: format_jobs,
       healthTopic: format_health_topic,
       federalRegisterDocuments: format_federal_register_documents,
-      youtubeNewsItems: format_video_news_items,
       oldNews: format_old_news,
       newNews: format_new_news
     }.compact_blank
@@ -68,29 +65,6 @@ class GovboxSet
     return '' unless html
 
     HTML_Truncator.truncate(html, DEFAULT_TRUNCATED_HTML_LENGTH, DEFAULT_TRUNCATE_OPTIONS)
-  end
-
-  def videos_exist?
-    video_feeds = RssFeed.includes(:rss_feed_urls).owned_by_youtube_profile.where(owner_id: @affiliate.youtube_profile_ids)
-    video_feeds.present? && @affiliate.is_video_govbox_enabled? && @video_news_items.total.positive?
-  end
-
-  def first_video_result
-    @video_news_items&.results&.first(1)
-  end
-
-  def format_video_news_items
-    return unless videos_exist?
-
-    raw_video_results&.each do |result|
-      result[:published_at] = result[:published_at].to_datetime.to_fs(:long)
-      result[:title] = translate_highlights(result[:title])
-      result[:description] = truncate_description(translate_highlights(result[:description]))
-    end
-  end
-
-  def raw_video_results
-    first_video_result&.map { |result| result.slice(:link, :title, :description, :published_at, :youtube_thumbnail_url, :duration) }
   end
 
   def fresh_news_items?
@@ -207,23 +181,6 @@ class GovboxSet
 
     @med_topic = MedTopic.search_for(@query, I18n.locale.to_s)
     @modules << 'MEDL' if @med_topic
-  end
-
-  def init_video_news_items
-    return unless @affiliate.is_video_govbox_enabled?
-
-    youtube_profile_ids = @affiliate.youtube_profile_ids
-    video_feeds = RssFeed.includes(:rss_feed_urls).owned_by_youtube_profile.where(owner_id: youtube_profile_ids)
-    return if video_feeds.blank?
-
-    search_options = build_search_options(
-      excluded_urls: @affiliate.excluded_urls,
-      rss_feeds: video_feeds,
-      since: 13.months.ago.beginning_of_day,
-      title_only: true
-    )
-    @video_news_items = ElasticNewsItem.search_for(search_options)
-    @modules << 'VIDS' if elastic_results_exist?(@video_news_items)
   end
 
   def init_news_items

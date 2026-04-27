@@ -27,7 +27,7 @@ module NavigationHelpers
     when /^(.*)'s redesigned news search page$/
       search_path(:affiliate => $1, :redesign => 'true')
     when /^(.*)'s "([^"]*)" news search page$/
-      search_path(:affiliate => $1, :channel => Affiliate.find_by_name($1).rss_feeds.find_by_name($2))
+      search_path(:affiliate => $1)
     when /^(.*)'s docs search page$/
       docs_search_path(:affiliate => $1)
     when /^(.*)'s redesigned docs search page$/

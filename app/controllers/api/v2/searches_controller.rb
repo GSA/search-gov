@@ -22,12 +22,6 @@ module Api
         respond_with(@search)
       end
 
-      def video
-        @search = ApiVideoSearch.new(@search_options.attributes)
-        @search.run
-        respond_with(@search)
-      end
-
       # This endpoint is currently unused, but may be re-enabled in the future:
       # https://cm-jira.usa.gov/browse/SFL-46
       def docs
@@ -113,7 +107,7 @@ module Api
 
       def search_options_validator_klass
         case action_name.to_sym
-        when :blended, :video then Api::NonCommercialSearchOptions
+        when :blended then Api::NonCommercialSearchOptions
         when :i14y then Api::I14ySearchOptions
         when :docs then Api::DocsSearchOptions
         end
