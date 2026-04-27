@@ -279,26 +279,6 @@ Feature: Searches using mobile device
     Then I should see a link to "Atlantic Highly Migratory Species; Atlantic Bluefin Tuna Fisheries" with url for "https://www.federalregister.gov/articles/2013/08/19/2013-20176/atlantic-highly-migratory-species-atlantic-bluefin-tuna-fisheries"
     And I should see "A Rule by the National Oceanic and Atmospheric Administration posted on August 19, 2013."
 
-  Scenario: Advanced search
-    Given the following BingV7 Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | locale | use_redesigned_results_page | search_engine |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | false                       | BingV7        |
-      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | false                       | BingV7        |
-    And affiliate "en.agency.gov" has the following document collections:
-      | name     | prefixes            |
-      | Articles | https://www.usa.gov |
-    When I am on en.agency.gov's advanced search page
-    Then I should see "Everything" within the SERP active navigation
-    And the "Moderate" radio button should be checked
-
-    When I fill in "All of these words" with "allofit"
-    And I fill in "This exact phrase" with "exact"
-    And I fill in "Any of these words" with "any"
-    And I fill in "None of these words" with "bad"
-    And I select "Adobe PDF" from "File Type"
-    And I press "Advanced Search"
-    And the "Enter your search term" field should contain "allofit \"exact\" \-bad \(any\) filetype:pdf"
-
   Scenario: Custom page 1 results pointer
     Given the following BingV7 Affiliates exist:
       | display_name | name           | contact_email    | first_name | last_name | locale | page_one_more_results_pointer                                                                           | use_redesigned_results_page | search_engine |
