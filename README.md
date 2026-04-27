@@ -3,7 +3,6 @@
 ## Code Status
 
  [![Build Status](https://circleci.com/gh/GSA/search-gov.svg?style=svg)](https://circleci.com/gh/GSA/search-gov)
- [![Maintainability](https://api.codeclimate.com/v1/badges/fd0577360749c9b3d166/maintainability)](https://codeclimate.com/github/GSA/search-gov/maintainability)
 
 ## Contributing to search-gov
 Read our [contributing guidelines](./CONTRIBUTING.md).
