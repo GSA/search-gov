@@ -555,37 +555,4 @@ describe WebSearch do
     end
   end
 
-  describe 'has_fresh_news_items?' do
-    let(:search) { described_class.new(query: 'english', affiliate: affiliate) }
-
-    context 'when 1 or more news items are less than 6 days old' do
-      let(:news_item_results) do
-        [mock_model(NewsItem, published_at: DateTime.current.advance(days: 2)),
-         mock_model(NewsItem, published_at: DateTime.current.advance(days: 6))]
-      end
-      let(:news_items) { double('news items', results: news_item_results) }
-
-      before do
-        allow(search).to receive(:news_items).and_return(news_items)
-        expect(news_items).to receive(:total).and_return(2)
-      end
-
-      specify { expect(search).to have_fresh_news_items }
-    end
-
-    context 'when all news items are more than 5 days old' do
-      let(:news_item_results) do
-        [mock_model(NewsItem, published_at: DateTime.current.advance(days: -7)),
-         mock_model(NewsItem, published_at: DateTime.current.advance(days: -12))]
-      end
-      let(:news_items) { double('news items', results: news_item_results) }
-
-      before do
-        allow(search).to receive(:news_items).and_return(news_items)
-        expect(news_items).to receive(:total).and_return(2)
-      end
-
-      specify { expect(search).not_to have_fresh_news_items }
-    end
-  end
 end

@@ -67,7 +67,7 @@ class WebResultsPostProcessor < ResultsPostProcessor
                                              rss_feeds: @affiliate.rss_feeds,
                                              language: @affiliate.indexing_locale,
                                              sort: "",
-                                             size: NewsSearch::DEFAULT_VIDEO_PER_PAGE)
+                                             size: 20)
     Hash[news_search.results.collect { |news_item| [news_item.link, news_item] }]
   end
 

@@ -5,8 +5,8 @@ Feature: SearchGov search
 
   Background:
     Given the following SearchGov Affiliates exist:
-      | display_name | name | contact_email | first_name | last_name | domains                     | youtube_handles | use_redesigned_results_page |
-      | EPA          | epa  | aff@epa.gov   | Jane       | Bar       | www.epa.gov,archive.epa.gov | usgovernment    | false                       |
+      | display_name | name | contact_email | first_name | last_name | domains                     | use_redesigned_results_page |
+      | EPA          | epa  | aff@epa.gov   | Jane       | Bar       | www.epa.gov,archive.epa.gov | false                       |
 
   Scenario: Everything search
     When I am on epa's search page
@@ -19,7 +19,8 @@ Feature: SearchGov search
       | News | www.epa.gov/one      |
     When I am on epa's "News" docs search page
     Then I should see "Please enter a search term in the box above."
-    
+
+
   Scenario: Display an Alert on search page
     Given the following Alert exists:
       | affiliate | text                       | status | title      |
@@ -38,13 +39,3 @@ Feature: SearchGov search
     When I search for "carbon emissions"
     Then I should see "We're including results for carbon emissions from www.epa.gov/news only."
 
-  Scenario: Video news search
-    Given affiliate "epa" has the following RSS feeds:
-      | name   | url                        | is_navigable | is_managed |
-      | Videos | http://www.epa.gov/videos/ | true         | true       |
-    And there are 20 video news items for "usgovernment_channel_id"
-
-    When I am on epa's search page
-    And I search for "video"
-    Then I should see exactly "1" video govbox search result
-    And I should see "More videos about video"

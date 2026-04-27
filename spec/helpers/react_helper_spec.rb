@@ -151,7 +151,6 @@ describe ReactHelper do
       let(:navigation_links) do
         [
           { active: true,  facet: 'Default', label: 'search', url: '/search?query=chocolate' },
-          { active: false, facet: 'RSS', label: 'Usa Gov Blog', url: '/search?channel=321734936&query=chocolate' },
           { active: false, facet: 'DocumentCollection', label: 'USAGov Collection', url: '/search/docs?dc=40842210&query=chocolate' }
         ]
       end

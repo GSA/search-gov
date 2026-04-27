@@ -43,7 +43,7 @@ describe NavigationsHelper do
 
   describe '#filter_navigations' do
     before do
-      expect(affiliate).to receive(:navigations).and_return([image_nav, media_nav, press_nav])
+      expect(affiliate).to receive(:navigations).and_return([image_nav, collection_nav])
     end
 
     let(:image_search_label) { mock_model(ImageSearchLabel, name: 'Images') }
@@ -54,28 +54,18 @@ describe NavigationsHelper do
                  navigable_type: image_search_label.class.name)
     end
 
-    let(:media_nav) do
+    let(:collection_nav) do
       mock_model(Navigation,
-                 navigable: mock_model(RssFeed,
-                                       is_managed: false,
-                                       name: 'Photos',
-                                       show_only_media_content?: true))
-    end
-
-    let(:press_nav) do
-      mock_model(Navigation,
-                 navigable: mock_model(RssFeed,
-                                       is_managed: false,
-                                       name: 'Press',
-                                       show_only_media_content?: false))
+                 navigable: mock_model(DocumentCollection,
+                                       name: 'Blog'))
     end
 
     let(:affiliate) { mock_model(Affiliate,
                                  default_search_label: 'Everything',
                                  name: 'myaff') }
 
-    it 'returns only the press nav' do
-      expect(helper.filter_navigations(affiliate.navigations)).to eq([press_nav])
+    it 'returns only DocumentCollection navigations' do
+      expect(helper.filter_navigations(affiliate.navigations)).to eq([collection_nav])
     end
   end
 end
