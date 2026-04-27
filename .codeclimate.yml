@@ -27,10 +27,6 @@ plugins:
     enabled: true
     exclude_patterns:
     - "spec/"
-    config:
-      languages:
-      - ruby
-      - javascript
   # ESLint is configured in .eslintrc and .eslintignore
   eslint:
     enabled: true
