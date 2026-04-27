@@ -40,16 +40,12 @@ class Sites::DisplaysController < Sites::SetupSiteController
         :is_medline_govbox_enabled,
         :is_related_searches_enabled,
         :is_sayt_enabled,
-        :is_rss_govbox_enabled,
-        :is_video_govbox_enabled,
         :jobs_enabled,
         :left_nav_label,
-        :rss_govbox_label,
         :i14y_date_stamp_enabled,
         connections_attributes: [:id, :affiliate_name, :label, :position],
         document_collections_attributes: navigable_attributes,
         image_search_label_attributes: navigable_attributes,
-        rss_feeds_attributes: navigable_attributes,
         filter_setting_attributes: [
           :id,
           {filters_attributes: [:id, :position, :label, :enabled]}

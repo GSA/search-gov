@@ -4,13 +4,11 @@ class SiteAutodiscoverer
   attr_reader :discovered_resources
 
   FAVICON_LINK_XPATH = "//link[@rel='shortcut icon' or @rel='icon'][@href]".freeze
-  RSS_LINK_XPATH = "//link[@type='application/rss+xml' or @type='application/atom+xml'][@href]".freeze
-  SOCIAL_MEDIA_REGEXP = %r{\Ahttps?://(www\.)?(flickr|youtube)\.com/.+}i.freeze
 
   def initialize(site, url = nil)
     @site = site
     @autodiscovery_url = url && URI.parse(url).to_s
-    @discovered_resources = { 'Favicon URL' => [], 'RSS Feeds' => [], 'Social Media' => [] }
+    @discovered_resources = { 'Favicon URL' => [] }
   end
 
   def run
@@ -34,8 +32,6 @@ class SiteAutodiscoverer
 
   def autodiscover_website_contents
     autodiscover_favicon_url
-    autodiscover_rss_feeds
-    autodiscover_social_media
   end
 
   def autodiscover_favicon_url
@@ -46,29 +42,6 @@ class SiteAutodiscoverer
     end
   rescue => e
     Rails.logger.error("Error when autodiscovering favicon for #{@site.name}", e)
-  end
-
-  def autodiscover_rss_feeds
-    return unless website_doc
-
-    website_doc.xpath(RSS_LINK_XPATH).each do |link_element|
-      create_rss_feed(*extract_title_and_valid_url_from_rss_feed_link(link_element))
-    end
-  rescue => e
-    Rails.logger.error("Error when autodiscovering rss feeds for #{@site.name}", e)
-  end
-
-  def autodiscover_social_media
-    website_doc.xpath('//a/@href').
-      map { |anchor_attr| anchor_attr.inner_text.squish.downcase }.
-      uniq.
-      each { |href| create_social_media_profile(href) }
-  rescue => e
-    Rails.logger.error("Error when autodiscovering social media for #{@site.name}", e)
-  end
-
-  def create_social_media_profile(href)
-    SOCIAL_MEDIA_REGEXP.match(href) { |match_data| send("create_#{match_data[2]}_profile", href) }
   end
 
   def autodiscovery_url
@@ -119,53 +92,11 @@ class SiteAutodiscoverer
     end.nil?
   end
 
-  def extract_title_and_valid_url_from_rss_feed_link(link_element)
-    url = generate_url(link_element.attr(:href).to_s.strip)
-    title = link_element.attr(:title).to_s.squish
-    title = url unless title.present?
-    [title, url]
-  end
-
   def website_host_with_scheme
     @website_domain ||= begin
       uri = URI.parse(autodiscovery_url)
       "#{uri.scheme}://#{uri.host}"
     end
-  end
-
-  def create_rss_feed(title, url)
-    rss_feed_url = RssFeedUrl.rss_feed_owned_by_affiliate.find_existing_or_initialize(url)
-    return unless rss_feed_url.save
-
-    rss_feed = @site.rss_feeds.find_existing_or_initialize(title, url)
-    if rss_feed.new_record?
-      @site.rss_feeds << rss_feed
-      @discovered_resources['RSS Feeds'] << url
-    end
-
-    if rss_feed_url.new_record?
-      rss_feed.rss_feed_urls.build(rss_feed_owner_type: 'Affiliate', url: url)
-    else
-      rss_feed.rss_feed_urls = [rss_feed_url]
-    end
-    rss_feed.save!
-  end
-
-  def create_flickr_profile(url)
-    flickr_data = FlickrData.new(@site, url)
-    flickr_data.import_profile
-    @discovered_resources['Social Media'] << url if flickr_data.new_profile_created?
-  end
-
-  def create_youtube_profile(url)
-    youtube_profile = YoutubeProfileData.import_profile(url)
-    return unless youtube_profile
-
-    return if @site.youtube_profiles.exists?(id: youtube_profile.id)
-
-    @site.youtube_profiles << youtube_profile
-    @discovered_resources['Social Media'] << url
-    @site.enable_video_govbox!
   end
 
   def candidate_autodiscovery_urls(base_url)

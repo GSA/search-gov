@@ -141,7 +141,6 @@ class ApplicationController < ActionController::Base
   end
 
   def filterable_search
-    @search_params[:channel] = @search.rss_feed.id if @search.is_a?(NewsSearch) && @search.rss_feed
     @search_params[:tbs] = @search.tbs if @search.tbs
     @search_params.merge!(permitted_params.slice(:contributor, :publisher, :sort_by, :subject))
     filterable_search_dates

@@ -46,8 +46,6 @@ module MobileNavigationsHelper
         search.collection
       when SiteSearch
         search.document_collection
-      when NewsSearch
-        search.rss_feed
     end
   end
 
@@ -93,8 +91,6 @@ module MobileNavigationsHelper
     case navigable
       when DocumentCollection
         path_for_document_collection_search(search_params, navigable, search.query)
-      when RssFeed
-        path_for_rss_feed_search(search, search_params, navigable)
     end
   end
 
