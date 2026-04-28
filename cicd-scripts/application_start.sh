@@ -13,10 +13,38 @@ error() {
   echo "[CODEDEPLOY][APPLICATION_START][ERROR] $*"
 }
 
+run_systemctl() {
+  if [ "$(id -u)" -eq 0 ]; then
+    systemctl "$@"
+  else
+    sudo -n systemctl "$@"
+  fi
+}
+
 service_exists() {
   local service_name="$1"
-  systemctl list-unit-files --type=service --no-legend 2>/dev/null | awk '{print $1}' | grep -Fxq "${service_name}.service" || \
-    systemctl list-unit-files --type=service --no-legend 2>/dev/null | awk '{print $1}' | grep -Fxq "$service_name"
+  run_systemctl list-unit-files --type=service --no-legend 2>/dev/null | awk '{print $1}' | grep -Fxq "${service_name}.service" || \
+    run_systemctl list-unit-files --type=service --no-legend 2>/dev/null | awk '{print $1}' | grep -Fxq "$service_name"
+}
+
+resolve_puma_service() {
+  if [ -n "${PUMA_SERVICE:-}" ]; then
+    echo "$PUMA_SERVICE"
+    return 0
+  fi
+
+  local discovered_service
+  discovered_service="$(run_systemctl list-unit-files --type=service --no-legend 2>/dev/null \
+    | awk '{print $1}' \
+    | sed 's/\.service$//' \
+    | grep -E '^puma_search-gov_' \
+    | head -n 1 || true)"
+
+  if [ -n "$discovered_service" ]; then
+    echo "$discovered_service"
+  else
+    echo "puma"
+  fi
 }
 
 restart_or_start_service() {
@@ -24,7 +52,7 @@ restart_or_start_service() {
 
   if service_exists "$service_name"; then
     log "Restarting service: $service_name"
-    systemctl restart "$service_name"
+    run_systemctl restart "$service_name"
   else
     log "Service not found, skipping: $service_name"
   fi
@@ -45,6 +73,37 @@ wait_for_pid_exit() {
   done
 
   return 0
+}
+
+process_command() {
+  local pid="$1"
+  ps -p "$pid" -o args= 2>/dev/null || true
+}
+
+process_cwd() {
+  local pid="$1"
+  readlink -f "/proc/${pid}/cwd" 2>/dev/null || true
+}
+
+is_searchgov_puma_process() {
+  local pid="$1"
+  local app_root="$2"
+  local command
+  local cwd
+
+  command="$(process_command "$pid")"
+  cwd="$(process_cwd "$pid")"
+
+  [[ "$cwd" == "${app_root}/"* ]] && [[ "$command" =~ puma|rails|rackup|ruby|bundle ]]
+}
+
+stop_process() {
+  local pid="$1"
+  local label="$2"
+
+  log "Stopping ${label}: $pid"
+  kill "$pid" || true
+  wait_for_pid_exit "$pid" 10 || kill -9 "$pid" || true
 }
 
 start_puma_fallback() {
@@ -83,9 +142,7 @@ start_puma_fallback() {
     existing_pid="$(cat "$puma_pidfile" 2>/dev/null || true)"
     if [[ -n "$existing_pid" && "$existing_pid" =~ ^[0-9]+$ ]]; then
       if kill -0 "$existing_pid" >/dev/null 2>&1; then
-        log "Stopping existing puma process from pidfile: $existing_pid"
-        kill "$existing_pid" || true
-        wait_for_pid_exit "$existing_pid" 10 || kill -9 "$existing_pid" || true
+        stop_process "$existing_pid" "existing puma process from pidfile"
       fi
     fi
     rm -f "$puma_pidfile"
@@ -93,23 +150,25 @@ start_puma_fallback() {
     # Fallback: If no pidfile exists, check if port 3000 is occupied by Puma
     log "No pidfile found, checking for processes using port 3000..."
     if command -v lsof >/dev/null 2>&1; then
-      PORT_3000_PID=$(lsof -ti:3000 2>/dev/null || true)
-      if [ -n "$PORT_3000_PID" ]; then
-        # Verify it's a Puma process before killing
-        if ps -p "$PORT_3000_PID" -o comm= 2>/dev/null | grep -qi puma; then
-          log "Found Puma process on port 3000: $PORT_3000_PID"
-          log "Killing Puma process on port 3000..."
-          kill -TERM "$PORT_3000_PID" 2>/dev/null || true
-          sleep 3
-          # Force kill if still running
-          if lsof -ti:3000 >/dev/null 2>&1; then
-            log "Force killing stubborn Puma process on port 3000..."
-            kill -KILL $(lsof -ti:3000 2>/dev/null) 2>/dev/null || true
-            sleep 1
+      local port_3000_pids
+      port_3000_pids="$(lsof -ti:3000 2>/dev/null || true)"
+      if [ -n "$port_3000_pids" ]; then
+        local pid
+        for pid in $port_3000_pids; do
+          if is_searchgov_puma_process "$pid" "$app_root"; then
+            log "Found search-gov Puma process on port 3000: $pid"
+            stop_process "$pid" "Puma process on port 3000"
+          else
+            warn "Process $pid on port 3000 is not a search-gov Puma process - leaving it alone"
           fi
-          log "Port 3000 cleared"
+        done
+
+        if lsof -ti:3000 >/dev/null 2>&1; then
+          error "Port 3000 is still occupied after cleanup; cannot start fallback Puma safely"
+          lsof -nP -i:3000 || true
+          return 1
         else
-          warn "Process $PORT_3000_PID on port 3000 is not Puma - leaving it alone"
+          log "Port 3000 cleared"
         fi
       else
         log "Port 3000 is available"
@@ -199,7 +258,7 @@ dump_startup_diagnostics() {
   fi
 }
 
-PUMA_SERVICE="${PUMA_SERVICE:-puma}"
+PUMA_SERVICE="$(resolve_puma_service)"
 RESQUE_WORKER_SERVICE="${RESQUE_WORKER_SERVICE:-resque-worker}"
 RESQUE_SCHEDULER_SERVICE="${RESQUE_SCHEDULER_SERVICE:-resque-scheduler}"
 SEARCHGOV_ROOT="${SEARCHGOV_ROOT:-/home/search/searchgov}"
