@@ -48,11 +48,6 @@ namespace :opensearch do
     FederalRegisterDocument.delete_all
     puts "Deleted #{count} FederalRegisterDocument records"
 
-    # NewsItem
-    count = NewsItem.count
-    NewsItem.delete_all
-    puts "Deleted #{count} NewsItem records"
-
     # IndexedDocument
     count = IndexedDocument.count
     IndexedDocument.delete_all

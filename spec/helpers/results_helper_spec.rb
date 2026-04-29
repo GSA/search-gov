@@ -175,20 +175,6 @@ describe ResultsHelper do
       end
     end
 
-    context 'VIDS' do
-      let(:module_code) { 'VIDS' }
-
-      it 'adds a news item thumbnail with click tracking attributes' do
-        expected_output = '<a data-click="{&quot;position&quot;:&quot;2&quot;,' \
-                          '&quot;module_code&quot;:&quot;VIDS&quot;}" ' \
-                          'href="https://test.gov?v=test-video-id">' \
-                          '<img alt="test title" ' \
-                          'src="https://i.ytimg.com/vi/uwUt1fVLb3E/default.jpg" />' \
-                          '<span><span class="icon icon-play"></span></span></a>'
-
-        expect(link_to_news_item_thumbnail).to eq expected_output
-      end
-    end
   end
 
   describe '#link_to_related_search' do

@@ -3,7 +3,7 @@ class BlendedSearch < I14ySearch
 
   self.default_sort_by = 'r'.freeze
 
-  KLASS_MODULE_MAPPING = { indexed_document: 'AIDOC', news_item: 'NEWS' }
+  KLASS_MODULE_MAPPING = { indexed_document: 'AIDOC' }
 
   def search
     search_options = {
@@ -11,7 +11,6 @@ class BlendedSearch < I14ySearch
       language: @affiliate.indexing_locale,
       offset: detect_offset,
       q: @query,
-      rss_feed_url_ids: @affiliate.rss_feed_urls.pluck(:id),
       size: @limit || @per_page,
       sort: @sort,
       since: @since,
@@ -68,7 +67,7 @@ class BlendedSearch < I14ySearch
 
   def log_serp_impressions
     @modules << 'LOVER' << 'SPEL' unless spelling_suggestion.nil?
-    @modules |= (@govbox_set.modules - %w[NEWS]) if @govbox_set
+    @modules |= @govbox_set.modules if @govbox_set
     @modules << modules_in_results if @total > 0
   end
 
