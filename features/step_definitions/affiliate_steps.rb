@@ -25,17 +25,8 @@ Given /^the following (SearchGov|SearchElastic|BingV7)?\s?Affiliates exist:$/ do
       affiliate.update!(agency: agency)
     end
 
-    hash[:youtube_handles].split(',').each do |youtube_handle|
-      profile = YoutubeProfile.where(channel_id: "#{youtube_handle}_channel_id",
-                                     title: youtube_handle).first_or_initialize
-      profile.save!(validate: false)
-      affiliate.youtube_profiles << profile unless affiliate.youtube_profiles.exists?(id: profile.id)
-      affiliate.rss_feeds.where(is_managed: true).first_or_create!(name: 'Videos')
-    end if hash[:youtube_handles].present?
-
     hash[:domains].split(',').each { |domain| affiliate.site_domains.create!(domain: domain) } if hash[:domains].present?
   end
-  ElasticNewsItem.recreate_index
 end
 
 Then /^I should see the code for (English|Spanish) language sites$/ do |locale|

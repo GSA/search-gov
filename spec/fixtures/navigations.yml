@@ -10,12 +10,6 @@ two:
   is_active: true
   position: 0
 
-three:
-  affiliate: :gobiernousa_affiliate
-  navigable: es_white_house_blog(RssFeed)
-  is_active: true
-  position: 0
-
 four:
   affiliate: :power_affiliate
   navigable: power_affiliate(ImageSearchLabel)
@@ -28,41 +22,6 @@ five:
   is_active: true
   position: 0
 
-six:
-  affiliate: :basic_affiliate
-  navigable: white_house_blog(RssFeed)
-  is_active: true
-  position: 1
-
-seven:
-  affiliate: :basic_affiliate
-  navigable: white_house_press_gallery(RssFeed)
-  is_active: true
-  position: 2
-
-eight:
-  affiliate: :basic_affiliate
-  navigable: basic(RssFeed)
-  is_active: true
-  position: 3
-
-nine:
-  affiliate: :basic_affiliate
-  navigable: atom_feed(RssFeed)
-  is_active: true
-  position: 4
-
-ten:
-  affiliate: :basic_affiliate
-  navigable: not_navigable(RssFeed)
-  is_active: false
-  position: 5
-
-managed_video:
-  affiliate: :basic_affiliate
-  navigable: managed_video(RssFeed)
-  position: 6
-
 eleven:
   affiliate: :basic_affiliate
   navigable: sample(DocumentCollection)
@@ -74,12 +33,6 @@ twelve:
   navigable: another_affiliate(ImageSearchLabel)
   is_active: true
   position: 0
-
-thirteen:
-  affiliate: :another_affiliate
-  navigable: another(RssFeed)
-  is_active: true
-  position: 3
 
 fourteen:
   affiliate: :admin_affiliate
@@ -98,18 +51,6 @@ sixteen:
   navigable: spanish_affiliate(ImageSearchLabel)
   is_active: true
   position: 0
-
-media_feed:
-  affiliate: :basic_affiliate
-  navigable: media_feed(RssFeed)
-  is_active: false
-  position: 100
-
-seventeen:
-  affiliate: :usagov_affiliate
-  navigable: usagov_blog(RssFeed)
-  is_active: true
-  position: 1
 
 eighteen:
   affiliate: :usagov_affiliate

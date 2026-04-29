@@ -96,7 +96,6 @@ describe Affiliate do
     it { is_expected.to have_many(:connected_connections).inverse_of(:connected_affiliate) }
     it { is_expected.to have_many :sayt_suggestions }
     it { is_expected.to have_many(:routed_query_keywords).through :routed_queries }
-    it { is_expected.to have_many(:rss_feed_urls).through(:rss_feeds) }
     it { is_expected.to have_many(:users).through :memberships }
 
     it { is_expected.to have_many(:affiliate_feature_addition).dependent(:destroy) }
@@ -117,7 +116,6 @@ describe Affiliate do
     end
 
     it { is_expected.to have_many(:routed_queries).dependent(:destroy) }
-    it { is_expected.to have_many(:rss_feeds).dependent(:destroy).inverse_of(:owner) }
 
     it do
       is_expected.to have_many(:site_domains).dependent(:destroy).
@@ -136,7 +134,6 @@ describe Affiliate do
       is_expected.to have_many(:tag_filters).dependent(:destroy).inverse_of(:affiliate)
     end
 
-    it { is_expected.to have_and_belong_to_many :youtube_profiles }
     it { is_expected.to belong_to :agency }
     it { is_expected.to belong_to(:language).inverse_of(:affiliates) }
     it { is_expected.to validate_attachment_content_type(:mobile_logo).allowing(%w[image/gif image/jpeg image/pjpeg image/png image/x-png]).rejecting(nil) }
@@ -943,20 +940,6 @@ describe Affiliate do
 
         its(:default_autodiscovery_url) { is_expected.to eq(website) }
       end
-    end
-  end
-
-  describe '#enable_video_govbox!' do
-    let(:affiliate) { affiliates(:russian_affiliate) }
-
-    before do
-      youtube_profile = youtube_profiles(:whitehouse)
-      affiliate.youtube_profiles << youtube_profile
-      affiliate.enable_video_govbox!
-    end
-
-    it 'localizes "Videos" for the name of the RSS feed' do
-      expect(affiliate.rss_feeds.last.name).to eq('видео')
     end
   end
 
