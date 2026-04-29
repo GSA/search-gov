@@ -14,7 +14,6 @@ class GovboxSet
               :jobs,
               :med_topic,
               :modules,
-              :news_items,
               :related_search
 
   def initialize(query, affiliate, geoip_info, options = {})
@@ -37,7 +36,6 @@ class GovboxSet
     init_graphic_best_bets
     init_federal_register_documents
     init_med_topic
-    init_news_items
     init_jobs
     init_related_search
   end
@@ -49,9 +47,7 @@ class GovboxSet
       graphicsBestBet: format_graphics_best_bet,
       jobs: format_jobs,
       healthTopic: format_health_topic,
-      federalRegisterDocuments: format_federal_register_documents,
-      oldNews: format_old_news,
-      newNews: format_new_news
+      federalRegisterDocuments: format_federal_register_documents
     }.compact_blank
   end
 
@@ -65,39 +61,6 @@ class GovboxSet
     return '' unless html
 
     HTML_Truncator.truncate(html, DEFAULT_TRUNCATED_HTML_LENGTH, DEFAULT_TRUNCATE_OPTIONS)
-  end
-
-  def fresh_news_items?
-    return false unless @news_items
-
-    stale_threshold = Date.current - 5
-    @news_items&.results&.first(3)&.any? { |news_item| news_item.published_at.to_date >= stale_threshold }
-  end
-
-  def format_new_news
-    return unless fresh_news_items?
-
-    @news_items&.results&.first(3)&.map do |news_item|
-      {
-        title: translate_highlights(news_item.title),
-        description: truncate_description(news_item.description),
-        link: news_item.link,
-        publishedAt: news_item.published_at.to_date
-      }
-    end
-  end
-
-  def format_old_news
-    return nil if fresh_news_items?
-
-    @news_items&.results&.first(3)&.map do |news_item|
-      {
-        title: translate_highlights(news_item.title),
-        description: truncate_description(news_item.description),
-        link: news_item.link,
-        publishedAt: news_item.published_at.to_date
-      }
-    end
   end
 
   def format_text_best_bets
@@ -181,22 +144,6 @@ class GovboxSet
 
     @med_topic = MedTopic.search_for(@query, I18n.locale.to_s)
     @modules << 'MEDL' if @med_topic
-  end
-
-  def init_news_items
-    return unless @affiliate.is_rss_govbox_enabled?
-
-    non_managed_feeds = @affiliate.rss_feeds.non_mrss.non_managed.includes(:rss_feed_urls).to_a
-    return if non_managed_feeds.blank?
-
-    search_options = build_search_options(
-      excluded_urls: @affiliate.excluded_urls,
-      rss_feeds: non_managed_feeds,
-      since: 4.months.ago.beginning_of_day,
-      title_only: true
-    )
-    @news_items = ElasticNewsItem.search_for(search_options)
-    @modules << 'NEWS' if elastic_results_exist?(@news_items)
   end
 
   def init_jobs

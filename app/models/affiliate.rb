@@ -48,9 +48,6 @@ class Affiliate < ApplicationRecord
                    -> { order 'navigations.position ASC, navigations.id ASC' },
                    inverse_of: :affiliate
     assoc.has_many :routed_queries
-    assoc.has_many :rss_feeds,
-                   as: :owner,
-                   inverse_of: :owner
     assoc.has_many :sayt_suggestions
     assoc.has_many :site_domains, -> { order 'domain ASC' }, inverse_of: :affiliate
     assoc.has_one :site_feed_url
@@ -77,9 +74,7 @@ class Affiliate < ApplicationRecord
            dependent: :nullify,
            inverse_of: :default_affiliate
 
-  has_many :rss_feed_urls, -> { distinct }, through: :rss_feeds
   has_many :url_prefixes, through: :document_collections
-  has_and_belongs_to_many :youtube_profiles, -> { order 'youtube_profiles.title ASC' }
   has_many :i14y_drawers, -> { order 'handle' }, through: :i14y_memberships
   has_many :routed_query_keywords, -> { order 'keyword' }, through: :routed_queries
   belongs_to :agency
@@ -190,7 +185,6 @@ class Affiliate < ApplicationRecord
 
   accepts_nested_attributes_for :site_domains, reject_if: :all_blank
   accepts_nested_attributes_for :image_search_label
-  accepts_nested_attributes_for :rss_feeds
   accepts_nested_attributes_for :document_collections, reject_if: :all_blank
   accepts_nested_attributes_for :connections, allow_destroy: true, reject_if: proc { |a| a[:affiliate_name].blank? and a[:label].blank? }
   accepts_nested_attributes_for :flickr_profiles, allow_destroy: true
@@ -407,7 +401,7 @@ class Affiliate < ApplicationRecord
   end
 
   def has_no_social_image_feeds?
-    flickr_profiles.empty? && rss_feeds.mrss.empty?
+    flickr_profiles.empty?
   end
 
   def has_social_image_feeds?
@@ -417,22 +411,6 @@ class Affiliate < ApplicationRecord
   def destroy_and_update_attributes(params)
     destroy_on_blank(params[:connections_attributes], :affiliate_name, :label) if params[:connections_attributes]
     update(params)
-  end
-
-  def enable_video_govbox!
-    transaction do
-      rss_feed = rss_feeds.managed.first_or_initialize(name: I18n.t(:videos, locale: locale))
-      rss_feed.save!
-      update_column(:is_video_govbox_enabled, true)
-    end
-  end
-
-  def disable_video_govbox!
-    transaction do
-      rss_feed = rss_feeds.managed.first
-      rss_feed&.destroy
-      update_column(:is_video_govbox_enabled, false)
-    end
   end
 
   def uses_custom_theme?
@@ -664,7 +642,6 @@ class Affiliate < ApplicationRecord
   end
 
   def update_error_keys
-    swap_error_key(:'rss_feeds.base', :base)
     swap_error_key(:'site_domains.domain', :domain)
     swap_error_key(:'connections.connected_affiliate_id', :related_site_handle)
     swap_error_key(:'connections.label', :related_site_label)

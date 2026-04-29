@@ -74,29 +74,6 @@ describe '/api/v2/search' do
 
       ElasticIndexedDocument.commit
 
-      ElasticNewsItem.recreate_index
-      affiliate.rss_feeds.destroy_all
-
-      rss_feed = affiliate.rss_feeds.build(name: 'RSS')
-      url = 'https://search.gov/all.atom'
-      rss_feed_url = RssFeedUrl.rss_feed_owned_by_affiliate.build(url: url)
-      rss_feed_url.save!(validate: false)
-      rss_feed.rss_feed_urls = [rss_feed_url]
-      rss_feed.save!
-
-      (3..4).each do |i|
-        attributes = {
-          title: "api v2 title news-#{i}",
-          link: "https://search.gov/news-#{i}",
-          guid: "blog-#{i}",
-          description: "v2 description news-#{i}  #{'extremely long content ' * 8}",
-          published_at: current_time.advance(days: -i)
-        }
-        rss_feed_url.news_items.create! attributes
-      end
-
-      ElasticNewsItem.commit
-
       ElasticSaytSuggestion.recreate_index
       affiliate.sayt_suggestions.delete_all
 
@@ -119,7 +96,7 @@ describe '/api/v2/search' do
         expect(response).to have_http_status(:ok)
 
         hash_response = JSON.parse response.body, symbolize_names: true
-        expect(hash_response[:web][:total]).to eq(4)
+        expect(hash_response[:web][:total]).to eq(2)
         expect(hash_response[:web][:next_offset]).to be_nil
         expect(hash_response[:web][:results]).to match_array(expected_hash_response[:web][:results])
         hash_response[:text_best_bets].each_with_index do |result, index|
@@ -152,7 +129,7 @@ describe '/api/v2/search' do
         expect(response).to have_http_status(:ok)
 
         hash_response = JSON.parse response.body, symbolize_names: true
-        expect(hash_response[:web][:total]).to eq(4)
+        expect(hash_response[:web][:total]).to eq(2)
         expect(hash_response[:web][:results]).to match_array(expected_hash_response[:web][:results])
         hash_response[:text_best_bets].each_with_index do |result, index|
           expect(result[:id]).to_not be_nil
@@ -184,7 +161,7 @@ describe '/api/v2/search' do
         expect(response).to have_http_status(:ok)
 
         hash_response = JSON.parse response.body, symbolize_names: true
-        expect(hash_response[:web][:total]).to eq(4)
+        expect(hash_response[:web][:total]).to eq(2)
         expect(hash_response[:web][:next_offset]).to eq(1)
         expect(hash_response[:web][:results].count).to eq(1)
         hash_response[:text_best_bets].each_with_index do |result, index|
@@ -203,17 +180,17 @@ describe '/api/v2/search' do
       end
     end
 
-    context 'when offset = 3' do
+    context 'when offset = 1' do
       it 'returns JSON results without highlighting' do
         get '/api/v2/search', params: { access_key: 'usagov_key',
                                         affiliate: 'usagov',
                                         query: 'api',
-                                        offset: '2' }
+                                        offset: '1' }
         expect(response).to have_http_status(:ok)
 
         hash_response = JSON.parse response.body, symbolize_names: true
-        expect(hash_response[:web][:total]).to eq(4)
-        expect(hash_response[:web][:results].count).to eq(2)
+        expect(hash_response[:web][:total]).to eq(2)
+        expect(hash_response[:web][:results].count).to eq(1)
         expect(hash_response[:text_best_bets]).to be_empty
         expect(hash_response[:graphic_best_bets]).to be_empty
         expect(hash_response[:related_search_terms]).to be_empty
@@ -234,8 +211,8 @@ describe '/api/v2/search' do
         expect(response).to have_http_status(:ok)
 
         hash_response = JSON.parse response.body, symbolize_names: true
-        expect(hash_response[:web][:total]).to eq(4)
-        expect(hash_response[:web][:results].first(2)).to match_array(expected_hash_response[:web][:results].first(2))
+        expect(hash_response[:web][:total]).to eq(2)
+        expect(hash_response[:web][:results]).to match_array(expected_hash_response[:web][:results])
         hash_response[:text_best_bets].each_with_index do |result, index|
           expect(result[:id]).to_not be_nil
           expect(result[:title]).to eq(expected_hash_response[:text_best_bets][index][:title])

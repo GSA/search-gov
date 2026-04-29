@@ -58,16 +58,7 @@ module SearchHelper
 
 
 
-  def render_feed_name_in_govbox(affiliate, rss_feed_url_id)
-    feed_name = RssFeedUrl.find_parent_rss_feed_name(affiliate, rss_feed_url_id)
-    content_tag(:span, feed_name, class: 'feed-name') if feed_name
-  end
-
   private
-
-  def youtube_thumbnail_url(news_item)
-    news_item.youtube_thumbnail_url
-  end
 
   def hidden_field_tag_if_key_exists(param_sym, value = params[param_sym])
     hidden_field_tag param_sym, value if value

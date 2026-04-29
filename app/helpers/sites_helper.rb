@@ -97,7 +97,7 @@ module SitesHelper
        contents document_collections routed_queries excluded_urls
        flickr_profiles indexed_documents
        site_domains site_feed_urls i14y_drawers
-       youtube_profiles featured_collections]
+       featured_collections]
   end
 
   def site_manage_display_controllers
