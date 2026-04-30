@@ -2,34 +2,23 @@
 
 module ReactHelper
   def search_results_layout(search, params, vertical, affiliate, search_options)
-    data = {
-      additionalResults: govbox_set_data(search),
-      affiliate: affiliate_data(affiliate),
-      agencyName: agency_name(affiliate.agency),
-      alert: search_page_alert(affiliate.alert),
-      extendedHeader: affiliate.use_extended_header,
-      facetsEnabled: ENV.fetch('FACETED_SEARCH_ENABLED', 'false') == 'true',
-      fontsAndColors: affiliate.visual_design_json,
-      footerLinks: links(affiliate, :footer_links),
-      jobsEnabled: (affiliate.jobs_enabled? and search.modules.include?('JOBS')),
-      language: affiliate.language.slice(:code, :rtl),
-      navigationLinks: navigation_links(search, params),
-      noResultsMessage: no_result_message(search),
-      page: page_data(affiliate),
-      params:,
-      primaryHeaderLinks: links(affiliate, :primary_header_links),
-      relatedSearches: related_searches(search),
-      relatedSites: related_sites(search),
-      relatedSitesDropdownLabel: affiliate.related_sites_dropdown_label,
-      resultsData: results_data(search),
-      secondaryHeaderLinks: links(affiliate, :secondary_header_links),
-      sitelimit: sitelimit_alert(search, params),
-      spellingSuggestion: spelling_text(search, search_options),
-      translations: translations(affiliate.locale),
-      vertical:
-    }
+    safe_join([
+      search_results_header(affiliate),
+      search_results_main(search, params, vertical, affiliate, search_options),
+      search_results_footer(affiliate)
+    ])
+  end
 
-    react_component('SearchResultsLayout', data.compact_blank)
+  def search_results_header(affiliate)
+    react_component('SearchResultsHeader', search_results_header_props(affiliate).compact_blank)
+  end
+
+  def search_results_main(search, params, vertical, affiliate, search_options)
+    react_component('SearchResultsLayout', search_results_layout_props(search, params, vertical, affiliate, search_options).compact_blank)
+  end
+
+  def search_results_footer(affiliate)
+    react_component('SearchResultsFooter', search_results_footer_props(affiliate).compact_blank)
   end
 
   def affiliate_data(affiliate)
@@ -63,6 +52,51 @@ module ReactHelper
   end
 
   private
+
+  def search_results_header_props(affiliate)
+    search_results_context_props(affiliate).merge(
+      extendedHeader: affiliate.use_extended_header,
+      page: page_data(affiliate),
+      primaryHeaderLinks: links(affiliate, :primary_header_links),
+      secondaryHeaderLinks: links(affiliate, :secondary_header_links)
+    )
+  end
+
+  def search_results_layout_props(search, params, vertical, affiliate, search_options)
+    search_results_context_props(affiliate).merge(
+      additionalResults: govbox_set_data(search),
+      affiliate: affiliate_data(affiliate),
+      agencyName: agency_name(affiliate.agency),
+      alert: search_page_alert(affiliate.alert),
+      facetsEnabled: ENV.fetch('FACETED_SEARCH_ENABLED', 'false') == 'true',
+      jobsEnabled: (affiliate.jobs_enabled? and search.modules.include?('JOBS')),
+      navigationLinks: navigation_links(search, params),
+      noResultsMessage: no_result_message(search),
+      page: page_data(affiliate),
+      params:,
+      relatedSearches: related_searches(search),
+      relatedSites: related_sites(search),
+      relatedSitesDropdownLabel: affiliate.related_sites_dropdown_label,
+      resultsData: results_data(search),
+      sitelimit: sitelimit_alert(search, params),
+      spellingSuggestion: spelling_text(search, search_options),
+      vertical:
+    )
+  end
+
+  def search_results_footer_props(affiliate)
+    search_results_context_props(affiliate).merge(
+      footerLinks: links(affiliate, :footer_links)
+    )
+  end
+
+  def search_results_context_props(affiliate)
+    {
+      fontsAndColors: affiliate.visual_design_json,
+      language: affiliate.language.slice(:code, :rtl),
+      translations: translations(affiliate.locale)
+    }
+  end
 
   def related_searches(search)
     return [] if search.related_search.nil?
