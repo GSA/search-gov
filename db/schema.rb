@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_04_17_183741) do
+ActiveRecord::Schema[7.1].define(version: 2026_05_01_194155) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -101,7 +101,6 @@ ActiveRecord::Schema[7.1].define(version: 2026_04_17_183741) do
     t.boolean "display_logo_only", default: false, null: false
     t.boolean "looking_for_government_services", default: true, null: false
     t.boolean "show_search_filter_settings", default: false, null: false
-    t.boolean "show_vote_org_link", default: false, null: false
     t.boolean "gets_results_from_all_domains", default: false, null: false
     t.index ["name"], name: "index_affiliates_on_name", unique: true
   end
