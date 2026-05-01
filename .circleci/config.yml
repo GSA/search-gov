@@ -89,7 +89,7 @@ commands:
           name: Clean node_modules
           command: rm -rf node_modules
       - nodejs/install:
-          node-version: "20.20.0"
+          node-version: "22.22.2"
           install-yarn: true
       - run:
           name: Yarn Install
@@ -366,4 +366,4 @@ workflows:
               mysql_version:
                 - "8.0.40"
               node_version:
-                - 20.20.0
+                - 22.22.2
