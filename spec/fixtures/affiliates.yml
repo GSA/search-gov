@@ -25,7 +25,6 @@ usagov_affiliate:
   name: usagov
   website: https://www.usa.gov
   search_engine: BingV7
-  youtube_profiles: whitehouse
   api_access_key: usagov_key
   favicon_url: "http://favicon_logo.com"
 
@@ -50,7 +49,6 @@ basic_affiliate:
   name: nps.gov
   website: http://www.nps.gov
   is_sayt_enabled: false
-  youtube_profiles: nps
   api_access_key: basic_key
 
 another_affiliate:
@@ -58,7 +56,6 @@ another_affiliate:
   display_name: Another Gov Site
   name: another.gov
   api_access_key: another_key
-  youtube_profiles: nps
 
 admin_affiliate:
   <<: *DEFAULTS
