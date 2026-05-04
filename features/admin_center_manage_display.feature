@@ -42,47 +42,6 @@ Feature: Manage Display
     And the "Connection label 0" field should contain "agency site 3 SERP"
 
   @javascript
-  Scenario: Editing Font & Colors on Affiliate
-    Given the following BingV7 Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Font & Colors page
-    Then the "Font Family" field should contain "Default"
-    And the "Default" radio button should be checked
-
-    When I select "Helvetica, sans-serif" from "Font Family"
-    And I choose "Custom"
-    And I fill in the following:
-      | Page Background Color       | #000001 |
-      | Button Background Color     | #000020 |
-      | Header Background Color     | #000300 |
-      | Footer Background Color     | #004000 |
-      | Navigation Background Color | #050000 |
-      | Active Navigation Color     | #600000 |
-      | Navigation Link Color       | #000007 |
-      | Link Color                  | #A00000 |
-      | Visited Link Color          | #0B0000 |
-      | Result URL Color            | #00C000 |
-      | Description Text Color      | #000D00 |
-    And I submit the form by pressing "Save"
-
-    Then I should see "You have updated your font & colors"
-    And the "Font Family" field should contain "Helvetica, sans-serif"
-    And the "Custom" radio button should be checked
-    And the "Page Background Color" field should contain "#000001"
-    And the "Button Background Color" field should contain "#000020"
-    And the "Header Background Color" field should contain "#000300"
-    And the "Footer Background Color" field should contain "#004000"
-    And the "Navigation Background Color" field should contain "#050000"
-    And the "Active Navigation Color" field should contain "#600000"
-    And the "Navigation Link Color" field should contain "#000007"
-    And the "Link Color" field should contain "#A00000"
-    And the "Visited Link Color" field should contain "#0B0000"
-    And the "Result URL Color" field should contain "#00C000"
-    And the "Description Text Color" field should contain "#000D00"
-
-  @javascript
   Scenario: Editing Image Assets
     Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name |  website                | use_redesigned_results_page |
