@@ -16,6 +16,11 @@
     %p= t('admin_center.sites.visual_designs.edit.preview_warning', email: mail_to(SUPPORT_EMAIL_ADDRESS)).html_safe
 
   %ul.navigation_tabs
+    %li
+      %h3
+        =link_to t('.sections.fonts_and_colors', scope: 'admin_center'),
+        edit_site_visual_design_path(@site, anchor: 'fonts_and_colors'),
+        title: t('.sections.fonts_and_colors', scope: 'admin_center')
     - if show_results_format?(@site)
       %li
         %h3
@@ -32,6 +37,8 @@
         =link_to t('.sections.header_and_footer', scope: 'admin_center'),
         edit_site_visual_design_path(@site, anchor: 'header_and_footer'),
         title: t('.sections.header_and_footer', scope: 'admin_center')
+
+  = render partial: 'fonts_and_colors', locals: { f: f }
   - if show_results_format?(@site)
     = render partial: 'results_format', locals: { f: f }
   = render partial: 'image_assets', locals: { f: f }
