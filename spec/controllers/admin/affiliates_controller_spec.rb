@@ -172,7 +172,6 @@ describe Admin::AffiliatesController do
             related_sites_dropdown_label
             search_engine
             show_search_filter_settings
-            show_vote_org_link
             site_domains
             submitted_external_tracking_code
             theme
