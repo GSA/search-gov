@@ -21,14 +21,20 @@ class SearchesController < ApplicationController
       template = :index_redesign if redesign?
       @search = search_klass.new(@search_options.merge(geoip_info: GeoipLookup.lookup(request.remote_ip)))
       @search.run
+
       @form_path = search_path
       @page_title = @search.query
       set_search_page_title
       set_search_params
+
+      # If the requested page number exceeds the total number of pages, redirect to the last available page.
+      redirect_if_invalid_page_number and return
+
       respond_to do |format|
         format.html { render template }
         format.json { render :json => @search }
       end
+
     else
       @page_title = "Search Temporarily Unavailable - #{@affiliate.display_name}"
       respond_to do |format|
@@ -75,6 +81,21 @@ class SearchesController < ApplicationController
   end
 
   private
+
+  # Redirects to the last available page if the requested page number exceeds the total number of pages.
+  def redirect_if_invalid_page_number
+    # I14ySearch handles page numbers differently, so we skip this check for it. Also, we are going to delete this code soon, so we don't want to spend time refactoring it for I14ySearch.
+    return if gets_i14y_results?
+
+    return unless @search.total.present?
+
+    requested_page = params[:page].to_i
+    total_pages = (@search.total.to_f / @search.per_page).ceil
+
+    if requested_page > total_pages && total_pages > 0
+      redirect_to search_path(permitted_params.except(:page).merge(page: total_pages))
+    end
+  end
 
   def pick_klass_vertical_template
     if get_commercial_results?
