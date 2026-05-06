@@ -140,9 +140,5 @@ Feature: Manage Display
     When I go to the agency.gov's Manage Display page
     Then I should see "Visual design (new)"
     And the page body should not contain "These settings are for preview purposes only."
-    And I follow "Legacy Font & Colors"
-    And I should see a link to "Legacy Font & Colors" in the active site sub navigation
     And I follow "Legacy Image Assets"
     And I should see a link to "Legacy Image Assets" in the active site sub navigation
-    And I follow "Legacy Header & Footer"
-    And I should see a link to "Legacy Header & Footer" in the active site sub navigation
