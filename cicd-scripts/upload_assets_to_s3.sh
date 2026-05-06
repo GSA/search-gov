@@ -5,6 +5,10 @@ log() {
   echo "[CODEDEPLOY][UPLOAD_ASSETS] $*"
 }
 
+warn() {
+  echo "[CODEDEPLOY][UPLOAD_ASSETS][WARN] $*"
+}
+
 error() {
   echo "[CODEDEPLOY][UPLOAD_ASSETS][ERROR] $*" >&2
 }
@@ -83,15 +87,19 @@ sync_to_s3() {
   log "Syncing $source_dir to s3://${S3_BUCKET}${s3_path}"
   
   # Upload ALL assets with long cache by default (most assets are fingerprinted)
-  # Using --size-only for faster comparisons since fingerprinted assets are immutable
+  # Using --size-only for faster comparisons since fingerprinted assets are immutable.
+  #
+  # Do not use --delete here. CodeDeploy can run this hook on multiple hosts in
+  # the same deployment group, and existing hosts may still be serving pages that
+  # reference a previous fingerprinted pack. Deleting "old" keys can break those
+  # pages with CloudFront/S3 403s before the whole fleet has converged.
   if aws s3 sync "$source_dir" "s3://${S3_BUCKET}${s3_path}" \
     --region "$AWS_REGION" \
     --exclude ".sprockets-manifest-*.json" \
     --exclude "manifest.json.br" \
     --cache-control "public, max-age=31536000, immutable" \
     --acl public-read \
-    --size-only \
-    --delete; then
+    --size-only; then
     log "Successfully synced all assets from $source_dir"
   else
     error "Failed to sync assets from $source_dir"
@@ -123,6 +131,69 @@ sync_to_s3() {
   log "Cache header updates completed for non-fingerprinted assets"
 }
 
+manifest_pack_keys() {
+  local manifest_file="$1"
+
+  ruby -rjson -ruri -e '
+    manifest_path = ARGV.fetch(0)
+    manifest = JSON.parse(File.read(manifest_path))
+    keys = []
+
+    walker = lambda do |value|
+      case value
+      when Hash
+        value.each_value { |nested| walker.call(nested) }
+      when Array
+        value.each { |nested| walker.call(nested) }
+      when String
+        path = begin
+          URI(value).path
+        rescue URI::InvalidURIError
+          value
+        end
+        path = path.sub(%r{\A/}, "")
+        keys << path if path.start_with?("packs/")
+      end
+    end
+
+    walker.call(manifest)
+    puts keys.uniq.sort
+  ' "$manifest_file"
+}
+
+verify_pack_manifest_uploaded() {
+  local manifest_file="${ASSETS_DIR}/packs/manifest.json"
+  local missing_count=0
+
+  if [ ! -f "$manifest_file" ]; then
+    warn "Webpacker manifest not found, skipping pack upload verification: $manifest_file"
+    return 0
+  fi
+
+  log "Verifying S3 objects referenced by $manifest_file"
+
+  while IFS= read -r key; do
+    [ -n "$key" ] || continue
+
+    if aws s3api head-object \
+      --bucket "$S3_BUCKET" \
+      --key "$key" \
+      --region "$AWS_REGION" >/dev/null 2>&1; then
+      log "Verified s3://${S3_BUCKET}/${key}"
+    else
+      error "Missing manifest-referenced asset in S3: s3://${S3_BUCKET}/${key}"
+      missing_count=$((missing_count + 1))
+    fi
+  done < <(manifest_pack_keys "$manifest_file")
+
+  if [ "$missing_count" -gt 0 ]; then
+    error "Asset upload verification failed; ${missing_count} manifest-referenced pack object(s) are missing from S3"
+    return 1
+  fi
+
+  log "All manifest-referenced Webpacker assets are present in S3"
+}
+
 # Sync Sprockets assets (public/assets)
 if [ -d "$ASSETS_DIR/assets" ]; then
   log "Found public/assets directory"
@@ -135,6 +206,7 @@ fi
 if [ -d "$ASSETS_DIR/packs" ]; then
   log "Found public/packs directory"
   sync_to_s3 "$ASSETS_DIR/packs" "/packs"
+  verify_pack_manifest_uploaded
 else
   log "No public/packs directory found, skipping"
 fi
