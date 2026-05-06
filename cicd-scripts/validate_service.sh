@@ -125,12 +125,16 @@ SEARCHGOV_ROOT="${SEARCHGOV_ROOT:-/home/search/searchgov}"
 log "Starting ValidateService hook"
 log "Host: $(hostname) | User: $(whoami)"
 
-assert_service_active_if_present "$PUMA_SERVICE"
 assert_service_active_if_present "$RESQUE_WORKER_SERVICE"
 assert_service_active_if_present "$RESQUE_SCHEDULER_SERVICE"
 
-log "Validating HTTP endpoint: $APP_HEALTHCHECK_URL"
-wait_for_http_healthy "$APP_HEALTHCHECK_URL" "${HEALTHCHECK_ATTEMPTS:-12}" "${HEALTHCHECK_SLEEP_SECONDS:-5}"
-assert_puma_serving_current_release "$SEARCHGOV_ROOT"
+if service_exists "$PUMA_SERVICE"; then
+  assert_service_active_if_present "$PUMA_SERVICE"
+  log "Validating HTTP endpoint: $APP_HEALTHCHECK_URL"
+  wait_for_http_healthy "$APP_HEALTHCHECK_URL" "${HEALTHCHECK_ATTEMPTS:-12}" "${HEALTHCHECK_SLEEP_SECONDS:-5}"
+  assert_puma_serving_current_release "$SEARCHGOV_ROOT"
+else
+  log "Puma service not present on this host, skipping HTTP validation"
+fi
 
 log "ValidateService hook completed"
