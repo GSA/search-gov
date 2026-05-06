@@ -107,7 +107,6 @@ class Affiliate < ApplicationRecord
 
   before_validation :set_default_fields, on: :create
   before_validation :downcase_name
-  before_validation :set_managed_header_links, :set_managed_footer_links
   before_validation :set_managed_no_results_pages_alt_links
   before_validation :set_default_labels
   before_validation :set_attached_filepath
@@ -159,8 +158,6 @@ class Affiliate < ApplicationRecord
   validate :html_columns_cannot_be_malformed,
            :validate_css_property_hash,
            :validate_visual_design_json,
-           :validate_managed_footer_links,
-           :validate_managed_header_links,
            :validate_managed_no_results_pages_alt_links,
            :language_valid,
            :validate_managed_no_results_pages_guidance_text
@@ -536,20 +533,6 @@ class Affiliate < ApplicationRecord
     errors.add(:base, "#{key.to_s.humanize} should consist of a # character followed by 3 or 6 hexadecimal digits") unless /^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/.match?(value)
   end
 
-  def set_managed_header_links
-    return if @managed_header_links_attributes.nil?
-
-    self.managed_header_links = []
-    set_managed_links(@managed_header_links_attributes, managed_header_links)
-  end
-
-  def set_managed_footer_links
-    return if @managed_footer_links_attributes.nil?
-
-    self.managed_footer_links = []
-    set_managed_links(@managed_footer_links_attributes, managed_footer_links)
-  end
-
   def set_managed_no_results_pages_alt_links
     return if @managed_no_results_pages_alt_links_attributes.nil?
 
@@ -569,14 +552,6 @@ class Affiliate < ApplicationRecord
 
   def empty_link?(link)
     link['id'].blank? && link['title'].blank? && link['url'].blank?
-  end
-
-  def validate_managed_header_links
-    validate_managed_links(managed_header_links, :header)
-  end
-
-  def validate_managed_footer_links
-    validate_managed_links(managed_footer_links, :footer)
   end
 
   def validate_managed_no_results_pages_alt_links
