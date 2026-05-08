@@ -103,7 +103,6 @@ Layout/CommentIndentation:
     - 'app/helpers/mobile_helper.rb'
     - 'features/step_definitions/debugging_steps.rb'
     - 'features/step_definitions/email_steps.rb'
-    - 'features/step_definitions/i14y_drawer_steps.rb'
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
@@ -774,7 +773,6 @@ Lint/ShadowingOuterLocalVariable:
     - 'app/controllers/sites/routed_queries_controller.rb'
     - 'app/models/custom_index_queries/elastic_blended_query.rb'
     - 'app/models/elastic_featured_collection_results.rb'
-    - 'lib/i14y.rb'
     - 'spec/services/site_cloner_spec.rb'
 
 # Offense count: 5
@@ -1021,7 +1019,6 @@ Performance/ConstantRegexp:
     - 'app/models/misspelling.rb'
     - 'app/models/sayt_suggestion.rb'
     - 'lib/jobs.rb'
-    - 'spec/lib/i14y_collections_spec.rb'
 
 # Offense count: 6
 # This cop supports unsafe autocorrection (--autocorrect-all).
@@ -1111,7 +1108,6 @@ Performance/StringIdentifierArgument:
   Exclude:
     - 'app/helpers/application_helper.rb'
     - 'app/models/concerns/best_bet.rb'
-    - 'app/models/i14y_document.rb'
     - 'app/models/i14y_search.rb'
     - 'app/models/user.rb'
     - 'config/extras/auto_complete/auto_complete.rb'
@@ -1165,10 +1161,8 @@ Performance/TimesMap:
 RSpec/AnyInstance:
   Exclude:
     - 'spec/controllers/omniauth_callbacks_controller_spec.rb'
-    - 'spec/lib/i14y_collections_spec.rb'
     - 'spec/lib/tasks/searchgov_spec.rb'
     - 'spec/models/flickr_profile_spec.rb'
-    - 'spec/models/i14y_document_spec.rb'
     - 'spec/models/rss_feed_spec.rb'
     - 'spec/models/rss_feed_url_spec.rb'
     - 'spec/models/rtu_queries_request_spec.rb'
@@ -1185,7 +1179,6 @@ RSpec/BeEq:
     - 'spec/controllers/admin/home_controller_spec.rb'
     - 'spec/controllers/sites/sites_controller_spec.rb'
     - 'spec/helpers/mobile_search_helper_spec.rb'
-    - 'spec/models/i14y_drawer_spec.rb'
     - 'spec/models/rss_document_spec.rb'
     - 'spec/models/rtu_count_spec.rb'
     - 'spec/models/searchgov_domain_spec.rb'
@@ -1223,7 +1216,6 @@ RSpec/DescribedClass:
     - 'spec/lib/faraday_middleware/exception_notifier_spec.rb'
     - 'spec/lib/filetype_spec.rb'
     - 'spec/models/custom_filter_spec.rb'
-    - 'spec/models/i14y_search_spec.rb'
 
 # Offense count: 9
 # This cop supports unsafe autocorrection (--autocorrect-all).
@@ -1247,7 +1239,6 @@ RSpec/EmptyLineAfterExample:
     - 'spec/models/email_template_spec.rb'
     - 'spec/models/feature_spec.rb'
     - 'spec/models/featured_collection_spec.rb'
-    - 'spec/models/i14y_drawer_spec.rb'
     - 'spec/models/med_topic_spec.rb'
     - 'spec/models/misspelling_spec.rb'
     - 'spec/models/sayt_filter_spec.rb'
@@ -1257,7 +1248,6 @@ RSpec/EmptyLineAfterExample:
 RSpec/EmptyLineAfterExampleGroup:
   Exclude:
     - 'spec/controllers/admin/fabricated_coverage_for_active_scaffold_controllers_spec.rb'
-    - 'spec/helpers/i14y_drawer_helper_spec.rb'
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
@@ -1586,7 +1576,6 @@ RSpec/RepeatedExampleGroupBody:
 # Offense count: 4
 RSpec/RepeatedExampleGroupDescription:
   Exclude:
-    - 'spec/helpers/i14y_drawer_helper_spec.rb'
     - 'spec/models/rss_feed_url_spec.rb'
 
 # Offense count: 1
@@ -1623,7 +1612,6 @@ RSpec/ScatteredSetup:
 # This cop supports safe autocorrection (--autocorrect).
 RSpec/SingleArgumentMessageChain:
   Exclude:
-    - 'spec/controllers/sites/i14y_drawers_controller_spec.rb'
 
 # Offense count: 14
 # Configuration parameters: Include, CustomTransform, IgnoreMethods, IgnoreMetadata.
@@ -1835,7 +1823,6 @@ Rails/FindEach:
 Rails/FreezeTime:
   Exclude:
     - 'spec/jobs/searchgov_domain_indexer_job_spec.rb'
-    - 'spec/services/click_counter_spec.rb'
 
 # Offense count: 6
 # Configuration parameters: Include.
@@ -2949,7 +2936,6 @@ Style/RedundantInterpolation:
 # This cop supports safe autocorrection (--autocorrect).
 Style/RedundantParentheses:
   Exclude:
-    - 'app/controllers/sites/i14y_drawers_controller.rb'
     - 'app/models/rss_feed_url.rb'
     - 'app/models/searchgov_domain.rb'
     - 'lib/jobs.rb'
@@ -3199,7 +3185,6 @@ Style/TrailingCommaInArrayLiteral:
 # SupportedStylesForMultiline: comma, consistent_comma, no_comma
 Style/TrailingCommaInHashLiteral:
   Exclude:
-    - 'app/controllers/sites/i14y_drawers_controller.rb'
     - 'app/engines/bing_response_parser.rb'
     - 'app/engines/bing_search.rb'
     - 'app/engines/bing_web_response_parser.rb'

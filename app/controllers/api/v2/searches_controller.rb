@@ -22,11 +22,9 @@ module Api
         respond_with(@search)
       end
 
-      # This endpoint is currently unused, but may be re-enabled in the future:
-      # https://cm-jira.usa.gov/browse/SFL-46
       def docs
         @document_collection = (DocumentCollection.find(@search_options.dc) rescue nil)
-        @search = ApiI14ySearch.new(@search_options.attributes)
+        @search = selected_engine.new(@search_options.attributes)
         @search.run
         respond_with(@search)
       end
@@ -39,10 +37,8 @@ module Api
           OpenSearch::ApiEngine
         when "legacy_opensearch"
           LegacyOpenSearch::ApiEngine
-        when "search_elastic"
-          ApiSearchElastic
         else
-          ApiI14ySearch
+          ApiSearchElastic
         end
       end
 
@@ -108,7 +104,7 @@ module Api
       def search_options_validator_klass
         case action_name.to_sym
         when :blended then Api::NonCommercialSearchOptions
-        when :i14y then Api::I14ySearchOptions
+        when :i14y then Api::NonCommercialSearchOptions
         when :docs then Api::DocsSearchOptions
         end
       end

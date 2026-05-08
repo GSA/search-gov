@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Searches::PathsHelper do
-  fixtures :affiliates, :i14y_drawers, :i14y_memberships
+  fixtures :affiliates
   let(:affiliate) { affiliates(:power_affiliate) }
 
   # It feels a bit dirty to make this an integration test via `type: :request`,

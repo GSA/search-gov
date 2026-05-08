@@ -174,13 +174,13 @@ describe SearchesController do
 
   context 'when affiliate gets i14y results' do
     let(:affiliate) { affiliates(:basic_affiliate) }
-    let(:i14y_search) { double(I14ySearch, query: 'gov', modules: %w(I14Y), diagnostics: {}) }
+    let(:search) { double(SearchElasticEngine, query: 'gov', modules: %w(SRCH), diagnostics: {}) }
 
     before do
       expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
       affiliate.gets_i14y_results = true
-      expect(I14ySearch).to receive(:new).and_return(i14y_search)
-      expect(i14y_search).to receive(:run)
+      expect(SearchElasticEngine).to receive(:new).and_return(search)
+      expect(search).to receive(:run)
       get :index, params: { query: 'gov', affiliate: affiliate.name }
     end
 
@@ -188,7 +188,7 @@ describe SearchesController do
 
     it 'should assign various variables' do
       expect(assigns[:page_title]).to match(/gov/)
-      expect(assigns[:search_vertical]).to eq(:i14y)
+      expect(assigns[:search_vertical]).to eq(:SRCH)
     end
 
     it { is_expected.to assign_to(:search_params).with(
@@ -200,13 +200,13 @@ describe SearchesController do
 
   context 'when affiliate is using SearchGov' do
     let(:affiliate) { affiliates(:basic_affiliate) }
-    let(:i14y_search) { double(I14ySearch, query: 'gov', modules: %w(I14Y), diagnostics: {}) }
+    let(:search) { double(SearchElasticEngine, query: 'gov', modules: %w(SRCH), diagnostics: {}) }
 
     before do
       expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
       affiliate.search_engine = 'SearchGov'
-      expect(I14ySearch).to receive(:new).and_return(i14y_search)
-      expect(i14y_search).to receive(:run)
+      expect(SearchElasticEngine).to receive(:new).and_return(search)
+      expect(search).to receive(:run)
       get :index, params: { query: 'gov', affiliate: affiliate.name }
     end
 
@@ -214,7 +214,7 @@ describe SearchesController do
 
     it 'should assign various variables' do
       expect(assigns[:page_title]).to match(/gov/)
-      expect(assigns[:search_vertical]).to eq(:i14y)
+      expect(assigns[:search_vertical]).to eq(:SRCH)
     end
 
     it { is_expected.to assign_to(:search_params).with(
@@ -426,15 +426,15 @@ describe SearchesController do
       it { is_expected.to render_template(:docs) }
 
       context 'when document collection max depth is >= 3' do
-        let(:i14y_search) { double(I14ySearch, query: 'gov', modules: %w(I14Y), diagnostics: {}) }
+        let(:elastic_search) { double(SearchElasticEngine, query: 'gov', modules: %w(SRCH), diagnostics: {}) }
 
         before do
           allow(dc).to receive(:too_deep_for_bing?).and_return(true)
         end
 
-        it 'triggers an I14y search' do
-          expect(I14ySearch).to receive(:new).and_return(i14y_search)
-          expect(i14y_search).to receive(:run)
+        it 'triggers a SearchElastic search' do
+          expect(SearchElasticEngine).to receive(:new).and_return(elastic_search)
+          expect(elastic_search).to receive(:run)
           get :docs,
               params: {
                 query: 'gov',
@@ -525,13 +525,13 @@ describe SearchesController do
 
     context 'when the affiliate uses the SearchGov engine' do
       let(:affiliate) { affiliates(:basic_affiliate) }
-      let(:i14y_search) { double(I14ySearch, query: 'gov', modules: %w(I14Y), diagnostics: {}) }
+      let(:elastic_search) { double(SearchElasticEngine, query: 'gov', modules: %w(SRCH), diagnostics: {}) }
 
       before do
         expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
         affiliate.search_engine = 'SearchGov'
-        expect(I14ySearch).to receive(:new).and_return(i14y_search)
-        expect(i14y_search).to receive(:run)
+        expect(SearchElasticEngine).to receive(:new).and_return(elastic_search)
+        expect(elastic_search).to receive(:run)
         get :docs,
             params: {
               query: 'gov',

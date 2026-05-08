@@ -12,18 +12,13 @@ class I14ySearch < FilterableSearch
                     searchgov_custom3
                     tags].freeze
 
-  delegate :from_cache, to: :api_connection
-
   def search
-    I14yCollections.search(build_search_params)
-  rescue Faraday::ClientError => e
-    Rails.logger.error 'I14y search problem', e
-    false
+    raise NotImplementedError, 'Subclasses must implement #search'
   end
 
   def build_search_params
     {
-      handles: handles,
+      handles: 'searchgov',
       language: @affiliate.locale,
       query: formatted_query,
       size: @limit || @per_page,
@@ -53,10 +48,6 @@ class I14ySearch < FilterableSearch
 
   protected
 
-  def api_connection
-    I14yCollections.cached_connection
-  end
-
   def date_filter_hash
     {}.tap do |opts|
       opts[:sort_by_date] = 1 if @sort_by == 'date'
@@ -77,13 +68,6 @@ class I14ySearch < FilterableSearch
 
   def included_tags
     @included_tags ||= [@affiliate.tag_filters.required&.pluck(:tag), @tags].compact.flatten.join(',')
-  end
-
-  def handles
-    handles = []
-    handles += @affiliate.i14y_drawers.pluck(:handle) if @affiliate.gets_i14y_results
-    handles << 'searchgov' if @affiliate.search_gov_engine? || !@affiliate.gets_i14y_results
-    handles.join(',')
   end
 
   def handle_response(response)
