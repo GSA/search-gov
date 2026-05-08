@@ -103,8 +103,6 @@ module SitesHelper
   def site_manage_display_controllers
     %w[displays
        visual_designs
-       image_assets
-       header_and_footers
        no_results_pages
        alerts]
   end

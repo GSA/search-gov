@@ -42,45 +42,6 @@ Feature: Manage Display
     And the "Connection label 0" field should contain "agency site 3 SERP"
 
   @javascript
-  Scenario: Editing Image Assets
-    Given the following BingV7 Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name |  website                | use_redesigned_results_page |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       |  http://main.agency.gov | false                       |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Image Assets page
-    And I fill in "Favicon URL" with "https://d3qcdigd1fhos0.cloudfront.net/blog/img/favicon.ico"
-    And I attach the file "features/support/logo_mobile_en.png" to "Logo"
-    And I select "left" from "Logo Alignment"
-    When I fill in "Logo Alt Text" with "  Awesome   Agency  "
-    And I submit the form by pressing "Save"
-    Then I should see "You have updated your image assets"
-    And the "Favicon URL" field should contain "https://d3qcdigd1fhos0.cloudfront.net/blog/img/favicon.ico"
-    And I should see an image with alt text "Logo"
-    And the "Logo Alignment" field should contain "left"
-    And the "Logo Alt Text" field should contain "Awesome Agency"
-
-    When I am on agency.gov's search page
-    Then I should see an image link to "Awesome Agency" with url for "http://main.agency.gov"
-    And the page body should contain "logo_mobile_en.png"
-    And I should see a left aligned SERP logo
-
-    When I go to the agency.gov's Image Assets page
-    And I select "right" from "Logo Alignment"
-    And I submit the form by pressing "Save"
-    Then I should see "You have updated your image assets"
-
-    When I am on agency.gov's search page
-    Then I should see an image link to "Awesome Agency" with url for "http://main.agency.gov"
-    And the page body should contain "logo_mobile_en.png"
-    And I should see a right aligned SERP logo
-
-    When I go to the agency.gov's Image Assets page
-    And I check "Mark Logo for Deletion"
-    And I submit the form by pressing "Save"
-    Then I should see "You have updated your image assets"
-    And I should not see an image with alt text "Logo"
-
-  @javascript
   Scenario: Errors when Editing No Results Page
     Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | website                | use_redesigned_results_page |
@@ -121,17 +82,6 @@ Feature: Manage Display
     Then I should see "Visual design (new)"
     And the page body should contain "These settings are for preview purposes only."
 
-  Scenario: Display sub navigation links when "Use Redesigned Results Page" is true
-    Given the following BingV7 Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | true                        |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Visual Design page
-    Then I should see "Visual design (new)"
-    And I should not see a link to "Legacy Font & Colors" in the active site sub navigation
-    And I should not see a link to "Legacy Image Assets" in the active site sub navigation
-    And I should not see a link to "Legacy Header & Footer" in the active site sub navigation
-
   Scenario: Display sub navigation links when "Use Redesigned Results Page" is false
     Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
@@ -140,5 +90,3 @@ Feature: Manage Display
     When I go to the agency.gov's Manage Display page
     Then I should see "Visual design (new)"
     And the page body should not contain "These settings are for preview purposes only."
-    And I follow "Legacy Image Assets"
-    And I should see a link to "Legacy Image Assets" in the active site sub navigation

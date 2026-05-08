@@ -79,7 +79,6 @@ Rails.application.routes.draw do
       resource :visual_design, only: [:edit, :update]
       resources :links, only: :new
       resource :embed_code, only: [:show]
-      resource :image_assets, only: [:edit, :update]
       resource :no_results_pages, only: [:edit, :update] do
         collection do
           get :new_no_results_pages_alt_link
