@@ -1,12 +1,23 @@
 #!/bin/bash
 set -euo pipefail
 
+if [ -f /home/search/.config/searchgov-codedeploy.env ]; then
+  set -a
+  # shellcheck disable=SC1090
+  source /home/search/.config/searchgov-codedeploy.env
+  set +a
+fi
+
 log() {
   echo "[CODEDEPLOY][VALIDATE_SERVICE] $*"
 }
 
 warn() {
   echo "[CODEDEPLOY][VALIDATE_SERVICE][WARN] $*"
+}
+
+error() {
+  echo "[CODEDEPLOY][VALIDATE_SERVICE][ERROR] $*" >&2
 }
 
 service_exists() {
@@ -45,6 +56,21 @@ assert_service_active_if_present() {
   else
     log "Service not found, skipping active check: $service_name"
   fi
+}
+
+assert_service_active_required() {
+  local service_name="$1"
+
+  if ! service_exists "$service_name"; then
+    error "Required service unit missing: $service_name"
+    exit 1
+  fi
+  log "Checking required service is active: $service_name"
+  if ! systemctl is-active --quiet "$service_name"; then
+    error "Required service is not active: $service_name"
+    exit 1
+  fi
+  log "Service is active: $service_name"
 }
 
 wait_for_http_healthy() {
@@ -117,12 +143,24 @@ SEARCHGOV_ROOT="${SEARCHGOV_ROOT:-/home/search/searchgov}"
 log "Starting ValidateService hook"
 log "Host: $(hostname) | User: $(whoami)"
 
+if [ "${REQUIRE_RESQUE_SERVICES:-false}" = "true" ]; then
+  assert_service_active_required "$RESQUE_WORKER_SERVICE"
+  assert_service_active_required "$RESQUE_SCHEDULER_SERVICE"
+else
+  assert_service_active_if_present "$RESQUE_WORKER_SERVICE"
+  assert_service_active_if_present "$RESQUE_SCHEDULER_SERVICE"
+fi
+
 assert_service_active_if_present "$PUMA_SERVICE"
-assert_service_active_if_present "$RESQUE_WORKER_SERVICE"
-assert_service_active_if_present "$RESQUE_SCHEDULER_SERVICE"
 
 log "Validating HTTP endpoint: $APP_HEALTHCHECK_URL"
 wait_for_http_healthy "$APP_HEALTHCHECK_URL" "${HEALTHCHECK_ATTEMPTS:-12}" "${HEALTHCHECK_SLEEP_SECONDS:-5}"
 assert_puma_serving_current_release "$SEARCHGOV_ROOT"
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
+if [ "${REQUIRE_RESQUE_CWD_CHECK:-false}" = "true" ]; then
+  log "Running Resque cwd verification (REQUIRE_RESQUE_CWD_CHECK)"
+  bash "$SCRIPT_DIR/verify_resque_cwd.sh"
+fi
 
 log "ValidateService hook completed"

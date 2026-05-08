@@ -1,8 +1,19 @@
 #!/bin/bash
 set -euo pipefail
 
+if [ -f /home/search/.config/searchgov-codedeploy.env ]; then
+  set -a
+  # shellcheck disable=SC1090
+  source /home/search/.config/searchgov-codedeploy.env
+  set +a
+fi
+
 log() {
   echo "[CODEDEPLOY][APPLICATION_STOP] $*"
+}
+
+error() {
+  echo "[CODEDEPLOY][APPLICATION_STOP][ERROR] $*" >&2
 }
 
 service_exists() {
@@ -50,8 +61,24 @@ RESQUE_SCHEDULER_SERVICE="${RESQUE_SCHEDULER_SERVICE:-resque-scheduler}"
 log "Starting ApplicationStop hook"
 log "Host: $(hostname) | User: $(whoami)"
 
+if [ "${REQUIRE_RESQUE_SERVICES:-false}" = "true" ]; then
+  for required in "$RESQUE_WORKER_SERVICE" "$RESQUE_SCHEDULER_SERVICE"; do
+    if ! service_exists "$required"; then
+      error "REQUIRE_RESQUE_SERVICES is true but unit not installed: $required (run crawl Ansible resque_systemd role)"
+      exit 1
+    fi
+  done
+fi
+
 stop_service_if_present "$PUMA_SERVICE"
 stop_service_if_present "$RESQUE_WORKER_SERVICE"
 stop_service_if_present "$RESQUE_SCHEDULER_SERVICE"
+
+if [ "${REQUIRE_RESQUE_SERVICES:-false}" = "true" ] && [ "${SKIP_ORPHAN_RESQUE_SIGTERM:-false}" != "true" ]; then
+  log "Sending SIGTERM to leftover search-user Resque processes (non-systemd orphans)"
+  pkill -u search -TERM -f '[r]esque-' || true
+  sleep 3
+  pkill -u search -KILL -f '[r]esque-' || true
+fi
 
 log "ApplicationStop hook completed"
