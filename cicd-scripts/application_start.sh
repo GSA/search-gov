@@ -22,8 +22,8 @@ error() {
 
 service_exists() {
   local unit_name="$1"
-  systemctl list-unit-files --no-legend 2>/dev/null | awk '{print $1}' | grep -Fxq "${unit_name}.service" || \
-    systemctl list-unit-files --no-legend 2>/dev/null | awk '{print $1}' | grep -Fxq "$unit_name"
+  systemctl list-unit-files "${unit_name}.service" --no-legend 2>/dev/null | grep -q . || \
+    systemctl list-unit-files "${unit_name}" --no-legend 2>/dev/null | grep -q .
 }
 
 resolve_puma_service() {
