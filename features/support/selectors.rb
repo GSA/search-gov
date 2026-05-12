@@ -27,8 +27,6 @@ module HtmlSelectorsHelpers
       '.urls .error .last-crawl-status.in'
     when /the Supplemental URL last crawl status error message/
       '#indexed-documents .error .last-crawl-status.in'
-    when /the Header & Footer form/
-      '#edit-header-and-footer'
     when /the Admin Center content/
       '.l-content'
     when /the Admin Center main navigation list/
