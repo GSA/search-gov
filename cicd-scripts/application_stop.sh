@@ -47,7 +47,7 @@ stop_service_if_present() {
 
   if service_exists "$service_name"; then
     log "Stopping service: $service_name"
-    systemctl stop "$service_name"
+    sudo systemctl stop "$service_name"
   else
     log "Service not found, skipping: $service_name"
   fi

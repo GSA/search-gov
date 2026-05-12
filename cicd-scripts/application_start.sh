@@ -51,7 +51,7 @@ restart_or_start_service() {
 
   if service_exists "$service_name"; then
     log "Restarting service: $service_name"
-    systemctl restart "$service_name"
+    sudo systemctl restart "$service_name"
   else
     log "Service not found, skipping: $service_name"
   fi
