@@ -60,17 +60,28 @@ assert_service_active_if_present() {
 
 assert_service_active_required() {
   local service_name="$1"
+  local retries="${RESQUE_ACTIVE_RETRIES:-6}"
+  local wait_sec="${RESQUE_ACTIVE_WAIT:-5}"
 
   if ! service_exists "$service_name"; then
     error "Required service unit missing: $service_name"
     exit 1
   fi
   log "Checking required service is active: $service_name"
-  if ! systemctl is-active --quiet "$service_name"; then
-    error "Required service is not active: $service_name"
-    exit 1
-  fi
-  log "Service is active: $service_name"
+  local try=1
+  while [ "$try" -le "$retries" ]; do
+    if systemctl is-active --quiet "$service_name"; then
+      log "Service is active: $service_name"
+      return 0
+    fi
+    if [ "$try" -lt "$retries" ]; then
+      warn "Service not yet active (attempt ${try}/${retries}): $service_name -- retrying in ${wait_sec}s"
+      sleep "$wait_sec"
+    fi
+    try=$((try + 1))
+  done
+  error "Required service is not active after $retries attempts: $service_name"
+  exit 1
 }
 
 wait_for_http_healthy() {
