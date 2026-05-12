@@ -25,6 +25,7 @@ while IFS= read -r line; do
   args="${line#* }"
   [[ "$args" == *resque* ]] || continue
   [[ "$args" == *grep* ]] && continue
+  [[ "$args" == *codedeploy* ]] && continue
   if ! [[ "$pid" =~ ^[0-9]+$ ]]; then
     continue
   fi
