@@ -35,7 +35,6 @@ class Affiliate < ApplicationRecord
 
     assoc.has_many :excluded_domains, -> { order 'domain ASC' },
                    inverse_of: :affiliate
-    assoc.has_many :excluded_urls
     assoc.has_many :featured_collections
     assoc.has_many(:features, through: :affiliate_feature_addition)
     assoc.has_many :flickr_profiles, -> { order 'flickr_profiles.url ASC' },
@@ -444,12 +443,6 @@ class Affiliate < ApplicationRecord
 
   def status
     active? ? 'Active' : 'Inactive'
-  end
-
-  def excluded_urls_set
-    @excluded_urls_set ||= excluded_urls.pluck(:url).map do |url|
-      UrlParser.strip_http_protocols(url)
-    end.uniq
   end
 
   def no_results_error

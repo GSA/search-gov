@@ -150,17 +150,6 @@ describe SiteCloner do
       end
     end
 
-    context 'when the origin site has excluded URLs' do
-      before do
-        origin_site.excluded_urls.create!(url: 'http://do.not.include.gov/doc')
-      end
-
-      it 'copies excluded URLs' do
-        expect(cloned_site.excluded_urls.count).to eq(1)
-        expect(cloned_site.excluded_urls.first.url).to eq('http://do.not.include.gov/doc')
-      end
-    end
-
     context 'when the origin site has featured collections' do
       before do
         fc = origin_site.featured_collections.first

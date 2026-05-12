@@ -997,18 +997,6 @@ describe Affiliate do
     end
   end
 
-  describe '#excluded_urls_set' do
-    before do
-      affiliate.save!
-      affiliate.excluded_urls.create!(url: 'http://excluded.com')
-      affiliate.excluded_urls.create!(url: 'https://excluded.com')
-    end
-
-    it 'returns unique excluded urls without protocol' do
-      expect(affiliate.excluded_urls_set).to eq ['excluded.com']
-    end
-  end
-
   describe '#no_results_error' do
     let(:no_results_error) { 'There are no results.' }
     let(:additional_links) do
