@@ -25,11 +25,5 @@ pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 # Use the bind directive to specify the address and port to listen on
 bind "tcp://0.0.0.0:3000"
 
-# Write Puma HTTP access log (one line per request) to a stable shared path.
-# This is separate from the Rails app log (production.log via stdout).
-# Matches the Capistrano-era convention: set :puma_access_log, ".../log/puma.access.log"
-searchgov_root = ENV.fetch("SEARCHGOV_ROOT", "/home/search/searchgov")
-access_log "#{searchgov_root}/shared/log/puma.access.log"
-
 # Allow puma to be restarted by `bin/rails restart` command.
 plugin :tmp_restart
