@@ -52,15 +52,9 @@ if [ -z "$S3_BUCKET" ]; then
   exit 1
 fi
 
-if [ -z "${AWS_ACCESS_KEY_ID:-}" ]; then
-  error "AWS_ACCESS_KEY_ID environment variable is not set"
-  exit 1
-fi
-
-if [ -z "${AWS_SECRET_ACCESS_KEY:-}" ]; then
-  error "AWS_SECRET_ACCESS_KEY environment variable is not set"
-  exit 1
-fi
+# Note: AWS credentials are provided by the EC2 instance IAM role on green fleet hosts.
+# Static AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY are not required and should not be
+# validated here. The AWS CLI resolves IAM role credentials automatically.
 
 log "S3 Bucket: $S3_BUCKET"
 log "AWS Region: $AWS_REGION"
