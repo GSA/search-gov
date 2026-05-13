@@ -48,7 +48,7 @@ resolve_puma_service() {
 
 assert_service_active_if_present() {
   local service_name="$1"
-  local retries="${SERVICE_ACTIVE_RETRIES:-6}"
+  local retries="${SERVICE_ACTIVE_RETRIES:-12}"
   local wait_sec="${SERVICE_ACTIVE_WAIT:-5}"
 
   if ! service_exists "$service_name"; then
