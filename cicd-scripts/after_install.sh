@@ -129,11 +129,9 @@ fi
 log "Precompiling assets"
 SECRET_KEY_BASE=placeholder RAILS_ENV=production ./bin/rails assets:precompile
 
-# Optional migrations
-if [ "${RUN_DB_MIGRATIONS:-false}" = "true" ]; then
-  log "Running database migrations"
-  RAILS_ENV=production bundle exec rails db:migrate
-fi
+# Run pending migrations (idempotent -- no-op if none pending)
+log "Running database migrations"
+RAILS_ENV=production bundle exec rails db:migrate
 
 # Atomically promote release
 log "Promoting release to current"
