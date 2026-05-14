@@ -25,5 +25,12 @@ pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 # Use the bind directive to specify the address and port to listen on
 bind "tcp://0.0.0.0:3000"
 
+# Restart SemanticLogger's async appender thread in each worker after fork.
+# In cluster mode, threads don't survive fork — without this, workers enqueue
+# log messages to a dead async queue and nothing ever gets written to production.log.
+on_worker_boot do
+  SemanticLogger.reopen
+end
+
 # Allow puma to be restarted by `bin/rails restart` command.
 plugin :tmp_restart
