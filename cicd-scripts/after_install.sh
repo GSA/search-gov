@@ -63,10 +63,12 @@ else
   (cd "$RELEASE_DIR" && tar -xf -)
 fi
 
-# Link shared files
-mkdir -p "$RELEASE_DIR/config" "$RELEASE_DIR/tmp" "$RELEASE_DIR/log"
+# Link shared files (log and tmp must NOT be pre-created as dirs — ln -sfn won't
+# replace an existing directory, it would create a symlink inside it instead)
+mkdir -p "$RELEASE_DIR/config" "$RELEASE_DIR/tmp"
 ln -sfn "$SHARED_DIR/.env" "$RELEASE_DIR/.env"
 ln -sfn "$SHARED_DIR/config/logindotgov.pem" "$RELEASE_DIR/config/logindotgov.pem"
+rm -rf "$RELEASE_DIR/log"
 ln -sfn "$SHARED_DIR/log" "$RELEASE_DIR/log"
 ln -sfn "$SHARED_DIR/tmp" "$RELEASE_DIR/tmp"
 
