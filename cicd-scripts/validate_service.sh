@@ -19,8 +19,10 @@ run_systemctl() {
 
 service_exists() {
   local service_name="$1"
-  run_systemctl list-unit-files --type=service --no-legend 2>/dev/null | awk '{print $1}' | grep -Fxq "${service_name}.service" || \
-    run_systemctl list-unit-files --type=service --no-legend 2>/dev/null | awk '{print $1}' | grep -Fxq "$service_name"
+  # list-unit-files is read-only — no sudo needed, avoids sudo failures in CodeDeploy context.
+  systemctl is-active --quiet "${service_name}" 2>/dev/null && return 0
+  systemctl list-unit-files --type=service --no-legend 2>/dev/null | awk '{print $1}' | grep -Fxq "${service_name}.service" || \
+    systemctl list-unit-files --type=service --no-legend 2>/dev/null | awk '{print $1}' | grep -Fxq "$service_name"
 }
 
 resolve_puma_service() {
