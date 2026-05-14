@@ -25,10 +25,12 @@ service_exists() {
   local service_name="$1"
   # is-active works without sudo and detects running services.
   # Fall back to list-unit-files to also catch stopped-but-installed services.
-  # list-unit-files is read-only — no sudo needed, avoids sudo failures in CodeDeploy context.
+  # list-unit-files is read-only — no sudo needed.
+  # Do NOT use --type=service: that filter hits stale in-memory cache when the unit
+  # file changed on disk without daemon-reload, causing false negatives.
   systemctl is-active --quiet "${service_name}" 2>/dev/null && return 0
-  systemctl list-unit-files --type=service --no-legend 2>/dev/null | awk '{print $1}' | grep -Fxq "${service_name}.service" || \
-    systemctl list-unit-files --type=service --no-legend 2>/dev/null | awk '{print $1}' | grep -Fxq "$service_name"
+  systemctl list-unit-files --no-legend 2>/dev/null | awk '{print $1}' | grep -Fxq "${service_name}.service" || \
+    systemctl list-unit-files --no-legend 2>/dev/null | awk '{print $1}' | grep -Fxq "$service_name"
 }
 
 resolve_puma_service() {

@@ -21,8 +21,9 @@ service_exists() {
   local service_name="$1"
   # list-unit-files is read-only — no sudo needed, avoids sudo failures in CodeDeploy context.
   systemctl is-active --quiet "${service_name}" 2>/dev/null && return 0
-  systemctl list-unit-files --type=service --no-legend 2>/dev/null | awk '{print $1}' | grep -Fxq "${service_name}.service" || \
-    systemctl list-unit-files --type=service --no-legend 2>/dev/null | awk '{print $1}' | grep -Fxq "$service_name"
+  # Do NOT use --type=service: stale in-memory cache causes false negatives when unit changed on disk.
+  systemctl list-unit-files --no-legend 2>/dev/null | awk '{print $1}' | grep -Fxq "${service_name}.service" || \
+    systemctl list-unit-files --no-legend 2>/dev/null | awk '{print $1}' | grep -Fxq "$service_name"
 }
 
 resolve_puma_service() {
