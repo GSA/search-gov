@@ -72,6 +72,14 @@ rm -rf "$RELEASE_DIR/log"
 ln -sfn "$SHARED_DIR/log" "$RELEASE_DIR/log"
 ln -sfn "$SHARED_DIR/tmp" "$RELEASE_DIR/tmp"
 
+# Ensure shared log files are writable by the search user.
+# On crawler hosts resque workers run as root, leaving root-owned log files
+# that block assets:precompile (which runs as search).
+for logfile in production.log resque.log; do
+  touch "$SHARED_DIR/log/$logfile" 2>/dev/null || true
+  sudo -n chmod 664 "$SHARED_DIR/log/$logfile" 2>/dev/null || true
+done
+
 cd "$RELEASE_DIR"
 
 if ! command -v bundle >/dev/null 2>&1; then
