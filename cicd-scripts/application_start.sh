@@ -21,9 +21,9 @@ error() {
 }
 
 service_exists() {
-  local service_name="$1"
-  systemctl list-unit-files --type=service --no-legend 2>/dev/null | awk '{print $1}' | grep -Fxq "${service_name}.service" || \
-    systemctl list-unit-files --type=service --no-legend 2>/dev/null | awk '{print $1}' | grep -Fxq "$service_name"
+  local unit_name="$1"
+  systemctl list-unit-files "${unit_name}.service" --no-legend 2>/dev/null | grep -q . || \
+    systemctl list-unit-files "${unit_name}" --no-legend 2>/dev/null | grep -q .
 }
 
 resolve_puma_service() {
@@ -51,7 +51,7 @@ restart_or_start_service() {
 
   if service_exists "$service_name"; then
     log "Restarting service: $service_name"
-    systemctl restart "$service_name"
+    sudo systemctl restart "$service_name"
   else
     log "Service not found, skipping: $service_name"
   fi

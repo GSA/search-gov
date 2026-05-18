@@ -21,9 +21,9 @@ error() {
 }
 
 service_exists() {
-  local service_name="$1"
-  systemctl list-unit-files --type=service --no-legend 2>/dev/null | awk '{print $1}' | grep -Fxq "${service_name}.service" || \
-    systemctl list-unit-files --type=service --no-legend 2>/dev/null | awk '{print $1}' | grep -Fxq "$service_name"
+  local unit_name="$1"
+  systemctl list-unit-files "${unit_name}.service" --no-legend 2>/dev/null | grep -q . || \
+    systemctl list-unit-files "${unit_name}" --no-legend 2>/dev/null | grep -q .
 }
 
 resolve_puma_service() {
@@ -48,29 +48,58 @@ resolve_puma_service() {
 
 assert_service_active_if_present() {
   local service_name="$1"
+  local retries="${SERVICE_ACTIVE_RETRIES:-12}"
+  local wait_sec="${SERVICE_ACTIVE_WAIT:-5}"
 
-  if service_exists "$service_name"; then
-    log "Checking service is active: $service_name"
-    systemctl is-active --quiet "$service_name"
-    log "Service is active: $service_name"
-  else
+  if ! service_exists "$service_name"; then
     log "Service not found, skipping active check: $service_name"
+    return 0
   fi
+  log "Checking service is active: $service_name"
+  local try=1
+  while [ "$try" -le "$retries" ]; do
+    if systemctl is-active --quiet "$service_name"; then
+      log "Service is active: $service_name"
+      return 0
+    fi
+    if [ "$try" -lt "$retries" ]; then
+      warn "Service not yet active (attempt ${try}/${retries}): $service_name -- retrying in ${wait_sec}s"
+      sleep "$wait_sec"
+    fi
+    try=$((try + 1))
+  done
+  error "Service is present but not active after $retries attempts: $service_name"
+  log "--- systemctl status $service_name ---"
+  systemctl status "$service_name" --no-pager 2>&1 || true
+  log "--- journalctl -u $service_name (last 30 lines) ---"
+  journalctl -u "$service_name" -n 30 --no-pager 2>&1 || true
+  return 1
 }
 
 assert_service_active_required() {
   local service_name="$1"
+  local retries="${RESQUE_ACTIVE_RETRIES:-6}"
+  local wait_sec="${RESQUE_ACTIVE_WAIT:-5}"
 
   if ! service_exists "$service_name"; then
     error "Required service unit missing: $service_name"
     exit 1
   fi
   log "Checking required service is active: $service_name"
-  if ! systemctl is-active --quiet "$service_name"; then
-    error "Required service is not active: $service_name"
-    exit 1
-  fi
-  log "Service is active: $service_name"
+  local try=1
+  while [ "$try" -le "$retries" ]; do
+    if systemctl is-active --quiet "$service_name"; then
+      log "Service is active: $service_name"
+      return 0
+    fi
+    if [ "$try" -lt "$retries" ]; then
+      warn "Service not yet active (attempt ${try}/${retries}): $service_name -- retrying in ${wait_sec}s"
+      sleep "$wait_sec"
+    fi
+    try=$((try + 1))
+  done
+  error "Required service is not active after $retries attempts: $service_name"
+  exit 1
 }
 
 wait_for_http_healthy() {

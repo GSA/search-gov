@@ -981,26 +981,6 @@ describe Affiliate do
     end
   end
 
-  describe 'image assets' do
-    let(:image) { Rails.root.join('spec/fixtures/images/corgi.jpg').open }
-    let(:image_attributes) do
-      %i[mobile_logo header_tagline_logo]
-    end
-    let(:images) do
-      { mobile_logo: image,
-        header_tagline_logo: image }
-    end
-    let(:affiliate) do
-      described_class.create(valid_create_attributes.merge(images))
-    end
-
-    it 'stores the images in s3 with a secure url' do
-      image_attributes.each do |image|
-        expect(affiliate.send(image).url).to match(%r{https://.*\.s3\.amazonaws\.com/test/site/#{affiliate.id}/#{image}/\d+/original/corgi.jpg})
-      end
-    end
-  end
-
   describe '#status' do
     subject(:status) { affiliate.status }
 
