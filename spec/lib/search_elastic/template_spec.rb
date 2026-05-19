@@ -192,6 +192,19 @@ describe SearchElastic::Template do
     it 'defines click_count as integer' do
       expect(properties['click_count']).to include('type' => 'integer')
     end
+
+    it `defines metadata as an object` do
+      expect(properties['metadata']).to include('type' => 'object' )
+    end
+
+    it 'defines dap_domain_visits_count as integer and keyword' do
+      expect(properties['dap_domain_visits_count']).to include(
+        'type' => 'integer'
+      )
+      expect(properties['dap_domain_visits_count']['fields']).to include(
+        'keyword' => { 'type' => 'keyword' }
+      )
+    end
   end
 
   describe 'dynamic_templates' do

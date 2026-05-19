@@ -202,6 +202,8 @@ class SearchElastic::Template
       promote(json)
       bigrams(json)
       click_count(json)
+      metadata(json)
+      dap_domain_visits_count(json)
     end
   end
 
@@ -230,6 +232,54 @@ class SearchElastic::Template
       json.analyzer('domain_name_analyzer')
       json.fields do
         json.keyword do
+          json.type('keyword')
+        end
+      end
+    end
+  end
+
+  def dap_domain_visits_count(json)
+    json.dap_domain_visits_count do
+      json.type('integer')
+      json.fields do
+        json.keyword do
+          json.type('keyword')
+        end
+      end
+  end
+
+  def metadata(json)
+    json.metadata do
+      json.type('object')
+      json.properties do
+        json.crawl_depth.do
+          json.type('integer')
+          json.fields do
+            json.keyword do
+              json.type('keyword')
+            end
+          end
+        end
+        json.creator do
+          json.type('keyword')
+        end
+        json.download_bytes do
+          json.type('integer')
+          json.fields do
+            json.keyword do
+              json.type('keyword')
+            end
+          end
+        end
+        json.download_milliseconds do
+          json.type('integer')
+          json.fields do
+            json.keyword do
+              json.type('keyword')
+            end
+          end
+        end
+        json.source_url do
           json.type('keyword')
         end
       end
