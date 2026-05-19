@@ -246,13 +246,14 @@ class SearchElastic::Template
           json.type('keyword')
         end
       end
+    end
   end
 
   def metadata(json)
     json.metadata do
       json.type('object')
       json.properties do
-        json.crawl_depth.do
+        json.crawl_depth do
           json.type('integer')
           json.fields do
             json.keyword do
