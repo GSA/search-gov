@@ -130,7 +130,6 @@ Rails.application.routes.draw do
         end
       end
       resources :memberships, only: [:update]
-      resources :i14y_drawers
       resource :filtered_analytics_toggle, only: :create
       resources :watchers
       resources :no_results_watchers, controller: "watchers", type: "NoResultsWatcher"
@@ -222,7 +221,6 @@ Rails.application.routes.draw do
     resources :hints, concerns: :active_scaffold do
       collection { get 'reload_hints' }
     end
-    resources :i14y_drawers, concerns: :active_scaffold
     resources :languages, concerns: :active_scaffold
     resources :routed_queries, concerns: :active_scaffold
     resources :routed_query_keywords, concerns: :active_scaffold

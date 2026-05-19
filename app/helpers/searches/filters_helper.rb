@@ -5,11 +5,7 @@ module Searches::FiltersHelper
     return unless search.is_a? FilterableSearch
 
     html = [results_count_html(search)]
-    # This yicky conditional is (hopefully) a temporary hack until we have more
-    # consistent date info for Search.gov docs and improved date sorting/date display:
-    # https://www.pivotaltracker.com/story/show/158572324
-    # https://www.pivotaltracker.com/story/show/158571861
-    if !((search.affiliate.search_gov_engine? && search.class == I14ySearch) || search.affiliate.search_elastic_engine?)
+    unless search.affiliate.search_gov_engine? || search.affiliate.search_elastic_engine?
       html << refine_search_html
       html << time_filter_html(search, search_params)
       html << sort_filter_html(search, search_params)

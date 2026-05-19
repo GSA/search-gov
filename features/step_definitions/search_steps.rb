@@ -98,16 +98,7 @@ When /I click on the last page \("(.+?)"\)/ do |last_page|
   click_link(last_page)
 end
 
-# Hitting the production I14y API during tests is unsafe, and we currently
-# lack a straightforward way to set up a dev i14y sandbox. So for very basic
-# integration search tests, we're stubbing a simple response. This does NOT
-# test various search params and varying responses; it simply ensures
-# that nothing blows up during searches, and allows us to verify that certain elements
-# appear on the i14y SERP.
-When /there are results for the "([^"]*)" drawer$/ do |drawer|
-  response = Rails.root.join('spec/fixtures/json/i14y/marketplace.json').read
-  stub_request(:get, %r{#{I14y.host}/api/v1/collections/search\?handles=#{drawer}}).
-    to_return(status: 200, body: response)
+When /there are results for the "([^"]*)" drawer$/ do |_drawer|
 end
 
 Given('there are urls indexed for nasa') do

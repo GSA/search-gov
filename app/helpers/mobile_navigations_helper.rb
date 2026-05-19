@@ -64,7 +64,7 @@ module MobileNavigationsHelper
   end
 
   def is_default_search?(search)
-    if search.instance_of?(I14ySearch)
+    if search.is_a?(I14ySearch)
       search.collection.nil?
     else
       [BlendedSearch, WebSearch].any? { |c| search.instance_of?(c) }

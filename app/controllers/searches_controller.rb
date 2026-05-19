@@ -52,7 +52,7 @@ class SearchesController < ApplicationController
     @search_vertical = :docs
     set_search_page_title
     set_search_params
-    template = [I14ySearch, OpenSearch::Engine, LegacyOpenSearch::Engine, SearchElasticEngine].include?(search_klass) ? :i14y : :docs
+    template = [OpenSearch::Engine, LegacyOpenSearch::Engine, SearchElasticEngine].include?(search_klass) ? :i14y : :docs
     template = :index_redesign if redesign?
     respond_to { |format| format.html { render template } }
   end
@@ -71,7 +71,6 @@ class SearchesController < ApplicationController
 
   # Redirects to the last available page if the requested page number exceeds the total number of pages.
   def redirect_if_invalid_page_number
-    # I14ySearch handles page numbers differently, so we skip this check for it. Also, we are going to delete this code soon, so we don't want to spend time refactoring it for I14ySearch.
     return if gets_i14y_results?
 
     return unless @search.total.present?
@@ -94,7 +93,7 @@ class SearchesController < ApplicationController
     elsif @affiliate.search_elastic_engine?
       [SearchElasticEngine, :SRCH, :i14y]
     elsif gets_i14y_results?
-      [I14ySearch, :i14y, :i14y]
+      [SearchElasticEngine, :SRCH, :i14y]
     elsif @affiliate.gets_blended_results
       [BlendedSearch, :blended, :blended]
     else
@@ -141,7 +140,7 @@ class SearchesController < ApplicationController
     return OpenSearch::Engine if @affiliate.opensearch_engine?
     return LegacyOpenSearch::Engine if @affiliate.legacy_opensearch_engine?
     return SearchElasticEngine if @affiliate.search_elastic_engine?
-    return I14ySearch if gets_i14y_results?
+    return SearchElasticEngine if gets_i14y_results?
 
     @search_options[:document_collection] ? SiteSearch : WebSearch
   end
