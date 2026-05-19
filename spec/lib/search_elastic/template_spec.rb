@@ -193,8 +193,27 @@ describe SearchElastic::Template do
       expect(properties['click_count']).to include('type' => 'integer')
     end
 
-    it `defines metadata as an object` do
-      expect(properties['metadata']).to include('type' => 'object' )
+    it 'defines metadata as an object' do
+      expect(properties['metadata']).to include('type' => 'object')
+    end
+
+    context 'nested metadata integer and keyword fields' do
+      %w[crawl_depth download_bytes download_milliseconds].each do |field|
+        it 'defines #{field} as integer and keyword' do
+          expect(properties['metadata']['properties'][field]).to include('type' => 'integer')
+          expect(properties['metadata']['properties'][field]['fields']).to include(
+            'keyword' => { 'type' => 'keyword' }
+          )
+        end
+      end
+    end
+
+    context 'nested metadata keyword fields' do
+      %w[creator source_url].each do |field|
+        it 'defines #{field} as keyword' do
+          expect(properties['metadata']['properties'][field]).to include('type' => 'keyword')
+        end
+      end
     end
 
     it 'defines dap_domain_visits_count as integer and keyword' do
