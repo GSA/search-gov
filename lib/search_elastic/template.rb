@@ -240,7 +240,8 @@ class SearchElastic::Template
 
   def dap_domain_visits_count(json)
     json.dap_domain_visits_count do
-      json.type('integer')
+      # set to long instead of integer since this field is already dynamically mapped as long
+      json.type('long')
       json.fields do
         json.keyword do
           json.type('keyword')
