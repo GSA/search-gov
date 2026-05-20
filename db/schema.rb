@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_05_01_194155) do
+ActiveRecord::Schema[7.1].define(version: 2026_05_20_010100) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -79,9 +79,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_05_01_194155) do
     t.boolean "is_federal_register_document_govbox_enabled", default: false, null: false
     t.string "api_access_key", null: false
     t.boolean "gets_commercial_results_on_blended_search", default: true, null: false
-    t.boolean "gets_i14y_results", default: false, null: false
     t.string "domain_control_validation_code"
-    t.boolean "i14y_date_stamp_enabled", default: false, null: false
     t.string "mobile_logo_file_name"
     t.string "mobile_logo_content_type"
     t.integer "mobile_logo_file_size"
@@ -344,23 +342,6 @@ ActiveRecord::Schema[7.1].define(version: 2026_05_01_194155) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["name"], name: "index_hints_on_name", unique: true
-  end
-
-  create_table "i14y_drawers", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.string "handle", null: false
-    t.string "token", null: false
-    t.string "description"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-  end
-
-  create_table "i14y_memberships", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.integer "affiliate_id", null: false
-    t.integer "i14y_drawer_id", null: false
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["affiliate_id", "i14y_drawer_id"], name: "index_i14y_memberships_on_affiliate_id_and_i14y_drawer_id", unique: true
-    t.index ["i14y_drawer_id"], name: "index_i14y_memberships_on_i14y_drawer_id"
   end
 
   create_table "image_search_labels", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
