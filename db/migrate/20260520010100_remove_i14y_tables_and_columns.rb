@@ -1,6 +1,6 @@
 class RemoveI14yTablesAndColumns < ActiveRecord::Migration[7.0]
   def up
-    execute "UPDATE affiliates SET search_engine = 'search_elastic' WHERE search_engine = 'search_gov'"
+    execute "UPDATE affiliates SET search_engine = 'open_search' WHERE search_engine = 'search_gov'"
 
     drop_table :i14y_memberships if table_exists?(:i14y_memberships)
     drop_table :i14y_drawers if table_exists?(:i14y_drawers)
