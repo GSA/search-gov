@@ -100,12 +100,6 @@ inactive_affiliate:
   name: inactive
   active: false
 
-i14y_affiliate:
-  <<: *DEFAULTS
-  display_name: I14y Affiliate
-  name: i14y_affiliate
-  gets_i14y_results: true
-
 affiliate_for_user_with_default_site:
   <<: *DEFAULTS
   display_name: Default Site

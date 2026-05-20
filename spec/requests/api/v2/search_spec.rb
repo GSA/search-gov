@@ -358,12 +358,6 @@ describe '/api/v2/search' do
     it_behaves_like 'a request with CORS support', 'GET'
   end
 
-  describe '#i14y' do
-    let(:endpoint) { '/api/v2/search/i14y' }
-
-    it_behaves_like 'a request with CORS support', 'GET'
-  end
-
   describe '#video' do
     let(:endpoint) { '/api/v2/search/video' }
 

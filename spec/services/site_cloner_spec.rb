@@ -7,8 +7,6 @@ describe SiteCloner do
            :document_collections,
            :featured_collections,
            :flickr_profiles,
-           :i14y_drawers,
-           :i14y_memberships,
            :image_search_labels,
            :languages,
            :memberships,
@@ -200,17 +198,6 @@ describe SiteCloner do
         expect(cloned_fp.profile_id).to eq(fp.profile_id)
         expect(cloned_fp.profile_type).to eq(fp.profile_type)
         expect(cloned_fp.url).to eq(fp.url)
-      end
-    end
-
-    context 'when the origin site has i14y memberships' do
-      before do
-        origin_site.i14y_memberships.create!(i14y_drawer: i14y_drawers(:one))
-      end
-
-      it 'copies the i14y drawers' do
-        expect(cloned_site.i14y_drawers.count).to eq(1)
-        expect(cloned_site.i14y_drawers.pluck(:handle)).to eq(origin_site.i14y_drawers.pluck(:handle))
       end
     end
 
