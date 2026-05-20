@@ -85,11 +85,11 @@ class SearchesController < ApplicationController
     if get_commercial_results?
       [WebSearch, :web, :index]
     elsif @affiliate.opensearch_engine?
-      [OpenSearch::Engine, :SRCH, :document]
+      [OpenSearch::Engine, :document, :document]
     elsif @affiliate.legacy_opensearch_engine?
-      [LegacyOpenSearch::Engine, :SRCH, :document]
+      [LegacyOpenSearch::Engine, :document, :document]
     elsif @affiliate.search_elastic_engine?
-      [SearchElasticEngine, :SRCH, :document]
+      [SearchElasticEngine, :document, :document]
     elsif @affiliate.gets_blended_results
       [BlendedSearch, :blended, :blended]
     else
