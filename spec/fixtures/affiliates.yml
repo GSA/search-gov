@@ -9,7 +9,7 @@ DEFAULTS: &DEFAULTS
 searchgov_affiliate:
   <<: *DEFAULTS
   id: 323015273
-  search_engine: SearchGov
+  search_engine: SearchElastic
   display_name: SearchGov Affiliate
   name: searchgovaffiliate
 
@@ -113,7 +113,7 @@ russian_affiliate:
 
 blended_affiliate:
   <<: *DEFAULTS
-  search_engine: SearchGov
+  search_engine: SearchElastic
   display_name: Blended Affiliate
   name: blended_affiliate
   gets_blended_results: true
@@ -132,7 +132,7 @@ usagov_affiliate_header_bg_color:
   display_name: USA.gov
   name: redesigned_usagov_bg_color
   website: https://www.usa.gov
-  search_engine: SearchGov
+  search_engine: SearchElastic
   use_redesigned_results_page: true
   api_access_key: usagov_affiliate_header_bg_color_key
   visual_design_json: {
