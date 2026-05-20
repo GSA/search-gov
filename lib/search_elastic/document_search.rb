@@ -11,14 +11,14 @@ class SearchElastic::DocumentSearch
   end
 
   def search
-    i14y_search_results = execute_client_search
-    if i14y_search_results.total.zero? && i14y_search_results.suggestion.present?
-      suggestion = i14y_search_results.suggestion
+    search_results = execute_client_search
+    if search_results.total.zero? && search_results.suggestion.present?
+      suggestion = search_results.suggestion
       doc_query.query = suggestion['text']
-      i14y_search_results = execute_client_search
-      i14y_search_results.override_suggestion(suggestion) if i14y_search_results.results.present?
+      search_results = execute_client_search
+      search_results.override_suggestion(suggestion) if search_results.results.present?
     end
-    i14y_search_results
+    search_results
   end
 
   private
