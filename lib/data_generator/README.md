@@ -133,12 +133,10 @@ mysql> select * from search_modules;
 +----+-------+------------------------+---------------------+---------------------+
 | id | tag   | display_name           | created_at          | updated_at          |
 +----+-------+------------------------+---------------------+---------------------+
-|  1 | ISPEL | I14y spelling override | 2015-05-28 12:58:18 | 2015-05-28 12:58:18 |
-|  2 | I14Y  | I14y document          | 2015-05-28 12:58:18 | 2015-05-28 12:58:18 |
 |  3 | NEWS  | RSS Feeds              | 2015-07-09 14:57:18 | 2015-07-09 14:57:18 |
 |  4 | QRTD  | Routed Query           | 2015-07-28 18:35:19 | 2015-07-28 18:35:19 |
 +----+-------+------------------------+---------------------+---------------------+
-4 rows in set (0.00 sec)
+2 rows in set (0.00 sec)
 ```
 
 If there are no search modules in your database, then nothing will show up

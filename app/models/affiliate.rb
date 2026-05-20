@@ -460,7 +460,7 @@ class Affiliate < ApplicationRecord
   end
 
   def show_search_filter_settings_authorized?
-    search_gov_engine?
+    !bing_v7_engine?
   end
 
   private
