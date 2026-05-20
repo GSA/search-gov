@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class WebResultsPostProcessor < ResultsPostProcessor
-  include ResultsRejector
   SPECIAL_URL_PATH_EXT_NAMES = %w[doc pdf ppt ps rtf swf txt xls docx pptx xlsx].freeze
 
   attr_reader :results
