@@ -55,6 +55,168 @@ describe Api::V2::SearchesController do
     end
   end
 
+  describe '#i14y' do
+    context 'when the search options are not valid' do
+      before do
+        get :i14y,
+            params: {
+              affiliate: 'nps.gov',
+              format: 'json',
+              query: 'api'
+            }
+      end
+
+      it { is_expected.to respond_with :bad_request }
+
+      it 'returns errors in JSON' do
+        errors = response.parsed_body['errors']
+        expect(errors).to include('access_key must be present')
+      end
+    end
+
+    context 'when the search options are valid' do
+      let!(:search) { instance_double(ApiSearchElastic, as_json: { foo: 'bar' }, modules: %w[SRCH]) }
+
+      before do
+        allow(Affiliate).to receive(:find_by_name).and_return(affiliate)
+        allow(ApiSearchElastic).to receive(:new).with(hash_including(query: 'api')).and_return(search)
+        allow(search).to receive(:run)
+        allow(SearchImpression).to receive(:log).with(search,
+                                                      'i14y',
+                                                      hash_including('query'),
+                                                      be_a(ActionDispatch::Request))
+
+        get :i14y, params: search_params
+      end
+
+      it { is_expected.to respond_with :success }
+
+      it 'passes the correct options to the search engine' do
+        expect(assigns(:search_options).attributes).to include({ access_key: 'basic_key',
+                                                                 affiliate: affiliate,
+                                                                 enable_highlighting: true,
+                                                                 file_type: 'pdf',
+                                                                 filter: '2',
+                                                                 limit: 20,
+                                                                 next_offset_within_limit: true,
+                                                                 offset: 0,
+                                                                 query: 'api',
+                                                                 query_not: 'excluded',
+                                                                 query_or: 'alternative',
+                                                                 query_quote: 'barack obama',
+                                                                 sort_by: 'date' })
+      end
+
+      context 'when include_facets is true' do
+        let(:params_with_facets) { search_params.merge(include_facets: 'true') }
+
+        it 'passes the include_facets value' do
+          get :i14y, params: params_with_facets
+          expect(assigns(:search_options).attributes).to include({ include_facets: 'true' })
+        end
+      end
+
+      context 'when an audience filter is present' do
+        let(:params_with_audience) { search_params.merge(audience: 'everyone') }
+
+        it 'passes the audience filter' do
+          get :i14y, params: params_with_audience
+          expect(assigns(:search_options).attributes).to include({ audience: 'everyone' })
+        end
+      end
+
+      context 'when a content_type filter is present' do
+        let(:params_with_content_type) { search_params.merge(content_type: 'article') }
+
+        it 'passes the content_type filter' do
+          get :i14y, params: params_with_content_type
+          expect(assigns(:search_options).attributes).to include({ content_type: 'article' })
+        end
+      end
+
+      context 'when a mime_type filter is present' do
+        let(:params_with_mime_type) { search_params.merge(mime_type: 'application/pdf') }
+
+        it 'passes the mime_type filter' do
+          get :i14y, params: params_with_mime_type
+          expect(assigns(:search_options).attributes).to include({ mime_type: 'application/pdf' })
+        end
+      end
+
+      context 'when a searchgov_custom filter is present' do
+        let(:params_with_searchgov_custom) { search_params.merge(searchgov_custom1: 'customOne, customTwo') }
+
+        it 'passes the searchgov_custom filter' do
+          get :i14y, params: params_with_searchgov_custom
+          expect(assigns(:search_options).attributes).to include({ searchgov_custom1: 'customOne, customTwo' })
+        end
+      end
+
+      context 'when a tags filter is present' do
+        let(:params_with_tags) { search_params.merge(tags: 'tag from params') }
+
+        it 'passes the tags filter' do
+          get :i14y, params: params_with_tags
+          expect(assigns(:search_options).attributes).to include({ tags: 'tag from params' })
+        end
+      end
+
+      context 'when updated date filters are present' do
+        let(:params_with_updated_dates) do
+          search_params.merge(updated_since: '2020-01-01', updated_until: '2022-01-01')
+        end
+
+        it 'passes the date filters' do
+          get :i14y, params: params_with_updated_dates
+          expect(assigns(:search_options).attributes).
+            to include({ since_date: '01/01/2020', until_date: '01/01/2022' })
+        end
+      end
+
+      context 'when created date filters are present' do
+        let(:params_with_created_dates) do
+          search_params.merge(created_since: '2020-01-01', created_until: '2022-01-01')
+        end
+
+        it 'passes the created date filters' do
+          get :i14y, params: params_with_created_dates
+          expect(assigns(:search_options).attributes).
+            to include({ created_since_date: '01/01/2020', created_until_date: '01/01/2022' })
+        end
+      end
+
+      context 'when a sitelimit filter is present' do
+        let(:params_with_sitelimit) { search_params.merge(sitelimit: 'nps.gov') }
+
+        before do
+          get :i14y, params: params_with_sitelimit
+        end
+
+        it { is_expected.to respond_with :success }
+
+        it 'passes site_limits to the search engine' do
+          expect(ApiSearchElastic).to have_received(:new).
+            with(hash_including(site_limits: 'nps.gov'))
+        end
+      end
+    end
+
+    context 'when a routed query term is matched' do
+      before do
+        allow(RoutedQueryImpressionLogger).to receive(:log).
+          with(affiliate, 'moar unclaimed money', an_instance_of(ActionController::TestRequest))
+
+        get :i14y, params: search_params.merge(query: 'moar unclaimed money')
+      end
+
+      it { is_expected.to respond_with :success }
+
+      it 'returns search JSON' do
+        expect(response.parsed_body['route_to']).to eq('https://www.usa.gov/unclaimed_money')
+      end
+    end
+  end
+
   # Per the comment in app/controllers/api/v2/searches_controller.rb, this endpoint is currently unused.
   describe '#docs' do
     let(:docs_params) { search_params.merge({ dc: 1 }) }

@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v2 do
       get '/search' => 'searches#blended'
+      get '/search/i14y' => 'searches#i14y'
       get '/search/bing' => 'searches#bing'
       get '/search/docs' => 'searches#docs'
       post '/click' => 'click#create'
