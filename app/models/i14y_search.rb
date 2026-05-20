@@ -95,7 +95,7 @@ class I14ySearch < FilterableSearch
   def process_valid_response(response)
     @total = response.metadata.total
     @next_offset = @offset + @limit if @next_offset_within_limit && @total > (@offset + @limit)
-    post_processor = I14yPostProcessor.new(@enable_highlighting, response.results, @affiliate.excluded_urls_set)
+    post_processor = I14yPostProcessor.new(@enable_highlighting, response.results)
     post_processor.post_process_results
     process_metadata_values(response)
     process_pagination_values(post_processor, response)

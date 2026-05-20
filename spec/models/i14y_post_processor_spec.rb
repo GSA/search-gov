@@ -2,9 +2,8 @@ require 'spec_helper'
 
 describe I14yPostProcessor do
   describe '#normalized_results' do
-    subject(:normalized_results) { described_class.new(true, results, excluded_urls).normalized_results(5) }
+    subject(:normalized_results) { described_class.new(true, results).normalized_results(5) }
 
-    let(:excluded_urls) { [] }
 
     context 'when results have all attributes' do
       let(:results) do
@@ -14,7 +13,7 @@ describe I14yPostProcessor do
       end
 
       it_behaves_like 'a search with normalized results' do
-        let(:normalized_results) { described_class.new(true, results, excluded_urls).normalized_results(5) }
+        let(:normalized_results) { described_class.new(true, results).normalized_results(5) }
       end
 
       it 'has a published date, updated date, and thumbnaul URL' do
@@ -31,7 +30,7 @@ describe I14yPostProcessor do
     end
 
     context 'when a results have url that has file extension' do
-      subject(:normalized_results) { described_class.new(true, results, excluded_urls).normalized_results(1) }
+      subject(:normalized_results) { described_class.new(true, results).normalized_results(1) }
 
       let(:results) do
         [] << Hashie::Mash::Rash.new(title: 'file type title', description: 'file type content', path: 'http://foo.gov.pdf', changed: '2020-09-09 00:00:00 UTC', created: '2020-09-09 00:00:00 UTC', thumbnail_url: 'https://search.gov/img.svg')
@@ -44,7 +43,7 @@ describe I14yPostProcessor do
     end
 
     context 'when a results does not have url that has file extension' do
-      subject(:normalized_results) { described_class.new(true, results, excluded_urls).normalized_results(1) }
+      subject(:normalized_results) { described_class.new(true, results).normalized_results(1) }
 
       let(:results) do
         [] << Hashie::Mash::Rash.new(title: 'file type title', description: 'file type content', path: 'http://foo.gov', changed: '2020-09-09 00:00:00 UTC', created: '2020-09-09 00:00:00 UTC', thumbnail_url: 'https://search.gov/img.svg')
@@ -63,7 +62,7 @@ describe I14yPostProcessor do
       end
 
       it_behaves_like 'a search with normalized results' do
-        let(:normalized_results) { described_class.new(true, results, excluded_urls).normalized_results(5) }
+        let(:normalized_results) { described_class.new(true, results).normalized_results(5) }
       end
 
       it 'has no published date, updated date, or thumbnaul URL' do
@@ -87,10 +86,9 @@ describe I14yPostProcessor do
         path: 'http://www.foo.com',
         created: Time.now }
     end
-    let(:excluded_urls) { [] }
 
     before do
-      described_class.new(true, results, excluded_urls).post_process_results
+      described_class.new(true, results).post_process_results
     end
 
     context 'when a result has no description' do
@@ -133,15 +131,6 @@ describe I14yPostProcessor do
         it 'includes the description then the body' do
           expect(results.first.description).to eq "description with \uE000match\uE001...content with \uE000match\uE001"
         end
-      end
-    end
-
-    context 'when the affiliate has excluded a url' do
-      let(:results) { [Hashie::Mash.new(result)] }
-      let(:excluded_urls) { ['www.foo.com'] }
-
-      it 'does not include results for that url' do
-        expect(results).to be_empty
       end
     end
   end
