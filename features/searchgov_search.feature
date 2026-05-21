@@ -4,7 +4,7 @@ Feature: SearchGov search
   I want to be able to search for multiple types of data
 
   Background:
-    Given the following OpenSearch Affiliates exist:
+    Given the following SearchElastic Affiliates exist:
       | display_name | name | contact_email | first_name | last_name | domains                     | use_redesigned_results_page |
       | EPA          | epa  | aff@epa.gov   | Jane       | Bar       | www.epa.gov,archive.epa.gov | false                       |
 
