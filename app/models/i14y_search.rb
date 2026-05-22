@@ -32,13 +32,6 @@ class I14ySearch < FilterableSearch
       tap { |f| f.merge!(facet_includes) if @include_facets }
   end
 
-  def tag_filters
-    {}.tap do |opts|
-      opts[:ignore_tags] = @affiliate.tag_filters.excluded.pluck(:tag).join(',') if @affiliate.tag_filters.excluded.present?
-      opts[:tags] = included_tags if included_tags.present?
-    end
-  end
-
   def facet_includes
     { include: "title,path,thumbnail_url,#{FACET_FIELDS.join(',')}" }
   end

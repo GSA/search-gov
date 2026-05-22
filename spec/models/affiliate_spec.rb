@@ -130,10 +130,6 @@ describe Affiliate do
 
     it { is_expected.to have_many(:watchers).inverse_of(:affiliate) }
 
-    it do
-      is_expected.to have_many(:tag_filters).dependent(:destroy).inverse_of(:affiliate)
-    end
-
     it { is_expected.to belong_to :agency }
     it { is_expected.to belong_to(:language).inverse_of(:affiliates) }
     it { is_expected.to validate_attachment_content_type(:mobile_logo).allowing(%w[image/gif image/jpeg image/pjpeg image/png image/x-png]).rejecting(nil) }
