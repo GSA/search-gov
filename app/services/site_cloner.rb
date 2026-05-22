@@ -40,7 +40,6 @@ class SiteCloner
                        cloned_site,
                        :connections,
                        :excluded_urls,
-                       :i14y_memberships,
                        :indexed_documents,
                        :site_domains)
   end

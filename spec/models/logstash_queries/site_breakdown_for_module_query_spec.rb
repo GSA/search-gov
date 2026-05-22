@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe SiteBreakdownForModuleQuery do
-  let(:query) { described_class.new('I14Y') }
+  let(:query) { described_class.new('SRCH') }
   let(:expected_body) do
     {
       "query": {
@@ -9,7 +9,7 @@ describe SiteBreakdownForModuleQuery do
           "filter": [
             {
               "term": {
-                "modules": 'I14Y'
+                "modules": 'SRCH'
               }
             },
             {

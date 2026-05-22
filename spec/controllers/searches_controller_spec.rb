@@ -172,57 +172,6 @@ describe SearchesController do
     end
   end
 
-  context 'when affiliate gets i14y results' do
-    let(:affiliate) { affiliates(:basic_affiliate) }
-    let(:i14y_search) { double(I14ySearch, query: 'gov', modules: %w(I14Y), diagnostics: {}) }
-
-    before do
-      expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
-      affiliate.gets_i14y_results = true
-      expect(I14ySearch).to receive(:new).and_return(i14y_search)
-      expect(i14y_search).to receive(:run)
-      get :index, params: { query: 'gov', affiliate: affiliate.name }
-    end
-
-    it { is_expected.to assign_to(:affiliate).with(affiliate) }
-
-    it 'should assign various variables' do
-      expect(assigns[:page_title]).to match(/gov/)
-      expect(assigns[:search_vertical]).to eq(:i14y)
-    end
-
-    it { is_expected.to assign_to(:search_params).with(
-      hash_including(affiliate: affiliate.name, query: 'gov')) }
-
-    it { is_expected.to render_template(:i14y) }
-
-  end
-
-  context 'when affiliate is using SearchGov' do
-    let(:affiliate) { affiliates(:basic_affiliate) }
-    let(:i14y_search) { double(I14ySearch, query: 'gov', modules: %w(I14Y), diagnostics: {}) }
-
-    before do
-      expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
-      affiliate.search_engine = 'SearchGov'
-      expect(I14ySearch).to receive(:new).and_return(i14y_search)
-      expect(i14y_search).to receive(:run)
-      get :index, params: { query: 'gov', affiliate: affiliate.name }
-    end
-
-    it { is_expected.to assign_to(:affiliate).with(affiliate) }
-
-    it 'should assign various variables' do
-      expect(assigns[:page_title]).to match(/gov/)
-      expect(assigns[:search_vertical]).to eq(:i14y)
-    end
-
-    it { is_expected.to assign_to(:search_params).with(
-      hash_including(affiliate: affiliate.name, query: 'gov')) }
-
-    it { is_expected.to render_template(:i14y) }
-  end
-
   context 'when handling a valid affiliate search request' do
     render_views
     let(:affiliate) { affiliates(:basic_affiliate) }
@@ -425,25 +374,6 @@ describe SearchesController do
 
       it { is_expected.to render_template(:docs) }
 
-      context 'when document collection max depth is >= 3' do
-        let(:i14y_search) { double(I14ySearch, query: 'gov', modules: %w(I14Y), diagnostics: {}) }
-
-        before do
-          allow(dc).to receive(:too_deep_for_bing?).and_return(true)
-        end
-
-        it 'triggers an I14y search' do
-          expect(I14ySearch).to receive(:new).and_return(i14y_search)
-          expect(i14y_search).to receive(:run)
-          get :docs,
-              params: {
-                query: 'gov',
-                affiliate: affiliate.name,
-                dc: 100
-              }
-        end
-      end
-
       context 'when searching with a date range' do
         let(:docs_params) do
           {
@@ -523,32 +453,6 @@ describe SearchesController do
       it { is_expected.to assign_to(:affiliate).with(affiliate) }
     end
 
-    context 'when the affiliate uses the SearchGov engine' do
-      let(:affiliate) { affiliates(:basic_affiliate) }
-      let(:i14y_search) { double(I14ySearch, query: 'gov', modules: %w(I14Y), diagnostics: {}) }
-
-      before do
-        expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
-        affiliate.search_engine = 'SearchGov'
-        expect(I14ySearch).to receive(:new).and_return(i14y_search)
-        expect(i14y_search).to receive(:run)
-        get :docs,
-            params: {
-              query: 'gov',
-              affiliate: affiliate.name,
-              dc: 100
-            }
-      end
-
-      it { is_expected.to render_template(:i14y) }
-
-      it 'should assign various variables' do
-        expect(assigns[:page_title]).to match(/gov/)
-        expect(assigns[:search_vertical]).to eq(:docs)
-        expect(assigns[:form_path]).to eq(docs_search_path)
-      end
-    end
-
     context 'when the affiliate uses the OpenSearch engine' do
       let(:opensearch_engine) { double(OpenSearch::Engine, query: 'gov', modules: %w(SRCH), diagnostics: {}) }
 
@@ -565,7 +469,7 @@ describe SearchesController do
             }
       end
 
-      it { is_expected.to render_template(:i14y) }
+      it { is_expected.to render_template(:document) }
 
       it 'should assign various variables' do
         expect(assigns[:page_title]).to match(/gov/)
@@ -591,7 +495,7 @@ describe SearchesController do
             }
       end
 
-      it { is_expected.to render_template(:i14y) }
+      it { is_expected.to render_template(:document) }
 
       it 'should assign various variables' do
         expect(assigns[:page_title]).to match(/gov/)
@@ -617,7 +521,7 @@ describe SearchesController do
             }
       end
 
-      it { is_expected.to render_template(:i14y) }
+      it { is_expected.to render_template(:document) }
 
       it 'should assign various variables' do
         expect(assigns[:page_title]).to match(/gov/)

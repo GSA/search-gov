@@ -209,12 +209,12 @@ class SearchgovUrl < ApplicationRecord
 
   def index_document
     Rails.logger.info "[Index SearchgovUrl] #{log_data}"
-    LegacyOpenSearch::DocumentIndexer.index(i14y_params)
+    LegacyOpenSearch::DocumentIndexer.index(index_params)
   rescue LegacyOpenSearch::DocumentIndexer::DuplicateID => e
     Rails.logger.warn("#{e}: #{hashed_url}")
   end
 
-  def i14y_params
+  def index_params
     {
       audience: document.audience,
       changed: [lastmod, document.changed].compact.max&.iso8601,

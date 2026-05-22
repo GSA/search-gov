@@ -40,7 +40,6 @@ class Affiliate < ApplicationRecord
     assoc.has_many(:features, through: :affiliate_feature_addition)
     assoc.has_many :flickr_profiles, -> { order 'flickr_profiles.url ASC' },
                    inverse_of: :affiliate
-    assoc.has_many :i14y_memberships
     assoc.has_one :image_search_label
     assoc.has_many :indexed_documents
     assoc.has_many :memberships
@@ -75,7 +74,6 @@ class Affiliate < ApplicationRecord
            inverse_of: :default_affiliate
 
   has_many :url_prefixes, through: :document_collections
-  has_many :i14y_drawers, -> { order 'handle' }, through: :i14y_memberships
   has_many :routed_query_keywords, -> { order 'keyword' }, through: :routed_queries
   belongs_to :agency
   belongs_to :language, foreign_key: :locale, primary_key: :code, inverse_of: :affiliates
@@ -462,7 +460,7 @@ class Affiliate < ApplicationRecord
   end
 
   def show_search_filter_settings_authorized?
-    search_gov_engine?
+    !bing_v7_engine?
   end
 
   private

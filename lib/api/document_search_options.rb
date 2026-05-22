@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Api::I14ySearchOptions < Api::SearchOptions
+class Api::DocumentSearchOptions < Api::SearchOptions
   attr_accessor :audience,
                 :content_type,
                 :created_since_date,
@@ -21,8 +21,6 @@ class Api::I14ySearchOptions < Api::SearchOptions
                          message: 'must be in YYYY-mm-dd format' }
   # rubocop:enable Rails/I18nLocaleTexts
 
-  # SRCH-3615: Disabling cop temporarily as facets work is ongoing and will continue to involve
-  # modifications to this method.
   # rubocop:disable Metrics/AbcSize
   def initialize(params = {})
     super

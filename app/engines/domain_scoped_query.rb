@@ -1,4 +1,4 @@
-class I14yFormattedQuery < FormattedQuery
+class DomainScopedQuery < FormattedQuery
   def initialize(user_query, options = {})
     super(options)
     @query = query_with_sites(user_query)
