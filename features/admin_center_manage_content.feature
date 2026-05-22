@@ -412,36 +412,7 @@ Feature: Manage Content
     And I follow "i14y Drawers" within the Admin Center content
     Then I should see "blog_posts"
     And we want observers to run during the rest of these cucumber scenarios
-
-  Scenario: Add/remove Filter Tag
-    Given the following BingV7 Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | gets_i14y_results | use_redesigned_results_page |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | true              | false                       |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Filter Tags page
-    And I follow "Add Filter Tag"
-    And I fill in "Tag" with "exclude me"
-    And I submit the form by pressing "Add"
-    Then I should see "You have added the tag exclude me to this site"
-    And I should see the following table rows:
-      | Tag                | Exclude/Require |
-      | exclude me         | Exclude         |
-    When I press "Remove" and confirm "Are you sure you wish to remove the tag exclude me from this site?"
-    Then I should see "You have removed the tag exclude me from this site"
-    When I follow "Add Filter Tag"
-    And I fill in "Tag" with "require me"
-    And I choose "Require"
-    And I submit the form by pressing "Add"
-    Then I should see "You have added the tag require me to this site"
-    And I should see the following table rows:
-      | Tag                | Exclude/Require |
-      | require me         | Require         |
-    When I follow "Add Filter Tag"
-    And I fill in "Tag" with "require me"
-    And I choose "Require"
-    And I submit the form by pressing "Add"
-    Then I should see "Tag has already been taken"
-
+    
   Scenario: Filtering Supplemental URLs
     Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |

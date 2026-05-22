@@ -28,7 +28,7 @@ class I14ySearch < FilterableSearch
       query: formatted_query,
       size: @limit || @per_page,
       offset: detect_offset
-    }.merge!(date_filter_hash, facet_filter_hash, tag_filters).
+    }.merge!(date_filter_hash, facet_filter_hash).
       tap { |f| f.merge!(facet_includes) if @include_facets }
   end
 
@@ -66,10 +66,6 @@ class I14ySearch < FilterableSearch
         opts[field] = instance_variable_get("@#{field}") if instance_variable_get("@#{field}")
       end
     end
-  end
-
-  def included_tags
-    @included_tags ||= [@affiliate.tag_filters.required&.pluck(:tag), @tags].compact.flatten.join(',')
   end
 
   def handles
