@@ -10,15 +10,15 @@ module ReactHelper
   end
 
   def search_results_header(affiliate)
-    react_component('SearchResultsHeader', search_results_header_props(affiliate).compact_blank)
+    react_on_rails_component('SearchResultsHeader', props: search_results_header_props(affiliate).compact_blank)
   end
 
   def search_results_main(search, params, vertical, affiliate, search_options)
-    react_component('SearchResultsLayout', search_results_layout_props(search, params, vertical, affiliate, search_options).compact_blank)
+    react_on_rails_component('SearchResultsLayout', props: search_results_layout_props(search, params, vertical, affiliate, search_options).compact_blank)
   end
 
   def search_results_footer(affiliate)
-    react_component('SearchResultsFooter', search_results_footer_props(affiliate).compact_blank)
+    react_on_rails_component('SearchResultsFooter', props: search_results_footer_props(affiliate).compact_blank)
   end
 
   def affiliate_data(affiliate)
