@@ -55,8 +55,7 @@ describe('SearchResultsHeader', () => {
             url: 'https://search.gov/logo.svg',
             text: 'search.gov'
           },
-          homepageUrl: 'https://search.gov',
-          showVoteOrgLink: false
+          homepageUrl: 'https://search.gov'
         }}
         extendedHeader={false}
         translations={translations}
