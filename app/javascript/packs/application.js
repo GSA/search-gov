@@ -16,6 +16,17 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+import ReactOnRails from 'react-on-rails/client';
+import SearchResultsFooter from '../components/SearchResultsFooter';
+import SearchResultsHeader from '../components/SearchResultsHeader';
+import SearchResultsLayout from '../components/SearchResultsLayout';
+
+ReactOnRails.register({
+  SearchResultsFooter,
+  SearchResultsHeader,
+  SearchResultsLayout
+});
+
 // Support component names relative to this directory:
 const componentRequireContext = require.context('components', true);
 const ReactRailsUJS = require('react_ujs');
