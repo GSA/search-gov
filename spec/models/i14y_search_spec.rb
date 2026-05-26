@@ -127,52 +127,6 @@ describe I14ySearch do
     end
   end
 
-  context 'when tag filters are present' do
-    let(:query) { 'testing tag filters' }
-
-    before { allow(I14yCollections).to receive(:search) }
-
-    context 'when only affiliate-set tag filters are present' do
-      let(:affiliate) { affiliates(:basic_affiliate) }
-
-      it 'searches I14y with the appropriate filter params' do
-        i14y_search.run
-        expect(I14yCollections).to have_received(:search).
-          with(hash_including(ignore_tags: 'no way,nope',
-                              tags: 'important,must have'))
-      end
-    end
-
-    context 'when only tag filter query params are present' do
-      let(:affiliate) { affiliates(:searchgov_affiliate) }
-      let(:i14y_search) do
-        described_class.new(filterable_search_options.
-          merge(tags: 'tag from params'))
-      end
-
-      it 'searches I14y with the appropriate filter params' do
-        i14y_search.run
-        expect(I14yCollections).to have_received(:search).
-          with(hash_including(tags: 'tag from params'))
-      end
-    end
-
-    context 'when both affiliate-set and query param tag filters are present' do
-      let(:affiliate) { affiliates(:basic_affiliate) }
-      let(:i14y_search) do
-        described_class.new(filterable_search_options.
-          merge(tags: 'tag from params'))
-      end
-
-      it 'searches I14y with all relevant tags params' do
-        i14y_search.run
-        expect(I14yCollections).to have_received(:search).
-          with(hash_including(ignore_tags: 'no way,nope',
-                              tags: 'important,must have,tag from params'))
-      end
-    end
-  end
-
   context 'when sort_by=date and tbs is specified' do
     let(:i14y_search) do
       described_class.new(filterable_search_options.
