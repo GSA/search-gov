@@ -1,6 +1,7 @@
-class I14ySearch < FilterableSearch
-  include SearchInitializer
-  include Govboxable
+# frozen_string_literal: true
+
+module DocumentSearchable
+  extend ActiveSupport::Concern
 
   FACET_FIELDS = %w[audience
                     changed
@@ -12,18 +13,8 @@ class I14ySearch < FilterableSearch
                     searchgov_custom3
                     tags].freeze
 
-  delegate :from_cache, to: :api_connection
-
-  def search
-    I14yCollections.search(build_search_params)
-  rescue Faraday::ClientError => e
-    Rails.logger.error 'I14y search problem', e
-    false
-  end
-
   def build_search_params
     {
-      handles: handles,
       language: @affiliate.locale,
       query: formatted_query,
       size: @limit || @per_page,
@@ -46,10 +37,6 @@ class I14ySearch < FilterableSearch
 
   protected
 
-  def api_connection
-    I14yCollections.cached_connection
-  end
-
   def date_filter_hash
     {}.tap do |opts|
       opts[:sort_by_date] = 1 if @sort_by == 'date'
@@ -68,13 +55,6 @@ class I14ySearch < FilterableSearch
     end
   end
 
-  def handles
-    handles = []
-    handles += @affiliate.i14y_drawers.pluck(:handle) if @affiliate.gets_i14y_results
-    handles << 'searchgov' if @affiliate.search_gov_engine? || !@affiliate.gets_i14y_results
-    handles.join(',')
-  end
-
   def handle_response(response)
     return unless response && response.status == 200
 
@@ -84,7 +64,7 @@ class I14ySearch < FilterableSearch
   def process_valid_response(response)
     @total = response.metadata.total
     @next_offset = @offset + @limit if @next_offset_within_limit && @total > (@offset + @limit)
-    post_processor = I14yPostProcessor.new(@enable_highlighting, response.results)
+    post_processor = DocumentSearchPostProcessor.new(@enable_highlighting, response.results)
     post_processor.post_process_results
     process_metadata_values(response)
     process_pagination_values(post_processor, response)
@@ -108,7 +88,7 @@ class I14ySearch < FilterableSearch
   end
 
   def add_facets_to_results(result)
-    I14ySearch::FACET_FIELDS.reject { |f| f == 'created' || result[f].nil? }.each_with_object({}) do |field, fields|
+    DocumentSearchable::FACET_FIELDS.reject { |f| f == 'created' || result[f].nil? }.each_with_object({}) do |field, fields|
       field_key = field.to_sym == :changed ? :updated_date : field.to_sym
       field_value = field.to_sym == :changed ? result['changed'].to_date : result[field]
       fields[field_key] = field_value
@@ -121,11 +101,6 @@ class I14ySearch < FilterableSearch
 
   def populate_additional_results
     @govbox_set = GovboxSet.new(query, affiliate, @options[:geoip_info], @highlight_options) if first_page?
-  end
-
-  def log_serp_impressions
-    @modules |= @govbox_set.modules if @govbox_set
-    @modules << 'I14Y' if @total.positive?
   end
 
   def domains_scope_options

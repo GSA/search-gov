@@ -40,31 +40,6 @@ Feature: Search - redesign
     And I should see Powered by Bing
 
   @javascript @a11y
-  Scenario: Search with I14y results with pagination
-    Given the following SearchGov Affiliates exist:
-      | display_name   | name           | contact_email      | first_name | last_name | domains            |
-      | HealthCare.gov | healthcare.gov | aff@healthcare.gov | Jane       | Bar       | www.healthcare.gov |
-    Given there are results for the "searchgov" drawer
-    When I am on healthcare.gov's redesigned search page
-    And I search for "marketplace" in the redesigned search page
-    Then I should see exactly "20" web search results
-    And I should see "Marketplace"
-    And I should see "www.healthcare.gov/glossary/marketplace"
-    And I should see "More info on Health Insurance"
-    And I should see pagination
-    And I should be on page "1" of results
-    And I should see a link to the "Next" page
-    And I should not see a link to the "Previous" page
-    And I should see a link to the last page ("10")
-    And I should see "270 results"
-    When I click on the last page ("10")
-    Then I should see exactly "20" web search results
-    And I should be on page "10" of results
-    And I should not see a link to the "Next" page
-    And I should see a link to the "Previous" page
-    And I should see Powered by SearchGov
-
-  @javascript @a11y
   Scenario: Search with blended results
     Given the following BingV7 Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name | gets_blended_results    |

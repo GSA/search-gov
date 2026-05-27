@@ -75,11 +75,11 @@ describe Api::V2::SearchesController do
     end
 
     context 'when the search options are valid' do
-      let!(:search) { instance_double(ApiI14ySearch, as_json: { foo: 'bar' }, modules: %w[I14Y]) }
+      let!(:search) { instance_double(ApiSearchElastic, as_json: { foo: 'bar' }, modules: %w[SRCH]) }
 
       before do
         allow(Affiliate).to receive(:find_by_name).and_return(affiliate)
-        allow(ApiI14ySearch).to receive(:new).with(hash_including(query: 'api')).and_return(search)
+        allow(ApiSearchElastic).to receive(:new).with(hash_including(query: 'api')).and_return(search)
         allow(search).to receive(:run)
         allow(SearchImpression).to receive(:log).with(search,
                                                       'i14y',
@@ -91,7 +91,7 @@ describe Api::V2::SearchesController do
 
       it { is_expected.to respond_with :success }
 
-      it 'passes the correct options to its ApiI14ySearch object' do
+      it 'passes the correct options to the search engine' do
         expect(assigns(:search_options).attributes).to include({ access_key: 'basic_key',
                                                                  affiliate: affiliate,
                                                                  enable_highlighting: true,
@@ -110,7 +110,7 @@ describe Api::V2::SearchesController do
       context 'when include_facets is true' do
         let(:params_with_facets) { search_params.merge(include_facets: 'true') }
 
-        it 'passes the include_facets value to its ApiI14ySearch object' do
+        it 'passes the include_facets value' do
           get :i14y, params: params_with_facets
           expect(assigns(:search_options).attributes).to include({ include_facets: 'true' })
         end
@@ -119,7 +119,7 @@ describe Api::V2::SearchesController do
       context 'when an audience filter is present' do
         let(:params_with_audience) { search_params.merge(audience: 'everyone') }
 
-        it 'passes the audience filter to its ApiI14ySearch object' do
+        it 'passes the audience filter' do
           get :i14y, params: params_with_audience
           expect(assigns(:search_options).attributes).to include({ audience: 'everyone' })
         end
@@ -128,7 +128,7 @@ describe Api::V2::SearchesController do
       context 'when a content_type filter is present' do
         let(:params_with_content_type) { search_params.merge(content_type: 'article') }
 
-        it 'passes the content_type filter to its ApiI14ySearch object' do
+        it 'passes the content_type filter' do
           get :i14y, params: params_with_content_type
           expect(assigns(:search_options).attributes).to include({ content_type: 'article' })
         end
@@ -137,7 +137,7 @@ describe Api::V2::SearchesController do
       context 'when a mime_type filter is present' do
         let(:params_with_mime_type) { search_params.merge(mime_type: 'application/pdf') }
 
-        it 'passes the mime_type filter to its ApiI14ySearch object' do
+        it 'passes the mime_type filter' do
           get :i14y, params: params_with_mime_type
           expect(assigns(:search_options).attributes).to include({ mime_type: 'application/pdf' })
         end
@@ -146,7 +146,7 @@ describe Api::V2::SearchesController do
       context 'when a searchgov_custom filter is present' do
         let(:params_with_searchgov_custom) { search_params.merge(searchgov_custom1: 'customOne, customTwo') }
 
-        it 'passes the searchgov_custom filter to its ApiI14ySearch object' do
+        it 'passes the searchgov_custom filter' do
           get :i14y, params: params_with_searchgov_custom
           expect(assigns(:search_options).attributes).to include({ searchgov_custom1: 'customOne, customTwo' })
         end
@@ -155,7 +155,7 @@ describe Api::V2::SearchesController do
       context 'when a tags filter is present' do
         let(:params_with_tags) { search_params.merge(tags: 'tag from params') }
 
-        it 'passes the tags filter to its ApiI14ySearch object' do
+        it 'passes the tags filter' do
           get :i14y, params: params_with_tags
           expect(assigns(:search_options).attributes).to include({ tags: 'tag from params' })
         end
@@ -163,29 +163,25 @@ describe Api::V2::SearchesController do
 
       context 'when updated date filters are present' do
         let(:params_with_updated_dates) do
-          search_params.
-            merge(updated_since: '2020-01-01', updated_until: '2022-01-01')
+          search_params.merge(updated_since: '2020-01-01', updated_until: '2022-01-01')
         end
 
-        it 'passes the tags filter to its ApiI14ySearch object' do
+        it 'passes the date filters' do
           get :i14y, params: params_with_updated_dates
           expect(assigns(:search_options).attributes).
-            to include({ since_date: '01/01/2020',
-                         until_date: '01/01/2022' })
+            to include({ since_date: '01/01/2020', until_date: '01/01/2022' })
         end
       end
 
       context 'when created date filters are present' do
         let(:params_with_created_dates) do
-          search_params.
-            merge(created_since: '2020-01-01', created_until: '2022-01-01')
+          search_params.merge(created_since: '2020-01-01', created_until: '2022-01-01')
         end
 
-        it 'passes the tags filter to its ApiI14ySearch object' do
+        it 'passes the created date filters' do
           get :i14y, params: params_with_created_dates
           expect(assigns(:search_options).attributes).
-            to include({ created_since_date: '01/01/2020',
-                         created_until_date: '01/01/2022' })
+            to include({ created_since_date: '01/01/2020', created_until_date: '01/01/2022' })
         end
       end
 
@@ -198,46 +194,9 @@ describe Api::V2::SearchesController do
 
         it { is_expected.to respond_with :success }
 
-        it 'removes the sitelimit filter from its ApiI4ySearch object' do
-          expect(assigns(:search_options).attributes).
-            not_to include({ sitelimit: 'nps.gov' })
-        end
-
-        it 'adds a site_limits search param to the ApiI14ySearch' do
-          expect(ApiI14ySearch).to have_received(:new).
+        it 'passes site_limits to the search engine' do
+          expect(ApiSearchElastic).to have_received(:new).
             with(hash_including(site_limits: 'nps.gov'))
-        end
-      end
-    end
-
-    context 'when selecting the search engine' do
-      let(:i14y_search) { instance_double(ApiI14ySearch, run: true, as_json: {}, modules: []) }
-      let(:elastic_search) { instance_double(ApiSearchElastic, run: true, as_json: {}, modules: []) }
-
-      before do
-        allow(Affiliate).to receive(:find_by_name).and_return(affiliate)
-        allow(SearchImpression).to receive(:log)
-        allow(ApiI14ySearch).to receive(:new).and_return(i14y_search)
-        allow(ApiSearchElastic).to receive(:new).and_return(elastic_search)
-      end
-
-      context 'when the affiliate is configured to use i14y' do
-        it 'uses ApiI14ySearch' do
-          get :i14y, params: search_params
-          expect(ApiI14ySearch).to have_received(:new)
-          expect(ApiSearchElastic).not_to have_received(:new)
-        end
-      end
-
-      context 'when the affiliate is configured to use search_elastic' do
-        before do
-          affiliate.update!(search_engine: 'search_elastic')
-        end
-
-        it 'uses ApiSearchElastic' do
-          get :i14y, params: search_params
-          expect(ApiI14ySearch).not_to have_received(:new)
-          expect(ApiSearchElastic).to have_received(:new)
         end
       end
     end
@@ -269,31 +228,6 @@ describe Api::V2::SearchesController do
 
       it 'returns errors in JSON' do
         expect(response.parsed_body['errors']).to eq(['dc must be present'])
-      end
-    end
-
-    context 'when the search options are valid, the affiliate is using BingV7, and the collection is deep' do
-      let!(:search) { instance_double(ApiI14ySearch, as_json: { foo: 'bar' }, modules: %w[I14Y]) }
-      let!(:document_collection) { instance_double(DocumentCollection, too_deep_for_bing?: true) }
-
-      before do
-        allow(Affiliate).to receive(:find_by_name).and_return(affiliate)
-        allow(affiliate).to receive(:search_engine).and_return('bing_v7')
-        allow(DocumentCollection).to receive(:find).and_return(document_collection)
-        allow(ApiI14ySearch).to receive(:new).with(hash_including(query_params)).and_return(search)
-        allow(search).to receive(:run)
-        allow(SearchImpression).to receive(:log).with(search,
-                                                      'docs',
-                                                      hash_including('query'),
-                                                      be_a(ActionDispatch::Request))
-
-        get :docs, params: docs_params
-      end
-
-      it { is_expected.to respond_with :success }
-
-      it 'uses I14y' do
-        expect(response.parsed_body['foo']).to eq('bar')
       end
     end
 

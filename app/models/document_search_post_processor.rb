@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-class I14yPostProcessor < ResultsWithBodyAndDescriptionPostProcessor
+class DocumentSearchPostProcessor < ResultsWithBodyAndDescriptionPostProcessor
+  include ResultsRejector
   SPECIAL_URL_PATH_EXT_NAMES = %w[doc pdf ppt ps rtf swf txt xls docx pptx xlsx].freeze
 
   def initialize(enable_highlighting, results)

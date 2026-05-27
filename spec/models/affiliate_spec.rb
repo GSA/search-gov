@@ -17,11 +17,6 @@ describe Affiliate do
   describe 'schema' do
     describe 'columns' do
       it do
-        is_expected.to have_db_column(:i14y_date_stamp_enabled).
-          of_type(:boolean).with_options(default: false, null: false)
-      end
-
-      it do
         is_expected.to have_db_column(:search_engine).of_type(:string).
           with_options(default: 'opensearch', null: false)
       end

@@ -39,7 +39,6 @@ class SiteCloner
     clone_associations(@origin_site,
                        cloned_site,
                        :connections,
-                       :i14y_memberships,
                        :indexed_documents,
                        :site_domains)
   end
