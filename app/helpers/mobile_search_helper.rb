@@ -1,18 +1,12 @@
 module MobileSearchHelper
   def is_inactive_search?(search)
-    is_inactive_site_search?(search) || is_inactive_news_search?(search)
+    is_inactive_site_search?(search)
   end
 
   def is_inactive_site_search?(search)
     search.is_a?(SiteSearch) &&
         search.document_collection &&
         search.document_collection.navigation.is_inactive?
-  end
-
-  def is_inactive_news_search?(search)
-    search.is_a?(NewsSearch) &&
-        search.rss_feed &&
-        search.rss_feed.navigation.is_inactive?
   end
 
   def extra_pagination_params(search)
@@ -36,6 +30,6 @@ module MobileSearchHelper
   end
 
   def render_result_pages_links?(search)
-    search.is_a?(FilterableSearch) || search.is_a?(I14ySearch)
+    search.is_a?(FilterableSearch)
   end
 end

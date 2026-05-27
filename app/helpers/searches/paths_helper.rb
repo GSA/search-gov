@@ -9,19 +9,7 @@ module Searches::PathsHelper
     case search
     when BlendedSearch
       path_for_blended_search(search, search_params, extra_params)
-    when NewsSearch
-      path_for_rss_feed_search(search, search_params, nil, extra_params)
-    when I14ySearch
-      path_for_i14y_search(search, search_params, extra_params)
     end
-  end
-
-  def path_for_i14y_search(search, search_params, extra_params = {})
-    i14y_params = search_params.slice(:affiliate, :m, :dc)
-    i14y_params[:query] = search.query
-    i14y_params.merge! extract_current_search_filter_params(search)
-    i14y_params.merge! extra_params
-    url_for i14y_params
   end
 
   def path_for_blended_search(search, search_params, extra_params = {})
@@ -30,17 +18,6 @@ module Searches::PathsHelper
     blended_params.merge! extract_current_search_filter_params(search)
     blended_params.merge! extra_params
     search_path blended_params
-  end
-
-  def path_for_rss_feed_search(search, search_params, navigable, extra_params = {})
-    navigable ||= search.rss_feed
-    navigable_id = navigable.id if navigable
-    rss_params = navigable_params(search_params, :channel, navigable_id, search.query,
-                                  :affiliate, :m)
-
-    rss_params.merge! extract_current_search_filter_params(search)
-    rss_params.merge! extra_params
-    news_search_path rss_params
   end
 
   def navigable_params(search_params, id_sym, id, query, *keys)

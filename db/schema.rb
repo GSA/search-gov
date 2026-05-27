@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_03_17_205709) do
+ActiveRecord::Schema[7.1].define(version: 2026_05_20_010100) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -79,9 +79,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_03_17_205709) do
     t.boolean "is_federal_register_document_govbox_enabled", default: false, null: false
     t.string "api_access_key", null: false
     t.boolean "gets_commercial_results_on_blended_search", default: true, null: false
-    t.boolean "gets_i14y_results", default: false, null: false
     t.string "domain_control_validation_code"
-    t.boolean "i14y_date_stamp_enabled", default: false, null: false
     t.string "mobile_logo_file_name"
     t.string "mobile_logo_content_type"
     t.integer "mobile_logo_file_size"
@@ -101,16 +99,8 @@ ActiveRecord::Schema[7.1].define(version: 2026_03_17_205709) do
     t.boolean "display_logo_only", default: false, null: false
     t.boolean "looking_for_government_services", default: true, null: false
     t.boolean "show_search_filter_settings", default: false, null: false
-    t.boolean "show_vote_org_link", default: false, null: false
     t.boolean "gets_results_from_all_domains", default: false, null: false
     t.index ["name"], name: "index_affiliates_on_name", unique: true
-  end
-
-  create_table "affiliates_youtube_profiles", id: false, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.integer "affiliate_id"
-    t.integer "youtube_profile_id"
-    t.index ["affiliate_id", "youtube_profile_id"], name: "affiliate_id_youtube_profile_id", unique: true
-    t.index ["youtube_profile_id"], name: "index_affiliates_youtube_profiles_on_youtube_profile_id"
   end
 
   create_table "agencies", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
@@ -354,23 +344,6 @@ ActiveRecord::Schema[7.1].define(version: 2026_03_17_205709) do
     t.index ["name"], name: "index_hints_on_name", unique: true
   end
 
-  create_table "i14y_drawers", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.string "handle", null: false
-    t.string "token", null: false
-    t.string "description"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-  end
-
-  create_table "i14y_memberships", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.integer "affiliate_id", null: false
-    t.integer "i14y_drawer_id", null: false
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["affiliate_id", "i14y_drawer_id"], name: "index_i14y_memberships_on_affiliate_id_and_i14y_drawer_id", unique: true
-    t.index ["i14y_drawer_id"], name: "index_i14y_memberships_on_i14y_drawer_id"
-  end
-
   create_table "image_search_labels", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "affiliate_id", null: false
     t.string "name", null: false
@@ -487,26 +460,6 @@ ActiveRecord::Schema[7.1].define(version: 2026_03_17_205709) do
     t.index ["navigable_id", "navigable_type"], name: "index_navigations_on_navigable_id_and_navigable_type"
   end
 
-  create_table "news_items", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.string "link", null: false
-    t.string "title", null: false
-    t.string "guid", null: false
-    t.text "description", size: :medium
-    t.datetime "published_at", precision: nil, null: false
-    t.datetime "created_at", precision: nil
-    t.integer "rss_feed_url_id", null: false
-    t.datetime "updated_at", precision: nil
-    t.text "contributor", size: :medium
-    t.text "subject", size: :medium
-    t.text "publisher", size: :medium
-    t.text "unsafe_properties", size: :medium
-    t.text "body", size: :long
-    t.json "properties"
-    t.index ["link"], name: "index_news_items_on_link"
-    t.index ["rss_feed_url_id", "guid"], name: "index_news_items_on_rss_feed_url_id_and_guid"
-    t.index ["rss_feed_url_id", "link"], name: "index_news_items_on_rss_feed_url_id_and_link", unique: true
-  end
-
   create_table "routed_queries", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "affiliate_id"
     t.string "url"
@@ -522,38 +475,6 @@ ActiveRecord::Schema[7.1].define(version: 2026_03_17_205709) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["routed_query_id", "keyword"], name: "index_routed_query_keywords_on_routed_query_id_and_keyword", unique: true
-  end
-
-  create_table "rss_feed_urls", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.string "rss_feed_owner_type", null: false
-    t.string "url", null: false
-    t.datetime "last_crawled_at", precision: nil
-    t.string "last_crawl_status", default: "Pending", null: false
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "language"
-    t.string "oasis_mrss_name"
-    t.index ["rss_feed_owner_type", "url"], name: "index_rss_feed_urls_on_rss_feed_owner_type_and_url", unique: true
-  end
-
-  create_table "rss_feed_urls_rss_feeds", id: false, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.integer "rss_feed_url_id", null: false
-    t.integer "rss_feed_id", null: false
-    t.index ["rss_feed_id", "rss_feed_url_id"], name: "index_rss_feed_urls_rss_feeds_on_rss_feed_id_and_rss_feed_url_id", unique: true
-    t.index ["rss_feed_url_id"], name: "index_rss_feed_urls_rss_feeds_on_rss_feed_url_id"
-  end
-
-  create_table "rss_feeds", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.integer "owner_id", null: false
-    t.string "name", null: false
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.boolean "is_managed", default: false, null: false
-    t.boolean "is_video", default: false, null: false
-    t.string "owner_type", null: false
-    t.boolean "show_only_media_content", default: false, null: false
-    t.index ["owner_id"], name: "index_rss_feeds_on_affiliate_id"
-    t.index ["owner_type", "owner_id"], name: "index_rss_feeds_on_owner_type_and_owner_id"
   end
 
   create_table "sayt_filters", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
@@ -757,27 +678,6 @@ ActiveRecord::Schema[7.1].define(version: 2026_03_17_205709) do
     t.string "time_window"
     t.string "query_blocklist"
     t.json "conditions"
-  end
-
-  create_table "youtube_playlists", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.integer "youtube_profile_id"
-    t.string "playlist_id"
-    t.string "etag"
-    t.text "unsafe_news_item_ids", size: :long
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.json "news_item_ids"
-    t.index ["youtube_profile_id", "playlist_id"], name: "index_youtube_playlists_on_youtube_profile_id_and_playlist_id", unique: true
-  end
-
-  create_table "youtube_profiles", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.string "title", null: false
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "channel_id", null: false
-    t.datetime "imported_at", precision: nil
-    t.index ["channel_id"], name: "index_youtube_profiles_on_channel_id", unique: true
-    t.index ["id", "imported_at"], name: "index_youtube_profiles_on_id_and_imported_at"
   end
 
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"

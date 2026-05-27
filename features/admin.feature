@@ -112,12 +112,6 @@ Feature:  Administration
     And I should see the following breadcrumbs: Super Admin > Users
 
     When I go to the admin home page
-    And I follow "Rss Feed Urls"
-    And I should see the following breadcrumbs: Super Admin > Rss Feed Urls
-    When I follow "Show" within the first scaffold row
-    Then I should see "http://another.agency.gov/feed"
-
-    When I go to the admin home page
     And I follow "Filters"
     Then I should see the following breadcrumbs: Super Admin > Type Ahead Filters
 

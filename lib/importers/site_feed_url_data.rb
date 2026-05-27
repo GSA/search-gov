@@ -1,5 +1,5 @@
 class SiteFeedUrlData
-  include RssFeedParser
+  VALID_YEAR_RANGE = (1000..9999).freeze
 
   DEFAULT_ATTRIBUTES = { last_crawl_status: IndexedDocument::SUMMARIZED_STATUS }.freeze
 
@@ -69,5 +69,20 @@ class SiteFeedUrlData
     existing_ids = IndexedDocument.where("affiliate_id = ? AND source = 'rss'", @site.id).pluck(:id)
     obsolete_ids = existing_ids - @document_ids.to_a
     IndexedDocument.fast_delete obsolete_ids
+  end
+
+  def extract_published_at(item, *pub_date_paths)
+    pub_date_paths.each do |pub_date_path|
+      str = item.xpath(pub_date_path).inner_text
+      next if str.blank?
+      dt = parse_datetime(str)
+      return dt if dt.present?
+    end
+    nil
+  end
+
+  def parse_datetime(datetime_str)
+    datetime = DateTime.parse(datetime_str)
+    datetime if datetime && VALID_YEAR_RANGE.include?(datetime.year)
   end
 end

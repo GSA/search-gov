@@ -8,7 +8,6 @@ describe ElasticBlendedQuery do
       language: 'en',
       offset: 0,
       q: 'my query',
-      rss_feed_url_ids: [2, 3],
       size: 20,
       sort: nil,
       since: '2022-06-01',
@@ -46,24 +45,13 @@ describe ElasticBlendedQuery do
                           "lt": "2022-06-30"
                         }
                       }
-                    }
-                  ],
-                  "should": [
+                    },
                     {
                       "term": {
                         "affiliate_id": 1
                       }
-                    },
-                    {
-                      "terms": {
-                        "rss_feed_url_id": [
-                          2,
-                          3
-                        ]
-                      }
                     }
-                  ],
-                  "minimum_should_match": 1
+                  ]
                 }
               }
             }
@@ -87,10 +75,10 @@ describe ElasticBlendedQuery do
       "highlight": {
         "type": "fvh",
         "pre_tags": [
-          ""
+          "\uE000"
         ],
         "post_tags": [
-          ""
+          "\uE001"
         ],
         "fields": {
           "title.en": {
@@ -120,8 +108,8 @@ describe ElasticBlendedQuery do
               }
             ],
             "highlight": {
-              "pre_tag": "",
-              "post_tag": ""
+              "pre_tag": "\uE000",
+              "post_tag": "\uE001"
             }
           }
         }
@@ -129,5 +117,5 @@ describe ElasticBlendedQuery do
     }.to_json
   end
 
-  it_behaves_like 'an Elasticsearch query', '*indexed_documents*,*news_items*'
+  it_behaves_like 'an Elasticsearch query', '*indexed_documents*'
 end

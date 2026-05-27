@@ -3,15 +3,18 @@ Rails.application.routes.draw do
   concern :active_scaffold_association, ActiveScaffold::Routing::Association.new
   concern :active_scaffold, ActiveScaffold::Routing::Basic.new(association: true)
   get '/search' => 'searches#index', as: :search
-  # SRCH-3494: Do not permit advanced search for sites using the SearchGov search engine
-  constraints(AdvancedSearchesConstraint.new) do
-    get '/search/advanced', to: redirect(path: '/search')
-  end
-  get '/search/advanced' => 'searches#advanced', as: :advanced_search
+
+  get '/search/advanced', to: redirect { |params, request|
+    query_string = request.query_string.present? ? "?#{request.query_string}" : ""
+    "/search#{query_string}"
+  }
+
+  get '/search/news', to: redirect { |params, request|
+    query_string = request.query_string.present? ? "?#{request.query_string}" : ""
+    "/search#{query_string}"
+  }
+
   get '/search/docs' => 'searches#docs', as: :docs_search
-  get '/search/news' => 'searches#news', as: :news_search
-  # Provide some backward compatibility for searchers using the legacy video news search URL
-  get '/search/news/videos', to: redirect(path: '/search')
   get '/auth/logindotgov/callback', to: 'omniauth_callbacks#login_dot_gov'
 
   # Deprecated
@@ -20,9 +23,8 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v2 do
       get '/search' => 'searches#blended'
-      get '/search/bing' => 'searches#bing'
       get '/search/i14y' => 'searches#i14y'
-      get '/search/video' => 'searches#video'
+      get '/search/bing' => 'searches#bing'
       get '/search/docs' => 'searches#docs'
       post '/click' => 'click#create'
     end
@@ -77,14 +79,6 @@ Rails.application.routes.draw do
       resource :visual_design, only: [:edit, :update]
       resources :links, only: :new
       resource :embed_code, only: [:show]
-      resource :font_and_colors, only: [:edit, :update]
-      resource :header_and_footer, only: [:edit, :update] do
-        collection do
-          get :new_footer_link
-          get :new_header_link
-        end
-      end
-      resource :image_assets, only: [:edit, :update]
       resource :no_results_pages, only: [:edit, :update] do
         collection do
           get :new_no_results_pages_alt_link
@@ -136,7 +130,6 @@ Rails.application.routes.draw do
         end
       end
       resources :memberships, only: [:update]
-      resources :i14y_drawers
       resource :filtered_analytics_toggle, only: :create
       resources :watchers
       resources :no_results_watchers, controller: "watchers", type: "NoResultsWatcher"
@@ -221,22 +214,13 @@ Rails.application.routes.draw do
     resources :system_alerts, concerns: :active_scaffold
     resources :tags, concerns: :active_scaffold
     resources :trending_urls, only: :index
-    resources :news_items, concerns: :active_scaffold
     resources :suggestion_blocks, concerns: :active_scaffold
-    resources :rss_feeds, concerns: :active_scaffold
-    resources :rss_feed_urls, concerns: :active_scaffold do
-      member do
-        get 'destroy_news_items'
-        get 'news_items'
-      end
-    end
     resource :search_module_ctrs, only: [:show]
     resource :site_ctrs, only: [:show]
     resource :query_ctrs, only: [:show]
     resources :hints, concerns: :active_scaffold do
       collection { get 'reload_hints' }
     end
-    resources :i14y_drawers, concerns: :active_scaffold
     resources :languages, concerns: :active_scaffold
     resources :routed_queries, concerns: :active_scaffold
     resources :routed_query_keywords, concerns: :active_scaffold

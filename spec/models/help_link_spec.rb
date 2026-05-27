@@ -6,7 +6,7 @@ describe HelpLink do
   it { is_expected.to validate_uniqueness_of :request_path }
   it { is_expected.to validate_presence_of :request_path }
   it { is_expected.to validate_presence_of :help_page_url }
-  it { is_expected.to allow_value('/sites/i14y_drawers/new').for(:request_path) }
+  it { is_expected.to allow_value('/sites/document_collections/new').for(:request_path) }
   it { is_expected.not_to allow_value('notavalidpath').for(:request_path) }
 
   describe '.lookup(request, action_name)' do

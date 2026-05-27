@@ -7,19 +7,14 @@ describe SiteCloner do
            :document_collections,
            :featured_collections,
            :flickr_profiles,
-           :i14y_drawers,
-           :i14y_memberships,
            :image_search_labels,
            :languages,
            :memberships,
            :navigations,
            :routed_queries,
            :routed_query_keywords,
-           :rss_feed_urls,
-           :rss_feeds,
            :url_prefixes,
-           :users,
-           :youtube_profiles
+           :users
 
   describe 'target_handle' do
     context 'specified at initialization' do
@@ -95,8 +90,7 @@ describe SiteCloner do
        language
        theme
        user_ids
-       website
-       youtube_profile_ids).each do |attr|
+       website).each do |attr|
       its(attr) { should eq(origin_site.send attr) }
     end
 
@@ -207,17 +201,6 @@ describe SiteCloner do
       end
     end
 
-    context 'when the origin site has i14y memberships' do
-      before do
-        origin_site.i14y_memberships.create!(i14y_drawer: i14y_drawers(:one))
-      end
-
-      it 'copies the i14y drawers' do
-        expect(cloned_site.i14y_drawers.count).to eq(1)
-        expect(cloned_site.i14y_drawers.pluck(:handle)).to eq(origin_site.i14y_drawers.pluck(:handle))
-      end
-    end
-
     context 'when the origin site has image search label with customized attributes' do
       before do
         origin_site.image_search_label.update!(name: 'my images')
@@ -287,23 +270,6 @@ describe SiteCloner do
             with(:routed_query_keyword_observer).and_call_original
           expect { cloner.clone }.to raise_error(StandardError)
         end
-      end
-    end
-
-    it 'copies the rss_feeds' do
-      expect(cloned_site.rss_feeds.count).to eq(7)
-
-      origin_site.rss_feeds.each_with_index do |rss_feed, index|
-        cloned_rss_feed = cloned_site.rss_feeds[index]
-        expect(cloned_rss_feed.name).to eq(rss_feed.name)
-
-        actual_rss_feed_url_ids = cloned_rss_feed.rss_feed_urls.pluck(:id)
-        expected_rss_feed_url_ids = rss_feed.rss_feed_urls.pluck(:id)
-        expect(actual_rss_feed_url_ids).to eq(expected_rss_feed_url_ids)
-
-        actual_nav_attrs = cloned_rss_feed.navigation.attributes.slice(*nav_attr_keys)
-        expected_nav_attrs = rss_feed.navigation.attributes.slice(*nav_attr_keys)
-        expect(actual_nav_attrs).to eq(expected_nav_attrs)
       end
     end
 

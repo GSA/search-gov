@@ -1,7 +1,6 @@
 module Searches::BlendedHelper
   BLENDED_PARTIAL_HASH = {
-    IndexedDocument: 'searches/blended/indexed_document',
-    NewsItem: 'searches/news_item'
+    IndexedDocument: 'searches/blended/indexed_document'
   }.freeze
 
   def blended_result_partial(result)

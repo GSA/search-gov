@@ -5,11 +5,7 @@ module Searches::FiltersHelper
     return unless search.is_a? FilterableSearch
 
     html = [results_count_html(search)]
-    # This yicky conditional is (hopefully) a temporary hack until we have more
-    # consistent date info for Search.gov docs and improved date sorting/date display:
-    # https://www.pivotaltracker.com/story/show/158572324
-    # https://www.pivotaltracker.com/story/show/158571861
-    if !((search.affiliate.search_gov_engine? && search.class == I14ySearch) || search.affiliate.search_elastic_engine?)
+    if !search.affiliate.search_elastic_engine?
       html << refine_search_html
       html << time_filter_html(search, search_params)
       html << sort_filter_html(search, search_params)
@@ -77,6 +73,22 @@ module Searches::FiltersHelper
       I18n.t :all_time
     else
       I18n.t "last_#{FilterableSearch::TIME_BASED_SEARCH_OPTIONS[time_filter_key]}"
+    end
+  end
+
+  def current_time_filter_description(search)
+    until_date = search.until ? search.until.to_date : Date.current
+
+    if search.tbs
+      I18n.t "last_#{FilterableSearch::TIME_BASED_SEARCH_OPTIONS[search.tbs]}"
+    elsif search.since
+      desc = I18n.l(search.since, format: '%b %-d, %Y')
+      desc << " - #{I18n.l(until_date, format: '%b %-d, %Y')}" unless search.since.to_date == until_date
+      desc
+    elsif search.until
+      "#{I18n.t :before} #{I18n.l(search.until, format: '%b %-d, %Y')}"
+    else
+      I18n.t :all_time
     end
   end
 

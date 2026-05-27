@@ -57,10 +57,11 @@ describe BlendedSearch do
                             total: 0))
 
         elastic_results = instance_double(ElasticBlendedResults,
-                                          results: [NewsItem.new(link: 'http://www.wh.gov/ns1',
-                                                                 title: 'Obama adopts policies similar to other policies',
-                                                                 description: 'Ed note: This&nbsp;has been cross-posted&nbsp;from the Office of Science and Technology policy&#39;s...',
-                                                                 body: 'random text here')],
+                                          results: [OpenStruct.new(link: 'http://www.wh.gov/ns1',
+                                                                   url: 'http://www.wh.gov/ns1',
+                                                                   title: 'Obama adopts policies similar to other policies',
+                                                                   description: 'Ed note: This&nbsp;has been cross-posted&nbsp;from the Office of Science and Technology policy&#39;s...',
+                                                                   body: 'random text here')],
                                           suggestion: double('suggestion', text: 'electrocoagulation'),
                                           total: 1)
         expect(elastic_results).to receive(:override_suggestion).with(suggestion)

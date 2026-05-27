@@ -9,7 +9,7 @@ DEFAULTS: &DEFAULTS
 searchgov_affiliate:
   <<: *DEFAULTS
   id: 323015273
-  search_engine: SearchGov
+  search_engine: SearchElastic
   display_name: SearchGov Affiliate
   name: searchgovaffiliate
 
@@ -25,7 +25,6 @@ usagov_affiliate:
   name: usagov
   website: https://www.usa.gov
   search_engine: BingV7
-  youtube_profiles: whitehouse
   api_access_key: usagov_key
   favicon_url: "http://favicon_logo.com"
 
@@ -50,7 +49,6 @@ basic_affiliate:
   name: nps.gov
   website: http://www.nps.gov
   is_sayt_enabled: false
-  youtube_profiles: nps
   api_access_key: basic_key
 
 another_affiliate:
@@ -58,7 +56,6 @@ another_affiliate:
   display_name: Another Gov Site
   name: another.gov
   api_access_key: another_key
-  youtube_profiles: nps
 
 admin_affiliate:
   <<: *DEFAULTS
@@ -103,12 +100,6 @@ inactive_affiliate:
   name: inactive
   active: false
 
-i14y_affiliate:
-  <<: *DEFAULTS
-  display_name: I14y Affiliate
-  name: i14y_affiliate
-  gets_i14y_results: true
-
 affiliate_for_user_with_default_site:
   <<: *DEFAULTS
   display_name: Default Site
@@ -122,7 +113,7 @@ russian_affiliate:
 
 blended_affiliate:
   <<: *DEFAULTS
-  search_engine: SearchGov
+  search_engine: SearchElastic
   display_name: Blended Affiliate
   name: blended_affiliate
   gets_blended_results: true
@@ -141,7 +132,7 @@ usagov_affiliate_header_bg_color:
   display_name: USA.gov
   name: redesigned_usagov_bg_color
   website: https://www.usa.gov
-  search_engine: SearchGov
+  search_engine: SearchElastic
   use_redesigned_results_page: true
   api_access_key: usagov_affiliate_header_bg_color_key
   visual_design_json: {

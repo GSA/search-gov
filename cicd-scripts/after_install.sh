@@ -86,11 +86,18 @@ export BUNDLE_FROZEN="false"
 
 log "Bundler config: without=$BUNDLE_WITHOUT, path=$BUNDLE_PATH"
 
-# Create shared bundle directories
+# Create shared bundle directories and persist config for systemd
 mkdir -p "$SHARED_DIR/bundle" "$SHARED_DIR/.bundle"
+cat > "$SHARED_DIR/.bundle/config" <<BUNDLECONF
+---
+BUNDLE_PATH: "$SHARED_DIR/bundle"
+BUNDLE_WITHOUT: "development:test"
+BUNDLECONF
 
-# Remove per-release bundle config
+# Symlink per-release .bundle to shared config so systemd's bundler
+# can find BUNDLE_PATH without needing env vars at runtime
 rm -rf "$RELEASE_DIR/.bundle"
+ln -sfn "$SHARED_DIR/.bundle" "$RELEASE_DIR/.bundle"
 
 # Optionally clean git gem cache
 if [ "${CLEAN_BUNDLER_GIT_CACHE:-false}" = "true" ]; then
@@ -122,11 +129,9 @@ fi
 log "Precompiling assets"
 SECRET_KEY_BASE=placeholder RAILS_ENV=production ./bin/rails assets:precompile
 
-# Optional migrations
-if [ "${RUN_DB_MIGRATIONS:-false}" = "true" ]; then
-  log "Running database migrations"
-  RAILS_ENV=production bundle exec rails db:migrate
-fi
+# Run pending migrations (idempotent -- no-op if none pending)
+log "Running database migrations"
+RAILS_ENV=production bundle exec rails db:migrate
 
 # Atomically promote release
 log "Promoting release to current"

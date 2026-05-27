@@ -17,7 +17,7 @@ describe LegacyOpenSearch::Engine do
     let(:search) { described_class.new(search_options) }
     let(:search_results) do
       results = double('results',
-                     results: [mock_model(NewsItem, title: 'some result')],
+                     results: [OpenStruct.new(title: 'some result')],
                      total: 100,
                      offset: 0,
                      suggestion: nil,

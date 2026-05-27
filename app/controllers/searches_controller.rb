@@ -10,9 +10,8 @@ class SearchesController < ApplicationController
   #to ensure that the correct params are being passed, etc.
   before_action :set_web_search_options, :only => [:advanced, :index]
   before_action :set_docs_search_options, :only => :docs
-  before_action :set_news_search_options, :only => [:news]
-  before_action :force_request_format, :only => [:advanced, :docs, :index, :news]
-  after_action :log_search_impression, :only => [:index, :news, :docs]
+  before_action :force_request_format, :only => [:advanced, :docs, :index]
+  after_action :log_search_impression, :only => [:index, :docs]
   include QueryRoutableController
 
   def index
@@ -53,20 +52,8 @@ class SearchesController < ApplicationController
     @search_vertical = :docs
     set_search_page_title
     set_search_params
-    template = [I14ySearch, OpenSearch::Engine, LegacyOpenSearch::Engine, SearchElasticEngine].include?(search_klass) ? :i14y : :docs
+    template = [OpenSearch::Engine, LegacyOpenSearch::Engine, SearchElasticEngine].include?(search_klass) ? :document : :docs
     template = :index_redesign if redesign?
-    respond_to { |format| format.html { render template } }
-  end
-
-  def news
-    @search = NewsSearch.new(@search_options)
-    @search.run
-    @form_path = news_search_path
-    set_news_search_page_title
-    set_search_page_title
-    @search_vertical = :news
-    set_search_params
-    template = redesign? ? :index_redesign : :news
     respond_to { |format| format.html { render template } }
   end
 
@@ -84,9 +71,6 @@ class SearchesController < ApplicationController
 
   # Redirects to the last available page if the requested page number exceeds the total number of pages.
   def redirect_if_invalid_page_number
-    # I14ySearch handles page numbers differently, so we skip this check for it. Also, we are going to delete this code soon, so we don't want to spend time refactoring it for I14ySearch.
-    return if gets_i14y_results?
-
     return unless @search.total.present?
 
     requested_page = params[:page].to_i
@@ -101,25 +85,15 @@ class SearchesController < ApplicationController
     if get_commercial_results?
       [WebSearch, :web, :index]
     elsif @affiliate.opensearch_engine?
-      [OpenSearch::Engine, :SRCH, :i14y]
+      [OpenSearch::Engine, :document, :document]
     elsif @affiliate.legacy_opensearch_engine?
-      [LegacyOpenSearch::Engine, :SRCH, :i14y]
+      [LegacyOpenSearch::Engine, :document, :document]
     elsif @affiliate.search_elastic_engine?
-      [SearchElasticEngine, :SRCH, :i14y]
-    elsif gets_i14y_results?
-      [I14ySearch, :i14y, :i14y]
+      [SearchElasticEngine, :document, :document]
     elsif @affiliate.gets_blended_results
       [BlendedSearch, :blended, :blended]
     else
       [WebSearch, :web, :index]
-    end
-  end
-
-  def set_news_search_page_title
-    if permitted_params[:query].present?
-      @page_title = permitted_params[:query]
-    elsif @search.rss_feed and @search.total > 0
-      @page_title = @search.rss_feed.name
     end
   end
 
@@ -142,27 +116,8 @@ class SearchesController < ApplicationController
     @search_options.merge!(document_collection: document_collection)
   end
 
-  def set_news_search_options
-    @search_options = search_options_from_params :channel,
-                                                 :contributor,
-                                                 :publisher,
-                                                 :since_date,
-                                                 :sort_by,
-                                                 :subject,
-                                                 :tbs,
-                                                 :until_date
-  end
-
   def get_commercial_results?
     permitted_params[:cr] == 'true'
-  end
-
-  def gets_i14y_results?
-    return false if @affiliate.gets_blended_results
-
-    @affiliate.search_gov_engine? ||
-      @affiliate.gets_i14y_results ||
-      @search_options[:document_collection]&.too_deep_for_bing?
   end
 
   def log_search_impression
@@ -173,7 +128,6 @@ class SearchesController < ApplicationController
     return OpenSearch::Engine if @affiliate.opensearch_engine?
     return LegacyOpenSearch::Engine if @affiliate.legacy_opensearch_engine?
     return SearchElasticEngine if @affiliate.search_elastic_engine?
-    return I14ySearch if gets_i14y_results?
 
     @search_options[:document_collection] ? SiteSearch : WebSearch
   end

@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class ElasticBlended
-  #Note: keep these alphabetized
-  INDEXES = %w{IndexedDocument NewsItem}
+  INDEXES = %w{IndexedDocument}
 
   extend Indexable
 

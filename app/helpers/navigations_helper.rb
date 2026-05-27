@@ -2,19 +2,13 @@
 
 module NavigationsHelper
   def filter_navigations(navigations)
-    items = navigations.to_a
-    items.reject! do |n|
-      n.navigable.is_a?(RssFeed) && n.navigable.show_only_media_content?
-    end
-    items.reject { |n| n.navigable.is_a?(ImageSearchLabel) }
+    navigations.to_a.select { |n| n.navigable.is_a?(DocumentCollection) }
   end
 
   def link_to_navigable_facet_type(nav)
     case nav.navigable_facet_type
     when 'DocumentCollection'
       link_to('Collection', edit_site_collection_path(nav.navigable.affiliate, nav.navigable))
-    when 'ImageSearchLabel'
-      build_image_search_navigable_label nav.navigable
     end
   end
 

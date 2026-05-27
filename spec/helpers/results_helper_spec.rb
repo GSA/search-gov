@@ -2,7 +2,7 @@
 
 describe ResultsHelper do
   describe '#search_data' do
-    subject(:search_data) { helper.search_data(search, 'i14y') }
+    subject(:search_data) { helper.search_data(search, 'document') }
 
     let(:search) do
       instance_double('search',
@@ -14,7 +14,7 @@ describe ResultsHelper do
       expected_output = {
         data: {
           affiliate: 'nps.gov',
-          vertical: 'i14y',
+          vertical: 'document',
           query: 'rutabaga'
         }
       }
@@ -175,20 +175,6 @@ describe ResultsHelper do
       end
     end
 
-    context 'VIDS' do
-      let(:module_code) { 'VIDS' }
-
-      it 'adds a news item thumbnail with click tracking attributes' do
-        expected_output = '<a data-click="{&quot;position&quot;:&quot;2&quot;,' \
-                          '&quot;module_code&quot;:&quot;VIDS&quot;}" ' \
-                          'href="https://test.gov?v=test-video-id">' \
-                          '<img alt="test title" ' \
-                          'src="https://i.ytimg.com/vi/uwUt1fVLb3E/default.jpg" />' \
-                          '<span><span class="icon icon-play"></span></span></a>'
-
-        expect(link_to_news_item_thumbnail).to eq expected_output
-      end
-    end
   end
 
   describe '#link_to_related_search' do
