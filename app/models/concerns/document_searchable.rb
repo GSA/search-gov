@@ -10,7 +10,8 @@ module DocumentSearchable
                     mime_type
                     searchgov_custom1
                     searchgov_custom2
-                    searchgov_custom3].freeze
+                    searchgov_custom3
+                    tags].freeze
 
   def build_search_params
     {

@@ -73,6 +73,7 @@ class DocumentSearchPostProcessor < ResultsWithBodyAndDescriptionPostProcessor
         searchgovCustom1: result[:searchgov_custom1],
         searchgovCustom2: result[:searchgov_custom2],
         searchgovCustom3: result[:searchgov_custom3],
+        tags: result[:tags]
       }.compact
     end
   end
