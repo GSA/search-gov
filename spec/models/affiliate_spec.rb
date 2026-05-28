@@ -123,8 +123,6 @@ describe Affiliate do
         class_name('User').inverse_of(:default_affiliate)
     end
 
-    it { is_expected.to have_many(:watchers).inverse_of(:affiliate) }
-
     it do
       is_expected.to have_many(:tag_filters).dependent(:destroy).inverse_of(:affiliate)
     end

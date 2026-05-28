@@ -221,7 +221,6 @@ Rails.application.routes.draw do
     resources :languages, concerns: :active_scaffold
     resources :routed_queries, concerns: :active_scaffold
     resources :routed_query_keywords, concerns: :active_scaffold
-    resources :watchers, concerns: :active_scaffold
     resources :searchgov_domains, concerns: :active_scaffold do
       member do
         post 'reindex'
