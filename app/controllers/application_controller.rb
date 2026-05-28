@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
     include_facets
   ].concat(ADVANCED_PARAM_KEYS).
     concat(DUBLIN_CORE_PARAM_KEYS).
-    concat(I14ySearch::FACET_FIELDS).
+    concat(DocumentSearchable::FACET_FIELDS).
     concat(FILTER_PARAM_KEYS).freeze
 
   def handle_unverified_request
@@ -102,7 +102,7 @@ class ApplicationController < ActionController::Base
   end
 
   def facets_params
-    permitted_params.slice(*I14ySearch::FACET_FIELDS)
+    permitted_params.slice(*DocumentSearchable::FACET_FIELDS)
   end
 
   def query_search_options
@@ -141,7 +141,6 @@ class ApplicationController < ActionController::Base
   end
 
   def filterable_search
-    @search_params[:channel] = @search.rss_feed.id if @search.is_a?(NewsSearch) && @search.rss_feed
     @search_params[:tbs] = @search.tbs if @search.tbs
     @search_params.merge!(permitted_params.slice(:contributor, :publisher, :sort_by, :subject))
     filterable_search_dates

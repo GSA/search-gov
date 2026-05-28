@@ -21,7 +21,7 @@ describe 'searchgov:font_and_color_updater' do
     end
 
     let(:first_affiliate_id) { affiliates(:redesigned_usagov_affiliate).id }
-    let(:second_affiliate_id) { affiliates(:i14y_affiliate).id }
+    let(:second_affiliate_id) { affiliates(:usagov_affiliate).id }
     let(:ids) { "#{first_affiliate_id} #{second_affiliate_id}" }
 
     it 'calls the updater on those ids' do

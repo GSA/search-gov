@@ -42,12 +42,8 @@ module MobileNavigationsHelper
         nil
       when ImageSearch
         search.affiliate.image_search_label
-      when I14ySearch
-        search.collection
       when SiteSearch
         search.document_collection
-      when NewsSearch
-        search.rss_feed
     end
   end
 
@@ -66,11 +62,7 @@ module MobileNavigationsHelper
   end
 
   def is_default_search?(search)
-    if search.instance_of?(I14ySearch)
-      search.collection.nil?
-    else
-      [BlendedSearch, WebSearch].any? { |c| search.instance_of?(c) }
-    end
+    [BlendedSearch, WebSearch].any? { |c| search.instance_of?(c) }
   end
 
   def build_navigations_items(search, search_params, non_default_search_navigable, navigations)
@@ -93,8 +85,6 @@ module MobileNavigationsHelper
     case navigable
       when DocumentCollection
         path_for_document_collection_search(search_params, navigable, search.query)
-      when RssFeed
-        path_for_rss_feed_search(search, search_params, navigable)
     end
   end
 

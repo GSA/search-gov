@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe 'Search.gov tasks' do
-  fixtures :i14y_drawers
-
   before(:all) do
     @rake = Rake::Application.new
     Rake.application = @rake
@@ -12,65 +10,6 @@ describe 'Search.gov tasks' do
 
   before { $stdout = StringIO.new }
   after { $stdout = STDOUT }
-
-  describe 'searchgov:promote' do
-    let(:file_path) { File.join(Rails.root.to_s, 'spec', 'fixtures', 'csv', 'searchgov_urls.csv') }
-    let(:task_name) { 'searchgov:promote' }
-    let(:url) { 'https://www.consumerfinance.gov/consumer-tools/auto-loans/' }
-    let(:doc_id) { SearchgovUrl.new(url: url).document_id }
-    let(:promote_urls) do
-      @rake[task_name].reenable
-      @rake[task_name].invoke(file_path)
-    end
-    let(:demote_urls) do
-      @rake[task_name].reenable
-      @rake[task_name].invoke(file_path, 'false')
-    end
-
-    it 'can promote urls' do
-      expect(I14yDocument).to receive(:promote).
-        with(handle: 'searchgov', document_id: doc_id, bool: 'true').at_least(:once)
-      promote_urls
-    end
-
-    it 'outputs success messages' do
-      allow(I14yDocument).to receive(:promote).
-        with(handle: 'searchgov', document_id: doc_id, bool: 'true').at_least(:once)
-      promote_urls
-      expect($stdout.string).to match(%r{Promoted https://www.consumerfinance.gov})
-    end
-
-    it 'can demote urls' do
-      expect(I14yDocument).to receive(:promote).
-        with(handle: 'searchgov', document_id: doc_id, bool: 'false').at_least(:once)
-      demote_urls
-    end
-
-    it 'indexes new urls' do
-      allow(I14yDocument).to receive(:promote).
-        with(handle: 'searchgov', document_id: doc_id, bool: 'true').at_least(:once)
-      expect { promote_urls }.to change{ SearchgovUrl.count }.by(1)
-    end
-
-    it 'creates new urls' do
-      expect(LegacyOpenSearch::DocumentIndexer).to receive(:index)
-      allow(I14yDocument).to receive(:promote).
-        with(handle: 'searchgov', document_id: doc_id, bool: 'true').at_least(:once)
-      promote_urls
-    end
-
-    context 'when something goes wrong' do
-      before do
-        allow_any_instance_of(SearchgovUrl).to receive(:fetch).and_raise(StandardError)
-      end
-
-      it 'logs the failure' do
-        promote_urls
-        expect($stdout.string).
-          to match %r(Failed to promote https://www.consumerfinance.gov/consumer-tools/auto-loans/)
-      end
-    end
-  end
 
   describe 'searchgov:crawl' do
     let(:task_name) { 'searchgov:crawl' }

@@ -3,7 +3,6 @@
 ## Code Status
 
  [![Build Status](https://circleci.com/gh/GSA/search-gov.svg?style=svg)](https://circleci.com/gh/GSA/search-gov)
- [![Maintainability](https://api.codeclimate.com/v1/badges/fd0577360749c9b3d166/maintainability)](https://codeclimate.com/github/GSA/search-gov/maintainability)
 
 ## Contributing to search-gov
 Read our [contributing guidelines](./CONTRIBUTING.md).
@@ -237,7 +236,7 @@ We use [CircleCI](https://circleci.com/gh/GSA/usasearch) for continuous integrat
 
 # Code Quality
 
-We use [Rubocop](https://rubocop.org/) for static code analysis. Settings specific to i14y are configured via [.rubocop.yml](.rubocop.yml). Shared settings for all Search.gov repositories should be configured via the [searchgov_style](https://github.com/GSA/searchgov_style) gem.
+We use [Rubocop](https://rubocop.org/) for static code analysis. Settings specific to this project are configured via [.rubocop.yml](.rubocop.yml). Shared settings for all Search.gov repositories should be configured via the [searchgov_style](https://github.com/GSA/searchgov_style) gem.
 
 ### Running RuboCop Locally
 
@@ -373,9 +372,6 @@ Example:
     `$ rake resque:scheduler`
 
 1. Check the 'Delayed' tab in [Resque web](http://localhost:3000/admin/resque/delayed) to see your job.
-
-### Additional developer resources
-* [Local i14y setup](https://github.com/GSA/search-gov/wiki/Setting-up-i14y-with-usasearch-for-development)
 
 ## Production
 

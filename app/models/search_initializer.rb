@@ -39,7 +39,7 @@ module SearchInitializer
   end
 
   def formatted_query_instance
-    @formatted_query_instance ||= I14yFormattedQuery.new(@query, domains_scope_options)
+    @formatted_query_instance ||= DomainScopedQuery.new(@query, domains_scope_options)
   end
 
   def as_json_result_hash(result)

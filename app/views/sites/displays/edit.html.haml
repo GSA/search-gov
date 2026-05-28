@@ -10,8 +10,8 @@
   = render_error_messages(@site)
 
   = render partial: 'sidebar', locals: { f: f }
-  - if %w[SearchGov SearchElastic].include?(@site.search_engine) && @site.show_search_filter_settings
+  - if %w[SearchElastic].include?(@site.search_engine) && @site.show_search_filter_settings
     = render partial: 'search_filters', locals: { f: f }
   = render partial: 'related_sites', locals: { f: f }
-  - if @site.gets_i14y_results || @site.gets_blended_results
+  - if @site.gets_blended_results
     = render partial: 'results_format', locals: { f: f }

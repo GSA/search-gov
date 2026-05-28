@@ -172,57 +172,6 @@ describe SearchesController do
     end
   end
 
-  context 'when affiliate gets i14y results' do
-    let(:affiliate) { affiliates(:basic_affiliate) }
-    let(:i14y_search) { double(I14ySearch, query: 'gov', modules: %w(I14Y), diagnostics: {}) }
-
-    before do
-      expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
-      affiliate.gets_i14y_results = true
-      expect(I14ySearch).to receive(:new).and_return(i14y_search)
-      expect(i14y_search).to receive(:run)
-      get :index, params: { query: 'gov', affiliate: affiliate.name }
-    end
-
-    it { is_expected.to assign_to(:affiliate).with(affiliate) }
-
-    it 'should assign various variables' do
-      expect(assigns[:page_title]).to match(/gov/)
-      expect(assigns[:search_vertical]).to eq(:i14y)
-    end
-
-    it { is_expected.to assign_to(:search_params).with(
-      hash_including(affiliate: affiliate.name, query: 'gov')) }
-
-    it { is_expected.to render_template(:i14y) }
-
-  end
-
-  context 'when affiliate is using SearchGov' do
-    let(:affiliate) { affiliates(:basic_affiliate) }
-    let(:i14y_search) { double(I14ySearch, query: 'gov', modules: %w(I14Y), diagnostics: {}) }
-
-    before do
-      expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
-      affiliate.search_engine = 'SearchGov'
-      expect(I14ySearch).to receive(:new).and_return(i14y_search)
-      expect(i14y_search).to receive(:run)
-      get :index, params: { query: 'gov', affiliate: affiliate.name }
-    end
-
-    it { is_expected.to assign_to(:affiliate).with(affiliate) }
-
-    it 'should assign various variables' do
-      expect(assigns[:page_title]).to match(/gov/)
-      expect(assigns[:search_vertical]).to eq(:i14y)
-    end
-
-    it { is_expected.to assign_to(:search_params).with(
-      hash_including(affiliate: affiliate.name, query: 'gov')) }
-
-    it { is_expected.to render_template(:i14y) }
-  end
-
   context 'when handling a valid affiliate search request' do
     render_views
     let(:affiliate) { affiliates(:basic_affiliate) }
@@ -393,12 +342,6 @@ describe SearchesController do
     end
   end
 
-  describe '#advanced' do
-    before { get :advanced, params: { affiliate: 'usagov' } }
-
-    it { is_expected.to assign_to(:page_title).with_kind_of(String) }
-  end
-
   describe '#docs' do
     let(:affiliate) { affiliates(:basic_affiliate) }
     let(:dc) { mock_model(DocumentCollection) }
@@ -430,25 +373,6 @@ describe SearchesController do
         hash_including(affiliate: affiliate.name, query: 'gov')) }
 
       it { is_expected.to render_template(:docs) }
-
-      context 'when document collection max depth is >= 3' do
-        let(:i14y_search) { double(I14ySearch, query: 'gov', modules: %w(I14Y), diagnostics: {}) }
-
-        before do
-          allow(dc).to receive(:too_deep_for_bing?).and_return(true)
-        end
-
-        it 'triggers an I14y search' do
-          expect(I14ySearch).to receive(:new).and_return(i14y_search)
-          expect(i14y_search).to receive(:run)
-          get :docs,
-              params: {
-                query: 'gov',
-                affiliate: affiliate.name,
-                dc: 100
-              }
-        end
-      end
 
       context 'when searching with a date range' do
         let(:docs_params) do
@@ -529,32 +453,6 @@ describe SearchesController do
       it { is_expected.to assign_to(:affiliate).with(affiliate) }
     end
 
-    context 'when the affiliate uses the SearchGov engine' do
-      let(:affiliate) { affiliates(:basic_affiliate) }
-      let(:i14y_search) { double(I14ySearch, query: 'gov', modules: %w(I14Y), diagnostics: {}) }
-
-      before do
-        expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
-        affiliate.search_engine = 'SearchGov'
-        expect(I14ySearch).to receive(:new).and_return(i14y_search)
-        expect(i14y_search).to receive(:run)
-        get :docs,
-            params: {
-              query: 'gov',
-              affiliate: affiliate.name,
-              dc: 100
-            }
-      end
-
-      it { is_expected.to render_template(:i14y) }
-
-      it 'should assign various variables' do
-        expect(assigns[:page_title]).to match(/gov/)
-        expect(assigns[:search_vertical]).to eq(:docs)
-        expect(assigns[:form_path]).to eq(docs_search_path)
-      end
-    end
-
     context 'when the affiliate uses the OpenSearch engine' do
       let(:opensearch_engine) { double(OpenSearch::Engine, query: 'gov', modules: %w(SRCH), diagnostics: {}) }
 
@@ -571,7 +469,7 @@ describe SearchesController do
             }
       end
 
-      it { is_expected.to render_template(:i14y) }
+      it { is_expected.to render_template(:document) }
 
       it 'should assign various variables' do
         expect(assigns[:page_title]).to match(/gov/)
@@ -597,7 +495,7 @@ describe SearchesController do
             }
       end
 
-      it { is_expected.to render_template(:i14y) }
+      it { is_expected.to render_template(:document) }
 
       it 'should assign various variables' do
         expect(assigns[:page_title]).to match(/gov/)
@@ -623,195 +521,12 @@ describe SearchesController do
             }
       end
 
-      it { is_expected.to render_template(:i14y) }
+      it { is_expected.to render_template(:document) }
 
       it 'should assign various variables' do
         expect(assigns[:page_title]).to match(/gov/)
         expect(assigns[:search_vertical]).to eq(:docs)
         expect(assigns[:form_path]).to eq(docs_search_path)
-      end
-    end
-  end
-
-  describe '#news' do
-    let(:affiliate) { affiliates(:basic_affiliate) }
-
-    before do
-      NewsItem.all.each { |news_item| news_item.save! }
-      ElasticNewsItem.commit
-    end
-
-    it 'should assign page title, vertical, form_path, and search members' do
-      get :news,
-          params: {
-            query: 'element',
-            affiliate: affiliate.name,
-            channel: rss_feeds(:white_house_blog).id,
-            tbs: 'w',
-            page: '1',
-            per_page: '5'
-          }
-      expect(assigns[:page_title]).to eq("element - #{affiliate.display_name} Search Results")
-      expect(assigns[:search_vertical]).to eq(:news)
-      expect(assigns[:form_path]).to eq(news_search_path)
-      expect(assigns[:search]).to be_an_instance_of(NewsSearch)
-    end
-
-    it 'finds news items that match the query for the affiliate' do
-      get :news,
-          params: {
-            query: 'element',
-            affiliate: affiliate.name,
-            channel: rss_feeds(:white_house_blog).id,
-            tbs: 'w'
-          }
-
-      expect(assigns[:search].total).to eq(1)
-      expect(assigns[:search].results.first).to eq(news_items(:item1))
-      expect(assigns[:search].results.first.title).to eq("News \uE000element\uE001 1")
-      expect(assigns[:search].results.first.link).to eq('http://some.agency.gov/news/1')
-      expect(assigns[:search].results.first.published_at).to be_present
-      expect(assigns[:search].results.first.description).to eq("News \uE000element\uE001 1 has a description")
-    end
-
-    context 'when the affiliate does not exist' do
-      before do
-        get :news,
-            params: {
-              query: 'element',
-              affiliate: 'donotexist',
-              channel: rss_feeds(:white_house_blog).id,
-              tbs: 'w'
-            }
-      end
-
-      it { is_expected.to redirect_to 'https://www.usa.gov/search-error' }
-    end
-
-    context 'when the query is blank and total is > 0' do
-      before do
-        get :news,
-            params: {
-              query: '',
-              affiliate: affiliate.name,
-              channel: rss_feeds(:white_house_blog).id,
-              tbs: 'w'
-            }
-      end
-
-      it { is_expected.to assign_to(:page_title).with('White House Blog - NPS Site Search Results') }
-    end
-
-    context 'when handling an array parameter' do
-      before do
-        get :news,
-            params: {
-              'affiliate': affiliate.name,
-              'channel': rss_feeds(:white_house_blog).id,
-              'query': ['loren']
-            }
-      end
-
-      it 'should render the template' do
-        expect(response).to render_template 'news'
-        expect(response).to render_template 'layouts/searches'
-      end
-    end
-
-    context 'when searching with tbs' do
-      before do
-        expect(Affiliate).to receive(:find_by_name).with(affiliate.name).and_return(affiliate)
-        news_search = double(NewsSearch,
-                           query: 'element',
-                           rss_feed: rss_feeds(:white_house_blog),
-                           modules: [],
-                           tbs: 'w',
-                           diagnostics: {})
-        expect(news_search).to receive(:is_a?).with(FilterableSearch).and_return(true)
-        expect(news_search).to receive(:is_a?).with(NewsSearch).and_return(true)
-        expect(NewsSearch).to receive(:new).with(hash_including(tbs: 'w', per_page: 20)).and_return(news_search)
-        expect(news_search).to receive(:run)
-
-        get :news,
-            params: {
-              query: 'element',
-              affiliate: affiliate.name,
-              channel: rss_feeds(:white_house_blog).id,
-              tbs: 'w',
-              sort_by: 'r',
-              contributor: 'The President',
-              publisher: 'The White House',
-              subject: 'Economy'
-            }
-      end
-
-      it { is_expected.to assign_to(:search_params).with(
-        hash_including(affiliate: affiliate.name,
-                       query: 'element',
-                       channel: rss_feeds(:white_house_blog).id,
-                       tbs: 'w',
-                       sort_by: 'r',
-                       contributor: 'The President',
-                       publisher: 'The White House',
-                       subject: 'Economy')) }
-    end
-
-    context 'when searching with a date range' do
-      let(:channel_id) { rss_feeds(:white_house_blog).id }
-
-      before do
-        expect(Affiliate).to receive(:find_by_name).with(affiliate.name).and_return(affiliate)
-        news_search = double(NewsSearch,
-                           query: 'element',
-                           rss_feed: rss_feeds(:white_house_blog),
-                           modules: [],
-                           tbs: nil,
-                           since: Time.parse('2012-10-1'),
-                           until: Time.parse('2012-10-15'),
-                           diagnostics: {})
-        expect(news_search).to receive(:is_a?).with(FilterableSearch).and_return(true)
-        expect(news_search).to receive(:is_a?).with(NewsSearch).and_return(true)
-        expect(NewsSearch).to receive(:new).
-            with(hash_including(since_date: '10/1/2012', until_date:'10/15/2012')).
-            and_return(news_search)
-        expect(news_search).to receive(:run)
-
-        get :news,
-            params: {
-              query: 'element',
-              affiliate: affiliate.name,
-              channel: channel_id,
-              tbs: 'w',
-              since_date:
-                '10/1/2012',
-              until_date:
-                '10/15/2012'
-            }
-      end
-
-      it { is_expected.to assign_to(:affiliate).with(affiliate) }
-      it { is_expected.to assign_to(:search_options).with(hash_including(since_date: '10/1/2012', until_date:'10/15/2012')) }
-      it { is_expected.to assign_to(:search_params).with(
-        hash_including(affiliate: affiliate.name,
-                       query: 'element',
-                       channel: rss_feeds(:white_house_blog).id,
-                       since_date: '10/01/2012',
-                       until_date: '10/15/2012')) }
-    end
-
-    describe 'rendering the view' do
-      render_views
-
-      it 'should render the template' do
-        get :news,
-            params: {
-              query: 'element',
-              affiliate: affiliate.name,
-              channel: rss_feeds(:white_house_blog).id,
-              tbs: 'w'
-            }
-        expect(response).to render_template 'news'
-        expect(response).to render_template 'layouts/searches'
       end
     end
   end

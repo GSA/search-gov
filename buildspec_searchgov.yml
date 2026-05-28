@@ -5,7 +5,7 @@ phases:
   install:
     runtime-versions:
       ruby: 3.3
-      nodejs: 20
+      nodejs: 22
     commands:
       - echo "[CODEDEPLOY][INSTALL] Starting install phase"
       - echo "[CODEDEPLOY][INSTALL] Ruby version - $(ruby -v)"

@@ -3,7 +3,6 @@ class SearchableObserver < ActiveRecord::Observer
           :featured_collection,
           :federal_register_document,
           :indexed_document,
-          :news_item,
           :sayt_suggestion
 
   def after_save(model)

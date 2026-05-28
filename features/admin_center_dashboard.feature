@@ -178,9 +178,6 @@ Feature: Dashboard
     Then the "Homepage URL" field should contain "https://www.nih.gov/"
     And I should see "Arabic"
 
-    When I follow "Content"
-    Then the "Discover and add the RSS feeds and social media accounts listed on the following page:" field should contain "https://www.nih.gov"
-
     When I follow "Display"
     And I follow "Visual design (new)"
     Then the "Favicon URL" field should contain "http://www.nih.gov/themes/custom/nih2_uswds/assets/img/favicons/custom/favicon-192x192.png"
@@ -190,27 +187,6 @@ Feature: Dashboard
     And I should see "Affiliate Manager" in the email body
     And I should see "Name: Agency Gov" in the email body
     And I should see "Handle: agencygov" in the email body
-
-  Scenario: Performing site autodiscovery
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Manage Content page
-    Then the "Discover and add the RSS feeds and social media accounts listed on the following page:" field should be empty
-    And the "autodiscovery_url" input should be required
-
-    When I fill in the following:
-      | Discover and add the RSS feeds and social media accounts listed on the following page: | http:// bad |
-    And I press "Discover"
-    Then I should see "Invalid site URL"
-    And the "Discover and add the RSS feeds and social media accounts listed on the following page:" field should contain "http:// bad"
-
-    When I fill in the following:
-      | Discover and add the RSS feeds and social media accounts listed on the following page: | https://search.gov |
-    And I press "Discover"
-    Then I should see "Discovery complete for https://search.gov"
-    And the "Discover and add the RSS feeds and social media accounts listed on the following page:" field should contain "https://search.gov"
 
   Scenario: Deleting a site
     Given I am logged in with email "affiliate_manager@fixtures.org"

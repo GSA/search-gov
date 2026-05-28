@@ -1,6 +1,6 @@
 module MobileMenuHelper
   def has_menu_items?(search, navigations)
-    if is_inactive_site_search?(search) || is_inactive_news_search?(search)
+    if is_inactive_site_search?(search)
       search.affiliate.connections.present? || search.affiliate.managed_header_links.present?
     else
       navigations.present? || search.affiliate.connections.present? || search.affiliate.managed_header_links.present?
