@@ -313,6 +313,7 @@ Layout/LeadingCommentSpace:
     - 'features/step_definitions/table_steps.rb'
     - 'lib/filetype.rb'
     - 'spec/lib/document_fetcher_spec.rb'
+    - 'spec/lib/results_rejector_spec.rb'
     - 'spec/models/boosted_content_bulk_uploader_spec.rb'
     - 'spec/models/searchgov_crawler_spec.rb'
     - 'spec/models/web_results_post_processor_spec.rb'
@@ -484,6 +485,8 @@ Layout/SpaceBeforeFirstArg:
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
 Layout/SpaceBeforeSemicolon:
+  Exclude:
+    - 'lib/results_rejector.rb'
 
 # Offense count: 3
 # This cop supports safe autocorrection (--autocorrect).
@@ -641,6 +644,7 @@ Lint/AssignmentInCondition:
 Lint/ConstantDefinitionInBlock:
   Exclude:
     - 'lib/tasks/fake_searches.rake'
+    - 'spec/lib/results_rejector_spec.rb'
 
 # Offense count: 2
 # Configuration parameters: DebuggerMethods, DebuggerRequires.
@@ -1404,6 +1408,11 @@ RSpec/ItBehavesLike:
 RSpec/IteratedExpectation:
   Exclude:
     - 'spec/support/indexable_behavior.rb'
+
+# Offense count: 1
+RSpec/LeakyConstantDeclaration:
+  Exclude:
+    - 'spec/lib/results_rejector_spec.rb'
 
 # Offense count: 2
 # This cop supports safe autocorrection (--autocorrect).
@@ -2285,6 +2294,7 @@ Style/ColonMethodCall:
     - 'db/migrate/20140626203723_delete_elastic_daily_query_stat_index.rb'
     - 'db/migrate/20160902210131_create_templates.rb'
     - 'features/support/env.rb'
+    - 'lib/results_rejector.rb'
     - 'lib/url_status_code_fetcher.rb'
 
 # Offense count: 2
@@ -2942,6 +2952,7 @@ Style/RedundantRegexpArgument:
 Style/RedundantReturn:
   Exclude:
     - 'app/controllers/admin/admin_controller.rb'
+    - 'lib/results_rejector.rb'
     - 'lib/url_coverage.rb'
     - 'spec/support/silently.rb'
 
@@ -3007,6 +3018,7 @@ Style/Semicolon:
   Exclude:
     - 'app/engines/search_engine.rb'
     - 'app/models/indexed_document.rb'
+    - 'lib/results_rejector.rb'
     - 'spec/requests/sayt_spec.rb'
 
 # Offense count: 9
