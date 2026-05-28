@@ -89,7 +89,6 @@ sync_to_s3() {
     --exclude ".sprockets-manifest-*.json" \
     --exclude "manifest.json.br" \
     --cache-control "public, max-age=31536000, immutable" \
-    --acl public-read \
     --size-only \
     --delete; then
     log "Successfully synced all assets from $source_dir"
@@ -115,7 +114,6 @@ sync_to_s3() {
       aws s3 cp "$source_dir/$file" "s3://${S3_BUCKET}${s3_path}/$file" \
         --region "$AWS_REGION" \
         --cache-control "public, max-age=3600" \
-        --acl public-read \
         --metadata-directive REPLACE 2>/dev/null || true
     fi
   done
