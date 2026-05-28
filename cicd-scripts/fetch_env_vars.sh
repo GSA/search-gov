@@ -13,6 +13,10 @@ warn() {
   echo "[CODEDEPLOY][BEFORE_INSTALL][fetch_env_vars][WARN] $*"
 }
 
+error() {
+  echo "[CODEDEPLOY][BEFORE_INSTALL][fetch_env_vars][ERROR] $*" >&2
+}
+
 retry() {
   local attempts="$1"
   local delay_seconds="$2"
@@ -84,6 +88,25 @@ for PARAM in $PARAM_KEYS; do
 done
 
 log ".env file generated successfully"
+
+# Explicitly fetch SEARCH_AWS_BUCKET — this parameter may not appear in
+# describe-parameters for all instance roles (e.g. cron in us-west-1), but
+# get-parameter succeeds. Ensures AWS_BUCKET is always written to .env so
+# upload_assets_to_s3.sh can upload assets regardless of parameter visibility.
+if AWS_BUCKET_VALUE=$(aws ssm get-parameter \
+    --name "SEARCH_AWS_BUCKET" \
+    --region "$REGION" \
+    --query "Parameter.Value" \
+    --output text 2>/dev/null); then
+  log "Fetched SEARCH_AWS_BUCKET → AWS_BUCKET=${AWS_BUCKET_VALUE}"
+  # Remove any existing AWS_BUCKET line written by the loop, then append
+  sed -i '/^AWS_BUCKET=/d' .env
+  echo "AWS_BUCKET=${AWS_BUCKET_VALUE}" >> .env
+else
+  error "Could not fetch SEARCH_AWS_BUCKET from region $REGION — aborting deployment"
+  exit 1
+fi
+
 cp /home/search/cicd_temp/.env /home/search/searchgov/shared/
 
 # Fetch LOGIN_DOT_GOV_PEM from cert region
