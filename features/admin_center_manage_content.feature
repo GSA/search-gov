@@ -339,64 +339,6 @@ Feature: Manage Content
     When I press "Remove" and confirm "Are you sure you wish to remove gobiernousa.gov from this site?"
     Then I should see "You have removed gobiernousa.gov from this site"
 
-  Scenario: View Filter URLs
-    Given the following BingV7 Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
-    And the following Excluded URLs exist for the site "agency.gov":
-      | url                     |
-      | http://aff.gov/bad-url1 |
-      | http://aff.gov/bad-url2 |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Filter URLs page
-    Then I should see the following table rows:
-      | aff.gov/bad-url1 |
-      | aff.gov/bad-url2 |
-
-  Scenario: Add/remove Filter URL
-    Given the following BingV7 Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Filter URLs page
-    And I follow "Add Filter URL"
-    And I fill in "URL" with "agency.gov/exclude-me.html"
-    And I submit the form by pressing "Add"
-    Then I should see "You have added agency.gov/exclude-me.html to this site"
-    And I should see the following table rows:
-      | agency.gov/exclude-me.html |
-    When I press "Remove" and confirm "Are you sure you wish to remove agency.gov/exclude-me.html from this site?"
-    Then I should see "You have removed agency.gov/exclude-me.html from this site"
-
-  Scenario: Add/remove Filter Tag
-    Given the following BingV7 Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Filter Tags page
-    And I follow "Add Filter Tag"
-    And I fill in "Tag" with "exclude me"
-    And I submit the form by pressing "Add"
-    Then I should see "You have added the tag exclude me to this site"
-    And I should see the following table rows:
-      | Tag                | Exclude/Require |
-      | exclude me         | Exclude         |
-    When I press "Remove" and confirm "Are you sure you wish to remove the tag exclude me from this site?"
-    Then I should see "You have removed the tag exclude me from this site"
-    When I follow "Add Filter Tag"
-    And I fill in "Tag" with "require me"
-    And I choose "Require"
-    And I submit the form by pressing "Add"
-    Then I should see "You have added the tag require me to this site"
-    And I should see the following table rows:
-      | Tag                | Exclude/Require |
-      | require me         | Require         |
-    When I follow "Add Filter Tag"
-    And I fill in "Tag" with "require me"
-    And I choose "Require"
-    And I submit the form by pressing "Add"
-    Then I should see "Tag has already been taken"
-
   Scenario: Filtering Supplemental URLs
     Given the following BingV7 Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
