@@ -51,7 +51,6 @@ class Affiliate < ApplicationRecord
     assoc.has_one :site_feed_url
     assoc.has_many :superfresh_urls
     assoc.has_one :alert
-    assoc.has_many :watchers, -> { order 'name ASC' }, inverse_of: :affiliate
     assoc.has_many :primary_header_links, -> { order :position }, inverse_of: :affiliate
     assoc.has_many :secondary_header_links, -> { order :position }, inverse_of: :affiliate
     assoc.has_many :footer_links, -> { order :position }, inverse_of: :affiliate
