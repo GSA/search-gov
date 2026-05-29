@@ -19,15 +19,8 @@ module DocumentSearchable
       query: formatted_query,
       size: @limit || @per_page,
       offset: detect_offset
-    }.merge!(date_filter_hash, facet_filter_hash, tag_filters).
+    }.merge!(date_filter_hash, facet_filter_hash).
       tap { |f| f.merge!(facet_includes) if @include_facets }
-  end
-
-  def tag_filters
-    {}.tap do |opts|
-      opts[:ignore_tags] = @affiliate.tag_filters.excluded.pluck(:tag).join(',') if @affiliate.tag_filters.excluded.present?
-      opts[:tags] = included_tags if included_tags.present?
-    end
   end
 
   def facet_includes
@@ -62,10 +55,6 @@ module DocumentSearchable
     end
   end
 
-  def included_tags
-    @included_tags ||= [@affiliate.tag_filters.required&.pluck(:tag), @tags].compact.flatten.join(',')
-  end
-
   def handle_response(response)
     return unless response && response.status == 200
 
@@ -75,7 +64,7 @@ module DocumentSearchable
   def process_valid_response(response)
     @total = response.metadata.total
     @next_offset = @offset + @limit if @next_offset_within_limit && @total > (@offset + @limit)
-    post_processor = DocumentSearchPostProcessor.new(@enable_highlighting, response.results, @affiliate.excluded_urls_set)
+    post_processor = DocumentSearchPostProcessor.new(@enable_highlighting, response.results)
     post_processor.post_process_results
     process_metadata_values(response)
     process_pagination_values(post_processor, response)

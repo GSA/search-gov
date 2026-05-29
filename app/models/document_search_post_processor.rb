@@ -4,16 +4,14 @@ class DocumentSearchPostProcessor < ResultsWithBodyAndDescriptionPostProcessor
   include ResultsRejector
   SPECIAL_URL_PATH_EXT_NAMES = %w[doc pdf ppt ps rtf swf txt xls docx pptx xlsx].freeze
 
-  def initialize(enable_highlighting, results, excluded_urls=[])
+  def initialize(enable_highlighting, results)
     @enable_highlighting = enable_highlighting
     @results = results
     rename_fields
-    @excluded_urls = excluded_urls
   end
 
   def post_process_results
     super
-    reject_excluded_urls
     strip_highlighting unless @enable_highlighting
   end
 
