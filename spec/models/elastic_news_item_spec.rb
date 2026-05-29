@@ -129,12 +129,9 @@ describe ElasticNewsItem do
       end
 
       context 'when excluded URLs are present' do
-        before do
-          affiliate.excluded_urls.create!(url: 'http://www.wh.gov/ns1')
-        end
-
         it 'should filter out NewsItems with those URLs' do
-          search = described_class.search_for(q: 'policy', rss_feeds: [blog, gallery], language: 'en', excluded_urls: affiliate.excluded_urls)
+          excluded = [double(url: 'http://www.wh.gov/ns1')]
+          search = described_class.search_for(q: 'policy', rss_feeds: [blog, gallery], language: 'en', excluded_urls: excluded)
           expect(search.total).to eq(1)
           expect(search.results.first).to eq(@gallery_item)
         end
