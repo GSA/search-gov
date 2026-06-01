@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_05_20_010100) do
+ActiveRecord::Schema[7.1].define(version: 2026_05_22_173818) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -186,7 +186,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_05_20_010100) do
     t.index ["output_target", "allowed_domains"], name: "index_crawl_configs_on_output_target_and_allowed_domains", unique: true, length: { allowed_domains: 255 }
     t.check_constraint "(`depth_limit` >= 0) and (`depth_limit` <= 150)", name: "crawl_configs_depth_limit_range"
   end
-
+  
   create_table "document_collections", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "affiliate_id", null: false
     t.string "name", null: false
@@ -209,14 +209,6 @@ ActiveRecord::Schema[7.1].define(version: 2026_05_20_010100) do
     t.datetime "updated_at", precision: nil
     t.integer "affiliate_id", default: 1, null: false
     t.index ["affiliate_id"], name: "index_excluded_domains_on_affiliate_id"
-  end
-
-  create_table "excluded_urls", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.text "url", size: :medium
-    t.integer "affiliate_id"
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.index ["affiliate_id"], name: "index_excluded_urls_on_affiliate_id"
   end
 
   create_table "featured_collection_keywords", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
@@ -605,15 +597,6 @@ ActiveRecord::Schema[7.1].define(version: 2026_05_20_010100) do
     t.string "message", null: false
     t.datetime "start_at", precision: nil, null: false
     t.datetime "end_at", precision: nil
-  end
-
-  create_table "tag_filters", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.integer "affiliate_id", null: false
-    t.string "tag"
-    t.boolean "exclude"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["affiliate_id"], name: "index_tag_filters_on_affiliate_id"
   end
 
   create_table "top_searches", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|

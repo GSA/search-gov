@@ -94,7 +94,7 @@ module SitesHelper
 
   def site_manage_content_controllers
     %w[boosted_contents boosted_contents_bulk_uploads
-       contents document_collections routed_queries excluded_urls
+       contents document_collections routed_queries
        flickr_profiles indexed_documents
        site_domains site_feed_urls
        featured_collections]
