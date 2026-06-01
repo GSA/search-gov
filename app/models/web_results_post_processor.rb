@@ -10,11 +10,9 @@ class WebResultsPostProcessor < ResultsPostProcessor
     super
     @affiliate = affiliate
     @results = results
-    @excluded_urls = @affiliate.excluded_urls_set
   end
 
   def post_processed_results
-    reject_excluded_urls(link_field: :unescaped_url)
 
     post_processed = @results.collect do |result|
       { 'title' => result.title,
