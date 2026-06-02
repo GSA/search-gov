@@ -75,10 +75,10 @@ gem 'validate_url', '= 0.2.0' # Newer versions use Addressable::URI for validati
 # https://github.com/18F/omniauth_login_dot_gov/blob/main/omniauth_login_dot_gov.gemspec#L28
 # We are temporarily using a custom branch in order to access the deprecation logging
 # functionality that is available in the official 7.16 release.
+# NOTE: the elasticsearch-ruby client is the transport used to talk to OpenSearch
+# (opensearch-ruby requires a newer faraday than omniauth_login_dot_gov allows).
 gem 'elasticsearch', git: 'https://github.com/GSA/elasticsearch-ruby', branch: '7.4'
 gem 'elasticsearch-dsl', '~> 0.1.9'
-gem 'elasticsearch-xpack', '~> 7.4.0'
-gem "elasticsearch-persistence"
 gem 'opensearch-dsl'
 gem 'federal_register', '~> 0.6.3'
 gem 'redcarpet', '~> 3.6'

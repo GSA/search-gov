@@ -52,7 +52,7 @@ class SearchesController < ApplicationController
     @search_vertical = :docs
     set_search_page_title
     set_search_params
-    template = [OpenSearch::Engine, LegacyOpenSearch::Engine, SearchElasticEngine].include?(search_klass) ? :document : :docs
+    template = [OpenSearch::Engine, LegacyOpenSearch::Engine].include?(search_klass) ? :document : :docs
     template = :index_redesign if redesign?
     respond_to { |format| format.html { render template } }
   end
@@ -88,8 +88,6 @@ class SearchesController < ApplicationController
       [OpenSearch::Engine, :document, :document]
     elsif @affiliate.legacy_opensearch_engine?
       [LegacyOpenSearch::Engine, :document, :document]
-    elsif @affiliate.search_elastic_engine?
-      [SearchElasticEngine, :document, :document]
     elsif @affiliate.gets_blended_results
       [BlendedSearch, :blended, :blended]
     else
@@ -127,7 +125,6 @@ class SearchesController < ApplicationController
   def docs_search_klass
     return OpenSearch::Engine if @affiliate.opensearch_engine?
     return LegacyOpenSearch::Engine if @affiliate.legacy_opensearch_engine?
-    return SearchElasticEngine if @affiliate.search_elastic_engine?
 
     @search_options[:document_collection] ? SiteSearch : WebSearch
   end

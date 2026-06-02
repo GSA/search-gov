@@ -5,12 +5,10 @@ module Searches::FiltersHelper
     return unless search.is_a? FilterableSearch
 
     html = [results_count_html(search)]
-    if !search.affiliate.search_elastic_engine?
-      html << refine_search_html
-      html << time_filter_html(search, search_params)
-      html << sort_filter_html(search, search_params)
-      html << clear_button_html(search, search_params)
-    end
+    html << refine_search_html
+    html << time_filter_html(search, search_params)
+    html << sort_filter_html(search, search_params)
+    html << clear_button_html(search, search_params)
 
     render partial: 'searches/filters_and_results_count', locals: { html: html.join("\n") }
   end

@@ -10,7 +10,7 @@
   = render_error_messages(@site)
 
   = render partial: 'sidebar', locals: { f: f }
-  - if %w[SearchElastic].include?(@site.search_engine) && @site.show_search_filter_settings
+  - if %w[OpenSearch LegacyOpenSearch].include?(@site.search_engine) && @site.show_search_filter_settings
     = render partial: 'search_filters', locals: { f: f }
   = render partial: 'related_sites', locals: { f: f }
   - if @site.gets_blended_results

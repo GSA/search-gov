@@ -6,65 +6,14 @@ require_relative 'opensearch_config'
 module Es
   INDEX_PREFIX = "#{Rails.env}-usasearch".freeze
 
-  CLIENT_CONFIG = Rails.application.config_for(
-    :elasticsearch_client
-  ).deep_symbolize_keys.freeze
-
-  # Opt-in flag for the legacy Elasticsearch custom indices. Disabled unless a
-  # deployment explicitly turns it on, so the decommissioned production cluster
-  # is never dialed. Full Elasticsearch removal is tracked in SRCH-6468.
-  def self.custom_indices_enabled?
-    ENV['CUSTOM_INDICES_ENABLED'].to_s.casecmp?('true')
-  end
-
-  private
-
-  def initialize_client(config = {})
-    Elasticsearch::Client.new(config.merge(CLIENT_CONFIG)).tap do |client|
-      client.transport.logger = Rails.logger.clone
-      client.transport.logger.formatter = proc do |severity, time, _progname, msg|
-        "\e[2m[ES][#{time.utc.iso8601(4)}][#{severity}] #{msg}\n\e[0m"
-      end
-    end
-  end
-
+  # Analytics data (logstash indices) is served by OpenSearch.
   module ELK
-    extend Es
-
     def self.client_reader
-      if OpenSearchConfig.enabled?
-        OpenSearchConfig.analytics_client
-      else
-        @client_reader ||= initialize_client
-      end
+      OpenSearchConfig.analytics_client
     end
 
     def self.client_writers
-      if OpenSearchConfig.enabled?
-        @open_search_client_writers ||= [OpenSearchConfig.analytics_client]
-      else
-        @client_writers ||= [initialize_client]
-      end
-    end
-
-    # Returns the Elasticsearch client directly, bypassing OpenSearch.
-    # Used for Elasticsearch-specific features like X-Pack Watcher.
-    def self.elasticsearch_client
-      @elasticsearch_client ||= initialize_client
-    end
-  end
-
-  # CustomIndices always uses Elasticsearch (for deprecated custom indices)
-  # OpenSearch-migrated indices (like ElasticBoostedContent) use their own client
-  module CustomIndices
-    extend Es
-
-    def self.client_reader
-      @client_reader ||= initialize_client
-    end
-
-    def self.client_writers
-      @client_writers ||= [initialize_client]
+      [OpenSearchConfig.analytics_client]
     end
   end
 end

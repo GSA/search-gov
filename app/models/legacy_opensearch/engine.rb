@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class LegacyOpenSearch::Engine < SearchElasticEngine
+class LegacyOpenSearch::Engine < OpenSearch::Engine
   def search
     params = process_array_parameters(build_search_params).merge(indices: ENV.fetch('LEGACY_OPENSEARCH_INDEX'))
     search_results = OpenSearch::DocumentSearch.new(params, affiliate: @affiliate).search
