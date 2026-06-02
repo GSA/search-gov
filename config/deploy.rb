@@ -152,23 +152,8 @@ namespace :deploy do
       end
     end
   end
-
-  desc 'Remove a checked-out real log/ dir so linked_dirs symlinks current/log -> shared/log directly'
-  task :clean_log_dir do
-    on release_roles(:all) do
-      target = "#{release_path}/log"
-      # The repo tracks log/.gitignore, so git checkout always creates a real release log dir.
-      # If it is a real directory (not already a symlink), remove it so Capistrano's linked_dirs
-      # creates current/log -> shared/log instead of nesting current/log/log -> shared/log,
-      # which orphans SemanticLogger's output in the release dir.
-      if test("[ -d #{target} ] && [ ! -L #{target} ]")
-        execute :rm, '-rf', target
-      end
-    end
-  end
 end
 
 before 'deploy:starting', 'deploy:acquire_host_lock'
-before 'deploy:symlink:linked_dirs', 'deploy:clean_log_dir'
 after 'deploy:finished', 'deploy:release_host_lock'
 after 'deploy:failed', 'deploy:release_host_lock'
