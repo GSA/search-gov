@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class MigrateSearchElasticAffiliatesToOpensearch < ActiveRecord::Migration[7.1]
+class MigrateSearchElasticAffiliatesToOpenSearch < ActiveRecord::Migration[7.1]
   def up
     execute(<<~SQL.squish)
       UPDATE affiliates SET search_engine = 'OpenSearch' WHERE search_engine = 'SearchElastic'
