@@ -17,11 +17,8 @@ module DataGenerator
       allow(Es::ELK).to receive(:client_writers).and_return([es_client])
     end
 
-    # Helper method to build index params conditionally based on OpenSearch
-    def index_params(index:, doc_type:, body:)
-      params = { index: index, body: body }
-      params[:type] = doc_type unless OpenSearchConfig.enabled?
-      params
+    def index_params(index:, body:)
+      { index: index, body: body }
     end
 
     describe '#index_search_and_clicks' do
@@ -31,7 +28,6 @@ module DataGenerator
         it 'adds search and clicks to both the human-logstash- and logstash- indices' do
           expect(es_client).to receive(:index).with(index_params(
             index: 'human-logstash-2015.07.14',
-            doc_type: 'search',
             body: {
               '@version' => 1,
               '@timestamp' => '2015-07-14T12:15:15+00:00',
@@ -45,7 +41,6 @@ module DataGenerator
           ))
           expect(es_client).to receive(:index).with(index_params(
             index: 'logstash-2015.07.14',
-            doc_type: 'search',
             body: {
               '@version' => 1,
               '@timestamp' => '2015-07-14T12:15:15+00:00',
@@ -60,7 +55,6 @@ module DataGenerator
 
           expect(es_client).to receive(:index).with(index_params(
             index: 'human-logstash-2015.07.14',
-            doc_type: 'click',
             body: {
               '@version' => 1,
               '@timestamp' => '2015-07-14T12:15:15+00:00',
@@ -76,7 +70,6 @@ module DataGenerator
           ))
           expect(es_client).to receive(:index).with(index_params(
             index: 'logstash-2015.07.14',
-            doc_type: 'click',
             body: {
               '@version' => 1,
               '@timestamp' => '2015-07-14T12:15:15+00:00',
@@ -93,7 +86,6 @@ module DataGenerator
 
           expect(es_client).to receive(:index).with(index_params(
             index: 'human-logstash-2015.07.14',
-            doc_type: 'click',
             body: {
               '@version' => 1,
               '@timestamp' => '2015-07-14T12:15:15+00:00',
@@ -109,7 +101,6 @@ module DataGenerator
           ))
           expect(es_client).to receive(:index).with(index_params(
             index: 'logstash-2015.07.14',
-            doc_type: 'click',
             body: {
               '@version' => 1,
               '@timestamp' => '2015-07-14T12:15:15+00:00',
@@ -134,7 +125,6 @@ module DataGenerator
         it 'adds search and clicks to just the logstash- index' do
           expect(es_client).to receive(:index).with(index_params(
             index: 'logstash-2015.07.14',
-            doc_type: 'search',
             body: {
               '@version' => 1,
               '@timestamp' => '2015-07-14T12:15:15+00:00',
@@ -149,7 +139,6 @@ module DataGenerator
 
           expect(es_client).to receive(:index).with(index_params(
             index: 'logstash-2015.07.14',
-            doc_type: 'click',
             body: {
               '@version' => 1,
               '@timestamp' => '2015-07-14T12:15:15+00:00',
@@ -166,7 +155,6 @@ module DataGenerator
 
           expect(es_client).to receive(:index).with(index_params(
             index: 'logstash-2015.07.14',
-            doc_type: 'click',
             body: {
               '@version' => 1,
               '@timestamp' => '2015-07-14T12:15:15+00:00',

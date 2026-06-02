@@ -504,30 +504,5 @@ describe SearchesController do
       end
     end
 
-    context 'when the affiliate uses the SearchElastic engine' do
-      let(:affiliate) { affiliates(:basic_affiliate) }
-      let(:search_elastic_engine) { double(SearchElasticEngine, query: 'gov', modules: %w(SRCH), diagnostics: {}) }
-
-      before do
-        expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
-        affiliate.search_engine = 'SearchElastic'
-        expect(SearchElasticEngine).to receive(:new).and_return(search_elastic_engine)
-        expect(search_elastic_engine).to receive(:run)
-        get :docs,
-            params: {
-              query: 'gov',
-              affiliate: affiliate.name,
-              dc: 100
-            }
-      end
-
-      it { is_expected.to render_template(:document) }
-
-      it 'should assign various variables' do
-        expect(assigns[:page_title]).to match(/gov/)
-        expect(assigns[:search_vertical]).to eq(:docs)
-        expect(assigns[:form_path]).to eq(docs_search_path)
-      end
-    end
   end
 end
