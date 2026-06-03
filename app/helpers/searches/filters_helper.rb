@@ -5,10 +5,14 @@ module Searches::FiltersHelper
     return unless search.is_a? FilterableSearch
 
     html = [results_count_html(search)]
-    html << refine_search_html
-    html << time_filter_html(search, search_params)
-    html << sort_filter_html(search, search_params)
-    html << clear_button_html(search, search_params)
+    # Date refiners are hidden for Search.gov document searches (now served by
+    # the OpenSearch engine, which previously was the SearchElastic engine).
+    unless search.is_a?(OpenSearch::Engine)
+      html << refine_search_html
+      html << time_filter_html(search, search_params)
+      html << sort_filter_html(search, search_params)
+      html << clear_button_html(search, search_params)
+    end
 
     render partial: 'searches/filters_and_results_count', locals: { html: html.join("\n") }
   end
