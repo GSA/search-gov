@@ -23,7 +23,6 @@ module DataGenerator
             },
           },
         }
-        search_params[:type] = 'search' unless OpenSearchConfig.enabled?
         es.index(search_params)
 
         search.clicks.each do |click|
@@ -42,7 +41,6 @@ module DataGenerator
               },
             },
           }
-          click_params[:type] = 'click' unless OpenSearchConfig.enabled?
           es.index(click_params)
         end
       end

@@ -1,20 +1,15 @@
 require 'spec_helper'
 
 describe LogstashDeduper do
-  # LogstashDeduper uses deprecated ES type parameter not supported in OpenSearch
-  before do
-    allow(OpenSearchConfig).to receive(:enabled?).and_return(false)
-  end
-
   describe '.perform' do
     context 'when duplicates exist' do
       let(:search_args) do
         {
           index: 'logstash-2015.08.26',
-          type: 'search',
           scroll: '5m',
           size: LogstashDeduper::SCROLL_SIZE,
-          sort: '_doc'
+          sort: '_doc',
+          body: { query: { term: { type: 'search' } } }
         }
       end
       let(:cursor) { JSON.parse(read_fixture_file('/json/logstash/scroll_cursor.json')) }
@@ -37,12 +32,12 @@ describe LogstashDeduper do
         expect(Es::ELK.client_reader).to receive(:bulk).
           with(
             body: [
-              { delete: { _index: 'logstash-2015.08.26', _type: 'search', _id: 'abcde' } },
-              { delete: { _index: 'logstash-2015.08.26', _type: 'search', _id: 'copy1' } },
-              { delete: { _index: 'logstash-2015.08.26', _type: 'search', _id: 'copy2' } },
-              { delete: { _index: 'logstash-2015.08.26', _type: 'search', _id: 'copy3' } },
-              { delete: { _index: 'logstash-2015.08.26', _type: 'search', _id: 'copy4' } },
-              { delete: { _index: 'logstash-2015.08.26', _type: 'search', _id: 'copy5' } }
+              { delete: { _index: 'logstash-2015.08.26', _id: 'abcde' } },
+              { delete: { _index: 'logstash-2015.08.26', _id: 'copy1' } },
+              { delete: { _index: 'logstash-2015.08.26', _id: 'copy2' } },
+              { delete: { _index: 'logstash-2015.08.26', _id: 'copy3' } },
+              { delete: { _index: 'logstash-2015.08.26', _id: 'copy4' } },
+              { delete: { _index: 'logstash-2015.08.26', _id: 'copy5' } }
           ]
         )
         described_class.perform('2015.08.26')

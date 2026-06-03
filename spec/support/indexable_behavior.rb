@@ -36,9 +36,10 @@ shared_examples 'an indexable' do
   end
 
   context 'when there are multiple clusters' do
-    let(:es1) { Elasticsearch::Client.new(host: 'localhost:9200') }
+    let(:opensearch_config) { Rails.application.config_for(:opensearch_client).deep_symbolize_keys }
+    let(:es1) { Elasticsearch::Client.new(opensearch_config) }
     # Fake a second cluster by using a second connection
-    let(:es2) { Elasticsearch::Client.new(host: 'localhost:9200') }
+    let(:es2) { Elasticsearch::Client.new(opensearch_config) }
 
     before do
       # Stub the model's client methods directly (works for both ES and OpenSearch models)

@@ -11,10 +11,10 @@ class LogstashDeduper
     client = Es::ELK.client_reader
     result = client.search(
       index: index_name,
-      type: 'search',
       scroll: '5m',
       size: SCROLL_SIZE,
-      sort: '_doc'
+      sort: '_doc',
+      body: { query: { term: { type: 'search' } } }
     )
     while result = client.scroll(scroll_id: result['_scroll_id'], scroll: '5m') and not result['hits']['hits'].empty?
       result['hits']['hits'].each do |d|
@@ -27,7 +27,7 @@ class LogstashDeduper
       end
     end
     dupe_ids.in_groups_of(SCROLL_SIZE, false) do |group|
-      body = group.collect { |id| Hash[delete: { _index: index_name, _type: "search", _id: id }] }
+      body = group.collect { |id| Hash[delete: { _index: index_name, _id: id }] }
       client.bulk(body: body)
     end
   end
