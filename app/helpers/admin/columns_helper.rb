@@ -1,10 +1,6 @@
 module Admin::ColumnsHelper
   def conditions_column(record, column)
-    if record.is_a?(Watcher)
-      record.humanized_alert_threshold
-    else
-      record[column.name]
-    end
+    record[column.name]
   end
 
   def id_column(record, column)

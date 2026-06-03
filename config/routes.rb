@@ -131,9 +131,6 @@ Rails.application.routes.draw do
       resources :memberships, only: [:update]
       resources :i14y_drawers
       resource :filtered_analytics_toggle, only: :create
-      resources :watchers
-      resources :no_results_watchers, controller: "watchers", type: "NoResultsWatcher"
-      resources :low_query_ctr_watchers, controller: "watchers", type: "LowQueryCtrWatcher"
     end
   end
 
@@ -233,7 +230,6 @@ Rails.application.routes.draw do
     resources :languages, concerns: :active_scaffold
     resources :routed_queries, concerns: :active_scaffold
     resources :routed_query_keywords, concerns: :active_scaffold
-    resources :watchers, concerns: :active_scaffold
     resources :searchgov_domains, concerns: :active_scaffold do
       member do
         post 'reindex'
