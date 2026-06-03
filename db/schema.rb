@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_05_22_173818) do
+ActiveRecord::Schema[7.1].define(version: 2026_05_29_160056) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -646,21 +646,6 @@ ActiveRecord::Schema[7.1].define(version: 2026_05_22_173818) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["persistence_token"], name: "index_users_on_persistence_token", unique: true
     t.index ["uid"], name: "index_users_on_uid"
-  end
-
-  create_table "watchers", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.string "type"
-    t.integer "user_id"
-    t.integer "affiliate_id"
-    t.string "name"
-    t.string "check_interval"
-    t.string "throttle_period"
-    t.string "unsafe_conditions"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "time_window"
-    t.string "query_blocklist"
-    t.json "conditions"
   end
 
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"

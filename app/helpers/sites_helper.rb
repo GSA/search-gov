@@ -88,8 +88,7 @@ module SitesHelper
        query_clicks
        referrers
        referrer_queries
-       query_referrers
-       watchers]
+       query_referrers]
   end
 
   def site_manage_content_controllers
