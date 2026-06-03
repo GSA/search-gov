@@ -1,9 +1,0 @@
-= content_for_site_page_title @site, "Edit #{@watcher.class.to_s.titleize}"
-= custom_form_for @watcher, url: { action: :update }, html: { class: 'form' }  do |f|
-  .sub-nav-heading{ class: ("--is-inactive" if @site&.active? == false) }
-    %h2= "Edit Alert - #{@watcher.label}"
-    .action-bar
-      %ul
-        %li= link_to 'View All', site_watchers_path(@site)
-        %li= f.submit 'Save', class: 'btn submit disabled', disabled: true
-  = render f

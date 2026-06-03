@@ -130,8 +130,6 @@ describe Affiliate do
         class_name('User').inverse_of(:default_affiliate)
     end
 
-    it { is_expected.to have_many(:watchers).inverse_of(:affiliate) }
-
     it { is_expected.to have_and_belong_to_many :youtube_profiles }
     it { is_expected.to belong_to :agency }
     it { is_expected.to belong_to(:language).inverse_of(:affiliates) }
