@@ -28,7 +28,6 @@ class User < ApplicationRecord
                           order('affiliates.display_name, affiliates.ID ASC')
                         },
            through: :memberships
-  has_many :watchers, dependent: :destroy
   belongs_to :default_affiliate, class_name: 'Affiliate'
 
   before_validation :downcase_email

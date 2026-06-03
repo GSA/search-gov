@@ -63,8 +63,13 @@ else
   (cd "$RELEASE_DIR" && tar -xf -)
 fi
 
-# Link shared files
-mkdir -p "$RELEASE_DIR/config" "$RELEASE_DIR/tmp" "$RELEASE_DIR/log"
+# Link shared files.
+# Remove any real log/ and tmp/ dirs first. If they already exist as directories,
+# `ln -sfn` creates the symlink *inside* them (e.g. release/log/log -> shared/log),
+# which orphans request logs in the release dir instead of shared/log -- the path the
+# CloudWatch agent tails. Removing them guarantees release/log -> shared/log directly.
+mkdir -p "$RELEASE_DIR/config"
+rm -rf "$RELEASE_DIR/log" "$RELEASE_DIR/tmp"
 ln -sfn "$SHARED_DIR/.env" "$RELEASE_DIR/.env"
 ln -sfn "$SHARED_DIR/config/logindotgov.pem" "$RELEASE_DIR/config/logindotgov.pem"
 ln -sfn "$SHARED_DIR/log" "$RELEASE_DIR/log"
