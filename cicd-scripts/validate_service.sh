@@ -102,6 +102,45 @@ assert_service_active_required() {
   exit 1
 }
 
+count_active_worker_instances() {
+  # `systemctl list-units` indents unit names, so match the instance token rather
+  # than anchoring at the start of the line.
+  systemctl list-units --type=service --state=active --no-legend "$RESQUE_WORKER_INSTANCE_PATTERN" 2>/dev/null \
+    | grep -c 'resque-worker@[0-9]' || true
+}
+
+# A systemd .target is "active" as soon as it is started, independent of whether
+# its member resque-worker@N.service instances are running. Asserting only the
+# target lets a deploy pass with zero live workers (SRCH-6584). When the worker
+# unit is a target, additionally require that worker instances are actually up.
+assert_worker_instances_active() {
+  case "$RESQUE_WORKER_SERVICE" in
+    *.target) ;;
+    *) return 0 ;;
+  esac
+
+  local retries="${RESQUE_ACTIVE_RETRIES:-6}"
+  local wait_sec="${RESQUE_ACTIVE_WAIT:-5}"
+  local try=1
+  local active=0
+  while [ "$try" -le "$retries" ]; do
+    active="$(count_active_worker_instances)"
+    if [ "${active:-0}" -ge "$RESQUE_MIN_ACTIVE_WORKERS" ]; then
+      log "Active Resque worker instances: ${active} (>= ${RESQUE_MIN_ACTIVE_WORKERS})"
+      return 0
+    fi
+    if [ "$try" -lt "$retries" ]; then
+      warn "Only ${active} active Resque worker instance(s); need ${RESQUE_MIN_ACTIVE_WORKERS} (attempt ${try}/${retries}) -- retrying in ${wait_sec}s"
+      sleep "$wait_sec"
+    fi
+    try=$((try + 1))
+  done
+  error "Worker target '${RESQUE_WORKER_SERVICE}' is active but only ${active} worker instance(s) are running (need ${RESQUE_MIN_ACTIVE_WORKERS})"
+  log "--- systemctl list-units ${RESQUE_WORKER_INSTANCE_PATTERN} ---"
+  systemctl list-units --all "$RESQUE_WORKER_INSTANCE_PATTERN" --no-pager 2>&1 || true
+  exit 1
+}
+
 wait_for_http_healthy() {
   local url="$1"
   local attempts="${2:-12}"
@@ -166,6 +205,8 @@ assert_puma_serving_current_release() {
 PUMA_SERVICE="$(resolve_puma_service)"
 RESQUE_WORKER_SERVICE="${RESQUE_WORKER_SERVICE:-resque-worker}"
 RESQUE_SCHEDULER_SERVICE="${RESQUE_SCHEDULER_SERVICE:-resque-scheduler}"
+RESQUE_WORKER_INSTANCE_PATTERN="${RESQUE_WORKER_INSTANCE_PATTERN:-resque-worker@*.service}"
+RESQUE_MIN_ACTIVE_WORKERS="${RESQUE_MIN_ACTIVE_WORKERS:-1}"
 APP_HEALTHCHECK_URL="${APP_HEALTHCHECK_URL:-http://127.0.0.1:3000/}"
 SEARCHGOV_ROOT="${SEARCHGOV_ROOT:-/home/search/searchgov}"
 
@@ -174,6 +215,7 @@ log "Host: $(hostname) | User: $(whoami)"
 
 if [ "${REQUIRE_RESQUE_SERVICES:-false}" = "true" ]; then
   assert_service_active_required "$RESQUE_WORKER_SERVICE"
+  assert_worker_instances_active
   assert_service_active_required "$RESQUE_SCHEDULER_SERVICE"
 else
   assert_service_active_if_present "$RESQUE_WORKER_SERVICE"
