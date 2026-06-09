@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'rails', '~> 7.1.4'
+gem 'rails', '~> 7.1.6'
 gem 'dotenv', '~> 3.1', '>= 3.1.2'
 gem 'rake', '~> 13.0.6'
 gem 'rack-contrib', '~> 2.5.0'
@@ -62,7 +62,7 @@ gem 'net-http-persistent', '~> 2.9.3'
 gem 'rash_alt', '~> 0.4.12', require: 'rash'
 gem 'geoip', '~> 1.6.4'
 gem 'html_truncator', '~> 0.4.2'
-gem 'addressable', '~> 2.8.0'
+gem 'addressable', '~> 2.8.10'
 gem 'select2-rails', '~> 4.0.3'
 gem 'turbolinks', '~> 5.2.1'
 gem 'will_paginate-bootstrap', '~> 1.0.1'
@@ -92,7 +92,7 @@ gem 'hashie', '~> 5.0.0'
 gem 'colorize', '~> 0.8.1'
 gem 'http', '~> 5.0'
 gem 'robots_tag_parser', '~> 0.1.0'
-gem 'loofah', '~> 2.19'
+gem 'loofah', '~> 2.25'
 # Locking ref, as later versions (after being renamed & released as "medusa-crawler")
 # include breaking changes
 gem 'medusa', git: 'https://github.com/brutuscat/medusa-crawler', ref: '82299f2700ac56b4af2b14d707f35d6af466ad8e'
@@ -147,7 +147,7 @@ gem 'bootsnap', require: false
 gem 'rails_semantic_logger', '~> 4.14'
 gem 'whenever', '~> 1.0', require: false
 gem 'fugit', '~> 1.8'
-gem 'puma', '~> 5.6'
+gem 'puma', '~> 8.0'
 gem 'htmlbeautifier', '~> 1.4', '>= 1.4.3'
 
 # Bundle gems for the local environment. Make sure to
@@ -164,19 +164,19 @@ group :development do
   gem 'capistrano-rails',  require: false
   gem 'capistrano-rbenv',  require: false
   gem 'capistrano-resque', require: false
-  gem 'capistrano3-puma',  '~> 5.2',  require: false
+  gem 'capistrano3-puma',  '~> 8.0',  require: false
 end
 
 group :development, :test do
   gem 'rspec-rails', '~> 6.1', '>= 6.1.5'
   gem 'rspec-its', '~> 1.3'
-  gem 'email_spec', '~> 2.2'
+  gem 'email_spec', '~> 2.3'
   gem 'database_cleaner', '~> 2.0'
   gem 'capybara', '~> 3.40'
   gem 'faker', '~> 1.8'
   gem 'launchy', '~> 2.5'
   gem 'i18n-tasks', '~> 0.9.19'
-  gem 'pry-byebug', '~> 3.5'
+  gem 'pry-byebug', '~> 3.12'
   gem 'pry-rails', '~> 0.3.6'
   # For improved console readability:
   # https://github.com/amazing-print/amazing_print
