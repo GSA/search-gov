@@ -123,8 +123,6 @@ describe Affiliate do
         class_name('User').inverse_of(:default_affiliate)
     end
 
-    it { is_expected.to have_many(:watchers).inverse_of(:affiliate) }
-
     it { is_expected.to belong_to :agency }
     it { is_expected.to belong_to(:language).inverse_of(:affiliates) }
     it { is_expected.to validate_attachment_content_type(:mobile_logo).allowing(%w[image/gif image/jpeg image/pjpeg image/png image/x-png]).rejecting(nil) }
@@ -955,7 +953,7 @@ describe Affiliate do
       described_class.find site.id
     end
 
-    include_examples 'dupable',
+    it_behaves_like 'dupable',
                      %w[api_access_key
                         header_tagline_logo_content_type
                         header_tagline_logo_file_name

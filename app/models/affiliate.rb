@@ -2,7 +2,6 @@
 
 require 'digest'
 
-
 class Affiliate < ApplicationRecord
   extend HumanAttributeName
   extend HashColumnsAccessible
@@ -51,7 +50,6 @@ class Affiliate < ApplicationRecord
     assoc.has_one :site_feed_url
     assoc.has_many :superfresh_urls
     assoc.has_one :alert
-    assoc.has_many :watchers, -> { order 'name ASC' }, inverse_of: :affiliate
     assoc.has_many :primary_header_links, -> { order :position }, inverse_of: :affiliate
     assoc.has_many :secondary_header_links, -> { order :position }, inverse_of: :affiliate
     assoc.has_many :footer_links, -> { order :position }, inverse_of: :affiliate
@@ -668,8 +666,6 @@ class Affiliate < ApplicationRecord
   def set_api_access_key
     self.api_access_key = Digest::SHA256.base64digest("#{name}:#{Time.current.to_i}:#{rand}").tr('+/', '-_')
   end
-
-
 
   def build_css_hash
     css_hash = {}
