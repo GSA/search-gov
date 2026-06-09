@@ -953,7 +953,7 @@ describe Affiliate do
       described_class.find site.id
     end
 
-    it_behaves_like 'dupable',
+    include_examples 'dupable',
                      %w[api_access_key
                         header_tagline_logo_content_type
                         header_tagline_logo_file_name
