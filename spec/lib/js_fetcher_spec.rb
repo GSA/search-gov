@@ -5,10 +5,10 @@ require 'spec_helper'
 describe JsFetcher do
   describe '.fetch' do
     let(:url) { 'https://digital.gov/guides/search/' }
-    let(:options) { instance_double('Selenium::WebDriver::Firefox::Options') }
-    let(:driver)  { instance_double('Selenium::WebDriver::Driver') }
-    let(:manage)  { instance_double('Selenium::WebDriver::Driver::Manage') }
-    let(:timeouts) { instance_double('Selenium::WebDriver::Timeouts') }
+    let(:options) { instance_double(Selenium::WebDriver::Firefox::Options) }
+    let(:driver)  { instance_double(Selenium::WebDriver::Driver) }
+    let(:manage)  { instance_double(Selenium::WebDriver::Manager) }
+    let(:timeouts) { instance_double(Selenium::WebDriver::Timeouts) }
 
     before do
       # Stub Firefox options creation and configuration
@@ -22,17 +22,16 @@ describe JsFetcher do
       allow(Selenium::WebDriver).to receive(:for).with(:firefox, options: options).and_return(driver)
 
       # Stub timeouts chain
-      allow(driver).to receive(:manage).and_return(manage)
       allow(manage).to receive(:timeouts).and_return(timeouts)
       allow(timeouts).to receive(:implicit_wait=).with(5)
       allow(timeouts).to receive(:page_load=).with(30)
 
       # Avoid real sleeps in specs
-      allow(JsFetcher).to receive(:sleep)
+      allow(described_class).to receive(:sleep)
 
       # Normal driver interactions
       allow(driver).to receive(:get).with(url)
-      allow(driver).to receive(:page_source).and_return('<html>fake content</html>')
+      allow(driver).to receive_messages(manage: manage, page_source: '<html>fake content</html>')
       allow(driver).to receive(:quit)
     end
 
@@ -50,6 +49,24 @@ describe JsFetcher do
 
       # Verify it quit the driver
       expect(driver).to have_received(:quit)
+    end
+
+    context 'when the driver fails to launch' do
+      before do
+        allow(Selenium::WebDriver).to receive(:for).
+          and_raise(Selenium::WebDriver::Error::UnknownError, 'Process unexpectedly closed with status 1')
+        allow(described_class).to receive(:`).
+          with("pgrep -P #{Process.pid} -f geckodriver").and_return("123\n456\n")
+        allow(Process).to receive(:kill)
+      end
+
+      it 'kills stray geckodriver children and re-raises' do
+        expect { described_class.fetch(url) }.
+          to raise_error(Selenium::WebDriver::Error::UnknownError)
+
+        expect(Process).to have_received(:kill).with('TERM', 123)
+        expect(Process).to have_received(:kill).with('TERM', 456)
+      end
     end
   end
 end
