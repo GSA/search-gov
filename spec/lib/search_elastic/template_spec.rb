@@ -69,7 +69,7 @@ describe SearchElastic::Template do
     end
 
     described_class::LIGHT_STEMMERS.each do |locale, language|
-      it "defines #{locale}_stem_filter for #{language}" do
+      it "defines #{locale}_stem_filter for light_#{language}" do
         expect(filters["#{locale}_stem_filter"]).to include(
           'type' => 'stemmer',
           'name' => "light_#{language}"
@@ -191,6 +191,38 @@ describe SearchElastic::Template do
 
     it 'defines click_count as integer' do
       expect(properties['click_count']).to include('type' => 'integer')
+    end
+
+    it 'defines metadata as an object' do
+      expect(properties['metadata']).to include('type' => 'object')
+    end
+
+    context 'nested metadata integer and keyword fields' do
+      %w[crawl_depth download_bytes download_milliseconds].each do |field|
+        it "defines #{field} as integer and keyword" do
+          expect(properties['metadata']['properties'][field]).to include('type' => 'integer')
+          expect(properties['metadata']['properties'][field]['fields']).to include(
+            'keyword' => { 'type' => 'keyword' }
+          )
+        end
+      end
+    end
+
+    context 'nested metadata keyword fields' do
+      %w[creator source_url].each do |field|
+        it "defines #{field} as keyword" do
+          expect(properties['metadata']['properties'][field]).to include('type' => 'keyword')
+        end
+      end
+    end
+
+    it 'defines dap_domain_visits_count as integer and keyword' do
+      expect(properties['dap_domain_visits_count']).to include(
+        'type' => 'long'
+      )
+      expect(properties['dap_domain_visits_count']['fields']).to include(
+        'keyword' => { 'type' => 'keyword' }
+      )
     end
   end
 
