@@ -7,8 +7,6 @@ describe SiteCloner do
            :document_collections,
            :featured_collections,
            :flickr_profiles,
-           :i14y_drawers,
-           :i14y_memberships,
            :image_search_labels,
            :languages,
            :memberships,
@@ -150,17 +148,6 @@ describe SiteCloner do
       end
     end
 
-    context 'when the origin site has excluded URLs' do
-      before do
-        origin_site.excluded_urls.create!(url: 'http://do.not.include.gov/doc')
-      end
-
-      it 'copies excluded URLs' do
-        expect(cloned_site.excluded_urls.count).to eq(1)
-        expect(cloned_site.excluded_urls.first.url).to eq('http://do.not.include.gov/doc')
-      end
-    end
-
     context 'when the origin site has featured collections' do
       before do
         fc = origin_site.featured_collections.first
@@ -200,17 +187,6 @@ describe SiteCloner do
         expect(cloned_fp.profile_id).to eq(fp.profile_id)
         expect(cloned_fp.profile_type).to eq(fp.profile_type)
         expect(cloned_fp.url).to eq(fp.url)
-      end
-    end
-
-    context 'when the origin site has i14y memberships' do
-      before do
-        origin_site.i14y_memberships.create!(i14y_drawer: i14y_drawers(:one))
-      end
-
-      it 'copies the i14y drawers' do
-        expect(cloned_site.i14y_drawers.count).to eq(1)
-        expect(cloned_site.i14y_drawers.pluck(:handle)).to eq(origin_site.i14y_drawers.pluck(:handle))
       end
     end
 

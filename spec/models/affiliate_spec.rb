@@ -17,11 +17,6 @@ describe Affiliate do
   describe 'schema' do
     describe 'columns' do
       it do
-        is_expected.to have_db_column(:i14y_date_stamp_enabled).
-          of_type(:boolean).with_options(default: false, null: false)
-      end
-
-      it do
         is_expected.to have_db_column(:search_engine).of_type(:string).
           with_options(default: 'opensearch', null: false)
       end
@@ -126,12 +121,6 @@ describe Affiliate do
       is_expected.to have_many(:default_users).dependent(:nullify).
         with_foreign_key(:default_affiliate_id).
         class_name('User').inverse_of(:default_affiliate)
-    end
-
-    it { is_expected.to have_many(:watchers).inverse_of(:affiliate) }
-
-    it do
-      is_expected.to have_many(:tag_filters).dependent(:destroy).inverse_of(:affiliate)
     end
 
     it { is_expected.to belong_to :agency }
@@ -994,18 +983,6 @@ describe Affiliate do
       before { allow(affiliate).to receive(:active?).and_return(false) }
 
       it { is_expected.to eq('Inactive') }
-    end
-  end
-
-  describe '#excluded_urls_set' do
-    before do
-      affiliate.save!
-      affiliate.excluded_urls.create!(url: 'http://excluded.com')
-      affiliate.excluded_urls.create!(url: 'https://excluded.com')
-    end
-
-    it 'returns unique excluded urls without protocol' do
-      expect(affiliate.excluded_urls_set).to eq ['excluded.com']
     end
   end
 

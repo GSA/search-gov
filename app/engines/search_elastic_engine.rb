@@ -1,4 +1,8 @@
-class SearchElasticEngine < I14ySearch
+class SearchElasticEngine < FilterableSearch
+  include SearchInitializer
+  include Govboxable
+  include DocumentSearchable
+
   def search
     params = process_array_parameters(build_search_params).merge(indices: ENV.fetch('SEARCHELASTIC_INDEX'))
     search_results = SearchElastic::DocumentSearch.new(params, affiliate: @affiliate).search

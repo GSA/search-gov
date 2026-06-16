@@ -23,8 +23,8 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v2 do
       get '/search' => 'searches#blended'
-      get '/search/bing' => 'searches#bing'
       get '/search/i14y' => 'searches#i14y'
+      get '/search/bing' => 'searches#bing'
       get '/search/docs' => 'searches#docs'
       post '/click' => 'click#create'
     end
@@ -117,10 +117,6 @@ Rails.application.routes.draw do
       resources :routed_queries do
         collection { get :new_routed_query_keyword }
       end
-      resources :filter_urls,
-                controller: 'excluded_urls',
-                only: [:index, :new, :create, :destroy]
-      resources :tag_filters, only: [:index, :new, :create, :destroy]
       resources :supplemental_urls,
                 controller: 'indexed_documents',
                 except: [:show, :edit, :update]
@@ -130,11 +126,7 @@ Rails.application.routes.draw do
         end
       end
       resources :memberships, only: [:update]
-      resources :i14y_drawers
       resource :filtered_analytics_toggle, only: :create
-      resources :watchers
-      resources :no_results_watchers, controller: "watchers", type: "NoResultsWatcher"
-      resources :low_query_ctr_watchers, controller: "watchers", type: "LowQueryCtrWatcher"
     end
   end
 
@@ -222,11 +214,9 @@ Rails.application.routes.draw do
     resources :hints, concerns: :active_scaffold do
       collection { get 'reload_hints' }
     end
-    resources :i14y_drawers, concerns: :active_scaffold
     resources :languages, concerns: :active_scaffold
     resources :routed_queries, concerns: :active_scaffold
     resources :routed_query_keywords, concerns: :active_scaffold
-    resources :watchers, concerns: :active_scaffold
     resources :searchgov_domains, concerns: :active_scaffold do
       member do
         post 'reindex'

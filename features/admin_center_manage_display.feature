@@ -74,7 +74,7 @@ Feature: Manage Display
     And the "Alternative Link URL 0" field should contain "http://news.agency.gov"
 
   Scenario: Editing the Visual Design Settings when "Use Redesigned Results Page" is false
-    Given the following SearchGov Affiliates exist:
+    Given the following SearchElastic Affiliates exist:
       | display_name    | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | searchgov site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"

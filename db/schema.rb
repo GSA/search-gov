@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_05_01_194155) do
+ActiveRecord::Schema[7.1].define(version: 2026_05_29_160056) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -79,9 +79,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_05_01_194155) do
     t.boolean "is_federal_register_document_govbox_enabled", default: false, null: false
     t.string "api_access_key", null: false
     t.boolean "gets_commercial_results_on_blended_search", default: true, null: false
-    t.boolean "gets_i14y_results", default: false, null: false
     t.string "domain_control_validation_code"
-    t.boolean "i14y_date_stamp_enabled", default: false, null: false
     t.string "mobile_logo_file_name"
     t.string "mobile_logo_content_type"
     t.integer "mobile_logo_file_size"
@@ -188,7 +186,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_05_01_194155) do
     t.index ["output_target", "allowed_domains"], name: "index_crawl_configs_on_output_target_and_allowed_domains", unique: true, length: { allowed_domains: 255 }
     t.check_constraint "(`depth_limit` >= 0) and (`depth_limit` <= 150)", name: "crawl_configs_depth_limit_range"
   end
-
+  
   create_table "document_collections", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "affiliate_id", null: false
     t.string "name", null: false
@@ -211,14 +209,6 @@ ActiveRecord::Schema[7.1].define(version: 2026_05_01_194155) do
     t.datetime "updated_at", precision: nil
     t.integer "affiliate_id", default: 1, null: false
     t.index ["affiliate_id"], name: "index_excluded_domains_on_affiliate_id"
-  end
-
-  create_table "excluded_urls", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.text "url", size: :medium
-    t.integer "affiliate_id"
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.index ["affiliate_id"], name: "index_excluded_urls_on_affiliate_id"
   end
 
   create_table "featured_collection_keywords", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
@@ -344,23 +334,6 @@ ActiveRecord::Schema[7.1].define(version: 2026_05_01_194155) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["name"], name: "index_hints_on_name", unique: true
-  end
-
-  create_table "i14y_drawers", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.string "handle", null: false
-    t.string "token", null: false
-    t.string "description"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-  end
-
-  create_table "i14y_memberships", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.integer "affiliate_id", null: false
-    t.integer "i14y_drawer_id", null: false
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["affiliate_id", "i14y_drawer_id"], name: "index_i14y_memberships_on_affiliate_id_and_i14y_drawer_id", unique: true
-    t.index ["i14y_drawer_id"], name: "index_i14y_memberships_on_i14y_drawer_id"
   end
 
   create_table "image_search_labels", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
@@ -626,15 +599,6 @@ ActiveRecord::Schema[7.1].define(version: 2026_05_01_194155) do
     t.datetime "end_at", precision: nil
   end
 
-  create_table "tag_filters", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.integer "affiliate_id", null: false
-    t.string "tag"
-    t.boolean "exclude"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["affiliate_id"], name: "index_tag_filters_on_affiliate_id"
-  end
-
   create_table "top_searches", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "query"
     t.string "url"
@@ -682,21 +646,6 @@ ActiveRecord::Schema[7.1].define(version: 2026_05_01_194155) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["persistence_token"], name: "index_users_on_persistence_token", unique: true
     t.index ["uid"], name: "index_users_on_uid"
-  end
-
-  create_table "watchers", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.string "type"
-    t.integer "user_id"
-    t.integer "affiliate_id"
-    t.string "name"
-    t.string "check_interval"
-    t.string "throttle_period"
-    t.string "unsafe_conditions"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "time_window"
-    t.string "query_blocklist"
-    t.json "conditions"
   end
 
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"

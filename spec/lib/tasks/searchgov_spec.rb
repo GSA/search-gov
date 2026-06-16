@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe 'Search.gov tasks' do
-  fixtures :i14y_drawers
-
   before(:all) do
     @rake = Rake::Application.new
     Rake.application = @rake

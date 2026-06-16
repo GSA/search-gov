@@ -35,12 +35,10 @@ class Affiliate < ApplicationRecord
 
     assoc.has_many :excluded_domains, -> { order 'domain ASC' },
                    inverse_of: :affiliate
-    assoc.has_many :excluded_urls
     assoc.has_many :featured_collections
     assoc.has_many(:features, through: :affiliate_feature_addition)
     assoc.has_many :flickr_profiles, -> { order 'flickr_profiles.url ASC' },
                    inverse_of: :affiliate
-    assoc.has_many :i14y_memberships
     assoc.has_one :image_search_label
     assoc.has_many :indexed_documents
     assoc.has_many :memberships
@@ -53,8 +51,6 @@ class Affiliate < ApplicationRecord
     assoc.has_one :site_feed_url
     assoc.has_many :superfresh_urls
     assoc.has_one :alert
-    assoc.has_many :watchers, -> { order 'name ASC' }, inverse_of: :affiliate
-    assoc.has_many :tag_filters, -> { order 'tag ASC' }, inverse_of: :affiliate
     assoc.has_many :primary_header_links, -> { order :position }, inverse_of: :affiliate
     assoc.has_many :secondary_header_links, -> { order :position }, inverse_of: :affiliate
     assoc.has_many :footer_links, -> { order :position }, inverse_of: :affiliate
@@ -75,7 +71,6 @@ class Affiliate < ApplicationRecord
            inverse_of: :default_affiliate
 
   has_many :url_prefixes, through: :document_collections
-  has_many :i14y_drawers, -> { order 'handle' }, through: :i14y_memberships
   has_many :routed_query_keywords, -> { order 'keyword' }, through: :routed_queries
   belongs_to :agency
   belongs_to :language, foreign_key: :locale, primary_key: :code, inverse_of: :affiliates
@@ -446,12 +441,6 @@ class Affiliate < ApplicationRecord
     active? ? 'Active' : 'Inactive'
   end
 
-  def excluded_urls_set
-    @excluded_urls_set ||= excluded_urls.pluck(:url).map do |url|
-      UrlParser.strip_http_protocols(url)
-    end.uniq
-  end
-
   def no_results_error
     return if additional_guidance_text.blank?
 
@@ -462,7 +451,7 @@ class Affiliate < ApplicationRecord
   end
 
   def show_search_filter_settings_authorized?
-    search_gov_engine?
+    !bing_v7_engine?
   end
 
   private

@@ -52,8 +52,10 @@ Rails.application.configure do
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = false
 
-  # Log to STDOUT by default
-  config.logger = ActiveSupport::Logger.new(STDOUT)
+  # Logging is handled natively by rails_semantic_logger (JSON format configured below).
+  # Do not set config.logger here; an explicit ActiveSupport::Logger gets wrapped as an
+  # appender and breaks request-level logging on some hosts. For STDOUT output, set
+  # RAILS_LOG_TO_STDOUT=1 and the gem adds a proper JSON STDOUT appender.
 
   # Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
@@ -104,4 +106,3 @@ ADDITIONAL_BING_PARAMS = {}
 
 DEFAULT_CACHE_DURATION = 6.hours
 BING_CACHE_DURATION = 1.day
-I14Y_CACHE_DURATION = 1.day

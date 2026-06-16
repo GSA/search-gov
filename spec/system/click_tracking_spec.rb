@@ -25,7 +25,7 @@ describe 'A user searches', js: true, vcr: { preserve_exact_body_bytes: true } d
 
       it 'the search results have the expected data attributes' do
         expect(page).to have_selector('div[data-affiliate="searchgovaffiliate"]', id: 'search')
-        expect(page).to have_selector('div[data-vertical="i14y"]', id: 'search')
+        expect(page).to have_selector('div[data-vertical="document"]', id: 'search')
         expect(page).to have_selector('div[data-query="boosted"]', id: 'search')
 
         long_string = 'a[data-click=\'{"position":1,"module_code":"BOOS"}\']'
@@ -46,7 +46,7 @@ describe 'A user searches', js: true, vcr: { preserve_exact_body_bytes: true } d
             expect(logline).to include('"affiliate":"searchgovaffiliate"')
             expect(logline).to include('"position":"1"')
             expect(logline).to include('"modules":"BOOS"')
-            expect(logline).to include('"vertical":"i14y"')
+            expect(logline).to include('"vertical":"document"')
             expect(logline).to include('"user_agent":"test_user_agent"')
             expect(logline).to include('"referrer":')
           end

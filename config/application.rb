@@ -54,7 +54,7 @@ module Usasearch
     unless File.basename($0) == "rake" && ARGV.include?("db:migrate")
       config.active_record.observers = :sayt_filter_observer, :misspelling_observer, :indexed_document_observer,
         :affiliate_observer, :navigable_observer, :searchable_observer,
-        :i14y_drawer_observer, :routed_query_keyword_observer, :watcher_observer
+        :routed_query_keyword_observer
     end
 
     # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
