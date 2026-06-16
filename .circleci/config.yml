@@ -91,6 +91,9 @@ commands:
       - nodejs/install:
           node-version: "22.22.2"
           install-yarn: true
+          # Pin Yarn: the orb's "latest" lookup intermittently resolves an
+          # empty version and downloads a corrupt tarball, breaking CI setup.
+          yarn-version: "1.22.22"
       - run:
           name: Yarn Install
           command: yarn install --frozen-lockfile
@@ -302,6 +305,9 @@ jobs:
       - nodejs/install:
           install-yarn: true
           node-version: << parameters.node_version >>
+          # Pin Yarn: the orb's "latest" lookup intermittently resolves an
+          # empty version and downloads a corrupt tarball, breaking CI setup.
+          yarn-version: "1.22.22"
 
       - install_js_dependencies
 

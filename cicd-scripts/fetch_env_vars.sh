@@ -71,19 +71,51 @@ else
     PARAM_KEYS=$(aws ssm describe-parameters --query "Parameters[*].Name" --output text --region "$REGION")
 fi
 
-# Loop through each parameter key
+# Fetch a single parameter and append NAME=VALUE to .env. Used as a fallback
+# when a batch call fails so one bad parameter never aborts the deploy.
+fetch_param_individually() {
+    local PARAM="$1"
+    local VALUE
+    if ! VALUE=$(aws ssm get-parameter --name "$PARAM" --with-decryption --query "Parameter.Value" --output text --region "$REGION" 2>/dev/null); then
+        warn "Skipping parameter: $PARAM"
+        return 0
+    fi
+    if [[ $PARAM == SEARCH_AWS_* ]]; then
+        PARAM=${PARAM/SEARCH_AWS_/AWS_}
+    fi
+    echo "$PARAM=$VALUE" >> .env
+}
+
+# Build the list of parameters to fetch, excluding deploy-only keys, EC2 PEM
+# keys, and the login.gov cert (fetched separately from the cert region).
+FETCH_KEYS=()
 for PARAM in $PARAM_KEYS; do
     if [[ $PARAM != DEPLOY_* && ! $PARAM =~ .*_EC2_PEM_KEY$ && $PARAM != "LOGIN_DOT_GOV_PEM" ]]; then
-        if ! VALUE=$(aws ssm get-parameter --name "$PARAM" --with-decryption --query "Parameter.Value" --output text --region "$REGION" 2>/dev/null); then
-            warn "Skipping parameter: $PARAM"
-            continue
-        fi
-        
-        if [[ $PARAM == SEARCH_AWS_* ]]; then
-            PARAM=${PARAM/SEARCH_AWS_/AWS_}
-        fi
+        FETCH_KEYS+=("$PARAM")
+    fi
+done
 
-        echo "$PARAM=$VALUE" >> .env
+# Fetch values in batches of up to 10 (the ssm:GetParameters limit) rather than
+# one call per parameter. CodeDeploy runs this hook on every host, so collapsing
+# ~130 calls into ~13 batches cuts deploy time substantially. SEARCH_AWS_* keys
+# are renamed to AWS_* inline by jq.
+BATCH_SIZE=10
+total=${#FETCH_KEYS[@]}
+for ((i = 0; i < total; i += BATCH_SIZE)); do
+    BATCH=("${FETCH_KEYS[@]:i:BATCH_SIZE}")
+
+    if BATCH_JSON=$(aws ssm get-parameters --names "${BATCH[@]}" --with-decryption --output json --region "$REGION" 2>/dev/null); then
+        # Surface any names the role could not retrieve, mirroring prior skip behavior.
+        while IFS= read -r INVALID_PARAM; do
+            [ -n "$INVALID_PARAM" ] && warn "Skipping parameter: $INVALID_PARAM"
+        done < <(echo "$BATCH_JSON" | jq -r '.InvalidParameters[]?' 2>/dev/null || true)
+
+        echo "$BATCH_JSON" | jq -r '.Parameters[] | "\((.Name | sub("^SEARCH_AWS_"; "AWS_")))=\(.Value)"' >> .env
+    else
+        warn "Batch fetch failed; falling back to per-parameter for: ${BATCH[*]}"
+        for PARAM in "${BATCH[@]}"; do
+            fetch_param_individually "$PARAM"
+        done
     fi
 done
 
