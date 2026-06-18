@@ -42,5 +42,24 @@ describe OpenSearch::DocumentSearch do
         rest_total_hits_as_int: true
       )
     end
+
+    context 'when a result title is a percent-encoded filename' do
+      let(:search_results) do
+        {
+          'hits' => {
+            'total' => 1,
+            'hits' => [
+              { '_source' => { 'path' => 'https://www.va.gov/files/2022-10/BA%20degree%20nurse%20scholarship_0.pdf',
+                               'language' => 'en',
+                               'title_en' => 'BA%20degree%20nurse%20scholarship_0.pdf' } }
+            ]
+          }
+        }
+      end
+
+      it 'decodes the title for downstream SERP and API consumers' do
+        expect(search.search.results.first['title']).to eq('BA degree nurse scholarship_0.pdf')
+      end
+    end
   end
 end
