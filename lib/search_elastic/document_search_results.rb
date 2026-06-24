@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'cgi'
+
 class SearchElastic::DocumentSearchResults
   attr_reader :total, :offset, :results, :suggestion, :aggregations
 
@@ -37,11 +39,25 @@ class SearchElastic::DocumentSearchResults
         end
       end
 
+      source['title'] = decode_filename_title(source['title'])
+
       %w[created_at created changed updated_at updated].each do |date|
         source[date] = Time.parse(source[date]).utc.to_s if source[date].present?
       end
       source
     end
+  end
+
+  # Titles that fall back to a raw filename (e.g. for PDFs without metadata)
+  # arrive percent-encoded and may carry a query string. Such filename titles
+  # have no whitespace, unlike genuine metadata titles, so decode only those to
+  # avoid altering legitimate titles. See SRCH-6581.
+  def decode_filename_title(title)
+    return title if title.blank?
+    return title if title.match?(/\s/)
+    return title unless title.match?(/%[0-9A-Fa-f]{2}/) || title.include?('?')
+
+    CGI.unescape(title.sub(/\?.*\z/, ''))
   end
 
   def extract_aggregations(aggregations)
