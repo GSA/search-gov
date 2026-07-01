@@ -57,8 +57,8 @@ describe OpenSearch::DocumentSearch do
         }
       end
 
-      it 'decodes the title for downstream SERP and API consumers' do
-        expect(search.search.results.first['title']).to eq('BA degree nurse scholarship_0.pdf')
+      it 'decodes the title and strips the extension for downstream SERP and API consumers' do
+        expect(search.search.results.first['title']).to eq('BA degree nurse scholarship_0')
       end
     end
   end
