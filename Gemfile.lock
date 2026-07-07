@@ -536,7 +536,8 @@ GEM
     mustermann (3.0.3)
       ruby2_keywords (~> 0.0.1)
     mutex_m (0.2.0)
-    mysql2 (0.5.6)
+    mysql2 (0.5.7)
+      bigdecimal
     net-http-persistent (2.9.4)
     net-imap (0.5.9)
       date
@@ -980,7 +981,7 @@ DEPENDENCIES
   mail (~> 2.7.1)
   medusa!
   mutex_m (~> 0.2.0)
-  mysql2 (~> 0.5.5)
+  mysql2 (~> 0.5.7)
   net-http-persistent (~> 2.9.3)
   newrelic_rpm (~> 9.10)
   nokogiri (~> 1.16)
