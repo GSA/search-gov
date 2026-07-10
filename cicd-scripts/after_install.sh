@@ -134,9 +134,86 @@ fi
 log "Precompiling assets"
 SECRET_KEY_BASE=placeholder RAILS_ENV=production ./bin/rails assets:precompile
 
-# Run pending migrations (idempotent -- no-op if none pending)
-log "Running database migrations"
-RAILS_ENV=production bundle exec rails db:migrate
+# SRCH-6631: Only run database migrations on the tier(s) designated as the
+# migration owner (RUN_MIGRATIONS SSM parameter, managed in searchgov-tf).
+# This prevents a deploy to crawler/cron/spider/api/proxy/letsencrypt (which
+# share the same production RDS instance as the main app fleet) from running
+# `db:migrate` independently and applying schema changes the main app
+# fleet's currently-running release does not expect. See:
+# prod_outage_20260710_shared_db_migration_incident.md for the incident this
+# guards against.
+#
+# Fail-safe: if the tier tag, RUN_MIGRATIONS value, or jq cannot be resolved
+# for any reason, migrations are SKIPPED (never default to running them).
+get_terraform_module_tag() {
+  local imds_token region instance_id tag_value
+
+  imds_token=$(curl -sS --fail --max-time 2 -X PUT \
+    "http://169.254.169.254/latest/api/token" \
+    -H "X-aws-ec2-metadata-token-ttl-seconds: 300" 2>/dev/null || true)
+  if [ -z "$imds_token" ]; then
+    warn "Could not retrieve IMDSv2 token; terraform_module tag unknown"
+    echo "unknown"
+    return
+  fi
+
+  region=$(curl -sS --fail --max-time 2 \
+    -H "X-aws-ec2-metadata-token: $imds_token" \
+    "http://169.254.169.254/latest/dynamic/instance-identity/document" 2>/dev/null \
+    | sed -n 's/.*"region"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p')
+  instance_id=$(curl -sS --fail --max-time 2 \
+    -H "X-aws-ec2-metadata-token: $imds_token" \
+    "http://169.254.169.254/latest/meta-data/instance-id" 2>/dev/null || true)
+
+  if [ -z "$region" ] || [ -z "$instance_id" ]; then
+    warn "Could not determine region/instance-id; terraform_module tag unknown"
+    echo "unknown"
+    return
+  fi
+
+  tag_value=$(aws ec2 describe-tags --region "$region" \
+    --filters "Name=resource-id,Values=$instance_id" "Name=key,Values=terraform_module" \
+    --query "Tags[0].Value" --output text 2>/dev/null || true)
+
+  if [ -z "$tag_value" ] || [ "$tag_value" = "None" ]; then
+    warn "terraform_module tag not found on this instance; defaulting to unknown"
+    echo "unknown"
+    return
+  fi
+
+  echo "$tag_value"
+}
+
+# Extract only the RUN_MIGRATIONS line from the shared .env file. Deliberately
+# avoids sourcing .env wholesale in bash, since it may contain multiline
+# PEM/certificate-style values that are unsafe to source directly.
+read_run_migrations_json() {
+  local env_file="$SHARED_DIR/.env"
+  if [ ! -f "$env_file" ]; then
+    echo "{}"
+    return
+  fi
+  grep -m1 '^RUN_MIGRATIONS=' "$env_file" | sed 's/^RUN_MIGRATIONS=//' || echo "{}"
+}
+
+TERRAFORM_MODULE="$(get_terraform_module_tag)"
+RUN_MIGRATIONS_JSON="$(read_run_migrations_json)"
+SHOULD_RUN_MIGRATIONS="false"
+
+if [ -n "$RUN_MIGRATIONS_JSON" ] && command -v jq >/dev/null 2>&1; then
+  SHOULD_RUN_MIGRATIONS="$(echo "$RUN_MIGRATIONS_JSON" | jq -r --arg tier "$TERRAFORM_MODULE" '.[$tier] // "false"' 2>/dev/null || echo "false")"
+fi
+
+log "terraform_module tag: $TERRAFORM_MODULE"
+log "RUN_MIGRATIONS policy value for this tier: $SHOULD_RUN_MIGRATIONS"
+
+if [ "$SHOULD_RUN_MIGRATIONS" = "true" ]; then
+  log "Running database migrations (tier=$TERRAFORM_MODULE, RUN_MIGRATIONS=true)"
+  RAILS_ENV=production bundle exec rails db:migrate
+else
+  log "Skipping database migrations (tier=$TERRAFORM_MODULE, RUN_MIGRATIONS=$SHOULD_RUN_MIGRATIONS)"
+fi
+
 
 # Atomically promote release
 log "Promoting release to current"
