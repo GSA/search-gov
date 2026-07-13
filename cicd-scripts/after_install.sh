@@ -146,7 +146,7 @@ SECRET_KEY_BASE=placeholder RAILS_ENV=production ./bin/rails assets:precompile
 # Fail-safe: if the tier tag, RUN_MIGRATIONS value, or jq cannot be resolved
 # for any reason, migrations are SKIPPED (never default to running them).
 get_terraform_module_tag() {
-  local imds_token region instance_id tag_value
+  local imds_token instance_id tag_value
 
   imds_token=$(curl -sS --fail --max-time 2 -X PUT \
     "http://169.254.169.254/latest/api/token" \
@@ -157,21 +157,23 @@ get_terraform_module_tag() {
     return
   fi
 
-  region=$(curl -sS --fail --max-time 2 \
-    -H "X-aws-ec2-metadata-token: $imds_token" \
-    "http://169.254.169.254/latest/dynamic/instance-identity/document" 2>/dev/null \
-    | sed -n 's/.*"region"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p')
   instance_id=$(curl -sS --fail --max-time 2 \
     -H "X-aws-ec2-metadata-token: $imds_token" \
     "http://169.254.169.254/latest/meta-data/instance-id" 2>/dev/null || true)
 
-  if [ -z "$region" ] || [ -z "$instance_id" ]; then
-    warn "Could not determine region/instance-id; terraform_module tag unknown"
+  if [ -z "$instance_id" ]; then
+    warn "Could not determine instance-id; terraform_module tag unknown"
     echo "unknown"
     return
   fi
 
-  tag_value=$(aws ec2 describe-tags --region "$region" \
+  # Deliberately omit --region: AWS CLI v2 automatically resolves the region
+  # via IMDS when no region is set via env var/profile/flag (confirmed via
+  # `aws configure list` -> "region : <value> : imds" on these instances).
+  # CodeDeploy does not inject a region env var into hook scripts, so this
+  # relies on the CLI's own IMDS fallback rather than duplicating that lookup
+  # with a manual instance-identity-document parse.
+  tag_value=$(aws ec2 describe-tags \
     --filters "Name=resource-id,Values=$instance_id" "Name=key,Values=terraform_module" \
     --query "Tags[0].Value" --output text 2>/dev/null || true)
 
@@ -183,6 +185,7 @@ get_terraform_module_tag() {
 
   echo "$tag_value"
 }
+
 
 # Extract only the RUN_MIGRATIONS line from the shared .env file. Deliberately
 # avoids sourcing .env wholesale in bash, since it may contain multiline
