@@ -134,9 +134,32 @@ fi
 log "Precompiling assets"
 SECRET_KEY_BASE=placeholder RAILS_ENV=production ./bin/rails assets:precompile
 
-# Run pending migrations (idempotent -- no-op if none pending)
-log "Running database migrations"
-RAILS_ENV=production bundle exec rails db:migrate
+# SRCH-6631: Only run database migrations when this deployment targets the
+# main app CodeDeploy deployment group. All other deployment groups
+# (crawler, cron, spider, api, proxy, letsencrypt, and their -green
+# counterparts) share the same production RDS instance but must NOT run
+# migrations independently, since deploying to those groups could otherwise
+# apply schema changes the main app fleet's currently-running release does
+# not expect. See: prod_outage_20260710_shared_db_migration_incident.md for
+# the incident this guards against.
+#
+# DEPLOYMENT_GROUP_NAME is set directly by the CodeDeploy agent for every
+# hook script (see hook_executor.rb's @child_envs / Open3.popen3 call) --
+# no IMDS calls, no AWS API calls, and no dependency on IMDS response
+# formats ever changing. This intentionally replaces an earlier
+# implementation that queried IMDS for an EC2 tag and cross-referenced it
+# against an SSM parameter; that approach was reviewed as unnecessarily
+# complex (multiple curl calls + an AWS API call + sed/jq parsing) for a
+# fact CodeDeploy already hands the script for free.
+case "${DEPLOYMENT_GROUP_NAME:-}" in
+  dev_searchgov_dg | staging_searchgov_dg | prod_searchgov_dg)
+    log "Running database migrations (deployment_group=$DEPLOYMENT_GROUP_NAME)"
+    RAILS_ENV=production bundle exec rails db:migrate
+    ;;
+  *)
+    log "Skipping database migrations (deployment_group=${DEPLOYMENT_GROUP_NAME:-unset})"
+    ;;
+esac
 
 # Atomically promote release
 log "Promoting release to current"
