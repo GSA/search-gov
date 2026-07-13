@@ -134,89 +134,32 @@ fi
 log "Precompiling assets"
 SECRET_KEY_BASE=placeholder RAILS_ENV=production ./bin/rails assets:precompile
 
-# SRCH-6631: Only run database migrations on the tier(s) designated as the
-# migration owner (RUN_MIGRATIONS SSM parameter, managed in searchgov-tf).
-# This prevents a deploy to crawler/cron/spider/api/proxy/letsencrypt (which
-# share the same production RDS instance as the main app fleet) from running
-# `db:migrate` independently and applying schema changes the main app
-# fleet's currently-running release does not expect. See:
-# prod_outage_20260710_shared_db_migration_incident.md for the incident this
-# guards against.
+# SRCH-6631: Only run database migrations when this deployment targets the
+# main app CodeDeploy deployment group. All other deployment groups
+# (crawler, cron, spider, api, proxy, letsencrypt, and their -green
+# counterparts) share the same production RDS instance but must NOT run
+# migrations independently, since deploying to those groups could otherwise
+# apply schema changes the main app fleet's currently-running release does
+# not expect. See: prod_outage_20260710_shared_db_migration_incident.md for
+# the incident this guards against.
 #
-# Fail-safe: if the tier tag, RUN_MIGRATIONS value, or jq cannot be resolved
-# for any reason, migrations are SKIPPED (never default to running them).
-get_terraform_module_tag() {
-  local imds_token instance_id tag_value
-
-  imds_token=$(curl -sS --fail --max-time 2 -X PUT \
-    "http://169.254.169.254/latest/api/token" \
-    -H "X-aws-ec2-metadata-token-ttl-seconds: 300" 2>/dev/null || true)
-  if [ -z "$imds_token" ]; then
-    warn "Could not retrieve IMDSv2 token; terraform_module tag unknown"
-    echo "unknown"
-    return
-  fi
-
-  instance_id=$(curl -sS --fail --max-time 2 \
-    -H "X-aws-ec2-metadata-token: $imds_token" \
-    "http://169.254.169.254/latest/meta-data/instance-id" 2>/dev/null || true)
-
-  if [ -z "$instance_id" ]; then
-    warn "Could not determine instance-id; terraform_module tag unknown"
-    echo "unknown"
-    return
-  fi
-
-  # Deliberately omit --region: AWS CLI v2 automatically resolves the region
-  # via IMDS when no region is set via env var/profile/flag (confirmed via
-  # `aws configure list` -> "region : <value> : imds" on these instances).
-  # CodeDeploy does not inject a region env var into hook scripts, so this
-  # relies on the CLI's own IMDS fallback rather than duplicating that lookup
-  # with a manual instance-identity-document parse.
-  tag_value=$(aws ec2 describe-tags \
-    --filters "Name=resource-id,Values=$instance_id" "Name=key,Values=terraform_module" \
-    --query "Tags[0].Value" --output text 2>/dev/null || true)
-
-  if [ -z "$tag_value" ] || [ "$tag_value" = "None" ]; then
-    warn "terraform_module tag not found on this instance; defaulting to unknown"
-    echo "unknown"
-    return
-  fi
-
-  echo "$tag_value"
-}
-
-
-# Extract only the RUN_MIGRATIONS line from the shared .env file. Deliberately
-# avoids sourcing .env wholesale in bash, since it may contain multiline
-# PEM/certificate-style values that are unsafe to source directly.
-read_run_migrations_json() {
-  local env_file="$SHARED_DIR/.env"
-  if [ ! -f "$env_file" ]; then
-    echo "{}"
-    return
-  fi
-  grep -m1 '^RUN_MIGRATIONS=' "$env_file" | sed 's/^RUN_MIGRATIONS=//' || echo "{}"
-}
-
-TERRAFORM_MODULE="$(get_terraform_module_tag)"
-RUN_MIGRATIONS_JSON="$(read_run_migrations_json)"
-SHOULD_RUN_MIGRATIONS="false"
-
-if [ -n "$RUN_MIGRATIONS_JSON" ] && command -v jq >/dev/null 2>&1; then
-  SHOULD_RUN_MIGRATIONS="$(echo "$RUN_MIGRATIONS_JSON" | jq -r --arg tier "$TERRAFORM_MODULE" '.[$tier] // "false"' 2>/dev/null || echo "false")"
-fi
-
-log "terraform_module tag: $TERRAFORM_MODULE"
-log "RUN_MIGRATIONS policy value for this tier: $SHOULD_RUN_MIGRATIONS"
-
-if [ "$SHOULD_RUN_MIGRATIONS" = "true" ]; then
-  log "Running database migrations (tier=$TERRAFORM_MODULE, RUN_MIGRATIONS=true)"
-  RAILS_ENV=production bundle exec rails db:migrate
-else
-  log "Skipping database migrations (tier=$TERRAFORM_MODULE, RUN_MIGRATIONS=$SHOULD_RUN_MIGRATIONS)"
-fi
-
+# DEPLOYMENT_GROUP_NAME is set directly by the CodeDeploy agent for every
+# hook script (see hook_executor.rb's @child_envs / Open3.popen3 call) --
+# no IMDS calls, no AWS API calls, and no dependency on IMDS response
+# formats ever changing. This intentionally replaces an earlier
+# implementation that queried IMDS for an EC2 tag and cross-referenced it
+# against an SSM parameter; that approach was reviewed as unnecessarily
+# complex (multiple curl calls + an AWS API call + sed/jq parsing) for a
+# fact CodeDeploy already hands the script for free.
+case "${DEPLOYMENT_GROUP_NAME:-}" in
+  dev_searchgov_dg | staging_searchgov_dg | prod_searchgov_dg)
+    log "Running database migrations (deployment_group=$DEPLOYMENT_GROUP_NAME)"
+    RAILS_ENV=production bundle exec rails db:migrate
+    ;;
+  *)
+    log "Skipping database migrations (deployment_group=${DEPLOYMENT_GROUP_NAME:-unset})"
+    ;;
+esac
 
 # Atomically promote release
 log "Promoting release to current"
