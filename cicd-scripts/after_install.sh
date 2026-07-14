@@ -199,7 +199,7 @@ TERRAFORM_MODULE="$(get_terraform_module_tag)"
 # troubleshooting/verification once app/crawler/cron share one deployment
 # group and are no longer distinguishable by deployment group name alone.
 case "$TERRAFORM_MODULE" in
-  app)
+  app | app-green)
     log "Running database migrations (terraform_module=$TERRAFORM_MODULE)"
     RAILS_ENV=production bundle exec rails db:migrate
     ;;
@@ -210,6 +210,7 @@ esac
 
 # Atomically promote release
 log "Promoting release to current"
+
 TMP_LINK="${APP_ROOT}/.current_tmp"
 ln -sfn "$RELEASE_DIR" "$TMP_LINK"
 mv -Tf "$TMP_LINK" "$CURRENT_LINK"
