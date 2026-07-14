@@ -134,9 +134,79 @@ fi
 log "Precompiling assets"
 SECRET_KEY_BASE=placeholder RAILS_ENV=production ./bin/rails assets:precompile
 
-# Run pending migrations (idempotent -- no-op if none pending)
-log "Running database migrations"
-RAILS_ENV=production bundle exec rails db:migrate
+# SRCH-6631: Only run database migrations on the main "app" tier. All other
+# tiers (crawler, cron, spider, api, proxy, letsencrypt, and their -green
+# counterparts) share the same production RDS instance but must NOT run
+# migrations independently, since deploying to those tiers could otherwise
+# apply schema changes the main app fleet's currently-running release does
+# not expect. See: prod_outage_20260710_shared_db_migration_incident.md for
+# the incident this guards against.
+#
+# NOTE: an earlier version of this gate checked $DEPLOYMENT_GROUP_NAME
+# (set directly by the CodeDeploy agent, no IMDS/AWS API calls needed).
+# That approach breaks once app/crawler/cron are consolidated behind a
+# single shared deployment group (dg_searchgov) -- at that point
+# DEPLOYMENT_GROUP_NAME is identical for all three tiers and can no longer
+# distinguish them. This version instead reads the instance's own
+# terraform_module EC2 tag, which is set independently per-instance by
+# Terraform at provisioning time and is unaffected by which deployment
+# group happens to trigger a given deployment.
+#
+# Fail-safe: if the tag cannot be resolved for any reason, migrations are
+# SKIPPED (never default to running them).
+get_terraform_module_tag() {
+  local imds_token instance_id tag_value
+
+  imds_token=$(curl -sS --fail --max-time 2 -X PUT \
+    "http://169.254.169.254/latest/api/token" \
+    -H "X-aws-ec2-metadata-token-ttl-seconds: 300" 2>/dev/null || true)
+  if [ -z "$imds_token" ]; then
+    warn "Could not retrieve IMDSv2 token; terraform_module tag unknown"
+    echo "unknown"
+    return
+  fi
+
+  instance_id=$(curl -sS --fail --max-time 2 \
+    -H "X-aws-ec2-metadata-token: $imds_token" \
+    "http://169.254.169.254/latest/meta-data/instance-id" 2>/dev/null || true)
+
+  if [ -z "$instance_id" ]; then
+    warn "Could not determine instance-id; terraform_module tag unknown"
+    echo "unknown"
+    return
+  fi
+
+  # Deliberately omit --region: AWS CLI v2 automatically resolves the region
+  # via IMDS when no region is set via env var/profile/flag.
+  tag_value=$(aws ec2 describe-tags \
+    --filters "Name=resource-id,Values=$instance_id" "Name=key,Values=terraform_module" \
+    --query "Tags[0].Value" --output text 2>/dev/null || true)
+
+  if [ -z "$tag_value" ] || [ "$tag_value" = "None" ]; then
+    warn "terraform_module tag not found on this instance; defaulting to unknown"
+    echo "unknown"
+    return
+  fi
+
+  echo "$tag_value"
+}
+
+TERRAFORM_MODULE="$(get_terraform_module_tag)"
+
+# Every branch of this case logs the resolved terraform_module value and
+# whether migrations ran, so every pipeline run's log clearly shows which
+# tier it deployed to and whether db:migrate executed -- needed for
+# troubleshooting/verification once app/crawler/cron share one deployment
+# group and are no longer distinguishable by deployment group name alone.
+case "$TERRAFORM_MODULE" in
+  app)
+    log "Running database migrations (terraform_module=$TERRAFORM_MODULE)"
+    RAILS_ENV=production bundle exec rails db:migrate
+    ;;
+  *)
+    log "Skipping database migrations (terraform_module=$TERRAFORM_MODULE) -- not the migration-owning tier"
+    ;;
+esac
 
 # Atomically promote release
 log "Promoting release to current"
