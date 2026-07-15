@@ -134,35 +134,48 @@ fi
 log "Precompiling assets"
 SECRET_KEY_BASE=placeholder RAILS_ENV=production ./bin/rails assets:precompile
 
-# SRCH-6631: Only run database migrations on the main "app" tier. All other
-# tiers (crawler, cron, spider, api, proxy, letsencrypt, and their -green
-# counterparts) share the same production RDS instance but must NOT run
-# migrations independently, since deploying to those tiers could otherwise
-# apply schema changes the main app fleet's currently-running release does
-# not expect. See: prod_outage_20260710_shared_db_migration_incident.md for
-# the incident this guards against.
+# SRCH-6631: Only run database migrations on the currently-active "app" tier
+# instance for this environment. All other tiers (crawler, cron, spider, api,
+# proxy, letsencrypt, and their -green counterparts) share the same
+# production RDS instance but must NOT run migrations independently, since
+# deploying to those tiers could otherwise apply schema changes the main app
+# fleet's currently-running release does not expect. See:
+# prod_outage_20260710_shared_db_migration_incident.md for the incident this
+# guards against.
 #
-# NOTE: an earlier version of this gate checked $DEPLOYMENT_GROUP_NAME
-# (set directly by the CodeDeploy agent, no IMDS/AWS API calls needed).
-# That approach breaks once app/crawler/cron are consolidated behind a
-# single shared deployment group (dg_searchgov) -- at that point
-# DEPLOYMENT_GROUP_NAME is identical for all three tiers and can no longer
-# distinguish them. This version instead reads the instance's own
-# terraform_module EC2 tag, which is set independently per-instance by
-# Terraform at provisioning time and is unaffected by which deployment
-# group happens to trigger a given deployment.
+# NOTE: an earlier version of this gate checked only the terraform_module
+# tag for an exact match on "app". That is correct for dev and production
+# today (both have a plain "app" instance with no Fleet tag at all, and no
+# coexisting green fleet), but it is NOT correct for an environment mid
+# Ubuntu-24.04 green-fleet upgrade: staging's app tier currently only exists
+# as "app-green" (Fleet=green) -- exact-matching "app" alone means staging
+# never runs migrations automatically, forcing manual db:migrate on every
+# staging deploy.
 #
-# Fail-safe: if the tag cannot be resolved for any reason, migrations are
+# This version reads three EC2 tags together -- terraform_module, Fleet, and
+# environment -- in a single describe-tags call, and gates on the
+# combination of all three. This correctly distinguishes "the tier that owns
+# migrations in this environment right now" without reintroducing the
+# shared-DB race condition the original incident was caused by: if/when
+# production ever has its own coexisting "app" + "app-green" pair during its
+# own cutover, the same tag combination that currently matches production's
+# plain "app" tier will need to be revisited then, based on the real tag
+# state at that time -- not decided preemptively here.
+#
+# Confirmed live (2026-07-14): dev's "app" and production's "app" both have
+# no Fleet tag at all; only staging currently has an "app-green" instance,
+# tagged Fleet=green.
+#
+# Fail-safe: if any tag cannot be resolved for any reason, migrations are
 # SKIPPED (never default to running them).
-get_terraform_module_tag() {
-  local imds_token instance_id tag_value
+get_instance_tags() {
+  local imds_token instance_id
 
   imds_token=$(curl -sS --fail --max-time 2 -X PUT \
     "http://169.254.169.254/latest/api/token" \
     -H "X-aws-ec2-metadata-token-ttl-seconds: 300" 2>/dev/null || true)
   if [ -z "$imds_token" ]; then
-    warn "Could not retrieve IMDSv2 token; terraform_module tag unknown"
-    echo "unknown"
+    warn "Could not retrieve IMDSv2 token; instance tags unknown"
     return
   fi
 
@@ -171,40 +184,65 @@ get_terraform_module_tag() {
     "http://169.254.169.254/latest/meta-data/instance-id" 2>/dev/null || true)
 
   if [ -z "$instance_id" ]; then
-    warn "Could not determine instance-id; terraform_module tag unknown"
-    echo "unknown"
+    warn "Could not determine instance-id; instance tags unknown"
     return
   fi
 
-  # Deliberately omit --region: AWS CLI v2 automatically resolves the region
-  # via IMDS when no region is set via env var/profile/flag.
-  tag_value=$(aws ec2 describe-tags \
-    --filters "Name=resource-id,Values=$instance_id" "Name=key,Values=terraform_module" \
-    --query "Tags[0].Value" --output text 2>/dev/null || true)
-
-  if [ -z "$tag_value" ] || [ "$tag_value" = "None" ]; then
-    warn "terraform_module tag not found on this instance; defaulting to unknown"
-    echo "unknown"
-    return
-  fi
-
-  echo "$tag_value"
+  # Single describe-tags call for all three keys at once -- same AWS API
+  # call cost as the previous single-tag lookup. Deliberately omit --region:
+  # AWS CLI v2 automatically resolves the region via IMDS when no region is
+  # set via env var/profile/flag. Requested as JSON and parsed with jq (both
+  # confirmed present on all app-tier instances in dev/staging/prod) rather
+  # than tab/newline-delimited text -- this avoids relying on whitespace
+  # characters as field separators and lets jq return each tag's actual
+  # value, or a clean explicit empty result if the tag key is absent, with
+  # no special-casing needed to tell "absent" apart from a delimiter quirk.
+  aws ec2 describe-tags \
+    --filters "Name=resource-id,Values=$instance_id" \
+      "Name=key,Values=terraform_module,Fleet,environment" \
+    --output json 2>/dev/null || true
 }
 
-TERRAFORM_MODULE="$(get_terraform_module_tag)"
+TAGS_JSON="$(get_instance_tags)"
 
-# Every branch of this case logs the resolved terraform_module value and
-# whether migrations ran, so every pipeline run's log clearly shows which
-# tier it deployed to and whether db:migrate executed -- needed for
-# troubleshooting/verification once app/crawler/cron share one deployment
-# group and are no longer distinguishable by deployment group name alone.
-case "$TERRAFORM_MODULE" in
-  app)
-    log "Running database migrations (terraform_module=$TERRAFORM_MODULE)"
+lookup_tag() {
+  local key="$1"
+  if [ -z "$TAGS_JSON" ]; then
+    echo ""
+    return
+  fi
+  echo "$TAGS_JSON" | jq -r --arg key "$key" \
+    '.Tags[] | select(.Key == $key) | .Value' 2>/dev/null || true
+}
+
+TERRAFORM_MODULE="$(lookup_tag terraform_module)"
+FLEET="$(lookup_tag Fleet)"
+ENVIRONMENT="$(lookup_tag environment)"
+
+[ -z "$TERRAFORM_MODULE" ] && TERRAFORM_MODULE="unknown"
+[ -z "$ENVIRONMENT" ] && ENVIRONMENT="unknown"
+
+if [ "$TERRAFORM_MODULE" = "unknown" ]; then
+  warn "terraform_module tag not found on this instance; defaulting to unknown"
+fi
+if [ "$ENVIRONMENT" = "unknown" ]; then
+  warn "environment tag not found on this instance; defaulting to unknown"
+fi
+
+# Every branch of this case logs the resolved tag values and whether
+# migrations ran, so every pipeline run's log clearly shows which
+# environment/tier/fleet it deployed to and whether db:migrate executed --
+# needed for troubleshooting/verification since app/crawler/cron share one
+# deployment group and are no longer distinguishable by deployment group
+# name alone, and since the migration-owning tag combination now differs by
+# environment.
+case "$ENVIRONMENT:$TERRAFORM_MODULE:$FLEET" in
+  dev:app:|staging:app-green:green|production:app:)
+    log "Running database migrations (environment=$ENVIRONMENT, terraform_module=$TERRAFORM_MODULE, Fleet=${FLEET:-<absent>})"
     RAILS_ENV=production bundle exec rails db:migrate
     ;;
   *)
-    log "Skipping database migrations (terraform_module=$TERRAFORM_MODULE) -- not the migration-owning tier"
+    log "Skipping database migrations (environment=$ENVIRONMENT, terraform_module=$TERRAFORM_MODULE, Fleet=${FLEET:-<absent>}) -- not the migration-owning tier for this environment"
     ;;
 esac
 
