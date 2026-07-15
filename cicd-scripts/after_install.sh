@@ -1,6 +1,10 @@
 #!/bin/bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
+# shellcheck source=lib/tier_gate.sh
+source "$SCRIPT_DIR/lib/tier_gate.sh"
+
 log() {
   echo "[CODEDEPLOY][AFTER_INSTALL] $*"
 }
@@ -16,6 +20,21 @@ SHARED_DIR="${APP_ROOT}/shared"
 CURRENT_LINK="${APP_ROOT}/current"
 TIMESTAMP="$(date +%Y%m%d%H%M%S)"
 RELEASE_DIR="${RELEASES_DIR}/${TIMESTAMP}"
+
+log "Starting AfterInstall hook"
+
+# Resolve terraform_module/Fleet/environment tags once, up front, before any
+# filesystem changes. See cicd-scripts/lib/tier_gate.sh for why: production's
+# "app"/"cron" tiers are still deployed via Capistrano today, and running
+# this hook's release-management logic there would race with it.
+resolve_deployment_tags
+if is_legacy_capistrano_tier; then
+  log "Skipping AfterInstall release management (environment=$ENVIRONMENT, terraform_module=$TERRAFORM_MODULE) -- legacy Capistrano-managed tier"
+  log "AfterInstall hook completed (no-op)"
+  exit 0
+fi
+
+log "Release dir: $RELEASE_DIR"
 
 # ERR trap to clean up failed releases
 cleanup_on_error() {
@@ -33,8 +52,6 @@ cleanup_on_error() {
 
 trap cleanup_on_error ERR
 
-log "Starting AfterInstall hook"
-log "Release dir: $RELEASE_DIR"
 
 # Log current symlink state
 if [ -L "$CURRENT_LINK" ]; then
@@ -168,68 +185,13 @@ SECRET_KEY_BASE=placeholder RAILS_ENV=production ./bin/rails assets:precompile
 #
 # Fail-safe: if any tag cannot be resolved for any reason, migrations are
 # SKIPPED (never default to running them).
-get_instance_tags() {
-  local imds_token instance_id
-
-  imds_token=$(curl -sS --fail --max-time 2 -X PUT \
-    "http://169.254.169.254/latest/api/token" \
-    -H "X-aws-ec2-metadata-token-ttl-seconds: 300" 2>/dev/null || true)
-  if [ -z "$imds_token" ]; then
-    warn "Could not retrieve IMDSv2 token; instance tags unknown"
-    return
-  fi
-
-  instance_id=$(curl -sS --fail --max-time 2 \
-    -H "X-aws-ec2-metadata-token: $imds_token" \
-    "http://169.254.169.254/latest/meta-data/instance-id" 2>/dev/null || true)
-
-  if [ -z "$instance_id" ]; then
-    warn "Could not determine instance-id; instance tags unknown"
-    return
-  fi
-
-  # Single describe-tags call for all three keys at once -- same AWS API
-  # call cost as the previous single-tag lookup. Deliberately omit --region:
-  # AWS CLI v2 automatically resolves the region via IMDS when no region is
-  # set via env var/profile/flag. Requested as JSON and parsed with jq (both
-  # confirmed present on all app-tier instances in dev/staging/prod) rather
-  # than tab/newline-delimited text -- this avoids relying on whitespace
-  # characters as field separators and lets jq return each tag's actual
-  # value, or a clean explicit empty result if the tag key is absent, with
-  # no special-casing needed to tell "absent" apart from a delimiter quirk.
-  aws ec2 describe-tags \
-    --filters "Name=resource-id,Values=$instance_id" \
-      "Name=key,Values=terraform_module,Fleet,environment" \
-    --output json 2>/dev/null || true
-}
-
-TAGS_JSON="$(get_instance_tags)"
-
-lookup_tag() {
-  local key="$1"
-  if [ -z "$TAGS_JSON" ]; then
-    echo ""
-    return
-  fi
-  echo "$TAGS_JSON" | jq -r --arg key "$key" \
-    '.Tags[] | select(.Key == $key) | .Value' 2>/dev/null || true
-}
-
-TERRAFORM_MODULE="$(lookup_tag terraform_module)"
-FLEET="$(lookup_tag Fleet)"
-ENVIRONMENT="$(lookup_tag environment)"
-
-[ -z "$TERRAFORM_MODULE" ] && TERRAFORM_MODULE="unknown"
-[ -z "$ENVIRONMENT" ] && ENVIRONMENT="unknown"
-
-if [ "$TERRAFORM_MODULE" = "unknown" ]; then
-  warn "terraform_module tag not found on this instance; defaulting to unknown"
-fi
-if [ "$ENVIRONMENT" = "unknown" ]; then
-  warn "environment tag not found on this instance; defaulting to unknown"
-fi
+#
+# TERRAFORM_MODULE/FLEET/ENVIRONMENT were already resolved once, above, by
+# resolve_deployment_tags (see cicd-scripts/lib/tier_gate.sh) -- reused here
+# rather than making a second describe-tags call for the same instance.
 
 # Every branch of this case logs the resolved tag values and whether
+
 # migrations ran, so every pipeline run's log clearly shows which
 # environment/tier/fleet it deployed to and whether db:migrate executed --
 # needed for troubleshooting/verification since app/crawler/cron share one

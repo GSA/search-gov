@@ -1,6 +1,10 @@
 #!/bin/bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
+# shellcheck source=lib/tier_gate.sh
+source "$SCRIPT_DIR/lib/tier_gate.sh"
+
 if [ -f /home/search/.config/searchgov-codedeploy.env ]; then
   set -a
   # shellcheck disable=SC1090
@@ -11,6 +15,7 @@ fi
 log() {
   echo "[CODEDEPLOY][VALIDATE_SERVICE] $*"
 }
+
 
 warn() {
   echo "[CODEDEPLOY][VALIDATE_SERVICE][WARN] $*"
@@ -213,7 +218,19 @@ SEARCHGOV_ROOT="${SEARCHGOV_ROOT:-/home/search/searchgov}"
 log "Starting ValidateService hook"
 log "Host: $(hostname) | User: $(whoami)"
 
+# See cicd-scripts/lib/tier_gate.sh: production's "app"/"cron" tiers are
+# still Capistrano-managed today. This script's systemd/service-based
+# validation assumptions are not validated against that deployment
+# mechanism and must not run there.
+resolve_deployment_tags
+if is_legacy_capistrano_tier; then
+  log "Skipping ValidateService checks (environment=$ENVIRONMENT, terraform_module=$TERRAFORM_MODULE) -- legacy Capistrano-managed tier"
+  log "ValidateService hook completed (no-op)"
+  exit 0
+fi
+
 if [ "${REQUIRE_RESQUE_SERVICES:-false}" = "true" ]; then
+
   assert_service_active_required "$RESQUE_WORKER_SERVICE"
   assert_worker_instances_active
   assert_service_active_required "$RESQUE_SCHEDULER_SERVICE"
