@@ -1,6 +1,10 @@
 #!/bin/bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
+# shellcheck source=lib/tier_gate.sh
+source "$SCRIPT_DIR/lib/tier_gate.sh"
+
 if [ -f /home/search/.config/searchgov-codedeploy.env ]; then
   set -a
   # shellcheck disable=SC1090
@@ -11,6 +15,7 @@ fi
 log() {
   echo "[CODEDEPLOY][APPLICATION_START] $*"
 }
+
 
 warn() {
   echo "[CODEDEPLOY][APPLICATION_START][WARN] $*"
@@ -266,7 +271,19 @@ APP_HEALTHCHECK_URL="${APP_HEALTHCHECK_URL:-http://127.0.0.1:3000/}"
 log "Starting ApplicationStart hook"
 log "Host: $(hostname) | User: $(whoami)"
 
+# See cicd-scripts/lib/tier_gate.sh: production's "app"/"cron" tiers are
+# still Capistrano-managed today. Restarting/starting services here using
+# this script's assumptions (systemd unit names, fallback Puma start, etc.)
+# is not validated against that deployment mechanism and must not run there.
+resolve_deployment_tags
+if is_legacy_capistrano_tier; then
+  log "Skipping ApplicationStart service management (environment=$ENVIRONMENT, terraform_module=$TERRAFORM_MODULE) -- legacy Capistrano-managed tier"
+  log "ApplicationStart hook completed (no-op)"
+  exit 0
+fi
+
 restart_or_start_service "$PUMA_SERVICE"
+
 restart_or_start_service "$RESQUE_WORKER_SERVICE"
 restart_or_start_service "$RESQUE_SCHEDULER_SERVICE"
 
