@@ -18,7 +18,6 @@ require 'capistrano/puma'
 install_plugin Capistrano::Puma
 install_plugin Capistrano::Puma::Systemd
 
-require 'capistrano-resque'
 require 'whenever/capistrano'
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
