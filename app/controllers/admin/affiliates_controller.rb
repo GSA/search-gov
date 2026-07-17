@@ -99,6 +99,7 @@ class Admin::AffiliatesController < Admin::AdminController
       jobs_enabled
       locale
       name
+      notes
       raw_log_access_enabled
       search_engine
       website
@@ -172,6 +173,8 @@ class Admin::AffiliatesController < Admin::AdminController
     config.columns[:locale].options = { options: Language.order(:name).pluck(:code) }
 
     config.columns[:mobile_logo_url].label = 'Logo URL'
+
+    config.columns[:notes].form_ui = :textarea
 
     config.columns[:theme].form_ui = :select
     config.columns[:theme].options = { include_blank: '- select -',
