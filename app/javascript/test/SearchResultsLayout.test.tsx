@@ -2,7 +2,6 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 import SearchResultsLayout, { NavigationLink } from '../components/SearchResultsLayout';
-import renderer from 'react-test-renderer';
 import 'jest-styled-components';
 
 const fontsAndColors = {
@@ -196,12 +195,12 @@ describe('SearchResultsLayout', () => {
   });
 
   it('renders basic header styles properly', () => {
-    renderer.create(<SearchResultsLayout affiliate={affiliate} page={page} params={{}} resultsData={{ results: [], totalPages: 1, unboundedResults: false }} vertical='web' translations={translations} fontsAndColors={fontsAndColors} navigationLinks={navigationLinks} facetsEnabled={false} />).toJSON();
+    render(<SearchResultsLayout affiliate={affiliate} page={page} params={{}} resultsData={{ results: [], totalPages: 1, unboundedResults: false }} vertical='web' translations={translations} fontsAndColors={fontsAndColors} navigationLinks={navigationLinks} facetsEnabled={false} />);
     expect(document.head).toMatchSnapshot();
   });
 
   it('renders extended header styles properly', () => {
-    renderer.create(<SearchResultsLayout affiliate={affiliate} page={page} params={{}} resultsData={{ results: [], totalPages: 1, unboundedResults: false }} vertical='web' translations={translations} fontsAndColors={fontsAndColors} navigationLinks={navigationLinks} facetsEnabled={false} />).toJSON();
+    render(<SearchResultsLayout affiliate={affiliate} page={page} params={{}} resultsData={{ results: [], totalPages: 1, unboundedResults: false }} vertical='web' translations={translations} fontsAndColors={fontsAndColors} navigationLinks={navigationLinks} facetsEnabled={false} />);
     expect(document.head).toMatchSnapshot();
   });
 
@@ -212,7 +211,7 @@ describe('SearchResultsLayout', () => {
     }
     const resultsData = { totalPages: 2, unboundedResults: true, results };
 
-    renderer.create(<SearchResultsLayout affiliate={affiliate} page={page} params={{}} resultsData={resultsData} vertical='web' translations={translations} fontsAndColors={fontsAndColors} navigationLinks={navigationLinks} facetsEnabled={false} />).toJSON();
+    render(<SearchResultsLayout affiliate={affiliate} page={page} params={{}} resultsData={resultsData} vertical='web' translations={translations} fontsAndColors={fontsAndColors} navigationLinks={navigationLinks} facetsEnabled={false} />);
     expect(document.head).toMatchSnapshot();
   });
 });
