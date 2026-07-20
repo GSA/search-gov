@@ -37,6 +37,20 @@ resolve_puma_service() {
     return 0
   fi
 
+  # Prefer the real, hand-authored "puma" unit (defined in this repo's
+  # cicd-scripts, used by the current CodeDeploy-hook-driven deploy path) if
+  # it exists. Only fall back to pattern-matching a "puma_search-gov_*" unit
+  # for hosts that genuinely have no plain "puma" unit at all -- e.g. a
+  # still-Capistrano-managed tier where Capistrano::Puma::Systemd created
+  # that name instead. Checking "puma" first avoids matching a stale,
+  # leftover Capistrano-era unit (e.g. puma_search-gov_development) on a
+  # host that has since moved to the plain "puma" unit, which would
+  # otherwise silently restart/validate the wrong service every deploy.
+  if service_exists "puma"; then
+    echo "puma"
+    return 0
+  fi
+
   local discovered_service
   discovered_service="$(systemctl list-unit-files --type=service --no-legend 2>/dev/null \
     | awk '{print $1}' \
