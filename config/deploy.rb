@@ -16,13 +16,9 @@ set :puma_workers,            ENV.fetch('SEARCHGOV_WORKERS') { 0 }
 set :rails_env,               'production'
 set :rbenv_type,              :user
 set :repo_url,                'https://github.com/GSA/search-gov'
-set :resque_environment_task, true
-set :resque_extra_env,        "RAILS_ROOT=#{ENV['DEPLOYMENT_PATH']}current"
 set :systemctl_user,          :system
 set :user,                    ENV['SERVER_DEPLOYMENT_USER']
 set :whenever_roles,          :cron
-set :workers,                 { '*' => ENV.fetch('RESQUE_WORKERS_COUNT', '5').to_i }
-set :resque_log_file,         "log/resque.log"
 
 append :linked_dirs,  'log', 'tmp', 'node_modules', 'public'
 append :linked_files, '.env', 'config/logindotgov.pem'
@@ -30,8 +26,6 @@ append :linked_files, '.env', 'config/logindotgov.pem'
 role :app,              JSON.parse(ENV.fetch('APP_SERVER_ADDRESSES', '[]')),    user: ENV['SERVER_DEPLOYMENT_USER']
 role :cron,             JSON.parse(ENV.fetch('CRON_SERVER_ADDRESSES', '[]')),   user: ENV['SERVER_DEPLOYMENT_USER']
 role :db,               JSON.parse(ENV.fetch('APP_SERVER_ADDRESSES', '[]')),    user: ENV['SERVER_DEPLOYMENT_USER']
-role :resque_scheduler, JSON.parse(ENV.fetch('RESQUE_SERVER_ADDRESSES', '[]')), user: ENV['SERVER_DEPLOYMENT_USER']
-role :resque_worker,    JSON.parse(ENV.fetch('RESQUE_SERVER_ADDRESSES', '[]')), user: ENV['SERVER_DEPLOYMENT_USER']
 role :web,              JSON.parse(ENV.fetch('APP_SERVER_ADDRESSES', '[]')),    user: ENV['SERVER_DEPLOYMENT_USER']
 
 set :ssh_options, {

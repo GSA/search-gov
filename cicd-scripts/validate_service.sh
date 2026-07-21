@@ -1,0 +1,268 @@
+#!/bin/bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
+# shellcheck source=lib/tier_gate.sh
+source "$SCRIPT_DIR/lib/tier_gate.sh"
+
+if [ -f /home/search/.config/searchgov-codedeploy.env ]; then
+  set -a
+  # shellcheck disable=SC1090
+  source /home/search/.config/searchgov-codedeploy.env
+  set +a
+fi
+
+log() {
+  echo "[CODEDEPLOY][VALIDATE_SERVICE] $*"
+}
+
+
+warn() {
+  echo "[CODEDEPLOY][VALIDATE_SERVICE][WARN] $*"
+}
+
+error() {
+  echo "[CODEDEPLOY][VALIDATE_SERVICE][ERROR] $*" >&2
+}
+
+service_exists() {
+  local unit_name="$1"
+  systemctl list-unit-files "${unit_name}.service" --no-legend 2>/dev/null | grep -q . || \
+    systemctl list-unit-files "${unit_name}" --no-legend 2>/dev/null | grep -q .
+}
+
+resolve_puma_service() {
+  if [ -n "${PUMA_SERVICE:-}" ]; then
+    echo "$PUMA_SERVICE"
+    return 0
+  fi
+
+  # Prefer the real, hand-authored "puma" unit (defined in this repo's
+  # cicd-scripts, used by the current CodeDeploy-hook-driven deploy path) if
+  # it exists. Only fall back to pattern-matching a "puma_search-gov_*" unit
+  # for hosts that genuinely have no plain "puma" unit at all -- e.g. a
+  # still-Capistrano-managed tier where Capistrano::Puma::Systemd created
+  # that name instead. Checking "puma" first avoids matching a stale,
+  # leftover Capistrano-era unit (e.g. puma_search-gov_development) on a
+  # host that has since moved to the plain "puma" unit, which would
+  # otherwise silently validate the wrong service every deploy.
+  if service_exists "puma"; then
+    echo "puma"
+    return 0
+  fi
+
+  local discovered_service
+  discovered_service="$(systemctl list-unit-files --type=service --no-legend 2>/dev/null \
+    | awk '{print $1}' \
+    | sed 's/\.service$//' \
+    | grep -E '^puma_search-gov_' \
+    | head -n 1 || true)"
+
+  if [ -n "$discovered_service" ]; then
+    echo "$discovered_service"
+  else
+    echo "puma"
+  fi
+}
+
+assert_service_active_if_present() {
+  local service_name="$1"
+  local retries="${SERVICE_ACTIVE_RETRIES:-12}"
+  local wait_sec="${SERVICE_ACTIVE_WAIT:-5}"
+
+  if ! service_exists "$service_name"; then
+    log "Service not found, skipping active check: $service_name"
+    return 0
+  fi
+  log "Checking service is active: $service_name"
+  local try=1
+  while [ "$try" -le "$retries" ]; do
+    if systemctl is-active --quiet "$service_name"; then
+      log "Service is active: $service_name"
+      return 0
+    fi
+    if [ "$try" -lt "$retries" ]; then
+      warn "Service not yet active (attempt ${try}/${retries}): $service_name -- retrying in ${wait_sec}s"
+      sleep "$wait_sec"
+    fi
+    try=$((try + 1))
+  done
+  error "Service is present but not active after $retries attempts: $service_name"
+  log "--- systemctl status $service_name ---"
+  systemctl status "$service_name" --no-pager 2>&1 || true
+  log "--- journalctl -u $service_name (last 30 lines) ---"
+  journalctl -u "$service_name" -n 30 --no-pager 2>&1 || true
+  return 1
+}
+
+assert_service_active_required() {
+  local service_name="$1"
+  local retries="${RESQUE_ACTIVE_RETRIES:-6}"
+  local wait_sec="${RESQUE_ACTIVE_WAIT:-5}"
+
+  if ! service_exists "$service_name"; then
+    error "Required service unit missing: $service_name"
+    exit 1
+  fi
+  log "Checking required service is active: $service_name"
+  local try=1
+  while [ "$try" -le "$retries" ]; do
+    if systemctl is-active --quiet "$service_name"; then
+      log "Service is active: $service_name"
+      return 0
+    fi
+    if [ "$try" -lt "$retries" ]; then
+      warn "Service not yet active (attempt ${try}/${retries}): $service_name -- retrying in ${wait_sec}s"
+      sleep "$wait_sec"
+    fi
+    try=$((try + 1))
+  done
+  error "Required service is not active after $retries attempts: $service_name"
+  exit 1
+}
+
+count_active_worker_instances() {
+  # `systemctl list-units` indents unit names, so match the instance token rather
+  # than anchoring at the start of the line.
+  systemctl list-units --type=service --state=active --no-legend "$RESQUE_WORKER_INSTANCE_PATTERN" 2>/dev/null \
+    | grep -c 'resque-worker@[0-9]' || true
+}
+
+# A systemd .target is "active" as soon as it is started, independent of whether
+# its member resque-worker@N.service instances are running. Asserting only the
+# target lets a deploy pass with zero live workers (SRCH-6584). When the worker
+# unit is a target, additionally require that worker instances are actually up.
+assert_worker_instances_active() {
+  case "$RESQUE_WORKER_SERVICE" in
+    *.target) ;;
+    *) return 0 ;;
+  esac
+
+  local retries="${RESQUE_ACTIVE_RETRIES:-6}"
+  local wait_sec="${RESQUE_ACTIVE_WAIT:-5}"
+  local try=1
+  local active=0
+  while [ "$try" -le "$retries" ]; do
+    active="$(count_active_worker_instances)"
+    if [ "${active:-0}" -ge "$RESQUE_MIN_ACTIVE_WORKERS" ]; then
+      log "Active Resque worker instances: ${active} (>= ${RESQUE_MIN_ACTIVE_WORKERS})"
+      return 0
+    fi
+    if [ "$try" -lt "$retries" ]; then
+      warn "Only ${active} active Resque worker instance(s); need ${RESQUE_MIN_ACTIVE_WORKERS} (attempt ${try}/${retries}) -- retrying in ${wait_sec}s"
+      sleep "$wait_sec"
+    fi
+    try=$((try + 1))
+  done
+  error "Worker target '${RESQUE_WORKER_SERVICE}' is active but only ${active} worker instance(s) are running (need ${RESQUE_MIN_ACTIVE_WORKERS})"
+  log "--- systemctl list-units ${RESQUE_WORKER_INSTANCE_PATTERN} ---"
+  systemctl list-units --all "$RESQUE_WORKER_INSTANCE_PATTERN" --no-pager 2>&1 || true
+  exit 1
+}
+
+wait_for_http_healthy() {
+  local url="$1"
+  local attempts="${2:-12}"
+  local sleep_seconds="${3:-5}"
+  local try=1
+
+  while [ "$try" -le "$attempts" ]; do
+    if curl --fail --silent --show-error --max-time 10 "$url" >/dev/null; then
+      log "HTTP health check passed on attempt ${try}/${attempts}"
+      return 0
+    fi
+
+    if [ "$try" -lt "$attempts" ]; then
+      warn "HTTP endpoint not ready (attempt ${try}/${attempts}); retrying in ${sleep_seconds}s"
+      sleep "$sleep_seconds"
+    fi
+
+    try=$((try + 1))
+  done
+
+  return 1
+}
+
+assert_puma_serving_current_release() {
+  local app_root="$1"
+  local expected_current
+  local pids
+
+  expected_current="$(readlink -f "${app_root}/current" 2>/dev/null || true)"
+  if [ -z "$expected_current" ]; then
+    warn "Unable to resolve ${app_root}/current; skipping Puma cwd validation"
+    return 0
+  fi
+
+  if command -v lsof >/dev/null 2>&1; then
+    pids="$(lsof -ti:3000 2>/dev/null || true)"
+  else
+    pids="$(pgrep -f 'puma.*3000|puma' 2>/dev/null || true)"
+  fi
+
+  if [ -z "$pids" ]; then
+    warn "No Puma process found on port 3000; HTTP validation will determine service health"
+    return 0
+  fi
+
+  for pid in $pids; do
+    local cwd
+    cwd="$(readlink -f "/proc/${pid}/cwd" 2>/dev/null || true)"
+    if [ -z "$cwd" ]; then
+      warn "Unable to inspect cwd for Puma PID ${pid}; skipping that process"
+      continue
+    fi
+
+    log "Puma PID ${pid} cwd: ${cwd}"
+    if [ "$cwd" != "$expected_current" ]; then
+      echo "[CODEDEPLOY][VALIDATE_SERVICE][ERROR] Puma PID ${pid} is serving ${cwd}, expected ${expected_current}" >&2
+      return 1
+    fi
+  done
+}
+
+PUMA_SERVICE="$(resolve_puma_service)"
+RESQUE_WORKER_SERVICE="${RESQUE_WORKER_SERVICE:-resque-worker}"
+RESQUE_SCHEDULER_SERVICE="${RESQUE_SCHEDULER_SERVICE:-resque-scheduler}"
+RESQUE_WORKER_INSTANCE_PATTERN="${RESQUE_WORKER_INSTANCE_PATTERN:-resque-worker@*.service}"
+RESQUE_MIN_ACTIVE_WORKERS="${RESQUE_MIN_ACTIVE_WORKERS:-1}"
+APP_HEALTHCHECK_URL="${APP_HEALTHCHECK_URL:-http://127.0.0.1:3000/}"
+SEARCHGOV_ROOT="${SEARCHGOV_ROOT:-/home/search/searchgov}"
+
+log "Starting ValidateService hook"
+log "Host: $(hostname) | User: $(whoami)"
+
+# See cicd-scripts/lib/tier_gate.sh: production's "app"/"cron" tiers are
+# still Capistrano-managed today. This script's systemd/service-based
+# validation assumptions are not validated against that deployment
+# mechanism and must not run there.
+resolve_deployment_tags
+if is_legacy_capistrano_tier; then
+  log "Skipping ValidateService checks (environment=$ENVIRONMENT, terraform_module=$TERRAFORM_MODULE) -- legacy Capistrano-managed tier"
+  log "ValidateService hook completed (no-op)"
+  exit 0
+fi
+
+if [ "${REQUIRE_RESQUE_SERVICES:-false}" = "true" ]; then
+
+  assert_service_active_required "$RESQUE_WORKER_SERVICE"
+  assert_worker_instances_active
+  assert_service_active_required "$RESQUE_SCHEDULER_SERVICE"
+else
+  assert_service_active_if_present "$RESQUE_WORKER_SERVICE"
+  assert_service_active_if_present "$RESQUE_SCHEDULER_SERVICE"
+fi
+
+assert_service_active_if_present "$PUMA_SERVICE"
+
+log "Validating HTTP endpoint: $APP_HEALTHCHECK_URL"
+wait_for_http_healthy "$APP_HEALTHCHECK_URL" "${HEALTHCHECK_ATTEMPTS:-12}" "${HEALTHCHECK_SLEEP_SECONDS:-5}"
+assert_puma_serving_current_release "$SEARCHGOV_ROOT"
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
+if [ "${REQUIRE_RESQUE_CWD_CHECK:-false}" = "true" ]; then
+  log "Running Resque cwd verification (REQUIRE_RESQUE_CWD_CHECK)"
+  bash "$SCRIPT_DIR/verify_resque_cwd.sh"
+fi
+
+log "ValidateService hook completed"
