@@ -87,7 +87,7 @@ describe Admin::AffiliatesController do
         let(:enable_disable_columns) do
           %i[ dap_enabled gets_blended_results gets_commercial_results_on_blended_search
               gets_i14y_results is_federal_register_document_govbox_enabled gets_results_from_all_domains
-              is_medline_govbox_enabled is_photo_govbox_enabled is_related_searches_enabled
+              is_medline_govbox_enabled is_related_searches_enabled
               is_rss_govbox_enabled is_sayt_enabled is_video_govbox_enabled jobs_enabled raw_log_access_enabled ]
         end
 
