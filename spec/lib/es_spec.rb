@@ -3,6 +3,31 @@
 require 'spec_helper'
 
 describe Es do
+  describe '.custom_indices_enabled?' do
+    before { allow(ENV).to receive(:[]).and_call_original }
+
+    context 'when ES_HOSTS points at a real cluster' do
+      before { allow(ENV).to receive(:[]).with('ES_HOSTS').and_return('https://es.example.com:9200') }
+
+      it { expect(described_class.custom_indices_enabled?).to be(true) }
+    end
+
+    context 'when ES_HOSTS uses the es-is-off decommission marker' do
+      before do
+        allow(ENV).to receive(:[]).with('ES_HOSTS').
+          and_return('https://es-is-off-1.prod.infr.search.usa.gov:9200,https://es-is-off-2.prod.infr.search.usa.gov:9200')
+      end
+
+      it { expect(described_class.custom_indices_enabled?).to be(false) }
+    end
+
+    context 'when ES_HOSTS is blank' do
+      before { allow(ENV).to receive(:[]).with('ES_HOSTS').and_return('') }
+
+      it { expect(described_class.custom_indices_enabled?).to be(false) }
+    end
+  end
+
   context 'when working in Es submodules' do
     let(:elk_objs) { Array.new(3, Es::ELK.client_reader) }
     let(:ci_objs) { Array.new(3, Es::ELK.client_reader) }
