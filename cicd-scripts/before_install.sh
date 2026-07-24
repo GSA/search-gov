@@ -35,6 +35,24 @@ fi
 touch "$SHARED_DIR/log/puma_access.log" "$SHARED_DIR/log/puma_error.log"
 
 # Keep CodeDeploy staging root available and writable for this deployment.
+# Actively clear any leftover contents from a previous deploy before
+# CodeDeploy's Install step copies the new bundle in. Without this, a stale
+# file left behind by an earlier deploy (e.g. one that ran against a
+# different/separate deployment group, or was aborted partway through) can
+# collide with the new bundle's file of the same name. The deployment
+# group's fileExistsBehavior is DISALLOW, so CodeDeploy refuses to overwrite
+# an existing file and fails the whole Install step outright rather than
+# silently overwriting -- this happened in production on 2026-07-23 when
+# /home/search/cicd_temp/Gemfile.lock was left over from an earlier,
+# separate deployment group's run and blocked the next deploy through the
+# regular group. Cleaning here makes each deploy's staging area
+# deterministic regardless of what a previous, possibly unrelated,
+# deployment left behind.
+if [ -d "$STAGING_ROOT" ]; then
+  log "Clearing existing staging root contents: $STAGING_ROOT"
+  rm -rf "${STAGING_ROOT:?}"/* "${STAGING_ROOT:?}"/.[!.]* 2>/dev/null || true
+fi
 mkdir -p "$STAGING_ROOT"
 
 log "BeforeInstall hook completed"
+
