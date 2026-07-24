@@ -1,6 +1,10 @@
 #!/bin/bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
+# shellcheck source=lib/tier_gate.sh
+source "$SCRIPT_DIR/lib/tier_gate.sh"
+
 if [ -f /home/search/.config/searchgov-codedeploy.env ]; then
   set -a
   # shellcheck disable=SC1090
@@ -74,6 +78,27 @@ RESQUE_SCHEDULER_SERVICE="${RESQUE_SCHEDULER_SERVICE:-resque-scheduler}"
 
 log "Starting ApplicationStop hook"
 log "Host: $(hostname) | User: $(whoami)"
+
+# See cicd-scripts/lib/tier_gate.sh: production's "app"/"cron" tiers are
+# still Capistrano-managed today. Stopping services here using this
+# script's assumptions (systemd unit names, unconditional stop, etc.) is
+# not coordinated with Capistrano's own deploy/restart cycle on that tier.
+# Previously this hook had no such gate while application_start.sh did --
+# that asymmetry meant CodeDeploy unconditionally stopped Puma on legacy
+# instances but never restarted it (application_start.sh correctly no-ops
+# there), leaving Puma down until Capistrano's separate, later pipeline
+# stage got around to restarting it. Confirmed in production on
+# 2026-07-24: all app instances went unhealthy simultaneously during a
+# deploy, causing a ~4,000-request 5XX spike, while the same deploy on
+# staging (no legacy tier at all) showed only brief, single-instance,
+# non-overlapping outages. Gating stop here too makes Capistrano the sole
+# owner of Puma's lifecycle on that tier, matching application_start.sh.
+resolve_deployment_tags
+if is_legacy_capistrano_tier; then
+  log "Skipping ApplicationStop service management (environment=$ENVIRONMENT, terraform_module=$TERRAFORM_MODULE) -- legacy Capistrano-managed tier"
+  log "ApplicationStop hook completed (no-op)"
+  exit 0
+fi
 
 if [ "${REQUIRE_RESQUE_SERVICES:-false}" = "true" ]; then
   for required in "$RESQUE_WORKER_SERVICE" "$RESQUE_SCHEDULER_SERVICE"; do
