@@ -51,13 +51,16 @@ class SearchElastic::DocumentSearchResults
   # Titles that fall back to a raw filename (e.g. for PDFs without metadata)
   # arrive percent-encoded and may carry a query string. Such filename titles
   # have no whitespace, unlike genuine metadata titles, so decode only those to
-  # avoid altering legitimate titles. See SRCH-6581.
+  # avoid altering legitimate titles. We drop the query string, decode the
+  # percent-encoding, and strip the file extension so these titles match what
+  # the spider now writes at index time (SRCH-6609). See SRCH-6581.
   def decode_filename_title(title)
     return title if title.blank?
     return title if title.match?(/\s/)
     return title unless title.match?(/%[0-9A-Fa-f]{2}/) || title.include?('?')
 
-    CGI.unescape(title.sub(/\?.*\z/, ''))
+    decoded = CGI.unescape(title.sub(/\?.*\z/, ''))
+    decoded.chomp(File.extname(decoded))
   end
 
   def extract_aggregations(aggregations)

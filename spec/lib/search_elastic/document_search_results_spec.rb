@@ -65,8 +65,8 @@ describe SearchElastic::DocumentSearchResults do
                          'title_en' => 'BA%20degree%20nurse%20scholarship_0.pdf' } }
       end
 
-      it 'decodes the percent-encoding' do
-        expect(results.first['title']).to eq('BA degree nurse scholarship_0.pdf')
+      it 'decodes the percent-encoding and strips the extension' do
+        expect(results.first['title']).to eq('BA degree nurse scholarship_0')
       end
     end
 
@@ -83,8 +83,8 @@ describe SearchElastic::DocumentSearchResults do
                          'title_en' => '59702%20Waterman%20Steamship%20Corporation%203.12.15.pdf?ver=kx-UXd05JFKrQzcV6QQKoQ==' } }
       end
 
-      it 'discards the query string and decodes the filename' do
-        expect(results.first['title']).to eq('59702 Waterman Steamship Corporation 3.12.15.pdf')
+      it 'discards the query string, decodes the filename, and strips the extension' do
+        expect(results.first['title']).to eq('59702 Waterman Steamship Corporation 3.12.15')
       end
     end
 
