@@ -1,6 +1,10 @@
 #!/bin/bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
+# shellcheck source=lib/tier_gate.sh
+source "$SCRIPT_DIR/lib/tier_gate.sh"
+
 log() {
   echo "[CODEDEPLOY][UPLOAD_ASSETS] $*"
 }
@@ -9,8 +13,23 @@ error() {
   echo "[CODEDEPLOY][UPLOAD_ASSETS][ERROR] $*" >&2
 }
 
+# Legacy Capistrano-managed tiers (production app/cron) have never run this
+# hook -- it did not exist in prod's pre-reconciliation appspec.yml. Assets
+# on those hosts currently reach S3 via whichever CodeDeploy-hook-driven
+# tier last deployed (today, crawler-green), not via a Capistrano task.
+# Running this hook unconditionally on all legacy app instances would add a
+# new, redundant `aws s3 sync --delete` from every instance on every deploy.
+# See cicd-scripts/lib/tier_gate.sh for the full rationale.
+resolve_deployment_tags
+if is_legacy_capistrano_tier; then
+  log "Skipping asset upload (environment=$ENVIRONMENT, terraform_module=$TERRAFORM_MODULE) -- legacy Capistrano-managed tier"
+  log "Asset upload hook completed (no-op)"
+  exit 0
+fi
+
 # Configuration
 SEARCHGOV_ROOT="${SEARCHGOV_ROOT:-/home/search/searchgov}"
+
 CURRENT_PATH="${SEARCHGOV_ROOT}/current"
 ASSETS_DIR="${CURRENT_PATH}/public"
 SHARED_DIR="${SEARCHGOV_ROOT}/shared"

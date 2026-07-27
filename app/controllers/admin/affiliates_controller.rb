@@ -91,7 +91,6 @@ class Admin::AffiliatesController < Admin::AdminController
       gets_results_from_all_domains
       is_federal_register_document_govbox_enabled
       is_medline_govbox_enabled
-      is_photo_govbox_enabled
       is_related_searches_enabled
       is_rss_govbox_enabled
       is_sayt_enabled
@@ -99,6 +98,7 @@ class Admin::AffiliatesController < Admin::AdminController
       jobs_enabled
       locale
       name
+      notes
       raw_log_access_enabled
       search_engine
       website
@@ -172,6 +172,8 @@ class Admin::AffiliatesController < Admin::AdminController
     config.columns[:locale].options = { options: Language.order(:name).pluck(:code) }
 
     config.columns[:mobile_logo_url].label = 'Logo URL'
+
+    config.columns[:notes].form_ui = :textarea
 
     config.columns[:theme].form_ui = :select
     config.columns[:theme].options = { include_blank: '- select -',

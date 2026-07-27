@@ -1,6 +1,10 @@
 #!/bin/bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
+# shellcheck source=lib/tier_gate.sh
+source "$SCRIPT_DIR/lib/tier_gate.sh"
+
 if [ -f /home/search/.config/searchgov-codedeploy.env ]; then
   set -a
   # shellcheck disable=SC1090
@@ -11,6 +15,7 @@ fi
 log() {
   echo "[CODEDEPLOY][APPLICATION_START] $*"
 }
+
 
 warn() {
   echo "[CODEDEPLOY][APPLICATION_START][WARN] $*"
@@ -29,6 +34,20 @@ service_exists() {
 resolve_puma_service() {
   if [ -n "${PUMA_SERVICE:-}" ]; then
     echo "$PUMA_SERVICE"
+    return 0
+  fi
+
+  # Prefer the real, hand-authored "puma" unit (defined in this repo's
+  # cicd-scripts, used by the current CodeDeploy-hook-driven deploy path) if
+  # it exists. Only fall back to pattern-matching a "puma_search-gov_*" unit
+  # for hosts that genuinely have no plain "puma" unit at all -- e.g. a
+  # still-Capistrano-managed tier where Capistrano::Puma::Systemd created
+  # that name instead. Checking "puma" first avoids matching a stale,
+  # leftover Capistrano-era unit (e.g. puma_search-gov_development) on a
+  # host that has since moved to the plain "puma" unit, which would
+  # otherwise silently restart/validate the wrong service every deploy.
+  if service_exists "puma"; then
+    echo "puma"
     return 0
   fi
 
@@ -266,7 +285,19 @@ APP_HEALTHCHECK_URL="${APP_HEALTHCHECK_URL:-http://127.0.0.1:3000/}"
 log "Starting ApplicationStart hook"
 log "Host: $(hostname) | User: $(whoami)"
 
+# See cicd-scripts/lib/tier_gate.sh: production's "app"/"cron" tiers are
+# still Capistrano-managed today. Restarting/starting services here using
+# this script's assumptions (systemd unit names, fallback Puma start, etc.)
+# is not validated against that deployment mechanism and must not run there.
+resolve_deployment_tags
+if is_legacy_capistrano_tier; then
+  log "Skipping ApplicationStart service management (environment=$ENVIRONMENT, terraform_module=$TERRAFORM_MODULE) -- legacy Capistrano-managed tier"
+  log "ApplicationStart hook completed (no-op)"
+  exit 0
+fi
+
 restart_or_start_service "$PUMA_SERVICE"
+
 restart_or_start_service "$RESQUE_WORKER_SERVICE"
 restart_or_start_service "$RESQUE_SCHEDULER_SERVICE"
 

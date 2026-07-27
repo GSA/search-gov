@@ -1,6 +1,10 @@
 #!/bin/bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
+# shellcheck source=lib/tier_gate.sh
+source "$SCRIPT_DIR/lib/tier_gate.sh"
+
 log() {
   echo "[CODEDEPLOY][AFTER_INSTALL] $*"
 }
@@ -16,6 +20,21 @@ SHARED_DIR="${APP_ROOT}/shared"
 CURRENT_LINK="${APP_ROOT}/current"
 TIMESTAMP="$(date +%Y%m%d%H%M%S)"
 RELEASE_DIR="${RELEASES_DIR}/${TIMESTAMP}"
+
+log "Starting AfterInstall hook"
+
+# Resolve terraform_module/Fleet/environment tags once, up front, before any
+# filesystem changes. See cicd-scripts/lib/tier_gate.sh for why: production's
+# "app"/"cron" tiers are still deployed via Capistrano today, and running
+# this hook's release-management logic there would race with it.
+resolve_deployment_tags
+if is_legacy_capistrano_tier; then
+  log "Skipping AfterInstall release management (environment=$ENVIRONMENT, terraform_module=$TERRAFORM_MODULE) -- legacy Capistrano-managed tier"
+  log "AfterInstall hook completed (no-op)"
+  exit 0
+fi
+
+log "Release dir: $RELEASE_DIR"
 
 # ERR trap to clean up failed releases
 cleanup_on_error() {
@@ -33,8 +52,6 @@ cleanup_on_error() {
 
 trap cleanup_on_error ERR
 
-log "Starting AfterInstall hook"
-log "Release dir: $RELEASE_DIR"
 
 # Log current symlink state
 if [ -L "$CURRENT_LINK" ]; then
@@ -134,9 +151,62 @@ fi
 log "Precompiling assets"
 SECRET_KEY_BASE=placeholder RAILS_ENV=production ./bin/rails assets:precompile
 
-# Run pending migrations (idempotent -- no-op if none pending)
-log "Running database migrations"
-RAILS_ENV=production bundle exec rails db:migrate
+# SRCH-6631: Only run database migrations on the currently-active "app" tier
+# instance for this environment. All other tiers (crawler, cron, spider, api,
+# proxy, letsencrypt, and their -green counterparts) share the same
+# production RDS instance but must NOT run migrations independently, since
+# deploying to those tiers could otherwise apply schema changes the main app
+# fleet's currently-running release does not expect. See:
+# prod_outage_20260710_shared_db_migration_incident.md for the incident this
+# guards against.
+#
+# NOTE: an earlier version of this gate checked only the terraform_module
+# tag for an exact match on "app". That is correct for dev and production
+# today (both have a plain "app" instance with no Fleet tag at all, and no
+# coexisting green fleet), but it is NOT correct for an environment mid
+# Ubuntu-24.04 green-fleet upgrade: staging's app tier currently only exists
+# as "app-green" (Fleet=green) -- exact-matching "app" alone means staging
+# never runs migrations automatically, forcing manual db:migrate on every
+# staging deploy.
+#
+# This version reads three EC2 tags together -- terraform_module, Fleet, and
+# environment -- in a single describe-tags call, and gates on the
+# combination of all three. This correctly distinguishes "the tier that owns
+# migrations in this environment right now" without reintroducing the
+# shared-DB race condition the original incident was caused by: if/when
+# production ever has its own coexisting "app" + "app-green" pair during its
+# own cutover, the same tag combination that currently matches production's
+# plain "app" tier will need to be revisited then, based on the real tag
+# state at that time -- not decided preemptively here.
+#
+# Confirmed live (2026-07-14): dev's "app" and production's "app" both have
+# no Fleet tag at all; only staging currently has an "app-green" instance,
+# tagged Fleet=green.
+#
+# Fail-safe: if any tag cannot be resolved for any reason, migrations are
+# SKIPPED (never default to running them).
+#
+# TERRAFORM_MODULE/FLEET/ENVIRONMENT were already resolved once, above, by
+# resolve_deployment_tags (see cicd-scripts/lib/tier_gate.sh) -- reused here
+# rather than making a second describe-tags call for the same instance.
+
+# Every branch of this case logs the resolved tag values and whether
+
+# migrations ran, so every pipeline run's log clearly shows which
+# environment/tier/fleet it deployed to and whether db:migrate executed --
+# needed for troubleshooting/verification since app/crawler/cron share one
+# deployment group and are no longer distinguishable by deployment group
+# name alone, and since the migration-owning tag combination now differs by
+# environment.
+case "$ENVIRONMENT:$TERRAFORM_MODULE:$FLEET" in
+  dev:app:|staging:app-green:green|production:app:)
+    log "Running database migrations (environment=$ENVIRONMENT, terraform_module=$TERRAFORM_MODULE, Fleet=${FLEET:-<absent>})"
+    RAILS_ENV=production bundle exec rails db:migrate
+    ;;
+  *)
+    log "Skipping database migrations (environment=$ENVIRONMENT, terraform_module=$TERRAFORM_MODULE, Fleet=${FLEET:-<absent>}) -- not the migration-owning tier for this environment"
+    ;;
+esac
 
 # Atomically promote release
 log "Promoting release to current"

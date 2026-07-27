@@ -50,11 +50,38 @@ describe Affiliate do
         is_expected.to have_db_column(:use_extended_header).of_type(:boolean).
           with_options(default: true, null: false)
       end
+
+      it { is_expected.to have_db_column(:notes).of_type(:text) }
     end
 
     describe 'Paperclip attachments' do
       it { is_expected.to have_attached_file :mobile_logo }
       it { is_expected.to have_attached_file :header_tagline_logo }
+    end
+  end
+
+  describe 'notes' do
+    it 'is valid without notes' do
+      affiliate = described_class.new(valid_create_attributes)
+      expect(affiliate).to be_valid
+      expect(affiliate.notes).to be_nil
+    end
+
+    it 'persists a notes value' do
+      affiliate = described_class.create!(valid_create_attributes.merge(notes: 'Uses Bing for internal reasons.'))
+      expect(described_class.find(affiliate.id).notes).to eq('Uses Bing for internal reasons.')
+    end
+
+    it 'can be updated after creation' do
+      affiliate = described_class.create!(valid_create_attributes)
+      affiliate.update!(notes: 'Search box lives on the low-traffic microsite footer.')
+      expect(affiliate.reload.notes).to eq('Search box lives on the low-traffic microsite footer.')
+    end
+
+    it 'stores long multi-line text with special characters' do
+      long_notes = (["Line with \"quotes\", commas, and symbols: <>&"] * 500).join("\n")
+      affiliate = described_class.create!(valid_create_attributes.merge(notes: long_notes))
+      expect(described_class.find(affiliate.id).notes).to eq(long_notes)
     end
   end
 
