@@ -4,25 +4,31 @@ require 'spec_helper'
 
 describe Es do
   describe '.custom_indices_enabled?' do
-    before { allow(ENV).to receive(:[]).and_call_original }
+    before do
+      allow(ENV).to receive(:[]).and_call_original
+      allow(ENV).to receive(:[]).with('CUSTOM_INDICES_ENABLED').and_return(flag)
+    end
 
-    context 'when ES_HOSTS points at a real cluster' do
-      before { allow(ENV).to receive(:[]).with('ES_HOSTS').and_return('https://es.example.com:9200') }
+    context 'when CUSTOM_INDICES_ENABLED is "true"' do
+      let(:flag) { 'true' }
 
       it { expect(described_class.custom_indices_enabled?).to be(true) }
     end
 
-    context 'when ES_HOSTS uses the es-is-off decommission marker' do
-      before do
-        allow(ENV).to receive(:[]).with('ES_HOSTS').
-          and_return('https://es-is-off-1.prod.infr.search.usa.gov:9200,https://es-is-off-2.prod.infr.search.usa.gov:9200')
-      end
+    context 'when CUSTOM_INDICES_ENABLED is capitalized' do
+      let(:flag) { 'True' }
+
+      it { expect(described_class.custom_indices_enabled?).to be(true) }
+    end
+
+    context 'when CUSTOM_INDICES_ENABLED is "false"' do
+      let(:flag) { 'False' }
 
       it { expect(described_class.custom_indices_enabled?).to be(false) }
     end
 
-    context 'when ES_HOSTS is blank' do
-      before { allow(ENV).to receive(:[]).with('ES_HOSTS').and_return('') }
+    context 'when CUSTOM_INDICES_ENABLED is unset' do
+      let(:flag) { nil }
 
       it { expect(described_class.custom_indices_enabled?).to be(false) }
     end

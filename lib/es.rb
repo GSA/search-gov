@@ -10,17 +10,11 @@ module Es
     :elasticsearch_client
   ).deep_symbolize_keys.freeze
 
-  # Marker used in ES_HOSTS to signal that the legacy Elasticsearch cluster has
-  # been decommissioned (e.g. "es-is-off-1.prod...."). The hostnames are kept in
-  # place instead of being removed from the parameter store, so we detect the
-  # marker here and treat custom indices as disabled. This stops the app from
-  # repeatedly attempting (and logging) failed connections to the dead cluster.
-  # Full Elasticsearch removal is tracked in SRCH-6468.
-  DISABLED_HOSTS_MARKER = 'es-is-off'
-
+  # Opt-in flag for the legacy Elasticsearch custom indices. Disabled unless a
+  # deployment explicitly turns it on, so the decommissioned production cluster
+  # is never dialed. Full Elasticsearch removal is tracked in SRCH-6468.
   def self.custom_indices_enabled?
-    hosts = ENV['ES_HOSTS'].to_s
-    hosts.present? && hosts.exclude?(DISABLED_HOSTS_MARKER)
+    ENV['CUSTOM_INDICES_ENABLED'].to_s.casecmp?('true')
   end
 
   private
