@@ -3,6 +3,37 @@
 require 'spec_helper'
 
 describe Es do
+  describe '.custom_indices_enabled?' do
+    before do
+      allow(ENV).to receive(:[]).and_call_original
+      allow(ENV).to receive(:[]).with('CUSTOM_INDICES_ENABLED').and_return(flag)
+    end
+
+    context 'when CUSTOM_INDICES_ENABLED is "true"' do
+      let(:flag) { 'true' }
+
+      it { expect(described_class.custom_indices_enabled?).to be(true) }
+    end
+
+    context 'when CUSTOM_INDICES_ENABLED is capitalized' do
+      let(:flag) { 'True' }
+
+      it { expect(described_class.custom_indices_enabled?).to be(true) }
+    end
+
+    context 'when CUSTOM_INDICES_ENABLED is "false"' do
+      let(:flag) { 'False' }
+
+      it { expect(described_class.custom_indices_enabled?).to be(false) }
+    end
+
+    context 'when CUSTOM_INDICES_ENABLED is unset' do
+      let(:flag) { nil }
+
+      it { expect(described_class.custom_indices_enabled?).to be(false) }
+    end
+  end
+
   context 'when working in Es submodules' do
     let(:elk_objs) { Array.new(3, Es::ELK.client_reader) }
     let(:ci_objs) { Array.new(3, Es::ELK.client_reader) }
