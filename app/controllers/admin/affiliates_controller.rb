@@ -91,7 +91,6 @@ class Admin::AffiliatesController < Admin::AdminController
       gets_results_from_all_domains
       is_federal_register_document_govbox_enabled
       is_medline_govbox_enabled
-      is_photo_govbox_enabled
       is_related_searches_enabled
       is_rss_govbox_enabled
       is_sayt_enabled
