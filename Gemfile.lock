@@ -38,16 +38,6 @@ GIT
       open_uri_redirections (~> 0.2.1)
 
 GIT
-  remote: https://github.com/brutuscat/medusa-crawler
-  revision: 82299f2700ac56b4af2b14d707f35d6af466ad8e
-  ref: 82299f2700ac56b4af2b14d707f35d6af466ad8e
-  specs:
-    medusa (1.0.0.pre.alpha.pre.1)
-      moneta (>= 1.3.0)
-      nokogiri (>= 1.3.0)
-      robotex (>= 1.0.0)
-
-GIT
   remote: https://github.com/gsa/font-awesome-grunticon-rails
   revision: 8ad9734a65f7e2d2de934bebe4ee7b460734f96e
   ref: 8ad9734a65f7e2d2de934bebe4ee7b460734f96e
@@ -525,7 +515,6 @@ GEM
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
     minitest (5.25.5)
-    moneta (1.6.0)
     mono_logger (1.1.2)
     msgpack (1.8.0)
     multi_json (1.17.0)
@@ -979,7 +968,6 @@ DEPENDENCIES
   launchy (~> 2.5)
   loofah (~> 2.19)
   mail (~> 2.7.1)
-  medusa!
   mutex_m (~> 0.2.0)
   mysql2 (~> 0.5.7)
   net-http-persistent (~> 2.9.3)
