@@ -91,7 +91,6 @@ Layout/ClosingParenthesisIndentation:
   Exclude:
     - 'app/controllers/sites/no_results_pages_controller.rb'
     - 'app/models/searchgov_url.rb'
-    - 'spec/jobs/legacy/logstash_deduper_spec.rb'
     - 'spec/lib/jobs_spec.rb'
     - 'spec/models/logstash_queries/date_range_top_n_query_spec.rb'
 
@@ -250,7 +249,6 @@ Layout/FirstArrayElementIndentation:
     - 'app/models/searchgov_url.rb'
     - 'db/migrate/20180328223830_reload_formerly_mandrill_templates.rb'
     - 'db/migrate/20180329180056_add_watcher_email_templates.rb'
-    - 'spec/jobs/legacy/logstash_deduper_spec.rb'
 
 # Offense count: 57
 # This cop supports safe autocorrection (--autocorrect).
@@ -634,7 +632,6 @@ Lint/AmbiguousRegexpLiteral:
 # Configuration parameters: AllowSafeAssignment.
 Lint/AssignmentInCondition:
   Exclude:
-    - 'app/jobs/legacy/logstash_deduper.rb'
     - 'db/migrate/20100313165633_update_gray_affiliate_template.rb'
     - 'db/migrate/20220113191157_add_service_name_to_active_storage_blobs.active_storage.rb'
 
@@ -803,7 +800,6 @@ Lint/UnusedBlockArgument:
     - 'lib/tasks/elastic_rails.rake'
     - 'lib/tasks/fake_searches.rake'
     - 'lib/tasks/features.rake'
-    - 'lib/tasks/logstash.rake'
     - 'lib/tasks/reports.rake'
     - 'lib/tasks/sayt_suggestions.rake'
     - 'spec/lib/middlewares/filtered_jsonp_spec.rb'
@@ -1380,11 +1376,9 @@ RSpec/ImplicitSubject:
 # Configuration parameters: Max, AllowedIdentifiers, AllowedPatterns.
 RSpec/IndexedLet:
   Exclude:
-    - 'spec/jobs/legacy/logstash_deduper_spec.rb'
     - 'spec/jobs/searchgov_domain_destroyer_job_spec.rb'
     - 'spec/lib/fuzzy_matcher_spec.rb'
     - 'spec/lib/importers/youtube_data_spec.rb'
-    - 'spec/lib/tasks/poplate_user_spec.rb'
     - 'spec/lib/tasks/reports_spec.rb'
     - 'spec/models/rss_feed_url_spec.rb'
     - 'spec/support/indexable_behavior.rb'
@@ -1610,7 +1604,6 @@ RSpec/SpecFilePathFormat:
     - 'spec/helpers/numbers_helper_spec.rb'
     - 'spec/jobs/legacy/apply_filters_to_sayt_suggestion_spec.rb'
     - 'spec/jobs/legacy/apply_sayt_filters_spec.rb'
-    - 'spec/jobs/legacy/indexed_document_validator_spec.rb'
     - 'spec/jobs/legacy/oasis_mrss_notification_spec.rb'
     - 'spec/jobs/legacy/sayt_suggestion_discovery_spec.rb'
     - 'spec/jobs/legacy/site_destroyer_spec.rb'
@@ -1750,7 +1743,6 @@ Rails/DangerousColumnNames:
 Rails/Date:
   Exclude:
     - 'lib/tasks/fake_searches.rake'
-    - 'spec/jobs/legacy/logstash_deduper_spec.rb'
     - 'spec/mailers/emailer_spec.rb'
     - 'spec/models/featured_collection_spec.rb'
     - 'spec/requests/sayt_spec.rb'
@@ -2468,7 +2460,6 @@ Style/HashConversion:
   Exclude:
     - 'app/controllers/concerns/hintable.rb'
     - 'app/controllers/sites/query_downloads_controller.rb'
-    - 'app/jobs/legacy/logstash_deduper.rb'
     - 'app/models/rtu_dashboard.rb'
     - 'app/models/rtu_module_stats_analytics.rb'
     - 'app/models/rtu_queries_request.rb'
@@ -2697,7 +2688,6 @@ Style/NilComparison:
 # This cop supports safe autocorrection (--autocorrect).
 Style/Not:
   Exclude:
-    - 'app/jobs/legacy/logstash_deduper.rb'
     - 'lib/tasks/elastic_rails.rake'
 
 # Offense count: 7
@@ -2757,7 +2747,6 @@ Style/ParallelAssignment:
   Exclude:
     - 'app/controllers/sites/analytics_controller.rb'
     - 'app/helpers/searches/custom_link_renderer.rb'
-    - 'app/jobs/legacy/logstash_deduper.rb'
     - 'app/models/logstash_queries/top_query_match_query.rb'
     - 'app/models/query_ctr_stat.rb'
     - 'app/models/rtu_module_stats_analytics.rb'
