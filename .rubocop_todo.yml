@@ -640,7 +640,6 @@ Lint/AssignmentInCondition:
 # AllowedMethods: enums
 Lint/ConstantDefinitionInBlock:
   Exclude:
-    - 'lib/tasks/fake_searches.rake'
     - 'spec/lib/results_rejector_spec.rb'
 
 # Offense count: 2
@@ -798,7 +797,6 @@ Lint/UnusedBlockArgument:
     - 'lib/importers/flickr_data.rb'
     - 'lib/tasks/bulk_import.rake'
     - 'lib/tasks/elastic_rails.rake'
-    - 'lib/tasks/fake_searches.rake'
     - 'lib/tasks/features.rake'
     - 'lib/tasks/reports.rake'
     - 'lib/tasks/sayt_suggestions.rake'
@@ -846,7 +844,6 @@ Lint/UselessAssignment:
     - 'app/helpers/text_helper.rb'
     - 'app/models/trending_url.rb'
     - 'features/support/paths.rb'
-    - 'lib/data_generator/index_adapter.rb'
     - 'spec/lib/parsers/federal_register_document_api_parser_spec.rb'
     - 'spec/mailers/emailer_spec.rb'
     - 'spec/models/govbox_set_spec.rb'
@@ -1140,7 +1137,6 @@ Performance/StringReplacement:
 # This cop supports unsafe autocorrection (--autocorrect-all).
 Performance/TimesMap:
   Exclude:
-    - 'lib/data_generator/search_pool.rb'
     - 'lib/watcher_dsl.rb'
     - 'spec/models/results_with_body_and_description_post_processor_spec.rb'
 
@@ -1350,7 +1346,6 @@ RSpec/HooksBeforeExamples:
 RSpec/ImplicitExpect:
   Exclude:
     - 'spec/lib/api/docs_search_options_spec.rb'
-    - 'spec/lib/data_generator/fake_spec.rb'
     - 'spec/mailers/emailer_spec.rb'
     - 'spec/models/api_news_search_spec.rb'
     - 'spec/models/boosted_content_spec.rb'
@@ -1475,8 +1470,6 @@ RSpec/NamedSubject:
     - 'spec/engines/advanced_query_builder_spec.rb'
     - 'spec/engines/search_engine_spec.rb'
     - 'spec/helpers/sites_helper_spec.rb'
-    - 'spec/lib/data_generator/index_adapter_spec.rb'
-    - 'spec/lib/data_generator/search_pool_spec.rb'
     - 'spec/lib/site_autodiscoverer_spec.rb'
     - 'spec/models/affiliate_spec.rb'
     - 'spec/models/api_news_search_spec.rb'
@@ -1742,7 +1735,6 @@ Rails/DangerousColumnNames:
 # SupportedStyles: strict, flexible
 Rails/Date:
   Exclude:
-    - 'lib/tasks/fake_searches.rake'
     - 'spec/mailers/emailer_spec.rb'
     - 'spec/models/featured_collection_spec.rb'
     - 'spec/requests/sayt_spec.rb'
@@ -2178,9 +2170,6 @@ Style/AccessorGrouping:
     - 'app/engines/bing_response_parser.rb'
     - 'app/models/document_fetch_logger.rb'
     - 'app/models/rtu_queries_request.rb'
-    - 'lib/data_generator/fake.rb'
-    - 'lib/data_generator/index_adapter.rb'
-    - 'lib/data_generator/search_pool.rb'
 
 # Offense count: 2
 # This cop supports safe autocorrection (--autocorrect).
@@ -2468,7 +2457,6 @@ Style/HashConversion:
     - 'db/migrate/20111231231620_seed_site_domains.rb'
     - 'features/step_definitions/featured_collection_steps.rb'
     - 'lib/ctrs.rb'
-    - 'lib/data_generator/search_pool.rb'
     - 'lib/elastic_results.rb'
     - 'lib/parsers/federal_register_document_api_parser.rb'
 
@@ -3170,7 +3158,6 @@ Style/TrailingCommaInHashLiteral:
     - 'app/models/user_monthly_report.rb'
     - 'config/deploy.rb'
     - 'db/seeds/language.rb'
-    - 'lib/data_generator/index_adapter.rb'
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
