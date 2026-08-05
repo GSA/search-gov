@@ -32,7 +32,7 @@ gem 'resque-scheduler', '~> 4.10.2'
 # Paperclip is deprecated: https://cm-jira.usa.gov/browse/SRCH-702
 # Using a third-party fork as an interim measure.
 gem 'kt-paperclip', '~> 7.1.0'
-gem 'aws-sdk-s3', '~> 1.102.0'
+gem 'aws-sdk-s3', '~> 1.208.0'
 gem 'googlecharts', '~> 1.6.12'
 gem 'flickraw', '~> 0.9.9'
 gem 'mutex_m', '~> 0.2.0'
