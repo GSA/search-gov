@@ -35,10 +35,7 @@ VCR.configure do |config|
     http_message.body.encoding.name == 'ASCII-8BIT' || !http_message.body.valid_encoding?
   end
 
-  config.ignore_hosts 'example.com', 'codeclimate.com', '127.0.0.1', 'googlechromelabs.github.io'
-  config.ignore_request do |request|
-    /codeclimate.com/ ===  URI(request.uri).host
-  end
+  config.ignore_hosts 'example.com', '127.0.0.1', 'googlechromelabs.github.io'
 
   config.ignore_request { |request| URI(request.uri).port.between?(9200, 9399) } # Elasticsearch and OpenSearch
   config.ignore_request { |request| URI(request.uri).port == 9998 } # Tika
