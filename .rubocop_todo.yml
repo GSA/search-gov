@@ -304,7 +304,6 @@ Layout/LeadingCommentSpace:
     - '.simplecov'
     - 'app/controllers/searches_controller.rb'
     - 'app/models/elastic_blended.rb'
-    - 'app/models/searchgov_crawler.rb'
     - 'app/models/web_document.rb'
     - 'config/initializers/extensions/hash.rb'
     - 'db/migrate/20160906165419_add_template_id_to_affiliate_templates.rb'
@@ -313,7 +312,6 @@ Layout/LeadingCommentSpace:
     - 'spec/lib/document_fetcher_spec.rb'
     - 'spec/lib/results_rejector_spec.rb'
     - 'spec/models/boosted_content_bulk_uploader_spec.rb'
-    - 'spec/models/searchgov_crawler_spec.rb'
     - 'spec/models/web_results_post_processor_spec.rb'
 
 # Offense count: 7
@@ -908,7 +906,6 @@ Naming/AccessorMethodName:
   Exclude:
     - 'app/controllers/searches_controller.rb'
     - 'app/models/sayt_search.rb'
-    - 'app/models/searchgov_crawler.rb'
     - 'app/models/searchgov_url.rb'
     - 'app/models/web_search.rb'
 
@@ -2156,10 +2153,8 @@ Security/Eval:
 # Offense count: 8
 Security/Open:
   Exclude:
-    - 'app/models/searchgov_crawler.rb'
     - 'lib/site_autodiscoverer.rb'
     - 'spec/models/indexed_document_spec.rb'
-    - 'spec/models/searchgov_crawler_spec.rb'
 
 # Offense count: 16
 # This cop supports safe autocorrection (--autocorrect).
@@ -2222,7 +2217,6 @@ Style/BlockDelimiters:
 Style/CaseEquality:
   Exclude:
     - 'app/models/html_document.rb'
-    - 'app/models/searchgov_crawler.rb'
     - 'app/models/searchgov_url.rb'
     - 'lib/search_elastic/document_query.rb'
     - 'spec/support/shared_vcr_setup.rb'
@@ -2547,7 +2541,6 @@ Style/MethodCallWithoutArgsParentheses:
   Exclude:
     - 'lib/tasks/search_elastic.rake'
     - 'spec/lib/tasks/reports_spec.rb'
-    - 'spec/models/searchgov_crawler_spec.rb'
     - 'spec/support/resque_job_stats_behavior.rb'
 
 # Offense count: 1
@@ -2815,7 +2808,6 @@ Style/RedundantBegin:
     - 'app/models/boosted_content_bulk_uploader.rb'
     - 'app/models/featured_collection.rb'
     - 'app/models/indexed_document.rb'
-    - 'app/models/searchgov_crawler.rb'
     - 'config/initializers/extensions/uri.rb'
     - 'db/migrate/20160906165419_add_template_id_to_affiliate_templates.rb'
     - 'lib/resque_job_stats.rb'
@@ -3066,7 +3058,6 @@ Style/StringLiteralsInInterpolation:
   Exclude:
     - 'app/models/med_topic.rb'
     - 'app/models/rtu_dashboard.rb'
-    - 'app/models/searchgov_crawler.rb'
     - 'features/step_definitions/trending_urls_steps.rb'
     - 'lib/logstash_prefix.rb'
 
@@ -3153,7 +3144,6 @@ Style/TrailingCommaInHashLiteral:
     - 'app/engines/search_engine.rb'
     - 'app/models/api_video_search.rb'
     - 'app/models/document_fetch_logger.rb'
-    - 'app/models/searchgov_crawler.rb'
     - 'app/models/searchgov_url.rb'
     - 'app/models/user_monthly_report.rb'
     - 'config/deploy.rb'

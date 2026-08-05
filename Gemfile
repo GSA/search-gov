@@ -93,11 +93,8 @@ gem 'colorize', '~> 0.8.1'
 gem 'http', '~> 5.0'
 gem 'robots_tag_parser', '~> 0.1.0'
 gem 'loofah', '~> 2.19'
-# Locking ref, as later versions (after being renamed & released as "medusa-crawler")
-# include breaking changes
-gem 'medusa', git: 'https://github.com/brutuscat/medusa-crawler', ref: '82299f2700ac56b4af2b14d707f35d6af466ad8e'
-# Robotex is required by Medusa. Specifying fork until https://github.com/chriskite/robotex/issues/4
-# is resolved
+# Used by SearchgovDomain for robots.txt sitemap discovery.
+# Specifying fork until https://github.com/chriskite/robotex/issues/4 is resolved
 gem 'robotex', git: 'https://github.com/GSA/robotex'
 gem 'saxerator', '~> 0.9.9'
 gem 'counter_culture', '~> 2.9.0'
