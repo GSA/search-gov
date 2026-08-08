@@ -132,9 +132,10 @@ gem 'font-awesome-rails', '~> 4.7.0'
 # for instructions on how to add more icons to this set
 gem 'font-awesome-grunticon-rails', git: 'https://github.com/gsa/font-awesome-grunticon-rails', ref: '8ad9734a65f7e2d2de934bebe4ee7b460734f96e'
 gem 'react-rails', '~> 3.0.0'
+gem 'react_on_rails', '17.0.0'
 # Locking to prevent a version mismatch between the gem and the NPM package version
 # See https://github.com/shakacode/shakapacker#upgrading
-gem 'shakapacker', '~> 6.5.4'
+gem 'shakapacker', '10.1.0'
 gem 'cssbundling-rails', '~> 1.2' # Management of css (Less) files conversion
 # Temporarily locking the 'mail' version until the next version of Rails is released
 # https://github.com/rails/rails/pull/46650
