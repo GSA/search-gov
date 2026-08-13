@@ -1,6 +1,7 @@
 {
   "name": "Search.gov",
   "private": true,
+  "packageManager": "yarn@1.22.22",
   "scripts": {
     "test": "jest",
     "test:coverage": "jest --coverage --runInBand --no-cache",
@@ -54,7 +55,7 @@
     "react-sliding-pane": "^7.3.0",
     "react_ujs": "^3.1.1",
     "semver": "^7.5.2",
-    "shakapacker": "~6.5.4",
+    "shakapacker": "9.5.0",
     "style-loader": "^3.3.1",
     "styled-components": "^6.1.1",
     "terser-webpack-plugin": "^5.3.6",
@@ -62,7 +63,7 @@
     "webpack": "^5.76.0",
     "webpack-assets-manifest": "^5.1.0",
     "webpack-cli": "^4.10.0",
-    "webpack-dev-server": "^4.11.1",
+    "webpack-dev-server": "^5.2.6",
     "webpack-merge": "^5.8.0",
     "webpack-sources": "^3.2.3"
   },
