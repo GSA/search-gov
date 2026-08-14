@@ -2,11 +2,13 @@
 
 module ReactHelper
   def search_results_layout(search, params, vertical, affiliate, search_options)
-    safe_join([
-      search_results_header(affiliate),
-      search_results_main(search, params, vertical, affiliate, search_options),
-      search_results_footer(affiliate)
-    ])
+    safe_join(
+      [
+        search_results_header(affiliate),
+        search_results_main(search, params, vertical, affiliate, search_options),
+        search_results_footer(affiliate)
+      ]
+    )
   end
 
   def search_results_header(affiliate)
