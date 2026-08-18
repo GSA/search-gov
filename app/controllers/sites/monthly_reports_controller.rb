@@ -16,7 +16,7 @@ class Sites::MonthlyReportsController < Sites::SetupSiteController
   end
 
   def monthly_report(month, year)
-    RtuMonthlyReport.new(@site, year, month, @current_user.sees_filtered_totals?)
+    RtuMonthlyReport.new(@site, year, month)
   end
 
 end

@@ -6,10 +6,9 @@ class RtuDashboard
   attr_reader :trending_queries, :top_queries, :no_results, :low_ctr_queries, :trending_urls, :top_urls,
               :monthly_usage_chart, :monthly_queries_to_date, :monthly_clicks_to_date
 
-  def initialize(site, day = Date.current, filter_bots)
+  def initialize(site, day = Date.current)
     @site = site
     @day = day
-    @filter_bots =filter_bots
   end
 
   def top_queries
@@ -73,13 +72,13 @@ class RtuDashboard
 
   def queries_by_month
     query = MonthlyHistogramQuery.new(@site.name)
-    yyyymm_buckets = top_n(query.body, "#{logstash_prefix(@filter_bots)}*")
+    yyyymm_buckets = top_n(query.body, "#{logstash_prefix}*")
     yyyymm_buckets.collect { |hash| [hash["key_as_string"], hash["doc_count"]] } if yyyymm_buckets
   end
 
   def mtd_count(type)
     count_query = CountQuery.new(@site.name, type)
-    RtuCount.count(monthly_index_wildcard_spanning_date(@day, @filter_bots),
+    RtuCount.count(monthly_index_wildcard_spanning_date(@day),
                    count_query.body)
   end
 
@@ -90,7 +89,7 @@ class RtuDashboard
   end
 
   def top_n(query_body, index_date = nil)
-    index = index_date || "#{logstash_prefix(@filter_bots)}#{@day.strftime("%Y.%m.%d")}"
+    index = index_date || "#{logstash_prefix}#{@day.strftime("%Y.%m.%d")}"
     Es::ELK.client_reader.search(
       index: index,
       body: query_body,

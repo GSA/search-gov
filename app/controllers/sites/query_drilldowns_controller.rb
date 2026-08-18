@@ -16,8 +16,7 @@ class Sites::QueryDrilldownsController < Sites::SetupSiteController
                                          'params.query.raw',
                                          query,
                                          'search')
-    request_drilldown = RequestDrilldown.new(@current_user.sees_filtered_totals?,
-                                             drilldown_query.body)
+    request_drilldown = RequestDrilldown.new(drilldown_query.body)
     requests = request_drilldown.docs.map { |doc| document_mapping(doc) }
     csv_response(filename, HEADER_FIELDS, requests)
   end
