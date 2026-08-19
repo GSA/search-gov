@@ -1,4 +1,4 @@
-# Note: You must restart bin/webpacker-dev-server for changes to take effect
+# Note: You must restart bin/shakapacker-dev-server for changes to take effect
 
 default: &default
   source_path: app/javascript
@@ -19,10 +19,10 @@ default: &default
 
   public_root_path: public
   public_output_path: packs
-  cache_path: tmp/webpacker
+  cache_path: tmp/shakapacker
   webpack_compile_output: true
   # See https://github.com/shakacode/shakapacker#deployment
-  webpacker_precompile: true
+  shakapacker_precompile: true
 
   # Location for manifest.json, defaults to {public_output_path}/manifest.json if unset
   # manifest_path: public/packs/manifest.json
@@ -33,8 +33,11 @@ default: &default
   # Reload manifest.json on all requests so we reload latest compiled packs
   cache_manifest: false
 
-  # Select loader to use, available options are 'babel' (default), 'swc' or 'esbuild'
-  webpack_loader: 'babel'
+  # Select transpiler, available options are 'babel' (default), 'swc' or 'esbuild'
+  javascript_transpiler: 'babel'
+
+  # Keep v8-style CSS module default exports during the 6 → 9 jump
+  css_modules_export_mode: default
 
   # Set to true to enable check for matching versions of shakapacker gem and NPM package - will raise an error if there is a mismatch or wildcard versioning is used
   ensure_consistent_versioning: true
