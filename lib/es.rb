@@ -10,8 +10,11 @@ module Es
     :elasticsearch_client
   ).deep_symbolize_keys.freeze
 
+  # Opt-in flag for the legacy Elasticsearch custom indices. Disabled unless a
+  # deployment explicitly turns it on, so the decommissioned production cluster
+  # is never dialed. Full Elasticsearch removal is tracked in SRCH-6468.
   def self.custom_indices_enabled?
-    ENV['ES_HOSTS'].present?
+    ENV['CUSTOM_INDICES_ENABLED'].to_s.casecmp?('true')
   end
 
   private
