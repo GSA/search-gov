@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe SearchElastic::DocumentQuery do
+describe OpenSearch::DocumentQuery do
   fixtures :affiliates
   let(:query) { 'test' }
   let(:options) do

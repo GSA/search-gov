@@ -35,14 +35,10 @@ module Api
 
       def selected_engine
         case @search_options.site.search_engine
-        when "opensearch"
-          OpenSearch::ApiEngine
         when "legacy_opensearch"
           LegacyOpenSearch::ApiEngine
-        when "search_elastic"
-          ApiSearchElastic
         else
-          ApiSearchElastic
+          OpenSearch::ApiEngine
         end
       end
 

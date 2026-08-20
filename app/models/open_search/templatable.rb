@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module SearchElastic::Templatable
+module OpenSearch::Templatable
   def date(json, field)
     json.set! field do
       json.type "date"

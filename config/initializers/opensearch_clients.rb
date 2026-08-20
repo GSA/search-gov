@@ -20,10 +20,8 @@ def create_opensearch_client(config_name, log_prefix)
   end
 end
 
-if OpenSearchConfig.enabled?
-  # OpenSearch client for search indices (regular domains)
-  OPENSEARCH_CLIENT = create_opensearch_client(:opensearch_client, 'OPENSEARCH')
+# OpenSearch client for search indices (regular domains)
+OPENSEARCH_CLIENT = create_opensearch_client(:opensearch_client, 'OPENSEARCH')
 
-  # OpenSearch client for analytics data (logstash indices)
-  OPENSEARCH_ANALYTICS_CLIENT = create_opensearch_client(:opensearch_analytics_client, 'OPENSEARCH_ANALYTICS')
-end
+# OpenSearch client for analytics data (logstash indices)
+OPENSEARCH_ANALYTICS_CLIENT = create_opensearch_client(:opensearch_analytics_client, 'OPENSEARCH_ANALYTICS')

@@ -9,8 +9,8 @@ describe OpenSearch::Engine do
     }
   end
 
-  it 'is a SearchElasticEngine' do
-    expect(described_class.new(search_options)).to be_a(SearchElasticEngine)
+  it 'is a FilterableSearch' do
+    expect(described_class.new(search_options)).to be_a(FilterableSearch)
   end
 
   describe '#search' do
