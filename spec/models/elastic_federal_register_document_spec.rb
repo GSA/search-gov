@@ -91,4 +91,19 @@ describe ElasticFederalRegisterDocument do
       end
     end
   end
+
+  describe '.search_for when custom indices are disabled' do
+    before do
+      allow(Es).to receive(:custom_indices_enabled?).and_return(false)
+    end
+
+    it 'returns empty results without raising' do
+      search = described_class.search_for(federal_register_agency_ids: [fr_noaa.id],
+                                          language: 'en',
+                                          q: 'fish')
+
+      expect(search.total).to eq 0
+      expect(search.results).to eq([])
+    end
+  end
 end
