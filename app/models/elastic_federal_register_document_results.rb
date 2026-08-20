@@ -5,7 +5,7 @@ class ElasticFederalRegisterDocumentResults < ElasticResults
   def initialize(result)
     @offset = result['hits']['offset']
     @aggregations = extract_aggregations(result['aggregations']) if result['aggregations']
-    hits = @aggregations.map { |bucket| bucket.rows.map(&:value) }.flatten
+    hits = Array(@aggregations).map { |bucket| bucket.rows.map(&:value) }.flatten
     @results = extract_results(hits.first(3))
     @total = hits.present? ? hits.count : 0
   end
