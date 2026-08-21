@@ -126,7 +126,6 @@ Rails.application.routes.draw do
         end
       end
       resources :memberships, only: [:update]
-      resource :filtered_analytics_toggle, only: :create
     end
   end
 

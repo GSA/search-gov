@@ -15,7 +15,7 @@ describe 'sites/monthly_reports/show' do
   context 'when affiliate user views the monthly report page' do
     context 'regardless of the data available' do
       before do
-        assign :monthly_report, RtuMonthlyReport.new(site, 2014, 6, true)
+        assign :monthly_report, RtuMonthlyReport.new(site, 2014, 6)
       end
 
       it 'should show header' do
@@ -27,7 +27,7 @@ describe 'sites/monthly_reports/show' do
 
     context 'when there is data' do
       before do
-        monthly_report = RtuMonthlyReport.new(site, 2014, 6, true)
+        monthly_report = RtuMonthlyReport.new(site, 2014, 6)
         allow(monthly_report).to receive(:total_queries).and_return 12_345
         allow(monthly_report).to receive(:total_clicks).and_return 5678
 
@@ -91,7 +91,7 @@ describe 'sites/monthly_reports/show' do
 
     context 'when there is no data' do
       before do
-        monthly_report = RtuMonthlyReport.new(site, 2014, 6, true)
+        monthly_report = RtuMonthlyReport.new(site, 2014, 6)
         allow(monthly_report).to receive(:total_queries).and_return 0
         allow(monthly_report).to receive(:total_clicks).and_return 0
         allow(monthly_report).to receive(:no_result_queries).and_return nil
