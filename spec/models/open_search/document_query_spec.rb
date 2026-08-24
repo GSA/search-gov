@@ -13,6 +13,94 @@ describe OpenSearch::DocumentQuery do
   let(:body) { document_query.body.to_hash }
 
   describe '#body' do
+    let(:filter_bool) { body.dig(:query, :function_score, :query, :bool, :filter).first[:bool] }
+    let(:must_clauses) do
+      must = filter_bool[:must]
+      must.is_a?(Array) ? must : [must]
+    end
+    let(:simple_query_string_fields) { document_query.boosted_fields }
+    let(:word_form_shoulds) do
+      must = body.dig(:query, :function_score, :query, :bool, :must)
+      must_clauses = must.is_a?(Array) ? must : [must]
+      prefer_matches = must_clauses.dig(0, :bool, :must)
+      prefer_matches = [prefer_matches] unless prefer_matches.is_a?(Array)
+      shoulds = prefer_matches.dig(0, :bool, :should)
+      shoulds.is_a?(Array) ? shoulds : [shoulds]
+    end
+
+    context 'when the affiliate language is English' do
+      let(:options) { { query: query, language: 'en' } }
+
+      it 'includes PDFs regardless of detected language' do
+        expect(must_clauses).to include(
+          hash_including(
+            bool: hash_including(
+              minimum_should_match: 1,
+              should: array_including(
+                { term: { language: 'en' } },
+                { term: { mime_type: 'application/pdf' } }
+              )
+            )
+          )
+        )
+      end
+
+      it 'searches only English-suffixed fields for non-PDF documents' do
+        expect(simple_query_string_fields).to eq(['title_en^2', 'description_en^1.5', 'content_en'])
+      end
+
+      it 'additionally searches other language suffixes only when mime_type is PDF. English pdfs are already part of the main query' do
+        expect(document_query.pdf_boosted_fields).to include('title_de^2', 'title_es^2', 'content_es')
+        expect(document_query.pdf_boosted_fields).not_to include('title_en^2')
+
+        pdf_clause = word_form_shoulds.find { |clause| clause.to_s.include?('application/pdf') }
+        expect(pdf_clause).to include(
+          bool: hash_including(
+            must: array_including(
+              { term: { mime_type: 'application/pdf' } }
+            )
+          )
+        )
+        expect(pdf_clause.to_s).to include('title_de')
+        expect(pdf_clause.to_s).to include('title_es')
+      end
+
+      it 'requests highlights for mapped language suffixes' do
+        highlight_fields = body.dig(:highlight, :fields).keys.map(&:to_s)
+        expect(highlight_fields).to include('title_en', 'title_de', 'title_es', 'content_es')
+      end
+
+      it 'includes wildcard source fields so non-English PDF titles are returned' do
+        expect(body[:_source]).to include('title_*', 'language')
+      end
+    end
+
+    context 'when the affiliate language is not English' do
+      let(:affiliate) { affiliates(:spanish_affiliate) }
+      let(:options) { { query: query, language: 'es' } }
+
+      it 'filters only to the affiliate language' do
+        expect(must_clauses).to include(term: { language: 'es' })
+        expect(must_clauses.to_s).not_to include('application/pdf')
+      end
+
+      it 'searches only the affiliate language-suffixed fields' do
+        expect(simple_query_string_fields).to eq(['title_es^2', 'description_es^1.5', 'content_es'])
+        expect(word_form_shoulds.to_s).not_to include('application/pdf')
+        expect(simple_query_string_fields).not_to include('title_en^2')
+      end
+
+      it 'highlights only the affiliate language-suffixed fields' do
+        highlight_fields = body.dig(:highlight, :fields).keys.map(&:to_s)
+        expect(highlight_fields).to contain_exactly('title_es', 'description_es', 'content_es')
+      end
+
+      it 'does not include wildcard source fields' do
+        expect(body[:_source]).to include('title_es')
+        expect(body[:_source]).not_to include('title_*')
+      end
+    end
+
     context 'when a query includes stopwords' do
       let(:suggestion_hash) { body[:suggest][:suggestion] }
       let(:query) { 'this document IS about the theater' }
@@ -79,8 +167,7 @@ describe OpenSearch::DocumentQuery do
           terms: {
             extension: %w[doc docx pdf ppt pptx xls xlsx]
           }
-        }, weight: '.75'
-        )
+        }, weight: '.75')
         expect(functions[2]).to eq(field_value_factor: {
           field: 'click_count',
           modifier: 'log1p',
