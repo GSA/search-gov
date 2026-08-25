@@ -1,8 +1,6 @@
 module Instrumentation
   class LogSubscriber < ActiveSupport::LogSubscriber
-    # The only methods that work as of 2023 are oasis_search and elastic_search. The others
-    # should be removed when we remove those old search classes. The Bing methods need to
-    # be updated to support BingV7.
+    # Bing methods are leftover instrumentation and should be removed with those search classes.
     def bing_image_search(event)
       generic_logging('Bing Image Query', event, YELLOW)
     end
