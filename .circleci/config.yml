@@ -35,7 +35,6 @@ executors:
           bootstrap.memory_lock: false
           http.port: 9300
           transport.port: 9500
-          plugins.security.disabled: "true"
           DISABLE_SECURITY_PLUGIN: "true"
           DISABLE_INSTALL_DEMO_CONFIG: "true"
           OPENSEARCH_JAVA_OPTS: "-Xms256m -Xmx256m"
