@@ -263,7 +263,9 @@ workflows:
   build_and_test:
     jobs:
       - checkout_code:
-          name: "checkout code: Ruby << matrix.ruby_version >>, MySQL << matrix.mysql_version >>"
+          # Keep the ES version in the GitHub status context so required
+          # checks from main still report. The ES container is gone.
+          name: "checkout code: Ruby << matrix.ruby_version >>, ES 7.17.7, MySQL << matrix.mysql_version >>"
           matrix:
             parameters:
               ruby_version:
@@ -274,7 +276,7 @@ workflows:
       - rspec:
           requires:
             - checkout_code
-          name: "rspec: Ruby << matrix.ruby_version >>, MySQL << matrix.mysql_version >>"
+          name: "rspec: Ruby << matrix.ruby_version >>, ES 7.17.7, MySQL << matrix.mysql_version >>"
           matrix:
             parameters:
               ruby_version:
@@ -285,7 +287,7 @@ workflows:
       - cucumber:
           requires:
             - checkout_code
-          name: "cucumber: Ruby << matrix.ruby_version >>, MySQL << matrix.mysql_version >>"
+          name: "cucumber: Ruby << matrix.ruby_version >>, ES 7.17.7, MySQL << matrix.mysql_version >>"
           matrix:
             parameters:
               ruby_version:
