@@ -12,11 +12,10 @@ class RtuQueriesRequest
   include LogstashPrefix
   include RtuAnalyticsRequestable
 
-  attr_reader :start_date, :end_date, :available_dates, :filter_bots
+  attr_reader :start_date, :end_date, :available_dates
   attribute :site, Affiliate
   attribute :start_date, String
   attribute :end_date, String
-  attribute :filter_bots, Boolean
 
   attr_reader :query
   attribute :query, String
@@ -48,7 +47,7 @@ class RtuQueriesRequest
 
   def top_n(query_body)
     Es::ELK.client_reader.search(
-      index: "#{logstash_prefix(filter_bots)}*",
+      index: "#{logstash_prefix}*",
       body: query_body,
       size: 0
     )['aggregations']['agg']['buckets']

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe RtuTopN do
   let(:rtu_top_n) do
-    described_class.new('an ES query body', false, Date.new(2019, 1, 1))
+    described_class.new('an ES query body', Date.new(2019, 1, 1))
   end
 
   describe '#top_n' do
@@ -10,7 +10,7 @@ describe RtuTopN do
 
     let(:query_args) do
       {
-        index: 'logstash-2019.01.01',
+        index: 'human-logstash-2019.01.01',
         body: 'an ES query body',
         size: 10_000
       }

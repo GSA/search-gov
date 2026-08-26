@@ -639,7 +639,6 @@ ActiveRecord::Schema[7.1].define(version: 2026_08_19_180000) do
     t.boolean "welcome_email_sent", default: false, null: false
     t.boolean "requires_manual_approval", default: false, null: false
     t.integer "default_affiliate_id"
-    t.boolean "sees_filtered_totals", default: true, null: false
     t.string "uid"
     t.string "first_name"
     t.string "last_name"

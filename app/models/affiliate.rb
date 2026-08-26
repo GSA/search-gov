@@ -419,7 +419,7 @@ class Affiliate < ApplicationRecord
   def last_month_query_count
     prev_month = Date.current.prev_month
     count_query = CountQuery.new(name, 'search')
-    RtuCount.count(monthly_index_wildcard_spanning_date(prev_month, true),
+    RtuCount.count(monthly_index_wildcard_spanning_date(prev_month),
                    count_query.body)
   end
 

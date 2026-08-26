@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe RequestDrilldown do
-  subject(:drilldown) { described_class.new(true, '') }
+  subject(:drilldown) { described_class.new('') }
 
   describe '#docs' do
     subject(:docs) { drilldown.docs }
