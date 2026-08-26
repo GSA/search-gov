@@ -30,6 +30,7 @@ describe OpenSearch::DocumentQuery do
 
     context 'when the affiliate language is English' do
       let(:options) { { query: query, language: 'en' } }
+      let(:formatted_query) { JSON.pretty_generate(body.as_json) }
 
       it 'includes PDFs regardless of detected language' do
         expect(must_clauses).to include(
@@ -45,29 +46,20 @@ describe OpenSearch::DocumentQuery do
         )
       end
 
-      it 'searches only English-suffixed fields for non-PDF documents' do
-        expect(simple_query_string_fields).to eq(['title_en^2', 'description_en^1.5', 'content_en'])
+      it 'searches wildcard title/description/content fields once instead of listing locales' do
+        expect(simple_query_string_fields).to eq(['title_*^2', 'description_*^1.5', 'content_*'])
+        expect(formatted_query).not_to include('title_de')
+        expect(formatted_query).not_to include('title_es')
       end
 
-      it 'additionally searches other language suffixes only when mime_type is PDF. English pdfs are already part of the main query' do
-        expect(document_query.pdf_boosted_fields).to include('title_de^2', 'title_es^2', 'content_es')
-        expect(document_query.pdf_boosted_fields).not_to include('title_en^2')
-
-        pdf_clause = word_form_shoulds.find { |clause| clause.to_s.include?('application/pdf') }
-        expect(pdf_clause).to include(
-          bool: hash_including(
-            must: array_including(
-              { term: { mime_type: 'application/pdf' } }
-            )
-          )
-        )
-        expect(pdf_clause.to_s).to include('title_de')
-        expect(pdf_clause.to_s).to include('title_es')
+      it 'lets PDFs satisfy the common-terms must so non-English PDF text is not excluded' do
+        expect(word_form_shoulds.to_s).to include('application/pdf')
+        expect(word_form_shoulds.to_s).to include('common')
       end
 
-      it 'requests highlights for mapped language suffixes' do
+      it 'requests wildcard highlights so non-English PDF snippets can be returned' do
         highlight_fields = body.dig(:highlight, :fields).keys.map(&:to_s)
-        expect(highlight_fields).to include('title_en', 'title_de', 'title_es', 'content_es')
+        expect(highlight_fields).to contain_exactly('title_*', 'description_*', 'content_*')
       end
 
       it 'includes wildcard source fields so non-English PDF titles are returned' do

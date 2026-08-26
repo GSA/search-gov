@@ -27,6 +27,7 @@ class SearchElastic::DocumentQuery
 
   PDF_MIME_TYPE = 'application/pdf'
   TEXT_FIELDS = %w[title description content].freeze
+  WILDCARD_TEXT_FIELDS = TEXT_FIELDS.map { |field| "#{field}_*" }.freeze
 
   attr_reader :audience,
               :content_type,
@@ -87,17 +88,9 @@ class SearchElastic::DocumentQuery
     @language_suffixed_fields ||= TEXT_FIELDS.index_with { |field| [field, language].compact.join('_') }
   end
 
-  # Full-text fields for the affiliate language (HTML and other non-PDFs stay on these).
+  # Fields used by the common query, which does not expand wildcards.
   def query_text_fields
     language_suffixed_fields.values
-  end
-
-  # Other mapped language suffixes, searched only when mime_type is PDF (SRCH-6637).
-  def pdf_query_text_fields
-    other_locales = SearchElastic::Template::LANGUAGE_ANALYZER_LOCALES.map(&:to_s) - [language]
-    TEXT_FIELDS.flat_map do |field|
-      other_locales.map { |locale| "#{field}_#{locale}" }
-    end
   end
 
   def english_language_search?
@@ -132,11 +125,15 @@ class SearchElastic::DocumentQuery
   end
 
   def boosted_fields
-    boost_text_fields(query_text_fields)
+    boost_text_fields(simple_query_string_fields)
   end
 
-  def pdf_boosted_fields
-    boost_text_fields(pdf_query_text_fields)
+  # English searches use title_*/description_*/content_* so PDF with any language match.
+  # For non-English, only use language suffixed fields.
+  def simple_query_string_fields
+    return WILDCARD_TEXT_FIELDS if english_language_search?
+
+    query_text_fields
   end
 
   def functions
@@ -267,17 +264,9 @@ class SearchElastic::DocumentQuery
     title_opts = { number_of_fragments: 0, type: 'fvh' }
     snippet_opts = { fragment_size: 75, number_of_fragments: 2, type: 'fvh' }
 
-    highlight_locales.each_with_object({}) do |locale, fields|
-      fields["title_#{locale}"] = title_opts
-      fields["description_#{locale}"] = snippet_opts
-      fields["content_#{locale}"] = snippet_opts
+    simple_query_string_fields.index_with do |field|
+      field.start_with?('title') ? title_opts : snippet_opts
     end
-  end
-
-  def highlight_locales
-    return [language] unless english_language_search?
-
-    SearchElastic::Template::LANGUAGE_ANALYZER_LOCALES.map(&:to_s)
   end
 
   def suggestion_highlight
@@ -331,33 +320,11 @@ class SearchElastic::DocumentQuery
                                 doc_query.query_text_fields.each do |field|
                                   should { common({ field => doc_query.common_terms_hash }) }
                                 end
-                              end
-                            end
-                          end
-                        end
-                      end
-
-                      if doc_query.english_language_search?
-                        should do
-                          bool do
-                            must { term mime_type: pdf_mime_type }
-                            must do
-                              bool do
-                                must do
-                                  simple_query_string do
-                                    query doc_query.query
-                                    fields doc_query.pdf_boosted_fields
-                                  end
-                                end
-
-                                unless doc_query.query.match(/".*"/)
-                                  must do
-                                    bool do
-                                      doc_query.pdf_query_text_fields.each do |field|
-                                        should { common({ field => doc_query.common_terms_hash }) }
-                                      end
-                                    end
-                                  end
+                                # English: common only sees *_en, so PDFs skip it. Now text match is only simple_query_string.
+                                #   It can add some false positives: filler words may match without common's rare-term check.
+                                # Other languages: no skip; common stays on that affiliate's suffixes.
+                                if doc_query.english_language_search?
+                                  should { term mime_type: pdf_mime_type }
                                 end
                               end
                             end
