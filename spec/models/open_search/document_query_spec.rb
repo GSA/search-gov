@@ -49,7 +49,7 @@ describe OpenSearch::DocumentQuery do
       end
 
       it 'adds a common query for each language-analyzer locale and text field' do
-        SearchElastic::Template::LANGUAGE_ANALYZER_LOCALES.each do |locale|
+        OpenSearch::Template::LANGUAGE_ANALYZER_LOCALES.each do |locale|
           described_class::TEXT_FIELDS.each do |field|
             expect(word_form_shoulds.to_s).to include(
               "#{field}_#{locale}",

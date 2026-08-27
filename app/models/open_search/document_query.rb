@@ -25,6 +25,10 @@ class OpenSearch::DocumentQuery
   FILTERABLE_DATE_FIELDS = %i[created
                               changed].freeze
 
+  PDF_MIME_TYPE = 'application/pdf'
+  TEXT_FIELDS = %w[title description content].freeze
+  WILDCARD_TEXT_FIELDS = TEXT_FIELDS.map { |field| "#{field}_*" }.freeze
+
   attr_reader :audience,
               :content_type,
               :date_range,
@@ -79,10 +83,13 @@ class OpenSearch::DocumentQuery
     end
   end
 
-  def full_text_fields
-    @full_text_fields ||= begin
-      %w[title description content].index_with { |field| suffixed(field) }
-    end
+  # Logical name → OpenSearch field for this search language, e.g. { 'title' => 'title_es' }
+  def language_suffixed_fields
+    @language_suffixed_fields ||= TEXT_FIELDS.index_with { |field| [field, language].compact.join('_') }
+  end
+
+  def english_language_search?
+    language == 'en'
   end
 
   def common_terms_hash
@@ -96,7 +103,12 @@ class OpenSearch::DocumentQuery
   def source_fields
     default_fields = %w[title path created changed thumbnail_url]
     fields = (@options[:include] || default_fields).push('language')
-    fields.map { |field| full_text_fields[field] || field }
+    fields.flat_map do |field|
+      next [field] unless language_suffixed_fields[field]
+      next ["#{field}_*"] if english_language_search?
+
+      [language_suffixed_fields[field]]
+    end
   end
 
   def timestamp_filters_present?
@@ -107,16 +119,12 @@ class OpenSearch::DocumentQuery
     @options[:min_timestamp_created].present? or @options[:max_timestamp_created].present?
   end
 
-  def boosted_fields
-    full_text_fields.values.map do |field|
-      if /title/ === field
-        "#{field}^2"
-      elsif /description/ === field
-        "#{field}^1.5"
-      else
-        field.to_s
-      end
-    end
+  # English searches use title_*/description_*/content_* so PDF with any language match.
+  # For non-English, only use language suffixed fields.
+  def simple_query_string_fields
+    return WILDCARD_TEXT_FIELDS if english_language_search?
+
+    language_suffixed_fields.values
   end
 
   def functions
@@ -157,8 +165,16 @@ class OpenSearch::DocumentQuery
 
   private
 
-  def suffixed(field)
-    [field, language].compact.join('_')
+  def boost_text_fields(fields)
+    fields.map do |field|
+      if /title/ === field
+        "#{field}^2"
+      elsif /description/ === field
+        "#{field}^1.5"
+      else
+        field.to_s
+      end
+    end
   end
 
   def parse_query(query)
@@ -236,22 +252,12 @@ class OpenSearch::DocumentQuery
   end
 
   def highlight_fields_hash
-    {
-      full_text_fields['title'] => {
-        number_of_fragments: 0,
-        type: 'fvh'
-      },
-      full_text_fields['description'] => {
-        fragment_size: 75,
-        number_of_fragments: 2,
-        type: 'fvh'
-      },
-      full_text_fields['content'] => {
-        fragment_size: 75,
-        number_of_fragments: 2,
-        type: 'fvh'
-      }
-    }
+    title_opts = { number_of_fragments: 0, type: 'fvh' }
+    snippet_opts = { fragment_size: 75, number_of_fragments: 2, type: 'fvh' }
+
+    simple_query_string_fields.index_with do |field|
+      field.start_with?('title') ? title_opts : snippet_opts
+    end
   end
 
   def suggestion_highlight
@@ -267,12 +273,12 @@ class OpenSearch::DocumentQuery
   end
 
   # Disabling length-related cops, as this method is intended to mimic the structure
-  # of a complex search query using the Elasticsearch DSL
+  # of a complex Elasticsearch query using the Elasticsearch DSL
   # https://github.com/elastic/elasticsearch-ruby/tree/master/elasticsearch-dsl
-  # rubocop:disable Metrics/MethodLength, Metrics/BlockLength
   def build_search_query
     doc_query = self
     affiliate = @affiliate
+    boosted_fields = boost_text_fields(simple_query_string_fields)
 
     search.query do
       function_score do
@@ -295,15 +301,17 @@ class OpenSearch::DocumentQuery
                           must do
                             simple_query_string do
                               query doc_query.query
-                              fields doc_query.boosted_fields
+                              fields boosted_fields
                             end
                           end
 
-                          unless doc_query.query.match(/".*"/)
+                          unless doc_query.query =~ /".*"/
                             must do
                               bool do
-                                doc_query.full_text_fields.values.each do |field|
-                                  should { common({ field => doc_query.common_terms_hash }) }
+                                OpenSearch::Template::LANGUAGE_ANALYZER_LOCALES.map(&:to_s).each do |locale|
+                                  TEXT_FIELDS.each do |field|
+                                    should { common({ "#{field}_#{locale}": doc_query.common_terms_hash }) }
+                                  end
                                 end
                               end
                             end
@@ -325,7 +333,18 @@ class OpenSearch::DocumentQuery
 
             filter do
               bool do
-                must { term language: doc_query.language } if doc_query.language.present?
+                # English affiliates also include PDFs regardless of detected language (SRCH-6637).
+                if doc_query.english_language_search?
+                  must do
+                    bool do
+                      should { term language: doc_query.language }
+                      should { term mime_type: PDF_MIME_TYPE }
+                      minimum_should_match 1
+                    end
+                  end
+                elsif doc_query.language.present?
+                  must { term language: doc_query.language }
+                end
 
                 minimum_should_match '100%'
 
@@ -372,7 +391,7 @@ class OpenSearch::DocumentQuery
 
                 doc_query.excluded_sites.each do |site_filter|
                   if site_filter.url_path.present?
-                    must_not { regexp path: { value: "https?:\/\/#{site_filter.domain_name}#{site_filter.url_path}/.*" } }
+                    must_not { regexp path: { value: "https?://#{site_filter.domain_name}#{site_filter.url_path}/.*" } }
                   else
                     must_not { term domain_name: site_filter.domain_name }
                   end
@@ -384,5 +403,4 @@ class OpenSearch::DocumentQuery
       end
     end
   end
-  # rubocop:enable Metrics/MethodLength, Metrics/BlockLength
 end
