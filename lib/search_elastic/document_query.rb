@@ -88,11 +88,6 @@ class SearchElastic::DocumentQuery
     @language_suffixed_fields ||= TEXT_FIELDS.index_with { |field| [field, language].compact.join('_') }
   end
 
-  # Fields used by the common query, which does not expand wildcards.
-  def query_text_fields
-    language_suffixed_fields.values
-  end
-
   def english_language_search?
     language == 'en'
   end
@@ -124,16 +119,12 @@ class SearchElastic::DocumentQuery
     @options[:min_timestamp_created].present? or @options[:max_timestamp_created].present?
   end
 
-  def boosted_fields
-    boost_text_fields(simple_query_string_fields)
-  end
-
   # English searches use title_*/description_*/content_* so PDF with any language match.
   # For non-English, only use language suffixed fields.
   def simple_query_string_fields
     return WILDCARD_TEXT_FIELDS if english_language_search?
 
-    query_text_fields
+    language_suffixed_fields.values
   end
 
   def functions
@@ -287,7 +278,7 @@ class SearchElastic::DocumentQuery
   def build_search_query
     doc_query = self
     affiliate = @affiliate
-    pdf_mime_type = PDF_MIME_TYPE
+    boosted_fields = boost_text_fields(simple_query_string_fields)
 
     search.query do
       function_score do
@@ -310,7 +301,7 @@ class SearchElastic::DocumentQuery
                           must do
                             simple_query_string do
                               query doc_query.query
-                              fields doc_query.boosted_fields
+                              fields boosted_fields
                             end
                           end
 
@@ -347,7 +338,7 @@ class SearchElastic::DocumentQuery
                   must do
                     bool do
                       should { term language: doc_query.language }
-                      should { term mime_type: pdf_mime_type }
+                      should { term mime_type: PDF_MIME_TYPE }
                       minimum_should_match 1
                     end
                   end

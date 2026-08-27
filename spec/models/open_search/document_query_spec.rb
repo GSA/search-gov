@@ -18,7 +18,6 @@ describe OpenSearch::DocumentQuery do
       must = filter_bool[:must]
       must.is_a?(Array) ? must : [must]
     end
-    let(:simple_query_string_fields) { document_query.boosted_fields }
     let(:word_form_shoulds) do
       must = body.dig(:query, :function_score, :query, :bool, :must)
       must_clauses = must.is_a?(Array) ? must : [must]
@@ -46,7 +45,7 @@ describe OpenSearch::DocumentQuery do
       end
 
       it 'searches wildcard title/description/content fields in simple_query_string' do
-        expect(simple_query_string_fields).to eq(['title_*^2', 'description_*^1.5', 'content_*'])
+        expect(word_form_shoulds.to_s).to include('title_*^2', 'description_*^1.5', 'content_*')
       end
 
       it 'adds a common query for each language-analyzer locale and text field' do
@@ -80,9 +79,9 @@ describe OpenSearch::DocumentQuery do
       end
 
       it 'searches only the affiliate language-suffixed fields' do
-        expect(simple_query_string_fields).to eq(['title_es^2', 'description_es^1.5', 'content_es'])
+        expect(word_form_shoulds.to_s).to include('title_es^2', 'description_es^1.5', 'content_es')
         expect(word_form_shoulds.to_s).not_to include('application/pdf')
-        expect(simple_query_string_fields).not_to include('title_en^2')
+        expect(word_form_shoulds.to_s).not_to include('title_en^2')
       end
 
       it 'highlights only the affiliate language-suffixed fields' do
