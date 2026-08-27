@@ -273,7 +273,7 @@ class OpenSearch::DocumentQuery
   end
 
   # Disabling length-related cops, as this method is intended to mimic the structure
-  # of a complex Elasticsearch query using the Elasticsearch DSL
+  # of a complex search query using the Elasticsearch DSL
   # https://github.com/elastic/elasticsearch-ruby/tree/master/elasticsearch-dsl
   def build_search_query
     doc_query = self
