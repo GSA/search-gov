@@ -76,10 +76,15 @@ describe 'User rake tasks' do
       expect(not_active_user.reload.timed_out?).to be true
     end
 
-    it 'does not log not_approved change anymore' do
-      @rake[task_name].invoke
+    it 'logs start and how many users were timed out' do
       allow(Rails.logger).to receive(:info)
-      expect(Rails.logger).not_to receive(:info).with(/has been not active for 90 days.*"not_approved"/)
+      expect(Rails.logger).to receive(:info).with(
+        '[usasearch:user:update_not_active_approval_status] started'
+      )
+      expect(Rails.logger).to receive(:info).with(
+        /\[usasearch:user:update_not_active_approval_status\] completed: timed out \d+ user\(s\)/
+      )
+      @rake[task_name].invoke
     end
   end
 
