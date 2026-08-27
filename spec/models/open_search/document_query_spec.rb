@@ -30,7 +30,6 @@ describe OpenSearch::DocumentQuery do
 
     context 'when the affiliate language is English' do
       let(:options) { { query: query, language: 'en' } }
-      let(:formatted_query) { JSON.pretty_generate(body.as_json) }
 
       it 'includes PDFs regardless of detected language' do
         expect(must_clauses).to include(
@@ -46,15 +45,19 @@ describe OpenSearch::DocumentQuery do
         )
       end
 
-      it 'searches wildcard title/description/content fields once instead of listing locales' do
+      it 'searches wildcard title/description/content fields in simple_query_string' do
         expect(simple_query_string_fields).to eq(['title_*^2', 'description_*^1.5', 'content_*'])
-        expect(formatted_query).not_to include('title_de')
-        expect(formatted_query).not_to include('title_es')
       end
 
-      it 'lets PDFs satisfy the common-terms must so non-English PDF text is not excluded' do
-        expect(word_form_shoulds.to_s).to include('application/pdf')
-        expect(word_form_shoulds.to_s).to include('common')
+      it 'adds a common query for each language-analyzer locale and text field' do
+        SearchElastic::Template::LANGUAGE_ANALYZER_LOCALES.each do |locale|
+          described_class::TEXT_FIELDS.each do |field|
+            expect(word_form_shoulds.to_s).to include(
+              "#{field}_#{locale}",
+              document_query.common_terms_hash.to_s
+            )
+          end
+        end
       end
 
       it 'requests wildcard highlights so non-English PDF snippets can be returned' do

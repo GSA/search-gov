@@ -317,14 +317,10 @@ class SearchElastic::DocumentQuery
                           unless doc_query.query.match(/".*"/)
                             must do
                               bool do
-                                doc_query.query_text_fields.each do |field|
-                                  should { common({ field => doc_query.common_terms_hash }) }
-                                end
-                                # English: common only sees *_en, so PDFs skip it. Now text match is only simple_query_string.
-                                #   It can add some false positives: filler words may match without common's rare-term check.
-                                # Other languages: no skip; common stays on that affiliate's suffixes.
-                                if doc_query.english_language_search?
-                                  should { term mime_type: pdf_mime_type }
+                                SearchElastic::Template::LANGUAGE_ANALYZER_LOCALES.map(&:to_s).each do |locale|
+                                  TEXT_FIELDS.each do |field|
+                                    should { common({ "#{field}_#{locale}": doc_query.common_terms_hash }) }
+                                  end
                                 end
                               end
                             end
