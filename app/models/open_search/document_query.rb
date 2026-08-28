@@ -308,9 +308,15 @@ class OpenSearch::DocumentQuery
                           unless doc_query.query =~ /".*"/
                             must do
                               bool do
-                                OpenSearch::Template::LANGUAGE_ANALYZER_LOCALES.map(&:to_s).each do |locale|
+                                if doc_query.english_language_search?
+                                  OpenSearch::Template::LANGUAGE_ANALYZER_LOCALES.map(&:to_s).each do |locale|
+                                    TEXT_FIELDS.each do |field|
+                                      should { common({ "#{field}_#{locale}": doc_query.common_terms_hash }) }
+                                    end
+                                  end
+                                else
                                   TEXT_FIELDS.each do |field|
-                                    should { common({ "#{field}_#{locale}": doc_query.common_terms_hash }) }
+                                    should { common({ "#{field}_#{doc_query.language}": doc_query.common_terms_hash }) }
                                   end
                                 end
                               end

@@ -48,15 +48,15 @@ describe OpenSearch::DocumentQuery do
         expect(word_form_shoulds.to_s).to include('title_*^2', 'description_*^1.5', 'content_*')
       end
 
-      it 'adds a common query for each language-analyzer locale and text field' do
+      it 'adds a common query for every language-analyzer locale and text field' do
+        expected_fields = word_form_shoulds.to_s
+
         OpenSearch::Template::LANGUAGE_ANALYZER_LOCALES.each do |locale|
           described_class::TEXT_FIELDS.each do |field|
-            expect(word_form_shoulds.to_s).to include(
-              "#{field}_#{locale}",
-              document_query.common_terms_hash.to_s
-            )
+            expect(expected_fields).to include("#{field}_#{locale}")
           end
         end
+        expect(expected_fields).to include(document_query.common_terms_hash.to_s)
       end
 
       it 'requests wildcard highlights so non-English PDF snippets can be returned' do
@@ -82,6 +82,15 @@ describe OpenSearch::DocumentQuery do
         expect(word_form_shoulds.to_s).to include('title_es^2', 'description_es^1.5', 'content_es')
         expect(word_form_shoulds.to_s).not_to include('application/pdf')
         expect(word_form_shoulds.to_s).not_to include('title_en^2')
+      end
+
+      it 'adds a common query only for the affiliate language-suffixed text fields' do
+        expected_fields = word_form_shoulds.to_s
+
+        described_class::TEXT_FIELDS.each do |field|
+          expect(expected_fields).to include("#{field}_es")
+        end
+        expect(expected_fields).to include(document_query.common_terms_hash.to_s)
       end
 
       it 'highlights only the affiliate language-suffixed fields' do
