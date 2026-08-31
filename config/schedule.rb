@@ -1,3 +1,7 @@
+# Whenever crontab for Capistrano :cron hosts.
+# Recurring Resque jobs live in config/resque_schedule.yml on crawler hosts.
+# Do not add them here.
+
 every 1.month, roles: [:cron] do
   rake 'search:reports:email_monthly_reports'
 end
