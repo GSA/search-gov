@@ -84,6 +84,7 @@ module Indexable
 
   def recreate_index
     delete_index if index_exists?
+    @index_name = nil
     create_index
   end
 

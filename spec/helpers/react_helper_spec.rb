@@ -10,7 +10,28 @@ describe ReactHelper do
     let(:search_options) { {} }
 
     before do
-      allow(helper).to receive(:react_component)
+      allow(helper).to receive(:react_on_rails_component).and_return('')
+    end
+
+    def have_received_react_component(component_name, props_matcher)
+      have_received(:react_on_rails_component).with(component_name, props: props_matcher)
+    end
+
+    it 'renders search results header, body, and footer as separate components' do
+      helper.search_results_layout(search, {}, vertical, affiliate, search_options)
+
+      expect(helper).to have_received_react_component(
+        'SearchResultsHeader',
+        hash_including(page: hash_including(title: affiliate.display_name))
+      )
+      expect(helper).to have_received_react_component(
+        'SearchResultsLayout',
+        hash_including(page: hash_including(title: affiliate.display_name))
+      )
+      expect(helper).to have_received_react_component(
+        'SearchResultsFooter',
+        hash_including(translations: anything)
+      )
     end
 
     context 'when an affiliate has primary header links' do
@@ -27,12 +48,14 @@ describe ReactHelper do
       it 'sends the primary header links array to SearchResultsLayout component' do
         helper.search_results_layout(search, {}, vertical, affiliate, search_options)
 
-        expect(helper).to have_received(:react_component).
-          with('SearchResultsLayout', hash_including(primaryHeaderLinks: [
-                                                       { title: 'Link 0', url: 'https://link_0.gov' },
-                                                       { title: 'Link 1', url: 'https://link_1.gov' },
-                                                       { title: 'Link 2', url: 'https://link_2.gov' }
-                                                     ]))
+        expect(helper).to have_received_react_component(
+          'SearchResultsHeader',
+          hash_including(primaryHeaderLinks: [
+                           { title: 'Link 0', url: 'https://link_0.gov' },
+                           { title: 'Link 1', url: 'https://link_1.gov' },
+                           { title: 'Link 2', url: 'https://link_2.gov' }
+                         ])
+        )
       end
     end
 
@@ -50,12 +73,14 @@ describe ReactHelper do
       it 'sends the secondary header links array to SearchResultsLayout component' do
         helper.search_results_layout(search, {}, vertical, affiliate, search_options)
 
-        expect(helper).to have_received(:react_component).
-          with('SearchResultsLayout', hash_including(secondaryHeaderLinks: [
-                                                       { title: 'Link 0', url: 'https://link_0.gov' },
-                                                       { title: 'Link 1', url: 'https://link_1.gov' },
-                                                       { title: 'Link 2', url: 'https://link_2.gov' }
-                                                     ]))
+        expect(helper).to have_received_react_component(
+          'SearchResultsHeader',
+          hash_including(secondaryHeaderLinks: [
+                           { title: 'Link 0', url: 'https://link_0.gov' },
+                           { title: 'Link 1', url: 'https://link_1.gov' },
+                           { title: 'Link 2', url: 'https://link_2.gov' }
+                         ])
+        )
       end
     end
 
@@ -73,12 +98,14 @@ describe ReactHelper do
       it 'sends the footer links array to SearchResultsLayout component' do
         helper.search_results_layout(search, {}, vertical, affiliate, search_options)
 
-        expect(helper).to have_received(:react_component).
-          with('SearchResultsLayout', hash_including(footerLinks: [
-                                                       { title: 'Link 0', url: 'https://link_0.gov' },
-                                                       { title: 'Link 1', url: 'https://link_1.gov' },
-                                                       { title: 'Link 2', url: 'https://link_2.gov' }
-                                                     ]))
+        expect(helper).to have_received_react_component(
+          'SearchResultsFooter',
+          hash_including(footerLinks: [
+                           { title: 'Link 0', url: 'https://link_0.gov' },
+                           { title: 'Link 1', url: 'https://link_1.gov' },
+                           { title: 'Link 2', url: 'https://link_2.gov' }
+                         ])
+        )
       end
     end
 
@@ -95,8 +122,10 @@ describe ReactHelper do
 
         helper.search_results_layout(search, {}, vertical, affiliate, search_options)
 
-        expect(helper).to have_received(:react_component).
-          with('SearchResultsLayout', hash_including(relatedSites: related_sites))
+        expect(helper).to have_received_react_component(
+          'SearchResultsLayout',
+          hash_including(relatedSites: related_sites)
+        )
       end
     end
 
@@ -104,8 +133,10 @@ describe ReactHelper do
       it 'does not send related sites to the SearchResultsLayout' do
         helper.search_results_layout(search, {}, vertical, affiliate, search_options)
 
-        expect(helper).not_to have_received(:react_component).
-          with('SearchResultsLayout', hash_including(:relatedSites))
+        expect(helper).not_to have_received_react_component(
+          'SearchResultsLayout',
+          hash_including(:relatedSites)
+        )
       end
     end
 
@@ -114,7 +145,7 @@ describe ReactHelper do
         alert_data = { text: 'Alert text', title: 'Alert title' }
         affiliate.build_alert(alert_data.merge(status: 'Active'))
         helper.search_results_layout(search, {}, vertical, affiliate, search_options)
-        expect(helper).to have_received(:react_component).with(
+        expect(helper).to have_received_react_component(
           'SearchResultsLayout',
           hash_including(alert: alert_data)
         )
@@ -126,7 +157,7 @@ describe ReactHelper do
         alert_data = { text: 'Alert text', title: 'Alert title', status: 'Inactive' }
         affiliate.build_alert(alert_data)
         helper.search_results_layout(search, {}, vertical, affiliate, search_options)
-        expect(helper).to have_received(:react_component).with(
+        expect(helper).to have_received_react_component(
           'SearchResultsLayout',
           hash_excluding(:alert)
         )
@@ -140,7 +171,7 @@ describe ReactHelper do
 
       it 'sets alert to nil in the data hash' do
         helper.search_results_layout(search, {}, vertical, affiliate, search_options)
-        expect(helper).to have_received(:react_component).with(
+        expect(helper).to have_received_react_component(
           'SearchResultsLayout',
           hash_excluding(:alert)
         )
@@ -158,8 +189,10 @@ describe ReactHelper do
       it 'sends links to SearchResultsLayout component' do
         helper.search_results_layout(search, {}, vertical, affiliate, search_options)
 
-        expect(helper).to have_received(:react_component).
-          with('SearchResultsLayout', hash_including(navigationLinks: navigation_links))
+        expect(helper).to have_received_react_component(
+          'SearchResultsLayout',
+          hash_including(navigationLinks: navigation_links)
+        )
       end
     end
 
@@ -179,8 +212,10 @@ describe ReactHelper do
           link: '/search?affiliate=usagov&query=chocolate+bar'
         }
 
-        expect(helper).to have_received(:react_component).
-          with('SearchResultsLayout', hash_including(relatedSearches: [related_search]))
+        expect(helper).to have_received_react_component(
+          'SearchResultsLayout',
+          hash_including(relatedSearches: [related_search])
+        )
       end
     end
 
@@ -192,8 +227,9 @@ describe ReactHelper do
       it 'returns a spelling suggestion hash' do
         helper.search_results_layout(search, {}, vertical, affiliate, search_options)
 
-        expect(helper).to have_received(:react_component).
-          with('SearchResultsLayout', hash_including(spellingSuggestion:
+        expect(helper).to have_received_react_component(
+          'SearchResultsLayout',
+          hash_including(spellingSuggestion:
           {
             original: '<a class="originalQuery" href="/search?affiliate=usagov&amp;query=%2Bchocolate">chocolate</a>',
             suggested: '<a class="suggestedQuery" href="/search?affiliate=usagov&amp;query=chalkcolate">chalkcolate</a>',
@@ -201,7 +237,8 @@ describe ReactHelper do
             originalQuery: 'chocolate',
             suggestedQuery: 'chalkcolate',
             suggestedUrl: '/search?affiliate=usagov&query=chalkcolate'
-          }))
+          })
+        )
       end
 
       context 'when a sitelimit is provided' do
@@ -210,8 +247,9 @@ describe ReactHelper do
         it 'persists the sitelimit in the spelling suggestion hash' do
           helper.search_results_layout(search, {}, vertical, affiliate, search_options)
 
-          expect(helper).to have_received(:react_component).
-            with('SearchResultsLayout', hash_including(spellingSuggestion:
+          expect(helper).to have_received_react_component(
+            'SearchResultsLayout',
+            hash_including(spellingSuggestion:
             {
               original: '<a class="originalQuery" href="/search?affiliate=usagov&amp;query=%2Bchocolate&amp;sitelimit=usa.gov">chocolate</a>',
               suggested: '<a class="suggestedQuery" href="/search?affiliate=usagov&amp;query=chalkcolate&amp;sitelimit=usa.gov">chalkcolate</a>',
@@ -219,7 +257,8 @@ describe ReactHelper do
               originalQuery: 'chocolate',
               suggestedQuery: 'chalkcolate',
               suggestedUrl: '/search?affiliate=usagov&query=chalkcolate&sitelimit=usa.gov'
-            }))
+            })
+          )
         end
       end
     end
@@ -229,7 +268,7 @@ describe ReactHelper do
         it 'sets agency to contain abbreviation or name' do
           affiliate.build_agency({ abbreviation: nil, name: 'Department of Energy' })
           helper.search_results_layout(search, {}, vertical, affiliate, search_options)
-          expect(helper).to have_received(:react_component).with(
+          expect(helper).to have_received_react_component(
             'SearchResultsLayout',
             hash_including(agencyName: 'Department of Energy')
           )
@@ -243,7 +282,7 @@ describe ReactHelper do
 
         it 'sets agency to nil in the data hash' do
           helper.search_results_layout(search, {}, vertical, affiliate, search_options)
-          expect(helper).to have_received(:react_component).with(
+          expect(helper).to have_received_react_component(
             'SearchResultsLayout',
             hash_excluding(:agencyName)
           )
@@ -255,12 +294,14 @@ describe ReactHelper do
       it 'returns a sitelimit hash' do
         helper.search_results_layout(search, { sitelimit: 'usa.gov' }, vertical, affiliate, search_options)
 
-        expect(helper).to have_received(:react_component).
-          with('SearchResultsLayout', hash_including(sitelimit:
+        expect(helper).to have_received_react_component(
+          'SearchResultsLayout',
+          hash_including(sitelimit:
           {
             sitelimit: 'usa.gov',
             url: '/search?affiliate=usagov&query=chocolate'
-          }))
+          })
+        )
       end
     end
 
