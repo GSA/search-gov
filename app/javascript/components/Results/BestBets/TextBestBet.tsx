@@ -21,26 +21,28 @@ export const TextBestBet = ({ affiliate, title, url, description, position, quer
   })();
 
   return (
-    <GridContainer className='result search-result-item boosted-content'>
-      <ResultGridWrapper
-        url={url}
-        clickTracking={() => clickTracking(affiliate, module, query, position, url, vertical)}>
-        <Grid col={true} className='result-meta-data'>
-          <div className='result-title'>
-            <h2 className='result-title-label'>
-              <ResultTitle 
-                url={url}  
-                className='result-title-link'>
-                {parse(title)}
-              </ResultTitle>
-            </h2>
-          </div>
-          <div className='result-desc'>
-            <p>{parse(description)}</p>
-            <div className='result-url-text'>{url}</div>
-          </div>
-        </Grid>
-      </ResultGridWrapper>
-    </GridContainer>
+    <a href={url} className='no-underline'>
+      <GridContainer className='result search-result-item boosted-content'>
+        <ResultGridWrapper
+          url={url}
+          clickTracking={() => clickTracking(affiliate, module, query, position, url, vertical)}>
+          <Grid col={true} className='result-meta-data'>
+            <div className='result-title'>
+              <h2 className='result-title-label'>
+                <ResultTitle 
+                  url={url}  
+                  className='result-title-link'>
+                  {parse(title)}
+                </ResultTitle>
+              </h2>
+            </div>
+            <div className='result-desc'>
+              <p>{parse(description)}</p>
+              <div className='result-url-text'>{url}</div>
+            </div>
+          </Grid>
+        </ResultGridWrapper>
+      </GridContainer>
+    </a>
   );
 };
