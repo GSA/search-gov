@@ -3,10 +3,6 @@ Rails.application.routes.draw do
   concern :active_scaffold_association, ActiveScaffold::Routing::Association.new
   concern :active_scaffold, ActiveScaffold::Routing::Basic.new(association: true)
   get '/search' => 'searches#index', as: :search
-  # SRCH-3494: Do not permit advanced search for sites using the SearchGov search engine
-  constraints(AdvancedSearchesConstraint.new) do
-    get '/search/advanced', to: redirect(path: '/search')
-  end
   get '/search/advanced' => 'searches#advanced', as: :advanced_search
   get '/search/docs' => 'searches#docs', as: :docs_search
   get '/search/news' => 'searches#news', as: :news_search
