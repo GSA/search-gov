@@ -1830,12 +1830,11 @@ Rails/FilePath:
 Rails/FindEach:
   Enabled: false
 
-# Offense count: 2
+# Offense count: 1
 # This cop supports unsafe autocorrection (--autocorrect-all).
 Rails/FreezeTime:
   Exclude:
     - 'spec/jobs/searchgov_domain_indexer_job_spec.rb'
-    - 'spec/services/click_counter_spec.rb'
 
 # Offense count: 6
 # Configuration parameters: Include.
