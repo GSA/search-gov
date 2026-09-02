@@ -54,6 +54,26 @@ describe Admin::AffiliatesController do
     end
   end
 
+  describe '#show' do
+    context 'when logged in as an affiliate admin' do
+      render_views
+      let(:affiliate) { affiliates('basic_affiliate') }
+
+      before do
+        activate_authlogic
+        UserSession.create(users('affiliate_admin'))
+        affiliate.update!(notes: 'Visible note for review')
+        get :show, params: { id: affiliate.id }
+      end
+
+      it { is_expected.to respond_with :success }
+
+      it 'displays the notes value for review' do
+        expect(response.body).to include('Visible note for review')
+      end
+    end
+  end
+
   describe '#update' do
     let(:affiliate) { affiliates(:basic_affiliate) }
 
@@ -74,7 +94,7 @@ describe Admin::AffiliatesController do
       describe 'Settings subgroup' do
         let(:settings_columns) do
           %i[ active agency display_name domain_control_validation_code
-              fetch_concurrency ga_web_property_id locale name
+              fetch_concurrency ga_web_property_id locale name notes
               search_engine website affiliate_feature_addition excluded_domains ]
         end
 
@@ -117,6 +137,25 @@ describe Admin::AffiliatesController do
         it 'contains the specified columns' do
           expect(update_columns.find { |c| c.label == 'Analytics-Tracking Code' }.to_a).to match_array(analytics_columns)
         end
+      end
+
+      describe 'notes column' do
+        it 'renders as a textarea' do
+          expect(config.columns[:notes].form_ui).to eq(:textarea)
+        end
+      end
+    end
+
+    context 'when submitting the update form' do
+      it 'persists the notes value' do
+        put :update, params: { id: affiliate.id, record: { notes: 'Low-traffic site; search box in footer.' } }
+        expect(affiliate.reload.notes).to eq('Low-traffic site; search box in footer.')
+      end
+
+      it 'clears the notes value when submitted blank' do
+        affiliate.update!(notes: 'Existing note')
+        put :update, params: { id: affiliate.id, record: { notes: '' } }
+        expect(affiliate.reload.notes).to be_blank
       end
     end
   end
@@ -165,6 +204,7 @@ describe Admin::AffiliatesController do
             looking_for_government_services
             mobile_logo_url
             name
+            notes
             raw_log_access_enabled
             recent_user_activity
             related_sites_dropdown_label

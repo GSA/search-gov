@@ -4,14 +4,13 @@ class RtuMonthlyReport
   include LogstashPrefix
   include QueryCtrCollector
 
-  def initialize(site, year, month, filter_bots)
+  def initialize(site, year, month)
     @site, @year, @month = site, year.to_i, month.to_i
     start_date = picked_date
     end_date = start_date.end_of_month
     @month_range = start_date..end_date
     rtu_date_range = RtuDateRange.new(@site.name, 'search')
     @available_rtu_dates = rtu_date_range.available_dates_range
-    @filter_bots = filter_bots
   end
 
   def total_queries
@@ -30,7 +29,7 @@ class RtuMonthlyReport
                                             @month_range.end,
                                             field: 'params.query.raw',
                                             min_doc_count: 20)
-      rtu_top_queries = RtuTopQueries.new(query.body, @filter_bots)
+      rtu_top_queries = RtuTopQueries.new(query.body)
       rtu_top_queries.top_n
     end
   end
@@ -38,14 +37,14 @@ class RtuMonthlyReport
   def low_ctr_queries
     @low_ctr_queries ||= begin
       low_ctr_query = LowCtrQuery.new(@site.name, @month_range.begin, @month_range.end)
-      indexes = monthly_index_wildcard_spanning_date(@month_range.begin, @filter_bots)
+      indexes = monthly_index_wildcard_spanning_date(@month_range.begin)
       buckets = top_n(low_ctr_query.body, indexes)
       low_ctr_queries_from_buckets(buckets, 20, 10)
     end
   end
 
   def search_module_stats
-    module_stats_analytics = RtuModuleStatsAnalytics.new(@month_range, @site.name, @filter_bots)
+    module_stats_analytics = RtuModuleStatsAnalytics.new(@month_range, @site.name)
     module_stats_analytics.module_stats
   end
 
@@ -69,7 +68,7 @@ class RtuMonthlyReport
 
   def month_count(type)
     count_query = CountQuery.new(@site.name, type)
-    index = "#{logstash_prefix(@filter_bots)}#{@year}.#{'%02d' % @month}.*"
+    index = "#{logstash_prefix}#{@year}.#{'%02d' % @month}.*"
     RtuCount.count(index, count_query.body)
   end
 

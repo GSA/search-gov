@@ -8,10 +8,10 @@ gem 'rake', '~> 13.0.6'
 gem 'rack-contrib', '~> 2.5.0'
 gem 'rails-observers', '~> 0.1.5'
 gem 'responders', '~> 3.1.0'
-gem 'mysql2', '~> 0.5.5'
+gem 'mysql2', '~> 0.5.7'
 gem 'haml', '~> 6'
 gem 'will_paginate', '~> 3.3.1'
-gem 'nokogiri', '~> 1.16'
+gem 'nokogiri', '~> 1.19'
 gem 'authlogic', '~> 6.4', '>= 6.4.3'
 gem 'omniauth_login_dot_gov', git: 'https://github.com/18f/omniauth_login_dot_gov', ref: '6e117a9c68b19a1fbc70533613b74b0d8affd641'
 gem 'rack', '~> 2.2'
@@ -32,10 +32,11 @@ gem 'resque-scheduler', '~> 4.10.2'
 # Paperclip is deprecated: https://cm-jira.usa.gov/browse/SRCH-702
 # Using a third-party fork as an interim measure.
 gem 'kt-paperclip', '~> 7.1.0'
-gem 'aws-sdk-s3', '~> 1.102.0'
+gem 'aws-sdk-s3', '~> 1.102'
 gem 'googlecharts', '~> 1.6.12'
 gem 'flickraw', '~> 0.9.9'
 gem 'mutex_m', '~> 0.2.0'
+gem 'erb', '~> 4.0.4'
 gem 'bigdecimal', '~> 3.1', '>= 3.1.8'
 gem 'rexml', '>= 3.4.2'
 gem 'csv', '~> 3.3'
@@ -74,10 +75,10 @@ gem 'validate_url', '= 0.2.0' # Newer versions use Addressable::URI for validati
 # https://github.com/18F/omniauth_login_dot_gov/blob/main/omniauth_login_dot_gov.gemspec#L28
 # We are temporarily using a custom branch in order to access the deprecation logging
 # functionality that is available in the official 7.16 release.
+# NOTE: the elasticsearch-ruby client is the transport used to talk to OpenSearch
+# (opensearch-ruby requires a newer faraday than omniauth_login_dot_gov allows).
 gem 'elasticsearch', git: 'https://github.com/GSA/elasticsearch-ruby', branch: '7.4'
 gem 'elasticsearch-dsl', '~> 0.1.9'
-gem 'elasticsearch-xpack', '~> 7.4.0'
-gem "elasticsearch-persistence"
 gem 'opensearch-dsl'
 gem 'federal_register', '~> 0.6.3'
 gem 'redcarpet', '~> 3.6'
@@ -93,11 +94,8 @@ gem 'colorize', '~> 0.8.1'
 gem 'http', '~> 5.0'
 gem 'robots_tag_parser', '~> 0.1.0'
 gem 'loofah', '~> 2.19'
-# Locking ref, as later versions (after being renamed & released as "medusa-crawler")
-# include breaking changes
-gem 'medusa', git: 'https://github.com/brutuscat/medusa-crawler', ref: '82299f2700ac56b4af2b14d707f35d6af466ad8e'
-# Robotex is required by Medusa. Specifying fork until https://github.com/chriskite/robotex/issues/4
-# is resolved
+# Used by SearchgovDomain for robots.txt sitemap discovery.
+# Specifying fork until https://github.com/chriskite/robotex/issues/4 is resolved
 gem 'robotex', git: 'https://github.com/GSA/robotex'
 gem 'saxerator', '~> 0.9.9'
 gem 'counter_culture', '~> 2.9.0'
@@ -120,7 +118,7 @@ gem 'exception_notification', '~> 4.5'
 # Assets-related gems
 gem 'coffee-rails', '~> 5.0.0'
 gem 'uglifier', '~> 4.2.0'
-gem 'jquery-ui-rails', '~> 7.0.0'
+gem 'jquery-ui-rails', '~> 8.0.0'
 gem 'jquery-rails', '~> 4.4.0'
 gem 'twitter-typeahead-rails', '~> 0.11.1'
 # Why do we have two versions of Font Awesome?
@@ -137,7 +135,7 @@ gem 'font-awesome-grunticon-rails', git: 'https://github.com/gsa/font-awesome-gr
 gem 'react-rails', '~> 3.0.0'
 # Locking to prevent a version mismatch between the gem and the NPM package version
 # See https://github.com/shakacode/shakapacker#upgrading
-gem 'shakapacker', '~> 6.5.4'
+gem 'shakapacker', '9.5.0'
 gem 'cssbundling-rails', '~> 1.2' # Management of css (Less) files conversion
 # Temporarily locking the 'mail' version until the next version of Rails is released
 # https://github.com/rails/rails/pull/46650

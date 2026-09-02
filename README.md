@@ -34,30 +34,20 @@ For example, to setup DB in Docker:
     $ docker compose run search-gov bash
     $ bin/rails db:setup
 
-The Elasticsearch service provided by `searchgov-services` is configured to run on the default port, [9200](http://localhost:9200/). To use a different host (with or without port) or set of hosts, set the `ES_HOSTS` environment variable. For example, use following command to run the specs using Elasticsearch running on `localhost:9207`:
+The OpenSearch service provided by `searchgov-services` is configured to run on port [9300](http://localhost:9300/). To use a different host (with or without port) or set of hosts, set the `OPENSEARCH_SEARCH_HOST`/`OPENSEARCH_ANALYTICS_HOST` environment variables.
 
-    ES_HOSTS=localhost:9207 bundle exec rspec spec
-
-Verify that Elasticsearch 7.17.x is running on the expected port (port 9200 by default):
+Verify that OpenSearch is running on the expected port (port 9300 by default):
 
 ```bash
-$ curl localhost:9200
+$ curl localhost:9300
 {
-  "name" : "002410188f61",
-  "cluster_name" : "es7-docker-cluster",
-  "cluster_uuid" : "l3cAhBd4Sqa3B4SkpUilPQ",
+  "name" : "os-node",
+  "cluster_name" : "os-cluster",
   "version" : {
-    "number" : "7.17.7",
-    "build_flavor" : "default",
-    "build_type" : "docker",
-    "build_hash" : "78dcaaa8cee33438b91eca7f5c7f56a70fec9e80",
-    "build_date" : "2022-10-17T15:29:54.167373105Z",
-    "build_snapshot" : false,
-    "lucene_version" : "8.11.1",
-    "minimum_wire_compatibility_version" : "6.8.0",
-    "minimum_index_compatibility_version" : "6.0.0-beta1"
+    "distribution" : "opensearch",
+    "number" : "3.0.0"
   },
-  "tagline" : "You Know, for Search"
+  "tagline" : "The OpenSearch Project: https://opensearch.org/"
 }
 ```
 
@@ -111,7 +101,7 @@ Use [Yarn](https://classic.yarnpkg.com/en/) to install the required JavaScript d
 
 ## Data
 
-### Elasticsearch Indexes
+### Search Indexes
 
 You can create the USASearch-related indexes like this:
 
@@ -143,23 +133,15 @@ Same thing, but using Resque to index in parallel:
 
     $ rake usasearch:elasticsearch:resque_migrate[FeaturedCollection]
 
-### OpenSearch Migration
+### OpenSearch
 
-The application is in the process of migrating from Elasticsearch to OpenSearch. This migration is controlled by the `OPENSEARCH_APP_ENABLED` environment variable, which allows for a gradual transition between the two search engines.
-
-When `OPENSEARCH_APP_ENABLED=false`, the application uses Elasticsearch clients.
-When `OPENSEARCH_APP_ENABLED=true`, the application uses OpenSearch clients for both search indices and analytics data.
-
-**OpenSearch is enabled by default** in local development and test environments (`.env.development` and `.env.test` have `OPENSEARCH_APP_ENABLED=true`).
+OpenSearch is the search and analytics backend for both document/custom indices and analytics (logstash) data.
 
 **Note:** The application uses the `elasticsearch-ruby` gem to connect to OpenSearch, as it is API-compatible with OpenSearch. This avoids dependency conflicts with the `omniauth_login_dot_gov` gem.
 
 #### Environment Variables
 
 The following environment variables are required for OpenSearch configuration:
-
-**Feature Flag:**
-- `OPENSEARCH_APP_ENABLED` - Set to `true` to enable OpenSearch, or `false` to use Elasticsearch (default: `true` in development/test environments)
 
 **Search Client Configuration:**
 - `OPENSEARCH_SEARCH_HOST` - OpenSearch host URL (default: `http://localhost:9300`)
@@ -177,7 +159,7 @@ The following environment variables are required for OpenSearch configuration:
 
 #### Creating OpenSearch Indexes
 
-When `OPENSEARCH_APP_ENABLED=true`, you can create OpenSearch indexes using the following rake tasks:
+You can create OpenSearch indexes using the following rake tasks:
 
 **Create all OpenSearch indexes (both OpenSearch::Indexer and ElasticBoostedContent):**
 
@@ -192,12 +174,10 @@ When `OPENSEARCH_APP_ENABLED=true`, you can create OpenSearch indexes using the 
     $ rake opensearch:create_boosted_content_index
 
 
-**Current Migration Status:**
-- Spider domains indexing (OpenSearch::Indexer) is being migrated to OpenSearch
-- ElasticBoostedContent index supports both Elasticsearch and OpenSearch via the `Es::CustomIndices` module
-- Other custom indices (ElasticFeaturedCollection, ElasticFederalRegisterDocument, etc.) are being deprecated and will not be migrated to OpenSearch
-- Analytics data (logstash indices) support both Elasticsearch and OpenSearch via the `Es::ELK` module
-- The migration is controlled by the `OPENSEARCH_APP_ENABLED` flag for simplified management
+**Index Overview:**
+- Spider domains search is served by `OpenSearch::Indexer`
+- Best-bets text is served by the `ElasticBoostedContent` index
+- Analytics data (logstash indices) is served by OpenSearch via the `Es::ELK` module
 
 ### MySQL Database
 

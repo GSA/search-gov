@@ -35,16 +35,12 @@ VCR.configure do |config|
     http_message.body.encoding.name == 'ASCII-8BIT' || !http_message.body.valid_encoding?
   end
 
-  config.ignore_hosts 'example.com', 'codeclimate.com', '127.0.0.1', 'googlechromelabs.github.io'
-  config.ignore_request do |request|
-    /codeclimate.com/ ===  URI(request.uri).host
-  end
+  config.ignore_hosts 'example.com', '127.0.0.1', 'googlechromelabs.github.io'
 
   config.ignore_request { |request| URI(request.uri).port.between?(9200, 9399) } # Elasticsearch and OpenSearch
   config.ignore_request { |request| URI(request.uri).port == 9998 } # Tika
 
   # Filter env variables used by VCR
-  config.filter_sensitive_data('<ANALYTICS_ELASTICSEARCH>') { { reader: { hosts: [ENV.fetch('ES_HOSTS', nil)], user: ENV.fetch('ES_USER', nil), password: ENV.fetch('ES_PASSWORD', nil) }, writers: [{ hosts: [ENV.fetch('ES_HOSTS', nil)], user: ENV.fetch('ES_USER', nil), password: ENV.fetch('ES_PASSWORD', nil) }] } }
   config.filter_sensitive_data('<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>') { ENV.fetch('AWS_ACCESS_KEY_ID', nil) }
   config.filter_sensitive_data('<AWS_IMAGE_BUCKET_SECRET_ACCESS_KEY>') { ENV.fetch('AWS_SECRET_ACCESS_KEY', nil) }
   config.filter_sensitive_data('<AWS_IMAGE_BUCKET_BUCKET>') { ENV.fetch('AWS_BUCKET', nil) }
@@ -52,7 +48,6 @@ VCR.configure do |config|
   config.filter_sensitive_data('<AWS_IMAGE_BUCKET_S3_REGION>') { ENV.fetch('AWS_REGION', nil) }
   config.filter_sensitive_data('<BING_V7_WEB_SUBSCRIPTION_ID>') { ENV.fetch('BING_WEB_SUBSCRIPTION_ID', nil) }
   config.filter_sensitive_data('<BING_V7_IMAGE_SUBSCRIPTION_ID>') { ENV.fetch('BING_IMAGE_SUBSCRIPTION', nil) }
-  config.filter_sensitive_data('<CUSTOM_INDICES_ELASTICSEARCH>') { { reader: { hosts: [ENV.fetch('ES_HOSTS', nil)], user: ENV.fetch('ES_USER', nil), password: ENV.fetch('ES_PASSWORD', nil) }, writers: [{ hosts: [ENV.fetch('ES_HOSTS', nil)], user: ENV.fetch('ES_USER', nil), password: ENV.fetch('ES_PASSWORD', nil) }] } }
   config.filter_sensitive_data('<DATADOG_API_ENABLED>') { ENV.fetch('DATADOG_ENABLED', nil) }
   config.filter_sensitive_data('<DATADOG_API_KEY>') { ENV.fetch('DATADOG_API_KEY', nil) }
   config.filter_sensitive_data('<DATADOG_APPLICATION_KEY>') { ENV.fetch('DATADOG_APPLICATION_KEY', nil) }

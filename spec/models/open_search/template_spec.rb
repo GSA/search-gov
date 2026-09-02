@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe SearchElastic::Template do
+describe OpenSearch::Template do
   subject(:template) { described_class.new('*test*', 1, 1) }
 
   let(:parsed_body) { JSON.parse(template.body) }

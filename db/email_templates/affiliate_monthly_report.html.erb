@@ -21,18 +21,16 @@
   <thead>
   <tr style="<%= tr_heading_style %>">
     <th style="<%= th_style %>">Site</th>
-    <th style="<%= th_style %>">Total Queries (Bots + Humans)</th>
-    <th style="<%= th_style %>">Real Queries (Humans only)</th>
-    <th style="<%= th_style %>">Real Queries vs. Last Month</th>
-    <th style="<%= th_style %>">Real Queries vs. Last Year</th>
-    <th style="<%= th_style %>">Real Clicks</th>
+    <th style="<%= th_style %>">Queries</th>
+    <th style="<%= th_style %>">Queries vs. Last Month</th>
+    <th style="<%= th_style %>">Queries vs. Last Year</th>
+    <th style="<%= th_style %>">Clicks</th>
   </tr>
   </thead>
   <tbody>
   <% @user_monthly_report.affiliate_stats.each do |affiliate_name, affiliate_stats| %>
     <tr style="<%= cycle('', tr_even_style) %>">
       <td style="<%= td_text_style %>"><%= affiliate_stats[:affiliate].display_name %></td>
-      <td style="<%= td_style %>"><%= number_with_delimiter(affiliate_stats[:total_unfiltered_queries]) %></td>
       <td style="<%= td_style %>"><%= number_with_delimiter(affiliate_stats[:total_queries]) %></td>
       <td style="<%= td_style %>"><%= number_to_percentage(affiliate_stats[:last_month_percent_change], :precision => 2) %></td>
       <td style="<%= td_style %>"><%= number_to_percentage(affiliate_stats[:last_year_percent_change], :precision => 2) %></td>
@@ -41,7 +39,6 @@
   <% end %>
   <tr style="<%= cycle('', tr_even_style) %>">
     <td style="<%= td_text_style %>">TOTAL</td>
-    <td style="<%= td_style %>"><%= number_with_delimiter(@user_monthly_report.total_stats[:total_unfiltered_queries]) %></td>
     <td style="<%= td_style %>"><%= number_with_delimiter(@user_monthly_report.total_stats[:total_queries]) %></td>
     <td style="<%= td_style %>"><%= number_to_percentage(@user_monthly_report.total_stats[:last_month_percent_change], :precision => 2) %></td>
     <td style="<%= td_style %>"><%= number_to_percentage(@user_monthly_report.total_stats[:last_year_percent_change], :precision => 2) %></td>
@@ -55,29 +52,27 @@
   <tbody>
   <% @user_monthly_report.affiliate_stats.each do |affiliate_name, affiliate_stats| %>
     <tr style="<%= tr_heading_style %>">
-      <th colspan="3" style="<%= th_style %>"><%= affiliate_stats[:affiliate].display_name %></th>
+      <th colspan="2" style="<%= th_style %>"><%= affiliate_stats[:affiliate].display_name %></th>
     </tr>
     <% if affiliate_stats[:popular_queries].is_a?(String) %>
       <tr>
-        <td colspan="3" style="<%= td_style %>"><%= affiliate_stats[:popular_queries] %></td>
+        <td colspan="2" style="<%= td_style %>"><%= affiliate_stats[:popular_queries] %></td>
       </tr>
     <% else %>
       <tr style="<%= tr_sub_heading_style %>">
         <th style="<%= th_style %>">Search Term</th>
-        <th style="<%= th_style %>">Total Queries (Bots + Humans)</th>
-        <th style="<%= th_style %>">Real Queries</th>
+        <th style="<%= th_style %>">Queries</th>
       </tr>
-      <% affiliate_stats[:popular_queries].each do |(term, total_queries, real_queries)| %>
+      <% affiliate_stats[:popular_queries].each do |(term, queries)| %>
         <tr style="<%= cycle('', tr_even_style, :name => 'colors') %>">
           <td style="<%= td_text_style %>"><%= term %></td>
-          <td style="<%= td_style %>"><%= number_with_delimiter(total_queries) %></td>
-          <td style="<%= td_style %>"><%= number_with_delimiter(real_queries) %></td>
+          <td style="<%= td_style %>"><%= number_with_delimiter(queries) %></td>
         </tr>
       <% end %>
       <% reset_cycle('colors') %>
     <% end %>
     <tr>
-      <td colspan="3" style="<%= td_blank_style %>">&nbsp;</td>
+      <td colspan="2" style="<%= td_blank_style %>">&nbsp;</td>
     </tr>
   <% end %>
   </tbody>
@@ -88,29 +83,27 @@
   <tbody>
   <% @user_monthly_report.affiliate_stats.each do |affiliate_name, affiliate_stats| %>
     <tr style="<%= tr_heading_style %>">
-      <th colspan="3" style="<%= th_style %>"><%= affiliate_stats[:affiliate].display_name %></th>
+      <th colspan="2" style="<%= th_style %>"><%= affiliate_stats[:affiliate].display_name %></th>
     </tr>
     <% if affiliate_stats[:popular_clicks].is_a?(String) %>
       <tr>
-        <td colspan="3" style="<%= td_style %>"><%= affiliate_stats[:popular_clicks] %></td>
+        <td colspan="2" style="<%= td_style %>"><%= affiliate_stats[:popular_clicks] %></td>
       </tr>
     <% else %>
       <tr style="<%= tr_sub_heading_style %>">
         <th style="<%= th_style %>">URL</th>
-        <th style="<%= th_style %>">Total Clicks (Bots + Humans)</th>
-        <th style="<%= th_style %>">Real Clicks</th>
+        <th style="<%= th_style %>">Clicks</th>
       </tr>
-      <% affiliate_stats[:popular_clicks].each do |(url, total_clicks, real_clicks)| %>
+      <% affiliate_stats[:popular_clicks].each do |(url, clicks)| %>
         <tr style="<%= cycle('', tr_even_style, :name => 'colors') %>">
           <td style="<%= td_text_style %>"><%= url %></td>
-          <td style="<%= td_style %>"><%= number_with_delimiter(total_clicks) %></td>
-          <td style="<%= td_style %>"><%= number_with_delimiter(real_clicks) %></td>
+          <td style="<%= td_style %>"><%= number_with_delimiter(clicks) %></td>
         </tr>
       <% end %>
       <% reset_cycle('colors') %>
     <% end %>
     <tr>
-      <td colspan="3" style="<%= td_blank_style %>">&nbsp;</td>
+      <td colspan="2" style="<%= td_blank_style %>">&nbsp;</td>
     </tr>
   <% end %>
   </tbody>

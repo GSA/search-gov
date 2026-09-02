@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_05_29_160056) do
+ActiveRecord::Schema[7.1].define(version: 2026_08_19_180000) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -100,6 +100,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_05_29_160056) do
     t.boolean "looking_for_government_services", default: true, null: false
     t.boolean "show_search_filter_settings", default: false, null: false
     t.boolean "gets_results_from_all_domains", default: false, null: false
+    t.text "notes"
     t.index ["name"], name: "index_affiliates_on_name", unique: true
   end
 
@@ -186,7 +187,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_05_29_160056) do
     t.index ["output_target", "allowed_domains"], name: "index_crawl_configs_on_output_target_and_allowed_domains", unique: true, length: { allowed_domains: 255 }
     t.check_constraint "(`depth_limit` >= 0) and (`depth_limit` <= 150)", name: "crawl_configs_depth_limit_range"
   end
-  
+
   create_table "document_collections", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "affiliate_id", null: false
     t.string "name", null: false
@@ -638,7 +639,6 @@ ActiveRecord::Schema[7.1].define(version: 2026_05_29_160056) do
     t.boolean "welcome_email_sent", default: false, null: false
     t.boolean "requires_manual_approval", default: false, null: false
     t.integer "default_affiliate_id"
-    t.boolean "sees_filtered_totals", default: true, null: false
     t.string "uid"
     t.string "first_name"
     t.string "last_name"

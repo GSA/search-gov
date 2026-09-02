@@ -142,11 +142,6 @@ module SitesHelper
     )
   end
 
-  def query_times(top_query, sees_filtered_totals)
-    index = sees_filtered_totals ? 2 : 1
-    "#{top_query[0]} [#{top_query[index]}]"
-  end
-
   def user_row_css_class_hash(user)
     row_class = case user.approval_status
                 when 'pending_approval'

@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe SearchElastic::IndexCreate do
+describe OpenSearch::IndexCreate do
   let(:index_name) { 'test-index' }
   let(:shards) { 1 }
   let(:replicas) { 1 }
@@ -16,16 +16,16 @@ describe SearchElastic::IndexCreate do
       }.not_to raise_error
     end
 
-    it 'accepts ELASTICSEARCH as service_name' do
+    it 'accepts LEGACY_OPENSEARCH as service_name' do
       expect {
-        described_class.new(service_name: 'ELASTICSEARCH', index_name: index_name, shards: shards, replicas: replicas)
+        described_class.new(service_name: 'LEGACY_OPENSEARCH', index_name: index_name, shards: shards, replicas: replicas)
       }.not_to raise_error
     end
 
     it 'raises ArgumentError for invalid service_name' do
       expect {
         described_class.new(service_name: 'INVALID', index_name: index_name, shards: shards, replicas: replicas)
-      }.to raise_error(ArgumentError, /must be 'ELASTICSEARCH' or 'OPENSEARCH'/)
+      }.to raise_error(ArgumentError, /must be 'OPENSEARCH' or 'LEGACY_OPENSEARCH'/)
     end
   end
 

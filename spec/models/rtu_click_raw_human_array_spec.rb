@@ -18,12 +18,11 @@ describe RtuClickRawHumanArray do
       end
 
       before do
-        allow(RtuTopClicks).to receive(:new).with(anything, false).and_return double(RtuTopClicks, top_n: [['click6', 55], ['click5', 54], ['click4', 14]])
-        allow(RtuTopClicks).to receive(:new).with(anything, true).and_return double(RtuTopClicks, top_n: [['click6', 53], ['click5', 50]])
+        allow(RtuTopClicks).to receive(:new).and_return double(RtuTopClicks, top_n: [['click6', 53], ['click5', 50], ['click4', 14]])
       end
 
-      it 'should return an array of [click, total, human] sorted by desc human' do
-        expect(click_raw_human_array.top_clicks).to match_array([['click6', 55, 53], ['click5', 54, 50], ['click4', 14, 0]])
+      it 'should return an array of [click, count] sorted by desc count' do
+        expect(click_raw_human_array.top_clicks).to eq([['click6', 53], ['click5', 50], ['click4', 14]])
       end
 
       it 'generates a DateRangeTopNQuery with the expected options' do
@@ -42,7 +41,7 @@ describe RtuClickRawHumanArray do
     end
 
     context 'when there really is insufficient data' do
-      let(:click_raw_human_array) { described_class.new('usagov', nil, nil, 5) }
+      let(:click_raw_human_array) { described_class.new('usagov', Date.current, Date.current, 5) }
 
       before do
         allow(RtuTopClicks).to receive(:new).and_return double(RtuTopClicks, top_n: [])
