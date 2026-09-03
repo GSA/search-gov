@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class RtuDateRange
+  include LogstashPrefix
   attr_reader :affiliate_name, :type
 
   def initialize(affiliate_name, type)
@@ -26,7 +27,7 @@ class RtuDateRange
 
   def search(query_body)
     Es::ELK.client_reader.search(
-      index: 'logstash-*',
+      index: "#{logstash_prefix}*",
       body: query_body,
       size: 0
     )

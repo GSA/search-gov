@@ -10,12 +10,9 @@ class Sites::QueryDownloadsController < Sites::SetupSiteController
     filename = [@site.name, @start_date, @end_date].join('_')
     header = [
       'Search Term',
-      'Real (Humans only) Queries',
-      'Real Clicks',
-      'Real CTR',
-      'Total (Bots + Humans) Queries',
-      'Total Clicks',
-      'Total CTR'
+      'Queries',
+      'Clicks',
+      'CTR'
     ]
     csv_response(filename, header, top_queries)
   end
@@ -23,22 +20,14 @@ class Sites::QueryDownloadsController < Sites::SetupSiteController
   private
 
   def top_queries
-    report_array = query_raw_count_array.map do |query_term, query_raw_count|
-      query_human_count = query_human_count_hash[query_term] || 0
-      click_raw_count = click_raw_count_hash[query_term] || 0
-      click_human_count = click_human_count_hash[query_term] || 0
-
-      ctr_raw = ctr(click_raw_count, query_raw_count)
-      ctr_human = ctr(click_human_count, query_human_count)
+    report_array = query_count_array.map do |query_term, query_count|
+      click_count = click_count_hash[query_term] || 0
 
       [
         query_term,
-        query_human_count,
-        click_human_count,
-        ctr_human,
-        query_raw_count,
-        click_raw_count,
-        ctr_raw
+        query_count,
+        click_count,
+        ctr(click_count, query_count)
       ]
     end
 
@@ -62,31 +51,11 @@ class Sites::QueryDownloadsController < Sites::SetupSiteController
     )
   end
 
-  def query_raw_count_array
-    @query_raw_count_array ||= begin
-      rtu_top_queries = RtuTopQueries.new(date_range_top_n_query('search').body, false)
-      rtu_top_queries.top_n
-    end
+  def query_count_array
+    @query_count_array ||= RtuTopQueries.new(date_range_top_n_query('search').body).top_n
   end
 
-  def query_human_count_hash
-    @query_human_count_hash ||= begin
-      top_human_queries = RtuTopQueries.new(date_range_top_n_query('search').body, true)
-      Hash[top_human_queries.top_n]
-    end
-  end
-
-  def click_raw_count_hash
-    @click_raw_count_hash ||= begin
-      top_clicks = RtuTopClicks.new(date_range_top_n_query('click').body, false)
-      Hash[top_clicks.top_n]
-    end
-  end
-
-  def click_human_count_hash
-    @click_human_count_hash ||= begin
-      top_human_clicks = RtuTopClicks.new(date_range_top_n_query('click').body, true)
-      Hash[top_human_clicks.top_n]
-    end
+  def click_count_hash
+    @click_count_hash ||= Hash[RtuTopClicks.new(date_range_top_n_query('click').body).top_n]
   end
 end

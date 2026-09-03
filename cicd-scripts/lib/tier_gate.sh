@@ -174,3 +174,16 @@ is_legacy_capistrano_tier() {
       ;;
   esac
 }
+
+# Returns success (0) if this instance is a cron tier.
+# Production's "cron" is still Capistrano-managed today, so it returns 1.
+is_cron_tier() {
+  case "${TERRAFORM_MODULE:-unknown}" in
+    cron|cron-green)
+      return 0
+      ;;
+    *)
+      return 1
+      ;;
+  esac
+}

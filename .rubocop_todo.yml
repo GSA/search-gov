@@ -91,7 +91,6 @@ Layout/ClosingParenthesisIndentation:
   Exclude:
     - 'app/controllers/sites/no_results_pages_controller.rb'
     - 'app/models/searchgov_url.rb'
-    - 'spec/jobs/legacy/logstash_deduper_spec.rb'
     - 'spec/lib/jobs_spec.rb'
     - 'spec/models/logstash_queries/date_range_top_n_query_spec.rb'
 
@@ -250,7 +249,6 @@ Layout/FirstArrayElementIndentation:
     - 'app/models/searchgov_url.rb'
     - 'db/migrate/20180328223830_reload_formerly_mandrill_templates.rb'
     - 'db/migrate/20180329180056_add_watcher_email_templates.rb'
-    - 'spec/jobs/legacy/logstash_deduper_spec.rb'
 
 # Offense count: 57
 # This cop supports safe autocorrection (--autocorrect).
@@ -306,7 +304,6 @@ Layout/LeadingCommentSpace:
     - '.simplecov'
     - 'app/controllers/searches_controller.rb'
     - 'app/models/elastic_blended.rb'
-    - 'app/models/searchgov_crawler.rb'
     - 'app/models/web_document.rb'
     - 'config/initializers/extensions/hash.rb'
     - 'db/migrate/20160906165419_add_template_id_to_affiliate_templates.rb'
@@ -315,7 +312,6 @@ Layout/LeadingCommentSpace:
     - 'spec/lib/document_fetcher_spec.rb'
     - 'spec/lib/results_rejector_spec.rb'
     - 'spec/models/boosted_content_bulk_uploader_spec.rb'
-    - 'spec/models/searchgov_crawler_spec.rb'
     - 'spec/models/web_results_post_processor_spec.rb'
 
 # Offense count: 7
@@ -634,7 +630,6 @@ Lint/AmbiguousRegexpLiteral:
 # Configuration parameters: AllowSafeAssignment.
 Lint/AssignmentInCondition:
   Exclude:
-    - 'app/jobs/legacy/logstash_deduper.rb'
     - 'db/migrate/20100313165633_update_gray_affiliate_template.rb'
     - 'db/migrate/20220113191157_add_service_name_to_active_storage_blobs.active_storage.rb'
 
@@ -643,7 +638,6 @@ Lint/AssignmentInCondition:
 # AllowedMethods: enums
 Lint/ConstantDefinitionInBlock:
   Exclude:
-    - 'lib/tasks/fake_searches.rake'
     - 'spec/lib/results_rejector_spec.rb'
 
 # Offense count: 2
@@ -801,9 +795,7 @@ Lint/UnusedBlockArgument:
     - 'lib/importers/flickr_data.rb'
     - 'lib/tasks/bulk_import.rake'
     - 'lib/tasks/elastic_rails.rake'
-    - 'lib/tasks/fake_searches.rake'
     - 'lib/tasks/features.rake'
-    - 'lib/tasks/logstash.rake'
     - 'lib/tasks/reports.rake'
     - 'lib/tasks/sayt_suggestions.rake'
     - 'spec/lib/middlewares/filtered_jsonp_spec.rb'
@@ -850,7 +842,6 @@ Lint/UselessAssignment:
     - 'app/helpers/text_helper.rb'
     - 'app/models/trending_url.rb'
     - 'features/support/paths.rb'
-    - 'lib/data_generator/index_adapter.rb'
     - 'spec/lib/parsers/federal_register_document_api_parser_spec.rb'
     - 'spec/mailers/emailer_spec.rb'
     - 'spec/models/govbox_set_spec.rb'
@@ -915,7 +906,6 @@ Naming/AccessorMethodName:
   Exclude:
     - 'app/controllers/searches_controller.rb'
     - 'app/models/sayt_search.rb'
-    - 'app/models/searchgov_crawler.rb'
     - 'app/models/searchgov_url.rb'
     - 'app/models/web_search.rb'
 
@@ -1144,7 +1134,6 @@ Performance/StringReplacement:
 # This cop supports unsafe autocorrection (--autocorrect-all).
 Performance/TimesMap:
   Exclude:
-    - 'lib/data_generator/search_pool.rb'
     - 'lib/watcher_dsl.rb'
     - 'spec/models/results_with_body_and_description_post_processor_spec.rb'
 
@@ -1354,7 +1343,6 @@ RSpec/HooksBeforeExamples:
 RSpec/ImplicitExpect:
   Exclude:
     - 'spec/lib/api/docs_search_options_spec.rb'
-    - 'spec/lib/data_generator/fake_spec.rb'
     - 'spec/mailers/emailer_spec.rb'
     - 'spec/models/api_news_search_spec.rb'
     - 'spec/models/boosted_content_spec.rb'
@@ -1380,11 +1368,9 @@ RSpec/ImplicitSubject:
 # Configuration parameters: Max, AllowedIdentifiers, AllowedPatterns.
 RSpec/IndexedLet:
   Exclude:
-    - 'spec/jobs/legacy/logstash_deduper_spec.rb'
     - 'spec/jobs/searchgov_domain_destroyer_job_spec.rb'
     - 'spec/lib/fuzzy_matcher_spec.rb'
     - 'spec/lib/importers/youtube_data_spec.rb'
-    - 'spec/lib/tasks/poplate_user_spec.rb'
     - 'spec/lib/tasks/reports_spec.rb'
     - 'spec/models/rss_feed_url_spec.rb'
     - 'spec/support/indexable_behavior.rb'
@@ -1481,8 +1467,6 @@ RSpec/NamedSubject:
     - 'spec/engines/advanced_query_builder_spec.rb'
     - 'spec/engines/search_engine_spec.rb'
     - 'spec/helpers/sites_helper_spec.rb'
-    - 'spec/lib/data_generator/index_adapter_spec.rb'
-    - 'spec/lib/data_generator/search_pool_spec.rb'
     - 'spec/lib/site_autodiscoverer_spec.rb'
     - 'spec/models/affiliate_spec.rb'
     - 'spec/models/api_news_search_spec.rb'
@@ -1610,7 +1594,6 @@ RSpec/SpecFilePathFormat:
     - 'spec/helpers/numbers_helper_spec.rb'
     - 'spec/jobs/legacy/apply_filters_to_sayt_suggestion_spec.rb'
     - 'spec/jobs/legacy/apply_sayt_filters_spec.rb'
-    - 'spec/jobs/legacy/indexed_document_validator_spec.rb'
     - 'spec/jobs/legacy/oasis_mrss_notification_spec.rb'
     - 'spec/jobs/legacy/sayt_suggestion_discovery_spec.rb'
     - 'spec/jobs/legacy/site_destroyer_spec.rb'
@@ -1749,8 +1732,6 @@ Rails/DangerousColumnNames:
 # SupportedStyles: strict, flexible
 Rails/Date:
   Exclude:
-    - 'lib/tasks/fake_searches.rake'
-    - 'spec/jobs/legacy/logstash_deduper_spec.rb'
     - 'spec/mailers/emailer_spec.rb'
     - 'spec/models/featured_collection_spec.rb'
     - 'spec/requests/sayt_spec.rb'
@@ -1843,7 +1824,6 @@ Rails/HelperInstanceVariable:
     - 'app/helpers/mobile_navigations_helper.rb'
     - 'app/helpers/searches/custom_link_renderer.rb'
     - 'app/helpers/sites_helper.rb'
-    - 'app/helpers/users_helper.rb'
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
@@ -2172,10 +2152,8 @@ Security/Eval:
 # Offense count: 8
 Security/Open:
   Exclude:
-    - 'app/models/searchgov_crawler.rb'
     - 'lib/site_autodiscoverer.rb'
     - 'spec/models/indexed_document_spec.rb'
-    - 'spec/models/searchgov_crawler_spec.rb'
 
 # Offense count: 16
 # This cop supports safe autocorrection (--autocorrect).
@@ -2186,9 +2164,6 @@ Style/AccessorGrouping:
     - 'app/engines/bing_response_parser.rb'
     - 'app/models/document_fetch_logger.rb'
     - 'app/models/rtu_queries_request.rb'
-    - 'lib/data_generator/fake.rb'
-    - 'lib/data_generator/index_adapter.rb'
-    - 'lib/data_generator/search_pool.rb'
 
 # Offense count: 2
 # This cop supports safe autocorrection (--autocorrect).
@@ -2241,7 +2216,6 @@ Style/BlockDelimiters:
 Style/CaseEquality:
   Exclude:
     - 'app/models/html_document.rb'
-    - 'app/models/searchgov_crawler.rb'
     - 'app/models/searchgov_url.rb'
     - 'lib/search_elastic/document_query.rb'
     - 'spec/support/shared_vcr_setup.rb'
@@ -2468,7 +2442,6 @@ Style/HashConversion:
   Exclude:
     - 'app/controllers/concerns/hintable.rb'
     - 'app/controllers/sites/query_downloads_controller.rb'
-    - 'app/jobs/legacy/logstash_deduper.rb'
     - 'app/models/rtu_dashboard.rb'
     - 'app/models/rtu_module_stats_analytics.rb'
     - 'app/models/rtu_queries_request.rb'
@@ -2477,7 +2450,6 @@ Style/HashConversion:
     - 'db/migrate/20111231231620_seed_site_domains.rb'
     - 'features/step_definitions/featured_collection_steps.rb'
     - 'lib/ctrs.rb'
-    - 'lib/data_generator/search_pool.rb'
     - 'lib/elastic_results.rb'
     - 'lib/parsers/federal_register_document_api_parser.rb'
 
@@ -2568,7 +2540,6 @@ Style/MethodCallWithoutArgsParentheses:
   Exclude:
     - 'lib/tasks/search_elastic.rake'
     - 'spec/lib/tasks/reports_spec.rb'
-    - 'spec/models/searchgov_crawler_spec.rb'
     - 'spec/support/resque_job_stats_behavior.rb'
 
 # Offense count: 1
@@ -2697,7 +2668,6 @@ Style/NilComparison:
 # This cop supports safe autocorrection (--autocorrect).
 Style/Not:
   Exclude:
-    - 'app/jobs/legacy/logstash_deduper.rb'
     - 'lib/tasks/elastic_rails.rake'
 
 # Offense count: 7
@@ -2757,7 +2727,6 @@ Style/ParallelAssignment:
   Exclude:
     - 'app/controllers/sites/analytics_controller.rb'
     - 'app/helpers/searches/custom_link_renderer.rb'
-    - 'app/jobs/legacy/logstash_deduper.rb'
     - 'app/models/logstash_queries/top_query_match_query.rb'
     - 'app/models/query_ctr_stat.rb'
     - 'app/models/rtu_module_stats_analytics.rb'
@@ -2838,7 +2807,6 @@ Style/RedundantBegin:
     - 'app/models/boosted_content_bulk_uploader.rb'
     - 'app/models/featured_collection.rb'
     - 'app/models/indexed_document.rb'
-    - 'app/models/searchgov_crawler.rb'
     - 'config/initializers/extensions/uri.rb'
     - 'db/migrate/20160906165419_add_template_id_to_affiliate_templates.rb'
     - 'lib/resque_job_stats.rb'
@@ -3089,7 +3057,6 @@ Style/StringLiteralsInInterpolation:
   Exclude:
     - 'app/models/med_topic.rb'
     - 'app/models/rtu_dashboard.rb'
-    - 'app/models/searchgov_crawler.rb'
     - 'features/step_definitions/trending_urls_steps.rb'
     - 'lib/logstash_prefix.rb'
 
@@ -3176,12 +3143,10 @@ Style/TrailingCommaInHashLiteral:
     - 'app/engines/search_engine.rb'
     - 'app/models/api_video_search.rb'
     - 'app/models/document_fetch_logger.rb'
-    - 'app/models/searchgov_crawler.rb'
     - 'app/models/searchgov_url.rb'
     - 'app/models/user_monthly_report.rb'
     - 'config/deploy.rb'
     - 'db/seeds/language.rb'
-    - 'lib/data_generator/index_adapter.rb'
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).

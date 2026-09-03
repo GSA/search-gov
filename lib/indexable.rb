@@ -6,17 +6,12 @@ module Indexable
   DELIMTER = '-'
   NO_HITS = { 'hits' => { 'total' => 0, 'offset' => 0, 'hits' => [] } }.freeze
 
-  # Override in subclass to use OpenSearch instead of Elasticsearch
-  def use_opensearch?
-    false
-  end
-
   def client_reader
-    use_opensearch? ? OpenSearchConfig.search_client : Es::CustomIndices.client_reader
+    OpenSearchConfig.search_client
   end
 
   def client_writers
-    use_opensearch? ? [OpenSearchConfig.search_client] : Es::CustomIndices.client_writers
+    [OpenSearchConfig.search_client]
   end
 
   def index_name
@@ -49,13 +44,10 @@ module Indexable
 
   def create_index
     client_writers.each do |client|
-      index_mappings = use_opensearch? ? mappings.values.first : mappings
-
       create_params = {
         index: index_name,
-        body: { settings: settings, mappings: index_mappings }
+        body: { settings: settings, mappings: mappings.values.first }
       }
-      create_params[:include_type_name] = true unless use_opensearch?
 
       client.indices.create(create_params)
       client.indices.put_alias(index: index_name, name: writer_alias)
@@ -66,13 +58,10 @@ module Indexable
   def migrate_writer
     @index_name = nil
     client_writers.each do |client|
-      index_mappings = use_opensearch? ? mappings.values.first : mappings
-
       create_params = {
         index: index_name,
-        body: { settings: settings, mappings: index_mappings }
+        body: { settings: settings, mappings: mappings.values.first }
       }
-      create_params[:include_type_name] = true unless use_opensearch?
 
       client.indices.create(create_params)
     end
@@ -117,7 +106,6 @@ module Indexable
   def bulkify(records)
     records.reduce([]) do |bulk_array, record|
       meta_data = { _index: writer_alias, _id: record[:id] }
-      meta_data[:_type] = index_type unless use_opensearch?
       meta_data.merge!(_ttl: record[:ttl]) if record[:ttl]
       bulk_array << { index: meta_data }
       bulk_array << record.except(:id, :ttl)
@@ -127,14 +115,11 @@ module Indexable
   def bulkify_delete(ids)
     ids.map do |id|
       meta_data = { _index: writer_alias, _id: id }
-      meta_data[:_type] = index_type unless use_opensearch?
       { delete: meta_data }
     end
   end
 
   def search_for(options)
-    return "#{name}Results".constantize.new(NO_HITS) unless use_opensearch? || Es.custom_indices_enabled?
-
     query = "#{name}Query".constantize.new(options)
     ActiveSupport::Notifications.instrument('elastic_search.usasearch', query: query.body, index: name) do
       search(query)
@@ -169,7 +154,6 @@ module Indexable
                # For compatibility with ES 6. This parameter will be removed in ES 8.
                # https://www.elastic.co/guide/en/elasticsearch/reference/current/breaking-changes-7.0.html#hits-total-now-object-search-response
                rest_total_hits_as_int: true }
-    params[:type] = index_type unless use_opensearch?
     params[:sort] = query.sort if query.sort.present?
 
     result = client_reader.search(params)

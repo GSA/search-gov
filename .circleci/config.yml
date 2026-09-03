@@ -11,8 +11,6 @@ executors:
     parameters:
       ruby_version:
         type: string
-      elasticsearch_version:
-        type: string
       mysql_version:
         type: string
 
@@ -30,18 +28,6 @@ executors:
 
       - image: redis:6.2
 
-      - image: docker.elastic.co/elasticsearch/elasticsearch:<< parameters.elasticsearch_version >>
-        environment:
-          bootstrap.memory_lock: true
-          cluster.name: es_<< parameters.elasticsearch_version >>
-          discovery.type: single-node
-          http.port: 9200
-          transport.port: 9400
-          xpack.license.self_generated.type: trial
-          xpack.monitoring.enabled: false
-          xpack.security.enabled: false
-          ES_JAVA_OPTS: "-Xms256m -Xmx256m"
-
       - image: opensearchproject/opensearch:3
         environment:
           cluster.name: os-cluster
@@ -49,22 +35,19 @@ executors:
           bootstrap.memory_lock: false
           http.port: 9300
           transport.port: 9500
-          plugins.security.disabled: "true"
+          DISABLE_SECURITY_PLUGIN: "true"
+          DISABLE_INSTALL_DEMO_CONFIG: "true"
           OPENSEARCH_JAVA_OPTS: "-Xms256m -Xmx256m"
           OPENSEARCH_INITIAL_ADMIN_PASSWORD: S3venDr4gon!
+        # Install analysis plugins before OpenSearch starts. `docker restart` of
+        # the CircleCI service container SIGTERMs PID 1 (exit 143) and fails the
+        # job even when RSpec passed.
+        entrypoint: ["/bin/bash", "-c"]
+        command: ["trap 'exit 0' TERM INT; /usr/share/opensearch/bin/opensearch-plugin install --batch analysis-icu analysis-kuromoji analysis-smartcn; /usr/share/opensearch/opensearch-docker-entrypoint.sh opensearch & wait $!"]
 
       - image: apache/tika:2.4.1
 
 commands:
-  wait_for_elasticsearch:
-    description: "Wait for Elasticsearch cluster health"
-    steps:
-      - run:
-          name: Wait for Elasticsearch cluster health
-          command: |
-            echo "Waiting for Elasticsearch cluster health..."
-            curl --fail --silent --show-error \
-              "http://localhost:9200/_cluster/health?wait_for_status=yellow&timeout=120s"
   wait_for_opensearch:
     description: "Wait for OpenSearch cluster health"
     steps:
@@ -105,31 +88,11 @@ commands:
     description: "Prepare the test database"
     steps:
       - run: bundle exec rake db:setup
-  install_elasticsearch_plugins:
-    description: "Install Elasticsearch Plugins"
-    parameters:
-      elasticsearch_version:
-        type: string
-    steps:
-      - run:
-          name: Install Elasticsearch Plugins
-          command: |
-            until curl -sS localhost:9200; do sleep 1; done
-            elasticsearch_container_id=$(docker ps -qf "ancestor=docker.elastic.co/elasticsearch/elasticsearch:<< parameters.elasticsearch_version >>")
-            docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-kuromoji
-            docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-icu
-            docker exec $elasticsearch_container_id elasticsearch-plugin install analysis-smartcn
-            # Restart Elasticsearch to apply the plugins
-            docker restart $elasticsearch_container_id
-            # Wait for Elasticsearch to be ready after restart
-            dockerize -wait tcp://localhost:9200 -timeout 1m
 
 jobs:
   checkout_code:
     parameters:
       ruby_version:
-        type: string
-      elasticsearch_version:
         type: string
       mysql_version:
         type: string
@@ -137,16 +100,15 @@ jobs:
     executor:
       name: test_executor
       ruby_version: << parameters.ruby_version >>
-      elasticsearch_version: << parameters.elasticsearch_version >>
       mysql_version: << parameters.mysql_version >>
 
     steps:
       - checkout
 
       - run:
-          name: Wait for Elasticsearch
-          command: dockerize -wait tcp://localhost:9200 -timeout 1m
-      - wait_for_elasticsearch
+          name: Wait for OpenSearch
+          command: dockerize -wait tcp://localhost:9300 -timeout 2m
+      - wait_for_opensearch
 
       - save_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
@@ -157,15 +119,12 @@ jobs:
     parameters:
       ruby_version:
         type: string
-      elasticsearch_version:
-        type: string
       mysql_version:
         type: string
 
     executor:
       name: test_executor
       ruby_version: << parameters.ruby_version >>
-      elasticsearch_version: << parameters.elasticsearch_version >>
       mysql_version: << parameters.mysql_version >>
 
     parallelism: 6
@@ -182,11 +141,6 @@ jobs:
 
       - install_firefox
 
-      - install_elasticsearch_plugins:
-          elasticsearch_version: << parameters.elasticsearch_version >>
-
-      - wait_for_elasticsearch
-
       - wait_for_opensearch
 
       - prepare_database
@@ -196,7 +150,6 @@ jobs:
       - run:
           name: Run Tests
           command: |
-            bundle exec rake usasearch:elasticsearch:create_indexes
             bin/rails opensearch:create_all_indexes
 
             mkdir /tmp/test-results
@@ -219,15 +172,12 @@ jobs:
     parameters:
       ruby_version:
         type: string
-      elasticsearch_version:
-        type: string
       mysql_version:
         type: string
 
     executor:
       name: test_executor
       ruby_version: << parameters.ruby_version >>
-      elasticsearch_version: << parameters.elasticsearch_version >>
       mysql_version: << parameters.mysql_version >>
 
     parallelism: 10
@@ -244,11 +194,6 @@ jobs:
 
       - install_firefox
 
-      - install_elasticsearch_plugins:
-          elasticsearch_version: << parameters.elasticsearch_version >>
-
-      - wait_for_elasticsearch
-
       - wait_for_opensearch
 
       - prepare_database
@@ -258,7 +203,6 @@ jobs:
       - run:
           name: Run Tests
           command: |
-            bundle exec rake usasearch:elasticsearch:create_indexes
             bin/rails opensearch:create_all_indexes
 
 
@@ -284,8 +228,6 @@ jobs:
     parameters:
       ruby_version:
         type: string
-      elasticsearch_version:
-        type: string
       mysql_version:
         type: string
       node_version:
@@ -294,7 +236,6 @@ jobs:
     executor:
       name: test_executor
       ruby_version: << parameters.ruby_version >>
-      elasticsearch_version: << parameters.elasticsearch_version >>
       mysql_version: << parameters.mysql_version >>
 
     steps:
@@ -322,40 +263,35 @@ workflows:
   build_and_test:
     jobs:
       - checkout_code:
-          name: "checkout code: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>, MySQL << matrix.mysql_version >>"
+          # Keep the ES version in the GitHub status context so required
+          # checks from main still report. The ES container is gone.
+          name: "checkout code: Ruby << matrix.ruby_version >>, ES 7.17.7, MySQL << matrix.mysql_version >>"
           matrix:
             parameters:
               ruby_version:
                 - 3.3.7
-              elasticsearch_version:
-                - 7.17.7
-                # not yet compatible with Elasticsearch 8
               mysql_version:
                 - "8.0.40"
 
       - rspec:
           requires:
             - checkout_code
-          name: "rspec: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>, MySQL << matrix.mysql_version >>"
+          name: "rspec: Ruby << matrix.ruby_version >>, ES 7.17.7, MySQL << matrix.mysql_version >>"
           matrix:
             parameters:
               ruby_version:
                 - 3.3.7
-              elasticsearch_version:
-                - 7.17.7
               mysql_version:
                 - "8.0.40"
 
       - cucumber:
           requires:
             - checkout_code
-          name: "cucumber: Ruby << matrix.ruby_version >>, ES << matrix.elasticsearch_version >>, MySQL << matrix.mysql_version >>"
+          name: "cucumber: Ruby << matrix.ruby_version >>, ES 7.17.7, MySQL << matrix.mysql_version >>"
           matrix:
             parameters:
               ruby_version:
                 - 3.3.7
-              elasticsearch_version:
-                - 7.17.7
               mysql_version:
                 - "8.0.40"
 
@@ -367,8 +303,6 @@ workflows:
             parameters:
               ruby_version:
                 - 3.3.7
-              elasticsearch_version:
-                - 7.17.7
               mysql_version:
                 - "8.0.40"
               node_version:
