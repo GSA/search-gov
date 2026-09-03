@@ -339,7 +339,13 @@ When in doubt, just use Resque.enqueue() instead of Resque.enqueue_with_priority
 (Note: newer jobs inherit from ActiveJob, using the resque queue adapter. We are in the process of migrating the older jobs to ActiveJob.)
 
 ### Scheduled jobs
-We use the [resque-scheduler](https://github.com/resque/resque-scheduler) gem to schedule delayed jobs. Use [ActiveJob](http://api.rubyonrails.org/classes/ActiveJob/Core/ClassMethods.html)'s `:wait` or `:wait_until` options to enqueue delayed jobs, or schedule them in `config/resque_schedule.yml`.
+
+There are two Rails schedule files. Do not list the same job in both.
+
+- `config/resque_schedule.yml` — recurring Resque cron on **crawler** hosts via systemd `resque-scheduler.service` (`rake resque:scheduler`). Production currently schedules `SitemapMonitorJob` every 4 hours. This is the source of truth for that job. Each crawler that runs the scheduler process will enqueue it.
+- `config/schedule.rb` — whenever crontab on **cron** hosts (Capistrano `roles: [:cron]`). Rake/runner jobs only.
+
+The resque-scheduler **process** must keep running even if the YAML file is empty: delayed jobs use ActiveJob `:wait` / `:wait_until` (for example `SearchgovDomainIndexerJob.set(wait: delay.seconds)`).
 
 Example:
 
