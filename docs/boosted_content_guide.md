@@ -19,40 +19,30 @@ When a user searches, they see "Recommended by [Site Name]" section displaying 2
 
 BoostedContent follows a **two-stage data flow**:
 
+```mermaid
+flowchart TD
+    subgraph Stage1["Stage 1: Data Indexing (MySQL ➔ OpenSearch)"]
+        direction TB
+        A[("BoostedContent (MySQL)")]
+        --> B["ElasticBoostedContentData (transforms data)"]
+        --> C["ElasticResqueIndexer (batch processor via Resque)"]
+        --> D["ElasticBoostedContent.index() (sends to OpenSearch"]
+        --> E[("OpenSearch Index")]
+    end
 ```
-┌─────────────────────────────────────────────────────┐
-│ Stage 1: Data Indexing (MySQL → OpenSearch)         │
-├─────────────────────────────────────────────────────┤
-│                                                      │
-│  BoostedContent (MySQL)                             │
-│         ↓                                             │
-│  ElasticBoostedContentData (transforms data)        │
-│         ↓                                             │
-│  ElasticResqueIndexer (batch processor via Resque)  │
-│         ↓                                             │
-│  ElasticBoostedContent.index() (sends to OpenSearch)│
-│         ↓                                             │
-│  OpenSearch Index                                    │
-└─────────────────────────────────────────────────────┘
 
-┌─────────────────────────────────────────────────────┐
-│ Stage 2: Search Query (OpenSearch → Results)        │
-├─────────────────────────────────────────────────────┤
-│                                                      │
-│  Search Request (q: "diabetes")                     │
-│         ↓                                             │
-│  GovboxSet.init_text_best_bets()                    │
-│         ↓                                             │
-│  ElasticBoostedContent.search_for(options)          │
-│         ↓                                             │
-│  ElasticBoostedContentQuery (builds query)          │
-│         ↓                                             │
-│  OpenSearch searches index                          │
-│         ↓                                             │
-│  ElasticBoostedContentResults (wraps results)       │
-│         ↓                                             │
-│  @search.boosted_contents (displayed via React)     │
-└─────────────────────────────────────────────────────┘
+```mermaid
+flowchart TD
+    subgraph Stage2["Stage 2: Search Query (OpenSearch ➔ Results)"]
+        direction TB
+        F["Search Request (query: 'diabetes')"]
+        --> G["GovboxSet.init_text_best_bets()"]
+        --> H["ElasticBoostedContent.search_for(options)"]
+        --> I["ElasticBoostedContentQuery (builds query)"]
+        --> J["OpenSearch searches index"]
+        --> K["ElasticBoostedContentResults (wraps results)"]
+        --> L["@search.boosted_contents (displayed via React)"]
+    end
 ```
 
 ### Key Points
