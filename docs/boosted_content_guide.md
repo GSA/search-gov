@@ -26,7 +26,7 @@ flowchart TD
         A[("BoostedContent (MySQL)")]
         --> B["ElasticBoostedContentData (transforms data)"]
         --> C["ElasticResqueIndexer (batch processor via Resque)"]
-        --> D["ElasticBoostedContent.index() (sends to OpenSearch"]
+        --> D["ElasticBoostedContent.index() (sends to OpenSearch)"]
         --> E[("OpenSearch Index")]
     end
 ```
