@@ -116,3 +116,12 @@ describe ElasticFederalRegisterDocumentResults do
     expect(results.results).to eq([])
   end
 end
+
+describe ElasticFederalRegisterDocumentResults do
+  it 'returns empty results when aggregations are missing' do
+    results = described_class.new(Indexable::NO_HITS)
+
+    expect(results.total).to eq 0
+    expect(results.results).to eq([])
+  end
+end
