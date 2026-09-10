@@ -1,3 +1,5 @@
+ssl_enabled = ENV['REDIS_SSL'].to_s.downcase == 'true'
+
 Rails.application.config.session_store :redis_store,
   expires_in: 7200,
   secure: Rails.application.config.ssl_options[:secure_cookies],
@@ -6,5 +8,6 @@ Rails.application.config.session_store :redis_store,
     host: ENV['REDIS_SESSION_HOST'],
     port: ENV['REDIS_SESSION_PORT'],
     db: 2,
-    key_prefix: 'usasearch:session'
+    key_prefix: 'usasearch:session',
+    ssl: ssl_enabled
   }
