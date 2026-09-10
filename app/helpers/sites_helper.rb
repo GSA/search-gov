@@ -88,13 +88,12 @@ module SitesHelper
        query_clicks
        referrers
        referrer_queries
-       query_referrers
-       watchers]
+       query_referrers]
   end
 
   def site_manage_content_controllers
     %w[boosted_contents boosted_contents_bulk_uploads
-       contents document_collections routed_queries excluded_urls
+       contents document_collections routed_queries
        flickr_profiles indexed_documents
        site_domains site_feed_urls i14y_drawers
        youtube_profiles featured_collections]
@@ -103,9 +102,6 @@ module SitesHelper
   def site_manage_display_controllers
     %w[displays
        visual_designs
-       font_and_colors
-       image_assets
-       header_and_footers
        no_results_pages
        alerts]
   end
