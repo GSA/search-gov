@@ -14,7 +14,9 @@ gem 'will_paginate', '~> 3.3.1'
 gem 'nokogiri', '~> 1.19'
 gem 'authlogic', '~> 6.4', '>= 6.4.3'
 gem 'omniauth_login_dot_gov', git: 'https://github.com/18f/omniauth_login_dot_gov', ref: '6e117a9c68b19a1fbc70533613b74b0d8affd641'
-gem 'rack', '~> 2.2'
+gem 'rack', '~> 3.2'
+gem 'rack-session', '~> 2.1'
+gem 'rackup', '~> 2.2'
 
 # It's not clear that this gem is still required. I'm leaving it for the time being,
 # but we may be able to remove it in the future:
@@ -145,7 +147,7 @@ gem 'bootsnap', require: false
 gem 'rails_semantic_logger', '~> 4.14'
 gem 'whenever', '~> 1.0', require: false
 gem 'fugit', '~> 1.8'
-gem 'puma', '~> 5.6'
+gem 'puma', '~> 6.6'
 gem 'htmlbeautifier', '~> 1.4', '>= 1.4.3'
 
 # Bundle gems for the local environment. Make sure to
@@ -162,7 +164,7 @@ group :development do
   gem 'capistrano-rails',  require: false
   gem 'capistrano-rbenv',  require: false
   gem 'capistrano-resque', require: false
-  gem 'capistrano3-puma',  '~> 5.2',  require: false
+  gem 'capistrano3-puma',  '~> 6.0',  require: false
 end
 
 group :development, :test do
