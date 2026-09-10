@@ -7,15 +7,28 @@ describe 'scheduled jobs configuration' do
     YAML.safe_load(Rails.root.join('config/resque_schedule.yml').read)
   end
 
-  it 'schedules SitemapMonitorJob only via resque-scheduler in production' do
-    production = resque_schedule.fetch('production')
-    expect(production.keys).to eq(['SitemapMonitorJob'])
-    expect(production.fetch('SitemapMonitorJob')).to eq('cron' => '0 */4 * * *')
+  let(:whenever_source) do
+    Rails.root.join('config/schedule.rb').read.
+      lines.reject { |line| line.match?(/^\s*#/) }.join
   end
 
-  it 'does not schedule SitemapMonitorJob via whenever' do
-    schedule = Rails.root.join('config/schedule.rb').read
-    expect(schedule).not_to match(/runner ['"]SitemapMonitorJob/)
-    expect(schedule).not_to match(/rake ['"][^'"]*SitemapMonitor/)
+  let(:yaml_job_classes) { resque_schedule.fetch('production').keys }
+
+  let(:whenever_job_classes) do
+    whenever_source.scan(/\b([A-Z][A-Za-z0-9]*Job)\b/).flatten.uniq
+  end
+
+  it 'schedules SitemapMonitorJob via resque-scheduler in production' do
+    expect(resque_schedule.fetch('production').fetch('SitemapMonitorJob')).
+      to eq('cron' => '0 */4 * * *')
+  end
+
+  it 'does not list the same job class in resque_schedule.yml and schedule.rb' do
+    expect(yaml_job_classes & whenever_job_classes).to eq([])
+  end
+
+  it 'limits whenever entries to rake, runner, or command' do
+    job_methods = whenever_source.scan(/^\s+(rake|runner|command|job|script)\b/).flatten.uniq
+    expect(job_methods - %w[rake runner command]).to eq([])
   end
 end

@@ -343,7 +343,7 @@ When in doubt, just use Resque.enqueue() instead of Resque.enqueue_with_priority
 There are two Rails schedule files. Do not list the same job in both.
 
 - `config/resque_schedule.yml` — recurring Resque cron on **crawler** hosts via systemd `resque-scheduler.service` (`rake resque:scheduler`). Production currently schedules `SitemapMonitorJob` every 4 hours. This is the source of truth for that job. Each crawler that runs the scheduler process will enqueue it.
-- `config/schedule.rb` — whenever crontab on **cron** hosts (Capistrano `roles: [:cron]`). Rake/runner jobs only.
+- `config/schedule.rb` — whenever crontab on **cron** hosts (Capistrano `roles: [:cron]`). Use `rake`, `runner`, or `command`. Do not add Resque cron job classes here.
 
 The resque-scheduler **process** must keep running even if the YAML file is empty: delayed jobs use ActiveJob `:wait` / `:wait_until` (for example `SearchgovDomainIndexerJob.set(wait: delay.seconds)`).
 
