@@ -19,7 +19,8 @@ namespace :resque do
     # be a hash.  YAML is usually the easiest.
     yaml_schedule = Rails.application.config_for('resque_schedule')
     Resque.schedule = ActiveScheduler::ResqueWrapper.wrap yaml_schedule
-    Resque.logger = Logger.new('new_resque_log_file')
+    Resque.logger = Logger.new(Rails.root.join('log', 'resque.log'))
+    Resque.logger.level = Logger::INFO
   end
 
   task :scheduler => :setup_schedule
