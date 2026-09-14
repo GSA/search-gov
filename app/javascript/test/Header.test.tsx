@@ -106,7 +106,7 @@ describe('Header', () => {
     expect(img).toHaveAttribute('alt', page.logo.text);
   });
 
-  it('shows agency logo and alt text in the basic header', () => {
+  it('shows agency logo and alt text in the extended header', () => {
     render(
       <LanguageContext.Provider value={i18n} >
         <Header page={page} isBasic={false} />
@@ -117,5 +117,37 @@ describe('Header', () => {
 
     expect(img).toHaveAttribute('src', page.logo.url);
     expect(img).toHaveAttribute('alt', page.logo.text);
+  });
+
+  it('uses an h1 for the agency title when there is no logo image', () => {
+    const pageWithoutLogo = {
+      ...page,
+      logo: { url: '', text: '' }
+    };
+
+    render(
+      <LanguageContext.Provider value={i18n} >
+        <Header page={pageWithoutLogo} isBasic={true} />
+      </LanguageContext.Provider>
+    );
+
+    const heading = screen.getByRole('heading', { level: 1 });
+    expect(heading).toHaveClass('usa-logo__text');
+    expect(heading).toHaveTextContent('Search.gov');
+    expect(heading.tagName).toBe('H1');
+    expect(document.querySelector('em.usa-logo__text')).not.toBeInTheDocument();
+    expect(heading.closest('.usa-logo')).toBeInTheDocument();
+  });
+
+  it('keeps the agency title in an em when a logo image is present', () => {
+    render(
+      <LanguageContext.Provider value={i18n} >
+        <Header page={page} isBasic={true} />
+      </LanguageContext.Provider>
+    );
+
+    const heading = screen.getByRole('heading', { level: 1 });
+    expect(heading.querySelector('img.usa-identifier__logo')).toBeInTheDocument();
+    expect(document.querySelector('em.usa-logo__text')).toHaveTextContent('Search.gov');
   });
 });
