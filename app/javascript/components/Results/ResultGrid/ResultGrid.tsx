@@ -86,7 +86,6 @@ export const ResultGrid = ({ result, affiliate, query, position, vertical, facet
           */}
           <Grid col={true} className='result-meta-data'>
             {result.publishedDate && <span className='published-date'>{result.publishedDate}</span>}
-            {result.updatedDate   && <span className='published-date'>{' '}&#40;Updated on {result.updatedDate}&#41;</span>}
             {result.publishedAt   && <span className='published-date'>{result.publishedAt}</span>}
             <div className='result-title'>
               <h2 className='result-title-label'>
