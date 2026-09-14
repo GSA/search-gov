@@ -30,7 +30,8 @@ class CachedSearchApiConnection
       conn.use(FaradayMiddleware::ExceptionNotifier, [namespace])
       conn.response(:raise_error)
       conn.response(:rashify)
-      conn.response(:json)
+      # Faraday 2 skips JSON parse unless Content-Type matches; WebMock stubs often omit it.
+      conn.response(:json, content_type: nil)
       conn.headers[:user_agent] = 'USASearch'
 
       ExternalFaraday.configure_connection(namespace, conn)
