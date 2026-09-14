@@ -5,7 +5,9 @@ class CachedSearchApiConnection
 
   attr_reader :namespace, :from_cache
 
-  def_delegator :connection, :basic_auth # optional
+  def basic_auth(user, pass)
+    connection.request(:authorization, :basic, user, pass)
+  end
 
   def initialize(namespace, host, cache_duration = DEFAULT_CACHE_DURATION)
     @namespace      = namespace

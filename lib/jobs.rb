@@ -38,7 +38,7 @@ module Jobs
       conn.request(:json)
       conn.response(:rashify)
       conn.response(:json)
-      conn.use(:instrumentation)
+      conn.request(:instrumentation)
       conn.adapter(adapter || Faraday.default_adapter)
     end
   end

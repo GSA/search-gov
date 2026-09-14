@@ -32,9 +32,9 @@ class LegacyOpenSearch::DocumentIndexer
       id: document_id,
       body: body
     )
-  rescue Elasticsearch::Transport::Transport::Errors::Conflict => e
+  rescue OpenSearch::Transport::Transport::Errors::Conflict => e
     raise DuplicateID, e.message
-  rescue Elasticsearch::Transport::Transport::Error => e
+  rescue OpenSearch::Transport::Transport::Error => e
     Rails.logger.error "[LegacyOpenSearch::DocumentIndexer] Failed to index document #{document_id}: #{e.message}"
     raise DocumentIndexerError, e.message
   end
@@ -44,9 +44,9 @@ class LegacyOpenSearch::DocumentIndexer
       index: INDEX_NAME,
       id: document_id
     )
-  rescue Elasticsearch::Transport::Transport::Errors::NotFound
+  rescue OpenSearch::Transport::Transport::Errors::NotFound
     Rails.logger.warn "[LegacyOpenSearch::DocumentIndexer] Document not found for deletion: #{document_id}"
-  rescue Elasticsearch::Transport::Transport::Error => e
+  rescue OpenSearch::Transport::Transport::Error => e
     Rails.logger.error "[LegacyOpenSearch::DocumentIndexer] Failed to delete document #{document_id}: #{e.message}"
     raise DocumentIndexerError, e.message
   end

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'typhoeus/adapters/faraday'
 require_relative 'opensearch_config'
 
 module Es
