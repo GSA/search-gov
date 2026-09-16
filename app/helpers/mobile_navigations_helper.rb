@@ -37,12 +37,10 @@ module MobileNavigationsHelper
   end
 
   def detect_non_default_search_navigable(search)
-    case search
-      when is_default_search?(search)
-        nil
-      when ImageSearch
-        search.affiliate.image_search_label
-    end
+    return search.affiliate.image_search_label if search.is_a?(ImageSearch)
+    return search.document_collection if search.try(:document_collection)
+
+    nil
   end
 
   def default_search_navigation(search, search_params)
@@ -60,7 +58,8 @@ module MobileNavigationsHelper
   end
 
   def is_default_search?(search)
-    [BlendedSearch, OpenSearch::Engine, LegacyOpenSearch::Engine].any? { |c| search.instance_of?(c) }
+    search.try(:document_collection).blank? &&
+      [BlendedSearch, OpenSearch::Engine, LegacyOpenSearch::Engine].any? { |c| search.instance_of?(c) }
   end
 
   def build_navigations_items(search, search_params, non_default_search_navigable, navigations)

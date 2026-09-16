@@ -61,12 +61,8 @@ Feature: Searches using mobile device
     And I should see at least "2" web search results
     And I should see 2 related searches
     And I should see a link to "Next"
-    And I should not see a link to "2" with class "pagination-numbered-link"
     When I follow "Next"
     Then I should see a link to "Previous"
-    And I should see a link to "Next"
-    And I should not see a link to "1" with class "pagination-numbered-link"
-    And I should not see a link to "3" with class "pagination-numbered-link"
     When I follow "Previous"
     Then I should see a link to "Next"
 

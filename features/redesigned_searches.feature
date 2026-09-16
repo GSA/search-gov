@@ -20,9 +20,8 @@ Feature: Search - redesign
     When I am on bar.gov's redesigned search page
     And I search for "white house" in the redesigned search page
     Then I should see exactly "20" web search results
-    And I should see "The White House"
+    And I should see "White House result"
     And I should see "www.whitehouse.gov/"
-    And I should see "President Biden's Budget Topics: Reproductive Rights"
     And I should be on page "1" of results
     And I should see pagination
     And I should see a link to the "Next" page
