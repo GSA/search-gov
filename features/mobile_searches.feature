@@ -5,11 +5,11 @@
 
 Feature: Searches using mobile device
   Scenario: Web search
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale | domains              | use_redesigned_results_page | search_engine |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar     | en       |                      | false                       | bing_v7       |
-      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar     | es       |                      | false                       | bing_v7       |
-      | Hippo site   | hippo         | admin@agency.gov | John       | Bar     | en       | hippo.whitehouse.gov | false                       | bing_v7       |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar     | en       |                      | false                       | OpenSearch    |
+      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar     | es       |                      | false                       | OpenSearch    |
+      | Hippo site   | hippo         | admin@agency.gov | John       | Bar     | en       | hippo.whitehouse.gov | false                       | OpenSearch    |
     And the following Boosted Content entries exist for the affiliate "en.agency.gov"
       | url                                                             | title                  | description                             |
       | http://http://www.whitehouse.gov/administration/president-obama | President Barack Obama | the 44th President of the United States |
@@ -54,7 +54,7 @@ Feature: Searches using mobile device
     When I am on en.agency.gov's search page
     And I fill in "Enter your search term" with "president"
     And I press "Search"
-    Then I should see Powered by Bing logo
+    Then I should see Powered by Search.gov
     And I should see 1 Best Bets Texts
     And I should see 1 Best Bets Graphic
     And I should see "44. Barack Obama 43. George W. Bush The Presidents Photo Galleries"
@@ -73,7 +73,7 @@ Feature: Searches using mobile device
     When I am on es.agency.gov's search page
     And I fill in "Ingrese su búsqueda" with "presidente"
     And I press "Buscar"
-    Then I should see Generado por Bing logo
+    Then I should see Generado por Search.gov
     And I should see 1 Best Bets Texts
     And I should see 1 Best Bets Graphic
     And I should see at least "2" web search results
@@ -85,10 +85,10 @@ Feature: Searches using mobile device
     And I should see "Hippopotamus amphibius"
 
   Scenario: Collections search
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale | use_redesigned_results_page | search_engine |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | false                       | BingV7        |
-      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | false                       | BingV7        |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | false                       | OpenSearch  |
+      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | false                       | OpenSearch  |
 
     And affiliate "en.agency.gov" has the following document collections:
       | name    | prefixes            |
@@ -101,21 +101,21 @@ Feature: Searches using mobile device
     When I am on en.agency.gov's "USA.gov" docs search page
     And I fill in "Enter your search term" with "gov"
     And I press "Search"
-    Then I should see Powered by Bing logo
+    Then I should see Powered by Search.gov
     And I should see at least "10" web search results
     And every result URL should match "www.usa.gov"
 
     When I am on es.agency.gov's "Gobierno USA" docs search page
     And I fill in "Ingrese su búsqueda" with "gobierno"
     And I press "Buscar"
-    Then I should see Generado por Bing logo
+    Then I should see Generado por Search.gov
     And I should see at least "7" web search results
     And every result URL should match "www.usa.gov/espanol"
 
   Scenario: Site navigations without dropdown menu
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale | use_redesigned_results_page | search_engine |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | false                       | bing_v7       |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | false                       | OpenSearch    |
     And affiliate "en.agency.gov" has the following document collections:
       | name | prefixes             |
       | Blog | http://blog.usa.gov/ |
@@ -133,9 +133,9 @@ Feature: Searches using mobile device
     And I should see at least "1" web search results
 
   Scenario: Site navigations with dropdown menu
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale | navigation_dropdown_label | use_redesigned_results_page | search_engine |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | My-awesome-label          | false                       | bing_v7       |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | My-awesome-label          | false                       | OpenSearch    |
     And affiliate "en.agency.gov" has the following document collections:
       | name                 | prefixes                 | position | is_navigable |
       | FAQs                 | http://answers.usa.gov/  | 0        | true         |
@@ -169,10 +169,10 @@ Feature: Searches using mobile device
     Then I should see "Inactive site search" within the SERP active navigation
 
   Scenario: Job search
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name |locale | jobs_enabled | use_redesigned_results_page | search_engine |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en    | 1            | false                       | bing_v7       |
-      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es    | 1            | false                       | bing_v7       |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en    | 1            | false                       | OpenSearch    |
+      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es    | 1            | false                       | OpenSearch    |
 
     When I am on en.agency.gov's search page
     And I fill in "Enter your search term" with "jobs"
@@ -202,9 +202,9 @@ Feature: Searches using mobile device
     Given the following Agencies exist:
       | name                            | abbreviation | organization_codes |
       | General Services Administration | GSA          | GS                 |
-    And the following BingV7 Affiliates exist:
+    And the following OpenSearch Affiliates exist:
       | display_name | name       | agency_abbreviation | jobs_enabled | contact_email                | use_redesigned_results_page | search_engine |
-      | English site | agency.gov | GSA                 | true         | affiliate_admin@fixtures.org | false                       | BingV7        |
+      | English site | agency.gov | GSA                 | true         | affiliate_admin@fixtures.org | false                       | OpenSearch  |
     When I am on agency.gov's search page
     And I search for "jobs"
     Then I should see "Job Openings at GSA"
@@ -212,10 +212,10 @@ Feature: Searches using mobile device
     And I should see a link to "More GSA job openings on USAJobs.gov" with url for "https://www.usajobs.gov/Search/Results?a=GS&hp=public"
 
   Scenario: Searching with sitelimit
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale | domains | use_redesigned_results_page | search_engine |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | .gov    | false                       | BingV7        |
-      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | .gov    | false                       | BingV7        |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | .gov    | false                       | OpenSearch  |
+      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     | .gov    | false                       | OpenSearch  |
     And affiliate "en.agency.gov" has the following document collections:
       | name | prefixes                 | is_navigable |
       | Blog | https://search.gov/blog/ | true         |
@@ -240,11 +240,11 @@ Feature: Searches using mobile device
     Then I should not see "Los resultados para gobierno son solo de usa.gov."
 
   Scenario: Searching on sites with related sites
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name           | contact_email    | first_name | last_name | locale | related_sites_dropdown_label | use_redesigned_results_page | search_engine |
-      | English site | en.agency.gov  | admin@agency.gov | John       | Bar       | en     | Search  On                   | false                       | BingV7        |
-      | All sites    | all.agency.gov | admin@agency.gov | John       | Bar       | en     |                              | false                       | BingV7        |
-      | Spanish site | es.agency.gov  | admin@agency.gov | John       | Bar       | es     |                              | false                       | BingV7        |
+      | English site | en.agency.gov  | admin@agency.gov | John       | Bar       | en     | Search  On                   | false                       | OpenSearch  |
+      | All sites    | all.agency.gov | admin@agency.gov | John       | Bar       | en     |                              | false                       | OpenSearch  |
+      | Spanish site | es.agency.gov  | admin@agency.gov | John       | Bar       | es     |                              | false                       | OpenSearch  |
     And the following Connections exist for the affiliate "en.agency.gov":
       | connected_affiliate | display_name         |
       | es.agency.gov       | Este tema en español |
@@ -259,9 +259,9 @@ Feature: Searches using mobile device
     Then I should see the browser page titled "gobierno - Spanish site resultados de la búsqueda"
 
   Scenario: Searching on sites with federal register documents
-    And the following BingV7 Affiliates exist:
+    And the following OpenSearch Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | agency_abbreviation | is_federal_register_document_govbox_enabled | domains  | use_redesigned_results_page | search_engine |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | DOC                 | true                                        | noaa.gov | false                       | BingV7        |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | DOC                 | true                                        | noaa.gov | false                       | OpenSearch  |
     And the following Federal Register Document entries exist:
       | federal_register_agencies | document_number | document_type | title                                                              | publication_date | comments_close_in_days | start_page | end_page | page_length | html_url                                                                                                                         |
       | DOC,IRS,ITA,NOAA          | 2014-13420      | Notice        | Proposed Information Collection; Comment Request                   | 2014-06-09       | 7                      | 33040      | 33041    | 2           | https://www.federalregister.gov/articles/2014/06/09/2014-13420/proposed-information-collection-comment-request                   |
@@ -280,9 +280,9 @@ Feature: Searches using mobile device
     And I should see "A Rule by the National Oceanic and Atmospheric Administration posted on August 19, 2013."
 
   Scenario: Custom page 1 results pointer
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name           | contact_email    | first_name | last_name | locale | page_one_more_results_pointer                                                                           | use_redesigned_results_page | search_engine |
-      | English site | en.agency.gov  | admin@agency.gov | John       | Bar       | en     | Wherever. <a href="https://duckduckgo.com/?q={QUERY}&ia=about">Try your search again</a> to see results | false                       | BingV7        |
+      | English site | en.agency.gov  | admin@agency.gov | John       | Bar       | en     | Wherever. <a href="https://duckduckgo.com/?q={QUERY}&ia=about">Try your search again</a> to see results | false                       | OpenSearch  |
     When I am on en.agency.gov's search page
     And I fill in "Enter your search term" with "gov"
     And I press "Search"
@@ -292,25 +292,25 @@ Feature: Searches using mobile device
     Then I should not see "Wherever. Try your search again to see results"
 
   Scenario: Custom no results pointer
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name           | contact_email    | first_name   | last_name | locale | no_results_pointer                                                                                       | use_redesigned_results_page | search_engine |
-      | English site | en.agency.gov  | admin@agency.gov | John         | Bar       | en     | NORESULTS. <a href="https://duckduckgo.com/?q={QUERY}&ia=about">Try your search again</a> to see results | false                       | BingV7        |
+      | English site | en.agency.gov  | admin@agency.gov | John         | Bar       | en     | NORESULTS. <a href="https://duckduckgo.com/?q={QUERY}&ia=about">Try your search again</a> to see results | false                       | OpenSearch  |
     When I am on en.agency.gov's search page
     And I fill in "Enter your search term" with "lkssldfkjsldfkjsldkfjsldkjflsdkjflskdjfwer"
     And I press "Search"
     Then I should see "NORESULTS. Try your search again to see results"
 
   Scenario: Web search on Kalaallisut site
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name     | name          | contact_email    | first_name | last_name | locale | domains              | use_redesigned_results_page | search_engine |
-      | Kalaallisut site | kl.agency.gov | admin@agency.gov | John       | Bar       | kl     |                      | false                       | BingV7        |
+      | Kalaallisut site | kl.agency.gov | admin@agency.gov | John       | Bar       | kl     |                      | false                       | OpenSearch  |
     When I am on kl.agency.gov's search page
     Then I should see "Ujarniakkat ataani allaffissamut allaguk"
 
-  Scenario: Web search using Bing engine
-    Given the following BingV7 Affiliates exist:
+  Scenario: Web search using OpenSearch engine
+    Given the following OpenSearch Affiliates exist:
       | display_name | name          | contact_email    | first_name   | last_name | locale | search_engine | domains | use_redesigned_results_page |
-      | English site | en.agency.gov | admin@agency.gov | John         | Bar       | en     | BingV7        | .gov    | false                       |
+      | English site | en.agency.gov | admin@agency.gov | John         | Bar       | en     | OpenSearch  | .gov    | false                       |
     And affiliate "en.agency.gov" has the following document collections:
       | name    | prefixes            |
       | USA.gov | https://www.usa.gov |
@@ -318,17 +318,17 @@ Feature: Searches using mobile device
     And I fill in "Enter your search term" with "agency"
     And I press "Search"
     Then I should see at least "10" web search results
-    And I should see Powered by Bing logo
+    And I should see Powered by Search.gov
 
     When I follow "USA.gov" within the SERP navigation
     Then I should see "USA.gov" within the SERP active navigation
     And I should see at least "10" web search results
-    And I should see Powered by Bing logo
+    And I should see Powered by Search.gov
 
   Scenario: Active facet display using SearchGov
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale | search_engine | domains | use_redesigned_results_page |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | SearchGov     | .gov    | false                       |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | OpenSearch    | .gov    | false                       |
     And affiliate "en.agency.gov" has the following document collections:
       | name    | prefixes            |
       | USA.gov | https://www.usa.gov |
@@ -337,9 +337,9 @@ Feature: Searches using mobile device
     Then I should see the "USA.gov" Collection as the active facet
 
   Scenario: Display an Alert on search page
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale | domains              | use_redesigned_results_page | search_engine |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     |                      | false                       | BingV7        |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     |                      | false                       | OpenSearch  |
     Given the following Alert exists:
       | affiliate    | text                       | status   | title     |
       | en.agency.gov| New alert for the test aff | Active   |  Test Title |

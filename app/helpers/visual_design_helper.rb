@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module VisualDesignHelper
-  def show_results_format?(site)
-    !site.bing_v7_engine?
+  def show_results_format?(_site)
+    true
   end
 
   def render_logo_alt_text(logo_metadata)

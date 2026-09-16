@@ -42,8 +42,6 @@ module MobileNavigationsHelper
         nil
       when ImageSearch
         search.affiliate.image_search_label
-      when SiteSearch
-        search.document_collection
     end
   end
 
@@ -62,7 +60,7 @@ module MobileNavigationsHelper
   end
 
   def is_default_search?(search)
-    [BlendedSearch, WebSearch].any? { |c| search.instance_of?(c) }
+    [BlendedSearch, OpenSearch::Engine, LegacyOpenSearch::Engine].any? { |c| search.instance_of?(c) }
   end
 
   def build_navigations_items(search, search_params, non_default_search_navigable, navigations)
