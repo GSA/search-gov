@@ -37,8 +37,8 @@ module Jobs
       conn.headers['User-Agent'] = user_agent
       conn.request(:json)
       conn.response(:rashify)
-      conn.response(:json)
-      conn.use(:instrumentation)
+      conn.response(:json, content_type: nil)
+      conn.request(:instrumentation)
       conn.adapter(adapter || Faraday.default_adapter)
     end
   end
