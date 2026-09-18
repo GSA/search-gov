@@ -28,7 +28,7 @@ describe LinkPopularity do
     context 'when days_back logstash indexes does not exist' do
       before do
         allow(Es::ELK.client_reader).to receive(:count).
-          and_raise(Elasticsearch::Transport::Transport::Errors::NotFound)
+          and_raise(OpenSearch::Transport::Transport::Errors::NotFound)
       end
 
       it 'returns a default popularity of 1.0' do

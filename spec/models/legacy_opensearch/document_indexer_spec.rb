@@ -213,7 +213,7 @@ describe LegacyOpenSearch::DocumentIndexer do
     context 'when OpenSearch returns a conflict' do
       before do
         allow(client).to receive(:index).and_raise(
-          Elasticsearch::Transport::Transport::Errors::Conflict.new('[409] conflict')
+          OpenSearch::Transport::Transport::Errors::Conflict.new('[409] conflict')
         )
       end
 
@@ -227,7 +227,7 @@ describe LegacyOpenSearch::DocumentIndexer do
     context 'when OpenSearch returns a transport error' do
       before do
         allow(client).to receive(:index).and_raise(
-          Elasticsearch::Transport::Transport::Errors::ServiceUnavailable.new('[503] unavailable')
+          OpenSearch::Transport::Transport::Errors::ServiceUnavailable.new('[503] unavailable')
         )
       end
 
@@ -266,7 +266,7 @@ describe LegacyOpenSearch::DocumentIndexer do
     context 'when the document is not found' do
       before do
         allow(client).to receive(:delete).and_raise(
-          Elasticsearch::Transport::Transport::Errors::NotFound.new('[404] not found')
+          OpenSearch::Transport::Transport::Errors::NotFound.new('[404] not found')
         )
       end
 
@@ -283,7 +283,7 @@ describe LegacyOpenSearch::DocumentIndexer do
     context 'when OpenSearch returns a transport error' do
       before do
         allow(client).to receive(:delete).and_raise(
-          Elasticsearch::Transport::Transport::Errors::ServiceUnavailable.new('[503] unavailable')
+          OpenSearch::Transport::Transport::Errors::ServiceUnavailable.new('[503] unavailable')
         )
       end
 

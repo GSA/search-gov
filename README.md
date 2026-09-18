@@ -137,7 +137,7 @@ Same thing, but using Resque to index in parallel:
 
 OpenSearch is the search and analytics backend for both document/custom indices and analytics (logstash) data.
 
-**Note:** The application uses the `elasticsearch-ruby` gem to connect to OpenSearch, as it is API-compatible with OpenSearch. This avoids dependency conflicts with the `omniauth_login_dot_gov` gem.
+**Note:** The application uses `opensearch-ruby` to connect to OpenSearch. `omniauth_login_dot_gov` v2.2.0 allows Faraday 2, which that client requires.
 
 #### Environment Variables
 

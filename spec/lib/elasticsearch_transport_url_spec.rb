@@ -61,7 +61,7 @@ RSpec.describe 'Elasticsearch Transport URL construction' do
 
   describe 'Client#__parse_host' do
     def parse_host(url)
-      client = Elasticsearch::Transport::Client.new(hosts: [url])
+      client = Elasticsearch::Transport::Client.new(hosts: [url], adapter: :net_http_persistent)
       client.transport.hosts.first
     end
 
