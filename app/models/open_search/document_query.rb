@@ -92,14 +92,6 @@ class OpenSearch::DocumentQuery
     language == 'en'
   end
 
-  def common_terms_hash
-    {
-      query: query,
-      cutoff_frequency: 0.05,
-      minimum_should_match: { low_freq: '3<90%', high_freq: '2<90%' }
-    }
-  end
-
   def source_fields
     default_fields = %w[title path created changed thumbnail_url]
     fields = (@options[:include] || default_fields).push('language')
@@ -120,7 +112,7 @@ class OpenSearch::DocumentQuery
   end
 
   # English searches use title_*/description_*/content_* so PDF with any language match.
-  # For non-English, only use language suffixed fields.
+  # For non-English, only use language suffixed fields (e.g. title_es).
   def simple_query_string_fields
     return WILDCARD_TEXT_FIELDS if english_language_search?
 
@@ -307,18 +299,10 @@ class OpenSearch::DocumentQuery
 
                           unless doc_query.query =~ /".*"/
                             must do
-                              bool do
-                                if doc_query.english_language_search?
-                                  OpenSearch::Template::LANGUAGE_ANALYZER_LOCALES.map(&:to_s).each do |locale|
-                                    TEXT_FIELDS.each do |field|
-                                      should { common({ "#{field}_#{locale}": doc_query.common_terms_hash }) }
-                                    end
-                                  end
-                                else
-                                  TEXT_FIELDS.each do |field|
-                                    should { common({ "#{field}_#{doc_query.language}": doc_query.common_terms_hash }) }
-                                  end
-                                end
+                              multi_match do
+                                query doc_query.query
+                                fields doc_query.simple_query_string_fields
+                                minimum_should_match '3<90%'
                               end
                             end
                           end
