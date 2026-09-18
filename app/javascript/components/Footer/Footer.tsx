@@ -29,6 +29,7 @@ const StyledUswdsFooter = styled.div.attrs<{ styles: { footerAndResultsFontFamil
 export const Footer = ({ footerLinks = [] }: FooterProps) => {
   const i18n = useContext(LanguageContext);
   const styles = useContext(StyleContext);
+  const hasFooterLinks = footerLinks.length > 0;
 
   const returnToTop = (
     <GridContainer className="usa-footer__return-to-top">
@@ -38,37 +39,38 @@ export const Footer = ({ footerLinks = [] }: FooterProps) => {
     </GridContainer>
   );
 
-  const primaryFooterLinks =
-    footerLinks && footerLinks.length > 0 ? (footerLinks.map((link, index) => {
-      return (
-        <a className="usa-footer__primary-link" href={link.url} key={index}>
-          {link.title}
-        </a>
-      );
-    })) : (
-      [
-        <></>
-      ]
+  const primaryFooterLinks = footerLinks.map((link, index) => {
+    return (
+      <a className="usa-footer__primary-link" href={link.url} key={index}>
+        {link.title}
+      </a>
     );
+  });
 
   return (
     <div id="serp-footer-wrapper">
       <StyledUswdsFooter styles={styles}>
-        <UswdsFooter 
-          size="slim"
-          returnToTop={returnToTop}
-          primary={
-            <div className="usa-footer__primary-container grid-row">
-              <div className="mobile-lg:grid-col-12">
-                <FooterNav
-                  size="slim"
-                  links={primaryFooterLinks}
-                />
+        {hasFooterLinks ? (
+          <UswdsFooter
+            size="slim"
+            returnToTop={returnToTop}
+            primary={
+              <div className="usa-footer__primary-container grid-row">
+                <div className="mobile-lg:grid-col-12">
+                  <FooterNav
+                    size="slim"
+                    links={primaryFooterLinks}
+                  />
+                </div>
               </div>
-            </div>
-          }
-          secondary={<></>}
-        />
+            }
+            secondary={<></>}
+          />
+        ) : (
+          <footer className="usa-footer usa-footer--slim">
+            {returnToTop}
+          </footer>
+        )}
       </StyledUswdsFooter>
     </div>
   );
