@@ -24,4 +24,21 @@ describe('Footer', () => {
     expect(secondLink).toHaveAttribute('href', 'https://second.gov');
     expect(secondLink).toHaveTextContent('second footer link');
   });
+
+  it('always shows Return to top and footer links when present', () => {
+    render(<Footer footerLinks={footerLinks} />);
+
+    expect(document.querySelector('.usa-footer__return-to-top')).toBeInTheDocument();
+    expect(document.querySelector('.usa-footer__primary-section')).toBeInTheDocument();
+    expect(document.querySelector('.usa-footer__primary-link')).toBeInTheDocument();
+  });
+
+  it('shows Return to top and no footer links when footer links are blank', () => {
+    render(<Footer footerLinks={[]} />);
+
+    expect(document.querySelector('.usa-footer__return-to-top')).toBeInTheDocument();
+    expect(document.getElementsByClassName('usa-footer__primary-link')).toHaveLength(0);
+    expect(document.querySelector('.usa-footer__nav')).not.toBeInTheDocument();
+    expect(document.querySelector('.usa-footer__primary-section')).toBeEmptyDOMElement();
+  });
 });
