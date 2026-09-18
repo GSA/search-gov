@@ -91,13 +91,23 @@ describe OpenSearch::DocumentQuery do
         expect(word_form_shoulds.to_s).not_to include('title_en^2')
       end
 
-      it 'adds a common query only for the affiliate language-suffixed text fields' do
-        expected_fields = word_form_shoulds.to_s
-
-        described_class::TEXT_FIELDS.each do |field|
-          expect(expected_fields).to include("#{field}_es")
-        end
-        expect(expected_fields).to include(document_query.common_terms_hash.to_s)
+      it 'adds a multi_match across the affiliate language-suffixed text fields' do
+        expect(word_form_shoulds).to include(
+          hash_including(
+            bool: hash_including(
+              must: array_including(
+                hash_including(
+                  multi_match: hash_including(
+                    query: query,
+                    fields: array_including('title_es', 'description_es', 'content_es'),
+                    minimum_should_match: '3<90%'
+                  )
+                )
+              )
+            )
+          )
+        )
+        expect(word_form_shoulds.to_s).not_to include('title_*', 'description_*', 'content_*')
       end
 
       it 'highlights only the affiliate language-suffixed fields' do
