@@ -249,17 +249,13 @@ It is recommended to always review diff changes after running autocorrection com
 # Running the app
 ## Search
 
-To run test searches, you will need a working Bing API key. You can request one from Bing, or ask a friendly coworker.
+To run test searches, start your local development environment with OpenSearch available:
 
-1. Add the Bing `BING_WEB_SUBSCRIPTION_ID` to `.env` file:
-```  
-BING_WEB_SUBSCRIPTION_ID: *****
-```
-2. Start your local development environment:
 ```
 bin/dev
 ```
-3. Test searches should return results:
+
+Test searches should return results:
 
 **Web results**
 * http://localhost:3000/search?affiliate=test_affiliate&query=government
