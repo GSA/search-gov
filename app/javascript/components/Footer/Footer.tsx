@@ -50,21 +50,27 @@ export const Footer = ({ footerLinks = [] }: FooterProps) => {
   return (
     <div id="serp-footer-wrapper">
       <StyledUswdsFooter styles={styles}>
-        <UswdsFooter
-          size="slim"
-          returnToTop={returnToTop}
-          primary={hasFooterLinks ? (
-            <div className="usa-footer__primary-container grid-row">
-              <div className="mobile-lg:grid-col-12">
-                <FooterNav
-                  size="slim"
-                  links={primaryFooterLinks}
-                />
+        {hasFooterLinks ? (
+          <UswdsFooter
+            size="slim"
+            returnToTop={returnToTop}
+            primary={
+              <div className="usa-footer__primary-container grid-row">
+                <div className="mobile-lg:grid-col-12">
+                  <FooterNav
+                    size="slim"
+                    links={primaryFooterLinks}
+                  />
+                </div>
               </div>
-            </div>
-          ) : <></>}
-          secondary={<></>}
-        />
+            }
+            secondary={<></>}
+          />
+        ) : (
+          <footer className="usa-footer usa-footer--slim">
+            {returnToTop}
+          </footer>
+        )}
       </StyledUswdsFooter>
     </div>
   );
