@@ -1,3 +1,8 @@
+/* Hiding the seconday section as its not needed - SRCH-3539 */
+.usa-footer__secondary-section{
+  display: none;
+}
+
 @media (min-width: 64em){
   .usa-footer__nav .grid-row .usa-footer__primary-content{
     width: 25%;
