@@ -30,11 +30,18 @@ describe LegacyOpenSearch::Engine do
     end
 
     before do
-      allow(OpenSearch::DocumentSearch).to receive(:new).and_return(double('document search', search: search_results))
+      allow(OpenSearch::DocumentSearch).to receive(:new).and_return(
+        instance_double(OpenSearch::DocumentSearch, search: search_results, from_cache: false)
+      )
     end
 
     it 'returns a hashie mash of the results' do
       expect(search.search).to be_a(Hashie::Mash::Rash)
+    end
+
+    it 'records whether the OpenSearch page came from cache' do
+      search.search
+      expect(search.diagnostics['SRCH']).to eq(cached: false)
     end
   end
 end
