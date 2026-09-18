@@ -53,6 +53,16 @@ describe SearchImpression do
       end
     end
 
+    context 'when params include the cache bypass' do
+      let(:params) { { 'query' => 'yep', 'memory' => 'false' } }
+
+      it 'omits the bypass parameter' do
+        expect(Rails.logger).to have_received(:info).with(
+          include('"params":{"query":"yep"}')
+        )
+      end
+    end
+
     context 'when params contains key with period' do
       let(:params) { { 'query' => 'yep', 'bar.blat' => 'nope' } }
 

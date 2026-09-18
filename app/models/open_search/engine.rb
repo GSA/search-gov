@@ -6,8 +6,10 @@ class OpenSearch::Engine < FilterableSearch
   include DocumentSearchable
 
   def search
-    params = process_array_parameters(build_search_params).merge(indices: ENV.fetch('OPENSEARCH_SEARCH_INDEX'))
-    search_results = OpenSearch::DocumentSearch.new(params, affiliate: @affiliate).search
+    params = process_array_parameters(build_search_params).merge(indices: search_index)
+    document_search = OpenSearch::DocumentSearch.new(params, affiliate: @affiliate)
+    search_results = document_search.search
+    diagnostics['SRCH'] = { cached: document_search.from_cache }
     build_response(search_results)
   end
 
@@ -16,6 +18,10 @@ class OpenSearch::Engine < FilterableSearch
   end
 
   private
+
+  def search_index
+    ENV.fetch('OPENSEARCH_SEARCH_INDEX')
+  end
 
   def process_array_parameters(params)
     array_parameter_keys.each do |key|
