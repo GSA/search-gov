@@ -78,7 +78,4 @@ Rails.application.configure do
   config.action_controller.raise_on_missing_callback_actions = true
 end
 
-ADDITIONAL_BING_PARAMS = { 'traffictype' => 'test' }
-
 DEFAULT_CACHE_DURATION = 6.hours
-BING_CACHE_DURATION = 1.day

@@ -46,8 +46,6 @@ VCR.configure do |config|
   config.filter_sensitive_data('<AWS_IMAGE_BUCKET_BUCKET>') { ENV.fetch('AWS_BUCKET', nil) }
   config.filter_sensitive_data('<AWS_IMAGE_BUCKET_S3_HOST_ALIAS>') { ENV.fetch('AWS_S3_HOST_ALIAS', nil) }
   config.filter_sensitive_data('<AWS_IMAGE_BUCKET_S3_REGION>') { ENV.fetch('AWS_REGION', nil) }
-  config.filter_sensitive_data('<BING_V7_WEB_SUBSCRIPTION_ID>') { ENV.fetch('BING_WEB_SUBSCRIPTION_ID', nil) }
-  config.filter_sensitive_data('<BING_V7_IMAGE_SUBSCRIPTION_ID>') { ENV.fetch('BING_IMAGE_SUBSCRIPTION', nil) }
   config.filter_sensitive_data('<DATADOG_API_ENABLED>') { ENV.fetch('DATADOG_ENABLED', nil) }
   config.filter_sensitive_data('<DATADOG_API_KEY>') { ENV.fetch('DATADOG_API_KEY', nil) }
   config.filter_sensitive_data('<DATADOG_APPLICATION_KEY>') { ENV.fetch('DATADOG_APPLICATION_KEY', nil) }

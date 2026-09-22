@@ -1,18 +1,5 @@
 module Instrumentation
   class LogSubscriber < ActiveSupport::LogSubscriber
-    # The only methods that work as of 2023 are oasis_search and elastic_search. The others
-    # should be removed when we remove those old search classes. The Bing methods need to
-    # be updated to support BingV7.
-    def bing_image_search(event)
-      generic_logging('Bing Image Query', event, YELLOW)
-    end
-
-    def bing_web_search(event)
-      generic_logging('Bing Query', event, YELLOW)
-    end
-
-
-
     def elastic_search(event)
       generic_logging("#{event.payload[:index]} Query", event, MAGENTA)
     end

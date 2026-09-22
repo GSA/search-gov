@@ -59,23 +59,12 @@ module MobileHelper
     affiliate.is_sayt_enabled? ? 'form-control typeahead-enabled' : 'form-control'
   end
 
-  def search_results_by_text(module_tag)
-    provider = case module_tag
-               when 'BWEB', 'IMAG' then ' Bing'
-               else ' Search.gov'
-               end
-    I18n.t(:powered_by) << provider
+  def search_results_by_text(_module_tag)
+    I18n.t(:powered_by) << ' Search.gov'
   end
 
-  def serp_attribution(search_module_tag)
-    powered_by = I18n.t(:powered_by)
-    if %w[BWEB IMAG].include?(search_module_tag)
-      content_tag(:div, class: 'bing') do
-        (powered_by << content_tag(:span, ' Bing')).html_safe
-      end
-    else
-      render partial: 'searches/powered_by_digital_gov_search'
-    end
+  def serp_attribution(_search_module_tag)
+    render partial: 'searches/powered_by_digital_gov_search'
   end
 
   def html_class_hash(language)

@@ -1,6 +1,6 @@
 Feature: Manage Display
   Scenario: Editing Sidebar Settings on a new site
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
@@ -11,7 +11,7 @@ Feature: Manage Display
 
   @javascript
   Scenario: Editing Related Sites
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name  | name         | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site 1 | 1.agency.gov | john@agency.gov | John       | Bar       | false                       |
       | agency site 2 | 2.agency.gov | john@agency.gov | John       | Bar       | false                       |
@@ -43,7 +43,7 @@ Feature: Manage Display
 
   @javascript
   Scenario: Errors when Editing No Results Page
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | website                | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | http://main.agency.gov | false                       |
     And I am logged in with email "john@agency.gov"
@@ -83,7 +83,7 @@ Feature: Manage Display
     And the page body should contain "These settings are for preview purposes only."
 
   Scenario: Display sub navigation links when "Use Redesigned Results Page" is false
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
