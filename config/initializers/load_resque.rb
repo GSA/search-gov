@@ -7,6 +7,10 @@ require 'resque/scheduler/server'
 require 'resque/server'
 require 'resque/job_timeout'
 
+# Sinatra 4 HostAuthorization defaults block www.example.com and real hostnames.
+# Rails already owns host checks; this mount is behind AffiliateAdminConstraint.
+Resque::Server.set :host_authorization, permitted_hosts: []
+
 redis_url = ENV['REDIS_SYSTEM_URL']
 
 Resque.redis = redis_url
