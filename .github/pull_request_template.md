@@ -9,5 +9,5 @@ Steps to verify this on Dev and Staging.
 
 ### Reminder:
 
-- Ensure the PR title starts with **SRCH-[ticket-number]:**
+- Start the PR title with **SRCH-####:** (or **Release - SRCH-####, …:** for releases)
 - Assign at least one Reviewer
