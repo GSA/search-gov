@@ -101,6 +101,8 @@ gem 'medusa', git: 'https://github.com/brutuscat/medusa-crawler', ref: '82299f27
 # Robotex is required by Medusa. Specifying fork until https://github.com/chriskite/robotex/issues/4
 # is resolved
 gem 'robotex', git: 'https://github.com/GSA/robotex'
+# Medusa requires webrick/cookie. rackup 2 (Rack 3) no longer pulls webrick in.
+gem 'webrick', '~> 1.9'
 gem 'saxerator', '~> 0.9.9'
 gem 'counter_culture', '~> 2.9.0'
 # after_commit_action needed to enable counter_culture's execute_after_commit option.
