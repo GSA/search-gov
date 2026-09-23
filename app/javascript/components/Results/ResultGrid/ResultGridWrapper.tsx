@@ -29,13 +29,6 @@ const ResultGridWrapper = ({ url, clickTracking, children }: ResultGridWrapperPr
     <Grid 
       row gap='md' 
       className='result-meta-grid-wrapper'
-      tabIndex={0} // Makes it keyboard focusable
-      role='link' // Announce as link to screen readers
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          handleResultDivClick(url);
-        }
-      }}
       onClick={() => handleResultDivClick(url)}>
       {children}
     </Grid>
