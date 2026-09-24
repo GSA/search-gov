@@ -27,7 +27,10 @@ class OpenSearch::DocumentQuery
 
   PDF_MIME_TYPE = 'application/pdf'
   TEXT_FIELDS = %w[title description content].freeze
-  WILDCARD_TEXT_FIELDS = TEXT_FIELDS.map { |field| "#{field}_*" }.freeze
+  ENGLISH_SEARCH_LOCALES = %w[en de].freeze
+  ENGLISH_TEXT_FIELDS = TEXT_FIELDS.product(ENGLISH_SEARCH_LOCALES).map do |field, locale|
+    "#{field}_#{locale}"
+  end.freeze
 
   attr_reader :audience,
               :content_type,
@@ -97,7 +100,7 @@ class OpenSearch::DocumentQuery
     fields = (@options[:include] || default_fields).push('language')
     fields.flat_map do |field|
       next [field] unless language_suffixed_fields[field]
-      next ["#{field}_*"] if english_language_search?
+      next ENGLISH_SEARCH_LOCALES.map { |locale| "#{field}_#{locale}" } if english_language_search?
 
       [language_suffixed_fields[field]]
     end
@@ -111,10 +114,10 @@ class OpenSearch::DocumentQuery
     @options[:min_timestamp_created].present? or @options[:max_timestamp_created].present?
   end
 
-  # English searches use title_*/description_*/content_* so PDF with any language match.
+  # English searches use en/de-suffixed title/description/content fields.
   # For non-English, only use language suffixed fields (e.g. title_es).
   def simple_query_string_fields
-    return WILDCARD_TEXT_FIELDS if english_language_search?
+    return ENGLISH_TEXT_FIELDS if english_language_search?
 
     language_suffixed_fields.values
   end

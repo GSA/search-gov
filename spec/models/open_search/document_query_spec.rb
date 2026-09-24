@@ -44,11 +44,15 @@ describe OpenSearch::DocumentQuery do
         )
       end
 
-      it 'searches wildcard title/description/content fields in simple_query_string' do
-        expect(word_form_shoulds.to_s).to include('title_*^2', 'description_*^1.5', 'content_*')
+      it 'searches en and de title/description/content fields in simple_query_string' do
+        expect(word_form_shoulds.to_s).to include(
+          'title_en^2', 'title_de^2',
+          'description_en^1.5', 'description_de^1.5',
+          'content_en', 'content_de'
+        )
       end
 
-      it 'adds a multi_match across wildcard title/description/content fields' do
+      it 'adds a multi_match across en and de title/description/content fields' do
         expect(word_form_shoulds).to include(
           hash_including(
             bool: hash_including(
@@ -56,7 +60,11 @@ describe OpenSearch::DocumentQuery do
                 hash_including(
                   multi_match: hash_including(
                     query: query,
-                    fields: array_including('title_*', 'description_*', 'content_*'),
+                    fields: array_including(
+                      'title_en', 'title_de',
+                      'description_en', 'description_de',
+                      'content_en', 'content_de'
+                    ),
                     minimum_should_match: '3<90%'
                   )
                 )
@@ -66,13 +74,17 @@ describe OpenSearch::DocumentQuery do
         )
       end
 
-      it 'requests wildcard highlights so non-English PDF snippets can be returned' do
+      it 'requests en and de highlights' do
         highlight_fields = body.dig(:highlight, :fields).keys.map(&:to_s)
-        expect(highlight_fields).to contain_exactly('title_*', 'description_*', 'content_*')
+        expect(highlight_fields).to contain_exactly(
+          'title_en', 'title_de',
+          'description_en', 'description_de',
+          'content_en', 'content_de'
+        )
       end
 
-      it 'includes wildcard source fields so non-English PDF titles are returned' do
-        expect(body[:_source]).to include('title_*', 'language')
+      it 'includes en and de source fields' do
+        expect(body[:_source]).to include('title_en', 'title_de', 'language')
       end
     end
 
@@ -107,7 +119,7 @@ describe OpenSearch::DocumentQuery do
             )
           )
         )
-        expect(word_form_shoulds.to_s).not_to include('title_*', 'description_*', 'content_*')
+        expect(word_form_shoulds.to_s).not_to include('title_en', 'title_de', 'content_de')
       end
 
       it 'highlights only the affiliate language-suffixed fields' do
@@ -115,9 +127,9 @@ describe OpenSearch::DocumentQuery do
         expect(highlight_fields).to contain_exactly('title_es', 'description_es', 'content_es')
       end
 
-      it 'does not include wildcard source fields' do
+      it 'does not include en/de source fields beyond the affiliate language' do
         expect(body[:_source]).to include('title_es')
-        expect(body[:_source]).not_to include('title_*')
+        expect(body[:_source]).not_to include('title_en', 'title_de')
       end
     end
 
