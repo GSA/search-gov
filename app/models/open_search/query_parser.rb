@@ -29,7 +29,8 @@ class OpenSearch::QueryParser
   def extract_site_filter(site_param)
     domain_name, url_path = site_param.split('/', 2)
     domain_name.sub!(/\A-?site:/i, '')
-    url_path = url_path.present? ? "/#{url_path}" : nil
+    domain_name.sub!(/\A\.+/, '')
+    url_path = "/#{url_path}".sub(%r{/+\z}, '') if url_path.present?
     SiteFilter.new domain_name, url_path
   end
 end

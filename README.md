@@ -137,7 +137,7 @@ Same thing, but using Resque to index in parallel:
 
 OpenSearch is the search and analytics backend for both document/custom indices and analytics (logstash) data.
 
-**Note:** The application uses the `elasticsearch-ruby` gem to connect to OpenSearch, as it is API-compatible with OpenSearch. This avoids dependency conflicts with the `omniauth_login_dot_gov` gem.
+**Note:** The application uses `opensearch-ruby` to connect to OpenSearch. `omniauth_login_dot_gov` v2.2.0 allows Faraday 2, which that client requires.
 
 #### Environment Variables
 
@@ -249,17 +249,13 @@ It is recommended to always review diff changes after running autocorrection com
 # Running the app
 ## Search
 
-To run test searches, you will need a working Bing API key. You can request one from Bing, or ask a friendly coworker.
+To run test searches, start your local development environment with OpenSearch available:
 
-1. Add the Bing `BING_WEB_SUBSCRIPTION_ID` to `.env` file:
-```  
-BING_WEB_SUBSCRIPTION_ID: *****
-```
-2. Start your local development environment:
 ```
 bin/dev
 ```
-3. Test searches should return results:
+
+Test searches should return results:
 
 **Web results**
 * http://localhost:3000/search?affiliate=test_affiliate&query=government
@@ -339,7 +335,13 @@ When in doubt, just use Resque.enqueue() instead of Resque.enqueue_with_priority
 (Note: newer jobs inherit from ActiveJob, using the resque queue adapter. We are in the process of migrating the older jobs to ActiveJob.)
 
 ### Scheduled jobs
-We use the [resque-scheduler](https://github.com/resque/resque-scheduler) gem to schedule delayed jobs. Use [ActiveJob](http://api.rubyonrails.org/classes/ActiveJob/Core/ClassMethods.html)'s `:wait` or `:wait_until` options to enqueue delayed jobs, or schedule them in `config/resque_schedule.yml`.
+
+There are two Rails schedule files. Do not list the same job in both.
+
+- `config/resque_schedule.yml` — recurring Resque cron on **crawler** hosts via systemd `resque-scheduler.service` (`rake resque:scheduler`). Production currently schedules `SitemapMonitorJob` every 4 hours. This is the source of truth for that job. Each crawler that runs the scheduler process will enqueue it.
+- `config/schedule.rb` — whenever crontab on **cron** hosts (Capistrano `roles: [:cron]`). Use `rake`, `runner`, or `command`. Do not add Resque cron job classes here.
+
+The resque-scheduler **process** must keep running even if the YAML file is empty: delayed jobs use ActiveJob `:wait` / `:wait_until` (for example `SearchgovDomainIndexerJob.set(wait: delay.seconds)`).
 
 Example:
 

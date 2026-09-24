@@ -1,10 +1,10 @@
 GIT
   remote: https://github.com/18f/omniauth_login_dot_gov
-  revision: 6e117a9c68b19a1fbc70533613b74b0d8affd641
-  ref: 6e117a9c68b19a1fbc70533613b74b0d8affd641
+  revision: 616a865a0d2ac8b5e01c07a5809bc37a10cfc42b
+  tag: v2.2.0
   specs:
-    omniauth_login_dot_gov (0.2.0)
-      faraday (~> 0.17)
+    omniauth_login_dot_gov (2.2.0)
+      faraday (~> 2.0)
       json-jwt (~> 1.11)
       jwt (~> 2.2)
       multi_json (~> 1.14)
@@ -357,18 +357,21 @@ GEM
     erubi (1.13.1)
     et-orbi (1.2.11)
       tzinfo
-    ethon (0.16.0)
-      ffi (>= 1.15.0)
     exception_notification (4.6.0)
       actionmailer (>= 5.2, < 9)
       activesupport (>= 5.2, < 9)
     execjs (2.10.0)
     faker (1.9.6)
       i18n (>= 0.7)
-    faraday (0.17.6)
-      multipart-post (>= 1.2, < 3)
-    faraday_middleware (0.14.0)
-      faraday (>= 0.7.4, < 1.0)
+    faraday (2.14.3)
+      faraday-net_http (>= 2.0, < 3.5)
+      json
+      logger
+    faraday-net_http (3.4.4)
+      net-http (~> 0.5)
+    faraday-net_http_persistent (2.3.1)
+      faraday (~> 2.5)
+      net-http-persistent (>= 4.0.4, < 5)
     federal_register (0.6.9)
       httparty (>= 0.14.0)
     feedjira (3.2.5)
@@ -512,12 +515,14 @@ GEM
     multi_test (0.1.2)
     multi_xml (0.7.1)
       bigdecimal (~> 3.1)
-    multipart-post (2.4.1)
     mustermann (3.1.1)
     mutex_m (0.2.0)
     mysql2 (0.5.7)
       bigdecimal
-    net-http-persistent (2.9.4)
+    net-http (0.9.1)
+      uri (>= 0.11.1)
+    net-http-persistent (4.0.8)
+      connection_pool (>= 2.2.4, < 4)
     net-imap (0.5.9)
       date
       net-protocol
@@ -546,6 +551,9 @@ GEM
       omniauth (~> 2.0)
     open_uri_redirections (0.2.1)
     opensearch-dsl (0.2.1)
+    opensearch-ruby (3.4.0)
+      faraday (>= 1.0, < 3)
+      multi_json (>= 1.0)
     os (1.1.4)
     ostruct (0.6.3)
     package_json (0.2.0)
@@ -852,8 +860,6 @@ GEM
       actionpack (>= 3.1)
       jquery-rails
       railties (>= 3.1)
-    typhoeus (1.3.1)
-      ethon (>= 0.9.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     uber (0.1.0)
@@ -862,6 +868,7 @@ GEM
     unicode-display_width (3.1.4)
       unicode-emoji (~> 4.0, >= 4.0.4)
     unicode-emoji (4.0.4)
+    uri (1.1.1)
     validate_url (0.2.0)
       activemodel (>= 3.0.0)
     vcr (6.3.1)
@@ -939,7 +946,8 @@ DEPENDENCIES
   erb (~> 4.0.4)
   exception_notification (~> 4.5)
   faker (~> 1.8)
-  faraday_middleware
+  faraday (~> 2.13)
+  faraday-net_http_persistent (~> 2.0)
   federal_register (~> 0.6.3)
   feedjira (~> 3.2)
   flickraw (~> 0.9.9)
@@ -966,13 +974,14 @@ DEPENDENCIES
   mail (~> 2.7.1)
   mutex_m (~> 0.2.0)
   mysql2 (~> 0.5.7)
-  net-http-persistent (~> 2.9.3)
+  net-http-persistent (~> 4.0)
   newrelic_rpm (~> 9.10)
   nokogiri (~> 1.19)
   omniauth (~> 2.1.0)
   omniauth-rails_csrf_protection (~> 1.0.1)
   omniauth_login_dot_gov!
   opensearch-dsl
+  opensearch-ruby (~> 3.4)
   pry-byebug (~> 3.5)
   pry-rails (~> 0.3.6)
   puma (~> 6.6)
@@ -1024,7 +1033,6 @@ DEPENDENCIES
   truncator (~> 0.1.7)
   turbolinks (~> 5.2.1)
   twitter-typeahead-rails (~> 0.11.1)
-  typhoeus (~> 1.3.0)
   uglifier (~> 4.2.0)
   validate_url (= 0.2.0)
   vcr (~> 6.2)

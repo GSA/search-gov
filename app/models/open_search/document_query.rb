@@ -27,7 +27,10 @@ class OpenSearch::DocumentQuery
 
   PDF_MIME_TYPE = 'application/pdf'
   TEXT_FIELDS = %w[title description content].freeze
-  WILDCARD_TEXT_FIELDS = TEXT_FIELDS.map { |field| "#{field}_*" }.freeze
+  ENGLISH_SEARCH_LOCALES = %w[en de].freeze
+  ENGLISH_TEXT_FIELDS = TEXT_FIELDS.product(ENGLISH_SEARCH_LOCALES).map do |field, locale|
+    "#{field}_#{locale}"
+  end.freeze
 
   attr_reader :audience,
               :content_type,
@@ -92,20 +95,12 @@ class OpenSearch::DocumentQuery
     language == 'en'
   end
 
-  def common_terms_hash
-    {
-      query: query,
-      cutoff_frequency: 0.05,
-      minimum_should_match: { low_freq: '3<90%', high_freq: '2<90%' }
-    }
-  end
-
   def source_fields
     default_fields = %w[title path created changed thumbnail_url]
     fields = (@options[:include] || default_fields).push('language')
     fields.flat_map do |field|
       next [field] unless language_suffixed_fields[field]
-      next ["#{field}_*"] if english_language_search?
+      next ENGLISH_SEARCH_LOCALES.map { |locale| "#{field}_#{locale}" } if english_language_search?
 
       [language_suffixed_fields[field]]
     end
@@ -119,10 +114,10 @@ class OpenSearch::DocumentQuery
     @options[:min_timestamp_created].present? or @options[:max_timestamp_created].present?
   end
 
-  # English searches use title_*/description_*/content_* so PDF with any language match.
-  # For non-English, only use language suffixed fields.
+  # English searches use en/de-suffixed title/description/content fields.
+  # For non-English, only use language suffixed fields (e.g. title_es).
   def simple_query_string_fields
-    return WILDCARD_TEXT_FIELDS if english_language_search?
+    return ENGLISH_TEXT_FIELDS if english_language_search?
 
     language_suffixed_fields.values
   end
@@ -307,18 +302,10 @@ class OpenSearch::DocumentQuery
 
                           unless doc_query.query =~ /".*"/
                             must do
-                              bool do
-                                if doc_query.english_language_search?
-                                  OpenSearch::Template::LANGUAGE_ANALYZER_LOCALES.map(&:to_s).each do |locale|
-                                    TEXT_FIELDS.each do |field|
-                                      should { common({ "#{field}_#{locale}": doc_query.common_terms_hash }) }
-                                    end
-                                  end
-                                else
-                                  TEXT_FIELDS.each do |field|
-                                    should { common({ "#{field}_#{doc_query.language}": doc_query.common_terms_hash }) }
-                                  end
-                                end
+                              multi_match do
+                                query doc_query.query
+                                fields doc_query.simple_query_string_fields
+                                minimum_should_match '3<90%'
                               end
                             end
                           end

@@ -58,7 +58,7 @@ describe('Pagination component', () => {
     );
   });
 
-  it('renders pagination when the last page is current for Bing', () => {
+  it('renders pagination when the last page is current for unbounded results', () => {
     render(
       <UswdsPagination
         totalPages={testPages}

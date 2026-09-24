@@ -26,7 +26,7 @@ describe SearchesController do
       end
 
       it 'should render the template' do
-        expect(response).to render_template 'index'
+        expect(response).to render_template 'document'
         expect(response).to render_template 'layouts/searches'
       end
 
@@ -153,7 +153,7 @@ describe SearchesController do
               }
         end
 
-        it { is_expected.to render_template(:index) }
+        it { is_expected.to render_template(:document) }
       end
 
       it_should_behave_like 'a routed query that matches the referrer'
@@ -195,7 +195,7 @@ describe SearchesController do
     end
 
     it 'should render the template' do
-      expect(response).to render_template 'index'
+      expect(response).to render_template 'document'
       expect(response).to render_template 'layouts/searches'
     end
 
@@ -231,9 +231,9 @@ describe SearchesController do
       end
 
       it 'should serialize the results into JSON' do
+        expect(response.body).to match(/query/)
         expect(response.body).to match(/total/)
-        expect(response.body).to match(/startrecord/)
-        expect(response.body).to match(/endrecord/)
+        expect(response.body).to match(/web/)
       end
     end
 
@@ -243,9 +243,9 @@ describe SearchesController do
         @search = assigns[:search]
       end
 
-      it 'should serialize an error into JSON' do
-        expect(response.body).to match(/error/)
-        expect(response.body).to match(/#{I18n.translate :too_long}/)
+      it 'should serialize the empty OpenSearch response into JSON' do
+        expect(response.body).to match(/query/)
+        expect(response.body).to match(/web/)
       end
     end
   end
@@ -274,17 +274,17 @@ describe SearchesController do
     end
 
     it 'should serialize the results into JSON' do
+      expect(response.body).to match(/query/)
       expect(response.body).to match(/total/)
-      expect(response.body).to match(/startrecord/)
-      expect(response.body).to match(/endrecord/)
+      expect(response.body).to match(/web/)
     end
   end
 
   context "when a page number exceeds available pages" do
     before do
       # Mock a search with only 3 pages of results.
-      allow_any_instance_of(WebSearch).to receive(:total).and_return(30)
-      allow_any_instance_of(WebSearch).to receive(:per_page).and_return(10)
+      allow_any_instance_of(OpenSearch::Engine).to receive(:total).and_return(30)
+      allow_any_instance_of(OpenSearch::Engine).to receive(:per_page).and_return(10)
     end
 
     it "redirects to the last available page" do
@@ -350,14 +350,14 @@ describe SearchesController do
     end
 
     context 'when DocumentCollection exists' do
-      let(:site_search) { double(SiteSearch, query: 'gov', modules: %w(BWEB), diagnostics: {}) }
+      let(:docs_search) { double(OpenSearch::Engine, query: 'gov', modules: %w(SRCH), diagnostics: {}) }
 
       before do
         allow(dc).to receive(:too_deep_for_bing?).and_return(false)
         expect(Affiliate).to receive(:find_by_name).at_least(:once).and_return(affiliate)
         allow(affiliate).to receive_message_chain(:document_collections, :find_by_id).and_return(dc)
-        expect(SiteSearch).to receive(:new).with(hash_including(dc: '100', per_page: 20)).and_return(site_search)
-        expect(site_search).to receive(:run)
+        expect(OpenSearch::Engine).to receive(:new).with(hash_including(dc: '100', per_page: 20)).and_return(docs_search)
+        expect(docs_search).to receive(:run)
         get :docs, params: docs_params
       end
 
@@ -372,7 +372,7 @@ describe SearchesController do
       it { is_expected.to assign_to(:search_params).with(
         hash_including(affiliate: affiliate.name, query: 'gov')) }
 
-      it { is_expected.to render_template(:docs) }
+      it { is_expected.to render_template(:document) }
 
       context 'when searching with a date range' do
         let(:docs_params) do
@@ -393,14 +393,14 @@ describe SearchesController do
     end
 
     context 'when page number is specified' do
-      let(:site_search) { double(SiteSearch, query: 'pdf', modules: [], diagnostics: {}) }
+      let(:docs_search) { double(OpenSearch::Engine, query: 'pdf', modules: [], diagnostics: {}) }
 
       before do
         expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
         allow(dc).to receive(:too_deep_for_bing?).and_return(false)
         allow(affiliate).to receive_message_chain(:document_collections, :find_by_id).and_return(dc)
-        expect(SiteSearch).to receive(:new).with(hash_including(dc: '100')).and_return(site_search)
-        expect(site_search).to receive(:run)
+        expect(OpenSearch::Engine).to receive(:new).with(hash_including(dc: '100')).and_return(docs_search)
+        expect(docs_search).to receive(:run)
         get :docs,
             params: {
               query: 'pdf',
@@ -414,14 +414,13 @@ describe SearchesController do
     end
 
     context 'when DocumentCollection does not exist' do
-      let(:web_search) { double(WebSearch, query: 'gov', modules: [], diagnostics: {}) }
+      let(:docs_search) { double(OpenSearch::Engine, query: 'gov', modules: [], diagnostics: {}) }
 
       before do
         expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
         allow(affiliate).to receive_message_chain(:document_collections, :find_by_id).and_return(nil)
-        expect(WebSearch).to receive(:new).with(hash_including(dc: '100', per_page: 20)).and_return(web_search)
-        expect(web_search).to receive(:run)
-        expect(SiteSearch).not_to receive(:new)
+        expect(OpenSearch::Engine).to receive(:new).with(hash_including(dc: '100', per_page: 20)).and_return(docs_search)
+        expect(docs_search).to receive(:run)
         get :docs,
             params: {
               query: 'pdf',
@@ -434,14 +433,13 @@ describe SearchesController do
     end
 
     context 'when params[:dc] is not a valid number' do
-      let(:web_search) { double(WebSearch, query: 'gov', modules: [], diagnostics: {}) }
+      let(:docs_search) { double(OpenSearch::Engine, query: 'gov', modules: [], diagnostics: {}) }
 
       before do
         expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
         allow(affiliate).to receive_message_chain(:document_collections, :find_by_id).with(nil).and_return(nil)
-        expect(WebSearch).to receive(:new).with(hash_including(query: 'pdf')).and_return(web_search)
-        expect(web_search).to receive(:run)
-        expect(SiteSearch).not_to receive(:new)
+        expect(OpenSearch::Engine).to receive(:new).with(hash_including(query: 'pdf')).and_return(docs_search)
+        expect(docs_search).to receive(:run)
         get :docs,
             params: {
               query: 'pdf',

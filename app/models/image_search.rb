@@ -65,8 +65,6 @@ class ImageSearch
     return nil unless @spelling_suggestion_eligible
 
     @search_instance&.spelling_suggestion
-    # SRCH-5169: BingV7ImageSearch is currently broken, resulting in @search_instance returning false. Since the
-    # future of commercial image searches is uncertain, this addresses that scenario with a minimum of effort.
   end
 
   def commercial_results?

@@ -149,7 +149,7 @@ describe BulkAffiliateSearchEngineUpdateJob, type: :job do
     end
 
     context 'when some affiliates fail to update' do
-      let(:success_items) { [{ id: '1', search_engine: 'searchgov' }, { id: '2', search_engine: 'bing_v7' }] }
+      let(:success_items) { [{ id: '1', search_engine: 'opensearch' }, { id: '2', search_engine: 'legacy_opensearch' }] }
       let(:affiliate2) { instance_double(Affiliate, id: 2, errors: double('errors', full_messages: ['Validation failed'])) }
 
       before do
@@ -157,8 +157,8 @@ describe BulkAffiliateSearchEngineUpdateJob, type: :job do
         allow(Affiliate).to receive(:find_by).with(id: 1).and_return(affiliate)
         allow(Affiliate).to receive(:find_by).with(id: 2).and_return(affiliate2)
 
-        allow(affiliate).to receive(:update).with(search_engine: 'searchgov').and_return(true)
-        allow(affiliate2).to receive(:update).with(search_engine: 'bing_v7').and_return(false)
+        allow(affiliate).to receive(:update).with(search_engine: 'opensearch').and_return(true)
+        allow(affiliate2).to receive(:update).with(search_engine: 'legacy_opensearch').and_return(false)
       end
 
       it 'logs errors, sends a partial success email, and cleans up the downloaded file' do
@@ -170,8 +170,8 @@ describe BulkAffiliateSearchEngineUpdateJob, type: :job do
         expect(BulkAffiliateSearchEngineUpdateMailer).to have_received(:notify).with(
           requesting_user_email,
           file_name,
-          [{ identifier: '1', search_engine: 'searchgov' }],
-          [{ identifier: '2', search_engine: 'bing_v7', error: 'Update failed: Validation failed' }]
+          [{ identifier: '1', search_engine: 'opensearch' }],
+          [{ identifier: '2', search_engine: 'legacy_opensearch', error: 'Update failed: Validation failed' }]
         )
         expect(mailer_double).to have_received(:deliver_later)
         expect(FileUtils).to have_received(:rm_f).with(downloaded_temp_file_path)
