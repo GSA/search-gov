@@ -9,6 +9,35 @@ describe Api::SearchOptions, type: :model do
     {}
   end
 
+  describe '#attributes' do
+    let(:params) do
+      {
+        access_key: 'my_access_key',
+        affiliate: 'my_site_handle',
+        query: 'gov'
+      }
+    end
+
+    it 'does not skip the cache by default' do
+      expect(options.attributes[:skip_cache]).to be false
+    end
+
+    context 'when memory is false' do
+      let(:params) do
+        {
+          access_key: 'my_access_key',
+          affiliate: 'my_site_handle',
+          query: 'gov',
+          memory: 'false'
+        }
+      end
+
+      it 'sets skip_cache' do
+        expect(options.attributes[:skip_cache]).to be true
+      end
+    end
+  end
+
   describe 'initialization' do
     context 'when the query params include HTML tags' do
       let(:unsanitized_query) { '<b>thunder & lightning</b>' }

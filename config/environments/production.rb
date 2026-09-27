@@ -66,7 +66,16 @@ Rails.application.configure do
   config.log_level = ENV.fetch("RAILS_LOG_LEVEL", "info")
 
   # Use a different cache store in production.
-  config.cache_store = :redis_cache_store, { url: ENV['REDIS_CACHE_URL'] }
+  config.cache_store = :redis_cache_store, {
+    url: ENV['REDIS_CACHE_URL'],
+    connect_timeout: 1,
+    read_timeout: 0.5,
+    write_timeout: 0.5,
+    pool: { size: Integer(ENV.fetch('SEARCHGOV_THREADS', 5)), timeout: 1 },
+    error_handler: lambda { |method:, returning:, exception:|
+      Rails.logger.warn("RedisCacheStore #{method} failed: #{exception.class}: #{exception.message}")
+    }
+  }
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter = :resque

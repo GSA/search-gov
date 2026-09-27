@@ -293,6 +293,21 @@ describe SearchesController do
     end
   end
   
+  context 'when a maintainer bypasses the OpenSearch cache' do
+    before do
+      get :index,
+          params: {
+            query: 'obama',
+            memory: 'false',
+            affiliate: 'usagov'
+          }
+    end
+
+    it 'sets skip_cache on the search options' do
+      expect(assigns[:search_options][:skip_cache]).to be true
+    end
+  end
+
   context 'highlighting' do
     context 'when a client requests results without highlighting' do
       before do

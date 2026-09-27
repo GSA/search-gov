@@ -28,7 +28,8 @@ class Api::SearchOptions
                 :query_quote,
                 :query,
                 :site_limits,
-                :site
+                :site,
+                :skip_cache
 
   validates_presence_of :access_key,
                         :affiliate,
@@ -70,6 +71,7 @@ class Api::SearchOptions
     self.file_type = params[:filetype]
     self.filter = params[:filter]
     self.site_limits = params[:site_limits]
+    self.skip_cache = params[:memory].to_s == 'false'
 
     QUERY_PARAMS.each do |param|
       self.send("#{param}=", Sanitizer.sanitize(params[param], encode: false))
@@ -90,7 +92,8 @@ class Api::SearchOptions
       query_or: query_or,
       query_quote: query_quote,
       query: query,
-      site_limits: site_limits }
+      site_limits: site_limits,
+      skip_cache: skip_cache }
   end
 
   def next_offset_within_limit?
