@@ -31,7 +31,7 @@ describe LegacyOpenSearch::Engine do
 
     before do
       allow(OpenSearch::DocumentSearch).to receive(:new).and_return(
-        instance_double(OpenSearch::DocumentSearch, search: search_results, from_cache: false)
+        instance_double(OpenSearch::DocumentSearch, search: search_results, cache_status: 'miss')
       )
     end
 
@@ -41,7 +41,7 @@ describe LegacyOpenSearch::Engine do
 
     it 'records whether the OpenSearch page came from cache' do
       search.search
-      expect(search.diagnostics['SRCH']).to eq(cached: false)
+      expect(search.diagnostics['SRCH']).to eq(cached: false, cache: 'miss')
     end
   end
 end

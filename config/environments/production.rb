@@ -72,7 +72,7 @@ Rails.application.configure do
     read_timeout: 0.5,
     write_timeout: 0.5,
     pool: { size: Integer(ENV.fetch('SEARCHGOV_THREADS', 5)), timeout: 1 },
-    error_handler: lambda { |method:, returning:, exception:|
+    error_handler: lambda { |method:, exception:, **|
       Rails.logger.warn("RedisCacheStore #{method} failed: #{exception.class}: #{exception.message}")
     }
   }

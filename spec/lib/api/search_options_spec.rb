@@ -22,18 +22,37 @@ describe Api::SearchOptions, type: :model do
       expect(options.attributes[:skip_cache]).to be false
     end
 
-    context 'when memory is false' do
+    %w[true 1 TRUE].each do |value|
+      context "when disable_search_cache is #{value}" do
+        let(:params) do
+          { access_key: 'my_access_key', affiliate: 'my_site_handle', query: 'gov', disable_search_cache: value }
+        end
+
+        it 'sets skip_cache' do
+          expect(options.attributes[:skip_cache]).to be true
+        end
+      end
+    end
+
+    %w[false 0 yes].each do |value|
+      context "when disable_search_cache is #{value}" do
+        let(:params) do
+          { access_key: 'my_access_key', affiliate: 'my_site_handle', query: 'gov', disable_search_cache: value }
+        end
+
+        it 'does not skip the cache' do
+          expect(options.attributes[:skip_cache]).to be false
+        end
+      end
+    end
+
+    context 'when the retired memory param is sent' do
       let(:params) do
-        {
-          access_key: 'my_access_key',
-          affiliate: 'my_site_handle',
-          query: 'gov',
-          memory: 'false'
-        }
+        { access_key: 'my_access_key', affiliate: 'my_site_handle', query: 'gov', memory: 'false' }
       end
 
-      it 'sets skip_cache' do
-        expect(options.attributes[:skip_cache]).to be true
+      it 'does not skip the cache' do
+        expect(options.attributes[:skip_cache]).to be false
       end
     end
   end

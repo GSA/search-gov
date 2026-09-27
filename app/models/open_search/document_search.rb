@@ -3,10 +3,22 @@
 class OpenSearch::DocumentSearch
   NO_HITS = { 'hits' => { 'total' => 0, 'hits' => [] } }
   CACHE_NAMESPACE = 'searches'
+  CACHE_KEY_VERSION = 'v1'
   RACE_CONDITION_TTL = 10.seconds
   DEFAULT_CACHE_MINUTES = 15
+  BYPASS_PARAM = :disable_search_cache
+  BYPASS_VALUES = %w[true 1].freeze
+  QUERY_OPERATORS = %w[AND OR NOT].freeze
 
-  attr_reader :doc_query, :offset, :size, :indices, :from_cache
+  attr_reader :doc_query, :offset, :size, :indices, :cache_status
+
+  def self.bypass_requested?(value)
+    BYPASS_VALUES.include?(value.to_s.strip.downcase)
+  end
+
+  def self.normalize_query(query)
+    query.to_s.split.map { |term| QUERY_OPERATORS.include?(term) ? term : term.downcase }.join(' ')
+  end
 
   def initialize(options, affiliate:)
     @options = options
@@ -16,7 +28,7 @@ class OpenSearch::DocumentSearch
     @offset = options[:offset] || 0
     @size = options[:size]
     @skip_cache = options[:skip_cache]
-    @from_cache = false
+    @cache_status = nil
   end
 
   def search
@@ -37,21 +49,34 @@ class OpenSearch::DocumentSearch
   end
 
   def fetch_client_result
-    return client_search if skip_cache?
+    body = doc_query.body.to_hash
 
-    @from_cache = true
-    Rails.cache.fetch(cache_key, **cache_options) do
-      @from_cache = false
-      client_search
+    if cache_disabled?
+      @cache_status = 'disabled'
+      return client_search(body)
+    end
+
+    if @skip_cache
+      @cache_status = 'bypass'
+      return client_search(body)
+    end
+
+    @cache_status = 'hit'
+    Rails.cache.fetch(cache_key(body), **cache_options) do
+      @cache_status = 'miss'
+      client_search(body)
     end
   end
 
-  def skip_cache?
-    @skip_cache || cache_duration <= 0
+  def cache_disabled?
+    !ENV['REDIS_CACHE_ON'].to_s.strip.casecmp?('true') ||
+      !@affiliate.search_cache_enabled? ||
+      cache_duration <= 0
   end
 
   def cache_duration
-    ENV.fetch('OPENSEARCH_CACHE_DURATION', DEFAULT_CACHE_MINUTES.to_s).to_i.minutes
+    minutes = Integer(ENV.fetch('REDIS_CACHE_DURATION', DEFAULT_CACHE_MINUTES).to_s.strip, 10, exception: false)
+    (minutes || DEFAULT_CACHE_MINUTES).minutes
   end
 
   def cache_options
@@ -62,47 +87,32 @@ class OpenSearch::DocumentSearch
     }
   end
 
-  def cache_key
-    Digest::SHA256.hexdigest(JSON.generate(cache_key_payload.as_json.sort.to_h))
+  def cache_key(body)
+    payload = [Array(indices), offset, size, normalized_body(body)]
+    "#{@affiliate.id}:#{CACHE_KEY_VERSION}:#{Digest::SHA256.hexdigest(JSON.generate(payload))}"
   end
 
-  def cache_key_payload
-    {
-      affiliate_id: @affiliate.id,
-      gets_results_from_all_domains: @affiliate.gets_results_from_all_domains,
-      locale: @affiliate.locale,
-      indices: Array(indices),
-      offset: offset,
-      size: size,
-      query: normalized_query,
-      language: @options[:language],
-      include: @options[:include],
-      ignore_tags: @options[:ignore_tags],
-      sort_by_date: @options[:sort_by_date],
-      min_timestamp: @options[:min_timestamp],
-      max_timestamp: @options[:max_timestamp],
-      min_timestamp_created: @options[:min_timestamp_created],
-      max_timestamp_created: @options[:max_timestamp_created],
-      audience: @options[:audience],
-      content_type: @options[:content_type],
-      mime_type: @options[:mime_type],
-      searchgov_custom1: @options[:searchgov_custom1],
-      searchgov_custom2: @options[:searchgov_custom2],
-      searchgov_custom3: @options[:searchgov_custom3],
-      tags: @options[:tags]
-    }
+  # Only the user query is case-folded; filters such as site paths keep their case.
+  # Timestamps are floored to the minute so relative ranges like tbs=h stay cacheable.
+  def normalized_body(body)
+    raw_query = doc_query.query.to_s
+    normalized_query = self.class.normalize_query(raw_query)
+
+    body.deep_transform_values do |value|
+      case value
+      when raw_query then normalized_query
+      when Time, DateTime, ActiveSupport::TimeWithZone then value.utc.change(sec: 0).iso8601
+      else value
+      end
+    end
   end
 
-  def normalized_query
-    (doc_query.query || @options[:query]).to_s.downcase.squish
-  end
-
-  def client_search
-    Rails.logger.debug { "Query: *****\n#{doc_query.body.to_json}\n*****" }
+  def client_search(body)
+    Rails.logger.debug { "Query: *****\n#{body.to_json}\n*****" }
 
     result = OPENSEARCH_CLIENT.search({
       index: indices,
-      body: doc_query.body,
+      body: body,
       from: offset,
       size: size,
       rest_total_hits_as_int: true

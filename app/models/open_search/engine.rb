@@ -9,7 +9,7 @@ class OpenSearch::Engine < FilterableSearch
     params = process_array_parameters(build_search_params).merge(indices: search_index)
     document_search = OpenSearch::DocumentSearch.new(params, affiliate: @affiliate)
     search_results = document_search.search
-    diagnostics['SRCH'] = { cached: document_search.from_cache }
+    diagnostics['SRCH'] = { cached: document_search.cache_status == 'hit', cache: document_search.cache_status }
     build_response(search_results)
   end
 

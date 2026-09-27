@@ -71,7 +71,7 @@ class Api::SearchOptions
     self.file_type = params[:filetype]
     self.filter = params[:filter]
     self.site_limits = params[:site_limits]
-    self.skip_cache = params[:memory].to_s == 'false'
+    self.skip_cache = OpenSearch::DocumentSearch.bypass_requested?(params[:disable_search_cache])
 
     QUERY_PARAMS.each do |param|
       self.send("#{param}=", Sanitizer.sanitize(params[param], encode: false))

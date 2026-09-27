@@ -32,7 +32,7 @@ describe OpenSearch::Engine do
 
     before do
       allow(OpenSearch::DocumentSearch).to receive(:new).and_return(
-        instance_double(OpenSearch::DocumentSearch, search: search_results, from_cache: true)
+        instance_double(OpenSearch::DocumentSearch, search: search_results, cache_status: 'hit')
       )
     end
 
@@ -42,7 +42,7 @@ describe OpenSearch::Engine do
 
     it 'records whether the OpenSearch page came from cache' do
       search.search
-      expect(search.diagnostics['SRCH']).to eq(cached: true)
+      expect(search.diagnostics['SRCH']).to eq(cached: true, cache: 'hit')
     end
   end
 end

@@ -298,13 +298,23 @@ describe SearchesController do
       get :index,
           params: {
             query: 'obama',
-            memory: 'false',
+            disable_search_cache: 'true',
             affiliate: 'usagov'
           }
     end
 
     it 'sets skip_cache on the search options' do
       expect(assigns[:search_options][:skip_cache]).to be true
+    end
+  end
+
+  context 'when disable_search_cache is not a truthy value' do
+    before do
+      get :index, params: { query: 'obama', disable_search_cache: 'false', affiliate: 'usagov' }
+    end
+
+    it 'does not skip the cache' do
+      expect(assigns[:search_options][:skip_cache]).to be false
     end
   end
 
