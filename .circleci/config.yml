@@ -45,7 +45,7 @@ executors:
         entrypoint: ["/bin/bash", "-c"]
         command: ["trap 'exit 0' TERM INT; /usr/share/opensearch/bin/opensearch-plugin install --batch analysis-icu analysis-kuromoji analysis-smartcn; /usr/share/opensearch/opensearch-docker-entrypoint.sh opensearch & wait $!"]
 
-      - image: apache/tika:2.4.1
+      - image: apache/tika:3.3.1.0
 
 commands:
   wait_for_opensearch:
