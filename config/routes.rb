@@ -24,7 +24,6 @@ Rails.application.routes.draw do
     namespace :v2 do
       get '/search' => 'searches#blended'
       get '/search/i14y' => 'searches#i14y'
-      get '/search/bing' => 'searches#bing'
       get '/search/docs' => 'searches#docs'
       post '/click' => 'click#create'
     end
@@ -201,7 +200,6 @@ Rails.application.routes.draw do
     resources :features, concerns: :active_scaffold
     resources :affiliate_feature_additions, concerns: :active_scaffold
     resources :help_links, concerns: :active_scaffold
-    resources :bing_urls, concerns: :active_scaffold
     resources :statuses, concerns: :active_scaffold
     resources :system_alerts, concerns: :active_scaffold
     resources :tags, concerns: :active_scaffold

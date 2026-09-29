@@ -19,6 +19,7 @@ bundle exec rails db:drop db:create db:schema:load
 #### Step 3. Load locale
 
 ```ruby
+bundle exec rails c
 load Rails.root.join("db/seeds/language.rb")
 ```
 
@@ -108,3 +109,23 @@ SearchgovDomain.create!(domain: "www.va.gov")
 #### Step 9. Verify index is getting populated
 
 In OpenSearch Dashboard ([http://localhost:5701/app/dev_tools#/console](http://localhost:5701/app/dev_tools#/console)); run `GET _cat/indices?v` and you should see `docs.count` for `development-i14y-documents-searchgov-legacy` increasing.
+
+#### Step 10. Add `config/logindotgov.pem` and start the server
+
+Ask a teammate for the Login.gov sandbox private key and copy it to `config/logindotgov.pem`.
+
+```bash
+bundle exec rails s
+```
+
+Open [http://localhost:3000/admin/affiliates](http://localhost:3000/admin/affiliates). You should be sent to the Login.gov sandbox login. Sign in with the same email you used to create a sandbox account. That creates a local user and prompts you to fill in your profile (first name, last name, organization, etc.).
+
+#### Step 11. Grant admin privileges to the user created in Step 10
+
+In a Rails console:
+
+```ruby
+User.find_by(email: "you@gsa.gov").update!(is_affiliate_admin: true, approval_status: "approved")
+```
+
+Reload [http://localhost:3000/admin/affiliates](http://localhost:3000/admin/affiliates). You should now see the admin affiliates page.

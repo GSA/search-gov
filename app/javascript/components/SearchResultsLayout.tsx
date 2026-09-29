@@ -297,7 +297,7 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
                   mobileView={isMobileView}
                 />
 
-                {/* This ternary is needed to handle the case when Bing pagination leads to a page with no results */}
+                {/* Render results when present; otherwise show the no-results page for a query. */}
                 {resultsData ? (
                   <Results
                     page={page}

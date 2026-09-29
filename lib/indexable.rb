@@ -78,7 +78,7 @@ module Indexable
   def index_exists?
     client_reader.indices.get_alias(name: writer_alias)
     true
-  rescue Elasticsearch::Transport::Transport::Errors::NotFound
+  rescue OpenSearch::Transport::Transport::Errors::NotFound
     false
   end
 

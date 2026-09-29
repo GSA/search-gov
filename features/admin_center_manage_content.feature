@@ -8,7 +8,7 @@ Feature: Manage Content
     And I should see a link to "Content Overview" in the active site sub navigation
 
   Scenario: View best bets graphics
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And the following featured collections exist for the affiliate "agency.gov":
@@ -30,7 +30,7 @@ Feature: Manage Content
     And I should see "Status: Inactive"
 
   Scenario: Filtering best bets graphics
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And the following featured collections exist for the affiliate "agency.gov":
@@ -55,7 +55,7 @@ Feature: Manage Content
     Then I should be on the agency.gov's Best Bets Graphics page
 
   Scenario: Add/edit/remove best bets graphics
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And the following featured collections exist for the affiliate "agency.gov":
@@ -113,7 +113,7 @@ Feature: Manage Content
     Then I should see "You have removed 2011 Atlantic Hurricane Season from this site"
 
   Scenario: View best bets texts
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     When the following Boosted Content entries exist for the affiliate "agency.gov"
@@ -130,7 +130,7 @@ Feature: Manage Content
     And I should see "Published between 08/01/2013 and 01/01/2022"
 
   Scenario: Filtering best bets texts
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     When the following Boosted Content entries exist for the affiliate "agency.gov"
@@ -152,7 +152,7 @@ Feature: Manage Content
     Then I should be on the agency.gov's Best Bets Texts page
 
   Scenario: Add/edit/remove best bets texts
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
@@ -191,7 +191,7 @@ Feature: Manage Content
     Then I should see "You have removed Release for Week Ending June 21, 2013 from this site"
 
   Scenario: Bulk upload best bets texts
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
@@ -204,7 +204,7 @@ Feature: Manage Content
     And I should see "1 Text Best Bet was not uploaded. Please ensure the URLs are properly formatted, including the http:// or https:// prefix."
 
   Scenario: View Collections
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email   |first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John      | Bar       | false                       |
     And affiliate "agency.gov" has the following document collections:
@@ -222,7 +222,7 @@ Feature: Manage Content
     And I should find "agency3.gov/blog/" in the Collection URL Prefixes modal
 
   Scenario: Add/edit/remove Collection
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
@@ -259,7 +259,7 @@ Feature: Manage Content
     Then I should see "You have removed News and Blog from this site"
 
   Scenario: View Routed Queries
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And affiliate "agency.gov" has the following routed queries:
@@ -274,7 +274,7 @@ Feature: Manage Content
       | Disable Rails Asset Compression |
 
   Scenario: Add/Edit/Remove Routed Query
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name    | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar          | false                       |
     And I am logged in with email "john@agency.gov"
@@ -302,7 +302,7 @@ Feature: Manage Content
     Then I should see "You have removed query routing for the following search term: 'moar money'"
 
   Scenario: View domains
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     When the following "site domains" exist for the affiliate agency.gov:
@@ -319,7 +319,7 @@ Feature: Manage Content
       | whitehouse.gov  |
 
   Scenario: Add/edit/remove domains
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
@@ -340,7 +340,7 @@ Feature: Manage Content
     Then I should see "You have removed gobiernousa.gov from this site"
 
   Scenario: Filtering Supplemental URLs
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And the following IndexedDocuments exist:

@@ -102,7 +102,4 @@ Rails.application.configure do
   config.consider_all_requests_local = ENV['LOCAL_REQUEST'].present?
 end
 
-ADDITIONAL_BING_PARAMS = {}
-
 DEFAULT_CACHE_DURATION = 6.hours
-BING_CACHE_DURATION = 1.day

@@ -12,7 +12,9 @@ class OpenSearch::Engine < FilterableSearch
   end
 
   def log_serp_impressions
-    modules << 'SRCH' if @total.positive?
+    @modules << 'SRCH' if @total.positive?
+    @modules << 'LOVER' << 'SPEL' unless spelling_suggestion.nil?
+    @modules |= @govbox_set.modules if @govbox_set
   end
 
   private

@@ -98,7 +98,7 @@ describe OpenSearch::IndexCreate do
       before do
         allow(indices).to receive(:exists?).with(index: index_name).and_return(true)
         allow(indices).to receive(:put_mapping).and_raise(
-          Elasticsearch::Transport::Transport::Errors::BadRequest.new('[400] mapper_parsing_exception')
+          OpenSearch::Transport::Transport::Errors::BadRequest.new('[400] mapper_parsing_exception')
         )
       end
 

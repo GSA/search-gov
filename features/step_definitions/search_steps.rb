@@ -27,14 +27,13 @@ Then /^I should see "(.+?)" in the video govbox?$/ do |string|
   page.should have_selector('.search-result-video-item', text: string)
 end
 
-Then /^I should see (Powered by|Generado por) Bing logo$/ do |text|
-  page.should have_selector '.content-provider .bing', text: text
+Then /^I should see (Powered by|Generado por) Search\.gov$/ do |text|
+  page.should have_content("#{text} Search.gov")
 end
 
-Then /^I should see (Powered by|Generado por) (Bing|SearchGov)$/ do |text, engine|
+Then /^I should see (Powered by|Generado por) (SearchGov)$/ do |text, engine|
   page.should have_selector('.powered-by', text: text)
-  visibility = engine == 'Bing' ? 'hidden' : ''
-  page.should have_selector('.engine', text: engine, visible: visibility.to_sym)
+  page.should have_selector('.engine', text: engine)
 end
 
 Then /^I should see a (left|right) aligned SERP logo$/ do |alignment|

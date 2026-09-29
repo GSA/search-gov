@@ -6,7 +6,7 @@ describe ReactHelper do
   describe '#search_results_layout' do
     let(:affiliate) { affiliates(:usagov_affiliate) }
     let(:vertical) { 'vertical_nav' }
-    let(:search) { WebSearch.new(query: 'chocolate', affiliate: affiliate) }
+    let(:search) { OpenSearch::Engine.new(query: 'chocolate', affiliate: affiliate) }
     let(:search_options) { {} }
 
     before do

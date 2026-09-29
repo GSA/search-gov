@@ -1,3 +1,4 @@
+# Security PRs open when an advisory lands; grouping only batches ones open together.
 version: 2
 updates:
   - package-ecosystem: bundler
@@ -8,11 +9,16 @@ updates:
     open-pull-requests-limit: 10
     groups:
       ruby-minor-patches:
+        applies-to: version-updates
         patterns:
           - "*"
         update-types:
           - "minor"
           - "patch"
+      ruby-security:
+        applies-to: security-updates
+        patterns:
+          - "*"
 
   - package-ecosystem: npm
     directory: "/"
@@ -22,11 +28,16 @@ updates:
     open-pull-requests-limit: 10
     groups:
       js-minor-patches:
+        applies-to: version-updates
         patterns:
           - "*"
         update-types:
           - "minor"
           - "patch"
+      js-security:
+        applies-to: security-updates
+        patterns:
+          - "*"
 
   - package-ecosystem: github-actions
     directory: "/"
@@ -35,5 +46,10 @@ updates:
       day: monday
     groups:
       github-actions:
+        applies-to: version-updates
+        patterns:
+          - "*"
+      github-actions-security:
+        applies-to: security-updates
         patterns:
           - "*"

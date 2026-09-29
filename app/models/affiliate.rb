@@ -127,8 +127,6 @@ class Affiliate < ApplicationRecord
   validates :name, format: { with: /\A[a-z0-9._-]+\z/ }
   validates :search_engine, inclusion: { in: SEARCH_ENGINES.map(&:underscore) }
   validates_url :header_tagline_url, allow_blank: true
-  validates :show_search_filter_settings, absence: { message: I18n.t('super_admin.affiliate.show_search_filter_settings') }, if: :bing_v7_engine?
-
   validates_attachment_content_type :mobile_logo,
                                     content_type: VALID_IMAGE_CONTENT_TYPES,
                                     message: INVALID_CONTENT_TYPE_MESSAGE
@@ -451,7 +449,7 @@ class Affiliate < ApplicationRecord
   end
 
   def show_search_filter_settings_authorized?
-    !bing_v7_engine?
+    true
   end
 
   private

@@ -73,7 +73,7 @@ class OpenSearch::IndexCreate
       Rails.logger.warn { "Failed to update #{@service_name} index settings for #{index_name}: #{e.message}" }
     end
 
-  rescue Elasticsearch::Transport::Transport::Errors::BadRequest => e
+  rescue OpenSearch::Transport::Transport::Errors::BadRequest => e
     # Common reasons include attempting to change an existing field type — handle gracefully.
     if e.message =~ /mapper_parsing_exception|illegal_argument_exception/
       Rails.logger.warn { "Cannot update #{@service_name} mapping for #{index_name}: #{e.message}" }

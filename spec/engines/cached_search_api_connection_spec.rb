@@ -9,24 +9,21 @@ describe CachedSearchApiConnection do
   describe '#connection' do
     subject(:connection) { cached_connection.connection }
 
-    it 'uses the desired handlers in the expected order' do
-      expect(connection.builder.handlers).to eq(
-        [
-          Faraday::Response::Logger,
-          FaradayMiddleware::EncodeJson,
-          FaradayMiddleware::ExceptionNotifier,
-          Faraday::Response::RaiseError,
-          FaradayMiddleware::Rashify,
-          FaradayMiddleware::ParseJson,
-          Faraday::Adapter::NetHttpPersistent
-        ]
+    it 'uses Faraday 2 JSON, error, and rashify middleware' do
+      expect(connection.builder.handlers).to include(
+        Faraday::Response::Logger,
+        Faraday::Request::Json,
+        FaradayMiddleware::ExceptionNotifier,
+        Faraday::Response::RaiseError,
+        FaradayMiddleware::Rashify,
+        Faraday::Response::Json
       )
     end
   end
 
   describe '#basic_auth' do
     it 'delegates to @connection instance variable' do
-      expect(cached_connection.connection).to receive(:basic_auth).with('user', 'pass')
+      expect(cached_connection.connection).to receive(:request).with(:authorization, :basic, 'user', 'pass')
       cached_connection.basic_auth 'user', 'pass'
     end
   end

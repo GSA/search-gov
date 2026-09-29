@@ -2,6 +2,7 @@ module SearchInitializer
   include Api::V2::NonCommercialSearch
 
   attr_reader :aggregations, :collection, :matching_site_limits
+  alias_method :document_collection, :collection
 
   def initialize(options)
     super
