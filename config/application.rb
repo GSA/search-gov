@@ -54,7 +54,7 @@ module Usasearch
     unless File.basename($0) == "rake" && ARGV.include?("db:migrate")
       config.active_record.observers = :sayt_filter_observer, :misspelling_observer, :indexed_document_observer,
         :affiliate_observer, :navigable_observer, :searchable_observer,
-        :i14y_drawer_observer, :routed_query_keyword_observer
+        :routed_query_keyword_observer
     end
 
     # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
@@ -74,10 +74,6 @@ module Usasearch
     # Rails 5.0 had false.
     config.active_record.belongs_to_required_by_default = false
 
-    # Temporary workaround for:
-    # https://discuss.rubyonrails.org/t/cve-2022-32224-possible-rce-escalation-bug-with-serialized-columns-in-active-record/81017
-    # A permanent solution will be implemented in https://cm-jira.usa.gov/browse/SRCH-3206
-    config.active_record.use_yaml_unsafe_load = true
     config.react.camelize_props = true
     # Configuration for the application, engines, and railties goes here.
     #

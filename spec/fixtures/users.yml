@@ -168,22 +168,6 @@ no_organization_name:
   last_name: Doe
   organization_name: ''
 
-no_first_last_name_1:
-  <<: *DEFAULTS
-  email: no_first_last_name_1@email.gov
-
-no_first_last_name_2:
-  <<: *DEFAULTS
-  email: no_first_last_name_2@email.gov
-
-no_first_last_name_3:
-  <<: *DEFAULTS
-  email: no_first_last_name_3@email.gov
-
-no_first_last_name_4:
-  <<: *DEFAULTS
-  email: no_first_last_name_4@email.gov
-
 timed_out_user:
   email: timed_out@example.gov
   first_name: Timed

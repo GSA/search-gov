@@ -4,8 +4,8 @@ shared_examples 'an initialized filterable search' do
   context 'when date based filtering' do
     # Testing since_date/until_date and created_since_date/created_until_date in parallel.
     # The existing `since_date` and `until_date` functionality refers to the publication_date for
-    # blended and news searches, and updated_date for i14y. `created_since_date` and `created_until_date`
-    # only pertains (at the moment) to i14y searches.
+    # blended and news searches, and updated_date for document searches. `created_since_date` and
+    # `created_until_date` only pertains (at the moment) to document searches.
     (%w[created_] << '').each do |date_type|
       context "when #{date_type}since_date and #{date_type}until_date are valid" do
         subject(:test_search) do

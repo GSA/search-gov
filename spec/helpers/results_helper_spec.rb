@@ -2,7 +2,7 @@
 
 describe ResultsHelper do
   describe '#search_data' do
-    subject(:search_data) { helper.search_data(search, 'i14y') }
+    subject(:search_data) { helper.search_data(search, 'document') }
 
     let(:search) do
       instance_double('search',
@@ -14,7 +14,7 @@ describe ResultsHelper do
       expected_output = {
         data: {
           affiliate: 'nps.gov',
-          vertical: 'i14y',
+          vertical: 'document',
           query: 'rutabaga'
         }
       }

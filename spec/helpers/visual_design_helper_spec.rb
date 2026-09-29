@@ -8,11 +8,11 @@ describe VisualDesignHelper do
       end
     end
 
-    context 'when affiliate search engine is BingV7' do
-      let(:affiliate) { affiliates(:bing_v7_affiliate) }
+    context 'when affiliate uses OpenSearch' do
+      let(:affiliate) { affiliates(:searchgov_affiliate) }
 
-      it 'is false' do
-        expect(helper.show_results_format?(affiliate)).to be(false)
+      it 'is true' do
+        expect(helper.show_results_format?(affiliate)).to be(true)
       end
     end
   end

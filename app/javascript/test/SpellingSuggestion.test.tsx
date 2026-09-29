@@ -115,38 +115,6 @@ describe('SpellingSuggestion component', () => {
     expectFetchtoHaveBeenCalledWith(clickBodyOriginalQuery);
   });
 
-  it('clickTracking for suggestedQuery and originalQuery: i14y vertical', () => {
-    render(
-      <LanguageContext.Provider value={i18n} >
-        <SpellingSuggestion {...spellingSuggestionProps} vertical='i14y'/>
-      </LanguageContext.Provider>
-    );
-
-    const suggestedQueryLink = screen.getByText(/medical/i);
-    fireEvent.click(suggestedQueryLink);
-    const clickBodySuggestedQuery = {
-      affiliate: 'test_affiliate',
-      url: 'http://localhost/search?affiliate=test_affiliate&query=medical',
-      module_code: 'SPEL',
-      position: 1,
-      query: 'medical',
-      vertical: 'i14y'
-    };
-    expectFetchtoHaveBeenCalledWith(clickBodySuggestedQuery);
-
-    const originalQueryLink = screen.getAllByText(/mecidal/i)[1];
-    fireEvent.click(originalQueryLink);
-    const clickBodyOriginalQuery = {
-      affiliate: 'test_affiliate',
-      url: 'http://localhost/search?affiliate=test_affiliate&query=mecidal',
-      module_code: 'ISPEL',
-      position: 1,
-      query: 'mecidal',
-      vertical: 'i14y'
-    };
-    expectFetchtoHaveBeenCalledWith(clickBodyOriginalQuery);
-  });
-
   it('clickTracking for suggestedQuery and originalQuery: image vertical', () => {
     render(
       <LanguageContext.Provider value={i18n} >

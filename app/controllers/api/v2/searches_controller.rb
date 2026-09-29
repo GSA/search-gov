@@ -26,7 +26,7 @@ module Api
       # https://cm-jira.usa.gov/browse/SFL-46
       def docs
         @document_collection = (DocumentCollection.find(@search_options.dc) rescue nil)
-        @search = ApiI14ySearch.new(@search_options.attributes)
+        @search = selected_engine.new(@search_options.attributes)
         @search.run
         respond_with(@search)
       end
@@ -35,14 +35,10 @@ module Api
 
       def selected_engine
         case @search_options.site.search_engine
-        when "opensearch"
-          OpenSearch::ApiEngine
         when "legacy_opensearch"
           LegacyOpenSearch::ApiEngine
-        when "search_elastic"
-          ApiSearchElastic
         else
-          ApiI14ySearch
+          OpenSearch::ApiEngine
         end
       end
 
@@ -108,7 +104,7 @@ module Api
       def search_options_validator_klass
         case action_name.to_sym
         when :blended then Api::NonCommercialSearchOptions
-        when :i14y then Api::I14ySearchOptions
+        when :i14y then Api::DocumentSearchOptions
         when :docs then Api::DocsSearchOptions
         end
       end

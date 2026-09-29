@@ -30,8 +30,6 @@ export const SpellingSuggestion = ({ suggested, original, originalQuery, origina
     if (vertical === 'web') {
       suggestedQueryModule = moduleCode.spellingSuggestionsBing;
       originalQueryModule = moduleCode.spellingOverridesBing;
-    } else if (vertical === 'i14y') {
-      originalQueryModule = moduleCode.spellingOverridesI14y;
     } else if (vertical === 'image') {
       suggestedQueryModule = moduleCode.spellingSuggestionsImages;
     }

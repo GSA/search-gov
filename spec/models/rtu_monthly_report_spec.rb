@@ -4,7 +4,7 @@ describe RtuMonthlyReport do
   fixtures :affiliates
 
   let(:site) { affiliates(:basic_affiliate) }
-  let(:rtu_monthly_report) { described_class.new(site, '2014','5', true) }
+  let(:rtu_monthly_report) { described_class.new(site, '2014','5') }
   let(:available_dates_response) do
     JSON.parse(read_fixture_file('/json/rtu_monthly_report/available_dates.json'))
   end
@@ -96,7 +96,7 @@ describe RtuMonthlyReport do
 
     before do
       rangeof_date = rtu_monthly_report.picked_date..rtu_monthly_report.picked_date.end_of_month
-      expect(RtuModuleStatsAnalytics).to receive(:new).with(rangeof_date, site.name, true).and_return rtu_module_stats_analytics
+      expect(RtuModuleStatsAnalytics).to receive(:new).with(rangeof_date, site.name).and_return rtu_module_stats_analytics
     end
 
     it 'should return the search module stats and sparklines' do

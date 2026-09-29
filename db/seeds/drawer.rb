@@ -1,1 +1,1 @@
-I14yDrawer.create(handle: 'searchgov', description: 'main drawer')
+# I14yDrawer seeds removed — the I14y integration has been retired.

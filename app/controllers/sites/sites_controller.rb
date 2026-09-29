@@ -14,7 +14,7 @@ class Sites::SitesController < Sites::BaseController
   end
 
   def show
-    @dashboard = RtuDashboard.new(@site, Date.current, @current_user.sees_filtered_totals?)
+    @dashboard = RtuDashboard.new(@site, Date.current)
   end
 
   def new

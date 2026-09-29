@@ -8,7 +8,7 @@ Feature: Manage Content
     And I should see a link to "Content Overview" in the active site sub navigation
 
   Scenario: View best bets graphics
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And the following featured collections exist for the affiliate "agency.gov":
@@ -30,7 +30,7 @@ Feature: Manage Content
     And I should see "Status: Inactive"
 
   Scenario: Filtering best bets graphics
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And the following featured collections exist for the affiliate "agency.gov":
@@ -55,7 +55,7 @@ Feature: Manage Content
     Then I should be on the agency.gov's Best Bets Graphics page
 
   Scenario: Add/edit/remove best bets graphics
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And the following featured collections exist for the affiliate "agency.gov":
@@ -113,7 +113,7 @@ Feature: Manage Content
     Then I should see "You have removed 2011 Atlantic Hurricane Season from this site"
 
   Scenario: View best bets texts
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     When the following Boosted Content entries exist for the affiliate "agency.gov"
@@ -130,7 +130,7 @@ Feature: Manage Content
     And I should see "Published between 08/01/2013 and 01/01/2022"
 
   Scenario: Filtering best bets texts
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     When the following Boosted Content entries exist for the affiliate "agency.gov"
@@ -152,7 +152,7 @@ Feature: Manage Content
     Then I should be on the agency.gov's Best Bets Texts page
 
   Scenario: Add/edit/remove best bets texts
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
@@ -191,7 +191,7 @@ Feature: Manage Content
     Then I should see "You have removed Release for Week Ending June 21, 2013 from this site"
 
   Scenario: Bulk upload best bets texts
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
@@ -204,7 +204,7 @@ Feature: Manage Content
     And I should see "1 Text Best Bet was not uploaded. Please ensure the URLs are properly formatted, including the http:// or https:// prefix."
 
   Scenario: View Collections
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email   |first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John      | Bar       | false                       |
     And affiliate "agency.gov" has the following document collections:
@@ -222,7 +222,7 @@ Feature: Manage Content
     And I should find "agency3.gov/blog/" in the Collection URL Prefixes modal
 
   Scenario: Add/edit/remove Collection
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
@@ -259,7 +259,7 @@ Feature: Manage Content
     Then I should see "You have removed News and Blog from this site"
 
   Scenario: View Routed Queries
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And affiliate "agency.gov" has the following routed queries:
@@ -274,7 +274,7 @@ Feature: Manage Content
       | Disable Rails Asset Compression |
 
   Scenario: Add/Edit/Remove Routed Query
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name    | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar          | false                       |
     And I am logged in with email "john@agency.gov"
@@ -302,7 +302,7 @@ Feature: Manage Content
     Then I should see "You have removed query routing for the following search term: 'moar money'"
 
   Scenario: View domains
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     When the following "site domains" exist for the affiliate agency.gov:
@@ -319,7 +319,7 @@ Feature: Manage Content
       | whitehouse.gov  |
 
   Scenario: Add/edit/remove domains
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And I am logged in with email "john@agency.gov"
@@ -339,82 +339,8 @@ Feature: Manage Content
     When I press "Remove" and confirm "Are you sure you wish to remove gobiernousa.gov from this site?"
     Then I should see "You have removed gobiernousa.gov from this site"
 
-  Scenario: View i14y drawers
-    Given the following BingV7 Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | gets_i14y_results | use_redesigned_results_page |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | true              | false                       |
-    And the following "i14y drawers" exist for the affiliate agency.gov:
-      | handle      | token         | description           |
-      | blog_posts  | token 1       | All our blog posts    |
-      | more_posts  | token 2       | More of our stuff     |
-    And the following documents exist for the "blog_posts" drawer:
-      | title       | path                    | created              | content      |
-      | document 1  | http://www.doc1.gov     | 2016-01-01T10:00:00Z | my content   |
-      | document 2  | http://www.doc2.dov     | 2015-12-31T10:00:00Z | more content |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Manage Content page
-    And I follow "i14y Drawers" within the Admin Center content
-    Then I should see the following table rows:
-      | Handle      | Description           | Document Total |
-      | blog_posts  | All our blog posts    | 2              |
-      | more_posts  | More of our stuff     | 0              |
-    When I follow "Show" within the first table body row
-    Then I should see the secret token for the "blog_posts" drawer
-    When I fill in "query" with "more"
-    And I press "Search"
-    Then I should see "document 2"
-    And I should see "12/31/2015"
-    And I should not see "document 1"
-
-  Scenario: Add/edit/remove i14y drawers
-    Given the following BingV7 Affiliates exist:
-      | display_name | name       | contact_email   | first_name | last_name | gets_i14y_results | use_redesigned_results_page |
-      | agency site  | agency.gov | john@agency.gov | John       | Bar       | true              | false                       |
-    And we don't want observers to run during these cucumber scenarios
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Manage Content page
-    And I follow "i14y Drawers" within the Admin Center content
-    And I follow "Add i14y Drawer"
-    And I fill in "Handle" with "another.one"
-    And I submit the form by pressing "Add"
-    Then I should see "must only contain lowercase letters, numbers, and underscore characters"
-    When I fill in "Handle" with "another_one"
-    And I fill in "Description" with "This is optional but nice to have"
-    And I submit the form by pressing "Add"
-    Then I should see the following table rows:
-      | Handle      | Description                           | Document Total | Last Document Sent |
-      | another_one | This is optional but nice to have     |                |                    |
-    And I should see "You have created the another_one i14y drawer."
-    When I follow "Edit" within the first table body row
-    And I fill in "Description" with "This describes it"
-    And I submit the form by pressing "Save"
-    Then I should see "You have updated the another_one i14y drawer."
-    When I press "Remove" and confirm "Removing this drawer from this site will delete it from the system. Are you sure you want to delete it?"
-    Then I should see "You have deleted the another_one i14y drawer and all of its contents."
-    And we want observers to run during the rest of these cucumber scenarios
-
-  Scenario: Sharing i14y drawers
-    Given the following BingV7 Affiliates exist:
-      | display_name | name        | contact_email    | first_name | last_name | gets_i14y_results | use_redesigned_results_page |
-      | agency site  | agency.gov  | john@agency.gov  | John Bar   | bar       | true              | false                       |
-      | another site | another.gov | jane@another.gov | Jane Bar   | bar       | true              | false                       |
-    And I am logged in with email "affiliate_admin@fixtures.org"
-    And we don't want observers to run during these cucumber scenarios
-    And the following "i14y drawers" exist for the affiliate agency.gov:
-      | handle      | token         | description           |
-      | blog_posts  | token 1       | All our blog posts    |
-    And the "blog_posts" drawer is shared with the "another.gov" affiliate
-    When I go to the agency.gov's Manage Content page
-    And I follow "i14y Drawers" within the Admin Center content
-    And I press "Remove" and confirm "Are you sure you want to remove this drawer from this site?"
-    Then I should see "You have removed the blog_posts i14y drawer from this site."
-    When I go to the another.gov's Manage Content page
-    And I follow "i14y Drawers" within the Admin Center content
-    Then I should see "blog_posts"
-    And we want observers to run during the rest of these cucumber scenarios
-
   Scenario: Filtering Supplemental URLs
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email   | first_name | last_name | use_redesigned_results_page |
       | agency site  | agency.gov | john@agency.gov | John       | Bar       | false                       |
     And the following IndexedDocuments exist:

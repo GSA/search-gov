@@ -52,16 +52,13 @@ class SearchesController < ApplicationController
     @search_vertical = :docs
     set_search_page_title
     set_search_params
-    template = [I14ySearch, OpenSearch::Engine, LegacyOpenSearch::Engine, SearchElasticEngine].include?(search_klass) ? :i14y : :docs
+    template = [OpenSearch::Engine, LegacyOpenSearch::Engine].include?(search_klass) ? :document : :docs
     template = :index_redesign if redesign?
     respond_to { |format| format.html { render template } }
   end
 
   def advanced
     @page_title = "#{t(:advanced_search)} - #{@affiliate.display_name}"
-    @search = WebSearch.new(@search_options)
-    @affiliate = @search_options[:affiliate]
-    set_search_params
     permitted_params[:filter] = %w(0 1 2).include?(permitted_params[:filter]) ? permitted_params[:filter] : '1'
     permitted_params[:filetype] = %w(doc pdf ppt txt xls).include?(permitted_params[:filetype]) ? permitted_params[:filetype] : nil
     respond_to { |format| format.html {} }
@@ -71,9 +68,6 @@ class SearchesController < ApplicationController
 
   # Redirects to the last available page if the requested page number exceeds the total number of pages.
   def redirect_if_invalid_page_number
-    # I14ySearch handles page numbers differently, so we skip this check for it. Also, we are going to delete this code soon, so we don't want to spend time refactoring it for I14ySearch.
-    return if gets_i14y_results?
-
     return unless @search.total.present?
 
     requested_page = params[:page].to_i
@@ -85,20 +79,12 @@ class SearchesController < ApplicationController
   end
 
   def pick_klass_vertical_template
-    if get_commercial_results?
-      [WebSearch, :web, :index]
-    elsif @affiliate.opensearch_engine?
-      [OpenSearch::Engine, :SRCH, :i14y]
-    elsif @affiliate.legacy_opensearch_engine?
-      [LegacyOpenSearch::Engine, :SRCH, :i14y]
-    elsif @affiliate.search_elastic_engine?
-      [SearchElasticEngine, :SRCH, :i14y]
-    elsif gets_i14y_results?
-      [I14ySearch, :i14y, :i14y]
+    if @affiliate.legacy_opensearch_engine?
+      [LegacyOpenSearch::Engine, :document, :document]
     elsif @affiliate.gets_blended_results
       [BlendedSearch, :blended, :blended]
     else
-      [WebSearch, :web, :index]
+      [OpenSearch::Engine, :document, :document]
     end
   end
 
@@ -121,29 +107,14 @@ class SearchesController < ApplicationController
     @search_options.merge!(document_collection: document_collection)
   end
 
-  def get_commercial_results?
-    permitted_params[:cr] == 'true'
-  end
-
-  def gets_i14y_results?
-    return false if @affiliate.gets_blended_results
-
-    @affiliate.search_gov_engine? ||
-      @affiliate.gets_i14y_results ||
-      @search_options[:document_collection]&.too_deep_for_bing?
-  end
-
   def log_search_impression
     SearchImpression.log(@search, @search_vertical, permitted_params, request)
   end
 
   def docs_search_klass
-    return OpenSearch::Engine if @affiliate.opensearch_engine?
     return LegacyOpenSearch::Engine if @affiliate.legacy_opensearch_engine?
-    return SearchElasticEngine if @affiliate.search_elastic_engine?
-    return I14ySearch if gets_i14y_results?
 
-    @search_options[:document_collection] ? SiteSearch : WebSearch
+    OpenSearch::Engine
   end
 
   def set_layout

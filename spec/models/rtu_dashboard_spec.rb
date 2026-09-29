@@ -2,16 +2,16 @@
 
 describe RtuDashboard do
   let(:site) { affiliates(:basic_affiliate) }
-  let(:dashboard) { described_class.new(site, Date.current, true) }
+  let(:dashboard) { described_class.new(site, Date.current) }
 
   describe '#top_queries' do
     context 'when top queries are available' do
       before do
-        allow(RtuQueryRawHumanArray).to receive(:new).and_return double(RtuQueryRawHumanArray, top_queries: [['query5', 54, 53], ['query6', 55, 43], ['query4', 53, 42]])
+        allow(RtuQueryRawHumanArray).to receive(:new).and_return double(RtuQueryRawHumanArray, top_queries: [['query5', 53], ['query6', 43], ['query4', 42]])
       end
 
-      it 'should return an array of [query, total, human] sorted by desc human' do
-        expect(dashboard.top_queries).to match_array([['query5', 54, 53], ['query6', 55, 43], ['query4', 53, 42]])
+      it 'should return an array of [query, count] sorted by desc count' do
+        expect(dashboard.top_queries).to match_array([['query5', 53], ['query6', 43], ['query4', 42]])
       end
     end
 

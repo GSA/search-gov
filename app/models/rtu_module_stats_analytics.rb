@@ -5,10 +5,9 @@ class RtuModuleStatsAnalytics
 
   SearchModuleStat = Struct.new(:module_tag, :display_name, :clicks, :impressions, :clickthru_ratio, :historical_ctr, :average_clickthru_ratio)
 
-  def initialize(daterange, affiliate_name, filter_bots)
+  def initialize(daterange, affiliate_name)
     @daterange = daterange
     @affiliate_name = affiliate_name
-    @filter_bots = filter_bots
   end
 
   def module_stats
@@ -35,7 +34,7 @@ class RtuModuleStatsAnalytics
 
   def module_sparklines
     query = ModuleSparklineQuery.new(@affiliate_name)
-    buckets = es_search("#{logstash_prefix(@filter_bots)}*", query.body, 'agg')
+    buckets = es_search("#{logstash_prefix}*", query.body, 'agg')
     module_hash = Hash[buckets.map { |bucket| [bucket['key'], sparkline_from_buckets(bucket['histogram']['buckets'])] }]
     module_hash['Total'] = total_sparkline
     module_hash
@@ -43,7 +42,7 @@ class RtuModuleStatsAnalytics
 
   def total_sparkline
     query = OverallSparklineQuery.new(@affiliate_name)
-    buckets = es_search("#{logstash_prefix(@filter_bots)}*", query.body, 'histogram')
+    buckets = es_search("#{logstash_prefix}*", query.body, 'histogram')
     sparkline_from_buckets(buckets)
   end
 
@@ -68,7 +67,7 @@ class RtuModuleStatsAnalytics
   end
 
   def top_n(query_body)
-    es_search(monthly_index_wildcard_spanning_date(@daterange.first, @filter_bots), query_body, 'agg')
+    es_search(monthly_index_wildcard_spanning_date(@daterange.first), query_body, 'agg')
   end
 
   def es_search(index, query_body, agg_name)

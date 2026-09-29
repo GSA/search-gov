@@ -35,7 +35,7 @@ describe RtuQueriesRequest do
         let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/rtu_queries_request.json")) }
 
         before do
-          opts = { index: 'logstash-*',
+          opts = { index: 'human-logstash-*',
                    body: 'query_body',
                    size: 0 }
           expect(Es::ELK.client_reader).to receive(:search).with(opts).and_return json_response

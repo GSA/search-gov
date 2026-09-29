@@ -17,7 +17,7 @@ class Sites::QueryClicksController < Sites::AnalyticsController
                                         @query,
                                         field: 'params.url',
                                         size: MAX_RESULTS)
-    rtu_top_clicks = RtuTopClicks.new(query.body, @current_user.sees_filtered_totals?)
+    rtu_top_clicks = RtuTopClicks.new(query.body)
     rtu_top_clicks.top_n
   end
 end

@@ -3,9 +3,8 @@
 class RtuTopN
   include LogstashPrefix
 
-  def initialize(query_body, filter_bots, day)
+  def initialize(query_body, day = nil)
     @query_body = query_body
-    @filter_bots = filter_bots
     @day = day.present? ? day.strftime('%Y.%m.%d') : '*'
   end
 
@@ -17,7 +16,7 @@ class RtuTopN
 
   def query_opts
     {
-      index: "#{logstash_prefix(@filter_bots)}#{@day}",
+      index: "#{logstash_prefix}#{@day}",
       body: @query_body,
       size: 10_000
     }

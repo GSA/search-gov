@@ -25,9 +25,9 @@ class WebResultsPostProcessor < ResultsPostProcessor
   def normalized_results(total_results)
     {
       results: format_results,
-      total: @affiliate.bing_v7_engine? ? nil : total_results,
+      total: total_results,
       totalPages: total_pages(total_results),
-      unboundedResults: @affiliate.bing_v7_engine?
+      unboundedResults: false
     }
   end
 

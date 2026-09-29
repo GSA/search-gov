@@ -1,4 +1,4 @@
-const { webpackConfig, merge } = require('shakapacker');
+const { generateWebpackConfig, merge } = require('shakapacker');
 const ForkTSCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 const customConfig = {
@@ -8,4 +8,4 @@ const customConfig = {
   }
 };
 
-module.exports = merge(webpackConfig, customConfig);
+module.exports = merge(generateWebpackConfig(), customConfig);
