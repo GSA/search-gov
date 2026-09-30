@@ -23,7 +23,6 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v2 do
       get '/search' => 'searches#blended'
-      get '/search/bing' => 'searches#bing'
       get '/search/i14y' => 'searches#i14y'
       get '/search/docs' => 'searches#docs'
       post '/click' => 'click#create'
@@ -126,8 +125,6 @@ Rails.application.routes.draw do
         end
       end
       resources :memberships, only: [:update]
-      resources :i14y_drawers
-      resource :filtered_analytics_toggle, only: :create
     end
   end
 
@@ -203,7 +200,6 @@ Rails.application.routes.draw do
     resources :features, concerns: :active_scaffold
     resources :affiliate_feature_additions, concerns: :active_scaffold
     resources :help_links, concerns: :active_scaffold
-    resources :bing_urls, concerns: :active_scaffold
     resources :statuses, concerns: :active_scaffold
     resources :system_alerts, concerns: :active_scaffold
     resources :tags, concerns: :active_scaffold
@@ -215,7 +211,6 @@ Rails.application.routes.draw do
     resources :hints, concerns: :active_scaffold do
       collection { get 'reload_hints' }
     end
-    resources :i14y_drawers, concerns: :active_scaffold
     resources :languages, concerns: :active_scaffold
     resources :routed_queries, concerns: :active_scaffold
     resources :routed_query_keywords, concerns: :active_scaffold

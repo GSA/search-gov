@@ -39,7 +39,6 @@ class Affiliate < ApplicationRecord
     assoc.has_many(:features, through: :affiliate_feature_addition)
     assoc.has_many :flickr_profiles, -> { order 'flickr_profiles.url ASC' },
                    inverse_of: :affiliate
-    assoc.has_many :i14y_memberships
     assoc.has_one :image_search_label
     assoc.has_many :indexed_documents
     assoc.has_many :memberships
@@ -72,7 +71,6 @@ class Affiliate < ApplicationRecord
            inverse_of: :default_affiliate
 
   has_many :url_prefixes, through: :document_collections
-  has_many :i14y_drawers, -> { order 'handle' }, through: :i14y_memberships
   has_many :routed_query_keywords, -> { order 'keyword' }, through: :routed_queries
   belongs_to :agency
   belongs_to :language, foreign_key: :locale, primary_key: :code, inverse_of: :affiliates
@@ -129,8 +127,6 @@ class Affiliate < ApplicationRecord
   validates :name, format: { with: /\A[a-z0-9._-]+\z/ }
   validates :search_engine, inclusion: { in: SEARCH_ENGINES.map(&:underscore) }
   validates_url :header_tagline_url, allow_blank: true
-  validates :show_search_filter_settings, absence: { message: I18n.t('super_admin.affiliate.show_search_filter_settings') }, if: :bing_v7_engine?
-
   validates_attachment_content_type :mobile_logo,
                                     content_type: VALID_IMAGE_CONTENT_TYPES,
                                     message: INVALID_CONTENT_TYPE_MESSAGE
@@ -421,7 +417,7 @@ class Affiliate < ApplicationRecord
   def last_month_query_count
     prev_month = Date.current.prev_month
     count_query = CountQuery.new(name, 'search')
-    RtuCount.count(monthly_index_wildcard_spanning_date(prev_month, true),
+    RtuCount.count(monthly_index_wildcard_spanning_date(prev_month),
                    count_query.body)
   end
 
@@ -443,10 +439,6 @@ class Affiliate < ApplicationRecord
     active? ? 'Active' : 'Inactive'
   end
 
-  def excluded_urls
-    []
-  end
-
   def no_results_error
     return if additional_guidance_text.blank?
 
@@ -457,7 +449,7 @@ class Affiliate < ApplicationRecord
   end
 
   def show_search_filter_settings_authorized?
-    search_gov_engine?
+    true
   end
 
   private

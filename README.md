@@ -3,7 +3,6 @@
 ## Code Status
 
  [![Build Status](https://circleci.com/gh/GSA/search-gov.svg?style=svg)](https://circleci.com/gh/GSA/search-gov)
- [![Maintainability](https://api.codeclimate.com/v1/badges/fd0577360749c9b3d166/maintainability)](https://codeclimate.com/github/GSA/search-gov/maintainability)
 
 ## Contributing to search-gov
 Read our [contributing guidelines](./CONTRIBUTING.md).
@@ -20,11 +19,13 @@ Use [NVM](https://github.com/nvm-sh/nvm#installing-and-updating) to install the 
 
 ### Docker
 
-Docker can be used to: 1) run just the required services (MySQL, Elasticsearch, etc.) while [running the search-gov application in your local machine](https://github.com/GSA/search-gov#running-the-app), and/or 2) run the entire `search-gov` application in a Docker container.  Please refer to [searchgov-services](https://github.com/GSA/search-services) for detailed instructions on centralized configuration for the services.
+Docker can be used to: 
+1. run just the required services (MySQL, Elasticsearch, etc.) while [running the search-gov application in your local machine](https://github.com/GSA/search-gov#running-the-app), and/or 
+2. run the entire `search-gov` application in a Docker container.  Please refer to [searchgov-services](https://github.com/GSA/search-services) for detailed instructions on centralized configuration for the services.
 
 When running in a Docker container (option 2 above), the `search-gov` application is configured to run on port [3100](http://localhost:3100/). Required dependencies - ([Ruby](https://github.com/GSA/search-gov#ruby), [NodeJS](https://github.com/GSA/search-gov#nodejs), [Package Manager](https://github.com/GSA/search-gov#package-manager), [Packages](https://github.com/GSA/search-gov#packages), [Gems](https://github.com/GSA/search-gov#gems), [JavaScript dependencies](https://github.com/GSA/search-gov#javascript-dependencies)) - are installed using Docker. However, other data or configuration may need to be setup manually, which can be done in the running container using `bash`.
 
-Using bash to perform any operations on search-gov application running in Docker container, below command needs to be run in `search-services`.
+Using bash to perform any operations on search-gov application running in Docker container, below command needs to be run in `search-services`:
 
     $ docker compose run search-gov bash
 
@@ -33,30 +34,20 @@ For example, to setup DB in Docker:
     $ docker compose run search-gov bash
     $ bin/rails db:setup
 
-The Elasticsearch service provided by `searchgov-services` is configured to run on the default port, [9200](http://localhost:9200/). To use a different host (with or without port) or set of hosts, set the `ES_HOSTS` environment variable. For example, use following command to run the specs using Elasticsearch running on `localhost:9207`:
+The OpenSearch service provided by `searchgov-services` is configured to run on port [9300](http://localhost:9300/). To use a different host (with or without port) or set of hosts, set the `OPENSEARCH_SEARCH_HOST`/`OPENSEARCH_ANALYTICS_HOST` environment variables.
 
-    ES_HOSTS=localhost:9207 bundle exec rspec spec
-
-Verify that Elasticsearch 7.17.x is running on the expected port (port 9200 by default):
+Verify that OpenSearch is running on the expected port (port 9300 by default):
 
 ```bash
-$ curl localhost:9200
+$ curl localhost:9300
 {
-  "name" : "002410188f61",
-  "cluster_name" : "es7-docker-cluster",
-  "cluster_uuid" : "l3cAhBd4Sqa3B4SkpUilPQ",
+  "name" : "os-node",
+  "cluster_name" : "os-cluster",
   "version" : {
-    "number" : "7.17.7",
-    "build_flavor" : "default",
-    "build_type" : "docker",
-    "build_hash" : "78dcaaa8cee33438b91eca7f5c7f56a70fec9e80",
-    "build_date" : "2022-10-17T15:29:54.167373105Z",
-    "build_snapshot" : false,
-    "lucene_version" : "8.11.1",
-    "minimum_wire_compatibility_version" : "6.8.0",
-    "minimum_index_compatibility_version" : "6.0.0-beta1"
+    "distribution" : "opensearch",
+    "number" : "3.0.0"
   },
-  "tagline" : "You Know, for Search"
+  "tagline" : "The OpenSearch Project: https://opensearch.org/"
 }
 ```
 
@@ -110,7 +101,7 @@ Use [Yarn](https://classic.yarnpkg.com/en/) to install the required JavaScript d
 
 ## Data
 
-### Elasticsearch Indexes
+### Search Indexes
 
 You can create the USASearch-related indexes like this:
 
@@ -142,23 +133,15 @@ Same thing, but using Resque to index in parallel:
 
     $ rake usasearch:elasticsearch:resque_migrate[FeaturedCollection]
 
-### OpenSearch Migration
+### OpenSearch
 
-The application is in the process of migrating from Elasticsearch to OpenSearch. This migration is controlled by the `OPENSEARCH_APP_ENABLED` environment variable, which allows for a gradual transition between the two search engines.
+OpenSearch is the search and analytics backend for both document/custom indices and analytics (logstash) data.
 
-When `OPENSEARCH_APP_ENABLED=false`, the application uses Elasticsearch clients.
-When `OPENSEARCH_APP_ENABLED=true`, the application uses OpenSearch clients for both search indices and analytics data.
-
-**OpenSearch is enabled by default** in local development and test environments (`.env.development` and `.env.test` have `OPENSEARCH_APP_ENABLED=true`).
-
-**Note:** The application uses the `elasticsearch-ruby` gem to connect to OpenSearch, as it is API-compatible with OpenSearch. This avoids dependency conflicts with the `omniauth_login_dot_gov` gem.
+**Note:** The application uses `opensearch-ruby` to connect to OpenSearch. `omniauth_login_dot_gov` v2.2.0 allows Faraday 2, which that client requires.
 
 #### Environment Variables
 
 The following environment variables are required for OpenSearch configuration:
-
-**Feature Flag:**
-- `OPENSEARCH_APP_ENABLED` - Set to `true` to enable OpenSearch, or `false` to use Elasticsearch (default: `true` in development/test environments)
 
 **Search Client Configuration:**
 - `OPENSEARCH_SEARCH_HOST` - OpenSearch host URL (default: `http://localhost:9300`)
@@ -176,7 +159,7 @@ The following environment variables are required for OpenSearch configuration:
 
 #### Creating OpenSearch Indexes
 
-When `OPENSEARCH_APP_ENABLED=true`, you can create OpenSearch indexes using the following rake tasks:
+You can create OpenSearch indexes using the following rake tasks:
 
 **Create all OpenSearch indexes (both OpenSearch::Indexer and ElasticBoostedContent):**
 
@@ -191,12 +174,10 @@ When `OPENSEARCH_APP_ENABLED=true`, you can create OpenSearch indexes using the 
     $ rake opensearch:create_boosted_content_index
 
 
-**Current Migration Status:**
-- Spider domains indexing (OpenSearch::Indexer) is being migrated to OpenSearch
-- ElasticBoostedContent index supports both Elasticsearch and OpenSearch via the `Es::CustomIndices` module
-- Other custom indices (ElasticFeaturedCollection, ElasticFederalRegisterDocument, etc.) are being deprecated and will not be migrated to OpenSearch
-- Analytics data (logstash indices) support both Elasticsearch and OpenSearch via the `Es::ELK` module
-- The migration is controlled by the `OPENSEARCH_APP_ENABLED` flag for simplified management
+**Index Overview:**
+- Spider domains search is served by `OpenSearch::Indexer`
+- Best-bets text is served by the `ElasticBoostedContent` index
+- Analytics data (logstash indices) is served by OpenSearch via the `Es::ELK` module
 
 ### MySQL Database
 
@@ -235,7 +216,7 @@ We use [CircleCI](https://circleci.com/gh/GSA/usasearch) for continuous integrat
 
 # Code Quality
 
-We use [Rubocop](https://rubocop.org/) for static code analysis. Settings specific to i14y are configured via [.rubocop.yml](.rubocop.yml). Shared settings for all Search.gov repositories should be configured via the [searchgov_style](https://github.com/GSA/searchgov_style) gem.
+We use [Rubocop](https://rubocop.org/) for static code analysis. Settings specific to this project are configured via [.rubocop.yml](.rubocop.yml). Shared settings for all Search.gov repositories should be configured via the [searchgov_style](https://github.com/GSA/searchgov_style) gem.
 
 ### Running RuboCop Locally
 
@@ -268,17 +249,13 @@ It is recommended to always review diff changes after running autocorrection com
 # Running the app
 ## Search
 
-To run test searches, you will need a working Bing API key. You can request one from Bing, or ask a friendly coworker.
+To run test searches, start your local development environment with OpenSearch available:
 
-1. Add the Bing `BING_WEB_SUBSCRIPTION_ID` to `.env` file:
-```  
-BING_WEB_SUBSCRIPTION_ID: *****
-```
-2. Start your local development environment:
 ```
 bin/dev
 ```
-3. Test searches should return results:
+
+Test searches should return results:
 
 **Web results**
 * http://localhost:3000/search?affiliate=test_affiliate&query=government
@@ -358,7 +335,13 @@ When in doubt, just use Resque.enqueue() instead of Resque.enqueue_with_priority
 (Note: newer jobs inherit from ActiveJob, using the resque queue adapter. We are in the process of migrating the older jobs to ActiveJob.)
 
 ### Scheduled jobs
-We use the [resque-scheduler](https://github.com/resque/resque-scheduler) gem to schedule delayed jobs. Use [ActiveJob](http://api.rubyonrails.org/classes/ActiveJob/Core/ClassMethods.html)'s `:wait` or `:wait_until` options to enqueue delayed jobs, or schedule them in `config/resque_schedule.yml`.
+
+There are two Rails schedule files. Do not list the same job in both.
+
+- `config/resque_schedule.yml` — recurring Resque cron on **crawler** hosts via systemd `resque-scheduler.service` (`rake resque:scheduler`). Production currently schedules `SitemapMonitorJob` every 4 hours. This is the source of truth for that job. Each crawler that runs the scheduler process will enqueue it.
+- `config/schedule.rb` — whenever crontab on **cron** hosts (Capistrano `roles: [:cron]`). Use `rake`, `runner`, or `command`. Do not add Resque cron job classes here.
+
+The resque-scheduler **process** must keep running even if the YAML file is empty: delayed jobs use ActiveJob `:wait` / `:wait_until` (for example `SearchgovDomainIndexerJob.set(wait: delay.seconds)`).
 
 Example:
 
@@ -371,9 +354,6 @@ Example:
     `$ rake resque:scheduler`
 
 1. Check the 'Delayed' tab in [Resque web](http://localhost:3000/admin/resque/delayed) to see your job.
-
-### Additional developer resources
-* [Local i14y setup](https://github.com/GSA/search-gov/wiki/Setting-up-i14y-with-usasearch-for-development)
 
 ## Production
 

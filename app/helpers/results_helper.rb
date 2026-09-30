@@ -10,8 +10,6 @@ module ResultsHelper
   end
 
   def link_to_result_title(title, url, position, module_code, options = {})
-    # Used for i14y results, jobs, spelling suggestions,
-    # boosted, featured collections, med topics
     click_data = { position: position, module_code: module_code }
     link_to_if url.present?, title.html_safe, url,
                { data: { click: click_data } }.reverse_merge(options)
@@ -54,7 +52,6 @@ module ResultsHelper
   end
 
   def link_to_news_item_title(instance, position, module_code = 'NEWS', options = {})
-    # Used in govbox, images, news, video, i14y
     title = translate_bing_highlights(h(instance.title)).html_safe
 
     click_data = { position: position, module_code: module_code }

@@ -14,7 +14,7 @@ describe Sites::MonthlyReportsController do
 
       context 'when valid target month passed in' do
         before do
-          expect(RtuMonthlyReport).to receive(:new).with(site, '2014', '06', current_user.sees_filtered_totals).and_return rtu_monthly_report
+          expect(RtuMonthlyReport).to receive(:new).with(site, '2014', '06').and_return rtu_monthly_report
           get :show, params: { mmyyyy: '06/2014', site_id: site.id }
         end
 
@@ -24,7 +24,7 @@ describe Sites::MonthlyReportsController do
       context 'when no target month passed in' do
         it 'should default to todays month' do
           expect(RtuMonthlyReport).to receive(:new).
-            with(site, Date.current.strftime('%Y'), Date.current.strftime('%m'), current_user.sees_filtered_totals).
+            with(site, Date.current.strftime('%Y'), Date.current.strftime('%m')).
             and_return rtu_monthly_report
           get :show, params: { site_id: site.id }
         end

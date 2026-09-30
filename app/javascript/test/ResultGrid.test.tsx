@@ -54,17 +54,17 @@ describe('Result Grid: Desktop view, clicking the title link', () => {
   });
 
   it('calls fetch with correct Searchgov click data', () => {
-    render(<ResultGrid result={result} affiliate='searchgov_affiliate' query='query' position={2} vertical='i14y' />);
+    render(<ResultGrid result={result} affiliate='searchgov_affiliate' query='query' position={2} vertical='document' />);
 
     const title = screen.getByText(/test result 1/i);
     fireEvent.click(title);
     const clickBody = {
       affiliate: 'searchgov_affiliate',
       url: 'https://www.search.gov',
-      module_code: 'I14Y',
+      module_code: 'SRCH',
       position: 2,
       query: 'query',
-      vertical: 'i14y'
+      vertical: 'document'
     };
 
     expect(fetch).toHaveBeenCalledWith('/clicked', {
@@ -151,17 +151,17 @@ describe('Result Grid: Mobile view, clicking the result div', () => {
   });
 
   it('when the result div is clicked, calls fetch with correct Searchgov click data', () => {
-    render(<ResultGrid result={result} affiliate='searchgov_affiliate' query='query' position={2} vertical='i14y' />);
+    render(<ResultGrid result={result} affiliate='searchgov_affiliate' query='query' position={2} vertical='document' />);
 
     const desc = screen.getByText(/A description/i);
     fireEvent.click(desc);
     const clickBody = {
       affiliate: 'searchgov_affiliate',
       url: 'https://www.search.gov',
-      module_code: 'I14Y',
+      module_code: 'SRCH',
       position: 2,
       query: 'query',
-      vertical: 'i14y'
+      vertical: 'document'
     };
 
     expect(fetch).toHaveBeenCalledWith('/clicked', {

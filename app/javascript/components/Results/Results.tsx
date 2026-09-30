@@ -161,10 +161,6 @@ export const Results = ({ page, query = '', results = null, additionalResults = 
   const i18n = useContext(LanguageContext);
   const styles = useContext(StyleContext);
   const imagesResults = getImages(results);
-  // Using unboundedResults as a shortcut to determining the search engine is possible since presently all successful
-  // image searches are served by Searchgov. Depending on the outcome of SAT-1507, this may need to be updated to
-  // account for Bing-delivered image search results where unboundedResults would be false.
-  const isBing = unboundedResults === true;
   
   return (
     <>
@@ -241,9 +237,9 @@ export const Results = ({ page, query = '', results = null, additionalResults = 
                     />
                   );
                 })}
-                <GridContainer className={`content-provider ${isBing ? 'bing' : ''}`}>
+                <GridContainer className="content-provider">
                   <span className='powered-by'>{parse(i18n.t('poweredBy'))} </span>
-                  <span className='engine'>{isBing ? 'Bing' : 'SearchGov'}</span>
+                  <span className='engine'>SearchGov</span>
                 </GridContainer>
                 <GridContainer className='result-divider'>
                   <Grid row gap="md">

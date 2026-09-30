@@ -1,19 +1,19 @@
 module LogstashPrefix
 
   private
-  def logstash_prefix(filter_bots)
-    filter_bots ? "human-logstash-" : "logstash-"
+  def logstash_prefix
+    "human-logstash-"
   end
 
-  def indexes_to_date(historical_days_back, filter_bots)
+  def indexes_to_date(historical_days_back)
     end_date = Date.current
     start_date = end_date - historical_days_back.days
     range = start_date..end_date
-    range.collect { |date| "#{logstash_prefix(filter_bots)}#{date.strftime("%Y.%m.%d")}" }
+    range.collect { |date| "#{logstash_prefix}#{date.strftime("%Y.%m.%d")}" }
   end
 
-  def monthly_index_wildcard_spanning_date(day, filter_bots)
-    "#{logstash_prefix(filter_bots)}#{day.strftime("%Y.%m.")}*"
+  def monthly_index_wildcard_spanning_date(day)
+    "#{logstash_prefix}#{day.strftime("%Y.%m.")}*"
   end
 
 end

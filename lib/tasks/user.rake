@@ -14,7 +14,11 @@ namespace :usasearch do
 
     desc 'Set accounts that are not active for more than 90 days to timed_out'
     task update_not_active_approval_status: :environment do
-      User.mark_inactive_as_timed_out!
+      Rails.logger.info('[usasearch:user:update_not_active_approval_status] started')
+      updated = User.mark_inactive_as_timed_out!
+      Rails.logger.info(
+        "[usasearch:user:update_not_active_approval_status] completed: timed out #{updated} user(s)"
+      )
     end
 
     desc 'Warns not active users account will be deactivated'

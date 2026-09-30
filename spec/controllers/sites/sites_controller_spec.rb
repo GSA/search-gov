@@ -98,7 +98,7 @@ describe Sites::SitesController do
       let(:dashboard) { double('RtuDashboard') }
 
       before do
-        expect(RtuDashboard).to receive(:new).with(site, Date.current, current_user.sees_filtered_totals).and_return dashboard
+        expect(RtuDashboard).to receive(:new).with(site, Date.current).and_return dashboard
         get :show, params: { id: site.id }
       end
 

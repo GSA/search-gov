@@ -9,8 +9,8 @@ describe LegacyOpenSearch::Engine do
     }
   end
 
-  it 'is a SearchElasticEngine' do
-    expect(described_class.new(search_options)).to be_a(SearchElasticEngine)
+  it 'is an OpenSearch::Engine' do
+    expect(described_class.new(search_options)).to be_a(OpenSearch::Engine)
   end
 
   describe '#search' do

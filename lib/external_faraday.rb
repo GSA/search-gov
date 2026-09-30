@@ -1,6 +1,5 @@
 require 'faraday'
-require 'typhoeus'
-require 'typhoeus/adapters/faraday'
+require 'faraday/net_http_persistent'
 
 module ExternalFaraday
   CONFIG = Rails.application.config_for(:external_faraday)

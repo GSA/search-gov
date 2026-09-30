@@ -13,7 +13,7 @@ describe Sites::QueriesController do
 
       before do
         expect(RtuQueriesRequest).to receive(:new).with(
-          site: site, filter_bots: current_user.sees_filtered_totals?,
+          site: site,
           start_date: Date.current.beginning_of_month, end_date: Date.current
         ).and_return rtu_queries_request
         expect(rtu_queries_request).to receive(:save)
@@ -34,8 +34,7 @@ describe Sites::QueriesController do
         params = { 'start_date'=>'05/01/2014',
                    'end_date'=>'05/26/2014',
                    'query'=>'foo',
-                   'site'=> site,
-                   'filter_bots'=> current_user.sees_filtered_totals? }
+                   'site'=> site }
         expect(RtuQueriesRequest).to receive(:new).with(params).and_return rtu_queries_request
         expect(rtu_queries_request).to receive(:save)
         expect(rtu_queries_request).to receive(:start_date).and_return '05/01/2014'.to_date

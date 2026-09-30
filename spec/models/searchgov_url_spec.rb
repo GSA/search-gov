@@ -251,7 +251,7 @@ describe SearchgovUrl do
         fetch
       end
 
-      it 'passes all expected i14y_params fields to the indexer' do
+      it 'passes all expected index_params fields to the indexer' do
         expect(LegacyOpenSearch::DocumentIndexer).to receive(:index) do |params|
           %i[document_id handle language title path description content
              content_type mime_type tags created changed].each do |key|

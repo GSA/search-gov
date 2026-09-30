@@ -13,10 +13,8 @@ export const moduleCode = {
   spellingSuggestionsBing: 'BSPEL',
   spellingSuggestionsImages: 'OSPEL',
   spellingSuggestionsSearch: 'SPEL',
-  spellingOverridesI14y: 'ISPEL',
   videos: 'VIDS',
-  webI14y: 'I14Y',
   webNews: 'NEWS',
   webWeb: 'BWEB',
-  webSRCH: 'SRCH',
+  webDocument: 'SRCH',
 } as const;

@@ -70,8 +70,4 @@ Rails.application.configure do
   config.ssl_options[:secure_cookies] = false
 end
 
-ADDITIONAL_BING_PARAMS = { 'traffictype' => 'test' }
-
 DEFAULT_CACHE_DURATION = 0
-BING_CACHE_DURATION = 0
-I14Y_CACHE_DURATION = 0

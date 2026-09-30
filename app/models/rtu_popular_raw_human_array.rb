@@ -16,17 +16,10 @@ class RtuPopularRawHumanArray
     return INSUFFICIENT_DATA if @end_date.nil? or @start_date.nil?
 
     date_range_top_n_query = DateRangeTopNQuery.new(*query_args)
-    rtu_most_popular = query_class.new(date_range_top_n_query.body, false)
-    raw_cnt_arr = rtu_most_popular.top_n
-    rtu_human_most_popular = query_class.new(date_range_top_n_query.body, true)
-    human_cnt_hash = rtu_human_most_popular.top_n.to_h
-    return INSUFFICIENT_DATA if human_cnt_hash.empty?
+    cnt_arr = query_class.new(date_range_top_n_query.body).top_n
+    return INSUFFICIENT_DATA if cnt_arr.empty?
 
-    raw_human_arr = raw_cnt_arr.map do |popular_term, raw_count|
-      human_count = human_cnt_hash[popular_term] || 0
-      [popular_term, raw_count, human_count]
-    end
-    raw_human_arr.sort_by { |a| -a.last }.first(@num_results)
+    cnt_arr.sort_by { |a| -a.last }.first(@num_results)
   end
 
   private

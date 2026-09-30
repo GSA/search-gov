@@ -17,7 +17,7 @@ describe FaradayMiddleware::ExceptionNotifier do
     end
 
     it 'reports the error' do
-      expect { connection.get 'http://fail.gov' }.to raise_error(Faraday::ClientError)
+      expect { connection.get 'http://fail.gov' }.to raise_error(Faraday::Error)
       expect(ExceptionNotifier).to have_received(:notify_exception).
         with(error, tags: [])
     end
@@ -31,7 +31,7 @@ describe FaradayMiddleware::ExceptionNotifier do
       end
 
       it 'sends the tags' do
-        expect { connection.get 'http://fail.gov' }.to raise_error(Faraday::ClientError)
+        expect { connection.get 'http://fail.gov' }.to raise_error(Faraday::Error)
         expect(ExceptionNotifier).to have_received(:notify_exception).
           with(error, tags: ['testing'])
       end

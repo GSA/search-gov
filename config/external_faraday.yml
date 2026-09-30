@@ -3,28 +3,15 @@ default: &DEFAULT
     open_timeout: 1
     timeout: 3
 
-i14y_default: &I14Y_DEFAULT
-  adapter: :typhoeus
-  options:
-    timeout: 0
-
 development: &DEVELOPMENT
   <<: *DEFAULT
   adapter: :net_http_persistent
 
-  i14y:
-    <<: *I14Y_DEFAULT
-
 test:
   <<: *DEVELOPMENT
-  i14y:
-    <<: *I14Y_DEFAULT
 
 production: &PRODUCTION
   options:
     open_timeout: 0.5
     timeout: 2
   adapter: :net_http_persistent
-
-  i14y:
-    <<: *I14Y_DEFAULT

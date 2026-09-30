@@ -11,9 +11,9 @@ gem 'responders', '~> 3.1.0'
 gem 'mysql2', '~> 0.5.7'
 gem 'haml', '~> 6'
 gem 'will_paginate', '~> 3.3.1'
-gem 'nokogiri', '~> 1.16'
+gem 'nokogiri', '~> 1.19'
 gem 'authlogic', '~> 6.4', '>= 6.4.3'
-gem 'omniauth_login_dot_gov', git: 'https://github.com/18f/omniauth_login_dot_gov', ref: '6e117a9c68b19a1fbc70533613b74b0d8affd641'
+gem 'omniauth_login_dot_gov', git: 'https://github.com/18f/omniauth_login_dot_gov', tag: 'v2.2.0'
 gem 'rack', '~> 3.2'
 gem 'rack-session', '~> 2.1'
 gem 'rackup', '~> 2.2'
@@ -34,10 +34,11 @@ gem 'resque-scheduler', '~> 4.10.2'
 # Paperclip is deprecated: https://cm-jira.usa.gov/browse/SRCH-702
 # Using a third-party fork as an interim measure.
 gem 'kt-paperclip', '~> 7.1.0'
-gem 'aws-sdk-s3', '~> 1.102.0'
+gem 'aws-sdk-s3', '~> 1.102'
 gem 'googlecharts', '~> 1.6.12'
 gem 'flickraw', '~> 0.9.9'
 gem 'mutex_m', '~> 0.2.0'
+gem 'erb', '~> 4.0.4'
 gem 'bigdecimal', '~> 3.1', '>= 3.1.8'
 gem 'rexml', '>= 3.4.2'
 gem 'csv', '~> 3.3'
@@ -59,8 +60,9 @@ gem 'sass-rails', '~> 6.0'
 gem 'google_visualr',
     git: 'https://github.com/winston/google_visualr',
     ref: '17b97114a345baadd011e7b442b9a6c91a2b7ab5'
-gem 'faraday_middleware'
-gem 'net-http-persistent', '~> 2.9.3'
+gem 'faraday', '~> 2.13'
+gem 'faraday-net_http_persistent', '~> 2.0'
+gem 'net-http-persistent', '~> 4.0'
 gem 'rash_alt', '~> 0.4.12', require: 'rash'
 gem 'geoip', '~> 1.6.4'
 gem 'html_truncator', '~> 0.4.2'
@@ -71,22 +73,18 @@ gem 'will_paginate-bootstrap', '~> 1.0.1'
 gem 'virtus', '~> 1.0.5'
 gem 'truncator', '~> 0.1.7'
 gem 'validate_url', '= 0.2.0' # Newer versions use Addressable::URI for validation, which is more permissive than what we want
-# The elasticsearch gems will be limited to 7.4 until we can remove or upgrade the
-# omniauth_login_dot_gov gem, due to its dependency on faraday < 1:
-# https://github.com/18F/omniauth_login_dot_gov/blob/main/omniauth_login_dot_gov.gemspec#L28
-# We are temporarily using a custom branch in order to access the deprecation logging
-# functionality that is available in the official 7.16 release.
+# GSA elasticsearch-ruby 7.4 cannot build a Faraday 2 connection (:httpclient is unregistered).
+# OpenSearch traffic uses opensearch-ruby. Leave the 7.4 gem until SRCH-6468 deletes leftover ES paths.
 gem 'elasticsearch', git: 'https://github.com/GSA/elasticsearch-ruby', branch: '7.4'
 gem 'elasticsearch-dsl', '~> 0.1.9'
-gem 'elasticsearch-xpack', '~> 7.4.0'
-gem "elasticsearch-persistence"
+gem 'opensearch-ruby', '~> 3.4'
 gem 'opensearch-dsl'
 gem 'federal_register', '~> 0.6.3'
 gem 'redcarpet', '~> 3.6'
 gem 'google-api-client', '~> 0.53.0'
 gem 'iso8601', '~> 0.10.1'
 gem 'jbuilder', '~> 2.11.5'
-gem 'typhoeus', '~> 1.3.0'
+# Faraday 2 uses faraday-net_http_persistent; the Typhoeus Faraday adapter is incompatible.
 gem 'activerecord-validate_unique_child_attribute', require: 'active_record/validate_unique_child_attribute'
 gem 'rack-cors', '~> 1.1.0', require: 'rack/cors'
 gem 'hashie', '~> 5.0.0'
@@ -95,11 +93,8 @@ gem 'colorize', '~> 0.8.1'
 gem 'http', '~> 5.0'
 gem 'robots_tag_parser', '~> 0.1.0'
 gem 'loofah', '~> 2.19'
-# Locking ref, as later versions (after being renamed & released as "medusa-crawler")
-# include breaking changes
-gem 'medusa', git: 'https://github.com/brutuscat/medusa-crawler', ref: '82299f2700ac56b4af2b14d707f35d6af466ad8e'
-# Robotex is required by Medusa. Specifying fork until https://github.com/chriskite/robotex/issues/4
-# is resolved
+# Used by SearchgovDomain for robots.txt sitemap discovery.
+# Specifying fork until https://github.com/chriskite/robotex/issues/4 is resolved
 gem 'robotex', git: 'https://github.com/GSA/robotex'
 # Medusa requires webrick/cookie. rackup 2 (Rack 3) no longer pulls webrick in.
 gem 'webrick', '~> 1.9'
@@ -124,7 +119,7 @@ gem 'exception_notification', '~> 4.5'
 # Assets-related gems
 gem 'coffee-rails', '~> 5.0.0'
 gem 'uglifier', '~> 4.2.0'
-gem 'jquery-ui-rails', '~> 7.0.0'
+gem 'jquery-ui-rails', '~> 8.0.0'
 gem 'jquery-rails', '~> 4.4.0'
 gem 'twitter-typeahead-rails', '~> 0.11.1'
 # Why do we have two versions of Font Awesome?
@@ -141,7 +136,7 @@ gem 'font-awesome-grunticon-rails', git: 'https://github.com/gsa/font-awesome-gr
 gem 'react-rails', '~> 3.0.0'
 # Locking to prevent a version mismatch between the gem and the NPM package version
 # See https://github.com/shakacode/shakapacker#upgrading
-gem 'shakapacker', '~> 6.5.4'
+gem 'shakapacker', '9.5.0'
 gem 'cssbundling-rails', '~> 1.2' # Management of css (Less) files conversion
 # Temporarily locking the 'mail' version until the next version of Rails is released
 # https://github.com/rails/rails/pull/46650

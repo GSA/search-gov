@@ -14,9 +14,4 @@ class ElasticBoostedContent
       }
     )
   }
-
-  # Use OpenSearch instead of Elasticsearch
-  def self.use_opensearch?
-    OpenSearchConfig.enabled?
-  end
 end

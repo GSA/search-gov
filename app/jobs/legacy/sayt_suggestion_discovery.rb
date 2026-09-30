@@ -15,7 +15,7 @@ class SaytSuggestionDiscovery
                                                field: 'params.query.raw',
                                                min_doc_count: MIN_DOC_COUNT,
                                                size: limit)
-      rtu_top_human_queries = RtuTopQueries.new(top_n_exists_query.body, true, day)
+      rtu_top_human_queries = RtuTopQueries.new(top_n_exists_query.body, day)
       query_counts = rtu_top_human_queries.top_n
       filtered_query_counts = SaytFilter.filter(query_counts, 0)
       collect_filtered_query_counts(affiliate_id, filtered_query_counts, run_rate_factor) unless filtered_query_counts.empty?

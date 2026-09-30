@@ -2,13 +2,6 @@ require 'spec_helper'
 
 describe ExternalFaraday do
   context '#get_config' do
-    context 'when namespaced config is present' do
-      it 'contains values for adapter and options' do
-        expect(described_class.get_config('i14y')[:adapter]).to eq(:typhoeus)
-        expect(described_class.get_config('i14y')[:options]).to be_present
-      end
-    end
-
     context 'when namespaced config is not present' do
       it 'contains values for adapter and options' do
         nonexistent = described_class.get_config('nonexistent')

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'elasticsearch/transport'
+require 'opensearch'
 
 class DeleteByQueryBaseJob < ApplicationJob
   queue_as :searchgov
@@ -12,7 +12,7 @@ class DeleteByQueryBaseJob < ApplicationJob
 
   # Generic "Safe List" of errors that exist in most gem versions and in both Elasticsearch and OpenSearch clients.
   # Covers: Server overloaded (503), Network timeouts, and Connection failures
-  retry_on Elasticsearch::Transport::Transport::Errors::ServiceUnavailable,
+  retry_on OpenSearch::Transport::Transport::Errors::ServiceUnavailable,
            Faraday::TimeoutError,
            Faraday::ConnectionFailed,
            Errno::ETIMEDOUT,

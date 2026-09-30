@@ -17,14 +17,12 @@ class UserMonthlyReport
   def calculate_affiliate_stats(affiliate)
     stats = {}
     stats[:affiliate] = affiliate
-    recent_monthly_unfiltered_report = RtuMonthlyReport.new(affiliate, @report_date.year, @report_date.month, false)
-    stats[:total_unfiltered_queries] = recent_monthly_unfiltered_report.total_queries
-    recent_monthly_report = RtuMonthlyReport.new(affiliate, @report_date.year, @report_date.month, true)
+    recent_monthly_report = RtuMonthlyReport.new(affiliate, @report_date.year, @report_date.month)
     stats[:total_queries] = recent_monthly_report.total_queries
     stats[:total_clicks] = recent_monthly_report.total_clicks
-    older_monthly_report = RtuMonthlyReport.new(affiliate, @last_month.year, @last_month.month, true)
+    older_monthly_report = RtuMonthlyReport.new(affiliate, @last_month.year, @last_month.month)
     stats[:last_month_total_queries] = older_monthly_report.total_queries
-    last_year_monthly_report = RtuMonthlyReport.new(affiliate, @last_year.year, @last_year.month, true)
+    last_year_monthly_report = RtuMonthlyReport.new(affiliate, @last_year.year, @last_year.month)
     stats[:last_year_total_queries] = last_year_monthly_report.total_queries
     stats[:last_month_percent_change] = calculate_percent_change(stats[:total_queries], stats[:last_month_total_queries])
     stats[:last_year_percent_change] = calculate_percent_change(stats[:total_queries], stats[:last_year_total_queries])
@@ -42,9 +40,8 @@ class UserMonthlyReport
   end
 
   def calculate_total_stats
-    @total_stats = { :total_unfiltered_queries => 0, :total_queries => 0, :total_clicks => 0, :last_month_total_queries => 0, :last_year_total_queries => 0 }
+    @total_stats = { :total_queries => 0, :total_clicks => 0, :last_month_total_queries => 0, :last_year_total_queries => 0 }
     @affiliate_stats.each_value do |affiliate_stats|
-      @total_stats[:total_unfiltered_queries] += affiliate_stats[:total_unfiltered_queries]
       @total_stats[:total_queries] += affiliate_stats[:total_queries]
       @total_stats[:total_clicks] += affiliate_stats[:total_clicks]
       @total_stats[:last_month_total_queries] += affiliate_stats[:last_month_total_queries]

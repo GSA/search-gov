@@ -48,7 +48,7 @@ describe FederalRegisterDocumentsHelper do
     end
 
     let(:affiliate) {  affiliates(:usagov_affiliate) }
-    let(:search) { WebSearch.new(query: 'english', affiliate: affiliate) }
+    let(:search) { OpenSearch::Engine.new(query: 'english', affiliate: affiliate) }
     let(:link) do
       <<~HTML.delete!("\n")
         <a href="https://www.federalregister.gov/articles/search?conditions

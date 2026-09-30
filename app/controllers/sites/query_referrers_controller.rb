@@ -17,8 +17,7 @@ class Sites::QueryReferrersController < Sites::AnalyticsController
                                         @query,
                                         field: 'referrer',
                                         size: MAX_RESULTS)
-    rtu_top_referrers = RtuTopQueries.new(query.body,
-                                          @current_user.sees_filtered_totals?)
+    rtu_top_referrers = RtuTopQueries.new(query.body)
     rtu_top_referrers.top_n
   end
 end

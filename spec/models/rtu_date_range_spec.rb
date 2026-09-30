@@ -11,7 +11,7 @@ describe RtuDateRange do
     end
     let(:search_opts) do
       {
-        index: 'logstash-*',
+        index: 'human-logstash-*',
         body: 'query_body',
         size: 0
       }
