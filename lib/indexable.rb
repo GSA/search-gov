@@ -120,8 +120,6 @@ module Indexable
   end
 
   def search_for(options)
-    return "#{name}Results".constantize.new(NO_HITS) unless use_opensearch? || Es.custom_indices_enabled?
-
     query = "#{name}Query".constantize.new(options)
     ActiveSupport::Notifications.instrument('elastic_search.usasearch', query: query.body, index: name) do
       search(query)
