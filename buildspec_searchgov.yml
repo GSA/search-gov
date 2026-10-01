@@ -11,6 +11,8 @@ phases:
       - echo "[CODEDEPLOY][INSTALL] Ruby version - $(ruby -v)"
       - echo "[CODEDEPLOY][INSTALL] Node version - $(node -v)"
       - echo "[CODEDEPLOY][INSTALL] Yarn version - $(yarn -v || echo 'not found')"
+      - export PATH="$HOME/.rbenv/bin:$PATH"
+      - eval "$(rbenv init -)" || true
 
   pre_build:
     commands:
@@ -22,12 +24,31 @@ phases:
       - echo "[CODEDEPLOY][PRE_BUILD] Environment = ${SEARCH_ENV:-unknown}"
       - echo "[CODEDEPLOY][PRE_BUILD] Timestamp = $(date -u +'%Y-%m-%dT%H-%M-%SZ')"
       - echo "[CODEDEPLOY][PRE_BUILD] =================================================="
+      - aws secretsmanager get-secret-value --secret-id $SEARCH_SECRETSMANAGER_KEY_SECRET_NAME --region $SEARCH_AWS_REGION --query 'SecretString' --output text > $SEARCH_ENV_EC2_KEY
 
   build:
     commands:
+      # production's app/cron tiers are still Capistrano-managed (see
+      # cicd-scripts/lib/tier_gate.sh::is_legacy_capistrano_tier). This stage
+      # must keep invoking `cap deploy` for as long as that remains true --
+      # it is the ONLY thing that deploys app/cron. The CodeDeploy hooks that
+      # run on those two tiers deliberately no-op (see before_install.sh/
+      # after_install.sh/application_start.sh), so if this step is ever
+      # reduced back to artifact-packaging echoes without restoring the real
+      # `cap deploy` call, app/cron silently stop receiving new releases
+      # while every pipeline stage still reports Succeeded (SRCH-6779,
+      # 2026-10-01 incident -- production's buildspec was echo-only since
+      # 2026-03-17's Ubuntu-upgrade prep commit 4acf0bfd0, unnoticed for ~6
+      # months because nothing checked that a release actually changed on
+      # disk).
       - echo "[CODEDEPLOY][BUILD] Preparing deployment artifact"
-      - echo "[CODEDEPLOY][BUILD] Artifact will be deployed to target servers"
-      - echo "[CODEDEPLOY][BUILD] Gems will be installed on target servers via after_install.sh"
+      - CURRENT_LOCATION=$(pwd)  # would look something like this - /codebuild/output/src559980389/src - a temp dir created by codebuild
+      - SSH_KEY_PATH="${CURRENT_LOCATION}/${SEARCH_ENV_EC2_KEY}"
+      - echo $SSH_KEY_PATH
+      - echo "[CODEDEPLOY][BUILD] Deploying searchgov app with capistrano"
+      - bundle install
+      - cap $SEARCH_ENV puma:config puma:systemd:config puma:systemd:enable
+      - cap $SEARCH_ENV deploy
       - echo "[CODEDEPLOY][BUILD] Build completed successfully"
 
   post_build:
