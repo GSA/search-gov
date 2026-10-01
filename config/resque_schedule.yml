@@ -6,3 +6,35 @@
 production:
   SitemapMonitorJob:
     cron: "0 */4 * * *"
+
+  # email_monthly_reports:
+  #   class: Scheduled::EmailMonthlyReportsJob
+  #   cron: "0 0 1 * *"
+
+  # email_yearly_reports:
+  #   class: Scheduled::EmailYearlyReportsJob
+  #   cron: "35 21 18 12 *"
+
+  # update_approval_status:
+  #   class: Scheduled::UpdateApprovalStatusJob
+  #   cron: "25 2 * * 0"
+
+  # warn_set_to_not_approved_76:
+  #   class: Scheduled::WarnSetToNotApprovedJob
+  #   cron: "5 0 * * *"
+  #   args:
+  #     - 76
+
+  # warn_set_to_not_approved_86:
+  #   class: Scheduled::WarnSetToNotApprovedJob
+  #   cron: "5 0 * * *"
+  #   args:
+  #     - 86
+
+  # searchgov_url_counter_culture_fix_counts:
+  #   class: Scheduled::SearchgovUrlCounterCultureFixCountsJob
+  #   cron: "0 2-20 * * *"
+
+  update_not_active_approval_status:
+    class: Scheduled::UpdateNotActiveApprovalStatusJob
+    cron: "5 0 * * *"
