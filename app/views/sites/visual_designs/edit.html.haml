@@ -40,6 +40,6 @@
 
   = render partial: 'fonts_and_colors', locals: { f: f }
   - if show_results_format?(@site)
-    = render partial: 'results_format', locals: { f: f }
+    - # = render partial: 'results_format', locals: { f: f }
   = render partial: 'image_assets', locals: { f: f }
   = render partial: 'header_and_footer', locals: { f: f }
