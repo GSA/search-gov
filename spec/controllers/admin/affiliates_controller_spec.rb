@@ -108,7 +108,8 @@ describe Admin::AffiliatesController do
           %i[ dap_enabled gets_blended_results gets_commercial_results_on_blended_search
               is_federal_register_document_govbox_enabled gets_results_from_all_domains
               is_medline_govbox_enabled is_related_searches_enabled
-              is_rss_govbox_enabled is_sayt_enabled is_video_govbox_enabled jobs_enabled raw_log_access_enabled ]
+              is_rss_govbox_enabled is_sayt_enabled is_video_govbox_enabled jobs_enabled raw_log_access_enabled
+              search_cache_enabled ]
         end
 
         it 'contains the specified columns' do
@@ -156,6 +157,14 @@ describe Admin::AffiliatesController do
         affiliate.update!(notes: 'Existing note')
         put :update, params: { id: affiliate.id, record: { notes: '' } }
         expect(affiliate.reload.notes).to be_blank
+      end
+
+      it 'toggles search_cache_enabled on and off' do
+        put :update, params: { id: affiliate.id, record: { search_cache_enabled: '1' } }
+        expect(affiliate.reload.search_cache_enabled).to be true
+
+        put :update, params: { id: affiliate.id, record: { search_cache_enabled: '0' } }
+        expect(affiliate.reload.search_cache_enabled).to be false
       end
     end
   end
@@ -208,6 +217,7 @@ describe Admin::AffiliatesController do
             raw_log_access_enabled
             recent_user_activity
             related_sites_dropdown_label
+            search_cache_enabled
             search_engine
             show_search_filter_settings
             site_domains

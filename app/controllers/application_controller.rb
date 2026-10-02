@@ -28,6 +28,7 @@ class ApplicationController < ActionController::Base
     utf8
     redesign
     include_facets
+    disable_search_cache
   ].concat(ADVANCED_PARAM_KEYS).
     concat(DUBLIN_CORE_PARAM_KEYS).
     concat(DocumentSearchable::FACET_FIELDS).
@@ -94,7 +95,8 @@ class ApplicationController < ActionController::Base
              page: permitted_params[:page],
              per_page: SERP_RESULTS_PER_PAGE,
              site_limits: permitted_params[:sitelimit],
-             site_excludes: permitted_params[:siteexclude]
+             site_excludes: permitted_params[:siteexclude],
+             skip_cache: OpenSearch::DocumentSearch.bypass_requested?(permitted_params[:disable_search_cache])
     h.merge! query_search_options
     h.merge! highlighting_option
     h.merge! facets_params

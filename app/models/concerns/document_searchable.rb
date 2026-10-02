@@ -18,7 +18,8 @@ module DocumentSearchable
       language: @affiliate.locale,
       query: formatted_query,
       size: @limit || @per_page,
-      offset: detect_offset
+      offset: detect_offset,
+      skip_cache: @options[:skip_cache]
     }.merge!(date_filter_hash, facet_filter_hash).
       tap { |f| f.merge!(facet_includes) if @include_facets }
   end
