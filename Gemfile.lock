@@ -523,7 +523,7 @@ GEM
       uri (>= 0.11.1)
     net-http-persistent (4.0.8)
       connection_pool (>= 2.2.4, < 4)
-    net-imap (0.5.9)
+    net-imap (0.6.7)
       date
       net-protocol
     net-pop (0.1.2)
@@ -975,6 +975,7 @@ DEPENDENCIES
   mutex_m (~> 0.2.0)
   mysql2 (~> 0.5.7)
   net-http-persistent (~> 4.0)
+  net-imap (~> 0.6.7)
   newrelic_rpm (~> 9.10)
   nokogiri (~> 1.19)
   omniauth (~> 2.1.0)
@@ -1010,7 +1011,7 @@ DEPENDENCIES
   resque-scheduler (~> 4.10.2)
   resque_spec (~> 0.18.0)
   retriable (~> 3.1)
-  rexml (>= 3.4.2)
+  rexml (~> 3.4.4)
   robotex!
   robots_tag_parser (~> 0.1.0)
   rspec-activemodel-mocks (~> 1.1)
