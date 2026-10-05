@@ -100,11 +100,12 @@ class Admin::AffiliatesController < Admin::AdminController
       name
       notes
       raw_log_access_enabled
+      search_cache_enabled
       search_engine
       website
     ]
     config.update.columns = []
-    enable_disable_column_regex = /^(is_|dap_enabled|gets_blended_results|gets_commercial_results_on_blended_search|jobs_enabled|raw_log_access_enabled|gets_results_from_all_domains)/
+    enable_disable_column_regex = /^(is_|dap_enabled|gets_blended_results|gets_commercial_results_on_blended_search|jobs_enabled|raw_log_access_enabled|gets_results_from_all_domains|search_cache_enabled)/
 
     config.update.columns.add_subgroup 'Settings' do |name_group|
       name_group.add(*update_columns.grep_v(enable_disable_column_regex))
