@@ -11,7 +11,8 @@ All of these must be true:
 1. `REDIS_CACHE_ON` is `true` (case-insensitive). Unset or any other value means off.
 2. The affiliate has **Search cache enabled** checked in Super Admin > Sites > Enable/disable Settings. New and existing sites default to off.
 3. `REDIS_CACHE_DURATION` is a positive whole number of minutes (default `15`; non-numeric values fall back to `15`, `0` or less disables).
-4. The request does not carry the maintainer bypass.
+
+There is no per-request bypass. See "Getting fresh results" below.
 
 ## Where it lives
 
@@ -34,11 +35,16 @@ All of these must be true:
 
 SSM values reach the app only when `cicd-scripts/fetch_env_vars.sh` rewrites `.env` during a deploy. A Puma restart alone does **not** pick up a changed SSM value. Terraform seeds these params once (`ignore_changes = [value]`); edit them in SSM after that.
 
-## Bypass (maintainers only)
+## Getting fresh results
 
-Add `disable_search_cache=true` (or `=1`) to a web or API v2 search URL. That request queries OpenSearch and neither reads nor writes the cache. The param is excluded from the cache key and from impression `params`. Do not share it with affiliates. Do not use `Cache-Control: no-cache`; flood traffic already sends that header.
+The `disable_search_cache` request param was removed because the repo is public and anyone could use it to force OpenSearch misses during a flood. The param is now ignored: requests that still carry it are served from the cache, and it stays out of impression `params`. `Cache-Control: no-cache` is also ignored, since flood traffic sends that header.
 
-The repo is public, so treat the param name as known. Forcing a miss costs the same as an uncached search today.
+To see fresh OpenSearch results, in order of blast radius:
+
+1. Flush one site (see "Clearing the cache"). The next search for that site is a `miss`.
+2. Uncheck **Search cache enabled** for the site. Its searches report `disabled` until it is re-checked.
+3. `Affiliate.update_all(search_cache_enabled: false)` for every site.
+4. Set `REDIS_CACHE_ON=false` in SSM and redeploy, only if the code path itself must be off.
 
 ## Monitoring
 
@@ -48,7 +54,7 @@ Each OpenSearch impression includes:
 "diagnostics": [{ "module": "SRCH", "cached": true, "cache": "hit" }]
 ```
 
-`cache` is one of `hit`, `miss`, `bypass`, or `disabled`. `cached` is `true` only for `hit`. Hit rate is `hit / (hit + miss)`.
+`cache` is one of `hit`, `miss`, or `disabled`. `cached` is `true` only for `hit`. Hit rate is `hit / (hit + miss)`.
 
 That JSON is written to `log/impressions.log` (Logstash) and `Rails.logger` (CloudWatch). Filter on `diagnostics.cache`.
 
@@ -69,7 +75,7 @@ The 15-minute TTL is the normal invalidation. Index updates can take up to that 
 ## Rollout and rollback
 
 1. Apply the SSM params (searchgov-tf), then deploy so `.env` picks them up.
-2. Enable one site in staging. Search the same query twice; the second impression shows `cache: hit`. Change the query case (hit), add `disable_search_cache=true` (bypass), then uncheck the site (disabled).
+2. Enable one site in the AWS development environment, then staging. Search the same query twice; the second impression shows `cache: hit`. Change the query case (hit), add `disable_search_cache=true` (still hit), then uncheck the site (disabled).
 3. In production, enable one site and watch hit rate, OpenSearch query rate, p95 latency, and `dgs-prod-searches` memory/evictions.
 4. Roll back by unchecking the site (or `update_all` for all sites). Set `REDIS_CACHE_ON=false` and redeploy only if the code path itself must be off.
 

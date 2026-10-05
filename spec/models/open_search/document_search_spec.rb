@@ -200,28 +200,13 @@ describe OpenSearch::DocumentSearch do
           end
         end
 
-        context 'when the maintainer bypass is set' do
-          it 'reports bypass, queries OpenSearch, and does not write' do
-            bypassed = search_with(search_options.merge(skip_cache: true))
+        context 'when a legacy skip_cache option is passed' do
+          it 'ignores it and reads the cache' do
             search_with
+            second = search_with(search_options.merge(skip_cache: true))
 
-            expect(bypassed.cache_status).to eq('bypass')
-            expect_client_calls(2)
-          end
-
-          it 'does not read an existing entry' do
-            search_with
-            search_with(search_options.merge(skip_cache: true))
-
-            expect_client_calls(2)
-          end
-        end
-
-        context 'when both disabled and bypassed' do
-          before { affiliate.search_cache_enabled = false }
-
-          it 'reports disabled' do
-            expect(search_with(search_options.merge(skip_cache: true)).cache_status).to eq('disabled')
+            expect(second.cache_status).to eq('hit')
+            expect_client_calls(1)
           end
         end
       end
@@ -321,12 +306,6 @@ describe OpenSearch::DocumentSearch do
           search_with(search_options.merge(min_timestamp: Time.utc(2026, 9, 27, 10, 2, 5)))
           expect_client_calls(2)
         end
-
-        it 'ignores the bypass flag' do
-          search_with(search_options.merge(skip_cache: false))
-          search_with
-          expect_client_calls(1)
-        end
       end
 
       context 'when Redis is unreachable' do
@@ -347,13 +326,6 @@ describe OpenSearch::DocumentSearch do
           expect_client_calls(1)
           expect(warnings).not_to be_empty
         end
-      end
-    end
-
-    describe '.bypass_requested?' do
-      it 'is true only for true or 1' do
-        expect(['true', 'TRUE', '1', ' true ', 1, true].map { |v| described_class.bypass_requested?(v) }).to all(be true)
-        expect([nil, '', 'false', '0', 'yes', 'memory'].map { |v| described_class.bypass_requested?(v) }).to all(be false)
       end
     end
 

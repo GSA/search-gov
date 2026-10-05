@@ -66,7 +66,6 @@ module Api
                                          :created_since,
                                          :created_until,
                                          :dc,
-                                         :disable_search_cache,
                                          :enable_highlighting,
                                          :filetype,
                                          :filter, # Advanced search "safe search" param
