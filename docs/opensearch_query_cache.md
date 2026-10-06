@@ -46,6 +46,14 @@ To see fresh OpenSearch results, in order of blast radius:
 3. `Affiliate.update_all(search_cache_enabled: false)` for every site.
 4. Set `REDIS_CACHE_ON=false` in SSM and redeploy, only if the code path itself must be off.
 
+## Local development
+
+`.env.development` ships with `REDIS_CACHE_ON=false`, so development keeps its usual cache store and does not need Redis. To try the cache locally:
+
+1. Start Redis (`cd ../search-services && docker compose up redis`).
+2. Set `REDIS_CACHE_ON=true` (in `.env.development.local` or the shell) and restart the server. Development then uses `redis_cache_store` on `REDIS_CACHE_URL`. Inside the search-services `search-gov` container, also set `REDIS_CACHE_URL=redis://redis:6379`.
+3. Check **Search cache enabled** for a site in Super Admin, then run the same search twice. The second impression shows `cache: hit`.
+
 ## Monitoring
 
 Each OpenSearch impression includes:
