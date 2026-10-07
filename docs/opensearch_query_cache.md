@@ -51,7 +51,9 @@ To see fresh OpenSearch results, in order of blast radius:
 `.env.development` ships with `REDIS_CACHE_ON=false`, so development keeps its usual cache store and does not need Redis. To try the cache locally:
 
 1. Start Redis (`cd ../search-services && docker compose up redis`).
-2. Set `REDIS_CACHE_ON=true` (in `.env.development.local` or the shell) and restart the server. Development then uses `redis_cache_store` on `REDIS_CACHE_URL`. Inside the search-services `search-gov` container, also set `REDIS_CACHE_URL=redis://redis:6379`.
+2. Turn the cache on and restart the server. Development then uses `redis_cache_store` on `REDIS_CACHE_URL`.
+   - Rails on the host: set `REDIS_CACHE_ON=true` in `.env.development.local` or the shell.
+   - Rails in the search-services `search-gov` container: set both variables in the shell, for example `REDIS_CACHE_ON=true REDIS_CACHE_URL=redis://redis:6379 bin/rails s`, or pass them with `docker compose run -e REDIS_CACHE_ON=true -e REDIS_CACHE_URL=redis://redis:6379 search-gov bash`. `.env.development.local` has no effect there, because Compose already loads `.env.development` into the container environment and dotenv does not overwrite variables that are already set.
 3. Check **Search cache enabled** for a site in Super Admin, then run the same search twice. The second impression shows `cache: hit`.
 
 ## Monitoring
