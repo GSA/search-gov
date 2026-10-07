@@ -293,28 +293,14 @@ describe SearchesController do
     end
   end
   
-  context 'when a maintainer bypasses the OpenSearch cache' do
+  context 'when the retired disable_search_cache param is sent' do
     before do
-      get :index,
-          params: {
-            query: 'obama',
-            disable_search_cache: 'true',
-            affiliate: 'usagov'
-          }
+      get :index, params: { query: 'obama', disable_search_cache: 'true', affiliate: 'usagov' }
     end
 
-    it 'sets skip_cache on the search options' do
-      expect(assigns[:search_options][:skip_cache]).to be true
-    end
-  end
-
-  context 'when disable_search_cache is not a truthy value' do
-    before do
-      get :index, params: { query: 'obama', disable_search_cache: 'false', affiliate: 'usagov' }
-    end
-
-    it 'does not skip the cache' do
-      expect(assigns[:search_options][:skip_cache]).to be false
+    it 'does not pass a cache bypass to the search' do
+      expect(response).to have_http_status(:ok)
+      expect(assigns[:search_options]).not_to have_key(:skip_cache)
     end
   end
 

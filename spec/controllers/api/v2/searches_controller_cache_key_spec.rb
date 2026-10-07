@@ -37,7 +37,7 @@ describe Api::V2::SearchesController, type: :controller do
 
   # tags is permitted but not forwarded by DocumentSearchable#facet_filter_hash.
   let(:non_request_params) do
-    %i[access_key affiliate api_key dc disable_search_cache enable_highlighting filetype filter format routed tags]
+    %i[access_key affiliate api_key dc enable_highlighting filetype filter format routed tags]
   end
 
   def perform(params)
@@ -48,7 +48,8 @@ describe Api::V2::SearchesController, type: :controller do
     source = File.read(described_class.instance_method(:search_params).source_location.first)
     permitted = source[/params\.permit\((.*?)\)\.to_h/m, 1].scan(/:(\w+)/).flatten.map(&:to_sym)
 
-    expect(permitted).to include(:query, :disable_search_cache)
+    expect(permitted).to include(:query)
+    expect(permitted).not_to include(:disable_search_cache)
     expect(permitted - key_changing_values.keys - non_request_params).to be_empty
   end
 
@@ -62,17 +63,19 @@ describe Api::V2::SearchesController, type: :controller do
     expect(unchanged.keys).to be_empty
   end
 
-  it 'keeps the key when enable_highlighting or the bypass flag differ' do
+  it 'keeps the key when enable_highlighting or the retired bypass param differ' do
     base_key = cache_key_for(base_params)
 
     expect(cache_key_for(base_params.merge(enable_highlighting: 'false'))).to eq(base_key)
-    expect(cache_key_for(base_params.merge(disable_search_cache: 'false'))).to eq(base_key)
+    expect(cache_key_for(base_params.merge(disable_search_cache: 'true'))).to eq(base_key)
   end
 
-  it 'bypasses without writing when disable_search_cache is 1' do
+  it 'ignores the retired disable_search_cache param and serves from the cache' do
+    get :i14y, params: base_params
     get :i14y, params: base_params.merge(disable_search_cache: '1')
 
-    expect(assigns[:search].diagnostics['SRCH']).to eq(cached: false, cache: 'bypass')
-    expect(search_cache_keys).to be_empty
+    expect(response).to have_http_status(:ok)
+    expect(assigns[:search].diagnostics['SRCH']).to eq(cached: true, cache: 'hit')
+    expect(search_cache_keys.size).to eq(1)
   end
 end

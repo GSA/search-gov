@@ -6,15 +6,9 @@ class OpenSearch::DocumentSearch
   CACHE_KEY_VERSION = 'v1'
   RACE_CONDITION_TTL = 10.seconds
   DEFAULT_CACHE_MINUTES = 15
-  BYPASS_PARAM = :disable_search_cache
-  BYPASS_VALUES = %w[true 1].freeze
   QUERY_OPERATORS = %w[AND OR NOT].freeze
 
   attr_reader :doc_query, :offset, :size, :indices, :cache_status
-
-  def self.bypass_requested?(value)
-    BYPASS_VALUES.include?(value.to_s.strip.downcase)
-  end
 
   def self.normalize_query(query)
     query.to_s.split.map { |term| QUERY_OPERATORS.include?(term) ? term : term.downcase }.join(' ')
@@ -27,7 +21,6 @@ class OpenSearch::DocumentSearch
     @indices = options[:indices]
     @offset = options[:offset] || 0
     @size = options[:size]
-    @skip_cache = options[:skip_cache]
     @cache_status = nil
   end
 
@@ -53,11 +46,6 @@ class OpenSearch::DocumentSearch
 
     if cache_disabled?
       @cache_status = 'disabled'
-      return client_search(body)
-    end
-
-    if @skip_cache
-      @cache_status = 'bypass'
       return client_search(body)
     end
 

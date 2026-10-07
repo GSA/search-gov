@@ -37,7 +37,7 @@ describe SearchesController, type: :controller do
   let(:non_request_params) do
     %i[
       affiliate autodiscovery_url changed channel commit contributor cr created dc
-      disable_search_cache filetype filter hl publisher redesign subject tags utf8
+      filetype filter hl publisher redesign subject tags utf8
     ]
   end
 
@@ -64,7 +64,7 @@ describe SearchesController, type: :controller do
   it 'keeps the key for params that do not reach OpenSearch' do
     base_key = cache_key_for(base_params)
     samples = { autodiscovery_url: 'https://usa.gov', channel: '1', commit: 'Search', cr: 'US',
-                disable_search_cache: 'false', hl: 'false', redesign: 'true', utf8: '✓' }
+                disable_search_cache: 'true', hl: 'false', redesign: 'true', utf8: '✓' }
 
     changed = samples.reject { |param, value| cache_key_for(base_params.merge(param => value)) == base_key }
 
@@ -86,11 +86,13 @@ describe SearchesController, type: :controller do
     expect(assigns[:search].diagnostics['SRCH']).to eq(cached: true, cache: 'hit')
   end
 
-  it 'bypasses without writing when disable_search_cache is true' do
+  it 'ignores the retired disable_search_cache param and serves from the cache' do
+    get :index, params: base_params
     get :index, params: base_params.merge(disable_search_cache: 'true')
 
-    expect(assigns[:search].diagnostics['SRCH']).to eq(cached: false, cache: 'bypass')
-    expect(search_cache_keys).to be_empty
+    expect(response).to have_http_status(:ok)
+    expect(assigns[:search].diagnostics['SRCH']).to eq(cached: true, cache: 'hit')
+    expect(search_cache_keys.size).to eq(1)
   end
 
   it 'reports disabled and skips Redis when the affiliate turns the cache off' do

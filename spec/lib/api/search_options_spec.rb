@@ -11,49 +11,11 @@ describe Api::SearchOptions, type: :model do
 
   describe '#attributes' do
     let(:params) do
-      {
-        access_key: 'my_access_key',
-        affiliate: 'my_site_handle',
-        query: 'gov'
-      }
+      { access_key: 'my_access_key', affiliate: 'my_site_handle', query: 'gov', disable_search_cache: 'true' }
     end
 
-    it 'does not skip the cache by default' do
-      expect(options.attributes[:skip_cache]).to be false
-    end
-
-    %w[true 1 TRUE].each do |value|
-      context "when disable_search_cache is #{value}" do
-        let(:params) do
-          { access_key: 'my_access_key', affiliate: 'my_site_handle', query: 'gov', disable_search_cache: value }
-        end
-
-        it 'sets skip_cache' do
-          expect(options.attributes[:skip_cache]).to be true
-        end
-      end
-    end
-
-    %w[false 0 yes].each do |value|
-      context "when disable_search_cache is #{value}" do
-        let(:params) do
-          { access_key: 'my_access_key', affiliate: 'my_site_handle', query: 'gov', disable_search_cache: value }
-        end
-
-        it 'does not skip the cache' do
-          expect(options.attributes[:skip_cache]).to be false
-        end
-      end
-    end
-
-    context 'when the retired memory param is sent' do
-      let(:params) do
-        { access_key: 'my_access_key', affiliate: 'my_site_handle', query: 'gov', memory: 'false' }
-      end
-
-      it 'does not skip the cache' do
-        expect(options.attributes[:skip_cache]).to be false
-      end
+    it 'ignores the retired disable_search_cache param' do
+      expect(options.attributes).not_to have_key(:skip_cache)
     end
   end
 
