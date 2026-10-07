@@ -13,19 +13,29 @@ error() {
   echo "[CODEDEPLOY][UPLOAD_ASSETS][ERROR] $*" >&2
 }
 
-# Legacy Capistrano-managed tiers (production app/cron) have never run this
-# hook -- it did not exist in prod's pre-reconciliation appspec.yml. Assets
-# on those hosts currently reach S3 via whichever CodeDeploy-hook-driven
-# tier last deployed (today, crawler-green), not via a Capistrano task.
-# Running this hook unconditionally on all legacy app instances would add a
-# new, redundant `aws s3 sync --delete` from every instance on every deploy.
-# See cicd-scripts/lib/tier_gate.sh for the full rationale.
+# NOTE (SRCH-TBD, fixing production /packs 403 outage): this hook used to
+# skip entirely on legacy Capistrano-managed tiers (production app/cron) via
+# tier_gate.sh's is_legacy_capistrano_tier() -- the same gate that correctly
+# protects the *release-management* hooks (after_install.sh's releases/
+# <timestamp> creation, `current` symlink promotion, db:migrate) from racing
+# with Capistrano's independent `cap deploy` on those tiers.
+#
+# That gate was overbroad for THIS script. upload_assets_to_s3.sh only reads
+# from the already-promoted $CURRENT_PATH/public/{assets,packs} (whatever
+# Capistrano's own deploy already finished writing there) and pushes to S3 --
+# it never creates a release directory, never touches the `current` symlink,
+# and never runs migrations. There is no race with Capistrano here, so this
+# hook is safe to run unconditionally on every tier, including production's
+# app/cron.
+#
+# Skipping it on app/cron silently meant those tiers' real, current
+# public/assets and public/packs were never synced to S3 at all after the
+# ASSET_HOST CloudFront distribution was switched to serve /assets and
+# /packs from S3 -- causing CloudFront/S3 to serve stale or missing
+# (403 NoSuchKey) fingerprinted bundles while Apache on those same instances
+# still had the current build on local disk the whole time.
 resolve_deployment_tags
-if is_legacy_capistrano_tier; then
-  log "Skipping asset upload (environment=$ENVIRONMENT, terraform_module=$TERRAFORM_MODULE) -- legacy Capistrano-managed tier"
-  log "Asset upload hook completed (no-op)"
-  exit 0
-fi
+log "Uploading assets (environment=$ENVIRONMENT, terraform_module=$TERRAFORM_MODULE, Fleet=${FLEET:-<absent>})"
 
 # Configuration
 SEARCHGOV_ROOT="${SEARCHGOV_ROOT:-/home/search/searchgov}"
