@@ -13,29 +13,20 @@ error() {
   echo "[CODEDEPLOY][UPLOAD_ASSETS][ERROR] $*" >&2
 }
 
-# NOTE (SRCH-TBD, fixing production /packs 403 outage): this hook used to
-# skip entirely on legacy Capistrano-managed tiers (production app/cron) via
-# tier_gate.sh's is_legacy_capistrano_tier() -- the same gate that correctly
-# protects the *release-management* hooks (after_install.sh's releases/
-# <timestamp> creation, `current` symlink promotion, db:migrate) from racing
-# with Capistrano's independent `cap deploy` on those tiers.
-#
-# That gate was overbroad for THIS script. upload_assets_to_s3.sh only reads
-# from the already-promoted $CURRENT_PATH/public/{assets,packs} (whatever
-# Capistrano's own deploy already finished writing there) and pushes to S3 --
-# it never creates a release directory, never touches the `current` symlink,
-# and never runs migrations. There is no race with Capistrano here, so this
-# hook is safe to run unconditionally on every tier, including production's
-# app/cron.
-#
-# Skipping it on app/cron silently meant those tiers' real, current
-# public/assets and public/packs were never synced to S3 at all after the
-# ASSET_HOST CloudFront distribution was switched to serve /assets and
-# /packs from S3 -- causing CloudFront/S3 to serve stale or missing
-# (403 NoSuchKey) fingerprinted bundles while Apache on those same instances
-# still had the current build on local disk the whole time.
+# Interim asset policy: production serves assets app-first with S3 as a
+# backup for older files. Its CodeDeploy stage precedes Capistrano, so
+# uploading here cannot publish the new Capistrano build. Never upload
+# from crawler/cron; only dev/staging app hosts may write to S3.
 resolve_deployment_tags
-log "Uploading assets (environment=$ENVIRONMENT, terraform_module=$TERRAFORM_MODULE, Fleet=${FLEET:-<absent>})"
+case "$ENVIRONMENT:$TERRAFORM_MODULE" in
+  dev:app|dev:app-green|staging:app|staging:app-green)
+    log "Uploading assets (environment=$ENVIRONMENT, terraform_module=$TERRAFORM_MODULE, Fleet=${FLEET:-<absent>})"
+    ;;
+  *)
+    log "Skipping S3 upload (environment=$ENVIRONMENT, terraform_module=$TERRAFORM_MODULE) -- interim app-only asset policy"
+    exit 0
+    ;;
+esac
 
 # Configuration
 SEARCHGOV_ROOT="${SEARCHGOV_ROOT:-/home/search/searchgov}"
@@ -77,15 +68,7 @@ if [ -z "$S3_BUCKET" ]; then
   exit 1
 fi
 
-if [ -z "${AWS_ACCESS_KEY_ID:-}" ]; then
-  error "AWS_ACCESS_KEY_ID environment variable is not set"
-  exit 1
-fi
-
-if [ -z "${AWS_SECRET_ACCESS_KEY:-}" ]; then
-  error "AWS_SECRET_ACCESS_KEY environment variable is not set"
-  exit 1
-fi
+# AWS CLI uses static or instance-role credentials as available.
 
 log "S3 Bucket: $S3_BUCKET"
 log "AWS Region: $AWS_REGION"
@@ -112,14 +95,14 @@ sync_to_s3() {
   log "Syncing $source_dir to s3://${S3_BUCKET}${s3_path}"
   
   # Upload ALL assets with long cache by default (most assets are fingerprinted)
-  # Using --size-only for faster comparisons since fingerprinted assets are immutable
+  # Additive sync: keep older fingerprints referenced by cached pages.
+  # Preserve the existing size-only behavior outside production.
   if aws s3 sync "$source_dir" "s3://${S3_BUCKET}${s3_path}" \
     --region "$AWS_REGION" \
     --exclude ".sprockets-manifest-*.json" \
     --exclude "manifest.json.br" \
     --cache-control "public, max-age=31536000, immutable" \
-    --size-only \
-    --delete; then
+    --size-only; then
     log "Successfully synced all assets from $source_dir"
   else
     error "Failed to sync assets from $source_dir"
