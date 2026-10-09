@@ -40,7 +40,7 @@ gem 'flickraw', '~> 0.9.9'
 gem 'mutex_m', '~> 0.2.0'
 gem 'erb', '~> 4.0.4'
 gem 'bigdecimal', '~> 3.1', '>= 3.1.8'
-gem 'rexml', '~> 3.4.4'
+gem 'rexml', '~> 3.4.2'
 # Action Mailer and Action Mailbox depend on net-imap
 gem 'net-imap', '~> 0.6.7'
 gem 'csv', '~> 3.3'
