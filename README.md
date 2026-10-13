@@ -52,7 +52,6 @@ $ curl localhost:9300
 ```
 
 ### Package Manager
-
 We recommend using [Homebrew](https://brew.sh/) for local package installation on a Mac.
 
 ### Packages
