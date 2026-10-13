@@ -89,6 +89,12 @@ if [ ! -d "$ASSETS_DIR/assets" ] && [ ! -d "$ASSETS_DIR/packs" ]; then
   exit 0
 fi
 
+manifest="$ASSETS_DIR/packs/manifest.json"
+if [ -d "$ASSETS_DIR/packs" ] && [ ! -f "$manifest" ]; then
+  error "RESULT=FAILED environment=$ENVIRONMENT tier=$TERRAFORM_MODULE reason=missing_pack_manifest"
+  exit 1
+fi
+
 stable_refresh_failures=0
 missing_prefixes=0
 log "UPLOAD_STARTED environment=$ENVIRONMENT tier=$TERRAFORM_MODULE mode=additive note=source_directory_checks_complete"
@@ -104,16 +110,16 @@ sync_to_s3() {
     return 0
   fi
 
-  log "SYNC_STARTED prefix=$s3_path comparison=size_only delete=false"
+  log "SYNC_STARTED prefix=$s3_path comparison=size_and_modtime delete=false"
   # Upload ALL assets with long cache by default (most assets are fingerprinted).
   # Additive sync keeps older fingerprints referenced by pages served earlier.
   if aws s3 sync "$source_dir" "s3://${S3_BUCKET}${s3_path}" \
     --region "$AWS_REGION" \
     --exclude ".sprockets-manifest-*.json" \
+    --exclude "manifest.json" \
     --exclude "manifest.json.br" \
-    --cache-control "public, max-age=31536000, immutable" \
-    --size-only; then
-    log "SYNC_RESULT=SUCCESS prefix=$s3_path note=sync_completed_existing_same_size_objects_may_be_skipped"
+    --cache-control "public, max-age=31536000, immutable"; then
+    log "SYNC_RESULT=SUCCESS prefix=$s3_path note=sync_completed_cdn_delivery_not_verified"
   else
     error "SYNC_RESULT=FAILED prefix=$s3_path reason=aws_sync_failed"
     error "RESULT=FAILED environment=$ENVIRONMENT tier=$TERRAFORM_MODULE reason=aws_sync_failed prefix=$s3_path"
@@ -151,6 +157,21 @@ sync_to_s3() {
 
 sync_to_s3 "$ASSETS_DIR/assets" "/assets"
 sync_to_s3 "$ASSETS_DIR/packs" "/packs"
+
+# Publish the mutable Shakapacker manifest last, after the bundles it names.
+# Sync cannot safely compare an existing same-sized manifest or fix its cache headers.
+if [ -d "$ASSETS_DIR/packs" ]; then
+  log "MANIFEST_UPLOAD_STARTED prefix=/packs file=manifest.json"
+  if aws s3 cp "$manifest" "s3://${S3_BUCKET}/packs/manifest.json" \
+    --region "$AWS_REGION" \
+    --content-type "application/json" \
+    --cache-control "no-cache, max-age=0, must-revalidate"; then
+    log "MANIFEST_UPLOAD_RESULT=SUCCESS prefix=/packs file=manifest.json"
+  else
+    error "RESULT=FAILED environment=$ENVIRONMENT tier=$TERRAFORM_MODULE reason=pack_manifest_upload_failed"
+    exit 1
+  fi
+fi
 
 if [ "$stable_refresh_failures" -gt 0 ]; then
   log "RESULT=WARNING environment=$ENVIRONMENT tier=$TERRAFORM_MODULE stable_refresh_failures=$stable_refresh_failures missing_prefixes=$missing_prefixes note=sync_succeeded_but_upload_incomplete"
