@@ -607,7 +607,7 @@ describe SearchgovUrl do
             SearchgovDocument.create!(
               web_document: 'An existing body',
               headers: { etag: '123' },
-              tika_version: 2.4,
+              tika_version: Tika.tika_version,
               searchgov_url_id: searchgov_url.id
             )
           end
