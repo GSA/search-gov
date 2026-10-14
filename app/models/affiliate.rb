@@ -452,6 +452,11 @@ class Affiliate < ApplicationRecord
     true
   end
 
+  # Hosts can boot before db:migrate runs on the migration-owning tier.
+  def search_cache_enabled?
+    has_attribute?(:search_cache_enabled) && self[:search_cache_enabled] == true
+  end
+
   private
 
   def batch_size(scope)

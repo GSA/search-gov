@@ -12,15 +12,54 @@ describe 'scheduled jobs configuration' do
       lines.reject { |line| line.match?(/^\s*#/) }.join
   end
 
-  let(:yaml_job_classes) { resque_schedule.fetch('production').keys }
+  let(:production_schedule) { resque_schedule.fetch('production') }
+
+  let(:yaml_job_classes) do
+    production_schedule.map do |name, opts|
+      opts.is_a?(Hash) ? (opts['class'] || name) : name
+    end
+  end
 
   let(:whenever_job_classes) do
-    whenever_source.scan(/\b([A-Z][A-Za-z0-9]*Job)\b/).flatten.uniq
+    whenever_source.scan(/\b([A-Z][A-Za-z0-9:]*Job)\b/).flatten.uniq
   end
 
   it 'schedules SitemapMonitorJob via resque-scheduler in production' do
-    expect(resque_schedule.fetch('production').fetch('SitemapMonitorJob')).
+    expect(production_schedule.fetch('SitemapMonitorJob')).
       to eq('cron' => '0 */4 * * *')
+  end
+
+  it 'preserves cron times for jobs moved from schedule.rb' do
+    # expect(production_schedule.fetch('email_monthly_reports')).to eq(
+    #   'class' => 'Scheduled::EmailMonthlyReportsJob',
+    #   'cron' => '0 0 1 * *'
+    # )
+    # expect(production_schedule.fetch('email_yearly_reports')).to eq(
+    #   'class' => 'Scheduled::EmailYearlyReportsJob',
+    #   'cron' => '35 21 18 12 *'
+    # )
+    # expect(production_schedule.fetch('update_approval_status')).to eq(
+    #   'class' => 'Scheduled::UpdateApprovalStatusJob',
+    #   'cron' => '25 2 * * 0'
+    # )
+    # expect(production_schedule.fetch('warn_set_to_not_approved_76')).to eq(
+    #   'class' => 'Scheduled::WarnSetToNotApprovedJob',
+    #   'cron' => '5 0 * * *',
+    #   'args' => [76]
+    # )
+    # expect(production_schedule.fetch('warn_set_to_not_approved_86')).to eq(
+    #   'class' => 'Scheduled::WarnSetToNotApprovedJob',
+    #   'cron' => '5 0 * * *',
+    #   'args' => [86]
+    # )
+    # expect(production_schedule.fetch('searchgov_url_counter_culture_fix_counts')).to eq(
+    #   'class' => 'Scheduled::SearchgovUrlCounterCultureFixCountsJob',
+    #   'cron' => '0 2-20 * * *'
+    # )
+    expect(production_schedule.fetch('update_not_active_approval_status')).to eq(
+      'class' => 'Scheduled::UpdateNotActiveApprovalStatusJob',
+      'cron' => '5 0 * * *'
+    )
   end
 
   it 'does not list the same job class in resque_schedule.yml and schedule.rb' do

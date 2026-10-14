@@ -293,6 +293,17 @@ describe SearchesController do
     end
   end
   
+  context 'when the retired disable_search_cache param is sent' do
+    before do
+      get :index, params: { query: 'obama', disable_search_cache: 'true', affiliate: 'usagov' }
+    end
+
+    it 'does not pass a cache bypass to the search' do
+      expect(response).to have_http_status(:ok)
+      expect(assigns[:search_options]).not_to have_key(:skip_cache)
+    end
+  end
+
   context 'highlighting' do
     context 'when a client requests results without highlighting' do
       before do
