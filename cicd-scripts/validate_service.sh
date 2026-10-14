@@ -226,16 +226,17 @@ assert_puma_serving_current_release() {
 clean_stale_gems() {
   local app_root="$1"
 
-  if [ -d "/home/search/.rbenv" ]; then
-    export RBENV_ROOT="/home/search/.rbenv"
-    export PATH="$RBENV_ROOT/bin:$RBENV_ROOT/shims:$PATH"
-  fi
-  export BUNDLE_WITHOUT="development:test"
-  export BUNDLE_PATH="${app_root}/shared/bundle"
-  export BUNDLE_APP_CONFIG="${app_root}/shared/.bundle"
-
   log "Removing gems not used by the current Gemfile.lock"
-  (cd "${app_root}/current" && bundle clean) || warn "bundle clean failed; continuing"
+  (
+    if [ -d "/home/search/.rbenv" ]; then
+      export RBENV_ROOT="/home/search/.rbenv"
+      export PATH="$RBENV_ROOT/bin:$RBENV_ROOT/shims:$PATH"
+    fi
+    export BUNDLE_WITHOUT="development:test"
+    export BUNDLE_PATH="${app_root}/shared/bundle"
+    export BUNDLE_APP_CONFIG="${app_root}/shared/.bundle"
+    cd "${app_root}/current" && timeout "${BUNDLE_CLEAN_TIMEOUT:-90}" bundle clean
+  ) || warn "bundle clean failed or timed out; continuing"
 }
 
 PUMA_SERVICE="$(resolve_puma_service)"
