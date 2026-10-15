@@ -64,7 +64,7 @@ _tier_gate_error() {
 
 
 # Single attempt: resolve IMDSv2 token, instance-id, then describe-tags for
-# terraform_module, Fleet, and environment. Deliberately omits --region on
+# terraform_module, Fleet, environment, and Name. Deliberately omits --region on
 # the describe-tags call: AWS CLI v2 resolves the region via IMDS
 # automatically when no region is set via env var/profile/flag. Returns
 # empty output (not an error) on any failure -- retries live in the caller.
@@ -88,7 +88,7 @@ _get_instance_tags_once() {
 
   aws ec2 describe-tags \
     --filters "Name=resource-id,Values=$instance_id" \
-      "Name=key,Values=terraform_module,Fleet,environment" \
+      "Name=key,Values=terraform_module,Fleet,environment,Name" \
     --output json 2>/dev/null || true
 }
 
@@ -128,8 +128,8 @@ lookup_tag() {
     '.Tags[] | select(.Key == $key) | .Value' 2>/dev/null || true
 }
 
-# Resolves and exports TERRAFORM_MODULE, FLEET, ENVIRONMENT for the current
-# instance. Callers should invoke this once near the top of their script and
+# Resolves and exports TERRAFORM_MODULE, FLEET, ENVIRONMENT, and INSTANCE_NAME
+# for the current instance. Callers should invoke this once near the top and
 # reuse the resulting variables rather than re-fetching tags later (e.g. for
 # a db:migrate gate) -- one describe-tags call per deployment is sufficient.
 #
@@ -147,6 +147,7 @@ resolve_deployment_tags() {
   TERRAFORM_MODULE="$(lookup_tag "$tags_json" terraform_module)"
   FLEET="$(lookup_tag "$tags_json" Fleet)"
   ENVIRONMENT="$(lookup_tag "$tags_json" environment)"
+  INSTANCE_NAME="$(lookup_tag "$tags_json" Name)"
 
   [ -z "$TERRAFORM_MODULE" ] && TERRAFORM_MODULE="unknown"
   [ -z "$ENVIRONMENT" ] && ENVIRONMENT="unknown"
@@ -158,7 +159,7 @@ resolve_deployment_tags() {
     exit 1
   fi
 
-  export TERRAFORM_MODULE FLEET ENVIRONMENT
+  export TERRAFORM_MODULE FLEET ENVIRONMENT INSTANCE_NAME
 }
 
 # Returns success (0) if this instance is a legacy, Capistrano-managed tier
