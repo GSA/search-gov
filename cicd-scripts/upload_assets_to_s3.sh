@@ -39,6 +39,15 @@ case "$ENVIRONMENT:$TERRAFORM_MODULE" in
     ;;
 esac
 
+# Decide from EC2 tags before reading .env, which may contain unrelated keys.
+publish_manifest=false
+if [[ "${INSTANCE_NAME:-}" =~ ^app-[a-z0-9-]+-instance-([1-9][0-9]*)$ ]]; then
+  [ "${BASH_REMATCH[1]}" = 1 ] && publish_manifest=true
+else
+  error "RESULT=FAILED environment=$ENVIRONMENT tier=$TERRAFORM_MODULE reason=unrecognized_app_instance_name"
+  exit 1
+fi
+
 # Configuration
 SEARCHGOV_ROOT="${SEARCHGOV_ROOT:-/home/search/searchgov}"
 
@@ -94,8 +103,26 @@ if [ -d "$ASSETS_DIR/packs" ] && [ ! -f "$manifest" ]; then
   error "RESULT=FAILED environment=$ENVIRONMENT tier=$TERRAFORM_MODULE reason=missing_pack_manifest"
   exit 1
 fi
+if [ -d "$ASSETS_DIR/packs" ] && [ "$publish_manifest" = true ]; then
+  # A manifest can also contain CDN URLs and nested entrypoint data. Check
+  # only the application entrypoints that this host must have compiled.
+  if ! jq -e 'type == "object"' "$manifest" >/dev/null; then
+    error "RESULT=FAILED environment=$ENVIRONMENT tier=$TERRAFORM_MODULE reason=invalid_pack_manifest"
+    exit 1
+  fi
+  for entry in application.js application.css; do
+    bundle=$(jq -er --arg entry "$entry" '.[$entry] | strings |
+      select(startswith("/packs/") and (contains("..") | not))' "$manifest") || {
+      error "RESULT=FAILED environment=$ENVIRONMENT tier=$TERRAFORM_MODULE reason=invalid_pack_manifest entry=$entry"
+      exit 1
+    }
+    if [ ! -f "$ASSETS_DIR$bundle" ]; then
+      error "RESULT=FAILED environment=$ENVIRONMENT tier=$TERRAFORM_MODULE reason=missing_manifest_bundle entry=$entry"
+      exit 1
+    fi
+  done
+fi
 
-stable_refresh_failures=0
 missing_prefixes=0
 log "UPLOAD_STARTED environment=$ENVIRONMENT tier=$TERRAFORM_MODULE mode=additive note=source_directory_checks_complete"
 
@@ -113,6 +140,7 @@ sync_to_s3() {
   log "SYNC_STARTED prefix=$s3_path comparison=size_and_modtime delete=false"
   # Upload ALL assets with long cache by default (most assets are fingerprinted).
   # Additive sync keeps older fingerprints referenced by pages served earlier.
+  # Keep mtime comparison: same-sized stable assets may contain new content.
   if aws s3 sync "$source_dir" "s3://${S3_BUCKET}${s3_path}" \
     --region "$AWS_REGION" \
     --exclude ".sprockets-manifest-*.json" \
@@ -146,8 +174,8 @@ sync_to_s3() {
         --metadata-directive REPLACE 2>/dev/null; then
         refreshed=$((refreshed + 1))
       else
-        warn "STABLE_ASSET_REFRESH_RESULT=WARNING prefix=$s3_path file=$file reason=aws_cp_failed"
-        stable_refresh_failures=$((stable_refresh_failures + 1))
+        error "RESULT=FAILED environment=$ENVIRONMENT tier=$TERRAFORM_MODULE reason=stable_asset_upload_failed prefix=$s3_path file=$file"
+        return 1
       fi
     fi
   done
@@ -161,21 +189,25 @@ sync_to_s3 "$ASSETS_DIR/packs" "/packs"
 # Publish the mutable Shakapacker manifest last, after the bundles it names.
 # Sync cannot safely compare an existing same-sized manifest or fix its cache headers.
 if [ -d "$ASSETS_DIR/packs" ]; then
-  log "MANIFEST_UPLOAD_STARTED prefix=/packs file=manifest.json"
-  if aws s3 cp "$manifest" "s3://${S3_BUCKET}/packs/manifest.json" \
-    --region "$AWS_REGION" \
-    --content-type "application/json" \
-    --cache-control "no-cache, max-age=0, must-revalidate"; then
-    log "MANIFEST_UPLOAD_RESULT=SUCCESS prefix=/packs file=manifest.json"
+  # One named app host publishes the manifest; all app hosts still sync bundles.
+  # This prevents cross-host overwrites; deployments must remain serialized.
+  if [ "$publish_manifest" = true ]; then
+    log "MANIFEST_UPLOAD_STARTED prefix=/packs file=manifest.json"
+    if aws s3 cp "$manifest" "s3://${S3_BUCKET}/packs/manifest.json" \
+      --region "$AWS_REGION" \
+      --content-type "application/json" \
+      --cache-control "no-cache, max-age=0, must-revalidate"; then
+      log "MANIFEST_UPLOAD_RESULT=SUCCESS prefix=/packs file=manifest.json"
+    else
+      error "RESULT=FAILED environment=$ENVIRONMENT tier=$TERRAFORM_MODULE reason=pack_manifest_upload_failed"
+      exit 1
+    fi
   else
-    error "RESULT=FAILED environment=$ENVIRONMENT tier=$TERRAFORM_MODULE reason=pack_manifest_upload_failed"
-    exit 1
+    log "MANIFEST_UPLOAD_RESULT=SKIPPED prefix=/packs reason=not_designated_publisher"
   fi
 fi
 
-if [ "$stable_refresh_failures" -gt 0 ]; then
-  log "RESULT=WARNING environment=$ENVIRONMENT tier=$TERRAFORM_MODULE stable_refresh_failures=$stable_refresh_failures missing_prefixes=$missing_prefixes note=sync_succeeded_but_upload_incomplete"
-elif [ "$missing_prefixes" -gt 0 ]; then
+if [ "$missing_prefixes" -gt 0 ]; then
   log "RESULT=WARNING environment=$ENVIRONMENT tier=$TERRAFORM_MODULE missing_prefixes=$missing_prefixes note=source_directory_missing"
 else
   log "RESULT=SUCCESS environment=$ENVIRONMENT tier=$TERRAFORM_MODULE note=s3_sync_completed_cdn_delivery_not_verified"
