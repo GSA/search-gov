@@ -3,6 +3,13 @@ require 'resque/scheduler/tasks'
 require 'active_scheduler'
 
 namespace :resque do
+  # Resque reads this when the worker starts, before it forks a child per job.
+  # Without it the child calls exit!, which skips SemanticLogger's at_exit flush,
+  # so the last Rails log lines of a job never reach disk.
+  task :setup => :environment do
+    ENV['RUN_AT_EXIT_HOOKS'] = '1'
+  end
+
   task :setup_schedule => [:environment] do
     require 'resque'
     require 'resque-scheduler'
