@@ -86,6 +86,8 @@ exit 0
         return result, self.log.read_text().splitlines()
 
     def test_skips_production_and_non_app_hosts_without_s3_or_config(self):
+        self.assets.rename(self.assets.with_name('assets.saved'))
+        self.packs.rename(self.packs.with_name('packs.saved'))
         for env, tier in [('production', 'app'), ('production', 'app-green'),
                           ('production', 'crawler-green'), ('dev', 'cron'),
                           ('staging', 'crawler-green'), ('staging', 'cron-green')]:
@@ -94,6 +96,28 @@ exit 0
                 self.assertEqual(result.returncode, 0, result.stderr)
                 self.assertIn('RESULT=SKIPPED no_S3_calls=true', result.stdout)
                 self.assertEqual(calls, [])
+
+    def test_missing_packs_fails_before_s3(self):
+        self.packs.rename(self.packs.with_name('packs.saved'))
+        result, calls = self.run_hook()
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('reason=missing_asset_directory prefix=/packs', result.stderr)
+        self.assertEqual(calls, [])
+
+    def test_missing_assets_fails_before_s3(self):
+        self.assets.rename(self.assets.with_name('assets.saved'))
+        result, calls = self.run_hook('staging', 'app-green')
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('reason=missing_asset_directory prefix=/assets', result.stderr)
+        self.assertEqual(calls, [])
+
+    def test_missing_both_directories_fails_before_s3(self):
+        self.assets.rename(self.assets.with_name('assets.saved'))
+        self.packs.rename(self.packs.with_name('packs.saved'))
+        result, calls = self.run_hook()
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('reason=missing_asset_directory prefix=/assets', result.stderr)
+        self.assertEqual(calls, [])
 
     def test_unknown_tags_and_hostnames_fail_closed(self):
         for options in ({'fail_tags': True}, {'name': ''},

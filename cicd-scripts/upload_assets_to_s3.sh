@@ -93,10 +93,12 @@ if ! cd "$CURRENT_PATH"; then
   exit 1
 fi
 
-if [ ! -d "$ASSETS_DIR/assets" ] && [ ! -d "$ASSETS_DIR/packs" ]; then
-  warn "RESULT=WARNING reason=no_asset_directories environment=$ENVIRONMENT tier=$TERRAFORM_MODULE note=app_host_uploaded_nothing"
-  exit 0
-fi
+for prefix in assets packs; do
+  if [ ! -d "$ASSETS_DIR/$prefix" ]; then
+    error "RESULT=FAILED environment=$ENVIRONMENT tier=$TERRAFORM_MODULE reason=missing_asset_directory prefix=/$prefix"
+    exit 1
+  fi
+done
 
 manifest="$ASSETS_DIR/packs/manifest.json"
 if [ -d "$ASSETS_DIR/packs" ] && [ ! -f "$manifest" ]; then
@@ -123,7 +125,6 @@ if [ -d "$ASSETS_DIR/packs" ] && [ "$publish_manifest" = true ]; then
   done
 fi
 
-missing_prefixes=0
 log "UPLOAD_STARTED environment=$ENVIRONMENT tier=$TERRAFORM_MODULE mode=additive note=source_directory_checks_complete"
 
 # Function to sync assets to S3
@@ -132,9 +133,8 @@ sync_to_s3() {
   local s3_path="$2"
 
   if [ ! -d "$source_dir" ]; then
-    log "SYNC_RESULT=SKIPPED prefix=$s3_path reason=source_directory_missing"
-    missing_prefixes=$((missing_prefixes + 1))
-    return 0
+    error "RESULT=FAILED environment=$ENVIRONMENT tier=$TERRAFORM_MODULE reason=missing_asset_directory prefix=$s3_path"
+    return 1
   fi
 
   log "SYNC_STARTED prefix=$s3_path comparison=size_and_modtime delete=false"
@@ -207,8 +207,4 @@ if [ -d "$ASSETS_DIR/packs" ]; then
   fi
 fi
 
-if [ "$missing_prefixes" -gt 0 ]; then
-  log "RESULT=WARNING environment=$ENVIRONMENT tier=$TERRAFORM_MODULE missing_prefixes=$missing_prefixes note=source_directory_missing"
-else
-  log "RESULT=SUCCESS environment=$ENVIRONMENT tier=$TERRAFORM_MODULE note=s3_sync_completed_cdn_delivery_not_verified"
-fi
+log "RESULT=SUCCESS environment=$ENVIRONMENT tier=$TERRAFORM_MODULE note=s3_sync_completed_cdn_delivery_not_verified"
