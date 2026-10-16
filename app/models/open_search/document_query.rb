@@ -96,7 +96,7 @@ class OpenSearch::DocumentQuery
   end
 
   def source_fields
-    default_fields = %w[title path created changed thumbnail_url]
+    default_fields = %w[title description path created changed thumbnail_url]
     fields = (@options[:include] || default_fields).push('language')
     fields.flat_map do |field|
       next [field] unless language_suffixed_fields[field]
