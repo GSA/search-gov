@@ -5,39 +5,7 @@ module Searches::PathsHelper
     docs_search_path dc_params
   end
 
-  def path_for_filterable_search(search, search_params, extra_params = {})
-    case search
-    when BlendedSearch
-      path_for_blended_search(search, search_params, extra_params)
-    end
-  end
-
-  def path_for_blended_search(search, search_params, extra_params = {})
-    blended_params = search_params.slice(:affiliate, :m)
-    blended_params[:query] = search.query
-    blended_params.merge! extract_current_search_filter_params(search)
-    blended_params.merge! extra_params
-    search_path blended_params
-  end
-
   def navigable_params(search_params, id_sym, id, query, *keys)
     search_params.slice(*keys).merge(id_sym => id, :query => query)
   end
-
-  def extract_current_search_filter_params(search)
-    return {} unless search.is_a? FilterableSearch
-
-    current_params = {}
-    current_params[:sort_by] = search.sort_by_relevance? ? 'r' : 'date'
-
-    if search.tbs
-      current_params[:tbs] = search.tbs
-    else
-      current_params[:since_date] = render_date search.since
-      current_params[:until_date] = render_date search.until
-    end
-
-    current_params
-  end
-
 end

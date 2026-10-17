@@ -3,11 +3,6 @@
 describe SearchesController do
   let(:affiliate) { affiliates(:usagov_affiliate) }
 
-  before do
-    affiliate.use_redesigned_results_page = false
-    affiliate.save(validate: false)
-  end
-
   context 'when showing a new search' do
     render_views
     context 'when searching in English' do
@@ -26,8 +21,8 @@ describe SearchesController do
       end
 
       it 'should render the template' do
-        expect(response).to render_template 'document'
-        expect(response).to render_template 'layouts/searches'
+        expect(response).to render_template 'index_redesign'
+        expect(response).to render_template 'layouts/searches_redesign'
       end
 
       it 'should assign the query as the page title' do
@@ -55,9 +50,10 @@ describe SearchesController do
         hash_including(affiliate: affiliate.name, query: 'social security')) }
     end
 
-    context 'when searching in English (redesign)' do
+    context 'when the affiliate has use_redesigned_results_page set to false' do
       before do
-        get :index, params: { query: 'social security', affiliate: 'redesigned_usagov' }
+        affiliate.update_column(:use_redesigned_results_page, false)
+        get :index, params: { query: 'social security', affiliate: 'usagov' }
       end
 
       it 'renders the React templates' do
@@ -92,8 +88,6 @@ describe SearchesController do
     let(:affiliate) { affiliates(:inactive_affiliate) }
 
     before do
-      affiliate.use_redesigned_results_page = false
-      affiliate.save(validate: false)
       get :index,
           params: {
             query: 'gov',
@@ -153,7 +147,7 @@ describe SearchesController do
               }
         end
 
-        it { is_expected.to render_template(:document) }
+        it { is_expected.to render_template(:index_redesign) }
       end
 
       it_should_behave_like 'a routed query that matches the referrer'
@@ -195,8 +189,8 @@ describe SearchesController do
     end
 
     it 'should render the template' do
-      expect(response).to render_template 'document'
-      expect(response).to render_template 'layouts/searches'
+      expect(response).to render_template 'index_redesign'
+      expect(response).to render_template 'layouts/searches_redesign'
     end
 
     it 'sets an affiliate page title' do
@@ -383,7 +377,7 @@ describe SearchesController do
       it { is_expected.to assign_to(:search_params).with(
         hash_including(affiliate: affiliate.name, query: 'gov')) }
 
-      it { is_expected.to render_template(:document) }
+      it { is_expected.to render_template(:index_redesign) }
 
       context 'when searching with a date range' do
         let(:docs_params) do
@@ -478,7 +472,7 @@ describe SearchesController do
             }
       end
 
-      it { is_expected.to render_template(:document) }
+      it { is_expected.to render_template(:index_redesign) }
 
       it 'should assign various variables' do
         expect(assigns[:page_title]).to match(/gov/)
@@ -504,7 +498,7 @@ describe SearchesController do
             }
       end
 
-      it { is_expected.to render_template(:document) }
+      it { is_expected.to render_template(:index_redesign) }
 
       it 'should assign various variables' do
         expect(assigns[:page_title]).to match(/gov/)
@@ -513,5 +507,25 @@ describe SearchesController do
       end
     end
 
+  end
+
+  context 'when searching an affiliate that uses the LegacyOpenSearch engine' do
+    let(:legacy_opensearch_engine) do
+      double(LegacyOpenSearch::Engine, query: 'gov', modules: %w(SRCH), diagnostics: {}, total: nil)
+    end
+
+    before do
+      expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
+      affiliate.search_engine = 'LegacyOpenSearch'
+      expect(LegacyOpenSearch::Engine).to receive(:new).and_return(legacy_opensearch_engine)
+      expect(legacy_opensearch_engine).to receive(:run)
+      get :index, params: { query: 'gov', affiliate: affiliate.name }
+    end
+
+    it { is_expected.to render_template(:index_redesign) }
+
+    it 'assigns the document vertical' do
+      expect(assigns[:search_vertical]).to eq(:document)
+    end
   end
 end

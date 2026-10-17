@@ -5,14 +5,16 @@ Feature: SearchGov search
 
   Background:
     Given the following OpenSearch Affiliates exist:
-      | display_name | name | contact_email | first_name | last_name | domains                     | use_redesigned_results_page |
-      | EPA          | epa  | aff@epa.gov   | Jane       | Bar       | www.epa.gov,archive.epa.gov | false                       |
+      | display_name | name | contact_email | first_name | last_name | domains                     |
+      | EPA          | epa  | aff@epa.gov   | Jane       | Bar       | www.epa.gov,archive.epa.gov |
 
+  @javascript
   Scenario: Everything search
     When I am on epa's search page
     Then I should see "Please enter a search term in the box above."
     And I should not see "Refine your search"
 
+  @javascript
   Scenario: Collection search
     Given affiliate "epa" has the following document collections:
       | name | prefixes             |
@@ -21,6 +23,7 @@ Feature: SearchGov search
     Then I should see "Please enter a search term in the box above."
 
 
+  @javascript
   Scenario: Display an Alert on search page
     Given the following Alert exists:
       | affiliate | text                       | status | title      |
@@ -33,9 +36,10 @@ Feature: SearchGov search
     When I am on epa's search page
     Then I should not see "New alert for the test aff"
 
+  @javascript
   Scenario: Search with site limits
     Given there are results for the "searchgov" drawer
     When I am on epa's search page with site limited to "www.epa.gov/news"
-    When I search for "carbon emissions"
+    When I search for "carbon emissions" in the redesigned search page
     Then I should see "We're including results for carbon emissions from www.epa.gov/news only."
 

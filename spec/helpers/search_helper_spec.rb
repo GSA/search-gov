@@ -83,4 +83,14 @@ describe SearchHelper do
       )
     end
   end
+
+  describe '#hidden_field_tag_if_key_exists' do
+    it 'renders a hidden field when the value is present' do
+      expect(helper.send(:hidden_field_tag_if_key_exists, :m, 'true')).to have_field('m', type: 'hidden', with: 'true')
+    end
+
+    it 'renders nothing when the value is missing' do
+      expect(helper.send(:hidden_field_tag_if_key_exists, :m)).to be_nil
+    end
+  end
 end
