@@ -26,6 +26,16 @@ describe Tika do
       expect(described_class.tika_version).to be_a(Float)
     end
 
+    context 'when Tika reports a 3.x version' do
+      before do
+        stub_request(:get, /version/).to_return(status: 200, body: 'Apache Tika 3.3.2')
+      end
+
+      it 'returns the major and minor version' do
+        expect(described_class.tika_version).to eq(3.3)
+      end
+    end
+
     context 'when something goes boom' do
       before do
         stub_request(:get, /version/).to_return(status: 404)
