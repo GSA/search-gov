@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SearchesController < ApplicationController
-  layout :set_layout
+  layout 'searches_redesign'
 
   skip_before_action :verify_authenticity_token, :set_default_locale
 
@@ -16,8 +16,7 @@ class SearchesController < ApplicationController
 
   def index
     if @affiliate.active?
-      search_klass, @search_vertical, template = pick_klass_vertical_template
-      template = :index_redesign if redesign?
+      search_klass, @search_vertical = pick_klass_and_vertical
       @search = search_klass.new(@search_options.merge(geoip_info: GeoipLookup.lookup(request.remote_ip)))
       @search.run
 
@@ -30,7 +29,7 @@ class SearchesController < ApplicationController
       redirect_if_invalid_page_number and return
 
       respond_to do |format|
-        format.html { render template }
+        format.html { render :index_redesign }
         format.json { render :json => @search }
       end
 
@@ -52,9 +51,7 @@ class SearchesController < ApplicationController
     @search_vertical = :docs
     set_search_page_title
     set_search_params
-    template = [OpenSearch::Engine, LegacyOpenSearch::Engine].include?(search_klass) ? :document : :docs
-    template = :index_redesign if redesign?
-    respond_to { |format| format.html { render template } }
+    respond_to { |format| format.html { render :index_redesign } }
   end
 
   def advanced
@@ -78,13 +75,13 @@ class SearchesController < ApplicationController
     end
   end
 
-  def pick_klass_vertical_template
+  def pick_klass_and_vertical
     if @affiliate.legacy_opensearch_engine?
-      [LegacyOpenSearch::Engine, :document, :document]
+      [LegacyOpenSearch::Engine, :document]
     elsif @affiliate.gets_blended_results
-      [BlendedSearch, :blended, :blended]
+      [BlendedSearch, :blended]
     else
-      [OpenSearch::Engine, :document, :document]
+      [OpenSearch::Engine, :document]
     end
   end
 
@@ -115,9 +112,5 @@ class SearchesController < ApplicationController
     return LegacyOpenSearch::Engine if @affiliate.legacy_opensearch_engine?
 
     OpenSearch::Engine
-  end
-
-  def set_layout
-    redesign? ? 'searches_redesign' : 'searches'
   end
 end

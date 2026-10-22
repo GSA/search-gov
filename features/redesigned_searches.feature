@@ -346,3 +346,113 @@ Feature: Search - redesign
     And I should see "First no results link"
     And I should see "Second no results link"
 
+  @javascript @a11y
+  Scenario: Search with no results
+    Given the following OpenSearch Affiliates exist:
+      | display_name | name    | contact_email | first_name | last_name |
+      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       |
+    When I am on bar.gov's search page
+    And I search for "foobarbazbiz" in the redesigned search page
+    Then I should see "Sorry, no results found for 'foobarbazbiz'. Try entering fewer or more general search terms."
+
+  @javascript @a11y
+  Scenario: Searching a Spanish site with multiple domains
+    Given the following OpenSearch Affiliates exist:
+      | display_name | name    | contact_email | first_name | last_name | domains                | locale |
+      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | whitehouse.gov,usa.gov | es     |
+    When I am on bar.gov's search page
+    And I fill in "Ingrese su búsqueda" with "presidente"
+    And I press "Buscar"
+    Then I should see at least "2" web search results
+    And every result URL should match "usa.gov/espanol"
+    And I should see Generado por SearchGov
+
+  @javascript @a11y
+  Scenario: Searching a document collection
+    Given the following OpenSearch Affiliates exist:
+      | display_name | name          | contact_email    | first_name | last_name | locale |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     |
+      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     |
+    And affiliate "en.agency.gov" has the following document collections:
+      | name    | prefixes            | is_navigable |
+      | USA.gov | https://www.usa.gov | true         |
+    And affiliate "es.agency.gov" has the following document collections:
+      | name         | prefixes                     | is_navigable |
+      | Gobierno USA | https://www.usa.gov/espanol/ | true         |
+    When I am on en.agency.gov's "USA.gov" docs search page
+    And I fill in "Enter your search term" with "gov"
+    And I press "Search"
+    Then I should see "USA.gov" within the SERP active navigation
+    And I should see at least "10" web search results
+    And every result URL should match "www.usa.gov"
+    When I am on es.agency.gov's "Gobierno USA" docs search page
+    And I fill in "Ingrese su búsqueda" with "gobierno"
+    And I press "Buscar"
+    Then I should see at least "7" web search results
+    And every result URL should match "www.usa.gov/espanol"
+
+  @javascript @a11y
+  Scenario: Following a document collection tab
+    Given the following OpenSearch Affiliates exist:
+      | display_name | name          | contact_email    | first_name | last_name | locale | domains |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | .gov    |
+    And affiliate "en.agency.gov" has the following document collections:
+      | name    | prefixes            | is_navigable |
+      | USA.gov | https://www.usa.gov | true         |
+    When I am on en.agency.gov's search page
+    And I search for "agency" in the redesigned search page
+    Then I should see "Everything" within the SERP active navigation
+    And I should see at least "10" web search results
+    When I follow "USA.gov" within the SERP navigation
+    Then I should see "USA.gov" within the SERP active navigation
+    And I should see at least "10" web search results
+    And every result URL should match "www.usa.gov"
+    And I should see Powered by SearchGov
+
+  @javascript @a11y
+  Scenario: Searching on a non navigable document collection
+    Given the following OpenSearch Affiliates exist:
+      | display_name | name       | contact_email | first_name | last_name | domains |
+      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov |
+    And affiliate "agency.gov" has the following document collections:
+      | name | prefixes                  | is_navigable |
+      | Blog | https://www.sba.gov/blogs | false        |
+      | Web  | https://www.usa.gov       | true         |
+    When I am on agency.gov's "Blog" docs search page
+    And I search for "sba" in the redesigned search page
+    Then I should see at least "1" web search results
+    And every result URL should match "sba.gov/blogs"
+    And I should not see a link to "Web"
+
+  @javascript @a11y
+  Scenario: Searching for site specific results using query
+    Given the following OpenSearch Affiliates exist:
+      | display_name | name       | contact_email | first_name | last_name | domains |
+      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov |
+    When I am on agency.gov's search page
+    And I search for "news site:www.usa.gov" in the redesigned search page
+    Then I should see at least "1" web search results
+    And every result URL should match "usa.gov"
+    When I search for "news site:wikipedia.org" in the redesigned search page
+    Then every result URL should match "usa.gov"
+
+  @javascript @a11y
+  Scenario: Agency job search
+    Given the following Agencies exist:
+      | name                            | abbreviation | organization_codes |
+      | General Services Administration | GSA          | GS                 |
+    And the following OpenSearch Affiliates exist:
+      | display_name | name       | agency_abbreviation | jobs_enabled | contact_email                |
+      | English site | agency.gov | GSA                 | true         | affiliate_admin@fixtures.org |
+    When I am on agency.gov's search page
+    And I search for "jobs" in the redesigned search page
+    Then I should see "Job Openings at GSA"
+
+  @javascript @a11y
+  Scenario: Search with no query on a Kalaallisut site
+    Given the following OpenSearch Affiliates exist:
+      | display_name     | name          | contact_email    | first_name | last_name | locale |
+      | Kalaallisut site | kl.agency.gov | admin@agency.gov | John       | Bar       | kl     |
+    When I am on kl.agency.gov's search page
+    Then I should see "Ujarniakkat ataani allaffissamut allaguk."
+

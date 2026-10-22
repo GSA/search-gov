@@ -1,10 +1,8 @@
 Then /^I should see (exactly|at least) "([^"]*)" web search results?$/ do |is_exact, count|
   if is_exact == 'exactly'
-    selector = '#results .result'
-    page.should have_selector selector, count: count
+    page.should have_selector '#results .result', count: count
   else
-    selector = "#results #result-#{count}"
-    page.should have_selector selector
+    page.should have_selector '#results .result', minimum: count.to_i
   end
 end
 
@@ -57,8 +55,8 @@ When /^I search for "(.+?)" in the redesigned search page$/ do |query|
 end
 
 Then /every result URL should match "(.+?)"$/ do |str|
-  results = page.find_all('.content-block-item.result')
-  results.each { |result| result.should have_link(href: %r{#{str}}i) }
+  urls = page.find_all('#results .result-url-text', minimum: 1)
+  urls.each { |url| url.text.should match(/#{Regexp.escape(str)}/i) }
 end
 
 Then /I (should|should not) see pagination/ do |should|
