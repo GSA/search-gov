@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_session, :current_user, :permitted_params
   protect_from_forgery with: :exception
   SERP_RESULTS_PER_PAGE = 20
-  PAGE_NOT_FOUND = 'https://www.usa.gov/search-error'
+  PAGE_NOT_FOUND = '/errors/invalid-affiliate.html'
 
   ADVANCED_PARAM_KEYS = %i(filetype filter query-not query-or query-quote).freeze
   DUBLIN_CORE_PARAM_KEYS = %i(contributor publisher subject).freeze

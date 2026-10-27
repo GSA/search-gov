@@ -1,0 +1,324 @@
+@font-face {
+  font-family: "Public Sans Web";
+  font-style: normal;
+  font-weight: 400;
+  font-display: fallback;
+  src: url("images/fonts/PublicSans-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Public Sans Web";
+  font-style: normal;
+  font-weight: 700;
+  font-display: fallback;
+  src: url("images/fonts/PublicSans-Bold.woff2") format("woff2");
+}
+
+:root {
+  --ink: #1b1b1b;
+  --banner-bg: #f0f0f0;
+  --link: #005ea2;
+  --link-hover: #1a4480;
+  --rule: #dfe1e2;
+  --font: "Public Sans Web", "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: #fff;
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 1.06rem;
+  line-height: 1.5;
+}
+
+.usa-skipnav {
+  background: #fff;
+  color: var(--link);
+  left: 0;
+  padding: 0.5rem 1rem;
+  position: absolute;
+  top: -4rem;
+  z-index: 1000;
+}
+
+.usa-skipnav:focus {
+  top: 0;
+}
+
+.usa-banner {
+  background: var(--banner-bg);
+  color: var(--ink);
+  font-size: 0.81rem;
+  line-height: 1.3;
+}
+
+.usa-banner__header {
+  min-height: 3.5rem;
+  padding: 0.5rem 0;
+  position: relative;
+}
+
+.usa-banner__inner,
+.header-inner,
+.content-inner,
+.footer-inner {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 64rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.usa-banner__inner {
+  align-items: flex-start;
+  display: flex;
+  position: relative;
+}
+
+.usa-banner__header-flag {
+  display: block;
+  margin-right: 0.5rem;
+  width: 1rem;
+}
+
+.usa-banner__header-text,
+.usa-banner__header-action {
+  margin: 0;
+}
+
+.usa-banner__header-action {
+  margin-top: 0.15rem;
+  text-decoration: underline;
+}
+
+.usa-banner__header-action::after,
+.usa-banner__button::after {
+  background-color: currentColor;
+  content: "";
+  display: inline-block;
+  height: 0.7rem;
+  margin-left: 0.2rem;
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M7.4 8.6 12 13.2l4.6-4.6L18 10l-6 6-6-6z'/></svg>") center / contain no-repeat;
+  mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M7.4 8.6 12 13.2l4.6-4.6L18 10l-6 6-6-6z'/></svg>") center / contain no-repeat;
+  vertical-align: -0.15rem;
+  width: 0.7rem;
+}
+
+.usa-banner__button {
+  background: transparent;
+  border: 0;
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  inset: 0;
+  padding: 0;
+  position: absolute;
+  text-align: left;
+  width: 100%;
+}
+
+.usa-banner__button:focus {
+  outline: 0.25rem solid var(--link);
+  outline-offset: -0.25rem;
+}
+
+.usa-banner__button-text {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.usa-banner__header--expanded .usa-banner__header-action {
+  display: none;
+}
+
+.usa-banner__content {
+  padding: 0.5rem 0 1.5rem;
+}
+
+.usa-banner__content[hidden] {
+  display: none;
+}
+
+.usa-banner__guidance-row {
+  display: block;
+}
+
+.usa-banner__guidance {
+  display: flex;
+  gap: 1rem;
+  padding-top: 1rem;
+}
+
+.usa-banner__guidance svg {
+  flex: 0 0 auto;
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+.usa-banner__guidance p {
+  margin: 0;
+  max-width: 22rem;
+}
+
+.usa-header {
+  background: #fff;
+}
+
+.usa-navbar {
+  border-bottom: 1px solid var(--rule);
+  padding: 0.7rem 0;
+}
+
+.searchgov-logo {
+  display: block;
+  height: 2rem;
+  width: auto;
+}
+
+.logo-link {
+  display: inline-block;
+  line-height: 0;
+}
+
+.logo-link:focus {
+  outline: 0.25rem solid var(--link);
+  outline-offset: 0.25rem;
+}
+
+.serp-result-wrapper {
+  background: #fff;
+  min-height: 22rem;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+}
+
+.error-copy {
+  max-width: 40rem;
+}
+
+.error-copy h1 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 1rem;
+}
+
+.error-copy p {
+  margin: 0 0 1.15rem;
+}
+
+.usa-footer {
+  background: #fff;
+  padding-bottom: 2rem;
+}
+
+.usa-footer__return-to-top a {
+  color: var(--link);
+  font-size: 1rem;
+  text-underline-offset: 0.15rem;
+}
+
+.usa-footer__return-to-top a:hover {
+  color: var(--link-hover);
+}
+
+@media (min-width: 40em) {
+  .usa-banner__header {
+    min-height: 0;
+    padding: 0.25rem 0;
+  }
+
+  .usa-banner__inner {
+    align-items: center;
+  }
+
+  .usa-banner__header-copy {
+    align-items: center;
+    display: flex;
+  }
+
+  .usa-banner__header-action {
+    display: none;
+  }
+
+  .usa-banner__button {
+    margin-left: 0.5rem;
+    position: static;
+    text-decoration: none;
+    width: auto;
+  }
+
+  .usa-banner__button:hover .usa-banner__button-text {
+    text-decoration: underline;
+  }
+
+  .usa-banner__button-text {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    text-decoration: underline;
+    white-space: normal;
+    width: auto;
+  }
+
+  .usa-banner__guidance-row {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .usa-banner__guidance {
+    padding-top: 0;
+    width: 50%;
+  }
+}
+
+@media (min-width: 64em) {
+  .usa-banner__inner,
+  .header-inner,
+  .footer-inner {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .content-inner {
+    max-width: 54rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .usa-navbar {
+    border-bottom: 0;
+    padding: 1.35rem 0 1.15rem;
+  }
+
+  .usa-header {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .searchgov-logo {
+    height: 2.75rem;
+  }
+
+  .serp-result-wrapper {
+    min-height: 28rem;
+    padding-top: 3rem;
+  }
+
+  .error-copy h1 {
+    font-size: 1.75rem;
+  }
+}
