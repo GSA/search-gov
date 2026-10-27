@@ -7,4 +7,5 @@ NOTIFICATION_SENDER_EMAIL_ADDRESS = 'notification@support.digitalgov.gov'
 SEARCH_ENGINES                    = %w[OpenSearch LegacyOpenSearch].freeze
 SUPPORT_EMAIL_ADDRESS             = ENV['SUPPORT_EMAIL_ADDRESS']
 BLOG_URL                          = ENV['BLOG_URL']
-PAGE_NOT_FOUND_URL                = ENV['PAGE_NOT_FOUND_URL']
+INVALID_AFFILIATE_PAGE            = '/errors/invalid-affiliate.html'
+INACTIVE_AFFILIATE_PAGE           = '/errors/inactive-affiliate.html'
