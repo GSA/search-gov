@@ -46,9 +46,9 @@ module HtmlSelectorsHelpers
     when /the search box/
       '#search-bar'
     when /the SERP active navigation/
-      '#search-nav .active'
+      '#tabs-container .usa-current'
     when /the SERP navigation/
-      '#search-nav'
+      '#tabs-container'
     when /the current time filter/
       '#time-filter-dropdown .current-filter'
     when /the current sort by filter/

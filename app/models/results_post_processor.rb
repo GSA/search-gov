@@ -2,7 +2,7 @@
 
 class ResultsPostProcessor
   MAX_PAGES = 10
-  DEFAULT_TRUNCATED_HTML_LENGTH = 280
+  DEFAULT_TRUNCATED_HTML_LENGTH = 150
   DEFAULT_TRUNCATE_OPTIONS = { length_in_chars: true, ellipsis: ' ...' }.freeze
 
   def initialize(*args); end
