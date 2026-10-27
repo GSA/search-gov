@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   SERP_RESULTS_PER_PAGE = 20
   PAGE_NOT_FOUND = '/errors/invalid-affiliate.html'
+  INACTIVE_AFFILIATE_PAGE = '/errors/inactive-affiliate.html'
 
   ADVANCED_PARAM_KEYS = %i(filetype filter query-not query-or query-quote).freeze
   DUBLIN_CORE_PARAM_KEYS = %i(contributor publisher subject).freeze

@@ -95,9 +95,7 @@ describe SearchesController do
           }
     end
 
-    it { is_expected.to respond_with(:success) }
-    it { is_expected.to render_template(:inactive_affiliate) }
-    it { is_expected.to render_template('layouts/application') }
+    it { is_expected.to redirect_to '/errors/inactive-affiliate.html' }
 
     it 'sets the correct page title' do
       expect(assigns[:page_title]).to eq("Search Temporarily Unavailable - #{affiliate.display_name}")
