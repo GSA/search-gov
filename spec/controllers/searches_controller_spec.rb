@@ -81,7 +81,10 @@ describe SearchesController do
 
   context 'when affiliate is not valid' do
     before { get :index, params: { query: 'gov', affiliate: { 'foo' => 'bar' } } }
-    it { is_expected.to redirect_to '/errors/invalid-affiliate.html' }
+
+    it 'redirects to the invalid affiliate page with the original query params' do
+      expect(response).to redirect_to('/errors/invalid-affiliate.html?affiliate%5Bfoo%5D=bar&query=gov')
+    end
   end
 
   context 'when the affiliate is not active' do
@@ -251,7 +254,7 @@ describe SearchesController do
           }
     end
 
-    it { is_expected.to redirect_to '/errors/invalid-affiliate.html' }
+    it { is_expected.to redirect_to '/errors/invalid-affiliate.html?affiliate=doesnotexist.gov&query=weather' }
   end
 
   context 'when handling any affiliate search request with a JSON format' do
