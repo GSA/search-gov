@@ -32,10 +32,6 @@ module SearchHelper
     truncate_html(translate_bing_highlights(h(result['content'])))
   end
 
-  def news_description(instance)
-    truncate_html(translate_bing_highlights(h(instance.description))).sub(/^([^A-Z<])/,'...\1').html_safe
-  end
-
   def translate_bing_highlights(body)
     body.gsub(/\uE000/, '<strong>').gsub(/\uE001/, '</strong>')
   end
@@ -50,9 +46,5 @@ module SearchHelper
 
   def hidden_field_tag_if_key_exists(param_sym, value = params[param_sym])
     hidden_field_tag param_sym, value if value
-  end
-
-  def search_bar_class(search)
-    'has-query-term' if search.query.present?
   end
 end
