@@ -1,3 +1,19 @@
+@font-face {
+  font-display: swap;
+  font-family: "Source Sans Pro Web";
+  font-style: normal;
+  font-weight: 400;
+  src: url("images/fonts/sourcesanspro-regular-webfont.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Source Sans Pro Web";
+  font-style: normal;
+  font-weight: 700;
+  src: url("images/fonts/sourcesanspro-bold-webfont.woff2") format("woff2");
+}
+
 :root {
   --ink: #1b1b1b;
   --banner-bg: #f0f0f0;
@@ -211,13 +227,19 @@ body {
 
 .usa-footer {
   background: #fff;
+  font-size: 1.06rem;
+  line-height: 1.5;
   padding-bottom: 2rem;
+}
+
+.usa-footer__return-to-top {
+  line-height: 0.9;
+  padding-bottom: 1.25rem;
+  padding-top: 1.25rem;
 }
 
 .usa-footer__return-to-top a {
   color: var(--link);
-  font-size: 1rem;
-  text-underline-offset: 0.15rem;
 }
 
 .usa-footer__return-to-top a:hover {
