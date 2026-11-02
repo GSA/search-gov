@@ -42,7 +42,7 @@ module ReactHelper
         title: 'Search.gov',
         logo: {
           text: 'Search.gov',
-          url: image_path('/errors/images/searchgov-logo.png')
+          url: image_path('searchgov-logo.png')
         },
         homepageUrl: 'https://search.gov'
       },
