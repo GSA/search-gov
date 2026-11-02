@@ -25,8 +25,10 @@ const ErrorPage = ({ title, paragraphs, page, translations, language }: ErrorPag
   i18n.enableFallback = true;
   i18n.locale = language.code;
 
+  const errorPageStyles = { ...styles, footerLinksTextColor: styles.resultTitleColor };
+
   return (
-    <StyleContext.Provider value={styles}>
+    <StyleContext.Provider value={errorPageStyles}>
       <LanguageContext.Provider value={i18n}>
         <div className="serp-error-page-wrapper">
           <Header page={page} isBasic />
