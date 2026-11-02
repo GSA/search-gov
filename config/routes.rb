@@ -253,7 +253,7 @@ Rails.application.routes.draw do
   get '/errors/inactive-affiliate', to: 'errors#inactive_affiliate', as: :inactive_affiliate_error
 
   get '*path',
-      to: redirect { |_path_params, request|
+      to: redirect(status: 302) { |_path_params, request|
         path = Rails.application.routes.url_helpers.invalid_affiliate_error_path
         request.query_string.present? ? "#{path}?#{request.query_string}" : path
       },

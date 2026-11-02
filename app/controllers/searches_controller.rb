@@ -35,7 +35,7 @@ class SearchesController < ApplicationController
 
     else
       @page_title = "Search Temporarily Unavailable - #{@affiliate.display_name}"
-      location = inactive_affiliate_error_path
+      location = inactive_affiliate_error_path(format: :html)
       location = "#{location}?#{request.query_string}" if request.query_string.present?
       respond_to do |format|
         format.html { redirect_to(location) and return }
