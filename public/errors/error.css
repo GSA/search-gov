@@ -1,17 +1,17 @@
 @font-face {
   font-display: swap;
-  font-family: "Source Sans Pro Web";
+  font-family: "Public Sans Web";
   font-style: normal;
   font-weight: 400;
-  src: url("images/fonts/sourcesanspro-regular-webfont.woff2") format("woff2");
+  src: url("images/fonts/PublicSans-Regular.woff2") format("woff2");
 }
 
 @font-face {
   font-display: swap;
-  font-family: "Source Sans Pro Web";
+  font-family: "Public Sans Web";
   font-style: normal;
   font-weight: 700;
-  src: url("images/fonts/sourcesanspro-bold-webfont.woff2") format("woff2");
+  src: url("images/fonts/PublicSans-Bold.woff2") format("woff2");
 }
 
 :root {
@@ -20,7 +20,7 @@
   --link: #005ea2;
   --link-hover: #1a4480;
   --rule: #dfe1e2;
-  --font: "Source Sans Pro Web", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  --font: "Public Sans Web", -apple-system, "system-ui", "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 * { box-sizing: border-box; }
