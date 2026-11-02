@@ -44,9 +44,9 @@ class ApplicationController < ActionController::Base
 
   def redirect_unless_affiliate
     unless @affiliate
-      location = INVALID_AFFILIATE_PAGE
+      location = invalid_affiliate_error_path
       location = "#{location}?#{request.query_string}" if request.query_string.present?
-      redirect_to(location, allow_other_host: true) and return
+      redirect_to(location) and return
     end
   end
 

@@ -98,7 +98,7 @@ describe SearchesController do
           }
     end
 
-    it { is_expected.to redirect_to '/errors/inactive-affiliate.html' }
+    it { is_expected.to redirect_to '/errors/inactive-affiliate.html?affiliate=inactive&query=gov' }
 
     it 'sets the correct page title' do
       expect(assigns[:page_title]).to eq("Search Temporarily Unavailable - #{affiliate.display_name}")

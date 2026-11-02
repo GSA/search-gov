@@ -1,0 +1,4 @@
+- error_page = { title: 'Your search did not work', paragraphs: [] }
+- error_page[:paragraphs] << 'Unfortunately your search did not work because something was wrong with the request. The affiliate ID of the SearchGov site was either missing or invalid.'
+- error_page[:paragraphs] << 'You may use your browser’s back button to return to the website where you made your search and try something else.'
+= render_error_page(title: error_page[:title], paragraphs: error_page[:paragraphs])

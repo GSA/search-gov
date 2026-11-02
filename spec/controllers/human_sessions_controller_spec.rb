@@ -75,7 +75,7 @@ describe HumanSessionsController do
       context 'when the redirect_to parameter does not start with a URL-encoded slash' do
         it 'redirects to the invalid affiliate page' do
           post :create, params: { redirect_to: 'http:%2F%2Flol%2Fwut' }
-          expect(response).to redirect_to(INVALID_AFFILIATE_PAGE)
+          expect(response).to redirect_to(invalid_affiliate_error_path)
         end
       end
     end
@@ -103,7 +103,7 @@ describe HumanSessionsController do
       context 'when the redirect_to parameter does not start with a URL-encoded slash' do
         it 'redirects to the invalid affiliate page' do
           post :create, params: { redirect_to: 'http:%2F%2Flol%2Fwut' }
-          expect(response).to redirect_to(INVALID_AFFILIATE_PAGE)
+          expect(response).to redirect_to(invalid_affiliate_error_path)
         end
       end
     end
