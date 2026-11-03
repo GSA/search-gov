@@ -11,9 +11,7 @@ class HelpDocsController < ApplicationController
 
   def require_usasearch_url_param
     unless help_docs_params[:url] =~ %r{\Ahttps?://search\.gov/.+\z}i
-      location = invalid_affiliate_error_path
-      location = "#{location}?#{request.query_string}" if request.query_string.present?
-      redirect_to(location) and return
+      redirect_to_path_with_query(invalid_affiliate_error_path) and return
     end
   end
 

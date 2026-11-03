@@ -44,10 +44,14 @@ class ApplicationController < ActionController::Base
 
   def redirect_unless_affiliate
     unless @affiliate
-      location = invalid_affiliate_error_path(format: :html)
-      location = "#{location}?#{request.query_string}" if request.query_string.present?
-      redirect_to(location) and return
+      redirect_to_path_with_query(invalid_affiliate_error_path) and return
     end
+  end
+
+  def redirect_to_path_with_query(path)
+    query_string = request.query_string
+    location = query_string.present? ? "#{path}?#{query_string}" : path
+    redirect_to(location)
   end
 
   def set_locale_based_on_affiliate_locale
