@@ -35,7 +35,7 @@ module ReactHelper
   def render_error_page(title:, paragraphs:)
     react_component('ErrorPage', {
       title: title,
-      paragraphs: paragraphs,
+      paragraphs: paragraphs.map { |paragraph| sanitize(paragraph) },
       page: {
         affiliate: 'searchgov',
         displayLogoOnly: true,
