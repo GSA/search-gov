@@ -9,7 +9,7 @@ describe HumanSessionsController do
     context 'when the referenced affiliate does not exist' do
       it 'redirects to the invalid affiliate page' do
         get :new, params: { r: '/search?affiliate=imaginaryaffiliate&query=building' }
-        expect(response).to redirect_to('/errors/invalid-affiliate.html?r=%2Fsearch%3Faffiliate%3Dimaginaryaffiliate%26query%3Dbuilding')
+        expect(response).to redirect_to('/errors/invalid-affiliate?r=%2Fsearch%3Faffiliate%3Dimaginaryaffiliate%26query%3Dbuilding')
       end
     end
 
