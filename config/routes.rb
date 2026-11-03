@@ -249,13 +249,10 @@ Rails.application.routes.draw do
 
   get '/program', to: redirect(BLOG_URL || '', status: 302)
 
-  get '/errors/invalid-affiliate', to: 'errors#invalid_affiliate', as: :invalid_affiliate_error
-  get '/errors/inactive-affiliate', to: 'errors#inactive_affiliate', as: :inactive_affiliate_error
+  get '/errors/invalid-affiliate', to: 'errors#invalid_affiliate', as: :invalid_affiliate_error, defaults: { format: :html }, constraints: { format: :html }
+  get '/errors/inactive-affiliate', to: 'errors#inactive_affiliate', as: :inactive_affiliate_error, defaults: { format: :html }, constraints: { format: :html }
 
   get '*path',
-      to: redirect(status: 302) { |_path_params, request|
-        path = Rails.application.routes.url_helpers.invalid_affiliate_error_path
-        request.query_string.present? ? "#{path}?#{request.query_string}" : path
-      },
+      to: 'errors#invalid_affiliate',
       constraints: lambda { |req| req.path.exclude? 'rails/active_storage' }
 end

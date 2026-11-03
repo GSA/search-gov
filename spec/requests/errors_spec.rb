@@ -2,10 +2,14 @@ require 'spec_helper'
 
 describe 'error pages' do
   describe 'unmatched routes' do
-    it 'redirects to the invalid affiliate page with the original query string' do
+    it 'renders the invalid affiliate page with a 404 status and preserves query parameters' do
       get '/unmatched-route', params: { affiliate: 'va', query: 'diabetes' }
 
-      expect(response).to redirect_to('/errors/invalid-affiliate?affiliate=va&query=diabetes')
+      expect(response).to have_http_status(:not_found)
+      expect(response).not_to be_redirect
+      expect(response).to render_template('errors/invalid_affiliate')
+      expect(response.body).to include('data-react-class="ErrorPage"')
+      expect(response.request.query_parameters).to include('affiliate' => 'va', 'query' => 'diabetes')
     end
   end
 
@@ -30,6 +34,17 @@ describe 'error pages' do
       expect(response.body).to include('<title>Search Temporarily Unavailable</title>')
       expect(response.body).to include('data-react-class="ErrorPage"')
       expect(response.body).to include('This U.S. government search page has been turned off.')
+    end
+  end
+
+  describe 'unsupported error page formats' do
+    it 'renders a 404 instead of raising a missing-template error' do
+      ['/errors/invalid-affiliate.json', '/errors/inactive-affiliate.json'].each do |path|
+        get path
+
+        expect(response).to have_http_status(:not_found)
+        expect(response.media_type).to eq('text/html')
+      end
     end
   end
 end
