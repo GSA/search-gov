@@ -47,7 +47,7 @@ module ReactHelper
         homepageUrl: 'https://search.gov'
       },
       language: { code: 'en', rtl: false },
-      translations: I18n.backend.translations.slice(:en)
+      translations: translations(:en)
     })
   end
 
