@@ -34,9 +34,8 @@ class SearchesController < ApplicationController
       end
 
     else
-      @page_title = "Search Temporarily Unavailable - #{@affiliate.display_name}"
       respond_to do |format|
-        format.html { redirect_to_path_with_query(inactive_affiliate_error_path) and return }
+        format.html { redirect_to_path_with_query(inactive_affiliate_error_path) }
         format.json { render json: { error: "This search affiliate has been turned off" }, status: :service_unavailable }
       end
     end
