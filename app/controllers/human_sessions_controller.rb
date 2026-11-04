@@ -28,7 +28,7 @@ class HumanSessionsController < ApplicationController
 
   def redirect_destination
     destination = CGI::unescape(params['redirect_to'])
-    destination.start_with?('/') ? destination : PAGE_NOT_FOUND
+    destination.start_with?('/') ? destination : invalid_affiliate_error_path
   end
 
   def secret

@@ -7,9 +7,9 @@ describe HumanSessionsController do
     render_views
 
     context 'when the referenced affiliate does not exist' do
-      it 'redirects to the usa.gov search-error page' do
+      it 'redirects to the invalid affiliate page' do
         get :new, params: { r: '/search?affiliate=imaginaryaffiliate&query=building' }
-        expect(response).to redirect_to('https://www.usa.gov/search-error')
+        expect(response).to redirect_to('/errors/invalid-affiliate?r=%2Fsearch%3Faffiliate%3Dimaginaryaffiliate%26query%3Dbuilding')
       end
     end
 
@@ -73,9 +73,9 @@ describe HumanSessionsController do
       end
 
       context 'when the redirect_to parameter does not start with a URL-encoded slash' do
-        it 'should redirect to the usa.gov search-error URL' do
+        it 'redirects to the invalid affiliate page' do
           post :create, params: { redirect_to: 'http:%2F%2Flol%2Fwut' }
-          expect(response).to redirect_to(ApplicationController::PAGE_NOT_FOUND)
+          expect(response).to redirect_to(invalid_affiliate_error_path)
         end
       end
     end
@@ -101,9 +101,9 @@ describe HumanSessionsController do
       end
 
       context 'when the redirect_to parameter does not start with a URL-encoded slash' do
-        it 'should redirect to the usa.gov search-error URL' do
+        it 'redirects to the invalid affiliate page' do
           post :create, params: { redirect_to: 'http:%2F%2Flol%2Fwut' }
-          expect(response).to redirect_to(ApplicationController::PAGE_NOT_FOUND)
+          expect(response).to redirect_to(invalid_affiliate_error_path)
         end
       end
     end
