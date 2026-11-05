@@ -1081,6 +1081,36 @@ describe Affiliate do
     end
   end
 
+  describe 'managed header and footer links' do
+    let(:affiliate) { described_class.create!(valid_create_attributes) }
+
+    before do
+      affiliate.update!(
+        managed_header_links_attributes: {
+          '0' => { position: '1', title: 'Second', url: 'search.gov' },
+          '1' => { position: '0', title: 'First', url: 'https://usa.gov' },
+          '2' => { position: '2', title: '', url: '' }
+        },
+        managed_footer_links_attributes: {
+          '0' => { position: '0', title: 'Footer', url: 'https://usa.gov/footer' }
+        }
+      )
+    end
+
+    it 'saves header links in position order and skips blank links' do
+      expect(affiliate.reload.managed_header_links).to eq(
+        [{ position: 0, title: 'First', url: 'https://usa.gov' },
+         { position: 1, title: 'Second', url: 'http://search.gov' }]
+      )
+    end
+
+    it 'saves footer links' do
+      expect(affiliate.reload.managed_footer_links).to eq(
+        [{ position: 0, title: 'Footer', url: 'https://usa.gov/footer' }]
+      )
+    end
+  end
+
   it_behaves_like 'a class with attachable images' do
     subject(:my_class) { described_class.new(valid_create_attributes) }
   end
