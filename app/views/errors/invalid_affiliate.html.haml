@@ -1,4 +1,5 @@
 - error_page = { title: 'Your search did not work', paragraphs: [] }
-- error_page[:paragraphs] << 'Unfortunately your search did not work because something was wrong with the request. The affiliate ID of the SearchGov site was either missing or invalid.'
-- error_page[:paragraphs] << 'You may use your browser’s back button to return to the website where you made your search and try something else.'
+- error_page[:paragraphs] << 'Your search did not work because something was wrong with the URL: the affiliate ID of the SearchGov site was either missing or invalid. If it is invalid, it likely means that it once worked but no longer does.'
+- error_page[:paragraphs] << 'You may use your browser’s back button to return to the website where you made your search and try a different action.'
+- error_page[:paragraphs] << 'If you are a website manager and believe that the SearchGov site should be live, reach out to the SearchGov team to let them know. Find their contact information <a class="usa-link" href="https://digital.gov/guides/search#content-start" target="_blank" rel="noopener">within the SearchGov documentation</a>.'
 = render_error_page(title: error_page[:title], paragraphs: error_page[:paragraphs])
