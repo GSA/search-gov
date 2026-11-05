@@ -685,7 +685,6 @@ Lint/IneffectiveAccessModifier:
     - 'lib/importers/federal_register_agency_data.rb'
     - 'lib/importers/hint_data.rb'
     - 'lib/importers/youtube_profile_data.rb'
-    - 'lib/oasis.rb'
     - 'lib/youtube_adapter.rb'
 
 # Offense count: 3
@@ -744,7 +743,6 @@ Lint/RescueException:
     - 'app/models/indexed_document.rb'
     - 'app/models/news_item.rb'
     - 'lib/importers/site_feed_url_data.rb'
-    - 'lib/oasis.rb'
     - 'lib/tasks/reports.rake'
 
 # Offense count: 1
@@ -829,7 +827,6 @@ Lint/UselessAccessModifier:
     - 'lib/importers/federal_register_agency_data.rb'
     - 'lib/importers/hint_data.rb'
     - 'lib/importers/youtube_profile_data.rb'
-    - 'lib/oasis.rb'
     - 'lib/youtube_adapter.rb'
 
 # Offense count: 11
@@ -1052,7 +1049,6 @@ Performance/RedundantMatch:
 # Configuration parameters: MaxKeyValuePairs.
 Performance/RedundantMerge:
   Exclude:
-    - 'app/engines/oasis_search.rb'
     - 'app/helpers/form_helper.rb'
     - 'app/helpers/mobile_helper.rb'
     - 'app/helpers/spelling_suggestions_helper.rb'
@@ -2247,7 +2243,6 @@ Style/ClassEqualityComparison:
 # Offense count: 16
 Style/ClassVars:
   Exclude:
-    - 'app/engines/oasis_search.rb'
     - 'app/jobs/legacy/news_items_checker.rb'
     - 'app/models/affiliate.rb'
     - 'app/models/boosted_content.rb'
