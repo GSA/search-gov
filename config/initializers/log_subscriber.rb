@@ -1,16 +1,5 @@
 module Instrumentation
   class LogSubscriber < ActiveSupport::LogSubscriber
-    # Bing methods are leftover instrumentation and should be removed with those search classes.
-    def bing_image_search(event)
-      generic_logging('Bing Image Query', event, YELLOW)
-    end
-
-    def bing_web_search(event)
-      generic_logging('Bing Query', event, YELLOW)
-    end
-
-
-
     def elastic_search(event)
       generic_logging("#{event.payload[:index]} Query", event, MAGENTA)
     end

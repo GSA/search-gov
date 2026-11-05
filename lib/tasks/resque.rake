@@ -3,6 +3,13 @@ require 'resque/scheduler/tasks'
 require 'active_scheduler'
 
 namespace :resque do
+  # Resque reads this when the worker starts, before it forks a child per job.
+  # Without it the child calls exit!, which skips SemanticLogger's at_exit flush,
+  # so the last Rails log lines of a job never reach disk.
+  task :setup => :environment do
+    ENV['RUN_AT_EXIT_HOOKS'] = '1'
+  end
+
   task :setup_schedule => [:environment] do
     require 'resque'
     require 'resque-scheduler'
@@ -19,7 +26,8 @@ namespace :resque do
     # be a hash.  YAML is usually the easiest.
     yaml_schedule = Rails.application.config_for('resque_schedule')
     Resque.schedule = ActiveScheduler::ResqueWrapper.wrap yaml_schedule
-    Resque.logger = Logger.new('new_resque_log_file')
+    Resque.logger = Logger.new(Rails.root.join('log', 'resque.log'))
+    Resque.logger.level = Logger::INFO
   end
 
   task :scheduler => :setup_schedule

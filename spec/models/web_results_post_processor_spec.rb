@@ -15,9 +15,9 @@ describe WebResultsPostProcessor do
       results
     end
 
-    describe 'with an affiliate using bing' do
-      it 'uses unbounded pagination' do
-        expect(normalized_results[:unboundedResults]).to be true
+    describe 'with an OpenSearch affiliate' do
+      it 'uses bounded pagination' do
+        expect(normalized_results[:unboundedResults]).to be false
       end
     end
 

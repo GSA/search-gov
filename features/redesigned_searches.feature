@@ -5,7 +5,7 @@ Feature: Search - redesign
 
   @javascript @a11y
   Scenario: Search with no query on an affiliate page
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name     | name             | contact_email         | first_name | last_name | domains        |
       | bar site         | bar.gov          | aff@bar.gov           | John       | Bar       | whitehouse.gov |
     When I am on bar.gov's redesigned search page
@@ -13,16 +13,15 @@ Feature: Search - redesign
     And I should not see pagination
 
   @javascript @a11y
-  Scenario: Searching a domain with Bing results with pagination
-    Given the following BingV7 Affiliates exist:
+  Scenario: Searching a domain with OpenSearch results with pagination
+    Given the following OpenSearch Affiliates exist:
       | display_name     | name             | contact_email         | first_name | last_name | domains        |
       | bar site         | bar.gov          | aff@bar.gov           | John       | Bar       | whitehouse.gov |
     When I am on bar.gov's redesigned search page
     And I search for "white house" in the redesigned search page
     Then I should see exactly "20" web search results
-    And I should see "The White House"
+    And I should see "White House result"
     And I should see "www.whitehouse.gov/"
-    And I should see "President Biden's Budget Topics: Reproductive Rights"
     And I should be on page "1" of results
     And I should see pagination
     And I should see a link to the "Next" page
@@ -37,11 +36,11 @@ Feature: Search - redesign
     And I should see exactly "20" web search results
     And I should see a link to the "Next" page
     And I should not see a link to the "Previous" page
-    And I should see Powered by Bing
+    And I should see Powered by SearchGov
 
   @javascript @a11y
   Scenario: Search with blended results
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name | gets_blended_results    |
       | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | true                    |
     And the following IndexedDocuments exist:
@@ -64,7 +63,7 @@ Feature: Search - redesign
 
   @javascript @a11y
   Scenario: Search with best bets
-    Given the following SearchGov Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name   | name           | contact_email      | first_name | last_name | domains            |
       | HealthCare.gov | healthcare.gov | aff@healthcare.gov | Jane       | Bar       | www.healthcare.gov |
     Given the following Boosted Content entries exist for the affiliate "healthcare.gov"
@@ -86,7 +85,7 @@ Feature: Search - redesign
 
   @javascript @a11y
   Scenario: Docs search
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | domains |
       | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov |
     When I am on agency.gov's redesigned docs search page
@@ -95,7 +94,7 @@ Feature: Search - redesign
 
   @javascript @a11y
   Scenario: Job search
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name |locale | jobs_enabled |
       | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en    | 1            |
       | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es    | 1            |
@@ -111,7 +110,7 @@ Feature: Search - redesign
 
   @javascript @a11y
   Scenario: Searchers see English Medline Govbox
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name        | contact_email | first_name | last_name | domains | is_medline_govbox_enabled |
       | english site | english-nih | aff@bar.gov   | John       | Bar       | nih.gov | true                      |
     And the following Medline Topics exist:
@@ -136,7 +135,7 @@ Feature: Search - redesign
 
   @javascript @a11y
   Scenario: Searchers see Spanish Medline Govbox
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name        | contact_email | first_name | last_name | domains | is_medline_govbox_enabled | locale |
       | spanish site | spanish-nih | aff@bar.gov   | John       | Bar       | nih.gov | true                      | es     |
     And the following Medline Topics exist:
@@ -158,13 +157,13 @@ Feature: Search - redesign
 
   @javascript @a11y
   Scenario: Searching with custom visual design settings
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | domains | use_extended_header |
       | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov | false               |
     When I am on agency.gov's redesigned docs search page
     Then I should see the basic header
 
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | domains | use_extended_header |
       | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov | true                |
     When I am on agency.gov's redesigned docs search page
@@ -172,7 +171,7 @@ Feature: Search - redesign
 
   @javascript @a11y
   Scenario: Searching on sites with federal register documents
-    And the following BingV7 Affiliates exist:
+    And the following OpenSearch Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | agency_abbreviation | is_federal_register_document_govbox_enabled | domains  | display_created_date_on_search_results |
       | English site | en.agency.gov | admin@agency.gov | John       | Bar       | DOC                 | true                                        | noaa.gov | true                                   |
     And the following Federal Register Document entries exist:
@@ -188,7 +187,7 @@ Feature: Search - redesign
 
   @javascript @a11y
   Scenario: Search without tabs nor related searches
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name | domains        |
       | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | whitehouse.gov |
     When I am on bar.gov's redesigned search page
@@ -198,7 +197,7 @@ Feature: Search - redesign
 
   @javascript @a11y
   Scenario: Search with tabs and one related site on menu
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name      | contact_email | first_name | last_name | domains        |
       | bar site     | bar.gov   | aff@bar.gov   | John       | Bar       | whitehouse.gov |
       | other site   | other.gov | aff@bad.gov   | John       | Bad       | cdc.gov        |
@@ -215,7 +214,7 @@ Feature: Search - redesign
 
   @javascript @a11y
   Scenario: Search with tabs and more than one related site on menu
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name      | contact_email | first_name | last_name | domains        |
       | bar site     | bar.gov   | aff@bar.gov   | John       | Bar       | whitehouse.gov |
       | other site   | other.gov | aff@bad.gov   | John       | Bad       | cdc.gov        |
@@ -236,7 +235,7 @@ Feature: Search - redesign
 
   @javascript @a11y
   Scenario: Search with too many tabs and multiple related sites
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name      | contact_email | first_name | last_name | domains        |
       | bar site     | bar.gov   | aff@bar.gov   | John       | Bar       | whitehouse.gov |
       | other site   | other.gov | aff@bad.gov   | John       | Bad       | cdc.gov        |
@@ -262,7 +261,7 @@ Feature: Search - redesign
 
   @javascript @a11y
   Scenario: Display an Alert on search page
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale |
       | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     |
     Given the following Alert exists:
@@ -273,7 +272,7 @@ Feature: Search - redesign
 
   @javascript @a11y
   Scenario: Hide an Alert on search page
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale |
       | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     |
     Given the following Alert exists:
@@ -284,7 +283,7 @@ Feature: Search - redesign
 
   @javascript @a11y
   Scenario: Searching with spelling suggestions
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | domains |
       | agency site  | agency.gov | aff@bar.gov   | Jane       | Bar       | usa.gov |
     When I am on agency.gov's search page
@@ -294,7 +293,7 @@ Feature: Search - redesign
 
   @javascript @a11y
   Scenario: Related searches module
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale |
       | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     |
     And the following SAYT Suggestions exist for en.agency.gov:
@@ -308,7 +307,7 @@ Feature: Search - redesign
 
   @javascript @a11y
   Scenario: Search for the results with file extension
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name | gets_blended_results    |
       | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | true                    |
     And the following IndexedDocuments exist:
@@ -326,7 +325,7 @@ Feature: Search - redesign
 
   @javascript @a11y
   Scenario: Search with site limits
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name       | contact_email | first_name | last_name | domains |
       | agency site  | agency.gov | aff@bar.gov   | Jane       | Bar       | usa.gov |
     When I am on agency.gov's search page with site limited to "www.epa.gov/news"
@@ -336,7 +335,7 @@ Feature: Search - redesign
 
   @javascript @a11y
   Scenario: Search with custom no results page
-    Given the following BingV7 Affiliates exist:
+    Given the following OpenSearch Affiliates exist:
       | display_name | name           | contact_email    | first_name   | last_name | domains    | locale | additional_guidance_text     |
       | English site | search.gov     | admin@agency.gov | John         | Bar       | search.gov | en     | Sorry, there are no results. |
     And the "search.gov" affiliate has additional links for the no results module
@@ -346,4 +345,114 @@ Feature: Search - redesign
     Then I should see "Sorry, there are no results."
     And I should see "First no results link"
     And I should see "Second no results link"
+
+  @javascript @a11y
+  Scenario: Search with no results
+    Given the following OpenSearch Affiliates exist:
+      | display_name | name    | contact_email | first_name | last_name |
+      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       |
+    When I am on bar.gov's search page
+    And I search for "foobarbazbiz" in the redesigned search page
+    Then I should see "Sorry, no results found for 'foobarbazbiz'. Try entering fewer or more general search terms."
+
+  @javascript @a11y
+  Scenario: Searching a Spanish site with multiple domains
+    Given the following OpenSearch Affiliates exist:
+      | display_name | name    | contact_email | first_name | last_name | domains                | locale |
+      | bar site     | bar.gov | aff@bar.gov   | John       | Bar       | whitehouse.gov,usa.gov | es     |
+    When I am on bar.gov's search page
+    And I fill in "Ingrese su búsqueda" with "presidente"
+    And I press "Buscar"
+    Then I should see at least "2" web search results
+    And every result URL should match "usa.gov/espanol"
+    And I should see Generado por SearchGov
+
+  @javascript @a11y
+  Scenario: Searching a document collection
+    Given the following OpenSearch Affiliates exist:
+      | display_name | name          | contact_email    | first_name | last_name | locale |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     |
+      | Spanish site | es.agency.gov | admin@agency.gov | John       | Bar       | es     |
+    And affiliate "en.agency.gov" has the following document collections:
+      | name    | prefixes            | is_navigable |
+      | USA.gov | https://www.usa.gov | true         |
+    And affiliate "es.agency.gov" has the following document collections:
+      | name         | prefixes                     | is_navigable |
+      | Gobierno USA | https://www.usa.gov/espanol/ | true         |
+    When I am on en.agency.gov's "USA.gov" docs search page
+    And I fill in "Enter your search term" with "gov"
+    And I press "Search"
+    Then I should see "USA.gov" within the SERP active navigation
+    And I should see at least "10" web search results
+    And every result URL should match "www.usa.gov"
+    When I am on es.agency.gov's "Gobierno USA" docs search page
+    And I fill in "Ingrese su búsqueda" with "gobierno"
+    And I press "Buscar"
+    Then I should see at least "7" web search results
+    And every result URL should match "www.usa.gov/espanol"
+
+  @javascript @a11y
+  Scenario: Following a document collection tab
+    Given the following OpenSearch Affiliates exist:
+      | display_name | name          | contact_email    | first_name | last_name | locale | domains |
+      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     | .gov    |
+    And affiliate "en.agency.gov" has the following document collections:
+      | name    | prefixes            | is_navigable |
+      | USA.gov | https://www.usa.gov | true         |
+    When I am on en.agency.gov's search page
+    And I search for "agency" in the redesigned search page
+    Then I should see "Everything" within the SERP active navigation
+    And I should see at least "10" web search results
+    When I follow "USA.gov" within the SERP navigation
+    Then I should see "USA.gov" within the SERP active navigation
+    And I should see at least "10" web search results
+    And every result URL should match "www.usa.gov"
+    And I should see Powered by SearchGov
+
+  @javascript @a11y
+  Scenario: Searching on a non navigable document collection
+    Given the following OpenSearch Affiliates exist:
+      | display_name | name       | contact_email | first_name | last_name | domains |
+      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov |
+    And affiliate "agency.gov" has the following document collections:
+      | name | prefixes                  | is_navigable |
+      | Blog | https://www.sba.gov/blogs | false        |
+      | Web  | https://www.usa.gov       | true         |
+    When I am on agency.gov's "Blog" docs search page
+    And I search for "sba" in the redesigned search page
+    Then I should see at least "1" web search results
+    And every result URL should match "sba.gov/blogs"
+    And I should not see a link to "Web"
+
+  @javascript @a11y
+  Scenario: Searching for site specific results using query
+    Given the following OpenSearch Affiliates exist:
+      | display_name | name       | contact_email | first_name | last_name | domains |
+      | agency site  | agency.gov | aff@bar.gov   | John       | Bar       | usa.gov |
+    When I am on agency.gov's search page
+    And I search for "news site:www.usa.gov" in the redesigned search page
+    Then I should see at least "1" web search results
+    And every result URL should match "usa.gov"
+    When I search for "news site:wikipedia.org" in the redesigned search page
+    Then every result URL should match "usa.gov"
+
+  @javascript @a11y
+  Scenario: Agency job search
+    Given the following Agencies exist:
+      | name                            | abbreviation | organization_codes |
+      | General Services Administration | GSA          | GS                 |
+    And the following OpenSearch Affiliates exist:
+      | display_name | name       | agency_abbreviation | jobs_enabled | contact_email                |
+      | English site | agency.gov | GSA                 | true         | affiliate_admin@fixtures.org |
+    When I am on agency.gov's search page
+    And I search for "jobs" in the redesigned search page
+    Then I should see "Job Openings at GSA"
+
+  @javascript @a11y
+  Scenario: Search with no query on a Kalaallisut site
+    Given the following OpenSearch Affiliates exist:
+      | display_name     | name          | contact_email    | first_name | last_name | locale |
+      | Kalaallisut site | kl.agency.gov | admin@agency.gov | John       | Bar       | kl     |
+    When I am on kl.agency.gov's search page
+    Then I should see "Ujarniakkat ataani allaffissamut allaguk."
 

@@ -9,6 +9,16 @@ describe Api::SearchOptions, type: :model do
     {}
   end
 
+  describe '#attributes' do
+    let(:params) do
+      { access_key: 'my_access_key', affiliate: 'my_site_handle', query: 'gov', disable_search_cache: 'true' }
+    end
+
+    it 'ignores the retired disable_search_cache param' do
+      expect(options.attributes).not_to have_key(:skip_cache)
+    end
+  end
+
   describe 'initialization' do
     context 'when the query params include HTML tags' do
       let(:unsanitized_query) { '<b>thunder & lightning</b>' }

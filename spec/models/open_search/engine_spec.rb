@@ -9,8 +9,8 @@ describe OpenSearch::Engine do
     }
   end
 
-  it 'is a SearchElasticEngine' do
-    expect(described_class.new(search_options)).to be_a(SearchElasticEngine)
+  it 'is a FilterableSearch' do
+    expect(described_class.new(search_options)).to be_a(FilterableSearch)
   end
 
   describe '#search' do
@@ -31,11 +31,18 @@ describe OpenSearch::Engine do
     end
 
     before do
-      allow(OpenSearch::DocumentSearch).to receive(:new).and_return(double('document search', search: search_results))
+      allow(OpenSearch::DocumentSearch).to receive(:new).and_return(
+        instance_double(OpenSearch::DocumentSearch, search: search_results, cache_status: 'hit')
+      )
     end
 
     it 'returns a hashie mash of the results' do
       expect(search.search).to be_a(Hashie::Mash::Rash)
+    end
+
+    it 'records whether the OpenSearch page came from cache' do
+      search.search
+      expect(search.diagnostics['SRCH']).to eq(cached: true, cache: 'hit')
     end
   end
 end

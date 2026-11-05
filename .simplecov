@@ -18,9 +18,6 @@ SimpleCov.start 'rails' do
   add_filter '/.bundler/'
   add_filter '/app/helpers/admin/'
   add_filter '/lib/setup_resque.rb'
-  add_filter 'lib/search_elastic/template.rb'
-  add_filter 'lib/search_elastic/templatable.rb'
-  add_filter 'lib/search_elastic/index_create.rb'
 
   add_group 'Engines', 'app/engines'
   add_group 'API', 'app/api'

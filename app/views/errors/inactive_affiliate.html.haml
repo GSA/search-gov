@@ -1,0 +1,4 @@
+- error_page = { title: 'Search Temporarily Unavailable', paragraphs: [] }
+- error_page[:paragraphs] << 'This U.S. government search page has been turned off. Please visit <a class="usa-link" href="https://www.usa.gov/" target="_blank" rel="noopener">USA.gov</a> to search all government websites.'
+- error_page[:paragraphs] << '<strong>To the federal manager of this search page:</strong> If you believe it has been turned off in error, please email the Search.gov team.'
+= render_error_page(title: error_page[:title], paragraphs: error_page[:paragraphs])

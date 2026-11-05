@@ -43,12 +43,34 @@ describe SearchImpression do
       end
     end
 
+    context 'with OpenSearch cache diagnostics' do
+      let(:search) do
+        instance_double(Search, modules: ['SRCH'], diagnostics: { 'SRCH' => { cached: true, cache: 'hit' } })
+      end
+
+      it 'logs the cache status for Logstash' do
+        expect(Rails.logger).to have_received(:info).with(
+          include('"diagnostics":[{"cached":true,"cache":"hit","module":"SRCH"}]')
+        )
+      end
+    end
+
     context 'with routed query module and empty diagnostics' do
       let(:search) { instance_double(Search, modules: ['QRTD'], diagnostics: {}) }
 
       it 'has the expected log line parts' do
         expect(Rails.logger).to have_received(:info).with(
           include('"modules":"QRTD"', '"diagnostics":[]')
+        )
+      end
+    end
+
+    context 'when params include the cache bypass' do
+      let(:params) { { 'query' => 'yep', 'disable_search_cache' => 'true' } }
+
+      it 'omits the bypass parameter' do
+        expect(Rails.logger).to have_received(:info).with(
+          include('"params":{"query":"yep"}')
         )
       end
     end

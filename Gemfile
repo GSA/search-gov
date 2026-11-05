@@ -13,8 +13,10 @@ gem 'haml', '~> 6'
 gem 'will_paginate', '~> 3.3.1'
 gem 'nokogiri', '~> 1.19'
 gem 'authlogic', '~> 6.4', '>= 6.4.3'
-gem 'omniauth_login_dot_gov', git: 'https://github.com/18f/omniauth_login_dot_gov', ref: '6e117a9c68b19a1fbc70533613b74b0d8affd641'
-gem 'rack', '~> 2.2'
+gem 'omniauth_login_dot_gov', git: 'https://github.com/18f/omniauth_login_dot_gov', tag: 'v2.2.0'
+gem 'rack', '~> 3.2'
+gem 'rack-session', '~> 2.1'
+gem 'rackup', '~> 2.2'
 
 # It's not clear that this gem is still required. I'm leaving it for the time being,
 # but we may be able to remove it in the future:
@@ -38,7 +40,9 @@ gem 'flickraw', '~> 0.9.9'
 gem 'mutex_m', '~> 0.2.0'
 gem 'erb', '~> 4.0.4'
 gem 'bigdecimal', '~> 3.1', '>= 3.1.8'
-gem 'rexml', '>= 3.4.2'
+gem 'rexml', '~> 3.4.4'
+# Action Mailer and Action Mailbox depend on net-imap
+gem 'net-imap', '~> 0.6.7'
 gem 'csv', '~> 3.3'
 gem 'active_scaffold', '~> 3.7', '>= 3.7.6'
 # # SRCH-3837: We need this change: https://github.com/activescaffold/active_scaffold/pull/666
@@ -58,8 +62,9 @@ gem 'sass-rails', '~> 6.0'
 gem 'google_visualr',
     git: 'https://github.com/winston/google_visualr',
     ref: '17b97114a345baadd011e7b442b9a6c91a2b7ab5'
-gem 'faraday_middleware'
-gem 'net-http-persistent', '~> 2.9.3'
+gem 'faraday', '~> 2.13'
+gem 'faraday-net_http_persistent', '~> 2.0'
+gem 'net-http-persistent', '~> 4.0'
 gem 'rash_alt', '~> 0.4.12', require: 'rash'
 gem 'geoip', '~> 1.6.4'
 gem 'html_truncator', '~> 0.4.2'
@@ -70,22 +75,18 @@ gem 'will_paginate-bootstrap', '~> 1.0.1'
 gem 'virtus', '~> 1.0.5'
 gem 'truncator', '~> 0.1.7'
 gem 'validate_url', '= 0.2.0' # Newer versions use Addressable::URI for validation, which is more permissive than what we want
-# The elasticsearch gems will be limited to 7.4 until we can remove or upgrade the
-# omniauth_login_dot_gov gem, due to its dependency on faraday < 1:
-# https://github.com/18F/omniauth_login_dot_gov/blob/main/omniauth_login_dot_gov.gemspec#L28
-# We are temporarily using a custom branch in order to access the deprecation logging
-# functionality that is available in the official 7.16 release.
+# GSA elasticsearch-ruby 7.4 cannot build a Faraday 2 connection (:httpclient is unregistered).
+# OpenSearch traffic uses opensearch-ruby. Leave the 7.4 gem until SRCH-6468 deletes leftover ES paths.
 gem 'elasticsearch', git: 'https://github.com/GSA/elasticsearch-ruby', branch: '7.4'
 gem 'elasticsearch-dsl', '~> 0.1.9'
-gem 'elasticsearch-xpack', '~> 7.4.0'
-gem "elasticsearch-persistence"
+gem 'opensearch-ruby', '~> 3.4'
 gem 'opensearch-dsl'
 gem 'federal_register', '~> 0.6.3'
 gem 'redcarpet', '~> 3.6'
 gem 'google-api-client', '~> 0.53.0'
 gem 'iso8601', '~> 0.10.1'
 gem 'jbuilder', '~> 2.11.5'
-gem 'typhoeus', '~> 1.3.0'
+# Faraday 2 uses faraday-net_http_persistent; the Typhoeus Faraday adapter is incompatible.
 gem 'activerecord-validate_unique_child_attribute', require: 'active_record/validate_unique_child_attribute'
 gem 'rack-cors', '~> 1.1.0', require: 'rack/cors'
 gem 'hashie', '~> 5.0.0'
@@ -145,7 +146,7 @@ gem 'bootsnap', require: false
 gem 'rails_semantic_logger', '~> 4.14'
 gem 'whenever', '~> 1.0', require: false
 gem 'fugit', '~> 1.8'
-gem 'puma', '~> 5.6'
+gem 'puma', '~> 6.6'
 gem 'htmlbeautifier', '~> 1.4', '>= 1.4.3'
 
 # Bundle gems for the local environment. Make sure to
@@ -162,7 +163,7 @@ group :development do
   gem 'capistrano-rails',  require: false
   gem 'capistrano-rbenv',  require: false
   gem 'capistrano-resque', require: false
-  gem 'capistrano3-puma',  '~> 5.2',  require: false
+  gem 'capistrano3-puma',  '~> 6.0',  require: false
 end
 
 group :development, :test do

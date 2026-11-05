@@ -52,6 +52,11 @@ describe Affiliate do
       end
 
       it { is_expected.to have_db_column(:notes).of_type(:text) }
+
+      it do
+        is_expected.to have_db_column(:search_cache_enabled).of_type(:boolean).
+          with_options(default: false, null: false)
+      end
     end
 
     describe 'Paperclip attachments' do
@@ -82,6 +87,25 @@ describe Affiliate do
       long_notes = (["Line with \"quotes\", commas, and symbols: <>&"] * 500).join("\n")
       affiliate = described_class.create!(valid_create_attributes.merge(notes: long_notes))
       expect(described_class.find(affiliate.id).notes).to eq(long_notes)
+    end
+  end
+
+  describe '#search_cache_enabled?' do
+    let(:affiliate) { described_class.new(valid_create_attributes) }
+
+    it 'defaults to false' do
+      expect(affiliate.search_cache_enabled?).to be false
+    end
+
+    it 'is true when enabled' do
+      affiliate.search_cache_enabled = true
+      expect(affiliate.search_cache_enabled?).to be true
+    end
+
+    it 'is false when the column has not been migrated yet' do
+      allow(affiliate).to receive(:has_attribute?).and_call_original
+      allow(affiliate).to receive(:has_attribute?).with(:search_cache_enabled).and_return(false)
+      expect(affiliate.search_cache_enabled?).to be false
     end
   end
 

@@ -221,6 +221,24 @@ assert_puma_serving_current_release() {
   done
 }
 
+# Runs only after the new release is healthy, so no running process still
+# needs gems from an older Gemfile.lock. Never fails the deploy.
+clean_stale_gems() {
+  local app_root="$1"
+
+  log "Removing gems not used by the current Gemfile.lock"
+  (
+    if [ -d "/home/search/.rbenv" ]; then
+      export RBENV_ROOT="/home/search/.rbenv"
+      export PATH="$RBENV_ROOT/bin:$RBENV_ROOT/shims:$PATH"
+    fi
+    export BUNDLE_WITHOUT="development:test"
+    export BUNDLE_PATH="${app_root}/shared/bundle"
+    export BUNDLE_APP_CONFIG="${app_root}/shared/.bundle"
+    cd "${app_root}/current" && timeout "${BUNDLE_CLEAN_TIMEOUT:-90}" bundle clean
+  ) || warn "bundle clean failed or timed out; continuing"
+}
+
 PUMA_SERVICE="$(resolve_puma_service)"
 RESQUE_WORKER_SERVICE="${RESQUE_WORKER_SERVICE:-resque-worker}"
 RESQUE_SCHEDULER_SERVICE="${RESQUE_SCHEDULER_SERVICE:-resque-scheduler}"
@@ -263,6 +281,10 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
 if [ "${REQUIRE_RESQUE_CWD_CHECK:-false}" = "true" ]; then
   log "Running Resque cwd verification (REQUIRE_RESQUE_CWD_CHECK)"
   bash "$SCRIPT_DIR/verify_resque_cwd.sh"
+fi
+
+if [ "${SKIP_BUNDLE_CLEAN:-false}" != "true" ]; then
+  clean_stale_gems "$SEARCHGOV_ROOT"
 fi
 
 log "ValidateService hook completed"

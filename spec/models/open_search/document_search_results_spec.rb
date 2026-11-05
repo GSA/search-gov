@@ -51,6 +51,60 @@ describe OpenSearch::DocumentSearchResults do
                                                'content' => 'Some highlighted content' }))
       }
     end
+
+    context 'when the title is a percent-encoded filename' do
+      let(:result) do
+        { 'hits' => { 'total' => 1, 'hits' => [hits] },
+          'aggregations' => {},
+          'suggest' => [] }
+      end
+      let(:hits) do
+        { '_type' => '_doc',
+          '_source' => { 'path' => 'https://www.va.gov/files/2022-10/BA%20degree%20nurse%20scholarship_0.pdf',
+                         'language' => 'en',
+                         'title_en' => 'BA%20degree%20nurse%20scholarship_0.pdf' } }
+      end
+
+      it 'decodes the percent-encoding' do
+        expect(results.first['title']).to eq('BA degree nurse scholarship_0.pdf')
+      end
+    end
+
+    context 'when the filename title carries a query string' do
+      let(:result) do
+        { 'hits' => { 'total' => 1, 'hits' => [hits] },
+          'aggregations' => {},
+          'suggest' => [] }
+      end
+      let(:hits) do
+        { '_type' => '_doc',
+          '_source' => { 'path' => 'https://www.asbca.mil/Portals/143/Decisions/2015/foo.pdf',
+                         'language' => 'en',
+                         'title_en' => '59702%20Waterman%20Steamship%20Corporation%203.12.15.pdf?ver=kx-UXd05JFKrQzcV6QQKoQ==' } }
+      end
+
+      it 'discards the query string and decodes the filename' do
+        expect(results.first['title']).to eq('59702 Waterman Steamship Corporation 3.12.15.pdf')
+      end
+    end
+
+    context 'when a normal title contains a percent sign with spaces' do
+      let(:result) do
+        { 'hits' => { 'total' => 1, 'hits' => [hits] },
+          'aggregations' => {},
+          'suggest' => [] }
+      end
+      let(:hits) do
+        { '_type' => '_doc',
+          '_source' => { 'path' => 'https://search.gov/report/',
+                         'language' => 'en',
+                         'title_en' => 'Save 20%20 on the report' } }
+      end
+
+      it 'does not decode titles that contain whitespace' do
+        expect(results.first['title']).to eq('Save 20%20 on the report')
+      end
+    end
   end
 
   describe '#aggregations' do

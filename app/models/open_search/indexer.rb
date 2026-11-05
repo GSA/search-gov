@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class OpenSearch::Indexer
-  @index_creator = SearchElastic::IndexCreate.new(
+  @index_creator = OpenSearch::IndexCreate.new(
     service_name: 'OPENSEARCH',
     index_name: ENV.fetch('OPENSEARCH_SEARCH_INDEX'),
     shards: ENV.fetch('OPENSEARCH_INDEX_SHARDS', 1),

@@ -27,7 +27,7 @@ describe ResultsPostProcessor do
     let(:html) { 'Mars. Imagine Living on <strong>Mars</strong> May 2, 2002 Artist concept of the Mars Exploration...be like if Mars were your home? What would life be like if Mars were your home. This is a very long test string. It should exceed 280 characters. The quick brown fox jumps over the lazy dog. We need to truncate this text.' }
 
     it 'returns a truncated HTML string' do
-      expect(truncated_description).to eq 'Mars. Imagine Living on <strong>Mars</strong> May 2, 2002 Artist concept of the Mars Exploration...be like if Mars were your home? What would life be like if Mars were your home. This is a very long test string. It should exceed 280 characters. The quick brown fox jumps over the lazy dog. We need ...'
+      expect(truncated_description).to eq 'Mars. Imagine Living on <strong>Mars</strong> May 2, 2002 Artist concept of the Mars Exploration...be like if Mars were your home? What would life be like if Mars were ...'
     end
 
     context 'when the description is nil' do

@@ -32,6 +32,25 @@ module ReactHelper
     react_component('SearchResultsLayout', data.compact_blank)
   end
 
+  def render_error_page(title:, paragraphs:)
+    react_component('ErrorPage', {
+      title: title,
+      paragraphs: paragraphs.map { |paragraph| sanitize(paragraph) },
+      page: {
+        affiliate: 'searchgov',
+        displayLogoOnly: true,
+        title: 'Search.gov',
+        logo: {
+          text: 'Search.gov',
+          url: image_path('searchgov-logo.png')
+        },
+        homepageUrl: 'https://search.gov'
+      },
+      language: { code: 'en', rtl: false },
+      translations: translations(:en)
+    })
+  end
+
   def affiliate_data(affiliate)
     affiliate.slice(:id, :name)
   end

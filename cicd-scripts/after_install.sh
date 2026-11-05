@@ -217,4 +217,15 @@ mv -Tf "$TMP_LINK" "$CURRENT_LINK"
 NEW_CURRENT=$(readlink -f "$CURRENT_LINK")
 log "Current symlink now: $NEW_CURRENT"
 
+# Capistrano used to run `whenever --update-crontab` on :cron hosts as part of deployment.
+# As, cron tiers are now CodeDeploy-only (dev and staging for now), it must be manually triggered.
+if is_cron_tier; then
+  log "Updating crontab via whenever (environment=$ENVIRONMENT, terraform_module=$TERRAFORM_MODULE)"
+  cd "$CURRENT_LINK"
+  bundle exec whenever --update-crontab searchgov --roles cron --set environment=production
+  log "Whenever crontab updated successfully"
+else
+  log "Skipping whenever crontab update (environment=$ENVIRONMENT, terraform_module=$TERRAFORM_MODULE -- not a cron tier"
+fi
+
 log "AfterInstall hook completed"

@@ -75,11 +75,11 @@ describe Api::V2::SearchesController do
     end
 
     context 'when the search options are valid' do
-      let!(:search) { instance_double(ApiSearchElastic, as_json: { foo: 'bar' }, modules: %w[SRCH]) }
+      let!(:search) { instance_double(OpenSearch::ApiEngine, as_json: { foo: 'bar' }, modules: %w[SRCH]) }
 
       before do
         allow(Affiliate).to receive(:find_by_name).and_return(affiliate)
-        allow(ApiSearchElastic).to receive(:new).with(hash_including(query: 'api')).and_return(search)
+        allow(OpenSearch::ApiEngine).to receive(:new).with(hash_including(query: 'api')).and_return(search)
         allow(search).to receive(:run)
         allow(SearchImpression).to receive(:log).with(search,
                                                       'i14y',
@@ -195,7 +195,7 @@ describe Api::V2::SearchesController do
         it { is_expected.to respond_with :success }
 
         it 'passes site_limits to the search engine' do
-          expect(ApiSearchElastic).to have_received(:new).
+          expect(OpenSearch::ApiEngine).to have_received(:new).
             with(hash_including(site_limits: 'nps.gov'))
         end
       end

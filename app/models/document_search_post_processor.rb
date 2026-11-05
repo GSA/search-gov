@@ -28,10 +28,10 @@ class DocumentSearchPostProcessor < ResultsWithBodyAndDescriptionPostProcessor
 
   def override_plain_description_with_highlighted_body
     results.each do |result|
-      description = []
-      description << result.description if highlighted?(result.description)
-      description << result.body if highlighted?(result.body)
-      result.description = description.join('...')
+      snippets = []
+      snippets << result.description if highlighted?(result.description)
+      snippets << result.body if highlighted?(result.body)
+      result.description = snippets.empty? ? result.description : snippets.join('...')
     end
   end
 

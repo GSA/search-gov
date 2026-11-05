@@ -13,18 +13,39 @@ error() {
   echo "[CODEDEPLOY][UPLOAD_ASSETS][ERROR] $*" >&2
 }
 
-# Legacy Capistrano-managed tiers (production app/cron) have never run this
-# hook -- it did not exist in prod's pre-reconciliation appspec.yml. Assets
-# on those hosts currently reach S3 via whichever CodeDeploy-hook-driven
-# tier last deployed (today, crawler-green), not via a Capistrano task.
-# Running this hook unconditionally on all legacy app instances would add a
-# new, redundant `aws s3 sync --delete` from every instance on every deploy.
-# See cicd-scripts/lib/tier_gate.sh for the full rationale.
+warn() {
+  echo "[CODEDEPLOY][UPLOAD_ASSETS][WARN] $*" >&2
+}
+
+# Interim asset policy: production will use the app as the primary asset
+# origin, with S3 as a backup for older files after the routing change.
+# Its CodeDeploy stage precedes Capistrano, so
+# uploading here cannot publish the new Capistrano build. Never upload
+# from crawler/cron; only dev/staging app hosts may write to S3.
 resolve_deployment_tags
-if is_legacy_capistrano_tier; then
-  log "Skipping asset upload (environment=$ENVIRONMENT, terraform_module=$TERRAFORM_MODULE) -- legacy Capistrano-managed tier"
-  log "Asset upload hook completed (no-op)"
-  exit 0
+case "$ENVIRONMENT:$TERRAFORM_MODULE" in
+  dev:app|dev:app-green|staging:app|staging:app-green)
+    log "DECISION=UPLOAD environment=$ENVIRONMENT tier=$TERRAFORM_MODULE fleet=${FLEET:-none} reason=app_tier"
+    ;;
+  production:app|production:app-green)
+    log "DECISION=SKIP environment=$ENVIRONMENT tier=$TERRAFORM_MODULE fleet=${FLEET:-none} reason=production_upload_disabled_until_app_cutover"
+    log "RESULT=SKIPPED no_S3_calls=true"
+    exit 0
+    ;;
+  *)
+    log "DECISION=SKIP environment=$ENVIRONMENT tier=$TERRAFORM_MODULE fleet=${FLEET:-none} reason=not_app_tier"
+    log "RESULT=SKIPPED no_S3_calls=true"
+    exit 0
+    ;;
+esac
+
+# Decide from EC2 tags before reading .env, which may contain unrelated keys.
+publish_manifest=false
+if [[ "${INSTANCE_NAME:-}" =~ ^app-[a-z0-9-]+-instance-([1-9][0-9]*)$ ]]; then
+  [ "${BASH_REMATCH[1]}" = 1 ] && publish_manifest=true
+else
+  error "RESULT=FAILED environment=$ENVIRONMENT tier=$TERRAFORM_MODULE reason=unrecognized_app_instance_name"
+  exit 1
 fi
 
 # Configuration
@@ -37,7 +58,7 @@ SHARED_DIR="${SEARCHGOV_ROOT}/shared"
 # Load environment variables from .env file
 # Properly handle KEY=VALUE format where values may contain spaces
 if [ -f "${SHARED_DIR}/.env" ]; then
-  log "Loading environment variables from ${SHARED_DIR}/.env"
+  log "Reading asset configuration from shared .env (without sourcing it)"
   # Read .env splitting only on first '=' to handle values with spaces
   while IFS='=' read -r key value || [ -n "$key" ]; do
     # Skip empty lines and comments
@@ -48,7 +69,7 @@ if [ -f "${SHARED_DIR}/.env" ]; then
     fi
   done < "${SHARED_DIR}/.env"
 else
-  error "Environment file not found: ${SHARED_DIR}/.env"
+  error "RESULT=FAILED reason=missing_env_file environment=$ENVIRONMENT tier=$TERRAFORM_MODULE"
   exit 1
 fi
 
@@ -57,67 +78,83 @@ fi
 S3_BUCKET="${AWS_BUCKET:-}"
 AWS_REGION="${AWS_REGION:-us-east-1}"
 
-log "Starting asset upload to S3"
-log "Current path: $CURRENT_PATH"
-log "Assets directory: $ASSETS_DIR"
-
 # Validate required environment variables
 if [ -z "$S3_BUCKET" ]; then
-  error "AWS_S3_BUCKET or AWS_BUCKET environment variable is not set"
+  error "RESULT=FAILED reason=missing_bucket environment=$ENVIRONMENT tier=$TERRAFORM_MODULE"
   exit 1
 fi
 
-if [ -z "${AWS_ACCESS_KEY_ID:-}" ]; then
-  error "AWS_ACCESS_KEY_ID environment variable is not set"
+# AWS CLI uses static or instance-role credentials as available.
+
+log "SOURCE_CHECK_STARTED environment=$ENVIRONMENT tier=$TERRAFORM_MODULE fleet=${FLEET:-none} region=$AWS_REGION mode=additive"
+
+if ! cd "$CURRENT_PATH"; then
+  error "RESULT=FAILED reason=current_release_unavailable environment=$ENVIRONMENT tier=$TERRAFORM_MODULE"
   exit 1
 fi
 
-if [ -z "${AWS_SECRET_ACCESS_KEY:-}" ]; then
-  error "AWS_SECRET_ACCESS_KEY environment variable is not set"
+for prefix in assets packs; do
+  if [ ! -d "$ASSETS_DIR/$prefix" ]; then
+    error "RESULT=FAILED environment=$ENVIRONMENT tier=$TERRAFORM_MODULE reason=missing_asset_directory prefix=/$prefix"
+    exit 1
+  fi
+done
+
+manifest="$ASSETS_DIR/packs/manifest.json"
+if [ -d "$ASSETS_DIR/packs" ] && [ ! -f "$manifest" ]; then
+  error "RESULT=FAILED environment=$ENVIRONMENT tier=$TERRAFORM_MODULE reason=missing_pack_manifest"
   exit 1
 fi
-
-log "S3 Bucket: $S3_BUCKET"
-log "AWS Region: $AWS_REGION"
-
-cd "$CURRENT_PATH"
-
-# Check if assets directories exist
-if [ ! -d "$ASSETS_DIR/assets" ] && [ ! -d "$ASSETS_DIR/packs" ]; then
-  log "No assets directories found - skipping upload (this is normal for non-app servers like cron/crawl)"
-  log "Asset upload not applicable for this server type"
-  exit 0
+if [ -d "$ASSETS_DIR/packs" ] && [ "$publish_manifest" = true ]; then
+  # A manifest can also contain CDN URLs and nested entrypoint data. Check
+  # only the application entrypoints that this host must have compiled.
+  if ! jq -e 'type == "object"' "$manifest" >/dev/null; then
+    error "RESULT=FAILED environment=$ENVIRONMENT tier=$TERRAFORM_MODULE reason=invalid_pack_manifest"
+    exit 1
+  fi
+  for entry in application.js application.css; do
+    bundle=$(jq -er --arg entry "$entry" '.[$entry] | strings |
+      select(startswith("/packs/") and (contains("..") | not))' "$manifest") || {
+      error "RESULT=FAILED environment=$ENVIRONMENT tier=$TERRAFORM_MODULE reason=invalid_pack_manifest entry=$entry"
+      exit 1
+    }
+    if [ ! -f "$ASSETS_DIR$bundle" ]; then
+      error "RESULT=FAILED environment=$ENVIRONMENT tier=$TERRAFORM_MODULE reason=missing_manifest_bundle entry=$entry"
+      exit 1
+    fi
+  done
 fi
+
+log "UPLOAD_STARTED environment=$ENVIRONMENT tier=$TERRAFORM_MODULE mode=additive note=source_directory_checks_complete"
 
 # Function to sync assets to S3
 sync_to_s3() {
   local source_dir="$1"
   local s3_path="$2"
-  
+
   if [ ! -d "$source_dir" ]; then
-    log "Directory not found, skipping: $source_dir"
-    return 0
+    error "RESULT=FAILED environment=$ENVIRONMENT tier=$TERRAFORM_MODULE reason=missing_asset_directory prefix=$s3_path"
+    return 1
   fi
-  
-  log "Syncing $source_dir to s3://${S3_BUCKET}${s3_path}"
-  
-  # Upload ALL assets with long cache by default (most assets are fingerprinted)
-  # Using --size-only for faster comparisons since fingerprinted assets are immutable
+
+  log "SYNC_STARTED prefix=$s3_path comparison=size_and_modtime delete=false"
+  # Upload ALL assets with long cache by default (most assets are fingerprinted).
+  # Additive sync keeps older fingerprints referenced by pages served earlier.
+  # Keep mtime comparison: same-sized stable assets may contain new content.
   if aws s3 sync "$source_dir" "s3://${S3_BUCKET}${s3_path}" \
     --region "$AWS_REGION" \
     --exclude ".sprockets-manifest-*.json" \
+    --exclude "manifest.json" \
     --exclude "manifest.json.br" \
-    --cache-control "public, max-age=31536000, immutable" \
-    --size-only \
-    --delete; then
-    log "Successfully synced all assets from $source_dir"
+    --cache-control "public, max-age=31536000, immutable"; then
+    log "SYNC_RESULT=SUCCESS prefix=$s3_path note=sync_completed_cdn_delivery_not_verified"
   else
-    error "Failed to sync assets from $source_dir"
+    error "SYNC_RESULT=FAILED prefix=$s3_path reason=aws_sync_failed"
+    error "RESULT=FAILED environment=$ENVIRONMENT tier=$TERRAFORM_MODULE reason=aws_sync_failed prefix=$s3_path"
     return 1
   fi
-  
-  # Override cache headers for non-fingerprinted assets (stable filenames without hashes)
-  # These are created by copy_non_fingerprinted_assets.sh for legacy support
+
+  # Override cache headers for non-fingerprinted assets (stable filenames).
   local non_fingerprinted_files=(
     "sayt_loader_libs.js" "sayt_loader_libs.js.gz"
     "sayt_loader.js" "sayt_loader.js.gz"
@@ -126,35 +163,48 @@ sync_to_s3() {
     "application.js" "application.js.gz" "application.css" "application.css.gz"
     "runtime.js" "runtime.js.gz"
   )
-  
+
+  local file refreshed=0
   for file in "${non_fingerprinted_files[@]}"; do
     if [ -f "$source_dir/$file" ]; then
-      log "Updating cache headers for non-fingerprinted file: $file"
-      aws s3 cp "$source_dir/$file" "s3://${S3_BUCKET}${s3_path}/$file" \
+      log "STABLE_ASSET_REFRESH_STARTED prefix=$s3_path file=$file"
+      if aws s3 cp "$source_dir/$file" "s3://${S3_BUCKET}${s3_path}/$file" \
         --region "$AWS_REGION" \
         --cache-control "public, max-age=3600" \
-        --metadata-directive REPLACE 2>/dev/null || true
+        --metadata-directive REPLACE 2>/dev/null; then
+        refreshed=$((refreshed + 1))
+      else
+        error "RESULT=FAILED environment=$ENVIRONMENT tier=$TERRAFORM_MODULE reason=stable_asset_upload_failed prefix=$s3_path file=$file"
+        return 1
+      fi
     fi
   done
-  
-  log "Cache header updates completed for non-fingerprinted assets"
+
+  log "STABLE_ASSET_REFRESH_RESULT=COMPLETE prefix=$s3_path refreshed=$refreshed"
 }
 
-# Sync Sprockets assets (public/assets)
-if [ -d "$ASSETS_DIR/assets" ]; then
-  log "Found public/assets directory"
-  sync_to_s3 "$ASSETS_DIR/assets" "/assets"
-else
-  log "No public/assets directory found, skipping"
-fi
+sync_to_s3 "$ASSETS_DIR/assets" "/assets"
+sync_to_s3 "$ASSETS_DIR/packs" "/packs"
 
-# Sync Webpacker assets (public/packs)
+# Publish the mutable Shakapacker manifest last, after the bundles it names.
+# Sync cannot safely compare an existing same-sized manifest or fix its cache headers.
 if [ -d "$ASSETS_DIR/packs" ]; then
-  log "Found public/packs directory"
-  sync_to_s3 "$ASSETS_DIR/packs" "/packs"
-else
-  log "No public/packs directory found, skipping"
+  # One named app host publishes the manifest; all app hosts still sync bundles.
+  # This prevents cross-host overwrites; deployments must remain serialized.
+  if [ "$publish_manifest" = true ]; then
+    log "MANIFEST_UPLOAD_STARTED prefix=/packs file=manifest.json"
+    if aws s3 cp "$manifest" "s3://${S3_BUCKET}/packs/manifest.json" \
+      --region "$AWS_REGION" \
+      --content-type "application/json" \
+      --cache-control "no-cache, max-age=0, must-revalidate"; then
+      log "MANIFEST_UPLOAD_RESULT=SUCCESS prefix=/packs file=manifest.json"
+    else
+      error "RESULT=FAILED environment=$ENVIRONMENT tier=$TERRAFORM_MODULE reason=pack_manifest_upload_failed"
+      exit 1
+    fi
+  else
+    log "MANIFEST_UPLOAD_RESULT=SKIPPED prefix=/packs reason=not_designated_publisher"
+  fi
 fi
 
-log "Asset upload to S3 completed successfully"
-log "Assets are now available at: ${ASSET_HOST:-https://${S3_BUCKET}}"
+log "RESULT=SUCCESS environment=$ENVIRONMENT tier=$TERRAFORM_MODULE note=s3_sync_completed_cdn_delivery_not_verified"

@@ -10,7 +10,7 @@ class LinkPopularity
       body: link_popularity_query.body
     )['count']
     [Math.log10(total), 1.0].max
-  rescue Elasticsearch::Transport::Transport::Errors::NotFound
+  rescue OpenSearch::Transport::Transport::Errors::NotFound
     1.0
   end
 end

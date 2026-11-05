@@ -1,10 +1,10 @@
 GIT
   remote: https://github.com/18f/omniauth_login_dot_gov
-  revision: 6e117a9c68b19a1fbc70533613b74b0d8affd641
-  ref: 6e117a9c68b19a1fbc70533613b74b0d8affd641
+  revision: 616a865a0d2ac8b5e01c07a5809bc37a10cfc42b
+  tag: v2.2.0
   specs:
-    omniauth_login_dot_gov (0.2.0)
-      faraday (~> 0.17)
+    omniauth_login_dot_gov (2.2.0)
+      faraday (~> 2.0)
       json-jwt (~> 1.11)
       jwt (~> 2.2)
       multi_json (~> 1.14)
@@ -171,7 +171,7 @@ GEM
     after_commit_action (1.1.0)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
-    airbrussh (1.5.3)
+    airbrussh (1.6.2)
       sshkit (>= 1.6.1, != 1.7.0)
     amazing_print (1.8.1)
     american_date (1.1.1)
@@ -228,12 +228,12 @@ GEM
       msgpack (~> 1.2)
     builder (3.3.0)
     byebug (12.0.0)
-    capistrano (3.19.2)
+    capistrano (3.20.1)
       airbrussh (>= 1.0.0)
       i18n
       rake (>= 10.0.0)
       sshkit (>= 1.9.0)
-    capistrano-bundler (2.1.1)
+    capistrano-bundler (2.2.0)
       capistrano (~> 3.1)
     capistrano-rails (1.7.0)
       capistrano (~> 3.1)
@@ -245,10 +245,10 @@ GEM
       capistrano
       resque
       resque-scheduler
-    capistrano3-puma (5.2.0)
+    capistrano3-puma (6.2.0)
       capistrano (~> 3.7)
       capistrano-bundler
-      puma (>= 4.0, < 6.0)
+      puma (>= 5.1, < 7.0)
     capybara (3.40.0)
       addressable
       matrix
@@ -276,7 +276,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     colorize (0.8.1)
-    concurrent-ruby (1.3.5)
+    concurrent-ruby (1.3.8)
     connection_pool (2.5.3)
     counter_culture (2.9.0)
       activerecord (>= 4.2)
@@ -347,18 +347,6 @@ GEM
     drb (2.2.3)
     dumb_delegator (1.1.0)
     elasticsearch-dsl (0.1.10)
-    elasticsearch-model (7.2.1)
-      activesupport (> 3)
-      elasticsearch (~> 7)
-      hashie
-    elasticsearch-persistence (7.2.1)
-      activemodel (> 4)
-      activesupport (> 4)
-      elasticsearch (~> 7)
-      elasticsearch-model (= 7.2.1)
-      hashie
-    elasticsearch-xpack (7.4.0)
-      elasticsearch-api (>= 6)
     email_spec (2.3.0)
       htmlentities (~> 4.3.3)
       launchy (>= 2.1, < 4.0)
@@ -369,18 +357,21 @@ GEM
     erubi (1.13.1)
     et-orbi (1.2.11)
       tzinfo
-    ethon (0.16.0)
-      ffi (>= 1.15.0)
     exception_notification (4.6.0)
       actionmailer (>= 5.2, < 9)
       activesupport (>= 5.2, < 9)
     execjs (2.10.0)
     faker (1.9.6)
       i18n (>= 0.7)
-    faraday (0.17.6)
-      multipart-post (>= 1.2, < 3)
-    faraday_middleware (0.14.0)
-      faraday (>= 0.7.4, < 1.0)
+    faraday (2.14.3)
+      faraday-net_http (>= 2.0, < 3.5)
+      json
+      logger
+    faraday-net_http (3.4.4)
+      net-http (~> 0.5)
+    faraday-net_http_persistent (2.3.1)
+      faraday (~> 2.5)
+      net-http-persistent (>= 4.0.4, < 5)
     federal_register (0.6.9)
       httparty (>= 0.14.0)
     feedjira (3.2.5)
@@ -452,7 +443,7 @@ GEM
       multi_xml (>= 0.5.2)
     httpclient (2.9.0)
       mutex_m
-    i18n (1.14.7)
+    i18n (1.15.2)
       concurrent-ruby (~> 1.0)
     i18n-tasks (0.9.37)
       activesupport (>= 4.0.2)
@@ -524,14 +515,15 @@ GEM
     multi_test (0.1.2)
     multi_xml (0.7.1)
       bigdecimal (~> 3.1)
-    multipart-post (2.4.1)
-    mustermann (3.0.3)
-      ruby2_keywords (~> 0.0.1)
+    mustermann (3.1.1)
     mutex_m (0.2.0)
     mysql2 (0.5.7)
       bigdecimal
-    net-http-persistent (2.9.4)
-    net-imap (0.5.9)
+    net-http (0.9.1)
+      uri (>= 0.11.1)
+    net-http-persistent (4.0.8)
+      connection_pool (>= 2.2.4, < 4)
+    net-imap (0.6.7)
       date
       net-protocol
     net-pop (0.1.2)
@@ -544,9 +536,9 @@ GEM
       net-ssh (>= 5.0.0, < 8.0.0)
     net-smtp (0.5.1)
       net-protocol
-    net-ssh (7.3.0)
+    net-ssh (7.3.3)
     newrelic_rpm (9.19.0)
-    nio4r (2.7.4)
+    nio4r (2.7.5)
     nokogiri (1.19.4)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
@@ -559,6 +551,9 @@ GEM
       omniauth (~> 2.0)
     open_uri_redirections (0.2.1)
     opensearch-dsl (0.2.1)
+    opensearch-ruby (3.4.0)
+      faraday (>= 1.0, < 3)
+      multi_json (>= 1.0)
     os (1.1.4)
     ostruct (0.6.3)
     package_json (0.2.0)
@@ -582,27 +577,28 @@ GEM
       date
       stringio
     public_suffix (6.0.2)
-    puma (5.6.9)
+    puma (6.6.1)
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.8.1)
-    rack (2.2.24)
+    rack (3.2.7)
     rack-contrib (2.5.0)
       rack (< 4)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
-    rack-protection (3.2.0)
+    rack-protection (4.2.1)
       base64 (>= 0.1.0)
-      rack (~> 2.2, >= 2.2.4)
+      logger (>= 1.6.0)
+      rack (>= 3.0.0, < 4)
     rack-proxy (0.7.7)
       rack
-    rack-session (1.0.2)
-      rack (< 3)
+    rack-session (2.1.2)
+      base64 (>= 0.1.0)
+      rack (>= 3.0.0)
     rack-test (2.2.0)
       rack (>= 1.3)
-    rackup (1.0.1)
-      rack (< 3)
-      webrick
+    rackup (2.3.1)
+      rack (>= 3)
     rails (7.1.6)
       actioncable (= 7.1.6)
       actionmailbox (= 7.1.6)
@@ -775,7 +771,6 @@ GEM
       lint_roller (~> 1.1)
       rubocop (~> 1.72, >= 1.72.1)
     ruby-progressbar (1.13.0)
-    ruby2_keywords (0.0.5)
     rubyzip (2.4.1)
     rufus-scheduler (3.9.2)
       fugit (~> 1.1, >= 1.11.1)
@@ -820,10 +815,12 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
-    sinatra (3.2.0)
+    sinatra (4.2.1)
+      logger (>= 1.6.0)
       mustermann (~> 3.0)
-      rack (~> 2.2, >= 2.2.4)
-      rack-protection (= 3.2.0)
+      rack (>= 3.0.0, < 4)
+      rack-protection (= 4.2.1)
+      rack-session (>= 2.0.0, < 3)
       tilt (~> 2.0)
     sprockets (4.2.2)
       concurrent-ruby (~> 1.0)
@@ -833,7 +830,7 @@ GEM
       actionpack (>= 6.1)
       activesupport (>= 6.1)
       sprockets (>= 3.0.0)
-    sshkit (1.24.0)
+    sshkit (1.25.1)
       base64
       logger
       net-scp (>= 1.1.2)
@@ -850,7 +847,7 @@ GEM
       climate_control (>= 0.0.3, < 1.0)
     thor (1.4.0)
     thread_safe (0.3.6)
-    tilt (2.6.1)
+    tilt (2.9.0)
     timeout (0.4.3)
     trailblazer-option (0.1.2)
     truncator (0.1.7)
@@ -863,8 +860,6 @@ GEM
       actionpack (>= 3.1)
       jquery-rails
       railties (>= 3.1)
-    typhoeus (1.3.1)
-      ethon (>= 0.9.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     uber (0.1.0)
@@ -873,6 +868,7 @@ GEM
     unicode-display_width (3.1.4)
       unicode-emoji (~> 4.0, >= 4.0.4)
     unicode-emoji (4.0.4)
+    uri (1.1.1)
     validate_url (0.2.0)
       activemodel (>= 3.0.0)
     vcr (6.3.1)
@@ -890,7 +886,7 @@ GEM
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
-    webrick (1.9.1)
+    webrick (1.9.2)
     websocket (1.2.11)
     websocket-driver (0.8.0)
       base64
@@ -930,7 +926,7 @@ DEPENDENCIES
   capistrano-rails
   capistrano-rbenv
   capistrano-resque
-  capistrano3-puma (~> 5.2)
+  capistrano3-puma (~> 6.0)
   capybara (~> 3.40)
   capybara-screenshot
   cld3 (~> 3.6.0)
@@ -946,13 +942,12 @@ DEPENDENCIES
   dotenv (~> 3.1, >= 3.1.2)
   elasticsearch!
   elasticsearch-dsl (~> 0.1.9)
-  elasticsearch-persistence
-  elasticsearch-xpack (~> 7.4.0)
   email_spec (~> 2.2)
   erb (~> 4.0.4)
   exception_notification (~> 4.5)
   faker (~> 1.8)
-  faraday_middleware
+  faraday (~> 2.13)
+  faraday-net_http_persistent (~> 2.0)
   federal_register (~> 0.6.3)
   feedjira (~> 3.2)
   flickraw (~> 0.9.9)
@@ -979,19 +974,23 @@ DEPENDENCIES
   mail (~> 2.7.1)
   mutex_m (~> 0.2.0)
   mysql2 (~> 0.5.7)
-  net-http-persistent (~> 2.9.3)
+  net-http-persistent (~> 4.0)
+  net-imap (~> 0.6.7)
   newrelic_rpm (~> 9.10)
   nokogiri (~> 1.19)
   omniauth (~> 2.1.0)
   omniauth-rails_csrf_protection (~> 1.0.1)
   omniauth_login_dot_gov!
   opensearch-dsl
+  opensearch-ruby (~> 3.4)
   pry-byebug (~> 3.5)
   pry-rails (~> 0.3.6)
-  puma (~> 5.6)
-  rack (~> 2.2)
+  puma (~> 6.6)
+  rack (~> 3.2)
   rack-contrib (~> 2.5.0)
   rack-cors (~> 1.1.0)
+  rack-session (~> 2.1)
+  rackup (~> 2.2)
   rails (~> 7.1.4)
   rails-controller-testing (~> 1.0)
   rails-observers (~> 0.1.5)
@@ -1012,7 +1011,7 @@ DEPENDENCIES
   resque-scheduler (~> 4.10.2)
   resque_spec (~> 0.18.0)
   retriable (~> 3.1)
-  rexml (>= 3.4.2)
+  rexml (~> 3.4.4)
   robotex!
   robots_tag_parser (~> 0.1.0)
   rspec-activemodel-mocks (~> 1.1)
@@ -1035,7 +1034,6 @@ DEPENDENCIES
   truncator (~> 0.1.7)
   turbolinks (~> 5.2.1)
   twitter-typeahead-rails (~> 0.11.1)
-  typhoeus (~> 1.3.0)
   uglifier (~> 4.2.0)
   validate_url (= 0.2.0)
   vcr (~> 6.2)

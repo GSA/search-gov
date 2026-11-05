@@ -4,29 +4,16 @@ module MobileSearchHelper
   end
 
   def is_inactive_site_search?(search)
-    search.is_a?(SiteSearch) &&
-        search.document_collection &&
-        search.document_collection.navigation.is_inactive?
+    collection = search.try(:document_collection)
+    collection&.navigation&.is_inactive?
   end
 
-  def extra_pagination_params(search)
-    if search.is_a?(ImageSearch) && search.module_tag == 'IMAG'
-      { cr: true }
-    end
+  def extra_pagination_params(_search)
+    nil
   end
 
-  def eligible_for_commercial_results?(search)
-    is_last_page = search.total <= search.per_page * search.page
-    return unless is_last_page
-
-    case search
-      when ImageSearch
-        search.module_tag == 'OASIS'
-      when BlendedSearch
-        search.affiliate.gets_commercial_results_on_blended_search?
-      else
-        false
-    end
+  def eligible_for_commercial_results?(_search)
+    false
   end
 
   def render_result_pages_links?(search)

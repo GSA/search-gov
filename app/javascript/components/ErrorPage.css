@@ -1,0 +1,84 @@
+.serp-error-page-wrapper {
+  font-family: "Public Sans Web", -apple-system, "system-ui", "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 1rem;
+  font-feature-settings: "kern";
+  font-kerning: normal;
+  line-height: 1.15;
+}
+
+.serp-error-page-wrapper .usa-banner *,
+.serp-error-page-wrapper .usa-header *,
+.serp-error-page-wrapper #serp-footer-wrapper * {
+  font-family: inherit;
+}
+
+.serp-error-page-wrapper .usa-banner {
+  font-size: 0.81rem;
+  line-height: 1.3;
+}
+
+.serp-error-page-wrapper .usa-header--basic .usa-navbar {
+  padding: 1.35rem 0 1.6rem;
+}
+
+.serp-error-page-wrapper .usa-header--basic {
+  border-bottom: 1px solid #dfe1e2;
+}
+
+.serp-error-page-wrapper .usa-header--basic .usa-identifier__logo {
+  height: 2.75rem;
+  margin: 0;
+  max-height: none;
+}
+
+.serp-result-wrapper.serp-error-page {
+  min-height: 22rem;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+}
+
+.serp-result-wrapper.serp-error-page > .grid-container {
+  max-width: 54rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.serp-error-content {
+  font-family: inherit;
+  font-size: 1rem;
+  font-feature-settings: "kern";
+  font-kerning: normal;
+  line-height: 1.15;
+  max-width: 40rem;
+}
+
+.serp-error-content h1 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0.35rem 0;
+}
+
+.serp-error-content p {
+  font-size: 1rem;
+  letter-spacing: 0.25px;
+  line-height: 26px;
+  margin: 0.5rem 0;
+  word-wrap: break-word;
+}
+
+@media (min-width: 64em) {
+  .serp-error-page-wrapper .usa-banner__header {
+    min-height: 1.55rem;
+  }
+
+  .serp-result-wrapper.serp-error-page {
+    min-height: 28rem;
+    padding-top: 2.6rem;
+  }
+
+  .serp-result-wrapper.serp-error-page > .grid-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}

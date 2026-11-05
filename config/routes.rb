@@ -24,7 +24,6 @@ Rails.application.routes.draw do
     namespace :v2 do
       get '/search' => 'searches#blended'
       get '/search/i14y' => 'searches#i14y'
-      get '/search/bing' => 'searches#bing'
       get '/search/docs' => 'searches#docs'
       post '/click' => 'click#create'
     end
@@ -201,7 +200,6 @@ Rails.application.routes.draw do
     resources :features, concerns: :active_scaffold
     resources :affiliate_feature_additions, concerns: :active_scaffold
     resources :help_links, concerns: :active_scaffold
-    resources :bing_urls, concerns: :active_scaffold
     resources :statuses, concerns: :active_scaffold
     resources :system_alerts, concerns: :active_scaffold
     resources :tags, concerns: :active_scaffold
@@ -250,5 +248,11 @@ Rails.application.routes.draw do
   get '/user/developer_redirect' => 'users#developer_redirect', :as => :developer_redirect
 
   get '/program', to: redirect(BLOG_URL || '', status: 302)
-  get '*path',    to: redirect(PAGE_NOT_FOUND_URL || '', status: 302), constraints: lambda { |req| req.path.exclude? 'rails/active_storage' }
+
+  get '/errors/invalid-affiliate', to: 'errors#invalid_affiliate', as: :invalid_affiliate_error, defaults: { format: :html }, constraints: { format: :html }
+  get '/errors/inactive-affiliate', to: 'errors#inactive_affiliate', as: :inactive_affiliate_error, defaults: { format: :html }, constraints: { format: :html }
+
+  get '*path',
+      to: 'errors#invalid_affiliate',
+      constraints: lambda { |req| req.path.exclude? 'rails/active_storage' }
 end

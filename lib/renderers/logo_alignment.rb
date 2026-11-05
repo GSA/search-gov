@@ -7,9 +7,4 @@ module LogoAlignment
   def self.valid?(logo_aligment)
     ALL.include?(logo_aligment)
   end
-
-  def self.get_logo_alignment_class(site)
-    logo_alignment = site.css_property_hash[:logo_alignment]
-    "logo-#{logo_alignment}" if logo_alignment
-  end
 end

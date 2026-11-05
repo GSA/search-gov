@@ -40,9 +40,6 @@ namespace :usasearch do
     task create_indexes: :environment do
       Dir[Rails.root.join('app/models/elastic_*.rb').to_s].each do |filename|
         klass = File.basename(filename, '.rb').camelize.constantize
-        # Skip classes that use OpenSearch (they are created by opensearch:create_all_indexes)
-        next if klass.respond_to?(:use_opensearch?) && klass.use_opensearch?
-
         klass.create_index if klass.kind_of?(Indexable) && klass != ElasticBlended && !klass.index_exists?
       end
     end

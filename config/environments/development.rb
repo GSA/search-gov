@@ -34,6 +34,11 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  # Opt-in local OpenSearch query cache. See docs/opensearch_query_cache.md.
+  if ENV['REDIS_CACHE_ON'].to_s.strip.casecmp?('true') && ENV['REDIS_CACHE_URL'].present?
+    config.cache_store = :redis_cache_store, { url: ENV.fetch('REDIS_CACHE_URL') }
+  end
+
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
@@ -78,7 +83,4 @@ Rails.application.configure do
   config.action_controller.raise_on_missing_callback_actions = true
 end
 
-ADDITIONAL_BING_PARAMS = { 'traffictype' => 'test' }
-
 DEFAULT_CACHE_DURATION = 6.hours
-BING_CACHE_DURATION = 1.day

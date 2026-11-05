@@ -19,7 +19,6 @@ class SaytSuggestion < ApplicationRecord
   class << self
     def related_search(query, affiliate, options = {})
       return [] unless affiliate.is_related_searches_enabled?
-      return [] unless Es.custom_indices_enabled?
 
       search_options = { affiliate_id: affiliate.id,
                          language: affiliate.indexing_locale,

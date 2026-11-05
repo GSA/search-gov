@@ -91,19 +91,13 @@ describe ElasticFederalRegisterDocument do
       end
     end
   end
+end
 
-  describe '.search_for when custom indices are disabled' do
-    before do
-      allow(Es).to receive(:custom_indices_enabled?).and_return(false)
-    end
+describe ElasticFederalRegisterDocumentResults do
+  it 'returns empty results when aggregations are missing' do
+    results = described_class.new(Indexable::NO_HITS)
 
-    it 'returns empty results without raising' do
-      search = described_class.search_for(federal_register_agency_ids: [fr_noaa.id],
-                                          language: 'en',
-                                          q: 'fish')
-
-      expect(search.total).to eq 0
-      expect(search.results).to eq([])
-    end
+    expect(results.total).to eq 0
+    expect(results.results).to eq([])
   end
 end

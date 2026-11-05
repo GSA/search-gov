@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SearchesController < ApplicationController
-  layout :set_layout
+  layout 'searches_redesign'
 
   skip_before_action :verify_authenticity_token, :set_default_locale
 
@@ -16,8 +16,7 @@ class SearchesController < ApplicationController
 
   def index
     if @affiliate.active?
-      search_klass, @search_vertical, template = pick_klass_vertical_template
-      template = :index_redesign if redesign?
+      search_klass, @search_vertical = pick_klass_and_vertical
       @search = search_klass.new(@search_options.merge(geoip_info: GeoipLookup.lookup(request.remote_ip)))
       @search.run
 
@@ -30,14 +29,13 @@ class SearchesController < ApplicationController
       redirect_if_invalid_page_number and return
 
       respond_to do |format|
-        format.html { render template }
+        format.html { render :index_redesign }
         format.json { render :json => @search }
       end
 
     else
-      @page_title = "Search Temporarily Unavailable - #{@affiliate.display_name}"
       respond_to do |format|
-        format.html { render :inactive_affiliate, layout: 'application' }
+        format.html { redirect_to_path_with_query(inactive_affiliate_error_path) }
         format.json { render json: { error: "This search affiliate has been turned off" }, status: :service_unavailable }
       end
     end
@@ -52,16 +50,11 @@ class SearchesController < ApplicationController
     @search_vertical = :docs
     set_search_page_title
     set_search_params
-    template = [OpenSearch::Engine, LegacyOpenSearch::Engine, SearchElasticEngine].include?(search_klass) ? :document : :docs
-    template = :index_redesign if redesign?
-    respond_to { |format| format.html { render template } }
+    respond_to { |format| format.html { render :index_redesign } }
   end
 
   def advanced
     @page_title = "#{t(:advanced_search)} - #{@affiliate.display_name}"
-    @search = WebSearch.new(@search_options)
-    @affiliate = @search_options[:affiliate]
-    set_search_params
     permitted_params[:filter] = %w(0 1 2).include?(permitted_params[:filter]) ? permitted_params[:filter] : '1'
     permitted_params[:filetype] = %w(doc pdf ppt txt xls).include?(permitted_params[:filetype]) ? permitted_params[:filetype] : nil
     respond_to { |format| format.html {} }
@@ -81,19 +74,13 @@ class SearchesController < ApplicationController
     end
   end
 
-  def pick_klass_vertical_template
-    if get_commercial_results?
-      [WebSearch, :web, :index]
-    elsif @affiliate.opensearch_engine?
-      [OpenSearch::Engine, :document, :document]
-    elsif @affiliate.legacy_opensearch_engine?
-      [LegacyOpenSearch::Engine, :document, :document]
-    elsif @affiliate.search_elastic_engine?
-      [SearchElasticEngine, :document, :document]
+  def pick_klass_and_vertical
+    if @affiliate.legacy_opensearch_engine?
+      [LegacyOpenSearch::Engine, :document]
     elsif @affiliate.gets_blended_results
-      [BlendedSearch, :blended, :blended]
+      [BlendedSearch, :blended]
     else
-      [WebSearch, :web, :index]
+      [OpenSearch::Engine, :document]
     end
   end
 
@@ -116,23 +103,13 @@ class SearchesController < ApplicationController
     @search_options.merge!(document_collection: document_collection)
   end
 
-  def get_commercial_results?
-    permitted_params[:cr] == 'true'
-  end
-
   def log_search_impression
     SearchImpression.log(@search, @search_vertical, permitted_params, request)
   end
 
   def docs_search_klass
-    return OpenSearch::Engine if @affiliate.opensearch_engine?
     return LegacyOpenSearch::Engine if @affiliate.legacy_opensearch_engine?
-    return SearchElasticEngine if @affiliate.search_elastic_engine?
 
-    @search_options[:document_collection] ? SiteSearch : WebSearch
-  end
-
-  def set_layout
-    redesign? ? 'searches_redesign' : 'searches'
+    OpenSearch::Engine
   end
 end

@@ -2,18 +2,6 @@
 
 module SearchHelper
   SPECIAL_URL_PATH_EXT_NAMES = %w{doc pdf ppt ps rtf swf txt xls docx pptx xlsx}
-  EMPTY_STRING = ''
-
-  def link_to_offer_commercial_web_results(search_url)
-    link = link_to t('searches.commercial_results.search_again'), search_url, class: "search-again-link"
-
-    content_tag :div, :class => "" do
-      concat content_tag(:h6, t('searches.commercial_results.find_what_looking_for')) if
-        t('searches.commercial_results.find_what_looking_for', :default => EMPTY_STRING) != EMPTY_STRING
-      concat simple_format(t('searches.commercial_results.see_more_web_results', link: link).html_safe)
-    end
-  end
-
   def link_to_other_web_results(template, query)
     cleaned_query = URI.encode_www_form_component(query)
     template.sub('{QUERY}', cleaned_query).html_safe
@@ -44,10 +32,6 @@ module SearchHelper
     truncate_html(translate_bing_highlights(h(result['content'])))
   end
 
-  def news_description(instance)
-    truncate_html(translate_bing_highlights(h(instance.description))).sub(/^([^A-Z<])/,'...\1').html_safe
-  end
-
   def translate_bing_highlights(body)
     body.gsub(/\uE000/, '<strong>').gsub(/\uE001/, '</strong>')
   end
@@ -62,9 +46,5 @@ module SearchHelper
 
   def hidden_field_tag_if_key_exists(param_sym, value = params[param_sym])
     hidden_field_tag param_sym, value if value
-  end
-
-  def search_bar_class(search)
-    'has-query-term' if search.query.present?
   end
 end

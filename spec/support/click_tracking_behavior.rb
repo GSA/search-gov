@@ -61,10 +61,10 @@ shared_examples_for 'an unsuccessful click request' do
 end
 
 shared_examples_for 'does not accept GET requests' do
-  it 'returns a redirect' do
+  it 'returns not found' do
     get endpoint, params: valid_params
 
-    expect(response).to have_http_status :found
+    expect(response).to have_http_status :not_found
   end
 end
 

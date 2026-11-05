@@ -61,7 +61,7 @@ module ApplicationHelper
 
   def render_robots_meta_tag
     content = ''
-    if (request.path =~ /^\/(image_searches|search(?!usagov)|usa\/)/i)
+    if (request.path =~ /^\/(image_searches|search(?!usagov)|usa\/|errors\/)/i)
       content = tag(:meta, {:name => 'ROBOTS', :content => 'NOINDEX, NOFOLLOW'})
     end
     raw content
@@ -83,12 +83,6 @@ module ApplicationHelper
   def time_ago_in_words(from_time, include_seconds = false, options = {})
     options.reverse_merge!(:scope => :'datetime.time_ago_in_words', include_seconds: include_seconds)
     distance_of_time_in_words(from_time, Time.current, options)
-  end
-
-  def news_item_time_ago_in_words(published_at, separator = '', date_stamp_enabled = true)
-    return unless published_at.present? && date_stamp_enabled && published_at < Time.current
-
-    [time_ago_in_words(published_at, scope: 'datetime.time_ago_in_words'), separator].join
   end
 
 end
