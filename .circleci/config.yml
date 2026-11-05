@@ -72,7 +72,7 @@ commands:
           name: Clean node_modules
           command: rm -rf node_modules
       - nodejs/install:
-          node-version: "22.22.2"
+          node-version: "26.13.0"
           install-yarn: true
           # Pin Yarn: the orb's "latest" lookup intermittently resolves an
           # empty version and downloads a corrupt tarball, breaking CI setup.
@@ -306,5 +306,4 @@ workflows:
               mysql_version:
                 - "8.0.40"
               node_version:
-                - 20.20.0
-                - 22.22.2
+                - 26.13.0
