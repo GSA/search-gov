@@ -9,23 +9,6 @@ describe MobileHelper do
     end
   end
 
-  describe '#body_class_hash' do
-    context 'when the page background is white and the menu button is aligned left' do
-      it 'returns both css classes' do
-        site = mock_model(Affiliate, css_property_hash: { page_background_color: '#FFFFFF',
-                                                          menu_button_alignment: 'left' })
-        expect(helper.body_class_hash(site)).to eq(class: 'assign-default-bg menu-button-left')
-      end
-    end
-
-    context 'when the page background is not white and the menu button is not aligned left' do
-      it 'returns an empty hash' do
-        site = mock_model(Affiliate, css_property_hash: { page_background_color: '#DFDFDF' })
-        expect(helper.body_class_hash(site)).to eq({})
-      end
-    end
-  end
-
   describe '#search_results_by_text' do
     it 'returns the powered by text' do
       expect(helper.search_results_by_text('BWEB')).to eq('Powered by Search.gov')

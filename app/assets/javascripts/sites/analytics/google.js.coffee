@@ -18,4 +18,4 @@ trackViewModal = () ->
   page ?= $(this).attr 'href'
   ga 'send', 'pageview', { 'page': page, 'title': 'viewModal', }
 
-$(document).on 'click', '.help-link, #preview-trigger', trackViewModal
+$(document).on 'click', '.help-link', trackViewModal

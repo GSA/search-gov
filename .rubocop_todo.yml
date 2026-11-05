@@ -74,7 +74,6 @@ Layout/BlockEndNewline:
 # SupportedStyles: case, end
 Layout/CaseIndentation:
   Exclude:
-    - 'app/helpers/affiliate_css_helper.rb'
     - 'app/helpers/jobs_helper.rb'
     - 'app/helpers/mobile_navigations_helper.rb'
     - 'app/helpers/mobile_search_helper.rb'
@@ -1953,7 +1952,6 @@ Rails/Presence:
   Exclude:
     - 'app/controllers/application_controller.rb'
     - 'app/engines/formatted_query.rb'
-    - 'app/helpers/affiliate_css_helper.rb'
     - 'app/helpers/mobile_navigations_helper.rb'
     - 'features/step_definitions/affiliate_search_steps.rb'
 
@@ -2171,7 +2169,6 @@ Style/AccessorGrouping:
 # SupportedStyles: prefer_alias, prefer_alias_method
 Style/Alias:
   Exclude:
-    - 'app/helpers/affiliate_css_helper.rb'
     - 'lib/importers/flickr_data.rb'
 
 # Offense count: 36
