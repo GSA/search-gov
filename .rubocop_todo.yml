@@ -587,9 +587,6 @@ Lint/AmbiguousBlockAssociation:
   Exclude:
     - 'spec/jobs/searchgov_domain_reindexer_job_spec.rb'
     - 'spec/lib/search_gov_interceptor_spec.rb'
-    - 'spec/models/custom_font_and_color_theme_updater_spec.rb'
-    - 'spec/models/font_and_color_updater_spec.rb'
-    - 'spec/models/header_and_footer_links_updater_spec.rb'
     - 'spec/models/image_content_updater_spec.rb'
     - 'spec/models/searchgov_url_spec.rb'
     - 'spec/services/sitemap_indexer_spec.rb'
@@ -1974,15 +1971,6 @@ Rails/Present:
 Rails/RakeEnvironment:
   Exclude:
     - 'lib/tasks/cucumber.rake'
-
-# Offense count: 2
-# This cop supports unsafe autocorrection (--autocorrect-all).
-# Configuration parameters: AllowedReceivers.
-# AllowedReceivers: ActionMailer::Preview, ActiveSupport::TimeZone
-Rails/RedundantActiveRecordAllMethod:
-  Exclude:
-    - 'app/models/custom_font_and_color_theme_updater.rb'
-    - 'app/models/header_and_footer_links_updater.rb'
 
 # Offense count: 7
 # This cop supports unsafe autocorrection (--autocorrect-all).
