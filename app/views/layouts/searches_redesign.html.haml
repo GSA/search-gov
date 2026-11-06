@@ -1,11 +1,14 @@
 !!!strict
-%html{ html_class_hash(@search.affiliate.language) }
+- language = @search&.affiliate&.language
+- data_layer = { SERP_version: 'version_2024' }
+- data_layer[:site_id] = @affiliate.id.to_s if @affiliate
+%html{ language ? html_class_hash(language) : { lang: 'en' } }
   %head
     = attribution
 
     :javascript
       window.dataLayer = window.dataLayer || [];
-      dataLayer.push({"SERP_version": "version_2024", "site_id": "#{@affiliate.id}"});
+      dataLayer.push(#{data_layer.to_json});
     = render "/shared/google_tag_manager_script"
 
     = render "/shared/affiliate_google_analytics"
@@ -13,7 +16,7 @@
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
     %meta{ name: 'referrer', content: 'no-referrer-when-downgrade' }
     = render_robots_meta_tag
-    = favicon_link_tag favicon_url(@search.affiliate.favicon_url)
+    = favicon_link_tag favicon_url(@search&.affiliate&.favicon_url)
 
     %title #{@page_title}
 
@@ -22,4 +25,4 @@
   %body
     #serp-main-content= yield
     = render "/shared/google_tag_manager_noscript"
-    = raw @affiliate.external_tracking_code
+    = raw @affiliate.external_tracking_code if @affiliate
