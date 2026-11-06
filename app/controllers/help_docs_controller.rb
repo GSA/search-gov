@@ -11,7 +11,7 @@ class HelpDocsController < ApplicationController
 
   def require_usasearch_url_param
     unless help_docs_params[:url] =~ %r{\Ahttps?://search\.gov/.+\z}i
-      redirect_to(ENV.fetch('PAGE_NOT_FOUND_URL'), allow_other_host: true)
+      redirect_to_path_with_query(invalid_affiliate_error_path) and return
     end
   end
 

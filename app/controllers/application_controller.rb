@@ -7,8 +7,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_session, :current_user, :permitted_params
   protect_from_forgery with: :exception
   SERP_RESULTS_PER_PAGE = 20
-  PAGE_NOT_FOUND = 'https://www.usa.gov/search-error'
-
   ADVANCED_PARAM_KEYS = %i(filetype filter query-not query-or query-quote).freeze
   DUBLIN_CORE_PARAM_KEYS = %i(contributor publisher subject).freeze
   FILTER_PARAM_KEYS = %i(since_date sort_by tbs until_date).freeze
@@ -46,8 +44,14 @@ class ApplicationController < ActionController::Base
 
   def redirect_unless_affiliate
     unless @affiliate
-      redirect_to(PAGE_NOT_FOUND, allow_other_host: true) and return
+      redirect_to_path_with_query(invalid_affiliate_error_path) and return
     end
+  end
+
+  def redirect_to_path_with_query(path)
+    query_string = request.query_string
+    location = query_string.present? ? "#{path}?#{query_string}" : path
+    redirect_to(location)
   end
 
   def set_locale_based_on_affiliate_locale
