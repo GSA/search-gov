@@ -33,7 +33,7 @@ describe 'error pages' do
 
       expect(response).to have_http_status(:not_found)
       expect(response).to render_template('layouts/searches_redesign')
-      expect(response.body).to include('<title>Search Temporarily Unavailable</title>')
+      expect(response.body).to include('<title>This Search Service Is Turned Off</title>')
       expect(response.body).to include('data-react-class="ErrorPage"')
       expect(response.body).to include('SearchGov site used by this search is currently &lt;strong&gt;inactive&lt;/strong&gt;.')
     end
