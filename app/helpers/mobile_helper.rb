@@ -21,14 +21,6 @@ module MobileHelper
     hash
   end
 
-  def body_class_hash(site)
-    css_classes = []
-    page_background_color = site_css_color_property(site.css_property_hash, :page_background_color)
-    css_classes << 'assign-default-bg' if page_background_color =~ /^#FFF(FFF)?$/i
-    css_classes << 'menu-button-left' if site.css_property_hash[:menu_button_alignment].eql?('left')
-    css_classes.present? ? { class: css_classes.join(' ') } : {}
-  end
-
   def pagination_link_separator(page_str)
     content_tag(:span, "#{I18n.t :page} #{page_str}", class: 'current_page')
   end
