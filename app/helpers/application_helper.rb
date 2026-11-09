@@ -61,7 +61,7 @@ module ApplicationHelper
 
   def render_robots_meta_tag
     content = ''
-    if (request.path =~ /^\/(image_searches|search(?!usagov)|usa\/)/i)
+    if (request.path =~ /^\/(image_searches|search(?!usagov)|usa\/|errors\/)/i)
       content = tag(:meta, {:name => 'ROBOTS', :content => 'NOINDEX, NOFOLLOW'})
     end
     raw content

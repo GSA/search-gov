@@ -81,7 +81,10 @@ describe SearchesController do
 
   context 'when affiliate is not valid' do
     before { get :index, params: { query: 'gov', affiliate: { 'foo' => 'bar' } } }
-    it { is_expected.to redirect_to 'https://www.usa.gov/search-error' }
+
+    it 'redirects to the invalid affiliate page with the original query params' do
+      expect(response).to redirect_to('/errors/invalid-affiliate?affiliate%5Bfoo%5D=bar&query=gov')
+    end
   end
 
   context 'when the affiliate is not active' do
@@ -95,13 +98,7 @@ describe SearchesController do
           }
     end
 
-    it { is_expected.to respond_with(:success) }
-    it { is_expected.to render_template(:inactive_affiliate) }
-    it { is_expected.to render_template('layouts/application') }
-
-    it 'sets the correct page title' do
-      expect(assigns[:page_title]).to eq("Search Temporarily Unavailable - #{affiliate.display_name}")
-    end
+    it { is_expected.to redirect_to '/errors/inactive-affiliate?affiliate=inactive&query=gov' }
   end
 
   context 'when searching with non scalar query' do
@@ -253,7 +250,7 @@ describe SearchesController do
           }
     end
 
-    it { is_expected.to redirect_to 'https://www.usa.gov/search-error' }
+    it { is_expected.to redirect_to '/errors/invalid-affiliate?affiliate=doesnotexist.gov&query=weather' }
   end
 
   context 'when handling any affiliate search request with a JSON format' do

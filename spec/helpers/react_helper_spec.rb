@@ -3,6 +3,22 @@
 require 'spec_helper'
 
 describe ReactHelper do
+  describe '#render_error_page' do
+    it 'sanitizes paragraph HTML before passing it to the component' do
+      allow(helper).to receive(:react_component)
+
+      helper.render_error_page(
+        title: 'Error',
+        paragraphs: ['<strong>Safe</strong><script>alert(1)</script><a href="javascript:alert(1)">link</a>']
+      )
+
+      expect(helper).to have_received(:react_component).with(
+        'ErrorPage',
+        hash_including(paragraphs: ['<strong>Safe</strong>alert(1)<a>link</a>'])
+      )
+    end
+  end
+
   describe '#search_results_layout' do
     let(:affiliate) { affiliates(:usagov_affiliate) }
     let(:vertical) { 'vertical_nav' }

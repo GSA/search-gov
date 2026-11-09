@@ -27,7 +27,7 @@ describe HelpDocsController do
         get :show, params: { url: url }, format: :json
       end
 
-      it { is_expected.to redirect_to('https://www.usa.gov/search-error') }
+      it { is_expected.to redirect_to("/errors/invalid-affiliate?url=#{CGI.escape(url)}") }
     end
 
     context 'when url does match search.gov with newline characters' do
@@ -39,7 +39,7 @@ describe HelpDocsController do
         expect(HelpDoc).not_to receive(:extract_article)
         get :show, params: { url: url }, format: :json
       end
-      it { is_expected.to redirect_to('https://www.usa.gov/search-error') }
+      it { is_expected.to redirect_to("/errors/invalid-affiliate?url=#{CGI.escape(url)}") }
     end
 
     context 'when user is not logged in' do
