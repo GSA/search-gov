@@ -187,16 +187,11 @@ describe ReactHelper do
         search.run
       end
 
-      it 'sends suggestion to SearchResultsLayout component' do
+      it 'does not send related searches to SearchResultsLayout component' do
         helper.search_results_layout(search, {}, vertical, affiliate, search_options)
 
-        related_search = {
-          label: '<strong>chocolate</strong> bar',
-          link: '/search?affiliate=usagov&query=chocolate+bar'
-        }
-
         expect(helper).to have_received(:react_component).
-          with('SearchResultsLayout', hash_including(relatedSearches: [related_search]))
+          with('SearchResultsLayout', hash_excluding(:relatedSearches))
       end
     end
 

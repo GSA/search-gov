@@ -17,17 +17,6 @@ class SaytSuggestion < ApplicationRecord
   MAX_POPULARITY = 2**30
 
   class << self
-    def related_search(query, affiliate, options = {})
-      return [] unless affiliate.is_related_searches_enabled?
-
-      search_options = { affiliate_id: affiliate.id,
-                         language: affiliate.indexing_locale,
-                         size: 5,
-                         q: query }.reverse_merge(options)
-      elastic_results = ElasticSaytSuggestion.search_for(search_options)
-      elastic_results.results.collect(&:phrase)
-    end
-
     def fetch_by_affiliate_id(affiliate_id, query, num_of_suggestions)
       clause = 'phrase LIKE ? AND affiliate_id=? AND ISNULL(deleted_at)'
       suggestions = where([clause, "#{query}%", affiliate_id]).
