@@ -303,6 +303,7 @@ Feature: Search - redesign
     And I fill in "Enter your search term" with "president"
     And I press "Search"
     Then I should not see "Related Searches"
+    And I should not see redesigned related searches
 
   @javascript @a11y
   Scenario: Search for the results with file extension
