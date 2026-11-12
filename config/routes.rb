@@ -248,5 +248,11 @@ Rails.application.routes.draw do
   get '/user/developer_redirect' => 'users#developer_redirect', :as => :developer_redirect
 
   get '/program', to: redirect(BLOG_URL || '', status: 302)
-  get '*path',    to: redirect(PAGE_NOT_FOUND_URL || '', status: 302), constraints: lambda { |req| req.path.exclude? 'rails/active_storage' }
+
+  get '/errors/invalid-affiliate', to: 'errors#invalid_affiliate', as: :invalid_affiliate_error, defaults: { format: :html }, constraints: { format: :html }
+  get '/errors/inactive-affiliate', to: 'errors#inactive_affiliate', as: :inactive_affiliate_error, defaults: { format: :html }, constraints: { format: :html }
+
+  get '*path',
+      to: 'errors#invalid_affiliate',
+      constraints: lambda { |req| req.path.exclude? 'rails/active_storage' }
 end

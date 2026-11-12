@@ -16,7 +16,7 @@ describe AffiliateHelper do
       let(:url) { '' }
 
       it 'returns the default favicon' do
-        expect(favicon_url(url)).to eq('/favicon_affiliate.ico')
+        expect(favicon_url(url)).to eq(image_path('favicon_affiliate.ico'))
       end
     end
   end

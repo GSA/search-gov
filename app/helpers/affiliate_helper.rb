@@ -14,6 +14,6 @@ module AffiliateHelper
   end
 
   def favicon_url(url)
-    url.presence || '/favicon_affiliate.ico'
+    url.presence || image_path('favicon_affiliate.ico')
   end
 end

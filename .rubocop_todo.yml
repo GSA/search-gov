@@ -74,7 +74,6 @@ Layout/BlockEndNewline:
 # SupportedStyles: case, end
 Layout/CaseIndentation:
   Exclude:
-    - 'app/helpers/affiliate_css_helper.rb'
     - 'app/helpers/jobs_helper.rb'
     - 'app/helpers/mobile_navigations_helper.rb'
     - 'app/helpers/mobile_search_helper.rb'
@@ -685,7 +684,6 @@ Lint/IneffectiveAccessModifier:
     - 'lib/importers/federal_register_agency_data.rb'
     - 'lib/importers/hint_data.rb'
     - 'lib/importers/youtube_profile_data.rb'
-    - 'lib/oasis.rb'
     - 'lib/youtube_adapter.rb'
 
 # Offense count: 3
@@ -744,7 +742,6 @@ Lint/RescueException:
     - 'app/models/indexed_document.rb'
     - 'app/models/news_item.rb'
     - 'lib/importers/site_feed_url_data.rb'
-    - 'lib/oasis.rb'
     - 'lib/tasks/reports.rake'
 
 # Offense count: 1
@@ -829,7 +826,6 @@ Lint/UselessAccessModifier:
     - 'lib/importers/federal_register_agency_data.rb'
     - 'lib/importers/hint_data.rb'
     - 'lib/importers/youtube_profile_data.rb'
-    - 'lib/oasis.rb'
     - 'lib/youtube_adapter.rb'
 
 # Offense count: 11
@@ -1052,7 +1048,6 @@ Performance/RedundantMatch:
 # Configuration parameters: MaxKeyValuePairs.
 Performance/RedundantMerge:
   Exclude:
-    - 'app/engines/oasis_search.rb'
     - 'app/helpers/form_helper.rb'
     - 'app/helpers/mobile_helper.rb'
     - 'app/helpers/spelling_suggestions_helper.rb'
@@ -1953,7 +1948,6 @@ Rails/Presence:
   Exclude:
     - 'app/controllers/application_controller.rb'
     - 'app/engines/formatted_query.rb'
-    - 'app/helpers/affiliate_css_helper.rb'
     - 'app/helpers/mobile_navigations_helper.rb'
     - 'features/step_definitions/affiliate_search_steps.rb'
 
@@ -2171,7 +2165,6 @@ Style/AccessorGrouping:
 # SupportedStyles: prefer_alias, prefer_alias_method
 Style/Alias:
   Exclude:
-    - 'app/helpers/affiliate_css_helper.rb'
     - 'lib/importers/flickr_data.rb'
 
 # Offense count: 36
@@ -2247,7 +2240,6 @@ Style/ClassEqualityComparison:
 # Offense count: 16
 Style/ClassVars:
   Exclude:
-    - 'app/engines/oasis_search.rb'
     - 'app/jobs/legacy/news_items_checker.rb'
     - 'app/models/affiliate.rb'
     - 'app/models/boosted_content.rb'
