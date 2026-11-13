@@ -23,7 +23,7 @@ describe 'error pages' do
       expect(response).to render_template('layouts/searches_redesign')
       expect(response.body).to include('<title>Your search did not work</title>')
       expect(response.body).to include('data-react-class="ErrorPage"')
-      expect(response.body).to include('The affiliate ID of the SearchGov site was either missing or invalid.')
+      expect(response.body).to include('the affiliate ID of the SearchGov site was either missing or invalid.')
     end
   end
 
@@ -33,9 +33,9 @@ describe 'error pages' do
 
       expect(response).to have_http_status(:not_found)
       expect(response).to render_template('layouts/searches_redesign')
-      expect(response.body).to include('<title>Search Temporarily Unavailable</title>')
+      expect(response.body).to include('<title>This Search Service Is Turned Off</title>')
       expect(response.body).to include('data-react-class="ErrorPage"')
-      expect(response.body).to include('This U.S. government search page has been turned off.')
+      expect(response.body).to include('SearchGov site used by this search is currently &lt;strong&gt;inactive&lt;/strong&gt;.')
     end
   end
 

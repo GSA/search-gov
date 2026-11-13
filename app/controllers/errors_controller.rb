@@ -9,7 +9,7 @@ class ErrorsController < ApplicationController
   end
 
   def inactive_affiliate
-    @page_title = 'Search Temporarily Unavailable'
+    @page_title = 'This Search Service Is Turned Off'
     render status: :not_found, formats: [:html]
   end
 end
