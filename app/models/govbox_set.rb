@@ -33,18 +33,16 @@ class GovboxSet
 
     return if @site_limits.present?
 
-    init_graphic_best_bets
     init_federal_register_documents
     init_med_topic
     init_jobs
-    init_related_search
+    @related_search = []
   end
 
   def as_json(*_args)
     {
       recommendedBy: @affiliate.display_name,
       textBestBets: format_text_best_bets,
-      graphicsBestBet: format_graphics_best_bet,
       jobs: format_jobs,
       healthTopic: format_health_topic,
       federalRegisterDocuments: format_federal_register_documents
@@ -67,12 +65,6 @@ class GovboxSet
     return if @affiliate.boosted_contents.empty? || @boosted_contents&.results.blank?
 
     @boosted_contents&.results&.map { |result| result.slice(:title, :url, :description) }
-  end
-
-  def format_graphics_best_bet
-    return if @affiliate.featured_collections.empty?
-
-    @featured_collections&.results&.first&.as_json&.except(:id)
   end
 
   def format_jobs
@@ -130,15 +122,6 @@ class GovboxSet
     end
   end
 
-  def init_related_search
-    if @affiliate.is_related_searches_enabled?
-      @related_search = SaytSuggestion.related_search(@query, @affiliate, @highlighting_options)
-      @modules << 'SREL' if @related_search.present?
-    else
-      @related_search = []
-    end
-  end
-
   def init_med_topic
     return unless @affiliate.is_medline_govbox_enabled?
 
@@ -182,20 +165,6 @@ class GovboxSet
     search_options = build_search_options(affiliate_id: @affiliate.id, size: 2, site_limits: @site_limits)
     @boosted_contents = ElasticBoostedContent.search_for(search_options)
     @modules << 'BOOS' if elastic_results_exist?(@boosted_contents)
-  end
-
-  def init_graphic_best_bets
-    return if @affiliate.featured_collections.empty?
-
-    search_options = build_search_options(affiliate_id: @affiliate.id, size: 1)
-    @featured_collections = ElasticFeaturedCollection.search_for(search_options)
-    return unless elastic_results_exist?(@featured_collections)
-
-    if elastic_results_exist?(@boosted_contents) && (@boosted_contents.total > 1)
-      search_options = build_search_options(affiliate_id: @affiliate.id, size: 1, site_limits: @site_limits)
-      @boosted_contents = ElasticBoostedContent.search_for(search_options)
-    end
-    @modules << 'BBG'
   end
 
   def build_search_options(options)

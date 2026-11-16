@@ -76,12 +76,11 @@ Feature: Search - redesign
     When I am on healthcare.gov's redesigned search page
     And I search for "hippopotamus" in the redesigned search page
     Then I should see 1 Best Bets Text
-    And I should see 1 Best Bets Graphic
     And I should see "Recommended by HealthCare.gov"
     And I should see "Hippopotamus item"
     And I should see "http://healthcare.gov/hippopotamus-amphibius"
     And I should see "large, mostly herbivorous mammal in sub-Saharan Africa"
-    And I should see "Hippopotamus graphic"
+    And I should not see "Hippopotamus graphic"
 
   @javascript @a11y
   Scenario: Docs search
@@ -292,7 +291,7 @@ Feature: Search - redesign
     And I should see "Search instead for qeury"
 
   @javascript @a11y
-  Scenario: Related searches module
+  Scenario: Related searches module is not shown
     Given the following OpenSearch Affiliates exist:
       | display_name | name          | contact_email    | first_name | last_name | locale |
       | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     |
@@ -303,7 +302,8 @@ Feature: Search - redesign
     When I am on en.agency.gov's search page
     And I fill in "Enter your search term" with "president"
     And I press "Search"
-    Then I should see 2 redesigned related searches
+    Then I should not see "Related Searches"
+    And I should not see redesigned related searches
 
   @javascript @a11y
   Scenario: Search for the results with file extension

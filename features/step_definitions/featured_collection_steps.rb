@@ -63,7 +63,3 @@ When /^(?:|I )add the following best bets graphics links:$/ do |table|
     fill_in(link_url_label, with: hash[:url])
   end
 end
-
-Then /^I should see (\d+) Best Bets Graphics?$/ do |count|
-  page.should have_selector('#best-bets .featured-collection', count: count)
-end
