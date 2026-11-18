@@ -9,8 +9,8 @@ Then /^I should see (\d+) related searches$/ do |count|
   page.should have_selector('#related-searches a', count: count)
 end
 
-Then /^I should see (\d+) redesigned related searches$/ do |count|
-  page.should have_selector('.related-searches-item-wrapper .result-title-link', count: count)
+Then /^I should not see redesigned related searches$/ do
+  page.should_not have_selector('.related-searches-item-wrapper .result-title-link')
 end
 
 Then /^I should see a suggestion to search for "(.*)"/ do |query|

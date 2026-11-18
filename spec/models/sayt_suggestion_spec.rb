@@ -258,28 +258,4 @@ describe SaytSuggestion do
       expect(to_label).to eq('dummy suggestion')
     end
   end
-
-  describe '#related_search' do
-    let(:affiliate) { affiliates(:basic_affiliate) }
-
-    before do
-      described_class.destroy_all
-      described_class.create!(affiliate_id: affiliate.id, phrase: 'suggest me', popularity: 30)
-      ElasticSaytSuggestion.commit
-    end
-
-    it 'returns an array of highlighted strings' do
-      expect(described_class.related_search('suggest', affiliate)).to eq(['<strong>suggest</strong> me'])
-    end
-
-    context 'when affiliate has related searches disabled' do
-      before do
-        affiliate.is_related_searches_enabled = false
-      end
-
-      it 'returns an empty array' do
-        expect(described_class.related_search('suggest', affiliate)).to eq([])
-      end
-    end
-  end
 end

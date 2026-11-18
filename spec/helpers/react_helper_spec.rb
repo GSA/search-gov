@@ -187,7 +187,20 @@ describe ReactHelper do
         search.run
       end
 
-      it 'sends suggestion to SearchResultsLayout component' do
+      it 'does not send related searches to SearchResultsLayout component' do
+        helper.search_results_layout(search, {}, vertical, affiliate, search_options)
+
+        expect(helper).to have_received(:react_component).
+          with('SearchResultsLayout', hash_excluding(:relatedSearches))
+      end
+    end
+
+    context 'when the search has related search terms' do
+      before do
+        allow(search).to receive(:related_search).and_return(['<strong>chocolate</strong> bar'])
+      end
+
+      it 'sends related searches to SearchResultsLayout component' do
         helper.search_results_layout(search, {}, vertical, affiliate, search_options)
 
         related_search = {
