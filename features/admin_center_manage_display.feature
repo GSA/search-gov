@@ -8,8 +8,6 @@ Feature: Manage Display
     When I go to the agency.gov's Manage Display page
 
   @javascript
-
-  @javascript
   Scenario: Editing Related Sites
     Given the following OpenSearch Affiliates exist:
       | display_name  | name         | contact_email   | first_name | last_name | use_redesigned_results_page |
