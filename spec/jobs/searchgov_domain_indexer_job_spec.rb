@@ -86,4 +86,22 @@ describe SearchgovDomainIndexerJob do
         not_to have_enqueued_job(described_class)
     end
   end
+
+  context 'when OPENSEARCH_CRAWLER_INDEX_WRITES_ENABLED is not true' do
+    let!(:searchgov_url) { SearchgovUrl.create(url: 'https://agency.gov/') }
+
+    before { allow(OpenSearchConfig).to receive(:crawler_index_writes_disabled?).and_return(true) }
+
+    it 'does not fetch urls' do
+      expect { perform }.not_to change { searchgov_url.reload.last_crawled_at }
+    end
+
+    it 'does not enqueue subsequent jobs' do
+      expect { perform }.not_to have_enqueued_job(described_class)
+    end
+
+    it 'does not change domain activity' do
+      expect { perform }.not_to change { searchgov_domain.reload.activity }.from('indexing')
+    end
+  end
 end

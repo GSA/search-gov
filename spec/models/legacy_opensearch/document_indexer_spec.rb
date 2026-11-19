@@ -110,6 +110,15 @@ describe LegacyOpenSearch::DocumentIndexer do
       expect(params).to eq(original_params)
     end
 
+    context 'when OPENSEARCH_CRAWLER_INDEX_WRITES_ENABLED is not true' do
+      before { allow(OpenSearchConfig).to receive(:crawler_index_writes_disabled?).and_return(true) }
+
+      it 'does not call the OpenSearch client' do
+        expect(client).not_to receive(:index)
+        expect(described_class.index(params)).to be_nil
+      end
+    end
+
     context 'with Spanish language' do
       before { params[:language] = 'es' }
 
@@ -261,6 +270,15 @@ describe LegacyOpenSearch::DocumentIndexer do
       )
 
       described_class.delete(handle: 'searchgov', document_id: 'doc123')
+    end
+
+    context 'when OPENSEARCH_CRAWLER_INDEX_WRITES_ENABLED is not true' do
+      before { allow(OpenSearchConfig).to receive(:crawler_index_writes_disabled?).and_return(true) }
+
+      it 'does not call the OpenSearch client' do
+        expect(client).not_to receive(:delete)
+        described_class.delete(document_id: 'doc_to_delete')
+      end
     end
 
     context 'when the document is not found' do

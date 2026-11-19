@@ -223,6 +223,15 @@ describe SearchgovDomain do
         from('idle').to('indexing')
     end
 
+    context 'when OPENSEARCH_CRAWLER_INDEX_WRITES_ENABLED is not true' do
+      before { allow(OpenSearchConfig).to receive(:crawler_index_writes_disabled?).and_return(true) }
+
+      it 'does not enqueue a job or change activity' do
+        expect(SearchgovDomainIndexerJob).not_to receive(:perform_later)
+        expect { index_urls }.not_to change { searchgov_domain.activity }.from('idle')
+      end
+    end
+
     context 'when the domain is already being indexed' do
       let(:searchgov_domain) { described_class.new(activity: 'indexing') }
 

@@ -9,6 +9,8 @@ class SearchgovDomainIndexerJob < ApplicationJob
   unique :until_executing, lock_ttl: 30.minutes
 
   def perform(searchgov_domain:, delay:)
+    return if OpenSearchConfig.crawler_index_writes_disabled?
+
     searchgov_domain.searchgov_urls.fetch_required.first&.fetch
     if searchgov_domain.searchgov_urls.fetch_required.any?
       SearchgovDomainIndexerJob.set(wait: delay.seconds).
