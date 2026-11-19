@@ -37,29 +37,3 @@ Given /^the following featured collections exist for the affiliate "([^"]*)":$/ 
     ElasticFeaturedCollection.commit
   end
 end
-
-Then /^I should see a featured collection link title with "([^"]*)" highlighted$/ do |highlighted|
-  page.should have_selector(".featured-collection ul strong", :text => highlighted)
-end
-
-Given /^the following featured collection links exist for featured collection titled "([^"]*)":$/ do |featured_collection_title, table|
-  featured_collection = FeaturedCollection.find_by_title(featured_collection_title)
-  table.hashes.each_with_index do |hash, i|
-    featured_collection.featured_collection_links.build(:title => hash[:title], :url => hash[:url], :position => hash[:position] || i)
-  end
-  featured_collection.save!
-  ElasticFeaturedCollection.commit
-end
-
-When /^(?:|I )add the following best bets graphics links:$/ do |table|
-  links_count = page.all(:css, '.links .title').count
-  table.hashes.each_with_index do |hash, index|
-    click_link 'Add Another Link'
-    link_title_label = "Link Title #{links_count + index + 1}"
-    find('label', text: link_title_label, visible: false)
-    fill_in(link_title_label, with: hash[:title])
-    link_url_label = "Link URL #{links_count + index + 1}"
-    find('label', text: link_url_label, visible: false)
-    fill_in(link_url_label, with: hash[:url])
-  end
-end

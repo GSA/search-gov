@@ -92,13 +92,6 @@ Rails.application.routes.draw do
       resource :third_party_tracking_request, only: [:new, :create]
       resource :autodiscovery, only: [:create]
 
-      resources :best_bets_graphics, controller: 'featured_collections', except: [:show] do
-        collection do
-          get :new_keyword
-          get :new_link
-        end
-      end
-
       resources :best_bets_texts, controller: 'boosted_contents', except: [:show] do
         collection do
           get :new_keyword

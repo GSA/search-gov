@@ -68,8 +68,6 @@ module NavigationHelpers
       site_path(Affiliate.find_by_display_name($1))
     when /the "([^"]*)" affiliate users page$/
       affiliate_users_path(Affiliate.find_by_display_name($1))
-    when /the (.*)'s featured collections page$/
-      affiliate_featured_collections_path(Affiliate.find_by_name($1))
     when /the (.*)'s boosted contents page$/
       affiliate_boosted_contents_path(Affiliate.find_by_name($1))
     when /the new affiliate boosted content page for "([^"]*)"/
@@ -102,8 +100,6 @@ module NavigationHelpers
       edit_site_no_results_pages_path(Affiliate.find_by_name($1))
     when /^the (.*)'s Activate Search page$/
       site_embed_code_path(Affiliate.find_by_name($1))
-    when /^the (.*)'s Best Bets Graphics page$/
-      site_best_bets_graphics_path(Affiliate.find_by_name($1))
     when /^the (.*)'s Best Bets Texts page$/
       site_best_bets_texts_path(Affiliate.find_by_name($1))
     when /^the (.*)'s "([^"]*)" RSS feed page$/
