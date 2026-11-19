@@ -72,12 +72,6 @@ class FeaturedCollection < ApplicationRecord
     }.freeze
   end
 
-  def destroy_and_update_attributes(params)
-    destroy_on_blank(params[:featured_collection_keywords_attributes], :value)
-    destroy_on_blank(params[:featured_collection_links_attributes], :title, :url)
-    touch if update(params)
-  end
-
   def as_json(options = {})
     image_url = build_image_url
     hash = { id: id,
