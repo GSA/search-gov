@@ -1,9 +1,7 @@
 class SearchableObserver < ActiveRecord::Observer
   observe :boosted_content,
-          :featured_collection,
           :federal_register_document,
-          :indexed_document,
-          :sayt_suggestion
+          :indexed_document
 
   def after_save(model)
     model_name = model.class.name

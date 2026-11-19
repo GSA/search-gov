@@ -14,6 +14,17 @@ describe ElasticSaytSuggestion do
   end
   let(:search) { described_class.search_for(search_params) }
 
+  # SearchableObserver no longer indexes SaytSuggestion, so index explicitly.
+  def reindex
+    described_class.recreate_index
+    documents = SaytSuggestion.where(affiliate_id: Affiliate.select(:id)).find_each.filter_map do |record|
+      record.affiliate = affiliate if record.affiliate_id == affiliate.id
+      ElasticSaytSuggestionData.new(record).to_builder&.attributes!&.symbolize_keys
+    end
+    described_class.index(documents) if documents.present?
+    described_class.commit
+  end
+
   before do
     described_class.recreate_index
     affiliate.sayt_suggestions.delete_all
@@ -27,7 +38,7 @@ describe ElasticSaytSuggestion do
           affiliate.sayt_suggestions.create!(phrase: 'suggest me first', popularity: 30)
           affiliate.sayt_suggestions.create!(phrase: 'suggest me too', popularity: 29)
           affiliate.sayt_suggestions.create!(phrase: 'suggest me three suggests', popularity: 28)
-          described_class.commit
+          reindex
         end
 
         it 'returns results in an easy to access structure ordered by most popular' do
@@ -41,7 +52,7 @@ describe ElasticSaytSuggestion do
         context 'when those results get deleted' do
           before do
             affiliate.sayt_suggestions.destroy_all
-            described_class.commit
+            reindex
           end
 
           it 'should return zero results' do
@@ -67,7 +78,7 @@ describe ElasticSaytSuggestion do
   describe 'highlighting results' do
     before do
       affiliate.sayt_suggestions.create!(phrase: 'hi suggest me', popularity: 30)
-      described_class.commit
+      reindex
     end
 
     context 'when no highlight param is sent in' do
@@ -96,7 +107,7 @@ describe ElasticSaytSuggestion do
       before do
         long_phrase = 'president obama overcame furious lobbying by big banks to pass dodd-frank'
         affiliate.sayt_suggestions.create!(phrase: long_phrase, popularity: 30)
-        described_class.commit
+        reindex
       end
 
       it 'should show everything in a single fragment' do
@@ -112,7 +123,7 @@ describe ElasticSaytSuggestion do
     context 'when query is exact match of phrase' do
       before do
         affiliate.sayt_suggestions.create!(phrase: 'the exact match', popularity: 30)
-        described_class.commit
+        reindex
       end
 
       it 'ignores exact matches regardless of case' do
@@ -131,7 +142,7 @@ describe ElasticSaytSuggestion do
         affiliate.sayt_suggestions.create!(values)
         other_affiliate.sayt_suggestions.create!(values)
 
-        described_class.commit
+        reindex
       end
 
       it 'should return only matches for the given affiliate' do
@@ -147,7 +158,7 @@ describe ElasticSaytSuggestion do
   describe 'recall' do
     before do
       affiliate.sayt_suggestions.create!(phrase: 'obama and biden', popularity: 30)
-      described_class.commit
+      reindex
     end
 
     describe 'phrase' do
@@ -169,7 +180,7 @@ describe ElasticSaytSuggestion do
         before do
           affiliate.sayt_suggestions.create!(phrase: 'the affiliate interns use powerful engineering computers', popularity: 45)
           affiliate.sayt_suggestions.create!(phrase: 'organic feet symbolize with oceanic views', popularity: 44)
-          described_class.commit
+          reindex
         end
 
         it 'should do standard English stemming with basic stopwords' do
@@ -185,7 +196,7 @@ describe ElasticSaytSuggestion do
           affiliate.locale = 'es'
           affiliate.sayt_suggestions.create!(phrase: 'Leyes y el rey', popularity: 45)
           affiliate.sayt_suggestions.create!(phrase: 'Beneficios y ayuda financiera verificación Lotería de visas 2015', popularity: 44)
-          described_class.commit
+          reindex
         end
 
         it 'should do minimal Spanish stemming with basic stopwords' do
@@ -206,7 +217,7 @@ describe ElasticSaytSuggestion do
           affiliate.locale = 'de'
           affiliate.sayt_suggestions.create!(phrase: 'Angebote und Superknüller der Woche', popularity: 45)
           affiliate.sayt_suggestions.create!(phrase: 'Angebote der Woche. Die Angebote der Woche sind gültig', popularity: 44)
-          described_class.commit
+          reindex
         end
 
         it 'should do downcasing and ASCII folding only' do

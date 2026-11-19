@@ -11,6 +11,17 @@ describe ElasticFeaturedCollection do
     }
   end
 
+  # SearchableObserver no longer indexes FeaturedCollection, so index explicitly.
+  def reindex
+    described_class.recreate_index
+    documents = FeaturedCollection.where(affiliate_id: Affiliate.select(:id)).find_each.filter_map do |record|
+      record.affiliate = affiliate if record.affiliate_id == affiliate.id
+      ElasticFeaturedCollectionData.new(record).to_builder&.attributes!&.symbolize_keys
+    end
+    described_class.index(documents) if documents.present?
+    described_class.commit
+  end
+
   before do
     described_class.recreate_index
     affiliate.featured_collections.delete_all
@@ -27,7 +38,7 @@ describe ElasticFeaturedCollection do
           affiliate.featured_collections.create!(title: 'More Hurricane names involving tropical',
                                                  status: 'active',
                                                  publish_start_on: Date.current)
-          described_class.commit
+          reindex
         end
 
         it 'should return results in an easy to access structure' do
@@ -41,7 +52,7 @@ describe ElasticFeaturedCollection do
         context 'when those results get deleted' do
           before do
             affiliate.featured_collections.destroy_all
-            described_class.commit
+            reindex
           end
 
           it 'should return zero results' do
@@ -67,7 +78,7 @@ describe ElasticFeaturedCollection do
                                                           url: 'http://www.nhc.noaa.gov/aboutnames2.shtml',
                                                           position: '1')
       featured_collection.save!
-      described_class.commit
+      reindex
     end
 
     context 'when no highlight param is sent in' do
@@ -90,7 +101,7 @@ describe ElasticFeaturedCollection do
                                                             url: 'http://www.nhc.noaa.gov/aboutnames.shtml',
                                                             position: '0')
         featured_collection.save!
-        described_class.commit
+        reindex
       end
 
       it 'should escape the entity but show the highlight' do
@@ -118,7 +129,7 @@ describe ElasticFeaturedCollection do
       before do
         long_title = 'President Obama overcame furious lobbying by big banks to pass Dodd-Frank Wall Street Reform, to prevent the excessive risk-taking that led to a financial crisis while providing protections to American families for their mortgages and credit cards.'
         affiliate.featured_collections.create!(title: long_title, status: 'active', publish_start_on: Date.current)
-        described_class.commit
+        reindex
       end
 
       it 'should show everything in a single fragment' do
@@ -136,7 +147,7 @@ describe ElasticFeaturedCollection do
                                                publish_start_on: Date.current)
         affiliate.featured_collections.create!(title: 'Retired Tropical Hurricane names', status: 'inactive',
                                                publish_start_on: Date.current)
-        described_class.commit
+        reindex
       end
 
       it 'should return only active Featured Collections' do
@@ -155,7 +166,7 @@ describe ElasticFeaturedCollection do
         affiliate.featured_collections.create!(values)
         other_affiliate.featured_collections.create!(values)
 
-        described_class.commit
+        reindex
       end
 
       it 'should return only matches for the given affiliate' do
@@ -171,7 +182,7 @@ describe ElasticFeaturedCollection do
                                                publish_start_on: Date.current)
         affiliate.featured_collections.create!(title: 'Future Tropical Hurricane names', status: 'active',
                                                publish_start_on: Date.tomorrow)
-        described_class.commit
+        reindex
       end
 
       it 'should omit those results' do
@@ -187,7 +198,7 @@ describe ElasticFeaturedCollection do
                                                publish_start_on: Date.current)
         affiliate.featured_collections.create!(title: 'Expired Tropical Hurricane names', status: 'active',
                                                publish_start_on: 1.week.ago.to_date, publish_end_on: Date.current)
-        described_class.commit
+        reindex
       end
 
       it 'should omit those results' do
@@ -225,7 +236,7 @@ describe ElasticFeaturedCollection do
       featured_collection.featured_collection_keywords.build(value: 'Corazón')
       featured_collection.featured_collection_keywords.build(value: 'fair pay act')
       featured_collection.save!
-      described_class.commit
+      reindex
     end
 
     context 'when I search on terms that are only present in the title or description' do
@@ -291,7 +302,7 @@ describe ElasticFeaturedCollection do
                                                               url: 'http://www.nhc.noaa.gov/aboutnames2.shtml',
                                                               position: 0)
           featured_collection.save!
-          described_class.commit
+          reindex
         end
 
         it 'should do standard English stemming with basic stopwords' do
@@ -315,7 +326,7 @@ describe ElasticFeaturedCollection do
                                                               url: 'http://www.nhc.noaa.gov/aboutnames3.shtml',
                                                               position: 1)
           featured_collection.save!
-          described_class.commit
+          reindex
         end
 
         it 'should do minimal Spanish stemming with basic stopwords' do
@@ -340,7 +351,7 @@ describe ElasticFeaturedCollection do
                                                               url: 'http://el.wikipedia.org/wiki/Είναι',
                                                               position: 0)
           featured_collection.save!
-          described_class.commit
+          reindex
         end
 
         it 'should do downcasing and ASCII folding only' do
