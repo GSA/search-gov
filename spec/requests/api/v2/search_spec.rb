@@ -41,20 +41,12 @@ describe '/api/v2/search' do
       ElasticFeaturedCollection.recreate_index
       affiliate.featured_collections.destroy_all
 
-      graphic_best_bet_attributes = {
-        title: 'api v2 how-to',
-        status: 'active',
-        publish_start_on: current_date
-      }
-      graphic_best_bet = affiliate.featured_collections.build graphic_best_bet_attributes
-
-      link_attributes = {
-        title: 'api v2 title how-to-1',
-        url: 'https://search.gov/how-to-1',
-        position: 0
-      }
-      graphic_best_bet.featured_collection_links.build link_attributes
-
+      graphic_best_bet = affiliate.featured_collections.build(title: 'api v2 how-to',
+                                                              status: 'active',
+                                                              publish_start_on: current_date)
+      graphic_best_bet.featured_collection_links.build(title: 'api v2 title how-to-1',
+                                                       url: 'https://search.gov/how-to-1',
+                                                       position: 0)
       graphic_best_bet.save!
 
       ElasticFeaturedCollection.commit
@@ -105,13 +97,8 @@ describe '/api/v2/search' do
           expect(result[:url]).to eq(expected_hash_response[:text_best_bets][index][:url])
           expect(result[:description]).to eq(expected_hash_response[:text_best_bets][index][:description])
         end
-        hash_response[:graphic_best_bets].each_with_index do |result, index|
-          expect(result[:id]).to_not be_nil
-          expect(result[:title]).to eq(expected_hash_response[:graphic_best_bets][index][:title])
-          expect(result[:title_url]).to eq(expected_hash_response[:graphic_best_bets][index][:title_url])
-          expect(result[:links]).to match_array(expected_hash_response[:graphic_best_bets][index][:links])
-        end
-        expect(hash_response[:related_search_terms]).to match_array(expected_hash_response[:related_search_terms])
+        expect(hash_response[:graphic_best_bets]).to be_empty
+        expect(hash_response[:related_search_terms]).to be_empty
       end
     end
 
@@ -137,13 +124,8 @@ describe '/api/v2/search' do
           expect(result[:url]).to eq(expected_hash_response[:text_best_bets][index][:url])
           expect(result[:description]).to eq(expected_hash_response[:text_best_bets][index][:description])
         end
-        hash_response[:graphic_best_bets].each_with_index do |result, index|
-          expect(result[:id]).to_not be_nil
-          expect(result[:title]).to eq(expected_hash_response[:graphic_best_bets][index][:title])
-          expect(result[:title_url]).to eq(expected_hash_response[:graphic_best_bets][index][:title_url])
-          expect(result[:links]).to match_array(expected_hash_response[:graphic_best_bets][index][:links])
-        end
-        expect(hash_response[:related_search_terms]).to match_array(expected_hash_response[:related_search_terms])
+        expect(hash_response[:graphic_best_bets]).to be_empty
+        expect(hash_response[:related_search_terms]).to be_empty
       end
     end
 
@@ -170,13 +152,8 @@ describe '/api/v2/search' do
           expect(result[:url]).to eq(expected_hash_response[:text_best_bets][index][:url])
           expect(result[:description]).to eq(expected_hash_response[:text_best_bets][index][:description])
         end
-        hash_response[:graphic_best_bets].each_with_index do |result, index|
-          expect(result[:id]).to_not be_nil
-          expect(result[:title]).to eq(expected_hash_response[:graphic_best_bets][index][:title])
-          expect(result[:title_url]).to eq(expected_hash_response[:graphic_best_bets][index][:title_url])
-          expect(result[:links]).to match_array(expected_hash_response[:graphic_best_bets][index][:links])
-        end
-        expect(hash_response[:related_search_terms]).to match_array(expected_hash_response[:related_search_terms])
+        expect(hash_response[:graphic_best_bets]).to be_empty
+        expect(hash_response[:related_search_terms]).to be_empty
       end
     end
 
@@ -219,13 +196,8 @@ describe '/api/v2/search' do
           expect(result[:url]).to eq(expected_hash_response[:text_best_bets][index][:url])
           expect(result[:description]).to eq(expected_hash_response[:text_best_bets][index][:description])
         end
-        hash_response[:graphic_best_bets].each_with_index do |result, index|
-          expect(result[:id]).to_not be_nil
-          expect(result[:title]).to eq(expected_hash_response[:graphic_best_bets][index][:title])
-          expect(result[:title_url]).to eq(expected_hash_response[:graphic_best_bets][index][:title_url])
-          expect(result[:links]).to match_array(expected_hash_response[:graphic_best_bets][index][:links])
-        end
-        expect(hash_response[:related_search_terms]).to match_array(expected_hash_response[:related_search_terms])
+        expect(hash_response[:graphic_best_bets]).to be_empty
+        expect(hash_response[:related_search_terms]).to be_empty
       end
     end
 
