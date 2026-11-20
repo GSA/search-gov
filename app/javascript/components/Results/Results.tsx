@@ -16,7 +16,6 @@ import { ImagesPage } from './ImagesPage/ImagesPage';
 import { FedRegister } from './FedRegister/FedRegister';
 import { Jobs } from './Jobs/Jobs';
 import { SiteLimitAlert } from './SiteLimitAlert/SiteLimitAlert';
-import { RelatedSearches } from './RelatedSearches/RelatedSearches';
 import { SpellingSuggestion } from './SpellingSuggestion/SpellingSuggestion';
 import { FontsAndColors, PageData } from '../SearchResultsLayout';
 
@@ -105,7 +104,6 @@ interface ResultsProps {
     suggestedQuery: string;
     suggestedUrl: string;
   };
-  relatedSearches?: { label: string; link: string; }[];
   noResultsMessage?: {
     text?: string;
     urls?: {
@@ -157,7 +155,7 @@ const getImages = (result: Result[] | null) => {
 };
 
 // eslint-disable-next-line complexity
-export const Results = ({ page, query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, spellingSuggestion, relatedSearches, sitelimit, noResultsMessage, total, jobsEnabled, agencyName, vertical, facetsEnabled }: ResultsProps) => {
+export const Results = ({ page, query = '', results = null, additionalResults = null, unboundedResults, totalPages = null, spellingSuggestion, sitelimit, noResultsMessage, total, jobsEnabled, agencyName, vertical, facetsEnabled }: ResultsProps) => {
   const i18n = useContext(LanguageContext);
   const styles = useContext(StyleContext);
   const imagesResults = getImages(results);
@@ -259,14 +257,6 @@ export const Results = ({ page, query = '', results = null, additionalResults = 
                 query={query}
                 vertical={vertical}
               />
-            }
-
-            {relatedSearches && relatedSearches.length > 0 && 
-              <RelatedSearches 
-                affiliate={page?.affiliate ?? ''}
-                query={query}
-                relatedSearches={relatedSearches}
-                vertical={vertical}/>
             }
           </StyledWrapper>
         </div>

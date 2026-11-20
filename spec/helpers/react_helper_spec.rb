@@ -179,40 +179,6 @@ describe ReactHelper do
       end
     end
 
-    context 'with an affiliate with type ahead suggestions' do
-      before do
-        allow(search).to receive(:govbox_set).and_return(nil)
-        SaytSuggestion.create!(phrase: 'chocolate bar', affiliate: affiliate)
-        ElasticSaytSuggestion.commit
-        search.run
-      end
-
-      it 'does not send related searches to SearchResultsLayout component' do
-        helper.search_results_layout(search, {}, vertical, affiliate, search_options)
-
-        expect(helper).to have_received(:react_component).
-          with('SearchResultsLayout', hash_excluding(:relatedSearches))
-      end
-    end
-
-    context 'when the search has related search terms' do
-      before do
-        allow(search).to receive(:related_search).and_return(['<strong>chocolate</strong> bar'])
-      end
-
-      it 'sends related searches to SearchResultsLayout component' do
-        helper.search_results_layout(search, {}, vertical, affiliate, search_options)
-
-        related_search = {
-          label: '<strong>chocolate</strong> bar',
-          link: '/search?affiliate=usagov&query=chocolate+bar'
-        }
-
-        expect(helper).to have_received(:react_component).
-          with('SearchResultsLayout', hash_including(relatedSearches: [related_search]))
-      end
-    end
-
     context 'when search contains a spelling suggestion' do
       before do
         allow(search).to receive(:spelling_suggestion).and_return('chalkcolate')

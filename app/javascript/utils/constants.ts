@@ -6,7 +6,6 @@ export const moduleCode = {
   healthTopics: 'MEDL',
   images: 'IMAG',
   jobs: 'JOBS',
-  relatedSearches: 'SREL',
   rssFeeds: 'NEWS',
   spellingOverridesBing: 'OVER',
   spellingOverridesSearch: 'LOVER',
