@@ -93,7 +93,6 @@ The 15-minute TTL is the normal invalidation. Index updates can take up to that 
 
 - A cold key under a spike still sends parallel identical queries to OpenSearch. `race_condition_ttl` only smooths expiry of an existing key.
 - `audience` is a keyword field matched against the raw query. A query that exactly equals an audience value in different case can now share a cached page with its lowercase form.
-- The related-searches govbox issues its own OpenSearch query and is not cached.
 
 ## Redis failure
 
