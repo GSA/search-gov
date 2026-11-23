@@ -74,6 +74,31 @@ describe Api::V2::SearchesController do
       end
     end
 
+    context 'when the affiliate is inactive' do
+      let(:inactive_affiliate) { affiliates(:inactive_affiliate) }
+
+      before do
+        allow(SearchImpression).to receive(:log)
+        get :i14y,
+            params: {
+              affiliate: inactive_affiliate.name,
+              access_key: inactive_affiliate.api_access_key,
+              format: 'json',
+              query: 'api'
+            }
+      end
+
+      it { is_expected.to respond_with :bad_request }
+
+      it 'returns affiliate not found' do
+        expect(response.parsed_body['errors']).to include('affiliate not found')
+      end
+
+      it 'does not log a search impression' do
+        expect(SearchImpression).not_to have_received(:log)
+      end
+    end
+
     context 'when the search options are valid' do
       let!(:search) { instance_double(OpenSearch::ApiEngine, as_json: { foo: 'bar' }, modules: %w[SRCH]) }
 

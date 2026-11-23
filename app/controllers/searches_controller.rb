@@ -104,6 +104,9 @@ class SearchesController < ApplicationController
   end
 
   def log_search_impression
+    # If the search didn't happen (e.g. inactive affiliate), don't log an impression.
+    return unless @search
+
     SearchImpression.log(@search, @search_vertical, permitted_params, request)
   end
 
