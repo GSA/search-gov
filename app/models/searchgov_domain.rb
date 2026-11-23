@@ -32,6 +32,19 @@ class SearchgovDomain < ApplicationRecord
   scope :ok, -> { where(status: INDEXABLE_STATUS) }
   scope :not_ok, -> { where.not(status: GOOD_STATUS).or(where(status: nil)) }
 
+  aasm column: 'activity', whiny_transitions: false do
+    state :idle, initial: true
+    state :indexing
+
+    event :index do
+      transitions from: :idle, to: :indexing
+    end
+
+    event :done_indexing do
+      transitions from: :indexing, to: :idle
+    end
+  end
+
   def to_label
     domain
   end
@@ -41,6 +54,8 @@ class SearchgovDomain < ApplicationRecord
   end
 
   def index_urls
+    return if OpenSearchConfig.crawler_index_writes_disabled?
+
     index!
     SearchgovDomainIndexerJob.perform_later(searchgov_domain: self, delay: delay)
   end
@@ -57,19 +72,6 @@ class SearchgovDomain < ApplicationRecord
     fetch_response
     validate_response
     status
-  end
-
-  aasm column: 'activity', whiny_transitions: false do
-    state :idle, initial: true
-    state :indexing
-
-    event :index do
-      transitions from: :idle, to: :indexing
-    end
-
-    event :done_indexing do
-      transitions from: :indexing, to: :idle
-    end
   end
 
   def sitemap_urls

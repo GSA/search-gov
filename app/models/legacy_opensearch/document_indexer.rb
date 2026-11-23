@@ -15,6 +15,8 @@ class LegacyOpenSearch::DocumentIndexer
   # replaces it if it does. The create/update distinction is unnecessary
   # here because SearchgovUrl#index_params always sends the full field set.
   def self.index(params)
+    return if OpenSearchConfig.crawler_index_writes_disabled?
+
     params = ActiveSupport::HashWithIndifferentAccess.new(params.deep_dup)
     document_id = params.delete(:document_id)
     language = params.delete(:language) || 'en'
@@ -40,6 +42,8 @@ class LegacyOpenSearch::DocumentIndexer
   end
 
   def self.delete(document_id:, **_)
+    return if OpenSearchConfig.crawler_index_writes_disabled?
+
     client.delete(
       index: INDEX_NAME,
       id: document_id
