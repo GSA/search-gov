@@ -90,15 +90,32 @@ describe SearchesController do
   context 'when the affiliate is not active' do
     let(:affiliate) { affiliates(:inactive_affiliate) }
 
-    before do
-      get :index,
-          params: {
-            query: 'gov',
-            affiliate: affiliate.name
-          }
+    shared_examples 'an inactive affiliate search request' do
+      it { is_expected.to redirect_to "/errors/inactive-affiliate?affiliate=inactive#{expected_query_suffix}" }
+
+      it 'does not log a search impression' do
+        expect(SearchImpression).not_to have_received(:log)
+      end
     end
 
-    it { is_expected.to redirect_to '/errors/inactive-affiliate?affiliate=inactive&query=gov' }
+    before do
+      allow(SearchImpression).to receive(:log)
+      get :index, params: params
+    end
+
+    context 'with a query parameter' do
+      let(:params) { { query: 'gov', affiliate: affiliate.name } }
+      let(:expected_query_suffix) { '&query=gov' }
+
+      it_behaves_like 'an inactive affiliate search request'
+    end
+
+    context 'without a query parameter' do
+      let(:params) { { affiliate: affiliate.name } }
+      let(:expected_query_suffix) { '' }
+
+      it_behaves_like 'an inactive affiliate search request'
+    end
   end
 
   context 'when searching with non scalar query' do
