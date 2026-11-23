@@ -108,11 +108,11 @@ You can create the USASearch-related indexes like this:
 
 You can index all the records from ActiveRecord-backed indexes like this:
 
-    $ rake usasearch:elasticsearch:index_all[FeaturedCollection+BoostedContent]
+    $ rake usasearch:elasticsearch:index_all[BoostedContent]
 
 If you want it to run in parallel using Resque workers, call it like this:
 
-    $ rake usasearch:elasticsearch:resque_index_all[FeaturedCollection+BoostedContent]
+    $ rake usasearch:elasticsearch:resque_index_all[BoostedContent]
 
 Note that indexing everything uses whatever index/mapping/setting is in place. If you need to change the Elasticsearch schema first, you can 'recreate' or 'migrate' the index:
 
@@ -120,17 +120,17 @@ Note that indexing everything uses whatever index/mapping/setting is in place. I
 
 :warning: The `recreate_index` task should only be used in development or test environments, as it deletes and then recreates the index from scratch:
 
-    $ rake usasearch:elasticsearch:recreate_index[FeaturedCollection]
+    $ rake usasearch:elasticsearch:recreate_index[BoostedContent]
 
 **Migrate an index (safe for production use)**
 
 In production, if you are changing a schema and want to migrate the index without having it be unavailable while the new index is being populated, do this:
 
-    $ rake usasearch:elasticsearch:migrate[FeaturedCollection]
+    $ rake usasearch:elasticsearch:migrate[BoostedContent]
 
 Same thing, but using Resque to index in parallel:
 
-    $ rake usasearch:elasticsearch:resque_migrate[FeaturedCollection]
+    $ rake usasearch:elasticsearch:resque_migrate[BoostedContent]
 
 ### OpenSearch
 

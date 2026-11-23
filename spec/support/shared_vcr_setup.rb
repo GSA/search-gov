@@ -4,10 +4,6 @@ PAPERCLIP_MATCHERS = {
   affiliate: {
     regex: %r{^/(?<env>[^/]+)/site/(?<id>\d*)/(?<image_type>[^/]+)/(?<updated_at>[^/]+)/(?<style>[^/]+)/(?<filename>[^/]+)},
     fields_to_match: %w[env image_type style filename]
-  },
-  featured_collection: {
-    regex: %r{^/(?<env>[^/]+)/featured_collection/(?<id>\d*)/image/(?<updated_at>[^/]+)/(?<style>[^/]+)/(?<filename>[^/]+)},
-    fields_to_match: %w[env style filename]
   }
 }.freeze
 

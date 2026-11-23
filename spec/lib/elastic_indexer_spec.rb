@@ -37,11 +37,6 @@ describe ElasticIndexer do
     end
 
     it 'should make use of available optimizing includes' do
-      featured_collection = double(FeaturedCollection)
-      expect(featured_collection).to receive(:find_in_batches).with(batch_size: ElasticIndexer::DEFAULT_BATCH_SIZE)
-      expect(FeaturedCollection).to receive(:includes).with(ElasticFeaturedCollection::OPTIMIZING_INCLUDES).and_return(featured_collection)
-      described_class.index_all('FeaturedCollection')
-
       indexed_document = double(IndexedDocument)
       expect(indexed_document).to receive(:find_in_batches).with(batch_size: ElasticIndexer::DEFAULT_BATCH_SIZE)
       expect(IndexedDocument).to receive(:includes).with(nil).and_return(indexed_document)

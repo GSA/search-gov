@@ -9,21 +9,8 @@ describe SearchableObserver do
 
   describe 'retired models' do
     before do
-      allow(ElasticFeaturedCollection).to receive(:index)
-      allow(ElasticFeaturedCollection).to receive(:delete)
       allow(ElasticSaytSuggestion).to receive(:index)
       allow(ElasticSaytSuggestion).to receive(:delete)
-    end
-
-    it 'does not index or delete a FeaturedCollection on save and destroy' do
-      featured_collection = affiliate.featured_collections.create!(title: 'Graphic best bet',
-                                                                   status: 'active',
-                                                                   publish_start_on: Date.current)
-      featured_collection.update!(title: 'Updated graphic best bet')
-      featured_collection.destroy
-
-      expect(ElasticFeaturedCollection).not_to have_received(:index)
-      expect(ElasticFeaturedCollection).not_to have_received(:delete)
     end
 
     it 'does not index or delete a SaytSuggestion on save and destroy' do

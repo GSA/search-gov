@@ -37,11 +37,6 @@ namespace :opensearch do
   task delete_deprecated_custom_indices: :environment do
     puts 'Deleting deprecated custom index data...'
 
-    # FeaturedCollection (Best Bets Graphics) - dependent destroy handles keywords/links
-    count = FeaturedCollection.count
-    FeaturedCollection.destroy_all
-    puts "Deleted #{count} FeaturedCollection records"
-
     # FederalRegisterDocument - delete join table first, then documents
     count = FederalRegisterDocument.count
     ActiveRecord::Base.connection.execute('DELETE FROM federal_register_agencies_federal_register_documents')

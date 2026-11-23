@@ -39,18 +39,6 @@ describe GovboxSet do
         end
       end
 
-      context 'when the affiliate has a graphic best bet' do
-        before do
-          graphic_best_bet = FeaturedCollection.new(title: 'Search USA Blog', status: 'active', publish_start_on: '07/01/2011', affiliate: affiliate)
-          graphic_best_bet.featured_collection_links.build(title: 'Blog Post', url: 'https://search.gov/blog-1', position: 0)
-          graphic_best_bet.save!
-        end
-
-        it 'does not return a graphics best bet' do
-          expect(govbox_set_json).to eq({ recommendedBy: affiliate.display_name })
-        end
-      end
-
       context 'when there is a health topic' do
         fixtures :med_topics
 
@@ -224,18 +212,10 @@ describe GovboxSet do
       end
     end
 
-    describe '#featured_collections' do
-      it 'does not query OpenSearch for graphic best bets' do
-        expect(ElasticFeaturedCollection).not_to receive(:search_for)
-        expect(govbox_set.featured_collections).to be_nil
-        expect(govbox_set.modules).not_to include('BBG')
-      end
-    end
-
     context 'when affiliate has an agency and the federal register document govbox enabled' do
       let(:agency) { agencies(:irs) }
       let(:federal_register_agency) { federal_register_agencies(:fr_irs) }
-      let(:expected_results) { double(ElasticFeaturedCollectionResults, total: 1) }
+      let(:expected_results) { double(ElasticFederalRegisterDocumentResults, total: 1) }
 
       before do
         allow(affiliate).to receive(:agency).and_return(agency)

@@ -9,7 +9,6 @@ class GovboxSet
   DEFAULT_TRUNCATE_OPTIONS = { length_in_chars: true, ellipsis: ' ...' }.freeze
 
   attr_reader :boosted_contents,
-              :featured_collections,
               :federal_register_documents,
               :jobs,
               :med_topic,

@@ -5,7 +5,6 @@ describe SiteCloner do
            :agencies,
            :boosted_contents,
            :document_collections,
-           :featured_collections,
            :flickr_profiles,
            :image_search_labels,
            :languages,
@@ -145,37 +144,6 @@ describe SiteCloner do
         actual_nav_attrs = cloned_dc.navigation.attributes.slice(*nav_attr_keys)
         expected_nav_attrs = dc.navigation.attributes.slice(*nav_attr_keys)
         expect(actual_nav_attrs).to eq(expected_nav_attrs)
-      end
-    end
-
-    context 'when the origin site has featured collections' do
-      before do
-        fc = origin_site.featured_collections.first
-        fc.featured_collection_keywords.create!(value: 'cloning')
-        fc.featured_collection_links.create!(position: 1,
-                                             title: 'title',
-                                             url: 'http://www.gov.gov/some.url')
-      end
-
-      it 'copies the featured collections' do
-        expect(cloned_site.featured_collections.count).to eq(1)
-
-        origin_site.featured_collections.each_with_index do |origin_fc, index|
-          cloned_fc = cloned_site.featured_collections[index]
-
-          excluded_params = { except: [:id, :affiliate_id] }
-          expect(cloned_fc.as_json(excluded_params)).to eq(origin_fc.as_json(excluded_params))
-
-          actual_keywords = cloned_fc.featured_collection_keywords.pluck(:value)
-          expected_keywords = origin_fc.featured_collection_keywords.pluck(:value)
-          expect(actual_keywords).to eq(expected_keywords)
-
-          origin_fc.featured_collection_links.each_with_index do |origin_link, index|
-            cloned_link = cloned_fc.featured_collection_links[index]
-            excluded_params = { except: [:featured_collection_id, :id] }
-            expect(cloned_link.as_json(excluded_params)).to eq(origin_link.as_json(excluded_params))
-          end
-        end
       end
     end
 
