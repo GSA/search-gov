@@ -2,14 +2,13 @@ module Govboxable
   delegate :boosted_contents,
            :federal_register_documents,
            :med_topic,
-           :featured_collections,
            :jobs,
            :related_search,
            :to => :@govbox_set,
            :allow_nil => true
 
   def has_best_bets?
-    has_boosted_contents? or has_featured_collections?
+    has_boosted_contents?
   end
 
   def has_boosted_contents?
@@ -17,19 +16,11 @@ module Govboxable
   end
 
   def best_bets_count
-    boosted_contents_count + featured_collections_count
+    boosted_contents_count
   end
 
   def boosted_contents_count
     has_boosted_contents? ? boosted_contents.results.size : 0
-  end
-
-  def featured_collections_count
-    has_featured_collections? ? featured_collections.results.size : 0
-  end
-
-  def has_featured_collections?
-    featured_collections and featured_collections.total > 0 and featured_collections.results.size > 0
   end
 
   def method_missing(meth, *args, &block)

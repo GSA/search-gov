@@ -146,7 +146,6 @@ describe Affiliate do
 
     it { is_expected.to have_many(:affiliate_feature_addition).dependent(:destroy) }
     it { is_expected.to have_many(:excluded_domains).dependent(:destroy).inverse_of(:affiliate) }
-    it { is_expected.to have_many(:featured_collections).dependent(:destroy) }
     it { is_expected.to have_many(:features).dependent(:destroy) }
     it { is_expected.to have_many(:document_collections).inverse_of(:affiliate) }
 

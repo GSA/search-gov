@@ -38,19 +38,6 @@ describe '/api/v2/search' do
 
       ElasticBoostedContent.commit
 
-      ElasticFeaturedCollection.recreate_index
-      affiliate.featured_collections.destroy_all
-
-      graphic_best_bet = affiliate.featured_collections.build(title: 'api v2 how-to',
-                                                              status: 'active',
-                                                              publish_start_on: current_date)
-      graphic_best_bet.featured_collection_links.build(title: 'api v2 title how-to-1',
-                                                       url: 'https://search.gov/how-to-1',
-                                                       position: 0)
-      graphic_best_bet.save!
-
-      ElasticFeaturedCollection.commit
-
       ElasticIndexedDocument.recreate_index
       affiliate.indexed_documents.destroy_all
 

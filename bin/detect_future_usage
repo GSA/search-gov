@@ -10,13 +10,6 @@ then
   bin/rake usasearch:features:record_feature_usage[rss,/tmp/affiliate_feature_addition.txt]
 fi
 
-echo "Starting best_bets graphics at "`date`
-echo "select affiliate_id from featured_collections" | mysql --skip-column-names -u $DB_USER $DB_PASSWORD -h $DB_HOST $DB_NAME > /tmp/affiliate_feature_addition.txt
-if test -s /tmp/affiliate_feature_addition.txt
-then
-  bin/rake usasearch:features:record_feature_usage[best_bets,/tmp/affiliate_feature_addition.txt]
-fi
-
 echo "Starting best_bets text at "`date`
 echo "select affiliate_id from boosted_contents" | mysql --skip-column-names -u $DB_USER $DB_PASSWORD -h $DB_HOST $DB_NAME > /tmp/affiliate_feature_addition.txt
 if test -s /tmp/affiliate_feature_addition.txt

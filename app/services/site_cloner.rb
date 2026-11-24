@@ -15,7 +15,6 @@ class SiteCloner
     clone_simple_associations(cloned_site)
     clone_boosted_contents(cloned_site)
     clone_document_collections(cloned_site)
-    clone_featured_collections(cloned_site)
     clone_flickr_profiles(cloned_site)
     clone_image_search_label(cloned_site)
     clone_routed_queries(cloned_site)
@@ -65,14 +64,6 @@ class SiteCloner
 
       copy_navigation_attributes(dc.navigation, cloned_dc.navigation)
     end
-  end
-
-  def clone_featured_collections(cloned_site)
-    clone_association_with_children(@origin_site,
-                                    cloned_site,
-                                    :featured_collections,
-                                    :featured_collection_keywords,
-                                    :featured_collection_links)
   end
 
   def clone_flickr_profiles(cloned_site)

@@ -23,7 +23,7 @@ module Api::V2::SearchAsJson
 
   def as_json_append_govbox_set(hash)
     hash[:text_best_bets] = boosted_contents ? boosted_contents.results : []
-    hash[:graphic_best_bets] = featured_collections ? featured_collections.results : []
+    hash[:graphic_best_bets] = []
     hash[:health_topics] = med_topic ? as_json_health_topics : []
     hash[:job_openings] = jobs ? as_json_job_openings : []
     yield if block_given?

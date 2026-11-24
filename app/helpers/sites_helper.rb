@@ -95,8 +95,7 @@ module SitesHelper
     %w[boosted_contents boosted_contents_bulk_uploads
        contents document_collections routed_queries
        flickr_profiles indexed_documents
-       site_domains site_feed_urls
-       featured_collections]
+       site_domains site_feed_urls]
   end
 
   def site_manage_display_controllers
@@ -129,15 +128,6 @@ module SitesHelper
       title,
       new_keyword_site_best_bets_texts_path(site),
       boosted_content.boosted_content_keywords.length,
-      'keyword'
-    )
-  end
-
-  def link_to_add_new_featured_collection_keyword(title, site, featured_collection)
-    instrumented_link_to(
-      title,
-      new_keyword_site_best_bets_graphics_path(site),
-      featured_collection.featured_collection_keywords.length,
       'keyword'
     )
   end
