@@ -222,6 +222,17 @@ describe SearchgovUrl do
       allow(LegacyOpenSearch::DocumentIndexer).to receive(:index)
     end
 
+    context 'when OPENSEARCH_CRAWLER_INDEX_WRITES_ENABLED is not true' do
+      before { allow(OpenSearchConfig).to receive(:crawler_index_writes_disabled?).and_return(true) }
+
+      it 'does not update crawl status or call OpenSearch' do
+        expect(LegacyOpenSearch::DocumentIndexer).not_to receive(:index)
+        expect { fetch }.not_to change { searchgov_url.reload.last_crawled_at }
+        expect { fetch }.not_to change { searchgov_url.reload.last_crawl_status }
+        expect { fetch }.not_to change { searchgov_url.reload.enqueued_for_reindex }
+      end
+    end
+
     context 'when the fetch is successful' do
       before do
         stub_request(:get, url).with(headers: { user_agent: DEFAULT_USER_AGENT }).

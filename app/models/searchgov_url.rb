@@ -58,6 +58,8 @@ class SearchgovUrl < ApplicationRecord
   class DomainError < StandardError; end
 
   def fetch
+    return if OpenSearchConfig.crawler_index_writes_disabled?
+
     raise DomainError.new("#{searchgov_domain.domain}: #{searchgov_domain.status}") if !searchgov_domain.available?
     update(last_crawled_at: Time.now, enqueued_for_reindex: false)
     self.load_time = Benchmark.realtime do

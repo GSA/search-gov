@@ -178,6 +178,14 @@ You can create OpenSearch indexes using the following rake tasks:
 - Best-bets text is served by the `ElasticBoostedContent` index
 - Analytics data (logstash indices) is served by OpenSearch via the `Es::ELK` module
 
+### Crawler
+
+Search.gov crawls agency websites so their pages can appear in search results. It finds URLs from site sitemaps, fetches those pages in the background, and writes them into the crawler search index. This is separate from best bets and from the spider-based indexing path.
+
+Crawling runs as background jobs on dedicated **crawler** servers. Operators can check queue and worker status in the admin Resque UI at `/admin/resque` (local: <http://localhost:3000/admin/resque>).
+
+Crawler index writes are on by default. To temporarily stop them (searches and best bets keep working), set `OPENSEARCH_CRAWLER_INDEX_WRITES_ENABLED` to `false` in AWS SSM and redeploy the crawler servers. Set it back to `true` (or remove the override) and redeploy crawlers again to resume.
+
 ### MySQL Database
 
 Create and set up your development and test databases:
