@@ -287,21 +287,6 @@ Feature: Search - redesign
     And I should see "Search instead for qeury"
 
   @javascript @a11y
-  Scenario: Related searches module is not shown
-    Given the following OpenSearch Affiliates exist:
-      | display_name | name          | contact_email    | first_name | last_name | locale |
-      | English site | en.agency.gov | admin@agency.gov | John       | Bar       | en     |
-    And the following SAYT Suggestions exist for en.agency.gov:
-      | phrase                 |
-      | president list         |
-      | president inauguration |
-    When I am on en.agency.gov's search page
-    And I fill in "Enter your search term" with "president"
-    And I press "Search"
-    Then I should not see "Related Searches"
-    And I should not see redesigned related searches
-
-  @javascript @a11y
   Scenario: Search for the results with file extension
     Given the following OpenSearch Affiliates exist:
       | display_name | name    | contact_email | first_name | last_name | gets_blended_results    |

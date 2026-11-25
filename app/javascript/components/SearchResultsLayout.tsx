@@ -181,7 +181,6 @@ interface SearchResultsLayoutProps {
     title: string;
     url: string;
   }[];
-  relatedSearches?: { label: string; link: string }[];
   relatedSitesDropdownLabel?: string;
   agencyName?: string;
   jobsEnabled?: boolean;
@@ -244,7 +243,7 @@ const isBasicHeader = (extendedHeader: boolean): boolean => {
 };
 
 // eslint-disable-next-line complexity
-const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, params = {}, translations, language = { code: 'en', rtl: false }, relatedSites = [], extendedHeader, footerLinks, primaryHeaderLinks, secondaryHeaderLinks, fontsAndColors, navigationLinks, relatedSitesDropdownLabel = '', alert, spellingSuggestion, relatedSearches, sitelimit, noResultsMessage, jobsEnabled, agencyName, facetsEnabled }: SearchResultsLayoutProps) => {
+const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, params = {}, translations, language = { code: 'en', rtl: false }, relatedSites = [], extendedHeader, footerLinks, primaryHeaderLinks, secondaryHeaderLinks, fontsAndColors, navigationLinks, relatedSitesDropdownLabel = '', alert, spellingSuggestion, sitelimit, noResultsMessage, jobsEnabled, agencyName, facetsEnabled }: SearchResultsLayoutProps) => {
   const [isMobileView, setMobileView] = useState(false);
 
   const i18n = new I18n(translations);
@@ -309,7 +308,6 @@ const SearchResultsLayout = ({ page, resultsData, additionalResults, vertical, p
                     unboundedResults={resultsData.unboundedResults}
                     additionalResults={additionalResults}
                     spellingSuggestion={spellingSuggestion}
-                    relatedSearches={relatedSearches}
                     noResultsMessage={noResultsMessage}
                     sitelimit={sitelimit}
                     jobsEnabled={jobsEnabled}

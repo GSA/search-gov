@@ -70,12 +70,4 @@ module ResultsHelper
   def image_news_item_thumbnail_html(news_item)
     image_tag news_item.thumbnail_url, alt: news_item.title
   end
-
-  def link_to_related_search(search, related_term, position)
-    click_data = { position: position, module_code: 'SREL' }
-    link_to related_term.downcase.html_safe,
-            search_path(affiliate: search.affiliate.name,
-                        query: strip_tags(related_term)),
-            data: { click: click_data }
-  end
 end

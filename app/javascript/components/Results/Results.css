@@ -155,27 +155,20 @@ a.no-underline {
 }
 
 .search-news-item-wrapper .search-result-item:nth-child(2),
-.fed-register-item-wrapper .search-result-item:nth-child(2),
-.related-searches-item-wrapper .search-result-item:nth-child(2) {
+.fed-register-item-wrapper .search-result-item:nth-child(2) {
   margin-top: 1rem;
-}
-
-.related-searches-item-wrapper .result-divider {
-  margin-top: 2rem;
 }
 
 .news-title-wrapper,
 .fed-register-wrapper,
-.jobs-title-wrapper,
-.related-searches-wrapper {
+.jobs-title-wrapper {
   padding-left: 2.5rem;
   padding-right: 2.5rem;
 }
 
 .news-title-wrapper-label,
 .fed-register-label,
-.jobs-title-wrapper-label,
-.related-searches-label {
+.jobs-title-wrapper-label {
   color: #565c65;
   font-size: 1.375rem;
   font-weight: 500;
@@ -314,8 +307,7 @@ a.no-underline {
 
   .news-title-wrapper,
   .fed-register-wrapper,
-  .jobs-title-wrapper,
-  .related-searches-wrapper {
+  .jobs-title-wrapper {
     padding-left: 1rem;
   }
 

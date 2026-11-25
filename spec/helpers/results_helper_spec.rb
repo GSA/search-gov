@@ -176,24 +176,4 @@ describe ResultsHelper do
     end
 
   end
-
-  describe '#link_to_related_search' do
-    subject(:link_to_related_search) do
-      helper.link_to_related_search(search, related, '2')
-    end
-
-    let(:affiliate) { affiliates(:basic_affiliate) }
-    let(:search) { instance_double('search', affiliate: affiliate) }
-    let(:related) { '<strong>president</strong> inauguration' }
-
-    it 'adds a related search with click tracking attributes' do
-      expected_output = '<a data-click="{&quot;position&quot;:&quot;2&quot;,' \
-                        '&quot;module_code&quot;:&quot;SREL&quot;}" ' \
-                        'href="/search?affiliate=nps.gov' \
-                        '&amp;query=president+inauguration">' \
-                        '<strong>president</strong> inauguration</a>'
-
-      expect(link_to_related_search).to eq expected_output
-    end
-  end
 end

@@ -18,7 +18,6 @@ module ReactHelper
       page: page_data(affiliate),
       params:,
       primaryHeaderLinks: links(affiliate, :primary_header_links),
-      relatedSearches: related_searches(search),
       relatedSites: related_sites(search),
       relatedSitesDropdownLabel: affiliate.related_sites_dropdown_label,
       resultsData: results_data(search),
@@ -81,17 +80,6 @@ module ReactHelper
   end
 
   private
-
-  def related_searches(search)
-    return [] if search.related_search.nil?
-
-    search.related_search.map do |related_term|
-      {
-        label: related_term,
-        link: search_path(affiliate: search.affiliate.name, query: strip_tags(related_term))
-      }
-    end
-  end
 
   def sitelimit_alert(search, params)
     return unless params[:sitelimit]
