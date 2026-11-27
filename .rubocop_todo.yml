@@ -48,7 +48,6 @@ Layout/BlockAlignment:
   Exclude:
     - 'db/migrate/20120302183638_remove_popular_image_queries.rb'
     - 'lib/tasks/rss_feed.rake'
-    - 'lib/tasks/site_feed_url.rake'
     - 'spec/models/med_topic_spec.rb'
 
 # Offense count: 26
@@ -791,7 +790,6 @@ Lint/UnusedBlockArgument:
     - 'lib/tasks/elastic_rails.rake'
     - 'lib/tasks/features.rake'
     - 'lib/tasks/reports.rake'
-    - 'lib/tasks/sayt_suggestions.rake'
     - 'spec/lib/middlewares/filtered_jsonp_spec.rb'
 
 # Offense count: 11

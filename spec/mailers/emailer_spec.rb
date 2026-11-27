@@ -90,19 +90,6 @@ describe Emailer do
     end
   end
 
-  describe '#filtered_popular_terms_report' do
-    subject(:email) { described_class.filtered_popular_terms_report(%w{foo bar blat}).deliver_now }
-
-    it { is_expected.to deliver_to('usagov@search.gov') }
-    it { is_expected.to have_subject(/Filtered Popular Terms for Last Week/) }
-
-    it 'should contain list of filtered sayt suggestions' do
-      expect(email).to have_body_text('foo')
-      expect(email).to have_body_text('bar')
-      expect(email).to have_body_text('blat')
-    end
-  end
-
   describe '#new_user_to_admin' do
     context 'affiliate user has .com email address' do
       subject { described_class.new_user_to_admin(user) }
