@@ -3,10 +3,6 @@
 # Do not add them here.
 
 # every '18 9 * * 1-5', roles: [:cron]  do
-#   rake 'search:federal_register:import_agencies'
-# end
-
-# every '18 9 * * 1-5', roles: [:cron]  do
 #   rake 'search:federal_register:import_documents'
 # end
 

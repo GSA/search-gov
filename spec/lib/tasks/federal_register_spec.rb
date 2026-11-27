@@ -8,21 +8,6 @@ describe 'Federal register rake tasks' do
     Rake::Task.define_task(:environment)
   end
 
-  describe 'usasearch:federal_register:import_agencies' do
-    let(:task_name) { 'usasearch:federal_register:import_agencies' }
-
-    before { @rake[task_name].reenable }
-
-    it "should have 'environment' as a prereq" do
-      expect(@rake[task_name].prerequisites).to include('environment')
-    end
-
-    it 'should import federal register agencies' do
-      expect(FederalRegisterAgencyData).to receive(:import)
-      @rake[task_name].invoke
-    end
-  end
-
   describe 'usasearch:federal_register:import_documents' do
     let(:task_name) { 'usasearch:federal_register:import_documents' }
 

@@ -2,11 +2,6 @@
 
 namespace :usasearch do
   namespace :federal_register do
-    desc 'Import federal register agencies'
-    task import_agencies: :environment do
-      FederalRegisterAgencyData.import
-    end
-
     desc 'Import federal register documents'
     task :import_documents, [:load_all] => :environment do |_t, args|
       args.with_defaults(load_all: false)
