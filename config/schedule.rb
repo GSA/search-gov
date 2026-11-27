@@ -23,10 +23,6 @@
 #  command "DB_USER=#{ENV['DB_USER']} DB_PASSWORD=#{ENV['DB_PASSWORD']} DB_HOST=#{ENV['DB_HOST']} DB_NAME=#{ENV['DB_NAME']} bin/adjust_fetch_concurrency"
 # end
 
-# every '25 2 * * 0', roles: [:cron] do
-#  rake 'usasearch:sayt_filters:filtered_popular_terms'
-# end
-
 # # OpenSearchDeleteByQueryJob - Run every day at 4AM UTC (11PM ET)
 # every '0 4 * * *', roles: [:cron] do
 #   runner 'OpenSearchDeleteByQueryJob.perform_later'

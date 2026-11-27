@@ -113,13 +113,6 @@ class Emailer < ApplicationMailer
     send_mail(:text)
   end
 
-  def filtered_popular_terms_report(filtered_popular_terms)
-    setup_email('usagov@search.gov', __method__)
-    headers['Content-Type'] = 'text/html'
-    @filtered_popular_terms = filtered_popular_terms
-    send_mail(:html)
-  end
-
   def deep_collection_notification(current_user, document_collection)
     setup_email('usagov@search.gov', __method__)
     @document_collection = document_collection

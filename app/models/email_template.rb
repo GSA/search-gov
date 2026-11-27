@@ -11,7 +11,6 @@ class EmailTemplate < ApplicationRecord
       ' <%= @user_monthly_report.report_date.year %>',
     affiliate_yearly_report: '[Search.gov] <%= @report_year %> Year in Review',
     deep_collection_notification: '[Search.gov] Deep collection created',
-    filtered_popular_terms_report: '[Search.gov] Filtered Popular Terms for Last Week',
     new_affiliate_site: '[Search.gov] Your new site: <%= @affiliate.display_name %>',
     new_affiliate_user:
       "[Search.gov] You've been added to <%= @affiliate_display_name %>",
