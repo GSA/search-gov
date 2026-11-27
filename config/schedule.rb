@@ -3,10 +3,6 @@
 # Do not add them here.
 
 # every '5 0 * * *', roles: [:cron] do
-#   rake 'usasearch:sayt_suggestions:expire[21]'
-# end
-
-# every '5 0 * * *', roles: [:cron] do
 #   rake 'usasearch:site_feed_url:refresh_all'
 # end
 
