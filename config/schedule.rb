@@ -27,10 +27,6 @@
 #  rake 'usasearch:sayt_filters:filtered_popular_terms'
 # end
 
-# every '25 2 * * 0', roles: [:cron] do
-#  rake 'usasearch:medline:load'
-# end
-
 # # OpenSearchDeleteByQueryJob - Run every day at 4AM UTC (11PM ET)
 # every '0 4 * * *', roles: [:cron] do
 #   runner 'OpenSearchDeleteByQueryJob.perform_later'
