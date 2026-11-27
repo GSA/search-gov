@@ -2,10 +2,6 @@
 # Recurring Resque jobs live in config/resque_schedule.yml on crawler hosts.
 # Do not add them here.
 
-# every '18 9 * * 1-5', roles: [:cron]  do
-#   rake 'search:federal_register:import_documents'
-# end
-
 # every '0 2-20 * * *', roles: [:cron] do
 #   rake "usasearch:sayt_suggestions:compute[#{Time.now.strftime('%Y%m%d')},1000]"
 # end
