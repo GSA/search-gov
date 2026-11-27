@@ -3,10 +3,6 @@
 # Do not add them here.
 
 # every '5 0 * * *', roles: [:cron] do
-#   rake 'usasearch:site_feed_url:refresh_all'
-# end
-
-# every '5 0 * * *', roles: [:cron] do
 #  command "DB_USER=#{ENV['DB_USER']} DB_PASSWORD=#{ENV['DB_PASSWORD']} DB_HOST=#{ENV['DB_HOST']} DB_NAME=#{ENV['DB_NAME']} bin/detect_future_usage"
 # end
 
